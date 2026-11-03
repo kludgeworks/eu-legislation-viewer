@@ -12,7 +12,31 @@
       <publication series="L" number="7" date="2003-01-11" page="64"/>
    </source>
    <lifecycle produced="2005-02-25" sequence="001.001.0">
-      <eventRef type="amendment" act="32005R0006" date="2005-01-04"/>
+      <eventRef type="amendment" act="32005R0006" date="2005-01-04" label="M1">
+         <publication series="L" number="2" date="2005-01-05" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 6/2005"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="4 January 2005" date="2005-01-04"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting Regulations (EC) No 46/2003 and (EC) No 47/2003 as regards mixes of different types of fresh fruit and vegetables in the same sales package"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

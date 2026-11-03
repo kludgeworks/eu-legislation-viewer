@@ -12,7 +12,26 @@
       <publication series="L" number="274" date="2019-10-28" page="1"/>
    </source>
    <lifecycle produced="2019-10-31" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32019D1798R(01)" date="2019-10-31"/>
+      <eventRef type="corrigendum"
+                act="32019D1798R(01)"
+                date="2019-10-31"
+                label="C1">
+         <publication series="L" number="279I" date="2019-10-31" page="11"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Decision 2019/1798of the European Parliament and of the Council of "/>
+               <date asWritten="14 October 2019" date="2019-10-14"/>
+               <t v=" appointing the European Chief Prosecutor of the European Public Prosecutor’s Office"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="(Official Journal of the European Union L 274 of "/>
+                  <date asWritten="28 October 2019" date="2019-10-28"/>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

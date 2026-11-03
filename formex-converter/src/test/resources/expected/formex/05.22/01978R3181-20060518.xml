@@ -12,9 +12,82 @@
       <publication series="L" number="379" date="1978-12-30" page="2"/>
    </source>
    <lifecycle produced="2012-10-18" sequence="002.001.0">
-      <eventRef type="amendment" act="31985R3066" date="1985-10-28"/>
-      <eventRef type="amendment" act="31997R1103" date="1997-06-17"/>
-      <eventRef type="amendment" act="32006R0640" date="2006-04-10"/>
+      <eventRef type="amendment" act="31985R3066" date="1985-10-28" label="M1">
+         <publication series="L" number="290" date="1985-11-01" page="95"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EEC) No 3066/85"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 28 October 1985"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Article 2 of Council Regulation (EEC) No 3181/78 as regards the use of ECU by "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="other holders"/>
+                  </quote>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="31997R1103" date="1997-06-17">
+         <publication series="L" number="162" date="1997-06-19" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1103/97"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 17 June 1997"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on certain provisions relating to the introduction of the euro"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006R0640" date="2006-04-10">
+         <publication series="L" number="115" date="2006-04-28" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 640/2006"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 April 2006" date="2006-04-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="repealing Regulations (EEC) No 3181/78 and (EEC) No 1736/79 concerning the European Monetary System"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

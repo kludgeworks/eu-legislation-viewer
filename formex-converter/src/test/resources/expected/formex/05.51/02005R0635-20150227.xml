@@ -12,7 +12,31 @@
       <publication series="L" number="106" date="2005-04-27" page="10"/>
    </source>
    <lifecycle produced="2015-02-10" sequence="001.001.0">
-      <eventRef type="amendment" act="32015R0183" date="2015-02-02"/>
+      <eventRef type="amendment" act="32015R0183" date="2015-02-02" label="M1">
+         <publication series="L" number="31" date="2015-02-07" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/183"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="2 February 2015" date="2015-02-02"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 635/2005 concerning the classification of certain goods in the Combined Nomenclature"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

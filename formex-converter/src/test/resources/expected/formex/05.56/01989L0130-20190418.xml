@@ -12,7 +12,37 @@
       <publication series="L" number="49" date="1989-02-21" page="26"/>
    </source>
    <lifecycle produced="2019-04-01" sequence="002.001.0">
-      <eventRef type="amendment" act="32019R0516" date="2019-03-19"/>
+      <eventRef type="amendment" act="32019R0516" date="2019-03-19">
+         <publication series="L" number="91" date="2019-03-29" page="19"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/516 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="19 March 2019" date="2019-03-19"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the harmonisation of gross national income at market prices and repealing Council Directive 89/130/EEC, Euratom and Council Regulation (EC, Euratom) No 1287/2003 (GNI Regulation)"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

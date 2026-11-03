@@ -12,13 +12,176 @@
       <publication series="L" number="333" date="1999-12-24" page="11"/>
    </source>
    <lifecycle produced="2004-03-16" sequence="006.001.0">
-      <eventRef type="corrigendum" act="31999R2771R(02)" date="2001-02-14"/>
-      <eventRef type="amendment" act="32000R1560" date="2000-07-17"/>
-      <eventRef type="amendment" act="32000R2099" date="2000-10-03"/>
-      <eventRef type="amendment" act="32001R0213" date="2001-01-09"/>
-      <eventRef type="amendment" act="32001R1614" date="2001-08-07"/>
-      <eventRef type="amendment" act="32003R0359" date="2003-02-27"/>
-      <eventRef type="amendment" act="32004R0318" date="2004-02-23"/>
+      <eventRef type="corrigendum"
+                act="31999R2771R(02)"
+                date="2001-02-14"
+                label="C1">
+         <publication series="L" number="43" date="2001-02-14" page="40"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Regulation (EC) No 2771/1999 of "/>
+               <date asWritten="16 December 1999" date="1999-12-16"/>
+               <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in butter and cream"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="L" number="333" date="1999-12-24">
+                  <t v="Official Journal of the European Communities L 333 of 24 December 1999"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32000R1560" date="2000-07-17" label="M1">
+         <publication series="L" number="179" date="2000-07-18" page="10"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1560/2000"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="17 July 2000" date="2000-07-17"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2771/1999 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in butter and cream"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32000R2099" date="2000-10-03" label="M2">
+         <publication series="L" number="249" date="2000-10-04" page="20"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2099/2000"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="3 October 2000" date="2000-10-03"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2771/1999 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in butter and cream"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32001R0213" date="2001-01-09" label="M3">
+         <publication series="L" number="37" date="2001-02-07" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 213/2001"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="9 January 2001" date="2001-01-09"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards methods for the analysis and quality evaluation of milk and milk products and amending Regulations (EC) No 2771/1999 and (EC) No 2799/1999"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32001R1614" date="2001-08-07" label="M4">
+         <publication series="L" number="214" date="2001-08-08" page="20"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1614/2001"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 August 2001" date="2001-08-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2771/1999 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention measures on the market in butter and cream"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32003R0359" date="2003-02-27" label="M5">
+         <publication series="L" number="53" date="2003-02-28" page="17"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 359/2003"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 February 2003" date="2003-02-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2771/1999 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in butter and cream"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32004R0318" date="2004-02-23" label="M6">
+         <publication series="L" number="55" date="2004-02-24" page="44"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 318/2004"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 February 2004" date="2004-02-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2771/1999 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in butter and cream"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

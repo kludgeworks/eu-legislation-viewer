@@ -12,8 +12,64 @@
       <publication series="L" number="55" date="2003-03-01" page="74"/>
    </source>
    <lifecycle produced="2006-06-28" sequence="001.001.0">
-      <eventRef type="corrigendum" act="32003D0148R(01)" date="2003-07-11"/>
-      <eventRef type="amendment" act="32006D0203" date="2005-03-17"/>
+      <eventRef type="corrigendum"
+                act="32003D0148R(01)"
+                date="2003-07-11"
+                label="C1">
+         <publication series="L" number="173" date="2003-07-11" page="44"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Decision No 185 of "/>
+               <date asWritten="27 June 2002" date="2002-06-27"/>
+               <t v=" amending Decision No 153 of "/>
+               <date asWritten="7 October 1993" date="1993-10-07"/>
+               <t v=" (form E 108) and Decision No 170 of "/>
+               <date asWritten="11 June 1998" date="1998-06-11"/>
+               <t v=" (compilation of the lists provided for in Article 94(4) of Council Regulation (EEC) No 574/72 of "/>
+               <date asWritten="21 March 1972" date="1972-03-21"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="55" date="2003-03-01">
+                     <t v="Official Journal of the European Union L 55 of 1 March 2003"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006D0203" date="2005-03-17" label="M1">
+         <publication series="L" number="77" date="2006-03-15" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 202"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="17 March 2005" date="2005-03-17"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 (E 001, E 101, E 102, E 103, E 104, E 106, E 107, E 108, E 109, E 112, E 115, E 116, E 117, E 118, E 120, E 121, E 123, E 124, E 125, E 126 and E 127)"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance and for the EU/Switzerland Agreement)"/>
+            </p>
+            <p>
+               <t v="(2006/203/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

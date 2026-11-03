@@ -16,7 +16,17 @@
                    document="2016/C 266/05"/>
    </source>
    <lifecycle produced="2017-10-24" sequence="001.001.0">
-      <eventRef type="amendment" act="32017Y0728(01)" date="2017-07-18"/>
+      <eventRef type="amendment"
+                act="32017Y0728(01)"
+                date="2017-07-18"
+                label="M1">
+         <publication series="C" number="244" date="2017-07-28" page="3"/>
+         <longTitle>
+            <p>
+               <t v="Decision of the European Banking Authority amending EBA Decision confirming that the unsolicited credit assessments of certain ECAIs do not differ in quality from their solicited credit assessments (2016/C 266/05)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

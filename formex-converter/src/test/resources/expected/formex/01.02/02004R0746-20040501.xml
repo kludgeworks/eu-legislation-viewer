@@ -12,7 +12,28 @@
       <publication series="L" number="122" date="2004-04-26" page="10"/>
    </source>
    <lifecycle produced="2005-01-11" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32004R0746R(01)" date="2004-11-20"/>
+      <eventRef type="corrigendum"
+                act="32004R0746R(01)"
+                date="2004-11-20"
+                label="C1">
+         <publication series="L" number="344" date="2004-11-20" page="40"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Regulation (EC) No 746/2004 of "/>
+               <date asWritten="22 April 2004" date="2004-04-22"/>
+               <t v=" adapting certain regulations concerning organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs by reason of the accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia to the European Union"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="122" date="2004-04-26">
+                     <t v="Official Journal of the European Union L 122 of 26 April 2004"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

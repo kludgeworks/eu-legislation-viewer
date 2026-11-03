@@ -12,7 +12,28 @@
       <publication series="L" number="398" date="1989-12-30" page="29"/>
    </source>
    <lifecycle produced="2005-08-02" sequence="000.001.0">
-      <eventRef type="corrigendum" act="31989L0682R(01)" date="2005-06-09"/>
+      <eventRef type="corrigendum"
+                act="31989L0682R(01)"
+                date="2005-06-09"
+                label="C1">
+         <publication series="L" number="145" date="2005-06-09" page="42"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Council Directive 89/682/EEC of "/>
+               <date asWritten="21 December 1989" date="1989-12-21"/>
+               <t v=" amending Directive 86/298/EEC on rear-mounted roll-over protection structures of narrow-track wheeled agricultural and forestry tractors"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="398" date="1989-12-30">
+                     <t v="Official Journal of the European Communities L 398 of 30 December 1989"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

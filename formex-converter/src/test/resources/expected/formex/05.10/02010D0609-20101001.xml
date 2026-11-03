@@ -12,7 +12,26 @@
       <publication series="L" number="266" date="2010-10-09" page="60"/>
    </source>
    <lifecycle produced="2010-10-27" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32010D0609R(01)" date="2010-10-16"/>
+      <eventRef type="corrigendum"
+                act="32010D0609R(01)"
+                date="2010-10-16"
+                label="C1">
+         <publication series="L" number="272" date="2010-10-16" page="20"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Political and Security Committee Decision EUPOL RD Congo/1/2010 (2010/609/CFSP) of "/>
+               <date asWritten="8 October 2010" date="2010-10-08"/>
+               <t v=" concerning the appointment of the Head of Mission of EUPOL RD Congo"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="L" number="266" date="2010-10-09">
+                  <t v="Official Journal of the European Union L 266 of 9 October 2010"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,42 +12,938 @@
       <publication series="L" number="296" date="2012-10-25" page="1"/>
    </source>
    <lifecycle produced="2025-03-27" sequence="032.001.0">
-      <eventRef type="amendment" act="32013R0800" date="2013-08-14"/>
-      <eventRef type="amendment" act="32014R0071" date="2014-01-27"/>
-      <eventRef type="amendment" act="32014R0083" date="2014-01-29"/>
-      <eventRef type="amendment" act="32014R0379" date="2014-04-07"/>
-      <eventRef type="amendment" act="32015R0140" date="2015-01-29"/>
-      <eventRef type="amendment" act="32015R0640" date="2015-04-23"/>
-      <eventRef type="amendment" act="32015R1329" date="2015-07-31"/>
-      <eventRef type="amendment" act="32015R2338" date="2015-12-11"/>
-      <eventRef type="amendment" act="32016R1199" date="2016-07-22"/>
-      <eventRef type="corrigendum" act="32016R1199R(08)" date="2023-02-02"/>
-      <eventRef type="amendment" act="32017R0363" date="2017-03-01"/>
-      <eventRef type="amendment" act="32018R0394" date="2018-03-13"/>
-      <eventRef type="amendment" act="32018R1042" date="2018-07-23"/>
-      <eventRef type="amendment" act="32020R0745" date="2020-06-04"/>
-      <eventRef type="amendment" act="32018R1975" date="2018-12-14"/>
-      <eventRef type="amendment" act="32019R1384" date="2019-07-24"/>
-      <eventRef type="corrigendum" act="32019R1384R(01)" date="2019-09-06"/>
-      <eventRef type="amendment" act="32019R1387" date="2019-08-01"/>
-      <eventRef type="amendment" act="32020R1176" date="2020-08-07"/>
-      <eventRef type="amendment" act="32020R2036" date="2020-12-09"/>
-      <eventRef type="amendment" act="32021R1062" date="2021-06-28"/>
-      <eventRef type="amendment" act="32021R1296" date="2021-08-04"/>
-      <eventRef type="amendment" act="32021R2237" date="2021-12-15"/>
-      <eventRef type="amendment" act="32022R0414" date="2022-03-11"/>
-      <eventRef type="amendment" act="32022R0790" date="2022-05-19"/>
-      <eventRef type="amendment" act="32022R2203" date="2022-11-11"/>
-      <eventRef type="amendment" act="32022R2502" date="2022-12-19"/>
-      <eventRef type="amendment" act="32023R0203" date="2022-10-27"/>
-      <eventRef type="amendment" act="32023R0217" date="2023-02-01"/>
-      <eventRef type="amendment" act="32023R1020" date="2023-05-24"/>
-      <eventRef type="amendment" act="32023R1754" date="2023-09-11"/>
-      <eventRef type="amendment" act="32024R1111" date="2024-04-10"/>
-      <eventRef type="corrigendum" act="32024R1111R(04)" date="2025-05-21"/>
-      <eventRef type="amendment" act="32024R2076" date="2024-07-24"/>
-      <eventRef type="amendment" act="32025R0133" date="2025-01-28"/>
-      <eventRef type="amendment" act="32025R2293" date="2025-11-10"/>
+      <eventRef type="amendment" act="32013R0800" date="2013-08-14" label="M1">
+         <publication series="L" number="227" date="2013-08-24" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) No 800/2013"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="14 August 2013" date="2013-08-14"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32014R0071" date="2014-01-27" label="M2">
+         <publication series="L" number="23" date="2014-01-28" page="27"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) No 71/2014"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 January 2014" date="2014-01-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to Air Operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32014R0083" date="2014-01-29" label="M3">
+         <publication series="L" number="28" date="2014-01-31" page="17"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) No 83/2014"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 January 2014" date="2014-01-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32014R0379" date="2014-04-07" label="M4">
+         <publication series="L" number="123" date="2014-04-24" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) No 379/2014"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 April 2014" date="2014-04-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Commission Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32015R0140" date="2015-01-29" label="M5">
+         <publication series="L" number="24" date="2015-01-30" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/140"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 January 2015" date="2015-01-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards sterile flight crew compartment and correcting that Regulation"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32015R0640" date="2015-04-23" label="M6">
+         <publication series="L" number="106" date="2015-04-24" page="18"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/640"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 April 2015" date="2015-04-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on additional airworthiness specifications for a given type of operations and amending Regulation (EU) No 965/2012"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32015R1329" date="2015-07-31" label="M7">
+         <publication series="L" number="206" date="2015-08-01" page="21"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/1329"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="31 July 2015" date="2015-07-31"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards operations by Union air carriers of aircraft registered in a third country"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32015R2338" date="2015-12-11" label="M8">
+         <publication series="L" number="330" date="2015-12-16" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/2338"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 December 2015" date="2015-12-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards requirements for flight recorders, underwater locating devices and aircraft tracking systems"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32016R1199" date="2016-07-22" label="M9">
+         <publication series="L" number="198" date="2016-07-23" page="13"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2016/1199"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 July 2016" date="2016-07-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards operational approval of performance-based navigation, certification and oversight of data services providers and helicopter offshore operations, and correcting that Regulation"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="32016R1199R(08)"
+                date="2023-02-02"
+                label="C1">
+         <publication series="L" number="30" date="2023-02-02" page="36"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Regulation (EU) 2016/1199 of "/>
+               <date asWritten="22 July 2016" date="2016-07-22"/>
+               <t v=" amending Regulation (EU) No 965/2012 as regards operational approval of performance-based navigation, certification and oversight of data services providers and helicopter offshore operations, and correcting that Regulation"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="198" date="2016-07-23">
+                     <t v="Official Journal of the European Union L 198 of 23 July 2016"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32017R0363" date="2017-03-01" label="M10">
+         <publication series="L" number="55" date="2017-03-02" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2017/363"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="1 March 2017" date="2017-03-01"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards the specific approval of single-engined turbine aeroplane operations at night or in instrument meteorological conditions and the approval requirements for the dangerous goods training relating to commercial specialised operations, non-commercial operations of complex motor-powered aircraft and non-commercial specialised operations of complex motor-powered aircraft"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32018R0394" date="2018-03-13" label="M11">
+         <publication series="L" number="71" date="2018-03-14" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/394"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="13 March 2018" date="2018-03-13"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards the deletion of air operations requirements for balloons"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32018R1042" date="2018-07-23" label="M12">
+         <publication series="L" number="188" date="2018-07-25" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/1042"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 July 2018" date="2018-07-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012, as regards technical requirements and administrative procedures related to introducing support programmes, psychological assessment of flight crew, as well as systematic and random testing of psychoactive substances to ensure medical fitness of flight and cabin crew members, and as regards equipping newly manufactured turbine-powered aeroplanes with a maximum certified take-off mass of "/>
+                  <number v="5700"/>
+                  <t v=" kg or less and approved to carry six to nine passengers with a terrain awareness warning system"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R0745" date="2020-06-04" label="M13">
+         <publication series="L" number="176" date="2020-06-05" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/745"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="4 June 2020" date="2020-06-04"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) 2018/1042 as regards postponing dates of application of certain measures in the context of the COVID-19 pandemic"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32018R1975" date="2018-12-14" label="M14">
+         <publication series="L" number="326" date="2018-12-20" page="53"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/1975"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="14 December 2018" date="2018-12-14"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards air operations requirements for sailplanes and electronic flight bags"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R1384" date="2019-07-24" label="M15">
+         <publication series="L" number="228" date="2019-09-04" page="106"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1384"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="24 July 2019" date="2019-07-24"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulations (EU) No 965/2012 and (EU) No 1321/2014 as regards the use of aircraft listed on an air operator certificate for non-commercial operations and specialised operations, the establishment of operational requirements for the conduct of maintenance check flights, the establishment of rules on non-commercial operations with reduced cabin crew on board and introducing editorial updates concerning air operations requirements"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="32019R1384R(01)"
+                date="2019-09-06"
+                label="C2">
+         <publication series="L" number="230" date="2019-09-06" page="10"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) 2019/1384 of "/>
+               <date asWritten="24 July 2019" date="2019-07-24"/>
+               <t v=" amending Regulations (EU) No 965/2012 and (EU) No 1321/2014 as regards the use of aircraft listed on an air operator certificate for non-commercial operations and specialised operations, the establishment of operational requirements for the conduct of maintenance check flights, the establishment of rules on non-commercial operations with reduced cabin crew on board and introducing editorial updates concerning air operations requirements"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="228" date="2019-09-04">
+                     <t v="Official Journal of the European Union L 228 of 4 September 2019"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R1387" date="2019-08-01" label="M16">
+         <publication series="L" number="229" date="2019-09-05" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1387"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="1 August 2019" date="2019-08-01"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards requirements for aeroplane landing performance calculations and the standards for assessing the runway surface conditions, update on certain aircraft safety equipment and requirements and operations without holding an extended range operational approval"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R1176" date="2020-08-07" label="M17">
+         <publication series="L" number="259" date="2020-08-10" page="10"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/1176"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 August 2020" date="2020-08-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2019/1387 as regards postponing dates of application of certain measures in the context of the COVID-19 pandemic"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R2036" date="2020-12-09" label="M18">
+         <publication series="L" number="416" date="2020-12-11" page="24"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/2036"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="9 December 2020" date="2020-12-09"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards the requirements for flight crew competence and training methods and postponing dates of application of certain measures in the context of the COVID-19 pandemic"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021R1062" date="2021-06-28" label="M19">
+         <publication series="L" number="229" date="2021-06-29" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/1062"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="28 June 2021" date="2021-06-28"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the Swedish language version of Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021R1296" date="2021-08-04" label="M20">
+         <publication series="L" number="282" date="2021-08-05" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/1296"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="4 August 2021" date="2021-08-04"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending and correcting Regulation (EU) No 965/2012 as regards the requirements for fuel/energy planning and management, and as regards requirements on support programmes and psychological assessment of flight crew, as well as testing of psychoactive substances"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021R2237" date="2021-12-15" label="M21">
+         <publication series="L" number="450" date="2021-12-16" page="21"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/2237"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="15 December 2021" date="2021-12-15"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards the requirements for all-weather operations and for flight crew training and checking"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R0414" date="2022-03-11" label="M22">
+         <publication series="L" number="85" date="2022-03-14" page="4"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/414"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 March 2022" date="2022-03-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the Finnish language version of Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R0790" date="2022-05-19" label="M23">
+         <publication series="L" number="141" date="2022-05-20" page="13"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/790"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="19 May 2022" date="2022-05-19"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting certain language versions of Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R2203" date="2022-11-11" label="M24">
+         <publication series="L" number="293" date="2022-11-14" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/2203"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 November 2022" date="2022-11-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards the applicability of the requirements for locating an aircraft in distress"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R2502" date="2022-12-19" label="M25">
+         <publication series="L" number="325" date="2022-12-20" page="56"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/2502"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="19 December 2022" date="2022-12-19"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the French language version of Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R0203" date="2022-10-27" label="M26">
+         <publication series="L" number="31" date="2023-02-02" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/203"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 October 2022" date="2022-10-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="laying down rules for the application of Regulation (EU) 2018/1139 of the European Parliament and of the Council, as regards requirements for the management of information security risks with a potential impact on aviation safety for organisations covered by Commission Regulations (EU) No 1321/2014, (EU) No 965/2012, (EU) No 1178/2011, (EU) 2015/340, Commission Implementing Regulations (EU) 2017/373 and (EU) 2021/664, and for competent authorities covered by Commission Regulations (EU) No 748/2012, (EU) No 1321/2014, (EU) No 965/2012, (EU) No 1178/2011, (EU) 2015/340 and (EU) No 139/2014, Commission Implementing Regulations (EU) 2017/373 and (EU) 2021/664 and amending Commission Regulations (EU) No 1178/2011, (EU) No 748/2012, (EU) No 965/2012, (EU) No 139/2014, (EU) No 1321/2014, (EU) 2015/340, and Commission Implementing Regulations (EU) 2017/373 and (EU) 2021/664"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R0217" date="2023-02-01" label="M27">
+         <publication series="L" number="30" date="2023-02-02" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/217"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="1 February 2023" date="2023-02-01"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting Regulation (EU) No 965/2012, as regards some inconsistencies in requirements introduced by Implementing Regulation (EU) 2019/1387, and Regulations (EU) 2021/1296 and (EU) 2021/2237"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1020" date="2023-05-24" label="M28">
+         <publication series="L" number="137" date="2023-05-25" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1020"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="24 May 2023" date="2023-05-24"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards helicopter emergency medical service operations"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1754" date="2023-09-11" label="M29">
+         <publication series="L" number="224" date="2023-09-12" page="16"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1754"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 September 2023" date="2023-09-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the German language version of Regulation (EU) No 965/2012 laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R1111" date="2024-04-10" label="M30">
+         <publication series="L" date="2024-05-23" page="1" document="2024/1111"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/1111"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 April 2024" date="2024-04-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 1178/2011, Implementing Regulation (EU) No 923/2012, Regulation (EU) No 965/2012 and Implementing Regulation (EU) 2017/373, as regards the establishment of requirements for the operation of manned aircraft with a vertical take-off and landing capability"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="32024R1111R(04)"
+                date="2025-05-21"
+                label="C3">
+         <publication series="L" date="2025-05-21" page="1" document="2025/90414"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) 2024/1111 of "/>
+               <date asWritten="10 April 2024" date="2024-04-10"/>
+               <t v=" amending Regulation (EU) No 1178/2011, Implementing Regulation (EU) No 923/2012, Regulation (EU) No 965/2012 and Implementing Regulation (EU) 2017/373, as regards the establishment of requirements for the operation of manned aircraft with a vertical take-off and landing capability"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="uri" href="http://data.europa.eu/eli/reg_impl/2024/1111/oj">
+                     <t v="Official Journal of the European Union L, 2024/1111, 23 May 2024"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R2076" date="2024-07-24" label="M31">
+         <publication series="L" date="2024-07-25" page="1" document="2024/2076"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/2076"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="24 July 2024" date="2024-07-24"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulations (EU) No 1178/2011 and (EU) No 965/2012 as regards the clarification of requirements for cruise relief co-pilots, updates of requirements for flight crew licensing and medical certification, and improvements for general aviation"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32025R0133" date="2025-01-28" label="M32">
+         <publication series="L" date="2025-01-29" page="1" document="2025/133"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2025/133"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="28 January 2025" date="2025-01-28"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) No 965/2012 as regards non-commercial operations conducted in visual flight rules conditions with gyroplanes"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32025R2293" date="2025-11-10" label="M33">
+         <publication series="L" date="2025-11-11" page="1" document="2025/2293"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2025/2293"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 November 2025" date="2025-11-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2023/203 as regards the requirements applicable to organisations subject to a declaration and correcting Regulations (EU) No 1178/2011, (EU) No 748/2012, (EU) No 965/2012, (EU) No 139/2014, (EU) No 1321/2014, (EU) 2015/340, and Implementing Regulation (EU) 2017/373"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

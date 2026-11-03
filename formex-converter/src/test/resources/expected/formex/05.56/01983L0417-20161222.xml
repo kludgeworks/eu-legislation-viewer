@@ -12,10 +12,105 @@
       <publication series="L" number="237" date="1983-08-26" page="25"/>
    </source>
    <lifecycle produced="2015-12-02" sequence="004.001.0">
-      <eventRef type="amendment" act="11985I" date="1985-06-12"/>
-      <eventRef type="amendment" act="32003R0807" date="2003-04-14"/>
-      <eventRef type="amendment" act="32008R1332" date="2008-12-16"/>
-      <eventRef type="amendment" act="32015L2203" date="2015-11-25"/>
+      <eventRef type="amendment" act="11985I" date="1985-06-12">
+         <publication series="L" number="302" date="1985-11-15" page="23"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Act"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="concerning the conditions of accession of the Kingdom of Spain and the Portuguese Republic and the adjustments to the Treaties"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32003R0807" date="2003-04-14" label="M1">
+         <publication series="L" number="122" date="2003-05-16" page="36"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 807/2003"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 14 April 2003"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="adapting to Decision 1999/468/EC the provisions relating to committees which assist the Commission in the exercise of its implementing powers laid down in Council instruments adopted in accordance with the consultation procedure (unanimity)"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32008R1332" date="2008-12-16" label="M2">
+         <publication series="L" number="354" date="2008-12-31" page="7"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1332/2008 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 December 2008" date="2008-12-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on food enzymes and amending Council Directive 83/417/EEC, Council Regulation (EC) No 1493/1999, Directive 2000/13/EC, Council Directive 2001/112/EC and Regulation (EC) No 258/97"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32015L2203" date="2015-11-25">
+         <publication series="L" number="314" date="2015-12-01" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Directive"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/2203 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="25 November 2015" date="2015-11-25"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the approximation of the laws of the Member States relating to caseins and caseinates intended for human consumption and repealing Council Directive 83/417/EEC"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

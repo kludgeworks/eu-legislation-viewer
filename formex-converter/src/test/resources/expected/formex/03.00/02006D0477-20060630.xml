@@ -12,7 +12,38 @@
       <publication series="L" number="188" date="2006-07-11" page="9"/>
    </source>
    <lifecycle produced="2006-11-08" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32006D0477R(01)" date="2006-07-26"/>
+      <eventRef type="corrigendum"
+                act="32006D0477R(01)"
+                date="2006-07-26"
+                label="C1">
+         <publication series="L" number="203" date="2006-07-26" page="11"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Council Decision 2006/477/CFSP of "/>
+               <date asWritten="30 June 2006" date="2006-06-30"/>
+               <t v=" concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)"/>
+            </p>
+            <p>
+               <t v="and to the"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(This text annuls and replaces that published in "/>
+               <ref kind="oj"
+                    series="L"
+                    number="188"
+                    date="2006-07-11"
+                    page="9">
+                  <t v="Official Journal L 188 of 11 July 2006, pp. 9-13"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

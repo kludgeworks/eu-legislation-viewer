@@ -16,9 +16,87 @@
                    document="2006/C 139/01"/>
    </source>
    <lifecycle produced="2009-06-05" sequence="002.001.0">
-      <eventRef type="amendment" act="32008D0029" date="2007-12-18"/>
-      <eventRef type="amendment" act="32008D0371" date="2008-04-29"/>
-      <eventRef type="amendment" act="32009D0407" date="2009-05-06"/>
+      <eventRef type="amendment" act="32008D0029" date="2007-12-18" label="M1">
+         <publication series="L" number="6" date="2008-01-10" page="7"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 December 2007" date="2007-12-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Interinstitutional Agreement of "/>
+                  <date asWritten="17 May 2006" date="2006-05-17"/>
+                  <t v=" on budgetary discipline and sound financial management as regards the multiannual financial framework"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2008/29/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32008D0371" date="2008-04-29" label="M2">
+         <publication series="L" number="128" date="2008-05-16" page="8"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 April 2008" date="2008-04-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Interinstitutional Agreement of "/>
+                  <date asWritten="17 May 2006" date="2006-05-17"/>
+                  <t v=" on budgetary discipline and sound financial management as regard adjustment of the multiannual financial framework"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2008/371/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32009D0407" date="2009-05-06" label="M3">
+         <publication series="L" number="132" date="2009-05-29" page="8"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="6 May 2009" date="2009-05-06"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Interinstitutional Agreement of "/>
+                  <date asWritten="17 May 2006" date="2006-05-17"/>
+                  <t v=" on budgetary discipline and sound financial management as regards the multiannual financial framework (2007 to 2013)"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2009/407/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

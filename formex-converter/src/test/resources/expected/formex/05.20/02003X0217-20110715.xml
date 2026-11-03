@@ -12,9 +12,93 @@
       <publication series="C" number="38" date="2003-02-17" page="1"/>
    </source>
    <lifecycle produced="2011-07-29" sequence="002.001.0">
-      <eventRef type="amendment" act="32006D0757" date="2006-09-22"/>
-      <eventRef type="amendment" act="32006D0758" date="2006-09-22"/>
-      <eventRef type="amendment" act="32011D0406" date="2011-07-01"/>
+      <eventRef type="amendment" act="32006D0757" date="2006-09-22" label="M1">
+         <publication series="L" number="317" date="2006-11-16" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 September 2006" date="2006-09-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on amending the Sirene Manual"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document number C(2006) 4094)"/>
+            </p>
+            <p>
+               <t v="(Only the Czech, Dutch, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Slovak, Slovenian, Spanish, and Swedish texts are authentic)"/>
+            </p>
+            <p>
+               <t v="(2006/757/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006D0758" date="2006-09-22" label="M2">
+         <publication series="L" number="317" date="2006-11-16" page="41"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 September 2006" date="2006-09-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on amending the Sirene Manual"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2006/758/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32011D0406" date="2011-07-01" label="M3">
+         <publication series="L" number="186" date="2011-07-15" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="1 July 2011" date="2011-07-01"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the SIRENE Manual"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document C(2011) 4574)"/>
+            </p>
+            <p>
+               <t v="(Only the Bulgarian, Czech, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish and Swedish texts are authentic)"/>
+            </p>
+            <p>
+               <t v="(2011/406/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,7 +12,31 @@
       <publication series="L" number="289" date="2000-11-16" page="8"/>
    </source>
    <lifecycle produced="2014-01-08" sequence="001.001.0">
-      <eventRef type="amendment" act="32013R1282" date="2013-12-10"/>
+      <eventRef type="amendment" act="32013R1282" date="2013-12-10" label="M1">
+         <publication series="L" number="332" date="2013-12-11" page="13"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) No 1282/2013"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 December 2013" date="2013-12-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the Polish language version of Regulation (EC) No 2508/2000 laying down the detailed rules for the application of Council Regulation (EC) No 104/2000 as regards operational programmes in the fisheries sector"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

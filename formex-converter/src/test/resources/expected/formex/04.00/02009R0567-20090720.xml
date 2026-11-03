@@ -12,7 +12,31 @@
       <publication series="L" number="168" date="2009-06-30" page="22"/>
    </source>
    <lifecycle produced="2009-11-09" sequence="000.001.0">
-      <eventRef type="amendment" act="32009R1026" date="2009-10-29"/>
+      <eventRef type="amendment" act="32009R1026" date="2009-10-29" label="M1">
+         <publication series="L" number="283" date="2009-10-30" page="33"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1026/2009"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 October 2009" date="2009-10-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting Regulation (EC) No 567/2009 entering a name in the register of traditional specialities guaranteed (Pierekaczewnik (TSG))"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

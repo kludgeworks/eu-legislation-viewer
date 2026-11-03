@@ -12,9 +12,64 @@
       <publication series="L" number="285" date="1985-10-25" page="39"/>
    </source>
    <lifecycle produced="2012-01-18" sequence="003.001.0">
-      <eventRef type="amendment" act="31994R3127" date="1994-12-20"/>
-      <eventRef type="amendment" act="32006R1197" date="2006-08-07"/>
-      <eventRef type="amendment" act="32008R1249" date="2008-12-10"/>
+      <eventRef type="amendment" act="31994R3127" date="1994-12-20" label="M1">
+         <publication series="L" number="330" date="1994-12-21" page="43"/>
+         <longTitle>
+            <p>
+               <t v="Commission Regulation (EC) No 3127/94 of 20 December 1994"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006R1197" date="2006-08-07" label="M2">
+         <publication series="L" number="217" date="2006-08-08" page="6"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1197/2006"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 August 2006" date="2006-08-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EEC) No 2967/85 laying down detailed rules for the application of the Community scale for grading pig carcases"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32008R1249" date="2008-12-10">
+         <publication series="L" number="337" date="2008-12-16" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1249/2008"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 December 2008" date="2008-12-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="laying down detailed rules on the implementation of the Community scales for the classification of beef, pig and sheep carcases and the reporting of prices thereof"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

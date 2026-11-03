@@ -12,7 +12,26 @@
       <publication series="L" number="29" date="2020-01-31" page="189"/>
    </source>
    <lifecycle produced="2020-02-12" sequence="000.001.0">
-      <eventRef type="corrigendum" act="52020XG0131(01)R(01)" date="2020-02-04"/>
+      <eventRef type="corrigendum"
+                act="52020XG0131(01)R(01)"
+                date="2020-02-04"
+                label="C1">
+         <publication series="L" number="32" date="2020-02-04" page="20"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to the Notice concerning the entry into force of the Agreement on the Withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="29" date="2020-01-31">
+                     <t v="Official Journal of the European Union L 29 of 31 January 2020"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

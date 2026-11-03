@@ -12,7 +12,31 @@
       <publication series="L" number="342" date="2003-12-30" page="32"/>
    </source>
    <lifecycle produced="2004-09-23" sequence="001.001.0">
-      <eventRef type="amendment" act="32004R0965" date="2004-05-13"/>
+      <eventRef type="amendment" act="32004R0965" date="2004-05-13" label="M1">
+         <publication series="L" number="179" date="2004-05-14" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 965/2004"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="13 May 2004" date="2004-05-13"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2314/2003 as regards the closing dates for the submission of tenders for the partial invitations to tender for the resale on the Community market of rye held by the German intervention agency"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,8 +12,56 @@
       <publication series="L" number="29" date="2003-02-05" page="22"/>
    </source>
    <lifecycle produced="2021-07-22" sequence="002.001.0">
-      <eventRef type="amendment" act="32018D0599" date="2018-04-16"/>
-      <eventRef type="amendment" act="32021D1208" date="2021-07-19"/>
+      <eventRef type="amendment" act="32018D0599" date="2018-04-16" label="M1">
+         <publication series="L" number="101" date="2018-04-20" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/599"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 April 2018" date="2018-04-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2003/76/EC establishing the measures necessary for the implementation of the Protocol, annexed to the Treaty establishing the European Community, on the financial consequences of the expiry of the ECSC Treaty and on the Research Fund for Coal and Steel"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021D1208" date="2021-07-19" label="M2">
+         <publication series="L" number="261" date="2021-07-22" page="54"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/1208"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="19 July 2021" date="2021-07-19"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2003/76/EC establishing the measures necessary for the implementation of the Protocol, annexed to the Treaty establishing the European Community, on the financial consequences of the expiry of the ECSC Treaty and on the Research Fund for Coal and Steel"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

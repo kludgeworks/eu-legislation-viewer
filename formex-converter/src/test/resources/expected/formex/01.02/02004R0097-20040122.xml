@@ -12,7 +12,31 @@
       <publication series="L" number="15" date="2004-01-22" page="12"/>
    </source>
    <lifecycle produced="2004-10-21" sequence="001.001.0">
-      <eventRef type="amendment" act="32004R1476" date="2004-08-18"/>
+      <eventRef type="amendment" act="32004R1476" date="2004-08-18" label="M1">
+         <publication series="L" number="271" date="2004-08-19" page="33"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1476/2004"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 August 2004" date="2004-08-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 97/2004 correcting Regulations (EC) No 2281/2003 and (EC) No 2299/2003 determining the world market price for unginned cotton"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

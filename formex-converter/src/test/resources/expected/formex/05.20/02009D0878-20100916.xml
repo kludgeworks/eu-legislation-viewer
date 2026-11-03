@@ -12,7 +12,31 @@
       <publication series="L" number="315" date="2009-12-02" page="46"/>
    </source>
    <lifecycle produced="2010-10-15" sequence="001.001.0">
-      <eventRef type="amendment" act="32010D0594" date="2010-09-16"/>
+      <eventRef type="amendment" act="32010D0594" date="2010-09-16" label="M1">
+         <publication series="L" number="263" date="2010-10-06" page="12"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="European Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 September 2010" date="2010-09-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the list of Council configurations"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2010/594/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

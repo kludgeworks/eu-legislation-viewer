@@ -12,7 +12,26 @@
       <publication series="L" number="14" date="2014-01-18" page="1"/>
    </source>
    <lifecycle produced="2014-02-24" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32014D0015R(01)" date="2014-02-19"/>
+      <eventRef type="corrigendum"
+                act="32014D0015R(01)"
+                date="2014-02-19"
+                label="C1">
+         <publication series="L" number="48" date="2014-02-19" page="12"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Council Decision 2014/15/EU of "/>
+               <date asWritten="18 November 2013" date="2013-11-18"/>
+               <t v=" on the signing and conclusion of the Agreement between the European Union and Georgia establishing a framework for the participation of Georgia in European Union crisis management operations"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="L" number="14" date="2014-01-18">
+                  <t v="Official Journal of the European Union L 14 of 18 January 2014"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

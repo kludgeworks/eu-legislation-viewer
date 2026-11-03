@@ -12,12 +12,156 @@
       <publication series="L" number="37" date="2001-02-07" page="100"/>
    </source>
    <lifecycle produced="2004-10-25" sequence="004.001.0">
-      <eventRef type="amendment" act="32002R1534" date="2002-08-28"/>
-      <eventRef type="amendment" act="32002R1931" date="2002-10-29"/>
-      <eventRef type="amendment" act="32002R2239" date="2002-12-16"/>
-      <eventRef type="amendment" act="32003R2131" date="2003-12-04"/>
-      <eventRef type="amendment" act="32004R1319" date="2004-07-16"/>
-      <eventRef type="amendment" act="32004R1339" date="2004-07-22"/>
+      <eventRef type="amendment" act="32002R1534" date="2002-08-28" label="M1">
+         <publication series="L" number="231" date="2002-08-29" page="35"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1534/2002"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="28 August 2002" date="2002-08-28"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the Swedish language version of Regulation (EC) No 214/2001 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in skimmed-milk powder"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32002R1931" date="2002-10-29" label="M2">
+         <publication series="L" number="295" date="2002-10-30" page="7"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1931/2002"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 October 2002" date="2002-10-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 214/2001 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in skimmed-milk powder"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32002R2239" date="2002-12-16" label="M3">
+         <publication series="L" number="341" date="2002-12-17" page="12"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 2239/2002"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 December 2002" date="2002-12-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 214/2001 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in skimmed-milk powder"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32003R2131" date="2003-12-04" label="M4">
+         <publication series="L" number="320" date="2003-12-05" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 2131/2003"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="4 December 2003" date="2003-12-04"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 214/2001 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in skimmed-milk powder"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32004R1319" date="2004-07-16" label="M5">
+         <publication series="L" number="245" date="2004-07-17" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1319/2004"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 July 2004" date="2004-07-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 214/2001 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in skimmed-milk powder"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32004R1339" date="2004-07-22" label="M6">
+         <publication series="L" number="249" date="2004-07-23" page="4"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1339/2004"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 July 2004" date="2004-07-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 214/2001 laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in skimmed-milk powder"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

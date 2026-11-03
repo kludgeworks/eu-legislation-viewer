@@ -12,9 +12,90 @@
       <publication series="L" number="14" date="2016-01-21" page="30"/>
    </source>
    <lifecycle produced="2019-06-26" sequence="004.001.0">
-      <eventRef type="amendment" act="32016O0032" date="2016-11-02"/>
-      <eventRef type="amendment" act="32018O0004" date="2018-02-07"/>
-      <eventRef type="amendment" act="32019O0012" date="2019-05-10"/>
+      <eventRef type="amendment" act="32016O0032" date="2016-11-02" label="M1">
+         <publication series="L" number="344" date="2016-12-17" page="117"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Guideline"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2016/2299 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Central Bank"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="2 November 2016" date="2016-11-02"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Guideline (EU) 2016/65 on the valuation haircuts applied in the implementation of the Eurosystem monetary policy framework (ECB/2016/32)"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32018O0004" date="2018-02-07" label="M2">
+         <publication series="L" number="95" date="2018-04-13" page="45"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Guideline"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/571 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Central Bank"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 February 2018" date="2018-02-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Guideline (EU) 2016/65 on the valuation haircuts applied in the implementation of the Eurosystem monetary policy framework (ECB/2018/4)"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019O0012" date="2019-05-10" label="M3">
+         <publication series="L" number="167" date="2019-06-24" page="75"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Guideline"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1033 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Central Bank"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 May 2019" date="2019-05-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Guideline (EU) 2016/65 on the valuation haircuts applied in the implementation of the Eurosystem monetary policy framework (ECB/2019/12)"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

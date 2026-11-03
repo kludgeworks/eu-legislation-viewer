@@ -12,7 +12,31 @@
       <publication series="L" number="316" date="2013-11-27" page="31"/>
    </source>
    <lifecycle produced="2016-07-25" sequence="001.001.0">
-      <eventRef type="amendment" act="32016D1206" date="2016-07-18"/>
+      <eventRef type="amendment" act="32016D1206" date="2016-07-18" label="M1">
+         <publication series="L" number="198" date="2016-07-23" page="47"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Implementing Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2016/1206"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 July 2016" date="2016-07-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Decision 2013/676/EU authorising Romania to continue to apply a special measure derogating from Article 193 of Directive 2006/112/EC on the common system of value added tax"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

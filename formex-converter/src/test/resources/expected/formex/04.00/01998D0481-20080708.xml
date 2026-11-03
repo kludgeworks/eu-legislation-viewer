@@ -12,7 +12,31 @@
       <publication series="L" number="216" date="1998-08-04" page="7"/>
    </source>
    <lifecycle produced="2008-08-21" sequence="001.001.0">
-      <eventRef type="amendment" act="32008D0571" date="2008-07-08"/>
+      <eventRef type="amendment" act="32008D0571" date="2008-07-08" label="M1">
+         <publication series="L" number="183" date="2008-07-11" page="34"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="8 July 2008" date="2008-07-08"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 98/481/EC approving the external auditors of the European Central Bank"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2008/571/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

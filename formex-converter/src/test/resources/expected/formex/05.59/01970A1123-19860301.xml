@@ -12,7 +12,25 @@
       <publication series="L" number="293" date="1972-12-29" page="63"/>
    </source>
    <lifecycle produced="2021-11-19" sequence="001.001.0">
-      <eventRef type="amendment" act="21973A0630(02)" date="1973-06-30"/>
+      <eventRef type="amendment"
+                act="21973A0630(02)"
+                date="1973-06-30"
+                label="M1">
+         <publication series="L" number="361" date="1977-12-31" page="187"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Supplementary protocol"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="on products within the province of the European Coal and Steel Community"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

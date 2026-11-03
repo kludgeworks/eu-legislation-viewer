@@ -12,8 +12,61 @@
       <publication series="L" number="149" date="1968-06-29" page="46"/>
    </source>
    <lifecycle produced="2012-05-30" sequence="002.001.0">
-      <eventRef type="amendment" act="31971R1634" date="1971-07-27"/>
-      <eventRef type="amendment" act="32008R0508" date="2008-06-06"/>
+      <eventRef type="amendment" act="31971R1634" date="1971-07-27" label="M1">
+         <publication series="L" number="170" date="1971-07-29" page="13"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EEC) No 1634/71 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Commission"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 27 July 1971"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Commission Regulation (EEC) No 821/68 of 28 June 1968 on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32008R0508" date="2008-06-06">
+         <publication series="L" number="149" date="2008-06-07" page="55"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 508/2008"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="6 June 2008" date="2008-06-06"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Codified version)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

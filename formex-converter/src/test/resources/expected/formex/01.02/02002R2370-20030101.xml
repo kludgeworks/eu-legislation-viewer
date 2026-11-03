@@ -12,7 +12,28 @@
       <publication series="L" number="358" date="2002-12-31" page="57"/>
    </source>
    <lifecycle end="2006-12-31" produced="2004-10-08" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32002R2370R(01)" date="2004-07-10"/>
+      <eventRef type="corrigendum"
+                act="32002R2370R(01)"
+                date="2004-07-10"
+                label="C1">
+         <publication series="L" number="240" date="2004-07-10" page="17"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Council Regulation (EC) No 2370/2002 of "/>
+               <date asWritten="20 December 2002" date="2002-12-20"/>
+               <t v=" establishing an emergency Community measure for scrapping fishing vessels"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="358" date="2002-12-31">
+                     <t v="Official Journal of the European Communities L 358 of 31 December 2002"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

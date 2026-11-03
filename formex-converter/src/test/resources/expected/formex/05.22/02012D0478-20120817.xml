@@ -12,7 +12,26 @@
       <publication series="L" number="219" date="2012-08-17" page="21"/>
    </source>
    <lifecycle produced="2012-08-29" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32012D0478R(01)" date="2012-08-23"/>
+      <eventRef type="corrigendum"
+                act="32012D0478R(01)"
+                date="2012-08-23"
+                label="C1">
+         <publication series="L" number="227" date="2012-08-23" page="15"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Council Implementing Decision 2012/478/CFSP of "/>
+               <date asWritten="16 August 2012" date="2012-08-16"/>
+               <t v=" implementing Decision 2011/782/CFSP concerning restrictive measures against Syria"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="L" number="219" date="2012-08-17">
+                  <t v="Official Journal of the European Union L 219 of 17 August 2012"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

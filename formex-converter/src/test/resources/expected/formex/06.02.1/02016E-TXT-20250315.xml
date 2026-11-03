@@ -12,27 +12,534 @@
       <publication series="C" number="202" date="2016-06-07" page="47"/>
    </source>
    <lifecycle produced="2025-03-17" sequence="007.001.0">
-      <eventRef type="corrigendum" act="12007LR(03)" date="2008-05-06"/>
-      <eventRef type="corrigendum" act="12007LR(11)" date="2009-11-30"/>
-      <eventRef type="corrigendum" act="12007L/TXTR(03)" date="2010-03-29"/>
-      <eventRef type="corrigendum" act="12007L/TXTR(12)" date="2016-06-07"/>
-      <eventRef type="corrigendum" act="12016E/TXTR(02)" date="2016-10-28"/>
-      <eventRef type="corrigendum" act="12016M/TXTR(04)" date="2017-02-23"/>
-      <eventRef type="corrigendum" act="12016M/TXTR(05)" date="2017-09-21"/>
-      <eventRef type="amendment" act="12010A/PRO/06R(01)" date="2010-09-29"/>
-      <eventRef type="amendment" act="32010D0718" date="2010-10-29"/>
-      <eventRef type="amendment" act="32011D0199" date="2011-03-25"/>
-      <eventRef type="amendment" act="12012J/ACT" date="2011-12-09"/>
-      <eventRef type="amendment" act="32012D0419" date="2012-07-11"/>
-      <eventRef type="amendment" act="32012R0741" date="2012-08-11"/>
-      <eventRef type="amendment" act="32015R2422" date="2015-12-16"/>
-      <eventRef type="amendment" act="32016R1192" date="2016-07-06"/>
-      <eventRef type="amendment" act="32019D0654" date="2019-04-15"/>
-      <eventRef type="amendment" act="32019D0655" date="2019-04-16"/>
-      <eventRef type="amendment" act="32019R0629" date="2019-04-17"/>
-      <eventRef type="amendment" act="32019D1255" date="2019-07-18"/>
-      <eventRef type="amendment" act="32024R2019" date="2024-04-11"/>
-      <eventRef type="amendment" act="32025D0504" date="2025-03-11"/>
+      <eventRef type="corrigendum"
+                act="12007LR(03)"
+                date="2008-05-06"
+                label="C1">
+         <publication series="C" number="111" date="2008-05-06" page="56"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Procès-verbal of rectification"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon,"/>
+               <docDate asWritten="13 December 2007" date="2007-12-13"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <emphasis kind="i">
+                     <t v="("/>
+                     <ref kind="oj" series="C" number="306" date="2007-12-17">
+                        <t v="Official Journal of the European Union C 306 of 17 December 2007"/>
+                     </ref>
+                     <t v=")"/>
+                  </emphasis>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="This regulation has been carried out by means of a procès-verbal of rectification signed at Rome on "/>
+               <date asWritten="30 April 2008" date="2008-04-30"/>
+               <t v=" with the Government of the Italian Republic as depository."/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="12007LR(11)"
+                date="2009-11-30"
+                label="C2">
+         <publication series="C" number="290" date="2009-11-30" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Procès-verbal of rectification"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon on "/>
+               <docDate asWritten="13 December 2007" date="2007-12-13"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <emphasis kind="i">
+                     <t v="("/>
+                     <ref kind="oj" series="C" number="306" date="2007-12-17">
+                        <t v="Official Journal of the European Union C 306 of 17 December 2007"/>
+                     </ref>
+                     <t v=")"/>
+                  </emphasis>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="This rectification has been carried out by means of a procès-verbal of rectification signed at Rome on "/>
+               <date asWritten="27 November 2009" date="2009-11-27"/>
+               <t v=" with the Government of the Italian Republic as depository."/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="12007L/TXTR(03)"
+                date="2010-03-29"
+                label="C3">
+         <publication series="C" number="81" date="2010-03-29" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Procès-verbal of rectification"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon on "/>
+               <docDate asWritten="13 December 2007" date="2007-12-13"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <emphasis kind="i">
+                     <t v="("/>
+                     <ref kind="oj" series="C" number="306" date="2007-12-17">
+                        <t v="Official Journal of the European Union C 306 of 17 December 2007"/>
+                     </ref>
+                     <t v=")"/>
+                  </emphasis>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="12007L/TXTR(12)"
+                date="2016-06-07"
+                label="C4">
+         <publication series="L" number="150" date="2016-06-07" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="i">
+                     <t v="Procès–verbal"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="of rectification to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon on "/>
+                  <date asWritten="13 December 2007" date="2007-12-13"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="C" number="306" date="2007-12-17">
+                  <t v="Official Journal of the European Union C 306 of 17 December 2007"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="12016E/TXTR(02)"
+                date="2016-10-28"
+                label="C5">
+         <publication series="C" number="400" date="2016-10-28" page="1"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to the consolidated versions of the Treaty on European Union and the Treaty on the Functioning of the European Union"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="C" number="202" date="2016-06-07">
+                  <t v="Official Journal of the European Union C 202 of 7 June 2016"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="12016M/TXTR(04)"
+                date="2017-02-23"
+                label="C6">
+         <publication series="C" number="59" date="2017-02-23" page="1"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Consolidated versions of the Treaty on European Union and the Treaty on the Functioning of the European Union"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="C" number="202" date="2016-06-07">
+                  <t v="Official Journal of the European Union C 202 of 7 June 2016"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="12016M/TXTR(05)"
+                date="2017-09-21"
+                label="C7">
+         <publication series="C" number="313" date="2017-09-21" page="5"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to consolidated versions of the Treaty on European Union and the Treaty on the Functioning of the European Union"/>
+            </p>
+            <p>
+               <t v="("/>
+               <ref kind="oj" series="C" number="202" date="2016-06-07">
+                  <t v="Official Journal of the European Union C 202 of 7 June 2016"/>
+               </ref>
+               <t v=")"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment"
+                act="12010A/PRO/06R(01)"
+                date="2010-09-29"
+                label="M1">
+         <publication series="C" number="263" date="2010-09-29" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Protocol"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <emphasis kind="uc">
+                  <t v="amending the Protocol on transitional provisions annexed to the Treaty on European Union, to the Treaty on the Functioning of the European Union and to the Treaty establishing the European Atomic Energy Community"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32010D0718" date="2010-10-29" label="M2">
+         <publication series="L" number="325" date="2010-12-09" page="4"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="European Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 October 2010" date="2010-10-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the status with regard to the European Union of the island of Saint-Barthélemy"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2010/718/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32011D0199" date="2011-03-25" label="M3">
+         <publication series="L" number="91" date="2011-04-06" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="European Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="25 March 2011" date="2011-03-25"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Article 136 of the Treaty on the Functioning of the European Union with regard to a stability mechanism for Member States whose currency is the euro"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2011/199/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="12012J/ACT" date="2011-12-09">
+         <publication series="L" number="112" date="2012-04-24" page="21"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Act"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="concerning the conditions of accession of the Republic of Croatia and the adjustments to the Treaty on European Union, the Treaty on the Functioning of the European Union and the Treaty establishing the European Atomic Energy Community"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32012D0419" date="2012-07-11" label="M4">
+         <publication series="L" number="204" date="2012-07-31" page="131"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="European Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 July 2012" date="2012-07-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the status of Mayotte with regard to the European Union"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2012/419/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32012R0741" date="2012-08-11" label="M5">
+         <publication series="L" number="228" date="2012-08-23" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU, "/>
+                  <emphasis kind="uc">
+                     <t v="Euratom"/>
+                  </emphasis>
+                  <t v=") No 741/2012 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 August 2012" date="2012-08-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Protocol on the Statute of the Court of Justice of the European Union and Annex I thereto"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32015R2422" date="2015-12-16" label="M6">
+         <publication series="L" number="341" date="2015-12-24" page="14"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU, Euratom) 2015/2422 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 December 2015" date="2015-12-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Protocol No 3 on the Statute of the Court of Justice of the European Union"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32016R1192" date="2016-07-06" label="M7">
+         <publication series="L" number="200" date="2016-07-26" page="137"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU, Euratom) 2016/1192 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="6 July 2016" date="2016-07-06"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the transfer to the General Court of jurisdiction at first instance in disputes between the European Union and its servants"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019D0654" date="2019-04-15" label="M8">
+         <publication series="L" number="110" date="2019-04-25" page="36"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/654"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="15 April 2019" date="2019-04-15"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Protocol No 5 on the Statute of the European Investment Bank"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019D0655" date="2019-04-16" label="M9">
+         <publication series="L" number="110" date="2019-04-25" page="39"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision of the Board of Governors of the European Investment Bank"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 April 2019" date="2019-04-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the replacement of the capital of the United Kingdom in the European Investment Bank by capital subscribed by the remaining Member States [2019/655]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R0629" date="2019-04-17" label="M10">
+         <publication series="L" number="111" date="2019-04-25" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU, Euratom) 2019/629 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="17 April 2019" date="2019-04-17"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Protocol No 3 on the Statute of the Court of Justice of the European Union"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019D1255" date="2019-07-18" label="M11">
+         <publication series="L" number="196" date="2019-07-24" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1255"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 July 2019" date="2019-07-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Protocol No 5 on the Statute of the European Investment Bank"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R2019" date="2024-04-11" label="M12">
+         <publication series="L" date="2024-08-12" page="1" document="2024/2019"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation (EU, Euratom) 2024/2019 of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 April 2024" date="2024-04-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Protocol No 3 on the Statute of the Court of Justice of the European Union"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32025D0504" date="2025-03-11" label="M13">
+         <publication series="L" date="2025-03-14" page="1" document="2025/504"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision (EU) 2025/504"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 March 2025" date="2025-03-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Protocol No 5 on the Statute of the European Investment Bank"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,16 +12,339 @@
       <publication series="L" number="299" date="2015-11-14" page="1"/>
    </source>
    <lifecycle produced="2021-02-24" sequence="012.001.0">
-      <eventRef type="amendment" act="32015R2426" date="2015-12-18"/>
-      <eventRef type="amendment" act="32017R0815" date="2017-05-12"/>
-      <eventRef type="amendment" act="32017R0837" date="2017-05-17"/>
-      <eventRef type="amendment" act="32018R0055" date="2018-01-09"/>
-      <eventRef type="amendment" act="32019R0103" date="2019-01-23"/>
-      <eventRef type="amendment" act="32020R0910" date="2020-06-30"/>
-      <eventRef type="amendment" act="32019R0413" date="2019-03-14"/>
-      <eventRef type="amendment" act="32019R1583" date="2019-09-25"/>
-      <eventRef type="amendment" act="32020R0111" date="2020-01-13"/>
-      <eventRef type="amendment" act="32021R0255" date="2021-02-18"/>
+      <eventRef type="amendment" act="32015R2426" date="2015-12-18" label="M1">
+         <publication series="L" number="334" date="2015-12-22" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/2426"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 December 2015" date="2015-12-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) 2015/1998 as regards third countries recognised as applying security standards equivalent to the common basic standards on civil aviation security"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32017R0815" date="2017-05-12" label="M2">
+         <publication series="L" number="122" date="2017-05-13" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2017/815"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="12 May 2017" date="2017-05-12"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 as regards clarification, harmonisation and simplification of certain specific aviation security measures"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32017R0837" date="2017-05-17" label="M3">
+         <publication series="L" number="125" date="2017-05-18" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2017/837"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="17 May 2017" date="2017-05-17"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="correcting the Polish and Swedish language versions of Implementing Regulation (EU) 2015/1998 laying down detailed measures for the implementation of the common basic standards on aviation security"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32018R0055" date="2018-01-09" label="M4">
+         <publication series="L" number="10" date="2018-01-13" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/55"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="9 January 2018" date="2018-01-09"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 as regards adding the Republic of Singapore to the third countries recognised as applying security standards equivalent to the common basic standards on civil aviation security"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R0103" date="2019-01-23" label="M5">
+         <publication series="L" number="21" date="2019-01-24" page="13"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/103"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 January 2019" date="2019-01-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 as regards clarification, harmonisation and simplification as well as strengthening of certain specific aviation security measures"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R0910" date="2020-06-30" label="M6">
+         <publication series="L" number="208" date="2020-07-01" page="43"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/910"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="30 June 2020" date="2020-06-30"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulations (EU) 2015/1998, (EU) 2019/103 and (EU) 2019/1583 as regards the re-designation of airlines, operators and entities providing security controls for cargo and mail arriving from third countries, as well as the postponement of certain regulatory requirements in the area of cybersecurity, background check, explosive detection systems equipment standards, and explosive trace detection equipment, because of the COVID-19 pandemic"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R0413" date="2019-03-14" label="M7">
+         <publication series="L" number="73" date="2019-03-15" page="98"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/413"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="14 March 2019" date="2019-03-14"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 as regards third countries recognised as applying security standards equivalent to the common basic standards on civil aviation security"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R1583" date="2019-09-25" label="M8">
+         <publication series="L" number="246" date="2019-09-26" page="15"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1583"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="25 September 2019" date="2019-09-25"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 laying down detailed measures for the implementation of the common basic standards on aviation security, as regards cybersecurity measures"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R0910" date="2020-06-30" label="M9">
+         <publication series="L" number="208" date="2020-07-01" page="43"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/910"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="30 June 2020" date="2020-06-30"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulations (EU) 2015/1998, (EU) 2019/103 and (EU) 2019/1583 as regards the re-designation of airlines, operators and entities providing security controls for cargo and mail arriving from third countries, as well as the postponement of certain regulatory requirements in the area of cybersecurity, background check, explosive detection systems equipment standards, and explosive trace detection equipment, because of the COVID-19 pandemic"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R0111" date="2020-01-13" label="M10">
+         <publication series="L" number="21" date="2020-01-27" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/111"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="13 January 2020" date="2020-01-13"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 as regards the approval of civil aviation security equipment as well as third countries recognised as applying security standards equivalent to the common basic standards on civil aviation security"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R0910" date="2020-06-30" label="M11">
+         <publication series="L" number="208" date="2020-07-01" page="43"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/910"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="30 June 2020" date="2020-06-30"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulations (EU) 2015/1998, (EU) 2019/103 and (EU) 2019/1583 as regards the re-designation of airlines, operators and entities providing security controls for cargo and mail arriving from third countries, as well as the postponement of certain regulatory requirements in the area of cybersecurity, background check, explosive detection systems equipment standards, and explosive trace detection equipment, because of the COVID-19 pandemic"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021R0255" date="2021-02-18" label="M12">
+         <publication series="L" number="58" date="2021-02-19" page="23"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/255"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 February 2021" date="2021-02-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2015/1998 laying down detailed measures for the implementation of the common basic standards on aviation security"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

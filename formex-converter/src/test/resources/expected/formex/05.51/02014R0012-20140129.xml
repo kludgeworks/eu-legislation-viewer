@@ -12,7 +12,28 @@
       <publication series="L" number="4" date="2014-01-09" page="40"/>
    </source>
    <lifecycle produced="2014-07-02" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32014R0012R(01)" date="2014-06-07"/>
+      <eventRef type="corrigendum"
+                act="32014R0012R(01)"
+                date="2014-06-07"
+                label="C1">
+         <publication series="L" number="168" date="2014-06-07" page="122"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) No 12/2014 of "/>
+               <date asWritten="8 January 2014" date="2014-01-08"/>
+               <t v=" entering a name in the register of traditional specialities guaranteed [Salinātā rudzu rupjmaize (TSG)]"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="4" date="2014-01-09">
+                     <t v="Official Journal of the European Union L 4 of 9 January 2014"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

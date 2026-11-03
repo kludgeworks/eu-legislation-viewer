@@ -12,9 +12,99 @@
       <publication series="L" number="2" date="2005-01-05" page="19"/>
    </source>
    <lifecycle produced="2013-10-21" sequence="003.001.0">
-      <eventRef type="amendment" act="32006D0100" date="2006-02-03"/>
-      <eventRef type="amendment" act="32011D0418" date="2011-07-14"/>
-      <eventRef type="amendment" act="32013D0502" date="2013-10-11"/>
+      <eventRef type="amendment" act="32006D0100" date="2006-02-03" label="M1">
+         <publication series="L" number="46" date="2006-02-16" page="38"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="3 February 2006" date="2006-02-03"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2005/7/EC authorising a method for grading pig carcases in Cyprus"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document number C(2006) 215)"/>
+            </p>
+            <p>
+               <t v="(Only the Greek text is authentic)"/>
+            </p>
+            <p>
+               <t v="(2006/100/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32011D0418" date="2011-07-14" label="M2">
+         <publication series="L" number="187" date="2011-07-16" page="29"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="14 July 2011" date="2011-07-14"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2005/7/EC authorising a method for grading pig carcasses in Cyprus"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document C(2011) 4996)"/>
+            </p>
+            <p>
+               <t v="(Only the Greek text is authentic)"/>
+            </p>
+            <p>
+               <t v="(2011/418/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32013D0502" date="2013-10-11" label="M3">
+         <publication series="L" number="273" date="2013-10-15" page="37"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 October 2013" date="2013-10-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2005/7/EC authorising a method for grading pig carcasses in Cyprus as regards the alternative presentation of such carcasses"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document C(2013) 6583)"/>
+            </p>
+            <p>
+               <t v="(Only the Greek text is authentic)"/>
+            </p>
+            <p>
+               <t v="(2013/502/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

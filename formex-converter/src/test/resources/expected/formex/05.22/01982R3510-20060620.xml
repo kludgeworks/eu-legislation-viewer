@@ -12,10 +12,110 @@
       <publication series="L" number="368" date="1982-12-28" page="27"/>
    </source>
    <lifecycle produced="2012-07-25" sequence="004.001.0">
-      <eventRef type="amendment" act="31987R3940" date="1987-12-21"/>
-      <eventRef type="amendment" act="31989R3971" date="1989-12-20"/>
-      <eventRef type="amendment" act="31992R3899" date="1992-12-23"/>
-      <eventRef type="amendment" act="32006R0802" date="2006-05-30"/>
+      <eventRef type="amendment" act="31987R3940" date="1987-12-21" label="M1">
+         <publication series="L" number="373" date="1987-12-31" page="6"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EEC) No 3940/87"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 21 December 1987"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Council Regulations (EEC) No 103/76, (EEC) No 104/76, (EEC) No 105/76, (EEC) No 2203/82, (EEC) No 3117/85 and Commission Regulations (EEC) No 3321/82, (EEC) No 3510/82, (EEC) No 3598/83, (EEC) No 3611/84, (EEC) No 254/86 and (EEC) No 314/86"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="31989R3971" date="1989-12-20" label="M2">
+         <publication series="L" number="385" date="1989-12-30" page="35"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EEC) No 3971/89"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 20 December 1989"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EEC) No 3510/82 fixing the conversion factors applicable to tuna"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="31992R3899" date="1992-12-23" label="M3">
+         <publication series="L" number="392" date="1992-12-31" page="24"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EEC) No 3899/92"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 23 December 1992"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EEC) No 3510/82 fixing the conversion factors applicable to tuna"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006R0802" date="2006-05-30">
+         <publication series="L" number="144" date="2006-05-31" page="15"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 802/2006"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="30 May 2006" date="2006-05-30"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="fixing the conversion factors applicable to fish of the genera "/>
+                  <emphasis kind="i">
+                     <t v="Thunnus"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Euthynnus"/>
+                  </emphasis>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

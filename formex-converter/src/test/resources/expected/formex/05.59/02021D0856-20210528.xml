@@ -12,7 +12,28 @@
       <publication series="L" number="188" date="2021-05-28" page="100"/>
    </source>
    <lifecycle produced="2021-06-01" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32021D0856R(01)" date="2021-05-31"/>
+      <eventRef type="corrigendum"
+                act="32021D0856R(01)"
+                date="2021-05-31"
+                label="C1">
+         <publication series="L" number="190" date="2021-05-31" page="101"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Decision (EU) 2021/856 of "/>
+               <date asWritten="25 May 2021" date="2021-05-25"/>
+               <t v=" determining the date on which the European Public Prosecutor’s Office assumes its investigative and prosecutorial tasks"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="188" date="2021-05-28">
+                     <t v="Official Journal of the European Union L 188 of 28 May 2021"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

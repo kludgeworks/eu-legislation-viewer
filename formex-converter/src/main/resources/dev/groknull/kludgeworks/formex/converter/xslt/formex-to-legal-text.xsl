@@ -205,15 +205,31 @@
               <xsl:if test="$info/@PROD.SEQ">
                 <xsl:attribute name="sequence" select="$info/@PROD.SEQ"/>
               </xsl:if>
-              <!-- each amending act and corrigendum by its CELEX number as the source writes it (a malformed one,
-                   1201994N/ACT, too: it is the source's reference, whether or not it can be followed) -->
-              <xsl:for-each-group select="$doc/FAM.COMP//(MOD.ACT | CORRIG)/BIB.DATA[normalize-space(NO.CELEX)]"
-                                  group-by="normalize-space(NO.CELEX)">
+              <!-- the source's list of the acts the version integrates, as the consolidation's header
+                   lists them: each entry in turn, an act that amended an amending act after it (an act
+                   is listed as often as the source lists it), by its CELEX number as the source writes
+                   it (a malformed one, 1201994N/ACT, too: it is the source's reference, whether or not
+                   it can be followed) -->
+              <xsl:variable name="amendments" as="element(MOD.ACT)*" select="$doc/FAM.COMP//MOD.ACT[(@TYPE, 'MOD')[1] = 'MOD']"/>
+              <xsl:variable name="corrigenda" as="element(CORRIG)*" select="$doc/FAM.COMP//CORRIG"/>
+              <xsl:for-each select="$doc/FAM.COMP//(MOD.ACT | CORRIG)[BIB.DATA[normalize-space(NO.CELEX)]]">
+                <xsl:variable name="bib" as="element(BIB.DATA)" select="BIB.DATA"/>
                 <!-- an amending act's date; a corrigendum has none of its own, so the day it was published -->
-                <eventRef type="{if (parent::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(current-grouping-key())}">
-                  <xsl:sequence select="f:date-attribute('date', (if (parent::CORRIG) then (DATE, BIB.INSTANCE.CONS/DATE)[1] else DATE)/@ISO)"/>
+                <eventRef type="{if (self::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(normalize-space($bib/NO.CELEX))}">
+                  <xsl:sequence select="f:date-attribute('date', (if (self::CORRIG) then ($bib/DATE, $bib/BIB.INSTANCE.CONS/DATE)[1] else $bib/DATE)/@ISO)"/>
+                  <!-- the label the version's text marks what the entry put there with (▼M2): an
+                       amendment's M and its place among the amendments, a corrigendum's C and its place
+                       among the corrigenda; none for an act of another kind (an accession, a repeal) -->
+                  <xsl:variable name="amendment" as="xs:integer?" select="(count($amendments[. &lt;&lt; current()]) + 1)[current() intersect $amendments]"/>
+                  <xsl:variable name="corrigendum" as="xs:integer?" select="(count($corrigenda[. &lt;&lt; current()]) + 1)[current() intersect $corrigenda]"/>
+                  <xsl:if test="exists(($amendment, $corrigendum))">
+                    <xsl:attribute name="label" select="$amendment ! ('M' || .), $corrigendum ! ('C' || .)"/>
+                  </xsl:if>
+                  <xsl:variable name="ref" as="element(DOCUMENT.REF.CONS)?" select="$bib/BIB.INSTANCE.CONS/DOCUMENT.REF.CONS"/>
+                  <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, $bib/BIB.INSTANCE.CONS/DATE/@ISO, $ref/PAGE.FIRST, f:oj-document($ref))"/>
+                  <xsl:apply-templates select="$bib/TITLE" mode="f:long-title"/>
                 </eventRef>
-              </xsl:for-each-group>
+              </xsl:for-each>
             </lifecycle>
           </xsl:if>
 
@@ -497,6 +513,15 @@
   <!-- the long title, split by position as AKN4EU does: type and number, date, purpose -->
   <xsl:template match="TITLE">
     <preface>
+      <xsl:apply-templates select="." mode="f:long-title"/>
+    </preface>
+  </xsl:template>
+
+  <!-- a long title, the act's own or, in a consolidation's list of the acts it integrates, an
+       amending act's or a corrigendum's -->
+  <xsl:mode name="f:long-title" on-no-match="fail" on-multiple-match="fail"/>
+
+  <xsl:template match="TITLE" mode="f:long-title">
       <longTitle>
         <xsl:for-each select="TI/(P | LIST | NP)">
           <xsl:choose>
@@ -574,7 +599,6 @@
         <!-- NO.DOC.C goes into the publication data -->
         <xsl:apply-templates select="node() except (TI | STI), TI/(node() except (P | LIST | NP | NO.DOC.C)), STI/(node() except P)" mode="unexpected"/>
       </longTitle>
-    </preface>
   </xsl:template>
 
   <!-- ============================================================ preamble -->

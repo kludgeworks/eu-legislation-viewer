@@ -12,44 +12,1129 @@
       <publication series="L" number="114" date="2002-04-30" page="73"/>
    </source>
    <lifecycle produced="2025-01-29" sequence="019.001.0">
-      <eventRef type="amendment" act="22004D0404" date="2004-04-06"/>
-      <eventRef type="corrigendum" act="22004D0404R(01)" date="2004-06-10"/>
-      <eventRef type="amendment" act="22004D0406" date="2004-04-22"/>
-      <eventRef type="corrigendum" act="22004D0406R(01)" date="2004-06-10"/>
-      <eventRef type="amendment" act="22005D0612" date="2005-07-12"/>
-      <eventRef type="amendment" act="22005D0961" date="2005-11-25"/>
-      <eventRef type="amendment" act="22006D0727" date="2006-10-18"/>
-      <eventRef type="amendment" act="22006D0728" date="2006-10-18"/>
-      <eventRef type="amendment" act="22006D0785" date="2006-10-27"/>
-      <eventRef type="amendment" act="22006D0786" date="2006-10-27"/>
-      <eventRef type="amendment" act="22008D0100" date="2007-12-05"/>
-      <eventRef type="amendment" act="22008D0367" date="2007-12-15"/>
-      <eventRef type="amendment" act="22009D0115" date="2008-12-16"/>
-      <eventRef type="amendment" act="22010D0239" date="2010-04-07"/>
-      <eventRef type="amendment" act="22010D0816" date="2010-11-26"/>
-      <eventRef type="amendment" act="22011D0419" date="2011-07-04"/>
-      <eventRef type="amendment" act="22011D0002(01)" date="2011-11-25"/>
-      <eventRef type="amendment" act="22012D0260" date="2012-05-10"/>
-      <eventRef type="amendment" act="22012D0834" date="2012-11-30"/>
-      <eventRef type="amendment" act="22014D0014" date="2013-12-02"/>
-      <eventRef type="amendment" act="22014D0473" date="2014-07-09"/>
-      <eventRef type="amendment" act="22014D0957" date="2014-12-05"/>
-      <eventRef type="amendment" act="22015D1481" date="2015-08-20"/>
-      <eventRef type="amendment" act="22016D0689" date="2016-04-11"/>
-      <eventRef type="amendment" act="22017D0291" date="2016-12-08"/>
-      <eventRef type="amendment" act="22017D2465" date="2017-11-29"/>
-      <eventRef type="amendment" act="22018D2065" date="2018-12-12"/>
-      <eventRef type="amendment" act="22019D1380" date="2019-08-22"/>
-      <eventRef type="amendment" act="22020D0006" date="2019-12-10"/>
-      <eventRef type="amendment" act="22020D0799" date="2020-06-15"/>
-      <eventRef type="amendment" act="22021D0034" date="2020-12-03"/>
-      <eventRef type="amendment" act="22021D1216" date="2021-07-15"/>
-      <eventRef type="amendment" act="22022D0122" date="2021-12-08"/>
-      <eventRef type="amendment" act="22022D2471" date="2022-11-24"/>
-      <eventRef type="amendment" act="22023D1459" date="2023-06-09"/>
-      <eventRef type="amendment" act="22023D2729" date="2023-11-23"/>
-      <eventRef type="amendment" act="22024D2762" date="2024-10-24"/>
-      <eventRef type="amendment" act="22025D0121" date="2025-01-16"/>
+      <eventRef type="amendment" act="22004D0404" date="2004-04-06" label="M1">
+         <publication series="L" number="151" date="2004-04-30" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2004 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="6 April 2004" date="2004-04-06"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2004/404/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="22004D0404R(01)"
+                date="2004-06-10"
+                label="C1">
+         <publication series="L" number="208" date="2004-06-10" page="1"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Decision No 1/2004 of the Community/Switzerland AirTransport Committee of "/>
+               <date asWritten="6 April 2004" date="2004-04-06"/>
+               <t v=" amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="151" date="2004-04-30">
+                     <t v="Official Journal of the European Union L 151 of 30 April 2004"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22004D0406" date="2004-04-22" label="M2">
+         <publication series="L" number="151" date="2004-04-30" page="9"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 3/2004 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 April 2004" date="2004-04-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2004/406/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="22004D0406R(01)"
+                date="2004-06-10"
+                label="C2">
+         <publication series="L" number="208" date="2004-06-10" page="7"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Decision No 3/2004 of the Community/Switzerland Air Transport Committee of "/>
+               <date asWritten="22 April 2004" date="2004-04-22"/>
+               <t v=" amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="151" date="2004-04-30">
+                     <t v="Official Journal of the European Union L 151 of 30 April 2004"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22005D0612" date="2005-07-12" label="M3">
+         <publication series="L" number="210" date="2005-08-12" page="46"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2005 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="12 July 2005" date="2005-07-12"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2005/612/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22005D0961" date="2005-11-25" label="M4">
+         <publication series="L" number="347" date="2005-12-30" page="91"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2005 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="25 November 2005" date="2005-11-25"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2005/961/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22006D0727" date="2006-10-18" label="M5">
+         <publication series="L" number="298" date="2006-10-27" page="23"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2006 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 October 2006" date="2006-10-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2006/727/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22006D0728" date="2006-10-18" label="M6">
+         <publication series="L" number="298" date="2006-10-27" page="25"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2006 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 October 2006" date="2006-10-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2006/728/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22006D0785" date="2006-10-27" label="M7">
+         <publication series="L" number="318" date="2006-11-17" page="31"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 3/2006 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 October 2006" date="2006-10-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2006/785/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22006D0786" date="2006-10-27" label="M8">
+         <publication series="L" number="318" date="2006-11-17" page="42"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 4/2006 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Community/Switzerland Air Transport Committee"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 October 2006" date="2006-10-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2006/786/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22008D0100" date="2007-12-05" label="M9">
+         <publication series="L" number="34" date="2008-02-08" page="19"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2007 "/>
+                  <emphasis kind="uc">
+                     <t v="of the joint Community/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="5 December 2007" date="2007-12-05"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2008/100/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22008D0367" date="2007-12-15" label="M10">
+         <publication series="L" number="127" date="2008-05-15" page="58"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2007 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint Community/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="15 December 2007" date="2007-12-15"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2008/367/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22009D0115" date="2008-12-16" label="M11">
+         <publication series="L" number="40" date="2009-02-11" page="38"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2008 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint Community/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 December 2008" date="2008-12-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2009/115/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22010D0239" date="2010-04-07" label="M12">
+         <publication series="L" number="106" date="2010-04-28" page="20"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2010 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint Community/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 April 2010" date="2010-04-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2010/239/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22010D0816" date="2010-11-26" label="M13">
+         <publication series="L" number="347" date="2010-12-31" page="54"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2010 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint Community"/>
+                  </emphasis>
+                  <t v="/"/>
+                  <emphasis kind="uc">
+                     <t v="Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="26 November 2010" date="2010-11-26"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2010/816/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22011D0419" date="2011-07-04" label="M14">
+         <publication series="L" number="187" date="2011-07-16" page="32"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2011 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint Community/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="4 July 2011" date="2011-07-04"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2011/419/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment"
+                act="22011D0002(01)"
+                date="2011-11-25"
+                label="M15">
+         <publication series="L" number="338" date="2011-12-21" page="70"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2011 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint Community/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="25 November 2011" date="2011-11-25"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2011/2/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22012D0260" date="2012-05-10" label="M16">
+         <publication series="L" number="128" date="2012-05-16" page="14"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2012 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 May 2012" date="2012-05-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2012/260/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22012D0834" date="2012-11-30" label="M17">
+         <publication series="L" number="356" date="2012-12-22" page="109"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2012 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="30 November 2012" date="2012-11-30"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2012/834/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22014D0014" date="2013-12-02" label="M18">
+         <publication series="L" number="12" date="2014-01-17" page="4"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2013 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union"/>
+                  </emphasis>
+                  <t v="/"/>
+                  <emphasis kind="uc">
+                     <t v="Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="2 December 2013" date="2013-12-02"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2014/14/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22014D0473" date="2014-07-09" label="M19">
+         <publication series="L" number="212" date="2014-07-18" page="21"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2014 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="9 July 2014" date="2014-07-09"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2014/473/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22014D0957" date="2014-12-05" label="M20">
+         <publication series="L" number="373" date="2014-12-31" page="24"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2014 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="5 December 2014" date="2014-12-05"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2014/957/EU)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22015D1481" date="2015-08-20" label="M21">
+         <publication series="L" number="226" date="2015-08-29" page="12"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2015 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="20 August 2015" date="2015-08-20"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2015/1481]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22016D0689" date="2016-04-11" label="M22">
+         <publication series="L" number="118" date="2016-05-04" page="24"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2016 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 April 2016" date="2016-04-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2016/689]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22017D0291" date="2016-12-08" label="M23">
+         <publication series="L" number="42" date="2017-02-18" page="19"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2016 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="8 December 2016" date="2016-12-08"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2017/291]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22017D2465" date="2017-11-29" label="M24">
+         <publication series="L" number="348" date="2017-12-29" page="46"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2017 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 November 2017" date="2017-11-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2017/2465]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22018D2065" date="2018-12-12" label="M25">
+         <publication series="L" number="329" date="2018-12-27" page="30"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2018 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="12 December 2018" date="2018-12-12"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2018/2065]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22019D1380" date="2019-08-22" label="M26">
+         <publication series="L" number="226" date="2019-08-30" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2019 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 August 2019" date="2019-08-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2019/1380]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22020D0006" date="2019-12-10" label="M27">
+         <publication series="L" number="3" date="2020-01-07" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2019 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="10 December 2019" date="2019-12-10"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2020/6]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22020D0799" date="2020-06-15" label="M28">
+         <publication series="L" number="194" date="2020-06-18" page="17"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2020 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="15 June 2020" date="2020-06-15"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2020/799]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22021D0034" date="2020-12-03" label="M29">
+         <publication series="L" number="15" date="2021-01-18" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2020 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="3 December 2020" date="2020-12-03"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2021/34]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22021D1216" date="2021-07-15" label="M30">
+         <publication series="L" number="265" date="2021-07-26" page="26"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2021 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="15 July 2021" date="2021-07-15"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2021/1216]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22022D0122" date="2021-12-08" label="M31">
+         <publication series="L" number="19" date="2022-01-28" page="84"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2021 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="8 December 2021" date="2021-12-08"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2022/122]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22022D2471" date="2022-11-24" label="M32">
+         <publication series="L" number="322" date="2022-12-16" page="122"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2022 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="24 November 2022" date="2022-11-24"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2022/2471]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22023D1459" date="2023-06-09" label="M33">
+         <publication series="L" number="179" date="2023-07-14" page="119"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2023 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="9 June 2023" date="2023-06-09"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2023/1459]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22023D2729" date="2023-11-23" label="M34">
+         <publication series="L" date="2023-12-11" page="1" document="2023/2729"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 2/2023 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 November 2023" date="2023-11-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2023/2729]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22024D2762" date="2024-10-24" label="M35">
+         <publication series="L" date="2024-10-31" page="1" document="2024/2762"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2024 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="24 October 2024" date="2024-10-24"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2024/2762]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="22025D0121" date="2025-01-16" label="M36">
+         <publication series="L" date="2025-01-29" page="1" document="2025/121"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1/2025 "/>
+                  <emphasis kind="uc">
+                     <t v="of the Joint European Union/Switzerland Air Transport Committee set up under the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 January 2025" date="2025-01-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="replacing the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport [2025/121]"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,12 +12,177 @@
       <publication series="L" number="143" date="2004-04-30" page="87"/>
    </source>
    <lifecycle produced="2019-07-26" sequence="005.001.0">
-      <eventRef type="corrigendum" act="32004L0042R(02)" date="2019-06-27"/>
-      <eventRef type="amendment" act="32008R1137" date="2008-10-22"/>
-      <eventRef type="amendment" act="32008L0112" date="2008-12-16"/>
-      <eventRef type="amendment" act="32010L0079" date="2010-11-19"/>
-      <eventRef type="amendment" act="32019R1020" date="2019-06-20"/>
-      <eventRef type="amendment" act="32019R1243" date="2019-06-20"/>
+      <eventRef type="corrigendum"
+                act="32004L0042R(02)"
+                date="2019-06-27"
+                label="C1">
+         <publication series="L" number="173" date="2019-06-27" page="96"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Directive 2004/42/CE of the European Parliament and of the Council of "/>
+               <date asWritten="21 April 2004" date="2004-04-21"/>
+               <t v=" on the limitation of emissions of volatile organic compounds due to the use of organic solvents in certain paints and varnishes and vehicle refinishing products and amending Directive 1999/13/EC"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="143" date="2004-04-30">
+                     <t v="Official Journal of the European Union L 143 of 30 April 2004"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32008R1137" date="2008-10-22" label="M1">
+         <publication series="L" number="311" date="2008-11-21" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 1137/2008 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="22 October 2008" date="2008-10-22"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="adapting a number of instruments subject to the procedure laid down in Article 251 of the Treaty to Council Decision 1999/468/EC, with regard to the regulatory procedure with scrutiny"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="Adaptation to the regulatory procedure with scrutiny — Part One"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32008L0112" date="2008-12-16" label="M2">
+         <publication series="L" number="345" date="2008-12-23" page="68"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Directive"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="2008/112/EC "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="16 December 2008" date="2008-12-16"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Council Directives 76/768/EEC, 88/378/EEC, 1999/13/EC and Directives 2000/53/EC, 2002/96/EC and 2004/42/EC of the European Parliament and of the Council in order to adapt them to Regulation (EC) No 1272/2008 on classification, labelling and packaging of substances and mixtures"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32010L0079" date="2010-11-19" label="M3">
+         <publication series="L" number="304" date="2010-11-20" page="18"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Directive"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="2010/79/EU"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="19 November 2010" date="2010-11-19"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the adaptation to technical progress of Annex III to Directive 2004/42/EC of the European Parliament and of the Council on the limitation of emissions of volatile organic compounds"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R1020" date="2019-06-20" label="M4">
+         <publication series="L" number="169" date="2019-06-25" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1020 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="20 June 2019" date="2019-06-20"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on market surveillance and compliance of products and amending Directive 2004/42/EC and Regulations (EC) No 765/2008 and (EU) No 305/2011"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R1243" date="2019-06-20" label="M5">
+         <publication series="L" number="198" date="2019-07-25" page="241"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/1243 "/>
+                  <emphasis kind="uc">
+                     <t v="of the European Parliament and of the Council"/>
+                  </emphasis>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="20 June 2019" date="2019-06-20"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="adapting a number of legal acts providing for the use of the regulatory procedure with scrutiny to Articles 290 and 291 of the Treaty on the Functioning of the European Union"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

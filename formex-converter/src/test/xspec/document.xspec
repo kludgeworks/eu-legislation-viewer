@@ -18,9 +18,16 @@
           <FAM.COMP LEG.VAL="REG">
             <BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>299</NO.OJ><YEAR>2015</YEAR><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20151114">20151114</DATE></BIB.INSTANCE.CONS><NO.CELEX>32015R1998</NO.CELEX></BIB.DATA>
             <GR.MOD.ACT>
-              <MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32015R2426</NO.CELEX><DATE ISO="20151218">20151218</DATE></BIB.DATA></MOD.ACT>
+              <MOD.ACT TYPE="MOD"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>334</NO.OJ><YEAR>2015</YEAR><PAGE.FIRST>5</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20151222">20151222</DATE></BIB.INSTANCE.CONS><NO.CELEX>32015R2426</NO.CELEX><DATE ISO="20151218">20151218</DATE><TITLE><TI><P><HT TYPE="UC">Commission Implementing Regulation</HT> (EU) 2015/2426</P><P>of <DATE ISO="20151218">18 December 2015</DATE></P></TI></TITLE></BIB.DATA>
+                <GR.MOD.ACT><MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32020R0910</NO.CELEX><DATE ISO="20200701">20200701</DATE></BIB.DATA></MOD.ACT></GR.MOD.ACT>
+              </MOD.ACT>
+              <MOD.ACT TYPE="ADH"><BIB.DATA><NO.CELEX>12012J</NO.CELEX><DATE ISO="20120424">20120424</DATE></BIB.DATA></MOD.ACT>
+              <MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32020R0910</NO.CELEX><DATE ISO="20200701">20200701</DATE></BIB.DATA></MOD.ACT>
               <MOD.ACT TYPE="MOD"><BIB.DATA><NO.CELEX>32026R0449</NO.CELEX><DATE ISO="20260227">20260227</DATE></BIB.DATA></MOD.ACT>
             </GR.MOD.ACT>
+            <GR.CORRIG>
+              <CORRIG><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>L</COLL><NO.OJ>32</NO.OJ><YEAR>2016</YEAR><PAGE.FIRST>9</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20160209">20160209</DATE></BIB.INSTANCE.CONS><NO.CELEX>32015R1998R(01)</NO.CELEX></BIB.DATA></CORRIG>
+            </GR.CORRIG>
           </FAM.COMP>
           <TITLE><TI><P><HT TYPE="UC">Commission Implementing Regulation</HT> (EU) 2015/1998</P><P>of <DATE ISO="20151105">5 November 2015</DATE></P><P>laying down detailed measures</P><P>(Text with EEA relevance)</P></TI></TITLE>
           <PREAMBLE><PREAMBLE.INIT/><PREAMBLE.FINAL/></PREAMBLE>
@@ -35,13 +42,24 @@
     <x:expect label="points at its schema" test="
         $x:result/@xsi:schemaLocation = 'https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd'"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
-    <x:expect label="has the source and the lifecycle" test="$x:result/(*:source, *:lifecycle)">
+    <x:expect label="has the source and the lifecycle, its production and the acts it integrates"
+              test="$x:result/*:lifecycle/@produced = '2026-03-05' and $x:result/*:lifecycle/@sequence = '023.001.0'"/>
+    <x:expect label="the source, and the acts after the first" test="$x:result/(*:source, *:lifecycle/*[position() gt 1])">
       <source celex="02015R1998-20260322"><publication series="L" number="299" date="2015-11-14" page="1"/></source>
-      <lifecycle produced="2026-03-05" sequence="023.001.0">
-        <eventRef type="amendment" act="32015R2426" date="2015-12-18"/>
-        <eventRef type="amendment" act="32026R0449" date="2026-02-27"/>
-      </lifecycle>
+      <eventRef type="amendment" act="32020R0910" date="2020-07-01" label="M2"/>
+      <eventRef type="amendment" act="12012J" date="2012-04-24"/>
+      <eventRef type="amendment" act="32020R0910" date="2020-07-01" label="M3"/>
+      <eventRef type="amendment" act="32026R0449" date="2026-02-27" label="M4"/>
+      <eventRef type="corrigendum" act="32015R1998R(01)" date="2016-02-09" label="C1">
+        <publication series="L" number="32" date="2016-02-09" page="9"/>
+      </eventRef>
     </x:expect>
+    <x:expect label="lists each act the source lists, an act an amending act amended after it, labelled as the version's text marks them"
+              test="deep-equal($x:result/*:lifecycle/*:eventRef ! string(@label), ('M1', 'M2', '', 'M3', 'M4', 'C1'))"/>
+    <x:expect label="gives an amending act its publication and its long title"
+              test="$x:result/*:lifecycle/*:eventRef[1]/*:publication/(@series, @number, @page, @date) ! string() = ('L', '334', '5', '2015-12-22')
+                    and $x:result/*:lifecycle/*:eventRef[1]/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/2426'
+                    and $x:result/*:lifecycle/*:eventRef[1]/*:longTitle/*:p[2]/*:docDate/@date = '2015-12-18'"/>
     <x:expect label="splits the long title by position" test="
         $x:result/*:preface/*:longTitle/*:p[1]/*:docType/*:emphasis[@kind = 'uc']/*:t/@v = 'Commission Implementing Regulation'
         and $x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/1998'

@@ -12,12 +12,200 @@
       <publication series="L" number="244" date="1994-09-19" page="22"/>
    </source>
    <lifecycle produced="2004-12-21" sequence="005.001.0">
-      <eventRef type="amendment" act="31998D0441" date="1997-10-02"/>
-      <eventRef type="amendment" act="31998D0443" date="1998-06-11"/>
-      <eventRef type="amendment" act="32002D0154" date="2000-04-18"/>
-      <eventRef type="amendment" act="32003D0251" date="2002-06-27"/>
-      <eventRef type="amendment" act="32003D0148" date="2002-06-27"/>
-      <eventRef type="amendment" act="32004D0562" date="2004-03-23"/>
+      <eventRef type="amendment" act="31998D0441" date="1997-10-02" label="M1">
+         <publication series="L" number="195" date="1998-07-11" page="25"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 166"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="2 October 1997" date="1997-10-02"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the amending of forms E 106 and E 109"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(98/441/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="31998D0443" date="1998-06-11" label="M2">
+         <publication series="L" number="195" date="1998-07-11" page="37"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 168"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="11 June 1998" date="1998-06-11"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the amending of forms E 121 and E 127 and the discontinuance of form E 122"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(98/443/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32002D0154" date="2000-04-18" label="M3">
+         <publication series="L" number="54" date="2002-02-25" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 179"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 April 2000" date="2000-04-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 (E 111, E 111 B, E 113 to E 118 and E 125 to E 127)"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2002/154/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32003D0251" date="2002-06-27" label="M4">
+         <publication series="L" number="93" date="2003-04-10" page="40"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 187"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 June 2002" date="2002-06-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 (E 111 and E 111B)"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2003/251/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32003D0148" date="2002-06-27" label="M5">
+         <publication series="L" number="55" date="2003-03-01" page="74"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 185"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="27 June 2002" date="2002-06-27"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision No 153 of "/>
+                  <date asWritten="7 October 1993" date="1993-10-07"/>
+                  <t v=" (form E 108) and Decision No 170 of "/>
+                  <date asWritten="11 June 1998" date="1998-06-11"/>
+                  <t v=" (compilation of the lists provided for in Article 94(4) and Article 95(4) of Council Regulation (EEC) No 574/72 of "/>
+                  <date asWritten="21 March 1972" date="1972-03-21"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2003/148/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32004D0562" date="2004-03-23" label="M6">
+         <publication series="L" number="259" date="2004-08-05" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 198"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 March 2004" date="2004-03-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="concerning the replacement and discontinuance of the model forms necessary for the application of Regulations (EEC) No 1408/71 and (EEC) No 574/72 of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(E 110, E 111, E 111 B, E 113, E 114, E 119, E 128 and E 128 B)"/>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance and the EU/Switzerland Agreement)"/>
+            </p>
+            <p>
+               <t v="(2004/562/CE)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

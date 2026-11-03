@@ -12,7 +12,32 @@
       <publication series="L" number="162" date="2004-04-30" page="65"/>
    </source>
    <lifecycle produced="2004-09-10" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32004R0879R(01)" date="2004-05-15"/>
+      <eventRef type="corrigendum"
+                act="32004R0879R(01)"
+                date="2004-05-15"
+                label="C1">
+         <publication series="L" number="180" date="2004-05-15" page="30"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Regulation (EC) No 879/2004 of "/>
+               <date asWritten="29 April 2004" date="2004-04-29"/>
+               <t v=" concerning the provisional authorisation of a new use of an additive already authorised in feedingstuffs ("/>
+               <emphasis kind="i">
+                  <t v="Saccharomyces cerevisiae"/>
+               </emphasis>
+               <t v=")"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="162" date="2004-04-30">
+                     <t v="Official Journal of the European Union L 162 of 30 April 2004"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

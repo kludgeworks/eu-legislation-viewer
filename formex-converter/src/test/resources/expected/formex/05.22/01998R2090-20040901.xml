@@ -12,8 +12,54 @@
       <publication series="L" number="266" date="1998-10-01" page="27"/>
    </source>
    <lifecycle produced="2012-10-12" sequence="002.001.0">
-      <eventRef type="amendment" act="32002R0839" date="2002-05-21"/>
-      <eventRef type="amendment" act="32004R0026" date="2003-12-30"/>
+      <eventRef type="amendment" act="32002R0839" date="2002-05-21" label="M1">
+         <publication series="L" number="134" date="2002-05-22" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 839/2002"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 21 May 2002"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2090/98 concerning the fishing vessel register of the Community"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32004R0026" date="2003-12-30">
+         <publication series="L" number="5" date="2004-01-09" page="25"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EC) No 26/2004"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of 30 December 2003"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="on the Community fishing fleet register"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

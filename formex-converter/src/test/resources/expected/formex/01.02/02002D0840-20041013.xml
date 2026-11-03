@@ -12,7 +12,37 @@
       <publication series="L" number="287" date="2002-10-25" page="40"/>
    </source>
    <lifecycle produced="2004-12-02" sequence="001.001.0">
-      <eventRef type="amendment" act="32004D0691" date="2004-10-07"/>
+      <eventRef type="amendment" act="32004D0691" date="2004-10-07" label="M1">
+         <publication series="L" number="314" date="2004-10-13" page="14"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="7 October 2004" date="2004-10-07"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2002/840/EC adopting the list of approved facilities in third countries for the irradiation of foods"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document number C(2004) 3679)"/>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2004/691/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -217,7 +217,12 @@
     </xs:annotation>
     <xs:sequence>
       <xs:element name="eventRef" type="EventRef" minOccurs="0" maxOccurs="unbounded">
-        <xs:annotation><xs:documentation>An act this version integrates, in the order the source lists them.</xs:documentation></xs:annotation>
+        <xs:annotation>
+          <xs:documentation>
+            An act this version integrates, in the order the source lists them (Formex GR.MOD.ACT, GR.CORRIG): an act
+            that amended an amending act after that act, and an act as often as the source lists it.
+          </xs:documentation>
+        </xs:annotation>
       </xs:element>
     </xs:sequence>
     <xs:attribute name="end" type="xs:date">
@@ -236,6 +241,14 @@
 
   <xs:complexType name="EventRef">
     <xs:annotation><xs:documentation>An act a consolidated version integrates.</xs:documentation></xs:annotation>
+    <xs:sequence>
+      <xs:element name="publication" type="Publication" minOccurs="0">
+        <xs:annotation><xs:documentation>Where the Official Journal published the act.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="longTitle" type="LongTitle" minOccurs="0">
+        <xs:annotation><xs:documentation>The act's title, as the source gives it.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
     <xs:attribute name="type" type="EventType" use="required">
       <xs:annotation><xs:documentation>Amendment or corrigendum.</xs:documentation></xs:annotation>
     </xs:attribute>
@@ -244,6 +257,18 @@
     </xs:attribute>
     <xs:attribute name="date" type="xs:date">
       <xs:annotation><xs:documentation>The date of that act; for a corrigendum, which has no date of its own, the day it was published.</xs:documentation></xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="label">
+      <xs:annotation>
+        <xs:documentation>
+          The label the version's text marks what the act put there with, as EUR-Lex prints it (▼M2): M and the
+          amendment's place among the source's amendments, C and the corrigendum's among its corrigenda. None for an
+          act of another kind (an accession, a repeal).
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:string"><xs:pattern value="[MC][1-9][0-9]*"/></xs:restriction>
+      </xs:simpleType>
     </xs:attribute>
   </xs:complexType>
 

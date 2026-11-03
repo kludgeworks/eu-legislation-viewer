@@ -12,7 +12,34 @@
       <publication series="L" number="299" date="2015-11-14" page="1"/>
    </source>
    <lifecycle produced="2015-12-22" sequence="001.001.0">
-      <eventRef type="amendment" act="32015R2426" date="2015-12-18"/>
+      <eventRef type="amendment" act="32015R2426" date="2015-12-18" label="M1">
+         <publication series="L" number="334" date="2015-12-22" page="5"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/2426"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="18 December 2015" date="2015-12-18"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EU) 2015/1998 as regards third countries recognised as applying security standards equivalent to the common basic standards on civil aviation security"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

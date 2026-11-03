@@ -12,7 +12,28 @@
       <publication series="L" number="264" date="2019-10-17" page="42"/>
    </source>
    <lifecycle produced="2019-11-28" sequence="000.001.0">
-      <eventRef type="corrigendum" act="22019D1734R(01)" date="2019-10-18"/>
+      <eventRef type="corrigendum"
+                act="22019D1734R(01)"
+                date="2019-10-18"
+                label="C1">
+         <publication series="L" number="265" date="2019-10-18" page="21"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Decision 2019/1734 of the EU-Korea Committee on Trade and Sustainable Development of "/>
+               <date asWritten="30 September 2019" date="2019-09-30"/>
+               <t v=" on a revised list of experts willing and able to serve as panellists in accordance with Article 13.15 of the Agreement [2019/…]"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="264" date="2019-10-17">
+                     <t v="Official Journal of the European Union L 264 of 17 October 2019"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

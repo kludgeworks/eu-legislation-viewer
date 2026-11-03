@@ -12,7 +12,40 @@
       <publication series="L" number="93" date="2003-04-10" page="40"/>
    </source>
    <lifecycle end="2005-12-31" produced="2004-10-19" sequence="001.001.0">
-      <eventRef type="amendment" act="32004D0562" date="2004-03-23"/>
+      <eventRef type="amendment" act="32004D0562" date="2004-03-23" label="M1">
+         <publication series="L" number="259" date="2004-08-05" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 198"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 March 2004" date="2004-03-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="concerning the replacement and discontinuance of the model forms necessary for the application of Regulations (EEC) No 1408/71 and (EEC) No 574/72 of the Council"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(E 110, E 111, E 111 B, E 113, E 114, E 119, E 128 and E 128 B)"/>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance and the EU/Switzerland Agreement)"/>
+            </p>
+            <p>
+               <t v="(2004/562/CE)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

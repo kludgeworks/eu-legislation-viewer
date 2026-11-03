@@ -12,8 +12,72 @@
       <publication series="L" number="169" date="2011-06-29" page="28"/>
    </source>
    <lifecycle produced="2018-11-13" sequence="002.001.0">
-      <eventRef type="amendment" act="32015D0877" date="2015-06-04"/>
-      <eventRef type="amendment" act="32018D1702" date="2018-11-08"/>
+      <eventRef type="amendment" act="32015D0877" date="2015-06-04" label="M1">
+         <publication series="L" number="142" date="2015-06-06" page="32"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2015/877"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="4 June 2015" date="2015-06-04"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decisions 2009/568/EC, 2011/333/EU, 2011/381/EU, 2012/448/EU and 2012/481/EU in order to prolong the validity of the ecological criteria for the award of the EU Ecolabel to certain products"/>
+               </docPurpose>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="(notified under document C(2015) 3641)"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32018D1702" date="2018-11-08">
+         <publication series="L" number="285" date="2018-11-13" page="82"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2018/1702"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="8 November 2018" date="2018-11-08"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="establishing the EU Ecolabel criteria for lubricants"/>
+               </docPurpose>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="(notified under document C(2018) 7125)"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

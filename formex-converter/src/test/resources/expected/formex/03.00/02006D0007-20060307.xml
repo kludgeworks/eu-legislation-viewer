@@ -12,7 +12,37 @@
       <publication series="L" number="5" date="2006-01-10" page="17"/>
    </source>
    <lifecycle end="2006-07-31" produced="2006-05-17" sequence="001.001.0">
-      <eventRef type="amendment" act="32006D0183" date="2006-02-28"/>
+      <eventRef type="amendment" act="32006D0183" date="2006-02-28" label="M1">
+         <publication series="L" number="65" date="2006-03-07" page="49"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="28 February 2006" date="2006-02-28"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 2006/7/EC as regards an extension of the list of countries and the period of application thereof"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document number C(2006) 619)"/>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2006/183/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

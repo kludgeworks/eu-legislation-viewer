@@ -12,7 +12,34 @@
       <publication series="L" number="102" date="2010-04-23" page="22"/>
    </source>
    <lifecycle produced="2016-07-07" sequence="001.001.0">
-      <eventRef type="amendment" act="32016R1095" date="2016-07-06"/>
+      <eventRef type="amendment" act="32016R1095" date="2016-07-06" label="M1">
+         <publication series="L" number="182" date="2016-07-07" page="7"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2016/1095"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="6 July 2016" date="2016-07-06"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="concerning the authorisation of Zinc acetate dihydrate, Zinc chloride anhydrous, Zinc oxide, Zinc sulphate heptahydrate, Zinc sulphate monohydrate, Zinc chelate of amino acids hydrate, Zinc chelate of protein hydrolysates, Zinc chelate of glycine hydrate (solid) and Zinc chelate of glycine hydrate (liquid) as feed additives for all animal species and amending Regulations (EC) No 1334/2003, (EC) No 479/2006, (EU) No 335/2010 and Implementing Regulations (EU) No 991/2012 and (EU) No 636/2013"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,7 +12,31 @@
       <publication series="L" number="283" date="2008-10-28" page="3"/>
    </source>
    <lifecycle produced="2010-12-29" sequence="001.001.0">
-      <eventRef type="amendment" act="32010R1227" date="2010-12-20"/>
+      <eventRef type="amendment" act="32010R1227" date="2010-12-20" label="M1">
+         <publication series="L" number="336" date="2010-12-21" page="15"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) No 1227/2010"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="20 December 2010" date="2010-12-20"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 1055/2008 implementing Regulation (EC) No 184/2005 of the European Parliament and of the Council, as regards quality criteria and quality reporting for balance of payments statistics"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

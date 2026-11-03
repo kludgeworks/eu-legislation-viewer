@@ -12,7 +12,20 @@
       <publication series="L" number="188" date="1994-07-22" page="18"/>
    </source>
    <lifecycle produced="2015-10-30" sequence="001.001.0">
-      <eventRef type="amendment" act="21999A0728(01)" date="1999-07-08"/>
+      <eventRef type="amendment"
+                act="21999A0728(01)"
+                date="1999-07-08"
+                label="M1">
+         <publication series="L" number="195" date="1999-07-28" page="32"/>
+         <longTitle>
+            <p>
+               <t v="AGREEMENT"/>
+            </p>
+            <p>
+               <t v="amending the Agreement relating to scientific and technical cooperation between the European Community and Australia"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,8 +12,67 @@
       <publication series="L" number="117" date="1994-05-07" page="37"/>
    </source>
    <lifecycle produced="2012-06-26" sequence="002.001.0">
-      <eventRef type="amendment" act="32001D0298" date="2001-03-30"/>
-      <eventRef type="amendment" act="32004D0595" date="2004-07-29"/>
+      <eventRef type="amendment" act="32001D0298" date="2001-03-30" label="M1">
+         <publication series="L" number="102" date="2001-04-12" page="63"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of 30 March 2001"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending the Annexes to Council Directives 64/432/EEC, 90/426/EEC, 91/68/EEC and 92/65/EEC and to Commission Decision 94/273/EC as regards the protection of animals during transport"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document number C(2001) 965)"/>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2001/298/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32004D0595" date="2004-07-29">
+         <publication series="L" number="266" date="2004-08-13" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="29 July 2004" date="2004-07-29"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="establishing a model health certificate for the importation into the Community for trade of dogs, cats and ferrets"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(notified under document number C(2004) 1947)"/>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(2004/595/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

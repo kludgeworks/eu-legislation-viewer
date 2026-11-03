@@ -12,11 +12,127 @@
       <publication series="L" number="58" date="1996-03-07" page="1"/>
    </source>
    <lifecycle produced="2012-06-29" sequence="005.001.0">
-      <eventRef type="amendment" act="31998D0498" date="1998-08-10"/>
-      <eventRef type="amendment" act="31999D0481" date="1999-07-19"/>
-      <eventRef type="amendment" act="32000E0722" date="2000-11-20"/>
-      <eventRef type="amendment" act="32001E0719" date="2001-10-08"/>
-      <eventRef type="amendment" act="32006E0029" date="2006-01-23"/>
+      <eventRef type="amendment" act="31998D0498" date="1998-08-10" label="M1">
+         <publication series="L" number="225" date="1998-08-12" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of 10 August 1998"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Common Position 96/184/CFSP defined by the Council on the basis of Article J.2 of the Treaty on European Union concerning arms exports to the former Yugoslavia"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(98/498/CFSP)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="31999D0481" date="1999-07-19" label="M2">
+         <publication series="L" number="188" date="1999-07-21" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of 19 July 1999"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Common Position 96/184/CFSP concerning arms exports to the former Yugoslavia"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(1999/481/CFSP)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32000E0722" date="2000-11-20" label="M3">
+         <publication series="L" number="292" date="2000-11-21" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Common Position"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of 20 November 2000"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Common Position 96/184/CFSP concerning arms exports to the former Yugoslavia"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2000/722/CFSP)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32001E0719" date="2001-10-08" label="M4">
+         <publication series="L" number="268" date="2001-10-09" page="49"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Common Position"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of 8 October 2001"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Common Position 96/184/CFSP concerning arms exports to the former Yugoslavia and Common Position 98/240/CFSP on restrictive measures against the Federal Republic of Yugoslavia"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(2001/719/CFSP)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006E0029" date="2006-01-23">
+         <publication series="L" number="19" date="2006-01-24" page="34"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Common Position"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="2006/29/CFSP"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="23 January 2006" date="2006-01-23"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="repealing Common Position 96/184/CFSP concerning arms exports to the former Yugoslavia"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

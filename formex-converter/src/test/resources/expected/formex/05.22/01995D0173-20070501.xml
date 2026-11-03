@@ -12,8 +12,61 @@
       <publication series="L" number="116" date="1995-05-23" page="41"/>
    </source>
    <lifecycle produced="2012-01-19" sequence="002.001.0">
-      <eventRef type="amendment" act="31995D0311" date="1995-07-24"/>
-      <eventRef type="amendment" act="32006R1664" date="2006-11-06"/>
+      <eventRef type="amendment" act="31995D0311" date="1995-07-24" label="M1">
+         <publication series="L" number="186" date="1995-08-05" page="78"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Decision"/>
+                  </emphasis>
+               </docType>
+               <docNumber/>
+            </p>
+            <p>
+               <t v="of 24 July 1995"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision 95/173/EC laying down specific conditions for importing fishery and aquaculture products from Peru"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+            <p>
+               <t v="(95/311/EC)"/>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32006R1664" date="2006-11-06">
+         <publication series="L" number="320" date="2006-11-18" page="13"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Regulation (EC)"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="No 1664/2006"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="6 November 2006" date="2006-11-06"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Regulation (EC) No 2074/2005 as regards implementing measures for certain products of animal origin intended for human consumption and repealing certain implementing measures"/>
+               </docPurpose>
+            </p>
+            <p>
+               <t v="(Text with EEA relevance)"/>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

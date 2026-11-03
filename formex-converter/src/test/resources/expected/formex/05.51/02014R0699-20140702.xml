@@ -12,7 +12,28 @@
       <publication series="L" number="184" date="2014-06-25" page="5"/>
    </source>
    <lifecycle produced="2014-10-17" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32014R0699R(01)" date="2014-10-15"/>
+      <eventRef type="corrigendum"
+                act="32014R0699R(01)"
+                date="2014-10-15"
+                label="C1">
+         <publication series="L" number="297" date="2014-10-15" page="41"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) No 699/2014 of "/>
+               <date asWritten="24 June 2014" date="2014-06-24"/>
+               <t v=" on the design of the common logo to identify persons offering medicinal products for sale at a distance to the public and the technical, electronic and cryptographic requirements for verification of its authenticity"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="184" date="2014-06-25">
+                     <t v="Official Journal of the European Union L 184 of 25 June 2014"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

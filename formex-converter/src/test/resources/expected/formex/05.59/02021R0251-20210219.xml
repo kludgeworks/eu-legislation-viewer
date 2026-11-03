@@ -12,7 +12,28 @@
       <publication series="L" number="58" date="2021-02-19" page="9"/>
    </source>
    <lifecycle produced="2021-02-26" sequence="000.001.0">
-      <eventRef type="corrigendum" act="32021R0251R(01)" date="2021-02-25"/>
+      <eventRef type="corrigendum"
+                act="32021R0251R(01)"
+                date="2021-02-25"
+                label="C1">
+         <publication series="L" number="65" date="2021-02-25" page="60"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Council Regulation (CFSP) 2021/251 of "/>
+               <date asWritten="18 February 2021" date="2021-02-18"/>
+               <t v=" amending Regulation (EC) No 314/2004 concerning restrictive measures in view of the situation in Zimbabwe"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="58" date="2021-02-19">
+                     <t v="Official Journal of the European Union L 58 of 19 February 2021"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>

@@ -12,9 +12,75 @@
       <publication series="L" number="41" date="2023-02-10" page="1"/>
    </source>
    <lifecycle produced="2023-08-07" sequence="001.001.0">
-      <eventRef type="corrigendum" act="32023R0265R(01)" date="2023-05-04"/>
-      <eventRef type="corrigendum" act="32023R0265R(02)" date="2023-07-20"/>
-      <eventRef type="amendment" act="32023R1597" date="2023-08-03"/>
+      <eventRef type="corrigendum"
+                act="32023R0265R(01)"
+                date="2023-05-04"
+                label="C1">
+         <publication series="L" number="116" date="2023-05-04" page="27"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) 2023/265 of "/>
+               <date asWritten="9 February 2023" date="2023-02-09"/>
+               <t v=" imposing a definitive anti-dumping duty on imports of ceramic tiles originating in India and Türkiye"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="41" date="2023-02-10">
+                     <t v="Official Journal of the European Union L 41 of 10 February 2023"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="corrigendum"
+                act="32023R0265R(02)"
+                date="2023-07-20"
+                label="C2">
+         <publication series="L" number="183" date="2023-07-20" page="59"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) 2023/265 of "/>
+               <date asWritten="9 February 2023" date="2023-02-09"/>
+               <t v=" imposing a definitive anti-dumping duty on imports of ceramic tiles originating in India and Türkiye"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="41" date="2023-02-10">
+                     <t v="Official Journal of the European Union L 41 of 10 February 2023"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1597" date="2023-08-03" label="M1">
+         <publication series="L" number="196" date="2023-08-04" page="21"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1597"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate asWritten="3 August 2023" date="2023-08-03"/>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2023/265 imposing a definitive anti-dumping duty on imports of ceramic tiles originating in India and Türkiye"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
    </lifecycle>
    <preface>
       <longTitle>
