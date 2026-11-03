@@ -381,12 +381,12 @@
     <xsl:sequence select="exists(root($note)/(CONS.ACT | CONS.OTH)) and ($note/@TYPE, 'FOOTNOTE')[1] = 'FOOTNOTE'"/>
   </xsl:function>
 
-  <!-- an element the converter doesn't know: fails in strict mode, so new Formex shows up in tests.
-       It never returns: item()*, so that it can stand where a value is expected (f:list-kind) -->
+  <!-- an element the converter doesn't know: an error, so new Formex shows up in tests. It never
+       returns: item()*, so that it can stand where a value is expected (f:list-kind) -->
   <xsl:function name="f:unknown" as="item()*">
     <xsl:param name="e" as="node()"/>
     <xsl:param name="detail" as="xs:string?"/>
-    <xsl:message terminate="yes" error-code="f:unknown">Unsupported Formex: {path($e)}{$detail ! (' (' || . || ')')}</xsl:message>
+    <xsl:sequence select="error(xs:QName('f:unknown'), 'Unsupported Formex: ' || path($e) || $detail ! (' (' || . || ')'))"/>
   </xsl:function>
 
 </xsl:stylesheet>

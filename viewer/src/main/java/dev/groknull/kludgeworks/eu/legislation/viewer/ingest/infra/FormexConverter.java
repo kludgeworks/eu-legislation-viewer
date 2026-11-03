@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -134,11 +133,6 @@ final class FormexConverter {
     var document = main(documents);
     var transformer = stylesheet.load30();
     transformer.setResourceResolver(resolver(documents));
-    // a refusal is an xsl:message that terminates: its text is the reason, Saxon's own message
-    // isn't
-    var reason = new AtomicReference<@Nullable String>();
-    transformer.setMessageHandler(
-        m -> reason.set(m.isTerminate() ? m.getStringValue() : reason.get()));
     var result = new XdmDestination();
     try {
       if (celex.isPresent()) {
@@ -149,8 +143,7 @@ final class FormexConverter {
       transformer.setGlobalContextItem(document);
       transformer.applyTemplates(document, result);
     } catch (SaxonApiException e) {
-      var refusal = reason.get();
-      throw translate(e, refusal != null ? refusal : Objects.toString(e.getMessage()));
+      throw translate(e, Objects.toString(e.getMessage()));
     }
     return result.getXdmNode();
   }

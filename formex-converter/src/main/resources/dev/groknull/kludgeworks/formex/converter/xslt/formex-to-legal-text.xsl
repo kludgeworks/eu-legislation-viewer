@@ -20,10 +20,10 @@
     act, ignored for a consolidation, which carries its own;
   - parameter converter: the converter's version, stamped on every document (legalText/@converter);
     read from ../version.txt, so the stylesheets and version.txt stay side by side;
-  - a refusal is a terminating xsl:message whose text is the reason, with an error code in the
-    namespace https://kludgeworks.groknull.dev/ns/formex-converter: f:out-of-scope (not a legal act)
-    or f:unknown (Formex the converter doesn't handle yet). Errors in the same namespace, raised with
-    error(): f:celex (an OJ act without the celex parameter), f:date (a date that isn't one).
+  - a refusal is a dynamic error, raised with error(), whose description is the reason and whose
+    code is in the namespace https://kludgeworks.groknull.dev/ns/formex-converter: f:out-of-scope
+    (not a legal act), f:unknown (Formex the converter doesn't handle yet), f:celex (an OJ act
+    without the celex parameter), f:date (a date that isn't one).
   Large documents may need the processor's XML entity limits lifted: Formex has no DTD, but a 104 MB
   annex has over 100,000 entity references (&amp;), above the JDK's default limit.
 -->
@@ -49,6 +49,10 @@
   <xsl:include href="math.xsl"/>
 
   <xsl:output method="xml" encoding="UTF-8" indent="no"/>
+
+  <!-- the input document: what the global variables read (f:documents: the package's files);
+       optional, as a test of one template has none -->
+  <xsl:global-context-item use="optional" as="document-node()"/>
 
   <!-- the CELEX number of an OJ act; Formex doesn't carry it (consolidations do) -->
   <xsl:param name="celex" as="xs:string?"/>
@@ -114,13 +118,13 @@
     <xsl:param name="act" as="element()"/>
     <xsl:variable name="notice" as="element()?" select="f:with-included($act)[self::CJT or self::COMPETITION][1]"/>
     <xsl:if test="$notice">
-      <xsl:message terminate="yes" error-code="f:out-of-scope">Not a legal act: corrects a notice (Formex {local-name($notice)})</xsl:message>
+      <xsl:sequence select="error(xs:QName('f:out-of-scope'), 'Not a legal act: corrects a notice (Formex ' || local-name($notice) || ')')"/>
     </xsl:if>
   </xsl:function>
 
   <!-- notices (GENERAL), case law, the OJ's tables of contents (PUBLICATION) and the like -->
   <xsl:template match="*" mode="document">
-    <xsl:message terminate="yes" error-code="f:out-of-scope">Not a legal act: Formex {local-name()} is out of scope</xsl:message>
+    <xsl:sequence select="error(xs:QName('f:out-of-scope'), 'Not a legal act: Formex ' || local-name() || ' is out of scope')"/>
   </xsl:template>
 
   <!-- ============================================================ document -->

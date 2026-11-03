@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.formex.converter;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicReference;
 import javax.xml.transform.Source;
 import javax.xml.transform.stream.StreamSource;
 import net.sf.saxon.lib.FeatureKeys;
@@ -61,11 +60,6 @@ final class Stylesheet {
    */
   XdmNode transform(Source formex, Optional<String> celex) throws Failure {
     var transformer = stylesheet.load30();
-    // a refusal is an xsl:message that terminates: its text is the reason, Saxon's own message
-    // isn't
-    var reason = new AtomicReference<@Nullable String>();
-    transformer.setMessageHandler(
-        m -> reason.set(m.isTerminate() ? m.getStringValue() : reason.get()));
     var result = new XdmDestination();
     try {
       if (celex.isPresent()) {
@@ -75,9 +69,7 @@ final class Stylesheet {
       transformer.setGlobalContextItem(document);
       transformer.applyTemplates(document, result);
     } catch (SaxonApiException e) {
-      var refusal = reason.get();
-      throw new Failure(
-          e.getErrorCode(), refusal != null ? refusal : Objects.toString(e.getMessage()), e);
+      throw new Failure(e.getErrorCode(), Objects.toString(e.getMessage()), e);
     }
     return result.getXdmNode();
   }
