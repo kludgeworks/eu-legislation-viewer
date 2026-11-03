@@ -128,6 +128,32 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="199"
+                 date="2009-07-31"
+                 page="24">
+               <t v="OJ L 199, 31.7.2009, p. 24"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="199"
+                 date="2009-07-31"
+                 page="22">
+               <t v="OJ L 199, 31.7.2009, p. 22"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="att_1" kind="attachment">
          <heading>
@@ -371,45 +397,21 @@
                <t v="The President"/>
             </emphasis>
          </p>
+         <notes>
+            <note eId="note_att01002901-1" marker="1" kind="footnote">
+               <p>
+                  <ref kind="oj"
+                       series="L"
+                       number="199"
+                       date="2009-07-31"
+                       page="24">
+                     <t v="OJ L 199, 31.7.2009, p. 24"/>
+                  </ref>
+                  <t v="."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="199"
-                 date="2009-07-31"
-                 page="24">
-               <t v="OJ L 199, 31.7.2009, p. 24"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="199"
-                 date="2009-07-31"
-                 page="22">
-               <t v="OJ L 199, 31.7.2009, p. 22"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_att01002901-1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="199"
-                 date="2009-07-31"
-                 page="24">
-               <t v="OJ L 199, 31.7.2009, p. 24"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

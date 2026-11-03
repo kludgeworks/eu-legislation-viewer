@@ -268,42 +268,22 @@
               </xsl:apply-templates>
             </xsl:for-each>
           </xsl:variable>
+          <!-- the notes of the act's file and those it includes, printed after it as each file's are
+               (an annex's or an attached document's, in its unit): before the annexes if they are
+               files of their own, else after them -->
+          <xsl:variable name="notes" as="element()?">
+            <xsl:call-template name="f:notes">
+              <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($act)//NOTE[not(@NOTE.REF)]"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:variable name="files" as="xs:boolean" select="exists($annexes | $package/FMX/DOC.SUB.PUB[f:is-attachment(.)])"/>
+          <xsl:sequence select="$notes[$files]"/>
           <xsl:if test="$annex-units or $letters or $attachments">
             <annexes>
               <xsl:sequence select="$annex-units, $letters, $attachments"/>
             </annexes>
           </xsl:if>
-
-          <!-- the notes of the act, its annexes and the documents they include -->
-          <xsl:variable name="notes" as="element(NOTE)*" select="f:with-included(($act, $annexes))//NOTE[not(@NOTE.REF)]"/>
-          <!-- and those of attached documents from other files, whose eIds carry the file: note_att0301-1 -->
-          <xsl:variable name="attached-notes" as="element()*">
-            <xsl:for-each select="$package/FMX//DOC.SUB.PUB[f:is-attachment(.)]">
-              <xsl:variable name="docs" as="element()*" select="(REF.PHYS, DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS)/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
-              <xsl:apply-templates select="f:with-included($docs)//NOTE[not(@NOTE.REF)]" mode="note">
-                <xsl:with-param name="notePrefix" as="xs:string?" select="f:attachment-note-prefix(.)" tunnel="yes"/>
-              </xsl:apply-templates>
-            </xsl:for-each>
-          </xsl:variable>
-          <xsl:if test="$notes or $attached-notes">
-            <notes>
-              <!-- a note in text an amendment deleted is kept, as the text is, inside <deleted> -->
-              <xsl:for-each-group select="$notes" group-adjacent="string-join(f:ids(f:deletions(.)), ' ')">
-                <xsl:choose>
-                  <xsl:when test="current-grouping-key() = ''">
-                    <xsl:apply-templates select="current-group()" mode="note"/>
-                  </xsl:when>
-                  <xsl:otherwise>
-                    <xsl:variable name="notes" as="element()*">
-                      <xsl:apply-templates select="current-group()" mode="note"/>
-                    </xsl:variable>
-                    <xsl:sequence select="f:wrap-deleted(f:deletions(.), $notes)"/>
-                  </xsl:otherwise>
-                </xsl:choose>
-              </xsl:for-each-group>
-              <xsl:sequence select="$attached-notes"/>
-            </notes>
-          </xsl:if>
+          <xsl:sequence select="$notes[not($files)]"/>
         </legalText>
       </xsl:document>
     </xsl:variable>
@@ -313,6 +293,29 @@
       </xsl:document>
     </xsl:variable>
     <xsl:apply-templates select="$merged/lt:legalText" mode="f:ambiguity"/>
+  </xsl:template>
+
+  <!-- the notes of one file, as a block (none if it has none): a note in text an amendment deleted is
+       kept, as the text is, inside <deleted> -->
+  <xsl:template name="f:notes">
+    <xsl:param name="notes" as="element(NOTE)*"/>
+    <xsl:if test="$notes">
+      <notes>
+        <xsl:for-each-group select="$notes" group-adjacent="string-join(f:ids(f:deletions(.)), ' ')">
+          <xsl:choose>
+            <xsl:when test="current-grouping-key() = ''">
+              <xsl:apply-templates select="current-group()" mode="note"/>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:variable name="notes" as="element()*">
+                <xsl:apply-templates select="current-group()" mode="note"/>
+              </xsl:variable>
+              <xsl:sequence select="f:wrap-deleted(f:deletions(.), $notes)"/>
+            </xsl:otherwise>
+          </xsl:choose>
+        </xsl:for-each-group>
+      </notes>
+    </xsl:if>
   </xsl:template>
 
   <!-- ============================================================ labels the source repeats -->

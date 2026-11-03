@@ -159,6 +159,40 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="256"
+                 date="1987-09-07"
+                 page="1">
+               <t v="OJ No L 256, 7. 9. 1987, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="7" date="1991-01-10" page="14">
+               <t v="OJ No L 7, 10. 1. 1991, p. 14"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="137"
+                 date="1983-05-26"
+                 page="11">
+               <t v="OJ No L 137, 26, 5. 1983, p. 11"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -257,39 +291,5 @@
          </table>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="256"
-                 date="1987-09-07"
-                 page="1">
-               <t v="OJ No L 256, 7. 9. 1987, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="7" date="1991-01-10" page="14">
-               <t v="OJ No L 7, 10. 1. 1991, p. 14"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="137"
-                 date="1983-05-26"
-                 page="11">
-               <t v="OJ No L 137, 26, 5. 1983, p. 11"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

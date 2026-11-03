@@ -334,6 +334,89 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="140"
+                 date="2009-06-05"
+                 page="1">
+               <t v="OJ L 140, 5.6.2009, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) No 725/2011of "/>
+            <date asWritten="25 July 2011" date="2011-07-25"/>
+            <t v=" establishing a procedure for the approval and certification of innovative technologies for reducing CO"/>
+            <emphasis kind="sub">
+               <t v="2"/>
+            </emphasis>
+            <t v=" emissions from passenger cars ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="194"
+                 date="2011-07-26"
+                 page="19">
+               <t v="OJ L 194, 26.7.2011, p. 19"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="https://circabc.europa.eu/w/browse/42c4a33e-6fd7-44aa-adac-f28620bd436f"/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="Regulation (EC) No 715/2007 of the European Parliament and of the Council of "/>
+            <date asWritten="20 June 2007" date="2007-06-20"/>
+            <t v=" on type approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="171"
+                 date="2007-06-29"
+                 page="1">
+               <t v="OJ L 171, 29.6.2007, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EC) No 692/2008 of "/>
+            <date asWritten="18 July 2008" date="2008-07-18"/>
+            <t v=" implementing and amending Regulation (EC) No 715/2007 of the European Parliament and of the Council on type-approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="199"
+                 date="2008-07-28"
+                 page="1">
+               <t v="OJ L 199, 28.7.2008, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <t v="Directive 2007/46/EC of the European Parliament and of the Council of "/>
+            <date asWritten="5 September 2007" date="2007-09-05"/>
+            <t v=" establishing a framework for the approval of motor vehicles and their trailers, and of systems, components and separate technical units intended for such vehicles (Framework Directive) ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="263"
+                 date="2007-10-09"
+                 page="1">
+               <t v="OJ L 263, 9.10.2007, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -2213,97 +2296,16 @@
                <t v=" emission savings of the innovative technology (efficient exterior lighting system), as a result of the calculation using formula (10), are below the threshold specified in Article 9(1) of Implementing Regulation (EU) No 725/2011, the second subparagraph of Article 11(2) of that Regulation shall apply."/>
             </p>
          </unit>
+         <notes>
+            <note eId="note_anx01007301-1" marker="1" kind="footnote">
+               <p>
+                  <t v="E/ECE/324/Rev.2/Add.111/Rev.3 — E/ECE/TRANS/505/Rev.2/Add.111/Rev.3, "/>
+                  <date asWritten="9 January 2013" date="2013-01-09"/>
+                  <t v="."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="140"
-                 date="2009-06-05"
-                 page="1">
-               <t v="OJ L 140, 5.6.2009, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <t v="Commission Implementing Regulation (EU) No 725/2011of "/>
-            <date asWritten="25 July 2011" date="2011-07-25"/>
-            <t v=" establishing a procedure for the approval and certification of innovative technologies for reducing CO"/>
-            <emphasis kind="sub">
-               <t v="2"/>
-            </emphasis>
-            <t v=" emissions from passenger cars ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="194"
-                 date="2011-07-26"
-                 page="19">
-               <t v="OJ L 194, 26.7.2011, p. 19"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <t v="https://circabc.europa.eu/w/browse/42c4a33e-6fd7-44aa-adac-f28620bd436f"/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <t v="Regulation (EC) No 715/2007 of the European Parliament and of the Council of "/>
-            <date asWritten="20 June 2007" date="2007-06-20"/>
-            <t v=" on type approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="171"
-                 date="2007-06-29"
-                 page="1">
-               <t v="OJ L 171, 29.6.2007, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
-         <p>
-            <t v="Commission Regulation (EC) No 692/2008 of "/>
-            <date asWritten="18 July 2008" date="2008-07-18"/>
-            <t v=" implementing and amending Regulation (EC) No 715/2007 of the European Parliament and of the Council on type-approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="199"
-                 date="2008-07-28"
-                 page="1">
-               <t v="OJ L 199, 28.7.2008, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
-         <p>
-            <t v="Directive 2007/46/EC of the European Parliament and of the Council of "/>
-            <date asWritten="5 September 2007" date="2007-09-05"/>
-            <t v=" establishing a framework for the approval of motor vehicles and their trailers, and of systems, components and separate technical units intended for such vehicles (Framework Directive) ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="263"
-                 date="2007-10-09"
-                 page="1">
-               <t v="OJ L 263, 9.10.2007, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx01007301-1" marker="1" kind="footnote">
-         <p>
-            <t v="E/ECE/324/Rev.2/Add.111/Rev.3 — E/ECE/TRANS/505/Rev.2/Add.111/Rev.3, "/>
-            <date asWritten="9 January 2013" date="2013-01-09"/>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

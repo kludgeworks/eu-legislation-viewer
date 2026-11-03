@@ -849,14 +849,14 @@
                </emphasis>
             </p>
          </unit>
+         <notes>
+            <note eId="note_inc000402-1" marker="1" kind="footnote">
+               <p>
+                  <t v="In this Protocol, references to articles are, unless otherwise specified, to be understood as references to articles in this Protocol."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_inc000402-1" marker="1" kind="footnote">
-         <p>
-            <t v="In this Protocol, references to articles are, unless otherwise specified, to be understood as references to articles in this Protocol."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

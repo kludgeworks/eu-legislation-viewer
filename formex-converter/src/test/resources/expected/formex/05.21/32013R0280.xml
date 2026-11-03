@@ -168,6 +168,28 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="191"
+                 date="2008-07-18"
+                 page="1">
+               <t v="OJ L 191, 18.7.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="13" date="2006-01-18" page="1">
+               <t v="OJ L 13, 18.1.2006, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -400,27 +422,5 @@
          </quotedStructure>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="191"
-                 date="2008-07-18"
-                 page="1">
-               <t v="OJ L 191, 18.7.2008, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="13" date="2006-01-18" page="1">
-               <t v="OJ L 13, 18.1.2006, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

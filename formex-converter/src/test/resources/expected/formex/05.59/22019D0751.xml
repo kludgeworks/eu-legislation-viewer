@@ -190,6 +190,25 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="207"
+                 date="2016-08-01"
+                 page="1">
+               <t v="OJ L 207, 1.8.2016, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="*" kind="footnote">
+         <p>
+            <t v="No constitutional requirements indicated."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <heading>
@@ -215,24 +234,5 @@
          </p>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="207"
-                 date="2016-08-01"
-                 page="1">
-               <t v="OJ L 207, 1.8.2016, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="*" kind="footnote">
-         <p>
-            <t v="No constitutional requirements indicated."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

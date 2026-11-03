@@ -110,7 +110,8 @@ p.norm {
 }
 
 .unit-article > .num,
-.unit-annex > .num {
+.unit-annex > .num,
+.unit-annex > .file > .num {
   margin-top: 1.5rem;
   font-style: italic;
   text-align: center;
@@ -122,8 +123,10 @@ p.norm {
   text-align: center;
 }
 
-/* an annex's label in an act as published: bold, upright (oj-doc-ti) */
-.legal-text:not(.legal-text-consolidated) .unit-annex > .num {
+/* an annex's label in an act as published, and the title each of its files repeats: bold, upright
+ * (oj-doc-ti) */
+.legal-text:not(.legal-text-consolidated) .unit-annex > .num,
+.legal-text:not(.legal-text-consolidated) .unit-annex > .file > .num {
   font-style: normal;
   font-weight: bold;
 }

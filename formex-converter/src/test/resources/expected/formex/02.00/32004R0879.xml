@@ -210,6 +210,56 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="270"
+                 date="1970-12-14"
+                 page="1">
+               <t v="OJ L 270, 14.12.1970, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="265"
+                 date="2002-10-03"
+                 page="1">
+               <t v="OJ L 265, 3.10.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="164"
+                 date="1999-06-30"
+                 page="56">
+               <t v="OJ L 164, 30.6.1999, p. 56"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="183"
+                 date="1989-06-29"
+                 page="1">
+               <t v="OJ L 183, 29.6.1989, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -358,55 +408,5 @@
          </table>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="270"
-                 date="1970-12-14"
-                 page="1">
-               <t v="OJ L 270, 14.12.1970, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="265"
-                 date="2002-10-03"
-                 page="1">
-               <t v="OJ L 265, 3.10.2002, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="164"
-                 date="1999-06-30"
-                 page="56">
-               <t v="OJ L 164, 30.6.1999, p. 56"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="183"
-                 date="1989-06-29"
-                 page="1">
-               <t v="OJ L 183, 29.6.1989, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

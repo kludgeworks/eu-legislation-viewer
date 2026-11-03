@@ -162,6 +162,48 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="P"
+                 number="109"
+                 date="1965-06-23"
+                 page="1859">
+               <t v="OJ 109, 23.6.1965, p. 1859/65"/>
+            </ref>
+            <t v=". Regulation as last amended by Commission Regulation (EC) No 660/2204 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="104"
+                 date="2004-04-08"
+                 page="97">
+               <t v="OJ L 104, 8.4.2004, p. 97"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="205"
+                 date="1982-07-13"
+                 page="5">
+               <t v="OJ L 205, 13.7.1982, p. 5"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1187/2005 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="193"
+                 date="2005-07-23"
+                 page="20">
+               <t v="OJ L 193, 23.7.2005, p 20"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -246,47 +288,5 @@
          </quotedStructure>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="P"
-                 number="109"
-                 date="1965-06-23"
-                 page="1859">
-               <t v="OJ 109, 23.6.1965, p. 1859/65"/>
-            </ref>
-            <t v=". Regulation as last amended by Commission Regulation (EC) No 660/2204 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="104"
-                 date="2004-04-08"
-                 page="97">
-               <t v="OJ L 104, 8.4.2004, p. 97"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="205"
-                 date="1982-07-13"
-                 page="5">
-               <t v="OJ L 205, 13.7.1982, p. 5"/>
-            </ref>
-            <t v=". Regulation as last amended by Regulation (EC) No 1187/2005 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="193"
-                 date="2005-07-23"
-                 page="20">
-               <t v="OJ L 193, 23.7.2005, p 20"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

@@ -1070,19 +1070,19 @@
                <td/>
             </tr>
          </table>
+         <notes>
+            <note eId="note_anx000401-1" marker="1" kind="footnote">
+               <p>
+                  <t v="Quantities shall be added in accordance with Article 2 paragraph 3 of this Protocol."/>
+               </p>
+            </note>
+            <note eId="note_anx000401-2" marker="2" kind="footnote">
+               <p>
+                  <t v="The benefit of the tariff quota shall not be granted to goods declared for release for free circulation during the period 15 February to 15 June."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_anx000401-1" marker="1" kind="footnote">
-         <p>
-            <t v="Quantities shall be added in accordance with Article 2 paragraph 3 of this Protocol."/>
-         </p>
-      </note>
-      <note eId="note_anx000401-2" marker="2" kind="footnote">
-         <p>
-            <t v="The benefit of the tariff quota shall not be granted to goods declared for release for free circulation during the period 15 February to 15 June."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

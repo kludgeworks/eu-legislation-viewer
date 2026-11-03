@@ -186,6 +186,43 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="97"
+                 date="2008-04-09"
+                 page="72">
+               <t v="OJ L 97, 9.4.2008, p. 72"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj">
+               <t v="http://data.europa.eu/eli/reg/2008/300/oj"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) 2015/1998 of "/>
+            <date asWritten="5 November 2015" date="2015-11-05"/>
+            <t v=" laying down detailed measures for the implementation of the common basic standards on aviation security ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="299"
+                 date="2015-11-14"
+                 page="1">
+               <t v="OJ L 299, 14.11.2015, p. 1"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg_impl/2015/1998/oj">
+               <t v="http://data.europa.eu/eli/reg_impl/2015/1998/oj"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -1895,107 +1932,72 @@
                </quotedStructure>
             </unit>
          </list>
+         <notes>
+            <note eId="note_anx000301-1" marker="*" kind="quotation">
+               <p>
+                  <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
+                  <date asWritten="11 March 2008" date="2008-03-11"/>
+                  <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
+                  <ref kind="oj"
+                       series="L"
+                       number="97"
+                       date="2008-04-09"
+                       page="72">
+                     <t v="OJ L 97, 9.4.2008, p. 72"/>
+                  </ref>
+                  <t v=", ELI "/>
+                  <ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj">
+                     <t v="http://data.europa.eu/eli/reg/2008/300/oj"/>
+                  </ref>
+                  <t v=")."/>
+                  <t v="”"/>
+                  <t v=";"/>
+               </p>
+            </note>
+            <note eId="note_anx000301-2" marker="*" kind="quotation">
+               <p>
+                  <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
+                  <date asWritten="11 March 2008" date="2008-03-11"/>
+                  <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
+                  <ref kind="oj"
+                       series="L"
+                       number="97"
+                       date="2008-04-09"
+                       page="72">
+                     <t v="OJ L 97, 9.4.2008, p. 72"/>
+                  </ref>
+                  <t v=", ELI "/>
+                  <ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj">
+                     <t v="http://data.europa.eu/eli/reg/2008/300/oj"/>
+                  </ref>
+                  <t v=")."/>
+                  <t v="”"/>
+                  <t v=";"/>
+               </p>
+            </note>
+            <note eId="note_anx000301-3" marker="*" kind="quotation">
+               <p>
+                  <t v="Regulation (EU) No 576/2013 of the European Parliament and of the Council of "/>
+                  <date asWritten="12 June 2013" date="2013-06-12"/>
+                  <t v=" on the non-commercial movement of pet animals and repealing Regulation (EC) No 998/2003 ("/>
+                  <ref kind="oj"
+                       series="L"
+                       number="178"
+                       date="2013-06-28"
+                       page="1">
+                     <t v="OJ L 178, 28.6.2013, p. 1"/>
+                  </ref>
+                  <t v=", ELI: "/>
+                  <ref kind="uri" href="http://data.europa.eu/eli/reg/2013/576/oj">
+                     <t v="http://data.europa.eu/eli/reg/2013/576/oj"/>
+                  </ref>
+                  <t v=")."/>
+                  <t v="”"/>
+                  <t v=";"/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="97"
-                 date="2008-04-09"
-                 page="72">
-               <t v="OJ L 97, 9.4.2008, p. 72"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj">
-               <t v="http://data.europa.eu/eli/reg/2008/300/oj"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <t v="Commission Implementing Regulation (EU) 2015/1998 of "/>
-            <date asWritten="5 November 2015" date="2015-11-05"/>
-            <t v=" laying down detailed measures for the implementation of the common basic standards on aviation security ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="299"
-                 date="2015-11-14"
-                 page="1">
-               <t v="OJ L 299, 14.11.2015, p. 1"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg_impl/2015/1998/oj">
-               <t v="http://data.europa.eu/eli/reg_impl/2015/1998/oj"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx000301-1" marker="*" kind="quotation">
-         <p>
-            <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
-            <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="97"
-                 date="2008-04-09"
-                 page="72">
-               <t v="OJ L 97, 9.4.2008, p. 72"/>
-            </ref>
-            <t v=", ELI "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj">
-               <t v="http://data.europa.eu/eli/reg/2008/300/oj"/>
-            </ref>
-            <t v=")."/>
-            <t v="”"/>
-            <t v=";"/>
-         </p>
-      </note>
-      <note eId="note_anx000301-2" marker="*" kind="quotation">
-         <p>
-            <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
-            <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="97"
-                 date="2008-04-09"
-                 page="72">
-               <t v="OJ L 97, 9.4.2008, p. 72"/>
-            </ref>
-            <t v=", ELI "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2008/300/oj">
-               <t v="http://data.europa.eu/eli/reg/2008/300/oj"/>
-            </ref>
-            <t v=")."/>
-            <t v="”"/>
-            <t v=";"/>
-         </p>
-      </note>
-      <note eId="note_anx000301-3" marker="*" kind="quotation">
-         <p>
-            <t v="Regulation (EU) No 576/2013 of the European Parliament and of the Council of "/>
-            <date asWritten="12 June 2013" date="2013-06-12"/>
-            <t v=" on the non-commercial movement of pet animals and repealing Regulation (EC) No 998/2003 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="178"
-                 date="2013-06-28"
-                 page="1">
-               <t v="OJ L 178, 28.6.2013, p. 1"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2013/576/oj">
-               <t v="http://data.europa.eu/eli/reg/2013/576/oj"/>
-            </ref>
-            <t v=")."/>
-            <t v="”"/>
-            <t v=";"/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

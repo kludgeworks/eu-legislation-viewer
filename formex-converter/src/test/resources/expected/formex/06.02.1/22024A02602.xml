@@ -673,6 +673,13 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="In this Agreement, references to articles are, unless otherwise specified, to be understood as references to articles in this Agreement."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -741,12 +748,5 @@
          </p>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <t v="In this Agreement, references to articles are, unless otherwise specified, to be understood as references to articles in this Agreement."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

@@ -259,7 +259,16 @@
     <x:expect label="attaches the agreement, and the document attached to it, under it"
               test="$x:result//*:unit[@kind = 'attachment']/@eId = ('att_1', 'att_1/att_1')"/>
     <x:expect label="numbers the agreement's articles under it" test="$x:result//*:unit[@eId = 'att_1/art_1']/*:num/*:t/@v = 'Article 1'"/>
-    <x:expect label="gives the agreement's notes their own eIds" test="$x:result/*:notes/*:note/@eId = 'note_att01000301-1'"/>
+    <x:expect label="gives the agreement's notes their own eIds, after its text" test="$x:result//*:unit[@eId = 'att_1']/*:notes/*:note/@eId = 'note_att01000301-1'"/>
+  </x:scenario>
+
+  <x:scenario label="An annex the OJ prints across files (2015/1998, four)">
+    <x:context href="../resources/fixtures/formex/05.55/32015R1998/L_2015299EN.01000101.doc.xml"/>
+    <x:expect label="is one annex, a file each" test="count($x:result/*:annexes/*:unit) = 1
+        and $x:result/*:annexes/*:unit/*:file/@name = ('L_2015299EN.01000301', 'L_2015299EN.01006801', 'L_2015299EN.01008501', 'L_2015299EN.01010101')"/>
+    <x:expect label="each but the first under the title it repeats" test="$x:result//*:file ! exists(*:num) = (false(), true(), true(), true())"/>
+    <x:expect label="each with its notes after it" test="every $f in $x:result//*:file satisfies $f/*[last()]/self::*:notes/*:note[1]/@eId = 'note_anx' || substring-after($f/@name, '.') || '-1'"/>
+    <x:expect label="the act's own notes before the annexes" test="$x:result/*:notes/following-sibling::*[1]/self::*:annexes and empty($x:result/*:notes/*:note[starts-with(@eId, 'note_anx')])"/>
   </x:scenario>
 
   <x:scenario label="A consolidated agreement with annexes and related documents (1994/604, CONS.OTH)">

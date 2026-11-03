@@ -162,31 +162,6 @@
          </signatory>
       </signature>
    </conclusions>
-   <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
-         <num>
-            <t v="ANNEX"/>
-         </num>
-         <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx" kind="annex">
-               <num>
-                  <t v="‘"/>
-                  <t v="ANNEX"/>
-               </num>
-               <unit eId="anx/qstr_1/anx/level_1" kind="level" depth="1">
-                  <heading>
-                     <t v="Areas where the plan for the eradication of classical swine fever in feral pigs is to be implemented"/>
-                  </heading>
-                  <p>
-                     <t v="The territory of the county of Nógrád and the territory of the county of Pest located north and east of the Danube, south of the border with Slovakia, west of the border with the county Nógrád and north of the motorway E 71."/>
-                     <t v="’"/>
-                     <t v="."/>
-                  </p>
-               </unit>
-            </unit>
-         </quotedStructure>
-      </unit>
-   </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">
          <p>
@@ -221,5 +196,30 @@
          </p>
       </note>
    </notes>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <quotedStructure eId="anx/qstr_1">
+            <unit eId="anx/qstr_1/anx" kind="annex">
+               <num>
+                  <t v="‘"/>
+                  <t v="ANNEX"/>
+               </num>
+               <unit eId="anx/qstr_1/anx/level_1" kind="level" depth="1">
+                  <heading>
+                     <t v="Areas where the plan for the eradication of classical swine fever in feral pigs is to be implemented"/>
+                  </heading>
+                  <p>
+                     <t v="The territory of the county of Nógrád and the territory of the county of Pest located north and east of the Danube, south of the border with Slovakia, west of the border with the county Nógrád and north of the motorway E 71."/>
+                     <t v="’"/>
+                     <t v="."/>
+                  </p>
+               </unit>
+            </unit>
+         </quotedStructure>
+      </unit>
+   </annexes>
 </legalText>
 

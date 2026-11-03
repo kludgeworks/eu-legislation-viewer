@@ -674,6 +674,28 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="261"
+                 date="1993-10-20"
+                 page="1">
+               <t v="OJ L 261, 20.10.1993, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 1954/2003 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="289"
+                 date="2003-11-07"
+                 page="1">
+               <t v="OJ L 289, 7.11.2003, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -711,27 +733,5 @@
          </unit>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="261"
-                 date="1993-10-20"
-                 page="1">
-               <t v="OJ L 261, 20.10.1993, p. 1"/>
-            </ref>
-            <t v=". Regulation as last amended by Regulation (EC) No 1954/2003 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="289"
-                 date="2003-11-07"
-                 page="1">
-               <t v="OJ L 289, 7.11.2003, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

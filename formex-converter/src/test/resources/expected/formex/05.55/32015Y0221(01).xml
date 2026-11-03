@@ -514,6 +514,92 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="73"
+                 date="2006-03-25"
+                 page="21">
+               <t v="OJ C 73, 25.3.2006, p. 21"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj" series="C" number="14" date="2007-01-20" page="6">
+               <t v="OJ C 14, 20.1.2007, p. 6"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="319"
+                 date="2007-12-29"
+                 page="7">
+               <t v="OJ C 319, 29.12.2007, p. 7"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="16"
+                 date="2009-01-22"
+                 page="10">
+               <t v="OJ C 16, 22.1.2009, p. 10"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj" series="C" number="5" date="2011-01-08" page="3">
+               <t v="OJ C 5, 8.1.2011, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="187"
+                 date="2013-06-29"
+                 page="1">
+               <t v="OJ C 187, 29.6.2013, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_7" marker="7" kind="footnote">
+         <p>
+            <ref kind="oj" series="C" number="17" date="2014-01-21" page="1">
+               <t v="OJ C 17, 21.1.2014, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_8" marker="8" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="228"
+                 date="2014-07-31"
+                 page="29">
+               <t v="OJ L 228, 31.7.2014, p. 29"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -918,98 +1004,14 @@
                </tr>
             </table>
          </tableGroup>
+         <notes>
+            <note eId="note_anx01000401-1" marker="1" kind="table">
+               <p>
+                  <t v="The amounts indicated are notional for central banks which do not participate in ERM II."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="73"
-                 date="2006-03-25"
-                 page="21">
-               <t v="OJ C 73, 25.3.2006, p. 21"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj" series="C" number="14" date="2007-01-20" page="6">
-               <t v="OJ C 14, 20.1.2007, p. 6"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="319"
-                 date="2007-12-29"
-                 page="7">
-               <t v="OJ C 319, 29.12.2007, p. 7"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="16"
-                 date="2009-01-22"
-                 page="10">
-               <t v="OJ C 16, 22.1.2009, p. 10"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
-         <p>
-            <ref kind="oj" series="C" number="5" date="2011-01-08" page="3">
-               <t v="OJ C 5, 8.1.2011, p. 3"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="187"
-                 date="2013-06-29"
-                 page="1">
-               <t v="OJ C 187, 29.6.2013, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
-         <p>
-            <ref kind="oj" series="C" number="17" date="2014-01-21" page="1">
-               <t v="OJ C 17, 21.1.2014, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="228"
-                 date="2014-07-31"
-                 page="29">
-               <t v="OJ L 228, 31.7.2014, p. 29"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_anx01000401-1" marker="1" kind="table">
-         <p>
-            <t v="The amounts indicated are notional for central banks which do not participate in ERM II."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

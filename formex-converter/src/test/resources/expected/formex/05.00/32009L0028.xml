@@ -3977,6 +3977,280 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Opinion of "/>
+            <date asWritten="17 September 2008" date="2008-09-17"/>
+            <t v=" ("/>
+            <ref kind="oj"
+                 series="C"
+                 number="77"
+                 date="2009-03-31"
+                 page="43">
+               <t v="OJ C 77, 31.3.2009, p. 43"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="325"
+                 date="2008-12-19"
+                 page="12">
+               <t v="OJ C 325, 19.12.2008, p. 12"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Opinion of the European Parliament of "/>
+            <date asWritten="17 December 2008" date="2008-12-17"/>
+            <t v=" (not yet published in the Official Journal) and Council Decision of "/>
+            <date asWritten="6 April 2009" date="2009-04-06"/>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="283"
+                 date="2001-10-27"
+                 page="33">
+               <t v="OJ L 283, 27.10.2001, p. 33"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="123"
+                 date="2003-05-17"
+                 page="42">
+               <t v="OJ L 123, 17.5.2003, p. 42"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="176"
+                 date="2003-07-15"
+                 page="37">
+               <t v="OJ L 176, 15.7.2003, p. 37"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_7" marker="7" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="350"
+                 date="1998-12-28"
+                 page="58">
+               <t v="OJ L 350, 28.12.1998, p. 58"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_8" marker="8" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="219E"
+                 date="2008-08-28"
+                 page="82">
+               <t v="OJ C 219 E, 28.8.2008, p. 82"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_9" marker="9" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="1" date="2003-01-04" page="65">
+               <t v="OJ L 1, 4.1.2003, p. 65"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_10" marker="10" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="191"
+                 date="2005-07-22"
+                 page="29">
+               <t v="OJ L 191, 22.7.2005, p. 29"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_11" marker="11" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="114"
+                 date="2006-04-27"
+                 page="64">
+               <t v="OJ L 114, 27.4.2006, p. 64"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_12" marker="12" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="198"
+                 date="2006-07-20"
+                 page="18">
+               <t v="OJ L 198, 20.7.2006, p. 18"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_13" marker="13" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="204"
+                 date="1998-07-21"
+                 page="37">
+               <t v="OJ L 204, 21.7.1998, p. 37"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_14" marker="14" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="255"
+                 date="2005-09-30"
+                 page="22">
+               <t v="OJ L 255, 30.9.2005, p. 22"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_15" marker="15" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="52"
+                 date="2004-02-21"
+                 page="50">
+               <t v="OJ L 52, 21.2.2004, p. 50"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_16" marker="16" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="41"
+                 date="2003-02-14"
+                 page="26">
+               <t v="OJ L 41, 14.2.2003, p. 26"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_17" marker="17" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="184"
+                 date="1999-07-17"
+                 page="23">
+               <t v="OJ L 184, 17.7.1999, p. 23"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_18" marker="18" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="321"
+                 date="2003-12-31"
+                 page="1">
+               <t v="OJ C 321, 31.12.2003, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_19" marker="19" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="304"
+                 date="2008-11-14"
+                 page="1">
+               <t v="OJ L 304, 14.11.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_20" marker="20" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="301"
+                 date="2007-11-20"
+                 page="14">
+               <t v="OJ L 301, 20.11.2007, p. 14"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_21" marker="21" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="176"
+                 date="2003-07-15"
+                 page="57">
+               <t v="OJ L 176, 15.7.2003, p. 57"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_22" marker="22" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="30"
+                 date="2009-01-31"
+                 page="16">
+               <t v="OJ L 30, 31.1.2009, p. 16"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_23" marker="23" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="154"
+                 date="2003-06-21"
+                 page="1">
+               <t v="OJ L 154, 21.6.2003, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx_I" kind="annex" eurlexAnchor="1">
          <num>
@@ -4567,6 +4841,13 @@
                <t v=" = the share for that Member State in 2020 as indicated in the table in part A."/>
             </p>
          </unit>
+         <notes>
+            <note eId="note_anx01004601-1" marker="1" kind="footnote">
+               <p>
+                  <t v="In order to be able to achieve the national objectives set out in this Annex, it is underlined that the State aid guidelines for environmental protection recognise the continued need for national mechanisms of support for the promotion of energy from renewable sources."/>
+               </p>
+            </note>
+         </notes>
       </unit>
       <unit eId="anx_II" kind="annex" eurlexAnchor="2">
          <num>
@@ -9207,6 +9488,43 @@
                </tr>
             </table>
          </unit>
+         <notes>
+            <note eId="note_anx01005201-1" marker="*" kind="table">
+               <p>
+                  <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002 of the European Parliament and of the Council of "/>
+                  <date asWritten="3 October 2002" date="2002-10-03"/>
+                  <t v=" laying down health rules on animal by-products not intended for human consumption"/>
+                  <noteRef href="#note_anx01005201-2" marker="1"/>
+                  <t v="."/>
+               </p>
+            </note>
+            <note eId="note_anx01005201-2" marker="1" kind="footnote">
+               <p>
+                  <ref kind="oj"
+                       series="L"
+                       number="273"
+                       date="2002-10-10"
+                       page="1">
+                     <t v="OJ L 273, 10.10.2002, p. 1"/>
+                  </ref>
+                  <t v="."/>
+               </p>
+            </note>
+            <note eId="note_anx01005201-3" marker="2" kind="footnote">
+               <p>
+                  <t v="The quotient obtained by dividing the molecular weight of CO"/>
+                  <emphasis kind="sub">
+                     <t v="2"/>
+                  </emphasis>
+                  <t v=" (44,010 g/mol) by the molecular weight of carbon (12,011 g/mol) is equal to 3,664."/>
+               </p>
+            </note>
+            <note eId="note_anx01005201-4" marker="*" kind="table">
+               <p>
+                  <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002."/>
+               </p>
+            </note>
+         </notes>
       </unit>
       <unit eId="anx_VI" kind="annex" eurlexAnchor="6">
          <num>
@@ -9508,319 +9826,5 @@
          </p>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <t v="Opinion of "/>
-            <date asWritten="17 September 2008" date="2008-09-17"/>
-            <t v=" ("/>
-            <ref kind="oj"
-                 series="C"
-                 number="77"
-                 date="2009-03-31"
-                 page="43">
-               <t v="OJ C 77, 31.3.2009, p. 43"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="325"
-                 date="2008-12-19"
-                 page="12">
-               <t v="OJ C 325, 19.12.2008, p. 12"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <t v="Opinion of the European Parliament of "/>
-            <date asWritten="17 December 2008" date="2008-12-17"/>
-            <t v=" (not yet published in the Official Journal) and Council Decision of "/>
-            <date asWritten="6 April 2009" date="2009-04-06"/>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="283"
-                 date="2001-10-27"
-                 page="33">
-               <t v="OJ L 283, 27.10.2001, p. 33"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="123"
-                 date="2003-05-17"
-                 page="42">
-               <t v="OJ L 123, 17.5.2003, p. 42"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="176"
-                 date="2003-07-15"
-                 page="37">
-               <t v="OJ L 176, 15.7.2003, p. 37"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="350"
-                 date="1998-12-28"
-                 page="58">
-               <t v="OJ L 350, 28.12.1998, p. 58"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="219E"
-                 date="2008-08-28"
-                 page="82">
-               <t v="OJ C 219 E, 28.8.2008, p. 82"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="1" date="2003-01-04" page="65">
-               <t v="OJ L 1, 4.1.2003, p. 65"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="191"
-                 date="2005-07-22"
-                 page="29">
-               <t v="OJ L 191, 22.7.2005, p. 29"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="114"
-                 date="2006-04-27"
-                 page="64">
-               <t v="OJ L 114, 27.4.2006, p. 64"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="198"
-                 date="2006-07-20"
-                 page="18">
-               <t v="OJ L 198, 20.7.2006, p. 18"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="204"
-                 date="1998-07-21"
-                 page="37">
-               <t v="OJ L 204, 21.7.1998, p. 37"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="255"
-                 date="2005-09-30"
-                 page="22">
-               <t v="OJ L 255, 30.9.2005, p. 22"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="52"
-                 date="2004-02-21"
-                 page="50">
-               <t v="OJ L 52, 21.2.2004, p. 50"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="41"
-                 date="2003-02-14"
-                 page="26">
-               <t v="OJ L 41, 14.2.2003, p. 26"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="184"
-                 date="1999-07-17"
-                 page="23">
-               <t v="OJ L 184, 17.7.1999, p. 23"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_18" marker="18" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="321"
-                 date="2003-12-31"
-                 page="1">
-               <t v="OJ C 321, 31.12.2003, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_19" marker="19" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="304"
-                 date="2008-11-14"
-                 page="1">
-               <t v="OJ L 304, 14.11.2008, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_20" marker="20" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="301"
-                 date="2007-11-20"
-                 page="14">
-               <t v="OJ L 301, 20.11.2007, p. 14"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_21" marker="21" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="176"
-                 date="2003-07-15"
-                 page="57">
-               <t v="OJ L 176, 15.7.2003, p. 57"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_22" marker="22" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="30"
-                 date="2009-01-31"
-                 page="16">
-               <t v="OJ L 30, 31.1.2009, p. 16"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_23" marker="23" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="154"
-                 date="2003-06-21"
-                 page="1">
-               <t v="OJ L 154, 21.6.2003, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_anx01004601-1" marker="1" kind="footnote">
-         <p>
-            <t v="In order to be able to achieve the national objectives set out in this Annex, it is underlined that the State aid guidelines for environmental protection recognise the continued need for national mechanisms of support for the promotion of energy from renewable sources."/>
-         </p>
-      </note>
-      <note eId="note_anx01005201-1" marker="*" kind="table">
-         <p>
-            <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002 of the European Parliament and of the Council of "/>
-            <date asWritten="3 October 2002" date="2002-10-03"/>
-            <t v=" laying down health rules on animal by-products not intended for human consumption"/>
-            <noteRef href="#note_anx01005201-2" marker="1"/>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_anx01005201-2" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="273"
-                 date="2002-10-10"
-                 page="1">
-               <t v="OJ L 273, 10.10.2002, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_anx01005201-3" marker="2" kind="footnote">
-         <p>
-            <t v="The quotient obtained by dividing the molecular weight of CO"/>
-            <emphasis kind="sub">
-               <t v="2"/>
-            </emphasis>
-            <t v=" (44,010 g/mol) by the molecular weight of carbon (12,011 g/mol) is equal to 3,664."/>
-         </p>
-      </note>
-      <note eId="note_anx01005201-4" marker="*" kind="table">
-         <p>
-            <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

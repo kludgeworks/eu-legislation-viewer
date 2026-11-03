@@ -212,6 +212,52 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="209"
+                 date="2005-08-11"
+                 page="1">
+               <t v="OJ L 209, 11.8.2005, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="111"
+                 date="2009-05-05"
+                 page="44">
+               <t v="OJ L 111, 5.5.2009, p. 44"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="32" date="2010-02-04" page="6">
+               <t v="OJ L 32, 4.2.2010, p. 6"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="171"
+                 date="2006-06-23"
+                 page="90">
+               <t v="OJ L 171, 23.6.2006, p. 90"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -611,76 +657,32 @@
                </tr>
             </table>
          </tableGroup>
+         <notes>
+            <note eId="note_anx01003101-1" marker="1" kind="table">
+               <p>
+                  <t v="The reductions and suspensions are those taken into account in the payment system, to which are added in particular the corrections for the non respect of payment deadlines established in August, September and October 2008."/>
+               </p>
+            </note>
+            <note eId="note_anx01003101-2" marker="1" kind="table">
+               <p>
+                  <t v="For the calculation of the amount to be recovered from or paid to the Member State the amount taken into account is, the total of the annual declaration for the expenditure cleared (column a) or, the total of the monthly declarations for the expenditure disjoined (column b)."/>
+               </p>
+               <p>
+                  <t v="Applicable exchange rate: Article 7(2) of the Commission Regulation (EC) No 883/2006."/>
+               </p>
+            </note>
+            <note eId="note_anx01003101-3" marker="1" kind="table">
+               <p>
+                  <t v="If the Assigned revenue part would be in advantage of Member State, it has to be declared under 05 07 01 06."/>
+               </p>
+            </note>
+            <note eId="note_anx01003101-4" marker="1" kind="table">
+               <p>
+                  <t v="If the Assigned revenue part of the Sugar Fund, would be in the advantage of the Member State, it has to be declared under 05 02 16 02."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="209"
-                 date="2005-08-11"
-                 page="1">
-               <t v="OJ L 209, 11.8.2005, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="111"
-                 date="2009-05-05"
-                 page="44">
-               <t v="OJ L 111, 5.5.2009, p. 44"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="32" date="2010-02-04" page="6">
-               <t v="OJ L 32, 4.2.2010, p. 6"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="171"
-                 date="2006-06-23"
-                 page="90">
-               <t v="OJ L 171, 23.6.2006, p. 90"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_anx01003101-1" marker="1" kind="table">
-         <p>
-            <t v="The reductions and suspensions are those taken into account in the payment system, to which are added in particular the corrections for the non respect of payment deadlines established in August, September and October 2008."/>
-         </p>
-      </note>
-      <note eId="note_anx01003101-2" marker="1" kind="table">
-         <p>
-            <t v="For the calculation of the amount to be recovered from or paid to the Member State the amount taken into account is, the total of the annual declaration for the expenditure cleared (column a) or, the total of the monthly declarations for the expenditure disjoined (column b)."/>
-         </p>
-         <p>
-            <t v="Applicable exchange rate: Article 7(2) of the Commission Regulation (EC) No 883/2006."/>
-         </p>
-      </note>
-      <note eId="note_anx01003101-3" marker="1" kind="table">
-         <p>
-            <t v="If the Assigned revenue part would be in advantage of Member State, it has to be declared under 05 07 01 06."/>
-         </p>
-      </note>
-      <note eId="note_anx01003101-4" marker="1" kind="table">
-         <p>
-            <t v="If the Assigned revenue part of the Sugar Fund, would be in the advantage of the Member State, it has to be declared under 05 02 16 02."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

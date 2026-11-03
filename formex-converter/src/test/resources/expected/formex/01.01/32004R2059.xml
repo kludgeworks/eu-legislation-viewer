@@ -190,6 +190,61 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="196"
+                 date="1999-07-28"
+                 page="3">
+               <t v="OJ L 196, 28.7.1999, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="222"
+                 date="2002-08-19"
+                 page="20">
+               <t v="OJ L 222, 19.8.2002, p. 20"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="222"
+                 date="2002-08-19"
+                 page="19">
+               <t v="OJ L 222, 19.8.2002, p. 19"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="See page 23 of this Official Journal."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="222"
+                 date="2002-08-19"
+                 page="1">
+               <t v="OJ L 222, 19.8.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -277,60 +332,5 @@
          </table>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="196"
-                 date="1999-07-28"
-                 page="3">
-               <t v="OJ L 196, 28.7.1999, p. 3"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="222"
-                 date="2002-08-19"
-                 page="20">
-               <t v="OJ L 222, 19.8.2002, p. 20"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="222"
-                 date="2002-08-19"
-                 page="19">
-               <t v="OJ L 222, 19.8.2002, p. 19"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <t v="See page 23 of this Official Journal."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="222"
-                 date="2002-08-19"
-                 page="1">
-               <t v="OJ L 222, 19.8.2002, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

@@ -180,6 +180,19 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Council Decision 2009/156/EC of "/>
+            <date asWritten="21 November 2008" date="2008-11-21"/>
+            <t v=" on the signature and provisional application of the stepping stone Economic Partnership Agreement between Côte d’Ivoire, of the one part, and the European Community and its Member States, of the other part ("/>
+            <ref kind="oj" series="L" number="59" date="2009-03-03" page="1">
+               <t v="OJ L 59, 3.3.2009, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx_1" kind="annex" eurlexAnchor="1">
          <num>
@@ -3057,6 +3070,58 @@
                </p>
             </unit>
          </unit>
+         <notes>
+            <note eId="note_anx01000401-1" marker="1" kind="footnote">
+               <p>
+                  <t v="Council Regulation (EEC) No 2658/87 of "/>
+                  <date asWritten="23 July 1987" date="1987-07-23"/>
+                  <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff ("/>
+                  <ref kind="oj"
+                       series="L"
+                       number="256"
+                       date="1987-09-07"
+                       page="1">
+                     <t v="OJ EC L 256, 7.9.1987, p. 1"/>
+                  </ref>
+                  <t v="), including all subsequent amendments."/>
+               </p>
+            </note>
+            <note eId="note_anx01000401-2" marker="2" kind="footnote">
+               <p>
+                  <t v="The other West African countries are: Benin, Burkina Faso, Cape Verde, Gambia, Ghana, Guinea, Guinea-Bissau, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone and Togo."/>
+               </p>
+            </note>
+            <note eId="note_anx01000401-3" marker="3" kind="footnote">
+               <p>
+                  <t v="See Council Decision 2009/729/EC of "/>
+                  <date asWritten="13 July 2009" date="2009-07-13"/>
+                  <t v=" on the signature and provisional application of the Interim Partnership Agreement between the European Community, of the one part, and the Pacific States, of the other part ("/>
+                  <ref kind="oj"
+                       series="L"
+                       number="272"
+                       date="2009-10-16"
+                       page="1">
+                     <t v="OJ EU L 272, 16.10.2009, p. 1"/>
+                  </ref>
+                  <t v=")."/>
+               </p>
+            </note>
+            <note eId="note_anx01000401-4" marker="4" kind="footnote">
+               <p>
+                  <t v="See Commission Regulation (EEC) No 2454/93 of "/>
+                  <date asWritten="2 July 1993" date="1993-07-02"/>
+                  <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
+                  <ref kind="oj"
+                       series="L"
+                       number="253"
+                       date="1993-10-11"
+                       page="1">
+                     <t v="OJ EC L 253, 11.10.1993, p. 1"/>
+                  </ref>
+                  <t v=")."/>
+               </p>
+            </note>
+         </notes>
       </unit>
       <unit eId="anx_I-TO-PROTOCOL-1" kind="annex" eurlexAnchor="2">
          <num>
@@ -3932,6 +3997,23 @@
                </annotation>
             </annotation>
          </unit>
+         <notes>
+            <note eId="note_anx01003201-1" marker="1" kind="footnote">
+               <p>
+                  <t v="This example is given for explanatory purposes only. It is not legally binding."/>
+               </p>
+            </note>
+            <note eId="note_anx01003201-2" marker="2" kind="footnote">
+               <p>
+                  <t v="See Additional Explanatory Note 5(b) to Chapter 27 of the Combined Nomenclature."/>
+               </p>
+            </note>
+            <note eId="note_anx01003201-3" marker="3" kind="footnote">
+               <p>
+                  <t v="See Additional Explanatory Note 5(b) to Chapter 27 of the Combined Nomenclature."/>
+               </p>
+            </note>
+         </notes>
       </unit>
       <unit eId="anx_II-TO-PROTOCOL-1" kind="annex" eurlexAnchor="3">
          <num>
@@ -17028,6 +17110,311 @@
                </tr>
             </table>
          </unit>
+         <notes>
+            <note eId="note_anx01003801-1" marker="1" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-2" marker="2" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Note 7.2."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-3" marker="3" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Note 7.2."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-4" marker="4" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Note 7.2."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-5" marker="5" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-6" marker="6" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-7" marker="7" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-8" marker="8" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-9" marker="9" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-10" marker="10" kind="table">
+               <p>
+                  <t v="Note 3 to Chapter 32 says that these preparations are those of a kind used for colouring any material or used as ingredients in the manufacture of colouring preparations, provided they are not classified in another heading in Chapter 32."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-11" marker="11" kind="table">
+               <p>
+                  <t v="A "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="group"/>
+                  </quote>
+                  <t v=" is regarded as any part of the heading separated from the rest by a semi-colon."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-12" marker="12" kind="table">
+               <p>
+                  <t v="For the special conditions relating to "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="specific processes"/>
+                  </quote>
+                  <t v=", see Introductory Notes 7.1 and 7.3."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-13" marker="13" kind="table">
+               <p>
+                  <t v="In the case of the products composed of materials classified within both headings "/>
+                  <t v="3901"/>
+                  <t v=" to "/>
+                  <t v="3906"/>
+                  <t v=", on the one hand, and within headings "/>
+                  <t v="3907"/>
+                  <t v=" to "/>
+                  <t v="3911"/>
+                  <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-14" marker="14" kind="table">
+               <p>
+                  <t v="In the case of the products composed of materials classified within both headings "/>
+                  <t v="3901"/>
+                  <t v=" to "/>
+                  <t v="3906"/>
+                  <t v=", on the one hand, and within headings "/>
+                  <t v="3907"/>
+                  <t v=" to "/>
+                  <t v="3911"/>
+                  <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-15" marker="15" kind="table">
+               <p>
+                  <t v="In the case of the products composed of materials classified within both headings "/>
+                  <t v="3901"/>
+                  <t v=" to "/>
+                  <t v="3906"/>
+                  <t v=", on the one hand, and within headings "/>
+                  <t v="3907"/>
+                  <t v=" to "/>
+                  <t v="3911"/>
+                  <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-16" marker="16" kind="table">
+               <p>
+                  <t v="The following foils shall be considered as highly transparent: foils, the optical dimming of which, measured according to ASTM-D 1003-16 by Gardner Hazemeter (i.e. Hazefactor), is less than 2 %."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-17" marker="17" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-18" marker="18" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-19" marker="19" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-20" marker="20" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-21" marker="21" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-22" marker="22" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-23" marker="23" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-24" marker="24" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-25" marker="25" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-26" marker="26" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-27" marker="27" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-28" marker="28" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-29" marker="29" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-30" marker="30" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-31" marker="31" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-32" marker="32" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-33" marker="33" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-34" marker="34" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-35" marker="35" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-36" marker="36" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-37" marker="37" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-38" marker="38" kind="table">
+               <p>
+                  <t v="See Introductory Note 6."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-39" marker="39" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-40" marker="40" kind="table">
+               <p>
+                  <t v="See Introductory Note 6."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-41" marker="41" kind="table">
+               <p>
+                  <t v="See Introductory Note 6."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-42" marker="42" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-43" marker="43" kind="table">
+               <p>
+                  <t v="For knitted or crocheted articles, not elastic or rubberised, obtained by sewing or assembling pieces of knitted or crocheted fabrics (cut out or knitted directly to shape), see Introductory Note 6."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-44" marker="44" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-45" marker="45" kind="table">
+               <p>
+                  <t v="For knitted or crocheted articles, not elastic or rubberised, obtained by sewing or assembling pieces of knitted or crocheted fabrics (cut out or knitted directly to shape), see Introductory Note 6."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-46" marker="46" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+            <note eId="note_anx01003801-47" marker="47" kind="table">
+               <p>
+                  <t v="SEMII – Semiconductor Equipment and Materials Institute Incorporated."/>
+               </p>
+            </note>
+         </notes>
       </unit>
       <unit eId="anx_ii-a-to-protocol-1" kind="annex" eurlexAnchor="4">
          <num>
@@ -18465,6 +18852,13 @@
                </tr>
             </table>
          </unit>
+         <notes>
+            <note eId="note_anx01017401-1" marker="1" kind="table">
+               <p>
+                  <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
+               </p>
+            </note>
+         </notes>
       </unit>
       <unit eId="anx_III-TO-PROTOCOL-1" kind="annex" eurlexAnchor="5">
          <num>
@@ -19648,66 +20042,70 @@
          </unit>
       </unit>
       <unit eId="anx_13" kind="annex" eurlexAnchor="13">
-         <unit eId="anx_13/level_1" kind="level" depth="1">
-            <heading>
-               <t v="JOINT DECLARATION"/>
-            </heading>
-            <subheading>
-               <emphasis kind="b">
-                  <t v="concerning the Principality of Andorra"/>
-               </emphasis>
-            </subheading>
-            <p>
-               <num>
-                  <t v="1."/>
-               </num>
-               <t v="Products originating in the Principality of Andorra falling within Chapters 25 to 97 of the Harmonised System shall be accepted by Côte d'Ivoire as originating in the European Union within the meaning of this Agreement."/>
-            </p>
-            <p>
-               <num>
-                  <t v="2."/>
-               </num>
-               <t v="Protocol 1 concerning the definition of the concept of "/>
-               <quote startQuote="‘" endQuote="’">
-                  <t v="originating products"/>
-               </quote>
-               <t v=" and methods of administrative cooperation shall apply "/>
-               <emphasis kind="i">
-                  <t v="mutatis mutandis"/>
-               </emphasis>
-               <t v=" for the purpose of defining the originating status of the above-mentioned products."/>
-            </p>
-         </unit>
-         <unit eId="anx_13/level_2" kind="level" depth="1">
-            <heading>
-               <t v="JOINT DECLARATION"/>
-            </heading>
-            <subheading>
-               <emphasis kind="b">
-                  <t v="concerning the Republic of San Marino"/>
-               </emphasis>
-            </subheading>
-            <p>
-               <num>
-                  <t v="1."/>
-               </num>
-               <t v="Products originating in the Republic of San Marino shall be accepted by Côte d’Ivoire as originating in the European Union within the meaning of this Agreement."/>
-            </p>
-            <p>
-               <num>
-                  <t v="2."/>
-               </num>
-               <t v="Protocol 1 concerning the definition of the concept of "/>
-               <quote startQuote="‘" endQuote="’">
-                  <t v="originating products"/>
-               </quote>
-               <t v=" and methods of administrative cooperation shall apply "/>
-               <emphasis kind="i">
-                  <t v="mutatis mutandis"/>
-               </emphasis>
-               <t v=" for the purpose of defining the originating status of the above-mentioned products."/>
-            </p>
-         </unit>
+         <file name="L_2019222EN.01020501">
+            <unit eId="anx_13/level_1" kind="level" depth="1">
+               <heading>
+                  <t v="JOINT DECLARATION"/>
+               </heading>
+               <subheading>
+                  <emphasis kind="b">
+                     <t v="concerning the Principality of Andorra"/>
+                  </emphasis>
+               </subheading>
+               <p>
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <t v="Products originating in the Principality of Andorra falling within Chapters 25 to 97 of the Harmonised System shall be accepted by Côte d'Ivoire as originating in the European Union within the meaning of this Agreement."/>
+               </p>
+               <p>
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <t v="Protocol 1 concerning the definition of the concept of "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="originating products"/>
+                  </quote>
+                  <t v=" and methods of administrative cooperation shall apply "/>
+                  <emphasis kind="i">
+                     <t v="mutatis mutandis"/>
+                  </emphasis>
+                  <t v=" for the purpose of defining the originating status of the above-mentioned products."/>
+               </p>
+            </unit>
+         </file>
+         <file name="L_2019222EN.01020502">
+            <unit eId="anx_13/level_2" kind="level" depth="1">
+               <heading>
+                  <t v="JOINT DECLARATION"/>
+               </heading>
+               <subheading>
+                  <emphasis kind="b">
+                     <t v="concerning the Republic of San Marino"/>
+                  </emphasis>
+               </subheading>
+               <p>
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <t v="Products originating in the Republic of San Marino shall be accepted by Côte d’Ivoire as originating in the European Union within the meaning of this Agreement."/>
+               </p>
+               <p>
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <t v="Protocol 1 concerning the definition of the concept of "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="originating products"/>
+                  </quote>
+                  <t v=" and methods of administrative cooperation shall apply "/>
+                  <emphasis kind="i">
+                     <t v="mutatis mutandis"/>
+                  </emphasis>
+                  <t v=" for the purpose of defining the originating status of the above-mentioned products."/>
+               </p>
+            </unit>
+         </file>
       </unit>
       <unit eId="att_1" kind="attachment">
          <heading>
@@ -19818,391 +20216,5 @@
          </p>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <t v="Council Decision 2009/156/EC of "/>
-            <date asWritten="21 November 2008" date="2008-11-21"/>
-            <t v=" on the signature and provisional application of the stepping stone Economic Partnership Agreement between Côte d’Ivoire, of the one part, and the European Community and its Member States, of the other part ("/>
-            <ref kind="oj" series="L" number="59" date="2009-03-03" page="1">
-               <t v="OJ L 59, 3.3.2009, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx01000401-1" marker="1" kind="footnote">
-         <p>
-            <t v="Council Regulation (EEC) No 2658/87 of "/>
-            <date asWritten="23 July 1987" date="1987-07-23"/>
-            <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="256"
-                 date="1987-09-07"
-                 page="1">
-               <t v="OJ EC L 256, 7.9.1987, p. 1"/>
-            </ref>
-            <t v="), including all subsequent amendments."/>
-         </p>
-      </note>
-      <note eId="note_anx01000401-2" marker="2" kind="footnote">
-         <p>
-            <t v="The other West African countries are: Benin, Burkina Faso, Cape Verde, Gambia, Ghana, Guinea, Guinea-Bissau, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone and Togo."/>
-         </p>
-      </note>
-      <note eId="note_anx01000401-3" marker="3" kind="footnote">
-         <p>
-            <t v="See Council Decision 2009/729/EC of "/>
-            <date asWritten="13 July 2009" date="2009-07-13"/>
-            <t v=" on the signature and provisional application of the Interim Partnership Agreement between the European Community, of the one part, and the Pacific States, of the other part ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="272"
-                 date="2009-10-16"
-                 page="1">
-               <t v="OJ EU L 272, 16.10.2009, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx01000401-4" marker="4" kind="footnote">
-         <p>
-            <t v="See Commission Regulation (EEC) No 2454/93 of "/>
-            <date asWritten="2 July 1993" date="1993-07-02"/>
-            <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="253"
-                 date="1993-10-11"
-                 page="1">
-               <t v="OJ EC L 253, 11.10.1993, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx01003201-1" marker="1" kind="footnote">
-         <p>
-            <t v="This example is given for explanatory purposes only. It is not legally binding."/>
-         </p>
-      </note>
-      <note eId="note_anx01003201-2" marker="2" kind="footnote">
-         <p>
-            <t v="See Additional Explanatory Note 5(b) to Chapter 27 of the Combined Nomenclature."/>
-         </p>
-      </note>
-      <note eId="note_anx01003201-3" marker="3" kind="footnote">
-         <p>
-            <t v="See Additional Explanatory Note 5(b) to Chapter 27 of the Combined Nomenclature."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-1" marker="1" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-2" marker="2" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Note 7.2."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-3" marker="3" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Note 7.2."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-4" marker="4" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Note 7.2."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-5" marker="5" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-6" marker="6" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-7" marker="7" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-8" marker="8" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-9" marker="9" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-10" marker="10" kind="table">
-         <p>
-            <t v="Note 3 to Chapter 32 says that these preparations are those of a kind used for colouring any material or used as ingredients in the manufacture of colouring preparations, provided they are not classified in another heading in Chapter 32."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-11" marker="11" kind="table">
-         <p>
-            <t v="A "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="group"/>
-            </quote>
-            <t v=" is regarded as any part of the heading separated from the rest by a semi-colon."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-12" marker="12" kind="table">
-         <p>
-            <t v="For the special conditions relating to "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="specific processes"/>
-            </quote>
-            <t v=", see Introductory Notes 7.1 and 7.3."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-13" marker="13" kind="table">
-         <p>
-            <t v="In the case of the products composed of materials classified within both headings "/>
-            <t v="3901"/>
-            <t v=" to "/>
-            <t v="3906"/>
-            <t v=", on the one hand, and within headings "/>
-            <t v="3907"/>
-            <t v=" to "/>
-            <t v="3911"/>
-            <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-14" marker="14" kind="table">
-         <p>
-            <t v="In the case of the products composed of materials classified within both headings "/>
-            <t v="3901"/>
-            <t v=" to "/>
-            <t v="3906"/>
-            <t v=", on the one hand, and within headings "/>
-            <t v="3907"/>
-            <t v=" to "/>
-            <t v="3911"/>
-            <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-15" marker="15" kind="table">
-         <p>
-            <t v="In the case of the products composed of materials classified within both headings "/>
-            <t v="3901"/>
-            <t v=" to "/>
-            <t v="3906"/>
-            <t v=", on the one hand, and within headings "/>
-            <t v="3907"/>
-            <t v=" to "/>
-            <t v="3911"/>
-            <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-16" marker="16" kind="table">
-         <p>
-            <t v="The following foils shall be considered as highly transparent: foils, the optical dimming of which, measured according to ASTM-D 1003-16 by Gardner Hazemeter (i.e. Hazefactor), is less than 2 %."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-17" marker="17" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-18" marker="18" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-19" marker="19" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-20" marker="20" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-21" marker="21" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-22" marker="22" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-23" marker="23" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-24" marker="24" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-25" marker="25" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-26" marker="26" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-27" marker="27" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-28" marker="28" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-29" marker="29" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-30" marker="30" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-31" marker="31" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-32" marker="32" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-33" marker="33" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-34" marker="34" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-35" marker="35" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-36" marker="36" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-37" marker="37" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-38" marker="38" kind="table">
-         <p>
-            <t v="See Introductory Note 6."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-39" marker="39" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-40" marker="40" kind="table">
-         <p>
-            <t v="See Introductory Note 6."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-41" marker="41" kind="table">
-         <p>
-            <t v="See Introductory Note 6."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-42" marker="42" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-43" marker="43" kind="table">
-         <p>
-            <t v="For knitted or crocheted articles, not elastic or rubberised, obtained by sewing or assembling pieces of knitted or crocheted fabrics (cut out or knitted directly to shape), see Introductory Note 6."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-44" marker="44" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-45" marker="45" kind="table">
-         <p>
-            <t v="For knitted or crocheted articles, not elastic or rubberised, obtained by sewing or assembling pieces of knitted or crocheted fabrics (cut out or knitted directly to shape), see Introductory Note 6."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-46" marker="46" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-      <note eId="note_anx01003801-47" marker="47" kind="table">
-         <p>
-            <t v="SEMII – Semiconductor Equipment and Materials Institute Incorporated."/>
-         </p>
-      </note>
-      <note eId="note_anx01017401-1" marker="1" kind="table">
-         <p>
-            <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

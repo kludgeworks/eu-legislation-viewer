@@ -170,6 +170,56 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="102"
+                 date="2006-04-11"
+                 page="35">
+               <t v="OJ L 102, 11.4.2006, p. 35"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="99"
+                 date="2007-04-14"
+                 page="14">
+               <t v="OJ L 99, 14.4.2007, p. 14"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="102"
+                 date="2006-04-11"
+                 page="1">
+               <t v="OJ L 102, 11.4.2006, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="370"
+                 date="1985-12-31"
+                 page="8">
+               <t v="OJ L 370, 31.12.1985, p. 8"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -311,55 +361,5 @@
          </figure>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="102"
-                 date="2006-04-11"
-                 page="35">
-               <t v="OJ L 102, 11.4.2006, p. 35"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="99"
-                 date="2007-04-14"
-                 page="14">
-               <t v="OJ L 99, 14.4.2007, p. 14"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="102"
-                 date="2006-04-11"
-                 page="1">
-               <t v="OJ L 102, 11.4.2006, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="370"
-                 date="1985-12-31"
-                 page="8">
-               <t v="OJ L 370, 31.12.1985, p. 8"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

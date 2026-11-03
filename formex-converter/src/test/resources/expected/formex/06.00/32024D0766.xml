@@ -199,62 +199,6 @@
          </signatory>
       </signature>
    </conclusions>
-   <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1">
-         <num>
-            <t v="ANNEX"/>
-         </num>
-         <p>
-            <t v="The Annex to Implementing Decision (EU) 2019/1119 is amended as follows:"/>
-         </p>
-         <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point">
-               <num>
-                  <t v="1."/>
-               </num>
-               <p>
-                  <t v="in point 4.1.2, the following paragraph is added:"/>
-               </p>
-               <quotedStructure eId="anx/pnt_1/qstr_1">
-                  <p>
-                     <quote startQuote="‘" endQuote="’">
-                        <t v="Alternatively, at the request of the manufacturer, the total CO"/>
-                        <emphasis kind="sub">
-                           <t v="2"/>
-                        </emphasis>
-                        <t v=" savings of the lighting package shall be calculated in accordance with the methodology set out in point 4.1.1, with the coefficient η"/>
-                        <emphasis kind="sub">
-                           <t v="Α"/>
-                        </emphasis>
-                        <t v=" set to 1."/>
-                     </quote>
-                     <t v=";"/>
-                  </p>
-               </quotedStructure>
-            </unit>
-            <unit eId="anx/pnt_2" kind="point">
-               <num>
-                  <t v="2."/>
-               </num>
-               <p>
-                  <t v="in point 4.2.2, the following paragraph is added after Formula 9:"/>
-               </p>
-               <quotedStructure eId="anx/pnt_2/qstr_1">
-                  <p>
-                     <quote startQuote="‘" endQuote="’">
-                        <t v="If the methodology referred to in point 4.1.2, last paragraph, is applied, the statistical margin of the lighting package shall be calculated in accordance with point 4.2.1, with the coefficient η"/>
-                        <emphasis kind="sub">
-                           <t v="Α"/>
-                        </emphasis>
-                        <t v=" set to 1."/>
-                     </quote>
-                     <t v="."/>
-                  </p>
-               </quotedStructure>
-            </unit>
-         </list>
-      </unit>
-   </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">
          <p>
@@ -333,5 +277,61 @@
          </p>
       </note>
    </notes>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <p>
+            <t v="The Annex to Implementing Decision (EU) 2019/1119 is amended as follows:"/>
+         </p>
+         <list kind="arabic">
+            <unit eId="anx/pnt_1" kind="point">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="in point 4.1.2, the following paragraph is added:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_1/qstr_1">
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Alternatively, at the request of the manufacturer, the total CO"/>
+                        <emphasis kind="sub">
+                           <t v="2"/>
+                        </emphasis>
+                        <t v=" savings of the lighting package shall be calculated in accordance with the methodology set out in point 4.1.1, with the coefficient η"/>
+                        <emphasis kind="sub">
+                           <t v="Α"/>
+                        </emphasis>
+                        <t v=" set to 1."/>
+                     </quote>
+                     <t v=";"/>
+                  </p>
+               </quotedStructure>
+            </unit>
+            <unit eId="anx/pnt_2" kind="point">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="in point 4.2.2, the following paragraph is added after Formula 9:"/>
+               </p>
+               <quotedStructure eId="anx/pnt_2/qstr_1">
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="If the methodology referred to in point 4.1.2, last paragraph, is applied, the statistical margin of the lighting package shall be calculated in accordance with point 4.2.1, with the coefficient η"/>
+                        <emphasis kind="sub">
+                           <t v="Α"/>
+                        </emphasis>
+                        <t v=" set to 1."/>
+                     </quote>
+                     <t v="."/>
+                  </p>
+               </quotedStructure>
+            </unit>
+         </list>
+      </unit>
+   </annexes>
 </legalText>
 

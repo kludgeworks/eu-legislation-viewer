@@ -194,6 +194,28 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="268"
+                 date="2003-10-18"
+                 page="29">
+               <t v="OJ L 268, 18.10.2003, p. 29"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <emphasis kind="i">
+               <t v="EFSA Journal"/>
+            </emphasis>
+            <t v=" 2013; 11(1):3047."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -421,34 +443,14 @@
                </tr>
             </rowGroup>
          </table>
+         <notes>
+            <note eId="note_anx01002201-1" marker="1" kind="table">
+               <p>
+                  <t v="Details of the analytical methods are available at the following address of the European Union Reference Laboratory for Feed Additives: www.irmm.jrc.be/eurl-feed-additives"/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="268"
-                 date="2003-10-18"
-                 page="29">
-               <t v="OJ L 268, 18.10.2003, p. 29"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <emphasis kind="i">
-               <t v="EFSA Journal"/>
-            </emphasis>
-            <t v=" 2013; 11(1):3047."/>
-         </p>
-      </note>
-      <note eId="note_anx01002201-1" marker="1" kind="table">
-         <p>
-            <t v="Details of the analytical methods are available at the following address of the European Union Reference Laboratory for Feed Additives: www.irmm.jrc.be/eurl-feed-additives"/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

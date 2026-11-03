@@ -119,6 +119,8 @@
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($siblings, current())"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
+    <!-- one of an OJ act's annexes, which are files of their own (a package's), each printed with its notes -->
+    <xsl:variable name="files" as="xs:boolean" select="not($inContent or $quoted or $included or $nested) and (every $x in $fragments satisfies $x is root($x)/*)"/>
     <xsl:variable name="position" as="xs:integer" select="($annexPosition, $at, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
     <xsl:variable name="lone-unlabelled" as="xs:boolean" select="exists($at) and f:annex-label(.) = ''
         and count($siblings[f:annex-label(.) = ''][f:annex-abbr(.) = f:annex-abbr(current())]) = 1"/>
@@ -145,22 +147,50 @@
         <xsl:for-each select="$fragments">
           <xsl:variable name="i" as="xs:integer" select="position()"/>
           <xsl:variable name="own" as="processing-instruction()*" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
-          <xsl:call-template name="f:blocks">
-            <!-- the content, nested annexes and related documents, and whatever else the fragment
-                 holds besides its title and (in an OJ annex file) its bibliographic data -->
-            <xsl:with-param name="nodes" as="node()*" select="CONTENTS/node() | (* except (TITLE[1] | CONTENTS | BIB.INSTANCE))"/>
-            <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
-            <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
-            <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-            <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
-            <xsl:with-param name="levelCtx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
-            <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
-            <xsl:with-param name="earlier" as="document-node()*" select="($fragments[position() lt $i] ! root(.)) except root(.)" tunnel="yes"/>
-            <xsl:with-param name="annexFragments" as="element()*" select="$fragments" tunnel="yes"/>
-            <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
-            <!-- unnumbered top levels are numbered through all fragments -->
-            <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = ''])" tunnel="yes"/>
-          </xsl:call-template>
+          <xsl:variable name="blocks" as="node()*">
+            <xsl:call-template name="f:blocks">
+              <!-- the content, nested annexes and related documents, and whatever else the fragment
+                   holds besides its title and (in an OJ annex file) its bibliographic data -->
+              <xsl:with-param name="nodes" as="node()*" select="CONTENTS/node() | (* except (TITLE[1] | CONTENTS | BIB.INSTANCE))"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="levelBase" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="levelCtx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+              <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
+              <xsl:with-param name="earlier" as="document-node()*" select="($fragments[position() lt $i] ! root(.)) except root(.)" tunnel="yes"/>
+              <xsl:with-param name="annexFragments" as="element()*" select="$fragments" tunnel="yes"/>
+              <xsl:with-param name="labelledParent" as="xs:string?" select="()" tunnel="yes"/>
+              <!-- unnumbered top levels are numbered through all fragments -->
+              <xsl:with-param name="levelOffset" as="xs:integer?" select="count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = ''])" tunnel="yes"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:variable name="notes" as="element()?">
+            <xsl:if test="$files">
+              <xsl:call-template name="f:notes">
+                <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included(.)//NOTE[not(@NOTE.REF)]"/>
+              </xsl:call-template>
+            </xsl:if>
+          </xsl:variable>
+          <xsl:choose>
+            <!-- an annex the OJ prints across files: each under the title it repeats, its notes after it -->
+            <xsl:when test="$files and count($fragments) gt 1">
+              <file name="{replace(tokenize(base-uri(.), '/')[last()], '\.xml$', '')}">
+                <xsl:if test="$i gt 1">
+                  <xsl:call-template name="f:title">
+                    <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+                    <xsl:with-param name="title" as="element(TITLE)?" select="TITLE[1]"/>
+                    <xsl:with-param name="num-first-line" as="xs:boolean" select="not(self::GENERAL)"/>
+                    <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+                  </xsl:call-template>
+                </xsl:if>
+                <xsl:sequence select="$blocks, $notes"/>
+              </file>
+            </xsl:when>
+            <xsl:otherwise>
+              <xsl:sequence select="$blocks, $notes"/>
+            </xsl:otherwise>
+          </xsl:choose>
         </xsl:for-each>
         <xsl:for-each select="$ownAnnexes">
           <xsl:apply-templates select="." mode="annex">
@@ -408,7 +438,7 @@
           </xsl:apply-templates>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="blocks" as="element()*">
+          <xsl:variable name="blocks" as="node()*">
             <xsl:call-template name="f:blocks">
               <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
               <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>

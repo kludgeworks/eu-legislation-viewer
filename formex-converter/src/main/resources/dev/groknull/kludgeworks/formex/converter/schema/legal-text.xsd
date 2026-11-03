@@ -67,12 +67,23 @@
       <xs:element name="conclusions" type="Conclusions" minOccurs="0">
         <xs:annotation><xs:documentation>The closing formula and the signature.</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="annexes" type="Annexes" minOccurs="0">
-        <xs:annotation><xs:documentation>The annexes, in order.</xs:documentation></xs:annotation>
-      </xs:element>
-      <xs:element name="notes" type="Notes" minOccurs="0">
-        <xs:annotation><xs:documentation>The footnotes, collected from wherever they occur in the text.</xs:documentation></xs:annotation>
-      </xs:element>
+      <xs:choice minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>
+            The annexes, and the footnotes of the act's own file, collected from wherever they occur in it, printed
+            after it as the OJ prints them: before the annexes where they are files of their own (an act as
+            published: each file's notes are in its unit), else after them.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+          <xs:element name="notes" type="Notes"/>
+          <xs:element name="annexes" type="Annexes" minOccurs="0"/>
+        </xs:sequence>
+        <xs:sequence>
+          <xs:element name="annexes" type="Annexes"/>
+          <xs:element name="notes" type="Notes" minOccurs="0"/>
+        </xs:sequence>
+      </xs:choice>
     </xs:sequence>
     <xs:attribute name="act" type="Celex" use="required">
       <xs:annotation>
@@ -546,7 +557,20 @@
           <xs:element name="subheading" type="Lines" minOccurs="0">
             <xs:annotation><xs:documentation>A second heading under the first.</xs:documentation></xs:annotation>
           </xs:element>
-          <xs:group ref="blocks"/>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:group ref="blocks"/>
+            <xs:element name="notes" type="Notes">
+              <xs:annotation>
+                <xs:documentation>
+                  An annex or an attached document that is a file of its own (an act as published): the file's
+                  footnotes, after its text.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:element>
+            <xs:element name="file" type="File">
+              <xs:annotation><xs:documentation>One of the files of an annex the OJ prints across several.</xs:documentation></xs:annotation>
+            </xs:element>
+          </xs:choice>
         </xs:sequence>
         <xs:attribute name="eId" type="EId" use="required">
           <xs:annotation><xs:documentation>The unit's identifier, e.g. art_3/par_2/pnt_a or anx/pnt_1.2.2.6.</xs:documentation></xs:annotation>
@@ -580,6 +604,30 @@
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="File">
+    <xs:annotation>
+      <xs:documentation>
+        One file of an annex the OJ prints across several (2015/1998's, across four): the Publications Office's
+        cut, which EUR-Lex prints as it is, each file under the annex's title and followed by its notes. The
+        annex is one unit, its levels numbered through the files, so eIds don't depend on the cut.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="num" type="InlineContent" minOccurs="0">
+        <xs:annotation><xs:documentation>The title the file repeats ("ANNEX"); the first file's is the unit's.</xs:documentation></xs:annotation>
+      </xs:element>
+      <xs:element name="heading" type="Lines" minOccurs="0"/>
+      <xs:element name="subheading" type="Lines" minOccurs="0"/>
+      <xs:group ref="blocks"/>
+      <xs:element name="notes" type="Notes" minOccurs="0">
+        <xs:annotation><xs:documentation>The file's footnotes.</xs:documentation></xs:annotation>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="name" type="xs:string" use="required">
+      <xs:annotation><xs:documentation>The file, as the package names it, and EUR-Lex's HTML its part: L_2015299EN.01006801.</xs:documentation></xs:annotation>
+    </xs:attribute>
   </xs:complexType>
 
   <xs:simpleType name="UnitKind">

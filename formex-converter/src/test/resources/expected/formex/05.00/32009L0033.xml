@@ -1024,6 +1024,184 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="195"
+                 date="2006-08-18"
+                 page="26">
+               <t v="OJ C 195, 18.8.2006, p. 26"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="229"
+                 date="2006-09-22"
+                 page="18">
+               <t v="OJ C 229, 22.9.2006, p. 18"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Opinion of the European Parliament of "/>
+            <date asWritten="22 October 2008" date="2008-10-22"/>
+            <t v=" (not yet published in the Official Journal) and Council Decision of "/>
+            <date asWritten="30 March 2009" date="2009-03-30"/>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="242"
+                 date="2002-09-10"
+                 page="1">
+               <t v="OJ L 242, 10.9.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="134"
+                 date="2004-04-30"
+                 page="1">
+               <t v="OJ L 134, 30.4.2004, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="134"
+                 date="2004-04-30"
+                 page="114">
+               <t v="OJ L 134, 30.4.2004, p. 114"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_7" marker="7" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="263"
+                 date="2007-10-09"
+                 page="1">
+               <t v="OJ L 263, 9.10.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_8" marker="8" kind="footnote">
+         <p>
+            <t v="Bickel, P., Friedrich, R., ExternE. Externalities of Energy. Methodology 2005, update, European Commission, Publications Office, Luxembourg, 2005."/>
+         </p>
+      </note>
+      <note eId="note_9" marker="9" kind="footnote">
+         <p>
+            <t v="Holland, M., et al., (2005a). Methodology for the Cost-Benefit Analysis for CAFE: Volume 1: Overview of Methodology. AEA Technology Environment, Didcot, 2005."/>
+         </p>
+      </note>
+      <note eId="note_10" marker="10" kind="footnote">
+         <p>
+            <t v="Bickel, P., et al., HEATCO Deliverable 5. Proposal for Harmonised Guidelines, Stuttgart, 2006."/>
+         </p>
+      </note>
+      <note eId="note_11" marker="11" kind="footnote">
+         <p>
+            <ref kind="oj" series="C" number="82" date="2008-04-01" page="1">
+               <t v="OJ C 82, 1.4.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_12" marker="12" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="214"
+                 date="2008-08-09"
+                 page="3">
+               <t v="OJ L 214, 9.8.2008, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_13" marker="13" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="184"
+                 date="2008-07-22"
+                 page="13">
+               <t v="OJ C 184, 22.7.2008, p. 13"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_14" marker="14" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="184"
+                 date="1999-07-17"
+                 page="23">
+               <t v="OJ L 184, 17.7.1999, p. 23"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_15" marker="15" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="210"
+                 date="2006-07-31"
+                 page="25">
+               <t v="OJ L 210, 31.7.2006, p. 25"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_16" marker="16" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="321"
+                 date="2003-12-31"
+                 page="1">
+               <t v="OJ C 321, 31.12.2003, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_17" marker="17" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="315"
+                 date="2007-12-03"
+                 page="1">
+               <t v="OJ L 315, 3.12.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -1341,183 +1519,5 @@
          </tableGroup>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="195"
-                 date="2006-08-18"
-                 page="26">
-               <t v="OJ C 195, 18.8.2006, p. 26"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="229"
-                 date="2006-09-22"
-                 page="18">
-               <t v="OJ C 229, 22.9.2006, p. 18"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <t v="Opinion of the European Parliament of "/>
-            <date asWritten="22 October 2008" date="2008-10-22"/>
-            <t v=" (not yet published in the Official Journal) and Council Decision of "/>
-            <date asWritten="30 March 2009" date="2009-03-30"/>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="242"
-                 date="2002-09-10"
-                 page="1">
-               <t v="OJ L 242, 10.9.2002, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="134"
-                 date="2004-04-30"
-                 page="1">
-               <t v="OJ L 134, 30.4.2004, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="134"
-                 date="2004-04-30"
-                 page="114">
-               <t v="OJ L 134, 30.4.2004, p. 114"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="263"
-                 date="2007-10-09"
-                 page="1">
-               <t v="OJ L 263, 9.10.2007, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
-         <p>
-            <t v="Bickel, P., Friedrich, R., ExternE. Externalities of Energy. Methodology 2005, update, European Commission, Publications Office, Luxembourg, 2005."/>
-         </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
-         <p>
-            <t v="Holland, M., et al., (2005a). Methodology for the Cost-Benefit Analysis for CAFE: Volume 1: Overview of Methodology. AEA Technology Environment, Didcot, 2005."/>
-         </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
-         <p>
-            <t v="Bickel, P., et al., HEATCO Deliverable 5. Proposal for Harmonised Guidelines, Stuttgart, 2006."/>
-         </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
-         <p>
-            <ref kind="oj" series="C" number="82" date="2008-04-01" page="1">
-               <t v="OJ C 82, 1.4.2008, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="214"
-                 date="2008-08-09"
-                 page="3">
-               <t v="OJ L 214, 9.8.2008, p. 3"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="184"
-                 date="2008-07-22"
-                 page="13">
-               <t v="OJ C 184, 22.7.2008, p. 13"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="184"
-                 date="1999-07-17"
-                 page="23">
-               <t v="OJ L 184, 17.7.1999, p. 23"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="210"
-                 date="2006-07-31"
-                 page="25">
-               <t v="OJ L 210, 31.7.2006, p. 25"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="C"
-                 number="321"
-                 date="2003-12-31"
-                 page="1">
-               <t v="OJ C 321, 31.12.2003, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="315"
-                 date="2007-12-03"
-                 page="1">
-               <t v="OJ L 315, 3.12.2007, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

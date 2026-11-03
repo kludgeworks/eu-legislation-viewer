@@ -155,6 +155,32 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="299"
+                 date="2007-11-16"
+                 page="1">
+               <t v="OJ L 299, 16.11.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="362"
+                 date="2004-12-09"
+                 page="4">
+               <t v="OJ L 362, 9.12.2004, p. 4"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -190,31 +216,5 @@
          </quotedStructure>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="299"
-                 date="2007-11-16"
-                 page="1">
-               <t v="OJ L 299, 16.11.2007, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="362"
-                 date="2004-12-09"
-                 page="4">
-               <t v="OJ L 362, 9.12.2004, p. 4"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

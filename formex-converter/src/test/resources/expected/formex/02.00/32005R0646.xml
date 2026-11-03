@@ -128,6 +128,28 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="93" date="2003-04-10" page="3">
+               <t v="OJ L 93, 10.4.2003, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="19"
+                 date="2005-01-21"
+                 page="40">
+               <t v="OJ L 19, 21.1.2005, p. 40"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -290,27 +312,5 @@
          </tableGroup>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="93" date="2003-04-10" page="3">
-               <t v="OJ L 93, 10.4.2003, p. 3"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="19"
-                 date="2005-01-21"
-                 page="40">
-               <t v="OJ L 19, 21.1.2005, p. 40"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

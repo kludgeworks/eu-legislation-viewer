@@ -199,6 +199,48 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="301"
+                 date="1984-11-20"
+                 page="1">
+               <t v="OJ L 301, 20.11.1984, p. 1"/>
+            </ref>
+            <t v=". Regulation as last amended by Regulation (EC) No 3513/93 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="320"
+                 date="1993-12-22"
+                 page="5">
+               <t v="OJ L 320, 22.12.1993, p. 5"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="285"
+                 date="1985-10-25"
+                 page="39">
+               <t v="OJ L 285, 25.10.1985, p. 39"/>
+            </ref>
+            <t v=". Regulation amended by Regulation (EC) No 3127/94 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="330"
+                 date="1994-12-21"
+                 page="43">
+               <t v="OJ L 330, 21.12.1994, p. 43"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -313,47 +355,5 @@
          </unit>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="301"
-                 date="1984-11-20"
-                 page="1">
-               <t v="OJ L 301, 20.11.1984, p. 1"/>
-            </ref>
-            <t v=". Regulation as last amended by Regulation (EC) No 3513/93 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="320"
-                 date="1993-12-22"
-                 page="5">
-               <t v="OJ L 320, 22.12.1993, p. 5"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="285"
-                 date="1985-10-25"
-                 page="39">
-               <t v="OJ L 285, 25.10.1985, p. 39"/>
-            </ref>
-            <t v=". Regulation amended by Regulation (EC) No 3127/94 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="330"
-                 date="1994-12-21"
-                 page="43">
-               <t v="OJ L 330, 21.12.1994, p. 43"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

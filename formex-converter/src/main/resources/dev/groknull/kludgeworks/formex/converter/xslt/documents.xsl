@@ -135,6 +135,12 @@
         <xsl:with-param name="levelCtx" as="xs:string*" select="()" tunnel="yes"/>
         <xsl:with-param name="parentLevel" as="xs:string?" select="()" tunnel="yes"/>
       </xsl:call-template>
+      <!-- a document in a file of its own: the file's notes after it, before its annexes' files -->
+      <xsl:if test="$doc is root($doc)/*">
+        <xsl:call-template name="f:notes">
+          <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($doc)//NOTE[not(@NOTE.REF)]"/>
+        </xsl:call-template>
+      </xsl:if>
       <xsl:variable name="groups" as="array(element())*" select="f:annex-groups($annexes)"/>
       <xsl:for-each select="$groups">
         <xsl:variable name="fragments" as="element()*" select="?*"/>

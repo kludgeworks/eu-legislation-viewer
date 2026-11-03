@@ -172,6 +172,32 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="210"
+                 date="2008-08-06"
+                 page="1">
+               <t v="OJ L 210, 6.8.2008, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="210"
+                 date="2008-08-06"
+                 page="12">
+               <t v="OJ L 210, 6.8.2008, p. 12"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="att_1" kind="attachment">
          <heading>
@@ -884,6 +910,20 @@
             <t v="For Kongeriket Norge"/>
          </p>
          <figure src="L_2009353EN.01000703.tif" content="signature"/>
+         <notes>
+            <note eId="note_att01000301-1" marker="1" kind="footnote">
+               <p>
+                  <ref kind="oj"
+                       series="L"
+                       number="386"
+                       date="2006-12-29"
+                       page="89">
+                     <t v="OJ L 386, 29.12.2006, p. 89"/>
+                  </ref>
+                  <t v="."/>
+               </p>
+            </note>
+         </notes>
          <unit eId="att_1/att_1" kind="attachment">
             <heading>
                <t v="DECLARATION TO BE ADOPTED AT THE OCCASION OF THE SIGNATURE OF THE AGREEMENT"/>
@@ -928,43 +968,5 @@
          </unit>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="210"
-                 date="2008-08-06"
-                 page="1">
-               <t v="OJ L 210, 6.8.2008, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="210"
-                 date="2008-08-06"
-                 page="12">
-               <t v="OJ L 210, 6.8.2008, p. 12"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_att01000301-1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="386"
-                 date="2006-12-29"
-                 page="89">
-               <t v="OJ L 386, 29.12.2006, p. 89"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

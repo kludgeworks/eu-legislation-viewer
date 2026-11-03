@@ -183,6 +183,44 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="299"
+                 date="2007-11-16"
+                 page="1">
+               <t v="OJ L 299, 16.11.2007, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="238"
+                 date="2006-09-01"
+                 page="13">
+               <t v="OJ L 238, 1.9.2006, p. 13"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="90"
+                 date="2007-03-30"
+                 page="12">
+               <t v="OJ L 90, 30.3.2007, p. 12"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -350,43 +388,5 @@
          </table>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="299"
-                 date="2007-11-16"
-                 page="1">
-               <t v="OJ L 299, 16.11.2007, p. 1"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="238"
-                 date="2006-09-01"
-                 page="13">
-               <t v="OJ L 238, 1.9.2006, p. 13"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="90"
-                 date="2007-03-30"
-                 page="12">
-               <t v="OJ L 90, 30.3.2007, p. 12"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

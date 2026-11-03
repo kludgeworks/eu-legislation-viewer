@@ -170,6 +170,35 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="4" date="2019-01-07" page="43">
+               <t v="OJ L 4, 7.1.2019, p. 43"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg/2019/6/oj">
+               <t v="http://data.europa.eu/eli/reg/2019/6/oj"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) 2021/17 of "/>
+            <date asWritten="8 January 2021" date="2021-01-08"/>
+            <t v=" establishing a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6 of the European Parliament and of the Council ("/>
+            <ref kind="oj" series="L" number="7" date="2021-01-11" page="22">
+               <t v="OJ L 7, 11.1.2021, p. 22"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg_impl/2021/17/oj">
+               <t v="http://data.europa.eu/eli/reg_impl/2021/17/oj"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -206,42 +235,15 @@
                </tr>
             </table>
          </quotedStructure>
+         <notes>
+            <note eId="note_anx000201-1" marker="*" kind="table">
+               <p>
+                  <t v="The reference to a change in the administrative information of the distributor(s) applies only in those cases where the competent authority has allowed, in accordance with Regulation (EU) 2019/6, the inclusion of the information on the distributor(s)."/>
+                  <t v="’"/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj" series="L" number="4" date="2019-01-07" page="43">
-               <t v="OJ L 4, 7.1.2019, p. 43"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2019/6/oj">
-               <t v="http://data.europa.eu/eli/reg/2019/6/oj"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <t v="Commission Implementing Regulation (EU) 2021/17 of "/>
-            <date asWritten="8 January 2021" date="2021-01-08"/>
-            <t v=" establishing a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6 of the European Parliament and of the Council ("/>
-            <ref kind="oj" series="L" number="7" date="2021-01-11" page="22">
-               <t v="OJ L 7, 11.1.2021, p. 22"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg_impl/2021/17/oj">
-               <t v="http://data.europa.eu/eli/reg_impl/2021/17/oj"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx000201-1" marker="*" kind="table">
-         <p>
-            <t v="The reference to a change in the administrative information of the distributor(s) applies only in those cases where the competent authority has allowed, in accordance with Regulation (EU) 2019/6, the inclusion of the information on the distributor(s)."/>
-            <t v="’"/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

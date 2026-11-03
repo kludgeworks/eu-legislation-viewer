@@ -411,6 +411,68 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Regulation (EU) No 1380/2013 of the European Parliament and of the Council of "/>
+            <date asWritten="11 December 2013" date="2013-12-11"/>
+            <t v=" on the Common Fisheries Policy, amending Council Regulations (EC) No 1954/2003 and (EC) No 1224/2009 and repealing Council Regulations (EC) No 2371/2002 and (EC) No 639/2004 and Council Decision 2004/585/EC ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="354"
+                 date="2013-12-28"
+                 page="22">
+               <t v="OJ L 354, 28.12.2013, p. 22"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Council Regulation (EC) No 1224/2009 of "/>
+            <date asWritten="20 November 2009" date="2009-11-20"/>
+            <t v=" establishing a Community control system for ensuring compliance with the rules of the common fisheries policy, amending Regulations (EC) No 847/96, (EC) No 2371/2002, (EC) No 811/2004, (EC) No 768/2005, (EC) No 2115/2005, (EC) No 2166/2005, (EC) No 388/2006, (EC) No 509/2007, (EC) No 676/2007, (EC) No 1098/2007, (EC) No 1300/2008, (EC) No 1342/2008 and repealing Regulations (EEC) No 2847/93, (EC) No 1627/94 and (EC) No 1966/2006 ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="343"
+                 date="2009-12-22"
+                 page="1">
+               <t v="OJ L 343, 22.12.2009, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Council Regulation (EC) No 847/96 of "/>
+            <date asWritten="6 May 1996" date="1996-05-06"/>
+            <t v=" introducing additional conditions for year-to-year management of TACs and quotas ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="115"
+                 date="1996-05-09"
+                 page="3">
+               <t v="OJ L 115, 9.5.1996, p. 3"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <t v="Regulation (EU) No 1343/2011 of the European Parliament and of the Council of "/>
+            <date asWritten="13 December 2011" date="2011-12-13"/>
+            <t v=" on certain provisions for fishing in the GFCM (General Fisheries Commission for the Mediterranean) Agreement area and amending Council Regulation (EC) No 1967/2006 concerning management measures for the sustainable exploitation of fishery resources in the Mediterranean Sea ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="347"
+                 date="2011-12-30"
+                 page="44">
+               <t v="OJ L 347, 30.12.2011, p. 44"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -689,78 +751,18 @@
                </tr>
             </table>
          </unit>
+         <notes>
+            <note eId="note_anx01000401-1" marker="1" kind="table">
+               <p>
+                  <t v="No fishing activity, including transhipment, taking on board, landing and first sale shall be permitted from "/>
+                  <date asWritten="15 April" date="2014-04-15"/>
+                  <t v=" to "/>
+                  <date asWritten="15 June 2014" date="2014-06-15"/>
+                  <t v="."/>
+               </p>
+            </note>
+         </notes>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <t v="Regulation (EU) No 1380/2013 of the European Parliament and of the Council of "/>
-            <date asWritten="11 December 2013" date="2013-12-11"/>
-            <t v=" on the Common Fisheries Policy, amending Council Regulations (EC) No 1954/2003 and (EC) No 1224/2009 and repealing Council Regulations (EC) No 2371/2002 and (EC) No 639/2004 and Council Decision 2004/585/EC ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="354"
-                 date="2013-12-28"
-                 page="22">
-               <t v="OJ L 354, 28.12.2013, p. 22"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <t v="Council Regulation (EC) No 1224/2009 of "/>
-            <date asWritten="20 November 2009" date="2009-11-20"/>
-            <t v=" establishing a Community control system for ensuring compliance with the rules of the common fisheries policy, amending Regulations (EC) No 847/96, (EC) No 2371/2002, (EC) No 811/2004, (EC) No 768/2005, (EC) No 2115/2005, (EC) No 2166/2005, (EC) No 388/2006, (EC) No 509/2007, (EC) No 676/2007, (EC) No 1098/2007, (EC) No 1300/2008, (EC) No 1342/2008 and repealing Regulations (EEC) No 2847/93, (EC) No 1627/94 and (EC) No 1966/2006 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="343"
-                 date="2009-12-22"
-                 page="1">
-               <t v="OJ L 343, 22.12.2009, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <t v="Council Regulation (EC) No 847/96 of "/>
-            <date asWritten="6 May 1996" date="1996-05-06"/>
-            <t v=" introducing additional conditions for year-to-year management of TACs and quotas ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="115"
-                 date="1996-05-09"
-                 page="3">
-               <t v="OJ L 115, 9.5.1996, p. 3"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <t v="Regulation (EU) No 1343/2011 of the European Parliament and of the Council of "/>
-            <date asWritten="13 December 2011" date="2011-12-13"/>
-            <t v=" on certain provisions for fishing in the GFCM (General Fisheries Commission for the Mediterranean) Agreement area and amending Council Regulation (EC) No 1967/2006 concerning management measures for the sustainable exploitation of fishery resources in the Mediterranean Sea ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="347"
-                 date="2011-12-30"
-                 page="44">
-               <t v="OJ L 347, 30.12.2011, p. 44"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_anx01000401-1" marker="1" kind="table">
-         <p>
-            <t v="No fishing activity, including transhipment, taking on board, landing and first sale shall be permitted from "/>
-            <date asWritten="15 April" date="2014-04-15"/>
-            <t v=" to "/>
-            <date asWritten="15 June 2014" date="2014-06-15"/>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

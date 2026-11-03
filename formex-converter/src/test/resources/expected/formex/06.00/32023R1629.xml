@@ -204,6 +204,50 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="347"
+                 date="2013-12-20"
+                 page="671">
+               <t v="OJ L 347, 20.12.2013, p. 671"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Implementing Regulation (EU) 2020/761 of "/>
+            <date asWritten="17 December 2019" date="2019-12-17"/>
+            <t v=" laying down rules for the application of Regulations (EU) No 1306/2013, (EU) No 1308/2013 and (EU) No 510/2014 of the European Parliament and of the Council as regards the management system of tariff quotas with licences ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="185"
+                 date="2020-06-12"
+                 page="24">
+               <t v="OJ L 185, 12.6.2020, p. 24"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Council Decision (EU) 2023/1056 of "/>
+            <date asWritten="25 May 2023" date="2023-05-25"/>
+            <t v=" on the conclusion, on behalf of the Union, of the Agreement between the European Union and the Federative Republic of Brazil pursuant to Article XXVIII of the General Agreement on Tariffs and Trade (GATT) 1994 relating to the modification of concessions on all the tariff rate quotas included in the EU schedule CLXXV as a consequence of the United Kingdom’s withdrawal from the European Union ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="142"
+                 date="2023-06-01"
+                 page="1">
+               <t v="OJ L 142, 1.6.2023, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -1341,49 +1385,5 @@
          </list>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="347"
-                 date="2013-12-20"
-                 page="671">
-               <t v="OJ L 347, 20.12.2013, p. 671"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <t v="Commission Implementing Regulation (EU) 2020/761 of "/>
-            <date asWritten="17 December 2019" date="2019-12-17"/>
-            <t v=" laying down rules for the application of Regulations (EU) No 1306/2013, (EU) No 1308/2013 and (EU) No 510/2014 of the European Parliament and of the Council as regards the management system of tariff quotas with licences ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="185"
-                 date="2020-06-12"
-                 page="24">
-               <t v="OJ L 185, 12.6.2020, p. 24"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <t v="Council Decision (EU) 2023/1056 of "/>
-            <date asWritten="25 May 2023" date="2023-05-25"/>
-            <t v=" on the conclusion, on behalf of the Union, of the Agreement between the European Union and the Federative Republic of Brazil pursuant to Article XXVIII of the General Agreement on Tariffs and Trade (GATT) 1994 relating to the modification of concessions on all the tariff rate quotas included in the EU schedule CLXXV as a consequence of the United Kingdom’s withdrawal from the European Union ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="142"
-                 date="2023-06-01"
-                 page="1">
-               <t v="OJ L 142, 1.6.2023, p. 1"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

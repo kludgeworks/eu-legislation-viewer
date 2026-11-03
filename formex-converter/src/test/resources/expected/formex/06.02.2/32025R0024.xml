@@ -264,6 +264,63 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="212"
+                 date="2018-08-22"
+                 page="1">
+               <t v="OJ L 212, 22.8.2018, p. 1"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg/2018/1139/oj">
+               <t v="http://data.europa.eu/eli/reg/2018/1139/oj"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EU) No 965/2012 of "/>
+            <date asWritten="5 October 2012" date="2012-10-05"/>
+            <t v=" laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="296"
+                 date="2012-10-25"
+                 page="1">
+               <t v="OJ L 296, 25.10.2012, p. 1"/>
+            </ref>
+            <t v=", ELI: "/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg/2012/965/oj">
+               <t v="http://data.europa.eu/eli/reg/2012/965/oj"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <t v="Commission Delegated Regulation (EU) 2025/20 of "/>
+            <date asWritten="19 December 2024" date="2024-12-19"/>
+            <t v=" supplementing Regulation (EU) 2018/1139 of the European Parliament and of the Council by laying down requirements for the safe provision of ground handling services and for organisations providing them ("/>
+            <ref kind="uri" href="http://data.europa.eu/eli/reg_del/2025/20/oj">
+               <t v="OJ L, 2025/20, 7.3.2025, ELI: http://data.europa.eu/eli/reg_del/2025/20/oj"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="uri"
+                 href="https://www.easa.europa.eu/en/document-library/opinions/opinion-no-012024">
+               <t v="https://www.easa.europa.eu/en/document-library/opinions/opinion-no-012024"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="anx" kind="annex" eurlexAnchor="1">
          <num>
@@ -571,62 +628,5 @@
          </list>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="212"
-                 date="2018-08-22"
-                 page="1">
-               <t v="OJ L 212, 22.8.2018, p. 1"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2018/1139/oj">
-               <t v="http://data.europa.eu/eli/reg/2018/1139/oj"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
-         <p>
-            <t v="Commission Regulation (EU) No 965/2012 of "/>
-            <date asWritten="5 October 2012" date="2012-10-05"/>
-            <t v=" laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="296"
-                 date="2012-10-25"
-                 page="1">
-               <t v="OJ L 296, 25.10.2012, p. 1"/>
-            </ref>
-            <t v=", ELI: "/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg/2012/965/oj">
-               <t v="http://data.europa.eu/eli/reg/2012/965/oj"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
-         <p>
-            <t v="Commission Delegated Regulation (EU) 2025/20 of "/>
-            <date asWritten="19 December 2024" date="2024-12-19"/>
-            <t v=" supplementing Regulation (EU) 2018/1139 of the European Parliament and of the Council by laying down requirements for the safe provision of ground handling services and for organisations providing them ("/>
-            <ref kind="uri" href="http://data.europa.eu/eli/reg_del/2025/20/oj">
-               <t v="OJ L, 2025/20, 7.3.2025, ELI: http://data.europa.eu/eli/reg_del/2025/20/oj"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
-         <p>
-            <ref kind="uri"
-                 href="https://www.easa.europa.eu/en/document-library/opinions/opinion-no-012024">
-               <t v="https://www.easa.europa.eu/en/document-library/opinions/opinion-no-012024"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

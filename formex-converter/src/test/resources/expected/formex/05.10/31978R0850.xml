@@ -134,6 +134,20 @@
          </signatory>
       </signature>
    </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="300"
+                 date="1972-12-31"
+                 page="189">
+               <t v="OJ No L 300, 31. 12. 1972, p. 189"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+   </notes>
    <annexes>
       <unit eId="att_1" kind="attachment">
          <heading>
@@ -239,19 +253,5 @@
          </unit>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
-         <p>
-            <ref kind="oj"
-                 series="L"
-                 number="300"
-                 date="1972-12-31"
-                 page="189">
-               <t v="OJ No L 300, 31. 12. 1972, p. 189"/>
-            </ref>
-            <t v="."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 
