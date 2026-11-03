@@ -102,6 +102,8 @@
       <xsl:with-param name="act" as="element()" select="$main"/>
       <xsl:with-param name="annexes" as="element()*" select="$annexes"/>
       <xsl:with-param name="package" as="element(DOC)?" select="."/>
+      <!-- for an annex file to find what the package files under it -->
+      <xsl:with-param name="descriptor" as="element(DOC)" select="." tunnel="yes"/>
     </xsl:call-template>
   </xsl:template>
 

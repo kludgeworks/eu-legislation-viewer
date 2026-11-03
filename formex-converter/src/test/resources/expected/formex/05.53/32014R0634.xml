@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32014R0634"
+           kind="original"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           xml:lang="en"
+           formexVersion="05.53"
+           converter="1.0.0">
+   <source celex="32014R0634">
+      <publication series="L" number="175" date="2014-06-14" page="9"/>
+   </source>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) No 634/2014"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate asWritten="13 June 2014" date="2014-06-13"/>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="amending Regulation (EC) No 1126/2008 adopting certain international accounting standards in accordance with Regulation (EC) No 1606/2002 of the European Parliament and of the Council as regards Interpretation 21 of the International Financial Reporting Interpretations Committee"/>
+            </docPurpose>
+         </p>
+         <p>
+            <t v="(Text with EEA relevance)"/>
+         </p>
+      </longTitle>
+   </preface>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN COMMISSION,"/>
+         </p>
+      </formula>
+      <citations>
+         <unit eId="pbl_1/cit_1" kind="citation">
+            <p>
+               <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/cit_2" kind="citation">
+            <p>
+               <t v="Having regard to Regulation (EC) No 1606/2002 of the European Parliament and of the Council of "/>
+               <date asWritten="19 July 2002" date="2002-07-19"/>
+               <t v=" on the application of international accounting standards"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", and in particular Article 3(1) thereof,"/>
+            </p>
+         </unit>
+      </citations>
+      <recitals>
+         <intro>
+            <p>
+               <t v="Whereas:"/>
+            </p>
+         </intro>
+         <unit eId="pbl_1/rct_1" kind="recital">
+            <num>
+               <t v="(1)"/>
+            </num>
+            <p>
+               <t v="By Commission Regulation (EC) No 1126/2008"/>
+               <noteRef href="#note_2" marker="2"/>
+               <t v=" certain international standards and interpretations that were in existence at "/>
+               <date asWritten="15 October 2008" date="2008-10-15"/>
+               <t v=" were adopted."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_2" kind="recital">
+            <num>
+               <t v="(2)"/>
+            </num>
+            <p>
+               <t v="On "/>
+               <date asWritten="20 May 2013" date="2013-05-20"/>
+               <t v=" the International Accounting Standards Board issued Interpretation 21 of the International Financial Reporting Interpretations Committee (IFRIC) "/>
+               <emphasis kind="i">
+                  <t v="Levies"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_3" kind="recital">
+            <num>
+               <t v="(3)"/>
+            </num>
+            <p>
+               <t v="In the application of International Accounting Standard 37 "/>
+               <emphasis kind="i">
+                  <t v="Provisions, contingent liabilities and contingent assets"/>
+               </emphasis>
+               <t v=" different practices have evolved regarding the timing of when an entity recognises a liability to pay a levy."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_4" kind="recital">
+            <num>
+               <t v="(4)"/>
+            </num>
+            <p>
+               <t v="The objective of the IFRIC Interpretation 21 is to provide guidance on the appropriate accounting treatment of levies that are within the scope of International Accounting Standard 37, in order to increase the comparability of financial statements for users."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_5" kind="recital">
+            <num>
+               <t v="(5)"/>
+            </num>
+            <p>
+               <t v="The consultation with the Technical Expert Group of the European Financial Reporting Advisory Group confirms that IFRIC Interpretation 21 meets the technical criteria for adoption set out in Article 3(2) of Regulation (EC) No 1606/2002."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_6" kind="recital">
+            <num>
+               <t v="(6)"/>
+            </num>
+            <p>
+               <t v="Regulation (EC) No 1126/2008 should therefore be amended accordingly."/>
+            </p>
+         </unit>
+         <unit eId="pbl_1/rct_7" kind="recital">
+            <num>
+               <t v="(7)"/>
+            </num>
+            <p>
+               <t v="The measures provided for in this Regulation are in accordance with the opinion of the Accounting Regulatory Committee,"/>
+            </p>
+         </unit>
+      </recitals>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAS ADOPTED THIS REGULATION:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
+      <unit eId="art_1" kind="article" rank="1">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <p>
+            <t v="In the Annex to Regulation (EC) No 1126/2008, IFRIC Interpretation 21 "/>
+            <emphasis kind="i">
+               <t v="Levies"/>
+            </emphasis>
+            <t v=" is inserted as set out in the Annex to this Regulation."/>
+         </p>
+      </unit>
+      <unit eId="art_2" kind="article" rank="1">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <p>
+            <t v="Each company shall apply IFRIC Interpretation 21 "/>
+            <emphasis kind="i">
+               <t v="Levies"/>
+            </emphasis>
+            <t v=", at the latest, as from the commencement date of its first financial year starting on or after "/>
+            <date asWritten="17 June 2014" date="2014-06-17"/>
+            <t v="."/>
+         </p>
+      </unit>
+      <unit eId="art_3" kind="article" rank="1">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <p>
+            <t v="This Regulation shall enter into force on the third day following that of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+      <signature>
+         <placeAndDate>
+            <t v="Done at Brussels, "/>
+            <date asWritten="13 June 2014" date="2014-06-13"/>
+            <t v="."/>
+         </placeAndDate>
+         <signatory>
+            <organization>
+               <emphasis kind="i">
+                  <t v="For the Commission"/>
+               </emphasis>
+            </organization>
+            <role>
+               <emphasis kind="i">
+                  <t v="The President"/>
+               </emphasis>
+            </role>
+            <person>
+               <t v="José Manuel "/>
+               <emphasis kind="uc">
+                  <t v="Barroso"/>
+               </emphasis>
+            </person>
+         </signatory>
+      </signature>
+   </conclusions>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="243"
+                 date="2002-09-11"
+                 page="1">
+               <t v="OJ L 243, 11.9.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <t v="Commission Regulation (EC) No 1126/2008 of "/>
+            <date asWritten="3 November 2008" date="2008-11-03"/>
+            <t v=" adopting certain international accounting standards in accordance with Regulation (EC) No 1606/2002 of the European Parliament and of the Council ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="320"
+                 date="2008-11-29"
+                 page="1">
+               <t v="OJ L 320, 29.11.2008, p. 1"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <subheading>
+            <t v="INTERNATIONAL ACCOUNTING STANDARDS"/>
+         </subheading>
+         <unit eId="anx/pnt_IFRIC-21"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <emphasis kind="b">
+                  <t v="IFRIC 21"/>
+               </emphasis>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="IFRIC Interpretation 21 "/>
+                  <emphasis kind="i">
+                     <t v="Levies"/>
+                  </emphasis>
+               </emphasis>
+               <noteRef href="#note_anx01001101-1" marker="*"/>
+            </heading>
+         </unit>
+         <unit eId="anx/pnt_IFRIC-21/level_1" kind="level" depth="2" rank="3">
+            <heading>
+               <t v="REFERENCES"/>
+            </heading>
+            <list kind="definition">
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_1" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 1"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Presentation of Financial Statements"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_2" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 8"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Accounting Policies, Changes in Accounting Estimates and Errors"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_3" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 12"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Income Taxes"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_4" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 20"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Accounting for Governments Grants and Disclosures of Government Assistance"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_5" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 24"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Related Party Disclosures"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_6" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 34"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Interim Financial Reporting"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_7" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IAS 37"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Provisions, Contingent Liabilities and Contingent Assets"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_IFRIC-21/level_1/def_8" kind="definition">
+                  <num>
+                     <t v="—"/>
+                  </num>
+                  <heading>
+                     <t v="IFRIC 6"/>
+                  </heading>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Liabilities arising from Participating in a Specific Market—Waste Electrical and Electronic Equipment"/>
+                     </emphasis>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx/pnt_IFRIC-21/level_2" kind="level" depth="2" rank="3">
+            <heading>
+               <t v="BACKGROUND"/>
+            </heading>
+            <unit eId="anx/pnt_IFRIC-21/level_2/pnt_1" kind="point" numbered="true">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="A government may impose a levy on an entity. The IFRS Interpretations Committee received requests for guidance on the accounting for levies in the financial statements of the entity that is paying the levy. The question relates to when to recognise a liability to pay a levy that is accounted for in accordance with IAS 37 "/>
+                  <emphasis kind="i">
+                     <t v="Provisions, Contingent Liabilities and Contingent Assets"/>
+                  </emphasis>
+                  <t v="."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="anx/pnt_IFRIC-21/level_3" kind="level" depth="2" rank="3">
+            <heading>
+               <t v="SCOPE"/>
+            </heading>
+            <unit eId="anx/pnt_IFRIC-21/level_3/pnt_2" kind="point" numbered="true">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="This Interpretation addresses the accounting for a liability to pay a levy if that liability is within the scope of IAS 37. It also addresses the accounting for a liability to pay a levy whose timing and amount is certain."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_3/pnt_3" kind="point" numbered="true">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="This Interpretation does not address the accounting for the costs that arise from recognising a liability to pay a levy. Entities should apply other Standards to decide whether the recognition of a liability to pay a levy gives rise to an asset or an expense."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_3/pnt_4" kind="point" numbered="true">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="For the purposes of this Interpretation, a levy is an outflow of resources embodying economic benefits that is imposed by governments on entities in accordance with legislation (i.e. laws and/or regulations), other than:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx/pnt_IFRIC-21/level_3/pnt_4/pnt_a"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="those outflows of resources that are within the scope of other Standards (such as income taxes that are within the scope of IAS 12 "/>
+                        <emphasis kind="i">
+                           <t v="Income Taxes"/>
+                        </emphasis>
+                        <t v="); and"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_3/pnt_4/pnt_b"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="fines or other penalties that are imposed for breaches of the legislation."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Government"/>
+                  </quote>
+                  <t v=" refers to government, government agencies and similar bodies whether local, national or international."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_3/pnt_5" kind="point" numbered="true">
+               <num>
+                  <t v="5."/>
+               </num>
+               <p>
+                  <t v="A payment made by an entity for the acquisition of an asset, or for the rendering of services under a contractual agreement with a government, does not meet the definition of a levy."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_3/pnt_6" kind="point" numbered="true">
+               <num>
+                  <t v="6."/>
+               </num>
+               <p>
+                  <t v="An entity is not required to apply this Interpretation to liabilities that arise from emissions trading schemes."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="anx/pnt_IFRIC-21/level_4" kind="level" depth="2" rank="3">
+            <heading>
+               <t v="ISSUES"/>
+            </heading>
+            <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7" kind="point" numbered="true">
+               <num>
+                  <t v="7."/>
+               </num>
+               <p>
+                  <t v="To clarify the accounting for a liability to pay a levy, this Interpretation addresses the following issues:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7/pnt_a"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="what is the obligating event that gives rise to the recognition of a liability to pay a levy?"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7/pnt_b"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="does economic compulsion to continue to operate in a future period create a constructive obligation to pay a levy that will be triggered by operating in that future period?"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7/pnt_c"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="does the going concern assumption imply that an entity has a present obligation to pay a levy that will be triggered by operating in a future period?"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7/pnt_d"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="does the recognition of a liability to pay a levy arise at a point in time or does it, in some circumstances, arise progressively over time?"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7/pnt_e"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(e)"/>
+                     </num>
+                     <p>
+                        <t v="what is the obligating event that gives rise to the recognition of a liability to pay a levy that is triggered if a minimum threshold is reached?"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_4/pnt_7/pnt_f"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(f)"/>
+                     </num>
+                     <p>
+                        <t v="are the principles for recognising in the annual financial statements and in the interim financial report a liability to pay a levy the same?"/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+         <unit eId="anx/pnt_IFRIC-21/level_5" kind="level" depth="2" rank="3">
+            <heading>
+               <t v="CONSENSUS"/>
+            </heading>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_8" kind="point" numbered="true">
+               <num>
+                  <t v="8."/>
+               </num>
+               <p>
+                  <t v="The obligating event that gives rise to a liability to pay a levy is the activity that triggers the payment of the levy, as identified by the legislation. For example, if the activity that triggers the payment of the levy is the generation of revenue in the current period and the calculation of that levy is based on the revenue that was generated in a previous period, the obligating event for that levy is the generation of revenue in the current period. The generation of revenue in the previous period is necessary, but not sufficient, to create a present obligation."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_9" kind="point" numbered="true">
+               <num>
+                  <t v="9."/>
+               </num>
+               <p>
+                  <t v="An entity does not have a constructive obligation to pay a levy that will be triggered by operating in a future period as a result of the entity being economically compelled to continue to operate in that future period."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_10" kind="point" numbered="true">
+               <num>
+                  <t v="10."/>
+               </num>
+               <p>
+                  <t v="The preparation of financial statements under the going concern assumption does not imply that an entity has a present obligation to pay a levy that will be triggered by operating in a future period."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_11" kind="point" numbered="true">
+               <num>
+                  <t v="11."/>
+               </num>
+               <p>
+                  <t v="The liability to pay a levy is recognised progressively if the obligating event occurs over a period of time (i.e. if the activity that triggers the payment of the levy, as identified by the legislation, occurs over a period of time). For example, if the obligating event is the generation of revenue over a period of time, the corresponding liability is recognised as the entity generates that revenue."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_12" kind="point" numbered="true">
+               <num>
+                  <t v="12."/>
+               </num>
+               <p>
+                  <t v="If an obligation to pay a levy is triggered when a minimum threshold is reached, the accounting for the liability that arises from that obligation shall be consistent with the principles established in paragraphs 8-14 of this Interpretation (in particular, paragraphs 8 and 11). For example, if the obligating event is the reaching of a minimum activity threshold (such as a minimum amount of revenue or sales generated or outputs produced), the corresponding liability is recognised when that minimum activity threshold is reached."/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_13" kind="point" numbered="true">
+               <num>
+                  <t v="13."/>
+               </num>
+               <p>
+                  <t v="An entity shall apply the same recognition principles in the interim financial report that it applies in the annual financial statements. As a result, in the interim financial report, a liability to pay a levy:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx/pnt_IFRIC-21/level_5/pnt_13/pnt_a"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="shall not be recognised if there is no present obligation to pay the levy at the end of the interim reporting period; and"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/pnt_IFRIC-21/level_5/pnt_13/pnt_b"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="shall be recognised if a present obligation to pay the levy exists at the end of the interim reporting period."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx/pnt_IFRIC-21/level_5/pnt_14" kind="point" numbered="true">
+               <num>
+                  <t v="14."/>
+               </num>
+               <p>
+                  <t v="An entity shall recognise an asset if it has prepaid a levy but does not yet have a present obligation to pay that levy."/>
+               </p>
+            </unit>
+         </unit>
+         <notes>
+            <note eId="note_anx01001101-1" marker="*" kind="footnote">
+               <p>
+                  <emphasis kind="b">
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Reproduction allowed within the European Economic Area. All existing rights reserved outside the EEA, with the exception of the right to reproduce for the purposes of personal use or other fair dealing. Further information can be obtained from the IASB at www.iasb.org"/>
+                     </quote>
+                  </emphasis>
+               </p>
+            </note>
+         </notes>
+         <unit eId="anx/app" kind="annex" rank="2">
+            <num>
+               <t v="Appendix A"/>
+            </num>
+            <unit eId="anx/app/level_1" kind="level" depth="1" rank="3">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Effective date and transition"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <emphasis kind="i">
+                     <t v="This appendix is an integral part of the Interpretation and has the same authority as the other parts of the Interpretation."/>
+                  </emphasis>
+               </p>
+               <list kind="definition">
+                  <unit eId="anx/app/level_1/def_1" kind="definition">
+                     <heading>
+                        <t v="A1"/>
+                     </heading>
+                     <p>
+                        <t v="An entity shall apply this Interpretation for annual periods beginning on or after "/>
+                        <date asWritten="1 January 2014" date="2014-01-01"/>
+                        <t v=". Earlier application is permitted. If an entity applies this Interpretation for an earlier period, it shall disclose that fact."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app/level_1/def_2" kind="definition">
+                     <heading>
+                        <t v="A2"/>
+                     </heading>
+                     <p>
+                        <t v="Changes in accounting policies resulting from the initial application of this Interpretation shall be accounted for retrospectively in accordance with IAS 8 "/>
+                        <emphasis kind="i">
+                           <t v="Accounting Policies, Changes in Accounting Estimates and Errors"/>
+                        </emphasis>
+                        <t v="."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+      </unit>
+   </annexes>
+</legalText>
+

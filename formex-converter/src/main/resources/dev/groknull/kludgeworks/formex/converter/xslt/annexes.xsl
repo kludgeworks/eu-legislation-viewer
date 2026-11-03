@@ -52,6 +52,25 @@
 
   <xsl:mode name="annex" on-no-match="fail" on-multiple-match="fail"/>
 
+  <!-- what an OJ act's package files under some of its annex files (the DOC.SUB.PUB in their
+       entries), in order -->
+  <xsl:function name="f:filed-under" as="element(DOC.SUB.PUB)*">
+    <xsl:param name="descriptor" as="element(DOC)?"/>
+    <xsl:param name="files" as="element()*"/>
+    <xsl:sequence select="$descriptor/FMX//DOC.SUB.PUB[REF.PHYS/@FILE = $files ! tokenize(base-uri(.), '/')[last()]]/DOC.SUB.PUB"/>
+  </xsl:function>
+
+  <!-- the files that continue annex files: an untitled annex file filed under one is the rest of
+       it, which the OJ printed across files (ESA 2010's Annex A, chapter by chapter), and so on
+       down; a titled one is an annex of its own -->
+  <xsl:function name="f:continuations" as="element()*">
+    <xsl:param name="descriptor" as="element(DOC)?"/>
+    <xsl:param name="files" as="element()*"/>
+    <xsl:for-each select="f:filed-under($descriptor, $files)[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)[not(normalize-space(TITLE))]">
+      <xsl:sequence select=". , f:continuations($descriptor, .)"/>
+    </xsl:for-each>
+  </xsl:function>
+
   <!-- an annex met inside content: a nested annex, its own fragment, under the eId of what holds it
        (an annex, or a level of one: anx/level_PART-10/anx_1) -->
   <xsl:template match="CONS.ANNEX | ANNEX | CONS.DOC.GEN[@TYPE = 'ANNEX'][parent::CONS.DOC.GEN]" mode="block">
@@ -116,12 +135,18 @@
     <xsl:param name="holder" as="element()?"/>
     <!-- a treaty's protocol: the annexes printed after it, which are its own (pro_3/anx_I) -->
     <xsl:param name="ownAnnexes" as="element()*" select="()"/>
+    <!-- an OJ act's package descriptor, which lists what it files under an annex -->
+    <xsl:param name="descriptor" as="element(DOC)?" tunnel="yes"/>
+    <!-- whether EUR-Lex anchors it: not an annex filed under another, which it prints unanchored -->
+    <xsl:param name="anchored" as="xs:boolean" select="true()"/>
     <xsl:variable name="siblings" as="element()*" select="$holder ! f:annex-siblings(.)"/>
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($siblings, current())"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
     <!-- one of an OJ act's annexes, which are files of their own (a package's), each printed with its notes -->
     <xsl:variable name="files" as="xs:boolean" select="not($inContent or $quoted or $included or $nested) and (every $x in $fragments satisfies $x is root($x)/*)"/>
+    <!-- with the files the package continues it in -->
+    <xsl:variable name="parts" as="element()*" select="if ($files) then ($fragments, f:continuations($descriptor, $fragments)) else $fragments"/>
     <xsl:variable name="position" as="xs:integer" select="($annexPosition, $at, count(preceding-sibling::*[self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) + 1)[1]"/>
     <xsl:variable name="lone-unlabelled" as="xs:boolean" select="exists($at) and f:annex-label(.) = ''
         and count($siblings[f:annex-label(.) = ''][f:annex-abbr(.) = f:annex-abbr(current())]) = 1"/>
@@ -133,7 +158,7 @@
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="annex">
         <!-- EUR-Lex anchors the act's own annexes, not those it quotes or an annex includes -->
-        <xsl:if test="not($quoted or $included)">
+        <xsl:if test="not($quoted or $included) and $anchored">
           <xsl:attribute name="eurlexAnchor" select="($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]"/>
         </xsl:if>
         <xsl:sequence select="f:provenance($m)"/>
@@ -145,7 +170,7 @@
           <xsl:with-param name="num-first-line" as="xs:boolean" select="not(self::GENERAL)"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
-        <xsl:for-each select="$fragments">
+        <xsl:for-each select="$parts">
           <xsl:variable name="i" as="xs:integer" select="position()"/>
           <xsl:variable name="own" as="processing-instruction()*" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
           <xsl:variable name="blocks" as="node()*">
@@ -156,8 +181,8 @@
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids(($m, $own)))" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="$own" tunnel="yes"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-              <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'offset': count($fragments[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = '']), 'earlier': ($fragments[position() lt $i] ! root(.)) except root(.), 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
-              <xsl:with-param name="annexFragments" as="element()*" select="$fragments" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'offset': count($parts[position() lt $i]/CONTENTS/GR.SEQ[f:level-label(.) = '']), 'earlier': ($parts[position() lt $i] ! root(.)) except root(.), 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
+              <xsl:with-param name="annexFragments" as="element()*" select="$parts" tunnel="yes"/>
               <!-- unnumbered top levels are numbered through all fragments -->
             </xsl:call-template>
           </xsl:variable>
@@ -170,7 +195,7 @@
           </xsl:variable>
           <xsl:choose>
             <!-- an annex the OJ prints across files: each under the title it repeats, its notes after it -->
-            <xsl:when test="$files and count($fragments) gt 1">
+            <xsl:when test="$files and count($parts) gt 1">
               <file name="{replace(tokenize(base-uri(.), '/')[last()], '\.xml$', '')}">
                 <xsl:if test="$i gt 1">
                   <xsl:call-template name="f:title">
@@ -196,6 +221,31 @@
             <xsl:with-param name="annexBase" as="xs:string?" select="$eid" tunnel="yes"/>
             <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
             <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+            <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+        <!-- what else the package files under it: its own annexes, appendices mostly (anx_A/app_1),
+             then its attached documents (anx_A/att_1) -->
+        <xsl:variable name="entries" as="element(DOC.SUB.PUB)*" select="if ($files) then f:filed-under($descriptor, $parts) else ()"/>
+        <xsl:variable name="groups" as="array(element())*" select="
+            f:annex-groups(($entries[@TYPE = 'ANNEX'][not(f:is-attachment(.))]/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)) except $parts)"/>
+        <xsl:for-each select="$groups">
+          <xsl:variable name="own" as="element()*" select="?*"/>
+          <xsl:apply-templates select="$own[1]" mode="annex">
+            <xsl:with-param name="fragments" as="element()*" select="$own"/>
+            <xsl:with-param name="annexCount" as="xs:integer?" select="count($groups)"/>
+            <xsl:with-param name="unlabelledCount" as="xs:integer?" select="count($groups[f:annex-label(?1) = ''])"/>
+            <xsl:with-param name="annexPosition" as="xs:integer?" select="position()"/>
+            <xsl:with-param name="anchored" as="xs:boolean" select="false()"/>
+            <xsl:with-param name="annexBase" as="xs:string?" select="$eid" tunnel="yes"/>
+            <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
+            <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+            <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          </xsl:apply-templates>
+        </xsl:for-each>
+        <xsl:for-each select="$entries[f:is-attachment(.)]">
+          <xsl:apply-templates select="." mode="attachment">
+            <xsl:with-param name="eid" as="xs:string" select="f:eid($eid, 'att', string(position()))"/>
             <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           </xsl:apply-templates>
         </xsl:for-each>
