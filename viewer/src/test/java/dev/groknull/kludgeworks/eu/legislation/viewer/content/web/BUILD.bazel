@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+load("@rules_java//java:defs.bzl", "java_binary")
 
 # The legal text's templates on the converter's samples: one each, and running text as it reads
 java_test_suite(
@@ -26,5 +27,20 @@ java_test_suite(
         "@maven//:org_jsoup_jsoup",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_junit_jupiter_junit_jupiter_params",
+    ],
+)
+
+# Renders a folder of legal texts as the viewer shows them, a page each (mise run text:survey)
+java_binary(
+    name = "render_texts",
+    testonly = True,
+    srcs = ["RenderTexts.java"],
+    main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.content.web.RenderTexts",
+    runtime_deps = ["//viewer/src/main/jte"],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
+        "@maven//:gg_jte_jte_runtime",
     ],
 )

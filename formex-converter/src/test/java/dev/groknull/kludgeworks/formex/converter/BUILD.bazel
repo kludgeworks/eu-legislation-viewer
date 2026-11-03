@@ -55,6 +55,18 @@ java_binary(
     ],
 )
 
+# Converts the manifestations a list names, from the corpus mirror, into one folder (mise run
+# text:survey)
+java_binary(
+    name = "convert_texts",
+    testonly = True,
+    main_class = "dev.groknull.kludgeworks.formex.converter.ConvertTexts",
+    runtime_deps = [
+        ":converter-test-lib",
+        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+    ],
+)
+
 # The corpus test's classes, on their own so that every build compiles them: the test that runs
 # them is manual, and nothing else would. CorpusEngine, a JUnit Platform engine, is registered as a
 # service: only the corpus target has it
