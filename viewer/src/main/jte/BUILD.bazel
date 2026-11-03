@@ -3,11 +3,11 @@ load("//tools/build:defs.bzl", "jte_library")
 
 # The pages and the legal text's templates, precompiled, with jte-models' typed facade (Templates):
 # layout/ the page shell, catalogue/ the catalogue's pages, legal/ one per legal-text element
-# (LegalRenderer)
+# (LegalRenderer), legalpart/ the parts of the legal text that aren't an element's, which legal/ calls
 jte_library(
     name = "jte",
     srcs = glob(["**/*.jte"]),
-    models_exclude = "gg\\.jte\\.generated\\.precompiled\\.legal\\..*",  # rendered by name, by LegalRenderer
+    models_exclude = "gg\\.jte\\.generated\\.precompiled\\.legal(part)?\\..*",  # rendered by name, by LegalRenderer, or by legal/
     root = ".",
     visibility = ["//viewer:__subpackages__"],
     deps = [

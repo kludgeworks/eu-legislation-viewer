@@ -5,8 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import gg.jte.Content;
 import gg.jte.TemplateEngine;
 import gg.jte.TemplateOutput;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -24,39 +22,6 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class LegalRenderer {
-  /**
-   * The Official Journal's name in each of its languages, as its header prints it: since the Treaty
-   * of Nice (1 February 2003), of the European Union.
-   */
-  private static final Map<String, String> JOURNAL =
-      Map.ofEntries(
-          Map.entry("bg", "Официален вестник на Европейския съюз"),
-          Map.entry("cs", "Úřední věstník Evropské unie"),
-          Map.entry("da", "Den Europæiske Unions Tidende"),
-          Map.entry("de", "Amtsblatt der Europäischen Union"),
-          Map.entry("el", "Επίσημη Εφημερίδα της Ευρωπαϊκής Ένωσης"),
-          Map.entry("en", "Official Journal of the European Union"),
-          Map.entry("es", "Diario Oficial de la Unión Europea"),
-          Map.entry("et", "Euroopa Liidu Teataja"),
-          Map.entry("fi", "Euroopan unionin virallinen lehti"),
-          Map.entry("fr", "Journal officiel de l'Union européenne"),
-          Map.entry("ga", "Iris Oifigiúil an Aontais Eorpaigh"),
-          Map.entry("hr", "Službeni list Europske unije"),
-          Map.entry("hu", "Az Európai Unió Hivatalos Lapja"),
-          Map.entry("it", "Gazzetta ufficiale dell'Unione europea"),
-          Map.entry("lt", "Europos Sąjungos oficialusis leidinys"),
-          Map.entry("lv", "Eiropas Savienības Oficiālais Vēstnesis"),
-          Map.entry("mt", "Il-Ġurnal Uffiċjali tal-Unjoni Ewropea"),
-          Map.entry("nl", "Publicatieblad van de Europese Unie"),
-          Map.entry("pl", "Dziennik Urzędowy Unii Europejskiej"),
-          Map.entry("pt", "Jornal Oficial da União Europeia"),
-          Map.entry("ro", "Jurnalul Oficial al Uniunii Europene"),
-          Map.entry("sk", "Úradný vestník Európskej únie"),
-          Map.entry("sl", "Uradni list Evropske unije"),
-          Map.entry("sv", "Europeiska unionens officiella tidning"));
-
-  private static final LocalDate NICE = LocalDate.of(2003, 2, 1);
-  private static final DateTimeFormatter HEADER_DATE = DateTimeFormatter.ofPattern("d.M.yyyy");
   private static final Pattern WHOLE = Pattern.compile("[1-9][0-9]{3,}");
 
   private final TemplateEngine templates;
@@ -98,30 +63,6 @@ public class LegalRenderer {
         element.children().stream()
             .filter(child -> !named.contains(child.name()))
             .forEach(child -> render(child, element.name(), out));
-  }
-
-  /** {@code element}'s first child named {@code name}; none if it has none. */
-  public @Nullable Element child(Element element, String name) {
-    return element.children().stream()
-        .filter(child -> child.name().equals(name))
-        .findFirst()
-        .orElse(null);
-  }
-
-  /**
-   * The Official Journal's name in {@code language} (xml:lang: en) on {@code date} (ISO), as its
-   * header prints it; none before 2003, when it was the Communities', or in a language it isn't in.
-   */
-  public @Nullable String journal(@Nullable String language, @Nullable String date) {
-    if (language == null || date == null || LocalDate.parse(date).isBefore(NICE)) {
-      return null;
-    }
-    return JOURNAL.get(language);
-  }
-
-  /** A date (ISO) as the Official Journal's header prints it: 14.11.2015. */
-  public String journalDate(String date) {
-    return LocalDate.parse(date).format(HEADER_DATE);
   }
 
   /**

@@ -1,5 +1,0 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
-@param Element node
-@param LegalRenderer html
-<%-- not an element's: the head of the Official Journal's page an act as published starts on (oj-hd-*), from its source's publication: date, language, the Journal, issue and page --%>!{var source = html.child(node, "source");}!{var publication = source == null ? null : html.child(source, "publication");}!{var journal = publication == null ? null : html.journal(node.attribute("xml:lang"), publication.attribute("date"));}@if(journal != null && publication.attribute("number") != null && publication.attribute("page") != null)<header class="journal-header"><span class="journal-date">${html.journalDate(publication.attribute("date"))}</span><span class="journal-language">${node.attribute("xml:lang").toUpperCase(java.util.Locale.ROOT)}</span><span class="journal-name">${journal}</span><span class="journal-page">${publication.attribute("series")} ${publication.attribute("number")}/${publication.attribute("page")}</span></header>@endif

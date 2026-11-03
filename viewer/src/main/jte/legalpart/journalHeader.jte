@@ -1,0 +1,3 @@
+@import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.JournalHeader
+@param JournalHeader header
+<%-- the head of the Official Journal's page an act as published starts on (oj-hd-*): date, language, the Journal, issue and page --%><header class="journal-header"><span class="journal-date">${header.date()}</span><span class="journal-language">${header.language()}</span><span class="journal-name">${header.journal()}</span><span class="journal-page">${header.issue()}</span></header>
