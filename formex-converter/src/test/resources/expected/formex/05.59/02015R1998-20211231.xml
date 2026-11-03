@@ -6365,71 +6365,6 @@
                   <t v="Security controls for cargo and mail arriving from a third country"/>
                </emphasis>
             </heading>
-            <p>
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:16"
-                           marker="O010001M021000"/>
-               <num>
-                  <t v="6.8.3.6"/>
-               </num>
-               <t v="After the security controls referred to in points 6.8.3.1 to 6.8.3.5 have been implemented, the ACC3 or the EU aviation security validated regulated agent (RA3) responsible for the application of the security controls, shall ensure that the accompanying documentation, in the form of an air waybill, an equivalent postal documentation or in a separate declaration, provided in an electronic format or in writing, includes at least the following information:"/>
-            </p>
-            <list kind="alpha">
-               <unit eId="anx/pnt_6.8.3/list_1/pnt_a" kind="point">
-                  <num>
-                     <t v="(a)"/>
-                  </num>
-                  <p>
-                     <t v="the unique alphanumeric identifier of the ACC3;"/>
-                  </p>
-               </unit>
-               <unit eId="anx/pnt_6.8.3/list_1/pnt_b" kind="point">
-                  <num>
-                     <t v="(b)"/>
-                  </num>
-                  <p>
-                     <t v="the security status of the consignment referred to in point (d) of point 6.3.2.6 and issued by the ACC3 or by the EU aviation security validated regulated agent (RA3), as appropriate;"/>
-                  </p>
-               </unit>
-               <unit eId="anx/pnt_6.8.3/list_1/pnt_c" kind="point">
-                  <num>
-                     <t v="(c)"/>
-                  </num>
-                  <p>
-                     <t v="the unique identifier of the consignment, such as the number of the house or master air waybill, where applicable;"/>
-                  </p>
-               </unit>
-               <unit eId="anx/pnt_6.8.3/list_1/pnt_d" kind="point">
-                  <num>
-                     <t v="(d)"/>
-                  </num>
-                  <p>
-                     <t v="the content of the consignment, or indication of consolidation where applicable;"/>
-                  </p>
-               </unit>
-               <unit eId="anx/pnt_6.8.3/list_1/pnt_e" kind="point">
-                  <num>
-                     <t v="(e)"/>
-                  </num>
-                  <p>
-                     <t v="the reasons for issuing the security status, including the means or method of screening used or the grounds for exempting the consignment from screening, using the standards adopted in the ICAO Consignment Security Declaration scheme."/>
-                  </p>
-               </unit>
-            </list>
-            <p>
-               <t v="In the case of consolidations, the ACC3 or the EU aviation security validated regulated agent (RA3) who has performed the consolidation shall retain the information set out in points (a) to (e) of the first paragraph for each individual consignment at least until the estimated time of arrival of the consignments at the first airport in the Union or for 24 hours, whichever period is longer."/>
-            </p>
-            <p>
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:16"
-                           marker="O010001M021000"/>
-               <num>
-                  <t v="6.8.3.7"/>
-               </num>
-               <t v="Any air carrier arriving from a third country listed in Attachment 6-F shall ensure compliance with the applicable points laid down in point 6.8.3.6 in respect of cargo and mail transported on board. The accompanying documentation regarding such consignments shall at least comply with the ICAO Consignment Security Declaration scheme or with an alternative scheme providing the required information in an equivalent manner."/>
-            </p>
          </unit>
          <unit eId="anx/pnt_6.8.3.1" kind="level" depth="4">
             <provenance amendingAct="32017R0815"
@@ -6561,6 +6496,71 @@
                <t v="If there is no indication on the accompanying documentation of the identifier, or if the air carrier or entity delivering the consignments is not listed as active in the Union database on supply chain security, it shall be deemed that no security controls have previously been applied, and the consignments shall be screened by the ACC3 or by another EU aviation security validated RA3 before being loaded onto the aircraft."/>
             </p>
          </unit>
+         <p>
+            <provenance amendingAct="32021R0255"
+                        action="replaced"
+                        location="AR:1 .AND. AX:0;PT:16"
+                        marker="O010001M021000"/>
+            <num>
+               <t v="6.8.3.6"/>
+            </num>
+            <t v="After the security controls referred to in points 6.8.3.1 to 6.8.3.5 have been implemented, the ACC3 or the EU aviation security validated regulated agent (RA3) responsible for the application of the security controls, shall ensure that the accompanying documentation, in the form of an air waybill, an equivalent postal documentation or in a separate declaration, provided in an electronic format or in writing, includes at least the following information:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="anx/pnt_6.8.3/list_1/pnt_a" kind="point">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="the unique alphanumeric identifier of the ACC3;"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_6.8.3/list_1/pnt_b" kind="point">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="the security status of the consignment referred to in point (d) of point 6.3.2.6 and issued by the ACC3 or by the EU aviation security validated regulated agent (RA3), as appropriate;"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_6.8.3/list_1/pnt_c" kind="point">
+               <num>
+                  <t v="(c)"/>
+               </num>
+               <p>
+                  <t v="the unique identifier of the consignment, such as the number of the house or master air waybill, where applicable;"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_6.8.3/list_1/pnt_d" kind="point">
+               <num>
+                  <t v="(d)"/>
+               </num>
+               <p>
+                  <t v="the content of the consignment, or indication of consolidation where applicable;"/>
+               </p>
+            </unit>
+            <unit eId="anx/pnt_6.8.3/list_1/pnt_e" kind="point">
+               <num>
+                  <t v="(e)"/>
+               </num>
+               <p>
+                  <t v="the reasons for issuing the security status, including the means or method of screening used or the grounds for exempting the consignment from screening, using the standards adopted in the ICAO Consignment Security Declaration scheme."/>
+               </p>
+            </unit>
+         </list>
+         <p>
+            <t v="In the case of consolidations, the ACC3 or the EU aviation security validated regulated agent (RA3) who has performed the consolidation shall retain the information set out in points (a) to (e) of the first paragraph for each individual consignment at least until the estimated time of arrival of the consignments at the first airport in the Union or for 24 hours, whichever period is longer."/>
+         </p>
+         <p>
+            <provenance amendingAct="32021R0255"
+                        action="replaced"
+                        location="AR:1 .AND. AX:0;PT:16"
+                        marker="O010001M021000"/>
+            <num>
+               <t v="6.8.3.7"/>
+            </num>
+            <t v="Any air carrier arriving from a third country listed in Attachment 6-F shall ensure compliance with the applicable points laid down in point 6.8.3.6 in respect of cargo and mail transported on board. The accompanying documentation regarding such consignments shall at least comply with the ICAO Consignment Security Declaration scheme or with an alternative scheme providing the required information in an equivalent manner."/>
+         </p>
          <unit eId="anx/pnt_6.8.3.8" kind="level" depth="4">
             <provenance amendingAct="32019R0103"
                         action="inserted"
@@ -7829,54 +7829,6 @@
                </quote>
                <t v=" as contained in attachment 6-C."/>
             </p>
-            <annotation>
-               <heading>
-                  <emphasis kind="i">
-                     <t v="NOTES:"/>
-                  </emphasis>
-               </heading>
-               <annotation>
-                  <heading>
-                     <emphasis kind="b">
-                        <t v="Explosive and incendiary devices"/>
-                     </emphasis>
-                  </heading>
-                  <p>
-                     <t v="Assembled explosive and incendiary devices may be carried in consignments of cargo if the requirements of all safety rules are met in full."/>
-                  </p>
-               </annotation>
-               <annotation>
-                  <heading>
-                     <emphasis kind="b">
-                        <t v="Consignments from other sources"/>
-                     </emphasis>
-                  </heading>
-                  <p>
-                     <t v="A known consignor may pass consignments which it has not itself originated to a regulated agent, provided that:"/>
-                  </p>
-                  <list kind="alpha">
-                     <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_a" kind="point">
-                        <num>
-                           <t v="(a)"/>
-                        </num>
-                        <p>
-                           <t v="they are separated from consignments which it has originated; and"/>
-                        </p>
-                     </unit>
-                     <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_b" kind="point">
-                        <num>
-                           <t v="(b)"/>
-                        </num>
-                        <p>
-                           <t v="the origin is clearly indicated on the consignment or on accompanying documentation."/>
-                        </p>
-                     </unit>
-                  </list>
-                  <p>
-                     <t v="All such consignments must be screened before they are loaded on to an aircraft."/>
-                  </p>
-               </annotation>
-            </annotation>
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_1"
                kind="level"
@@ -8155,6 +8107,54 @@
                <t v="You will then be required to accept full responsibility for the declaration and to sign the validation document."/>
             </p>
          </unit>
+         <annotation>
+            <heading>
+               <emphasis kind="i">
+                  <t v="NOTES:"/>
+               </emphasis>
+            </heading>
+            <annotation>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Explosive and incendiary devices"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="Assembled explosive and incendiary devices may be carried in consignments of cargo if the requirements of all safety rules are met in full."/>
+               </p>
+            </annotation>
+            <annotation>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Consignments from other sources"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="A known consignor may pass consignments which it has not itself originated to a regulated agent, provided that:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="they are separated from consignments which it has originated; and"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="the origin is clearly indicated on the consignment or on accompanying documentation."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="All such consignments must be screened before they are loaded on to an aircraft."/>
+               </p>
+            </annotation>
+         </annotation>
          <unit eId="anx/level_ATTACHMENT-6-C" kind="level" depth="2">
             <num>
                <emphasis kind="b">
@@ -8579,16 +8579,6 @@
                   <t v="Aim: To establish the point (or: place) where cargo/mail becomes identifiable as air cargo/air mail."/>
                </emphasis>
             </p>
-            <annotation>
-               <p>
-                  <emphasis kind="b">
-                     <emphasis kind="i">
-                        <t v="NB:"/>
-                     </emphasis>
-                     <t v=" Detailed information should be given on the protection of identifiable air cargo/air mail from unauthorised interference or tampering in Parts 5 to 8."/>
-                  </emphasis>
-               </p>
-            </annotation>
          </unit>
          <unit eId="anx/pnt_2.1" kind="level" depth="5" box="true">
             <num>
@@ -8609,6 +8599,16 @@
                <t v="Describe:"/>
             </p>
          </unit>
+         <annotation>
+            <p>
+               <emphasis kind="b">
+                  <emphasis kind="i">
+                     <t v="NB:"/>
+                  </emphasis>
+                  <t v=" Detailed information should be given on the protection of identifiable air cargo/air mail from unauthorised interference or tampering in Parts 5 to 8."/>
+               </emphasis>
+            </p>
+         </annotation>
          <unit eId="anx/level_PART-3" kind="level" depth="4">
             <num>
                <t v="PART 3"/>
@@ -10115,15 +10115,6 @@
                   <t v="ATTACHMENT 6-C2"/>
                </emphasis>
             </num>
-            <p>
-               <t v="Name of the validator:"/>
-            </p>
-            <p>
-               <t v="Date:"/>
-            </p>
-            <p>
-               <t v="Signature:"/>
-            </p>
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-C2/level_1" kind="level" depth="3">
             <provenance amendingAct="32017R0815"
@@ -12913,6 +12904,15 @@
                </rowGroup>
             </table>
          </unit>
+         <p>
+            <t v="Name of the validator:"/>
+         </p>
+         <p>
+            <t v="Date:"/>
+         </p>
+         <p>
+            <t v="Signature:"/>
+         </p>
          <unit eId="anx/level_1" kind="level" depth="1">
             <provenance amendingAct="32017R0815"
                         action="replaced"
@@ -13084,15 +13084,6 @@
                   </unit>
                </list>
             </annotation>
-            <p>
-               <t v="Name of the validator:"/>
-            </p>
-            <p>
-               <t v="Date:"/>
-            </p>
-            <p>
-               <t v="Signature:"/>
-            </p>
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-C3/level_PART-1" kind="level" depth="3">
             <provenance amendingAct="32017R0815"
@@ -15973,6 +15964,15 @@
                </rowGroup>
             </table>
          </unit>
+         <p>
+            <t v="Name of the validator:"/>
+         </p>
+         <p>
+            <t v="Date:"/>
+         </p>
+         <p>
+            <t v="Signature:"/>
+         </p>
          <unit eId="anx/level_2" kind="level" depth="1">
             <provenance amendingAct="32017R0815"
                         action="replaced"
@@ -16139,15 +16139,6 @@
                   </p>
                </annotation>
             </annotation>
-            <p>
-               <t v="Name of the validator:"/>
-            </p>
-            <p>
-               <t v="Date:"/>
-            </p>
-            <p>
-               <t v="Signature:"/>
-            </p>
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-C4/level_PART-1" kind="level" depth="3">
             <provenance amendingAct="32017R0815"
@@ -18653,6 +18644,15 @@
                </rowGroup>
             </table>
          </unit>
+         <p>
+            <t v="Name of the validator:"/>
+         </p>
+         <p>
+            <t v="Date:"/>
+         </p>
+         <p>
+            <t v="Signature:"/>
+         </p>
          <unit eId="anx/level_3" kind="level" depth="1">
             <heading>
                <changed amendingAct="32017R0815"

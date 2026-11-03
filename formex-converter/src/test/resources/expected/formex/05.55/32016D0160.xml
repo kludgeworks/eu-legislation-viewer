@@ -449,15 +449,6 @@
                   </p>
                </unit>
             </list>
-            <p>
-               <t v="In total, five measurements on the current should be done at 13,2 V for each type of lighting used in the vehicle (i.e. low-beam headlamp, high-beam headlamp, front position, front fog, rear fog, front turn signal, rear turn signal, licence plate and reversing lamps). LED module(s) operated by an electronic light source control gear, shall be measured as specified by the applicant."/>
-            </p>
-            <p>
-               <t v="As an alternative, other measurements on the current can be done at other additional voltages. The manufacturer must hand over verified documentation on the necessity to perform these other measurements to the type-approval authority. In total, five measurements on the current are to be done at each of these additional voltages."/>
-            </p>
-            <p>
-               <t v="The exact installed voltages and the measured current are to be recorded in four decimals."/>
-            </p>
          </unit>
          <unit eId="anx/pnt_3/level_1" kind="level" depth="2">
             <heading>
@@ -479,6 +470,15 @@
                </description>
             </figure>
          </unit>
+         <p>
+            <t v="In total, five measurements on the current should be done at 13,2 V for each type of lighting used in the vehicle (i.e. low-beam headlamp, high-beam headlamp, front position, front fog, rear fog, front turn signal, rear turn signal, licence plate and reversing lamps). LED module(s) operated by an electronic light source control gear, shall be measured as specified by the applicant."/>
+         </p>
+         <p>
+            <t v="As an alternative, other measurements on the current can be done at other additional voltages. The manufacturer must hand over verified documentation on the necessity to perform these other measurements to the type-approval authority. In total, five measurements on the current are to be done at each of these additional voltages."/>
+         </p>
+         <p>
+            <t v="The exact installed voltages and the measured current are to be recorded in four decimals."/>
+         </p>
          <unit eId="anx/pnt_4" kind="level" depth="1">
             <num>
                <t v="4."/>

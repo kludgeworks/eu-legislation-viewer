@@ -4511,9 +4511,6 @@
                <heading>
                   <t v="Table 2: Triglyceride formulae for detecting various foreign fats in milk fat, indicating the standard deviations SD for S"/>
                </heading>
-               <p>
-                  <t v="Therefore for checking an unknown fat sample all formulae given in Table 2 and the Total formula (2) must be used, if the sample is likely to be a mixture of milk fat and one of the 14 different foreign fats or a combination of these foreign fats. If, by inserting the triglyceride of a fat sample to be analysed an S-value is obtained, which falls outside the ranges of Table 3 of only one of the five formulae, then the sample is most likely a modified milk fat. Detection of a foreign fat in milk fat by means of one of the four formulae in Table 2 does not allow conclusions to be drawn on the type of the foreign fat admixture."/>
-               </p>
             </unit>
             <unit eId="anx_II/pnt_8/level_1/level_1" kind="level" depth="3">
                <heading>
@@ -4758,11 +4755,10 @@
                   </m:math>
                </math>
             </unit>
-            <unit eId="anx_II/pnt_8/level_2" kind="level" depth="2">
-               <p>
-                  <t v="In Table 4 the detection limits for the different foreign fats with a 99 % confidence are given. The first column shows the minimal detection limits for the best milk fat formulae in Table 2. In the second column the detection limits for the total formula are given. Although the limits are some what higher, only this formula is necessary to detect a little bit higher amounts of foreign fats. With all formulae also combinations of the different foreign fats can be detected. The ranges of variation of the triglycerides of different foreign fats of one type have no considerable influence on the detection limits."/>
-               </p>
-            </unit>
+            <p>
+               <t v="Therefore for checking an unknown fat sample all formulae given in Table 2 and the Total formula (2) must be used, if the sample is likely to be a mixture of milk fat and one of the 14 different foreign fats or a combination of these foreign fats. If, by inserting the triglyceride of a fat sample to be analysed an S-value is obtained, which falls outside the ranges of Table 3 of only one of the five formulae, then the sample is most likely a modified milk fat. Detection of a foreign fat in milk fat by means of one of the four formulae in Table 2 does not allow conclusions to be drawn on the type of the foreign fat admixture."/>
+            </p>
+            <unit eId="anx_II/pnt_8/level_2" kind="level" depth="2"/>
             <unit eId="anx_II/pnt_8/level_2/level_1" kind="level" depth="3">
                <table cols="2">
                   <caption>
@@ -4854,6 +4850,9 @@
                   </tr>
                </table>
             </unit>
+            <p>
+               <t v="In Table 4 the detection limits for the different foreign fats with a 99 % confidence are given. The first column shows the minimal detection limits for the best milk fat formulae in Table 2. In the second column the detection limits for the total formula are given. Although the limits are some what higher, only this formula is necessary to detect a little bit higher amounts of foreign fats. With all formulae also combinations of the different foreign fats can be detected. The ranges of variation of the triglycerides of different foreign fats of one type have no considerable influence on the detection limits."/>
+            </p>
             <unit eId="anx_II/pnt_8/level_3" kind="level" depth="2">
                <table cols="3">
                   <caption>

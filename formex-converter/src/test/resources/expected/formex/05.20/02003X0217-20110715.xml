@@ -2668,9 +2668,6 @@
                </p>
             </unit>
          </list>
-         <p>
-            <t v="When available, the place where and date on which the fingerprints were taken shall be entered."/>
-         </p>
       </unit>
       <unit eId="pnt_2.10.6.3/level_1" kind="level" depth="5">
          <provenance amendingAct="32011D0406"
@@ -2732,6 +2729,9 @@
             </annotation>
          </annotation>
       </unit>
+      <p>
+         <t v="When available, the place where and date on which the fingerprints were taken shall be entered."/>
+      </p>
       <unit eId="pnt_2.11" kind="level" depth="2">
          <provenance amendingAct="32011D0406"
                      action="replaced"

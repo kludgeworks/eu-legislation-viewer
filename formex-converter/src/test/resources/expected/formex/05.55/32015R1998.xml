@@ -6119,54 +6119,6 @@
                </quote>
                <t v=" as contained in attachment 6-C."/>
             </p>
-            <annotation>
-               <heading>
-                  <emphasis kind="i">
-                     <t v="NOTES:"/>
-                  </emphasis>
-               </heading>
-               <annotation>
-                  <heading>
-                     <emphasis kind="b">
-                        <t v="Explosive and incendiary devices"/>
-                     </emphasis>
-                  </heading>
-                  <p>
-                     <t v="Assembled explosive and incendiary devices may be carried in consignments of cargo if the requirements of all safety rules are met in full."/>
-                  </p>
-               </annotation>
-               <annotation>
-                  <heading>
-                     <emphasis kind="b">
-                        <t v="Consignments from other sources"/>
-                     </emphasis>
-                  </heading>
-                  <p>
-                     <t v="A known consignor may pass consignments which it has not itself originated to a regulated agent, provided that:"/>
-                  </p>
-                  <list kind="alpha">
-                     <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_a" kind="point">
-                        <num>
-                           <t v="(a)"/>
-                        </num>
-                        <p>
-                           <t v="they are separated from consignments which it has originated; and"/>
-                        </p>
-                     </unit>
-                     <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_b" kind="point">
-                        <num>
-                           <t v="(b)"/>
-                        </num>
-                        <p>
-                           <t v="the origin is clearly indicated on the consignment or on accompanying documentation."/>
-                        </p>
-                     </unit>
-                  </list>
-                  <p>
-                     <t v="All such consignments must be screened before they are loaded on to an aircraft."/>
-                  </p>
-               </annotation>
-            </annotation>
          </unit>
          <unit eId="anx/level_ATTACHMENT-6-B/level_1/level_1"
                kind="level"
@@ -6445,6 +6397,54 @@
                <t v="You will then be required to accept full responsibility for the declaration and to sign the validation document."/>
             </p>
          </unit>
+         <annotation>
+            <heading>
+               <emphasis kind="i">
+                  <t v="NOTES:"/>
+               </emphasis>
+            </heading>
+            <annotation>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Explosive and incendiary devices"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="Assembled explosive and incendiary devices may be carried in consignments of cargo if the requirements of all safety rules are met in full."/>
+               </p>
+            </annotation>
+            <annotation>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Consignments from other sources"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="A known consignor may pass consignments which it has not itself originated to a regulated agent, provided that:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_a" kind="point">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="they are separated from consignments which it has originated; and"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/level_ATTACHMENT-6-B/level_1/ann_1/list_1/pnt_b" kind="point">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="the origin is clearly indicated on the consignment or on accompanying documentation."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="All such consignments must be screened before they are loaded on to an aircraft."/>
+               </p>
+            </annotation>
+         </annotation>
          <unit eId="anx/level_ATTACHMENT-6-C" kind="level" depth="2">
             <num>
                <emphasis kind="b">
@@ -6869,16 +6869,6 @@
                   <t v="Aim: To establish the point (or: place) where cargo/mail becomes identifiable as air cargo/air mail."/>
                </emphasis>
             </p>
-            <annotation>
-               <p>
-                  <emphasis kind="b">
-                     <emphasis kind="i">
-                        <t v="NB:"/>
-                     </emphasis>
-                     <t v=" Detailed information should be given on the protection of identifiable air cargo/air mail from unauthorised interference or tampering in Parts 5 to 8."/>
-                  </emphasis>
-               </p>
-            </annotation>
          </unit>
          <unit eId="anx/pnt_2.1" kind="level" depth="5" box="true">
             <num>
@@ -6899,6 +6889,16 @@
                <t v="Describe:"/>
             </p>
          </unit>
+         <annotation>
+            <p>
+               <emphasis kind="b">
+                  <emphasis kind="i">
+                     <t v="NB:"/>
+                  </emphasis>
+                  <t v=" Detailed information should be given on the protection of identifiable air cargo/air mail from unauthorised interference or tampering in Parts 5 to 8."/>
+               </emphasis>
+            </p>
+         </annotation>
          <unit eId="anx/level_PART-3" kind="level" depth="4">
             <num>
                <t v="PART 3"/>

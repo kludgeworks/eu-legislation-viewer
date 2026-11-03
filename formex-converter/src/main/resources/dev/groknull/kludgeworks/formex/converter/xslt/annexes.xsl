@@ -350,6 +350,9 @@
                    string(f:level-ordinal(.) + (if ($parentLevel) then 0 else ($levelOffset, 0)[1])))"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering(.)[not(f:pi-attr(., 'ID') = $levelCtx)])"/>
     <xsl:variable name="inner" as="xs:string*" select="($ctx, f:ids($m))"/>
+    <!-- what the level holds after its first sub-level (a GR.ANNOTATION after its points): its levels
+         being flat, it follows them, in the order of the text, not the level's own blocks -->
+    <xsl:variable name="trailing" as="node()*" select="(node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np))[. &gt;&gt; current()/GR.SEQ[1]]"/>
     <xsl:variable name="unit" as="element()">
       <unit eId="{$eid}" kind="level" depth="{(@LEVEL, 1)[1]}">
         <xsl:if test="@BOX = 'YES'">
@@ -382,7 +385,7 @@
         </xsl:choose>
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" as="node()*" select="$direct-np/TXT/node(), $direct-np/(node() except (NO.P, TXT)),
-                                               node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np)"/>
+                                               node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np, $trailing)"/>
           <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -393,13 +396,33 @@
       </unit>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
-    <xsl:apply-templates select="GR.SEQ" mode="block">
-      <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
-      <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-      <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
-      <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
-      <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
-    </xsl:apply-templates>
+    <xsl:for-each-group select="GR.SEQ | $trailing" group-adjacent="exists(self::GR.SEQ)">
+      <xsl:choose>
+        <xsl:when test="current-grouping-key()">
+          <xsl:apply-templates select="current-group()" mode="block">
+            <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
+            <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+            <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
+            <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
+            <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+          </xsl:apply-templates>
+        </xsl:when>
+        <xsl:otherwise>
+          <xsl:variable name="blocks" as="element()*">
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="parentLevel" as="xs:string?" select="$eid" tunnel="yes"/>
+              <xsl:with-param name="levelOffset" as="xs:integer?" select="0" tunnel="yes"/>
+              <xsl:with-param name="labelledParent" as="xs:string?" select="if ($label != '' or $label-line) then $eid else $labelledParent" tunnel="yes"/>
+            </xsl:call-template>
+          </xsl:variable>
+          <xsl:sequence select="f:wrap-deleted($m, $blocks)"/>
+        </xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each-group>
   </xsl:template>
 
 </xsl:stylesheet>
