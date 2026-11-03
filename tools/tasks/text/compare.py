@@ -14,8 +14,8 @@
 The reference is the version's xhtml manifestation in Cellar, by the CELEX the page shows: the HTML
 EUR-Lex shows (its site answers scripts with a JavaScript challenge; Cellar is its interface for
 machines). It is fetched once into text-compare/reference/ (ignored by git and Bazel), and shown with
-scripts off. EUR-Lex styles it with stylesheets of its own, behind the same challenge: paragraphs and
-table rows break lines the same without them, and LAYOUT has the rules of theirs that don't.
+scripts off, styled as EUR-Lex styles it: its stylesheets are behind the same challenge, so they are
+the Internet Archive's copies (STYLESHEETS), fetched once too, the text in EUR-Lex's frame (FRAME).
 
 Both pages are read in a headless Chromium, the same width: a line is the text of a block (a
 paragraph, a heading, a cell), and blocks side by side (a table's row, a number beside its heading)
@@ -30,6 +30,8 @@ are one line. The lines are aligned, and each difference is sorted into a kind:
     spacing     the same line but for spaces
     marker      the same line but for what starts or ends it (a list's dash, a number)
     changed     a line whose text differs
+    aligned     the same line, set elsewhere across the column: left, centred, right, or indented
+    styled      the same line in another face: bold, italic
 
 The differences are then grouped into patterns, by kind and by the elements that made the lines
 (EUR-Lex's classes, ours: each legal-text element's template writes its name as a class): one
@@ -57,17 +59,30 @@ CELLAR = "http://publications.europa.eu/resource/celex/"
 USER_AGENT = "kludgeworks-viewer-dev (text:compare)"
 WIDTH = 1280
 RESYNC = 40  # how far ahead to look, on each side, for lines that agree again
-# EUR-Lex's rules that change where its lines break (Notion, EUR-Lex typography): a consolidated
-# version's lists are grids, each item's label beside its text (clg.css)
-LAYOUT = """
-.grid-container.grid-list { display: grid; grid-template-columns: minmax(3rem, auto) 1fr; }
+INDENT = (
+    24  # px: further apart than this from the column's left, two lines are indented differently
+)
+# EUR-Lex's stylesheets for a text shown in its page, as the Internet Archive has them
+# (eur-lex.europa.eu answers scripts with a challenge): an OJ act's (oj- classes) and a consolidated
+# version's. Each scopes its rules to the text's box, div#text.
+WAYBACK = "http://web.archive.org/web/"
+STYLESHEETS = {
+    "oj-convex-act-embedded.css": "20231010173657id_/https://eur-lex.europa.eu/css/oj/oj-convex-act-embedded.css",
+    "clg-embedded.css": "20251020165736id_/https://eur-lex.europa.eu/css/consleg/clg-embedded.css",
+}
+# what EUR-Lex's page around the text sets, which its stylesheets for the text don't: a column as
+# wide as ours (Notion, EUR-Lex typography: about 830px) and its typeface
+FRAME = """
+div#text { width: 52rem; margin: 0 auto; font-family: "Times New Roman", Times, serif; line-height: 1.43; }
 """
 
 # A page's lines, read in the browser: the text of each block under root (a line break starting
 # another), blocks side by side joined: their boxes beside each other, at the same height (a table's
 # cells, a grid's, though a margin lowers one's text), where a block within another is in it. A mark
 # drawn before an element (::before, as a list's dash) is read as text: a grid's, beside what follows
-# it; any other, at its place. Each line has the elements that made it (tag.class), for the patterns.
+# it; any other, at its place. Each line has the elements that made it (tag.class), for the patterns,
+# how its first block aligns its text, how far from root's left its text starts (px), and how much of
+# it is bold, italic.
 LINES = """
 root => {
   root = document.querySelector(root);
@@ -79,13 +94,27 @@ root => {
     return root;
   };
   const name = el => el.tagName.toLowerCase() + [...el.classList].map(c => "." + c).join("");
+  const left = root.getBoundingClientRect().left + parseFloat(getComputedStyle(root).paddingLeft);
+  const measure = (g, node) => {
+    const range = document.createRange();
+    range.selectNodeContents(node);
+    for (const r of range.getClientRects()) {
+      if (r.width) g.from = Math.min(g.from, r.left);
+    }
+    const style = getComputedStyle(node.parentElement);
+    const n = node.data.trim().length;
+    g.chars += n;
+    if (parseInt(style.fontWeight) >= 600) g.bold += n;
+    if (style.fontStyle === "italic") g.italic += n;
+  };
   const groups = [];
   let current = null;
   let mark = null;
   const add = (b, text) => {
     if (!current || current.block !== b) {
       const box = b.getBoundingClientRect();
-      current = { block: b, text: "", top: box.top, bottom: box.bottom, left: box.left, right: box.right };
+      current = { block: b, text: "", top: box.top, bottom: box.bottom, left: box.left, right: box.right,
+                  align: getComputedStyle(b).textAlign, from: Infinity, chars: 0, bold: 0, italic: 0 };
       groups.push(current);
       if (mark) [current.text, mark] = [mark + " ", null];
     }
@@ -106,7 +135,10 @@ root => {
     if (!node.parentElement.checkVisibility()) continue;
     const b = block(node.parentElement);
     // a space between inline elements is the line's; between blocks, nobody's
-    if (node.data.trim() || (current && current.block === b)) add(b, node.data);
+    if (node.data.trim() || (current && current.block === b)) {
+      add(b, node.data);
+      measure(current, node);
+    }
   }
   const lines = [];
   for (const g of groups) {
@@ -116,11 +148,17 @@ root => {
       last.text += " " + g.text;
       last.made.push(name(g.block));
       Object.assign(last, { top: g.top, bottom: g.bottom, right: g.right });
+      last.from = Math.min(last.from, g.from);
+      for (const k of ["chars", "bold", "italic"]) last[k] += g[k];
     } else {
       lines.push({ ...g, made: [name(g.block)] });
     }
   }
-  return lines.map(l => ({ text: l.text, made: l.made.join(" + ") }));
+  return lines.map(l => ({
+    text: l.text, made: l.made.join(" + "), align: l.align,
+    from: isFinite(l.from) ? l.from - left : null,
+    chars: l.chars, bold: l.bold, italic: l.italic,
+  }));
 }
 """
 
@@ -129,6 +167,9 @@ root => {
 class Line:
     text: str
     made: str  # the elements that made it: p.oj-ti-grseq-1, div.num + div.heading
+    align: str = ""  # left, centred, right: where its text is set across the column; "" if unknown
+    indent: float = 0  # px from the column's left, its text's start
+    face: str = ""  # bold, italic, bold italic: the face of most of its text
 
     @property
     def key(self) -> str:
@@ -142,6 +183,7 @@ class Difference:
     theirs: tuple[Line, ...]
     ours: tuple[Line, ...]
     at: int  # the first of EUR-Lex's lines it concerns (or is before), counted from 1
+    detail: str = ""  # how the same text is set: EUR-Lex right, ours left
 
     @property
     def pattern(self) -> tuple[str, str, str]:
@@ -160,8 +202,26 @@ def normalise(text: str) -> str:
     return re.sub(r"\s+", " ", text).strip()
 
 
-def _lines(read: list[dict[str, str]]) -> list[Line]:
-    return [Line(text, line["made"]) for line in read if (text := normalise(line["text"]))]
+def _lines(read: list[dict]) -> list[Line]:
+    return [
+        Line(text, line["made"], *_setting(line), _face(line))
+        for line in read
+        if (text := normalise(line["text"]))
+    ]
+
+
+def _setting(line: dict) -> tuple[str, float]:
+    """How a line is set across the column: its block's text-align, and how far in its text starts."""
+    if line["from"] is None:
+        return "", 0
+    align = {"center": "centred", "right": "right", "end": "right"}.get(line["align"], "left")
+    return align, line["from"]
+
+
+def _face(line: dict) -> str:
+    """The face of most of a line's text."""
+    chars = line["chars"] or 1
+    return " ".join(face for face in ("bold", "italic") if line[face] * 2 > chars)
 
 
 def our_page(browser: Browser, url: str) -> tuple[str, list[Line]]:
@@ -186,10 +246,26 @@ def their_page(browser: Browser, html: str) -> list[Line]:
     try:
         page = context.new_page()
         # before its own: as the page is loaded, since a style added after waits for scripts
-        page.set_content(f"<style>{LAYOUT}</style>" + html)
-        return _lines(page.evaluate(LINES, "body"))
+        page.set_content(f"<style>{stylesheets()}{FRAME}</style><div id='text'>{html}</div>")
+        return _lines(page.evaluate(LINES, "div#text"))
     finally:
         context.close()
+
+
+def stylesheets() -> str:
+    """EUR-Lex's stylesheets, from the Internet Archive, fetched once."""
+    css = []
+    for name, archived in STYLESHEETS.items():
+        path = OUT / "reference" / "css" / name
+        if not path.exists():
+            request = urllib.request.Request(WAYBACK + archived, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(request, timeout=120) as response:
+                body = response.read()
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_bytes(body)
+            print(f"  fetched {name} from the Internet Archive", file=sys.stderr)
+        css.append(path.read_text(encoding="cp1252"))  # as EUR-Lex writes them: Windows-1252
+    return "\n".join(css)
 
 
 def reference(celex: str, language: str) -> str | None:
@@ -223,7 +299,9 @@ def compare(theirs: list[Line], ours: list[Line]) -> list[Difference]:
         None, [line.text for line in theirs], [line.text for line in ours], autojunk=False
     )
     for op, i1, i2, j1, j2 in matcher.get_opcodes():
-        if op == "delete":
+        if op == "equal":
+            differences += _set(theirs[i1:i2], ours[j1:j2], i1)
+        elif op == "delete":
             differences += [Difference("missing", (theirs[i],), (), i + 1) for i in range(i1, i2)]
         elif op == "insert":
             differences += [Difference("extra", (), (ours[j],), i1 + 1) for j in range(j1, j2)]
@@ -242,6 +320,7 @@ def _replaced(theirs: list[Line], ours: list[Line], at: int) -> list[Difference]
             ti, oj = grouped
             if ti - i == 1 and oj - j == 1:
                 kind = "spacing"
+                differences += _set(theirs[i:ti], ours[j:oj], at + i)
             else:
                 kind = "split" if ti - i == 1 else "merged" if oj - j == 1 else "regrouped"
             differences.append(Difference(kind, tuple(theirs[i:ti]), tuple(ours[j:oj]), at + i + 1))
@@ -263,6 +342,24 @@ def _replaced(theirs: list[Line], ours: list[Line], at: int) -> list[Difference]
         Difference("missing", (t,), (), at + i + n + 1) for n, t in enumerate(theirs[i:])
     ]
     differences += [Difference("extra", (), (o,), at + len(theirs) + 1) for o in ours[j:]]
+    return differences
+
+
+def _set(theirs: list[Line], ours: list[Line], at: int) -> list[Difference]:
+    """Lines of the same text, one to one, set differently: across the column, or in another face."""
+    differences = []
+    for n, (t, o) in enumerate(zip(theirs, ours, strict=True)):
+        if not (t.align and o.align):
+            continue
+        if t.align != o.align:
+            detail = f"EUR-Lex {t.align}, ours {o.align}"
+            differences.append(Difference("aligned", (t,), (o,), at + n + 1, detail))
+        elif t.align == "left" and abs(t.indent - o.indent) > INDENT:
+            detail = f"EUR-Lex {t.indent:.0f}px in, ours {o.indent:.0f}px"
+            differences.append(Difference("aligned", (t,), (o,), at + n + 1, detail))
+        if t.face != o.face:
+            detail = f"EUR-Lex {t.face or 'plain'}, ours {o.face or 'plain'}"
+            differences.append(Difference("styled", (t,), (o,), at + n + 1, detail))
     return differences
 
 
@@ -339,6 +436,8 @@ def report(
             print(f"         EUR-Lex (line {d.at}): {_text(d.theirs)}")
         if d.ours:
             print(f"         ours: {_text(d.ours)}")
+        if d.detail:
+            print(f"         {d.detail}")
 
     path = OUT / "reports" / f"{celex}.md"
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -352,7 +451,7 @@ def report(
                 f"\n## {len(ds)} {kind}: EUR-Lex {made_theirs or '—'}, ours {made_ours or '—'}\n\n"
             )
             for d in ds:
-                out.write(f"- line {d.at}\n")
+                out.write(f"- line {d.at}" + (f": {d.detail}" if d.detail else "") + "\n")
                 for line in d.theirs:
                     out.write(f"  - EUR-Lex: `{line.text}`\n")
                 for line in d.ours:
