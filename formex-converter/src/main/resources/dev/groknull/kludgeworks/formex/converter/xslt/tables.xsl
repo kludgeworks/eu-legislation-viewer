@@ -273,7 +273,7 @@
             </num>
             <heading>
               <xsl:call-template name="f:heading">
-                <xsl:with-param name="nodes" as="node()*" select="NP/TXT/node(), NP/(node() except (NO.P | TXT)), node() except NP"/>
+                <xsl:with-param name="nodes" as="node()*" select="NP/TXT/node(), f:np-rest(NP), node() except NP"/>
               </xsl:call-template>
             </heading>
           </xsl:when>

@@ -412,7 +412,7 @@
                      <t v="2."/>
                   </num>
                   <p>
-                     <t v="The reference lean meat percentage is calculated as follows:&#xA;&#xA;"/>
+                     <t v="The reference lean meat percentage is calculated as follows:"/>
                   </p>
                   <math>
                      <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="block">
@@ -479,7 +479,7 @@
                      <t v="1."/>
                   </num>
                   <p>
-                     <t v="Part one of the protocol should give a detailed description of the dissection trial and include in particular:&#xA;"/>
+                     <t v="Part one of the protocol should give a detailed description of the dissection trial and include in particular:"/>
                   </p>
                   <list kind="dash">
                      <unit eId="anx_II/pnt_1/idt_1" kind="indent">
@@ -519,7 +519,7 @@
                      <t v="2."/>
                   </num>
                   <p>
-                     <t v="Part two of the protocol should give a detailed description of the results of the dissection trial and include in particular:&#xA;&#xA;"/>
+                     <t v="Part two of the protocol should give a detailed description of the results of the dissection trial and include in particular:"/>
                   </p>
                   <list kind="dash">
                      <unit eId="anx_II/pnt_2/idt_1" kind="indent">

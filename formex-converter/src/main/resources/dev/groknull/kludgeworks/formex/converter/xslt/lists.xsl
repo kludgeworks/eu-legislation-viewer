@@ -52,7 +52,7 @@
           </xsl:call-template>
         </num>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" as="node()*" select="TXT/node(), node() except (NO.P, TXT)"/>
+          <xsl:with-param name="nodes" as="node()*" select="TXT/node(), f:np-rest(.)"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -88,7 +88,7 @@
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $p)"/>
     <xsl:call-template name="f:blocks">
-      <xsl:with-param name="nodes" as="node()*" select="TXT/node()[exists($first-block) and not(. &lt;&lt; $first-block)], node() except (NO.P, TXT)"/>
+      <xsl:with-param name="nodes" as="node()*" select="TXT/node()[exists($first-block) and not(. &lt;&lt; $first-block)], f:np-rest(.)"/>
       <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
       <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
     </xsl:call-template>
@@ -291,7 +291,7 @@
           </num>
         </xsl:if>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" as="node()*" select="NP/TXT/node(), NP/(node() except (NO.P, TXT)), node() except NP"/>
+          <xsl:with-param name="nodes" as="node()*" select="NP/TXT/node(), f:np-rest(NP), node() except NP"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>

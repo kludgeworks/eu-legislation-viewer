@@ -25,6 +25,28 @@
               test="$x:result/*:unit/*:provenance/@action = 'inserted' and empty($x:result/*:unit/*:p/*:provenance)"/>
   </x:scenario>
 
+  <x:scenario label="A marker that opens before a point's number and closes inside its text (02005L0036, Article 10(e))">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="alpha"><ITEM><NP><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32005L0036R(03)" ACTIVE.LOC="LI:0;EL:3"?> <NO.P>(e)</NO.P><TXT>a title<?CLG.MDFC ID="C1" IDREF="O1"?> listed in Annex V;</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="changes the number and the words up to its close, not the rest"
+              test="$x:result/*:unit/*:num/*:changed/*:t/@v = '(e)'
+                    and empty($x:result/*:unit/*:p/*:provenance)
+                    and deep-equal($x:result/*:unit/*:p/*:changed/*:t/@v ! string(), 'a title')
+                    and $x:result/*:unit/*:p/*:t/@v = ' listed in Annex V;'"/>
+  </x:scenario>
+
+  <x:scenario label="A marker that opens in an item before its NP and closes inside its text (02008R1126, IFRS 3 B21(d))">
+    <x:context mode="block" xmlns="">
+      <LIST TYPE="alpha"><ITEM><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32012R1255" ACTIVE.LOC="AR:1;PA:1;PT:e .AND. AX:0"?>
+<NP><NO.P>(d)</NO.P><TXT>the amount recognised.<?CLG.MDFC ID="C1" IDREF="O1"?> However, the equity structure reflects it.</TXT></NP></ITEM></LIST>
+    </x:context>
+    <x:expect label="changes the words up to its close, not the rest"
+              test="empty($x:result/*:unit/*:p/*:provenance)
+                    and $x:result/*:unit/*:p/*:changed/*:t/@v = 'the amount recognised.'
+                    and $x:result/*:unit/*:p/*:t/@v = ' However, the equity structure reflects it.'"/>
+  </x:scenario>
+
   <x:scenario label="Markers nested three deep (point 12.6.2)">
     <x:context mode="block" xmlns="">
       <CONTENTS>

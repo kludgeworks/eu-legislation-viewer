@@ -59,11 +59,16 @@
     <xsl:sequence select="(map:keys($before)[map:contains($after, .)] ! $before(.))/self::node()"/>
   </xsl:function>
 
-  <!-- markers covering the whole of a run of sibling nodes -->
+  <!-- markers covering the whole of a run of nodes, from its first node that isn't whitespace to its
+       last: whitespace says nothing of an amendment, and a run may end in whitespace from elsewhere
+       (<ITEM><?CLG.MDFO?> <NP>…<TXT>… acquiree).<?CLG.MDFC?> However, …</TXT></NP></ITEM>: the
+       ITEM's space, still inside the marker, after its text) -->
   <xsl:function name="f:covering-run" as="processing-instruction()*">
     <xsl:param name="nodes" as="node()+"/>
-    <xsl:variable name="before" as="map(xs:string, processing-instruction())" select="$nodes[1] ! accumulator-before('f:open')"/>
-    <xsl:variable name="after" as="map(xs:string, processing-instruction())" select="$nodes[last()] ! accumulator-after('f:open')"/>
+    <xsl:variable name="ends" as="node()+" select="let $text := $nodes[not(self::text()[not(normalize-space())])]
+                                                    return if (exists($text)) then ($text[1], $text[last()]) else ($nodes[1], $nodes[last()])"/>
+    <xsl:variable name="before" as="map(xs:string, processing-instruction())" select="$ends[1] ! accumulator-before('f:open')"/>
+    <xsl:variable name="after" as="map(xs:string, processing-instruction())" select="$ends[last()] ! accumulator-after('f:open')"/>
     <xsl:sequence select="(map:keys($before)[map:contains($after, .)] ! $before(.))/self::node()"/>
   </xsl:function>
 

@@ -181,7 +181,7 @@
                      <t v="(b)"/>
                   </num>
                   <p>
-                     <t v="the number and type of fishing vessels that are members of the producer organisation on the first day of the fishing year;&#xA;"/>
+                     <t v="the number and type of fishing vessels that are members of the producer organisation on the first day of the fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_c" kind="point" numbered="true">
@@ -189,7 +189,7 @@
                      <t v="(c)"/>
                   </num>
                   <p>
-                     <t v="the volume of production and intervention operations by species in the previous fishing year;&#xA;"/>
+                     <t v="the volume of production and intervention operations by species in the previous fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_d" kind="point" numbered="true">
@@ -197,7 +197,7 @@
                      <t v="(d)"/>
                   </num>
                   <p>
-                     <t v="the aggregate turnover of the producer organisation in the previous fishing year;&#xA;"/>
+                     <t v="the aggregate turnover of the producer organisation in the previous fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_e" kind="point" numbered="true">
@@ -205,7 +205,7 @@
                      <t v="(e)"/>
                   </num>
                   <p>
-                     <t v="the quota allocated to the producer organisation by species;&#xA;"/>
+                     <t v="the quota allocated to the producer organisation by species;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_f" kind="point" numbered="true">
@@ -213,7 +213,7 @@
                      <t v="(f)"/>
                   </num>
                   <p>
-                     <t v="the percentage of fish sold through auctions or by other means in the previous fishing year;&#xA;"/>
+                     <t v="the percentage of fish sold through auctions or by other means in the previous fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_g" kind="point" numbered="true">
@@ -221,7 +221,7 @@
                      <t v="(g)"/>
                   </num>
                   <p>
-                     <t v="the strategy to improve or maintain the quality of the products disposed of through the producer organisation or its members;&#xA;"/>
+                     <t v="the strategy to improve or maintain the quality of the products disposed of through the producer organisation or its members;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_h" kind="point" numbered="true">
@@ -229,7 +229,7 @@
                      <t v="(h)"/>
                   </num>
                   <p>
-                     <t v="voluntary product labelling or other promotional activities;&#xA;"/>
+                     <t v="voluntary product labelling or other promotional activities;"/>
                   </p>
                </unit>
                <unit eId="art_1/pnt_i" kind="point" numbered="true">
@@ -237,7 +237,7 @@
                      <t v="(i)"/>
                   </num>
                   <p>
-                     <t v="proposed new outlets or other commercial opportunities.&#xA;"/>
+                     <t v="proposed new outlets or other commercial opportunities."/>
                   </p>
                </unit>
             </list>
@@ -269,7 +269,7 @@
                         <t v="(b)"/>
                      </num>
                      <p>
-                        <t v="at least 10 % of the total production of the producer organisation during the previous fishing year by volume or by value for species not covered by catch quotas referred to in (a).&#xA;"/>
+                        <t v="at least 10 % of the total production of the producer organisation during the previous fishing year by volume or by value for species not covered by catch quotas referred to in (a)."/>
                      </p>
                   </unit>
                </list>
@@ -335,7 +335,7 @@
                      <t v="(b)"/>
                   </num>
                   <p>
-                     <t v="the volume of species harvested in the previous fishing year;&#xA;"/>
+                     <t v="the volume of species harvested in the previous fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_c" kind="point" numbered="true">
@@ -343,7 +343,7 @@
                      <t v="(c)"/>
                   </num>
                   <p>
-                     <t v="the average sale price of the species concerned in the previous fishing year;&#xA;"/>
+                     <t v="the average sale price of the species concerned in the previous fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_d" kind="point" numbered="true">
@@ -351,7 +351,7 @@
                      <t v="(d)"/>
                   </num>
                   <p>
-                     <t v="the aggregate turnover of the producer organisation in the previous fishing year;&#xA;"/>
+                     <t v="the aggregate turnover of the producer organisation in the previous fishing year;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_e" kind="point" numbered="true">
@@ -359,7 +359,7 @@
                      <t v="(e)"/>
                   </num>
                   <p>
-                     <t v="the rearing method used;&#xA;"/>
+                     <t v="the rearing method used;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_f" kind="point" numbered="true">
@@ -367,7 +367,7 @@
                      <t v="(f)"/>
                   </num>
                   <p>
-                     <t v="the peak seasons for production and for sales;&#xA;"/>
+                     <t v="the peak seasons for production and for sales;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_g" kind="point" numbered="true">
@@ -375,7 +375,7 @@
                      <t v="(g)"/>
                   </num>
                   <p>
-                     <t v="the strategy to improve or maintain the quality of the products disposed of through the producer organisation or its members;&#xA;"/>
+                     <t v="the strategy to improve or maintain the quality of the products disposed of through the producer organisation or its members;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_h" kind="point" numbered="true">
@@ -383,7 +383,7 @@
                      <t v="(h)"/>
                   </num>
                   <p>
-                     <t v="voluntary product labelling or other promotional activities;&#xA;"/>
+                     <t v="voluntary product labelling or other promotional activities;"/>
                   </p>
                </unit>
                <unit eId="art_3/pnt_i" kind="point" numbered="true">
@@ -391,7 +391,7 @@
                      <t v="(i)"/>
                   </num>
                   <p>
-                     <t v="market assessment including proposed new outlets or other commercial opportunities.&#xA;"/>
+                     <t v="market assessment including proposed new outlets or other commercial opportunities."/>
                   </p>
                </unit>
             </list>
@@ -446,7 +446,7 @@
                            <t v="(b)"/>
                         </num>
                         <p>
-                           <t v="any other serious market difficulties arise.&#xA;"/>
+                           <t v="any other serious market difficulties arise."/>
                         </p>
                      </unit>
                   </list>
@@ -591,7 +591,7 @@
                      <t v="(b)"/>
                   </num>
                   <p>
-                     <t v="a copy of the producer organisation's rules in the first fishing year of implementation of the programme and thereafter any modification to those rules;&#xA;"/>
+                     <t v="a copy of the producer organisation's rules in the first fishing year of implementation of the programme and thereafter any modification to those rules;"/>
                   </p>
                </unit>
                <unit eId="art_12/pnt_c" kind="point" numbered="true">
@@ -599,7 +599,7 @@
                      <t v="(c)"/>
                   </num>
                   <p>
-                     <t v="the list of penalties established by the producer organisation in accordance with Article 7.&#xA;"/>
+                     <t v="the list of penalties established by the producer organisation in accordance with Article 7."/>
                   </p>
                </unit>
             </list>

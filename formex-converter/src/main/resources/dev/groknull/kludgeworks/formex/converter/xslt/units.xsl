@@ -126,9 +126,18 @@
   </xsl:function>
 
   <!-- what a heading line says: an NP's text and what follows it (its number is the num), else all -->
+  <!-- what NPs hold besides their number and text, which follows its text wherever its text goes;
+       not the whitespace between its children, which may sit inside an amendment marker that opens
+       before the number (<NP><?CLG.MDFO?> <NO.P>(e)</NO.P><TXT>… a title<?CLG.MDFC?> listed …</TXT>):
+       moved after the text, it would make the marker seem to cover all of the text -->
+  <xsl:function name="f:np-rest" as="node()*">
+    <xsl:param name="np" as="element(NP)*"/>
+    <xsl:sequence select="$np/(node() except (NO.P | TXT))[not(self::text()[not(normalize-space())])]"/>
+  </xsl:function>
+
   <xsl:function name="f:line-content" as="node()*">
     <xsl:param name="line" as="element()"/>
-    <xsl:sequence select="if ($line/self::NP) then ($line/TXT/node(), $line/(node() except (NO.P | TXT))) else $line/node()"/>
+    <xsl:sequence select="if ($line/self::NP) then ($line/TXT/node(), f:np-rest($line)) else $line/node()"/>
   </xsl:function>
 
   <!-- a heading of no fixed shape (STI.ART, TI.BLK, a CN group's title): its lines (P, NP) as

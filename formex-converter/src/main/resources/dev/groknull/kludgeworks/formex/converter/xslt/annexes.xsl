@@ -463,7 +463,7 @@
           </xsl:otherwise>
         </xsl:choose>
         <xsl:call-template name="f:blocks">
-          <xsl:with-param name="nodes" as="node()*" select="$direct-np/TXT/node(), $direct-np/(node() except (NO.P, TXT)),
+          <xsl:with-param name="nodes" as="node()*" select="$direct-np/TXT/node(), f:np-rest($direct-np),
                                                node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np, $trailing)"/>
           <xsl:with-param name="ctx" as="xs:string*" select="$inner" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>

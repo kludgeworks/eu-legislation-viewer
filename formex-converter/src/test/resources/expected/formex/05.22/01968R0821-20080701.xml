@@ -261,7 +261,7 @@
                   <t v="1."/>
                </num>
                <heading>
-                  <t v="Shelled grains:&#xA;"/>
+                  <t v="Shelled grains:"/>
                </heading>
                <p>
                   <t v="are cereal grains with the pericarp removed or bracted cereal grains (see explanatory notes to tariff heading No 10.03: grains) with the bracts removed with cling to the pericarp (as for example with bearded barley) or which enclose the grains so firmly that the bracts cannot be detached by threshing etc. (as with oats)."/>
@@ -276,7 +276,7 @@
                   <t v="2."/>
                </num>
                <heading>
-                  <t v="Husked grains:&#xA;"/>
+                  <t v="Husked grains:"/>
                </heading>
                <p>
                   <t v="are grains (in the case of barley, with the bracts removed) which have the major part of the pericarp and tegument testa) removed."/>
@@ -315,7 +315,7 @@
                   <t v="I."/>
                </num>
                <heading>
-                  <t v="First class grains:&#xA;"/>
+                  <t v="First class grains:"/>
                </heading>
             </unit>
             <unit eId="anx/pnt_1" kind="level" depth="3" numbered="true">
@@ -361,7 +361,7 @@
                         <t v="(b)"/>
                      </num>
                      <p>
-                        <t v="94 % of the grains added progressively between 3 % and 97 % must not exceed 30 % of the dm;&#xA;"/>
+                        <t v="94 % of the grains added progressively between 3 % and 97 % must not exceed 30 % of the dm;"/>
                      </p>
                   </unit>
                   <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
@@ -369,7 +369,7 @@
                         <t v="(c)"/>
                      </num>
                      <p>
-                        <t v="100 % of the grains must not exceed 50 % of the dm;&#xA;"/>
+                        <t v="100 % of the grains must not exceed 50 % of the dm;"/>
                      </p>
                   </unit>
                </list>
@@ -400,7 +400,7 @@
                   <t v="II."/>
                </num>
                <heading>
-                  <t v="Second class grains:&#xA;"/>
+                  <t v="Second class grains:"/>
                </heading>
                <p>
                   <t v="grains which correspond to the definition under B I (1)."/>
