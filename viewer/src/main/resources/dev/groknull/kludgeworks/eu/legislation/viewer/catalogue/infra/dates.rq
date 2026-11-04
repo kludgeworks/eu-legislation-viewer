@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: MIT
+# An act's own dates, and those of every act its consolidations integrate (CellarDates): each date
+# of entry into force as Cellar has it, with the annotations it types them by (Research: where a
+# provision's date comes from): the type of date (fd_335: EV entry into force, MA application, PE
+# taking effect, /PART for part of the act) and Cellar's comment on it ("DATPUB +20 V ART 2": 20
+# days after publication, see Article 2; "ET 32020R0910": and that act, which changed it). The
+# consolidations list earlier consolidations too, which have dates but no annotations; CellarDates
+# leaves them out. Only consolidations with a CELEX, as in versions.rq: the others are Cellar's
+# internal production versions, and may list an act no version integrates. One row per date and
+# annotation.
+# {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX annotation: <http://publications.europa.eu/ontology/annotation#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?subject ?date ?type ?comment
+WHERE {
+  {
+    ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  } UNION {
+    ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+    ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
+         cdm:resource_legal_id_celex ?version ;
+         cdm:act_consolidated_consolidates_resource_legal ?work .
+  }
+  ?work cdm:resource_legal_id_celex ?subject ;
+       cdm:resource_legal_date_entry-into-force ?date .
+  OPTIONAL {
+    ?axiom owl:annotatedSource ?work ;
+         owl:annotatedProperty cdm:resource_legal_date_entry-into-force ;
+         owl:annotatedTarget ?date .
+    OPTIONAL { ?axiom annotation:type_of_date ?type }
+    OPTIONAL { ?axiom annotation:comment_on_date ?comment }
+  }
+}
+ORDER BY ?subject ?date

@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -44,7 +45,9 @@ public class OneActCellar {
                       false,
                       List.of(new ActIdentifier("32026R0001")),
                       Set.of(Language.ENG, Language.FRA),
-                      Instant.parse("2026-03-30T08:00:00Z")))));
+                      Instant.parse("2026-03-30T08:00:00Z")))),
+          List.of(),
+          Map.of());
 
   final List<String> asked = new CopyOnWriteArrayList<>();
 

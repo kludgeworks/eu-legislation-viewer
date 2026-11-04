@@ -16,6 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.table
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.jooq.Condition;
@@ -113,7 +114,9 @@ class JooqActStore implements ActStore {
         act.getDateOfDocument(),
         act.getInForce(),
         act.getEndOfValidity(),
-        new Timeline(versions));
+        new Timeline(versions),
+        List.of(),
+        Map.of());
   }
 
   private static Version version(VersionRecord version) {

@@ -10,3 +10,7 @@ languages-32015R1998.json           languages.rq, celex 32015R1998 (recorded 202
                                     version's Formex modification; 23 languages each, no Irish)
 languages-32010R0185.json           languages.rq, celex 32010R0185 (recorded 2026-10-31, likewise;
                                     the early versions without Croatian)
+dates-32015R1998.json               dates.rq, celex 32015R1998 (recorded 2026-11-04: its own dates and
+                                    those of the 17 acts its versions integrate, with Cellar's
+                                    annotations; 32019R0413's application a placeholder, 1001-01-01)
+dates-32010R0185.json               dates.rq, celex 32010R0185 (recorded 2026-11-04, likewise)

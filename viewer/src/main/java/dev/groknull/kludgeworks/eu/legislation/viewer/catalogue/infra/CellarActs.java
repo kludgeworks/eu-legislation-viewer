@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
@@ -22,6 +23,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,8 +41,9 @@ import org.springframework.stereotype.Component;
 /**
  * Acts as Cellar has them, from its RDF (the CDM ontology): an act's work by its CELEX, found from
  * its ELI if need be, the consolidations based on it (Research: CDM ontology), and the languages
- * each version has its text in (Research: which languages a version is in). Four queries, beside
- * this class: act.rq, act-by-eli.rq, versions.rq and languages.rq; an act's three side by side.
+ * each version has its text in (Research: which languages a version is in), and the dates of the
+ * act and of the acts its versions integrate (CellarDates). Five queries, beside this class:
+ * act.rq, act-by-eli.rq, versions.rq, languages.rq and dates.rq; an act's four side by side.
  */
 @Component
 class CellarActs implements ActSource {
@@ -49,6 +52,7 @@ class CellarActs implements ActSource {
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
   private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
   private static final String LANGUAGES = Sparql.template(CellarActs.class, "languages.rq");
+  private static final String DATES = Sparql.template(CellarActs.class, "dates.rq");
 
   /** Cellar's date for one it doesn't know (seen as an entry into force). */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
@@ -77,14 +81,24 @@ class CellarActs implements ActSource {
     var work = select(ACT, values);
     var versions = select(VERSIONS, values);
     var languages = select(LANGUAGES, values);
-    var act = act(id, Sparql.join(work), Sparql.join(versions), Sparql.join(languages));
+    var dates = select(DATES, values);
+    var act =
+        act(
+            id,
+            Sparql.join(work),
+            Sparql.join(versions),
+            Sparql.join(languages),
+            Sparql.join(dates));
     var took = Duration.ofNanos(System.nanoTime() - started).toMillis();
     act.ifPresentOrElse(
         a ->
             LOG.info(
-                "Read {} from Cellar: {} versions in {} ms",
+                "Read {} from Cellar: {} versions, {} dates of its own, dates of {} amending acts,"
+                    + " in {} ms",
                 id,
                 a.timeline().versions().size(),
+                a.dates().size(),
+                a.amendingDates().size(),
                 took),
         () -> LOG.info("{} isn't in Cellar ({} ms)", id, took));
     return act;
@@ -124,18 +138,24 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The act from the answers to act.rq, versions.rq and languages.rq; none if act.rq found no work.
+   * The act from the answers to act.rq, versions.rq, languages.rq and dates.rq; none if act.rq
+   * found no work.
    *
    * @throws CellarException if Cellar's answers make no act: a value missing, repeated or not of
    *     its kind, or versions the timeline refuses
    */
   static Optional<Act> act(
-      ActIdentifier id, SparqlResult work, SparqlResult consolidations, SparqlResult languages) {
+      ActIdentifier id,
+      SparqlResult work,
+      SparqlResult consolidations,
+      SparqlResult languages,
+      SparqlResult dates) {
     if (work.rows().isEmpty()) {
       return Optional.empty();
     }
     try {
-      return Optional.of(read(id, work, consolidations, formexByVersion(languages)));
+      return Optional.of(
+          read(id, work, consolidations, formexByVersion(languages), CellarDates.byAct(id, dates)));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
@@ -146,7 +166,8 @@ class CellarActs implements ActSource {
       ActIdentifier id,
       SparqlResult work,
       SparqlResult consolidations,
-      Map<String, Formex> formex) {
+      Map<String, Formex> formex,
+      Map<ActIdentifier, List<ActDate>> dates) {
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
     if (types.size() != 1) {
@@ -175,6 +196,11 @@ class CellarActs implements ActSource {
     if (originalFrom == null) {
       throw new IllegalArgumentException("neither an entry into force nor a date of document");
     }
+    var timeline = timeline(id, originalFrom, consolidations, formex);
+    var integrated = new HashSet<ActIdentifier>();
+    timeline.versions().forEach(v -> integrated.addAll(v.integrates()));
+    var amendingDates = new HashMap<>(dates);
+    amendingDates.keySet().retainAll(integrated);
     return new Act(
         id,
         elis.isEmpty() ? null : eli(id, elis.getFirst()),
@@ -182,7 +208,9 @@ class CellarActs implements ActSource {
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
-        timeline(id, originalFrom, consolidations, formex));
+        timeline,
+        dates.getOrDefault(id, List.of()),
+        amendingDates);
   }
 
   /**

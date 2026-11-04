@@ -3,8 +3,14 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
@@ -84,7 +90,8 @@ class CellarActsTest {
                 result(
                     consolidation("02016E/TXT-20151225", "2015-12-25"),
                     consolidation("02016E/TXT-20160901", "2016-09-01")),
-                noLanguages())
+                noLanguages(),
+                noDates())
             .orElseThrow()
             .timeline();
 
@@ -163,7 +170,8 @@ class CellarActsTest {
                             "languages",
                             "DEU ENG NOR",
                             "formexModified",
-                            "2015-11-23T08:58:11.083+01:00"))))
+                            "2015-11-23T08:58:11.083+01:00"))),
+                noDates())
             .orElseThrow()
             .timeline();
 
@@ -174,10 +182,104 @@ class CellarActsTest {
   }
 
   @Test
+  void readsTheActsOwnDatesWithTheClausesThatSetThem() {
+    assertThat(act(AVSEC).dates())
+        .containsExactly(
+            new ActDate(
+                LocalDate.of(2015, 11, 15),
+                Kind.ENTRY_INTO_FORCE,
+                false,
+                new Clause(
+                    Anchor.PUBLICATION, 1, List.of(article("3")), List.of(), "DATPUB +1 V ART 3")),
+            new ActDate(
+                LocalDate.of(2016, 2, 1),
+                Kind.APPLICATION,
+                false,
+                new Clause(null, null, List.of(article("2")), List.of(), "V ART 2")));
+  }
+
+  @Test
+  void readsTheDatesOfEachActItsVersionsIntegrate() {
+    var dates = act(AVSEC).amendingDates();
+
+    assertThat(dates).hasSize(17).doesNotContainKey(AVSEC);
+    // applies before it enters into force, as its Article 2 says
+    assertThat(dates.getOrDefault(new ActIdentifier("32017R0815"), List.of()))
+        .extracting(ActDate::date, ActDate::kind)
+        .containsExactly(
+            tuple(LocalDate.of(2017, 6, 1), Kind.APPLICATION),
+            tuple(LocalDate.of(2017, 6, 2), Kind.ENTRY_INTO_FORCE));
+  }
+
+  @Test
+  void aDateALaterActMovedNamesThatAct() {
+    var application = act(AVSEC).datesOf(new ActIdentifier("32019R0103")).getLast();
+
+    assertThat(application.date()).isEqualTo(LocalDate.of(2021, 12, 31));
+    assertThat(application.partial()).isTrue();
+    assertThat(application.clause().provisions()).containsExactly(article("2"));
+    assertThat(application.clause().amendedBy()).containsExactly(new ActIdentifier("32020R0910"));
+  }
+
+  @Test
+  void aPlaceholderDateIsNoDateButKeepsItsClause() {
+    var application = act(AVSEC).datesOf(new ActIdentifier("32019R0413")).getFirst();
+
+    assertThat(application.kind()).isEqualTo(Kind.APPLICATION);
+    assertThat(application.date()).isNull();
+    assertThat(application.clause().provisions()).containsExactly(article("3"));
+  }
+
+  @Test
+  void readsDatesOfEveryKindAndClauseCellarWrites() {
+    var dates =
+        CellarDates.byAct(
+            AVSEC,
+            dates(
+                dateRow("32018D1269", "2018-09-20", "PE", "{DATNOT|x} {V|x} {ART|x} 2"),
+                dateRow("32021R0255", "2021-03-15", "MA/PART", "V ART 2.2(f) ET 2.2(g)"),
+                dateRow("32012R1064", "2012-11-17", "EV", "DATPUB + 3 VOIR ANN"),
+                dateRow("32015R2426", "2015-02-29", "MA", "V ART 2"),
+                dateRow("32015R2426", "2016-01-11", "ECHLET", ""),
+                dateRow("02015R1998-20160229", "2016-02-29", "", "")));
+
+    assertThat(dates.getOrDefault(new ActIdentifier("32018D1269"), List.of()))
+        .containsExactly(
+            new ActDate(
+                LocalDate.of(2018, 9, 20),
+                Kind.TAKING_EFFECT,
+                false,
+                new Clause(
+                    Anchor.NOTIFICATION,
+                    null,
+                    List.of(article("2")),
+                    List.of(),
+                    "DATNOT V ART 2")));
+    assertThat(
+            dates
+                .getOrDefault(new ActIdentifier("32021R0255"), List.of())
+                .getFirst()
+                .clause()
+                .provisions())
+        .containsExactly(article("2.2(f)"), article("2.2(g)"));
+    assertThat(dates.getOrDefault(new ActIdentifier("32021R0255"), List.of()).getFirst().partial())
+        .isTrue();
+    assertThat(dates.getOrDefault(new ActIdentifier("32012R1064"), List.of()).getFirst().clause())
+        .extracting(Clause::from, Clause::days, Clause::provisions)
+        .containsExactly(Anchor.PUBLICATION, 3, List.of(new Provision(Provision.Type.ANNEX, null)));
+    // a day that doesn't exist is none; a type not known is left out; a consolidation isn't an act
+    assertThat(dates.getOrDefault(new ActIdentifier("32015R2426"), List.of()))
+        .singleElement()
+        .extracting(ActDate::date, ActDate::kind)
+        .containsExactly(null, Kind.APPLICATION);
+    assertThat(dates).hasSize(4);
+  }
+
+  @Test
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActs.act(AVSEC, none, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none, none, none)).isEmpty();
   }
 
   @Test
@@ -196,7 +298,8 @@ class CellarActsTest {
             consolidation("02015R1998-20260322-BIS", "2026-03-22"));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> CellarActs.act(AVSEC, work(Map.of()), twoOnOneDay, noLanguages()))
+        .isThrownBy(
+            () -> CellarActs.act(AVSEC, work(Map.of()), twoOnOneDay, noLanguages(), noDates()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -211,7 +314,7 @@ class CellarActsTest {
                 workRow("http://data.europa.eu/eli/reg_impl/2015/1999/oj")));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> CellarActs.act(AVSEC, twoElis, result(), noLanguages()))
+        .isThrownBy(() -> CellarActs.act(AVSEC, twoElis, result(), noLanguages(), noDates()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 
@@ -222,7 +325,7 @@ class CellarActsTest {
             List.of("eli", "type", "entryIntoForce"),
             List.of(workRow("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")));
 
-    assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages()))
+    assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages(), noDates()))
         .hasValueSatisfying(
             act -> assertThat(act.eli()).isEqualTo(new Eli("treaty/tfeu_2008/art_251")));
   }
@@ -233,7 +336,7 @@ class CellarActsTest {
         new SparqlResult(
             List.of("eli", "type", "entryIntoForce"), List.of(workRow("ELI:L:2023:2616:OJ")));
 
-    assertThat(CellarActs.act(AVSEC, work, result(), noLanguages()))
+    assertThat(CellarActs.act(AVSEC, work, result(), noLanguages(), noDates()))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 
@@ -284,6 +387,26 @@ class CellarActsTest {
     return languages();
   }
 
+  /** dates.rq's answer: one row per date. */
+  private static SparqlResult dates(SparqlResult.Row... rows) {
+    return new SparqlResult(List.of("subject", "date", "type", "comment"), List.of(rows));
+  }
+
+  private static SparqlResult.Row dateRow(
+      String subject, String date, String type, String comment) {
+    return new SparqlResult.Row(
+        Map.of("subject", subject, "date", date, "type", "{" + type + "|x}", "comment", comment));
+  }
+
+  private static Provision article(String number) {
+    return new Provision(Provision.Type.ARTICLE, number);
+  }
+
+  /** dates.rq's answer, with no dates. */
+  private static SparqlResult noDates() {
+    return new SparqlResult(List.of("subject", "date", "type", "comment"), List.of());
+  }
+
   private static SparqlResult.Row consolidation(String celex, String date) {
     return new SparqlResult.Row(Map.of("version", celex, "date", date, "pdf", "1"));
   }
@@ -293,7 +416,8 @@ class CellarActsTest {
             id,
             recorded("act-" + id.celex() + ".json"),
             recorded("versions-" + id.celex() + ".json"),
-            recorded("languages-" + id.celex() + ".json"))
+            recorded("languages-" + id.celex() + ".json"),
+            recorded("dates-" + id.celex() + ".json"))
         .orElseThrow();
   }
 
