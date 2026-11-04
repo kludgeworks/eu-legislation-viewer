@@ -64,9 +64,15 @@
   <xsl:template match="PUBLICATION"/>
 
   <!-- the title of an annex: Formex may split one annex into fragments that repeat its title, and
-       the converter joins them, so the title counts once (kind="once") -->
+       the converter joins them, so the title counts once (kind="once"); its runs are split as any
+       other text's are, at amendment markers -->
   <xsl:template match="(ANNEX | CONS.ANNEX)/TITLE/TI/P[text()[normalize-space()]][not(*)]" priority="1">
-    <v kind="once" file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{normalize-space(.)}</v>
+    <xsl:for-each-group select="node()" group-adjacent="f:in-run(.)">
+      <xsl:variable name="run" as="xs:string" select="normalize-space(string-join(current-group()[self::text()]))"/>
+      <xsl:if test="current-grouping-key() and $run">
+        <v kind="once" file="{tokenize(base-uri(..), '/')[last()]}" path="{f:path(..)}">{$run}</v>
+      </xsl:if>
+    </xsl:for-each-group>
   </xsl:template>
 
   <!-- a document of the act-by-act OJ C series: its number (C/2025/3971) is its OJ reference, which
