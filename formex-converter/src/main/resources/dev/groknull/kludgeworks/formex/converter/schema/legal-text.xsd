@@ -956,6 +956,9 @@
               <xs:annotation><xs:documentation>A group of rows under a heading row.</xs:documentation></xs:annotation>
             </xs:element>
           </xs:choice>
+          <xs:element name="notes" type="Notes" minOccurs="0">
+            <xs:annotation><xs:documentation>A consolidated version's table notes, which EUR-Lex prints under the table, not with its file's.</xs:documentation></xs:annotation>
+          </xs:element>
         </xs:sequence>
         <xs:attribute name="cols" type="xs:positiveInteger">
           <xs:annotation><xs:documentation>The number of columns.</xs:documentation></xs:annotation>

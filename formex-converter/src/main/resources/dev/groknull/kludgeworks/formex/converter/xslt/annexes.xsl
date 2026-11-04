@@ -189,7 +189,7 @@
           <xsl:variable name="notes" as="element()?">
             <xsl:if test="$files">
               <xsl:call-template name="f:notes">
-                <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included(.)//NOTE[not(@NOTE.REF)]"/>
+                <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included(.)//NOTE[not(@NOTE.REF)][not(f:table-note(.))]"/>
               </xsl:call-template>
             </xsl:if>
           </xsl:variable>

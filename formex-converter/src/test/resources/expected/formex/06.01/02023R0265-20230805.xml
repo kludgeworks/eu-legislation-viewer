@@ -3151,16 +3151,16 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_1" marker="1" kind="table">
+                     <p>
+                        <t v="A.Ș. stands for Anonim Șirketi"/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="table">
-         <p>
-            <t v="A.Ș. stands for Anonim Șirketi"/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

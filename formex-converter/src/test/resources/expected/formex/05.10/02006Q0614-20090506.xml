@@ -2335,6 +2335,13 @@
                   </p>
                </td>
             </tr>
+            <notes>
+               <note eId="note_5" marker="1" kind="table">
+                  <p>
+                     <t v="The expenditure on pensions included under the ceiling for this heading is calculated net of the staff contributions to the relevant scheme, within the limit of EUR 500 million at 2004 prices for the period 2007-2013."/>
+                  </p>
+               </note>
+            </notes>
          </table>
       </unit>
       <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
@@ -2975,11 +2982,6 @@
                <t v="OJ C 89, 22.4.1975, p. 1"/>
             </ref>
             <t v="."/>
-         </p>
-      </note>
-      <note eId="note_5" marker="1" kind="table">
-         <p>
-            <t v="The expenditure on pensions included under the ceiling for this heading is calculated net of the staff contributions to the relevant scheme, within the limit of EUR 500 million at 2004 prices for the period 2007-2013."/>
          </p>
       </note>
    </notes>

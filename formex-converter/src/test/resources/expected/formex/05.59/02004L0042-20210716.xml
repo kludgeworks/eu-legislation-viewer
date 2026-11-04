@@ -1820,6 +1820,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_2" marker="*" kind="table">
+                     <p>
+                        <t v="g/l ready to use"/>
+                     </p>
+                  </note>
+               </notes>
             </table>
             <table cols="4">
                <caption>
@@ -1988,6 +1995,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_3" marker="*" kind="table">
+                     <p>
+                        <t v="g/l of ready for use product. Except for subcategory (a) any water content of the product ready for use should be discounted."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </tableGroup>
       </unit>
@@ -2209,16 +2223,6 @@
                <t v="OJ L 123, 12.5.2016, p. 1"/>
             </ref>
             <t v="."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="*" kind="table">
-         <p>
-            <t v="g/l ready to use"/>
-         </p>
-      </note>
-      <note eId="note_3" marker="*" kind="table">
-         <p>
-            <t v="g/l of ready for use product. Except for subcategory (a) any water content of the product ready for use should be discounted."/>
          </p>
       </note>
    </notes>

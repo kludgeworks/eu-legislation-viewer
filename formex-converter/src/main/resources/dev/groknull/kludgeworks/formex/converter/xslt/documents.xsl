@@ -136,7 +136,7 @@
       <!-- a document in a file of its own: the file's notes after it, before its annexes' files -->
       <xsl:if test="$doc is root($doc)/*">
         <xsl:call-template name="f:notes">
-          <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($doc)//NOTE[not(@NOTE.REF)]"/>
+          <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($doc)//NOTE[not(@NOTE.REF)][not(f:table-note(.))]"/>
         </xsl:call-template>
       </xsl:if>
       <xsl:variable name="groups" as="array(element())*" select="f:annex-groups($annexes)"/>
@@ -260,8 +260,8 @@
   <!-- a table of contents is navigation the reader builds from the units; not text -->
   <xsl:template match="TOC" mode="block"/>
 
-  <!-- notes are collected at the end of the document; what else a group of notes holds (a title,
-       annotations such as "EASA Form 138 – Issue 3") stays here -->
+  <!-- notes are collected after their file, or a consolidated version's table; what else a group of
+       notes holds (a title, annotations such as "EASA Form 138 – Issue 3") stays here -->
   <xsl:template match="GR.NOTES" mode="block">
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" as="node()*" select="node() except NOTE"/>

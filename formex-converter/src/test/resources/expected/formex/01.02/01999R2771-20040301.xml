@@ -3263,6 +3263,42 @@
                   </p>
                </td>
             </tr>
+            <notes>
+               <note eId="note_21" marker="1" kind="table">
+                  <p>
+                     <t v="Tracers approved under Regulations (EEC) No 3143/85 ("/>
+                     <ref kind="oj"
+                          series="L"
+                          number="298"
+                          date="1985-11-12"
+                          page="9">
+                        <t v="OJ L 298, 12.11.1985, p. 9"/>
+                     </ref>
+                     <t v=") and No 429/90 ("/>
+                     <ref kind="oj" series="L" number="45" date="1990-02-21" page="8">
+                        <t v="OJ L 45, 21.2.1990, p. 8"/>
+                     </ref>
+                     <t v=") and (EC) No 2571/97 ("/>
+                     <ref kind="oj"
+                          series="L"
+                          number="350"
+                          date="1997-12-20"
+                          page="3">
+                        <t v="OJ L 350, 20.12.1997, p. 3"/>
+                     </ref>
+                     <t v=")."/>
+                  </p>
+               </note>
+               <note eId="note_22" marker="2" kind="table">
+                  <p>
+                     <provenance amendingAct="32001R0213"
+                                 action="replaced"
+                                 location="AR:20;PT:2"
+                                 marker="O003001M002000"/>
+                     <t v="See Annex I to Regulation (EC) No 213/2001."/>
+                  </p>
+               </note>
+            </notes>
          </table>
          <unit eId="anx_I/level_1" kind="level" depth="1">
             <p>
@@ -8966,40 +9002,6 @@
                <t v="OJ L 164, 30.6.1999, p. 10"/>
             </ref>
             <t v="."/>
-         </p>
-      </note>
-      <note eId="note_21" marker="1" kind="table">
-         <p>
-            <t v="Tracers approved under Regulations (EEC) No 3143/85 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="298"
-                 date="1985-11-12"
-                 page="9">
-               <t v="OJ L 298, 12.11.1985, p. 9"/>
-            </ref>
-            <t v=") and No 429/90 ("/>
-            <ref kind="oj" series="L" number="45" date="1990-02-21" page="8">
-               <t v="OJ L 45, 21.2.1990, p. 8"/>
-            </ref>
-            <t v=") and (EC) No 2571/97 ("/>
-            <ref kind="oj"
-                 series="L"
-                 number="350"
-                 date="1997-12-20"
-                 page="3">
-               <t v="OJ L 350, 20.12.1997, p. 3"/>
-            </ref>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_22" marker="2" kind="table">
-         <p>
-            <provenance amendingAct="32001R0213"
-                        action="replaced"
-                        location="AR:20;PT:2"
-                        marker="O003001M002000"/>
-            <t v="See Annex I to Regulation (EC) No 213/2001."/>
          </p>
       </note>
       <deleted>

@@ -1773,6 +1773,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_1" marker="1" kind="table">
+                     <p>
+                        <t v="i.e. [0-1) residual maturity less than one year, [1-3) residual maturity equal to or greater than one year and less than three years, etc."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </tableGroup>
          <table cols="3">
@@ -1892,6 +1899,13 @@
                   </p>
                </td>
             </tr>
+            <notes>
+               <note eId="note_2" marker="*" kind="table">
+                  <p>
+                     <t v="i.e. [0-1) WAL less than one year, [1-3) WAL equal to or greater than one year and less than three years, etc."/>
+                  </p>
+               </note>
+            </notes>
          </table>
          <table cols="4">
             <provenance amendingAct="32019O0012"
@@ -2147,25 +2161,15 @@
                   </p>
                </td>
             </tr>
+            <notes>
+               <note eId="note_3" marker="*" kind="table">
+                  <p>
+                     <t v="i.e. [0-1) residual maturity less than one year, [1-3) residual maturity equal to or greater than one year and less than three years, etc."/>
+                  </p>
+               </note>
+            </notes>
          </table>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="table">
-         <p>
-            <t v="i.e. [0-1) residual maturity less than one year, [1-3) residual maturity equal to or greater than one year and less than three years, etc."/>
-         </p>
-      </note>
-      <note eId="note_2" marker="*" kind="table">
-         <p>
-            <t v="i.e. [0-1) WAL less than one year, [1-3) WAL equal to or greater than one year and less than three years, etc."/>
-         </p>
-      </note>
-      <note eId="note_3" marker="*" kind="table">
-         <p>
-            <t v="i.e. [0-1) residual maturity less than one year, [1-3) residual maturity equal to or greater than one year and less than three years, etc."/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

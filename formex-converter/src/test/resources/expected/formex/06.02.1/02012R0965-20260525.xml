@@ -12084,6 +12084,103 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_14" marker="1" kind="table">
+                     <p>
+                        <t v="Other type of transportation to be specified."/>
+                     </p>
+                  </note>
+                  <note eId="note_15" marker="2" kind="table">
+                     <p>
+                        <t v="Replaced by the name of the State of the operator."/>
+                     </p>
+                  </note>
+                  <note eId="note_16" marker="3" kind="table">
+                     <p>
+                        <t v="Replaced by the identification of the issuing competent authority."/>
+                     </p>
+                  </note>
+                  <note eId="note_17" marker="4" kind="table">
+                     <p>
+                        <t v="For use by the competent authority."/>
+                     </p>
+                  </note>
+                  <note eId="note_18" marker="5" kind="table">
+                     <p>
+                        <t v="For use by the competent authority."/>
+                     </p>
+                  </note>
+                  <note eId="note_19" marker="6" kind="table">
+                     <p>
+                        <t v="Approval reference, as issued by the competent authority."/>
+                     </p>
+                  </note>
+                  <note eId="note_20" marker="7" kind="table">
+                     <p>
+                        <t v="Replaced by the operator’s registered name."/>
+                     </p>
+                  </note>
+                  <note eId="note_21" marker="8" kind="table">
+                     <p>
+                        <t v="Operator’s trading name, if different. Insert "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Dba"/>
+                        </quote>
+                        <t v=" (for "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Doing business as"/>
+                        </quote>
+                        <t v=") before the trading name."/>
+                     </p>
+                  </note>
+                  <note eId="note_22" marker="9" kind="table">
+                     <p>
+                        <t v="The contact details include the telephone and fax numbers, including the country code, and the email address (if available) at which operational management can be contacted without undue delay for issues related to flight operations, airworthiness, flight and cabin crew members’ competency, dangerous goods and other matters as appropriate."/>
+                     </p>
+                  </note>
+                  <note eId="note_23" marker="10" kind="table">
+                     <p>
+                        <t v="Operator’s address of principal place of business."/>
+                     </p>
+                  </note>
+                  <note eId="note_24" marker="11" kind="table">
+                     <p>
+                        <t v="Operator’s principal place of business telephone and fax details, including the country code. Email to be provided if available."/>
+                     </p>
+                  </note>
+                  <note eId="note_25" marker="12" kind="table">
+                     <p>
+                        <t v="Insertion of the controlled document, carried on board, in which the contact details are listed, with the appropriate paragraph or page reference. E.g.: "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Contact details … are listed in the operations manual, gen/basic, Chapter 1, 1.1"/>
+                        </quote>
+                        <t v="; or "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="… are listed in the operations specifications, page 1"/>
+                        </quote>
+                        <t v="; or "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="… are listed in an attachment to this document"/>
+                        </quote>
+                        <t v="."/>
+                     </p>
+                  </note>
+                  <note eId="note_26" marker="13" kind="table">
+                     <p>
+                        <t v="Operator’s registered name."/>
+                     </p>
+                  </note>
+                  <note eId="note_27" marker="14" kind="table">
+                     <p>
+                        <t v="Issue date of the AOC (dd-mm-yyyy)."/>
+                     </p>
+                  </note>
+                  <note eId="note_28" marker="15" kind="table">
+                     <p>
+                        <t v="Title, name and signature of the competent authority’s representative. In addition, an official stamp may be applied on the AOC."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
             <annotation>
                <annotation>
@@ -12700,6 +12797,156 @@
                   <td colspan="2"/>
                   <td/>
                </tr>
+               <notes>
+                  <note eId="note_29" marker="1" kind="table">
+                     <p>
+                        <t v="Telephone contact details of the competent authority, including the country code. Email address to be provided, as well as fax if available."/>
+                     </p>
+                  </note>
+                  <note eId="note_30" marker="2" kind="table">
+                     <p>
+                        <t v="Insertion of associated air operator certificate (AOC) number."/>
+                     </p>
+                  </note>
+                  <note eId="note_31" marker="3" kind="table">
+                     <p>
+                        <t v="Insertion of the operator’s registered name and the operator’s trading name, if different. Insert "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Dba"/>
+                        </quote>
+                        <t v=" (for "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Doing business as"/>
+                        </quote>
+                        <t v=") before the trading name."/>
+                     </p>
+                  </note>
+                  <note eId="note_32" marker="4" kind="table">
+                     <p>
+                        <t v="Issue date of the operations specifications (dd-mm-yyyy) and signature of the competent authority representative."/>
+                     </p>
+                  </note>
+                  <note eId="note_33" marker="5" kind="table">
+                     <p>
+                        <t v="Insertion of ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232) or insertion of the VTOL-capable aircraft make, model and series, as applicable."/>
+                     </p>
+                  </note>
+                  <note eId="note_34" marker="6" kind="table">
+                     <p>
+                        <t v="The registration marks are listed either in the operations specifications or in the operations manual. In the latter case, the related operations specifications must make a reference to the related page in the operations manual. In case not all specific approvals apply to the aircraft model, the registration marks of the aircraft may be entered in the "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Remarks"/>
+                        </quote>
+                        <t v=" column to the related specific approval."/>
+                     </p>
+                  </note>
+                  <note eId="note_35" marker="7" kind="table">
+                     <p>
+                        <t v="Other type of transportation (e.g. emergency medical service) to be specified."/>
+                     </p>
+                  </note>
+                  <note eId="note_36" marker="8" kind="table">
+                     <p>
+                        <t v="Listing of geographical area(s) of authorised operation (by geographical coordinates or specific routes, flight information region or national or regional boundaries)."/>
+                     </p>
+                  </note>
+                  <note eId="note_37" marker="9" kind="table">
+                     <p>
+                        <t v="Listing of applicable special limitations (e.g. VFR only, Day only, etc.)."/>
+                     </p>
+                  </note>
+                  <note eId="note_38" marker="10" kind="table">
+                     <p>
+                        <t v="List in this column the most permissive criteria for each approval or the approval type (with appropriate criteria)."/>
+                     </p>
+                  </note>
+                  <note eId="note_39" marker="11" kind="table">
+                     <p>
+                        <t v="Insertion of approved minimum take-off RVR in metres. One line per approval may be used if different approvals are granted."/>
+                     </p>
+                  </note>
+                  <note eId="note_40" marker="12" kind="table">
+                     <p>
+                        <t v="Insertion of applicable precision approach category: CAT II or CAT III. Insertion of minimum RVR in metres and DH in feet. One line is used per listed approach category."/>
+                     </p>
+                  </note>
+                  <note eId="note_41" marker="13" kind="table">
+                     <p>
+                        <t v="Insertion of applicable operational credit: SA CAT I, SA CAT II, EFVS, etc. Insertion of minimum RVR in metres and DH in feet. One line is used per listed operational credit."/>
+                     </p>
+                  </note>
+                  <note eId="note_42" marker="14" kind="table">
+                     <p>
+                        <t v="The "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Not Applicable"/>
+                        </quote>
+                        <t v=" (N/A) box may be checked only if the aircraft maximum ceiling is below FL290."/>
+                     </p>
+                  </note>
+                  <note eId="note_43" marker="15" kind="table">
+                     <p>
+                        <t v="Extended range operations (ETOPS) currently apply only to two-engined aircraft. Therefore, the "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Not Applicable"/>
+                        </quote>
+                        <t v=" (N/A) box may be checked if the aircraft model has fewer or more than two engines."/>
+                     </p>
+                  </note>
+                  <note eId="note_44" marker="16" kind="table">
+                     <p>
+                        <t v="The threshold distance may also be listed (in NM), as well as the engine type."/>
+                     </p>
+                  </note>
+                  <note eId="note_45" marker="17" kind="table">
+                     <p>
+                        <t v="Performance-based navigation (PBN): one line is used for each complex PBN-specific approval (e.g. RNP AR APCH), with appropriate limitations listed in the "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Specifications"/>
+                        </quote>
+                        <t v=" or "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Remarks"/>
+                        </quote>
+                        <t v=" columns, or in both. Procedure-specific approvals of specific RNP AR APCH procedures may be listed in the operations specifications or in the operations manual. In the latter case, the related operations specifications must have a reference to the related page in the operations manual."/>
+                     </p>
+                  </note>
+                  <note eId="note_46" marker="18" kind="table">
+                     <p>
+                        <t v="Specify if the specific approval is limited to certain runway ends or aerodromes, or both."/>
+                     </p>
+                  </note>
+                  <note eId="note_47" marker="19" kind="table">
+                     <p>
+                        <t v="Insertion of the particular airframe or engine combination."/>
+                     </p>
+                  </note>
+                  <note eId="note_48" marker="20" kind="table">
+                     <p>
+                        <t v="Approval to conduct the training course and examination to be completed by applicants for a cabin crew attestation as specified in Annex V (Part-CC) to Regulation (EU) No 1178/2011."/>
+                     </p>
+                  </note>
+                  <note eId="note_49" marker="21" kind="table">
+                     <p>
+                        <t v="Approval to issue cabin crew attestations as specified in Annex V (Part-CC) to Regulation (EU) No 1178/2011."/>
+                     </p>
+                  </note>
+                  <note eId="note_50" marker="22" kind="table">
+                     <p>
+                        <t v="Insertion of the list of type B EFB applications together with the reference of the EFB hardware (for portable EFBs). This list is contained either in the operations specifications or in the operations manual. In the latter case, the related operations specifications must make a reference to the related page in the operations manual."/>
+                     </p>
+                  </note>
+                  <note eId="note_51" marker="23" kind="table">
+                     <p>
+                        <t v="The approval reference of the organisation responsible for managing the continuing airworthiness of the aircraft and a reference to the relevant regulation (e.g. Annex Vc (Part-CAMO) to Regulation (EU) No 1321/2014)."/>
+                     </p>
+                  </note>
+                  <note eId="note_52" marker="24" kind="table">
+                     <p>
+                        <t v="Other approvals or data may be entered here, using one line (or one multi-line block) per authorisation (e.g. short-landing operations, steep-approach operations, reduced required landing distance, helicopter operations to or from a public interest site, helicopter operations over a hostile environment located outside a congested area, helicopter operations without a safe forced landing capability, operations with increased bank angles, maximum distance from an adequate aerodrome for two-engined aeroplanes without an ETOPS approval)."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
             <annotation>
                <annotation>
@@ -12855,6 +13102,46 @@
                      <td/>
                      <td/>
                   </tr>
+                  <notes>
+                     <note eId="note_53" marker="1" kind="table">
+                        <p>
+                           <t v="Insertion of name and contact details."/>
+                        </p>
+                     </note>
+                     <note eId="note_54" marker="2" kind="table">
+                        <p>
+                           <t v="Insertion of the associated number."/>
+                        </p>
+                     </note>
+                     <note eId="note_55" marker="3" kind="table">
+                        <p>
+                           <t v="Issue date of the specific approvals (dd-mm-yyyy) and signature of the competent authority representative."/>
+                        </p>
+                     </note>
+                     <note eId="note_56" marker="4" kind="table">
+                        <p>
+                           <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org/"/>
+                        </p>
+                        <p>
+                           <t v="The registration marks shall be either listed in the list of specific approvals or in the operations manual. In the latter case the list of specific approvals shall refer to the related page in the operation manual."/>
+                        </p>
+                     </note>
+                     <note eId="note_57" marker="5" kind="table">
+                        <p>
+                           <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement, maintenance check flights."/>
+                        </p>
+                     </note>
+                     <note eId="note_58" marker="6" kind="table">
+                        <p>
+                           <t v="List in this column any approved operations, e.g., dangerous goods, LVO, RVSM, PBN, MNPS, HOFO."/>
+                        </p>
+                     </note>
+                     <note eId="note_59" marker="7" kind="table">
+                        <p>
+                           <t v="List in this column the most permissive criteria for each approval, e.g. the decision height and RVR minima for CAT II."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
                <p>
                   <t v="EASA FORM 140 Issue 2"/>
@@ -12971,6 +13258,71 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_60" marker="1" kind="table">
+                     <p>
+                        <t v="Name and contact details of the competent authority"/>
+                     </p>
+                  </note>
+                  <note eId="note_61" marker="2" kind="table">
+                     <p>
+                        <t v="Insertion of associated authorisation number."/>
+                     </p>
+                  </note>
+                  <note eId="note_62" marker="3" kind="table">
+                     <p>
+                        <t v="Insertion of the operator's registered name and the operator's trading name, if different. Insert "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Dba"/>
+                        </quote>
+                        <t v=" before the trading name (for "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Doing business as"/>
+                        </quote>
+                        <t v=")."/>
+                     </p>
+                  </note>
+                  <note eId="note_63" marker="4" kind="table">
+                     <p>
+                        <t v="Operator's principal place of business address."/>
+                     </p>
+                  </note>
+                  <note eId="note_64" marker="5" kind="table">
+                     <p>
+                        <t v="Operator's principal place of business telephone and fax details, including the country code. Email to be provided if available."/>
+                     </p>
+                  </note>
+                  <note eId="note_65" marker="6" kind="table">
+                     <p>
+                        <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org. The registration marks shall be either listed in the list of specific approvals or in the operations manual. In the latter case the list of specific approvals shall refer to the related page in the operation manual."/>
+                     </p>
+                  </note>
+                  <note eId="note_66" marker="7" kind="table">
+                     <p>
+                        <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement, maintenance check flights."/>
+                     </p>
+                  </note>
+                  <note eId="note_67" marker="8" kind="table">
+                     <p>
+                        <t v="Listing of geographical area(s) or site(s) of authorised operation (by geographical coordinates or flight information region or national or regional boundaries)."/>
+                     </p>
+                  </note>
+                  <note eId="note_68" marker="9" kind="table">
+                     <p>
+                        <t v="Listing of applicable special limitations (e.g. VFR only, Day only, etc.)."/>
+                     </p>
+                  </note>
+                  <note eId="note_69" marker="10" kind="table">
+                     <p>
+                        <t v="Issue date of the authorisation (dd-mm-yyyy)."/>
+                     </p>
+                  </note>
+                  <note eId="note_70" marker="11" kind="table">
+                     <p>
+                        <t v="Title, name and signature of the competent authority representative. In addition, an official stamp may be applied on the authorisation."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
             <p>
                <t v="EASA FORM 151 Issue 2"/>
@@ -13125,6 +13477,46 @@
                      <td/>
                      <td/>
                   </tr>
+                  <notes>
+                     <note eId="note_71" marker="1" kind="table">
+                        <p>
+                           <t v="Insertion of name and contact details."/>
+                        </p>
+                     </note>
+                     <note eId="note_72" marker="2" kind="table">
+                        <p>
+                           <t v="Insertion of the associated number."/>
+                        </p>
+                     </note>
+                     <note eId="note_73" marker="3" kind="table">
+                        <p>
+                           <t v="Issue date of the specific approvals (dd-mm-yyyy) and signature of the competent authority representative."/>
+                        </p>
+                     </note>
+                     <note eId="note_74" marker="4" kind="table">
+                        <p>
+                           <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org/"/>
+                        </p>
+                        <p>
+                           <t v="The registration marks should be either listed in the List of Specific Approvals or in the operations manual. In the latter case the List of Specific Approvals shall refer to the related page in the operation manual."/>
+                        </p>
+                     </note>
+                     <note eId="note_75" marker="5" kind="table">
+                        <p>
+                           <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement."/>
+                        </p>
+                     </note>
+                     <note eId="note_76" marker="6" kind="table">
+                        <p>
+                           <t v="List in this column any approved operations, e.g. dangerous goods, LVO, RVSM, PBN, MNPS, HOFO."/>
+                        </p>
+                     </note>
+                     <note eId="note_77" marker="7" kind="table">
+                        <p>
+                           <t v="List in this column the most permissive criteria for each approval, e.g. the decision height and RVR minima for CAT II."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
                <p>
                   <t v="EASA FORM 140 Issue 1."/>
@@ -27266,6 +27658,121 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_85" marker="1" kind="table">
+                     <p>
+                        <t v="If there is not enough space to list the required information in the declaration, the information shall be listed in a separate annex. The annex shall be dated and signed."/>
+                     </p>
+                  </note>
+                  <note eId="note_86" marker="2" kind="table">
+                     <p>
+                        <t v="Manufacturer serial number."/>
+                     </p>
+                  </note>
+                  <note eId="note_87" marker="3" kind="table">
+                     <p>
+                        <t v="If the aircraft is also registered with an AOC holder, specify the AOC number of the AOC holder."/>
+                     </p>
+                  </note>
+                  <note eId="note_88" marker="4" kind="table">
+                     <p>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Type(s) of operation"/>
+                        </quote>
+                        <t v=" refers to the type of operations conducted with this aircraft, e.g. non-commercial operations or specialised operations, e.g. aerial photography flights, aerial advertising flights, news media flights, television and movie flights, parachute operations, skydiving, maintenance check flights."/>
+                     </p>
+                  </note>
+                  <note eId="note_89" marker="5" kind="table">
+                     <p>
+                        <t v="Information about the organisation responsible for the continuing airworthiness management shall include the name of the organisation, its address, and the approval reference."/>
+                     </p>
+                  </note>
+                  <note eId="note_90" marker="6" kind="table">
+                     <list kind="alpha">
+                        <unit eId="note_90/pnt_a" kind="point" numbered="true">
+                           <num>
+                              <t v="(a)"/>
+                           </num>
+                           <p>
+                              <t v="operations with any defective instrument or piece of equipment or item or function, under a minimum equipment list (MEL) (points ORO.MLR.105 (b), (f), and (j), NCC.IDE.A.105, NCC.IDE.H.105, SPO.IDE.A.105, and SPO.IDE.H.105)."/>
+                           </p>
+                        </unit>
+                        <unit eId="note_90/pnt_b" kind="point" numbered="true">
+                           <num>
+                              <t v="(b)"/>
+                           </num>
+                           <p>
+                              <t v="Operations requiring prior authorisation or approval, including all of the following:"/>
+                           </p>
+                           <list kind="dash">
+                              <unit eId="note_90/pnt_b/idt_1" kind="indent">
+                                 <p>
+                                    <t v="for specialised operations, wet lease-in and dry lease-in of aircraft registered in a third country (point ORO.SPO.100 (c));"/>
+                                 </p>
+                              </unit>
+                              <unit eId="note_90/pnt_b/idt_2" kind="indent">
+                                 <p>
+                                    <t v="high-risk commercial specialised operations (point ORO.SPO.110);"/>
+                                 </p>
+                              </unit>
+                              <unit eId="note_90/pnt_b/idt_3" kind="indent">
+                                 <p>
+                                    <t v="non-commercial operations with aircraft with an MOPSC of more than 19, which are performed without an operating cabin crew member (point ORO.CC.100 (d));"/>
+                                 </p>
+                              </unit>
+                              <unit eId="note_90/pnt_b/idt_4" kind="indent">
+                                 <p>
+                                    <t v="use of IFR operating minima that are lower than those published by the State (points NCC.OP.110 and SPO.OP.110);"/>
+                                 </p>
+                              </unit>
+                              <unit eId="note_90/pnt_b/idt_5" kind="indent">
+                                 <p>
+                                    <t v="refuelling with engine(s) and/or rotors turning (point NCC.OP.157);"/>
+                                 </p>
+                              </unit>
+                              <unit eId="note_90/pnt_b/idt_6" kind="indent">
+                                 <p>
+                                    <t v="specialised operations (SPO) without oxygen above 10 000 ft (point SPO.OP.195)."/>
+                                 </p>
+                              </unit>
+                           </list>
+                        </unit>
+                     </list>
+                  </note>
+                  <note eId="note_91" marker="7" kind="table">
+                     <p>
+                        <t v="Operations in accordance with Annex V (Part-SPA) to Regulation (EU) No 965/2012, including Subparts B "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Performance-based navigation (PBN) operations"/>
+                        </quote>
+                        <t v=", C "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Operations with specified minimum navigation performance (MNPS)"/>
+                        </quote>
+                        <t v=", D "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Operations in airspace with reduced vertical separation minima (RVSM)"/>
+                        </quote>
+                        <t v=", E "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Low-visibility operations (LVOs) and operations with operational credits"/>
+                        </quote>
+                        <t v=", G "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Transport of dangerous goods"/>
+                        </quote>
+                        <t v=", K "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Helicopter offshore operations"/>
+                        </quote>
+                        <t v=" and N "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="Helicopter point-in-space approaches and departures with reduced VFR minima"/>
+                        </quote>
+                        <t v="."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
       </unit>
@@ -34984,6 +35491,25 @@
                               </p>
                            </td>
                         </tr>
+                        <notes>
+                           <note eId="note_93" marker="*" kind="table">
+                              <p>
+                                 <t v="The cloud base shall be such as to allow flight at the specified height, below and clear of cloud."/>
+                              </p>
+                           </note>
+                           <note eId="note_94" marker="*" kind="table">
+                              <p>
+                                 <t v="Helicopters may be operated in flight visibility down to 800 m provided the destination or an intermediate structure is continuously visible."/>
+                              </p>
+                           </note>
+                           <note eId="note_95" marker="*" kind="table">
+                              <p>
+                                 <t v="Helicopters may be operated in flight visibility down to "/>
+                                 <number v="1500"/>
+                                 <t v=" m provided the destination or an intermediate structure is continuously visible."/>
+                              </p>
+                           </note>
+                        </notes>
                      </table>
                   </unit>
                </deleted>
@@ -47037,6 +47563,13 @@
                         </p>
                      </td>
                   </tr>
+                  <notes>
+                     <note eId="note_96" marker="*" kind="table">
+                        <p>
+                           <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
             </unit>
          </unit>
@@ -47179,6 +47712,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_97" marker="*" kind="table">
+                     <p>
+                        <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
          <unit eId="anx_IV/pnt_CAT.IDE.A.245"
@@ -50656,6 +51196,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_98" marker="*" kind="table">
+                     <p>
+                        <t v="Passenger numbers in Table 1 refer to passengers actually carried on board including persons younger than 24 months."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
             <table cols="2">
                <caption>
@@ -50753,6 +51300,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_99" marker="*" kind="table">
+                     <p>
+                        <t v="Passenger numbers in Table 2 refer to passengers actually carried on board including persons younger than 24 months."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
          <unit eId="anx_IV/pnt_CAT.IDE.H.250"
@@ -54789,6 +55343,13 @@
                         </p>
                      </td>
                   </tr>
+                  <notes>
+                     <note eId="note_100" marker="*" kind="table">
+                        <p>
+                           <t v="VIS: visibility; MDA/H: minimum descent altitude/height."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
             </unit>
          </unit>
@@ -57675,6 +58236,25 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_101" marker="1" kind="table">
+                     <p>
+                        <t v="The cloud base shall allow flight at the specified height to be below and clear of cloud."/>
+                     </p>
+                  </note>
+                  <note eId="note_102" marker="2" kind="table">
+                     <p>
+                        <t v="Helicopters may be operated in flight visibility down to 800 m, provided the destination or an intermediate structure is continuously visible."/>
+                     </p>
+                  </note>
+                  <note eId="note_103" marker="3" kind="table">
+                     <p>
+                        <t v="Helicopters may be operated in flight visibility down to "/>
+                        <number v="1500"/>
+                        <t v=" m, provided the destination or an intermediate structure is continuously visible."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
          <unit eId="anx_V/pnt_SPA.HOFO.135"
@@ -101702,6 +102282,13 @@
                      </p>
                   </td>
                </tr>
+               <notes>
+                  <note eId="note_107" marker="1" kind="table">
+                     <p>
+                        <t v="Passenger percentages in this table refer to passengers carried on board, including persons younger than 24 months of age."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
          <unit eId="anx_IX/level_SUBPART-D/level_SECTION-2/level_16"
@@ -102580,394 +103167,6 @@
             <t v=")."/>
          </p>
       </note>
-      <note eId="note_14" marker="1" kind="table">
-         <p>
-            <t v="Other type of transportation to be specified."/>
-         </p>
-      </note>
-      <note eId="note_15" marker="2" kind="table">
-         <p>
-            <t v="Replaced by the name of the State of the operator."/>
-         </p>
-      </note>
-      <note eId="note_16" marker="3" kind="table">
-         <p>
-            <t v="Replaced by the identification of the issuing competent authority."/>
-         </p>
-      </note>
-      <note eId="note_17" marker="4" kind="table">
-         <p>
-            <t v="For use by the competent authority."/>
-         </p>
-      </note>
-      <note eId="note_18" marker="5" kind="table">
-         <p>
-            <t v="For use by the competent authority."/>
-         </p>
-      </note>
-      <note eId="note_19" marker="6" kind="table">
-         <p>
-            <t v="Approval reference, as issued by the competent authority."/>
-         </p>
-      </note>
-      <note eId="note_20" marker="7" kind="table">
-         <p>
-            <t v="Replaced by the operator’s registered name."/>
-         </p>
-      </note>
-      <note eId="note_21" marker="8" kind="table">
-         <p>
-            <t v="Operator’s trading name, if different. Insert "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Dba"/>
-            </quote>
-            <t v=" (for "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Doing business as"/>
-            </quote>
-            <t v=") before the trading name."/>
-         </p>
-      </note>
-      <note eId="note_22" marker="9" kind="table">
-         <p>
-            <t v="The contact details include the telephone and fax numbers, including the country code, and the email address (if available) at which operational management can be contacted without undue delay for issues related to flight operations, airworthiness, flight and cabin crew members’ competency, dangerous goods and other matters as appropriate."/>
-         </p>
-      </note>
-      <note eId="note_23" marker="10" kind="table">
-         <p>
-            <t v="Operator’s address of principal place of business."/>
-         </p>
-      </note>
-      <note eId="note_24" marker="11" kind="table">
-         <p>
-            <t v="Operator’s principal place of business telephone and fax details, including the country code. Email to be provided if available."/>
-         </p>
-      </note>
-      <note eId="note_25" marker="12" kind="table">
-         <p>
-            <t v="Insertion of the controlled document, carried on board, in which the contact details are listed, with the appropriate paragraph or page reference. E.g.: "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Contact details … are listed in the operations manual, gen/basic, Chapter 1, 1.1"/>
-            </quote>
-            <t v="; or "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="… are listed in the operations specifications, page 1"/>
-            </quote>
-            <t v="; or "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="… are listed in an attachment to this document"/>
-            </quote>
-            <t v="."/>
-         </p>
-      </note>
-      <note eId="note_26" marker="13" kind="table">
-         <p>
-            <t v="Operator’s registered name."/>
-         </p>
-      </note>
-      <note eId="note_27" marker="14" kind="table">
-         <p>
-            <t v="Issue date of the AOC (dd-mm-yyyy)."/>
-         </p>
-      </note>
-      <note eId="note_28" marker="15" kind="table">
-         <p>
-            <t v="Title, name and signature of the competent authority’s representative. In addition, an official stamp may be applied on the AOC."/>
-         </p>
-      </note>
-      <note eId="note_29" marker="1" kind="table">
-         <p>
-            <t v="Telephone contact details of the competent authority, including the country code. Email address to be provided, as well as fax if available."/>
-         </p>
-      </note>
-      <note eId="note_30" marker="2" kind="table">
-         <p>
-            <t v="Insertion of associated air operator certificate (AOC) number."/>
-         </p>
-      </note>
-      <note eId="note_31" marker="3" kind="table">
-         <p>
-            <t v="Insertion of the operator’s registered name and the operator’s trading name, if different. Insert "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Dba"/>
-            </quote>
-            <t v=" (for "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Doing business as"/>
-            </quote>
-            <t v=") before the trading name."/>
-         </p>
-      </note>
-      <note eId="note_32" marker="4" kind="table">
-         <p>
-            <t v="Issue date of the operations specifications (dd-mm-yyyy) and signature of the competent authority representative."/>
-         </p>
-      </note>
-      <note eId="note_33" marker="5" kind="table">
-         <p>
-            <t v="Insertion of ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232) or insertion of the VTOL-capable aircraft make, model and series, as applicable."/>
-         </p>
-      </note>
-      <note eId="note_34" marker="6" kind="table">
-         <p>
-            <t v="The registration marks are listed either in the operations specifications or in the operations manual. In the latter case, the related operations specifications must make a reference to the related page in the operations manual. In case not all specific approvals apply to the aircraft model, the registration marks of the aircraft may be entered in the "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Remarks"/>
-            </quote>
-            <t v=" column to the related specific approval."/>
-         </p>
-      </note>
-      <note eId="note_35" marker="7" kind="table">
-         <p>
-            <t v="Other type of transportation (e.g. emergency medical service) to be specified."/>
-         </p>
-      </note>
-      <note eId="note_36" marker="8" kind="table">
-         <p>
-            <t v="Listing of geographical area(s) of authorised operation (by geographical coordinates or specific routes, flight information region or national or regional boundaries)."/>
-         </p>
-      </note>
-      <note eId="note_37" marker="9" kind="table">
-         <p>
-            <t v="Listing of applicable special limitations (e.g. VFR only, Day only, etc.)."/>
-         </p>
-      </note>
-      <note eId="note_38" marker="10" kind="table">
-         <p>
-            <t v="List in this column the most permissive criteria for each approval or the approval type (with appropriate criteria)."/>
-         </p>
-      </note>
-      <note eId="note_39" marker="11" kind="table">
-         <p>
-            <t v="Insertion of approved minimum take-off RVR in metres. One line per approval may be used if different approvals are granted."/>
-         </p>
-      </note>
-      <note eId="note_40" marker="12" kind="table">
-         <p>
-            <t v="Insertion of applicable precision approach category: CAT II or CAT III. Insertion of minimum RVR in metres and DH in feet. One line is used per listed approach category."/>
-         </p>
-      </note>
-      <note eId="note_41" marker="13" kind="table">
-         <p>
-            <t v="Insertion of applicable operational credit: SA CAT I, SA CAT II, EFVS, etc. Insertion of minimum RVR in metres and DH in feet. One line is used per listed operational credit."/>
-         </p>
-      </note>
-      <note eId="note_42" marker="14" kind="table">
-         <p>
-            <t v="The "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Not Applicable"/>
-            </quote>
-            <t v=" (N/A) box may be checked only if the aircraft maximum ceiling is below FL290."/>
-         </p>
-      </note>
-      <note eId="note_43" marker="15" kind="table">
-         <p>
-            <t v="Extended range operations (ETOPS) currently apply only to two-engined aircraft. Therefore, the "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Not Applicable"/>
-            </quote>
-            <t v=" (N/A) box may be checked if the aircraft model has fewer or more than two engines."/>
-         </p>
-      </note>
-      <note eId="note_44" marker="16" kind="table">
-         <p>
-            <t v="The threshold distance may also be listed (in NM), as well as the engine type."/>
-         </p>
-      </note>
-      <note eId="note_45" marker="17" kind="table">
-         <p>
-            <t v="Performance-based navigation (PBN): one line is used for each complex PBN-specific approval (e.g. RNP AR APCH), with appropriate limitations listed in the "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Specifications"/>
-            </quote>
-            <t v=" or "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Remarks"/>
-            </quote>
-            <t v=" columns, or in both. Procedure-specific approvals of specific RNP AR APCH procedures may be listed in the operations specifications or in the operations manual. In the latter case, the related operations specifications must have a reference to the related page in the operations manual."/>
-         </p>
-      </note>
-      <note eId="note_46" marker="18" kind="table">
-         <p>
-            <t v="Specify if the specific approval is limited to certain runway ends or aerodromes, or both."/>
-         </p>
-      </note>
-      <note eId="note_47" marker="19" kind="table">
-         <p>
-            <t v="Insertion of the particular airframe or engine combination."/>
-         </p>
-      </note>
-      <note eId="note_48" marker="20" kind="table">
-         <p>
-            <t v="Approval to conduct the training course and examination to be completed by applicants for a cabin crew attestation as specified in Annex V (Part-CC) to Regulation (EU) No 1178/2011."/>
-         </p>
-      </note>
-      <note eId="note_49" marker="21" kind="table">
-         <p>
-            <t v="Approval to issue cabin crew attestations as specified in Annex V (Part-CC) to Regulation (EU) No 1178/2011."/>
-         </p>
-      </note>
-      <note eId="note_50" marker="22" kind="table">
-         <p>
-            <t v="Insertion of the list of type B EFB applications together with the reference of the EFB hardware (for portable EFBs). This list is contained either in the operations specifications or in the operations manual. In the latter case, the related operations specifications must make a reference to the related page in the operations manual."/>
-         </p>
-      </note>
-      <note eId="note_51" marker="23" kind="table">
-         <p>
-            <t v="The approval reference of the organisation responsible for managing the continuing airworthiness of the aircraft and a reference to the relevant regulation (e.g. Annex Vc (Part-CAMO) to Regulation (EU) No 1321/2014)."/>
-         </p>
-      </note>
-      <note eId="note_52" marker="24" kind="table">
-         <p>
-            <t v="Other approvals or data may be entered here, using one line (or one multi-line block) per authorisation (e.g. short-landing operations, steep-approach operations, reduced required landing distance, helicopter operations to or from a public interest site, helicopter operations over a hostile environment located outside a congested area, helicopter operations without a safe forced landing capability, operations with increased bank angles, maximum distance from an adequate aerodrome for two-engined aeroplanes without an ETOPS approval)."/>
-         </p>
-      </note>
-      <note eId="note_53" marker="1" kind="table">
-         <p>
-            <t v="Insertion of name and contact details."/>
-         </p>
-      </note>
-      <note eId="note_54" marker="2" kind="table">
-         <p>
-            <t v="Insertion of the associated number."/>
-         </p>
-      </note>
-      <note eId="note_55" marker="3" kind="table">
-         <p>
-            <t v="Issue date of the specific approvals (dd-mm-yyyy) and signature of the competent authority representative."/>
-         </p>
-      </note>
-      <note eId="note_56" marker="4" kind="table">
-         <p>
-            <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org/"/>
-         </p>
-         <p>
-            <t v="The registration marks shall be either listed in the list of specific approvals or in the operations manual. In the latter case the list of specific approvals shall refer to the related page in the operation manual."/>
-         </p>
-      </note>
-      <note eId="note_57" marker="5" kind="table">
-         <p>
-            <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement, maintenance check flights."/>
-         </p>
-      </note>
-      <note eId="note_58" marker="6" kind="table">
-         <p>
-            <t v="List in this column any approved operations, e.g., dangerous goods, LVO, RVSM, PBN, MNPS, HOFO."/>
-         </p>
-      </note>
-      <note eId="note_59" marker="7" kind="table">
-         <p>
-            <t v="List in this column the most permissive criteria for each approval, e.g. the decision height and RVR minima for CAT II."/>
-         </p>
-      </note>
-      <note eId="note_60" marker="1" kind="table">
-         <p>
-            <t v="Name and contact details of the competent authority"/>
-         </p>
-      </note>
-      <note eId="note_61" marker="2" kind="table">
-         <p>
-            <t v="Insertion of associated authorisation number."/>
-         </p>
-      </note>
-      <note eId="note_62" marker="3" kind="table">
-         <p>
-            <t v="Insertion of the operator's registered name and the operator's trading name, if different. Insert "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Dba"/>
-            </quote>
-            <t v=" before the trading name (for "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Doing business as"/>
-            </quote>
-            <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_63" marker="4" kind="table">
-         <p>
-            <t v="Operator's principal place of business address."/>
-         </p>
-      </note>
-      <note eId="note_64" marker="5" kind="table">
-         <p>
-            <t v="Operator's principal place of business telephone and fax details, including the country code. Email to be provided if available."/>
-         </p>
-      </note>
-      <note eId="note_65" marker="6" kind="table">
-         <p>
-            <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org. The registration marks shall be either listed in the list of specific approvals or in the operations manual. In the latter case the list of specific approvals shall refer to the related page in the operation manual."/>
-         </p>
-      </note>
-      <note eId="note_66" marker="7" kind="table">
-         <p>
-            <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement, maintenance check flights."/>
-         </p>
-      </note>
-      <note eId="note_67" marker="8" kind="table">
-         <p>
-            <t v="Listing of geographical area(s) or site(s) of authorised operation (by geographical coordinates or flight information region or national or regional boundaries)."/>
-         </p>
-      </note>
-      <note eId="note_68" marker="9" kind="table">
-         <p>
-            <t v="Listing of applicable special limitations (e.g. VFR only, Day only, etc.)."/>
-         </p>
-      </note>
-      <note eId="note_69" marker="10" kind="table">
-         <p>
-            <t v="Issue date of the authorisation (dd-mm-yyyy)."/>
-         </p>
-      </note>
-      <note eId="note_70" marker="11" kind="table">
-         <p>
-            <t v="Title, name and signature of the competent authority representative. In addition, an official stamp may be applied on the authorisation."/>
-         </p>
-      </note>
-      <deleted>
-         <provenance amendingAct="32019R1384"
-                     action="deleted"
-                     location="AR:1;PT:4 .AND. AX:I;PT:2;PT:n"
-                     marker="O015001M030000"/>
-         <note eId="note_71" marker="1" kind="table">
-            <p>
-               <t v="Insertion of name and contact details."/>
-            </p>
-         </note>
-         <note eId="note_72" marker="2" kind="table">
-            <p>
-               <t v="Insertion of the associated number."/>
-            </p>
-         </note>
-         <note eId="note_73" marker="3" kind="table">
-            <p>
-               <t v="Issue date of the specific approvals (dd-mm-yyyy) and signature of the competent authority representative."/>
-            </p>
-         </note>
-         <note eId="note_74" marker="4" kind="table">
-            <p>
-               <t v="Insertion of the Commercial Aviation Safety Team (CAST)/ICAO designation of the aircraft make, model and series, or master series, if a series has been designated (e.g. Boeing-737-3K2 or Boeing-777-232). The CAST/ICAO taxonomy is available at: http://www.intlaviationstandards.org/"/>
-            </p>
-            <p>
-               <t v="The registration marks should be either listed in the List of Specific Approvals or in the operations manual. In the latter case the List of Specific Approvals shall refer to the related page in the operation manual."/>
-            </p>
-         </note>
-         <note eId="note_75" marker="5" kind="table">
-            <p>
-               <t v="Specify the type of operation, e.g., agriculture, construction, photography, surveying, observation and patrol, aerial advertisement."/>
-            </p>
-         </note>
-         <note eId="note_76" marker="6" kind="table">
-            <p>
-               <t v="List in this column any approved operations, e.g. dangerous goods, LVO, RVSM, PBN, MNPS, HOFO."/>
-            </p>
-         </note>
-         <note eId="note_77" marker="7" kind="table">
-            <p>
-               <t v="List in this column the most permissive criteria for each approval, e.g. the decision height and RVR minima for CAT II."/>
-            </p>
-         </note>
-      </deleted>
       <note eId="note_78" marker="14" kind="footnote">
          <p>
             <t v="Regulation (EU) No 996/2010 of the European Parliament and of the Council of "/>
@@ -103079,119 +103278,6 @@
             <t v="."/>
          </p>
       </note>
-      <note eId="note_85" marker="1" kind="table">
-         <p>
-            <t v="If there is not enough space to list the required information in the declaration, the information shall be listed in a separate annex. The annex shall be dated and signed."/>
-         </p>
-      </note>
-      <note eId="note_86" marker="2" kind="table">
-         <p>
-            <t v="Manufacturer serial number."/>
-         </p>
-      </note>
-      <note eId="note_87" marker="3" kind="table">
-         <p>
-            <t v="If the aircraft is also registered with an AOC holder, specify the AOC number of the AOC holder."/>
-         </p>
-      </note>
-      <note eId="note_88" marker="4" kind="table">
-         <p>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Type(s) of operation"/>
-            </quote>
-            <t v=" refers to the type of operations conducted with this aircraft, e.g. non-commercial operations or specialised operations, e.g. aerial photography flights, aerial advertising flights, news media flights, television and movie flights, parachute operations, skydiving, maintenance check flights."/>
-         </p>
-      </note>
-      <note eId="note_89" marker="5" kind="table">
-         <p>
-            <t v="Information about the organisation responsible for the continuing airworthiness management shall include the name of the organisation, its address, and the approval reference."/>
-         </p>
-      </note>
-      <note eId="note_90" marker="6" kind="table">
-         <list kind="alpha">
-            <unit eId="note_90/pnt_a" kind="point" numbered="true">
-               <num>
-                  <t v="(a)"/>
-               </num>
-               <p>
-                  <t v="operations with any defective instrument or piece of equipment or item or function, under a minimum equipment list (MEL) (points ORO.MLR.105 (b), (f), and (j), NCC.IDE.A.105, NCC.IDE.H.105, SPO.IDE.A.105, and SPO.IDE.H.105)."/>
-               </p>
-            </unit>
-            <unit eId="note_90/pnt_b" kind="point" numbered="true">
-               <num>
-                  <t v="(b)"/>
-               </num>
-               <p>
-                  <t v="Operations requiring prior authorisation or approval, including all of the following:"/>
-               </p>
-               <list kind="dash">
-                  <unit eId="note_90/pnt_b/idt_1" kind="indent">
-                     <p>
-                        <t v="for specialised operations, wet lease-in and dry lease-in of aircraft registered in a third country (point ORO.SPO.100 (c));"/>
-                     </p>
-                  </unit>
-                  <unit eId="note_90/pnt_b/idt_2" kind="indent">
-                     <p>
-                        <t v="high-risk commercial specialised operations (point ORO.SPO.110);"/>
-                     </p>
-                  </unit>
-                  <unit eId="note_90/pnt_b/idt_3" kind="indent">
-                     <p>
-                        <t v="non-commercial operations with aircraft with an MOPSC of more than 19, which are performed without an operating cabin crew member (point ORO.CC.100 (d));"/>
-                     </p>
-                  </unit>
-                  <unit eId="note_90/pnt_b/idt_4" kind="indent">
-                     <p>
-                        <t v="use of IFR operating minima that are lower than those published by the State (points NCC.OP.110 and SPO.OP.110);"/>
-                     </p>
-                  </unit>
-                  <unit eId="note_90/pnt_b/idt_5" kind="indent">
-                     <p>
-                        <t v="refuelling with engine(s) and/or rotors turning (point NCC.OP.157);"/>
-                     </p>
-                  </unit>
-                  <unit eId="note_90/pnt_b/idt_6" kind="indent">
-                     <p>
-                        <t v="specialised operations (SPO) without oxygen above 10 000 ft (point SPO.OP.195)."/>
-                     </p>
-                  </unit>
-               </list>
-            </unit>
-         </list>
-      </note>
-      <note eId="note_91" marker="7" kind="table">
-         <p>
-            <t v="Operations in accordance with Annex V (Part-SPA) to Regulation (EU) No 965/2012, including Subparts B "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Performance-based navigation (PBN) operations"/>
-            </quote>
-            <t v=", C "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Operations with specified minimum navigation performance (MNPS)"/>
-            </quote>
-            <t v=", D "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Operations in airspace with reduced vertical separation minima (RVSM)"/>
-            </quote>
-            <t v=", E "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Low-visibility operations (LVOs) and operations with operational credits"/>
-            </quote>
-            <t v=", G "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Transport of dangerous goods"/>
-            </quote>
-            <t v=", K "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Helicopter offshore operations"/>
-            </quote>
-            <t v=" and N "/>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Helicopter point-in-space approaches and departures with reduced VFR minima"/>
-            </quote>
-            <t v="."/>
-         </p>
-      </note>
       <note eId="note_92" marker="21" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
@@ -103205,71 +103291,6 @@
                <t v="OJ L 119, 4.5.2016, p. 1"/>
             </ref>
             <t v=")."/>
-         </p>
-      </note>
-      <deleted>
-         <provenance amendingAct="32016R1199"
-                     action="deleted"
-                     location="AR:1;PT:4 .AND. AX:0;PT:3;PT:g"
-                     marker="O010001M011000"/>
-         <note eId="note_93" marker="*" kind="table">
-            <p>
-               <t v="The cloud base shall be such as to allow flight at the specified height, below and clear of cloud."/>
-            </p>
-         </note>
-         <note eId="note_94" marker="*" kind="table">
-            <p>
-               <t v="Helicopters may be operated in flight visibility down to 800 m provided the destination or an intermediate structure is continuously visible."/>
-            </p>
-         </note>
-         <note eId="note_95" marker="*" kind="table">
-            <p>
-               <t v="Helicopters may be operated in flight visibility down to "/>
-               <number v="1500"/>
-               <t v=" m provided the destination or an intermediate structure is continuously visible."/>
-            </p>
-         </note>
-      </deleted>
-      <note eId="note_96" marker="*" kind="table">
-         <p>
-            <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>
-         </p>
-      </note>
-      <note eId="note_97" marker="*" kind="table">
-         <p>
-            <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>
-         </p>
-      </note>
-      <note eId="note_98" marker="*" kind="table">
-         <p>
-            <t v="Passenger numbers in Table 1 refer to passengers actually carried on board including persons younger than 24 months."/>
-         </p>
-      </note>
-      <note eId="note_99" marker="*" kind="table">
-         <p>
-            <t v="Passenger numbers in Table 2 refer to passengers actually carried on board including persons younger than 24 months."/>
-         </p>
-      </note>
-      <note eId="note_100" marker="*" kind="table">
-         <p>
-            <t v="VIS: visibility; MDA/H: minimum descent altitude/height."/>
-         </p>
-      </note>
-      <note eId="note_101" marker="1" kind="table">
-         <p>
-            <t v="The cloud base shall allow flight at the specified height to be below and clear of cloud."/>
-         </p>
-      </note>
-      <note eId="note_102" marker="2" kind="table">
-         <p>
-            <t v="Helicopters may be operated in flight visibility down to 800 m, provided the destination or an intermediate structure is continuously visible."/>
-         </p>
-      </note>
-      <note eId="note_103" marker="3" kind="table">
-         <p>
-            <t v="Helicopters may be operated in flight visibility down to "/>
-            <number v="1500"/>
-            <t v=" m, provided the destination or an intermediate structure is continuously visible."/>
          </p>
       </note>
       <note eId="note_104" marker="22" kind="footnote">
@@ -103312,11 +103333,6 @@
                <t v="OJ L 119, 4.5.2016, p. 1"/>
             </ref>
             <t v=")."/>
-         </p>
-      </note>
-      <note eId="note_107" marker="1" kind="table">
-         <p>
-            <t v="Passenger percentages in this table refer to passengers carried on board, including persons younger than 24 months of age."/>
          </p>
       </note>
    </notes>

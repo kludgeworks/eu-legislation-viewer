@@ -1042,6 +1042,18 @@
                         </p>
                      </td>
                   </tr>
+                  <notes>
+                     <note eId="note_4" marker="1" kind="table">
+                        <p>
+                           <t v="As provided for in Regulation (EC) No 1272/2008."/>
+                        </p>
+                     </note>
+                     <note eId="note_5" marker="2" kind="table">
+                        <p>
+                           <t v="As provided for in Directive 67/548/EEC."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
                <p>
                   <t v="This criterion shall also apply to the following hazard statements and risk phrases:"/>
@@ -1145,6 +1157,18 @@
                         </p>
                      </td>
                   </tr>
+                  <notes>
+                     <note eId="note_6" marker="1" kind="table">
+                        <p>
+                           <t v="As provided for in Regulation (EC) No 1272/2008."/>
+                        </p>
+                     </note>
+                     <note eId="note_7" marker="2" kind="table">
+                        <p>
+                           <t v="As provided for in Directive 67/548/EEC."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
                <p>
                   <t v="Substances or mixtures which change their properties upon processing (e.g. become no longer bioavailable, undergo chemical modification) so that the identified hazard no longer applies are exempted from the above requirement."/>
@@ -2591,6 +2615,21 @@
                         </p>
                      </td>
                   </tr>
+                  <notes>
+                     <note eId="note_14" marker="*" kind="table">
+                        <p>
+                           <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
+                           <ref kind="oj"
+                                series="L"
+                                number="19"
+                                date="2006-01-24"
+                                page="12">
+                              <t v="OJ L 19, 24.1.2006, p. 12"/>
+                           </ref>
+                           <t v=")."/>
+                        </p>
+                     </note>
+                  </notes>
                </table>
                <table cols="2">
                   <tr header="true">
@@ -2827,26 +2866,6 @@
                <t v="."/>
             </p>
          </note>
-         <note eId="note_4" marker="1" kind="table">
-            <p>
-               <t v="As provided for in Regulation (EC) No 1272/2008."/>
-            </p>
-         </note>
-         <note eId="note_5" marker="2" kind="table">
-            <p>
-               <t v="As provided for in Directive 67/548/EEC."/>
-            </p>
-         </note>
-         <note eId="note_6" marker="1" kind="table">
-            <p>
-               <t v="As provided for in Regulation (EC) No 1272/2008."/>
-            </p>
-         </note>
-         <note eId="note_7" marker="2" kind="table">
-            <p>
-               <t v="As provided for in Directive 67/548/EEC."/>
-            </p>
-         </note>
          <note eId="note_8" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
@@ -2910,19 +2929,6 @@
                   <t v="OJ L 142, 31.5.2008, p. 1"/>
                </ref>
                <t v="."/>
-            </p>
-         </note>
-         <note eId="note_14" marker="*" kind="table">
-            <p>
-               <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
-               <ref kind="oj"
-                    series="L"
-                    number="19"
-                    date="2006-01-24"
-                    page="12">
-                  <t v="OJ L 19, 24.1.2006, p. 12"/>
-               </ref>
-               <t v=")."/>
             </p>
          </note>
       </deleted>

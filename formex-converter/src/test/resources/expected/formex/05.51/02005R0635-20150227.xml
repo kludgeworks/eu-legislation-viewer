@@ -401,6 +401,19 @@
                   </p>
                </td>
             </tr>
+            <notes>
+               <deleted>
+                  <provenance amendingAct="32015R0183"
+                              action="deleted"
+                              location="AR:1"
+                              marker="O001001M002000"/>
+                  <note eId="note_3" marker="*" kind="table">
+                     <p>
+                        <t v="The photograph is purely for information."/>
+                     </p>
+                  </note>
+               </deleted>
+            </notes>
          </table>
          <figure src="L_2005106EN.01001201.tif" content="other"/>
       </unit>
@@ -434,17 +447,6 @@
             <t v=". Regulation as last amended by the 2003 Act of Accession."/>
          </p>
       </note>
-      <deleted>
-         <provenance amendingAct="32015R0183"
-                     action="deleted"
-                     location="AR:1"
-                     marker="O001001M002000"/>
-         <note eId="note_3" marker="*" kind="table">
-            <p>
-               <t v="The photograph is purely for information."/>
-            </p>
-         </note>
-      </deleted>
    </notes>
 </legalText>
 

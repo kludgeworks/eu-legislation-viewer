@@ -3089,6 +3089,41 @@
                   </p>
                </td>
             </tr>
+            <notes>
+               <note eId="note_18" marker="1" kind="table">
+                  <p>
+                     <t v="See Commission Regulation (EC) No 213/2001 of "/>
+                     <date asWritten="9 January 2001" date="2001-01-09"/>
+                     <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards methods for the analysis and quality evaluation of milk and milk products and amending Regulations (EC) No 2771/1999 and (EC) No 2799/1999 (see page 1 of this Official Journal)."/>
+                  </p>
+               </note>
+               <note eId="note_19" marker="2" kind="table">
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Buttermilk"/>
+                     </quote>
+                     <t v=" means the by-product of butter manufacture obtained after churning of the cream and separation of the solid fat."/>
+                  </p>
+               </note>
+               <note eId="note_20" marker="3" kind="table">
+                  <p>
+                     <t v="The absence of buttermilk can be established either by an on-the-spot inspection of the production plan carried out without prior notice at least once a week, or by a laboratory analysis of the end product indicating a maximum of 69,31 mg of FEDP per 100 g."/>
+                  </p>
+               </note>
+               <note eId="note_21" marker="4" kind="table">
+                  <p>
+                     <quote startQuote="‘" endQuote="’">
+                        <t v="Whey"/>
+                     </quote>
+                     <t v=" means the by-product of cheese or casein manufacture obtained by the action of acids, rennet and/or chemico-physical processes."/>
+                  </p>
+               </note>
+               <note eId="note_22" marker="5" kind="table">
+                  <p>
+                     <t v="Raw milk used for the manufacture of skimmed-milk powder must satisfy the requirements laid down in Part D of Chapter III of Annex A to Directive 92/46/EEC."/>
+                  </p>
+               </note>
+            </notes>
          </table>
       </unit>
       <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
@@ -3445,39 +3480,6 @@
                <t v="OJ L 62, 7.3.1980, p. 5"/>
             </ref>
             <t v="."/>
-         </p>
-      </note>
-      <note eId="note_18" marker="1" kind="table">
-         <p>
-            <t v="See Commission Regulation (EC) No 213/2001 of "/>
-            <date asWritten="9 January 2001" date="2001-01-09"/>
-            <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards methods for the analysis and quality evaluation of milk and milk products and amending Regulations (EC) No 2771/1999 and (EC) No 2799/1999 (see page 1 of this Official Journal)."/>
-         </p>
-      </note>
-      <note eId="note_19" marker="2" kind="table">
-         <p>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Buttermilk"/>
-            </quote>
-            <t v=" means the by-product of butter manufacture obtained after churning of the cream and separation of the solid fat."/>
-         </p>
-      </note>
-      <note eId="note_20" marker="3" kind="table">
-         <p>
-            <t v="The absence of buttermilk can be established either by an on-the-spot inspection of the production plan carried out without prior notice at least once a week, or by a laboratory analysis of the end product indicating a maximum of 69,31 mg of FEDP per 100 g."/>
-         </p>
-      </note>
-      <note eId="note_21" marker="4" kind="table">
-         <p>
-            <quote startQuote="‘" endQuote="’">
-               <t v="Whey"/>
-            </quote>
-            <t v=" means the by-product of cheese or casein manufacture obtained by the action of acids, rennet and/or chemico-physical processes."/>
-         </p>
-      </note>
-      <note eId="note_22" marker="5" kind="table">
-         <p>
-            <t v="Raw milk used for the manufacture of skimmed-milk powder must satisfy the requirements laid down in Part D of Chapter III of Annex A to Directive 92/46/EEC."/>
          </p>
       </note>
    </notes>

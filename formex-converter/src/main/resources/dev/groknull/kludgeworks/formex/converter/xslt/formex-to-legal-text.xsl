@@ -308,10 +308,10 @@
           </xsl:variable>
           <!-- the notes of the act's file and those it includes, printed after it as each file's are
                (an annex's or an attached document's, in its unit): before the annexes if they are
-               files of their own, else after them -->
+               files of their own, else after them. A consolidated version's table notes are its table's -->
           <xsl:variable name="notes" as="element()?">
             <xsl:call-template name="f:notes">
-              <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($act)//NOTE[not(@NOTE.REF)]"/>
+              <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($act)//NOTE[not(@NOTE.REF)][not(f:table-note(.))]"/>
             </xsl:call-template>
           </xsl:variable>
           <xsl:variable name="files" as="xs:boolean" select="exists($annexes | $package/FMX/DOC.SUB.PUB[f:is-attachment(.)])"/>
@@ -338,13 +338,14 @@
     <xsl:apply-templates select="$checked/lt:legalText" mode="f:outline"/>
   </xsl:template>
 
-  <!-- the notes of one file, as a block (none if it has none): a note in text an amendment deleted is
-       kept, as the text is, inside <deleted> -->
+  <!-- the notes of one file or table, as a block (none if it has none): a note in text an amendment
+       deleted is kept, as the text is, inside <deleted>, unless what holds the notes is in it already -->
   <xsl:template name="f:notes">
     <xsl:param name="notes" as="element(NOTE)*"/>
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:if test="$notes">
       <notes>
-        <xsl:for-each-group select="$notes" group-adjacent="f:ids(f:deletions(.))" composite="yes">
+        <xsl:for-each-group select="$notes" group-adjacent="f:ids(f:deletions(.))[not(. = $ctx)]" composite="yes">
           <xsl:choose>
             <xsl:when test="empty(current-grouping-key())">
               <xsl:apply-templates select="current-group()" mode="note"/>
@@ -353,7 +354,7 @@
               <xsl:variable name="notes" as="element()*">
                 <xsl:apply-templates select="current-group()" mode="note"/>
               </xsl:variable>
-              <xsl:sequence select="f:wrap-deleted(f:deletions(.), $notes)"/>
+              <xsl:sequence select="f:wrap-deleted(f:deletions(.)[not(f:ids(.) = $ctx)], $notes)"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each-group>

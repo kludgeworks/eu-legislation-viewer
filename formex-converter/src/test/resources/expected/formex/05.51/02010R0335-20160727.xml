@@ -295,15 +295,15 @@
                   </td>
                </tr>
             </rowGroup>
+            <notes>
+               <note eId="note_1" marker="1" kind="table">
+                  <p>
+                     <t v="Details of the analytical methods are available at the following address of the Community Reference Laboratory: http://irmm.jrc.ec.europa.eu/crl-feed-additives"/>
+                  </p>
+               </note>
+            </notes>
          </table>
       </unit>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="table">
-         <p>
-            <t v="Details of the analytical methods are available at the following address of the Community Reference Laboratory: http://irmm.jrc.ec.europa.eu/crl-feed-additives"/>
-         </p>
-      </note>
-   </notes>
 </legalText>
 

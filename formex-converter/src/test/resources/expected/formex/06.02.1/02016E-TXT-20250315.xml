@@ -25048,6 +25048,19 @@
                      </td>
                   </tr>
                </rowGroup>
+               <notes>
+                  <note eId="note_6" marker="*" kind="table">
+                     <p>
+                        <t v="Entry added by Article 1 of Regulation No 7a of the Council of the European Economic Community of "/>
+                        <date asWritten="18 December 1959" date="1959-12-18"/>
+                        <t v=" ("/>
+                        <ref kind="oj" series="P" number="7" date="1961-01-30" page="71">
+                           <t v="OJ No 7, 30.1.1961, p. 71/61"/>
+                        </ref>
+                        <t v=")."/>
+                     </p>
+                  </note>
+               </notes>
             </table>
          </unit>
          <unit eId="anx_II" kind="annex" eurlexAnchor="43" rank="2">
@@ -34094,6 +34107,13 @@
                   <unit eId="att_4/tab_2/tr_558/td_1/level_19" kind="level" depth="1"/>
                </td>
             </tr>
+            <notes>
+               <note eId="note_76" marker="1" kind="table">
+                  <p>
+                     <t v="Replaced, in substance by Article 55 TEU."/>
+                  </p>
+               </note>
+            </notes>
          </table>
       </unit>
    </annexes>
@@ -34133,17 +34153,6 @@
             <t v="This provision shall also apply without prejudice to Article 4 of the Act of Accessio of "/>
             <date asWritten="9 December 2011" date="2011-12-09"/>
             <t v="."/>
-         </p>
-      </note>
-      <note eId="note_6" marker="*" kind="table">
-         <p>
-            <t v="Entry added by Article 1 of Regulation No 7a of the Council of the European Economic Community of "/>
-            <date asWritten="18 December 1959" date="1959-12-18"/>
-            <t v=" ("/>
-            <ref kind="oj" series="P" number="7" date="1961-01-30" page="71">
-               <t v="OJ No 7, 30.1.1961, p. 71/61"/>
-            </ref>
-            <t v=")."/>
          </p>
       </note>
       <note eId="note_7" marker="5" kind="quotation">
@@ -34598,11 +34607,6 @@
       <note eId="note_75" marker="71" kind="manual">
          <p>
             <t v="Replaced, in substance by Article 51 TEU."/>
-         </p>
-      </note>
-      <note eId="note_76" marker="1" kind="table">
-         <p>
-            <t v="Replaced, in substance by Article 55 TEU."/>
          </p>
       </note>
    </notes>
