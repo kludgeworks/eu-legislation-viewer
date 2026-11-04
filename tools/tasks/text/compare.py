@@ -1,8 +1,6 @@
 #!/usr/bin/env -S uv run --script --quiet
 # SPDX-License-Identifier: MIT
 # MISE description="Compare the viewer's pages with EUR-Lex's HTML of the same texts, line by line"
-# uv for this task only: on the project's PATH, mise would install the pipx: tools with it
-# MISE tools={uv="0.13.4"}
 # /// script
 # requires-python = ">=3.14"
 # dependencies = ["playwright==1.64.0"]

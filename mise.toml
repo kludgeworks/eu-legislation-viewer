@@ -19,12 +19,13 @@ LICENSE_TYPE = "mit"
 LICENSE_HOLDER = "The Project Contributors"
 
 [tools]
-bazelisk = "1.30.0"
+# bazelisk as bazel, the name the tasks and hk call; it runs the version in .bazelversion
+"github:bazelbuild/bazelisk" = { version = "1.30.0", bin = "bazel" }
 buildifier = "10.1.0"
 "aqua:bazelbuild/buildtools/buildozer" = "10.1.0"
-java = "temurin-25.0.5+8.0.LTS"                   # for the IDE and jshell; Bazel uses its own remotejdk_25
-hk = "2.9.0"                                      # the version in hk.pkl's amends URL
-pkl = "0.32.2"                                    # hk's configuration language
+java = "temurin-25.0.5+8.0.LTS"                                      # for the IDE and jshell; Bazel uses its own remotejdk_25
+hk = "2.9.0"                                                         # the version in hk.pkl's amends URL
+pkl = "0.32.2"                                                       # hk's configuration language
 google-java-format = "1.37.0"
 "github:google/addlicense" = "1.2.0"
 # REUSE: every file's copyright and licence (REUSE.toml)
@@ -34,9 +35,11 @@ typos = "1.51.1"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
 actionlint = "1.7.12"
-# ruff: lints and formats the tasks in tools/tasks written in Python (each brings uv, which runs it
-# with the dependencies it declares: PEP 723)
+# ruff: lints and formats the tasks in tools/tasks written in Python, which uv runs with the
+# dependencies each declares (PEP 723)
 ruff = "0.17.1"
+# uv: runs those tasks, and installs the pipx: tools (mise uses it when it is on PATH)
+uv = "0.13.4"
 
 [hooks]
 postinstall = "hk install --mise"

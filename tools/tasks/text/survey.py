@@ -1,7 +1,6 @@
 #!/usr/bin/env -S uv run --script --quiet
 # SPDX-License-Identifier: MIT
 # MISE description="Compare a sample of the corpus with EUR-Lex's HTML, as text:compare does one page, and rank the patterns by how many texts have them"
-# MISE tools={uv="0.13.4"}
 # USAGE flag "--language <code>" default="ENG" help="The mirror's language (see corpus:fetch)"
 # USAGE flag "--size <n>" default="200" help="How many texts to sample"
 # USAGE flag "--compare-only" help="Compare the pages the last run rendered, without sampling or converting again"

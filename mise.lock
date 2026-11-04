@@ -95,52 +95,6 @@ checksum_source = "mise-versions"
 url = "https://github.com/bazel-contrib/buildtools/releases/download/v10.1.0/buildozer-windows-amd64.exe"
 url_api = "https://api.github.com/repos/bazel-contrib/buildtools/releases/assets/582390497"
 
-[[tools.bazelisk]]
-version = "1.30.0"
-backend = "aqua:bazelbuild/bazelisk"
-specifiers = ["1.30.0"]
-
-[tools.bazelisk."platforms.linux-arm64"]
-checksum = "sha256:b2bcc040c213b44586b121bda6d983c35df121b917c3a7a66fb16f2fa0df1a4f"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-arm64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754381"
-
-[tools.bazelisk."platforms.linux-arm64-musl"]
-checksum = "sha256:b2bcc040c213b44586b121bda6d983c35df121b917c3a7a66fb16f2fa0df1a4f"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-arm64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754381"
-
-[tools.bazelisk."platforms.linux-x64"]
-checksum = "sha256:a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-amd64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754143"
-
-[tools.bazelisk."platforms.linux-x64-musl"]
-checksum = "sha256:a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-amd64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754143"
-
-[tools.bazelisk."platforms.macos-arm64"]
-checksum = "sha256:555d2ff912ccd336d0060bdb5251ef2f62629c6f8fbadb59005a45d5625793ec"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-darwin-arm64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754005"
-
-[tools.bazelisk."platforms.macos-x64"]
-checksum = "sha256:a0e6468b0c6b812f782d8cbfb05824121f6980c0bd70aaa1774fb8272bb7b2ad"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-darwin-amd64"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660753873"
-
-[tools.bazelisk."platforms.windows-x64"]
-checksum = "sha256:5d14a31e9d8a363c48ba1900dbd56764d730835232eb0d113cce255856ffe3ef"
-checksum_source = "mise-versions"
-url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-windows-amd64.exe"
-url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754731"
-
 [[tools.buildifier]]
 version = "10.1.0"
 backend = "aqua:bazelbuild/buildtools/buildifier"
@@ -186,6 +140,53 @@ checksum = "sha256:931a6e9c3844b90ccdb1467ccacd8dd72457e308d2709d624a3c5880d835a
 checksum_source = "mise-versions"
 url = "https://github.com/bazel-contrib/buildtools/releases/download/v10.1.0/buildifier-windows-amd64.exe"
 url_api = "https://api.github.com/repos/bazel-contrib/buildtools/releases/assets/582390451"
+
+[[tools."github:bazelbuild/bazelisk"]]
+version = "1.30.0"
+backend = "github:bazelbuild/bazelisk"
+specifiers = ["1.30.0"]
+
+[tools."github:bazelbuild/bazelisk"."platforms.linux-arm64"]
+checksum = "sha256:b2bcc040c213b44586b121bda6d983c35df121b917c3a7a66fb16f2fa0df1a4f"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-arm64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754381"
+
+[tools."github:bazelbuild/bazelisk"."platforms.linux-arm64-musl"]
+checksum = "sha256:b2bcc040c213b44586b121bda6d983c35df121b917c3a7a66fb16f2fa0df1a4f"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-arm64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754381"
+
+[tools."github:bazelbuild/bazelisk"."platforms.linux-x64"]
+checksum = "sha256:a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-amd64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754143"
+
+[tools."github:bazelbuild/bazelisk"."platforms.linux-x64-musl"]
+checksum = "sha256:a248ae2b2b62b5baebb748f6fba7203bff1a27e5d01b55399a8406744cb539e8"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-linux-amd64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754143"
+
+[tools."github:bazelbuild/bazelisk"."platforms.macos-arm64"]
+checksum = "sha256:555d2ff912ccd336d0060bdb5251ef2f62629c6f8fbadb59005a45d5625793ec"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-darwin-arm64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754005"
+
+[tools."github:bazelbuild/bazelisk"."platforms.macos-x64"]
+checksum = "sha256:a0e6468b0c6b812f782d8cbfb05824121f6980c0bd70aaa1774fb8272bb7b2ad"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-darwin-amd64"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660753873"
+
+[tools."github:bazelbuild/bazelisk"."platforms.windows-x64"]
+checksum = "sha256:5d14a31e9d8a363c48ba1900dbd56764d730835232eb0d113cce255856ffe3ef"
+checksum_source = "mise-versions"
+url = "https://github.com/bazelbuild/bazelisk/releases/download/v1.30.0/bazelisk-windows-amd64.exe"
+url_api = "https://api.github.com/repos/bazelbuild/bazelisk/releases/assets/660754731"
 
 [[tools."github:google/addlicense"]]
 version = "1.2.0"
@@ -629,3 +630,8 @@ checksum = "sha256:518f759fba43205f17a717656054c1d25bc883455a6296989e9d021c6edb7
 checksum_source = "mise-versions"
 url = "https://github.com/crate-ci/typos/releases/download/v1.51.1/typos-v1.51.1-x86_64-pc-windows-msvc.zip"
 url_api = "https://api.github.com/repos/crate-ci/typos/releases/assets/616657506"
+
+[[tools.uv]]
+version = "0.13.4"
+backend = "asdf:uv"
+specifiers = ["0.13.4"]
