@@ -61,7 +61,7 @@ query() {
 # What to have for each item, from the index and the previous manifest. Lines of
 #   item  {manifestation} {lastModified} {CELEX} {changed: 1|0} {item URI} {path} {SHA-1}
 #   gone  {manifestation}
-# An empty CELEX or SHA-1 is "-", since read collapses empty fields. A zip beside a manifestation's
+# An empty SHA-1 is "-", since read collapses empty fields. A zip beside a manifestation's
 # own files bundles them, and is left out; a name that isn't a plain file name is replaced by the last
 # segment of the item's URI.
 plan() {
@@ -77,7 +77,7 @@ plan() {
 			if (id !~ /^[0-9a-f-]+(\.[0-9]+)+$/) next
 			n++; mid[n] = id; uri[n] = $2; zip[n] = ($3 ~ /^application\/zip/)
 			name[n] = ($4 ~ /^[A-Za-z0-9][A-Za-z0-9._-]*$/) ? $4 : last($2)
-			sha[n] = dash(tolower($5)); modified[id] = $6; celex[id] = dash($7); listed[id] = 1
+			sha[n] = dash(tolower($5)); modified[id] = $6; celex[id] = $7; listed[id] = 1
 			if (!zip[n]) files[id] = 1
 		}
 		END {

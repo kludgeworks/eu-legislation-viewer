@@ -6,7 +6,9 @@
 # consolidated text, a regulation, directive, decision or recommendation of any kind, a corrigendum,
 # or an agreement, convention, protocol or treaty. Measured on slice 8 against the converter: 36% of
 # the items, and 91% of the documents it accepts; left out are whole OJ issues (TOC_OJ, OJ: their
-# acts are fetched one by one), case law, court information, notices and opinions.
+# acts are fetched one by one), case law, court information, notices and opinions. Only works with a
+# CELEX number, since the viewer fetches a document by its CELEX: a consolidation's production record
+# has none.
 #
 # One slice at a time, with no ORDER BY: Virtuoso answers 1/16 of the English corpus (43,000 items)
 # in about 2.5 minutes, where paging the sorted whole costs about that again for every page.
@@ -37,7 +39,7 @@ WHERE {
         cmr:manifestationMimeType ?mime .
   # no images: the regression test reads the XML, and scanned forms are most of the bytes
   FILTER (!STRSTARTS(STR(?mime), "image/"))
-  OPTIONAL { ?work cdm:resource_legal_id_celex ?celexId }
+  ?work cdm:resource_legal_id_celex ?celexId .
   OPTIONAL { ?item tdm:stream_name ?streamName }
   OPTIONAL { ?item owl:sameAs ?same }
   OPTIONAL { ?item tdm:stream_fixity/tdm:fixity_message_digest ?digest }

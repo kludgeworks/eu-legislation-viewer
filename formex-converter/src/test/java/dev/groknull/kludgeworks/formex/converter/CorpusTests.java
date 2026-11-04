@@ -55,10 +55,10 @@ final class CorpusTests {
     return corpus;
   }
 
-  static void check(Manifestation manifestation, Optional<String> celex) throws Exception {
+  static void check(Manifestation manifestation, String celex) throws Exception {
     XdmNode legalText;
     try {
-      legalText = STYLESHEET.transform(manifestation.source(), celex);
+      legalText = STYLESHEET.transform(manifestation.source(), Optional.of(celex));
     } catch (Stylesheet.Failure e) {
       // not a legal act, or not the document the manifest names (Cellar files another version's
       // Formex under it): nothing the converter can make of it
@@ -84,15 +84,16 @@ final class CorpusTests {
 
   /**
    * The complete manifestations, by Cellar ID in order, from the mirror's manifest (Cellar ID,
-   * lastModified, CELEX), with their CELEX numbers: an OJ act needs it.
+   * lastModified, CELEX), with their CELEX numbers: an OJ act needs it. A row without one is left
+   * out, as corpus:fetch doesn't mirror it: the viewer fetches a document by its CELEX number.
    */
-  static Map<String, Optional<String>> manifest(Path corpus) throws IOException {
-    var celex = new TreeMap<String, Optional<String>>();
+  static Map<String, String> manifest(Path corpus) throws IOException {
+    var celex = new TreeMap<String, String>();
     try (var lines = Files.lines(corpus.resolve("manifest.tsv"), StandardCharsets.UTF_8)) {
       lines
           .map(line -> line.split("\t", -1))
-          .filter(f -> f.length == 3)
-          .forEach(f -> celex.put(f[0], Optional.of(f[2]).filter(c -> !c.isEmpty())));
+          .filter(f -> f.length == 3 && !f[2].isEmpty())
+          .forEach(f -> celex.put(f[0], f[2]));
     }
     return celex;
   }

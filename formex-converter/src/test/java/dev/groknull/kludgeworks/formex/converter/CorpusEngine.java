@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.formex.converter;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.Optional;
 import org.junit.platform.engine.EngineDiscoveryRequest;
 import org.junit.platform.engine.ExecutionRequest;
 import org.junit.platform.engine.TestDescriptor;
@@ -66,9 +65,9 @@ public final class CorpusEngine extends HierarchicalTestEngine<CorpusEngine.Cont
   private static final class ManifestationTest extends AbstractTestDescriptor
       implements Node<Context> {
     private final Manifestation manifestation;
-    private final Optional<String> celex;
+    private final String celex;
 
-    ManifestationTest(UniqueId id, Manifestation manifestation, Optional<String> celex) {
+    ManifestationTest(UniqueId id, Manifestation manifestation, String celex) {
       super(id, manifestation.name(), DirectorySource.from(manifestation.folder().toFile()));
       this.manifestation = manifestation;
       this.celex = celex;
