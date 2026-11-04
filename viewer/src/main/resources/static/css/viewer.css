@@ -243,6 +243,30 @@ p.norm {
   grid-column: 1 / -1;
 }
 
+/* an article's numbered paragraph, as EUR-Lex prints it: its number starts its first paragraph of
+ * text, its own or its first subparagraph's, after any amendment marker (1.  For the purposes …),
+ * two spaces after it in a consolidated version, three in an act as published; what follows from
+ * the margin. A number followed by a list or a table keeps a line of its own */
+.unit-paragraph:has(> .num + p, > .num + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)) {
+  margin-top: 0.5rem;
+  text-align: justify;
+}
+
+.unit-paragraph > .num:has(+ p, + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)),
+.unit-paragraph > .num + p,
+.unit-paragraph > .num + .unit-subparagraph:has(> :is(p:first-child, .provenance:first-child + p)),
+.unit-paragraph > .num + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p) {
+  display: inline;
+}
+
+.unit-paragraph > .num:has(+ p, + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)) {
+  margin-inline-end: 0.5em;
+}
+
+.legal-text:not(.legal-text-consolidated) .unit-paragraph > .num:has(+ p, + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)) {
+  margin-inline-end: 0.75em;
+}
+
 /* a definition list's entry: in a consolidated version, as a list's item (its term, separator and
  * definition beside its prefix); in an act as published, prefix, term in bold, separator and the
  * definition's first paragraph one paragraph, the rest from the margin (oj-normal) */
@@ -284,6 +308,25 @@ p.norm {
 
 .list-bullet > .unit-indent::before {
   content: "•";
+}
+
+/* an item an amendment put in: its mark (▼) on the line above, the list's mark beside its text */
+:is(.list-dash, .list-ndash, .list-bullet) > .unit-indent > .provenance:first-child {
+  grid-row: 1;
+}
+
+:is(.list-dash, .list-ndash, .list-bullet) > .unit-indent:has(> .provenance:first-child)::before {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+/* in a consolidated version, each paragraph of a dash list's item starts with the dash, hanging in
+ * the label's column as the first's does (CONSLEG: — If not available, …) */
+.legal-text-consolidated .list-dash > .unit-indent > p ~ p::before {
+  content: "—";
+  display: inline-block;
+  width: 3.5rem;
+  margin-left: -3.5rem;
 }
 
 .table-frame {
@@ -391,6 +434,13 @@ p.norm {
   margin-top: 2rem;
   border-top: 1px solid var(--rule);
   font-size: 0.8em;
+}
+
+/* a table's notes, under it as EUR-Lex prints them in its last row: at the table's size, no rule */
+.table-notes {
+  margin-top: 0.25rem;
+  border-top: none;
+  font-size: inherit;
 }
 
 .note {
