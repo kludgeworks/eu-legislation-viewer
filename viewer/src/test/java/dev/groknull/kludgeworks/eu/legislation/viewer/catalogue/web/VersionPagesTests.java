@@ -9,7 +9,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.time.Clock;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.Objects;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -17,8 +20,11 @@ import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -30,7 +36,7 @@ import org.springframework.web.client.RestClient;
 /**
  * A version's page as a reader's browser loads it, on an empty store: the page at once, its text
  * built in the background while the page polls (htmx), then transcluded from the content module. On
- * the converter's fixtures (2015/1998's consolidation of 22 March 2026 in English).
+ * the converter's fixtures (2015/1998's consolidation of 22 March 2026 in English), on 1 June 2021.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -105,6 +111,27 @@ class VersionPagesTests {
   }
 
   @Test
+  void opensAnActAtTheVersionThatAppliesToday() {
+    var response =
+        noRedirects().get().uri("/eli/reg_impl/2015/1998/eng").retrieve().toBodilessEntity();
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SEE_OTHER);
+    assertThat(response.getHeaders().getLocation())
+        .isEqualTo(URI.create("/eli/reg_impl/2015/1998/2021-03-15/eng"));
+  }
+
+  @Test
+  void opensAnActOnTheDateTheReaderAsks() {
+    var response =
+        noRedirects()
+            .get()
+            .uri("/eli/reg_impl/2015/1998/fra?on=2022-05-01")
+            .retrieve()
+            .toBodilessEntity();
+    assertThat(response.getHeaders().getLocation())
+        .isEqualTo(URI.create("/eli/reg_impl/2015/1998/2022-05-01/fra"));
+  }
+
+  @Test
   void findsNoVersionBeforeTheActsTextApplies() {
     assertThat(status("/eli/reg_impl/2015/1998/2000-01-01/eng")).isEqualTo(HttpStatus.NOT_FOUND);
   }
@@ -124,18 +151,23 @@ class VersionPagesTests {
     var form = new LinkedMultiValueMap<String, String>();
     form.add("set", theme);
     form.add("back", back);
-    return RestClient.builder()
-        .baseUrl("http://localhost:" + port)
-        .requestFactory(
-            new JdkClientHttpRequestFactory(
-                HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NEVER).build()))
-        .build()
+    return noRedirects()
         .post()
         .uri("/theme")
         .header("Sec-Fetch-Mode", mode)
         .body(form)
         .retrieve()
         .toBodilessEntity();
+  }
+
+  /** A client that doesn't follow redirects, to see where they go. */
+  private RestClient noRedirects() {
+    return RestClient.builder()
+        .baseUrl("http://localhost:" + port)
+        .requestFactory(
+            new JdkClientHttpRequestFactory(
+                HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NEVER).build()))
+        .build();
   }
 
   private static String theme(@Nullable String html) {
@@ -151,6 +183,17 @@ class VersionPagesTests {
 
   private static Element text(String html) {
     return Objects.requireNonNull(Jsoup.parse(html).getElementById("text"));
+  }
+
+  /** Today, for the pages: 1 June 2021, when the consolidation of 15 March 2021 applies. */
+  @TestConfiguration(proxyBeanMethods = false)
+  static class OnTheFirstOfJune2021 {
+    @Bean
+    @Primary
+    @SuppressWarnings("TimeZoneUsage") // the app's Clock bean, fixed
+    Clock firstOfJune2021() {
+      return Clock.fixed(Instant.parse("2021-06-01T08:00:00Z"), ZoneOffset.UTC);
+    }
   }
 
   private HttpStatusCode status(String path) {

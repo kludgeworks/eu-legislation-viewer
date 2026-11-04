@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.LocalDate;
 import java.util.Locale;
 
 /** The pages' addresses: an act's by its ELI, as VersionController answers them. */
@@ -15,11 +16,11 @@ public final class Links {
    * version's first day and the language's code, as an ELI has them.
    */
   public static String read(Eli eli, Version version, Language language) {
-    return "/eli/"
-        + eli.path()
-        + "/"
-        + version.date()
-        + "/"
-        + language.code().toLowerCase(Locale.ROOT);
+    return read(eli, version.date(), language);
+  }
+
+  /** The page of the version that applies on {@code date}, in {@code language}. */
+  public static String read(Eli eli, LocalDate date, Language language) {
+    return "/eli/" + eli.path() + "/" + date + "/" + language.code().toLowerCase(Locale.ROOT);
   }
 }

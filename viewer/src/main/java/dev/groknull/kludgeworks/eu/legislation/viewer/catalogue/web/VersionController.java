@@ -8,14 +8,19 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
 import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxRequest;
 import jakarta.servlet.http.HttpServletRequest;
+import java.net.URI;
+import java.time.Clock;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Locale;
+import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,6 +28,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -30,21 +36,54 @@ import org.springframework.web.server.ResponseStatusException;
  * A version's page, at the ELI of the act and the date it applies on (any date: the version that
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
  * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which polls this URL
- * until the text is built and then loads it from the content module.
+ * until the text is built and then loads it from the content module. The act's address without a
+ * date goes to the page of the version that applies today, or of the date asked (on).
  */
 @Controller
 class VersionController {
   private static final String PATH =
       "/eli/{type}/{year}/{number}/{date:\\d{4}-\\d{2}-\\d{2}}/{language}";
 
+  /** Where the day is the EU's: Brussels, where its acts are adopted and the OJ dates them. */
+  private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
+
   private final Acts acts;
   private final Texts texts;
   private final Templates templates;
+  private final Clock clock;
 
-  VersionController(Acts acts, Texts texts, Templates templates) {
+  VersionController(Acts acts, Texts texts, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
     this.templates = templates;
+    this.clock = clock;
+  }
+
+  /**
+   * The act in a language, as Read links it: the page of the version that applies today, at its
+   * first day, so that a bookmark of it keeps pointing at that version (the first version before
+   * the act applies); or, as the Reading card's date form asks, the page for the date {@code on}.
+   */
+  @GetMapping(path = "/eli/{type}/{year}/{number}/{language}", produces = MediaType.TEXT_HTML_VALUE)
+  ResponseEntity<Void> act(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+          @Nullable LocalDate on) {
+    var language = language(code);
+    var eli = new Eli(type, year, number);
+    var act = acts.find(eli).orElseThrow(VersionController::notFound);
+    var date =
+        on != null
+            ? on
+            : act.versionOn(LocalDate.ofInstant(clock.instant(), BRUSSELS))
+                .orElseGet(() -> act.timeline().versions().getFirst())
+                .date();
+    return ResponseEntity.status(HttpStatus.SEE_OTHER)
+        .location(URI.create(Links.read(eli, date, language)))
+        .build();
   }
 
   /** The version's page, its text's part as it stands. */
