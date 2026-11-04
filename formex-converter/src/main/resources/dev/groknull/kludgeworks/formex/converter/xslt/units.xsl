@@ -168,7 +168,7 @@
           <xsl:apply-templates select="current-group()" mode="block"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="run" as="node()*" select="current-group()[not(self::processing-instruction() or self::comment())]"/>
+          <xsl:variable name="run" as="node()*" select="current-group()[not(self::processing-instruction() or self::comment()) or f:empty-marker(.)]"/>
           <xsl:if test="$run[self::*[not(self::IE)] or self::text()[normalize-space()]]">
             <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering-run($run)[not(f:pi-attr(., 'ID') = $ctx)])"/>
             <xsl:variable name="p" as="element()">

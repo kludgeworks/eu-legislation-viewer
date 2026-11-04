@@ -20,7 +20,7 @@
   <xsl:template name="f:inlines">
     <xsl:param name="nodes" as="node()*"/>
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:for-each-group select="$nodes[not(self::processing-instruction() or self::comment())]"
+    <xsl:for-each-group select="$nodes[not(self::processing-instruction() or self::comment()) or f:empty-marker(.)]"
                         group-adjacent="f:outer-marker(., $ctx)">
       <xsl:choose>
         <xsl:when test="current-grouping-key() = ''">
@@ -41,6 +41,15 @@
       </xsl:choose>
     </xsl:for-each-group>
   </xsl:template>
+
+  <!-- a marker that closes as soon as it opens: words an amendment deleted and the consolidation
+       doesn't keep (the marketing <?CLG.MDFO ACTION="DELETED"?><?CLG.MDFC?>compound). It stays, an
+       empty span, where EUR-Lex prints its mark -->
+  <xsl:function name="f:empty-marker" as="xs:boolean">
+    <xsl:param name="n" as="node()"/>
+    <xsl:sequence select="exists($n/self::processing-instruction('CLG.MDFO')
+        [following-sibling::node()[1]/self::processing-instruction('CLG.MDFC')[f:pi-attr(., 'IDREF') = f:pi-attr($n, 'ID')]])"/>
+  </xsl:function>
 
   <!-- the open marker with this id at node $n -->
   <xsl:function name="f:marker" as="processing-instruction()">
@@ -159,6 +168,9 @@
       </xsl:call-template>
     </date>
   </xsl:template>
+
+  <!-- an empty marker: its span (f:inlines) is all there is of it -->
+  <xsl:template match="processing-instruction('CLG.MDFO')" mode="inline"/>
 
   <!-- a note: every NOTE but a reference to one (NOTE.REF); older budgets give their notes no NOTE.ID -->
   <xsl:template match="NOTE[not(@NOTE.REF)]" mode="inline">

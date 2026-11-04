@@ -135,6 +135,15 @@
               test="deep-equal($x:result//*:noteRef/@marker ! string(), ('1', '2', '2'))"/>
   </x:scenario>
 
+  <x:scenario label="Words an amendment deleted and the consolidation doesn't keep (01982L0471: the marketing compound)">
+    <x:context mode="block" select="/CONS.ACT/P" xmlns="">
+      <CONS.ACT><P>the marketing <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="TEXT" ACTIVE.DOC="396L0025" ACTIVE.LOC="TO"?><?CLG.MDFC ID="C1" IDREF="O1"?>compound;</P></CONS.ACT>
+    </x:context>
+    <x:expect label="leave an empty deletion where they were">
+      <p><t v="the marketing "/><deleted amendingAct="31996L0025" action="deleted" location="TO" marker="O1"/><t v="compound;"/></p>
+    </x:expect>
+  </x:scenario>
+
   <x:scenario label="Numbers Formex marks as such">
     <x:context mode="block" xmlns=""><P>at least <FT TYPE="NUMBER">6000</FT> images, <FT TYPE="NUMBER">12345678</FT> tonnes, <FT TYPE="NUMBER">250</FT> articles, <FT TYPE="DECIMAL">0,47</FT> g</P></x:context>
     <x:expect label="are numbers as written, a decimal plain text"
