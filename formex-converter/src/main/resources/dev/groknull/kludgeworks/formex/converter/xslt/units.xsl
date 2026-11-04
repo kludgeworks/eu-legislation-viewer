@@ -141,7 +141,6 @@
                       and empty($nodes[self::text()[normalize-space()]])">
         <xsl:call-template name="f:lines">
           <xsl:with-param name="lines" as="element()*" select="$elements"/>
-          <xsl:with-param name="numbers" as="xs:boolean" select="true()"/>
         </xsl:call-template>
       </xsl:when>
       <xsl:when test="f:has-blocks($nodes)">
@@ -193,14 +192,15 @@
        image with its caption), the lines as blocks in <content> -->
   <xsl:template name="f:lines">
     <xsl:param name="lines" as="element()*"/>
-    <!-- keep an NP line's number; f:title doesn't, having made it the num -->
-    <xsl:param name="numbers" as="xs:boolean" select="false()"/>
+    <!-- the NP line whose number f:title made the num, which the line doesn't repeat; every other
+         NP line keeps its number -->
+    <xsl:param name="num" as="element(NP)?" select="()"/>
     <xsl:choose>
       <xsl:when test="some $line in $lines satisfies f:has-blocks(f:line-content($line))">
         <content>
           <xsl:for-each select="$lines">
             <xsl:call-template name="f:blocks">
-              <xsl:with-param name="nodes" as="node()*" select="if (self::NP and not($numbers)) then f:line-content(.) else ."/>
+              <xsl:with-param name="nodes" as="node()*" select="if (. is $num) then f:line-content(.) else ."/>
             </xsl:call-template>
           </xsl:for-each>
         </content>
@@ -210,7 +210,7 @@
           <xsl:if test="position() gt 1">
             <eol/>
           </xsl:if>
-          <xsl:if test="$numbers and self::NP">
+          <xsl:if test="self::NP and not(. is $num)">
             <xsl:call-template name="f:inlines">
               <xsl:with-param name="nodes" as="node()*" select="NO.P/node()"/>
             </xsl:call-template>
@@ -278,7 +278,6 @@
           <heading>
             <xsl:call-template name="f:lines">
               <xsl:with-param name="lines" as="element()*" select="TITLE/TI/*, TITLE/STI/*"/>
-              <xsl:with-param name="numbers" as="xs:boolean" select="true()"/>
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
             </xsl:call-template>
           </heading>

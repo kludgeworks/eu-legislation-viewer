@@ -274,6 +274,7 @@
       <heading>
         <xsl:call-template name="f:lines">
           <xsl:with-param name="lines" as="element()*" select="$heading"/>
+          <xsl:with-param name="num" as="element(NP)?" select="$np"/>
         </xsl:call-template>
       </heading>
     </xsl:if>

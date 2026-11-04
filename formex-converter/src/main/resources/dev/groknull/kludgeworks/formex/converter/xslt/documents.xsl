@@ -55,7 +55,6 @@
       <heading>
         <xsl:call-template name="f:lines">
           <xsl:with-param name="lines" as="element()*" select="TITLE/TI/*, TITLE/STI/*"/>
-          <xsl:with-param name="numbers" as="xs:boolean" select="true()"/>
         </xsl:call-template>
       </heading>
       <xsl:for-each select="$top">
@@ -121,7 +120,6 @@
         <heading>
           <xsl:call-template name="f:lines">
             <xsl:with-param name="lines" as="element()*" select="$doc/TITLE/TI/*, $doc/TITLE/STI/*"/>
-            <xsl:with-param name="numbers" as="xs:boolean" select="true()"/>
           </xsl:call-template>
         </heading>
       </xsl:if>
