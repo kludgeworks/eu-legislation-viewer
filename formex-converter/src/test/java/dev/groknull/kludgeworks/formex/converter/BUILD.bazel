@@ -97,10 +97,13 @@ java_junit5_test(
     # CorpusTests' manifestations only, each a test (CorpusEngine), not Jupiter's
     include_engines = ["formex-corpus"],
     # the JDK's XML limits, which the converter lifts for its own parsing, also stop the validation
-    # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references)
+    # of a large document's output (a 55 MB consolidation, an annex with 100,000 entity references).
+    # A heap of a fixed size, for the largest manifestation (444bb559-…, 89 MB: 5.7 GB live), not a
+    # quarter of the machine, the JVM's default: so a shard takes no more than .bazelrc tells Bazel
     jvm_flags = [
         "-Djdk.xml.maxGeneralEntitySizeLimit=0",
         "-Djdk.xml.totalEntitySizeLimit=0",
+        "-Xmx8g",
     ],
     # run side by side, each shard on its share of the manifestations (by a hash of the test's id),
     # in a JVM of its own and in its own time (.bazelrc's eternal timeout). Run as many at a time as

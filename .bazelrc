@@ -5,6 +5,10 @@ test --test_output=errors
 # Two hours for an eternal test (size enormous), not one: only the corpus test is, whose shards
 # share the cores, a shard with the corpus's longest manifestation (43 minutes) beside its share
 test --test_timeout=-1,-1,-1,7200
+# The memory an enormous test takes, in MB, so Bazel runs only as many corpus shards at a time as
+# the machine holds: what a shard takes, 1 to 2 GB, not its heap's ceiling (8 GB), which only the
+# largest manifestations reach. Bazel's defaults for the smaller sizes
+test --default_test_resources=memory=20,100,300,2500
 
 # NullAway on every Java target: the @NullMarked packages are checked against their JSpecify
 # annotations, and @Nullable is honoured where unmarked code has it.
