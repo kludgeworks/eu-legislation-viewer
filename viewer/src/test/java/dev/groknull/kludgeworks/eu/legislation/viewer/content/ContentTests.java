@@ -2,11 +2,19 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline.Entry;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.application.TreeStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Segmentation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree;
+import java.nio.charset.StandardCharsets;
+import java.util.List;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +29,7 @@ class ContentTests {
 
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
+  @Autowired TreeStore trees;
 
   @Test
   void storesATextWholeAndRebuildsIt() throws Exception {
@@ -47,11 +56,56 @@ class ContentTests {
   }
 
   @Test
+  void outlinesATextFromItsContainersAndTheirTitlesOnly() {
+    var text = LegalTexts.sample(SAMPLE);
+    var root = content.store(text);
+
+    var outline = content.outline(root).orElseThrow();
+
+    assertThat(outline).isEqualTo(Outlines.of(Encoder.encode(text)));
+    assertThat(trees.skeleton(root).orElseThrow().nodes().values())
+        .filteredOn(node -> node.kind() == Tree.Kind.LEAF)
+        .isNotEmpty()
+        .allSatisfy(
+            leaf ->
+                assertThat(new String(leaf.content(), StandardCharsets.UTF_8))
+                    .matches("\\[\"(num|heading)\".*"));
+    assertThat(outline.entries())
+        .extracting(Entry::eId, Entry::kind, Entry::num)
+        .containsExactly(
+            tuple("art_1", "article", "Article 1"),
+            tuple("art_2", "article", "Article 2"),
+            tuple("art_3", "article", "Article 3"),
+            tuple("anx", "annex", "ANNEX"));
+    var annex = outline.entries().getLast();
+    assertThat(annex.entries()).hasSize(11);
+    var airportSecurity = annex.entries().getFirst();
+    assertThat(airportSecurity)
+        .extracting(Entry::eId, Entry::num, Entry::heading)
+        .containsExactly("anx/pnt_1", "1.", "AIRPORT SECURITY");
+    assertThat(airportSecurity.entries().get(1).entries())
+        .extracting(Entry::eId, Entry::heading)
+        .containsExactly(
+            tuple("anx/pnt_1.1.1", "Boundaries"),
+            tuple("anx/pnt_1.1.2", "Security restricted areas"),
+            tuple("anx/pnt_1.1.3", "Critical parts of security restricted areas"));
+    assertThat(all(outline.entries())).hasSize(355);
+  }
+
+  @Test
   void rebuildsNothingWhereNothingIsStored() throws Exception {
     var out = LegalTexts.SAXON.newDocumentBuilder().newBuildingStreamWriter();
 
     assertThat(content.rebuild(new ContentHash("0".repeat(64)), out)).isFalse();
     assertThat(content.segments(new ContentHash("0".repeat(64)))).isEmpty();
+    assertThat(content.outline(new ContentHash("0".repeat(64)))).isEmpty();
+  }
+
+  /** The entries and all those under them. */
+  private static List<Entry> all(List<Entry> entries) {
+    return entries.stream()
+        .flatMap(entry -> Stream.concat(Stream.of(entry), all(entry.entries()).stream()))
+        .toList();
   }
 
   private long rows() {

@@ -26,6 +26,13 @@ public interface TreeStore {
   /** The tree at {@code root}, if it is kept. */
   Optional<Tree> tree(ContentHash root);
 
+  /**
+   * The skeleton of the tree at {@code root}, if it is kept: its containers and the leaves that
+   * title them (num, heading), what an outline is read from (Outlines). Its containers' other
+   * children aren't in it.
+   */
+  Optional<Tree> skeleton(ContentHash root);
+
   /** The segments of the text at {@code root}, in order. */
   List<Segment> segments(ContentHash root);
 }

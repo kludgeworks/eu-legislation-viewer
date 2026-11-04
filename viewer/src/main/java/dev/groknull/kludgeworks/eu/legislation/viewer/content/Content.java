@@ -32,6 +32,12 @@ public interface Content {
   Optional<Element> read(ContentHash root);
 
   /**
+   * The outline of the text at {@code root}, read from its containers and their titles only, not
+   * its other blocks; none if no text is stored there.
+   */
+  Optional<Outline> outline(ContentHash root);
+
+  /**
    * Writes the legal text at {@code root} to {@code out} as it was stored, but for the whitespace
    * between elements, which legal-text doesn't hold (its text is only ever in elements of its own).
    *

@@ -6,6 +6,7 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.
 import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.OVERLAY;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.ROOT_SEGMENT;
 import static org.jooq.impl.DSL.field;
+import static org.jooq.impl.DSL.jsonbGetElementAsText;
 import static org.jooq.impl.DSL.list;
 import static org.jooq.impl.DSL.multiset;
 import static org.jooq.impl.DSL.name;
@@ -18,6 +19,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.application.TreeStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Edge;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Node;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Overlay;
 import java.nio.charset.StandardCharsets;
@@ -25,6 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.DataType;
 import org.jooq.Field;
@@ -47,6 +50,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 class JooqTreeStore implements TreeStore {
   private static final DataType<byte[][]> HASHES = SQLDataType.BLOB.array();
+
+  /** The leaves that title a container, which a skeleton keeps: Outlines reads them. */
+  private static final List<String> TITLES = List.of("num", "heading");
 
   private final DSLContext db;
 
@@ -71,16 +77,34 @@ class JooqTreeStore implements TreeStore {
   /** Every node under a root, with its children and their overlays. */
   @Override
   public Optional<Tree> tree(ContentHash root) {
+    return tree(root, null);
+  }
+
+  /**
+   * The containers under a root and the leaves that title them, with all their children and their
+   * overlays: the walk follows an edge only to a container or to a num or heading, which it tells
+   * by the JSON's first element, so the text's other blocks are never read.
+   */
+  @Override
+  public Optional<Tree> skeleton(ContentHash root) {
+    var child = NODE.as("child");
+    return tree(
+        root, child.KIND.eq(Kind.CONTAINER).or(jsonbGetElementAsText(child.CONTENT, 0).in(TITLES)));
+  }
+
+  /**
+   * The nodes under a root, each with all its children and their overlays: every node, or those
+   * that edges lead to whose node (child) is {@code kept}.
+   */
+  private Optional<Tree> tree(ContentHash root, @Nullable Condition kept) {
     var tree = name("tree").fields("hash");
     var hash = field(name("tree", "hash"), NODE.HASH.getDataType());
+    var down = select(EDGE.CHILD).from(table(name("tree"))).join(EDGE).on(EDGE.PARENT.eq(hash));
+    var to = NODE.as("child");
     var under =
         tree.as(
             select(val(root, NODE.HASH))
-                .union(
-                    select(EDGE.CHILD)
-                        .from(table(name("tree")))
-                        .join(EDGE)
-                        .on(EDGE.PARENT.eq(hash))));
+                .union(kept == null ? down : down.join(to).on(to.HASH.eq(EDGE.CHILD)).where(kept)));
     var children =
         multiset(
                 select(EDGE.CHILD, EDGE.OVERLAY, OVERLAY.FACTS)

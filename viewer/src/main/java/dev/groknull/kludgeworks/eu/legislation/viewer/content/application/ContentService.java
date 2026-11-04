@@ -4,9 +4,11 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.application;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Segmentation;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
@@ -22,8 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Storing a text: encoded into its tree and cut into segments (the model), then kept unless it is
- * already; reading or rebuilding one: its tree read back and decoded. Each is one transaction, one
- * observation (content.store, content.read, content.rebuild: a span and a timer) and one log line.
+ * already; reading or rebuilding one: its tree read back and decoded; outlining one: its skeleton
+ * read back (its containers and their titles). Each is one transaction, one observation
+ * (content.store, content.read, content.outline, content.rebuild: a span and a timer) and one log
+ * line.
  */
 @Service
 class ContentService implements Content {
@@ -99,6 +103,31 @@ class ContentService implements Content {
         read,
         millis(start) - read);
     return Optional.of(element);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Optional<Outline> outline(ContentHash root) {
+    return Observation.createNotStarted("content.outline", observations)
+        .observe(() -> doOutline(root));
+  }
+
+  private Optional<Outline> doOutline(ContentHash root) {
+    var start = System.nanoTime();
+    var skeleton = store.skeleton(root);
+    if (skeleton.isEmpty()) {
+      LOG.debug("Nothing stored at {}", root);
+      return Optional.empty();
+    }
+    var read = millis(start);
+    var outline = Outlines.of(skeleton.get());
+    LOG.debug(
+        "Outlined {}: {} nodes of its skeleton read in {} ms, outlined in {} ms",
+        root,
+        skeleton.get().nodes().size(),
+        read,
+        millis(start) - read);
+    return Optional.of(outline);
   }
 
   @Override

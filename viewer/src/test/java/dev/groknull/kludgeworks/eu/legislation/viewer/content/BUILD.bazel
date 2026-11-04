@@ -17,6 +17,7 @@ java_junit5_test(
     ],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
