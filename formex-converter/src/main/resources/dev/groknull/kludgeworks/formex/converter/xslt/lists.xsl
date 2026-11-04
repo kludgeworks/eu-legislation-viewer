@@ -36,7 +36,7 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="label" as="xs:string" select="f:label(NO.P)"/>
-    <!-- a heading line's NP, set as blocks where the heading holds some (a table's title), is no run -->
+    <!-- an NP that numbers what holds it (f:np-point) is no run -->
     <xsl:variable name="run-base" as="xs:string?" select="if (f:np-point(.)) then f:list-base(f:np-run-start(.), $base) else $base"/>
     <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid($run-base, 'pnt', $label)
@@ -61,6 +61,37 @@
       </unit>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+  </xsl:template>
+
+  <!-- a heading's numbered line, set as blocks where the heading holds some (a table's title, a
+       level's): a line of the heading, its number printed before its text as on a heading's inline
+       lines, not a point (headings numbered alike, the tables A and B of two groups, would share an
+       eId); then the blocks it holds -->
+  <xsl:template match="NP[parent::TI or parent::STI or parent::TI.BLK]" mode="block" priority="1">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="first-block" as="node()?" select="TXT/node()[f:is-block(.)][1]"/>
+    <xsl:variable name="p" as="element()">
+      <p>
+        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:call-template name="f:inlines">
+          <xsl:with-param name="nodes" as="node()*" select="NO.P/node()"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+        </xsl:call-template>
+        <t v=" "/>
+        <xsl:call-template name="f:inlines">
+          <xsl:with-param name="nodes" as="node()*" select="TXT/node()[empty($first-block) or . &lt;&lt; $first-block]"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+        </xsl:call-template>
+      </p>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $p)"/>
+    <xsl:call-template name="f:blocks">
+      <xsl:with-param name="nodes" as="node()*" select="TXT/node()[exists($first-block) and not(. &lt;&lt; $first-block)], node() except (NO.P, TXT)"/>
+      <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+      <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+    </xsl:call-template>
   </xsl:template>
 
   <!-- the NP point just before one in its run: its sibling, or where each is a P's only element, the

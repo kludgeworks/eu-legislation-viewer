@@ -128,14 +128,11 @@
          <tableGroup>
             <table cols="3">
                <caption>
-                  <unit eId="art_1/pnt_I" kind="point" numbered="true">
-                     <num>
-                        <t v="I."/>
-                     </num>
-                     <p>
-                        <t v="GOVERNMENT REPRESENTATIVES"/>
-                     </p>
-                  </unit>
+                  <p>
+                     <t v="I."/>
+                     <t v=" "/>
+                     <t v="GOVERNMENT REPRESENTATIVES"/>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -647,14 +644,11 @@
             </table>
             <table cols="3">
                <caption>
-                  <unit eId="art_1/pnt_II" kind="point" numbered="true">
-                     <num>
-                        <t v="II."/>
-                     </num>
-                     <p>
-                        <t v="TRADE UNION REPRESENTATIVES"/>
-                     </p>
-                  </unit>
+                  <p>
+                     <t v="II."/>
+                     <t v=" "/>
+                     <t v="TRADE UNION REPRESENTATIVES"/>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -1162,14 +1156,11 @@
             </table>
             <table cols="3">
                <caption>
-                  <unit eId="art_1/pnt_III" kind="point" numbered="true">
-                     <num>
-                        <t v="III."/>
-                     </num>
-                     <p>
-                        <t v="EMPLOYERS' ASSOCIATIONS REPRESENTATIVES"/>
-                     </p>
-                  </unit>
+                  <p>
+                     <t v="III."/>
+                     <t v=" "/>
+                     <t v="EMPLOYERS' ASSOCIATIONS REPRESENTATIVES"/>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">

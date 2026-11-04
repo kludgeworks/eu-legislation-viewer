@@ -333,14 +333,11 @@
             </num>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_I" kind="point" numbered="true">
-                     <num>
-                        <t v="I."/>
-                     </num>
-                     <p>
-                        <t v="Conversion factors applicable to the different species of tuna"/>
-                     </p>
-                  </unit>
+                  <p>
+                     <t v="I."/>
+                     <t v=" "/>
+                     <t v="Conversion factors applicable to the different species of tuna"/>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -471,14 +468,11 @@
             </table>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_II" kind="point" numbered="true">
-                     <num>
-                        <t v="II."/>
-                     </num>
-                     <p>
-                        <t v="Conversion factors applicable to each of the species referred to in section I depending on the presentation"/>
-                     </p>
-                  </unit>
+                  <p>
+                     <t v="II."/>
+                     <t v=" "/>
+                     <t v="Conversion factors applicable to each of the species referred to in section I depending on the presentation"/>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">

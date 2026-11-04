@@ -175,6 +175,16 @@
     <x:expect label="an empty cell is empty" test="empty($x:result/*:tr[3]/*:td[2]/node())"/>
   </x:scenario>
 
+  <x:scenario label="A table titled with a numbered line (32014D0431: tables A and B, twice in one annex)">
+    <x:context mode="block" xmlns="">
+      <TBL COLS="2"><TITLE><TI><P>Agglomerations</P><NP><NO.P>A —</NO.P><TXT>Individual systems</TXT></NP></TI></TITLE><CORPUS>
+        <ROW><CELL COL="1">a</CELL><CELL COL="2">b</CELL></ROW>
+      </CORPUS></TBL>
+    </x:context>
+    <x:expect label="keeps the line in its caption, its number before its text" test="deep-equal($x:result/*:caption/*:p[2]/*:t/string(@v), ('A —', ' ', 'Individual systems'))"/>
+    <x:expect label="makes it no point, which another table's A would share an eId with" test="empty($x:result/*:caption//*:unit)"/>
+  </x:scenario>
+
   <x:scenario label="A group of rows with a heading (BLK)">
     <x:context mode="block" xmlns="">
       <TBL COLS="2"><CORPUS><BLK><TI.BLK COL.END="2" COL.START="1"><NP><NO.P>1.1.</NO.P><TXT>Date(s) of validation</TXT></NP></TI.BLK><ROW><CELL COL="1">a</CELL><CELL COL="2">b</CELL></ROW></BLK></CORPUS></TBL>

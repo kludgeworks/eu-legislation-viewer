@@ -1217,18 +1217,15 @@
             </caption>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_Table-1" kind="point" numbered="true">
-                     <num>
-                        <emphasis kind="i">
-                           <t v="Table 1:"/>
-                        </emphasis>
-                     </num>
-                     <p>
-                        <emphasis kind="i">
-                           <t v="Energy content of motor fuels"/>
-                        </emphasis>
-                     </p>
-                  </unit>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Table 1:"/>
+                     </emphasis>
+                     <t v=" "/>
+                     <emphasis kind="i">
+                        <t v="Energy content of motor fuels"/>
+                     </emphasis>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -1348,18 +1345,15 @@
             </table>
             <table cols="4">
                <caption>
-                  <unit eId="anx/pnt_Table-2" kind="point" numbered="true">
-                     <num>
-                        <emphasis kind="i">
-                           <t v="Table 2:"/>
-                        </emphasis>
-                     </num>
-                     <p>
-                        <emphasis kind="i">
-                           <t v="Cost for emissions in road transport (in 2007 prices)"/>
-                        </emphasis>
-                     </p>
-                  </unit>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Table 2:"/>
+                     </emphasis>
+                     <t v=" "/>
+                     <emphasis kind="i">
+                        <t v="Cost for emissions in road transport (in 2007 prices)"/>
+                     </emphasis>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">
@@ -1417,18 +1411,15 @@
             </table>
             <table cols="2">
                <caption>
-                  <unit eId="anx/pnt_Table-3" kind="point" numbered="true">
-                     <num>
-                        <emphasis kind="i">
-                           <t v="Table 3:"/>
-                        </emphasis>
-                     </num>
-                     <p>
-                        <emphasis kind="i">
-                           <t v="Lifetime mileage of road transport vehicles"/>
-                        </emphasis>
-                     </p>
-                  </unit>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Table 3:"/>
+                     </emphasis>
+                     <t v=" "/>
+                     <emphasis kind="i">
+                        <t v="Lifetime mileage of road transport vehicles"/>
+                     </emphasis>
+                  </p>
                </caption>
                <tr header="true">
                   <td header="true">
