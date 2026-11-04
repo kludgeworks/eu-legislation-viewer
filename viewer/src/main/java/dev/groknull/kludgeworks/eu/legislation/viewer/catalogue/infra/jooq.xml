@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!-- What jOOQ generates of the catalogue module's tables (jooq_tables, in BUILD.bazel, which sets
      the database and the target): identifiers as the module's value objects, a version's kind as
-     Version.Kind, an expression's language and root as Language and ContentHash,
+     Version.Kind, an act date's kind and anchor as ActDate.Kind and ActDate.Anchor, an expression's language and root as Language and ContentHash,
      the times as Instants -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
   <logging>WARN</logging>
@@ -12,7 +12,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
-          <includeExpression>act\.celex|version\.act</includeExpression>
+          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -28,6 +28,16 @@
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version.Kind</userType>
           <enumConverter>true</enumConverter>
           <includeExpression>version\.kind</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>act_date\.kind</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>act_date\.anchor</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>

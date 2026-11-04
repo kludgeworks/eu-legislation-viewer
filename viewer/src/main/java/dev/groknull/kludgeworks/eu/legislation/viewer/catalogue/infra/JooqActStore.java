@@ -2,31 +2,37 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_DATE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static org.jooq.impl.DSL.currentInstant;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActStore;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActDateRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.VersionRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The acts in Postgres (db/migration/catalogue), with jOOQ: an act and its versions, written in one
- * transaction, unless the act is there.
+ * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its versions and its dates,
+ * written in one transaction, unless the act is there.
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -58,7 +64,11 @@ class JooqActStore implements ActStore {
                     act,
                     db.selectFrom(VERSION)
                         .where(VERSION.ACT.eq(act.getCelex()))
-                        .fetch(JooqActStore::version)));
+                        .fetch(JooqActStore::version),
+                    db.selectFrom(ACT_DATE)
+                        .where(ACT_DATE.ACT.eq(act.getCelex()))
+                        .orderBy(ACT_DATE.SUBJECT, ACT_DATE.POSITION)
+                        .fetch()));
   }
 
   @Override
@@ -103,10 +113,49 @@ class JooqActStore implements ActStore {
               version.formexModified());
     }
     versions.execute();
+    var dates = new LinkedHashMap<ActIdentifier, List<ActDate>>(act.amendingDates());
+    dates.put(act.id(), act.dates());
+    var rows =
+        dates.entrySet().stream()
+            .flatMap(
+                subject -> {
+                  var each = subject.getValue();
+                  return IntStream.range(0, each.size())
+                      .mapToObj(i -> date(act.id(), subject.getKey(), i, each.get(i)));
+                })
+            .toList();
+    if (!rows.isEmpty()) {
+      db.batchInsert(rows).execute();
+    }
     return true;
   }
 
-  private static Act act(ActRecord act, List<Version> versions) {
+  private static ActDateRecord date(
+      ActIdentifier act, ActIdentifier subject, int position, ActDate date) {
+    var clause = date.clause();
+    return new ActDateRecord(
+        act,
+        subject,
+        position,
+        date.date(),
+        date.kind(),
+        date.partial(),
+        clause.from(),
+        clause.days(),
+        clause.provisions().stream().map(Provision::toString).toArray(String[]::new),
+        clause.amendedBy().stream().map(ActIdentifier::celex).toArray(String[]::new),
+        clause.text());
+  }
+
+  private static Act act(ActRecord act, List<Version> versions, List<ActDateRecord> dates) {
+    var bySubject =
+        dates.stream()
+            .collect(
+                Collectors.groupingBy(
+                    ActDateRecord::getSubject,
+                    LinkedHashMap::new,
+                    Collectors.mapping(JooqActStore::date, Collectors.toList())));
+    var own = bySubject.remove(act.getCelex());
     return new Act(
         act.getCelex(),
         act.getEli(),
@@ -115,8 +164,21 @@ class JooqActStore implements ActStore {
         act.getInForce(),
         act.getEndOfValidity(),
         new Timeline(versions),
-        List.of(),
-        Map.of());
+        own == null ? List.of() : own,
+        bySubject);
+  }
+
+  private static ActDate date(ActDateRecord date) {
+    return new ActDate(
+        date.getDate(),
+        date.getKind(),
+        date.getPartial(),
+        new Clause(
+            date.getAnchor(),
+            date.getDays(),
+            Arrays.stream(date.getProvisions()).map(Provision::parse).toList(),
+            Arrays.stream(date.getAmendedBy()).map(ActIdentifier::new).toList(),
+            date.getText()));
   }
 
   private static Version version(VersionRecord version) {
