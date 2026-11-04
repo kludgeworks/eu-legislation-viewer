@@ -60,7 +60,9 @@ final class CorpusTests {
     try {
       legalText = STYLESHEET.transform(manifestation.source(), celex);
     } catch (Stylesheet.Failure e) {
-      if (Stylesheet.OUT_OF_SCOPE.equals(e.code())) {
+      // not a legal act, or not the document the manifest names (Cellar files another version's
+      // Formex under it): nothing the converter can make of it
+      if (Stylesheet.OUT_OF_SCOPE.equals(e.code()) || Stylesheet.MISFILED.equals(e.code())) {
         abort(e.getMessage());
       }
       throw e;

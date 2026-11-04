@@ -25,7 +25,8 @@
   - a refusal is a dynamic error, raised with error(), whose description is the reason and whose
     code is in the namespace https://kludgeworks.groknull.dev/ns/formex-converter: f:out-of-scope
     (not a legal act), f:unknown (Formex the converter doesn't handle yet), f:celex (an OJ act
-    without the celex parameter, or a document that isn't the one it names), f:date (a date that isn't one).
+    without the celex parameter), f:misfiled (a document that isn't the one the celex parameter
+    names: Cellar files another document's Formex under it), f:date (a date that isn't one).
   Large documents may need the processor's XML entity limits lifted: Formex has no DTD, but a 104 MB
   annex has over 100,000 entity references (&amp;), above the JDK's default limit.
 -->
@@ -162,11 +163,11 @@
           else if ($consolidated) then '0' || $info/@CONSLEG.REF || '-' || $info/@START.DATE
           else error(xs:QName('f:celex'), 'An OJ act needs the $celex parameter')
         else if (starts-with($celex, '0') ne $consolidated) then
-          error(xs:QName('f:celex'), 'The $celex parameter is ' || (if ($consolidated) then 'an OJ act''s' else 'a consolidation''s')
+          error(xs:QName('f:misfiled'), 'The $celex parameter is ' || (if ($consolidated) then 'an OJ act''s' else 'a consolidation''s')
               || ' (' || $celex || '), but the document is ' || (if ($consolidated) then 'a consolidation' else 'an OJ act')
               || ' (Formex ' || local-name($act) || ')')
         else if ($consolidated and not(ends-with($celex, '-' || $info/@START.DATE))) then
-          error(xs:QName('f:celex'), 'The $celex parameter is a consolidation''s (' || $celex
+          error(xs:QName('f:misfiled'), 'The $celex parameter is a consolidation''s (' || $celex
               || '), but the document is its version of ' || $info/@START.DATE)
         else $celex"/>
     <!-- a consolidation's act is its base act, whatever its sector (an agreement, 22002A0430(02)):

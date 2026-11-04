@@ -27,10 +27,11 @@ import org.jspecify.annotations.Nullable;
  */
 final class Stylesheet {
 
-  /** The namespace of the stylesheet's error codes: f:out-of-scope, f:unknown. */
+  /** The namespace of the stylesheet's error codes: f:out-of-scope, f:misfiled, f:unknown. */
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
 
   static final QName OUT_OF_SCOPE = new QName(ERRORS, "out-of-scope");
+  static final QName MISFILED = new QName(ERRORS, "misfiled");
   static final QName UNKNOWN = new QName(ERRORS, "unknown");
 
   private static final String PATH = "xslt/formex-to-legal-text.xsl";

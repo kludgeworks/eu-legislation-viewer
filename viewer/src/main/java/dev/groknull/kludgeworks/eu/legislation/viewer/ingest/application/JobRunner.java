@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.MisfiledFormexException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.OutOfScopeException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.UnsupportedFormexException;
 import io.micrometer.tracing.Span;
@@ -126,6 +127,8 @@ class JobRunner {
           job.attempts());
     } catch (OutOfScopeException e) {
       fail(job, Failure.OUT_OF_SCOPE, detail(e));
+    } catch (MisfiledFormexException e) {
+      fail(job, Failure.MISFILED, detail(e));
     } catch (UnsupportedFormexException e) {
       fail(job, Failure.UNSUPPORTED, detail(e));
     } catch (OptimisticLockingFailureException e) {

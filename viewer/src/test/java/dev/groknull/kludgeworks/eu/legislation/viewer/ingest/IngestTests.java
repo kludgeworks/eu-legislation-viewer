@@ -69,6 +69,11 @@ class IngestTests {
   }
 
   @Test
+  void failsAnotherVersionsFormexFiledUnderTheNumber() {
+    assertFails(CONSOLIDATION, Language.ITA, Failure.MISFILED);
+  }
+
+  @Test
   void failsFormexTheConverterDoesntHandle() {
     assertFails(CONSOLIDATION, Language.DEU, Failure.UNSUPPORTED);
   }

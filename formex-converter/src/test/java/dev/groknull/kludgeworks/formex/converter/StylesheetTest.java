@@ -79,7 +79,7 @@ class StylesheetTest {
                 STYLESHEET.transform(
                     formex(act("<ENACTING.TERMS/>")), Optional.of("02026R0449-20260101")))
         .withMessageContaining("02026R0449-20260101")
-        .satisfies(e -> assertThat(e.code()).isEqualTo(new QName(Stylesheet.ERRORS, "celex")));
+        .satisfies(e -> assertThat(e.code()).isEqualTo(Stylesheet.MISFILED));
   }
 
   @Test
@@ -88,7 +88,7 @@ class StylesheetTest {
     assertThatExceptionOfType(Stylesheet.Failure.class)
         .isThrownBy(() -> STYLESHEET.transform(fixture.source(), Optional.of("52020XG0131(01)")))
         .withMessageContaining("52020XG0131(01)")
-        .satisfies(e -> assertThat(e.code()).isEqualTo(new QName(Stylesheet.ERRORS, "celex")));
+        .satisfies(e -> assertThat(e.code()).isEqualTo(Stylesheet.MISFILED));
   }
 
   @Test
@@ -98,7 +98,7 @@ class StylesheetTest {
         .isThrownBy(
             () -> STYLESHEET.transform(fixture.source(), Optional.of("02020XG0131(01)-20210101")))
         .withMessageContaining("20200131")
-        .satisfies(e -> assertThat(e.code()).isEqualTo(new QName(Stylesheet.ERRORS, "celex")));
+        .satisfies(e -> assertThat(e.code()).isEqualTo(Stylesheet.MISFILED));
   }
 
   private static String act(String content) {

@@ -20,8 +20,9 @@ import java.util.function.BiFunction;
 /**
  * A Formex source on the converter's fixtures, in English: 2015/1998's consolidation of 22 March
  * 2026 among them; in French a document that isn't a legal act, in German Formex the converter
- * doesn't handle, for any document. It records what it was asked for, from any thread. With the
- * converter's expected output for the fixtures.
+ * doesn't handle, in Italian another version's Formex (as Cellar misfiles it), for any document. It
+ * records what it was asked for, from any thread. With the converter's expected output for the
+ * fixtures.
  */
 @AutoBazelRepository
 final class FormexFixtures implements FormexSource {
@@ -45,6 +46,11 @@ final class FormexFixtures implements FormexSource {
                   + " START.DATE=\"20260322\"/><CONS.DOC>"
                   + "<BIB.INSTANCE><LG.DOC>DE</LG.DOC></BIB.INSTANCE>"
                   + "<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS></CONS.DOC></CONS.ACT>";
+          case ITA ->
+              "<CONS.ACT><INFO.CONSLEG CONSLEG.REF=\"2015R1998\""
+                  + " START.DATE=\"20160101\"/><CONS.DOC>"
+                  + "<BIB.INSTANCE><LG.DOC>IT</LG.DOC></BIB.INSTANCE>"
+                  + "<ENACTING.TERMS/></CONS.DOC></CONS.ACT>";
           default -> null;
         };
     if (refused == null && language != Language.ENG) {

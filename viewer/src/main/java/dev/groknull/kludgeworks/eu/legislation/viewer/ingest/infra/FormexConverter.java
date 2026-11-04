@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.MisfiledFormexException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.OutOfScopeException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.UnsupportedFormexException;
 import java.io.FilterInputStream;
@@ -154,6 +155,7 @@ final class FormexConverter {
     if (code != null && ERRORS.equals(code.getNamespaceURI())) {
       return switch (code.getLocalName()) {
         case "out-of-scope" -> new OutOfScopeException(message, e);
+        case "misfiled" -> new MisfiledFormexException(message, e);
         case "unknown" -> new UnsupportedFormexException(message, e);
         default -> new ConversionException(message, e);
       };

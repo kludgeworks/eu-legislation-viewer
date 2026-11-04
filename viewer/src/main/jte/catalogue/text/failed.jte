@@ -7,6 +7,8 @@
       Cellar has no Formex of this text, which is what the viewer reads.
     @elseif(failure == Failure.OUT_OF_SCOPE)
       This document isn't a legal act the viewer shows.
+    @elseif(failure == Failure.MISFILED)
+      Cellar holds another document's Formex under this number, so the viewer can't show this one.
     @elseif(failure == Failure.UNSUPPORTED)
       This text uses Formex the viewer can't read yet.
     @else
