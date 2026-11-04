@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: MIT
 # Words typos would "correct" that are right: the Official Journal's name in Spanish, Portuguese and
-# Romanian (Diario Oficial, Jornal Oficial, Jurnalul Oficial)
+# Romanian (Diario Oficial, Jornal Oficial, Jurnalul Oficial), and the Union's initials in French,
+# Spanish, Italian and Portuguese (Règlement d'exécution (UE) 2015/1998)
 [default.extend-words]
 oficial = "oficial"
 jornal = "jornal"
+ue = "ue"

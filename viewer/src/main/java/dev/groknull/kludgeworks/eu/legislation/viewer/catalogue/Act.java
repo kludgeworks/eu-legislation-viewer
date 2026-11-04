@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -22,6 +23,8 @@ import org.jspecify.annotations.Nullable;
  * @param id the act's CELEX
  * @param eli its ELI; older acts may have none
  * @param type its resource type (REG_IMPL, DIR, DEC)
+ * @param titles its title in each official language Cellar has it in, as the Official Journal
+ *     printed it
  * @param dateOfDocument the date it was adopted or signed
  * @param inForce whether it is in force, as Cellar says
  * @param endOfValidity the day it ceases to apply; none while it is open-ended
@@ -35,6 +38,7 @@ public record Act(
     @Identity ActIdentifier id,
     @Nullable Eli eli,
     ResourceType type,
+    Map<Language, String> titles,
     @Nullable LocalDate dateOfDocument,
     boolean inForce,
     @Nullable LocalDate endOfValidity,
@@ -43,11 +47,17 @@ public record Act(
     Map<ActIdentifier, List<ActDate>> amendingDates) {
 
   public Act {
+    titles = Map.copyOf(titles);
     dates = List.copyOf(dates);
     amendingDates =
         amendingDates.entrySet().stream()
             .collect(
                 Collectors.toUnmodifiableMap(Map.Entry::getKey, e -> List.copyOf(e.getValue())));
+  }
+
+  /** Its title in {@code language}; none if Cellar has none in it. */
+  public Optional<String> title(Language language) {
+    return Optional.ofNullable(titles.get(language));
   }
 
   /** The own dates of this act or of an act its versions integrate; none for another act. */

@@ -35,6 +35,11 @@ public class OneActCellar {
           CELEX,
           ELI,
           new ResourceType("REG_IMPL"),
+          Map.of(
+              Language.ENG,
+              "Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015 laying down"
+                  + " detailed measures for the implementation of the common basic standards on"
+                  + " aviation security (Text with EEA relevance)"),
           LocalDate.of(2015, 11, 9),
           true,
           null,

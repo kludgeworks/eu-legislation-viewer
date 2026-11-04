@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_DATE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static org.jooq.impl.DSL.currentInstant;
 
@@ -22,6 +23,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -31,8 +33,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its versions and its dates,
- * written in one transaction, unless the act is there.
+ * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions and
+ * its dates, written in one transaction, unless the act is there.
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -62,6 +64,10 @@ class JooqActStore implements ActStore {
             act ->
                 act(
                     act,
+                    db.select(ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE)
+                        .from(ACT_TITLE)
+                        .where(ACT_TITLE.ACT.eq(act.getCelex()))
+                        .fetchMap(ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE),
                     db.selectFrom(VERSION)
                         .where(VERSION.ACT.eq(act.getCelex()))
                         .fetch(JooqActStore::version),
@@ -88,6 +94,13 @@ class JooqActStore implements ActStore {
             == 1;
     if (!added) {
       return false;
+    }
+    if (!act.titles().isEmpty()) {
+      var titles = db.insertInto(ACT_TITLE, ACT_TITLE.ACT, ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE);
+      for (var title : act.titles().entrySet()) {
+        titles = titles.values(act.id(), title.getKey(), title.getValue());
+      }
+      titles.execute();
     }
     var versions =
         db.insertInto(
@@ -147,7 +160,11 @@ class JooqActStore implements ActStore {
         clause.text());
   }
 
-  private static Act act(ActRecord act, List<Version> versions, List<ActDateRecord> dates) {
+  private static Act act(
+      ActRecord act,
+      Map<Language, String> titles,
+      List<Version> versions,
+      List<ActDateRecord> dates) {
     var bySubject =
         dates.stream()
             .collect(
@@ -160,6 +177,7 @@ class JooqActStore implements ActStore {
         act.getCelex(),
         act.getEli(),
         act.getResourceType(),
+        titles,
         act.getDateOfDocument(),
         act.getInForce(),
         act.getEndOfValidity(),

@@ -93,7 +93,8 @@ class CellarActsTest {
                     consolidation("02016E/TXT-20151225", "2015-12-25"),
                     consolidation("02016E/TXT-20160901", "2016-09-01")),
                 noLanguages(),
-                noDates())
+                noDates(),
+                noTitles())
             .orElseThrow()
             .timeline();
 
@@ -173,7 +174,8 @@ class CellarActsTest {
                             "DEU ENG NOR",
                             "formexModified",
                             "2015-11-23T08:58:11.083+01:00"))),
-                noDates())
+                noDates(),
+                noTitles())
             .orElseThrow()
             .timeline();
 
@@ -299,10 +301,40 @@ class CellarActsTest {
   }
 
   @Test
+  void readsAnActsTitleInEachLanguage() {
+    var act = act(AVSEC);
+
+    assertThat(act.titles()).hasSize(23).doesNotContainKey(Language.GLE);
+    assertThat(act.title(Language.ENG))
+        .contains(
+            "Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015 laying down"
+                + " detailed measures for the implementation of the common basic standards on"
+                + " aviation security (Text with EEA relevance)");
+    assertThat(act.title(Language.FRA))
+        .hasValueSatisfying(
+            t -> assertThat(t).startsWith("Règlement d'exécution (UE) 2015/1998 de la Commission"));
+  }
+
+  @Test
+  void reportsTwoTitlesInOneLanguageAsCellarsData() {
+    var twice =
+        new SparqlResult(
+            List.of("code", "title"),
+            List.of(
+                new SparqlResult.Row(Map.of("code", "ENG", "title", "One")),
+                new SparqlResult.Row(Map.of("code", "ENG", "title", "Two"))));
+
+    assertThatExceptionOfType(CellarException.class)
+        .isThrownBy(
+            () -> CellarActs.act(AVSEC, work(Map.of()), result(), noLanguages(), noDates(), twice))
+        .withMessageStartingWith("Cellar's data for 32015R1998: several titles in ENG");
+  }
+
+  @Test
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActs.act(AVSEC, none, none, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none, none, none, none)).isEmpty();
   }
 
   @Test
@@ -322,7 +354,9 @@ class CellarActsTest {
 
     assertThatExceptionOfType(CellarException.class)
         .isThrownBy(
-            () -> CellarActs.act(AVSEC, work(Map.of()), twoOnOneDay, noLanguages(), noDates()))
+            () ->
+                CellarActs.act(
+                    AVSEC, work(Map.of()), twoOnOneDay, noLanguages(), noDates(), noTitles()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -337,7 +371,8 @@ class CellarActsTest {
                 workRow("http://data.europa.eu/eli/reg_impl/2015/1999/oj")));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> CellarActs.act(AVSEC, twoElis, result(), noLanguages(), noDates()))
+        .isThrownBy(
+            () -> CellarActs.act(AVSEC, twoElis, result(), noLanguages(), noDates(), noTitles()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 
@@ -348,7 +383,7 @@ class CellarActsTest {
             List.of("eli", "type", "entryIntoForce"),
             List.of(workRow("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")));
 
-    assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages(), noDates()))
+    assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages(), noDates(), noTitles()))
         .hasValueSatisfying(
             act -> assertThat(act.eli()).isEqualTo(new Eli("treaty/tfeu_2008/art_251")));
   }
@@ -359,7 +394,7 @@ class CellarActsTest {
         new SparqlResult(
             List.of("eli", "type", "entryIntoForce"), List.of(workRow("ELI:L:2023:2616:OJ")));
 
-    assertThat(CellarActs.act(AVSEC, work, result(), noLanguages(), noDates()))
+    assertThat(CellarActs.act(AVSEC, work, result(), noLanguages(), noDates(), noTitles()))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 
@@ -425,6 +460,11 @@ class CellarActsTest {
     return new Provision(Provision.Type.ARTICLE, number);
   }
 
+  /** titles.rq's answer, with no titles. */
+  private static SparqlResult noTitles() {
+    return new SparqlResult(List.of("code", "title"), List.of());
+  }
+
   /** dates.rq's answer, with no dates. */
   private static SparqlResult noDates() {
     return new SparqlResult(List.of("subject", "date", "type", "comment"), List.of());
@@ -440,7 +480,8 @@ class CellarActsTest {
             recorded("act-" + id.celex() + ".json"),
             recorded("versions-" + id.celex() + ".json"),
             recorded("languages-" + id.celex() + ".json"),
-            recorded("dates-" + id.celex() + ".json"))
+            recorded("dates-" + id.celex() + ".json"),
+            recorded("titles-" + id.celex() + ".json"))
         .orElseThrow();
   }
 

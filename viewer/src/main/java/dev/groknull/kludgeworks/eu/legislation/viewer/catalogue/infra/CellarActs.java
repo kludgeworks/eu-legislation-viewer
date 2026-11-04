@@ -21,6 +21,7 @@ import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -42,8 +43,9 @@ import org.springframework.stereotype.Component;
  * Acts as Cellar has them, from its RDF (the CDM ontology): an act's work by its CELEX, found from
  * its ELI if need be, the consolidations based on it (Research: CDM ontology), and the languages
  * each version has its text in (Research: which languages a version is in), and the dates of the
- * act and of the acts its versions integrate (CellarDates). Five queries, beside this class:
- * act.rq, act-by-eli.rq, versions.rq, languages.rq and dates.rq; an act's four side by side.
+ * act and of the acts its versions integrate (CellarDates), and its titles. Six queries, beside
+ * this class: act.rq, act-by-eli.rq, versions.rq, languages.rq, dates.rq and titles.rq; an act's
+ * five side by side.
  */
 @Component
 class CellarActs implements ActSource {
@@ -53,6 +55,7 @@ class CellarActs implements ActSource {
   private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
   private static final String LANGUAGES = Sparql.template(CellarActs.class, "languages.rq");
   private static final String DATES = Sparql.template(CellarActs.class, "dates.rq");
+  private static final String TITLES = Sparql.template(CellarActs.class, "titles.rq");
 
   /** Cellar's date for one it doesn't know (seen as an entry into force). */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
@@ -82,21 +85,24 @@ class CellarActs implements ActSource {
     var versions = select(VERSIONS, values);
     var languages = select(LANGUAGES, values);
     var dates = select(DATES, values);
+    var titles = select(TITLES, values);
     var act =
         act(
             id,
             Sparql.join(work),
             Sparql.join(versions),
             Sparql.join(languages),
-            Sparql.join(dates));
+            Sparql.join(dates),
+            Sparql.join(titles));
     var took = Duration.ofNanos(System.nanoTime() - started).toMillis();
     act.ifPresentOrElse(
         a ->
             LOG.info(
-                "Read {} from Cellar: {} versions, {} dates of its own, dates of {} amending acts,"
-                    + " in {} ms",
+                "Read {} from Cellar: {} versions, titles in {} languages, {} dates of its own,"
+                    + " dates of {} amending acts, in {} ms",
                 id,
                 a.timeline().versions().size(),
+                a.titles().size(),
                 a.dates().size(),
                 a.amendingDates().size(),
                 took),
@@ -138,8 +144,8 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The act from the answers to act.rq, versions.rq, languages.rq and dates.rq; none if act.rq
-   * found no work.
+   * The act from the answers to act.rq, versions.rq, languages.rq, dates.rq and titles.rq; none if
+   * act.rq found no work.
    *
    * @throws CellarException if Cellar's answers make no act: a value missing, repeated or not of
    *     its kind, or versions the timeline refuses
@@ -149,13 +155,20 @@ class CellarActs implements ActSource {
       SparqlResult work,
       SparqlResult consolidations,
       SparqlResult languages,
-      SparqlResult dates) {
+      SparqlResult dates,
+      SparqlResult titles) {
     if (work.rows().isEmpty()) {
       return Optional.empty();
     }
     try {
       return Optional.of(
-          read(id, work, consolidations, formexByVersion(languages), CellarDates.byAct(id, dates)));
+          read(
+              id,
+              work,
+              titles(titles),
+              consolidations,
+              formexByVersion(languages),
+              CellarDates.byAct(id, dates)));
     } catch (IllegalArgumentException | DateTimeException e) {
       throw new CellarException("Cellar's data for " + id + ": " + e.getMessage(), e);
     }
@@ -165,6 +178,7 @@ class CellarActs implements ActSource {
   private static Act read(
       ActIdentifier id,
       SparqlResult work,
+      Map<Language, String> titles,
       SparqlResult consolidations,
       Map<String, Formex> formex,
       Map<ActIdentifier, List<ActDate>> dates) {
@@ -205,6 +219,7 @@ class CellarActs implements ActSource {
         id,
         elis.isEmpty() ? null : eli(id, elis.getFirst()),
         type,
+        titles,
         dateOfDocument,
         row.find("inForce").map(CellarActs::isTrue).orElse(false),
         endOfValidity.orElse(null),
@@ -293,6 +308,27 @@ class CellarActs implements ActSource {
       }
     }
     return formex;
+  }
+
+  /**
+   * The answer to titles.rq as the act's titles, by language: official languages only. Two titles
+   * in one language are an IllegalArgumentException.
+   */
+  private static Map<Language, String> titles(SparqlResult answer) {
+    var titles = new EnumMap<Language, String>(Language.class);
+    for (var row : answer.rows()) {
+      var code = row.get("code");
+      Arrays.stream(Language.values())
+          .filter(language -> language.code().equals(code))
+          .findFirst()
+          .ifPresent(
+              language -> {
+                if (titles.put(language, row.get("title")) != null) {
+                  throw new IllegalArgumentException("several titles in " + code);
+                }
+              });
+    }
+    return titles;
   }
 
   private static List<String> distinct(SparqlResult result, String variable) {
