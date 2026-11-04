@@ -86,16 +86,40 @@
     </xsl:choose>
   </xsl:template>
 
-  <!-- adjacent text nodes (split by <?PAGE?>) become one <t> -->
+  <!-- adjacent text nodes become one <t>: those of one element (split by <?PAGE?>), and the
+       whitespace between elements; text of two elements stays two, as it is two in the source (an
+       NP's TXT and text after the NP: "Dark air-cured", "Dark air-cured", not run together) -->
   <xsl:template name="f:text-runs">
     <xsl:param name="nodes" as="node()*"/>
     <xsl:for-each-group select="$nodes" group-adjacent="self::text() instance of text()">
       <xsl:choose>
         <xsl:when test="current-grouping-key()">
-          <xsl:variable name="v" as="xs:string" select="string-join(current-group())"/>
-          <xsl:if test="$v != ''">
-            <t v="{$v}"/>
-          </xsl:if>
+          <xsl:iterate select="current-group()">
+            <xsl:param name="v" as="xs:string" select="''"/>
+            <!-- the element whose text the run has; none while it is only whitespace -->
+            <xsl:param name="owner" as="node()?" select="()"/>
+            <xsl:on-completion>
+              <xsl:if test="$v != ''">
+                <t v="{$v}"/>
+              </xsl:if>
+            </xsl:on-completion>
+            <xsl:variable name="text" as="xs:boolean" select="normalize-space(.) != ''"/>
+            <xsl:choose>
+              <xsl:when test="$text and exists($owner) and not(.. is $owner)">
+                <t v="{$v}"/>
+                <xsl:next-iteration>
+                  <xsl:with-param name="v" as="xs:string" select="string(.)"/>
+                  <xsl:with-param name="owner" as="node()?" select=".."/>
+                </xsl:next-iteration>
+              </xsl:when>
+              <xsl:otherwise>
+                <xsl:next-iteration>
+                  <xsl:with-param name="v" as="xs:string" select="$v || ."/>
+                  <xsl:with-param name="owner" as="node()?" select="if ($text) then .. else $owner"/>
+                </xsl:next-iteration>
+              </xsl:otherwise>
+            </xsl:choose>
+          </xsl:iterate>
         </xsl:when>
         <xsl:otherwise>
           <xsl:apply-templates select="current-group()" mode="inline"/>
