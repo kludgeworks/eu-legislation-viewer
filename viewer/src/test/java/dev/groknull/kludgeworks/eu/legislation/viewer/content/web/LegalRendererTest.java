@@ -95,7 +95,6 @@ class LegalRendererTest {
     return switch (element.name()) {
       case "t" -> Objects.requireNonNull(element.attribute("v"));
       case "number" -> HTML.thousands(Objects.requireNonNull(element.attribute("v")));
-      case "date", "docDate" -> Objects.requireNonNull(element.attribute("asWritten"));
       case "quote" ->
           element.attribute("startQuote") + children(element) + element.attribute("endQuote");
       case "noteRef" -> " (" + element.attribute("marker") + ")";

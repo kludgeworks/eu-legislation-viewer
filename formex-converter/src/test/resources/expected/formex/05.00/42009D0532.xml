@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="9 July 2009" date="2009-07-09"/>
+            <docDate date="2009-07-09">
+               <t v="9 July 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -60,9 +62,13 @@
          </num>
          <p>
             <t v="Mr José Manuel DURÃO BARROSO is hereby nominated as the person the Council intends to appoint as President of the Commission for the period from "/>
-            <date asWritten="1 November 2009" date="2009-11-01"/>
+            <date date="2009-11-01">
+               <t v="1 November 2009"/>
+            </date>
             <t v=" to "/>
-            <date asWritten="31 October 2014" date="2014-10-31"/>
+            <date date="2014-10-31">
+               <t v="31 October 2014"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -91,7 +97,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="9 July 2009" date="2009-07-09"/>
+            <date date="2009-07-09">
+               <t v="9 July 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="15 July 2019" date="2019-07-15"/>
+            <docDate date="2019-07-15">
+               <t v="15 July 2019"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -72,11 +74,15 @@
                   <t v="the Agreement"/>
                </quote>
                <t v=") was signed on behalf of the Union in Abidjan on "/>
-               <date asWritten="26 November 2008" date="2008-11-26"/>
+               <date date="2008-11-26">
+                  <t v="26 November 2008"/>
+               </date>
                <t v=" pursuant to Council Decision 2009/156/EC"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=" and has been applied on a provisional basis since "/>
-               <date asWritten="3 September 2016" date="2016-09-03"/>
+               <date date="2016-09-03">
+                  <t v="3 September 2016"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -157,7 +163,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="15 July 2019" date="2019-07-15"/>
+            <date date="2019-07-15">
+               <t v="15 July 2019"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -184,7 +192,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Council Decision 2009/156/EC of "/>
-            <date asWritten="21 November 2008" date="2008-11-21"/>
+            <date date="2008-11-21">
+               <t v="21 November 2008"/>
+            </date>
             <t v=" on the signature and provisional application of the stepping stone Economic Partnership Agreement between Côte d’Ivoire, of the one part, and the European Community and its Member States, of the other part ("/>
             <ref kind="oj" series="L" number="59" date="2009-03-03" page="1">
                <t v="OJ L 59, 3.3.2009, p. 1"/>
@@ -1163,7 +1173,9 @@
                   </num>
                   <p>
                      <t v="The cumulation provided for in this Article may only be applied after "/>
-                     <date asWritten="1 October 2015" date="2015-10-01"/>
+                     <date date="2015-10-01">
+                        <t v="1 October 2015"/>
+                     </date>
                      <t v=" to the products listed in Annex IX of this Protocol, where the materials used in the manufacture of those products are originating or the working or processing takes place in another ACP State which has applied an EPA at least provisionally."/>
                   </p>
                </unit>
@@ -3810,7 +3822,9 @@
             <note eId="note_anx01000401-1" marker="1" kind="footnote">
                <p>
                   <t v="Council Regulation (EEC) No 2658/87 of "/>
-                  <date asWritten="23 July 1987" date="1987-07-23"/>
+                  <date date="1987-07-23">
+                     <t v="23 July 1987"/>
+                  </date>
                   <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff ("/>
                   <ref kind="oj"
                        series="L"
@@ -3830,7 +3844,9 @@
             <note eId="note_anx01000401-3" marker="3" kind="footnote">
                <p>
                   <t v="See Council Decision 2009/729/EC of "/>
-                  <date asWritten="13 July 2009" date="2009-07-13"/>
+                  <date date="2009-07-13">
+                     <t v="13 July 2009"/>
+                  </date>
                   <t v=" on the signature and provisional application of the Interim Partnership Agreement between the European Community, of the one part, and the Pacific States, of the other part ("/>
                   <ref kind="oj"
                        series="L"
@@ -3845,7 +3861,9 @@
             <note eId="note_anx01000401-4" marker="4" kind="footnote">
                <p>
                   <t v="See Commission Regulation (EEC) No 2454/93 of "/>
-                  <date asWritten="2 July 1993" date="1993-07-02"/>
+                  <date date="1993-07-02">
+                     <t v="2 July 1993"/>
+                  </date>
                   <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
                   <ref kind="oj"
                        series="L"
@@ -21249,9 +21267,13 @@
                <t v="the Agreement"/>
             </quote>
             <t v="), signed in Abidjan on "/>
-            <date asWritten="26 November 2008" date="2008-11-26"/>
+            <date date="2008-11-26">
+               <t v="26 November 2008"/>
+            </date>
             <t v=" and applied on a provisional basis since "/>
-            <date asWritten="3 September 2016" date="2016-09-03"/>
+            <date date="2016-09-03">
+               <t v="3 September 2016"/>
+            </date>
             <t v=", in particular Articles 14 and 82 thereof,"/>
          </p>
          <p>

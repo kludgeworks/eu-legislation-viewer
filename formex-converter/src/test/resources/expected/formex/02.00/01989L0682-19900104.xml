@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Council Directive 89/682/EEC of "/>
-               <date asWritten="21 December 1989" date="1989-12-21"/>
+               <date date="1989-12-21">
+                  <t v="21 December 1989"/>
+               </date>
                <t v=" amending Directive 86/298/EEC on rear-mounted roll-over protection structures of narrow-track wheeled agricultural and forestry tractors"/>
             </p>
             <p>
@@ -47,7 +49,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="21 December 1989" date="1989-12-21"/>
+            <docDate date="1989-12-21">
+               <t v="21 December 1989"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -97,7 +101,9 @@
          <unit eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Whereas it is necessary to adopt measures with the aim of progressively establishing the internal market over a period expiring on "/>
-               <date asWritten="31 December 1992" date="1992-12-31"/>
+               <date date="1992-12-31">
+                  <t v="31 December 1992"/>
+               </date>
                <t v="; whereas the internal market comprises an area without internal frontiers in which the free movement of goods, persons, services and capital is ensured;"/>
             </p>
          </unit>
@@ -338,7 +344,9 @@
          </num>
          <p>
             <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive not later than 12 months from"/>
-            <date asWritten="3 January 1990" date="1990-01-03"/>
+            <date date="1990-01-03">
+               <t v="3 January 1990"/>
+            </date>
             <t v=". They shall forthwith inform the Commission thereof."/>
          </p>
       </unit>

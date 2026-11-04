@@ -20,13 +20,17 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Decision 2019/1798of the European Parliament and of the Council of "/>
-               <date asWritten="14 October 2019" date="2019-10-14"/>
+               <date date="2019-10-14">
+                  <t v="14 October 2019"/>
+               </date>
                <t v=" appointing the European Chief Prosecutor of the European Public Prosecutor’s Office"/>
             </p>
             <p>
                <emphasis kind="i">
                   <t v="(Official Journal of the European Union L 274 of "/>
-                  <date asWritten="28 October 2019" date="2019-10-28"/>
+                  <date date="2019-10-28">
+                     <t v="28 October 2019"/>
+                  </date>
                   <t v=")"/>
                </emphasis>
             </p>
@@ -66,7 +70,14 @@
                      marker="O000001M001002">
                <t v="of "/>
             </changed>
-            <docDate asWritten="23 October 2019" date="2019-10-23"/>
+            <docDate date="2019-10-23">
+               <changed amendingAct="32019D1798R(01)"
+                        action="replaced"
+                        location="LI:0;EL:1"
+                        marker="O000001M001002">
+                  <t v="23 October 2019"/>
+               </changed>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -87,7 +98,9 @@
          </num>
          <p>
             <t v="Ms Laura Codruța KÖVESI is hereby appointed European Chief Prosecutor of the EPPO as a temporary agent at grade AD 15 for a non-renewable period of seven years from "/>
-            <date asWritten="31 October 2019" date="2019-10-31"/>
+            <date date="2019-10-31">
+               <t v="31 October 2019"/>
+            </date>
             <t v="."/>
          </p>
       </unit>

@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Decision (CFSP) 2018/706 of "/>
-            <date asWritten="14 May 2018" date="2018-05-14"/>
+            <date date="2018-05-14">
+               <t v="14 May 2018"/>
+            </date>
             <t v=" amending Decision 2014/145/CFSP concerning restrictive measures in respect of actions undermining or threatening the territorial integrity, sovereignty and independence of Ukraine"/>
          </p>
          <p>

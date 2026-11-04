@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="10 July 2012" date="2012-07-10"/>
+            <docDate date="2012-07-10">
+               <t v="10 July 2012"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -68,7 +70,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="10 July 2012" date="2012-07-10"/>
+            <date date="2012-07-10">
+               <t v="10 July 2012"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

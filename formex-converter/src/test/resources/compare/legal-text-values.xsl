@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!--
-  The text of a legal text as a list of values, the counterpart of formex-values.xsl: each t, each
-  date's wording, and each formula as its letters and digits. Values the converter makes up
+  The text of a legal text as a list of values, the counterpart of formex-values.xsl: each t (a
+  date's wording among them), and each formula as its letters and digits. Values the converter makes up
   (a quotation mark whose partner sits in another element, a note marker) come out as extra values,
   which the check allows; only values missing from this list are losses.
 -->
@@ -32,12 +32,6 @@
   <!-- a C-series document's number, moved from above the title into the publication data -->
   <xsl:template match="lt:publication[@document]">
     <v>{@document}</v>
-  </xsl:template>
-
-  <!-- a date's wording (date, docDate, the date of a signature) -->
-  <xsl:template match="lt:*[normalize-space(@asWritten)]">
-    <v>{normalize-space(@asWritten)}</v>
-    <xsl:apply-templates/>
   </xsl:template>
 
   <!-- letters and digits, without the function sign the converter adds for FUNCTION -->

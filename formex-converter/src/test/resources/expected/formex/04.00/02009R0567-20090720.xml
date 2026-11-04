@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="29 October 2009" date="2009-10-29"/>
+               <docDate date="2009-10-29">
+                  <t v="29 October 2009"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="29 June 2009" date="2009-06-29"/>
+            <docDate date="2009-06-29">
+               <t v="29 June 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -77,7 +81,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 509/2006 of "/>
-               <date asWritten="20 March 2006" date="2006-03-20"/>
+               <date date="2006-03-20">
+                  <t v="20 March 2006"/>
+               </date>
                <t v=" on agricultural products and foodstuffs as traditional specialities guaranteed"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular the first subparagraph of Article 9(4) thereof,"/>

@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="8 March 2007" date="2007-03-08"/>
+            <docDate date="2007-03-08">
+               <t v="8 March 2007"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2777/75 of "/>
-               <date asWritten="29 October 1975" date="1975-10-29"/>
+               <date date="1975-10-29">
+                  <t v="29 October 1975"/>
+               </date>
                <t v=" on the common organisation of the market in poultrymeat"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6(1) thereof,"/>
@@ -58,7 +62,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 774/94 of "/>
-               <date asWritten="29 March 1994" date="1994-03-29"/>
+               <date date="1994-03-29">
+                  <t v="29 March 1994"/>
+               </date>
                <t v=" opening and providing for the administration of certain Community tariff quotas for high-quality beef, and for pigmeat, poultrymeat, wheat and meslin, and brans, sharps and other residues"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 7 thereof,"/>
@@ -165,7 +171,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="8 March 2007" date="2007-03-08"/>
+            <date date="2007-03-08">
+               <t v="8 March 2007"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

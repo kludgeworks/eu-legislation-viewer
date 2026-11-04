@@ -15,7 +15,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Implementing Decision (EU) 2021/2326 of "/>
-            <date asWritten="30 November 2021" date="2021-11-30"/>
+            <date date="2021-11-30">
+               <t v="30 November 2021"/>
+            </date>
             <t v=" establishing best available techniques (BAT) conclusions, under Directive 2010/75/EU of the European Parliament and of the Council, for large combustion plants "/>
             <emphasis kind="i">
                <t v="(notified under document C (2021) 8580)"/>

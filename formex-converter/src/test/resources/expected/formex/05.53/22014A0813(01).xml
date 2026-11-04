@@ -20,13 +20,17 @@
    <body>
       <p>
          <t v="According to Article 3(2) of the Agreement of "/>
-         <date asWritten="19 October 2005" date="2005-10-19"/>
+         <date date="2005-10-19">
+            <t v="19 October 2005"/>
+         </date>
          <t v=" between the European Community and the Kingdom of Denmark on jurisdiction and the recognition and enforcement of judgments in civil and commercial matters"/>
          <noteRef href="#note_1" marker="1"/>
          <t v=" (hereafter the Agreement), concluded by Council Decision 2006/325/EC"/>
          <noteRef href="#note_2" marker="2"/>
          <t v=", whenever amendments to Council Regulation (EC) No 44/2001 of "/>
-         <date asWritten="22 December 2000" date="2000-12-22"/>
+         <date date="2000-12-22">
+            <t v="22 December 2000"/>
+         </date>
          <t v=" on jurisdiction and the recognition and enforcement of judgments in civil and commercial matters"/>
          <noteRef href="#note_3" marker="3"/>
          <t v=" are adopted, Denmark shall notify the Commission of its decision whether or not to implement the content of such amendments."/>
@@ -35,12 +39,16 @@
          <t v="Regulation (EU) No 542/2014 of the European Parliament and of the Council amending Regulation (EU) No 1215/2012 as regards the rules to be applied with respect to the Unified Patent Court and the Benelux Court of Justice"/>
          <noteRef href="#note_4" marker="4"/>
          <t v=" was adopted on "/>
-         <date asWritten="15 May 2014" date="2014-05-15"/>
+         <date date="2014-05-15">
+            <t v="15 May 2014"/>
+         </date>
          <t v="."/>
       </p>
       <p>
          <t v="In accordance with Article 3(2) of the Agreement, Denmark has by letter of "/>
-         <date asWritten="2 June 2014" date="2014-06-02"/>
+         <date date="2014-06-02">
+            <t v="2 June 2014"/>
+         </date>
          <t v=" notified the Commission of its decision to implement the contents of Regulation (EU) No 542/2014. This means that the provisions of Regulation (EU) No 542/2014 will be applied to relations between the European Union and Denmark."/>
       </p>
       <p>

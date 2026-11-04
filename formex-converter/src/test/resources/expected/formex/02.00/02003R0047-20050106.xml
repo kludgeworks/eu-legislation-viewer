@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="4 January 2005" date="2005-01-04"/>
+               <docDate date="2005-01-04">
+                  <t v="4 January 2005"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="10 January 2003" date="2003-01-10"/>
+            <docDate date="2003-01-10">
+               <t v="10 January 2003"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -77,7 +81,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 2200/96 of "/>
-               <date asWritten="28 October 1996" date="1996-10-28"/>
+               <date date="1996-10-28">
+                  <t v="28 October 1996"/>
+               </date>
                <t v=" on the common organisation of the market in fruit and vegetables"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", as last amended by Regulation (EC) No 545/2002"/>

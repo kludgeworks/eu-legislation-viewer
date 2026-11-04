@@ -20,13 +20,21 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Decision No 185 of "/>
-               <date asWritten="27 June 2002" date="2002-06-27"/>
+               <date date="2002-06-27">
+                  <t v="27 June 2002"/>
+               </date>
                <t v=" amending Decision No 153 of "/>
-               <date asWritten="7 October 1993" date="1993-10-07"/>
+               <date date="1993-10-07">
+                  <t v="7 October 1993"/>
+               </date>
                <t v=" (form E 108) and Decision No 170 of "/>
-               <date asWritten="11 June 1998" date="1998-06-11"/>
+               <date date="1998-06-11">
+                  <t v="11 June 1998"/>
+               </date>
                <t v=" (compilation of the lists provided for in Article 94(4) of Council Regulation (EEC) No 574/72 of "/>
-               <date asWritten="21 March 1972" date="1972-03-21"/>
+               <date date="1972-03-21">
+                  <t v="21 March 1972"/>
+               </date>
             </p>
             <p>
                <emphasis kind="i">
@@ -55,7 +63,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="17 March 2005" date="2005-03-17"/>
+               <docDate date="2005-03-17">
+                  <t v="17 March 2005"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -86,16 +96,24 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="27 June 2002" date="2002-06-27"/>
+            <docDate date="2002-06-27">
+               <t v="27 June 2002"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
                <t v="amending Decision No 153 of "/>
-               <date asWritten="7 October 1993" date="1993-10-07"/>
+               <date date="1993-10-07">
+                  <t v="7 October 1993"/>
+               </date>
                <t v=" (form E 108) and Decision No 170 of "/>
-               <date asWritten="11 June 1998" date="1998-06-11"/>
+               <date date="1998-06-11">
+                  <t v="11 June 1998"/>
+               </date>
                <t v=" (compilation of the lists provided for in Article 94(4) and Article 95(4) of Council Regulation (EEC) No 574/72 of "/>
-               <date asWritten="21 March 1972" date="1972-03-21"/>
+               <date date="1972-03-21">
+                  <t v="21 March 1972"/>
+               </date>
             </docPurpose>
          </p>
          <p>
@@ -116,7 +134,9 @@
          <unit eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Article 81(a) of Council Regulation (EEC) No 1408/71 of "/>
-               <date asWritten="14 June 1971" date="1971-06-14"/>
+               <date date="1971-06-14">
+                  <t v="14 June 1971"/>
+               </date>
                <t v=" on the application of social security schemes to employed persons, to self-employed persons and to members of their family moving within the Community"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", pursuant to which it is the duty of the Administrative Commission to deal with all administrative matters arising from Regulation (EEC) No 1408/71 and subsequent regulations,"/>

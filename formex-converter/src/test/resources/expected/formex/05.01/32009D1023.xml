@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="21 September 2009" date="2009-09-21"/>
+            <docDate date="2009-09-21">
+               <t v="21 September 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -59,15 +61,23 @@
             </num>
             <p>
                <t v="Iceland, in a letter to the President of the Council dated "/>
-               <date asWritten="24 September 2008" date="2008-09-24"/>
+               <date date="2008-09-24">
+                  <t v="24 September 2008"/>
+               </date>
                <t v=", and Norway, in a letter to the President of the Council dated "/>
-               <date asWritten="7 July 2008" date="2008-07-07"/>
+               <date date="2008-07-07">
+                  <t v="7 July 2008"/>
+               </date>
                <t v=", have asked to be associated with the mechanisms for police and judicial cooperation between the Member States of the Union established by Council Decision 2008/615/JHA of "/>
-               <date asWritten="23 June 2008" date="2008-06-23"/>
+               <date date="2008-06-23">
+                  <t v="23 June 2008"/>
+               </date>
                <t v=" on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=" and Council Decision 2008/616/JHA of "/>
-               <date asWritten="23 June 2008" date="2008-06-23"/>
+               <date date="2008-06-23">
+                  <t v="23 June 2008"/>
+               </date>
                <t v=" on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and the Annex thereto."/>
@@ -79,7 +89,9 @@
             </num>
             <p>
                <t v="Following the authorisation given on "/>
-               <date asWritten="24 October 2008" date="2008-10-24"/>
+               <date date="2008-10-24">
+                  <t v="24 October 2008"/>
+               </date>
                <t v=" to the Presidency, assisted by the Commission and by the delegation representing the Member State which is to take on the forthcoming Presidency, negotiations with Iceland and Norway were finalised on an agreement on the application of certain provisions of Council Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime and Council Decision 2008/616/JHA on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime, and the Annex thereto ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="the Agreement"/>
@@ -93,7 +105,9 @@
             </num>
             <p>
                <t v="Subject to its conclusion at a later date, the Agreement that was initialled in Brussels on "/>
-               <date asWritten="28 November 2008" date="2008-11-28"/>
+               <date date="2008-11-28">
+                  <t v="28 November 2008"/>
+               </date>
                <t v=" should be signed and the attached declaration be approved."/>
             </p>
          </unit>
@@ -149,7 +163,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="21 September 2009" date="2009-09-21"/>
+            <date date="2009-09-21">
+               <t v="21 September 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -240,12 +256,16 @@
          </p>
          <p>
             <t v="POINTING OUT the Contracting Parties' common interest in ensuring that police cooperation between the Member States of the European Union and Iceland and Norway is carried out in a fast and efficient manner compatible with the basic principles of their national legal systems, and in compliance with the individual rights and principles of the European Convention for the Protection of Human Rights and Fundamental Freedoms, signed at Rome on "/>
-            <date asWritten="4 November 1950" date="1950-11-04"/>
+            <date date="1950-11-04">
+               <t v="4 November 1950"/>
+            </date>
             <t v=","/>
          </p>
          <p>
             <t v="RECOGNISING that Council Framework Decision 2006/960/JHA of "/>
-            <date asWritten="18 December 2006" date="2006-12-18"/>
+            <date date="2006-12-18">
+               <t v="18 December 2006"/>
+            </date>
             <t v=" on simplifying the exchange of information and intelligence between law enforcement authorities of the Member States of the European Union"/>
             <noteRef href="#note_att01000301-1" marker="1"/>
             <t v=" already lays down rules whereby the law enforcement authorities of the Member States of the European Union and Iceland and Norway may exchange existing information and intelligence expeditiously and effectively for the purpose of carrying out criminal investigations or criminal intelligence operations,"/>
@@ -285,9 +305,13 @@
          </p>
          <p>
             <t v="AWARE OF the comprehensive exchange of information and data resulting from closer police and judicial cooperation, this Agreement seeks to warrant an appropriate level of data protection. It observes the level of protection designed for the processing of personal data in the Council of Europe Convention of "/>
-            <date asWritten="28 January 1981" date="1981-01-28"/>
+            <date date="1981-01-28">
+               <t v="28 January 1981"/>
+            </date>
             <t v=" for the Protection of Individuals with regard to Automatic Processing of Personal Data, the Additional Protocol of "/>
-            <date asWritten="8 November 2001" date="2001-11-08"/>
+            <date date="2001-11-08">
+               <t v="8 November 2001"/>
+            </date>
             <t v=" to the Convention and the principles of Recommendation No R (87) 15 of the Council of Europe Regulating the Use of Personal Data in the Police Sector,"/>
          </p>
          <p>
@@ -677,9 +701,13 @@
          </unit>
          <p>
             <t v="Done at Stockholm on "/>
-            <date asWritten="26 November 2009" date="2009-11-26"/>
+            <date date="2009-11-26">
+               <t v="26 November 2009"/>
+            </date>
             <t v=" and at Brussels on "/>
-            <date asWritten="30 November 2009" date="2009-11-30"/>
+            <date date="2009-11-30">
+               <t v="30 November 2009"/>
+            </date>
             <t v=" in a single original in the Bulgarian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish, Swedish, Icelandic and Norwegian languages, each text being equally authentic."/>
          </p>
          <p>

@@ -18,7 +18,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Decision of the Authority for European political parties and European political foundations of "/>
-            <date asWritten="27 September 2017" date="2017-09-27"/>
+            <date date="2017-09-27">
+               <t v="27 September 2017"/>
+            </date>
             <t v=" to register Transform Europe"/>
          </p>
          <p>

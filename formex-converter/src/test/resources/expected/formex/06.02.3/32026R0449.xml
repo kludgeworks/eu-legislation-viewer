@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="27 February 2026" date="2026-02-27"/>
+            <docDate date="2026-02-27">
+               <t v="27 February 2026"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -52,7 +54,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-               <date asWritten="11 March 2008" date="2008-03-11"/>
+               <date date="2008-03-11">
+                  <t v="11 March 2008"/>
+               </date>
                <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 4(3) thereof,"/>
@@ -97,7 +101,9 @@
             </num>
             <p>
                <t v="In addition, the deadline of "/>
-               <date asWritten="1 October 2025" date="2025-10-01"/>
+               <date date="2025-10-01">
+                  <t v="1 October 2025"/>
+               </date>
                <t v=" laid down in the Annex to Implementing Regulation (EU) 2015/1998 for the upgrade of the algorithms for the detection of chemicals by explosive trace detection (ETD) equipment needs to be postponed by at least 12 months, as the on-going tests of such algorithms, performed by Member States laboratories under the Common Evaluation Process of the European Civil Aviation Conference, are not yet completed."/>
             </p>
          </unit>
@@ -151,7 +157,9 @@
                <t v="Official Journal of the European Union"/>
             </emphasis>
             <t v=". However, points 11 and 17 of the Annex to this Regulation shall apply from "/>
-            <date asWritten="1 October 2026" date="2026-10-01"/>
+            <date date="2026-10-01">
+               <t v="1 October 2026"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -163,7 +171,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="27 February 2026" date="2026-02-27"/>
+            <date date="2026-02-27">
+               <t v="27 February 2026"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -206,7 +216,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Implementing Regulation (EU) 2015/1998 of "/>
-            <date asWritten="5 November 2015" date="2015-11-05"/>
+            <date date="2015-11-05">
+               <t v="5 November 2015"/>
+            </date>
             <t v=" laying down detailed measures for the implementation of the common basic standards on aviation security ("/>
             <ref kind="oj"
                  series="L"
@@ -485,7 +497,9 @@
                         </p>
                         <p>
                            <t v="First paragraph, point (d), shall apply until "/>
-                           <date asWritten="31 December 2027" date="2027-12-31"/>
+                           <date date="2027-12-31">
+                              <t v="31 December 2027"/>
+                           </date>
                            <t v="."/>
                            <t v="”"/>
                         </p>
@@ -649,7 +663,9 @@
                         </list>
                         <p>
                            <t v="First paragraph, point (b), shall apply until "/>
-                           <date asWritten="31 December 2027" date="2027-12-31"/>
+                           <date date="2027-12-31">
+                              <t v="31 December 2027"/>
+                           </date>
                            <t v="."/>
                            <t v="”"/>
                         </p>
@@ -905,7 +921,9 @@
                         </list>
                         <p>
                            <t v="First paragraph, point (b), shall apply until "/>
-                           <date asWritten="31 December 2027" date="2027-12-31"/>
+                           <date date="2027-12-31">
+                              <t v="31 December 2027"/>
+                           </date>
                            <t v="."/>
                            <t v="”"/>
                            <t v=";"/>
@@ -1741,7 +1759,9 @@
                               </num>
                               <p>
                                  <t v="equipment installed before "/>
-                                 <date asWritten="1 September 2022" date="2022-09-01"/>
+                                 <date date="2022-09-01">
+                                    <t v="1 September 2022"/>
+                                 </date>
                                  <t v=" must at least meet standard 3;"/>
                               </p>
                            </unit>
@@ -1753,9 +1773,13 @@
                               </num>
                               <p>
                                  <t v="equipment installed from "/>
-                                 <date asWritten="1 September 2022" date="2022-09-01"/>
+                                 <date date="2022-09-01">
+                                    <t v="1 September 2022"/>
+                                 </date>
                                  <t v=" to "/>
-                                 <date asWritten="31 August 2027" date="2027-08-31"/>
+                                 <date date="2027-08-31">
+                                    <t v="31 August 2027"/>
+                                 </date>
                                  <t v=" must at least meet standard 3.1;"/>
                               </p>
                            </unit>
@@ -1767,7 +1791,9 @@
                               </num>
                               <p>
                                  <t v="equipment installed from "/>
-                                 <date asWritten="1 September 2027" date="2027-09-01"/>
+                                 <date date="2027-09-01">
+                                    <t v="1 September 2027"/>
+                                 </date>
                                  <t v=" must at least meet standard 3.2."/>
                                  <t v="”"/>
                                  <t v=";"/>
@@ -1793,11 +1819,15 @@
                <p>
                   <t v="in point 12.6.2, second paragraph, the words "/>
                   <quote startQuote="‘" endQuote="’">
-                     <date asWritten="1 October 2025" date="2025-10-01"/>
+                     <date date="2025-10-01">
+                        <t v="1 October 2025"/>
+                     </date>
                   </quote>
                   <t v=" are replaced by the words "/>
                   <quote startQuote="‘" endQuote="’">
-                     <date asWritten="31 December 2026" date="2026-12-31"/>
+                     <date date="2026-12-31">
+                        <t v="31 December 2026"/>
+                     </date>
                   </quote>
                   <t v=";"/>
                </p>
@@ -2042,7 +2072,9 @@
             <note eId="note_anx000301-1" marker="*" kind="quotation">
                <p>
                   <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-                  <date asWritten="11 March 2008" date="2008-03-11"/>
+                  <date date="2008-03-11">
+                     <t v="11 March 2008"/>
+                  </date>
                   <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
                   <ref kind="oj"
                        series="L"
@@ -2063,7 +2095,9 @@
             <note eId="note_anx000301-2" marker="*" kind="quotation">
                <p>
                   <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-                  <date asWritten="11 March 2008" date="2008-03-11"/>
+                  <date date="2008-03-11">
+                     <t v="11 March 2008"/>
+                  </date>
                   <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
                   <ref kind="oj"
                        series="L"
@@ -2084,7 +2118,9 @@
             <note eId="note_anx000301-3" marker="*" kind="quotation">
                <p>
                   <t v="Regulation (EU) No 576/2013 of the European Parliament and of the Council of "/>
-                  <date asWritten="12 June 2013" date="2013-06-12"/>
+                  <date date="2013-06-12">
+                     <t v="12 June 2013"/>
+                  </date>
                   <t v=" on the non-commercial movement of pet animals and repealing Regulation (EC) No 998/2003 ("/>
                   <ref kind="oj"
                        series="L"

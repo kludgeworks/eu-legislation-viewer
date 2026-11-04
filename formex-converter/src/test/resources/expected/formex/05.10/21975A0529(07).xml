@@ -40,7 +40,9 @@
       <formula name="enactingFormula">
          <p>
             <t v="HAVE AGREED to make the following amendment to their Additional Agreement of "/>
-            <date asWritten="22 July 1972" date="1972-07-22"/>
+            <date date="1972-07-22">
+               <t v="22 July 1972"/>
+            </date>
             <t v=":"/>
          </p>
       </formula>

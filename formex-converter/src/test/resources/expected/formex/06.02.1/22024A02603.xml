@@ -218,9 +218,13 @@
                      <t v=" shall also be made available for projects related to challenges experienced as a result of the invasion of Ukraine. These contributions shall be made available for commitment in annual tranches of EUR "/>
                      <number v="257860000"/>
                      <t v=" over the period running from "/>
-                     <date asWritten="1 May 2021" date="2021-05-01"/>
+                     <date date="2021-05-01">
+                        <t v="1 May 2021"/>
+                     </date>
                      <t v=" to "/>
-                     <date asWritten="30 April 2028" date="2028-04-30"/>
+                     <date date="2028-04-30">
+                        <t v="30 April 2028"/>
+                     </date>
                      <t v=" inclusive."/>
                   </p>
                </unit>

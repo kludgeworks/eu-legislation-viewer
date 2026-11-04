@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Decision 2005/78/EC, Euratom of "/>
-            <date asWritten="1 February 2005" date="2005-02-01"/>
+            <date date="2005-02-01">
+               <t v="1 February 2005"/>
+            </date>
             <t v=" amending Decision 2001/844/EC, ECSC, Euratom"/>
          </p>
          <p>

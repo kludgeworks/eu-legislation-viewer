@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Regulation (EC) No 66/2010 of the European Parliament and of the Council of "/>
-            <date asWritten="25 November 2009" date="2009-11-25"/>
+            <date date="2009-11-25">
+               <t v="25 November 2009"/>
+            </date>
             <t v=" on the EU Ecolabel"/>
          </p>
          <p>

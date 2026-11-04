@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="27 December 2004" date="2004-12-27"/>
+            <docDate date="2004-12-27">
+               <t v="27 December 2004"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -55,7 +57,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 3220/84 of "/>
-               <date asWritten="13 November 1984" date="1984-11-13"/>
+               <date date="1984-11-13">
+                  <t v="13 November 1984"/>
+               </date>
                <t v=" determining the Community scale for grading pig carcases"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 5(2) thereof,"/>
@@ -74,7 +78,9 @@
             </num>
             <p>
                <t v="Article 2(3) of Regulation (EEC) No 3220/84 provides that the grading of pig carcases must be determined by estimating the content of lean meat in accordance with statistically proven assessment methods based on the physical measurement of one or more anatomical parts of the pig carcase; the authorisation of grading methods is subject to compliance with a maximum tolerance for statistical error in assessment; this tolerance was defined in Article 3 of Commission Regulation (EEC) No 2967/85 of "/>
-               <date asWritten="24 October 1985" date="1985-10-24"/>
+               <date date="1985-10-24">
+                  <t v="24 October 1985"/>
+               </date>
                <t v=" laying down detailed rules for the application of the Community scale for grading pig carcases"/>
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
@@ -176,7 +182,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="27 December 2004" date="2004-12-27"/>
+            <date date="2004-12-27">
+               <t v="27 December 2004"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -22,9 +22,13 @@
          <t v="The Agreement between the European Community and Canada on trade in wines and spirit drinks"/>
          <noteRef href="#note_1" marker="1"/>
          <t v=", entered into force on "/>
-         <date asWritten="1 June 2004" date="2004-06-01"/>
+         <date date="2004-06-01">
+            <t v="1 June 2004"/>
+         </date>
          <t v=", the procedures provided for in Article 41 of the Agreement having been completed on "/>
-         <date asWritten="27 April 2004" date="2004-04-27"/>
+         <date date="2004-04-27">
+            <t v="27 April 2004"/>
+         </date>
          <t v="."/>
       </p>
    </body>

@@ -24,7 +24,9 @@
          <p>
             <docPurpose>
                <t v="of "/>
-               <date asWritten="19 December 2017" date="2017-12-19"/>
+               <date date="2017-12-19">
+                  <t v="19 December 2017"/>
+               </date>
             </docPurpose>
          </p>
          <p>
@@ -50,7 +52,9 @@
             <p>
                <emphasis kind="i">
                   <t v="Council Directive 66/401/EEC of "/>
-                  <date asWritten="14 June 1966" date="1966-06-14"/>
+                  <date date="1966-06-14">
+                     <t v="14 June 1966"/>
+                  </date>
                   <t v=" on the marketing of fodder plant seed"/>
                </emphasis>
                <noteRef href="#note_1" marker="1"/>
@@ -67,7 +71,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the application submitted by Norway on "/>
-               <date asWritten="3 July 2017" date="2017-07-03"/>
+               <date date="2017-07-03">
+                  <t v="3 July 2017"/>
+               </date>
                <t v=","/>
             </p>
          </unit>
@@ -92,11 +98,15 @@
             </num>
             <p>
                <t v="Norway submitted on "/>
-               <date asWritten="3 July 2017" date="2017-07-03"/>
+               <date date="2017-07-03">
+                  <t v="3 July 2017"/>
+               </date>
                <t v=" (Doc No 864007) an application to be released from the obligation to apply Directive 66/401/EEC for the 22 new species included in that directive by "/>
                <emphasis kind="i">
                   <t v="Commission Implementing Directive (EU) 2016/2109 of "/>
-                  <date asWritten="1 December 2016" date="2016-12-01"/>
+                  <date date="2016-12-01">
+                     <t v="1 December 2016"/>
+                  </date>
                   <t v=" amending Council Directive 66/401/EEC as regards the inclusion of new species and the botanical name of the species Lolium x boucheanum Kunth"/>
                </emphasis>
                <noteRef href="#note_2" marker="2"/>
@@ -320,7 +330,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="19 December 2017" date="2017-12-19"/>
+            <date date="2017-12-19">
+               <t v="19 December 2017"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

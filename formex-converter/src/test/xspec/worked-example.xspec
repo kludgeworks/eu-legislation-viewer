@@ -35,8 +35,8 @@
       <unit eId="anx/pnt_12.6.2" kind="level" depth="4" numbered="true">
         <provenance amendingAct="32023R0566" action="replaced" location="AR:1 .AND. AX:0;PT:19" marker="O018001M025000"/>
         <num><t v="12.6.2"/></num>
-        <p><t v="The standard for ETD equipment for the detection of explosives, that uses particulate sampling, shall apply to ETD equipment deployed from "/><date date="2014-09-01" asWritten="1&#160;September 2014"/><t v="."/></p>
-        <p><provenance amendingAct="32024R1255" action="replaced" location="AR:1 .AND. AX:0;PT:19" marker="O019001M019000"/><t v="The standard for ETD equipment for the detection of chemicals, that uses particulate sampling, shall apply as of "/><changed amendingAct="32026R0449" action="replaced" location="AR:1 .AND. AX:0;PT:27" marker="O023001M025000"><date date="2026-12-31" asWritten="31&#160;December 2026"/></changed><t v=" to ETD equipment deployed from "/><date date="2014-09-01" asWritten="1&#160;September 2014"/><t v="."/></p>
+        <p><t v="The standard for ETD equipment for the detection of explosives, that uses particulate sampling, shall apply to ETD equipment deployed from "/><date date="2014-09-01"><t v="1&#160;September 2014"/></date><t v="."/></p>
+        <p><provenance amendingAct="32024R1255" action="replaced" location="AR:1 .AND. AX:0;PT:19" marker="O019001M019000"/><t v="The standard for ETD equipment for the detection of chemicals, that uses particulate sampling, shall apply as of "/><changed amendingAct="32026R0449" action="replaced" location="AR:1 .AND. AX:0;PT:27" marker="O023001M025000"><date date="2026-12-31"><t v="31&#160;December 2026"/></date></changed><t v=" to ETD equipment deployed from "/><date date="2014-09-01"><t v="1&#160;September 2014"/></date><t v="."/></p>
       </unit>
     </x:expect>
 

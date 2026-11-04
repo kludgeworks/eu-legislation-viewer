@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="8 May 2009" date="2009-05-08"/>
+            <docDate date="2009-05-08">
+               <t v="8 May 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
-               <date asWritten="22 October 2007" date="2007-10-22"/>
+               <date date="2007-10-22">
+                  <t v="22 October 2007"/>
+               </date>
                <t v=" establishing a common organisation of agricultural markets and on specific provisions for certain agricultural products (Single CMO Regulation)"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 144(1), in conjunction with Article 4 thereof,"/>
@@ -132,7 +136,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="8 May 2009" date="2009-05-08"/>
+            <date date="2009-05-08">
+               <t v="8 May 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

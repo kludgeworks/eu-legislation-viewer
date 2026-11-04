@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation (EC) No 1153/2004 of "/>
-            <date asWritten="23 June 2004" date="2004-06-23"/>
+            <date date="2004-06-23">
+               <t v="23 June 2004"/>
+            </date>
             <t v=" fixing the "/>
             <t v="A1"/>
             <t v=" and "/>

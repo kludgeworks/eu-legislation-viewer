@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Decision of the EEA Joint Committee No 154/2012 of "/>
-            <date asWritten="28 September 2012" date="2012-09-28"/>
+            <date date="2012-09-28">
+               <t v="28 September 2012"/>
+            </date>
             <t v=" amending Annex I (Veterinary and phytosanitary matters) to the EEA Agreement"/>
          </p>
          <p>

@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="22 March 2013" date="2013-03-22"/>
+            <docDate date="2013-03-22">
+               <t v="22 March 2013"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -52,7 +54,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Directive 2008/57/EC of the European Parliament and of the Council of "/>
-               <date asWritten="17 June 2008" date="2008-06-17"/>
+               <date date="2008-06-17">
+                  <t v="17 June 2008"/>
+               </date>
                <t v=" on the interoperability of the rail system within the Community"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6(1) thereof,"/>
@@ -71,11 +75,15 @@
             </num>
             <p>
                <t v="Article 4b of Commission Regulation (EC) No 62/2006 of "/>
-               <date asWritten="23 December 2005" date="2005-12-23"/>
+               <date date="2005-12-23">
+                  <t v="23 December 2005"/>
+               </date>
                <t v=" concerning the technical specification for interoperability relating to the telematic applications for freight subsystem of the trans-European conventional rail system"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=" provides that the European Railway Agency has to update the documents referred to in Annex A to Regulation (EC) No 62/2006 on the basis of change requests that are validated before "/>
-               <date asWritten="13 May 2012" date="2012-05-13"/>
+               <date date="2012-05-13">
+                  <t v="13 May 2012"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -85,7 +93,9 @@
             </num>
             <p>
                <t v="The Commission has received European Railway Agency recommendation ERA/REC/06a-2012/INT of "/>
-               <date asWritten="24 July 2012" date="2012-07-24"/>
+               <date date="2012-07-24">
+                  <t v="24 July 2012"/>
+               </date>
                <t v=" to update Annex A to Regulation (EC) No 62/2006 in order to refer to the technical documents which have been amended in accordance with the change management process ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Final Baseline 5.2"/>
@@ -145,7 +155,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="22 March 2013" date="2013-03-22"/>
+            <date date="2013-03-22">
+               <t v="22 March 2013"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -29,12 +29,16 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 December 2007" date="2007-12-18"/>
+               <docDate date="2007-12-18">
+                  <t v="18 December 2007"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
                   <t v="amending the Interinstitutional Agreement of "/>
-                  <date asWritten="17 May 2006" date="2006-05-17"/>
+                  <date date="2006-05-17">
+                     <t v="17 May 2006"/>
+                  </date>
                   <t v=" on budgetary discipline and sound financial management as regards the multiannual financial framework"/>
                </docPurpose>
             </p>
@@ -56,12 +60,16 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="29 April 2008" date="2008-04-29"/>
+               <docDate date="2008-04-29">
+                  <t v="29 April 2008"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
                   <t v="amending the Interinstitutional Agreement of "/>
-                  <date asWritten="17 May 2006" date="2006-05-17"/>
+                  <date date="2006-05-17">
+                     <t v="17 May 2006"/>
+                  </date>
                   <t v=" on budgetary discipline and sound financial management as regard adjustment of the multiannual financial framework"/>
                </docPurpose>
             </p>
@@ -83,12 +91,16 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="6 May 2009" date="2009-05-06"/>
+               <docDate date="2009-05-06">
+                  <t v="6 May 2009"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
                   <t v="amending the Interinstitutional Agreement of "/>
-                  <date asWritten="17 May 2006" date="2006-05-17"/>
+                  <date date="2006-05-17">
+                     <t v="17 May 2006"/>
+                  </date>
                   <t v=" on budgetary discipline and sound financial management as regards the multiannual financial framework (2007 to 2013)"/>
                </docPurpose>
             </p>
@@ -214,14 +226,18 @@
          </num>
          <p>
             <t v="This Agreement enters into force on "/>
-            <date asWritten="1 January 2007" date="2007-01-01"/>
+            <date date="2007-01-01">
+               <t v="1 January 2007"/>
+            </date>
             <t v=" and replaces:&#xA;"/>
          </p>
          <list kind="dash">
             <unit eId="pnt_8/idt_1" kind="indent">
                <p>
                   <t v="the Interinstitutional Agreement of "/>
-                  <date asWritten="6 May 1999" date="1999-05-06"/>
+                  <date date="1999-05-06">
+                     <t v="6 May 1999"/>
+                  </date>
                   <t v=" between the European Parliament, the Council and the Commission on budgetary discipline and improvement of the budgetary procedure"/>
                   <noteRef href="#note_1" marker="1"/>
                   <t v=","/>
@@ -230,9 +246,13 @@
             <unit eId="pnt_8/idt_2" kind="indent">
                <p>
                   <t v="the Interinstitutional Agreement of "/>
-                  <date asWritten="7 November 2002" date="2002-11-07"/>
+                  <date date="2002-11-07">
+                     <t v="7 November 2002"/>
+                  </date>
                   <t v=" between the European Parliament, the Council and the Commission on the financing of the European Union Solidarity Fund supplementing the Interinstitutional Agreement of "/>
-                  <date asWritten="6 May 1999" date="1999-05-06"/>
+                  <date date="1999-05-06">
+                     <t v="6 May 1999"/>
+                  </date>
                   <t v=" on budgetary discipline and improvement of the budgetary procedure"/>
                   <noteRef href="#note_2" marker="2"/>
                   <t v="."/>
@@ -283,7 +303,9 @@
             </p>
             <p>
                <t v="The financial framework does not take account of budget items financed by revenue earmarked within the meaning of Article 18 of the Financial Regulation of "/>
-               <date asWritten="25 June 2002" date="2002-06-25"/>
+               <date date="2002-06-25">
+                  <t v="25 June 2002"/>
+               </date>
                <t v=" applicable to the general budget of the European Communities"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=", hereinafter referred to as the "/>
@@ -643,7 +665,9 @@
             </num>
             <p>
                <t v="Before "/>
-               <date asWritten="1 July 2011" date="2011-07-01"/>
+               <date date="2011-07-01">
+                  <t v="1 July 2011"/>
+               </date>
                <t v=", the Commission will present proposals for a new medium-term financial framework.&#xA;"/>
             </p>
             <p>
@@ -875,7 +899,9 @@
             </p>
             <p>
                <t v="If the amount concerned has been the subject of an agreement pursuant to the conciliation procedure provided for in the Joint Declaration of the European Parliament, the Council and the Commission of "/>
-               <date asWritten="4 March 1975" date="1975-03-04"/>
+               <date date="1975-03-04">
+                  <t v="4 March 1975"/>
+               </date>
                <noteRef href="#note_4" marker="4"/>
                <t v=", it will be considered a reference amount within the meaning of Point 37 of this Agreement."/>
             </p>
@@ -1061,7 +1087,9 @@
             </num>
             <p>
                <t v="The institutions agree that this Agreement and the budget will be implemented in a context of sound financial management based on the principles of economy, efficiency, effectiveness, protection of financial interests, proportionality of administrative costs, and user-friendly procedures. The institutions will take appropriate measures, in particular in the Financial Regulation, that should be adopted in accordance with the conciliation procedure established by the Joint Declaration of the European Parliament, the Council and the Commission of "/>
-               <date asWritten="4 March 1975" date="1975-03-04"/>
+               <date date="1975-03-04">
+                  <t v="4 March 1975"/>
+               </date>
                <t v=", in the spirit which enabled agreement in 2002."/>
             </p>
          </unit>
@@ -1201,12 +1229,16 @@
             </num>
             <p>
                <t v="In the event of the adoption after "/>
-               <date asWritten="1 January 2007" date="2007-01-01"/>
+               <date date="2007-01-01">
+                  <t v="1 January 2007"/>
+               </date>
                <t v=" of new rules or programmes governing the Structural Funds, the Cohesion Fund, Rural Development and the European Fund for Fisheries, the two arms of the budgetary authority undertake to authorise, on a proposal from the Commission, the transfer to subsequent years, in excess of the corresponding expenditure ceilings, of allocations not used in 2007.&#xA;"/>
             </p>
             <p>
                <t v="The European Parliament and the Council will take decisions on Commission proposals concerning the transfer of unused allocations for the year 2007 before "/>
-               <date asWritten="1 May 2008" date="2008-05-01"/>
+               <date date="2008-05-01">
+                  <t v="1 May 2008"/>
+               </date>
                <t v=", in accordance with Point 3."/>
             </p>
          </unit>

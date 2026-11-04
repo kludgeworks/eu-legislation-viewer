@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Regulation (EU) No 1051/2013 of the European Parliament and of the Council of "/>
-            <date asWritten="22 October 2013" date="2013-10-22"/>
+            <date date="2013-10-22">
+               <t v="22 October 2013"/>
+            </date>
             <t v=" amending Regulation (EC) No 562/2006 in order to provide for common rules on the temporary reintroduction of border control at internal borders in exceptional circumstances"/>
          </p>
          <p>

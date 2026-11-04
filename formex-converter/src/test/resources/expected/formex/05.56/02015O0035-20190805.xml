@@ -31,7 +31,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="2 November 2016" date="2016-11-02"/>
+               <docDate date="2016-11-02">
+                  <t v="2 November 2016"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -59,7 +61,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="7 February 2018" date="2018-02-07"/>
+               <docDate date="2018-02-07">
+                  <t v="7 February 2018"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -87,7 +91,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="10 May 2019" date="2019-05-10"/>
+               <docDate date="2019-05-10">
+                  <t v="10 May 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -115,7 +121,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="18 November 2015" date="2015-11-18"/>
+            <docDate date="2015-11-18">
+               <t v="18 November 2015"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -610,9 +618,13 @@
             </num>
             <p>
                <t v="The national central banks of the Member States whose currency is the euro shall take the necessary measures to comply with this Guideline and apply them from "/>
-               <date asWritten="25 January 2016" date="2016-01-25"/>
+               <date date="2016-01-25">
+                  <t v="25 January 2016"/>
+               </date>
                <t v=".They shall notify the ECB of the texts and means relating to those measures by "/>
-               <date asWritten="5 January 2016" date="2016-01-05"/>
+               <date date="2016-01-05">
+                  <t v="5 January 2016"/>
+               </date>
                <t v=" at the latest."/>
             </p>
          </unit>

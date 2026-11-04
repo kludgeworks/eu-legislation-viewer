@@ -25,14 +25,20 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="11 August 2009" date="2009-08-11"/>
+            <docDate date="2009-08-11">
+               <t v="11 August 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
                <t v="adopting emergency measures for the market of milk and milk products in the form of opening the buying-in of butter and skimmed milk powder by a tendering procedure for the period from "/>
-               <date asWritten="1 September 2009" date="2009-09-01"/>
+               <date date="2009-09-01">
+                  <t v="1 September 2009"/>
+               </date>
                <t v=" until "/>
-               <date asWritten="30 November 2009" date="2009-11-30"/>
+               <date date="2009-11-30">
+                  <t v="30 November 2009"/>
+               </date>
             </docPurpose>
          </p>
       </longTitle>
@@ -52,7 +58,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
-               <date asWritten="22 October 2007" date="2007-10-22"/>
+               <date date="2007-10-22">
+                  <t v="22 October 2007"/>
+               </date>
                <t v=" establishing a common organisation of agricultural markets and on specific provisions for certain agricultural products (Single CMO Regulation)"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 191, in conjunction with Article 4 thereof,"/>
@@ -79,7 +87,9 @@
             </num>
             <p>
                <t v="In view of the current and foreseeable market situation it is necessary to continue public intervention for butter and skimmed milk powder beyond "/>
-               <date asWritten="31 August 2009" date="2009-08-31"/>
+               <date date="2009-08-31">
+                  <t v="31 August 2009"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -97,7 +107,9 @@
             </num>
             <p>
                <t v="In view of the urgency by which measures have to be taken since the intervention period ends on "/>
-               <date asWritten="31 August 2009" date="2009-08-31"/>
+               <date date="2009-08-31">
+                  <t v="31 August 2009"/>
+               </date>
                <t v=" and the practical problem that, following the recent elections, the European Parliament is not likely to be in a position to deliver an opinion in due time, the Commission has to adopt the necessary emergency measures."/>
             </p>
          </unit>
@@ -147,9 +159,13 @@
             </num>
             <p>
                <t v="The extension of the intervention period should apply only for a limited period of three months — from "/>
-               <date asWritten="1 September" date="2009-09-01"/>
+               <date date="2009-09-01">
+                  <t v="1 September"/>
+               </date>
                <t v=" until "/>
-               <date asWritten="30 November 2009" date="2009-11-30"/>
+               <date date="2009-11-30">
+                  <t v="30 November 2009"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -184,9 +200,13 @@
             </num>
             <p>
                <t v="Buying-in of butter by a tendering procedure is open from "/>
-               <date asWritten="1 September 2009" date="2009-09-01"/>
+               <date date="2009-09-01">
+                  <t v="1 September 2009"/>
+               </date>
                <t v=" until "/>
-               <date asWritten="30 November 2009" date="2009-11-30"/>
+               <date date="2009-11-30">
+                  <t v="30 November 2009"/>
+               </date>
                <t v=", under the conditions provided for in Section 3 of Chapter II of Regulation (EC) No 105/2008 and in this Regulation."/>
             </p>
          </unit>
@@ -211,7 +231,9 @@
                <unit eId="art_2/par_1/sub_3" kind="subparagraph">
                   <p>
                      <t v="The time limit for submission of tenders for the first individual invitation to tender shall be 11.00 (Brussels time) on "/>
-                     <date asWritten="1 September 2009" date="2009-09-01"/>
+                     <date date="2009-09-01">
+                        <t v="1 September 2009"/>
+                     </date>
                      <t v="."/>
                   </p>
                </unit>
@@ -243,9 +265,13 @@
             </num>
             <p>
                <t v="Buying-in of skimmed milk powder by a tendering procedure is open from "/>
-               <date asWritten="1 September 2009" date="2009-09-01"/>
+               <date date="2009-09-01">
+                  <t v="1 September 2009"/>
+               </date>
                <t v=" until "/>
-               <date asWritten="30 November 2009" date="2009-11-30"/>
+               <date date="2009-11-30">
+                  <t v="30 November 2009"/>
+               </date>
                <t v=", under the conditions provided for in Section 4 of Chapter II of Regulation (EC) No 214/2001 and in this Regulation."/>
             </p>
          </unit>
@@ -270,7 +296,9 @@
                <unit eId="art_4/par_1/sub_3" kind="subparagraph">
                   <p>
                      <t v="The time limit for submission of tenders for the first individual invitation to tender shall be 11.00 (Brussels time) on "/>
-                     <date asWritten="1 September 2009" date="2009-09-01"/>
+                     <date date="2009-09-01">
+                        <t v="1 September 2009"/>
+                     </date>
                      <t v="."/>
                   </p>
                </unit>
@@ -307,7 +335,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="11 August 2009" date="2009-08-11"/>
+            <date date="2009-08-11">
+               <t v="11 August 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

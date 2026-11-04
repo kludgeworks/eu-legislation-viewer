@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Decision 2019/1734 of the EU-Korea Committee on Trade and Sustainable Development of "/>
-               <date asWritten="30 September 2019" date="2019-09-30"/>
+               <date date="2019-09-30">
+                  <t v="30 September 2019"/>
+               </date>
                <t v=" on a revised list of experts willing and able to serve as panellists in accordance with Article 13.15 of the Agreement [2019/…]"/>
             </p>
             <p>
@@ -68,7 +70,14 @@
                      marker="O000001M001002">
                <t v="of "/>
             </changed>
-            <docDate asWritten="30 September 2019" date="2019-09-30"/>
+            <docDate date="2019-09-30">
+               <changed amendingAct="22019D1734R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <t v="30 September 2019"/>
+               </changed>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -119,7 +128,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="27 June 2012" date="2012-06-27"/>
+               <date date="2012-06-27">
+                  <t v="27 June 2012"/>
+               </date>
                <t v=", the EU-Korea Committee on Trade and Sustainable Development adopted Decision No 2/2012"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=" establishing a list of 18 experts that may serve as panellists."/>
@@ -295,7 +306,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Decision No 2/2012 of the EU-Korea Committee on Trade and Sustainable Development of "/>
-            <date asWritten="27 June 2012" date="2012-06-27"/>
+            <date date="2012-06-27">
+               <t v="27 June 2012"/>
+            </date>
             <t v=" on the establishment of a Panel of Experts referred to in Article 13.15 of the Free Trade Agreement between the European Union and its Member States, of the one part, and the Republic of Korea, of the other part ("/>
             <ref kind="oj"
                  series="L"

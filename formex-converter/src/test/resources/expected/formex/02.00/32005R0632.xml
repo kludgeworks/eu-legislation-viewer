@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="26 April 2005" date="2005-04-26"/>
+            <docDate date="2005-04-26">
+               <t v="26 April 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1784/2003 of "/>
-               <date asWritten="29 September 2003" date="2003-09-29"/>
+               <date date="2003-09-29">
+                  <t v="29 September 2003"/>
+               </date>
                <t v=" on the common organisation of the market in cereals"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6 thereof,"/>
@@ -157,7 +161,9 @@
          <unit eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="This Regulation shall apply from 9.00 (Brussels time) on "/>
-               <date asWritten="28 April 2005" date="2005-04-28"/>
+               <date date="2005-04-28">
+                  <t v="28 April 2005"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -170,7 +176,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="26 April 2005" date="2005-04-26"/>
+            <date date="2005-04-26">
+               <t v="26 April 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

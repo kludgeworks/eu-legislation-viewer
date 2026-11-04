@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Regulation (EC) No 2341/2002 of "/>
-            <date asWritten="20 December 2002" date="2002-12-20"/>
+            <date date="2002-12-20">
+               <t v="20 December 2002"/>
+            </date>
             <t v=" fixing for 2003 the fishing opportunities and associated conditions for certain fish stocks and groups of fish stocks, applicable in Community waters and, for Community vessels, in waters where catch limitations are required"/>
          </p>
          <p>

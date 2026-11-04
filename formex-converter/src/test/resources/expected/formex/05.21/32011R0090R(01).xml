@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation (EU) No 90/2011 of "/>
-            <date asWritten="3 February 2011" date="2011-02-03"/>
+            <date date="2011-02-03">
+               <t v="3 February 2011"/>
+            </date>
             <t v=" laying down detailed rules for implementing the system of export licences in the poultrymeat sector"/>
          </p>
          <p>

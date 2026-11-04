@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="28 January 2014" date="2014-01-28"/>
+            <docDate date="2014-01-28">
+               <t v="28 January 2014"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -45,7 +47,9 @@
          <unit eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 337/75 of "/>
-               <date asWritten="10 February 1975" date="1975-02-10"/>
+               <date date="1975-02-10">
+                  <t v="10 February 1975"/>
+               </date>
                <t v=" establishing the European Centre for the Development of Vocational Training, and in particular Article 4 thereof"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
@@ -69,12 +73,18 @@
             </num>
             <p>
                <t v="By its Decision of "/>
-               <date asWritten="16 July 2012" date="2012-07-16"/>
+               <date date="2012-07-16">
+                  <t v="16 July 2012"/>
+               </date>
                <noteRef href="#note_2" marker="2"/>
                <t v=", the Council appointed the members of the Governing Board of the European Centre for the Development of Vocational Training for the period from "/>
-               <date asWritten="18 September 2012" date="2012-09-18"/>
+               <date date="2012-09-18">
+                  <t v="18 September 2012"/>
+               </date>
                <t v=" to "/>
-               <date asWritten="17 September 2015" date="2015-09-17"/>
+               <date date="2015-09-17">
+                  <t v="17 September 2015"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -100,7 +110,9 @@
          </num>
          <p>
             <t v="The following person is hereby appointed as a member of the Governing Board of the European Centre for the Development of Vocational Training for the remainder of the term of office, which runs until "/>
-            <date asWritten="17 September 2015" date="2015-09-17"/>
+            <date date="2015-09-17">
+               <t v="17 September 2015"/>
+            </date>
             <t v=":"/>
          </p>
          <table cols="2">
@@ -130,7 +142,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="28 January 2014" date="2014-01-28"/>
+            <date date="2014-01-28">
+               <t v="28 January 2014"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

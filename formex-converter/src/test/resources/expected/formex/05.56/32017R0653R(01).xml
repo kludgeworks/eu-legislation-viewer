@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Delegated Regulation (EU) 2017/653 of "/>
-            <date asWritten="8 March 2017" date="2017-03-08"/>
+            <date date="2017-03-08">
+               <t v="8 March 2017"/>
+            </date>
             <t v=" supplementing Regulation (EU) No 1286/2014 of the European Parliament and of the Council on key information documents for packaged retail and insurance-based investment products (PRIIPs) by laying down regulatory technical standards with regard to the presentation, content, review and revision of key information documents and the conditions for fulfilling the requirement to provide such documents"/>
          </p>
          <p>

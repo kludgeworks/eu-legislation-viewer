@@ -38,7 +38,9 @@
          <unit eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="HAVING REGARD to the Agreement between the European Economic Community and the Republic of Iceland signed on "/>
-               <date asWritten="22 July 1972" date="1972-07-22"/>
+               <date date="1972-07-22">
+                  <t v="22 July 1972"/>
+               </date>
                <t v=", and to the existing arrangements for trade in fish and fishery products between Iceland and the Community,"/>
             </p>
          </unit>
@@ -67,7 +69,9 @@
             </num>
             <p>
                <t v="The special provisions applicable to imports into the European Union of certain fish and fishery products originating in Iceland are laid down in this Protocol and the Annex hereto. The annual duty free tariff quotas are set out in the Annex to this Protocol. These tariff quotas shall be applicable from the day on which the provisional application of this Protocol becomes effective, according to procedures laid down in paragraph 3 of Article 4, until "/>
-               <date asWritten="30 April 2028" date="2028-04-30"/>
+               <date date="2028-04-30">
+                  <t v="30 April 2028"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -100,9 +104,13 @@
             </num>
             <p>
                <t v="The volumes of the tariff quotas are set out in the Annex to this Protocol. The first tariff quota shall be available from the date of provisional application of this Protocol until "/>
-               <date asWritten="30 April 2024" date="2024-04-30"/>
+               <date date="2024-04-30">
+                  <t v="30 April 2024"/>
+               </date>
                <t v=". From "/>
-               <date asWritten="1 May 2024" date="2024-05-01"/>
+               <date date="2024-05-01">
+                  <t v="1 May 2024"/>
+               </date>
                <t v=" onwards, subsequent tariff quotas shall be allocated annually from 1 May to 30 April until the end of the period referred to in Article 1 of this Protocol."/>
             </p>
          </unit>
@@ -112,7 +120,9 @@
             </num>
             <p>
                <t v="The tariff quota volumes covering the period from "/>
-               <date asWritten="1 May 2021" date="2021-05-01"/>
+               <date date="2021-05-01">
+                  <t v="1 May 2021"/>
+               </date>
                <t v=" until the provisional application this Protocol shall be proportionally allocated and made available for the rest of the period referred to in Article 1 of this Protocol."/>
             </p>
          </unit>
@@ -133,7 +143,9 @@
          </num>
          <p>
             <t v="The rules of origin applicable for the tariff quotas listed in the Annex to this Protocol shall be those set out in Protocol 3 to the Agreement between the European Economic Community and Iceland signed on "/>
-            <date asWritten="22 July 1972" date="1972-07-22"/>
+            <date date="1972-07-22">
+               <t v="22 July 1972"/>
+            </date>
             <t v="."/>
          </p>
       </unit>

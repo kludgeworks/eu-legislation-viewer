@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Decision 2001/470/EC of "/>
-            <date asWritten="28 May 2001" date="2001-05-28"/>
+            <date date="2001-05-28">
+               <t v="28 May 2001"/>
+            </date>
             <t v=" establishing a European Judicial Network in civil and commercial matters"/>
          </p>
          <p>

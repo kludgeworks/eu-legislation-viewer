@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Commission Regulation (EC) No 2771/1999 of "/>
-               <date asWritten="16 December 1999" date="1999-12-16"/>
+               <date date="1999-12-16">
+                  <t v="16 December 1999"/>
+               </date>
                <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards intervention on the market in butter and cream"/>
             </p>
             <p>
@@ -48,7 +50,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="17 July 2000" date="2000-07-17"/>
+               <docDate date="2000-07-17">
+                  <t v="17 July 2000"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -73,7 +77,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="3 October 2000" date="2000-10-03"/>
+               <docDate date="2000-10-03">
+                  <t v="3 October 2000"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -98,7 +104,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="9 January 2001" date="2001-01-09"/>
+               <docDate date="2001-01-09">
+                  <t v="9 January 2001"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -123,7 +131,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="7 August 2001" date="2001-08-07"/>
+               <docDate date="2001-08-07">
+                  <t v="7 August 2001"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -148,7 +158,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="27 February 2003" date="2003-02-27"/>
+               <docDate date="2003-02-27">
+                  <t v="27 February 2003"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -173,7 +185,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="23 February 2004" date="2004-02-23"/>
+               <docDate date="2004-02-23">
+                  <t v="23 February 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -198,7 +212,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="16 December 1999" date="1999-12-16"/>
+            <docDate date="1999-12-16">
+               <t v="16 December 1999"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -222,7 +238,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1255/1999 of "/>
-               <date asWritten="17 May 1999" date="1999-05-17"/>
+               <date date="1999-05-17">
+                  <t v="17 May 1999"/>
+               </date>
                <t v=" on the common organisation of the market in milk and milk products"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 10 and 40 thereof,"/>
@@ -373,9 +391,13 @@
             </num>
             <p>
                <t v="Since Regulation (EC) No 1255/1999 fixes the intervention price from "/>
-               <date asWritten="1 July 2000" date="2000-07-01"/>
+               <date date="2000-07-01">
+                  <t v="1 July 2000"/>
+               </date>
                <t v=", in the interests of clarity the intervention price applicable from the date of entry into force of this Regulation until "/>
-               <date asWritten="30 June 2000" date="2000-06-30"/>
+               <date date="2000-06-30">
+                  <t v="30 June 2000"/>
+               </date>
                <t v=" should be specified."/>
             </p>
          </unit>
@@ -1705,7 +1727,9 @@
                   </num>
                   <p>
                      <t v="Sales shall concern butter taken into storage before "/>
-                     <date asWritten="1 September 1999" date="1999-09-01"/>
+                     <date date="1999-09-01">
+                        <t v="1 September 1999"/>
+                     </date>
                      <t v="."/>
                   </p>
                </unit>
@@ -2972,7 +2996,9 @@
             <unit eId="art_39/unp_2" kind="paragraph">
                <p>
                   <t v="Regulation (EC) No 454/95 shall continue to apply to private storage contracts concluded before "/>
-                  <date asWritten="1 January 2000" date="2000-01-01"/>
+                  <date date="2000-01-01">
+                     <t v="1 January 2000"/>
+                  </date>
                   <t v="."/>
                </p>
             </unit>
@@ -2988,9 +3014,13 @@
             </num>
             <p>
                <t v="The intervention price for butter applying from "/>
-               <date asWritten="1 January 2000" date="2000-01-01"/>
+               <date date="2000-01-01">
+                  <t v="1 January 2000"/>
+               </date>
                <t v=" to "/>
-               <date asWritten="30 June 2000" date="2000-06-30"/>
+               <date date="2000-06-30">
+                  <t v="30 June 2000"/>
+               </date>
                <t v=" shall be that fixed in Council Regulation (EC) No 1400/1999"/>
                <noteRef href="#note_20" marker="20"/>
                <t v="."/>
@@ -3002,7 +3032,9 @@
             </num>
             <p>
                <t v="This Regulation shall enter into force on "/>
-               <date asWritten="1 January 2000" date="2000-01-01"/>
+               <date date="2000-01-01">
+                  <t v="1 January 2000"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -6181,7 +6213,9 @@
                         <t v="Consideration of results from the first, second, third, fourth, fifth and sixth EEC collaborative trial: Determination of triglycerides in milk fat"/>
                      </emphasis>
                      <t v="; Doc. No VI/2644/91, VI/"/>
-                     <date asWritten="8.11.91" date="1991-11-08"/>
+                     <date date="1991-11-08">
+                        <t v="8.11.91"/>
+                     </date>
                      <t v=", VI/1919/92, VI/3842/92, VI/5317/92, VI/4604/93"/>
                      <t v="."/>
                   </p>

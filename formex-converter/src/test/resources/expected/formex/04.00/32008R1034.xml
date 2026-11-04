@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="21 October 2008" date="2008-10-21"/>
+            <docDate date="2008-10-21">
+               <t v="21 October 2008"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1290/2005 of "/>
-               <date asWritten="21 June 2005" date="2005-06-21"/>
+               <date date="2005-06-21">
+                  <t v="21 June 2005"/>
+               </date>
                <t v=" on the financing of the common agricultural policy"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 42 thereof,"/>
@@ -82,7 +86,9 @@
                   <t v="de minimis"/>
                </emphasis>
                <t v=" rule laid down in this Regulation should not apply to reductions and exclusions imposed on beneficiaries by the Member States in the area of cross-compliance on the basis of Article 6(1) of Council Regulation (EC) No 1782/2003 of "/>
-               <date asWritten="29 September 2003" date="2003-09-29"/>
+               <date date="2003-09-29">
+                  <t v="29 September 2003"/>
+               </date>
                <t v=" establishing common rules for direct support schemes under the common agricultural policy and establishing certain support schemes for farmers"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" because Article 6(3) of that Regulation provides for a specific regime for the non-application of reductions and exclusions amounting to EUR 100 or less."/>
@@ -183,7 +189,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="21 October 2008" date="2008-10-21"/>
+            <date date="2008-10-21">
+               <t v="21 October 2008"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

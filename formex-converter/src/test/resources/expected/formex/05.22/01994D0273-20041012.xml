@@ -55,7 +55,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="29 July 2004" date="2004-07-29"/>
+               <docDate date="2004-07-29">
+                  <t v="29 July 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>

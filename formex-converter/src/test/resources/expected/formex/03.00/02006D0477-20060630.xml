@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Council Decision 2006/477/CFSP of "/>
-               <date asWritten="30 June 2006" date="2006-06-30"/>
+               <date date="2006-06-30">
+                  <t v="30 June 2006"/>
+               </date>
                <t v=" concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)"/>
             </p>
             <p>
@@ -75,7 +77,14 @@
                      marker="O000001M001002">
                <t v="of "/>
             </changed>
-            <docDate asWritten="30 June 2006" date="2006-06-30"/>
+            <docDate date="2006-06-30">
+               <changed amendingAct="32006D0477R(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O000001M001002">
+                  <t v="30 June 2006"/>
+               </changed>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -139,7 +148,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="12 July 2004" date="2004-07-12"/>
+               <date date="2004-07-12">
+                  <t v="12 July 2004"/>
+               </date>
                <t v=", the Council adopted Joint Action 2004/570/CFSP on the European Union military operation in Bosnia and Herzegovina"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=".&#xA;"/>
@@ -167,7 +178,9 @@
             </num>
             <p>
                <t v="Following authorisation by the Council on "/>
-               <date asWritten="13 September 2004" date="2004-09-13"/>
+               <date date="2004-09-13">
+                  <t v="13 September 2004"/>
+               </date>
                <t v=", the Presidency, assisted by the Secretary-General/High Representative, negotiated an Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA).&#xA;"/>
             </p>
          </unit>

@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation EC (No) 1259/2005 of "/>
-            <date asWritten="27 July 2005" date="2005-07-27"/>
+            <date date="2005-07-27">
+               <t v="27 July 2005"/>
+            </date>
             <t v=" imposing a provisional anti-dumping duty on imports of tartaric acid originating in the People's Republic of China"/>
          </p>
          <p>

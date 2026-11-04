@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="22 February 2008" date="2008-02-22"/>
+            <docDate date="2008-02-22">
+               <t v="22 February 2008"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -55,7 +57,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Directive 2001/89/EC of "/>
-               <date asWritten="23 October 2001" date="2001-10-23"/>
+               <date date="2001-10-23">
+                  <t v="23 October 2001"/>
+               </date>
                <t v=" on Community measures for the control of classical swine fever"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 16(1) thereof,"/>
@@ -139,7 +143,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="22 February 2008" date="2008-02-22"/>
+            <date date="2008-02-22">
+               <t v="22 February 2008"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="2 May 2007" date="2007-05-02"/>
+            <docDate date="2007-05-02">
+               <t v="2 May 2007"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -55,7 +57,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Directive 2002/55/EC of "/>
-               <date asWritten="13 June 2002" date="2002-06-13"/>
+               <date date="2002-06-13">
+                  <t v="13 June 2002"/>
+               </date>
                <t v=" on the marketing of vegetable seed"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 49 thereof,"/>
@@ -221,7 +225,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="2 May 2007" date="2007-05-02"/>
+            <date date="2007-05-02">
+               <t v="2 May 2007"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

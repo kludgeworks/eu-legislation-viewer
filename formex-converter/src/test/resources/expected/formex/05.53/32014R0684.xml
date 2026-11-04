@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="20 June 2014" date="2014-06-20"/>
+            <docDate date="2014-06-20">
+               <t v="20 June 2014"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -52,7 +54,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 1831/2003 of the European Parliament and of the Council of "/>
-               <date asWritten="22 September 2003" date="2003-09-22"/>
+               <date date="2003-09-22">
+                  <t v="22 September 2003"/>
+               </date>
                <t v=" on additives for use in animal nutrition"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
@@ -103,7 +107,9 @@
                   <t v="the Authority"/>
                </quote>
                <t v=") concluded in its opinion of "/>
-               <date asWritten="12 December 2012" date="2012-12-12"/>
+               <date date="2012-12-12">
+                  <t v="12 December 2012"/>
+               </date>
                <noteRef href="#note_2" marker="2"/>
                <t v=" that, under the proposed conditions of use, the preparation of canthaxanthin does not have an adverse effect on animal health, human health or the environment, and that it has a potential to stabilise the reproductive performance of breeder hens. The Authority does not consider that there is a need for specific requirements of post-market monitoring. It also verified the report on the method of analysis of the feed additive in feed submitted by the Reference Laboratory set up by Regulation (EC) No 1831/2003."/>
             </p>
@@ -171,7 +177,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="20 June 2014" date="2014-06-20"/>
+            <date date="2014-06-20">
+               <t v="20 June 2014"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -440,7 +448,9 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="10 July 2024" date="2024-07-10"/>
+                        <date date="2024-07-10">
+                           <t v="10 July 2024"/>
+                        </date>
                      </p>
                   </td>
                   <td>

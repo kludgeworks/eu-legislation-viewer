@@ -61,7 +61,9 @@
       </p>
       <p>
          <t v="NOTING the Arrangement between the Government of Australia and the Commission of the European Communities for Cooperation in Science and Technology, signed at Canberra on "/>
-         <date asWritten="12 November 1986" date="1986-11-12"/>
+         <date date="1986-11-12">
+            <t v="12 November 1986"/>
+         </date>
          <t v=", which provides for cooperation in fields of science and technology of mutual interest through the exchange of information arising from research in specific fields;"/>
       </p>
       <p>
@@ -115,7 +117,9 @@
                   <t v="Intellectual property"/>
                </quote>
                <t v=" shall have the meaning defined in Article 2 of the Convention establishing the World Intellectual Property Organization, done at Stockholm, "/>
-               <date asWritten="14 July 1967" date="1967-07-14"/>
+               <date date="1967-07-14">
+                  <t v="14 July 1967"/>
+               </date>
                <t v="."/>
             </p>
          </unit>

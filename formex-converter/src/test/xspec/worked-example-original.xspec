@@ -28,7 +28,7 @@
       <conclusions>
         <p><t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/></p>
         <signature>
-          <placeAndDate><t v="Done at Brussels, "/><date date="2015-11-05" asWritten="5 November 2015"/><t v="."/></placeAndDate>
+          <placeAndDate><t v="Done at Brussels, "/><date date="2015-11-05"><t v="5 November 2015"/></date><t v="."/></placeAndDate>
           <signatory>
             <organization><emphasis kind="i"><t v="For the Commission"/></emphasis></organization>
             <role><emphasis kind="i"><t v="The President"/></emphasis></role>

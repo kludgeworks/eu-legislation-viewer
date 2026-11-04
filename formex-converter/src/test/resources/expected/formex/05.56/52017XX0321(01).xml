@@ -41,14 +41,18 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Directive 95/46/EC of the European Parliament and of the Council of "/>
-               <date asWritten="24 October 1995" date="1995-10-24"/>
+               <date date="1995-10-24">
+                  <t v="24 October 1995"/>
+               </date>
                <t v=" on the protection of individuals with regard to the processing of personal data and on the free movement of such data,"/>
             </p>
          </unit>
          <unit eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 45/2001 of the European Parliament and of the Council of "/>
-               <date asWritten="18 December 2000" date="2000-12-18"/>
+               <date date="2000-12-18">
+                  <t v="18 December 2000"/>
+               </date>
                <t v=" on the protection of individuals with regard to the processing of personal data by the Community institutions and bodies and on the free movement of such data, and in particular Article 28(2) thereof,"/>
             </p>
          </unit>
@@ -87,7 +91,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="8 August 2016" date="2016-08-08"/>
+               <date date="2016-08-08">
+                  <t v="8 August 2016"/>
+               </date>
                <t v=", the European Commission ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Commission"/>
@@ -107,7 +113,9 @@
                   <t v="Council"/>
                </quote>
                <t v=") also submitted a request on "/>
-               <date asWritten="25 November 2016" date="2016-11-25"/>
+               <date date="2016-11-25">
+                  <t v="25 November 2016"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -274,7 +282,9 @@
             </num>
             <p>
                <t v="Depending on the date of entry into force of the proposed Regulation, references to applicable law in Recital 20 may need to be updated. In particular, they may need to be replaced by references to the General Data Protection Regulation (GDPR), which will become applicable on "/>
-               <date asWritten="25 May 2018" date="2018-05-25"/>
+               <date date="2018-05-25">
+                  <t v="25 May 2018"/>
+               </date>
                <t v=", and by references to the new legal instrument replacing Regulation (EC) No 45/2001."/>
             </p>
          </unit>
@@ -689,7 +699,9 @@
       <signature>
          <placeAndDate>
             <t v="Brussels, "/>
-            <date asWritten="1 March 2017" date="2017-03-01"/>
+            <date date="2017-03-01">
+               <t v="1 March 2017"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -728,7 +740,9 @@
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
-            <date asWritten="27 April 2016" date="2016-04-27"/>
+            <date date="2016-04-27">
+               <t v="27 April 2016"/>
+            </date>
             <t v=" on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) ("/>
             <ref kind="oj"
                  series="L"
@@ -743,7 +757,9 @@
       <note eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Directive 2002/58/EC of the European Parliament and of the Council of "/>
-            <date asWritten="12 July 2002" date="2002-07-12"/>
+            <date date="2002-07-12">
+               <t v="12 July 2002"/>
+            </date>
             <t v=" concerning the processing of personal data and the protection of privacy in the electronic communications sector ("/>
             <ref kind="oj"
                  series="L"

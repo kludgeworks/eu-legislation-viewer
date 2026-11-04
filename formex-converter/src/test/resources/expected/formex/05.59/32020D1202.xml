@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="14 August 2020" date="2020-08-14"/>
+            <docDate date="2020-08-14">
+               <t v="14 August 2020"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2016/1036 of the European Parliament and of the Council of "/>
-               <date asWritten="8 June 2016" date="2016-06-08"/>
+               <date date="2016-06-08">
+                  <t v="8 June 2016"/>
+               </date>
                <t v=" on protection against dumped imports from countries not members of the European Union"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(1) thereof,"/>
@@ -58,7 +62,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) No 952/2013 of the European Parliament and of the Council of "/>
-               <date asWritten="9 October 2013" date="2013-10-09"/>
+               <date date="2013-10-09">
+                  <t v="9 October 2013"/>
+               </date>
                <t v=" laying down the Union Customs Code"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 56(5) thereof,"/>
@@ -86,7 +92,9 @@
                </num>
                <p>
                   <t v="On "/>
-                  <date asWritten="18 December 2019" date="2019-12-18"/>
+                  <date date="2019-12-18">
+                     <t v="18 December 2019"/>
+                  </date>
                   <t v=", the European Commission initiated an anti-dumping proceeding concerning imports of pins and staples originating in the People’s Republic of China by publishing a notice of initiation in the "/>
                   <emphasis kind="i">
                      <t v="Official Journal of the European Union"/>
@@ -139,7 +147,9 @@
                </num>
                <p>
                   <t v="On "/>
-                  <date asWritten="24 June 2020" date="2020-06-24"/>
+                  <date date="2020-06-24">
+                     <t v="24 June 2020"/>
+                  </date>
                   <t v=", the complainants informed the Commission that they withdrew the complaint."/>
                </p>
             </unit>
@@ -157,7 +167,9 @@
                </num>
                <p>
                   <t v="The investigation had not brought to light any considerations showing that a continuation of the case would be in the Union interest. However, the Commission also took note of a determination of "/>
-                  <date asWritten="26 May 2020" date="2020-05-26"/>
+                  <date date="2020-05-26">
+                     <t v="26 May 2020"/>
+                  </date>
                   <t v=" by the U.S. Department of Commerce in an anti-dumping and anti-subsidy investigation on imports of certain collated steel staples from the People’s Republic of China, which are product types of the product concerned. Given the potential risk of future trade diversions, the Commission will consider the statistical trends of Chinese imports of the product concerned for a period of 24 months as from the publication of this Decision. This will enable the Commission to assess the potential need to initiate a new investigation in accordance with the requirements of the basic Regulation."/>
                </p>
             </unit>
@@ -253,7 +265,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="14 August 2020" date="2020-08-14"/>
+            <date date="2020-08-14">
+               <t v="14 August 2020"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

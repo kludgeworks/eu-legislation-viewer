@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="26 April 2004" date="2004-04-26"/>
+               <docDate date="2004-04-26">
+                  <t v="26 April 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -50,7 +52,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="9 March 2005" date="2005-03-09"/>
+               <docDate date="2005-03-09">
+                  <t v="9 March 2005"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -75,7 +79,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 November 2005" date="2005-11-16"/>
+               <docDate date="2005-11-16">
+                  <t v="16 November 2005"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -103,7 +109,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="20 November 2006" date="2006-11-20"/>
+               <docDate date="2006-11-20">
+                  <t v="20 November 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -125,7 +133,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="5 November 2002" date="2002-11-05"/>
+            <docDate date="2002-11-05">
+               <t v="5 November 2002"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -165,15 +175,21 @@
          </num>
          <p>
             <t v="First Council Directive 79/267/EEC of "/>
-            <date asWritten="5 March 1979" date="1979-03-05"/>
+            <date date="1979-03-05">
+               <t v="5 March 1979"/>
+            </date>
             <t v=" on the coordination of laws, regulations and administrative provisions relating to the taking-up and pursuit of the business of direct life assurance"/>
             <noteRef href="#note_4" marker="4"/>
             <t v=", the second Council Directive 90/619/EEC of "/>
-            <date asWritten="8 November 1990" date="1990-11-08"/>
+            <date date="1990-11-08">
+               <t v="8 November 1990"/>
+            </date>
             <t v=" on the coordination of laws, regulations and administrative provisions relating to direct life assurance, laying down provisions to facilitate the effective exercise of freedom to provide services and amending Directive 79/267/EEC"/>
             <noteRef href="#note_5" marker="5"/>
             <t v=" and Council Directive 92/96/EEC of "/>
-            <date asWritten="10 November 1992" date="1992-11-10"/>
+            <date date="1992-11-10">
+               <t v="10 November 1992"/>
+            </date>
             <t v=" on the coordination of laws, regulations and administrative provisions relating to direct life assurance and amending Directives 79/267/EEC and 90/619/EEC (third life assurance Directive)"/>
             <noteRef href="#note_6" marker="6"/>
             <t v=" have been substantially amended several times. Since further amendments are to be made, the Directives should be recast in the interests of clarity.&#xA;"/>
@@ -217,7 +233,9 @@
          </num>
          <p>
             <t v="This Directive forms part of the body of Community legislation in the field of life assurance which also includes Council Directive 91/674/EEC of "/>
-            <date asWritten="19 December 1991" date="1991-12-19"/>
+            <date date="1991-12-19">
+               <t v="19 December 1991"/>
+            </date>
             <t v=" on the annual accounts and consolidated accounts of insurance undertakings"/>
             <noteRef href="#note_7" marker="7"/>
             <t v=".&#xA;"/>
@@ -453,7 +471,9 @@
          </num>
          <p>
             <t v="Those Member States which so wish should be able to grant the same undertaking authorisations for the classes referred to in Annex I and the insurance business coming under classes 1 and 2 in the Annex to Council Directive 73/239/EEC of "/>
-            <date asWritten="24 July 1973" date="1973-07-24"/>
+            <date date="1973-07-24">
+               <t v="24 July 1973"/>
+            </date>
             <t v=" on the coordination of laws, regulations and administrative provisions relating to the taking up and pursuit of the business of direct insurance other than life assurance"/>
             <noteRef href="#note_8" marker="8"/>
             <t v=". That possibility may, however, be subject to certain conditions as regards compliance with accounting rules and rules on winding-up.&#xA;"/>
@@ -505,7 +525,9 @@
          </num>
          <p>
             <t v="Directive 92/96/EEC provided for a provisional definition of a regulated market, pending the adoption of a directive on investment services in the securities field, which would harmonise that concept at Community level. Council Directive 93/22/EEC of "/>
-            <date asWritten="10 May 1993" date="1993-05-10"/>
+            <date date="1993-05-10">
+               <t v="10 May 1993"/>
+            </date>
             <t v=" on investment services in the securities field"/>
             <noteRef href="#note_9" marker="9"/>
             <t v=" provides for a definition of regulated market, although it excludes from its scope life assurance activities. It is appropriate to apply the concept of regulated market also to life assurance activities.&#xA;"/>
@@ -679,7 +701,9 @@
          </num>
          <p>
             <t v="In order to clarify the legal regime applicable to life assurance activities covered by this Directive, some provisions of Directives 79/267/EEC, 90/619/EEC and 92/96/EEC should be adapted. For that purpose some provisions concerning the establishment of the solvency margin and the rights acquired by branches of assurance undertakings established before "/>
-            <date asWritten="1 July 1994" date="1994-07-01"/>
+            <date date="1994-07-01">
+               <t v="1 July 1994"/>
+            </date>
             <t v=" should be amended. The content of the scheme of operation of branches of third-country undertakings to be established in the Community should also be defined.&#xA;"/>
          </p>
       </unit>
@@ -868,7 +892,9 @@
                      </p>
                      <p>
                         <t v="For the purposes of this definition, in the context of Articles 8 and 15 and of the other levels of holding referred to in Article 15, the voting rights referred to in Article 92 of Directive 2001/34/EC of the European Parliament and of the Council of "/>
-                        <date asWritten="28 May 2001" date="2001-05-28"/>
+                        <date date="2001-05-28">
+                           <t v="28 May 2001"/>
+                        </date>
                         <t v=" on the admission of securities to official stock exchange listing and on information to be published on those securities"/>
                         <noteRef href="#note_13" marker="13"/>
                         <t v=" shall be taken into consideration;"/>
@@ -1019,7 +1045,9 @@
                            <t v="reinsurance undertaking"/>
                         </quote>
                         <t v=" shall mean a reinsurance undertaking within the meaning of Article 2 point (c) of Directive 2005/68/EC of the European Parliament and of the Council of "/>
-                        <date asWritten="16 November 2005" date="2005-11-16"/>
+                        <date date="2005-11-16">
+                           <t v="16 November 2005"/>
+                        </date>
                         <t v=" on reinsurance"/>
                         <noteRef href="#note_14" marker="14"/>
                         <t v="."/>
@@ -1959,7 +1987,9 @@
                <unit eId="art_6/par_5/sub_4" kind="subparagraph">
                   <p>
                      <t v="Not later than "/>
-                     <date asWritten="1 July 1999" date="1999-07-01"/>
+                     <date date="1999-07-01">
+                        <t v="1 July 1999"/>
+                     </date>
                      <t v=", the Commission shall submit a report to the Council on the implementation of this paragraph."/>
                   </p>
                </unit>
@@ -2688,7 +2718,9 @@
                   <unit eId="art_16/par_7/sub_6" kind="subparagraph">
                      <p>
                         <t v="Before "/>
-                        <date asWritten="31 December 2000" date="2000-12-31"/>
+                        <date date="2000-12-31">
+                           <t v="31 December 2000"/>
+                        </date>
                         <t v=", the Commission shall draw up a report on the application of this paragraph."/>
                      </p>
                   </unit>
@@ -2851,13 +2883,17 @@
                   <list kind="dash">
                      <unit eId="art_18/par_3/idt_1" kind="indent">
                         <p>
-                           <date asWritten="1 January 1981" date="1981-01-01"/>
+                           <date date="1981-01-01">
+                              <t v="1 January 1981"/>
+                           </date>
                            <t v=" for undertakings authorised in Greece,"/>
                         </p>
                      </unit>
                      <unit eId="art_18/par_3/idt_2" kind="indent">
                         <p>
-                           <date asWritten="1 January 1986" date="1986-01-01"/>
+                           <date date="1986-01-01">
+                              <t v="1 January 1986"/>
+                           </date>
                            <t v=" for undertakings authorised in Spain and Portugal,"/>
                         </p>
                      </unit>
@@ -2867,7 +2903,9 @@
                                     location="AR:1 .AND. AX:0;PR:II;PT:b"
                                     marker="O001001M008000"/>
                         <p>
-                           <date asWritten="1 January 1995" date="1995-01-01"/>
+                           <date date="1995-01-01">
+                              <t v="1 January 1995"/>
+                           </date>
                            <t v=" for undertakings authorised in Austria, Finland and Sweden,"/>
                         </p>
                      </unit>
@@ -2877,7 +2915,9 @@
                                     location="AR:1 .AND. AX:0;PT:3;PT:b"
                                     marker="O004001M003000"/>
                         <p>
-                           <date asWritten="1 May 2004" date="2004-05-01"/>
+                           <date date="2004-05-01">
+                              <t v="1 May 2004"/>
+                           </date>
                            <t v=" for undertakings authorised in the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia,"/>
                         </p>
                      </unit>
@@ -2887,13 +2927,17 @@
                                     location="AR:1 .AND. AX:0;PT:3;PT:c"
                                     marker="O004001M004000"/>
                         <p>
-                           <date asWritten="1 January 2007" date="2007-01-01"/>
+                           <date date="2007-01-01">
+                              <t v="1 January 2007"/>
+                           </date>
                            <t v=" for undertakings authorised in Bulgaria and Romania, and"/>
                         </p>
                      </unit>
                      <unit eId="art_18/par_3/idt_6" kind="indent">
                         <p>
-                           <date asWritten="15 March 1979" date="1979-03-15"/>
+                           <date date="1979-03-15">
+                              <t v="15 March 1979"/>
+                           </date>
                            <t v=" for all other undertakings,"/>
                         </p>
                      </unit>
@@ -2932,7 +2976,9 @@
                   </num>
                   <p>
                      <t v="The provisions of this Article shall be reviewed on the basis of a report from the Commission to the Council in the light of future harmonisation of the rules on winding-up, and in any case before "/>
-                     <date asWritten="31 December 1999" date="1999-12-31"/>
+                     <date date="1999-12-31">
+                        <t v="31 December 1999"/>
+                     </date>
                      <t v="."/>
                   </p>
                </unit>
@@ -3970,7 +4016,9 @@
                               <unit eId="art_27/par_2/sub_3/pnt_a/idt_1" kind="indent">
                                  <p>
                                     <t v="insurance undertakings within the meaning of Article 4 of this Directive, Article 6 of Directive 73/239/EEC, or Article 1(b) of Directive 98/78/EC of the European Parliament and of the Council of "/>
-                                    <date asWritten="27 October 1998" date="1998-10-27"/>
+                                    <date date="1998-10-27">
+                                       <t v="27 October 1998"/>
+                                    </date>
                                     <t v=" on the supplementary supervision of insurance undertakings in an insurance group"/>
                                     <noteRef href="#note_19" marker="19"/>
                                     <t v=","/>
@@ -3989,7 +4037,9 @@
                               <unit eId="art_27/par_2/sub_3/pnt_a/idt_4" kind="indent">
                                  <p>
                                     <t v="credit institutions and financial institutions within the meaning of Article 1(1) and (5) of Directive 2000/12/EC of the European Parliament and of the Council of "/>
-                                    <date asWritten="20 March 2000" date="2000-03-20"/>
+                                    <date date="2000-03-20">
+                                       <t v="20 March 2000"/>
+                                    </date>
                                     <t v=" relating to the taking up and pursuit of the business of credit institutions"/>
                                     <noteRef href="#note_20" marker="20"/>
                                     <t v=","/>
@@ -3998,11 +4048,15 @@
                               <unit eId="art_27/par_2/sub_3/pnt_a/idt_5" kind="indent">
                                  <p>
                                     <t v="investment firms and financial institutions within the meaning of Article 1(2) of Council Directive 93/22/EEC of "/>
-                                    <date asWritten="10 May 1993" date="1993-05-10"/>
+                                    <date date="1993-05-10">
+                                       <t v="10 May 1993"/>
+                                    </date>
                                     <t v=" on investment services in the securities field"/>
                                     <noteRef href="#note_21" marker="21"/>
                                     <t v=" and of Articles 2(4) and 2(7) of Council Directive 93/6/EEC of "/>
-                                    <date asWritten="15 March 1993" date="1993-03-15"/>
+                                    <date date="1993-03-15">
+                                       <t v="15 March 1993"/>
+                                    </date>
                                     <t v=" on the capital adequacy of investments firms and credit institutions"/>
                                     <noteRef href="#note_22" marker="22"/>
                                     <t v=";"/>
@@ -4057,7 +4111,9 @@
                            <t v="mutatis mutandis"/>
                         </emphasis>
                         <t v=" methods 1, 2, or 3 of Annex I to Directive 2002/87/EC of the European Parliament and of the Council of "/>
-                        <date asWritten="16 December 2002" date="2002-12-16"/>
+                        <date date="2002-12-16">
+                           <t v="16 December 2002"/>
+                        </date>
                         <t v=" on the supplementary supervision of credit institutions, insurance undertakings and investment firms in a financial conglomerate"/>
                         <noteRef href="#note_23" marker="23"/>
                         <t v=". Method 1 (Accounting consolidation) shall only be applied if the competent authority is confident about the level of integrated management and internal control regarding the entities which would be included in the scope of consolidation. The method chosen shall be applied in a consistent manner over time."/>
@@ -4200,7 +4256,9 @@
                         </num>
                         <p>
                            <t v="until "/>
-                           <date asWritten="31 December 2009" date="2009-12-31"/>
+                           <date date="2009-12-31">
+                              <t v="31 December 2009"/>
+                           </date>
                            <t v=" an amount equal to 50 % of the undertaking's future profits, but not exceeding 25 % of the lesser of the available solvency margin and the required solvency margin. The amount of the future profits shall be obtained by multiplying the estimated annual profit by a factor which represents the average period left to run on policies. The factor used may not exceed six. The estimated annual profit shall not exceed the arithmetical average of the profits made over the last five financial years in the activities listed in Article 2(1).&#xA;"/>
                         </p>
                         <p>
@@ -4541,14 +4599,18 @@
                   <unit eId="art_30/par_1/sub_1" kind="subparagraph">
                      <p>
                         <t v="The amount in euro as laid down in Article 29(2) shall be reviewed annually starting on "/>
-                        <date asWritten="20 September 2003" date="2003-09-20"/>
+                        <date date="2003-09-20">
+                           <t v="20 September 2003"/>
+                        </date>
                         <t v=", in order to take account of changes in the European index of consumer prices comprising all Member States as published by Eurostat."/>
                      </p>
                   </unit>
                   <unit eId="art_30/par_1/sub_2" kind="subparagraph">
                      <p>
                         <t v="The amount shall be adapted automatically, by increasing the base amount in euro by the percentage change in that index over the period between "/>
-                        <date asWritten="20 March 2002" date="2002-03-20"/>
+                        <date date="2002-03-20">
+                           <t v="20 March 2002"/>
+                        </date>
                         <t v=" and the review date and rounded up to a multiple of EUR "/>
                         <number v="100000"/>
                         <t v="."/>
@@ -4702,7 +4764,9 @@
                <unit eId="art_34/unp_3" kind="paragraph">
                   <p>
                      <t v="Not later than "/>
-                     <date asWritten="1 July 1999" date="1999-07-01"/>
+                     <date date="1999-07-01">
+                        <t v="1 July 1999"/>
+                     </date>
                      <t v=" the Commission shall submit a report to the Council on the implementation of those provisions."/>
                   </p>
                </unit>
@@ -6073,7 +6137,9 @@
                <unit eId="art_60/par_1/sub_1" kind="subparagraph">
                   <p>
                      <t v="Undertakings set up in the United Kingdom by Royal Charter or by private Act or by special Public Act may carry on their activity in the legal form in which they were constituted on "/>
-                     <date asWritten="15 March 1979" date="1979-03-15"/>
+                     <date date="1979-03-15">
+                        <t v="15 March 1979"/>
+                     </date>
                      <t v=" for an unlimited period."/>
                   </p>
                </unit>
@@ -6089,7 +6155,9 @@
                </num>
                <p>
                   <t v="The societies registered in the United Kingdom under the Friendly Societies Acts may continue the activities of life assurance and savings operations which, in accordance with their objects, they were carrying on on "/>
-                  <date asWritten="15 March 1979" date="1979-03-15"/>
+                  <date date="1979-03-15">
+                     <t v="15 March 1979"/>
+                  </date>
                   <t v="."/>
                </p>
             </unit>
@@ -6194,7 +6262,9 @@
             </heading>
             <p>
                <t v="The Commission shall forward to the European Parliament and to the Council regular reports, the first on "/>
-               <date asWritten="20 November 1995" date="1995-11-20"/>
+               <date date="1995-11-20">
+                  <t v="20 November 1995"/>
+               </date>
                <t v=", on the development of the market in assurance and operations transacted under conditions of freedom to provide services."/>
             </p>
          </unit>
@@ -6310,7 +6380,9 @@
                <unit eId="art_66/par_1/sub_1" kind="subparagraph">
                   <p>
                      <t v="Branches which started business, in accordance with the provisions in force in the Member State of the branch, before "/>
-                     <date asWritten="1 July 1994" date="1994-07-01"/>
+                     <date date="1994-07-01">
+                        <t v="1 July 1994"/>
+                     </date>
                      <t v=" shall be presumed to have been subject to the procedure laid down in Article 40(1) to (5)."/>
                   </p>
                </unit>
@@ -6326,7 +6398,9 @@
                </num>
                <p>
                   <t v="Articles 41 and 42 shall not affect rights acquired by assurance undertakings carrying on business under the freedom to provide services before "/>
-                  <date asWritten="1 July 1994" date="1994-07-01"/>
+                  <date date="1994-07-01">
+                     <t v="1 July 1994"/>
+                  </date>
                   <t v="."/>
                </p>
             </unit>
@@ -6355,7 +6429,9 @@
                </num>
                <p>
                   <t v="The Commission shall submit to the Council before "/>
-                  <date asWritten="15 March 1985" date="1985-03-15"/>
+                  <date date="1985-03-15">
+                     <t v="15 March 1985"/>
+                  </date>
                   <t v=" a report dealing with the effects of the financial requirements imposed by this Directive on the situation in the insurance markets of the Member States."/>
                </p>
             </unit>
@@ -6381,7 +6457,9 @@
                </num>
                <p>
                   <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with Article 1(1)(m), Article 18(3), Article 51(2)(g), (3) and (4), Article 60(2) and Article 66(1) not later than "/>
-                  <date asWritten="19 June 2004" date="2004-06-19"/>
+                  <date date="2004-06-19">
+                     <t v="19 June 2004"/>
+                  </date>
                   <t v=". They shall immediately inform the Commission thereof."/>
                </p>
             </unit>
@@ -6391,7 +6469,9 @@
                </num>
                <p>
                   <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary for them to comply with Article 16(3) not later than "/>
-                  <date asWritten="17 November 2002" date="2002-11-17"/>
+                  <date date="2002-11-17">
+                     <t v="17 November 2002"/>
+                  </date>
                   <t v=". They shall forthwith inform the Commission thereof. Before this date, Member States shall apply the provision referred to in Annex IV(1)."/>
                </p>
             </unit>
@@ -6402,14 +6482,18 @@
                <unit eId="art_69/par_3/sub_1" kind="subparagraph">
                   <p>
                      <t v="Member States shall adopt by "/>
-                     <date asWritten="20 September 2003" date="2003-09-20"/>
+                     <date date="2003-09-20">
+                        <t v="20 September 2003"/>
+                     </date>
                      <t v=" the laws, regulations and administrative provisions necessary to comply with Articles 3(6), 27, 28, 29, 30 and 38. They shall forthwith inform the Commission thereof."/>
                   </p>
                </unit>
                <unit eId="art_69/par_3/sub_2" kind="subparagraph">
                   <p>
                      <t v="Member States shall provide that the provisions referred to in the first subparagraph shall first apply to the supervision of accounts for financial years beginning on "/>
-                     <date asWritten="1 January 2004" date="2004-01-01"/>
+                     <date date="2004-01-01">
+                        <t v="1 January 2004"/>
+                     </date>
                      <t v=" or during that calendar year. Before this date, Member States shall apply the provisions referred to in Annex IV(2) and (3)."/>
                   </p>
                </unit>
@@ -6428,7 +6512,9 @@
                </num>
                <p>
                   <t v="Not later than "/>
-                  <date asWritten="1 January 2007" date="2007-01-01"/>
+                  <date date="2007-01-01">
+                     <t v="1 January 2007"/>
+                  </date>
                   <t v=" the Commission shall submit to the European Parliament and to the Council a report on the application of Articles 3(6), 27, 28, 29, 30 and 38 and, if necessary, on the need for further harmonisation. The report shall indicate how Member States have made use of the possibilities under those articles and, in particular, whether the discretionary powers afforded to the national supervisory authorities have resulted in major supervisory differences in the single market."/>
                </p>
             </unit>
@@ -6457,7 +6543,9 @@
                </num>
                <p>
                   <t v="Member States may allow assurance undertakings which at "/>
-                  <date asWritten="20 March 2002" date="2002-03-20"/>
+                  <date date="2002-03-20">
+                     <t v="20 March 2002"/>
+                  </date>
                   <t v=" provided assurance in their territories in one or more of classes referred to in Annex I, a period of five years, commencing on that same date, in order to comply with the requirements set out in Articles 3(6), 27, 28, 29, 30 and 38."/>
                </p>
             </unit>
@@ -6944,7 +7032,9 @@
             </heading>
             <p>
                <t v="Until "/>
-               <date asWritten="17 November 2002" date="2002-11-17"/>
+               <date date="2002-11-17">
+                  <t v="17 November 2002"/>
+               </date>
                <t v=", Member States may conclude cooperation agreements, providing for exchanges of information, with the competent authorities of third countries only if the information disclosed is subject to guarantees of professional secrecy at least equivalent to those referred to in Article 16 of this Directive."/>
             </p>
          </unit>
@@ -6961,7 +7051,9 @@
             </heading>
             <p>
                <t v="Until "/>
-               <date asWritten="1 January 2004" date="2004-01-01"/>
+               <date date="2004-01-01">
+                  <t v="1 January 2004"/>
+               </date>
                <t v=", this Directive shall not concern mutual associations, where:"/>
             </p>
             <list kind="dash">
@@ -6989,7 +7081,9 @@
             </num>
             <heading>
                <t v="Until "/>
-               <date asWritten="1 January 2004" date="2004-01-01"/>
+               <date date="2004-01-01">
+                  <t v="1 January 2004"/>
+               </date>
                <t v=", Member States shall apply the following provisions:&#xA;"/>
             </heading>
          </unit>
@@ -7560,12 +7654,16 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="15 September 1980" date="1980-09-15"/>
+                        <date date="1980-09-15">
+                           <t v="15 September 1980"/>
+                        </date>
                      </p>
                   </td>
                   <td>
                      <p>
-                        <date asWritten="15 September 1981" date="1981-09-15"/>
+                        <date date="1981-09-15">
+                           <t v="15 September 1981"/>
+                        </date>
                      </p>
                   </td>
                </tr>
@@ -7588,12 +7686,16 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="20 November 1992" date="1992-11-20"/>
+                        <date date="1992-11-20">
+                           <t v="20 November 1992"/>
+                        </date>
                      </p>
                   </td>
                   <td>
                      <p>
-                        <date asWritten="20 May 1993" date="1993-05-20"/>
+                        <date date="1993-05-20">
+                           <t v="20 May 1993"/>
+                        </date>
                      </p>
                   </td>
                </tr>
@@ -7616,12 +7718,16 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="31 December 1993" date="1993-12-31"/>
+                        <date date="1993-12-31">
+                           <t v="31 December 1993"/>
+                        </date>
                      </p>
                   </td>
                   <td>
                      <p>
-                        <date asWritten="1 July 1994" date="1994-07-01"/>
+                        <date date="1994-07-01">
+                           <t v="1 July 1994"/>
+                        </date>
                      </p>
                   </td>
                </tr>
@@ -7644,12 +7750,16 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="18 July 1996" date="1996-07-18"/>
+                        <date date="1996-07-18">
+                           <t v="18 July 1996"/>
+                        </date>
                      </p>
                   </td>
                   <td>
                      <p>
-                        <date asWritten="18 July 1996" date="1996-07-18"/>
+                        <date date="1996-07-18">
+                           <t v="18 July 1996"/>
+                        </date>
                      </p>
                   </td>
                </tr>
@@ -7672,12 +7782,16 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="17 November 2002" date="2002-11-17"/>
+                        <date date="2002-11-17">
+                           <t v="17 November 2002"/>
+                        </date>
                      </p>
                   </td>
                   <td>
                      <p>
-                        <date asWritten="17 November 2002" date="2002-11-17"/>
+                        <date date="2002-11-17">
+                           <t v="17 November 2002"/>
+                        </date>
                      </p>
                   </td>
                </tr>
@@ -7700,12 +7814,16 @@
                   </td>
                   <td>
                      <p>
-                        <date asWritten="20 September 2003" date="2003-09-20"/>
+                        <date date="2003-09-20">
+                           <t v="20 September 2003"/>
+                        </date>
                      </p>
                   </td>
                   <td>
                      <p>
-                        <date asWritten="1 January 2004" date="2004-01-01"/>
+                        <date date="2004-01-01">
+                           <t v="1 January 2004"/>
+                        </date>
                      </p>
                   </td>
                </tr>
@@ -9962,7 +10080,9 @@
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Opinion of the European Parliament of "/>
-            <date asWritten="15 March 2001" date="2001-03-15"/>
+            <date date="2001-03-15">
+               <t v="15 March 2001"/>
+            </date>
             <t v=" ("/>
             <ref kind="oj"
                  series="C"
@@ -9972,7 +10092,9 @@
                <t v="OJ C 343, 5.12.2001, p. 202"/>
             </ref>
             <t v="), Council Common Position of "/>
-            <date asWritten="27 May 2002" date="2002-05-27"/>
+            <date date="2002-05-27">
+               <t v="27 May 2002"/>
+            </date>
             <t v=" ("/>
             <ref kind="oj"
                  series="C"
@@ -9982,7 +10104,9 @@
                <t v="OJ C 170 E, 16.7.2002, p. 45"/>
             </ref>
             <t v=") and decision of the European Parliament of "/>
-            <date asWritten="25 September 2002" date="2002-09-25"/>
+            <date date="2002-09-25">
+               <t v="25 September 2002"/>
+            </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
       </note>

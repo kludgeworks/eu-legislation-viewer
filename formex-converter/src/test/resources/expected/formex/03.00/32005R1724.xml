@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="20 October 2005" date="2005-10-20"/>
+            <docDate date="2005-10-20">
+               <t v="20 October 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 2286/2002 of "/>
-               <date asWritten="10 December 2002" date="2002-12-10"/>
+               <date date="2002-12-10">
+                  <t v="10 December 2002"/>
+               </date>
                <t v=" on the arrangements applicable to agricultural products and goods resulting from the processing of agricultural products originating in the African, Caribbean and Pacific States (ACP States) and repealing Regulation (EC) No 1706/98"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
@@ -58,7 +62,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2001/822/EC of "/>
-               <date asWritten="27 November 2001" date="2001-11-27"/>
+               <date date="2001-11-27">
+                  <t v="27 November 2001"/>
+               </date>
                <t v=" on the association of the overseas countries and territories with the European Community (Overseas Association Decision)"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=","/>
@@ -67,7 +73,9 @@
          <unit eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 638/2003 of "/>
-               <date asWritten="9 April 2003" date="2003-04-09"/>
+               <date date="2003-04-09">
+                  <t v="9 April 2003"/>
+               </date>
                <t v=" laying down detailed rules for applying Council Regulation (EC) No 2286/2002 and Council Decision 2001/822/EC as regards the arrangements applicable to imports of rice originating in the African, Caribbean and Pacific States (ACP States) and the overseas countries and territories (OCT)"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=", and in particular Article 17(2) thereof,"/>
@@ -120,7 +128,9 @@
          </num>
          <p>
             <t v="This Regulation shall enter into force on "/>
-            <date asWritten="21 October 2005" date="2005-10-21"/>
+            <date date="2005-10-21">
+               <t v="21 October 2005"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -132,7 +142,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="20 October 2005" date="2005-10-20"/>
+            <date date="2005-10-20">
+               <t v="20 October 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

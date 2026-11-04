@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation (EC) No 1276/2008 of "/>
-            <date asWritten="17 December 2008" date="2008-12-17"/>
+            <date date="2008-12-17">
+               <t v="17 December 2008"/>
+            </date>
             <t v=" on the monitoring by physical checks of exports of agricultural products receiving refunds or other amounts"/>
          </p>
          <p>

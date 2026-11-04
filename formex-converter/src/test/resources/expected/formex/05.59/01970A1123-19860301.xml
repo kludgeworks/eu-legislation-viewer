@@ -49,7 +49,9 @@
             <docPurpose>
                <emphasis kind="i">
                   <t v="(signed in Brussels, "/>
-                  <date asWritten="23 November 1970" date="1970-11-23"/>
+                  <date date="1970-11-23">
+                     <t v="23 November 1970"/>
+                  </date>
                   <t v=")"/>
                </emphasis>
             </docPurpose>
@@ -78,7 +80,9 @@
          </p>
          <p>
             <t v="Contracting Parties to the Treaty establishing the European Coal and Steel Community, signed in Paris on "/>
-            <date asWritten="17 April 1951" date="1951-04-17"/>
+            <date date="1951-04-17">
+               <t v="17 April 1951"/>
+            </date>
             <t v=", whose States are hereinafter referred to as "/>
             <quote startQuote="‘" endQuote="’">
                <t v="the Member States"/>

@@ -25,7 +25,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="7 October 2004" date="2004-10-07"/>
+               <docDate date="2004-10-07">
+                  <t v="7 October 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -56,7 +58,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="23 October 2002" date="2002-10-23"/>
+            <docDate date="2002-10-23">
+               <t v="23 October 2002"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -89,7 +93,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Directive 1999/2/EC of the European Parliament and of the Council of "/>
-               <date asWritten="22 February 1999" date="1999-02-22"/>
+               <date date="1999-02-22">
+                  <t v="22 February 1999"/>
+               </date>
                <t v=" on the approximation of the laws of the Member States concerning foods and food ingredients treated with ionising radiation"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>

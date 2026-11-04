@@ -578,8 +578,11 @@
                     <xsl:for-each-group select="node()" group-adjacent="exists(self::DATE)">
                       <xsl:choose>
                         <xsl:when test="current-grouping-key()">
-                          <docDate asWritten="{string(.)}">
+                          <docDate>
                             <xsl:sequence select="f:date-attribute('date', @ISO)"/>
+                            <xsl:call-template name="f:inlines">
+                              <xsl:with-param name="nodes" as="node()*" select="node()"/>
+                            </xsl:call-template>
                           </docDate>
                         </xsl:when>
                         <xsl:otherwise>

@@ -15,7 +15,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Implementing Regulation (EU) 2026/351 of "/>
-            <date asWritten="18 February 2026" date="2026-02-18"/>
+            <date date="2026-02-18">
+               <t v="18 February 2026"/>
+            </date>
             <t v=" renewing the approval of the active substance spinosad in accordance with Regulation (EC) No 1107/2009 of the European Parliament and of the Council and amending Commission Implementing Regulation (EU) No 540/2011"/>
          </p>
          <p>
@@ -46,7 +48,9 @@
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
-                     <date asWritten="11 December 2025" date="2025-12-11"/>
+                     <date date="2025-12-11">
+                        <t v="11 December 2025"/>
+                     </date>
                      <t v=", and in particular, Appendices I and II thereto, shall be taken into account."/>
                   </quote>
                   <t v=","/>
@@ -61,7 +65,9 @@
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
-                     <date asWritten="21 January 2026" date="2026-01-21"/>
+                     <date date="2026-01-21">
+                        <t v="21 January 2026"/>
+                     </date>
                      <t v=", and in particular, Appendices I and II thereto, shall be taken into account."/>
                   </quote>
                   <t v="."/>
@@ -85,7 +91,9 @@
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
-                     <date asWritten="11 December 2025" date="2025-12-11"/>
+                     <date date="2025-12-11">
+                        <t v="11 December 2025"/>
+                     </date>
                      <t v=", and in particular, Appendices I and II thereto, shall be taken into account."/>
                   </quote>
                   <t v=","/>
@@ -100,7 +108,9 @@
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the implementation of the uniform principles as referred to in Article 29(6) of Regulation (EC) No 1107/2009, the conclusions of the renewal report on spinosad of "/>
-                     <date asWritten="21 January 2026" date="2026-01-21"/>
+                     <date date="2026-01-21">
+                        <t v="21 January 2026"/>
+                     </date>
                      <t v=", and in particular, Appendices I and II thereto, shall be taken into account."/>
                   </quote>
                   <t v="."/>

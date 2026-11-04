@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Commission Regulation (EC) No 830/2005 of "/>
-               <date asWritten="30 May 2005" date="2005-05-30"/>
+               <date date="2005-05-30">
+                  <t v="30 May 2005"/>
+               </date>
                <t v=" amending, for the fifth time, Council Regulation (EC) No 1763/2004 imposing certain restrictive measures in support of effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
             </p>
             <p>
@@ -50,7 +52,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="30 May 2005" date="2005-05-30"/>
+            <docDate date="2005-05-30">
+               <t v="30 May 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -74,7 +78,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1763/2004 of "/>
-               <date asWritten="11 October 2004" date="2004-10-11"/>
+               <date date="2004-10-11">
+                  <t v="11 October 2004"/>
+               </date>
                <t v=" imposing certain restrictive measures in support of effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 10(a) thereof,"/>
@@ -101,13 +107,17 @@
             </num>
             <p>
                <t v="The Commission is empowered to amend that Annex, taking into account Council Decisions implementing Council Common Position 2004/694/CFSP of "/>
-               <date asWritten="11 October 2004" date="2004-10-11"/>
+               <date date="2004-10-11">
+                  <t v="11 October 2004"/>
+               </date>
                <t v=" on further measures in support of the effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=". Council Decision 2005/…/CFSP"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" of "/>
-               <date asWritten="6 June 2005" date="2005-06-06"/>
+               <date date="2005-06-06">
+                  <t v="6 June 2005"/>
+               </date>
                <t v=" implements that Common Position. Annex I to Regulation (EC) No 1763/2004 should, therefore, be amended accordingly,"/>
             </p>
          </unit>
@@ -137,7 +147,9 @@
                         location="TO"
                         marker="O000001M001000"/>
             <t v="This Regulation shall enter into force on "/>
-            <date asWritten="8 June 2005" date="2005-06-08"/>
+            <date date="2005-06-08">
+               <t v="8 June 2005"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -162,7 +174,9 @@
                </num>
                <p>
                   <t v="Borovnica, Goran. Date of birth: "/>
-                  <date asWritten="15.8.1965" date="1965-08-15"/>
+                  <date date="1965-08-15">
+                     <t v="15.8.1965"/>
+                  </date>
                   <t v=". Place of birth: Kozarac, Municipality of Prijedor, Bosnia and Herzegovina. Nationality: Bosnia and Herzegovina."/>
                </p>
             </unit>
@@ -172,7 +186,9 @@
                </num>
                <p>
                   <t v="Pavkovic, Nebojsa. Date of birth: "/>
-                  <date asWritten="10.4.1946" date="1946-04-10"/>
+                  <date date="1946-04-10">
+                     <t v="10.4.1946"/>
+                  </date>
                   <t v=". Place of birth: Senjski Rudnik, Serbia and Montenegro. Nationality: Serbia and Montenegro."/>
                </p>
             </unit>
@@ -182,7 +198,9 @@
                </num>
                <p>
                   <t v="Popovic, Vujadin. Date of birth: "/>
-                  <date asWritten="14.3.1957" date="1957-03-14"/>
+                  <date date="1957-03-14">
+                     <t v="14.3.1957"/>
+                  </date>
                   <t v=". Place of birth: Sekovici, Bosnia and Herzegovina. Nationality: Serbia and Montenegro."/>
                </p>
             </unit>

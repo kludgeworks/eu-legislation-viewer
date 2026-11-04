@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="2 February 2015" date="2015-02-02"/>
+               <docDate date="2015-02-02">
+                  <t v="2 February 2015"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="26 April 2005" date="2005-04-26"/>
+            <docDate date="2005-04-26">
+               <t v="26 April 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -77,7 +81,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2658/87 of "/>
-               <date asWritten="23 July 1987" date="1987-07-23"/>
+               <date date="1987-07-23">
+                  <t v="23 July 1987"/>
+               </date>
                <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(1)(a) thereof,"/>
@@ -120,7 +126,9 @@
             </num>
             <p>
                <t v="It is appropriate to provide that binding tariff information issued by the customs authorities of Member States in respect of the classification of goods in the Combined Nomenclature and which is not in accordance with this Regulation, can, for a period of three months, continue to be invoked by the holder, under Article 12(6) of Council Regulation (EEC) No 2913/92 of "/>
-               <date asWritten="12 October 1992" date="1992-10-12"/>
+               <date date="1992-10-12">
+                  <t v="12 October 1992"/>
+               </date>
                <t v=" establishing the Community Customs Code"/>
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>

@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Decision 2009/442/EC of "/>
-            <date asWritten="5 June 2009" date="2009-06-05"/>
+            <date date="2009-06-05">
+               <t v="5 June 2009"/>
+            </date>
             <t v=" implementing Directive 2007/2/EC of the European Parliament and of the Council as regards monitoring and reporting"/>
          </p>
          <p>

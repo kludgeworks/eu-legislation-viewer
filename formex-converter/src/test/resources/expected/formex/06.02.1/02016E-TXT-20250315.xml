@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon,"/>
-               <docDate asWritten="13 December 2007" date="2007-12-13"/>
+               <docDate date="2007-12-13">
+                  <t v="13 December 2007"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -43,7 +45,9 @@
             </p>
             <p>
                <t v="This regulation has been carried out by means of a procès-verbal of rectification signed at Rome on "/>
-               <date asWritten="30 April 2008" date="2008-04-30"/>
+               <date date="2008-04-30">
+                  <t v="30 April 2008"/>
+               </date>
                <t v=" with the Government of the Italian Republic as depository."/>
             </p>
          </longTitle>
@@ -64,7 +68,9 @@
             </p>
             <p>
                <t v="to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon on "/>
-               <docDate asWritten="13 December 2007" date="2007-12-13"/>
+               <docDate date="2007-12-13">
+                  <t v="13 December 2007"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -79,7 +85,9 @@
             </p>
             <p>
                <t v="This rectification has been carried out by means of a procès-verbal of rectification signed at Rome on "/>
-               <date asWritten="27 November 2009" date="2009-11-27"/>
+               <date date="2009-11-27">
+                  <t v="27 November 2009"/>
+               </date>
                <t v=" with the Government of the Italian Republic as depository."/>
             </p>
          </longTitle>
@@ -100,7 +108,9 @@
             </p>
             <p>
                <t v="to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon on "/>
-               <docDate asWritten="13 December 2007" date="2007-12-13"/>
+               <docDate date="2007-12-13">
+                  <t v="13 December 2007"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -130,7 +140,9 @@
                <t v=" "/>
                <docNumber>
                   <t v="of rectification to the Treaty of Lisbon amending the Treaty on European Union and the Treaty establishing the European Community, signed at Lisbon on "/>
-                  <date asWritten="13 December 2007" date="2007-12-13"/>
+                  <date date="2007-12-13">
+                     <t v="13 December 2007"/>
+                  </date>
                </docNumber>
             </p>
             <p>
@@ -230,7 +242,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="29 October 2010" date="2010-10-29"/>
+               <docDate date="2010-10-29">
+                  <t v="29 October 2010"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -255,7 +269,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="25 March 2011" date="2011-03-25"/>
+               <docDate date="2011-03-25">
+                  <t v="25 March 2011"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -296,7 +312,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="11 July 2012" date="2012-07-11"/>
+               <docDate date="2012-07-11">
+                  <t v="11 July 2012"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -331,7 +349,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="11 August 2012" date="2012-08-11"/>
+               <docDate date="2012-08-11">
+                  <t v="11 August 2012"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -359,7 +379,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 December 2015" date="2015-12-16"/>
+               <docDate date="2015-12-16">
+                  <t v="16 December 2015"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -387,7 +409,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="6 July 2016" date="2016-07-06"/>
+               <docDate date="2016-07-06">
+                  <t v="6 July 2016"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -412,7 +436,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="15 April 2019" date="2019-04-15"/>
+               <docDate date="2019-04-15">
+                  <t v="15 April 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -434,7 +460,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 April 2019" date="2019-04-16"/>
+               <docDate date="2019-04-16">
+                  <t v="16 April 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -462,7 +490,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="17 April 2019" date="2019-04-17"/>
+               <docDate date="2019-04-17">
+                  <t v="17 April 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -487,7 +517,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 July 2019" date="2019-07-18"/>
+               <docDate date="2019-07-18">
+                  <t v="18 July 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -509,7 +541,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="11 April 2024" date="2024-04-11"/>
+               <docDate date="2024-04-11">
+                  <t v="11 April 2024"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -531,7 +565,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="11 March 2025" date="2025-03-11"/>
+               <docDate date="2025-03-11">
+                  <t v="11 March 2025"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -2759,16 +2795,22 @@
                      </num>
                      <p>
                         <t v="The provisions of Article 63 shall be without prejudice to the application to third countries of any restrictions which exist on "/>
-                        <date asWritten="31 December 1993" date="1993-12-31"/>
+                        <date date="1993-12-31">
+                           <t v="31 December 1993"/>
+                        </date>
                         <t v=" under national or Union law adopted in respect of the movement of capital to or from third countries involving direct investment – including in real estate – establishment, the provision of financial services or the admission of securities to capital markets. In respect of restrictions existing under national law in Bulgaria, Estonia and Hungary, the relevant date shall be "/>
-                        <date asWritten="31 December 1999" date="1999-12-31"/>
+                        <date date="1999-12-31">
+                           <t v="31 December 1999"/>
+                        </date>
                         <t v=". "/>
                         <changed amendingAct="12012J/ACT"
                                  action="inserted"
                                  location="AR:12"
                                  marker="O001001M001000">
                            <t v="In respect of restrictions existing under national law in Croatia, the relevant date shall be "/>
-                           <date asWritten="31 December 2002" date="2002-12-31"/>
+                           <date date="2002-12-31">
+                              <t v="31 December 2002"/>
+                           </date>
                            <t v="."/>
                         </changed>
                      </p>
@@ -3168,9 +3210,13 @@
                            <t v="refoulement"/>
                         </emphasis>
                         <t v=". This policy must be in accordance with the Geneva Convention of "/>
-                        <date asWritten="28 July 1951" date="1951-07-28"/>
+                        <date date="1951-07-28">
+                           <t v="28 July 1951"/>
+                        </date>
                         <t v=" and the Protocol of "/>
-                        <date asWritten="31 January 1967" date="1967-01-31"/>
+                        <date date="1967-01-31">
+                           <t v="31 January 1967"/>
+                        </date>
                         <t v=" relating to the status of refugees, and other relevant treaties."/>
                      </p>
                   </unit>
@@ -4005,7 +4051,9 @@
                </heading>
                <p>
                   <t v="Until the provisions referred to in Article 91(1) have been laid down, no Member State may, unless the Council has unanimously adopted a measure granting a derogation, make the various provisions governing the subject on "/>
-                  <date asWritten="1 January 1958" date="1958-01-01"/>
+                  <date date="1958-01-01">
+                     <t v="1 January 1958"/>
+                  </date>
                   <t v=" or, for acceding States, the date of their accession less favourable in their direct or indirect effect on carriers of other Member States as compared with carriers who are nationals of that State."/>
                </p>
             </unit>
@@ -6470,7 +6518,9 @@
                <unit eId="art_151/unp_1" kind="paragraph">
                   <p>
                      <t v="The Union and the Member States, having in mind fundamental social rights such as those set out in the European Social Charter signed at Turin on "/>
-                     <date asWritten="18 October 1961" date="1961-10-18"/>
+                     <date date="1961-10-18">
+                        <t v="18 October 1961"/>
+                     </date>
                      <t v=" and in the 1989 Community Charter of the Fundamental Social Rights of Workers, shall have as their objectives the promotion of employment, improved living and working conditions, so as to make possible their harmonisation while the improvement is being maintained, proper social protection, dialogue between management and labour, the development of human resources with a view to lasting high employment and the combating of exclusion."/>
                   </p>
                </unit>
@@ -10076,7 +10126,9 @@
                         </num>
                         <p>
                            <t v="By way of derogation from Article 16(4) of the Treaty on European Union, as from "/>
-                           <date asWritten="1 November 2014" date="2014-11-01"/>
+                           <date date="2014-11-01">
+                              <t v="1 November 2014"/>
+                           </date>
                            <t v=" and subject to the provisions laid down in the Protocol on transitional provisions, where the Council does not act on a proposal from the Commission or from the High Representative of the Union for Foreign Affairs and Security Policy, the qualified majority shall be defined as at least 72 % of the members of the Council, representing Member States comprising at least 65 % of the population of the Union."/>
                         </p>
                      </unit>
@@ -10086,7 +10138,9 @@
                         </num>
                         <p>
                            <t v="As from "/>
-                           <date asWritten="1 November 2014" date="2014-11-01"/>
+                           <date date="2014-11-01">
+                              <t v="1 November 2014"/>
+                           </date>
                            <t v=" and subject to the provisions laid down in the Protocol on transitional provisions, in cases where, under the Treaties, not all the members of the Council participate in voting, a qualified majority shall be defined as follows:"/>
                         </p>
                         <list kind="alpha">
@@ -13581,7 +13635,9 @@
             </heading>
             <p>
                <t v="The Union shall enjoy in the territories of the Member States such privileges and immunities as are necessary for the performance of its tasks, under the conditions laid down in the Protocol of "/>
-               <date asWritten="8 April 1965" date="1965-04-08"/>
+               <date date="1965-04-08">
+                  <t v="8 April 1965"/>
+               </date>
                <t v=" on the privileges and immunities of the European Union. The same shall apply to the European Central Bank and the European Investment Bank."/>
             </p>
          </unit>
@@ -13646,7 +13702,9 @@
                </num>
                <p>
                   <t v="The Council may, acting unanimously on a proposal from the Commission, make changes to the list, which it drew up on "/>
-                  <date asWritten="15 April 1958" date="1958-04-15"/>
+                  <date date="1958-04-15">
+                     <t v="15 April 1958"/>
+                  </date>
                   <t v=", of the products to which the provisions of paragraph 1(b) apply."/>
                </p>
             </unit>
@@ -13738,7 +13796,9 @@
             <unit eId="art_351/unp_1" kind="paragraph">
                <p>
                   <t v="The rights and obligations arising from agreements concluded before "/>
-                  <date asWritten="1 January 1958" date="1958-01-01"/>
+                  <date date="1958-01-01">
+                     <t v="1 January 1958"/>
+                  </date>
                   <t v=" or, for acceding States, before the date of their accession, between one or more Member States on the one hand, and one or more third countries on the other, shall not be affected by the provisions of the Treaties."/>
                </p>
             </unit>
@@ -13941,7 +14001,9 @@
                         </num>
                         <p>
                            <t v="the Treaties shall apply to the Channel Islands and the Isle of Man only to the extent necessary to ensure the implementation of the arrangements for those islands set out in the Treaty concerning the accession of new Member States to the European Economic Community and to the European Atomic Energy Community signed on "/>
-                           <date asWritten="22 January 1972" date="1972-01-22"/>
+                           <date date="1972-01-22">
+                              <t v="22 January 1972"/>
+                           </date>
                            <t v="."/>
                         </p>
                      </unit>
@@ -15229,7 +15291,9 @@
                         </num>
                         <p>
                            <t v="40 Judges as from "/>
-                           <date asWritten="25 December 2015" date="2015-12-25"/>
+                           <date date="2015-12-25">
+                              <t v="25 December 2015"/>
+                           </date>
                            <t v=";"/>
                         </p>
                      </unit>
@@ -15239,7 +15303,9 @@
                         </num>
                         <p>
                            <t v="47 Judges as from "/>
-                           <date asWritten="1 September 2016" date="2016-09-01"/>
+                           <date date="2016-09-01">
+                              <t v="1 September 2016"/>
+                           </date>
                            <t v=";"/>
                         </p>
                      </unit>
@@ -15249,7 +15315,9 @@
                         </num>
                         <p>
                            <t v="two Judges per Member State as from "/>
-                           <date asWritten="1 September 2019" date="2019-09-01"/>
+                           <date date="2019-09-01">
+                              <t v="1 September 2019"/>
+                           </date>
                            <t v="."/>
                         </p>
                      </unit>
@@ -15749,7 +15817,9 @@
                            </num>
                            <p>
                               <t v="decisions of the General Court concerning a decision of an independent board of appeal, set up after "/>
-                              <date asWritten="1 May 2019" date="2019-05-01"/>
+                              <date date="2019-05-01">
+                                 <t v="1 May 2019"/>
+                              </date>
                               <t v=" within any other body, office or agency of the Union, which has to be seised before an action can be brought before the General Court;"/>
                            </p>
                         </unit>
@@ -19800,7 +19870,9 @@
             </p>
             <p>
                <t v="RECALLING AND CONFIRMING the Decision of "/>
-               <date asWritten="8 April 1965" date="1965-04-08"/>
+               <date date="1965-04-08">
+                  <t v="8 April 1965"/>
+               </date>
                <t v=", and without prejudice to the decisions concerning the seat of future institutions, bodies, offices, agencies and departments,"/>
             </p>
             <p>
@@ -19833,7 +19905,9 @@
                      </num>
                      <p>
                         <t v="The Commission shall have its seat in Brussels. The departments listed in Articles 7, 8 and 9 of the Decision of "/>
-                        <date asWritten="8 April 1965" date="1965-04-08"/>
+                        <date date="1965-04-08">
+                           <t v="8 April 1965"/>
+                        </date>
                         <t v=" shall be established in Luxembourg."/>
                      </p>
                   </unit>
@@ -20483,11 +20557,17 @@
             </num>
             <subheading>
                <t v="ON THE DECISION OF THE COUNCIL RELATING TO THE IMPLEMENTATION OF ARTICLE 16(4) OF THE TREATY ON EUROPEAN UNION AND ARTICLE 238(2) OF THE TREATY ON THE FUNCTIONING OF THE EUROPEAN UNION BETWEEN "/>
-               <date asWritten="1 NOVEMBER 2014" date="2014-11-01"/>
+               <date date="2014-11-01">
+                  <t v="1 NOVEMBER 2014"/>
+               </date>
                <t v=" AND "/>
-               <date asWritten="31 MARCH 2017" date="2017-03-31"/>
+               <date date="2017-03-31">
+                  <t v="31 MARCH 2017"/>
+               </date>
                <t v=" ON THE ONE HAND, AND AS FROM "/>
-               <date asWritten="1 APRIL 2017" date="2017-04-01"/>
+               <date date="2017-04-01">
+                  <t v="1 APRIL 2017"/>
+               </date>
                <t v=" ON THE OTHER"/>
             </subheading>
             <p>
@@ -20495,11 +20575,17 @@
             </p>
             <p>
                <t v="TAKING INTO ACCOUNT the fundamental importance that agreeing on the Decision of the Council relating to the implementation of Article 16(4) of the Treaty on European Union and Article 238(2) of the Treaty on the Functioning of the European Union between "/>
-               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <date date="2014-11-01">
+                  <t v="1 November 2014"/>
+               </date>
                <t v=" and "/>
-               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <date date="2017-03-31">
+                  <t v="31 March 2017"/>
+               </date>
                <t v=" on the one hand, and as from "/>
-               <date asWritten="1 April 2017" date="2017-04-01"/>
+               <date date="2017-04-01">
+                  <t v="1 April 2017"/>
+               </date>
                <t v=" on the other (hereinafter &#34;the Decision&#34;), had when approving the Treaty of Lisbon,"/>
             </p>
             <p>
@@ -20884,9 +20970,13 @@
             </p>
             <p>
                <t v="GIVEN that on "/>
-               <date asWritten="16 October 1996" date="1996-10-16"/>
+               <date date="1996-10-16">
+                  <t v="16 October 1996"/>
+               </date>
                <t v=" and "/>
-               <date asWritten="30 October 1997" date="1997-10-30"/>
+               <date date="1997-10-30">
+                  <t v="30 October 1997"/>
+               </date>
                <t v=" the United Kingdom government notified the Council of its intention not to participate in the third stage of economic and monetary union,"/>
             </p>
             <p>
@@ -20909,9 +20999,13 @@
                </num>
                <p>
                   <t v="In view of the notice given to the Council by the United Kingdom government on "/>
-                  <date asWritten="16 October 1996" date="1996-10-16"/>
+                  <date date="1996-10-16">
+                     <t v="16 October 1996"/>
+                  </date>
                   <t v=" and "/>
-                  <date asWritten="30 October 1997" date="1997-10-30"/>
+                  <date date="1997-10-30">
+                     <t v="30 October 1997"/>
+                  </date>
                   <t v=", paragraphs 3 to 8 and 10 shall apply to the United Kingdom."/>
                </p>
             </unit>
@@ -21062,7 +21156,9 @@
             </p>
             <p>
                <t v="GIVEN THAT, on "/>
-               <date asWritten="3 November 1993" date="1993-11-03"/>
+               <date date="1993-11-03">
+                  <t v="3 November 1993"/>
+               </date>
                <t v=", the Danish Government notified the Council of its intention not to participate in the third stage of economic and monetary union,"/>
             </p>
             <p>
@@ -21074,7 +21170,9 @@
                </num>
                <p>
                   <t v="In view of the notice given to the Council by the Danish Government on "/>
-                  <date asWritten="3 November 1993" date="1993-11-03"/>
+                  <date date="1993-11-03">
+                     <t v="3 November 1993"/>
+                  </date>
                   <t v=", Denmark shall have an exemption. The effect of the exemption shall be that all Articles and provisions of the Treaties and the Statute of the ESCB referring to a derogation shall be applicable to Denmark."/>
                </p>
             </unit>
@@ -21151,11 +21249,17 @@
             </p>
             <p>
                <t v="NOTING that the Agreements on the gradual abolition of checks at common borders signed by some Member States of the European Union in Schengen on "/>
-               <date asWritten="14 June 1985" date="1985-06-14"/>
+               <date date="1985-06-14">
+                  <t v="14 June 1985"/>
+               </date>
                <t v=" and on "/>
-               <date asWritten="19 June 1990" date="1990-06-19"/>
+               <date date="1990-06-19">
+                  <t v="19 June 1990"/>
+               </date>
                <t v=", as well as related agreements and the rules adopted on the basis of these agreements, have been integrated into the framework of the European Union by the Treaty of Amsterdam of "/>
-               <date asWritten="2 October 1997" date="1997-10-02"/>
+               <date date="1997-10-02">
+                  <t v="2 October 1997"/>
+               </date>
                <t v=","/>
             </p>
             <p>
@@ -21215,9 +21319,13 @@
                      <t v="acquis"/>
                   </emphasis>
                   <t v=" shall apply to the Member States referred to in Article 1, without prejudice to Article 3 of the Act of Accession of "/>
-                  <date asWritten="16 April 2003" date="2003-04-16"/>
+                  <date date="2003-04-16">
+                     <t v="16 April 2003"/>
+                  </date>
                   <t v=" or to Article 4 of the Act of Accession of "/>
-                  <date asWritten="25 April 2005" date="2005-04-25"/>
+                  <date date="2005-04-25">
+                     <t v="25 April 2005"/>
+                  </date>
                   <noteRef href="#note_5" marker="4"/>
                   <t v=". The Council will substitute itself for the Executive Committee established by the Schengen agreements."/>
                </p>
@@ -21661,7 +21769,9 @@
             </p>
             <p>
                <t v="RECALLING the Decision of the Heads of State or Government, meeting within the European Council at Edinburgh on "/>
-               <date asWritten="12 December 1992" date="1992-12-12"/>
+               <date date="1992-12-12">
+                  <t v="12 December 1992"/>
+               </date>
                <t v=", concerning certain problems raised by Denmark on the Treaty on European Union,"/>
             </p>
             <p>
@@ -22086,7 +22196,9 @@
             </p>
             <p>
                <t v="WHEREAS this Protocol respects the finality and the objectives of the Geneva Convention of "/>
-               <date asWritten="28 July 1951" date="1951-07-28"/>
+               <date date="1951-07-28">
+                  <t v="28 July 1951"/>
+               </date>
                <t v=" relating to the status of refugees,"/>
             </p>
             <p>
@@ -22632,7 +22744,9 @@
             </p>
             <p>
                <t v="For the purposes of Article 157 of the Treaty on the Functioning of the European Union, benefits under occupational social security schemes shall not be considered as remuneration if and in so far as they are attributable to periods of employment prior to "/>
-               <date asWritten="17 May 1990" date="1990-05-17"/>
+               <date date="1990-05-17">
+                  <t v="17 May 1990"/>
+               </date>
                <t v=", except in the case of workers or those claiming under them who have before that date initiated legal proceedings or introduced an equivalent claim under the applicable national law."/>
             </p>
          </unit>
@@ -22903,9 +23017,13 @@
                            </num>
                            <p>
                               <t v="by reference to the results of the European Parliament elections from "/>
-                              <date asWritten="4" date="2009-06-04"/>
+                              <date date="2009-06-04">
+                                 <t v="4"/>
+                              </date>
                               <t v=" to "/>
-                              <date asWritten="7 June 2009" date="2009-06-07"/>
+                              <date date="2009-06-07">
+                                 <t v="7 June 2009"/>
+                              </date>
                               <t v="; or"/>
                            </p>
                         </unit>
@@ -22948,7 +23066,9 @@
                      </num>
                      <p>
                         <t v="In accordance with Article 16(4) of the Treaty on European Union, the provisions of that paragraph and of Article 238(2) of the Treaty on the Functioning of the European Union relating to the definition of the qualified majority in the European Council and the Council shall take effect on "/>
-                        <date asWritten="1 November 2014" date="2014-11-01"/>
+                        <date date="2014-11-01">
+                           <t v="1 November 2014"/>
+                        </date>
                         <t v="."/>
                      </p>
                   </unit>
@@ -22958,9 +23078,13 @@
                      </num>
                      <p>
                         <t v="Between "/>
-                        <date asWritten="1 November 2014" date="2014-11-01"/>
+                        <date date="2014-11-01">
+                           <t v="1 November 2014"/>
+                        </date>
                         <t v=" and "/>
-                        <date asWritten="31 March 2017" date="2017-03-31"/>
+                        <date date="2017-03-31">
+                           <t v="31 March 2017"/>
+                        </date>
                         <t v=", when an act is to be adopted by qualified majority, a member of the Council may request that it be adopted in accordance with the qualified majority as defined in paragraph 3. In that case, paragraphs 3 and 4 shall apply."/>
                      </p>
                   </unit>
@@ -22975,7 +23099,9 @@
                      <unit eId="pro_36/tis_II/art_3/par_3/sub_1" kind="subparagraph">
                         <p>
                            <t v="Until "/>
-                           <date asWritten="31 October 2014" date="2014-10-31"/>
+                           <date date="2014-10-31">
+                              <t v="31 October 2014"/>
+                           </date>
                            <t v=", the following provisions shall remain in force, without prejudice to the second subparagraph of Article 235(1) of the Treaty on the Functioning of the European Union."/>
                         </p>
                      </unit>
@@ -23339,7 +23465,9 @@
                      </num>
                      <p>
                         <t v="Until "/>
-                        <date asWritten="31 October 2014" date="2014-10-31"/>
+                        <date date="2014-10-31">
+                           <t v="31 October 2014"/>
+                        </date>
                         <t v=", the qualified majority shall, in cases where, under the Treaties, not all the members of the Council participate in voting, namely in the cases where reference is made to the qualified majority as defined in Article 238(3) of the Treaty on the Functioning of the European Union, be defined as the same proportion of the weighted votes and the same proportion of the number of the Council members and, if appropriate, the same percentage of the population of the Member States concerned as laid down in paragraph 3 of this Article."/>
                      </p>
                   </unit>
@@ -24205,9 +24333,13 @@
             </p>
             <p>
                <t v="RECALLING that all assets and liabilities of the European Coal and Steel Community, as they existed on "/>
-               <date asWritten="23 July 2002" date="2002-07-23"/>
+               <date date="2002-07-23">
+                  <t v="23 July 2002"/>
+               </date>
                <t v=", were transferred to the European Community on "/>
-               <date asWritten="24 July 2002" date="2002-07-24"/>
+               <date date="2002-07-24">
+                  <t v="24 July 2002"/>
+               </date>
                <t v=","/>
             </p>
             <p>
@@ -24226,7 +24358,9 @@
                   </num>
                   <p>
                      <t v="The net worth of these assets and liabilities, as they appear in the balance sheet of the ECSC of "/>
-                     <date asWritten="23 July 2002" date="2002-07-23"/>
+                     <date date="2002-07-23">
+                        <t v="23 July 2002"/>
+                     </date>
                      <t v=", subject to any increase or decrease which may occur as a result of the liquidation operations, shall be considered as assets intended for research in the sectors related to the coal and steel industry, referred to as the &#34;ECSC in liquidation&#34;. On completion of the liquidation they shall be referred to as the &#34;assets of the Research Fund for Coal and Steel&#34;."/>
                   </p>
                </unit>
@@ -24281,16 +24415,24 @@
             </p>
             <p>
                <t v="RECALLING the Decision of the Heads of State or Government of the 27 Member States of the European Union, meeting within the European Council, on "/>
-               <date asWritten="18" date="2009-06-18"/>
+               <date date="2009-06-18">
+                  <t v="18"/>
+               </date>
                <t v="-"/>
-               <date asWritten="19 June 2009" date="2009-06-19"/>
+               <date date="2009-06-19">
+                  <t v="19 June 2009"/>
+               </date>
                <t v=", on the concerns of the Irish people on the Treaty of Lisbon;"/>
             </p>
             <p>
                <t v="RECALLING the declaration of the Heads of State or Government, meeting within the European Council, on "/>
-               <date asWritten="18" date="2009-06-18"/>
+               <date date="2009-06-18">
+                  <t v="18"/>
+               </date>
                <t v="-"/>
-               <date asWritten="19 June 2009" date="2009-06-19"/>
+               <date date="2009-06-19">
+                  <t v="19 June 2009"/>
+               </date>
                <t v=", that they would, at the time of the conclusion of the next Accession Treaty, set out the provisions of that Decision in a Protocol to be attached, in accordance with their respective constitutional requirements, to the Treaty on European Union and the Treaty on the Functioning of the European Union;"/>
             </p>
             <p>
@@ -24429,7 +24571,9 @@
                   <unit eId="pro_38/tis_IV/art_4/unp_1" kind="paragraph">
                      <p>
                         <t v="This Protocol shall remain open for signature by the High Contracting Parties until "/>
-                        <date asWritten="30 June 2012" date="2012-06-30"/>
+                        <date date="2012-06-30">
+                           <t v="30 June 2012"/>
+                        </date>
                         <t v="."/>
                      </p>
                   </unit>
@@ -24441,7 +24585,9 @@
                   <unit eId="pro_38/tis_IV/art_4/unp_3" kind="paragraph">
                      <p>
                         <t v="This Protocol shall enter into force if possible on "/>
-                        <date asWritten="30 June 2013" date="2013-06-30"/>
+                        <date date="2013-06-30">
+                           <t v="30 June 2013"/>
+                        </date>
                         <t v=", provided that all the instruments of ratification have been deposited, or, failing that, on the first day of the month following the deposit of the instrument of ratification by the last Member State to take this step."/>
                      </p>
                   </unit>
@@ -25052,7 +25198,9 @@
                   <note eId="note_6" marker="*" kind="table">
                      <p>
                         <t v="Entry added by Article 1 of Regulation No 7a of the Council of the European Economic Community of "/>
-                        <date asWritten="18 December 1959" date="1959-12-18"/>
+                        <date date="1959-12-18">
+                           <t v="18 December 1959"/>
+                        </date>
                         <t v=" ("/>
                         <ref kind="oj" series="P" number="7" date="1961-01-30" page="71">
                            <t v="OJ No 7, 30.1.1961, p. 71/61"/>
@@ -25232,7 +25380,9 @@
             <t v="ANNEXED TO THE FINAL ACT OF THE INTERGOVERNMENTAL CONFERENCE WHICH ADOPTED THE TREATY OF LISBON,"/>
             <eol/>
             <t v="signed on "/>
-            <date asWritten="13 December 2007" date="2007-12-13"/>
+            <date date="2007-12-13">
+               <t v="13 December 2007"/>
+            </date>
          </heading>
          <unit eId="att_3/pnt_A"
                kind="level"
@@ -25375,11 +25525,17 @@
                </p>
                <p>
                   <t v="relating to the implementation of Article 16(4) of the Treaty on European Union and Article 238(2) of the Treaty on the Functioning of the European Union between "/>
-                  <date asWritten="1 November 2014" date="2014-11-01"/>
+                  <date date="2014-11-01">
+                     <t v="1 November 2014"/>
+                  </date>
                   <t v=" and "/>
-                  <date asWritten="31 March 2017" date="2017-03-31"/>
+                  <date date="2017-03-31">
+                     <t v="31 March 2017"/>
+                  </date>
                   <t v=" on the one hand, and as from "/>
-                  <date asWritten="1 April 2017" date="2017-04-01"/>
+                  <date date="2017-04-01">
+                     <t v="1 April 2017"/>
+                  </date>
                   <t v=" on the other"/>
                </p>
                <p>
@@ -25394,11 +25550,17 @@
                   </num>
                   <p>
                      <t v="Provisions should be adopted allowing for a smooth transition from the system for decision-making in the Council by a qualified majority as defined in Article 3(3) of the Protocol on the transitional provisions, which will continue to apply until "/>
-                     <date asWritten="31 October 2014" date="2014-10-31"/>
+                     <date date="2014-10-31">
+                        <t v="31 October 2014"/>
+                     </date>
                      <t v=", to the voting system provided for in Article 16(4) of the Treaty on European Union and Article 238(2) of the Treaty on the Functioning of the European Union, which will apply with effect from "/>
-                     <date asWritten="1 November 2014" date="2014-11-01"/>
+                     <date date="2014-11-01">
+                        <t v="1 November 2014"/>
+                     </date>
                      <t v=", including, during a transitional period until "/>
-                     <date asWritten="31 March 2017" date="2017-03-31"/>
+                     <date date="2017-03-31">
+                        <t v="31 March 2017"/>
+                     </date>
                      <t v=", specific provisions laid down in Article 3(2) of that Protocol."/>
                   </p>
                </unit>
@@ -25419,9 +25581,13 @@
                   </num>
                   <subheading>
                      <t v="Provisions to be applied from "/>
-                     <date asWritten="1 November 2014" date="2014-11-01"/>
+                     <date date="2014-11-01">
+                        <t v="1 November 2014"/>
+                     </date>
                      <t v=" to "/>
-                     <date asWritten="31 March 2017" date="2017-03-31"/>
+                     <date date="2017-03-31">
+                        <t v="31 March 2017"/>
+                     </date>
                   </subheading>
                   <unit eId="att_3/pnt_7/qstr_1/art_1" kind="article" rank="5">
                      <num>
@@ -25429,9 +25595,13 @@
                      </num>
                      <p>
                         <t v="From "/>
-                        <date asWritten="1 November 2014" date="2014-11-01"/>
+                        <date date="2014-11-01">
+                           <t v="1 November 2014"/>
+                        </date>
                         <t v=" to "/>
-                        <date asWritten="31 March 2017" date="2017-03-31"/>
+                        <date date="2017-03-31">
+                           <t v="31 March 2017"/>
+                        </date>
                         <t v=", if members of the Council, representing:"/>
                      </p>
                      <list kind="alpha">
@@ -25479,7 +25649,9 @@
                   </num>
                   <subheading>
                      <t v="Provisions to be applied as from "/>
-                     <date asWritten="1 April 2017" date="2017-04-01"/>
+                     <date date="2017-04-01">
+                        <t v="1 April 2017"/>
+                     </date>
                   </subheading>
                   <unit eId="att_3/pnt_7/qstr_1/art_4" kind="article" rank="5">
                      <num>
@@ -25487,7 +25659,9 @@
                      </num>
                      <p>
                         <t v="As from "/>
-                        <date asWritten="1 April 2017" date="2017-04-01"/>
+                        <date date="2017-04-01">
+                           <t v="1 April 2017"/>
+                        </date>
                         <t v=", if members of the Council, representing:"/>
                      </p>
                      <list kind="alpha">
@@ -25562,7 +25736,9 @@
             </heading>
             <p>
                <t v="In the event that the Treaty of Lisbon enters into force later than "/>
-               <date asWritten="1 January 2009" date="2009-01-01"/>
+               <date date="2009-01-01">
+                  <t v="1 January 2009"/>
+               </date>
                <t v=", the Conference requests the competent authorities of the Member State holding the six-monthly Presidency of the Council at that time, on the one hand, and the person elected President of the European Council and the person appointed High Representative of the Union for Foreign Affairs and Security Policy, on the other hand, to take the necessary specific measures, in consultation with the following six-monthly Presidency, to allow an efficient handover of the material and organisational aspects of the Presidency of the European Council and of the Foreign Affairs Council."/>
             </p>
          </unit>
@@ -25830,13 +26006,17 @@
                      <eol/>
                      <emphasis kind="i">
                         <t v="of "/>
-                        <date asWritten="22 June 2007" date="2007-06-22"/>
+                        <date date="2007-06-22">
+                           <t v="22 June 2007"/>
+                        </date>
                      </emphasis>
                   </heading>
                   <p>
                      <emphasis kind="i">
                         <t v="It results from the case-law of the Court of Justice that primacy of EC law is a cornerstone principle of Community law. According to the Court, this principle is inherent to the specific nature of the European Community. At the time of the first judgment of this established case law (Costa/ENEL,"/>
-                        <date asWritten="15 July 1964" date="1964-07-15"/>
+                        <date date="1964-07-15">
+                           <t v="15 July 1964"/>
+                        </date>
                         <t v=", Case 6/641"/>
                      </emphasis>
                      <noteRef href="#note_7" marker="5"/>
@@ -26810,7 +26990,9 @@
             </heading>
             <p>
                <t v="In respect of the Treaties and the Treaty establishing the European Atomic Energy Community, and in any of the acts deriving from those Treaties or continued in force by those Treaties, the United Kingdom reiterates the Declaration it made on "/>
-               <date asWritten="31 December 1982" date="1982-12-31"/>
+               <date date="1982-12-31">
+                  <t v="31 December 1982"/>
+               </date>
                <t v=" on the definition of the term &#34;nationals&#34; with the exception that the reference to &#34;British Dependent Territories Citizens&#34; shall be read as meaning &#34;British overseas territories citizens&#34;."/>
             </p>
          </unit>
@@ -34144,14 +34326,18 @@
       <note eId="note_4" marker="3" kind="footnote">
          <p>
             <t v="In accordance with the Act of Accession of "/>
-            <date asWritten="9 December 2011" date="2011-12-09"/>
+            <date date="2011-12-09">
+               <t v="9 December 2011"/>
+            </date>
             <t v=", the Republic of Croatia has since become a member of the European Union."/>
          </p>
       </note>
       <note eId="note_5" marker="4" kind="footnote">
          <p>
             <t v="This provision shall also apply without prejudice to Article 4 of the Act of Accessio of "/>
-            <date asWritten="9 December 2011" date="2011-12-09"/>
+            <date date="2011-12-09">
+               <t v="9 December 2011"/>
+            </date>
             <t v="."/>
          </p>
       </note>
@@ -34202,7 +34388,9 @@
       <note eId="note_15" marker="11" kind="manual">
          <p>
             <t v="The current Article 9 TEU amended the Treaty establishing the European Coal and Steel Community. This latter expired on "/>
-            <date asWritten="23 July 2002" date="2002-07-23"/>
+            <date date="2002-07-23">
+               <t v="23 July 2002"/>
+            </date>
             <t v=". Article 9 is repealed and the number thereof is used to insert another provision."/>
          </p>
       </note>

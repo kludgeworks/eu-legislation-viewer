@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="25 February 1991" date="1991-02-25"/>
+            <docDate date="1991-02-25">
+               <t v="25 February 1991"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -55,7 +57,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2658/87 of "/>
-               <date asWritten="23 July 1987" date="1987-07-23"/>
+               <date date="1987-07-23">
+                  <t v="23 July 1987"/>
+               </date>
                <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", as last amended by Regulation (EEC) No 53/91"/>
@@ -136,7 +140,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="25 February 1991" date="1991-02-25"/>
+            <date date="1991-02-25">
+               <t v="25 February 1991"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

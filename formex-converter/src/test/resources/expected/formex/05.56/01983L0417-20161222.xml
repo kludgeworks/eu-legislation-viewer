@@ -71,7 +71,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 December 2008" date="2008-12-16"/>
+               <docDate date="2008-12-16">
+                  <t v="16 December 2008"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -102,7 +104,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="25 November 2015" date="2015-11-25"/>
+               <docDate date="2015-11-25">
+                  <t v="25 November 2015"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -1241,7 +1245,9 @@
                                  marker="O003001M001000"/>
                      <p>
                         <t v="rennet meeting the requirements of Regulation (EC) No 1332/2008 of the European Parliament and of the Council of "/>
-                        <date asWritten="16 December 2008" date="2008-12-16"/>
+                        <date date="2008-12-16">
+                           <t v="16 December 2008"/>
+                        </date>
                         <t v=" on food enzymes"/>
                         <noteRef href="#note_6" marker="1"/>
                         <t v=";"/>

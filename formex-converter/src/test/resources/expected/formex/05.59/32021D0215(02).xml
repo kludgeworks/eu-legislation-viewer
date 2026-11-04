@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="2 December 2020" date="2020-12-02"/>
+            <docDate date="2020-12-02">
+               <t v="2 December 2020"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -60,10 +62,14 @@
             </num>
             <p>
                <t v="By Decision 2011/C 253/04 of "/>
-               <date asWritten="29 August 2011" date="2011-08-29"/>
+               <date date="2011-08-29">
+                  <t v="29 August 2011"/>
+               </date>
                <noteRef href="#note_1" marker="1"/>
                <t v=" the Commission set up the Payment Systems Market Expert Group. That Decision is to apply until "/>
-               <date asWritten="31 December 2020" date="2020-12-31"/>
+               <date date="2020-12-31">
+                  <t v="31 December 2020"/>
+               </date>
                <t v=". The expert group aims to provide the Commission with a formal platform which allows for a structural exchange of views with market players on issues regarding the implementation and interpretation of the Directive (EU) 2015/2366 of the European Parliament and of the Council"/>
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
@@ -75,7 +81,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="24 September 2020" date="2020-09-24"/>
+               <date date="2020-09-24">
+                  <t v="24 September 2020"/>
+               </date>
                <t v=", the Commission adopted a Communication to the European Parliament, the Council, the European Economic and Social Committee and the Committee of the Regions on a Retail Payments Strategy for the EU"/>
                <noteRef href="#note_3" marker="3"/>
                <t v="."/>
@@ -95,7 +103,9 @@
             </num>
             <p>
                <t v="The Decision 2011/C 253/04 of "/>
-               <date asWritten="29 August 2011" date="2011-08-29"/>
+               <date date="2011-08-29">
+                  <t v="29 August 2011"/>
+               </date>
                <t v=" should therefore be amended accordingly,"/>
             </p>
          </unit>
@@ -113,14 +123,20 @@
          </num>
          <p>
             <t v="In Article 8 of Decision 2011/C 253/04 of "/>
-            <date asWritten="29 August 2011" date="2011-08-29"/>
+            <date date="2011-08-29">
+               <t v="29 August 2011"/>
+            </date>
             <t v=", the date "/>
             <quote startQuote="‘" endQuote="’">
-               <date asWritten="31 December 2020" date="2020-12-31"/>
+               <date date="2020-12-31">
+                  <t v="31 December 2020"/>
+               </date>
             </quote>
             <t v=" is replaced by the date "/>
             <quote startQuote="‘" endQuote="’">
-               <date asWritten="31 December 2025" date="2025-12-31"/>
+               <date date="2025-12-31">
+                  <t v="31 December 2025"/>
+               </date>
             </quote>
             <t v="."/>
          </p>
@@ -130,7 +146,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="2 December 2020" date="2020-12-02"/>
+            <date date="2020-12-02">
+               <t v="2 December 2020"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -157,7 +175,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Commission Decision of "/>
-            <date asWritten="29 August 2011" date="2011-08-29"/>
+            <date date="2011-08-29">
+               <t v="29 August 2011"/>
+            </date>
             <t v=" setting up a Payment Systems Market Expert Group ("/>
             <ref kind="oj"
                  series="C"
@@ -172,7 +192,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Directive (EU) 2015/2366 of the European Parliament and of the Council of "/>
-            <date asWritten="25 November 2015" date="2015-11-25"/>
+            <date date="2015-11-25">
+               <t v="25 November 2015"/>
+            </date>
             <t v=" on payment services in the internal market, amending Directives 2002/65/EC, 2009/110/EC and 2013/36/EU and Regulation (EU) No 1093/2010, and repealing Directive 2007/64/EC ("/>
             <ref kind="oj"
                  series="L"

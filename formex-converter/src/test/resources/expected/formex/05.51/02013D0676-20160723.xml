@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 July 2016" date="2016-07-18"/>
+               <docDate date="2016-07-18">
+                  <t v="18 July 2016"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -50,7 +52,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="15 November 2013" date="2013-11-15"/>
+            <docDate date="2013-11-15">
+               <t v="15 November 2013"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -73,7 +77,9 @@
                      action="replaced"
                      location="AR:1;PT:1"
                      marker="O001001M001000">
-               <date asWritten="31 December 2019" date="2019-12-31"/>
+               <date date="2019-12-31">
+                  <t v="31 December 2019"/>
+               </date>
             </changed>
             <t v=" to designate the taxable person to whom the supplies of goods or services referred to in Article 2 of this Decision are made as the person liable for the payment of the tax."/>
          </p>
@@ -96,7 +102,9 @@
                      action="replaced"
                      location="AR:1;PT:2"
                      marker="O001001M002000">
-               <date asWritten="1 April 2019" date="2019-04-01"/>
+               <date date="2019-04-01">
+                  <t v="1 April 2019"/>
+               </date>
             </changed>
             <t v=", and shall be accompanied by a report which includes an assessment of the efficiency of the measure and an evaluation of the risk of fraud in the wood sector."/>
          </p>

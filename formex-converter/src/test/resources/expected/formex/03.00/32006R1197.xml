@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="7 August 2006" date="2006-08-07"/>
+            <docDate date="2006-08-07">
+               <t v="7 August 2006"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2759/75 of "/>
-               <date asWritten="29 October 1975" date="1975-10-29"/>
+               <date date="1975-10-29">
+                  <t v="29 October 1975"/>
+               </date>
                <t v=" on the common organisation of the market in pigmeat"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 2 and 4(6) thereof,"/>
@@ -58,7 +62,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 3220/84 of "/>
-               <date asWritten="13 November 1984" date="1984-11-13"/>
+               <date date="1984-11-13">
+                  <t v="13 November 1984"/>
+               </date>
                <t v=" determining the Community scale for grading pig carcases"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 5(1) thereof,"/>
@@ -254,7 +260,9 @@
          <unit eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply to grading methods for which authorisation is requested, as provided in Article 3(3) of Regulation (EEC) No 2967/85, as from "/>
-               <date asWritten="1 July 2006" date="2006-07-01"/>
+               <date date="2006-07-01">
+                  <t v="1 July 2006"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -267,7 +275,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="7 August 2006" date="2006-08-07"/>
+            <date date="2006-08-07">
+               <t v="7 August 2006"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

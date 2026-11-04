@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Directive 79/923/EEC of "/>
-            <date asWritten="30 October 1979" date="1979-10-30"/>
+            <date date="1979-10-30">
+               <t v="30 October 1979"/>
+            </date>
             <t v=" on the quality required of shellfish waters"/>
          </p>
          <p>

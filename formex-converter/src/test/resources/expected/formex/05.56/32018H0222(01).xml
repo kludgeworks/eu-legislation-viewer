@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="20 February 2018" date="2018-02-20"/>
+            <docDate date="2018-02-20">
+               <t v="20 February 2018"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -62,7 +64,9 @@
    <body>
       <p>
          <t v="To appoint Mr Luis DE GUINDOS JURADO as Vice-President of the European Central Bank for a term of office of eight years with effect from "/>
-         <date asWritten="1 June 2018" date="2018-06-01"/>
+         <date date="2018-06-01">
+            <t v="1 June 2018"/>
+         </date>
          <t v="."/>
       </p>
    </body>
@@ -70,7 +74,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="20 February 2018" date="2018-02-20"/>
+            <date date="2018-02-20">
+               <t v="20 February 2018"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="5 July 2004" date="2004-07-05"/>
+            <docDate date="2004-07-05">
+               <t v="5 July 2004"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -50,7 +52,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1466/97 of "/>
-               <date asWritten="7 July 1997" date="1997-07-07"/>
+               <date date="1997-07-07">
+                  <t v="7 July 1997"/>
+               </date>
                <t v=" on the strengthening of the surveillance of budgetary positions and the surveillance and coordination of economic policies"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
@@ -76,7 +80,9 @@
    <body>
       <p>
          <t v="On "/>
-         <date asWritten="5 July 2004" date="2004-07-05"/>
+         <date date="2004-07-05">
+            <t v="5 July 2004"/>
+         </date>
          <t v=", the Council examined the convergence programme of Hungary, which covers the period 2004 to 2008. The programme largely complies with the data requirements of the revised "/>
          <quote startQuote="‘" endQuote="’">
             <t v="code of conduct on the content and format of stability and convergence programmes"/>
@@ -141,7 +147,9 @@
       </p>
       <p>
          <t v="On "/>
-         <date asWritten="5 July 2004" date="2004-07-05"/>
+         <date date="2004-07-05">
+            <t v="5 July 2004"/>
+         </date>
          <t v=", on the basis of recommendations from the Commission, the Council decided that an excessive deficit existed in Hungary in accordance with Article 104(6) of the Treaty and made recommendations under Article 104(7) to Hungary with a view to bringing that situation to an end, in which the Council expresses its policy advice."/>
       </p>
       <table cols="7">

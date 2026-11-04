@@ -54,7 +54,9 @@
          <unit eId="pbl_1/rct_2" kind="recital">
             <p>
                <t v="With the approval of the Council given on "/>
-               <date asWritten="9 April 2019" date="2019-04-09"/>
+               <date date="2019-04-09">
+                  <t v="9 April 2019"/>
+               </date>
                <t v=","/>
             </p>
          </unit>
@@ -72,7 +74,9 @@
          </num>
          <p>
             <t v="The following chapter is inserted in Title V of the Rules of Procedure of the Court of Justice of "/>
-            <date asWritten="25 September 2012" date="2012-09-25"/>
+            <date date="2012-09-25">
+               <t v="25 September 2012"/>
+            </date>
             <noteRef href="#note_1" marker="1"/>
             <t v=":"/>
          </p>
@@ -186,7 +190,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Luxembourg, "/>
-            <date asWritten="9 April 2019" date="2019-04-09"/>
+            <date date="2019-04-09">
+               <t v="9 April 2019"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -205,7 +211,9 @@
                <t v="OJ L 265, 29.9.2012, p. 1"/>
             </ref>
             <t v=", as amended on "/>
-            <date asWritten="18 June 2013" date="2013-06-18"/>
+            <date date="2013-06-18">
+               <t v="18 June 2013"/>
+            </date>
             <t v=" ("/>
             <ref kind="oj"
                  series="L"
@@ -215,7 +223,9 @@
                <t v="OJ L 173, 26.6.2013, p. 65"/>
             </ref>
             <t v=") and "/>
-            <date asWritten="19 July 2016" date="2016-07-19"/>
+            <date date="2016-07-19">
+               <t v="19 July 2016"/>
+            </date>
             <t v=" ("/>
             <ref kind="oj"
                  series="L"

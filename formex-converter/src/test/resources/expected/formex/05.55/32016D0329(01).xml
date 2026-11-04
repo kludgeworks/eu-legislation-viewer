@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="27 January 2016" date="2016-01-27"/>
+            <docDate date="2016-01-27">
+               <t v="27 January 2016"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -63,34 +65,48 @@
          </num>
          <p>
             <t v="For the judicial year beginning on "/>
-            <date asWritten="1 September 2016" date="2016-09-01"/>
+            <date date="2016-09-01">
+               <t v="1 September 2016"/>
+            </date>
             <t v=", the dates of the judicial vacations within the meaning of Article 41(2) and (6) of the Rules of Procedure are as follows:"/>
          </p>
          <list kind="dash">
             <unit eId="art_1/idt_1" kind="indent">
                <p>
                   <t v="Christmas 2016: from Monday "/>
-                  <date asWritten="19 December 2016" date="2016-12-19"/>
+                  <date date="2016-12-19">
+                     <t v="19 December 2016"/>
+                  </date>
                   <t v=" to Sunday "/>
-                  <date asWritten="8 January 2017" date="2017-01-08"/>
+                  <date date="2017-01-08">
+                     <t v="8 January 2017"/>
+                  </date>
                   <t v=" inclusive,"/>
                </p>
             </unit>
             <unit eId="art_1/idt_2" kind="indent">
                <p>
                   <t v="Easter 2017: from Monday "/>
-                  <date asWritten="10 April 2017" date="2017-04-10"/>
+                  <date date="2017-04-10">
+                     <t v="10 April 2017"/>
+                  </date>
                   <t v=" to Sunday "/>
-                  <date asWritten="23 April 2017" date="2017-04-23"/>
+                  <date date="2017-04-23">
+                     <t v="23 April 2017"/>
+                  </date>
                   <t v=" inclusive,"/>
                </p>
             </unit>
             <unit eId="art_1/idt_3" kind="indent">
                <p>
                   <t v="Summer 2017: from Friday "/>
-                  <date asWritten="21 July 2017" date="2017-07-21"/>
+                  <date date="2017-07-21">
+                     <t v="21 July 2017"/>
+                  </date>
                   <t v=" to Sunday "/>
-                  <date asWritten="3 September 2017" date="2017-09-03"/>
+                  <date date="2017-09-03">
+                     <t v="3 September 2017"/>
+                  </date>
                   <t v=" inclusive."/>
                </p>
             </unit>
@@ -115,7 +131,9 @@
       <signature>
          <placeAndDate>
             <t v="Luxembourg, "/>
-            <date asWritten="27 January 2016" date="2016-01-27"/>
+            <date date="2016-01-27">
+               <t v="27 January 2016"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

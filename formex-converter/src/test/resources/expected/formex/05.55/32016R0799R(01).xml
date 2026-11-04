@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Implementing Regulation (EU) 2016/799 of "/>
-            <date asWritten="18 March 2016" date="2016-03-18"/>
+            <date date="2016-03-18">
+               <t v="18 March 2016"/>
+            </date>
             <t v=" implementing Regulation (EU) No 165/2014 of the European Parliament and of the Council laying down the requirements for the construction, testing, installation, operation and repair of tachographs and their components"/>
          </p>
          <p>

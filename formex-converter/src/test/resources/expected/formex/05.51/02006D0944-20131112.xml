@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Commission Decision 2006/944/EC of "/>
-               <date asWritten="14 December 2006" date="2006-12-14"/>
+               <date date="2006-12-14">
+                  <t v="14 December 2006"/>
+               </date>
                <t v=" determining the respective emission levels allocated to the Community and each of its Member States under the Kyoto Protocol pursuant to Council Decision 2002/358/EC"/>
             </p>
             <p>
@@ -45,7 +47,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="15 December 2010" date="2010-12-15"/>
+               <docDate date="2010-12-15">
+                  <t v="15 December 2010"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -73,7 +77,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="8 November 2013" date="2013-11-08"/>
+               <docDate date="2013-11-08">
+                  <t v="8 November 2013"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -101,7 +107,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="14 December 2006" date="2006-12-14"/>
+            <docDate date="2006-12-14">
+               <t v="14 December 2006"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -131,7 +139,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2002/358/EC of "/>
-               <date asWritten="25 April 2002" date="2002-04-25"/>
+               <date date="2002-04-25">
+                  <t v="25 April 2002"/>
+               </date>
                <t v=" concerning the approval, on behalf of the European Community, of the Kyoto Protocol to the United Nations Framework Convention on Climate Change and the joint fulfilment of commitments thereunder"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 3 thereof,"/>
@@ -157,7 +167,9 @@
                   <t v="respective emission levels"/>
                </changed>
                <t v=" allocated to the Community and its Member States subject to Article 4 of the Kyoto Protocol. Annex B to the Kyoto Protocol sets quantified emission limitation or reduction commitments for the purpose of determining the emission levels allocated to the Member States that acceded to the Community after "/>
-               <date asWritten="25 April 2002" date="2002-04-25"/>
+               <date date="2002-04-25">
+                  <t v="25 April 2002"/>
+               </date>
                <t v=", except Cyprus and Malta which do not yet have quantified emission limitation or reduction commitments under the Kyoto Protocol.&#xA;"/>
             </p>
          </unit>
@@ -174,7 +186,9 @@
                   <t v="respective emission levels"/>
                </changed>
                <t v=" allocated to the Community and its Member States, expressed in tonnes of carbon dioxide equivalent, are determined in the Annex to this Decision. These emission levels are calculated on the basis of the revised base-year emissions data submitted by Member States pursuant to Article 23 of Commission Decision 2005/166/EC of "/>
-               <date asWritten="10 February 2005" date="2005-02-10"/>
+               <date date="2005-02-10">
+                  <t v="10 February 2005"/>
+               </date>
                <t v=" laying down rules implementing Decision 280/2004/EC of the European Parliament and of the Council concerning a mechanism for monitoring Community greenhouse gas emissions and for implementing the Kyoto Protocol"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", multiplied by the quantified emission limitation or reduction commitments set out in Annex II to Decision 2002/358/EC and Annex B to the Kyoto Protocol, multiplied by five, to represent the five years of the Protocol's first commitment period.&#xA;"/>

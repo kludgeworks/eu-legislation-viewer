@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="29 January 2004" date="2004-01-29"/>
+            <docDate date="2004-01-29">
+               <t v="29 January 2004"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -52,7 +54,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Decision 90/424/EEC of "/>
-               <date asWritten="26 June 1990" date="1990-06-26"/>
+               <date date="1990-06-26">
+                  <t v="26 June 1990"/>
+               </date>
                <t v=" on expenditure in the veterinary field"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 20 thereof,"/>
@@ -71,7 +75,9 @@
             </num>
             <p>
                <t v="Pursuant to Council Directive 92/40/EEC of "/>
-               <date asWritten="19 May 1992" date="1992-05-19"/>
+               <date date="1992-05-19">
+                  <t v="19 May 1992"/>
+               </date>
                <t v=" introducing Community measures for the control of avian influenza"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=" regular monitoring of poultry flocks and wild birds in order to assess the possible presence of disease in these populations is not foreseen."/>
@@ -191,7 +197,9 @@
          </num>
          <p>
             <t v="Member States shall submit for approval to the Commission by "/>
-            <date asWritten="15 March 2004" date="2004-03-15"/>
+            <date date="2004-03-15">
+               <t v="15 March 2004"/>
+            </date>
             <t v=" plans for the implementation of surveys for avian influenza in poultry and wild birds."/>
          </p>
       </unit>
@@ -218,7 +226,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="29 January 2004" date="2004-01-29"/>
+            <date date="2004-01-29">
+               <t v="29 January 2004"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

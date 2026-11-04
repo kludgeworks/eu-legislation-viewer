@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Decision (EU) 2022/911 of the European Central Bank of "/>
-            <date asWritten="19 April 2022" date="2022-04-19"/>
+            <date date="2022-04-19">
+               <t v="19 April 2022"/>
+            </date>
             <t v=" concerning the terms and conditions of TARGET-ECB and repealing Decision 2007/610/EC (ECB/2007/7) "/>
             <emphasis kind="i">
                <t v="(ECB/2022/22)"/>
@@ -45,7 +47,9 @@
                   <emphasis kind="b">
                      <t v="‘"/>
                      <t v="Decision (EU) 2022/911 of the European Central Bank of "/>
-                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                     <date date="2022-04-19">
+                        <t v="19 April 2022"/>
+                     </date>
                      <t v=" concerning the terms and conditions of TARGET-ECB and repealing Decision 2007/610/EC (ECB/2007/7) "/>
                      <emphasis kind="i">
                         <t v="(ECB/2022/22)"/>
@@ -65,7 +69,9 @@
                   <emphasis kind="b">
                      <t v="‘"/>
                      <t v="Decision (EU) 2022/911 of the European Central Bank of "/>
-                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                     <date date="2022-04-19">
+                        <t v="19 April 2022"/>
+                     </date>
                      <t v=" concerning the terms and conditions of TARGET-ECB and repealing Decision ECB/2007/7 "/>
                      <emphasis kind="i">
                         <t v="(ECB/2022/22)"/>
@@ -95,7 +101,9 @@
                <p>
                   <emphasis kind="b">
                      <t v="of "/>
-                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                     <date date="2022-04-19">
+                        <t v="19 April 2022"/>
+                     </date>
                   </emphasis>
                </p>
                <p>
@@ -124,7 +132,9 @@
                <p>
                   <emphasis kind="b">
                      <t v="of "/>
-                     <date asWritten="19 April 2022" date="2022-04-19"/>
+                     <date date="2022-04-19">
+                        <t v="19 April 2022"/>
+                     </date>
                   </emphasis>
                </p>
                <p>

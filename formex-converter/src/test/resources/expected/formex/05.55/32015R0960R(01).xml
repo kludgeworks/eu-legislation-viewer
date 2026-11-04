@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Regulation (EU) 2015/960 of "/>
-            <date asWritten="19 June 2015" date="2015-06-19"/>
+            <date date="2015-06-19">
+               <t v="19 June 2015"/>
+            </date>
             <t v=" amending Regulation (EU) 2015/104 as regards certain fishing opportunities"/>
          </p>
          <p>

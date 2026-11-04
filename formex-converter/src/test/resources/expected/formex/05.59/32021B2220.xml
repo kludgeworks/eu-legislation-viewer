@@ -48,7 +48,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="having regard to Council Decision (EU, Euratom) 2020/2053 of "/>
-               <date asWritten="14 December 2020" date="2020-12-14"/>
+               <date date="2020-12-14">
+                  <t v="14 December 2020"/>
+               </date>
                <t v=" on the system of own resources of the European Union and repealing Decision 2014/335/EU, Euratom"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
@@ -57,7 +59,9 @@
          <unit eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="having regard to Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council of "/>
-               <date asWritten="18 July 2018" date="2018-07-18"/>
+               <date date="2018-07-18">
+                  <t v="18 July 2018"/>
+               </date>
                <t v=" on the financial rules applicable to the general budget of the Union, amending Regulations (EU) No 1296/2013, (EU) No 1301/2013, (EU) No 1303/2013, (EU) No 1304/2013, (EU) No 1309/2013, (EU) No 1316/2013, (EU) No 223/2014, (EU) No 283/2014, and Decision No 541/2014/EU, and repealing Regulation (EU, Euratom) No 966/2012"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=","/>
@@ -66,7 +70,9 @@
          <unit eId="pbl_1/cit_5" kind="citation">
             <p>
                <t v="having regard to Council Regulation (EU, Euratom) 2020/2093 of "/>
-               <date asWritten="17 December 2020" date="2020-12-17"/>
+               <date date="2020-12-17">
+                  <t v="17 December 2020"/>
+               </date>
                <t v=" laying down the multiannual financial framework for the years 2021 to 2027"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=","/>
@@ -75,7 +81,9 @@
          <unit eId="pbl_1/cit_6" kind="citation">
             <p>
                <t v="having regard to the Interinstitutional Agreement of "/>
-               <date asWritten="16 December 2020" date="2020-12-16"/>
+               <date date="2020-12-16">
+                  <t v="16 December 2020"/>
+               </date>
                <t v=" between the European Parliament, the Council of the European Union and the European Commission on budgetary discipline, on cooperation in budgetary matters and on sound financial management, as well as on new own resources, including a roadmap towards the introduction of new own resources"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=","/>
@@ -84,7 +92,9 @@
          <unit eId="pbl_1/cit_7" kind="citation">
             <p>
                <t v="having regard to the general budget of the European Union for the financial year 2021, as definitively adopted on "/>
-               <date asWritten="18 December 2020" date="2020-12-18"/>
+               <date date="2020-12-18">
+                  <t v="18 December 2020"/>
+               </date>
                <noteRef href="#note_5" marker="5"/>
                <t v=","/>
             </p>
@@ -92,23 +102,31 @@
          <unit eId="pbl_1/cit_8" kind="citation">
             <p>
                <t v="having regard to Draft amending budget No 5 of the European Union for the financial year 2021, which the Commission adopted on "/>
-               <date asWritten="9 July 2021" date="2021-07-09"/>
+               <date date="2021-07-09">
+                  <t v="9 July 2021"/>
+               </date>
                <t v=","/>
             </p>
          </unit>
          <unit eId="pbl_1/cit_9" kind="citation">
             <p>
                <t v="having regard to the position on Draft amending budget No 5/2021, which the Council adopted on "/>
-               <date asWritten="5 October 2021" date="2021-10-05"/>
+               <date date="2021-10-05">
+                  <t v="5 October 2021"/>
+               </date>
                <t v=" and forwarded to Parliament on "/>
-               <date asWritten="14 October 2021" date="2021-10-14"/>
+               <date date="2021-10-14">
+                  <t v="14 October 2021"/>
+               </date>
                <t v=","/>
             </p>
          </unit>
          <unit eId="pbl_1/cit_10" kind="citation">
             <p>
                <t v="having regard to Parliament’s approval of "/>
-               <date asWritten="24 November 2021" date="2021-11-24"/>
+               <date date="2021-11-24">
+                  <t v="24 November 2021"/>
+               </date>
                <t v=" of the Council position,"/>
             </p>
          </unit>
@@ -138,7 +156,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Strasburg, "/>
-            <date asWritten="24 November 2021" date="2021-11-24"/>
+            <date date="2021-11-24">
+               <t v="24 November 2021"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -1749,7 +1769,9 @@
             </heading>
             <p>
                <t v="Council Regulation (EC) No 1257/96 of "/>
-               <date asWritten="20 June 1996" date="1996-06-20"/>
+               <date date="1996-06-20">
+                  <t v="20 June 1996"/>
+               </date>
                <t v=" concerning humanitarian aid ("/>
                <ref kind="oj"
                     series="L"

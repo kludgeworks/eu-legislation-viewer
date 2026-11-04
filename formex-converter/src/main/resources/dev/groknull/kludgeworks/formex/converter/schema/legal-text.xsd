@@ -1333,8 +1333,9 @@
   <xs:attributeGroup name="date">
     <xs:annotation>
       <xs:documentation>
-        A date's value and its wording. What a date means (adoption, entry into force, application) isn't in the
-        Formex markup: it comes from the act's dates in Cellar, joined by the application, not by the converter.
+        A date's value; its wording is its content, as printed ("1st January 2004", with the superscript and any
+        amendment inside it). What a date means (adoption, entry into force, application) isn't in the Formex
+        markup: it comes from the act's dates in Cellar, joined by the application, not by the converter.
       </xs:documentation>
     </xs:annotation>
     <xs:attribute name="date" type="xs:date">
@@ -1345,15 +1346,13 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="asWritten" type="xs:string" use="required">
-      <xs:annotation><xs:documentation>The date as printed: "5 November 2015".</xs:documentation></xs:annotation>
-    </xs:attribute>
   </xs:attributeGroup>
 
   <xs:complexType name="DateRef">
     <xs:annotation><xs:documentation>A date in the text (Formex DATE).</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
         <xs:attributeGroup ref="date"/>
       </xs:extension>
     </xs:complexContent>
@@ -1530,6 +1529,7 @@
     <xs:annotation><xs:documentation>In the long title: the date of the act.</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="InlineNode">
+        <xs:group ref="inline"/>
         <xs:attributeGroup ref="date"/>
       </xs:extension>
     </xs:complexContent>

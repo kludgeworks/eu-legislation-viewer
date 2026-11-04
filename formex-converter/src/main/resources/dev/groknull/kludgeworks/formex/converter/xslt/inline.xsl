@@ -149,9 +149,14 @@
     </xsl:call-template>
   </xsl:template>
 
+  <!-- a date keeps its wording as content: a superscript (1<HT TYPE="SUP">st</HT>) or an amendment
+       inside it (1 September <?CLG.MDFO?>2018<?CLG.MDFC?>) is the text's too -->
   <xsl:template match="DATE" mode="inline">
-    <date asWritten="{string(.)}">
+    <date>
       <xsl:sequence select="f:date-attribute('date', @ISO)"/>
+      <xsl:call-template name="f:inlines">
+        <xsl:with-param name="nodes" as="node()*" select="node()"/>
+      </xsl:call-template>
     </date>
   </xsl:template>
 

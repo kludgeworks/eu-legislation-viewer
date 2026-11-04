@@ -38,7 +38,9 @@
          </heading>
          <p>
             <t v="Brussels, "/>
-            <date asWritten="9 September 2013" date="2013-09-09"/>
+            <date date="2013-09-09">
+               <t v="9 September 2013"/>
+            </date>
          </p>
          <p>
             <t v="Sir,"/>
@@ -164,7 +166,9 @@
          </heading>
          <p>
             <t v="Brussels, "/>
-            <date asWritten="9 September 2013" date="2013-09-09"/>
+            <date date="2013-09-09">
+               <t v="9 September 2013"/>
+            </date>
          </p>
          <p>
             <t v="Sir,"/>

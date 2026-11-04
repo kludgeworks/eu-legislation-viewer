@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="11 July 2011" date="2011-07-11"/>
+            <docDate date="2011-07-11">
+               <t v="11 July 2011"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the Agreement of "/>
-               <date asWritten="25 June 2009" date="2009-06-25"/>
+               <date date="2009-06-25">
+                  <t v="25 June 2009"/>
+               </date>
                <t v=" between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=" (hereinafter "/>
@@ -62,7 +66,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2009/556/EC of "/>
-               <date asWritten="25 June 2009" date="2009-06-25"/>
+               <date date="2009-06-25">
+                  <t v="25 June 2009"/>
+               </date>
                <t v=" concerning the provisional application and conclusion of the Agreement between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular the second paragraph of Article 5 thereof,"/>
@@ -105,7 +111,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="11 July 2011" date="2011-07-11"/>
+            <date date="2011-07-11">
+               <t v="11 July 2011"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -170,7 +178,9 @@
          </p>
          <p>
             <t v="Having regard to the Agreement of "/>
-            <date asWritten="25 June 2009" date="2009-06-25"/>
+            <date date="2009-06-25">
+               <t v="25 June 2009"/>
+            </date>
             <t v=" between the European Community and the Swiss Confederation on the simplification of inspections and formalities in respect of the carriage of goods and on customs security measures"/>
             <noteRef href="#note_att01002901-1" marker="1"/>
             <t v=", and in particular Article 19(4) and (5),"/>

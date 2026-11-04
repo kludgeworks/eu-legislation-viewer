@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="23 April 2009" date="2009-04-23"/>
+            <docDate date="2009-04-23">
+               <t v="23 April 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -133,15 +135,21 @@
             </num>
             <p>
                <t v="Directive 2001/77/EC of the European Parliament and of the Council of "/>
-               <date asWritten="27 September 2001" date="2001-09-27"/>
+               <date date="2001-09-27">
+                  <t v="27 September 2001"/>
+               </date>
                <t v=" on the promotion of electricity produced from renewable energy sources in the internal electricity market"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=" and Directive 2003/30/EC of the European Parliament and of the Council of "/>
-               <date asWritten="8 May 2003" date="2003-05-08"/>
+               <date date="2003-05-08">
+                  <t v="8 May 2003"/>
+               </date>
                <t v=" on the promotion of the use of biofuels or other renewable fuels for transport"/>
                <noteRef href="#note_5" marker="5"/>
                <t v=" established definitions for different types of energy from renewable sources. Directive 2003/54/EC of the European Parliament and of the Council of "/>
-               <date asWritten="26 June 2003" date="2003-06-26"/>
+               <date date="2003-06-26">
+                  <t v="26 June 2003"/>
+               </date>
                <t v=" concerning common rules for the internal market in electricity"/>
                <noteRef href="#note_6" marker="6"/>
                <t v=" established definitions for the electricity sector in general. In the interests of legal certainty and clarity it is appropriate to use the same or similar definitions in this Directive."/>
@@ -153,19 +161,25 @@
             </num>
             <p>
                <t v="The Commission communication of "/>
-               <date asWritten="10 January 2007" date="2007-01-10"/>
+               <date date="2007-01-10">
+                  <t v="10 January 2007"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Renewable Energy Roadmap — Renewable energies in the 21st century: building a more sustainable future"/>
                </quote>
                <t v=" demonstrated that a 20 % target for the overall share of energy from renewable sources and a 10 % target for energy from renewable sources in transport would be appropriate and achievable objectives, and that a framework that includes mandatory targets should provide the business community with the long-term stability it needs to make rational, sustainable investments in the renewable energy sector which are capable of reducing dependence on imported fossil fuels and boosting the use of new energy technologies. Those targets exist in the context of the 20 % improvement in energy efficiency by 2020 set out in the Commission communication of "/>
-               <date asWritten="19 October 2006" date="2006-10-19"/>
+               <date date="2006-10-19">
+                  <t v="19 October 2006"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Action Plan for Energy Efficiency: Realising the Potential"/>
                </quote>
                <t v=", which was endorsed by the European Council of March 2007, and by the European Parliament in its resolution of "/>
-               <date asWritten="31 January 2008" date="2008-01-31"/>
+               <date date="2008-01-31">
+                  <t v="31 January 2008"/>
+               </date>
                <t v=" on that Action Plan."/>
             </p>
          </unit>
@@ -175,7 +189,9 @@
             </num>
             <p>
                <t v="The European Council of March 2007 reaffirmed the Community’s commitment to the Community-wide development of energy from renewable sources beyond 2010. It endorsed a mandatory target of a 20 % share of energy from renewable sources in overall Community energy consumption by 2020 and a mandatory 10 % minimum target to be achieved by all Member States for the share of biofuels in transport petrol and diesel consumption by 2020, to be introduced in a cost-effective way. It stated that the binding character of the biofuel target is appropriate, subject to production being sustainable, second-generation biofuels becoming commercially available and Directive 98/70/EC of the European Parliament and of the Council of "/>
-               <date asWritten="13 October 1998" date="1998-10-13"/>
+               <date date="1998-10-13">
+                  <t v="13 October 1998"/>
+               </date>
                <t v=" relating to the quality of petrol and diesel fuels"/>
                <noteRef href="#note_7" marker="7"/>
                <t v=" being amended to allow for adequate levels of blending. The European Council of March 2008 repeated that it is essential to develop and fulfil effective sustainability criteria for biofuels and ensure the commercial availability of second-generation biofuels. The European Council of June 2008 referred again to the sustainability criteria and the development of second-generation biofuels, and underlined the need to assess the possible impacts of biofuel production on agricultural food products and to take action, if necessary, to address shortcomings. It also stated that further assessment should be made of the environmental and social consequences of the production and consumption of biofuels."/>
@@ -187,7 +203,9 @@
             </num>
             <p>
                <t v="In its resolution of "/>
-               <date asWritten="25 September 2007" date="2007-09-25"/>
+               <date date="2007-09-25">
+                  <t v="25 September 2007"/>
+               </date>
                <t v=" on the Road Map for Renewable Energy in Europe"/>
                <noteRef href="#note_8" marker="8"/>
                <t v=", the European Parliament called on the Commission to present, by the end of 2007, a proposal for a legislative framework for energy from renewable sources, referring to the importance of setting targets for the shares of energy from renewable sources at Community and Member State level."/>
@@ -247,15 +265,21 @@
             </num>
             <p>
                <t v="The improvement of energy efficiency is a key objective of the Community, and the aim is to achieve a 20 % improvement in energy efficiency by 2020. That aim, together with existing and future legislation including Directive 2002/91/EC of the European Parliament and of the Council of "/>
-               <date asWritten="16 December 2002" date="2002-12-16"/>
+               <date date="2002-12-16">
+                  <t v="16 December 2002"/>
+               </date>
                <t v=" on the energy performance of buildings"/>
                <noteRef href="#note_9" marker="9"/>
                <t v=", Directive 2005/32/EC of the European Parliament and of the Council of "/>
-               <date asWritten="6 July 2005" date="2005-07-06"/>
+               <date date="2005-07-06">
+                  <t v="6 July 2005"/>
+               </date>
                <t v=" establishing a framework for the setting of ecodesign requirements for energy-using products"/>
                <noteRef href="#note_10" marker="10"/>
                <t v=", and Directive 2006/32/EC of the European Parliament and of the Council of "/>
-               <date asWritten="5 April 2006" date="2006-04-05"/>
+               <date date="2006-04-05">
+                  <t v="5 April 2006"/>
+               </date>
                <t v=" on energy end-use efficiency and energy services"/>
                <noteRef href="#note_11" marker="11"/>
                <t v=", has a critical role to play in ensuring that the climate and energy objectives are being achieved at least cost, and can also provide new opportunities for the European Union’s economy. Energy efficiency and energy saving policies are some of the most effective methods by which Member States can increase the percentage share of energy from renewable sources, and Member States will thus more easily achieve the overall national and transport targets for energy from renewable sources laid down by this Directive."/>
@@ -355,7 +379,9 @@
             </num>
             <p>
                <t v="Member States should aim to diversify the mix of energy from renewable sources in all transport sectors. The Commission should present a report to the European Parliament and the Council by "/>
-               <date asWritten="1 June 2015" date="2015-06-01"/>
+               <date date="2015-06-01">
+                  <t v="1 June 2015"/>
+               </date>
                <t v=" outlining the potential for increasing the use of energy from renewable sources in each transport sector."/>
             </p>
          </unit>
@@ -487,7 +513,9 @@
             </num>
             <p>
                <t v="National technical specifications and other requirements falling within the scope of Directive 98/34/EC of the European Parliament and of the Council of "/>
-               <date asWritten="22 June 1998" date="1998-06-22"/>
+               <date date="1998-06-22">
+                  <t v="22 June 1998"/>
+               </date>
                <t v=" laying down a procedure for the provision of information in the field of technical standards and regulations and rules on Information Society services"/>
                <noteRef href="#note_13" marker="13"/>
                <t v=", relating for example to levels of quality, testing methods or conditions of use, should not create barriers for trade in renewable energy equipment and systems. Therefore, support schemes for energy from renewable sources should not prescribe national technical specifications which deviate from existing Community standards or require the supported equipment or systems to be certified or tested in a specified location or by a specified entity."/>
@@ -531,7 +559,9 @@
             </num>
             <p>
                <t v="In so far as the access or pursuit of the profession of installer is a regulated profession, the preconditions for the recognition of professional qualifications are laid down in Directive 2005/36/EC of the European Parliament and of the Council of "/>
-               <date asWritten="7 September 2005" date="2005-09-07"/>
+               <date date="2005-09-07">
+                  <t v="7 September 2005"/>
+               </date>
                <t v=" on the recognition of professional qualifications"/>
                <noteRef href="#note_14" marker="14"/>
                <t v=". This Directive therefore applies without prejudice to Directive 2005/36/EC."/>
@@ -575,7 +605,9 @@
             </num>
             <p>
                <t v="Directive 2004/8/EC of the European Parliament and of the Council of "/>
-               <date asWritten="11 February 2004" date="2004-02-11"/>
+               <date date="2004-02-11">
+                  <t v="11 February 2004"/>
+               </date>
                <t v=" on the promotion of cogeneration based on a useful heat demand in the internal energy market"/>
                <noteRef href="#note_15" marker="15"/>
                <t v=" provides for guarantees of origin for proving the origin of electricity produced from high-efficiency cogeneration plants. Such guarantees of origin cannot be used when disclosing the use of energy from renewable sources in accordance with Article 3(6) of Directive 2003/54/EC as this might result in double counting and double disclosure."/>
@@ -723,7 +755,9 @@
             </num>
             <p>
                <t v="Land should not be converted for the production of biofuels if its carbon stock loss upon conversion could not, within a reasonable period, taking into account the urgency of tackling climate change, be compensated by the greenhouse gas emission saving resulting from the production of biofuels or bioliquids. This would prevent unnecessary, burdensome research by economic operators and the conversion of high-carbon-stock land that would prove to be ineligible for producing raw materials for biofuels and bioliquids. Inventories of worldwide carbon stocks indicate that wetlands and continuously forested areas with a canopy cover of more than 30 % should be included in that category. Forested areas with a canopy cover of between 10 and 30 % should also be included, unless there is evidence demonstrating that their carbon stock is sufficiently low to justify their conversion in accordance with the rules laid down in this Directive. The reference to wetlands should take into account the definition laid down in the Convention on Wetlands of International Importance, especially as Waterfowl Habitat, adopted on "/>
-               <date asWritten="2 February 1971" date="1971-02-02"/>
+               <date date="1971-02-02">
+                  <t v="2 February 1971"/>
+               </date>
                <t v=" in Ramsar."/>
             </p>
          </unit>
@@ -861,7 +895,9 @@
             </num>
             <p>
                <t v="The implementation of this Directive should reflect, where relevant, the provisions of the Convention on Access to Information, Public Participation in Decision-Making and Access to Justice in Environmental Matters, in particular as implemented through Directive 2003/4/EC of the European Parliament and of the Council of "/>
-               <date asWritten="28 January 2003" date="2003-01-28"/>
+               <date date="2003-01-28">
+                  <t v="28 January 2003"/>
+               </date>
                <t v=" on public access to environmental information"/>
                <noteRef href="#note_16" marker="16"/>
                <t v="."/>
@@ -873,7 +909,9 @@
             </num>
             <p>
                <t v="The measures necessary for the implementation of this Directive should be adopted in accordance with Council Decision 1999/468/EC of "/>
-               <date asWritten="28 June 1999" date="1999-06-28"/>
+               <date date="1999-06-28">
+                  <t v="28 June 1999"/>
+               </date>
                <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
                <noteRef href="#note_17" marker="17"/>
                <t v="."/>
@@ -1223,12 +1261,16 @@
             </list>
             <p>
                <t v="By "/>
-               <date asWritten="31 December 2011" date="2011-12-31"/>
+               <date date="2011-12-31">
+                  <t v="31 December 2011"/>
+               </date>
                <t v=", the Commission shall present, if appropriate, a proposal permitting, subject to certain conditions, the whole amount of the electricity originating from renewable sources used to power all types of electric vehicles to be considered."/>
             </p>
             <p>
                <t v="By "/>
-               <date asWritten="31 December 2011" date="2011-12-31"/>
+               <date date="2011-12-31">
+                  <t v="31 December 2011"/>
+               </date>
                <t v=", the Commission shall also present, if appropriate, a proposal for a methodology for calculating the contribution of hydrogen originating from renewable sources in the total fuel mix."/>
             </p>
          </unit>
@@ -1249,7 +1291,9 @@
             </p>
             <p>
                <t v="By "/>
-               <date asWritten="30 June 2009" date="2009-06-30"/>
+               <date date="2009-06-30">
+                  <t v="30 June 2009"/>
+               </date>
                <t v=", the Commission shall adopt a template for the national renewable energy action plans. That template shall comprise the minimum requirements set out in Annex VI. Member States shall comply with that template in the presentation of their national renewable energy action plans."/>
             </p>
          </unit>
@@ -1259,7 +1303,9 @@
             </num>
             <p>
                <t v="Member States shall notify their national renewable energy action plans to the Commission by "/>
-               <date asWritten="30 June 2010" date="2010-06-30"/>
+               <date date="2010-06-30">
+                  <t v="30 June 2010"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -1434,7 +1480,9 @@
             </num>
             <p>
                <t v="The methodology and definitions used in the calculation of the share of energy from renewable sources shall be those of Regulation (EC) No 1099/2008 of the European Parliament and of the Council of "/>
-               <date asWritten="22 October 2008" date="2008-10-22"/>
+               <date date="2008-10-22">
+                  <t v="22 October 2008"/>
+               </date>
                <t v=" on energy statistics"/>
                <noteRef href="#note_19" marker="19"/>
                <t v="."/>
@@ -1518,7 +1566,9 @@
             </num>
             <p>
                <t v="Member States shall notify the Commission of the proportion or amount of electricity, heating or cooling from renewable energy sources produced by any joint project in their territory, that became operational after "/>
-               <date asWritten="25 June 2009" date="2009-06-25"/>
+               <date date="2009-06-25">
+                  <t v="25 June 2009"/>
+               </date>
                <t v=", or by the increased capacity of an installation that was refurbished after that date, which is to be regarded as counting towards the national overall target of another Member State for the purposes of measuring compliance with the requirements of this Directive."/>
             </p>
          </unit>
@@ -1712,7 +1762,9 @@
                   </num>
                   <p>
                      <t v="the electricity is produced by a newly constructed installation that became operational after "/>
-                     <date asWritten="25 June 2009" date="2009-06-25"/>
+                     <date date="2009-06-25">
+                        <t v="25 June 2009"/>
+                     </date>
                      <t v=" or by the increased capacity of an installation that was refurbished after that date, under a joint project as referred to in paragraph 1; and"/>
                   </p>
                </unit>
@@ -1740,7 +1792,9 @@
                   </num>
                   <p>
                      <t v="construction of the interconnector started by "/>
-                     <date asWritten="31 December 2016" date="2016-12-31"/>
+                     <date date="2016-12-31">
+                        <t v="31 December 2016"/>
+                     </date>
                      <t v=";"/>
                   </p>
                </unit>
@@ -1750,7 +1804,9 @@
                   </num>
                   <p>
                      <t v="it is not possible for the interconnector to become operational by "/>
-                     <date asWritten="31 December 2020" date="2020-12-31"/>
+                     <date date="2020-12-31">
+                        <t v="31 December 2020"/>
+                     </date>
                      <t v=";"/>
                   </p>
                </unit>
@@ -1760,7 +1816,9 @@
                   </num>
                   <p>
                      <t v="it is possible for the interconnector to become operational by "/>
-                     <date asWritten="31 December 2022" date="2022-12-31"/>
+                     <date date="2022-12-31">
+                        <t v="31 December 2022"/>
+                     </date>
                      <t v=";"/>
                   </p>
                </unit>
@@ -2072,7 +2130,9 @@
             </p>
             <p>
                <t v="By "/>
-               <date asWritten="31 December 2014" date="2014-12-31"/>
+               <date date="2014-12-31">
+                  <t v="31 December 2014"/>
+               </date>
                <t v=", Member States shall, in their building regulations and codes or by other means with equivalent effect, where appropriate, require the use of minimum levels of energy from renewable sources in new buildings and in existing buildings that are subject to major renovation. Member States shall permit those minimum levels to be fulfilled, inter alia, through district heating and cooling produced using a significant proportion of renewable energy sources."/>
             </p>
             <p>
@@ -2085,7 +2145,9 @@
             </num>
             <p>
                <t v="Member States shall ensure that new public buildings, and existing public buildings that are subject to major renovation, at national, regional and local level fulfil an exemplary role in the context of this Directive from "/>
-               <date asWritten="1 January 2012" date="2012-01-01"/>
+               <date date="2012-01-01">
+                  <t v="1 January 2012"/>
+               </date>
                <t v=" onwards. Member States may, inter alia, allow that obligation to be fulfilled by complying with standards for zero energy housing, or by providing that the roofs of public or mixed private-public buildings are used by third parties for installations that produce energy from renewable sources."/>
             </p>
          </unit>
@@ -2101,7 +2163,9 @@
             </p>
             <p>
                <t v="In the case of heat pumps, Member States shall promote those that fulfil the minimum requirements of eco-labelling established in Commission Decision 2007/742/EC of "/>
-               <date asWritten="9 November 2007" date="2007-11-09"/>
+               <date date="2007-11-09">
+                  <t v="9 November 2007"/>
+               </date>
                <t v=" establishing the ecological criteria for the award of the Community eco-label to electrically driven, gas driven or gas absorption heat pumps"/>
                <noteRef href="#note_20" marker="20"/>
                <t v="."/>
@@ -2143,7 +2207,9 @@
             </num>
             <p>
                <t v="Member States shall ensure that certification schemes or equivalent qualification schemes become or are available by "/>
-               <date asWritten="31 December 2012" date="2012-12-31"/>
+               <date date="2012-12-31">
+                  <t v="31 December 2012"/>
+               </date>
                <t v=" for installers of small-scale biomass boilers and stoves, solar photovoltaic and solar thermal systems, shallow geothermal systems and heat pumps. Those schemes may take into account existing schemes and structures as appropriate, and shall be based on the criteria laid down in Annex IV. Each Member State shall recognise certification awarded by other Member States in accordance with those criteria."/>
             </p>
          </unit>
@@ -2350,7 +2416,9 @@
             </num>
             <p>
                <t v="Where energy suppliers market energy from renewable sources to consumers with a reference to environmental or other benefits of energy from renewable sources, Member States may require those energy suppliers to make available, in summary form, information on the amount or share of energy from renewable sources that comes from installations or increased capacity that became operational after "/>
-               <date asWritten="25 June 2009" date="2009-06-25"/>
+               <date date="2009-06-25">
+                  <t v="25 June 2009"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -2421,7 +2489,9 @@
             </num>
             <p>
                <t v="Where appropriate, Member States may require transmission system operators and distribution system operators to bear, in full or in part, the costs referred to in paragraph 3. Member States shall review and take the necessary measures to improve the frameworks and rules for the bearing and sharing of costs referred to in paragraph 3 by "/>
-               <date asWritten="30 June 2011" date="2011-06-30"/>
+               <date date="2011-06-30">
+                  <t v="30 June 2011"/>
+               </date>
                <t v=" and every two years thereafter to ensure the integration of new producers as referred to in that paragraph."/>
             </p>
          </unit>
@@ -2500,7 +2570,9 @@
             </num>
             <p>
                <t v="Where relevant, Member States shall require transmission system operators and distribution system operators in their territory to publish technical rules in line with Article 6 of Directive 2003/55/EC of the European Parliament and of the Council of "/>
-               <date asWritten="26 June 2003" date="2003-06-26"/>
+               <date date="2003-06-26">
+                  <t v="26 June 2003"/>
+               </date>
                <t v=" concerning the common rules for the internal market in natural gas"/>
                <noteRef href="#note_21" marker="21"/>
                <t v=", in particular regarding network connection rules that include gas quality, gas odoration and gas pressure requirements. Member States shall also require transmission and distribution system operators to publish the connection tariffs to connect renewable gas sources based on transparent and non-discriminatory criteria."/>
@@ -2568,11 +2640,17 @@
             </p>
             <p>
                <t v="With effect from "/>
-               <date asWritten="1 January 2017" date="2017-01-01"/>
+               <date date="2017-01-01">
+                  <t v="1 January 2017"/>
+               </date>
                <t v=", the greenhouse gas emission saving from the use of biofuels and bioliquids taken into account for the purposes referred to in points (a), (b) and (c) of paragraph 1 shall be at least 50 %. From "/>
-               <date asWritten="1 January 2018" date="2018-01-01"/>
+               <date date="2018-01-01">
+                  <t v="1 January 2018"/>
+               </date>
                <t v=" that greenhouse gas emission saving shall be at least 60 % for biofuels and bioliquids produced in installations in which production started on or after "/>
-               <date asWritten="1 January 2017" date="2017-01-01"/>
+               <date date="2017-01-01">
+                  <t v="1 January 2017"/>
+               </date>
                <t v="."/>
             </p>
             <p>
@@ -2580,9 +2658,13 @@
             </p>
             <p>
                <t v="In the case of biofuels and bioliquids produced by installations that were in operation on "/>
-               <date asWritten="23 January 2008" date="2008-01-23"/>
+               <date date="2008-01-23">
+                  <t v="23 January 2008"/>
+               </date>
                <t v=", the first subparagraph shall apply from "/>
-               <date asWritten="1 April 2013" date="2013-04-01"/>
+               <date date="2013-04-01">
+                  <t v="1 April 2013"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -2717,7 +2799,9 @@
                   <t v="Environment"/>
                </quote>
                <t v=" in part A and in point 9 of Annex II to Council Regulation (EC) No 73/2009 of "/>
-               <date asWritten="19 January 2009" date="2009-01-19"/>
+               <date date="2009-01-19">
+                  <t v="19 January 2009"/>
+               </date>
                <t v=" establishing common rules for direct support schemes for farmers under the common agricultural policy and establishing certain support schemes for farmers"/>
                <noteRef href="#note_22" marker="22"/>
                <t v=" and in accordance with the minimum requirements for good agricultural and environmental condition defined pursuant to Article 6(1) of that Regulation."/>
@@ -2808,7 +2892,9 @@
             </num>
             <p>
                <t v="The Commission shall report on requirements for a sustainability scheme for energy uses of biomass, other than biofuels and bioliquids, by "/>
-               <date asWritten="31 December 2009" date="2009-12-31"/>
+               <date date="2009-12-31">
+                  <t v="31 December 2009"/>
+               </date>
                <t v=". That report shall be accompanied, where appropriate, by proposals for a sustainability scheme for other energy uses of biomass, to the European Parliament and the Council. That report and any proposals contained therein shall be based on the best available scientific evidence, taking into account new developments in innovative processes. If the analysis done for that purpose demonstrates that it would be appropriate to introduce amendments, in relation to forest biomass, in the calculation methodology in Annex V or in the sustainability criteria relating to carbon stocks applied to biofuels and bioliquids, the Commission shall, where appropriate, make proposals to the European Parliament and Council at the same time in this regard."/>
             </p>
          </unit>
@@ -2937,7 +3023,9 @@
             </num>
             <p>
                <t v="By "/>
-               <date asWritten="31 December 2012" date="2012-12-31"/>
+               <date date="2012-12-31">
+                  <t v="31 December 2012"/>
+               </date>
                <t v=", the Commission shall report to the European Parliament and to the Council on:"/>
             </p>
             <list kind="alpha">
@@ -3017,9 +3105,13 @@
             </num>
             <p>
                <t v="By "/>
-               <date asWritten="31 March 2010" date="2010-03-31"/>
+               <date date="2010-03-31">
+                  <t v="31 March 2010"/>
+               </date>
                <t v=", Member States shall submit to the Commission a report including a list of those areas on their territory classified as level 2 in the nomenclature of territorial units for statistics (NUTS) or as a more disaggregated NUTS level in accordance with Regulation (EC) No 1059/2003 of the European Parliament and of the Council of "/>
-               <date asWritten="26 May 2003" date="2003-05-26"/>
+               <date date="2003-05-26">
+                  <t v="26 May 2003"/>
+               </date>
                <t v=" on the establishment of a common classification of territorial units for statistics (NUTS)"/>
                <noteRef href="#note_23" marker="23"/>
                <t v=" where the typical greenhouse gas emissions from cultivation of agricultural raw materials can be expected to be lower than or equal to the emissions reported under the heading "/>
@@ -3072,7 +3164,9 @@
             </num>
             <p>
                <t v="By "/>
-               <date asWritten="31 March 2010" date="2010-03-31"/>
+               <date date="2010-03-31">
+                  <t v="31 March 2010"/>
+               </date>
                <t v=", the Commission shall submit a report to the European Parliament and to the Council on the feasibility of drawing up lists of areas in third countries where the typical greenhouse gas emissions from cultivation of agricultural raw materials can be expected to be lower than or equal to the emissions reported under the heading "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="cultivation"/>
@@ -3086,7 +3180,9 @@
             </num>
             <p>
                <t v="The Commission shall report by "/>
-               <date asWritten="31 December 2012" date="2012-12-31"/>
+               <date date="2012-12-31">
+                  <t v="31 December 2012"/>
+               </date>
                <t v=", and every two years thereafter, on the estimated typical and default values in parts B and E of Annex V, paying particular attention to emissions from transport and processing, and may, where necessary, decide to correct the values. Those measures, designed to amend non-essential elements of this Directive, shall be adopted in accordance with the regulatory procedure with scrutiny referred to in Article 25(4)."/>
             </p>
          </unit>
@@ -3096,17 +3192,23 @@
             </num>
             <p>
                <t v="The Commission shall, by "/>
-               <date asWritten="31 December 2010" date="2010-12-31"/>
+               <date date="2010-12-31">
+                  <t v="31 December 2010"/>
+               </date>
                <t v=", submit a report to the European Parliament and to the Council reviewing the impact of indirect land-use change on greenhouse gas emissions and addressing ways to minimise that impact. The report shall, if appropriate, be accompanied, by a proposal, based on the best available scientific evidence, containing a concrete methodology for emissions from carbon stock changes caused by indirect land-use changes, ensuring compliance with this Directive, in particular Article 17(2)."/>
             </p>
             <p>
                <t v="Such a proposal shall include the necessary safeguards to provide certainty for investment undertaken before that methodology is applied. With respect to installations that produced biofuels before the end of 2013, the application of the measures referred to in the first subparagraph shall not, until "/>
-               <date asWritten="31 December 2017" date="2017-12-31"/>
+               <date date="2017-12-31">
+                  <t v="31 December 2017"/>
+               </date>
                <t v=", lead to biofuels produced by those installations being deemed to have failed to comply with the sustainability requirements of this Directive if they would otherwise have done so, provided that those biofuels achieve a greenhouse gas emission saving of at least 45 %. This shall apply to the capacities of the installations of biofuels at the end of 2012."/>
             </p>
             <p>
                <t v="The European Parliament and the Council shall endeavour to decide, by "/>
-               <date asWritten="31 December 2012" date="2012-12-31"/>
+               <date date="2012-12-31">
+                  <t v="31 December 2012"/>
+               </date>
                <t v=", on any such proposals submitted by the Commission."/>
             </p>
          </unit>
@@ -3224,9 +3326,13 @@
             </num>
             <p>
                <t v="Each Member State shall submit a report to the Commission on progress in the promotion and use of energy from renewable sources by "/>
-               <date asWritten="31 December 2011" date="2011-12-31"/>
+               <date date="2011-12-31">
+                  <t v="31 December 2011"/>
+               </date>
                <t v=", and every two years thereafter. The sixth report, to be submitted by "/>
-               <date asWritten="31 December 2021" date="2021-12-31"/>
+               <date date="2021-12-31">
+                  <t v="31 December 2021"/>
+               </date>
                <t v=", shall be the last report required."/>
             </p>
             <p>
@@ -3512,7 +3618,9 @@
             </num>
             <p>
                <t v="In order to improve financing and coordination with a view to the achievement of the 20 % target referred to in Article 3(1), the Commission shall, by "/>
-               <date asWritten="31 December 2010" date="2010-12-31"/>
+               <date date="2010-12-31">
+                  <t v="31 December 2010"/>
+               </date>
                <t v=", present an analysis and action plan on energy from renewable sources with a view, in particular, to:"/>
             </p>
             <list kind="alpha">
@@ -3564,7 +3672,9 @@
             </num>
             <p>
                <t v="By "/>
-               <date asWritten="31 December 2014" date="2014-12-31"/>
+               <date date="2014-12-31">
+                  <t v="31 December 2014"/>
+               </date>
                <t v=", the Commission shall present a report, addressing, in particular, the following elements:"/>
             </p>
             <list kind="alpha">
@@ -3851,7 +3961,9 @@
             </num>
             <p>
                <t v="In Directive 2001/77/EC, Article 2, Article 3(2), and Articles 4 to 8 shall be deleted with effect from "/>
-               <date asWritten="1 April 2010" date="2010-04-01"/>
+               <date date="2010-04-01">
+                  <t v="1 April 2010"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -3861,7 +3973,9 @@
             </num>
             <p>
                <t v="In Directive 2003/30/EC, Article 2, Article 3(2), (3) and (5), and Articles 5 and 6 shall be deleted with effect from "/>
-               <date asWritten="1 April 2010" date="2010-04-01"/>
+               <date date="2010-04-01">
+                  <t v="1 April 2010"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -3871,7 +3985,9 @@
             </num>
             <p>
                <t v="Directives 2001/77/EC and 2003/30/EC shall be repealed with effect from "/>
-               <date asWritten="1 January 2012" date="2012-01-01"/>
+               <date date="2012-01-01">
+                  <t v="1 January 2012"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -3889,7 +4005,9 @@
             </num>
             <p>
                <t v="Without prejudice to Article 4(1), (2) and (3), Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by "/>
-               <date asWritten="5 December 2010" date="2010-12-05"/>
+               <date date="2010-12-05">
+                  <t v="5 December 2010"/>
+               </date>
                <t v="."/>
             </p>
             <p>
@@ -3936,7 +4054,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Strasbourg, "/>
-            <date asWritten="23 April 2009" date="2009-04-23"/>
+            <date date="2009-04-23">
+               <t v="23 April 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -3981,7 +4101,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Opinion of "/>
-            <date asWritten="17 September 2008" date="2008-09-17"/>
+            <date date="2008-09-17">
+               <t v="17 September 2008"/>
+            </date>
             <t v=" ("/>
             <ref kind="oj"
                  series="C"
@@ -4008,9 +4130,13 @@
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Opinion of the European Parliament of "/>
-            <date asWritten="17 December 2008" date="2008-12-17"/>
+            <date date="2008-12-17">
+               <t v="17 December 2008"/>
+            </date>
             <t v=" (not yet published in the Official Journal) and Council Decision of "/>
-            <date asWritten="6 April 2009" date="2009-04-06"/>
+            <date date="2009-04-06">
+               <t v="6 April 2009"/>
+            </date>
             <t v="."/>
          </p>
       </note>
@@ -6913,7 +7039,9 @@
             </num>
             <p>
                <t v="The Commission shall adopt, by "/>
-               <date asWritten="31 December 2009" date="2009-12-31"/>
+               <date date="2009-12-31">
+                  <t v="31 December 2009"/>
+               </date>
                <t v=", guidelines for the calculation of land carbon stocks drawing on the 2006 IPCC Guidelines for National Greenhouse Gas Inventories — volume 4. The Commission guidelines shall serve as the basis for the calculation of land carbon stocks for the purposes of this Directive."/>
             </p>
          </unit>
@@ -9520,7 +9648,9 @@
             <note eId="note_anx01005201-1" marker="*" kind="table">
                <p>
                   <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002 of the European Parliament and of the Council of "/>
-                  <date asWritten="3 October 2002" date="2002-10-03"/>
+                  <date date="2002-10-03">
+                     <t v="3 October 2002"/>
+                  </date>
                   <t v=" laying down health rules on animal by-products not intended for human consumption"/>
                   <noteRef href="#note_anx01005201-2" marker="1"/>
                   <t v="."/>
@@ -9842,7 +9972,9 @@
          </list>
          <p>
             <t v="By "/>
-            <date asWritten="1 January 2013" date="2013-01-01"/>
+            <date date="2013-01-01">
+               <t v="1 January 2013"/>
+            </date>
             <t v=", the Commission shall establish guidelines on how Member States are to estimate the values of "/>
             <emphasis kind="i">
                <t v="Q"/>

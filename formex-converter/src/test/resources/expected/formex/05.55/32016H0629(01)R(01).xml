@@ -18,7 +18,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Recommendation of "/>
-            <date asWritten="28 June 2016" date="2016-06-28"/>
+            <date date="2016-06-28">
+               <t v="28 June 2016"/>
+            </date>
             <t v=" on the monitoring of the presence of nickel in feed"/>
          </p>
          <p>

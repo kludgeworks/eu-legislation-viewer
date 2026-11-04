@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="9 July 2019" date="2019-07-09"/>
+            <docDate date="2019-07-09">
+               <t v="9 July 2019"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -62,7 +64,9 @@
    <body>
       <p>
          <t v="Ms Christine LAGARDE be appointed as President of the European Central Bank for a term of office of eight years with effect from "/>
-         <date asWritten="1 November 2019" date="2019-11-01"/>
+         <date date="2019-11-01">
+            <t v="1 November 2019"/>
+         </date>
          <t v="."/>
       </p>
    </body>
@@ -70,7 +74,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="9 July 2019" date="2019-07-09"/>
+            <date date="2019-07-09">
+               <t v="9 July 2019"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

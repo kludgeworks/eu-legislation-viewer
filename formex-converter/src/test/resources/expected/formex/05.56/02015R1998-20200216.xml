@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 December 2015" date="2015-12-18"/>
+               <docDate date="2015-12-18">
+                  <t v="18 December 2015"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -56,7 +58,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="12 May 2017" date="2017-05-12"/>
+               <docDate date="2017-05-12">
+                  <t v="12 May 2017"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -84,7 +88,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="17 May 2017" date="2017-05-17"/>
+               <docDate date="2017-05-17">
+                  <t v="17 May 2017"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -112,7 +118,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="9 January 2018" date="2018-01-09"/>
+               <docDate date="2018-01-09">
+                  <t v="9 January 2018"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -140,7 +148,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="23 January 2019" date="2019-01-23"/>
+               <docDate date="2019-01-23">
+                  <t v="23 January 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -168,7 +178,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="13 January 2020" date="2020-01-13"/>
+               <docDate date="2020-01-13">
+                  <t v="13 January 2020"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -193,7 +205,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="5 November 2015" date="2015-11-05"/>
+            <docDate date="2015-11-05">
+               <t v="5 November 2015"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -238,7 +252,9 @@
          <unit eId="art_3/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
-               <date asWritten="1 February 2016" date="2016-02-01"/>
+               <date date="2016-02-01">
+                  <t v="1 February 2016"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -5854,7 +5870,9 @@
             </num>
             <p>
                <t v="The regulated agent shall maintain a database comprising the following information of any account consigner it has designated before "/>
-               <date asWritten="1 June 2017" date="2017-06-01"/>
+               <date date="2017-06-01">
+                  <t v="1 June 2017"/>
+               </date>
                <t v=":"/>
             </p>
             <list kind="dash">
@@ -5917,7 +5935,9 @@
             </num>
             <p>
                <t v="If the appropriate authority or the regulated agent is no longer satisfied that the account consignor complies with the instructions as contained in Attachment 6-D, the regulated agent shall immediately withdraw the status of account consignor. The status of any account consignor designated by a regulated agent will end on "/>
-               <date asWritten="30 June 2021" date="2021-06-30"/>
+               <date date="2021-06-30">
+                  <t v="30 June 2021"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -6462,7 +6482,9 @@
             </list>
             <p>
                <t v="Point (c) shall apply until "/>
-               <date asWritten="30 June 2021" date="2021-06-30"/>
+               <date date="2021-06-30">
+                  <t v="30 June 2021"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -6809,9 +6831,13 @@
             </num>
             <p>
                <t v="Designations of RA3 and KC3 issued before "/>
-               <date asWritten="1 June 2017" date="2017-06-01"/>
+               <date date="2017-06-01">
+                  <t v="1 June 2017"/>
+               </date>
                <t v=" shall expire five years after their designation or on "/>
-               <date asWritten="31 March 2020" date="2020-03-31"/>
+               <date date="2020-03-31">
+                  <t v="31 March 2020"/>
+               </date>
                <t v=", whichever date comes earlier."/>
             </p>
          </unit>
@@ -7056,7 +7082,9 @@
             </list>
             <p>
                <t v="In order to maintain EU aviation security validated regulated agent designation for all sites of the network not validated until "/>
-               <date asWritten="30 June 2018" date="2018-06-30"/>
+               <date date="2018-06-30">
+                  <t v="30 June 2018"/>
+               </date>
                <t v=" at the latest, during every year after the year of designation, at least a further two or 20 %, whichever is the higher, of the sites from which cargo or mail is fed to the site(s) mentioned in point (i) shall be subjected to an EU aviation security validation, until all sites are validated."/>
             </p>
             <p>
@@ -7088,7 +7116,9 @@
             </num>
             <p>
                <t v="Points 6.8.5.5 and 6.8.5.6 shall expire on "/>
-               <date asWritten="30 June 2018" date="2018-06-30"/>
+               <date date="2018-06-30">
+                  <t v="30 June 2018"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -7490,7 +7520,9 @@
                   <t v="a pre-employment check or a background check"/>
                </emphasis>
                <t v=" in accordance with point 11.1 of the Annex to Implementing Regulation (EU) 2015/1998. The on-site validation visit will involve an interview with the person responsible for the recruitment of staff. He/she will need to present evidence (e.g. blank forms) to substantiate the company procedures. This recruitment procedure shall apply to staff recruited after "/>
-               <date asWritten="29 April 2010" date="2010-04-29"/>
+               <date date="2010-04-29">
+                  <t v="29 April 2010"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -8352,7 +8384,9 @@
                               <t v="Is there a recruitment procedure for all staff with access to identifiable air cargo/air mail which includes a pre-employment check in accordance with point 11.1.4 of the Annex to Implementing Regulation (EU) 2015/1998?"/>
                            </emphasis>
                            <t v=" This applies to staff recruited after "/>
-                           <date asWritten="29 April 2010" date="2010-04-29"/>
+                           <date date="2010-04-29">
+                              <t v="29 April 2010"/>
+                           </date>
                            <t v="."/>
                         </p>
                      </unit>
@@ -8392,7 +8426,9 @@
                      </unit>
                      <p>
                         <t v="This applies to staff recruited after "/>
-                        <date asWritten="29 April 2010" date="2010-04-29"/>
+                        <date date="2010-04-29">
+                           <t v="29 April 2010"/>
+                        </date>
                         <t v="."/>
                      </p>
                   </td>
@@ -10132,9 +10168,13 @@
                      <td colspan="2">
                         <p>
                            <t v="Use exact date format, such as from "/>
-                           <date asWritten="01.10.2012" date="2012-10-01"/>
+                           <date date="2012-10-01">
+                              <t v="01.10.2012"/>
+                           </date>
                            <t v=" to "/>
-                           <date asWritten="02.10.2012" date="2012-10-02"/>
+                           <date date="2012-10-02">
+                              <t v="02.10.2012"/>
+                           </date>
                         </p>
                      </td>
                   </tr>
@@ -13120,9 +13160,13 @@
                      <td colspan="2">
                         <p>
                            <t v="Use exact date format, such as "/>
-                           <date asWritten="01.10.2012" date="2012-10-01"/>
+                           <date date="2012-10-01">
+                              <t v="01.10.2012"/>
+                           </date>
                            <t v=" to "/>
-                           <date asWritten="02.10.2012" date="2012-10-02"/>
+                           <date date="2012-10-02">
+                              <t v="02.10.2012"/>
+                           </date>
                         </p>
                      </td>
                   </tr>
@@ -16263,9 +16307,13 @@
                      <td colspan="2">
                         <p>
                            <t v="Use exact date format, such as from "/>
-                           <date asWritten="01.10.2012" date="2012-10-01"/>
+                           <date date="2012-10-01">
+                              <t v="01.10.2012"/>
+                           </date>
                            <t v=" to "/>
-                           <date asWritten="02.10.2012" date="2012-10-02"/>
+                           <date date="2012-10-02">
+                              <t v="02.10.2012"/>
+                           </date>
                         </p>
                      </td>
                   </tr>
@@ -21922,9 +21970,13 @@
                         location="AR:1 .AND. AX:0;PT:27"
                         marker="O004001M023000">
                   <t v="Pre-employment checks shall be discontinued by "/>
-                  <date asWritten="31 July 2019" date="2019-07-31"/>
+                  <date date="2019-07-31">
+                     <t v="31 July 2019"/>
+                  </date>
                   <t v=". Persons having completed a pre-employment check shall undergo a background check by "/>
-                  <date asWritten="30 June 2020" date="2020-06-30"/>
+                  <date date="2020-06-30">
+                     <t v="30 June 2020"/>
+                  </date>
                   <t v=" at the latest."/>
                </changed>
             </p>
@@ -24674,7 +24726,9 @@
                   </num>
                   <p>
                      <t v="Without prejudice to point 12.0.5, the following security equipment may be installed after "/>
-                     <date asWritten="1 October 2020" date="2020-10-01"/>
+                     <date date="2020-10-01">
+                        <t v="1 October 2020"/>
+                     </date>
                      <t v=" only if it has been granted an "/>
                      <quote startQuote="‘" endQuote="’">
                         <t v="EU Stamp"/>
@@ -25439,7 +25493,9 @@
             </heading>
             <p>
                <t v="All WTMD for which a contract to install them was placed as from "/>
-               <date asWritten="5 January 2007" date="2007-01-05"/>
+               <date date="2007-01-05">
+                  <t v="5 January 2007"/>
+               </date>
                <t v=" shall be able to:"/>
             </p>
             <list kind="alpha">
@@ -25661,7 +25717,9 @@
             </num>
             <p>
                <t v="All EDS installed before "/>
-               <date asWritten="1 September 2014" date="2014-09-01"/>
+               <date date="2014-09-01">
+                  <t v="1 September 2014"/>
+               </date>
                <t v=" shall at least meet standard 2."/>
             </p>
          </unit>
@@ -25671,7 +25729,9 @@
             </num>
             <p>
                <t v="Standard 2 shall expire on "/>
-               <date asWritten="1 September 2020" date="2020-09-01"/>
+               <date date="2020-09-01">
+                  <t v="1 September 2020"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -25681,11 +25741,17 @@
             </num>
             <p>
                <t v="The appropriate authority may permit standard 2 EDS installed between "/>
-               <date asWritten="1 January 2011" date="2011-01-01"/>
+               <date date="2011-01-01">
+                  <t v="1 January 2011"/>
+               </date>
                <t v=" and "/>
-               <date asWritten="1 September 2014" date="2014-09-01"/>
+               <date date="2014-09-01">
+                  <t v="1 September 2014"/>
+               </date>
                <t v=" to continue to be used until "/>
-               <date asWritten="1 September 2022" date="2022-09-01"/>
+               <date date="2022-09-01">
+                  <t v="1 September 2022"/>
+               </date>
                <t v=" at the latest."/>
             </p>
          </unit>
@@ -25695,7 +25761,9 @@
             </num>
             <p>
                <t v="The appropriate authority shall inform the Commission when it grants permission to permit standard 2 EDS to continue to be used as of "/>
-               <date asWritten="1 September 2020" date="2020-09-01"/>
+               <date date="2020-09-01">
+                  <t v="1 September 2020"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -25705,7 +25773,9 @@
             </num>
             <p>
                <t v="All EDS installed as from "/>
-               <date asWritten="1 September 2014" date="2014-09-01"/>
+               <date date="2014-09-01">
+                  <t v="1 September 2014"/>
+               </date>
                <t v=" shall meet standard 3."/>
             </p>
          </unit>
@@ -25715,7 +25785,9 @@
             </num>
             <p>
                <t v="All EDS shall meet standard 3 as from "/>
-               <date asWritten="1 September 2020" date="2020-09-01"/>
+               <date date="2020-09-01">
+                  <t v="1 September 2020"/>
+               </date>
                <t v=" at the latest, unless point 12.4.2.3 applies."/>
             </p>
          </unit>
@@ -25832,7 +25904,9 @@
                            location="AR:1 .AND. AX:0;PT:49"
                            marker="O004001M032000"/>
                <t v="Where CTI TIP is deployed with EDS equipment used exclusively for hold baggage screening, the requirement in point (b) shall only apply as of "/>
-               <date asWritten="1 September 2020" date="2020-09-01"/>
+               <date date="2020-09-01">
+                  <t v="1 September 2020"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -26038,7 +26112,9 @@
             </num>
             <p>
                <t v="The standard for ETD equipment that uses particulate sampling shall apply to ETD equipment deployed from "/>
-               <date asWritten="1 September 2014" date="2014-09-01"/>
+               <date date="2014-09-01">
+                  <t v="1 September 2014"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -26048,9 +26124,13 @@
             </num>
             <p>
                <t v="The appropriate authority may permit ETD equipment not certified to comply with attachment 12-L that was deployed before "/>
-               <date asWritten="1 July 2014" date="2014-07-01"/>
+               <date date="2014-07-01">
+                  <t v="1 July 2014"/>
+               </date>
                <t v=" and uses particulate sampling to continue to be used until "/>
-               <date asWritten="1 July 2020" date="2020-07-01"/>
+               <date date="2020-07-01">
+                  <t v="1 July 2020"/>
+               </date>
                <t v=" at the latest."/>
             </p>
          </unit>
@@ -26242,7 +26322,9 @@
                </p>
                <p>
                   <t v="All LEDS equipment shall meet standard 2 with effect from "/>
-                  <date asWritten="31 January 2016" date="2016-01-31"/>
+                  <date date="2016-01-31">
+                     <t v="31 January 2016"/>
+                  </date>
                   <t v=" at the latest."/>
                </p>
             </unit>
@@ -26972,7 +27054,9 @@
             </p>
             <p>
                <t v="Standard 1 shall expire on "/>
-               <date asWritten="1 January 2022" date="2022-01-01"/>
+               <date date="2022-01-01">
+                  <t v="1 January 2022"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -26982,7 +27066,9 @@
             </num>
             <p>
                <t v="Standard 2 shall apply to security scanners installed as of "/>
-               <date asWritten="1 January 2019" date="2019-01-01"/>
+               <date date="2019-01-01">
+                  <t v="1 January 2019"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -26996,7 +27082,9 @@
             </num>
             <p>
                <t v="Standard 2.1 shall apply to security scanners installed from "/>
-               <date asWritten="1 January 2021" date="2021-01-01"/>
+               <date date="2021-01-01">
+                  <t v="1 January 2021"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -27572,7 +27660,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Commission Regulation (EC) No 272/2009 of "/>
-            <date asWritten="2 April 2009" date="2009-04-02"/>
+            <date date="2009-04-02">
+               <t v="2 April 2009"/>
+            </date>
             <t v=" supplementing the common basic standards on civil aviation security laid down in the Annex to Regulation (EC) No 300/2008 of the European Parliament and of the Council ("/>
             <ref kind="oj" series="L" number="91" date="2009-04-03" page="7">
                <t v="OJ L 91, 3.4.2009, p. 7"/>
@@ -27583,14 +27673,18 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Implementing Decision C(2015) 8005 final laying down detailed measures for the implementation of the common basic standards on aviation security containing information, as referred to in point (a) of Article 18 of Regulation (EC) No 300/2008, and repealing Decision (2010) 774 of "/>
-            <date asWritten="13 April 2010" date="2010-04-13"/>
+            <date date="2010-04-13">
+               <t v="13 April 2010"/>
+            </date>
             <t v="."/>
          </p>
       </note>
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Commission Regulation (EU) No 1254/2009 of "/>
-            <date asWritten="18 December 2009" date="2009-12-18"/>
+            <date date="2009-12-18">
+               <t v="18 December 2009"/>
+            </date>
             <t v=" setting criteria to allow Member States to derogate from the common basic standards on civil aviation security and to adopt alternative security measures ("/>
             <ref kind="oj"
                  series="L"
@@ -27605,7 +27699,9 @@
       <note eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Commission Regulation (EEC) No 2454/93 of "/>
-            <date asWritten="2 July 1993" date="1993-07-02"/>
+            <date date="1993-07-02">
+               <t v="2 July 1993"/>
+            </date>
             <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
             <ref kind="oj"
                  series="L"
@@ -27620,9 +27716,13 @@
       <note eId="note_5" marker="5" kind="footnote">
          <p>
             <t v="Commission Regulation (EC) No 748/2009 of "/>
-            <date asWritten="5 August 2009" date="2009-08-05"/>
+            <date date="2009-08-05">
+               <t v="5 August 2009"/>
+            </date>
             <t v=" on the list of aircraft operators which performed an aviation activity listed in Annex I to Directive 2003/87/EC on or after "/>
-            <date asWritten="1 January 2006" date="2006-01-01"/>
+            <date date="2006-01-01">
+               <t v="1 January 2006"/>
+            </date>
             <t v=" specifying the administering Member State for each aircraft operator ("/>
             <ref kind="oj"
                  series="L"
@@ -27637,7 +27737,9 @@
       <note eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27652,7 +27754,9 @@
       <note eId="note_7" marker="7" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27667,7 +27771,9 @@
       <note eId="note_8" marker="8" kind="footnote">
          <p>
             <t v="Commission Regulation (EEC) No 2454/93 of "/>
-            <date asWritten="2 July 1993" date="1993-07-02"/>
+            <date date="1993-07-02">
+               <t v="2 July 1993"/>
+            </date>
             <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
             <ref kind="oj"
                  series="L"
@@ -27712,7 +27818,9 @@
       <note eId="note_15" marker="15" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27727,7 +27835,9 @@
       <note eId="note_16" marker="16" kind="footnote">
          <p>
             <t v="Commission Regulation (EEC) No 2454/93 of "/>
-            <date asWritten="2 July 1993" date="1993-07-02"/>
+            <date date="1993-07-02">
+               <t v="2 July 1993"/>
+            </date>
             <t v=" laying down provisions for the implementation of Council Regulation (EEC) No 2913/92 establishing the Community Customs Code ("/>
             <ref kind="oj"
                  series="L"
@@ -27742,7 +27852,9 @@
       <note eId="note_17" marker="17" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27757,7 +27869,9 @@
       <note eId="note_18" marker="18" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27772,7 +27886,9 @@
       <note eId="note_19" marker="19" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27787,7 +27903,9 @@
       <note eId="note_20" marker="20" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="11 March 2008" date="2008-03-11"/>
+            <date date="2008-03-11">
+               <t v="11 March 2008"/>
+            </date>
             <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 ("/>
             <ref kind="oj"
                  series="L"
@@ -27802,7 +27920,9 @@
       <note eId="note_21" marker="21" kind="footnote">
          <p>
             <t v="Regulation (EC) No 765/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="9 July 2008" date="2008-07-09"/>
+            <date date="2008-07-09">
+               <t v="9 July 2008"/>
+            </date>
             <t v=" setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93 ("/>
             <ref kind="oj"
                  series="L"
@@ -27817,7 +27937,9 @@
       <note eId="note_22" marker="22" kind="footnote">
          <p>
             <t v="Commission Decision (EU, Euratom) 2015/444 of "/>
-            <date asWritten="13 March 2015" date="2015-03-13"/>
+            <date date="2015-03-13">
+               <t v="13 March 2015"/>
+            </date>
             <t v=" on the security rules for protecting EU classified information ("/>
             <ref kind="oj"
                  series="L"
@@ -27832,7 +27954,9 @@
       <note eId="note_23" marker="23" kind="footnote">
          <p>
             <t v="Council Recommendation 1999/519/EC of "/>
-            <date asWritten="12 July 1999" date="1999-07-12"/>
+            <date date="1999-07-12">
+               <t v="12 July 1999"/>
+            </date>
             <t v=" on the limitation of exposure of the general public to electromagnetic fields (0 Hz to 300 GHz) ("/>
             <ref kind="oj"
                  series="L"
@@ -27847,7 +27971,9 @@
       <note eId="note_24" marker="24" kind="footnote">
          <p>
             <t v="Directive 2013/35/EU of the European Parliament and of the Council of "/>
-            <date asWritten="26 June 2013" date="2013-06-26"/>
+            <date date="2013-06-26">
+               <t v="26 June 2013"/>
+            </date>
             <t v=" on the minimum health and safety requirements regarding the exposure of workers to the risks arising from physical agents (electromagnetic fields) (20th individual Directive within the meaning of Article 16(1) of Directive 89/391/EEC) and repealing Directive 2004/40/EC ("/>
             <ref kind="oj"
                  series="L"

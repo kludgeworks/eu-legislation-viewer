@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to the Council Recommendation of "/>
-            <date asWritten="14 July 2023" date="2023-07-14"/>
+            <date date="2023-07-14">
+               <t v="14 July 2023"/>
+            </date>
             <t v=" on the 2023 National Reform Programme of Estonia and delivering a Council opinion on the 2023 Stability Programme of Estonia"/>
          </p>
          <p>

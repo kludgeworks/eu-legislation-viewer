@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="27 April 2005" date="2005-04-27"/>
+            <docDate date="2005-04-27">
+               <t v="27 April 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 638/2003 of "/>
-               <date asWritten="9 April 2003" date="2003-04-09"/>
+               <date date="2003-04-09">
+                  <t v="9 April 2003"/>
+               </date>
                <t v=" laying down detailed rules for applying Council Regulation (EC) No 2286/2002 and to Council Decision 2001/822/EC as regards the arrangements applicable to imports of rice originating in the African, Caribbean and Pacific States (ACP States) and the overseas countries and territories (OCT)"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 17(2) thereof,"/>
@@ -105,7 +109,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="27 April 2005" date="2005-04-27"/>
+            <date date="2005-04-27">
+               <t v="27 April 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

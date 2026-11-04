@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="22 December 2009" date="2009-12-22"/>
+            <docDate date="2009-12-22">
+               <t v="22 December 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 104/2000 of "/>
-               <date asWritten="17 December 1999" date="1999-12-17"/>
+               <date date="1999-12-17">
+                  <t v="17 December 1999"/>
+               </date>
                <t v=" on the common organisation of the markets in fishery and aquaculture products"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
@@ -58,7 +62,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 2813/2000 of "/>
-               <date asWritten="21 December 2000" date="2000-12-21"/>
+               <date date="2000-12-21">
+                  <t v="21 December 2000"/>
+               </date>
                <t v=" laying down detailed rules for the application of Council Regulation (EC) No 104/2000 as regards the grant of private storage aid for certain fishery products"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 1 thereof,"/>
@@ -151,7 +157,9 @@
          <unit eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
-               <date asWritten="1 January 2010" date="2010-01-01"/>
+               <date date="2010-01-01">
+                  <t v="1 January 2010"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -164,7 +172,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="22 December 2009" date="2009-12-22"/>
+            <date date="2009-12-22">
+               <t v="22 December 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

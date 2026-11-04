@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="15 February 2011" date="2011-02-15"/>
+            <docDate date="2011-02-15">
+               <t v="15 February 2011"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -57,7 +59,9 @@
    <body>
       <p>
          <t v="To appoint Mr Peter PRAET as member of the Executive Board of the European Central Bank for a term of office of eight years with effect from "/>
-         <date asWritten="1 June 2011" date="2011-06-01"/>
+         <date date="2011-06-01">
+            <t v="1 June 2011"/>
+         </date>
          <t v="."/>
       </p>
    </body>
@@ -65,7 +69,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="15 February 2011" date="2011-02-15"/>
+            <date date="2011-02-15">
+               <t v="15 February 2011"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

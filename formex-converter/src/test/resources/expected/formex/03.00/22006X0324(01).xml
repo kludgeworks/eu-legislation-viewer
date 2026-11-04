@@ -21,9 +21,13 @@
    <body>
       <p>
          <t v="The procedures necessary for the entry into force of the Agreement between the European Community and the Government of Canada on the processing of Advance Passenger Information and Passenger Name Record Data, signed in Luxembourg on "/>
-         <date asWritten="3 October 2005" date="2005-10-03"/>
+         <date date="2005-10-03">
+            <t v="3 October 2005"/>
+         </date>
          <t v=", have been completed on "/>
-         <date asWritten="22 March 2006" date="2006-03-22"/>
+         <date date="2006-03-22">
+            <t v="22 March 2006"/>
+         </date>
          <t v=". According to Art. 9 of the Agreement, it entered into force on that same day."/>
       </p>
    </body>

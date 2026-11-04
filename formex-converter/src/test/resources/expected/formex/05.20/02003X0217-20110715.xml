@@ -25,7 +25,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="22 September 2006" date="2006-09-22"/>
+               <docDate date="2006-09-22">
+                  <t v="22 September 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -56,7 +58,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="22 September 2006" date="2006-09-22"/>
+               <docDate date="2006-09-22">
+                  <t v="22 September 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -81,7 +85,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="1 July 2011" date="2011-07-01"/>
+               <docDate date="2011-07-01">
+                  <t v="1 July 2011"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -123,7 +129,9 @@
          </heading>
          <p>
             <t v="On "/>
-            <date asWritten="14 June 1985" date="1985-06-14"/>
+            <date date="1985-06-14">
+               <t v="14 June 1985"/>
+            </date>
             <t v=", the Governments of the Kingdom of Belgium, the Federal Republic of Germany, the French Republic, the Grand Duchy of Luxembourg and the Kingdom of the Netherlands signed an agreement at Schengen, a small town in Luxembourg, with a view to enabling "/>
             <quote startQuote="‘" endQuote="’">
                <t v="(…) all nationals of the Member States to cross internal borders freely (…)"/>
@@ -138,27 +146,43 @@
             <t v="The five founding countries signed the Convention implementing the Schengen Agreement"/>
             <noteRef href="#note_1" marker="1"/>
             <t v=" on "/>
-            <date asWritten="19 June 1990" date="1990-06-19"/>
+            <date date="1990-06-19">
+               <t v="19 June 1990"/>
+            </date>
             <t v=", and were later joined by the Italian Republic on "/>
-            <date asWritten="27 November 1990" date="1990-11-27"/>
+            <date date="1990-11-27">
+               <t v="27 November 1990"/>
+            </date>
             <t v=", the Kingdom of Spain and the Portuguese Republic on "/>
-            <date asWritten="25 June 1991" date="1991-06-25"/>
+            <date date="1991-06-25">
+               <t v="25 June 1991"/>
+            </date>
             <t v=", the Hellenic Republic on "/>
-            <date asWritten="6 November 1992" date="1992-11-06"/>
+            <date date="1992-11-06">
+               <t v="6 November 1992"/>
+            </date>
             <t v=", the Republic of Austria on "/>
-            <date asWritten="28 April 1995" date="1995-04-28"/>
+            <date date="1995-04-28">
+               <t v="28 April 1995"/>
+            </date>
             <t v=" and by the Kingdom of Denmark, the Kingdom of Sweden and the Republic of Finland on "/>
-            <date asWritten="19 December 1996" date="1996-12-19"/>
+            <date date="1996-12-19">
+               <t v="19 December 1996"/>
+            </date>
             <t v="."/>
          </p>
          <p>
             <t v="The Kingdom of Norway and the Republic of Iceland also concluded a Cooperation Agreement with the Member States on "/>
-            <date asWritten="19 December 1996" date="1996-12-19"/>
+            <date date="1996-12-19">
+               <t v="19 December 1996"/>
+            </date>
             <t v=", in order to join this Convention."/>
          </p>
          <p>
             <t v="Subsequently, as of "/>
-            <date asWritten="26 March 1995" date="1995-03-26"/>
+            <date date="1995-03-26">
+               <t v="26 March 1995"/>
+            </date>
             <t v=", the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -166,15 +190,21 @@
             <t v=" was fully applied in Belgium, Germany, France, Luxembourg, Netherlands, Spain and Portugal"/>
             <noteRef href="#note_2" marker="2"/>
             <t v=". As of "/>
-            <date asWritten="31 of March 1998" date="1998-03-31"/>
+            <date date="1998-03-31">
+               <t v="31 of March 1998"/>
+            </date>
             <t v=", in Austria and Italy"/>
             <noteRef href="#note_3" marker="3"/>
             <t v="; as of "/>
-            <date asWritten="26 of March 2000" date="2000-03-26"/>
+            <date date="2000-03-26">
+               <t v="26 of March 2000"/>
+            </date>
             <t v=" in Greece"/>
             <noteRef href="#note_4" marker="4"/>
             <t v=" and finally, as of "/>
-            <date asWritten="25 March 2001" date="2001-03-25"/>
+            <date date="2001-03-25">
+               <t v="25 March 2001"/>
+            </date>
             <t v=", the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -196,7 +226,9 @@
                <t v="acquis"/>
             </emphasis>
             <t v=" in which the United Kingdom takes part are applicable as of the "/>
-            <date asWritten="1 January 2005" date="2005-01-01"/>
+            <date date="2005-01-01">
+               <t v="1 January 2005"/>
+            </date>
             <noteRef href="#note_8" marker="8"/>
             <t v=", with the exception of the provisions on the Schengen Information System."/>
          </p>
@@ -208,7 +240,9 @@
             <t v=" was incorporated into the legal framework of the European Union by means of protocols attached to the Treaty of Amsterdam"/>
             <noteRef href="#note_9" marker="9"/>
             <t v=" in 1999. A Council Decision was adopted on "/>
-            <date asWritten="12 May 1999" date="1999-05-12"/>
+            <date date="1999-05-12">
+               <t v="12 May 1999"/>
+            </date>
             <t v=", determining the legal basis for each of the provisions or decisions which constitute the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -217,7 +251,9 @@
          </p>
          <p>
             <t v="From "/>
-            <date asWritten="1 May 2004" date="2004-05-01"/>
+            <date date="2004-05-01">
+               <t v="1 May 2004"/>
+            </date>
             <t v=", the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -227,7 +263,9 @@
                <t v="Schengen Protocol"/>
             </quote>
             <t v="), as well as the acts building upon it or otherwise related to it are binding on the Czech Republic, the Republic of Estonia, the Republic of Cyprus, the Republic of Latvia, the Republic of Lithuania, the Republic of Hungary, the Republic of Malta, the Republic of Poland, the Republic of Slovenia and the Slovak Republic. As of "/>
-            <date asWritten="1 January 2007" date="2007-01-01"/>
+            <date date="2007-01-01">
+               <t v="1 January 2007"/>
+            </date>
             <t v=", this also applies to the Republic of Bulgaria and to Romania."/>
          </p>
          <p>
@@ -280,7 +318,9 @@
          </heading>
          <p>
             <t v="The SIS, together with the cooperation of the SIRENE bureaux, set up pursuant to the provisions of Title IV of the Convention implementing the Schengen Agreement of "/>
-            <date asWritten="14 June 1985" date="1985-06-14"/>
+            <date date="1985-06-14">
+               <t v="14 June 1985"/>
+            </date>
             <t v=" on the gradual abolition of checks at common borders (Schengen Convention)"/>
             <noteRef href="#note_15" marker="15"/>
             <t v=" constitutes an essential tool for the application of the provisions of the Schengen "/>
@@ -4360,7 +4400,9 @@
          <heading>
             <emphasis kind="i">
                <t v="Systematic request for a flag to be added to alerts on persons wanted for arrest for extradition purposes where Council Framework Decision 2002/584/JHA of "/>
-               <date asWritten="13 June 2002" date="2002-06-13"/>
+               <date date="2002-06-13">
+                  <t v="13 June 2002"/>
+               </date>
                <t v=" on the European arrest warrant and the surrender procedures between Member States"/>
             </emphasis>
             <noteRef href="#note_32" marker="31"/>
@@ -5304,7 +5346,9 @@
          </heading>
          <p>
             <t v="Concerning a third-country national who is a beneficiary of the right of free movement within the meaning of Directive 2004/38/EC of the European Parliament and of the Council of "/>
-            <date asWritten="29 April 2004" date="2004-04-29"/>
+            <date date="2004-04-29">
+               <t v="29 April 2004"/>
+            </date>
             <t v=" on the right of citizens of the Union and their family members to move and reside freely within the territory of the Member States, special rules shall apply"/>
             <noteRef href="#note_37" marker="36"/>
             <t v="."/>
@@ -6214,7 +6258,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Decision of the Executive Committee of "/>
-            <date asWritten="22 December 1994" date="1994-12-22"/>
+            <date date="1994-12-22">
+               <t v="22 December 1994"/>
+            </date>
             <t v=" on bringing into force the Implementing Convention (SCH/Com-ex (94)29 rev. 2. ("/>
             <ref kind="oj"
                  series="L"
@@ -6229,14 +6275,18 @@
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Decisions of the Executive Committee of "/>
-            <date asWritten="7 October 1997" date="1997-10-07"/>
+            <date date="1997-10-07">
+               <t v="7 October 1997"/>
+            </date>
             <t v=" (SCH/com-ex 97(27) rev. 4) for Italy and (SCH/com-ex 97(28) rev. 4) for Austria."/>
          </p>
       </note>
       <note eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Council Decision 1999/848/EC of "/>
-            <date asWritten="13 December 1999" date="1999-12-13"/>
+            <date date="1999-12-13">
+               <t v="13 December 1999"/>
+            </date>
             <t v=" on the full application of the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -6255,7 +6305,9 @@
       <note eId="note_5" marker="5" kind="footnote">
          <p>
             <t v="Council Decision 2000/777/EC of "/>
-            <date asWritten="1 December 2000" date="2000-12-01"/>
+            <date date="2000-12-01">
+               <t v="1 December 2000"/>
+            </date>
             <t v=" on the application of the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -6274,7 +6326,9 @@
       <note eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="Council Decision 2000/365/EC of "/>
-            <date asWritten="29 May 2000" date="2000-05-29"/>
+            <date date="2000-05-29">
+               <t v="29 May 2000"/>
+            </date>
             <t v=" concerning the request of the United Kingdom of Great Britain and Northern Ireland to take part in some of the provision of the Schengen "/>
             <emphasis kind="i">
                <t v="Acquis"/>
@@ -6293,7 +6347,9 @@
       <note eId="note_7" marker="7" kind="footnote">
          <p>
             <t v="Council Decision 2002/192/EC of "/>
-            <date asWritten="28 February 2002" date="2002-02-28"/>
+            <date date="2002-02-28">
+               <t v="28 February 2002"/>
+            </date>
             <t v=" concerning Ireland’s request to take part in some of the provision of the Schengen "/>
             <emphasis kind="i">
                <t v="Acquis"/>
@@ -6312,7 +6368,9 @@
       <note eId="note_8" marker="8" kind="footnote">
          <p>
             <t v="Council Decision 2004/926/EC of "/>
-            <date asWritten="22 December 2004" date="2004-12-22"/>
+            <date date="2004-12-22">
+               <t v="22 December 2004"/>
+            </date>
             <t v=" on putting into effect of parts of the Schengen "/>
             <emphasis kind="i">
                <t v="acquis"/>
@@ -6409,7 +6467,9 @@
       <note eId="note_17" marker="17" kind="footnote">
          <p>
             <t v="Unless otherwise stipulated, all articles referred to are to be understood as articles of the Convention of 1990, implementing the Schengen Agreement of "/>
-            <date asWritten="14 June 1985" date="1985-06-14"/>
+            <date date="1985-06-14">
+               <t v="14 June 1985"/>
+            </date>
             <t v=" on the gradual abolition of checks at common borders (Schengen Convention). Article 92(4) took effect according to Article 1(1) of Council Decision 2005/451/JHA ("/>
             <ref kind="oj"
                  series="L"
@@ -6437,7 +6497,9 @@
       <note eId="note_19" marker="19" kind="footnote">
          <p>
             <t v="See Council Decision 2000/265/EC of "/>
-            <date asWritten="27 March 2000" date="2000-03-27"/>
+            <date date="2000-03-27">
+               <t v="27 March 2000"/>
+            </date>
             <t v=" on the establishment of a financial regulation governing the budgetary aspects of the management by the Deputy Secretary-General of the Council, of contracts concluded in his name, on behalf of certain Member States, relating to the installation and the functioning of the communication infrastructure for the Schengen environment, "/>
             <quote startQuote="‘" endQuote="’">
                <t v="SISNET"/>
@@ -6486,7 +6548,9 @@
       <note eId="note_26" marker="25" kind="footnote">
          <p>
             <t v="Council Framework Decision 2006/960/JHA of "/>
-            <date asWritten="18 December 2006" date="2006-12-18"/>
+            <date date="2006-12-18">
+               <t v="18 December 2006"/>
+            </date>
             <t v=" on simplifying the exchange of information and intelligence between law enforcement authorities of the Member States of the European Union ("/>
             <ref kind="oj"
                  series="L"
@@ -6518,7 +6582,9 @@
       <note eId="note_30" marker="29" kind="footnote">
          <p>
             <t v="Council Framework Decision 2009/299/JHA of "/>
-            <date asWritten="26 February 2009" date="2009-02-26"/>
+            <date date="2009-02-26">
+               <t v="26 February 2009"/>
+            </date>
             <t v=" amending Framework Decisions 2002/584/JHA, 2005/214/JHA, 2006/783/JHA, 2008/909/JHA and 2008/947/JHA, thereby enhancing the procedural rights of persons and fostering the application of the principle of mutual recognition to decisions rendered in the absence of the person concerned at the trial ("/>
             <ref kind="oj"
                  series="L"

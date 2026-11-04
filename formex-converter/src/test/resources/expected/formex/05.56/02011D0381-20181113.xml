@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="4 June 2015" date="2015-06-04"/>
+               <docDate date="2015-06-04">
+                  <t v="4 June 2015"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -61,7 +63,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="8 November 2018" date="2018-11-08"/>
+               <docDate date="2018-11-08">
+                  <t v="8 November 2018"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -101,7 +105,14 @@
                      marker="O002001M001000">
                <t v="of "/>
             </deleted>
-            <docDate asWritten="24 June 2011" date="2011-06-24"/>
+            <docDate date="2011-06-24">
+               <deleted amendingAct="32018D1702"
+                        action="deleted"
+                        location="AR:6"
+                        marker="O002001M001000">
+                  <t v="24 June 2011"/>
+               </deleted>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -316,7 +327,9 @@
                   <t v="llubricants"/>
                </quote>
                <t v=" and the related assessment and verification requirements, shall be valid until "/>
-               <date asWritten="31 December 2018" date="2018-12-31"/>
+               <date date="2018-12-31">
+                  <t v="31 December 2018"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -370,7 +383,9 @@
                      <t v="lubricants"/>
                   </quote>
                   <t v=" submitted from the date of adoption of this Decision but by "/>
-                  <date asWritten="30 June 2011" date="2011-06-30"/>
+                  <date date="2011-06-30">
+                     <t v="30 June 2011"/>
+                  </date>
                   <t v=" at the latest may be based either on the criteria set out in Decision 2005/360/EC or on the criteria set out in this Decision. Those applications shall be evaluated in accordance with the criteria on which they are based."/>
                </p>
             </unit>

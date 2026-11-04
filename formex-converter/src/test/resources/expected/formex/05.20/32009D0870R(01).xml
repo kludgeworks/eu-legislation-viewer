@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Decision 2009/870/EC of "/>
-            <date asWritten="27 November 2009" date="2009-11-27"/>
+            <date date="2009-11-27">
+               <t v="27 November 2009"/>
+            </date>
             <t v=" amending Decision 2009/821/EC as regards the list of border inspection posts"/>
          </p>
          <p>

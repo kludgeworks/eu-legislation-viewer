@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="14 December 2009" date="2009-12-14"/>
+            <docDate date="2009-12-14">
+               <t v="14 December 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -55,7 +57,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Directive 2006/22/EC of the European Parliament and of the Council of "/>
-               <date asWritten="15 March 2006" date="2006-03-15"/>
+               <date date="2006-03-15">
+                  <t v="15 March 2006"/>
+               </date>
                <t v=" on minimum conditions for the implementation of Council Regulations (EEC) No 3820/85 and (EEC) No 3821/85 concerning social legislation relating to road transport activities and repealing Council Directive 88/599/EEC"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 11(3) and 13 thereof,"/>
@@ -92,7 +96,9 @@
             </num>
             <p>
                <t v="In order to enhance the efficiency and effectiveness of the checking by Member States of compliance with the provisions of Regulation (EC) No 561/2006 of the European Parliament and of the Council of "/>
-               <date asWritten="15 March 2006" date="2006-03-15"/>
+               <date date="2006-03-15">
+                  <t v="15 March 2006"/>
+               </date>
                <t v=" on the harmonisation of certain social legislation relating to road transport and amending Council Regulations (EEC) No 3821/85 and (EC) No 2135/98 and repealing Council Regulation (EEC) No 3820/85"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=", the form should be modified by the insertion of additional elements to those indicated in Article 11(3) of Directive 2006/22/EC."/>
@@ -112,7 +118,9 @@
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Committee set up by Article 18(1) of Council Regulation (EEC) No 3821/85 of "/>
-               <date asWritten="20 December 1985" date="1985-12-20"/>
+               <date date="1985-12-20">
+                  <t v="20 December 1985"/>
+               </date>
                <t v=" on recording equipment in road transport"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=","/>
@@ -147,7 +155,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="14 December 2009" date="2009-12-14"/>
+            <date date="2009-12-14">
+               <t v="14 December 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

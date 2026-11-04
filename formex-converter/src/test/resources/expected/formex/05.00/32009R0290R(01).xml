@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Regulation (EC) No 290/2009 of the European Central Bank of "/>
-            <date asWritten="31 March 2009" date="2009-03-31"/>
+            <date date="2009-03-31">
+               <t v="31 March 2009"/>
+            </date>
             <t v=" amending Regulation (EC) No 63/2002 (ECB/2001/18) concerning statistics on interest rates applied by monetary financial institutions to deposits and loans vis-à-vis households and non-financial corporations (ECB/2009/7)"/>
          </p>
          <p>

@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Delegated Regulation (EU) No 1061/2010 of "/>
-            <date asWritten="28 September 2010" date="2010-09-28"/>
+            <date date="2010-09-28">
+               <t v="28 September 2010"/>
+            </date>
             <t v=" supplementing Directive 2010/30/EU of the European Parliament and of the Council with regard to energy labelling of household washing machines"/>
          </p>
          <p>

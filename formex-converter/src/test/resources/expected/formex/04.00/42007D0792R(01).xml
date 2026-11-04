@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Decision of the Representatives of the Governments of the Member States meeting within the Council of "/>
-            <date asWritten="26 November 2007" date="2007-11-26"/>
+            <date date="2007-11-26">
+               <t v="26 November 2007"/>
+            </date>
             <t v=" amending Decision No 2005/446/EC setting the deadline for the commitment of the funds of the Ninth European Development Fund (EDF)"/>
          </p>
          <p>

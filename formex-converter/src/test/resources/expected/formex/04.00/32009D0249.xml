@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="16 March 2009" date="2009-03-16"/>
+            <docDate date="2009-03-16">
+               <t v="16 March 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -44,7 +46,9 @@
          <unit eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Decision No 235/2008/EC of the European Parliament and of the Council of "/>
-               <date asWritten="11 March 2008" date="2008-03-11"/>
+               <date date="2008-03-11">
+                  <t v="11 March 2008"/>
+               </date>
                <t v=" establishing the European Statistical Governance Advisory Board"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 3 thereof,"/>
@@ -93,7 +97,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="16 March 2009" date="2009-03-16"/>
+            <date date="2009-03-16">
+               <t v="16 March 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -25,14 +25,20 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="18 January 2013" date="2013-01-18"/>
+            <docDate date="2013-01-18">
+               <t v="18 January 2013"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
                <t v="on the issue of licences for the import of garlic in the subperiod from "/>
-               <date asWritten="1 March 2013" date="2013-03-01"/>
+               <date date="2013-03-01">
+                  <t v="1 March 2013"/>
+               </date>
                <t v=" to "/>
-               <date asWritten="31 May 2013" date="2013-05-31"/>
+               <date date="2013-05-31">
+                  <t v="31 May 2013"/>
+               </date>
             </docPurpose>
          </p>
       </longTitle>
@@ -52,7 +58,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
-               <date asWritten="22 October 2007" date="2007-10-22"/>
+               <date date="2007-10-22">
+                  <t v="22 October 2007"/>
+               </date>
                <t v=" establishing a common organisation of agricultural markets and on specific provisions for certain agricultural products (Single CMO Regulation)"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
@@ -61,7 +69,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 1301/2006 of "/>
-               <date asWritten="31 August 2006" date="2006-08-31"/>
+               <date date="2006-08-31">
+                  <t v="31 August 2006"/>
+               </date>
                <t v=" laying down common rules for the administration of import tariff quotas for agricultural products managed by a system of import licences"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 7(2) thereof,"/>
@@ -106,7 +116,9 @@
                   <t v="A"/>
                </quote>
                <t v=" licence applications sent to the Commission by "/>
-               <date asWritten="14 January 2013" date="2013-01-14"/>
+               <date date="2013-01-14">
+                  <t v="14 January 2013"/>
+               </date>
                <t v=" can be met in accordance with Article 12 of Regulation (EC) No 341/2007."/>
             </p>
          </unit>
@@ -136,7 +148,9 @@
                <t v="A"/>
             </quote>
             <t v=" import licences lodged pursuant to Article 10(1) of Regulation (EC) No 341/2007 during the first seven working days of January 2013 and sent to the Commission by "/>
-            <date asWritten="14 January 2013" date="2013-01-14"/>
+            <date date="2013-01-14">
+               <t v="14 January 2013"/>
+            </date>
             <t v=" shall be met at a percentage rate of the quantities applied for as set out in the Annex to this Regulation."/>
          </p>
       </unit>
@@ -160,7 +174,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="18 January 2013" date="2013-01-18"/>
+            <date date="2013-01-18">
+               <t v="18 January 2013"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

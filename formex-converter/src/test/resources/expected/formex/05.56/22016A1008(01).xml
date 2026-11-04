@@ -38,31 +38,43 @@
          </heading>
          <p>
             <t v="Brussels, "/>
-            <date asWritten="4 August 2016" date="2016-08-04"/>
+            <date date="2016-08-04">
+               <t v="4 August 2016"/>
+            </date>
          </p>
          <p>
             <t v="Your Excellency,"/>
          </p>
          <p>
             <t v="On "/>
-            <date asWritten="30 May 2007" date="2007-05-30"/>
+            <date date="2007-05-30">
+               <t v="30 May 2007"/>
+            </date>
             <t v=" the Council established, by Joint Action 2007/369/CFSP, the EU Police Mission in Afghanistan (EUPOL AFGHANISTAN) with the objective to contribute to the creation under Afghan ownership of sustainable and effective police arrangements."/>
          </p>
          <p>
             <t v="On "/>
-            <date asWritten="14 October 2010" date="2010-10-14"/>
+            <date date="2010-10-14">
+               <t v="14 October 2010"/>
+            </date>
             <t v=", the European Union and the Islamic Republic of Afghanistan signed an agreement on the Status of EUPOL AFGHANISTAN. This Agreement expires on "/>
-            <date asWritten="14 October 2016" date="2016-10-14"/>
+            <date date="2016-10-14">
+               <t v="14 October 2016"/>
+            </date>
             <t v=". Article 20(4) thereof stipulates that this Agreement may be amended by written agreement between the Parties."/>
          </p>
          <p>
             <t v="The mandate of EUPOL AFGHANISTAN comes to an end on "/>
-            <date asWritten="31 December 2016" date="2016-12-31"/>
+            <date date="2016-12-31">
+               <t v="31 December 2016"/>
+            </date>
             <t v=". After this date the process of the termination of the mission, including the disposal of its assets, is expected to last for the period of up to nine months."/>
          </p>
          <p>
             <t v="Taking the above in the account, I propose that the Agreement of the Status of EUPOL AFGHANISTAN of "/>
-            <date asWritten="14 October 2010" date="2010-10-14"/>
+            <date date="2010-10-14">
+               <t v="14 October 2010"/>
+            </date>
             <t v=" is extended for a period of 1 (one) year unless terminated by one of the parties with advance written notice of 3 (three) months and applies to EU personnel entrusted with the closure of EUPOL AFGHANISTAN as well as to the assets needed to perform their tasks."/>
          </p>
          <p>
@@ -95,38 +107,52 @@
          </heading>
          <p>
             <t v="Kabul, "/>
-            <date asWritten="3 September 2016" date="2016-09-03"/>
+            <date date="2016-09-03">
+               <t v="3 September 2016"/>
+            </date>
          </p>
          <p>
             <t v="Dear High Representative,"/>
          </p>
          <p>
             <t v="Thank you for your letter dated "/>
-            <date asWritten="4 August 2016" date="2016-08-04"/>
+            <date date="2016-08-04">
+               <t v="4 August 2016"/>
+            </date>
             <t v=" on the extension of the Agreement on the EU Police Mission in Afghanistan, which reads as follows:"/>
          </p>
          <quotedStructure eId="let_2/qstr_1">
             <p>
                <t v="‘"/>
                <t v="On "/>
-               <date asWritten="30 May 2007" date="2007-05-30"/>
+               <date date="2007-05-30">
+                  <t v="30 May 2007"/>
+               </date>
                <t v=" the Council established, by Joint Action 2007/369/CFSP, the EU Police Mission in Afghanistan (EUPOL AFGHANISTAN) with the objective to contribute to the creation under Afghan ownership of sustainable and effective police arrangements."/>
             </p>
             <p>
                <t v="On "/>
-               <date asWritten="14 October 2010" date="2010-10-14"/>
+               <date date="2010-10-14">
+                  <t v="14 October 2010"/>
+               </date>
                <t v=", the European Union and the Islamic Republic of Afghanistan signed an agreement on the Status of EUPOL AFGHANISTAN. This Agreement expires on "/>
-               <date asWritten="14 October 2016" date="2016-10-14"/>
+               <date date="2016-10-14">
+                  <t v="14 October 2016"/>
+               </date>
                <t v=". Article 20(4) thereof stipulates that this Agreement may be amended by written agreement between the Parties."/>
             </p>
             <p>
                <t v="The mandate of EUPOL AFGHANISTAN comes to an end on "/>
-               <date asWritten="31 December 2016" date="2016-12-31"/>
+               <date date="2016-12-31">
+                  <t v="31 December 2016"/>
+               </date>
                <t v=". After this date the process of the termination of the mission, including the disposal of its assets, is expected to last for the period of up to nine months."/>
             </p>
             <p>
                <t v="Taking the above in the account, I propose that the Agreement of the Status of EUPOL AFGHANISTAN of "/>
-               <date asWritten="14 October 2010" date="2010-10-14"/>
+               <date date="2010-10-14">
+                  <t v="14 October 2010"/>
+               </date>
                <t v=" is extended for a period of 1 (one) year unless terminated by one of the parties with advance written notice of 3 (three) months and applies to EU personnel entrusted with the closure of EUPOL AFGHANISTAN as well as to the assets needed to perform their tasks."/>
             </p>
             <p>

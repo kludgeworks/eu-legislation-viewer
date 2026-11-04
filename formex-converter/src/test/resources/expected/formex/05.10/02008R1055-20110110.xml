@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="20 December 2010" date="2010-12-20"/>
+               <docDate date="2010-12-20">
+                  <t v="20 December 2010"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="27 October 2008" date="2008-10-27"/>
+            <docDate date="2008-10-27">
+               <t v="27 October 2008"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -77,7 +81,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 184/2005 of the European Parliament and of the Council of "/>
-               <date asWritten="12 January 2005" date="2005-01-12"/>
+               <date date="2005-01-12">
+                  <t v="12 January 2005"/>
+               </date>
                <t v=" on Community statistics concerning balance of payments, international trade in services and foreign direct investment"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 4(3) thereof,"/>

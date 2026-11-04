@@ -14,7 +14,7 @@ import org.jspecify.annotations.Nullable;
  * @param attributes its attributes, by the same names (eId, xml:lang)
  * @param children its child elements, in order; none for an element of text
  * @param text its text, which only MathML's tokens hold (mi, mo): legal-text's own is in attributes
- *     (t's v, a date's asWritten). Empty for any other element
+ *     (t's v, number's v). Empty for any other element
  */
 @ValueObject
 public record Element(

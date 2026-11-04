@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 April 2018" date="2018-04-16"/>
+               <docDate date="2018-04-16">
+                  <t v="16 April 2018"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="19 July 2021" date="2021-07-19"/>
+               <docDate date="2021-07-19">
+                  <t v="19 July 2021"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -75,7 +79,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="1 February 2003" date="2003-02-01"/>
+            <docDate date="2003-02-01">
+               <t v="1 February 2003"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -144,7 +150,9 @@
             </num>
             <p>
                <t v="The liquidation shall be conducted in accordance with the rules and procedures applying to these operations, with the Community institutions enjoying the existing powers and prerogatives provided for by the ECSC Treaty and secondary legislation in force on "/>
-               <date asWritten="23 July 2002" date="2002-07-23"/>
+               <date date="2002-07-23">
+                  <t v="23 July 2002"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -285,9 +293,13 @@
          </num>
          <p>
             <t v="The amount corresponding to cancellations of commitments made since "/>
-            <date asWritten="24 July 2002" date="2002-07-24"/>
+            <date date="2002-07-24">
+               <t v="24 July 2002"/>
+            </date>
             <t v=" pursuant to Article 4(5) shall be made available to the Research Fund for Coal and Steel on "/>
-            <date asWritten="10 May 2018" date="2018-05-10"/>
+            <date date="2018-05-10">
+               <t v="10 May 2018"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -324,9 +336,13 @@
          </num>
          <p>
             <t v="Administrative expenditure resulting from liquidation, investment and management operations referred to in this Decision, corresponding to the expenditure laid down in Article 20 of the Treaty establishing a Single Council and a Single Commission of the European Communities of "/>
-            <date asWritten="8 April 1965" date="1965-04-08"/>
+            <date date="1965-04-08">
+               <t v="8 April 1965"/>
+            </date>
             <t v=", the amount of which was adjusted by the Council Decision of "/>
-            <date asWritten="21 November 1977" date="1977-11-21"/>
+            <date date="1977-11-21">
+               <t v="21 November 1977"/>
+            </date>
             <t v=", shall be met by the Commission from the general budget of the European Union."/>
          </p>
       </unit>
@@ -336,7 +352,9 @@
          </num>
          <p>
             <t v="The Commission shall determine the amount of the assets and liabilities of the ECSC in a balance sheet closed at "/>
-            <date asWritten="23 July 2002" date="2002-07-23"/>
+            <date date="2002-07-23">
+               <t v="23 July 2002"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -356,7 +374,9 @@
          <unit eId="art_8/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
-               <date asWritten="24 July 2002" date="2002-07-24"/>
+               <date date="2002-07-24">
+                  <t v="24 July 2002"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -611,7 +631,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council of "/>
-            <date asWritten="18 July 2018" date="2018-07-18"/>
+            <date date="2018-07-18">
+               <t v="18 July 2018"/>
+            </date>
             <t v=" on the financial rules applicable to the general budget of the Union, amending Regulations (EU) No 1296/2013, (EU) No 1301/2013, (EU) No 1303/2013, (EU) No 1304/2013, (EU) No 1309/2013, (EU) No 1316/2013, (EU) No 223/2014, (EU) No 283/2014, and Decision No 541/2014/EU and repealing Regulation (EU, Euratom) No 966/2012 ("/>
             <ref kind="oj"
                  series="L"

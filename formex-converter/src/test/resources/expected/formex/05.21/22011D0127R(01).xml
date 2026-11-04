@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Decision of the EEA Joint Committee No 127/2011 of "/>
-            <date asWritten="2 December 2011" date="2011-12-02"/>
+            <date date="2011-12-02">
+               <t v="2 December 2011"/>
+            </date>
             <t v=" amending Annex II (Technical regulations, standards, testing and certification) to the EEA Agreement"/>
          </p>
          <p>
@@ -32,7 +34,9 @@
             <t v="On page 9, in point 1 of Article 1, the words "/>
             <quote startQuote="‘" endQuote="’">
                <t v="with effect from "/>
-               <date asWritten="1 July 2011" date="2011-07-01"/>
+               <date date="2011-07-01">
+                  <t v="1 July 2011"/>
+               </date>
             </quote>
             <t v=" shall be deleted."/>
          </p>

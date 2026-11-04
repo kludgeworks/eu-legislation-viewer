@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="2 June 2005" date="2005-06-02"/>
+            <docDate date="2005-06-02">
+               <t v="2 June 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -94,7 +96,9 @@
                </num>
                <p>
                   <t v="In accordance with the negotiating directives adopted by the Council on "/>
-                  <date asWritten="29 April 2004" date="2004-04-29"/>
+                  <date date="2004-04-29">
+                     <t v="29 April 2004"/>
+                  </date>
                   <t v=", the Commission, on behalf of the Community, has negotiated a Framework Agreement with Bosnia and Herzegovina on the general principles for its participation in Community programmes."/>
                </p>
             </unit>
@@ -104,7 +108,9 @@
                </num>
                <p>
                   <t v="This Agreement was signed, on behalf of the Community, on "/>
-                  <date asWritten="22 November 2004" date="2004-11-22"/>
+                  <date date="2004-11-22">
+                     <t v="22 November 2004"/>
+                  </date>
                   <t v=" in Brussels, subject to conclusion at a later date."/>
                </p>
             </unit>
@@ -130,7 +136,9 @@
                </num>
                <p>
                   <t v="Bosnia and Herzegovina may request financial assistance for participating in Community programmes under Council Regulation (EC) No 2666/2000 of "/>
-                  <date asWritten="5 December 2000" date="2000-12-05"/>
+                  <date date="2000-12-05">
+                     <t v="5 December 2000"/>
+                  </date>
                   <t v=" on assistance for Albania, Bosnia and Herzegovina, Croatia, the Federal Republic of Yugoslavia and the Former Yugoslav Republic of Macedonia"/>
                   <noteRef href="#note_2" marker="2"/>
                   <t v=" or under any similar Regulation providing for Community external assistance for Bosnia and Herzegovina that may be adopted in future."/>
@@ -220,7 +228,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Luxembourg, "/>
-            <date asWritten="2 June 2005" date="2005-06-02"/>
+            <date date="2005-06-02">
+               <t v="2 June 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -247,7 +257,9 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Assent delivered on "/>
-            <date asWritten="10 May 2005" date="2005-05-10"/>
+            <date date="2005-05-10">
+               <t v="10 May 2005"/>
+            </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
       </note>

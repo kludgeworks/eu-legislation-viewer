@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="15 July 2013" date="2013-07-15"/>
+            <docDate date="2013-07-15">
+               <t v="15 July 2013"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -64,7 +66,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="30 November 2006" date="2006-11-30"/>
+               <date date="2006-11-30">
+                  <t v="30 November 2006"/>
+               </date>
                <t v=", the Council adopted Regulation (EC) No 1801/2006 on the conclusion of the Fisheries Partnership Agreement between the European Community and the Islamic Republic of Mauritania"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=" ("/>
@@ -84,7 +88,9 @@
                   <t v="the new Protocol"/>
                </quote>
                <t v=") has been provisionally applied since "/>
-               <date asWritten="16 December 2012" date="2012-12-16"/>
+               <date date="2012-12-16">
+                  <t v="16 December 2012"/>
+               </date>
                <t v=", the date of its signature, in accordance with Council Decision 2012/827/EU"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=". The new Protocol grants EU vessels fishing opportunities in waters in which Mauritania exercises its sovereignty or its jurisdiction as regards fishing. The allocation of fishing opportunities granted to the Union under the new Protocol was defined by Regulation (EU) No 1259/2012"/>
@@ -98,7 +104,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="20 February 2013" date="2013-02-20"/>
+               <date date="2013-02-20">
+                  <t v="20 February 2013"/>
+               </date>
                <t v=", in accordance with Article 4 of the new Protocol, the Joint Committee between the European Union and Mauritania ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Joint Committee"/>
@@ -112,9 +120,13 @@
             </num>
             <p>
                <t v="Regulation (EU) No 1259/2012 should therefore be amended. Given that the decision of the Joint Committee applies from "/>
-               <date asWritten="20 February 2013" date="2013-02-20"/>
+               <date date="2013-02-20">
+                  <t v="20 February 2013"/>
+               </date>
                <t v=", this Regulation should enter into force immediately following its publication and should apply from "/>
-               <date asWritten="20 February 2013" date="2013-02-20"/>
+               <date date="2013-02-20">
+                  <t v="20 February 2013"/>
+               </date>
                <t v=","/>
             </p>
          </unit>
@@ -212,7 +224,9 @@
          <unit eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
-               <date asWritten="20 February 2013" date="2013-02-20"/>
+               <date date="2013-02-20">
+                  <t v="20 February 2013"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -225,7 +239,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="15 July 2013" date="2013-07-15"/>
+            <date date="2013-07-15">
+               <t v="15 July 2013"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -264,7 +280,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Council Decision 2012/827/EU of "/>
-            <date asWritten="3 December 2012" date="2012-12-03"/>
+            <date date="2012-12-03">
+               <t v="3 December 2012"/>
+            </date>
             <t v=" on the signing, on behalf of the European Union, and on the provisional application of the Protocol setting out the fishing opportunities and financial contribution provided for in the Fisheries Partnership Agreement between the European Union and the Islamic Republic of Mauritania for a period of two years ("/>
             <ref kind="oj"
                  series="L"

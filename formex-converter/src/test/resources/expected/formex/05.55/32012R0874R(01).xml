@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Delegated Regulation (EU) No 874/2012 of "/>
-            <date asWritten="12 July 2012" date="2012-07-12"/>
+            <date date="2012-07-12">
+               <t v="12 July 2012"/>
+            </date>
             <t v=" supplementing Directive 2010/30/EU of the European Parliament and of the Council with regard to energy labelling of electrical lamps and luminaires"/>
          </p>
          <p>

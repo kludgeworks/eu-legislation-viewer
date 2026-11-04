@@ -55,7 +55,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="6 June 2008" date="2008-06-06"/>
+               <docDate date="2008-06-06">
+                  <t v="6 June 2008"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -463,7 +465,9 @@
          <note eId="note_1" marker="1" kind="footnote">
             <p>
                <t v="OJ No 117, "/>
-               <date asWritten="13.6.1967" date="1967-06-13"/>
+               <date date="1967-06-13">
+                  <t v="13.6.1967"/>
+               </date>
                <t v=", p. 2269/67."/>
             </p>
          </note>

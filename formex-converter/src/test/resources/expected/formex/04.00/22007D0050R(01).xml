@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to the Decision of the EEA Joint Committee No 50/2007 of "/>
-            <date asWritten="8 June 2007" date="2007-06-08"/>
+            <date date="2007-06-08">
+               <t v="8 June 2007"/>
+            </date>
             <t v=" amending Annex IX (Financial services) to the EEA Agreement"/>
          </p>
          <p>

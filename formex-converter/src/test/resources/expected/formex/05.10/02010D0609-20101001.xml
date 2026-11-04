@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Political and Security Committee Decision EUPOL RD Congo/1/2010 (2010/609/CFSP) of "/>
-               <date asWritten="8 October 2010" date="2010-10-08"/>
+               <date date="2010-10-08">
+                  <t v="8 October 2010"/>
+               </date>
                <t v=" concerning the appointment of the Head of Mission of EUPOL RD Congo"/>
             </p>
             <p>
@@ -52,7 +54,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="8 October 2010" date="2010-10-08"/>
+            <docDate date="2010-10-08">
+               <t v="8 October 2010"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -79,7 +83,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2010/576/CFSP of "/>
-               <date asWritten="23 September 2010" date="2010-09-23"/>
+               <date date="2010-09-23">
+                  <t v="23 September 2010"/>
+               </date>
                <t v=" on the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo)"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 10(1) thereof,"/>
@@ -106,7 +112,9 @@
             </num>
             <p>
                <t v="The High Representative of the Union for Foreign Affairs and Security Policy has proposed the appointment of Chief Superintendent Jean-Paul RIKIR as Head of Mission with effect from "/>
-               <date asWritten="1 October 2010" date="2010-10-01"/>
+               <date date="2010-10-01">
+                  <t v="1 October 2010"/>
+               </date>
                <t v=",&#xA;"/>
             </p>
          </unit>
@@ -124,7 +132,9 @@
          </num>
          <p>
             <t v="Chief Superintendent Jean-Paul RIKIR is hereby appointed Head of the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo) with effect from "/>
-            <date asWritten="1 October 2010" date="2010-10-01"/>
+            <date date="2010-10-01">
+               <t v="1 October 2010"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -139,7 +149,9 @@
                         marker="O000001M001000"/>
             <p>
                <t v="This Decision shall enter into force on "/>
-               <date asWritten="1 October 2010" date="2010-10-01"/>
+               <date date="2010-10-01">
+                  <t v="1 October 2010"/>
+               </date>
                <t v="."/>
             </p>
          </unit>

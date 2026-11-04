@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Directive 2008/48/EC of the European Parliament and of the Council of "/>
-            <date asWritten="23 April 2008" date="2008-04-23"/>
+            <date date="2008-04-23">
+               <t v="23 April 2008"/>
+            </date>
             <t v=" on credit agreements for consumers and repealing Council Directive 87/102/EEC"/>
          </p>
          <p>

@@ -28,7 +28,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="23 April 2009" date="2009-04-23"/>
+            <docDate date="2009-04-23">
+               <t v="23 April 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -99,15 +101,21 @@
             </num>
             <p>
                <t v="The Commission Communication of "/>
-               <date asWritten="15 May 2001" date="2001-05-15"/>
+               <date date="2001-05-15">
+                  <t v="15 May 2001"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="A Sustainable Europe for a Better World: A European Union Strategy for Sustainable Development"/>
                </quote>
                <t v=", presented to the Gothenburg European Council of "/>
-               <date asWritten="15" date="2001-06-15"/>
+               <date date="2001-06-15">
+                  <t v="15"/>
+               </date>
                <t v=" and "/>
-               <date asWritten="16 June 2001" date="2001-06-16"/>
+               <date date="2001-06-16">
+                  <t v="16 June 2001"/>
+               </date>
                <t v=", identified greenhouse gas emissions and pollution caused by transport among the main obstacles to sustainable development."/>
             </p>
          </unit>
@@ -117,7 +125,9 @@
             </num>
             <p>
                <t v="Decision No 1600/2002/EC of the European Parliament and of the Council of "/>
-               <date asWritten="22 July 2002" date="2002-07-22"/>
+               <date date="2002-07-22">
+                  <t v="22 July 2002"/>
+               </date>
                <t v=" laying down the Sixth Community Environment Action Programme"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=" acknowledged the need for specific measures to enhance energy efficiency and energy saving and for the integration of climate change objectives into transport and energy policies as well as the need for specific measures in the transport sector to address energy use and greenhouse gas emissions."/>
@@ -129,7 +139,9 @@
             </num>
             <p>
                <t v="The Commission Communication of "/>
-               <date asWritten="10 January 2007" date="2007-01-10"/>
+               <date date="2007-01-10">
+                  <t v="10 January 2007"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="An energy policy for Europe"/>
@@ -143,7 +155,9 @@
             </num>
             <p>
                <t v="The Commission Communication of "/>
-               <date asWritten="19 October 2006" date="2006-10-19"/>
+               <date date="2006-10-19">
+                  <t v="19 October 2006"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Action Plan for Energy Efficiency: Realising the Potential"/>
@@ -161,7 +175,9 @@
                   <t v="Keep Europe moving – Sustainable mobility for our continent"/>
                </quote>
                <t v=", of "/>
-               <date asWritten="22 June 2006" date="2006-06-22"/>
+               <date date="2006-06-22">
+                  <t v="22 June 2006"/>
+               </date>
                <t v=", announced that the Union will stimulate environmentally-friendly innovation in particular by successive European emission standards (Euro Norms) and by the promotion of clean vehicles on the basis of public procurement."/>
             </p>
          </unit>
@@ -171,7 +187,9 @@
             </num>
             <p>
                <t v="In its Communication of "/>
-               <date asWritten="7 February 2007" date="2007-02-07"/>
+               <date date="2007-02-07">
+                  <t v="7 February 2007"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Results of the review of the Community Strategy to reduce CO"/>
@@ -193,7 +211,9 @@
             </num>
             <p>
                <t v="The Commission Green Paper on Urban Transport of "/>
-               <date asWritten="25 September 2007" date="2007-09-25"/>
+               <date date="2007-09-25">
+                  <t v="25 September 2007"/>
+               </date>
                <t v=" entitled "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Towards a new culture for urban mobility"/>
@@ -211,7 +231,9 @@
             </num>
             <p>
                <t v="The CARS 21 High Level Group report of "/>
-               <date asWritten="12 December 2005" date="2005-12-12"/>
+               <date date="2005-12-12">
+                  <t v="12 December 2005"/>
+               </date>
                <t v=" supported the Commission’s initiative on the promotion of clean and energy-efficient vehicles, on condition that a technology-neutral and performance-based integrated approach involving vehicle manufacturers, oil or fuel suppliers, repairers, customers or drivers and public authorities is taken."/>
             </p>
          </unit>
@@ -221,13 +243,19 @@
             </num>
             <p>
                <t v="The High Level Group on competitiveness, energy and the environment, in its report of "/>
-               <date asWritten="27 February 2007" date="2007-02-27"/>
+               <date date="2007-02-27">
+                  <t v="27 February 2007"/>
+               </date>
                <t v=", recommended that private and public procurement should take account of full lifetime costs with emphasis on energy efficiency. Member States and the Community should develop and publish public purchasing guidance on how to move beyond lowest price tendering to procurement of more sustainable intermediate goods in line with Directive 2004/17/EC of the European Parliament and of the Council of "/>
-               <date asWritten="31 March 2004" date="2004-03-31"/>
+               <date date="2004-03-31">
+                  <t v="31 March 2004"/>
+               </date>
                <t v=" coordinating the procurement procedures of entities operating in the water, energy, transport and postal services sectors"/>
                <noteRef href="#note_5" marker="5"/>
                <t v=" and Directive 2004/18/EC of the European Parliament and of the Council of "/>
-               <date asWritten="31 March 2004" date="2004-03-31"/>
+               <date date="2004-03-31">
+                  <t v="31 March 2004"/>
+               </date>
                <t v=" on the coordination of procedures for the award of public works contracts, public supply contracts and public service contracts"/>
                <noteRef href="#note_6" marker="6"/>
                <t v="."/>
@@ -303,7 +331,9 @@
             </num>
             <p>
                <t v="In line with Directive 2007/46/EC of the European Parliament and of the Council of "/>
-               <date asWritten="5 September 2007" date="2007-09-05"/>
+               <date date="2007-09-05">
+                  <t v="5 September 2007"/>
+               </date>
                <t v=" establishing a framework for the approval of motor vehicles and their trailers, and of systems, components and separate technical units intended for such vehicles (Framework Directive)"/>
                <noteRef href="#note_7" marker="7"/>
                <t v=" and with a view to avoiding an undue administrative burden, Member States should be able to exempt authorities and operators from the requirements laid down in this Directive when purchasing vehicles designed and constructed for special use."/>
@@ -431,7 +461,9 @@
                <t v="The possibility of public support for the purchase of clean and energy-efficient road transport vehicles, including the retrofitting of vehicles with engines and replacement parts, which go beyond the mandatory environmental requirements, is recognised in the Community guidelines for State aid for environmental protection"/>
                <noteRef href="#note_11" marker="11"/>
                <t v=" and Commission Regulation (EC) No 800/2008 of "/>
-               <date asWritten="6 August 2008" date="2008-08-06"/>
+               <date date="2008-08-06">
+                  <t v="6 August 2008"/>
+               </date>
                <t v=" declaring certain categories of aid compatible with the common market in application of Articles 87 and 88 of the Treaty (General block exemption Regulation)"/>
                <noteRef href="#note_12" marker="12"/>
                <t v=". In this context, the guidelines included in the Commission Communication entitled "/>
@@ -472,7 +504,9 @@
             </num>
             <p>
                <t v="The measures necessary for the implementation of this Directive should be adopted in accordance with Council Decision 1999/468/EC of "/>
-               <date asWritten="28 June 1999" date="1999-06-28"/>
+               <date date="1999-06-28">
+                  <t v="28 June 1999"/>
+               </date>
                <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
                <noteRef href="#note_14" marker="14"/>
                <t v="."/>
@@ -500,7 +534,9 @@
             </num>
             <p>
                <t v="The Member States and the Commission should continue to promote clean and energy-efficient road transport vehicles. In this context, national and regional operational programmes, as defined by Council Regulation (EC) No 1083/2006 of "/>
-               <date asWritten="11 July 2006" date="2006-07-11"/>
+               <date date="2006-07-11">
+                  <t v="11 July 2006"/>
+               </date>
                <t v=" laying down general provisions on the European Regional Development Fund, the European Social Fund and the Cohesion Fund"/>
                <noteRef href="#note_15" marker="15"/>
                <t v=" could play an important role. Furthermore, Community programmes such as Civitas and Intelligent Energy Europe could contribute to improving urban mobility while reducing its adverse effects."/>
@@ -575,7 +611,9 @@
                </num>
                <p>
                   <t v="operators for the discharge of public service obligations under a public service contract within the meaning of Regulation (EC) No 1370/2007 of the European Parliament and of the Council of "/>
-                  <date asWritten="23 October 2007" date="2007-10-23"/>
+                  <date date="2007-10-23">
+                     <t v="23 October 2007"/>
+                  </date>
                   <t v=" on public passenger transport services by rail and by road"/>
                   <noteRef href="#note_17" marker="17"/>
                   <t v=" in excess of a threshold which shall be defined by Member States not exceeding the threshold values as set out in Directives 2004/17/EC and 2004/18/EC."/>
@@ -642,7 +680,9 @@
             </num>
             <p>
                <t v="Member States shall ensure that, from "/>
-               <date asWritten="4 December 2010" date="2010-12-04"/>
+               <date date="2010-12-04">
+                  <t v="4 December 2010"/>
+               </date>
                <t v=", all contracting authorities, contracting entities and operators referred to in Article 3, when purchasing road transport vehicles, take into account the operational lifetime energy and environmental impacts as set out in paragraph 2 and apply at least one of the options set out in paragraph 3."/>
             </p>
          </unit>
@@ -891,7 +931,9 @@
             </num>
             <p>
                <t v="Every two years, with effect from "/>
-               <date asWritten="4 December 2010" date="2010-12-04"/>
+               <date date="2010-12-04">
+                  <t v="4 December 2010"/>
+               </date>
                <t v=", the Commission shall prepare a report on the application of this Directive and on the actions taken by individual Member States to promote the purchase of clean and energy-efficient road transport vehicles."/>
             </p>
          </unit>
@@ -933,7 +975,9 @@
             <unit eId="art_11/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="Member States shall bring into force the laws, regulations and administrative provisions necessary to comply with this Directive by "/>
-                  <date asWritten="4 December 2010" date="2010-12-04"/>
+                  <date date="2010-12-04">
+                     <t v="4 December 2010"/>
+                  </date>
                   <t v=". They shall forthwith inform the Commission thereof."/>
                </p>
             </unit>
@@ -983,7 +1027,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Strasbourg, "/>
-            <date asWritten="23 April 2009" date="2009-04-23"/>
+            <date date="2009-04-23">
+               <t v="23 April 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -1052,9 +1098,13 @@
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Opinion of the European Parliament of "/>
-            <date asWritten="22 October 2008" date="2008-10-22"/>
+            <date date="2008-10-22">
+               <t v="22 October 2008"/>
+            </date>
             <t v=" (not yet published in the Official Journal) and Council Decision of "/>
-            <date asWritten="30 March 2009" date="2009-03-30"/>
+            <date date="2009-03-30">
+               <t v="30 March 2009"/>
+            </date>
             <t v="."/>
          </p>
       </note>

@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="1 December 2009" date="2009-12-01"/>
+            <docDate date="2009-12-01">
+               <t v="1 December 2009"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -67,7 +69,9 @@
          </num>
          <p>
             <t v="Mr Pierre de BOISSIEU is hereby appointed Secretary-General of the Council of the European Union for the period from "/>
-            <date asWritten="1 December 2009" date="2009-12-01"/>
+            <date date="2009-12-01">
+               <t v="1 December 2009"/>
+            </date>
             <t v=" until the day after the European Council meeting of June 2011."/>
          </p>
       </unit>
@@ -95,7 +99,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="1 December 2009" date="2009-12-01"/>
+            <date date="2009-12-01">
+               <t v="1 December 2009"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

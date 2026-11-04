@@ -228,7 +228,7 @@
 
   <x:scenario label="A date that is not one (ISO 19931911)">
     <x:context mode="block" xmlns=""><P>On <DATE ISO="19931911">19 November 1993</DATE></P></x:context>
-    <x:expect label="keeps its wording without a value" test="$x:result//*:date/@asWritten = '19 November 1993' and empty($x:result//*:date/@date)"/>
+    <x:expect label="keeps its wording without a value" test="$x:result//*:date/*:t/@v = '19 November 1993' and empty($x:result//*:date/@date)"/>
   </x:scenario>
 
   <x:scenario label="A quotation mark with CODE 0000">

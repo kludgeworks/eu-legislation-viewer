@@ -31,7 +31,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="6 April 2004" date="2004-04-06"/>
+               <docDate date="2004-04-06">
+                  <t v="6 April 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -51,7 +53,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Decision No 1/2004 of the Community/Switzerland AirTransport Committee of "/>
-               <date asWritten="6 April 2004" date="2004-04-06"/>
+               <date date="2004-04-06">
+                  <t v="6 April 2004"/>
+               </date>
                <t v=" amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
             </p>
             <p>
@@ -84,7 +88,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="22 April 2004" date="2004-04-22"/>
+               <docDate date="2004-04-22">
+                  <t v="22 April 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -104,7 +110,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Decision No 3/2004 of the Community/Switzerland Air Transport Committee of "/>
-               <date asWritten="22 April 2004" date="2004-04-22"/>
+               <date date="2004-04-22">
+                  <t v="22 April 2004"/>
+               </date>
                <t v=" amending the Annex to the Agreement between the European Community and the Swiss Confederation on Air Transport"/>
             </p>
             <p>
@@ -137,7 +145,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="12 July 2005" date="2005-07-12"/>
+               <docDate date="2005-07-12">
+                  <t v="12 July 2005"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -168,7 +178,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="25 November 2005" date="2005-11-25"/>
+               <docDate date="2005-11-25">
+                  <t v="25 November 2005"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -199,7 +211,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 October 2006" date="2006-10-18"/>
+               <docDate date="2006-10-18">
+                  <t v="18 October 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -230,7 +244,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 October 2006" date="2006-10-18"/>
+               <docDate date="2006-10-18">
+                  <t v="18 October 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -261,7 +277,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="27 October 2006" date="2006-10-27"/>
+               <docDate date="2006-10-27">
+                  <t v="27 October 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -292,7 +310,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="27 October 2006" date="2006-10-27"/>
+               <docDate date="2006-10-27">
+                  <t v="27 October 2006"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -323,7 +343,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="5 December 2007" date="2007-12-05"/>
+               <docDate date="2007-12-05">
+                  <t v="5 December 2007"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -354,7 +376,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="15 December 2007" date="2007-12-15"/>
+               <docDate date="2007-12-15">
+                  <t v="15 December 2007"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -385,7 +409,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 December 2008" date="2008-12-16"/>
+               <docDate date="2008-12-16">
+                  <t v="16 December 2008"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -416,7 +442,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="7 April 2010" date="2010-04-07"/>
+               <docDate date="2010-04-07">
+                  <t v="7 April 2010"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -451,7 +479,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="26 November 2010" date="2010-11-26"/>
+               <docDate date="2010-11-26">
+                  <t v="26 November 2010"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -482,7 +512,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="4 July 2011" date="2011-07-04"/>
+               <docDate date="2011-07-04">
+                  <t v="4 July 2011"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -516,7 +548,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="25 November 2011" date="2011-11-25"/>
+               <docDate date="2011-11-25">
+                  <t v="25 November 2011"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -547,7 +581,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="10 May 2012" date="2012-05-10"/>
+               <docDate date="2012-05-10">
+                  <t v="10 May 2012"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -578,7 +614,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="30 November 2012" date="2012-11-30"/>
+               <docDate date="2012-11-30">
+                  <t v="30 November 2012"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -613,7 +651,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="2 December 2013" date="2013-12-02"/>
+               <docDate date="2013-12-02">
+                  <t v="2 December 2013"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -644,7 +684,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="9 July 2014" date="2014-07-09"/>
+               <docDate date="2014-07-09">
+                  <t v="9 July 2014"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -675,7 +717,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="5 December 2014" date="2014-12-05"/>
+               <docDate date="2014-12-05">
+                  <t v="5 December 2014"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -706,7 +750,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="20 August 2015" date="2015-08-20"/>
+               <docDate date="2015-08-20">
+                  <t v="20 August 2015"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -734,7 +780,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="11 April 2016" date="2016-04-11"/>
+               <docDate date="2016-04-11">
+                  <t v="11 April 2016"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -762,7 +810,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="8 December 2016" date="2016-12-08"/>
+               <docDate date="2016-12-08">
+                  <t v="8 December 2016"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -790,7 +840,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="29 November 2017" date="2017-11-29"/>
+               <docDate date="2017-11-29">
+                  <t v="29 November 2017"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -818,7 +870,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="12 December 2018" date="2018-12-12"/>
+               <docDate date="2018-12-12">
+                  <t v="12 December 2018"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -846,7 +900,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="22 August 2019" date="2019-08-22"/>
+               <docDate date="2019-08-22">
+                  <t v="22 August 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -874,7 +930,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="10 December 2019" date="2019-12-10"/>
+               <docDate date="2019-12-10">
+                  <t v="10 December 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -902,7 +960,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="15 June 2020" date="2020-06-15"/>
+               <docDate date="2020-06-15">
+                  <t v="15 June 2020"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -930,7 +990,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="3 December 2020" date="2020-12-03"/>
+               <docDate date="2020-12-03">
+                  <t v="3 December 2020"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -958,7 +1020,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="15 July 2021" date="2021-07-15"/>
+               <docDate date="2021-07-15">
+                  <t v="15 July 2021"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -986,7 +1050,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="8 December 2021" date="2021-12-08"/>
+               <docDate date="2021-12-08">
+                  <t v="8 December 2021"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -1014,7 +1080,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="24 November 2022" date="2022-11-24"/>
+               <docDate date="2022-11-24">
+                  <t v="24 November 2022"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -1042,7 +1110,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="9 June 2023" date="2023-06-09"/>
+               <docDate date="2023-06-09">
+                  <t v="9 June 2023"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -1070,7 +1140,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="23 November 2023" date="2023-11-23"/>
+               <docDate date="2023-11-23">
+                  <t v="23 November 2023"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -1098,7 +1170,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="24 October 2024" date="2024-10-24"/>
+               <docDate date="2024-10-24">
+                  <t v="24 October 2024"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -1126,7 +1200,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 January 2025" date="2025-01-16"/>
+               <docDate date="2025-01-16">
+                  <t v="16 January 2025"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -2402,7 +2478,9 @@
             <unit eId="anx_1/idt_1" kind="indent">
                <p>
                   <t v="By virtue of the Treaty of Lisbon, entered into force on "/>
-                  <date asWritten="1 December 2009" date="2009-12-01"/>
+                  <date date="2009-12-01">
+                     <t v="1 December 2009"/>
+                  </date>
                   <t v=", the European Union shall replace and succeed the European Community;"/>
                </p>
             </unit>
@@ -2445,7 +2523,9 @@
                   <t v="Regulation (EC) No 1008/2008"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="24 September 2008" date="2008-09-24"/>
+               <date date="2008-09-24">
+                  <t v="24 September 2008"/>
+               </date>
                <t v=" on common rules for the operation of air services in the Community (Recast), "/>
                <ref kind="oj"
                     series="L"
@@ -2494,7 +2574,9 @@
                         <t v="OJ L 426, 17.12.2020, p. 1"/>
                      </ref>
                      <t v="; Regulation (EU) 2020/2114 is applicable in Switzerland in its entirety since "/>
-                     <date asWritten="18.12.2020" date="2020-12-18"/>
+                     <date date="2020-12-18">
+                        <t v="18.12.2020"/>
+                     </date>
                      <t v=","/>
                   </p>
                </unit>
@@ -2509,7 +2591,9 @@
                         <t v="OJ L 426, 17.12.2020, p. 4"/>
                      </ref>
                      <t v="; Regulation (EU) 2020/2115 is applicable in Switzerland in its entirety since "/>
-                     <date asWritten="18.12.2020" date="2020-12-18"/>
+                     <date date="2020-12-18">
+                        <t v="18.12.2020"/>
+                     </date>
                      <t v="."/>
                   </p>
                </unit>
@@ -2519,7 +2603,9 @@
                   <t v="Council Directive 2000/79/EC"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="27 November 2000" date="2000-11-27"/>
+               <date date="2000-11-27">
+                  <t v="27 November 2000"/>
+               </date>
                <t v=" concerning the European Agreement on the Organisation of Working Time of Mobile Workers in Civil Aviation concluded by the Association of European Airlines (AEA), the European Transport Workers’ Federation (ETF), the European Cockpit Association (ECA), the European Regions Airline Association (ERA) and the International Air Carrier Association (IACA) (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -2535,7 +2621,9 @@
                   <t v="Directive 2003/88/EC"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="4 November 2003" date="2003-11-04"/>
+               <date date="2003-11-04">
+                  <t v="4 November 2003"/>
+               </date>
                <t v=" concerning certain aspects of the organisation of working time, "/>
                <ref kind="oj"
                     series="L"
@@ -2551,7 +2639,9 @@
                   <t v="Regulation (EC) No 437/2003"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="27 February 2003" date="2003-02-27"/>
+               <date date="2003-02-27">
+                  <t v="27 February 2003"/>
+               </date>
                <t v=" on statistical returns in respect of the carriage of passengers, freight and mail by air, "/>
                <ref kind="oj" series="L" number="66" date="2003-03-11" page="1">
                   <t v="OJ L 66, 11.3.2003, p. 1"/>
@@ -2563,7 +2653,9 @@
                   <t v="Commission Regulation (EC) No 1358/2003"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="31 July 2003" date="2003-07-31"/>
+               <date date="2003-07-31">
+                  <t v="31 July 2003"/>
+               </date>
                <t v=" implementing Regulation (EC) No 437/2003 of the European Parliament and of the Council on statistical returns in respect of the carriage of passengers, freight and mail by air and amending Annexes I and II thereto, "/>
                <ref kind="oj"
                     series="L"
@@ -2590,7 +2682,9 @@
                   <t v="Regulation (EC) No 785/2004"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="21 April 2004" date="2004-04-21"/>
+               <date date="2004-04-21">
+                  <t v="21 April 2004"/>
+               </date>
                <t v=" on insurance requirements for air carriers and aircraft operators "/>
                <ref kind="oj"
                     series="L"
@@ -2634,7 +2728,9 @@
                   <t v="Council Regulation (EEC) No 95/93"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="18 January 1993" date="1993-01-18"/>
+               <date date="1993-01-18">
+                  <t v="18 January 1993"/>
+               </date>
                <t v=" on common rules for the allocation of slots at Community airports, "/>
                <ref kind="oj" series="L" number="14" date="1993-01-22" page="1">
                   <t v="OJ L 14, 22.1.1993, p. 1"/>
@@ -2684,7 +2780,9 @@
                         <t v="OJ L 58, 19.2.2021, p. 1"/>
                      </ref>
                      <t v="; paragraphs 1 and 4 of Article 10a of Regulation (EEC) No 95/93, as amended by paragraph (6) of Article 1 of Regulation (EU) 2021/250, are applicable in Switzerland since "/>
-                     <date asWritten="20.2.2021" date="2021-02-20"/>
+                     <date date="2021-02-20">
+                        <t v="20.2.2021"/>
+                     </date>
                      <t v=","/>
                   </p>
                </unit>
@@ -2729,7 +2827,9 @@
                   <t v="Directive 2009/12/EC"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="11 March 2009" date="2009-03-11"/>
+               <date date="2009-03-11">
+                  <t v="11 March 2009"/>
+               </date>
                <t v=" on airport charges (Text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -2756,7 +2856,9 @@
                   <t v="Council Directive 96/67/EC"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="15 October 1996" date="1996-10-15"/>
+               <date date="1996-10-15">
+                  <t v="15 October 1996"/>
+               </date>
                <t v=" on access to the groundhandling market at Community airports, "/>
                <ref kind="oj"
                     series="L"
@@ -2783,7 +2885,9 @@
                   <t v="Regulation (EC) No 80/2009"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="14 January 2009" date="2009-01-14"/>
+               <date date="2009-01-14">
+                  <t v="14 January 2009"/>
+               </date>
                <t v=" on a Code of Conduct for computerised reservation systems and repealing Council Regulation (EEC) No 2299/89 (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -2824,7 +2928,9 @@
                   <t v="Council Regulation (EC) No 1/2003"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 December 2002" date="2002-12-16"/>
+               <date date="2002-12-16">
+                  <t v="16 December 2002"/>
+               </date>
                <t v=" on the implementation of the rules on competition laid down in Articles 81 and 82 of the Treaty (Text with EEA relevance), "/>
                <ref kind="oj" series="L" number="1" date="2003-01-04" page="1">
                   <t v="OJ L 1, 4.1.2003, p. 1"/>
@@ -2839,7 +2945,9 @@
                   <t v="Commission Regulation (EC) No 773/2004"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="7 April 2004" date="2004-04-07"/>
+               <date date="2004-04-07">
+                  <t v="7 April 2004"/>
+               </date>
                <t v=" relating to proceedings by the Commission pursuant to Articles 81 and 82 of the EC Treaty (Text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -2870,7 +2978,9 @@
                   <t v="Council Regulation (EC) No 139/2004"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="20 January 2004" date="2004-01-20"/>
+               <date date="2004-01-20">
+                  <t v="20 January 2004"/>
+               </date>
                <t v=" on the control of concentrations between undertakings (the EC Merger Regulation) (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="24" date="2004-01-29" page="1">
                   <t v="OJ L 24, 29.1.2004, p. 1"/>
@@ -2935,7 +3045,9 @@
                   <t v="Commission Regulation (EC) No 802/2004"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="21 April 2004" date="2004-04-21"/>
+               <date date="2004-04-21">
+                  <t v="21 April 2004"/>
+               </date>
                <t v=" implementing Council Regulation (EC) No 139/2004 on the control of concentrations between undertakings (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -2992,7 +3104,9 @@
                   <t v="Commission Directive 2006/111/EC"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 November 2006" date="2006-11-16"/>
+               <date date="2006-11-16">
+                  <t v="16 November 2006"/>
+               </date>
                <t v=" on the transparency of financial relations between Member States and public undertakings as well as on financial transparency within certain undertakings (Codified version) (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -3008,7 +3122,9 @@
                   <t v="Council Regulation (EC) No 487/2009"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="25 May 2009" date="2009-05-25"/>
+               <date date="2009-05-25">
+                  <t v="25 May 2009"/>
+               </date>
                <t v=" on the application of Article 81(3) of the Treaty to certain categories of agreements and concerted practices in the air transport sector (codified version) (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -3038,7 +3154,9 @@
                   <t v="Regulation (EU) 2018/1139"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="4 July 2018" date="2018-07-04"/>
+               <date date="2018-07-04">
+                  <t v="4 July 2018"/>
+               </date>
                <t v=" on common rules in the field of civil aviation and establishing a European Union Aviation Safety Agency, and amending Regulations (EC) No 2111/2005, (EC) No 1008/2008, (EU) No 996/2010, (EU) No 376/2014 and Directives 2014/30/EU and 2014/53/EU of the European Parliament and of the Council, and repealing Regulations (EC) No 552/2004 and (EC) No 216/2008 of the European Parliament and of the Council and Council Regulation (EEC) No 3922/91, "/>
                <ref kind="oj"
                     series="L"
@@ -3279,7 +3397,9 @@
                   </num>
                   <p>
                      <t v="Annex I to the Regulation shall be extended to include the following aircraft as products covered by Article 3(1)(a) of Commission Regulation (EU) No 748/2012 of "/>
-                     <date asWritten="3 August 2012" date="2012-08-03"/>
+                     <date date="2012-08-03">
+                        <t v="3 August 2012"/>
+                     </date>
                      <t v=" laying down implementing rules for the airworthiness and environmental certification of aircraft and related products, parts and appliances, as well as for the certification of design and production organisations"/>
                      <noteRef href="#note_1" marker="1"/>
                      <t v=":"/>
@@ -3319,7 +3439,9 @@
                   <t v="Commission Delegated Regulation (EU) 2022/1645"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="14 July 2022" date="2022-07-14"/>
+               <date date="2022-07-14">
+                  <t v="14 July 2022"/>
+               </date>
                <t v=" laying down rules for the application of Regulation (EU) 2018/1139 of the European Parliament and of the Council, as regards requirements for the management of information security risks with a potential impact on aviation safety for organisations covered by Commission Regulations (EU) No 748/2012 and (EU) No 139/2014 and amending Commission Regulations (EU) No 748/2012 and (EU) No 139/2014, "/>
                <ref kind="oj"
                     series="L"
@@ -3335,7 +3457,9 @@
                   <t v="Commission Implementing Regulation (EU) 2023/203"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="27 October 2022" date="2022-10-27"/>
+               <date date="2022-10-27">
+                  <t v="27 October 2022"/>
+               </date>
                <t v=" laying down rules for the application of Regulation (EU) 2018/1139 of the European Parliament and of the Council, as regards requirements for the management of information security risks with a potential impact on aviation safety for organisations covered by Commission Regulations (EU) No 1321/2014, (EU) No 965/2012, (EU) No 1178/2011, (EU) 2015/340, Commission Implementing Regulations (EU) 2017/373 and (EU) 2021/664, and for competent authorities covered by Commission Regulations (EU) No 748/2012, (EU) No 1321/2014, (EU) No 965/2012, (EU) No 1178/2011, (EU) 2015/340 and (EU) No 139/2014, Commission Implementing Regulations (EU) 2017/373 and (EU) 2021/664 and amending Commission Regulations (EU) No 1178/2011, (EU) No 748/2012, (EU) No 965/2012, (EU) No 139/2014, (EU) No 1321/2014, (EU) 2015/340, and Commission Implementing Regulations (EU) 2017/373 and (EU) 2021/664, "/>
                <ref kind="oj" series="L" number="31" date="2023-02-02" page="1">
                   <t v="OJ L 31, 2.2.2023, p. 1"/>
@@ -3371,7 +3495,9 @@
                   <t v="Commission Implementing Regulation (EU) 2023/2117"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 October 2023" date="2023-10-12"/>
+               <date date="2023-10-12">
+                  <t v="12 October 2023"/>
+               </date>
                <t v=" laying down the necessary rules and detailed requirements for the functioning and management of a repository of information pursuant to Regulation (EU) 2018/1139 of the European Parliament and of the Council, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2023/2117/oj">
                   <t v="OJ L, 2023/2117, 13.10.2023"/>
@@ -3388,7 +3514,9 @@
                   <t v="Commission Delegated Regulation (EU) 2024/1403"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 March 2024" date="2024-03-12"/>
+               <date date="2024-03-12">
+                  <t v="12 March 2024"/>
+               </date>
                <t v=" supplementing Regulation (EU) 2018/1139 of the European Parliament and of the Council by laying down the conditions and procedures for the accreditation by the European Union Aviation Safety Agency of qualified entities, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2024/1403/oj">
                   <t v="OJ L, 2024/1403, 24.5.2024"/>
@@ -3400,7 +3528,9 @@
                   <t v="Commission Regulation (EU) No 1178/2011"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="3 November 2011" date="2011-11-03"/>
+               <date date="2011-11-03">
+                  <t v="3 November 2011"/>
+               </date>
                <t v=" laying down technical requirements and administrative procedures related to civil aviation aircrew pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council, "/>
                <ref kind="oj"
                     series="L"
@@ -3654,7 +3784,9 @@
                   <t v="Commission Delegated Regulation (EU) 2020/723"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="4 March 2020" date="2020-03-04"/>
+               <date date="2020-03-04">
+                  <t v="4 March 2020"/>
+               </date>
                <t v=" laying down detailed rules with regard to the acceptance of third-country certification of pilots and amending Regulation (EU) No 1178/2011, "/>
                <ref kind="oj"
                     series="L"
@@ -3670,7 +3802,9 @@
                   <t v="Council Regulation (EEC) No 3922/91"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 December 1991" date="1991-12-16"/>
+               <date date="1991-12-16">
+                  <t v="16 December 1991"/>
+               </date>
                <t v=" on the harmonisation of technical requirements and administrative procedures in the field of civil aviation, "/>
                <ref kind="oj"
                     series="L"
@@ -3739,7 +3873,9 @@
                   <t v="Regulation (EU) No 996/2010"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="20 October 2010" date="2010-10-20"/>
+               <date date="2010-10-20">
+                  <t v="20 October 2010"/>
+               </date>
                <t v=" on the investigation and prevention of accidents and incidents in civil aviation and repealing Directive 94/56/EC (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -3792,7 +3928,9 @@
                   <t v="Commission Regulation (EC) No 104/2004"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="22 January 2004" date="2004-01-22"/>
+               <date date="2004-01-22">
+                  <t v="22 January 2004"/>
+               </date>
                <t v=" laying down rules on the organisation and composition of the Board of Appeal of the European Aviation Safety Agency, "/>
                <ref kind="oj"
                     series="L"
@@ -3808,7 +3946,9 @@
                   <t v="Regulation (EC) No 2111/2005"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="14 December 2005" date="2005-12-14"/>
+               <date date="2005-12-14">
+                  <t v="14 December 2005"/>
+               </date>
                <t v=" on the establishment of a Community list of air carriers subject to an operating ban within the Community and on informing air transport passengers of the identity of the operating air carrier, and repealing Article 9 of directive 2004/36/EC (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -3852,7 +3992,9 @@
                   <t v="Commission Delegated Regulation (EU) 2023/660"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="2 December 2022" date="2022-12-02"/>
+               <date date="2022-12-02">
+                  <t v="2 December 2022"/>
+               </date>
                <t v=" laying down detailed rules for the list of air carriers banned from operating or subject to operational restrictions within the Union referred to in Chapter II of Regulation (EC) No 2111/2005 of the European Parliament and of the Council and repealing Regulation (EC) No 473/2006 laying down implementing rules for the Community list of air carriers which are subject to an operating ban within the Community referred to in Chapter II of Regulation (EC) No 2111/2005 of the European Parliament and of the Council, "/>
                <ref kind="oj"
                     series="L"
@@ -3868,7 +4010,9 @@
                   <t v="Commission Regulation (EC) No 474/2006"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="22 March 2006" date="2006-03-22"/>
+               <date date="2006-03-22">
+                  <t v="22 March 2006"/>
+               </date>
                <t v=" establishing the Community list of air carriers which are subject to an operating ban within the Community referred to in Chapter II of Regulation (EC) No 2111/2005 of the European Parliament and of the Council, "/>
                <ref kind="oj"
                     series="L"
@@ -3895,7 +4039,9 @@
                   <t v="Commission Regulation (EU) No 1332/2011"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 December 2011" date="2011-12-16"/>
+               <date date="2011-12-16">
+                  <t v="16 December 2011"/>
+               </date>
                <t v=" laying down common airspace usage requirements and operating procedures for airborne collision avoidance (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -3926,7 +4072,9 @@
                   <t v="Commission Implementing Regulation (EU) No 646/2012"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 July 2012" date="2012-07-16"/>
+               <date date="2012-07-16">
+                  <t v="16 July 2012"/>
+               </date>
                <t v=" laying down detailed rules on fines and periodic penalty payments pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -3942,7 +4090,9 @@
                   <t v="Commission Regulation (EU) No 748/2012"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="3 August 2012" date="2012-08-03"/>
+               <date date="2012-08-03">
+                  <t v="3 August 2012"/>
+               </date>
                <t v=" laying down implementing rules for the airworthiness and environmental certification or declaration of compliance of aircraft and related products, parts and appliances, as well as for the capability requirements of design and production organisations, "/>
                <ref kind="oj"
                     series="L"
@@ -4170,7 +4320,9 @@
                   <t v="Commission Regulation (EU) No 965/2012"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="5 October 2012" date="2012-10-05"/>
+               <date date="2012-10-05">
+                  <t v="5 October 2012"/>
+               </date>
                <t v=" laying down technical requirements and administrative procedures related to air operations pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council, "/>
                <ref kind="oj"
                     series="L"
@@ -4406,7 +4558,9 @@
                         <t v="OJ L 416, 11.12.2020, p. 24"/>
                      </ref>
                      <t v="; paragraphs 4 to 6 of the Annex to Regulation (EU) 2020/2036 are applicable in Switzerland since "/>
-                     <date asWritten="31.12.2020" date="2020-12-31"/>
+                     <date date="2020-12-31">
+                        <t v="31.12.2020"/>
+                     </date>
                      <t v=","/>
                   </p>
                </unit>
@@ -4569,7 +4723,9 @@
                   <t v="Commission Implementing Regulation (EU) No 628/2013"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="28 June 2013" date="2013-06-28"/>
+               <date date="2013-06-28">
+                  <t v="28 June 2013"/>
+               </date>
                <t v=" on working methods of the European Aviation Safety Agency for conducting standardisation inspections and for monitoring the application of the rules of Regulation (EC) No 216/2008 of the European Parliament and of the Council and repealing Commission Regulation (EC) No 736/2006 (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -4585,7 +4741,9 @@
                   <t v="Commission Regulation (EU) No 139/2014"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 February 2014" date="2014-02-12"/>
+               <date date="2014-02-12">
+                  <t v="12 February 2014"/>
+               </date>
                <t v=" laying down requirements and administrative procedures related to aerodromes pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="44" date="2014-02-14" page="1">
                   <t v="OJ L 44, 14.2.2014, p. 1"/>
@@ -4776,7 +4934,9 @@
                   <t v="Commission Implementing Regulation (EU) 2019/2153"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 December 2019" date="2019-12-16"/>
+               <date date="2019-12-16">
+                  <t v="16 December 2019"/>
+               </date>
                <t v=" on the fees and charges levied by the European Union Aviation Safety Agency, and repealing Regulation (EU) No 319/2014, "/>
                <ref kind="oj"
                     series="L"
@@ -4792,7 +4952,9 @@
                   <t v="Regulation (EU) No 376/2014"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="3 April 2014" date="2014-04-03"/>
+               <date date="2014-04-03">
+                  <t v="3 April 2014"/>
+               </date>
                <t v=" on the reporting, analysis and follow-up of occurrences in civil aviation, amending Regulation (EU) No 996/2010 of the European Parliament and of the Council and repealing Directive 2003/42/EC of the European Parliament and of the Council and Commission Regulations (EC) No 1321/2007 and (EC) No 1330/2007 (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -4823,7 +4985,9 @@
                   <t v="Commission Implementing Regulation (EU) 2021/2082"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="26 November 2021" date="2021-11-26"/>
+               <date date="2021-11-26">
+                  <t v="26 November 2021"/>
+               </date>
                <t v=" laying down the arrangements for the implementation of Regulation (EU) No 376/2014 of the European Parliament and of the Council as regards the common European risk classification scheme, "/>
                <ref kind="oj"
                     series="L"
@@ -4839,7 +5003,9 @@
                   <t v="Commission Regulation (EU) No 452/2014"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="29 April 2014" date="2014-04-29"/>
+               <date date="2014-04-29">
+                  <t v="29 April 2014"/>
+               </date>
                <t v=" laying down technical requirements and administrative procedures related to air operations of third country operators pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -4883,7 +5049,9 @@
                   <t v="Commission Regulation (EU) No 1321/2014"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="26 November 2014" date="2014-11-26"/>
+               <date date="2014-11-26">
+                  <t v="26 November 2014"/>
+               </date>
                <t v=" on the continuing airworthiness of aircraft and aeronautical products, parts and appliances, and on the approval of organisations and personnel involved in these tasks (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5036,7 +5204,9 @@
                         <t v="OJ L 145, 28.4.2021, p. 20"/>
                      </ref>
                      <t v="; point (1) of Article 1 and points (5), (6) and (8) of Annex I of Regulation (EU) 2021/700 are applicable in Switzerland since "/>
-                     <date asWritten="18.05.2021" date="2021-05-18"/>
+                     <date date="2021-05-18">
+                        <t v="18.05.2021"/>
+                     </date>
                      <t v=","/>
                   </p>
                </unit>
@@ -5120,7 +5290,9 @@
                   <t v="Commission Regulation (EU) 2015/340"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="20 February 2015" date="2015-02-20"/>
+               <date date="2015-02-20">
+                  <t v="20 February 2015"/>
+               </date>
                <t v=" laying down technical requirements and administrative procedures relating to air traffic controllers’ licences and certificates pursuant to Regulation (EC) No 216/2008 of the European Parliament and of the Council, amending Commission Implementing Regulation (EU) No 923/2012 and repealing Commission Regulation (EU) No 805/2011 (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="63" date="2015-03-06" page="1">
                   <t v="OJ L 63, 6.3.2015, p. 1"/>
@@ -5165,7 +5337,9 @@
                   <t v="Commission Regulation (EU) 2015/640"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="23 April 2015" date="2015-04-23"/>
+               <date date="2015-04-23">
+                  <t v="23 April 2015"/>
+               </date>
                <t v=" on additional airworthiness specifications for a given type of operations and amending Regulation (EU) No 965/2012, "/>
                <ref kind="oj"
                     series="L"
@@ -5214,9 +5388,13 @@
                         <t v="OJ L 31, 29.1.2021, p. 208"/>
                      </ref>
                      <t v="; article 1 of Regulation (EU) 2021/97 is applicable in Switzerland since "/>
-                     <date asWritten="26.02.2021" date="2021-02-26"/>
+                     <date date="2021-02-26">
+                        <t v="26.02.2021"/>
+                     </date>
                      <t v=", except for point (1) of Annex I, which is applicable in Switzerland since "/>
-                     <date asWritten="16.02.2021" date="2021-02-16"/>
+                     <date date="2021-02-16">
+                        <t v="16.02.2021"/>
+                     </date>
                      <t v=","/>
                   </p>
                </unit>
@@ -5239,7 +5417,9 @@
                   <t v="Commission Implementing Regulation (EU) 2015/1018"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="29 June 2015" date="2015-06-29"/>
+               <date date="2015-06-29">
+                  <t v="29 June 2015"/>
+               </date>
                <t v=" laying down a list classifying occurrences in civil aviation to be mandatorily reported according to Regulation (EU) No 376/2014 of the European Parliament and of the Council (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5266,7 +5446,9 @@
                   <t v="Commission Decision (EU) 2016/2357"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="19 December 2016" date="2016-12-19"/>
+               <date date="2016-12-19">
+                  <t v="19 December 2016"/>
+               </date>
                <t v=" regarding the lack of effective compliance with Regulation (EC) No 216/2008 of the European Parliament and of the Council and its implementing rules in respect of certificates issued by the Hellenic Aviation Training Academy (HATA), and Part-66 licenses issued on the basis thereof (notified under document C(2016) 8645), "/>
                <ref kind="oj"
                     series="L"
@@ -5282,7 +5464,9 @@
                   <t v="Commission Regulation (EU) 2018/395"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="13 March 2018" date="2018-03-13"/>
+               <date date="2018-03-13">
+                  <t v="13 March 2018"/>
+               </date>
                <t v=" laying down detailed rules for the operation of balloons as well as for the flight crew licensing for balloons pursuant to Regulation (EU) 2018/1139 of the European Parliament and of the Council, "/>
                <ref kind="oj"
                     series="L"
@@ -5326,7 +5510,9 @@
                   <t v="Commission Implementing Regulation (EU) 2018/1976"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="14 December 2018" date="2018-12-14"/>
+               <date date="2018-12-14">
+                  <t v="14 December 2018"/>
+               </date>
                <t v=" laying down detailed rules for the operation of sailplanes as well as for the flight crew licensing for sailplanes pursuant to Regulation (EU) 2018/1139 of the European Parliament and of the Council, "/>
                <ref kind="oj"
                     series="L"
@@ -5370,7 +5556,9 @@
                   <t v="Regulation (EU) 2019/494"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="25 March 2019" date="2019-03-25"/>
+               <date date="2019-03-25">
+                  <t v="25 March 2019"/>
+               </date>
                <t v=" on certain aspects of aviation safety with regard to the withdrawal of the United Kingdom of Great Britain and Northern Ireland from the Union (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5386,7 +5574,9 @@
                   <t v="Commission Delegated Regulation (EU) 2019/945"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 March 2019" date="2019-03-12"/>
+               <date date="2019-03-12">
+                  <t v="12 March 2019"/>
+               </date>
                <t v=" on unmanned aircraft systems and on third-country operators of unmanned aircraft systems, "/>
                <ref kind="oj"
                     series="L"
@@ -5401,7 +5591,9 @@
                <unit eId="anx_1/pnt_3/list_21/idt_1" kind="indent">
                   <p>
                      <t v="Commission Delegated Regulation (EU) 2020/1058 of "/>
-                     <date asWritten="27 April 2020" date="2020-04-27"/>
+                     <date date="2020-04-27">
+                        <t v="27 April 2020"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5416,7 +5608,9 @@
                <unit eId="anx_1/pnt_3/list_21/idt_2" kind="indent">
                   <p>
                      <t v="Commission Delegated Regulation (EU) 2022/851 of "/>
-                     <date asWritten="22 March 2022" date="2022-03-22"/>
+                     <date date="2022-03-22">
+                        <t v="22 March 2022"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5526,7 +5720,9 @@
                   <t v="Commission Implementing Regulation (EU) 2019/947"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="24 May 2019" date="2019-05-24"/>
+               <date date="2019-05-24">
+                  <t v="24 May 2019"/>
+               </date>
                <t v=" on the rules and procedures for the operation of unmanned aircraft, "/>
                <ref kind="oj"
                     series="L"
@@ -5541,7 +5737,9 @@
                <unit eId="anx_1/pnt_3/list_23/idt_1" kind="indent">
                   <p>
                      <t v="Commission Implementing Regulation (EU) 2020/639 of "/>
-                     <date asWritten="12 May 2020" date="2020-05-12"/>
+                     <date date="2020-05-12">
+                        <t v="12 May 2020"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5556,7 +5754,9 @@
                <unit eId="anx_1/pnt_3/list_23/idt_2" kind="indent">
                   <p>
                      <t v="Commission Implementing Regulation (EU) 2020/746 of "/>
-                     <date asWritten="4 June 2020" date="2020-06-04"/>
+                     <date date="2020-06-04">
+                        <t v="4 June 2020"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5571,7 +5771,9 @@
                <unit eId="anx_1/pnt_3/list_23/idt_3" kind="indent">
                   <p>
                      <t v="Commission Implementing Regulation (EU) 2021/1166 of "/>
-                     <date asWritten="15 July 2021" date="2021-07-15"/>
+                     <date date="2021-07-15">
+                        <t v="15 July 2021"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5586,7 +5788,9 @@
                <unit eId="anx_1/pnt_3/list_23/idt_4" kind="indent">
                   <p>
                      <t v="Commission Implementing Regulation (EU) 2022/425 of "/>
-                     <date asWritten="14 March 2022" date="2022-03-14"/>
+                     <date date="2022-03-14">
+                        <t v="14 March 2022"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5601,7 +5805,9 @@
                <unit eId="anx_1/pnt_3/list_23/idt_5" kind="indent">
                   <p>
                      <t v="Commission Implementing Regulation (EU) 2022/525 of "/>
-                     <date asWritten="1 April 2022" date="2022-04-01"/>
+                     <date date="2022-04-01">
+                        <t v="1 April 2022"/>
+                     </date>
                      <t v=", "/>
                      <ref kind="oj"
                           series="L"
@@ -5645,7 +5851,9 @@
                   <t v="Commission Delegated Regulation (EU) 2024/1107"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="13 March 2024" date="2024-03-13"/>
+               <date date="2024-03-13">
+                  <t v="13 March 2024"/>
+               </date>
                <t v=" supplementing Regulation (EU) 2018/1139 of the European Parliament and of the Council by laying down detailed rules for the continuing airworthiness of certified unmanned aircraft systems and their components, and on the approval of organisations and personnel involved in these tasks, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2024/1107/oj">
                   <t v="OJ L, 2024/1107, 23.5.2024"/>
@@ -5657,7 +5865,9 @@
                   <t v="Commission Implementing Regulation (EU) 2024/1109"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="10 April 2024" date="2024-04-10"/>
+               <date date="2024-04-10">
+                  <t v="10 April 2024"/>
+               </date>
                <t v=" laying down rules for the application of Regulation (EU) 2018/1139 of the European Parliament and of the Council as regards competent authority requirements and administrative procedures for the certification, oversight and enforcement of the continuing airworthiness of certified unmanned aircraft systems, and amending Implementing Regulation (EU) 2023/203, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2024/1109/oj">
                   <t v="OJ L, 2024/1109, 23.5.2024"/>
@@ -5669,7 +5879,9 @@
                   <t v="Commission Implementing Decision (EU) 2024/2103"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="30 July 2024" date="2024-07-30"/>
+               <date date="2024-07-30">
+                  <t v="30 July 2024"/>
+               </date>
                <t v=" on harmonised standard for direct remote identification for unmanned aircraft drafted in support of Delegated Regulation (EU) 2019/945, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2024/2103/oj">
                   <t v="OJ L, 2024/2103, 1.8.2024"/>
@@ -5681,7 +5893,9 @@
                   <t v="Commission Implementing Decision (EU) 2019/1128"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="1 July 2019" date="2019-07-01"/>
+               <date date="2019-07-01">
+                  <t v="1 July 2019"/>
+               </date>
                <t v=" on access rights to safety recommendations and responses stored in the European Central Repository and repealing Decision 2012/780/EU (Text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5697,7 +5911,9 @@
                   <t v="Commission Delegated Regulation (EU) 2020/2034"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="6 October 2020" date="2020-10-06"/>
+               <date date="2020-10-06">
+                  <t v="6 October 2020"/>
+               </date>
                <t v=" supplementing Regulation (EU) No 376/2014 of the European Parliament and of the Council as regards the common European risk classification scheme (Text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5713,7 +5929,9 @@
                   <t v="Commission implementing Regulation (EU) 2021/664"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="22 April 2021" date="2021-04-22"/>
+               <date date="2021-04-22">
+                  <t v="22 April 2021"/>
+               </date>
                <t v=" on a regulatory framework for the U-space, "/>
                <ref kind="oj"
                     series="L"
@@ -5754,7 +5972,9 @@
                   <t v="Regulation (EC) No 300/2008"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="11 March 2008" date="2008-03-11"/>
+               <date date="2008-03-11">
+                  <t v="11 March 2008"/>
+               </date>
                <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002 (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5790,7 +6010,9 @@
                   <t v="Commission Regulation (EC) No 272/2009"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="2 April 2009" date="2009-04-02"/>
+               <date date="2009-04-02">
+                  <t v="2 April 2009"/>
+               </date>
                <t v=" supplementing the common basic standards on civil aviation security laid down in the Annex to Regulation (EC) No 300/2008 of the European Parliament and of the Council, "/>
                <ref kind="oj" series="L" number="91" date="2009-04-03" page="7">
                   <t v="OJ L 91, 3.4.2009, p. 7"/>
@@ -5848,7 +6070,9 @@
                   <t v="Commission Regulation (EU) No 1254/2009"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="18 December 2009" date="2009-12-18"/>
+               <date date="2009-12-18">
+                  <t v="18 December 2009"/>
+               </date>
                <t v=" setting criteria to allow Member States to derogate from the common basic standards on civil aviation security and to adopt alternative security measures (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -5879,7 +6103,9 @@
                   <t v="Commission Regulation (EU) No 72/2010"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="26 January 2010" date="2010-01-26"/>
+               <date date="2010-01-26">
+                  <t v="26 January 2010"/>
+               </date>
                <t v=" laying down procedures for conducting Commission inspections in the field of aviation security (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="23" date="2010-01-27" page="1">
                   <t v="OJ L 23, 27.1.2010, p. 1"/>
@@ -5906,7 +6132,9 @@
                   <t v="Commission Implementing Regulation (EU) 2015/1998"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="5 November 2015" date="2015-11-05"/>
+               <date date="2015-11-05">
+                  <t v="5 November 2015"/>
+               </date>
                <t v=" laying down detailed measures for the implementation of the common basic standards on aviation security (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6055,7 +6283,9 @@
                         <t v="OJ L 58, 19.2.2021, p. 23"/>
                      </ref>
                      <t v="; points 15, 18 to 19 and 32 of the Annex to Regulation (EU) 2021/255 are applicable in Switzerland since "/>
-                     <date asWritten="11.03.2021" date="2021-03-11"/>
+                     <date date="2021-03-11">
+                        <t v="11.03.2021"/>
+                     </date>
                      <t v=","/>
                   </p>
                </unit>
@@ -6119,7 +6349,9 @@
                   <t v="Commission Implementing Decision C(2015) 8005"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="16 November 2015" date="2015-11-16"/>
+               <date date="2015-11-16">
+                  <t v="16 November 2015"/>
+               </date>
                <t v=" laying down detailed measures for the implementation of the common basic standards on aviation security containing information, as referred to in point (a) of Article 18 of Regulation (EC) No 300/2008 (not published in the OJ) as amended by:"/>
             </p>
             <list kind="dash">
@@ -6171,7 +6403,9 @@
                   <t v="Commission Decision (EU) 2021/2147"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="3 December 2021" date="2021-12-03"/>
+               <date date="2021-12-03">
+                  <t v="3 December 2021"/>
+               </date>
                <t v=" on the approval of civil aviation security equipment with "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="EU Stamp"/>
@@ -6205,7 +6439,9 @@
                   <t v="Regulation (EC) No 549/2004"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="10 March 2004" date="2004-03-10"/>
+               <date date="2004-03-10">
+                  <t v="10 March 2004"/>
+               </date>
                <t v=" laying down the framework for the creation of the Single European Sky (the Framework Regulation) (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="96" date="2004-03-31" page="1">
                   <t v="OJ L 96, 31.3.2004, p. 1"/>
@@ -6248,7 +6484,9 @@
                   <t v="Regulation (EC) No 550/2004"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="10 March 2004" date="2004-03-10"/>
+               <date date="2004-03-10">
+                  <t v="10 March 2004"/>
+               </date>
                <t v=" on the provision of air navigation services in the Single European Sky (the Service Provision Regulation) (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6349,7 +6587,9 @@
                   <t v="Regulation (EC) No 551/2004"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="10 March 2004" date="2004-03-10"/>
+               <date date="2004-03-10">
+                  <t v="10 March 2004"/>
+               </date>
                <t v=" on the organisation and use of the airspace in the Single European Sky (the Airspace Regulation) (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6383,7 +6623,9 @@
                   <t v="Commission Regulation (EC) No 2150/2005"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="23 December 2005" date="2005-12-23"/>
+               <date date="2005-12-23">
+                  <t v="23 December 2005"/>
+               </date>
                <t v=" laying down common rules for the flexible use of airspace (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6399,7 +6641,9 @@
                   <t v="Council Regulation (EC) No 219/2007"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="27 February 2007" date="2007-02-27"/>
+               <date date="2007-02-27">
+                  <t v="27 February 2007"/>
+               </date>
                <t v=" on the establishment of a Joint Undertaking to develop the new generation European air traffic management system (SESAR), "/>
                <ref kind="oj" series="L" number="64" date="2007-03-02" page="1">
                   <t v="OJ L 64, 2.3.2007, p. 1"/>
@@ -6439,7 +6683,9 @@
                   <t v="Commission Implementing Regulation (EU) 2017/373"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="1 March 2017" date="2017-03-01"/>
+               <date date="2017-03-01">
+                  <t v="1 March 2017"/>
+               </date>
                <t v=" laying down common requirements for providers of air traffic management/air navigation services and other air traffic management network functions and their oversight, repealing Regulation (EC) No 482/2008, Implementing Regulations (EU) No 1034/2011, (EU) No 1035/2011 and (EU) 2016/1377 and amending Regulation (EU) No 677/2011 (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="62" date="2017-03-08" page="1">
                   <t v="OJ L 62, 8.3.2017, p. 1"/>
@@ -6573,7 +6819,9 @@
                   <t v="Commission Delegated Regulation (EU) 2023/1768"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="14 July 2023" date="2023-07-14"/>
+               <date date="2023-07-14">
+                  <t v="14 July 2023"/>
+               </date>
                <t v=" laying down detailed rules for the certification and declaration of air traffic management/air navigation services systems and air traffic management/air navigation services constituents, "/>
                <ref kind="oj"
                     series="L"
@@ -6600,7 +6848,9 @@
                   <t v="Commission Implementing Regulation (EU) 2023/1769"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 September 2023" date="2023-09-12"/>
+               <date date="2023-09-12">
+                  <t v="12 September 2023"/>
+               </date>
                <t v=" laying down technical requirements and administrative procedures for the approval of organisations involved in the design or production of air traffic management/air navigation services systems and constituents and amending Implementing Regulation (EU) 2023/203, "/>
                <ref kind="oj"
                     series="L"
@@ -6616,7 +6866,9 @@
                   <t v="Commission Implementing Regulation (EU) 2023/1770"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 September 2023" date="2023-09-12"/>
+               <date date="2023-09-12">
+                  <t v="12 September 2023"/>
+               </date>
                <t v=" laying down provisions on aircraft equipment required for the use of the Single European Sky airspace and operating rules related to the use of the Single European Sky airspace and repealing Regulation (EC) No 29/2009 and Implementing Regulations (EU) No 1206/2011, (EU) No 1207/2011 and (EU) No 1079/2012, "/>
                <ref kind="oj"
                     series="L"
@@ -6632,7 +6884,9 @@
                   <t v="Commission Regulation (EU) No 255/2010"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="25 March 2010" date="2010-03-25"/>
+               <date date="2010-03-25">
+                  <t v="25 March 2010"/>
+               </date>
                <t v=" laying down common rules on air traffic flow management (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6689,7 +6943,9 @@
                   <t v="Commission Decision No C(2010)5134"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="29 July 2010" date="2010-07-29"/>
+               <date date="2010-07-29">
+                  <t v="29 July 2010"/>
+               </date>
                <t v=" on the designation of the Performance Review Body of the Single European Sky (not published in the OJ)."/>
             </p>
             <p>
@@ -6697,7 +6953,9 @@
                   <t v="Commission Regulation (EU) No 176/2011"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="24 February 2011" date="2011-02-24"/>
+               <date date="2011-02-24">
+                  <t v="24 February 2011"/>
+               </date>
                <t v=" on the information to be provided before the establishment and modification of a functional airspace block, "/>
                <ref kind="oj" series="L" number="51" date="2011-02-25" page="2">
                   <t v="OJ L 51, 25.2.2011, p. 2"/>
@@ -6709,7 +6967,9 @@
                   <t v="Commission Decision No C(2011) 4130"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="7 July 2011" date="2011-07-07"/>
+               <date date="2011-07-07">
+                  <t v="7 July 2011"/>
+               </date>
                <t v=" on the nomination of the Network Manager for the air traffic management (ATM) network functions of the single European sky (text with EEA relevance) (not published in the OJ)."/>
             </p>
             <p>
@@ -6717,7 +6977,9 @@
                   <t v="Commission Implementing Regulation (EU) No 923/2012"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="26 September 2012" date="2012-09-26"/>
+               <date date="2012-09-26">
+                  <t v="26 September 2012"/>
+               </date>
                <t v=" laying down the common rules of the air and operational provisions regarding services and procedures in air navigation and amending Implementing Regulation (EU) No 1035/2011 and Regulations (EC) No 1265/2007, (EC) No 1794/2006, (EC) No 730/2006, (EC) No 1033/2006 and (EU) No 255/2010 (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6864,7 +7126,9 @@
                   <t v="Commission Implementing Regulation (EU) No 409/2013"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="3 May 2013" date="2013-05-03"/>
+               <date date="2013-05-03">
+                  <t v="3 May 2013"/>
+               </date>
                <t v=" on the definition of common projects, the establishment of governance and the identification of incentives supporting the implementation of the European Air Traffic Management Master Plan (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6895,7 +7159,9 @@
                   <t v="Commission Implementing Regulation (EU) 2021/116"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="1 February 2021" date="2021-02-01"/>
+               <date date="2021-02-01">
+                  <t v="1 February 2021"/>
+               </date>
                <t v=" on the establishment of the Common Project One supporting the implementation of the European Air Traffic Management Master Plan provided for in Regulation (EC) No 550/2004 of the European Parliament and of the Council, amending Commission Implementing Regulation (EU) No 409/2013 and repealing Commission Implementing Regulation (EU) No 716/2014 (Text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -6961,7 +7227,9 @@
                   <t v="Commission Implementing Decision (EU) 2024/1663"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 June 2024" date="2024-06-12"/>
+               <date date="2024-06-12">
+                  <t v="12 June 2024"/>
+               </date>
                <t v=" on initial trajectory information sharing in Common Project One established by Implementing Regulation (EU) 2021/116, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2024/1663/oj">
                   <t v="OJ L, 2024/1663, 14.6.2024"/>
@@ -6973,7 +7241,9 @@
                   <t v="Commission Implementing Regulation (EU) 2018/1048"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="18 July 2018" date="2018-07-18"/>
+               <date date="2018-07-18">
+                  <t v="18 July 2018"/>
+               </date>
                <t v=" laying down airspace usage requirements and operating procedures concerning performance-based navigation, "/>
                <ref kind="oj"
                     series="L"
@@ -6989,7 +7259,9 @@
                   <t v="Commission Implementing Regulation (EU) 2019/123"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="24 January 2019" date="2019-01-24"/>
+               <date date="2019-01-24">
+                  <t v="24 January 2019"/>
+               </date>
                <t v=" laying down detailed rules for the implementation of air traffic management (ATM) network functions and repealing Commission Regulation (EU) No 677/2011 (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="28" date="2019-01-31" page="1">
                   <t v="OJ L 28, 31.1.2019, p. 1"/>
@@ -7001,7 +7273,9 @@
                   <t v="Commission Implementing Regulation (EU) 2019/317"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="11 February 2019" date="2019-02-11"/>
+               <date date="2019-02-11">
+                  <t v="11 February 2019"/>
+               </date>
                <t v=" laying down a performance and charging scheme in the single European sky and repealing Implementing Regulations (EU) No 390/2013 and (EU) No 391/2013 (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="56" date="2019-02-25" page="1">
                   <t v="OJ L 56, 25.2.2019, p. 1"/>
@@ -7028,7 +7302,9 @@
                   <t v="Commission Implementing Decision (EU) 2019/709"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="6 May 2019" date="2019-05-06"/>
+               <date date="2019-05-06">
+                  <t v="6 May 2019"/>
+               </date>
                <t v=" on the appointment of the network manager for air traffic management (ATM) network functions of the single European sky (notified under document C(2019) 3228), "/>
                <ref kind="oj"
                     series="L"
@@ -7044,7 +7320,9 @@
                   <t v="Commission Implementing Decision (EU) 2021/891"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="2 June 2021" date="2021-06-02"/>
+               <date date="2021-06-02">
+                  <t v="2 June 2021"/>
+               </date>
                <t v=" setting revised Union-wide performance targets for the air traffic management network for the third reference period (2020-2024) and repealing Implementing Decision (EU) 2019/903 (Text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -7060,11 +7338,17 @@
                   <t v="Commission Implementing Decision (EU) 2024/1688"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="12 June 2024" date="2024-06-12"/>
+               <date date="2024-06-12">
+                  <t v="12 June 2024"/>
+               </date>
                <t v=" setting Union-wide performance targets for the air traffic management network for the fourth reference period from "/>
-               <date asWritten="1 January 2025" date="2025-01-01"/>
+               <date date="2025-01-01">
+                  <t v="1 January 2025"/>
+               </date>
                <t v=" to "/>
-               <date asWritten="31 December 2029" date="2029-12-31"/>
+               <date date="2029-12-31">
+                  <t v="31 December 2029"/>
+               </date>
                <t v=", "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2024/1688/oj">
                   <t v="OJ L, 2024/1688, 17.6.2024"/>
@@ -7076,7 +7360,9 @@
                   <t v="Commission Implementing Decision (EU) 2023/2718"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="6 December 2023" date="2023-12-06"/>
+               <date date="2023-12-06">
+                  <t v="6 December 2023"/>
+               </date>
                <t v=" approving the Network Strategy Plan for the air traffic management network functions of the single European sky for 2025-2029 and repealing Implementing Decision (EU) 2019/2167, "/>
                <ref kind="uri" href="http://data.europa.eu/eli/2023/2718/oj">
                   <t v="OJ L, 2023/2718, 08.12.2023"/>
@@ -7088,7 +7374,9 @@
                   <t v="Commission Implementing Decision (EU) 2019/2168"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="17 December 2019" date="2019-12-17"/>
+               <date date="2019-12-17">
+                  <t v="17 December 2019"/>
+               </date>
                <t v=" on the appointment of the chairperson and the members and their alternates of the Network Management Board and of the members and their alternates of the European Aviation Crisis Coordination Cell for the air traffic management network functions for the third reference period 2020-2024, "/>
                <ref kind="oj"
                     series="L"
@@ -7104,7 +7392,9 @@
                   <t v="Commission Implementing Regulation (EU) 2020/1627"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="3 November 2020" date="2020-11-03"/>
+               <date date="2020-11-03">
+                  <t v="3 November 2020"/>
+               </date>
                <t v=" on exceptional measures for the third reference period (2020-2024) of the single European sky performance and charging scheme due to the COVID-19 pandemic, "/>
                <ref kind="oj"
                     series="L"
@@ -7134,7 +7424,9 @@
                   <t v="Directive 2002/30/EC"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="26 March 2002" date="2002-03-26"/>
+               <date date="2002-03-26">
+                  <t v="26 March 2002"/>
+               </date>
                <t v=" on the establishment of rules and procedures with regard to the introduction of noise-related operating restrictions at Community airports (text with EEA relevance) (Articles 1-12, and 14-18), "/>
                <ref kind="oj"
                     series="L"
@@ -7153,7 +7445,9 @@
                   <t v="Directive 2006/93/EC"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="12 December 2006" date="2006-12-12"/>
+               <date date="2006-12-12">
+                  <t v="12 December 2006"/>
+               </date>
                <t v=" on the regulation of the operation of aeroplanes covered by Part II, Chapter 3, Volume 1 of Annex 16 to the Convention on International Civil Aviation, second edition (1988) (codified version) (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -7183,7 +7477,9 @@
                   <t v="Council Directive 90/314/EEC"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="13 June 1990" date="1990-06-13"/>
+               <date date="1990-06-13">
+                  <t v="13 June 1990"/>
+               </date>
                <t v=" on package travel, package holidays and package tours, "/>
                <ref kind="oj"
                     series="L"
@@ -7199,7 +7495,9 @@
                   <t v="Council Directive 93/13/EEC"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="5 April 1993" date="1993-04-05"/>
+               <date date="1993-04-05">
+                  <t v="5 April 1993"/>
+               </date>
                <t v=" on unfair terms in consumer contracts, "/>
                <ref kind="oj"
                     series="L"
@@ -7230,7 +7528,9 @@
                   <t v="Council Regulation (EC) No 2027/97"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="9 October 1997" date="1997-10-09"/>
+               <date date="1997-10-09">
+                  <t v="9 October 1997"/>
+               </date>
                <t v=" on air carrier liability in respect of the carriage of passengers and their baggage by air in the event of accidents, "/>
                <ref kind="oj"
                     series="L"
@@ -7261,7 +7561,9 @@
                   <t v="Regulation (EC) No 261/2004"/>
                </emphasis>
                <t v=" of the Parliament and of the Council of "/>
-               <date asWritten="11 February 2004" date="2004-02-11"/>
+               <date date="2004-02-11">
+                  <t v="11 February 2004"/>
+               </date>
                <t v=" establishing common rules on compensation and assistance to passengers in the event of denied boarding and of cancellation or long delay of flights, and repealing Regulation (EEC) No 295/91 (text with EEA relevance), "/>
                <ref kind="oj" series="L" number="46" date="2004-02-17" page="1">
                   <t v="OJ L 46, 17.2.2004, p. 1"/>
@@ -7276,7 +7578,9 @@
                   <t v="Regulation (EC) No 1107/2006"/>
                </emphasis>
                <t v=" of the European Parliament and of the Council of "/>
-               <date asWritten="5 July 2006" date="2006-07-05"/>
+               <date date="2006-07-05">
+                  <t v="5 July 2006"/>
+               </date>
                <t v=" concerning the right of disabled persons and persons with reduced mobility when travelling by air (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -7306,7 +7610,9 @@
                   <t v="Council Directive 2003/96/EC"/>
                </emphasis>
                <t v=" of "/>
-               <date asWritten="27 October 2003" date="2003-10-27"/>
+               <date date="2003-10-27">
+                  <t v="27 October 2003"/>
+               </date>
                <t v=" restructuring the Community framework for the taxation of energy products and electricity (text with EEA relevance), "/>
                <ref kind="oj"
                     series="L"
@@ -7943,13 +8249,19 @@
                </num>
                <p>
                   <t v="In accordance with Council Regulation (EC, Euratom) No 1605/2002 of "/>
-                  <date asWritten="25 June 2002" date="2002-06-25"/>
+                  <date date="2002-06-25">
+                     <t v="25 June 2002"/>
+                  </date>
                   <t v=" on the Financial Regulation applicable to the general budget of the European Communities"/>
                   <noteRef href="#note_17" marker="17"/>
                   <t v=" and the Financial Regulation adopted by the Management Board of the Agency on "/>
-                  <date asWritten="26 March 2003" date="2003-03-26"/>
+                  <date date="2003-03-26">
+                     <t v="26 March 2003"/>
+                  </date>
                   <t v=", with Commission Regulation (EC, Euratom) No 2343/2002 of "/>
-                  <date asWritten="23 December 2002" date="2002-12-23"/>
+                  <date date="2002-12-23">
+                     <t v="23 December 2002"/>
+                  </date>
                   <t v=" on the framework Financial Regulation for the bodies referred to in Article 185 of Council Regulation (EC, Euratom) No 1605/2002 on the Financial Regulation applicable to the general budget of the European Communities"/>
                   <noteRef href="#note_18" marker="18"/>
                   <t v=" and with the other instruments referred to in this Decision, contracts or agreements concluded and decisions taken with beneficiaries established in Switzerland may provide for scientific, financial, technological or other audits to be conducted at any time on the premises of the beneficiaries and of their subcontractors by Agency and Commission officials or by other persons mandated by the Agency and the Commission."/>
@@ -8001,7 +8313,9 @@
                </num>
                <p>
                   <t v="Under this Agreement, the Commission (OLAF) is authorised to carry out on-the-spot checks and inspections on Swiss territory, under the terms and conditions set out in Council Regulation (Euratom, EC) No 2185/96 of "/>
-                  <date asWritten="11 November 1996" date="1996-11-11"/>
+                  <date date="1996-11-11">
+                     <t v="11 November 1996"/>
+                  </date>
                   <t v=" concerning on-the-spot checks and inspections carried out by the Commission in order to protect the European Communities’ financial interests against fraud and other irregularities."/>
                   <noteRef href="#note_19" marker="19"/>
                </p>
@@ -8083,11 +8397,17 @@
             </heading>
             <p>
                <t v="Without prejudice to application of Swiss criminal law, administrative measures and penalties may be imposed by the Agency or the Commission in accordance with Council Regulation (EC, Euratom) No 1605/2002 of "/>
-               <date asWritten="25 June 2002" date="2002-06-25"/>
+               <date date="2002-06-25">
+                  <t v="25 June 2002"/>
+               </date>
                <t v=" and Commission Regulation (EC, Euratom) No 2342/2002 of "/>
-               <date asWritten="23 December 2002" date="2002-12-23"/>
+               <date date="2002-12-23">
+                  <t v="23 December 2002"/>
+               </date>
                <t v=" and with Council Regulation (EC, Euratom) No 2988/95 of "/>
-               <date asWritten="18 December 1995" date="1995-12-18"/>
+               <date date="1995-12-18">
+                  <t v="18 December 1995"/>
+               </date>
                <t v=" on the protection of the European Communities’ financial interests."/>
                <noteRef href="#note_20" marker="20"/>
             </p>
@@ -8134,7 +8454,9 @@
          </p>
          <p>
             <t v="meeting on "/>
-            <date asWritten="21 June 1999" date="1999-06-21"/>
+            <date date="1999-06-21">
+               <t v="21 June 1999"/>
+            </date>
             <t v=" in Luxembourg for the signature of the Agreement between the European Community and the Swiss Confederation on Air Transport have adopted the Joint Declarations mentioned below and attached to this Final Act:"/>
          </p>
          <list kind="dash">
@@ -8419,7 +8741,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
-            <date asWritten="27 April 2016" date="2016-04-27"/>
+            <date date="2016-04-27">
+               <t v="27 April 2016"/>
+            </date>
             <t v=" on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation), "/>
             <ref kind="oj"
                  series="L"
@@ -8434,7 +8758,9 @@
       <note eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Regulation (EC) No 765/2008 of the European Parliament and of the Council of "/>
-            <date asWritten="9 July 2008" date="2008-07-09"/>
+            <date date="2008-07-09">
+               <t v="9 July 2008"/>
+            </date>
             <t v=" setting out the requirements for accreditation and market surveillance relating to the marketing of products and repealing Regulation (EEC) No 339/93 ("/>
             <ref kind="oj"
                  series="L"
@@ -8457,7 +8783,9 @@
       <note eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Regulation (EU) No 1025/2012 of the European Parliament and of the Council of "/>
-            <date asWritten="25 October 2012" date="2012-10-25"/>
+            <date date="2012-10-25">
+               <t v="25 October 2012"/>
+            </date>
             <t v=" on European standardisation, amending Council Directives 89/686/EEC and 93/15/EEC and Directives 94/9/EC, 94/25/EC, 95/16/EC, 97/23/EC, 98/34/EC, 2004/22/EC, 2007/23/EC, 2009/23/EC and 2009/105/EC of the European Parliament and of the Council and repealing Council Decision 87/95/EEC and Decision No 1673/2006/EC of the European Parliament and of the Council ("/>
             <ref kind="oj"
                  series="L"
@@ -8480,7 +8808,9 @@
       <note eId="note_5" marker="5" kind="footnote">
          <p>
             <t v="Directive 2009/48/EC of the European Parliament and of the Council of "/>
-            <date asWritten="18 June 2009" date="2009-06-18"/>
+            <date date="2009-06-18">
+               <t v="18 June 2009"/>
+            </date>
             <t v=" on the safety of toys ("/>
             <ref kind="oj"
                  series="L"
@@ -8503,7 +8833,9 @@
       <note eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="Directive 2006/42/EC of the European Parliament and of the Council of "/>
-            <date asWritten="17 May 2006" date="2006-05-17"/>
+            <date date="2006-05-17">
+               <t v="17 May 2006"/>
+            </date>
             <t v=" on machinery, and amending Directive 95/16/EC ("/>
             <ref kind="oj"
                  series="L"
@@ -8526,7 +8858,9 @@
       <note eId="note_7" marker="7" kind="footnote">
          <p>
             <t v="Council Directive 73/23/EEC of "/>
-            <date asWritten="19 February 1973" date="1973-02-19"/>
+            <date date="1973-02-19">
+               <t v="19 February 1973"/>
+            </date>
             <t v=" on the harmonization of the laws of Member States relating to electrical equipment designed for use within certain voltage limits ("/>
             <ref kind="oj"
                  series="L"
@@ -8541,7 +8875,9 @@
             <unit eId="note_7/idt_1" kind="indent">
                <p>
                   <t v="Directive 2006/95/EC of the European Parliament and of the Council of "/>
-                  <date asWritten="12 December 2006" date="2006-12-12"/>
+                  <date date="2006-12-12">
+                     <t v="12 December 2006"/>
+                  </date>
                   <t v=" ("/>
                   <ref kind="oj"
                        series="L"
@@ -8556,7 +8892,9 @@
             <unit eId="note_7/idt_2" kind="indent">
                <p>
                   <t v="Directive 2014/35/EU of the European Parliament and of the Council of "/>
-                  <date asWritten="26 February 2014" date="2014-02-26"/>
+                  <date date="2014-02-26">
+                     <t v="26 February 2014"/>
+                  </date>
                   <t v=" ("/>
                   <ref kind="oj"
                        series="L"
@@ -8573,7 +8911,9 @@
       <note eId="note_8" marker="8" kind="footnote">
          <p>
             <t v="Directive 2014/35/EU of the European Parliament and of the Council of "/>
-            <date asWritten="26 February 2014" date="2014-02-26"/>
+            <date date="2014-02-26">
+               <t v="26 February 2014"/>
+            </date>
             <t v=" on the harmonisation of the laws of the Member States relating to the making available on the market of electrical equipment designed for use within certain voltage limits ("/>
             <ref kind="oj"
                  series="L"
@@ -8588,7 +8928,9 @@
       <note eId="note_9" marker="9" kind="footnote">
          <p>
             <t v="Regulation (EU) 2019/1020 of the European Parliament and of the Council of "/>
-            <date asWritten="20 June 2019" date="2019-06-20"/>
+            <date date="2019-06-20">
+               <t v="20 June 2019"/>
+            </date>
             <t v=" on market surveillance and compliance of products and amending Directive 2004/42/EC and Regulations (EC) No 765/2008 and (EU) No 305/2011 ("/>
             <ref kind="oj"
                  series="L"
@@ -8603,14 +8945,18 @@
       <note eId="note_10" marker="10" kind="footnote">
          <p>
             <t v="See Article 39 of Regulation (EU) 2019/1020 of the European Parliament and of the Council of "/>
-            <date asWritten="20 June 2019" date="2019-06-20"/>
+            <date date="2019-06-20">
+               <t v="20 June 2019"/>
+            </date>
             <t v=" on market surveillance and compliance of products and amending Directive 2004/42/EC and Regulations (EC) No 765/2008 and (EU) No 305/2011."/>
          </p>
       </note>
       <note eId="note_11" marker="11" kind="footnote">
          <p>
             <t v="Regulation (EU) 2019/515 of the European Parliament and of the Council of "/>
-            <date asWritten="19 March 2019" date="2019-03-19"/>
+            <date date="2019-03-19">
+               <t v="19 March 2019"/>
+            </date>
             <t v=" on the mutual recognition of goods lawfully marketed in another Member State and repealing Regulation (EC) No 764/2008 ("/>
             <ref kind="oj" series="L" number="91" date="2019-03-29" page="1">
                <t v="OJ L 91, 29.3.2019, p. 1"/>
@@ -8621,7 +8967,9 @@
       <note eId="note_12" marker="12" kind="footnote">
          <p>
             <t v="Directive 2001/95/EC of the European Parliament and of the Council of "/>
-            <date asWritten="3 December 2001" date="2001-12-03"/>
+            <date date="2001-12-03">
+               <t v="3 December 2001"/>
+            </date>
             <t v=" on general product safety, ("/>
             <ref kind="oj" series="L" number="11" date="2002-01-15" page="4">
                <t v="OJ L 11, 15.1.2002, p. 4"/>
@@ -8640,7 +8988,9 @@
       <note eId="note_13" marker="13" kind="footnote">
          <p>
             <t v="Directive 2009/48/EC of the European Parliament and of the Council of "/>
-            <date asWritten="18 June 2009" date="2009-06-18"/>
+            <date date="2009-06-18">
+               <t v="18 June 2009"/>
+            </date>
             <t v=" on the safety of toys, "/>
             <ref kind="oj"
                  series="L"
@@ -8663,7 +9013,9 @@
       <note eId="note_14" marker="14" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
-            <date asWritten="27 April 2016" date="2016-04-27"/>
+            <date date="2016-04-27">
+               <t v="27 April 2016"/>
+            </date>
             <t v=" on the protection of natural persons with regard to the processing of personal data and on the free movement of such data, and repealing Directive 95/46/EC (General Data Protection Regulation) ("/>
             <ref kind="oj"
                  series="L"
@@ -8678,7 +9030,9 @@
       <note eId="note_15" marker="15" kind="footnote">
          <p>
             <t v="Regulation (Euratom, ECSC, EEC) No 549/69 of the Council of "/>
-            <date asWritten="25 March 1969" date="1969-03-25"/>
+            <date date="1969-03-25">
+               <t v="25 March 1969"/>
+            </date>
             <t v=" determining the categories of officials and other servants of the European Communities to whom the provisions of Article 12, the second paragraph of Article 13 and Article 14 of the Protocol on the Privileges and Immunities of the Communities apply ("/>
             <ref kind="oj" series="L" number="74" date="1969-03-27" page="1">
                <t v="OJ L 74, 27.3.1969, p. 1"/>
@@ -8697,7 +9051,9 @@
       <note eId="note_16" marker="16" kind="footnote">
          <p>
             <t v="Regulation (EEC, Euratom, ECSC) No 259/68 of the Council of "/>
-            <date asWritten="29 February 1968" date="1968-02-29"/>
+            <date date="1968-02-29">
+               <t v="29 February 1968"/>
+            </date>
             <t v=" laying down the Staff Regulations of Officials and the Conditions of Employment of Other Servants of the European Communities and instituting special measures temporarily applicable to officials of the Commission (Conditions of Employment of Other Servants) ("/>
             <ref kind="oj" series="L" number="56" date="1968-03-04" page="1">
                <t v="OJ L 56, 4.3.1968, p. 1"/>

@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="20 December 1995" date="1995-12-20"/>
+            <docDate date="1995-12-20">
+               <t v="20 December 1995"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -46,7 +48,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1627/94 of "/>
-               <date asWritten="27 June 1994" date="1994-06-27"/>
+               <date date="1994-06-27">
+                  <t v="27 June 1994"/>
+               </date>
                <t v=" laying down general provisions concerning special fishing permits"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 13 (2) and 16 thereof,"/>
@@ -316,7 +320,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="20 December 1995" date="1995-12-20"/>
+            <date date="1995-12-20">
+               <t v="20 December 1995"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

@@ -26,7 +26,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="16 February 2010" date="2010-02-16"/>
+            <docDate date="2010-02-16">
+               <t v="16 February 2010"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -57,7 +59,9 @@
    <body>
       <p>
          <t v="To appoint Mr Vítor CONSTÂNCIO as Vice-President of the European Central Bank for a term of office of eight years with effect from "/>
-         <date asWritten="1 June 2010" date="2010-06-01"/>
+         <date date="2010-06-01">
+            <t v="1 June 2010"/>
+         </date>
          <t v="."/>
       </p>
    </body>
@@ -65,7 +69,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="16 February 2010" date="2010-02-16"/>
+            <date date="2010-02-16">
+               <t v="16 February 2010"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

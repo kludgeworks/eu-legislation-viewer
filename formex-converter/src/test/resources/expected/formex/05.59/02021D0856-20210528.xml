@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Commission Implementing Decision (EU) 2021/856 of "/>
-               <date asWritten="25 May 2021" date="2021-05-25"/>
+               <date date="2021-05-25">
+                  <t v="25 May 2021"/>
+               </date>
                <t v=" determining the date on which the European Public Prosecutor’s Office assumes its investigative and prosecutorial tasks"/>
             </p>
             <p>
@@ -65,7 +67,14 @@
                      marker="O000001M001002">
                <t v="of "/>
             </changed>
-            <docDate asWritten="26 May 2021" date="2021-05-26"/>
+            <docDate date="2021-05-26">
+               <changed amendingAct="32021D0856R(01)"
+                        action="replaced"
+                        location="LI:0;EL:1"
+                        marker="O000001M001002">
+                  <t v="26 May 2021"/>
+               </changed>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -86,7 +95,9 @@
          </num>
          <p>
             <t v="The European Public Prosecutor’s Office shall assume the investigative and prosecutorial tasks conferred on it by Regulation (EU) 2017/1939 on "/>
-            <date asWritten="1 June 2021" date="2021-06-01"/>
+            <date date="2021-06-01">
+               <t v="1 June 2021"/>
+            </date>
             <t v="."/>
          </p>
       </unit>

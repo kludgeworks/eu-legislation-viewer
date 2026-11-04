@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation (EC) No 275/2009 of "/>
-            <date asWritten="2 April 2009" date="2009-04-02"/>
+            <date date="2009-04-02">
+               <t v="2 April 2009"/>
+            </date>
             <t v=" amending Council Regulation (EC) No 872/2004 concerning further restrictive measures in relation to Liberia"/>
          </p>
          <p>

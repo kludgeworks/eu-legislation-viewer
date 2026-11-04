@@ -64,7 +64,9 @@
                </p>
                <p>
                   <t v="the adoption by the Council of the European Union of Joint Action 2008/124/CFSP of "/>
-                  <date asWritten="4 February 2008" date="2008-02-04"/>
+                  <date date="2008-02-04">
+                     <t v="4 February 2008"/>
+                  </date>
                   <t v=" on the European Union Rule of Law Mission in Kosovo, EULEX KOSOVO,"/>
                </p>
                <p>
@@ -75,7 +77,9 @@
                </p>
                <p>
                   <t v="the Political and Security Committee Decision EULEX/2/2008 of "/>
-                  <date asWritten="22 April 2008" date="2008-04-22"/>
+                  <date date="2008-04-22">
+                     <t v="22 April 2008"/>
+                  </date>
                   <t v=" on the acceptance of the Swiss Confederation’s contribution to the EU Rule of Law Mission in Kosovo, EULEX KOSOVO,"/>
                </p>
                <p>
@@ -94,7 +98,9 @@
                      </num>
                      <p>
                         <t v="The Swiss Confederation shall associate itself with the Joint Action 2008/124/CFSP of "/>
-                        <date asWritten="4 February 2008" date="2008-02-04"/>
+                        <date date="2008-02-04">
+                           <t v="4 February 2008"/>
+                        </date>
                         <t v=" on the European Union Rule of Law Mission in Kosovo, EULEX KOSOVO (hereinafter "/>
                         <quote startQuote="‘" endQuote="’">
                            <t v="EULEX KOSOVO"/>
@@ -233,7 +239,9 @@
                      </num>
                      <p>
                         <t v="The Swiss Confederation shall take appropriate measures to ensure that EU classified information is protected in accordance with the European Union Council’s security regulations, contained in Council Decision 2001/264/EC of "/>
-                        <date asWritten="19 March 2001" date="2001-03-19"/>
+                        <date date="2001-03-19">
+                           <t v="19 March 2001"/>
+                        </date>
                         <t v=", and in accordance with further guidance issued by competent authorities, including the Head of Mission."/>
                      </p>
                   </unit>
@@ -409,7 +417,9 @@
                </unit>
                <p>
                   <t v="Done at Brussels, "/>
-                  <date asWritten="29 July 2008" date="2008-07-29"/>
+                  <date date="2008-07-29">
+                     <t v="29 July 2008"/>
+                  </date>
                   <t v="."/>
                </p>
                <p>

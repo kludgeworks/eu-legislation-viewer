@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="13 May 2004" date="2004-05-13"/>
+               <docDate date="2004-05-13">
+                  <t v="13 May 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="29 December 2003" date="2003-12-29"/>
+            <docDate date="2003-12-29">
+               <t v="29 December 2003"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -77,7 +81,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 1766/92 of "/>
-               <date asWritten="30 June 1992" date="1992-06-30"/>
+               <date date="1992-06-30">
+                  <t v="30 June 1992"/>
+               </date>
                <t v=" on the common organisation of the market in cereals"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 5 thereof,"/>
@@ -96,7 +102,9 @@
             </num>
             <p>
                <t v="Commission Regulation (EEC) No 2131/93 of "/>
-               <date asWritten="28 July 1993" date="1993-07-28"/>
+               <date date="1993-07-28">
+                  <t v="28 July 1993"/>
+               </date>
                <t v=" laying down the procedure and conditions for the sale of cereals held by intervention agencies"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=" provides in particular that cereals held by intervention agencies are to be sold by tendering procedure at prices preventing market disturbance."/>
@@ -126,7 +134,9 @@
                <t v="It is therefore appropriate to make stocks of rye held by the German intervention agency available on the internal market. The period of presentation of the offers for the last partial invitation to tender under Regulation (EC) No 1510/2003"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" having expired on "/>
-               <date asWritten="18 December 2003" date="2003-12-18"/>
+               <date date="2003-12-18">
+                  <t v="18 December 2003"/>
+               </date>
                <t v=", it is advisable to open a new standing invitation to tender."/>
             </p>
          </unit>
@@ -232,7 +242,9 @@
             <unit eId="art_4/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="The closing date for the submission of tenders for the first partial invitation to tender shall be "/>
-                  <date asWritten="8 January 2004" date="2004-01-08"/>
+                  <date date="2004-01-08">
+                     <t v="8 January 2004"/>
+                  </date>
                   <t v=" at 09.00 (Brussels time)."/>
                </p>
             </unit>
@@ -243,16 +255,22 @@
                            marker="O001001M001000"/>
                <p>
                   <t v="The closing dates for the submission of tenders for subsequent partial invitations to tender shall be each Thursday at 09.00 (Brussels time), with the exception of "/>
-                  <date asWritten="20 May" date="2004-05-20"/>
+                  <date date="2004-05-20">
+                     <t v="20 May"/>
+                  </date>
                   <t v=" and "/>
-                  <date asWritten="10 june 2004" date="2004-06-10"/>
+                  <date date="2004-06-10">
+                     <t v="10 june 2004"/>
+                  </date>
                   <t v="."/>
                </p>
             </unit>
             <unit eId="art_4/par_1/sub_3" kind="subparagraph">
                <p>
                   <t v="The closing date for the submission of tenders for the last partial tendering procedure shall be "/>
-                  <date asWritten="27 May 2004" date="2004-05-27"/>
+                  <date date="2004-05-27">
+                     <t v="27 May 2004"/>
+                  </date>
                   <t v=" at 09.00 (Brussels time)."/>
                </p>
             </unit>

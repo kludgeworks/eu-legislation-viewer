@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation (EU) 2017/693 of "/>
-            <date asWritten="7 April 2017" date="2017-04-07"/>
+            <date date="2017-04-07">
+               <t v="7 April 2017"/>
+            </date>
             <t v=" amending Annexes II, III and V to Regulation (EC) No 396/2005 of the European Parliament and of the Council as regards maximum residue levels for bitertanol, chlormequat and tebufenpyrad in or on certain products"/>
          </p>
          <p>

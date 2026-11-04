@@ -22,7 +22,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="25 April 2005" date="2005-04-25"/>
+            <docDate date="2005-04-25">
+               <t v="25 April 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -80,7 +82,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Luxembourg, "/>
-            <date asWritten="25 April 2005" date="2005-04-25"/>
+            <date date="2005-04-25">
+               <t v="25 April 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -107,14 +111,18 @@
       <note eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Opinion delivered on "/>
-            <date asWritten="22 February 2005" date="2005-02-22"/>
+            <date date="2005-02-22">
+               <t v="22 February 2005"/>
+            </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
       </note>
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Assent given on "/>
-            <date asWritten="13 April 2005" date="2005-04-13"/>
+            <date date="2005-04-13">
+               <t v="13 April 2005"/>
+            </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
       </note>

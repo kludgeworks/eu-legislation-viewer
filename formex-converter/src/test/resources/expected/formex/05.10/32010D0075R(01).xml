@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Decision 2010/75/EU of "/>
-            <date asWritten="5 February 2010" date="2010-02-05"/>
+            <date date="2010-02-05">
+               <t v="5 February 2010"/>
+            </date>
             <t v=" concerning a financial contribution from the Union towards a coordinated monitoring programme on the prevalence of "/>
             <emphasis kind="i">
                <t v="Listeria monocytogenes"/>

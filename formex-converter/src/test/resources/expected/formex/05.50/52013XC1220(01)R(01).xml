@@ -36,7 +36,9 @@
                <t v="Competition Policy"/>
             </quote>
             <t v=" on "/>
-            <date asWritten="20 December 2013" date="2013-12-20"/>
+            <date date="2013-12-20">
+               <t v="20 December 2013"/>
+            </date>
             <t v=" should have been published under the section "/>
             <quote startQuote="‘" endQuote="’">
                <t v="Common Commercial Policy"/>

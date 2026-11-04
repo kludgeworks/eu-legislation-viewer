@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Directive 2006/27/EC of "/>
-            <date asWritten="3 March 2006" date="2006-03-03"/>
+            <date date="2006-03-03">
+               <t v="3 March 2006"/>
+            </date>
             <t v=" amending for the purposes of adapting to technical progress Council Directives 93/14/EEC on the braking of two- or three-wheel motor vehicles and 93/34/EEC on statutory markings for two- or three-wheel motor vehicles, Directives of the European Parliament and of the Council 95/1/EC on the maximum design speed, maximum torque and maximum net engine power of two- or three-wheel motor vehicles and 97/24/EC on certain components and characteristics of two- or three-wheel motor vehicles"/>
          </p>
          <p>

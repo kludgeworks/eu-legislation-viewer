@@ -21,7 +21,7 @@
     <x:expect label="has two unnumbered paragraphs">
       <unit eId="art_3" kind="article"><num><t v="Article 3"/></num>
         <unit eId="art_3/unp_1" kind="paragraph"><p><t v="This Regulation shall enter into force."/></p></unit>
-        <unit eId="art_3/unp_2" kind="paragraph"><p><t v="It shall apply from "/><date date="2016-02-01" asWritten="1 February 2016"/><t v="."/></p></unit>
+        <unit eId="art_3/unp_2" kind="paragraph"><p><t v="It shall apply from "/><date date="2016-02-01"><t v="1 February 2016"/></date><t v="."/></p></unit>
       </unit>
     </x:expect>
   </x:scenario>

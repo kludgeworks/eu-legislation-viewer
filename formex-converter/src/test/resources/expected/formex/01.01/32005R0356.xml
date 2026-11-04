@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="1 March 2005" date="2005-03-01"/>
+            <docDate date="2005-03-01">
+               <t v="1 March 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2847/93 of "/>
-               <date asWritten="12 October 1993" date="1993-10-12"/>
+               <date date="1993-10-12">
+                  <t v="12 October 1993"/>
+               </date>
                <t v=" establishing a control system applicable to the common fisheries policy"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 5(c) and 20a(3) thereof,"/>
@@ -637,7 +641,9 @@
             <unit eId="art_15/unp_2" kind="paragraph">
                <p>
                   <t v="It shall apply from "/>
-                  <date asWritten="1 October 2005" date="2005-10-01"/>
+                  <date date="2005-10-01">
+                     <t v="1 October 2005"/>
+                  </date>
                   <t v="."/>
                </p>
             </unit>
@@ -651,7 +657,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="1 March 2005" date="2005-03-01"/>
+            <date date="2005-03-01">
+               <t v="1 March 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

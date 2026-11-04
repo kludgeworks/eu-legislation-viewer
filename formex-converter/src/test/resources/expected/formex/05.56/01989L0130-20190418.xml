@@ -31,7 +31,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="19 March 2019" date="2019-03-19"/>
+               <docDate date="2019-03-19">
+                  <t v="19 March 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -66,7 +68,14 @@
                      marker="O002001M001000">
                <t v="of "/>
             </deleted>
-            <docDate asWritten="13 February 1989" date="1989-02-13"/>
+            <docDate date="1989-02-13">
+               <deleted amendingAct="32019R0516"
+                        action="deleted"
+                        location="AR:10;AL:1"
+                        marker="O002001M001000">
+                  <t v="13 February 1989"/>
+               </deleted>
+            </docDate>
          </p>
          <p>
             <docPurpose>

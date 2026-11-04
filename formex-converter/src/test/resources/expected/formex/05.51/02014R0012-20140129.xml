@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Commission Implementing Regulation (EU) No 12/2014 of "/>
-               <date asWritten="8 January 2014" date="2014-01-08"/>
+               <date date="2014-01-08">
+                  <t v="8 January 2014"/>
+               </date>
                <t v=" entering a name in the register of traditional specialities guaranteed [Salinātā rudzu rupjmaize (TSG)]"/>
             </p>
             <p>
@@ -50,7 +52,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="8 January 2014" date="2014-01-08"/>
+            <docDate date="2014-01-08">
+               <t v="8 January 2014"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -74,7 +78,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) No 1151/2012 of the European Parliament and of the Council of "/>
-               <date asWritten="21 November 2012" date="2012-11-21"/>
+               <date date="2012-11-21">
+                  <t v="21 November 2012"/>
+               </date>
                <t v=" on quality schemes for agricultural products and foodstuffs"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 52(2) thereof,"/>

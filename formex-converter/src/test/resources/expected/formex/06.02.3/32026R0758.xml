@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="1 April 2026" date="2026-04-01"/>
+            <docDate date="2026-04-01">
+               <t v="1 April 2026"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -52,7 +54,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2019/6 of the European Parliament and of the Council of "/>
-               <date asWritten="11 December 2018" date="2018-12-11"/>
+               <date date="2018-12-11">
+                  <t v="11 December 2018"/>
+               </date>
                <t v=" on veterinary medicinal products and repealing Directive 2001/82/EC"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 60(1) thereof,"/>
@@ -147,7 +151,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="1 April 2026" date="2026-04-01"/>
+            <date date="2026-04-01">
+               <t v="1 April 2026"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -186,7 +192,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Implementing Regulation (EU) 2021/17 of "/>
-            <date asWritten="8 January 2021" date="2021-01-08"/>
+            <date date="2021-01-08">
+               <t v="8 January 2021"/>
+            </date>
             <t v=" establishing a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6 of the European Parliament and of the Council ("/>
             <ref kind="oj" series="L" number="7" date="2021-01-11" page="22">
                <t v="OJ L 7, 11.1.2021, p. 22"/>

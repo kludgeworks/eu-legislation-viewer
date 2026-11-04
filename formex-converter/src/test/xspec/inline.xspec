@@ -38,7 +38,23 @@
   <x:scenario label="A date">
     <x:context mode="block" xmlns=""><P>from <DATE ISO="20160201">1 February 2016</DATE>.</P></x:context>
     <x:expect label="keeps the value and the wording">
-      <p><t v="from "/><date date="2016-02-01" asWritten="1 February 2016"/><t v="."/></p>
+      <p><t v="from "/><date date="2016-02-01"><t v="1 February 2016"/></date><t v="."/></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A date with a superscript (32024R0844: 14th November 2023)">
+    <x:context mode="block" xmlns=""><P>on <DATE ISO="20231114">14<HT TYPE="SUP">th</HT> November 2023</DATE></P></x:context>
+    <x:expect label="keeps the superscript in its wording">
+      <p><t v="on "/><date date="2023-11-14"><t v="14"/><emphasis kind="sup"><t v="th"/></emphasis><t v=" November 2023"/></date></p>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A date an amendment changed in part (02016R2374: 1 September 2018)">
+    <x:context mode="block" select="/CONS.ACT/P" xmlns="">
+      <CONS.ACT><P>from <DATE ISO="20180901">1 September <?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32018R0044" ACTIVE.LOC="AR:1;PT:2"?>2018<?CLG.MDFC ID="C1" IDREF="O1"?></DATE></P></CONS.ACT>
+    </x:context>
+    <x:expect label="keeps the change inside the date">
+      <p><t v="from "/><date date="2018-09-01"><t v="1 September "/><changed amendingAct="32018R0044" action="replaced" location="AR:1;PT:2" marker="O1"><t v="2018"/></changed></date></p>
     </x:expect>
   </x:scenario>
 

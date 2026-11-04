@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Regulation (EC) No 692/2008 of "/>
-            <date asWritten="18 July 2008" date="2008-07-18"/>
+            <date date="2008-07-18">
+               <t v="18 July 2008"/>
+            </date>
             <t v=" implementing and amending Regulation (EC) No 715/2007 of the European Parliament and of the Council on type approval of motor vehicles with respect to emissions from light passenger and commercial vehicles (Euro 5 and Euro 6) and on access to vehicle repair and maintenance information"/>
          </p>
          <p>

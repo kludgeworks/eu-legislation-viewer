@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Commission Delegated Regulation (EU) No 528/2014 of "/>
-            <date asWritten="12 March 2014" date="2014-03-12"/>
+            <date date="2014-03-12">
+               <t v="12 March 2014"/>
+            </date>
             <t v=" supplementing Regulation (EU) No 575/2013 of the European Parliament and of the Council with regard to regulatory technical standards for non-delta risk of options in the standardised market risk approach"/>
          </p>
          <p>

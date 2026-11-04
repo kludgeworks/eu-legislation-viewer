@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Regulation (EU) No 878/2011 of "/>
-            <date asWritten="2 September 2011" date="2011-09-02"/>
+            <date date="2011-09-02">
+               <t v="2 September 2011"/>
+            </date>
             <t v=" amending Regulation (EU) No 442/2011 concerning restrictive measures in view of the situation in Syria"/>
          </p>
          <p>

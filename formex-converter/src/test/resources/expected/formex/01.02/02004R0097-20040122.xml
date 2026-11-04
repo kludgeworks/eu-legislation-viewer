@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="18 August 2004" date="2004-08-18"/>
+               <docDate date="2004-08-18">
+                  <t v="18 August 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="21 January 2004" date="2004-01-21"/>
+            <docDate date="2004-01-21">
+               <t v="21 January 2004"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -84,7 +88,9 @@
          <unit eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1051/2001 of "/>
-               <date asWritten="22 May 2001" date="2001-05-22"/>
+               <date date="2001-05-22">
+                  <t v="22 May 2001"/>
+               </date>
                <t v=" on production aid for cotton"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 4 thereof,"/>
@@ -187,7 +193,9 @@
                   <t v="At the request of the interested party, "/>
                </deleted>
                <t v="Article 1 shall apply from "/>
-               <date asWritten="23 December 2003" date="2003-12-23"/>
+               <date date="2003-12-23">
+                  <t v="23 December 2003"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -200,7 +208,9 @@
                   <t v="At the request of the interested party, "/>
                </deleted>
                <t v="Article 2 shall apply from "/>
-               <date asWritten="24 December 2003" date="2003-12-24"/>
+               <date date="2003-12-24">
+                  <t v="24 December 2003"/>
+               </date>
                <t v="."/>
             </p>
          </unit>

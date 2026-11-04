@@ -26,12 +26,16 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="13 November 2014" date="2014-11-13"/>
+            <docDate date="2014-11-13">
+               <t v="13 November 2014"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
                <t v="between the European Central Bank and the national central banks of the Member States outside the euro area amending the Agreement of "/>
-               <date asWritten="16 March 2006" date="2006-03-16"/>
+               <date date="2006-03-16">
+                  <t v="16 March 2006"/>
+               </date>
                <t v=" between the European Central Bank and the national central banks of the Member States outside the euro area laying down the operating procedures for an exchange rate mechanism in stage three of Economic and Monetary Union"/>
             </docPurpose>
          </p>
@@ -220,7 +224,9 @@
             </num>
             <p>
                <t v="The European Council in its Resolution of "/>
-               <date asWritten="16 June 1997" date="1997-06-16"/>
+               <date date="1997-06-16">
+                  <t v="16 June 1997"/>
+               </date>
                <t v=" (hereinafter the "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Resolution"/>
@@ -230,7 +236,9 @@
                   <t v="ERM II"/>
                </quote>
                <t v=") when the third stage of Economic and Monetary Union began on "/>
-               <date asWritten="1 January 1999" date="1999-01-01"/>
+               <date date="1999-01-01">
+                  <t v="1 January 1999"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -248,26 +256,40 @@
             </num>
             <p>
                <t v="Lithuania, as a Member State with a derogation, has participated in ERM II since 2004. Lietuvos bankas is a party to the Agreement of "/>
-               <date asWritten="16 March 2006" date="2006-03-16"/>
+               <date date="2006-03-16">
+                  <t v="16 March 2006"/>
+               </date>
                <t v=" between the European Central Bank and the national central banks of the Member States outside the euro area laying down the operating procedures for an exchange rate mechanism in stage three of Economic and Monetary Union"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", as amended by the Agreement of "/>
-               <date asWritten="21 December 2006" date="2006-12-21"/>
+               <date date="2006-12-21">
+                  <t v="21 December 2006"/>
+               </date>
                <noteRef href="#note_2" marker="2"/>
                <t v=", by the Agreement of "/>
-               <date asWritten="14 December 2007" date="2007-12-14"/>
+               <date date="2007-12-14">
+                  <t v="14 December 2007"/>
+               </date>
                <noteRef href="#note_3" marker="3"/>
                <t v=", by the Agreement of "/>
-               <date asWritten="8 December 2008" date="2008-12-08"/>
+               <date date="2008-12-08">
+                  <t v="8 December 2008"/>
+               </date>
                <noteRef href="#note_4" marker="4"/>
                <t v=", by the Agreement of "/>
-               <date asWritten="13 December 2010" date="2010-12-13"/>
+               <date date="2010-12-13">
+                  <t v="13 December 2010"/>
+               </date>
                <noteRef href="#note_5" marker="5"/>
                <t v=", by the Agreement of "/>
-               <date asWritten="21 June 2013" date="2013-06-21"/>
+               <date date="2013-06-21">
+                  <t v="21 June 2013"/>
+               </date>
                <noteRef href="#note_6" marker="6"/>
                <t v=" and by the Agreement of "/>
-               <date asWritten="6 December 2013" date="2013-12-06"/>
+               <date date="2013-12-06">
+                  <t v="6 December 2013"/>
+               </date>
                <noteRef href="#note_7" marker="7"/>
                <t v=" (hereinafter collectively referred to as the "/>
                <quote startQuote="‘" endQuote="’">
@@ -282,14 +304,22 @@
             </num>
             <p>
                <t v="Pursuant to Article 1 of Council Decision 2014/509/EU of "/>
-               <date asWritten="23 July 2014" date="2014-07-23"/>
+               <date date="2014-07-23">
+                  <t v="23 July 2014"/>
+               </date>
                <t v=" on the adoption by Lithuania of the euro on "/>
-               <date asWritten="1 January 2015" date="2015-01-01"/>
+               <date date="2015-01-01">
+                  <t v="1 January 2015"/>
+               </date>
                <noteRef href="#note_8" marker="8"/>
                <t v=" the derogation in favour of Lithuania referred to in Article 4 of the 2003 Act of Accession is abrogated with effect from "/>
-               <date asWritten="1 January 2015" date="2015-01-01"/>
+               <date date="2015-01-01">
+                  <t v="1 January 2015"/>
+               </date>
                <t v=". The euro will be Lithuania's currency from "/>
-               <date asWritten="1 January 2015" date="2015-01-01"/>
+               <date date="2015-01-01">
+                  <t v="1 January 2015"/>
+               </date>
                <t v=" and Lietuvos bankas should no longer be party to the ERM II Central Bank Agreement from that date."/>
             </p>
          </unit>
@@ -318,7 +348,9 @@
          </heading>
          <p>
             <t v="Lietuvos bankas shall no longer be party to the ERM II Central Bank Agreement from "/>
-            <date asWritten="1 January 2015" date="2015-01-01"/>
+            <date date="2015-01-01">
+               <t v="1 January 2015"/>
+            </date>
             <t v="."/>
          </p>
       </unit>
@@ -346,7 +378,9 @@
             </num>
             <p>
                <t v="This Agreement amends the ERM II Central Bank Agreement with effect from "/>
-               <date asWritten="1 January 2015" date="2015-01-01"/>
+               <date date="2015-01-01">
+                  <t v="1 January 2015"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -368,7 +402,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Frankfurt am Main, "/>
-            <date asWritten="13 November 2014" date="2014-11-13"/>
+            <date date="2014-11-13">
+               <t v="13 November 2014"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -617,7 +653,9 @@
                <p>
                   <emphasis kind="b">
                      <t v="with effect from "/>
-                     <date asWritten="1 January 2015" date="2015-01-01"/>
+                     <date date="2015-01-01">
+                        <t v="1 January 2015"/>
+                     </date>
                   </emphasis>
                </p>
             </caption>

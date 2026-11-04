@@ -28,7 +28,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="28 August 2002" date="2002-08-28"/>
+               <docDate date="2002-08-28">
+                  <t v="28 August 2002"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -53,7 +55,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="29 October 2002" date="2002-10-29"/>
+               <docDate date="2002-10-29">
+                  <t v="29 October 2002"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -78,7 +82,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 December 2002" date="2002-12-16"/>
+               <docDate date="2002-12-16">
+                  <t v="16 December 2002"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -103,7 +109,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="4 December 2003" date="2003-12-04"/>
+               <docDate date="2003-12-04">
+                  <t v="4 December 2003"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -128,7 +136,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 July 2004" date="2004-07-16"/>
+               <docDate date="2004-07-16">
+                  <t v="16 July 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -153,7 +163,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="22 July 2004" date="2004-07-22"/>
+               <docDate date="2004-07-22">
+                  <t v="22 July 2004"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -178,7 +190,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="12 January 2001" date="2001-01-12"/>
+            <docDate date="2001-01-12">
+               <t v="12 January 2001"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -202,7 +216,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1255/1999 of "/>
-               <date asWritten="17 May 1999" date="1999-05-17"/>
+               <date date="1999-05-17">
+                  <t v="17 May 1999"/>
+               </date>
                <t v=" on the common organisation of the market in milk and milk products"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", as amended by Regulation (EC) No 1040/2000"/>
@@ -231,25 +247,33 @@
                <t v=", Council Regulation (EEC) No 777/87"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=" dealing with the buying-in arrangements for butter and skimmed-milk powder. In view of those new arrangements and in the light of the experience gained, the detailed rules governing intervention on the market in skimmed-milk powder should be amended. In the interests of clarity, therefore, the recasting of the specific regulations which previously governed the various aspects of intervention, namely Commission Regulations (EEC) No 2213/76 of "/>
-               <date asWritten="10 September 1976" date="1976-09-10"/>
+               <date date="1976-09-10">
+                  <t v="10 September 1976"/>
+               </date>
                <t v=" on the sale of skimmed-milk powder from public storage"/>
                <noteRef href="#note_5" marker="5"/>
                <t v=", as last amended by Regulation (EC) No 2080/96"/>
                <noteRef href="#note_6" marker="6"/>
                <t v=", (EEC) No 1362/87 of "/>
-               <date asWritten="18 May 1987" date="1987-05-18"/>
+               <date date="1987-05-18">
+                  <t v="18 May 1987"/>
+               </date>
                <t v=" laying down detailed rules for the application of Regulation (EEC) No 777/87 with respect to the buying-in and the granting of aid for the private storage of skimmed-milk powder"/>
                <noteRef href="#note_7" marker="7"/>
                <t v=", as last amended by Regulation (EC) No 569/96"/>
                <noteRef href="#note_8" marker="8"/>
                <t v=", (EEC) No 1158/91 of "/>
-               <date asWritten="3 May 1991" date="1991-05-03"/>
+               <date date="1991-05-03">
+                  <t v="3 May 1991"/>
+               </date>
                <t v=" on the buying-in by tender of skimmed-milk powder to intervention agencies"/>
                <noteRef href="#note_9" marker="9"/>
                <t v=", as last amended by Regulation (EC) No 124/1999"/>
                <noteRef href="#note_10" marker="10"/>
                <t v=", and (EC) No 322/96 of "/>
-               <date asWritten="22 February 1996" date="1996-02-22"/>
+               <date date="1996-02-22">
+                  <t v="22 February 1996"/>
+               </date>
                <t v=" laying down detailed rules of application for the public storage of skimmed-milk powder"/>
                <noteRef href="#note_11" marker="11"/>
                <t v=", as last amended by Regulation (EC) No 419/98"/>
@@ -303,7 +327,9 @@
             </num>
             <p>
                <t v="Member States' obligations should be specified with a view to the proper management of stocks in storage, by stipulating a maximum distance for the place of storage and the costs to be borne when that distance is exceeded, and requiring, in particular, that stocks be accessible, that batches be identified and that skimmed-milk powder in storage be insured against risks. In order to ensure a uniform frequency and level of checks, it is necessary to specify the nature and number of inspections of storage premises to be performed by the national authorities. Since intervention agencies are bound by existing contracts for the current storage period, provision should be made whereby the new requirements to be met by storage depots regarding entry into and removal from storage will apply only to quantities of skimmed-milk powder bought into intervention from "/>
-               <date asWritten="1 September 2000" date="2000-09-01"/>
+               <date date="2000-09-01">
+                  <t v="1 September 2000"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -1087,7 +1113,9 @@
                               <t v="have a capacity of at least "/>
                               <number v="1000"/>
                               <t v=" tonnes and removal facilities able to accommodate the removal each day of at least 3 % of the quantity stored in the depot, at a minimum rate of 100 tonnes per day. For the purposes of this requirement, only the quantities of skimmed-milk powder bought in from "/>
-                              <date asWritten="1 September 2000" date="2000-09-01"/>
+                              <date date="2000-09-01">
+                                 <t v="1 September 2000"/>
+                              </date>
                               <t v=" shall be taken into account."/>
                            </p>
                         </unit>
@@ -1587,7 +1615,9 @@
                               action="replaced"
                               location="AR:1"
                               marker="O004001M003000">
-                        <date asWritten="1 October 2002" date="2002-10-01"/>
+                        <date date="2002-10-01">
+                           <t v="1 October 2002"/>
+                        </date>
                      </changed>
                      <t v=" shall be sold by means of a standing invitation to tender organised by each intervention agency."/>
                   </p>
@@ -3093,7 +3123,9 @@
                <note eId="note_18" marker="1" kind="table">
                   <p>
                      <t v="See Commission Regulation (EC) No 213/2001 of "/>
-                     <date asWritten="9 January 2001" date="2001-01-09"/>
+                     <date date="2001-01-09">
+                        <t v="9 January 2001"/>
+                     </date>
                      <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards methods for the analysis and quality evaluation of milk and milk products and amending Regulations (EC) No 2771/1999 and (EC) No 2799/1999 (see page 1 of this Official Journal)."/>
                   </p>
                </note>

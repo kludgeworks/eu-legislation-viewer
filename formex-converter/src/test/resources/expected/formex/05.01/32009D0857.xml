@@ -22,16 +22,24 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="13 December 2007" date="2007-12-13"/>
+            <docDate date="2007-12-13">
+               <t v="13 December 2007"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
                <t v="relating to the implementation of Article 9C(4) of the Treaty on European Union and Article 205(2) of the Treaty on the Functioning of the European Union between "/>
-               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <date date="2014-11-01">
+                  <t v="1 November 2014"/>
+               </date>
                <t v=" and "/>
-               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <date date="2017-03-31">
+                  <t v="31 March 2017"/>
+               </date>
                <t v=" on the one hand, and as from "/>
-               <date asWritten="1 April 2017" date="2017-04-01"/>
+               <date date="2017-04-01">
+                  <t v="1 April 2017"/>
+               </date>
                <t v=" on the other"/>
             </docPurpose>
          </p>
@@ -58,11 +66,17 @@
             </num>
             <p>
                <t v="Provisions should be adopted allowing for a smooth transition from the system for decision-making in the Council by a qualified majority as defined in Article 3(3) of the Protocol on the transitional provisions, which will continue to apply until "/>
-               <date asWritten="31 October 2014" date="2014-10-31"/>
+               <date date="2014-10-31">
+                  <t v="31 October 2014"/>
+               </date>
                <t v=", to the voting system provided for in Article 9C(4) of the Treaty on European Union and Article 205(2) of the Treaty on the Functioning of the European Union, which will apply with effect from "/>
-               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <date date="2014-11-01">
+                  <t v="1 November 2014"/>
+               </date>
                <t v=", including, during a transitional period until "/>
-               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <date date="2017-03-31">
+                  <t v="31 March 2017"/>
+               </date>
                <t v=", specific provisions laid down in Article 3(2) of that Protocol."/>
             </p>
          </unit>
@@ -89,9 +103,13 @@
          <subheading>
             <emphasis kind="b">
                <t v="PROVISIONS TO BE APPLIED FROM "/>
-               <date asWritten="1 NOVEMBER 2014" date="2014-11-01"/>
+               <date date="2014-11-01">
+                  <t v="1 NOVEMBER 2014"/>
+               </date>
                <t v=" TO "/>
-               <date asWritten="31 MARCH 2017" date="2017-03-31"/>
+               <date date="2017-03-31">
+                  <t v="31 MARCH 2017"/>
+               </date>
             </emphasis>
          </subheading>
          <unit eId="art_1" kind="article" rank="2">
@@ -100,9 +118,13 @@
             </num>
             <p>
                <t v="From "/>
-               <date asWritten="1 November 2014" date="2014-11-01"/>
+               <date date="2014-11-01">
+                  <t v="1 November 2014"/>
+               </date>
                <t v=" to "/>
-               <date asWritten="31 March 2017" date="2017-03-31"/>
+               <date date="2017-03-31">
+                  <t v="31 March 2017"/>
+               </date>
                <t v=", if members of the Council, representing:"/>
             </p>
             <list kind="alpha">
@@ -151,7 +173,9 @@
          <subheading>
             <emphasis kind="b">
                <t v="PROVISIONS TO BE APPLIED AS FROM "/>
-               <date asWritten="1 APRIL 2017" date="2017-04-01"/>
+               <date date="2017-04-01">
+                  <t v="1 APRIL 2017"/>
+               </date>
             </emphasis>
          </subheading>
          <unit eId="art_4" kind="article" rank="2">
@@ -160,7 +184,9 @@
             </num>
             <p>
                <t v="As from "/>
-               <date asWritten="1 April 2017" date="2017-04-01"/>
+               <date date="2017-04-01">
+                  <t v="1 April 2017"/>
+               </date>
                <t v=", if members of the Council, representing:"/>
             </p>
             <list kind="alpha">
@@ -225,7 +251,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="13 December 2007" date="2007-12-13"/>
+            <date date="2007-12-13">
+               <t v="13 December 2007"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

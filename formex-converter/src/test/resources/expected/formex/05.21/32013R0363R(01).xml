@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Implementing Regulation (EU) No 363/2013 of "/>
-            <date asWritten="22 April 2013" date="2013-04-22"/>
+            <date date="2013-04-22">
+               <t v="22 April 2013"/>
+            </date>
             <t v=" implementing Regulation (EU) No 36/2012 concerning restrictive measures in view of the situation in Syria"/>
          </p>
          <p>

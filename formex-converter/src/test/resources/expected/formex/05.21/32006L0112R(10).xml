@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Council Directive 2006/112/EC of "/>
-            <date asWritten="28 November 2006" date="2006-11-28"/>
+            <date date="2006-11-28">
+               <t v="28 November 2006"/>
+            </date>
             <t v=" on the common system of value added tax"/>
          </p>
          <p>

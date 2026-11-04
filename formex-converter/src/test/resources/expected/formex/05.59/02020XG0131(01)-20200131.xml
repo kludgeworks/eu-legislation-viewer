@@ -45,9 +45,13 @@
          <t v="The Agreement on the Withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community"/>
          <noteRef href="#note_1" marker="1"/>
          <t v=", signed at Brussels and London on "/>
-         <date asWritten="24 January 2020" date="2020-01-24"/>
+         <date date="2020-01-24">
+            <t v="24 January 2020"/>
+         </date>
          <t v=", will enter into force on "/>
-         <date asWritten="1 February 2020" date="2020-02-01"/>
+         <date date="2020-02-01">
+            <t v="1 February 2020"/>
+         </date>
          <t v=" in accordance with the first paragraph of Article 185 thereof."/>
       </p>
    </body>

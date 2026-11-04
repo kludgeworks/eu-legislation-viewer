@@ -24,7 +24,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="20 December 2002" date="2002-12-20"/>
+            <docDate date="2002-12-20">
+               <t v="20 December 2002"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -72,7 +74,9 @@
             </num>
             <p>
                <t v="Council Regulation (EC) No 2792/1999 of "/>
-               <date asWritten="17 December 1999" date="1999-12-17"/>
+               <date date="1999-12-17">
+                  <t v="17 December 1999"/>
+               </date>
                <t v=" laying down the detailed rules and arrangements regarding Community structural assistance in the fisheries sector"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" has afforded decommissioning incentives as a way of bringing about a balanced ratio of fleet capacity to available resources in the long term."/>
@@ -140,7 +144,9 @@
             </num>
             <p>
                <t v="The measures necessary for the implementation of this Regulation should be adopted in accordance with Council Decision 1999/468/EC of "/>
-               <date asWritten="28 June 1999" date="1999-06-28"/>
+               <date date="1999-06-28">
+                  <t v="28 June 1999"/>
+               </date>
                <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
                <noteRef href="#note_4" marker="4"/>
                <t v="."/>
@@ -255,7 +261,9 @@
             </heading>
             <p>
                <t v="Member States wishing to receive a financial contribution shall present to the Commission by "/>
-               <date asWritten="30 June 2003" date="2003-06-30"/>
+               <date date="2003-06-30">
+                  <t v="30 June 2003"/>
+               </date>
                <t v=" a plan of their proposed decommissioning expenditure for the year 2003, under this emergency Community measure. The Commission shall proceed with the commitment of the global annual amount available in the budget for this emergency Community measure."/>
             </p>
          </unit>
@@ -272,7 +280,9 @@
                </num>
                <p>
                   <t v="Member States shall submit their applications for the payment of the expenditure by "/>
-                  <date asWritten="30 June 2004" date="2004-06-30"/>
+                  <date date="2004-06-30">
+                     <t v="30 June 2004"/>
+                  </date>
                   <t v=". On the basis of the applications, and the situation of each Member State in respect of the impact of recovery plans, the Commission shall decide on the financial contribution to be paid to each Member State. The Commission shall pay up to 50 % of the assistance on receipt of the application and the balance after certification by the authorities referred to in paragraph 2."/>
                </p>
             </unit>
@@ -282,7 +292,9 @@
                </num>
                <p>
                   <t v="The authorities responsible for the implementation of this emergency Community measure shall be the managing and paying authorities involved in structural fund measures concerning fisheries in the relevant Member State. They shall perform the functions assigned to them by Council Regulation (EC) No 1260/1999 of "/>
-                  <date asWritten="21 June 1999" date="1999-06-21"/>
+                  <date date="1999-06-21">
+                     <t v="21 June 1999"/>
+                  </date>
                   <t v=" laying down general provisions on the structural funds"/>
                   <noteRef href="#note_5" marker="5"/>
                   <t v="."/>
@@ -330,7 +342,9 @@
             </heading>
             <p>
                <t v="The detailed rules for the implementation of this Regulation shall be adopted by the Commission in accordance with the procedure laid down in Article 30(2) of Council Regulation (EC) No 2371/2002 of "/>
-               <date asWritten="20 December 2002" date="2002-12-20"/>
+               <date date="2002-12-20">
+                  <t v="20 December 2002"/>
+               </date>
                <t v=" on the conservation and sustainable exploitation of fisheries resources under the Common Fisheries Policy"/>
                <noteRef href="#note_6" marker="6"/>
                <t v="."/>
@@ -345,7 +359,9 @@
             </heading>
             <p>
                <t v="This Regulation shall enter into force on "/>
-               <date asWritten="1 January 2003" date="2003-01-01"/>
+               <date date="2003-01-01">
+                  <t v="1 January 2003"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -358,7 +374,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="20 December 2002" date="2002-12-20"/>
+            <date date="2002-12-20">
+               <t v="20 December 2002"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>
@@ -397,7 +415,9 @@
       <note eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Opinion delivered on "/>
-            <date asWritten="5 December 2002" date="2002-12-05"/>
+            <date date="2002-12-05">
+               <t v="5 December 2002"/>
+            </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
       </note>

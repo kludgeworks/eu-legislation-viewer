@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Council Decision 2014/15/EU of "/>
-               <date asWritten="18 November 2013" date="2013-11-18"/>
+               <date date="2013-11-18">
+                  <t v="18 November 2013"/>
+               </date>
                <t v=" on the signing and conclusion of the Agreement between the European Union and Georgia establishing a framework for the participation of Georgia in European Union crisis management operations"/>
             </p>
             <p>
@@ -53,7 +55,14 @@
                      marker="O000001M002000">
                <t v="of "/>
             </changed>
-            <docDate asWritten="18 November 2013" date="2013-11-18"/>
+            <docDate date="2013-11-18">
+               <changed amendingAct="32014D0015R(01)"
+                        action="replaced"
+                        location="LI:0;EL:2"
+                        marker="O000001M002000">
+                  <t v="18 November 2013"/>
+               </changed>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -105,7 +114,9 @@
             </num>
             <p>
                <t v="Following the adoption of a Decision by the Council on "/>
-               <date asWritten="13 November 2012" date="2012-11-13"/>
+               <date date="2012-11-13">
+                  <t v="13 November 2012"/>
+               </date>
                <t v=" authorising the opening of negotiations, the High Representative of the Union for Foreign Affairs and Security Policy negotiated an agreement between the European Union and Georgia establishing a framework for the participation of Georgia in European Union crisis management operations ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="the Agreement"/>

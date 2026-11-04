@@ -162,7 +162,7 @@
               test="$x:result/*:preamble/*:citations/*:unit/@eId = ('pbl_1/cit_1', 'pbl_1/cit_2') and $x:result/*:preamble/*:recitals/*:unit/@eId = 'pbl_1/rct_1'"/>
     <x:expect label="keeps the recitals' intro" test="$x:result/*:preamble/*:recitals/*:intro/*:p/*:t/@v = 'Whereas:'"/>
     <x:expect label="types the date of the signature, keeping the place as text" test="$x:result//*:placeAndDate">
-      <placeAndDate><t v="Done at Brussels, "/><date date="2026-02-27" asWritten="27 February 2026"/><t v="."/></placeAndDate>
+      <placeAndDate><t v="Done at Brussels, "/><date date="2026-02-27"><t v="27 February 2026"/></date><t v="."/></placeAndDate>
     </x:expect>
     <x:expect label="splits the signatory by line: organisation, role, person" test="
         $x:result//*:signatory/*:organization/*:emphasis/*:t/@v = 'For the Commission'

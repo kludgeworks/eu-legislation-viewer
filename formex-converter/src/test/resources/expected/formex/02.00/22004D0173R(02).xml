@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Corrigendum to Decision of the EEA Joint Committee No 173/2004 of "/>
-            <date asWritten="3 December 2004" date="2004-12-03"/>
+            <date date="2004-12-03">
+               <t v="3 December 2004"/>
+            </date>
             <t v=", amending Annex XX (Environment) to the EEA Agreement"/>
          </p>
       </longTitle>

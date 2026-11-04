@@ -14,7 +14,9 @@
       <longTitle>
          <p>
             <t v="Information relating to the entry into force of the Agreement between the European Community and the Swiss Confederation amending the Agreement between the European Economic Community and the Swiss Confederation of "/>
-            <date asWritten="22 July 1972" date="1972-07-22"/>
+            <date date="1972-07-22">
+               <t v="22 July 1972"/>
+            </date>
             <t v=" as regards the provisions applicable to processed agricultural products"/>
             <noteRef href="#note_1" marker="1"/>
          </p>
@@ -23,13 +25,21 @@
    <body>
       <p>
          <t v="The procedures necessary for the entry into force of the Agreement between the European Community and the Swiss Confederation amending the Agreement between the European Economic Community and the Swiss Confederation of "/>
-         <date asWritten="22 July 1972" date="1972-07-22"/>
+         <date date="1972-07-22">
+            <t v="22 July 1972"/>
+         </date>
          <t v=" as regards the provisions applicable to processed agricultural products, signed in Luxembourg on "/>
-         <date asWritten="26 October 2004" date="2004-10-26"/>
+         <date date="2004-10-26">
+            <t v="26 October 2004"/>
+         </date>
          <t v=", having been completed on "/>
-         <date asWritten="29 March 2005" date="2005-03-29"/>
+         <date date="2005-03-29">
+            <t v="29 March 2005"/>
+         </date>
          <t v=", this Agreement entered into force, in conformity with its Article 5(1), on "/>
-         <date asWritten="30 March 2005" date="2005-03-30"/>
+         <date date="2005-03-30">
+            <t v="30 March 2005"/>
+         </date>
          <t v="."/>
       </p>
    </body>

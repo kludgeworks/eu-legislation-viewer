@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="4 October 2004" date="2004-10-04"/>
+            <docDate date="2004-10-04">
+               <t v="4 October 2004"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -66,7 +68,9 @@
                <t v="The Partnership and Cooperation Agreement between the European Communities and their Member States and the Republic of Kazakhstan"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=" entered into force on "/>
-               <date asWritten="1 July 1999" date="1999-07-01"/>
+               <date date="1999-07-01">
+                  <t v="1 July 1999"/>
+               </date>
                <t v="."/>
             </p>
          </unit>
@@ -84,7 +88,9 @@
             </num>
             <p>
                <t v="On "/>
-               <date asWritten="22 July 2002" date="2002-07-22"/>
+               <date date="2002-07-22">
+                  <t v="22 July 2002"/>
+               </date>
                <t v=" the ECSC and the Government of the Republic of Kazakhstan concluded such an Agreement on trade in certain steel products"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=" (hereinafter referred to as the Agreement), approved on behalf of the ECSC by Commission Decision 2002/654/ECSC"/>
@@ -98,7 +104,9 @@
             </num>
             <p>
                <t v="The ECSC Treaty expired on "/>
-               <date asWritten="23 July 2002" date="2002-07-23"/>
+               <date date="2002-07-23">
+                  <t v="23 July 2002"/>
+               </date>
                <t v=" and the European Community took over all rights and obligations contracted by the ECSC."/>
             </p>
          </unit>
@@ -126,7 +134,9 @@
             </num>
             <p>
                <t v="Commission Decision No 1469/2002/ECSC of "/>
-               <date asWritten="8 July 2002" date="2002-07-08"/>
+               <date date="2002-07-08">
+                  <t v="8 July 2002"/>
+               </date>
                <t v=" on administering certain restrictions on imports of certain steel products from Kazakhstan"/>
                <noteRef href="#note_5" marker="5"/>
                <t v=" should be amended accordingly,"/>
@@ -167,7 +177,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Luxembourg, "/>
-            <date asWritten="4 October 2004" date="2004-10-04"/>
+            <date date="2004-10-04">
+               <t v="4 October 2004"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

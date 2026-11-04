@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="2 September 2024" date="2024-09-02"/>
+            <docDate date="2024-09-02">
+               <t v="2 September 2024"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2018/848 of the European Parliament and of the Council of "/>
-               <date asWritten="30 May 2018" date="2018-05-30"/>
+               <date date="2018-05-30">
+                  <t v="30 May 2018"/>
+               </date>
                <t v=" on organic production and labelling of organic products and repealing Council Regulation (EC) No 834/2007"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 33(6) thereof,"/>
@@ -130,7 +134,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="2 September 2024" date="2024-09-02"/>
+            <date date="2024-09-02">
+               <t v="2 September 2024"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

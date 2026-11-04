@@ -25,7 +25,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="9 December 2005" date="2005-12-09"/>
+            <docDate date="2005-12-09">
+               <t v="9 December 2005"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -49,7 +51,9 @@
          <unit eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1964/2005 of "/>
-               <date asWritten="29 November 2005" date="2005-11-29"/>
+               <date date="2005-11-29">
+                  <t v="29 November 2005"/>
+               </date>
                <t v=" on the tariff rates for bananas"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 2 thereof,"/>
@@ -68,7 +72,9 @@
             </num>
             <p>
                <t v="Article 1(2) of Regulation (EC) No 1964/2005 lays down that from 1 January each year, starting with "/>
-               <date asWritten="1 January 2006" date="2006-01-01"/>
+               <date date="2006-01-01">
+                  <t v="1 January 2006"/>
+               </date>
                <t v=", an autonomous tariff quota of "/>
                <number v="775000"/>
                <t v=" tonnes net weight subject to a zero duty rate is to be opened for imports of bananas (CN code "/>
@@ -82,7 +88,9 @@
             </num>
             <p>
                <t v="The establishment of the appropriate instruments for managing the tariff quota for ACP banana imports provided for by Regulation (EC) No 1964/2005 cannot be completed in time before "/>
-               <date asWritten="1 January 2006" date="2006-01-01"/>
+               <date date="2006-01-01">
+                  <t v="1 January 2006"/>
+               </date>
                <t v=". The Commission should therefore adopt interim measures for the issue of import licences for January and February 2006 to ensure Community supplies, ensure the continuity of trade with the ACP countries and avoid disruptions of trade flow. These measure are without prejudice to the detailed rules to be adopted later in 2006."/>
             </p>
          </unit>
@@ -92,11 +100,15 @@
             </num>
             <p>
                <t v="Under the interim measures, provision should be made for import licences to be issued to operators established in the Community who, as the case may be, obtained a reference quantity as traditional operators, an annual allocation as non-traditional operators under the tariff quotas A/B or C referred to in Article 18(1) of Council Regulation (EEC) No 404/93 of "/>
-               <date asWritten="13 February 1993" date="1993-02-13"/>
+               <date date="1993-02-13">
+                  <t v="13 February 1993"/>
+               </date>
                <t v=" on the common organisation of the market in bananas"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", or who, as traditional operators or non-traditional operators, qualified for the additional quantity set by Commission Regulation (EC) No 1892/2004 of "/>
-               <date asWritten="29 October 2004" date="2004-10-29"/>
+               <date date="2004-10-29">
+                  <t v="29 October 2004"/>
+               </date>
                <t v=" on transitional measures for 2005 for imports of bananas into the Community by reason of the accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" and who actually imported bananas originating in the ACP countries in 2005. Given the temporary nature of these measures, applications lodged by new operators not registered in previous years should not be accepted."/>
@@ -344,9 +356,13 @@
                </num>
                <p>
                   <t v="Import licence applications shall be lodged on "/>
-                  <date asWritten="14" date="2005-12-14"/>
+                  <date date="2005-12-14">
+                     <t v="14"/>
+                  </date>
                   <t v=" and "/>
-                  <date asWritten="15 December 2005" date="2005-12-15"/>
+                  <date date="2005-12-15">
+                     <t v="15 December 2005"/>
+                  </date>
                   <t v=" with the competent authorities of the Member State which established the reference quantity, in the case of traditional operators, and of the Member State where the operator is registered in the case of non-traditional operators, accompanied by proof that a security has been provided for an amount of EUR 150 per tonne under Title III of Regulation (EEC) No 2220/85."/>
                </p>
             </unit>
@@ -372,7 +388,9 @@
                </num>
                <p>
                   <t v="Member States shall notify the Commission not later than "/>
-                  <date asWritten="19 December 2005" date="2005-12-19"/>
+                  <date date="2005-12-19">
+                     <t v="19 December 2005"/>
+                  </date>
                   <t v=" of the total quantity for which admissible licence applications have been lodged, giving separate figures for the operators referred to in Title II and those referred to in Title III."/>
                </p>
             </unit>
@@ -422,9 +440,13 @@
                </num>
                <p>
                   <t v="Import licences shall be valid for release into free circulation from "/>
-                  <date asWritten="1 January 2006" date="2006-01-01"/>
+                  <date date="2006-01-01">
+                     <t v="1 January 2006"/>
+                  </date>
                   <t v=" to "/>
-                  <date asWritten="7 April 2006" date="2006-04-07"/>
+                  <date date="2006-04-07">
+                     <t v="7 April 2006"/>
+                  </date>
                   <t v="."/>
                </p>
             </unit>
@@ -446,7 +468,9 @@
             </heading>
             <p>
                <t v="Member States shall notify the Commission not later than "/>
-               <date asWritten="31 January 2006" date="2006-01-31"/>
+               <date date="2006-01-31">
+                  <t v="31 January 2006"/>
+               </date>
                <t v=" of the quantities for which licences have been issued, a clear distinction being made between quantities issued to operators referred to in Title II and operators referred to in Title III."/>
             </p>
          </unit>
@@ -474,7 +498,9 @@
       <signature>
          <placeAndDate>
             <t v="Done at Brussels, "/>
-            <date asWritten="9 December 2005" date="2005-12-09"/>
+            <date date="2005-12-09">
+               <t v="9 December 2005"/>
+            </date>
             <t v="."/>
          </placeAndDate>
          <signatory>

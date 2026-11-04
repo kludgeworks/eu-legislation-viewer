@@ -63,7 +63,7 @@
       <unit eId="pnt_11.1.1" kind="level" depth="4" numbered="true"><num><t v="11.1.1"/></num>
         <p><t v="The following personnel"/></p>
         <deleted><provenance amendingAct="32026R0449" action="deleted" location="PT:23" marker="O1"/>
-          <p><t v="Point (b) shall apply from "/><date date="2023-01-01" asWritten="1 January 2023"/><t v="."/></p></deleted>
+          <p><t v="Point (b) shall apply from "/><date date="2023-01-01"><t v="1 January 2023"/></date><t v="."/></p></deleted>
       </unit>
     </x:expect>
   </x:scenario>

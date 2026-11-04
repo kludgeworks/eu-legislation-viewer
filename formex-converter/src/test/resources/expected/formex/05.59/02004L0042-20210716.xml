@@ -20,7 +20,9 @@
          <longTitle>
             <p>
                <t v="Corrigendum to Directive 2004/42/CE of the European Parliament and of the Council of "/>
-               <date asWritten="21 April 2004" date="2004-04-21"/>
+               <date date="2004-04-21">
+                  <t v="21 April 2004"/>
+               </date>
                <t v=" on the limitation of emissions of volatile organic compounds due to the use of organic solvents in certain paints and varnishes and vehicle refinishing products and amending Directive 1999/13/EC"/>
             </p>
             <p>
@@ -53,7 +55,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="22 October 2008" date="2008-10-22"/>
+               <docDate date="2008-10-22">
+                  <t v="22 October 2008"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -84,7 +88,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="16 December 2008" date="2008-12-16"/>
+               <docDate date="2008-12-16">
+                  <t v="16 December 2008"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -112,7 +118,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="19 November 2010" date="2010-11-19"/>
+               <docDate date="2010-11-19">
+                  <t v="19 November 2010"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -140,7 +148,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="20 June 2019" date="2019-06-20"/>
+               <docDate date="2019-06-20">
+                  <t v="20 June 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -171,7 +181,9 @@
             </p>
             <p>
                <t v="of "/>
-               <docDate asWritten="20 June 2019" date="2019-06-20"/>
+               <docDate date="2019-06-20">
+                  <t v="20 June 2019"/>
+               </docDate>
             </p>
             <p>
                <docPurpose>
@@ -203,7 +215,9 @@
          </p>
          <p>
             <t v="of "/>
-            <docDate asWritten="21 April 2004" date="2004-04-21"/>
+            <docDate date="2004-04-21">
+               <t v="21 April 2004"/>
+            </docDate>
          </p>
          <p>
             <docPurpose>
@@ -685,7 +699,9 @@
             </num>
             <p>
                <t v="The power to adopt delegated acts referred to in Article 11 shall be conferred on the Commission for a period of five years from "/>
-               <date asWritten="26 July 2019" date="2019-07-26"/>
+               <date date="2019-07-26">
+                  <t v="26 July 2019"/>
+               </date>
                <t v=". The Commission shall draw up a report in respect of the delegation of power not later than nine months before the end of the five-year period. The delegation of power shall be tacitly extended for periods of an identical duration, unless the European Parliament or the Council opposes such extension not later than three months before the end of each period."/>
             </p>
          </unit>
@@ -707,7 +723,9 @@
             </num>
             <p>
                <t v="Before adopting a delegated act, the Commission shall consult experts designated by each Member State in accordance with the principles laid down in the Interinstitutional Agreement of "/>
-               <date asWritten="13 April 2016" date="2016-04-13"/>
+               <date date="2016-04-13">
+                  <t v="13 April 2016"/>
+               </date>
                <t v=" on Better Law-Making"/>
                <noteRef href="#note_1" marker="1"/>
                <t v="."/>
@@ -1274,7 +1292,9 @@
                      </p>
                      <p>
                         <t v="(from "/>
-                        <date asWritten="1.1.2007" date="2007-01-01"/>
+                        <date date="2007-01-01">
+                           <t v="1.1.2007"/>
+                        </date>
                         <t v=")"/>
                      </p>
                   </td>
