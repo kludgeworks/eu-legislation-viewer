@@ -83,18 +83,30 @@ public record Act(
     if (until.isEmpty()) {
       return List.of();
     }
+    return lags().stream()
+        .filter(lag -> lag.includedIn().date().isAfter(version.date()))
+        .filter(lag -> lag.from().isBefore(until.get()))
+        .toList();
+  }
+
+  /**
+   * The acts that apply before the first version that includes them: each lags the law from the day
+   * it applies (as notYetConsolidated has it) to that version's. In the order the versions include
+   * them.
+   */
+  public List<Unconsolidated> lags() {
     var included = new HashSet<ActIdentifier>();
-    var unconsolidated = new ArrayList<Unconsolidated>();
+    var lags = new ArrayList<Unconsolidated>();
     for (var each : timeline.versions()) {
       for (var act : each.integrates()) {
-        if (included.add(act) && each.date().isAfter(version.date())) {
+        if (included.add(act)) {
           appliesFrom(act)
-              .filter(from -> Objects.requireNonNull(from.date()).isBefore(until.get()))
-              .ifPresent(from -> unconsolidated.add(new Unconsolidated(act, from, each)));
+              .filter(from -> Objects.requireNonNull(from.date()).isBefore(each.date()))
+              .ifPresent(from -> lags.add(new Unconsolidated(act, from, each)));
         }
       }
     }
-    return unconsolidated;
+    return lags;
   }
 
   private Optional<ActDate> appliesFrom(ActIdentifier act) {
@@ -114,5 +126,11 @@ public record Act(
    * @param includedIn the first version that includes it
    */
   @ValueObject
-  public record Unconsolidated(ActIdentifier act, ActDate appliesFrom, Version includedIn) {}
+  public record Unconsolidated(ActIdentifier act, ActDate appliesFrom, Version includedIn) {
+
+    /** The day it applies from: appliesFrom's date, which an act it lags by always has. */
+    public LocalDate from() {
+      return Objects.requireNonNull(appliesFrom.date());
+    }
+  }
 }

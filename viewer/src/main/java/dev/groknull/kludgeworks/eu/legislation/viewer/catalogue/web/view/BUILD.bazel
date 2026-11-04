@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+# What the catalogue's pages show, worked out for their templates (src/main/jte/catalogue): its own
+# target, so the templates can take it while catalogue/web renders them
+java_library(
+    name = "view",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)

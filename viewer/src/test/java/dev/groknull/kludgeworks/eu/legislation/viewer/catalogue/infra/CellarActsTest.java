@@ -18,15 +18,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -256,6 +253,13 @@ class CellarActsTest {
   }
 
   @Test
+  void theActLagsTheLawOnlyWhile2017815AppliesUnincluded() {
+    assertThat(act(AVSEC).lags())
+        .extracting(lag -> lag.act().celex(), lag -> lag.from(), lag -> lag.includedIn().celex())
+        .containsExactly(tuple("32017R0815", LocalDate.of(2017, 6, 1), "02015R1998-20170607"));
+  }
+
+  @Test
   void readsDatesOfEveryKindAndClauseCellarWrites() {
     var dates =
         CellarDates.byAct(
@@ -475,14 +479,7 @@ class CellarActsTest {
   }
 
   private static Act act(ActIdentifier id) {
-    return CellarActs.act(
-            id,
-            recorded("act-" + id.celex() + ".json"),
-            recorded("versions-" + id.celex() + ".json"),
-            recorded("languages-" + id.celex() + ".json"),
-            recorded("dates-" + id.celex() + ".json"),
-            recorded("titles-" + id.celex() + ".json"))
-        .orElseThrow();
+    return RecordedActs.act(id);
   }
 
   private static Version version(List<Version> versions, String celex) {
@@ -490,12 +487,6 @@ class CellarActsTest {
   }
 
   private static SparqlResult recorded(String name) {
-    var resource = "/acts/" + name;
-    try (var in =
-        Objects.requireNonNull(CellarActsTest.class.getResourceAsStream(resource), resource)) {
-      return SparqlResult.parse(in.readAllBytes());
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
+    return RecordedActs.answer(name);
   }
 }

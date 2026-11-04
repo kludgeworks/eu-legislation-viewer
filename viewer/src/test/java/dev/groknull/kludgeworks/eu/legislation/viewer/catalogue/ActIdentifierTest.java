@@ -20,6 +20,16 @@ class ActIdentifierTest {
   }
 
   @Test
+  void numbersAnActAsTheOfficialJournalCitesIt() {
+    assertThat(new ActIdentifier("32015R1998").number()).contains("2015/1998");
+    assertThat(new ActIdentifier("32019R0103").number()).contains("2019/103");
+    assertThat(new ActIdentifier("32010R0185").number()).contains("185/2010");
+    assertThat(new ActIdentifier("32008L0050").number()).contains("2008/50");
+    assertThat(new ActIdentifier("32015R1998R(01)").number()).isEmpty();
+    assertThat(new ActIdentifier("12003T/ACT").number()).isEmpty();
+  }
+
+  @Test
   void refusesWhatCantBeOne() {
     assertThat(ActIdentifier.isCelex("")).isFalse();
     assertThat(ActIdentifier.isCelex("32015R1998 x")).isFalse();

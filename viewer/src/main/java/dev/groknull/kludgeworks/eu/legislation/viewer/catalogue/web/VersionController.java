@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
@@ -65,7 +66,13 @@ class VersionController {
         .body(
             templates
                 .catalogueVersion(
-                    Chrome.of(request), page.act, page.version, page.language, page.eurLex(), text)
+                    Chrome.of(request),
+                    page.act,
+                    page.version,
+                    page.language,
+                    page.eurLex(),
+                    TimelineView.of(page.act, page.version, page.language),
+                    text)
                 .render());
   }
 

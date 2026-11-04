@@ -9,6 +9,7 @@ java_library(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/chrome",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
         "@maven//:gg_jte_jte_models",

@@ -159,6 +159,191 @@ main {
   background: var(--bg);
 }
 
+/* the act's versions to scale (catalogue/timeline.jte): ticks on an axis of years, versions too
+ * close to click apart one round mark opening a list, lags hatched amber, the version being read
+ * raised and tagged */
+.timeline {
+  margin: 1rem 0;
+  padding: 0.75rem 0 0.25rem;
+  border-block: 1px solid var(--rule);
+  font-size: 0.8rem;
+}
+
+.timeline-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 0.25rem;
+  color: var(--muted);
+}
+
+.timeline-head > :first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.axis {
+  position: relative;
+  height: 78px;
+  margin: 0 10px;
+}
+
+.axis-line {
+  position: absolute;
+  inset-inline: 0;
+  top: 34px;
+  height: 2px;
+  background: var(--line-strong);
+}
+
+.year {
+  position: absolute;
+  top: 54px;
+  transform: translateX(-50%);
+  font: 11px ui-monospace, monospace;
+  color: var(--muted);
+}
+
+.year::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  width: 1px;
+  height: 6px;
+  background: var(--line-strong);
+}
+
+.lag {
+  position: absolute;
+  top: 29px;
+  height: 12px;
+  background: repeating-linear-gradient(45deg, var(--warn-stripe) 0 2px, transparent 2px 5px);
+  border-block: 1px solid var(--warn-stripe);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.tick {
+  position: absolute;
+  top: 18px;
+  width: 12px;
+  height: 34px;
+  margin-left: -6px;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.tick::before {
+  content: "";
+  width: 2px;
+  height: 20px;
+  margin-top: 7px;
+  background: var(--muted);
+}
+
+.tick:hover::before,
+.tick:focus-visible::before {
+  width: 4px;
+  background: var(--accent-fill);
+}
+
+.tick[aria-current="page"]::before {
+  width: 4px;
+  height: 34px;
+  margin-top: 0;
+  background: var(--accent-fill);
+}
+
+.merged {
+  position: absolute;
+  top: 21px;
+  z-index: 3;
+}
+
+.merged > summary {
+  min-width: 26px;
+  height: 28px;
+  margin-left: -13px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  border: 2px solid var(--muted);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--ink);
+  font: 600 11.5px/24px ui-monospace, monospace;
+  text-align: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.merged > summary::-webkit-details-marker {
+  display: none;
+}
+
+.merged > summary:hover {
+  border-color: var(--accent);
+}
+
+.merged.reading > summary {
+  border-color: var(--accent);
+  background: var(--accent-fill);
+  color: var(--on-fill);
+}
+
+.merged[open] > summary {
+  box-shadow: 0 0 0 3px var(--accent-line);
+}
+
+.merged-list {
+  position: absolute;
+  top: 36px;
+  left: -13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: max-content;
+  max-width: 40rem;
+  padding: 6px 10px 8px;
+  border: 1px solid var(--accent-line);
+  background: var(--chg-tint);
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+.merged.left .merged-list {
+  left: auto;
+  right: -13px;
+}
+
+.merged-list > span {
+  color: var(--muted);
+}
+
+.merged-list > a[aria-current="page"] {
+  font-weight: 600;
+}
+
+.tag {
+  position: absolute;
+  top: 2px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 2px 0 8px 10px;
+  color: var(--disabled);
+}
+
 header.version p {
   margin: 0.25rem 0;
 }
