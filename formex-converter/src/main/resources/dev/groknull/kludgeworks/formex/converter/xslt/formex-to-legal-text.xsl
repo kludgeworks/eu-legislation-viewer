@@ -193,9 +193,10 @@
             <xsl:choose>
               <xsl:when test="$consolidated">
                 <xsl:variable name="bib" as="element(BIB.INSTANCE.CONS)?" select="$doc/FAM.COMP/BIB.DATA/BIB.INSTANCE.CONS"/>
+                <!-- a treaty's number (2016/C 202/01) is in the title of the CONS.DOC.GEN around its content -->
                 <xsl:sequence select="f:publication($bib/DOCUMENT.REF.CONS/COLL, $bib/DOCUMENT.REF.CONS/NO.OJ,
                                                     $bib/DATE/@ISO, $bib/DOCUMENT.REF.CONS/PAGE.FIRST,
-                                                    (f:oj-document($bib/DOCUMENT.REF.CONS), $content/TITLE/TI/NO.DOC.C)[1])"/>
+                                                    (f:oj-document($bib/DOCUMENT.REF.CONS), ($content, $doc/CONS.DOC.GEN)/TITLE/TI/NO.DOC.C)[1])"/>
               </xsl:when>
               <xsl:when test="$package">
                 <xsl:sequence select="f:publication($package/PUBLICATION.REF/COLL, $package/PUBLICATION.REF/NO.OJ,

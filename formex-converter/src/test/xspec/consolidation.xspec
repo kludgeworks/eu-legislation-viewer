@@ -98,6 +98,23 @@
     <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:unit[@kind = 'annex']/@eId = 'anx'"/>
   </x:scenario>
 
+  <x:scenario label="A consolidated treaty, numbered in the title around its documents (02016ME/TXT: 2016/C 202/01)">
+    <x:context xmlns="">
+      <CONS.OTH>
+        <INFO.CONSLEG CONSLEG.REF="2007L9999" START.DATE="20190501" END.DATE="99999999" LEG.VAL="TREATY"/>
+        <CONS.OTH.DOC>
+          <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <FAM.COMP LEG.VAL="TREATY"><BIB.DATA><BIB.INSTANCE.CONS><DOCUMENT.REF.CONS><COLL>C</COLL><NO.OJ>202</NO.OJ><YEAR>2016</YEAR><PAGE.FIRST>1</PAGE.FIRST></DOCUMENT.REF.CONS><DATE ISO="20160607">20160607</DATE></BIB.INSTANCE.CONS><NO.CELEX>12016ME/TXT</NO.CELEX></BIB.DATA></FAM.COMP>
+          <CONS.DOC.GEN TYPE="GENERAL">
+            <TITLE><TI><P>Consolidated versions</P><NO.DOC.C>2016/C 202/01</NO.DOC.C></TI></TITLE>
+            <CONS.DOC.GEN TYPE="GENERAL"><TITLE><TI><P>Treaty on European Union</P></TI></TITLE><ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS></CONS.DOC.GEN>
+          </CONS.DOC.GEN>
+        </CONS.OTH.DOC>
+      </CONS.OTH>
+    </x:context>
+    <x:expect label="keeps the number as the publication's document" test="$x:result/*:source/*:publication/@document = '2016/C 202/01'"/>
+  </x:scenario>
+
   <x:scenario label="Titles in the outline">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
