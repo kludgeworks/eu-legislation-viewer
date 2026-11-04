@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 /** Cellar's answers, recorded (viewer/src/test/resources/acts), folded into acts. */
@@ -228,6 +230,27 @@ class CellarActsTest {
     assertThat(application.kind()).isEqualTo(Kind.APPLICATION);
     assertThat(application.date()).isNull();
     assertThat(application.clause().provisions()).containsExactly(article("3"));
+  }
+
+  @Test
+  void onlyTheVersionAnActAppliesInBeforeItIsIncludedLagsTheLaw() {
+    var act = act(AVSEC);
+    var lagging =
+        act.timeline().versions().stream()
+            .collect(
+                Collectors.toMap(
+                    Version::celex, act::notYetConsolidated, (one, other) -> one, TreeMap::new));
+
+    assertThat(lagging).hasSize(23);
+    assertThat(lagging.values().stream().filter(acts -> !acts.isEmpty()).count()).isOne();
+    assertThat(lagging.get("02015R1998-20160229"))
+        .singleElement()
+        .satisfies(
+            unconsolidated -> {
+              assertThat(unconsolidated.act()).isEqualTo(new ActIdentifier("32017R0815"));
+              assertThat(unconsolidated.appliesFrom().date()).isEqualTo("2017-06-01");
+              assertThat(unconsolidated.includedIn().celex()).isEqualTo("02015R1998-20170607");
+            });
   }
 
   @Test

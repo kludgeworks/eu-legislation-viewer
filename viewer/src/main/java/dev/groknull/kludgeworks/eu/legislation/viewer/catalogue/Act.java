@@ -1,13 +1,19 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
+import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -53,4 +59,50 @@ public record Act(
   public Optional<Version> versionOn(LocalDate date) {
     return timeline.applicableOn(date);
   }
+
+  /**
+   * The acts that already apply while {@code version} does, but that only a later version includes,
+   * so that its text isn't yet the law: 2017/815 applies from 1 June 2017, while 2015/1998's
+   * version of 29 February 2016 does, and is first included in the version of 7 June. An act
+   * applies from its earliest date of application or taking effect, in whole or in part (when all
+   * are in part, the parts are the whole act), or from its entry into force if it has neither; one
+   * whose date Cellar doesn't know is left out. In the order the later versions include them.
+   */
+  public List<Unconsolidated> notYetConsolidated(Version version) {
+    var until = timeline.successor(version).map(Version::date);
+    if (until.isEmpty()) {
+      return List.of();
+    }
+    var included = new HashSet<ActIdentifier>();
+    var unconsolidated = new ArrayList<Unconsolidated>();
+    for (var each : timeline.versions()) {
+      for (var act : each.integrates()) {
+        if (included.add(act) && each.date().isAfter(version.date())) {
+          appliesFrom(act)
+              .filter(from -> Objects.requireNonNull(from.date()).isBefore(until.get()))
+              .ifPresent(from -> unconsolidated.add(new Unconsolidated(act, from, each)));
+        }
+      }
+    }
+    return unconsolidated;
+  }
+
+  private Optional<ActDate> appliesFrom(ActIdentifier act) {
+    var dates = datesOf(act);
+    var applying = dates.stream().filter(date -> date.kind() != Kind.ENTRY_INTO_FORCE).toList();
+    return (applying.isEmpty() ? dates : applying)
+        .stream()
+            .filter(date -> date.date() != null)
+            .min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
+  }
+
+  /**
+   * An act that applies before a version of this one includes it.
+   *
+   * @param act the act
+   * @param appliesFrom the date it applies from, with what sets it
+   * @param includedIn the first version that includes it
+   */
+  @ValueObject
+  public record Unconsolidated(ActIdentifier act, ActDate appliesFrom, Version includedIn) {}
 }
