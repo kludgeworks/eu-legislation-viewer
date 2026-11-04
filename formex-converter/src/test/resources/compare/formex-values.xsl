@@ -22,12 +22,34 @@
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:map="http://www.w3.org/2005/xpath-functions/map"
+    xmlns:array="http://www.w3.org/2005/xpath-functions/array"
     xmlns:f="local"
     exclude-result-prefixes="#all" expand-text="yes">
 
   <xsl:output indent="yes"/>
 
-  <xsl:mode on-no-match="shallow-skip"/>
+  <xsl:mode on-no-match="shallow-skip" use-accumulators="#all"/>
+
+  <!-- each element's path, as path() gives it (/Q{}CONS.ACT[1]/Q{}CONS.DOC[1]), worked out in one pass:
+       path() counts an element's preceding siblings, which is quadratic in a table of thousands of
+       rows. The value is a stack of frames, the element's path and how many children of each name it
+       has had so far -->
+  <xsl:accumulator name="f:path" as="array(map(*))" initial-value="[map{'path': '', 'counts': map{}}]">
+    <xsl:accumulator-rule match="*" phase="start" select="
+        let $top := $value(array:size($value)),
+            $name := 'Q{' || namespace-uri() || '}' || local-name(),
+            $n := ($top?counts($name), 0)[1] + 1
+        return array:append(
+            array:put($value, array:size($value), map:put($top, 'counts', map:put($top?counts, $name, $n))),
+            map{'path': $top?path || '/' || $name || '[' || $n || ']', 'counts': map{}})"/>
+    <xsl:accumulator-rule match="*" phase="end" select="array:remove($value, array:size($value))"/>
+  </xsl:accumulator>
+
+  <xsl:function name="f:path" as="xs:string">
+    <xsl:param name="e" as="element()"/>
+    <xsl:sequence select="let $stack := $e/accumulator-before('f:path') return $stack(array:size($stack))?path"/>
+  </xsl:function>
 
   <!-- metadata: identity, publication and lifecycle become attributes of the legal text -->
   <xsl:template match="BIB.INSTANCE | BIB.INSTANCE.CONS | BIB.DOC | BIB.DATA | INFO.CONSLEG | INFO.PROD
@@ -44,7 +66,7 @@
   <!-- the title of an annex: Formex may split one annex into fragments that repeat its title, and
        the converter joins them, so the title counts once (kind="once") -->
   <xsl:template match="(ANNEX | CONS.ANNEX)/TITLE/TI/P[text()[normalize-space()]][not(*)]" priority="1">
-    <v kind="once" file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{normalize-space(.)}</v>
+    <v kind="once" file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{normalize-space(.)}</v>
   </xsl:template>
 
   <!-- a document of the act-by-act OJ C series: its number (C/2025/3971) is its OJ reference, which
@@ -53,7 +75,7 @@
 
   <!-- a C-series document's number: the converter keeps it without its brackets -->
   <xsl:template match="NO.DOC.C" priority="1">
-    <v file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
+    <v file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
   </xsl:template>
 
   <xsl:template match="/">
@@ -76,7 +98,7 @@
   <xsl:template match="FORMULA[not(ancestor::FORMULA | ancestor::FORMULA.S)] | FORMULA.S">
     <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//text()[not(ancestor::NOTE)]))"/>
     <xsl:if test="$text">
-      <v kind="formula" file="{tokenize(base-uri(.), '/')[last()]}" path="{path()}">{$text}</v>
+      <v kind="formula" file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{$text}</v>
     </xsl:if>
     <xsl:apply-templates select=".//NOTE"/>
   </xsl:template>
@@ -88,7 +110,7 @@
         <xsl:when test="current-grouping-key()">
           <xsl:variable name="run" as="xs:string" select="normalize-space(string-join(current-group()[self::text()]))"/>
           <xsl:if test="$run">
-            <v file="{tokenize(base-uri(..), '/')[last()]}" path="{path(..)}">{$run}</v>
+            <v file="{tokenize(base-uri(..), '/')[last()]}" path="{f:path(..)}">{$run}</v>
           </xsl:if>
         </xsl:when>
         <xsl:otherwise>
