@@ -9,6 +9,19 @@ bazel_dep(name = "rules_jvm_external", version = "7.2")
 bazel_dep(name = "contrib_rules_jvm", version = "0.34.0")
 bazel_dep(name = "bazel_skylib", version = "1.9.2")
 
+# A C toolchain for Linux, as Bazel brings its own JDK: nothing here is C, but every java_test needs
+# one to analyse (the Windows launcher maker), so a Linux machine with no compiler would fail. macOS
+# keeps Xcode's.
+bazel_dep(name = "hermetic_cc_toolchain", version = "4.3.0")
+
+zig = use_extension("@hermetic_cc_toolchain//toolchain:ext.bzl", "toolchains")
+use_repo(zig, "zig_sdk")
+
+register_toolchains(
+    "@zig_sdk//toolchain:linux_amd64_gnu.2.31",
+    "@zig_sdk//toolchain:linux_arm64_gnu.2.31",
+)
+
 maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
 maven.install(
     artifacts = [
