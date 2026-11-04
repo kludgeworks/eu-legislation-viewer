@@ -14,11 +14,15 @@
   <script src="/js/theme.js" defer></script>
 </head>
 <body>
-  <header class="site">
+  <div class="notice" role="note">
+    <b>Unofficial.</b>
+    <span>Consolidated versions, and comparisons of them, have no legal effect. Only the Official
+      Journal of the European Union is authentic.</span>
+  </div>
+  <nav class="site" aria-label="Site">
     <a class="site-name" href="/">Amendment viewer</a>
-    <p class="notice">Unofficial. Only the Official Journal of the European Union is authentic.</p>
     @template.layout.theme(chrome = chrome)
-  </header>
+  </nav>
   <main>${content}</main>
 </body>
 </html>

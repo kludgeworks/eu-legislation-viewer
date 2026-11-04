@@ -77,31 +77,44 @@ a {
   color: var(--accent);
 }
 
-header.site {
+/* every page's frame: the notice that the viewer has no legal effect, kept in sight as the page
+ * scrolls, then the site bar */
+.notice {
+  position: sticky;
+  top: 0;
+  z-index: 30;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem 1.5rem;
-  align-items: baseline;
-  padding: 0.75rem max(16px, env(safe-area-inset-left, 0px));
+  gap: 6px 18px;
+  padding: 8px max(28px, env(safe-area-inset-left, 0px));
+  background: var(--accent-fill);
+  color: var(--notice-ink);
+  font-size: 13px;
+}
+
+.notice b {
+  color: var(--on-fill);
+}
+
+nav.site {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  padding: 8px max(28px, env(safe-area-inset-left, 0px));
   border-bottom: 1px solid var(--rule);
-  background: var(--bg);
+  background: var(--surface);
 }
 
 .site-name {
-  font-weight: 600;
+  font: 600 17px Georgia, serif;
   text-decoration: none;
   color: var(--ink);
 }
 
-.notice,
 .status,
 header.version {
   color: var(--muted);
-}
-
-.notice {
-  margin: 0;
-  font-size: 0.85rem;
 }
 
 /* the theme switch: three icons in one pill at the right of the site bar, the current one raised */
