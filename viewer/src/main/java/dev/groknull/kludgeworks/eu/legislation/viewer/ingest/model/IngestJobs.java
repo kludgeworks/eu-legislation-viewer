@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.Optional;
 import org.jmolecules.ddd.annotation.Repository;
 import org.jspecify.annotations.Nullable;
@@ -24,6 +25,12 @@ public interface IngestJobs {
   boolean schedule(String celex, Language language, @Nullable String traceparent);
 
   Optional<IngestJob> find(String celex, Language language);
+
+  /**
+   * How many other jobs are queued or running that were queued before the first of those of {@code
+   * celexes} that is queued; none if none is.
+   */
+  int ahead(Collection<String> celexes, Language language);
 
   /**
    * Starts the expression's job, if it is queued; or running, but started longer ago than {@code

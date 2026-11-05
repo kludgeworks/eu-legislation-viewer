@@ -75,6 +75,17 @@ class TextsTests {
                 root, new Processor(false).newDocumentBuilder().newBuildingStreamWriter()))
         .isTrue();
     await().until(() -> kept(version.celex()), kept -> kept == 1);
+    // settled once, with what was done to each version as it happened
+    assertThat(prepared.took()).isPresent();
+    assertThat(prepared.steps())
+        .filteredOn(step -> step.celex().equals(version.celex()))
+        .extracting(Preparation.Step::kind)
+        .containsExactly(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.BUILT);
+    assertThat(
+            prepared.steps().stream()
+                .filter(step -> step.kind() == Preparation.Step.Kind.BUILT)
+                .map(Preparation.Step::took))
+        .allSatisfy(took -> assertThat(took).isNotNull());
   }
 
   @Test

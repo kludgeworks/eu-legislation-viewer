@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.tracing.Tracer;
 import io.micrometer.tracing.propagation.Propagator;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
@@ -54,6 +55,11 @@ class IngestService implements Ingest {
   @Override
   public Optional<IngestStatus> status(String celex, Language language) {
     return jobs.find(celex, language).map(IngestJob::status);
+  }
+
+  @Override
+  public int ahead(Collection<String> celexes, Language language) {
+    return jobs.ahead(celexes, language);
   }
 
   /** The current trace, as W3C Trace Context's header carries it; none outside a trace. */

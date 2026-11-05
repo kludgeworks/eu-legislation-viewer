@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.util.Collection;
 import java.util.Optional;
 
 /** Building expressions' legal texts, in the background. */
@@ -19,4 +20,11 @@ public interface Ingest {
 
   /** How the expression's job stands; none if it was never scheduled. */
   Optional<IngestStatus> status(String celex, Language language);
+
+  /**
+   * About how many expressions are queued or being built ahead of those of {@code celexes} queued
+   * in the language: every other one queued before the first of them. Approximate: the workers take
+   * them roughly in that order. None if none of them is queued.
+   */
+  int ahead(Collection<String> celexes, Language language);
 }

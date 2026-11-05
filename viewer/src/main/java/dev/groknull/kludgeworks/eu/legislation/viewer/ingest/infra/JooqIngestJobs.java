@@ -3,6 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.Tables.INGEST_JOB;
 import static org.jooq.impl.DSL.currentInstant;
+import static org.jooq.impl.DSL.min;
+import static org.jooq.impl.DSL.not;
 import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
@@ -12,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.Optional;
 import org.jooq.DSLContext;
 import org.jooq.types.DayToSecond;
@@ -50,6 +53,22 @@ class JooqIngestJobs implements IngestJobs {
         .where(INGEST_JOB.CELEX.eq(celex), INGEST_JOB.LANGUAGE.eq(language))
         .fetchOptional()
         .map(JooqIngestJobs::job);
+  }
+
+  @Override
+  public int ahead(Collection<String> celexes, Language language) {
+    var first =
+        db.select(min(INGEST_JOB.CREATED_AT))
+            .from(INGEST_JOB)
+            .where(
+                INGEST_JOB.CELEX.in(celexes),
+                INGEST_JOB.LANGUAGE.eq(language),
+                INGEST_JOB.STATE.eq(State.QUEUED));
+    return db.fetchCount(
+        INGEST_JOB,
+        INGEST_JOB.STATE.in(State.QUEUED, State.RUNNING),
+        INGEST_JOB.CREATED_AT.lt(first),
+        not(INGEST_JOB.CELEX.in(celexes).and(INGEST_JOB.LANGUAGE.eq(language))));
   }
 
   @Override

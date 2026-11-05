@@ -37,6 +37,7 @@ jooq_tables(
         "//viewer/src/main/resources:db/migration/catalogue/V2__act_date.sql",
         "//viewer/src/main/resources:db/migration/catalogue/V3__act_title.sql",
         "//viewer/src/main/resources:db/migration/catalogue/V4__expression_state.sql",
+        "//viewer/src/main/resources:db/migration/catalogue/V5__preparation.sql",
     ],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq",
     deps = [

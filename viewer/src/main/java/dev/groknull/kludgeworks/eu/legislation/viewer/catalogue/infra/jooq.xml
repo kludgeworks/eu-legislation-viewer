@@ -12,7 +12,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
-          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act</includeExpression>
+          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act|preparation\.act|preparation_step\.act</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -42,7 +42,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language|act_title\.language</includeExpression>
+          <includeExpression>expression\.language|act_title\.language|preparation\.language|preparation_step\.language</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>
@@ -52,7 +52,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.failure</includeExpression>
+          <includeExpression>expression\.failure|preparation_step\.failure</includeExpression>
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>
