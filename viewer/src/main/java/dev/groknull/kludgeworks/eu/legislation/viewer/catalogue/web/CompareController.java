@@ -140,7 +140,7 @@ class CompareController {
     var masthead = MastheadView.comparing(page.act, page.from, page.to, page.language);
     if (preparation.preparing()) {
       return ResponseEntity.ok()
-          .contentType(MediaType.TEXT_HTML)
+          .contentType(Requests.HTML)
           .body(
               templates
                   .cataloguePreparing(
@@ -161,7 +161,7 @@ class CompareController {
     }
     var today = Requests.today(clock);
     return ResponseEntity.ok()
-        .contentType(MediaType.TEXT_HTML)
+        .contentType(Requests.HTML)
         .body(
             templates
                 .catalogueCompare(
