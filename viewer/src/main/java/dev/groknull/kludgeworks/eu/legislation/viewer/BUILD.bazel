@@ -60,9 +60,11 @@ java_library(
     deps = [
         "//viewer/src/main/jte",
         "@maven//:org_jspecify_jspecify",
+        "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_modulith_spring_modulith_api",
+        "@maven//:org_springframework_modulith_spring_modulith_events_api",
         "@maven//:org_springframework_spring_context",
     ],
 )

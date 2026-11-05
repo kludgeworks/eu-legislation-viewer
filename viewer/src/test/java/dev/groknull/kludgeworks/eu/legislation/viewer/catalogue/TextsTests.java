@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ExpressionStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
@@ -14,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixture
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
@@ -28,14 +30,15 @@ import org.springframework.transaction.support.TransactionTemplate;
  * Versions' texts through the module's API: an act prepared whole, its versions built in the
  * background by ingest on the converter's fixtures (FormexFixtures: 2015/1998's consolidations of
  * 22 March and 1 October 2026 in English, no Formex of its other versions, no legal act in French),
- * and kept as the event says; a version and the one before it, both built, compared ahead of a
- * reader.
+ * and kept as the events say, whatever order they arrive in; a version and the one before it, both
+ * built, compared ahead of a reader.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class TextsTests {
   @Autowired Acts acts;
   @Autowired Texts texts;
+  @Autowired ExpressionStore expressions;
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
   @Autowired ApplicationEventPublisher events;
@@ -43,18 +46,20 @@ class TextsTests {
 
   @Test
   void preparesEveryVersionOfAnActInTheLanguageAtOnceAndKeepsThem() throws Exception {
-    var timeline = timeline();
+    var act = act();
+    var timeline = act.timeline();
     var version = consolidation();
 
-    var preparing = texts.prepare(timeline, Language.ENG);
+    var preparing = texts.prepare(act, Language.ENG);
     assertThat(preparing.size()).isEqualTo(5);
     assertThat(preparing.settled()).isFalse();
-    assertThat(preparing.texts().get(version)).isInstanceOf(Text.Building.class);
+    assertThat(Objects.requireNonNull(preparing.texts().get(version)).settled()).isFalse();
 
+    // as kept, from ingest's events alone
     var prepared =
         await()
             .atMost(Duration.ofMinutes(2))
-            .until(() -> texts.prepare(timeline, Language.ENG), Preparation::settled);
+            .until(() -> texts.preparation(act, Language.ENG), Preparation::settled);
     // the fixtures' two built (and any other test kept); the original, of which there are none,
     // failed
     assertThat(
@@ -96,14 +101,49 @@ class TextsTests {
     var prepared =
         await()
             .atMost(Duration.ofMinutes(1))
-            .until(() -> texts.prepare(timeline(), Language.FRA), Preparation::settled);
+            .until(() -> texts.prepare(act(), Language.FRA), Preparation::settled);
 
     assertThat(prepared.texts().get(consolidation()))
         .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE));
   }
 
+  @Test
+  void movesATextOnOnlyAsItsEventsArriveInAnyOrder() {
+    var celex = timeline().versions().get(1).celex();
+    // a language no other test prepares
+    var language = Language.DEU;
+    expressions.queue(List.of(celex), language);
+
+    assertThat(expressions.start(celex, language, 1)).isTrue();
+    assertThat(expressions.defer(celex, language, 1)).isTrue();
+    // the first attempt's start again, late
+    assertThat(expressions.start(celex, language, 1)).isFalse();
+    assertThat(text(celex, language)).isEqualTo(new Text.Queued());
+    // the second attempt's deferral before its start
+    assertThat(expressions.defer(celex, language, 2)).isTrue();
+    assertThat(expressions.start(celex, language, 2)).isFalse();
+    assertThat(expressions.start(celex, language, 3)).isTrue();
+    assertThat(text(celex, language)).isEqualTo(new Text.Building(3));
+
+    var root = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
+    assertThat(expressions.keep(celex, language, root, "test")).isTrue();
+    assertThat(expressions.keep(celex, language, root, "test")).isFalse();
+    assertThat(expressions.defer(celex, language, 3)).isFalse();
+    assertThat(expressions.start(celex, language, 4)).isFalse();
+    assertThat(expressions.fail(celex, language, Failure.ERROR)).isFalse();
+    assertThat(text(celex, language)).isEqualTo(new Text.Ready(root));
+  }
+
+  private Text text(String celex, Language language) {
+    return Objects.requireNonNull(expressions.texts(List.of(celex), language).get(celex));
+  }
+
+  private Act act() {
+    return acts.find(OneActCellar.CELEX).orElseThrow();
+  }
+
   private Timeline timeline() {
-    return acts.find(OneActCellar.CELEX).orElseThrow().timeline();
+    return act().timeline();
   }
 
   private Version consolidation() {
@@ -124,8 +164,11 @@ class TextsTests {
         .single();
   }
 
+  /** Whether the text in English is kept as built. */
   private long kept(String celex) {
-    return jdbc.sql("select count(*) from expression where celex = ?")
+    return jdbc.sql(
+            "select count(*) from expression where celex = ? and language = 'ENG' and state ="
+                + " 'BUILT'")
         .param(celex)
         .query(Long.class)
         .single();

@@ -14,6 +14,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:com_fasterxml_jackson_core_jackson_annotations",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
@@ -35,11 +36,13 @@ jooq_tables(
         "//viewer/src/main/resources:db/migration/catalogue/V1__catalogue.sql",
         "//viewer/src/main/resources:db/migration/catalogue/V2__act_date.sql",
         "//viewer/src/main/resources:db/migration/catalogue/V3__act_title.sql",
+        "//viewer/src/main/resources:db/migration/catalogue/V4__expression_state.sql",
     ],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq",
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
     ],
 )

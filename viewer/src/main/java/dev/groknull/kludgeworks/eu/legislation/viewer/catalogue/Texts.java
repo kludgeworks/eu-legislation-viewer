@@ -5,13 +5,16 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 
 /**
  * Versions' texts: built in the background, an act's every version in a language at once, when any
- * of its pages is first opened in it.
+ * of its pages is first opened in it. Each change to how one stands is PreparationChanged.
  */
 public interface Texts {
 
   /**
-   * The act whose versions in a language are {@code timeline} (Timeline.in), prepared: each
-   * version's text, scheduled to be built if it isn't, unless it failed.
+   * The act prepared in the language: each of its versions' text in it, scheduled to be built if it
+   * isn't, unless it failed; no texts in a language none of its versions is in.
    */
-  Preparation prepare(Timeline timeline, Language language);
+  Preparation prepare(Act act, Language language);
+
+  /** How the act's preparation in the language stands, as kept: nothing scheduled. */
+  Preparation preparation(Act act, Language language);
 }

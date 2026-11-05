@@ -3,7 +3,7 @@ load("@rules_java//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "jooq_tables")
 
 # The ingest module's infrastructure: a document's Formex from Cellar, converted by
-# //formex-converter's stylesheets; the job queue in Postgres, with jOOQ
+# //formex-converter's stylesheets; the jobs in Postgres, with jOOQ
 java_library(
     name = "infra",
     srcs = glob(["*.java"]),
@@ -34,7 +34,11 @@ java_library(
 jooq_tables(
     name = "jooq",
     config = "jooq.xml",
-    migrations = ["//viewer/src/main/resources:db/migration/ingest/V1__ingest_job.sql"],
+    migrations = [
+        "//viewer/src/main/resources:db/migration/ingest/V1__ingest_job.sql",
+        "//viewer/src/main/resources:db/migration/ingest/V2__misfiled_failure.sql",
+        "//viewer/src/main/resources:db/migration/ingest/V3__ingest_job_state.sql",
+    ],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq",
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",

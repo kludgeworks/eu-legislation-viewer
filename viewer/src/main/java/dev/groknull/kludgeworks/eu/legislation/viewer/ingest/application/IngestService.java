@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Ingest;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -13,33 +14,39 @@ import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Scheduling an expression: a job queued, with the trace of the request that asked for it, and this
- * instance's workers woken to claim it (those of other instances find it when they next look).
+ * Scheduling an expression: a job queued, with the trace of the request that asked for it, and
+ * requested (ExpressionRequested) in its transaction, the request handed to a worker once it
+ * commits (JobRunner).
  */
 @Service
 class IngestService implements Ingest {
   private static final Logger LOG = LoggerFactory.getLogger(IngestService.class);
 
   private final IngestJobs jobs;
-  private final IngestWorkers workers;
+  private final ApplicationEventPublisher events;
   private final Tracer tracer;
   private final Propagator propagator;
 
-  IngestService(IngestJobs jobs, IngestWorkers workers, Tracer tracer, Propagator propagator) {
+  IngestService(
+      IngestJobs jobs, ApplicationEventPublisher events, Tracer tracer, Propagator propagator) {
     this.jobs = jobs;
-    this.workers = workers;
+    this.events = events;
     this.tracer = tracer;
     this.propagator = propagator;
   }
 
   @Override
+  @Transactional
   public IngestStatus schedule(String celex, Language language) {
-    if (jobs.schedule(celex, language, traceparent())) {
+    var traceparent = traceparent();
+    if (jobs.schedule(celex, language, traceparent)) {
+      events.publishEvent(new ExpressionRequested(celex, language, traceparent));
       LOG.info("Queued {} in {}", celex, language.code());
-      workers.wake();
     }
     return jobs.find(celex, language).orElseThrow().status();
   }

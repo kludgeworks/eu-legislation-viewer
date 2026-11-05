@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguratio
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.util.List;
@@ -19,9 +20,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.event.EventListener;
 import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * Expressions built in the background, through the module's API: from the converter's fixtures
@@ -42,6 +45,8 @@ class IngestTests {
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
   @Autowired Events events;
+  @Autowired ApplicationEventPublisher publisher;
+  @Autowired TransactionTemplate transactions;
 
   @Test
   void buildsAnExpressionsTextAndSaysSo() throws Exception {
@@ -96,17 +101,23 @@ class IngestTests {
     assertThat(jobs(CONSOLIDATION, "SPA")).isEqualTo(1);
   }
 
-  /** A job whose worker stopped beating (another instance's, gone) is claimed again and built. */
+  /**
+   * A job running for longer than the takeover (its instance gone) is started again when its
+   * request is handed out again, as the event registry does once the request is stale, and built.
+   */
   @Test
-  void claimsAJobWhoseLeaseRanOut() {
+  void takesOverAJobRunningForTooLong() {
     jdbc.sql(
             """
             insert into ingest_job
-              (celex, language, state, stage, attempts, owner, heartbeat_at, created_at, version)
-            values ('32024R2867', 'ENG', 'RUNNING', 'CONVERTING', 1, 'gone',
-              now() - interval '1 hour', now(), 1)
+              (celex, language, state, stage, attempts, started_at, created_at, version)
+            values ('32024R2867', 'ENG', 'RUNNING', 'CONVERTING', 1, now() - interval '1 hour',
+              now() - interval '1 hour', 1)
             """)
         .update();
+    transactions.executeWithoutResult(
+        status ->
+            publisher.publishEvent(new ExpressionRequested("32024R2867", Language.ENG, null)));
 
     var status = finished("32024R2867", Language.ENG);
 

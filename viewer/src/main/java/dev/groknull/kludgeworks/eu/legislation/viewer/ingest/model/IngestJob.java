@@ -13,15 +13,15 @@ import org.jmolecules.ddd.annotation.Identity;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The work of building one expression: queued, claimed by a worker, which holds it while its
- * heartbeat is fresh, then built or failed. A job whose worker stops beating is claimed again; each
- * claim is an attempt, and a claim changes the version, so a worker that lost its job can't finish
- * it. Who holds it and when are the queue's (IngestJobs), not the job's. Its changes are its
- * withers' (RecordBuilder's IngestJobBuilder.With).
+ * The work of building one expression: queued, started by a worker, then built or failed, or back
+ * in the queue to be tried again. Each start is an attempt, and changes the version, so a worker
+ * whose job was started again elsewhere (it was taken over: IngestJobs.start) can't finish it. Its
+ * changes are its withers' (RecordBuilder's IngestJobBuilder.With).
  *
  * @param traceparent the trace of the request that scheduled it (W3C Trace Context), which its work
  *     continues
  * @param root once built, the text's root, in hex
+ * @param converter once built, the version of the converter that made it
  */
 @AggregateRoot
 @RecordBuilder
@@ -34,6 +34,7 @@ public record IngestJob(
     int attempts,
     @Nullable String traceparent,
     @Nullable String root,
+    @Nullable String converter,
     @Nullable Failure failure,
     @Nullable String detail,
     long version)
@@ -41,7 +42,7 @@ public record IngestJob(
 
   public IngestStatus status() {
     return new IngestStatus(
-        state, stage, attempts, root == null ? null : new ContentHash(root), failure);
+        state, stage, attempts, root == null ? null : new ContentHash(root), converter, failure);
   }
 
   /** Converted, its text being stored. */
@@ -49,8 +50,8 @@ public record IngestJob(
     return withStage(Stage.STORING);
   }
 
-  public IngestJob built(ContentHash root) {
-    return with(job -> job.state(State.BUILT).stage(null).root(root.hex()));
+  public IngestJob built(ContentHash root, String converter) {
+    return with(job -> job.state(State.BUILT).stage(null).root(root.hex()).converter(converter));
   }
 
   public IngestJob failed(Failure failure, String detail) {

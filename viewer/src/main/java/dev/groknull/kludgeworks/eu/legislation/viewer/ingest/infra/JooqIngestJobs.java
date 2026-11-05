@@ -3,10 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.Tables.INGEST_JOB;
 import static org.jooq.impl.DSL.currentInstant;
-import static org.jooq.impl.DSL.select;
 import static org.jooq.impl.DSL.val;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.tables.records.IngestJobRecord;
@@ -18,46 +16,32 @@ import java.util.Optional;
 import org.jooq.DSLContext;
 import org.jooq.types.DayToSecond;
 import org.jspecify.annotations.Nullable;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-/**
- * The ingest jobs in Postgres (ingest_job), with jOOQ. Each change to a job publishes
- * ExpressionChanged in its transaction (one of its own, outside one), so the event registry
- * externalizes it once the change is committed.
- */
+/** The ingest jobs in Postgres (ingest_job), with jOOQ. */
 @Repository
 class JooqIngestJobs implements IngestJobs {
   private final DSLContext db;
-  private final ApplicationEventPublisher events;
 
-  JooqIngestJobs(DSLContext db, ApplicationEventPublisher events) {
+  JooqIngestJobs(DSLContext db) {
     this.db = db;
-    this.events = events;
   }
 
   @Override
-  @Transactional
   public boolean schedule(String celex, Language language, @Nullable String traceparent) {
-    var queued =
-        db.insertInto(INGEST_JOB)
-                .set(INGEST_JOB.CELEX, celex)
-                .set(INGEST_JOB.LANGUAGE, language)
-                .set(INGEST_JOB.STATE, State.QUEUED)
-                .set(INGEST_JOB.ATTEMPTS, 0)
-                .set(INGEST_JOB.TRACEPARENT, traceparent)
-                .set(INGEST_JOB.CREATED_AT, currentInstant())
-                .set(INGEST_JOB.VERSION, 0L)
-                .onConflict(INGEST_JOB.CELEX, INGEST_JOB.LANGUAGE)
-                .doNothing()
-                .execute()
-            == 1;
-    if (queued) {
-      events.publishEvent(new ExpressionChanged(celex, language));
-    }
-    return queued;
+    return db.insertInto(INGEST_JOB)
+            .set(INGEST_JOB.CELEX, celex)
+            .set(INGEST_JOB.LANGUAGE, language)
+            .set(INGEST_JOB.STATE, State.QUEUED)
+            .set(INGEST_JOB.ATTEMPTS, 0)
+            .set(INGEST_JOB.TRACEPARENT, traceparent)
+            .set(INGEST_JOB.CREATED_AT, currentInstant())
+            .set(INGEST_JOB.VERSION, 0L)
+            .onConflict(INGEST_JOB.CELEX, INGEST_JOB.LANGUAGE)
+            .doNothing()
+            .execute()
+        == 1;
   }
 
   @Override
@@ -69,58 +53,39 @@ class JooqIngestJobs implements IngestJobs {
   }
 
   @Override
-  @Transactional
-  public Optional<IngestJob> claim(String owner, Duration lease) {
-    var oldest =
-        select(INGEST_JOB.ID)
-            .from(INGEST_JOB)
-            .where(
-                INGEST_JOB
-                    .STATE
-                    .eq(State.QUEUED)
-                    .or(
-                        INGEST_JOB
-                            .STATE
-                            .eq(State.RUNNING)
-                            .and(
-                                INGEST_JOB.HEARTBEAT_AT.lt(
-                                    currentInstant().minus(DayToSecond.valueOf(lease))))))
-            .orderBy(INGEST_JOB.CREATED_AT)
-            .limit(1)
-            .forUpdate()
-            .skipLocked();
+  public Optional<IngestJob> start(String celex, Language language, Duration takeover) {
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, State.RUNNING)
         .set(INGEST_JOB.STAGE, Stage.CONVERTING)
-        .set(INGEST_JOB.OWNER, owner)
-        .set(INGEST_JOB.HEARTBEAT_AT, currentInstant())
+        .set(INGEST_JOB.STARTED_AT, currentInstant())
         .set(INGEST_JOB.ATTEMPTS, INGEST_JOB.ATTEMPTS.plus(1))
         .set(INGEST_JOB.VERSION, INGEST_JOB.VERSION.plus(1))
-        .where(INGEST_JOB.ID.eq(oldest))
+        .where(
+            INGEST_JOB.CELEX.eq(celex),
+            INGEST_JOB.LANGUAGE.eq(language),
+            INGEST_JOB
+                .STATE
+                .eq(State.QUEUED)
+                .or(
+                    INGEST_JOB
+                        .STATE
+                        .eq(State.RUNNING)
+                        .and(
+                            INGEST_JOB.STARTED_AT.lt(
+                                currentInstant().minus(DayToSecond.valueOf(takeover))))))
         .returning()
         .fetchOptional()
-        .map(JooqIngestJobs::job)
-        .map(this::notified);
+        .map(JooqIngestJobs::job);
   }
 
   @Override
-  public int heartbeat(String owner) {
-    return db.update(INGEST_JOB)
-        .set(INGEST_JOB.HEARTBEAT_AT, currentInstant())
-        .where(INGEST_JOB.OWNER.eq(owner), INGEST_JOB.STATE.eq(State.RUNNING))
-        .execute();
-  }
-
-  @Override
-  @Transactional
   public IngestJob save(IngestJob job) {
-    var running = job.state() == State.RUNNING;
     var finished = job.state() == State.BUILT || job.state() == State.FAILED;
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, job.state())
         .set(INGEST_JOB.STAGE, job.stage())
-        .set(INGEST_JOB.OWNER, running ? INGEST_JOB.OWNER : val(null, INGEST_JOB.OWNER))
         .set(INGEST_JOB.ROOT, job.root())
+        .set(INGEST_JOB.CONVERTER, job.converter())
         .set(INGEST_JOB.FAILURE, job.failure())
         .set(INGEST_JOB.DETAIL, job.detail())
         .set(
@@ -130,19 +95,13 @@ class JooqIngestJobs implements IngestJobs {
         .returning()
         .fetchOptional()
         .map(JooqIngestJobs::job)
-        .map(this::notified)
         .orElseThrow(
             () ->
                 new OptimisticLockingFailureException(
                     "Ingest job "
                         + job.id()
-                        + " was claimed again since version "
+                        + " was started again since version "
                         + job.version()));
-  }
-
-  private IngestJob notified(IngestJob job) {
-    events.publishEvent(new ExpressionChanged(job.celex(), job.language()));
-    return job;
   }
 
   private static IngestJob job(IngestJobRecord row) {
@@ -155,6 +114,7 @@ class JooqIngestJobs implements IngestJobs {
         row.getAttempts(),
         row.getTraceparent(),
         row.getRoot(),
+        row.getConverter(),
         row.getFailure(),
         row.getDetail(),
         row.getVersion());

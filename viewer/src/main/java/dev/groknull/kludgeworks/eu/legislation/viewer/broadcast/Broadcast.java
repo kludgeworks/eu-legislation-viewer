@@ -8,7 +8,7 @@ import org.springframework.core.ResolvableTypeProvider;
  * An externalized event (Spring Modulith's @Externalized) as every instance receives it: read back
  * from Valkey once the transaction that published it committed, on the instance that published it
  * as on every other. A listener for Broadcast of a type (an @EventListener of Broadcast of
- * ExpressionChanged) hears each such event once, after commit, wherever it happened; one for the
+ * PreparationChanged) hears each such event once, after commit, wherever it happened; one for the
  * type itself hears it only on the instance that published it, before commit.
  *
  * <p>Not kept: an instance that wasn't reading when it was sent (starting, or Valkey unreachable)

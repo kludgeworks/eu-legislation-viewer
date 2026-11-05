@@ -10,6 +10,7 @@ import org.jspecify.annotations.Nullable;
  * @param stage while running, what it is doing
  * @param attempts how often it was started
  * @param root once built, the text's root
+ * @param converter once built, the version of the converter that made it
  * @param failure once failed, why
  */
 public record IngestStatus(
@@ -17,6 +18,7 @@ public record IngestStatus(
     @Nullable Stage stage,
     int attempts,
     @Nullable ContentHash root,
+    @Nullable String converter,
     @Nullable Failure failure) {
 
   public enum State {

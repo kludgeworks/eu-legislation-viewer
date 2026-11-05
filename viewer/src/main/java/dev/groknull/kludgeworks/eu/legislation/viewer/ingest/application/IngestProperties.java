@@ -10,10 +10,10 @@ import org.springframework.validation.annotation.Validated;
 /**
  * How ingest jobs are run ({@code viewer.ingest.*}, set in application.yaml).
  *
- * @param workers how many jobs an instance runs at once
- * @param poll how often an idle worker looks for a job another instance queued
- * @param lease how long a job is held without its worker's heartbeat, before another may claim it
- * @param heartbeat how often a worker says it still holds its jobs: well within the lease
+ * @param workers how many jobs an instance runs at once (JobRunner's executor), the others waiting
+ *     their turn
+ * @param takeover how long a job may run before another worker may start it again, its own taken to
+ *     have stopped: longer than the slowest conversion
  * @param maxAttempts how often a job is tried before it fails
  * @param maxConversions how many conversions run at once (FormexConversion)
  */
@@ -21,8 +21,6 @@ import org.springframework.validation.annotation.Validated;
 @Validated
 record IngestProperties(
     @Positive int workers,
-    @NotNull Duration poll,
-    @NotNull Duration lease,
-    @NotNull Duration heartbeat,
+    @NotNull Duration takeover,
     @Positive int maxAttempts,
     @Positive int maxConversions) {}

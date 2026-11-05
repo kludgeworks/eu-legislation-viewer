@@ -23,6 +23,7 @@ java_junit5_test(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra:fixtures",
@@ -34,5 +35,6 @@ java_junit5_test(
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_jdbc",
+        "@maven//:org_springframework_spring_tx",
     ],
 )

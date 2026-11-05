@@ -9,8 +9,9 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.dao.OptimisticLockingFailureException;
 
 /**
- * The ingest jobs: the queue every instance's workers claim from. Its times are the store's, so the
- * instances' leases are measured by one clock.
+ * The ingest jobs: each expression's, as it stands. Which job a worker runs next is the event
+ * registry's (ExpressionRequested), not theirs; starting one is theirs, so no two workers run one
+ * job. Its times are the store's, so the instances' are measured by one clock.
  */
 @Repository
 public interface IngestJobs {
@@ -25,25 +26,19 @@ public interface IngestJobs {
   Optional<IngestJob> find(String celex, Language language);
 
   /**
-   * Claims the oldest job queued, or running on a worker whose heartbeat is older than the lease:
-   * locked while claimed, so no two workers claim one job, and those another worker has locked are
-   * skipped, not waited on. A claim is an attempt, and changes the job's version.
-   */
-  Optional<IngestJob> claim(String owner, Duration lease);
-
-  /**
-   * Keeps the jobs a worker holds.
+   * Starts the expression's job, if it is queued; or running, but started longer ago than {@code
+   * takeover} (its worker stopped, on an instance gone). A start is an attempt, and changes the
+   * job's version.
    *
-   * @return how many it holds
+   * @return the job started; none if it is running or done
    */
-  int heartbeat(String owner);
+  Optional<IngestJob> start(String celex, Language language, Duration takeover);
 
   /**
-   * Writes the job's changes. One no longer running is no worker's; one built or failed is finished
-   * now.
+   * Writes the job's changes. One built or failed is finished now.
    *
    * @return the job as written, with its next version
-   * @throws OptimisticLockingFailureException if it was claimed again since it was read
+   * @throws OptimisticLockingFailureException if it was started again since it was read
    */
   IngestJob save(IngestJob job);
 }

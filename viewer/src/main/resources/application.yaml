@@ -18,6 +18,11 @@ spring:
   threads:
     virtual:
       enabled: true
+  task:
+    execution:
+      # Boot's executor (applicationTaskExecutor: the listeners', Cellar's reads) alongside ingest's
+      # workers, which would otherwise stand in for it
+      mode: force
   http:
     clients:
       # every RestClient Boot builds, so Cellar's: to open a connection, and for a response, since
@@ -53,6 +58,17 @@ spring:
     events:
       # a completed publication is deleted, not kept: nothing reads them, so nothing has to purge them
       completion-mode: delete
+      # an outstanding publication is not handed out again on starting: with several instances, one
+      # may still be running it; a publication its instance stopped before finishing is failed once
+      # stale, and handed out again like any failed one (EventsConfiguration)
+      republish-outstanding-events-on-restart: false
+      staleness:
+        # waiting its turn (an ingest job, behind the instance's others), or being worked on: longer
+        # than the slowest conversion, and longer than viewer.ingest.takeover, so that a job run
+        # again is one its worker stopped
+        published: 2h
+        processing: 1h
+        resubmitted: 1h
       jdbc:
         # its table is a migration (db/migration/__root), not created by Modulith on startup
         schema-initialization:
@@ -89,10 +105,8 @@ viewer:
     max-conversions: 2
     # how many jobs an instance runs at once: each mostly converting, so no more than conversions
     workers: 2
-    # how often an idle worker looks for a job queued on another instance, or given up by one
-    poll: 1s
-    # how long a job is held without its worker's heartbeat, before another worker may claim it
-    lease: 2m
-    heartbeat: 30s
+    # how long a job may run before another worker may start it again, its own taken to have stopped:
+    # longer than the slowest conversion (the corpus's took 43 minutes)
+    takeover: 50m
     # how often a job is tried before it fails: refusals (no Formex, not a legal act) fail at once
     max-attempts: 3

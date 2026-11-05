@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 /**
- * The ingest module's domain: the ingest job (IngestJob) and its queue (IngestJobs), and the
- * converter's refusals (ConversionException).
+ * The ingest module's domain: the ingest job (IngestJob), the jobs (IngestJobs) and the request
+ * that queues one (ExpressionRequested), and the converter's refusals (ConversionException).
  */
 @DomainRing
 @NullMarked

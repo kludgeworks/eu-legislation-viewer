@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
  * The ingest module's application ring: scheduling expressions (IngestService) and running their
- * jobs (IngestWorkers, JobRunner) on the conversions the infrastructure provides (Conversions).
+ * jobs as they are requested (JobRunner), on the conversions the infrastructure provides
+ * (Conversions).
  */
 @ApplicationRing
 @NullMarked

@@ -153,7 +153,7 @@ class VersionController {
       if (timeline.isEmpty()) {
         return templates.catalogueTextMissing(version, eurLex());
       }
-      var preparation = texts.prepare(timeline.get(), language);
+      var preparation = texts.prepare(act, language);
       if (!preparation.settled()) {
         return templates.catalogueTextBuilding(
             preparation, request.getRequestURI(), Links.prepare(eli, language));
@@ -168,9 +168,8 @@ class VersionController {
             templates.catalogueTextReady(
                 "/content/" + ready.root().hex(),
                 content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
-        case Text.Building building ->
-            templates.catalogueTextBuilding(
-                preparation, request.getRequestURI(), Links.prepare(eli, language));
+        case Text.Queued _, Text.Building _ ->
+            throw new IllegalStateException("A settled preparation has a text not yet built");
         case Text.Failed failed -> templates.catalogueTextFailed(failed.failure(), eurLex());
       };
     }

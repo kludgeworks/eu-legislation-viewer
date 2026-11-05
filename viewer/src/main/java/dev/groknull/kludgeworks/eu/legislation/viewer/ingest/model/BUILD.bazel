@@ -13,6 +13,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_jmolecules_jmolecules_ddd",
+        "@maven//:org_jmolecules_jmolecules_events",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_spring_tx",  # the queue's optimistic-locking failure

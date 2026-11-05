@@ -147,8 +147,10 @@ class CompareController {
      * from the comparison module.
      */
     JteModel changes(HttpServletRequest request) {
-      var preparation =
-          texts.prepare(act.timeline().in(language).orElseThrow(Requests::notFound), language);
+      if (act.timeline().in(language).isEmpty()) {
+        throw Requests.notFound();
+      }
+      var preparation = texts.prepare(act, language);
       var self = request.getRequestURI() + "?" + request.getQueryString();
       if (!preparation.settled()) {
         return templates.catalogueTextBuilding(preparation, self, Links.prepare(eli, language));
