@@ -25,8 +25,9 @@ import org.springframework.web.client.RestClient;
 
 /**
  * A comparison's page as a reader's browser loads it, on an empty store: the page at once, both
- * texts built in the background while its changes' part polls (htmx), then the comparison. On the
- * converter's fixtures: 2015/1998's consolidations of 22 March and 1 October 2026, in English.
+ * texts built in the background while its changes' part polls (htmx), then its Changes view, from
+ * the comparison module. On the converter's fixtures: 2015/1998's consolidations of 22 March and 1
+ * October 2026, in English.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -54,13 +55,56 @@ class ComparePagesTests {
     var waiting = Objects.requireNonNull(page.getElementById("text"));
     assertThat(waiting.attr("hx-get")).isEqualTo(PAGE);
 
-    var compared =
+    var ready =
         await()
             .atMost(Duration.ofMinutes(1))
             .pollInterval(Duration.ofSeconds(1))
-            .until(this::poll, changes -> changes.selectFirst(".controls") != null);
-    assertThat(compared.select(".controls b").text()).isEqualTo("6 differences");
-    assertThat(compared.select("ol.differences > li")).hasSize(6);
+            .until(this::poll, changes -> changes.attr("hx-get").startsWith("/comparison/"));
+    var changes =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(ready.attr("hx-get")).retrieve().body(String.class)));
+    assertThat(changes.select(".controls b").text()).isEqualTo("6 differences");
+    assertThat(changes.select("section.difference").eachAttr("id"))
+        .containsExactly(
+            "difference-1",
+            "difference-2",
+            "difference-3",
+            "difference-4",
+            "difference-5",
+            "difference-6");
+    var c = Objects.requireNonNull(changes.getElementById("anx/pnt_8.1.2.3/pnt_c"));
+    assertThat(c.select("ins.diff").text())
+        .isEqualTo(
+            "applied in accordance with Attachment 6-J to the Annex to Implementing Decision"
+                + " C(2015) 8005");
+    assertThat(changes.select("details.fold summary").eachText())
+        .startsWith(
+            "Points (a) and (b) — no differences · show",
+            "Point (d) — no differences · show",
+            "Point (f) — no differences · show");
+    assertThat(changes.select(".lead")).hasSize(2);
+    assertThat(changes.select("nav.pager a")).hasSize(6);
+  }
+
+  @Test
+  void opensAFoldWithItsUnitsFromTheText() {
+    var ready =
+        await()
+            .atMost(Duration.ofMinutes(1))
+            .pollInterval(Duration.ofSeconds(1))
+            .until(this::poll, changes -> changes.attr("hx-get").startsWith("/comparison/"));
+    var changes =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(ready.attr("hx-get")).retrieve().body(String.class)));
+    var fold = Objects.requireNonNull(changes.selectFirst("details.fold"));
+    var units =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(URI.create(fold.attr("hx-get"))).retrieve().body(String.class)));
+    assertThat(units.select("div.unit").eachAttr("id"))
+        .containsExactly("anx/pnt_8.1.2.3/pnt_a", "anx/pnt_8.1.2.3/pnt_b");
   }
 
   @Test

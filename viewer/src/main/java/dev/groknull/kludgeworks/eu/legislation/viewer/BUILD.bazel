@@ -21,6 +21,8 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web/view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/infra",

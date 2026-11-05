@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
  */
 public final class Wording {
   /** What says nothing, for a comparison. */
-  private static final Set<String> MARKS = Set.of("provenance", "noteRef", "deleted");
+  static final Set<String> MARKS = Set.of("provenance", "noteRef", "deleted");
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
 

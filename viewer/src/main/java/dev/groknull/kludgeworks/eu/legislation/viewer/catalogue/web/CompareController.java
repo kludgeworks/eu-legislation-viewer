@@ -12,7 +12,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Compare
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
@@ -38,7 +37,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * version that applies then). Asked with dates that aren't the versions' first days, or with From
  * after To, or without them (the latest version against the one before), it goes to the address
  * that is. Asked by htmx (@HxRequest), only the changes' part, which polls this URL until both
- * texts are built, and then compares them (Comparisons: worked out now, if no one has yet); a
+ * texts are built, and then loads their Changes view from the comparison module, by their roots; a
  * boosted link of the page's gets the whole page.
  */
 @Controller
@@ -47,15 +46,12 @@ class CompareController {
 
   private final Acts acts;
   private final Texts texts;
-  private final Comparisons comparisons;
   private final Templates templates;
   private final Clock clock;
 
-  CompareController(
-      Acts acts, Texts texts, Comparisons comparisons, Templates templates, Clock clock) {
+  CompareController(Acts acts, Texts texts, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
-    this.comparisons = comparisons;
     this.templates = templates;
     this.clock = clock;
   }
@@ -146,7 +142,7 @@ class CompareController {
 
     /**
      * The changes' part: why a text can't be compared, if either can't; polling this URL while
-     * either is built; then the comparison.
+     * either is built; then the Changes view, loaded from the comparison module.
      */
     JteModel changes(HttpServletRequest request) {
       var earlier = texts.text(from, language);
@@ -167,12 +163,11 @@ class CompareController {
               building.status(), request.getRequestURI() + "?" + request.getQueryString());
         }
       }
-      var comparison =
-          comparisons
-              .between(((Text.Ready) earlier).root(), ((Text.Ready) later).root())
-              .orElseThrow(
-                  () -> new IllegalStateException("Texts ready, not stored: " + from + ", " + to));
-      return templates.catalogueCompareChanges(comparison);
+      return templates.catalogueCompareReady(
+          "/comparison/"
+              + ((Text.Ready) earlier).root().hex()
+              + "/"
+              + ((Text.Ready) later).root().hex());
     }
   }
 }

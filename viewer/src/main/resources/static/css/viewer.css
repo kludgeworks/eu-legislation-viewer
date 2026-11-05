@@ -583,7 +583,7 @@ section.selection.compare {
   font-weight: 600;
 }
 
-/* the comparison's summary, and its provisions until the Changes view sets them out */
+/* the comparison's summary: how many differences, of which kinds */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -594,13 +594,123 @@ section.selection.compare {
   font-size: 13.5px;
 }
 
-ol.differences {
-  font-size: 13px;
-  color: var(--ink2);
+/* the Changes view (Design: Mode: Compare, Changes): the provisions that differ in the book column,
+ * each numbered in the margin with its note beside it; the opening of the unit they are in in a
+ * quiet grey; the units the same in both folded; a pager to each difference at the bottom */
+.changes .book {
+  padding: 16px 0 24px 32px;
 }
 
-ol.differences span {
+.difference {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 42.5rem) 13rem;
+  column-gap: 32px;
+  margin: 10px 0;
+  scroll-margin-top: 48px;
+}
+
+.difference > .unit {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.difference-number {
+  position: absolute;
+  left: -28px;
+  top: 2px;
+  font: 600 11px/1 ui-sans-serif, system-ui, sans-serif;
+  color: var(--accent);
+}
+
+.sidenote {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  padding-left: 10px;
+  border-left: 2px solid var(--accent-line);
+  font-size: 12.5px;
+  line-height: 1.4;
   color: var(--muted);
+}
+
+.sidenote b {
+  margin-right: 4px;
+  color: var(--accent);
+}
+
+.difference-inserted .sidenote {
+  border-left-color: var(--ins-ink);
+}
+
+.difference-deleted .sidenote {
+  border-left-color: var(--del-ink);
+}
+
+.lead {
+  max-width: 42.5rem;
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+.fold {
+  max-width: 42.5rem;
+  margin: 6px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.fold > summary,
+.sidenote {
+  font-family: system-ui, sans-serif;
+}
+
+.fold > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+.fold .show u {
+  color: var(--accent);
+}
+
+.fold[open] .show {
+  display: none;
+}
+
+.fold > .fold-text {
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+nav.pager {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 8px 0 8px 32px;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+  font-size: 13px;
+}
+
+nav.pager a {
+  min-width: 24px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-align: center;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+nav.pager a:hover {
+  background: var(--hover);
 }
 
 .lag-warning {
@@ -1164,6 +1274,21 @@ span.deleted:has(> .deleted-mark > input:checked) > del {
 ins.changed {
   color: var(--ins-ink);
   text-decoration: none;
+}
+
+/* a comparison's marks: words inserted underlined on a blue tint, words deleted struck through on a
+ * red tint; they differ in lightness too, not only in hue */
+ins.diff {
+  color: var(--ins-ink);
+  background: var(--ins-bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+del.diff {
+  color: var(--del-ink);
+  background: var(--del-bg);
+  text-decoration: line-through;
 }
 
 .quoted-structure {
