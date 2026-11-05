@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
@@ -82,15 +83,19 @@ public record FailureView(
 
   /**
    * The act, at {@code self}, none of whose texts in the language could be made ({@code
-   * preparation}): This act couldn't be prepared, and the first failure.
+   * preparation}): This act couldn't be prepared, and the first failure; Back to the results of the
+   * reader's last search, if there was one ({@code results}).
    */
-  public static FailureView act(Act act, Preparation preparation, String self) {
+  public static FailureView act(
+      Act act, Preparation preparation, String self, Chrome.@Nullable Results results) {
     var failures =
         preparation.texts().values().stream()
             .map(text -> text instanceof Text.Failed failed ? failed.failure() : null)
             .filter(Objects::nonNull)
             .toList();
     var size = preparation.size();
+    var eurLex =
+        Action.link("Read it on EUR-Lex", Links.eurLex(act.id().celex(), preparation.language()));
     return new FailureView(
         true,
         "This act couldn't be prepared",
@@ -100,9 +105,11 @@ public record FailureView(
             + ".",
         List.of(),
         failures.stream().anyMatch(Failure::retryable) ? self : null,
-        List.of(
-            Action.link(
-                "Read it on EUR-Lex", Links.eurLex(act.id().celex(), preparation.language()))),
+        results == null
+            ? List.of(eurLex)
+            : List.of(
+                eurLex,
+                Action.link("Back to the results for “" + results.words() + "”", results.href())),
         null);
   }
 

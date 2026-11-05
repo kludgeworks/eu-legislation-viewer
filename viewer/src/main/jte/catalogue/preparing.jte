@@ -12,7 +12,8 @@
      version's text as it stands, the progress panel, and what is already known about the act. The
      stream (hx-sse:connect) pushes the timeline, the progress and the steps as they change, each
      swapped by its id (hx-partial); once done, this address is asked again (prepared, for the
-     receipt) and its page swapped in for this one, at the same address. Without JavaScript, the
+     receipt) and its page swapped in for this one, at the same address. Beside the progress, the
+     way back to the reader's last search's results, if any. Without JavaScript, the
      page reloads: in the head, as a boosted request (Try again's) parses what it swaps in without
      scripts, so a noscript in the page would come alive and reload it --%>
 @template.layout.page(chrome = chrome, title = title, head = @`<noscript><meta http-equiv="refresh" content="5"></noscript>`, content = @`
@@ -40,6 +41,9 @@
         </dl>
         <h2>While you wait</h2>
         <p><a href="${preparing.eurLex()}">Read it on EUR-Lex</a>: the official site, without comparison.</p>
+        @if(chrome.results() != null)
+          <p><a href="${chrome.results().href()}">Back to the results for “${chrome.results().words()}”</a></p>
+        @endif
       </aside>
       <div hx-sse:connect="${preparing.events()}" hx-sse:close="done" hidden></div>
     </div>

@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView.Action;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -103,7 +104,12 @@ class FailureViewTest {
         new Preparation(
             AVSEC.id(), Language.ENG, Instant.EPOCH, Instant.EPOCH, texts, List.of(), 0);
 
-    var failure = FailureView.act(AVSEC, preparation, SELF);
+    var failure =
+        FailureView.act(
+            AVSEC,
+            preparation,
+            SELF,
+            new Chrome.Results("aviation security", "/?q=aviation%20security"));
 
     assertThat(failure.heading()).isEqualTo("This act couldn't be prepared");
     assertThat(failure.words())
@@ -112,6 +118,26 @@ class FailureViewTest {
                 + " Office has no Formex of it in this language.");
     // one of them may answer now
     assertThat(failure.retry()).isEqualTo(SELF);
+    assertThat(failure.actions())
+        .extracting(Action::label, Action::href)
+        .containsExactly(
+            tuple(
+                "Read it on EUR-Lex",
+                "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015R1998"),
+            tuple("Back to the results for “aviation security”", "/?q=aviation%20security"));
+  }
+
+  @Test
+  void hasNoWayBackToResultsWithoutASearch() {
+    var texts = new LinkedHashMap<Version, Text>();
+    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE));
+    var preparation =
+        new Preparation(
+            AVSEC.id(), Language.ENG, Instant.EPOCH, Instant.EPOCH, texts, List.of(), 0);
+
+    assertThat(FailureView.act(AVSEC, preparation, SELF, null).actions())
+        .extracting(Action::label)
+        .containsExactly("Read it on EUR-Lex");
   }
 
   private static Version version(String celex) {

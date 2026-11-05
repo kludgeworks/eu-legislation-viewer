@@ -185,7 +185,7 @@ class CompareController {
                         page.only,
                         view,
                         Links.acts(page.eli, page.from, page.to, page.language, page.only, view)),
-                    page.changes(preparation, self(request)),
+                    page.changes(preparation, self(request), chrome.results()),
                     prepared ? PreparingView.receipt(preparation, page.language) : null,
                     ArrivingView.of(page.act, preparation, self(request)).orElse(null))
                 .render());
@@ -641,12 +641,13 @@ class CompareController {
     /**
      * The changes, once the act is prepared in the language: why a text can't be compared, if
      * either can't, with Try again posting to {@code self}; why the act couldn't be, if none of its
-     * texts could; that either is being prepared, if it appeared since; else the Changes view,
-     * loaded from beside the page.
+     * texts could, with the way back to the reader's last search's {@code results}, if any; that
+     * either is being prepared, if it appeared since; else the Changes view, loaded from beside the
+     * page.
      */
-    JteModel changes(Preparation preparation, String self) {
+    JteModel changes(Preparation preparation, String self, Chrome.@Nullable Results results) {
       if (preparation.ready() == 0) {
-        return templates.catalogueTextFailed(FailureView.act(act, preparation, self));
+        return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));
       }
       // both in the language, as the comparison's versions are picked from its timeline
       var earlier = Objects.requireNonNull(preparation.texts().get(from));

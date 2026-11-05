@@ -140,7 +140,7 @@ class VersionController {
     return page.render(
         chrome,
         masthead,
-        page.text(preparation, request.getRequestURI()),
+        page.text(preparation, request.getRequestURI(), chrome.results()),
         prepared ? PreparingView.receipt(preparation, page.language) : null,
         TimelineView.states(preparation),
         ArrivingView.of(page.act, preparation, request.getRequestURI()).orElse(null));
@@ -203,17 +203,18 @@ class VersionController {
 
     /**
      * The version's text, once the act is prepared: built, or why it couldn't be, with Try again
-     * posting to {@code self}; why the act couldn't be, if none of its texts could; that it is
-     * being prepared, if it appeared since.
+     * posting to {@code self}; why the act couldn't be, if none of its texts could, with the way
+     * back to the reader's last search's {@code results}, if any; that it is being prepared, if it
+     * appeared since.
      */
-    JteModel text(Preparation preparation, String self) {
+    JteModel text(Preparation preparation, String self, Chrome.@Nullable Results results) {
       var text = preparation.texts().get(version);
       if (text == null) {
         // a version not in the language
         return templates.catalogueTextMissing(version, eurLex());
       }
       if (preparation.ready() == 0) {
-        return templates.catalogueTextFailed(FailureView.act(act, preparation, self));
+        return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));
       }
       return switch (text) {
         case Text.Ready ready ->
