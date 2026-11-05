@@ -7,6 +7,13 @@
 *.iml
 .vscode/
 
+# coding agents' local configuration
+/.claude/
+/.codex/
+/.opencode/
+/AGENTS.md
+/CLAUDE.md
+
 # local tool configuration and output (formex-corpus/: corpus:fetch's mirror of Cellar;
 # text-compare/: text:compare's references and reports;
 # viewer/spring-modulith-docs/: mise run modules)
