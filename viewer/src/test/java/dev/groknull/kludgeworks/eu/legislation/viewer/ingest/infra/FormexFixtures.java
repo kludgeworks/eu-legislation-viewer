@@ -18,11 +18,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiFunction;
 
 /**
- * A Formex source on the converter's fixtures, in English: 2015/1998's consolidation of 22 March
- * 2026 among them; in French a document that isn't a legal act, in German Formex the converter
- * doesn't handle, in Italian another version's Formex (as Cellar misfiles it), for any document. It
- * records what it was asked for, from any thread. With the converter's expected output for the
- * fixtures.
+ * A Formex source on the converter's fixtures, in English: 2015/1998's consolidations of 2026 among
+ * them, none for a document without one; in French a document that isn't a legal act, in German
+ * Formex the converter doesn't handle, in Italian another version's Formex (as Cellar misfiles it),
+ * for any document. It records what it was asked for, from any thread. With the converter's
+ * expected output for the fixtures.
  */
 @AutoBazelRepository
 final class FormexFixtures implements FormexSource {
@@ -62,6 +62,14 @@ final class FormexFixtures implements FormexSource {
       return Optional.of(List.of(read.apply(celex + ".xml", bytes)));
     }
     var documents = new ArrayList<T>();
+    try {
+      if (!Files.isDirectory(fixture(celex))) {
+        // a version the converter has no fixture of: as Cellar has none of a text without Formex
+        return Optional.empty();
+      }
+    } catch (IOException e) {
+      throw new UncheckedIOException(e);
+    }
     try (var files = Files.list(fixture(celex))) {
       for (var file : files.filter(f -> f.toString().endsWith(".xml")).sorted().toList()) {
         try (var in = Files.newInputStream(file)) {

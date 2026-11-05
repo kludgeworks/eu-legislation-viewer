@@ -18,7 +18,4 @@ public sealed interface Text {
 
   /** It couldn't be built, and won't be by asking again. */
   record Failed(Failure failure) implements Text {}
-
-  /** The version has no text in the language that the viewer reads (no Formex). */
-  record Missing() implements Text {}
 }

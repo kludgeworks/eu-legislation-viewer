@@ -1,14 +1,17 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparisonWanted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Ingest;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.util.LinkedHashMap;
 import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +21,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * A version's text: its root once ingest has built it (ExpressionBuilt, kept in the module's own
- * transaction), else scheduled. One built whose event isn't kept yet, or was lost, is ingest's
+ * transaction), else scheduled. An act is prepared whole: its every version in the language, the
+ * roots of those built read at once. One built whose event isn't kept yet, or was lost, is ingest's
  * root, as ingest says. A text kept whose version's neighbours in the language are built too asks
  * for their comparisons ahead of a reader (ComparisonWanted): with the version before, and after.
  */
@@ -40,14 +44,19 @@ class TextService implements Texts {
   }
 
   @Override
-  public Text text(Version version, Language language) {
-    if (!version.languages().contains(language)) {
-      return new Text.Missing();
+  public Preparation prepare(Timeline timeline, Language language) {
+    var versions = timeline.versions();
+    var roots = expressions.roots(versions.stream().map(Version::celex).toList(), language);
+    var texts = new LinkedHashMap<Version, Text>();
+    for (var version : versions) {
+      var root = roots.get(version.celex());
+      texts.put(version, root != null ? new Text.Ready(root) : unbuilt(version, language));
     }
-    var root = expressions.root(version.celex(), language);
-    if (root.isPresent()) {
-      return new Text.Ready(root.get());
-    }
+    return new Preparation(texts);
+  }
+
+  /** A text not kept as built: scheduled, or why it can't be. */
+  private Text unbuilt(Version version, Language language) {
     var status = ingest.schedule(version.celex(), language);
     return switch (status.state()) {
       case BUILT -> {

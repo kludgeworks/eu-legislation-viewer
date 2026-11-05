@@ -39,10 +39,10 @@ import org.springframework.web.server.ResponseStatusException;
  * A version's page, at the ELI of the act and the date it applies on (any date: the version that
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
  * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which polls this URL
- * until the text is built, and then loads it from the content module, its outline beside it; but a
- * boosted link of the page's (HX-Boosted) gets the whole page, to swap its body in. The act's
- * address without a date goes to the page of the version that applies today, or of the date asked
- * (on).
+ * until the act is prepared in the language, every version of it, and then loads the version's text
+ * from the content module, its outline beside it; but a boosted link of the page's (HX-Boosted)
+ * gets the whole page, to swap its body in. The act's address without a date goes to the page of
+ * the version that applies today, or of the date asked (on).
  */
 @Controller
 class VersionController {
@@ -142,17 +142,32 @@ class VersionController {
       version = act.versionOn(date).orElseThrow(VersionController::notFound);
     }
 
-    /** The text's part: polling this URL while the text is built, then loading it. */
+    /**
+     * The text's part: polling this URL while the act is prepared in the language (every version of
+     * it), then loading the version's text.
+     */
     JteModel text(HttpServletRequest request) {
-      return switch (texts.text(version, language)) {
+      var timeline = act.timeline().in(language);
+      if (timeline.isEmpty()) {
+        return templates.catalogueTextMissing(version, eurLex());
+      }
+      var preparation = texts.prepare(timeline.get(), language);
+      if (!preparation.settled()) {
+        return templates.catalogueTextBuilding(preparation, request.getRequestURI());
+      }
+      var text = preparation.texts().get(version);
+      if (text == null) {
+        // a version not in the language
+        return templates.catalogueTextMissing(version, eurLex());
+      }
+      return switch (text) {
         case Text.Ready ready ->
             templates.catalogueTextReady(
                 "/content/" + ready.root().hex(),
                 content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
         case Text.Building building ->
-            templates.catalogueTextBuilding(building.status(), request.getRequestURI());
+            templates.catalogueTextBuilding(preparation, request.getRequestURI());
         case Text.Failed failed -> templates.catalogueTextFailed(failed.failure(), eurLex());
-        case Text.Missing missing -> templates.catalogueTextMissing(version, eurLex());
       };
     }
 

@@ -7,6 +7,8 @@ import static org.jooq.impl.DSL.currentInstant;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ExpressionStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
@@ -26,6 +28,14 @@ class JooqExpressionStore implements ExpressionStore {
         .from(EXPRESSION)
         .where(EXPRESSION.CELEX.eq(celex), EXPRESSION.LANGUAGE.eq(language))
         .fetchOptional(EXPRESSION.ROOT);
+  }
+
+  @Override
+  public Map<String, ContentHash> roots(Collection<String> celexes, Language language) {
+    return db.select(EXPRESSION.CELEX, EXPRESSION.ROOT)
+        .from(EXPRESSION)
+        .where(EXPRESSION.CELEX.in(celexes), EXPRESSION.LANGUAGE.eq(language))
+        .fetchMap(EXPRESSION.CELEX, EXPRESSION.ROOT);
   }
 
   @Override
