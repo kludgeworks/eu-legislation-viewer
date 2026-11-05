@@ -2,9 +2,10 @@
 load("//tools/build:defs.bzl", "jte_library")
 
 # The pages and the legal text's templates, precompiled, with jte-models' typed facade (Templates):
-# layout/ the page shell, catalogue/ the catalogue's pages, comparison/ the Changes view, legal/ one
-# per legal-text element (LegalRenderer) and legal/diff/ a comparison's marks, legalpart/ the parts
-# of the legal text that aren't an element's, which legal/ calls
+# layout/ the page shell, catalogue/ the catalogue's pages (a comparison's Changes view among them),
+# comparison/ the Changes view's outline, legal/ one per legal-text element (LegalRenderer) and
+# legal/diff/ a comparison's marks, legalpart/ the parts of the legal text that aren't an element's,
+# which legal/ calls
 jte_library(
     name = "jte",
     srcs = glob(["**/*.jte"]),

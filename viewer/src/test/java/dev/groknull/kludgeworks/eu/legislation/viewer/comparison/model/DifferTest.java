@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
@@ -140,6 +141,22 @@ class DifferTest {
   void showsAChangedUnitWithItsOwnContentOnly() {
     var changed = find(Differ.differences(JANUARY, MARCH), "anx/pnt_1.2.2.3");
     assertThat(descendants(changed.shown())).extracting(Element::name).doesNotContain("unit");
+  }
+
+  @Test
+  void namesTheActsThatMarkAUnitInEachText() {
+    var c = Differ.differences(MARCH, OCTOBER).getFirst();
+    assertThat(c.markers()).containsExactly(new Marker("32026R0449", "replaced", null));
+    // unmarked in March, and in no unit an act put whole: as the act was published
+    assertThat(c.earlierMarkers()).isEmpty();
+  }
+
+  @Test
+  void readsAPointWithoutMarkersAsTheActThatPutThePointItIsInWholePutIt() {
+    var units = Units.of(MARCH);
+    var a = Objects.requireNonNull(units.get("anx/pnt_1.2.2.3/pnt_a"));
+    assertThat(Markers.of(a, units))
+        .containsExactly(new Marker("32026R0449", "replaced", "anx/pnt_1.2.2.3"));
   }
 
   @Test

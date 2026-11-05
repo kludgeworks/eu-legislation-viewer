@@ -26,8 +26,8 @@ import org.springframework.web.client.RestClient;
 /**
  * A comparison's page as a reader's browser loads it, on an empty store: the page at once, both
  * texts built in the background while its changes' part polls (htmx), then its Changes view, from
- * the comparison module. On the converter's fixtures: 2015/1998's consolidations of 22 March and 1
- * October 2026, in English.
+ * beside the page, each difference with the act that made it. On the converter's fixtures:
+ * 2015/1998's consolidations of 22 March and 1 October 2026, in English.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -78,6 +78,15 @@ class ComparePagesTests {
         .isEqualTo(
             "applied in accordance with Attachment 6-J to the Annex to Implementing Decision"
                 + " C(2015) 8005");
+    var sidenote = Objects.requireNonNull(changes.selectFirst("#difference-1 .sidenote"));
+    assertThat(sidenote.select(".made").text()).isEqualTo("Replaced by 2026/449");
+    assertThat(sidenote.select(".applies").text())
+        .isEqualTo(
+            "2026/449 applies in stages: from 22 March 2026, its entry into force; in part from 1"
+                + " October 2026 · Article 2 of 2026/449 says which part from when");
+    assertThat(sidenote.select(".applies a").attr("href"))
+        .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
+    assertThat(sidenote.select(".before").text()).isEqualTo("Before: original act");
     assertThat(changes.select("details.fold summary").eachText())
         .startsWith(
             "Points (a) and (b) — no differences · show",
@@ -173,7 +182,7 @@ class ComparePagesTests {
     return Objects.requireNonNull(response.getHeaders().getLocation());
   }
 
-  /** The page, once the act is prepared: its changes loading from the comparison module. */
+  /** The page, once the act is prepared: its changes loading from beside it. */
   private Document prepared() {
     return await()
         .atMost(Duration.ofMinutes(1))
@@ -182,7 +191,9 @@ class ComparePagesTests {
             this::page,
             page -> {
               var text = page.getElementById("text");
-              return text != null && text.attr("hx-get").startsWith("/comparison/");
+              return text != null
+                  && text.attr("hx-get")
+                      .equals(ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
             });
   }
 

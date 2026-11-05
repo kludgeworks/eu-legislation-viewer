@@ -31,6 +31,10 @@ import org.jspecify.annotations.Nullable;
  *     unmarked; none for an outermost unit
  * @param folded the units before it in the unit it is in, back to the one before that differs or
  *     holds a difference, which are the same in both texts; none for a deleted unit
+ * @param markers the amendment markers on the unit's own content in the later text: which acts put
+ *     it in the form it has there, and how; where it has none, those on the nearest unit it is in
+ *     that an act put in its form whole; none for a deleted unit
+ * @param earlierMarkers the same in the earlier text; none for an inserted unit
  */
 @ValueObject
 @RecordBuilder
@@ -43,10 +47,14 @@ public record Difference(
     @Nullable String parent,
     @Nullable String section,
     @Nullable Element lead,
-    List<Sibling> folded) {
+    List<Sibling> folded,
+    List<Marker> markers,
+    List<Marker> earlierMarkers) {
 
   public Difference {
     folded = List.copyOf(folded);
+    markers = List.copyOf(markers);
+    earlierMarkers = List.copyOf(earlierMarkers);
   }
 
   /** How a provision differs. */
@@ -68,4 +76,17 @@ public record Difference(
    */
   @ValueObject
   public record Sibling(String eId, String kind, String num) {}
+
+  /**
+   * An amendment marker on a unit's content, as the consolidation has it (▼M20, which the converter
+   * keeps as provenance, changed or deleted): the act that put it in its form there, and what it
+   * did.
+   *
+   * @param act the amending act's CELEX: 32026R0449
+   * @param action what it did, as legal-text has it: replaced, inserted, deleted, renumbered
+   * @param in the eId of the unit it is in that the act put in its form whole (2019/103 replaced
+   *     section 11.1, with its points), where the unit has no marker of its own; none for its own
+   */
+  @ValueObject
+  public record Marker(String act, String action, @Nullable String in) {}
 }

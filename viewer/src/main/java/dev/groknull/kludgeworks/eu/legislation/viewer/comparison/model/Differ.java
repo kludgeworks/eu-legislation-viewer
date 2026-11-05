@@ -48,18 +48,18 @@ public final class Differ {
     for (var delta : units.getDeltas()) {
       for (var unit : delta.getSource().getLines()) {
         if (after.get(unit.eId()) == null && in(unit, after)) {
-          found.add(whole(unit, Kind.DELETED, Marks.DELETED));
+          found.add(whole(unit, before, Kind.DELETED, Marks.DELETED));
         }
       }
       for (var unit : delta.getTarget().getLines()) {
         var earlier = before.get(unit.eId());
         if (earlier == null) {
           if (in(unit, before)) {
-            found.add(whole(unit, Kind.INSERTED, Marks.INSERTED));
+            found.add(whole(unit, after, Kind.INSERTED, Marks.INSERTED));
           }
         } else {
           // the same unit, where it was or moved
-          var changed = changed(earlier, unit);
+          var changed = changed(earlier, unit, before, after);
           if (changed != null) {
             found.add(changed);
           }
@@ -75,8 +75,8 @@ public final class Differ {
     return unit.parent() == null || units.get(unit.parent()) != null;
   }
 
-  /** {@code unit} whole, every word in it marked {@code mark}. */
-  private static DifferenceBuilder whole(Unit unit, Kind kind, String mark) {
+  /** {@code unit}, of {@code units}, whole, every word in it marked {@code mark}. */
+  private static DifferenceBuilder whole(Unit unit, Units units, Kind kind, String mark) {
     var marked = Marks.all(unit.element(), mark);
     return DifferenceBuilder.builder()
         .eId(unit.eId())
@@ -85,15 +85,18 @@ public final class Differ {
         .inserted(marked.inserted())
         .deleted(marked.deleted())
         .parent(unit.parent())
-        .section(unit.section());
+        .section(unit.section())
+        .markers(kind == Kind.INSERTED ? Markers.of(unit, units) : List.of())
+        .earlierMarkers(kind == Kind.DELETED ? Markers.of(unit, units) : List.of());
   }
 
   /**
-   * {@code to} with its own content only, its blocks that {@code from}'s don't say marked: a block
-   * changed word by word, one inserted wholly, one deleted wholly where it stood; none if they say
-   * the same.
+   * {@code to}, of {@code after}, with its own content only, its blocks that {@code from}'s (of
+   * {@code before}) don't say marked: a block changed word by word, one inserted wholly, one
+   * deleted wholly where it stood; none if they say the same.
    */
-  private static @Nullable DifferenceBuilder changed(Unit from, Unit to) {
+  private static @Nullable DifferenceBuilder changed(
+      Unit from, Unit to, Units before, Units after) {
     var replaced = new HashMap<Integer, Element>();
     var deletedAt = new HashMap<Integer, List<Element>>();
     var inserted = 0;
@@ -135,7 +138,9 @@ public final class Differ {
         .inserted(inserted)
         .deleted(deleted)
         .parent(to.parent())
-        .section(to.section());
+        .section(to.section())
+        .markers(Markers.of(to, after))
+        .earlierMarkers(Markers.of(from, before));
   }
 
   /**

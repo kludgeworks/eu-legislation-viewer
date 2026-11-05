@@ -694,6 +694,19 @@ section.selection.compare {
   color: var(--accent);
 }
 
+/* who made it first, then the note, when each act applies and what it was before, a line each */
+.sidenote .made {
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.sidenote .made + .note,
+.sidenote .applies,
+.sidenote .before {
+  display: block;
+  margin-top: 3px;
+}
+
 .difference-inserted .sidenote {
   border-left-color: var(--ins-ink);
 }

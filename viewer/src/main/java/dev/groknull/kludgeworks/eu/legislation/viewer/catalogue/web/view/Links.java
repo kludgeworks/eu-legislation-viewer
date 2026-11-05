@@ -50,6 +50,14 @@ public final class Links {
     return compare(eli, language) + "?from=" + from.date() + "&to=" + to.date();
   }
 
+  /**
+   * The Changes view of the comparison of {@code from} with {@code to}, as its page loads it:
+   * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&amp;to=2026-10-01.
+   */
+  public static String changes(Eli eli, Version from, Version to, Language language) {
+    return compare(eli, language) + "/changes?from=" + from.date() + "&to=" + to.date();
+  }
+
   /** The stream of the act's preparation in the language (PreparationController). */
   public static String prepare(Eli eli, Language language) {
     return act(eli, language) + "/prepare/events";

@@ -15,8 +15,15 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Failure
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
@@ -24,6 +31,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,6 +44,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * An act's comparison of two versions, in a language (Design: Mode: Compare):
@@ -43,7 +53,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * after To, or without them (the latest version against the one before), it goes to the address
  * that is. The act is prepared whole in the language, every version of it, before the page shows
  * changes: until then it is the preparing page, which becomes this one in place; then the two
- * texts' Changes view loads from the comparison module, by their roots.
+ * texts' Changes view loads from /changes beside it: the comparison module's, by their roots, each
+ * difference with its sidenote, the acts that made it from the act's own facts.
  */
 @Controller
 class CompareController {
@@ -51,13 +62,26 @@ class CompareController {
 
   private final Acts acts;
   private final Texts texts;
+  private final Comparisons comparisons;
+  private final Content content;
   private final Templates templates;
+  private final LegalRenderer html;
   private final Clock clock;
 
-  CompareController(Acts acts, Texts texts, Templates templates, Clock clock) {
+  CompareController(
+      Acts acts,
+      Texts texts,
+      Comparisons comparisons,
+      Content content,
+      Templates templates,
+      LegalRenderer html,
+      Clock clock) {
     this.acts = acts;
     this.texts = texts;
+    this.comparisons = comparisons;
+    this.content = content;
     this.templates = templates;
+    this.html = html;
     this.clock = clock;
   }
 
@@ -133,6 +157,51 @@ class CompareController {
   }
 
   /**
+   * The comparison's Changes view, as its page loads it once both texts are built: the comparison
+   * module's, worked out now if no one has yet, beside the later text's outline, each difference
+   * with its sidenote; 404 at an address that isn't the comparison's, or before both texts are.
+   */
+  @GetMapping(path = PATH + "/changes", produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  String changes(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
+    var page = new Page(new Eli(type, year, number), code, from, to);
+    if (!page.at(from, to)) {
+      throw Requests.notFound();
+    }
+    var preparation = texts.preparation(page.act, page.language);
+    if (!(preparation.texts().get(page.from) instanceof Text.Ready earlier)
+        || !(preparation.texts().get(page.to) instanceof Text.Ready later)) {
+      throw Requests.notFound();
+    }
+    var comparison =
+        comparisons.between(earlier.root(), later.root()).orElseThrow(Requests::notFound);
+    var changes = ChangesView.of(comparison);
+    var sidenotes = new HashMap<Integer, SidenoteView>();
+    for (var passage : changes.passages()) {
+      if (passage instanceof ChangesView.Shown shown) {
+        sidenotes.put(
+            shown.number(),
+            SidenoteView.of(page.act, page.from, page.to, shown.difference(), page.language));
+      }
+    }
+    var outline = content.outline(later.root()).orElseGet(() -> new Outline(List.of()));
+    return templates
+        .catalogueChanges(
+            changes,
+            OutlineView.of(outline, comparison.differences()),
+            sidenotes,
+            html,
+            "/content/" + later.root().hex() + "/units")
+        .render();
+  }
+
+  /**
    * Try again, as the failure panel posts it to the comparison's page: the act's texts that failed
    * where trying again may help, tried again; then the page, preparing once more.
    */
@@ -195,7 +264,7 @@ class CompareController {
      * The changes, once the act is prepared in the language: why a text can't be compared, if
      * either can't, with Try again posting to {@code self}; why the act couldn't be, if none of its
      * texts could; that either is being prepared, if it appeared since; else the Changes view,
-     * loaded from the comparison module.
+     * loaded from beside the page.
      */
     JteModel changes(Preparation preparation, String self) {
       if (preparation.ready() == 0) {
@@ -211,9 +280,8 @@ class CompareController {
                   act, from, to, each == earlier ? from : to, failed.failure(), language, self));
         }
       }
-      if (earlier instanceof Text.Ready before && later instanceof Text.Ready after) {
-        return templates.catalogueCompareReady(
-            "/comparison/" + before.root().hex() + "/" + after.root().hex());
+      if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
+        return templates.catalogueCompareReady(Links.changes(eli, from, to, language));
       }
       // either end a version that appeared since, being prepared
       return templates.catalogueTextArriving();
