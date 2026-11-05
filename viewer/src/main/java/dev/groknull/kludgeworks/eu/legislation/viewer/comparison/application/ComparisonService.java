@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparisonWanted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
@@ -9,21 +10,33 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 
-/** Comparisons of the texts the content module stores, each text read whole (Content.read). */
+/**
+ * Comparisons of the texts the content module stores: kept ones from the store, others worked out
+ * from both texts read whole (Content.read) and kept, in the request that asks for one, or ahead of
+ * it (ComparisonWanted, in the module's own transaction).
+ */
 @Service
 class ComparisonService implements Comparisons {
   private static final Logger LOG = LoggerFactory.getLogger(ComparisonService.class);
 
   private final Content content;
+  private final ComparisonStore comparisons;
 
-  ComparisonService(Content content) {
+  ComparisonService(Content content, ComparisonStore comparisons) {
     this.content = content;
+    this.comparisons = comparisons;
   }
 
   @Override
   public Optional<Comparison> between(ContentHash from, ContentHash to) {
+    var kept = comparisons.find(from, to);
+    if (kept.isPresent()) {
+      LOG.debug("Comparison of {} with {} is kept", from, to);
+      return kept;
+    }
     var start = System.nanoTime();
     var earlier = content.read(from);
     var later = content.read(to);
@@ -32,6 +45,7 @@ class ComparisonService implements Comparisons {
       return Optional.empty();
     }
     var comparison = new Comparison(from, to, Differ.differences(earlier.get(), later.get()));
+    comparisons.add(comparison);
     LOG.info(
         "Compared {} with {}: {} differences in {} ms",
         from,
@@ -39,5 +53,10 @@ class ComparisonService implements Comparisons {
         comparison.differences().size(),
         (System.nanoTime() - start) / 1_000_000);
     return Optional.of(comparison);
+  }
+
+  @ApplicationModuleListener
+  void on(ComparisonWanted wanted) {
+    between(wanted.from(), wanted.to());
   }
 }

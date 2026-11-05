@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "jooq_tables")
+
+# The comparison module's infrastructure: the comparisons in Postgres, with jOOQ
+java_library(
+    name = "infra",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        ":jooq",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/application",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:tools_jackson_core_jackson_core",
+        "@maven//:tools_jackson_core_jackson_databind",
+    ],
+)
+
+# The module's table (comparison) as jOOQ classes, from its migrations
+jooq_tables(
+    name = "jooq",
+    config = "jooq.xml",
+    migrations = ["//viewer/src/main/resources:db/migration/comparison/V1__comparison.sql"],
+    package = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq",
+    deps = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content"],
+)

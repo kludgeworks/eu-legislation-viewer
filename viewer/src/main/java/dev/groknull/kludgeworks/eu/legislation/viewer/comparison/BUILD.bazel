@@ -9,6 +9,7 @@ java_library(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "@maven//:org_jmolecules_jmolecules_ddd",
+        "@maven//:org_jmolecules_jmolecules_events",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_modulith_spring_modulith_api",

@@ -6,8 +6,10 @@
  * catalogue's to say.
  *
  * <p>A sliced onion: the root package is the module's API and part of its domain ring ({@link
- * Comparisons}, a {@link Comparison} and its differences), with the rules that find them ({@code
- * model}); comparing two stored texts is the application ring ({@code application}).
+ * Comparisons}, a {@link Comparison} and its differences, {@link ComparisonWanted}), with the rules
+ * that find them ({@code model}); comparing two stored texts, and keeping the comparison, is the
+ * application ring ({@code application}); the comparisons in Postgres are the infrastructure
+ * ({@code infra}).
  */
 @ApplicationModule(displayName = "Comparison", allowedDependencies = "content")
 @DomainRing

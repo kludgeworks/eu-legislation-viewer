@@ -13,6 +13,9 @@ public interface ActStore {
 
   Optional<Act> find(Eli eli);
 
+  /** The act whose version's text is the document {@code celex} (02015R1998-20260322). */
+  Optional<Act> findByVersion(String celex);
+
   /**
    * Keeps the act, with its versions, unless it is kept already (another reader's first read got
    * there first).

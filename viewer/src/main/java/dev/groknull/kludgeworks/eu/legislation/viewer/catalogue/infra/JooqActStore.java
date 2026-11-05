@@ -6,6 +6,7 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.joo
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static org.jooq.impl.DSL.currentInstant;
+import static org.jooq.impl.DSL.select;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
@@ -54,6 +55,12 @@ class JooqActStore implements ActStore {
   @Transactional(readOnly = true)
   public Optional<Act> find(Eli eli) {
     return find(ACT.ELI.eq(eli));
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Optional<Act> findByVersion(String celex) {
+    return find(ACT.CELEX.in(select(VERSION.ACT).from(VERSION).where(VERSION.CELEX.eq(celex))));
   }
 
   private Optional<Act> find(Condition which) {
