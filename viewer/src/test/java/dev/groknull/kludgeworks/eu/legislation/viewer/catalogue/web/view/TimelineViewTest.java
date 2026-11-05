@@ -70,7 +70,11 @@ class TimelineViewTest {
     var ticks =
         timeline.marks().stream().filter(Tick.class::isInstance).map(Tick.class::cast).toList();
     assertThat(ticks.getFirst().label())
-        .isEqualTo("32015R1998 · from 15 November 2015 · the act as adopted");
+        .isEqualTo("32015R1998 · from 15 November 2015 · the act as published");
+    assertThat(ticks)
+        .extracting(Tick::label)
+        .contains(
+            "02015R1998-20180206 · from 6 February 2018 · no amending act listed for this version");
     assertThat(ticks)
         .extracting(Tick::label)
         .anySatisfy(

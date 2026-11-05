@@ -19,6 +19,26 @@ public final class Links {
     return read(eli, version.date(), language);
   }
 
+  /** An act on EUR-Lex, by its ELI: https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj. */
+  public static String eurLex(Eli eli) {
+    return "https://eur-lex.europa.eu/eli/" + eli.path() + "/oj";
+  }
+
+  /**
+   * A document on EUR-Lex, by its CELEX (an act's, a consolidated version's), in {@code language}.
+   */
+  public static String eurLex(String celex, Language language) {
+    return "https://eur-lex.europa.eu/legal-content/"
+        + language.iso().toUpperCase(Locale.ROOT)
+        + "/TXT/?uri=CELEX:"
+        + celex;
+  }
+
+  /** The act in {@code language}, as the Reading card's date form asks for it with on. */
+  public static String act(Eli eli, Language language) {
+    return "/eli/" + eli.path() + "/" + language.code().toLowerCase(Locale.ROOT);
+  }
+
   /** The page of the version that applies on {@code date}, in {@code language}. */
   public static String read(Eli eli, LocalDate date, Language language) {
     return "/eli/" + eli.path() + "/" + date + "/" + language.code().toLowerCase(Locale.ROOT);

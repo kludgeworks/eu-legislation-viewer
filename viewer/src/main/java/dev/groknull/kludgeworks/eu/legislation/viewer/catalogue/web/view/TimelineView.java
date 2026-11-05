@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.jspecify.annotations.Nullable;
 
@@ -91,7 +90,7 @@ public record TimelineView(
                   return new Lag(
                       from,
                       Math.max(axis.at(lag.includedIn().date()) - from, NARROWEST),
-                      lagging(lag));
+                      Wording.lagOn(lag));
                 })
             .toList(),
         readingAt,
@@ -115,37 +114,17 @@ public record TimelineView(
 
   /** 02015R1998-20170607 · from 7 June 2017 · made by 2017/815, 2017/837. */
   private static String label(Version version) {
-    var made =
-        version.integrates().isEmpty()
-            ? "the act as adopted"
-            : "made by "
-                + version.integrates().stream().map(Wording::act).collect(Collectors.joining(", "));
-    return version.celex() + " · from " + Wording.date(version.date()) + " · " + made;
+    return version.celex()
+        + " · from "
+        + Wording.date(version.date())
+        + " · "
+        + Wording.made(version);
   }
 
   /** 4 versions within 102 days. */
   private static String merged(List<Version> group) {
     var days = ChronoUnit.DAYS.between(group.getFirst().date(), group.getLast().date());
     return group.size() + " versions within " + days + " days";
-  }
-
-  /**
-   * On this date, 2017/815 already applied (from 1 June 2017, Article 2 of 2017/815). No
-   * consolidated version includes it until 7 June 2017.
-   */
-  private static String lagging(Act.Unconsolidated lag) {
-    var act = Wording.act(lag.act());
-    var provisions = lag.appliesFrom().clause().provisions();
-    var where =
-        provisions.isEmpty() ? "" : ", " + Wording.provision(provisions.getFirst()) + " of " + act;
-    return "On this date, "
-        + act
-        + " already applied (from "
-        + Wording.date(lag.from())
-        + where
-        + "). No consolidated version includes it until "
-        + Wording.date(lag.includedIn().date())
-        + ".";
   }
 
   /** A CSS position on the axis: left: 12.34%. */

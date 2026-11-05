@@ -9,6 +9,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
@@ -19,7 +21,6 @@ import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Locale;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -78,9 +79,7 @@ class VersionController {
     var date =
         on != null
             ? on
-            : act.versionOn(LocalDate.ofInstant(clock.instant(), BRUSSELS))
-                .orElseGet(() -> act.timeline().versions().getFirst())
-                .date();
+            : act.versionOn(today()).orElseGet(() -> act.timeline().versions().getFirst()).date();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
         .location(URI.create(Links.read(eli, date, language)))
         .build();
@@ -106,11 +105,10 @@ class VersionController {
             templates
                 .catalogueVersion(
                     Chrome.of(request),
-                    page.act,
                     page.version,
-                    page.language,
-                    page.eurLex(),
+                    MastheadView.of(page.act, page.version, date, page.language),
                     TimelineView.of(page.act, page.version, page.language),
+                    ReadingView.of(page.act, page.version, date, page.language, today()),
                     text)
                 .render());
   }
@@ -154,11 +152,13 @@ class VersionController {
 
     /** The version's text on EUR-Lex, in the language. */
     String eurLex() {
-      return "https://eur-lex.europa.eu/legal-content/"
-          + language.iso().toUpperCase(Locale.ROOT)
-          + "/TXT/?uri=CELEX:"
-          + version.celex();
+      return Links.eurLex(version.celex(), language);
     }
+  }
+
+  /** Today, in Brussels. */
+  private LocalDate today() {
+    return LocalDate.ofInstant(clock.instant(), BRUSSELS);
   }
 
   private static Language language(String code) {

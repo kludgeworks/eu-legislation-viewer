@@ -112,8 +112,7 @@ nav.site {
   color: var(--ink);
 }
 
-.status,
-header.version {
+.status {
   color: var(--muted);
 }
 
@@ -357,12 +356,197 @@ main {
   color: var(--disabled);
 }
 
-header.version p {
-  margin: 0.25rem 0;
+.mono {
+  font-family: ui-monospace, monospace;
 }
 
-.version-celex {
-  font-family: ui-monospace, monospace;
+/* the act page's head (catalogue/masthead.jte): its title, ids and language switch, the mode
+ * switch at the right, a double rule under them */
+header.mast {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px 24px;
+  padding-bottom: 14px;
+  border-bottom: 3px double var(--ink);
+}
+
+header.mast h1 {
+  margin: 0;
+  font: 600 22px/1.25 Georgia, serif;
+  text-wrap: balance;
+}
+
+.ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 13.5px;
+}
+
+.ids > a {
+  color: var(--ink2);
+}
+
+header.mast + .timeline {
+  border-top: 0;
+}
+
+details.lang {
+  position: relative;
+}
+
+details.lang summary {
+  list-style: none;
+  padding: 1px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+details.lang summary::-webkit-details-marker {
+  display: none;
+}
+
+details.lang .menu {
+  position: absolute;
+  z-index: 40;
+  top: 28px;
+  left: 0;
+  width: 320px;
+  padding: 8px 10px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  box-shadow: 0 4px 14px var(--shadow);
+  font-size: 13px;
+}
+
+details.lang .menu p {
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+details.lang ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+details.lang [aria-current] {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+details.lang .menu p.missing {
+  margin: 6px 0 0;
+  color: var(--disabled);
+}
+
+nav.mode {
+  display: flex;
+  border: 1px solid var(--ink);
+  font-size: 14px;
+}
+
+nav.mode > * {
+  padding: 8px 18px;
+}
+
+nav.mode > * + * {
+  border-left: 1px solid var(--ink);
+}
+
+nav.mode [aria-current] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+nav.mode [aria-disabled] {
+  color: var(--disabled);
+  cursor: default;
+}
+
+/* the Reading card (catalogue/reading.jte): the version, its period and makers, where it lags the
+ * law in amber, and the date form */
+section.selection {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--ink2);
+}
+
+.card-kind {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card .card-celex {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card .card-celex:hover {
+  text-decoration: underline;
+}
+
+.card b {
+  color: var(--ink);
+}
+
+.lag-warning {
+  margin-top: 6px;
+  padding: 5px 8px;
+  border: 1px solid var(--warn-line);
+  border-radius: 3px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+form.on {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+form.on input,
+form.on button {
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+
+form.on button {
+  padding: 0 12px;
+  cursor: pointer;
 }
 
 /* the legal text */
