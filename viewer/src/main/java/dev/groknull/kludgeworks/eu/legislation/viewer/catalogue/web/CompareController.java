@@ -2,11 +2,14 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
@@ -18,11 +21,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Prepari
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -33,8 +39,12 @@ import java.net.URI;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -105,12 +115,14 @@ class CompareController {
           @Nullable LocalDate from,
       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate to,
+      @RequestParam(required = false) @Nullable String act,
       @RequestParam(defaultValue = "false") boolean prepared,
       HttpServletRequest request) {
-    var page = new Page(new Eli(type, year, number), code, from, to);
-    if (!page.at(from, to)) {
+    var page = new Page(new Eli(type, year, number), code, from, to, act);
+    if (!page.at(from, to, act)) {
       return ResponseEntity.status(HttpStatus.SEE_OTHER)
-          .location(URI.create(Links.compare(page.eli, page.from, page.to, page.language)))
+          .location(
+              URI.create(Links.compare(page.eli, page.from, page.to, page.language, page.only)))
           .build();
     }
     var preparation = texts.prepare(page.act, page.language);
@@ -154,7 +166,14 @@ class CompareController {
                         page.language,
                         today,
                         TimelineView.states(preparation)),
-                    CompareView.of(page.act, page.from, page.to, page.language, today),
+                    CompareView.of(
+                        page.act,
+                        page.from,
+                        page.to,
+                        page.language,
+                        today,
+                        page.only,
+                        Links.acts(page.eli, page.from, page.to, page.language, page.only)),
                     page.changes(preparation, self(request)),
                     prepared ? PreparingView.receipt(preparation, page.language) : null,
                     ArrivingView.of(page.act, preparation, self(request)).orElse(null))
@@ -164,8 +183,10 @@ class CompareController {
   /**
    * The comparison's Changes view, as its page loads it once both texts are built: the comparison
    * module's, worked out now if no one has yet, beside the later text's outline, each difference
-   * with its sidenote, from its markers and Cellar's amendments of its unit (Act.amended); 404 at
-   * an address that isn't the comparison's, or before both texts are.
+   * with its sidenote, from its markers and Cellar's amendments of its unit (Act.amended). Limited
+   * to an act's changes, the comparison of the version that integrates it with the one before (the
+   * wording just before its change against just after it), the differences it made shown, the
+   * others folded. 404 at an address that isn't the comparison's, or before its texts are.
    */
   @GetMapping(path = PATH + "/changes", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -175,62 +196,185 @@ class CompareController {
       @PathVariable String number,
       @PathVariable("language") String code,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
-    var page = new Page(new Eli(type, year, number), code, from, to);
-    if (!page.at(from, to)) {
-      throw Requests.notFound();
-    }
-    var preparation = texts.preparation(page.act, page.language);
-    if (!(preparation.texts().get(page.from) instanceof Text.Ready earlier)
-        || !(preparation.texts().get(page.to) instanceof Text.Ready later)) {
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @RequestParam(required = false) @Nullable String act) {
+    var page = new Page(new Eli(type, year, number), code, from, to, act);
+    if (!page.at(from, to, act)) {
       throw Requests.notFound();
     }
     var started = System.nanoTime();
-    var comparison =
-        comparisons.between(earlier.root(), later.root()).orElseThrow(Requests::notFound);
-    var changes = ChangesView.of(comparison);
-    var outline = content.outline(later.root()).orElseGet(Outline::empty);
-    var amended =
-        page.act.amended(
-            page.from,
-            page.to,
-            content.outline(earlier.root()).orElseGet(Outline::empty).eIds(),
-            outline.eIds(),
-            page.language);
+    var preparation = texts.preparation(page.act, page.language);
+    var only = page.only;
+    var step = only == null ? null : page.step(only).orElseThrow(Requests::notFound);
+    var earlier = step == null ? page.from : page.earlier(step);
+    var later = step == null ? page.to : step;
+    var attributed =
+        attributed(page, preparation, earlier, later, new HashMap<>())
+            .orElseThrow(Requests::notFound);
+    var changes =
+        only == null
+            ? ChangesView.of(attributed.comparison())
+            : ChangesView.of(
+                attributed.comparison(),
+                difference -> attributed.sidenote(difference).acts().contains(only),
+                "not changed by " + Wording.act(only));
     var sidenotes = new HashMap<Integer, SidenoteView>();
+    var shown = new ArrayList<Difference>();
     for (var passage : changes.passages()) {
-      if (passage instanceof ChangesView.Shown shown) {
-        var difference = shown.difference();
-        sidenotes.put(
-            shown.number(),
-            SidenoteView.of(
-                page.act,
-                page.from,
-                page.to,
-                difference,
-                amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
-                page.language));
+      if (passage instanceof ChangesView.Shown each) {
+        sidenotes.put(each.number(), attributed.sidenote(each.difference()));
+        shown.add(each.difference());
       }
     }
     LOG.info(
-        "Changes of {} from {} to {} in {}: {} differences, {} of Cellar's amendments between them"
-            + " at their units, {} at none, in {} ms",
+        "Changes of {} from {} to {} in {}{}: {} of {} differences, {} of Cellar's amendments"
+            + " between them at their units, {} at none, in {} ms",
         page.act.id(),
-        page.from.date(),
-        page.to.date(),
+        earlier.date(),
+        later.date(),
         page.language.code(),
-        comparison.differences().size(),
-        amended.placed(),
-        amended.unplaced(),
+        only == null ? "" : " by " + only,
+        shown.size(),
+        attributed.comparison().differences().size(),
+        attributed.amended().placed(),
+        attributed.amended().unplaced(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates
         .catalogueChanges(
             changes,
-            OutlineView.of(outline, comparison.differences()),
+            OutlineView.of(attributed.outline(), shown),
             sidenotes,
             html,
-            "/content/" + later.root().hex() + "/units")
+            "/content/" + attributed.later().hex() + "/units",
+            only == null
+                ? null
+                : new CompareView.Only(
+                    Wording.act(only), Links.compare(page.eli, page.from, page.to, page.language)))
         .render();
+  }
+
+  /**
+   * The acts between the comparison's versions, as its page loads them: each with how many
+   * differences it made, in the comparison of the version that integrates it with the one before,
+   * by the same attribution as the sidenotes (Act.amended, the markers); an act whose version's
+   * texts aren't both built left uncounted. 404 at an address that isn't the comparison's.
+   */
+  @GetMapping(path = PATH + "/acts", produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  String acts(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @RequestParam(required = false) @Nullable String act) {
+    var page = new Page(new Eli(type, year, number), code, from, to, act);
+    if (!page.at(from, to, act)) {
+      throw Requests.notFound();
+    }
+    var started = System.nanoTime();
+    var preparation = texts.preparation(page.act, page.language);
+    var between = CompareView.between(page.act, page.from, page.to);
+    var counts = new HashMap<ActIdentifier, Integer>();
+    var outlines = new HashMap<ContentHash, Outline>();
+    var steps = 0;
+    for (var version : page.timeline.versions()) {
+      if (!version.date().isAfter(page.from.date()) || version.date().isAfter(page.to.date())) {
+        continue;
+      }
+      var earlier = page.earlier(version);
+      var attributed = attributed(page, preparation, earlier, version, outlines);
+      if (attributed.isEmpty()) {
+        continue;
+      }
+      steps++;
+      page.act.integratedBetween(earlier, version).stream()
+          .filter(between::contains)
+          .forEach(each -> counts.putIfAbsent(each, 0));
+      for (var sidenote : attributed.get().sidenotes().values()) {
+        for (var each : sidenote.acts()) {
+          counts.computeIfPresent(each, (key, count) -> count + 1);
+        }
+      }
+    }
+    LOG.info(
+        "Acts of {} from {} to {} in {}: {} of {} counted over {} versions, in {} ms",
+        page.act.id(),
+        page.from.date(),
+        page.to.date(),
+        page.language.code(),
+        counts.size(),
+        between.size(),
+        steps,
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
+    return templates
+        .catalogueActs(
+            CompareView.Acts.of(
+                page.act, page.from, page.to, page.language, page.only, counts, null))
+        .render();
+  }
+
+  /**
+   * The comparison of {@code from} with {@code to}, each difference with its sidenote, its outlines
+   * read once each ({@code outlines}, by root); none if either text isn't built.
+   */
+  private Optional<Attributed> attributed(
+      Page page,
+      Preparation preparation,
+      Version from,
+      Version to,
+      Map<ContentHash, Outline> outlines) {
+    if (!(preparation.texts().get(from) instanceof Text.Ready earlier)
+        || !(preparation.texts().get(to) instanceof Text.Ready later)) {
+      return Optional.empty();
+    }
+    var comparison = comparisons.between(earlier.root(), later.root());
+    if (comparison.isEmpty()) {
+      return Optional.empty();
+    }
+    var outline = outline(later.root(), outlines);
+    var amended =
+        page.act.amended(
+            from, to, outline(earlier.root(), outlines).eIds(), outline.eIds(), page.language);
+    var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
+    for (var difference : comparison.get().differences()) {
+      sidenotes.put(
+          difference,
+          SidenoteView.of(
+              page.act,
+              from,
+              to,
+              difference,
+              amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
+              page.language));
+    }
+    return Optional.of(new Attributed(comparison.get(), later.root(), outline, amended, sidenotes));
+  }
+
+  private Outline outline(ContentHash root, Map<ContentHash, Outline> outlines) {
+    return outlines.computeIfAbsent(root, each -> content.outline(each).orElseGet(Outline::empty));
+  }
+
+  /**
+   * A comparison, each difference with its sidenote.
+   *
+   * @param comparison the comparison
+   * @param later the later text's root
+   * @param outline the later text's outline
+   * @param amended Cellar's amendments between the two versions, at the units of their texts
+   * @param sidenotes each difference's sidenote, by the difference
+   */
+  private record Attributed(
+      Comparison comparison,
+      ContentHash later,
+      Outline outline,
+      Amended amended,
+      Map<Difference, SidenoteView> sidenotes) {
+
+    SidenoteView sidenote(Difference difference) {
+      return Objects.requireNonNull(sidenotes.get(difference));
+    }
   }
 
   /**
@@ -246,7 +390,7 @@ class CompareController {
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
       HttpServletRequest request) {
-    var page = new Page(new Eli(type, year, number), code, from, to);
+    var page = new Page(new Eli(type, year, number), code, from, to, null);
     texts.retry(page.act, page.language);
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
         .location(URI.create(Links.compare(page.eli, page.from, page.to, page.language)))
@@ -260,20 +404,28 @@ class CompareController {
 
   /**
    * What a comparison's page shows: the act, the versions that apply on the dates asked in the
-   * language, From the earlier; without dates, the latest and the one before it.
+   * language, From the earlier; without dates, the latest and the one before it; limited to the
+   * changes of the act asked for, if it is one between them.
    */
   private final class Page {
     final Eli eli;
     final Language language;
     final Act act;
+    final Timeline timeline;
     final Version from;
     final Version to;
+    final @Nullable ActIdentifier only;
 
-    Page(Eli eli, String code, @Nullable LocalDate from, @Nullable LocalDate to) {
+    Page(
+        Eli eli,
+        String code,
+        @Nullable LocalDate from,
+        @Nullable LocalDate to,
+        @Nullable String only) {
       this.eli = eli;
       language = Requests.language(code);
       act = acts.find(eli).orElseThrow(Requests::notFound);
-      var timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
+      timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
       var later =
           to == null
               ? timeline.latest()
@@ -285,11 +437,36 @@ class CompareController {
       var swapped = earlier.date().isAfter(later.date());
       this.from = swapped ? later : earlier;
       this.to = swapped ? earlier : later;
+      this.only =
+          only == null
+              ? null
+              : CompareView.between(act, this.from, this.to).stream()
+                  .filter(each -> each.celex().equals(only))
+                  .findFirst()
+                  .orElse(null);
     }
 
-    /** Whether {@code from} and {@code to} are this comparison's address: its versions' days. */
-    boolean at(@Nullable LocalDate from, @Nullable LocalDate to) {
-      return this.from.date().equals(from) && this.to.date().equals(to);
+    /**
+     * Whether {@code from}, {@code to} and {@code only} are this comparison's address: its
+     * versions' days, and an act between them, if any.
+     */
+    boolean at(@Nullable LocalDate from, @Nullable LocalDate to, @Nullable String only) {
+      return this.from.date().equals(from)
+          && this.to.date().equals(to)
+          && Objects.equals(only, this.only == null ? null : this.only.celex());
+    }
+
+    /** The version in the language after From, up to To, that integrates {@code amending}. */
+    Optional<Version> step(ActIdentifier amending) {
+      return timeline.versions().stream()
+          .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
+          .filter(v -> act.integratedBetween(earlier(v), v).contains(amending))
+          .findFirst();
+    }
+
+    /** The version in the language before {@code version}: the text just before its changes. */
+    Version earlier(Version version) {
+      return timeline.predecessor(version).orElse(version);
     }
 
     /**
@@ -313,7 +490,7 @@ class CompareController {
         }
       }
       if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
-        return templates.catalogueCompareReady(Links.changes(eli, from, to, language));
+        return templates.catalogueCompareReady(Links.changes(eli, from, to, language, only));
       }
       // either end a version that appeared since, being prepared
       return templates.catalogueTextArriving();

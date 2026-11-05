@@ -1,11 +1,15 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.util.Locale;
+import org.jspecify.annotations.Nullable;
 
 /**
  * The pages' addresses: an act's by its ELI, as VersionController and CompareController answer
@@ -51,11 +55,35 @@ public final class Links {
   }
 
   /**
-   * The Changes view of the comparison of {@code from} with {@code to}, as its page loads it:
+   * The same, limited to the changes of {@code only} (Design: Acts between the two versions):
+   * …&amp;act=32026R0449; all acts' for none.
+   */
+  public static String compare(
+      Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
+    return compare(eli, from, to, language) + act(only);
+  }
+
+  /**
+   * The Changes view of the comparison of {@code from} with {@code to}, as its page loads it,
+   * limited to the changes of {@code only}, if any:
    * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&amp;to=2026-10-01.
    */
-  public static String changes(Eli eli, Version from, Version to, Language language) {
-    return compare(eli, language) + "/changes?from=" + from.date() + "&to=" + to.date();
+  public static String changes(
+      Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
+    return compare(eli, language) + "/changes?from=" + from.date() + "&to=" + to.date() + act(only);
+  }
+
+  /**
+   * The acts between {@code from} and {@code to}, counted, as the comparison's page loads them,
+   * {@code only}'s chip on, if any: /eli/reg_impl/2015/1998/eng/compare/acts?from=…&amp;to=….
+   */
+  public static String acts(
+      Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
+    return compare(eli, language) + "/acts?from=" + from.date() + "&to=" + to.date() + act(only);
+  }
+
+  private static String act(@Nullable ActIdentifier only) {
+    return only == null ? "" : "&act=" + URLEncoder.encode(only.celex(), StandardCharsets.UTF_8);
   }
 
   /** The stream of the act's preparation in the language (PreparationController). */

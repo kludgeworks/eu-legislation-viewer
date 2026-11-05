@@ -23,12 +23,5 @@
       <span class="arrow" aria-hidden="true">→</span>
     @endif
   @endfor
-  <div class="between">
-    <span class="card-kind">${compare.actsHead()}</span>
-    <div class="chips">
-      @for(var act : compare.acts())
-        <span class="chip mono">${act}</span>
-      @endfor
-    </div>
-  </div>
+  @template.catalogue.acts(acts = compare.acts())
 </section>

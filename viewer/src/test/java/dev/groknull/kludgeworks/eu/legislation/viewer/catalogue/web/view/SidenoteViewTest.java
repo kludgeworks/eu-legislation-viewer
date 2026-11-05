@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Sidenot
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.List;
@@ -146,6 +147,7 @@ class SidenoteViewTest {
         new Difference(
             "anx/pnt_6.8.1.8",
             Kind.DELETED,
+            point("anx/pnt_6.8.1.8"),
             unit("anx/pnt_6.8.1.8"),
             0,
             0,
@@ -204,6 +206,7 @@ class SidenoteViewTest {
         new Difference(
             "anx/pnt_1.0.6",
             Kind.INSERTED,
+            point("anx/pnt_1.0.6"),
             unit("anx/pnt_1.0.6"),
             0,
             0,
@@ -315,6 +318,7 @@ class SidenoteViewTest {
     return new Difference(
         eId,
         Kind.INSERTED,
+        point(eId),
         unit(eId),
         0,
         0,
@@ -328,7 +332,22 @@ class SidenoteViewTest {
 
   private static Difference changed(String eId, List<Marker> markers, List<Marker> earlier) {
     return new Difference(
-        eId, Kind.CHANGED, unit(eId), 0, 0, null, null, null, List.of(), markers, earlier);
+        eId,
+        Kind.CHANGED,
+        point(eId),
+        unit(eId),
+        0,
+        0,
+        null,
+        null,
+        null,
+        List.of(),
+        markers,
+        earlier);
+  }
+
+  private static Sibling point(String eId) {
+    return new Sibling(eId, "point", "");
   }
 
   private static Element unit(String eId) {

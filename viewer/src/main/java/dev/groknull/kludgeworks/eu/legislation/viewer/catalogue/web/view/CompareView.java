@@ -2,12 +2,14 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.soabase.recordbuilder.core.RecordBuilder;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
@@ -15,39 +17,148 @@ import org.jspecify.annotations.Nullable;
  * The From and To cards of a comparison (Design: Mode: Compare), and the acts between them: each
  * card the version by its CELEX, its period, the acts that made it, where its text lags the law,
  * and a form asking for the version on another date for that end, the other kept; the acts, those
- * the versions after From up to To integrate, by number.
+ * the versions after From up to To integrate, each a chip limiting the comparison to its changes.
  *
  * @param from the From card
  * @param to the To card
- * @param actsHead how many acts are between them: 1 act between them
- * @param acts the acts between them, by number, in the versions' order; their corrigenda left out
+ * @param acts the acts between them
  */
-public record CompareView(Card from, Card to, String actsHead, List<String> acts) {
+public record CompareView(Card from, Card to, Acts acts) {
 
-  public CompareView {
-    acts = List.copyOf(acts);
-  }
+  /** Above this many chips, those of acts that made no difference here fold. */
+  private static final int CHIPS = 6;
 
-  /** The cards of {@code act}'s comparison of {@code from} with {@code to}, on {@code today}. */
+  /**
+   * The cards of {@code act}'s comparison of {@code from} with {@code to}, on {@code today}, its
+   * acts' chips {@code only}'s on, if any, uncounted, counted from {@code counting} if they can be.
+   */
   public static CompareView of(
-      Act act, Version from, Version to, Language language, LocalDate today) {
+      Act act,
+      Version from,
+      Version to,
+      Language language,
+      LocalDate today,
+      @Nullable ActIdentifier only,
+      @Nullable String counting) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var action = Links.compare(eli, language);
     var first = act.timeline().versions().getFirst().date().toString();
-    var acts =
-        act.timeline().versions().stream()
-            .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-            .flatMap(v -> v.integrates().stream())
-            .filter(id -> !Wording.corrigendum(id))
-            .distinct()
-            .map(Wording::act)
-            .toList();
     return new CompareView(
         Card.of(act, from, End.FROM, to, language, today, action, first),
         Card.of(act, to, End.TO, from, language, today, action, first),
-        acts.size() + (acts.size() == 1 ? " act between them" : " acts between them"),
-        acts);
+        Acts.of(act, from, to, language, only, Map.of(), counting));
   }
+
+  /**
+   * The acts the versions after {@code from}, up to {@code to}, integrate, in their order, their
+   * corrigenda left out.
+   */
+  public static List<ActIdentifier> between(Act act, Version from, Version to) {
+    return act.timeline().versions().stream()
+        .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
+        .flatMap(v -> v.integrates().stream())
+        .filter(id -> !Wording.corrigendum(id))
+        .distinct()
+        .toList();
+  }
+
+  /**
+   * The acts between the two versions (Design: Acts between the two versions), as chips.
+   *
+   * @param head how many: 1 act between them
+   * @param chips their chips, in the versions' order; counted, more than six, but for those that
+   *     made no difference here
+   * @param none the chips left out, of acts that made no difference here: + 3 with no differences
+   *     here
+   * @param counting where their counts load from, until they're counted; none once they are, or if
+   *     they can't be
+   */
+  public record Acts(String head, List<Chip> chips, List<Chip> none, @Nullable String counting) {
+    public Acts {
+      chips = List.copyOf(chips);
+      none = List.copyOf(none);
+    }
+
+    /**
+     * The acts between {@code from} and {@code to}, {@code only}'s chip on: each with how many
+     * differences it made ({@code counts}), where counted; uncounted, to be from {@code counting},
+     * where none is.
+     */
+    public static Acts of(
+        Act act,
+        Version from,
+        Version to,
+        Language language,
+        @Nullable ActIdentifier only,
+        Map<ActIdentifier, Integer> counts,
+        @Nullable String counting) {
+      var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
+      var acts = between(act, from, to);
+      var chips =
+          acts.stream()
+              .map(
+                  each ->
+                      new Chip(
+                          Wording.act(each),
+                          title(act, each),
+                          counts.get(each),
+                          // on, it shows all acts again
+                          Links.compare(eli, from, to, language, each.equals(only) ? null : each),
+                          each.equals(only)))
+              .toList();
+      var none =
+          chips.size() > CHIPS
+              ? chips.stream()
+                  .filter(chip -> !chip.on() && Integer.valueOf(0).equals(chip.count()))
+                  .toList()
+              : List.<Chip>of();
+      return new Acts(
+          acts.size() + (acts.size() == 1 ? " act between them" : " acts between them"),
+          chips.stream().filter(chip -> !none.contains(chip)).toList(),
+          none,
+          counts.isEmpty() ? counting : null);
+    }
+
+    /** What the chips left out say: + 3 with no differences here. */
+    public String more() {
+      return "+ " + none.size() + " with no differences here";
+    }
+
+    /** An act's chip's hover: 2026/449 · entered into force on 22 March 2026. */
+    private static String title(Act act, ActIdentifier each) {
+      var name = Wording.act(each);
+      return act.datesOf(each).stream()
+          .filter(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE && date.date() != null)
+          .map(
+              date ->
+                  name
+                      + " · entered into force on "
+                      + Wording.date(Objects.requireNonNull(date.date())))
+          .findFirst()
+          .orElse(name);
+    }
+  }
+
+  /**
+   * An act's chip.
+   *
+   * @param label the act, by its number: 2026/449
+   * @param title its hover: the act and when it entered into force
+   * @param count how many differences it made here; none until counted
+   * @param href the comparison limited to its changes; on, the comparison of all acts
+   * @param on whether the comparison is limited to its changes
+   */
+  public record Chip(
+      String label, String title, @Nullable Integer count, String href, boolean on) {}
+
+  /**
+   * A comparison limited to one act's changes, as its banner says it (Design: Acts between the two
+   * versions): Only 2026/449's changes · show all acts.
+   *
+   * @param act the act, by its number
+   * @param all the comparison of all acts
+   */
+  public record Only(String act, String all) {}
 
   /** An end of a comparison: what its card is headed, and its field in the comparison's address. */
   private enum End {

@@ -112,6 +112,40 @@ class ComparePagesTests {
   }
 
   @Test
+  void countsTheDifferencesEachActMadeAndLimitsTheComparisonToOnesChanges() {
+    var acts = Objects.requireNonNull(prepared().getElementById("acts"));
+    var counted =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(acts.attr("hx-get")).retrieve().body(String.class)));
+    var chip = Objects.requireNonNull(counted.selectFirst("#acts a.chip"));
+    assertThat(chip.select(".label").text()).isEqualTo("2026/449");
+    assertThat(chip.select(".count").text()).isEqualTo("6");
+    assertThat(chip.attr("href")).isEqualTo(PAGE + "&act=32026R0449");
+
+    var only =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(chip.attr("href")).retrieve().body(String.class)));
+    var ready = Objects.requireNonNull(only.getElementById("text"));
+    assertThat(ready.attr("hx-get"))
+        .isEqualTo(ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&act=32026R0449");
+    var changes =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(ready.attr("hx-get")).retrieve().body(String.class)));
+    assertThat(changes.select(".controls .only").text())
+        .isEqualTo("Only 2026/449’s changes · show all acts");
+    assertThat(changes.select(".controls .only a").attr("href")).isEqualTo(PAGE);
+    assertThat(changes.select("section.difference")).hasSize(6);
+  }
+
+  @Test
+  void goesToTheComparisonOfAllActsForAnActNotBetweenTheVersions() {
+    assertThat(location(PAGE + "&act=32019R0103")).isEqualTo(URI.create(PAGE));
+  }
+
+  @Test
   void opensAFoldWithItsUnitsFromTheText() {
     var ready = Objects.requireNonNull(prepared().getElementById("text"));
     var changes =

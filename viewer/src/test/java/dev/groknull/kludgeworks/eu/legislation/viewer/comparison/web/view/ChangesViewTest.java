@@ -79,6 +79,41 @@ class ChangesViewTest {
   }
 
   @Test
+  void foldsTheDifferencesAnActFilterLeavesOutWithTheUnitsAroundThem() {
+    var only9 =
+        ChangesView.of(
+            new Comparison(
+                ContentHash.of(new byte[32]),
+                ContentHash.of(new byte[32]),
+                Differ.differences(text("02015R1998-20260322"), text("02015R1998-20261001"))),
+            difference -> difference.eId().startsWith("anx/pnt_9."),
+            "not changed by 2026/449");
+
+    assertThat(only9.passages())
+        .extracting(ChangesViewTest::passage)
+        .containsExactly(
+            "Points 8.1.2.3(a) to 8.1.2.3(g) (7 provisions)",
+            "lead",
+            "Points (a) and (b)",
+            "1",
+            "Point (d)",
+            "2",
+            "Point (f)",
+            "3");
+    assertThat(only9.passages())
+        .filteredOn(Fold.class::isInstance)
+        .map(Fold.class::cast)
+        .extracting(Fold::note)
+        .containsExactly(
+            "not changed by 2026/449", "no differences", "no differences", "no differences");
+    var others = (Fold) only9.passages().getFirst();
+    assertThat(others.eIds()).first().isEqualTo("anx/pnt_8.1.2.3/pnt_a");
+    assertThat(others.eIds()).last().isEqualTo("anx/pnt_8.1.2.3/pnt_g");
+    assertThat(only9.count()).isEqualTo("3 differences");
+    assertThat(only9.numbers()).containsExactly(1, 2, 3);
+  }
+
+  @Test
   void namesAFoldByItsUnitsNums() {
     assertThat(ChangesView.fold(siblings("article", "Article 2", "Article 3", "Article 4")))
         .isEqualTo("Articles 2 to 4");
@@ -91,6 +126,19 @@ class ChangesViewTest {
         .isEqualTo("Recitals (1) to (3)");
     assertThat(ChangesView.fold(siblings("indent", "—", "—"))).isEqualTo("2 indents");
     assertThat(ChangesView.fold(siblings("subparagraph", ""))).isEqualTo("1 subparagraph");
+  }
+
+  @Test
+  void namesAFoldAcrossUnitsByItsFirstAndLastNumsCitingAPointsWithItsPoint() {
+    assertThat(
+            ChangesView.span(
+                List.of(
+                    new Sibling("anx/pnt_11.1.3", "point", "11.1.3"),
+                    new Sibling("anx/pnt_11.2.7", "point", "11.2.7"),
+                    new Sibling("anx/pnt_11.2.7/pnt_a", "point", "(a)"),
+                    new Sibling("anx/pnt_11.2.7/pnt_b", "point", "(b)"))))
+        .isEqualTo("Points 11.1.3 to 11.2.7(b) (4 provisions)");
+    assertThat(ChangesView.span(siblings("indent", "—", "—"))).isEqualTo("2 provisions");
   }
 
   private static String passage(Passage passage) {

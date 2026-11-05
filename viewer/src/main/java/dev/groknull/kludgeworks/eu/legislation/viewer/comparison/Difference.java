@@ -21,6 +21,8 @@ import org.jspecify.annotations.Nullable;
  *
  * @param eId the unit's eId
  * @param kind how it differs
+ * @param unit the unit as a fold names it, as the later text has it (the earlier, for a deleted
+ *     one): where the Changes view folds it with others an act filter leaves out
  * @param shown the unit as the view shows it, marked
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
@@ -41,6 +43,7 @@ import org.jspecify.annotations.Nullable;
 public record Difference(
     String eId,
     Kind kind,
+    Sibling unit,
     Element shown,
     int inserted,
     int deleted,
@@ -68,7 +71,7 @@ public record Difference(
   }
 
   /**
-   * A unit the same in both texts, as a fold names it: Points (a) and (b).
+   * A unit as a fold names it: Points (a) and (b).
    *
    * @param eId its eId
    * @param kind its kind, as legal-text has it: article, point, level…

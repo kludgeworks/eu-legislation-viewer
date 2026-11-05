@@ -1,5 +1,6 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.SidenoteView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @import java.util.Map
@@ -8,13 +9,14 @@
 @param Map<Integer, SidenoteView> sidenotes
 @param LegalRenderer html
 @param String units
+@param CompareView.Only only = null
 <%-- A comparison's Changes view on an act's page (Design: Mode: Compare, Changes): how many
      differences and of what kind, then each provision that differs as it reads, marked, numbered
      beside it with a sidenote: what happened, which acts made it and when each applies, and what it
      was before (sidenotes, by number); the units before it that are the same in both folded, loaded
      from the content module when opened (units, by eId); the opening of the unit it is in, as
      context; and a pager to each difference. Beside it, the later text's outline, its differences
-     counted --%>
+     counted. Limited to one act's changes (only), a banner says so, linking to all acts' --%>
 <div class="outlined">
 <nav class="outline counted" aria-label="Outline">
   <p class="outline-head"><span>Outline</span><span>differences</span></p>
@@ -24,12 +26,13 @@
   <div class="controls">
     <b>${changes.count()}</b>
     @if(changes.breakdown() != null)<span>${changes.breakdown()}</span>@endif
+    @if(only != null)<span class="only" role="status">Only ${only.act()}’s changes · <a href="${only.all()}">show all acts</a></span>@endif
   </div>
   <div class="book legal-text legal-text-consolidated">
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold)
         <details class="fold" hx-get="${units}?${fold.query()}" hx-trigger="toggle once" hx-target="find .fold-text" hx-swap="innerHTML">
-          <summary>${fold.label()} — no differences<span class="show"> · <u>show</u></span></summary>
+          <summary>${fold.label()} — ${fold.note()}<span class="show"> · <u>show</u></span></summary>
           <div class="fold-text"><p class="status">Loading…</p></div>
         </details>
       @elseif(passage instanceof ChangesView.Lead lead)

@@ -630,12 +630,72 @@ section.selection.compare {
   margin: 4px 0;
 }
 
+/* an act's chip: its number, and how many differences it made here; on, the comparison is limited
+ * to its changes; one that made none, quiet */
 .chip {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
   padding: 2px 8px;
   border: 1px solid var(--line);
   border-radius: 3px;
+  color: var(--ink);
   font-size: 13px;
+  text-decoration: none;
+}
+
+a.chip:hover {
+  border-color: var(--ink);
+}
+
+.chip .label {
   font-weight: 600;
+}
+
+.chip .count {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chip.on {
+  padding: 1px 7px;
+  border: 2px solid var(--accent);
+  background: var(--accent-tint);
+}
+
+.chip.zero .label {
+  color: var(--muted2);
+  font-weight: 500;
+}
+
+/* the chips of acts that made no difference here, folded */
+.more-acts > summary {
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  list-style: none;
+}
+
+.more-acts > summary::-webkit-details-marker {
+  display: none;
+}
+
+.more-acts[open] > summary {
+  display: none;
+}
+
+/* the comparison limited to one act's changes, and the way back to all acts' */
+.controls .only {
+  padding: 3px 10px;
+  border-radius: 3px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 13px;
+}
+
+.controls .only a {
+  color: inherit;
 }
 
 /* the comparison's summary: how many differences, of which kinds */

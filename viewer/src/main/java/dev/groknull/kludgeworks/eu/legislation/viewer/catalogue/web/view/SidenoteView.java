@@ -42,12 +42,15 @@ import org.jspecify.annotations.Nullable;
  *
  * @param made who made it: Replaced by 2026/449; Inserted by 2019/103, then replaced by 2021/255;
  *     none where nothing names an act between the two versions
+ * @param acts those acts, in the order the versions integrate them: whose changes it counts in
  * @param dates when each of those acts applies, with what sets it
  * @param before what the unit was before: Before: as replaced by 2023/566; none for an inserted one
  */
-public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable String before) {
+public record SidenoteView(
+    @Nullable String made, List<ActIdentifier> acts, List<Applies> dates, @Nullable String before) {
 
   public SidenoteView {
+    acts = List.copyOf(acts);
     dates = List.copyOf(dates);
   }
 
@@ -75,7 +78,7 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
             ? null
             : before(acts(difference.earlierMarkers(), a -> true));
     if (made.isEmpty()) {
-      return new SidenoteView(null, List.of(), before);
+      return new SidenoteView(null, List.of(), List.of(), before);
     }
     var steps = steps(act, from, to, made.keySet());
     var dates = new ArrayList<Applies>();
@@ -111,7 +114,11 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
               + names(step)
               + (step.size() > 1 ? " together" : ""));
     }
-    return new SidenoteView(String.join(", then ", chain), dates, before);
+    return new SidenoteView(
+        String.join(", then ", chain),
+        steps.stream().flatMap(List::stream).toList(),
+        dates,
+        before);
   }
 
   /**
