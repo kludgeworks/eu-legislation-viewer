@@ -49,6 +49,7 @@
     "org.springframework.boot:spring-boot-dependencies": 98615043,
     "org.springframework.boot:spring-boot-loader-tools": -1122518281,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
+    "org.springframework.boot:spring-boot-starter-data-redis": -194155460,
     "org.springframework.boot:spring-boot-starter-flyway": 432056896,
     "org.springframework.boot:spring-boot-starter-jooq": -1231132277,
     "org.springframework.boot:spring-boot-starter-opentelemetry": 1410419211,
@@ -116,6 +117,7 @@
     "gg.jte:jte-spring-boot-starter-4-core": 2113755859,
     "io.github.java-diff-utils:java-diff-utils": 668781851,
     "io.github.wimdeblauwe:htmx-spring-boot": -826947741,
+    "io.lettuce:lettuce-core": 1593187343,
     "io.micrometer:context-propagation": 1223423881,
     "io.micrometer:micrometer-commons": 440746097,
     "io.micrometer:micrometer-core": -1670822843,
@@ -124,6 +126,15 @@
     "io.micrometer:micrometer-registry-otlp": -1277943056,
     "io.micrometer:micrometer-tracing": -1442202412,
     "io.micrometer:micrometer-tracing-bridge-otel": 65001064,
+    "io.netty:netty-buffer": -294787265,
+    "io.netty:netty-codec-base": -709159638,
+    "io.netty:netty-codec-dns": -2077878597,
+    "io.netty:netty-common": 505449648,
+    "io.netty:netty-handler": -2123705569,
+    "io.netty:netty-resolver": -501408686,
+    "io.netty:netty-resolver-dns": -907771432,
+    "io.netty:netty-transport": 38456572,
+    "io.netty:netty-transport-native-unix-common": 451886035,
     "io.opentelemetry.proto:opentelemetry-proto": 834225494,
     "io.opentelemetry.semconv:opentelemetry-semconv": -646851427,
     "io.opentelemetry:opentelemetry-api": -541719127,
@@ -140,6 +151,7 @@
     "io.opentelemetry:opentelemetry-sdk-logs": -17412482,
     "io.opentelemetry:opentelemetry-sdk-metrics": -1367295569,
     "io.opentelemetry:opentelemetry-sdk-trace": -1401077298,
+    "io.projectreactor:reactor-core": 1433497478,
     "io.r2dbc:r2dbc-spi": -97897091,
     "io.soabase.record-builder:record-builder-core": -1459491078,
     "io.soabase.record-builder:record-builder-processor": -407928797,
@@ -211,6 +223,8 @@
     "org.springframework.boot:spring-boot-actuator": 1574461963,
     "org.springframework.boot:spring-boot-actuator-autoconfigure": -115833215,
     "org.springframework.boot:spring-boot-autoconfigure": 1472557455,
+    "org.springframework.boot:spring-boot-data-commons": 1999396468,
+    "org.springframework.boot:spring-boot-data-redis": 1412747784,
     "org.springframework.boot:spring-boot-flyway": 1122814817,
     "org.springframework.boot:spring-boot-health": -1642279449,
     "org.springframework.boot:spring-boot-http-client": 227691599,
@@ -223,6 +237,7 @@
     "org.springframework.boot:spring-boot-micrometer-observation": 1009262964,
     "org.springframework.boot:spring-boot-micrometer-tracing": -415431154,
     "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": 2078903607,
+    "org.springframework.boot:spring-boot-netty": 211072766,
     "org.springframework.boot:spring-boot-opentelemetry": 1123131315,
     "org.springframework.boot:spring-boot-persistence": -1018883178,
     "org.springframework.boot:spring-boot-restclient": 1077409218,
@@ -230,6 +245,7 @@
     "org.springframework.boot:spring-boot-sql": -1592924234,
     "org.springframework.boot:spring-boot-starter": -1905590456,
     "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
+    "org.springframework.boot:spring-boot-starter-data-redis": 867793389,
     "org.springframework.boot:spring-boot-starter-flyway": -1250505430,
     "org.springframework.boot:spring-boot-starter-jackson": 369527275,
     "org.springframework.boot:spring-boot-starter-jdbc": 683098650,
@@ -250,6 +266,9 @@
     "org.springframework.boot:spring-boot-validation": 75296794,
     "org.springframework.boot:spring-boot-web-server": 1791077981,
     "org.springframework.boot:spring-boot-webmvc": 1644292535,
+    "org.springframework.data:spring-data-commons": 1365953262,
+    "org.springframework.data:spring-data-keyvalue": 1294982872,
+    "org.springframework.data:spring-data-redis": 514606181,
     "org.springframework.modulith:spring-modulith-actuator": -1685703750,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
     "org.springframework.modulith:spring-modulith-apt": -203694605,
@@ -269,9 +288,12 @@
     "org.springframework:spring-aop": 2140047740,
     "org.springframework:spring-beans": -52091312,
     "org.springframework:spring-context": -1592913882,
+    "org.springframework:spring-context-support": -581712494,
     "org.springframework:spring-core": 1717580005,
     "org.springframework:spring-expression": -368645642,
     "org.springframework:spring-jdbc": 594161485,
+    "org.springframework:spring-messaging": -1748332337,
+    "org.springframework:spring-oxm": 1138425481,
     "org.springframework:spring-test": 439340573,
     "org.springframework:spring-tx": 1278511811,
     "org.springframework:spring-web": -1087826926,
@@ -288,6 +310,7 @@
     "org.xmlunit:xmlunit-assertj3": -1691431030,
     "org.xmlunit:xmlunit-core": -1543079851,
     "org.yaml:snakeyaml": 1068613154,
+    "redis.clients.authentication:redis-authx-core": 1112364113,
     "tech.picnic.error-prone-support:error-prone-contrib": 618715265,
     "tech.picnic.error-prone-support:error-prone-utils": -1035496961,
     "tech.picnic.error-prone-support:refaster-support": -1353830760,
@@ -325,6 +348,7 @@
     "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.1.1",
     "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
+    "org.springframework.boot:spring-boot-starter-data-redis": "org.springframework.boot:spring-boot-starter-data-redis:4.1.1",
     "org.springframework.boot:spring-boot-starter-flyway": "org.springframework.boot:spring-boot-starter-flyway:4.1.1",
     "org.springframework.boot:spring-boot-starter-jooq": "org.springframework.boot:spring-boot-starter-jooq:4.1.1",
     "org.springframework.boot:spring-boot-starter-opentelemetry": "org.springframework.boot:spring-boot-starter-opentelemetry:4.1.1",
@@ -567,6 +591,12 @@
       },
       "version": "6.0.1"
     },
+    "io.lettuce:lettuce-core": {
+      "shasums": {
+        "jar": "86e245a6cfc36a40aaa1f54027e639a70cb4008d12717164041aefe9bbd072c1"
+      },
+      "version": "7.5.2.RELEASE"
+    },
     "io.micrometer:context-propagation": {
       "shasums": {
         "jar": "5b69e2100640879ccf4b20673ced86de560b8e217b55542f85a53d3563b72aaa"
@@ -614,6 +644,60 @@
         "jar": "3c9de2464049c10ed2f2575de51c15dab79cbe4487ec13e65687e57db9c233b6"
       },
       "version": "1.7.1"
+    },
+    "io.netty:netty-buffer": {
+      "shasums": {
+        "jar": "0d249178ec0204b35a6ad3e5ac8a6c2ecb3eb496c6cdae40b8eca4fa3cb6a0c7"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-codec-base": {
+      "shasums": {
+        "jar": "3b92bc3b7d231fa6f4889b2b9281cae6b634428b8121fb1b9b5fccba1543d352"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-codec-dns": {
+      "shasums": {
+        "jar": "394f4649a824683735f28b299d0a48caff059ae30e654e2abf8b3f392af4d374"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-common": {
+      "shasums": {
+        "jar": "502aae2a6680e9bca3558a3fa098f06dc4d87340b8b714e925a6d690871c092a"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-handler": {
+      "shasums": {
+        "jar": "4df11c7520b556c5e2c84b939182699d48fcbb09e97a6bb5e1c0b6835227d126"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-resolver": {
+      "shasums": {
+        "jar": "7a4b599b9c0c29a505d3b7311f142df883fb27d0f67495a7cbaf533b0e456623"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-resolver-dns": {
+      "shasums": {
+        "jar": "d332481c22136a68c2ee9e45e86212174932587d93a5dd4d201e196828bf9f91"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-transport": {
+      "shasums": {
+        "jar": "d2409ce3a735cbab4188d0ea5d82abed823a6a07a8389f49af4a9e1243a562bc"
+      },
+      "version": "4.2.17.Final"
+    },
+    "io.netty:netty-transport-native-unix-common": {
+      "shasums": {
+        "jar": "e01aa467b9104de54a57c08c290f70b22e53ec97cf5583c87c112170ef5832cc"
+      },
+      "version": "4.2.17.Final"
     },
     "io.opentelemetry.proto:opentelemetry-proto": {
       "shasums": {
@@ -710,6 +794,12 @@
         "jar": "fb6c0953b229a6da1db813135ae11a621bf9da56b7356c1e93049ed4b088c232"
       },
       "version": "1.62.0"
+    },
+    "io.projectreactor:reactor-core": {
+      "shasums": {
+        "jar": "9a5f1bfc5ad0416a410ff63beaa279cc30c2da3ae9b111a678c83c99298a1551"
+      },
+      "version": "3.8.7"
     },
     "io.r2dbc:r2dbc-spi": {
       "shasums": {
@@ -1137,6 +1227,18 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-data-commons": {
+      "shasums": {
+        "jar": "e9911b99825ea5650827ec1e2d2fc1890c7e63b6f048c1f4dba2c8e85ff6d354"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-data-redis": {
+      "shasums": {
+        "jar": "8df7709a73616c85f12fbee0476a2856a766cda70c6ad87c9a24062b8fe34c91"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-flyway": {
       "shasums": {
         "jar": "61db32d08f2b1b04cf006e916575da22ecee0a2e0bb0604aca26c04f7bd4aa0e"
@@ -1209,6 +1311,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-netty": {
+      "shasums": {
+        "jar": "09f218966bcdc79014269b2e79fc705761d9d15113ad7cecc5333ebf0e7ee630"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-opentelemetry": {
       "shasums": {
         "jar": "ad9c45771cc8ce7af0e5abdf1ebd083777335b097acbbbc260d4c604eb8ec342"
@@ -1248,6 +1356,12 @@
     "org.springframework.boot:spring-boot-starter-actuator": {
       "shasums": {
         "jar": "d26bb8461ccc417c97a869fbd2e9f0067ce8a56a9ab6058093097ca16e4cc128"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-data-redis": {
+      "shasums": {
+        "jar": "98b8367cff4cc11005e43452c45dafd0ce9c7f66d20411e6f0850c99bc79575d"
       },
       "version": "4.1.1"
     },
@@ -1371,6 +1485,24 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.data:spring-data-commons": {
+      "shasums": {
+        "jar": "cf2a3f9bfabefca1a8c2c0f0a65c393d9ff83b0cb1cf7b705accac18a6ed0ee4"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-keyvalue": {
+      "shasums": {
+        "jar": "e8986c8e2577d271096266335a798c8fb5df91fd2fdf85607252056884fb554d"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.data:spring-data-redis": {
+      "shasums": {
+        "jar": "ad609b5a51bb8591cd923d358125a65d9bea193f79480a37ae60a1d0d5ae55b2"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.modulith:spring-modulith-actuator": {
       "shasums": {
         "jar": "49f749e1461ad8024cd3e987bbe9b3b3d5dd1cf31034b59c60dda4b9fb41c3e4"
@@ -1485,6 +1617,12 @@
       },
       "version": "7.0.9"
     },
+    "org.springframework:spring-context-support": {
+      "shasums": {
+        "jar": "3c0c35a0371539f5e7d4e9d0226b9a009a4109cd0e20e805e27132dd6ae0727d"
+      },
+      "version": "7.0.9"
+    },
     "org.springframework:spring-core": {
       "shasums": {
         "jar": "5195f4722699b39878d99a832549fe65df2890b159d063b88fff31b1ca65ae36"
@@ -1500,6 +1638,18 @@
     "org.springframework:spring-jdbc": {
       "shasums": {
         "jar": "ca0d9af1c5721eef8cac1f94c8b9d27a753248bc33c86e3472bd3d1dbd78f450"
+      },
+      "version": "7.0.9"
+    },
+    "org.springframework:spring-messaging": {
+      "shasums": {
+        "jar": "19ea7561e5d61e19bee0c94733d03bbf9384c9356eea2d4e90cce7ba3c0ab01b"
+      },
+      "version": "7.0.9"
+    },
+    "org.springframework:spring-oxm": {
+      "shasums": {
+        "jar": "213b742973516a7ae0846c79757cf905b634e2367ee0bdc0c34a067d365f922b"
       },
       "version": "7.0.9"
     },
@@ -1593,6 +1743,12 @@
         "jar": "c8f7a98e7394adda02f6317249710e4d1b4c7a25aa8c7eace0c2eea52eb8bf85"
       },
       "version": "2.6"
+    },
+    "redis.clients.authentication:redis-authx-core": {
+      "shasums": {
+        "jar": "cc56edb08b3df8562cddac108dca61907d21cc4ad04de05e9f5d1b01058390af"
+      },
+      "version": "0.1.1-beta2"
     },
     "tech.picnic.error-prone-support:error-prone-contrib": {
       "shasums": {
@@ -1697,6 +1853,14 @@
     "io.github.wimdeblauwe:htmx-spring-boot": [
       "org.springframework.boot:spring-boot-starter"
     ],
+    "io.lettuce:lettuce-core": [
+      "io.netty:netty-common",
+      "io.netty:netty-handler",
+      "io.netty:netty-resolver-dns",
+      "io.netty:netty-transport",
+      "io.projectreactor:reactor-core",
+      "redis.clients.authentication:redis-authx-core"
+    ],
     "io.micrometer:context-propagation": [
       "org.jspecify:jspecify"
     ],
@@ -1740,6 +1904,50 @@
       "io.opentelemetry:opentelemetry-sdk-trace",
       "org.jspecify:jspecify",
       "org.slf4j:slf4j-api"
+    ],
+    "io.netty:netty-buffer": [
+      "io.netty:netty-common"
+    ],
+    "io.netty:netty-codec-base": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-common",
+      "io.netty:netty-transport"
+    ],
+    "io.netty:netty-codec-dns": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-common",
+      "io.netty:netty-transport"
+    ],
+    "io.netty:netty-handler": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-common",
+      "io.netty:netty-resolver",
+      "io.netty:netty-transport",
+      "io.netty:netty-transport-native-unix-common"
+    ],
+    "io.netty:netty-resolver": [
+      "io.netty:netty-common"
+    ],
+    "io.netty:netty-resolver-dns": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-codec-dns",
+      "io.netty:netty-common",
+      "io.netty:netty-handler",
+      "io.netty:netty-resolver",
+      "io.netty:netty-transport"
+    ],
+    "io.netty:netty-transport": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-common",
+      "io.netty:netty-resolver"
+    ],
+    "io.netty:netty-transport-native-unix-common": [
+      "io.netty:netty-buffer",
+      "io.netty:netty-common",
+      "io.netty:netty-transport"
     ],
     "io.opentelemetry.proto:opentelemetry-proto": [
       "com.google.protobuf:protobuf-java"
@@ -1797,6 +2005,10 @@
     "io.opentelemetry:opentelemetry-sdk-trace": [
       "io.opentelemetry:opentelemetry-api",
       "io.opentelemetry:opentelemetry-sdk-common"
+    ],
+    "io.projectreactor:reactor-core": [
+      "org.jspecify:jspecify",
+      "org.reactivestreams:reactive-streams"
     ],
     "io.r2dbc:r2dbc-spi": [
       "org.reactivestreams:reactive-streams"
@@ -1974,6 +2186,19 @@
     "org.springframework.boot:spring-boot-autoconfigure": [
       "org.springframework.boot:spring-boot"
     ],
+    "org.springframework.boot:spring-boot-data-commons": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-persistence",
+      "org.springframework.data:spring-data-commons"
+    ],
+    "org.springframework.boot:spring-boot-data-redis": [
+      "io.lettuce:lettuce-core",
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-data-commons",
+      "org.springframework.boot:spring-boot-netty",
+      "org.springframework.boot:spring-boot-transaction",
+      "org.springframework.data:spring-data-redis"
+    ],
     "org.springframework.boot:spring-boot-flyway": [
       "org.flywaydb:flyway-core",
       "org.springframework.boot:spring-boot",
@@ -2031,6 +2256,10 @@
       "org.springframework.boot:spring-boot-micrometer-tracing",
       "org.springframework.boot:spring-boot-opentelemetry"
     ],
+    "org.springframework.boot:spring-boot-netty": [
+      "io.netty:netty-common",
+      "org.springframework.boot:spring-boot"
+    ],
     "org.springframework.boot:spring-boot-opentelemetry": [
       "io.opentelemetry:opentelemetry-api",
       "io.opentelemetry:opentelemetry-sdk",
@@ -2065,6 +2294,11 @@
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-micrometer-metrics"
+    ],
+    "org.springframework.boot:spring-boot-starter-data-redis": [
+      "org.springframework.boot:spring-boot-data-redis",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework:spring-messaging"
     ],
     "org.springframework.boot:spring-boot-starter-flyway": [
       "org.springframework.boot:spring-boot-flyway",
@@ -2169,6 +2403,25 @@
       "org.springframework.boot:spring-boot-servlet",
       "org.springframework:spring-web",
       "org.springframework:spring-webmvc"
+    ],
+    "org.springframework.data:spring-data-commons": [
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
+    ],
+    "org.springframework.data:spring-data-keyvalue": [
+      "org.slf4j:slf4j-api",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework:spring-context",
+      "org.springframework:spring-tx"
+    ],
+    "org.springframework.data:spring-data-redis": [
+      "org.slf4j:slf4j-api",
+      "org.springframework.data:spring-data-keyvalue",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-context-support",
+      "org.springframework:spring-oxm",
+      "org.springframework:spring-tx"
     ],
     "org.springframework.modulith:spring-modulith-actuator": [
       "org.jspecify:jspecify",
@@ -2280,6 +2533,11 @@
       "org.springframework:spring-core",
       "org.springframework:spring-expression"
     ],
+    "org.springframework:spring-context-support": [
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core"
+    ],
     "org.springframework:spring-core": [
       "commons-logging:commons-logging",
       "org.jspecify:jspecify"
@@ -2291,6 +2549,15 @@
       "org.springframework:spring-beans",
       "org.springframework:spring-core",
       "org.springframework:spring-tx"
+    ],
+    "org.springframework:spring-messaging": [
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
+    ],
+    "org.springframework:spring-oxm": [
+      "jakarta.xml.bind:jakarta.xml.bind-api",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-core"
     ],
     "org.springframework:spring-test": [
       "org.springframework:spring-core"
@@ -2340,6 +2607,9 @@
     ],
     "org.xmlunit:xmlunit-core": [
       "jakarta.xml.bind:jakarta.xml.bind-api"
+    ],
+    "redis.clients.authentication:redis-authx-core": [
+      "org.slf4j:slf4j-api"
     ],
     "tech.picnic.error-prone-support:error-prone-contrib": [
       "tech.picnic.error-prone-support:error-prone-utils",
@@ -2785,6 +3055,86 @@
       "io.github.wimdeblauwe.htmx.spring.boot.mvc",
       "io.github.wimdeblauwe.htmx.spring.boot.security"
     ],
+    "io.lettuce:lettuce-core": [
+      "io.lettuce.authx",
+      "io.lettuce.core",
+      "io.lettuce.core.annotations",
+      "io.lettuce.core.api",
+      "io.lettuce.core.api.async",
+      "io.lettuce.core.api.coroutines",
+      "io.lettuce.core.api.push",
+      "io.lettuce.core.api.reactive",
+      "io.lettuce.core.api.sync",
+      "io.lettuce.core.cluster",
+      "io.lettuce.core.cluster.api",
+      "io.lettuce.core.cluster.api.async",
+      "io.lettuce.core.cluster.api.coroutines",
+      "io.lettuce.core.cluster.api.push",
+      "io.lettuce.core.cluster.api.reactive",
+      "io.lettuce.core.cluster.api.sync",
+      "io.lettuce.core.cluster.event",
+      "io.lettuce.core.cluster.models.partitions",
+      "io.lettuce.core.cluster.models.slots",
+      "io.lettuce.core.cluster.pubsub",
+      "io.lettuce.core.cluster.pubsub.api.async",
+      "io.lettuce.core.cluster.pubsub.api.reactive",
+      "io.lettuce.core.cluster.pubsub.api.sync",
+      "io.lettuce.core.cluster.topology",
+      "io.lettuce.core.codec",
+      "io.lettuce.core.datastructure.queue",
+      "io.lettuce.core.dynamic",
+      "io.lettuce.core.dynamic.annotation",
+      "io.lettuce.core.dynamic.batch",
+      "io.lettuce.core.dynamic.codec",
+      "io.lettuce.core.dynamic.domain",
+      "io.lettuce.core.dynamic.intercept",
+      "io.lettuce.core.dynamic.output",
+      "io.lettuce.core.dynamic.parameter",
+      "io.lettuce.core.dynamic.segment",
+      "io.lettuce.core.dynamic.support",
+      "io.lettuce.core.event",
+      "io.lettuce.core.event.cluster",
+      "io.lettuce.core.event.command",
+      "io.lettuce.core.event.connection",
+      "io.lettuce.core.event.jfr",
+      "io.lettuce.core.event.metrics",
+      "io.lettuce.core.failover",
+      "io.lettuce.core.failover.api",
+      "io.lettuce.core.failover.event",
+      "io.lettuce.core.failover.health",
+      "io.lettuce.core.failover.metrics",
+      "io.lettuce.core.internal",
+      "io.lettuce.core.json",
+      "io.lettuce.core.json.arguments",
+      "io.lettuce.core.masterreplica",
+      "io.lettuce.core.masterslave",
+      "io.lettuce.core.metrics",
+      "io.lettuce.core.models.command",
+      "io.lettuce.core.models.role",
+      "io.lettuce.core.models.stream",
+      "io.lettuce.core.output",
+      "io.lettuce.core.protocol",
+      "io.lettuce.core.pubsub",
+      "io.lettuce.core.pubsub.api.async",
+      "io.lettuce.core.pubsub.api.reactive",
+      "io.lettuce.core.pubsub.api.sync",
+      "io.lettuce.core.resource",
+      "io.lettuce.core.search",
+      "io.lettuce.core.search.aggregateutils",
+      "io.lettuce.core.search.arguments",
+      "io.lettuce.core.search.arguments.hybrid",
+      "io.lettuce.core.sentinel",
+      "io.lettuce.core.sentinel.api",
+      "io.lettuce.core.sentinel.api.async",
+      "io.lettuce.core.sentinel.api.coroutines",
+      "io.lettuce.core.sentinel.api.reactive",
+      "io.lettuce.core.sentinel.api.sync",
+      "io.lettuce.core.support",
+      "io.lettuce.core.support.caching",
+      "io.lettuce.core.support.http",
+      "io.lettuce.core.tracing",
+      "io.lettuce.core.vector"
+    ],
     "io.micrometer:context-propagation": [
       "io.micrometer.context",
       "io.micrometer.context.integration"
@@ -2875,6 +3225,72 @@
     "io.micrometer:micrometer-tracing-bridge-otel": [
       "io.micrometer.tracing.otel.bridge",
       "io.micrometer.tracing.otel.propagation"
+    ],
+    "io.netty:netty-buffer": [
+      "io.netty.buffer",
+      "io.netty.buffer.search"
+    ],
+    "io.netty:netty-codec-base": [
+      "io.netty.handler.codec",
+      "io.netty.handler.codec.base64",
+      "io.netty.handler.codec.bytes",
+      "io.netty.handler.codec.json",
+      "io.netty.handler.codec.serialization",
+      "io.netty.handler.codec.string"
+    ],
+    "io.netty:netty-codec-dns": [
+      "io.netty.handler.codec.dns"
+    ],
+    "io.netty:netty-common": [
+      "io.netty.util",
+      "io.netty.util.collection",
+      "io.netty.util.concurrent",
+      "io.netty.util.internal",
+      "io.netty.util.internal.logging",
+      "io.netty.util.internal.shaded.org.jctools.counters",
+      "io.netty.util.internal.shaded.org.jctools.maps",
+      "io.netty.util.internal.shaded.org.jctools.queues",
+      "io.netty.util.internal.shaded.org.jctools.queues.atomic",
+      "io.netty.util.internal.shaded.org.jctools.queues.atomic.unpadded",
+      "io.netty.util.internal.shaded.org.jctools.queues.unpadded",
+      "io.netty.util.internal.shaded.org.jctools.util",
+      "io.netty.util.internal.svm"
+    ],
+    "io.netty:netty-handler": [
+      "io.netty.handler.address",
+      "io.netty.handler.flow",
+      "io.netty.handler.flush",
+      "io.netty.handler.ipfilter",
+      "io.netty.handler.logging",
+      "io.netty.handler.pcap",
+      "io.netty.handler.ssl",
+      "io.netty.handler.ssl.util",
+      "io.netty.handler.stream",
+      "io.netty.handler.timeout",
+      "io.netty.handler.traffic"
+    ],
+    "io.netty:netty-resolver": [
+      "io.netty.resolver"
+    ],
+    "io.netty:netty-resolver-dns": [
+      "io.netty.resolver.dns"
+    ],
+    "io.netty:netty-transport": [
+      "io.netty.bootstrap",
+      "io.netty.channel",
+      "io.netty.channel.embedded",
+      "io.netty.channel.group",
+      "io.netty.channel.internal",
+      "io.netty.channel.local",
+      "io.netty.channel.nio",
+      "io.netty.channel.oio",
+      "io.netty.channel.pool",
+      "io.netty.channel.socket",
+      "io.netty.channel.socket.nio",
+      "io.netty.channel.socket.oio"
+    ],
+    "io.netty:netty-transport-native-unix-common": [
+      "io.netty.channel.unix"
     ],
     "io.opentelemetry.proto:opentelemetry-proto": [
       "io.opentelemetry.proto.collector.logs.v1",
@@ -3002,6 +3418,20 @@
       "io.opentelemetry.sdk.trace.export",
       "io.opentelemetry.sdk.trace.internal",
       "io.opentelemetry.sdk.trace.samplers"
+    ],
+    "io.projectreactor:reactor-core": [
+      "reactor.adapter",
+      "reactor.core",
+      "reactor.core.observability",
+      "reactor.core.publisher",
+      "reactor.core.scheduler",
+      "reactor.util",
+      "reactor.util.annotation",
+      "reactor.util.concurrent",
+      "reactor.util.context",
+      "reactor.util.function",
+      "reactor.util.repeat",
+      "reactor.util.retry"
     ],
     "io.r2dbc:r2dbc-spi": [
       "io.r2dbc.spi"
@@ -4131,6 +4561,19 @@
       "org.springframework.boot.autoconfigure.web",
       "org.springframework.boot.autoconfigure.web.format"
     ],
+    "org.springframework.boot:spring-boot-data-commons": [
+      "org.springframework.boot.data.autoconfigure.metrics",
+      "org.springframework.boot.data.autoconfigure.web",
+      "org.springframework.boot.data.metrics"
+    ],
+    "org.springframework.boot:spring-boot-data-redis": [
+      "org.springframework.boot.data.redis.autoconfigure",
+      "org.springframework.boot.data.redis.autoconfigure.health",
+      "org.springframework.boot.data.redis.autoconfigure.observation",
+      "org.springframework.boot.data.redis.docker.compose",
+      "org.springframework.boot.data.redis.health",
+      "org.springframework.boot.data.redis.testcontainers"
+    ],
     "org.springframework.boot:spring-boot-flyway": [
       "org.springframework.boot.flyway",
       "org.springframework.boot.flyway.actuate.endpoint",
@@ -4235,6 +4678,9 @@
       "org.springframework.boot.micrometer.tracing.opentelemetry.docker.compose.otlp",
       "org.springframework.boot.micrometer.tracing.opentelemetry.testcontainers.otlp"
     ],
+    "org.springframework.boot:spring-boot-netty": [
+      "org.springframework.boot.netty.autoconfigure"
+    ],
     "org.springframework.boot:spring-boot-opentelemetry": [
       "org.springframework.boot.opentelemetry.autoconfigure",
       "org.springframework.boot.opentelemetry.autoconfigure.logging",
@@ -4332,6 +4778,109 @@
       "org.springframework.boot.webmvc.autoconfigure.actuate.web.mappings",
       "org.springframework.boot.webmvc.autoconfigure.error",
       "org.springframework.boot.webmvc.error"
+    ],
+    "org.springframework.data:spring-data-commons": [
+      "org.springframework.data.annotation",
+      "org.springframework.data.aot",
+      "org.springframework.data.auditing",
+      "org.springframework.data.auditing.config",
+      "org.springframework.data.config",
+      "org.springframework.data.convert",
+      "org.springframework.data.core",
+      "org.springframework.data.crossstore",
+      "org.springframework.data.domain",
+      "org.springframework.data.domain.jaxb",
+      "org.springframework.data.expression",
+      "org.springframework.data.geo",
+      "org.springframework.data.geo.format",
+      "org.springframework.data.history",
+      "org.springframework.data.javapoet",
+      "org.springframework.data.mapping",
+      "org.springframework.data.mapping.callback",
+      "org.springframework.data.mapping.context",
+      "org.springframework.data.mapping.model",
+      "org.springframework.data.projection",
+      "org.springframework.data.querydsl",
+      "org.springframework.data.querydsl.aot",
+      "org.springframework.data.querydsl.binding",
+      "org.springframework.data.repository",
+      "org.springframework.data.repository.aot.generate",
+      "org.springframework.data.repository.aot.hint",
+      "org.springframework.data.repository.cdi",
+      "org.springframework.data.repository.config",
+      "org.springframework.data.repository.core",
+      "org.springframework.data.repository.core.support",
+      "org.springframework.data.repository.history",
+      "org.springframework.data.repository.history.support",
+      "org.springframework.data.repository.init",
+      "org.springframework.data.repository.kotlin",
+      "org.springframework.data.repository.query",
+      "org.springframework.data.repository.query.parser",
+      "org.springframework.data.repository.reactive",
+      "org.springframework.data.repository.support",
+      "org.springframework.data.repository.util",
+      "org.springframework.data.spel",
+      "org.springframework.data.spel.spi",
+      "org.springframework.data.support",
+      "org.springframework.data.transaction",
+      "org.springframework.data.util",
+      "org.springframework.data.web",
+      "org.springframework.data.web.aot",
+      "org.springframework.data.web.config",
+      "org.springframework.data.web.querydsl"
+    ],
+    "org.springframework.data:spring-data-keyvalue": [
+      "org.springframework.data.keyvalue.annotation",
+      "org.springframework.data.keyvalue.aot",
+      "org.springframework.data.keyvalue.core",
+      "org.springframework.data.keyvalue.core.event",
+      "org.springframework.data.keyvalue.core.mapping",
+      "org.springframework.data.keyvalue.core.mapping.context",
+      "org.springframework.data.keyvalue.core.query",
+      "org.springframework.data.keyvalue.repository",
+      "org.springframework.data.keyvalue.repository.config",
+      "org.springframework.data.keyvalue.repository.query",
+      "org.springframework.data.keyvalue.repository.support",
+      "org.springframework.data.map",
+      "org.springframework.data.map.repository.config"
+    ],
+    "org.springframework.data:spring-data-redis": [
+      "org.springframework.data.redis",
+      "org.springframework.data.redis.annotation",
+      "org.springframework.data.redis.aot",
+      "org.springframework.data.redis.cache",
+      "org.springframework.data.redis.config",
+      "org.springframework.data.redis.connection",
+      "org.springframework.data.redis.connection.convert",
+      "org.springframework.data.redis.connection.jedis",
+      "org.springframework.data.redis.connection.lettuce",
+      "org.springframework.data.redis.connection.lettuce.aot",
+      "org.springframework.data.redis.connection.stream",
+      "org.springframework.data.redis.connection.util",
+      "org.springframework.data.redis.connection.zset",
+      "org.springframework.data.redis.core",
+      "org.springframework.data.redis.core.convert",
+      "org.springframework.data.redis.core.index",
+      "org.springframework.data.redis.core.mapping",
+      "org.springframework.data.redis.core.query",
+      "org.springframework.data.redis.core.script",
+      "org.springframework.data.redis.core.types",
+      "org.springframework.data.redis.domain.geo",
+      "org.springframework.data.redis.hash",
+      "org.springframework.data.redis.listener",
+      "org.springframework.data.redis.listener.adapter",
+      "org.springframework.data.redis.listener.support",
+      "org.springframework.data.redis.messaging",
+      "org.springframework.data.redis.repository.cdi",
+      "org.springframework.data.redis.repository.configuration",
+      "org.springframework.data.redis.repository.core",
+      "org.springframework.data.redis.repository.query",
+      "org.springframework.data.redis.repository.support",
+      "org.springframework.data.redis.serializer",
+      "org.springframework.data.redis.stream",
+      "org.springframework.data.redis.support.atomic",
+      "org.springframework.data.redis.support.collections",
+      "org.springframework.data.redis.util"
     ],
     "org.springframework.modulith:spring-modulith-actuator": [
       "org.springframework.modulith.actuator",
@@ -4520,6 +5069,17 @@
       "org.springframework.validation.method",
       "org.springframework.validation.support"
     ],
+    "org.springframework:spring-context-support": [
+      "org.springframework.cache.caffeine",
+      "org.springframework.cache.jcache",
+      "org.springframework.cache.jcache.config",
+      "org.springframework.cache.jcache.interceptor",
+      "org.springframework.cache.transaction",
+      "org.springframework.mail",
+      "org.springframework.mail.javamail",
+      "org.springframework.scheduling.quartz",
+      "org.springframework.ui.freemarker"
+    ],
     "org.springframework:spring-core": [
       "org.springframework.aot",
       "org.springframework.aot.generate",
@@ -4608,6 +5168,39 @@
       "org.springframework.jdbc.support.lob",
       "org.springframework.jdbc.support.rowset",
       "org.springframework.jdbc.support.xml"
+    ],
+    "org.springframework:spring-messaging": [
+      "org.springframework.messaging",
+      "org.springframework.messaging.converter",
+      "org.springframework.messaging.core",
+      "org.springframework.messaging.handler",
+      "org.springframework.messaging.handler.annotation",
+      "org.springframework.messaging.handler.annotation.reactive",
+      "org.springframework.messaging.handler.annotation.support",
+      "org.springframework.messaging.handler.invocation",
+      "org.springframework.messaging.handler.invocation.reactive",
+      "org.springframework.messaging.rsocket",
+      "org.springframework.messaging.rsocket.annotation",
+      "org.springframework.messaging.rsocket.annotation.support",
+      "org.springframework.messaging.rsocket.service",
+      "org.springframework.messaging.simp",
+      "org.springframework.messaging.simp.annotation",
+      "org.springframework.messaging.simp.annotation.support",
+      "org.springframework.messaging.simp.broker",
+      "org.springframework.messaging.simp.config",
+      "org.springframework.messaging.simp.stomp",
+      "org.springframework.messaging.simp.user",
+      "org.springframework.messaging.support",
+      "org.springframework.messaging.tcp",
+      "org.springframework.messaging.tcp.reactor"
+    ],
+    "org.springframework:spring-oxm": [
+      "org.springframework.oxm",
+      "org.springframework.oxm.config",
+      "org.springframework.oxm.jaxb",
+      "org.springframework.oxm.mime",
+      "org.springframework.oxm.support",
+      "org.springframework.oxm.xstream"
     ],
     "org.springframework:spring-test": [
       "org.springframework.mock.env",
@@ -5293,6 +5886,9 @@
       "org.yaml.snakeyaml.tokens",
       "org.yaml.snakeyaml.util"
     ],
+    "redis.clients.authentication:redis-authx-core": [
+      "redis.clients.authentication.core"
+    ],
     "tech.picnic.error-prone-support:error-prone-contrib": [
       "tech.picnic.errorprone.bugpatterns",
       "tech.picnic.errorprone.refasterrules"
@@ -5398,6 +5994,7 @@
       "gg.jte:jte-spring-boot-starter-4-core",
       "io.github.java-diff-utils:java-diff-utils",
       "io.github.wimdeblauwe:htmx-spring-boot",
+      "io.lettuce:lettuce-core",
       "io.micrometer:context-propagation",
       "io.micrometer:micrometer-commons",
       "io.micrometer:micrometer-core",
@@ -5406,6 +6003,15 @@
       "io.micrometer:micrometer-registry-otlp",
       "io.micrometer:micrometer-tracing",
       "io.micrometer:micrometer-tracing-bridge-otel",
+      "io.netty:netty-buffer",
+      "io.netty:netty-codec-base",
+      "io.netty:netty-codec-dns",
+      "io.netty:netty-common",
+      "io.netty:netty-handler",
+      "io.netty:netty-resolver",
+      "io.netty:netty-resolver-dns",
+      "io.netty:netty-transport",
+      "io.netty:netty-transport-native-unix-common",
       "io.opentelemetry.proto:opentelemetry-proto",
       "io.opentelemetry.semconv:opentelemetry-semconv",
       "io.opentelemetry:opentelemetry-api",
@@ -5422,6 +6028,7 @@
       "io.opentelemetry:opentelemetry-sdk-logs",
       "io.opentelemetry:opentelemetry-sdk-metrics",
       "io.opentelemetry:opentelemetry-sdk-trace",
+      "io.projectreactor:reactor-core",
       "io.r2dbc:r2dbc-spi",
       "io.soabase.record-builder:record-builder-core",
       "io.soabase.record-builder:record-builder-processor",
@@ -5493,6 +6100,8 @@
       "org.springframework.boot:spring-boot-actuator",
       "org.springframework.boot:spring-boot-actuator-autoconfigure",
       "org.springframework.boot:spring-boot-autoconfigure",
+      "org.springframework.boot:spring-boot-data-commons",
+      "org.springframework.boot:spring-boot-data-redis",
       "org.springframework.boot:spring-boot-flyway",
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-http-client",
@@ -5505,6 +6114,7 @@
       "org.springframework.boot:spring-boot-micrometer-observation",
       "org.springframework.boot:spring-boot-micrometer-tracing",
       "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry",
+      "org.springframework.boot:spring-boot-netty",
       "org.springframework.boot:spring-boot-opentelemetry",
       "org.springframework.boot:spring-boot-persistence",
       "org.springframework.boot:spring-boot-restclient",
@@ -5512,6 +6122,7 @@
       "org.springframework.boot:spring-boot-sql",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-actuator",
+      "org.springframework.boot:spring-boot-starter-data-redis",
       "org.springframework.boot:spring-boot-starter-flyway",
       "org.springframework.boot:spring-boot-starter-jackson",
       "org.springframework.boot:spring-boot-starter-jdbc",
@@ -5532,6 +6143,9 @@
       "org.springframework.boot:spring-boot-validation",
       "org.springframework.boot:spring-boot-web-server",
       "org.springframework.boot:spring-boot-webmvc",
+      "org.springframework.data:spring-data-commons",
+      "org.springframework.data:spring-data-keyvalue",
+      "org.springframework.data:spring-data-redis",
       "org.springframework.modulith:spring-modulith-actuator",
       "org.springframework.modulith:spring-modulith-api",
       "org.springframework.modulith:spring-modulith-apt",
@@ -5551,9 +6165,12 @@
       "org.springframework:spring-aop",
       "org.springframework:spring-beans",
       "org.springframework:spring-context",
+      "org.springframework:spring-context-support",
       "org.springframework:spring-core",
       "org.springframework:spring-expression",
       "org.springframework:spring-jdbc",
+      "org.springframework:spring-messaging",
+      "org.springframework:spring-oxm",
       "org.springframework:spring-test",
       "org.springframework:spring-tx",
       "org.springframework:spring-web",
@@ -5570,6 +6187,7 @@
       "org.xmlunit:xmlunit-assertj3",
       "org.xmlunit:xmlunit-core",
       "org.yaml:snakeyaml",
+      "redis.clients.authentication:redis-authx-core",
       "tech.picnic.error-prone-support:error-prone-contrib",
       "tech.picnic.error-prone-support:error-prone-utils",
       "tech.picnic.error-prone-support:refaster-support",
@@ -5593,9 +6211,25 @@
         "com.uber.nullaway.RequireExplicitNullMarking"
       ]
     },
+    "io.lettuce:lettuce-core": {
+      "io.lettuce.core.json.JsonParser": [
+        "io.lettuce.core.json.DefaultJsonParser"
+      ],
+      "io.lettuce.core.support.http.HttpClientProvider": [
+        "io.lettuce.core.support.http.NettyHttpClientProvider"
+      ],
+      "javax.enterprise.inject.spi.Extension": [
+        "io.lettuce.core.support.LettuceCdiExtension"
+      ]
+    },
     "io.micrometer:micrometer-observation": {
       "io.micrometer.context.ThreadLocalAccessor": [
         "io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor"
+      ]
+    },
+    "io.netty:netty-common": {
+      "reactor.blockhound.integration.BlockHoundIntegration": [
+        "io.netty.util.internal.Hidden$NettyBlockHoundIntegration"
       ]
     },
     "io.opentelemetry:opentelemetry-exporter-otlp": {
@@ -5635,6 +6269,14 @@
       "io.opentelemetry.sdk.autoconfigure.spi.internal.ComponentProvider": [
         "io.opentelemetry.extension.trace.propagation.internal.B3ComponentProvider",
         "io.opentelemetry.extension.trace.propagation.internal.B3MultiComponentProvider"
+      ]
+    },
+    "io.projectreactor:reactor-core": {
+      "io.micrometer.context.ContextAccessor": [
+        "reactor.util.context.ReactorContextAccessor"
+      ],
+      "reactor.blockhound.integration.BlockHoundIntegration": [
+        "reactor.core.scheduler.ReactorBlockHoundIntegration"
       ]
     },
     "io.soabase.record-builder:record-builder-processor": {
@@ -5790,6 +6432,11 @@
     "org.springframework.boot:spring-boot-micrometer-tracing-opentelemetry": {
       "org.junit.platform.launcher.TestExecutionListener": [
         "org.springframework.boot.micrometer.tracing.opentelemetry.autoconfigure.OpenTelemetryEventPublisherBeansTestExecutionListener"
+      ]
+    },
+    "org.springframework.data:spring-data-redis": {
+      "jakarta.enterprise.inject.spi.Extension": [
+        "org.springframework.data.redis.repository.cdi.RedisRepositoryExtension"
       ]
     },
     "org.springframework.modulith:spring-modulith-apt": {

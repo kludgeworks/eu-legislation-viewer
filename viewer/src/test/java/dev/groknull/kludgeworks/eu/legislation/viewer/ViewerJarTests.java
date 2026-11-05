@@ -30,8 +30,10 @@ class ViewerJarTests {
             .rlocation(
                 "kludgeworks_viewer/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar");
     var java = ProcessHandle.current().info().command().orElseThrow();
-    try (var postgres = TestcontainersConfiguration.postgres()) {
+    try (var postgres = TestcontainersConfiguration.postgres();
+        var valkey = TestcontainersConfiguration.valkey()) {
       postgres.start();
+      valkey.start();
       var app =
           new ProcessBuilder(
                   java,
@@ -41,7 +43,10 @@ class ViewerJarTests {
                   "--spring.profiles.active=prod",
                   "--spring.datasource.url=" + postgres.getJdbcUrl(),
                   "--spring.datasource.username=" + postgres.getUsername(),
-                  "--spring.datasource.password=" + postgres.getPassword())
+                  "--spring.datasource.password=" + postgres.getPassword(),
+                  "--spring.data.redis.host=" + valkey.getHost(),
+                  "--spring.data.redis.port="
+                      + valkey.getMappedPort(TestcontainersConfiguration.VALKEY_PORT))
               .redirectErrorStream(true)
               .start();
       assertStarts(app);

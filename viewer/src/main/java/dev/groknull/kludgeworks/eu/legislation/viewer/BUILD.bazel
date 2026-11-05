@@ -4,12 +4,15 @@ load("//tools/build:defs.bzl", "spring_boot_jar")
 
 # The application: ViewerApplication and, at run time, its modules, its configuration and migrations,
 # and the starters: web (with jte and htmx), the store (Postgres, Flyway, jOOQ, Modulith's event
-# registry) and observability (OpenTelemetry, Modulith's insight, JDBC spans)
+# registry), Valkey (the broadcast events) and observability (OpenTelemetry, Modulith's insight, JDBC
+# spans)
 java_library(
     name = "viewer",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/broadcast",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/broadcast/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra",
@@ -42,6 +45,7 @@ java_library(
         "@maven//:org_jmolecules_integrations_jmolecules_spring",
         "@maven//:org_postgresql_postgresql",
         "@maven//:org_springframework_boot_spring_boot_starter_actuator",
+        "@maven//:org_springframework_boot_spring_boot_starter_data_redis",
         "@maven//:org_springframework_boot_spring_boot_starter_flyway",
         "@maven//:org_springframework_boot_spring_boot_starter_jooq",
         "@maven//:org_springframework_boot_spring_boot_starter_opentelemetry",

@@ -11,6 +11,7 @@
   <title>${title}</title>
   <link rel="stylesheet" href="${chrome.assets().css()}">
   <script src="${chrome.assets().htmx()}" defer></script>
+  <script src="${chrome.assets().sse()}" defer></script>
   <script src="${chrome.assets().theme()}" defer></script>
 </head>
 <body>

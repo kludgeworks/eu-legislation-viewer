@@ -36,7 +36,7 @@ public record Chrome(Theme theme, String here, Assets assets) {
    * (/css/viewer-&lt;hash&gt;.css: spring.web.resources.chain.strategy.content), so a page asks for
    * them as they are now, never for a copy a browser kept from before them.
    */
-  public record Assets(String css, String htmx, String theme) {
+  public record Assets(String css, String htmx, String sse, String theme) {
     static Assets of(HttpServletRequest request) {
       // Spring MVC's, for every request its handlers serve
       var urls =
@@ -46,6 +46,7 @@ public record Chrome(Theme theme, String here, Assets assets) {
       return new Assets(
           url(urls, request, "/css/viewer.css"),
           url(urls, request, "/webjars/htmx.org/dist/htmx.min.js"),
+          url(urls, request, "/webjars/htmx.org/dist/ext/hx-sse.min.js"),
           url(urls, request, "/js/theme.js"));
     }
 

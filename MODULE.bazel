@@ -61,6 +61,9 @@ maven.install(
         "org.flywaydb:flyway-database-postgresql",
         "org.postgresql:postgresql",
         "org.springframework.modulith:spring-modulith-starter-jdbc",
+        # Valkey (Spring Data Redis, Lettuce): the externalized events every instance reads back (the
+        # broadcast module's streams)
+        "org.springframework.boot:spring-boot-starter-data-redis",
         # observability: OpenTelemetry (traces, metrics, logs over OTLP), a span per module entry and the
         # modules' actuator (Modulith's insight starter), JDBC spans (datasource-micrometer)
         "org.springframework.boot:spring-boot-starter-opentelemetry",

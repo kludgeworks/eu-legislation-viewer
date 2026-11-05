@@ -51,6 +51,11 @@ public final class Links {
   }
 
   /** The act's comparisons in {@code language}, as the From and To cards' date forms ask. */
+  /** The stream of the act's preparation in the language (PreparationController). */
+  public static String prepare(Eli eli, Language language) {
+    return act(eli, language) + "/prepare/events";
+  }
+
   public static String compare(Eli eli, Language language) {
     return act(eli, language) + "/compare";
   }

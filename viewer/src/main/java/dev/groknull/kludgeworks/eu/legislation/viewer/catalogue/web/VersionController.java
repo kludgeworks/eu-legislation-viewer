@@ -38,8 +38,8 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * A version's page, at the ELI of the act and the date it applies on (any date: the version that
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
- * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which polls this URL
- * until the act is prepared in the language, every version of it, and then loads the version's text
+ * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which asks this URL again
+ * once the act is prepared in the language, every version of it, and then loads the version's text
  * from the content module, its outline beside it; but a boosted link of the page's (HX-Boosted)
  * gets the whole page, to swap its body in. The act's address without a date goes to the page of
  * the version that applies today, or of the date asked (on).
@@ -132,13 +132,15 @@ class VersionController {
 
   /** What a version's page shows: the act, the version that applies on the date, the language. */
   private final class Page {
+    final Eli eli;
     final Act act;
     final Version version;
     final Language language;
 
     Page(String type, int year, String number, LocalDate date, String code) {
       language = language(code);
-      act = acts.find(new Eli(type, year, number)).orElseThrow(VersionController::notFound);
+      eli = new Eli(type, year, number);
+      act = acts.find(eli).orElseThrow(VersionController::notFound);
       version = act.versionOn(date).orElseThrow(VersionController::notFound);
     }
 
@@ -153,7 +155,8 @@ class VersionController {
       }
       var preparation = texts.prepare(timeline.get(), language);
       if (!preparation.settled()) {
-        return templates.catalogueTextBuilding(preparation, request.getRequestURI());
+        return templates.catalogueTextBuilding(
+            preparation, request.getRequestURI(), Links.prepare(eli, language));
       }
       var text = preparation.texts().get(version);
       if (text == null) {
@@ -166,7 +169,8 @@ class VersionController {
                 "/content/" + ready.root().hex(),
                 content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
         case Text.Building building ->
-            templates.catalogueTextBuilding(preparation, request.getRequestURI());
+            templates.catalogueTextBuilding(
+                preparation, request.getRequestURI(), Links.prepare(eli, language));
         case Text.Failed failed -> templates.catalogueTextFailed(failed.failure(), eurLex());
       };
     }

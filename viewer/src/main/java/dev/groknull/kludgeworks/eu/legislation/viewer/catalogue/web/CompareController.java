@@ -37,9 +37,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01, each end any date (the
  * version that applies then). Asked with dates that aren't the versions' first days, or with From
  * after To, or without them (the latest version against the one before), it goes to the address
- * that is. Asked by htmx (@HxRequest), only the changes' part, which polls this URL until the act
- * is prepared in the language, every version of it, and then loads the two texts' Changes view from
- * the comparison module, by their roots; a boosted link of the page's gets the whole page.
+ * that is. Asked by htmx (@HxRequest), only the changes' part, which asks this URL again once the
+ * act is prepared in the language, every version of it, and then loads the two texts' Changes view
+ * from the comparison module, by their roots; a boosted link of the page's gets the whole page.
  */
 @Controller
 class CompareController {
@@ -151,7 +151,7 @@ class CompareController {
           texts.prepare(act.timeline().in(language).orElseThrow(Requests::notFound), language);
       var self = request.getRequestURI() + "?" + request.getQueryString();
       if (!preparation.settled()) {
-        return templates.catalogueTextBuilding(preparation, self);
+        return templates.catalogueTextBuilding(preparation, self, Links.prepare(eli, language));
       }
       // both in the language, as the comparison's versions are picked from its timeline
       var earlier = Objects.requireNonNull(preparation.texts().get(from));

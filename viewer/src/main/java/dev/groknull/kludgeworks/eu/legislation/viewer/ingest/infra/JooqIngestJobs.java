@@ -6,6 +6,7 @@ import static org.jooq.impl.DSL.currentInstant;
 import static org.jooq.impl.DSL.select;
 import static org.jooq.impl.DSL.val;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.tables.records.IngestJobRecord;
@@ -17,32 +18,46 @@ import java.util.Optional;
 import org.jooq.DSLContext;
 import org.jooq.types.DayToSecond;
 import org.jspecify.annotations.Nullable;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-/** The ingest jobs in Postgres (ingest_job), with jOOQ. */
+/**
+ * The ingest jobs in Postgres (ingest_job), with jOOQ. Each change to a job publishes
+ * ExpressionChanged in its transaction (one of its own, outside one), so the event registry
+ * externalizes it once the change is committed.
+ */
 @Repository
 class JooqIngestJobs implements IngestJobs {
   private final DSLContext db;
+  private final ApplicationEventPublisher events;
 
-  JooqIngestJobs(DSLContext db) {
+  JooqIngestJobs(DSLContext db, ApplicationEventPublisher events) {
     this.db = db;
+    this.events = events;
   }
 
   @Override
+  @Transactional
   public boolean schedule(String celex, Language language, @Nullable String traceparent) {
-    return db.insertInto(INGEST_JOB)
-            .set(INGEST_JOB.CELEX, celex)
-            .set(INGEST_JOB.LANGUAGE, language)
-            .set(INGEST_JOB.STATE, State.QUEUED)
-            .set(INGEST_JOB.ATTEMPTS, 0)
-            .set(INGEST_JOB.TRACEPARENT, traceparent)
-            .set(INGEST_JOB.CREATED_AT, currentInstant())
-            .set(INGEST_JOB.VERSION, 0L)
-            .onConflict(INGEST_JOB.CELEX, INGEST_JOB.LANGUAGE)
-            .doNothing()
-            .execute()
-        == 1;
+    var queued =
+        db.insertInto(INGEST_JOB)
+                .set(INGEST_JOB.CELEX, celex)
+                .set(INGEST_JOB.LANGUAGE, language)
+                .set(INGEST_JOB.STATE, State.QUEUED)
+                .set(INGEST_JOB.ATTEMPTS, 0)
+                .set(INGEST_JOB.TRACEPARENT, traceparent)
+                .set(INGEST_JOB.CREATED_AT, currentInstant())
+                .set(INGEST_JOB.VERSION, 0L)
+                .onConflict(INGEST_JOB.CELEX, INGEST_JOB.LANGUAGE)
+                .doNothing()
+                .execute()
+            == 1;
+    if (queued) {
+      events.publishEvent(new ExpressionChanged(celex, language));
+    }
+    return queued;
   }
 
   @Override
@@ -54,6 +69,7 @@ class JooqIngestJobs implements IngestJobs {
   }
 
   @Override
+  @Transactional
   public Optional<IngestJob> claim(String owner, Duration lease) {
     var oldest =
         select(INGEST_JOB.ID)
@@ -83,7 +99,8 @@ class JooqIngestJobs implements IngestJobs {
         .where(INGEST_JOB.ID.eq(oldest))
         .returning()
         .fetchOptional()
-        .map(JooqIngestJobs::job);
+        .map(JooqIngestJobs::job)
+        .map(this::notified);
   }
 
   @Override
@@ -95,6 +112,7 @@ class JooqIngestJobs implements IngestJobs {
   }
 
   @Override
+  @Transactional
   public IngestJob save(IngestJob job) {
     var running = job.state() == State.RUNNING;
     var finished = job.state() == State.BUILT || job.state() == State.FAILED;
@@ -112,6 +130,7 @@ class JooqIngestJobs implements IngestJobs {
         .returning()
         .fetchOptional()
         .map(JooqIngestJobs::job)
+        .map(this::notified)
         .orElseThrow(
             () ->
                 new OptimisticLockingFailureException(
@@ -119,6 +138,11 @@ class JooqIngestJobs implements IngestJobs {
                         + job.id()
                         + " was claimed again since version "
                         + job.version()));
+  }
+
+  private IngestJob notified(IngestJob job) {
+    events.publishEvent(new ExpressionChanged(job.celex(), job.language()));
+    return job;
   }
 
   private static IngestJob job(IngestJobRecord row) {

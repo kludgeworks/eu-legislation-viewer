@@ -10,6 +10,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import java.net.URI;
 import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
@@ -36,14 +38,15 @@ import org.springframework.web.client.RestClient;
 
 /**
  * A version's page as a reader's browser loads it, on an empty store: the page at once, its text
- * built in the background while the page polls (htmx), then its outline and the text, transcluded
- * from the content module. On the converter's fixtures (2015/1998's consolidation of 22 March 2026
- * in English), on 1 June 2021.
+ * built in the background while the page listens (htmx, server-sent events), then its outline and
+ * the text, transcluded from the content module. On the converter's fixtures (2015/1998's
+ * consolidation of 22 March 2026 in English), on 1 June 2021.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class VersionPagesTests {
   private static final String PAGE = "/eli/reg_impl/2015/1998/2026-03-22/eng";
+  private static final String EVENTS = "/eli/reg_impl/2015/1998/eng/prepare/events";
 
   @LocalServerPort int port;
   RestClient http;
@@ -59,7 +62,9 @@ class VersionPagesTests {
     assertThat(page.getHeaders().getVary()).contains("HX-Request", "HX-Boosted");
     var waiting = text(Objects.requireNonNull(page.getBody()));
     assertThat(waiting.attr("hx-get")).isEqualTo(PAGE);
-    assertThat(waiting.attr("hx-trigger")).isEqualTo("load delay:1s");
+    assertThat(waiting.attr("hx-trigger")).isEqualTo("done");
+    assertThat(Objects.requireNonNull(waiting.selectFirst(".preparing")).attr("hx-sse:connect"))
+        .isEqualTo(EVENTS);
 
     var ready =
         await()
@@ -77,6 +82,35 @@ class VersionPagesTests {
     assertThat(article).isNotNull();
     assertThat(article.attr("lang")).isEqualTo("en");
     assertThat(article.select("#art_1 > h2 > .num").text()).isEqualTo("Article 1");
+  }
+
+  @Test
+  void streamsHowTheActStandsUntilItIsPrepared() throws Exception {
+    var request =
+        HttpRequest.newBuilder(URI.create("http://localhost:" + port + EVENTS))
+            .header("Accept", "text/event-stream")
+            .timeout(Duration.ofMinutes(2))
+            .build();
+    try (var client = HttpClient.newHttpClient()) {
+      var response = client.send(request, HttpResponse.BodyHandlers.ofLines());
+      assertThat(response.headers().firstValue("Content-Type"))
+          .hasValueSatisfying(type -> assertThat(type).startsWith("text/event-stream"));
+      // how it stands as long as it isn't prepared (nothing, if another test prepared it first),
+      // each message's lines a data line each, then done
+      var lines = response.body().toList();
+      assertThat(lines).contains("event:done");
+      var stands =
+          String.join(
+              "\n",
+              lines.subList(0, lines.indexOf("event:done")).stream()
+                  .filter(line -> line.startsWith("data:"))
+                  .toList());
+      if (!stands.isBlank()) {
+        assertThat(stands).containsAnyOf("versions ready", "Waiting its turn");
+      }
+      assertThat(http.get().uri(PAGE).header("HX-Request", "true").retrieve().body(String.class))
+          .contains("class=\"outlined\"");
+    }
   }
 
   @Test
@@ -104,7 +138,7 @@ class VersionPagesTests {
             .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
             .toList();
     assertThat(assets)
-        .hasSize(3)
+        .hasSize(4)
         .allSatisfy(
             asset -> {
               assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");

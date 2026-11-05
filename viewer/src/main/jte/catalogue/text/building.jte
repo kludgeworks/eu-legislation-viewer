@@ -1,16 +1,13 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation
 @param Preparation preparation
 @param String self
+@param String events
 <%-- The act being prepared in the language, every version of it, before any of its pages shows a
-     text: waiting its turn while none of its versions is being built (the queue is every act's),
-     else how many are ready; polling this URL until all are settled --%>
-<div id="text" hx-get="${self}" hx-trigger="load delay:1s" hx-swap="outerHTML">
-  <p class="status">
-    @if(preparation.running() == 0)
-      Waiting its turn: other acts are being prepared first.
-    @else
-      Preparing this act: ${preparation.ready()} of ${preparation.size()} versions ready. It opens
-      here as soon as every version is.
-    @endif
-  </p>
+     text: how it stands, pushed over the act's stream (events, htmx's SSE extension) as it changes;
+     once it is done, this URL asked again for the text. Without JavaScript, the page reloads --%>
+<div id="text" hx-get="${self}" hx-trigger="done" hx-swap="outerHTML">
+  <div class="preparing" hx-sse:connect="${events}" hx-sse:close="done" aria-live="polite">
+    @template.catalogue.text.progress(preparation = preparation)
+  </div>
+  <noscript><meta http-equiv="refresh" content="5"></noscript>
 </div>
