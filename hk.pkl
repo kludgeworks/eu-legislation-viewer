@@ -85,6 +85,19 @@ local linters = new Mapping<String, Step> {
     batch = true
     check = "mise run migration:check"
   }
+  ["bats"] = new Step {
+    glob =
+      List(
+        "tools/tasks/migration/check.bash",
+        "tools/tasks/release.bash",
+        "tools/tasks/test/**",
+        "mise.toml",
+        "mise.lock",
+        "hk.pkl",
+      )
+    batch = true
+    check = "mise run test:bats"
+  }
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
   ["pinact_update"] = Builtins.pinact_update

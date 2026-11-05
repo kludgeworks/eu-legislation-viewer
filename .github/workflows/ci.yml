@@ -34,5 +34,5 @@ jobs:
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
         run: mise run check
-      - run: bazel test //...
+      - run: mise run test
       - run: bazel build //viewer:jar
