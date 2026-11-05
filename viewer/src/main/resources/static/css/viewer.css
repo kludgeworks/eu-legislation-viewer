@@ -68,7 +68,7 @@
 
 body {
   margin: 0;
-  background: var(--surface2);
+  background: var(--bg);
   color: var(--ink);
   font: 15px/1.5 system-ui, sans-serif;
 }
@@ -165,10 +165,8 @@ form.theme svg {
 }
 
 main {
-  max-width: 52rem;
-  margin: 1.5rem auto;
-  padding: 1rem max(16px, env(safe-area-inset-right, 0px)) 2rem;
-  background: var(--bg);
+  padding: 22px max(28px, env(safe-area-inset-right, 0px)) 24px
+    max(28px, env(safe-area-inset-left, 0px));
 }
 
 /* the act's versions to scale (catalogue/timeline.jte): ticks on an axis of years, versions too
@@ -547,6 +545,98 @@ form.on button {
 form.on button {
   padding: 0 12px;
   cursor: pointer;
+}
+
+/* the text's part (catalogue/text/ready.jte): its outline in a sidebar that stays in sight below
+ * the notice, the text beside it at the width EUR-Lex reads at, what the outline jumps to clear of
+ * the notice */
+.outlined {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+nav.outline {
+  flex: 0 0 250px;
+  position: sticky;
+  top: 44px;
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+  border: 1px solid var(--rule);
+  font-size: 13px;
+}
+
+.outline-head {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--hair);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+nav.outline ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav.outline ul ul {
+  padding-left: 12px;
+}
+
+nav.outline summary {
+  display: flex;
+  gap: 4px;
+  padding-left: 6px;
+  list-style: none;
+  cursor: pointer;
+}
+
+nav.outline summary::-webkit-details-marker {
+  display: none;
+}
+
+nav.outline summary::before {
+  content: "▸";
+  flex: 0 0 10px;
+  padding-top: 3px;
+  font-size: 10px;
+  color: var(--faint);
+}
+
+nav.outline details[open] > summary::before {
+  content: "▾";
+}
+
+nav.outline a {
+  display: block;
+  flex: 1;
+  padding: 3px 10px 3px 20px;
+  color: var(--ink3);
+  text-decoration: none;
+}
+
+nav.outline summary a {
+  padding-left: 0;
+}
+
+nav.outline a:hover {
+  background: var(--hover);
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+  max-width: 50rem;
+}
+
+.content [id] {
+  scroll-margin-top: 48px;
 }
 
 /* the legal text */

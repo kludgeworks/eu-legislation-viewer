@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
@@ -35,8 +36,9 @@ import org.springframework.web.client.RestClient;
 
 /**
  * A version's page as a reader's browser loads it, on an empty store: the page at once, its text
- * built in the background while the page polls (htmx), then transcluded from the content module. On
- * the converter's fixtures (2015/1998's consolidation of 22 March 2026 in English), on 1 June 2021.
+ * built in the background while the page polls (htmx), then its outline and the text, transcluded
+ * from the content module. On the converter's fixtures (2015/1998's consolidation of 22 March 2026
+ * in English), on 1 June 2021.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -63,10 +65,14 @@ class VersionPagesTests {
         await()
             .atMost(Duration.ofMinutes(1))
             .pollInterval(Duration.ofSeconds(1))
-            .until(this::poll, text -> text.attr("hx-get").startsWith("/content/"));
-    assertThat(ready.attr("hx-trigger")).isEqualTo("load");
+            .until(this::poll, text -> text.selectFirst(".content[hx-get^=/content/]") != null);
+    var loads = Objects.requireNonNull(ready.selectFirst(".content"));
+    assertThat(loads.attr("hx-trigger")).isEqualTo("load");
+    assertThat(ready.select("nav.outline > ul > li > :is(a, details > summary > a)"))
+        .extracting(link -> link.attr("href"), Element::text)
+        .startsWith(tuple("#art_1", "Article 1"), tuple("#art_2", "Article 2"));
 
-    var html = http.get().uri(ready.attr("hx-get")).retrieve().body(String.class);
+    var html = http.get().uri(loads.attr("hx-get")).retrieve().body(String.class);
     var article = Jsoup.parse(Objects.requireNonNull(html)).selectFirst("article.legal-text");
     assertThat(article).isNotNull();
     assertThat(article.attr("lang")).isEqualTo("en");

@@ -12,6 +12,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
@@ -21,6 +23,7 @@ import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -37,8 +40,9 @@ import org.springframework.web.server.ResponseStatusException;
  * A version's page, at the ELI of the act and the date it applies on (any date: the version that
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
  * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which polls this URL
- * until the text is built and then loads it from the content module. The act's address without a
- * date goes to the page of the version that applies today, or of the date asked (on).
+ * until the text is built, and then loads it from the content module, its outline beside it. The
+ * act's address without a date goes to the page of the version that applies today, or of the date
+ * asked (on).
  */
 @Controller
 class VersionController {
@@ -50,12 +54,14 @@ class VersionController {
 
   private final Acts acts;
   private final Texts texts;
+  private final Content content;
   private final Templates templates;
   private final Clock clock;
 
-  VersionController(Acts acts, Texts texts, Templates templates, Clock clock) {
+  VersionController(Acts acts, Texts texts, Content content, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
+    this.content = content;
     this.templates = templates;
     this.clock = clock;
   }
@@ -142,7 +148,10 @@ class VersionController {
     /** The text's part: polling this URL while the text is built, then loading it. */
     JteModel text(HttpServletRequest request) {
       return switch (texts.text(version, language)) {
-        case Text.Ready ready -> templates.catalogueTextReady("/content/" + ready.root().hex());
+        case Text.Ready ready ->
+            templates.catalogueTextReady(
+                "/content/" + ready.root().hex(),
+                content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
         case Text.Building building ->
             templates.catalogueTextBuilding(building.status(), request.getRequestURI());
         case Text.Failed failed -> templates.catalogueTextFailed(failed.failure(), eurLex());
