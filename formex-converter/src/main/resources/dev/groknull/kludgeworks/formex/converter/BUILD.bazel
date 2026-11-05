@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "project_version")
 
 package(default_visibility = ["//formex-converter:__subpackages__"])
 
@@ -10,8 +11,12 @@ exports_files([
     "schema/legal-text.sch",
     "schema/legal-text.xsd",
     "schema/xml.xsd",
-    "version.txt",
 ])
+
+# The single project version. Release builds pass the validated CalVer tag with
+# --embed_label; unlabelled builds retain the fixture-compatible fallback from
+# project_version.
+project_version(name = "version")
 
 # formex-to-legal-text.xsl, the modules it includes and the vocabularies they read: Formex → legal-text
 filegroup(
@@ -22,12 +27,12 @@ filegroup(
     ]),
 )
 
-# the stylesheets and version.txt, the converter's version, released independently of the viewer:
-# the stylesheet reads it as ../version.txt and stamps it on every document (legalText/@converter)
+# the stylesheets and the project version: the stylesheet reads ../version.txt
+# and stamps it on every document (legalText/@converter)
 java_library(
     name = "stylesheets",
     resources = [
-        "version.txt",
+        ":version",
         ":xslt",
     ],
 )

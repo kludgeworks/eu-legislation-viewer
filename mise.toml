@@ -34,7 +34,8 @@ taplo = "0.10.0"
 typos = "1.51.1"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
-actionlint = "1.7.12"
+jactionlint = "2.1.0"
+"github:suzuki-shunsuke/pinact" = "5.0.2"
 # ruff: lints and formats the tasks in tools/tasks written in Python, which uv runs with the
 # dependencies each declares (PEP 723)
 ruff = "0.17.1"
@@ -71,6 +72,17 @@ run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/forme
 [tasks.modules]
 description = "Write the modules' documentation (Spring Modulith's Documenter) into viewer/spring-modulith-docs"
 run = "bazel run //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:modules"
+
+[tasks."release:artifact"]
+description = "Build the CalVer-stamped viewer JAR and its SHA-256 checksum (VERSION is required)"
+run = """
+test -n "${VERSION:-}" || { echo "VERSION is required" >&2; exit 1; }
+bazel build --embed_label="$VERSION" //viewer:jar
+mkdir -p dist
+artifact="dist/kludgeworks-viewer-$VERSION.jar"
+cp bazel-bin/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar "$artifact"
+sha256sum "$artifact" > "$artifact.sha256"
+"""
 
 [tasks.pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"

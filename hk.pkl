@@ -77,7 +77,9 @@ local linters = new Mapping<String, Step> {
   ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
-  ["actionlint"] = Builtins.actionlint
+  ["jactionlint"] = Builtins.jactionlint
+  ["pinact"] = Builtins.pinact
+  ["pinact_update"] = Builtins.pinact_update
   ["typos"] = (Builtins.typos) { exclude = raw + vendored + generated }
   ["trailing_whitespace"] = (Builtins.trailing_whitespace) { exclude = raw + vendored + generated }
   ["newlines"] = (Builtins.newlines) { exclude = raw + vendored + generated + legalTemplates }

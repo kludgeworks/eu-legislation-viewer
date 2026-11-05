@@ -1,0 +1,78 @@
+# SPDX-License-Identifier: MIT
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: {}
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 180
+    permissions:
+      contents: write
+      attestations: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - id: version
+        env:
+          TAG: ${{ github.ref_name }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ ! "$TAG" =~ ^v20[0-9]{2}\.(0[1-9]|1[0-2])\.[0-9]+$ ]]; then
+            echo "Expected vYYYY.MM.MICRO CalVer tag; got $TAG" >&2
+            exit 1
+          fi
+          echo "value=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          cache: false
+
+      - uses: bazel-contrib/setup-bazel@104e3eea9447cdaa4b00d0fb46191a3985d26ab3 # 0.19.1
+        with:
+          bazelisk-cache: true
+          disk-cache: ${{ github.workflow }}
+          repository-cache: true
+
+      - env:
+          PINACT_GITHUB_TOKEN: ${{ github.token }}
+        run: mise run check
+      - run: bazel test //...
+
+      - id: artifact
+        env:
+          VERSION: ${{ steps.version.outputs.value }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mise run release:artifact
+          echo "path=dist/kludgeworks-viewer-$VERSION.jar" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: ${{ steps.artifact.outputs.path }}
+
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.ref_name }}
+          VERSION: ${{ steps.version.outputs.value }}
+        run: |
+          gh release create "$TAG" \
+            --verify-tag \
+            --title "Release $VERSION" \
+            --generate-notes \
+            "${{ steps.artifact.outputs.path }}" \
+            "${{ steps.artifact.outputs.path }}.sha256"

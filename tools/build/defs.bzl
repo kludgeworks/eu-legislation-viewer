@@ -5,6 +5,37 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 load("@rules_java//java:defs.bzl", "java_library")
 load("@rules_java//java/common:java_info.bzl", "JavaInfo")
 
+def _project_version_impl(ctx):
+    """Write the release version from Bazel's stable workspace status."""
+    out = ctx.actions.declare_file("version.txt")
+    ctx.actions.run_shell(
+        inputs = [ctx.info_file],
+        outputs = [out],
+        arguments = [ctx.info_file.path, out.path],
+        command = """\
+set -eu
+version="$(sed -n '/^BUILD_EMBED_LABEL /{s/^BUILD_EMBED_LABEL //;p;q;}' "$1")"
+if [ -z "$version" ]; then
+  # The checked-in converter fixtures predate project-wide release stamping.
+  # An explicit --embed_label is required for every release build.
+  version="1.0.0"
+fi
+printf '%s\\n' "$version" > "$2"
+""",
+        mnemonic = "ProjectVersion",
+        progress_message = "Stamping project version for %{label}",
+    )
+    return [DefaultInfo(files = depset([out]))]
+
+project_version = rule(
+    implementation = _project_version_impl,
+    doc = """A version.txt resource, stamped from --embed_label for release builds.
+
+    The fallback keeps the checked-in converter snapshots stable. Releases pass their validated
+    YYYY.MM.MICRO CalVer value through --embed_label.
+    """,
+)
+
 def xspec_test(name, specs, data = [], **kwargs):
     """One cached JUnit 5 test per .xspec file (run by XSpecTests), plus a test_suite named `name`.
 
