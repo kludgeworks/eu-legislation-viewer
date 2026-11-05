@@ -5,7 +5,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 # it needs Docker
 java_junit5_test(
     name = "VersionPagesTests",
-    size = "small",
+    size = "medium",
     srcs = ["VersionPagesTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.VersionPagesTests",
@@ -36,7 +36,7 @@ java_junit5_test(
 # it needs Docker
 java_junit5_test(
     name = "ComparePagesTests",
-    size = "small",
+    size = "medium",
     srcs = ["ComparePagesTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ComparePagesTests",

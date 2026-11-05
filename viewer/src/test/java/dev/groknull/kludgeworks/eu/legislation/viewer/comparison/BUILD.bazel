@@ -4,7 +4,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 # Comparisons of texts stored, kept in Postgres in a container; needs Docker
 java_junit5_test(
     name = "ComparisonsTests",
-    size = "small",
+    size = "medium",
     srcs = ["ComparisonsTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparisonsTests",

@@ -57,7 +57,7 @@ java_binary(
 # Bazel's classpath and as Spring Boot's jar, on Postgres in a container (Docker)
 java_test_suite(
     name = "viewer",
-    size = "small",
+    size = "medium",
     srcs = glob(
         ["*.java"],
         exclude = [

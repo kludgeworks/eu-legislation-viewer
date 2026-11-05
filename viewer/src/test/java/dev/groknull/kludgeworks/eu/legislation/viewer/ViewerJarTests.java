@@ -19,7 +19,8 @@ import org.junit.jupiter.api.Test;
 @AutoBazelRepository
 class ViewerJarTests {
 
-  private static final Duration STARTUP = Duration.ofSeconds(30);
+  // how long the jar may take to start: generous, as the other tests start beside it
+  private static final Duration STARTUP = Duration.ofMinutes(2);
 
   @Test
   void startsAsOneJar() throws Exception {

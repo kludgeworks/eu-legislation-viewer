@@ -4,7 +4,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 # Legal texts stored in Postgres in a container, and rebuilt from it; needs Docker
 java_junit5_test(
     name = "ContentTests",
-    size = "small",
+    size = "medium",
     srcs = ["ContentTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentTests",

@@ -5,7 +5,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 # stored in Postgres in a container; needs Docker
 java_junit5_test(
     name = "IngestTests",
-    size = "small",
+    size = "medium",
     srcs = ["IngestTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestTests",

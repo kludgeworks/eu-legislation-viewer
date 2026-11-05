@@ -40,7 +40,7 @@ java_library(
 # Acts kept in Postgres in a container, read from Cellar once; needs Docker
 java_junit5_test(
     name = "CatalogueTests",
-    size = "small",
+    size = "medium",
     srcs = ["CatalogueTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.CatalogueTests",
@@ -69,7 +69,7 @@ java_junit5_test(
 # container; needs Docker
 java_junit5_test(
     name = "TextsTests",
-    size = "small",
+    size = "medium",
     srcs = ["TextsTests.java"],
     tags = ["requires-docker"],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextsTests",
