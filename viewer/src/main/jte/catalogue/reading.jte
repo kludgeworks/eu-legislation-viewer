@@ -1,7 +1,8 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView
 @param ReadingView reading
 <%-- The Reading card (ReadingView): the version, its period and what made it, the date asked, where
-     its text lags the law (amber), and a GET form for the version on another date --%>
+     its text lags the law (amber), a GET form for the version on another date, and its comparison
+     with the version before --%>
 <section class="selection" aria-label="Reading">
   <div class="card">
     <span class="card-kind">Reading</span>
@@ -20,4 +21,7 @@
       <button>Go</button>
     </form>
   </div>
+  @if(reading.compare() != null)
+    <a class="button" href="${reading.compare()}">Compare with the version before</a>
+  @endif
 </section>

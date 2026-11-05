@@ -7,7 +7,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.Locale;
 
-/** The pages' addresses: an act's by its ELI, as VersionController answers them. */
+/**
+ * The pages' addresses: an act's by its ELI, as VersionController and CompareController answer
+ * them.
+ */
 public final class Links {
   private Links() {}
 
@@ -37,6 +40,19 @@ public final class Links {
   /** The act in {@code language}, as the Reading card's date form asks for it with on. */
   public static String act(Eli eli, Language language) {
     return "/eli/" + eli.path() + "/" + language.code().toLowerCase(Locale.ROOT);
+  }
+
+  /**
+   * The comparison of {@code from} with {@code to} in {@code language}, by their first days:
+   * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01.
+   */
+  public static String compare(Eli eli, Version from, Version to, Language language) {
+    return compare(eli, language) + "?from=" + from.date() + "&to=" + to.date();
+  }
+
+  /** The act's comparisons in {@code language}, as the From and To cards' date forms ask. */
+  public static String compare(Eli eli, Language language) {
+    return act(eli, language) + "/compare";
   }
 
   /** The page of the version that applies on {@code date}, in {@code language}. */

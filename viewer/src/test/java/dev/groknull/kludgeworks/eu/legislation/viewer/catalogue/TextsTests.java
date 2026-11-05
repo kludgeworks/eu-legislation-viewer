@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
+import java.time.LocalDate;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,7 +94,11 @@ class TextsTests {
   }
 
   private Version consolidation() {
-    return acts.find(OneActCellar.CELEX).orElseThrow().timeline().latest();
+    return acts.find(OneActCellar.CELEX)
+        .orElseThrow()
+        .timeline()
+        .startingOn(LocalDate.of(2026, 3, 22))
+        .orElseThrow();
   }
 
   private void built(Version version, ContentHash root) {

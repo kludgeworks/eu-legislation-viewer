@@ -24,7 +24,7 @@ class MastheadViewTest {
 
   @Test
   void titlesTheActInThePagesLanguageAndLinksItsIdsToEurLex() {
-    var head = MastheadView.of(AVSEC, VERSION, ASKED, Language.FRA);
+    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA);
     assertThat(head.title()).startsWith("Règlement d'exécution (UE) 2015/1998 de la Commission");
     assertThat(head.titleLanguage()).isEqualTo("fr");
     assertThat(head.eli()).isEqualTo("eli/reg_impl/2015/1998/oj");
@@ -35,14 +35,14 @@ class MastheadViewTest {
 
   @Test
   void titlesItInEnglishWhereCellarHasNoTitleInTheLanguage() {
-    var head = MastheadView.of(AVSEC, VERSION, ASKED, Language.GLE);
+    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.GLE);
     assertThat(head.title()).startsWith("Commission Implementing Regulation (EU) 2015/1998");
     assertThat(head.titleLanguage()).isEqualTo("en");
   }
 
   @Test
   void switchesToTheLanguagesTheVersionIsInKeepingTheDateAsked() {
-    var head = MastheadView.of(AVSEC, VERSION, ASKED, Language.FRA);
+    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA);
     assertThat(head.language()).isEqualTo("français");
     assertThat(head.languages()).hasSize(23);
     assertThat(head.languages())

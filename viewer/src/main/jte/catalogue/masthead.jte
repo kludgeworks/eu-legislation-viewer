@@ -2,7 +2,7 @@
 @param MastheadView masthead
 <%-- The act page's head (MastheadView): the act's title, its ELI and CELEX on EUR-Lex, the
      language switch (details, its links the same page in each language the version is in), and the
-     mode switch, Compare greyed until comparisons are built --%>
+     mode switch, the current mode marked, the other a link --%>
 <header class="mast">
   <div>
     <h1 lang="${masthead.titleLanguage()}">${masthead.title()}</h1>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <nav class="mode" aria-label="Mode">
-    <span aria-current="page">Read</span>
-    <span aria-disabled="true" title="Comparing versions comes next">Compare</span>
+    @if(masthead.read() != null)<a href="${masthead.read()}">Read</a>@else<span aria-current="page">Read</span>@endif
+    @if(masthead.compare() != null)<a href="${masthead.compare()}">Compare</a>@else<span aria-current="page">Compare</span>@endif
   </nav>
 </header>

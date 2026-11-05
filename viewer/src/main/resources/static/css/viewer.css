@@ -260,7 +260,7 @@ main {
   background: var(--accent-fill);
 }
 
-.tick[aria-current="page"]::before {
+.tick[aria-current]::before {
   width: 4px;
   height: 34px;
   margin-top: 0;
@@ -297,7 +297,7 @@ main {
   border-color: var(--accent);
 }
 
-.merged.reading > summary {
+.merged.selected > summary {
   border-color: var(--accent);
   background: var(--accent-fill);
   color: var(--on-fill);
@@ -331,8 +331,19 @@ main {
   color: var(--muted);
 }
 
-.merged-list > a[aria-current="page"] {
+.merged-list > a[aria-current] {
   font-weight: 600;
+}
+
+/* the range compared: a band from From's mark to To's, under the marks */
+.band {
+  position: absolute;
+  top: 22px;
+  height: 26px;
+  border: 2px solid var(--accent);
+  border-radius: 3px;
+  background: var(--band);
+  box-sizing: border-box;
 }
 
 .tag {
@@ -461,6 +472,15 @@ nav.mode > * + * {
   border-left: 1px solid var(--ink);
 }
 
+nav.mode a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+nav.mode a:hover {
+  background: var(--hover);
+}
+
 nav.mode [aria-current] {
   background: var(--ink);
   color: var(--bg);
@@ -507,6 +527,80 @@ section.selection {
 
 .card b {
   color: var(--ink);
+}
+
+/* Read: the card and, beside it, the comparison with the version before */
+section.selection:not(.compare) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+
+a.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  color: var(--ink);
+  font-size: 13.5px;
+  text-decoration: none;
+}
+
+a.button:hover {
+  border-color: var(--ink);
+}
+
+/* Compare: From → To, and the acts between them */
+section.selection.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.arrow {
+  padding-top: 16px;
+  font-size: 22px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+.chip {
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* the comparison's summary, and its provisions until the Changes view sets them out */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px;
+}
+
+ol.differences {
+  font-size: 13px;
+  color: var(--ink2);
+}
+
+ol.differences span {
+  color: var(--muted);
 }
 
 .lag-warning {

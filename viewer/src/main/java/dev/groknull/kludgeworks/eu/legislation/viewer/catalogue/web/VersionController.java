@@ -22,7 +22,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -49,9 +48,6 @@ import org.springframework.web.server.ResponseStatusException;
 class VersionController {
   private static final String PATH =
       "/eli/{type}/{year}/{number}/{date:\\d{4}-\\d{2}-\\d{2}}/{language}";
-
-  /** Where the day is the EU's: Brussels, where its acts are adopted and the OJ dates them. */
-  private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
 
   private final Acts acts;
   private final Texts texts;
@@ -113,8 +109,8 @@ class VersionController {
                 .catalogueVersion(
                     Chrome.of(request),
                     page.version,
-                    MastheadView.of(page.act, page.version, date, page.language),
-                    TimelineView.of(page.act, page.version, page.language),
+                    MastheadView.reading(page.act, page.version, date, page.language),
+                    TimelineView.reading(page.act, page.version, page.language),
                     ReadingView.of(page.act, page.version, date, page.language, today()),
                     text)
                 .render());
@@ -168,18 +164,14 @@ class VersionController {
 
   /** Today, in Brussels. */
   private LocalDate today() {
-    return LocalDate.ofInstant(clock.instant(), BRUSSELS);
+    return Requests.today(clock);
   }
 
   private static Language language(String code) {
-    try {
-      return Language.ofCode(code);
-    } catch (IllegalArgumentException e) {
-      throw notFound();
-    }
+    return Requests.language(code);
   }
 
   private static ResponseStatusException notFound() {
-    return new ResponseStatusException(HttpStatus.NOT_FOUND);
+    return Requests.notFound();
   }
 }

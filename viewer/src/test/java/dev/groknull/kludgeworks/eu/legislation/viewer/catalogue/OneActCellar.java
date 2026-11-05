@@ -21,9 +21,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
 /**
- * Cellar, as far as the module's tests need it: one act, 2015/1998, with its original text and
- * three of its consolidations (in English and French), its own dates and some of those of the acts
- * they integrate, as Cellar has them, and what it was asked for, from any thread.
+ * Cellar, as far as the module's tests need it: one act, 2015/1998, with its original text and four
+ * of its consolidations (in English and French; the latest, of 1 October 2026, without a PDF yet),
+ * its own dates and some of those of the acts they integrate, as Cellar has them, and what it was
+ * asked for, from any thread.
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class OneActCellar {
@@ -52,18 +53,26 @@ public class OneActCellar {
                       Instant.parse("2015-11-12T10:15:30Z")),
                   consolidation(
                       LocalDate.of(2021, 3, 15),
+                      false,
                       Instant.parse("2021-03-24T08:00:00Z"),
                       "32019R0413",
                       "32021R0255"),
                   consolidation(
                       LocalDate.of(2021, 12, 31),
+                      false,
                       Instant.parse("2022-01-14T08:00:00Z"),
                       "32019R0103",
                       "32019R1583",
                       "32020R0910"),
                   consolidation(
                       LocalDate.of(2026, 3, 22),
+                      false,
                       Instant.parse("2026-03-30T08:00:00Z"),
+                      "32026R0449"),
+                  consolidation(
+                      LocalDate.of(2026, 10, 1),
+                      true,
+                      Instant.parse("2026-10-02T08:00:00Z"),
                       "32026R0449"))),
           List.of(
               date(2015, 11, 15, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 1, "3"),
@@ -97,12 +106,13 @@ public class OneActCellar {
 
   final List<String> asked = new CopyOnWriteArrayList<>();
 
-  private static Version consolidation(LocalDate date, Instant modified, String... integrates) {
+  private static Version consolidation(
+      LocalDate date, boolean interim, Instant modified, String... integrates) {
     return new Version(
         Version.Kind.CONSOLIDATED,
         date,
         "02015R1998-" + date.toString().replace("-", ""),
-        false,
+        interim,
         Arrays.stream(integrates).map(ActIdentifier::new).toList(),
         Set.of(Language.ENG, Language.FRA),
         modified);

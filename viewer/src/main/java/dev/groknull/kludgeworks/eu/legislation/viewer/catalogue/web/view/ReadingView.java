@@ -14,7 +14,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * The Reading card of an act's page (Design: Mode: Read): the version being read, by its CELEX, its
  * period, the acts that made it; the date asked, when it isn't the version's first day; where the
- * text lags the law (Design: Dates); and a form asking for the version on another date.
+ * text lags the law (Design: Dates); a form asking for the version on another date; and its
+ * comparison with the version before.
  *
  * @param celex the version's CELEX
  * @param eurLex the version on EUR-Lex, in the page's language
@@ -27,6 +28,7 @@ import org.jspecify.annotations.Nullable;
  * @param action where the date form goes: the act in the page's language
  * @param on the date the form starts at: the date asked
  * @param first the earliest date the form takes: the first version's
+ * @param compare its comparison with the version before in the page's language; none for the first
  */
 public record ReadingView(
     String celex,
@@ -38,7 +40,8 @@ public record ReadingView(
     List<String> lags,
     String action,
     String on,
-    String first) {
+    String first,
+    @Nullable String compare) {
 
   public ReadingView {
     lags = List.copyOf(lags);
@@ -74,14 +77,20 @@ public record ReadingView(
             : act.notYetConsolidated(version).stream().map(Wording::lagOf).toList(),
         Links.act(eli, language),
         asked.toString(),
-        act.timeline().versions().getFirst().date().toString());
+        act.timeline().versions().getFirst().date().toString(),
+        act.timeline()
+            .in(language)
+            .filter(timeline -> timeline.versions().contains(version))
+            .flatMap(timeline -> timeline.predecessor(version))
+            .map(before -> Links.compare(eli, before, version, language))
+            .orElse(null));
   }
 
   /**
    * Applied 15 March 2021 to 30 December 2021; Applies from 22 March 2026 · current version · may
    * still be revised.
    */
-  private static String period(Act act, Version version, LocalDate today) {
+  static String period(Act act, Version version, LocalDate today) {
     var next = act.timeline().successor(version);
     var period =
         next.map(
@@ -99,7 +108,7 @@ public record ReadingView(
     return version.interim() ? period + " · may still be revised" : period;
   }
 
-  private static String names(List<ActIdentifier> acts) {
+  static String names(List<ActIdentifier> acts) {
     return acts.stream().map(Wording::act).collect(Collectors.joining(", "));
   }
 }
