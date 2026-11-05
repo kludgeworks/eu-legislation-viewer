@@ -94,6 +94,26 @@ class VersionPagesTests {
   }
 
   @Test
+  void linksItsStylesheetAndScriptsByTheirContent() {
+    var head =
+        Objects.requireNonNull(
+            Jsoup.parse(Objects.requireNonNull(http.get().uri(PAGE).retrieve().body(String.class)))
+                .head());
+    var assets =
+        head.select("link[rel=stylesheet], script[src]").stream()
+            .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
+            .toList();
+    assertThat(assets)
+        .hasSize(3)
+        .allSatisfy(
+            asset -> {
+              assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");
+              assertThat(http.get().uri(asset).retrieve().toBodilessEntity().getStatusCode())
+                  .isEqualTo(HttpStatus.OK);
+            });
+  }
+
+  @Test
   void followsTheDeviceUntilTheReaderChoosesATheme() {
     assertThat(theme(http.get().uri(PAGE).retrieve().body(String.class))).isEqualTo("system");
     var dark = http.get().uri(PAGE).cookie("theme", "dark").retrieve().body(String.class);

@@ -24,6 +24,20 @@ spring:
       # large SPARQL results take minutes; redirects followed (Cellar's 303s)
       connect-timeout: 10s
       read-timeout: 5m
+  web:
+    resources:
+      chain:
+        strategy:
+          content:
+            # each asset's URL with a hash of its content in it (/css/viewer-<hash>.css, the pages'
+            # links: Chrome.Assets), so a page never runs a copy a browser kept from before it changed
+            enabled: true
+            paths: /**
+      cache:
+        cachecontrol:
+          # and so kept as long as a browser likes: a change is a new URL
+          max-age: 365d
+          cache-public: true
   mvc:
     # errors as RFC 9457 problem details (application/problem+json)
     problemdetails:

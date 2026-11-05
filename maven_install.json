@@ -72,7 +72,7 @@
     "org.testcontainers:testcontainers": -258185670,
     "org.testcontainers:testcontainers-grafana": -2129771727,
     "org.testcontainers:testcontainers-postgresql": 110741309,
-    "org.webjars.npm:htmx.org": 271920906,
+    "org.webjars.npm:htmx.org": -1535533557,
     "org.webjars:webjars-locator-lite": 1938239638,
     "org.xmlunit:xmlunit-assertj3": -355876019,
     "repositories": -1949687017,
@@ -281,7 +281,7 @@
     "org.testcontainers:testcontainers-grafana": 2131428577,
     "org.testcontainers:testcontainers-jdbc": -929385480,
     "org.testcontainers:testcontainers-postgresql": 77541278,
-    "org.webjars.npm:htmx.org": 244245065,
+    "org.webjars.npm:htmx.org": 1035646194,
     "org.webjars:webjars-locator-lite": -454234071,
     "org.xmlresolver:xmlresolver": 602572078,
     "org.xmlresolver:xmlresolver:jar:data": 1791221573,
@@ -1559,9 +1559,9 @@
     },
     "org.webjars.npm:htmx.org": {
       "shasums": {
-        "jar": "cd3a30ac7b61710fe08e13c7d959726e84087829ee74d3d77b6895a355e9ee8c"
+        "jar": "d8384bd35a00f04714a399fee8fd4de9f82830e7350a5415c1906ca8394d1b85"
       },
-      "version": "4.0.0"
+      "version": "4.0.1"
     },
     "org.webjars:webjars-locator-lite": {
       "shasums": {
