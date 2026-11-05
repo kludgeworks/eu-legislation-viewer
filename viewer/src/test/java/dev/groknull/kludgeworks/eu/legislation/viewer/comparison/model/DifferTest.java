@@ -27,6 +27,7 @@ class DifferTest {
   static final Element JANUARY = text("02015R1998-20260101");
   static final Element MARCH = text("02015R1998-20260322");
   static final Element OCTOBER = text("02015R1998-20261001");
+  static final List<String> JANUARY_EIDS = eIds(JANUARY);
 
   @Test
   void marksTheWordsAnActInsertedInEachPointItChanged() {
@@ -138,6 +139,31 @@ class DifferTest {
   }
 
   @Test
+  void foldsTheUnitsBeforeADeletedUnitWithItNotWithTheNextDifference() {
+    var differences = Differ.differences(JANUARY, MARCH);
+    var before = JANUARY_EIDS;
+    var deleted =
+        differences.stream()
+            .filter(d -> d.kind() == Kind.DELETED && !d.folded().isEmpty())
+            .toList();
+    assertThat(deleted).isNotEmpty();
+    for (var each : deleted) {
+      // the units that stood just before it in the earlier text, in order
+      var at = before.indexOf(each.eId());
+      var folded = each.folded().stream().map(Sibling::eId).toList();
+      assertThat(before.indexOf(folded.getLast())).isLessThan(at);
+      assertThat(before.indexOf(folded.getFirst()))
+          .isLessThanOrEqualTo(before.indexOf(folded.getLast()));
+      // and no other difference's
+      assertThat(differences)
+          .filteredOn(d -> d != each)
+          .flatExtracting(Difference::folded)
+          .extracting(Sibling::eId)
+          .doesNotContainAnyElementsOf(folded);
+    }
+  }
+
+  @Test
   void showsAChangedUnitWithItsOwnContentOnly() {
     var changed = find(Differ.differences(JANUARY, MARCH), "anx/pnt_1.2.2.3");
     assertThat(descendants(changed.shown())).extracting(Element::name).doesNotContain("unit");
@@ -162,6 +188,14 @@ class DifferTest {
   @Test
   void findsNothingBetweenATextAndItself() {
     assertThat(Differ.differences(MARCH, MARCH)).isEmpty();
+  }
+
+  /** The eIds of {@code element}'s units, in document order. */
+  private static List<String> eIds(Element element) {
+    var eId = element.name().equals("unit") ? element.attribute("eId") : null;
+    return Stream.concat(
+            Stream.ofNullable(eId), element.children().stream().flatMap(c -> eIds(c).stream()))
+        .toList();
   }
 
   private static Difference find(List<Difference> differences, String eId) {

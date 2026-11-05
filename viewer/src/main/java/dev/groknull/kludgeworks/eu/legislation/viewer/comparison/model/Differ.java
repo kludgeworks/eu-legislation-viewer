@@ -67,7 +67,13 @@ public final class Differ {
       }
     }
     var touched = touched(found, before, after);
-    return found.stream().map(difference -> placed(difference, after, touched).build()).toList();
+    // the units a deleted unit's run folds, which the next difference's run stops at
+    var claimed = new HashSet<String>();
+    var placed = new ArrayList<Difference>();
+    for (var difference : found) {
+      placed.add(placed(difference, before, after, touched, claimed).build());
+    }
+    return List.copyOf(placed);
   }
 
   /** Whether {@code unit} is outermost or the unit it is in is one of {@code units}. */
@@ -193,22 +199,30 @@ public final class Differ {
 
   /**
    * {@code difference} where it stands in {@code after}: the opening of the unit it is in, and the
-   * units before it there, back to one {@code touched}, which are the same in both texts.
+   * units before it there, back to one {@code touched} or {@code claimed}, which are the same in
+   * both texts; for a deleted unit, which {@code after} hasn't, those that stood before it in
+   * {@code before}, which it claims, as the next difference's units stop there.
    */
   private static DifferenceBuilder placed(
-      DifferenceBuilder difference, Units after, Set<String> touched) {
+      DifferenceBuilder difference,
+      Units before,
+      Units after,
+      Set<String> touched,
+      Set<String> claimed) {
     var parent = difference.parent() == null ? null : after.get(difference.parent());
     difference.lead(parent == null ? null : lead(parent));
+    var deleted = difference.kind() == Kind.DELETED;
+    var siblings = (deleted ? before : after).in(difference.parent());
     var folded = new ArrayList<Sibling>();
-    if (difference.kind() != Kind.DELETED) {
-      var siblings = after.in(difference.parent());
-      for (var i = siblings.indexOf(difference.eId()) - 1; i >= 0; i--) {
-        var sibling = after.get(siblings.get(i));
-        if (sibling == null || touched.contains(sibling.eId())) {
-          break;
-        }
-        folded.addFirst(sibling(sibling));
+    for (var i = siblings.indexOf(difference.eId()) - 1; i >= 0; i--) {
+      var sibling = after.get(siblings.get(i));
+      if (sibling == null || touched.contains(sibling.eId()) || claimed.contains(sibling.eId())) {
+        break;
       }
+      folded.addFirst(sibling(sibling));
+    }
+    if (deleted) {
+      folded.forEach(unit -> claimed.add(unit.eId()));
     }
     return difference.folded(folded);
   }

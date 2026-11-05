@@ -32,7 +32,8 @@ import org.jspecify.annotations.Nullable;
  * @param lead the opening of the unit it is in, as context: its num, heading and first block,
  *     unmarked; none for an outermost unit
  * @param folded the units before it in the unit it is in, back to the one before that differs or
- *     holds a difference, which are the same in both texts; none for a deleted unit
+ *     holds a difference, which are the same in both texts; for a deleted unit, those of the later
+ *     text that stood before it in the earlier, which the next difference's then stop at
  * @param markers the amendment markers on the unit's own content in the later text: which acts put
  *     it in the form it has there, and how; where it has none, those on the nearest unit it is in
  *     that an act put in its form whole; none for a deleted unit
