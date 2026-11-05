@@ -280,8 +280,18 @@ class CompareController {
                       views,
                       all)
                   .render();
-          // not built yet: view() has no Synopsis
-          case SYNOPSIS -> throw Requests.notFound();
+          case SYNOPSIS ->
+              templates
+                  .catalogueSynopsis(
+                      changes,
+                      outline,
+                      sidenotes,
+                      this.html,
+                      earlier.celex(),
+                      later.celex(),
+                      views,
+                      all)
+                  .render();
         };
     LOG.info(
         "{} of {} from {} to {} in {}{}: {} of {} differences, {} of Cellar's amendments"
@@ -308,11 +318,9 @@ class CompareController {
     return only != null && sidenote != null && !sidenote.candidates().isEmpty();
   }
 
-  /** The view a comparison's address asks for; 404 for one there isn't, or not built yet. */
+  /** The view a comparison's address asks for; 404 for one there isn't. */
   private static CompareView.View view(String code) {
-    return CompareView.View.of(code)
-        .filter(view -> view != CompareView.View.SYNOPSIS)
-        .orElseThrow(Requests::notFound);
+    return CompareView.View.of(code).orElseThrow(Requests::notFound);
   }
 
   /**

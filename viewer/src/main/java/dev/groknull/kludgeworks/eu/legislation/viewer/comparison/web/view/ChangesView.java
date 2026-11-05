@@ -320,5 +320,10 @@ public record ChangesView(
     public String kind() {
       return difference.kind().name().toLowerCase(Locale.ROOT);
     }
+
+    /** Its unit as a ledger cites it: 1.2.3.8; a point after the point it is in, 1.2.3.5(e). */
+    public String cited() {
+      return ChangesView.cited(difference.unit());
+    }
   }
 }

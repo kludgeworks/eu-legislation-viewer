@@ -10,8 +10,7 @@
 <div class="controls">
   <nav class="views" aria-label="View">
     @for(var view : views)
-      @if(view.href() == null)<span class="view" aria-disabled="true" title="Not built yet">${view.label()}</span>
-      @else<a class="view" href="${view.href()}" aria-current="${view.on() ? "page" : null}">${view.label()}</a>@endif
+      <a class="view" href="${view.href()}" aria-current="${view.on() ? "page" : null}">${view.label()}</a>
     @endfor
   </nav>
   <b>${changes.count()}</b>

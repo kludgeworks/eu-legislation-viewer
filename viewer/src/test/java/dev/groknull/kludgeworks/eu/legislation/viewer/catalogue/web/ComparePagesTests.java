@@ -69,7 +69,7 @@ class ComparePagesTests {
     assertThat(changes.select("nav.views .view").eachText())
         .containsExactly("Changes", "Whole text", "Synopsis");
     assertThat(changes.select("nav.views a.view").eachAttr("href"))
-        .containsExactly(PAGE, PAGE + "&view=whole");
+        .containsExactly(PAGE, PAGE + "&view=whole", PAGE + "&view=synopsis");
     assertThat(changes.select("nav.views [aria-current=page]").text()).isEqualTo("Changes");
     assertThat(changes.select("section.difference").eachAttr("id"))
         .containsExactly(
@@ -183,11 +183,43 @@ class ComparePagesTests {
   }
 
   @Test
-  void showsNoViewThatIsntBuilt() {
+  void alignsTheTwoTextsByProvisionInTheSynopsis() {
+    prepared();
+    var page =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(PAGE + "&view=synopsis").retrieve().body(String.class)));
+    var synopsis =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get()
+                    .uri(Objects.requireNonNull(page.getElementById("text")).attr("hx-get"))
+                    .retrieve()
+                    .body(String.class)));
+    assertThat(synopsis.select("nav.views [aria-current=page]").text()).isEqualTo("Synopsis");
+    assertThat(synopsis.select(".ledger-head .celex").eachText())
+        .containsExactly("02015R1998-20260322", "02015R1998-20261001");
+    assertThat(synopsis.select(".ledger-row[id^=difference-]")).hasSize(6);
+    var first = Objects.requireNonNull(synopsis.getElementById("difference-1"));
+    var provision = Objects.requireNonNull(first.selectFirst(".provision"));
+    assertThat(provision.ownText()).isEqualTo("8.1.2.3(c)");
+    assertThat(provision.select(".n").text()).isEqualTo("difference 1 of 6");
+    // the same marked unit in both, its insertions hidden in From by the page's style
+    assertThat(first.select(".from ins.diff").text())
+        .isEqualTo(first.select(".to ins.diff").text())
+        .isNotEmpty();
+    assertThat(first.select(".what .made").text()).isEqualTo("Replaced by 2026/449");
+    assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
+    assertThat(synopsis.select(".ledger-fold").eachText())
+        .startsWith("Points (a) and (b) — no differences");
+  }
+
+  @Test
+  void showsNoViewThereIsnt() {
     prepared();
     HttpStatusCode status =
         http.get()
-            .uri(PAGE + "&view=synopsis")
+            .uri(PAGE + "&view=sideways")
             .exchange((request, response) -> response.getStatusCode());
     assertThat(status).isEqualTo(HttpStatus.NOT_FOUND);
   }

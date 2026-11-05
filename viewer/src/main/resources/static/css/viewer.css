@@ -746,11 +746,6 @@ a.chip:hover {
   color: var(--bg);
 }
 
-.views .view[aria-disabled="true"] {
-  opacity: 0.45;
-  cursor: not-allowed;
-}
-
 /* the Whole text view (Design: Mode: Compare, Whole text): every provision of the later text, each
  * that differs marked in place as in the Changes view, the rest's text kept to its column */
 .whole .book {
@@ -759,6 +754,132 @@ a.chip:hover {
 
 .whole .book .unit > :not(.unit, .difference) {
   max-width: 42.5rem;
+}
+
+/* the Synopsis view (Design: Mode: Compare, Synopsis): a ledger of the two texts aligned by
+ * provision, each that differs a row tinted, what changed it in the last column; the words it lost
+ * shown in From only, those it gained in To only */
+.ledger {
+  margin-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.ledger-head,
+.ledger-row {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1fr) 15rem;
+}
+
+.ledger-head {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--ink);
+}
+
+.ledger-head > div {
+  padding: 8px 14px;
+  font: 500 11.5px ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ledger-head .celex {
+  display: block;
+  font: 600 13px ui-monospace, monospace;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+
+.ledger-row {
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 64px;
+}
+
+.ledger-row > div {
+  min-width: 0;
+  padding: 9px 14px;
+}
+
+.ledger-row > div + div,
+.ledger-head > div + div {
+  border-left: 1px solid var(--rule);
+}
+
+.ledger-lead .from,
+.ledger-lead .to {
+  color: var(--muted);
+}
+
+.ledger-row[class*="difference-"] {
+  background: var(--chg-tint);
+}
+
+.ledger-row.unknown > :not(.what) {
+  opacity: 0.55;
+}
+
+.ledger .provision {
+  font: 600 12.5px ui-monospace, monospace;
+}
+
+.ledger .provision .n {
+  display: block;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.ledger .from ins.diff,
+.ledger .to del.diff {
+  display: none;
+}
+
+.ledger .absent {
+  margin: 0;
+  font: italic 13.5px ui-sans-serif, system-ui, sans-serif;
+  color: var(--muted);
+}
+
+.ledger .what {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font: 12.5px/1.45 ui-sans-serif, system-ui, sans-serif;
+  color: var(--accent);
+}
+
+.ledger .what .steps {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.ledger .what .steps > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 28px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ledger .what .steps span {
+  opacity: 0.4;
+}
+
+.ledger-fold {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface);
+  font-size: 13.5px;
+  color: var(--muted);
 }
 
 /* the Changes view (Design: Mode: Compare, Changes): the provisions that differ in the book column,

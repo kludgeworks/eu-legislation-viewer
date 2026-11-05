@@ -221,10 +221,7 @@ public record CompareView(Card from, Card to, Acts acts) {
     }
   }
 
-  /**
-   * A comparison's views, as its controls link them, {@code current} the one shown; the Synopsis
-   * not yet, as it isn't built.
-   */
+  /** A comparison's views, as its controls link them, {@code current} the one shown. */
   public static List<ViewLink> views(
       Eli eli,
       Version from,
@@ -237,9 +234,7 @@ public record CompareView(Card from, Card to, Acts acts) {
             view ->
                 new ViewLink(
                     view.label,
-                    view == View.SYNOPSIS
-                        ? null
-                        : Links.compare(eli, from, to, language, only, view),
+                    Links.compare(eli, from, to, language, only, view),
                     view == current))
         .toList();
   }
@@ -248,10 +243,10 @@ public record CompareView(Card from, Card to, Acts acts) {
    * A view's link.
    *
    * @param label its name: Whole text
-   * @param href the comparison in it; none for one not built yet
+   * @param href the comparison in it
    * @param on whether it is the one shown
    */
-  public record ViewLink(String label, @Nullable String href, boolean on) {}
+  public record ViewLink(String label, String href, boolean on) {}
 
   /**
    * A comparison limited to one act's changes, as its banner says it (Design: Acts between the two
