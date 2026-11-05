@@ -17,8 +17,8 @@ public class TestcontainersConfiguration {
 
   /**
    * A new container, not started. It is reusable: when Testcontainers' reuse is on
-   * (TESTCONTAINERS_REUSE_ENABLE=true, as mise run app:dev sets it), a running one is reused, with
-   * what was ingested into it; elsewhere, each run starts its own.
+   * (TESTCONTAINERS_REUSE_ENABLE=true, as bazel run //viewer:dev sets it), a running one is reused,
+   * with what was ingested into it; elsewhere, each run starts its own.
    */
   public static PostgreSQLContainer postgres() {
     return new PostgreSQLContainer(POSTGRES).withReuse(true);

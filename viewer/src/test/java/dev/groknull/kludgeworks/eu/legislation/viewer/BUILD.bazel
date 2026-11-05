@@ -28,10 +28,12 @@ java_library(
 )
 
 # bazel run //viewer:dev (mise run app:dev): the viewer with its store and Grafana in containers;
-# needs Docker
+# needs Docker. Testcontainers' reuse: the running Postgres, and what was ingested into it, outlive
+# the app (the tests never reuse it: they'd share one store)
 java_binary(
     name = "dev",
     testonly = True,
+    env = {"TESTCONTAINERS_REUSE_ENABLE": "true"},
     main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.TestViewerApplication",
     visibility = ["//viewer:__pkg__"],
     runtime_deps = [":testing"],
