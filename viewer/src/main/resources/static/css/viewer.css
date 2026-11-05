@@ -1574,6 +1574,20 @@ del.diff {
   }
 }
 
+/* versions that appeared since the act was prepared, being prepared (catalogue/arriving.jte) */
+.arriving {
+  margin: 12px 0 0;
+  padding: 8px 14px;
+  border: 1px solid var(--ins-ink);
+  background: var(--ins-bg);
+  color: var(--ink);
+  font-size: 13.5px;
+}
+
+.arriving p {
+  margin: 0;
+}
+
 /* why a text couldn't be made, in its place (catalogue/text/failed.jte): what happened, which
  * version, only what can help; a fault (the source's, or ours) warm, how things are grey */
 .failure {

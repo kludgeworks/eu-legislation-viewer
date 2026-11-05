@@ -11,9 +11,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -30,7 +31,7 @@ import org.jspecify.annotations.Nullable;
  * the range between the two is a band. While the act is prepared (preparing), the marks are each
  * version's text as it stands, links to nothing yet: grey queued, light being built, dark built,
  * dashed failed (Design: Preparing an act); once it is, those that failed stay dashed (Design: When
- * it fails).
+ * it fails), and those that appeared since show as being prepared (Design: Revisiting).
  *
  * @param years a mark for each new year on the axis
  * @param marks the versions, merged where too close, in date order
@@ -67,18 +68,18 @@ public record TimelineView(
 
   /**
    * {@code act}'s timeline as the page of {@code reading} in {@code language} shows it: the
-   * versions in that language, or all of them if the version being read isn't in it; those of
-   * {@code failed} dashed.
+   * versions in that language, or all of them if the version being read isn't in it; each version
+   * whose text isn't ready marked as it stands ({@code states}).
    */
   public static TimelineView reading(
-      Act act, Version reading, Language language, Collection<Version> failed) {
+      Act act, Version reading, Language language, Map<Version, String> states) {
     var eli = eli(act);
     var versions = versions(act, language, List.of(reading));
     var axis = Axis.of(versions);
     var index = versions.indexOf(reading);
     return new TimelineView(
         axis.years(),
-        marks(versions, axis, reading::equals, v -> Links.read(eli, v, language), failed),
+        marks(versions, axis, reading::equals, v -> Links.read(eli, v, language), states),
         lags(act, axis),
         List.of(new Tag("READING", axis.markAt(versions, reading))),
         null,
@@ -98,8 +99,8 @@ public record TimelineView(
   /**
    * {@code act}'s timeline as the comparison of {@code from} with {@code to} in {@code language}
    * shows it, on {@code today}: the versions in that language, or all of them if either isn't in
-   * it; those of {@code failed} dashed. A mark links to the comparison with the nearer end moved to
-   * it (nearer).
+   * it; each version whose text isn't ready marked as it stands ({@code states}). A mark links to
+   * the comparison with the nearer end moved to it (nearer).
    */
   public static TimelineView comparing(
       Act act,
@@ -107,7 +108,7 @@ public record TimelineView(
       Version to,
       Language language,
       LocalDate today,
-      Collection<Version> failed) {
+      Map<Version, String> states) {
     var eli = eli(act);
     var versions = versions(act, language, List.of(from, to));
     var axis = Axis.of(versions);
@@ -124,7 +125,7 @@ public record TimelineView(
     var original = versions.getFirst();
     return new TimelineView(
         axis.years(),
-        marks(versions, axis, v -> v.equals(from) || v.equals(to), nearer, failed),
+        marks(versions, axis, v -> v.equals(from) || v.equals(to), nearer, states),
         lags(act, axis),
         at == until
             ? List.of(new Tag(from.equals(to) ? "FROM = TO" : "FROM · TO", at))
@@ -186,6 +187,23 @@ public record TimelineView(
         List.of());
   }
 
+  /**
+   * How the texts of {@code preparation}'s versions stand, as their ticks are drawn once it is
+   * prepared: those not ready, failed or being prepared (arriving).
+   */
+  public static Map<Version, String> states(Preparation preparation) {
+    var states = new HashMap<Version, String>();
+    preparation
+        .texts()
+        .forEach(
+            (version, text) -> {
+              if (!(text instanceof Text.Ready)) {
+                states.put(version, state(text));
+              }
+            });
+    return states;
+  }
+
   /** A text's state, as a tick is drawn. */
   private static String state(Text text) {
     return switch (text) {
@@ -232,7 +250,7 @@ public record TimelineView(
       Axis axis,
       Predicate<Version> selected,
       Function<Version, String> href,
-      Collection<Version> failed) {
+      Map<Version, String> states) {
     var marks = new ArrayList<Mark>();
     for (var group : groups(versions, axis)) {
       var at = axis.at(group);
@@ -244,8 +262,8 @@ public record TimelineView(
                           at,
                           selected.test(v),
                           href.apply(v),
-                          failed.contains(v) ? label(v) + " · couldn't be prepared" : label(v),
-                          failed.contains(v) ? "failed" : null))
+                          label(v, states.get(v)),
+                          states.get(v)))
               .toList();
       marks.add(ticks.size() == 1 ? ticks.getFirst() : new Merged(at, ticks, merged(group)));
     }
@@ -277,6 +295,15 @@ public record TimelineView(
       }
     }
     return groups;
+  }
+
+  /** A version's label, with what its text's {@code state} means for a reader where it has one. */
+  private static String label(Version version, @Nullable String state) {
+    return switch (state) {
+      case "failed" -> label(version) + " · couldn't be prepared";
+      case "queued", "building" -> label(version) + " · being prepared";
+      case null, default -> label(version);
+    };
   }
 
   /** 02015R1998-20170607 · from 7 June 2017 · made by 2017/815, 2017/837. */
@@ -357,7 +384,7 @@ public record TimelineView(
    * @param href where clicking it goes; none while the act is prepared
    * @param label what it is: its CELEX, its first day, the acts that made it
    * @param state while the act is prepared, its text's: queued, building, ready, failed; once it
-   *     is, failed if it failed
+   *     is, the same where it isn't ready
    */
   public record Tick(
       double at, boolean selected, @Nullable String href, String label, @Nullable String state)

@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
@@ -87,7 +88,7 @@ class CompareController {
     var title = page.from.celex() + " → " + page.to.celex();
     var chrome = Chrome.of(request);
     var masthead = MastheadView.comparing(page.act, page.from, page.to, page.language);
-    if (!preparation.settled()) {
+    if (preparation.preparing()) {
       return ResponseEntity.ok()
           .contentType(MediaType.TEXT_HTML)
           .body(
@@ -123,10 +124,11 @@ class CompareController {
                         page.to,
                         page.language,
                         today,
-                        preparation.failedVersions()),
+                        TimelineView.states(preparation)),
                     CompareView.of(page.act, page.from, page.to, page.language, today),
                     page.changes(preparation, self(request)),
-                    prepared ? PreparingView.receipt(preparation, page.language) : null)
+                    prepared ? PreparingView.receipt(preparation, page.language) : null,
+                    ArrivingView.of(page.act, preparation, self(request)).orElse(null))
                 .render());
   }
 
@@ -192,7 +194,8 @@ class CompareController {
     /**
      * The changes, once the act is prepared in the language: why a text can't be compared, if
      * either can't, with Try again posting to {@code self}; why the act couldn't be, if none of its
-     * texts could; else the Changes view, loaded from the comparison module.
+     * texts could; that either is being prepared, if it appeared since; else the Changes view,
+     * loaded from the comparison module.
      */
     JteModel changes(Preparation preparation, String self) {
       if (preparation.ready() == 0) {
@@ -208,11 +211,12 @@ class CompareController {
                   act, from, to, each == earlier ? from : to, failed.failure(), language, self));
         }
       }
-      return templates.catalogueCompareReady(
-          "/comparison/"
-              + ((Text.Ready) earlier).root().hex()
-              + "/"
-              + ((Text.Ready) later).root().hex());
+      if (earlier instanceof Text.Ready before && later instanceof Text.Ready after) {
+        return templates.catalogueCompareReady(
+            "/comparison/" + before.root().hex() + "/" + after.root().hex());
+      }
+      // either end a version that appeared since, being prepared
+      return templates.catalogueTextArriving();
     }
   }
 }

@@ -16,7 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Timelin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Year;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ class TimelineViewTest {
   static final LocalDate TODAY = LocalDate.of(2026, 11, 5);
 
   final TimelineView timeline =
-      TimelineView.reading(AVSEC, version("02015R1998-20211231"), Language.ENG, List.of());
+      TimelineView.reading(AVSEC, version("02015R1998-20211231"), Language.ENG, Map.of());
 
   @Test
   void spansTheYearsOfItsVersions() {
@@ -109,8 +109,8 @@ class TimelineViewTest {
 
   @Test
   void hasNoVersionBeforeTheFirstNorAfterTheLatest() {
-    var first = TimelineView.reading(AVSEC, AVSEC.timeline().first(), Language.ENG, List.of());
-    var latest = TimelineView.reading(AVSEC, AVSEC.timeline().latest(), Language.ENG, List.of());
+    var first = TimelineView.reading(AVSEC, AVSEC.timeline().first(), Language.ENG, Map.of());
+    var latest = TimelineView.reading(AVSEC, AVSEC.timeline().latest(), Language.ENG, Map.of());
 
     assertThat(first.steps())
         .extracting(Step::href)
@@ -161,7 +161,7 @@ class TimelineViewTest {
   void dashesTheVersionsThatFailed() {
     var failed = version("02015R1998-20211231");
 
-    var reading = TimelineView.reading(AVSEC, failed, Language.ENG, List.of(failed));
+    var reading = TimelineView.reading(AVSEC, failed, Language.ENG, Map.of(failed, "failed"));
 
     var merged =
         reading.marks().stream()
@@ -186,8 +186,7 @@ class TimelineViewTest {
   }
 
   private static TimelineView comparing(String from, String to) {
-    return TimelineView.comparing(
-        AVSEC, version(from), version(to), Language.ENG, TODAY, List.of());
+    return TimelineView.comparing(AVSEC, version(from), version(to), Language.ENG, TODAY, Map.of());
   }
 
   /** Where the mark of the version {@code celex} links, merged or not. */

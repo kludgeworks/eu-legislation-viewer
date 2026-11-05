@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
@@ -26,6 +27,7 @@ import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -45,8 +47,10 @@ import org.springframework.web.server.ResponseStatusException;
  * 2026-03-22/eng. The act is prepared whole in the language, every version of it, before the page
  * shows a text: until then it is the preparing page, which becomes this one in place; then the
  * version's text loads from the content module, its outline beside it, or why it couldn't be made
- * is in its place, with Try again posting to the page where that may help. The act's address
- * without a date goes to the page of the version that applies today, or of the date asked (on).
+ * is in its place, with Try again posting to the page where that may help. Versions that appeared
+ * since it was prepared are prepared on their own: the page doesn't wait for them, but says so. The
+ * act's address without a date goes to the page of the version that applies today, or of the date
+ * asked (on).
  */
 @Controller
 class VersionController {
@@ -115,10 +119,11 @@ class VersionController {
           masthead,
           templates.catalogueTextMissing(page.version, page.eurLex()),
           null,
-          List.of());
+          Map.of(),
+          null);
     }
     var preparation = texts.prepare(page.act, page.language);
-    if (!preparation.settled()) {
+    if (preparation.preparing()) {
       return templates
           .cataloguePreparing(
               chrome,
@@ -138,7 +143,8 @@ class VersionController {
         masthead,
         page.text(preparation, request.getRequestURI()),
         prepared ? PreparingView.receipt(preparation, page.language) : null,
-        preparation.failedVersions());
+        TimelineView.states(preparation),
+        ArrivingView.of(page.act, preparation, request.getRequestURI()).orElse(null));
   }
 
   /**
@@ -181,22 +187,25 @@ class VersionController {
         MastheadView masthead,
         JteModel text,
         @Nullable String receipt,
-        List<Version> failed) {
+        Map<Version, String> states,
+        @Nullable ArrivingView arriving) {
       return templates
           .catalogueVersion(
               chrome,
               version,
               masthead,
-              TimelineView.reading(act, version, language, failed),
+              TimelineView.reading(act, version, language, states),
               ReadingView.of(act, version, date, language, today()),
               text,
-              receipt)
+              receipt,
+              arriving)
           .render();
     }
 
     /**
      * The version's text, once the act is prepared: built, or why it couldn't be, with Try again
-     * posting to {@code self}; why the act couldn't be, if none of its texts could.
+     * posting to {@code self}; why the act couldn't be, if none of its texts could; that it is
+     * being prepared, if it appeared since.
      */
     JteModel text(Preparation preparation, String self) {
       var text = preparation.texts().get(version);
@@ -212,8 +221,8 @@ class VersionController {
             templates.catalogueTextReady(
                 "/content/" + ready.root().hex(),
                 content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
-        case Text.Queued _, Text.Building _ ->
-            throw new IllegalStateException("A settled preparation has a text not yet built");
+        // a version that appeared since, being prepared
+        case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->
             templates.catalogueTextFailed(
                 FailureView.reading(act, version, failed.failure(), language, self));

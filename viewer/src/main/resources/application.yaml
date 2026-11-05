@@ -91,6 +91,10 @@ gg:
     use-precompiled-templates: true
 
 viewer:
+  catalogue:
+    # how long an act is kept as Cellar had it before a page opening it has it read again, in the
+    # background, for the versions that appeared since
+    refresh-after: 1d
   cellar:
     sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql
     # where Cellar's resource URIs start (…/resource/celex/32015R1998)

@@ -9,12 +9,15 @@ import java.util.Optional;
 import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * The acts, from the store; an act not kept yet is read from Cellar and kept, so it is asked of
- * Cellar once. Cellar is asked outside any transaction: its answer takes seconds, which no
- * connection is held for.
+ * Cellar once. An act kept longer than viewer.catalogue.refresh-after is found as kept, and read
+ * again in the background (ActRefreshDue), by the one opening of it that claims it. Cellar is asked
+ * outside any transaction: its answer takes seconds, which no connection is held for.
  */
 @Service
 class CatalogueService implements Acts {
@@ -22,10 +25,21 @@ class CatalogueService implements Acts {
 
   private final ActStore store;
   private final ActSource cellar;
+  private final ApplicationEventPublisher events;
+  private final TransactionTemplate transactions;
+  private final CatalogueProperties properties;
 
-  CatalogueService(ActStore store, ActSource cellar) {
+  CatalogueService(
+      ActStore store,
+      ActSource cellar,
+      ApplicationEventPublisher events,
+      TransactionTemplate transactions,
+      CatalogueProperties properties) {
     this.store = store;
     this.cellar = cellar;
+    this.events = events;
+    this.transactions = transactions;
+    this.properties = properties;
   }
 
   @Override
@@ -43,11 +57,23 @@ class CatalogueService implements Acts {
     var act = kept.get();
     if (act.isPresent()) {
       LOG.debug("{} is in the catalogue", name);
+      refreshIfDue(act.get().id());
       return act;
     }
     var read = fromCellar.get();
     read.ifPresent(this::keep);
     return read;
+  }
+
+  /** Claims the act's refresh if it is due, and asks for it once the claim is committed. */
+  private void refreshIfDue(ActIdentifier id) {
+    transactions.executeWithoutResult(
+        status -> {
+          if (store.due(id, properties.refreshAfter())) {
+            LOG.debug("{} is due to be read from Cellar again", id);
+            events.publishEvent(new ActRefreshDue(id));
+          }
+        });
   }
 
   private void keep(Act act) {

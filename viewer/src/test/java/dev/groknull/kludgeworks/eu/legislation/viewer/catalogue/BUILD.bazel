@@ -109,3 +109,39 @@ java_junit5_test(
         "@maven//:org_springframework_spring_tx",
     ],
 )
+
+# An act read from Cellar again once it is due, the versions that appeared prepared on their own;
+# on its own, as the act changes; needs Docker
+java_junit5_test(
+    name = "RefreshTests",
+    size = "medium",
+    timeout = "short",
+    srcs = ["RefreshTests.java"],
+    tags = [
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.RefreshTests",
+    runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":one-act-cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra:fixtures",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_awaitility_awaitility",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_jdbc",
+    ],
+)

@@ -10,11 +10,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Stream;
 import org.jspecify.annotations.Nullable;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -24,7 +26,8 @@ import org.springframework.context.annotation.Primary;
  * Cellar, as far as the module's tests need it: one act, 2015/1998, with its original text and four
  * of its consolidations (in English and French; the latest, of 1 October 2026, without a PDF yet),
  * its own dates and some of those of the acts they integrate, as Cellar has them, and what it was
- * asked for, from any thread.
+ * asked for, from any thread. What it answers can be changed ({@link #act}): to the same act with
+ * its consolidation of 1 March 2022 too (REFRESHED), as if Cellar listed a version more.
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class OneActCellar {
@@ -104,7 +107,34 @@ public class OneActCellar {
                   date(2026, 3, 22, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 20, "2"),
                   date(2026, 10, 1, Kind.APPLICATION, true, null, null, "2"))));
 
+  /** The act as Cellar lists it with its consolidation of 1 March 2022 too. */
+  static final Act REFRESHED =
+      new Act(
+          ACT.id(),
+          ACT.eli(),
+          ACT.type(),
+          ACT.titles(),
+          ACT.dateOfDocument(),
+          ACT.inForce(),
+          ACT.endOfValidity(),
+          new Timeline(
+              Stream.concat(
+                      ACT.timeline().versions().stream(),
+                      Stream.of(
+                          consolidation(
+                              LocalDate.of(2022, 3, 1),
+                              false,
+                              Instant.parse("2022-03-10T08:00:00Z"),
+                              "32021R0255")))
+                  .sorted(Comparator.comparing(Version::date))
+                  .toList()),
+          ACT.dates(),
+          ACT.amendingDates());
+
   final List<String> asked = new CopyOnWriteArrayList<>();
+
+  /** What Cellar answers for 2015/1998. */
+  volatile Act act = ACT;
 
   private static Version consolidation(
       LocalDate date, boolean interim, Instant modified, String... integrates) {
@@ -151,13 +181,13 @@ public class OneActCellar {
       @Override
       public Optional<Act> find(ActIdentifier id) {
         asked.add(id.celex());
-        return id.equals(CELEX) ? Optional.of(ACT) : Optional.empty();
+        return id.equals(CELEX) ? Optional.of(act) : Optional.empty();
       }
 
       @Override
       public Optional<Act> find(Eli eli) {
         asked.add("ELI " + eli);
-        return eli.equals(ELI) ? Optional.of(ACT) : Optional.empty();
+        return eli.equals(ELI) ? Optional.of(act) : Optional.empty();
       }
     };
   }

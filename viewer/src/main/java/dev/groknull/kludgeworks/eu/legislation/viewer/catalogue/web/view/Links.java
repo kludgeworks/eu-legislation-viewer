@@ -50,12 +50,17 @@ public final class Links {
     return compare(eli, language) + "?from=" + from.date() + "&to=" + to.date();
   }
 
-  /** The act's comparisons in {@code language}, as the From and To cards' date forms ask. */
   /** The stream of the act's preparation in the language (PreparationController). */
   public static String prepare(Eli eli, Language language) {
     return act(eli, language) + "/prepare/events";
   }
 
+  /** The same, for a prepared act's page waiting on versions that appeared since: done alone. */
+  public static String arriving(Eli eli, Language language) {
+    return prepare(eli, language) + "?arriving=true";
+  }
+
+  /** The act's comparisons in {@code language}, as the From and To cards' date forms ask. */
   public static String compare(Eli eli, Language language) {
     return act(eli, language) + "/compare";
   }

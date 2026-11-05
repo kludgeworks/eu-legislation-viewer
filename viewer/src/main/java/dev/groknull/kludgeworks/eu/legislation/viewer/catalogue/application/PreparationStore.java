@@ -16,6 +16,9 @@ public interface PreparationStore {
   /** Starts the act's preparation in the language, unless it has started. */
   void start(ActIdentifier act, Language language);
 
+  /** The languages the act is prepared in, or being prepared in. */
+  List<Language> languages(ActIdentifier act);
+
   /** When it started, and settled. */
   Optional<Kept> find(ActIdentifier act, Language language);
 

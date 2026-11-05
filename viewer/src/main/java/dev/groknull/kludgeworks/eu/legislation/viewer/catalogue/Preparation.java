@@ -16,8 +16,9 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * An act being prepared in a language (Design: Preparing an act): every version's text in it, as it
- * stands. An act is prepared whole, up front, so its pages wait until it is settled: every text
- * built, or failed, none queued or being built.
+ * stands. An act is prepared whole, up front, so its pages wait until it has settled: every text
+ * built, or failed, none queued or being built. A version that appears later (Design: Revisiting)
+ * is prepared on its own, arriving: the act's pages don't wait for it.
  *
  * @param act the act
  * @param started when it was first opened in the language
@@ -40,6 +41,28 @@ public record Preparation(
   public Preparation {
     texts = Collections.unmodifiableSequencedMap(new LinkedHashMap<>(texts));
     steps = List.copyOf(steps);
+  }
+
+  /**
+   * Whether it is being prepared, its pages waiting: it hasn't settled, the first time or again
+   * (Try again), and some text isn't settled.
+   */
+  public boolean preparing() {
+    return settledAt == null && !settled();
+  }
+
+  /**
+   * The versions that appeared once it had settled, their texts not yet settled, in date order:
+   * none while it is being prepared.
+   */
+  public List<Version> arriving() {
+    if (settledAt == null) {
+      return List.of();
+    }
+    return texts.entrySet().stream()
+        .filter(each -> !each.getValue().settled())
+        .map(Map.Entry::getKey)
+        .toList();
   }
 
   /** Whether every text is built or failed. */
@@ -68,14 +91,6 @@ public record Preparation(
    */
   public int running() {
     return count(Text.Building.class);
-  }
-
-  /** The versions whose text failed, in date order. */
-  public List<Version> failedVersions() {
-    return texts.entrySet().stream()
-        .filter(each -> each.getValue() instanceof Text.Failed)
-        .map(Map.Entry::getKey)
-        .toList();
   }
 
   /** How many versions are prepared: those in the language. */

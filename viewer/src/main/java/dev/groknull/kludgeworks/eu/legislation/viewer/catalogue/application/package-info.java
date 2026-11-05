@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 /**
  * The catalogue module's application ring: the acts from the store, read from Cellar the first time
- * (CatalogueService), on the store and the source the infrastructure provides (ActStore,
- * ActSource).
+ * and again once they are due (CatalogueService, ActRefresher), and the versions' texts prepared
+ * (TextService), on the stores and the source the infrastructure provides (ActStore, ActSource,
+ * ExpressionStore, PreparationStore).
  */
 @ApplicationRing
 @NullMarked

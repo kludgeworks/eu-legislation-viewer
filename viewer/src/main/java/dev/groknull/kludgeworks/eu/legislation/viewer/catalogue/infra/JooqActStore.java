@@ -21,6 +21,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.table
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.VersionRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -30,12 +31,15 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
+import org.jooq.InsertSetMoreStep;
+import org.jooq.types.DayToSecond;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions and
- * its dates, written in one transaction, unless the act is there.
+ * its dates, written in one transaction, unless the act is there; written anew, its versions kept,
+ * once it is read from Cellar again.
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -102,37 +106,97 @@ class JooqActStore implements ActStore {
     if (!added) {
       return false;
     }
-    if (!act.titles().isEmpty()) {
-      var titles = db.insertInto(ACT_TITLE, ACT_TITLE.ACT, ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE);
-      for (var title : act.titles().entrySet()) {
-        titles = titles.values(act.id(), title.getKey(), title.getValue());
-      }
-      titles.execute();
+    titles(act);
+    db.batch(act.timeline().versions().stream().map(version -> version(act, version)).toList())
+        .execute();
+    dates(act);
+    return true;
+  }
+
+  @Override
+  public boolean due(ActIdentifier id, Duration after) {
+    return db.update(ACT)
+            .set(ACT.CHECKED_AT, currentInstant())
+            .where(
+                ACT.CELEX.eq(id),
+                ACT.CHECKED_AT.lt(currentInstant().minus(DayToSecond.valueOf(after))))
+            .execute()
+        == 1;
+  }
+
+  @Override
+  @Transactional
+  public List<Version> update(Act act) {
+    db.update(ACT)
+        .set(ACT.ELI, act.eli())
+        .set(ACT.RESOURCE_TYPE, act.type())
+        .set(ACT.DATE_OF_DOCUMENT, act.dateOfDocument())
+        .set(ACT.IN_FORCE, act.inForce())
+        .set(ACT.END_OF_VALIDITY, act.endOfValidity())
+        .set(ACT.CHECKED_AT, currentInstant())
+        .where(ACT.CELEX.eq(act.id()))
+        .execute();
+    db.deleteFrom(ACT_TITLE).where(ACT_TITLE.ACT.eq(act.id())).execute();
+    titles(act);
+    db.deleteFrom(ACT_DATE).where(ACT_DATE.ACT.eq(act.id())).execute();
+    dates(act);
+    var kept =
+        db.select(VERSION.CELEX)
+            .from(VERSION)
+            .where(VERSION.ACT.eq(act.id()))
+            .fetchSet(VERSION.CELEX);
+    db.batch(
+            act.timeline().versions().stream()
+                .map(
+                    // a version is its day: one kept keeps its document, which its texts refer to
+                    version ->
+                        version(act, version)
+                            .onConflict(VERSION.ACT, VERSION.DATE)
+                            .doUpdate()
+                            .set(VERSION.KIND, version.kind())
+                            .set(VERSION.INTERIM, version.interim())
+                            .set(VERSION.INTEGRATES, integrates(version))
+                            .set(VERSION.LANGUAGES, languages(version))
+                            .set(VERSION.FORMEX_MODIFIED, version.formexModified()))
+                .toList())
+        .execute();
+    return act.timeline().versions().stream()
+        .filter(version -> !kept.contains(version.celex()))
+        .toList();
+  }
+
+  private void titles(Act act) {
+    if (act.titles().isEmpty()) {
+      return;
     }
-    var versions =
-        db.insertInto(
-            VERSION,
-            VERSION.ACT,
-            VERSION.DATE,
-            VERSION.KIND,
-            VERSION.CELEX,
-            VERSION.INTERIM,
-            VERSION.INTEGRATES,
-            VERSION.LANGUAGES,
-            VERSION.FORMEX_MODIFIED);
-    for (var version : act.timeline().versions()) {
-      versions =
-          versions.values(
-              act.id(),
-              version.date(),
-              version.kind(),
-              version.celex(),
-              version.interim(),
-              version.integrates().stream().map(ActIdentifier::celex).toArray(String[]::new),
-              version.languages().stream().map(Language::code).toArray(String[]::new),
-              version.formexModified());
+    var titles = db.insertInto(ACT_TITLE, ACT_TITLE.ACT, ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE);
+    for (var title : act.titles().entrySet()) {
+      titles = titles.values(act.id(), title.getKey(), title.getValue());
     }
-    versions.execute();
+    titles.execute();
+  }
+
+  private InsertSetMoreStep<VersionRecord> version(Act act, Version version) {
+    return db.insertInto(VERSION)
+        .set(VERSION.ACT, act.id())
+        .set(VERSION.DATE, version.date())
+        .set(VERSION.KIND, version.kind())
+        .set(VERSION.CELEX, version.celex())
+        .set(VERSION.INTERIM, version.interim())
+        .set(VERSION.INTEGRATES, integrates(version))
+        .set(VERSION.LANGUAGES, languages(version))
+        .set(VERSION.FORMEX_MODIFIED, version.formexModified());
+  }
+
+  private static String[] integrates(Version version) {
+    return version.integrates().stream().map(ActIdentifier::celex).toArray(String[]::new);
+  }
+
+  private static String[] languages(Version version) {
+    return version.languages().stream().map(Language::code).toArray(String[]::new);
+  }
+
+  private void dates(Act act) {
     var dates = new LinkedHashMap<ActIdentifier, List<ActDate>>(act.amendingDates());
     dates.put(act.id(), act.dates());
     var rows =
@@ -147,7 +211,6 @@ class JooqActStore implements ActStore {
     if (!rows.isEmpty()) {
       db.batchInsert(rows).execute();
     }
-    return true;
   }
 
   private static ActDateRecord date(

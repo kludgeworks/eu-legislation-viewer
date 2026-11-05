@@ -52,6 +52,14 @@ class JooqPreparationStore implements PreparationStore {
   }
 
   @Override
+  public List<Language> languages(ActIdentifier act) {
+    return db.select(PREPARATION.LANGUAGE)
+        .from(PREPARATION)
+        .where(PREPARATION.ACT.eq(act))
+        .fetch(PREPARATION.LANGUAGE);
+  }
+
+  @Override
   public Optional<Kept> find(ActIdentifier act, Language language) {
     return db.selectFrom(PREPARATION)
         .where(the(act, language))
