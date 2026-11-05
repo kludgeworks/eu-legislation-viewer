@@ -27,6 +27,14 @@ public interface IngestJobs {
   Optional<IngestJob> find(String celex, Language language);
 
   /**
+   * Queues the expression's job again, from its first attempt, with the trace of the request that
+   * asked, if it failed in a way that trying again may help (Failure.retryable).
+   *
+   * @return whether it was queued again
+   */
+  boolean retry(String celex, Language language, @Nullable String traceparent);
+
+  /**
    * How many other jobs are queued or running that were queued before the first of those of {@code
    * celexes} that is queued; none if none is.
    */

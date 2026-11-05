@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
 import com.google.devtools.build.runfiles.AutoBazelRepository;
 import com.google.devtools.build.runfiles.Runfiles;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.SourceUnavailableException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -16,13 +17,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.BiFunction;
+import org.springframework.web.client.ResourceAccessException;
 
 /**
  * A Formex source on the converter's fixtures, in English: 2015/1998's consolidations of 2026 among
  * them, none for a document without one; in French a document that isn't a legal act, in German
  * Formex the converter doesn't handle, in Italian another version's Formex (as Cellar misfiles it),
- * for any document. It records what it was asked for, from any thread. With the converter's
- * expected output for the fixtures.
+ * for any document; in Swedish Cellar doesn't answer. It records what it was asked for, from any
+ * thread. With the converter's expected output for the fixtures.
  */
 @AutoBazelRepository
 final class FormexFixtures implements FormexSource {
@@ -38,6 +40,11 @@ final class FormexFixtures implements FormexSource {
   public <T> Optional<List<T>> fetch(
       String celex, Language language, BiFunction<String, InputStream, T> read) {
     requests.add(celex + " " + language.code());
+    if (language == Language.SWE) {
+      throw new SourceUnavailableException(
+          "Cellar didn't answer for " + celex + " in SWE",
+          new ResourceAccessException("I/O error: Read timed out"));
+    }
     var refused =
         switch (language) {
           case FRA -> "<JUDGMENT/>";

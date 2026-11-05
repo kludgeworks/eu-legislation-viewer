@@ -138,6 +138,17 @@ class JooqExpressionStore implements ExpressionStore {
   }
 
   @Override
+  public boolean requeue(String celex, Language language) {
+    return db.update(EXPRESSION)
+            .set(EXPRESSION.STATE, State.QUEUED.name())
+            .set(EXPRESSION.ATTEMPT, 0)
+            .set(EXPRESSION.FAILURE, val(null, EXPRESSION.FAILURE))
+            .where(the(celex, language), EXPRESSION.STATE.eq(State.FAILED.name()))
+            .execute()
+        == 1;
+  }
+
+  @Override
   public boolean fail(String celex, Language language, Failure failure) {
     return db.insertInto(EXPRESSION)
             .set(EXPRESSION.CELEX, celex)

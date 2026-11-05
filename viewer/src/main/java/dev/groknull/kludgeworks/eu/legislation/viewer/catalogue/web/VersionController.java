@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
@@ -33,6 +34,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
@@ -42,8 +44,9 @@ import org.springframework.web.server.ResponseStatusException;
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
  * 2026-03-22/eng. The act is prepared whole in the language, every version of it, before the page
  * shows a text: until then it is the preparing page, which becomes this one in place; then the
- * version's text loads from the content module, its outline beside it. The act's address without a
- * date goes to the page of the version that applies today, or of the date asked (on).
+ * version's text loads from the content module, its outline beside it, or why it couldn't be made
+ * is in its place, with Try again posting to the page where that may help. The act's address
+ * without a date goes to the page of the version that applies today, or of the date asked (on).
  */
 @Controller
 class VersionController {
@@ -108,7 +111,11 @@ class VersionController {
     var masthead = MastheadView.reading(page.act, page.version, date, page.language);
     if (page.act.timeline().in(page.language).isEmpty()) {
       return page.render(
-          chrome, masthead, templates.catalogueTextMissing(page.version, page.eurLex()), null);
+          chrome,
+          masthead,
+          templates.catalogueTextMissing(page.version, page.eurLex()),
+          null,
+          List.of());
     }
     var preparation = texts.prepare(page.act, page.language);
     if (!preparation.settled()) {
@@ -129,8 +136,28 @@ class VersionController {
     return page.render(
         chrome,
         masthead,
-        page.text(preparation),
-        prepared ? PreparingView.receipt(preparation, page.language) : null);
+        page.text(preparation, request.getRequestURI()),
+        prepared ? PreparingView.receipt(preparation, page.language) : null,
+        preparation.failedVersions());
+  }
+
+  /**
+   * Try again, as the failure panel posts it to the version's page: the act's texts that failed
+   * where trying again may help, tried again; then the page, preparing once more.
+   */
+  @PostMapping(path = PATH)
+  ResponseEntity<Void> retry(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+      @PathVariable("language") String code,
+      HttpServletRequest request) {
+    var page = new Page(type, year, number, date, code);
+    texts.retry(page.act, page.language);
+    return ResponseEntity.status(HttpStatus.SEE_OTHER)
+        .location(URI.create(request.getRequestURI()))
+        .build();
   }
 
   /** What a version's page shows: the act, the version that applies on the date, the language. */
@@ -149,25 +176,36 @@ class VersionController {
       this.date = date;
     }
 
-    String render(Chrome chrome, MastheadView masthead, JteModel text, @Nullable String receipt) {
+    String render(
+        Chrome chrome,
+        MastheadView masthead,
+        JteModel text,
+        @Nullable String receipt,
+        List<Version> failed) {
       return templates
           .catalogueVersion(
               chrome,
               version,
               masthead,
-              TimelineView.reading(act, version, language),
+              TimelineView.reading(act, version, language, failed),
               ReadingView.of(act, version, date, language, today()),
               text,
               receipt)
           .render();
     }
 
-    /** The version's text, once the act is prepared: built, or why it couldn't be. */
-    JteModel text(Preparation preparation) {
+    /**
+     * The version's text, once the act is prepared: built, or why it couldn't be, with Try again
+     * posting to {@code self}; why the act couldn't be, if none of its texts could.
+     */
+    JteModel text(Preparation preparation, String self) {
       var text = preparation.texts().get(version);
       if (text == null) {
         // a version not in the language
         return templates.catalogueTextMissing(version, eurLex());
+      }
+      if (preparation.ready() == 0) {
+        return templates.catalogueTextFailed(FailureView.act(act, preparation, self));
       }
       return switch (text) {
         case Text.Ready ready ->
@@ -176,7 +214,9 @@ class VersionController {
                 content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
         case Text.Queued _, Text.Building _ ->
             throw new IllegalStateException("A settled preparation has a text not yet built");
-        case Text.Failed failed -> templates.catalogueTextFailed(failed.failure(), eurLex());
+        case Text.Failed failed ->
+            templates.catalogueTextFailed(
+                FailureView.reading(act, version, failed.failure(), language, self));
       };
     }
 

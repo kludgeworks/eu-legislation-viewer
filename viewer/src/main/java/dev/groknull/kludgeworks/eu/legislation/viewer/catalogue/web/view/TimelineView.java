@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -28,7 +29,8 @@ import org.jspecify.annotations.Nullable;
  * pages; comparing (comparing), each links to the comparison with the nearer end moved to it, and
  * the range between the two is a band. While the act is prepared (preparing), the marks are each
  * version's text as it stands, links to nothing yet: grey queued, light being built, dark built,
- * dashed failed (Design: Preparing an act).
+ * dashed failed (Design: Preparing an act); once it is, those that failed stay dashed (Design: When
+ * it fails).
  *
  * @param years a mark for each new year on the axis
  * @param marks the versions, merged where too close, in date order
@@ -65,16 +67,18 @@ public record TimelineView(
 
   /**
    * {@code act}'s timeline as the page of {@code reading} in {@code language} shows it: the
-   * versions in that language, or all of them if the version being read isn't in it.
+   * versions in that language, or all of them if the version being read isn't in it; those of
+   * {@code failed} dashed.
    */
-  public static TimelineView reading(Act act, Version reading, Language language) {
+  public static TimelineView reading(
+      Act act, Version reading, Language language, Collection<Version> failed) {
     var eli = eli(act);
     var versions = versions(act, language, List.of(reading));
     var axis = Axis.of(versions);
     var index = versions.indexOf(reading);
     return new TimelineView(
         axis.years(),
-        marks(versions, axis, reading::equals, v -> Links.read(eli, v, language)),
+        marks(versions, axis, reading::equals, v -> Links.read(eli, v, language), failed),
         lags(act, axis),
         List.of(new Tag("READING", axis.markAt(versions, reading))),
         null,
@@ -94,10 +98,16 @@ public record TimelineView(
   /**
    * {@code act}'s timeline as the comparison of {@code from} with {@code to} in {@code language}
    * shows it, on {@code today}: the versions in that language, or all of them if either isn't in
-   * it. A mark links to the comparison with the nearer end moved to it (nearer).
+   * it; those of {@code failed} dashed. A mark links to the comparison with the nearer end moved to
+   * it (nearer).
    */
   public static TimelineView comparing(
-      Act act, Version from, Version to, Language language, LocalDate today) {
+      Act act,
+      Version from,
+      Version to,
+      Language language,
+      LocalDate today,
+      Collection<Version> failed) {
     var eli = eli(act);
     var versions = versions(act, language, List.of(from, to));
     var axis = Axis.of(versions);
@@ -114,7 +124,7 @@ public record TimelineView(
     var original = versions.getFirst();
     return new TimelineView(
         axis.years(),
-        marks(versions, axis, v -> v.equals(from) || v.equals(to), nearer),
+        marks(versions, axis, v -> v.equals(from) || v.equals(to), nearer, failed),
         lags(act, axis),
         at == until
             ? List.of(new Tag(from.equals(to) ? "FROM = TO" : "FROM · TO", at))
@@ -221,13 +231,21 @@ public record TimelineView(
       List<Version> versions,
       Axis axis,
       Predicate<Version> selected,
-      Function<Version, String> href) {
+      Function<Version, String> href,
+      Collection<Version> failed) {
     var marks = new ArrayList<Mark>();
     for (var group : groups(versions, axis)) {
       var at = axis.at(group);
       var ticks =
           group.stream()
-              .map(v -> new Tick(at, selected.test(v), href.apply(v), label(v), null))
+              .map(
+                  v ->
+                      new Tick(
+                          at,
+                          selected.test(v),
+                          href.apply(v),
+                          failed.contains(v) ? label(v) + " · couldn't be prepared" : label(v),
+                          failed.contains(v) ? "failed" : null))
               .toList();
       marks.add(ticks.size() == 1 ? ticks.getFirst() : new Merged(at, ticks, merged(group)));
     }
@@ -338,7 +356,8 @@ public record TimelineView(
    *
    * @param href where clicking it goes; none while the act is prepared
    * @param label what it is: its CELEX, its first day, the acts that made it
-   * @param state while the act is prepared, its text's: queued, building, ready, failed
+   * @param state while the act is prepared, its text's: queued, building, ready, failed; once it
+   *     is, failed if it failed
    */
   public record Tick(
       double at, boolean selected, @Nullable String href, String label, @Nullable String state)
@@ -361,16 +380,16 @@ public record TimelineView(
     }
 
     /**
-     * While the act is prepared, how its versions' texts stand together: being built if any is,
-     * else queued if any is, else built if any is, else failed; none otherwise.
+     * How its versions' texts stand together, while the act is prepared: being built if any is,
+     * else queued if any is, else built if any is; failed if all are, then too; none otherwise.
      */
     public @Nullable String state() {
-      for (var state : List.of("building", "queued", "ready", "failed")) {
+      for (var state : List.of("building", "queued", "ready")) {
         if (versions.stream().anyMatch(tick -> state.equals(tick.state()))) {
           return state;
         }
       }
-      return null;
+      return versions.stream().allMatch(tick -> "failed".equals(tick.state())) ? "failed" : null;
     }
 
     /**

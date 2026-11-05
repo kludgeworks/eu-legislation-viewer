@@ -7,6 +7,7 @@ import static org.jooq.impl.DSL.min;
 import static org.jooq.impl.DSL.not;
 import static org.jooq.impl.DSL.val;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.tables.records.IngestJobRecord;
@@ -14,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
 import org.jooq.DSLContext;
@@ -53,6 +55,26 @@ class JooqIngestJobs implements IngestJobs {
         .where(INGEST_JOB.CELEX.eq(celex), INGEST_JOB.LANGUAGE.eq(language))
         .fetchOptional()
         .map(JooqIngestJobs::job);
+  }
+
+  @Override
+  public boolean retry(String celex, Language language, @Nullable String traceparent) {
+    var retryable = Arrays.stream(Failure.values()).filter(Failure::retryable).toList();
+    return db.update(INGEST_JOB)
+            .set(INGEST_JOB.STATE, State.QUEUED)
+            .set(INGEST_JOB.ATTEMPTS, 0)
+            .set(INGEST_JOB.TRACEPARENT, traceparent)
+            .set(INGEST_JOB.FAILURE, val(null, INGEST_JOB.FAILURE))
+            .set(INGEST_JOB.DETAIL, val(null, INGEST_JOB.DETAIL))
+            .set(INGEST_JOB.FINISHED_AT, val(null, INGEST_JOB.FINISHED_AT))
+            .set(INGEST_JOB.VERSION, INGEST_JOB.VERSION.plus(1))
+            .where(
+                INGEST_JOB.CELEX.eq(celex),
+                INGEST_JOB.LANGUAGE.eq(language),
+                INGEST_JOB.STATE.eq(State.FAILED),
+                INGEST_JOB.FAILURE.in(retryable))
+            .execute()
+        == 1;
   }
 
   @Override

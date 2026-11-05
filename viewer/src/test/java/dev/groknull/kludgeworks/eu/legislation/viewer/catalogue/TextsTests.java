@@ -119,6 +119,41 @@ class TextsTests {
   }
 
   @Test
+  void triesAnActAgainWhereThatMayHelpAndPreparesItOver() {
+    var act = act();
+    var celex = consolidation().celex();
+    await()
+        .atMost(Duration.ofMinutes(1))
+        .until(() -> texts.prepare(act, Language.FRA), Preparation::settled);
+    // as if the Publications Office hadn't answered for the version, on every attempt
+    jdbc.sql("update ingest_job set failure = 'UNAVAILABLE' where celex = ? and language = 'FRA'")
+        .param(celex)
+        .update();
+    jdbc.sql("update expression set failure = 'UNAVAILABLE' where celex = ? and language = 'FRA'")
+        .param(celex)
+        .update();
+
+    texts.retry(act, Language.FRA);
+
+    // prepared over: only the version tried again, failing as the fixtures do in French
+    var prepared =
+        await()
+            .atMost(Duration.ofMinutes(1))
+            .until(
+                () -> texts.preparation(act, Language.FRA),
+                preparation ->
+                    preparation.settledAt() != null
+                        && preparation.steps().stream()
+                            .anyMatch(step -> step.kind() == Preparation.Step.Kind.FAILED));
+    assertThat(prepared.steps())
+        .allSatisfy(step -> assertThat(step.celex()).isEqualTo(celex))
+        .extracting(Preparation.Step::kind)
+        .containsExactly(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.FAILED);
+    assertThat(prepared.texts().get(consolidation()))
+        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE));
+  }
+
+  @Test
   void movesATextOnOnlyAsItsEventsArriveInAnyOrder() {
     var celex = timeline().versions().get(1).celex();
     // a language no other test prepares

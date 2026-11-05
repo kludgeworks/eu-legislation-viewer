@@ -13,8 +13,9 @@
      stream (hx-sse:connect) pushes the timeline, the progress and the steps as they change, each
      swapped by its id (hx-partial); once done, this address is asked again (prepared, for the
      receipt) and its page swapped in for this one, at the same address. Without JavaScript, the
-     page reloads --%>
-@template.layout.page(chrome = chrome, title = title, content = @`
+     page reloads: in the head, as a boosted request (Try again's) parses what it swaps in without
+     scripts, so a noscript in the page would come alive and reload it --%>
+@template.layout.page(chrome = chrome, title = title, head = @`<noscript><meta http-equiv="refresh" content="5"></noscript>`, content = @`
   <div id="page" hx-boost:inherited="true">
     @template.catalogue.masthead(masthead = masthead)
     @template.catalogue.timeline(timeline = timeline)
@@ -41,7 +42,6 @@
         <p><a href="${preparing.eurLex()}">Read it on EUR-Lex</a>: the official site, without comparison.</p>
       </aside>
       <div hx-sse:connect="${preparing.events()}" hx-sse:close="done" hidden></div>
-      <noscript><meta http-equiv="refresh" content="5"></noscript>
     </div>
   </div>
 `)

@@ -73,6 +73,9 @@ class VersionPagesTests {
           .isEqualTo(EVENTS);
       assertThat(preparing.select("h2").eachText()).contains("Preparing this act");
       assertThat(first.select("nav.mode [aria-disabled]")).hasSize(2);
+      // reloading without JavaScript from the head: never in what a boosted request swaps in
+      assertThat(first.head().html()).contains("<meta http-equiv=\"refresh\" content=\"5\">");
+      assertThat(first.select("#page noscript")).isEmpty();
       assertThat(first.select("#timeline .tick, #timeline .merged"))
           .isNotEmpty()
           .noneMatch(mark -> mark.is("a"));
@@ -101,6 +104,37 @@ class VersionPagesTests {
     assertThat(article).isNotNull();
     assertThat(article.attr("lang")).isEqualTo("en");
     assertThat(article.select("#art_1 > h2 > .num").text()).isEqualTo("Article 1");
+  }
+
+  @Test
+  void saysWhyAVersionsTextCouldntBeMadeInItsPlaceWithWhatCanHelp() {
+    prepared();
+
+    // the original, of which the fixtures have no Formex
+    var page = page("/eli/reg_impl/2015/1998/2015-11-30/eng");
+
+    var failure = Objects.requireNonNull(page.selectFirst("#text .failure"));
+    assertThat(failure.select("h2").text()).isEqualTo("Not available in English");
+    // nothing a retry can help
+    assertThat(failure.select("form")).isEmpty();
+    assertThat(failure.select(".failure-actions a"))
+        .extracting(link -> link.attr("href"), Element::text)
+        .startsWith(
+            tuple("/eli/reg_impl/2015/1998/2015-11-30/fra", "Read it in French"),
+            tuple(
+                "/eli/reg_impl/2015/1998/2021-03-15/eng",
+                "Read the version after (from 15 March 2021)"));
+    assertThat(page.select("#timeline a.tick.failed[aria-current]")).hasSize(1);
+  }
+
+  @Test
+  void triesAgainThenGoesBackToThePage() {
+    prepared();
+
+    var response = noRedirects().post().uri(PAGE).retrieve().toBodilessEntity();
+
+    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SEE_OTHER);
+    assertThat(response.getHeaders().getLocation()).isEqualTo(URI.create(PAGE));
   }
 
   @Test

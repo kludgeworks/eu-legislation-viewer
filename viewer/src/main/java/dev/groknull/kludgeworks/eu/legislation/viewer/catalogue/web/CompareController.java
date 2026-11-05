@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
@@ -31,6 +32,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -102,7 +104,7 @@ class CompareController {
                               + Wording.date(page.from.date())
                               + " with the one that applies on "
                               + Wording.date(page.to.date()),
-                          request.getRequestURI() + "?" + request.getQueryString(),
+                          self(request),
                           clock.instant()))
                   .render());
     }
@@ -115,11 +117,42 @@ class CompareController {
                     chrome,
                     title,
                     masthead,
-                    TimelineView.comparing(page.act, page.from, page.to, page.language, today),
+                    TimelineView.comparing(
+                        page.act,
+                        page.from,
+                        page.to,
+                        page.language,
+                        today,
+                        preparation.failedVersions()),
                     CompareView.of(page.act, page.from, page.to, page.language, today),
-                    page.changes(preparation),
+                    page.changes(preparation, self(request)),
                     prepared ? PreparingView.receipt(preparation, page.language) : null)
                 .render());
+  }
+
+  /**
+   * Try again, as the failure panel posts it to the comparison's page: the act's texts that failed
+   * where trying again may help, tried again; then the page, preparing once more.
+   */
+  @PostMapping(path = PATH)
+  ResponseEntity<Void> retry(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      HttpServletRequest request) {
+    var page = new Page(new Eli(type, year, number), code, from, to);
+    texts.retry(page.act, page.language);
+    return ResponseEntity.status(HttpStatus.SEE_OTHER)
+        .location(URI.create(Links.compare(page.eli, page.from, page.to, page.language)))
+        .build();
+  }
+
+  /** The page's address, with its query: /eli/reg_impl/2015/1998/eng/compare?from=…&amp;to=…. */
+  private static String self(HttpServletRequest request) {
+    return request.getRequestURI() + "?" + request.getQueryString();
   }
 
   /**
@@ -158,17 +191,21 @@ class CompareController {
 
     /**
      * The changes, once the act is prepared in the language: why a text can't be compared, if
-     * either can't; else the Changes view, loaded from the comparison module.
+     * either can't, with Try again posting to {@code self}; why the act couldn't be, if none of its
+     * texts could; else the Changes view, loaded from the comparison module.
      */
-    JteModel changes(Preparation preparation) {
+    JteModel changes(Preparation preparation, String self) {
+      if (preparation.ready() == 0) {
+        return templates.catalogueTextFailed(FailureView.act(act, preparation, self));
+      }
       // both in the language, as the comparison's versions are picked from its timeline
       var earlier = Objects.requireNonNull(preparation.texts().get(from));
       var later = Objects.requireNonNull(preparation.texts().get(to));
       for (var each : new Text[] {earlier, later}) {
-        var version = each == earlier ? from : to;
-        var eurLex = Links.eurLex(version.celex(), language);
         if (each instanceof Text.Failed failed) {
-          return templates.catalogueTextFailed(failed.failure(), eurLex);
+          return templates.catalogueTextFailed(
+              FailureView.comparing(
+                  act, from, to, each == earlier ? from : to, failed.failure(), language, self));
         }
       }
       return templates.catalogueCompareReady(

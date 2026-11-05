@@ -32,6 +32,14 @@ public interface PreparationStore {
    */
   boolean settle(ActIdentifier act, Language language, boolean prepared);
 
+  /**
+   * Starts the act's settled preparation in the language again, from now, its steps gone: unless it
+   * is being prepared.
+   *
+   * @return whether it started again
+   */
+  boolean restart(ActIdentifier act, Language language);
+
   /** Adds a step, if the act is being prepared in the language. */
   void step(
       ActIdentifier act,

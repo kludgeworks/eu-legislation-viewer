@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.MisfiledFormexException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.OutOfScopeException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.SourceUnavailableException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.UnsupportedFormexException;
 import io.micrometer.tracing.Span;
 import io.micrometer.tracing.Tracer;
@@ -39,7 +40,8 @@ import org.springframework.transaction.support.TransactionTemplate;
  * or done already; then the expression's Formex converted, its text stored, the job marked built
  * and ExpressionBuilt published, those three in one transaction; or the job failed, with
  * ExpressionFailed. A refusal (no Formex, not a legal act, Formex not handled) fails it at once,
- * and so does anything else on its last attempt (viewer.ingest.max-attempts); before that, it is
+ * and so does anything else on its last attempt (viewer.ingest.max-attempts), as unavailable if it
+ * was Cellar not answering (SourceUnavailableException), as an error if not; before that, it is
  * back in the queue (ExpressionDeferred) and its request failed, for the registry to hand out again
  * a little later (EventsConfiguration's resubmission).
  *
@@ -193,7 +195,10 @@ class JobRunner {
             job.language().code(),
             job.attempts(),
             e);
-        fail(job, Failure.ERROR, e.toString());
+        fail(
+            job,
+            e instanceof SourceUnavailableException ? Failure.UNAVAILABLE : Failure.ERROR,
+            e.toString());
       } else {
         LOG.warn(
             "Attempt {} at {} in {} failed after {} ms, to be tried again: {}",

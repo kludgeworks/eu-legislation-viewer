@@ -119,6 +119,22 @@ class ComparePagesTests {
   }
 
   @Test
+  void saysWhyAVersionCantBeComparedInPlaceOfTheChanges() {
+    prepared();
+
+    // from the original, of which the fixtures have no Formex
+    var page =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get()
+                    .uri(ACT + "eng/compare?from=2015-11-30&to=2021-03-15")
+                    .retrieve()
+                    .body(String.class)));
+
+    assertThat(page.select("#text .failure h2").text()).isEqualTo("Not available in English");
+  }
+
+  @Test
   void opensOnTheLatestVersionAgainstTheOneBefore() {
     assertThat(location(ACT + "eng/compare"))
         .isEqualTo(URI.create(ACT + "eng/compare?from=2026-03-22&to=2026-10-01"));

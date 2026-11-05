@@ -14,6 +14,16 @@ public enum Failure {
   MISFILED,
   /** Its Formex uses what the converter doesn't handle yet. */
   UNSUPPORTED,
+  /** The Publications Office didn't answer, on every attempt: not reached, too slow, or busy. */
+  UNAVAILABLE,
   /** Anything else, on every attempt. */
-  ERROR
+  ERROR;
+
+  /** Whether trying again may help: the Publications Office may answer, a fault be fixed. */
+  public boolean retryable() {
+    return switch (this) {
+      case UNAVAILABLE, ERROR -> true;
+      case NO_FORMEX, OUT_OF_SCOPE, MISFILED, UNSUPPORTED -> false;
+    };
+  }
 }

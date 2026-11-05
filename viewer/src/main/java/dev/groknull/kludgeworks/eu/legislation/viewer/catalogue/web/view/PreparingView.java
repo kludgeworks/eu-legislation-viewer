@@ -7,7 +7,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.Instant;
@@ -91,18 +90,10 @@ public record PreparingView(
               + " converted"
               + (step.took() == null ? "" : " (" + Math.max(step.took().toSeconds(), 1) + " s)");
       case DEFERRED -> version + " didn't convert; it will be tried again";
-      case FAILED -> version + " couldn't be converted: " + failure(step.failure());
-    };
-  }
-
-  private static String failure(@Nullable Failure failure) {
-    return switch (failure) {
-      case NO_FORMEX -> "the Publications Office has no Formex of it in this language";
-      case OUT_OF_SCOPE -> "it isn't a legal act the viewer shows";
-      case MISFILED -> "the source file under its number is another document's";
-      case UNSUPPORTED -> "it uses something the viewer can't show yet";
-      case ERROR -> "something went wrong on our side";
-      case null -> "something went wrong";
+      case FAILED ->
+          version
+              + " couldn't be converted: "
+              + (step.failure() == null ? "something went wrong" : Wording.failure(step.failure()));
     };
   }
 
@@ -280,8 +271,7 @@ public record PreparingView(
     return "Prepared · "
         + versions
         + " in "
-        // its name in English, as the pages are: English, French
-        + Locale.forLanguageTag(language.iso()).getDisplayLanguage(Locale.ENGLISH)
+        + Wording.language(language)
         + preparation.took().map(took -> " · took " + Progress.elapsed(took)).orElse("");
   }
 }

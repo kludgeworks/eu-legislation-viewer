@@ -1,19 +1,31 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure
-@param Failure failure
-@param String eurLex
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView
+@param FailureView failure
+<%-- Why the text couldn't be made, in its place (FailureView): what happened, which version, and
+     only what can help. Try again posts to the page, boosted as its links are, which answers with
+     the page again: preparing, once more --%>
 <div id="text">
-  <p class="status">
-    @if(failure == Failure.NO_FORMEX)
-      Cellar has no Formex of this text, which is what the viewer reads.
-    @elseif(failure == Failure.OUT_OF_SCOPE)
-      This document isn't a legal act the viewer shows.
-    @elseif(failure == Failure.MISFILED)
-      Cellar holds another document's Formex under this number, so the viewer can't show this one.
-    @elseif(failure == Failure.UNSUPPORTED)
-      This text uses Formex the viewer can't read yet.
-    @else
-      The text couldn't be made.
+  <section class="failure${failure.fault() ? " fault" : ""}" aria-labelledby="failure">
+    <div class="failure-head">
+      <h2 id="failure">${failure.heading()}</h2>
+      <p>${failure.words()}</p>
+    </div>
+    @if(!failure.facts().isEmpty())
+      <dl>
+        @for(var fact : failure.facts())
+          <dt>${fact.term()}</dt><dd>${fact.detail()}</dd>
+        @endfor
+      </dl>
     @endif
-    <a href="${eurLex}">Read it on EUR-Lex</a>.
-  </p>
+    <div class="failure-actions">
+      @if(failure.retry() != null)
+        <form method="post" action="${failure.retry()}"><button type="submit">Try again</button></form>
+      @endif
+      @for(var action : failure.actions())
+        <a class="${action.button() ? "button" : null}" href="${action.href()}">${action.label()}</a>
+      @endfor
+    </div>
+    @if(failure.reference() != null)
+      <p class="reference">If you report this, quote <code>${failure.reference()}</code>: it tells us which version, in which language.</p>
+    @endif
+  </section>
 </div>

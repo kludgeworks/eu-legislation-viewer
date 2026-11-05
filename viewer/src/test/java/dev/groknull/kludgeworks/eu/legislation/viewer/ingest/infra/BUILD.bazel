@@ -18,9 +18,11 @@ java_library(
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_web",
         "@rules_java//java/runfiles",
     ],
 )

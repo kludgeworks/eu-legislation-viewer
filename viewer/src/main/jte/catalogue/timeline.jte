@@ -23,7 +23,7 @@
     @for(var mark : timeline.marks())
       @if(mark instanceof Tick tick)
         @if(tick.href() != null)
-          <a class="tick" style="${tick.style()}" href="${tick.href()}" title="${tick.label()}" aria-label="${tick.label()}" aria-current="${tick.selected() ? timeline.current() : null}"></a>
+          <a class="tick ${tick.state()}" style="${tick.style()}" href="${tick.href()}" title="${tick.label()}" aria-label="${tick.label()}" aria-current="${tick.selected() ? timeline.current() : null}"></a>
         @else
           <span class="tick ${tick.state()}" style="${tick.style()}" title="${tick.label()}"></span>
         @endif

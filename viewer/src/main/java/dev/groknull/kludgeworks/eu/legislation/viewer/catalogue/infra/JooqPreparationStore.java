@@ -80,6 +80,24 @@ class JooqPreparationStore implements PreparationStore {
   }
 
   @Override
+  public boolean restart(ActIdentifier act, Language language) {
+    var restarted =
+        db.update(PREPARATION)
+                .set(PREPARATION.STATE, State.PREPARING.name())
+                .set(PREPARATION.STARTED_AT, currentInstant())
+                .set(PREPARATION.SETTLED_AT, val(null, PREPARATION.SETTLED_AT))
+                .where(the(act, language), PREPARATION.STATE.ne(State.PREPARING.name()))
+                .execute()
+            == 1;
+    if (restarted) {
+      db.deleteFrom(PREPARATION_STEP)
+          .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE.eq(language))
+          .execute();
+    }
+    return restarted;
+  }
+
+  @Override
   public void step(
       ActIdentifier act,
       Language language,

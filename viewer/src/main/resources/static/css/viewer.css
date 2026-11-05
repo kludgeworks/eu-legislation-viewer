@@ -288,6 +288,11 @@ main {
   background: repeating-linear-gradient(to bottom, var(--muted) 0 3px, transparent 3px 6px);
 }
 
+/* once prepared, a version whose text failed stays dashed; the one asked for, in the fault's ink */
+.tick.failed[aria-current]::before {
+  background: repeating-linear-gradient(to bottom, var(--del-ink) 0 4px, transparent 4px 7px);
+}
+
 @keyframes building {
   to {
     background: var(--accent);
@@ -1567,4 +1572,88 @@ del.diff {
   #page.arrived > :is(.selection, #text) {
     animation: none;
   }
+}
+
+/* why a text couldn't be made, in its place (catalogue/text/failed.jte): what happened, which
+ * version, only what can help; a fault (the source's, or ours) warm, how things are grey */
+.failure {
+  max-width: 50rem;
+  margin: 20px 0 32px;
+  border: 1px solid var(--rule);
+}
+
+.failure-head {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface2);
+}
+
+.failure.fault .failure-head {
+  background: var(--del-bg);
+}
+
+.failure h2 {
+  margin: 0;
+  font: 600 19px Georgia, serif;
+  text-wrap: balance;
+}
+
+.failure-head p {
+  max-width: 65ch;
+  margin: 4px 0 0;
+  color: var(--ink3);
+}
+
+.failure dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 14px;
+  margin: 0;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 13.5px;
+}
+
+.failure dt {
+  color: var(--muted);
+}
+
+.failure dd {
+  margin: 0;
+}
+
+.failure-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  padding: 12px 18px;
+  font-size: 13.5px;
+}
+
+.failure-actions form {
+  margin: 0;
+}
+
+.failure-actions button {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--accent-fill);
+  color: var(--on-fill);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.failure-actions button:hover {
+  background: var(--accent-hover);
+}
+
+.failure .reference {
+  margin: 0;
+  padding: 0 18px 12px;
+  color: var(--muted);
+  font-size: 12px;
 }

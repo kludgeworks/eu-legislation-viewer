@@ -2,6 +2,9 @@
 @param Chrome chrome
 @param String title
 @param gg.jte.Content content
+@param gg.jte.Content head = null
+<%-- Every page: its head, the notice, the site bar, then its content. What a page adds to its head
+     (head) stays out of a boosted swap, which takes the page's content alone --%>
 <!DOCTYPE html>
 <html lang="en" data-theme="${chrome.theme().code()}">
 <head>
@@ -14,6 +17,7 @@
   <script src="${chrome.assets().sse()}" defer></script>
   <script src="${chrome.assets().theme()}" defer></script>
   <script src="${chrome.assets().clock()}" defer></script>
+  ${head}
 </head>
 <body>
   <div class="notice" role="note">

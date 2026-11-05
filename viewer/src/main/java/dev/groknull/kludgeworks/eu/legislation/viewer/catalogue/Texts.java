@@ -15,6 +15,13 @@ public interface Texts {
    */
   Preparation prepare(Act act, Language language);
 
+  /**
+   * Tries again those of the act's texts in the language that failed in a way trying again may help
+   * (Failure.retryable): each queued again, from its first attempt, and the act's preparation
+   * started again if it had settled.
+   */
+  void retry(Act act, Language language);
+
   /** How the act's preparation in the language stands, as kept: nothing scheduled. */
   Preparation preparation(Act act, Language language);
 }

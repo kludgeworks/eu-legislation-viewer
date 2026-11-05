@@ -29,10 +29,13 @@ import org.springframework.transaction.support.TransactionTemplate;
 /**
  * Expressions built in the background, through the module's API: from the converter's fixtures
  * (FormexFixtures: in English 2015/1998's consolidation of 22 March 2026 and 2024/2867; in French
- * no legal act, in German Formex the converter doesn't handle, in the other languages no Formex),
- * stored in Postgres in a container.
+ * no legal act, in German Formex the converter doesn't handle, in Swedish Cellar not answering, in
+ * the other languages no Formex), stored in Postgres in a container. A job is tried once
+ * (viewer.ingest.max-attempts), so one that can't be built fails at once.
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
+@SpringBootTest(
+    webEnvironment = SpringBootTest.WebEnvironment.NONE,
+    properties = "viewer.ingest.max-attempts=1")
 @Import({
   TestcontainersConfiguration.class,
   FormexFixturesConfiguration.class,
@@ -86,6 +89,31 @@ class IngestTests {
   @Test
   void failsWhereCellarHasNoFormex() {
     assertFails(CONSOLIDATION, Language.GLE, Failure.NO_FORMEX);
+  }
+
+  @Test
+  void failsAsUnavailableWhereCellarDoesntAnswerOnTheLastAttempt() {
+    assertFails(CONSOLIDATION, Language.SWE, Failure.UNAVAILABLE);
+  }
+
+  @Test
+  void triesAgainOnlyWhatFailedWhereTryingAgainMayHelp() {
+    ingest.schedule("32024R2867", Language.SWE);
+    finished("32024R2867", Language.SWE);
+    ingest.schedule("32024R2867", Language.FRA);
+    finished("32024R2867", Language.FRA);
+
+    assertThat(ingest.retry("32024R2867", Language.FRA)).isFalse();
+    assertThat(ingest.retry("32024R2867", Language.SWE)).isTrue();
+
+    var status = finished("32024R2867", Language.SWE);
+    assertThat(status.failure()).isEqualTo(Failure.UNAVAILABLE);
+    // from its first attempt again
+    assertThat(status.attempts()).isEqualTo(1);
+    assertThat(events.failed)
+        .filteredOn(
+            failed -> failed.celex().equals("32024R2867") && failed.language() == Language.SWE)
+        .hasSize(2);
   }
 
   @Test

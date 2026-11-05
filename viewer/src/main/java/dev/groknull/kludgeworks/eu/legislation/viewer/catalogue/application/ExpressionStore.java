@@ -39,6 +39,9 @@ public interface ExpressionStore {
   /** Points the text at the root it was built as, in place of any it had. */
   boolean keep(String celex, Language language, ContentHash root, String converter);
 
+  /** The failed text is queued again, from its first attempt. */
+  boolean requeue(String celex, Language language);
+
   /** The text couldn't be built: unless it is built. */
   boolean fail(String celex, Language language, Failure failure);
 }

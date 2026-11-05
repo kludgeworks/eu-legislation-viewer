@@ -18,6 +18,14 @@ public interface Ingest {
    */
   IngestStatus schedule(String celex, Language language);
 
+  /**
+   * Queues the expression's job again, from its first attempt, if it failed in a way that trying
+   * again may help (Failure.retryable).
+   *
+   * @return whether it was queued again
+   */
+  boolean retry(String celex, Language language);
+
   /** How the expression's job stands; none if it was never scheduled. */
   Optional<IngestStatus> status(String celex, Language language);
 

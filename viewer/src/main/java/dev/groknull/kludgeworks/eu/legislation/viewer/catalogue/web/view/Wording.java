@@ -5,6 +5,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act.Unconsolidat
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -21,6 +23,23 @@ public final class Wording {
   private static final Pattern CORRIGENDUM = Pattern.compile("(.+)R\\((\\d+)\\)");
 
   private Wording() {}
+
+  /** A language by its name in English, as the pages are written: English, French. */
+  public static String language(Language language) {
+    return Locale.forLanguageTag(language.iso()).getDisplayLanguage(Locale.ENGLISH);
+  }
+
+  /** Why a text couldn't be made: the Publications Office didn't answer. */
+  public static String failure(Failure failure) {
+    return switch (failure) {
+      case NO_FORMEX -> "the Publications Office has no Formex of it in this language";
+      case OUT_OF_SCOPE -> "it isn't a legal act the viewer shows";
+      case MISFILED -> "the source file under its number is another document's";
+      case UNSUPPORTED -> "it uses something the viewer can't show yet";
+      case UNAVAILABLE -> "the Publications Office didn't answer";
+      case ERROR -> "something went wrong on our side";
+    };
+  }
 
   /** 1 June 2017. */
   public static String date(LocalDate date) {

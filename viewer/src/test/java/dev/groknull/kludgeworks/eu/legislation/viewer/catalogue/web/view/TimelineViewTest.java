@@ -16,6 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Timelin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Year;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,7 @@ class TimelineViewTest {
   static final LocalDate TODAY = LocalDate.of(2026, 11, 5);
 
   final TimelineView timeline =
-      TimelineView.reading(AVSEC, version("02015R1998-20211231"), Language.ENG);
+      TimelineView.reading(AVSEC, version("02015R1998-20211231"), Language.ENG, List.of());
 
   @Test
   void spansTheYearsOfItsVersions() {
@@ -108,8 +109,8 @@ class TimelineViewTest {
 
   @Test
   void hasNoVersionBeforeTheFirstNorAfterTheLatest() {
-    var first = TimelineView.reading(AVSEC, AVSEC.timeline().first(), Language.ENG);
-    var latest = TimelineView.reading(AVSEC, AVSEC.timeline().latest(), Language.ENG);
+    var first = TimelineView.reading(AVSEC, AVSEC.timeline().first(), Language.ENG, List.of());
+    var latest = TimelineView.reading(AVSEC, AVSEC.timeline().latest(), Language.ENG, List.of());
 
     assertThat(first.steps())
         .extracting(Step::href)
@@ -157,6 +158,27 @@ class TimelineViewTest {
   }
 
   @Test
+  void dashesTheVersionsThatFailed() {
+    var failed = version("02015R1998-20211231");
+
+    var reading = TimelineView.reading(AVSEC, failed, Language.ENG, List.of(failed));
+
+    var merged =
+        reading.marks().stream()
+            .filter(Merged.class::isInstance)
+            .map(Merged.class::cast)
+            .filter(Merged::selected)
+            .findFirst()
+            .orElseThrow();
+    assertThat(merged.versions())
+        .filteredOn(tick -> "failed".equals(tick.state()))
+        .singleElement()
+        .satisfies(tick -> assertThat(tick.label()).endsWith(" · couldn't be prepared"));
+    // the others in it are ready: the mark isn't dashed
+    assertThat(merged.state()).isNull();
+  }
+
+  @Test
   void hasNoStepToTheComparisonItIs() {
     var comparing = comparing("02015R1998-20200401", "02015R1998-20200702");
 
@@ -164,7 +186,8 @@ class TimelineViewTest {
   }
 
   private static TimelineView comparing(String from, String to) {
-    return TimelineView.comparing(AVSEC, version(from), version(to), Language.ENG, TODAY);
+    return TimelineView.comparing(
+        AVSEC, version(from), version(to), Language.ENG, TODAY, List.of());
   }
 
   /** Where the mark of the version {@code celex} links, merged or not. */

@@ -38,6 +38,7 @@ jooq_tables(
         "//viewer/src/main/resources:db/migration/ingest/V1__ingest_job.sql",
         "//viewer/src/main/resources:db/migration/ingest/V2__misfiled_failure.sql",
         "//viewer/src/main/resources:db/migration/ingest/V3__ingest_job_state.sql",
+        "//viewer/src/main/resources:db/migration/ingest/V4__unavailable_failure.sql",
     ],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq",
     deps = [

@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Scheduling an expression: a job queued, with the trace of the request that asked for it, and
  * requested (ExpressionRequested) in its transaction, the request handed to a worker once it
- * commits (JobRunner).
+ * commits (JobRunner). A job retried is queued again so, from its first attempt.
  */
 @Service
 class IngestService implements Ingest {
@@ -50,6 +50,18 @@ class IngestService implements Ingest {
       LOG.info("Queued {} in {}", celex, language.code());
     }
     return jobs.find(celex, language).orElseThrow().status();
+  }
+
+  @Override
+  @Transactional
+  public boolean retry(String celex, Language language) {
+    var traceparent = traceparent();
+    if (!jobs.retry(celex, language, traceparent)) {
+      return false;
+    }
+    events.publishEvent(new ExpressionRequested(celex, language, traceparent));
+    LOG.info("Queued {} in {} again", celex, language.code());
+    return true;
   }
 
   @Override

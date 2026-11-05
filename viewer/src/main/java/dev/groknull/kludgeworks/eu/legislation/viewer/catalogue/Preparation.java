@@ -8,6 +8,7 @@ import java.time.Instant;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.SequencedMap;
 import org.jmolecules.ddd.annotation.ValueObject;
@@ -67,6 +68,14 @@ public record Preparation(
    */
   public int running() {
     return count(Text.Building.class);
+  }
+
+  /** The versions whose text failed, in date order. */
+  public List<Version> failedVersions() {
+    return texts.entrySet().stream()
+        .filter(each -> each.getValue() instanceof Text.Failed)
+        .map(Map.Entry::getKey)
+        .toList();
   }
 
   /** How many versions are prepared: those in the language. */

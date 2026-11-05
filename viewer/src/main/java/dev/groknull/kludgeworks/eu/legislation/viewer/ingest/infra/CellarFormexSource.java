@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarFailures;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.ContentStreams;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.FormexFiles;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.SourceUnavailableException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.InputStream;
 import java.util.List;
@@ -12,7 +14,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * A document's Formex from Cellar: the files of its latest Formex manifestation, read one at a time
- * as they come. Only the XML: the converter reads no image.
+ * as they come. Only the XML: the converter reads no image. Cellar not answering is the source
+ * unavailable (SourceUnavailableException).
  */
 @Component
 class CellarFormexSource implements FormexSource {
@@ -27,13 +30,23 @@ class CellarFormexSource implements FormexSource {
   @Override
   public <T> Optional<List<T>> fetch(
       String celex, Language language, BiFunction<String, InputStream, T> read) {
-    return files
-        .manifestation(celex, language.code())
-        .map(
-            manifestation ->
-                manifestation.files().stream()
-                    .filter(file -> file.name().endsWith(".xml"))
-                    .map(file -> contentStreams.read(file.uri(), in -> read.apply(file.name(), in)))
-                    .toList());
+    try {
+      return files
+          .manifestation(celex, language.code())
+          .map(
+              manifestation ->
+                  manifestation.files().stream()
+                      .filter(file -> file.name().endsWith(".xml"))
+                      .map(
+                          file ->
+                              contentStreams.read(file.uri(), in -> read.apply(file.name(), in)))
+                      .toList());
+    } catch (RuntimeException e) {
+      if (CellarFailures.unavailable(e)) {
+        throw new SourceUnavailableException(
+            "Cellar didn't answer for " + celex + " in " + language.code() + ": " + e, e);
+      }
+      throw e;
+    }
   }
 }

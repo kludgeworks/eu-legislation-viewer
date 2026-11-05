@@ -41,8 +41,10 @@ import org.springframework.transaction.annotation.Transactional;
  * PreparationChanged; the last to settle one settles the preparation, once: PreparationCompleted,
  * or PreparationFailed if none was built. Preparing an act starts its preparation, queues its texts
  * and schedules those not settled; what ingest says of each puts right any whose event isn't kept
- * yet, or was lost. A text built whose version's neighbours in the language are built too asks for
- * their comparisons ahead of a reader (ComparisonWanted): with the version before, and after.
+ * yet, or was lost. Trying an act again queues its texts that failed again, where that may help,
+ * and starts its preparation over. A text built whose version's neighbours in the language are
+ * built too asks for their comparisons ahead of a reader (ComparisonWanted): with the version
+ * before, and after.
  */
 @Service
 class TextService implements Texts {
@@ -88,6 +90,28 @@ class TextService implements Texts {
       events.publishEvent(new PreparationChanged(act.id(), language));
     }
     return preparation(act, language);
+  }
+
+  @Override
+  @Transactional
+  public void retry(Act act, Language language) {
+    var retried = 0;
+    for (var text : expressions.texts(celexes(act, language), language).entrySet()) {
+      if (text.getValue() instanceof Text.Failed failed
+          && failed.failure().retryable()
+          && ingest.retry(text.getKey(), language)) {
+        expressions.requeue(text.getKey(), language);
+        retried++;
+      }
+    }
+    if (retried == 0) {
+      LOG.debug("Nothing of {} in {} to try again", act.id(), language.code());
+      return;
+    }
+    // after its texts, as a text's change locks the one then the other
+    preparations.restart(act.id(), language);
+    LOG.info("Trying {} in {} again: {} versions", act.id(), language.code(), retried);
+    events.publishEvent(new PreparationChanged(act.id(), language));
   }
 
   @Override
