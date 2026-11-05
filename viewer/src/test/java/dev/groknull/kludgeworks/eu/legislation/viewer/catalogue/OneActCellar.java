@@ -27,7 +27,9 @@ import org.springframework.context.annotation.Primary;
  * of its consolidations (in English and French; the latest, of 1 October 2026, without a PDF yet),
  * its own dates and some of those of the acts they integrate, as Cellar has them, and what it was
  * asked for, from any thread. What it answers can be changed ({@link #act}): to the same act with
- * its consolidation of 1 March 2022 too (REFRESHED), as if Cellar listed a version more.
+ * its consolidation of 1 March 2022 too (REFRESHED), as if Cellar listed a version more. Searched
+ * for words with security among them, it finds 2015/1998 and 2026/449, which amends it; nothing for
+ * others.
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class OneActCellar {
@@ -174,6 +176,33 @@ public class OneActCellar {
 
   private static Provision article(String number) {
     return new Provision(Provision.Type.ARTICLE, number);
+  }
+
+  /** 2026/449, as a search finds it. */
+  static final Search.Match AMENDING =
+      new Search.Match(
+          new ActIdentifier("32026R0449"),
+          new Eli("reg_impl/2026/449"),
+          new ResourceType("REG_IMPL"),
+          "Commission Implementing Regulation (EU) 2026/449 of 27 February 2026 amending"
+              + " Implementing Regulation (EU) 2015/1998 as regards certain detailed measures for"
+              + " the implementation of the common basic standards on aviation security",
+          true,
+          List.of(new Search.Amends(CELEX, ELI)));
+
+  @Bean
+  @Primary
+  Search search() {
+    return query -> {
+      asked.add("SEARCH " + String.join(" ", query.words()) + " " + query.kind().code());
+      if (!query.words().contains("security") || query.offset() > 0) {
+        return new Search.Found(List.of(), false);
+      }
+      var avsec =
+          new Search.Match(
+              CELEX, ELI, ACT.type(), ACT.title(Language.ENG).orElseThrow(), true, List.of());
+      return new Search.Found(List.of(avsec, AMENDING), false);
+    };
   }
 
   @Bean

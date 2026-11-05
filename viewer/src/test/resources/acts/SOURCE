@@ -21,3 +21,5 @@ amendments-32015R1998.json          amendments.rq, celex 32015R1998 (recorded 20
                                     locations by 19 acts; 32019R0413's without a day; 32017R0837,
                                     32022R0463 and 32026R2338 for some languages only)
 amendments-32010R0185.json          amendments.rq, celex 32010R0185 (recorded 2026-11-05, likewise)
+search-aviation-security.json       search.rq, words 'aviation' AND 'security', types RLD, amending no,
+                                    limit 21, offset 0 (recorded 2026-11-05: 21 acts, one row each)

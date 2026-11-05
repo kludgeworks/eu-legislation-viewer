@@ -66,7 +66,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * An act's comparison of two versions, in a language (Design: Mode: Compare):
  * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01, each end any date (the
  * version that applies then). Asked with dates that aren't the versions' first days, or with From
- * after To, or without them (the latest version against the one before), it goes to the address
+ * after To, or without them (the latest version against the one before; limited to an act's
+ * changes, the version that first integrates it against the one before), it goes to the address
  * that is. The act is prepared whole in the language, every version of it, before the page shows
  * changes: until then it is the preparing page, which becomes this one in place; then the two
  * texts' Changes view loads from /changes beside it: the comparison module's, by their roots, each
@@ -580,9 +581,11 @@ class CompareController {
       act = acts.find(eli).orElseThrow(Requests::notFound);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
       var later =
-          to == null
-              ? timeline.latest()
-              : timeline.applicableOn(to).orElseThrow(Requests::notFound);
+          to != null
+              ? timeline.applicableOn(to).orElseThrow(Requests::notFound)
+              : from == null && only != null
+                  ? integrating(only).orElseGet(timeline::latest)
+                  : timeline.latest();
       var earlier =
           from == null
               ? timeline.predecessor(later).orElse(later)
@@ -607,6 +610,19 @@ class CompareController {
       return this.from.date().equals(from)
           && this.to.date().equals(to)
           && Objects.equals(only, this.only == null ? null : this.only.celex());
+    }
+
+    /**
+     * The first version in the language that integrates the act {@code celex}: where a comparison
+     * limited to its changes goes without From and To (a search's "What it changed in …").
+     */
+    private Optional<Version> integrating(String celex) {
+      return timeline.versions().stream()
+          .filter(
+              v ->
+                  act.integratedBetween(earlier(v), v).stream()
+                      .anyMatch(each -> each.celex().equals(celex)))
+          .findFirst();
     }
 
     /** The version in the language after From, up to To, that integrates {@code amending}. */

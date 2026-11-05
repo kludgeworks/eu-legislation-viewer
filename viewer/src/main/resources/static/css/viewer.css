@@ -1943,3 +1943,257 @@ del.diff {
   color: var(--muted);
   font-size: 12px;
 }
+
+/* the site bar's way back to a search's results, and its small Find an act box (act pages) */
+nav.site .results {
+  font-size: 13.5px;
+  text-decoration: none;
+}
+
+nav.site .results:hover {
+  text-decoration: underline;
+}
+
+form.find {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+form.find label {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+form.find input {
+  width: 16rem;
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13.5px;
+}
+
+/* the home page (catalogue/home.jte): the viewer's name, the Find an act box, a search's results,
+ * then three notes */
+.home {
+  max-width: 1100px;
+}
+
+.home-mast {
+  padding: 12px 0 18px;
+  border-bottom: 3px double var(--ink);
+}
+
+.home-mast .home-name {
+  margin: 0;
+  font: 600 34px/1.1 Georgia, serif;
+}
+
+.home-mast p {
+  max-width: 44rem;
+  margin: 6px 0 0;
+  color: var(--ink2);
+  font-size: 15.5px;
+}
+
+form.find-act {
+  margin: 26px 0 0;
+}
+
+form.find-act label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+form.find-act .field {
+  display: flex;
+  max-width: 760px;
+}
+
+form.find-act input {
+  flex: 1;
+  min-width: 0;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 2px solid var(--ink);
+  border-right: 0;
+  border-radius: 3px 0 0 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+}
+
+form.find-act button {
+  padding: 0 22px;
+  border: 2px solid var(--ink);
+  border-radius: 0 3px 3px 0;
+  background: var(--ink);
+  color: var(--bg);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+form.find-act .ex {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+form.find-act .ex a {
+  margin: 0 4px;
+  font: 12.5px ui-monospace, monospace;
+}
+
+.home .none {
+  margin: 24px 0 0;
+  color: var(--ink2);
+}
+
+.results-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 20px;
+  margin: 34px 0 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.results-head h2 {
+  margin: 0;
+  font: 600 21px Georgia, serif;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filters a {
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.filters a[aria-current] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  border-bottom: 1px solid var(--hair);
+}
+
+.result:hover {
+  background: var(--chg-tint);
+}
+
+.result > div {
+  padding: 12px 14px;
+}
+
+.result > div + div {
+  border-left: 1px solid var(--hair);
+}
+
+.result .cx {
+  font: 600 12.5px ui-monospace, monospace;
+}
+
+.result .cx .k {
+  display: block;
+  color: var(--muted);
+  font: 400 11.5px system-ui, sans-serif;
+}
+
+.result .t > a:first-child,
+.result .t .head {
+  color: var(--ink);
+  font: 600 17px/1.35 Georgia, serif;
+  text-decoration: none;
+}
+
+.result .t > a:first-child:hover {
+  text-decoration: underline;
+}
+
+.result .t p {
+  margin: 2px 0 0;
+  color: var(--ink2);
+  font: 15px/1.45 Georgia, serif;
+}
+
+.result .t .to {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+  font-size: 12.5px;
+  text-decoration: none;
+}
+
+.result .t .to:hover {
+  text-decoration: underline;
+}
+
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding: 12px 0 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.more .pages {
+  display: flex;
+  gap: 16px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 28px;
+  margin: 44px 0 60px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  color: var(--ink2);
+  font-size: 14px;
+}
+
+.about h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.about p {
+  margin: 0;
+}

@@ -276,6 +276,12 @@ class ComparePagesTests {
   }
 
   @Test
+  void opensAnActsChangesOnTheVersionThatFirstIntegratesIt() {
+    assertThat(location(ACT + "eng/compare?act=32026R0449"))
+        .isEqualTo(URI.create(ACT + "eng/compare?from=2021-12-31&to=2026-03-22&act=32026R0449"));
+  }
+
+  @Test
   void goesToTheVersionsTheDatesAskForEarlierFirst() {
     assertThat(location(ACT + "eng/compare?from=2026-12-01&to=2021-06-01"))
         .isEqualTo(URI.create(ACT + "eng/compare?from=2021-03-15&to=2026-10-01"));

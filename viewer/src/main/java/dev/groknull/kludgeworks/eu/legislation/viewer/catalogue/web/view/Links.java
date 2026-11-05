@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URLEncoder;
@@ -13,7 +14,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The pages' addresses: an act's by its ELI, as VersionController and CompareController answer
- * them.
+ * them; the home page's, with a search's results (HomeController).
  */
 public final class Links {
   private Links() {}
@@ -141,5 +142,26 @@ public final class Links {
   /** The page of the version that applies on {@code date}, in {@code language}. */
   public static String read(Eli eli, LocalDate date, Language language) {
     return "/eli/" + eli.path() + "/" + date + "/" + language.code().toLowerCase(Locale.ROOT);
+  }
+
+  /**
+   * What {@code amending} changed in the act {@code eli}, in {@code language}: the comparison of
+   * the version that first integrates it with the one before, its changes alone, as
+   * CompareController finds it: /eli/reg_impl/2015/1998/eng/compare?act=32026R0449.
+   */
+  public static String changesBy(Eli eli, ActIdentifier amending, Language language) {
+    return compare(eli, language) + "?" + act(amending).substring(1);
+  }
+
+  /**
+   * The home page with the results of a search for {@code words}, of {@code kind}, on page {@code
+   * page} (from 1): /?q=aviation+security&amp;type=regulation&amp;page=2, all kinds' first page
+   * without.
+   */
+  public static String home(String words, Search.Kind kind, int page) {
+    return "/?q="
+        + URLEncoder.encode(words, StandardCharsets.UTF_8)
+        + (kind == Search.Kind.ALL ? "" : "&type=" + kind.code())
+        + (page == 1 ? "" : "&page=" + page);
   }
 }

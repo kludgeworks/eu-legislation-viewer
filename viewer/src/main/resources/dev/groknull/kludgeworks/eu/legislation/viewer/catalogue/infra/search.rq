@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MIT
+# Acts whose English title has the words (CellarSearch), by Virtuoso's full-text index (bif:contains):
+# its relevance ranks them; among equals, acts amending none before those that do, those in force
+# before those not, the newer first. Regulations, directives and decisions only (a CELEX of sector 3,
+# type R, L or D: no corrigenda), a page of them; then each one's ELI, resource type, whether it is
+# in force, and the acts it amends, with their ELIs. One row per combination of values, in no order:
+# CellarSearch folds and orders them. The ranking is in a subquery, as Virtuoso answers nothing for
+# bif:contains's score beside an OPTIONAL, or under an aggregate.
+# {{words}}: the words, each quoted and joined by AND ('aviation' AND 'security'), letters and digits
+# only. {{types}}: the CELEX type letters (RLD, or one of them). {{amending}}: yes for amending acts
+# only, else no. {{limit}}, {{offset}}: the page, in digits. Escaped by Sparql.fill.
+# bif: Virtuoso's built-in functions, declared as SPARQL wants every prefix declared
+PREFIX bif: <bif:>
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?celex ?eli ?title ?type ?inForce ?amends ?amendsEli ?relevance
+WHERE {
+  {
+    SELECT ?work ?celex ?title ?relevance
+    WHERE {
+      ?expression cdm:expression_title ?title ;
+          cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/ENG> ;
+          cdm:expression_belongs_to_work ?work .
+      ?title bif:contains "{{words}}" OPTION (score ?relevance) .
+      ?work cdm:resource_legal_id_celex ?celex .
+      FILTER (REGEX(STR(?celex), CONCAT("^3[0-9]{4}[", "{{types}}", "][0-9]{4}$")))
+      FILTER ("{{amending}}" = "no" || EXISTS { ?work cdm:resource_legal_amends_resource_legal ?any })
+    }
+    ORDER BY DESC(?relevance)
+        ASC(EXISTS { ?work cdm:resource_legal_amends_resource_legal ?amended })
+        DESC(EXISTS { ?work cdm:resource_legal_in-force "true"^^xsd:boolean })
+        DESC(?celex)
+    LIMIT {{limit}}
+    OFFSET {{offset}}
+  }
+  OPTIONAL { ?work cdm:resource_legal_eli ?eli }
+  OPTIONAL { ?work cdm:work_has_resource-type ?type }
+  OPTIONAL { ?work cdm:resource_legal_in-force ?inForce }
+  OPTIONAL {
+    ?work cdm:resource_legal_amends_resource_legal ?target .
+    ?target cdm:resource_legal_id_celex ?amends .
+    OPTIONAL { ?target cdm:resource_legal_eli ?amendsEli }
+  }
+}
