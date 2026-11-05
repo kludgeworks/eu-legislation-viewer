@@ -7,15 +7,23 @@ import org.jmolecules.ddd.annotation.ValueObject;
 /**
  * A text's outline: its units with a title (legal-text's rank: articles, annexes, divisions, an
  * annex's headed levels), in order, each with the units ranked below it until the next of its rank
- * or above. Annex levels, which legal-text keeps flat, nest by their rank too.
+ * or above. Annex levels, which legal-text keeps flat, nest by their rank too. And the eIds of all
+ * its units, titled or not, to find a unit by (Location).
  *
  * @param entries the outermost units
+ * @param eIds the eIds of all its units and other containers that have one, in document order
  */
 @ValueObject
-public record Outline(List<Entry> entries) {
+public record Outline(List<Entry> entries, List<String> eIds) {
 
   public Outline {
     entries = List.copyOf(entries);
+    eIds = List.copyOf(eIds);
+  }
+
+  /** The outline of a text that has none: no units. */
+  public static Outline empty() {
+    return new Outline(List.of(), List.of());
   }
 
   /**

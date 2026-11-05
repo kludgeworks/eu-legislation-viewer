@@ -26,7 +26,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -220,7 +219,7 @@ class VersionController {
         case Text.Ready ready ->
             templates.catalogueTextReady(
                 "/content/" + ready.root().hex(),
-                content.outline(ready.root()).orElseGet(() -> new Outline(List.of())));
+                content.outline(ready.root()).orElseGet(Outline::empty));
         // a version that appeared since, being prepared
         case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->

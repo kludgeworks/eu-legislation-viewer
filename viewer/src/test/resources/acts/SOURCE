@@ -17,3 +17,7 @@ dates-32010R0185.json               dates.rq, celex 32010R0185 (recorded 2026-11
 titles-32015R1998.json              titles.rq, celex 32015R1998 (recorded 2026-11-05: 23 languages, no
                                     Irish, one title each)
 titles-32010R0185.json              titles.rq, celex 32010R0185 (recorded 2026-11-05, likewise)
+amendments-32015R1998.json          amendments.rq, celex 32015R1998 (recorded 2026-11-05: 386 amended
+                                    locations by 19 acts; 32019R0413's without a day; 32017R0837,
+                                    32022R0463 and 32026R2338 for some languages only)
+amendments-32010R0185.json          amendments.rq, celex 32010R0185 (recorded 2026-11-05, likewise)

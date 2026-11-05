@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: MIT
+# What other acts did to an act's provisions (CellarAmendments), as Cellar annotates each of its
+# amendments (Research: Amendment annotations): one axiom per amended location, with the location
+# in Cellar's codes (fd_370: "AR 89 PA 1 ALN 1", "AN PO 8.1.2.3 PTA (c)"), the role (fd_375: R
+# replacement, J addition, DEL deletion, A repeal, P extended validity …), the day it applies from
+# and, for one that lapses, the day it ends; and, for an act that corrects some language versions
+# only, those languages ("SV"). Only amendments with a location: the others say nothing a unit can
+# be joined to. One row per amended location.
+# {{celex}}: a base act's CELEX (32015R1998), escaped by Sparql.fill.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX annotation: <http://publications.europa.eu/ontology/annotation#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?subject ?location ?role ?from ?until ?languages
+WHERE {
+  ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  ?axiom owl:annotatedSource ?amending ;
+         owl:annotatedProperty cdm:resource_legal_amends_resource_legal ;
+         owl:annotatedTarget ?work ;
+         annotation:reference_to_modified_location ?location .
+  ?amending cdm:resource_legal_id_celex ?subject .
+  OPTIONAL { ?axiom annotation:role2 ?role }
+  OPTIONAL { ?axiom annotation:start_of_validity ?from }
+  OPTIONAL { ?axiom annotation:end_of_validity ?until }
+  OPTIONAL { ?axiom annotation:language_list ?languages }
+}
+ORDER BY ?subject ?from ?location

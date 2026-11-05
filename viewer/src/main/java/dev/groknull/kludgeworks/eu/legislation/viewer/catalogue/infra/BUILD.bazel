@@ -28,7 +28,7 @@ java_library(
     ],
 )
 
-# The module's tables (act, version, act_date, act_title) as jOOQ classes, from its migrations
+# The module's tables (act, its versions, dates, amendments …) as jOOQ classes, from its migrations
 jooq_tables(
     name = "jooq",
     config = "jooq.xml",
@@ -38,6 +38,7 @@ jooq_tables(
         "//viewer/src/main/resources:db/migration/catalogue/V3__act_title.sql",
         "//viewer/src/main/resources:db/migration/catalogue/V4__expression_state.sql",
         "//viewer/src/main/resources:db/migration/catalogue/V5__preparation.sql",
+        "//viewer/src/main/resources:db/migration/catalogue/V6__act_amendment.sql",
     ],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq",
     deps = [

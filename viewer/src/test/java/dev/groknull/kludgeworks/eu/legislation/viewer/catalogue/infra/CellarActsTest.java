@@ -12,6 +12,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -91,7 +93,8 @@ class CellarActsTest {
                     consolidation("02016E/TXT-20160901", "2016-09-01")),
                 noLanguages(),
                 noDates(),
-                noTitles())
+                noTitles(),
+                noAmendments())
             .orElseThrow()
             .timeline();
 
@@ -172,7 +175,8 @@ class CellarActsTest {
                             "formexModified",
                             "2015-11-23T08:58:11.083+01:00"))),
                 noDates(),
-                noTitles())
+                noTitles(),
+                noAmendments())
             .orElseThrow()
             .timeline();
 
@@ -330,15 +334,86 @@ class CellarActsTest {
 
     assertThatExceptionOfType(CellarException.class)
         .isThrownBy(
-            () -> CellarActs.act(AVSEC, work(Map.of()), result(), noLanguages(), noDates(), twice))
+            () ->
+                CellarActs.act(
+                    AVSEC,
+                    work(Map.of()),
+                    result(),
+                    noLanguages(),
+                    noDates(),
+                    twice,
+                    noAmendments()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several titles in ENG");
+  }
+
+  @Test
+  void readsWhatOtherActsDidToItsProvisions() {
+    var amendments = act(AVSEC).amendments();
+
+    assertThat(amendments).hasSize(386);
+    assertThat(amendments)
+        .filteredOn(amendment -> amendment.location().code().equals("AN PO 8.1.2.3 PTA (c)"))
+        .extracting(Amendment::act, Amendment::role, Amendment::from)
+        .contains(
+            tuple(new ActIdentifier("32026R0449"), Role.REPLACEMENT, LocalDate.of(2026, 10, 1)));
+    // Cellar has no day for 2019/413's
+    assertThat(amendments)
+        .filteredOn(amendment -> amendment.act().celex().equals("32019R0413"))
+        .extracting(Amendment::from)
+        .containsOnlyNulls();
+    // 2017/837 corrects the Swedish and the Polish
+    assertThat(amendments)
+        .filteredOn(amendment -> amendment.act().celex().equals("32017R0837"))
+        .flatExtracting(Amendment::languages)
+        .containsOnly(Language.SWE, Language.POL);
+  }
+
+  @Test
+  void findsTheAmendmentsBetweenTwoVersionsAtTheUnitsOfTheirTexts() {
+    var act = act(AVSEC);
+    var from = version(act.timeline().versions(), "02015R1998-20260101");
+    var to = version(act.timeline().versions(), "02015R1998-20260322");
+
+    var amended =
+        act.amended(
+            from,
+            to,
+            List.of("anx", "anx/pnt_6.8.1", "anx/pnt_6.8.1.8", "anx/pnt_8.1.2.3/pnt_c"),
+            List.of("anx", "anx/pnt_6.8.1", "anx/pnt_8.1.2.3/pnt_c", "anx/pnt_8.1.4.8"),
+            Language.ENG);
+
+    // a deletion at the earlier text's unit, an addition at the later's
+    assertThat(amended.of("anx/pnt_6.8.1.8"))
+        .extracting(Amendment::act, Amendment::role)
+        .containsExactly(tuple(new ActIdentifier("32026R0449"), Role.DELETION));
+    assertThat(amended.of("anx/pnt_8.1.4.8"))
+        .extracting(Amendment::role)
+        .containsExactly(Role.ADDITION);
+    // the point numbered under it, which legal-text keeps beside it
+    assertThat(amended.of("anx/pnt_6.8.1")).extracting(Amendment::role).contains(Role.DELETION);
+    // 2026/449 replaces it from 1 October 2026, after the later version
+    assertThat(amended.of("anx/pnt_8.1.2.3/pnt_c")).isEmpty();
+  }
+
+  @Test
+  void findsNoAmendmentOfALanguageVersionInAnother() {
+    var act = act(AVSEC);
+    var units = List.of("anx", "anx/pnt_8.3.1");
+
+    var from = version(act.timeline().versions(), "02015R1998-20160229");
+    var to = version(act.timeline().versions(), "02015R1998-20170607");
+
+    assertThat(act.amended(from, to, units, units, Language.ENG).of("anx/pnt_8.3.1")).isEmpty();
+    assertThat(act.amended(from, to, units, units, Language.SWE).of("anx/pnt_8.3.1"))
+        .extracting(amendment -> amendment.act().celex())
+        .containsExactly("32017R0837");
   }
 
   @Test
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActs.act(AVSEC, none, none, none, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none, none, none, none, none)).isEmpty();
   }
 
   @Test
@@ -360,7 +435,13 @@ class CellarActsTest {
         .isThrownBy(
             () ->
                 CellarActs.act(
-                    AVSEC, work(Map.of()), twoOnOneDay, noLanguages(), noDates(), noTitles()))
+                    AVSEC,
+                    work(Map.of()),
+                    twoOnOneDay,
+                    noLanguages(),
+                    noDates(),
+                    noTitles(),
+                    noAmendments()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -376,7 +457,9 @@ class CellarActsTest {
 
     assertThatExceptionOfType(CellarException.class)
         .isThrownBy(
-            () -> CellarActs.act(AVSEC, twoElis, result(), noLanguages(), noDates(), noTitles()))
+            () ->
+                CellarActs.act(
+                    AVSEC, twoElis, result(), noLanguages(), noDates(), noTitles(), noAmendments()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 
@@ -387,7 +470,9 @@ class CellarActsTest {
             List.of("eli", "type", "entryIntoForce"),
             List.of(workRow("http://data.europa.eu/eli/treaty/tfeu_2008/art_251/oj")));
 
-    assertThat(CellarActs.act(AVSEC, treaty, result(), noLanguages(), noDates(), noTitles()))
+    assertThat(
+            CellarActs.act(
+                AVSEC, treaty, result(), noLanguages(), noDates(), noTitles(), noAmendments()))
         .hasValueSatisfying(
             act -> assertThat(act.eli()).isEqualTo(new Eli("treaty/tfeu_2008/art_251")));
   }
@@ -398,7 +483,9 @@ class CellarActsTest {
         new SparqlResult(
             List.of("eli", "type", "entryIntoForce"), List.of(workRow("ELI:L:2023:2616:OJ")));
 
-    assertThat(CellarActs.act(AVSEC, work, result(), noLanguages(), noDates(), noTitles()))
+    assertThat(
+            CellarActs.act(
+                AVSEC, work, result(), noLanguages(), noDates(), noTitles(), noAmendments()))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 
@@ -467,6 +554,12 @@ class CellarActsTest {
   /** titles.rq's answer, with no titles. */
   private static SparqlResult noTitles() {
     return new SparqlResult(List.of("code", "title"), List.of());
+  }
+
+  /** amendments.rq's answer, with no amendments. */
+  private static SparqlResult noAmendments() {
+    return new SparqlResult(
+        List.of("subject", "location", "role", "from", "until", "languages"), List.of());
   }
 
   /** dates.rq's answer, with no dates. */

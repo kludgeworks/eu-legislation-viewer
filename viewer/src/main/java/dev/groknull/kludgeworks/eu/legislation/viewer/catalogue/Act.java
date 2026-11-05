@@ -7,10 +7,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
@@ -32,6 +34,8 @@ import org.jspecify.annotations.Nullable;
  * @param dates its own dates: when it enters into force, applies or takes effect
  * @param amendingDates the own dates of each act its versions integrate, by the act; an act Cellar
  *     has none for is left out
+ * @param amendments what other acts did to its provisions, one location each, as Cellar annotates
+ *     them
  */
 @AggregateRoot
 public record Act(
@@ -44,7 +48,8 @@ public record Act(
     @Nullable LocalDate endOfValidity,
     Timeline timeline,
     List<ActDate> dates,
-    Map<ActIdentifier, List<ActDate>> amendingDates) {
+    Map<ActIdentifier, List<ActDate>> amendingDates,
+    List<Amendment> amendments) {
 
   public Act {
     titles = Map.copyOf(titles);
@@ -53,6 +58,7 @@ public record Act(
         amendingDates.entrySet().stream()
             .collect(
                 Collectors.toUnmodifiableMap(Map.Entry::getKey, e -> List.copyOf(e.getValue())));
+    amendments = List.copyOf(amendments);
   }
 
   /** Its title in {@code language}; none if Cellar has none in it. */
@@ -63,6 +69,50 @@ public record Act(
   /** The own dates of this act or of an act its versions integrate; none for another act. */
   public List<ActDate> datesOf(ActIdentifier act) {
     return act.equals(id) ? dates : amendingDates.getOrDefault(act, List.of());
+  }
+
+  /** The acts the versions after {@code from}, up to and including {@code to}, integrate. */
+  public Set<ActIdentifier> integratedBetween(Version from, Version to) {
+    var between = new HashSet<ActIdentifier>();
+    for (var version : timeline.versions()) {
+      if (version.date().isAfter(from.date()) && !version.date().isAfter(to.date())) {
+        between.addAll(version.integrates());
+      }
+    }
+    return between;
+  }
+
+  /**
+   * Cellar's amendments of its provisions by the acts integrated between {@code from} and {@code
+   * to} that change the text in {@code language}, but for those that apply only after {@code to},
+   * at the units of their texts: an addition or a replacement at the later text's ({@code later}:
+   * its units' eIds, in document order), a deletion or a repeal at the earlier's ({@code earlier}).
+   * Those that apply before {@code from} are kept: a version can lag the law by weeks, so its day
+   * doesn't say what it already has (Research: where a provision's date comes from).
+   */
+  public Amended amended(
+      Version from, Version to, List<String> earlier, List<String> later, Language language) {
+    var between = integratedBetween(from, to);
+    var byUnit = new LinkedHashMap<String, List<Amendment>>();
+    var unplaced = 0;
+    for (var amendment : amendments) {
+      var applies = amendment.from();
+      // one that applies only after the later version isn't in its text (a later stage of the act)
+      if (!between.contains(amendment.act())
+          || !amendment.changes(language)
+          || (applies != null && applies.isAfter(to.date()))) {
+        continue;
+      }
+      var found = amendment.location().in(amendment.role().removes() ? earlier : later);
+      if (found.isEmpty()) {
+        unplaced++;
+        continue;
+      }
+      for (var eId : found.get().eIds()) {
+        byUnit.computeIfAbsent(eId, unit -> new ArrayList<>()).add(amendment);
+      }
+    }
+    return new Amended(byUnit, unplaced);
   }
 
   /** The version that applies on {@code date}; none before the act's text first applies. */

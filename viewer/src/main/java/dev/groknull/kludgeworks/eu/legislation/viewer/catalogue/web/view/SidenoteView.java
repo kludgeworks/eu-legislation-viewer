@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -12,13 +13,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
@@ -26,14 +27,15 @@ import org.jspecify.annotations.Nullable;
 /**
  * Who made a difference, as its sidenote says it beside its note (Design: Mode: Compare, Sidenote):
  * the acts between the two versions that the amendment markers on the unit in the later text name,
- * each with when it applies, from its own dates (never the version's); and what the unit was
- * before, by the markers in the earlier text. Where no marker names an act between them (a
- * deletion, which leaves none; a change the text doesn't mark), it says nothing of who made it
- * rather than guess.
+ * or else, where none does (a deletion, which leaves none; a change the text doesn't mark), that
+ * Cellar's amendments of the unit name; each with when it applies, from its own dates (never the
+ * version's); and what the unit was before, by the markers in the earlier text. Where neither names
+ * an act between them, it says nothing of who made it rather than guess.
  *
  * <p>Which of an act's dates a provision applies from, when it has several, isn't in the texts:
- * until the Publications Office's per-provision data says, the sidenote says the act applies in
- * stages, and that the clause says which part from when.
+ * Cellar's amendment of the unit chooses it, where its day is one of them and after the earlier
+ * version, which hasn't the change (Research: where a provision's date comes from); otherwise the
+ * sidenote says the act applies in stages, and that the clause says which part from when.
  *
  * @param made who made it: Replaced by 2026/449; none where no marker names an act between the two
  *     versions
@@ -48,17 +50,25 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
 
   /**
    * The sidenote of {@code difference}, in the comparison of {@code act}'s version {@code from}
-   * with {@code to}, its links in {@code language}.
+   * with {@code to}, with Cellar's {@code amendments} of its unit by the acts between them
+   * (Amended.of), its links in {@code language}.
    */
   public static SidenoteView of(
-      Act act, Version from, Version to, Difference difference, Language language) {
-    var between = new HashSet<ActIdentifier>();
-    for (var version : act.timeline().versions()) {
-      if (version.date().isAfter(from.date()) && !version.date().isAfter(to.date())) {
-        between.addAll(version.integrates());
+      Act act,
+      Version from,
+      Version to,
+      Difference difference,
+      List<Amendment> amendments,
+      Language language) {
+    var between = act.integratedBetween(from, to);
+    var made = acts(difference.markers(), between::contains);
+    if (made.isEmpty()) {
+      for (var amendment : amendments) {
+        if (between.contains(amendment.act())) {
+          made.putIfAbsent(amendment.act(), action(amendment.role()));
+        }
       }
     }
-    var made = acts(difference.markers(), between::contains);
     var before =
         difference.kind() == Kind.INSERTED
             ? null
@@ -71,7 +81,15 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
     var dates = new ArrayList<Applies>();
     for (var each : made.keySet()) {
       if (!Wording.corrigendum(each)) {
-        applies(act, each, language).ifPresent(dates::add);
+        var days =
+            amendments.stream()
+                .filter(amendment -> amendment.act().equals(each))
+                .map(Amendment::from)
+                .filter(Objects::nonNull)
+                // a day the earlier text, without the change, is from is stale (2019/103's points)
+                .filter(day -> day.isAfter(from.date()))
+                .collect(Collectors.toSet());
+        applies(act, each, days, language).ifPresent(dates::add);
       }
     }
     return new SidenoteView(
@@ -96,6 +114,15 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
       }
     }
     return acts;
+  }
+
+  /** What an amendment's role did, as a marker's action says it: replaced, inserted, deleted. */
+  private static String action(Amendment.Role role) {
+    return switch (role) {
+      case REPLACEMENT -> "replaced";
+      case DELETION, REPEAL -> "deleted";
+      default -> "inserted";
+    };
   }
 
   /** 2019/103 and 2019/1583; 2017/815, 2019/103 and 2019/1583. */
@@ -149,10 +176,13 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
 
   /**
    * When {@code amending} applies, from its own dates: from its one date of application, or of
-   * entry into force if it has none; in stages, where it has several or applies in part; from a
-   * date its clause sets, where Cellar has none; nothing, where Cellar has no dates of it at all.
+   * entry into force if it has none; from the one of them Cellar's amendments of the unit have
+   * ({@code days}), where it has several; in stages, where it has several or applies in part and
+   * Cellar doesn't choose; from a date its clause sets, where Cellar has none; nothing, where
+   * Cellar has no dates of it at all.
    */
-  private static Optional<Applies> applies(Act act, ActIdentifier amending, Language language) {
+  private static Optional<Applies> applies(
+      Act act, ActIdentifier amending, Set<LocalDate> days, Language language) {
     var dates = act.datesOf(amending);
     if (dates.isEmpty()) {
       return Optional.empty();
@@ -169,9 +199,27 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
       // nothing to say where no clause says where
       return set.clause() == null ? Optional.empty() : Optional.of(set);
     }
-    var days = days(applying.isEmpty() ? dated : applying);
-    if (days.size() == 1 && applying.stream().noneMatch(ActDate::partial)) {
-      var day = Wording.date(days.getFirst());
+    // the one of its dates Cellar has for the unit
+    if (days.size() == 1) {
+      var day = days.iterator().next();
+      var on = dated.stream().filter(date -> day.equals(date.date())).toList();
+      if (!on.isEmpty()) {
+        return Optional.of(
+            applies(
+                "applies from "
+                    + Wording.date(day)
+                    + (on.stream().allMatch(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE)
+                        ? ", its entry into force"
+                        : ""),
+                on,
+                amending,
+                language,
+                ""));
+      }
+    }
+    var applies = days(applying.isEmpty() ? dated : applying);
+    if (applies.size() == 1 && applying.stream().noneMatch(ActDate::partial)) {
+      var day = Wording.date(applies.getFirst());
       return Optional.of(
           applies(
               "applies from " + day + (applying.isEmpty() ? ", its entry into force" : ""),

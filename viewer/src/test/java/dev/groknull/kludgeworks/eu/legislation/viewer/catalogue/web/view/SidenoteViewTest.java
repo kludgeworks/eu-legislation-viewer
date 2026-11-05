@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.SidenoteView.Link;
@@ -19,14 +20,15 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 /**
- * Who made a difference in 2015/1998, as its sidenote says it (Cellar's versions and dates,
- * recorded), from the markers the converter keeps on its units in 2015/1998's consolidations.
+ * Who made a difference in 2015/1998, as its sidenote says it (Cellar's versions, dates and
+ * amendments, recorded), from the markers the converter keeps on its units in 2015/1998's
+ * consolidations and Cellar's amendments of them.
  */
 class SidenoteViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
 
   @Test
-  void namesTheActBetweenTheVersionsAndTheStagesItAppliesIn() {
+  void namesTheActBetweenTheVersionsAndTheStagesItAppliesInWhereCellarDoesntSayWhich() {
     var c =
         changed(
             "anx/pnt_8.1.2.3/pnt_c",
@@ -35,11 +37,15 @@ class SidenoteViewTest {
 
     var sidenote =
         SidenoteView.of(
-            AVSEC, version("02015R1998-20260322"), version("02015R1998-20261001"), c, Language.ENG);
+            AVSEC,
+            version("02015R1998-20260322"),
+            version("02015R1998-20261001"),
+            c,
+            List.of(),
+            Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Replaced by 2026/449");
     var applies = sidenote.dates().getFirst();
-    // which of its dates this point applies from isn't in the texts
     assertThat(applies.when())
         .isEqualTo(
             "2026/449 applies in stages: from 22 March 2026, its entry into force; in part from"
@@ -54,6 +60,79 @@ class SidenoteViewTest {
   }
 
   @Test
+  void datesAChangeFromTheOneOfItsActsDatesCellarHasForTheUnit() {
+    var c =
+        changed(
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Marker("32026R0449", "replaced", null)),
+            List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20260322"),
+            version("02015R1998-20261001"),
+            c,
+            amendments("32026R0449", "AN PO 8.1.2.3 PTA (c)"),
+            Language.ENG);
+
+    var applies = sidenote.dates().getFirst();
+    assertThat(applies.when()).isEqualTo("applies from 1 October 2026");
+    assertThat(applies.clause()).extracting(Link::label).isEqualTo("Article 2 of 2026/449");
+    assertThat(applies.after()).isEmpty();
+  }
+
+  @Test
+  void takesNoDayFromCellarThatTheEarlierVersionWithoutTheChangeIsAlreadyFrom() {
+    var point =
+        changed("anx/pnt_11.3.2", List.of(new Marker("32019R0103", "replaced", null)), List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            point,
+            // Cellar has 1 February 2019 for it, which the version of 1 July 2021 is after
+            amendments("32019R0103", "AN PO 11.3.2"),
+            Language.ENG);
+
+    assertThat(sidenote.dates().getFirst().when()).startsWith("2019/103 applies in stages");
+  }
+
+  @Test
+  void namesTheActCellarSaysDeletedAUnitWhichLeavesNoMarker() {
+    var deleted =
+        new Difference(
+            "anx/pnt_6.8.1.8",
+            Kind.DELETED,
+            unit("anx/pnt_6.8.1.8"),
+            0,
+            0,
+            null,
+            null,
+            null,
+            List.of(),
+            List.of(),
+            List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20260101"),
+            version("02015R1998-20260322"),
+            deleted,
+            amendments("32026R0449", "AN PO 6.8.1.8"),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Deleted by 2026/449");
+    assertThat(sidenote.dates())
+        .extracting(SidenoteView.Applies::when)
+        .containsExactly("applies from 22 March 2026, its entry into force");
+    assertThat(sidenote.before()).isEqualTo("Before: original act");
+  }
+
+  @Test
   void datesAChangeFromTheActsOneDateOfApplication() {
     var sidenote =
         SidenoteView.of(
@@ -62,6 +141,7 @@ class SidenoteViewTest {
             version("02015R1998-20170607"),
             changed(
                 "anx/pnt_1.0.3", List.of(new Marker("32017R0815", "replaced", null)), List.of()),
+            List.of(),
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Replaced by 2017/815");
@@ -100,6 +180,7 @@ class SidenoteViewTest {
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             inserted,
+            List.of(),
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/1583");
@@ -126,6 +207,7 @@ class SidenoteViewTest {
                     new Marker("32019R0103", "replaced", "anx/pnt_11.1"),
                     new Marker("32019R1583", "replaced", null)),
                 List.of()),
+            List.of(),
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Replaced by 2019/103 and 2019/1583 together");
@@ -141,6 +223,7 @@ class SidenoteViewTest {
             version("02015R1998-20210315"),
             changed(
                 "anx/pnt_1.1.3.4", List.of(new Marker("32019R0413", "replaced", null)), List.of()),
+            List.of(),
             Language.ENG);
 
     var applies = sidenote.dates().getFirst();
@@ -160,11 +243,24 @@ class SidenoteViewTest {
 
     var sidenote =
         SidenoteView.of(
-            AVSEC, version("02015R1998-20260322"), version("02015R1998-20261001"), f, Language.ENG);
+            AVSEC,
+            version("02015R1998-20260322"),
+            version("02015R1998-20261001"),
+            f,
+            List.of(),
+            Language.ENG);
 
     assertThat(sidenote.made()).isNull();
     assertThat(sidenote.dates()).isEmpty();
     assertThat(sidenote.before()).isEqualTo("Before: as replaced by 2023/566");
+  }
+
+  /** Cellar's amendments of 2015/1998 by {@code act} at {@code location}. */
+  private static List<Amendment> amendments(String act, String location) {
+    return AVSEC.amendments().stream()
+        .filter(amendment -> amendment.act().celex().equals(act))
+        .filter(amendment -> amendment.location().code().equals(location))
+        .toList();
   }
 
   private static Difference changed(String eId, List<Marker> markers, List<Marker> earlier) {

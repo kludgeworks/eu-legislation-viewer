@@ -16,8 +16,9 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * A text's outline from its tree, or its skeleton (TreeStore): its units with a rank, in the order
- * a reader meets them, each under the last unit of a higher rank before it. Their labels and
- * headings are read as plain text, without the notes they cite or the text an amendment deleted.
+ * a reader meets them, each under the last unit of a higher rank before it, and every container's
+ * eId. Their labels and headings are read as plain text, without the notes they cite or the text an
+ * amendment deleted.
  */
 public final class Outlines {
 
@@ -26,6 +27,7 @@ public final class Outlines {
 
   private final Tree tree;
   private final List<Unit> outermost = new ArrayList<>();
+  private final List<String> eIds = new ArrayList<>();
   private final Deque<Unit> open = new ArrayDeque<>();
 
   private Outlines(Tree tree) {
@@ -35,7 +37,7 @@ public final class Outlines {
   public static Outline of(Tree tree) {
     var outlines = new Outlines(tree);
     outlines.walk(tree.node(tree.root()), null);
-    return new Outline(outlines.outermost.stream().map(Unit::entry).toList());
+    return new Outline(outlines.outermost.stream().map(Unit::entry).toList(), outlines.eIds);
   }
 
   /** A container and the containers in it, in order; its children a skeleton lacks are passed. */
@@ -45,6 +47,9 @@ public final class Outlines {
     var attributes = (Map<String, Object>) Objects.requireNonNull(content.get("a"));
     if (to != null) {
       Annotations.apply(attributes, facts(to));
+    }
+    if (attributes.get("eId") instanceof String eId) {
+      eIds.add(eId);
     }
     if ("unit".equals(content.get("n")) && attributes.get("rank") instanceof String rank) {
       add(node, attributes, Integer.parseInt(rank));

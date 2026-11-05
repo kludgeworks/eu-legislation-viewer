@@ -30,11 +30,13 @@ import gg.jte.models.runtime.JteModel;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -58,6 +60,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 class CompareController {
+  private static final Logger LOG = LoggerFactory.getLogger(CompareController.class);
+
   private static final String PATH = "/eli/{type}/{year}/{number}/{language}/compare";
 
   private final Acts acts;
@@ -159,7 +163,8 @@ class CompareController {
   /**
    * The comparison's Changes view, as its page loads it once both texts are built: the comparison
    * module's, worked out now if no one has yet, beside the later text's outline, each difference
-   * with its sidenote; 404 at an address that isn't the comparison's, or before both texts are.
+   * with its sidenote, from its markers and Cellar's amendments of its unit (Act.amended); 404 at
+   * an address that isn't the comparison's, or before both texts are.
    */
   @GetMapping(path = PATH + "/changes", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -179,18 +184,44 @@ class CompareController {
         || !(preparation.texts().get(page.to) instanceof Text.Ready later)) {
       throw Requests.notFound();
     }
+    var started = System.nanoTime();
     var comparison =
         comparisons.between(earlier.root(), later.root()).orElseThrow(Requests::notFound);
     var changes = ChangesView.of(comparison);
+    var outline = content.outline(later.root()).orElseGet(Outline::empty);
+    var amended =
+        page.act.amended(
+            page.from,
+            page.to,
+            content.outline(earlier.root()).orElseGet(Outline::empty).eIds(),
+            outline.eIds(),
+            page.language);
     var sidenotes = new HashMap<Integer, SidenoteView>();
     for (var passage : changes.passages()) {
       if (passage instanceof ChangesView.Shown shown) {
+        var difference = shown.difference();
         sidenotes.put(
             shown.number(),
-            SidenoteView.of(page.act, page.from, page.to, shown.difference(), page.language));
+            SidenoteView.of(
+                page.act,
+                page.from,
+                page.to,
+                difference,
+                amended.of(difference.eId()),
+                page.language));
       }
     }
-    var outline = content.outline(later.root()).orElseGet(() -> new Outline(List.of()));
+    LOG.info(
+        "Changes of {} from {} to {} in {}: {} differences, {} of Cellar's amendments between them"
+            + " at their units, {} at none, in {} ms",
+        page.act.id(),
+        page.from.date(),
+        page.to.date(),
+        page.language.code(),
+        comparison.differences().size(),
+        amended.placed(),
+        amended.unplaced(),
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates
         .catalogueChanges(
             changes,

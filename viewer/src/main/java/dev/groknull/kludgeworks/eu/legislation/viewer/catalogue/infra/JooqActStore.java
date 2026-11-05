@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_AMENDMENT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_DATE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
@@ -13,10 +14,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActStore;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActAmendmentRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActDateRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.VersionRecord;
@@ -37,9 +40,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions and
- * its dates, written in one transaction, unless the act is there; written anew, its versions kept,
- * once it is read from Cellar again.
+ * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions, its
+ * dates and its amendments, written in one transaction, unless the act is there; written anew, its
+ * versions kept, once it is read from Cellar again.
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -85,7 +88,11 @@ class JooqActStore implements ActStore {
                     db.selectFrom(ACT_DATE)
                         .where(ACT_DATE.ACT.eq(act.getCelex()))
                         .orderBy(ACT_DATE.SUBJECT, ACT_DATE.POSITION)
-                        .fetch()));
+                        .fetch(),
+                    db.selectFrom(ACT_AMENDMENT)
+                        .where(ACT_AMENDMENT.ACT.eq(act.getCelex()))
+                        .orderBy(ACT_AMENDMENT.POSITION)
+                        .fetch(JooqActStore::amendment)));
   }
 
   @Override
@@ -110,6 +117,7 @@ class JooqActStore implements ActStore {
     db.batch(act.timeline().versions().stream().map(version -> version(act, version)).toList())
         .execute();
     dates(act);
+    amendments(act);
     return true;
   }
 
@@ -140,6 +148,8 @@ class JooqActStore implements ActStore {
     titles(act);
     db.deleteFrom(ACT_DATE).where(ACT_DATE.ACT.eq(act.id())).execute();
     dates(act);
+    db.deleteFrom(ACT_AMENDMENT).where(ACT_AMENDMENT.ACT.eq(act.id())).execute();
+    amendments(act);
     var kept =
         db.select(VERSION.CELEX)
             .from(VERSION)
@@ -213,6 +223,40 @@ class JooqActStore implements ActStore {
     }
   }
 
+  private void amendments(Act act) {
+    var each = act.amendments();
+    if (!each.isEmpty()) {
+      db.batchInsert(
+              IntStream.range(0, each.size())
+                  .mapToObj(i -> amendment(act.id(), i, each.get(i)))
+                  .toList())
+          .execute();
+    }
+  }
+
+  private static ActAmendmentRecord amendment(
+      ActIdentifier act, int position, Amendment amendment) {
+    return new ActAmendmentRecord(
+        act,
+        position,
+        amendment.act(),
+        amendment.location(),
+        amendment.role(),
+        amendment.from(),
+        amendment.until(),
+        amendment.languages().stream().map(Language::code).sorted().toArray(String[]::new));
+  }
+
+  private static Amendment amendment(ActAmendmentRecord amendment) {
+    return new Amendment(
+        amendment.getAmending(),
+        amendment.getLocation(),
+        amendment.getRole(),
+        amendment.getValidFrom(),
+        amendment.getValidUntil(),
+        Arrays.stream(amendment.getLanguages()).map(Language::valueOf).collect(Collectors.toSet()));
+  }
+
   private static ActDateRecord date(
       ActIdentifier act, ActIdentifier subject, int position, ActDate date) {
     var clause = date.clause();
@@ -234,7 +278,8 @@ class JooqActStore implements ActStore {
       ActRecord act,
       Map<Language, String> titles,
       List<Version> versions,
-      List<ActDateRecord> dates) {
+      List<ActDateRecord> dates,
+      List<Amendment> amendments) {
     var bySubject =
         dates.stream()
             .collect(
@@ -253,7 +298,8 @@ class JooqActStore implements ActStore {
         act.getEndOfValidity(),
         new Timeline(versions),
         own == null ? List.of() : own,
-        bySubject);
+        bySubject,
+        amendments);
   }
 
   private static ActDate date(ActDateRecord date) {
