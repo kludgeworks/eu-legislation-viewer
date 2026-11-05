@@ -19,6 +19,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Sidenot
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
@@ -207,7 +208,7 @@ class CompareController {
                 page.from,
                 page.to,
                 difference,
-                amended.of(difference.eId()),
+                amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
                 page.language));
       }
     }

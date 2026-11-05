@@ -383,16 +383,21 @@ class CellarActsTest {
             Language.ENG);
 
     // a deletion at the earlier text's unit, an addition at the later's
-    assertThat(amended.of("anx/pnt_6.8.1.8"))
+    assertThat(amended.of("anx/pnt_6.8.1.8", true))
         .extracting(Amendment::act, Amendment::role)
         .containsExactly(tuple(new ActIdentifier("32026R0449"), Role.DELETION));
-    assertThat(amended.of("anx/pnt_8.1.4.8"))
+    assertThat(amended.of("anx/pnt_8.1.4.8", true))
         .extracting(Amendment::role)
         .containsExactly(Role.ADDITION);
-    // the point numbered under it, which legal-text keeps beside it
-    assertThat(amended.of("anx/pnt_6.8.1")).extracting(Amendment::role).contains(Role.DELETION);
+    // the point numbered under it, which legal-text keeps beside it: in a unit deleted whole, not
+    // in
+    // one whose own words changed
+    assertThat(amended.of("anx/pnt_6.8.1", true))
+        .extracting(Amendment::role)
+        .contains(Role.DELETION);
+    assertThat(amended.of("anx/pnt_6.8.1", false)).isEmpty();
     // 2026/449 replaces it from 1 October 2026, after the later version
-    assertThat(amended.of("anx/pnt_8.1.2.3/pnt_c")).isEmpty();
+    assertThat(amended.of("anx/pnt_8.1.2.3/pnt_c", false)).isEmpty();
   }
 
   @Test
@@ -403,8 +408,9 @@ class CellarActsTest {
     var from = version(act.timeline().versions(), "02015R1998-20160229");
     var to = version(act.timeline().versions(), "02015R1998-20170607");
 
-    assertThat(act.amended(from, to, units, units, Language.ENG).of("anx/pnt_8.3.1")).isEmpty();
-    assertThat(act.amended(from, to, units, units, Language.SWE).of("anx/pnt_8.3.1"))
+    assertThat(act.amended(from, to, units, units, Language.ENG).of("anx/pnt_8.3.1", false))
+        .isEmpty();
+    assertThat(act.amended(from, to, units, units, Language.SWE).of("anx/pnt_8.3.1", false))
         .extracting(amendment -> amendment.act().celex())
         .containsExactly("32017R0837");
   }

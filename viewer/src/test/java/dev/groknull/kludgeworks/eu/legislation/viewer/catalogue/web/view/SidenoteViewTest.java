@@ -101,6 +101,46 @@ class SidenoteViewTest {
   }
 
   @Test
+  void chainsTheActsThatChangedAUnitInTheOrderTheVersionsIntegrateThem() {
+    var inserted = inserted("anx/pnt_12.14.1", new Marker("32023R0566", "replaced", null));
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20160229"),
+            version("02015R1998-20261001"),
+            inserted,
+            // in point 12.14, which legal-text keeps beside its own points
+            amendmentsAt("AN PO 12.14", "AN CHA 12.14"),
+            Language.ENG);
+
+    // the marker names only the last act to change it
+    assertThat(sidenote.made()).isEqualTo("Inserted by 2019/103, then replaced by 2023/566");
+    assertThat(sidenote.dates()).hasSize(2);
+  }
+
+  @Test
+  void saysAUnitStillThereWasAmendedWhereWordsWereDeletedFromIt() {
+    var indent =
+        inserted(
+            "anx/level_ATTACHMENT-3-B/level_1/idt_9",
+            new Marker("32019R0413", "inserted", "anx/level_ATTACHMENT-3-B"));
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20160229"),
+            version("02015R1998-20261001"),
+            indent,
+            // 2022/421 and 2025/920 changed words of appendix 3-B, which the indent is in
+            amendmentsAt("AN CHA 3 APP 3-B TXT"),
+            Language.ENG);
+
+    assertThat(sidenote.made())
+        .isEqualTo("Inserted by 2019/413, then amended by 2022/421, then amended by 2025/920");
+  }
+
+  @Test
   void namesTheActCellarSaysDeletedAUnitWhichLeavesNoMarker() {
     var deleted =
         new Difference(
@@ -261,6 +301,29 @@ class SidenoteViewTest {
         .filter(amendment -> amendment.act().celex().equals(act))
         .filter(amendment -> amendment.location().code().equals(location))
         .toList();
+  }
+
+  /** Cellar's amendments of 2015/1998 at {@code locations}, by any act. */
+  private static List<Amendment> amendmentsAt(String... locations) {
+    var codes = List.of(locations);
+    return AVSEC.amendments().stream()
+        .filter(amendment -> codes.contains(amendment.location().code()))
+        .toList();
+  }
+
+  private static Difference inserted(String eId, Marker marker) {
+    return new Difference(
+        eId,
+        Kind.INSERTED,
+        unit(eId),
+        0,
+        0,
+        null,
+        null,
+        null,
+        List.of(),
+        List.of(marker),
+        List.of());
   }
 
   private static Difference changed(String eId, List<Marker> markers, List<Marker> earlier) {

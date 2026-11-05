@@ -30,14 +30,15 @@ public record Amended(Map<String, List<Amendment>> byUnit, int unplaced) {
   }
 
   /**
-   * The amendments of the unit {@code eId}: at it, at a unit it is in (an article replaced whole,
-   * for its paragraph), or at one in it (a point added, for its paragraph's difference); each once.
+   * The amendments of the unit {@code eId}: at it, or at a unit it is in (an article replaced
+   * whole, for its paragraph); and, {@code withItsUnits} (a unit inserted or deleted whole, with
+   * its units), at one in it. Each once.
    */
-  public List<Amendment> of(String eId) {
+  public List<Amendment> of(String eId, boolean withItsUnits) {
     var found = new LinkedHashSet<Amendment>();
     byUnit.forEach(
         (unit, amendments) -> {
-          if (unit.equals(eId) || in(eId, unit) || in(unit, eId)) {
+          if (unit.equals(eId) || in(eId, unit) || (withItsUnits && in(unit, eId))) {
             found.addAll(amendments);
           }
         });

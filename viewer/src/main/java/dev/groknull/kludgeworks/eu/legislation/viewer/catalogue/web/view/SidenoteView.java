@@ -13,9 +13,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,19 +28,20 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Who made a difference, as its sidenote says it beside its note (Design: Mode: Compare, Sidenote):
- * the acts between the two versions that the amendment markers on the unit in the later text name,
- * or else, where none does (a deletion, which leaves none; a change the text doesn't mark), that
- * Cellar's amendments of the unit name; each with when it applies, from its own dates (never the
- * version's); and what the unit was before, by the markers in the earlier text. Where neither names
- * an act between them, it says nothing of who made it rather than guess.
+ * the acts between the two versions that the amendment markers on the unit in the later text or
+ * Cellar's amendments of it name (the markers name only the last act to change a unit, and a
+ * deletion leaves none), as a chain in the order the versions integrate them: Inserted by 2019/103,
+ * then replaced by 2021/255; acts of one version together. Each with when it applies, from its own
+ * dates (never the version's); and what the unit was before, by the markers in the earlier text.
+ * Where neither names an act between them, it says nothing of who made it rather than guess.
  *
  * <p>Which of an act's dates a provision applies from, when it has several, isn't in the texts:
  * Cellar's amendment of the unit chooses it, where its day is one of them and after the earlier
  * version, which hasn't the change (Research: where a provision's date comes from); otherwise the
  * sidenote says the act applies in stages, and that the clause says which part from when.
  *
- * @param made who made it: Replaced by 2026/449; none where no marker names an act between the two
- *     versions
+ * @param made who made it: Replaced by 2026/449; Inserted by 2019/103, then replaced by 2021/255;
+ *     none where nothing names an act between the two versions
  * @param dates when each of those acts applies, with what sets it
  * @param before what the unit was before: Before: as replaced by 2023/566; none for an inserted one
  */
@@ -62,11 +65,9 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
       Language language) {
     var between = act.integratedBetween(from, to);
     var made = acts(difference.markers(), between::contains);
-    if (made.isEmpty()) {
-      for (var amendment : amendments) {
-        if (between.contains(amendment.act())) {
-          made.putIfAbsent(amendment.act(), action(amendment.role()));
-        }
+    for (var amendment : amendments) {
+      if (between.contains(amendment.act())) {
+        made.putIfAbsent(amendment.act(), action(amendment.role()));
       }
     }
     var before =
@@ -76,10 +77,9 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
     if (made.isEmpty()) {
       return new SidenoteView(null, List.of(), before);
     }
-    var first = made.entrySet().iterator().next();
-    var names = names(made.keySet());
+    var steps = steps(act, from, to, made.keySet());
     var dates = new ArrayList<Applies>();
-    for (var each : made.keySet()) {
+    for (var each : steps.stream().flatMap(List::stream).toList()) {
       if (!Wording.corrigendum(each)) {
         var days =
             amendments.stream()
@@ -92,13 +92,26 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
         applies(act, each, days, language).ifPresent(dates::add);
       }
     }
-    return new SidenoteView(
-        verb(difference.kind(), first.getKey(), first.getValue())
-            + " by "
-            + names
-            + (made.size() > 1 ? " together" : ""),
-        dates,
-        before);
+    var chain = new ArrayList<String>();
+    for (var i = 0; i < steps.size(); i++) {
+      var step = steps.get(i);
+      var first = step.getFirst();
+      // an inserted unit was inserted first; a deleted one, deleted last (a unit still there had
+      // words deleted from it: amended)
+      var kind =
+          i == 0 && difference.kind() == Kind.INSERTED
+              ? Kind.INSERTED
+              : i == steps.size() - 1 && difference.kind() == Kind.DELETED
+                  ? Kind.DELETED
+                  : Kind.CHANGED;
+      var verb = verb(kind, first, Objects.requireNonNull(made.get(first)));
+      chain.add(
+          (i == 0 ? verb : verb.toLowerCase(Locale.ROOT))
+              + " by "
+              + names(step)
+              + (step.size() > 1 ? " together" : ""));
+    }
+    return new SidenoteView(String.join(", then ", chain), dates, before);
   }
 
   /**
@@ -114,6 +127,26 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
       }
     }
     return acts;
+  }
+
+  /**
+   * The acts in {@code acts} in the order the versions after {@code from}, up to {@code to}, first
+   * integrate them: one step for each version, its acts together.
+   */
+  private static List<List<ActIdentifier>> steps(
+      Act act, Version from, Version to, Collection<ActIdentifier> acts) {
+    var placed = new HashSet<ActIdentifier>();
+    var steps = new ArrayList<List<ActIdentifier>>();
+    for (var version : act.timeline().versions()) {
+      if (version.date().isAfter(from.date()) && !version.date().isAfter(to.date())) {
+        var step =
+            acts.stream().filter(version.integrates()::contains).filter(placed::add).toList();
+        if (!step.isEmpty()) {
+          steps.add(step);
+        }
+      }
+    }
+    return steps;
   }
 
   /** What an amendment's role did, as a marker's action says it: replaced, inserted, deleted. */
@@ -135,8 +168,8 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
 
   /**
    * What {@code act} did to the unit, as a difference of {@code kind} shows it: Inserted, Deleted,
-   * Replaced, Renumbered; Amended, for words it inserted in a unit that was there; Corrected, for a
-   * corrigendum.
+   * Replaced, Renumbered; Amended, for words it inserted or deleted in a unit that is still there;
+   * Corrected, for a corrigendum.
    */
   private static String verb(Kind kind, ActIdentifier act, String action) {
     if (Wording.corrigendum(act)) {
@@ -148,7 +181,6 @@ public record SidenoteView(@Nullable String made, List<Applies> dates, @Nullable
       case CHANGED ->
           switch (action) {
             case "replaced" -> "Replaced";
-            case "deleted" -> "Deleted";
             case "renumbered" -> "Renumbered";
             default -> "Amended";
           };
