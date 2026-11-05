@@ -90,6 +90,8 @@ maven.install(
         # responses (not on the full page's: that one sets it itself)
         "io.github.wimdeblauwe:htmx-spring-boot:6.0.1",
         "org.webjars:webjars-locator-lite",
+        # comparisons: Myers's diff of the words of two versions' wording (the comparison module)
+        "io.github.java-diff-utils:java-diff-utils:4.18",
         # builders and withers for records, generated (an annotation processor: //tools/build:record_builder)
         "io.soabase.record-builder:record-builder-core:53",
         "io.soabase.record-builder:record-builder-processor:53",

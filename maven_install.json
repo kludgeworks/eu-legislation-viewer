@@ -10,6 +10,7 @@
     "gg.jte:jte": -734445851,
     "gg.jte:jte-models": 283170894,
     "gg.jte:jte-spring-boot-starter-4": -2063909609,
+    "io.github.java-diff-utils:java-diff-utils": 1977050384,
     "io.github.wimdeblauwe:htmx-spring-boot": 602530914,
     "io.soabase.record-builder:record-builder-core": -1681324538,
     "io.soabase.record-builder:record-builder-processor": -967953703,
@@ -113,6 +114,7 @@
     "gg.jte:jte-runtime": -316482381,
     "gg.jte:jte-spring-boot-starter-4": 361268455,
     "gg.jte:jte-spring-boot-starter-4-core": 2113755859,
+    "io.github.java-diff-utils:java-diff-utils": 668781851,
     "io.github.wimdeblauwe:htmx-spring-boot": -826947741,
     "io.micrometer:context-propagation": 1223423881,
     "io.micrometer:micrometer-commons": 440746097,
@@ -552,6 +554,12 @@
         "jar": "73e9dbedef95a03f5578b226f5b14856bd7c67f266be8701434e9463176c81de"
       },
       "version": "3.2.4"
+    },
+    "io.github.java-diff-utils:java-diff-utils": {
+      "shasums": {
+        "jar": "a20d8f538a1254dde49370cc06466aff7df7e8cbc75d1077e14f5c951d2f8bfa"
+      },
+      "version": "4.18"
     },
     "io.github.wimdeblauwe:htmx-spring-boot": {
       "shasums": {
@@ -2763,6 +2771,15 @@
     ],
     "gg.jte:jte-spring-boot-starter-4-core": [
       "gg.jte.springframework.boot.autoconfigure"
+    ],
+    "io.github.java-diff-utils:java-diff-utils": [
+      "com.github.difflib",
+      "com.github.difflib.algorithm",
+      "com.github.difflib.algorithm.myers",
+      "com.github.difflib.patch",
+      "com.github.difflib.text",
+      "com.github.difflib.text.deltamerge",
+      "com.github.difflib.unifieddiff"
     ],
     "io.github.wimdeblauwe:htmx-spring-boot": [
       "io.github.wimdeblauwe.htmx.spring.boot.mvc",
@@ -5379,6 +5396,7 @@
       "gg.jte:jte-runtime",
       "gg.jte:jte-spring-boot-starter-4",
       "gg.jte:jte-spring-boot-starter-4-core",
+      "io.github.java-diff-utils:java-diff-utils",
       "io.github.wimdeblauwe:htmx-spring-boot",
       "io.micrometer:context-propagation",
       "io.micrometer:micrometer-commons",
