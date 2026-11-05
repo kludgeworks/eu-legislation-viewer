@@ -3,15 +3,17 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.SidenoteView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
+@import java.util.List
 @import java.util.Map
 @param ChangesView changes
 @param OutlineView outline
 @param Map<Integer, SidenoteView> sidenotes
 @param LegalRenderer html
 @param String units
+@param List<CompareView.ViewLink> views
 @param CompareView.Only only = null
-<%-- A comparison's Changes view on an act's page (Design: Mode: Compare, Changes): how many
-     differences and of what kind, then each provision that differs as it reads, marked, numbered
+<%-- A comparison's Changes view on an act's page (Design: Mode: Compare, Changes): its controls,
+     how many differences and of what kind, then each provision that differs as it reads, marked, numbered
      beside it with a sidenote: what happened, which acts made it and when each applies, and what it
      was before (sidenotes, by number); the units before it that are the same in both folded, loaded
      from the content module when opened (units, by eId); the opening of the unit it is in, as
@@ -23,11 +25,7 @@
   @template.comparison.outline(entries = outline.entries())
 </nav>
 <div class="changes">
-  <div class="controls">
-    <b>${changes.count()}</b>
-    @if(changes.breakdown() != null)<span>${changes.breakdown()}</span>@endif
-    @if(only != null)<span class="only" role="status">Only ${only.act()}’s changes · <a href="${only.all()}">show all acts</a></span>@endif
-  </div>
+  @template.catalogue.controls(changes = changes, views = views, only = only)
   <div class="book legal-text legal-text-consolidated">
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold)
@@ -39,23 +37,7 @@
         <div class="lead">${html.element(lead.unit())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        <section class="difference difference-${shown.kind()}${only != null && sidenote != null && !sidenote.candidates().isEmpty() ? " unknown" : ""}" id="difference-${shown.number()}">
-          <sup class="difference-number">${shown.number()}</sup>
-          <aside class="sidenote">
-            <b>${shown.number()}</b>
-            @if(sidenote != null && sidenote.made() != null)<span class="made">${sidenote.made()}</span>@endif
-            <%-- what happened, unless who made it says it all: Inserted by 2019/1583 --%>
-            @if(sidenote == null || sidenote.made() == null || shown.kind().equals("changed"))<span class="note">${shown.note()}</span>@endif
-            @if(sidenote != null)
-              @for(var applies : sidenote.dates())
-                <span class="applies">${applies.when()}@if(applies.clause() != null)${applies.between()}<a href="${applies.clause().href()}" rel="external">${applies.clause().label()}</a>@for(var each : applies.amendedBy()), as amended by <a href="${each.href()}" rel="external">${each.label()}</a>@endfor${applies.after()}@endif</span>
-              @endfor
-              @if(sidenote.why() != null)<span class="why">${sidenote.why()}</span>@endif
-              @if(sidenote.before() != null)<span class="before">${sidenote.before()}</span>@endif
-            @endif
-          </aside>
-          ${html.element(shown.difference().shown())}
-        </section>
+        @template.catalogue.difference(shown = shown, sidenote = sidenote, greyed = only != null && sidenote != null && !sidenote.candidates().isEmpty(), unit = html.element(shown.difference().shown()))
       @endif
     @endfor
   </div>

@@ -20,6 +20,7 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
 
@@ -65,6 +66,11 @@ class ComparePagesTests {
             Objects.requireNonNull(
                 http.get().uri(ready.attr("hx-get")).retrieve().body(String.class)));
     assertThat(changes.select(".controls b").text()).isEqualTo("6 differences");
+    assertThat(changes.select("nav.views .view").eachText())
+        .containsExactly("Changes", "Whole text", "Synopsis");
+    assertThat(changes.select("nav.views a.view").eachAttr("href"))
+        .containsExactly(PAGE, PAGE + "&view=whole");
+    assertThat(changes.select("nav.views [aria-current=page]").text()).isEqualTo("Changes");
     assertThat(changes.select("section.difference").eachAttr("id"))
         .containsExactly(
             "difference-1",
@@ -138,6 +144,52 @@ class ComparePagesTests {
         .isEqualTo("Only 2026/449’s changes · show all acts");
     assertThat(changes.select(".controls .only a").attr("href")).isEqualTo(PAGE);
     assertThat(changes.select("section.difference")).hasSize(6);
+  }
+
+  @Test
+  void showsTheWholeLaterTextWithItsDifferencesMarkedInPlace() {
+    prepared();
+    var page =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(PAGE + "&view=whole").retrieve().body(String.class)));
+    var ready = Objects.requireNonNull(page.getElementById("text"));
+    assertThat(ready.attr("hx-get"))
+        .isEqualTo(ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&view=whole");
+    var whole =
+        Jsoup.parse(
+            Objects.requireNonNull(
+                http.get().uri(ready.attr("hx-get")).retrieve().body(String.class)));
+    assertThat(whole.select("nav.views [aria-current=page]").text()).isEqualTo("Whole text");
+    assertThat(whole.select(".controls b").text()).isEqualTo("6 differences");
+    assertThat(whole.select("section.difference").eachAttr("id"))
+        .containsExactly(
+            "difference-1",
+            "difference-2",
+            "difference-3",
+            "difference-4",
+            "difference-5",
+            "difference-6");
+    // the provisions the same in both, as they read, not folded
+    assertThat(whole.select("details.fold")).isEmpty();
+    var a = Objects.requireNonNull(whole.getElementById("anx/pnt_8.1.2.3/pnt_a"));
+    assertThat(a.closest("section.difference")).isNull();
+    var c = Objects.requireNonNull(whole.getElementById("anx/pnt_8.1.2.3/pnt_c"));
+    assertThat(c.parent()).isNotNull();
+    assertThat(Objects.requireNonNull(c.parent()).id()).isEqualTo("difference-1");
+    assertThat(whole.select("#difference-1 .sidenote .made").text())
+        .isEqualTo("Replaced by 2026/449");
+    assertThat(whole.select("nav.pager a")).hasSize(6);
+  }
+
+  @Test
+  void showsNoViewThatIsntBuilt() {
+    prepared();
+    HttpStatusCode status =
+        http.get()
+            .uri(PAGE + "&view=synopsis")
+            .exchange((request, response) -> response.getStatusCode());
+    assertThat(status).isEqualTo(HttpStatus.NOT_FOUND);
   }
 
   @Test

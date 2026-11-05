@@ -723,6 +723,44 @@ a.chip:hover {
   font-size: 13.5px;
 }
 
+/* the comparison's views, one shown: Changes, Whole text, Synopsis */
+.views {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.views .view {
+  padding: 3px 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.views .view + .view {
+  border-left: 1px solid var(--rule);
+}
+
+.views .view[aria-current="page"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.views .view[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* the Whole text view (Design: Mode: Compare, Whole text): every provision of the later text, each
+ * that differs marked in place as in the Changes view, the rest's text kept to its column */
+.whole .book {
+  padding: 16px 0 24px 32px;
+}
+
+.whole .book .unit > :not(.unit, .difference) {
+  max-width: 42.5rem;
+}
+
 /* the Changes view (Design: Mode: Compare, Changes): the provisions that differ in the book column,
  * each numbered in the margin with its note beside it; the opening of the unit they are in in a
  * quiet grey; the units the same in both folded; a pager to each difference at the bottom */

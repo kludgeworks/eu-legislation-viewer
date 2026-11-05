@@ -63,14 +63,36 @@ public final class Links {
     return compare(eli, from, to, language) + act(only);
   }
 
+  /** The same, in {@code view}: …&amp;view=whole; the Changes view without. */
+  public static String compare(
+      Eli eli,
+      Version from,
+      Version to,
+      Language language,
+      @Nullable ActIdentifier only,
+      CompareView.View view) {
+    return compare(eli, from, to, language, only) + view(view);
+  }
+
   /**
-   * The Changes view of the comparison of {@code from} with {@code to}, as its page loads it,
-   * limited to the changes of {@code only}, if any:
+   * The comparison of {@code from} with {@code to} in {@code view} (its Changes, its Whole text),
+   * as its page loads it, limited to the changes of {@code only}, if any:
    * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&amp;to=2026-10-01.
    */
   public static String changes(
-      Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
-    return compare(eli, language) + "/changes?from=" + from.date() + "&to=" + to.date() + act(only);
+      Eli eli,
+      Version from,
+      Version to,
+      Language language,
+      @Nullable ActIdentifier only,
+      CompareView.View view) {
+    return compare(eli, language)
+        + "/changes?from="
+        + from.date()
+        + "&to="
+        + to.date()
+        + act(only)
+        + view(view);
   }
 
   /**
@@ -78,8 +100,23 @@ public final class Links {
    * {@code only}'s chip on, if any: /eli/reg_impl/2015/1998/eng/compare/acts?from=…&amp;to=….
    */
   public static String acts(
-      Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
-    return compare(eli, language) + "/acts?from=" + from.date() + "&to=" + to.date() + act(only);
+      Eli eli,
+      Version from,
+      Version to,
+      Language language,
+      @Nullable ActIdentifier only,
+      CompareView.View view) {
+    return compare(eli, language)
+        + "/acts?from="
+        + from.date()
+        + "&to="
+        + to.date()
+        + act(only)
+        + view(view);
+  }
+
+  private static String view(CompareView.View view) {
+    return view == CompareView.View.CHANGES ? "" : "&view=" + view.code();
   }
 
   private static String act(@Nullable ActIdentifier only) {

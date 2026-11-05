@@ -120,13 +120,16 @@ class CompareController {
       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate to,
       @RequestParam(required = false) @Nullable String act,
+      @RequestParam(name = "view", defaultValue = "changes") String shown,
       @RequestParam(defaultValue = "false") boolean prepared,
       HttpServletRequest request) {
-    var page = new Page(new Eli(type, year, number), code, from, to, act);
+    var view = view(shown);
+    var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
       return ResponseEntity.status(HttpStatus.SEE_OTHER)
           .location(
-              URI.create(Links.compare(page.eli, page.from, page.to, page.language, page.only)))
+              URI.create(
+                  Links.compare(page.eli, page.from, page.to, page.language, page.only, view)))
           .build();
     }
     var preparation = texts.prepare(page.act, page.language);
@@ -177,7 +180,8 @@ class CompareController {
                         page.language,
                         today,
                         page.only,
-                        Links.acts(page.eli, page.from, page.to, page.language, page.only)),
+                        view,
+                        Links.acts(page.eli, page.from, page.to, page.language, page.only, view)),
                     page.changes(preparation, self(request)),
                     prepared ? PreparingView.receipt(preparation, page.language) : null,
                     ArrivingView.of(page.act, preparation, self(request)).orElse(null))
@@ -201,8 +205,10 @@ class CompareController {
       @PathVariable("language") String code,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(required = false) @Nullable String act) {
-    var page = new Page(new Eli(type, year, number), code, from, to, act);
+      @RequestParam(required = false) @Nullable String act,
+      @RequestParam(name = "view", defaultValue = "changes") String shown) {
+    var view = view(shown);
+    var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
       throw Requests.notFound();
     }
@@ -226,38 +232,87 @@ class CompareController {
                         || attributed.sidenote(difference).candidates().contains(only),
                 "not changed by " + Wording.act(only));
     var sidenotes = new HashMap<Integer, SidenoteView>();
-    var shown = new ArrayList<Difference>();
+    var differences = new ArrayList<ChangesView.Shown>();
     for (var passage : changes.passages()) {
       if (passage instanceof ChangesView.Shown each) {
         sidenotes.put(each.number(), attributed.sidenote(each.difference()));
-        shown.add(each.difference());
+        differences.add(each);
       }
     }
+    var outline =
+        OutlineView.of(
+            attributed.outline(), differences.stream().map(ChangesView.Shown::difference).toList());
+    var views = CompareView.views(page.eli, page.from, page.to, page.language, only, view);
+    var all =
+        only == null
+            ? null
+            : new CompareView.Only(
+                Wording.act(only),
+                Links.compare(page.eli, page.from, page.to, page.language, null, view));
+    var html =
+        switch (view) {
+          case CHANGES ->
+              templates
+                  .catalogueChanges(
+                      changes,
+                      outline,
+                      sidenotes,
+                      this.html,
+                      "/content/" + attributed.later().hex() + "/units",
+                      views,
+                      all)
+                  .render();
+          case WHOLE ->
+              templates
+                  .catalogueWhole(
+                      changes,
+                      outline,
+                      WholeText.of(
+                          content.read(attributed.later()).orElseThrow(Requests::notFound),
+                          attributed.earlier().eIds(),
+                          differences,
+                          this.html,
+                          (each, unit) -> {
+                            var sidenote = sidenotes.get(each.number());
+                            return templates.catalogueDifference(
+                                each, sidenote, greyed(only, sidenote), unit);
+                          }),
+                      views,
+                      all)
+                  .render();
+          // not built yet: view() has no Synopsis
+          case SYNOPSIS -> throw Requests.notFound();
+        };
     LOG.info(
-        "Changes of {} from {} to {} in {}{}: {} of {} differences, {} of Cellar's amendments"
+        "{} of {} from {} to {} in {}{}: {} of {} differences, {} of Cellar's amendments"
             + " between them at their units, {} at none, in {} ms",
+        view.label(),
         page.act.id(),
         earlier.date(),
         later.date(),
         page.language.code(),
         only == null ? "" : " by " + only,
-        shown.size(),
+        differences.size(),
         attributed.comparison().differences().size(),
         attributed.amended().placed(),
         attributed.amended().unplaced(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
-    return templates
-        .catalogueChanges(
-            changes,
-            OutlineView.of(attributed.outline(), shown),
-            sidenotes,
-            html,
-            "/content/" + attributed.later().hex() + "/units",
-            only == null
-                ? null
-                : new CompareView.Only(
-                    Wording.act(only), Links.compare(page.eli, page.from, page.to, page.language)))
-        .render();
+    return html;
+  }
+
+  /**
+   * Whether a difference with {@code sidenote} is greyed: limited to {@code only}'s changes, one
+   * that may be its, not known.
+   */
+  private static boolean greyed(@Nullable ActIdentifier only, @Nullable SidenoteView sidenote) {
+    return only != null && sidenote != null && !sidenote.candidates().isEmpty();
+  }
+
+  /** The view a comparison's address asks for; 404 for one there isn't, or not built yet. */
+  private static CompareView.View view(String code) {
+    return CompareView.View.of(code)
+        .filter(view -> view != CompareView.View.SYNOPSIS)
+        .orElseThrow(Requests::notFound);
   }
 
   /**
@@ -276,8 +331,10 @@ class CompareController {
       @PathVariable("language") String code,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(required = false) @Nullable String act) {
-    var page = new Page(new Eli(type, year, number), code, from, to, act);
+      @RequestParam(required = false) @Nullable String act,
+      @RequestParam(name = "view", defaultValue = "changes") String shown) {
+    var view = view(shown);
+    var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
       throw Requests.notFound();
     }
@@ -336,7 +393,7 @@ class CompareController {
     return templates
         .catalogueActs(
             CompareView.Acts.of(
-                    page.act, page.from, page.to, page.language, page.only, counts, null)
+                    page.act, page.from, page.to, page.language, page.only, view, counts, null)
                 .counted(together, unknown))
         .render();
   }
@@ -388,10 +445,9 @@ class CompareController {
     if (comparison.isEmpty()) {
       return Optional.empty();
     }
+    var before = outline(earlier.root(), outlines);
     var outline = outline(later.root(), outlines);
-    var amended =
-        page.act.amended(
-            from, to, outline(earlier.root(), outlines).eIds(), outline.eIds(), page.language);
+    var amended = page.act.amended(from, to, before.eIds(), outline.eIds(), page.language);
     var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
     for (var difference : comparison.get().differences()) {
       sidenotes.put(
@@ -405,7 +461,8 @@ class CompareController {
               only,
               page.language));
     }
-    return Optional.of(new Attributed(comparison.get(), later.root(), outline, amended, sidenotes));
+    return Optional.of(
+        new Attributed(comparison.get(), later.root(), before, outline, amended, sidenotes));
   }
 
   private Outline outline(ContentHash root, Map<ContentHash, Outline> outlines) {
@@ -417,6 +474,7 @@ class CompareController {
    *
    * @param comparison the comparison
    * @param later the later text's root
+   * @param earlier the earlier text's outline
    * @param outline the later text's outline
    * @param amended Cellar's amendments between the two versions, at the units of their texts
    * @param sidenotes each difference's sidenote, by the difference
@@ -424,6 +482,7 @@ class CompareController {
   private record Attributed(
       Comparison comparison,
       ContentHash later,
+      Outline earlier,
       Outline outline,
       Amended amended,
       Map<Difference, SidenoteView> sidenotes) {
@@ -446,7 +505,8 @@ class CompareController {
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
       @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
       HttpServletRequest request) {
-    var page = new Page(new Eli(type, year, number), code, from, to, null);
+    var page =
+        new Page(new Eli(type, year, number), code, from, to, null, CompareView.View.CHANGES);
     texts.retry(page.act, page.language);
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
         .location(URI.create(Links.compare(page.eli, page.from, page.to, page.language)))
@@ -471,14 +531,17 @@ class CompareController {
     final Version from;
     final Version to;
     final @Nullable ActIdentifier only;
+    final CompareView.View view;
 
     Page(
         Eli eli,
         String code,
         @Nullable LocalDate from,
         @Nullable LocalDate to,
-        @Nullable String only) {
+        @Nullable String only,
+        CompareView.View view) {
       this.eli = eli;
+      this.view = view;
       language = Requests.language(code);
       act = acts.find(eli).orElseThrow(Requests::notFound);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
@@ -546,7 +609,7 @@ class CompareController {
         }
       }
       if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
-        return templates.catalogueCompareReady(Links.changes(eli, from, to, language, only));
+        return templates.catalogueCompareReady(Links.changes(eli, from, to, language, only, view));
       }
       // either end a version that appeared since, being prepared
       return templates.catalogueTextArriving();

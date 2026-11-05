@@ -4,13 +4,16 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.soabase.recordbuilder.core.RecordBuilder;
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -30,7 +33,8 @@ public record CompareView(Card from, Card to, Acts acts) {
 
   /**
    * The cards of {@code act}'s comparison of {@code from} with {@code to}, on {@code today}, its
-   * acts' chips {@code only}'s on, if any, uncounted, counted from {@code counting} if they can be.
+   * acts' chips {@code only}'s on, if any, linking in {@code view}, uncounted, counted from {@code
+   * counting} if they can be.
    */
   public static CompareView of(
       Act act,
@@ -39,6 +43,7 @@ public record CompareView(Card from, Card to, Acts acts) {
       Language language,
       LocalDate today,
       @Nullable ActIdentifier only,
+      View view,
       @Nullable String counting) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var action = Links.compare(eli, language);
@@ -46,7 +51,7 @@ public record CompareView(Card from, Card to, Acts acts) {
     return new CompareView(
         Card.of(act, from, End.FROM, to, language, today, action, first),
         Card.of(act, to, End.TO, from, language, today, action, first),
-        Acts.of(act, from, to, language, only, Map.of(), counting));
+        Acts.of(act, from, to, language, only, view, Map.of(), counting));
   }
 
   /**
@@ -90,9 +95,9 @@ public record CompareView(Card from, Card to, Acts acts) {
     }
 
     /**
-     * The acts between {@code from} and {@code to}, {@code only}'s chip on: each with how many
-     * differences it made ({@code counts}), where counted; uncounted, to be from {@code counting},
-     * where none is.
+     * The acts between {@code from} and {@code to}, {@code only}'s chip on, linking in {@code
+     * view}: each with how many differences it made ({@code counts}), where counted; uncounted, to
+     * be from {@code counting}, where none is.
      */
     public static Acts of(
         Act act,
@@ -100,6 +105,7 @@ public record CompareView(Card from, Card to, Acts acts) {
         Version to,
         Language language,
         @Nullable ActIdentifier only,
+        View view,
         Map<ActIdentifier, Integer> counts,
         @Nullable String counting) {
       var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
@@ -113,7 +119,8 @@ public record CompareView(Card from, Card to, Acts acts) {
                           title(act, each),
                           counts.get(each),
                           // on, it shows all acts again
-                          Links.compare(eli, from, to, language, each.equals(only) ? null : each),
+                          Links.compare(
+                              eli, from, to, language, each.equals(only) ? null : each, view),
                           each.equals(only)))
               .toList();
       var none =
@@ -180,6 +187,71 @@ public record CompareView(Card from, Card to, Acts acts) {
    */
   public record Chip(
       String label, String title, @Nullable Integer count, String href, boolean on) {}
+
+  /** A comparison's view (Design: Mode: Compare): what of the two texts it shows, and how. */
+  public enum View {
+    /** Only the provisions that differ, with the opening of the unit each is in. */
+    CHANGES("changes", "Changes"),
+    /** Every provision of the later text, those that differ marked in place. */
+    WHOLE("whole", "Whole text"),
+    /** The two texts side by side, aligned by provision. */
+    SYNOPSIS("synopsis", "Synopsis");
+
+    private final String code;
+    private final String label;
+
+    View(String code, String label) {
+      this.code = code;
+      this.label = label;
+    }
+
+    /** As the comparison's address has it: changes, whole, synopsis. */
+    public String code() {
+      return code;
+    }
+
+    /** As its controls name it: Whole text. */
+    public String label() {
+      return label;
+    }
+
+    /** The view by its code; none for another. */
+    public static Optional<View> of(String code) {
+      return Arrays.stream(values()).filter(view -> view.code.equals(code)).findFirst();
+    }
+  }
+
+  /**
+   * A comparison's views, as its controls link them, {@code current} the one shown; the Synopsis
+   * not yet, as it isn't built.
+   */
+  public static List<ViewLink> views(
+      Eli eli,
+      Version from,
+      Version to,
+      Language language,
+      @Nullable ActIdentifier only,
+      View current) {
+    return Arrays.stream(View.values())
+        .map(
+            view ->
+                new ViewLink(
+                    view.label,
+                    view == View.SYNOPSIS
+                        ? null
+                        : Links.compare(eli, from, to, language, only, view),
+                    view == current))
+        .toList();
+  }
+
+  /**
+   * A view's link.
+   *
+   * @param label its name: Whole text
+   * @param href the comparison in it; none for one not built yet
+   * @param on whether it is the one shown
+   */
+  public record ViewLink(String label, @Nullable String href, boolean on) {}
 
   /**
    * A comparison limited to one act's changes, as its banner says it (Design: Acts between the two

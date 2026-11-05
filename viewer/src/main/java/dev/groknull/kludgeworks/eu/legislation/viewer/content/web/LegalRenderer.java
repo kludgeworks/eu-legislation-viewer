@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -19,16 +20,50 @@ import org.springframework.stereotype.Component;
  * (m:mi is legal/m/mi.jte). A template takes its element (node) and this (html), and holds markup
  * only, recursing with {@code ${html.children(node)}}; the text it writes, jte escapes. Adding an
  * element to legal-text is adding its template, which the coverage test asks for.
+ *
+ * <p>A page can have some units rendered otherwise ({@link #instead}): a comparison's Whole text
+ * has each that differs marked, with its sidenote, the rest as they read.
  */
 @Component
 public class LegalRenderer {
   private static final Pattern WHOLE = Pattern.compile("[1-9][0-9]{3,}");
 
   private final TemplateEngine templates;
-  private final Map<String, String> chosen = new ConcurrentHashMap<>();
+  private final Map<String, String> chosen;
+  private final Map<String, Otherwise> instead;
 
+  @Autowired
   LegalRenderer(TemplateEngine templates) {
+    this(templates, new ConcurrentHashMap<>(), Map.of());
+  }
+
+  private LegalRenderer(
+      TemplateEngine templates, Map<String, String> chosen, Map<String, Otherwise> instead) {
     this.templates = templates;
+    this.chosen = chosen;
+    this.instead = Map.copyOf(instead);
+  }
+
+  /**
+   * This, but for the units whose eIds {@code instead} has, each rendered as it says: wherever one
+   * is, in whatever this renders.
+   */
+  public LegalRenderer instead(Map<String, Otherwise> instead) {
+    return new LegalRenderer(templates, chosen, instead);
+  }
+
+  /**
+   * How a unit is rendered otherwise: given the unit and the renderer rendering it, which can
+   * render it as it is ({@link #asIs}), and what is in it, within what it renders instead.
+   */
+  @FunctionalInterface
+  public interface Otherwise {
+    Content render(Element unit, LegalRenderer html);
+  }
+
+  /** {@code element} by its template, even where it is to be rendered otherwise: its own. */
+  public Content asIs(Element element) {
+    return out -> template(element, null, out);
   }
 
   /** {@code element}, with everything in it: a text's element, legalText, is the whole text. */
@@ -87,6 +122,16 @@ public class LegalRenderer {
   }
 
   private void render(Element element, @Nullable String parent, TemplateOutput out) {
+    var eId = element.name().equals("unit") ? element.attribute("eId") : null;
+    var otherwise = eId == null ? null : instead.get(eId);
+    if (otherwise != null) {
+      otherwise.render(element, this).writeTo(out);
+    } else {
+      template(element, parent, out);
+    }
+  }
+
+  private void template(Element element, @Nullable String parent, TemplateOutput out) {
     templates.render(template(parent, element.name()), Map.of("node", element, "html", this), out);
   }
 
