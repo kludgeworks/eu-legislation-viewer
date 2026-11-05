@@ -833,9 +833,69 @@ nav.outline a:hover {
   background: var(--hover);
 }
 
-.content {
+/* a comparison's outline (comparison/outline.jte): each unit's label, its share of the
+ * differences barred, its count; the differences in its points as chips */
+nav.outline.counted .outline-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav.outline.counted a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px 20px;
+  gap: 4px;
+  align-items: center;
+}
+
+nav.outline.counted .has {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+nav.outline .bar {
+  display: block;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--surface2);
+}
+
+nav.outline .bar i {
+  display: block;
+  height: 6px;
+  background: var(--accent-fill);
+}
+
+nav.outline .n {
+  font: 11.5px ui-monospace, monospace;
+  text-align: right;
+  color: var(--ink);
+}
+
+nav.outline .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 0 10px 4px 30px;
+}
+
+nav.outline .chips a {
+  display: inline-block;
+  padding: 0 5px;
+  border: 1px solid var(--accent);
+  border-radius: 3px;
+  font: 11.5px ui-monospace, monospace;
+  white-space: nowrap;
+  color: var(--accent);
+}
+
+.content,
+.changes {
   flex: 1;
   min-width: 0;
+}
+
+.content {
   max-width: 50rem;
 }
 

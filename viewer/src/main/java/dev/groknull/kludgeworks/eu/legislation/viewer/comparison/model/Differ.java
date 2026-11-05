@@ -84,7 +84,8 @@ public final class Differ {
         .shown(marked.element())
         .inserted(marked.inserted())
         .deleted(marked.deleted())
-        .parent(unit.parent());
+        .parent(unit.parent())
+        .section(unit.section());
   }
 
   /**
@@ -133,7 +134,8 @@ public final class Differ {
         .shown(copy(to.element(), children))
         .inserted(inserted)
         .deleted(deleted)
-        .parent(to.parent());
+        .parent(to.parent())
+        .section(to.section());
   }
 
   /**

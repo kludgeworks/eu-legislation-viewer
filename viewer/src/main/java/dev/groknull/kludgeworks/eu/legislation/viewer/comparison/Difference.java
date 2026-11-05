@@ -25,6 +25,8 @@ import org.jspecify.annotations.Nullable;
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
  * @param parent the eId of the unit it is in; none for an outermost unit
+ * @param section the eId of the unit with a rank it is in, as the text's outline nests them
+ *     (anx/pnt_8.1.2 for anx/pnt_8.1.2.3/pnt_c); itself if it has a rank; none if it is in none
  * @param lead the opening of the unit it is in, as context: its num, heading and first block,
  *     unmarked; none for an outermost unit
  * @param folded the units before it in the unit it is in, back to the one before that differs or
@@ -39,6 +41,7 @@ public record Difference(
     int inserted,
     int deleted,
     @Nullable String parent,
+    @Nullable String section,
     @Nullable Element lead,
     List<Sibling> folded) {
 

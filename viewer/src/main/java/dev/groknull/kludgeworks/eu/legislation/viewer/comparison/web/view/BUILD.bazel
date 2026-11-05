@@ -1,14 +1,16 @@
 # SPDX-License-Identifier: MIT
 load("@rules_java//java:defs.bzl", "java_library")
 
-# What the comparison's Changes view shows, worked out for its template (src/main/jte/comparison):
-# its own target, so the templates can take it while comparison/web renders them
+# What the comparison's Changes view and outline show, worked out for their templates
+# (src/main/jte/comparison): its own target, so the templates can take it while comparison/web
+# renders them
 java_library(
     name = "view",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",

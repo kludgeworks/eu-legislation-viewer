@@ -1,13 +1,20 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param ChangesView changes
+@param OutlineView outline
 @param LegalRenderer html
 @param String units
 <%-- A comparison's Changes view (Design: Mode: Compare, Changes): how many differences and of what
      kind, then each provision that differs as it reads, marked, numbered beside it with a note of
      what happened; the units before it that are the same in both folded, loaded from the content
      module when opened (units, by eId); the opening of the unit it is in, as context; and a pager
-     to each difference --%>
+     to each difference. Beside it, the later text's outline, its differences counted --%>
+<div class="outlined">
+<nav class="outline counted" aria-label="Outline">
+  <p class="outline-head"><span>Outline</span><span>differences</span></p>
+  @template.comparison.outline(entries = outline.entries())
+</nav>
 <div class="changes">
   <div class="controls">
     <b>${changes.count()}</b>
@@ -34,4 +41,5 @@
   @if(!changes.numbers().isEmpty())
     <nav class="pager" aria-label="Differences">@for(var number : changes.numbers())<a href="#difference-${number}">${number}</a>@endfor</nav>
   @endif
+</div>
 </div>

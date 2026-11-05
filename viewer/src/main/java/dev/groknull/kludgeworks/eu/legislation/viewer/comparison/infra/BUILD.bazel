@@ -28,6 +28,7 @@ jooq_tables(
     migrations = [
         "//viewer/src/main/resources:db/migration/comparison/V1__comparison.sql",
         "//viewer/src/main/resources:db/migration/comparison/V2__differences_as_shown.sql",
+        "//viewer/src/main/resources:db/migration/comparison/V3__differences_in_sections.sql",
     ],
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq",
     deps = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content"],

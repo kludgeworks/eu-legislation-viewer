@@ -85,6 +85,21 @@ class ComparePagesTests {
             "Point (f) — no differences · show");
     assertThat(changes.select(".lead")).hasSize(2);
     assertThat(changes.select("nav.pager a")).hasSize(6);
+    var screening =
+        changes.select("nav.outline a.has").stream()
+            .filter(a -> a.text().startsWith("8.1.2 Screening"))
+            .findFirst()
+            .orElseThrow();
+    assertThat(screening.select(".n").text()).isEqualTo("3");
+    assertThat(screening.attr("href")).isEqualTo("#difference-1");
+    assertThat(changes.select("nav.outline .chips a").eachAttr("href"))
+        .containsExactly(
+            "#difference-1",
+            "#difference-2",
+            "#difference-3",
+            "#difference-4",
+            "#difference-5",
+            "#difference-6");
   }
 
   @Test
