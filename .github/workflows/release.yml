@@ -50,6 +50,7 @@ jobs:
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
         run: mise run check
+      - run: tools/tasks/migration/check.bash --final
       - run: bazel test //...
 
       - id: artifact

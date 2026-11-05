@@ -77,6 +77,14 @@ local linters = new Mapping<String, Step> {
   ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
+  // A released Flyway script is immutable: compare every release-tagged migration with the tree.
+  // Pending migrations stay valid until `mise run release` gives them their final CalVer names.
+  ["flyway_migrations"] = new Step {
+    glob =
+      List("viewer/src/main/resources/db/migration/**/*.sql", "tools/tasks/migration/check.bash")
+    batch = true
+    check = "mise run migration:check"
+  }
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
   ["pinact_update"] = Builtins.pinact_update
