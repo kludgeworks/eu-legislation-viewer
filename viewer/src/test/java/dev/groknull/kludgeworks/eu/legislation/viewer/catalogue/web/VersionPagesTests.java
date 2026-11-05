@@ -18,6 +18,7 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.Objects;
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,10 +38,10 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestClient;
 
 /**
- * A version's page as a reader's browser loads it, on an empty store: the page at once, its text
- * built in the background while the page listens (htmx, server-sent events), then its outline and
- * the text, transcluded from the content module. On the converter's fixtures (2015/1998's
- * consolidation of 22 March 2026 in English), on 1 June 2021.
+ * A version's page as a reader's browser loads it, on an empty store: the preparing page at once,
+ * the act prepared in the background while it listens (htmx, server-sent events), then the
+ * version's page in its place, its outline and the text, transcluded from the content module. On
+ * the converter's fixtures (2015/1998's consolidation of 22 March 2026 in English), on 1 June 2021.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -57,23 +58,41 @@ class VersionPagesTests {
   }
 
   @Test
-  void showsTheTextOnceItIsBuilt() {
-    var page = http.get().uri(PAGE).retrieve().toEntity(String.class);
-    assertThat(page.getHeaders().getVary()).contains("HX-Request", "HX-Boosted");
-    var waiting = text(Objects.requireNonNull(page.getBody()));
-    assertThat(waiting.attr("hx-get")).isEqualTo(PAGE);
-    assertThat(waiting.attr("hx-trigger")).isEqualTo("done");
-    assertThat(Objects.requireNonNull(waiting.selectFirst(".preparing")).attr("hx-sse:connect"))
-        .isEqualTo(EVENTS);
+  void preparesTheActThenBecomesItsPageShowingTheText() {
+    var first =
+        Jsoup.parse(Objects.requireNonNull(http.get().uri(PAGE).retrieve().body(String.class)));
+    // the preparing page, unless another test prepared the act first
+    var preparing = first.selectFirst(".preparing");
+    if (preparing != null) {
+      assertThat(preparing.attr("hx-get")).isEqualTo(PAGE);
+      assertThat(preparing.attr("hx-trigger")).isEqualTo("done");
+      assertThat(preparing.attr("hx-select")).isEqualTo("#page");
+      assertThat(
+              Objects.requireNonNull(preparing.selectFirst("[hx-sse:connect]"))
+                  .attr("hx-sse:connect"))
+          .isEqualTo(EVENTS);
+      assertThat(preparing.select("h2").eachText()).contains("Preparing this act");
+      assertThat(first.select("nav.mode [aria-disabled]")).hasSize(2);
+      assertThat(first.select("#timeline .tick, #timeline .merged"))
+          .isNotEmpty()
+          .noneMatch(mark -> mark.is("a"));
+    }
 
-    var ready =
+    var arrived =
         await()
             .atMost(Duration.ofMinutes(1))
             .pollInterval(Duration.ofSeconds(1))
-            .until(this::poll, text -> text.selectFirst(".content[hx-get^=/content/]") != null);
-    var loads = Objects.requireNonNull(ready.selectFirst(".content"));
+            .until(
+                () -> page(PAGE + "?prepared=true"),
+                page -> page.selectFirst(".content[hx-get^=/content/]") != null);
+    // arriving from the preparing page: what was prepared, above what fades in
+    assertThat(Objects.requireNonNull(arrived.selectFirst(".receipt")).text())
+        .startsWith("✓ Prepared · ")
+        .contains(" in English");
+    assertThat(page(PAGE).selectFirst(".receipt")).isNull();
+    var loads = Objects.requireNonNull(arrived.selectFirst(".content"));
     assertThat(loads.attr("hx-trigger")).isEqualTo("load");
-    assertThat(ready.select("nav.outline > ul > li > :is(a, details > summary > a)"))
+    assertThat(arrived.select("nav.outline > ul > li > :is(a, details > summary > a)"))
         .extracting(link -> link.attr("href"), Element::text)
         .startsWith(tuple("#art_1", "Article 1"), tuple("#art_2", "Article 2"));
 
@@ -106,15 +125,17 @@ class VersionPagesTests {
                   .filter(line -> line.startsWith("data:"))
                   .toList());
       if (!stands.isBlank()) {
-        assertThat(stands).containsAnyOf("versions ready", "Waiting its turn");
+        assertThat(stands)
+            .contains("<hx-partial hx-target=\"#timeline\"", "<hx-partial hx-target=\"#progress\"")
+            .containsAnyOf("versions ready", "Waiting its turn");
       }
-      assertThat(http.get().uri(PAGE).header("HX-Request", "true").retrieve().body(String.class))
-          .contains("class=\"outlined\"");
+      assertThat(page(PAGE).selectFirst(".outlined")).isNotNull();
     }
   }
 
   @Test
   void givesABoostedLinkTheWholePage() {
+    prepared();
     var boosted =
         http.get()
             .uri(PAGE)
@@ -138,7 +159,7 @@ class VersionPagesTests {
             .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
             .toList();
     assertThat(assets)
-        .hasSize(4)
+        .hasSize(5)
         .allSatisfy(
             asset -> {
               assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");
@@ -248,15 +269,16 @@ class VersionPagesTests {
     return Jsoup.parse(Objects.requireNonNull(html)).root().child(0).attr("data-theme");
   }
 
-  /** The page's text, as htmx asks for it. */
-  private Element poll() {
-    return text(
-        Objects.requireNonNull(
-            http.get().uri(PAGE).header("HX-Request", "true").retrieve().body(String.class)));
+  private Document page(String uri) {
+    return Jsoup.parse(Objects.requireNonNull(http.get().uri(uri).retrieve().body(String.class)));
   }
 
-  private static Element text(String html) {
-    return Objects.requireNonNull(Jsoup.parse(html).getElementById("text"));
+  /** Once the act is prepared: its page shows the text. */
+  private void prepared() {
+    await()
+        .atMost(Duration.ofMinutes(1))
+        .pollInterval(Duration.ofSeconds(1))
+        .until(() -> page(PAGE), page -> page.getElementById("text") != null);
   }
 
   /** Today, for the pages: 1 June 2021, when the consolidation of 15 March 2021 applies. */

@@ -30,6 +30,7 @@ import org.jspecify.annotations.Nullable;
  * @param missing the official languages it isn't in, by their own names
  * @param read the version's page, when comparing; none when reading
  * @param compare the comparison, when reading; none when comparing
+ * @param preparing whether the act is being prepared: the mode switch is shown, not yet a link
  */
 public record MastheadView(
     String title,
@@ -42,7 +43,8 @@ public record MastheadView(
     List<Choice> languages,
     List<String> missing,
     @Nullable String read,
-    @Nullable String compare) {
+    @Nullable String compare,
+    boolean preparing) {
 
   public MastheadView {
     languages = List.copyOf(languages);
@@ -111,7 +113,25 @@ public record MastheadView(
             .map(Language::endonym)
             .toList(),
         read,
-        compare);
+        compare,
+        false);
+  }
+
+  /** This head while the act is being prepared: the mode switch not yet a link. */
+  public MastheadView whilePreparing() {
+    return new MastheadView(
+        title,
+        titleLanguage,
+        eli,
+        eliHref,
+        celex,
+        celexHref,
+        language,
+        languages,
+        missing,
+        read,
+        compare,
+        true);
   }
 
   private static Eli eli(Act act) {

@@ -13,6 +13,7 @@
   <script src="${chrome.assets().htmx()}" defer></script>
   <script src="${chrome.assets().sse()}" defer></script>
   <script src="${chrome.assets().theme()}" defer></script>
+  <script src="${chrome.assets().clock()}" defer></script>
 </head>
 <body>
   <div class="notice" role="note">

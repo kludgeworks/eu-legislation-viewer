@@ -16,6 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Timelin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Year;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
@@ -174,8 +175,8 @@ class TimelineViewTest {
                 mark instanceof Merged merged ? merged.versions().stream() : Stream.of((Tick) mark))
         .filter(tick -> tick.label().startsWith(celex + " "))
         .findFirst()
-        .orElseThrow(() -> new AssertionError("no mark of " + celex))
-        .href();
+        .map(tick -> Objects.requireNonNull(tick.href(), () -> celex + " links nowhere"))
+        .orElseThrow(() -> new AssertionError("no mark of " + celex));
   }
 
   private static Version version(String celex) {

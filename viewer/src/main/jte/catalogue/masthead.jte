@@ -2,7 +2,8 @@
 @param MastheadView masthead
 <%-- The act page's head (MastheadView): the act's title, its ELI and CELEX on EUR-Lex, the
      language switch (details, its links the same page in each language the version is in), and the
-     mode switch, the current mode marked, the other a link --%>
+     mode switch, the current mode marked, the other a link; not yet a link while the act is being
+     prepared --%>
 <header class="mast">
   <div>
     <h1 lang="${masthead.titleLanguage()}">${masthead.title()}</h1>
@@ -26,7 +27,12 @@
     </div>
   </div>
   <nav class="mode" aria-label="Mode">
-    @if(masthead.read() != null)<a href="${masthead.read()}">Read</a>@else<span aria-current="page">Read</span>@endif
-    @if(masthead.compare() != null)<a href="${masthead.compare()}">Compare</a>@else<span aria-current="page">Compare</span>@endif
+    @if(masthead.preparing())
+      <span aria-current="${masthead.read() == null ? "page" : null}" aria-disabled="true">Read</span>
+      <span aria-current="${masthead.compare() == null ? "page" : null}" aria-disabled="true">Compare</span>
+    @else
+      @if(masthead.read() != null)<a href="${masthead.read()}">Read</a>@else<span aria-current="page">Read</span>@endif
+      @if(masthead.compare() != null)<a href="${masthead.compare()}">Compare</a>@else<span aria-current="page">Compare</span>@endif
+    @endif
   </nav>
 </header>

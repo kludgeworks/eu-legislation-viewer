@@ -267,6 +267,56 @@ main {
   background: var(--accent-fill);
 }
 
+/* while the act is prepared (catalogue/preparing.jte), each version's text as it stands: grey
+ * queued, light being built, dark built, dashed failed; links to nothing yet */
+.tick.queued::before {
+  background: var(--line);
+}
+
+.tick.building::before {
+  width: 4px;
+  background: var(--accent-line);
+  animation: building 1.6s ease-in-out infinite alternate;
+}
+
+.tick.ready::before {
+  width: 4px;
+  background: var(--accent-fill);
+}
+
+.tick.failed::before {
+  background: repeating-linear-gradient(to bottom, var(--muted) 0 3px, transparent 3px 6px);
+}
+
+@keyframes building {
+  to {
+    background: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tick.building::before {
+    animation: none;
+  }
+}
+
+.merged.queued > summary {
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+.merged.building > summary {
+  border-color: var(--accent-line);
+}
+
+.merged.ready > summary {
+  border-color: var(--accent-fill);
+}
+
+.merged.failed > summary {
+  border-style: dashed;
+}
+
 .merged {
   position: absolute;
   top: 21px;
@@ -1376,4 +1426,145 @@ del.diff {
   content: "[image]";
   color: var(--muted);
   font-style: italic;
+}
+
+/* an act's page while the act is prepared (catalogue/preparing.jte): the progress panel, and what
+ * is already known about the act beside it */
+.preparing {
+  display: grid;
+  grid-template-columns: minmax(0, 42.5rem) 16rem;
+  gap: 32px;
+  padding: 20px 0 32px;
+}
+
+.preparing .panel {
+  padding: 18px 22px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.preparing h2 {
+  margin: 0 0 8px;
+  font: 600 17px Georgia, serif;
+}
+
+.preparing .panel > p {
+  max-width: 65ch;
+  margin: 0 0 14px;
+}
+
+.preparing .waiting {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--line-strong);
+  background: var(--bg);
+}
+
+.preparing .stages {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.preparing .stages p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.preparing progress {
+  width: 100%;
+  height: 8px;
+  margin-top: 6px;
+  accent-color: var(--accent-fill);
+}
+
+.preparing .foot {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.preparing .log {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.preparing .log > summary {
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.steps-log {
+  max-height: 16rem;
+  overflow-y: auto;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font: 12.5px/1.6 ui-monospace, monospace;
+}
+
+.steps-log time {
+  color: var(--muted);
+}
+
+.preparing .leave {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.preparing .known dl {
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+
+.preparing .known dt {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.preparing .known dd {
+  margin: 2px 0 0;
+}
+
+.preparing .known p {
+  font-size: 14px;
+}
+
+/* the page just prepared: a line saying what was, above what fades in */
+.receipt {
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  background: var(--accent-tint);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.receipt button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#page.arrived > :is(.selection, #text) {
+  animation: arrive .5s ease-out;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #page.arrived > :is(.selection, #text) {
+    animation: none;
+  }
 }

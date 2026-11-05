@@ -4,20 +4,22 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
-import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
@@ -38,11 +40,10 @@ import org.springframework.web.server.ResponseStatusException;
 /**
  * A version's page, at the ELI of the act and the date it applies on (any date: the version that
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
- * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which asks this URL again
- * once the act is prepared in the language, every version of it, and then loads the version's text
- * from the content module, its outline beside it; but a boosted link of the page's (HX-Boosted)
- * gets the whole page, to swap its body in. The act's address without a date goes to the page of
- * the version that applies today, or of the date asked (on).
+ * 2026-03-22/eng. The act is prepared whole in the language, every version of it, before the page
+ * shows a text: until then it is the preparing page, which becomes this one in place; then the
+ * version's text loads from the content module, its outline beside it. The act's address without a
+ * date goes to the page of the version that applies today, or of the date asked (on).
  */
 @Controller
 class VersionController {
@@ -88,46 +89,48 @@ class VersionController {
         .build();
   }
 
-  /** The version's page, its text's part as it stands. */
-  @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
-  ResponseEntity<String> page(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
-      @PathVariable("language") String code,
-      HttpServletRequest request) {
-    var page = new Page(type, year, number, date, code);
-    var text = page.text(request);
-    return ResponseEntity.ok()
-        // htmx asks the same URL for the text's part (text below): caches keep the two apart. The
-        // part's own response gets it from htmx-spring-boot, which sets it only on htmx's requests
-        .varyBy("HX-Request", "HX-Boosted")
-        .contentType(MediaType.TEXT_HTML)
-        .body(
-            templates
-                .catalogueVersion(
-                    Chrome.of(request),
-                    page.version,
-                    MastheadView.reading(page.act, page.version, date, page.language),
-                    TimelineView.reading(page.act, page.version, page.language),
-                    ReadingView.of(page.act, page.version, date, page.language, today()),
-                    text)
-                .render());
-  }
-
-  /** The text's part of the version's page, as htmx polls for it; not a boosted link's. */
-  @HxRequest(boosted = false)
+  /**
+   * The version's page: while the act is being prepared in the language, the preparing page, which
+   * asks this address again once it is (prepared, for the receipt saying what was).
+   */
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String text(
+  String page(
       @PathVariable String type,
       @PathVariable int year,
       @PathVariable String number,
       @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
       @PathVariable("language") String code,
+      @RequestParam(defaultValue = "false") boolean prepared,
       HttpServletRequest request) {
-    return new Page(type, year, number, date, code).text(request).render();
+    var page = new Page(type, year, number, date, code);
+    var chrome = Chrome.of(request);
+    var masthead = MastheadView.reading(page.act, page.version, date, page.language);
+    if (page.act.timeline().in(page.language).isEmpty()) {
+      return page.render(
+          chrome, masthead, templates.catalogueTextMissing(page.version, page.eurLex()), null);
+    }
+    var preparation = texts.prepare(page.act, page.language);
+    if (!preparation.settled()) {
+      return templates
+          .cataloguePreparing(
+              chrome,
+              page.version.celex(),
+              masthead.whilePreparing(),
+              TimelineView.preparing(page.act, preparation),
+              PreparingView.of(
+                  page.act,
+                  preparation,
+                  "You asked for the version that applies on " + Wording.date(date),
+                  request.getRequestURI(),
+                  clock.instant()))
+          .render();
+    }
+    return page.render(
+        chrome,
+        masthead,
+        page.text(preparation),
+        prepared ? PreparingView.receipt(preparation, page.language) : null);
   }
 
   /** What a version's page shows: the act, the version that applies on the date, the language. */
@@ -135,6 +138,7 @@ class VersionController {
     final Eli eli;
     final Act act;
     final Version version;
+    final LocalDate date;
     final Language language;
 
     Page(String type, int year, String number, LocalDate date, String code) {
@@ -142,22 +146,24 @@ class VersionController {
       eli = new Eli(type, year, number);
       act = acts.find(eli).orElseThrow(VersionController::notFound);
       version = act.versionOn(date).orElseThrow(VersionController::notFound);
+      this.date = date;
     }
 
-    /**
-     * The text's part: polling this URL while the act is prepared in the language (every version of
-     * it), then loading the version's text.
-     */
-    JteModel text(HttpServletRequest request) {
-      var timeline = act.timeline().in(language);
-      if (timeline.isEmpty()) {
-        return templates.catalogueTextMissing(version, eurLex());
-      }
-      var preparation = texts.prepare(act, language);
-      if (!preparation.settled()) {
-        return templates.catalogueTextBuilding(
-            preparation, request.getRequestURI(), Links.prepare(eli, language));
-      }
+    String render(Chrome chrome, MastheadView masthead, JteModel text, @Nullable String receipt) {
+      return templates
+          .catalogueVersion(
+              chrome,
+              version,
+              masthead,
+              TimelineView.reading(act, version, language),
+              ReadingView.of(act, version, date, language, today()),
+              text,
+              receipt)
+          .render();
+    }
+
+    /** The version's text, once the act is prepared: built, or why it couldn't be. */
+    JteModel text(Preparation preparation) {
       var text = preparation.texts().get(version);
       if (text == null) {
         // a version not in the language

@@ -3,6 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -24,7 +26,9 @@ import org.jspecify.annotations.Nullable;
  * one before) merge into one mark listing them. Each lag (Act.lags) is a band from the day the act
  * applies to the version that includes it. Reading (reading), the marks link to the versions'
  * pages; comparing (comparing), each links to the comparison with the nearer end moved to it, and
- * the range between the two is a band.
+ * the range between the two is a band. While the act is prepared (preparing), the marks are each
+ * version's text as it stands, links to nothing yet: grey queued, light being built, dark built,
+ * dashed failed (Design: Preparing an act).
  *
  * @param years a mark for each new year on the axis
  * @param marks the versions, merged where too close, in date order
@@ -141,6 +145,47 @@ public record TimelineView(
                     : null)));
   }
 
+  /** {@code act}'s timeline while {@code preparation} is under way: each version's text's state. */
+  public static TimelineView preparing(Act act, Preparation preparation) {
+    var versions = preparation.versions();
+    var axis = Axis.of(versions);
+    var marks = new ArrayList<Mark>();
+    for (var group : groups(versions, axis)) {
+      var at = axis.at(group);
+      var ticks =
+          group.stream()
+              .map(
+                  v ->
+                      new Tick(
+                          at,
+                          false,
+                          null,
+                          label(v),
+                          state(Objects.requireNonNull(preparation.texts().get(v)))))
+              .toList();
+      marks.add(ticks.size() == 1 ? ticks.getFirst() : new Merged(at, ticks, merged(group)));
+    }
+    return new TimelineView(
+        axis.years(),
+        marks,
+        lags(act, axis),
+        List.of(),
+        null,
+        "page",
+        "Being prepared: the versions open once it is",
+        List.of());
+  }
+
+  /** A text's state, as a tick is drawn. */
+  private static String state(Text text) {
+    return switch (text) {
+      case Text.Queued _ -> "queued";
+      case Text.Building _ -> "building";
+      case Text.Ready _ -> "ready";
+      case Text.Failed _ -> "failed";
+    };
+  }
+
   /**
    * The comparison clicking {@code version} asks for, from {@code from} to {@code to}: the nearer
    * end moved to it (one before From moves From, one after To moves To, one between moves the end
@@ -181,7 +226,9 @@ public record TimelineView(
     for (var group : groups(versions, axis)) {
       var at = axis.at(group);
       var ticks =
-          group.stream().map(v -> new Tick(at, selected.test(v), href.apply(v), label(v))).toList();
+          group.stream()
+              .map(v -> new Tick(at, selected.test(v), href.apply(v), label(v), null))
+              .toList();
       marks.add(ticks.size() == 1 ? ticks.getFirst() : new Merged(at, ticks, merged(group)));
     }
     return marks;
@@ -289,10 +336,13 @@ public record TimelineView(
   /**
    * One version's mark.
    *
-   * @param href where clicking it goes
+   * @param href where clicking it goes; none while the act is prepared
    * @param label what it is: its CELEX, its first day, the acts that made it
+   * @param state while the act is prepared, its text's: queued, building, ready, failed
    */
-  public record Tick(double at, boolean selected, String href, String label) implements Mark {}
+  public record Tick(
+      double at, boolean selected, @Nullable String href, String label, @Nullable String state)
+      implements Mark {}
 
   /**
    * Versions too close to click apart, as one mark that lists them.
@@ -308,6 +358,19 @@ public record TimelineView(
     @Override
     public boolean selected() {
       return versions.stream().anyMatch(Tick::selected);
+    }
+
+    /**
+     * While the act is prepared, how its versions' texts stand together: being built if any is,
+     * else queued if any is, else built if any is, else failed; none otherwise.
+     */
+    public @Nullable String state() {
+      for (var state : List.of("building", "queued", "ready", "failed")) {
+        if (versions.stream().anyMatch(tick -> state.equals(tick.state()))) {
+          return state;
+        }
+      }
+      return null;
     }
 
     /**

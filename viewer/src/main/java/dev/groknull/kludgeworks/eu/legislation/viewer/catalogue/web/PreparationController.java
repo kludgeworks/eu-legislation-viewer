@@ -7,9 +7,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import java.io.IOException;
+import java.time.Clock;
 import java.time.Duration;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -25,10 +28,11 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 /**
  * An act's preparation in a language, pushed to the pages waiting on it (Design: URLs and htmx,
  * Preparing): /eli/reg_impl/2015/1998/eng/prepare/events, server-sent events. Each message is how
- * it stands, the fragment the page swaps in: first as it stands on connecting (or reconnecting),
- * then again whenever it changes (PreparationChanged, broadcast from every instance once
- * committed); once every version is settled, the event done, and the stream ends. A stream also
- * ends after a while, and the page connects again.
+ * it stands, the parts of the page that change (its timeline, its progress, its steps), each
+ * swapped in by its id: first as it stands on connecting (or reconnecting), then again whenever it
+ * changes (PreparationChanged, broadcast from every instance once committed); once every version is
+ * settled, the event done, and the stream ends. A stream also ends after a while, and the page
+ * connects again.
  */
 @Controller
 class PreparationController {
@@ -41,11 +45,13 @@ class PreparationController {
   private final Acts acts;
   private final Texts texts;
   private final Templates templates;
+  private final Clock clock;
 
-  PreparationController(Acts acts, Texts texts, Templates templates) {
+  PreparationController(Acts acts, Texts texts, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
     this.templates = templates;
+    this.clock = clock;
   }
 
   /** The stream of the act's preparation in the language. */
@@ -93,7 +99,15 @@ class PreparationController {
       } else {
         stream
             .emitter()
-            .send(SseEmitter.event().data(templates.catalogueTextProgress(preparation).render()));
+            .send(
+                SseEmitter.event()
+                    .data(
+                        templates
+                            .cataloguePreparingStream(
+                                TimelineView.preparing(stream.act(), preparation),
+                                PreparingView.Progress.of(preparation, clock.instant()),
+                                PreparingView.steps(preparation))
+                            .render()));
       }
     } catch (IOException | IllegalStateException e) {
       // the page went: its stream is done with

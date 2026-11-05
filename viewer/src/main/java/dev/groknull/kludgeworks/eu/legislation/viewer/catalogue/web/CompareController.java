@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -11,11 +12,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrom
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
-import io.github.wimdeblauwe.htmx.spring.boot.mvc.HxRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
@@ -30,16 +32,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * An act's comparison of two versions, in a language (Design: Mode: Compare):
  * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01, each end any date (the
  * version that applies then). Asked with dates that aren't the versions' first days, or with From
  * after To, or without them (the latest version against the one before), it goes to the address
- * that is. Asked by htmx (@HxRequest), only the changes' part, which asks this URL again once the
- * act is prepared in the language, every version of it, and then loads the two texts' Changes view
- * from the comparison module, by their roots; a boosted link of the page's gets the whole page.
+ * that is. The act is prepared whole in the language, every version of it, before the page shows
+ * changes: until then it is the preparing page, which becomes this one in place; then the two
+ * texts' Changes view loads from the comparison module, by their roots.
  */
 @Controller
 class CompareController {
@@ -57,7 +58,11 @@ class CompareController {
     this.clock = clock;
   }
 
-  /** The comparison's page, its changes' part as it stands; or where its address is. */
+  /**
+   * The comparison's page, or where its address is: while the act is being prepared in the
+   * language, the preparing page, which asks this address again once it is (prepared, for the
+   * receipt saying what was).
+   */
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> page(
       @PathVariable String type,
@@ -68,6 +73,7 @@ class CompareController {
           @Nullable LocalDate from,
       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate to,
+      @RequestParam(defaultValue = "false") boolean prepared,
       HttpServletRequest request) {
     var page = new Page(new Eli(type, year, number), code, from, to);
     if (!page.at(from, to)) {
@@ -75,36 +81,45 @@ class CompareController {
           .location(URI.create(Links.compare(page.eli, page.from, page.to, page.language)))
           .build();
     }
+    var preparation = texts.prepare(page.act, page.language);
+    var title = page.from.celex() + " → " + page.to.celex();
+    var chrome = Chrome.of(request);
+    var masthead = MastheadView.comparing(page.act, page.from, page.to, page.language);
+    if (!preparation.settled()) {
+      return ResponseEntity.ok()
+          .contentType(MediaType.TEXT_HTML)
+          .body(
+              templates
+                  .cataloguePreparing(
+                      chrome,
+                      title,
+                      masthead.whilePreparing(),
+                      TimelineView.preparing(page.act, preparation),
+                      PreparingView.of(
+                          page.act,
+                          preparation,
+                          "You asked for a comparison of the version that applies on "
+                              + Wording.date(page.from.date())
+                              + " with the one that applies on "
+                              + Wording.date(page.to.date()),
+                          request.getRequestURI() + "?" + request.getQueryString(),
+                          clock.instant()))
+                  .render());
+    }
     var today = Requests.today(clock);
     return ResponseEntity.ok()
-        // htmx asks the same URL for the changes' part (changes below): caches keep them apart
-        .varyBy("HX-Request", "HX-Boosted")
         .contentType(MediaType.TEXT_HTML)
         .body(
             templates
                 .catalogueCompare(
-                    Chrome.of(request),
-                    page.from.celex() + " → " + page.to.celex(),
-                    MastheadView.comparing(page.act, page.from, page.to, page.language),
+                    chrome,
+                    title,
+                    masthead,
                     TimelineView.comparing(page.act, page.from, page.to, page.language, today),
                     CompareView.of(page.act, page.from, page.to, page.language, today),
-                    page.changes(request))
+                    page.changes(preparation),
+                    prepared ? PreparingView.receipt(preparation, page.language) : null)
                 .render());
-  }
-
-  /** The changes' part of the comparison's page, as htmx polls for it; not a boosted link's. */
-  @HxRequest(boosted = false)
-  @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
-  @ResponseBody
-  String changes(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      HttpServletRequest request) {
-    return new Page(new Eli(type, year, number), code, from, to).changes(request).render();
   }
 
   /**
@@ -142,19 +157,10 @@ class CompareController {
     }
 
     /**
-     * The changes' part: polling this URL while the act is prepared in the language (every version
-     * of it); then why a text can't be compared, if either can't; else the Changes view, loaded
-     * from the comparison module.
+     * The changes, once the act is prepared in the language: why a text can't be compared, if
+     * either can't; else the Changes view, loaded from the comparison module.
      */
-    JteModel changes(HttpServletRequest request) {
-      if (act.timeline().in(language).isEmpty()) {
-        throw Requests.notFound();
-      }
-      var preparation = texts.prepare(act, language);
-      var self = request.getRequestURI() + "?" + request.getQueryString();
-      if (!preparation.settled()) {
-        return templates.catalogueTextBuilding(preparation, self, Links.prepare(eli, language));
-      }
+    JteModel changes(Preparation preparation) {
       // both in the language, as the comparison's versions are picked from its timeline
       var earlier = Objects.requireNonNull(preparation.texts().get(from));
       var later = Objects.requireNonNull(preparation.texts().get(to));

@@ -12,7 +12,7 @@ import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.Objects;
 import org.jsoup.Jsoup;
-import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -44,22 +44,22 @@ class ComparePagesTests {
   }
 
   @Test
-  void comparesTheVersionsOnceBothAreBuilt() {
-    var page =
+  void comparesTheVersionsOnceTheActIsPrepared() {
+    var first =
         Jsoup.parse(Objects.requireNonNull(http.get().uri(PAGE).retrieve().body(String.class)));
+    // the preparing page, unless another test prepared the act first
+    var preparing = first.selectFirst(".preparing");
+    if (preparing != null) {
+      assertThat(preparing.attr("hx-get")).isEqualTo(PAGE);
+    }
+
+    var page = prepared();
     assertThat(page.select("nav.mode a").eachAttr("href")).containsExactly(ACT + "2026-10-01/eng");
     assertThat(page.select(".tag").eachText()).containsExactly("FROM", "TO");
     assertThat(page.select(".card-celex").eachText())
         .containsExactly("02015R1998-20260322", "02015R1998-20261001");
     assertThat(page.select(".between .chip").eachText()).containsExactly("2026/449");
-    var waiting = Objects.requireNonNull(page.getElementById("text"));
-    assertThat(waiting.attr("hx-get")).isEqualTo(PAGE);
-
-    var ready =
-        await()
-            .atMost(Duration.ofMinutes(1))
-            .pollInterval(Duration.ofSeconds(1))
-            .until(this::poll, changes -> changes.attr("hx-get").startsWith("/comparison/"));
+    var ready = Objects.requireNonNull(page.getElementById("text"));
     var changes =
         Jsoup.parse(
             Objects.requireNonNull(
@@ -104,11 +104,7 @@ class ComparePagesTests {
 
   @Test
   void opensAFoldWithItsUnitsFromTheText() {
-    var ready =
-        await()
-            .atMost(Duration.ofMinutes(1))
-            .pollInterval(Duration.ofSeconds(1))
-            .until(this::poll, changes -> changes.attr("hx-get").startsWith("/comparison/"));
+    var ready = Objects.requireNonNull(prepared().getElementById("text"));
     var changes =
         Jsoup.parse(
             Objects.requireNonNull(
@@ -161,9 +157,20 @@ class ComparePagesTests {
     return Objects.requireNonNull(response.getHeaders().getLocation());
   }
 
-  /** The page's changes, as htmx asks for them. */
-  private Element poll() {
-    var html = http.get().uri(PAGE).header("HX-Request", "true").retrieve().body(String.class);
-    return Objects.requireNonNull(Jsoup.parse(Objects.requireNonNull(html)).getElementById("text"));
+  /** The page, once the act is prepared: its changes loading from the comparison module. */
+  private Document prepared() {
+    return await()
+        .atMost(Duration.ofMinutes(1))
+        .pollInterval(Duration.ofSeconds(1))
+        .until(
+            this::page,
+            page -> {
+              var text = page.getElementById("text");
+              return text != null && text.attr("hx-get").startsWith("/comparison/");
+            });
+  }
+
+  private Document page() {
+    return Jsoup.parse(Objects.requireNonNull(http.get().uri(PAGE).retrieve().body(String.class)));
   }
 }
