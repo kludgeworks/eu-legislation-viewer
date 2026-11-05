@@ -5,11 +5,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,15 +21,19 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 /**
  * An act read from Cellar again once it is due, through the module's API: 2015/1998 prepared in
  * English on the converter's fixtures, then Cellar listing its consolidation of 1 March 2022 too
- * (OneActCellar.REFRESHED), which the fixtures have no Formex of. On its own, so no other test sees
- * the act change.
+ * (OneActCellar.REFRESHED), which the fixtures have no Formex of; its steps' counts, kept, dropped
+ * to be counted again. On its own, so no other test sees the act change.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class RefreshTests {
+  private static final ContentHash FROM = ContentHash.of(new byte[32]);
+  private static final ContentHash TO = new ContentHash("01".repeat(32));
+
   @Autowired Acts acts;
   @Autowired Texts texts;
   @Autowired OneActCellar cellar;
+  @Autowired StepCounts stepCounts;
   @Autowired JdbcClient jdbc;
 
   @Test
@@ -39,6 +45,10 @@ class RefreshTests {
     // not due yet: as kept
     acts.find(OneActCellar.CELEX);
     assertThat(cellar.asked).containsOnlyOnce(OneActCellar.CELEX.celex());
+    // a step counted by the act as it was
+    var counted = new StepCounts.Counted(Map.of(new ActIdentifier("32026R0449"), 6), 0, 0);
+    stepCounts.add(OneActCellar.CELEX, FROM, TO, counted);
+    assertThat(stepCounts.find(OneActCellar.CELEX, FROM, TO)).contains(counted);
 
     // a day later, Cellar listing a version more
     cellar.act = OneActCellar.REFRESHED;
@@ -68,5 +78,7 @@ class RefreshTests {
     assertThat(prepared.preparing()).isFalse();
     assertThat(prepared.arriving()).isEmpty();
     assertThat(cellar.asked).filteredOn(OneActCellar.CELEX.celex()::equals).hasSize(2);
+    // to be counted again, by the act as it is now
+    assertThat(stepCounts.find(OneActCellar.CELEX, FROM, TO)).isEmpty();
   }
 }

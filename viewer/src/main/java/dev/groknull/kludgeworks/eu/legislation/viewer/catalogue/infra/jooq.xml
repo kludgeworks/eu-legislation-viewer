@@ -4,7 +4,8 @@
      the database and the target): identifiers as the module's value objects, a version's kind as
      Version.Kind, an act date's kind and anchor as ActDate.Kind and ActDate.Anchor, an amendment's
      location and role as Location and Amendment.Role, an expression's
-     language, root and failure as Language, ContentHash and Failure, the times as Instants -->
+     language, root and failure as Language, ContentHash and Failure, a step count's roots as
+     ContentHash, the times as Instants -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
   <logging>WARN</logging>
   <generator>
@@ -13,7 +14,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
-          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|preparation\.act|preparation_step\.act</includeExpression>
+          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|step_count\.act|step_act_count\.act|step_act_count\.amending|preparation\.act|preparation_step\.act</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -58,7 +59,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::new, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::hex)</converter>
-          <includeExpression>expression\.root</includeExpression>
+          <includeExpression>expression\.root|step_count\.(from|to)_root|step_act_count\.(from|to)_root</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>

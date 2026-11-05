@@ -5,6 +5,7 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.joo
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_AMENDMENT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_DATE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.STEP_COUNT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static org.jooq.impl.DSL.currentInstant;
 import static org.jooq.impl.DSL.select;
@@ -42,7 +43,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions, its
  * dates and its amendments, written in one transaction, unless the act is there; written anew, its
- * versions kept, once it is read from Cellar again.
+ * versions kept, once it is read from Cellar again, its steps' counts (StepCounts) dropped.
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -150,6 +151,8 @@ class JooqActStore implements ActStore {
     dates(act);
     db.deleteFrom(ACT_AMENDMENT).where(ACT_AMENDMENT.ACT.eq(act.id())).execute();
     amendments(act);
+    // its steps' counts attributed by what it was
+    db.deleteFrom(STEP_COUNT).where(STEP_COUNT.ACT.eq(act.id())).execute();
     var kept =
         db.select(VERSION.CELEX)
             .from(VERSION)

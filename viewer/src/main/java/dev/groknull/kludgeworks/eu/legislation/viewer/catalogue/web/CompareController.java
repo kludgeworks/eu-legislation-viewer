@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
@@ -78,6 +79,7 @@ class CompareController {
   private final Acts acts;
   private final Texts texts;
   private final Comparisons comparisons;
+  private final StepCounts stepCounts;
   private final Content content;
   private final Templates templates;
   private final LegalRenderer html;
@@ -87,6 +89,7 @@ class CompareController {
       Acts acts,
       Texts texts,
       Comparisons comparisons,
+      StepCounts stepCounts,
       Content content,
       Templates templates,
       LegalRenderer html,
@@ -94,6 +97,7 @@ class CompareController {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
+    this.stepCounts = stepCounts;
     this.content = content;
     this.templates = templates;
     this.html = html;
@@ -260,7 +264,8 @@ class CompareController {
    * The acts between the comparison's versions, as its page loads them: each with how many
    * differences it made, in the comparison of the version that integrates it with the one before,
    * by the same attribution as the sidenotes (Act.amended, the markers); an act whose version's
-   * texts aren't both built left uncounted. 404 at an address that isn't the comparison's.
+   * texts aren't both built left uncounted. Each step counted once and kept (StepCounts). 404 at an
+   * address that isn't the comparison's.
    */
   @GetMapping(path = PATH + "/acts", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -282,6 +287,7 @@ class CompareController {
     var counts = new HashMap<ActIdentifier, Integer>();
     var outlines = new HashMap<ContentHash, Outline>();
     var steps = 0;
+    var kept = 0;
     var together = 0;
     var unknown = 0;
     for (var version : page.timeline.versions()) {
@@ -289,24 +295,35 @@ class CompareController {
         continue;
       }
       var earlier = page.earlier(version);
-      var attributed = attributed(page, preparation, earlier, version, null, outlines);
-      if (attributed.isEmpty()) {
+      if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
+          || !(preparation.texts().get(version) instanceof Text.Ready after)) {
         continue;
       }
-      steps++;
-      page.act.integratedBetween(earlier, version).stream()
-          .filter(between::contains)
-          .forEach(each -> counts.putIfAbsent(each, 0));
-      for (var sidenote : attributed.get().sidenotes().values()) {
-        for (var each : sidenote.acts()) {
-          counts.computeIfPresent(each, (key, count) -> count + 1);
-        }
-        together += sidenote.acts().size() > 1 ? 1 : 0;
-        unknown += sidenote.candidates().isEmpty() ? 0 : 1;
+      var found = stepCounts.find(page.act.id(), before.root(), after.root());
+      var counted = found.or(() -> count(page, preparation, earlier, version, outlines));
+      if (counted.isEmpty()) {
+        continue;
       }
+      if (found.isPresent()) {
+        kept++;
+      } else {
+        stepCounts.add(page.act.id(), before.root(), after.root(), counted.get());
+      }
+      steps++;
+      counted
+          .get()
+          .differences()
+          .forEach(
+              (each, differences) -> {
+                if (between.contains(each)) {
+                  counts.merge(each, differences, Integer::sum);
+                }
+              });
+      together += counted.get().together();
+      unknown += counted.get().unknown();
     }
     LOG.info(
-        "Acts of {} from {} to {} in {}: {} of {} counted over {} versions, in {} ms",
+        "Acts of {} from {} to {} in {}: {} of {} counted over {} versions ({} kept), in {} ms",
         page.act.id(),
         page.from.date(),
         page.to.date(),
@@ -314,6 +331,7 @@ class CompareController {
         counts.size(),
         between.size(),
         steps,
+        kept,
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates
         .catalogueActs(
@@ -321,6 +339,33 @@ class CompareController {
                     page.act, page.from, page.to, page.language, page.only, counts, null)
                 .counted(together, unknown))
         .render();
+  }
+
+  /**
+   * The counts of the step from {@code from} to {@code to}: how many differences each of its acts
+   * made, how many acts made together, how many one of them made, not known which; none if either
+   * text isn't built.
+   */
+  private Optional<StepCounts.Counted> count(
+      Page page,
+      Preparation preparation,
+      Version from,
+      Version to,
+      Map<ContentHash, Outline> outlines) {
+    return attributed(page, preparation, from, to, null, outlines)
+        .map(
+            attributed -> {
+              var differences = new HashMap<ActIdentifier, Integer>();
+              page.act.integratedBetween(from, to).forEach(each -> differences.put(each, 0));
+              var together = 0;
+              var unknown = 0;
+              for (var sidenote : attributed.sidenotes().values()) {
+                sidenote.acts().forEach(each -> differences.merge(each, 1, Integer::sum));
+                together += sidenote.acts().size() > 1 ? 1 : 0;
+                unknown += sidenote.candidates().isEmpty() ? 0 : 1;
+              }
+              return new StepCounts.Counted(differences, together, unknown);
+            });
   }
 
   /**
