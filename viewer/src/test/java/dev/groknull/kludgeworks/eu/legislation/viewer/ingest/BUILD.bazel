@@ -6,8 +6,12 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 java_junit5_test(
     name = "IngestTests",
     size = "medium",
+    timeout = "short",
     srcs = ["IngestTests.java"],
-    tags = ["requires-docker"],
+    tags = [
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestTests",
     runtime_deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",

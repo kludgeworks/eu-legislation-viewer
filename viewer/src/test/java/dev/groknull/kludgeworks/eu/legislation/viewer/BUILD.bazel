@@ -60,6 +60,7 @@ java_binary(
 java_test_suite(
     name = "viewer",
     size = "medium",
+    timeout = "short",
     srcs = glob(
         ["*.java"],
         exclude = [
@@ -72,7 +73,10 @@ java_test_suite(
     ),
     data = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
     runner = "junit5",
-    tags = ["requires-docker"],
+    tags = [
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
     # Spring's naming for whole-application checks
     test_suffixes = ["Tests.java"],
     runtime_deps = [

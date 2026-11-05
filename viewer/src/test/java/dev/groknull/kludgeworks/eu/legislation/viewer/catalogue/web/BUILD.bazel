@@ -6,8 +6,12 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
 java_junit5_test(
     name = "VersionPagesTests",
     size = "medium",
+    timeout = "short",
     srcs = ["VersionPagesTests.java"],
-    tags = ["requires-docker"],
+    tags = [
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.VersionPagesTests",
     runtime_deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
@@ -37,8 +41,12 @@ java_junit5_test(
 java_junit5_test(
     name = "ComparePagesTests",
     size = "medium",
+    timeout = "short",
     srcs = ["ComparePagesTests.java"],
-    tags = ["requires-docker"],
+    tags = [
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ComparePagesTests",
     runtime_deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
