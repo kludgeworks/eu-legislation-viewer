@@ -11,7 +11,7 @@
 @if(sidenote == null || sidenote.made() == null || shown.kind().equals("changed"))<span class="note">${shown.note()}</span>@endif
 @if(sidenote != null)
   @for(var applies : sidenote.dates())
-    <span class="applies">${applies.when()}@if(applies.clause() != null)${applies.between()}<a href="${applies.clause().href()}" rel="external">${applies.clause().label()}</a>@for(var each : applies.amendedBy()), as amended by <a href="${each.href()}" rel="external">${each.label()}</a>@endfor${applies.after()}@endif</span>
+    <span class="applies">@template.catalogue.applies(applies = applies)</span>
   @endfor
   @if(sidenote.why() != null)<span class="why">${sidenote.why()}</span>@endif
   @if(sidenote.before() != null)<span class="before">${sidenote.before()}</span>@endif

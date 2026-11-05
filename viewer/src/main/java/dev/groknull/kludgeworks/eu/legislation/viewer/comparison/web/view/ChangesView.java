@@ -131,11 +131,10 @@ public record ChangesView(
       if (units.isEmpty()) {
         return Optional.empty();
       }
-      var eIds = units.stream().map(Sibling::eId).toList();
       var fold =
           hidden == 0
-              ? new Fold(ChangesView.fold(units), eIds, "no differences")
-              : new Fold(span(units), eIds, others);
+              ? new Fold(ChangesView.fold(units), units, "no differences", true)
+              : new Fold(span(units), units, others, false);
       units.clear();
       parents.clear();
       hidden = 0;
@@ -249,7 +248,7 @@ public record ChangesView(
   }
 
   /** A unit's num, a point's after the numbered point it is in: 11.2.7(b). */
-  private static String cited(Sibling unit) {
+  public static String cited(Sibling unit) {
     var in = IN_POINT.matcher(unit.eId());
     return unit.num().startsWith("(") && in.find() ? in.group(1) + unit.num() : unit.num();
   }
@@ -285,17 +284,38 @@ public record ChangesView(
    * others.
    *
    * @param label which: Points (a) and (b)
-   * @param eIds their eIds, to load them by
+   * @param units its units, as the later text has them, in order: each with the units in it
    * @param note why they are folded: no differences; not changed by 2019/1583
+   * @param same whether they are the same in both texts, the neighbours of the difference after
+   *     them in the unit they are in; not where some differ, by an act the view leaves out
    */
-  public record Fold(String label, List<String> eIds, String note) implements Passage {
+  public record Fold(String label, List<Sibling> units, String note, boolean same)
+      implements Passage {
     public Fold {
-      eIds = List.copyOf(eIds);
+      units = List.copyOf(units);
+    }
+
+    /** Its units beside the differences around it: its first and last, or all of three or fewer. */
+    public List<Sibling> beside() {
+      return units.size() <= 3 ? units : List.of(units.getFirst(), units.getLast());
+    }
+
+    /**
+     * Its units but the first and last, the neighbours of the differences around it, folded as this
+     * is, as the Synopsis has them; none where it has three units or fewer, all neighbours.
+     */
+    public @Nullable Fold between() {
+      if (units.size() <= 3) {
+        return null;
+      }
+      var inner = units.subList(1, units.size() - 1);
+      return new Fold(same ? ChangesView.fold(inner) : span(inner), inner, note, same);
     }
 
     /** The query that asks for its units by eId: eId=anx%2Fpnt_8.1.2.3%2Fpnt_a&amp;eId=… */
     public String query() {
-      return eIds.stream()
+      return units.stream()
+          .map(Sibling::eId)
           .map(eId -> "eId=" + URLEncoder.encode(eId, StandardCharsets.UTF_8))
           .collect(Collectors.joining("&"));
     }

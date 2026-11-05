@@ -874,6 +874,20 @@ a.chip:hover {
   opacity: 0.4;
 }
 
+.ledger-same .from,
+.ledger-same .to {
+  color: var(--muted);
+}
+
+.ledger .history {
+  font: 12px/1.4 ui-sans-serif, system-ui, sans-serif;
+  color: var(--muted);
+}
+
+.ledger .history a {
+  color: inherit;
+}
+
 .ledger-fold {
   padding: 9px 14px;
   border-bottom: 1px solid var(--rule);

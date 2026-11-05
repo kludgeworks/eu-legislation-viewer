@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
@@ -103,12 +104,15 @@ class ChangesViewTest {
     assertThat(only9.passages())
         .filteredOn(Fold.class::isInstance)
         .map(Fold.class::cast)
-        .extracting(Fold::note)
+        .extracting(Fold::note, Fold::same)
         .containsExactly(
-            "not changed by 2026/449", "no differences", "no differences", "no differences");
+            tuple("not changed by 2026/449", false),
+            tuple("no differences", true),
+            tuple("no differences", true),
+            tuple("no differences", true));
     var others = (Fold) only9.passages().getFirst();
-    assertThat(others.eIds()).first().isEqualTo("anx/pnt_8.1.2.3/pnt_a");
-    assertThat(others.eIds()).last().isEqualTo("anx/pnt_8.1.2.3/pnt_g");
+    assertThat(others.units()).first().extracting(Sibling::eId).isEqualTo("anx/pnt_8.1.2.3/pnt_a");
+    assertThat(others.units()).last().extracting(Sibling::eId).isEqualTo("anx/pnt_8.1.2.3/pnt_g");
     assertThat(only9.count()).isEqualTo("3 differences");
     assertThat(only9.numbers()).containsExactly(1, 2, 3);
   }

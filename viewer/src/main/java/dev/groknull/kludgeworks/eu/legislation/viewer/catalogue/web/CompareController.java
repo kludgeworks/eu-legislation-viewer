@@ -30,6 +30,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.Change
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -42,6 +43,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -280,18 +282,42 @@ class CompareController {
                       views,
                       all)
                   .render();
-          case SYNOPSIS ->
-              templates
-                  .catalogueSynopsis(
-                      changes,
-                      outline,
-                      sidenotes,
-                      this.html,
-                      earlier.celex(),
-                      later.celex(),
-                      views,
-                      all)
-                  .render();
+          case SYNOPSIS -> {
+            // the neighbours of the differences, each with what last made it as it is
+            var same = new HashSet<String>();
+            for (var passage : changes.passages()) {
+              if (passage instanceof ChangesView.Fold fold && fold.same()) {
+                fold.beside().forEach(unit -> same.add(unit.eId()));
+              }
+            }
+            var units = new HashMap<String, Element>();
+            var histories = new HashMap<String, SidenoteView.History>();
+            if (!same.isEmpty()) {
+              var text = content.read(attributed.later()).orElseThrow(Requests::notFound);
+              Neighbours.of(text, same)
+                  .forEach(
+                      (eId, neighbour) -> {
+                        units.put(eId, neighbour.unit());
+                        histories.put(
+                            eId,
+                            SidenoteView.history(
+                                page.act, later, neighbour.markers(), page.language));
+                      });
+            }
+            yield templates
+                .catalogueSynopsis(
+                    changes,
+                    outline,
+                    sidenotes,
+                    units,
+                    histories,
+                    this.html,
+                    earlier.celex(),
+                    later.celex(),
+                    views,
+                    all)
+                .render();
+          }
         };
     LOG.info(
         "{} of {} from {} to {} in {}{}: {} of {} differences, {} of Cellar's amendments"

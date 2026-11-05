@@ -576,4 +576,55 @@ public record SidenoteView(
 
   /** A link: its words and where it goes. */
   public record Link(String label, String href) {}
+
+  /**
+   * What a provision the same in both versions last was, as the Synopsis says beside it (Design:
+   * Synopsis history column): the act among its amendment markers in {@code to} (its own, or those
+   * of the unit an act put in its form whole, Difference.Marker) that {@code act}'s versions
+   * integrated last, its corrigenda left out, with what it did and when it applies; as in the
+   * original act where none did, applying from the act's first version.
+   */
+  public static History history(Act act, Version to, List<Marker> markers, Language language) {
+    @Nullable Marker last = null;
+    @Nullable LocalDate integrated = null;
+    for (var marker : markers) {
+      var each = new ActIdentifier(marker.act());
+      if (Wording.corrigendum(each)) {
+        continue;
+      }
+      var on =
+          act.timeline().versions().stream()
+              .filter(version -> !version.date().isAfter(to.date()))
+              .filter(version -> version.integrates().contains(each))
+              .map(Version::date)
+              .min(LocalDate::compareTo);
+      if (on.isPresent() && (integrated == null || on.get().isAfter(integrated))) {
+        last = marker;
+        integrated = on.get();
+      }
+    }
+    if (last == null) {
+      var first = act.timeline().versions().getFirst();
+      return new History(
+          "As in the original act",
+          applies(act, act.id(), Set.of(), language)
+              .orElseGet(
+                  () ->
+                      new Applies(
+                          "applies from " + Wording.date(first.date()), "", null, List.of(), "")));
+    }
+    var each = new ActIdentifier(last.act());
+    return new History(
+        "Last changed by " + Wording.act(each) + " (" + last.action() + ")",
+        applies(act, each, Set.of(), language).orElse(null));
+  }
+
+  /**
+   * A provision's history, as the Synopsis has it beside one the same in both versions.
+   *
+   * @param said what last made it as it is: Last changed by 2019/103 (replaced); As in the original
+   *     act
+   * @param applies when that applies, with what sets it; none where nothing says
+   */
+  public record History(String said, @Nullable Applies applies) {}
 }

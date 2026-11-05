@@ -210,8 +210,16 @@ class ComparePagesTests {
         .isNotEmpty();
     assertThat(first.select(".what .made").text()).isEqualTo("Replaced by 2026/449");
     assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
-    assertThat(synopsis.select(".ledger-fold").eachText())
-        .startsWith("Points (a) and (b) — no differences");
+    // its neighbours, the same in both, with what last made them as they are
+    assertThat(synopsis.select(".ledger-fold")).isEmpty();
+    var same = synopsis.select(".ledger-same");
+    assertThat(same.select(".provision").eachText())
+        .startsWith("8.1.2.3(a)", "8.1.2.3(b)", "8.1.2.3(d)", "8.1.2.3(f)");
+    var a = Objects.requireNonNull(same.first());
+    assertThat(a.select(".from").text()).isEqualTo(a.select(".to").text());
+    assertThat(a.select(".history").text())
+        .isEqualTo(
+            "As in the original act · applies from 1 February 2016 · Article 2 of 2015/1998");
   }
 
   @Test
