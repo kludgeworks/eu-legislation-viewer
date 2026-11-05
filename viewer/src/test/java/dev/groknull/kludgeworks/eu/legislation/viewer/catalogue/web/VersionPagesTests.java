@@ -56,7 +56,7 @@ class VersionPagesTests {
   @Test
   void showsTheTextOnceItIsBuilt() {
     var page = http.get().uri(PAGE).retrieve().toEntity(String.class);
-    assertThat(page.getHeaders().getVary()).contains("HX-Request");
+    assertThat(page.getHeaders().getVary()).contains("HX-Request", "HX-Boosted");
     var waiting = text(Objects.requireNonNull(page.getBody()));
     assertThat(waiting.attr("hx-get")).isEqualTo(PAGE);
     assertThat(waiting.attr("hx-trigger")).isEqualTo("load delay:1s");
@@ -77,6 +77,20 @@ class VersionPagesTests {
     assertThat(article).isNotNull();
     assertThat(article.attr("lang")).isEqualTo("en");
     assertThat(article.select("#art_1 > h2 > .num").text()).isEqualTo("Article 1");
+  }
+
+  @Test
+  void givesABoostedLinkTheWholePage() {
+    var boosted =
+        http.get()
+            .uri(PAGE)
+            .header("HX-Request", "true")
+            .header("HX-Boosted", "true")
+            .retrieve()
+            .body(String.class);
+    var page = Jsoup.parse(Objects.requireNonNull(boosted)).getElementById("page");
+    assertThat(page).isNotNull();
+    assertThat(page.select("header.mast, section.timeline, #text")).hasSize(3);
   }
 
   @Test

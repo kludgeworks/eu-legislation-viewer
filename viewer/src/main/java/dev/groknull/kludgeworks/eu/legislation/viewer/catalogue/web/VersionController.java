@@ -40,9 +40,10 @@ import org.springframework.web.server.ResponseStatusException;
  * A version's page, at the ELI of the act and the date it applies on (any date: the version that
  * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
  * 2026-03-22/eng. Asked by htmx (@HxRequest), only the text's part of it, which polls this URL
- * until the text is built, and then loads it from the content module, its outline beside it. The
- * act's address without a date goes to the page of the version that applies today, or of the date
- * asked (on).
+ * until the text is built, and then loads it from the content module, its outline beside it; but a
+ * boosted link of the page's (HX-Boosted) gets the whole page, to swap its body in. The act's
+ * address without a date goes to the page of the version that applies today, or of the date asked
+ * (on).
  */
 @Controller
 class VersionController {
@@ -105,7 +106,7 @@ class VersionController {
     return ResponseEntity.ok()
         // htmx asks the same URL for the text's part (text below): caches keep the two apart. The
         // part's own response gets it from htmx-spring-boot, which sets it only on htmx's requests
-        .varyBy("HX-Request")
+        .varyBy("HX-Request", "HX-Boosted")
         .contentType(MediaType.TEXT_HTML)
         .body(
             templates
@@ -119,8 +120,8 @@ class VersionController {
                 .render());
   }
 
-  /** The text's part of the version's page, as htmx polls for it. */
-  @HxRequest
+  /** The text's part of the version's page, as htmx polls for it; not a boosted link's. */
+  @HxRequest(boosted = false)
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
   String text(
