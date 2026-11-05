@@ -668,6 +668,20 @@ a.chip:hover {
   font-weight: 500;
 }
 
+/* the differences no one act is known to have made */
+.chip.unknown {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+/* what the chips' numbers are */
+.between .hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
 /* the chips of acts that made no difference here, folded */
 .more-acts > summary {
   color: var(--accent);
@@ -762,9 +776,21 @@ a.chip:hover {
 
 .sidenote .made + .note,
 .sidenote .applies,
+.sidenote .why,
 .sidenote .before {
   display: block;
   margin-top: 3px;
+}
+
+/* what to know of who made it: together, only in the data, not known */
+.sidenote .why {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* under an act's filter, a change that may be its, not known: greyed, never hidden */
+.difference.unknown > :not(.sidenote) {
+  opacity: 0.6;
 }
 
 .difference-inserted .sidenote {

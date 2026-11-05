@@ -298,6 +298,134 @@ class SidenoteViewTest {
     assertThat(sidenote.before()).isEqualTo("Before: as replaced by 2023/566");
   }
 
+  @Test
+  void saysActsOfOneVersionTheMarkersNameMadeItTogetherFollowingTheMarkersOverCellar() {
+    var point =
+        changed(
+            "anx/pnt_11.1.2",
+            List.of(
+                new Marker("32019R1583", "replaced", null),
+                new Marker("32019R0103", "replaced", null)),
+            List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            point,
+            // Cellar also names 2020/910, of the same version, which the markers don't
+            amendmentsAt("AN PO 11.1.2"),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Replaced by 2019/103 and 2019/1583 together");
+    assertThat(sidenote.acts())
+        .containsExactly(new ActIdentifier("32019R0103"), new ActIdentifier("32019R1583"));
+    assertThat(sidenote.why())
+        .isEqualTo("There is one wording, so the change can’t be split between them.");
+  }
+
+  @Test
+  void saysAChangeActsMadeTogetherIsTheirCombinedOneLimitedToOneOfThem() {
+    var point =
+        changed(
+            "anx/pnt_11.1.2",
+            List.of(
+                new Marker("32019R1583", "replaced", null),
+                new Marker("32019R0103", "replaced", null)),
+            List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            point,
+            List.of(),
+            new ActIdentifier("32019R1583"),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Replaced by 2019/1583, together with 2019/103");
+    assertThat(sidenote.why())
+        .isEqualTo(
+            "Together with 2019/103. Both acts changed this point in the same version, and the"
+                + " wording between their changes exists in no version, so this is their combined"
+                + " change, not 2019/1583’s part alone.");
+  }
+
+  @Test
+  void saysOnlyCellarNamesTheActWhereTheTextHasNoMarker() {
+    var deleted =
+        new Difference(
+            "anx/pnt_1.2.3.8",
+            Kind.DELETED,
+            point("anx/pnt_1.2.3.8"),
+            unit("anx/pnt_1.2.3.8"),
+            0,
+            0,
+            null,
+            null,
+            null,
+            List.of(),
+            List.of(),
+            List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            deleted,
+            amendmentsAt("AN PO 1.2.3"),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Deleted by 2019/103");
+    assertThat(sidenote.why())
+        .isEqualTo(
+            "The text has no marker here; the Publications Office’s data names 2019/103 for"
+                + " point 1.2.3.");
+  }
+
+  @Test
+  void saysAPointIsNewInTheUnitAnActReplacedWhole() {
+    var d =
+        inserted("anx/pnt_11.1.3/pnt_d", new Marker("32019R0103", "replaced", "anx/pnt_11.1.3"));
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            d,
+            List.of(),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Inserted by 2019/103");
+    assertThat(sidenote.why())
+        .isEqualTo("2019/103 replaced point 11.1.3 as a whole; this point is new in it.");
+  }
+
+  @Test
+  void namesTheActsOfTheOneVersionOneOfWhichMadeItWhereNothingSaysWhich() {
+    var point = changed("anx/pnt_11.3", List.of(), List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            point,
+            List.of(),
+            new ActIdentifier("32019R1583"),
+            Language.ENG);
+
+    assertThat(sidenote.made())
+        .isEqualTo("Amended by an act not known: 2019/103, 2019/1583 or 2020/910");
+    assertThat(sidenote.acts()).isEmpty();
+    assertThat(sidenote.candidates()).hasSize(3);
+    assertThat(sidenote.why()).startsWith("May be 2019/1583’s change");
+  }
+
   /** Cellar's amendments of 2015/1998 by {@code act} at {@code location}. */
   private static List<Amendment> amendments(String act, String location) {
     return AVSEC.amendments().stream()

@@ -209,14 +209,17 @@ class CompareController {
     var earlier = step == null ? page.from : page.earlier(step);
     var later = step == null ? page.to : step;
     var attributed =
-        attributed(page, preparation, earlier, later, new HashMap<>())
+        attributed(page, preparation, earlier, later, only, new HashMap<>())
             .orElseThrow(Requests::notFound);
     var changes =
         only == null
             ? ChangesView.of(attributed.comparison())
             : ChangesView.of(
                 attributed.comparison(),
-                difference -> attributed.sidenote(difference).acts().contains(only),
+                // and those that may be its, not known
+                difference ->
+                    attributed.sidenote(difference).acts().contains(only)
+                        || attributed.sidenote(difference).candidates().contains(only),
                 "not changed by " + Wording.act(only));
     var sidenotes = new HashMap<Integer, SidenoteView>();
     var shown = new ArrayList<Difference>();
@@ -279,12 +282,14 @@ class CompareController {
     var counts = new HashMap<ActIdentifier, Integer>();
     var outlines = new HashMap<ContentHash, Outline>();
     var steps = 0;
+    var together = 0;
+    var unknown = 0;
     for (var version : page.timeline.versions()) {
       if (!version.date().isAfter(page.from.date()) || version.date().isAfter(page.to.date())) {
         continue;
       }
       var earlier = page.earlier(version);
-      var attributed = attributed(page, preparation, earlier, version, outlines);
+      var attributed = attributed(page, preparation, earlier, version, null, outlines);
       if (attributed.isEmpty()) {
         continue;
       }
@@ -296,6 +301,8 @@ class CompareController {
         for (var each : sidenote.acts()) {
           counts.computeIfPresent(each, (key, count) -> count + 1);
         }
+        together += sidenote.acts().size() > 1 ? 1 : 0;
+        unknown += sidenote.candidates().isEmpty() ? 0 : 1;
       }
     }
     LOG.info(
@@ -311,19 +318,22 @@ class CompareController {
     return templates
         .catalogueActs(
             CompareView.Acts.of(
-                page.act, page.from, page.to, page.language, page.only, counts, null))
+                    page.act, page.from, page.to, page.language, page.only, counts, null)
+                .counted(together, unknown))
         .render();
   }
 
   /**
-   * The comparison of {@code from} with {@code to}, each difference with its sidenote, its outlines
-   * read once each ({@code outlines}, by root); none if either text isn't built.
+   * The comparison of {@code from} with {@code to}, each difference with its sidenote, limited to
+   * {@code only}'s changes, if any, its outlines read once each ({@code outlines}, by root); none
+   * if either text isn't built.
    */
   private Optional<Attributed> attributed(
       Page page,
       Preparation preparation,
       Version from,
       Version to,
+      @Nullable ActIdentifier only,
       Map<ContentHash, Outline> outlines) {
     if (!(preparation.texts().get(from) instanceof Text.Ready earlier)
         || !(preparation.texts().get(to) instanceof Text.Ready later)) {
@@ -347,6 +357,7 @@ class CompareController {
               to,
               difference,
               amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
+              only,
               page.language));
     }
     return Optional.of(new Attributed(comparison.get(), later.root(), outline, amended, sidenotes));

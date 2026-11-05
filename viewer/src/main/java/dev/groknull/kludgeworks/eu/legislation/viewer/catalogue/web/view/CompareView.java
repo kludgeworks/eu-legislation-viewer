@@ -72,8 +72,18 @@ public record CompareView(Card from, Card to, Acts acts) {
    *     here
    * @param counting where their counts load from, until they're counted; none once they are, or if
    *     they can't be
+   * @param unknown how many differences one of them made, not known which, as its own chip; none if
+   *     none, or until counted
+   * @param hint what the counts say: that a difference acts made together counts in each act's
+   *     chip; none until counted
    */
-  public record Acts(String head, List<Chip> chips, List<Chip> none, @Nullable String counting) {
+  public record Acts(
+      String head,
+      List<Chip> chips,
+      List<Chip> none,
+      @Nullable String counting,
+      @Nullable Integer unknown,
+      @Nullable String hint) {
     public Acts {
       chips = List.copyOf(chips);
       none = List.copyOf(none);
@@ -116,7 +126,27 @@ public record CompareView(Card from, Card to, Acts acts) {
           acts.size() + (acts.size() == 1 ? " act between them" : " acts between them"),
           chips.stream().filter(chip -> !none.contains(chip)).toList(),
           none,
-          counts.isEmpty() ? counting : null);
+          counts.isEmpty() ? counting : null,
+          null,
+          null);
+    }
+
+    /**
+     * The same, counted: {@code together} differences acts made together, {@code unknown} one of
+     * them made, not known which.
+     */
+    public Acts counted(int together, int unknown) {
+      var hint =
+          "Number = differences that act made in this comparison; click to see only its changes."
+              + (together == 0
+                  ? ""
+                  : " "
+                      + together
+                      + (together == 1 ? " difference was" : " differences were")
+                      + " made by acts together, so "
+                      + (together == 1 ? "it counts" : "they count")
+                      + " in each of their chips.");
+      return new Acts(head, chips, none, counting, unknown == 0 ? null : unknown, hint);
     }
 
     /** What the chips left out say: + 3 with no differences here. */

@@ -174,6 +174,70 @@ public record Location(String code) {
         .toList();
   }
 
+  /** What each code calls its unit, as a page names it. */
+  private static final Map<String, String> NOUNS =
+      Map.ofEntries(
+          Map.entry("AR", "Article"),
+          Map.entry("PA", "paragraph"),
+          Map.entry("ALN", "subparagraph"),
+          Map.entry("PO", "point"),
+          Map.entry("PTA", "point"),
+          Map.entry("PT", "point"),
+          Map.entry("PTI", "point"),
+          Map.entry("SCT", "section"),
+          Map.entry("SBS", "subsection"),
+          Map.entry("PRT", "part"),
+          Map.entry("TIRE", "indent"),
+          Map.entry("AN", "Annex"),
+          Map.entry("TIT", "Title"),
+          Map.entry("CHA", "chapter"),
+          Map.entry("APP", "Appendix"));
+
+  /**
+   * The unit it names, as a page cites it: point 1.2.3; point 8.1.2.3(c), a lettered point after
+   * the point it is in; Article 89(1); the annex, for the one annex. What is finer than a unit (a
+   * sentence, a subparagraph) is left out.
+   */
+  public String name() {
+    var tokens = tokens();
+    String noun = null;
+    var cited = "";
+    for (var i = 0; i < tokens.size(); i++) {
+      var token = tokens.get(i);
+      var next = i + 1 < tokens.size() ? tokens.get(i + 1) : null;
+      var numbered = next != null && !STEPS.containsKey(next) && !FINER.contains(next);
+      if (!NOUNS.containsKey(token)) {
+        i += numbered ? 1 : 0;
+        continue;
+      }
+      if (!numbered || next == null) {
+        if (token.equals("AN")) {
+          noun = "the annex";
+          cited = "";
+        }
+        continue;
+      }
+      i++;
+      var number = next.replace("\"", "");
+      // a point (c) of point 8.1.2.3, a paragraph (1) of Article 89: cited after it; a
+      // subparagraph, not cited
+      if (token.equals("ALN") && noun != null) {
+        continue;
+      } else if (number.startsWith("(") && noun != null && !cited.isEmpty()) {
+        cited += number;
+      } else if (token.equals("PA") && "Article".equals(noun)) {
+        cited += "(" + number + ")";
+      } else {
+        noun = NOUNS.get(token);
+        cited = number;
+      }
+    }
+    if (noun == null) {
+      return code;
+    }
+    return cited.isEmpty() ? noun : noun + " " + cited;
+  }
+
   /** Its codes and numbers, with the run-together ones Cellar has apart: AR 11.5 is AR 11 PA 5. */
   private List<String> tokens() {
     var tokens = new ArrayList<String>();

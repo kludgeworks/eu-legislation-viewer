@@ -123,6 +123,15 @@ class LocationTest {
         .isEqualTo(new Location("AR 81 PA 3"));
   }
 
+  @Test
+  void citesTheUnitItNames() {
+    assertThat(new Location("AN PO 1.2.3").name()).isEqualTo("point 1.2.3");
+    assertThat(new Location("AN PO 8.1.2.3 PTA (c)").name()).isEqualTo("point 8.1.2.3(c)");
+    assertThat(new Location("AR 89 PA 1 ALN 1").name()).isEqualTo("Article 89(1)");
+    assertThat(new Location("AN PO 11.1.2 FR").name()).isEqualTo("point 11.1.2");
+    assertThat(new Location("AN CHA 5 APP 5-A").name()).isEqualTo("Appendix 5-A");
+  }
+
   private static Optional<Found> in(String code, List<String> eIds) {
     return new Location(code).in(eIds);
   }
