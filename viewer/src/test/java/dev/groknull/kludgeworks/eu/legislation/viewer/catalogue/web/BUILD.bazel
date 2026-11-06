@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
 
 # A version's page as a browser loads it, its text built while it polls; Postgres in a container, so
 # it needs Docker
@@ -72,38 +72,46 @@ java_junit5_test(
     ],
 )
 
-# The home page: Find an act, a search's results, the way back to them; Postgres in a container, so
-# it needs Docker
-java_junit5_test(
-    name = "HomePagesTests",
-    size = "medium",
-    timeout = "short",
-    srcs = ["HomePagesTests.java"],
-    tags = [
-        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
-        "requires-docker",
-    ],
-    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.HomePagesTests",
+# The pages' controllers alone (@WebMvcTest, MockMvc), what they ask of the modules mocked: where
+# their addresses lead, what they refuse, the pages' chrome. No store, no containers.
+java_test_suite(
+    name = "controllers",
+    size = "small",
+    srcs = glob([
+        "*ControllerTests.java",
+        "ControllerTesting.java",
+    ]),
+    data = ["@maven//:org_mockito_mockito_core"],
+    # Mockito as an agent, as its documentation asks: the JDK will stop it attaching itself
+    jvm_flags = ["-javaagent:$(rootpath @maven//:org_mockito_mockito_core)"],
+    runner = "junit5",
+    test_suffixes = ["ControllerTests.java"],
     runtime_deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
-        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",  # its package's @NullMarked
-        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/jte",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
-        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra:fixtures",
+        "@maven//:jakarta_servlet_jakarta_servlet_api",
         "@maven//:org_assertj_assertj_core",
-        "@maven//:org_awaitility_awaitility",
         "@maven//:org_jsoup_jsoup",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_mockito_mockito_core",
         "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_boot_spring_boot_webmvc_test",
+        "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
-        "@maven//:org_springframework_spring_core",
+        "@maven//:org_springframework_spring_test",
         "@maven//:org_springframework_spring_web",
     ],
 )

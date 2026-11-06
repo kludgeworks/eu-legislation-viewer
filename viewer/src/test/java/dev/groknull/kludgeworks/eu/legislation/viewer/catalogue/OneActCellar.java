@@ -33,10 +33,10 @@ import org.springframework.context.annotation.Primary;
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class OneActCellar {
-  static final ActIdentifier CELEX = new ActIdentifier("32015R1998");
-  static final Eli ELI = new Eli("reg_impl/2015/1998");
+  public static final ActIdentifier CELEX = new ActIdentifier("32015R1998");
+  public static final Eli ELI = new Eli("reg_impl/2015/1998");
 
-  static final Act ACT =
+  public static final Act ACT =
       new Act(
           CELEX,
           ELI,
@@ -179,7 +179,7 @@ public class OneActCellar {
   }
 
   /** 2026/449, as a search finds it. */
-  static final Search.Match AMENDING =
+  public static final Search.Match AMENDING =
       new Search.Match(
           new ActIdentifier("32026R0449"),
           new Eli("reg_impl/2026/449"),
@@ -195,14 +195,19 @@ public class OneActCellar {
   Search search() {
     return query -> {
       asked.add("SEARCH " + String.join(" ", query.words()) + " " + query.kind().code());
-      if (!query.words().contains("security") || query.offset() > 0) {
-        return new Search.Found(List.of(), false);
-      }
-      var avsec =
-          new Search.Match(
-              CELEX, ELI, ACT.type(), ACT.title(Language.ENG).orElseThrow(), true, List.of());
-      return new Search.Found(List.of(avsec, AMENDING), false);
+      return found(query);
     };
+  }
+
+  /** What Cellar finds for {@code query}: 2015/1998 and 2026/449 for security, else nothing. */
+  public static Search.Found found(Search.Query query) {
+    if (!query.words().contains("security") || query.offset() > 0) {
+      return new Search.Found(List.of(), false);
+    }
+    var avsec =
+        new Search.Match(
+            CELEX, ELI, ACT.type(), ACT.title(Language.ENG).orElseThrow(), true, List.of());
+    return new Search.Found(List.of(avsec, AMENDING), false);
   }
 
   @Bean

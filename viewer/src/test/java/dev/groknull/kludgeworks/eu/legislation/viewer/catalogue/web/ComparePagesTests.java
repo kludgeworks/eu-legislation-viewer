@@ -8,7 +8,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguratio
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import java.net.URI;
-import java.net.http.HttpClient;
 import java.time.Duration;
 import java.util.Objects;
 import org.jsoup.Jsoup;
@@ -18,17 +17,14 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.client.JdkClientHttpRequestFactory;
 import org.springframework.web.client.RestClient;
 
 /**
  * A comparison's page as a reader's browser loads it, on an empty store: the page at once, both
  * texts built in the background while its changes' part polls (htmx), then its Changes view, from
  * beside the page, each difference with the act that made it. On the converter's fixtures:
- * 2015/1998's consolidations of 22 March and 1 October 2026, in English.
+ * 2015/1998's consolidations of 22 March and 1 October 2026, in English. Where its addresses lead
+ * and what it refuses, and its site bar, are CompareControllerTests'.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -223,21 +219,6 @@ class ComparePagesTests {
   }
 
   @Test
-  void showsNoViewThereIsnt() {
-    prepared();
-    HttpStatusCode status =
-        http.get()
-            .uri(PAGE + "&view=sideways")
-            .exchange((request, response) -> response.getStatusCode());
-    assertThat(status).isEqualTo(HttpStatus.NOT_FOUND);
-  }
-
-  @Test
-  void goesToTheComparisonOfAllActsForAnActNotBetweenTheVersions() {
-    assertThat(location(PAGE + "&act=32019R0103")).isEqualTo(URI.create(PAGE));
-  }
-
-  @Test
   void opensAFoldWithItsUnitsFromTheText() {
     var ready = Objects.requireNonNull(prepared().getElementById("text"));
     var changes =
@@ -267,51 +248,6 @@ class ComparePagesTests {
                     .body(String.class)));
 
     assertThat(page.select("#text .failure h2").text()).isEqualTo("Not available in English");
-  }
-
-  @Test
-  void opensOnTheLatestVersionAgainstTheOneBefore() {
-    assertThat(location(ACT + "eng/compare"))
-        .isEqualTo(URI.create(ACT + "eng/compare?from=2026-03-22&to=2026-10-01"));
-  }
-
-  @Test
-  void opensAnActsChangesOnTheVersionThatFirstIntegratesIt() {
-    assertThat(location(ACT + "eng/compare?act=32026R0449"))
-        .isEqualTo(URI.create(ACT + "eng/compare?from=2021-12-31&to=2026-03-22&act=32026R0449"));
-  }
-
-  @Test
-  void goesToTheVersionsTheDatesAskForEarlierFirst() {
-    assertThat(location(ACT + "eng/compare?from=2026-12-01&to=2021-06-01"))
-        .isEqualTo(URI.create(ACT + "eng/compare?from=2021-03-15&to=2026-10-01"));
-  }
-
-  @Test
-  void findsNoVersionBeforeTheActsTextApplies() {
-    var status =
-        http.get()
-            .uri(ACT + "eng/compare?from=2000-01-01&to=2026-10-01")
-            .header(HttpHeaders.ACCEPT, "text/html")
-            .exchange((request, response) -> response.getStatusCode());
-    assertThat(status).isEqualTo(HttpStatus.NOT_FOUND);
-  }
-
-  /** Where {@code path} redirects, not followed. */
-  private URI location(String path) {
-    var response =
-        RestClient.builder()
-            .baseUrl("http://localhost:" + port)
-            .requestFactory(
-                new JdkClientHttpRequestFactory(
-                    HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NEVER).build()))
-            .build()
-            .get()
-            .uri(path)
-            .retrieve()
-            .toBodilessEntity();
-    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SEE_OTHER);
-    return Objects.requireNonNull(response.getHeaders().getLocation());
   }
 
   /** The page, once the act is prepared: its changes loading from beside it. */

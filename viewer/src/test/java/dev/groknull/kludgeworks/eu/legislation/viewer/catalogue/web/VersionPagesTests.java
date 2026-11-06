@@ -20,7 +20,6 @@ import java.util.Objects;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,12 +28,6 @@ import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Primary;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ResponseEntity;
-import org.springframework.http.client.JdkClientHttpRequestFactory;
-import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.web.client.RestClient;
 
 /**
@@ -42,6 +35,7 @@ import org.springframework.web.client.RestClient;
  * the act prepared in the background while it listens (htmx, server-sent events), then the
  * version's page in its place, its outline and the text, transcluded from the content module. On
  * the converter's fixtures (2015/1998's consolidation of 22 March 2026 in English), on 1 June 2021.
+ * Where its addresses lead and what it refuses, and its chrome, are VersionControllerTests'.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -131,16 +125,6 @@ class VersionPagesTests {
   }
 
   @Test
-  void triesAgainThenGoesBackToThePage() {
-    prepared();
-
-    var response = noRedirects().post().uri(PAGE).retrieve().toBodilessEntity();
-
-    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SEE_OTHER);
-    assertThat(response.getHeaders().getLocation()).isEqualTo(URI.create(PAGE));
-  }
-
-  @Test
   void streamsHowTheActStandsUntilItIsPrepared() throws Exception {
     var request =
         HttpRequest.newBuilder(URI.create("http://localhost:" + port + EVENTS))
@@ -185,127 +169,6 @@ class VersionPagesTests {
     assertThat(page.select("header.mast, section.timeline, #text")).hasSize(3);
   }
 
-  @Test
-  void linksItsStylesheetAndScriptsByTheirContent() {
-    var head =
-        Objects.requireNonNull(
-            Jsoup.parse(Objects.requireNonNull(http.get().uri(PAGE).retrieve().body(String.class)))
-                .head());
-    var assets =
-        head.select("link[rel=stylesheet], script[src]").stream()
-            .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
-            .toList();
-    assertThat(assets)
-        .hasSize(5)
-        .allSatisfy(
-            asset -> {
-              assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");
-              assertThat(http.get().uri(asset).retrieve().toBodilessEntity().getStatusCode())
-                  .isEqualTo(HttpStatus.OK);
-            });
-  }
-
-  @Test
-  void followsTheDeviceUntilTheReaderChoosesATheme() {
-    assertThat(theme(http.get().uri(PAGE).retrieve().body(String.class))).isEqualTo("system");
-    var dark = http.get().uri(PAGE).cookie("theme", "dark").retrieve().body(String.class);
-    assertThat(theme(dark)).isEqualTo("dark");
-    assertThat(Jsoup.parse(Objects.requireNonNull(dark)).select("form.theme [aria-pressed=true]"))
-        .extracting(button -> button.attr("value"))
-        .containsExactly("dark");
-  }
-
-  @Test
-  void keepsTheChosenThemeAndGoesBackToThePage() {
-    var chosen = choose("dark", PAGE + "?from=x");
-    assertThat(chosen.getStatusCode()).isEqualTo(HttpStatus.SEE_OTHER);
-    assertThat(chosen.getHeaders().getLocation()).isEqualTo(URI.create(PAGE + "?from=x"));
-    assertThat(chosen.getHeaders().getFirst(HttpHeaders.SET_COOKIE))
-        .startsWith("theme=dark;")
-        .contains("HttpOnly");
-  }
-
-  @Test
-  void keepsTheThemeTheScriptSwitchedThePageTo() {
-    var kept = choose("light", PAGE, "cors");
-    assertThat(kept.getStatusCode()).isEqualTo(HttpStatus.NO_CONTENT);
-    assertThat(kept.getHeaders().getFirst(HttpHeaders.SET_COOKIE)).startsWith("theme=light;");
-  }
-
-  @Test
-  void goesBackOnlyToAPageOfThisSite() {
-    for (var elsewhere :
-        new String[] {"https://example.org/", "//example.org/", "/\\example.org/"}) {
-      assertThat(choose("light", elsewhere).getHeaders().getLocation())
-          .as(elsewhere)
-          .isEqualTo(URI.create("/"));
-    }
-  }
-
-  @Test
-  void opensAnActAtTheVersionThatAppliesToday() {
-    var response =
-        noRedirects().get().uri("/eli/reg_impl/2015/1998/eng").retrieve().toBodilessEntity();
-    assertThat(response.getStatusCode()).isEqualTo(HttpStatus.SEE_OTHER);
-    assertThat(response.getHeaders().getLocation())
-        .isEqualTo(URI.create("/eli/reg_impl/2015/1998/2021-03-15/eng"));
-  }
-
-  @Test
-  void opensAnActOnTheDateTheReaderAsks() {
-    var response =
-        noRedirects()
-            .get()
-            .uri("/eli/reg_impl/2015/1998/fra?on=2022-05-01")
-            .retrieve()
-            .toBodilessEntity();
-    assertThat(response.getHeaders().getLocation())
-        .isEqualTo(URI.create("/eli/reg_impl/2015/1998/2022-05-01/fra"));
-  }
-
-  @Test
-  void findsNoVersionBeforeTheActsTextApplies() {
-    assertThat(status("/eli/reg_impl/2015/1998/2000-01-01/eng")).isEqualTo(HttpStatus.NOT_FOUND);
-  }
-
-  @Test
-  void findsNoPageInALanguageTheEuDoesntHave() {
-    assertThat(status("/eli/reg_impl/2015/1998/2026-03-22/xxx")).isEqualTo(HttpStatus.NOT_FOUND);
-  }
-
-  /** The theme switch's form posted, as a form does, its redirect not followed. */
-  private ResponseEntity<Void> choose(String theme, String back) {
-    return choose(theme, back, "navigate");
-  }
-
-  /** The theme switch's form posted, in the fetch mode {@code mode}. */
-  private ResponseEntity<Void> choose(String theme, String back, String mode) {
-    var form = new LinkedMultiValueMap<String, String>();
-    form.add("set", theme);
-    form.add("back", back);
-    return noRedirects()
-        .post()
-        .uri("/theme")
-        .header("Sec-Fetch-Mode", mode)
-        .body(form)
-        .retrieve()
-        .toBodilessEntity();
-  }
-
-  /** A client that doesn't follow redirects, to see where they go. */
-  private RestClient noRedirects() {
-    return RestClient.builder()
-        .baseUrl("http://localhost:" + port)
-        .requestFactory(
-            new JdkClientHttpRequestFactory(
-                HttpClient.newBuilder().followRedirects(HttpClient.Redirect.NEVER).build()))
-        .build();
-  }
-
-  private static String theme(@Nullable String html) {
-    return Jsoup.parse(Objects.requireNonNull(html)).root().child(0).attr("data-theme");
-  }
-
   private Document page(String uri) {
     return Jsoup.parse(Objects.requireNonNull(http.get().uri(uri).retrieve().body(String.class)));
   }
@@ -329,12 +192,5 @@ class VersionPagesTests {
     Clock firstOfJune2021() {
       return Clock.fixed(Instant.parse("2021-06-01T08:00:00Z"), ZoneOffset.UTC);
     }
-  }
-
-  private HttpStatusCode status(String path) {
-    return http.get()
-        .uri(path)
-        .header(HttpHeaders.ACCEPT, "text/html")
-        .exchange((request, response) -> response.getStatusCode());
   }
 }

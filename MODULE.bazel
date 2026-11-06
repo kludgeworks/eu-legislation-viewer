@@ -114,6 +114,9 @@ maven.install(
         "org.springframework:spring-test",
         "org.springframework.boot:spring-boot-test",
         "org.springframework.boot:spring-boot-test-autoconfigure",
+        # the pages' controllers alone (@WebMvcTest, MockMvc), what they ask of the modules mocked
+        "org.springframework.boot:spring-boot-webmvc-test",
+        "org.mockito:mockito-core",
         "org.hamcrest:hamcrest",
         # waiting on work done in the background (the ingest workers)
         "org.awaitility:awaitility",
