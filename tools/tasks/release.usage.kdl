@@ -1,0 +1,32 @@
+// SPDX-License-Identifier: MIT
+// release.bash's arguments and help (mise run release --help). mise rewraps the help to the
+// terminal but keeps its line breaks: a paragraph, or a list's item, is one line.
+
+long_about """
+    Tag the next CalVer release (vYYYY.MM.MICRO), signed, and push it to publish it.
+
+    The version is the month's (Europe/Amsterdam) with the next MICRO: v2026.11.0 is November's first, v2026.11.1 its second, and December starts again at v2026.12.0. There is nothing to choose: the calendar and the tags decide.
+
+    From a clean main that matches origin/main, it:
+
+    1. checks the migrations (release:db-migrations, a dependency): a released one changed, or a pending one misnamed, stops it before anything else
+    2. runs every check (mise run check)
+    3. names the pending migrations with the version, keeping their numbers: NEXT_007__catalogue_x.sql becomes V2026_11_0_007__catalogue_x.sql
+    4. runs every test (mise run test), on what is released
+    5. commits that as "chore(release): prepare vYYYY.MM.MICRO" and tags it, signed
+    6. pushes main and the tag, if asked to: the tag starts the Release workflow, which builds and publishes the JAR and the image
+
+    If nothing has changed since the latest release, it doesn't make a new one. If that release isn't on origin yet, because an earlier run didn't push it, it offers to push it instead.
+    """
+
+after_long_help "A release's version is in its migrations' names, which databases record, and in what the workflow published, so a pushed tag is never moved: a bad release is fixed by the next one."
+
+flag "-n --dry-run" env="RELEASE_DRY_RUN" help="Show the version and the migration renames, changing nothing"
+flag "--push" negate="--no-push" env="RELEASE_PUSH" help="Push main and the tag, which publishes the release" {
+    long_help "Push main and the tag to origin, which publishes the release. --no-push leaves them here, to push later. With neither, it asks before the check and tests start, so the run needs nobody after; with no terminal to ask on (CI), it doesn't push."
+}
+
+example "mise run release" header="Release, asked whether to push" help="Asks first, then checks, tests and tags"
+example "mise run release --push" header="Release and publish" help="Nothing asked: pushes main and the tag once tested"
+example "mise run release --dry-run" header="See what would be released" help="The version and the migration renames"
+example "mise run release --push" header="Publish a release a run left unpushed" help="Pushes the latest release; no new release is made, since nothing changed"

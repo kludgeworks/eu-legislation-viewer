@@ -1,17 +1,11 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
-#MISE description="Prepare, sign, and publish the next CalVer release"
+#MISE description="Tag the next CalVer release, signed, and push it to publish it"
 #MISE alias="tag"
 #MISE quiet=true
 #MISE depends=["release:db-migrations"]
-#USAGE flag "-n --dry-run" help="Show the release version and migration renames without changing anything" env="RELEASE_DRY_RUN"
-#
-# `mise run release` picks the next CalVer version, checks main, gives pending migrations their
-# final names (NEXT_007__a.sql is V2026_11_0_007__a.sql: the number stays), tests the result,
-# commits that preparation, and pushes main with a signed tag. It depends on release:db-migrations,
-# so a changed released migration, or a misnamed pending one, stops it before anything else; the
-# check runs before the renames, which only --final allows, and the tests after them, on what is
-# released.
+#MISE raw=true
+#USAGE include file="$MISE_CONFIG_ROOT/tools/tasks/release.usage.kdl"
 # Bash 3.2+ only: that includes the Bash shipped with supported macOS versions.
 set -euo pipefail
 
@@ -58,11 +52,64 @@ next_tag() {
 	echo "v$month.$micro"
 }
 
-require_release_head() {
+require_clean_main() {
 	[[ $(git branch --show-current) = main ]] || die "release from main, not $(git branch --show-current)"
 	[[ -z $(git status --porcelain) ]] || die "working tree must be clean"
-	git fetch --quiet --tags origin
+	# --no-prune: fetch.pruneTags would delete a release tagged here but not pushed yet
+	git fetch --quiet --tags --no-prune origin
+}
+
+require_origin_main() {
 	git diff --quiet HEAD origin/main || die "local main differs from origin/main"
+}
+
+# HEAD is what the tag released: nothing to release
+unchanged_since() {
+	git diff --quiet "$1" HEAD
+}
+
+# origin has the tag, as it is here, and main up to HEAD
+on_origin() {
+	local tag=$1 remote
+	remote=$(git ls-remote origin "refs/tags/$tag" | cut -f1)
+	[[ "$remote" = "$(git rev-parse "refs/tags/$tag")" ]] && git merge-base --is-ancestor HEAD origin/main
+}
+
+# --push or --no-push, else the answer on the terminal; no terminal (CI), no push
+tty=/dev/tty
+wants_push() {
+	local question=$1 answer
+	case ${usage_push-} in
+	true) return 0 ;;
+	false) return 1 ;;
+	esac
+	{ : <"$tty"; } 2>/dev/null || return 1
+	read -r -p "$question [y/N] " answer <"$tty"
+	[[ "$answer" = [yY]* ]]
+}
+
+push() {
+	git push origin main "$1"
+}
+
+not_pushed() {
+	echo "release: $1 is not on origin; publish it with: mise run release --push" >&2
+}
+
+# The latest release, unchanged since but not on origin: push it, as asked
+push_unpushed() {
+	local tag=$1
+	if on_origin "$tag"; then
+		echo "release: nothing to release: main is $tag, on origin" >&2
+		return 0
+	fi
+	echo "release: nothing changed since $tag, which is not on origin" >&2
+	[[ ${usage_dry_run:-false} = true ]] && return 0
+	if wants_push "Push main and $tag to origin?"; then
+		push "$tag"
+	else
+		not_pushed "$tag"
+	fi
 }
 
 pending_migrations() {
@@ -84,11 +131,16 @@ rename_migrations() {
 }
 
 main() {
-	local tag version latest
-	require_release_head
+	local tag version latest pushing=false
+	require_clean_main
+	latest=$(latest_tag)
+	if [[ -n "$latest" ]] && unchanged_since "$latest"; then
+		push_unpushed "$latest"
+		exit 0
+	fi
+	require_origin_main
 	tag=$(next_tag)
 	version=${tag#v}
-	latest=$(latest_tag)
 	if [[ -n "$latest" ]] && ! is_later_than "$tag" "$latest"; then
 		die "computed $tag is not later than existing release $latest"
 	fi
@@ -97,6 +149,10 @@ main() {
 	if [[ ${usage_dry_run:-false} = true ]]; then
 		rename_migrations "$version"
 		exit 0
+	fi
+
+	if wants_push "Push main and $tag to origin once it is tested?"; then
+		pushing=true
 	fi
 
 	mise run check
@@ -109,7 +165,11 @@ main() {
 	fi
 
 	git tag -s "$tag" -m "Release $tag"
-	git push origin main "$tag"
+	if [[ $pushing = true ]]; then
+		push "$tag"
+	else
+		not_pushed "$tag"
+	fi
 }
 
 if [[ ${BASH_SOURCE[0]} = "$0" ]]; then
