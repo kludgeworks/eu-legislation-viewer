@@ -41,6 +41,7 @@ pack = "0.40.10"
 kubeconform = "0.8.0"
 kube-linter = "0.8.3"
 gum = "0.17.0"                                                      # the task scripts' styled messages and questions (tools/tasks/lib/ui.bash)
+jbang = "0.143.0"
 
 [hooks]
 postinstall = "hk install --mise"
