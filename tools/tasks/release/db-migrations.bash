@@ -3,31 +3,7 @@
 #MISE description="Check the Flyway migrations' names, and that released ones are unchanged"
 #MISE sources=["viewer/src/main/resources/db/migration/**/*", "tools/tasks/release/db-migrations.bash", ".git/packed-refs", ".git/refs/tags/**"]
 #MISE outputs={auto=true}
-#USAGE flag "--fix" help="Rename the migrations the check would reject, where their right names are clear"
-#USAGE flag "--final" help="Require every migration to have its released name: the release's check"
-#
-# A migration is one .sql file in its module's directory (db/migration/<module>/). Released, it is
-# named V<year>_<month>_<micro>_<NNN>__<description>.sql and never changes: the latest CalVer tag's
-# must be as they were. Not released yet, it is NEXT_<NNN>__<description>.sql, which the release
-# renames with its version (release.bash). NNN numbers a module's pending migrations from 001 with
-# no gaps, in the order they run. A description is lower case words joined by _, the first the
-# module's name (NEXT_007__catalogue_step_count.sql), so that a name says whose it is; not in
-# __root, which is Spring Modulith's (the event publication registry), no module. Flyway keeps a
-# description in 200 characters at most.
-#
-# --fix renames a pending migration whose right name is clear (git mv, for a file git has), and the
-# check fails on the same migrations, naming what --fix would do; hk's fix runs it.
-#   - a description written otherwise: NEXT_8__Step-Count.SQL is NEXT_008__catalogue_step_count.sql
-#     in catalogue/, the module's name put first
-#   - gaps in the numbers: NEXT_001, NEXT_003 are NEXT_001, NEXT_002
-#   - one not named NEXT_, numbered (V8__a.sql, V2026_11_0_001__a.sql, 8_a.sql) or not (a.sql):
-#     after the NEXT_ ones, numbered ones in their numbers' order, an unnumbered one last
-# Neither fixes, and both fail on: two NEXT_ with one number in a module, or two unnumbered (which
-# runs first?); a migration with no description, or one too long; a repeatable one (R__); a file
-# outside a module's directory or not .sql; a released migration changed, renamed or deleted.
-#
-# mise skips the check while neither the migrations nor the tags have changed (sources); the
-# release and CI call the script itself, with --final, so that is never skipped.
+#USAGE include file="$MISE_CONFIG_ROOT/tools/tasks/release/db-migrations.usage.kdl"
 # Bash 3.2+ only: that includes the Bash shipped with supported macOS versions.
 set -euo pipefail
 

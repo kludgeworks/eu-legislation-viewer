@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+// db-migrations.bash's arguments and help (mise run release:db-migrations --help). mise rewraps
+// the help to the terminal but keeps its line breaks: a paragraph, or a list's item, is one line.
+
+long_about """
+    Check the Flyway migrations' names, and that released ones are unchanged.
+
+    A migration is one .sql file in its module's directory, viewer/src/main/resources/db/migration/<module>/. __root holds Spring Modulith's own (the event publication registry), of no module.
+
+    Released, it is V<year>_<month>_<micro>_<NNN>__<description>.sql (V2026_11_0_007__catalogue_step_count.sql), and never changes: the latest release tag's migrations must be as they were.
+
+    Not released yet, it is NEXT_<NNN>__<description>.sql, which the release renames with its version (mise run release). NNN numbers a module's pending migrations from 001, with no gaps, in the order they run.
+
+    A description is lower-case words joined by _, the first the module's name, so that a name says whose it is (catalogue_step_count in catalogue/; none in __root). Flyway keeps 200 characters of it at most.
+
+    --fix renames a pending migration whose right name is clear:
+
+    - a description written otherwise: NEXT_8__Step-Count.SQL in catalogue/ is NEXT_008__catalogue_step_count.sql
+    - gaps in the numbers: NEXT_001, NEXT_003 are NEXT_001, NEXT_002
+    - one not named NEXT_, numbered (V8__a.sql, 8_a.sql) or not (a.sql): after the NEXT_ ones, numbered ones in their numbers' order, an unnumbered one last
+
+    The check fails on these, and --fix can't fix them:
+
+    - two NEXT_ with one number in a module, or two unnumbered: which runs first?
+    - a migration with no description, or one over 200 characters
+    - a repeatable migration (R__)
+    - a file outside a module's directory, or not .sql
+    - a released migration changed, renamed or deleted
+    """
+
+after_long_help "mise skips the check while neither the migrations nor the tags have changed (its sources). The release and CI run the script itself, tools/tasks/release/db-migrations.bash --final, so theirs is never skipped."
+
+flag "--fix" help="Rename the pending migrations the check would reject, where their right names are clear" {
+    long_help "Rename the pending migrations the check would reject, where their right names are clear: git mv, for a file git has. Without it, the check fails on them and names what --fix would do. hk's fix runs it."
+}
+flag "--final" help="Require every migration to have its released name: the release's check" {
+    long_help "Require every migration to have its released name, each version once: the release's check, after it renames the pending ones. Not with --fix."
+}
+
+example "mise run release:db-migrations" header="Check the migrations" help="What hk's check runs"
+example "mise run release:db-migrations --fix" header="Name the pending migrations" help="Renames those whose right names are clear"
+example "tools/tasks/release/db-migrations.bash --final" header="The release's check" help="Every migration has its released name; the script itself, never skipped"

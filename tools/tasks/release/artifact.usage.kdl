@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: MIT
+// artifact.bash's arguments and help (mise run release:artifact --help). mise rewraps the help to
+// the terminal but keeps its line breaks: a paragraph is one line.
+
+long_about """
+    Build the CalVer-stamped viewer JAR and its SHA-256 checksum.
+
+    It writes dist/kludgeworks-viewer-<version>.jar, Spring Boot's executable JAR with the version embedded (bazel build --embed_label), and its checksum beside it, dist/kludgeworks-viewer-<version>.jar.sha256. A rebuild replaces both.
+
+    The Release workflow attests the JAR, and builds the image from it (release:image).
+    """
+
+arg "<version>" env="VERSION" help="The release's version: 2026.11.0"
+
+example "mise run release:artifact 2026.11.0" header="Build a release's JAR" help="dist/kludgeworks-viewer-2026.11.0.jar and its .sha256"

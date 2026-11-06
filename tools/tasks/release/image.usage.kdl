@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: MIT
+// image.bash's arguments and help (mise run release:image --help). mise rewraps the help to the
+// terminal but keeps its line breaks: a paragraph is one line.
+
+long_about """
+    Build the viewer's container image from the release JAR.
+
+    It builds dist/kludgeworks-viewer-<version>.jar (mise run release:artifact) with Paketo's buildpacks (pack), into the local Docker, or pushed to the registry with --publish.
+
+    Paketo builds from the JAR, not from source: it has no Bazel buildpack, and the JAR is Spring Boot's own (BOOT-INF, JarLauncher), which its Spring Boot buildpack lays out in layers.
+
+    The image carries the version, the commit and this repository as OCI labels; the source label links its GHCR package to the repository.
+    """
+
+arg "<version>" env="VERSION" help="The release's version: 2026.11.0"
+flag "--image <image>" env="IMAGE" default="ghcr.io/kludgeworks/eu-legislation-viewer" help="The image's name"
+flag "--tag <tag>" env="TAG" help="The image's tag, the version if not given"
+flag "--platform <platform>" env="PLATFORM" help="The platform to build for: linux/arm64" {
+    long_help "The platform to build for, linux/arm64 or linux/amd64; pack's default if not given."
+}
+flag "--publish" env="PUBLISH" help="Push the image, keeping its build cache in the registry" {
+    long_help "Push the image to the registry rather than the local Docker. Its build cache is kept there too, per platform (<image>:build-cache-linux-arm64), since CI runners start empty."
+}
+
+example "mise run release:image 2026.11.0" header="Build into the local Docker" help="From dist/kludgeworks-viewer-2026.11.0.jar"
+example "mise run release:image 2026.11.0 --platform linux/arm64 --tag 2026.11.0-arm64 --publish" header="Publish one architecture's image" help="As the Release workflow does, on each architecture's runner"

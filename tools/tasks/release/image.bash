@@ -1,17 +1,7 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
 #MISE description="Build the viewer's container image from the release JAR"
-#USAGE arg "<version>" help="The release's version: 2026.11.0" env="VERSION"
-#USAGE flag "--image <image>" help="The image's name" env="IMAGE" default="ghcr.io/kludgeworks/eu-legislation-viewer"
-#USAGE flag "--tag <tag>" help="The image's tag, the version if not given" env="TAG"
-#USAGE flag "--platform <platform>" help="The platform to build for: linux/arm64" env="PLATFORM"
-#USAGE flag "--publish" help="Push the image, keeping its build cache in the registry" env="PUBLISH"
-#
-# `mise run release:image 2026.11.0` builds the image into the local Docker from
-# dist/kludgeworks-viewer-2026.11.0.jar (release:artifact). Paketo builds from the JAR, not from
-# source: it has no Bazel buildpack, and the JAR is Spring Boot's own (BOOT-INF, JarLauncher), which
-# its Spring Boot buildpack lays out in layers. The OCI source label links the image's GHCR package
-# to this repository.
+#USAGE include file="$MISE_CONFIG_ROOT/tools/tasks/release/image.usage.kdl"
 set -euo pipefail
 
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../../.." && pwd)}
