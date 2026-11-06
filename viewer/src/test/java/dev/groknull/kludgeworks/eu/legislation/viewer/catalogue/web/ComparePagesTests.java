@@ -76,6 +76,8 @@ class ComparePagesTests {
             "difference-5",
             "difference-6");
     var c = Objects.requireNonNull(changes.getElementById("anx/pnt_8.1.2.3/pnt_c"));
+    // an item of its list, as Read lays it out
+    assertThat(Objects.requireNonNull(c.parent()).classNames()).contains("list");
     assertThat(c.select("ins.diff").text())
         .isEqualTo(
             "applied in accordance with Attachment 6-J to the Annex to Implementing Decision"

@@ -27,6 +27,8 @@ import org.jspecify.annotations.Nullable;
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
  * @param parent the eId of the unit it is in; none for an outermost unit
+ * @param list the list the unit is an item of, as the text has it but without its items (so it is
+ *     shown as Read lays it out: its number hanging beside its text); none if it is in none
  * @param section the eId of the unit with a rank it is in, as the text's outline nests them
  *     (anx/pnt_8.1.2 for anx/pnt_8.1.2.3/pnt_c); itself if it has a rank; none if it is in none
  * @param lead the opening of the unit it is in: its num, heading and first block, unmarked; none
@@ -50,6 +52,7 @@ public record Difference(
     int inserted,
     int deleted,
     @Nullable String parent,
+    @Nullable Element list,
     @Nullable String section,
     @Nullable Element lead,
     List<Context> context,

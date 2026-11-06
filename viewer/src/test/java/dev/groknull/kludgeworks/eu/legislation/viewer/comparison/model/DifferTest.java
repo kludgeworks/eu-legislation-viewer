@@ -86,6 +86,15 @@ class DifferTest {
   }
 
   @Test
+  void keepsTheListAPointIsAnItemOfWithoutItsItems() {
+    var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
+    var list = Objects.requireNonNull(c.list());
+    assertThat(list.name()).isEqualTo("list");
+    assertThat(list.attribute("kind")).isNotBlank();
+    assertThat(list.children()).isEmpty();
+  }
+
+  @Test
   void leadsADifferenceWithTheOpeningOfTheUnitItIsIn() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.parent()).isEqualTo("anx/pnt_8.1.2.3");

@@ -37,7 +37,7 @@
         <div class="lead">${html.element(lead.unit())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        @template.catalogue.difference(shown = shown, sidenote = sidenote, greyed = only != null && sidenote != null && !sidenote.candidates().isEmpty(), unit = html.element(shown.difference().shown()))
+        @template.catalogue.difference(shown = shown, sidenote = sidenote, greyed = only != null && sidenote != null && !sidenote.candidates().isEmpty(), unit = html.element(shown.unit()))
       @endif
     @endfor
   </div>

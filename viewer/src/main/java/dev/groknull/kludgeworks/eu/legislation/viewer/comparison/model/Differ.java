@@ -187,6 +187,7 @@ public final class Differ {
         .inserted(marked.inserted())
         .deleted(marked.deleted())
         .parent(unit.parent())
+        .list(unit.list())
         .section(unit.section())
         .markers(kind == Kind.INSERTED ? Markers.of(unit, units) : List.of())
         .earlierMarkers(kind == Kind.DELETED ? Markers.of(unit, units) : List.of());
@@ -241,6 +242,7 @@ public final class Differ {
         .inserted(inserted)
         .deleted(deleted)
         .parent(to.parent())
+        .list(to.list())
         .section(to.section())
         .markers(Markers.of(to, after))
         .earlierMarkers(Markers.of(from, before));

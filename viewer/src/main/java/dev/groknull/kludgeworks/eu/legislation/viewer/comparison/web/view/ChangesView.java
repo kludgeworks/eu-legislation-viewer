@@ -387,6 +387,18 @@ public record ChangesView(
       return difference.kind().name().toLowerCase(Locale.ROOT);
     }
 
+    /**
+     * Its unit as shown, marked, in the list it is an item of in the text, as Read lays it out (its
+     * number hanging beside its text); alone if it is in none.
+     */
+    public Element unit() {
+      var list = difference.list();
+      var shown = difference.shown();
+      return list == null
+          ? shown
+          : new Element(list.name(), list.attributes(), List.of(shown), list.text());
+    }
+
     /** Its unit as a ledger cites it: 1.2.3.8; a point after the point it is in, 1.2.3.5(e). */
     public String cited() {
       return ChangesView.cited(difference.unit());

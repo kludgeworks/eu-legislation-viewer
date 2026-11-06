@@ -29,7 +29,7 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
   public static Units of(Element text) {
     var units = new LinkedHashMap<String, Unit>();
     var outermost = new ArrayList<String>();
-    collect(text, null, outermost, units, new ArrayDeque<>());
+    collect(text, null, null, outermost, units, new ArrayDeque<>());
     return new Units(units, outermost);
   }
 
@@ -50,6 +50,7 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
   private static void collect(
       Element element,
       @Nullable String parent,
+      @Nullable Element container,
       List<String> siblings,
       Map<String, Unit> units,
       Deque<Ranked> ranked) {
@@ -58,18 +59,19 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
       var blocks = new ArrayList<Element>();
       own(element, blocks);
       var section = section(eId, element, parent, units, ranked);
+      var list = list(container);
       // in document order, before the units in it: put again once they're known, where it is
-      units.put(eId, new Unit(eId, parent, section, element, blocks, List.of()));
+      units.put(eId, new Unit(eId, parent, section, element, blocks, List.of(), list));
       siblings.add(eId);
       var inside = new ArrayList<String>();
       for (var child : element.children()) {
-        collect(child, eId, inside, units, ranked);
+        collect(child, eId, element, inside, units, ranked);
       }
-      units.put(eId, new Unit(eId, parent, section, element, blocks, inside));
+      units.put(eId, new Unit(eId, parent, section, element, blocks, inside, list));
       return;
     }
     for (var child : element.children()) {
-      collect(child, parent, siblings, units, ranked);
+      collect(child, parent, element, siblings, units, ranked);
     }
   }
 
@@ -102,6 +104,13 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
       }
     }
     return null;
+  }
+
+  /** {@code container}, if it is a list, without its items; none if it isn't. */
+  private static @Nullable Element list(@Nullable Element container) {
+    return container == null || !container.name().equals("list")
+        ? null
+        : new Element(container.name(), container.attributes(), List.of(), container.text());
   }
 
   /** A unit with a rank, still open for those after it. */
@@ -141,6 +150,8 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
    * @param element the unit as the text has it, with the units in it
    * @param blocks its own blocks, in order
    * @param units the eIds of the units directly in it, in order
+   * @param list the list it is an item of, without its items (its kind: alpha, dash…); none if it
+   *     is in none
    */
   public record Unit(
       String eId,
@@ -148,7 +159,8 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
       @Nullable String section,
       Element element,
       List<Element> blocks,
-      List<String> units) {
+      List<String> units,
+      @Nullable Element list) {
     public Unit {
       blocks = List.copyOf(blocks);
       units = List.copyOf(units);

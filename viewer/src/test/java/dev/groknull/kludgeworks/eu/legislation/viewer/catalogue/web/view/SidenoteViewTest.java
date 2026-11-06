@@ -154,6 +154,7 @@ class SidenoteViewTest {
             null,
             null,
             null,
+            null,
             List.of(),
             List.of(),
             List.of());
@@ -210,6 +211,7 @@ class SidenoteViewTest {
             unit("anx/pnt_1.0.6"),
             0,
             0,
+            null,
             null,
             null,
             null,
@@ -366,6 +368,7 @@ class SidenoteViewTest {
             null,
             null,
             null,
+            null,
             List.of(),
             List.of(),
             List.of());
@@ -453,6 +456,7 @@ class SidenoteViewTest {
         null,
         null,
         null,
+        null,
         List.of(),
         List.of(marker),
         List.of());
@@ -466,6 +470,7 @@ class SidenoteViewTest {
         unit(eId),
         0,
         0,
+        null,
         null,
         null,
         null,
