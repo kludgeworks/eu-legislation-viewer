@@ -48,8 +48,8 @@ local linters = new Mapping<String, Step> {
     check =
       #"targets=$(bazel query "kind('java_library|java_binary|java_test', same_pkg_direct_rdeps(set({{files}})))" 2>/dev/null) && { [ -z "$targets" ] || bazel build $targets; }"#
   }
-  // not the task scripts either: it would space their header comments (///usr/bin/env jbang, //JAVA,
-  // //MISE, //USAGE), which jbang and mise read only as written
+  // not the task scripts either: it would space jbang's directives (//JAVA 25), which jbang reads only
+  // as written
   ["google_java_format"] = (Builtins.google_java_format) {
     batch = true
     depends = List("javac")

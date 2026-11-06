@@ -1,11 +1,10 @@
-///usr/bin/env jbang "$0" "$@" ; exit $?
 // SPDX-License-Identifier: MIT
-//MISE description="Check that XML files are well-formed"
-//MISE alias="lint:xml"
-//MISE quiet=true
-//USAGE arg "<file>..." help="The XML files to check: stylesheets, schemas, XSpec suites, any XML"
 //JAVA 25
 
+// mise run lint:xml <file>... (tools/tasks.toml), which runs this with jbang: not executable itself,
+// since a Java file can't start with #!, and jbang's ///usr/bin/env line is a shell's trick that
+// Linux won't execute.
+//
 // Well-formedness only, as xmllint --noout checks it, with the JDK's parser: the one Saxon and the
 // converter's tests read these files with in the build, and a tool mise already pins (java), where
 // xmllint would come from the system. Not validating, and no DTD fetched: a file's DOCTYPE is

@@ -44,6 +44,13 @@ run = "hk check --all"
 description = "Run every hk fixer on every file"
 run = "hk fix --all"
 
+# No usage spec: with one, mise passes the files only as $usage_file, joined by spaces; without, it
+# appends them to the command as given, a file name's spaces and brackets included
+["lint:xml"]
+description = "Check that XML files are well-formed: mise run lint:xml <file>..."
+quiet = true
+run = "jbang tools/tasks/lint/xml.java"
+
 ["lint:mise-tasks"]
 description = "Check mise.toml holds no tasks: they belong here or in tasks/"
 run = '''
