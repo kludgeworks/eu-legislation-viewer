@@ -35,6 +35,7 @@ given() {
 	[ "$(args_of pack | head -n 2)" = "$(printf '%s\n' build "$image:2026.11.0")" ]
 	given --path dist/kludgeworks-viewer-2026.11.0.jar
 	given --builder paketobuildpacks/builder-noble-java-tiny
+	given --trust-builder
 	given --env BP_JVM_VERSION=25
 }
 

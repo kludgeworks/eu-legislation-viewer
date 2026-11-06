@@ -18,6 +18,9 @@ artifact="dist/kludgeworks-viewer-$version.jar"
 args=(
 	--path "$artifact"
 	--builder paketobuildpacks/builder-noble-java-tiny
+	# Paketo's, as the builders pack trusts are, but not on its list: untrusted, pack saves the
+	# lifecycle image out of Docker, which fails on Docker 29's containerd image store (CI's)
+	--trust-builder
 	--env BP_JVM_VERSION=25
 	--env BP_OCI_SOURCE=https://github.com/kludgeworks/eu-legislation-viewer
 	--env BP_OCI_VERSION="$version"
