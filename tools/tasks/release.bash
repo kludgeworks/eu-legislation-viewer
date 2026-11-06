@@ -142,8 +142,18 @@ rename_migrations() {
 	done < <(pending_migrations)
 }
 
+# A step failed after the release began changing main: back to where it began, which was clean
+# (require_clean_main), so --merge, which keeps unstaged work, has nothing else to keep.
+undo_release() {
+	local status=$? start=$1
+	((status == 0)) && return
+	git reset --quiet --merge "$start"
+	warn "Failed, so the release is undone: main is as it was" commit "$(git rev-parse --short "$start")"
+	exit "$status"
+}
+
 main() {
-	local tag version latest pushing=false
+	local tag version latest start pushing=false
 	require_clean_main
 	latest=$(latest_tag)
 	if [[ -n "$latest" ]] && unchanged_since "$latest"; then
@@ -167,6 +177,9 @@ main() {
 		pushing=true
 	fi
 
+	start=$(git rev-parse HEAD)
+	# shellcheck disable=SC2064 # $start now, not when the trap runs
+	trap "undo_release $start" EXIT
 	info "Running every check"
 	mise run check
 	rename_migrations "$version"
@@ -180,6 +193,7 @@ main() {
 	fi
 
 	git tag -s "$tag" -m "Release $tag"
+	trap - EXIT
 	info "Tagged, signed" version "$tag"
 	if [[ $pushing = true ]]; then
 		push "$tag"

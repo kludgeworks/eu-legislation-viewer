@@ -222,3 +222,19 @@ prepare_release() {
 	git -C "$repo" remote set-url origin /srv/git/viewer.git
 	[ -z "$(workflow_runs)" ]
 }
+
+@test "undoes the release's renames and commit when a step after them fails" {
+	prepare_release
+	start=$(git -C "$repo" rev-parse HEAD)
+	stub mise '[ "$1 $2" != "run test" ]'
+
+	run env REPO_ROOT="$repo" RELEASE_MONTH=2026.11 usage_push=false PATH="$PATH" bash -c \
+		"source '$project/tools/tasks/release.bash'; checker=true; main"
+
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"Failed, so the release is undone"* ]] || false
+	[ "$(git -C "$repo" rev-parse HEAD)" = "$start" ]
+	[ -z "$(git -C "$repo" status --porcelain)" ]
+	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
+	[ -z "$(git -C "$repo" tag --list v2026.11.0)" ]
+}
