@@ -43,8 +43,9 @@ final class Recorded {
       return new Mock(server, builder.build(), properties);
     }
 
+    /** Each query on a virtual thread of its own, as on Spring Boot's task executor. */
     Sparql sparql() {
-      return new Sparql(client, properties);
+      return new Sparql(client, properties, query -> Thread.ofVirtual().start(query));
     }
 
     ContentStreams contentStreams() {

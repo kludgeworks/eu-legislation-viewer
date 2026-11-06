@@ -13,7 +13,6 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 
 import java.time.Duration;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import org.junit.jupiter.api.Test;
@@ -76,15 +75,13 @@ class SparqlTest {
   }
 
   @Test
-  void asksCellarOnceForTheSameQueryAskedTwiceAtOnce() throws Exception {
+  void asksCellarOnceForTheSameQueryAskedTwiceAtOnce() {
     var mock = Recorded.Mock.of();
-    var asked = new CountDownLatch(1);
     var answer = new CountDownLatch(1);
     mock.server()
         .expect(once(), requestTo(Recorded.SPARQL))
         .andRespond(
             request -> {
-              asked.countDown();
               try {
                 answer.await(5, TimeUnit.SECONDS);
               } catch (InterruptedException e) {
@@ -94,13 +91,13 @@ class SparqlTest {
             });
     var sparql = mock.sparql();
 
-    var first = CompletableFuture.supplyAsync(() -> sparql.select("SELECT * WHERE {}"));
-    asked.await(5, TimeUnit.SECONDS);
-    var second = CompletableFuture.supplyAsync(() -> sparql.select("SELECT * WHERE {}"));
-    Thread.sleep(Duration.ofMillis(100));
+    // Cellar holds its answer to the first until both are asked: a second request would fail the
+    // mock's expectation of one
+    var first = sparql.answer("SELECT * WHERE {}");
+    var second = sparql.answer("SELECT * WHERE {}");
     answer.countDown();
 
-    assertThat(second.get(5, TimeUnit.SECONDS)).isEqualTo(first.get(5, TimeUnit.SECONDS));
+    assertThat(second).succeedsWithin(Duration.ofSeconds(5)).isEqualTo(first.join());
     mock.server().verify();
   }
 }

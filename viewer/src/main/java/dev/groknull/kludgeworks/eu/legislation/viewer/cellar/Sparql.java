@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -19,8 +20,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 /**
- * SELECT queries against Cellar's SPARQL endpoint. The same query asked again while it runs waits
- * for that answer instead of asking Cellar twice.
+ * SELECT queries against Cellar's SPARQL endpoint, each on the executor. The same query asked again
+ * while it runs gets that answer, to come, instead of asking Cellar twice.
  */
 @Component
 public class Sparql {
@@ -33,39 +34,56 @@ public class Sparql {
   private final ConcurrentHashMap<String, CompletableFuture<SparqlResult>> running =
       new ConcurrentHashMap<>();
 
-  Sparql(@Qualifier(CellarConfiguration.CLIENT) RestClient client, CellarProperties properties) {
+  private final Executor executor;
+
+  /**
+   * @param executor where the queries run: Spring Boot's task executor, on virtual threads, as each
+   *     mostly waits on Cellar
+   */
+  Sparql(
+      @Qualifier(CellarConfiguration.CLIENT) RestClient client,
+      CellarProperties properties,
+      @Qualifier("applicationTaskExecutor") Executor executor) {
     this.client = client;
     this.properties = properties;
+    this.executor = executor;
   }
 
   /**
-   * Runs a SELECT query.
+   * Runs a SELECT query and waits for its answer.
    *
    * @throws CellarException if the result has as many rows as the endpoint returns at most ({@code
    *     viewer.cellar.max-rows}) and so may be cut off
    */
   public SparqlResult select(String query) {
+    return join(answer(query));
+  }
+
+  /**
+   * A SELECT query's answer, to come: the one already coming if the same query is running. Each
+   * caller gets a copy of it, so that completing or cancelling theirs leaves the others' alone.
+   * Fails as {@link #select} throws.
+   */
+  public CompletableFuture<SparqlResult> answer(String query) {
     var mine = new CompletableFuture<SparqlResult>();
     var theirs = running.putIfAbsent(query, mine);
     if (theirs != null) {
       LOG.debug("Waiting for the same SPARQL query, already asked");
-      return join(theirs);
+      return theirs.copy();
     }
+    mine.whenComplete((result, failure) -> running.remove(query, mine));
     try {
-      var result = ask(query);
-      mine.complete(result);
-      return result;
+      mine.completeAsync(() -> ask(query), executor);
     } catch (RuntimeException e) {
+      // the executor refused it
       mine.completeExceptionally(e);
-      throw e;
-    } finally {
-      running.remove(query, mine);
     }
+    return mine.copy();
   }
 
   /**
-   * A query's answer once it has one, from a future of {@link #select}'s: a failure as it was
-   * thrown, not wrapped in the future's CompletionException, so its caller sees it as itself.
+   * A query's answer once it has one, from {@link #answer}: a failure as it was thrown, not wrapped
+   * in the future's CompletionException, so its caller sees it as itself.
    */
   public static SparqlResult join(CompletableFuture<SparqlResult> answer) {
     try {

@@ -33,11 +33,9 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -68,15 +66,9 @@ class CellarActs implements ActSource {
   private static final ResourceType TREATY = new ResourceType("TREATY");
 
   private final Sparql sparql;
-  private final Executor executor;
 
-  /**
-   * @param executor where an act's queries run, side by side: Spring Boot's task executor, on
-   *     virtual threads, as each mostly waits on Cellar
-   */
-  CellarActs(Sparql sparql, @Qualifier("applicationTaskExecutor") Executor executor) {
+  CellarActs(Sparql sparql) {
     this.sparql = sparql;
-    this.executor = executor;
   }
 
   @Override
@@ -115,10 +107,9 @@ class CellarActs implements ActSource {
     return act;
   }
 
-  /** The query {@code template} with {@code values}, asked of Cellar on the executor. */
+  /** The query {@code template} with {@code values}, asked of Cellar. */
   private CompletableFuture<SparqlResult> select(String template, Map<String, String> values) {
-    return CompletableFuture.supplyAsync(
-        () -> sparql.select(Sparql.fill(template, values)), executor);
+    return sparql.answer(Sparql.fill(template, values));
   }
 
   @Override
