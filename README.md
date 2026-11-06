@@ -9,8 +9,6 @@ Compare any two versions of an EU act, provision by provision, and see exactly w
   <img alt="Comparing two versions of Regulation (EU) 2015/1998: a timeline of its versions, the two compared, and the acts that changed it between them" src="docs/images/hero-light.webp">
 </picture>
 
-**[Try it at eu-law.groknull.dev](https://eu-law.groknull.dev)** · early preview
-
 ## Why
 
 EUR-Lex publishes each consolidated version of an act, but not what changed between two of them. Finding out means
