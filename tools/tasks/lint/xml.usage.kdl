@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: MIT
+// lint:xml's arguments and help (mise run lint:xml --help); the task is in tools/tasks.toml, the
+// code in xml.java. mise rewraps the help to the terminal but keeps its line breaks: a paragraph is
+// one line.
+
+long_about """
+    Check that XML files are well-formed: stylesheets, schemas, XSpec suites, any XML.
+
+    Well-formedness only, as xmllint --noout checks it: tags that match, one root, attributes once, entities declared. Not validated against a schema, and no DTD fetched: a DOCTYPE is read, not followed.
+
+    It parses with the JDK's parser, the one Saxon and the converter's tests read these files with in the build, from the Java mise pins, so it needs nothing from the system. jbang runs xml.java.
+
+    A finding is path:line:column: error: message, as gcc writes one, which hk shows against the line.
+    """
+
+after_long_help "hk's xml step runs it on the XML a change touches (hk.pkl), and on every file in mise run check."
+
+arg "<file>..." help="The XML files to check"
+
+example "mise run lint:xml formex-converter/src/test/xspec/*.xspec" header="Check some files" help="Nothing printed when they're well-formed"
+example "hk check --step xml --all" header="Check every XML file, as CI does" help="The files hk's xml step covers: not the raw Cellar fixtures"
