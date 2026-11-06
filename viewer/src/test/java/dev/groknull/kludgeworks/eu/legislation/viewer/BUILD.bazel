@@ -98,6 +98,7 @@ java_test_suite(
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jmolecules_jmolecules_ddd",
+        "@maven//:org_jooq_jooq",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_modulith_spring_modulith_core",
