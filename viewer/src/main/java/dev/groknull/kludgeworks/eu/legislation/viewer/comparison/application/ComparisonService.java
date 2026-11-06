@@ -10,15 +10,21 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 
 /**
  * Comparisons of the texts the content module stores: kept ones from the store, others worked out
- * from both texts read whole (Content.read) and kept, in the request that asks for one, or ahead of
- * it (ComparisonWanted, in the module's own transaction). Working one out is observed
+ * from both texts read whole (Content.read) and kept, on the executor, for the request that asks
+ * for one, or ahead of it (ComparisonWanted). One asked for while it's being worked out waits for
+ * that one: a reader often asks while it's worked out ahead of them. Working one out is observed
  * (comparison.compare, its diff within it: comparison.diff), its reads the content module's.
  */
 @Service
@@ -28,23 +34,70 @@ class ComparisonService implements Comparisons {
   private final Content content;
   private final ComparisonStore comparisons;
   private final ObservationRegistry observations;
+  private final Executor executor;
+  private final ConcurrentHashMap<Pair, CompletableFuture<Optional<Comparison>>> running =
+      new ConcurrentHashMap<>();
 
+  /** The texts a comparison is of. */
+  private record Pair(ContentHash from, ContentHash to) {}
+
+  /**
+   * @param executor where comparisons are worked out: Spring Boot's task executor
+   */
   ComparisonService(
-      Content content, ComparisonStore comparisons, ObservationRegistry observations) {
+      Content content,
+      ComparisonStore comparisons,
+      ObservationRegistry observations,
+      @Qualifier("applicationTaskExecutor") Executor executor) {
     this.content = content;
     this.comparisons = comparisons;
     this.observations = observations;
+    this.executor = executor;
   }
 
   @Override
   public Optional<Comparison> between(ContentHash from, ContentHash to) {
+    try {
+      return comparing(from, to).join();
+    } catch (CompletionException e) {
+      throw e.getCause() instanceof RuntimeException cause ? cause : e;
+    }
+  }
+
+  /**
+   * The comparison of {@code from} with {@code to}, to come: the kept one, the one being worked out
+   * already, or one worked out now. Fails as {@link #between} throws.
+   */
+  CompletableFuture<Optional<Comparison>> comparing(ContentHash from, ContentHash to) {
     var kept = comparisons.find(from, to);
     if (kept.isPresent()) {
       LOG.debug("Comparison of {} with {} is kept", from, to);
-      return kept;
+      return CompletableFuture.completedFuture(kept);
     }
-    return Observation.createNotStarted("comparison.compare", observations)
-        .observe(() -> compare(from, to));
+    var pair = new Pair(from, to);
+    var mine = new CompletableFuture<Optional<Comparison>>();
+    var theirs = running.putIfAbsent(pair, mine);
+    if (theirs != null) {
+      LOG.debug("Waiting for the comparison of {} with {}, being worked out already", from, to);
+      return theirs;
+    }
+    mine.whenComplete((comparison, failure) -> running.remove(pair, mine));
+    try {
+      // kept by now, if another finished it between the look above and this one's start
+      mine.completeAsync(
+          () ->
+              comparisons
+                  .find(from, to)
+                  .or(
+                      () ->
+                          Observation.createNotStarted("comparison.compare", observations)
+                              .observe(() -> compare(from, to))),
+          executor);
+    } catch (RuntimeException e) {
+      // the executor refused it
+      mine.completeExceptionally(e);
+    }
+    return mine;
   }
 
   /** Works out the comparison of {@code from} with {@code to}, and keeps it. */
