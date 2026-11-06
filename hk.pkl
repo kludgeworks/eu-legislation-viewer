@@ -77,10 +77,6 @@ local linters = new Mapping<String, Step> {
   ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
-  // Flyway migrations: a pending one named NEXT_<NNN>__<module>_<description>.sql, numbered per
-  // module; a released one unchanged since its tag. The fix renames those whose names are clear
-  // (git mv). Not batched: the task reads every migration, whatever files hk hands it, so batches
-  // would run it at once, renaming the same files.
   ["flyway_migrations"] = new Step {
     glob =
       List(

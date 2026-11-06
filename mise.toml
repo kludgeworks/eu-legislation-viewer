@@ -1,17 +1,11 @@
 # SPDX-License-Identifier: MIT
 #:schema https://mise.jdx.dev/schema/mise.json
 
-# The tools on the developer's PATH; the commands people and CI run are in tools/tasks.toml and
-# tools/tasks. Bazel stays responsible for everything hermetic: its own version (.bazelversion, read
-# by bazelisk), the JDK that builds and tests (remotejdk_25), Maven dependencies, code generation
-# and tests.
 
 [settings]
-lockfile = true # mise.lock adds the checksums; versions are pinned below, upgraded on purpose
+lockfile = true
 
 [task_config]
-# tasks live beside the Bazel tooling, under tools/: the plain commands in tasks.toml, the scripts
-# in a folder of their own (mise would take any executable file below an included folder for a task)
 includes = ["tools/tasks.toml", "tools/tasks"]
 
 [env]
@@ -26,7 +20,7 @@ buildifier = "10.1.0"
 "aqua:bazelbuild/buildtools/buildozer" = "10.1.0"
 java = "temurin-25.0.5+8.0.LTS"                                      # for the IDE and jshell; Bazel uses its own remotejdk_25
 hk = "2.9.0"                                                         # the version in hk.pkl's amends URL
-pkl = "0.32.2"                                                       # hk's configuration language
+pkl = "0.32.2"                                                       # pkl_format: hk evaluates hk.pkl itself
 google-java-format = "1.37.0"
 "github:google/addlicense" = "1.2.0"
 # REUSE: every file's copyright and licence (REUSE.toml)
@@ -35,15 +29,11 @@ taplo = "0.10.0"
 typos = "1.51.1"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
-bats = "1.14.0"                                                     # to run one of the task-script tests by hand; bazel test runs them all
+bats = "1.14.0"
 jactionlint = "2.4.0"
 "github:suzuki-shunsuke/pinact" = "5.0.2"
-# ruff: lints and formats the tasks in tools/tasks written in Python, which uv runs with the
-# dependencies each declares (PEP 723)
 ruff = "0.17.1"
-# uv: runs those tasks, and installs the pipx: tools (mise uses it when it is on PATH)
 uv = "0.13.4"
-# pack: builds the release's container image with Paketo's buildpacks (release:image)
 pack = "0.40.10"
 kubeconform = "0.8.0"
 kube-linter = "0.8.3"
