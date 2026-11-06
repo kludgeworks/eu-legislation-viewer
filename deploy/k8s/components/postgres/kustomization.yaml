@@ -1,0 +1,36 @@
+# SPDX-License-Identifier: MIT
+# The viewer's own Postgres, for a cluster without one: CloudNativePG's (cluster.yaml), whose
+# Secret postgres-app the viewer connects with, in place of the Secret viewer-database.
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+  - cluster.yaml
+patches:
+  - target:
+      kind: Deployment
+      name: viewer
+    patch: |-
+      apiVersion: apps/v1
+      kind: Deployment
+      metadata:
+        name: viewer
+      spec:
+        template:
+          spec:
+            containers:
+              - name: viewer
+                env:
+                  # the primary, wherever it is
+                  - name: SPRING_DATASOURCE_URL
+                    value: jdbc:postgresql://postgres-rw:5432/viewer
+                    valueFrom: null
+                  - name: SPRING_DATASOURCE_USERNAME
+                    valueFrom:
+                      secretKeyRef:
+                        name: postgres-app
+                        key: username
+                  - name: SPRING_DATASOURCE_PASSWORD
+                    valueFrom:
+                      secretKeyRef:
+                        name: postgres-app
+                        key: password

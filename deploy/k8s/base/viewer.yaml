@@ -1,0 +1,159 @@
+# SPDX-License-Identifier: MIT
+# The viewer: the release's image (Paketo's, from Spring Boot's jar), on the database in the Secret
+# viewer-database and on Valkey (valkey.yaml). It migrates the database as it starts (Flyway).
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: viewer
+  labels:
+    app.kubernetes.io/name: viewer
+spec:
+  # two: one serves while the other restarts, is rolled or moves node. Each takes any request (the
+  # pages' events reach both through Valkey), and a failed event goes to whichever asks first
+  replicas: 2
+  # one old viewer stopped before its replacement starts: never more than two viewers' memory on
+  # the nodes, and one serving throughout
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: viewer
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: viewer
+    spec:
+      automountServiceAccountToken: false
+      # on different nodes where there are some: soft, so a one-node cluster still runs both
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                topologyKey: kubernetes.io/hostname
+                labelSelector:
+                  matchLabels:
+                    app.kubernetes.io/name: viewer
+      securityContext:
+        # Paketo's run image's user (cnb)
+        runAsNonRoot: true
+        runAsUser: 1002
+        runAsGroup: 1001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: viewer
+          # the release's image: mise run release sets the tag to the version it releases
+          image: ghcr.io/kludgeworks/eu-legislation-viewer:unreleased
+          ports:
+            - name: http
+              containerPort: 8080
+          env:
+            # JSON logs (application.yaml's profile group)
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod
+            # one conversion at a time on each viewer (application.yaml: two), two across both, so each
+            # fits its memory
+            - name: VIEWER_INGEST_MAXCONVERSIONS
+              value: "1"
+            - name: VIEWER_INGEST_WORKERS
+              value: "1"
+            # the threads Paketo's memory calculator sets stack aside for (default 250): requests
+            # run on virtual threads, so few platform threads, and the rest goes to the heap
+            - name: BPL_JVM_THREAD_COUNT
+              value: "50"
+            - name: SPRING_DATASOURCE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: viewer-database
+                  key: url
+            - name: SPRING_DATASOURCE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: viewer-database
+                  key: username
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: viewer-database
+                  key: password
+            - name: SPRING_DATA_REDIS_HOST
+              value: valkey
+            - name: SPRING_DATA_REDIS_PORT
+              value: "6379"
+          # Spring Boot's health groups, which it turns on in Kubernetes
+          startupProbe:
+            # the migrations run before the app answers: five minutes for them
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            periodSeconds: 10
+            failureThreshold: 30
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: http
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: http
+            periodSeconds: 10
+          resources:
+            # Paketo's memory calculator sizes the heap from the limit: about 1.5 GB of it here, room
+            # for one conversion (up to 1 GB) at a time
+            requests:
+              cpu: 500m
+              memory: 2Gi
+            limits:
+              memory: 2Gi
+          # out of the Service before it stops: requests already sent its way still land, and Spring
+          # Boot then finishes those in hand (graceful shutdown)
+          lifecycle:
+            preStop:
+              sleep:
+                seconds: 5
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            # Tomcat's and the JVM's temporary files
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: viewer
+  labels:
+    app.kubernetes.io/name: viewer
+spec:
+  selector:
+    app.kubernetes.io/name: viewer
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+---
+# a node drained one viewer at a time, so one always serves
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: viewer
+  labels:
+    app.kubernetes.io/name: viewer
+spec:
+  maxUnavailable: 1
+  # one that isn't ready serves nothing: evicting it costs nothing
+  unhealthyPodEvictionPolicy: AlwaysAllow
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: viewer

@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: MIT
+# The viewer on Kubernetes, in a namespace of its own, with Valkey for its broadcast events, on a
+# Postgres of your own: kubectl apply -k deploy/k8s/base, or a Flux Kustomization at this path. With
+# its own Postgres too: deploy/k8s/overlays/with-postgres (the Component components/postgres).
+#
+# Made outside the repository, in the namespace: the Secret viewer-database, with the keys url
+# (jdbc:postgresql://<host>:5432/<database>), username and password. Not with the Component,
+# whose Postgres makes its own (postgres-app).
+#
+# No ingress: the Service is plain HTTP inside the cluster (viewer.eu-legislation-viewer:8080), for
+# whatever exposes it: an Ingress, a Gateway or a tunnel.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: eu-legislation-viewer
+labels:
+  - pairs:
+      app.kubernetes.io/part-of: eu-legislation-viewer
+resources:
+  - namespace.yaml
+  - viewer.yaml
+  - valkey.yaml

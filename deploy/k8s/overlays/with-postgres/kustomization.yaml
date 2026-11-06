@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: MIT
+# The viewer with its own Postgres, CloudNativePG's (its operator installed in the cluster): kubectl
+# apply -k deploy/k8s/overlays/with-postgres, or a Flux Kustomization at this path (or one at
+# deploy/k8s/base with components: [../components/postgres]).
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# again: the base's namespace is set on the base's resources only, not on the component's
+namespace: eu-legislation-viewer
+resources:
+  - ../../base
+components:
+  - ../../components/postgres

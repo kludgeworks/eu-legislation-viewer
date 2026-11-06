@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: MIT
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: eu-legislation-viewer
+  labels:
+    # the Pod Security Standard every pod here meets
+    pod-security.kubernetes.io/enforce: restricted

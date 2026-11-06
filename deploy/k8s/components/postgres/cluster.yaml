@@ -1,0 +1,31 @@
+# SPDX-License-Identifier: MIT
+# Postgres as CloudNativePG runs it (its operator installed in the cluster): a primary and a
+# replica it streams to, on different nodes where there are some. An upgrade restarts the replica
+# first, then makes it the primary (switchover), so the viewer loses its connections for a moment,
+# not its database. CloudNativePG makes the database viewer, its owner, and the Secret postgres-app
+# (username, password) the viewer connects with; the Service postgres-rw reaches the primary.
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: postgres
+spec:
+  instances: 2
+  # as the tests' (TestcontainersConfiguration), in CloudNativePG's image
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.6-minimal-trixie
+  # the primary upgraded by handing over to the replica, not by restarting it where it is
+  primaryUpdateMethod: switchover
+  bootstrap:
+    initdb:
+      database: viewer
+      owner: viewer
+  # on the cluster's default storage class. Postgres keeps its own copy on the replica, so a
+  # storage class that replicates the volume as well keeps a third
+  storage:
+    size: 20Gi
+  # as much memory asked for as allowed: the operator's advice, so Postgres is the last evicted
+  resources:
+    requests:
+      cpu: 250m
+      memory: 1Gi
+    limits:
+      memory: 1Gi
