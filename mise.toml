@@ -36,7 +36,7 @@ typos = "1.51.1"
 shellcheck = "0.11.0"
 shfmt = "3.14.1"
 bats = "1.14.0"                                                     # to run one of the task-script tests by hand; bazel test runs them all
-jactionlint = "2.1.0"
+jactionlint = "2.4.0"
 "github:suzuki-shunsuke/pinact" = "5.0.2"
 # ruff: lints and formats the tasks in tools/tasks written in Python, which uv runs with the
 # dependencies each declares (PEP 723)
