@@ -40,12 +40,12 @@ die() {
 	exit 1
 }
 
-# confirm <question> <yes> <no>: true on yes, from the terminal; no terminal to ask on is a no.
+# confirm <question>: true on yes, from the terminal; no terminal to ask on is a no.
 # Cancelled (ctrl-c, esc), the script stops.
 confirm() {
-	local question=$1 yes=$2 no=$3 answer status=0
+	local question=$1 answer status=0
 	if ui_styled && [[ $ui_tty = /dev/tty ]] && { : </dev/tty; } 2>/dev/null; then
-		gum confirm --default=false --affirmative "$yes" --negative "$no" "$question" </dev/tty || status=$?
+		gum confirm --default=false "$question" </dev/tty || status=$?
 		case $status in
 		0) return 0 ;;
 		1) return 1 ;;

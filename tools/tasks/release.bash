@@ -76,11 +76,12 @@ on_origin() {
 
 # --push or --no-push, else the answer on the terminal; no terminal (CI), no push
 wants_push() {
+	local tag=$1
 	case ${usage_push-} in
 	true) return 0 ;;
 	false) return 1 ;;
 	esac
-	confirm "$1" "Publish" "Keep local"
+	confirm "Publish $tag (push main and its tag to origin)?"
 }
 
 # where origin's GitHub Actions runs are, when origin is on GitHub
@@ -115,7 +116,7 @@ push_unpushed() {
 	fi
 	warn "Nothing changed since the latest release, but it isn't published: origin doesn't have it" version "$tag"
 	[[ ${usage_dry_run:-false} = true ]] && return 0
-	if wants_push "Publish $tag?"; then
+	if wants_push "$tag"; then
 		push "$tag"
 	else
 		not_pushed "$tag"
@@ -162,7 +163,7 @@ main() {
 		exit 0
 	fi
 
-	if wants_push "Publish $tag once its checks and tests pass?"; then
+	if wants_push "$tag"; then
 		pushing=true
 	fi
 

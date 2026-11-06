@@ -62,21 +62,21 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 
 @test "pushes with --push and not with --no-push, without asking" {
 	ui_tty="$BATS_TEST_TMPDIR/no-terminal"
-	usage_push=true wants_push "Push?"
-	usage_push=false run ! wants_push "Push?"
+	usage_push=true wants_push v2026.11.0
+	usage_push=false run ! wants_push v2026.11.0
 }
 
 @test "asks whether to push when neither --push nor --no-push is given" {
 	ui_tty="$BATS_TEST_TMPDIR/answer"
 	printf 'y\n' >"$ui_tty"
-	wants_push "Push?"
+	wants_push v2026.11.0
 	printf '\n' >"$ui_tty"
-	run ! wants_push "Push?"
+	run ! wants_push v2026.11.0
 }
 
 @test "does not push when there is no terminal to ask on" {
 	ui_tty="$BATS_TEST_TMPDIR/no-terminal"
-	run ! wants_push "Push?"
+	run ! wants_push v2026.11.0
 }
 
 @test "sees nothing changed since a release until main changes" {
