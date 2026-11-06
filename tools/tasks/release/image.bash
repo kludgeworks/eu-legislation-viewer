@@ -28,7 +28,7 @@ args=(
 	--path "$artifact"
 	--builder paketobuildpacks/builder-noble-java-tiny
 	--env BP_JVM_VERSION=25
-	--env BP_OCI_SOURCE=https://github.com/kludgeworks/eu.legislation.cli
+	--env BP_OCI_SOURCE=https://github.com/kludgeworks/eu-legislation-viewer
 	--env BP_OCI_VERSION="$version"
 	--env BP_OCI_REVISION="$(git rev-parse HEAD)"
 )

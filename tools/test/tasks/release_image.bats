@@ -41,7 +41,7 @@ given() {
 @test "labels the image with its source, version and revision" {
 	build
 
-	given --env BP_OCI_SOURCE=https://github.com/kludgeworks/eu.legislation.cli
+	given --env BP_OCI_SOURCE=https://github.com/kludgeworks/eu-legislation-viewer
 	given --env BP_OCI_VERSION=2026.11.0
 	given --env "BP_OCI_REVISION=$(git -C "$repo" rev-parse HEAD)"
 }
