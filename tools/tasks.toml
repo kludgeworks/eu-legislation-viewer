@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MIT
+#:schema https://mise.jdx.dev/schema/mise-task.json
+
+# The commands people and CI run, the ones that aren't scripts of their own (those are in tasks/,
+# beside this file). mise reads it through task_config.includes in mise.toml.
+
+[build]
+description = "Build everything"
+run = "bazel build //..."
+
+[test]
+description = "Run every test"
+run = "bazel test //..."
+
+[app]
+description = "Run the viewer, on the Postgres at spring.datasource.*"
+run = "bazel run //viewer:app"
+
+["app:dev"]
+description = "Run the viewer with its store and Grafana in containers (Docker), kept across runs"
+run = "bazel run //viewer:dev"
+
+["test:xspec"]
+description = "Run the XSpec suites"
+run = "bazel test //formex-converter/src/test/xspec/..."
+
+[expected]
+description = "Rewrite the converter's expected output from the fixtures, after a deliberate change"
+run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:update_expected"
+
+[modules]
+description = "Write the modules' documentation (Spring Modulith's Documenter) into viewer/spring-modulith-docs"
+run = "bazel run //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:modules"
+
+[pin]
+description = "Pin the Maven dependencies after changing them in MODULE.bazel"
+run = "REPIN=1 bazel run @maven//:pin"
+
+[check]
+description = "Run every hk check on every file"
+run = "hk check --all"
+
+[fix]
+description = "Run every hk fixer on every file"
+run = "hk fix --all"

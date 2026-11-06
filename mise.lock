@@ -431,6 +431,52 @@ url = "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0
 checksum = "sha256:636bdc13dc649ddc7d5921c5c7d23cca6e44fd19d662b45cc9c02135a6c96c42"
 url = "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.5%2B8/OpenJDK25U-jdk_x64_windows_hotspot_25.0.5_8.zip"
 
+[[tools.pack]]
+version = "0.40.10"
+backend = "aqua:buildpacks/pack"
+specifiers = ["0.40.10"]
+
+[tools.pack."platforms.linux-arm64"]
+checksum = "sha256:9a294abb0576fd95e19a009b3f9d5f5aa9fecdc2d7da7fa05e7e1e94f5085d77"
+checksum_source = "mise-versions"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-linux-arm64.tgz"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188305"
+
+[tools.pack."platforms.linux-arm64-musl"]
+checksum = "sha256:9a294abb0576fd95e19a009b3f9d5f5aa9fecdc2d7da7fa05e7e1e94f5085d77"
+checksum_source = "mise-versions"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-linux-arm64.tgz"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188305"
+
+[tools.pack."platforms.linux-x64"]
+checksum = "sha256:687c3616e21824a449b56d4f989613ca68c921c6cce670b4de4459b025233806"
+checksum_source = "mise-versions"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-linux.tgz"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188297"
+
+[tools.pack."platforms.linux-x64-musl"]
+checksum = "sha256:687c3616e21824a449b56d4f989613ca68c921c6cce670b4de4459b025233806"
+checksum_source = "mise-versions"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-linux.tgz"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188297"
+
+[tools.pack."platforms.macos-arm64"]
+checksum = "sha256:7d0e93e93202c5d3e1ecfec828f934fbd6cf63a3b2b965d4eede861b9073b3d2"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-macos-arm64.tgz"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188296"
+
+[tools.pack."platforms.macos-x64"]
+checksum = "sha256:143e816e40fee298b1ffb95c50845a356c437acc19134a8757748c8dd3020bcf"
+checksum_source = "mise-versions"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-macos.tgz"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188301"
+
+[tools.pack."platforms.windows-x64"]
+checksum = "sha256:d30e591cbcc45f11738da5032c7617c773a2a520476c15f1adf63f3f2d9f8d11"
+checksum_source = "mise-versions"
+url = "https://github.com/buildpacks/pack/releases/download/v0.40.10/pack-v0.40.10-windows.zip"
+url_api = "https://api.github.com/repos/buildpacks/pack/releases/assets/663188289"
+
 [[tools."pipx:reuse"]]
 version = "6.2.0"
 backend = "pipx:reuse"
@@ -484,52 +530,6 @@ checksum = "sha256:ac3c55c2e43c20964dc5faf51e47bf73a90150dfe1874aa37753651753edf
 checksum_source = "mise-versions"
 url = "https://github.com/apple/pkl/releases/download/0.32.2/pkl-windows-amd64.exe"
 url_api = "https://api.github.com/repos/apple/pkl/releases/assets/663854370"
-
-[[tools.ripgrep]]
-version = "15.2.0"
-backend = "aqua:BurntSushi/ripgrep"
-specifiers = ["15.2.0"]
-
-[tools.ripgrep."platforms.linux-arm64"]
-checksum = "sha256:a740b91c82eaf9914cfedd353572f2791cbe0162c84101ee0951058f4dcbc90d"
-checksum_source = "mise-versions"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119579"
-
-[tools.ripgrep."platforms.linux-arm64-musl"]
-checksum = "sha256:a740b91c82eaf9914cfedd353572f2791cbe0162c84101ee0951058f4dcbc90d"
-checksum_source = "mise-versions"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-unknown-linux-gnu.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119579"
-
-[tools.ripgrep."platforms.linux-x64"]
-checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
-checksum_source = "mise-versions"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
-
-[tools.ripgrep."platforms.linux-x64-musl"]
-checksum = "sha256:33e15bcf1624b25cdd2a55813a47a2f95dbe126268203e76aa6a585d1e7b149c"
-checksum_source = "mise-versions"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-unknown-linux-musl.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478120097"
-
-[tools.ripgrep."platforms.macos-arm64"]
-checksum = "sha256:3750b2e93f37e0c692657da574d7019a101c0084da05a790c83fd335bad973e4"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-aarch64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478118851"
-
-[tools.ripgrep."platforms.macos-x64"]
-checksum = "sha256:af7825fcc69a2afc7a7aea55fc9af90e26421d8f20fe59df32e233c0b8a231c1"
-checksum_source = "mise-versions"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-apple-darwin.tar.gz"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119585"
-
-[tools.ripgrep."platforms.windows-x64"]
-checksum = "sha256:71b2fef860abe467217a538ff31de02f5258807c0129f771846f87bd029aafc5"
-checksum_source = "mise-versions"
-url = "https://github.com/BurntSushi/ripgrep/releases/download/15.2.0/ripgrep-15.2.0-x86_64-pc-windows-msvc.zip"
-url_api = "https://api.github.com/repos/BurntSushi/ripgrep/releases/assets/478119643"
 
 [[tools.ruff]]
 version = "0.17.1"

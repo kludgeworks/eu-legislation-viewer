@@ -11,14 +11,20 @@ concurrency:
   group: release-${{ github.ref }}
   cancel-in-progress: false
 
+env:
+  IMAGE: ghcr.io/kludgeworks/eu-legislation-viewer
+
 jobs:
-  publish:
+  # The checks, the tests and the CalVer-stamped JAR, which the image is built from.
+  artifact:
     runs-on: ubuntu-26.04
     timeout-minutes: 180
     permissions:
-      contents: write
+      contents: read
       attestations: write
       id-token: write
+    outputs:
+      version: ${{ steps.version.outputs.value }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -50,30 +56,148 @@ jobs:
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
         run: mise run check
-      - run: tools/tasks/migration/check.bash --final
+      - run: tools/tasks/release/db-migrations.bash --final
       - run: bazel test //...
 
-      - id: artifact
-        env:
+      - env:
           VERSION: ${{ steps.version.outputs.value }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          mise run release:artifact
-          echo "path=dist/kludgeworks-viewer-$VERSION.jar" >> "$GITHUB_OUTPUT"
+        run: mise run release:artifact "$VERSION"
 
       - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
-          subject-path: ${{ steps.artifact.outputs.path }}
+          subject-path: dist/kludgeworks-viewer-${{ steps.version.outputs.value }}.jar
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+          if-no-files-found: error
+
+  # Each architecture's image is built on its own runner, with Paketo's buildpacks, from the
+  # same JAR, and published under a per-architecture tag; manifest joins them.
+  image:
+    needs: artifact
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - runner: ubuntu-26.04
+            platform: linux/amd64
+            tag: linux-amd64
+          - runner: ubuntu-26.04-arm
+            platform: linux/arm64
+            tag: linux-arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist
+
+      - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          install_args: pack
+          cache: false
+
+      - uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      # only pack is installed here: the task needs nothing else
+      - env:
+          MISE_TASK_RUN_AUTO_INSTALL: "false"
+          VERSION: ${{ needs.artifact.outputs.version }}
+          TAG: ${{ needs.artifact.outputs.version }}-${{ matrix.tag }}
+          PLATFORM: ${{ matrix.platform }}
+        run: mise run release:image "$VERSION" --tag "$TAG" --platform "$PLATFORM" --publish
+
+  # The multi-architecture image under the version's tag, and its provenance.
+  manifest:
+    needs: [artifact, image]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      packages: write
+      attestations: write
+      id-token: write
+    outputs:
+      digest: ${{ steps.manifest.outputs.digest }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: jdx/mise-action@f5be966e4a917d54244728e6a5fdcd1d93a35e6c # v5.2.6
+        with:
+          install_args: pack
+          cache: false
+
+      - uses: docker/login-action@8aa5831fb8d48d8f76594c7ddde61ae58019f550 # v4.8.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      # pack manifest is experimental, hidden until experimental features are on
+      - id: manifest
+        env:
+          VERSION: ${{ needs.artifact.outputs.version }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          pack config experimental true
+          pack manifest create "$IMAGE:$VERSION" \
+            "$IMAGE:$VERSION-linux-amd64" \
+            "$IMAGE:$VERSION-linux-arm64" \
+            --publish
+          digest=$(docker buildx imagetools inspect "$IMAGE:$VERSION" --format '{{json .Manifest.Digest}}' | tr -d '"')
+          echo "digest=$digest" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.manifest.outputs.digest }}
+          push-to-registry: true
+
+  # The GitHub release, once the JAR and the image are both there.
+  release:
+    needs: [artifact, manifest]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: dist
+          path: dist
 
       - env:
           GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
           TAG: ${{ github.ref_name }}
-          VERSION: ${{ steps.version.outputs.value }}
+          VERSION: ${{ needs.artifact.outputs.version }}
+          DIGEST: ${{ needs.manifest.outputs.digest }}
+        shell: bash
         run: |
+          set -euo pipefail
+          artifact="dist/kludgeworks-viewer-$VERSION.jar"
           gh release create "$TAG" \
             --verify-tag \
             --title "Release $VERSION" \
             --generate-notes \
-            "${{ steps.artifact.outputs.path }}" \
-            "${{ steps.artifact.outputs.path }}.sha256"
+            --notes "Container image: \`$IMAGE:$VERSION\` (\`$DIGEST\`)" \
+            "$artifact" \
+            "$artifact.sha256"
