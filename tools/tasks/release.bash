@@ -187,8 +187,10 @@ main() {
 	info "Running every test"
 	mise run test
 
+	# without the hooks: every check has run, and hk's flyway_migrations fixer would name the
+	# migrations NEXT_ again, the latest tag not having them (v2026.11.0 was released so, empty)
 	if ! git diff --cached --quiet; then
-		git commit --quiet -m "chore(release): prepare $tag"
+		git commit --quiet --no-verify -m "chore(release): prepare $tag"
 		info "Committed" commit "chore(release): prepare $tag"
 	fi
 
