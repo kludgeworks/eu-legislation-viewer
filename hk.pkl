@@ -25,11 +25,12 @@ local vendored =
     "LICENSES/**",
   )
 // written by tools, never edited by hand: the Maven lock file (bazel run @maven//:pin), the
-// converter's expected output (mise run expected)
+// converter's expected output (mise run expected), the pipx tools' dependency locks (mise lock)
 local generated =
   List(
     "maven_install.json",
     "formex-converter/src/test/resources/expected/**/*.xml",
+    ".mise/locks/**",
   )
 // the legal text's templates: their files end without a newline, which jte would write into running
 // text (Rendering and UI)
@@ -59,7 +60,7 @@ local linters = new Mapping<String, Step> {
         "**/*.sh",
         "**/*.py",
       )
-    exclude = raw + vendored
+    exclude = raw + vendored + generated
     batch = true
     check = "addlicense -s=only -c \"$LICENSE_HOLDER\" -l \"$LICENSE_TYPE\" -check {{files}}"
     fix = "addlicense -s=only -c \"$LICENSE_HOLDER\" -l \"$LICENSE_TYPE\" {{files}}"

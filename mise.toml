@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: MIT
 #:schema https://mise.jdx.dev/schema/mise.json
 
+# The mise the lockfile is written with; CI runs this one (MISE_VERSION in .github/workflows)
+min_version = "2026.11.3"
+
 
 [settings]
 lockfile = true
@@ -24,7 +27,7 @@ pkl = "0.32.2"                                                       # pkl_forma
 google-java-format = "1.37.0"
 "github:google/addlicense" = "1.2.0"
 # REUSE: every file's copyright and licence (REUSE.toml)
-"pipx:reuse" = { version = "6.2.0", extras = "charset-normalizer" }
+"pipx:reuse" = { version = "6.3.0", extras = "charset-normalizer" }
 taplo = "0.10.0"
 typos = "1.51.1"
 shellcheck = "0.11.0"

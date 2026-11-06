@@ -13,6 +13,11 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  # The mise CI runs, the one mise.toml's min_version asks of everyone: mise-action otherwise takes
+  # the newest, whose lockfile may differ from the one committed
+  MISE_VERSION: 2026.11.3
+
 jobs:
   verify:
     runs-on: ubuntu-26.04
@@ -23,6 +28,8 @@ jobs:
           persist-credentials: false
 
       - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
+        with:
+          version: ${{ env.MISE_VERSION }}
 
       - uses: bazel-contrib/setup-bazel@104e3eea9447cdaa4b00d0fb46191a3985d26ab3 # 0.19.1
         with:

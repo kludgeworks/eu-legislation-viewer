@@ -19,6 +19,7 @@ path = [
   "MODULE.bazel.lock",
   "maven_install.json",
   "mise.lock",
+  ".mise/locks/**",
   "tools/tasks/**/*.py.lock",
   "**/SOURCE",
 ]
