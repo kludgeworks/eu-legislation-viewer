@@ -77,10 +77,7 @@ java_junit5_test(
 java_test_suite(
     name = "controllers",
     size = "small",
-    srcs = glob([
-        "*ControllerTests.java",
-        "ControllerTesting.java",
-    ]),
+    srcs = ["ControllerTesting.java"] + glob(["*ControllerTests.java"]),
     data = ["@maven//:org_mockito_mockito_core"],
     # Mockito as an agent, as its documentation asks: the JDK will stop it attaching itself
     jvm_flags = ["-javaagent:$(rootpath @maven//:org_mockito_mockito_core)"],
