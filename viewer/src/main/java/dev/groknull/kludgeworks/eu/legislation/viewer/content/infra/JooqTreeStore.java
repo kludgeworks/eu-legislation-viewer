@@ -8,7 +8,6 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.
 import static org.jooq.impl.DSL.field;
 import static org.jooq.impl.DSL.jsonbGetElementAsText;
 import static org.jooq.impl.DSL.list;
-import static org.jooq.impl.DSL.multiset;
 import static org.jooq.impl.DSL.name;
 import static org.jooq.impl.DSL.select;
 import static org.jooq.impl.DSL.table;
@@ -23,7 +22,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Node;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Overlay;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,6 +33,7 @@ import org.jooq.DSLContext;
 import org.jooq.DataType;
 import org.jooq.Field;
 import org.jooq.JSONB;
+import org.jooq.Record4;
 import org.jooq.Table;
 import org.jooq.impl.SQLDataType;
 import org.jspecify.annotations.Nullable;
@@ -94,7 +96,9 @@ class JooqTreeStore implements TreeStore {
 
   /**
    * The nodes under a root, each with all its children and their overlays: every node, or those
-   * that edges lead to whose node (child) is {@code kept}.
+   * that edges lead to whose node (child) is {@code kept}. One row a child, or one for a node
+   * without, in one join: not a query for each node's children, which Postgres ran thousands of
+   * times for a long text.
    */
   private Optional<Tree> tree(ContentHash root, @Nullable Condition kept) {
     var tree = name("tree").fields("hash");
@@ -105,36 +109,50 @@ class JooqTreeStore implements TreeStore {
         tree.as(
             select(val(root, NODE.HASH))
                 .union(kept == null ? down : down.join(to).on(to.HASH.eq(EDGE.CHILD)).where(kept)));
-    var children =
-        multiset(
-                select(EDGE.CHILD, EDGE.OVERLAY, OVERLAY.FACTS)
-                    .from(EDGE)
-                    .leftJoin(OVERLAY)
-                    .on(OVERLAY.HASH.eq(EDGE.OVERLAY))
-                    .where(EDGE.PARENT.eq(NODE.HASH))
-                    .orderBy(EDGE.SEQ))
-            .as("children");
-    var nodes = new HashMap<ContentHash, Node>();
+    var rows = new LinkedHashMap<ContentHash, Record4<ContentHash, Kind, JSONB, Long>>();
+    var children = new HashMap<ContentHash, List<Edge>>();
     var overlays = new HashMap<ContentHash, Overlay>();
     for (var row :
         db.withRecursive(under)
-            .select(NODE.HASH, NODE.KIND, NODE.CONTENT, NODE.WEIGHT, children)
+            .select(
+                NODE.HASH,
+                NODE.KIND,
+                NODE.CONTENT,
+                NODE.WEIGHT,
+                EDGE.CHILD,
+                EDGE.OVERLAY,
+                OVERLAY.FACTS)
             .from(under)
             .join(NODE)
             .on(NODE.HASH.eq(hash))
+            .leftJoin(EDGE)
+            .on(EDGE.PARENT.eq(NODE.HASH))
+            .leftJoin(OVERLAY)
+            .on(OVERLAY.HASH.eq(EDGE.OVERLAY))
+            .orderBy(NODE.HASH, EDGE.SEQ)
             .fetch()) {
-      var edges = row.value5().map(child -> new Edge(child.value1(), child.value2()));
-      for (var child : row.value5()) {
-        var overlay = child.value2();
-        if (overlay != null) {
-          overlays.putIfAbsent(
-              overlay, new Overlay(overlay, bytes(Objects.requireNonNull(child.value3()))));
-        }
+      rows.putIfAbsent(row.value1(), row.into(NODE.HASH, NODE.KIND, NODE.CONTENT, NODE.WEIGHT));
+      var child = row.value5();
+      if (child == null) {
+        continue;
       }
-      nodes.put(
-          row.value1(),
-          new Node(row.value1(), row.value2(), bytes(row.value3()), row.value4(), edges));
+      var overlay = row.value6();
+      children.computeIfAbsent(row.value1(), h -> new ArrayList<>()).add(new Edge(child, overlay));
+      if (overlay != null) {
+        overlays.putIfAbsent(overlay, new Overlay(overlay, bytes(row.value7())));
+      }
     }
+    var nodes = new HashMap<ContentHash, Node>();
+    rows.forEach(
+        (at, row) ->
+            nodes.put(
+                at,
+                new Node(
+                    at,
+                    row.value2(),
+                    bytes(row.value3()),
+                    row.value4(),
+                    List.copyOf(children.getOrDefault(at, List.of())))));
     return nodes.containsKey(root)
         ? Optional.of(new Tree(root, nodes, overlays))
         : Optional.empty();
