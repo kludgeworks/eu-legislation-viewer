@@ -41,5 +41,7 @@ jobs:
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
         run: mise run check
-      - run: mise run test
+      # the compile's checks too: Error Prone, NullAway and doclint fail the build
+      - name: Build and test
+        run: mise run test
       - run: bazel build //viewer:jar
