@@ -84,7 +84,10 @@ class VersionPagesTests {
     var arrived =
         await()
             .atMost(Duration.ofMinutes(1))
-            .pollInterval(Duration.ofSeconds(1))
+            // at once: Awaitility otherwise first waits an interval, even for an act prepared
+            // already
+            .pollDelay(Duration.ZERO)
+            .pollInterval(Duration.ofMillis(250))
             .until(
                 () -> page(PAGE + "?prepared=true"),
                 page -> page.selectFirst(".content[hx-get^=/content/]") != null);
@@ -311,7 +314,9 @@ class VersionPagesTests {
   private void prepared() {
     await()
         .atMost(Duration.ofMinutes(1))
-        .pollInterval(Duration.ofSeconds(1))
+        // at once: Awaitility otherwise first waits an interval, even for an act prepared already
+        .pollDelay(Duration.ZERO)
+        .pollInterval(Duration.ofMillis(250))
         .until(() -> page(PAGE), page -> page.getElementById("text") != null);
   }
 

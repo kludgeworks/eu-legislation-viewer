@@ -318,7 +318,9 @@ class ComparePagesTests {
   private Document prepared() {
     return await()
         .atMost(Duration.ofMinutes(1))
-        .pollInterval(Duration.ofSeconds(1))
+        // at once: Awaitility otherwise first waits an interval, even for an act prepared already
+        .pollDelay(Duration.ZERO)
+        .pollInterval(Duration.ofMillis(250))
         .until(
             this::page,
             page -> {
