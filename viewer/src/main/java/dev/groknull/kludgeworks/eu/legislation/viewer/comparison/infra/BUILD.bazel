@@ -25,14 +25,7 @@ java_library(
 jooq_tables(
     name = "jooq",
     config = "jooq.xml",
-    migrations = [
-        "//viewer/src/main/resources:db/migration/comparison/V1__comparison.sql",
-        "//viewer/src/main/resources:db/migration/comparison/V2__differences_as_shown.sql",
-        "//viewer/src/main/resources:db/migration/comparison/V3__differences_in_sections.sql",
-        "//viewer/src/main/resources:db/migration/comparison/V4__differences_with_markers.sql",
-        "//viewer/src/main/resources:db/migration/comparison/V5__differences_with_their_units.sql",
-        "//viewer/src/main/resources:db/migration/comparison/V6__deleted_units_folded.sql",
-    ],
+    migrations = "//viewer/src/main/resources:comparison_migrations",
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq",
     deps = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content"],
 )

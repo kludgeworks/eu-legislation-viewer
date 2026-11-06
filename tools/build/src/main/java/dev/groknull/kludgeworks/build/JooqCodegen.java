@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.build;
 
+import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import org.flywaydb.core.Flyway;
@@ -13,7 +14,8 @@ import org.testcontainers.utility.DockerImageName;
 /**
  * A module's tables as jOOQ classes (the macro jooq_tables): its migrations run by Flyway on
  * Postgres itself, in a container, and the schema they make read by jOOQ's generator. Postgres, not
- * an imitation of it, so that what is generated is what the app runs on.
+ * an imitation of it, so that what is generated is what the app runs on. Its pending migrations
+ * (NEXT_001__description.sql) run too, after the released ones: {@link PendingMigrations}.
  *
  * <p>Arguments: the generator's configuration (what to generate: forced types and the like), the
  * module's migrations, the package to generate into, the directory to write it in, and the image.
@@ -28,7 +30,7 @@ public final class JooqCodegen {
     var directory = Path.of(args[3]);
     try (var postgres = new PostgreSQLContainer(DockerImageName.parse(args[4]))) {
       postgres.start();
-      Flyway.configure()
+      PendingMigrations.configure(Flyway.configure())
           .dataSource(postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword())
           .locations("filesystem:" + migrations.toAbsolutePath())
           .load()

@@ -77,26 +77,20 @@ local linters = new Mapping<String, Step> {
   ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
-  // A released Flyway script is immutable: compare every release-tagged migration with the tree.
-  // Pending migrations stay valid until `mise run release` gives them their final CalVer names.
+  // Flyway migrations: a pending one named NEXT_<NNN>__<module>_<description>.sql, numbered per
+  // module; a released one unchanged since its tag. The fix renames those whose names are clear
+  // (git mv). Not batched: the task reads every migration, whatever files hk hands it, so batches
+  // would run it at once, renaming the same files.
   ["flyway_migrations"] = new Step {
     glob =
-      List("viewer/src/main/resources/db/migration/**/*.sql", "tools/tasks/migration/check.bash")
-    batch = true
-    check = "mise run migration:check"
-  }
-  ["bats"] = new Step {
-    glob =
       List(
-        "tools/tasks/migration/check.bash",
-        "tools/tasks/release.bash",
-        "tools/tasks/test/**",
-        "mise.toml",
-        "mise.lock",
-        "hk.pkl",
+        "viewer/src/main/resources/db/migration/**",
+        "tools/tasks/release/db-migrations.bash",
       )
-    batch = true
-    check = "mise run test:bats"
+    check = "mise run release:db-migrations"
+    fix = "tools/tasks/release/db-migrations.bash --fix"
+    // a rename's new name, which is none of the files hk handed it
+    stage = List("viewer/src/main/resources/db/migration/**")
   }
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact

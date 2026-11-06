@@ -50,6 +50,10 @@ spring:
   # the store: Postgres at spring.datasource.* (locally a container: TestcontainersConfiguration)
   jooq:
     sql-dialect: postgres
+  flyway:
+    # a migration named as Flyway can't run it stops the app: one the release didn't name
+    # (NEXT_001__description.sql), which only development and the tests run (PendingMigrations)
+    validate-migration-naming: true
   modulith:
     runtime:
       # each module's migrations in db/migration/<module>, with its own history table; what the whole

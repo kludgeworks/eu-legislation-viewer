@@ -211,7 +211,8 @@ def jooq_tables(name, migrations, package, config, deps = [], image = "postgres:
 
     Args:
       name: the java_library.
-      migrations: the module's migrations (db/migration/<module>/*.sql), all in one directory.
+      migrations: the module's migrations: the filegroup of its db/migration/<module>/*.sql, pending
+        ones (NEXT_001__description.sql) included, which JooqCodegen runs after the released ones.
       package: the Java package the classes are generated into: the module's infra.jooq.
       config: jOOQ's generator configuration: what to generate (forced types and the like).
       deps: what the generated classes refer to: the types of forced types and their converters.
@@ -220,11 +221,11 @@ def jooq_tables(name, migrations, package, config, deps = [], image = "postgres:
     """
     native.genrule(
         name = name + "_sources",
-        srcs = migrations + [config],
+        srcs = [migrations, config],
         outs = [name + "-sources.srcjar"],
         cmd = " && ".join([
             "out=$$(mktemp -d)",
-            "migrations=$$(dirname $$(echo $(execpaths %s) | cut -d' ' -f1))" % migrations[0],
+            "migrations=$$(dirname $$(echo $(execpaths %s) | cut -d' ' -f1))" % migrations,
             "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:jooq_codegen) $(execpath %s) $$migrations %s $$out/src %s > $$out/log 2>&1 || { cat $$out/log; exit 1; }" % (config, package, image),
             "jar=$$PWD/$@",
             "zipper=$$PWD/$(execpath @bazel_tools//tools/zip:zipper)",

@@ -11,8 +11,26 @@ java_library(
     visibility = ["//viewer:__subpackages__"],
 )
 
-# each module's migrations, for its jOOQ classes (jooq_tables)
-exports_files(
-    glob(["db/migration/**/*.sql"]),
+# each module's migrations, by their directory, whatever they're named: for its jOOQ classes
+# (jooq_tables)
+[
+    filegroup(
+        name = module + "_migrations",
+        srcs = glob(["db/migration/%s/*.sql" % module]),
+        visibility = ["//viewer:__subpackages__"],
+    )
+    for module in [
+        "catalogue",
+        "comparison",
+        "content",
+        "ingest",
+    ]
+]
+
+# every module's migrations, the app's own (__root) too: for starting the jar on them as they are in
+# the source (ViewerJarTests)
+filegroup(
+    name = "migrations",
+    srcs = glob(["db/migration/**/*.sql"]),
     visibility = ["//viewer:__subpackages__"],
 )

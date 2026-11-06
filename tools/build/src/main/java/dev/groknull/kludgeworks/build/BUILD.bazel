@@ -106,6 +106,7 @@ java_binary(
     ],
     deps = [
         ":package_info",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
         "@maven//:org_flywaydb_flyway_core",
         "@maven//:org_jooq_jooq_codegen",
         "@maven//:org_jooq_jooq_meta",

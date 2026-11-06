@@ -3,18 +3,22 @@
 #MISE description="Prepare, sign, and publish the next CalVer release"
 #MISE alias="tag"
 #MISE quiet=true
+#MISE depends=["release:db-migrations"]
 #USAGE flag "-n --dry-run" help="Show the release version and migration renames without changing anything" env="RELEASE_DRY_RUN"
 #
-# This is deliberately the one exception to the repository's GitButler-only write policy: it is a
-# human-operated release boundary. It uses Git only to commit the mechanical release preparation,
-# create a signed annotated tag, and push main plus that tag.
+# `mise run release` picks the next CalVer version, checks main, gives pending migrations their
+# final names (NEXT_007__a.sql is V2026_11_0_007__a.sql: the number stays), tests the result,
+# commits that preparation, and pushes main with a signed tag. It depends on release:db-migrations,
+# so a changed released migration, or a misnamed pending one, stops it before anything else; the
+# check runs before the renames, which only --final allows, and the tests after them, on what is
+# released.
 # Bash 3.2+ only: that includes the Bash shipped with supported macOS versions.
 set -euo pipefail
 
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../.." && pwd)}
 cd "$root"
 migrations=viewer/src/main/resources/db/migration
-checker=tools/tasks/migration/check.bash
+checker=tools/tasks/release/db-migrations.bash
 
 die() {
 	echo "release: $*" >&2
@@ -62,48 +66,26 @@ require_release_head() {
 }
 
 pending_migrations() {
-	local latest
-	latest=$(latest_tag)
-	while IFS= read -r path; do
-		[[ -n "$path" ]] || continue
-		if [[ -z "$latest" ]] || ! git cat-file -e "$latest:$path" 2>/dev/null; then
-			echo "$path"
-		fi
-	done < <(rg --files "$migrations" -g 'V*.sql' | sort)
+	find "$migrations" -type f -name 'NEXT_*.sql' | LC_ALL=C sort
 }
 
 rename_migrations() {
-	local version=$1 old new old_label new_label module previous_module='' sequence=0 description build
+	local version=$1 old new name
 	while IFS= read -r old; do
 		[[ -n "$old" ]] || continue
-		module=$(dirname "$old")
-		if [[ "$module" != "$previous_module" ]]; then
-			previous_module=$module
-			sequence=0
-		fi
-		sequence=$((sequence + 1))
-		description=${old##*__}
-		new="$module/V${version//./_}_$(printf '%03d' "$sequence")__${description}"
-		old_label="//viewer/src/main/resources:${old#viewer/src/main/resources/}"
-		new_label="//viewer/src/main/resources:${new#viewer/src/main/resources/}"
+		name=${old##*/}
+		new="${old%/*}/V${version//./_}_${name#NEXT_}"
 		if [[ ${usage_dry_run:-false} = true ]]; then
 			echo "git mv $old $new"
 			continue
 		fi
 		git mv "$old" "$new"
-		while IFS= read -r build; do
-			[[ -n "$build" ]] || continue
-			perl -0pi -e "s{\Q$old_label\E}{$new_label}g" "$build"
-		done < <(git ls-files | grep '/BUILD\.bazel$' | while IFS= read -r build; do
-			grep -F -q "$old_label" "$build" && echo "$build"
-		done)
 	done < <(pending_migrations)
 }
 
 main() {
 	local tag version latest
 	require_release_head
-	"$checker"
 	tag=$(next_tag)
 	version=${tag#v}
 	latest=$(latest_tag)
@@ -117,18 +99,12 @@ main() {
 		exit 0
 	fi
 
+	mise run check
 	rename_migrations "$version"
 	"$checker" --final
-	git diff --check
-	mise run check
 	mise run test
 
-	if ! git diff --quiet; then
-		git add -A -- "$migrations" \
-			viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra/BUILD.bazel \
-			viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/infra/BUILD.bazel \
-			viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/infra/BUILD.bazel \
-			viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra/BUILD.bazel
+	if ! git diff --cached --quiet; then
 		git commit -m "chore(release): prepare $tag"
 	fi
 

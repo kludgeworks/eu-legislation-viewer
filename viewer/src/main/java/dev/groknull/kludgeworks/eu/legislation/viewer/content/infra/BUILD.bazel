@@ -23,7 +23,7 @@ java_library(
 jooq_tables(
     name = "jooq",
     config = "jooq.xml",
-    migrations = ["//viewer/src/main/resources:db/migration/content/V1__content.sql"],
+    migrations = "//viewer/src/main/resources:content_migrations",
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq",
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",

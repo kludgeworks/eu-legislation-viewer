@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+# Pending migrations run by Flyway on Postgres in a container (Docker): one test target per *Test.java
+java_test_suite(
+    name = "flyway",
+    size = "medium",
+    srcs = glob(["*.java"]),
+    runner = "junit5",
+    tags = ["requires-docker"],
+    runtime_deps = [
+        "@maven//:org_flywaydb_flyway_database_postgresql",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+        "@maven//:org_postgresql_postgresql",
+    ],
+    deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_flywaydb_flyway_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_testcontainers_testcontainers",
+        "@maven//:org_testcontainers_testcontainers_postgresql",
+    ],
+)

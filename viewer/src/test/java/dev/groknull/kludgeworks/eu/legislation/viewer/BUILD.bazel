@@ -15,9 +15,12 @@ java_library(
     ],
     visibility = ["//viewer:__subpackages__"],
     deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:com_tngtech_archunit_archunit",
+        "@maven//:org_flywaydb_flyway_core",
         "@maven//:org_springframework_boot_spring_boot",
+        "@maven//:org_springframework_boot_spring_boot_flyway",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_boot_spring_boot_testcontainers",
         "@maven//:org_springframework_spring_context",
@@ -71,7 +74,10 @@ java_test_suite(
             "TestcontainersConfiguration.java",
         ],
     ),
-    data = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
+    data = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app",
+        "//viewer/src/main/resources:migrations",
+    ],
     runner = "junit5",
     tags = [
         "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
@@ -87,6 +93,7 @@ java_test_suite(
     ],
     deps = [
         ":testing",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_assertj_assertj_core",

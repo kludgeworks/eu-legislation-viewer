@@ -9,6 +9,10 @@ bazel_dep(name = "rules_jvm_external", version = "7.2")
 bazel_dep(name = "contrib_rules_jvm", version = "0.34.0")
 bazel_dep(name = "bazel_skylib", version = "1.9.2")
 
+# bats_test: the task scripts' tests (tools/test/tasks), with its own bats; already in the graph
+# through rules_jvm_external and contrib_rules_jvm
+bazel_dep(name = "bazel_lib", version = "3.1.0")
+
 # A C toolchain for Linux, as Bazel brings its own JDK: nothing here is C, but every java_test needs
 # one to analyse (the Windows launcher maker), so a Linux machine with no compiler would fail. macOS
 # keeps Xcode's.

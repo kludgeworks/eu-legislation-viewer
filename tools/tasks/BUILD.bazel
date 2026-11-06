@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: MIT
+
+# The task scripts, for their tests (tools/test/tasks)
+exports_files(
+    [
+        "release.bash",
+        "release/artifact.bash",
+        "release/db-migrations.bash",
+        "release/image.bash",
+    ],
+    visibility = ["//tools/test/tasks:__pkg__"],
+)

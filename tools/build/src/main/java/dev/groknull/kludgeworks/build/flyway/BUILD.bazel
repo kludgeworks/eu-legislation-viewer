@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: MIT
+load("@rules_java//java:defs.bzl", "java_library")
+
+# Flyway for pending migrations (NEXT_001__description.sql): jOOQ's code generation, and the
+# viewer's tests and development (its TestcontainersConfiguration); never the viewer's jar
+java_library(
+    name = "flyway",
+    srcs = glob(["*.java"]),
+    visibility = [
+        "//tools/build:__subpackages__",
+        "//viewer:__subpackages__",
+    ],
+    deps = [
+        "@maven//:org_flywaydb_flyway_core",
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)
