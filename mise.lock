@@ -431,6 +431,99 @@ url = "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0
 checksum = "sha256:636bdc13dc649ddc7d5921c5c7d23cca6e44fd19d662b45cc9c02135a6c96c42"
 url = "https://github.com/adoptium/temurin25-binaries/releases/download/jdk-25.0.5%2B8/OpenJDK25U-jdk_x64_windows_hotspot_25.0.5_8.zip"
 
+[[tools.kube-linter]]
+version = "0.8.3"
+backend = "aqua:stackrox/kube-linter"
+specifiers = ["0.8.3"]
+
+[tools.kube-linter."platforms.linux-arm64"]
+checksum = "sha256:9c39d35252e0dcafb16b26197b9e93ba578e44eb402c3c6660fc94e08f94094f"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-linux_arm64"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825094"
+provenance = "cosign"
+
+[tools.kube-linter."platforms.linux-arm64-musl"]
+checksum = "sha256:9c39d35252e0dcafb16b26197b9e93ba578e44eb402c3c6660fc94e08f94094f"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-linux_arm64"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825094"
+provenance = "cosign"
+
+[tools.kube-linter."platforms.linux-x64"]
+checksum = "sha256:618d299a3e2839c8ca9d86fce0db617be0fba41f0fecbbbfb7fbf1c04299fae1"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-linux"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825076"
+provenance = "cosign"
+
+[tools.kube-linter."platforms.linux-x64-musl"]
+checksum = "sha256:618d299a3e2839c8ca9d86fce0db617be0fba41f0fecbbbfb7fbf1c04299fae1"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-linux"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825076"
+provenance = "cosign"
+
+[tools.kube-linter."platforms.macos-arm64"]
+checksum = "sha256:662277a6a267ba2cb1371b56539a371872ef142b196fa0d87195e4213773cdf8"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-darwin_arm64"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825074"
+provenance = "cosign"
+
+[tools.kube-linter."platforms.macos-x64"]
+checksum = "sha256:d935e2bc89e272c74227cdc4ac4dba35f468e0e486e846e5892231a301c91a67"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter-darwin"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825072"
+provenance = "cosign"
+
+[tools.kube-linter."platforms.windows-x64"]
+checksum = "sha256:8b0ccf51f18ab786fdcdede55046afc701a75c75122e046a2f0d3244bc91274a"
+url = "https://github.com/stackrox/kube-linter/releases/download/v0.8.3/kube-linter.exe"
+url_api = "https://api.github.com/repos/stackrox/kube-linter/releases/assets/370825091"
+provenance = "cosign"
+
+[[tools.kubeconform]]
+version = "0.8.0"
+backend = "aqua:yannh/kubeconform"
+specifiers = ["0.8.0"]
+
+[tools.kubeconform."platforms.linux-arm64"]
+checksum = "sha256:1f53fc8e81258197a35e8603054162a5af1de8c5af13746c71ab680d9534ed87"
+checksum_source = "mise-versions"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612685"
+
+[tools.kubeconform."platforms.linux-arm64-musl"]
+checksum = "sha256:1f53fc8e81258197a35e8603054162a5af1de8c5af13746c71ab680d9534ed87"
+checksum_source = "mise-versions"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-arm64.tar.gz"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612685"
+
+[tools.kubeconform."platforms.linux-x64"]
+checksum = "sha256:9bc2bffbf71f261128533edaf912153948b7ff238f9a531ae6d34466ec287883"
+checksum_source = "mise-versions"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612666"
+
+[tools.kubeconform."platforms.linux-x64-musl"]
+checksum = "sha256:9bc2bffbf71f261128533edaf912153948b7ff238f9a531ae6d34466ec287883"
+checksum_source = "mise-versions"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-linux-amd64.tar.gz"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612666"
+
+[tools.kubeconform."platforms.macos-arm64"]
+checksum = "sha256:f84f4dfbebf4a6b0b230385fa065a39ea35e02608c2b50d025dcf64775a69d67"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-darwin-arm64.tar.gz"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612680"
+
+[tools.kubeconform."platforms.macos-x64"]
+checksum = "sha256:71dbc87ac9f24099a62b93570e65aa06312ba6ac8aea63b7f86e9d999edf5a92"
+checksum_source = "mise-versions"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-darwin-amd64.tar.gz"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612679"
+
+[tools.kubeconform."platforms.windows-x64"]
+checksum = "sha256:e3f56102bcf4f50b034a567e2482a1c5330799983ddd655952310211aef73d93"
+checksum_source = "mise-versions"
+url = "https://github.com/yannh/kubeconform/releases/download/v0.8.0/kubeconform-windows-amd64.zip"
+url_api = "https://api.github.com/repos/yannh/kubeconform/releases/assets/438612665"
+
 [[tools.pack]]
 version = "0.40.10"
 backend = "aqua:buildpacks/pack"

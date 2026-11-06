@@ -92,6 +92,26 @@ local linters = new Mapping<String, Step> {
     // a rename's new name, which is none of the files hk handed it
     stage = List("viewer/src/main/resources/db/migration/**")
   }
+  ["kubeconform"] = (Builtins.kubeconform) {
+    check {
+      command {
+        argv =
+          super.argv.filter((a) -> a != "{{files}}" && a != "-ignore-missing-schemas")
+            + List(
+              "-schema-location",
+              "default",
+              "-schema-location",
+              "{% raw %}https://raw.githubusercontent.com/datreeio/CRDs-catalog/c86448cbf1a840ca62d119259864863897c8748a/{{.Group}}/{{.ResourceKind}}_{{.ResourceAPIVersion}}.json{% endraw %}",
+              "{{files}}",
+            )
+      }
+    }
+  }
+  ["kube_linter"] = Builtins.kube_linter
+  ["mise_tasks"] = new Step {
+    glob = List("mise.toml", "tools/tasks.toml")
+    check = "mise run lint:mise-tasks"
+  }
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
   ["pinact_update"] = Builtins.pinact_update

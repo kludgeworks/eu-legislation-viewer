@@ -43,3 +43,12 @@ run = "hk check --all"
 [fix]
 description = "Run every hk fixer on every file"
 run = "hk fix --all"
+
+["lint:mise-tasks"]
+description = "Check mise.toml holds no tasks: they belong here or in tasks/"
+run = '''
+if taplo get -o json -f mise.toml tasks >/dev/null 2>&1; then
+  echo "mise.toml: tasks belong in tools/tasks.toml or tools/tasks/" >&2
+  exit 1
+fi
+'''

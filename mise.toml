@@ -45,6 +45,8 @@ ruff = "0.17.1"
 uv = "0.13.4"
 # pack: builds the release's container image with Paketo's buildpacks (release:image)
 pack = "0.40.10"
+kubeconform = "0.8.0"
+kube-linter = "0.8.3"
 
 [hooks]
 postinstall = "hk install --mise"
