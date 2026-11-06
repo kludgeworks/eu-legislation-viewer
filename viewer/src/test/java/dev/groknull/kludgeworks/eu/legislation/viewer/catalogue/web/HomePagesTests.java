@@ -115,7 +115,7 @@ class HomePagesTests {
   }
 
   @Test
-  void linksBackToTheLastSearchsResultsFromTheSiteBar() {
+  void linksBackToTheLastSearchResultsFromTheSiteBar() {
     var page =
         Jsoup.parse(
             Objects.requireNonNull(
