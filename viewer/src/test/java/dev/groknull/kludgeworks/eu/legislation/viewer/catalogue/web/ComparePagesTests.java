@@ -89,12 +89,21 @@ class ComparePagesTests {
     assertThat(sidenote.select(".applies a").attr("href"))
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
     assertThat(sidenote.select(".before").text()).isEqualTo("Before: original act");
+    // every unit of the later text once: a difference, an opening, or folded
     assertThat(changes.select("details.fold summary").eachText())
-        .startsWith(
+        .containsExactly(
+            "Articles 1 to 3 — no differences · show",
+            "Points 1. to 8.1.2.2 (442 provisions) — no differences · show",
             "Points (a) and (b) — no differences · show",
             "Point (d) — no differences · show",
-            "Point (f) — no differences · show");
-    assertThat(changes.select(".lead")).hasSize(2);
+            "Point (f) — no differences · show",
+            "Points 8.1.2.4 to 9.1.2.2 — no differences · show",
+            "Points (a) and (b) — no differences · show",
+            "Point (d) — no differences · show",
+            "Point (f) — no differences · show",
+            "Points 9.1.2.4 to ATTACHMENT 12-P — no differences · show");
+    // the annex's, 8.1.2.3's and 9.1.2.3's
+    assertThat(changes.select(".lead")).hasSize(3);
     assertThat(changes.select("nav.pager a")).hasSize(6);
     var screening =
         changes.select("nav.outline a.has").stream()
@@ -207,11 +216,20 @@ class ComparePagesTests {
     assertThat(first.select(".what .made").text()).isEqualTo("Replaced by 2026/449");
     assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
     // its neighbours, the same in both, with what last made them as they are
-    assertThat(synopsis.select(".ledger-fold")).isEmpty();
+    // those between the first and last of a run of more than three, folded
+    assertThat(synopsis.select(".ledger-fold").eachText())
+        .containsExactly(
+            "Points 1.0 to 8.1.2.1 (440 provisions) — no differences",
+            "Points 8.1.3 to 9.1.2.1 — no differences",
+            "Points 9.1.3 to ATTACHMENT 12-O — no differences");
     var same = synopsis.select(".ledger-same");
     assertThat(same.select(".provision").eachText())
-        .startsWith("8.1.2.3(a)", "8.1.2.3(b)", "8.1.2.3(d)", "8.1.2.3(f)");
-    var a = Objects.requireNonNull(same.first());
+        .containsSubsequence("8.1.2.2", "8.1.2.3(a)", "8.1.2.3(b)", "8.1.2.3(d)", "8.1.2.3(f)");
+    var a =
+        same.stream()
+            .filter(row -> row.select(".provision").text().equals("8.1.2.3(a)"))
+            .findFirst()
+            .orElseThrow();
     assertThat(a.select(".from").text()).isEqualTo(a.select(".to").text());
     assertThat(a.select(".history").text())
         .isEqualTo(
@@ -225,7 +243,8 @@ class ComparePagesTests {
         Jsoup.parse(
             Objects.requireNonNull(
                 http.get().uri(ready.attr("hx-get")).retrieve().body(String.class)));
-    var fold = Objects.requireNonNull(changes.selectFirst("details.fold"));
+    var fold =
+        Objects.requireNonNull(changes.selectFirst("details.fold:contains(Points (a) and (b))"));
     var units =
         Jsoup.parse(
             Objects.requireNonNull(

@@ -27,17 +27,16 @@ import org.junit.jupiter.api.Test;
  */
 class ChangesViewTest {
   static final ChangesView MARCH_TO_OCTOBER =
-      ChangesView.of(
-          new Comparison(
-              ContentHash.of(new byte[32]),
-              ContentHash.of(new byte[32]),
-              Differ.differences(text("02015R1998-20260322"), text("02015R1998-20261001"))));
+      ChangesView.of(comparison("02015R1998-20260322", "02015R1998-20261001"));
 
   @Test
-  void leadsEachUnitsDifferencesOnceWithTheUnitsBetweenThemFolded() {
+  void leadsEachUnitsDifferencesOnceWithEveryOtherUnitFolded() {
     assertThat(MARCH_TO_OCTOBER.passages())
         .extracting(ChangesViewTest::passage)
         .containsExactly(
+            "Articles 1 to 3",
+            "lead",
+            "Points 1. to 8.1.2.2 (442 provisions)",
             "lead",
             "Points (a) and (b)",
             "1",
@@ -45,13 +44,15 @@ class ChangesViewTest {
             "2",
             "Point (f)",
             "3",
+            "Points 8.1.2.4 to 9.1.2.2",
             "lead",
             "Points (a) and (b)",
             "4",
             "Point (d)",
             "5",
             "Point (f)",
-            "6");
+            "6",
+            "Points 9.1.2.4 to ATTACHMENT 12-P");
     assertThat(MARCH_TO_OCTOBER.count()).isEqualTo("6 differences");
     assertThat(MARCH_TO_OCTOBER.breakdown()).isEqualTo("0 inserted · 0 deleted · 6 amended");
     assertThat(MARCH_TO_OCTOBER.numbers()).containsExactly(1, 2, 3, 4, 5, 6);
@@ -74,7 +75,13 @@ class ChangesViewTest {
 
   @Test
   void asksForAFoldsUnitsByTheirEIds() {
-    var fold = (Fold) MARCH_TO_OCTOBER.passages().get(1);
+    var fold =
+        MARCH_TO_OCTOBER.passages().stream()
+            .filter(Fold.class::isInstance)
+            .map(Fold.class::cast)
+            .filter(each -> each.label().equals("Points (a) and (b)"))
+            .findFirst()
+            .orElseThrow();
     assertThat(fold.query())
         .isEqualTo("eId=anx%2Fpnt_8.1.2.3%2Fpnt_a&eId=anx%2Fpnt_8.1.2.3%2Fpnt_b");
   }
@@ -83,36 +90,41 @@ class ChangesViewTest {
   void foldsTheDifferencesAnActFilterLeavesOutWithTheUnitsAroundThem() {
     var only9 =
         ChangesView.of(
-            new Comparison(
-                ContentHash.of(new byte[32]),
-                ContentHash.of(new byte[32]),
-                Differ.differences(text("02015R1998-20260322"), text("02015R1998-20261001"))),
+            comparison("02015R1998-20260322", "02015R1998-20261001"),
             difference -> difference.eId().startsWith("anx/pnt_9."),
             "not changed by 2026/449");
 
     assertThat(only9.passages())
         .extracting(ChangesViewTest::passage)
         .containsExactly(
-            "Points 8.1.2.3(a) to 8.1.2.3(g) (7 provisions)",
+            "Articles 1 to 3",
+            "lead",
+            "Points 1. to 9.1.2.2 (484 provisions)",
             "lead",
             "Points (a) and (b)",
             "1",
             "Point (d)",
             "2",
             "Point (f)",
-            "3");
+            "3",
+            "Points 9.1.2.4 to ATTACHMENT 12-P");
     assertThat(only9.passages())
         .filteredOn(Fold.class::isInstance)
         .map(Fold.class::cast)
         .extracting(Fold::note, Fold::same)
         .containsExactly(
+            tuple("no differences", true),
             tuple("not changed by 2026/449", false),
             tuple("no differences", true),
             tuple("no differences", true),
+            tuple("no differences", true),
             tuple("no differences", true));
-    var others = (Fold) only9.passages().getFirst();
-    assertThat(others.units()).first().extracting(Sibling::eId).isEqualTo("anx/pnt_8.1.2.3/pnt_a");
-    assertThat(others.units()).last().extracting(Sibling::eId).isEqualTo("anx/pnt_8.1.2.3/pnt_g");
+    // 8.1.2.3 once, with its points
+    var others = (Fold) only9.passages().get(2);
+    assertThat(others.units())
+        .extracting(Sibling::eId)
+        .contains("anx/pnt_8.1.2.2", "anx/pnt_8.1.2.3", "anx/pnt_8.1.2.4")
+        .noneMatch(eId -> eId.startsWith("anx/pnt_8.1.2.3/"));
     assertThat(only9.count()).isEqualTo("3 differences");
     assertThat(only9.numbers()).containsExactly(1, 2, 3);
   }
@@ -130,6 +142,13 @@ class ChangesViewTest {
         .isEqualTo("Recitals (1) to (3)");
     assertThat(ChangesView.fold(siblings("indent", "—", "—"))).isEqualTo("2 indents");
     assertThat(ChangesView.fold(siblings("subparagraph", ""))).isEqualTo("1 subparagraph");
+    assertThat(
+            ChangesView.fold(
+                List.of(
+                    new Sibling("anx/pnt_1", "point", "1."),
+                    new Sibling("anx/lvl_1", "level", ""),
+                    new Sibling("anx/pnt_1.1", "point", "1.1"))))
+        .isEqualTo("Points 1. to 1.1 (3 provisions)");
   }
 
   @Test
@@ -155,6 +174,15 @@ class ChangesViewTest {
 
   private static List<Sibling> siblings(String kind, String... nums) {
     return Arrays.stream(nums).map(num -> new Sibling(kind + "_" + num, kind, num)).toList();
+  }
+
+  private static Comparison comparison(String from, String to) {
+    var compared = Differ.differences(text(from), text(to));
+    return new Comparison(
+        ContentHash.of(new byte[32]),
+        ContentHash.of(new byte[32]),
+        compared.differences(),
+        compared.closing());
   }
 
   private static Element text(String celex) {

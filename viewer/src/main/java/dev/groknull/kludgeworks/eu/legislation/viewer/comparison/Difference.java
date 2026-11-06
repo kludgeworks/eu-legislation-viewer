@@ -29,11 +29,12 @@ import org.jspecify.annotations.Nullable;
  * @param parent the eId of the unit it is in; none for an outermost unit
  * @param section the eId of the unit with a rank it is in, as the text's outline nests them
  *     (anx/pnt_8.1.2 for anx/pnt_8.1.2.3/pnt_c); itself if it has a rank; none if it is in none
- * @param lead the opening of the unit it is in, as context: its num, heading and first block,
- *     unmarked; none for an outermost unit
- * @param folded the units before it in the unit it is in, back to the one before that differs or
- *     holds a difference, which are the same in both texts; for a deleted unit, those of the later
- *     text that stood before it in the earlier, which the next difference's then stop at
+ * @param lead the opening of the unit it is in: its num, heading and first block, unmarked; none
+ *     for an outermost unit
+ * @param context what the later text has before it, after the difference before it (from its start,
+ *     for the first), in order: the opening of each unit holding differences it enters, and the
+ *     units the same in both, folded; with the comparison's closing, each of the later text's units
+ *     once, but those that differ
  * @param markers the amendment markers on the unit's own content in the later text: which acts put
  *     it in the form it has there, and how; where it has none, those on the nearest unit it is in
  *     that an act put in its form whole; none for a deleted unit
@@ -51,12 +52,12 @@ public record Difference(
     @Nullable String parent,
     @Nullable String section,
     @Nullable Element lead,
-    List<Sibling> folded,
+    List<Context> context,
     List<Marker> markers,
     List<Marker> earlierMarkers) {
 
   public Difference {
-    folded = List.copyOf(folded);
+    context = List.copyOf(context);
     markers = List.copyOf(markers);
     earlierMarkers = List.copyOf(earlierMarkers);
   }
@@ -69,6 +70,23 @@ public record Difference(
     DELETED,
     /** In both, its wording changed. */
     CHANGED
+  }
+
+  /**
+   * What the later text has between two differences, as the Changes view sets it out: the opening
+   * of a unit that holds differences, where they enter it, or a run of units in one unit that are
+   * the same in both texts, each with its own units, folded.
+   *
+   * @param units the units folded, in order; or the unit opened, alone
+   * @param parent the eId of the unit they are in; none for outermost units
+   * @param opening the opening of the unit opened: its num, heading and first block; none for a
+   *     fold
+   */
+  @ValueObject
+  public record Context(List<Sibling> units, @Nullable String parent, @Nullable Element opening) {
+    public Context {
+      units = List.copyOf(units);
+    }
   }
 
   /**

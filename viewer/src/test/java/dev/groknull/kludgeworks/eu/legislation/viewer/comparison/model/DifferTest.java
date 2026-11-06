@@ -5,16 +5,20 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ.Compared;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Stream;
+import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -27,11 +31,10 @@ class DifferTest {
   static final Element JANUARY = text("02015R1998-20260101");
   static final Element MARCH = text("02015R1998-20260322");
   static final Element OCTOBER = text("02015R1998-20261001");
-  static final List<String> JANUARY_EIDS = eIds(JANUARY);
 
   @Test
   void marksTheWordsAnActInsertedInEachPointItChanged() {
-    var differences = Differ.differences(MARCH, OCTOBER);
+    var differences = Differ.differences(MARCH, OCTOBER).differences();
     assertThat(differences)
         .extracting(Difference::eId, Difference::kind)
         .containsExactly(
@@ -53,7 +56,7 @@ class DifferTest {
 
   @Test
   void replacesAPhraseAsOneDeletionAndOneInsertion() {
-    var g = Differ.differences(MARCH, OCTOBER).get(2);
+    var g = Differ.differences(MARCH, OCTOBER).differences().get(2);
     assertThat(said(only(g.shown(), "p")))
         .isEqualTo(
             "EVD equipment applied in accordance with[+ Attachment 6-J to] the [-relevant"
@@ -65,7 +68,7 @@ class DifferTest {
 
   @Test
   void keepsAPhraseInsertedWholeThoughItRepeatsAWordAfterIt() {
-    var e = Differ.differences(MARCH, OCTOBER).get(1);
+    var e = Differ.differences(MARCH, OCTOBER).differences().get(1);
     assertThat(said(only(e.shown(), "p")))
         .isEqualTo(
             "ETD equipment[+ applied in accordance with Attachment 6-J to the Annex to Implementing"
@@ -74,7 +77,7 @@ class DifferTest {
 
   @Test
   void keepsTheTextsStructureAroundItsMarks() {
-    var c = Differ.differences(MARCH, OCTOBER).getFirst().shown();
+    var c = Differ.differences(MARCH, OCTOBER).differences().getFirst().shown();
     assertThat(c.children()).extracting(Element::name).containsExactly("provenance", "num", "p");
     assertThat(descendants(c))
         .filteredOn(element -> element.name().startsWith("diff:"))
@@ -84,7 +87,7 @@ class DifferTest {
 
   @Test
   void leadsADifferenceWithTheOpeningOfTheUnitItIsIn() {
-    var c = Differ.differences(MARCH, OCTOBER).getFirst();
+    var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.parent()).isEqualTo("anx/pnt_8.1.2.3");
     assertThat(Objects.requireNonNull(c.lead()).children())
         .extracting(Wording::of)
@@ -95,19 +98,63 @@ class DifferTest {
   }
 
   @Test
-  void foldsTheUnitsBeforeADifferenceThatAreTheSame() {
-    var differences = Differ.differences(MARCH, OCTOBER);
-    assertThat(differences.get(0).folded()).extracting(Sibling::num).containsExactly("(a)", "(b)");
-    assertThat(differences.get(1).folded()).extracting(Sibling::num).containsExactly("(d)");
-    assertThat(differences.get(2).folded()).extracting(Sibling::num).containsExactly("(f)");
-    assertThat(differences.get(2).folded())
-        .extracting(Sibling::eId, Sibling::kind)
-        .containsExactly(tuple("anx/pnt_8.1.2.3/pnt_f", "point"));
+  void foldsTheUnitsBetweenTwoDifferencesThatAreTheSame() {
+    var differences = Differ.differences(MARCH, OCTOBER).differences();
+    assertThat(differences.get(0).context().getLast().units())
+        .extracting(Sibling::num)
+        .containsExactly("(a)", "(b)");
+    assertThat(differences.get(1).context())
+        .singleElement()
+        .satisfies(fold -> assertThat(fold.opening()).isNull())
+        .extracting(Context::units)
+        .asInstanceOf(InstanceOfAssertFactories.list(Sibling.class))
+        .extracting(Sibling::eId, Sibling::kind, Sibling::num)
+        .containsExactly(tuple("anx/pnt_8.1.2.3/pnt_d", "point", "(d)"));
+  }
+
+  @Test
+  void placesEachUnitOfTheLaterTextOnceInOrder() {
+    assertThat(placed(Differ.differences(MARCH, OCTOBER), OCTOBER))
+        .containsExactlyElementsOf(Units.of(OCTOBER).byEId().keySet());
+    assertThat(placed(Differ.differences(JANUARY, MARCH), MARCH))
+        .containsExactlyElementsOf(Units.of(MARCH).byEId().keySet());
+  }
+
+  @Test
+  void foldsTheUnitsAfterADifferenceToTheNextAndAfterTheLast() {
+    var compared = Differ.differences(MARCH, OCTOBER);
+    // 8.1.2.3's last, (g), then 8.1.2.4 and on to 9.1.2.3, and 9.1.2.4 and on to the end
+    var between = compared.differences().get(3).context();
+    assertThat(between.getFirst().units())
+        .extracting(Sibling::eId)
+        .first()
+        .isEqualTo("anx/pnt_8.1.2.4");
+    assertThat(between)
+        .filteredOn(each -> each.opening() != null)
+        .extracting(each -> each.units().getFirst().eId())
+        .containsExactly("anx/pnt_9.1.2.3");
+    assertThat(compared.closing().getFirst().units())
+        .extracting(Sibling::eId)
+        .first()
+        .isEqualTo("anx/pnt_9.1.2.4");
+  }
+
+  @Test
+  void opensEachUnitThatHoldsDifferencesOnceWhereTheyEnterIt() {
+    var compared = Differ.differences(JANUARY, MARCH);
+    var opened =
+        Stream.concat(
+                compared.differences().stream().flatMap(d -> d.context().stream()),
+                compared.closing().stream())
+            .filter(each -> each.opening() != null)
+            .map(each -> each.units().getFirst().eId())
+            .toList();
+    assertThat(opened).doesNotHaveDuplicates().contains("anx");
   }
 
   @Test
   void showsAUnitInsertedOrDeletedOnceWholeWithItsOwnUnits() {
-    var differences = Differ.differences(JANUARY, MARCH);
+    var differences = Differ.differences(JANUARY, MARCH).differences();
     assertThat(differences).filteredOn(d -> d.kind() == Kind.INSERTED).hasSize(38);
     assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(16);
     assertThat(differences).filteredOn(d -> d.kind() == Kind.CHANGED).hasSize(38);
@@ -135,43 +182,17 @@ class DifferTest {
     assertThat(unmarked(deleted.shown())).isBlank();
     assertThat(said(deleted.shown())).startsWith("[-").doesNotContain("[+");
     assertThat(deleted.inserted()).isZero();
-    assertThat(deleted.folded()).isEmpty();
-  }
-
-  @Test
-  void foldsTheUnitsBeforeADeletedUnitWithItNotWithTheNextDifference() {
-    var differences = Differ.differences(JANUARY, MARCH);
-    var before = JANUARY_EIDS;
-    var deleted =
-        differences.stream()
-            .filter(d -> d.kind() == Kind.DELETED && !d.folded().isEmpty())
-            .toList();
-    assertThat(deleted).isNotEmpty();
-    for (var each : deleted) {
-      // the units that stood just before it in the earlier text, in order
-      var at = before.indexOf(each.eId());
-      var folded = each.folded().stream().map(Sibling::eId).toList();
-      assertThat(before.indexOf(folded.getLast())).isLessThan(at);
-      assertThat(before.indexOf(folded.getFirst()))
-          .isLessThanOrEqualTo(before.indexOf(folded.getLast()));
-      // and no other difference's
-      assertThat(differences)
-          .filteredOn(d -> d != each)
-          .flatExtracting(Difference::folded)
-          .extracting(Sibling::eId)
-          .doesNotContainAnyElementsOf(folded);
-    }
   }
 
   @Test
   void showsAChangedUnitWithItsOwnContentOnly() {
-    var changed = find(Differ.differences(JANUARY, MARCH), "anx/pnt_1.2.2.3");
+    var changed = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_1.2.2.3");
     assertThat(descendants(changed.shown())).extracting(Element::name).doesNotContain("unit");
   }
 
   @Test
   void namesTheActsThatMarkAUnitInEachText() {
-    var c = Differ.differences(MARCH, OCTOBER).getFirst();
+    var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.markers()).containsExactly(new Marker("32026R0449", "replaced", null));
     // unmarked in March, and in no unit an act put whole: as the act was published
     assertThat(c.earlierMarkers()).isEmpty();
@@ -187,15 +208,49 @@ class DifferTest {
 
   @Test
   void findsNothingBetweenATextAndItself() {
-    assertThat(Differ.differences(MARCH, MARCH)).isEmpty();
+    assertThat(Differ.differences(MARCH, MARCH).differences()).isEmpty();
   }
 
-  /** The eIds of {@code element}'s units, in document order. */
-  private static List<String> eIds(Element element) {
-    var eId = element.name().equals("unit") ? element.attribute("eId") : null;
-    return Stream.concat(
-            Stream.ofNullable(eId), element.children().stream().flatMap(c -> eIds(c).stream()))
-        .toList();
+  /**
+   * The eIds of the {@code later} text's units as {@code compared} places them, in order: each
+   * difference but a deleted one, each unit opened or folded, and the units in one folded or
+   * inserted. A unit placed twice is there twice.
+   */
+  private static List<String> placed(Compared compared, Element later) {
+    var units = Units.of(later);
+    var placed = new ArrayList<String>();
+    for (var difference : compared.differences()) {
+      placed(difference.context(), units, placed);
+      if (difference.kind() != Kind.DELETED) {
+        placed.add(difference.eId());
+      }
+      if (difference.kind() == Kind.INSERTED) {
+        placed.addAll(inside(difference.eId(), units));
+      }
+    }
+    placed(compared.closing(), units, placed);
+    return placed;
+  }
+
+  private static void placed(List<Context> context, Units units, List<String> placed) {
+    for (var each : context) {
+      for (var unit : each.units()) {
+        placed.add(unit.eId());
+        if (each.opening() == null) {
+          placed.addAll(inside(unit.eId(), units));
+        }
+      }
+    }
+  }
+
+  /** The eIds of the units in the unit {@code eId}, in document order. */
+  private static List<String> inside(String eId, Units units) {
+    var inside = new ArrayList<String>();
+    for (var unit : units.in(eId)) {
+      inside.add(unit);
+      inside.addAll(inside(unit, units));
+    }
+    return inside;
   }
 
   private static Difference find(List<Difference> differences, String eId) {

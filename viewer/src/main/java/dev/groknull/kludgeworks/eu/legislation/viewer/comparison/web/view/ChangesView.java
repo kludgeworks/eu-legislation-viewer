@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
@@ -12,8 +13,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
@@ -23,9 +22,10 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * A comparison's Changes view (Design: Mode: Compare, Changes): only the provisions that differ, in
- * the later text's order, each numbered, with a note of what happened to it; before one, the
- * opening of the unit it is in, as context, where the one before wasn't in it, then the units
- * before it there that are the same in both, folded (Points (a) and (b) — no differences).
+ * the later text's order, each numbered, with a note of what happened to it; between them, the
+ * later text's other units, each once: the opening of a unit that holds differences, as context,
+ * where they enter it; the units the same in both, a run in one unit folded (Points (a) and (b) —
+ * no differences).
  *
  * @param count how many differences: 6 differences
  * @param breakdown how many of each kind: 2 inserted · 1 deleted · 3 amended; none if there are
@@ -66,87 +66,127 @@ public record ChangesView(
     var differences = comparison.differences().stream().filter(shown).toList();
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
-    var pending = new Pending();
-    @Nullable Difference last = null;
+    var pending = new Pending(passages, others);
+    // the units whose opening the view shows: led, or a difference shown
+    var opened = new HashSet<String>();
     for (var difference : comparison.differences()) {
+      place(difference.context(), differences, pending, opened);
       if (!shown.test(difference)) {
-        pending.add(difference.folded(), difference.parent());
-        if (difference.kind() != Kind.DELETED
-            && differences.stream().noneMatch(d -> d.eId().startsWith(difference.eId() + "/"))) {
+        if (difference.kind() != Kind.DELETED && !holds(differences, difference.eId())) {
           pending.add(List.of(difference.unit()), difference.parent());
           pending.hidden++;
         }
         continue;
       }
+      // in a unit whose difference the filter leaves out, its opening as context
+      var parent = difference.parent();
       var lead = difference.lead();
-      var opening = lead == null || leads(last, difference) ? null : new Lead(lead);
-      if (opening != null) {
-        // units folded before it in other units than its own go before its opening
-        if (!pending.in(difference.parent())) {
-          pending.fold(others).ifPresent(passages::add);
-        }
-        passages.add(opening);
+      if (parent != null && lead != null && opened.add(parent)) {
+        pending.fold();
+        passages.add(new Lead(lead));
       }
-      pending.add(difference.folded(), difference.parent());
-      pending.fold(others).ifPresent(passages::add);
+      pending.fold();
       var number = numbers.size() + 1;
       numbers.add(number);
       passages.add(new Shown(number, difference, note(difference)));
-      last = difference;
+      opened.add(difference.eId());
     }
-    pending.fold(others).ifPresent(passages::add);
+    place(comparison.closing(), differences, pending, opened);
+    pending.fold();
     return new ChangesView(count(differences.size()), breakdown(differences), passages, numbers);
   }
 
-  /** Units waiting to be folded, in order, each once, and how many of them differ. */
+  /**
+   * {@code context} in the view: each opening of a unit holding a difference {@code shown} a lead,
+   * one holding none folded whole; the units the same in both waiting to be folded.
+   */
+  private static void place(
+      List<Context> context, List<Difference> shown, Pending pending, Set<String> opened) {
+    for (var each : context) {
+      var opening = each.opening();
+      if (opening == null) {
+        pending.add(each.units(), each.parent());
+      } else if (holds(shown, each.units().getFirst().eId())) {
+        pending.fold();
+        pending.passages.add(new Lead(opening));
+        opened.add(each.units().getFirst().eId());
+      } else {
+        // it holds differences, all left out
+        pending.add(each.units(), each.parent());
+        pending.hidden++;
+      }
+    }
+  }
+
+  /** Whether one of {@code differences} is in the unit {@code eId}. */
+  private static boolean holds(List<Difference> differences, String eId) {
+    return differences.stream().anyMatch(d -> d.eId().startsWith(eId + "/"));
+  }
+
+  /**
+   * Units waiting to be folded, in order, each once, and how many of them differ: those the same in
+   * both, in one unit, a fold of their own.
+   */
   private static final class Pending {
+    private final List<Passage> passages;
+    private final String others;
     private final List<Sibling> units = new ArrayList<>();
+    private final Set<String> eIds = new HashSet<>();
     private final Set<@Nullable String> parents = new HashSet<>();
     private int hidden;
 
-    /** {@code siblings}, in {@code parent}, but for those already in, or in one that is. */
+    Pending(List<Passage> passages, String others) {
+      this.passages = passages;
+      this.others = others;
+    }
+
+    /**
+     * {@code siblings}, in {@code parent}, but for those already in, or in one that is; those
+     * before them folded first, where they are the same in both and in another unit.
+     */
     void add(List<Sibling> siblings, @Nullable String parent) {
+      if (hidden == 0 && !parents.isEmpty() && !parents.contains(parent)) {
+        fold();
+      }
       for (var sibling : siblings) {
-        if (units.stream()
-            .noneMatch(
-                unit ->
-                    unit.eId().equals(sibling.eId())
-                        || sibling.eId().startsWith(unit.eId() + "/"))) {
+        if (!in(sibling.eId())) {
           units.add(sibling);
+          eIds.add(sibling.eId());
           parents.add(parent);
         }
       }
     }
 
-    /** Whether they are all in {@code parent}, if there are any. */
-    boolean in(@Nullable String parent) {
-      return parents.isEmpty() || (parents.size() == 1 && parents.contains(parent));
+    /** Whether the unit {@code eId} is waiting, or one it is in. */
+    private boolean in(String eId) {
+      for (var at = eId; ; at = at.substring(0, at.lastIndexOf('/'))) {
+        if (eIds.contains(at)) {
+          return true;
+        }
+        if (at.indexOf('/') < 0) {
+          return false;
+        }
+      }
     }
 
     /**
-     * Their fold, emptying them: no differences, or as {@code others} says, where some of them
-     * differ (Points 11.1.3 to 11.2.7(b) (21 provisions)); none if there are none.
+     * Their fold, emptying them, after the passages: no differences, or as {@code others} says,
+     * where some of them differ (Points 11.1.3 to 11.2.7(b) (21 provisions)); none if there are
+     * none.
      */
-    Optional<Fold> fold(String others) {
+    void fold() {
       if (units.isEmpty()) {
-        return Optional.empty();
+        return;
       }
-      var fold =
+      passages.add(
           hidden == 0
               ? new Fold(ChangesView.fold(units), units, "no differences", true)
-              : new Fold(span(units), units, others, false);
+              : new Fold(span(units), units, others, false));
       units.clear();
+      eIds.clear();
       parents.clear();
       hidden = 0;
-      return Optional.of(fold);
     }
-  }
-
-  /** Whether {@code last} already leads to {@code next}: next is in it, or in the same unit. */
-  private static boolean leads(@Nullable Difference last, Difference next) {
-    return last != null
-        && (Objects.equals(last.eId(), next.parent())
-            || Objects.equals(last.parent(), next.parent()));
   }
 
   private static String count(int differences) {
@@ -197,15 +237,21 @@ public record ChangesView(
    * What a fold of {@code siblings} says, by their nums and kind: nums with a word of their own as
    * written, that word once (Article 2; Articles 2 to 5; ANNEXES I and II); other nums after their
    * kind's noun (Point (a); Points (a) and (b); Paragraphs 2. to 4.); units with no num, or only a
-   * mark for one (an indent's dash), counted (2 indents; 3 subparagraphs).
+   * mark for one (an indent's dash), counted (2 indents; 3 subparagraphs); some of them, by the
+   * first and last with one, all counted (Points 1. to 8.1.2.2 (442 provisions)).
    */
   static String fold(List<Sibling> siblings) {
     var first = siblings.getFirst();
     var last = siblings.getLast();
     var join = siblings.size() == 2 ? " and " : " to ";
-    if (siblings.stream().anyMatch(sibling -> !WORD.matcher(sibling.num()).find())) {
+    var unnumbered =
+        siblings.stream().filter(sibling -> !WORD.matcher(sibling.num()).find()).count();
+    if (unnumbered == siblings.size()) {
       var noun = noun(first.kind()).toLowerCase(Locale.ROOT);
       return siblings.size() + " " + (siblings.size() == 1 ? noun : plural(noun));
+    }
+    if (unnumbered > 0) {
+      return span(siblings);
     }
     var named = siblings.stream().map(sibling -> NAMED.matcher(sibling.num())).toList();
     if (named.stream().allMatch(Matcher::matches)
