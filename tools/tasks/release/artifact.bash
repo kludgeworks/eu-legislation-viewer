@@ -14,6 +14,10 @@ checksum() {
 	fi
 }
 
+ui_prefix=release:artifact
+# shellcheck source=tools/tasks/lib/ui.bash
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/ui.bash"
+
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../../.." && pwd)}
 cd "$root"
 version=${usage_version:?}
@@ -24,3 +28,4 @@ mkdir -p dist
 # install, not cp: Bazel's outputs are read-only, so cp couldn't replace an earlier build's copy
 install -m 0644 bazel-bin/viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/viewer-app.jar "$artifact"
 checksum "$artifact" >"$artifact.sha256"
+info "Built" jar "$artifact" sha256 "$(cut -d " " -f 1 "$artifact.sha256")"

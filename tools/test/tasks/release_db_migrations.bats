@@ -176,7 +176,7 @@ catalogue/V2026_11_0_001__catalogue.sql" ]
 
 	check --final
 	[ "$status" -ne 0 ]
-	[[ "$output" = *"non-final migration names"* ]] || false
+	[[ "$output" = *"Not named as released migrations are"* ]] || false
 }
 
 @test "rejects one version twice in a module when final" {
@@ -184,7 +184,7 @@ catalogue/V2026_11_0_001__catalogue.sql" ]
 
 	check --final
 	[ "$status" -ne 0 ]
-	[[ "$output" = *"duplicate migration versions"* ]] || false
+	[[ "$output" = *"Migration versions used twice"* ]] || false
 }
 
 @test "allows one version in two modules when final" {

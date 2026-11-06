@@ -4,15 +4,16 @@
 #USAGE include file="$MISE_CONFIG_ROOT/tools/tasks/release/image.usage.kdl"
 set -euo pipefail
 
+ui_prefix=release:image
+# shellcheck source=tools/tasks/lib/ui.bash
+source "$(dirname "${BASH_SOURCE[0]}")/../lib/ui.bash"
+
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../../.." && pwd)}
 cd "$root"
 version=${usage_version:?}
 image=${usage_image:?}
 artifact="dist/kludgeworks-viewer-$version.jar"
-[[ -f "$artifact" ]] || {
-	echo "release:image: $artifact is missing: run mise run release:artifact $version first" >&2
-	exit 1
-}
+[[ -f "$artifact" ]] || die "$artifact is missing: run mise run release:artifact $version first"
 
 args=(
 	--path "$artifact"

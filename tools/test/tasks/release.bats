@@ -56,26 +56,26 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 	usage_dry_run=true run rename_migrations 2026.11.0
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"NEXT_001__catalogue_title.sql viewer/src/main/resources/db/migration/catalogue/V2026_11_0_001__catalogue_title.sql"* ]] || false
+	[[ "$output" = *"Would rename from=viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql to=V2026_11_0_001__catalogue_title.sql"* ]] || false
 	[ -f "$repo/viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql" ]
 }
 
 @test "pushes with --push and not with --no-push, without asking" {
-	tty="$BATS_TEST_TMPDIR/no-terminal"
+	ui_tty="$BATS_TEST_TMPDIR/no-terminal"
 	usage_push=true wants_push "Push?"
 	usage_push=false run ! wants_push "Push?"
 }
 
 @test "asks whether to push when neither --push nor --no-push is given" {
-	tty="$BATS_TEST_TMPDIR/answer"
-	printf 'y\n' >"$tty"
+	ui_tty="$BATS_TEST_TMPDIR/answer"
+	printf 'y\n' >"$ui_tty"
 	wants_push "Push?"
-	printf '\n' >"$tty"
+	printf '\n' >"$ui_tty"
 	run ! wants_push "Push?"
 }
 
 @test "does not push when there is no terminal to ask on" {
-	tty="$BATS_TEST_TMPDIR/no-terminal"
+	ui_tty="$BATS_TEST_TMPDIR/no-terminal"
 	run ! wants_push "Push?"
 }
 
@@ -110,7 +110,7 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 	run main
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"nothing to release: main is v2026.11.0, on origin"* ]] || false
+	[[ "$output" = *"Nothing to release: nothing changed since the latest release, which is published version=v2026.11.0"* ]] || false
 	[ -z "$(git -C "$repo" tag --list 'v2026.11.1')" ]
 }
 
@@ -136,7 +136,7 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 	usage_push=false run main
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"v2026.11.0 is not on origin; publish it with: mise run release --push"* ]] || false
+	[[ "$output" = *"Kept local, not published version=v2026.11.0 publish=mise run release --push"* ]] || false
 	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
 }
 
@@ -147,7 +147,7 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 	usage_dry_run=true usage_push=true run main
 
 	[ "$status" -eq 0 ]
-	[[ "$output" = *"nothing changed since v2026.11.0, which is not on origin"* ]] || false
+	[[ "$output" = *"Nothing changed since the latest release, but it isn't published: origin doesn't have it version=v2026.11.0"* ]] || false
 	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
 }
 
@@ -161,7 +161,7 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 	run main
 
 	[ "$status" -eq 1 ]
-	[[ "$output" = *"local main differs from origin/main"* ]] || false
+	[[ "$output" = *"main differs from origin/main: pull or push it first"* ]] || false
 }
 
 # A release of the fixture's pending migrations, with the check and tests stubbed.
@@ -181,7 +181,7 @@ prepare_release() {
 	[ "$status" -eq 0 ]
 	[ "$(git -C "$repo" log -1 --format=%s v2026.11.0)" = "chore(release): prepare v2026.11.0" ]
 	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/V2026_11_0_001__ingest_job.sql" ]
-	[[ "$output" = *"v2026.11.0 is not on origin; publish it with: mise run release --push"* ]] || false
+	[[ "$output" = *"Kept local, not published version=v2026.11.0 publish=mise run release --push"* ]] || false
 	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
 }
 
@@ -197,11 +197,28 @@ prepare_release() {
 
 @test "pushes a release when asked to" {
 	prepare_release
-	tty="$BATS_TEST_TMPDIR/answer"
-	printf 'y\n' >"$tty"
+	ui_tty="$BATS_TEST_TMPDIR/answer"
+	printf 'y\n' >"$ui_tty"
 
 	run main
 
 	[ "$status" -eq 0 ]
 	[ "$(git -C "$origin" rev-parse v2026.11.0)" = "$(git -C "$repo" rev-parse v2026.11.0)" ]
+}
+
+@test "writes plain messages, with their values as key=value, where there is no terminal" {
+	run info "Next release" version v2026.11.0 migrations 2
+
+	[ "$output" = "release: Next release version=v2026.11.0 migrations=2" ]
+}
+
+@test "links to the Release workflow's runs of a GitHub origin" {
+	git -C "$repo" remote add origin git@github.com:kludgeworks/eu-legislation-viewer.git
+	[ "$(workflow_runs)" = https://github.com/kludgeworks/eu-legislation-viewer/actions/workflows/release.yml ]
+
+	git -C "$repo" remote set-url origin https://github.com/kludgeworks/eu-legislation-viewer
+	[ "$(workflow_runs)" = https://github.com/kludgeworks/eu-legislation-viewer/actions/workflows/release.yml ]
+
+	git -C "$repo" remote set-url origin /srv/git/viewer.git
+	[ -z "$(workflow_runs)" ]
 }

@@ -13,6 +13,7 @@ bats_test(
     srcs = ["release.bats"],
     data = [
         "test_helper.bash",
+        "//tools/tasks:lib/ui.bash",
         "//tools/tasks:release.bash",
     ],
 )
@@ -23,6 +24,7 @@ bats_test(
     srcs = ["release_db_migrations.bats"],
     data = [
         "test_helper.bash",
+        "//tools/tasks:lib/ui.bash",
         "//tools/tasks:release/db-migrations.bash",
     ],
 )
@@ -33,6 +35,7 @@ bats_test(
     srcs = ["release_artifact.bats"],
     data = [
         "test_helper.bash",
+        "//tools/tasks:lib/ui.bash",
         "//tools/tasks:release/artifact.bash",
     ],
 )
@@ -43,6 +46,7 @@ bats_test(
     srcs = ["release_image.bats"],
     data = [
         "test_helper.bash",
+        "//tools/tasks:lib/ui.bash",
         "//tools/tasks:release/image.bash",
     ],
 )
