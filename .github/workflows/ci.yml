@@ -20,6 +20,10 @@ env:
 
 jobs:
   verify:
+    # Not the release's commit (mise run release), the only one its push adds to main: the Release
+    # workflow checks and tests it, from its tag. Not [skip ci], which would skip that too.
+    if: >-
+      ${{ !startsWith(github.event.head_commit.message, 'chore(release): prepare ') }}
     runs-on: ubuntu-26.04
     timeout-minutes: 180
     steps:
