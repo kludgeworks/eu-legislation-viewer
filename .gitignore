@@ -14,9 +14,10 @@
 /AGENTS.md
 /CLAUDE.md
 
-# local tool configuration and output (formex-corpus/: corpus:fetch's mirror of Cellar;
-# text-compare/: text:compare's references and reports; ui-snapshots/: ui:snapshots's pages;
-# viewer/spring-modulith-docs/: mise run modules)
+# local tool configuration and output (dist/: release:artifact's JAR; formex-corpus/: corpus:fetch's
+# mirror of Cellar; text-compare/: text:compare's references and reports; ui-snapshots/:
+# ui:snapshots's pages; viewer/spring-modulith-docs/: mise run modules)
+/dist/
 formex-corpus/
 text-compare/
 ui-snapshots/
