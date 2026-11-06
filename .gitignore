@@ -24,6 +24,3 @@ viewer/spring-modulith-docs/
 mise.local.toml
 .playwright-mcp/
 .DS_Store
-
-# mise's own locks while it installs tools
-.mise/locks/
