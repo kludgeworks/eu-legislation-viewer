@@ -92,3 +92,13 @@ SPDX-FileCopyrightText = [
   "The Project Contributors",
 ]
 SPDX-License-Identifier = "Apache-2.0"
+
+# Screenshots of the viewer for the README: our pages, showing EU legal texts
+[[annotations]]
+path = "docs/images/**"
+precedence = "override"
+SPDX-FileCopyrightText = [
+  "The Project Contributors",
+  "European Union, https://eur-lex.europa.eu",
+]
+SPDX-License-Identifier = "MIT AND LicenseRef-EUR-Lex-reuse"
