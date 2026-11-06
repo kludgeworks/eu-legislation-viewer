@@ -193,3 +193,46 @@ catalogue/V2026_11_0_001__catalogue.sql" ]
 	check --final
 	[ "$status" -eq 0 ]
 }
+
+@test "checks the files it is given and their modules, not the others" {
+	write "$migrations/catalogue/V8__title.sql" "select 1;\n"
+	write "$migrations/ingest/NEXT_001__ingest_job.sql" "select 2;\n"
+
+	check "$migrations/ingest/NEXT_001__ingest_job.sql"
+	[ "$status" -eq 0 ]
+
+	check "$migrations/catalogue/V2026_11_0_001__catalogue.sql"
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"V8__title.sql -> NEXT_001__catalogue_title.sql"* ]] || false
+}
+
+@test "fixes a given file's module whole, numbered together, and leaves the others" {
+	write "$migrations/catalogue/NEXT_003__catalogue_a.sql" "select 1;\n"
+	write "$migrations/catalogue/V8__b.sql" "select 2;\n"
+	write "$migrations/ingest/V1__job.sql" "select 3;\n"
+
+	check --fix "$migrations/catalogue/V8__b.sql"
+	[ "$status" -eq 0 ]
+	[ "$(names)" = "catalogue/NEXT_001__catalogue_a.sql
+catalogue/NEXT_002__catalogue_b.sql
+catalogue/V2026_11_0_001__catalogue.sql
+ingest/V1__job.sql" ]
+}
+
+@test "reports what can't be named of the files it is given alone" {
+	write "$migrations/catalogue/notes.md" "notes\n"
+	write "$migrations/catalogue/NEXT_001__catalogue_title.sql" "select 1;\n"
+
+	check "$migrations/catalogue/NEXT_001__catalogue_title.sql"
+	[ "$status" -eq 0 ]
+
+	check "$migrations/catalogue/notes.md"
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"notes.md: not a migration (.sql)"* ]] || false
+}
+
+@test "checks every migration when final, so it is given no files" {
+	check --final "$migrations/catalogue/V2026_11_0_001__catalogue.sql"
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"--final checks every migration: no files"* ]] || false
+}

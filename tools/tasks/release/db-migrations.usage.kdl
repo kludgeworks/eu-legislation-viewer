@@ -19,6 +19,8 @@ long_about """
     - gaps in the numbers: NEXT_001, NEXT_003 are NEXT_001, NEXT_002
     - one not named NEXT_, numbered (V8__a.sql, 8_a.sql) or not (a.sql): after the NEXT_ ones, numbered ones in their numbers' order, an unnumbered one last
 
+    Given files (hk's, the ones a commit changes), it checks and fixes their modules alone: a module's pending migrations are numbered together, so a file's module is checked whole, and what can't be named is reported of the files given. Released migrations are checked all the same, every one.
+
     The check fails on these, and --fix can't fix them:
 
     - two NEXT_ with one number in a module, or two unnumbered: which runs first?
@@ -30,13 +32,16 @@ long_about """
 
 after_long_help "mise skips the check while neither the migrations nor the tags have changed (its sources). The release and CI run the script itself, tools/tasks/release/db-migrations.bash --final, so theirs is never skipped."
 
+arg "[file]..." help="The files to check, and their modules: none, every migration" required=#false
+
 flag "--fix" help="Rename the pending migrations the check would reject, where their right names are clear" {
     long_help "Rename the pending migrations the check would reject, where their right names are clear: git mv, for a file git has. Without it, the check fails on them and names what --fix would do. hk's fix runs it."
 }
 flag "--final" help="Require every migration to have its released name: the release's check" {
-    long_help "Require every migration to have its released name, each version once: the release's check, after it renames the pending ones. Not with --fix."
+    long_help "Require every migration to have its released name, each version once: the release's check, after it renames the pending ones, and its commit's (hk's release profile). Every migration, so no files; not with --fix."
 }
 
-example "mise run release:db-migrations" header="Check the migrations" help="What hk's check runs"
+example "mise run release:db-migrations" header="Check the migrations" help="Every one"
+example "mise run release:db-migrations viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue.sql" header="Check a file's module" help="What hk's check runs, on the files a commit changes"
 example "mise run release:db-migrations --fix" header="Name the pending migrations" help="Renames those whose right names are clear"
 example "tools/tasks/release/db-migrations.bash --final" header="The release's check" help="Every migration has its released name; the script itself, never skipped"

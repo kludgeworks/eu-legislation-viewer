@@ -35,6 +35,26 @@ check_released() {
 	info "Released migrations are unchanged" version "$tag"
 }
 
+# The files hk passes (none: every file), and so the modules they are in: a module's pending
+# migrations are numbered together, so it is checked and fixed whole
+selection='' scope=''
+
+selected() {
+	[[ -z "$selection" ]] || grep -qxF -- "$1" <<<"$selection"
+}
+
+in_scope() {
+	[[ -z "$selection" ]] || grep -qxF -- "$1" <<<"$scope"
+}
+
+# A file's problem, to report, if it is one of the files selected: the others in its module are
+# read for their numbers alone, their problems their own commits'. In pending, whose problems it adds to.
+problem() {
+	if selected "$1"; then
+		problems="$problems$1: $2\n"
+	fi
+}
+
 # lower case words joined by _
 description() {
 	echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/_/g; s/^_+//; s/_+$//'
@@ -67,15 +87,18 @@ with_module() {
 	fi
 }
 
-# The pending migrations, a line each: their order (0: NEXT_, 1: numbered otherwise, 2: unnumbered),
-# its key, the module's directory, the description and the path. What can't be named is reported,
-# and ends the run.
+# The pending migrations of the modules in scope, a line each: their order (0: NEXT_, 1: numbered
+# otherwise, 2: unnumbered), its key, the module's directory, the description and the path. What
+# can't be named, of the files selected, is reported, and ends the run.
 pending() {
 	local tag=$1 path relative name stem class key summary problems=''
 	while IFS= read -r path; do
+		if ! selected "$path" && ! in_scope "${path%/*}"; then
+			continue
+		fi
 		relative=${path#"$migrations"/}
 		if [[ "$relative" != */* || "$relative" == */*/* ]]; then
-			problems="$problems$path: not in a module's directory ($migrations/<module>/)\n"
+			problem "$path" "not in a module's directory ($migrations/<module>/)"
 			continue
 		fi
 		if [[ -n "$tag" ]] && git cat-file -e "$tag:$path" 2>/dev/null; then
@@ -83,12 +106,12 @@ pending() {
 		fi
 		name=${path##*/}
 		if [[ ! "$name" =~ \.[Ss][Qq][Ll]$ ]]; then
-			problems="$problems$path: not a migration (.sql)\n"
+			problem "$path" "not a migration (.sql)"
 			continue
 		fi
 		stem=${name%.*}
 		if [[ "$stem" =~ ^[Rr]__ ]]; then
-			problems="$problems$path: a repeatable migration (R__): migrations here are versioned\n"
+			problem "$path" "a repeatable migration (R__): migrations here are versioned"
 			continue
 		elif [[ "$stem" =~ ^[Nn][Ee][Xx][Tt]_*([0-9]+)(_+(.*))?$ ]]; then
 			class=0 key=$(version_key "${BASH_REMATCH[1]}") summary=${BASH_REMATCH[3]}
@@ -99,12 +122,12 @@ pending() {
 		fi
 		summary=$(description "$summary")
 		if [[ -z "$summary" ]]; then
-			problems="$problems$path: no description: name what it does (NEXT_<NNN>__<description>.sql)\n"
+			problem "$path" "no description: name what it does (NEXT_<NNN>__<description>.sql)"
 			continue
 		fi
 		summary=$(with_module "$path" "$summary")
 		if [[ ${#summary} -gt 200 ]]; then
-			problems="$problems$path: a description over 200 characters, more than Flyway keeps\n"
+			problem "$path" "a description over 200 characters, more than Flyway keeps"
 			continue
 		fi
 		printf '%s\t%s\t%s\t%s\t%s\n' "$class" "$key" "${path%/*}" "$summary" "$path"
@@ -182,6 +205,7 @@ check_final() {
 main() {
 	local tag lines planned
 	[[ ${usage_fix:-false} != true || ${usage_final:-false} != true ]] || die "--fix and --final don't go together"
+	[[ ${usage_final:-false} != true || -z "$selection" ]] || die "--final checks every migration: no files"
 	tag=$(latest_tag)
 	if [[ -z "$tag" ]]; then
 		info "No release yet: no released migrations to compare"
@@ -211,12 +235,16 @@ main() {
 }
 
 if [[ ${BASH_SOURCE[0]} = "$0" ]]; then
-	# flags as mise passes them, when the script is run itself (the release, CI, hk)
+	# flags and files as mise passes them, when the script is run itself (the release, CI, hk)
 	for arg in "$@"; do
 		case $arg in
 		--fix) usage_fix=true ;;
 		--final) usage_final=true ;;
-		*) die "unknown argument: $arg" ;;
+		-*) die "unknown argument: $arg" ;;
+		*)
+			selection="$selection${selection:+$'\n'}$arg"
+			scope="$scope${scope:+$'\n'}${arg%/*}"
+			;;
 		esac
 	done
 	main

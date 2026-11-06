@@ -35,6 +35,7 @@ local generated =
 // the legal text's templates: their files end without a newline, which jte would write into running
 // text (Rendering and UI)
 local legalTemplates = List("viewer/src/main/jte/legal/**", "viewer/src/main/jte/legalpart/**")
+local migrations = List("viewer/src/main/resources/db/migration/**")
 local xml = List("**/*.xml", "**/*.xsl", "**/*.xsd", "**/*.xspec", "**/*.sch")
 
 local linters = new Mapping<String, Step> {
@@ -82,16 +83,21 @@ local linters = new Mapping<String, Step> {
   ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
   ["shfmt"] = (Builtins.shfmt) { batch = true }
+  // the pending migrations a change touches named NEXT_<NNN>__<description>.sql, their modules
+  // numbered whole; not in the release's commit (the release profile), which names them released
   ["flyway_migrations"] = new Step {
-    glob =
-      List(
-        "viewer/src/main/resources/db/migration/**",
-        "tools/tasks/release/db-migrations.bash",
-      )
-    check = "mise run release:db-migrations"
-    fix = "tools/tasks/release/db-migrations.bash --fix"
+    profiles = List("!release")
+    glob = migrations
+    check = "mise run release:db-migrations {{files}}"
+    fix = "tools/tasks/release/db-migrations.bash --fix {{files}}"
     // a rename's new name, which is none of the files hk handed it
-    stage = List("viewer/src/main/resources/db/migration/**")
+    stage = migrations
+  }
+  // in the release's commit (mise run release), every migration named as released, each version once
+  ["flyway_migrations_released"] = new Step {
+    profiles = List("release")
+    glob = migrations
+    check = "tools/tasks/release/db-migrations.bash --final"
   }
   ["kubeconform"] = (Builtins.kubeconform) {
     check {

@@ -185,23 +185,18 @@ prepare_release() {
 	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
 }
 
-@test "commits the release's renames past the hooks, which would undo them" {
+@test "commits the release in hk's release profile, whose hooks check the released names" {
 	prepare_release
-	# as hk's flyway_migrations fixer did: the latest tag hasn't the migrations, so they're pending
-	cat >"$repo/.git/hooks/pre-commit" <<'HOOK'
+	cat >"$repo/.git/hooks/pre-commit" <<HOOK
 #!/usr/bin/env bash
-for f in $(git diff --cached --name-only --diff-filter=A -- '*/V2026_11_0_*.sql'); do
-	git mv "$f" "${f%/*}/NEXT_${f##*/V2026_11_0_}"
-done
+echo "\${HK_PROFILE-}" >"$BATS_TEST_TMPDIR/profile"
 HOOK
 	chmod +x "$repo/.git/hooks/pre-commit"
 
 	usage_push=false run main
 
 	[ "$status" -eq 0 ]
-	released=$(git -C "$repo" ls-tree -r --name-only v2026.11.0)
-	[[ "$released" = *"/V2026_11_0_001__ingest_job.sql"* ]] || false
-	[[ "$released" != *"/NEXT_"* ]] || false
+	[ "$(cat "$BATS_TEST_TMPDIR/profile")" = release ]
 }
 
 @test "tags a release and pushes it, with --push" {
