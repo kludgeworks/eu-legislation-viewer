@@ -151,6 +151,15 @@
                     and deep-equal($x:result//*:number/@v ! string(), ('6000', '12345678', '250'))"/>
   </x:scenario>
 
+  <x:scenario label="An inline image with a caption">
+    <x:context mode="inline" xmlns="">
+      <INCL.ELEMENT CONTENT="OTHER" FILEREF="figure1.tif" TYPE="TIFF"><CAPTION><P><HT TYPE="ITALIC">Figure 1</HT></P></CAPTION></INCL.ELEMENT>
+    </x:context>
+    <x:expect label="keeps the image and the caption text">
+      <img src="figure1.tif" content="other"/><emphasis kind="i"><t v="Figure 1"/></emphasis>
+    </x:expect>
+  </x:scenario>
+
   <x:scenario label="An unknown inline element" catch="yes">
     <x:context mode="block" xmlns=""><P>a <NOT.FORMEX>x</NOT.FORMEX></P></x:context>
     <x:expect label="stops the transformation" test="$x:result?err?code = xs:QName('f:unknown')"

@@ -79,9 +79,17 @@
        the converter keeps as the publication's series and document number (checked as metadata) -->
   <xsl:template match="NO.DOC.C[matches(normalize-space(.), '^C/[0-9]{4}/[0-9]+$')]" priority="2"/>
 
-  <!-- a C-series document's number: the converter keeps it without its brackets -->
+  <!-- a C-series document's number: the converter keeps it without its brackets in publication data -->
   <xsl:template match="NO.DOC.C" priority="1">
-    <v file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
+    <xsl:param name="main" as="xs:boolean" select="true()" tunnel="yes"/>
+    <xsl:choose>
+      <xsl:when test="$main">
+        <v file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{replace(normalize-space(.), '^\((.*)\)$', '$1')}</v>
+      </xsl:when>
+      <xsl:otherwise>
+        <v file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{normalize-space(.)}</v>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
 
   <xsl:template match="/">
@@ -93,16 +101,20 @@
   <!-- a package: the main document and every secondary document, in order -->
   <xsl:template match="DOC">
     <xsl:for-each select="FMX//REF.PHYS[@TYPE = 'DOC.XML']">
-      <xsl:apply-templates select="doc(resolve-uri(@FILE, base-uri(.)))/*"/>
+      <xsl:apply-templates select="doc(resolve-uri(@FILE, base-uri(.)))/*">
+        <xsl:with-param name="main" as="xs:boolean" select="true()" tunnel="yes"/>
+      </xsl:apply-templates>
     </xsl:for-each>
   </xsl:template>
 
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']">
-    <xsl:apply-templates select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
+    <xsl:apply-templates select="doc(resolve-uri(@FILEREF, base-uri(.)))/*">
+      <xsl:with-param name="main" as="xs:boolean" select="false()" tunnel="yes"/>
+    </xsl:apply-templates>
   </xsl:template>
 
   <xsl:template match="FORMULA[not(ancestor::FORMULA | ancestor::FORMULA.S)] | FORMULA.S">
-    <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//text()[not(ancestor::NOTE)]))"/>
+    <xsl:variable name="text" as="xs:string" select="f:letters(string-join((.//text()[not(ancestor::NOTE)], .//FUNCTION ! 'ƒ')))"/>
     <xsl:if test="$text">
       <v kind="formula" file="{tokenize(base-uri(.), '/')[last()]}" path="{f:path(.)}">{$text}</v>
     </xsl:if>

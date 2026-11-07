@@ -35559,7 +35559,7 @@
                            <td header="true">
                               <p>
                                  <t v="Height"/>
-                                 <noteRef href="#note_93" marker="*"/>
+                                 <noteRef href="#note_93" marker="1"/>
                               </p>
                            </td>
                            <td header="true">
@@ -35570,7 +35570,7 @@
                            <td header="true">
                               <p>
                                  <t v="Height"/>
-                                 <noteRef href="#note_93" marker="*"/>
+                                 <noteRef href="#note_93" marker="1"/>
                               </p>
                            </td>
                            <td header="true">
@@ -35626,7 +35626,7 @@
                               <p>
                                  <number v="2"/>
                                  <t v=" km"/>
-                                 <noteRef href="#note_94" marker="*"/>
+                                 <noteRef href="#note_94" marker="2"/>
                               </p>
                            </td>
                            <td>
@@ -35639,22 +35639,22 @@
                               <p>
                                  <number v="5"/>
                                  <t v=" km"/>
-                                 <noteRef href="#note_95" marker="*"/>
+                                 <noteRef href="#note_95" marker="3"/>
                               </p>
                            </td>
                         </tr>
                         <notes>
-                           <note eId="note_93" marker="*" kind="table">
+                           <note eId="note_93" marker="1" kind="table">
                               <p>
                                  <t v="The cloud base shall be such as to allow flight at the specified height, below and clear of cloud."/>
                               </p>
                            </note>
-                           <note eId="note_94" marker="*" kind="table">
+                           <note eId="note_94" marker="2" kind="table">
                               <p>
                                  <t v="Helicopters may be operated in flight visibility down to 800 m provided the destination or an intermediate structure is continuously visible."/>
                               </p>
                            </note>
-                           <note eId="note_95" marker="*" kind="table">
+                           <note eId="note_95" marker="3" kind="table">
                               <p>
                                  <t v="Helicopters may be operated in flight visibility down to "/>
                                  <number v="1500"/>
@@ -47737,7 +47737,7 @@
                            </num>
                            <p>
                               <t v="100 % of passengers"/>
-                              <noteRef href="#note_96" marker="*"/>
+                              <noteRef href="#note_96" marker="1"/>
                            </p>
                         </unit>
                      </td>
@@ -47759,7 +47759,7 @@
                            </num>
                            <p>
                               <t v="30 % of passengers"/>
-                              <noteRef href="#note_96" marker="*"/>
+                              <noteRef href="#note_96" marker="1"/>
                            </p>
                         </unit>
                      </td>
@@ -47783,7 +47783,7 @@
                            </num>
                            <p>
                               <t v="10 % of passengers"/>
-                              <noteRef href="#note_96" marker="*"/>
+                              <noteRef href="#note_96" marker="1"/>
                            </p>
                         </unit>
                      </td>
@@ -47798,7 +47798,7 @@
                      </td>
                   </tr>
                   <notes>
-                     <note eId="note_96" marker="*" kind="table">
+                     <note eId="note_96" marker="1" kind="table">
                         <p>
                            <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>
                         </p>
@@ -47908,7 +47908,7 @@
                         </num>
                         <p>
                            <t v="Additional crew members and 100 % of passengers"/>
-                           <noteRef href="#note_97" marker="*"/>
+                           <noteRef href="#note_97" marker="1"/>
                         </p>
                      </unit>
                   </td>
@@ -47933,7 +47933,7 @@
                         </p>
                      </unit>
                      <p>
-                        <noteRef href="#note_97" marker="*"/>
+                        <noteRef href="#note_97" marker="1"/>
                      </p>
                   </td>
                   <td>
@@ -47947,7 +47947,7 @@
                   </td>
                </tr>
                <notes>
-                  <note eId="note_97" marker="*" kind="table">
+                  <note eId="note_97" marker="1" kind="table">
                      <p>
                         <t v="Passenger numbers in Table 1 refer to passengers actually carried on board, including persons younger than 24 months."/>
                      </p>
@@ -51458,7 +51458,7 @@
                         </num>
                         <p>
                            <t v="Additional crew members and 100 % of passengers"/>
-                           <noteRef href="#note_98" marker="*"/>
+                           <noteRef href="#note_98" marker="1"/>
                         </p>
                      </unit>
                   </td>
@@ -51480,7 +51480,7 @@
                         </num>
                         <p>
                            <t v="10 % of passengers"/>
-                           <noteRef href="#note_98" marker="*"/>
+                           <noteRef href="#note_98" marker="1"/>
                         </p>
                      </unit>
                   </td>
@@ -51495,7 +51495,7 @@
                   </td>
                </tr>
                <notes>
-                  <note eId="note_98" marker="*" kind="table">
+                  <note eId="note_98" marker="1" kind="table">
                      <p>
                         <t v="Passenger numbers in Table 1 refer to passengers actually carried on board including persons younger than 24 months."/>
                      </p>
@@ -51562,7 +51562,7 @@
                         </num>
                         <p>
                            <t v="Additional crew members and 100 % of passengers"/>
-                           <noteRef href="#note_99" marker="*"/>
+                           <noteRef href="#note_99" marker="1"/>
                         </p>
                      </unit>
                   </td>
@@ -51584,7 +51584,7 @@
                         </num>
                         <p>
                            <t v="10 % of passengers"/>
-                           <noteRef href="#note_99" marker="*"/>
+                           <noteRef href="#note_99" marker="1"/>
                         </p>
                      </unit>
                   </td>
@@ -51599,7 +51599,7 @@
                   </td>
                </tr>
                <notes>
-                  <note eId="note_99" marker="*" kind="table">
+                  <note eId="note_99" marker="1" kind="table">
                      <p>
                         <t v="Passenger numbers in Table 2 refer to passengers actually carried on board including persons younger than 24 months."/>
                      </p>
@@ -55616,7 +55616,7 @@
                         </p>
                         <p>
                            <t v="RVR/VIS + 800 m"/>
-                           <noteRef href="#note_100" marker="*"/>
+                           <noteRef href="#note_100" marker="1"/>
                         </p>
                      </td>
                   </tr>
@@ -55632,7 +55632,7 @@
                      <td>
                         <p>
                            <t v="MDA/H + 400 ft"/>
-                           <noteRef href="#note_100" marker="*"/>
+                           <noteRef href="#note_100" marker="1"/>
                         </p>
                         <p>
                            <t v="RVR/VIS + "/>
@@ -55642,7 +55642,7 @@
                      </td>
                   </tr>
                   <notes>
-                     <note eId="note_100" marker="*" kind="table">
+                     <note eId="note_100" marker="1" kind="table">
                         <p>
                            <t v="VIS: visibility; MDA/H: minimum descent altitude/height."/>
                         </p>

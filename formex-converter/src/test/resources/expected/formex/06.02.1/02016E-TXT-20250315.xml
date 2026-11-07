@@ -24985,7 +24985,7 @@
                      <td>
                         <p>
                            <t v="17.05"/>
-                           <noteRef href="#note_6" marker="*"/>
+                           <noteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td>
@@ -25080,11 +25080,11 @@
                      <td>
                         <p>
                            <t v="ex 22.08"/>
-                           <noteRef href="#note_6" marker="*"/>
+                           <noteRef href="#note_6" marker="1"/>
                         </p>
                         <p>
                            <t v="ex 22.09"/>
-                           <noteRef href="#note_6" marker="*"/>
+                           <noteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td>
@@ -25104,7 +25104,7 @@
                      <td>
                         <p>
                            <t v="22.10"/>
-                           <noteRef href="#note_6" marker="*"/>
+                           <noteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td>
@@ -25195,7 +25195,7 @@
                   </tr>
                </rowGroup>
                <notes>
-                  <note eId="note_6" marker="*" kind="table">
+                  <note eId="note_6" marker="1" kind="table">
                      <p>
                         <t v="Entry added by Article 1 of Regulation No 7a of the Council of the European Economic Community of "/>
                         <date date="1959-12-18">

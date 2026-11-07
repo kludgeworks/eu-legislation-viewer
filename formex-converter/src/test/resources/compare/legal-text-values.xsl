@@ -34,9 +34,9 @@
     <v>{@document}</v>
   </xsl:template>
 
-  <!-- letters and digits, without the function sign the converter adds for FUNCTION -->
+  <!-- letters and digits, including the function sign the converter adds for FUNCTION -->
   <xsl:template match="m:math">
-    <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//(m:mi | m:mn | m:mo)[. != 'ƒ']))"/>
+    <xsl:variable name="text" as="xs:string" select="f:letters(string-join(.//(m:mi | m:mn | m:mo)))"/>
     <xsl:if test="$text">
       <v kind="formula">{$text}</v>
     </xsl:if>

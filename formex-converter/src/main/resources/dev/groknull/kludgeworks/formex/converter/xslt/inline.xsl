@@ -317,6 +317,11 @@
     <img src="{@FILEREF}">
       <xsl:sequence select="f:image-content(.)"/>
     </img>
+    <xsl:for-each select="CAPTION | IMG.CNT">
+      <xsl:call-template name="f:inlines">
+        <xsl:with-param name="nodes" as="node()*" select="(P | TXT)/node() | (node() except (P | TXT))"/>
+      </xsl:call-template>
+    </xsl:for-each>
   </xsl:template>
 
   <!-- an empty table cell -->
@@ -402,7 +407,11 @@
   <xsl:function name="f:note-marker" as="xs:string">
     <xsl:param name="note" as="element(NOTE)"/>
     <xsl:sequence select="
-        if ($note/@NUMBER.ORG and not(f:renumbered($note))) then string($note/@NUMBER.ORG)
+        if (f:table-note($note))
+        then string(count($note/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE']
+                     [. &lt;&lt; $note][empty(. intersect $note/ancestor::NOTE)]
+                     [ancestor::TBL[1] is $note/ancestor::TBL[1]]) + 1)
+        else if ($note/@NUMBER.ORG and not(f:renumbered($note))) then string($note/@NUMBER.ORG)
         else if ($note/@NUMBERING = 'STAR') then '*'
         else if ($note/@TYPE = 'TABLE')
         then string(count($note/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE'][not(@NUMBERING = 'STAR')]

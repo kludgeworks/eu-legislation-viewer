@@ -1287,7 +1287,7 @@
                   <td header="true">
                      <p>
                         <t v="Phase I (g/l"/>
-                        <noteRef href="#note_2" marker="*"/>
+                        <noteRef href="#note_2" marker="1"/>
                         <t v=")"/>
                      </p>
                      <p>
@@ -1301,7 +1301,7 @@
                   <td header="true">
                      <p>
                         <t v="Phase II (g/l"/>
-                        <noteRef href="#note_2" marker="*"/>
+                        <noteRef href="#note_2" marker="1"/>
                         <t v=")"/>
                      </p>
                      <p>
@@ -1838,7 +1838,7 @@
                   </td>
                </tr>
                <notes>
-                  <note eId="note_2" marker="*" kind="table">
+                  <note eId="note_2" marker="1" kind="table">
                      <p>
                         <t v="g/l ready to use"/>
                      </p>
@@ -1868,7 +1868,7 @@
                   <td header="true">
                      <p>
                         <t v="VOC g/l"/>
-                        <noteRef href="#note_3" marker="*"/>
+                        <noteRef href="#note_3" marker="1"/>
                      </p>
                      <p>
                         <t v="(1.1.2007)"/>
@@ -2010,7 +2010,7 @@
                   </td>
                </tr>
                <notes>
-                  <note eId="note_3" marker="*" kind="table">
+                  <note eId="note_3" marker="1" kind="table">
                      <p>
                         <t v="g/l of ready for use product. Except for subcategory (a) any water content of the product ready for use should be discounted."/>
                      </p>

@@ -2224,31 +2224,31 @@
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="*"/>
+                           <noteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="*"/>
+                           <noteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="*"/>
+                           <noteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="*"/>
+                           <noteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 1/M"/>
-                           <noteRef href="#note_14" marker="*"/>
+                           <noteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                   </tr>
@@ -2631,7 +2631,7 @@
                      </td>
                   </tr>
                   <notes>
-                     <note eId="note_14" marker="*" kind="table">
+                     <note eId="note_14" marker="1" kind="table">
                         <p>
                            <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
                            <ref kind="oj"
