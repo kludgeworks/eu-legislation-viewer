@@ -362,11 +362,10 @@ class CompareController {
   }
 
   /**
-   * The acts between the comparison's versions, as its page loads them: each with how many
-   * differences it made, in the comparison of the version that integrates it with the one before,
-   * by the same attribution as the sidenotes (Act.amended, the markers); an act whose version's
-   * texts aren't both built left uncounted. Each step counted once and kept (StepCounts). 404 at an
-   * address that isn't the comparison's.
+   * The acts between the comparison's versions, as its page loads them: each with how many of the
+   * differences the page lists it made, by the same attribution as the sidenotes (Act.amended, the
+   * markers), so a chip counts the list it filters; none counted if the two texts aren't both
+   * built. Counted once and kept (StepCounts). 404 at an address that isn't the comparison's.
    */
   @GetMapping(path = PATH + "/acts", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -388,53 +387,42 @@ class CompareController {
     var preparation = texts.preparation(page.act, page.language);
     var between = CompareView.between(page.act, page.from, page.to);
     var counts = new HashMap<ActIdentifier, Integer>();
-    var outlines = new HashMap<ContentHash, Outline>();
-    var steps = 0;
-    var kept = 0;
     var together = 0;
     var unknown = 0;
-    for (var version : page.timeline.versions()) {
-      if (!version.date().isAfter(page.from.date()) || version.date().isAfter(page.to.date())) {
-        continue;
-      }
-      var earlier = page.earlier(version);
-      if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
-          || !(preparation.texts().get(version) instanceof Text.Ready after)) {
-        continue;
-      }
+    // the list the page shows, counted: not a sum of single steps, which counts a provision each
+    // step changed once per step, and one an act made and the next unmade
+    var kept = false;
+    if (preparation.texts().get(page.from) instanceof Text.Ready before
+        && preparation.texts().get(page.to) instanceof Text.Ready after) {
       var found = stepCounts.find(page.act.id(), before.root(), after.root());
-      var counted = found.or(() -> count(page, preparation, earlier, version, outlines));
-      if (counted.isEmpty()) {
-        continue;
+      var counted = found.or(() -> count(page, preparation, page.from, page.to, new HashMap<>()));
+      kept = found.isPresent();
+      if (counted.isPresent()) {
+        if (!kept) {
+          stepCounts.add(page.act.id(), before.root(), after.root(), counted.get());
+        }
+        counted
+            .get()
+            .differences()
+            .forEach(
+                (each, differences) -> {
+                  if (between.contains(each)) {
+                    counts.put(each, differences);
+                  }
+                });
+        together = counted.get().together();
+        unknown = counted.get().unknown();
       }
-      if (found.isPresent()) {
-        kept++;
-      } else {
-        stepCounts.add(page.act.id(), before.root(), after.root(), counted.get());
-      }
-      steps++;
-      counted
-          .get()
-          .differences()
-          .forEach(
-              (each, differences) -> {
-                if (between.contains(each)) {
-                  counts.merge(each, differences, Integer::sum);
-                }
-              });
-      together += counted.get().together();
-      unknown += counted.get().unknown();
     }
     LOG.info(
-        "Acts of {} from {} to {} in {}: {} of {} counted over {} versions ({} kept), in {} ms",
+        "Acts of {} from {} to {} in {}: {} of {} counted{}, in {} ms",
         page.act.id(),
         page.from.date(),
         page.to.date(),
         page.language.code(),
         counts.size(),
         between.size(),
-        steps,
-        kept,
+        kept ? " (kept)" : "",
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates
         .catalogueActs(

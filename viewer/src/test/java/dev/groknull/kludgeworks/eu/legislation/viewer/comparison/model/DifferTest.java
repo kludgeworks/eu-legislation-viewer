@@ -166,23 +166,21 @@ class DifferTest {
   @Test
   void showsAUnitInsertedOrDeletedOnceWholeWithItsOwnUnits() {
     var differences = Differ.differences(JANUARY, MARCH).differences();
-    assertThat(differences).filteredOn(d -> d.kind() == Kind.INSERTED).hasSize(38);
+    // a changed point with the points in it that the same act changed, inserted or deleted: one
+    assertThat(differences).filteredOn(d -> d.kind() == Kind.INSERTED).hasSize(18);
     // and those the later text keeps struck: deleted
-    assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(24);
-    assertThat(differences).filteredOn(d -> d.kind() == Kind.CHANGED).hasSize(38);
+    assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(15);
+    assertThat(differences).filteredOn(d -> d.kind() == Kind.CHANGED).hasSize(34);
     assertThat(differences)
         .extracting(Difference::eId, Difference::kind)
         .contains(tuple("anx/pnt_8.1.2.4", Kind.INSERTED), tuple("anx/pnt_9.1.3.6", Kind.DELETED))
         .containsSubsequence(
             tuple("anx/pnt_1.2.2.3", Kind.CHANGED),
-            tuple("anx/pnt_1.2.2.3/pnt_a", Kind.INSERTED),
-            tuple("anx/pnt_1.2.2.3/pnt_b", Kind.INSERTED),
-            tuple("anx/pnt_1.2.2.3/pnt_c", Kind.INSERTED))
-        .containsSubsequence(
             tuple("anx/pnt_9.1.3.5", Kind.CHANGED),
-            tuple("anx/pnt_9.1.3.5/pnt_a", Kind.DELETED),
-            tuple("anx/pnt_9.1.3.5/pnt_b", Kind.DELETED),
             tuple("anx/pnt_9.1.3.6", Kind.DELETED));
+    assertThat(differences)
+        .extracting(Difference::eId)
+        .doesNotContain("anx/pnt_1.2.2.3/pnt_a", "anx/pnt_9.1.3.5/pnt_a");
     assertThat(differences)
         .extracting(Difference::eId)
         .doesNotContain("anx/pnt_9.1.3.5/pnt_b/idt_1");
@@ -205,9 +203,95 @@ class DifferTest {
   }
 
   @Test
-  void showsAChangedUnitWithItsOwnContentOnly() {
-    var changed = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_1.2.2.3");
-    assertThat(descendants(changed.shown())).extracting(Element::name).doesNotContain("unit");
+  void showsAChangedUnitWithItsOwnContentOnlyWhereOtherActsChangedTheUnitsInIt() {
+    var earlier = text(point("1", "Old words", "A", point("1/a", "(a) old", "A")));
+    var later = text(point("1", "New words", "B", point("1/a", "(a) new", "C")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences).extracting(Difference::eId).containsExactly("1", "1/a");
+    assertThat(descendants(differences.getFirst().shown()))
+        .extracting(Element::name)
+        .doesNotContain("unit");
+  }
+
+  @Test
+  void showsAChangedUnitWholeWithTheUnitsInItThatTheSameActsChangedOrDeleted() {
+    var earlier =
+        text(
+            point(
+                "1",
+                "Old words",
+                "A",
+                point("1/a", "(a) old", "A"),
+                point("1/b", "(b) gone", "A")));
+    var later = text(point("1", "New words", "B", point("1/a", "(a) new", "B")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences).singleElement().extracting(Difference::eId).isEqualTo("1");
+    var shown = differences.getFirst().shown();
+    assertThat(descendants(shown))
+        .filteredOn(each -> each.name().equals("unit"))
+        .extracting(each -> each.attribute("eId"))
+        .containsExactly("1/a", "1/b");
+    assertThat(said(shown)).contains("[+New]", "[+new]", "[-old]").containsPattern("\\[-[^]]*gone");
+    // Old, old and point (b)'s words
+    assertThat(differences.getFirst().deleted()).isGreaterThanOrEqualTo(3);
+  }
+
+  @Test
+  void findsNoDifferenceInANumThatOnlyGainedAFullStop() {
+    var earlier = text(numbered("11.3", "CERTIFICATION"));
+    var later = text(numbered("11.3.", "CERTIFICATION"));
+
+    assertThat(Differ.differences(earlier, later).differences()).isEmpty();
+    assertThat(Differ.differences(earlier, text(numbered("11.4", "CERTIFICATION"))).differences())
+        .hasSize(1);
+  }
+
+  /** A point {@code eId}, saying {@code words}, that {@code act} replaced, with {@code units}. */
+  private static Element point(String eId, String words, String act, Element... units) {
+    var children = new ArrayList<Element>();
+    children.add(
+        new Element("provenance", Map.of("amendingAct", act, "action", "replaced"), List.of(), ""));
+    children.add(block("p", words));
+    children.addAll(List.of(units));
+    return new Element("unit", Map.of("eId", eId, "kind", "point"), children, "");
+  }
+
+  private static Element numbered(String num, String heading) {
+    return new Element(
+        "unit",
+        Map.of("eId", "11.3", "kind", "level"),
+        List.of(block("num", num), block("heading", heading)),
+        "");
+  }
+
+  private static Element block(String name, String words) {
+    return new Element(
+        name, Map.of(), List.of(new Element("t", Map.of("v", words), List.of(), "")), "");
+  }
+
+  private static Element text(Element... units) {
+    return new Element("body", Map.of(), List.of(units), "");
+  }
+
+  @Test
+  void showsAChangedUnitWholeWithTheUnitsInItThatTheSameActsChanged() {
+    var differences = Differ.differences(JANUARY, MARCH).differences();
+    var changed = find(differences, "anx/pnt_1.2.2.3");
+    assertThat(changed.kind()).isEqualTo(Kind.CHANGED);
+    // its points (a) to (c), inserted by 2026/449 as it replaced 1.2.2.3: in it, not on their own
+    assertThat(descendants(changed.shown()))
+        .filteredOn(each -> each.name().equals("unit"))
+        .extracting(each -> each.attribute("eId"))
+        .contains("anx/pnt_1.2.2.3/pnt_a", "anx/pnt_1.2.2.3/pnt_b", "anx/pnt_1.2.2.3/pnt_c");
+    assertThat(differences).extracting(Difference::eId).doesNotContain("anx/pnt_1.2.2.3/pnt_a");
+  }
+
+  private static boolean holdsUnits(Element shown) {
+    return descendants(shown).stream().anyMatch(each -> each.name().equals("unit"));
   }
 
   @Test
@@ -274,7 +358,8 @@ class DifferTest {
       if (difference.kind() != Kind.DELETED) {
         placed.add(difference.eId());
       }
-      if (difference.kind() == Kind.INSERTED) {
+      // inserted, or changed and shown whole: with its units
+      if (difference.kind() != Kind.DELETED && holdsUnits(difference.shown())) {
         placed.addAll(inside(difference.eId(), units));
       }
     }

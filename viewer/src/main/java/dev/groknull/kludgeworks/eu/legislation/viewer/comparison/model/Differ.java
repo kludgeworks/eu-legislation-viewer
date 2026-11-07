@@ -31,9 +31,17 @@ import org.jspecify.annotations.Nullable;
  * <p>The later text is then walked in order, a deleted unit where it stood, and each of its units
  * placed once: a difference; the opening of a unit that holds differences, as the walk enters it;
  * or, the same in both, with its units, in a run of those in the same unit, folded.
+ *
+ * <p>What counts as one difference (Design: What counts as one difference): a changed unit and the
+ * units in it that differ, where the same acts made them all, are one, shown whole, each marked
+ * where it differs (11.1.3 with its points (a) to (d), all 2019/103's); a unit whose num only
+ * gained or lost its full stop (11.3 to 11.3.) differs in nothing an act did, so not at all.
  */
 public final class Differ {
   private static final Set<String> TITLES = Set.of("num", "heading", "subheading");
+
+  /** Where a unit's units end, after its eId: what was deleted after the last of them. */
+  private static final String END = "#end";
 
   private Differ() {}
 
@@ -68,9 +76,15 @@ public final class Differ {
     var before = Units.of(withoutPreamble == Side.LATER ? withoutPreamble(from) : from);
     var after = Units.of(withoutPreamble == Side.EARLIER ? withoutPreamble(to) : to);
     var steps = steps(before, after);
-    var touched =
-        touched(
-            steps.stream().map(Step::difference).filter(Objects::nonNull).toList(), before, after);
+    var differences = new HashMap<String, DifferenceBuilder>();
+    for (var step : steps) {
+      if (step.difference() != null) {
+        differences.putIfAbsent(step.unit().eId(), step.difference());
+      }
+    }
+    var whole = whole(steps, before, after);
+    var deletedBefore = deletedBefore(steps);
+    var touched = touched(List.copyOf(differences.values()), before, after);
     var placed = new ArrayList<Difference>();
     var context = new ArrayList<Context>();
     var run = new Run();
@@ -84,9 +98,22 @@ public final class Differ {
       } else if (difference != null) {
         run.into(context);
         var parent = unit.parent() == null ? null : after.get(unit.parent());
+        if (whole.contains(unit.eId())) {
+          var shown = grouped(unit, new Group(before, after, differences, deletedBefore), true);
+          var inserted = 0;
+          var deleted = 0;
+          for (var each : steps) {
+            var in = each.difference();
+            if (in != null && within(each, unit.eId(), before, after)) {
+              inserted += in.inserted();
+              deleted += in.deleted();
+            }
+          }
+          difference.shown(shown).inserted(inserted).deleted(deleted);
+        }
         placed.add(difference.lead(parent == null ? null : lead(parent)).context(context).build());
         context = new ArrayList<>();
-        if (difference.kind() != Kind.CHANGED) {
+        if (difference.kind() != Kind.CHANGED || whole.contains(unit.eId())) {
           covered.add(unit.eId());
         }
       } else if (step.earlier()) {
@@ -232,14 +259,59 @@ public final class Differ {
    */
   private static @Nullable DifferenceBuilder changed(
       Unit from, Unit to, Units before, Units after) {
+    if (numbered(from).equals(numbered(to))) {
+      return null;
+    }
+    var marking = marking(from, to);
+    var children = own(to.element(), marking.replaced(), marking.deletedAt(), new int[1]);
+    return DifferenceBuilder.builder()
+        .eId(to.eId())
+        .kind(Kind.CHANGED)
+        .unit(sibling(to))
+        .shown(copy(to.element(), children))
+        .inserted(marking.inserted())
+        .deleted(marking.deleted())
+        .parent(to.parent())
+        .list(to.list())
+        .section(to.section())
+        .markers(Markers.of(to, after))
+        .earlierMarkers(Markers.of(from, before));
+  }
+
+  /**
+   * What {@code unit}'s own blocks say, its num without the full stop after it: a num that only
+   * gained or lost one (11.3 to 11.3.) is the Publications Office's typesetting, not an act's.
+   */
+  private static List<String> numbered(Unit unit) {
+    var wording = new ArrayList<String>();
+    for (var block : unit.blocks()) {
+      var said = Wording.of(block);
+      wording.add(block.name().equals("num") ? said.strip().replaceFirst("\\.$", "") : said);
+    }
+    return wording;
+  }
+
+  /**
+   * How {@code to}'s own blocks differ from {@code from}'s, by their position among them.
+   *
+   * @param replaced each block that differs, marked: changed word by word, or inserted wholly
+   * @param deletedAt the blocks deleted wholly, marked, before the block where they stood (after
+   *     the last, at the count of blocks)
+   * @param inserted how many words are inserted
+   * @param deleted how many words are deleted
+   */
+  private record Marking(
+      Map<Integer, Element> replaced,
+      Map<Integer, List<Element>> deletedAt,
+      int inserted,
+      int deleted) {}
+
+  private static Marking marking(Unit from, Unit to) {
     var replaced = new HashMap<Integer, Element>();
     var deletedAt = new HashMap<Integer, List<Element>>();
     var inserted = 0;
     var deleted = 0;
     var deltas = DiffUtils.diff(from.wording(), to.wording()).getDeltas();
-    if (deltas.isEmpty()) {
-      return null;
-    }
     for (var delta : deltas) {
       var source = delta.getSource();
       var target = delta.getTarget();
@@ -263,21 +335,176 @@ public final class Differ {
         deleted += marked.deleted();
       }
     }
+    return new Marking(replaced, deletedAt, inserted, deleted);
+  }
+
+  /**
+   * The changed units shown whole, with the units in them that differ: those where every difference
+   * in them is made by the acts that made theirs.
+   */
+  private static Set<String> whole(List<Step> steps, Units before, Units after) {
+    var acts = new HashMap<String, Set<String>>();
+    var in = new HashMap<String, Boolean>();
+    for (var step : steps) {
+      var difference = step.difference();
+      if (difference == null) {
+        continue;
+      }
+      var made = acts(difference);
+      // each changed unit it is in: whether the same acts made it
+      var units = step.earlier() ? before : after;
+      var parent = step.unit().parent();
+      while (parent != null) {
+        var opened = acts.get(parent);
+        if (opened != null) {
+          in.merge(parent, opened.equals(made), Boolean::logicalAnd);
+        }
+        var unit = units.get(parent);
+        parent = unit == null ? null : unit.parent();
+      }
+      if (difference.kind() == Kind.CHANGED) {
+        acts.putIfAbsent(step.unit().eId(), made);
+      }
+    }
+    var whole = new HashSet<String>();
+    in.forEach(
+        (eId, same) -> {
+          if (same) {
+            whole.add(eId);
+          }
+        });
+    return whole;
+  }
+
+  /** The acts that made {@code difference}: its markers', or none if it has none. */
+  private static Set<String> acts(DifferenceBuilder difference) {
+    var acts = new HashSet<String>();
+    for (var marker : difference.markers()) {
+      acts.add(marker.act());
+    }
+    return acts;
+  }
+
+  /**
+   * The units deleted, as they differ, by the eId of the later text's unit they stood before (or of
+   * the unit they were in, with END, after its last).
+   */
+  private static Map<String, List<DifferenceBuilder>> deletedBefore(List<Step> steps) {
+    var deletedBefore = new HashMap<String, List<DifferenceBuilder>>();
+    var pending = new HashMap<@Nullable String, List<DifferenceBuilder>>();
+    for (var step : steps) {
+      var difference = step.difference();
+      if (step.earlier()) {
+        if (difference != null) {
+          pending
+              .computeIfAbsent(step.unit().parent(), parent -> new ArrayList<>())
+              .add(difference);
+        }
+        continue;
+      }
+      var waiting = pending.remove(step.unit().parent());
+      if (waiting != null) {
+        deletedBefore.put(step.unit().eId(), waiting);
+      }
+    }
+    pending.forEach(
+        (parent, waiting) -> {
+          if (parent != null) {
+            deletedBefore.put(parent + END, waiting);
+          }
+        });
+    return deletedBefore;
+  }
+
+  /**
+   * What a unit shown whole is shown with.
+   *
+   * @param before the earlier text's units
+   * @param after the later text's
+   * @param differences how each unit differs, by its eId
+   * @param deletedBefore the units deleted, shown, by where they stood (deletedBefore)
+   */
+  private record Group(
+      Units before,
+      Units after,
+      Map<String, DifferenceBuilder> differences,
+      Map<String, List<DifferenceBuilder>> deletedBefore) {}
+
+  /** Whether {@code step}'s unit is the unit {@code eId} or in it. */
+  private static boolean within(Step step, String eId, Units before, Units after) {
+    var units = step.earlier() ? before : after;
+    for (@Nullable String at = step.unit().eId(); at != null; ) {
+      if (at.equals(eId)) {
+        return true;
+      }
+      var unit = units.get(at);
+      at = unit == null ? null : unit.parent();
+    }
+    return false;
+  }
+
+  /**
+   * {@code unit} whole, of the later text: its own blocks marked where they differ, and each unit
+   * in it: inserted, deleted where it stood, changed, each marked; the same in both, as it is.
+   */
+  private static Element grouped(Unit unit, Group group, boolean outermost) {
+    var difference = group.differences().get(unit.eId());
+    if (difference != null && difference.kind() == Kind.INSERTED && !outermost) {
+      return difference.shown();
+    }
+    var earlier = group.before().get(unit.eId());
+    var marking =
+        difference != null && earlier != null && difference.kind() == Kind.CHANGED
+            ? marking(earlier, unit)
+            : new Marking(Map.of(), Map.of(), 0, 0);
     var next = new int[1];
-    var children = own(to.element(), replaced, deletedAt, next);
-    children.addAll(deletedAt.getOrDefault(next[0], List.of()));
-    return DifferenceBuilder.builder()
-        .eId(to.eId())
-        .kind(Kind.CHANGED)
-        .unit(sibling(to))
-        .shown(copy(to.element(), children))
-        .inserted(inserted)
-        .deleted(deleted)
-        .parent(to.parent())
-        .list(to.list())
-        .section(to.section())
-        .markers(Markers.of(to, after))
-        .earlierMarkers(Markers.of(from, before));
+    var children = withUnits(unit.element(), unit, marking, next, group);
+    children.addAll(marking.deletedAt().getOrDefault(next[0], List.of()));
+    return copy(unit.element(), children);
+  }
+
+  /**
+   * {@code element}'s content, of {@code unit}, as own does, with the units in it: each shown as
+   * grouped shows it, those deleted before it where they stood.
+   */
+  private static List<Element> withUnits(
+      Element element, Unit unit, Marking marking, int[] next, Group group) {
+    var out = new ArrayList<Element>();
+    var units = false;
+    for (var child : element.children()) {
+      var eId = Units.eId(child);
+      if (child.name().equals("deleted")) {
+        continue;
+      }
+      if (eId != null) {
+        units = true;
+        deleted(group, eId, out);
+        var inside = group.after().get(eId);
+        out.add(inside == null ? child : grouped(inside, group, false));
+      } else if (child.name().equals("provenance")) {
+        out.add(child);
+      } else if (Units.holdsUnits(child)) {
+        var inside = withUnits(child, unit, marking, next, group);
+        if (!inside.isEmpty()) {
+          out.add(copy(child, inside));
+        }
+      } else {
+        var at = next[0]++;
+        out.addAll(marking.deletedAt().getOrDefault(at, List.of()));
+        out.add(marking.replaced().getOrDefault(at, child));
+      }
+    }
+    if (units) {
+      deleted(group, unit.eId() + END, out);
+    }
+    return out;
+  }
+
+  /** The units deleted that stood at {@code where}, shown, to {@code out}. */
+  private static void deleted(Group group, String where, List<Element> out) {
+    for (var each : group.deletedBefore().getOrDefault(where, List.of())) {
+      out.add(each.shown());
+    }
   }
 
   /**
