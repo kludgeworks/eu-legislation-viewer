@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -30,6 +32,17 @@ public final class Links {
   /** An act on EUR-Lex, by its ELI: https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj. */
   public static String eurLex(Eli eli) {
     return "https://eur-lex.europa.eu/eli/" + eli.path() + "/oj";
+  }
+
+  /**
+   * An act {@code act} integrates (or {@code act} itself) on EUR-Lex, in {@code language}: by its
+   * ELI where the Publications Office has one (Design D-42), by its CELEX where it hasn't.
+   */
+  public static String amending(Act act, ActIdentifier each, Language language) {
+    return act.publication(each)
+        .map(Publication::eli)
+        .map(eli -> eurLex(eli) + "/" + language.code().toLowerCase(Locale.ROOT))
+        .orElseGet(() -> eurLex(each.celex(), language));
   }
 
   /**

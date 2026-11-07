@@ -14,12 +14,12 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
-          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|step_count\.act|step_act_count\.act|step_act_count\.amending|preparation\.act|preparation_step\.act</includeExpression>
+          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|step_count\.act|step_act_count\.act|step_act_count\.amending|preparation\.act|preparation_step\.act</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::path)</converter>
-          <includeExpression>act\.eli</includeExpression>
+          <includeExpression>act\.eli|act_publication\.eli</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType</userType>
@@ -54,7 +54,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language|act_title\.language|preparation\.language|preparation_step\.language</includeExpression>
+          <includeExpression>expression\.language|act_title\.language|act_publication_title\.language|preparation\.language|preparation_step\.language</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>

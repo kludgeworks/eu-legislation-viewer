@@ -60,6 +60,8 @@ import org.jspecify.annotations.Nullable;
  *     Cellar names the act, that it is new in a unit an act replaced whole; none if nothing
  * @param dates when each of those acts applies, with what sets it
  * @param before what the unit was before: Before: as replaced by 2023/566; none for an inserted one
+ * @param published how the acts that made it, or might have, were published, a line each, as made's
+ *     hover lists them (Design D-42); none where no act is named
  */
 public record SidenoteView(
     @Nullable String made,
@@ -67,7 +69,8 @@ public record SidenoteView(
     List<ActIdentifier> candidates,
     @Nullable String why,
     List<Applies> dates,
-    @Nullable String before) {
+    @Nullable String before,
+    @Nullable String published) {
 
   public SidenoteView {
     acts = List.copyOf(acts);
@@ -192,7 +195,8 @@ public record SidenoteView(
         List.of(),
         why.isEmpty() ? null : String.join(" ", why),
         dates,
-        before);
+        before,
+        Wording.published(act, steps.stream().flatMap(List::stream).toList(), language));
   }
 
   /**
@@ -225,7 +229,8 @@ public record SidenoteView(
           "Neither the text’s markers nor the Publications Office’s data name an act between"
               + " these versions for it.",
           List.of(),
-          before);
+          before,
+          null);
     }
     var ordered =
         version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
@@ -253,7 +258,8 @@ public record SidenoteView(
             : "Neither the text’s marker nor the Publications Office’s data says which of them"
                 + " made it.",
         dates,
-        before);
+        before,
+        Wording.published(act, ordered, language));
   }
 
   /** What happened to {@code difference}, as a made line starts: Inserted, Deleted, Amended. */
@@ -554,7 +560,7 @@ public record SidenoteView(
     // a date of application Cellar has only a placeholder for, or no dates with a day at all
     if (dated.isEmpty() || (applying.isEmpty() && application.findAny().isPresent())) {
       var undated = dates.stream().filter(date -> date.date() == null).toList();
-      var set = applies("applies from a date set in", undated, amending, language, "");
+      var set = applies(act, "applies from a date set in", undated, amending, language, "");
       // nothing to say where no clause says where
       return set.clause() == null ? Optional.empty() : Optional.of(set);
     }
@@ -565,6 +571,7 @@ public record SidenoteView(
       if (!on.isEmpty()) {
         return Optional.of(
             applies(
+                act,
                 "applies from "
                     + Wording.date(day)
                     + (on.stream().allMatch(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE)
@@ -581,6 +588,7 @@ public record SidenoteView(
       var day = Wording.date(applies.getFirst());
       return Optional.of(
           applies(
+              act,
               "applies from " + day + (applying.isEmpty() ? ", its entry into force" : ""),
               applying.isEmpty() ? dated : applying,
               amending,
@@ -598,6 +606,7 @@ public record SidenoteView(
     }
     return Optional.of(
         applies(
+            act,
             name + " applies in stages: " + String.join("; ", stages),
             dated,
             amending,
@@ -606,7 +615,12 @@ public record SidenoteView(
   }
 
   private static Applies applies(
-      String when, List<ActDate> dates, ActIdentifier amending, Language language, String after) {
+      Act act,
+      String when,
+      List<ActDate> dates,
+      ActIdentifier amending,
+      Language language,
+      String after) {
     var provisions = new LinkedHashSet<ActDate.Provision>();
     var amendedBy = new LinkedHashSet<ActIdentifier>();
     for (var date : dates) {
@@ -620,13 +634,13 @@ public record SidenoteView(
                 provisions.stream().map(Wording::provision).collect(Collectors.joining(", "))
                     + " of "
                     + Wording.act(amending),
-                Links.eurLex(amending.celex(), language));
+                Links.amending(act, amending, language));
     return new Applies(
         when,
         when.endsWith(" in") ? " " : " · ",
         clause,
         amendedBy.stream()
-            .map(each -> new Link(Wording.act(each), Links.eurLex(each.celex(), language)))
+            .map(each -> new Link(Wording.act(each), Links.amending(act, each, language)))
             .toList(),
         clause == null ? "" : after);
   }

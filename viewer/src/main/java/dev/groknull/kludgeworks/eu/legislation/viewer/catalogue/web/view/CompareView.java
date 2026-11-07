@@ -122,7 +122,7 @@ public record CompareView(Card from, Card to, Acts acts) {
                   each ->
                       new Chip(
                           Wording.act(each),
-                          title(act, each),
+                          title(act, each, language),
                           counts.get(each),
                           // on, it shows all acts again
                           Links.compare(
@@ -169,9 +169,13 @@ public record CompareView(Card from, Card to, Acts acts) {
       return "+ " + none.size() + " with no differences here";
     }
 
-    /** An act's chip's hover: 2026/449 · entered into force on 22 March 2026. */
-    private static String title(Act act, ActIdentifier each) {
-      var name = Wording.act(each);
+    /**
+     * An act's chip's hover (Design D-36): how it was published, then when it entered into force:
+     * 2026/449: Commission Implementing Regulation (EU) 2026/449 of 27 February 2026 amending … ·
+     * OJ L, 2026/449, 2.3.2026 · entered into force on 22 March 2026.
+     */
+    private static String title(Act act, ActIdentifier each, Language language) {
+      var name = Wording.published(act, each, language);
       return act.datesOf(each).stream()
           .filter(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE && date.date() != null)
           .map(
@@ -297,7 +301,8 @@ public record CompareView(Card from, Card to, Acts acts) {
    * @param eurLex the version on EUR-Lex, in the page's language
    * @param period when it applied or applies
    * @param made what made it
-   * @param corrigenda the corrigenda it integrates, by name, for made's hover; none if none
+   * @param published how the acts that made it were published, a line each, as made's hover lists
+   *     them (Design D-21); none if none
    * @param lags where its text lags the law over its period
    * @param name the date form's field for this end: from, to
    * @param on the date the form starts at: the version's first day
@@ -313,7 +318,7 @@ public record CompareView(Card from, Card to, Acts acts) {
       String eurLex,
       String period,
       String made,
-      @Nullable String corrigenda,
+      @Nullable String published,
       List<String> lags,
       String name,
       String on,
@@ -336,15 +341,14 @@ public record CompareView(Card from, Card to, Acts acts) {
         LocalDate today,
         String action,
         String first) {
-      List<ActIdentifier> corrigenda =
-          version.integrates().stream().filter(Wording::corrigendum).toList();
+      var published = Wording.makers(act, version, List.of());
       return CompareViewCardBuilder.builder()
           .kind(end.kind)
           .celex(version.celex())
           .eurLex(Links.eurLex(version.celex(), language))
           .period(ReadingView.period(act, version, today))
-          .made(Wording.made(version))
-          .corrigenda(corrigenda.isEmpty() ? null : ReadingView.names(corrigenda))
+          .made(Wording.made(act, version, List.of()))
+          .published(published.isEmpty() ? null : Wording.published(act, published, language))
           .lags(act.notYetConsolidated(version).stream().map(Wording::lagOf).toList())
           .name(end.field)
           .on(version.date().toString())

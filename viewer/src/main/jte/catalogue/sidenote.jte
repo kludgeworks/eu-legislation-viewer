@@ -6,7 +6,7 @@
      column: its number, what happened, which acts made it and when each applies, what to know of
      who made it, and what it was before --%>
 <b>${shown.number()}</b>
-@if(sidenote != null && sidenote.made() != null)<span class="made">${sidenote.made()}</span>@endif
+@if(sidenote != null && sidenote.made() != null)<span class="made" title="${sidenote.published()}">${sidenote.made()}</span>@endif
 <%-- what happened, unless who made it says it all: Inserted by 2019/1583 --%>
 @if(sidenote == null || sidenote.made() == null || shown.kind().equals("changed"))<span class="note">${shown.note()}</span>@endif
 @if(sidenote != null)

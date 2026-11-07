@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
@@ -18,6 +19,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Reading
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
@@ -26,8 +28,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -53,6 +60,8 @@ import org.springframework.web.server.ResponseStatusException;
  */
 @Controller
 class VersionController {
+  private static final Logger LOG = LoggerFactory.getLogger(VersionController.class);
+
   private static final String PATH =
       "/eli/{type}/{year}/{number}/{date:\\d{4}-\\d{2}-\\d{2}}/{language}";
 
@@ -119,7 +128,8 @@ class VersionController {
           templates.catalogueTextMissing(page.version, page.eurLex()),
           null,
           Map.of(),
-          null);
+          null,
+          List.of());
     }
     var preparation = texts.prepare(page.act, page.language);
     if (preparation.preparing()) {
@@ -143,7 +153,8 @@ class VersionController {
         page.text(preparation, request.getRequestURI(), chrome.results()),
         prepared ? PreparingView.receipt(preparation, page.language) : null,
         TimelineView.states(preparation),
-        ArrivingView.of(page.act, preparation, request.getRequestURI()).orElse(null));
+        ArrivingView.of(page.act, preparation, request.getRequestURI()).orElse(null),
+        page.named(preparation));
   }
 
   /**
@@ -187,14 +198,15 @@ class VersionController {
         JteModel text,
         @Nullable String receipt,
         Map<Version, String> states,
-        @Nullable ArrivingView arriving) {
+        @Nullable ArrivingView arriving,
+        List<ActIdentifier> named) {
       return templates
           .catalogueVersion(
               chrome,
               version,
               masthead,
               TimelineView.reading(act, version, language, states),
-              ReadingView.of(act, version, date, language, today()),
+              ReadingView.of(act, version, date, language, today(), named),
               text,
               receipt,
               arriving)
@@ -227,6 +239,47 @@ class VersionController {
             templates.catalogueTextFailed(
                 FailureView.reading(act, version, failed.failure(), language, self));
       };
+    }
+
+    /**
+     * The acts the version's text names that the text of the version before doesn't, where the
+     * Publications Office lists none for it (Design D-19): its Formex's list of the acts it
+     * integrates, kept in the text's lifecycle; none where it lists some, or either text isn't
+     * built.
+     */
+    List<ActIdentifier> named(Preparation preparation) {
+      if (version.kind() == Version.Kind.ORIGINAL || !version.integrates().isEmpty()) {
+        return List.of();
+      }
+      var before = act.timeline().predecessor(version);
+      if (before.isEmpty()
+          || !(preparation.texts().get(version) instanceof Text.Ready text)
+          || !(preparation.texts().get(before.get()) instanceof Text.Ready earlier)) {
+        return List.of();
+      }
+      var named = new ArrayList<>(listed(text.root()));
+      named.removeAll(listed(earlier.root()));
+      LOG.info(
+          "{} lists no amending act; its text names {} more than {}'s",
+          version.celex(),
+          named,
+          before.get().celex());
+      return named;
+    }
+
+    /** The acts {@code root}'s text lists as integrated: its lifecycle's amendments. */
+    private List<ActIdentifier> listed(ContentHash root) {
+      return content.read(root).stream()
+          .flatMap(text -> text.children().stream())
+          .filter(child -> child.name().equals("lifecycle"))
+          .flatMap(lifecycle -> lifecycle.children().stream())
+          .filter(event -> "amendment".equals(event.attribute("type")))
+          .map(event -> event.attribute("act"))
+          .filter(Objects::nonNull)
+          .filter(ActIdentifier::isCelex)
+          .map(ActIdentifier::new)
+          .distinct()
+          .toList();
     }
 
     /** The version's text on EUR-Lex, in the language. */

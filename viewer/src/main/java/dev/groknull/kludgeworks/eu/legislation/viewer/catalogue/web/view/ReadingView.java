@@ -8,7 +8,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -21,7 +20,8 @@ import org.jspecify.annotations.Nullable;
  * @param eurLex the version on EUR-Lex, in the page's language
  * @param period when it applied or applies: Applied 15 March 2021 to 30 December 2021
  * @param made what made it: made by 2019/103, 2019/1583 · also 1 corrigendum
- * @param corrigenda the corrigenda it integrates, by name, for made's hover; none if none
+ * @param published how the acts that made it were published, a line each, as made's hover lists
+ *     them (Design D-21); none if none
  * @param asked the date asked, when it isn't the version's first day: The version that applied on 1
  *     June 2021
  * @param lags where its text lags the law: on the date asked, or else over its period
@@ -35,7 +35,7 @@ public record ReadingView(
     String eurLex,
     String period,
     String made,
-    @Nullable String corrigenda,
+    @Nullable String published,
     @Nullable String asked,
     List<String> lags,
     String action,
@@ -49,19 +49,25 @@ public record ReadingView(
 
   /**
    * The card of {@code version}, the one that applies on {@code asked}, in {@code language}, on
-   * {@code today}.
+   * {@code today}; {@code named}, the acts its text names that the version before's doesn't, for a
+   * version the Publications Office lists none for (Design D-19).
    */
   public static ReadingView of(
-      Act act, Version version, LocalDate asked, Language language, LocalDate today) {
+      Act act,
+      Version version,
+      LocalDate asked,
+      Language language,
+      LocalDate today,
+      List<ActIdentifier> named) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var askedFor = !asked.equals(version.date());
-    var corrigenda = version.integrates().stream().filter(Wording::corrigendum).toList();
+    var makers = Wording.makers(act, version, named);
     return new ReadingView(
         version.celex(),
         Links.eurLex(version.celex(), language),
         period(act, version, today),
-        Wording.made(version),
-        corrigenda.isEmpty() ? null : names(corrigenda),
+        Wording.made(act, version, named),
+        makers.isEmpty() ? null : Wording.published(act, makers, language),
         askedFor
             ? "The version that "
                 + (asked.isBefore(today) ? "applied" : "applies")
@@ -106,9 +112,5 @@ public record ReadingView(
       period += " · current version";
     }
     return version.interim() ? period + " · may still be revised" : period;
-  }
-
-  static String names(List<ActIdentifier> acts) {
-    return acts.stream().map(Wording::act).collect(Collectors.joining(", "));
   }
 }

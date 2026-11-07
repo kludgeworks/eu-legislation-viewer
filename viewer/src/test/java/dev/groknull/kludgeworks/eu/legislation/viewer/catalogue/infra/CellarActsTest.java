@@ -15,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
@@ -26,6 +27,7 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
@@ -36,6 +38,40 @@ class CellarActsTest {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final ActIdentifier REPEALED = new ActIdentifier("32010R0185");
   static final Set<Language> ALL_BUT_IRISH = EnumSet.complementOf(EnumSet.of(Language.GLE));
+
+  @Test
+  void readsHowItAndTheActsItsVersionsIntegrateWerePublished() {
+    var act = act(AVSEC);
+    // the act itself, those its versions integrate, corrigenda among them; no consolidation
+    assertThat(act.publications()).hasSize(act.integratedBetween(first(act), last(act)).size() + 1);
+    assertThat(act.publication(new ActIdentifier("32026R0449")))
+        .hasValueSatisfying(
+            published -> {
+              assertThat(published.eli()).isEqualTo(new Eli("reg_impl", 2026, "449"));
+              assertThat(published.title(Language.ENG))
+                  .hasValueSatisfying(
+                      title ->
+                          assertThat(title)
+                              .startsWith("Commission Implementing Regulation (EU) 2026/449"));
+            });
+    assertThat(reference(act, "32026R0449")).hasValue("OJ L, 2026/449, 2.3.2026");
+    assertThat(reference(act, "32019R0103")).hasValue("OJ L 21, 24.1.2019");
+    assertThat(reference(act, AVSEC.celex())).hasValue("OJ L 299, 14.11.2015");
+  }
+
+  private static Optional<String> reference(Act act, String celex) {
+    return act.publication(new ActIdentifier(celex))
+        .map(Publication::journal)
+        .map(Publication.Journal::reference);
+  }
+
+  private static Version first(Act act) {
+    return act.timeline().versions().getFirst();
+  }
+
+  private static Version last(Act act) {
+    return act.timeline().versions().getLast();
+  }
 
   @Test
   void readsAnActInForceWithItsVersions() {
@@ -94,7 +130,8 @@ class CellarActsTest {
                 noLanguages(),
                 noDates(),
                 noTitles(),
-                noAmendments())
+                noAmendments(),
+                noPublications())
             .orElseThrow()
             .timeline();
 
@@ -176,7 +213,8 @@ class CellarActsTest {
                             "2015-11-23T08:58:11.083+01:00"))),
                 noDates(),
                 noTitles(),
-                noAmendments())
+                noAmendments(),
+                noPublications())
             .orElseThrow()
             .timeline();
 
@@ -342,7 +380,8 @@ class CellarActsTest {
                     noLanguages(),
                     noDates(),
                     twice,
-                    noAmendments()))
+                    noAmendments(),
+                    noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several titles in ENG");
   }
 
@@ -419,7 +458,7 @@ class CellarActsTest {
   void anActCellarDoesNotKnowIsNone() {
     var none = new SparqlResult(List.of("eli"), List.of());
 
-    assertThat(CellarActs.act(AVSEC, none, none, none, none, none, none)).isEmpty();
+    assertThat(CellarActs.act(AVSEC, none, none, none, none, none, none, none)).isEmpty();
   }
 
   @Test
@@ -447,7 +486,8 @@ class CellarActsTest {
                     noLanguages(),
                     noDates(),
                     noTitles(),
-                    noAmendments()))
+                    noAmendments(),
+                    noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
   }
@@ -465,7 +505,14 @@ class CellarActsTest {
         .isThrownBy(
             () ->
                 CellarActs.act(
-                    AVSEC, twoElis, result(), noLanguages(), noDates(), noTitles(), noAmendments()))
+                    AVSEC,
+                    twoElis,
+                    result(),
+                    noLanguages(),
+                    noDates(),
+                    noTitles(),
+                    noAmendments(),
+                    noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: several ELIs");
   }
 
@@ -478,7 +525,14 @@ class CellarActsTest {
 
     assertThat(
             CellarActs.act(
-                AVSEC, treaty, result(), noLanguages(), noDates(), noTitles(), noAmendments()))
+                AVSEC,
+                treaty,
+                result(),
+                noLanguages(),
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications()))
         .hasValueSatisfying(
             act -> assertThat(act.eli()).isEqualTo(new Eli("treaty/tfeu_2008/art_251")));
   }
@@ -491,7 +545,14 @@ class CellarActsTest {
 
     assertThat(
             CellarActs.act(
-                AVSEC, work, result(), noLanguages(), noDates(), noTitles(), noAmendments()))
+                AVSEC,
+                work,
+                result(),
+                noLanguages(),
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications()))
         .hasValueSatisfying(act -> assertThat(act.eli()).isNull());
   }
 
@@ -563,6 +624,10 @@ class CellarActsTest {
   }
 
   /** amendments.rq's answer, with no amendments. */
+  private static SparqlResult noPublications() {
+    return new SparqlResult(List.of("subject", "eli", "code", "title"), List.of());
+  }
+
   private static SparqlResult noAmendments() {
     return new SparqlResult(
         List.of("subject", "location", "role", "from", "until", "languages"), List.of());

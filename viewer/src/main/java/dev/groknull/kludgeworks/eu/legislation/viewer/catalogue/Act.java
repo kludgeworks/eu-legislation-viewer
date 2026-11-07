@@ -36,6 +36,8 @@ import org.jspecify.annotations.Nullable;
  *     has none for is left out
  * @param amendments what other acts did to its provisions, one location each, as Cellar annotates
  *     them
+ * @param publications how it and each act its versions integrate were published: its ELI, titles
+ *     and Official Journal reference; an act Cellar has nothing for is left out
  */
 @AggregateRoot
 public record Act(
@@ -49,9 +51,11 @@ public record Act(
     Timeline timeline,
     List<ActDate> dates,
     Map<ActIdentifier, List<ActDate>> amendingDates,
-    List<Amendment> amendments) {
+    List<Amendment> amendments,
+    Map<ActIdentifier, Publication> publications) {
 
   public Act {
+    publications = Map.copyOf(publications);
     titles = Map.copyOf(titles);
     dates = List.copyOf(dates);
     amendingDates =
@@ -69,6 +73,14 @@ public record Act(
   /** The own dates of this act or of an act its versions integrate; none for another act. */
   public List<ActDate> datesOf(ActIdentifier act) {
     return act.equals(id) ? dates : amendingDates.getOrDefault(act, List.of());
+  }
+
+  /**
+   * How {@code act}, this one or one its versions integrate, was published; none if Cellar doesn't
+   * say.
+   */
+  public Optional<Publication> publication(ActIdentifier act) {
+    return Optional.ofNullable(publications.get(act));
   }
 
   /** The acts the versions after {@code from}, up to and including {@code to}, integrate. */

@@ -4,6 +4,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_AMENDMENT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_DATE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.STEP_COUNT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
@@ -17,16 +19,22 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provisio
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication.Journal;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActAmendmentRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActDateRecord;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActPublicationRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.VersionRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,7 +51,8 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions, its
  * dates and its amendments, written in one transaction, unless the act is there; written anew, its
- * versions kept, once it is read from Cellar again, its steps' counts (StepCounts) dropped.
+ * versions kept, once it is read from Cellar again, its steps' counts (StepCounts) dropped; with
+ * how the acts it integrates were published.
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -93,7 +102,8 @@ class JooqActStore implements ActStore {
                     db.selectFrom(ACT_AMENDMENT)
                         .where(ACT_AMENDMENT.ACT.eq(act.getCelex()))
                         .orderBy(ACT_AMENDMENT.POSITION)
-                        .fetch(JooqActStore::amendment)));
+                        .fetch(JooqActStore::amendment),
+                    publications(act.getCelex())));
   }
 
   @Override
@@ -119,6 +129,7 @@ class JooqActStore implements ActStore {
         .execute();
     dates(act);
     amendments(act);
+    publish(act);
     return true;
   }
 
@@ -151,6 +162,9 @@ class JooqActStore implements ActStore {
     dates(act);
     db.deleteFrom(ACT_AMENDMENT).where(ACT_AMENDMENT.ACT.eq(act.id())).execute();
     amendments(act);
+    db.deleteFrom(ACT_PUBLICATION_TITLE).where(ACT_PUBLICATION_TITLE.ACT.eq(act.id())).execute();
+    db.deleteFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act.id())).execute();
+    publish(act);
     // its steps' counts attributed by what it was
     db.deleteFrom(STEP_COUNT).where(STEP_COUNT.ACT.eq(act.id())).execute();
     var kept =
@@ -237,6 +251,72 @@ class JooqActStore implements ActStore {
     }
   }
 
+  /** How the acts {@code act} integrates were published, with their titles. */
+  private void publish(Act act) {
+    if (act.publications().isEmpty()) {
+      return;
+    }
+    var rows = new ArrayList<ActPublicationRecord>();
+    act.publications()
+        .forEach(
+            (subject, publication) -> {
+              var journal = publication.journal();
+              rows.add(
+                  new ActPublicationRecord(
+                      act.id(),
+                      subject,
+                      publication.eli(),
+                      journal == null ? null : journal.series(),
+                      journal == null ? null : journal.number(),
+                      journal == null ? null : journal.issue(),
+                      journal == null ? null : journal.published()));
+            });
+    db.batchInsert(rows).execute();
+    var titles =
+        db.insertInto(
+            ACT_PUBLICATION_TITLE,
+            ACT_PUBLICATION_TITLE.ACT,
+            ACT_PUBLICATION_TITLE.SUBJECT,
+            ACT_PUBLICATION_TITLE.LANGUAGE,
+            ACT_PUBLICATION_TITLE.TITLE);
+    var any = false;
+    for (var publication : act.publications().entrySet()) {
+      for (var title : publication.getValue().titles().entrySet()) {
+        titles = titles.values(act.id(), publication.getKey(), title.getKey(), title.getValue());
+        any = true;
+      }
+    }
+    if (any) {
+      titles.execute();
+    }
+  }
+
+  /** How the acts {@code act} integrates were published, by the act. */
+  private Map<ActIdentifier, Publication> publications(ActIdentifier act) {
+    var titles = new HashMap<ActIdentifier, Map<Language, String>>();
+    db.selectFrom(ACT_PUBLICATION_TITLE)
+        .where(ACT_PUBLICATION_TITLE.ACT.eq(act))
+        .forEach(
+            title ->
+                titles
+                    .computeIfAbsent(title.getSubject(), each -> new EnumMap<>(Language.class))
+                    .put(title.getLanguage(), title.getTitle()));
+    var publications = new LinkedHashMap<ActIdentifier, Publication>();
+    for (var row : db.selectFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act)).fetch()) {
+      var series = row.getSeries();
+      var published = row.getPublished();
+      publications.put(
+          row.getSubject(),
+          new Publication(
+              row.getEli(),
+              titles.getOrDefault(row.getSubject(), Map.of()),
+              series == null || published == null
+                  ? null
+                  : new Journal(series, row.getNumber(), row.getIssue(), published)));
+    }
+    return publications;
+  }
+
   private static ActAmendmentRecord amendment(
       ActIdentifier act, int position, Amendment amendment) {
     return new ActAmendmentRecord(
@@ -282,7 +362,8 @@ class JooqActStore implements ActStore {
       Map<Language, String> titles,
       List<Version> versions,
       List<ActDateRecord> dates,
-      List<Amendment> amendments) {
+      List<Amendment> amendments,
+      Map<ActIdentifier, Publication> publications) {
     var bySubject =
         dates.stream()
             .collect(
@@ -302,7 +383,8 @@ class JooqActStore implements ActStore {
         new Timeline(versions),
         own == null ? List.of() : own,
         bySubject,
-        amendments);
+        amendments,
+        publications);
   }
 
   private static ActDate date(ActDateRecord date) {

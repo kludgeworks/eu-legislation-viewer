@@ -24,7 +24,8 @@ public final class RecordedActs {
             answer("languages-" + id.celex() + ".json"),
             answer("dates-" + id.celex() + ".json"),
             answer("titles-" + id.celex() + ".json"),
-            answer("amendments-" + id.celex() + ".json"))
+            answer("amendments-" + id.celex() + ".json"),
+            answer("publications-" + id.celex() + ".json"))
         .orElseThrow();
   }
 

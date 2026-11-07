@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act.Unconsolidated;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -84,6 +86,65 @@ public final class Wording {
           default -> " · also " + corrigenda + " corrigenda";
         };
     return "made by " + names(acts) + also;
+  }
+
+  /**
+   * How {@code each}, an act {@code act} integrates (or {@code act} itself), was published, as its
+   * hover says (Design D-36, D-42, D-21): 2026/449: Commission Implementing Regulation (EU)
+   * 2026/449 of 27 February 2026 amending … · OJ L, 2026/449, 2.3.2026; its title in English where
+   * it has none in {@code language}; only its name where the Publications Office has nothing.
+   */
+  public static String published(Act act, ActIdentifier each, Language language) {
+    var name = act(each);
+    return act.publication(each)
+        .map(
+            publication -> {
+              var title = publication.title(language).or(() -> publication.title(Language.ENG));
+              var journal = publication.journal();
+              return name
+                  + title.map(t -> ": " + t).orElse("")
+                  + (journal == null ? "" : " · " + journal.reference());
+            })
+        .orElse(name);
+  }
+
+  /** {@code acts}' publications, a line each, as a hover lists them. */
+  public static String published(Act act, List<ActIdentifier> acts, Language language) {
+    return acts.stream()
+        .map(each -> published(act, each, language))
+        .collect(Collectors.joining("\n"));
+  }
+
+  /**
+   * What made a version, as its card says it: as {@link #made(Version)}, the act as published with
+   * its Official Journal reference; where the Publications Office lists no act, the acts the
+   * version's own text names ({@code named}, Design D-19), saying so.
+   */
+  public static String made(Act act, Version version, List<ActIdentifier> named) {
+    if (version.kind() == Version.Kind.ORIGINAL) {
+      return "the act as published"
+          + act.publication(act.id())
+              .map(Publication::journal)
+              .map(journal -> " · " + journal.reference())
+              .orElse("");
+    }
+    if (version.integrates().isEmpty() && !named.isEmpty()) {
+      return "made by "
+          + names(named)
+          + " · named in the consolidated text; not in the Publications Office’s list";
+    }
+    return made(version);
+  }
+
+  /**
+   * The acts a version's card names, whose publications its made line's hover lists: the act, for
+   * the act as published; those the version integrates; else those its text names.
+   */
+  public static List<ActIdentifier> makers(Act act, Version version, List<ActIdentifier> named) {
+    if (version.kind() == Version.Kind.ORIGINAL) {
+      return List.of(act.id());
+    }
+    return version.integrates().isEmpty() ? named : version.integrates();
   }
 
   private static String names(List<ActIdentifier> acts) {

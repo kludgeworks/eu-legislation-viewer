@@ -8,7 +8,7 @@
       <span class="card-kind">${card.kind()}</span>
       <a class="card-celex mono" href="${card.eurLex()}" title="On EUR-Lex">${card.celex()}</a>
       <span>${card.period()}</span>
-      <span title="${card.corrigenda()}">${card.made()}</span>
+      <span title="${card.published()}">${card.made()}</span>
       @for(var lag : card.lags())
         <span class="lag-warning">${lag}</span>
       @endfor

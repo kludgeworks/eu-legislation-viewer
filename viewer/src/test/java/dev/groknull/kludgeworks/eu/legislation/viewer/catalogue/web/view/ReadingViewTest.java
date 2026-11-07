@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /** The Reading card of 2015/1998's versions, as Cellar has them (recorded), on 5 November 2026. */
@@ -24,7 +25,13 @@ class ReadingViewTest {
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02015R1998-20211231");
     assertThat(card.period()).isEqualTo("Applied 31 December 2021 to 28 February 2022");
     assertThat(card.made()).isEqualTo("made by 2019/103, 2019/1583, 2020/910 · also 1 corrigendum");
-    assertThat(card.corrigenda()).isEqualTo("corrigendum 1 to 2019/103");
+    assertThat(card.published())
+        .startsWith(
+            "2019/103: Commission Implementing Regulation (EU) 2019/103 of 23 January 2019 amending"
+                + " Implementing Regulation (EU) 2015/1998")
+        .contains(
+            " · OJ L 21, 24.1.2019\ncorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
+        .endsWith("(Text with EEA relevance) · OJ L 208, 1.7.2020");
     assertThat(card.asked()).isNull();
     assertThat(card.lags()).isEmpty();
     assertThat(card.action()).isEqualTo("/eli/reg_impl/2015/1998/eng");
@@ -42,11 +49,29 @@ class ReadingViewTest {
 
   @Test
   void saysWhatMadeEachKindOfVersion() {
-    assertThat(card("2015-11-15", "2015-11-15", TODAY).made()).isEqualTo("the act as published");
+    assertThat(card("2015-11-15", "2015-11-15", TODAY).made())
+        .isEqualTo("the act as published · OJ L 299, 14.11.2015");
     assertThat(card("2016-02-29", "2016-02-29", TODAY).made())
         .isEqualTo("made by 2015/2426 · also 4 corrigenda");
     assertThat(card("2018-02-06", "2018-02-06", TODAY).made())
         .isEqualTo("no amending act listed for this version");
+  }
+
+  @Test
+  void namesTheActsAVersionsTextNamesWhereThePublicationsOfficeListsNone() {
+    var named =
+        ReadingView.of(
+            AVSEC,
+            version("2018-02-06"),
+            LocalDate.parse("2018-02-06"),
+            Language.ENG,
+            TODAY,
+            List.of(new ActIdentifier("32017R0815")));
+    assertThat(named.made())
+        .isEqualTo(
+            "made by 2017/815 · named in the consolidated text; not in the Publications Office’s"
+                + " list");
+    assertThat(named.published()).startsWith("2017/815: Commission Implementing Regulation");
   }
 
   @Test
@@ -71,7 +96,8 @@ class ReadingViewTest {
 
   /** The card of the version of {@code version}, asked for on {@code asked}, in English. */
   private static ReadingView card(String version, String asked, LocalDate today) {
-    return ReadingView.of(AVSEC, version(version), LocalDate.parse(asked), Language.ENG, today);
+    return ReadingView.of(
+        AVSEC, version(version), LocalDate.parse(asked), Language.ENG, today, List.of());
   }
 
   private static Version version(String date) {

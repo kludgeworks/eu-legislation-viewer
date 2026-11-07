@@ -108,7 +108,8 @@ public class OneActCellar {
               List.of(
                   date(2026, 3, 22, Kind.ENTRY_INTO_FORCE, false, Anchor.PUBLICATION, 20, "2"),
                   date(2026, 10, 1, Kind.APPLICATION, true, null, null, "2"))),
-          List.of());
+          List.of(),
+          Map.of());
 
   /** The act as Cellar lists it with its consolidation of 1 March 2022 too. */
   static final Act REFRESHED =
@@ -133,7 +134,8 @@ public class OneActCellar {
                   .toList()),
           ACT.dates(),
           ACT.amendingDates(),
-          ACT.amendments());
+          ACT.amendments(),
+          ACT.publications());
 
   final List<String> asked = new CopyOnWriteArrayList<>();
 

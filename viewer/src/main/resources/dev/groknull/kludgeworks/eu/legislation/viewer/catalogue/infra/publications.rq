@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: MIT
+# How the acts an act's consolidations integrate were published (CellarPublications): each one's
+# ELI, its title in each language, and its place in the Official Journal: the collection (OJ-L), and
+# either its number in the act-by-act Journal (2026/449, from October 2023) or the issue it is in
+# (L 21), each with the day it was published (an act's two, where it has both). Corrigenda too. Only consolidations with a CELEX, as in
+# dates.rq. One row per act and title; the Journal's details optional, a corrigendum's often missing.
+# {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?subject ?eli ?code ?title ?collection ?number ?published ?issueCollection ?issue
+    ?issuePublished
+WHERE {
+  ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+  ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
+       cdm:resource_legal_id_celex ?version ;
+       cdm:act_consolidated_consolidates_resource_legal ?work .
+  ?work cdm:resource_legal_id_celex ?subject .
+  OPTIONAL { ?work cdm:resource_legal_eli ?eli }
+  OPTIONAL {
+    ?expression cdm:expression_belongs_to_work ?work ;
+         cdm:expression_uses_language ?language ;
+         cdm:expression_title ?title .
+    BIND(STRAFTER(STR(?language), "/language/") AS ?code)
+  }
+  OPTIONAL {
+    ?work cdm:official-journal-act_part_of_collection_document ?collection ;
+         cdm:resource_legal_reference_oj-act ?number ;
+         cdm:official-journal-act_date_publication ?published .
+  }
+  OPTIONAL {
+    ?work cdm:resource_legal_published_in_official-journal ?journal .
+    ?journal cdm:official-journal_part_of_collection_document ?issueCollection ;
+         cdm:official-journal_number ?issue ;
+         cdm:publication_general_date_publication ?issuePublished .
+  }
+}
+ORDER BY ?subject ?code

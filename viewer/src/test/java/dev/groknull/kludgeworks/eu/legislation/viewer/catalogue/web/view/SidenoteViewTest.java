@@ -55,8 +55,7 @@ class SidenoteViewTest {
     assertThat(applies.clause())
         .isEqualTo(
             new Link(
-                "Article 2 of 2026/449",
-                "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449"));
+                "Article 2 of 2026/449", "https://eur-lex.europa.eu/eli/reg_impl/2026/449/oj/eng"));
     assertThat(applies.after()).isEqualTo(" says which part from when");
     assertThat(sidenote.before()).isEqualTo("Before: original act");
   }
@@ -234,9 +233,7 @@ class SidenoteViewTest {
     assertThat(applies.when()).isEqualTo("applies from 31 December 2021, its entry into force");
     assertThat(applies.amendedBy())
         .containsExactly(
-            new Link(
-                "2020/910",
-                "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32020R0910"));
+            new Link("2020/910", "https://eur-lex.europa.eu/eli/reg_impl/2020/910/oj/eng"));
     assertThat(sidenote.before()).isNull();
   }
 

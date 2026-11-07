@@ -8,7 +8,7 @@
     <span class="card-kind">Reading</span>
     <a class="card-celex mono" href="${reading.eurLex()}" title="On EUR-Lex">${reading.celex()}</a>
     <span>${reading.period()}</span>
-    <span title="${reading.corrigenda()}">${reading.made()}</span>
+    <span title="${reading.published()}">${reading.made()}</span>
     @if(reading.asked() != null)
       <b>${reading.asked()}</b>
     @endif
