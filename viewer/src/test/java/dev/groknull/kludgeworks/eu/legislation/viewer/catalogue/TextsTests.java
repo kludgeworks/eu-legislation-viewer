@@ -145,10 +145,14 @@ class TextsTests {
                     preparation.settledAt() != null
                         && preparation.steps().stream()
                             .anyMatch(step -> step.kind() == Preparation.Step.Kind.FAILED));
+    // started, then failed; or only failed: the events arrive in any order, and a text that
+    // failed isn't started after
     assertThat(prepared.steps())
         .allSatisfy(step -> assertThat(step.celex()).isEqualTo(celex))
         .extracting(Preparation.Step::kind)
-        .containsExactly(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.FAILED);
+        .isIn(
+            List.of(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.FAILED),
+            List.of(Preparation.Step.Kind.FAILED));
     assertThat(prepared.texts().get(consolidation()))
         .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE));
   }
