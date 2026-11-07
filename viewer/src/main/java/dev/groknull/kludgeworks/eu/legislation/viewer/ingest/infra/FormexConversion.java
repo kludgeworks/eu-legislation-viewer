@@ -12,17 +12,17 @@ import org.springframework.resilience.annotation.ConcurrencyLimit;
 import org.springframework.stereotype.Component;
 
 /**
- * A document's legal text converted from its Formex: each XML file of its package in the language
- * parsed as it is read from the source, then converted; nothing is written anywhere. Every call
- * converts.
+ * Converts the Formex of a document into its legal text. It parses each XML file of the package in
+ * the language while it reads the file from the source. Then it converts the package. It writes
+ * nothing anywhere. Every call converts again.
  *
- * <p>A conversion holds its package's files and its result in memory, which for the largest
- * (2016/2070's 87 MB file) takes about 1 GB of heap: only so many run at once
- * (viewer.ingest.max-conversions), the others waiting their turn, so the versions of such an act
- * can't run the viewer out of memory together.
+ * <p>A conversion holds the files of its package and its result in memory. For the largest package,
+ * the 87 MB file of 2016/2070, this takes about 1 GB of heap. Thus only {@code
+ * viewer.ingest.max-conversions} conversions run at once, and the others wait their turn. The
+ * versions of such an act cannot then run the viewer out of memory together.
  *
- * <p>Each document converted is logged, with its size and how long fetching and converting took; a
- * failure is the caller's to log, where it is handled.
+ * <p>The conversion logs each document that it converts, with its size and the time to fetch and to
+ * convert it. The caller logs a failure where it handles it.
  */
 @Component
 class FormexConversion implements Conversions {
@@ -36,7 +36,10 @@ class FormexConversion implements Conversions {
     this.converter = converter;
   }
 
-  /** The legal-text XML of a document ({@code celex}: 32015R1998, 02015R1998-20260322). */
+  /**
+   * Returns the legal-text XML of a document. For example, {@code celex} is 32015R1998 or
+   * 02015R1998-20260322.
+   */
   @Override
   @ConcurrencyLimit(limitString = "${viewer.ingest.max-conversions}")
   public Optional<XdmNode> convert(String celex, Language language) {
@@ -47,7 +50,7 @@ class FormexConversion implements Conversions {
       return Optional.empty();
     }
     var fetched = System.nanoTime();
-    var xml = converter.convert(documents.get(), Optional.of(celex));
+    var xml = converter.convert(documents.get(), celex);
     LOG.info(
         "Converted {} in {}: {} KB of Formex in {} file(s), fetched in {} ms, converted in {} ms",
         celex,

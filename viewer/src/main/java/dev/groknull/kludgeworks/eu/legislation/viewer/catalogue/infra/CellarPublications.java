@@ -15,21 +15,22 @@ import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
- * How the acts an act's versions integrate were published, from the answer to publications.rq: each
- * act's ELI, its title in each official language, and its place in the Official Journal, by its
- * number in the act-by-act Journal where it has one, else by the issue it is in.
+ * Reads how the amending acts of an act were published, from the answer to {@code publications.rq}.
+ * For each act it reads the ELI, the title in each official language, and the place in the Official
+ * Journal. The place is the number in the act-by-act Journal if the act has one. If not, it is the
+ * issue that contains the act.
  */
 final class CellarPublications {
   private CellarPublications() {}
 
-  /** Each act's publication in the answer, by the act; consolidations left out. */
+  /** Returns the publication of each act in the answer, by act. It leaves out consolidations. */
   static Map<ActIdentifier, Publication> byAct(SparqlResult answer) {
     var elis = new LinkedHashMap<ActIdentifier, @Nullable Eli>();
     var titles = new LinkedHashMap<ActIdentifier, Map<Language, String>>();
     var journals = new LinkedHashMap<ActIdentifier, Journal>();
     for (var row : answer.rows()) {
       var subject = row.get("subject");
-      // a consolidation's CELEX starts with 0 (02015R1998-20260322)
+      // The CELEX number of a consolidation starts with 0, for example 02015R1998-20260322.
       if (!ActIdentifier.isCelex(subject) || subject.startsWith("0")) {
         continue;
       }
@@ -39,15 +40,7 @@ final class CellarPublications {
       row.find("code")
           .flatMap(CellarPublications::language)
           .ifPresent(language -> row.find("title").ifPresent(t -> forAct.putIfAbsent(language, t)));
-      journal(row.find("collection"), row.find("number"), null, row.find("published"))
-          .or(
-              () ->
-                  journal(
-                      row.find("issueCollection"),
-                      Optional.empty(),
-                      row.find("issue").map(Integer::valueOf).orElse(null),
-                      row.find("issuePublished")))
-          .ifPresent(journal -> journals.putIfAbsent(act, journal));
+      actByAct(row).or(() -> inIssue(row)).ifPresent(journal -> journals.putIfAbsent(act, journal));
     }
     var publications = new LinkedHashMap<ActIdentifier, Publication>();
     elis.forEach(
@@ -57,21 +50,48 @@ final class CellarPublications {
     return publications;
   }
 
-  /** The place in the Journal; none without its series or day. */
-  private static Optional<Journal> journal(
-      Optional<String> collection,
-      Optional<String> number,
-      @Nullable Integer issue,
-      Optional<String> published) {
-    if (collection.isEmpty() || published.isEmpty() || (number.isEmpty() && issue == null)) {
+  /**
+   * Returns the place of the act in the act-by-act Journal. For example, OJ L, 2026/449, 2.3.2026.
+   * It returns empty if the row has no series, number or day for it.
+   */
+  private static Optional<Journal> actByAct(SparqlResult.Row row) {
+    var collection = row.find("collection");
+    var number = row.find("number");
+    var published = row.find("published");
+    if (collection.isEmpty() || number.isEmpty() || published.isEmpty()) {
       return Optional.empty();
     }
-    // the document collection OJ-L is the L series
-    var uri = collection.get();
-    var series = uri.substring(uri.lastIndexOf('/') + 1).replaceFirst("^OJ-", "");
+    return Optional.of(
+        new Journal(series(collection.get()), number.get(), null, day(published.get())));
+  }
+
+  /**
+   * Returns the place of the act in an issue of the Journal. For example, OJ L 21, 24.1.2019. It
+   * returns empty if the row has no series, issue or day for it.
+   */
+  private static Optional<Journal> inIssue(SparqlResult.Row row) {
+    var collection = row.find("issueCollection");
+    var issue = row.find("issue");
+    var published = row.find("issuePublished");
+    if (collection.isEmpty() || issue.isEmpty() || published.isEmpty()) {
+      return Optional.empty();
+    }
     return Optional.of(
         new Journal(
-            series, number.orElse(null), issue, LocalDate.parse(published.get().substring(0, 10))));
+            series(collection.get()), null, Integer.valueOf(issue.get()), day(published.get())));
+  }
+
+  /**
+   * Returns the series from the URI of a document collection. For example, {@code L} for {@code
+   * .../OJ-L}.
+   */
+  private static String series(String collection) {
+    return collection.substring(collection.lastIndexOf('/') + 1).replaceFirst("^OJ-", "");
+  }
+
+  /** Returns the day of an {@code xsd:date} or {@code xsd:dateTime}. */
+  private static LocalDate day(String published) {
+    return LocalDate.parse(published.substring(0, 10));
   }
 
   private static Optional<Language> language(String code) {

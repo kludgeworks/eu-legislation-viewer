@@ -33,20 +33,22 @@ import net.sf.saxon.trans.XPathException;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}, run by its contract
- * (the stylesheet's header), its refusals turned into exceptions: the ingest module's adapter on
- * //formex-converter's stylesheets. The stylesheet is compiled once; each call gets its own
- * transformer, so one instance serves concurrent calls.
+ * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}. It is the adapter of
+ * the ingest module on the stylesheets of //formex-converter. It runs the stylesheet by its
+ * contract, which is in the header of the stylesheet. It turns the refusals of the stylesheet into
+ * exceptions. The stylesheet is compiled once. Each call gets its own transformer, so one instance
+ * serves concurrent calls.
  *
- * <p>A package's files are parsed as they are read ({@link #parse}), each under a URI of its own
- * scheme, {@code formex:/{name}}: the stylesheet reads the files a package refers to with {@code
- * doc(resolve-uri(@FILE, base-uri(.)))}, which a resolver answers with the parsed file, and nothing
- * outside the package can be read that way.
+ * <p>{@link #parse} parses the files of a package while it reads them. Each file gets a URI in a
+ * scheme of its own, {@code formex:/{name}}. The stylesheet reads the files that a package refers
+ * to with {@code doc(resolve-uri(@FILE, base-uri(.)))}. A resolver answers with the parsed file.
+ * Nothing outside the package can be read in this way.
  *
- * <p>Formex files can be large: an annex of 104 MB with over 100,000 entity references (&amp;amp;).
- * Since JDK 24 the JDK's XML parser stops at 100,000 ({@code jdk.xml.maxGeneralEntitySizeLimit}),
- * so the constructor lifts that limit on the processor it is given, for the documents Saxon parses.
- * Formex has no DTD, so there are no entities to expand beyond the predefined ones.
+ * <p>Formex files can be large. For example, one annex has 104 MB with more than 100,000 entity
+ * references ({@code &amp;}). Since JDK 24, the XML parser of the JDK stops at 100,000 ({@code
+ * jdk.xml.maxGeneralEntitySizeLimit}). Thus the constructor removes that limit on the processor
+ * that it gets, for the documents that Saxon parses. Formex has no DTD, so there are no entities to
+ * expand other than the predefined ones.
  */
 final class FormexConverter {
 
@@ -55,7 +57,10 @@ final class FormexConverter {
   static final String VERSION = "/dev/groknull/kludgeworks/formex/converter/version.txt";
   static final String ERRORS = "https://kludgeworks.groknull.dev/ns/formex-converter";
 
-  /** Where a package's files are, as the stylesheet sees them: formex:/L_2009330EN.01008001.xml. */
+  /**
+   * The location of the files of a package, as the stylesheet sees them. For example, {@code
+   * formex:/L_2009330EN.01008001.xml}.
+   */
   static final String PACKAGE = "formex:/";
 
   private static final QName CELEX = new QName("celex");
@@ -79,7 +84,10 @@ final class FormexConverter {
     version = readVersion();
   }
 
-  /** The converter's version (version.txt), which the stylesheet stamps on every document. */
+  /**
+   * Returns the version of the converter, from {@code version.txt}. The stylesheet stamps it on
+   * every document.
+   */
   String version() {
     return version;
   }
@@ -94,9 +102,11 @@ final class FormexConverter {
   }
 
   /**
-   * One XML file of a package, parsed as it was read: its tree, or why it isn't XML (which fails a
-   * conversion only if the stylesheet reads the file: a package may hold files it never reads); and
-   * its size, in bytes.
+   * One XML file of a package, parsed while it was read. It holds the tree of the file, or the
+   * reason why the file is not XML. It also holds the size of the file, in bytes.
+   *
+   * <p>A file that is not XML fails a conversion only if the stylesheet reads it. A package may
+   * hold files that the stylesheet never reads.
    */
   record Document(
       String name, long size, @Nullable XdmNode tree, @Nullable SaxonApiException failure) {
@@ -105,7 +115,7 @@ final class FormexConverter {
     }
   }
 
-  /** The package's file {@code name}, parsed from {@code in} as it is read. */
+  /** Parses the file {@code name} of the package from {@code in} while it reads it. */
   Document parse(String name, InputStream in) {
     var counted = new Counted(in);
     try {
@@ -117,31 +127,40 @@ final class FormexConverter {
   }
 
   /**
-   * Converts one package's document: a consolidation's CONS.ACT or CONS.OTH file, else the package
-   * descriptor (DOC), else the largest XML file; the other files are what it refers to.
+   * Converts the document of one package. The document is the first that applies of these:
    *
-   * @param documents the package's XML files, parsed
-   * @param celex the document's CELEX number, as Cellar has it: an OJ act's, which Formex doesn't
-   *     carry, or a consolidation's, which its Formex only approximates; the document must be the
-   *     one it names
+   * <ol>
+   *   <li>the CONS.ACT or CONS.OTH file of a consolidation
+   *   <li>the package descriptor (DOC)
+   *   <li>the largest XML file
+   * </ol>
+   *
+   * <p>The other files are the files that the document refers to.
+   *
+   * @param documents the parsed XML files of the package
+   * @param celex the CELEX number of the document, as Cellar has it. For an OJ act, Formex does not
+   *     carry the number. For a consolidation, its Formex only approximates the number. The
+   *     document must be the one that the number names. It is null if the number is not known.
    * @return the legal-text document
-   * @throws OutOfScopeException if the document isn't a legal act (notices, case law, the OJ's
-   *     tables of contents)
-   * @throws UnsupportedFormexException if it uses Formex the converter doesn't handle yet
-   * @throws ConversionException if it can't be converted for another reason: no file of the package
-   *     is XML, or one it refers to is missing or isn't XML
+   * @throws OutOfScopeException if the document is not a legal act. For example, notices, case law
+   *     or the tables of contents of the OJ.
+   * @throws MisfiledFormexException if the document is not the one that {@code celex} names
+   * @throws UnsupportedFormexException if it uses Formex that the converter does not handle yet
+   * @throws ConversionException if it cannot be converted for another reason. For example, no file
+   *     of the package is XML, or a file that it refers to is missing or is not XML.
    */
-  XdmNode convert(List<Document> documents, Optional<String> celex) {
+  XdmNode convert(List<Document> documents, @Nullable String celex) {
     var document = main(documents);
     var transformer = stylesheet.load30();
     transformer.setResourceResolver(resolver(documents));
     var result = new XdmDestination();
     try {
-      if (celex.isPresent()) {
-        transformer.setStylesheetParameters(Map.of(CELEX, new XdmAtomicValue(celex.get())));
+      if (celex != null) {
+        transformer.setStylesheetParameters(Map.of(CELEX, new XdmAtomicValue(celex)));
       }
-      // the document is the global context item too, as Saxon's command line has it: the
-      // stylesheet's global variables read it (the package's files, its amendment markers)
+      // The document is also the global context item, as on the Saxon command line. The global
+      // variables of the stylesheet read it, for example the files of the package and its
+      // amendment markers.
       transformer.setGlobalContextItem(document);
       transformer.applyTemplates(document, result);
     } catch (SaxonApiException e) {
@@ -163,7 +182,10 @@ final class FormexConverter {
     return new ConversionException(message, e);
   }
 
-  /** The document to convert, of those that are XML, in the order of their names. */
+  /**
+   * Returns the document to convert. It looks only at the files that are XML, in the order of their
+   * names.
+   */
   private static XdmNode main(List<Document> documents) {
     var parsed =
         documents.stream()
@@ -200,8 +222,9 @@ final class FormexConverter {
   }
 
   /**
-   * The package's files for doc(), by their formex: URI; any other URI is the stylesheet's own
-   * (subdivision.rdf), which Saxon resolves as it would without a resolver.
+   * Returns a resolver that gives the files of the package to {@code doc()}, by their {@code
+   * formex:} URI. Any other URI belongs to the stylesheet, for example {@code subdivision.rdf}.
+   * Saxon resolves those as it would without a resolver.
    */
   private static ResourceResolver resolver(List<Document> documents) {
     Map<String, Document> byUri =

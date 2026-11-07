@@ -10,14 +10,21 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.UnsupportedFo
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
-import java.util.Optional;
 import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
 
 /**
- * The adapter on the stylesheet: the CELEX passed, large documents read, a package's files given to
- * the stylesheet as it reads them, and what the stylesheet can't or won't convert reported as
- * exceptions. The stylesheet's own contract is tested in //formex-converter (StylesheetTest).
+ * Tests {@link FormexConverter}, the adapter on the stylesheet. The tests check that:
+ *
+ * <ul>
+ *   <li>the adapter passes the CELEX number to the stylesheet,
+ *   <li>it reads large documents,
+ *   <li>it gives the files of a package to the stylesheet as the stylesheet reads them,
+ *   <li>it reports as exceptions what the stylesheet cannot or will not convert.
+ * </ul>
+ *
+ * <p>{@code StylesheetTest} in {@code //formex-converter} tests the contract of the stylesheet
+ * itself.
  */
 class FormexConverterTest {
 
@@ -25,13 +32,14 @@ class FormexConverterTest {
 
   @Test
   void convertsAnOjActWithItsCelex() {
-    var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.of("32026R0449"));
+    var legalText = CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), "32026R0449");
     assertThat(legalText.toString()).contains("act=\"32026R0449\"");
   }
 
   @Test
   void readsADocumentWithMoreEntityReferencesThanTheJdkAllows() {
-    // a 104 MB annex has over 100,000 &amp;; the JDK's parser stops at 100,000 since JDK 24
+    // A 104 MB annex has more than 100,000 &amp; references. Since JDK 24, the JDK's parser stops
+    // at 100,000.
     var text = "a&amp;b ".repeat(100_500);
     var legalText =
         CONVERTER.convert(
@@ -40,14 +48,14 @@ class FormexConverterTest {
                     "<ENACTING.TERMS><ARTICLE><TI.ART>Article 1</TI.ART><ALINEA>"
                         + text
                         + "</ALINEA></ARTICLE></ENACTING.TERMS>")),
-            Optional.of("32026R0449"));
+            "32026R0449");
     assertThat(legalText.toString()).contains("a&amp;b");
   }
 
   @Test
   void refusesADocumentThatIsNotALegalAct() {
     assertThatExceptionOfType(OutOfScopeException.class)
-        .isThrownBy(() -> CONVERTER.convert(formex("<JUDGMENT/>"), Optional.empty()))
+        .isThrownBy(() -> CONVERTER.convert(formex("<JUDGMENT/>"), null))
         .withMessageContaining("JUDGMENT");
   }
 
@@ -57,15 +65,14 @@ class FormexConverterTest {
         .isThrownBy(
             () ->
                 CONVERTER.convert(
-                    formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")),
-                    Optional.of("32026R0449")))
+                    formex(act("<ENACTING.TERMS><NOT.FORMEX/></ENACTING.TERMS>")), "32026R0449"))
         .withMessageContaining("NOT.FORMEX");
   }
 
   @Test
   void needsTheCelexOfAnOjAct() {
     assertThatExceptionOfType(ConversionException.class)
-        .isThrownBy(() -> CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), Optional.empty()))
+        .isThrownBy(() -> CONVERTER.convert(formex(act("<ENACTING.TERMS/>")), null))
         .isExactlyInstanceOf(ConversionException.class)
         .withMessageContaining("celex");
   }
@@ -77,7 +84,7 @@ class FormexConverterTest {
             List.of(
                 file("CONSLEG_1993D0052_0140010_EN_FMX.request.xml", "not XML"),
                 file("act.xml", act("<ENACTING.TERMS/>"))),
-            Optional.of("32026R0449"));
+            "32026R0449");
     assertThat(legalText.toString()).contains("act=\"32026R0449\"");
   }
 
@@ -87,8 +94,7 @@ class FormexConverterTest {
         .isThrownBy(
             () ->
                 CONVERTER.convert(
-                    List.of(file("package.doc.xml", descriptor("act.xml"))),
-                    Optional.of("32026R0449")))
+                    List.of(file("package.doc.xml", descriptor("act.xml"))), "32026R0449"))
         .withMessageContaining("The package has no file act.xml");
   }
 
@@ -100,14 +106,14 @@ class FormexConverterTest {
                 CONVERTER.convert(
                     List.of(
                         file("package.doc.xml", descriptor("act.xml")), file("act.xml", "<ACT>")),
-                    Optional.of("32026R0449")))
+                    "32026R0449"))
         .withMessageContaining("act.xml isn't XML");
   }
 
   @Test
   void failsWhereNoFileOfThePackageIsXml() {
     assertThatExceptionOfType(ConversionException.class)
-        .isThrownBy(() -> CONVERTER.convert(List.of(file("act.xml", "<ACT>")), Optional.empty()))
+        .isThrownBy(() -> CONVERTER.convert(List.of(file("act.xml", "<ACT>")), null))
         .withMessageContaining("No file of the package is XML");
   }
 
