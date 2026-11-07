@@ -140,11 +140,15 @@ local linters = new Mapping<String, Step> {
   }
 }
 
+// before a commit, secrets in what it adds: not the working tree's, which has the git-ignored corpus
+// (tens of GB of EU texts, whose words trip gitleaks' generic rules)
+local staged = (linters) { ["gitleaks"] = (Builtins.gitleaks) { scan = "staged" } }
+
 hooks {
   ["pre-commit"] {
     fix = true
     stash = "git"
-    steps { ...linters }
+    steps { ...staged }
   }
   // javac's checks, before the commits leave: Bazel builds what changed since its last build
   ["pre-push"] {
