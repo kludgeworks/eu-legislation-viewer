@@ -123,4 +123,13 @@
               test="$x:result/*:unit/*:num/*:changed/*:t/@v = '(c)' and empty($x:result/*:unit/*:provenance)"/>
   </x:scenario>
 
+  <x:scenario label="A marker with attributes without whitespace separation (01979L0117)">
+    <x:context mode="block" xmlns="">
+      <P><?CLG.MDFO ID="O1" IDREF="C1"ACTION="DELETED" LEVEL="TEXT" COMMAND="EXPLICIT" ACTIVE.DOC="385L0298"ACTIVE.LOC="AR:1;PT:1;PT:a" MOD.LEVEL="1"?>deleted text<?CLG.MDFC ID="C1" IDREF="O1"?></P>
+    </x:context>
+    <x:expect label="parses the pseudo-attributes properly">
+      <deleted><provenance amendingAct="31985L0298" action="deleted" location="AR:1;PT:1;PT:a" marker="O1"/><p><t v="deleted text"/></p></deleted>
+    </x:expect>
+  </x:scenario>
+
 </x:description>

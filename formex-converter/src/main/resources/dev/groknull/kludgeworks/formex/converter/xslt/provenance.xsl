@@ -47,8 +47,8 @@
   <!-- all the pseudo-attributes of a processing instruction, the first of each name -->
   <xsl:function name="f:pi-attributes" as="map(xs:string, xs:string)">
     <xsl:param name="pi" as="processing-instruction()"/>
-    <xsl:variable name="m" as="element()" select="analyze-string(string($pi), '(^|\s)([^\s=]+)=([&quot;''])([^&quot;'']*)\3')"/>
-    <xsl:sequence select="map:merge($m/fn:match ! map{string(fn:group[@nr = 2]): string(fn:group[@nr = 4])}, map{'duplicates': 'use-first'})"/>
+    <xsl:variable name="m" as="element()" select="analyze-string(string($pi), '([^\s=&quot;'']+)=([&quot;''])([^&quot;'']*)\2')"/>
+    <xsl:sequence select="map:merge($m/fn:match ! map{string(fn:group[@nr = 1]): string(fn:group[@nr = 3])}, map{'duplicates': 'use-first'})"/>
   </xsl:function>
 
   <!-- markers covering $e (open before it starts, still open after it ends), outermost first -->
@@ -107,8 +107,8 @@
   <xsl:function name="f:action" as="xs:string">
     <xsl:param name="marker" as="processing-instruction()"/>
     <xsl:variable name="action" as="xs:string?" select="f:pi-attr($marker, 'ACTION')"/>
-    <xsl:variable name="known" as="xs:string?" select="map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
-                                                         'DELETED': 'deleted', 'REPEALED': 'deleted', 'RENUMBERED': 'renumbered'}($action)"/>
+    <xsl:variable name="known" as="xs:string?" select="if (exists($action)) then map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
+                                                         'DELETED': 'deleted', 'REPEALED': 'deleted', 'RENUMBERED': 'renumbered'}($action) else ()"/>
     <xsl:sequence select="if (exists($known)) then $known else f:unknown($marker, 'amendment marker ACTION=' || $action)"/>
   </xsl:function>
 
