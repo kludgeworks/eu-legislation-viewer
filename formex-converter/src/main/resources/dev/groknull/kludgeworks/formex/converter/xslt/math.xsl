@@ -201,9 +201,12 @@
     </xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="FT" mode="math">
+  <xsl:template match="FT | MARGIN" mode="math">
     <xsl:sequence select="f:math(node())"/>
   </xsl:template>
+
+  <!-- an empty formula component -->
+  <xsl:template match="IE" mode="math"/>
 
   <xsl:template match="QUOT.START | QUOT.END" mode="math">
     <m:mo>{f:quote-char(.)}</m:mo>
