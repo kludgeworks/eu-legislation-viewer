@@ -3,7 +3,6 @@
 # The task scripts, for their tests (tools/test/tasks)
 exports_files(
     [
-        "lib/ui.bash",
         "release.bash",
         "release/artifact.bash",
         "release/db-migrations.bash",

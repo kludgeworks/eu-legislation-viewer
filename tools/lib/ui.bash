@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 # The task scripts' messages and questions: gum's, styled, on a terminal; plain lines where there is
 # none (CI, hk, the tests), which read as "<task>: <message> key=value". A script sets ui_prefix,
-# its task's name, then sources this. Not executable: mise takes executable files here for tasks.
+# its task's name, then sources this.
 # Bash 3.2+ only: that includes the Bash shipped with supported macOS versions.
 
 ui_prefix=${ui_prefix:-task}

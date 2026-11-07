@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT
+
+# The task scripts' shared functions, for the tests of those scripts (tools/test/tasks)
+exports_files(
+    ["ui.bash"],
+    visibility = ["//tools/test/tasks:__pkg__"],
+)

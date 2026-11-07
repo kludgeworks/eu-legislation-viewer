@@ -1,4 +1,4 @@
 # SPDX-License-Identifier: MIT
 # Follow the files a script sources (# shellcheck source=...), as -x does: hk runs shellcheck
-# without it. The task scripts source tools/tasks/lib/ui.bash.
+# without it. The task scripts source tools/lib/ui.bash.
 external-sources=true

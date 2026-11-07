@@ -6,8 +6,8 @@
 set -euo pipefail
 
 ui_prefix=lint:deps
-# shellcheck source=tools/tasks/lib/ui.bash
-source "$(dirname "${BASH_SOURCE[0]}")/../lib/ui.bash"
+# shellcheck source=tools/lib/ui.bash
+source "$(dirname "${BASH_SOURCE[0]}")/../../lib/ui.bash"
 
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../../.." && pwd)}
 cd "$root"
