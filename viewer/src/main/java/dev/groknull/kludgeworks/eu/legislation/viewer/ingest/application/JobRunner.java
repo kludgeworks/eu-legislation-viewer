@@ -7,7 +7,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionDeferred;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionFailed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionStarted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Trace;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
@@ -36,21 +35,31 @@ import org.springframework.transaction.event.TransactionalEventListener;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Running a requested job, on one of this instance's workers once its request is committed
- * (ExpressionRequested, from the event registry): started (ExpressionStarted), unless it is running
- * or done already; then the expression's Formex converted, its text stored, the job marked built
- * and ExpressionBuilt published, those three in one transaction; or the job failed, with
- * ExpressionFailed. A refusal (no Formex, not a legal act, Formex not handled) fails it at once,
- * and so does anything else on its last attempt (viewer.ingest.max-attempts), as unavailable if it
- * was Cellar not answering (SourceUnavailableException), as an error if not; before that, it is
- * back in the queue (ExpressionDeferred) and its request failed, for the registry to hand out again
- * a little later (EventsConfiguration's resubmission).
+ * Runs a requested job on one of the workers of this instance. The event registry gives the runner
+ * an {@link ExpressionRequested} after the request is committed.
  *
- * <p>Its work is a span (ingest.job) in the trace of the request that scheduled it, and its log
- * lines carry the job, the CELEX, the language and the attempt's trace (MDC), which a failure
- * panel's reference quotes. Each job's outcome is logged once, here. A job started again elsewhere
- * meanwhile (taken over: viewer.ingest.takeover) can't be finished here: the start changed its
- * version.
+ * <ol>
+ *   <li>The runner starts the job and publishes {@link ExpressionStarted}. If the job is running or
+ *       done already, the runner does nothing.
+ *   <li>The runner converts the Formex of the expression.
+ *   <li>In one transaction, it stores the text, marks the job built and publishes {@link
+ *       ExpressionBuilt}.
+ * </ol>
+ *
+ * <p>If the job fails, the runner publishes {@link ExpressionFailed}. A refusal of the converter
+ * fails the job at once. For example, Cellar has no Formex, the document is not a legal act, or the
+ * converter does not handle its Formex. Any other error fails the job only on the last attempt
+ * ({@code viewer.ingest.max-attempts}). The failure is "unavailable" if Cellar did not answer
+ * ({@link SourceUnavailableException}), and "error" if not. Before the last attempt, the runner
+ * puts the job back in the queue and publishes {@link ExpressionDeferred}. It also fails the
+ * request, so that the registry gives it out again a little later. The resubmission of {@code
+ * EventsConfiguration} does this.
+ *
+ * <p>The work of a job is a span ({@code ingest.job}) in the trace of the request that scheduled
+ * it. Its log lines carry the job, the CELEX and the language in the MDC. A failure carries the
+ * trace id of the span, which the failure panel shows. The runner logs the outcome of each job
+ * once. Another worker can start the job again while it runs, after {@code viewer.ingest.takeover}.
+ * That start changes the version of the job, so this runner cannot finish it.
  */
 @Component
 class JobRunner {
@@ -85,8 +94,9 @@ class JobRunner {
   }
 
   /**
-   * The request's job, run: done once it is built, failed or not this worker's to run; failed if it
-   * is deferred, so the registry hands the request out again.
+   * Runs the job of the request. The returned future completes when the job is built or failed, or
+   * when the job is not for this worker to run. The future fails if the job is deferred, so that
+   * the registry gives out the request again.
    */
   @Async(IngestApplicationConfiguration.WORKERS)
   @TransactionalEventListener
@@ -114,14 +124,12 @@ class JobRunner {
     return job;
   }
 
-  /** Runs the started job; why it was deferred, if it was. */
+  /** Runs the started job. Returns the reason why the job was deferred, or null if it was not. */
   private @Nullable RuntimeException run(IngestJob job) {
     var span = span(job);
     try (var id = MDC.putCloseable("job", String.valueOf(job.id()));
         var celex = MDC.putCloseable("celex", job.celex());
         var language = MDC.putCloseable("language", job.language().code());
-        var trace =
-            MDC.putCloseable("trace", Trace.of(job.celex(), job.language(), job.attempts()));
         var scope = tracer.withSpan(span)) {
       return build(job);
     } catch (RuntimeException e) {
@@ -148,7 +156,7 @@ class JobRunner {
 
   private @Nullable RuntimeException build(IngestJob started) {
     var start = System.nanoTime();
-    // the job as last written: each write changes its version
+    // The job as last written. Each write changes its version.
     var job = started;
     try {
       var text = conversions.convert(job.celex(), job.language());
@@ -222,10 +230,20 @@ class JobRunner {
     transactions.executeWithoutResult(
         status -> {
           jobs.save(job.failed(failure, detail));
-          events.publishEvent(new ExpressionFailed(job.celex(), job.language(), failure, detail));
+          events.publishEvent(
+              new ExpressionFailed(job.celex(), job.language(), failure, detail, traceId()));
         });
     LOG.info(
         "Couldn't build {} in {}: {}, {}", job.celex(), job.language().code(), failure, detail);
+  }
+
+  /** The trace id of the attempt that runs now. It is null if tracing records no trace. */
+  private @Nullable String traceId() {
+    var span = tracer.currentSpan();
+    if (span == null || span.isNoop()) {
+      return null;
+    }
+    return span.context().traceId();
   }
 
   private void defer(IngestJob job, String detail) {

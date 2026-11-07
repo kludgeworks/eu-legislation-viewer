@@ -19,10 +19,11 @@ import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
 /**
- * An act read from Cellar again once it is due, through the module's API: 2015/1998 prepared in
- * English on the converter's fixtures, then Cellar listing its consolidation of 1 March 2022 too
- * (OneActCellar.REFRESHED), which the fixtures have no Formex of; its steps' counts, kept, dropped
- * to be counted again. On its own, so no other test sees the act change.
+ * Tests, through the module's API, that an act is read from Cellar again when it is due. The test
+ * prepares 2015/1998 in English on the converter's fixtures. Then Cellar also lists the
+ * consolidation of 1 March 2022, as in {@link OneActCellar#REFRESHED}. The fixtures have no Formex
+ * of that consolidation. The kept counts of the act's steps are dropped, to be counted again. This
+ * test class runs on its own, so that no other test sees the act change.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -42,20 +43,20 @@ class RefreshTests {
     await()
         .atMost(Duration.ofMinutes(2))
         .until(() -> texts.prepare(act, Language.ENG), preparation -> !preparation.preparing());
-    // not due yet: as kept
+    // The act is not due yet, so it comes from the store.
     acts.find(OneActCellar.CELEX);
     assertThat(cellar.asked).containsOnlyOnce(OneActCellar.CELEX.celex());
-    // a step counted by the act as it was
+    // A step counted against the act as it was.
     var counted = new StepCounts.Counted(Map.of(new ActIdentifier("32026R0449"), 6), 0, 0);
     stepCounts.add(OneActCellar.CELEX, FROM, TO, counted);
     assertThat(stepCounts.find(OneActCellar.CELEX, FROM, TO)).contains(counted);
 
-    // a day later, Cellar listing a version more
+    // A day later, Cellar lists one more version.
     cellar.act = OneActCellar.REFRESHED;
     jdbc.sql("update act set checked_at = now() - interval '2 days' where celex = '32015R1998'")
         .update();
 
-    // as kept, at once; read again in the background
+    // The kept act comes back at once. The act is read again in the background.
     assertThat(acts.find(OneActCellar.CELEX).orElseThrow().timeline().versions()).hasSize(5);
     var refreshed =
         await()
@@ -64,7 +65,7 @@ class RefreshTests {
                 () -> acts.find(OneActCellar.CELEX).orElseThrow(),
                 each -> each.timeline().versions().size() == 6);
     var march = refreshed.timeline().startingOn(LocalDate.of(2022, 3, 1)).orElseThrow();
-    // prepared on its own, the act's pages not waiting for it
+    // The new version is prepared on its own. The act's pages do not wait for it.
     var prepared =
         await()
             .atMost(Duration.ofMinutes(1))
@@ -74,11 +75,13 @@ class RefreshTests {
                   var text = preparation.texts().get(march);
                   return text != null && text.settled();
                 });
-    assertThat(prepared.texts().get(march)).isEqualTo(new Text.Failed(Failure.NO_FORMEX, 1));
+    assertThat(prepared.texts().get(march))
+        .isInstanceOfSatisfying(
+            Text.Failed.class, failed -> assertThat(failed.failure()).isEqualTo(Failure.NO_FORMEX));
     assertThat(prepared.preparing()).isFalse();
     assertThat(prepared.arriving()).isEmpty();
     assertThat(cellar.asked).filteredOn(OneActCellar.CELEX.celex()::equals).hasSize(2);
-    // to be counted again, by the act as it is now
+    // The step is to be counted again, against the act as it is now.
     assertThat(stepCounts.find(OneActCellar.CELEX, FROM, TO)).isEmpty();
   }
 }

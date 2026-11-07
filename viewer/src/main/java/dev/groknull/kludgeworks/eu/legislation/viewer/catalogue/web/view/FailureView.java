@@ -9,7 +9,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Trace;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +19,21 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Why a text couldn't be made, in its place, at the address the reader asked for (Design: When it
- * fails): one panel, with words for each kind of failure and only the actions that can help. Trying
- * again posts to the page itself, only where it may help (Failure.retryable).
+ * A panel that says why a text could not be made. The panel shows in place of the text, at the
+ * address that the reader asked for. It has words for each kind of failure, and only the actions
+ * that can help. "Try again" posts to the page itself. It shows only where trying again may help,
+ * as {@link Failure#retryable()} tells.
  *
- * @param fault whether it is a fault, the source's or ours, rather than how things are
- * @param heading what happened: The Publications Office didn't answer
- * @param words what it means for the reader
- * @param facts which version, and what else may help: the languages it is in
- * @param retry where Try again posts: the page; none where trying again can't help
- * @param actions the links that can help, the likeliest first
- * @param reference what to quote reporting it; none where a report can't help
+ * @param fault whether the failure is a fault of the source or of the viewer, rather than how
+ *     things are
+ * @param heading what happened. For example, "The Publications Office didn't answer".
+ * @param words what the failure means for the reader
+ * @param facts which version failed, and other facts that may help. For example, the languages that
+ *     the version is in.
+ * @param retry the address that "Try again" posts to, which is the page. Null where trying again
+ *     cannot help.
+ * @param actions the links that can help, the most likely first
+ * @param reference the reference to quote in a report. Null where a report cannot help.
  */
 public record FailureView(
     boolean fault,
@@ -47,8 +50,8 @@ public record FailureView(
   }
 
   /**
-   * The page of {@code version}, at {@code self}, whose text in {@code language} couldn't be made
-   * ({@code failed}).
+   * Returns the panel for the page of {@code version}, at {@code self}. The text of the version in
+   * {@code language} could not be made, as {@code failed} tells.
    */
   public static FailureView reading(
       Act act, Version version, Text.Failed failed, Language language, String self) {
@@ -63,18 +66,20 @@ public record FailureView(
   }
 
   /**
-   * The page of {@code version}, at {@code self}, which the Publications Office lists no text of in
-   * {@code language} (Design D-64): as a text it has no Formex of, Not available in Irish, with the
-   * languages it is in.
+   * Returns the panel for the page of {@code version}, at {@code self}, when the Publications
+   * Office lists no text of it in {@code language}. The panel is the same as for a text that has no
+   * Formex. For example, it says "Not available in Irish" and gives the languages that the version
+   * is in.
    */
   public static FailureView missing(Act act, Version version, Language language, String self) {
     return of(act, version, Failure.NO_FORMEX, null, language, self, List.of());
   }
 
   /**
-   * The comparison of {@code from} with {@code to}, at {@code self}, where {@code failed}'s text
-   * (either end's) couldn't be made: as its page's, with the comparison of the versions either side
-   * of it first.
+   * Returns the panel for the comparison of {@code from} with {@code to}, at {@code self}, when the
+   * text of {@code failed} could not be made. {@code failed} is one of the two ends. The panel is
+   * the same as for the page of {@code failed}. Its first action is the comparison of the versions
+   * on each side of {@code failed}, if both exist.
    */
   public static FailureView comparing(
       Act act,
@@ -100,9 +105,10 @@ public record FailureView(
   }
 
   /**
-   * The act, at {@code self}, none of whose texts in the language could be made ({@code
-   * preparation}): This act couldn't be prepared, and the first failure; Back to the results of the
-   * reader's last search, if there was one ({@code results}).
+   * Returns the panel for the act, at {@code self}, when none of its texts in the language could be
+   * made, as {@code preparation} tells. The panel says "This act couldn't be prepared" and gives
+   * the first failure. If the reader made a search, {@code results} gives it, and the panel links
+   * back to its results.
    */
   public static FailureView act(
       Act act, Preparation preparation, String self, Chrome.@Nullable Results results) {
@@ -161,7 +167,8 @@ public record FailureView(
       }
     }
     var timeline = timeline(act, language);
-    // by date: the version may not be one of the language's
+    // Find the versions before and after by date. The version may not be in the timeline of the
+    // language.
     timeline
         .flatMap(
             t ->
@@ -260,13 +267,14 @@ public record FailureView(
     };
   }
 
-  /** What to quote reporting it: 32015R1998 · eng · 7f3c, the attempt's trace (Design D-62). */
+  /**
+   * The reference that a reader quotes in a report, for example {@code 32015R1998 · eng ·
+   * 4bf92f3577b34da6a3ce929d0e0e4736}. The last part is the trace id of the attempt that failed. It
+   * is not there if no trace was recorded.
+   */
   private static String trace(Version version, Text.Failed failed, Language language) {
-    return version.celex()
-        + " · "
-        + language.code().toLowerCase(Locale.ROOT)
-        + " · "
-        + Trace.of(version.celex(), language, failed.attempt());
+    var reference = version.celex() + " · " + language.code().toLowerCase(Locale.ROOT);
+    return failed.trace() == null ? reference : reference + " · " + failed.trace();
   }
 
   private static Eli eli(Act act) {
@@ -278,14 +286,16 @@ public record FailureView(
   }
 
   /**
-   * A fact of the version's: Version, 02015R1998-20230401, from 1 April 2023 · made by 2023/566.
+   * A fact about the version. For example, the term "Version" with the detail "02015R1998-20230401,
+   * from 1 April 2023 · made by 2023/566".
    */
   public record Fact(String term, String detail) {}
 
   /**
    * A link that can help.
    *
-   * @param button whether it is drawn as a button, as the ways on are; a plain link, as EUR-Lex is
+   * @param button whether the link shows as a button. The ways to continue in the viewer are
+   *     buttons. The links to EUR-Lex are plain links.
    */
   public record Action(String label, String href, boolean button) {
     static Action button(String label, String href) {

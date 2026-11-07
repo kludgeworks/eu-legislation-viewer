@@ -25,7 +25,6 @@ import java.time.Duration;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,16 +34,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * An act's preparation in a language, and its versions' texts as they stand, kept by the module as
- * ingest's events say (each in its own transaction): queued, being built, queued again after a
- * failed attempt, built, failed. Each change to a text is a step of its act's preparation, and its
- * PreparationChanged; the last to settle one settles the preparation, once: PreparationCompleted,
- * or PreparationFailed if none was built. Preparing an act starts its preparation, queues its texts
- * and schedules those not settled; what ingest says of each puts right any whose event isn't kept
- * yet, or was lost. Trying an act again queues its texts that failed again, where that may help,
- * and starts its preparation over. A text built whose version's neighbours in the language are
- * built too asks for their comparisons ahead of a reader (ComparisonWanted): with the version
- * before, and after.
+ * Prepares an act in a language, and stores the state of the texts of its versions. It stores each
+ * state as the events of ingest tell it, each event in its own transaction. A text can be queued,
+ * being built, queued again after a failed attempt, built, or failed.
+ *
+ * <ul>
+ *   <li>Each change to a text is a step of the preparation of its act. It publishes a {@link
+ *       PreparationChanged} event.
+ *   <li>The last text to settle settles the preparation, once. This publishes {@link
+ *       PreparationCompleted}, or {@link PreparationFailed} if no text was built.
+ *   <li>To prepare an act starts its preparation, queues its texts and schedules the texts that are
+ *       not settled. What ingest says of each text corrects a text whose event is not stored yet,
+ *       or was lost.
+ *   <li>To try an act again queues its failed texts again, where that may help. It also starts the
+ *       preparation again.
+ *   <li>When a text is built, it asks for its comparison with the version before and with the
+ *       version after, if their texts in the language are built too. It publishes a {@link
+ *       ComparisonWanted} event for each, so the comparison is ready before a reader asks.
+ * </ul>
  */
 @Service
 class TextService implements Texts {
@@ -83,9 +90,14 @@ class TextService implements Texts {
         changed |= schedule(text.getKey(), language);
       }
     }
-    // after its texts, as a text's change locks the one then the other
+    // Start the preparation after the texts, because a change of a text locks the text first and
+    // then the preparation.
     preparations.start(act.id(), language);
-    changed |= settle(act, language, preparations.lock(act.id(), language));
+    changed |=
+        preparations
+            .lock(act.id(), language)
+            .map(kept -> settle(act, language, kept))
+            .orElse(false);
     if (changed) {
       events.publishEvent(new PreparationChanged(act.id(), language));
     }
@@ -108,7 +120,8 @@ class TextService implements Texts {
       LOG.debug("Nothing of {} in {} to try again", act.id(), language.code());
       return;
     }
-    // after its texts, as a text's change locks the one then the other
+    // Restart the preparation after the texts, because a change of a text locks the text first
+    // and then the preparation.
     preparations.restart(act.id(), language);
     LOG.info("Trying {} in {} again: {} versions", act.id(), language.code(), retried);
     events.publishEvent(new PreparationChanged(act.id(), language));
@@ -137,7 +150,10 @@ class TextService implements Texts {
         waiting ? ingest.ahead(celexes, language) : 0);
   }
 
-  /** The text scheduled, and put right as ingest says it stands: whether that changed it. */
+  /**
+   * Schedules the text, and corrects its state as ingest says it stands. Returns whether that
+   * changed the text.
+   */
   private boolean schedule(String celex, Language language) {
     var status = ingest.schedule(celex, language);
     return switch (status.state()) {
@@ -151,16 +167,19 @@ class TextService implements Texts {
             Objects.requireNonNull(status.root()),
             Objects.requireNonNull(status.converter()));
       }
-      case FAILED -> expressions.fail(celex, language, Objects.requireNonNull(status.failure()));
+      // ingest keeps no trace id. A text that is failed already keeps the one it has.
+      case FAILED ->
+          expressions.fail(celex, language, Objects.requireNonNull(status.failure()), null);
     };
   }
 
   /**
-   * Settles the act's preparation, {@code kept} as locked, if every text is: once, the last of its
-   * texts' changes seeing the others'. Whether it settled now.
+   * Settles the act's preparation if every text is settled. {@code kept} is the preparation as
+   * locked. It settles once, and the last change of its texts sees the others. Returns whether it
+   * settled now.
    */
-  private boolean settle(Act act, Language language, Optional<PreparationStore.Kept> kept) {
-    if (kept.isEmpty() || kept.get().settledAt() != null) {
+  private boolean settle(Act act, Language language, PreparationStore.Kept kept) {
+    if (kept.settledAt() != null) {
       return false;
     }
     var preparation = preparation(act, language);
@@ -178,7 +197,7 @@ class TextService implements Texts {
         preparation.ready(),
         preparation.size(),
         preparation.failed(),
-        Duration.between(kept.get().started(), clock.instant()).toSeconds());
+        Duration.between(kept.started(), clock.instant()).toSeconds());
     events.publishEvent(
         prepared
             ? new PreparationCompleted(
@@ -230,7 +249,8 @@ class TextService implements Texts {
   @ApplicationModuleListener
   void on(ExpressionFailed failed) {
     var act = acts.findByVersion(failed.celex());
-    if (act.isPresent() && expressions.fail(failed.celex(), failed.language(), failed.failure())) {
+    if (act.isPresent()
+        && expressions.fail(failed.celex(), failed.language(), failed.failure(), failed.trace())) {
       LOG.debug(
           "{} in {} couldn't be built: {}",
           failed.celex(),
@@ -245,7 +265,7 @@ class TextService implements Texts {
   void on(ExpressionBuilt built) {
     var act = acts.findByVersion(built.celex());
     if (act.isEmpty()) {
-      // a version the catalogue doesn't have: not one of its texts
+      // A version that the catalogue does not have. It is not one of its texts.
       return;
     }
     if (expressions.keep(built.celex(), built.language(), built.root(), built.converter())) {
@@ -274,8 +294,9 @@ class TextService implements Texts {
   }
 
   /**
-   * The act's text changed: a step of its preparation in the language, which may settle it. Its
-   * preparation locked first, so the step's reference to it waits on no other change.
+   * Records that a text of the act changed. The change is a step of its preparation in the
+   * language, and it may settle the preparation. The preparation is locked first, so the reference
+   * of the step to it waits on no other change.
    */
   private void changed(
       Act act,
@@ -286,7 +307,7 @@ class TextService implements Texts {
       @Nullable Failure failure) {
     var kept = preparations.lock(act.id(), language);
     preparations.step(act.id(), language, celex, kind, attempt, failure);
-    settle(act, language, kept);
+    kept.ifPresent(each -> settle(act, language, each));
     events.publishEvent(new PreparationChanged(act.id(), language));
   }
 

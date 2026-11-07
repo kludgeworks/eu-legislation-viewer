@@ -20,20 +20,22 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
- * Why 2015/1998's version of 31 December 2021 couldn't be made, as its page says it (Cellar's
- * versions, recorded): its words and only the actions that can help, for each kind of failure.
+ * Tests how the page of the version of 31 December 2021 of 2015/1998 says why the version could not
+ * be made. For each kind of failure, {@link FailureView} gives its words and only the actions that
+ * can help. The versions are Cellar's, recorded.
  */
 class FailureViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
   static final String PAGES = "/eli/reg_impl/2015/1998/";
   static final String SELF = PAGES + "2021-12-31/eng";
   static final Version VERSION = version("02015R1998-20211231");
+  static final String TRACE = "4bf92f3577b34da6a3ce929d0e0e4736";
 
   @Test
   void offersToTryAgainWhenThePublicationsOfficeDidntAnswer() {
     var failure =
         FailureView.reading(
-            AVSEC, VERSION, new Text.Failed(Failure.UNAVAILABLE, 1), Language.ENG, SELF);
+            AVSEC, VERSION, new Text.Failed(Failure.UNAVAILABLE, TRACE), Language.ENG, SELF);
 
     assertThat(failure.heading()).isEqualTo("The Publications Office didn't answer");
     assertThat(failure.fault()).isTrue();
@@ -54,14 +56,15 @@ class FailureViewTest {
   void offersNoTryAgainWhereItCantHelpButAReferenceWhereAReportCan() {
     var unsupported =
         FailureView.reading(
-            AVSEC, VERSION, new Text.Failed(Failure.UNSUPPORTED, 1), Language.ENG, SELF);
+            AVSEC, VERSION, new Text.Failed(Failure.UNSUPPORTED, TRACE), Language.ENG, SELF);
     var error =
-        FailureView.reading(AVSEC, VERSION, new Text.Failed(Failure.ERROR, 1), Language.ENG, SELF);
+        FailureView.reading(
+            AVSEC, VERSION, new Text.Failed(Failure.ERROR, TRACE), Language.ENG, SELF);
 
     assertThat(unsupported.retry()).isNull();
-    assertThat(unsupported.reference()).isEqualTo("02015R1998-20211231 · eng · 1f37");
+    assertThat(unsupported.reference()).isEqualTo("02015R1998-20211231 · eng · " + TRACE);
     assertThat(error.retry()).isEqualTo(SELF);
-    assertThat(error.reference()).isEqualTo("02015R1998-20211231 · eng · 1f37");
+    assertThat(error.reference()).isEqualTo("02015R1998-20211231 · eng · " + TRACE);
   }
 
   @Test
@@ -70,7 +73,7 @@ class FailureViewTest {
         FailureView.reading(
             AVSEC,
             VERSION,
-            new Text.Failed(Failure.NO_FORMEX, 1),
+            new Text.Failed(Failure.NO_FORMEX, TRACE),
             Language.GLE,
             PAGES + "2021-12-31/gle");
 
@@ -83,15 +86,16 @@ class FailureViewTest {
   }
 
   @Test
-  void quotesTheAttemptsTraceSoAReportFindsItsLogLines() {
-    var first =
-        FailureView.reading(AVSEC, VERSION, new Text.Failed(Failure.ERROR, 1), Language.ENG, SELF);
-    var third =
-        FailureView.reading(AVSEC, VERSION, new Text.Failed(Failure.ERROR, 3), Language.ENG, SELF);
+  void quotesTheFailedAttemptsTraceIdSoAReportFindsItsLogLines() {
+    var traced =
+        FailureView.reading(
+            AVSEC, VERSION, new Text.Failed(Failure.ERROR, TRACE), Language.ENG, SELF);
+    var untraced =
+        FailureView.reading(
+            AVSEC, VERSION, new Text.Failed(Failure.ERROR, null), Language.ENG, SELF);
 
-    assertThat(first.reference())
-        .isNotEqualTo(third.reference())
-        .startsWith("02015R1998-20211231 · eng · ");
+    assertThat(traced.reference()).isEqualTo("02015R1998-20211231 · eng · " + TRACE);
+    assertThat(untraced.reference()).isEqualTo("02015R1998-20211231 · eng");
   }
 
   @Test
@@ -119,7 +123,7 @@ class FailureViewTest {
             from,
             VERSION,
             VERSION,
-            new Text.Failed(Failure.UNAVAILABLE, 1),
+            new Text.Failed(Failure.UNAVAILABLE, TRACE),
             Language.ENG,
             PAGES + "eng/compare?from=2021-07-01&to=2021-12-31");
 
@@ -134,8 +138,8 @@ class FailureViewTest {
   @Test
   void saysTheActCouldntBePreparedWithItsFirstFailure() {
     var texts = new LinkedHashMap<Version, Text>();
-    texts.put(version("02015R1998-20210701"), new Text.Failed(Failure.NO_FORMEX, 1));
-    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE, 1));
+    texts.put(version("02015R1998-20210701"), new Text.Failed(Failure.NO_FORMEX, TRACE));
+    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE, TRACE));
     var preparation =
         new Preparation(
             AVSEC.id(), Language.ENG, Instant.EPOCH, Instant.EPOCH, texts, List.of(), 0);
@@ -152,7 +156,7 @@ class FailureViewTest {
         .isEqualTo(
             "None of its 2 versions could be converted. The first failure: the Publications"
                 + " Office has no Formex of it in this language.");
-    // one of them may answer now
+    // One of them can answer now, so a retry can help.
     assertThat(failure.retry()).isEqualTo(SELF);
     assertThat(failure.actions())
         .extracting(Action::label, Action::href)
@@ -166,7 +170,7 @@ class FailureViewTest {
   @Test
   void hasNoWayBackToResultsWithoutASearch() {
     var texts = new LinkedHashMap<Version, Text>();
-    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE, 1));
+    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE, TRACE));
     var preparation =
         new Preparation(
             AVSEC.id(), Language.ENG, Instant.EPOCH, Instant.EPOCH, texts, List.of(), 0);

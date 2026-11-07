@@ -27,11 +27,17 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Versions' texts through the module's API: an act prepared whole, its versions built in the
- * background by ingest on the converter's fixtures (FormexFixtures: 2015/1998's consolidations of
- * 22 March and 1 October 2026 in English, no Formex of its other versions, no legal act in French),
- * and kept as the events say, whatever order they arrive in; a version and the one before it, both
- * built, compared ahead of a reader.
+ * Tests the texts of versions through the module's API. The tests prepare a whole act. The ingest
+ * module builds its versions in the background on the converter's fixtures, {@code FormexFixtures}:
+ *
+ * <ul>
+ *   <li>In English, the consolidations of 2015/1998 of 22 March and 1 October 2026.
+ *   <li>No Formex of the other versions.
+ *   <li>In French, a document that is not a legal act.
+ * </ul>
+ *
+ * <p>The texts are kept as the events say, in any order the events arrive. When a version and the
+ * one before it are both built, they are compared before a reader asks.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -55,27 +61,28 @@ class TextsTests {
     assertThat(preparing.settled()).isFalse();
     assertThat(Objects.requireNonNull(preparing.texts().get(version)).settled()).isFalse();
 
-    // as kept, from ingest's events alone
+    // The texts are kept from the events of ingest alone.
     var prepared =
         await()
             .atMost(Duration.ofMinutes(2))
             .until(() -> texts.preparation(act, Language.ENG), Preparation::settled);
-    // the fixtures' two built (and any other test kept); the original, of which there are none,
-    // failed
+    // The two versions in the fixtures are built, with any that other tests kept. The fixtures
+    // have no Formex of the original, so it failed.
     assertThat(
             prepared.texts().entrySet().stream()
                 .filter(entry -> entry.getValue() instanceof Text.Ready)
                 .map(entry -> entry.getKey().celex()))
         .contains("02015R1998-20260322", "02015R1998-20261001");
     assertThat(prepared.texts().get(timeline.first()))
-        .isEqualTo(new Text.Failed(Failure.NO_FORMEX, 1));
+        .isInstanceOfSatisfying(
+            Text.Failed.class, failed -> assertThat(failed.failure()).isEqualTo(Failure.NO_FORMEX));
     var root = ((Text.Ready) Objects.requireNonNull(prepared.texts().get(version))).root();
     assertThat(
             content.rebuild(
                 root, new Processor(false).newDocumentBuilder().newBuildingStreamWriter()))
         .isTrue();
     await().until(() -> kept(version.celex()), kept -> kept == 1);
-    // settled once, with what was done to each version as it happened
+    // The preparation settles once. It records what was done to each version as it happened.
     assertThat(prepared.took()).isPresent();
     assertThat(prepared.steps())
         .filteredOn(step -> step.celex().equals(version.celex()))
@@ -93,11 +100,12 @@ class TextsTests {
     var versions = timeline().versions();
     var earlier = versions.get(1);
     var later = versions.get(2);
-    // any two texts will do, as the versions' own
+    // Any two texts can stand in for the texts of the versions.
     var before = content.store(LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
     var after = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
 
-    // the later first: kept with no text before it, it's compared once the earlier is
+    // The later text is built first. It is kept with no text before it. It is compared when the
+    // earlier text is kept.
     built(later, after);
     await().until(() -> kept(later.celex()), kept -> kept == 1);
     built(earlier, before);
@@ -115,7 +123,9 @@ class TextsTests {
             .until(() -> texts.prepare(act(), Language.FRA), Preparation::settled);
 
     assertThat(prepared.texts().get(consolidation()))
-        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE, 1));
+        .isInstanceOfSatisfying(
+            Text.Failed.class,
+            failed -> assertThat(failed.failure()).isEqualTo(Failure.OUT_OF_SCOPE));
   }
 
   @Test
@@ -125,7 +135,8 @@ class TextsTests {
     await()
         .atMost(Duration.ofMinutes(1))
         .until(() -> texts.prepare(act, Language.FRA), Preparation::settled);
-    // as if the Publications Office hadn't answered for the version, on every attempt
+    // This makes it look as if the Publications Office did not answer for the version on any
+    // attempt.
     jdbc.sql("update ingest_job set failure = 'UNAVAILABLE' where celex = ? and language = 'FRA'")
         .param(celex)
         .update();
@@ -135,7 +146,8 @@ class TextsTests {
 
     texts.retry(act, Language.FRA);
 
-    // prepared over: only the version tried again, failing as the fixtures do in French
+    // The act is prepared again. Only the failed version is tried again. It fails as the fixtures
+    // do in French.
     var prepared =
         await()
             .atMost(Duration.ofMinutes(1))
@@ -145,8 +157,8 @@ class TextsTests {
                     preparation.settledAt() != null
                         && preparation.steps().stream()
                             .anyMatch(step -> step.kind() == Preparation.Step.Kind.FAILED));
-    // started, then failed; or only failed: the events arrive in any order, and a text that
-    // failed isn't started after
+    // The steps are either "started, then failed" or only "failed". The events arrive in any
+    // order, and a text that failed does not start after that.
     assertThat(prepared.steps())
         .allSatisfy(step -> assertThat(step.celex()).isEqualTo(celex))
         .extracting(Preparation.Step::kind)
@@ -154,22 +166,24 @@ class TextsTests {
             List.of(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.FAILED),
             List.of(Preparation.Step.Kind.FAILED));
     assertThat(prepared.texts().get(consolidation()))
-        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE, 1));
+        .isInstanceOfSatisfying(
+            Text.Failed.class,
+            failed -> assertThat(failed.failure()).isEqualTo(Failure.OUT_OF_SCOPE));
   }
 
   @Test
   void movesATextOnOnlyAsItsEventsArriveInAnyOrder() {
     var celex = timeline().versions().get(1).celex();
-    // a language no other test prepares
+    // No other test prepares this language.
     var language = Language.DEU;
     expressions.queue(List.of(celex), language);
 
     assertThat(expressions.start(celex, language, 1)).isTrue();
     assertThat(expressions.defer(celex, language, 1)).isTrue();
-    // the first attempt's start again, late
+    // The start of the first attempt arrives again, late.
     assertThat(expressions.start(celex, language, 1)).isFalse();
     assertThat(text(celex, language)).isEqualTo(new Text.Queued());
-    // the second attempt's deferral before its start
+    // The deferral of the second attempt arrives before its start.
     assertThat(expressions.defer(celex, language, 2)).isTrue();
     assertThat(expressions.start(celex, language, 2)).isFalse();
     assertThat(expressions.start(celex, language, 3)).isTrue();
@@ -180,7 +194,7 @@ class TextsTests {
     assertThat(expressions.keep(celex, language, root, "test")).isFalse();
     assertThat(expressions.defer(celex, language, 3)).isFalse();
     assertThat(expressions.start(celex, language, 4)).isFalse();
-    assertThat(expressions.fail(celex, language, Failure.ERROR)).isFalse();
+    assertThat(expressions.fail(celex, language, Failure.ERROR, null)).isFalse();
     assertThat(text(celex, language)).isEqualTo(new Text.Ready(root));
   }
 
@@ -214,7 +228,7 @@ class TextsTests {
         .single();
   }
 
-  /** Whether the text in English is kept as built. */
+  /** How many texts in English of {@code celex} are kept as built. */
   private long kept(String celex) {
     return jdbc.sql(
             "select count(*) from expression where celex = ? and language = 'ENG' and state ="
