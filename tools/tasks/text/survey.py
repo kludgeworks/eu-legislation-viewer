@@ -1,33 +1,12 @@
 #!/usr/bin/env -S uv run --script --quiet
 # SPDX-License-Identifier: MIT
 # MISE description="Compare a sample of the corpus with EUR-Lex's HTML, as text:compare does one page, and rank the patterns by how many texts have them"
-# USAGE flag "--language <code>" default="ENG" help="The mirror's language (see corpus:fetch)"
-# USAGE flag "--size <n>" default="200" help="How many texts to sample"
-# USAGE flag "--compare-only" help="Compare the pages the last run rendered, without sampling or converting again"
+# USAGE include file="$MISE_CONFIG_ROOT/tools/tasks/text/survey.usage.kdl"
 # /// script
 # requires-python = ">=3.14"
 # dependencies = ["playwright==1.64.0"]
 # ///
-"""text:compare over a sample of the corpus: which differences from EUR-Lex are rules of ours to fix.
-
-    mise run text:survey [--size 200] [--language ENG]
-
-EUR-Lex's HTML is made from Formex by rules, so a difference that many texts have is one rule,
-ours or theirs, and one that only one text has is a quirk of its source. text:compare finds the
-differences on one page; this finds which are general.
-
-1. The sample: the mirror's (corpus:fetch) acts as published (CELEX 3…) and consolidated versions
-   (0…), stratified by kind, Formex version and type of act (regulation, directive, decision,
-   other), spread across sizes within each stratum, one version of an act at most. Chosen by the
-   manifestations' Cellar IDs, so the same mirror gives the same sample.
-2. Each converted (convert_texts) and rendered as the viewer renders it (render_texts), without a
-   database or Cellar: text-compare/survey/{legal-text,pages}.
-3. Each page compared with EUR-Lex's HTML of the text, as text:compare compares (its reference is
-   fetched from Cellar once, into text-compare/reference/).
-4. text-compare/survey/summary.md: the patterns, ranked by how many texts have them, with examples
-   from several texts; then each text's count. Each text's every difference is in
-   text-compare/reports/{celex}.md.
-"""
+"""text:compare over a sample of the corpus: which differences from EUR-Lex are rules of ours to fix."""
 
 import argparse
 import contextlib

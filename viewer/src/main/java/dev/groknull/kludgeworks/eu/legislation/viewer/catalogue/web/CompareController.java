@@ -663,12 +663,13 @@ class CompareController {
       // both in the language, as the comparison's versions are picked from its timeline
       var earlier = Objects.requireNonNull(preparation.texts().get(from));
       var later = Objects.requireNonNull(preparation.texts().get(to));
-      for (var each : new Text[] {earlier, later}) {
-        if (each instanceof Text.Failed failed) {
-          return templates.catalogueTextFailed(
-              FailureView.comparing(
-                  act, from, to, each == earlier ? from : to, failed.failure(), language, self));
-        }
+      if (earlier instanceof Text.Failed failed) {
+        return templates.catalogueTextFailed(
+            FailureView.comparing(act, from, to, from, failed.failure(), language, self));
+      }
+      if (later instanceof Text.Failed failed) {
+        return templates.catalogueTextFailed(
+            FailureView.comparing(act, from, to, to, failed.failure(), language, self));
       }
       if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
         return templates.catalogueCompareReady(Links.changes(eli, from, to, language, only, view));

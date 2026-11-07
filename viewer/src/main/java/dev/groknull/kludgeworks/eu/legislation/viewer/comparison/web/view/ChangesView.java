@@ -249,13 +249,11 @@ public record ChangesView(
     var first = siblings.getFirst();
     var last = siblings.getLast();
     var join = siblings.size() == 2 ? " and " : " to ";
-    var unnumbered =
-        siblings.stream().filter(sibling -> !WORD.matcher(sibling.num()).find()).count();
-    if (unnumbered == siblings.size()) {
+    if (siblings.stream().allMatch(sibling -> !WORD.matcher(sibling.num()).find())) {
       var noun = noun(first.kind()).toLowerCase(Locale.ROOT);
       return siblings.size() + " " + (siblings.size() == 1 ? noun : plural(noun));
     }
-    if (unnumbered > 0) {
+    if (siblings.stream().anyMatch(sibling -> !WORD.matcher(sibling.num()).find())) {
       return span(siblings);
     }
     var named = siblings.stream().map(sibling -> NAMED.matcher(sibling.num())).toList();
@@ -287,7 +285,7 @@ public record ChangesView(
     var last = numbered.getLast();
     var noun = noun(first.kind());
     var named = NAMED.matcher(first.num()).matches();
-    if (first == last) {
+    if (numbered.size() == 1) {
       return (named ? cited(first) : noun + " " + cited(first)) + " (" + count + ")";
     }
     return (named ? cited(first) : plural(noun) + " " + cited(first))

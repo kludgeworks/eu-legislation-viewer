@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "sparql_terms_test")
 
 # The cellar module's SPARQL queries, on the classpath beside the classes that run them

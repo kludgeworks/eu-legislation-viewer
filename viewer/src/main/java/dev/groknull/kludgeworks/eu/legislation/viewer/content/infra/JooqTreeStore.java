@@ -337,6 +337,9 @@ class JooqTreeStore implements TreeStore {
   }
 
   private static byte[] bytes(@Nullable JSONB json) {
-    return Objects.requireNonNull(json).data().getBytes(StandardCharsets.UTF_8);
+    if (json == null) {
+      throw new IllegalArgumentException("json is required");
+    }
+    return json.data().getBytes(StandardCharsets.UTF_8);
   }
 }

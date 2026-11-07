@@ -1,6 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
-load("@rules_java//java:defs.bzl", "java_binary", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_junit5_test", "java_library", "java_test_suite")
 
 # The stylesheets' tests, run as any XSLT client runs them (Stylesheet): every fixture against the schema, legal-text.sch,
 # MathML 3, its expected output, its source text and the source metadata the viewer relies on;

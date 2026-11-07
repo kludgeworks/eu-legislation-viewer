@@ -138,7 +138,9 @@ class BroadcastConfiguration {
   /** A read failed: logged, and read again a little later rather than at once. */
   private static void failed(Throwable failure) {
     LOG.warn(
-        "Reading the broadcast streams failed, again in {}: {}", AFTER_FAILURE, failure.toString());
+        "Reading the broadcast streams failed, again in {}: {}",
+        AFTER_FAILURE,
+        failure.getMessage());
     try {
       Thread.sleep(AFTER_FAILURE);
     } catch (InterruptedException e) {

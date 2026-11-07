@@ -17,6 +17,8 @@ void main(String... paths) throws ParserConfigurationException, SAXException {
   var factory = SAXParserFactory.newInstance();
   factory.setNamespaceAware(true);
   factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+  factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+  factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
   var parser = factory.newSAXParser();
   int malformed = 0;
   for (var path : paths) {

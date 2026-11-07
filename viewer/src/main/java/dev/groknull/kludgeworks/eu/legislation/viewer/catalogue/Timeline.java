@@ -29,7 +29,7 @@ public final class Timeline {
     if (versions.isEmpty()) {
       throw new IllegalArgumentException("A timeline has at least the original text");
     }
-    TreeMap<LocalDate, Version> byDate =
+    NavigableMap<LocalDate, Version> byDate =
         versions.stream()
             .collect(
                 Collectors.toMap(

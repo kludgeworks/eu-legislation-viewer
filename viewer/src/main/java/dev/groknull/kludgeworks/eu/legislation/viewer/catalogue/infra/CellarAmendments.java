@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.regex.Pattern;
 import org.slf4j.Logger;
@@ -63,7 +64,7 @@ final class CellarAmendments {
    * The languages of Cellar's list of them: SV, PL (ISO 639-1); none for none, and those it doesn't
    * know left out.
    */
-  private static EnumSet<Language> languages(String list) {
+  private static Set<Language> languages(String list) {
     var languages = EnumSet.noneOf(Language.class);
     for (var iso : list.toLowerCase(Locale.ROOT).split("[\\s,;]+")) {
       Arrays.stream(Language.values())

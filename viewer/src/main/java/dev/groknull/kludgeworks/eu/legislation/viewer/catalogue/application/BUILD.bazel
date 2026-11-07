@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
 # The catalogue module's application ring: the acts from the store, read from Cellar the first time
 java_library(

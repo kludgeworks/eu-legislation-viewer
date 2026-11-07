@@ -11,6 +11,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,7 +32,7 @@ public class Sparql {
 
   private final RestClient client;
   private final CellarProperties properties;
-  private final ConcurrentHashMap<String, CompletableFuture<SparqlResult>> running =
+  private final ConcurrentMap<String, CompletableFuture<SparqlResult>> running =
       new ConcurrentHashMap<>();
 
   private final Executor executor;

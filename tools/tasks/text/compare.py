@@ -1,41 +1,12 @@
 #!/usr/bin/env -S uv run --script --quiet
 # SPDX-License-Identifier: MIT
 # MISE description="Compare the viewer's pages with EUR-Lex's HTML of the same texts, line by line"
+# USAGE include file="$MISE_CONFIG_ROOT/tools/tasks/text/compare.usage.kdl"
 # /// script
 # requires-python = ">=3.14"
 # dependencies = ["playwright==1.64.0"]
 # ///
-"""Our page of a version against EUR-Lex's HTML of it, as a reader sees both: line by line.
-
-    mise run text:compare http://127.0.0.1:8080/eli/reg_impl/2015/1998/2015-11-15/eng [more pages]
-
-The reference is the version's xhtml manifestation in Cellar, by the CELEX the page shows: the HTML
-EUR-Lex shows (its site answers scripts with a JavaScript challenge; Cellar is its interface for
-machines). It is fetched once into text-compare/reference/ (ignored by git and Bazel), and shown with
-scripts off, styled as EUR-Lex styles it: its stylesheets are behind the same challenge, so they are
-the Internet Archive's copies (STYLESHEETS), fetched once too, the text in EUR-Lex's frame (FRAME).
-
-Both pages are read in a headless Chromium, the same width: a line is the text of a block (a
-paragraph, a heading, a cell), and blocks side by side (a table's row, a number beside its heading)
-are one line. The lines are aligned, and each difference is sorted into a kind:
-
-    missing     a line of EUR-Lex's that we don't show
-    extra       a line of ours that EUR-Lex doesn't have
-    moved       the same line, elsewhere
-    split       one line of EUR-Lex's that we show as several (the same text)
-    merged      several of EUR-Lex's that we show as one
-    regrouped   the same text, broken into lines differently
-    spacing     the same line but for spaces
-    marker      the same line but for what starts or ends it (a list's dash, a number)
-    changed     a line whose text differs
-    aligned     the same line, set elsewhere across the column: left, centred, right, or indented
-    styled      the same line in another face: bold, italic
-
-The differences are then grouped into patterns, by kind and by the elements that made the lines
-(EUR-Lex's classes, ours: each legal-text element's template writes its name as a class): one
-pattern is one thing to fix. The patterns are printed, most frequent first, with an example each;
-text-compare/reports/{celex}.md lists every difference.
-"""
+"""Our page of a version against EUR-Lex's HTML of it, as a reader sees both: line by line."""
 
 import argparse
 import difflib
@@ -267,6 +238,8 @@ def stylesheets() -> str:
         path = OUT / "reference" / "css" / name
         if not path.exists():
             request = urllib.request.Request(WAYBACK + archived, headers={"User-Agent": USER_AGENT})
+            # Target URL is safely prefixed with constant HTTPS WAYBACK archive origin
+            # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
             with urllib.request.urlopen(request, timeout=120) as response:
                 body = response.read()
             path.parent.mkdir(parents=True, exist_ok=True)
@@ -289,6 +262,8 @@ def reference(celex: str, language: str) -> str | None:
             },
         )
         try:
+            # Target URL is safely prefixed with constant HTTPS CELLAR endpoint origin
+            # nosemgrep: python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected
             with urllib.request.urlopen(request, timeout=120) as response:
                 body = response.read()
         except urllib.error.HTTPError as e:

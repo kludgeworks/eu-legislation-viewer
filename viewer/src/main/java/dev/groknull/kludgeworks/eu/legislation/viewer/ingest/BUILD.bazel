@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
 # The ingest module's API: scheduling an expression's legal text to be built (Ingest), its job's
 # status, and the events that say how it went

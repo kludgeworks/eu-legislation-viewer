@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.util.Optional;
-import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
@@ -16,10 +15,13 @@ import org.jmolecules.ddd.annotation.ValueObject;
 @ValueObject
 public record Eli(String path) {
   private static final String BASE = "http://data.europa.eu/eli/";
-  private static final Pattern PATH = Pattern.compile("[^/\\s]+(/[^/\\s]+)*");
 
   public Eli {
-    if (!PATH.matcher(path).matches()) {
+    if (path.isEmpty()
+        || path.startsWith("/")
+        || path.endsWith("/")
+        || path.contains("//")
+        || path.chars().anyMatch(Character::isWhitespace)) {
       throw new IllegalArgumentException("Not an ELI: " + path);
     }
   }
@@ -44,7 +46,11 @@ public record Eli(String path) {
     }
     var path = uri.substring(BASE.length());
     path = path.endsWith("/oj") ? path.substring(0, path.length() - "/oj".length()) : path;
-    return PATH.matcher(path).matches() ? Optional.of(new Eli(path)) : Optional.empty();
+    try {
+      return Optional.of(new Eli(path));
+    } catch (IllegalArgumentException e) {
+      return Optional.empty();
+    }
   }
 
   @Override

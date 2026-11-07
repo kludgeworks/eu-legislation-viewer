@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
 # The module's API and domain: Act, its identifiers, versions and timeline; Acts, the repository
 java_library(

@@ -1,6 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
-load("@rules_java//java:defs.bzl", "java_binary")
+load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_test_suite")
 
 # The legal text's templates on the converter's samples: one each, and running text as it reads
 java_test_suite(

@@ -77,7 +77,7 @@ final class Stylesheet {
 
   /** The stylesheet stopped: its error code (f:out-of-scope, f:unknown, or Saxon's) and why. */
   static final class Failure extends Exception {
-    private final transient @Nullable QName code;
+    private final @Nullable QName code;
 
     Failure(@Nullable QName code, String message, Throwable cause) {
       super(message, cause);

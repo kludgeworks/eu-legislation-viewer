@@ -130,6 +130,14 @@ local linters = new Mapping<String, Step> {
   ["check_case_conflict"] = Builtins.check_case_conflict
   ["check_added_large_files"] = (Builtins.check_added_large_files) { exclude = raw + generated }
   ["detect_private_key"] = Builtins.detect_private_key
+  ["gitleaks"] = Builtins.gitleaks
+  ["semgrep"] = new Step {
+    glob = List("**/*.java", "**/*.py")
+    exclude = raw + vendored + generated
+    batch = true
+    check =
+      "semgrep scan --config semgrep/ --config p/java --config p/owasp-top-ten --config p/security-audit --config p/secrets --config p/python --metrics=off --error {{files}}"
+  }
 }
 
 hooks {

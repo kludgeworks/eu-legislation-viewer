@@ -43,6 +43,8 @@ jobs:
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
         run: mise run check
+      - name: Dependency vulnerability check
+        run: mise run lint:deps
       # the compile's checks too: Error Prone, NullAway and doclint fail the build
       - name: Build and test
         run: mise run test

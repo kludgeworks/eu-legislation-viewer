@@ -8,6 +8,8 @@ bazel_dep(name = "rules_java", version = "9.9.0")
 bazel_dep(name = "rules_jvm_external", version = "7.2")
 bazel_dep(name = "contrib_rules_jvm", version = "0.34.0")
 bazel_dep(name = "bazel_skylib", version = "1.9.2")
+bazel_dep(name = "apple_rules_lint", version = "0.4.0")
+bazel_dep(name = "rules_shell", version = "0.6.1")
 
 # bats_test: the task scripts' tests (tools/test/tasks), with its own bats; already in the graph
 # through rules_jvm_external and contrib_rules_jvm
@@ -131,6 +133,11 @@ maven.install(
         "org.testcontainers:testcontainers-grafana",
         # the build's own log (jooq_codegen)
         "org.slf4j:slf4j-simple",
+        # SpotBugs, plugins and logging (ISS-82)
+        "com.github.spotbugs:spotbugs:4.10.5",
+        "com.h3xstream.findsecbugs:findsecbugs-plugin:1.14.0",
+        "com.mebigfatguy.sb-contrib:sb-contrib:7.7.4",
+        "org.slf4j:slf4j-jdk14:2.0.17",
     ],
     boms = [
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
@@ -148,7 +155,30 @@ maven.artifact(
     group = "jakarta.servlet",
     neverlink = True,
 )
-use_repo(maven, "maven")
+
+# PMD tooling isolated to its required Saxon 12 engine (ISS-82)
+maven.install(
+    name = "pmd_maven",
+    artifacts = [
+        "net.sourceforge.pmd:pmd-dist:7.28.0",
+        "net.sf.saxon:Saxon-HE:12.10",
+        "org.slf4j:slf4j-jdk14:2.0.17",
+    ],
+    repositories = ["https://repo1.maven.org/maven2"],
+)
+use_repo(maven, "maven", "pmd_maven")
+
+# Linting via apple_rules_lint (ISS-82)
+linter = use_extension("@apple_rules_lint//lint:extensions.bzl", "linter")
+linter.configure(
+    name = "java-spotbugs",
+    config = "//tools/build:spotbugs_config",
+)
+linter.configure(
+    name = "java-pmd",
+    config = "//tools/build:pmd_ruleset",
+)
+use_repo(linter, "apple_linters")
 
 # xslt-quality: Schematron rules for XSLT (github.com/mricaud/xslt-quality, Apache-2.0). It has no
 # releases; this is master as of 2024-11-13. The patch makes its schema work with SchXslt 2.

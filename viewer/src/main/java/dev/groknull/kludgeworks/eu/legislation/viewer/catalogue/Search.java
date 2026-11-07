@@ -89,8 +89,8 @@ public interface Search {
       var words =
           WORD.matcher(text.toLowerCase(Locale.ROOT))
               .results()
-              .map(MatchResult::group)
               .limit(MOST_WORDS)
+              .map(MatchResult::group)
               .toList();
       return words.isEmpty() ? Optional.empty() : Optional.of(new Query(words, kind, offset, size));
     }

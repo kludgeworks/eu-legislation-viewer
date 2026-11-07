@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "pmd_binary", "pmd_ruleset", "spotbugs_binary", "spotbugs_config")
 load("@rules_java//java:defs.bzl", "java_import", "java_library", "java_package_configuration", "java_plugin")
 load("@rules_java//toolchains:default_java_toolchain.bzl", "DEFAULT_TOOLCHAIN_CONFIGURATION", "default_java_toolchain")
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -9,8 +11,60 @@ package(default_visibility = ["//visibility:public"])
 
 exports_files([
     "defs.bzl",
+    "pmd.xml",
+    "spotbugs-exclude.xml",
     "xslt-quality.conf.xml",
 ])
+
+# PMD and CPD (ISS-82)
+pmd_binary(
+    name = "pmd_cli",
+    runtime_deps = [
+        "@pmd_maven//:net_sf_saxon_Saxon_HE",
+        "@pmd_maven//:net_sourceforge_pmd_pmd_dist",
+    ],
+)
+
+pmd_ruleset(
+    name = "pmd_ruleset",
+    format = "text",
+    pmd_binary = ":pmd_cli",
+    rulesets = [":pmd.xml"],
+    shallow = False,
+)
+
+# CPD (Copy-Paste Detector) test (ISS-82)
+sh_test(
+    name = "cpd",
+    srcs = ["cpd.sh"],
+    args = ["$(rootpath :pmd_cli)"],
+    data = [":pmd_cli"],
+    tags = [
+        "local",
+        "no-sandbox",
+    ],
+)
+
+# SpotBugs with FindSecBugs and sb-contrib plugins (ISS-82)
+spotbugs_binary(
+    name = "spotbugs_cli",
+    runtime_deps = [
+        "@maven//:com_github_spotbugs_spotbugs",
+        "@maven//:org_slf4j_slf4j_jdk14",
+    ],
+)
+
+spotbugs_config(
+    name = "spotbugs_config",
+    effort = "default",
+    exclude_filter = "spotbugs-exclude.xml",
+    fail_on_warning = True,
+    plugin_list = [
+        "@maven//:com_h3xstream_findsecbugs_findsecbugs_plugin",
+        "@maven//:com_mebigfatguy_sb_contrib_sb_contrib",
+    ],
+    spotbugs_binary = ":spotbugs_cli",
+)
 
 # NullAway, an Error Prone check, for every Java target (see .bazelrc): it checks the @NullMarked
 # packages, so generated and third-party code is left alone

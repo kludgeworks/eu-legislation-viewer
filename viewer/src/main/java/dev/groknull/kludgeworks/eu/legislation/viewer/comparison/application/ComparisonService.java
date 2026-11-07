@@ -13,6 +13,7 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,7 +36,7 @@ class ComparisonService implements Comparisons {
   private final ComparisonStore comparisons;
   private final ObservationRegistry observations;
   private final Executor executor;
-  private final ConcurrentHashMap<Pair, CompletableFuture<Optional<Comparison>>> running =
+  private final ConcurrentMap<Pair, CompletableFuture<Optional<Comparison>>> running =
       new ConcurrentHashMap<>();
 
   /** The texts a comparison is of. */

@@ -1,8 +1,7 @@
 # SPDX-License-Identifier: MIT
 """Build macros for the amendment viewer."""
 
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test")
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library")
 load("@rules_java//java/common:java_info.bzl", "JavaInfo")
 
 def _project_version_impl(ctx):

@@ -124,6 +124,7 @@ public class FormexFiles {
     try {
       var factory = XMLInputFactory.newFactory();
       factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+      factory.setProperty(XMLInputFactory.IS_SUPPORTING_EXTERNAL_ENTITIES, false);
       var reader = factory.createXMLStreamReader(new ByteArrayInputStream(page));
       while (reader.hasNext()) {
         if (reader.next() == XMLStreamConstants.START_ELEMENT

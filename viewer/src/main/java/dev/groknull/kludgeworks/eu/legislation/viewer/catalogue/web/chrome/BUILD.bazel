@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
 # What every page has around it, the layout's (src/main/jte/layout): the reader's colour theme, and
 # where the page is. Its own target, so the templates can take it while catalogue/web renders them

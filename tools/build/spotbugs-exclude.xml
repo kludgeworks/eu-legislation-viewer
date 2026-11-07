@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<FindBugsFilter>
+  <!-- Generated code: jOOQ classes -->
+  <Match>
+    <Package name="~.*\.infra\.jooq(\..*)?" />
+  </Match>
+
+  <!-- Generated code: jte templates -->
+  <Match>
+    <Package name="~gg\.jte\.generated(\..*)?" />
+  </Match>
+
+  <!-- Generated code: RecordBuilder generated classes -->
+  <Match>
+    <Class name="~.*Builder(\$.*)?" />
+  </Match>
+
+  <!--
+    NullAway with JSpecify (@NullMarked) is enforced on all packages at compile-time (-Werror).
+    SpotBugs bytecode-level null dereference heuristics (NP) conflict with JSpecify annotations
+    and report false positives on safely marked methods.
+  -->
+  <Match>
+    <Bug pattern="NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE" />
+  </Match>
+
+  <!--
+    LSC (Literal String Comparison): sb-contrib flags 's.equals("lit")' advocating '"lit".equals(s)'.
+    Under JSpecify @NullMarked, strings are guaranteed non-null; 's.equals("lit")' is standard modern Java.
+  -->
+  <Match>
+    <Bug code="LSC" />
+  </Match>
+
+  <!--
+    MOM (Misleading Overload Model): sb-contrib flags static factory methods (e.g. of(), name())
+    that share names with instance methods on records/classes. Static factory methods are idiomatic in Java.
+  -->
+  <Match>
+    <Bug code="MOM" />
+  </Match>
+
+  <!--
+    OCP (Overly Concrete Parameter): sb-contrib flags parameters typed as List suggesting Collection.
+    List is deliberately used throughout this project to preserve document order, indexing, and sequence semantics.
+  -->
+  <Match>
+    <Bug code="OCP" />
+  </Match>
+
+  <!--
+    EI / EI2 (Exposing Internal Representation): SpotBugs flags records and domain value objects holding
+    byte[] or collections. Value objects (ContentHash, Tree.Node) and records are treated as immutable representations.
+  -->
+  <Match>
+    <Bug code="EI,EI2" />
+  </Match>
+
+  <!--
+    NAB (Needless Autoboxing) & SEO (Sub-optimal Expression Order):
+    Micro-optimization heuristics from sb-contrib that add noise without safety benefits.
+  -->
+  <Match>
+    <Bug code="NAB,SEO" />
+  </Match>
+
+  <!--
+    EXS (Exception Squashing): Flags converting checked exceptions to standard unchecked exceptions
+    (e.g., IOException to UncheckedIOException, or SaxonApiException to IllegalStateException).
+  -->
+  <Match>
+    <Bug code="EXS" />
+  </Match>
+
+  <!--
+    LEST (Lost Exception Stack Trace): In CompletableFuture APIs, unwrapping CompletionException to rethrow
+    the underlying domain cause is intentional standard practice.
+  -->
+  <Match>
+    <Bug code="LEST" />
+  </Match>
+
+  <!--
+    WI (Wiring Issue): LegalRenderer.instead() produces an immutable modified prototype copy with 'new',
+    which sb-contrib flags because LegalRenderer is also configured as a Spring bean.
+  -->
+  <Match>
+    <Bug code="WI" />
+  </Match>
+
+  <!--
+    OI (OptIn / Premature Execution): sb-contrib flags executing small conditional blocks.
+  -->
+  <Match>
+    <Bug code="OI" />
+  </Match>
+
+  <!--
+    IMC (Inappropriate Method Call): Flyway's MigrationResolver interface requires returning Collection<ResolvedMigration>.
+  -->
+  <Match>
+    <Bug code="IMC" />
+  </Match>
+
+  <!--
+    FCCD (Find Circular Class Dependency): Domain ring and legal text AST structures.
+  -->
+  <Match>
+    <Bug code="FCCD" />
+  </Match>
+
+  <!--
+    CC (Cyclomatic Complexity): CellarDates.clause() parses diverse EU legal formula patterns via complex branches.
+  -->
+  <Match>
+    <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.CellarDates" />
+    <Bug code="CC" />
+  </Match>
+
+  <!--
+    CE (Class Envy): CompareView.Card builds card view data from Act models.
+  -->
+  <Match>
+    <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView$Card" />
+    <Bug code="CE" />
+  </Match>
+
+  <!--
+    DLC (Dubious List Collection) & STT (String Parsing):
+    Amendment.Role uses List where roles are ordered; FormexConverter parses request URIs.
+  -->
+  <Match>
+    <Bug code="DLC,STT" />
+  </Match>
+
+  <!--
+    SECUHE (Unsafe Hash Equals): FindSecBugs flags comparing ContentHash with equals() as a timing attack risk.
+    ContentHash is a content-addressable SHA-256 hash of legal document text for tree deduplication, not an auth secret.
+  -->
+  <Match>
+    <Bug code="SECUHE" />
+  </Match>
+
+  <!--
+    Build tools (tools/build):
+    These run at build time inside Bazel with arguments from the build system, not untrusted HTTP requests.
+    SECPTI (Path Traversal) and SECRD (regex ReDOS) do not apply to local build scripts.
+  -->
+  <Match>
+    <Package name="~dev\.groknull\.kludgeworks\.build(\..*)?" />
+    <Bug code="SECPTI,SECRD" />
+  </Match>
+
+  <!--
+    Test targets:
+    Tests read local fixtures, parse test XML schemas without network access, run test processes,
+    and assert on constant test data. Security warnings on test infrastructure are false positives.
+  -->
+  <Match>
+    <Class name="~.*Test(s)?(\$.*)?" />
+    <Bug code="SECPTI,SECXXESF,SECXXEVAL,SECSQLIJDBC,SECCI,SEC,CLI,PRMC,SACM,FS,FII,NFF" />
+  </Match>
+  <Match>
+    <Class name="~.*(Fixtures|TestLib|TestSupport|RenderTexts)(\$.*)?" />
+    <Bug code="SECPTI,SECXXESF,SECXXEVAL,SECSQLIJDBC,SECCI,SEC,CLI,PRMC,SACM,FS,FII,NFF" />
+  </Match>
+</FindBugsFilter>

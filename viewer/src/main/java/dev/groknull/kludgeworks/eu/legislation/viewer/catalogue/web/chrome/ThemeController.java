@@ -68,7 +68,7 @@ class ThemeController {
           && uri.getRawPath().startsWith("/")) {
         return uri;
       }
-    } catch (URISyntaxException e) {
+    } catch (URISyntaxException ignored) {
       // not an address: home
     }
     return URI.create("/");

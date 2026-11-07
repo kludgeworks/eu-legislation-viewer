@@ -1,0 +1,49 @@
+# SPDX-License-Identifier: MIT
+rules:
+  - id: jooq-no-sql-string-concatenation
+    languages:
+      - java
+    severity: ERROR
+    message: "Avoid dynamic string concatenation or String.format in jOOQ queries. Use jOOQ DSL type-safe query builders and bind parameters instead to prevent SQL injection."
+    metadata:
+      category: security
+      cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+      technology:
+        - java
+        - jooq
+    patterns:
+      - pattern-either:
+          - pattern: $CTX.query($STR + $X, ...)
+          - pattern: $CTX.query(String.format(...), ...)
+          - pattern: $CTX.resultQuery($STR + $X, ...)
+          - pattern: $CTX.resultQuery(String.format(...), ...)
+          - pattern: DSL.query($STR + $X, ...)
+          - pattern: DSL.query(String.format(...), ...)
+          - pattern: DSL.resultQuery($STR + $X, ...)
+          - pattern: DSL.resultQuery(String.format(...), ...)
+          - pattern: DSL.raw($STR + $X, ...)
+          - pattern: DSL.raw(String.format(...), ...)
+          - pattern: DSL.condition($STR + $X, ...)
+          - pattern: DSL.condition(String.format(...), ...)
+
+  - id: jdbc-no-raw-sql-concatenation
+    languages:
+      - java
+    severity: ERROR
+    message: "Avoid dynamic string concatenation or String.format in JDBC statements. Use PreparedStatement with parameterized queries or jOOQ DSL builders instead."
+    metadata:
+      category: security
+      cwe: "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+      technology:
+        - java
+        - jdbc
+    patterns:
+      - pattern-either:
+          - pattern: $STMT.execute($STR + $X, ...)
+          - pattern: $STMT.execute(String.format(...), ...)
+          - pattern: $STMT.executeQuery($STR + $X, ...)
+          - pattern: $STMT.executeQuery(String.format(...), ...)
+          - pattern: $STMT.executeUpdate($STR + $X, ...)
+          - pattern: $STMT.executeUpdate(String.format(...), ...)
+          - pattern: $CONN.prepareStatement($STR + $X, ...)
+          - pattern: $CONN.prepareStatement(String.format(...), ...)

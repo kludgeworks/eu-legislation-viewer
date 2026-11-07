@@ -1,6 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
-load("@rules_java//java:defs.bzl", "java_library")
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library", "java_test_suite")
 
 # The legal texts the tests encode: the converter's expected output for its fixtures
 java_library(

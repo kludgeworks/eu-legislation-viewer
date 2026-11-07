@@ -1,0 +1,82 @@
+# SPDX-License-Identifier: MIT
+# Documented vulnerability suppressions for OSV-Scanner.
+# Every suppression must include an explicit reason explaining why it does not impact this service.
+
+# --- Semgrep CLI tool dependencies (pipx in .mise/locks) ---
+# Semgrep is executed solely as a local developer / CI static analysis tool.
+# It does not operate as an MCP network server or handle untrusted network traces.
+[[IgnoredVulns]]
+id = "GHSA-5h93-6whr-6q8j"
+reason = "Semgrep CLI dependency: MCP HTTP client transport SSRF not reachable in CLI static analysis"
+
+[[IgnoredVulns]]
+id = "GHSA-84m7-p3x7-pcfv"
+reason = "Semgrep CLI dependency: MCP session accumulation not reachable in CLI static analysis"
+
+[[IgnoredVulns]]
+id = "GHSA-rwrf-2pqf-9j8j"
+reason = "Semgrep CLI dependency: MCP ref fetching not reachable in CLI static analysis"
+
+[[IgnoredVulns]]
+id = "GHSA-w4fh-qvv9-3v23"
+reason = "Semgrep CLI dependency: MCP server auth not reachable in CLI static analysis"
+
+[[IgnoredVulns]]
+id = "GHSA-xcq7-p3pf-p88h"
+reason = "Semgrep CLI dependency: OpenTelemetry Python tracestate DoS not reachable in CLI static analysis"
+
+# --- Guava (transitive build/compiler dependency) ---
+[[IgnoredVulns]]
+id = "GHSA-xxph-c9ww-hj94"
+reason = "Pulled in by Error Prone compiler support. Java native object deserialization is not used on untrusted data."
+
+# --- OpenTelemetry Java (managed by Spring Boot BOM) ---
+[[IgnoredVulns]]
+id = "GHSA-ccrj-gw8r-854m"
+reason = "Managed by Spring Boot BOM. W3C tracestate parsing DoS not exploitable as ingress gateway sanitizes trace headers."
+
+# --- Apache Tomcat (managed by Spring Boot BOM) ---
+[[IgnoredVulns]]
+id = "GHSA-9xv2-5v5q-p794"
+reason = "Managed by Spring Boot BOM. Tomcat DIGEST authentication is not enabled or used in this service."
+
+[[IgnoredVulns]]
+id = "GHSA-f525-44xv-f2qj"
+reason = "Managed by Spring Boot BOM. HTTP/2 SNI validation bypass not applicable behind reverse proxy/ingress."
+
+[[IgnoredVulns]]
+id = "GHSA-gcx9-497g-6cp6"
+reason = "Managed by Spring Boot BOM. Tomcat default servlet improper access control not applicable to Spring MVC routing."
+
+[[IgnoredVulns]]
+id = "GHSA-h3x4-894j-xpx5"
+reason = "Managed by Spring Boot BOM. Tomcat FORM authentication is not enabled or used in this service."
+
+# --- Jackson Core & Databind (managed by Spring Boot BOM) ---
+[[IgnoredVulns]]
+id = "GHSA-7hhh-6rmp-j9qf"
+reason = "Managed by Spring Boot BOM. UTF8DataInputJsonParser DoS not reachable via standard Spring MVC body readers."
+
+[[IgnoredVulns]]
+id = "GHSA-p6pp-m3f8-5c89"
+reason = "Managed by Spring Boot BOM. Float regex ReDoS not reachable on validated numeric request parameters."
+
+[[IgnoredVulns]]
+id = "GHSA-cxp5-3px4-pw24"
+reason = "Managed by Spring Boot BOM. Forward-reference completion DoS not applicable to immutable record payloads."
+
+[[IgnoredVulns]]
+id = "GHSA-gx83-3vf8-gh7j"
+reason = "Managed by Spring Boot BOM. Polymorphic default typing is disabled; DefaultBaseTypeLimitingValidator not used."
+
+[[IgnoredVulns]]
+id = "GHSA-q4xh-88c3-wmh7"
+reason = "Managed by Spring Boot BOM. XMLGregorianCalendar deserialization is not configured or exposed."
+
+[[IgnoredVulns]]
+id = "GHSA-wjgm-6hv5-3cvf"
+reason = "Managed by Spring Boot BOM. Path/FileSystemProvider deserialization is not configured or exposed."
+
+[[IgnoredVulns]]
+id = "GHSA-wv8q-qhhj-9h54"
+reason = "Managed by Spring Boot BOM. Raw type ID retention DoS not applicable without polymorphic deserialization."

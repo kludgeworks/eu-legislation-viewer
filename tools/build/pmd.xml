@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: MIT -->
+<ruleset name="Custom PMD Ruleset"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+  <description>
+    PMD rules for EU Legislation Viewer covering security, performance, multithreading,
+    errorprone, and best practices. Rules covered by Error Prone, NullAway, Picnic Error
+    Prone Support, or modern Java idioms are excluded with rationale comments below.
+  </description>
+
+  <!-- Security rules -->
+  <rule ref="category/java/security.xml" />
+
+  <!-- Multithreading rules -->
+  <rule ref="category/java/multithreading.xml">
+    <!-- J2EE container rule not applicable to standalone Spring Boot application -->
+    <exclude name="DoNotUseThreads" />
+    <!-- Flags thread-confined local HashMaps where concurrent access is impossible -->
+    <exclude name="UseConcurrentHashMap" />
+    <!-- PMD 7 bug: throws ContextedRuntimeException when parsing Java records -->
+    <exclude name="NonThreadSafeSingleton" />
+    <!-- Volatile variables are used for lightweight thread-safe state flags in test doubles -->
+    <exclude name="AvoidUsingVolatile" />
+  </rule>
+
+  <!-- Performance rules -->
+  <rule ref="category/java/performance.xml">
+    <!-- Constructing domain records and value objects inside database/XML mapping loops is idiomatic Java -->
+    <exclude name="AvoidInstantiatingObjectsInLoops" />
+    <!-- Modern string concatenation in small loops (e.g. building citations) is optimized by invokedynamic -->
+    <exclude name="UseStringBufferForStringAppends" />
+    <!-- Separate .append() statements are often preferred for readability over long chained builder expressions -->
+    <exclude name="ConsecutiveAppendsShouldReuse" />
+  </rule>
+
+  <!-- Error Prone rules -->
+  <rule ref="category/java/errorprone.xml">
+    <!-- In Java records and modern accessors, field names intentionally match accessor method names -->
+    <exclude name="AvoidFieldNameMatchingMethodName" />
+    <!-- Field name matching enclosing class name (e.g. Stylesheet.stylesheet) is intentional for singleton instances -->
+    <exclude name="AvoidFieldNameMatchingTypeName" />
+    <!-- Short common domain identifiers and test string literals do not warrant indirection via constants -->
+    <exclude name="AvoidDuplicateLiterals" />
+    <!-- In service and job boundaries, catching RuntimeException to wrap or report unhandled failures is intentional -->
+    <exclude name="AvoidCatchingGenericException" />
+    <!-- Exception classes are never serialized across JVMs; Picnic Error Prone discourages serialVersionUID -->
+    <exclude name="MissingSerialVersionUID" />
+    <!-- Non-serializable exception fields: checked exceptions in test code or internal errors are not serialized -->
+    <exclude name="NonSerializableClass" />
+    <!-- Numbers like 0, 1, 2 in size/index condition checks are clear in context -->
+    <exclude name="AvoidLiteralsInIfCondition" />
+    <!-- Null assignments are used in linked structures and state resets; NullAway strictly enforces null safety -->
+    <exclude name="NullAssignment" />
+    <!-- Old J2EE check; Spring Boot and modular classloaders handle ClassLoader context -->
+    <exclude name="UseProperClassLoader" />
+    <!-- Standard while ((line = reader.readLine()) != null) idiom in parsing -->
+    <exclude name="AssignmentInOperand" />
+    <!-- Catching general RuntimeException and branching on specific cause types is standard error dispatch -->
+    <exclude name="AvoidInstanceofChecksInCatchClause" />
+    <!-- Dynamic test runners and abstract base test fixtures are not standalone test classes -->
+    <exclude name="TestClassWithoutTestCases" />
+    <!-- Returning on first matching element in search loops is idiomatic -->
+    <exclude name="AvoidBranchingStatementAsLastInLoop" />
+    <!-- Spring-managed @Bean resources (e.g. SimpleAsyncTaskExecutor) lifecycle is handled by Spring ApplicationContext -->
+    <exclude name="CloseResource" />
+  </rule>
+
+  <!-- Best Practices rules -->
+  <rule ref="category/java/bestpractices.xml">
+    <!-- SLF4J parameterized logging handles lazy message construction; log level guards are redundant for standard logs -->
+    <exclude name="GuardLogStatement" />
+    <!-- JSpecify @NullMarked guarantees string references are non-null; Yoda conditions ("lit".equals(s)) reduce readability -->
+    <exclude name="LiteralsFirstInComparisons" />
+    <!-- Lexical token stream scanners advance the loop counter by 2 when matching paired tokens -->
+    <exclude name="AvoidReassigningLoopVariables" />
+    <!-- Spring @Repository and service interfaces with single methods are not lambda functional interfaces -->
+    <exclude name="ImplicitFunctionalInterface" />
+    <!-- Error Prone UnusedVariable handles unused variable analysis; PMD flags try-with-resources closeables (MDC, Tracing) -->
+    <exclude name="UnusedLocalVariable" />
+    <!-- Error Prone UnusedMethod provides accurate AST compiler analysis; PMD false-positives on overloaded private methods -->
+    <exclude name="UnusedPrivateMethod" />
+    <!-- Error Prone and NullAway handle formal parameter checks; varargs is not always preferred over arrays -->
+    <exclude name="UseVarargs" />
+    <!-- Error Prone CatchAndPrintStackTrace and sb-contrib LEST already enforce proper exception propagation -->
+    <exclude name="PreserveStackTrace" />
+    <!-- BreakIterator boundary iteration requires dual control variables (start, end) as specified by JDK API -->
+    <exclude name="ForLoopVariableCount" />
+    <!-- Value objects and private internal sinks manage arrays directly without defensive copying overhead -->
+    <exclude name="ArrayIsStoredDirectly" />
+    <!-- Modern unit and integration tests with AssertJ frequently contain multiple related assertions -->
+    <exclude name="UnitTestContainsTooManyAsserts" />
+    <!-- Dynamic test runners and helper assertions execute asserts inside utility methods or frameworks -->
+    <exclude name="UnitTestShouldIncludeAssert" />
+    <!-- Command-line task scripts and generator tools intentionally write output to System.out and System.err -->
+    <exclude name="SystemPrintln" />
+    <!-- Public test classes are required for reflection and test suite runner registration across packages -->
+    <exclude name="JUnitJupiterTestShouldBePackagePrivate" />
+    <!-- EU legal hierarchical numbering (e.g. point 8.1.2.3) matches IP address regex -->
+    <exclude name="AvoidUsingHardCodedIP" />
+  </rule>
+</ruleset>

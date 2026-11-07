@@ -50,6 +50,9 @@ class PendingMigrationsTest {
             DriverManager.getConnection(
                 POSTGRES.getJdbcUrl(), POSTGRES.getUsername(), POSTGRES.getPassword());
         var statement = connection.createStatement()) {
+      // PostgreSQL CREATE DATABASE does not accept parameterized identifiers; name is a safe atomic
+      // integer
+      // nosemgrep: semgrep.jdbc-no-raw-sql-concatenation
       statement.execute("create database " + name);
     }
     url = POSTGRES.getJdbcUrl().replaceFirst("/[^/?]+(\\?|$)", "/" + name + "$1");
