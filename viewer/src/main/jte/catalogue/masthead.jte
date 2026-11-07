@@ -1,6 +1,7 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView
 @param MastheadView masthead
-<%-- The act page's head (MastheadView): the act's title, its ELI and CELEX on EUR-Lex, the
+<%-- The act page's head (MastheadView): the act's title (in English up to its date, the rest under
+     it), its ELI and CELEX, quiet links to EUR-Lex (↗), the
      language switch (details: the 24 languages in the EU's order, each a link to the same page in
      it, the page's bold, those a version shown isn't in greyed, why on hover), and the
      mode switch, the current mode marked, the other a link; not yet a link while the act is being
@@ -8,9 +9,10 @@
 <header class="mast">
   <div>
     <h1 lang="${masthead.titleLanguage()}">${masthead.title()}</h1>
+    @if(masthead.subject() != null)<p class="subject" lang="${masthead.titleLanguage()}">${masthead.subject()}</p>@endif
     <div class="ids">
-      <a class="mono" href="${masthead.eliHref()}">${masthead.eli()}</a>
-      <a class="mono" href="${masthead.celexHref()}">${masthead.celex()}</a>
+      <a class="mono quiet" href="${masthead.eliHref()}" rel="external" title="On EUR-Lex, by its ELI">${masthead.eli()}<span aria-hidden="true"> ↗</span></a>
+      <a class="mono quiet" href="${masthead.celexHref()}" rel="external" title="On EUR-Lex, by its CELEX">${masthead.celex()}<span aria-hidden="true"> ↗</span></a>
       <details class="lang">
         <summary aria-label="Language: ${masthead.language()}. Change language">${masthead.language()} ▾</summary>
         <div class="menu">

@@ -21,6 +21,7 @@
   <script src="${chrome.assets().theme()}" defer></script>
   <script src="${chrome.assets().clock()}" defer></script>
   <script src="${chrome.assets().outline()}" defer></script>
+  <script src="${chrome.assets().markers()}" defer></script>
   ${head}
 </head>
 <body>

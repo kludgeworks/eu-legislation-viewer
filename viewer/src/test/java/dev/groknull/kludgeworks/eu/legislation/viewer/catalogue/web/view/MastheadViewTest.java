@@ -34,6 +34,15 @@ class MastheadViewTest {
   }
 
   @Test
+  void splitsAnEnglishTitleAfterItsDate() {
+    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.ENG);
+    assertThat(head.title())
+        .isEqualTo("Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015");
+    assertThat(head.subject()).startsWith("laying down detailed measures");
+    assertThat(MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA).subject()).isNull();
+  }
+
+  @Test
   void titlesItInEnglishWhereCellarHasNoTitleInTheLanguage() {
     var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.GLE);
     assertThat(head.title()).startsWith("Commission Implementing Regulation (EU) 2015/1998");

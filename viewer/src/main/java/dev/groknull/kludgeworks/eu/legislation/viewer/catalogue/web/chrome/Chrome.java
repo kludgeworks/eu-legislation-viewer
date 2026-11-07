@@ -79,7 +79,13 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
    * them as they are now, never for a copy a browser kept from before them.
    */
   public record Assets(
-      String css, String htmx, String sse, String theme, String clock, String outline) {
+      String css,
+      String htmx,
+      String sse,
+      String theme,
+      String clock,
+      String outline,
+      String markers) {
     static Assets of(HttpServletRequest request) {
       // Spring MVC's, for every request its handlers serve
       var urls =
@@ -92,7 +98,8 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
           url(urls, request, "/webjars/htmx.org/dist/ext/hx-sse.min.js"),
           url(urls, request, "/js/theme.js"),
           url(urls, request, "/js/clock.js"),
-          url(urls, request, "/js/outline.js"));
+          url(urls, request, "/js/outline.js"),
+          url(urls, request, "/js/markers.js"));
     }
 
     /** {@code path} with its content's hash; as it is without Spring MVC's resources (a test's). */

@@ -232,7 +232,8 @@ class VersionController {
         case Text.Ready ready ->
             templates.catalogueTextReady(
                 "/content/" + ready.root().hex(),
-                content.outline(ready.root()).orElseGet(Outline::empty));
+                content.outline(ready.root()).orElseGet(Outline::empty),
+                Links.compare(eli, language));
         // a version that appeared since, being prepared
         case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->

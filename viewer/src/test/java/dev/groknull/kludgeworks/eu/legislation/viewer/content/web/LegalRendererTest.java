@@ -79,8 +79,14 @@ class LegalRendererTest {
     return out.toString();
   }
 
-  /** The runs of running text in {@code element}, outermost. */
+  /**
+   * The runs of running text in {@code element}, outermost; none in what an amendment deleted, of
+   * which Read shows only the mark (Design D-20).
+   */
   private static List<Element> runs(Element element, List<Element> out) {
+    if (element.name().equals("deleted")) {
+      return out;
+    }
     if (RUNNING.contains(element.name())
         && element.children().stream().noneMatch(c -> c.name().equals("content"))) {
       out.add(element);
@@ -99,6 +105,8 @@ class LegalRendererTest {
           element.attribute("startQuote") + children(element) + element.attribute("endQuote");
       case "noteRef" -> " (" + element.attribute("marker") + ")";
       case "eol" -> " ";
+      // its mark only (Design D-20)
+      case "deleted" -> "";
       default -> element.text() + children(element);
     };
   }

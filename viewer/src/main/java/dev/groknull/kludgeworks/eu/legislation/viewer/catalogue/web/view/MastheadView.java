@@ -18,7 +18,10 @@ import org.jspecify.annotations.Nullable;
  * switch links to the other mode: reading a version, to its comparison with the version before;
  * comparing two, to reading the later.
  *
- * @param title the act's title
+ * @param title the act's title; in English, up to its date (Design D-14): Commission Implementing
+ *     Regulation (EU) 2015/1998 of 5 November 2015
+ * @param subject the rest of its English title, under it: laying down detailed measures …; none in
+ *     another language, which has its whole title as the heading until it has its own rule
  * @param titleLanguage the language the title is in, as HTML's lang has it; none for a CELEX
  * @param eli the act's ELI as EUR-Lex writes it: eli/reg_impl/2015/1998/oj
  * @param eliHref the act on EUR-Lex by its ELI
@@ -33,6 +36,7 @@ import org.jspecify.annotations.Nullable;
  */
 public record MastheadView(
     String title,
+    @Nullable String subject,
     @Nullable String titleLanguage,
     String eli,
     String eliHref,
@@ -109,8 +113,13 @@ public record MastheadView(
       @Nullable String compare) {
     var eli = eli(act);
     var titled = act.title(language).isPresent() ? language : Language.ENG;
+    var full = act.title(titled).orElseGet(act.id()::celex);
+    // English only, for now: another language's titles have their own patterns
+    var dated = HomeView.DATED.matcher(full);
+    var split = titled == Language.ENG && dated.matches();
     return new MastheadView(
-        act.title(titled).orElseGet(act.id()::celex),
+        split ? dated.group(1) : full,
+        split ? dated.group(2) : null,
         act.title(titled).isPresent() ? titled.iso() : null,
         "eli/" + eli.path() + "/oj",
         Links.eurLex(eli),
@@ -138,6 +147,7 @@ public record MastheadView(
   public MastheadView whilePreparing() {
     return new MastheadView(
         title,
+        subject,
         titleLanguage,
         eli,
         eliHref,

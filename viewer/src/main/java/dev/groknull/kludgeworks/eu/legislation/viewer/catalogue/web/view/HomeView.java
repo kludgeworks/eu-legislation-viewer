@@ -38,7 +38,7 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
    * Where a title's date ends: "… 2015/1998 of 5 November 2015", the rest after it. Its spaces any
    * (\\h): Cellar's titles have no-break ones in dates, 18&nbsp;June 2012.
    */
-  private static final Pattern DATED =
+  static final Pattern DATED =
       Pattern.compile("(.+?\\hof\\h\\d{1,2}\\h\\p{Lu}\\p{Ll}+\\h\\d{4})\\h+(.+)");
 
   /** The home page before a search. */
