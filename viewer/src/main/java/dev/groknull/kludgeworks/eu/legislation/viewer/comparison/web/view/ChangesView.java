@@ -452,5 +452,31 @@ public record ChangesView(
     public String cited() {
       return ChangesView.cited(difference.unit());
     }
+
+    /**
+     * Whether it is an annex inserted whole, which the views fold to its size (Design D-44): a long
+     * comparison isn't one annex long.
+     */
+    public boolean annexInserted() {
+      return difference.kind() == Kind.INSERTED && "annex".equals(difference.unit().kind());
+    }
+
+    /** Its unit's size, as its fold says: 56 provisions · 1,234 words. */
+    public String size() {
+      var unit = difference.shown();
+      return String.format(Locale.ROOT, "%,d provisions · %,d words", units(unit), words(unit));
+    }
+
+    private static long units(Element element) {
+      return element.children().stream()
+          .mapToLong(child -> (child.name().equals("unit") ? 1 : 0) + units(child))
+          .sum();
+    }
+
+    private static long words(Element element) {
+      var text = element.name().equals("t") ? element.attribute("v") : null;
+      var own = text == null || text.isBlank() ? 0 : text.strip().split("\\s+").length;
+      return own + element.children().stream().mapToLong(Shown::words).sum();
+    }
   }
 }

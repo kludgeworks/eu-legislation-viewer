@@ -30,7 +30,7 @@
 !{var total = changes.numbers().size();}
 <div class="outlined">
 <nav class="outline counted" aria-label="Outline">
-  <p class="outline-head"><span>Outline</span><span>differences</span></p>
+  @template.catalogue.outlinehead(total = changes.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
 <div class="changes synopsis">

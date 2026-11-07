@@ -18,11 +18,11 @@
      beside it with a sidenote: what happened, which acts made it and when each applies, and what it
      was before (sidenotes, by number); the units before it that are the same in both folded, loaded
      from the content module when opened (units, by eId); the opening of the unit it is in, as
-     context; and a pager to each difference. Beside it, the later text's outline, its differences
+     context. Beside it, the later text's outline, its differences
      counted. Limited to one act's changes (only), a banner says so, linking to all acts' --%>
 <div class="outlined">
 <nav class="outline counted" aria-label="Outline">
-  <p class="outline-head"><span>Outline</span><span>differences</span></p>
+  @template.catalogue.outlinehead(total = changes.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
 <div class="changes">
@@ -44,8 +44,5 @@
       @endif
     @endfor
   </div>
-  @if(!changes.numbers().isEmpty())
-    <nav class="pager" aria-label="Differences">@for(var number : changes.numbers())<a href="#difference-${number}">${number}</a>@endfor</nav>
-  @endif
 </div>
 </div>

@@ -10,9 +10,18 @@
 <%-- what happened, unless who made it says it all: Inserted by 2019/1583 --%>
 @if(sidenote == null || sidenote.made() == null || shown.kind().equals("changed"))<span class="note">${shown.note()}</span>@endif
 @if(sidenote != null)
-  @for(var applies : sidenote.dates())
-    <span class="applies">@template.catalogue.applies(applies = applies)</span>
-  @endfor
+  <%-- a date line per act, each starting with it; six or more folded (Design D-43) --%>
+  @if(sidenote.dates().size() >= 6)
+    <details class="dates"><summary>${sidenote.dates().size()} acts’ dates</summary>
+      @for(var applies : sidenote.dates())
+        <span class="applies">@template.catalogue.applies(applies = applies)</span>
+      @endfor
+    </details>
+  @else
+    @for(var applies : sidenote.dates())
+      <span class="applies">@template.catalogue.applies(applies = applies)</span>
+    @endfor
+  @endif
   @if(sidenote.why() != null)<span class="why">${sidenote.why()}</span>@endif
   @if(sidenote.before() != null)<span class="before">${sidenote.before()}</span>@endif
 @endif

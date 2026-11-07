@@ -166,7 +166,10 @@ form.theme svg {
   stroke-linecap: round;
 }
 
+/* centred: an act's page at most 1,440px wide, the home page 1,120px (Design: page width) */
 main {
+  max-width: 1440px;
+  margin-inline: auto;
   padding: 22px max(28px, env(safe-area-inset-right, 0px)) 24px
     max(28px, env(safe-area-inset-left, 0px));
 }
@@ -1070,31 +1073,6 @@ details.ledger-fold[open] {
   color: var(--ink);
 }
 
-nav.pager {
-  position: sticky;
-  bottom: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding: 8px 0 8px 32px;
-  border-top: 1px solid var(--rule);
-  background: var(--bg);
-  font-size: 13px;
-}
-
-nav.pager a {
-  min-width: 24px;
-  padding: 2px 6px;
-  border-radius: 3px;
-  text-align: center;
-  color: var(--accent);
-  text-decoration: none;
-}
-
-nav.pager a:hover {
-  background: var(--hover);
-}
-
 .lag-warning {
   margin-top: 6px;
   padding: 5px 8px;
@@ -1266,21 +1244,99 @@ nav.outline .n {
   color: var(--ink);
 }
 
+/* the changed provisions in a unit's points: a row each, as the units above them are (Design:
+ * outline links) */
 nav.outline .chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding: 0 10px 4px 30px;
+  display: block;
+  padding: 0 0 2px 20px;
 }
 
 nav.outline .chips a {
-  display: inline-block;
-  padding: 0 5px;
-  border: 1px solid var(--accent);
-  border-radius: 3px;
+  display: block;
+  padding: 2px 10px 2px 20px;
   font: 11.5px ui-monospace, monospace;
-  white-space: nowrap;
   color: var(--accent);
+}
+
+/* the outline's head: the button collapsing it to a rail; under it, where the reader is (Design
+ * D-44, D-33) */
+.outline-head {
+  align-items: center;
+}
+
+.outline-rail {
+  margin-left: 6px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.outline-rail:hover {
+  color: var(--ink);
+}
+
+.outline-follow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 12.5px;
+  color: var(--ink);
+}
+
+.outline-follow .where {
+  flex: 1;
+  min-width: 0;
+}
+
+nav.outline .outline-follow a {
+  display: inline;
+  padding: 0 4px;
+  color: var(--accent);
+}
+
+nav.outline .outline-follow a[aria-disabled] {
+  pointer-events: none;
+  color: var(--disabled);
+}
+
+/* collapsed: a rail of the parts with their counts, nothing below them */
+nav.outline.rail {
+  flex-basis: 140px;
+}
+
+nav.outline.rail ul ul,
+nav.outline.rail .chips,
+nav.outline.rail .bar,
+nav.outline.rail .outline-follow,
+nav.outline.rail .outline-head > span:nth-child(2) {
+  display: none;
+}
+
+nav.outline.rail summary::before {
+  content: none;
+}
+
+nav.outline.counted.rail a {
+  grid-template-columns: minmax(0, 1fr) 0 26px;
+  padding-left: 10px;
+}
+
+/* an annex inserted whole, folded to its size (Design D-44) */
+details.annex-inserted > summary {
+  padding: 6px 0;
+  color: var(--ins-ink);
+  cursor: pointer;
+}
+
+details.annex-inserted[open] .show {
+  display: none;
 }
 
 .content,
@@ -2077,7 +2133,8 @@ form.find input {
 /* the home page (catalogue/home.jte): the viewer's name, the Find an act box, a search's results,
  * then three notes */
 .home {
-  max-width: 1100px;
+  max-width: 1120px;
+  margin-inline: auto;
 }
 
 .home-mast {
@@ -2307,4 +2364,74 @@ form.find-act .ex a {
 .same-version .actions {
   display: flex;
   gap: 8px;
+}
+
+/* a part loading (Design: loading): nothing for a moment, then a bar, then the page's shape */
+.loading-bar,
+.skeleton {
+  opacity: 0;
+  animation: appear 0s forwards;
+}
+
+.loading-bar {
+  height: 3px;
+  margin: 12px 0;
+  overflow: hidden;
+  background: var(--surface2);
+  animation-delay: 0.3s;
+}
+
+.loading-bar::after {
+  content: "";
+  display: block;
+  width: 30%;
+  height: 3px;
+  background: var(--accent-fill);
+  animation: sweep 1.2s ease-in-out infinite;
+}
+
+.skeleton {
+  display: grid;
+  gap: 10px;
+  max-width: 42.5rem;
+  animation-delay: 1.5s;
+}
+
+.skeleton i {
+  display: block;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--surface2);
+}
+
+.skeleton i:nth-child(odd) {
+  width: 80%;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(340%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-bar::after {
+    animation: none;
+  }
+}
+
+/* six or more acts' date lines, folded (Design D-43) */
+.sidenote details.dates > summary {
+  color: var(--muted);
+  cursor: pointer;
 }

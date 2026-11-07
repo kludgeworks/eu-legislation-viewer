@@ -78,7 +78,7 @@ class SidenoteViewTest {
             Language.ENG);
 
     var applies = sidenote.dates().getFirst();
-    assertThat(applies.when()).isEqualTo("applies from 1 October 2026");
+    assertThat(applies.when()).isEqualTo("2026/449 applies from 1 October 2026");
     assertThat(applies.clause()).extracting(Link::label).isEqualTo("Article 2 of 2026/449");
     assertThat(applies.after()).isEmpty();
   }
@@ -171,7 +171,7 @@ class SidenoteViewTest {
     assertThat(sidenote.made()).isEqualTo("Deleted by 2026/449");
     assertThat(sidenote.dates())
         .extracting(SidenoteView.Applies::when)
-        .containsExactly("applies from 22 March 2026, its entry into force");
+        .containsExactly("2026/449 applies from 22 March 2026, its entry into force");
     assertThat(sidenote.before()).isEqualTo("Before: original act");
   }
 
@@ -192,7 +192,7 @@ class SidenoteViewTest {
         .singleElement()
         .satisfies(
             applies -> {
-              assertThat(applies.when()).isEqualTo("applies from 1 June 2017");
+              assertThat(applies.when()).isEqualTo("2017/815 applies from 1 June 2017");
               assertThat(applies.between()).isEqualTo(" · ");
               assertThat(applies.clause())
                   .extracting(Link::label)
@@ -230,7 +230,8 @@ class SidenoteViewTest {
 
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/1583");
     var applies = sidenote.dates().getFirst();
-    assertThat(applies.when()).isEqualTo("applies from 31 December 2021, its entry into force");
+    assertThat(applies.when())
+        .isEqualTo("2019/1583 applies from 31 December 2021, its entry into force");
     assertThat(applies.amendedBy())
         .containsExactly(
             new Link("2020/910", "https://eur-lex.europa.eu/eli/reg_impl/2020/910/oj/eng"));
@@ -273,7 +274,7 @@ class SidenoteViewTest {
     // its date of application in Cellar is a placeholder; it enters into force on 16 March 2019
     assertThat(
             applies.when() + applies.between() + Objects.requireNonNull(applies.clause()).label())
-        .isEqualTo("applies from a date set in Article 3 of 2019/413");
+        .isEqualTo("2019/413 applies from a date set in Article 3 of 2019/413");
   }
 
   @Test

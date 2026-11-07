@@ -106,7 +106,9 @@ class ComparePagesTests {
             "Point 9.1.2.4 to attachment 12-P — no differences · show");
     // the annex's, 8.1.2.3's and 9.1.2.3's
     assertThat(changes.select(".lead")).hasSize(3);
-    assertThat(changes.select("nav.pager a")).hasSize(6);
+    // no pager: the outline's head follows the reader
+    assertThat(changes.select("nav.pager")).isEmpty();
+    assertThat(changes.select(".outline-follow").attr("data-total")).isEqualTo("6");
     var screening =
         changes.select("nav.outline a.has").stream()
             .filter(a -> a.text().startsWith("8.1.2 Screening"))
@@ -186,7 +188,7 @@ class ComparePagesTests {
     assertThat(Objects.requireNonNull(c.parent()).id()).isEqualTo("difference-1");
     assertThat(whole.select("#difference-1 .sidenote .made").text())
         .isEqualTo("Replaced by 2026/449");
-    assertThat(whole.select("nav.pager a")).hasSize(6);
+    assertThat(whole.select(".outline-follow .where").text()).isEqualTo("6 differences");
   }
 
   @Test

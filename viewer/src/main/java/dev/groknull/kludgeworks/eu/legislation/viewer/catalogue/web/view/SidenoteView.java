@@ -560,7 +560,7 @@ public record SidenoteView(
     // a date of application Cellar has only a placeholder for, or no dates with a day at all
     if (dated.isEmpty() || (applying.isEmpty() && application.findAny().isPresent())) {
       var undated = dates.stream().filter(date -> date.date() == null).toList();
-      var set = applies(act, "applies from a date set in", undated, amending, language, "");
+      var set = applies(act, name + " applies from a date set in", undated, amending, language, "");
       // nothing to say where no clause says where
       return set.clause() == null ? Optional.empty() : Optional.of(set);
     }
@@ -572,7 +572,8 @@ public record SidenoteView(
         return Optional.of(
             applies(
                 act,
-                "applies from "
+                name
+                    + " applies from "
                     + Wording.date(day)
                     + (on.stream().allMatch(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE)
                         ? ", its entry into force"
@@ -589,7 +590,7 @@ public record SidenoteView(
       return Optional.of(
           applies(
               act,
-              "applies from " + day + (applying.isEmpty() ? ", its entry into force" : ""),
+              name + " applies from " + day + (applying.isEmpty() ? ", its entry into force" : ""),
               applying.isEmpty() ? dated : applying,
               amending,
               language,
@@ -702,6 +703,7 @@ public record SidenoteView(
       return new History(
           "As in the original act",
           applies(act, act.id(), Set.of(), language)
+              .map(applies -> unnamed(applies, act.id()))
               .orElseGet(
                   () ->
                       new Applies(
@@ -710,7 +712,23 @@ public record SidenoteView(
     var each = new ActIdentifier(last.act());
     return new History(
         "Last changed by " + Wording.act(each) + " (" + last.action() + ")",
-        applies(act, each, Set.of(), language).orElse(null));
+        applies(act, each, Set.of(), language).map(applies -> unnamed(applies, each)).orElse(null));
+  }
+
+  /**
+   * {@code applies} without the act its date line starts with, where the line before names it
+   * already: Last changed by 2019/103 (replaced) · applies from 1 February 2019.
+   */
+  private static Applies unnamed(Applies applies, ActIdentifier act) {
+    var name = Wording.act(act) + " ";
+    return applies.when().startsWith(name)
+        ? new Applies(
+            applies.when().substring(name.length()),
+            applies.between(),
+            applies.clause(),
+            applies.amendedBy(),
+            applies.after())
+        : applies;
   }
 
   /**
