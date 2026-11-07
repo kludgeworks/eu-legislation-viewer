@@ -243,6 +243,37 @@
         $x:result[1]/self::*:table and $x:result[2]/self::*:annotation//*:t/@v = 'EASA Form 138 – Issue 3' and count($x:result) = 2"/>
   </x:scenario>
 
+  <x:scenario label="An amendment marker running into a table note (02015R2265)">
+    <x:context mode="block" select="/CONS.ACT/TBL" xmlns="">
+      <CONS.ACT>
+        <TBL COLS="1">
+          <GR.NOTES>
+            <?CLG.MDFO ID="O1" ACTION="REPLACED" ACTIVE.DOC="32015R2265R(01)" ACTIVE.LOC="LI:0;EL:3"?>
+            <NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="TABLE">
+              <P>Products under CN codes qualify<?CLG.MDFC ID="C1" IDREF="O1"?> for the quota</P>
+            </NOTE>
+          </GR.NOTES>
+          <CORPUS><ROW><CELL COL="1">x</CELL></ROW></CORPUS>
+        </TBL>
+      </CONS.ACT>
+    </x:context>
+    <x:expect label="keeps the changed span in the note">
+      <table cols="1">
+        <tr><td><p><t v="x"/></p></td></tr>
+        <notes>
+          <note eId="note_1" marker="1" kind="table">
+            <p>
+              <changed amendingAct="32015R2265R(01)" action="replaced" location="LI:0;EL:3" marker="O1">
+                <t v="Products under CN codes qualify"/>
+              </changed>
+              <t v=" for the quota"/>
+            </p>
+          </note>
+        </notes>
+      </table>
+    </x:expect>
+  </x:scenario>
+
   <x:scenario label="A figure with a caption">
     <x:context mode="block" xmlns=""><INCL.ELEMENT TYPE="TIFF" FILEREF="fig1.tif"><CAPTION><P>Figure 1: Filling of the column</P></CAPTION></INCL.ELEMENT></x:context>
     <x:expect label="keeps the caption"><figure src="fig1.tif"><caption><p><t v="Figure 1: Filling of the column"/></p></caption></figure></x:expect>

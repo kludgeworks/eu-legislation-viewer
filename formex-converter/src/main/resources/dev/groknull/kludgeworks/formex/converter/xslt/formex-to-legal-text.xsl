@@ -948,10 +948,11 @@
 
   <xsl:template match="NOTE" mode="note">
     <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <note eId="{f:note-eid(., $notePrefix)}" marker="{f:note-marker(.)}" kind="{lower-case((@TYPE, 'FOOTNOTE')[1])}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
-        <xsl:with-param name="ctx" as="xs:string*" select="f:ids(let $v := accumulator-before('f:open') return map:keys($v) ! $v(.))" tunnel="yes"/>
+        <xsl:with-param name="ctx" as="xs:string*" select="($ctx, let $b := accumulator-before('f:open'), $a := accumulator-after('f:open') return map:keys($b)[map:contains($a, .)])" tunnel="yes"/>
         <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
         <xsl:with-param name="base" as="xs:string?" select="f:note-eid(., $notePrefix)" tunnel="yes"/>
       </xsl:call-template>
