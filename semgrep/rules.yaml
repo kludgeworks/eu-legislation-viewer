@@ -63,3 +63,16 @@ rules:
         - "viewer/src/main/resources/db/migration/**/V*.sql"
         - "viewer/src/test/resources/**"
     pattern-regex: '\(Design\b|\bDesign:|\bD-\d{2}\b|\(Research:'
+
+  - id: htmx-4-event-names
+    languages:
+      - regex
+    severity: ERROR
+    message: "htmx 4 names its events in lowercase with colons (htmx:after:settle). It never fires a camelCase htmx 2 name (htmx:afterSettle), so a listener for one never runs."
+    metadata:
+      category: correctness
+    paths:
+      include:
+        - "viewer/src/**/*.js"
+        - "viewer/src/**/*.jte"
+    pattern-regex: '\bhtmx:[a-z]+[A-Z]\w*'

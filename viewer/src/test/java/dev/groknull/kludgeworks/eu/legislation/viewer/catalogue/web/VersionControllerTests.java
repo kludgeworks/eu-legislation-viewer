@@ -31,9 +31,10 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * The version's page's controller alone (@WebMvcTest), the modules mocked: where its addresses lead
- * and what it refuses, for OneActCellar's act, nothing of it prepared yet; and the page's chrome,
- * its theme and assets. The pages as the whole app builds them are VersionPagesTests'.
+ * Tests the controller of the version page alone, with {@code @WebMvcTest} and the modules mocked.
+ * The tests check where its addresses lead and what it refuses. The act is the act of {@link
+ * OneActCellar}, with nothing of it prepared yet. The tests also check the chrome of the page: its
+ * theme and assets. {@code VersionPagesTests} tests the pages as the whole app builds them.
  */
 @WebMvcTest(VersionController.class)
 @Import({ControllerTesting.class, VersionControllerTests.OnTheFirstOfJune2021.class})
@@ -106,7 +107,7 @@ class VersionControllerTests {
             .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
             .toList();
     assertThat(assets)
-        .hasSize(7)
+        .hasSize(8)
         .allSatisfy(
             asset -> {
               assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");
@@ -124,11 +125,14 @@ class VersionControllerTests {
     }
   }
 
-  /** Today, for the pages: 1 June 2021, when the consolidation of 15 March 2021 applies. */
+  /**
+   * Sets today for the pages to 1 June 2021. On that day the consolidation of 15 March 2021
+   * applies.
+   */
   @TestConfiguration(proxyBeanMethods = false)
   static class OnTheFirstOfJune2021 {
     @Bean
-    @SuppressWarnings("TimeZoneUsage") // the app's Clock bean, fixed
+    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
     Clock firstOfJune2021() {
       return Clock.fixed(Instant.parse("2021-06-01T08:00:00Z"), ZoneOffset.UTC);
     }

@@ -118,7 +118,10 @@ java_binary(
 # jte templates as Java sources, with jte-models' typed facade (the macro jte_library)
 java_binary(
     name = "jte_generate",
-    srcs = ["JteGenerate.java"],
+    srcs = [
+        "JteGenerate.java",
+        "TemplatePolicy.java",
+    ],
     main_class = "dev.groknull.kludgeworks.build.JteGenerate",
     runtime_deps = ["@maven//:gg_jte_jte_models"],
     deps = [

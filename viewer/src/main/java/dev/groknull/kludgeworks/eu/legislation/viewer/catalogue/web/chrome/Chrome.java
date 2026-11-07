@@ -13,26 +13,37 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.WebUtils;
 
 /**
- * What every page has around it (its chrome, as UI design calls what frames the content: the site
- * bar, the notice, the theme switch, the way back to a search's results), from the request: a
- * controller makes it (of) and passes it to its page's template, for the layout.
+ * The chrome of a page. UI design uses this word for what frames the content of every page:
  *
- * @param theme the reader's colour theme, from the theme cookie; SYSTEM without one
- * @param here the page's path and query, where the theme switch comes back to
- * @param assets where the page's stylesheet and scripts are
- * @param results the reader's last search, from the search cookie; none without one
+ * <ul>
+ *   <li>the site bar
+ *   <li>the notice
+ *   <li>the theme switch
+ *   <li>the link back to the results of a search
+ * </ul>
+ *
+ * <p>A controller makes the chrome from the request with {@link #of}. It passes the chrome to the
+ * template of its page, for the layout.
+ *
+ * @param theme the colour theme of the reader, from the {@link #THEME} cookie. It is {@link
+ *     Theme#SYSTEM} if there is no cookie.
+ * @param here the path and query of the page. The theme switch comes back to it.
+ * @param assets the locations of the stylesheet and scripts of the page
+ * @param results the last search of the reader, from the {@link #SEARCH} cookie. It is none if
+ *     there is no cookie.
  */
 public record Chrome(Theme theme, String here, Assets assets, @Nullable Results results) {
-  /** The cookie the reader's theme is kept in. */
+  /** The cookie that keeps the theme of the reader. */
   public static final String THEME = "theme";
 
   /**
-   * The cookie the reader's last search is kept in, for a while (Design: Every page): the home
-   * page's query, q=aviation+security&amp;type=regulation, so an act's address stays its own.
+   * The cookie that keeps the last search of the reader for a while. It holds the query of the home
+   * page. For example, {@code q=aviation+security&amp;type=regulation}. Thus the address of an act
+   * does not need to carry the search.
    */
   public static final String SEARCH = "search";
 
-  /** The chrome of the page {@code request} asks for. */
+  /** Returns the chrome of the page that {@code request} asks for. */
   public static Chrome of(HttpServletRequest request) {
     var cookie = WebUtils.getCookie(request, THEME);
     var query = request.getQueryString();
@@ -44,10 +55,12 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
   }
 
   /**
-   * A search's results, as the site bar links back to them: "‹ Results for “aviation security”".
+   * The results of a search, as the site bar links back to them. For example, "‹ Results for
+   * “aviation security”".
    *
    * @param words what the reader searched for, as they typed it
-   * @param href the results' address, rebuilt from the cookie's words and kind, not taken from it
+   * @param href the address of the results. It is built again from the words and the kind in the
+   *     cookie. It is not taken from the cookie.
    */
   public record Results(String words, String href) {
     static @Nullable Results of(@Nullable Cookie cookie) {
@@ -74,9 +87,10 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
   }
 
   /**
-   * The page's stylesheet and scripts, each at its URL with a hash of its content in it
-   * (/css/viewer-&lt;hash&gt;.css: spring.web.resources.chain.strategy.content), so a page asks for
-   * them as they are now, never for a copy a browser kept from before them.
+   * The stylesheet and scripts of the page. The URL of each file contains a hash of its content.
+   * For example, {@code /css/viewer-<hash>.css}. The property {@code
+   * spring.web.resources.chain.strategy.content} enables this. Thus a page always asks for the
+   * current files, never for an old copy that a browser kept.
    */
   public record Assets(
       String css,
@@ -85,9 +99,10 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
       String theme,
       String clock,
       String outline,
-      String markers) {
+      String markers,
+      String receipt) {
     static Assets of(HttpServletRequest request) {
-      // Spring MVC's, for every request its handlers serve
+      // Spring MVC sets this attribute on every request that its handlers serve.
       var urls =
           (ResourceUrlProvider)
               request.getAttribute(
@@ -99,10 +114,14 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
           url(urls, request, "/js/theme.js"),
           url(urls, request, "/js/clock.js"),
           url(urls, request, "/js/outline.js"),
-          url(urls, request, "/js/markers.js"));
+          url(urls, request, "/js/markers.js"),
+          url(urls, request, "/js/receipt.js"));
     }
 
-    /** {@code path} with its content's hash; as it is without Spring MVC's resources (a test's). */
+    /**
+     * Returns {@code path} with the hash of its content. Returns {@code path} unchanged if Spring
+     * MVC has no URL for it, or if there is no resource handling. A test, for example, has none.
+     */
     private static String url(
         @Nullable ResourceUrlProvider urls, HttpServletRequest request, String path) {
       return urls == null

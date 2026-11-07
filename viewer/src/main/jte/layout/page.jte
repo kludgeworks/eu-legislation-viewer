@@ -22,6 +22,7 @@
   <script type="module" src="${chrome.assets().clock()}"></script>
   <script type="module" src="${chrome.assets().outline()}"></script>
   <script type="module" src="${chrome.assets().markers()}"></script>
+  <script type="module" src="${chrome.assets().receipt()}"></script>
   ${head}
 </head>
 <body>

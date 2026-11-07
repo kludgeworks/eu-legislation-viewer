@@ -15,6 +15,8 @@ import java.util.Map;
  * <p>Arguments: the templates' root directory, the directory to write the sources in, and
  * optionally a pattern of the templates to leave out of the facade, those only ever rendered by
  * name (of their classes' names, as jte-models' excludePattern matches them).
+ *
+ * <p>Each template must obey the {@link TemplatePolicy}.
  */
 public final class JteGenerate {
   private JteGenerate() {}
@@ -28,6 +30,7 @@ public final class JteGenerate {
             null,
             "gg.jte.generated.precompiled");
     engine.setTrimControlStructures(true);
+    engine.setHtmlPolicy(new TemplatePolicy());
     var models = args.length > 2 ? Map.of("excludePattern", args[2]) : Map.<String, String>of();
     engine.setExtensions(Map.of("gg.jte.models.generator.ModelExtension", models));
     engine.generateAll();
