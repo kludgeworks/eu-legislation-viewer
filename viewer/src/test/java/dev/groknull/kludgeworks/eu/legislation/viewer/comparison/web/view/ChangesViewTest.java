@@ -5,10 +5,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Fold;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Lead;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.NoPreamble;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Passage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Shown;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
@@ -164,11 +166,23 @@ class ChangesViewTest {
     assertThat(ChangesView.span(siblings("indent", "—", "—"))).isEqualTo("2 provisions");
   }
 
+  @Test
+  void notesFirstThatAPreambleOnlyOneTextHasIsntCompared() {
+    var compared = comparison("02015R1998-20260101", "02015R1998-20260322");
+    var without =
+        new Comparison(
+            compared.from(), compared.to(), compared.differences(), compared.closing(), Side.LATER);
+
+    assertThat(ChangesView.of(without).passages().getFirst()).isEqualTo(new NoPreamble(Side.LATER));
+    assertThat(ChangesView.of(compared).passages()).noneMatch(NoPreamble.class::isInstance);
+  }
+
   private static String passage(Passage passage) {
     return switch (passage) {
       case Lead lead -> "lead";
       case Fold fold -> fold.label();
       case Shown shown -> String.valueOf(shown.number());
+      case NoPreamble none -> "no preamble";
     };
   }
 
@@ -182,7 +196,8 @@ class ChangesViewTest {
         ContentHash.of(new byte[32]),
         ContentHash.of(new byte[32]),
         compared.differences(),
-        compared.closing());
+        compared.closing(),
+        compared.withoutPreamble());
   }
 
   private static Element text(String celex) {

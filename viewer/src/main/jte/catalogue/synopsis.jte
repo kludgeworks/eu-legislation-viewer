@@ -16,6 +16,7 @@
 @param String to
 @param List<CompareView.ViewLink> views
 @param CompareView.Only only = null
+@param String preamble = ""
 <%-- A comparison's Synopsis view (Design: Mode: Compare, Synopsis): its controls, then a ledger of
      the two texts aligned by provision, From's CELEX and To's heading their columns: each provision
      that differs a row, its unit marked in both, the words it lost struck in From, those it gained
@@ -46,6 +47,8 @@
         @endfor
       @elseif(passage instanceof ChangesView.Fold fold)
         <div class="ledger-fold" role="row"><span role="cell">${fold.label()} — ${fold.note()}</span></div>
+      @elseif(passage instanceof ChangesView.NoPreamble)
+        <div class="ledger-fold" role="row"><span role="cell">Preamble — ${preamble}</span></div>
       @elseif(passage instanceof ChangesView.Lead lead)
         <div class="ledger-row ledger-lead" role="row"><div role="cell"></div><div class="from" role="cell">${html.element(lead.unit())}</div><div class="to" role="cell">${html.element(lead.unit())}</div><div role="cell"></div></div>
       @elseif(passage instanceof ChangesView.Shown shown)

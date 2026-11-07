@@ -23,6 +23,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Sidenot
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -246,6 +247,14 @@ class CompareController {
         OutlineView.of(
             attributed.outline(), differences.stream().map(ChangesView.Shown::difference).toList());
     var views = CompareView.views(page.eli, page.from, page.to, page.language, only, view);
+    var withoutPreamble = attributed.comparison().withoutPreamble();
+    var preamble =
+        withoutPreamble == null
+            ? ""
+            : "not in the consolidation of "
+                + Wording.date((withoutPreamble == Side.EARLIER ? earlier : later).date())
+                + ", which the Publications Office published without it; no act changed it, so"
+                + " it isn’t compared";
     var all =
         only == null
             ? null
@@ -263,7 +272,8 @@ class CompareController {
                       this.html,
                       "/content/" + attributed.later().hex() + "/units",
                       views,
-                      all)
+                      all,
+                      preamble)
                   .render();
           case WHOLE ->
               templates
@@ -316,7 +326,8 @@ class CompareController {
                     earlier.celex(),
                     later.celex(),
                     views,
-                    all)
+                    all,
+                    preamble)
                 .render();
           }
         };

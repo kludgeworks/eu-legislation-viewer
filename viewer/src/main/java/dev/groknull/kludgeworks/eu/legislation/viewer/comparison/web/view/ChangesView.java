@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -67,6 +68,10 @@ public record ChangesView(
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
     var pending = new Pending(passages, others);
+    var withoutPreamble = comparison.withoutPreamble();
+    if (withoutPreamble != null) {
+      passages.add(new NoPreamble(withoutPreamble));
+    }
     // the units whose opening the view shows: led, or a difference shown
     var opened = new HashSet<String>();
     for (var difference : comparison.differences()) {
@@ -324,6 +329,14 @@ public record ChangesView(
 
   /** What the view shows, in order. */
   public sealed interface Passage {}
+
+  /**
+   * Where the preamble stands, a note that it isn't compared: the {@code side} text hasn't one, as
+   * the Publications Office published it, though no act changed it.
+   *
+   * @param side the text without it
+   */
+  public record NoPreamble(Side side) implements Passage {}
 
   /**
    * Units folded until asked for: the same in both texts, or, under an act filter, changed by

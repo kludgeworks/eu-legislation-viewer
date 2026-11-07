@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -16,6 +17,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
 import org.assertj.core.api.InstanceOfAssertFactories;
@@ -234,6 +236,36 @@ class DifferTest {
    * difference but a deleted one, each unit opened or folded, and the units in one folded or
    * inserted. A unit placed twice is there twice.
    */
+  @Test
+  void leavesOutAPreambleOnlyOneTextHasAndSaysWhichHasNone() {
+    var withPreamble = withPreamble(JANUARY);
+
+    var dropped = Differ.differences(withPreamble, JANUARY);
+    var added = Differ.differences(JANUARY, withPreamble);
+    var both = Differ.differences(withPreamble, withPreamble);
+
+    assertThat(dropped.differences()).isEmpty();
+    assertThat(dropped.withoutPreamble()).isEqualTo(Side.LATER);
+    assertThat(added.differences()).isEmpty();
+    assertThat(added.withoutPreamble()).isEqualTo(Side.EARLIER);
+    assertThat(both.withoutPreamble()).isNull();
+  }
+
+  /** {@code text} with a preamble of one recital before what it has, as 2016's consolidation. */
+  private static Element withPreamble(Element text) {
+    var recital =
+        new Element(
+            "unit",
+            Map.of("eId", "pbl_1/rct_1", "kind", "recital"),
+            List.of(new Element("p", Map.of(), List.of(), "Whereas:")),
+            "");
+    var preamble = new Element("preamble", Map.of("eId", "pbl_1"), List.of(recital), "");
+    var children = new ArrayList<Element>();
+    children.add(preamble);
+    children.addAll(text.children());
+    return new Element(text.name(), text.attributes(), children, "");
+  }
+
   private static List<String> placed(Compared compared, Element later) {
     var units = Units.of(later);
     var placed = new ArrayList<String>();

@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import com.github.difflib.DiffUtils;
 import com.github.difflib.algorithm.myers.MyersDiff;
 import com.github.difflib.patch.DeltaType;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -42,8 +43,11 @@ public final class Differ {
    *
    * @param differences the differences, in the later text's order, each with what comes before it
    * @param closing what the later text has after the last difference; all of it, if none
+   * @param withoutPreamble the text without a preamble, where the other has one, which isn't
+   *     compared; none if both have one or neither does
    */
-  public record Compared(List<Difference> differences, List<Context> closing) {
+  public record Compared(
+      List<Difference> differences, List<Context> closing, @Nullable Side withoutPreamble) {
     public Compared {
       differences = List.copyOf(differences);
       closing = List.copyOf(closing);
@@ -52,11 +56,17 @@ public final class Differ {
 
   /**
    * The differences of {@code to} from {@code from}, in {@code to}'s order: its units' eIds aligned
-   * with {@code from}'s, units deleted before those inserted in their place.
+   * with {@code from}'s, units deleted before those inserted in their place. A preamble one of them
+   * has and the other hasn't isn't compared: the Publications Office publishes some consolidations
+   * without it (2015/1998's from 2017), which no act did.
    */
   public static Compared differences(Element from, Element to) {
-    var before = Units.of(from);
-    var after = Units.of(to);
+    var earlierPreamble = preamble(from);
+    var laterPreamble = preamble(to);
+    @Nullable Side withoutPreamble =
+        earlierPreamble == laterPreamble ? null : earlierPreamble ? Side.LATER : Side.EARLIER;
+    var before = Units.of(withoutPreamble == Side.LATER ? withoutPreamble(from) : from);
+    var after = Units.of(withoutPreamble == Side.EARLIER ? withoutPreamble(to) : to);
     var steps = steps(before, after);
     var touched =
         touched(
@@ -91,7 +101,26 @@ public final class Differ {
       }
     }
     run.into(context);
-    return new Compared(placed, context);
+    return new Compared(placed, context, withoutPreamble);
+  }
+
+  /** Whether {@code text} has a preamble with units in it: its citations, its recitals. */
+  private static boolean preamble(Element text) {
+    if (text.name().equals("preamble")) {
+      return Units.holdsUnits(text);
+    }
+    return text.children().stream().anyMatch(Differ::preamble);
+  }
+
+  /** {@code element} without its preamble. */
+  private static Element withoutPreamble(Element element) {
+    var children = new ArrayList<Element>();
+    for (var child : element.children()) {
+      if (!child.name().equals("preamble")) {
+        children.add(withoutPreamble(child));
+      }
+    }
+    return copy(element, children);
   }
 
   /**

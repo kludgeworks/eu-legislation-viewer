@@ -12,6 +12,7 @@
 @param String units
 @param List<CompareView.ViewLink> views
 @param CompareView.Only only = null
+@param String preamble = ""
 <%-- A comparison's Changes view on an act's page (Design: Mode: Compare, Changes): its controls,
      how many differences and of what kind, then each provision that differs as it reads, marked, numbered
      beside it with a sidenote: what happened, which acts made it and when each applies, and what it
@@ -33,6 +34,8 @@
           <summary>${fold.label()} — ${fold.note()}<span class="show"> · <u>show</u></span></summary>
           <div class="fold-text"><p class="status">Loading…</p></div>
         </details>
+      @elseif(passage instanceof ChangesView.NoPreamble)
+        <p class="fold no-preamble">Preamble — ${preamble}</p>
       @elseif(passage instanceof ChangesView.Lead lead)
         <div class="lead">${html.element(lead.unit())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)

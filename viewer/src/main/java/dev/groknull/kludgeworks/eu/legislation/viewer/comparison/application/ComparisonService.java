@@ -115,7 +115,12 @@ class ComparisonService implements Comparisons {
             .observe(
                 () -> {
                   var compared = Differ.differences(earlier.get(), later.get());
-                  return new Comparison(from, to, compared.differences(), compared.closing());
+                  return new Comparison(
+                      from,
+                      to,
+                      compared.differences(),
+                      compared.closing(),
+                      compared.withoutPreamble());
                 });
     var diffed = System.nanoTime();
     comparisons.add(comparison);

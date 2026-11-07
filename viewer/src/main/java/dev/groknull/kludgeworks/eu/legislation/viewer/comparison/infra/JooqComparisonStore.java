@@ -5,6 +5,7 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jo
 import static org.jooq.impl.DSL.currentInstant;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application.ComparisonStore;
@@ -36,7 +37,7 @@ class JooqComparisonStore implements ComparisonStore {
 
   @Override
   public Optional<Comparison> find(ContentHash from, ContentHash to) {
-    return db.select(COMPARISON.DIFFERENCES, COMPARISON.CLOSING)
+    return db.select(COMPARISON.DIFFERENCES, COMPARISON.CLOSING, COMPARISON.WITHOUT_PREAMBLE)
         .from(COMPARISON)
         .where(COMPARISON.FROM_ROOT.eq(from), COMPARISON.TO_ROOT.eq(to))
         .fetchOptional()
@@ -46,11 +47,13 @@ class JooqComparisonStore implements ComparisonStore {
                     from,
                     to,
                     json.readValue(row.value1().data(), DIFFERENCES),
-                    json.readValue(row.value2().data(), CLOSING)));
+                    json.readValue(row.value2().data(), CLOSING),
+                    row.value3() == null ? null : Side.valueOf(row.value3())));
   }
 
   @Override
   public void add(Comparison comparison) {
+    var withoutPreamble = comparison.withoutPreamble();
     db.insertInto(COMPARISON)
         .set(COMPARISON.FROM_ROOT, comparison.from())
         .set(COMPARISON.TO_ROOT, comparison.to())
@@ -58,6 +61,7 @@ class JooqComparisonStore implements ComparisonStore {
             COMPARISON.DIFFERENCES,
             JSONB.valueOf(json.writeValueAsString(comparison.differences())))
         .set(COMPARISON.CLOSING, JSONB.valueOf(json.writeValueAsString(comparison.closing())))
+        .set(COMPARISON.WITHOUT_PREAMBLE, withoutPreamble == null ? null : withoutPreamble.name())
         .set(COMPARISON.COMPARED_AT, currentInstant())
         .onConflictDoNothing()
         .execute();
