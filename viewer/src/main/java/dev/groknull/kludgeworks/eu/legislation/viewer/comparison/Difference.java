@@ -39,7 +39,9 @@ import org.jspecify.annotations.Nullable;
  *     once, but those that differ
  * @param markers the amendment markers on the unit's own content in the later text: which acts put
  *     it in the form it has there, and how; where it has none, those on the nearest unit it is in
- *     that an act put in its form whole; none for a deleted unit
+ *     that an act put in its form whole; for a deleted unit, the act that deleted it: the marker of
+ *     the deletion the later text keeps it struck under, or of the unit it was in that an act
+ *     replaced whole, without it; none if neither
  * @param earlierMarkers the same in the earlier text; none for an inserted unit
  */
 @ValueObject

@@ -36,7 +36,7 @@ class ChangesViewTest {
         .containsExactly(
             "Articles 1 to 3",
             "lead",
-            "Points 1. to 8.1.2.2 (442 provisions)",
+            "Points 1. to 8.1.2.2 (429 provisions)",
             "lead",
             "Points (a) and (b)",
             "1",
@@ -99,7 +99,7 @@ class ChangesViewTest {
         .containsExactly(
             "Articles 1 to 3",
             "lead",
-            "Points 1. to 9.1.2.2 (484 provisions)",
+            "Points 1. to 9.1.2.2 (471 provisions)",
             "lead",
             "Points (a) and (b)",
             "1",

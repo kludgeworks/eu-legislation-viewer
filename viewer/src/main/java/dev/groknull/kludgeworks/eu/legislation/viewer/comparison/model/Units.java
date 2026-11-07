@@ -1,10 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -20,17 +22,25 @@ import org.jspecify.annotations.Nullable;
  * is part of the one it is in. Where two units share an eId (as a converted text rarely has), the
  * first is kept.
  *
+ * <p>What a consolidation keeps of a deletion (legal-text deleted: the words or units an act
+ * deleted, struck, under its marker) is not the text's: a unit in it is not one of its units, and
+ * its words are none of a unit's blocks. Which act struck each unit is kept.
+ *
  * @param byEId the units, by eId, in document order
  * @param outermost the eIds of the units in no other, in order
+ * @param struck the markers of the deletions that keep a unit struck, by its eId: deleted by
+ *     2019/103
  */
-public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
+public record Units(
+    SequencedMap<String, Unit> byEId, List<String> outermost, Map<String, List<Marker>> struck) {
 
   /** The units of {@code text}. */
   public static Units of(Element text) {
     var units = new LinkedHashMap<String, Unit>();
     var outermost = new ArrayList<String>();
-    collect(text, null, null, outermost, units, new ArrayDeque<>());
-    return new Units(units, outermost);
+    var struck = new HashMap<String, List<Marker>>();
+    collect(text, null, null, outermost, units, new ArrayDeque<>(), struck);
+    return new Units(units, outermost, struck);
   }
 
   /** Its unit {@code eId}; none if it has none. */
@@ -53,7 +63,12 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
       @Nullable Element container,
       List<String> siblings,
       Map<String, Unit> units,
-      Deque<Ranked> ranked) {
+      Deque<Ranked> ranked,
+      Map<String, List<Marker>> struck) {
+    if (element.name().equals("deleted")) {
+      struck(element, markers(element), struck);
+      return;
+    }
     var eId = eId(element);
     if (eId != null && !units.containsKey(eId)) {
       var blocks = new ArrayList<Element>();
@@ -65,13 +80,13 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
       siblings.add(eId);
       var inside = new ArrayList<String>();
       for (var child : element.children()) {
-        collect(child, eId, element, inside, units, ranked);
+        collect(child, eId, element, inside, units, ranked, struck);
       }
       units.put(eId, new Unit(eId, parent, section, element, blocks, inside, list));
       return;
     }
     for (var child : element.children()) {
-      collect(child, parent, element, siblings, units, ranked);
+      collect(child, parent, element, siblings, units, ranked, struck);
     }
   }
 
@@ -113,13 +128,41 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
         : new Element(container.name(), container.attributes(), List.of(), container.text());
   }
 
+  /** The deletion markers among {@code deletion}'s children: deleted by 2019/103. */
+  private static List<Marker> markers(Element deletion) {
+    var markers = new ArrayList<Marker>();
+    for (var child : deletion.children()) {
+      var act = child.attribute("amendingAct");
+      var action = child.attribute("action");
+      if (child.name().equals("provenance") && act != null && action != null) {
+        markers.add(new Marker(act, action, null));
+      }
+    }
+    return List.copyOf(markers);
+  }
+
+  /** The units in {@code element}, the outermost, struck by {@code markers}. */
+  private static void struck(
+      Element element, List<Marker> markers, Map<String, List<Marker>> struck) {
+    for (var child : element.children()) {
+      var eId = eId(child);
+      if (eId != null) {
+        struck.putIfAbsent(eId, markers);
+      } else {
+        struck(child, markers, struck);
+      }
+    }
+  }
+
   /** A unit with a rank, still open for those after it. */
   private record Ranked(String eId, int rank, @Nullable String parent) {}
 
   /** The blocks of {@code element} that aren't in a unit of its own. */
   private static void own(Element element, List<Element> blocks) {
     for (var child : element.children()) {
-      if (eId(child) != null || child.name().equals("provenance")) {
+      if (eId(child) != null
+          || child.name().equals("provenance")
+          || child.name().equals("deleted")) {
         continue;
       }
       if (holdsUnits(child)) {
@@ -130,9 +173,11 @@ public record Units(SequencedMap<String, Unit> byEId, List<String> outermost) {
     }
   }
 
-  /** Whether {@code element} has a unit in it, at any depth. */
+  /** Whether {@code element} has a unit of the text in it, at any depth (not one struck). */
   static boolean holdsUnits(Element element) {
-    return element.children().stream().anyMatch(child -> eId(child) != null || holdsUnits(child));
+    return element.children().stream()
+        .filter(child -> !child.name().equals("deleted"))
+        .anyMatch(child -> eId(child) != null || holdsUnits(child));
   }
 
   /** A unit's eId: a unit's, not a note's or another element's. */

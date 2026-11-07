@@ -15,6 +15,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Mark
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -295,9 +296,88 @@ class SidenoteViewTest {
             List.of(),
             Language.ENG);
 
-    assertThat(sidenote.made()).isNull();
+    // never a line left empty: that no act is named
+    assertThat(sidenote.made()).isEqualTo("Amended by an act not named");
+    assertThat(sidenote.why())
+        .isEqualTo(
+            "Neither the text’s markers nor the Publications Office’s data name an act between"
+                + " these versions for it.");
     assertThat(sidenote.dates()).isEmpty();
     assertThat(sidenote.before()).isEqualTo("Before: as replaced by 2023/566");
+  }
+
+  @Test
+  void placesActsThatReplacedAUnitTogetherInTheFirstVersionThatHasThemAll() {
+    // 2019/103 applies in stages, in the versions of 1 February 2019 and 31 December 2021; it
+    // replaced 11.1.2 with 2019/1583, which only the second has
+    var point =
+        changed(
+            "anx/pnt_11.1.2",
+            List.of(
+                new Marker("32019R1583", "replaced", null),
+                new Marker("32019R0103", "replaced", null)),
+            List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20160229"),
+            version("02015R1998-20261001"),
+            point,
+            List.of(),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Replaced by 2019/103 and 2019/1583 together");
+  }
+
+  @Test
+  void placesTheActTheMarkerNamesLastAfterThoseOnlyCellarNames() {
+    // the text keeps 4.1.3.2 struck under 2019/103's deletion; Cellar has 2017/815 replacing it,
+    // and
+    // (as the dev store's data has) 2019/413; 2019/103 applies in stages, its first before 2019/413
+    var struck = deleted("anx/pnt_4.1.3.2", new Marker("32019R0103", "deleted", null));
+    var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
+    var replaced = cellar.getFirst();
+    cellar.add(
+        new Amendment(
+            new ActIdentifier("32019R0413"),
+            replaced.location(),
+            replaced.role(),
+            null,
+            null,
+            replaced.languages()));
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20160229"),
+            version("02015R1998-20261001"),
+            struck,
+            cellar,
+            Language.ENG);
+
+    assertThat(sidenote.made())
+        .isEqualTo("Replaced by 2017/815, then replaced by 2019/413, then deleted by 2019/103");
+  }
+
+  @Test
+  void namesTheActThatReplacedTheUnitADeletedOneWasInWhole() {
+    var a =
+        deleted(
+            "anx/level_PART-10/pnt_a", new Marker("32017R0815", "replaced", "anx/level_PART-10"));
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20160229"),
+            version("02015R1998-20261001"),
+            a,
+            List.of(),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Deleted by 2017/815");
+    assertThat(sidenote.why())
+        .isEqualTo("2017/815 replaced Part 10 as a whole; this point is not in it.");
   }
 
   @Test
@@ -449,6 +529,23 @@ class SidenoteViewTest {
     return new Difference(
         eId,
         Kind.INSERTED,
+        point(eId),
+        unit(eId),
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
+        List.of(),
+        List.of(marker),
+        List.of());
+  }
+
+  private static Difference deleted(String eId, Marker marker) {
+    return new Difference(
+        eId,
+        Kind.DELETED,
         point(eId),
         unit(eId),
         0,

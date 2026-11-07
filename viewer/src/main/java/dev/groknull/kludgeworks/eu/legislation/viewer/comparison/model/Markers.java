@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Units.Unit;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -40,6 +41,37 @@ final class Markers {
       at = enclosing.parent();
     }
     return List.copyOf(found);
+  }
+
+  /**
+   * The markers of the act that deleted {@code unit}, of the earlier text, by the later text {@code
+   * after}: the deletion that keeps it struck; where none does, the provenance of the nearest unit
+   * it was in that an act replaced whole, without it, as that unit's; none if neither.
+   */
+  static List<Marker> deleted(Unit unit, Units after) {
+    var struck = after.struck().get(unit.eId());
+    if (struck != null) {
+      return struck;
+    }
+    for (var at = unit.parent(); at != null; ) {
+      var enclosing = after.get(at);
+      if (enclosing == null) {
+        break;
+      }
+      var found = new ArrayList<Marker>();
+      for (var child : enclosing.element().children()) {
+        var act = child.attribute("amendingAct");
+        var action = child.attribute("action");
+        if (child.name().equals("provenance") && act != null && "replaced".equals(action)) {
+          found.add(new Marker(act, "replaced", enclosing.eId()));
+        }
+      }
+      if (!found.isEmpty()) {
+        return List.copyOf(found);
+      }
+      at = enclosing.parent();
+    }
+    return List.of();
   }
 
   private static void collect(Element element, Set<Marker> found) {

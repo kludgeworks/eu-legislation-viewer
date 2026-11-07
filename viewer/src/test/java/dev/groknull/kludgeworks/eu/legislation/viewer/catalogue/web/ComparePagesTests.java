@@ -95,7 +95,7 @@ class ComparePagesTests {
     assertThat(changes.select("details.fold summary").eachText())
         .containsExactly(
             "Articles 1 to 3 — no differences · show",
-            "Points 1. to 8.1.2.2 (442 provisions) — no differences · show",
+            "Points 1. to 8.1.2.2 (429 provisions) — no differences · show",
             "Points (a) and (b) — no differences · show",
             "Point (d) — no differences · show",
             "Point (f) — no differences · show",
@@ -221,7 +221,7 @@ class ComparePagesTests {
     // those between the first and last of a run of more than three, folded
     assertThat(synopsis.select(".ledger-fold").eachText())
         .containsExactly(
-            "Points 1.0 to 8.1.2.1 (440 provisions) — no differences",
+            "Points 1.0 to 8.1.2.1 (427 provisions) — no differences",
             "Points 8.1.3 to 9.1.2.1 — no differences",
             "Points 9.1.3 to ATTACHMENT 12-O — no differences");
     var same = synopsis.select(".ledger-same");

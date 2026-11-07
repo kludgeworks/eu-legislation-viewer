@@ -126,7 +126,10 @@ public final class Differ {
                 new Step(
                     unit,
                     true,
-                    in(unit, after) ? whole(unit, before, Kind.DELETED, Marks.DELETED) : null));
+                    in(unit, after)
+                        ? whole(unit, before, Kind.DELETED, Marks.DELETED)
+                            .markers(Markers.deleted(unit, after))
+                        : null));
           }
         }
       }
@@ -260,7 +263,8 @@ public final class Differ {
       int[] next) {
     var out = new ArrayList<Element>();
     for (var child : element.children()) {
-      if (Units.eId(child) != null) {
+      // a deletion's struck words: not the text's (Units)
+      if (Units.eId(child) != null || child.name().equals("deleted")) {
         continue;
       }
       if (child.name().equals("provenance")) {

@@ -165,7 +165,8 @@ class DifferTest {
   void showsAUnitInsertedOrDeletedOnceWholeWithItsOwnUnits() {
     var differences = Differ.differences(JANUARY, MARCH).differences();
     assertThat(differences).filteredOn(d -> d.kind() == Kind.INSERTED).hasSize(38);
-    assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(16);
+    // and those the later text keeps struck: deleted
+    assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(24);
     assertThat(differences).filteredOn(d -> d.kind() == Kind.CHANGED).hasSize(38);
     assertThat(differences)
         .extracting(Difference::eId, Difference::kind)
@@ -191,6 +192,14 @@ class DifferTest {
     assertThat(unmarked(deleted.shown())).isBlank();
     assertThat(said(deleted.shown())).startsWith("[-").doesNotContain("[+");
     assertThat(deleted.inserted()).isZero();
+  }
+
+  @Test
+  void readsAUnitTheLaterTextKeepsStruckAsDeletedByTheActThatStruckIt() {
+    var struck = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_6.8.1.6");
+    assertThat(struck.kind()).isEqualTo(Kind.DELETED);
+    assertThat(struck.markers()).containsExactly(new Marker("32026R0449", "deleted", null));
+    assertThat(Units.of(MARCH).get("anx/pnt_6.8.1.6")).isNull();
   }
 
   @Test

@@ -238,7 +238,7 @@ public record ChangesView(
    * written, that word once (Article 2; Articles 2 to 5; ANNEXES I and II); other nums after their
    * kind's noun (Point (a); Points (a) and (b); Paragraphs 2. to 4.); units with no num, or only a
    * mark for one (an indent's dash), counted (2 indents; 3 subparagraphs); some of them, by the
-   * first and last with one, all counted (Points 1. to 8.1.2.2 (442 provisions)).
+   * first and last with one, all counted (Points 1. to 8.1.2.2 (429 provisions)).
    */
   static String fold(List<Sibling> siblings) {
     var first = siblings.getFirst();

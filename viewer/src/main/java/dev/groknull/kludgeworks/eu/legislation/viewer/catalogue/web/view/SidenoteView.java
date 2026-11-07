@@ -13,6 +13,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -29,18 +31,19 @@ import org.jspecify.annotations.Nullable;
 /**
  * Who made a difference, as its sidenote says it beside its note (Design: Mode: Compare, Sidenote):
  * the acts between the two versions that the amendment markers on the unit in the later text or
- * Cellar's amendments of it name (the markers name only the last act to change a unit, and a
- * deletion leaves none), as a chain in the order the versions integrate them: Inserted by 2019/103,
- * then replaced by 2021/255. Each with when it applies, from its own dates (never the version's);
- * and what the unit was before, by the markers in the earlier text.
+ * Cellar's amendments of it name (the markers name only the last act to change a unit; a deleted
+ * one's, the deletion it is kept struck under or the unit it was in replaced whole), as a chain in
+ * the order the versions integrate them: Inserted by 2019/103, then replaced by 2021/255. Each with
+ * when it applies, from its own dates (never the version's); and what the unit was before, by the
+ * markers in the earlier text.
  *
  * <p>Acts of one version (Design: Acts sharing a version) leave no text between their changes:
  * where the markers name an act of a version, Cellar's other acts of it are left out (the markers
  * are followed); the acts the markers name together changed it together, one wording, which the
  * sidenote says, and, limited to one of them, that the change is theirs combined. An act only
  * Cellar names is said to be. Where neither names an act between them, and those acts are all of
- * one version, it was one of them, not known which; across versions, it says nothing of who made it
- * rather than guess.
+ * one version, it was one of them, not known which; across versions, that no act is named, rather
+ * than guess.
  *
  * <p>Which of an act's dates a provision applies from, when it has several, isn't in the texts:
  * Cellar's amendment of the unit chooses it, where its day is one of them and after the earlier
@@ -49,7 +52,7 @@ import org.jspecify.annotations.Nullable;
  *
  * @param made who made it: Replaced by 2026/449; Inserted by 2019/103, then replaced by 2021/255;
  *     Replaced by 2019/103 and 2019/1583 together; Amended by an act not known: 2019/103 or
- *     2019/1583; none where nothing names an act between the two versions
+ *     2019/1583; Deleted by an act not named, where nothing names one between the two versions
  * @param acts the acts that made it, in the order the versions integrate them: whose changes it
  *     counts in
  * @param candidates the acts one of which made it, not known which; none where it is known
@@ -122,7 +125,7 @@ public record SidenoteView(
     if (made.isEmpty()) {
       return unknown(act, from, to, difference, only, before, language);
     }
-    var steps = steps(act, from, to, made.keySet());
+    var steps = steps(act, from, to, made.keySet(), marked.keySet(), together(difference, between));
     var dates = new ArrayList<Applies>();
     for (var each : steps.stream().flatMap(List::stream).toList()) {
       if (!Wording.corrigendum(each)) {
@@ -207,19 +210,21 @@ public record SidenoteView(
             .distinct()
             .count();
     if (candidates.size() < 2 || versions != 1) {
-      return new SidenoteView(null, List.of(), List.of(), null, List.of(), before);
+      return new SidenoteView(
+          verb(difference) + " by an act not named",
+          List.of(),
+          List.of(),
+          "Neither the text’s markers nor the Publications Office’s data name an act between"
+              + " these versions for it.",
+          List.of(),
+          before);
     }
     var ordered =
         version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
             .filter(candidates::contains)
             .toList();
     var names = ordered.stream().map(Wording::act).toList();
-    var verb =
-        switch (difference.kind()) {
-          case INSERTED -> "Inserted";
-          case DELETED -> "Deleted";
-          case CHANGED -> "Amended";
-        };
+    var verb = verb(difference);
     var dates = new ArrayList<Applies>();
     for (var each : ordered) {
       applies(act, each, Set.of(), language).ifPresent(dates::add);
@@ -241,6 +246,15 @@ public record SidenoteView(
                 + " made it.",
         dates,
         before);
+  }
+
+  /** What happened to {@code difference}, as a made line starts: Inserted, Deleted, Amended. */
+  private static String verb(Difference difference) {
+    return switch (difference.kind()) {
+      case INSERTED -> "Inserted";
+      case DELETED -> "Deleted";
+      case CHANGED -> "Amended";
+    };
   }
 
   /**
@@ -271,10 +285,11 @@ public record SidenoteView(
 
   /**
    * That an inserted unit is new in the unit the acts its markers name replaced whole: 2019/103
-   * replaced section 11.1 as a whole; this point is new in it. None for another.
+   * replaced section 11.1 as a whole; this point is new in it; that a deleted one is not in it
+   * (2017/815 replaced Part 10 as a whole; this point is not in it). None for a changed one.
    */
   private static Optional<String> newIn(Difference difference) {
-    if (difference.kind() != Kind.INSERTED) {
+    if (difference.kind() == Kind.CHANGED) {
       return Optional.empty();
     }
     var whole =
@@ -291,7 +306,7 @@ public record SidenoteView(
             + unit(Objects.requireNonNull(whole.getFirst().in()), difference)
             + " as a whole; this "
             + noun(difference)
-            + " is new in it.");
+            + (difference.kind() == Kind.INSERTED ? " is new in it." : " is not in it."));
   }
 
   /**
@@ -345,6 +360,9 @@ public record SidenoteView(
     if (last.startsWith("anx")) {
       return last.contains("_") ? "Annex " + number : "the annex";
     }
+    if (last.startsWith("level_PART-")) {
+      return "Part " + last.substring("level_PART-".length());
+    }
     if (last.startsWith("level_ATTACHMENT-")) {
       return "Appendix " + last.substring("level_ATTACHMENT-".length());
     }
@@ -380,20 +398,74 @@ public record SidenoteView(
    * integrate them: one step for each version, its acts together.
    */
   private static List<List<ActIdentifier>> steps(
-      Act act, Version from, Version to, Collection<ActIdentifier> acts) {
-    var placed = new HashSet<ActIdentifier>();
+      Act act,
+      Version from,
+      Version to,
+      Collection<ActIdentifier> acts,
+      Collection<ActIdentifier> marked,
+      List<Set<ActIdentifier>> together) {
+    var between =
+        act.timeline().versions().stream()
+            .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
+            .toList();
+    // each act's version: the first that has it (an act that applies in stages is in several)
+    var at = new HashMap<ActIdentifier, Version>();
+    for (var each : acts) {
+      if (!marked.contains(each)) {
+        between.stream()
+            .filter(v -> v.integrates().contains(each))
+            .findFirst()
+            .ifPresent(version -> at.put(each, version));
+      }
+    }
+    // an act the markers name was the last to change it: in none before the others'; with those it
+    // changed it together, in the first that has them all
+    var floor = at.values().stream().map(Version::date).max(Comparator.naturalOrder()).orElse(null);
+    for (var each : marked) {
+      var with =
+          together.stream()
+              .filter(group -> group.contains(each))
+              .findFirst()
+              .orElseGet(() -> Set.of(each));
+      var after = between.stream().filter(v -> floor == null || !v.date().isBefore(floor)).toList();
+      after.stream()
+          .filter(v -> v.integrates().containsAll(with))
+          .findFirst()
+          .or(() -> after.stream().filter(v -> v.integrates().contains(each)).findFirst())
+          .or(() -> between.stream().filter(v -> v.integrates().contains(each)).findFirst())
+          .ifPresent(version -> at.put(each, version));
+    }
     var steps = new ArrayList<List<ActIdentifier>>();
-    for (var version : act.timeline().versions()) {
-      if (version.date().isAfter(from.date()) && !version.date().isAfter(to.date())) {
-        // in the version's order of them
-        var step =
-            version.integrates().stream().filter(acts::contains).filter(placed::add).toList();
-        if (!step.isEmpty()) {
-          steps.add(step);
-        }
+    for (var version : between) {
+      // in the version's order of them
+      var step =
+          version.integrates().stream()
+              .filter(each -> acts.contains(each) && version.equals(at.get(each)))
+              .toList();
+      if (!step.isEmpty()) {
+        steps.add(step);
       }
     }
     return steps;
+  }
+
+  /**
+   * The acts between the two versions that replaced the unit together, by its markers: two that
+   * replaced the same unit whole (its own, or the one it is in) did so at once, as an act that
+   * replaced it after another would have left only its own marker. Each set of two or more.
+   */
+  private static List<Set<ActIdentifier>> together(
+      Difference difference, Collection<ActIdentifier> between) {
+    var byUnit = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();
+    for (var marker : difference.markers()) {
+      var each = new ActIdentifier(marker.act());
+      if (marker.action().equals("replaced") && between.contains(each)) {
+        byUnit
+            .computeIfAbsent(Optional.ofNullable(marker.in()), in -> new LinkedHashSet<>())
+            .add(each);
+      }
+    }
+    return byUnit.values().stream().filter(acts -> acts.size() > 1).toList();
   }
 
   /** What an amendment's role did, as a marker's action says it: replaced, inserted, deleted. */
