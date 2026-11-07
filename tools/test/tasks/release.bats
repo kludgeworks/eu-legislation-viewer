@@ -221,6 +221,16 @@ HOOK
 	[ -z "$(git -C "$repo" tag --list v2026.11.0)" ]
 }
 
+@test "shows the notes below the checks' and tests' output, just before it asks to publish" {
+	prepare_release
+	stub mise 'echo "build output: mise $*"'
+
+	usage_push=false run main
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"build output: mise run test"*"## What's Changed"*"Kept local"* ]] || false
+}
+
 @test "pushes a release when asked to" {
 	prepare_release
 	ui_tty="$BATS_TEST_TMPDIR/answer"

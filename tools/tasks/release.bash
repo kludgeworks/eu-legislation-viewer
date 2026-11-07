@@ -183,14 +183,10 @@ main() {
 	fi
 
 	info "Next release" version "$tag" migrations "$(pending_migrations | grep -c . || true)"
-	show_notes "$tag"
 	if [[ ${usage_dry_run:-false} = true ]]; then
 		rename_migrations "$version"
+		show_notes "$tag"
 		exit 0
-	fi
-
-	if wants_push "$tag"; then
-		pushing=true
 	fi
 
 	start=$(git rev-parse HEAD)
@@ -202,6 +198,13 @@ main() {
 	"$checker" --final
 	info "Running every test"
 	mise run test
+
+	# The notes, then the question whether to publish: below the checks' and tests' output, so the
+	# notes are on screen when the question is asked. Cancelling it undoes the release.
+	show_notes "$tag"
+	if wants_push "$tag"; then
+		pushing=true
+	fi
 
 	# hk's release profile: the hooks check the migrations' released names, not that the pending
 	# ones are NEXT_, which would name them NEXT_ again (v2026.11.0's commit was so, empty)

@@ -14,7 +14,6 @@ cd "$root"
 
 tag=${usage_tag:?}
 repo=${usage_repo:-kludgeworks/eu-legislation-viewer}
-version=${tag#v}
 output=${usage_output:-}
 
 # A tag that isn't made yet is the release of HEAD: mise run release shows its notes before it tags.
@@ -94,26 +93,7 @@ append_section "### 📚 Documentation" "${docs[@]+"${docs[@]}"}"
 append_section "### 🛠️ Maintenance & Infrastructure" "${maintenance[@]+"${maintenance[@]}"}"
 append_section "### Other Changes" "${others[@]+"${others[@]}"}"
 
-content+="**Full Changelog**: $compare_url"$'\n\n'
-content+="---"$'\n\n'
-content+="## Getting Started"$'\n\n'
-content+="### 🐳 Container Image"$'\n'
-content+="Published on [GitHub Packages](https://github.com/$repo/pkgs/container/eu-legislation-viewer) (\`linux/amd64\`, \`linux/arm64\`):"$'\n\n'
-content+='```bash'$'\n'
-content+="docker pull ghcr.io/$repo:$version"$'\n'
-content+="docker run -p 8080:8080 ghcr.io/$repo:$version"$'\n'
-content+='```'$'\n\n'
-content+="### ☕ Standalone JAR"$'\n'
-content+="Requires Java 25:"$'\n\n'
-content+='```bash'$'\n'
-content+="java -jar kludgeworks-viewer-$version.jar"$'\n'
-content+='```'$'\n\n'
-content+="### 🔒 Verification"$'\n'
-content+="Verify SLSA build provenance attestations:"$'\n\n'
-content+='```bash'$'\n'
-content+="gh attestation verify kludgeworks-viewer-$version.jar --repo $repo"$'\n'
-content+="gh attestation verify oci://ghcr.io/$repo:$version --repo $repo"$'\n'
-content+='```'
+content+="**Full Changelog**: $compare_url"
 
 if [[ -n "$output" ]]; then
 	mkdir -p "$(dirname "$output")"

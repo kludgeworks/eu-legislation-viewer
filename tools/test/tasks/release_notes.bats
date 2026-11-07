@@ -69,10 +69,9 @@ git_commit() {
 	# Full Changelog compare link
 	[[ "$output" = *"**Full Changelog**: https://github.com/kludgeworks/eu-legislation-viewer/compare/v2026.11.0...v2026.11.1"* ]] || false
 
-	# Getting started, container and jar instructions
-	[[ "$output" = *"docker pull ghcr.io/kludgeworks/eu-legislation-viewer:2026.11.1"* ]] || false
-	[[ "$output" = *"java -jar kludgeworks-viewer-2026.11.1.jar"* ]] || false
-	[[ "$output" = *"gh attestation verify kludgeworks-viewer-2026.11.1.jar --repo kludgeworks/eu-legislation-viewer"* ]] || false
+	# No getting-started instructions
+	[[ "$output" != *"Getting Started"* ]] || false
+	[[ "$output" != *"docker pull"* ]] || false
 }
 
 @test "generates notes for the first tag without a previous tag" {
@@ -98,8 +97,6 @@ git_commit() {
 
 	[ "$status" -eq 0 ]
 	[[ "$output" = *"https://github.com/custom-org/custom-viewer/commits/v2026.11.0"* ]] || false
-	[[ "$output" = *"docker pull ghcr.io/custom-org/custom-viewer:2026.11.0"* ]] || false
-	[[ "$output" = *"gh attestation verify kludgeworks-viewer-2026.11.0.jar --repo custom-org/custom-viewer"* ]] || false
 }
 
 @test "writes notes to the output file when specified" {

@@ -5,7 +5,7 @@
 long_about """
     Generate structured release notes for a release tag.
 
-    It extracts commits since the previous release tag, categorizes them by type, and appends installation and verification instructions.
+    It extracts commits since the previous release tag, categorizes them by type, and links the full changelog.
     """
 
 arg "<tag>" env="TAG" help="The release tag: v2026.11.0. For a tag that isn't made yet, the notes of the commits up to HEAD"
