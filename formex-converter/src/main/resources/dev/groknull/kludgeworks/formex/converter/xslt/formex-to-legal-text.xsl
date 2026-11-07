@@ -144,10 +144,13 @@
     <xsl:variable name="info" as="element(INFO.CONSLEG)?" select="$act/INFO.CONSLEG"/>
     <!-- a consolidated treaty (02016E/TXT-20250315) nests its documents, each GENERAL, in one: the
          treaty itself (the one with enacting terms), its protocols, its annexes, the declarations
-         and the tables of equivalences. The treaty is the text, the others attached documents -->
+         and the tables of equivalences. The treaty is the text, the others attached documents.
+         If there is no inner document with enacting terms (02016M/TXT, 02005S/TXT), fall back to
+         the outer CONS.DOC.GEN -->
     <xsl:variable name="treaty" as="xs:boolean" select="$info/@LEG.VAL = 'TREATY'"/>
     <xsl:variable name="content" as="element()" select="
-        if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN[ENACTING.TERMS][1] else ($doc/CONS.DOC.GEN, $doc)[1]"/>
+        (if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN[ENACTING.TERMS] else (),
+         $doc/CONS.DOC.GEN, $doc)[1]"/>
     <!-- the document's own CELEX number, and the act's: an OJ document's (a corrigendum too: what it
          corrects is Cellar's to say, and may be several documents) is its own -->
     <!-- a consolidation's is Cellar's when given: CONSLEG.REF only approximates it, dropping an
@@ -300,8 +303,7 @@
           </xsl:variable>
           <!-- attached documents: a consolidation's related documents, a package's entries other than annexes -->
           <xsl:variable name="attachments" as="element()*">
-            <xsl:for-each select="$content/self::CONS.DOC.GEN/CONS.DOC.GEN[not(@TYPE = 'ANNEX')],
-                                  if ($treaty) then $doc/CONS.DOC.GEN/CONS.DOC.GEN except $content else (),
+            <xsl:for-each select="(($doc/CONS.DOC.GEN/CONS.DOC.GEN | $content/self::CONS.DOC.GEN/CONS.DOC.GEN) except $content)[not(@TYPE = 'ANNEX')],
                                   $package/FMX/DOC.SUB.PUB[f:is-attachment(.)]">
               <xsl:apply-templates select="." mode="attachment">
                 <xsl:with-param name="eid" as="xs:string" select="f:eid((), 'att', string(position()))"/>

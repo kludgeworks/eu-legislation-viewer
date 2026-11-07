@@ -115,6 +115,46 @@
     <x:expect label="keeps the number as the publication's document" test="$x:result/*:source/*:publication/@document = '2016/C 202/01'"/>
   </x:scenario>
 
+  <x:scenario label="A treaty whose outer document has enacting terms (02016M/TXT, TEU layout)">
+    <x:context xmlns="">
+      <CONS.OTH>
+        <INFO.CONSLEG CONSLEG.REF="2016M9999" START.DATE="20190501" END.DATE="99999999" LEG.VAL="TREATY"/>
+        <CONS.OTH.DOC>
+          <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <FAM.COMP LEG.VAL="TREATY"><BIB.DATA><NO.CELEX>12016M/TXT</NO.CELEX></BIB.DATA></FAM.COMP>
+          <CONS.DOC.GEN TYPE="GENERAL">
+            <TITLE><TI><P>Treaty on European Union</P></TI></TITLE>
+            <ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS>
+          </CONS.DOC.GEN>
+        </CONS.OTH.DOC>
+      </CONS.OTH>
+    </x:context>
+    <x:expect label="falls back to the outer document when there is no inner document with enacting terms"
+              test="$x:result/*:body/*:unit[@kind = 'article']/@eId = 'art_1'
+                    and $x:result/*:source/@celex = '02016M/TXT-20190501'"/>
+  </x:scenario>
+
+  <x:scenario label="A treaty whose outer document has no enacting terms (02005S/TXT)">
+    <x:context xmlns="">
+      <CONS.OTH>
+        <INFO.CONSLEG CONSLEG.REF="2005S9999" START.DATE="20091218" END.DATE="99999999" LEG.VAL="TREATY"/>
+        <CONS.OTH.DOC>
+          <BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE>
+          <FAM.COMP LEG.VAL="TREATY"><BIB.DATA><NO.CELEX>12005S/TXT</NO.CELEX></BIB.DATA></FAM.COMP>
+          <CONS.DOC.GEN TYPE="GENERAL">
+            <TITLE><TI><P>Protocol on the Statute of the Court of Justice</P></TI></TITLE>
+            <CONTENTS>
+              <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE>
+            </CONTENTS>
+          </CONS.DOC.GEN>
+        </CONS.OTH.DOC>
+      </CONS.OTH>
+    </x:context>
+    <x:expect label="converts the document from the outer CONS.DOC.GEN"
+              test="$x:result/*:body/*:unit[@kind = 'article']/@eId = 'art_1'
+                    and $x:result/*:source/@celex = '02005S/TXT-20091218'"/>
+  </x:scenario>
+
   <x:scenario label="Titles in the outline">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
