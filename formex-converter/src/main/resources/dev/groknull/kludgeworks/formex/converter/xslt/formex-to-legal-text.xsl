@@ -471,8 +471,9 @@
        nearest titled ancestor's -->
   <xsl:function name="f:outer" as="element(lt:unit)?">
     <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:variable name="scope" as="element()?" select="($unit/ancestor::lt:unit[1], $unit/ancestor::lt:body[1], root($unit)/*)[1]"/>
     <xsl:variable name="enclosing" as="element(lt:unit)?" select="
-        ($unit[@kind = 'level']/preceding-sibling::lt:unit[@kind = 'level'][xs:integer(@depth) lt xs:integer($unit/@depth)][1],
+        ($unit[@kind = 'level'] ! ($scope//lt:unit[@kind = 'level'][. &lt;&lt; $unit][xs:integer(@depth) lt xs:integer($unit/@depth)])[last()],
          $unit/ancestor::lt:unit[1])[1]"/>
     <xsl:sequence select="$enclosing[f:titled(.)], $enclosing[not(f:titled(.))] ! f:outer(.)"/>
   </xsl:function>

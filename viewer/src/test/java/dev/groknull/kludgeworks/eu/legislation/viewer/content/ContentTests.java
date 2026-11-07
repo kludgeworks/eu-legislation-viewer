@@ -78,7 +78,7 @@ class ContentTests {
             tuple("art_3", "article", "Article 3"),
             tuple("anx", "annex", "ANNEX"));
     var annex = outline.entries().getLast();
-    assertThat(annex.entries()).hasSize(11);
+    assertThat(annex.entries()).hasSize(12);
     var airportSecurity = annex.entries().getFirst();
     assertThat(airportSecurity)
         .extracting(Entry::eId, Entry::num, Entry::heading)

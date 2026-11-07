@@ -25,11 +25,9 @@ class OutlineViewTest {
 
   @Test
   void countsTheDifferencesOnEachBranchDownToTheUnitTheyAreIn() {
-    // ATTACHMENT 6–D: a heading the converter ranks 2, so the outline nests 8. and 9. under it
     assertThat(counted(MARCH_TO_OCTOBER.entries()))
         .containsExactly(
             "ANNEX 6",
-            "ATTACHMENT 6–D 6",
             "8. IN-FLIGHT SUPPLIES 3",
             "8.1 SECURITY CONTROLS 3",
             "8.1.2 Screening 3",

@@ -333,6 +333,35 @@
 
   <xsl:key name="f:level-by-label" match="GR.SEQ" use="f:level-label(.)"/>
 
+  <!-- the depth of a level. A top-level annex chapter (7..12) nested in Formex under an unnumbered
+       wrapper level ("List of persons and entities visited and interviewed") is depth 1, the wrapper
+       itself depth 2 (inside chapter 6), and the chapter's sub-levels depth relative to it -->
+  <xsl:function name="f:level-depth" as="xs:integer">
+    <xsl:param name="seq" as="element(GR.SEQ)"/>
+    <xsl:variable name="lvl" as="xs:integer" select="xs:integer(($seq/@LEVEL, 1)[1])"/>
+    <xsl:variable name="in-annex" as="xs:boolean" select="exists($seq/ancestor::*[self::ANNEX or self::CONS.ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']])"/>
+    <xsl:choose>
+      <xsl:when test="not($in-annex)">
+        <xsl:sequence select="$lvl"/>
+      </xsl:when>
+      <xsl:when test="$lvl = 1 and empty(f:level-num($seq)) and empty(f:level-label-line($seq))
+                      and matches(string($seq/TITLE), 'List of persons|Liste des personnes|Liste der besuchten', 'i')">
+        <xsl:sequence select="2"/>
+      </xsl:when>
+      <xsl:when test="$lvl gt 1 and matches(normalize-space(string(f:level-num($seq))), '^\d+\.?$')
+                      and exists($seq/ancestor::GR.SEQ[matches(string(TITLE), 'List of persons|Liste des personnes|Liste der besuchten', 'i')])">
+        <xsl:sequence select="1"/>
+      </xsl:when>
+      <xsl:when test="exists($seq/ancestor::GR.SEQ[matches(normalize-space(string(f:level-num(.))), '^\d+\.?$')][xs:integer((@LEVEL, 1)[1]) gt 1]
+                                                  [exists(ancestor::GR.SEQ[matches(string(TITLE), 'List of persons|Liste des personnes|Liste der besuchten', 'i')])])">
+        <xsl:sequence select="$lvl - 1"/>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:sequence select="$lvl"/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:function>
+
   <!-- the annex (group of fragments) or quoted structure a level's number belongs to -->
   <xsl:function name="f:level-scope" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
@@ -433,7 +462,7 @@
          being flat, it follows them, in the order of the text, not the level's own blocks -->
     <xsl:variable name="trailing" as="node()*" select="(node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np))[. &gt;&gt; current()/GR.SEQ[1]]"/>
     <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="level" depth="{(@LEVEL, 1)[1]}">
+      <unit eId="{$eid}" kind="level" depth="{f:level-depth(.)}">
         <xsl:if test="@BOX = 'YES'">
           <xsl:attribute name="box" select="true()"/>
         </xsl:if>
