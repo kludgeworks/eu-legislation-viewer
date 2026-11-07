@@ -40,12 +40,15 @@
     <xsl:param name="label" as="xs:string?"/>
     <xsl:variable name="value" as="xs:string" select="
         f:spaces($label)
+        => replace('\[\s*\]', '')
         => replace('^[\(\[]+|[\)\]]+$', '')
         => replace('\.+$', '')
         => replace('\s+', '-')
         => replace('[^\p{L}\p{N}._\-]', '')
         => replace('-{2,}', '-')
         => replace('[._\-]+$', '')
+        => replace('^[._]+', '')
+        => replace('^-([._\-]+)', '$1')
         => replace('^[._]+', '')"/>
     <xsl:sequence select="if (matches($value, '[\p{L}\p{N}]')) then $value else ''"/>
   </xsl:function>

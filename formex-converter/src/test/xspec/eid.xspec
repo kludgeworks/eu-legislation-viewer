@@ -41,6 +41,10 @@
       <x:call function="f:label"><x:param select="'–'"/></x:call>
       <x:expect label="empty: the item is numbered as an indent" select="''"/>
     </x:scenario>
+    <x:scenario label="drops empty brackets and leading hyphen before dots">
+      <x:call function="f:label"><x:param select="'[ ].1'"/></x:call>
+      <x:expect label="[ ].1 → 1" select="'1'"/>
+    </x:scenario>
     <x:scenario label="keeps letters of any script, so that labels differing in print differ">
       <x:call function="f:label"><x:param select="'ΙII'"/></x:call>
       <x:expect label="a Greek capital iota stays: ΙII is not II" select="'ΙII'"/>

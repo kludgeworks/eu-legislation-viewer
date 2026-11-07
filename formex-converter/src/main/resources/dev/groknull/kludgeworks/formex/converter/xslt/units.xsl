@@ -88,7 +88,7 @@
        list, a level inside a box -->
   <xsl:function name="f:wraps-blocks" as="xs:boolean">
     <xsl:param name="n" as="node()"/>
-    <xsl:sequence select="exists($n[self::HT or self::TXT or self::LV or self::FT][node()[f:is-block(.)]])"/>
+    <xsl:sequence select="exists($n[self::HT or self::TXT or self::LV or self::FT][node()[f:is-block(.)][not(self::INCL.ELEMENT[@TYPE = 'TIFF'][not(CAPTION | IMG.CNT)] or self::FORMULA.S)]])"/>
   </xsl:function>
 
   <!-- … become a blockContainer, as AKN's, set in the typeface (a box, italics) or in the language -->
