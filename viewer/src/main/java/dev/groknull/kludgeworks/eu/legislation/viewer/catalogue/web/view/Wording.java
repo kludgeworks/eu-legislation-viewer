@@ -188,6 +188,24 @@ public final class Wording {
         + ".";
   }
 
+  /**
+   * That a version's text may lag the law, as its card says it in grey (Design D-24): This text may
+   * lag the law: 2019/413, in force from 16 March 2019, applies from a date its Article 3 sets, and
+   * no version includes it until 15 March 2021.
+   */
+  public static String mayLag(Act.Uncertain uncertain) {
+    var provisions = uncertain.clause().provisions();
+    return "This text may lag the law: "
+        + act(uncertain.act())
+        + ", in force from "
+        + date(uncertain.inForce())
+        + ", applies from a date "
+        + (provisions.isEmpty() ? "it sets" : "its " + provision(provisions.getFirst()) + " sets")
+        + ", and no version includes it until "
+        + date(uncertain.includedIn().date())
+        + ".";
+  }
+
   /** Article 2, Annex, Annex II. */
   public static String provision(Provision provision) {
     var type = provision.type().name();

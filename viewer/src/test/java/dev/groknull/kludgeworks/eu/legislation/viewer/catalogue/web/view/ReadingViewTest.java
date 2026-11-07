@@ -75,6 +75,37 @@ class ReadingViewTest {
   }
 
   @Test
+  void startsTheActAsPublishedOnItsEntryIntoForceAndSaysWhenItApplied() {
+    var published = card("2015-11-15", "2015-11-15", TODAY);
+    assertThat(published.period())
+        .isEqualTo("In force from 15 November 2015 · applied 1 February 2016 to 28 February 2016");
+    assertThat(published.compare())
+        .isEqualTo("/eli/reg_impl/2015/1998/eng/compare?from=2015-11-15&to=2016-02-29");
+    assertThat(published.comparing()).isEqualTo("Compare with the version after");
+    assertThat(card("2015-11-15", "2016-01-10", TODAY).asked())
+        .isEqualTo(
+            "The version that applied on 10 January 2016 · the act was in force but didn’t apply"
+                + " yet");
+    assertThat(card("2016-02-29", "2016-02-29", TODAY).comparing())
+        .isEqualTo("Compare with the version before");
+  }
+
+  @Test
+  void callsTheVersionAfterTheCurrentOneTheNextVersion() {
+    assertThat(card("2026-10-01", "2026-10-01", LocalDate.of(2026, 5, 1)).period())
+        .isEqualTo("Applies from 1 October 2026 · next version · may still be revised");
+  }
+
+  @Test
+  void saysInGreyWhereAnActWithoutADateOfApplicationMayMakeTheTextLag() {
+    assertThat(card("2020-07-02", "2020-07-02", TODAY).mayLag())
+        .containsExactly(
+            "This text may lag the law: 2019/413, in force from 16 March 2019, applies from a date"
+                + " its Article 3 sets, and no version includes it until 15 March 2021.");
+    assertThat(card("2021-03-15", "2021-03-15", TODAY).mayLag()).isEmpty();
+  }
+
+  @Test
   void warnsWhereTheVersionsTextLagsTheLaw() {
     assertThat(card("2016-02-29", "2016-02-29", TODAY).lags())
         .containsExactly(

@@ -12,6 +12,9 @@
       @for(var lag : card.lags())
         <span class="lag-warning">${lag}</span>
       @endfor
+      @for(var lag : card.mayLag())
+        <span class="lag-maybe">${lag}</span>
+      @endfor
       <form class="on" method="get" action="${card.action()}">
         <label for="${card.name()}">or the version on</label>
         <input id="${card.name()}" name="${card.name()}" type="date" value="${card.on()}" min="${card.first()}" required>

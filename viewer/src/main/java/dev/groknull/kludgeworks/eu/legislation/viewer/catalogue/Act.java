@@ -171,6 +171,43 @@ public record Act(
     return lags;
   }
 
+  /**
+   * The acts in force while {@code version} applies whose date of application Cellar doesn't know
+   * (its placeholder, or none with a day), that only a later version includes: its text may lag the
+   * law, from when each entered into force (Design D-24): 2019/413, in force from 16 March 2019,
+   * applies from a date its Article 3 sets, and the version of 15 March 2021 first includes it. In
+   * the order the later versions include them.
+   */
+  public List<Uncertain> mayLag(Version version) {
+    var until = timeline.successor(version).map(Version::date);
+    if (until.isEmpty()) {
+      return List.of();
+    }
+    var included = new HashSet<ActIdentifier>();
+    var uncertain = new ArrayList<Uncertain>();
+    for (var each : timeline.versions()) {
+      for (var act : each.integrates()) {
+        if (!included.add(act) || !each.date().isAfter(version.date())) {
+          continue;
+        }
+        var dates = datesOf(act);
+        var applying = dates.stream().filter(date -> date.kind() != Kind.ENTRY_INTO_FORCE).toList();
+        if (applying.isEmpty() || applying.stream().anyMatch(date -> date.date() != null)) {
+          continue;
+        }
+        dates.stream()
+            .filter(date -> date.kind() == Kind.ENTRY_INTO_FORCE && date.date() != null)
+            .map(date -> Objects.requireNonNull(date.date()))
+            .min(Comparator.naturalOrder())
+            .filter(inForce -> inForce.isBefore(until.get()))
+            .ifPresent(
+                inForce ->
+                    uncertain.add(new Uncertain(act, inForce, applying.getFirst().clause(), each)));
+      }
+    }
+    return uncertain;
+  }
+
   private Optional<ActDate> appliesFrom(ActIdentifier act) {
     var dates = datesOf(act);
     var applying = dates.stream().filter(date -> date.kind() != Kind.ENTRY_INTO_FORCE).toList();
@@ -179,6 +216,19 @@ public record Act(
             .filter(date -> date.date() != null)
             .min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
   }
+
+  /**
+   * An act in force before a version of this one includes it, whose date of application Cellar
+   * doesn't know: the text may lag the law.
+   *
+   * @param act the act
+   * @param inForce the day it entered into force
+   * @param clause what sets the date it applies from: Article 3
+   * @param includedIn the first version that includes it
+   */
+  @ValueObject
+  public record Uncertain(
+      ActIdentifier act, LocalDate inForce, ActDate.Clause clause, Version includedIn) {}
 
   /**
    * An act that applies before a version of this one includes it.

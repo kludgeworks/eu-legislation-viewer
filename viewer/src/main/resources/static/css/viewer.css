@@ -1105,6 +1105,18 @@ nav.pager a:hover {
   line-height: 1.4;
 }
 
+/* that a text may lag the law, an act's date of application not known: grey, on the cards only
+ * (Design D-24) */
+.lag-maybe {
+  margin-top: 6px;
+  padding: 5px 8px;
+  border: 1px dashed var(--line);
+  border-radius: 3px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
 form.on {
   display: flex;
   flex-wrap: wrap;

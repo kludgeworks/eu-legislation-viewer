@@ -638,12 +638,16 @@ class CompareController {
       language = Requests.language(code);
       act = acts.find(eli).orElseThrow(Requests::notFound);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
+      // without dates, the version that applies today, the current one (Design D-18)
+      var current = timeline.applicableOn(Requests.today(clock)).orElseGet(timeline::latest);
       var later =
           to != null
               ? timeline.applicableOn(to).orElseThrow(Requests::notFound)
-              : from == null && only != null
-                  ? integrating(only).orElseGet(timeline::latest)
-                  : timeline.latest();
+              : from == null && only != null ? integrating(only).orElse(current) : current;
+      // the first version, without From, against the one after it (Design D-22)
+      if (to != null && from == null && timeline.predecessor(later).isEmpty()) {
+        later = timeline.successor(later).orElse(later);
+      }
       var earlier =
           from == null
               ? timeline.predecessor(later).orElse(later)

@@ -57,19 +57,19 @@ public record MastheadView(
    */
   public static MastheadView reading(Act act, Version version, LocalDate asked, Language language) {
     var eli = eli(act);
-    var before =
-        act.timeline()
-            .in(language)
-            .filter(timeline -> timeline.versions().contains(version))
-            .flatMap(timeline -> timeline.predecessor(version))
-            .orElse(version);
-    return of(
-        act,
-        version,
-        language,
-        each -> Links.read(eli, asked, each),
-        null,
-        Links.compare(eli, before, version, language));
+    var timeline = act.timeline().in(language).filter(each -> each.versions().contains(version));
+    // the version before; the first, with the one after (Design D-22)
+    var compare =
+        timeline
+            .flatMap(each -> each.predecessor(version))
+            .map(before -> Links.compare(eli, before, version, language))
+            .or(
+                () ->
+                    timeline
+                        .flatMap(each -> each.successor(version))
+                        .map(after -> Links.compare(eli, version, after, language)))
+            .orElseGet(() -> Links.compare(eli, version, version, language));
+    return of(act, version, language, each -> Links.read(eli, asked, each), null, compare);
   }
 
   /**

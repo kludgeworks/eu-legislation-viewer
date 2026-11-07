@@ -304,6 +304,8 @@ public record CompareView(Card from, Card to, Acts acts) {
    * @param published how the acts that made it were published, a line each, as made's hover lists
    *     them (Design D-21); none if none
    * @param lags where its text lags the law over its period
+   * @param mayLag where its text may lag the law, an act's date of application not known (Design
+   *     D-24)
    * @param name the date form's field for this end: from, to
    * @param on the date the form starts at: the version's first day
    * @param keep the other end's field, which the form sends unchanged
@@ -320,6 +322,7 @@ public record CompareView(Card from, Card to, Acts acts) {
       String made,
       @Nullable String published,
       List<String> lags,
+      List<String> mayLag,
       String name,
       String on,
       String keep,
@@ -329,6 +332,7 @@ public record CompareView(Card from, Card to, Acts acts) {
 
     public Card {
       lags = List.copyOf(lags);
+      mayLag = List.copyOf(mayLag);
     }
 
     /** {@code version}'s card as the comparison's {@code end}, {@code other} the other end. */
@@ -350,6 +354,7 @@ public record CompareView(Card from, Card to, Acts acts) {
           .made(Wording.made(act, version, List.of()))
           .published(published.isEmpty() ? null : Wording.published(act, published, language))
           .lags(act.notYetConsolidated(version).stream().map(Wording::lagOf).toList())
+          .mayLag(act.mayLag(version).stream().map(Wording::mayLag).toList())
           .name(end.field)
           .on(version.date().toString())
           .keep(end.other().field)
