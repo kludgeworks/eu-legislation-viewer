@@ -19,6 +19,8 @@ import java.time.Duration;
 import java.util.Locale;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -34,9 +36,16 @@ import org.springframework.web.bind.annotation.RequestParam;
  * search); title words list the acts that have them in their English title, a page at a time, the
  * closest match first, limited to a kind of act by a filter's link (?type=regulation). The search
  * is kept in a cookie for a while (Chrome.SEARCH), for the site bar's way back to its results.
+ *
+ * <p>Search is a placeholder for now (Design D-03 to D-07, D-09, D-13): each search is logged once,
+ * at INFO, with what the reader typed, how it was read, the kind, the page, what it found and how
+ * long it took, so its ranking, languages and the act numbers readers type can be revisited from
+ * real use.
  */
 @Controller
 class HomeController {
+  private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
+
   /** How many acts a page of results has. */
   static final int PAGE = 20;
 
@@ -83,16 +92,27 @@ class HomeController {
     if (words.isEmpty()) {
       return page(chrome, "Amendment viewer", HomeView.empty());
     }
-    var straight = straight(words, chrome);
+    var started = System.nanoTime();
+    var straight = straight(words, chrome, started);
     if (straight.isPresent()) {
       return straight.get();
     }
     var query = Search.Query.of(words, kind, (page - 1) * PAGE, PAGE);
     if (query.isEmpty()) {
+      LOG.info("Searched for “{}”: no words to search by", typed(words));
       return page(
           chrome, "Amendment viewer", HomeView.none(words, "Type words of an act's title."));
     }
     var found = search.matching(query.get());
+    LOG.info(
+        "Searched for “{}” by title words {} ({}, page {}): {} acts{}, in {} ms",
+        typed(words),
+        query.get().words(),
+        kind.code(),
+        page,
+        found.acts().size(),
+        found.more() ? " and more" : "",
+        millis(started));
     var remembered =
         ResponseCookie.from(
                 Chrome.SEARCH,
@@ -120,17 +140,27 @@ class HomeController {
    * Where {@code words} go if they are a CELEX number or an ELI: the act's comparison, or the home
    * page saying no act has it; none if they are neither, but title words.
    */
-  private Optional<ResponseEntity<String>> straight(String words, Chrome chrome) {
+  private Optional<ResponseEntity<String>> straight(String words, Chrome chrome, long started) {
     var celex = CELEX.matcher(words.toUpperCase(Locale.ROOT));
     var path = ELI.matcher(words.toLowerCase(Locale.ROOT));
     Optional<Act> act;
+    String as;
     if (celex.matches()) {
       act = acts.find(new ActIdentifier(celex.group(1)));
+      as = "CELEX number";
     } else if (path.matches()) {
       act = acts.find(new Eli(path.group(1), Integer.parseInt(path.group(2)), path.group(3)));
+      as = "ELI";
     } else {
       return Optional.empty();
     }
+    LOG.info(
+        "Searched for “{}” by {}: {}, in {} ms",
+        typed(words),
+        as,
+        act.map(found -> found.id().celex() + (found.eli() == null ? ", which has no ELI" : ""))
+            .orElse("no act has it"),
+        millis(started));
     return Optional.of(
         // an act without an ELI has no page here
         act.map(Act::eli)
@@ -146,6 +176,15 @@ class HomeController {
                         "Amendment viewer",
                         HomeView.none(
                             words, "No act has the CELEX number or ELI " + words + "."))));
+  }
+
+  /** What the reader typed, on one line: a line break in it can't start a log line of its own. */
+  private static String typed(String words) {
+    return words.replaceAll("[\\r\\n]+", " ");
+  }
+
+  private static long millis(long started) {
+    return Duration.ofNanos(System.nanoTime() - started).toMillis();
   }
 
   private ResponseEntity<String> page(Chrome chrome, String title, HomeView home) {

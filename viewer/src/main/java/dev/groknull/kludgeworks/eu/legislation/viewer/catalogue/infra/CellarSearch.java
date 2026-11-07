@@ -58,7 +58,7 @@ class CellarSearch implements Search {
                         "limit", Integer.toString(query.size() + 1),
                         "offset", Integer.toString(query.offset())))),
             query.size());
-    LOG.info(
+    LOG.debug(
         "Searched Cellar for {} ({}, from {}): {} acts{}, in {} ms",
         query.words(),
         query.kind().code(),
