@@ -18,15 +18,18 @@
 @param CompareView.Only only = null
 @param String preamble = ""
 @param String same = ""
-<%-- A comparison's Synopsis view (Design: Mode: Compare, Synopsis): its controls, then a ledger of
-     the two texts aligned by provision, From's CELEX and To's heading their columns: each provision
-     that differs a row, its unit marked in both, the words it lost struck in From, those it gained
-     underlined in To, Not in this version where a text hasn't it; what changed it beside them (as
-     a sidenote says it, by number), with ↑ ↓ to the difference before and after; the opening of
-     the unit the differences are in as a row of context; the units the same in both before each, in
-     the unit it is in, the one beside each difference a row as the later text has it (neighbours,
-     by eId), with what last made it as it is (histories), those between them folded; those an act
-     filter leaves out, folded. Beside it, the later text's outline, its differences counted --%>
+<%-- Shows a comparison's Synopsis view. The controls come first. Then a ledger aligns the two
+     texts by provision. From's CELEX and To's CELEX are in the column heads.
+     Each provision that differs is a row, with its unit marked in both texts. Words that it lost are
+     struck through in From. Words that it gained are underlined in To. "Not in this version" shows
+     where a text does not have the provision. The last column says what changed it, as a sidenote
+     says it (sidenotes, by number). The ↑ and ↓ links go to the difference before and after.
+     The opening of the unit that holds the differences is a row of context.
+     Before each difference come the units of its parent unit that are the same in both texts. The
+     unit next to the difference is a row, as the later text has it (neighbours, by eId). That row also says what last made the unit as it is
+     (histories). The units between them are in a fold. Units that an act filter leaves out are
+     also in a fold.
+     The later text's outline is beside the view, with a count of differences for each unit. --%>
 !{var total = changes.numbers().size();}
 <div class="outlined">
 <nav class="outline counted" aria-label="Outline">

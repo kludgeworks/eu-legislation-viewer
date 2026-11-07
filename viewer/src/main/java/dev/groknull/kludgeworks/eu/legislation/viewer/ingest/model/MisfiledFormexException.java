@@ -2,8 +2,9 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model;
 
 /**
- * The Formex Cellar files under the CELEX number is another document's: another version of the
- * consolidation, or an OJ act's for a consolidation's number. The message names both.
+ * The Formex that Cellar files under the CELEX number belongs to another document. It is another
+ * version of the consolidation, or the Formex of an OJ act under the number of a consolidation. The
+ * message names both documents.
  */
 public final class MisfiledFormexException extends ConversionException {
 

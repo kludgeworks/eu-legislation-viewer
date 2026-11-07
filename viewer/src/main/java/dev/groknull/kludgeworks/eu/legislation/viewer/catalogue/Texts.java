@@ -4,24 +4,28 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 
 /**
- * Versions' texts: built in the background, an act's every version in a language at once, when any
- * of its pages is first opened in it. Each change to how one stands is PreparationChanged.
+ * The texts of versions. They are built in the background. When a page of an act is first opened in
+ * a language, the texts of all its versions in that language are built at once. Each change to the
+ * state of a text is a {@link PreparationChanged} event.
  */
 public interface Texts {
 
   /**
-   * The act prepared in the language: each of its versions' text in it, scheduled to be built if it
-   * isn't, unless it failed; no texts in a language none of its versions is in.
+   * Returns the act prepared in the language, with the text of each of its versions in that
+   * language. A text that is not built is scheduled to be built, unless it failed. There are no
+   * texts in a language that none of its versions is in.
    */
   Preparation prepare(Act act, Language language);
 
   /**
-   * Tries again those of the act's texts in the language that failed in a way trying again may help
-   * (Failure.retryable): each queued again, from its first attempt, and the act's preparation
-   * started again if it had settled.
+   * Tries again the act's texts in the language that failed in a way that trying again may help.
+   * {@code Failure.retryable} tells which these are. Each text is queued again, from its first
+   * attempt. If the act's preparation had settled, it starts again.
    */
   void retry(Act act, Language language);
 
-  /** How the act's preparation in the language stands, as kept: nothing scheduled. */
+  /**
+   * Returns the state of the act's preparation in the language, as stored. It schedules nothing.
+   */
   Preparation preparation(Act act, Language language);
 }

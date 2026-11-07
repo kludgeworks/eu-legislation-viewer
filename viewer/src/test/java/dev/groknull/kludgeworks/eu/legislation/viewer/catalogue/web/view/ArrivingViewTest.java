@@ -17,8 +17,9 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
- * 2015/1998 prepared in English (Cellar's versions, recorded), its latest version having appeared
- * since: the notice on its pages, while that version is prepared.
+ * Tests the notice of {@link ArrivingView} on the pages of 2015/1998 in English while a new version
+ * is prepared. The latest version appeared after the act was prepared. The versions are Cellar's,
+ * recorded.
  */
 class ArrivingViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
@@ -44,7 +45,10 @@ class ArrivingViewTest {
     assertThat(ArrivingView.of(prepared(new Text.Ready(ROOT)))).isEmpty();
   }
 
-  /** The act prepared in English, its latest version's text {@code latest}. */
+  /**
+   * The act prepared in English. Its latest version has the text {@code latest}. Its other versions
+   * are ready.
+   */
   private static Preparation prepared(Text latest) {
     var texts = new LinkedHashMap<Version, Text>();
     for (var version : AVSEC.timeline().in(Language.ENG).orElseThrow().versions()) {

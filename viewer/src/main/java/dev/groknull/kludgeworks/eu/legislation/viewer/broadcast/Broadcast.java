@@ -5,20 +5,27 @@ import org.springframework.core.ResolvableType;
 import org.springframework.core.ResolvableTypeProvider;
 
 /**
- * An externalized event (Spring Modulith's @Externalized) as every instance receives it: read back
- * from Valkey once the transaction that published it committed, on the instance that published it
- * as on every other. A listener for Broadcast of a type (an @EventListener of Broadcast of
- * PreparationChanged) hears each such event once, after commit, wherever it happened; one for the
- * type itself hears it only on the instance that published it, before commit.
+ * An externalized event as every instance receives it. Spring Modulith externalizes the events of a
+ * type marked {@code @Externalized}. Every instance reads the event back from Valkey after the
+ * transaction that published it committed. This includes the instance that published it.
  *
- * <p>Not kept: an instance that wasn't reading when it was sent (starting, or Valkey unreachable)
- * misses it, so a listener reads the state it is about anew, never from a series of them.
+ * <p>A listener for a {@code Broadcast} of a type receives each such event once, after commit,
+ * wherever it happened. An example is an {@code @EventListener} of {@code
+ * Broadcast<PreparationChanged>}. A listener for the type itself receives the event only on the
+ * instance that published it, before commit.
+ *
+ * <p>A broadcast is not stored. An instance that was not reading when it was sent misses it, for
+ * example while the instance starts or while Valkey is unreachable. Thus a listener reads anew the
+ * state that the event is about. It never builds the state from a series of events.
  *
  * @param event the event, as it was published
  */
 public record Broadcast<T>(T event) implements ResolvableTypeProvider {
 
-  /** Broadcast of the event's own type, so a listener can ask for a Broadcast of one type. */
+  /**
+   * Returns {@code Broadcast} of the event's own type, so that a listener can ask for a {@code
+   * Broadcast} of one type.
+   */
   @Override
   public ResolvableType getResolvableType() {
     return ResolvableType.forClassWithGenerics(Broadcast.class, ResolvableType.forInstance(event));

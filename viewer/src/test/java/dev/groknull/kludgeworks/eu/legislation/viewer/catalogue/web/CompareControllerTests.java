@@ -34,10 +34,11 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * The comparison's page's controller alone (@WebMvcTest), the modules mocked: where its addresses
- * lead and what it refuses, for OneActCellar's act, nothing of it prepared yet; and the site bar's
- * way back to the last search. The comparisons as the whole app works them out are
- * ComparePagesTests'.
+ * Tests the controller of the comparison page alone, with {@code @WebMvcTest} and the modules
+ * mocked. The tests check where its addresses lead and what it refuses. The act is the act of
+ * {@link OneActCellar}, with nothing of it prepared yet. The tests also check the way back to the
+ * last search in the site bar. {@code ComparePagesTests} tests the comparisons as the whole app
+ * works them out.
  */
 @WebMvcTest(CompareController.class)
 @Import({ControllerTesting.class, CompareControllerTests.OnTheSixthOfNovember2026.class})
@@ -127,7 +128,7 @@ class CompareControllerTests {
   @TestConfiguration(proxyBeanMethods = false)
   static class OnTheSixthOfNovember2026 {
     @Bean
-    @SuppressWarnings("TimeZoneUsage") // the app's Clock bean, fixed
+    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
     Clock sixthOfNovember2026() {
       return Clock.fixed(Instant.parse("2026-11-06T08:00:00Z"), ZoneOffset.UTC);
     }

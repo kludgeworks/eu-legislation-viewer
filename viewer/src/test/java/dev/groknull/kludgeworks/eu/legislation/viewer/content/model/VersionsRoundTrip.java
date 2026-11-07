@@ -19,12 +19,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Every version of an act in a directory of legal-text files (LEGAL_TEXT_DIR), in order, encoded
- * into one tree and rebuilt as it was; with what each version added to the tree, to see how much
- * versions share. Run by hand, on files converted beforehand (02005R0396's 49 versions: 1.1 GB):
+ * Encodes every version of an act into one tree, in order, and rebuilds each version as it was. The
+ * versions are legal-text files in the directory {@code LEGAL_TEXT_DIR}. The test also logs what
+ * each version added to the tree, to show how much the versions share.
+ *
+ * <p>Run it by hand, on files converted before. For example, the 49 versions of 02005R0396 are 1.1
+ * GB.
+ *
+ * <pre>
  * bazel test
  * //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:versions
  * --test_env=LEGAL_TEXT_DIR=…
+ * </pre>
  */
 class VersionsRoundTrip {
   private static final Logger LOG = LoggerFactory.getLogger(VersionsRoundTrip.class);

@@ -31,16 +31,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * The home page (Design: Home page): one box, Find an act. A CELEX number or an ELI goes straight
- * to the act's comparison of its latest version with the one before (an act's first page from a
- * search); title words list the acts that have them in their English title, a page at a time, the
- * closest match first, limited to a kind of act by a filter's link (?type=regulation). The search
- * is kept in a cookie for a while (Chrome.SEARCH), for the site bar's way back to its results.
+ * The home page. It has one box, Find an act.
  *
- * <p>Search is a placeholder for now (Design D-03 to D-07, D-09, D-13): each search is logged once,
- * at INFO, with what the reader typed, how it was read, the kind, the page, what it found and how
- * long it took, so its ranking, languages and the act numbers readers type can be revisited from
- * real use.
+ * <ul>
+ *   <li>A CELEX number or an ELI goes directly to the comparison page of the act. The comparison is
+ *       the first page of an act that a search opens.
+ *   <li>Title words list the acts that have the words in their English title. The list shows one
+ *       page at a time, with the closest match first. The link of a filter limits the list to a
+ *       kind of act. For example, {@code ?type=regulation}.
+ * </ul>
+ *
+ * <p>The search is kept in the {@link Chrome#SEARCH} cookie for a while. The site bar uses it to
+ * link back to the results.
+ *
+ * <p>Search is a placeholder for now. Each search is logged once, at INFO. The log line has what
+ * the reader typed, how it was read, the kind, the page, what it found and how long it took. Real
+ * use can then show how to change the ranking, the languages and the act numbers that readers type.
  */
 @Controller
 class HomeController {
@@ -52,12 +58,20 @@ class HomeController {
   /** How long the way back to a search's results stays in the site bar. */
   private static final Duration REMEMBERED = Duration.ofHours(2);
 
-  /** An act's CELEX number, as a reader may type it: 32015R1998, celex:32015r1998. */
+  /**
+   * The CELEX number of an act, as a reader may type it. For example, {@code 32015R1998} or {@code
+   * celex:32015r1998}.
+   */
   private static final Pattern CELEX = Pattern.compile("(?:CELEX:)?(3\\d{4}[A-Z]\\d{4})");
 
   /**
-   * An act's ELI, as a reader may type or paste it:
-   * http://data.europa.eu/eli/reg_impl/2015/1998/oj, eli/reg_impl/2015/1998, reg_impl/2015/1998.
+   * The ELI of an act, as a reader may type or paste it. For example:
+   *
+   * <ul>
+   *   <li>{@code http://data.europa.eu/eli/reg_impl/2015/1998/oj}
+   *   <li>{@code eli/reg_impl/2015/1998}
+   *   <li>{@code reg_impl/2015/1998}
+   * </ul>
    */
   private static final Pattern ELI =
       Pattern.compile(
@@ -74,8 +88,9 @@ class HomeController {
   }
 
   /**
-   * The home page; with {@code q}, where it goes or its results, of the kind {@code type}, their
-   * page {@code page}. 404 for a kind or a page there isn't.
+   * Returns the home page. With {@code q}, it redirects to the act, or it returns the results of
+   * the kind {@code type}, at the page {@code page}. Returns 404 for a kind or a page that does not
+   * exist.
    */
   @GetMapping(path = "/", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> home(
@@ -137,8 +152,9 @@ class HomeController {
   }
 
   /**
-   * Where {@code words} go if they are a CELEX number or an ELI: the act's comparison, or the home
-   * page saying no act has it; none if they are neither, but title words.
+   * Returns the response for {@code words} if they are a CELEX number or an ELI. That is a redirect
+   * to the comparison of the act, or the home page saying that no act has it. Returns none if the
+   * words are title words.
    */
   private Optional<ResponseEntity<String>> straight(String words, Chrome chrome, long started) {
     var celex = CELEX.matcher(words.toUpperCase(Locale.ROOT));
@@ -162,7 +178,7 @@ class HomeController {
             .orElse("no act has it"),
         millis(started));
     return Optional.of(
-        // an act without an ELI has no page here
+        // An act without an ELI has no page here.
         act.map(Act::eli)
             .map(
                 eli ->
@@ -178,7 +194,10 @@ class HomeController {
                             words, "No act has the CELEX number or ELI " + words + "."))));
   }
 
-  /** What the reader typed, on one line: a line break in it can't start a log line of its own. */
+  /**
+   * Returns what the reader typed, on one line. Thus a line break in it cannot start a log line of
+   * its own.
+   */
   private static String typed(String words) {
     return words.replaceAll("[\\r\\n]+", " ");
   }

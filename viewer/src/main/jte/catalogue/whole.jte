@@ -8,10 +8,10 @@
 @param List<CompareView.ViewLink> views
 @param CompareView.Only only = null
 @param boolean corrected = false
-<%-- A comparison's Whole text view (Design: Mode: Compare, Whole text): its controls, then every
-     provision of the later text, each that differs marked in place, numbered, with its sidenote, a
-     deleted one where it stood (text). Beside it, the later text's
-     outline, its differences counted --%>
+<%-- Shows a comparison's Whole text view. The controls come first. Then the text shows every
+     provision of the later text (text). Each provision that differs is marked in place, with a
+     number and its sidenote. A deleted provision shows where it was. The later text's outline is
+     beside the view, with a count of differences for each unit. --%>
 <div class="outlined">
 <nav class="outline counted" aria-label="Outline">
   @template.catalogue.outlinehead(total = changes.numbers().size())

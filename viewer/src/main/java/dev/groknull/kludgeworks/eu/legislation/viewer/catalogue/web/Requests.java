@@ -11,22 +11,35 @@ import org.springframework.http.MediaType;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * What the pages read from a request, or answer, the same way: its language, today, not found, a
- * page's type.
+ * Helpers that all pages use to read a request or to answer it in the same way:
+ *
+ * <ul>
+ *   <li>the language of the request
+ *   <li>today
+ *   <li>not found
+ *   <li>the media type of a page
+ * </ul>
  */
 final class Requests {
-  /** Where the day is the EU's: Brussels, where its acts are adopted and the OJ dates them. */
+  /**
+   * The time zone of the EU day: Brussels. The EU adopts its acts there, and the OJ dates them
+   * there.
+   */
   private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
 
   /**
-   * A page's type, its charset said: a page a controller renders to a String is written in UTF-8,
-   * but without it said, a client without the page's meta charset (an HTTP client) reads Latin-1.
+   * The media type of a page, with its charset. A controller writes a page that it renders to a
+   * String in UTF-8. Without the charset in the type, a client that does not read the meta charset
+   * of the page reads it as Latin-1. An HTTP client is an example.
    */
   static final MediaType HTML = new MediaType(MediaType.TEXT_HTML, StandardCharsets.UTF_8);
 
   private Requests() {}
 
-  /** The language by its code in the path (eng); not found for one the EU doesn't have. */
+  /**
+   * Returns the language for its code in the path, for example {@code eng}. Throws not found for a
+   * language that the EU does not have.
+   */
   static Language language(String code) {
     try {
       return Language.ofCode(code);
@@ -35,7 +48,7 @@ final class Requests {
     }
   }
 
-  /** Today, in Brussels. */
+  /** Returns today, in Brussels. */
   static LocalDate today(Clock clock) {
     return LocalDate.ofInstant(clock.instant(), BRUSSELS);
   }

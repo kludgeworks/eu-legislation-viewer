@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The broadcast module's infrastructure: Valkey's streams, an externalized event added to its
- * stream by Modulith's event externalization (StreamTransport) and read back on every instance
- * (StreamReader), wired by BroadcastConfiguration.
+ * The infrastructure of the broadcast module, on Valkey's streams. {@link StreamTransport} adds an
+ * externalized event to its stream, for Modulith's event externalization. {@link StreamReader}
+ * reads it back on every instance. {@link BroadcastConfiguration} wires them.
  */
 @InfrastructureRing
 @NullMarked

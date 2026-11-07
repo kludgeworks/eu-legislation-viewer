@@ -136,7 +136,8 @@ local linters = new Mapping<String, Step> {
   ["detect_private_key"] = Builtins.detect_private_key
   ["gitleaks"] = Builtins.gitleaks
   ["semgrep"] = new Step {
-    glob = List("**/*.java", "**/*.py")
+    // .jte, .css, .js and .sql for the project's own text rules (semgrep/rules.yaml)
+    glob = List("**/*.java", "**/*.py", "**/*.jte", "**/*.css", "**/*.js", "**/*.sql")
     exclude = raw + vendored + generated
     batch = true
     check =

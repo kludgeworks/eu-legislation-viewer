@@ -16,15 +16,16 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An act's versions by the day each applies from, until the next one's. Which applies on a date:
- * the last that starts on or before it (Design: Choosing the version to show), interim ones
- * included once their date has passed; after a repeal, the last.
+ * An act's versions, by the day from which each applies until the next one applies.
+ *
+ * <p>The version that applies on a date is the last one that starts on or before that date. Interim
+ * versions are included once their date has passed. After a repeal, the last version applies.
  */
 @ValueObject
 public final class Timeline {
   private final NavigableMap<LocalDate, Version> byDate;
 
-  /** The versions, in any order; at most one a day. */
+  /** Makes a timeline of the versions, in any order. There is at most one version a day. */
   public Timeline(List<Version> versions) {
     if (versions.isEmpty()) {
       throw new IllegalArgumentException("A timeline has at least the original text");
@@ -43,50 +44,53 @@ public final class Timeline {
     this.byDate = Collections.unmodifiableNavigableMap(byDate);
   }
 
-  /** The versions in date order. */
+  /** Returns the versions in date order. */
   public List<Version> versions() {
     return List.copyOf(byDate.values());
   }
 
-  /** The version that applies on {@code date}; none before the first applies. */
+  /** Returns the version that applies on {@code date}, or empty before the first applies. */
   public Optional<Version> applicableOn(LocalDate date) {
     return value(byDate.floorEntry(date));
   }
 
   /**
-   * The version that starts on {@code date}; none if none does (applicableOn gives the one that
-   * applies).
+   * Returns the version that starts on {@code date}, or empty if no version does. {@link
+   * #applicableOn} returns the version that applies.
    */
   public Optional<Version> startingOn(LocalDate date) {
     return Optional.ofNullable(byDate.get(date));
   }
 
   /**
-   * The versions in {@code language} (Version.languages), as a timeline of their own: its first,
-   * latest and those either side of a version are the ones a reader of that language steps through,
-   * a version without it passed over. None if no version is in it.
+   * Returns the versions in {@code language}, as a timeline of their own. {@link Version#languages}
+   * tells which languages a version is in.
+   *
+   * <p>A reader of that language steps through this timeline: its first version, its latest
+   * version, and the versions either side of a version. A version without the language is passed
+   * over. Returns empty if no version is in the language.
    */
   public Optional<Timeline> in(Language language) {
     var versions = byDate.values().stream().filter(v -> v.languages().contains(language)).toList();
     return versions.isEmpty() ? Optional.empty() : Optional.of(new Timeline(versions));
   }
 
-  /** The first version, from which the act's text first applies. */
+  /** Returns the first version, from which the act's text first applies. */
   public Version first() {
     return byDate.firstEntry().getValue();
   }
 
-  /** The latest version, which may apply only in the future. */
+  /** Returns the latest version, which may apply only in the future. */
   public Version latest() {
     return byDate.lastEntry().getValue();
   }
 
-  /** The version before {@code version}, none for the first. */
+  /** Returns the version before {@code version}, or empty for the first. */
   public Optional<Version> predecessor(Version version) {
     return value(byDate.lowerEntry(dateOf(version)));
   }
 
-  /** The version after {@code version}, none for the latest. */
+  /** Returns the version after {@code version}, or empty for the latest. */
   public Optional<Version> successor(Version version) {
     return value(byDate.higherEntry(dateOf(version)));
   }

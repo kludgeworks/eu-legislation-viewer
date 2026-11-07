@@ -11,9 +11,10 @@ import org.springframework.data.redis.stream.StreamListener;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * The entries of the streams StreamTransport sends to, published on this instance as Broadcast of
- * the event each holds. Only the app's externalized types are read back (types): an entry of any
- * other type is skipped, as is one that isn't an event of its type.
+ * Reads the entries of the streams that {@link StreamTransport} sends to. It publishes each entry
+ * on this instance as a {@link Broadcast} of the event that the entry holds. Only the externalized
+ * types of the app, in {@code types}, are read back. An entry of any other type is skipped. An
+ * entry that is not an event of its type is skipped too.
  */
 class StreamReader implements StreamListener<String, MapRecord<String, String, String>> {
   private static final Logger LOG = LoggerFactory.getLogger(StreamReader.class);

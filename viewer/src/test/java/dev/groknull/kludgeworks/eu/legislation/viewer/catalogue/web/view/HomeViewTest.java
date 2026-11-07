@@ -14,7 +14,7 @@ import org.junit.jupiter.api.Test;
 class HomeViewTest {
   @Test
   void splitsATitleAfterItsDateWhoseSpacesDontBreak() {
-    // as Cellar has it, a no-break space between the day and the month
+    // This is the title as Cellar has it, with a no-break space between the day and the month.
     var match =
         new Search.Match(
             new ActIdentifier("32021D2147"),

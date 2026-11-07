@@ -8,10 +8,16 @@ import org.springframework.modulith.docs.Documenter.CanvasOptions;
 import org.springframework.modulith.docs.Documenter.DiagramOptions;
 
 /**
- * Writes the modules' documentation (mise run modules), from the same model ModularityTests
- * verifies: Spring Modulith's Documenter, a C4 component diagram of all the modules and one of each
- * (PlantUML), and each module's canvas (Asciidoc: its API, events and configuration), into
- * viewer/spring-modulith-docs, which isn't committed.
+ * Writes the documentation of the modules. Run it with {@code mise run modules}. It uses the same
+ * model that {@code ModularityTests} verifies, and Spring Modulith's {@link Documenter}. It writes:
+ *
+ * <ul>
+ *   <li>a C4 component diagram of all the modules, in PlantUML,
+ *   <li>a C4 component diagram of each module, in PlantUML,
+ *   <li>the canvas of each module, in Asciidoc, with its API, events and configuration.
+ * </ul>
+ *
+ * <p>The output goes into {@code viewer/spring-modulith-docs}, which is not committed.
  */
 public final class ModuleDocumentation {
 

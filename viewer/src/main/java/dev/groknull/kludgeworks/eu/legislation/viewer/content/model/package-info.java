@@ -1,18 +1,21 @@
 // SPDX-License-Identifier: MIT
 /**
- * The content model: a legal text as a tree of content-addressed nodes, one decision a class.
+ * The content model. It holds a legal text as a tree of content-addressed nodes. Each class makes
+ * one decision.
  *
  * <ul>
- *   <li>LegalText: what the model knows of legal-text's schema (its blocks, names, whitespace);
- *   <li>JsonMl: a block's XML as JSON, and back;
- *   <li>Annotations: the eIds kept out of content, as overlay facts;
- *   <li>NoteLinks: footnote references citing notes by their hashes;
- *   <li>Identity: a node's hash, of its canonical JSON;
- *   <li>Encoder and Decoder: the Tree these make, from a text and back;
- *   <li>Segmentation: a text's windows, an index on its tree.
+ *   <li>{@link LegalText} is what the model knows of the legal-text schema: its blocks, names and
+ *       whitespace.
+ *   <li>{@link JsonMl} maps the XML of a block to JSON, and back.
+ *   <li>{@link Annotations} keeps the eIds out of the content, as overlay facts.
+ *   <li>{@link NoteLinks} makes footnote references cite notes by their hashes.
+ *   <li>{@link Identity} makes the hash of a node, from its canonical JSON.
+ *   <li>{@link Encoder} makes the {@link Tree} from a text, and {@link Decoder} makes the text
+ *       back.
+ *   <li>{@link Segmentation} cuts a text into windows, as an index on its tree.
  * </ul>
  *
- * <p>Pure functions on values: storing the tree is the application's (TreeStore).
+ * <p>These are pure functions on values. The application stores the tree, in {@code TreeStore}.
  */
 @DomainRing
 @NullMarked

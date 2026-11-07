@@ -21,10 +21,12 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmNodeKind;
 
 /**
- * Legal texts for the tests: the converter's expected output for its fixtures (229 documents, in
- * every Formex version it handles, some with MathML), parsed; and what a text is, to compare one
- * rebuilt with the original: its elements, attributes and text, without the whitespace between
- * elements (written as the files are indented).
+ * Gives legal texts for the tests. The texts are the converter's expected output for its fixtures,
+ * parsed. There are 229 documents, in every Formex version the converter handles. Some have MathML.
+ *
+ * <p>This class also gives the canonical form of a text, to compare a rebuilt text with the
+ * original. The canonical form has the elements, attributes and text. It does not have the
+ * whitespace between elements, which comes from the indentation of the files.
  */
 @AutoBazelRepository
 public final class LegalTexts {
@@ -32,7 +34,10 @@ public final class LegalTexts {
 
   private LegalTexts() {}
 
-  /** The expected outputs, by their path below expected/formex: 06.02.1/02015R1998-20260322.xml. */
+  /**
+   * The expected outputs, by their path below {@code expected/formex}. An example path is {@code
+   * 06.02.1/02015R1998-20260322.xml}.
+   */
   public static Stream<String> samples() {
     var root = expected();
     try (var files = Files.walk(root)) {
@@ -78,7 +83,10 @@ public final class LegalTexts {
     }
   }
 
-  /** A text's elements, attributes and text, one per line, but no whitespace between elements. */
+  /**
+   * The elements, attributes and text of a text, one per line. The whitespace between elements is
+   * left out.
+   */
   public static String canonical(XdmNode node) {
     var out = new StringBuilder();
     canonical(node, 0, out);

@@ -8,41 +8,59 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A provision that differs between two texts, as the Changes view shows it (Design: Mode: Compare):
- * a unit, by its eId, inserted, deleted, or with its own wording changed (its num, heading and
- * blocks, not its units', which differ on their own). An inserted or deleted unit is one difference
- * with its units, not one each.
+ * A provision that differs between two texts, as the Changes view shows it.
  *
- * <p>It is shown as legal-text, marked: its words inserted in diff:ins, its words deleted in
- * diff:del, only ever around text (t, number), so each element keeps the parent it has in the text
- * and renders as it reads. A changed unit is shown with its own content only, the later text's, the
- * earlier's words deleted where they stood; an inserted one whole, every word inserted; a deleted
- * one whole, as the earlier text had it, every word deleted.
+ * <p>The provision is a unit, known by its eId. The unit is inserted, deleted, or its own wording
+ * changed. Its own wording is its num, heading and blocks. The wording of the units in it is not
+ * part of it, because those units differ on their own. An inserted or deleted unit is one
+ * difference together with its units, not one difference for each unit.
  *
- * @param eId the unit's eId
+ * <p>The difference is shown as marked legal-text. Its inserted words are in {@code diff:ins}, and
+ * its deleted words are in {@code diff:del}. These marks are only around text ({@code t} and {@code
+ * number}). Thus each element keeps the parent that it has in the text, and renders as it reads.
+ *
+ * <ul>
+ *   <li>A changed unit shows only its own content, from the later text. The words of the earlier
+ *       text show as deleted where they stood.
+ *   <li>An inserted unit shows whole, with every word inserted.
+ *   <li>A deleted unit shows whole, as the earlier text had it, with every word deleted.
+ * </ul>
+ *
+ * @param eId the eId of the unit
  * @param kind how it differs
- * @param unit the unit as a fold names it, as the later text has it (the earlier, for a deleted
- *     one): where the Changes view folds it with others an act filter leaves out
+ * @param unit the unit as a fold names it, as the later text has it. For a deleted unit, as the
+ *     earlier text has it. The Changes view uses this when it folds the unit with others that an
+ *     act filter leaves out.
  * @param shown the unit as the view shows it, marked
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
- * @param parent the eId of the unit it is in; none for an outermost unit
- * @param list the list the unit is an item of, as the text has it but without its items (so it is
- *     shown as Read lays it out: its number hanging beside its text); none if it is in none
- * @param section the eId of the unit with a rank it is in, as the text's outline nests them
- *     (anx/pnt_8.1.2 for anx/pnt_8.1.2.3/pnt_c); itself if it has a rank; none if it is in none
- * @param lead the opening of the unit it is in: its num, heading and first block, unmarked; none
- *     for an outermost unit
- * @param context what the later text has before it, after the difference before it (from its start,
- *     for the first), in order: the opening of each unit holding differences it enters, and the
- *     units the same in both, folded; with the comparison's closing, each of the later text's units
- *     once, but those that differ
- * @param markers the amendment markers on the unit's own content in the later text: which acts put
- *     it in the form it has there, and how; where it has none, those on the nearest unit it is in
- *     that an act put in its form whole; for a deleted unit, the act that deleted it: the marker of
- *     the deletion the later text keeps it struck under, or of the unit it was in that an act
- *     replaced whole, without it; none if neither
- * @param earlierMarkers the same in the earlier text; none for an inserted unit
+ * @param parent the eId of the unit that it is in. Null for an outermost unit.
+ * @param list the list that the unit is an item of, as the text has it but without its items. Thus
+ *     the unit is shown as Read lays it out, with its number hanging beside its text. Null if the
+ *     unit is in no list.
+ * @param section the eId of the unit with a rank that it is in, as the outline of the text nests
+ *     them. For example, {@code anx/pnt_8.1.2} for {@code anx/pnt_8.1.2.3/pnt_c}. It is the unit
+ *     itself if the unit has a rank. Null if it is in no such unit.
+ * @param lead the opening of the unit that it is in: its num, heading and first block, unmarked.
+ *     Null for an outermost unit.
+ * @param context what the later text has before this difference and after the previous one, in
+ *     order. For the first difference, it starts at the start of the text. It holds the opening of
+ *     each unit with differences that it enters, and the folded units that are the same in both
+ *     texts. The contexts and the closing of the comparison hold each unit of the later text once,
+ *     except the units that differ.
+ * @param markers the amendment markers that tell which acts put the unit in its form in the later
+ *     text, and how.
+ *     <ul>
+ *       <li>Usually these are the markers on the own content of the unit in the later text.
+ *       <li>If it has none, these are the markers on the nearest unit that it is in that an act put
+ *           in its form whole.
+ *       <li>For a deleted unit, these are the markers of the act that deleted it. This is the
+ *           marker of the deletion under which the later text keeps it struck. If there is none, it
+ *           is the marker of the unit that it was in that an act replaced whole, without it.
+ *     </ul>
+ *     Empty if none of these applies.
+ * @param earlierMarkers the same as {@code markers}, in the earlier text. Empty for an inserted
+ *     unit.
  */
 @ValueObject
 @RecordBuilder
@@ -73,19 +91,24 @@ public record Difference(
     INSERTED,
     /** Only in the earlier text. */
     DELETED,
-    /** In both, its wording changed. */
+    /** In both texts, with its wording changed. */
     CHANGED
   }
 
   /**
-   * What the later text has between two differences, as the Changes view sets it out: the opening
-   * of a unit that holds differences, where they enter it, or a run of units in one unit that are
-   * the same in both texts, each with its own units, folded.
+   * What the later text has between two differences, as the Changes view sets it out. It is one of
+   * these:
    *
-   * @param units the units folded, in order; or the unit opened, alone
-   * @param parent the eId of the unit they are in; none for outermost units
-   * @param opening the opening of the unit opened: its num, heading and first block; none for a
-   *     fold
+   * <ul>
+   *   <li>the opening of a unit that holds differences, where the differences enter it
+   *   <li>a folded run of units in one unit that are the same in both texts, each with its own
+   *       units
+   * </ul>
+   *
+   * @param units the folded units, in order. For an opening, only the opened unit.
+   * @param parent the eId of the unit that they are in. Null for outermost units.
+   * @param opening the opening of the opened unit: its num, heading and first block. Null for a
+   *     fold.
    */
   @ValueObject
   public record Context(List<Sibling> units, @Nullable String parent, @Nullable Element opening) {
@@ -95,24 +118,25 @@ public record Difference(
   }
 
   /**
-   * A unit as a fold names it: Points (a) and (b).
+   * A unit as a fold names it. For example, "Points (a) and (b)".
    *
    * @param eId its eId
-   * @param kind its kind, as legal-text has it: article, point, level…
-   * @param num its num, as written: (a), 8.1.2.3; empty for one without
+   * @param kind its kind, as legal-text has it. For example, article, point or level.
+   * @param num its num, as written. For example, "(a)" or "8.1.2.3". Empty for a unit without one.
    */
   @ValueObject
   public record Sibling(String eId, String kind, String num) {}
 
   /**
-   * An amendment marker on a unit's content, as the consolidation has it (▼M20, which the converter
-   * keeps as provenance, changed or deleted): the act that put it in its form there, and what it
-   * did.
+   * An amendment marker on the content of a unit, as the consolidation has it. For example, ▼M20.
+   * The converter keeps the marker as {@code provenance}, {@code changed} or {@code deleted}. The
+   * marker names the act that put the content in its form there, and what the act did.
    *
-   * @param act the amending act's CELEX: 32026R0449
-   * @param action what it did, as legal-text has it: replaced, inserted, deleted, renumbered
-   * @param in the eId of the unit it is in that the act put in its form whole (2019/103 replaced
-   *     section 11.1, with its points), where the unit has no marker of its own; none for its own
+   * @param act the CELEX of the amending act. For example, 32026R0449.
+   * @param action what the act did, as legal-text has it: replaced, inserted, deleted or renumbered
+   * @param in the eId of the enclosing unit that the act put in its form whole, if the unit has no
+   *     marker of its own. For example, 2019/103 replaced section 11.1 with its points. Null for a
+   *     marker of the unit itself.
    */
   @ValueObject
   public record Marker(String act, String action, @Nullable String in) {}

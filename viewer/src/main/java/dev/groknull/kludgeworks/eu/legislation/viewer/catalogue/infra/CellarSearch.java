@@ -21,15 +21,25 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Acts by the words of their English title, as Cellar's full-text index finds and ranks them
- * (search.rq, beside this class): a page of them and one more, to say whether there are more.
+ * Finds acts by the words of their English title. Cellar's full-text index finds and ranks them,
+ * with the query {@code search.rq} kept next to this class. It asks for one page of acts and one
+ * more act. The extra act tells whether there are more acts.
  */
 @Component
 class CellarSearch implements Search {
   private static final Logger LOG = LoggerFactory.getLogger(CellarSearch.class);
   private static final String SEARCH = Sparql.template(CellarSearch.class, "search.rq");
 
-  /** The order search.rq ranks them in: relevance, then amending none, in force, the newer. */
+  /**
+   * The order that {@code search.rq} ranks the acts in:
+   *
+   * <ul>
+   *   <li>higher relevance first,
+   *   <li>then acts that amend no other act,
+   *   <li>then acts in force,
+   *   <li>then newer acts, by CELEX number.
+   * </ul>
+   */
   private static final Comparator<Ranked> RANK =
       Comparator.comparingInt(Ranked::relevance)
           .reversed()
@@ -69,13 +79,18 @@ class CellarSearch implements Search {
     return found;
   }
 
-  /** The words as bif:contains takes them: 'aviation' AND 'security'. */
+  /**
+   * Returns the words in the form that {@code bif:contains} takes. For example, {@code 'aviation'
+   * AND 'security'}.
+   */
   static String words(List<String> words) {
-    // letters and digits only (Query), so nothing in them is read as the expression's syntax
+    // Query allows only letters and digits in words, so bif:contains cannot read a word as syntax.
     return words.stream().map(word -> "'" + word + "'").collect(Collectors.joining(" AND "));
   }
 
-  /** The CELEX type letters of {@code kind}'s acts: R, L, D, or all three. */
+  /**
+   * Returns the CELEX type letters of the acts of {@code kind}. These are R, L or D, or all three.
+   */
   private static String types(Kind kind) {
     return switch (kind) {
       case REGULATION -> "R";
@@ -86,9 +101,10 @@ class CellarSearch implements Search {
   }
 
   /**
-   * The answer to search.rq, folded into its acts and ordered, the first {@code size} of them.
+   * Reads the answer to {@code search.rq}. It folds the rows into acts, ranks the acts, and returns
+   * the first {@code size} of them.
    *
-   * @throws CellarException if Cellar's answer makes no acts
+   * @throws CellarException if the answer does not make acts
    */
   static Found found(SparqlResult rows, int size) {
     try {
@@ -119,7 +135,10 @@ class CellarSearch implements Search {
     }
   }
 
-  /** An xsd:boolean as SPARQL JSON writes it ("true", or Virtuoso's "1"). */
+  /**
+   * Reads an {@code xsd:boolean} as SPARQL JSON writes it. True is {@code "true"}, or {@code "1"}
+   * from Virtuoso.
+   */
   private static boolean isTrue(String value) {
     return "true".equals(value) || "1".equals(value);
   }
@@ -127,7 +146,7 @@ class CellarSearch implements Search {
   /** A match and its rank. */
   private record Ranked(Match match, int relevance) {}
 
-  /** A match, from its rows. */
+  /** A match that is built from its rows. */
   private static final class Folding {
     final ActIdentifier id;
     final String title;

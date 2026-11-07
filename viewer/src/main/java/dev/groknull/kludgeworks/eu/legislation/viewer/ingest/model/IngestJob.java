@@ -13,13 +13,15 @@ import org.jmolecules.ddd.annotation.Identity;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The work of building one expression: queued, started by a worker, then built or failed, or back
- * in the queue to be tried again. Each start is an attempt, and changes the version, so a worker
- * whose job was started again elsewhere (it was taken over: IngestJobs.start) can't finish it. Its
- * changes are its withers' (RecordBuilder's IngestJobBuilder.With).
+ * The work to build one expression. A job is queued, then a worker starts it. Then it is built,
+ * failed, or back in the queue for another attempt.
  *
- * @param traceparent the trace of the request that scheduled it (W3C Trace Context), which its work
- *     continues
+ * <p>Each start is an attempt and changes the version. Another worker can take over the job with
+ * {@link IngestJobs#start}. The first worker then cannot finish it. The withers of {@code
+ * IngestJobBuilder.With}, which RecordBuilder generates, make the changes.
+ *
+ * @param traceparent the trace of the request that scheduled the job, in W3C Trace Context form.
+ *     The work continues this trace.
  * @param root once built, the text's root, in hex
  * @param converter once built, the version of the converter that made it
  */
@@ -45,7 +47,7 @@ public record IngestJob(
         state, stage, attempts, root == null ? null : new ContentHash(root), converter, failure);
   }
 
-  /** Converted, its text being stored. */
+  /** Returns the job converted, with its text being stored. */
   public IngestJob storing() {
     return withStage(Stage.STORING);
   }
@@ -58,7 +60,7 @@ public record IngestJob(
     return with(job -> job.state(State.FAILED).stage(null).failure(failure).detail(detail));
   }
 
-  /** Back in the queue, for another attempt. */
+  /** Returns the job back in the queue, for another attempt. */
   public IngestJob retry() {
     return with(job -> job.state(State.QUEUED).stage(null));
   }

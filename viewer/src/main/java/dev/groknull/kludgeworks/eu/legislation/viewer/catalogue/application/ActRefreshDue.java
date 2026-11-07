@@ -5,8 +5,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import org.jmolecules.event.annotation.DomainEvent;
 
 /**
- * An act kept longer than viewer.catalogue.refresh-after was opened: it is to be read from Cellar
- * again (ActRefresher), once its claim on it is committed, so that one opening of it refreshes it.
+ * An act stored for longer than {@code viewer.catalogue.refresh-after} was opened. {@link
+ * ActRefresher} reads it from Cellar again once the claim on it is committed. Thus only one opening
+ * of the act refreshes it.
  */
 @DomainEvent
 public record ActRefreshDue(ActIdentifier act) {}

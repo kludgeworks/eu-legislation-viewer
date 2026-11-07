@@ -1,17 +1,32 @@
 // SPDX-License-Identifier: MIT
 /**
- * Content: the legal texts themselves, stored as one Merkle tree that every version shares: a node
- * per block (a paragraph, a heading, a table row, a note) or container (a unit, a list, a table),
- * addressed by the SHA-256 of what it holds, so a node unchanged between versions is stored once.
- * Identifiers that move as a text is amended (eIds) are kept out of a node's hash, in overlays the
- * edges point to; a long run of blocks is cut into segments at boundaries its content decides, the
- * window a reader's page loads. Nothing stored ever changes: a version is a root, and a new version
- * a new root that reuses what it can.
+ * Content holds the legal texts themselves. It stores them as one Merkle tree that every version
+ * shares.
  *
- * <p>A sliced onion: the root package is the module's API and part of its domain ring ({@link
- * Content}, its hashes and segments), with the tree and its rules ({@code model}); storing and
- * rebuilding texts is the application ring ({@code application}), on a store of trees it declares;
- * the store in Postgres is the infrastructure ({@code infra}).
+ * <ul>
+ *   <li>There is a node for each block and for each container. A block is, for example, a
+ *       paragraph, a heading, a table row or a note. A container is, for example, a unit, a list or
+ *       a table.
+ *   <li>The SHA-256 of what a node holds is its address. Thus a node that does not change between
+ *       versions is stored once.
+ *   <li>Identifiers that move when a text is amended, the eIds, are not part of the hash of a node.
+ *       They are in overlays that the edges point to.
+ *   <li>A long run of blocks is cut into segments, at boundaries that its content decides. A
+ *       segment is the window that the page of a reader loads.
+ *   <li>Nothing stored ever changes. A version is a root. A new version is a new root that reuses
+ *       what it can.
+ * </ul>
+ *
+ * <p>The module is a sliced onion:
+ *
+ * <ul>
+ *   <li>The root package is the API of the module and part of its domain ring. It holds {@link
+ *       Content}, its hashes and its segments. The {@code model} package holds the tree and its
+ *       rules.
+ *   <li>The {@code application} package is the application ring. It stores and rebuilds texts, on a
+ *       store of trees that it declares.
+ *   <li>The {@code infra} package is the infrastructure: the store in Postgres.
+ * </ul>
  */
 @ApplicationModule(displayName = "Content")
 @DomainRing

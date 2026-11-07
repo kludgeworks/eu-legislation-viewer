@@ -7,16 +7,17 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * One of an act's own dates, as Cellar types it: when it enters into force, applies or takes
- * effect, wholly or in part, with the clause that sets it. Cellar keeps these up to date when a
- * later act moves one (2019/103 applies in part from 31 December 2021, its Article 2 as amended by
- * 2020/910), which its per-provision dates aren't always (Research: where a provision's date comes
- * from).
+ * One of an act's own dates, as Cellar types it. It is the date when the act enters into force,
+ * applies or takes effect, wholly or in part. It comes with the clause that sets it.
  *
- * @param date the day; none where Cellar has a placeholder or an impossible date, its clause still
- *     saying where the act sets it
+ * <p>Cellar keeps these dates up to date when a later act moves one. For example, 2019/103 applies
+ * in part from 31 December 2021, by its Article 2 as amended by 2020/910. The per-provision dates
+ * of Cellar are not always up to date in this way.
+ *
+ * @param date the day, or null where Cellar has a placeholder or an impossible date. The clause
+ *     still tells where the act sets the date.
  * @param kind what happens on it
- * @param partial whether it is for part of the act only (Cellar's MA/PART)
+ * @param partial whether it is for part of the act only. Cellar's code is {@code MA/PART}.
  * @param clause what sets it
  */
 @ValueObject
@@ -24,24 +25,25 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clau
 
   /** What happens on an act's date. */
   public enum Kind {
-    /** The act enters into force (Cellar's EV). */
+    /** The act enters into force. Cellar's code {@code EV}. */
     ENTRY_INTO_FORCE,
-    /** It applies (MA). */
+    /** It applies. Cellar's code {@code MA}. */
     APPLICATION,
-    /** It takes effect, as a decision does on its notification (PE). */
+    /** It takes effect, as a decision does on its notification. Cellar's code {@code PE}. */
     TAKING_EFFECT
   }
 
   /**
-   * What sets a date, as far as Cellar's comment on it says: a day the date counts from and how
-   * many days after it, the provisions that set it, and the acts that changed it since.
+   * What sets a date, as far as Cellar's comment on it says. It holds the day that the date counts
+   * from, how many days after that day, the provisions that set it, and the acts that changed it
+   * since.
    *
-   * @param from the day it counts from; none when the clause names the date itself
-   * @param days how many days after {@code from}; none for the day itself
-   * @param provisions the act's provisions that set it (Article 2)
-   * @param amendedBy later acts that changed it (2020/910 for 2019/103's)
-   * @param text Cellar's comment as it is ("DATPUB +20 V ART 2"), whatever of it the other fields
-   *     don't hold
+   * @param from the day it counts from, or null when the clause names the date itself
+   * @param days how many days after {@code from}, or null for the day itself
+   * @param provisions the act's provisions that set it, for example Article 2
+   * @param amendedBy later acts that changed it. For example, 2020/910 changed a date of 2019/103.
+   * @param text Cellar's comment as it is, for example {@code DATPUB +20 V ART 2}. It also holds
+   *     what the other fields do not hold.
    */
   @ValueObject
   public record Clause(
@@ -61,17 +63,17 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clau
 
   /** A day a date counts from. */
   public enum Anchor {
-    /** The act's publication in the Official Journal (Cellar's DATPUB). */
+    /** The act's publication in the Official Journal. Cellar's code {@code DATPUB}. */
     PUBLICATION,
-    /** Its notification to those it is addressed to (DATNOT). */
+    /** Its notification to those it is addressed to. Cellar's code {@code DATNOT}. */
     NOTIFICATION,
-    /** Its own date, when it was adopted or signed (DATDOC). */
+    /** Its own date, when it was adopted or signed. Cellar's code {@code DATDOC}. */
     DOCUMENT
   }
 
   /**
-   * A provision of the act: an article by its number (2, 2.2(f)), or an annex, by its number if it
-   * has one.
+   * A provision of the act. It is an article by its number, for example 2 or 2.2(f). Or it is an
+   * annex, by its number if it has one.
    */
   @ValueObject
   public record Provision(Type type, @Nullable String number) {
@@ -82,7 +84,10 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clau
       ANNEX
     }
 
-    /** As {@link #toString} writes it: "ARTICLE 2", "ANNEX". */
+    /**
+     * Returns the provision from the form that {@link #toString} writes, for example "ARTICLE 2" or
+     * "ANNEX".
+     */
     public static Provision parse(String value) {
       var parts = value.split(" ", 2);
       return new Provision(Type.valueOf(parts[0]), parts.length > 1 ? parts[1] : null);

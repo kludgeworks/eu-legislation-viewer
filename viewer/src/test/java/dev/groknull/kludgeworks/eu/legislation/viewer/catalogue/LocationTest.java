@@ -9,8 +9,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 /**
- * Cellar's locations of amendments found among a text's units: codes from its annotations on
- * 648/2012 (EMIR) and 2015/1998, eIds from their consolidations' texts.
+ * Tests how Cellar's locations of amendments are found among the units of a text. The location
+ * codes come from Cellar's annotations on 648/2012 (EMIR) and 2015/1998. The eIds come from the
+ * texts of their consolidations.
  */
 class LocationTest {
   static final List<String> EMIR =
@@ -107,9 +108,9 @@ class LocationTest {
 
   @Test
   void findsNoneWhereACodeFindsNoUnitOrSeveral() {
-    // a point the text doesn't have
+    // The text does not have this point.
     assertThat(in("AN I SCT I PTA (j)", EMIR)).isEmpty();
-    // a point (i) in both sections, Cellar's section not found
+    // Both sections have a point (i), and the section in Cellar's code is not found.
     assertThat(in("AN I SCT III PTA (i)", EMIR)).isEmpty();
     assertThat(in("DU 1", EMIR)).isEmpty();
   }

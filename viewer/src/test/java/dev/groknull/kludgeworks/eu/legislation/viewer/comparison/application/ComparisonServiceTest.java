@@ -33,7 +33,8 @@ class ComparisonServiceTest {
         new ComparisonService(
             texts, new KeptComparisons(), ObservationRegistry.NOOP, Thread.ofVirtual()::start);
 
-    // the texts held until both are asked for: a second working out would read them again
+    // The texts are held until both comparisons are asked for. A second working out would read
+    // the texts again.
     var first = service.comparing(FROM, TO);
     var second = service.comparing(FROM, TO);
     texts.held.countDown();
@@ -42,7 +43,10 @@ class ComparisonServiceTest {
     assertThat(texts.reads).hasValue(2);
   }
 
-  /** Each text the same empty legalText, read once {@link #held} is let go. */
+  /**
+   * Gives the same empty {@code legalText} for each text. A read returns when {@link #held} is let
+   * go.
+   */
   private static final class HeldTexts implements Content {
     final CountDownLatch held = new CountDownLatch(1);
     final AtomicInteger reads = new AtomicInteger();

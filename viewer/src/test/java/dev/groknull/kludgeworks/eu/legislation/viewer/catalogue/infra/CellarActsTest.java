@@ -33,7 +33,10 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
-/** Cellar's answers, recorded (viewer/src/test/resources/acts), folded into acts. */
+/**
+ * Tests how {@link CellarActs} folds Cellar's answers into acts. The answers are recorded in {@code
+ * viewer/src/test/resources/acts}.
+ */
 class CellarActsTest {
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final ActIdentifier REPEALED = new ActIdentifier("32010R0185");
@@ -42,7 +45,7 @@ class CellarActsTest {
   @Test
   void readsHowItAndTheActsItsVersionsIntegrateWerePublished() {
     var act = act(AVSEC);
-    // the act itself, those its versions integrate, corrigenda among them; no consolidation
+    // The act itself and the acts its versions integrate, corrigenda included. No consolidation.
     assertThat(act.publications()).hasSize(act.integratedBetween(first(act), last(act)).size() + 1);
     assertThat(act.publication(new ActIdentifier("32026R0449")))
         .hasValueSatisfying(
@@ -155,7 +158,7 @@ class CellarActsTest {
 
     assertThat(version(versions, "02015R1998-20260322").integrates())
         .containsExactly(new ActIdentifier("32026R0449"), new ActIdentifier("32026R0449R(01)"));
-    // Cellar also lists 02010R0358-20160201, another act's consolidation, here
+    // Cellar also lists 02010R0358-20160201 here. That is a consolidation of another act.
     assertThat(version(versions, "02015R1998-20190201").integrates())
         .containsExactly(new ActIdentifier("32019R0103"));
   }
@@ -178,7 +181,7 @@ class CellarActsTest {
     var withoutCroatian = EnumSet.copyOf(ALL_BUT_IRISH);
     withoutCroatian.remove(Language.HRV);
 
-    // Croatian from Croatia's accession (2013), the original translated into it then
+    // Croatian starts at Croatia's accession in 2013. The original was translated into it then.
     assertThat(versions.getFirst().languages()).isEqualTo(ALL_BUT_IRISH);
     assertThat(version(versions, "02010R0185-20140701").languages()).isEqualTo(withoutCroatian);
     assertThat(version(versions, "02010R0185-20150301").languages()).isEqualTo(ALL_BUT_IRISH);
@@ -190,7 +193,7 @@ class CellarActsTest {
   void eachVersionHasWhenCellarLastModifiedItsFormex() {
     var versions = act(AVSEC).timeline().versions();
 
-    // republished more than a year after its consolidation
+    // Cellar republished it more than a year after its consolidation.
     assertThat(version(versions, "02015R1998-20230401").formexModified())
         .isEqualTo(Instant.parse("2024-06-11T14:53:17.343Z"));
   }
@@ -218,7 +221,7 @@ class CellarActsTest {
             .orElseThrow()
             .timeline();
 
-    // Norwegian, an EEA language, isn't an official one
+    // Norwegian is an EEA language, but not an official one.
     assertThat(timeline.first().languages()).containsExactly(Language.DEU, Language.ENG);
     assertThat(timeline.latest().languages()).isEmpty();
     assertThat(timeline.latest().formexModified()).isNull();
@@ -246,7 +249,7 @@ class CellarActsTest {
     var dates = act(AVSEC).amendingDates();
 
     assertThat(dates).hasSize(17).doesNotContainKey(AVSEC);
-    // applies before it enters into force, as its Article 2 says
+    // It applies before it enters into force, as its Article 2 says.
     assertThat(dates.getOrDefault(new ActIdentifier("32017R0815"), List.of()))
         .extracting(ActDate::date, ActDate::kind)
         .containsExactly(
@@ -338,7 +341,8 @@ class CellarActsTest {
     assertThat(dates.getOrDefault(new ActIdentifier("32012R1064"), List.of()).getFirst().clause())
         .extracting(Clause::from, Clause::days, Clause::provisions)
         .containsExactly(Anchor.PUBLICATION, 3, List.of(new Provision(Provision.Type.ANNEX, null)));
-    // a day that doesn't exist is none; a type not known is left out; a consolidation isn't an act
+    // A day that does not exist gives no date. A date of an unknown type is left out. A
+    // consolidation is not an act.
     assertThat(dates.getOrDefault(new ActIdentifier("32015R2426"), List.of()))
         .singleElement()
         .extracting(ActDate::date, ActDate::kind)
@@ -395,12 +399,12 @@ class CellarActsTest {
         .extracting(Amendment::act, Amendment::role, Amendment::from)
         .contains(
             tuple(new ActIdentifier("32026R0449"), Role.REPLACEMENT, LocalDate.of(2026, 10, 1)));
-    // Cellar has no day for 2019/413's
+    // Cellar has no day for the amendments by 2019/413.
     assertThat(amendments)
         .filteredOn(amendment -> amendment.act().celex().equals("32019R0413"))
         .extracting(Amendment::from)
         .containsOnlyNulls();
-    // 2017/837 corrects the Swedish and the Polish
+    // 2017/837 corrects the Swedish and the Polish texts only.
     assertThat(amendments)
         .filteredOn(amendment -> amendment.act().celex().equals("32017R0837"))
         .flatExtracting(Amendment::languages)
@@ -421,21 +425,22 @@ class CellarActsTest {
             List.of("anx", "anx/pnt_6.8.1", "anx/pnt_8.1.2.3/pnt_c", "anx/pnt_8.1.4.8"),
             Language.ENG);
 
-    // a deletion at the earlier text's unit, an addition at the later's
+    // A deletion is found at the unit of the earlier text. An addition is found at the unit of the
+    // later text.
     assertThat(amended.of("anx/pnt_6.8.1.8", true))
         .extracting(Amendment::act, Amendment::role)
         .containsExactly(tuple(new ActIdentifier("32026R0449"), Role.DELETION));
     assertThat(amended.of("anx/pnt_8.1.4.8", true))
         .extracting(Amendment::role)
         .containsExactly(Role.ADDITION);
-    // the point numbered under it, which legal-text keeps beside it: in a unit deleted whole, not
-    // in
-    // one whose own words changed
+    // Point 6.8.1.8 is numbered under 6.8.1, but legal-text keeps it beside 6.8.1. Its deletion
+    // counts for 6.8.1 when 6.8.1 is deleted whole. It does not count when only the own words of
+    // 6.8.1 changed.
     assertThat(amended.of("anx/pnt_6.8.1", true))
         .extracting(Amendment::role)
         .contains(Role.DELETION);
     assertThat(amended.of("anx/pnt_6.8.1", false)).isEmpty();
-    // 2026/449 replaces it from 1 October 2026, after the later version
+    // 2026/449 replaces it from 1 October 2026. That is after the later version.
     assertThat(amended.of("anx/pnt_8.1.2.3/pnt_c", false)).isEmpty();
   }
 
@@ -623,7 +628,7 @@ class CellarActsTest {
     return new SparqlResult(List.of("code", "title"), List.of());
   }
 
-  /** amendments.rq's answer, with no amendments. */
+  /** publications.rq's answer, with no publications. */
   private static SparqlResult noPublications() {
     return new SparqlResult(List.of("subject", "eli", "code", "title"), List.of());
   }

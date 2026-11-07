@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * A node's address: the SHA-256 of its canonical content, as 64 lowercase hex digits. A version's
- * text is known by its root's.
+ * The address of a node. It is the SHA-256 of the canonical content of the node, as 64 lowercase
+ * hex digits. The text of a version is known by the hash of its root.
  */
 @ValueObject
 public record ContentHash(String hex) {

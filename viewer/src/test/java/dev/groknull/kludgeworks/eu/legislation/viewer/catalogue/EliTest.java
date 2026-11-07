@@ -6,7 +6,10 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import org.junit.jupiter.api.Test;
 
-/** ELIs as Cellar gives them (counted in Notion: Identifiers and URLs, 2026-10-31). */
+/**
+ * Tests ELIs in the forms that Cellar gives them. The forms were counted on 2026-10-31, in the
+ * Notion page "Identifiers and URLs".
+ */
 class EliTest {
 
   @Test

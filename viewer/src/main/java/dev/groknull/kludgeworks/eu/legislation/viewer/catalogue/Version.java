@@ -16,18 +16,21 @@ import org.jspecify.annotations.Nullable;
  * its consolidated versions. A version applies from its date until the next version's.
  *
  * @param kind the original text, or a consolidated version
- * @param date the day it applies from: the original's entry into force, a consolidation's date
- * @param celex the document holding the text: the act's CELEX for the original (32015R1998), the
- *     consolidation's for a consolidated version (02015R1998-20260322)
- * @param interim a consolidated version published without a PDF, which may still be revised
- * @param integrates the amending acts and corrigenda Cellar lists as consolidated at this step; for
- *     display only, since Cellar's lists aren't always exact
- * @param languages the languages its text is in, as Formex, the only text the viewer reads: its
- *     expressions in Cellar with a Formex manifestation (Research: which languages a version is
- *     in). Not always all 24: 2015/1998's have no Irish
+ * @param date the day it applies from. For the original, it is the entry into force. For a
+ *     consolidated version, it is the date of the consolidation.
+ * @param celex the document that holds the text. For the original, it is the act's CELEX, for
+ *     example {@code 32015R1998}. For a consolidated version, it is the CELEX of the consolidation,
+ *     for example {@code 02015R1998-20260322}.
+ * @param interim whether it is a consolidated version published without a PDF, which may still be
+ *     revised
+ * @param integrates the amending acts and corrigenda that Cellar lists as consolidated at this
+ *     step. They are for display only, because Cellar's lists are not always exact.
+ * @param languages the languages that its text is in as Formex, the only text that the viewer
+ *     reads. These are its expressions in Cellar that have a Formex manifestation. They are not
+ *     always all 24. For example, the versions of 2015/1998 have no Irish.
  * @param formexModified when Cellar last modified the Formex of any of them, as it does when it
- *     republishes it: what a text of the version is made from, so it changes with it; none for a
- *     version without Formex
+ *     republishes it. A text of the version is made from the Formex, so the text changes with it.
+ *     It is null for a version without Formex.
  */
 @ValueObject
 public record Version(
@@ -55,8 +58,8 @@ public record Version(
   }
 
   /**
-   * The original text, applying from {@code date}, in {@code languages}, its Formex modified on
-   * {@code formexModified}.
+   * Returns the original text, which applies from {@code date}, in {@code languages}. Its Formex
+   * was modified at {@code formexModified}.
    */
   public static Version original(
       LocalDate date,
@@ -67,7 +70,7 @@ public record Version(
         Kind.ORIGINAL, date, act.celex(), false, List.of(), languages, formexModified);
   }
 
-  /** Whether this version only applies after {@code today}. */
+  /** Returns whether this version applies only after {@code today}. */
   public boolean isFuture(LocalDate today) {
     return date.isAfter(today);
   }
@@ -76,7 +79,7 @@ public record Version(
   public enum Kind {
     /** The text as published in the Official Journal. */
     ORIGINAL,
-    /** A consolidation: the text with its amendments and corrections up to a date. */
+    /** A consolidation. It is the text with its amendments and corrections up to a date. */
     CONSOLIDATED
   }
 }

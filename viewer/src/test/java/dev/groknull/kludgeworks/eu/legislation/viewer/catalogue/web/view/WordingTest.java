@@ -8,7 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
-/** Dates, acts and provisions as the pages write them. */
+/** Tests how the pages write dates, acts and provisions, with {@link Wording}. */
 class WordingTest {
 
   @Test

@@ -9,12 +9,12 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * How an act an act's versions integrate was published, as the Publications Office's catalogue has
- * it (Design D-36, D-42, D-21): its ELI, its titles, and its place in the Official Journal.
+ * How an act, or an act that its versions integrate, was published, as the catalogue of the
+ * Publications Office has it. It holds the ELI, the titles, and the place in the Official Journal.
  *
- * @param eli its ELI; none where Cellar has none
- * @param titles its title in each official language Cellar has it in
- * @param journal where the Official Journal published it; none where Cellar doesn't say
+ * @param eli its ELI, or null where Cellar has none
+ * @param titles its title in each official language that Cellar has it in
+ * @param journal where the Official Journal published it, or null where Cellar does not say
  */
 @ValueObject
 public record Publication(
@@ -24,18 +24,20 @@ public record Publication(
     titles = Map.copyOf(titles);
   }
 
-  /** Its title in {@code language}; none if Cellar has none in it. */
+  /** Returns its title in {@code language}, or empty if Cellar has no title in that language. */
   public Optional<String> title(Language language) {
     return Optional.ofNullable(titles.get(language));
   }
 
   /**
-   * An act's place in the Official Journal: its series, and either its number in the act-by-act
-   * Journal (from October 2023) or the issue it is in, and the day it was published.
+   * An act's place in the Official Journal. It holds the series and the day it was published. It
+   * also holds either its number in the act-by-act Journal, which started in October 2023, or the
+   * issue that it is in.
    *
-   * @param series the series: L, C
-   * @param number its number in the act-by-act Journal: 2026/449; none in an issue
-   * @param issue the issue it is in: 21; none in the act-by-act Journal
+   * @param series the series, for example L or C
+   * @param number its number in the act-by-act Journal, for example 2026/449. It is null for an act
+   *     in an issue.
+   * @param issue the issue that it is in, for example 21. It is null in the act-by-act Journal.
    * @param published the day the Journal published it
    */
   @ValueObject
@@ -43,8 +45,9 @@ public record Publication(
       String series, @Nullable String number, @Nullable Integer issue, LocalDate published) {
 
     /**
-     * The reference, as the Official Journal cites it: OJ L, 2026/449, 2.3.2026 for an act of the
-     * act-by-act Journal; OJ L 21, 24.1.2019 for one of an issue.
+     * Returns the reference, as the Official Journal cites it. For an act of the act-by-act
+     * Journal, it is for example "OJ L, 2026/449, 2.3.2026". For an act in an issue, it is for
+     * example "OJ L 21, 24.1.2019".
      */
     public String reference() {
       var day =

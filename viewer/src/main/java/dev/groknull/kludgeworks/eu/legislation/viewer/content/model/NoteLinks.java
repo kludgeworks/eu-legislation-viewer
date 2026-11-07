@@ -14,13 +14,16 @@ import net.sf.saxon.s9api.XdmNodeKind;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Footnote references, by what they cite rather than where: a noteRef cites its note by the note's
- * hash ({@code "note"}), not its href and marker, which the rebuilt text takes from the note (its
- * eId, its marker). So a block citing a note is the same in every version whose note says the same,
- * whatever the note is numbered; and a note that changes changes the blocks that cite it. Where
- * notes say the same, the hash leaves the href ambiguous: all but the first such note are cited
- * with a fact, {@code ["href", path, href]}. Notes cite notes, so theirs are hashed first, in the
- * order their citations need.
+ * Cites footnotes by what they say, not by where they are.
+ *
+ * <p>A {@code noteRef} cites its note by the hash of the note, in {@code "note"}. It does not keep
+ * its href and marker. The rebuilt text takes these from the eId and the marker of the note. Thus a
+ * block that cites a note is the same in every version where the note says the same, whatever the
+ * number of the note. A change to a note changes the blocks that cite it.
+ *
+ * <p>If notes say the same, the hash does not tell which href is meant. All such notes except the
+ * first are cited with a fact, {@code ["href", path, href]}. Notes cite notes, so the notes that
+ * they cite are hashed first, in the order that their citations need.
  */
 final class NoteLinks {
   private static final String NOTE = "note";
@@ -28,17 +31,20 @@ final class NoteLinks {
   private static final String HREF = "href";
   private static final String MARKER = "marker";
 
-  /** eId → hash of each note, as far as known. */
+  /** The hash of each note by its eId, for the notes hashed so far. */
   private final Map<String, String> notes = new HashMap<>();
 
-  /** Hashes more than one note has, and the eId of the first of them, by which they are cited. */
+  /**
+   * The hashes that more than one note has. {@link #first} holds the eId of the first note of each
+   * hash, by which those notes are cited.
+   */
   private final Set<String> ambiguous = new HashSet<>();
 
   private final Map<String, String> first = new HashMap<>();
 
   private NoteLinks() {}
 
-  /** The notes of a legal text, hashed. */
+  /** Hashes the notes of a legal text. */
   static NoteLinks of(XdmNode root) {
     var links = new NoteLinks();
     var all = new ArrayList<XdmNode>();
@@ -80,7 +86,10 @@ final class NoteLinks {
     return links;
   }
 
-  /** Cites the notes a block refers to by their hashes; the facts for ambiguous ones. */
+  /**
+   * Cites the notes that a block refers to by their hashes. Returns the facts for the ambiguous
+   * ones.
+   */
   List<Object> link(List<?> leaf) {
     var facts = new ArrayList<Object>();
     link(leaf, List.of(), facts);
@@ -93,7 +102,7 @@ final class NoteLinks {
       var hash = notes.get(target(href));
       if (hash != null) {
         attrs.remove(HREF);
-        attrs.remove(MARKER); // the note's own
+        attrs.remove(MARKER); // The marker comes from the note.
         attrs.put(NOTE, hash);
         if (ambiguous.contains(hash) && !target(href).equals(first.get(hash))) {
           facts.add(List.of(HREF, path, href));
@@ -133,15 +142,16 @@ final class NoteLinks {
   }
 
   /**
-   * The notes of a text being rebuilt, read from its blocks as stored, in document order: each
-   * note's eId and marker by its hash, to put back the href and marker of the references citing it.
+   * The notes of a text that is being rebuilt. They are read from its blocks as stored, in document
+   * order. Each note keeps its eId and marker by its hash. These put back the href and marker of
+   * the references that cite it.
    */
   static final class Targets {
     private record Note(@Nullable Object eId, @Nullable Object marker) {}
 
     private final Map<String, Note> notes = new HashMap<>();
 
-    /** Reads the notes in a block as stored, with its facts. */
+    /** Reads the notes in a block as stored, with the facts of the block. */
     void read(List<?> stored, List<?> facts) {
       read(stored, List.of(), facts);
     }
@@ -160,7 +170,7 @@ final class NoteLinks {
       }
     }
 
-    /** Puts back the href and marker of each reference in a block citing a note by its hash. */
+    /** Puts back the href and marker of each reference in a block that cites a note by its hash. */
     void unlink(List<?> leaf, List<?> facts) {
       unlink(leaf, List.of(), facts);
     }

@@ -7,15 +7,18 @@
 @param MastheadView masthead
 @param TimelineView timeline
 @param PreparingView preparing
-<%-- An act's page, a version's or a comparison's, while the act is being prepared in its language
-     (Design: Preparing an act): its head, the mode switch not yet a link, its timeline with each
-     version's text as it stands, the progress panel, and what is already known about the act. The
-     stream (hx-sse:connect) pushes the timeline, the progress and the steps as they change, each
-     swapped by its id (hx-partial); once done, this address is asked again (prepared, for the
-     receipt) and its page swapped in for this one, at the same address. Beside the progress, the
-     way back to the reader's last search's results, if any. Without JavaScript, the
-     page reloads: in the head, as a boosted request (Try again's) parses what it swaps in without
-     scripts, so a noscript in the page would come alive and reload it --%>
+<%-- Shows an act's page while the act is being prepared in its language. The page can be for a
+     version or for a comparison. It has the act's head, with a mode switch that is not a link yet.
+     The timeline shows the state of each version's text. Then come the progress panel and what is
+     already known about the act.
+     The stream (hx-sse:connect) pushes the timeline, the progress and the steps when they change.
+     htmx swaps each part by its id (hx-partial). When the stream sends done, htmx requests this
+     address again with prepared set, so that the page shows a receipt. It swaps that page in for
+     this one, at the same address.
+     Beside the progress is a link back to the reader's last search results, if there are any.
+     Without JavaScript, the page reloads every few seconds. The noscript refresh is in the head
+     for this reason: a boosted request, such as Try again, parses what it swaps in without scripts.
+     A noscript in the page body would then become active and reload the page. --%>
 @template.layout.page(chrome = chrome, title = title, head = @`<noscript><meta http-equiv="refresh" content="5"></noscript>`, content = @`
   <div id="page" hx-boost:inherited="true">
     @template.catalogue.masthead(masthead = masthead)

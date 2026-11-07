@@ -19,19 +19,26 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * An act's amendments from the answer to amendments.rq: each amended location with its role
- * (fd_375), its days and the languages it is limited to. A role this doesn't know is kept as OTHER,
- * with a warning; a placeholder for a day is none.
+ * Reads the amendments of an act from the answer to {@code amendments.rq}. For each amended
+ * location it reads the role, the days and the languages that the amendment is limited to. The role
+ * is a code from the authority table {@code fd_375}. It keeps a role it does not know as {@code
+ * OTHER} and logs a warning. A placeholder for a day becomes no day.
  */
 final class CellarAmendments {
   private static final Logger LOG = LoggerFactory.getLogger(CellarAmendments.class);
 
-  /** An authority code as Cellar writes it in an annotation: {R|http://…/fd_375/R}. */
+  /**
+   * An authority code as Cellar writes it in an annotation. For example, {@code
+   * {R|http://…/fd_375/R}}.
+   */
   private static final Pattern CODE = Pattern.compile("\\{([^|}]*)\\|[^}]*}");
 
   private CellarAmendments() {}
 
-  /** The amendments in the answer, in its order; those by a subject that isn't an act left out. */
+  /**
+   * Returns the amendments in the answer, in the order of the answer. It leaves out amendments by a
+   * subject that is not an act.
+   */
   static List<Amendment> of(ActIdentifier base, SparqlResult answer) {
     var amendments = new ArrayList<Amendment>();
     var unknown = new TreeSet<String>();
@@ -61,8 +68,8 @@ final class CellarAmendments {
   }
 
   /**
-   * The languages of Cellar's list of them: SV, PL (ISO 639-1); none for none, and those it doesn't
-   * know left out.
+   * Reads Cellar's list of languages as ISO 639-1 codes, for example {@code SV, PL}. An empty list
+   * gives no languages. It leaves out codes it does not know.
    */
   private static Set<Language> languages(String list) {
     var languages = EnumSet.noneOf(Language.class);
@@ -74,7 +81,10 @@ final class CellarAmendments {
     return languages;
   }
 
-  /** The code of an authority value ({R|…} is R), or the value if it isn't one. */
+  /**
+   * Returns the code of an authority value, for example {@code R} for {@code {R|…}}. If the value
+   * is not an authority value, it returns the value.
+   */
   private static String code(String value) {
     var matcher = CODE.matcher(value);
     return matcher.find() ? matcher.group(1) : value;

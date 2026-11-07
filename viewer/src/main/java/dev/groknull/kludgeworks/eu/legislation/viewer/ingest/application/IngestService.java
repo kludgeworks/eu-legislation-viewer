@@ -20,9 +20,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Scheduling an expression: a job queued, with the trace of the request that asked for it, and
- * requested (ExpressionRequested) in its transaction, the request handed to a worker once it
- * commits (JobRunner). A job retried is queued again so, from its first attempt.
+ * Schedules expressions to be built.
+ *
+ * <p>To schedule an expression, the service queues a job with the trace of the request that asked
+ * for it. In the same transaction, it publishes {@link ExpressionRequested}. When the transaction
+ * commits, a worker in {@link JobRunner} gets the request. A retried job is queued again in the
+ * same way, from its first attempt.
  */
 @Service
 class IngestService implements Ingest {
@@ -74,7 +77,10 @@ class IngestService implements Ingest {
     return jobs.ahead(celexes, language);
   }
 
-  /** The current trace, as W3C Trace Context's header carries it; none outside a trace. */
+  /**
+   * Returns the current trace, in the form of the W3C Trace Context header. Returns null outside a
+   * trace.
+   */
   private @Nullable String traceparent() {
     var context = tracer.currentTraceContext().context();
     if (context == null) {

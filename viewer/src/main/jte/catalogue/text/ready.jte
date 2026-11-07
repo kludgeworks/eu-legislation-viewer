@@ -2,8 +2,9 @@
 @param String content
 @param Outline outline
 @param String compare
-<%-- The text, built: its outline beside it, the text itself loaded from the content module; its
-     amendment marks open the change in the act's comparisons (compare, js/markers.js) --%>
+<%-- Shows the built text with its outline beside it. htmx loads the text from the content module.
+     A click on an amendment mark opens that change in the act's comparisons. js/markers.js does
+     this with the address in data-compare. --%>
 <div id="text" class="outlined">
   <nav class="outline" aria-label="Outline">
     <p class="outline-head">Outline</p>

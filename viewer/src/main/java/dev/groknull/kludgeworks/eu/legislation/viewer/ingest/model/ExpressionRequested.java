@@ -6,12 +6,14 @@ import org.jmolecules.event.annotation.DomainEvent;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An expression asked to be built: its job queued. The queue's entry, kept by Modulith's event
- * registry with the job, and handed to a worker once the job is committed (JobRunner); a worker
- * that stopped leaves it to be handed out again.
+ * A request to build an expression. Its job is queued.
  *
- * @param traceparent the trace of the request that asked for it (W3C Trace Context), which its work
- *     continues
+ * <p>This event is the entry in the queue. The event registry of Modulith keeps it with the job.
+ * The registry gives it to a worker in {@code JobRunner} when the job is committed. If a worker
+ * stops, the registry gives the event out again.
+ *
+ * @param traceparent the trace of the request that asked for the build, in W3C Trace Context form.
+ *     The work continues this trace.
  */
 @DomainEvent
 public record ExpressionRequested(String celex, Language language, @Nullable String traceparent) {}

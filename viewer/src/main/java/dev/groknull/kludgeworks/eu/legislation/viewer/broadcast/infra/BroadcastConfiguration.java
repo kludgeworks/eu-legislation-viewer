@@ -33,11 +33,16 @@ import org.springframework.util.ClassUtils;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * Broadcasting over Valkey: Modulith externalizes each @Externalized event, once its transaction
- * commits, through the event registry (StreamTransport, which adds it to its stream); every
- * instance reads those streams from the entry last added when it started (StreamReader), on a
- * virtual thread. Which streams, and which types an entry may be read back as: the
- * app's @Externalized types, found in its packages on starting.
+ * Configures broadcasting over Valkey.
+ *
+ * <ul>
+ *   <li>Modulith externalizes each {@code @Externalized} event through the event registry, once its
+ *       transaction commits. {@link StreamTransport} adds the event to its stream.
+ *   <li>Every instance reads those streams with a {@link StreamReader}, on a virtual thread. It
+ *       reads from the entry that was last added when the instance started.
+ *   <li>The {@code @Externalized} types of the app set the streams, and the types that an entry may
+ *       be read back as. They are found in the packages of the app at startup.
+ * </ul>
  */
 @Configuration(proxyBeanMethods = false)
 class BroadcastConfiguration {
@@ -46,7 +51,10 @@ class BroadcastConfiguration {
   /** How long a read waits for an entry before reading again. */
   private static final Duration POLL = Duration.ofSeconds(10);
 
-  /** How long to wait before reading again after a read failed: Valkey unreachable, mostly. */
+  /**
+   * How long to wait before reading again after a read failed. Mostly, a read fails because Valkey
+   * is unreachable.
+   */
   private static final Duration AFTER_FAILURE = Duration.ofSeconds(5);
 
   @Bean
@@ -88,9 +96,10 @@ class BroadcastConfiguration {
   }
 
   /**
-   * Where to read {@code stream} from: after the entry last added to it (from its start, if it has
-   * none), so nothing added once this instance started is missed, not even before its first read
-   * (as reading from the latest, $, would). From the latest if Valkey can't say.
+   * Returns where to read {@code stream} from. This is after the entry last added to it, or from
+   * its start if it has no entries. Thus no entry added after this instance started is missed, not
+   * even before its first read. Reading from the latest entry, {@code $}, would miss these. If
+   * Valkey cannot tell the last entry, it reads from the latest.
    */
   private static ReadOffset after(StringRedisTemplate redis, String stream) {
     try {
@@ -108,7 +117,7 @@ class BroadcastConfiguration {
     }
   }
 
-  /** The app's @Externalized types, in its packages, by name. */
+  /** Returns the {@code @Externalized} types of the app, in its packages, by name. */
   private static Map<String, Class<?>> externalized(BeanFactory beans) {
     var scanner = new ClassPathScanningCandidateComponentProvider(false);
     scanner.addIncludeFilter(new AnnotationTypeFilter(Externalized.class));
@@ -123,7 +132,10 @@ class BroadcastConfiguration {
     return types;
   }
 
-  /** The stream {@code type}'s @Externalized names: its target, before any routing key (::). */
+  /**
+   * Returns the stream that the {@code @Externalized} of {@code type} names. This is its target,
+   * before any routing key, which follows {@code ::}.
+   */
   private static String stream(Class<?> type) {
     var target =
         Objects.requireNonNull(AnnotatedElementUtils.findMergedAnnotation(type, Externalized.class))
@@ -135,7 +147,7 @@ class BroadcastConfiguration {
     return stream;
   }
 
-  /** A read failed: logged, and read again a little later rather than at once. */
+  /** Logs a failed read, and waits a little, so that the next read is not at once. */
   private static void failed(Throwable failure) {
     LOG.warn(
         "Reading the broadcast streams failed, again in {}: {}",

@@ -21,10 +21,13 @@ import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClient;
 
 /**
- * Cellar's files (content streams: an item, or one entry of a zip item), read one at a time as they
- * come: nothing is buffered or kept, so a file of any size costs only what its reader makes of it.
- * Cellar keeps some files gzipped (consolidations' Formex made from 2005 to 2018), sent as they are
- * kept: those are read unzipped, so a reader always has the file itself.
+ * Reads Cellar's files, which Cellar calls content streams. A file is an item, or one entry of a
+ * zip item. It reads each file as it arrives. It does not buffer or keep the file, so a file of any
+ * size costs only the memory its reader uses.
+ *
+ * <p>Cellar keeps some files gzipped and sends them gzipped. For example, the Formex of
+ * consolidations made from 2005 to 2018 is gzipped. This class unzips these files, so a reader
+ * always gets the file itself.
  */
 @Component
 public class ContentStreams {
@@ -37,9 +40,10 @@ public class ContentStreams {
   }
 
   /**
-   * What {@code reader} makes of {@code uri}'s bytes, read while the response is open. Reading them
-   * failing (the connection lost) is Cellar failing, a ResourceAccessException, whatever the reader
-   * made of it: a reader that turns the failure into a result of its own never hides it.
+   * Returns what {@code reader} makes of the bytes at {@code uri}. The reader reads them while the
+   * response is open. If the read fails, for example because the connection breaks, this method
+   * throws a {@code ResourceAccessException} as a Cellar failure. It does this whatever the reader
+   * returned, so a reader that turns the failure into a result of its own cannot hide it.
    */
   public <T> T read(URI uri, Function<InputStream, T> reader) {
     var started = System.nanoTime();
@@ -76,7 +80,7 @@ public class ContentStreams {
             });
   }
 
-  /** {@code body}, unzipped if it starts as gzip does (0x1f 0x8b). */
+  /** Returns {@code body}, unzipped if it starts with the gzip bytes 0x1f 0x8b. */
   private static InputStream unzipped(InputStream body) {
     var in = new BufferedInputStream(body);
     try {
@@ -94,8 +98,9 @@ public class ContentStreams {
   }
 
   /**
-   * A body that remembers the first failure reading it, for the reader may swallow it, and counts
-   * the bytes read (as sent: gzipped if Cellar keeps the file so).
+   * A body that remembers the first failure to read it, because the reader may swallow that
+   * failure. It also counts the bytes read. It counts the bytes as Cellar sent them, so for a
+   * gzipped file it counts the gzipped bytes.
    */
   private static final class Watched extends FilterInputStream {
     private @Nullable IOException failure;

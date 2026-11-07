@@ -1,9 +1,14 @@
 // SPDX-License-Identifier: MIT
 /**
- * The ingest module's infrastructure: a document's Formex read from Cellar (CellarFormexSource) and
- * converted by //formex-converter's stylesheets (FormexConverter), a few at a time
- * (FormexConversion); the jobs in Postgres (JooqIngestJobs), on the tables jOOQ generates from the
- * module's migrations (jooq).
+ * The infrastructure of the ingest module.
+ *
+ * <ul>
+ *   <li>{@link CellarFormexSource} reads the Formex of a document from Cellar.
+ *   <li>{@link FormexConverter} converts it with the stylesheets of //formex-converter.
+ *   <li>{@link FormexConversion} runs only a few conversions at a time.
+ *   <li>{@link JooqIngestJobs} keeps the jobs in Postgres. It uses the tables that jOOQ generates
+ *       from the migrations of the module, in the {@code jooq} package.
+ * </ul>
  */
 @InfrastructureRing
 @NullMarked

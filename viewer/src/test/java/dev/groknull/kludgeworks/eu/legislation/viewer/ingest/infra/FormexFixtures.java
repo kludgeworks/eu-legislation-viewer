@@ -20,20 +20,32 @@ import java.util.function.BiFunction;
 import org.springframework.web.client.ResourceAccessException;
 
 /**
- * A Formex source on the converter's fixtures, in English: 2015/1998's consolidations of 2026 among
- * them, none for a document without one; in French a document that isn't a legal act, in German
- * Formex the converter doesn't handle, in Italian another version's Formex (as Cellar misfiles it),
- * for any document; in Swedish Cellar doesn't answer. It records what it was asked for, from any
- * thread. With the converter's expected output for the fixtures.
+ * A Formex source on the converter's fixtures. It answers as follows, by language:
+ *
+ * <ul>
+ *   <li>English: the fixtures, which include the consolidations of 2015/1998 of 2026. There is no
+ *       Formex for a document that has no fixture.
+ *   <li>French: a document that is not a legal act, for any document.
+ *   <li>German: Formex that the converter does not handle, for any document.
+ *   <li>Italian: the Formex of another version, for any document. Cellar sometimes files Formex
+ *       like this.
+ *   <li>Swedish: Cellar does not answer.
+ *   <li>Other languages: no Formex.
+ * </ul>
+ *
+ * <p>It records what it was asked for, from any thread. It also gives the converter's expected
+ * output for the fixtures.
  */
 @AutoBazelRepository
 final class FormexFixtures implements FormexSource {
   static final String CONSOLIDATION = "02015R1998-20260322";
 
-  /** The documents fetched, with their language: 02015R1998-20260322 ENG. */
+  /**
+   * The documents fetched, each with its language. For example: {@code 02015R1998-20260322 ENG}.
+   */
   final List<String> asked = new CopyOnWriteArrayList<>();
 
-  /** Every fetch, in any language, whether there was Formex or not. */
+  /** Every fetch, in any language, with or without Formex. */
   final List<String> requests = new CopyOnWriteArrayList<>();
 
   @Override
@@ -71,7 +83,8 @@ final class FormexFixtures implements FormexSource {
     var documents = new ArrayList<T>();
     try {
       if (!Files.isDirectory(fixture(celex))) {
-        // a version the converter has no fixture of: as Cellar has none of a text without Formex
+        // The converter has no fixture of this version. Cellar also has nothing for a text
+        // without Formex.
         return Optional.empty();
       }
     } catch (IOException e) {
@@ -89,7 +102,10 @@ final class FormexFixtures implements FormexSource {
     return Optional.of(documents);
   }
 
-  /** The converter's expected output for a fixture, as it is written: 02015R1998-20260322. */
+  /**
+   * The converter's expected output for the fixture {@code celex}, as it is written. For example:
+   * {@code 02015R1998-20260322}.
+   */
   static String expected(String celex) {
     try {
       return Files.readString(resource("expected/formex/06.02.1/" + celex + ".xml"));

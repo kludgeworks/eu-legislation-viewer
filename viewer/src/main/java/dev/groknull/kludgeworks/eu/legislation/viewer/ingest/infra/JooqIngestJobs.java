@@ -24,7 +24,7 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Repository;
 
-/** The ingest jobs in Postgres (ingest_job), with jOOQ. */
+/** The ingest jobs in Postgres, in the table {@code ingest_job}, with jOOQ. */
 @Repository
 class JooqIngestJobs implements IngestJobs {
   private final DSLContext db;

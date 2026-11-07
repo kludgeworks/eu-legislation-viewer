@@ -1,15 +1,19 @@
 /* SPDX-License-Identifier: MIT */
 /*
- * The viewer's look. The legal text is set as EUR-Lex sets its consolidated texts (Research: EUR-Lex
- * typography): Times New Roman at 16px, justified paragraphs, articles' titles centred, lists as a
- * grid of label and text. The templates name what things are (unit-article, num, norm); how they look
- * is here.
+ * The look of the viewer. The legal text looks as EUR-Lex shows its consolidated texts:
+ * - Times New Roman at 16px.
+ * - Justified paragraphs.
+ * - The titles of articles centred.
+ * - Lists as a grid of label and text.
+ * The templates name what things are, for example unit-article, num and norm. This file says how
+ * they look.
  */
 
 /*
- * Every colour is a token, each with its light and its dark value (light-dark()). Which one
- * applies is the page's color-scheme: the device's, unless the reader chose (data-theme, which
- * the server renders from the theme cookie). Print is always light.
+ * Every colour is a token with a light value and a dark value, set with light-dark(). The
+ * color-scheme of the page selects one. It is the scheme of the device, unless the reader selected
+ * a theme. In that case the server renders the choice from the theme cookie as data-theme. Print
+ * is always light.
  */
 :root {
   color-scheme: light dark;
@@ -79,8 +83,8 @@ a {
   color: var(--accent);
 }
 
-/* every page's frame: the notice that the viewer has no legal effect, kept in sight as the page
- * scrolls, then the site bar */
+/* The frame of every page. First comes the notice that the viewer has no legal effect. It stays in
+ * sight when the page scrolls. The site bar is under it. */
 .notice {
   position: sticky;
   top: 0;
@@ -118,7 +122,8 @@ nav.site {
   color: var(--muted);
 }
 
-/* the theme switch: three icons in one pill at the right of the site bar, the current one raised */
+/* The theme switch. It is three icons in one pill at the right of the site bar. The current icon is
+ * raised. */
 form.theme {
   display: flex;
   gap: 2px;
@@ -166,7 +171,7 @@ form.theme svg {
   stroke-linecap: round;
 }
 
-/* centred: an act's page at most 1,440px wide, the home page 1,120px (Design: page width) */
+/* The page is centred. An act's page is at most 1,440px wide. The home page is at most 1,120px. */
 main {
   max-width: 1440px;
   margin-inline: auto;
@@ -174,9 +179,13 @@ main {
     max(28px, env(safe-area-inset-left, 0px));
 }
 
-/* the act's versions to scale (catalogue/timeline.jte): ticks on an axis of years, versions too
- * close to click apart one round mark opening a list, lags hatched amber, the version being read
- * raised and tagged */
+/*
+ * The versions of the act on a time scale (catalogue/timeline.jte):
+ * - Ticks on an axis of years.
+ * - One round mark for versions that are too close to click apart. It opens a list of them.
+ * - Amber hatching where a version lags the law.
+ * - The version that the reader reads is raised and tagged.
+ */
 .timeline {
   margin: 1rem 0;
   padding: 0.75rem 0 0.25rem;
@@ -272,8 +281,15 @@ main {
   background: var(--accent-fill);
 }
 
-/* while the act is prepared (catalogue/preparing.jte), each version's text as it stands: grey
- * queued, light being built, dark built, dashed failed; links to nothing yet */
+/*
+ * While the act is prepared (catalogue/preparing.jte), each tick shows the state of the text of its
+ * version:
+ * - Grey: queued.
+ * - Light: being built.
+ * - Dark: built.
+ * - Dashed: failed.
+ * The ticks link to nothing yet.
+ */
 .tick.queued::before {
   background: var(--line);
 }
@@ -293,7 +309,8 @@ main {
   background: repeating-linear-gradient(to bottom, var(--muted) 0 3px, transparent 3px 6px);
 }
 
-/* once prepared, a version whose text failed stays dashed; the one asked for, in the fault's ink */
+/* After the act is prepared, the tick of a version whose text failed stays dashed. The tick of the
+ * version that the reader asked for is dashed in the ink of faults. */
 .tick.failed[aria-current]::before {
   background: repeating-linear-gradient(to bottom, var(--del-ink) 0 4px, transparent 4px 7px);
 }
@@ -395,7 +412,8 @@ main {
   font-weight: 600;
 }
 
-/* the range compared: a band from From's mark to To's, under the marks */
+/* The range that the page compares. It is a band from the mark of From to the mark of To, under the
+ * marks. */
 .band {
   position: absolute;
   top: 22px;
@@ -429,8 +447,8 @@ main {
   font-family: ui-monospace, monospace;
 }
 
-/* the act page's head (catalogue/masthead.jte): its title, ids and language switch, the mode
- * switch at the right, a double rule under them */
+/* The head of the act's page (catalogue/masthead.jte). It holds the title, the ids and the language
+ * switch. The mode switch is at the right. A double rule is under them. */
 header.mast {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -513,7 +531,8 @@ details.lang [aria-current] {
   text-decoration: none;
 }
 
-/* a language a version shown isn't in: greyed in place, why on hover */
+/* A language that a version on the page is not in. It stays in place in grey, and its hover says
+ * why. */
 details.lang .missing {
   color: var(--disabled);
   cursor: default;
@@ -552,8 +571,8 @@ nav.mode [aria-disabled] {
   cursor: default;
 }
 
-/* the Reading card (catalogue/reading.jte): the version, its period and makers, where it lags the
- * law in amber, and the date form */
+/* The Reading card (catalogue/reading.jte). It shows the version, its period and what made it.
+ * Where the version lags the law, it says so in amber. The card also holds the date form. */
 section.selection {
   padding: 14px 0;
   border-bottom: 1px solid var(--rule);
@@ -590,7 +609,7 @@ section.selection {
   color: var(--ink);
 }
 
-/* Read: the card and, beside it, the comparison with the version before */
+/* Read mode. The card is at the left. The comparison with the version before is beside it. */
 section.selection:not(.compare) {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -614,7 +633,7 @@ a.button:hover {
   border-color: var(--ink);
 }
 
-/* Compare: From → To, and the acts between them */
+/* Compare mode. The section shows From → To, and then the acts between them. */
 section.selection.compare {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) minmax(0, 1.3fr);
@@ -636,8 +655,9 @@ section.selection.compare {
   margin: 4px 0;
 }
 
-/* an act's chip: its number, and how many differences it made here; on, the comparison is limited
- * to its changes; one that made none, quiet */
+/* The chip of an act. It shows the number of the act and how many differences it made here. When
+ * the chip is on, the comparison shows only the changes of that act. The chip of an act that made
+ * no difference is quiet. */
 .chip {
   display: inline-flex;
   gap: 6px;
@@ -674,19 +694,19 @@ a.chip:hover {
   font-weight: 500;
 }
 
-/* the differences no one act is known to have made */
+/* The chip for the differences that no single act is known to have made. */
 .chip.unknown {
   border-style: dashed;
   color: var(--muted);
 }
 
-/* a corrigendum's chip: dotted, in the corrections' violet (Design D-30) */
+/* The chip of a corrigendum has a dotted border in the violet of corrections. */
 .chip.corrigendum {
   border-style: dotted;
   border-color: var(--corr-ink);
 }
 
-/* what the chips' numbers are */
+/* The hint that says what the numbers on the chips mean. */
 .between .hint {
   display: block;
   margin-top: 4px;
@@ -694,7 +714,7 @@ a.chip:hover {
   font-size: 12.5px;
 }
 
-/* the chips of acts that made no difference here, folded */
+/* The chips of the acts that made no difference here. They are folded. */
 .more-acts > summary {
   color: var(--accent);
   font-size: 13px;
@@ -711,7 +731,8 @@ a.chip:hover {
   display: none;
 }
 
-/* the comparison limited to one act's changes, and the way back to all acts' */
+/* The note that the comparison shows the changes of one act only. It has a link back to the changes
+ * of all acts. */
 .controls .only {
   padding: 3px 10px;
   border-radius: 3px;
@@ -724,7 +745,7 @@ a.chip:hover {
   color: inherit;
 }
 
-/* the comparison's summary: how many differences, of which kinds */
+/* The summary of the comparison. It says how many differences there are, and of which kinds. */
 .controls {
   display: flex;
   flex-wrap: wrap;
@@ -735,7 +756,8 @@ a.chip:hover {
   font-size: 13.5px;
 }
 
-/* the comparison's views, one shown: Changes, Whole text, Synopsis */
+/* The views of the comparison: Changes, Whole text and Synopsis. The page shows one view at a time.
+ */
 .views {
   display: inline-flex;
   border: 1px solid var(--rule);
@@ -758,8 +780,8 @@ a.chip:hover {
   color: var(--bg);
 }
 
-/* the Whole text view (Design: Mode: Compare, Whole text): every provision of the later text, each
- * that differs marked in place as in the Changes view, the rest's text kept to its column */
+/* The Whole text view shows every provision of the later text. Each provision that differs is
+ * marked in place, as in the Changes view. The text of the other provisions stays in its column. */
 .whole .book {
   padding: 16px 0 24px 32px;
 }
@@ -768,9 +790,9 @@ a.chip:hover {
   max-width: 42.5rem;
 }
 
-/* the Synopsis view (Design: Mode: Compare, Synopsis): a ledger of the two texts aligned by
- * provision, each that differs a row tinted, what changed it in the last column; the words it lost
- * shown in From only, those it gained in To only */
+/* The Synopsis view is a ledger of the two texts, aligned by provision. Each provision that differs
+ * is a tinted row, and the last column says what changed it. The From column shows only the words
+ * it lost. The To column shows only the words it gained. */
 .ledger {
   margin-top: 16px;
   border-top: 2px solid var(--ink);
@@ -908,7 +930,8 @@ a.chip:hover {
   color: var(--muted);
 }
 
-/* a Synopsis fold opened in place (D-55): its rows as the ledger's, under its line */
+/* A Synopsis fold that the reader opens in place. Its rows look like the rows of the ledger and
+ * show under its line. */
 details.ledger-fold > summary {
   cursor: pointer;
   list-style: none;
@@ -937,15 +960,15 @@ details.ledger-fold[open] {
   background: var(--bg);
 }
 
-/* in Compare (D-41), no amendment marks (▼) and none of what a consolidation keeps struck: the
- * sidenotes and the marks say what happened; Read keeps them */
+/* Compare hides the amendment marks (▼) and the struck text that a consolidation keeps. The
+ * sidenotes and the change marks say what happened. Read shows them. */
 .changes .provenance,
 .changes .deleted {
   display: none;
 }
 
-/* a deleted unit in the Whole text (D-52), where it stood: its number and words struck in red,
- * greyed a little, so the text around it reads on */
+/* A deleted unit in the Whole text shows where it was. Its number and words are struck through in
+ * red and a little grey, so the text around it is easy to read. */
 .whole .difference-deleted > :not(.sidenote, .difference-number) {
   opacity: 0.7;
 }
@@ -954,9 +977,9 @@ details.ledger-fold[open] {
   background: none;
 }
 
-/* the Changes view (Design: Mode: Compare, Changes): the provisions that differ in the book column,
- * each numbered in the margin with its note beside it; the opening of the unit they are in in a
- * quiet grey; the units the same in both folded; a pager to each difference at the bottom */
+/* The Changes view shows the provisions that differ in the book column. Each one has its number in
+ * the margin and its note beside it. The opening of the unit that contains them is a quiet grey.
+ * The units that are the same in both texts are folded. */
 .changes .book {
   padding: 16px 0 24px 32px;
 }
@@ -999,7 +1022,8 @@ details.ledger-fold[open] {
   color: var(--accent);
 }
 
-/* who made it first, then the note, when each act applies and what it was before, a line each */
+/* The lines of a sidenote. First is the act that made the change. Then come the note, when each act
+ * applies, and what the text was before. Each one is on a line of its own. */
 .sidenote .made {
   font-weight: 600;
   color: var(--ink3);
@@ -1013,13 +1037,15 @@ details.ledger-fold[open] {
   margin-top: 3px;
 }
 
-/* what to know of who made it: together, only in the data, not known */
+/* What the reader must know about who made the change. For example, acts made it together, it shows
+ * only in the data, or it is not known. */
 .sidenote .why {
   color: var(--muted);
   font-style: italic;
 }
 
-/* under an act's filter, a change that may be its, not known: greyed, never hidden */
+/* When the comparison shows the changes of one act only, some changes may be of that act, but this
+ * is not known. These changes are grey. The page never hides them. */
 .difference.unknown > :not(.sidenote) {
   opacity: 0.6;
 }
@@ -1084,8 +1110,8 @@ details.ledger-fold[open] {
   line-height: 1.4;
 }
 
-/* that a text may lag the law, an act's date of application not known: grey, on the cards only
- * (Design D-24) */
+/* The note that a text may lag the law, because the date of application of an act is not known.
+ * It is grey and shows on the cards only. */
 .lag-maybe {
   margin-top: 6px;
   padding: 5px 8px;
@@ -1123,9 +1149,9 @@ form.on button {
   cursor: pointer;
 }
 
-/* the text's part (catalogue/text/ready.jte): its outline in a sidebar that stays in sight below
- * the notice, the text beside it at the width EUR-Lex reads at, what the outline jumps to clear of
- * the notice */
+/* The part of the page with the text (catalogue/text/ready.jte). The outline is in a sidebar that
+ * stays in sight below the notice. The text is beside it, at the width that EUR-Lex uses. A jump
+ * from the outline stops clear of the notice. */
 .outlined {
   display: flex;
   gap: 28px;
@@ -1205,8 +1231,9 @@ nav.outline a:hover {
   background: var(--hover);
 }
 
-/* a comparison's outline (comparison/outline.jte): each unit's label, its share of the
- * differences barred, its count; the differences in its points as chips */
+/* The outline of a comparison (comparison/outline.jte). Each unit shows its label, a bar for its
+ * share of the differences, and its count. The differences in the points of a unit show as chips.
+ */
 nav.outline.counted .outline-head {
   display: flex;
   justify-content: space-between;
@@ -1244,8 +1271,7 @@ nav.outline .n {
   color: var(--ink);
 }
 
-/* the changed provisions in a unit's points: a row each, as the units above them are (Design:
- * outline links) */
+/* The changed provisions in the points of a unit. Each one has a row, as the units above them do. */
 nav.outline .chips {
   display: block;
   padding: 0 0 2px 20px;
@@ -1258,8 +1284,8 @@ nav.outline .chips a {
   color: var(--accent);
 }
 
-/* the outline's head: the button collapsing it to a rail; under it, where the reader is (Design
- * D-44, D-33) */
+/* The head of the outline. It has the button that collapses the outline to a rail. Under the
+ * button, it shows where the reader is. */
 .outline-head {
   align-items: center;
 }
@@ -1306,7 +1332,8 @@ nav.outline .outline-follow a[aria-disabled] {
   color: var(--disabled);
 }
 
-/* collapsed: a rail of the parts with their counts, nothing below them */
+/* The outline when it is collapsed. It is a rail of the parts with their counts. Nothing shows
+ * below the parts. */
 nav.outline.rail {
   flex-basis: 140px;
 }
@@ -1328,7 +1355,7 @@ nav.outline.counted.rail a {
   padding-left: 10px;
 }
 
-/* an annex inserted whole, folded to its size (Design D-44) */
+/* An annex that was inserted whole. It is folded, and the fold shows its size. */
 details.annex-inserted > summary {
   padding: 6px 0;
   color: var(--ins-ink);
@@ -1360,9 +1387,10 @@ details.annex-inserted[open] .show {
   overflow-wrap: anywhere;
 }
 
-/* titles are headings (h1 the long title, h2 to h6 by rank): set as the text around them, the rules
- * below saying how each looks; their parts, the long title's lines and a title's num, heading and
- * subheading, are spans that are lines of their own */
+/* Titles are headings. h1 is the long title, and h2 to h6 follow the rank. They take the font of
+ * the text around them, and the rules below say how each one looks. The parts of a title are spans,
+ * each on a line of its own. These parts are the lines of the long title, and the num, heading and
+ * subheading of a title. */
 .legal-text :where(h1, h2, h3, h4, h5, h6) {
   margin: 0;
   font: inherit;
@@ -1386,8 +1414,10 @@ p.norm {
   text-align: justify;
 }
 
-/* the head of the OJ page an act as published starts on, as EUR-Lex sets it (oj-hd-*): a row of
- * date, language, the Journal and issue/page in columns of 10%, 10%, 60% and 20%, a rule under it */
+/* The head of the OJ page on which an act as published starts, as EUR-Lex sets it (oj-hd-*). It is
+ * one row with a rule under it. Its columns are the date, the language, the Journal, and the issue
+ * and page. EUR-Lex makes them 10%, 10%, 60% and 20% wide. Here the first two are at least 10%, the
+ * last is at least 20%, and the Journal takes the rest. */
 .journal-header {
   display: grid;
   grid-template-columns: minmax(10%, auto) minmax(10%, auto) 1fr minmax(20%, auto);
@@ -1425,8 +1455,8 @@ p.norm {
   text-align: center;
 }
 
-/* an annex's label in an act as published, and the title each of its files repeats: bold, upright
- * (oj-doc-ti) */
+/* In an act as published, the label of an annex is bold and upright (oj-doc-ti). The title that
+ * each file of the annex repeats looks the same. */
 .legal-text:not(.legal-text-consolidated) .unit-annex > .title > .num,
 .legal-text:not(.legal-text-consolidated) .unit-annex > .file > .num {
   font-style: normal;
@@ -1437,10 +1467,16 @@ p.norm {
   text-align: center;
 }
 
-/* a level's title, as EUR-Lex sets it: a numbered heading on one line (1. AIRPORT SECURITY), what
- * follows it from the margin; a label (ATTACHMENT 1-A) and a heading each a line of its own. In an
- * act as published, all bold (oj-ti-grseq-1); in a consolidated version, by depth
- * (title-gr-seq-level-N): bold, italic and centred, bold, plain, a numbered heading's words bold */
+/*
+ * The title of a level, as EUR-Lex sets it:
+ * - A numbered heading is on one line. For example, 1. AIRPORT SECURITY. What follows it starts
+ *   from the margin.
+ * - A label and a heading are each on a line of their own. For example, ATTACHMENT 1-A.
+ * - In an act as published, all titles are bold (oj-ti-grseq-1).
+ * - In a consolidated version, the look follows the depth (title-gr-seq-level-N). Depth 1 is bold.
+ *   Depth 2 is italic and centred. Depth 3 is bold. Depth 4 is plain. The words of a numbered
+ *   heading are bold.
+ */
 .title-run-in > :is(.num, .heading) {
   display: inline;
 }
@@ -1464,9 +1500,14 @@ p.norm {
   font-weight: bold;
 }
 
-/* numbered items as EUR-Lex has them: a grid of label and text. A list's items, a numbered
- * paragraph outside a list (a point in a table cell), the recitals, and an annex's numbered points:
- * a point's number beside its text (1.0.1) */
+/*
+ * Numbered items, as EUR-Lex shows them. Each one is a grid of label and text. This applies to:
+ * - The items of a list.
+ * - A numbered paragraph outside a list. For example, a point in a table cell.
+ * - The recitals.
+ * - The numbered points of an annex. The number of the point is beside its text. For example,
+ *   1.0.1.
+ */
 .list > .unit,
 .unit-point,
 .unit-indent,
@@ -1477,8 +1518,9 @@ p.norm {
   column-gap: 0.5rem;
 }
 
-/* in an act as published, a table of two columns, the label's 4% of the width (wider if the label
- * is), the text against it: each list nested in an item 4% further in */
+/* In an act as published, these items are a table of two columns. The label takes 4% of the width,
+ * or more if the label is wider. The text is against the label. Thus each list in an item is 4%
+ * further in. */
 .legal-text:not(.legal-text-consolidated) :is(.list > .unit, .unit-point, .unit-indent, .unit-recital) {
   grid-template-columns: minmax(4%, auto) 1fr;
   column-gap: 0;
@@ -1498,24 +1540,25 @@ p.norm {
   grid-column: 2;
 }
 
-/* in an act as published, a point's number starts its first paragraph (1.0.1 Unless …): what
- * follows that, its lists, from the margin (oj-normal); a consolidated version keeps them beside the
- * number */
+/* In an act as published, the number of a point starts its first paragraph. For example, "1.0.1
+ * Unless …". What follows that paragraph, and its lists, start from the margin (oj-normal). A
+ * consolidated version keeps them beside the number. */
 .legal-text:not(.legal-text-consolidated) .unit-level.numbered > :not(.num, .num + *) {
   grid-column: 1 / -1;
 }
 
-/* a numbered paragraph outside a list in a consolidated version: its text beside its number, what
- * follows from the margin (a hanging indent, then p.list); in an act as published all of it beside
- * the number (the 96% column) */
+/* A numbered paragraph outside a list, in a consolidated version. Its text is beside its number.
+ * What follows starts from the margin, as a hanging indent and then p.list. In an act as published,
+ * all of it is beside the number, in the 96% column. */
 .legal-text-consolidated :is(.unit-point, .unit-indent):not(.list > *) > :not(.num, .num + *) {
   grid-column: 1 / -1;
 }
 
-/* an article's numbered paragraph, as EUR-Lex prints it: its number starts its first paragraph of
- * text, its own or its first subparagraph's, after any amendment marker (1.  For the purposes …),
- * two spaces after it in a consolidated version, three in an act as published; what follows from
- * the margin. A number followed by a list or a table keeps a line of its own */
+/* The numbered paragraph of an article, as EUR-Lex prints it. The number starts the first paragraph
+ * of text. This is its own paragraph or the first paragraph of its first subparagraph. The number
+ * comes after any amendment marker. For example, "1.  For the purposes …". Two spaces follow the
+ * number in a consolidated version, and three in an act as published. What follows starts from the
+ * margin. A number that a list or a table follows keeps a line of its own. */
 .unit-paragraph:has(> .num + p, > .num + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)) {
   margin-top: 0.5rem;
   text-align: justify;
@@ -1536,9 +1579,10 @@ p.norm {
   margin-inline-end: 0.75em;
 }
 
-/* a definition list's entry: in a consolidated version, as a list's item (its term, separator and
- * definition beside its prefix); in an act as published, prefix, term in bold, separator and the
- * definition's first paragraph one paragraph, the rest from the margin (oj-normal) */
+/* The entry of a definition list. In a consolidated version, it looks like a list item, with the
+ * term, the separator and the definition beside the prefix. In an act as published, the prefix, the
+ * term in bold, the separator and the first paragraph of the definition make one paragraph. The
+ * rest starts from the margin (oj-normal). */
 .legal-text:not(.legal-text-consolidated) .list-definition > .unit {
   display: block;
   margin-top: 0.5rem;
@@ -1553,14 +1597,14 @@ p.norm {
   font-weight: bold;
 }
 
-/* a level printed in a box (Formex BOX): as EUR-Lex draws it, a frame with 10px inside */
+/* A level printed in a box (Formex BOX). EUR-Lex draws it as a frame with 10px of space inside. */
 .unit[data-box="true"] {
   margin-top: 0.5rem;
   padding: 10px;
   border: 1px solid currentcolor;
 }
 
-/* a list's mark, which its items don't write (ListKind): the label of each */
+/* The mark of a list, which its items do not write (ListKind). It is the label of each item. */
 .list-dash > .unit-indent::before,
 .list-ndash > .unit-indent::before,
 .list-bullet > .unit-indent::before {
@@ -1579,7 +1623,8 @@ p.norm {
   content: "•";
 }
 
-/* an item an amendment put in: its mark (▼) on the line above, the list's mark beside its text */
+/* An item that an amendment put in. Its amendment mark ▼ is on the line above. The mark of the list
+ * is beside its text. */
 :is(.list-dash, .list-ndash, .list-bullet) > .unit-indent > .provenance:first-child {
   grid-row: 1;
 }
@@ -1589,8 +1634,9 @@ p.norm {
   grid-column: 1;
 }
 
-/* in a consolidated version, each paragraph of a dash list's item starts with the dash, hanging in
- * the label's column as the first's does (CONSLEG: — If not available, …) */
+/* In a consolidated version, each paragraph of an item of a dash list starts with the dash. The
+ * dash hangs in the column of the label, as the dash of the first paragraph does. CONSLEG prints it
+ * this way. For example, "— If not available, …". */
 .legal-text-consolidated .list-dash > .unit-indent > p ~ p::before {
   content: "—";
   display: inline-block;
@@ -1614,8 +1660,8 @@ p.norm {
   vertical-align: top;
 }
 
-/* an annotation's title (NOTES:): italic in an act as published (oj-ti-annotation), bold in a
- * consolidated version (title-annotation) */
+/* The title of an annotation. For example, NOTES:. It is italic in an act as published (oj-ti-
+ * annotation). It is bold in a consolidated version (title-annotation). */
 .legal-text:not(.legal-text-consolidated) .annotation > .heading {
   font-style: italic;
 }
@@ -1624,8 +1670,8 @@ p.norm {
   font-weight: bold;
 }
 
-/* a header row's cells: bold; in an act as published, centred, and a table's text smaller
- * (oj-tbl-hdr, oj-tbl-txt) */
+/* The cells of a header row are bold. In an act as published, they are centred, and the text of a
+ * table is smaller (oj-tbl-hdr, oj-tbl-txt). */
 .table th {
   font-weight: bold;
   text-align: left;
@@ -1639,7 +1685,7 @@ p.norm {
   font-size: 0.9em;
 }
 
-/* a row group's heading: a heading cell, but set as EUR-Lex sets it, as the text of the rows */
+/* The heading of a row group. It is a heading cell, but EUR-Lex sets it as the text of the rows. */
 .row-group-heading > th {
   font-weight: normal;
   text-align: left;
@@ -1705,7 +1751,8 @@ p.norm {
   font-size: 0.8em;
 }
 
-/* a table's notes, under it as EUR-Lex prints them in its last row: at the table's size, no rule */
+/* The notes of a table. They are under the table, where EUR-Lex prints them in its last row. They
+ * have the size of the table text and no rule. */
 .table-notes {
   margin-top: 0.25rem;
   border-top: none;
@@ -1726,8 +1773,9 @@ p.norm {
   margin-top: 0;
 }
 
-/* what amended a unit: ▼, in the margin beside its number (Design D-20); its act and what it did on
- * hover, a click opening the change in Compare. Read doesn't show the change itself */
+/* The ▼ mark that shows what amended a unit. It is in the margin beside the number of the unit.
+ * Its hover shows the act and what it did. A click opens the change in Compare. Read does not show
+ * the change itself. */
 .legal-text .unit {
   position: relative;
 }
@@ -1755,7 +1803,7 @@ p.norm {
   color: var(--accent);
 }
 
-/* the notes of deleted text: shown only when a reference in it is followed */
+/* The notes of deleted text. They show only when the reader follows a reference in that text. */
 .deleted-notes > .note:not(:target) {
   display: none;
 }
@@ -1770,8 +1818,8 @@ ins.changed {
   text-decoration: none;
 }
 
-/* a comparison's marks: words inserted underlined on a blue tint, words deleted struck through on a
- * red tint; they differ in lightness too, not only in hue */
+/* The marks of a comparison. Inserted words are underlined on a blue tint. Deleted words are struck
+ * through on a red tint. The two marks differ in lightness too, not only in hue. */
 ins.diff {
   color: var(--ins-ink);
   background: var(--ins-bg);
@@ -1785,8 +1833,8 @@ del.diff {
   text-decoration: line-through;
 }
 
-/* a correction's marks (Design D-31): words a corrigendum put in underlined dotted, words it took out
- * struck through, both violet, in every view */
+/* The marks of a correction, in every view. Words that a corrigendum added have a dotted
+ * underline. Words that it removed are struck through. Both are violet. */
 .corrected ins.diff,
 .corrected del.diff {
   color: var(--corr-ink);
@@ -1799,7 +1847,7 @@ del.diff {
   text-decoration-thickness: 2px;
 }
 
-/* what the marks on the page are, at the end of the controls' line (Design D-32) */
+/* The legend at the end of the line of controls. It says what the marks on the page mean. */
 .controls .legend {
   margin-left: auto;
   color: var(--muted);
@@ -1819,8 +1867,9 @@ del.diff {
   margin-top: 1.5rem;
 }
 
-/* the closing block as EUR-Lex sets an act's (oj-final, oj-signatory): indented both sides, the
- * signatory's lines centred in a box towards the right */
+/* The closing block of an act, as EUR-Lex sets it (oj-final, oj-signatory). In an act as published,
+ * the block is indented on both sides. The lines of the signatory are centred in a box towards the
+ * right. */
 .legal-text:not(.legal-text-consolidated) .conclusions {
   margin: 1.5rem 3.375rem 0;
 }
@@ -1830,7 +1879,7 @@ del.diff {
   text-align: center;
 }
 
-/* images aren't kept: a frame in their place */
+/* The viewer does not keep images. The text [image] shows in their place, in grey italic. */
 .figure::before,
 .img::before {
   content: "[image]";
@@ -1838,8 +1887,8 @@ del.diff {
   font-style: italic;
 }
 
-/* an act's page while the act is prepared (catalogue/preparing.jte): the progress panel, and what
- * is already known about the act beside it */
+/* The act's page while the act is prepared (catalogue/preparing.jte). It shows the progress panel.
+ * What is already known about the act is beside it. */
 .preparing {
   display: grid;
   grid-template-columns: minmax(0, 42.5rem) 16rem;
@@ -1965,7 +2014,8 @@ del.diff {
   font-size: 14px;
 }
 
-/* the page just prepared: a line saying what was, above what fades in */
+/* The page just after the act is prepared. A line says what the viewer prepared. The content under
+ * it fades in. */
 .receipt {
   margin: 12px 0 0;
   padding: 8px 12px;
@@ -2000,7 +2050,8 @@ del.diff {
   }
 }
 
-/* versions that appeared since the act was prepared, being prepared (catalogue/arriving.jte) */
+/* Versions that appeared after the act was prepared, while the viewer prepares them
+ * (catalogue/arriving.jte). */
 .arriving {
   margin: 12px 0 0;
   padding: 8px 14px;
@@ -2014,8 +2065,9 @@ del.diff {
   margin: 0;
 }
 
-/* why a text couldn't be made, in its place (catalogue/text/failed.jte): what happened, which
- * version, only what can help; a fault (the source's, or ours) warm, how things are grey */
+/* Why the viewer could not make a text, shown in place of the text (catalogue/text/failed.jte). It
+ * says what happened, which version, and only what can help. A fault, of the source or of the
+ * viewer, has a warm head. A reason that is not a fault has a grey head. */
 .failure {
   max-width: 50rem;
   margin: 20px 0 32px;
@@ -2098,7 +2150,8 @@ del.diff {
   font-size: 12px;
 }
 
-/* the site bar's way back to a search's results, and its small Find an act box (act pages) */
+/* On act pages, the site bar has a link back to the results of a search, and a small Find an act
+ * box. */
 nav.site .results {
   font-size: 13.5px;
   text-decoration: none;
@@ -2135,8 +2188,8 @@ form.find input {
   font-size: 13.5px;
 }
 
-/* the home page (catalogue/home.jte): the viewer's name, the Find an act box, a search's results,
- * then three notes */
+/* The home page (catalogue/home.jte). It shows the name of the viewer, the Find an act box and the
+ * results of a search. Three notes come after them. */
 .home {
   max-width: 1120px;
   margin-inline: auto;
@@ -2353,15 +2406,15 @@ form.find-act .ex a {
   margin: 0;
 }
 
-/* what the page chose, under the cards: opened without dates, an act asked for that isn't between
- * them (Design D-29, D-37) */
+/* The note under the cards that says how the page selected the versions. For example, the page
+ * opened without dates, or the reader asked for an act that is not between the two versions. */
 .compare-note {
   margin: 8px 0 0;
   color: var(--muted);
   font-size: 13px;
 }
 
-/* both ends one version (Design D-28) */
+/* Both ends of the comparison are the same version. */
 .same-version {
   margin: 24px 0;
 }
@@ -2371,7 +2424,8 @@ form.find-act .ex a {
   gap: 8px;
 }
 
-/* a part loading (Design: loading): nothing for a moment, then a bar, then the page's shape */
+/* A part of the page that loads. First it shows nothing for a moment, then a bar, then the shape of
+ * the page. */
 .loading-bar,
 .skeleton {
   opacity: 0;
@@ -2435,13 +2489,14 @@ form.find-act .ex a {
   }
 }
 
-/* six or more acts' date lines, folded (Design D-43) */
+/* The date lines of six or more acts, folded. */
 .sidenote details.dates > summary {
   color: var(--muted);
   cursor: pointer;
 }
 
-/* the act's title in English: up to its date, the rest under it (Design D-14) */
+/* The title of the act in English. The first line goes up to its date. The rest of the title is
+ * under it. */
 .mast .subject {
   margin: 4px 0 0;
   max-width: 60rem;
@@ -2450,7 +2505,7 @@ form.find-act .ex a {
   line-height: 1.4;
 }
 
-/* the act on EUR-Lex: quiet links, a small ↗ (Design D-15) */
+/* The links to the act on EUR-Lex. They are quiet, with a small ↗. */
 .ids a.quiet {
   color: var(--muted);
   text-decoration: none;

@@ -22,9 +22,10 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 /**
- * 2015/1998's 23 versions on its timeline, as Cellar has them (recorded), read on the version of 31
- * December 2021: one of four within 102 days, which merge; and compared, from 6 February 2018 to 2
- * July 2020.
+ * Tests the 23 versions of 2015/1998 on the timeline of {@link TimelineView}. The versions are
+ * Cellar's, recorded. The tests read the timeline on the version of 31 December 2021. That version
+ * is one of four within 102 days, and the four merge into one mark. The tests also read the
+ * timeline of a comparison from 6 February 2018 to 2 July 2020.
  */
 class TimelineViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
@@ -126,10 +127,11 @@ class TimelineViewTest {
         .isEqualTo(PAGES + "eng/compare?from=2017-06-07&to=2020-07-02");
     assertThat(href(comparing, "02015R1998-20211231"))
         .isEqualTo(PAGES + "eng/compare?from=2018-02-06&to=2021-12-31");
-    // between them: 1 February 2019 is nearer From (360 days) than To (517)
+    // Between them, 1 February 2019 is nearer to From (360 days) than to To (517 days).
     assertThat(href(comparing, "02015R1998-20190201"))
         .isEqualTo(PAGES + "eng/compare?from=2019-02-01&to=2020-07-02");
-    // and 1 April 2020 nearer To, merged with 16 February 2020 as it is
+    // 1 April 2020 is nearer to To. It is merged with 16 February 2020, but it still has its own
+    // link.
     assertThat(href(comparing, "02015R1998-20200401"))
         .isEqualTo(PAGES + "eng/compare?from=2018-02-06&to=2020-04-01");
     assertThat(comparing.tags()).extracting(Tag::label).containsExactly("FROM", "TO");
@@ -174,7 +176,7 @@ class TimelineViewTest {
         .filteredOn(tick -> "failed".equals(tick.state()))
         .singleElement()
         .satisfies(tick -> assertThat(tick.label()).endsWith(" · couldn't be prepared"));
-    // the others in it are ready: the mark isn't dashed
+    // The other versions in the mark are ready, so the mark is not dashed.
     assertThat(merged.state()).isNull();
   }
 

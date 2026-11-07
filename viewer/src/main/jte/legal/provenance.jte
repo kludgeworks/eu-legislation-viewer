@@ -2,5 +2,6 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<%-- what amended a unit, as EUR-Lex marks it: ▼, in the margin beside its number; its hover says what
-     and which act, a click opens the change in Compare (Design D-20, js/markers.js) --%><span class="provenance" role="link" tabindex="0" data-act="${node.attribute("amendingAct")}" data-action="${node.attribute("action")}" title="${node.attribute("action")} by ${node.attribute("amendingAct")}"></span>
+<%-- Shows what amended a unit, with the ▼ mark that EUR-Lex uses. The mark is in the margin beside
+     the unit's number. Its hover says what was done and by which act. A click opens the change in
+     Compare mode (js/markers.js). --%><span class="provenance" role="link" tabindex="0" data-act="${node.attribute("amendingAct")}" data-action="${node.attribute("action")}" title="${node.attribute("action")} by ${node.attribute("amendingAct")}"></span>

@@ -9,8 +9,8 @@ import java.util.Optional;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * A SPARQL SELECT result: the variables, and one row per solution with the value of each bound
- * variable (an unbound variable has no entry).
+ * A SPARQL SELECT result. It has the variables, and one row per solution. A row holds the value of
+ * each bound variable. An unbound variable has no entry.
  */
 public record SparqlResult(List<String> variables, List<Row> rows) {
 
@@ -22,8 +22,9 @@ public record SparqlResult(List<String> variables, List<Row> rows) {
   private static final JsonMapper JSON = JsonMapper.builder().build();
 
   /**
-   * SPARQL 1.1 Query Results JSON (head.vars, results.bindings[{var: {type, value}}]): what the
-   * endpoint answers, and what tests recorded from it.
+   * Parses SPARQL 1.1 Query Results JSON. The endpoint answers in this format, and the tests
+   * recorded its answers in it. The format is {@code head.vars} and {@code results.bindings[{var:
+   * {type, value}}]}.
    */
   public static SparqlResult parse(byte[] json) {
     var results = JSON.readTree(json);

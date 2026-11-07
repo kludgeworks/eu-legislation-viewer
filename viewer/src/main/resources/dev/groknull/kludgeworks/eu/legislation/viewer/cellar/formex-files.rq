@@ -1,9 +1,15 @@
 # SPDX-License-Identifier: MIT
-# The Formex items of one version in one language (FormexFiles): work (CELEX) → expression
-# (language) → manifestation (fmx4) → items, each with its file name (tdm:stream_name or, where the
-# technical metadata is missing, the suffix of its owl:sameAs after ".fmx4."), and when Cellar last
-# modified the manifestation, for the latest where there's more than one. FormexFiles fills in {{celex}} (32015R1998, 02015R1998-20260322) and {{language}} (an EU
-# authority code: ENG), the CELEX escaped by Sparql.fill, the language checked against its pattern.
+# Gets the Formex items of one version in one language, for FormexFiles.
+# The path is work → expression → manifestation → items. The work has a CELEX number, the
+# expression is a language, and the manifestation is fmx4.
+# Each item comes with its file name. The file name is tdm:stream_name. If the technical metadata
+# is missing, it is the suffix of owl:sameAs after ".fmx4.".
+# Each item also comes with the time Cellar last modified the manifestation. If there is more than
+# one manifestation, FormexFiles uses this time to choose the latest.
+# FormexFiles fills in these placeholders:
+# - {{celex}}: the CELEX number, for example 32015R1998 or 02015R1998-20260322. Sparql.fill
+#   escapes it.
+# - {{language}}: an EU authority code, for example ENG. FormexFiles checks it against its pattern.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
 PREFIX tdm: <http://publications.europa.eu/ontology/tdm#>

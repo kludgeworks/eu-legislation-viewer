@@ -15,18 +15,20 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An act being prepared in a language (Design: Preparing an act): every version's text in it, as it
- * stands. An act is prepared whole, up front, so its pages wait until it has settled: every text
- * built, or failed, none queued or being built. A version that appears later (Design: Revisiting)
- * is prepared on its own, arriving: the act's pages don't wait for it.
+ * An act being prepared in a language. It holds the state of the text of every version in that
+ * language.
+ *
+ * <p>An act is prepared whole, up front. Thus its pages wait until it has settled. Then every text
+ * is built or failed, and no text is queued or being built. A version that appears later is
+ * prepared on its own, as an arriving version. The pages of the act do not wait for it.
  *
  * @param act the act
  * @param started when it was first opened in the language
- * @param settledAt when its last text was built or failed; none while it is being prepared
- * @param texts each of its versions' text in the language, in date order
- * @param steps what was done, in the order it was
- * @param ahead while none of its texts is being built, about how many texts are ahead of its own in
- *     the queue (every act's)
+ * @param settledAt when its last text was built or failed, or null while it is being prepared
+ * @param texts the text of each of its versions in the language, in date order
+ * @param steps what was done, in the order it was done
+ * @param ahead about how many texts are ahead of its own texts in the queue, counting the texts of
+ *     all acts. This applies while none of its texts is being built.
  */
 @ValueObject
 public record Preparation(
@@ -44,16 +46,16 @@ public record Preparation(
   }
 
   /**
-   * Whether it is being prepared, its pages waiting: it hasn't settled, the first time or again
-   * (Try again), and some text isn't settled.
+   * Returns whether it is being prepared, so that its pages wait. This is true if it has not
+   * settled, the first time or again after Try again, and some text is not settled.
    */
   public boolean preparing() {
     return settledAt == null && !settled();
   }
 
   /**
-   * The versions that appeared once it had settled, their texts not yet settled, in date order:
-   * none while it is being prepared.
+   * Returns the versions that appeared after it had settled and whose texts are not yet settled, in
+   * date order. Returns an empty list while it is being prepared.
    */
   public List<Version> arriving() {
     if (settledAt == null) {
@@ -65,40 +67,40 @@ public record Preparation(
         .toList();
   }
 
-  /** Whether every text is built or failed. */
+  /** Returns whether every text is built or failed. */
   public boolean settled() {
     return texts.values().stream().allMatch(Text::settled);
   }
 
-  /** How long it took, once it is settled. */
+  /** Returns how long it took, once it is settled. */
   public Optional<Duration> took() {
     return Optional.ofNullable(settledAt).map(at -> Duration.between(started, at));
   }
 
-  /** How many texts are built. */
+  /** Returns how many texts are built. */
   public int ready() {
     return count(Text.Ready.class);
   }
 
-  /** How many texts failed. */
+  /** Returns how many texts failed. */
   public int failed() {
     return count(Text.Failed.class);
   }
 
   /**
-   * How many texts are being built now: a worker has them. None while the act waits its turn, its
-   * texts queued behind other acts'.
+   * Returns how many texts are being built now, that is, how many a worker has. It is 0 while the
+   * act waits its turn, with its texts queued behind the texts of other acts.
    */
   public int running() {
     return count(Text.Building.class);
   }
 
-  /** How many versions are prepared: those in the language. */
+  /** Returns how many versions are prepared. These are the versions in the language. */
   public int size() {
     return texts.size();
   }
 
-  /** The versions, in date order. */
+  /** Returns the versions, in date order. */
   public List<Version> versions() {
     return List.copyOf(texts.sequencedKeySet());
   }
@@ -108,13 +110,13 @@ public record Preparation(
   }
 
   /**
-   * A step of the preparation, as a reader is told it: one version's text started, built, queued
-   * again or failed.
+   * A step of the preparation, as a reader is told it. The text of one version started, was built,
+   * was queued again or failed.
    *
    * @param celex the version's document
    * @param attempt the attempt it was on
-   * @param took once built, how long its attempt took; none if its start isn't known
-   * @param failure once failed, why
+   * @param took how long its attempt took, once built. It is null if its start is not known.
+   * @param failure why it failed, once failed
    */
   public record Step(
       Instant at,

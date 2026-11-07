@@ -19,8 +19,8 @@ import tools.jackson.core.type.TypeReference;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * The comparisons in Postgres (comparison), with jOOQ: the differences and the closing as JSON,
- * with Jackson.
+ * Keeps the comparisons in Postgres, in the table {@code comparison}, with jOOQ. Jackson writes the
+ * differences and the closing as JSON.
  */
 @Repository
 class JooqComparisonStore implements ComparisonStore {

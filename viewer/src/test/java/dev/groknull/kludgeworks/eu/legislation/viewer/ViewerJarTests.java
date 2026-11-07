@@ -26,26 +26,35 @@ import org.junit.jupiter.api.io.TempDir;
 import org.testcontainers.postgresql.PostgreSQLContainer;
 
 /**
- * The app as one file starts: the Spring Boot jar (//viewer:jar) that SpringBootJar puts together,
- * its own layout, names and loader, which the tests on Bazel's classpath never see. As deployed
- * (profile prod), on its store, Postgres in a container, which it migrates as it starts: every
- * migration applied. That the started app works (its web server, Actuator) is
- * ViewerApplicationTests'.
+ * Tests that the app starts as one file. The file is the Spring Boot jar {@code //viewer:jar},
+ * which {@code SpringBootJar} puts together. The jar has its own layout, names and loader. The
+ * tests on Bazel's classpath never see these.
  *
- * <p>Until the release names them, the jar's pending migrations (NEXT_001__description.sql) are
- * names its Flyway refuses; so while there are any, it migrates a copy of the migrations instead,
- * each named as development runs it (PendingMigrations: V9999_001__description.sql), on the
- * classpath ahead of the jar, its own pending ones passed over. On the classpath, as Spring
- * Modulith looks for a module's migrations only there (not in a filesystem: location, which it
- * would skip without a word). A release's jar has none, and migrates its own: java -jar.
+ * <p>The jar runs as deployed, with the profile {@code prod}. Its store is Postgres in a container.
+ * The jar migrates the store when it starts, and the test checks that every migration is applied.
+ * {@code ViewerApplicationTests} tests that the started app works, with its web server and
+ * Actuator.
+ *
+ * <p>Until the release names them, the pending migrations in the jar have names that its Flyway
+ * refuses, such as {@code NEXT_001__description.sql}. While there are pending migrations, the test
+ * migrates a copy of the migrations instead. Each copy has the name that development runs it as,
+ * from {@link PendingMigrations}. An example is {@code V9999_001__description.sql}. The copies are
+ * on the classpath ahead of the jar, so the jar's own pending migrations are passed over.
+ *
+ * <p>The copies must be on the classpath, because Spring Modulith looks for the migrations of a
+ * module only there. It skips a {@code filesystem:} location without a warning. The jar of a
+ * release has no pending migrations, so the test runs it with {@code java -jar} on its own
+ * migrations.
  */
 @AutoBazelRepository
 class ViewerJarTests {
 
-  // how long the jar may take to start: generous, as the other tests start beside it
+  // How long the jar can take to start. The time is generous, because the other tests start at
+  // the same time.
   private static final Duration STARTUP = Duration.ofMinutes(2);
 
-  // the stand-ins' root, on the classpath: db/migration/{module}/V9999_001__description.sql
+  // The root of the stand-in migrations on the classpath. A stand-in is at
+  // db/migration/{module}/V9999_001__description.sql.
   @TempDir Path standIns;
 
   @Test
@@ -90,7 +99,10 @@ class ViewerJarTests {
     }
   }
 
-  /** The migrations applied, in every module's history ({@code flyway_schema_history_<module>}). */
+  /**
+   * The number of migrations applied, in the history of every module. A history is the table {@code
+   * flyway_schema_history_<module>}.
+   */
   private static int applied(PostgreSQLContainer postgres) throws Exception {
     try (var connection =
         DriverManager.getConnection(
@@ -103,7 +115,8 @@ class ViewerJarTests {
               .fetch(0, String.class);
       var applied = 0;
       for (var history : histories) {
-        // a migration file's row (not the BASELINE row a module's history starts with)
+        // Count the rows of migration files. Do not count the BASELINE row that starts the
+        // history of a module.
         applied +=
             db.fetchCount(
                 table(name(history)),
@@ -120,8 +133,8 @@ class ViewerJarTests {
   }
 
   /**
-   * Whether there are pending migrations: if so, every migration copied under standIns, in its
-   * module's directory, under the name it runs as.
+   * Whether there are pending migrations. If there are, this copies every migration under {@code
+   * standIns}, into the directory of its module, with the name it runs as.
    */
   private boolean standInsFor(Path migrations) throws IOException {
     List<Path> files;

@@ -22,25 +22,35 @@ import java.util.stream.IntStream;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An act's versions on a time axis, to scale, as its pages show them (Design: Timeline): from the
- * first day of the first version's year to the first of the year after the latest's. A version is a
- * mark at its first day, a link; versions too close to click apart (under GAP of the axis from the
- * one before) merge into one mark listing them. Each lag (Act.lags) is a band from the day the act
- * applies to the version that includes it. Reading (reading), the marks link to the versions'
- * pages; comparing (comparing), each links to the comparison with the nearer end moved to it, and
- * the range between the two is a band. While the act is prepared (preparing), the marks are each
- * version's text as it stands, links to nothing yet: grey queued, light being built, dark built,
- * dashed failed (Design: Preparing an act); once it is, those that failed stay dashed (Design: When
- * it fails), and those that appeared since show as being prepared (Design: Revisiting).
+ * The versions of an act on a time axis, to scale, as the pages of the act show them. The axis
+ * starts on the first day of the year of the first version. It ends on the first day of the year
+ * after the year of the latest version.
+ *
+ * <p>A version is a mark at its first day, and the mark is a link. Versions that are too close to
+ * click apart merge into one mark that lists them. They are too close if the distance from the
+ * version before is less than {@link #GAP} of the axis. Each lag from {@link Act#lags()} is a band.
+ * The band goes from the day the act applies to the version that includes it.
+ *
+ * <ul>
+ *   <li>When the reader reads, from {@link #reading}, the marks link to the pages of the versions.
+ *   <li>When the reader compares, from {@link #comparing}, each mark links to the comparison with
+ *       the nearer end moved to it. The range between the two ends is a band.
+ *   <li>While the act is being prepared, from {@link #preparing}, each mark shows the state of the
+ *       text of its version, and links to nothing yet. Grey is queued, light is being built, dark
+ *       is built and dashed is failed.
+ *   <li>When the act is prepared, the marks of the versions that failed stay dashed. The versions
+ *       that appeared since show as being prepared.
+ * </ul>
  *
  * @param years a mark for each new year on the axis
- * @param marks the versions, merged where too close, in date order
- * @param lags where a version's text lags the law
- * @param tags what is selected, above its mark: READING; FROM and TO
- * @param band the range compared; none when reading
- * @param current what a selected mark is, as aria-current has it: page reading, true comparing
- * @param hint what clicking a mark does
- * @param steps links to the versions either side
+ * @param marks the versions in date order. Versions that are too close are merged.
+ * @param lags where the text of a version lags the law
+ * @param tags what is selected, above its mark. This is READING, or FROM and TO.
+ * @param band the range that is compared. Null when the reader reads.
+ * @param current the value of {@code aria-current} for a selected mark: {@code page} when the
+ *     reader reads, {@code true} when the reader compares
+ * @param hint what a click on a mark does
+ * @param steps the links to the versions on each side
  */
 public record TimelineView(
     List<Year> years,
@@ -52,10 +62,16 @@ public record TimelineView(
     String hint,
     List<Step> steps) {
 
-  /** How close, as a share of the axis in percent, versions merge: 1.6, as the design draws it. */
+  /**
+   * The distance, in percent of the axis, below which versions merge into one mark. The value is
+   * 1.6.
+   */
   static final double GAP = 1.6;
 
-  /** The narrowest a lag is drawn, in percent of the axis, so a lag of days still shows. */
+  /**
+   * The smallest width of a lag, in percent of the axis. With this width, a lag of a few days still
+   * shows.
+   */
   private static final double NARROWEST = 0.5;
 
   public TimelineView {
@@ -67,9 +83,10 @@ public record TimelineView(
   }
 
   /**
-   * {@code act}'s timeline as the page of {@code reading} in {@code language} shows it: the
-   * versions in that language, or all of them if the version being read isn't in it; each version
-   * whose text isn't ready marked as it stands ({@code states}).
+   * Returns the timeline of {@code act} as the page of {@code reading} in {@code language} shows
+   * it. The timeline has the versions in that language. If the version that the reader reads is not
+   * in that language, it has all versions. Each version whose text is not ready shows its state
+   * from {@code states}.
    */
   public static TimelineView reading(
       Act act, Version reading, Language language, Map<Version, String> states) {
@@ -99,10 +116,11 @@ public record TimelineView(
   }
 
   /**
-   * {@code act}'s timeline as the comparison of {@code from} with {@code to} in {@code language}
-   * shows it, on {@code today}: the versions in that language, or all of them if either isn't in
-   * it; each version whose text isn't ready marked as it stands ({@code states}). A mark links to
-   * the comparison with the nearer end moved to it (nearer).
+   * Returns the timeline of {@code act} as the comparison of {@code from} with {@code to} in {@code
+   * language} shows it, on {@code today}. The timeline has the versions in that language. If one of
+   * the two versions is not in that language, it has all versions. Each version whose text is not
+   * ready shows its state from {@code states}. A mark links to the comparison with the nearer end
+   * moved to it, as {@link #nearer} finds it.
    */
   public static TimelineView comparing(
       Act act,
@@ -164,7 +182,10 @@ public record TimelineView(
                     : "This is already the original against the current version")));
   }
 
-  /** {@code act}'s timeline while {@code preparation} is under way: each version's text's state. */
+  /**
+   * Returns the timeline of {@code act} while {@code preparation} runs. Each mark shows the state
+   * of the text of its version.
+   */
   public static TimelineView preparing(Act act, Preparation preparation) {
     var versions = preparation.versions();
     var axis = Axis.of(versions);
@@ -196,8 +217,9 @@ public record TimelineView(
   }
 
   /**
-   * How the texts of {@code preparation}'s versions stand, as their ticks are drawn once it is
-   * prepared: those not ready, failed or being prepared (arriving).
+   * Returns the states of the texts of the versions of {@code preparation}, for the ticks after the
+   * act is prepared. Only the texts that are not ready are in the map. These are the texts that
+   * failed, or that are being prepared because they arrived later.
    */
   public static Map<Version, String> states(Preparation preparation) {
     var states = new HashMap<Version, String>();
@@ -212,7 +234,7 @@ public record TimelineView(
     return states;
   }
 
-  /** A text's state, as a tick is drawn. */
+  /** Returns the state of a text, as its tick shows it. */
   private static String state(Text text) {
     return switch (text) {
       case Text.Queued _ -> "queued";
@@ -223,9 +245,17 @@ public record TimelineView(
   }
 
   /**
-   * The comparison clicking {@code version} asks for, from {@code from} to {@code to}: the nearer
-   * end moved to it (one before From moves From, one after To moves To, one between moves the end
-   * fewer days away, From on a tie), as [from, to].
+   * Returns the comparison that a click on {@code version} asks for, when the comparison is from
+   * {@code from} to {@code to}. The click moves the nearer end to {@code version}.
+   *
+   * <ul>
+   *   <li>A version before From moves From.
+   *   <li>A version after To moves To.
+   *   <li>A version between them moves the end that is fewer days away. If the two ends are equally
+   *       far, it moves From.
+   * </ul>
+   *
+   * <p>The result is the list [from, to].
    */
   static List<Version> nearer(Version version, Version from, Version to) {
     var date = version.date();
@@ -244,7 +274,10 @@ public record TimelineView(
     return Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
   }
 
-  /** The versions in {@code language}, or all of them if any of {@code shown} isn't in it. */
+  /**
+   * Returns the versions in {@code language}. If one of {@code shown} is not in that language,
+   * returns all versions.
+   */
   private static List<Version> versions(Act act, Language language, List<Version> shown) {
     return act.timeline()
         .in(language)
@@ -291,7 +324,10 @@ public record TimelineView(
         .toList();
   }
 
-  /** The versions in runs, each version closer than GAP to the one before it in its run. */
+  /**
+   * Returns the versions in runs. In a run, each version is closer than {@link #GAP} to the version
+   * before it.
+   */
   private static List<List<Version>> groups(List<Version> versions, Axis axis) {
     var groups = new ArrayList<List<Version>>();
     for (var version : versions) {
@@ -305,7 +341,10 @@ public record TimelineView(
     return groups;
   }
 
-  /** A version's label, with what its text's {@code state} means for a reader where it has one. */
+  /**
+   * Returns the label of a version. If the text of the version has a {@code state}, the label also
+   * says what the state means for the reader.
+   */
   private static String label(Version version, @Nullable String state) {
     return switch (state) {
       case "failed" -> label(version) + " · couldn't be prepared";
@@ -314,7 +353,10 @@ public record TimelineView(
     };
   }
 
-  /** 02015R1998-20170607 · from 7 June 2017 · made by 2017/815, 2017/837. */
+  /**
+   * Returns the label of a version. For example, "02015R1998-20170607 · from 7 June 2017 · made by
+   * 2017/815, 2017/837".
+   */
   private static String label(Version version) {
     return version.celex()
         + " · from "
@@ -323,18 +365,18 @@ public record TimelineView(
         + Wording.made(version);
   }
 
-  /** 4 versions within 102 days. */
+  /** Returns the label of a merged mark. For example, "4 versions within 102 days". */
   private static String merged(List<Version> group) {
     var days = ChronoUnit.DAYS.between(group.getFirst().date(), group.getLast().date());
     return group.size() + " versions within " + days + " days";
   }
 
-  /** A CSS position on the axis: left: 12.34%. */
+  /** Returns a CSS position on the axis. For example, {@code left: 12.34%}. */
   static String left(double at) {
     return String.format(Locale.ROOT, "left: %.2f%%", at);
   }
 
-  /** The axis: the days from its start to its end. */
+  /** The time axis. It holds the days from its start to its end. */
   private record Axis(LocalDate from, LocalDate to) {
     static Axis of(List<Version> versions) {
       return new Axis(
@@ -346,12 +388,14 @@ public record TimelineView(
       return 100.0 * ChronoUnit.DAYS.between(from, date) / ChronoUnit.DAYS.between(from, to);
     }
 
-    /** Where a merged mark of {@code group} is: the middle of its versions. */
+    /**
+     * Returns the position of the merged mark of {@code group}. This is the mean of its versions.
+     */
     double at(List<Version> group) {
       return group.stream().mapToDouble(v -> at(v.date())).average().orElseThrow();
     }
 
-    /** Where {@code version}'s mark is, merged or not. */
+    /** Returns the position of the mark of {@code version}, merged or not. */
     double markAt(List<Version> versions, Version version) {
       return at(
           groups(versions, this).stream()
@@ -367,18 +411,21 @@ public record TimelineView(
     }
   }
 
-  /** A year's mark on the axis, at its first day. */
+  /** The mark of a year on the axis, at the first day of the year. */
   public record Year(int year, double at) {
     public String style() {
       return left(at);
     }
   }
 
-  /** A mark on the axis: one version, or several merged. */
+  /** A mark on the axis. It stands for one version, or for several versions merged. */
   public sealed interface Mark {
     double at();
 
-    /** Whether the version being read is this one, or among these; or an end compared. */
+    /**
+     * Returns whether this mark is selected. A mark is selected if it has the version that the
+     * reader reads, or an end of the comparison.
+     */
     boolean selected();
 
     default String style() {
@@ -387,22 +434,23 @@ public record TimelineView(
   }
 
   /**
-   * One version's mark.
+   * The mark of one version.
    *
-   * @param href where clicking it goes; none while the act is prepared
-   * @param label what it is: its CELEX, its first day, the acts that made it
-   * @param state while the act is prepared, its text's: queued, building, ready, failed; once it
-   *     is, the same where it isn't ready
+   * @param href where a click on the mark goes. Null while the act is being prepared.
+   * @param label what the version is: its CELEX, its first day and the acts that made it
+   * @param state the state of the text of the version: {@code queued}, {@code building}, {@code
+   *     ready} or {@code failed}. While the act is being prepared, every mark has a state. When the
+   *     act is prepared, only the marks of texts that are not ready have one.
    */
   public record Tick(
       double at, boolean selected, @Nullable String href, String label, @Nullable String state)
       implements Mark {}
 
   /**
-   * Versions too close to click apart, as one mark that lists them.
+   * Versions that are too close to click apart, as one mark that lists them.
    *
-   * @param versions each version's own mark, in date order
-   * @param label how many, and over how many days
+   * @param versions the mark of each version, in date order
+   * @param label how many versions there are, and over how many days
    */
   public record Merged(double at, List<Tick> versions, String label) implements Mark {
     public Merged {
@@ -415,8 +463,15 @@ public record TimelineView(
     }
 
     /**
-     * How its versions' texts stand together, while the act is prepared: being built if any is,
-     * else queued if any is, else built if any is; failed if all are, then too; none otherwise.
+     * Returns the combined state of the texts of its versions.
+     *
+     * <ul>
+     *   <li>If one of the texts is being built, returns {@code building}.
+     *   <li>Else, if one is queued, returns {@code queued}.
+     *   <li>Else, if one is ready, returns {@code ready}.
+     *   <li>Else, if all failed, returns {@code failed}.
+     *   <li>Else returns null.
+     * </ul>
      */
     public @Nullable String state() {
       for (var state : List.of("building", "queued", "ready")) {
@@ -428,7 +483,8 @@ public record TimelineView(
     }
 
     /**
-     * Whether its list opens leftwards, from a mark in the axis's right half, so it stays on it.
+     * Returns whether its list opens to the left. It does so for a mark in the right half of the
+     * axis, so that the list stays on the axis.
      */
     public boolean opensLeft() {
       return at > 50;
@@ -436,9 +492,9 @@ public record TimelineView(
   }
 
   /**
-   * A lag: where a version's text lags the law.
+   * A lag, which is where the text of a version lags the law.
    *
-   * @param width how much of the axis it spans, in percent
+   * @param width how much of the axis the lag spans, in percent
    * @param text what lags, from when and until when
    */
   public record Lag(double at, double width, String text) {
@@ -447,14 +503,14 @@ public record TimelineView(
     }
   }
 
-  /** What is selected (READING, FROM, TO), above its mark. */
+  /** The label of what is selected, above its mark. The label is READING, FROM or TO. */
   public record Tag(String label, double at) {
     public String style() {
       return left(at);
     }
   }
 
-  /** The range compared, from From's mark to To's. */
+  /** The range that is compared, from the mark of From to the mark of To. */
   public record Band(double from, double to) {
     public String style() {
       return left(from) + String.format(Locale.ROOT, "; width: %.2f%%", to - from);
@@ -462,10 +518,10 @@ public record TimelineView(
   }
 
   /**
-   * A link to versions either side.
+   * A link to the versions on one side.
    *
-   * @param href where it goes; none where there is nothing that way
-   * @param nowhere why there is nothing that way, as the greyed step's hover says (Design D-34)
+   * @param href where the link goes. Null where there is nothing on that side.
+   * @param nowhere why there is nothing on that side, as the hover of the greyed step says
    */
   public record Step(String label, @Nullable String href, String nowhere) {}
 }

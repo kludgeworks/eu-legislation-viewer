@@ -1,15 +1,25 @@
 # SPDX-License-Identifier: MIT
-# Acts whose English title has the words (CellarSearch), by Virtuoso's full-text index (bif:contains):
-# its relevance ranks them; among equals, acts amending none before those that do, those in force
-# before those not, the newer first. Regulations, directives and decisions only (a CELEX of sector 3,
-# type R, L or D: no corrigenda), a page of them; then each one's ELI, resource type, whether it is
-# in force, and the acts it amends, with their ELIs. One row per combination of values, in no order:
-# CellarSearch folds and orders them. The ranking is in a subquery, as Virtuoso answers nothing for
-# bif:contains's score beside an OPTIONAL, or under an aggregate.
-# {{words}}: the words, each quoted and joined by AND ('aviation' AND 'security'), letters and digits
-# only. {{types}}: the CELEX type letters (RLD, or one of them). {{amending}}: yes for amending acts
-# only, else no. {{limit}}, {{offset}}: the page, in digits. Escaped by Sparql.fill.
-# bif: Virtuoso's built-in functions, declared as SPARQL wants every prefix declared
+# Finds acts whose English title has the words, for CellarSearch. It uses Virtuoso's full-text
+# index, with bif:contains. It ranks the acts in this order:
+# - higher relevance first.
+# - then acts that amend no other act.
+# - then acts in force.
+# - then newer acts.
+# It finds only regulations, directives and decisions. These have a CELEX number of sector 3 and
+# type R, L or D, so corrigenda are left out.
+# It gets one page of acts. For each act it then gets the ELI, the resource type, whether the act
+# is in force, and the acts it amends with their ELIs.
+# It gives one row per combination of values, in no order. CellarSearch folds and orders the rows.
+# The ranking is in a subquery. Virtuoso answers nothing for the score of bif:contains next to an
+# OPTIONAL, or under an aggregate.
+# Placeholders, which Sparql.fill escapes:
+# - {{words}}: the words, each quoted and joined by AND, for example 'aviation' AND 'security'.
+#   The words have letters and digits only.
+# - {{types}}: the CELEX type letters, RLD or one of them.
+# - {{amending}}: yes for amending acts only, else no.
+# - {{limit}} and {{offset}}: the page, in digits.
+# bif: is the prefix of Virtuoso's built-in functions. It is declared because SPARQL requires every
+# prefix to be declared.
 PREFIX bif: <bif:>
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>

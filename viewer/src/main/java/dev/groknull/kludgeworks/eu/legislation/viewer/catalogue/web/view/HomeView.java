@@ -12,15 +12,19 @@ import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The home page (Design: Home page): the Find an act box, with what the reader typed in it, and a
- * search's results, if there was one, or why there are none.
+ * The home page. It has the "Find an act" box, with what the reader typed in it. After a search, it
+ * also has the results of the search, or the reason why there are none.
  *
- * @param words what the reader typed, as they typed it; empty before they have
- * @param results the search's results, none before a search
- * @param none why there are no results: no act has the CELEX or ELI typed; none otherwise
+ * @param words what the reader typed, as they typed it. Empty before the reader types.
+ * @param results the results of the search. Null before a search.
+ * @param none why there are no results, for example because no act has the CELEX or ELI that the
+ *     reader typed. Null otherwise.
  */
 public record HomeView(String words, @Nullable Results results, @Nullable String none) {
-  /** The kinds of act, as each act's row names it, by their resource types' codes. */
+  /**
+   * The names of the kinds of act, as the row of each act shows them, by the codes of their
+   * resource types.
+   */
   private static final Map<String, String> KINDS =
       Map.ofEntries(
           Map.entry("REG", "Regulation"),
@@ -35,25 +39,31 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
           Map.entry("DEC_DEL", "Delegated Decision"));
 
   /**
-   * Where a title's date ends: "… 2015/1998 of 5 November 2015", the rest after it. Its spaces any
-   * (\\h): Cellar's titles have no-break ones in dates, 18&nbsp;June 2012.
+   * Finds where the date in a title ends. Group 1 is the title up to its date, for example "…
+   * 2015/1998 of 5 November 2015". Group 2 is the rest of the title. The spaces can be any
+   * horizontal space ({@code \\h}), because the titles in Cellar have no-break spaces in dates. For
+   * example, 18&nbsp;June 2012.
    */
   static final Pattern DATED =
       Pattern.compile("(.+?\\hof\\h\\d{1,2}\\h\\p{Lu}\\p{Ll}+\\h\\d{4})\\h+(.+)");
 
-  /** The home page before a search. */
+  /** Returns the home page before a search. */
   public static HomeView empty() {
     return new HomeView("", null, null);
   }
 
-  /** The home page saying why {@code words}, a CELEX or ELI, has no results: {@code none}. */
+  /**
+   * Returns the home page that says why {@code words}, a CELEX or ELI, has no results. {@code none}
+   * is the reason.
+   */
   public static HomeView none(String words, String none) {
     return new HomeView(words, null, none);
   }
 
   /**
-   * The results of the search for {@code words}, of {@code kind}, its page {@code page} (from 1) of
-   * {@code size}: what Cellar {@code found}.
+   * Returns the home page with the results of the search for {@code words}, of {@code kind}. It
+   * shows page {@code page} of the results, with {@code size} results on each page. Pages start at
+   * 1. {@code found} is what Cellar found.
    */
   public static HomeView found(
       String words, Search.Kind kind, int page, int size, Search.Found found) {
@@ -102,7 +112,15 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
     return new Row(match.id().celex(), kind(match), head, rest, goes);
   }
 
-  /** What kind of act it is: an amending act, else its resource type's, else its CELEX's. */
+  /**
+   * Returns the name of the kind of act.
+   *
+   * <ul>
+   *   <li>If the act amends acts, the name is "Amending act".
+   *   <li>If not, the name comes from its resource type.
+   *   <li>If the resource type is not known, the name comes from its CELEX.
+   * </ul>
+   */
   private static String kind(Search.Match match) {
     if (!match.amends().isEmpty()) {
       return "Amending act";
@@ -112,7 +130,7 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
     if (kind != null) {
       return kind;
     }
-    // the CELEX's type letter: 32015R1998
+    // Use the type letter of the CELEX. For example, R in 32015R1998.
     return switch (match.id().celex().charAt(5)) {
       case 'R' -> "Regulation";
       case 'L' -> "Directive";
@@ -121,22 +139,25 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
     };
   }
 
-  /** An act as a row's line cites it: 2015/1998, 185/2010; its CELEX if it has no number. */
+  /**
+   * Returns the act as a line of a row cites it. For example, 2015/1998 or 185/2010. If the act has
+   * no number, returns its CELEX.
+   */
   private static String cited(ActIdentifier id) {
     return id.number().orElseGet(id::celex);
   }
 
   /**
-   * A search's results.
+   * The results of a search.
    *
    * @param words what was searched for
-   * @param filters the kinds of act it can be limited to, the one it is on
+   * @param filters the kinds of act that the search can be limited to. One of them is on.
    * @param rows the acts, the closest match first
-   * @param first the first's place among all the results, from 1
-   * @param last the last's
-   * @param previous the page before, none on the first
-   * @param next the page after, none on the last
-   * @param size how many a page has
+   * @param first the position of the first row among all the results, from 1
+   * @param last the position of the last row among all the results
+   * @param previous the address of the page before. Null on the first page.
+   * @param next the address of the page after. Null on the last page.
+   * @param size how many results a page has
    */
   public record Results(
       String words,
@@ -154,39 +175,43 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
   }
 
   /**
-   * A filter's link.
+   * The link of a filter.
    *
-   * @param label what kind of act: Regulations
-   * @param href the results of that kind
-   * @param on whether the results are
+   * @param label the kind of act. For example, "Regulations".
+   * @param href the address of the results of that kind
+   * @param on whether the results are limited to that kind
    */
   public record Filter(String label, String href, boolean on) {}
 
   /**
    * An act among the results.
    *
-   * @param celex its CELEX
-   * @param kind what kind of act it is: Implementing Regulation, Amending act
-   * @param head its title up to its date, the link
-   * @param rest the rest of its title, none for a title without a date
-   * @param goes where it goes, the first the title's link: none for an act without an ELI
+   * @param celex the CELEX of the act
+   * @param kind what kind of act it is. For example, "Implementing Regulation" or "Amending act".
+   * @param head the title of the act up to its date. This part is the link.
+   * @param rest the rest of the title. Null for a title without a date.
+   * @param goes where the row links to. The first one is the link of the title. Empty for an act
+   *     without an ELI.
    */
   public record Row(String celex, String kind, String head, @Nullable String rest, List<Go> goes) {
     public Row {
       goes = List.copyOf(goes);
     }
 
-    /** Where the title goes: the first of goes; none without. */
+    /**
+     * Returns the address of the title link, which is the first of {@code goes}. Null if there are
+     * none.
+     */
     public @Nullable String href() {
       return goes.isEmpty() ? null : goes.getFirst().href();
     }
   }
 
   /**
-   * Where a result goes.
+   * A place that a result links to.
    *
-   * @param label what is there: Compare the latest version with the one before
-   * @param href its address
+   * @param label what is there. For example, "Compare the latest version with the one before".
+   * @param href the address
    */
   public record Go(String label, String href) {}
 }

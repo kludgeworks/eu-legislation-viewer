@@ -10,18 +10,24 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * The amendment markers on a unit's own content, as the converter keeps a consolidation's
- * (legal-text provenance, changed and deleted, each naming its amending act and what it did): the
- * unit's and its blocks', not those of the units in it, each once, in the order they stand. A unit
- * with none of its own reads as the nearest unit it is in with a provenance of its own put it: an
- * act that replaced or inserted that unit whole did so with the units in it.
+ * Finds the amendment markers on the own content of a unit.
+ *
+ * <p>The converter keeps the markers of a consolidation as legal-text {@code provenance}, {@code
+ * changed} and {@code deleted}. Each names its amending act and what the act did. The own markers
+ * of a unit are those of the unit and its blocks, not those of the units in it. Each marker is
+ * returned once, in the order in which they stand.
+ *
+ * <p>If a unit has no markers of its own, it takes the provenance of the nearest enclosing unit
+ * that has a provenance of its own. An act that replaced or inserted that unit whole did so with
+ * the units in it.
  */
 final class Markers {
   private Markers() {}
 
   /**
-   * The markers on {@code unit}'s own content, in {@code units}; where it has none, the provenance
-   * of the nearest unit it is in that has one, as that unit's.
+   * Returns the markers on the own content of {@code unit}, in {@code units}. If it has none,
+   * returns the provenance of the nearest enclosing unit that has one. Those markers name that
+   * enclosing unit in {@code in}.
    */
   static List<Marker> of(Unit unit, Units units) {
     var found = new LinkedHashSet<Marker>();
@@ -44,9 +50,15 @@ final class Markers {
   }
 
   /**
-   * The markers of the act that deleted {@code unit}, of the earlier text, by the later text {@code
-   * after}: the deletion that keeps it struck; where none does, the provenance of the nearest unit
-   * it was in that an act replaced whole, without it, as that unit's; none if neither.
+   * Returns the markers of the act that deleted {@code unit} of the earlier text. The later text
+   * {@code after} tells which act it was.
+   *
+   * <ul>
+   *   <li>If a deletion keeps the unit struck, it returns the markers of that deletion.
+   *   <li>If not, it returns the provenance of the nearest enclosing unit that an act replaced
+   *       whole, without the unit. Those markers name that enclosing unit in {@code in}.
+   *   <li>If neither applies, it returns an empty list.
+   * </ul>
    */
   static List<Marker> deleted(Unit unit, Units after) {
     var struck = after.struck().get(unit.eId());

@@ -12,27 +12,38 @@ import java.util.function.Function;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The head of an act's page (Design: The act page): its title, its ELI and CELEX, each a link to
- * EUR-Lex, and the language switch. The title is the act's own, as the Official Journal printed it,
- * in the page's language, or else in English; the act's CELEX if Cellar has neither. The mode
- * switch links to the other mode: reading a version, to its comparison with the version before;
- * comparing two, to reading the later.
+ * The head of the page of an act. It shows the title of the act, its ELI and its CELEX, and the
+ * language switch. The ELI and the CELEX each link to EUR-Lex.
  *
- * @param title the act's title; in English, up to its date (Design D-14): Commission Implementing
- *     Regulation (EU) 2015/1998 of 5 November 2015
- * @param subject the rest of its English title, under it: laying down detailed measures …; none in
- *     another language, which has its whole title as the heading until it has its own rule
- * @param titleLanguage the language the title is in, as HTML's lang has it; none for a CELEX
- * @param eli the act's ELI as EUR-Lex writes it: eli/reg_impl/2015/1998/oj
- * @param eliHref the act on EUR-Lex by its ELI
- * @param celex the act's CELEX
- * @param celexHref the act on EUR-Lex by its CELEX, in the page's language
- * @param language the page's language, by its own name
- * @param languages the 24 official languages in the EU's order (Design D-16, D-35), each a link to
- *     the page in it, greyed with why where a version shown isn't in it
- * @param read the version's page, when comparing; none when reading
- * @param compare the comparison, when reading; none when comparing
- * @param preparing whether the act is being prepared: the mode switch is shown, not yet a link
+ * <p>The title is the act's own title, as the Official Journal printed it. It is in the language of
+ * the page if Cellar has it, else in English. If Cellar has neither, the title is the CELEX of the
+ * act.
+ *
+ * <p>The mode switch links to the other mode. When the reader reads a version, it links to the
+ * comparison of that version with the version before. When the reader compares two versions, it
+ * links to the page of the later version.
+ *
+ * @param title the title of the act. In English, the title stops at its date. For example,
+ *     "Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015".
+ * @param subject the rest of the English title, which shows under the title. For example, "laying
+ *     down detailed measures …". Null in other languages. Until a language has its own rule, its
+ *     whole title is the heading.
+ * @param titleLanguage the language of the title, as the HTML {@code lang} attribute has it. Null
+ *     when the title is a CELEX.
+ * @param eli the ELI of the act, as EUR-Lex writes it. For example, {@code
+ *     eli/reg_impl/2015/1998/oj}.
+ * @param eliHref the address of the act on EUR-Lex, by its ELI
+ * @param celex the CELEX of the act
+ * @param celexHref the address of the act on EUR-Lex, by its CELEX, in the language of the page
+ * @param language the language of the page, by its own name
+ * @param languages the 24 official languages, in the EU's order. Each one links to the page in that
+ *     language. A language is greyed, with the reason, where a version on the page is not in it.
+ * @param read the address of the page of the version, when the reader compares. Null when the
+ *     reader reads.
+ * @param compare the address of the comparison, when the reader reads. Null when the reader
+ *     compares.
+ * @param preparing whether the act is being prepared. If so, the mode switch shows, but it is not a
+ *     link yet.
  */
 public record MastheadView(
     String title,
@@ -53,13 +64,14 @@ public record MastheadView(
   }
 
   /**
-   * The head of {@code act}'s page of {@code version}, asked for on {@code asked}, in {@code
-   * language}: its language switch keeps the date asked.
+   * Returns the head of the page of {@code version} of {@code act}, in {@code language}. The reader
+   * asked for the version on the date {@code asked}. The language switch keeps that date.
    */
   public static MastheadView reading(Act act, Version version, LocalDate asked, Language language) {
     var eli = eli(act);
     var timeline = act.timeline().in(language).filter(each -> each.versions().contains(version));
-    // the version before; the first, with the one after (Design D-22)
+    // Compare with the version before. The first version has none, so compare it with the version
+    // after. If there is no version after, compare the version with itself.
     var compare =
         timeline
             .flatMap(each -> each.predecessor(version))
@@ -80,8 +92,9 @@ public record MastheadView(
   }
 
   /**
-   * The head of {@code act}'s comparison of {@code from} with {@code to}, in {@code language}: its
-   * language switch keeps the versions, and lists the languages {@code to} is in.
+   * Returns the head of the comparison of {@code from} with {@code to} for {@code act}, in {@code
+   * language}. The language switch keeps the two versions. It greys each language that {@code from}
+   * or {@code to} is not in.
    */
   public static MastheadView comparing(Act act, Version from, Version to, Language language) {
     var eli = eli(act);
@@ -114,7 +127,7 @@ public record MastheadView(
     var eli = eli(act);
     var titled = act.title(language).isPresent() ? language : Language.ENG;
     var full = act.title(titled).orElseGet(act.id()::celex);
-    // English only, for now: another language's titles have their own patterns
+    // Split English titles only, for now. The titles in other languages have their own patterns.
     var dated = HomeView.DATED.matcher(full);
     var split = titled == Language.ENG && dated.matches();
     return new MastheadView(
@@ -143,7 +156,10 @@ public record MastheadView(
         false);
   }
 
-  /** This head while the act is being prepared: the mode switch not yet a link. */
+  /**
+   * Returns this head for the time while the act is being prepared. The mode switch is not a link
+   * yet.
+   */
   public MastheadView whilePreparing() {
     return new MastheadView(
         title,
@@ -165,13 +181,16 @@ public record MastheadView(
   }
 
   /**
-   * A language of the switch.
+   * A language of the language switch.
    *
-   * @param name its own name
-   * @param iso its ISO 639-1 code, as HTML's lang and hreflang have it
-   * @param href the page in it; none where a version shown isn't in it
-   * @param current whether it is the page's
-   * @param missing why it is greyed: Not for this version; From isn’t in Irish; none where it isn't
+   * @param name the name of the language, in that language
+   * @param iso the ISO 639-1 code of the language, as the HTML {@code lang} and {@code hreflang}
+   *     attributes have it
+   * @param href the address of the page in this language. Null where a version on the page is not
+   *     in this language.
+   * @param current whether this is the language of the page
+   * @param missing why the language is greyed. For example, "Not for this version" or "From isn’t
+   *     in Irish". Null where it is not greyed.
    */
   public record Choice(
       String name, String iso, @Nullable String href, boolean current, @Nullable String missing) {}

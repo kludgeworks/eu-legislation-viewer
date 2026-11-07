@@ -5,11 +5,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibl
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 
 /**
- * A unit the same in both texts, as a Synopsis row shows it (Design: Synopsis): the later text's in
- * both columns, with what last made it as it is.
+ * A unit that is the same in both texts, as a row of the Synopsis shows it. Both columns show the
+ * unit from the later text. The row also shows what last made the unit as it is.
  *
- * @param unit the unit as its row cites it
+ * @param unit the unit, as its row cites it
  * @param element the unit, as the later text has it
- * @param history what last made it as it is
+ * @param history what last made the unit as it is
  */
 public record NeighbourView(Sibling unit, Element element, SidenoteView.History history) {}

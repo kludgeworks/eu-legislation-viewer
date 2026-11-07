@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The comparison module's infrastructure: the comparisons in Postgres (JooqComparisonStore), on the
- * table jOOQ generates from its migrations (jooq).
+ * The infrastructure of the comparison module. {@link JooqComparisonStore} keeps the comparisons in
+ * Postgres. It uses the table that jOOQ generates from the migrations of the module, in the {@code
+ * jooq} package.
  */
 @InfrastructureRing
 @NullMarked

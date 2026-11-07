@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView.Progress;
 import org.junit.jupiter.api.Test;
 
-/** What the preparing page says while the act waits its turn behind other acts' versions. */
+/** Tests what the preparing page says while the act waits behind the versions of other acts. */
 class PreparingViewTest {
 
   @Test

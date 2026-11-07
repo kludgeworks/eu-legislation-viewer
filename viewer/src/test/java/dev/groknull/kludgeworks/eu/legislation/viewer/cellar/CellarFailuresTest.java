@@ -20,7 +20,10 @@ import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 
-/** Which of the module's failures are Cellar not answering, as the callers see them. */
+/**
+ * Tests which failures of the module {@link CellarFailures} counts as Cellar not answering. The
+ * failures are as the callers see them.
+ */
 class CellarFailuresTest {
   static final URI ITEM =
       URI.create(
@@ -70,7 +73,7 @@ class CellarFailuresTest {
         .andRespond(withSuccess(Recorded.bytes("sparql-32009D0959.json"), RESULTS));
 
     assertThat(CellarFailures.unavailable(catchRuntimeException(() -> read(mock)))).isFalse();
-    // as many rows as the endpoint's limit: perhaps cut off
+    // The answer has as many rows as the limit of the endpoint, so it can be cut off.
     assertThat(CellarFailures.unavailable(catchRuntimeException(() -> mock.sparql().select("{}"))))
         .isFalse();
   }

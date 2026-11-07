@@ -15,14 +15,16 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A text's outline from its tree, or its skeleton (TreeStore): its units with a rank, in the order
- * a reader meets them, each under the last unit of a higher rank before it, and every container's
- * eId. Their labels and headings are read as plain text, without the notes they cite or the text an
- * amendment deleted.
+ * Makes the outline of a text from its tree, or from its skeleton in {@code TreeStore}.
+ *
+ * <p>The outline holds the units that have a rank, in the order in which a reader meets them. Each
+ * unit is under the last unit of a higher rank before it. The outline also holds the eId of every
+ * container. The labels and headings are read as plain text, without the notes that they cite and
+ * without the text that an amendment deleted.
  */
 public final class Outlines {
 
-  /** What a title's text leaves out: note references, deleted text, images, formulas. */
+  /** What the text of a title leaves out: note references, deleted text, images and formulas. */
   private static final Set<String> UNREAD = Set.of("noteRef", "deleted", "img", "m:math");
 
   private final Tree tree;
@@ -40,7 +42,10 @@ public final class Outlines {
     return new Outline(outlines.outermost.stream().map(Unit::entry).toList(), outlines.eIds);
   }
 
-  /** A container and the containers in it, in order; its children a skeleton lacks are passed. */
+  /**
+   * Walks a container and the containers in it, in order. It skips the children that are not in a
+   * skeleton.
+   */
   private void walk(Node node, @Nullable Edge to) {
     var content = (Map<?, ?>) Identity.parse(node.content());
     @SuppressWarnings("unchecked")
@@ -62,7 +67,7 @@ public final class Outlines {
     }
   }
 
-  /** A unit with a title, under the last open unit ranked above it. */
+  /** Adds a unit with a title, under the last open unit that is ranked above it. */
   private void add(Node node, Map<String, Object> attributes, int rank) {
     var unit =
         new Unit(
@@ -78,7 +83,10 @@ public final class Outlines {
     open.push(unit);
   }
 
-  /** The text of the unit's child {@code name} (its num, its heading); empty if it has none. */
+  /**
+   * Returns the text of the child {@code name} of the unit, for example its num or its heading.
+   * Returns an empty string if the unit has no such child.
+   */
   private String title(Node unit, String name) {
     for (var edge : unit.children()) {
       var child = tree.nodes().get(edge.child());
@@ -115,7 +123,7 @@ public final class Outlines {
     return (List<?>) Identity.parse(Objects.requireNonNull(tree.overlays().get(overlay)).facts());
   }
 
-  /** A unit in the outline as it is read, the units under it still being added. */
+  /** A unit in the outline while it is read. The units under it are still being added. */
   private static final class Unit {
     final String eId;
     final String kind;

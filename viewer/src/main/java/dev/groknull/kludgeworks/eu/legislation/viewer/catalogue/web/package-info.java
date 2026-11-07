@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 /**
- * The catalogue module's web side: a version's page (VersionController), by the typed facade of the
- * pages' templates (src/main/jte/catalogue); its text is transcluded from the content module's
- * fragments, by htmx.
+ * The web side of the catalogue module. It serves the pages of the catalogue, for example the page
+ * of a version, {@link VersionController}. The pages use the typed facade of their templates in
+ * {@code src/main/jte/catalogue}. htmx transcludes the text of a page from the fragments of the
+ * content module.
  */
 @InfrastructureRing
 @NullMarked

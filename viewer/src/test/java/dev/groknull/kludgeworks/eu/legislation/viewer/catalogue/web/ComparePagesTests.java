@@ -20,11 +20,12 @@ import org.springframework.context.annotation.Import;
 import org.springframework.web.client.RestClient;
 
 /**
- * A comparison's page as a reader's browser loads it, on an empty store: the page at once, both
- * texts built in the background while its changes' part polls (htmx), then its Changes view, from
- * beside the page, each difference with the act that made it. On the converter's fixtures:
- * 2015/1998's consolidations of 22 March and 1 October 2026, in English. Where its addresses lead
- * and what it refuses, and its site bar, are CompareControllerTests'.
+ * Tests a comparison page as a reader's browser loads it, on an empty store. The page comes at
+ * once. Both texts are built in the background while the changes part of the page polls with htmx.
+ * Then the Changes view loads from beside the page, with the act that made each difference. The
+ * data is the converter's fixtures: the consolidations of 2015/1998 of 22 March and 1 October 2026,
+ * in English. {@code CompareControllerTests} tests where the addresses lead, what they refuse and
+ * the site bar.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
@@ -44,7 +45,7 @@ class ComparePagesTests {
   void comparesTheVersionsOnceTheActIsPrepared() {
     var first =
         Jsoup.parse(Objects.requireNonNull(http.get().uri(PAGE).retrieve().body(String.class)));
-    // the preparing page, unless another test prepared the act first
+    // This is the preparing page, unless another test prepared the act first.
     var preparing = first.selectFirst(".preparing");
     if (preparing != null) {
       assertThat(preparing.attr("hx-get")).isEqualTo(PAGE);
@@ -76,7 +77,7 @@ class ComparePagesTests {
             "difference-5",
             "difference-6");
     var c = Objects.requireNonNull(changes.getElementById("anx/pnt_8.1.2.3/pnt_c"));
-    // an item of its list, as Read lays it out
+    // It is an item of its list, as the Read mode lays it out.
     assertThat(Objects.requireNonNull(c.parent()).classNames()).contains("list");
     assertThat(c.select("ins.diff").text())
         .isEqualTo(
@@ -91,7 +92,7 @@ class ComparePagesTests {
     assertThat(sidenote.select(".applies a").attr("href"))
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
     assertThat(sidenote.select(".before").text()).isEqualTo("Before: original act");
-    // every unit of the later text once: a difference, an opening, or folded
+    // Each unit of the later text shows once: as a difference, as an opening, or in a fold.
     assertThat(changes.select("details.fold summary").eachText())
         .containsExactly(
             "Articles 1 to 3 — no differences · show",
@@ -104,9 +105,9 @@ class ComparePagesTests {
             "Point (d) — no differences · show",
             "Point (f) — no differences · show",
             "Point 9.1.2.4 to attachment 12-P — no differences · show");
-    // the annex's, 8.1.2.3's and 9.1.2.3's
+    // The leads of the annex, 8.1.2.3 and 9.1.2.3.
     assertThat(changes.select(".lead")).hasSize(3);
-    // no pager: the outline's head follows the reader
+    // There is no pager. The head of the outline follows the reader.
     assertThat(changes.select("nav.pager")).isEmpty();
     assertThat(changes.select(".outline-follow").attr("data-total")).isEqualTo("6");
     var screening =
@@ -179,7 +180,7 @@ class ComparePagesTests {
             "difference-4",
             "difference-5",
             "difference-6");
-    // the provisions the same in both, as they read, not folded
+    // The provisions that are the same in both texts show as they read. They are not folded.
     assertThat(whole.select("details.fold")).isEmpty();
     var a = Objects.requireNonNull(whole.getElementById("anx/pnt_8.1.2.3/pnt_a"));
     assertThat(a.closest("section.difference")).isNull();
@@ -213,26 +214,28 @@ class ComparePagesTests {
     var provision = Objects.requireNonNull(first.selectFirst(".provision"));
     assertThat(provision.ownText()).isEqualTo("8.1.2.3(c)");
     assertThat(provision.select(".n").text()).isEqualTo("difference 1 of 6");
-    // the same marked unit in both, its insertions hidden in From by the page's style
+    // Both sides have the same marked unit. In From, the style of the page hides its
+    // insertions.
     assertThat(first.select(".from ins.diff").text())
         .isEqualTo(first.select(".to ins.diff").text())
         .isNotEmpty();
     assertThat(first.select(".what .made").text()).isEqualTo("Replaced by 2026/449");
     assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
-    // its neighbours, the same in both, with what last made them as they are
-    // those between the first and last of a run of more than three, folded
+    // Its neighbours are the same in both texts. Each shows what last made it as it is. In a run
+    // of more than three, the units between the first and the last are folded.
     assertThat(synopsis.select(".ledger-fold > summary").eachText())
         .containsExactly(
             "Points 1.0 to 8.1.2.1 (427 provisions) — no differences · show",
             "Points 8.1.3 to 9.1.2.1 — no differences · show",
             "Point 9.1.3 to attachment 12-O — no differences · show");
-    // a fold opens in place: its units' rows, each the same in both, with its history
+    // A fold opens in place. It shows a row for each of its units, the same in both texts, with
+    // the history of the unit.
     var fold = Objects.requireNonNull(synopsis.selectFirst(".ledger-fold"));
     var rows =
         Jsoup.parseBodyFragment(
             Objects.requireNonNull(
                 http.get().uri(URI.create(fold.attr("hx-get"))).retrieve().body(String.class)));
-    // the run's units in the text's order, an attachment's parts too
+    // The units of the run are in the order of the text. This includes the parts of an attachment.
     assertThat(rows.select(".ledger-same .provision").eachText())
         .startsWith("1.0", "1.0.1")
         .endsWith("8.1.2.1");
@@ -274,7 +277,7 @@ class ComparePagesTests {
   void saysWhyAVersionCantBeComparedInPlaceOfTheChanges() {
     prepared();
 
-    // from the original, of which the fixtures have no Formex
+    // From the original. The fixtures have no Formex of it.
     var page =
         Jsoup.parse(
             Objects.requireNonNull(
@@ -308,11 +311,12 @@ class ComparePagesTests {
     return Jsoup.parse(Objects.requireNonNull(http.get().uri(uri).retrieve().body(String.class)));
   }
 
-  /** The page, once the act is prepared: its changes loading from beside it. */
+  /** The page when the act is prepared. Its changes load from beside it. */
   private Document prepared() {
     return await()
         .atMost(Duration.ofMinutes(1))
-        // at once: Awaitility otherwise first waits an interval, even for an act prepared already
+        // Poll at once. Otherwise Awaitility first waits an interval, even when the act is already
+        // prepared.
         .pollDelay(Duration.ZERO)
         .pollInterval(Duration.ofMillis(250))
         .until(

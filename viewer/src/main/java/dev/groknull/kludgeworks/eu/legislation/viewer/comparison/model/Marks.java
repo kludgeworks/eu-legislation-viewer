@@ -15,15 +15,33 @@ import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Words marked in legal-text, as a comparison shows them: inserted in diff:ins, deleted in
- * diff:del, only ever around text (a t's words, a number), so an element keeps the parent it has in
- * the text. A block is read as tokens, in the order Wording reads it: a t's words, spaces and
- * punctuation (Wording.words), a number whole, an eol, an image, a quote's marks and MathML's
- * tokens; only a t's and a number's are marked, the others counted. Two blocks' tokens are aligned
- * by Myers's diff in linear space (java-diff-utils): its middle snakes keep a phrase inserted
- * whole, where the greedy one splits it at a word it repeats (in ... and in combination); a run of
- * spaces between changes joins them (its whitespace merger), so a phrase replaced reads as one
- * deletion and one insertion; a change of spaces alone is none.
+ * Marks words in legal-text, as a comparison shows them. Inserted words go in {@code diff:ins}, and
+ * deleted words go in {@code diff:del}. The marks are only around text, that is the words of a
+ * {@code t} or a {@code number}. Thus an element keeps the parent that it has in the text.
+ *
+ * <p>A block is read as tokens, in the order in which {@link Wording} reads it:
+ *
+ * <ul>
+ *   <li>the words, spaces and punctuation of a {@code t}, from {@link Wording#words}
+ *   <li>a whole {@code number}
+ *   <li>an {@code eol}
+ *   <li>an image
+ *   <li>the marks of a quote
+ *   <li>the MathML tokens
+ * </ul>
+ *
+ * <p>Only the tokens of a {@code t} and of a {@code number} are marked. The others are only
+ * counted.
+ *
+ * <p>The Myers diff in linear space of java-diff-utils aligns the tokens of two blocks.
+ *
+ * <ul>
+ *   <li>Its middle snakes keep an inserted phrase whole. The greedy diff splits it at a word that
+ *       it repeats. For example, "in ... and in combination".
+ *   <li>Its whitespace merger joins changes that only a run of spaces separates. Thus a replaced
+ *       phrase reads as one deletion and one insertion.
+ *   <li>A change of spaces alone is not a change.
+ * </ul>
  */
 final class Marks {
   static final String INSERTED = "diff:ins";
@@ -35,8 +53,9 @@ final class Marks {
   private Marks() {}
 
   /**
-   * {@code to}, its words that {@code from} hasn't inserted and {@code from}'s that it hasn't
-   * deleted, before the token they stood before in {@code to}.
+   * Returns {@code to}, marked against {@code from}. The words of {@code to} that {@code from} does
+   * not have are marked inserted. The words of {@code from} that {@code to} does not have are added
+   * as deleted. Each deleted run goes before the token of {@code to} that it stood before.
    */
   static Marked between(Element from, Element to) {
     var before = tokens(from);
@@ -76,7 +95,10 @@ final class Marks {
     return new Marked(mark(to, INSERTED, marked, deletedAt), inserted, deleted);
   }
 
-  /** {@code element}, every word in it marked {@code mark} (INSERTED or DELETED). */
+  /**
+   * Returns {@code element} with every word in it marked {@code mark}, which is {@link #INSERTED}
+   * or {@link #DELETED}.
+   */
   static Marked all(Element element, String mark) {
     var tokens = tokens(element);
     var marked = new boolean[tokens.size()];
@@ -95,20 +117,23 @@ final class Marks {
    */
   record Marked(Element element, int inserted, int deleted) {}
 
-  /** The tokens of {@code element}, in order. */
+  /** Returns the tokens of {@code element}, in order. */
   static List<String> tokens(Element element) {
     var tokens = new ArrayList<String>();
     walk(element, new Collect(tokens));
     return tokens;
   }
 
-  /** {@code element}, the tokens {@code marked} wrapped in {@code mark}, and deleted ones added. */
+  /**
+   * Returns {@code element} with the tokens in {@code marked} wrapped in {@code mark}, and the
+   * deleted words added.
+   */
   private static Element mark(
       Element element, String mark, boolean[] marked, Map<Integer, String> deletedAt) {
     var marking = new Mark(mark, marked, deletedAt);
     var walked = walk(element, marking);
-    // the element is the last in its place; what a walk puts before it (deleted before a quote's
-    // opening mark) is kept in it
+    // The element is the last in its place. A walk can put something before it, for example the
+    // words deleted before the opening mark of a quote. Keep these in the element.
     var shown = walked.getLast();
     var children = new ArrayList<>(walked.subList(0, walked.size() - 1));
     children.addAll(shown.children());
@@ -116,7 +141,7 @@ final class Marks {
     return copy(shown, children);
   }
 
-  /** The tokens as compared: a run of spaces as one space. */
+  /** Returns the tokens as they are compared. A run of spaces becomes one space. */
   private static List<String> said(List<String> tokens) {
     return tokens.stream().map(token -> SPACE.matcher(token).matches() ? " " : token).toList();
   }
@@ -126,15 +151,17 @@ final class Marks {
   }
 
   /**
-   * How many of {@code tokens} are words: with a letter or digit, not only spaces or punctuation.
+   * Returns how many of {@code tokens} are words. A word has a letter or a digit. Spaces and
+   * punctuation alone are not words.
    */
   private static int words(List<String> tokens) {
     return (int) tokens.stream().filter(token -> WORD.matcher(token).find()).count();
   }
 
   /**
-   * {@code element} as {@code sink} rebuilds it, its tokens visited in Wording's order: what is in
-   * its place, one element or several (a t split at its marks), or none.
+   * Returns {@code element} as {@code sink} rebuilds it. The walk visits its tokens in the order of
+   * {@link Wording}. The result is what goes in the place of the element: one element, several
+   * elements or none. For example, a {@code t} that is split at its marks gives several elements.
    */
   private static List<Element> walk(Element element, Sink sink) {
     var v = element.attributes().getOrDefault("v", "");
@@ -156,7 +183,8 @@ final class Marks {
           return List.of(element);
         }
         if (!element.text().isEmpty()) {
-          // MathML's tokens hold text of their own (mi, mo): counted, not marked
+          // The MathML tokens, for example mi and mo, hold text of their own. They are counted,
+          // not marked.
           return sink.atom(element, element.text(), false);
         }
         var before = new ArrayList<Element>();
@@ -182,17 +210,20 @@ final class Marks {
 
   /** What a walk does at each token. */
   private interface Sink {
-    /** A t, its words: what is in its place. */
+    /** Visits a {@code t} and its words. Returns what goes in its place. */
     List<Element> words(Element t, List<String> words);
 
-    /** An element that is one token: what is in its place. */
+    /** Visits an element that is one token. Returns what goes in its place. */
     List<Element> atom(Element element, String token, boolean markable);
 
-    /** A token with no element of its own (a quote's marks): what goes where it is. */
+    /**
+     * Visits a token with no element of its own, for example the marks of a quote. Returns what
+     * goes where it is.
+     */
     List<Element> other(String token);
   }
 
-  /** A walk that only lists the tokens, changing nothing. */
+  /** A walk that only lists the tokens. It changes nothing. */
   private record Collect(List<String> tokens) implements Sink {
     @Override
     public List<Element> words(Element t, List<String> words) {
@@ -216,8 +247,8 @@ final class Marks {
   }
 
   /**
-   * A walk that marks: the tokens {@code marked} wrapped in {@code mark}, and the words deleted
-   * before a token ({@code deletedAt}) in diff:del where they stood.
+   * A walk that marks. It wraps the tokens in {@code marked} in {@code mark}. It puts the words
+   * deleted before a token, from {@code deletedAt}, in {@code diff:del} where they stood.
    */
   private static final class Mark implements Sink {
     private final String mark;
@@ -273,7 +304,7 @@ final class Marks {
       return out;
     }
 
-    /** The words deleted after the last token, which go at the end of the element marked. */
+    /** Returns the words deleted after the last token. They go at the end of the marked element. */
     List<Element> deleted() {
       var deleted = deletedAt.get(next);
       return deleted == null ? List.of() : List.of(wrap(DELETED, text(null, deleted)));
@@ -297,7 +328,10 @@ final class Marks {
       run.setLength(0);
     }
 
-    /** A t saying {@code v}, with {@code like}'s other attributes (none if it has none). */
+    /**
+     * Returns a {@code t} that says {@code v}, with the other attributes of {@code like}. If {@code
+     * like} is null, it has no other attributes.
+     */
     private static Element text(@Nullable Element like, String v) {
       var attributes = new HashMap<String, String>(like == null ? Map.of() : like.attributes());
       attributes.put("v", v);

@@ -12,10 +12,13 @@ import org.testcontainers.postgresql.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
 /**
- * The app's store and Valkey in containers (Testcontainers): Postgres, as the app's datasource, and
- * Valkey, for the broadcast events, through Boot's service connections, for the app's tests and for
- * running the app locally (TestViewerApplication). Its migrations as they are in the source, those
- * not released yet (NEXT_001__description.sql) included.
+ * Runs the app's store and Valkey in containers with Testcontainers. Postgres is the app's
+ * datasource. Valkey carries the broadcast events. Boot's service connections connect the app to
+ * both. The app's tests use this configuration, and so does {@code TestViewerApplication} to run
+ * the app locally.
+ *
+ * <p>The store gets the migrations as they are in the source. This includes the migrations not
+ * released yet, such as {@code NEXT_001__description.sql}.
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class TestcontainersConfiguration {
@@ -26,15 +29,16 @@ public class TestcontainersConfiguration {
   public static final int VALKEY_PORT = 6379;
 
   /**
-   * A new container, not started. It is reusable: when Testcontainers' reuse is on
-   * (TESTCONTAINERS_REUSE_ENABLE=true, as bazel run //viewer:dev sets it), a running one is reused,
-   * with what was ingested into it; elsewhere, each run starts its own.
+   * A new Postgres container, not started. It is reusable. When Testcontainers' reuse is on, a
+   * running container is reused, with what was ingested into it. {@code bazel run //viewer:dev}
+   * turns reuse on with {@code TESTCONTAINERS_REUSE_ENABLE=true}. Elsewhere, each run starts its
+   * own container.
    */
   public static PostgreSQLContainer postgres() {
     return new PostgreSQLContainer(POSTGRES).withReuse(true);
   }
 
-  /** A new Valkey container, not started; reusable as postgres() is. */
+  /** A new Valkey container, not started. It is reusable in the same way as {@link #postgres()}. */
   public static GenericContainer<?> valkey() {
     return new GenericContainer<>(VALKEY).withExposedPorts(VALKEY_PORT).withReuse(true);
   }
@@ -46,8 +50,8 @@ public class TestcontainersConfiguration {
   }
 
   /**
-   * A pending migration renamed (by the release, or the lint) is found again in a store it already
-   * ran on: the one bazel run //viewer:dev keeps.
+   * Finds a pending migration again after the release or the lint renames it, in a store it already
+   * ran on. That store is the one that {@code bazel run //viewer:dev} keeps.
    */
   @Bean
   RenamedMigrations renamedMigrations() {
@@ -60,7 +64,10 @@ public class TestcontainersConfiguration {
     return postgres();
   }
 
-  /** Valkey, as Redis: Boot knows its connection by the image's name, so it is named for it. */
+  /**
+   * Valkey, named as Redis. Boot finds the connection by the name of the image, so the connection
+   * has the name {@code redis}.
+   */
   @Bean
   @ServiceConnection(name = "redis")
   GenericContainer<?> valkeyContainer() {

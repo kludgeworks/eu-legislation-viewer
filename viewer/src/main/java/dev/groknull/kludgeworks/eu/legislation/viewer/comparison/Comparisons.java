@@ -4,12 +4,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import java.util.Optional;
 
-/** Comparisons of stored texts: each worked out once, the first time it's asked for, and kept. */
+/**
+ * Comparisons of stored texts. Each comparison is worked out once, the first time that it is asked
+ * for, and then kept.
+ */
 public interface Comparisons {
 
   /**
-   * How the text at {@code from} became the one at {@code to}: as kept, or worked out now; none if
-   * either text isn't stored.
+   * Returns how the text at {@code from} became the text at {@code to}. The comparison is the kept
+   * one, or it is worked out now. Returns none if one of the texts is not stored.
    */
   Optional<Comparison> between(ContentHash from, ContentHash to);
 }

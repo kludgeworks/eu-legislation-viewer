@@ -1,7 +1,8 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView
 @param CompareView compare
-<%-- A comparison's From and To cards (CompareView), each with a GET form for the version on another
-     date at that end, the other end kept; and the acts between them --%>
+<%-- Shows a comparison's From and To cards, and then the acts between them. CompareView supplies
+     the data. Each card has a GET form that asks for the version on another date at that end. The
+     form keeps the other end as it is. --%>
 <section class="selection compare" aria-label="Versions compared">
   @for(var card : java.util.List.of(compare.from(), compare.to()))
     <div class="card">

@@ -24,10 +24,12 @@ import org.assertj.core.api.InstanceOfAssertFactories;
 import org.junit.jupiter.api.Test;
 
 /**
- * 2015/1998's consolidations of 1 January, 22 March and 1 October 2026 compared, as the content
- * module reads them back: 2026/449 applies from 22 March, its points on screening in-flight and
- * airport supplies from 1 October. A marked element is written out as said: its words, those
- * inserted [+so], those deleted [-so].
+ * Tests how {@link Differ} compares the consolidations of 2015/1998 of 1 January, 22 March and 1
+ * October 2026. The texts are as the content module reads them back. 2026/449 applies from 22
+ * March. Its points on screening of in-flight supplies and airport supplies apply from 1 October.
+ *
+ * <p>The tests write out a marked element as it reads. Inserted words show as [+so] and deleted
+ * words as [-so].
  */
 class DifferTest {
   static final Element JANUARY = text("02015R1998-20260101");
@@ -134,7 +136,8 @@ class DifferTest {
   @Test
   void foldsTheUnitsAfterADifferenceToTheNextAndAfterTheLast() {
     var compared = Differ.differences(MARCH, OCTOBER);
-    // 8.1.2.3's last, (g), then 8.1.2.4 and on to 9.1.2.3, and 9.1.2.4 and on to the end
+    // The folds hold the last point of 8.1.2.3, (g), then 8.1.2.4 up to 9.1.2.3. After the last
+    // difference, 9.1.2.4 up to the end is folded.
     var between = compared.differences().get(3).context();
     assertThat(between.getFirst().units())
         .extracting(Sibling::eId)
@@ -166,9 +169,10 @@ class DifferTest {
   @Test
   void showsAUnitInsertedOrDeletedOnceWholeWithItsOwnUnits() {
     var differences = Differ.differences(JANUARY, MARCH).differences();
-    // a changed point with the points in it that the same act changed, inserted or deleted: one
+    // A changed point and the points in it that the same act changed, inserted or deleted count
+    // as one difference.
     assertThat(differences).filteredOn(d -> d.kind() == Kind.INSERTED).hasSize(18);
-    // and those the later text keeps struck: deleted
+    // Points that the later text keeps struck through count as deleted.
     assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(15);
     assertThat(differences).filteredOn(d -> d.kind() == Kind.CHANGED).hasSize(34);
     assertThat(differences)
@@ -236,7 +240,7 @@ class DifferTest {
         .extracting(each -> each.attribute("eId"))
         .containsExactly("1/a", "1/b");
     assertThat(said(shown)).contains("[+New]", "[+new]", "[-old]").containsPattern("\\[-[^]]*gone");
-    // Old, old and point (b)'s words
+    // The deleted words are Old, old and the words of point (b).
     assertThat(differences.getFirst().deleted()).isGreaterThanOrEqualTo(3);
   }
 
@@ -250,7 +254,10 @@ class DifferTest {
         .hasSize(1);
   }
 
-  /** A point {@code eId}, saying {@code words}, that {@code act} replaced, with {@code units}. */
+  /**
+   * A point {@code eId} with the words {@code words} and the units {@code units}. The act {@code
+   * act} replaced it.
+   */
   private static Element point(String eId, String words, String act, Element... units) {
     var children = new ArrayList<Element>();
     children.add(
@@ -282,7 +289,8 @@ class DifferTest {
     var differences = Differ.differences(JANUARY, MARCH).differences();
     var changed = find(differences, "anx/pnt_1.2.2.3");
     assertThat(changed.kind()).isEqualTo(Kind.CHANGED);
-    // its points (a) to (c), inserted by 2026/449 as it replaced 1.2.2.3: in it, not on their own
+    // 2026/449 inserted points (a) to (c) when it replaced 1.2.2.3. They show inside 1.2.2.3, not
+    // as differences of their own.
     assertThat(descendants(changed.shown()))
         .filteredOn(each -> each.name().equals("unit"))
         .extracting(each -> each.attribute("eId"))
@@ -298,7 +306,8 @@ class DifferTest {
   void namesTheActsThatMarkAUnitInEachText() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.markers()).containsExactly(new Marker("32026R0449", "replaced", null));
-    // unmarked in March, and in no unit an act put whole: as the act was published
+    // In March the point has no marker, and it is in no unit that an act put in whole. So it is
+    // as the act was published.
     assertThat(c.earlierMarkers()).isEmpty();
   }
 
@@ -315,11 +324,6 @@ class DifferTest {
     assertThat(Differ.differences(MARCH, MARCH).differences()).isEmpty();
   }
 
-  /**
-   * The eIds of the {@code later} text's units as {@code compared} places them, in order: each
-   * difference but a deleted one, each unit opened or folded, and the units in one folded or
-   * inserted. A unit placed twice is there twice.
-   */
   @Test
   void leavesOutAPreambleOnlyOneTextHasAndSaysWhichHasNone() {
     var withPreamble = withPreamble(JANUARY);
@@ -335,7 +339,10 @@ class DifferTest {
     assertThat(both.withoutPreamble()).isNull();
   }
 
-  /** {@code text} with a preamble of one recital before what it has, as 2016's consolidation. */
+  /**
+   * {@code text} with a preamble of one recital before its content, as in the consolidation of
+   * 2016.
+   */
   private static Element withPreamble(Element text) {
     var recital =
         new Element(
@@ -350,6 +357,18 @@ class DifferTest {
     return new Element(text.name(), text.attributes(), children, "");
   }
 
+  /**
+   * The eIds of the units of the {@code later} text, in the order that {@code compared} places
+   * them. The list has:
+   *
+   * <ul>
+   *   <li>each difference, except a deleted one,
+   *   <li>each unit opened or folded,
+   *   <li>the units in a folded or inserted unit.
+   * </ul>
+   *
+   * <p>A unit placed twice is in the list twice.
+   */
   private static List<String> placed(Compared compared, Element later) {
     var units = Units.of(later);
     var placed = new ArrayList<String>();
@@ -358,7 +377,7 @@ class DifferTest {
       if (difference.kind() != Kind.DELETED) {
         placed.add(difference.eId());
       }
-      // inserted, or changed and shown whole: with its units
+      // An inserted unit, or a changed unit shown whole, is placed with its units.
       if (difference.kind() != Kind.DELETED && holdsUnits(difference.shown())) {
         placed.addAll(inside(difference.eId(), units));
       }
@@ -392,7 +411,7 @@ class DifferTest {
     return differences.stream().filter(d -> d.eId().equals(eId)).findFirst().orElseThrow();
   }
 
-  /** {@code unit}'s one child named {@code name}. */
+  /** The one child of {@code unit} with the name {@code name}. */
   private static Element only(Element unit, String name) {
     return unit.children().stream()
         .filter(child -> child.name().equals(name))
@@ -403,7 +422,7 @@ class DifferTest {
         .orElseThrow();
   }
 
-  /** What {@code element} says, its marks written out: [+inserted], [-deleted]. */
+  /** What {@code element} says, with its marks written out as [+inserted] and [-deleted]. */
   private static String said(Element element) {
     var out = new StringBuilder();
     say(element, out);

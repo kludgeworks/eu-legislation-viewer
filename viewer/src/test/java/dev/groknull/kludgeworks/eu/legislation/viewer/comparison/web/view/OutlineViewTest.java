@@ -16,9 +16,10 @@ import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 /**
- * 2015/1998's consolidations of 22 March and 1 October 2026 compared, on October's outline:
- * 2026/449's six amendments, points (c), (e) and (g) of 8.1.2.3 and of 9.1.2.3, whose sections (the
- * units with a rank they are in) are 8.1.2 and 9.1.2, Screening.
+ * Tests the comparison of the consolidations of 2015/1998 of 22 March and 1 October 2026 on the
+ * outline of the October text, made by {@link OutlineView}. The comparison has the six amendments
+ * by 2026/449: the points (c), (e) and (g) of 8.1.2.3 and of 9.1.2.3. Their sections are 8.1.2 and
+ * 9.1.2, both with the heading Screening. A section is the unit with a rank that a point is in.
  */
 class OutlineViewTest {
   static final OutlineView MARCH_TO_OCTOBER = outline("02015R1998-20260322", "02015R1998-20261001");
@@ -65,7 +66,7 @@ class OutlineViewTest {
     assertThat(general.href()).isNull();
   }
 
-  /** The branches with differences, depth first: label and count. */
+  /** The label and count of each branch with differences, depth first. */
   private static List<String> counted(List<Branch> branches) {
     return all(branches)
         .filter(branch -> branch.count() > 0)

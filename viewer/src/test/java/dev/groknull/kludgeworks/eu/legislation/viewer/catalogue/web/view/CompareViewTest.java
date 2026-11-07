@@ -18,8 +18,9 @@ import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 
 /**
- * The chips of 2015/1998's version of 31 December 2021, against the one before it, as Cellar has
- * them (recorded): 2019/103, 2019/1583 and 2020/910, and corrigendum 1 to 2019/103.
+ * Tests the chips of {@link CompareView} for the version of 31 December 2021 of 2015/1998, against
+ * the version before it. The chips are 2019/103, 2019/1583, 2020/910 and corrigendum 1 to 2019/103.
+ * The data is Cellar's answer, recorded.
  */
 class CompareViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));

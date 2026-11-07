@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 /**
- * The comparison module's application ring: comparing two stored texts (ComparisonService), a unit
- * of work, logged.
+ * The application ring of the comparison module. {@link ComparisonService} compares two stored
+ * texts. Each comparison is a unit of work, and is logged.
  */
 @ApplicationRing
 @NullMarked

@@ -16,19 +16,22 @@ import net.sf.saxon.s9api.XdmNodeKind;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A legal text as a tree of nodes, each known by its hash (Identity), bottom up:
+ * Encodes a legal text as a tree of nodes, from the bottom up. Each node is known by its hash,
+ * which {@link Identity} makes.
  *
  * <ul>
- *   <li>a block (LegalText) is a leaf: its JSON (JsonMl), with its eIds taken out (Annotations) and
- *       the notes it cites by their hashes (NoteLinks);
- *   <li>any other element is a container, {@code {"n": name, "a": {attributes}, "c": [[child,
- *       overlay]…]}}, its eId taken out too, its children by their hashes.
+ *   <li>A block, as {@link LegalText} defines it, is a leaf. The leaf is the JSON of the block,
+ *       made by {@link JsonMl}. {@link Annotations} takes its eIds out. {@link NoteLinks} cites the
+ *       notes of the block by their hashes.
+ *   <li>Any other element is a container, {@code {"n": name, "a": {attributes}, "c": [[child,
+ *       overlay]…]}}. Its eId is also taken out. Its children are cited by their hashes.
  * </ul>
  *
- * <p>What is taken out of a node is the overlay on the edge to it; the edge's overlay hash is part
- * of the container's content, so a root's hash fixes everything below it, identifiers included. The
- * tree holds each node once, however often the text has it; a node's weight is the bytes of its
- * leaves' JSON: how much reading it holds.
+ * <p>What is taken out of a node is the overlay on the edge to it. The hash of the overlay of the
+ * edge is part of the content of the container. Thus the hash of a root fixes everything below it,
+ * the identifiers too. The tree holds each node once, however often the text has it. The weight of
+ * a node is the number of bytes of the JSON of its leaves. It tells how much reading the node
+ * holds.
  */
 public final class Encoder {
 
@@ -56,7 +59,8 @@ public final class Encoder {
     var encoder = new Encoder(NoteLinks.of(root));
     var built = encoder.build(root);
     if (built.overlay() != null) {
-      throw new IllegalArgumentException("A legalText with an eId"); // a root is one hash
+      // A root is one hash, so it cannot have an overlay.
+      throw new IllegalArgumentException("A legalText with an eId");
     }
     return new Tree(built.node().hash(), encoder.nodes, encoder.overlays);
   }

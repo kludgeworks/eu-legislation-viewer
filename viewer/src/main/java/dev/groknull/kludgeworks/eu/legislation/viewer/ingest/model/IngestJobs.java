@@ -10,9 +10,11 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.dao.OptimisticLockingFailureException;
 
 /**
- * The ingest jobs: each expression's, as it stands. Which job a worker runs next is the event
- * registry's (ExpressionRequested), not theirs; starting one is theirs, so no two workers run one
- * job. Its times are the store's, so the instances' are measured by one clock.
+ * The ingest jobs, one for each expression, as they stand.
+ *
+ * <p>The event registry decides which job a worker runs next, with {@link ExpressionRequested}. The
+ * jobs decide only if a job can start, so that no two workers run one job. The times come from the
+ * store, so one clock measures the times of all the instances.
  */
 @Repository
 public interface IngestJobs {
@@ -27,30 +29,32 @@ public interface IngestJobs {
   Optional<IngestJob> find(String celex, Language language);
 
   /**
-   * Queues the expression's job again, from its first attempt, with the trace of the request that
-   * asked, if it failed in a way that trying again may help (Failure.retryable).
+   * Queues the job of the expression again, from its first attempt, with the trace of the request
+   * that asked. It does this only if the job failed and another attempt may help ({@code
+   * Failure.retryable}).
    *
    * @return whether it was queued again
    */
   boolean retry(String celex, Language language, @Nullable String traceparent);
 
   /**
-   * How many other jobs are queued or running that were queued before the first of those of {@code
-   * celexes} that is queued; none if none is.
+   * Returns how many other jobs are queued or running that were queued before the first queued job
+   * of {@code celexes}. Returns 0 if no job of {@code celexes} is queued.
    */
   int ahead(Collection<String> celexes, Language language);
 
   /**
-   * Starts the expression's job, if it is queued; or running, but started longer ago than {@code
-   * takeover} (its worker stopped, on an instance gone). A start is an attempt, and changes the
-   * job's version.
+   * Starts the job of the expression. It does this if the job is queued. It also does this if the
+   * job is running but started longer ago than {@code takeover}. In that case, its worker stopped,
+   * for example because its instance is gone. A start is an attempt, and changes the version of the
+   * job.
    *
-   * @return the job started; none if it is running or done
+   * @return the started job. None if the job is running or done.
    */
   Optional<IngestJob> start(String celex, Language language, Duration takeover);
 
   /**
-   * Writes the job's changes. One built or failed is finished now.
+   * Writes the changes of the job. If the job is built or failed, it is finished now.
    *
    * @return the job as written, with its next version
    * @throws OptimisticLockingFailureException if it was started again since it was read

@@ -10,15 +10,15 @@ import org.jspecify.annotations.Nullable;
 /**
  * How one text differs from another.
  *
- * @param from the earlier text's root
- * @param to the later text's root
- * @param differences the provisions that differ, in the later text's order, a deleted one where it
- *     stood
- * @param closing what the later text has after the last difference (all of it, where there are
- *     none), as a difference's context has it
- * @param withoutPreamble the text that has no preamble, where the other has one: the Publications
- *     Office publishes some consolidations without it, which no act did, so it isn't compared; none
- *     where both have one or neither does
+ * @param from the root of the earlier text
+ * @param to the root of the later text
+ * @param differences the provisions that differ, in the order of the later text. A deleted
+ *     provision is where it stood.
+ * @param closing what the later text has after the last difference, in the same form as the context
+ *     of a difference. If there are no differences, this is all of the later text.
+ * @param withoutPreamble the text that has no preamble, if the other text has one. The Publications
+ *     Office publishes some consolidations without the preamble, although no act removed it. Thus
+ *     the preamble is not compared. Null if both texts have one, or if neither has one.
  */
 @ValueObject
 public record Comparison(
@@ -34,9 +34,9 @@ public record Comparison(
 
   /** One of the two texts compared. */
   public enum Side {
-    /** The earlier text, From's. */
+    /** The earlier text, the text of From. */
     EARLIER,
-    /** The later text, To's. */
+    /** The later text, the text of To. */
     LATER
   }
 }

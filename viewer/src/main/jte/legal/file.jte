@@ -2,4 +2,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<%-- one of the files of an annex the OJ prints across several: under the title it repeats, its notes after it --%><div class="file">${html.children(node)}</div>
+<%-- Shows one of the files of an annex that the OJ prints across several files. The file is under
+     the title that it repeats, and its notes come after it. --%><div class="file">${html.children(node)}</div>

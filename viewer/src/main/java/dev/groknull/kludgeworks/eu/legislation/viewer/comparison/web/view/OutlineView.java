@@ -13,11 +13,17 @@ import java.util.stream.Stream;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The later text's outline as a comparison shows it (Design: Outline, sidebar): every branch
- * leading to a difference with a bar and a count, open, down to the unit in the outline the
- * difference is in, its section (8.1.2 Screening); a unit with differences in it below it listing
- * them as chips, by their nums and their parent's where that isn't it (8.1.2.3 (c)), each a jump to
- * it. A difference in no section (a recital) is in none of its branches.
+ * The outline of the later text, as the sidebar of a comparison shows it.
+ *
+ * <ul>
+ *   <li>Each branch that leads to a difference has a bar and a count, and is open. The branch goes
+ *       down to the unit in the outline that the difference is in, which is its section. For
+ *       example, "8.1.2 Screening".
+ *   <li>A unit with differences below it lists them as chips. A chip shows the num of the
+ *       difference, after the num of its parent if the parent is not the unit. For example,
+ *       "8.1.2.3 (c)". Each chip jumps to its difference.
+ *   <li>A difference in no section, for example a recital, is in none of the branches.
+ * </ul>
  *
  * @param entries the outermost units
  */
@@ -27,7 +33,10 @@ public record OutlineView(List<Branch> entries) {
     entries = List.copyOf(entries);
   }
 
-  /** {@code outline} with {@code differences} counted, numbered from 1 as the Changes view has. */
+  /**
+   * Returns {@code outline} with {@code differences} counted. The differences are numbered from 1,
+   * as in the Changes view.
+   */
   public static OutlineView of(Outline outline, List<Difference> differences) {
     var bySection = new HashMap<String, List<Numbered>>();
     for (var i = 0; i < differences.size(); i++) {
@@ -73,8 +82,9 @@ public record OutlineView(List<Branch> entries) {
   }
 
   /**
-   * What a chip says of {@code difference} in the section {@code section}: its num, after its
-   * parent's where its parent isn't the section (8.1.2.3 (c)); empty if it has no num.
+   * Returns the label of the chip of {@code difference} in the section {@code section}. The label
+   * is the num of the difference, after the num of its parent if the parent is not the section. For
+   * example, "8.1.2.3 (c)". Empty if the difference has no num.
    */
   private static String chip(Difference difference, String section) {
     var num = num(difference.shown());
@@ -85,7 +95,9 @@ public record OutlineView(List<Branch> entries) {
     return (num(lead) + " " + num).strip();
   }
 
-  /** {@code unit}'s num, as the text has it: (c); empty if it has none. */
+  /**
+   * Returns the num of {@code unit} as the text has it, for example "(c)". Empty if it has none.
+   */
   private static String num(Element unit) {
     return unit.children().stream()
         .filter(child -> child.name().equals("num"))
@@ -99,11 +111,11 @@ public record OutlineView(List<Branch> entries) {
   /**
    * A unit in the outline.
    *
-   * @param label its num and heading: 8.1.2 Screening
-   * @param count how many differences are in it; 0 if none
-   * @param bar its share of the comparison's differences, in percent
-   * @param first the number of the first difference in it, which it jumps to; 0 if none
-   * @param chips the differences in its points, each a jump
+   * @param label its num and heading, for example "8.1.2 Screening"
+   * @param count how many differences are in it. 0 if none.
+   * @param bar its share of the differences of the comparison, in percent
+   * @param first the number of the first difference in it, which it jumps to. 0 if none.
+   * @param chips the differences in its points. Each chip jumps to its difference.
    * @param entries the units below it
    */
   public record Branch(
@@ -114,22 +126,23 @@ public record OutlineView(List<Branch> entries) {
       entries = List.copyOf(entries);
     }
 
-    /** Where it jumps to: its first difference; none if it has none. */
+    /** Returns the link to its first difference. Returns null if it has no differences. */
     public @Nullable String href() {
       return first == 0 ? null : "#difference-" + first;
     }
 
-    /** Its bar's width, as its style has it. */
+    /** Returns the width of its bar, as a CSS style. */
     public String barStyle() {
       return "width: " + bar + "%";
     }
   }
 
   /**
-   * A difference in a unit's points.
+   * A difference in the points of a unit.
    *
-   * @param label the point's num, after its parent's where that isn't the unit: 8.1.2.3 (c)
-   * @param number the difference's number, which it jumps to
+   * @param label the num of the point, after the num of its parent if the parent is not the unit.
+   *     For example, "8.1.2.3 (c)".
+   * @param number the number of the difference, which the chip jumps to
    */
   public record Chip(String label, int number) {}
 }

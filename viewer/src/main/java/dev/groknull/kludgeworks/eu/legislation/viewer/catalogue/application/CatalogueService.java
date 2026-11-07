@@ -14,10 +14,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * The acts, from the store; an act not kept yet is read from Cellar and kept, so it is asked of
- * Cellar once. An act kept longer than viewer.catalogue.refresh-after is found as kept, and read
- * again in the background (ActRefreshDue), by the one opening of it that claims it. Cellar is asked
- * outside any transaction: its answer takes seconds, which no connection is held for.
+ * The acts, from the store. An act that is not stored yet is read from Cellar and stored, so Cellar
+ * is asked for it once.
+ *
+ * <p>An act stored for longer than {@code viewer.catalogue.refresh-after} is found as stored. The
+ * one opening of it that claims the refresh publishes an {@link ActRefreshDue} event. The act is
+ * then read again in the background.
+ *
+ * <p>Cellar is asked outside any transaction. Its answer takes seconds, and no connection is held
+ * for that time.
  */
 @Service
 class CatalogueService implements Acts {

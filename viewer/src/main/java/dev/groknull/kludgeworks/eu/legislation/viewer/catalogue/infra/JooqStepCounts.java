@@ -13,7 +13,10 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-/** The steps' counts in Postgres (step_count, step_act_count), with jOOQ. */
+/**
+ * Stores the step counts in the Postgres tables {@code step_count} and {@code step_act_count}, with
+ * jOOQ.
+ */
 @Repository
 class JooqStepCounts implements StepCounts {
   private final DSLContext db;

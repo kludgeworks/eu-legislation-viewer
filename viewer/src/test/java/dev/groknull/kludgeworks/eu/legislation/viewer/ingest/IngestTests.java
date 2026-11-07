@@ -27,11 +27,19 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Expressions built in the background, through the module's API: from the converter's fixtures
- * (FormexFixtures: in English 2015/1998's consolidation of 22 March 2026 and 2024/2867; in French
- * no legal act, in German Formex the converter doesn't handle, in Swedish Cellar not answering, in
- * the other languages no Formex), stored in Postgres in a container. A job is tried once
- * (viewer.ingest.max-attempts), so one that can't be built fails at once.
+ * Tests that expressions are built in the background, through the module's API, and stored in
+ * Postgres in a container. The Formex comes from the converter's fixtures, {@code FormexFixtures}:
+ *
+ * <ul>
+ *   <li>English: the consolidation of 2015/1998 of 22 March 2026, and 2024/2867.
+ *   <li>French: a document that is not a legal act.
+ *   <li>German: Formex that the converter does not handle.
+ *   <li>Swedish: Cellar does not answer.
+ *   <li>Other languages: no Formex.
+ * </ul>
+ *
+ * <p>{@code viewer.ingest.max-attempts} is 1, so a job is tried once. A job that cannot be built
+ * fails at once.
  */
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.NONE,
@@ -108,7 +116,7 @@ class IngestTests {
 
     var status = finished("32024R2867", Language.SWE);
     assertThat(status.failure()).isEqualTo(Failure.UNAVAILABLE);
-    // from its first attempt again
+    // The retry starts again from the first attempt.
     assertThat(status.attempts()).isEqualTo(1);
     assertThat(events.failed)
         .filteredOn(
@@ -130,8 +138,9 @@ class IngestTests {
   }
 
   /**
-   * A job running for longer than the takeover (its instance gone) is started again when its
-   * request is handed out again, as the event registry does once the request is stale, and built.
+   * Tests a job that runs for longer than the takeover time, because its instance is gone. The job
+   * starts again when its request is handed out again, and it is built. The event registry hands
+   * out a request again when the request is stale.
    */
   @Test
   void takesOverAJobRunningForTooLong() {

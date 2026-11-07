@@ -14,10 +14,17 @@ import javax.xml.stream.XMLStreamWriter;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A legal text rebuilt from its tree, the Encoder's steps undone: each block's notes cited as
- * before (NoteLinks), its eIds put back (Annotations), as JSON (JsonMl), then written as XML or
- * read as Elements. The notes are read in a first pass, since a reference may come before the note
- * it cites.
+ * Rebuilds a legal text from its tree. It undoes the steps of {@link Encoder}:
+ *
+ * <ol>
+ *   <li>It cites the notes of each block as before, with {@link NoteLinks}.
+ *   <li>It puts back the eIds of each block, with {@link Annotations}.
+ *   <li>It makes the JSON of the text, with {@link JsonMl}.
+ *   <li>It writes the JSON as XML, or reads it as an {@code Element}.
+ * </ol>
+ *
+ * <p>The notes are read in a first pass, because a reference may come before the note that it
+ * cites.
  */
 public final class Decoder {
   private final Tree tree;
@@ -31,7 +38,7 @@ public final class Decoder {
     JsonMl.writeDocument(decode(tree), out);
   }
 
-  /** The text's element, legalText, and everything in it. */
+  /** Returns the element of the text, {@code legalText}, with everything in it. */
   public static Element element(Tree tree) {
     return JsonMl.element(decode(tree));
   }

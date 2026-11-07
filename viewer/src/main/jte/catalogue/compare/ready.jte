@@ -1,7 +1,8 @@
 @param String changes
-<%-- Both texts built: their Changes view, loaded from beside the page (worked out in the comparison
-     module, if no one has yet). While it loads (Design: loading): nothing at first, then a bar,
-     then the page's shape --%>
+<%-- Shows the Changes view when both texts are built. htmx loads the view from the changes
+     address when this element loads. The comparison module calculates the view if no earlier
+     request did. While it loads, the reader first sees nothing, then a bar, then the page's
+     shape. --%>
 <div id="text" hx-get="${changes}" hx-trigger="load" hx-swap="innerHTML">
   <div class="loading" role="status" aria-label="Comparing the two texts">
     <div class="loading-bar"></div>

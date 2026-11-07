@@ -14,8 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.context.annotation.Import;
 
 /**
- * The whole application starts, on a web server, with its store (Postgres in a container) migrated,
- * and Actuator says it is up.
+ * Tests that the whole application starts on a web server and that Actuator says it is up. The
+ * store is Postgres in a container, and the test migrates it.
  */
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @Import(TestcontainersConfiguration.class)

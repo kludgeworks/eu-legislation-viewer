@@ -1,10 +1,13 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView.Progress
 @param Progress progress
-<%-- How the act's preparation stands (PreparingView.Progress): waiting its turn while nothing has
-     started for it (the queue is every act's), else its one step, converting each version, with the
-     versions being converted now; then the time it has taken, which the page's clock keeps
-     (clock.js), and how many versions are ready. While it waits, a light aside beside the plain line, which clock.js
-     changes every few seconds. The stream swaps it (#progress) --%>
+<%-- Shows the progress of the act's preparation. PreparingView.Progress supplies the data. While
+     nothing has started for the act, it shows that the act waits its turn. The queue is shared by
+     all acts. After the start, it shows the one step, which converts each version. It lists the
+     versions that are being converted now.
+     Under that, it shows the time the preparation has taken and how many versions are ready. The
+     page's clock (clock.js) keeps the time current. While the act waits, a light aside shows beside
+     the plain line. clock.js changes the aside every few seconds. The stream swaps this element by
+     its id (#progress). --%>
 <div id="progress" class="progress">
   @if(progress.waiting() != null)
     <div class="waiting">

@@ -7,8 +7,9 @@
 @param Element element
 @param SidenoteView.History history = null
 @param LegalRenderer html
-<%-- A difference's neighbour in the Synopsis's ledger: a unit the same in both texts, as the later
-     text has it in both columns, and, in grey, what last made it as it is and when that applies --%>
+<%-- Shows a difference's neighbour in the Synopsis ledger. The neighbour is a unit that is the
+     same in both texts. Both columns show it as the later text has it. The last column shows, in
+     grey, what last made the unit as it is and when that change applies. --%>
 <div class="ledger-row ledger-same" role="row">
   <div class="provision" role="cell">${ChangesView.cited(unit)}</div>
   <div class="from" role="cell">${html.element(element)}</div>

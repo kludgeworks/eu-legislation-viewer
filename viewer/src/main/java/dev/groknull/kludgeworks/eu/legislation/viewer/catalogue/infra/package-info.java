@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The catalogue module's infrastructure: acts read from Cellar's SPARQL endpoint (CellarActs), and
- * kept in Postgres (JooqActStore), on the tables jOOQ generates from the module's migrations
- * (jooq).
+ * The infrastructure of the catalogue module. {@link CellarActs} reads acts from Cellar's SPARQL
+ * endpoint. {@link JooqActStore} keeps them in Postgres. It uses the tables that jOOQ generates
+ * from the migrations of the module, in the {@code jooq} package.
  */
 @InfrastructureRing
 @NullMarked

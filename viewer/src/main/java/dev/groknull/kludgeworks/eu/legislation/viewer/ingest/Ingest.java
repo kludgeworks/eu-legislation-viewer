@@ -5,34 +5,35 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Collection;
 import java.util.Optional;
 
-/** Building expressions' legal texts, in the background. */
+/** Builds the legal texts of expressions in the background. */
 public interface Ingest {
 
   /**
-   * Queues the expression to be built, unless it is queued, building or done already (built, or
-   * failed: it isn't tried again by asking).
+   * Queues the expression to be built, unless it is queued, building or done already. Done means
+   * built or failed. A failed expression is not tried again when this method is called again.
    *
-   * @param celex the act's CELEX for its original text, a consolidation's for a consolidated
-   *     version
-   * @return how the expression's job stands
+   * @param celex the CELEX of the act for its original text, or the CELEX of a consolidation for a
+   *     consolidated version
+   * @return the status of the job of the expression
    */
   IngestStatus schedule(String celex, Language language);
 
   /**
-   * Queues the expression's job again, from its first attempt, if it failed in a way that trying
-   * again may help (Failure.retryable).
+   * Queues the job of the expression again, from its first attempt. It does this only if the job
+   * failed and another attempt may help ({@link Failure#retryable}).
    *
    * @return whether it was queued again
    */
   boolean retry(String celex, Language language);
 
-  /** How the expression's job stands; none if it was never scheduled. */
+  /** Returns the status of the job of the expression. Returns none if it was never scheduled. */
   Optional<IngestStatus> status(String celex, Language language);
 
   /**
-   * About how many expressions are queued or being built ahead of those of {@code celexes} queued
-   * in the language: every other one queued before the first of them. Approximate: the workers take
-   * them roughly in that order. None if none of them is queued.
+   * Returns about how many expressions are queued or building ahead of the queued expressions of
+   * {@code celexes} in the language. It counts every other expression queued before the first of
+   * them. The number is approximate, because the workers take the jobs only roughly in that order.
+   * Returns 0 if none of them is queued.
    */
   int ahead(Collection<String> celexes, Language language);
 }

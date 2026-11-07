@@ -14,28 +14,40 @@ import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The Reading card of an act's page (Design: Mode: Read): the version being read, by its CELEX, its
- * period, the acts that made it; the date asked, when it isn't the version's first day; where the
- * text lags the law (Design: Dates); a form asking for the version on another date; and its
- * comparison with the version before.
+ * The Reading card of the page of an act. The card shows:
  *
- * @param celex the version's CELEX
- * @param eurLex the version on EUR-Lex, in the page's language
- * @param period when it applied or applies: Applied 15 March 2021 to 30 December 2021
- * @param made what made it: made by 2019/103, 2019/1583 · also 1 corrigendum
- * @param published how the acts that made it were published, a line each, as made's hover lists
- *     them (Design D-21); none if none
- * @param asked the date asked, when it isn't the version's first day: The version that applied on 1
- *     June 2021
- * @param lags where its text lags the law: on the date asked, or else over its period
- * @param mayLag where its text may lag the law, an act's date of application not known, in grey
- *     (Design D-24)
- * @param action where the date form goes: the act in the page's language
- * @param on the date the form starts at: the date asked
- * @param first the earliest date the form takes: the first version's
- * @param compare its comparison with the version before in the page's language; for the first, with
- *     the version after (Design D-22); none where it is the only one
- * @param comparing what compare says: Compare with the version before; … after
+ * <ul>
+ *   <li>the version that the reader reads, by its CELEX
+ *   <li>its period
+ *   <li>the acts that made it
+ *   <li>the date that the reader asked for, when it is not the first day of the version
+ *   <li>where the text lags the law
+ *   <li>a form that asks for the version on another date
+ *   <li>the link to its comparison with the version before
+ * </ul>
+ *
+ * @param celex the CELEX of the version
+ * @param eurLex the address of the version on EUR-Lex, in the language of the page
+ * @param period when the version applied or applies. For example, "Applied 15 March 2021 to 30
+ *     December 2021".
+ * @param made what made the version. For example, "made by 2019/103, 2019/1583 · also 1
+ *     corrigendum".
+ * @param published how the acts that made the version were published, one line for each act. The
+ *     hover of {@code made} lists them the same way. Null if there are none.
+ * @param asked the date that the reader asked for, when it is not the first day of the version. For
+ *     example, "The version that applied on 1 June 2021".
+ * @param lags where the text of the version lags the law. This is on the date asked, if the reader
+ *     asked for a date. Else it is during the period of the version.
+ * @param mayLag where the text of the version may lag the law, because the date of application of
+ *     an act is not known. These show in grey.
+ * @param action the address the date form goes to: the act in the language of the page
+ * @param on the date that the form starts at. This is the date asked.
+ * @param first the earliest date that the form accepts. This is the date of the first version.
+ * @param compare the address of the comparison of the version with the version before, in the
+ *     language of the page. For the first version, the comparison is with the version after. Null
+ *     where the version is the only one.
+ * @param comparing the text of the compare link: "Compare with the version before" or "Compare with
+ *     the version after"
  */
 public record ReadingView(
     String celex,
@@ -58,9 +70,12 @@ public record ReadingView(
   }
 
   /**
-   * The card of {@code version}, the one that applies on {@code asked}, in {@code language}, on
-   * {@code today}; {@code named}, the acts its text names that the version before's doesn't, for a
-   * version the Publications Office lists none for (Design D-19).
+   * Returns the card of {@code version}, which is the version that applies on {@code asked}.
+   *
+   * @param language the language of the page
+   * @param today the date today
+   * @param named the acts that the text of the version names and the text of the version before
+   *     does not. They are used for a version for which the Publications Office lists no acts.
    */
   public static ReadingView of(
       Act act,
@@ -110,9 +125,10 @@ public record ReadingView(
   }
 
   /**
-   * The day the act as published, {@code version}, first applied, after it entered into force
-   * (Design D-17): its earliest date of application or taking effect after; none for a later
-   * version, or an act that applied on entering into force.
+   * Returns the day on which the act as published first applied, when that is after it entered into
+   * force. {@code version} is the act as published. The day is the earliest date of application or
+   * taking effect after the date of the version. Returns empty for a later version, or for an act
+   * that applied when it entered into force.
    */
   static Optional<LocalDate> applies(Act act, Version version) {
     if (version.kind() != Version.Kind.ORIGINAL) {
@@ -127,15 +143,20 @@ public record ReadingView(
   }
 
   /**
-   * Applied 15 March 2021 to 30 December 2021; Applies from 22 March 2026 · current version · may
-   * still be revised; for the act as published, from its entry into force: In force from 15
-   * November 2015 · applied 1 February 2016 to 28 February 2016.
+   * Returns the period of the version, with its label. For example:
+   *
+   * <ul>
+   *   <li>"Applied 15 March 2021 to 30 December 2021"
+   *   <li>"Applies from 22 March 2026 · current version · may still be revised"
+   *   <li>For the act as published, the period starts at its entry into force: "In force from 15
+   *       November 2015 · applied 1 February 2016 to 28 February 2016".
+   * </ul>
    */
   static String period(Act act, Version version, LocalDate today) {
     var next = act.timeline().successor(version);
     var applies = applies(act, version);
     if (applies.isPresent()) {
-      // the act as published: in force before it applied (Design D-17)
+      // The act as published was in force before it applied.
       var from = applies.get();
       var partial =
           act.dates().stream().filter(date -> from.equals(date.date())).allMatch(ActDate::partial);
@@ -171,8 +192,13 @@ public record ReadingView(
   }
 
   /**
-   * The period, labelled (Design D-18): current version, the one that applies today; next version,
-   * the one after it, dated after today; may still be revised, an interim one.
+   * Returns the period with its labels.
+   *
+   * <ul>
+   *   <li>"current version" is the version that applies today.
+   *   <li>"next version" is the version after the current one, if its date is after today.
+   *   <li>"may still be revised" is an interim version.
+   * </ul>
    */
   private static String label(Act act, Version version, LocalDate today, String period) {
     var current = act.versionOn(today);

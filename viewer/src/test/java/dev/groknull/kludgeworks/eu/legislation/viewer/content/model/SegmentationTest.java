@@ -7,7 +7,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
-/** A long text's windows: runs of its containers' children, covering them in order. */
+/**
+ * Tests the windows of a long text. A window is a run of the children of a container. The windows
+ * cover the children in order.
+ */
 class SegmentationTest {
   private static final String LONG = "06.02.1/02015R1998-20260322.xml";
 

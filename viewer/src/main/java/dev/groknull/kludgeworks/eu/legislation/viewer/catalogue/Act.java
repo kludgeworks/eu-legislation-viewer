@@ -20,24 +20,26 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An act: a work in Cellar, identified by its CELEX and its ELI, with its timeline.
+ * An act. It is a work in Cellar, identified by its CELEX and its ELI, and it has a timeline.
  *
  * @param id the act's CELEX
- * @param eli its ELI; older acts may have none
- * @param type its resource type (REG_IMPL, DIR, DEC)
- * @param titles its title in each official language Cellar has it in, as the Official Journal
+ * @param eli its ELI. Older acts may have none.
+ * @param type its resource type, for example REG_IMPL, DIR or DEC
+ * @param titles its title in each official language that Cellar has it in, as the Official Journal
  *     printed it
  * @param dateOfDocument the date it was adopted or signed
  * @param inForce whether it is in force, as Cellar says
- * @param endOfValidity the day it ceases to apply; none while it is open-ended
+ * @param endOfValidity the day it ceases to apply, or null while it is open-ended
  * @param timeline its versions
- * @param dates its own dates: when it enters into force, applies or takes effect
- * @param amendingDates the own dates of each act its versions integrate, by the act; an act Cellar
- *     has none for is left out
- * @param amendments what other acts did to its provisions, one location each, as Cellar annotates
- *     them
- * @param publications how it and each act its versions integrate were published: its ELI, titles
- *     and Official Journal reference; an act Cellar has nothing for is left out
+ * @param dates its own dates. These are the dates when it enters into force, applies or takes
+ *     effect.
+ * @param amendingDates the own dates of each act that its versions integrate, by act. An act that
+ *     Cellar has no dates for is left out.
+ * @param amendments what other acts did to its provisions, as Cellar annotates them. Each amendment
+ *     has one location.
+ * @param publications how this act and each act that its versions integrate were published. Each
+ *     publication has the ELI, the titles and the Official Journal reference. An act that Cellar
+ *     has nothing for is left out.
  */
 @AggregateRoot
 public record Act(
@@ -65,25 +67,31 @@ public record Act(
     amendments = List.copyOf(amendments);
   }
 
-  /** Its title in {@code language}; none if Cellar has none in it. */
+  /** Returns its title in {@code language}, or empty if Cellar has no title in that language. */
   public Optional<String> title(Language language) {
     return Optional.ofNullable(titles.get(language));
   }
 
-  /** The own dates of this act or of an act its versions integrate; none for another act. */
+  /**
+   * Returns the own dates of {@code act}, if it is this act or an act that its versions integrate.
+   * For any other act, returns an empty list.
+   */
   public List<ActDate> datesOf(ActIdentifier act) {
     return act.equals(id) ? dates : amendingDates.getOrDefault(act, List.of());
   }
 
   /**
-   * How {@code act}, this one or one its versions integrate, was published; none if Cellar doesn't
-   * say.
+   * Returns how {@code act} was published. The act is this act or an act that its versions
+   * integrate. Returns empty if Cellar does not say.
    */
   public Optional<Publication> publication(ActIdentifier act) {
     return Optional.ofNullable(publications.get(act));
   }
 
-  /** The acts the versions after {@code from}, up to and including {@code to}, integrate. */
+  /**
+   * Returns the acts that the versions after {@code from}, up to and including {@code to},
+   * integrate.
+   */
   public Set<ActIdentifier> integratedBetween(Version from, Version to) {
     var between = new HashSet<ActIdentifier>();
     for (var version : timeline.versions()) {
@@ -95,12 +103,20 @@ public record Act(
   }
 
   /**
-   * Cellar's amendments of its provisions by the acts integrated between {@code from} and {@code
-   * to} that change the text in {@code language}, but for those that apply only after {@code to},
-   * at the units of their texts: an addition or a replacement at the later text's ({@code later}:
-   * its units' eIds, in document order), a deletion or a repeal at the earlier's ({@code earlier}).
-   * Those that apply before {@code from} are kept: a version can lag the law by weeks, so its day
-   * doesn't say what it already has (Research: where a provision's date comes from).
+   * Returns Cellar's amendments of this act's provisions, placed at the units of two texts.
+   *
+   * <p>An amendment is included if its act is integrated between {@code from} and {@code to}, and
+   * if it changes the text in {@code language}. An amendment that applies only after {@code to} is
+   * left out. An amendment that applies before {@code from} is kept. A version can lag the law by
+   * weeks, so its date does not tell what the version already contains.
+   *
+   * <ul>
+   *   <li>An addition or a replacement is placed at a unit of the later text. {@code later} holds
+   *       the eIds of its units, in document order.
+   *   <li>A deletion or a repeal is placed at a unit of the earlier text. {@code earlier} holds the
+   *       eIds of its units, in document order.
+   *   <li>An amendment whose location is in neither text is counted as unplaced.
+   * </ul>
    */
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
@@ -109,7 +125,8 @@ public record Act(
     var unplaced = 0;
     for (var amendment : amendments) {
       var applies = amendment.from();
-      // one that applies only after the later version isn't in its text (a later stage of the act)
+      // An amendment that applies only after the later version is not in its text. It is a later
+      // stage of the act.
       if (!between.contains(amendment.act())
           || !amendment.changes(language)
           || (applies != null && applies.isAfter(to.date()))) {
@@ -127,18 +144,26 @@ public record Act(
     return new Amended(byUnit, unplaced);
   }
 
-  /** The version that applies on {@code date}; none before the act's text first applies. */
+  /**
+   * Returns the version that applies on {@code date}. Returns empty before the text of the act
+   * first applies.
+   */
   public Optional<Version> versionOn(LocalDate date) {
     return timeline.applicableOn(date);
   }
 
   /**
-   * The acts that already apply while {@code version} does, but that only a later version includes,
-   * so that its text isn't yet the law: 2017/815 applies from 1 June 2017, while 2015/1998's
-   * version of 29 February 2016 does, and is first included in the version of 7 June. An act
-   * applies from its earliest date of application or taking effect, in whole or in part (when all
-   * are in part, the parts are the whole act), or from its entry into force if it has neither; one
-   * whose date Cellar doesn't know is left out. In the order the later versions include them.
+   * Returns the acts that already apply while {@code version} applies, but that only a later
+   * version includes. Thus the text of {@code version} is not yet the law.
+   *
+   * <p>For example, 2017/815 applies from 1 June 2017. On that day the version of 2015/1998 of 29
+   * February 2016 applies. The version of 7 June is the first to include 2017/815.
+   *
+   * <p>An act applies from its earliest date of application or of taking effect, in whole or in
+   * part. Dates in part count, because if all the dates are in part, the parts make the whole act.
+   * An act that has neither kind of date applies from its entry into force. An act whose date
+   * Cellar does not know is left out. The acts are in the order in which the later versions include
+   * them.
    */
   public List<Unconsolidated> notYetConsolidated(Version version) {
     var until = timeline.successor(version).map(Version::date);
@@ -152,9 +177,9 @@ public record Act(
   }
 
   /**
-   * The acts that apply before the first version that includes them: each lags the law from the day
-   * it applies (as notYetConsolidated has it) to that version's. In the order the versions include
-   * them.
+   * Returns the acts that apply before the first version that includes them. Each act lags the law
+   * from the day it applies, as {@link #notYetConsolidated} finds it, to the date of that version.
+   * The acts are in the order in which the versions include them.
    */
   public List<Unconsolidated> lags() {
     var included = new HashSet<ActIdentifier>();
@@ -172,11 +197,15 @@ public record Act(
   }
 
   /**
-   * The acts in force while {@code version} applies whose date of application Cellar doesn't know
-   * (its placeholder, or none with a day), that only a later version includes: its text may lag the
-   * law, from when each entered into force (Design D-24): 2019/413, in force from 16 March 2019,
-   * applies from a date its Article 3 sets, and the version of 15 March 2021 first includes it. In
-   * the order the later versions include them.
+   * Returns the acts in force while {@code version} applies, whose date of application Cellar does
+   * not know, and that only a later version includes. Cellar does not know the date if it has only
+   * a placeholder, or no date with a day. The text of {@code version} may lag the law from the day
+   * each of these acts entered into force.
+   *
+   * <p>For example, 2019/413 is in force from 16 March 2019. It applies from a date that its
+   * Article 3 sets. The version of 15 March 2021 is the first to include it.
+   *
+   * <p>The acts are in the order in which the later versions include them.
    */
   public List<Uncertain> mayLag(Version version) {
     var until = timeline.successor(version).map(Version::date);
@@ -218,12 +247,12 @@ public record Act(
   }
 
   /**
-   * An act in force before a version of this one includes it, whose date of application Cellar
-   * doesn't know: the text may lag the law.
+   * An act that is in force before a version of this act includes it, and whose date of application
+   * Cellar does not know. The text may lag the law.
    *
    * @param act the act
    * @param inForce the day it entered into force
-   * @param clause what sets the date it applies from: Article 3
+   * @param clause what sets the date it applies from, for example Article 3
    * @param includedIn the first version that includes it
    */
   @ValueObject
@@ -240,7 +269,10 @@ public record Act(
   @ValueObject
   public record Unconsolidated(ActIdentifier act, ActDate appliesFrom, Version includedIn) {
 
-    /** The day it applies from: appliesFrom's date, which an act it lags by always has. */
+    /**
+     * Returns the day it applies from. This is the date of {@link #appliesFrom}, which an act that
+     * a version lags always has.
+     */
     public LocalDate from() {
       return Objects.requireNonNull(appliesFrom.date());
     }

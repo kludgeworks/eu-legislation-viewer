@@ -26,13 +26,20 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
- * An act's preparation in a language, pushed to the pages waiting on it (Design: URLs and htmx,
- * Preparing): /eli/reg_impl/2015/1998/eng/prepare/events, server-sent events. Each message is how
- * it stands, the parts of the page that change (its timeline, its progress, its steps), each
- * swapped in by its id: first as it stands on connecting (or reconnecting), then again whenever it
- * changes (PreparationChanged, broadcast from every instance once committed); once every version is
- * settled, the event done, and the stream ends. A stream also ends after a while, and the page
- * connects again.
+ * Pushes the preparation of an act in a language to the pages that wait for it, as server-sent
+ * events. For example, {@code /eli/reg_impl/2015/1998/eng/prepare/events}.
+ *
+ * <p>Each message has the current state of the preparation. It contains the parts of the page that
+ * change: the timeline, the progress and the steps. The page swaps in each part by its id.
+ *
+ * <ul>
+ *   <li>The stream sends a message when the page connects or connects again.
+ *   <li>It sends a message again each time the preparation changes. Each instance gets a {@link
+ *       PreparationChanged} broadcast after the change is committed.
+ *   <li>When every version is settled, the stream sends the event {@code done} and ends.
+ * </ul>
+ *
+ * <p>A stream also ends after a while, and then the page connects again.
  */
 @Controller
 class PreparationController {
@@ -54,7 +61,7 @@ class PreparationController {
     this.clock = clock;
   }
 
-  /** The stream of the act's preparation in the language. */
+  /** Returns the stream of the preparation of the act in the language. */
   @GetMapping(
       path = "/eli/{type}/{year}/{number}/{language}/prepare/events",
       produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -77,7 +84,10 @@ class PreparationController {
     return stream.emitter();
   }
 
-  /** An act's preparation changed: its streams in the language, sent how it stands now. */
+  /**
+   * Sends the current state of a preparation that changed. It sends to each stream of that act in
+   * that language.
+   */
   @EventListener
   void on(Broadcast<PreparationChanged> broadcast) {
     var changed = broadcast.event();
@@ -89,8 +99,9 @@ class PreparationController {
   }
 
   /**
-   * How {@code stream}'s act stands, or done if it is settled. The act read anew: it may have
-   * versions it didn't have when the stream began.
+   * Sends the current state of the act of {@code stream}, or {@code done} if the act is settled. It
+   * reads the act again, because the act may have versions that it did not have when the stream
+   * began.
    */
   private void send(Stream stream) {
     var act = acts.find(stream.act()).orElseThrow();
@@ -114,7 +125,7 @@ class PreparationController {
                             .render()));
       }
     } catch (IOException | IllegalStateException e) {
-      // the page went: its stream is done with
+      // The page closed, so its stream is no longer necessary.
       LOG.debug("A preparation's stream closed: {}", e.toString());
       streams.remove(stream);
     }

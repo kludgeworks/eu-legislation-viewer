@@ -1,8 +1,10 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView
 @param ReadingView reading
-<%-- The Reading card (ReadingView): the version, its period and what made it, the date asked, where
-     its text lags the law (amber), or may (grey), a GET form for the version on another date, and its comparison
-     with the version before (the first, with the one after) --%>
+<%-- Shows the Reading card. ReadingView supplies the data. The card shows the version, its period,
+     what made it and the date asked. It warns in amber where the text lags the law, and in grey
+     where it may lag. A GET form asks for the version on another date. A link goes to the
+     comparison with the version before. For the first version, the link goes to the comparison
+     with the version after. --%>
 <section class="selection" aria-label="Reading">
   <div class="card">
     <span class="card-kind">Reading</span>

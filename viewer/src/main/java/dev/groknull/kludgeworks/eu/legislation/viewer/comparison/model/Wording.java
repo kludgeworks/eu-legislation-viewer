@@ -10,22 +10,31 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
- * What a block of a legal text says, as a comparison reads it: its text, numbers and quotation
- * marks, its line breaks as spaces, its spacing as single spaces (a non-breaking one too). Left out
- * is what marks the text rather than says it, and differs between versions whose wording is the
- * same: the amending acts' provenance, footnote references (renumbered as notes come and go), and
- * what a consolidation keeps of a deletion. EUR-Lex's markers of a change (changed) keep their
- * text.
+ * What a block of a legal text says, as a comparison reads it.
+ *
+ * <p>The wording holds the text, numbers and quotation marks of the block. Line breaks become
+ * spaces. Each run of spacing, a non-breaking space too, becomes a single space.
+ *
+ * <p>The wording leaves out what marks the text but does not say it. These marks can differ between
+ * versions with the same wording:
+ *
+ * <ul>
+ *   <li>the provenance of the amending acts
+ *   <li>footnote references, which are renumbered when notes come and go
+ *   <li>what a consolidation keeps of a deletion
+ * </ul>
+ *
+ * <p>The EUR-Lex markers of a change, {@code changed}, keep their text.
  */
 public final class Wording {
-  /** What says nothing, for a comparison. */
+  /** The elements that say nothing, for a comparison. */
   static final Set<String> MARKS = Set.of("provenance", "noteRef", "deleted");
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
 
   private Wording() {}
 
-  /** What {@code block} says: The following means … shall be applied:. */
+  /** Returns what {@code block} says. For example, "The following means … shall be applied:". */
   public static String of(Element block) {
     var out = new StringBuilder();
     append(block, out);
@@ -33,8 +42,8 @@ public final class Wording {
   }
 
   /**
-   * Its words, spaces and punctuation, in order, as Unicode segments them (the JDK's word
-   * BreakIterator): what a comparison of two wordings aligns.
+   * Returns the words, spaces and punctuation of a wording, in order. Unicode segments them, with
+   * the word {@link BreakIterator} of the JDK. A comparison of two wordings aligns these.
    */
   public static List<String> words(String wording) {
     var words = new ArrayList<String>();
@@ -62,7 +71,7 @@ public final class Wording {
         if (MARKS.contains(element.name())) {
           return;
         }
-        // MathML's tokens hold text of their own (mi, mo)
+        // The MathML tokens, for example mi and mo, hold text of their own.
         out.append(element.text());
         element.children().forEach(child -> append(child, out));
       }

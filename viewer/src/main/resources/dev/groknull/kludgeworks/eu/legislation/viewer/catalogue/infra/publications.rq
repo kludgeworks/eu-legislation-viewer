@@ -1,10 +1,16 @@
 # SPDX-License-Identifier: MIT
-# How the acts an act's consolidations integrate were published (CellarPublications): each one's
-# ELI, its title in each language, and its place in the Official Journal: the collection (OJ-L), and
-# either its number in the act-by-act Journal (2026/449, from October 2023) or the issue it is in
-# (L 21), each with the day it was published (an act's two, where it has both). Corrigenda too. Only consolidations with a CELEX, as in
-# dates.rq. One row per act and title; the Journal's details optional, a corrigendum's often missing.
-# {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.
+# Gets how the acts that the consolidations of an act integrate were published, for
+# CellarPublications. This includes corrigenda. For each act it gets:
+# - the ELI.
+# - the title in each language.
+# - the place in the Official Journal. This is the collection, for example OJ-L. It is also the
+#   number in the act-by-act Journal, for example 2026/449, or the issue that contains the act, for
+#   example L 21. The act-by-act Journal started in October 2023.
+# - the day of publication for each place. An act that has both places has two days.
+# It uses only consolidations with a CELEX number, as dates.rq does.
+# It gives one row per act and title. The details of the Journal are optional. They are often
+# missing for a corrigendum.
+# {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

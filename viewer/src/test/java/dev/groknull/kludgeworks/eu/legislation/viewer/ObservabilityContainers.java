@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.grafana.LgtmStackContainer;
 
 /**
- * What running locally sees of the app's traces and metrics: Grafana's OpenTelemetry stack (LGTM:
- * Loki, Grafana, Tempo, Mimir) in a container, the app's OTLP endpoints through Boot's service
- * connection. The container logs Grafana's address as it starts ("Access to the Grafana
- * dashboard"); its login is admin, admin.
+ * Shows the app's traces and metrics when it runs locally. Grafana's OpenTelemetry stack runs in a
+ * container. The stack is LGTM: Loki, Grafana, Tempo and Mimir. Boot's service connection gives the
+ * app its OTLP endpoints. The container logs the address of Grafana when it starts, in the line
+ * "Access to the Grafana dashboard". The login is admin, with the password admin.
  */
 @TestConfiguration(proxyBeanMethods = false)
 class ObservabilityContainers {

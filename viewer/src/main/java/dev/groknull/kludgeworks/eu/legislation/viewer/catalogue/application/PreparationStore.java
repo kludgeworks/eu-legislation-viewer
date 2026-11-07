@@ -16,15 +16,16 @@ public interface PreparationStore {
   /** Starts the act's preparation in the language, unless it has started. */
   void start(ActIdentifier act, Language language);
 
-  /** The languages the act is prepared in, or being prepared in. */
+  /** Returns the languages that the act is prepared in, or is being prepared in. */
   List<Language> languages(ActIdentifier act);
 
-  /** When it started, and settled. */
+  /** Returns when the preparation started, and when it settled. */
   Optional<Kept> find(ActIdentifier act, Language language);
 
   /**
-   * As {@code find}, its row locked until the transaction ends: so its texts' changes are one at a
-   * time, and it settles once, the last of them seeing the others.
+   * Returns the same as {@link #find}, and locks its row until the transaction ends. Thus the
+   * changes of its texts happen one at a time. It settles once, and the last change sees the
+   * others.
    */
   Optional<Kept> lock(ActIdentifier act, Language language);
 
@@ -36,8 +37,8 @@ public interface PreparationStore {
   boolean settle(ActIdentifier act, Language language, boolean prepared);
 
   /**
-   * Starts the act's settled preparation in the language again, from now, its steps gone: unless it
-   * is being prepared.
+   * Starts the act's settled preparation in the language again, from now, and removes its steps. It
+   * does nothing if the act is being prepared.
    *
    * @return whether it started again
    */
@@ -53,11 +54,11 @@ public interface PreparationStore {
       @Nullable Failure failure);
 
   /**
-   * Its steps, in the order they were taken: one built or failed with the attempt of, and how long
-   * since, its text's last start.
+   * Returns its steps, in the order they were taken. A built or failed step has the attempt of the
+   * last start of its text, and the time since that start.
    */
   List<Step> steps(ActIdentifier act, Language language);
 
-  /** A preparation as kept. */
+  /** A preparation as stored. */
   record Kept(Instant started, @Nullable Instant settledAt) {}
 }

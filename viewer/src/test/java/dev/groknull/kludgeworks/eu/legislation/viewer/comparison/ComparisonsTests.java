@@ -18,8 +18,9 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Comparisons through the module's API, of texts the content module stores, kept in Postgres (in a
- * container): 2015/1998's consolidations of 22 March and 1 October 2026.
+ * Tests comparisons through the module's API. The texts are stored by the content module, and the
+ * comparisons are kept in Postgres in a container. The texts are the consolidations of 2015/1998 of
+ * 22 March and 1 October 2026.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import(TestcontainersConfiguration.class)

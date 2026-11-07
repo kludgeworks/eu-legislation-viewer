@@ -2,9 +2,9 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Theme
 @param Chrome chrome
 !{var current = chrome.theme();}
-<%-- The theme switch: light, the device's, dark. A plain form, not boosted (the theme is the html
-     element's, which a boosted swap of the body would leave as it was); /js/theme.js applies it in
-     place, and without JavaScript the form posts --%>
+<%-- Shows the theme switch: light, the device's theme, or dark. It is a plain form and is not
+     boosted. The theme is set on the html element, and a boosted swap of the body would not change
+     it. /js/theme.js applies the theme in place. Without JavaScript, the form posts. --%>
 <form class="theme" method="post" action="/theme" role="group" aria-label="Colour theme">
   <input type="hidden" name="back" value="${chrome.here()}">
   <button name="set" value="light" title="Remembered on this device" aria-label="Light" aria-pressed="${String.valueOf(current == Theme.LIGHT)}">

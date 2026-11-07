@@ -21,7 +21,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.simple.JdbcClient;
 
-/** Legal texts stored, through the module's API, in Postgres (in a container), and rebuilt. */
+/**
+ * Tests that legal texts are stored through the module's API in Postgres, in a container, and
+ * rebuilt.
+ */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import(TestcontainersConfiguration.class)
 class ContentTests {
@@ -101,7 +104,7 @@ class ContentTests {
     assertThat(content.outline(new ContentHash("0".repeat(64)))).isEmpty();
   }
 
-  /** The entries and all those under them. */
+  /** The entries and all the entries under them. */
   private static List<Entry> all(List<Entry> entries) {
     return entries.stream()
         .flatMap(entry -> Stream.concat(Stream.of(entry), all(entry.entries()).stream()))

@@ -40,20 +40,25 @@ import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Repository;
 
 /**
- * The trees in Postgres (db/migration/content), and their segments by root, with jOOQ.
+ * Keeps the trees in Postgres, and their segments by root, with jOOQ. The tables are in {@code
+ * db/migration/content}.
  *
- * <p>Deduplication is the store's: every row is keyed by its hash, and inserted unless the key is
- * there, so a node shared by many texts is stored once, and writers storing the same nodes at once
- * don't conflict. Referential integrity too: foreign keys hold edges, overlays and segments to
- * their nodes, and a text is added in its caller's transaction, so a root stored means its whole
- * tree is. Each table's rows go in one statement, as arrays a column each, which {@code unnest}
- * turns back into rows.
+ * <ul>
+ *   <li>The store removes duplicates. Every row has its hash as key, and is inserted only if the
+ *       key is not there yet. Thus a node that many texts share is stored once. Writers that store
+ *       the same nodes at the same time do not conflict.
+ *   <li>The store keeps referential integrity. Foreign keys tie edges, overlays and segments to
+ *       their nodes. A text is added in the transaction of the caller. Thus if a root is stored,
+ *       its whole tree is stored.
+ *   <li>The rows of each table go in one statement, as one array for each column. {@code unnest}
+ *       turns the arrays back into rows.
+ * </ul>
  */
 @Repository
 class JooqTreeStore implements TreeStore {
   private static final DataType<byte[][]> HASHES = SQLDataType.BLOB.array();
 
-  /** The leaves that title a container, which a skeleton keeps: Outlines reads them. */
+  /** The leaves that title a container. A skeleton keeps them, and {@code Outlines} reads them. */
   private static final List<String> TITLES = List.of("num", "heading");
 
   private final DSLContext db;
@@ -76,16 +81,16 @@ class JooqTreeStore implements TreeStore {
     return nodes;
   }
 
-  /** Every node under a root, with its children and their overlays. */
+  /** Returns every node under a root, with its children and their overlays. */
   @Override
   public Optional<Tree> tree(ContentHash root) {
     return tree(root, null);
   }
 
   /**
-   * The containers under a root and the leaves that title them, with all their children and their
-   * overlays: the walk follows an edge only to a container or to a num or heading, which it tells
-   * by the JSON's first element, so the text's other blocks are never read.
+   * Returns the containers under a root and the leaves that title them, with all their children and
+   * their overlays. The walk follows an edge only to a container, or to a num or heading. It finds
+   * these by the first element of the JSON. Thus the other blocks of the text are never read.
    */
   @Override
   public Optional<Tree> skeleton(ContentHash root) {
@@ -95,10 +100,13 @@ class JooqTreeStore implements TreeStore {
   }
 
   /**
-   * The nodes under a root, each with all its children and their overlays: every node, or those
-   * that edges lead to whose node (child) is {@code kept}. One row a child, or one for a node
-   * without, in one join: not a query for each node's children, which Postgres ran thousands of
-   * times for a long text.
+   * Returns the nodes under a root, each with all its children and their overlays. If {@code kept}
+   * is null, it returns every node. If not, it follows only the edges whose child node is {@code
+   * kept}.
+   *
+   * <p>One join gives one row for each child, or one row for a node without children. It does not
+   * query the children of each node on its own, because Postgres then ran thousands of queries for
+   * a long text.
    */
   private Optional<Tree> tree(ContentHash root, @Nullable Condition kept) {
     var tree = name("tree").fields("hash");
@@ -178,6 +186,8 @@ class JooqTreeStore implements TreeStore {
   // ---- writing
 
   /**
+   * Inserts the nodes of the tree that are not stored yet.
+   *
    * @return how many nodes were new
    */
   private int insertNodes(Tree tree) {
@@ -316,8 +326,9 @@ class JooqTreeStore implements TreeStore {
   }
 
   /**
-   * Arrays of equal length, a column each, as rows: Postgres's {@code unnest} of several arrays
-   * (jOOQ's DSL.unnest takes one), its columns c1, c2 …
+   * Turns arrays of equal length, one for each column, into rows. It uses the {@code unnest} of
+   * Postgres on several arrays, because {@code DSL.unnest} of jOOQ takes only one. The columns are
+   * {@code c1}, {@code c2} and so on.
    */
   private static Table<?> unnest(Field<?>... columns) {
     var names = new String[columns.length];
@@ -327,7 +338,7 @@ class JooqTreeStore implements TreeStore {
     return table("unnest({0})", list(columns)).as("row", names);
   }
 
-  /** A column of the unnested rows, as the table column it goes into. */
+  /** Returns a column of the unnested rows, with the type of the table column that it goes into. */
   private static <T> Field<T> column(Table<?> rows, int index, Field<T> into) {
     return column(rows, index, into.getDataType());
   }

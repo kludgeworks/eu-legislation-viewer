@@ -17,31 +17,46 @@ import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The From and To cards of a comparison (Design: Mode: Compare), and the acts between them: each
- * card the version by its CELEX, its period, the acts that made it, where its text lags the law,
- * and a form asking for the version on another date for that end, the other kept; the acts, those
- * the versions after From up to To integrate, each a chip limiting the comparison to its changes.
+ * The From and To cards of a comparison, and the acts between them.
+ *
+ * <p>Each card shows:
+ *
+ * <ul>
+ *   <li>the version, by its CELEX
+ *   <li>its period
+ *   <li>the acts that made it
+ *   <li>where its text lags the law
+ *   <li>a form that asks for the version on another date for that end, and keeps the other end
+ * </ul>
+ *
+ * <p>The acts between the cards are the acts that the versions after From, up to To, integrate.
+ * Each act is a chip that limits the comparison to the changes of that act.
  *
  * @param from the From card
  * @param to the To card
- * @param acts the acts between them
- * @param note what the reader should know of how the page chose the versions or acts shown: opened
- *     without dates (Design D-29), an act asked for that isn't between them (D-37); none if nothing
+ * @param acts the acts between the two versions
+ * @param note what the reader should know about how the page chose the versions or acts that it
+ *     shows. For example, the page was opened without dates, or the reader asked for an act that is
+ *     not between the two versions. Null if there is nothing to say.
  */
 public record CompareView(Card from, Card to, Acts acts, @Nullable String note) {
 
-  /** The same, saying {@code note} under the cards. */
+  /** Returns the same comparison, with {@code note} under the cards. */
   public CompareView noting(@Nullable String note) {
     return new CompareView(from, to, acts, note);
   }
 
-  /** Above this many chips, those of acts that made no difference here fold. */
+  /**
+   * The largest number of chips that show in full. Above this number, the chips of acts that made
+   * no difference here fold.
+   */
   private static final int CHIPS = 6;
 
   /**
-   * The cards of {@code act}'s comparison of {@code from} with {@code to}, on {@code today}, its
-   * acts' chips {@code only}'s on, if any, linking in {@code view}, uncounted, counted from {@code
-   * counting} if they can be.
+   * Returns the cards of the comparison of {@code from} with {@code to} for {@code act}, on {@code
+   * today}. The chip of {@code only}, if any, is on. The chips link to the comparison in {@code
+   * view}. The chips are not counted yet. Their counts load from {@code counting}, if they can be
+   * counted.
    */
   public static CompareView of(
       Act act,
@@ -63,8 +78,8 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
   }
 
   /**
-   * The acts the versions after {@code from}, up to {@code to}, integrate, in their order, their
-   * corrigenda with them.
+   * Returns the acts that the versions after {@code from}, up to {@code to}, integrate, in their
+   * order. The list includes their corrigenda.
    */
   public static List<ActIdentifier> between(Act act, Version from, Version to) {
     return act.timeline().versions().stream()
@@ -75,19 +90,19 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
   }
 
   /**
-   * The acts between the two versions (Design: Acts between the two versions), as chips.
+   * The acts between the two versions of a comparison, as chips.
    *
-   * @param head how many: 1 act between them
-   * @param chips their chips, in the versions' order; counted, more than six, but for those that
-   *     made no difference here
-   * @param none the chips left out, of acts that made no difference here: + 3 with no differences
-   *     here
-   * @param counting where their counts load from, until they're counted; none once they are, or if
-   *     they can't be
-   * @param unknown how many differences one of them made, not known which, as its own chip; none if
-   *     none, or until counted
-   * @param hint what the counts say: that a difference acts made together counts in each act's
-   *     chip; none until counted
+   * @param head how many acts there are. For example, "1 act between them".
+   * @param chips the chips of the acts, in the order of the versions. If the acts are counted and
+   *     there are more than six chips, this list leaves out the chips of acts that made no
+   *     difference here.
+   * @param none the chips that {@code chips} leaves out, of acts that made no difference here
+   * @param counting the address that the counts load from, until the acts are counted. Null when
+   *     they are counted, or if they cannot be counted.
+   * @param unknown how many differences one of the acts made, where it is not known which act. This
+   *     number shows as its own chip. Null if there are none, or until the acts are counted.
+   * @param hint the text that explains the counts. It says that a difference that acts made
+   *     together counts in the chip of each act. Null until the acts are counted.
    */
   public record Acts(
       String head,
@@ -102,9 +117,10 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
     }
 
     /**
-     * The acts between {@code from} and {@code to}, {@code only}'s chip on, linking in {@code
-     * view}: each with how many differences it made ({@code counts}), where counted; uncounted, to
-     * be from {@code counting}, where none is.
+     * Returns the acts between {@code from} and {@code to}. The chip of {@code only}, if any, is
+     * on. The chips link to the comparison in {@code view}. {@code counts} gives how many
+     * differences each act made. If {@code counts} is empty, the acts are not counted, and their
+     * counts load from {@code counting}.
      */
     public static Acts of(
         Act act,
@@ -119,8 +135,8 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
       var acts = between(act, from, to);
       var chips =
           acts.stream()
-              // a corrigendum only where it corrected the text in this language (Design D-30): its
-              // corrections counted here, or its filter on
+              // Show a corrigendum only if it corrected the text in this language. That is, it has
+              // corrections counted here, or its filter is on.
               .filter(
                   each ->
                       !Wording.corrigendum(each)
@@ -132,7 +148,7 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
                           Wording.act(each),
                           title(act, each, language),
                           counts.get(each),
-                          // on, it shows all acts again
+                          // If the chip is on, its link shows all acts again.
                           Links.compare(
                               eli, from, to, language, each.equals(only) ? null : each, view),
                           each.equals(only),
@@ -155,8 +171,11 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
     }
 
     /**
-     * The same, counted: {@code together} differences acts made together, {@code unknown} one of
-     * them made, not known which.
+     * Returns the same acts, counted.
+     *
+     * @param together the number of differences that acts made together
+     * @param unknown the number of differences that one of the acts made, where it is not known
+     *     which act
      */
     public Acts counted(int together, int unknown) {
       var hint =
@@ -172,15 +191,19 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
       return new Acts(head, chips, none, counting, unknown == 0 ? null : unknown, hint);
     }
 
-    /** What the chips left out say: + 3 with no differences here. */
+    /**
+     * Returns the text that stands for the chips left out. For example, "+ 3 with no differences
+     * here".
+     */
     public String more() {
       return "+ " + none.size() + " with no differences here";
     }
 
     /**
-     * An act's chip's hover (Design D-36): how it was published, then when it entered into force:
-     * 2026/449: Commission Implementing Regulation (EU) 2026/449 of 27 February 2026 amending … ·
-     * OJ L, 2026/449, 2.3.2026 · entered into force on 22 March 2026.
+     * Returns the hover text of the chip of an act. The text says how the act was published, then
+     * when it entered into force. For example: "2026/449: Commission Implementing Regulation (EU)
+     * 2026/449 of 27 February 2026 amending … · OJ L, 2026/449, 2.3.2026 · entered into force on 22
+     * March 2026".
      */
     private static String title(Act act, ActIdentifier each, Language language) {
       var name = Wording.published(act, each, language);
@@ -197,14 +220,16 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
   }
 
   /**
-   * An act's chip.
+   * The chip of an act.
    *
-   * @param label the act, by its number: 2026/449
-   * @param title its hover: the act and when it entered into force
-   * @param count how many differences it made here; none until counted
-   * @param href the comparison limited to its changes; on, the comparison of all acts
-   * @param on whether the comparison is limited to its changes
-   * @param corrigendum whether it is a corrigendum, which corrected the text, not amended it
+   * @param label the act, by its number. For example, 2026/449.
+   * @param title the hover text: the act and when it entered into force
+   * @param count how many differences the act made here. Null until counted.
+   * @param href the comparison limited to the changes of the act. If the chip is on, the comparison
+   *     of all acts.
+   * @param on whether the comparison is limited to the changes of the act
+   * @param corrigendum whether the act is a corrigendum. A corrigendum corrected the text, it did
+   *     not amend it.
    */
   public record Chip(
       String label,
@@ -214,11 +239,11 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
       boolean on,
       boolean corrigendum) {}
 
-  /** A comparison's view (Design: Mode: Compare): what of the two texts it shows, and how. */
+  /** A view of a comparison. It sets what part of the two texts the comparison shows, and how. */
   public enum View {
     /** Only the provisions that differ, with the opening of the unit each is in. */
     CHANGES("changes", "Changes"),
-    /** Every provision of the later text, those that differ marked in place. */
+    /** Every provision of the later text. The provisions that differ are marked in place. */
     WHOLE("whole", "Whole text"),
     /** The two texts side by side, aligned by provision. */
     SYNOPSIS("synopsis", "Synopsis");
@@ -231,23 +256,29 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
       this.label = label;
     }
 
-    /** As the comparison's address has it: changes, whole, synopsis. */
+    /**
+     * Returns the code of the view in the address of the comparison: {@code changes}, {@code whole}
+     * or {@code synopsis}.
+     */
     public String code() {
       return code;
     }
 
-    /** As its controls name it: Whole text. */
+    /** Returns the name of the view in the controls. For example, "Whole text". */
     public String label() {
       return label;
     }
 
-    /** The view by its code; none for another. */
+    /** Returns the view with this code. Returns empty for an unknown code. */
     public static Optional<View> of(String code) {
       return Arrays.stream(values()).filter(view -> view.code.equals(code)).findFirst();
     }
   }
 
-  /** A comparison's views, as its controls link them, {@code current} the one shown. */
+  /**
+   * Returns the links to the views of a comparison, as its controls show them. {@code current} is
+   * the view that shows now.
+   */
   public static List<ViewLink> views(
       Eli eli,
       Version from,
@@ -266,24 +297,27 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
   }
 
   /**
-   * A view's link.
+   * The link to a view.
    *
-   * @param label its name: Whole text
-   * @param href the comparison in it
-   * @param on whether it is the one shown
+   * @param label the name of the view. For example, "Whole text".
+   * @param href the address of the comparison in this view
+   * @param on whether this view shows now
    */
   public record ViewLink(String label, String href, boolean on) {}
 
   /**
-   * A comparison limited to one act's changes, as its banner says it (Design: Acts between the two
-   * versions): Only 2026/449's changes · show all acts.
+   * The banner of a comparison that is limited to the changes of one act. For example, "Only
+   * 2026/449's changes · show all acts".
    *
    * @param act the act, by its number
-   * @param all the comparison of all acts
+   * @param all the address of the comparison of all acts
    */
   public record Only(String act, String all) {}
 
-  /** An end of a comparison: what its card is headed, and its field in the comparison's address. */
+  /**
+   * An end of a comparison. It has the heading of its card and its field in the address of the
+   * comparison.
+   */
   private enum End {
     FROM("From", "from"),
     TO("To", "to");
@@ -302,24 +336,25 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
   }
 
   /**
-   * A version's card.
+   * The card of a version.
    *
-   * @param kind which end: From, To
-   * @param celex the version's CELEX
-   * @param eurLex the version on EUR-Lex, in the page's language
-   * @param period when it applied or applies
-   * @param made what made it
-   * @param published how the acts that made it were published, a line each, as made's hover lists
-   *     them (Design D-21); none if none
-   * @param lags where its text lags the law over its period
-   * @param mayLag where its text may lag the law, an act's date of application not known (Design
-   *     D-24)
-   * @param name the date form's field for this end: from, to
-   * @param on the date the form starts at: the version's first day
-   * @param keep the other end's field, which the form sends unchanged
-   * @param kept the other end's date
-   * @param action where the form goes: the act's comparisons in the page's language
-   * @param first the earliest date the form takes: the first version's
+   * @param kind which end the card is: From or To
+   * @param celex the CELEX of the version
+   * @param eurLex the address of the version on EUR-Lex, in the language of the page
+   * @param period when the version applied or applies
+   * @param made what made the version
+   * @param published how the acts that made the version were published, one line for each act. The
+   *     hover of {@code made} lists them the same way. Null if there are none.
+   * @param lags where the text of the version lags the law during its period
+   * @param mayLag where the text of the version may lag the law, because the date of application of
+   *     an act is not known
+   * @param name the field of the date form for this end: {@code from} or {@code to}
+   * @param on the date that the form starts at. This is the first day of the version.
+   * @param keep the field of the other end, which the form sends unchanged
+   * @param kept the date of the other end
+   * @param action the address the form goes to: the comparisons of the act in the language of the
+   *     page
+   * @param first the earliest date that the form accepts. This is the date of the first version.
    */
   @RecordBuilder
   public record Card(
@@ -343,7 +378,10 @@ public record CompareView(Card from, Card to, Acts acts, @Nullable String note) 
       mayLag = List.copyOf(mayLag);
     }
 
-    /** {@code version}'s card as the comparison's {@code end}, {@code other} the other end. */
+    /**
+     * Returns the card of {@code version} as the {@code end} of the comparison. {@code other} is
+     * the version at the other end.
+     */
     static Card of(
         Act act,
         Version version,

@@ -2,11 +2,14 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Tick
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Merged
 @param TimelineView timeline
-<%-- The act's versions to scale (TimelineView): each mark a link (to its version's page, reading;
-     to the comparison with the nearer end moved to it, comparing), versions too close to click apart
-     one mark that opens a list of them (details, which their shared name keeps to one open at a
-     time), lags hatched, the range compared a band. While the act is prepared, the marks are its
-     versions' texts as they stand (state), links to nothing; the stream swaps it (#timeline) --%>
+<%-- Shows the act's versions on a timeline to scale. TimelineView supplies the data. Each mark is a
+     link. In Read mode, it links to its version's page. In Compare mode, it links to the comparison
+     with the nearer end moved to that version.
+     Versions that are too close to click one by one share one mark. That mark is a details element
+     that opens a list of them. The details elements share one name, so only one opens at a time.
+     Lags are hatched, and the compared range is a band.
+     While the act is being prepared, each mark shows the state of its version's text and is not a
+     link. The stream swaps this element by its id (#timeline). --%>
 <section id="timeline" class="timeline" aria-label="Versions">
   <p class="timeline-head"><span>Versions</span><span>${timeline.hint()}</span></p>
   <div class="axis">

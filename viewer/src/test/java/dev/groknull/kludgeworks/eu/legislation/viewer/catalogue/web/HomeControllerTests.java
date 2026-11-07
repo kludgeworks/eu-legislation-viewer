@@ -24,9 +24,10 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.assertj.MvcTestResult;
 
 /**
- * The home page's controller alone (@WebMvcTest), the modules mocked: the Find an act box, a CELEX
- * number or ELI going straight to the act, title words listing the acts that have them. The acts
- * and what a search finds are OneActCellar's: 2015/1998, and 2026/449 amending it.
+ * Tests the controller of the home page alone, with {@code @WebMvcTest} and the modules mocked. The
+ * tests check the "Find an act" box. A CELEX number or an ELI goes straight to the act. Words from
+ * a title list the acts that have them. The acts and the search results come from {@link
+ * OneActCellar}: 2015/1998, and 2026/449, which amends it.
  */
 @WebMvcTest(HomeController.class)
 @Import(ControllerTesting.class)
@@ -78,7 +79,7 @@ class HomeControllerTests {
 
   @Test
   void saysNoActHasACelexNumberCellarDoesntKnow() {
-    // 185/2010: Cellar knows 2015/1998 alone
+    // This is 185/2010. The stand-in Cellar knows only 2015/1998.
     assertThat(page(mvc.get().uri("/?q=32010R0185").exchange()).select(".none").text())
         .isEqualTo("No act has the CELEX number or ELI 32010R0185.");
   }

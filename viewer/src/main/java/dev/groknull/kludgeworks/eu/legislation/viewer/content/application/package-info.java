@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The content module's application ring: storing and rebuilding texts (ContentService), each a unit
- * of work, observed and logged, on a store of trees it declares (TreeStore) and the infrastructure
- * provides.
+ * The application ring of the content module. {@link ContentService} stores and rebuilds texts.
+ * Each of these is a unit of work that is observed and logged. The service uses a store of trees,
+ * {@link TreeStore}, which this ring declares and the infrastructure provides.
  */
 @ApplicationRing
 @NullMarked

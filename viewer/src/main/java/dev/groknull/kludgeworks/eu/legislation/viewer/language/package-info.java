@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 /**
- * The EU's official languages: shared by every module (Language), so that modules calling each
- * other, as the catalogue calls ingest, don't depend on each other for it.
+ * The EU's official languages. Every module shares {@link Language}. Thus modules that call each
+ * other, as the catalogue calls ingest, do not depend on each other for it.
  */
 @ApplicationModule(displayName = "Language")
 @DomainRing

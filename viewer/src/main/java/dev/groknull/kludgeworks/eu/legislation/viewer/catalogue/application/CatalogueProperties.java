@@ -7,10 +7,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
 /**
- * How the catalogue keeps its acts ({@code viewer.catalogue.*}, set in application.yaml).
+ * How the catalogue stores its acts. The properties are {@code viewer.catalogue.*}, set in {@code
+ * application.yaml}.
  *
- * @param refreshAfter how long an act is kept as Cellar had it before a page opening it has it read
- *     again (ActRefresher), for the versions that appeared since
+ * @param refreshAfter how long an act stays stored as Cellar had it. After this time, a page that
+ *     opens the act has {@link ActRefresher} read it again, for the versions that appeared since.
  */
 @ConfigurationProperties("viewer.catalogue")
 @Validated

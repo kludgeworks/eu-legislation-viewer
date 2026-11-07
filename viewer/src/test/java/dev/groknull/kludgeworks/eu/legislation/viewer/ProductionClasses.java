@@ -5,11 +5,13 @@ import com.tngtech.archunit.core.importer.ImportOption;
 import com.tngtech.archunit.core.importer.Location;
 
 /**
- * The viewer's own classes, not its tests', for Spring Modulith's model of the modules
- * (ModularityTests, ModuleDocumentation): what ArchUnit's DoNotIncludeTests does for Maven's and
- * Gradle's output folders, for Bazel's, where a test's classes are in a jar built from
- * src/test/java. With them, the fixtures of whole-application tests in the main package would make
- * it depend on the modules that depend on it.
+ * Includes the viewer's own classes, not the classes of its tests, in Spring Modulith's model of
+ * the modules. {@code ModularityTests} and {@code ModuleDocumentation} use it.
+ *
+ * <p>ArchUnit's {@code DoNotIncludeTests} does the same for the output folders of Maven and Gradle.
+ * This class does it for Bazel, which puts the classes of a test in a jar built from {@code
+ * src/test/java}. If the test classes were included, the fixtures of whole-application tests in the
+ * main package would make that package depend on the modules that depend on it.
  */
 public final class ProductionClasses implements ImportOption {
 

@@ -12,11 +12,17 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 
 /**
- * The modules' events, as Modulith runs them: a module's listener after the publishing transaction
- * commits, on its own thread (@Async); one that failed handed its event again, every minute, on
- * every instance (Modulith resubmits each failed publication once, whichever asks first). A
- * publication is failed by its listener failing (a job deferred: JobRunner), or by the staleness
- * check (spring.modulith.events.staleness), which fails one its instance stopped before finishing.
+ * Configures how Spring Modulith runs the events of the modules.
+ *
+ * <ul>
+ *   <li>The listener of a module runs after the publishing transaction commits, on its own thread,
+ *       by {@code @Async}.
+ *   <li>A listener that failed gets its event again every minute, on every instance. Modulith
+ *       resubmits each failed publication once, for whichever instance asks first.
+ *   <li>A publication fails when its listener fails, for example when {@code JobRunner} defers a
+ *       job. It also fails by the staleness check, {@code spring.modulith.events.staleness}. This
+ *       check fails a publication whose instance stopped before it finished.
+ * </ul>
  */
 @Configuration(proxyBeanMethods = false)
 @EnableAsync

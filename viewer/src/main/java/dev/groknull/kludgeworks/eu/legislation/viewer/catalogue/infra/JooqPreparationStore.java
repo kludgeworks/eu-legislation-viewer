@@ -24,7 +24,10 @@ import org.jooq.DSLContext;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Repository;
 
-/** The preparations in Postgres (preparation, preparation_step), with jOOQ. */
+/**
+ * Stores the preparations in the Postgres tables {@code preparation} and {@code preparation_step},
+ * with jOOQ.
+ */
 @Repository
 class JooqPreparationStore implements PreparationStore {
   private final DSLContext db;
@@ -33,7 +36,7 @@ class JooqPreparationStore implements PreparationStore {
     this.db = db;
   }
 
-  /** A preparation's state, as preparation.state has it. */
+  /** The state of a preparation, as the column {@code preparation.state} holds it. */
   private enum State {
     PREPARING,
     PREPARED,
@@ -71,7 +74,8 @@ class JooqPreparationStore implements PreparationStore {
   public Optional<Kept> lock(ActIdentifier act, Language language) {
     return db.selectFrom(PREPARATION)
         .where(the(act, language))
-        // its key never changes: no conflict with a step's foreign key on it
+        // The key of a preparation never changes. So this lock does not conflict with the
+        // foreign key of a step that refers to the preparation.
         .forNoKeyUpdate()
         .fetchOptional()
         .map(JooqPreparationStore::kept);
@@ -142,7 +146,7 @@ class JooqPreparationStore implements PreparationStore {
             .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE.eq(language))
             .orderBy(PREPARATION_STEP.AT)
             .fetch();
-    // each text's last start: its attempt, and when
+    // The last start of each text, which gives its attempt and its start time.
     var starts = new HashMap<String, Step>();
     var steps = new ArrayList<Step>(rows.size());
     for (var row : rows) {

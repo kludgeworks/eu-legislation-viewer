@@ -13,11 +13,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
- * Renders a folder of legal texts (convert_texts's {CELEX}.xml) as the viewer shows them, each as a
- * page of its own at {out}/{CELEX}/{language}/index.html: the text as stored and read back
- * (Encoder, Decoder) and rendered by its templates, in the page's frame (layout/page.jte,
- * catalogue/version.jte), its stylesheet at /css/viewer.css. What text:survey compares with
- * EUR-Lex, without a database or Cellar.
+ * Renders a folder of legal texts as the viewer shows them. The texts are the {@code {CELEX}.xml}
+ * files that {@code convert_texts} writes. Each text becomes a page of its own at {@code
+ * {out}/{CELEX}/{language}/index.html}.
+ *
+ * <p>Each text is stored and read back with {@link Encoder} and {@link Decoder}, and rendered by
+ * its templates. The page frame comes from {@code layout/page.jte} and {@code
+ * catalogue/version.jte}. The stylesheet is at {@code /css/viewer.css}. {@code text:survey}
+ * compares these pages with EUR-Lex. No database or Cellar is necessary.
  *
  * <pre>
  * bazel run …:render_texts -- {folder} {out} {language}

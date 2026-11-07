@@ -14,11 +14,13 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The neighbours of a comparison's differences, the units around them the same in both texts, as
- * the Synopsis shows them (Design: Mode: Compare, Synopsis): each as the later text has it, with
- * the amendment markers on its own content; where it has none, those of the nearest unit it is in
- * with a provenance of its own, which an act put in its form whole, with the units in it (as the
- * comparison's Differences have theirs).
+ * Finds the neighbours of the differences of a comparison, as the Synopsis shows them. A neighbour
+ * is a unit near a difference that is the same in both texts.
+ *
+ * <p>Each neighbour is the unit as the later text has it, with the amendment markers on its own
+ * content. If its own content has no markers, it gets the markers of the nearest enclosing unit
+ * that has a provenance of its own. An act put that enclosing unit in its current form as a whole,
+ * with the units in it. The Differences of a comparison get their markers in the same way.
  */
 final class Neighbours {
   private Neighbours() {}
@@ -27,7 +29,7 @@ final class Neighbours {
    * A unit the same in both texts.
    *
    * @param unit the unit, as the later text has it, with the units in it
-   * @param markers the markers on its own content, or the nearest enclosing unit's
+   * @param markers the markers on its own content, or the markers of the nearest enclosing unit
    */
   record Neighbour(Element unit, List<Marker> markers) {
     Neighbour {
@@ -35,7 +37,7 @@ final class Neighbours {
     }
   }
 
-  /** {@code unit} as a row cites it: its eId, kind and num. */
+  /** Returns {@code unit} as a row cites it: its eId, kind and num. */
   static Sibling sibling(Element unit) {
     var eId = unit.attribute("eId");
     var kind = unit.attribute("kind");
@@ -56,14 +58,20 @@ final class Neighbours {
     element.children().forEach(child -> said(child, out));
   }
 
-  /** The units {@code eIds} of {@code later}, by eId; those it hasn't left out. */
+  /**
+   * Returns the units {@code eIds} of {@code later}, by eId. A unit that {@code later} does not
+   * have is not in the result.
+   */
   static Map<String, Neighbour> of(Element later, Set<String> eIds) {
     var found = new HashMap<String, Neighbour>();
     walk(later, eIds, new ArrayDeque<>(), found);
     return found;
   }
 
-  /** {@code element}, inside the units {@code enclosing} (the innermost first). */
+  /**
+   * Finds the neighbours in {@code element}, which is inside the units {@code enclosing}. The
+   * innermost enclosing unit is first.
+   */
   private static void walk(
       Element element, Set<String> eIds, Deque<Element> enclosing, Map<String, Neighbour> found) {
     var eId = eId(element);
@@ -99,7 +107,10 @@ final class Neighbours {
     return List.copyOf(found);
   }
 
-  /** The markers on {@code element}'s own content: not those of the units in it. */
+  /**
+   * Adds the markers on the own content of {@code element} to {@code found}. It does not add the
+   * markers of the units in it.
+   */
   private static void own(Element element, Set<Marker> found) {
     for (var child : element.children()) {
       if (eId(child) != null) {

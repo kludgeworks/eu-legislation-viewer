@@ -1,9 +1,10 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView.Branch
 @import java.util.List
 @param List<Branch> entries
-<%-- A level of the later text's outline in a comparison (OutlineView): each unit its count, a jump
-     to its first difference, a unit with units below it a details, open and its share barred if it
-     has differences; the differences in a unit's points as chips --%>
+<%-- Shows one level of the later text's outline in a comparison. OutlineView supplies the data.
+     Each unit shows its count of differences and links to its first difference. A unit with units
+     below it is a details element. If that unit has differences, the details element is open and a
+     bar shows its share of them. The differences in a unit's points show as chips. --%>
 <ul>
   @for(var entry : entries)
     !{var has = entry.count() > 0 ? "has" : null;}

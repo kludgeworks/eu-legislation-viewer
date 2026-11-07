@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * Texts as htmx fragments, by their root: what a page transcludes (hx-get) once its text is built.
- * A root names one text for good, so its fragment is the same wherever it is asked for. Some of a
- * text's units, by eId, are what a comparison's folds load when opened.
+ * Serves texts as htmx fragments, by their root. A page transcludes a fragment with {@code hx-get}
+ * when its text is built. A root always names the same text, so its fragment is the same wherever
+ * it is asked for. The folds of a comparison load some units of a text, by eId, when they open.
  */
 @Controller
 class ContentController {
@@ -29,7 +29,7 @@ class ContentController {
     this.html = html;
   }
 
-  /** The whole text at {@code root}, as HTML; 404 if none is stored there. */
+  /** Writes the whole text at {@code root} as HTML. Responds 404 if no text is stored there. */
   @GetMapping(path = "/content/{root}", produces = MediaType.TEXT_HTML_VALUE)
   void text(@PathVariable ContentHash root, HttpServletResponse response) throws IOException {
     var text =
@@ -40,9 +40,10 @@ class ContentController {
   }
 
   /**
-   * The units of the text at {@code root} from the one {@code first} to the one {@code last}, each
-   * whole, in the text's order, as a comparison's fold asks for them; 404 if no text is stored
-   * there. Nothing if the text hasn't {@code first}.
+   * Writes the units of the text at {@code root} from the unit {@code first} to the unit {@code
+   * last}, as the fold of a comparison asks for them. Each unit is whole, in the order of the text.
+   * Responds 404 if no text is stored there. Writes nothing if the text does not have {@code
+   * first}.
    */
   @GetMapping(path = "/content/{root}/units", produces = MediaType.TEXT_HTML_VALUE)
   void units(

@@ -1,14 +1,17 @@
 # SPDX-License-Identifier: MIT
-# An act's own dates, and those of every act its consolidations integrate (CellarDates): each date
-# of entry into force as Cellar has it, with the annotations it types them by (Research: where a
-# provision's date comes from): the type of date (fd_335: EV entry into force, MA application, PE
-# taking effect, /PART for part of the act) and Cellar's comment on it ("DATPUB +20 V ART 2": 20
-# days after publication, see Article 2; "ET 32020R0910": and that act, which changed it). The
-# consolidations list earlier consolidations too, which have dates but no annotations; CellarDates
-# leaves them out. Only consolidations with a CELEX, as in versions.rq: the others are Cellar's
-# internal production versions, and may list an act no version integrates. One row per date and
-# annotation.
-# {{celex}}: the base act's CELEX (32015R1998), escaped by Sparql.fill.
+# Gets the dates of an act, and the dates of every act that its consolidations integrate, for
+# CellarDates. It gets each date of entry into force as Cellar has it, with the annotations that
+# type the date:
+# - The type of date, from the authority table fd_335. EV is entry into force, MA is application
+#   and PE is taking effect. /PART means that the date applies to part of the act.
+# - Cellar's comment on the date. For example, "DATPUB +20 V ART 2" means 20 days after
+#   publication, see Article 2. "ET 32020R0910" adds that act, which changed the date.
+# The consolidations also list earlier consolidations. These have dates but no annotations, and
+# CellarDates leaves them out.
+# It uses only consolidations with a CELEX number, as versions.rq does. The other consolidations
+# are Cellar's internal production versions. They may list an act that no version integrates.
+# It gives one row per date and annotation.
+# {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX annotation: <http://publications.europa.eu/ontology/annotation#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>

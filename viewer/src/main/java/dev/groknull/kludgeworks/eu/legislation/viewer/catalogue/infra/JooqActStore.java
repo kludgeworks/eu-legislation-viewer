@@ -49,10 +49,15 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * The acts in Postgres (db/migration/catalogue), with jOOQ: an act, its titles, its versions, its
- * dates and its amendments, written in one transaction, unless the act is there; written anew, its
- * versions kept, once it is read from Cellar again, its steps' counts (StepCounts) dropped; with
- * how the acts it integrates were published.
+ * Stores the acts in Postgres with jOOQ. The schema is in {@code db/migration/catalogue}. For each
+ * act it stores the titles, versions, dates and amendments. It also stores how the act and the acts
+ * it integrates were published.
+ *
+ * <ul>
+ *   <li>{@link #add} writes all of it in one transaction, unless the act is already there.
+ *   <li>{@link #update} writes it again when the viewer reads the act from Cellar again. It keeps
+ *       the versions, and drops the step counts of the act, which {@code StepCounts} keeps.
+ * </ul>
  */
 @Repository
 class JooqActStore implements ActStore {
@@ -165,7 +170,7 @@ class JooqActStore implements ActStore {
     db.deleteFrom(ACT_PUBLICATION_TITLE).where(ACT_PUBLICATION_TITLE.ACT.eq(act.id())).execute();
     db.deleteFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act.id())).execute();
     publish(act);
-    // its steps' counts attributed by what it was
+    // Drop the step counts of the act, because they were counted for the act as it was before.
     db.deleteFrom(STEP_COUNT).where(STEP_COUNT.ACT.eq(act.id())).execute();
     var kept =
         db.select(VERSION.CELEX)
@@ -175,7 +180,8 @@ class JooqActStore implements ActStore {
     db.batch(
             act.timeline().versions().stream()
                 .map(
-                    // a version is its day: one kept keeps its document, which its texts refer to
+                    // The day identifies a version. A kept version keeps its document, because
+                    // its texts refer to that document.
                     version ->
                         version(act, version)
                             .onConflict(VERSION.ACT, VERSION.DATE)
@@ -251,7 +257,7 @@ class JooqActStore implements ActStore {
     }
   }
 
-  /** How the acts {@code act} integrates were published, with their titles. */
+  /** Writes how {@code act} and the acts it integrates were published, with their titles. */
   private void publish(Act act) {
     if (act.publications().isEmpty()) {
       return;
@@ -291,7 +297,7 @@ class JooqActStore implements ActStore {
     }
   }
 
-  /** How the acts {@code act} integrates were published, by the act. */
+  /** Reads how {@code act} and the acts it integrates were published, by act. */
   private Map<ActIdentifier, Publication> publications(ActIdentifier act) {
     var titles = new HashMap<ActIdentifier, Map<Language, String>>();
     db.selectFrom(ACT_PUBLICATION_TITLE)

@@ -66,15 +66,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * An act's comparison of two versions, in a language (Design: Mode: Compare):
- * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01, each end any date (the
- * version that applies then). Asked with dates that aren't the versions' first days, or with From
- * after To, or without them (the latest version against the one before; limited to an act's
- * changes, the version that first integrates it against the one before), it goes to the address
- * that is. The act is prepared whole in the language, every version of it, before the page shows
- * changes: until then it is the preparing page, which becomes this one in place; then the two
- * texts' Changes view loads from /changes beside it: the comparison module's, by their roots, each
- * difference with its sidenote, the acts that made it from the act's own facts.
+ * Shows the comparison of two versions of an act, in a language.
+ *
+ * <p>For example, {@code /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01}.
+ * Each end can be any date. The comparison uses the version that applies on that date.
+ *
+ * <p>The page redirects to the canonical address of the comparison in these cases:
+ *
+ * <ul>
+ *   <li>A date is not the first day of its version.
+ *   <li>From is after To.
+ *   <li>A date is missing. A missing To is the version that applies today. A missing From is the
+ *       version before To. If the comparison is limited to the changes of one act and both dates
+ *       are missing, To is the first version that integrates that act.
+ *   <li>The act in {@code act} is not between the two versions.
+ * </ul>
+ *
+ * <p>The act is prepared whole in the language, with every version, before the page shows changes.
+ * Until then, the page is the preparing page, which becomes this page in place. Then the page loads
+ * the changes of the two texts from {@code /changes}. The comparison module compares the texts by
+ * their roots. Each difference has a sidenote. The sidenote gets the acts that made the difference
+ * from the facts of the act.
  */
 @Controller
 class CompareController {
@@ -111,9 +123,11 @@ class CompareController {
   }
 
   /**
-   * The comparison's page, or where its address is: while the act is being prepared in the
-   * language, the preparing page, which asks this address again once it is (prepared, for the
-   * receipt saying what was).
+   * Returns the comparison page, or redirects to the canonical address of the comparison.
+   *
+   * <p>While the act is being prepared in the language, it returns the preparing page. When the act
+   * is prepared, that page requests this address again with {@code prepared}. The page then shows a
+   * receipt that says what was prepared.
    */
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> page(
@@ -135,7 +149,7 @@ class CompareController {
     var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
       var location = Links.compare(page.eli, page.from, page.to, page.language, page.only, view);
-      // what the page chose, for it to say so
+      // Tell the page what it chose, so that it can say so.
       if (from == null && to == null && act == null) {
         location += "&opened=current";
       } else if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
@@ -212,12 +226,21 @@ class CompareController {
   }
 
   /**
-   * The comparison's Changes view, as its page loads it once both texts are built: the comparison
-   * module's, worked out now if no one has yet, beside the later text's outline, each difference
-   * with its sidenote, from its markers and Cellar's amendments of its unit (Act.amended). Limited
-   * to an act's changes, the comparison of the version that integrates it with the one before (the
-   * wording just before its change against just after it), the differences it made shown, the
-   * others folded. 404 at an address that isn't the comparison's, or before its texts are.
+   * Returns the changes of the comparison, in the view that {@code view} asks for. The comparison
+   * page loads them when both texts are built.
+   *
+   * <p>The comparison module supplies the comparison. If no one asked for it before, the module
+   * computes it now. The outline of the later text shows beside the changes. Each difference has a
+   * sidenote. The sidenote comes from the amendment markers and from the amendments that Cellar
+   * records for the unit, {@link Act#amended}.
+   *
+   * <p>If the comparison is limited to the changes of one act, it compares the version that
+   * integrates that act with the version before it. That is the wording just before the change
+   * against the wording just after it. The view shows the differences that the act made and folds
+   * the others.
+   *
+   * <p>Returns 404 if the address is not the canonical address of the comparison, or if the texts
+   * are not built yet.
    */
   @GetMapping(path = PATH + "/changes", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -249,7 +272,8 @@ class CompareController {
             ? ChangesView.of(attributed.comparison())
             : ChangesView.of(
                 attributed.comparison(),
-                // and those that may be its, not known
+                // Also show the differences that the act may have made. For these, it is not
+                // known which act made them.
                 difference ->
                     attributed.sidenote(difference).acts().contains(only)
                         || attributed.sidenote(difference).candidates().contains(only),
@@ -314,7 +338,7 @@ class CompareController {
                       sidenotes.values().stream().anyMatch(SidenoteView::corrected))
                   .render();
           case SYNOPSIS -> {
-            // the neighbours of the differences, each with what last made it as it is
+            // Show the neighbours of the differences. Each neighbour shows what last changed it.
             var same = new HashSet<String>();
             for (var passage : changes.passages()) {
               if (passage instanceof ChangesView.Fold fold && fold.same()) {
@@ -370,23 +394,31 @@ class CompareController {
   }
 
   /**
-   * Whether a difference with {@code sidenote} is greyed: limited to {@code only}'s changes, one
-   * that may be its, not known.
+   * Returns whether a difference with {@code sidenote} is greyed. It is greyed if the comparison is
+   * limited to the changes of {@code only}, and that act may have made the difference, but it is
+   * not known.
    */
   private static boolean greyed(@Nullable ActIdentifier only, @Nullable SidenoteView sidenote) {
     return only != null && sidenote != null && !sidenote.candidates().isEmpty();
   }
 
-  /** The view a comparison's address asks for; 404 for one there isn't. */
+  /**
+   * Returns the view that the address of a comparison asks for. Throws 404 for a view that does not
+   * exist.
+   */
   private static CompareView.View view(String code) {
     return CompareView.View.of(code).orElseThrow(Requests::notFound);
   }
 
   /**
-   * The acts between the comparison's versions, as its page loads them: each with how many of the
-   * differences the page lists it made, by the same attribution as the sidenotes (Act.amended, the
-   * markers), so a chip counts the list it filters; none counted if the two texts aren't both
-   * built. Counted once and kept (StepCounts). 404 at an address that isn't the comparison's.
+   * Returns the acts between the versions of the comparison, which the comparison page loads.
+   *
+   * <p>Each act shows how many of the listed differences it made. The count uses the same
+   * attribution as the sidenotes: {@link Act#amended} and the markers. Thus a chip counts the list
+   * that it filters. If the two texts are not both built, no act gets a count. The counts are
+   * computed once and kept in {@link StepCounts}.
+   *
+   * <p>Returns 404 if the address is not the canonical address of the comparison.
    */
   @GetMapping(path = PATH + "/acts", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -410,8 +442,9 @@ class CompareController {
     var counts = new HashMap<ActIdentifier, Integer>();
     var together = 0;
     var unknown = 0;
-    // the list the page shows, counted: not a sum of single steps, which counts a provision each
-    // step changed once per step, and one an act made and the next unmade
+    // Count the list that the page shows. Do not add up the counts of single steps. That sum counts
+    // a provision once for each step that changed it. It also counts a change that one act made
+    // and the next act undid.
     var kept = false;
     if (preparation.texts().get(page.from) instanceof Text.Ready before
         && preparation.texts().get(page.to) instanceof Text.Ready after) {
@@ -454,9 +487,15 @@ class CompareController {
   }
 
   /**
-   * The counts of the step from {@code from} to {@code to}: how many differences each of its acts
-   * made, how many acts made together, how many one of them made, not known which; none if either
-   * text isn't built.
+   * Returns the counts of the step from {@code from} to {@code to}:
+   *
+   * <ul>
+   *   <li>how many differences each act of the step made
+   *   <li>how many differences more than one act made together
+   *   <li>how many differences one of the acts made, where it is not known which act
+   * </ul>
+   *
+   * <p>Returns none if either text is not built.
    */
   private Optional<StepCounts.Counted> count(
       Page page,
@@ -481,9 +520,9 @@ class CompareController {
   }
 
   /**
-   * The comparison of {@code from} with {@code to}, each difference with its sidenote, limited to
-   * {@code only}'s changes, if any, its outlines read once each ({@code outlines}, by root); none
-   * if either text isn't built.
+   * Returns the comparison of {@code from} with {@code to}, with a sidenote for each difference.
+   * The sidenotes are limited to the changes of {@code only}, if it is given. Each outline is read
+   * once and kept in {@code outlines}, by root. Returns none if either text is not built.
    */
   private Optional<Attributed> attributed(
       Page page,
@@ -548,9 +587,13 @@ class CompareController {
   }
 
   /**
-   * A Synopsis fold's units, as it opens in place (Design: Synopsis, D-55): each a row, the later
-   * text's in both columns as it is the same in both, with what last made it as it is. 404 at an
-   * address that isn't the comparison's, or before its later text is built.
+   * Returns the units of a Synopsis fold, which opens in place.
+   *
+   * <p>Each unit is a row. The row shows the unit of the later text in both columns, because the
+   * unit is the same in both texts. The row also shows what last changed the unit.
+   *
+   * <p>Returns 404 if the address is not the canonical address of the comparison, or if the later
+   * text is not built yet.
    */
   @GetMapping(path = PATH + "/same", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -603,8 +646,9 @@ class CompareController {
   }
 
   /**
-   * Try again, as the failure panel posts it to the comparison's page: the act's texts that failed
-   * where trying again may help, tried again; then the page, preparing once more.
+   * Tries again to build the texts of the act, when the failure panel posts Try again to the
+   * comparison page. It tries again only the texts that failed where a new try may help. Then it
+   * redirects to the page, which prepares the act again.
    */
   @PostMapping(path = PATH)
   ResponseEntity<Void> retry(
@@ -623,15 +667,25 @@ class CompareController {
         .build();
   }
 
-  /** The page's address, with its query: /eli/reg_impl/2015/1998/eng/compare?from=…&amp;to=…. */
+  /**
+   * Returns the address of the page, with its query. For example, {@code
+   * /eli/reg_impl/2015/1998/eng/compare?from=…&amp;to=…}.
+   */
   private static String self(HttpServletRequest request) {
     return request.getRequestURI() + "?" + request.getQueryString();
   }
 
   /**
-   * What a comparison's page shows: the act, the versions that apply on the dates asked in the
-   * language, From the earlier; without dates, the latest and the one before it; limited to the
-   * changes of the act asked for, if it is one between them.
+   * The data that a comparison page shows:
+   *
+   * <ul>
+   *   <li>the act
+   *   <li>the two versions that apply on the dates asked for, in the language. From is always the
+   *       earlier one. Without dates, they are the version that applies today and the version
+   *       before it.
+   *   <li>the act asked for, to limit the comparison to its changes, if that act is between the two
+   *       versions
+   * </ul>
    */
   private final class Page {
     final Eli eli;
@@ -655,13 +709,13 @@ class CompareController {
       language = Requests.language(code);
       act = acts.find(eli).orElseThrow(Requests::notFound);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
-      // without dates, the version that applies today, the current one (Design D-18)
+      // Without dates, use the version that applies today. If none applies today, use the latest.
       var current = timeline.applicableOn(Requests.today(clock)).orElseGet(timeline::latest);
       var later =
           to != null
               ? timeline.applicableOn(to).orElseThrow(Requests::notFound)
               : from == null && only != null ? integrating(only).orElse(current) : current;
-      // the first version, without From, against the one after it (Design D-22)
+      // Without From, if To is the first version, compare it with the version after it.
       if (to != null && from == null && timeline.predecessor(later).isEmpty()) {
         later = timeline.successor(later).orElse(later);
       }
@@ -682,8 +736,8 @@ class CompareController {
     }
 
     /**
-     * Whether {@code from}, {@code to} and {@code only} are this comparison's address: its
-     * versions' days, and an act between them, if any.
+     * Returns whether {@code from}, {@code to} and {@code only} are the canonical address of this
+     * comparison. That is, the first days of its two versions, and an act between them, if any.
      */
     boolean at(@Nullable LocalDate from, @Nullable LocalDate to, @Nullable String only) {
       return this.from.date().equals(from)
@@ -692,8 +746,9 @@ class CompareController {
     }
 
     /**
-     * The first version in the language that integrates the act {@code celex}: where a comparison
-     * limited to its changes goes without From and To (a search's "What it changed in …").
+     * Returns the first version in the language that integrates the act {@code celex}. A comparison
+     * limited to the changes of that act goes there if it has no From and no To. For example, the
+     * "What it changed in …" link of a search goes there.
      */
     private Optional<Version> integrating(String celex) {
       return timeline.versions().stream()
@@ -704,7 +759,10 @@ class CompareController {
           .findFirst();
     }
 
-    /** The version in the language after From, up to To, that integrates {@code amending}. */
+    /**
+     * Returns the version in the language that integrates {@code amending}. The version is after
+     * From and not after To.
+     */
     Optional<Version> step(ActIdentifier amending) {
       return timeline.versions().stream()
           .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
@@ -712,21 +770,18 @@ class CompareController {
           .findFirst();
     }
 
-    /** The version in the language before {@code version}: the text just before its changes. */
+    /**
+     * Returns the version in the language before {@code version}. That is the text just before its
+     * changes. If there is no version before it, returns {@code version}.
+     */
     Version earlier(Version version) {
       return timeline.predecessor(version).orElse(version);
     }
 
     /**
-     * The changes, once the act is prepared in the language: why a text can't be compared, if
-     * either can't, with Try again posting to {@code self}; why the act couldn't be, if none of its
-     * texts could, with the way back to the reader's last search's {@code results}, if any; that
-     * either is being prepared, if it appeared since; else the Changes view, loaded from beside the
-     * page.
-     */
-    /**
-     * What the page says where both ends are one version (Design D-28): that they are, with its
-     * comparison with the version before, if any, and its page.
+     * Returns what the page says if both ends are the same version. It says so, and links to the
+     * page of the version. It also links to the comparison of the version with the version before
+     * it, if there is one.
      */
     JteModel same() {
       return templates.catalogueSame(
@@ -742,11 +797,24 @@ class CompareController {
           Links.read(eli, to, language));
     }
 
+    /**
+     * Returns the changes, after the act is prepared in the language.
+     *
+     * <ul>
+     *   <li>If no text of the act could be built, it returns the failure panel of the act. The
+     *       panel links back to the last search of the reader, {@code results}, if there is one.
+     *   <li>If either text could not be built, it returns the failure panel of that text. Try again
+     *       posts to {@code self}.
+     *   <li>If both texts are built, it returns the Changes view, which loads from beside the page.
+     *   <li>Otherwise, either version appeared after the act was prepared. It says that the text is
+     *       being prepared.
+     * </ul>
+     */
     JteModel changes(Preparation preparation, String self, Chrome.@Nullable Results results) {
       if (preparation.ready() == 0) {
         return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));
       }
-      // both in the language, as the comparison's versions are picked from its timeline
+      // Both texts are in the language, because the versions come from the timeline in it.
       var earlier = Objects.requireNonNull(preparation.texts().get(from));
       var later = Objects.requireNonNull(preparation.texts().get(to));
       if (earlier instanceof Text.Failed failed) {
@@ -760,7 +828,7 @@ class CompareController {
       if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
         return templates.catalogueCompareReady(Links.changes(eli, from, to, language, only, view));
       }
-      // either end a version that appeared since, being prepared
+      // Either end is a version that appeared since, and it is being prepared.
       return templates.catalogueTextArriving();
     }
   }

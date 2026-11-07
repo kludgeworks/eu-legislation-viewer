@@ -10,8 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 
 /**
- * Acts through the module's API, kept in Postgres (in a container): read from Cellar the first
- * time, from the store after, Cellar being OneActCellar.
+ * Tests acts through the module's API, kept in Postgres in a container. The module reads an act
+ * from Cellar the first time and from the store after that. Cellar is {@link OneActCellar}.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, OneActCellar.class})

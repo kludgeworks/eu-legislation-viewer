@@ -8,9 +8,10 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A legal text's tree (Encoder): its root, and every node and overlay below it, each once.
+ * The tree of a legal text, which {@link Encoder} makes. It holds its root, and every node and
+ * overlay below the root, each once.
  *
- * @param root the text's identity
+ * @param root the identity of the text
  */
 public record Tree(
     ContentHash root, Map<ContentHash, Node> nodes, Map<ContentHash, Overlay> overlays) {
@@ -20,12 +21,13 @@ public record Tree(
     CONTAINER
   }
 
-  /** A child of a container, with the overlay of what was taken out of it, if anything. */
+  /** A child of a container. If something was taken out of the child, the edge has its overlay. */
   public record Edge(ContentHash child, @Nullable ContentHash overlay) {}
 
   /**
-   * A node: a leaf's JSON, or a container's name and attributes ({@code {"n", "a"}}), its children
-   * beside it; its weight, the bytes of its leaves' JSON.
+   * A node. Its content is the JSON of a leaf, or the name and attributes of a container ({@code
+   * {"n", "a"}}). The children of a container are kept beside its content. Its weight is the number
+   * of bytes of the JSON of its leaves.
    */
   public record Node(
       ContentHash hash, Kind kind, byte[] content, long weight, List<Edge> children) {}

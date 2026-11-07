@@ -11,16 +11,19 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Acts by the words of their title (Design: Home page): Cellar's, in English, one query when a
- * reader asks, the closest match first. Regulations, directives and decisions only, the acts a
- * reader compares the versions of, or the changes of.
+ * Acts by the words of their title. The search runs on Cellar, in English, as one query when a
+ * reader asks. The closest match comes first. It finds only regulations, directives and decisions.
+ * These are the acts whose versions, or whose changes, a reader compares.
  */
 @Repository
 public interface Search {
-  /** A page of the acts matching {@code query}. */
+  /** Returns a page of the acts that match {@code query}. */
   Found matching(Query query);
 
-  /** What kind of act a search is for, as its filter's link names it (?type=regulation). */
+  /**
+   * What kind of act a search is for, as the link of its filter names it. For example, {@code
+   * ?type=regulation}.
+   */
   enum Kind {
     ALL("all", "All"),
     REGULATION("regulation", "Regulations"),
@@ -44,7 +47,7 @@ public interface Search {
       return label;
     }
 
-    /** The kind by its code; none for one there isn't. */
+    /** Returns the kind with this code, or empty if there is no such kind. */
     public static Optional<Kind> of(String code) {
       for (var kind : values()) {
         if (kind.code.equals(code)) {
@@ -58,17 +61,18 @@ public interface Search {
   /**
    * A search.
    *
-   * @param words the title's words, as a reader typed them: letters and digits, lower case
+   * @param words the words of the title, as a reader typed them, in lower case. Each word has only
+   *     letters and digits.
    * @param kind the kind of act
-   * @param offset how many matches the page is after
-   * @param size how many the page has, at most
+   * @param offset how many matches come before the page
+   * @param size the most matches that the page has
    */
   @ValueObject
   record Query(List<String> words, Kind kind, int offset, int size) {
-    /** A word: letters and digits, in any script. */
+    /** Matches a word of letters and digits, in any script. */
     private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]+");
 
-    /** The most words a search takes: those after them are left out. */
+    /** The most words that a search takes. Words after them are left out. */
     public static final int MOST_WORDS = 10;
 
     public Query {
@@ -82,8 +86,8 @@ public interface Search {
     }
 
     /**
-     * The search for the words in {@code text}, what is between them left out (punctuation, a
-     * hyphen); none if it has none.
+     * Returns the search for the words in {@code text}. What is between the words, such as
+     * punctuation or a hyphen, is left out. Returns empty if the text has no words.
      */
     public static Optional<Query> of(String text, Kind kind, int offset, int size) {
       var words =
@@ -100,7 +104,7 @@ public interface Search {
    * A page of matches.
    *
    * @param acts the acts, the closest match first
-   * @param more whether there are more after them
+   * @param more whether there are more matches after them
    */
   @ValueObject
   record Found(List<Match> acts, boolean more) {
@@ -117,7 +121,7 @@ public interface Search {
    * @param type its resource type, if Cellar has one
    * @param title its English title
    * @param inForce whether it is in force
-   * @param amends the acts it amends, none for one amending none
+   * @param amends the acts it amends, or an empty list for an act that amends none
    */
   @ValueObject
   record Match(

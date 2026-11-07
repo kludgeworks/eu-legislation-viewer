@@ -13,9 +13,9 @@ import java.util.function.BiFunction;
 import org.springframework.stereotype.Component;
 
 /**
- * A document's Formex from Cellar: the files of its latest Formex manifestation, read one at a time
- * as they come. Only the XML: the converter reads no image. Cellar not answering is the source
- * unavailable (SourceUnavailableException).
+ * Reads the Formex of a document from Cellar. It reads the files of the latest Formex manifestation
+ * of the document, one at a time as they come. It reads only the XML files, because the converter
+ * reads no images. If Cellar does not answer, it throws {@link SourceUnavailableException}.
  */
 @Component
 class CellarFormexSource implements FormexSource {

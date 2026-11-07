@@ -5,10 +5,15 @@ import java.util.List;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * A text's outline: its units with a title (legal-text's rank: articles, annexes, divisions, an
- * annex's headed levels), in order, each with the units ranked below it until the next of its rank
- * or above. Annex levels, which legal-text keeps flat, nest by their rank too. And the eIds of all
- * its units, titled or not, to find a unit by (Location).
+ * The outline of a text.
+ *
+ * <p>It holds the units of the text that have a title, in order. These are the units with a rank in
+ * legal-text: articles, annexes, divisions and the headed levels of an annex. Each unit holds the
+ * units ranked below it, until the next unit of its rank or higher. The levels of an annex, which
+ * legal-text keeps flat, also nest by their rank.
+ *
+ * <p>It also holds the eIds of all its units, with a title or not. These find a unit for a {@code
+ * Location}.
  *
  * @param entries the outermost units
  * @param eIds the eIds of all its units and other containers that have one, in document order
@@ -21,7 +26,7 @@ public record Outline(List<Entry> entries, List<String> eIds) {
     eIds = List.copyOf(eIds);
   }
 
-  /** The outline of a text that has none: no units. */
+  /** Returns the outline of a text that has no units. */
   public static Outline empty() {
     return new Outline(List.of(), List.of());
   }
@@ -29,10 +34,11 @@ public record Outline(List<Entry> entries, List<String> eIds) {
   /**
    * A unit in the outline.
    *
-   * @param eId its eId, where the text has it (art_3, anx/pnt_1.2)
-   * @param kind legal-text's kind (article, annex, division, level)
-   * @param num its label as printed ("Article 3", "ANNEX", "1.2"); empty if it has none
-   * @param heading its heading, its lines joined by spaces; empty if it has none
+   * @param eId its eId, where the text has it. For example, {@code art_3} or {@code anx/pnt_1.2}.
+   * @param kind its kind in legal-text. For example, article, annex, division or level.
+   * @param num its label as printed. For example, "Article 3", "ANNEX" or "1.2". Empty if it has
+   *     none.
+   * @param heading its heading, with its lines joined by spaces. Empty if it has none.
    * @param entries the units ranked below it, in order
    */
   @ValueObject

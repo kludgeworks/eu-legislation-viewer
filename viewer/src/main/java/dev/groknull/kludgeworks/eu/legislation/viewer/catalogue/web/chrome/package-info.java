@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: MIT
 /**
- * What every page has around it (Chrome, which controllers make from the request and pass to the
- * layout): the reader's colour theme, set by POST /theme (ThemeController), and where the page is.
- * Site-wide, not the catalogue's: here while the catalogue has the only pages.
+ * What every page has around its content, {@link Chrome}. Controllers make it from the request and
+ * pass it to the layout. It holds the colour theme of the reader and the location of the page.
+ * {@code POST /theme} sets the theme, in {@link ThemeController}.
+ *
+ * <p>This package is for the whole site, not only for the catalogue. It is here because the
+ * catalogue has the only pages for now.
  */
 @InfrastructureRing
 @NullMarked

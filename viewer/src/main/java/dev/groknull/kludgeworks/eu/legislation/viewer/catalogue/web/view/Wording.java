@@ -16,22 +16,28 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/** How the pages write dates, acts and provisions: in English, as the design has them. */
+/** The wording that the pages use for dates, acts and provisions. The wording is in English. */
 public final class Wording {
   private static final DateTimeFormatter DATE =
       DateTimeFormatter.ofPattern("d MMMM uuuu", Locale.ENGLISH);
 
-  /** A corrigendum's CELEX: the act's, then R and its number (32019R0103R(01)). */
+  /**
+   * Matches the CELEX of a corrigendum. This is the CELEX of the act, then R and the number of the
+   * corrigendum in parentheses. For example, 32019R0103R(01).
+   */
   private static final Pattern CORRIGENDUM = Pattern.compile("(.+)R\\((\\d+)\\)");
 
   private Wording() {}
 
-  /** A language by its name in English, as the pages are written: English, French. */
+  /**
+   * Returns the name of a language in English, because the pages are in English. For example,
+   * "English" or "French".
+   */
   public static String language(Language language) {
     return Locale.forLanguageTag(language.iso()).getDisplayLanguage(Locale.ENGLISH);
   }
 
-  /** Why a text couldn't be made: the Publications Office didn't answer. */
+  /** Returns why a text could not be made. For example, "the Publications Office didn't answer". */
   public static String failure(Failure failure) {
     return switch (failure) {
       case NO_FORMEX -> "the Publications Office has no Formex of it in this language";
@@ -43,14 +49,20 @@ public final class Wording {
     };
   }
 
-  /** 1 June 2017. */
+  /** Returns the date in words. For example, "1 June 2017". */
   public static String date(LocalDate date) {
     return DATE.format(date);
   }
 
   /**
-   * An act by its number, as the Official Journal cites it (2017/815); a corrigendum by its number
-   * and the act's (corrigendum 1 to 2019/103); anything else by its CELEX.
+   * Returns how the pages cite an act.
+   *
+   * <ul>
+   *   <li>An act is cited by its number, as the Official Journal cites it. For example, 2017/815.
+   *   <li>A corrigendum is cited by its number and the act. For example, "corrigendum 1 to
+   *       2019/103".
+   *   <li>Anything else is cited by its CELEX.
+   * </ul>
    */
   public static String act(ActIdentifier act) {
     var corrigendum = CORRIGENDUM.matcher(act.celex());
@@ -64,9 +76,15 @@ public final class Wording {
   }
 
   /**
-   * What made a version: the act as published (the original); made by 2019/103, 2019/1583 · also 1
-   * corrigendum, the corrigenda counted, not named (Design: Corrigenda); or that Cellar lists
-   * nothing.
+   * Returns what made a version.
+   *
+   * <ul>
+   *   <li>For the original version, returns "the act as published".
+   *   <li>For a version made by acts, names the acts and counts the corrigenda without names. For
+   *       example, "made by 2019/103, 2019/1583 · also 1 corrigendum".
+   *   <li>For a version made only by corrigenda, names the corrigenda.
+   *   <li>If Cellar lists nothing, says that no amending act is listed.
+   * </ul>
    */
   public static String made(Version version) {
     if (version.kind() == Version.Kind.ORIGINAL) {
@@ -89,10 +107,11 @@ public final class Wording {
   }
 
   /**
-   * How {@code each}, an act {@code act} integrates (or {@code act} itself), was published, as its
-   * hover says (Design D-36, D-42, D-21): 2026/449: Commission Implementing Regulation (EU)
-   * 2026/449 of 27 February 2026 amending … · OJ L, 2026/449, 2.3.2026; its title in English where
-   * it has none in {@code language}; only its name where the Publications Office has nothing.
+   * Returns how {@code each} was published, as its hover says it. {@code each} is an act that
+   * {@code act} integrates, or {@code act} itself. For example, "2026/449: Commission Implementing
+   * Regulation (EU) 2026/449 of 27 February 2026 amending … · OJ L, 2026/449, 2.3.2026". If the act
+   * has no title in {@code language}, the title is in English. If the Publications Office has
+   * nothing, returns only the name of the act.
    */
   public static String published(Act act, ActIdentifier each, Language language) {
     var name = act(each);
@@ -108,7 +127,7 @@ public final class Wording {
         .orElse(name);
   }
 
-  /** {@code acts}' publications, a line each, as a hover lists them. */
+  /** Returns the publications of {@code acts}, one line for each act, as a hover lists them. */
   public static String published(Act act, List<ActIdentifier> acts, Language language) {
     return acts.stream()
         .map(each -> published(act, each, language))
@@ -116,9 +135,15 @@ public final class Wording {
   }
 
   /**
-   * What made a version, as its card says it: as {@link #made(Version)}, the act as published with
-   * its Official Journal reference; where the Publications Office lists no act, the acts the
-   * version's own text names ({@code named}, Design D-19), saying so.
+   * Returns what made a version, as its card says it. The text is the same as {@link
+   * #made(Version)}, with two differences.
+   *
+   * <ul>
+   *   <li>For the original version, it adds the Official Journal reference to "the act as
+   *       published".
+   *   <li>If the Publications Office lists no act, it names the acts that the text of the version
+   *       names, from {@code named}. It says that they come from the consolidated text.
+   * </ul>
    */
   public static String made(Act act, Version version, List<ActIdentifier> named) {
     if (version.kind() == Version.Kind.ORIGINAL) {
@@ -137,8 +162,14 @@ public final class Wording {
   }
 
   /**
-   * The acts a version's card names, whose publications its made line's hover lists: the act, for
-   * the act as published; those the version integrates; else those its text names.
+   * Returns the acts that the card of a version names. The hover of its made line lists the
+   * publications of these acts.
+   *
+   * <ul>
+   *   <li>For the act as published, returns the act.
+   *   <li>Else returns the acts that the version integrates.
+   *   <li>If there are none, returns the acts that its text names.
+   * </ul>
    */
   public static List<ActIdentifier> makers(Act act, Version version, List<ActIdentifier> named) {
     if (version.kind() == Version.Kind.ORIGINAL) {
@@ -151,14 +182,15 @@ public final class Wording {
     return acts.stream().map(Wording::act).collect(Collectors.joining(", "));
   }
 
-  /** Whether {@code act} is a corrigendum: 32019R0103R(01). */
+  /** Returns whether {@code act} is a corrigendum. For example, 32019R0103R(01) is one. */
   public static boolean corrigendum(ActIdentifier act) {
     return CORRIGENDUM.matcher(act.celex()).matches();
   }
 
   /**
-   * A lag, on a date within it: On this date, 2017/815 already applied (from 1 June 2017, Article 2
-   * of 2017/815). No consolidated version includes it until 7 June 2017.
+   * Returns the text of a lag, for a date within the lag. For example, "On this date, 2017/815
+   * already applied (from 1 June 2017, Article 2 of 2017/815). No consolidated version includes it
+   * until 7 June 2017."
    */
   public static String lagOn(Unconsolidated lag) {
     var act = act(lag.act());
@@ -175,8 +207,9 @@ public final class Wording {
   }
 
   /**
-   * A lag, for a version it overlaps: From 1 June 2017 this text lags the law: 2017/815 already
-   * applied, and no version includes it until 7 June 2017.
+   * Returns the text of a lag, for a version that the lag overlaps. For example, "From 1 June 2017
+   * this text lags the law: 2017/815 already applied, and no version includes it until 7 June
+   * 2017."
    */
   public static String lagOf(Unconsolidated lag) {
     return "From "
@@ -189,9 +222,9 @@ public final class Wording {
   }
 
   /**
-   * That a version's text may lag the law, as its card says it in grey (Design D-24): This text may
-   * lag the law: 2019/413, in force from 16 March 2019, applies from a date its Article 3 sets, and
-   * no version includes it until 15 March 2021.
+   * Returns the text that says that the text of a version may lag the law. The card shows it in
+   * grey. For example, "This text may lag the law: 2019/413, in force from 16 March 2019, applies
+   * from a date its Article 3 sets, and no version includes it until 15 March 2021."
    */
   public static String mayLag(Act.Uncertain uncertain) {
     var provisions = uncertain.clause().provisions();
@@ -206,7 +239,7 @@ public final class Wording {
         + ".";
   }
 
-  /** Article 2, Annex, Annex II. */
+  /** Returns the name of a provision. For example, "Article 2", "Annex" or "Annex II". */
   public static String provision(Provision provision) {
     var type = provision.type().name();
     var name = type.charAt(0) + type.substring(1).toLowerCase(Locale.ROOT);

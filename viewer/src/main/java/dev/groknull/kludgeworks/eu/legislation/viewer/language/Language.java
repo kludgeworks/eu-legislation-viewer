@@ -7,8 +7,9 @@ import java.util.Locale;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * One of the 24 official languages of the EU, by the code of the EU's language authority table
- * (Cellar's: ENG) and by ISO 639-1 (the legal text's xml:lang: en).
+ * One of the 24 official languages of the EU. It has the code of the EU's language authority table,
+ * which Cellar uses, for example ENG. It also has its ISO 639-1 code, which the legal text uses in
+ * {@code xml:lang}, for example en.
  */
 @ValueObject
 public enum Language {
@@ -38,8 +39,8 @@ public enum Language {
   SWE("sv", "Swedish", "svenska", "Europeiska unionens officiella tidning");
 
   /**
-   * The EU's protocol order: by each language's name in itself (Interinstitutional Style Guide,
-   * 7.2.1), as EUR-Lex lists them.
+   * The EU's protocol order. It sorts the languages by their names in themselves, as section 7.2.1
+   * of the Interinstitutional Style Guide says. EUR-Lex lists the languages in this order.
    */
   private static final List<Language> PROTOCOL =
       List.of(
@@ -58,42 +59,54 @@ public enum Language {
     this.journal = journal;
   }
 
-  /** The 24, in the EU's protocol order: български, español, čeština … suomi, svenska. */
+  /**
+   * Returns the 24 languages in the EU's protocol order. For example, български, español, čeština …
+   * suomi, svenska.
+   */
   public static List<Language> inProtocolOrder() {
     return PROTOCOL;
   }
 
-  /** Its name in English: Irish, as a reason a version lacks it says it. */
+  /**
+   * Returns its name in English, for example Irish. The reason why a version lacks the language
+   * uses this name.
+   */
   public String english() {
     return english;
   }
 
-  /** The EU authority table's code: ENG, as Cellar names the language. */
+  /** Returns the code of the EU authority table, for example ENG. Cellar names the language so. */
   public String code() {
     return name();
   }
 
-  /** ISO 639-1: en, as the legal text's xml:lang, HTTP's and the API's language tags have it. */
+  /**
+   * Returns the ISO 639-1 code, for example en. The {@code xml:lang} of the legal text and the
+   * language tags of HTTP and of the API use this code.
+   */
   public String iso() {
     return iso;
   }
 
-  /** Its name in itself, as EUR-Lex lists the languages: English, Deutsch, français. */
+  /**
+   * Returns its name in itself, for example English, Deutsch or français. EUR-Lex lists the
+   * languages by this name.
+   */
   public String endonym() {
     return endonym;
   }
 
   /**
-   * The Official Journal's name in this language, as its header prints it since the Treaty of Nice
-   * (1 February 2003): of the European Union.
+   * Returns the name of the Official Journal in this language, as its header prints it. Since the
+   * Treaty of Nice, on 1 February 2003, the name is "Official Journal of the European Union".
    */
   public String journal() {
     return journal;
   }
 
   /**
-   * The language with this code of the EU authority table (ENG; eng, as an ELI has it), in either
-   * case.
+   * Returns the language with this code of the EU authority table, in upper or lower case. For
+   * example, ENG, or eng as an ELI has it.
    */
   public static Language ofCode(String code) {
     return Arrays.stream(values())
@@ -102,7 +115,7 @@ public enum Language {
         .orElseThrow(() -> new IllegalArgumentException("Not an official EU language: " + code));
   }
 
-  /** The language with this ISO 639-1 code (en), in either case. */
+  /** Returns the language with this ISO 639-1 code, for example en, in upper or lower case. */
   public static Language ofIso(String iso) {
     return Arrays.stream(values())
         .filter(language -> language.iso.equals(iso.toLowerCase(Locale.ROOT)))

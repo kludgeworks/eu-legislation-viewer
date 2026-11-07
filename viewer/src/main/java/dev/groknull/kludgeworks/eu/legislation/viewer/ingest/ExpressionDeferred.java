@@ -5,8 +5,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import org.jmolecules.event.annotation.DomainEvent;
 
 /**
- * An attempt at building an expression failed in a way trying again may mend (Cellar didn't answer,
- * the store was down): it is back in the queue, to be tried again a little later.
+ * An attempt to build an expression failed, and a new attempt may succeed. For example, Cellar did
+ * not answer, or the store was down. The expression is back in the queue, to be tried again a
+ * little later.
  *
  * @param attempt the attempt that failed, from 1
  * @param detail what went wrong, for a person

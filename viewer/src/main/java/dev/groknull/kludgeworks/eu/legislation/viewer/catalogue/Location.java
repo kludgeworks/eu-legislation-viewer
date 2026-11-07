@@ -13,20 +13,30 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Where in an act an amendment acts, as Cellar codes it (fd_370): AR 89 PA 1 ALN 1 (Article 89(1),
- * first subparagraph), AN PO 8.1.2.3 PTA (c) (the annex's point 8.1.2.3(c)), AN I SCT I PTA (i).
- * Found among a text's units by their eIds (Research: joining Cellar's locations to our units):
- * each code is one step down, to the one unit below with its number, a child before any further
- * descendant, as the frames our eIds keep flat or add (an annex's levels) differ from Cellar's: a
- * chapter of an annex can be a point beside its own (anx/pnt_3, anx/pnt_3.0.1), or not there at
- * all. Codes finer than our units (a sentence, an indent of a table) leave the unit they are in.
+ * Where in an act an amendment acts, as Cellar codes it in {@code fd_370}. For example:
  *
- * @param code the location as Cellar writes it, its codes without their URIs
+ * <ul>
+ *   <li>{@code AR 89 PA 1 ALN 1} is the first subparagraph of Article 89(1).
+ *   <li>{@code AN PO 8.1.2.3 PTA (c)} is point 8.1.2.3(c) of the annex.
+ *   <li>{@code AN I SCT I PTA (i)}.
+ * </ul>
+ *
+ * <p>{@link #in} finds the location among the units of a text, by their eIds. Each code is one step
+ * down, to the one unit below that has its number. A child is tried before any further descendant.
+ * This is necessary because the frames of our eIds differ from those of Cellar. Our eIds keep some
+ * frames flat, and add others, such as the levels of an annex. For example, a chapter of an annex
+ * can be a point beside its own points, such as {@code anx/pnt_3} and {@code anx/pnt_3.0.1}. Or the
+ * chapter is not there at all.
+ *
+ * <p>A code finer than our units, such as a sentence or an indent of a table, leaves the location
+ * at the unit that it is in.
+ *
+ * @param code the location as Cellar writes it, with its codes but without their URIs
  */
 @ValueObject
 public record Location(String code) {
 
-  /** Each code's eId names, in the order tried. */
+  /** The eId names for each code, in the order tried. */
   private static final Map<String, List<String>> STEPS =
       Map.ofEntries(
           Map.entry("AR", List.of("art")),
@@ -45,37 +55,47 @@ public record Location(String code) {
           Map.entry("CHA", List.of("cpt", "chp", "pnt")),
           Map.entry("APP", List.of("level_ATTACHMENT")));
 
-  /** Codes that may only frame what our eIds keep flat: passed when no unit has them. */
+  /**
+   * Codes that may only frame what our eIds keep flat. A step with such a code is passed when no
+   * unit has it.
+   */
   private static final Set<String> FRAMES = Set.of("TIT", "CHA", "SCT", "SBS", "PRT");
 
-  /** Codes finer than our units: the location is in the unit they are in. */
+  /** Codes finer than our units. The location is in the unit that contains them. */
   private static final Set<String> FINER = Set.of("TXT", "TEXT", "FR", "L", "TAB", "COL");
 
-  /** An authority code as Cellar writes it: {AR|http://…/fd_370/AR}. */
+  /** Matches an authority code as Cellar writes it, for example {@code {AR|http://…/fd_370/AR}}. */
   private static final Pattern CODE = Pattern.compile("\\{([A-Z0-9/-]+)\\|[^}]*}");
 
-  /** An article and paragraph run together: AR 11.5, AR 1.4. */
+  /**
+   * Matches an article and a paragraph run together, for example {@code AR 11.5} or {@code AR 1.4}.
+   */
   private static final Pattern ARTICLE_PARAGRAPH = Pattern.compile("(\\d+[a-z]*)\\.(\\d+[a-z]*)");
 
-  /** A paragraph without its code: AR 81 .3; 5BI is 5a (bis). */
+  /**
+   * Matches a paragraph without its code, for example the {@code .3} in {@code AR 81 .3}. The
+   * suffix {@code BI} means bis, so {@code 5BI} is paragraph 5a.
+   */
   private static final Pattern PARAGRAPH = Pattern.compile("\\.(\\d+)(BI)?");
 
   private static final Pattern ROMAN = Pattern.compile("[IVXLC]+");
 
-  /** The location in Cellar's annotation, its codes' URIs dropped. */
+  /** Returns the location in Cellar's annotation, without the URIs of its codes. */
   public static Location parse(String annotation) {
     return new Location(CODE.matcher(annotation).replaceAll("$1").strip());
   }
 
   /**
-   * The units of a text it is, among {@code eIds} (in document order); none where a code finds no
-   * unit or several. A range of points (PO 11.3.2-11.3.5) is each unit from one to the other.
+   * Returns the units of a text that it is, among {@code eIds} in document order. Returns empty
+   * where a code finds no unit or several units. A range of points, for example {@code PO
+   * 11.3.2-11.3.5}, is each unit from the first to the last.
    */
   public Optional<Found> in(List<String> eIds) {
     var units = new HashSet<>(eIds);
     var tokens = tokens();
     var at = "";
-    // the unit a frame (a chapter) was found in: what follows it may be beside it, not in it
+    // The unit in which a frame, such as a chapter, was found. What follows the frame may be
+    // beside it, not in it.
     String outer = null;
     var within = false;
     for (var i = 0; i < tokens.size(); i++) {
@@ -133,7 +153,7 @@ public record Location(String code) {
       } else if (found.isEmpty() && FRAMES.contains(token)) {
         // a frame our eIds don't have
       } else if (found.isEmpty() && (token.equals("ALN") || token.equals("PA"))) {
-        // a subparagraph or paragraph our units don't number (a point's)
+        // A subparagraph or a paragraph that our units do not number, for example one of a point.
         within = true;
       } else {
         return Optional.empty();
@@ -143,8 +163,8 @@ public record Location(String code) {
   }
 
   /**
-   * The units named {@code names} and {@code number} below {@code at}, or else, where it is a
-   * frame, below {@code outer}, the unit it is in.
+   * Returns the units named {@code names} and {@code number} below {@code at}. If there are none,
+   * and {@code at} is a frame, returns those below {@code outer}, the unit that the frame is in.
    */
   private static List<String> below(
       Set<String> units, String at, @Nullable String outer, List<String> names, String number) {
@@ -153,8 +173,8 @@ public record Location(String code) {
   }
 
   /**
-   * The units named {@code names} and {@code number} below {@code at}: its child, or else any of
-   * its descendants.
+   * Returns the units named {@code names} and {@code number} below {@code at}. These are its
+   * children if there are any, or else any of its descendants.
    */
   private static List<String> below(
       Set<String> units, String at, List<String> names, String number) {
@@ -194,9 +214,16 @@ public record Location(String code) {
           Map.entry("APP", "Appendix"));
 
   /**
-   * The unit it names, as a page cites it: point 1.2.3; point 8.1.2.3(c), a lettered point after
-   * the point it is in; Article 89(1); the annex, for the one annex. What is finer than a unit (a
-   * sentence, a subparagraph) is left out.
+   * Returns the unit that it names, as a page cites it. For example:
+   *
+   * <ul>
+   *   <li>point 1.2.3
+   *   <li>point 8.1.2.3(c), where a lettered point follows the point that it is in
+   *   <li>Article 89(1)
+   *   <li>the annex, for the one annex of an act.
+   * </ul>
+   *
+   * <p>What is finer than a unit, such as a sentence or a subparagraph, is left out.
    */
   public String name() {
     var tokens = tokens();
@@ -219,8 +246,8 @@ public record Location(String code) {
       }
       i++;
       var number = next.replace("\"", "");
-      // a point (c) of point 8.1.2.3, a paragraph (1) of Article 89: cited after it; a
-      // subparagraph, not cited
+      // A point (c) of point 8.1.2.3, or a paragraph (1) of Article 89, is cited after the unit
+      // that it is in. A subparagraph is not cited.
       if (token.equals("ALN") && noun != null) {
         continue;
       } else if (number.startsWith("(") && noun != null && !cited.isEmpty()) {
@@ -238,7 +265,10 @@ public record Location(String code) {
     return cited.isEmpty() ? noun : noun + " " + cited;
   }
 
-  /** Its codes and numbers, with the run-together ones Cellar has apart: AR 11.5 is AR 11 PA 5. */
+  /**
+   * Returns its codes and numbers. Codes that Cellar runs together are split. For example, {@code
+   * AR 11.5} becomes {@code AR 11 PA 5}.
+   */
   private List<String> tokens() {
     var tokens = new ArrayList<String>();
     for (var word : code.replace("\"", "").split("\\s+")) {
@@ -255,7 +285,10 @@ public record Location(String code) {
     return tokens;
   }
 
-  /** A number as our eIds write it: (c) and C) are c; roman numerals (I, IV) as they are. */
+  /**
+   * Returns a number as our eIds write it. For example, {@code (c)} and {@code C)} become {@code
+   * c}. Roman numerals, such as I or IV, stay as they are.
+   */
   private static String number(String value) {
     var bare = value.replaceAll("[()]", "");
     return ROMAN.matcher(bare).matches() ? bare : bare.toLowerCase(Locale.ROOT);
@@ -266,11 +299,11 @@ public record Location(String code) {
   }
 
   /**
-   * The units a location is.
+   * The units that a location is.
    *
    * @param eIds the unit, or for a range each unit in it, in document order
-   * @param within whether the location is finer than the unit, which it is in: a sentence, a
-   *     subparagraph our units don't number
+   * @param within whether the location is finer than the unit that it is in. For example, a
+   *     sentence, or a subparagraph that our units do not number.
    */
   @ValueObject
   public record Found(List<String> eIds, boolean within) {
@@ -279,7 +312,7 @@ public record Location(String code) {
     }
   }
 
-  /** {@inheritDoc} As Cellar writes it, without its codes' URIs. */
+  /** {@inheritDoc} It is the location as Cellar writes it, without the URIs of its codes. */
   @Override
   public String toString() {
     return code;

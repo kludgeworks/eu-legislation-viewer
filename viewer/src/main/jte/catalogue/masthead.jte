@@ -1,11 +1,13 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView
 @param MastheadView masthead
-<%-- The act page's head (MastheadView): the act's title (in English up to its date, the rest under
-     it), its ELI and CELEX, quiet links to EUR-Lex (↗), the
-     language switch (details: the 24 languages in the EU's order, each a link to the same page in
-     it, the page's bold, those a version shown isn't in greyed, why on hover), and the
-     mode switch, the current mode marked, the other a link; not yet a link while the act is being
-     prepared --%>
+<%-- Shows the head of an act's page. MastheadView supplies the data. The act's title shows in
+     English up to its date, and the rest of the title shows under it. Then come the act's ELI and
+     CELEX, as quiet links to EUR-Lex (↗).
+     The language switch is a details element. It lists the 24 EU languages in the EU's order. Each
+     language links to the same page in that language. The page's language is bold. A language that
+     a version on the page is not in is greyed, and its hover says why.
+     The mode switch marks the current mode and links to the other mode. While the act is being
+     prepared, neither mode is a link. --%>
 <header class="mast">
   <div>
     <h1 lang="${masthead.titleLanguage()}">${masthead.title()}</h1>

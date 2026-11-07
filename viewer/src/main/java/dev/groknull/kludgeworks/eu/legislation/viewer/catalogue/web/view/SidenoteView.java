@@ -29,39 +29,66 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Who made a difference, as its sidenote says it beside its note (Design: Mode: Compare, Sidenote):
- * the acts between the two versions that the amendment markers on the unit in the later text or
- * Cellar's amendments of it name (the markers name only the last act to change a unit; a deleted
- * one's, the deletion it is kept struck under or the unit it was in replaced whole), as a chain in
- * the order the versions integrate them: Inserted by 2019/103, then replaced by 2021/255. Each with
- * when it applies, from its own dates (never the version's); and what the unit was before, by the
- * markers in the earlier text.
+ * The sidenote of a difference. It shows beside the note of the difference and says who made the
+ * difference.
  *
- * <p>Acts of one version (Design: Acts sharing a version) leave no text between their changes:
- * where the markers name an act of a version, Cellar's other acts of it are left out (the markers
- * are followed); the acts the markers name together changed it together, one wording, which the
- * sidenote says, and, limited to one of them, that the change is theirs combined. An act only
- * Cellar names is said to be. Where neither names an act between them, and those acts are all of
- * one version, it was one of them, not known which; across versions, that no act is named, rather
- * than guess.
+ * <p>The sidenote names the acts between the two versions that made the difference. The amendment
+ * markers on the unit in the later text name these acts, or the amendments of the unit in Cellar
+ * name them. The markers name only the last act that changed a unit. For a deleted unit, the
+ * markers name one of these acts:
  *
- * <p>Which of an act's dates a provision applies from, when it has several, isn't in the texts:
- * Cellar's amendment of the unit chooses it, where its day is one of them and after the earlier
- * version, which hasn't the change (Research: where a provision's date comes from); otherwise the
- * sidenote says the act applies in stages, and that the clause says which part from when.
+ * <ul>
+ *   <li>the act of the deletion that keeps the unit struck
+ *   <li>the act that replaced, as a whole, the unit that the deleted unit was in
+ * </ul>
  *
- * @param made who made it: Replaced by 2026/449; Inserted by 2019/103, then replaced by 2021/255;
- *     Replaced by 2019/103 and 2019/1583 together; Amended by an act not known: 2019/103 or
- *     2019/1583; Deleted by an act not named, where nothing names one between the two versions
- * @param acts the acts that made it, in the order the versions integrate them: whose changes it
- *     counts in
- * @param candidates the acts one of which made it, not known which; none where it is known
- * @param why what the reader should know of who made it: that acts made it together, that only
- *     Cellar names the act, that it is new in a unit an act replaced whole; none if nothing
- * @param dates when each of those acts applies, with what sets it
- * @param before what the unit was before: Before: as replaced by 2023/566; none for an inserted one
- * @param published how the acts that made it, or might have, were published, a line each, as made's
- *     hover lists them (Design D-42); none where no act is named
+ * <p>The sidenote shows the acts as a chain, in the order that the versions integrate them. For
+ * example, "Inserted by 2019/103, then replaced by 2021/255". For each act, the sidenote says when
+ * the act applies. This date comes from the dates of the act, never from the date of the version.
+ * The sidenote also says what the unit was before, from the markers in the earlier text.
+ *
+ * <p>Acts of one version leave no text between their changes. Thus:
+ *
+ * <ul>
+ *   <li>Where the markers name an act of a version, the sidenote follows the markers. It leaves out
+ *       the other acts of that version that Cellar names.
+ *   <li>The acts that the markers name together changed the unit together, with one wording. The
+ *       sidenote says so. When the comparison is limited to one of these acts, the sidenote says
+ *       that the change is their combined change.
+ *   <li>If only Cellar names an act, the sidenote says so.
+ *   <li>If neither the markers nor Cellar name an act between the two versions, the sidenote does
+ *       not guess. If the acts between the versions are all of one version, it says that one of
+ *       them made the difference, but not which. If not, it says that no act is named.
+ * </ul>
+ *
+ * <p>An act can have several dates. The texts do not say from which of these dates a provision
+ * applies. The amendment of the unit in Cellar chooses the date, if its day is one of the dates of
+ * the act and is after the earlier version. The earlier version does not have the change. Otherwise
+ * the sidenote says that the act applies in stages, and that the clause says which part applies
+ * from when.
+ *
+ * @param made who made the difference. For example:
+ *     <ul>
+ *       <li>"Replaced by 2026/449"
+ *       <li>"Inserted by 2019/103, then replaced by 2021/255"
+ *       <li>"Replaced by 2019/103 and 2019/1583 together"
+ *       <li>"Amended by an act not known: 2019/103 or 2019/1583"
+ *       <li>"Deleted by an act not named", where nothing names an act between the two versions
+ *     </ul>
+ *
+ * @param acts the acts that made the difference, in the order that the versions integrate them. The
+ *     difference counts in the changes of each of these acts.
+ * @param candidates the acts of which one made the difference, where it is not known which act.
+ *     Empty where the act is known.
+ * @param why what the reader should know about who made the difference. For example, that acts made
+ *     it together, that only Cellar names the act, or that the unit is new in a unit that an act
+ *     replaced as a whole. Null if there is nothing to say.
+ * @param dates when each of these acts applies, with what sets the date
+ * @param before what the unit was before. For example, "Before: as replaced by 2023/566". Null for
+ *     an inserted unit.
+ * @param published how the acts that made the difference, or may have made it, were published, one
+ *     line for each act. The hover of {@code made} lists them the same way. Null where no act is
+ *     named.
  */
 public record SidenoteView(
     @Nullable String made,
@@ -79,14 +106,17 @@ public record SidenoteView(
   }
 
   /**
-   * Whether corrigenda alone made it: a correction, not an amendment, which the marks show apart
-   * (Design D-31).
+   * Returns whether only corrigenda made the difference. If so, the difference is a correction, not
+   * an amendment, and the marks show it differently.
    */
   public boolean corrected() {
     return !acts.isEmpty() && acts.stream().allMatch(Wording::corrigendum);
   }
 
-  /** The same, the comparison not limited to an act's changes. */
+  /**
+   * Returns the sidenote of {@code difference}, for a comparison that is not limited to the changes
+   * of one act.
+   */
   public static SidenoteView of(
       Act act,
       Version from,
@@ -98,9 +128,13 @@ public record SidenoteView(
   }
 
   /**
-   * The sidenote of {@code difference}, in the comparison of {@code act}'s version {@code from}
-   * with {@code to}, with Cellar's {@code amendments} of its unit by the acts between them
-   * (Amended.of), limited to the changes of {@code only}, if any, its links in {@code language}.
+   * Returns the sidenote of {@code difference}, in the comparison of the version {@code from} of
+   * {@code act} with the version {@code to}.
+   *
+   * @param amendments the amendments of the unit in Cellar, by the acts between the two versions.
+   *     {@code Amended.of} finds them.
+   * @param only the act whose changes the comparison is limited to, if any
+   * @param language the language of the links
    */
   public static SidenoteView of(
       Act act,
@@ -121,7 +155,8 @@ public record SidenoteView(
     var named = new LinkedHashMap<ActIdentifier, Amendment>();
     for (var amendment : amendments) {
       var each = amendment.act();
-      // the markers name an act of its version: theirs is followed
+      // Leave out the act if the markers name an act of the same version. The markers take
+      // priority.
       if (between.contains(each)
           && !made.containsKey(each)
           && version(act, from, to, each).filter(markedVersions::contains).isEmpty()) {
@@ -145,7 +180,8 @@ public record SidenoteView(
                 .filter(amendment -> amendment.act().equals(each))
                 .map(Amendment::from)
                 .filter(Objects::nonNull)
-                // a day the earlier text, without the change, is from is stale (2019/103's points)
+                // A day that is not after the earlier text is stale, because the earlier text
+                // does not have the change. The points of 2019/103 are an example.
                 .filter(day -> day.isAfter(from.date()))
                 .collect(Collectors.toSet());
         applies(act, each, days, language).ifPresent(dates::add);
@@ -158,8 +194,8 @@ public record SidenoteView(
     for (var i = 0; i < steps.size(); i++) {
       var step = steps.get(i);
       var first = step.getFirst();
-      // an inserted unit was inserted first; a deleted one, deleted last (a unit still there had
-      // words deleted from it: amended)
+      // An inserted unit was inserted in the first step. A deleted unit was deleted in the last
+      // step. If words were deleted from a unit that is still there, the unit was amended.
       var kind =
           i == 0 && difference.kind() == Kind.INSERTED
               ? Kind.INSERTED
@@ -200,8 +236,9 @@ public record SidenoteView(
   }
 
   /**
-   * The sidenote of a difference no act is named for: one of the acts between the two versions, not
-   * known which, where they are all of one version; nothing of who made it, where they aren't.
+   * Returns the sidenote of a difference for which no act is named. If the acts between the two
+   * versions are all of one version, the sidenote says that one of them made it, but not which. If
+   * not, the sidenote does not say who made it.
    */
   private static SidenoteView unknown(
       Act act,
@@ -262,7 +299,10 @@ public record SidenoteView(
         Wording.published(act, ordered, language));
   }
 
-  /** What happened to {@code difference}, as a made line starts: Inserted, Deleted, Amended. */
+  /**
+   * Returns what happened to {@code difference}, as the first word of the made line: "Inserted",
+   * "Deleted" or "Amended".
+   */
   private static String verb(Difference difference) {
     return switch (difference.kind()) {
       case INSERTED -> "Inserted";
@@ -272,10 +312,12 @@ public record SidenoteView(
   }
 
   /**
-   * That {@code step}'s acts made it together: 2019/1583 replaced the point, and 2019/103 replaced
-   * section 11.1 as a whole, where their markers say they did different things (but for one new in
-   * a unit they replaced whole, which says so already: {@code newIn}). There is one wording, so the
-   * change can’t be split between them.
+   * Returns the text that says that the acts of {@code step} made the difference together. The text
+   * always says "There is one wording, so the change can’t be split between them." Before it, the
+   * text says what each act did, if their markers say they did different things. For example,
+   * "2019/1583 replaced the point, and 2019/103 replaced section 11.1 as a whole." It does not say
+   * this if {@code newIn} is true, because the unit is new in a unit that the acts replaced as a
+   * whole, and that text says so already.
    */
   private static String together(List<ActIdentifier> step, Difference difference, boolean newIn) {
     var parts = new ArrayList<String>();
@@ -298,9 +340,16 @@ public record SidenoteView(
   }
 
   /**
-   * That an inserted unit is new in the unit the acts its markers name replaced whole: 2019/103
-   * replaced section 11.1 as a whole; this point is new in it; that a deleted one is not in it
-   * (2017/815 replaced Part 10 as a whole; this point is not in it). None for a changed one.
+   * Returns the text that says that the unit is new in, or not in, a unit that was replaced as a
+   * whole. The acts that its markers name replaced that unit.
+   *
+   * <ul>
+   *   <li>For an inserted unit, for example: "2019/103 replaced section 11.1 as a whole; this point
+   *       is new in it."
+   *   <li>For a deleted unit, for example: "2017/815 replaced Part 10 as a whole; this point is not
+   *       in it."
+   *   <li>For a changed unit, returns empty.
+   * </ul>
    */
   private static Optional<String> newIn(Difference difference) {
     if (difference.kind() == Kind.CHANGED) {
@@ -324,10 +373,12 @@ public record SidenoteView(
   }
 
   /**
-   * That, limited to {@code only}'s changes, the change shown is theirs combined: Together with
-   * 2019/103. Both acts changed this point in the same version, and the wording between their
-   * changes exists in no version…; for one new in a unit they replaced whole ({@code newIn}), which
-   * says so already, the wording only.
+   * Returns the text that says that the change shown is the combined change of the acts, when the
+   * comparison is limited to the changes of {@code only}. For example, "Together with 2019/103.
+   * Both acts changed this point in the same version, and the wording between their changes exists
+   * in no version…". If {@code newIn} is true, the text says only that the wording between their
+   * changes exists in no version. This is because the unit is new in a unit that the acts replaced
+   * as a whole, and that text says the rest already.
    */
   private static String combined(
       ActIdentifier only, List<ActIdentifier> others, Difference difference, boolean newIn) {
@@ -347,20 +398,29 @@ public record SidenoteView(
         + "’s part alone.";
   }
 
-  /** What the difference's unit is, as a sentence calls it: point, article; provision. */
+  /**
+   * Returns the name of the unit of the difference, as a sentence uses it. For example, "point" or
+   * "article". Other units are a "provision".
+   */
   private static String noun(Difference difference) {
     var kind = difference.unit().kind();
     return switch (kind) {
       case "point", "article", "paragraph", "subparagraph", "indent", "annex", "recital" -> kind;
-      // a numbered point that holds others: 11.1.2
+      // A numbered point that holds other points. For example, 11.1.2.
       case "level" -> difference.unit().num().matches("\\d.*") ? "point" : "provision";
       default -> "provision";
     };
   }
 
   /**
-   * The unit {@code eId} that {@code difference} is in, as a sentence cites it: section 11.1, the
-   * section it is in by the outline; point 11.1; Article 5.
+   * Returns the unit {@code eId} that {@code difference} is in, as a sentence cites it. For
+   * example:
+   *
+   * <ul>
+   *   <li>"section 11.1", if the unit is the section of the difference in the outline
+   *   <li>"point 11.1"
+   *   <li>"Article 5"
+   * </ul>
    */
   private static String unit(String eId, Difference difference) {
     var last = eId.substring(eId.lastIndexOf('/') + 1);
@@ -383,7 +443,10 @@ public record SidenoteView(
     return (last.startsWith("par_") ? "paragraph " : "point ") + number;
   }
 
-  /** The version after {@code from}, up to {@code to}, that first integrates {@code amending}. */
+  /**
+   * Returns the first version after {@code from}, up to {@code to}, that integrates {@code
+   * amending}.
+   */
   private static Optional<Version> version(
       Act act, Version from, Version to, ActIdentifier amending) {
     return act.timeline().versions().stream()
@@ -393,7 +456,8 @@ public record SidenoteView(
   }
 
   /**
-   * The acts {@code markers} name that {@code kept} keeps, in order, each with what it did first.
+   * Returns the acts that {@code markers} name and that {@code kept} accepts, in order. Each act
+   * comes with the action of its first marker.
    */
   private static Map<ActIdentifier, String> acts(
       List<Marker> markers, Predicate<ActIdentifier> kept) {
@@ -408,8 +472,9 @@ public record SidenoteView(
   }
 
   /**
-   * The acts in {@code acts} in the order the versions after {@code from}, up to {@code to}, first
-   * integrate them: one step for each version, its acts together.
+   * Returns the acts in {@code acts} in the order that the versions after {@code from}, up to
+   * {@code to}, first integrate them. There is one step for each version, which holds the acts of
+   * that version.
    */
   private static List<List<ActIdentifier>> steps(
       Act act,
@@ -422,7 +487,8 @@ public record SidenoteView(
         act.timeline().versions().stream()
             .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
             .toList();
-    // each act's version: the first that has it (an act that applies in stages is in several)
+    // The version of each act is the first version that has it. An act that applies in stages is
+    // in several versions.
     var at = new HashMap<ActIdentifier, Version>();
     for (var each : acts) {
       if (!marked.contains(each)) {
@@ -432,8 +498,9 @@ public record SidenoteView(
             .ifPresent(version -> at.put(each, version));
       }
     }
-    // an act the markers name was the last to change it: in none before the others'; with those it
-    // changed it together, in the first that has them all
+    // An act that the markers name was the last act to change the unit. Thus it is in no version
+    // before the versions of the other acts. If it changed the unit together with other acts, it is
+    // in the first version that has all of them.
     var floor = at.values().stream().map(Version::date).max(Comparator.naturalOrder()).orElse(null);
     for (var each : marked) {
       var with =
@@ -451,7 +518,7 @@ public record SidenoteView(
     }
     var steps = new ArrayList<List<ActIdentifier>>();
     for (var version : between) {
-      // in the version's order of them
+      // Keep the order that the version gives the acts.
       var step =
           version.integrates().stream()
               .filter(each -> acts.contains(each) && version.equals(at.get(each)))
@@ -464,9 +531,10 @@ public record SidenoteView(
   }
 
   /**
-   * The acts between the two versions that replaced the unit together, by its markers: two that
-   * replaced the same unit whole (its own, or the one it is in) did so at once, as an act that
-   * replaced it after another would have left only its own marker. Each set of two or more.
+   * Returns the acts between the two versions that replaced the unit together, by its markers. Two
+   * acts that replaced the same unit as a whole did so at the same time. The unit can be the unit
+   * itself or the unit it is in. If one act replaced the unit after the other, only its own marker
+   * would be there. Each set has two or more acts.
    */
   private static List<Set<ActIdentifier>> together(
       Difference difference, Collection<ActIdentifier> between) {
@@ -482,7 +550,10 @@ public record SidenoteView(
     return byUnit.values().stream().filter(acts -> acts.size() > 1).toList();
   }
 
-  /** What an amendment's role did, as a marker's action says it: replaced, inserted, deleted. */
+  /**
+   * Returns what the role of an amendment did, as the action of a marker says it: "replaced",
+   * "inserted" or "deleted".
+   */
   private static String action(Amendment.Role role) {
     return switch (role) {
       case REPLACEMENT -> "replaced";
@@ -491,7 +562,10 @@ public record SidenoteView(
     };
   }
 
-  /** 2019/103 and 2019/1583; 2017/815, 2019/103 and 2019/1583. */
+  /**
+   * Returns the numbers of the acts as a list in words. For example, "2019/103 and 2019/1583", or
+   * "2017/815, 2019/103 and 2019/1583".
+   */
   private static String names(Collection<ActIdentifier> acts) {
     var names = acts.stream().map(Wording::act).toList();
     return names.size() == 1
@@ -500,9 +574,13 @@ public record SidenoteView(
   }
 
   /**
-   * What {@code act} did to the unit, as a difference of {@code kind} shows it: Inserted, Deleted,
-   * Replaced, Renumbered; Amended, for words it inserted or deleted in a unit that is still there;
-   * Corrected, for a corrigendum.
+   * Returns what {@code act} did to the unit, as a difference of {@code kind} shows it.
+   *
+   * <ul>
+   *   <li>"Inserted", "Deleted", "Replaced" or "Renumbered"
+   *   <li>"Amended", for words that the act inserted or deleted in a unit that is still there
+   *   <li>"Corrected", for a corrigendum
+   * </ul>
    */
   private static String verb(Kind kind, ActIdentifier act, String action) {
     if (Wording.corrigendum(act)) {
@@ -521,8 +599,9 @@ public record SidenoteView(
   }
 
   /**
-   * What the unit was before, by the acts the earlier text's markers name: Before: as replaced by
-   * 2023/566; Before: original act, where none does.
+   * Returns what the unit was before, from the acts that the markers of the earlier text name. For
+   * example, "Before: as replaced by 2023/566". If the markers name no act, returns "Before:
+   * original act".
    */
   private static String before(Map<ActIdentifier, String> acts) {
     if (acts.isEmpty()) {
@@ -540,11 +619,19 @@ public record SidenoteView(
   }
 
   /**
-   * When {@code amending} applies, from its own dates: from its one date of application, or of
-   * entry into force if it has none; from the one of them Cellar's amendments of the unit have
-   * ({@code days}), where it has several; in stages, where it has several or applies in part and
-   * Cellar doesn't choose; from a date its clause sets, where Cellar has none; nothing, where
-   * Cellar has no dates of it at all.
+   * Returns when {@code amending} applies, from its own dates.
+   *
+   * <ul>
+   *   <li>If it has one date of application, it applies from that date. If it has no date of
+   *       application, it applies from its date of entry into force.
+   *   <li>If it has several dates, it applies from the date that the amendments of the unit in
+   *       Cellar have. {@code days} holds these dates.
+   *   <li>If it has several dates or applies in part, and Cellar does not choose a date, it applies
+   *       in stages.
+   *   <li>If Cellar has no day for its date of application, it applies from a date that its clause
+   *       sets.
+   *   <li>If Cellar has no dates of the act, returns empty.
+   * </ul>
    */
   private static Optional<Applies> applies(
       Act act, ActIdentifier amending, Set<LocalDate> days, Language language) {
@@ -557,14 +644,14 @@ public record SidenoteView(
     var application = dates.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE);
     var applying =
         dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
-    // a date of application Cellar has only a placeholder for, or no dates with a day at all
+    // Cellar has only a placeholder for a date of application, or no dates with a day.
     if (dated.isEmpty() || (applying.isEmpty() && application.findAny().isPresent())) {
       var undated = dates.stream().filter(date -> date.date() == null).toList();
       var set = applies(act, name + " applies from a date set in", undated, amending, language, "");
-      // nothing to say where no clause says where
+      // There is nothing to say if no clause sets the date.
       return set.clause() == null ? Optional.empty() : Optional.of(set);
     }
-    // the one of its dates Cellar has for the unit
+    // Use the date of the act that Cellar has for the unit.
     if (days.size() == 1) {
       var day = days.iterator().next();
       var on = dated.stream().filter(date -> day.equals(date.date())).toList();
@@ -646,21 +733,24 @@ public record SidenoteView(
         clause == null ? "" : after);
   }
 
-  /** The distinct days of {@code dates}, in order. */
+  /** Returns the distinct days of {@code dates}, in order. */
   private static List<LocalDate> days(List<ActDate> dates) {
     return dates.stream().map(ActDate::date).filter(Objects::nonNull).distinct().sorted().toList();
   }
 
   /**
-   * When an act applies, as the sidenote says it: applies from 1 October 2026 · Article 2 of
-   * 2026/449, as amended by 2020/910.
+   * When an act applies, as the sidenote says it. For example, "applies from 1 October 2026 ·
+   * Article 2 of 2026/449, as amended by 2020/910".
    *
-   * @param when when: applies from 1 October 2026; 2026/449 applies in stages: from 22 March 2026,
-   *     its entry into force; in part from 1 October 2026
-   * @param between what goes between when and the clause: a dot, or a space after set in
-   * @param clause what sets it, on EUR-Lex: Article 2 of 2026/449; none where Cellar doesn't say
-   * @param amendedBy the acts that changed it since, on EUR-Lex: 2020/910
-   * @param after what follows the clause: says which part from when, for stages
+   * @param when when the act applies. For example, "applies from 1 October 2026", or "2026/449
+   *     applies in stages: from 22 March 2026, its entry into force; in part from 1 October 2026".
+   * @param between what goes between {@code when} and the clause. This is a dot, or a space after
+   *     "set in".
+   * @param clause the clause that sets the date, linked to EUR-Lex. For example, "Article 2 of
+   *     2026/449". Null where Cellar does not say.
+   * @param amendedBy the acts that changed the clause since, linked to EUR-Lex. For example,
+   *     2020/910.
+   * @param after what follows the clause. For stages, this is "says which part from when".
    */
   public record Applies(
       String when, String between, @Nullable Link clause, List<Link> amendedBy, String after) {
@@ -669,15 +759,20 @@ public record SidenoteView(
     }
   }
 
-  /** A link: its words and where it goes. */
+  /** A link, with its words and its address. */
   public record Link(String label, String href) {}
 
   /**
-   * What a provision the same in both versions last was, as the Synopsis says beside it (Design:
-   * Synopsis history column): the act among its amendment markers in {@code to} (its own, or those
-   * of the unit an act put in its form whole, Difference.Marker) that {@code act}'s versions
-   * integrated last, its corrigenda left out, with what it did and when it applies; as in the
-   * original act where none did, applying from the act's first version.
+   * Returns the history of a provision that is the same in both versions. The Synopsis shows it
+   * beside the provision.
+   *
+   * <p>The history names the act that the versions of {@code act} integrated last, among the acts
+   * that the amendment markers in {@code to} name. The markers are those of the provision, or those
+   * of the unit that an act put in its form as a whole. {@link Marker} has them. Corrigenda are
+   * left out. The history says what the act did and when it applies.
+   *
+   * <p>If no act changed the provision, the history says "As in the original act". It then applies
+   * from the dates of the act, or else from the first version of the act.
    */
   public static History history(Act act, Version to, List<Marker> markers, Language language) {
     @Nullable Marker last = null;
@@ -716,8 +811,9 @@ public record SidenoteView(
   }
 
   /**
-   * {@code applies} without the act its date line starts with, where the line before names it
-   * already: Last changed by 2019/103 (replaced) · applies from 1 February 2019.
+   * Returns {@code applies} without the act at the start of its date line, because the line before
+   * names the act already. For example, "Last changed by 2019/103 (replaced) · applies from 1
+   * February 2019".
    */
   private static Applies unnamed(Applies applies, ActIdentifier act) {
     var name = Wording.act(act) + " ";
@@ -732,11 +828,12 @@ public record SidenoteView(
   }
 
   /**
-   * A provision's history, as the Synopsis has it beside one the same in both versions.
+   * The history of a provision, as the Synopsis shows it beside a provision that is the same in
+   * both versions.
    *
-   * @param said what last made it as it is: Last changed by 2019/103 (replaced); As in the original
-   *     act
-   * @param applies when that applies, with what sets it; none where nothing says
+   * @param said what last made the provision as it is. For example, "Last changed by 2019/103
+   *     (replaced)" or "As in the original act".
+   * @param applies when that change applies, with what sets the date. Null where nothing says.
    */
   public record History(String said, @Nullable Applies applies) {}
 }

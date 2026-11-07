@@ -15,28 +15,34 @@ import java.util.Locale;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The pages' addresses: an act's by its ELI, as VersionController and CompareController answer
- * them; the home page's, with a search's results (HomeController).
+ * The addresses of the pages. The address of an act's page uses the ELI of the act, as {@code
+ * VersionController} and {@code CompareController} answer them. The address of the home page can
+ * include the results of a search, as {@code HomeController} answers it.
  */
 public final class Links {
   private Links() {}
 
   /**
-   * The page of {@code version} in {@code language}: /eli/reg_impl/2015/1998/2026-03-22/eng, the
-   * version's first day and the language's code, as an ELI has them.
+   * Returns the address of the page of {@code version} in {@code language}. The address contains
+   * the first day of the version and the code of the language, as an ELI has them. For example,
+   * {@code /eli/reg_impl/2015/1998/2026-03-22/eng}.
    */
   public static String read(Eli eli, Version version, Language language) {
     return read(eli, version.date(), language);
   }
 
-  /** An act on EUR-Lex, by its ELI: https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj. */
+  /**
+   * Returns the address of an act on EUR-Lex, by its ELI. For example, {@code
+   * https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj}.
+   */
   public static String eurLex(Eli eli) {
     return "https://eur-lex.europa.eu/eli/" + eli.path() + "/oj";
   }
 
   /**
-   * An act {@code act} integrates (or {@code act} itself) on EUR-Lex, in {@code language}: by its
-   * ELI where the Publications Office has one (Design D-42), by its CELEX where it hasn't.
+   * Returns the address on EUR-Lex of {@code each}, in {@code language}. {@code each} is an act
+   * that {@code act} integrates, or {@code act} itself. The address uses the ELI of {@code each} if
+   * the Publications Office has one. If not, the address uses its CELEX.
    */
   public static String amending(Act act, ActIdentifier each, Language language) {
     return act.publication(each)
@@ -46,7 +52,8 @@ public final class Links {
   }
 
   /**
-   * A document on EUR-Lex, by its CELEX (an act's, a consolidated version's), in {@code language}.
+   * Returns the address of a document on EUR-Lex, by its CELEX, in {@code language}. The document
+   * can be an act or a consolidated version.
    */
   public static String eurLex(String celex, Language language) {
     return "https://eur-lex.europa.eu/legal-content/"
@@ -55,22 +62,27 @@ public final class Links {
         + celex;
   }
 
-  /** The act in {@code language}, as the Reading card's date form asks for it with on. */
+  /**
+   * Returns the address of the act in {@code language}. The date form on the Reading card sends its
+   * date to this address, in the query parameter {@code on}.
+   */
   public static String act(Eli eli, Language language) {
     return "/eli/" + eli.path() + "/" + language.code().toLowerCase(Locale.ROOT);
   }
 
   /**
-   * The comparison of {@code from} with {@code to} in {@code language}, by their first days:
-   * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01.
+   * Returns the address of the comparison of {@code from} with {@code to} in {@code language}. The
+   * address uses the first days of the two versions. For example, {@code
+   * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&to=2026-10-01}.
    */
   public static String compare(Eli eli, Version from, Version to, Language language) {
     return compare(eli, language) + "?from=" + from.date() + "&to=" + to.date();
   }
 
   /**
-   * The same, limited to the changes of {@code only} (Design: Acts between the two versions):
-   * …&amp;act=32026R0449; all acts' for none.
+   * Returns the address of the same comparison, limited to the changes of the act {@code only}. For
+   * example, {@code …&act=32026R0449}. If {@code only} is null, the comparison shows the changes of
+   * all acts.
    */
   public static String compare(
       Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
@@ -78,14 +90,18 @@ public final class Links {
   }
 
   /**
-   * The units the same in both versions, as a Synopsis fold loads them, the fold's eIds after:
-   * /eli/reg_impl/2015/1998/eng/compare/same?from=2021-07-01&amp;to=2021-12-31.
+   * Returns the address of the units that are the same in both versions. A fold in the Synopsis
+   * loads them from this address. The fold adds its eIds after the address. For example, {@code
+   * /eli/reg_impl/2015/1998/eng/compare/same?from=2021-07-01&to=2021-12-31}.
    */
   public static String same(Eli eli, Version from, Version to, Language language) {
     return compare(eli, language) + "/same?from=" + from.date() + "&to=" + to.date();
   }
 
-  /** The same, in {@code view}: …&amp;view=whole; the Changes view without. */
+  /**
+   * Returns the address of the same comparison, in {@code view}. For example, {@code …&view=whole}.
+   * The address of the Changes view has no {@code view} parameter.
+   */
   public static String compare(
       Eli eli,
       Version from,
@@ -97,9 +113,10 @@ public final class Links {
   }
 
   /**
-   * The comparison of {@code from} with {@code to} in {@code view} (its Changes, its Whole text),
-   * as its page loads it, limited to the changes of {@code only}, if any:
-   * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&amp;to=2026-10-01.
+   * Returns the address from which the page of a comparison loads the comparison of {@code from}
+   * with {@code to}. The comparison is in {@code view}, for example its Changes or its Whole text.
+   * It is limited to the changes of {@code only}, if any. For example, {@code
+   * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&to=2026-10-01}.
    */
   public static String changes(
       Eli eli,
@@ -118,8 +135,9 @@ public final class Links {
   }
 
   /**
-   * The acts between {@code from} and {@code to}, counted, as the comparison's page loads them,
-   * {@code only}'s chip on, if any: /eli/reg_impl/2015/1998/eng/compare/acts?from=…&amp;to=….
+   * Returns the address from which the page of a comparison loads the acts between {@code from} and
+   * {@code to}, with their counts. The chip of {@code only}, if any, is on. For example, {@code
+   * /eli/reg_impl/2015/1998/eng/compare/acts?from=…&to=…}.
    */
   public static String acts(
       Eli eli,
@@ -145,34 +163,46 @@ public final class Links {
     return only == null ? "" : "&act=" + URLEncoder.encode(only.celex(), StandardCharsets.UTF_8);
   }
 
-  /** The stream of the act's preparation in the language (PreparationController). */
+  /**
+   * Returns the address of the event stream of the preparation of the act in the language. {@code
+   * PreparationController} answers it.
+   */
   public static String prepare(Eli eli, Language language) {
     return act(eli, language) + "/prepare/events";
   }
 
-  /** The act's comparisons in {@code language}, as the From and To cards' date forms ask. */
+  /**
+   * Returns the address of the comparisons of the act in {@code language}. The date forms on the
+   * From and To cards send their dates to this address.
+   */
   public static String compare(Eli eli, Language language) {
     return act(eli, language) + "/compare";
   }
 
-  /** The page of the version that applies on {@code date}, in {@code language}. */
+  /**
+   * Returns the address of the page of the version that applies on {@code date}, in {@code
+   * language}.
+   */
   public static String read(Eli eli, LocalDate date, Language language) {
     return "/eli/" + eli.path() + "/" + date + "/" + language.code().toLowerCase(Locale.ROOT);
   }
 
   /**
-   * What {@code amending} changed in the act {@code eli}, in {@code language}: the comparison of
-   * the version that first integrates it with the one before, its changes alone, as
-   * CompareController finds it: /eli/reg_impl/2015/1998/eng/compare?act=32026R0449.
+   * Returns the address of what {@code amending} changed in the act {@code eli}, in {@code
+   * language}. This is the comparison of the version that first integrates {@code amending} with
+   * the version before it. It shows only the changes of {@code amending}. {@code CompareController}
+   * finds the two versions. For example, {@code
+   * /eli/reg_impl/2015/1998/eng/compare?act=32026R0449}.
    */
   public static String changesBy(Eli eli, ActIdentifier amending, Language language) {
     return compare(eli, language) + "?" + act(amending).substring(1);
   }
 
   /**
-   * The home page with the results of a search for {@code words}, of {@code kind}, on page {@code
-   * page} (from 1): /?q=aviation+security&amp;type=regulation&amp;page=2, all kinds' first page
-   * without.
+   * Returns the address of the home page with the results of a search for {@code words}, of {@code
+   * kind}, on page {@code page}. Pages start at 1. For example, {@code
+   * /?q=aviation+security&type=regulation&page=2}. The address has no {@code type} parameter for
+   * all kinds, and no {@code page} parameter for the first page.
    */
   public static String home(String words, Search.Kind kind, int page) {
     return "/?q="

@@ -13,13 +13,16 @@
 @param List<CompareView.ViewLink> views
 @param CompareView.Only only = null
 @param String preamble = ""
-<%-- A comparison's Changes view on an act's page (Design: Mode: Compare, Changes): its controls,
-     how many differences and of what kind, then each provision that differs as it reads, marked, numbered
-     beside it with a sidenote: what happened, which acts made it and when each applies, and what it
-     was before (sidenotes, by number); the units before it that are the same in both folded, loaded
-     from the content module when opened (units, by eId); the opening of the unit it is in, as
-     context. Beside it, the later text's outline, its differences
-     counted. Limited to one act's changes (only), a banner says so, linking to all acts' --%>
+<%-- Shows a comparison's Changes view on an act's page. The controls come first. They show how
+     many differences there are and of what kind. Then each provision that differs shows as it reads,
+     with its changes marked and a number beside it. A sidenote beside each provision says what
+     happened, which acts made the change and when each applies. It also says what the provision was
+     before. The sidenotes map is keyed by difference number.
+     Units before a difference that are the same in both texts are in a fold. When the reader opens
+     the fold, htmx loads them from the content module through the units address, by eId. The
+     opening of the unit that holds a difference shows as context. The later text's outline is beside
+     the view, with a count of differences for each unit. If the view is limited to one act's changes
+     (only), a banner says so and links to the changes of all acts. --%>
 <div class="outlined">
 <nav class="outline counted" aria-label="Outline">
   @template.catalogue.outlinehead(total = changes.numbers().size())

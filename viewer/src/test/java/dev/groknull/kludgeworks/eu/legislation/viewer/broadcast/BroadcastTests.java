@@ -24,9 +24,10 @@ import org.springframework.modulith.events.Externalized;
 import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Broadcasting through Valkey in a container: an externalized event (Pinged, to the stream
- * broadcast-tests), published in a transaction, heard as Broadcast of it once committed; an entry
- * of a type that isn't externalized, put in that stream by hand, not read back.
+ * Tests broadcasting through Valkey in a container. The test publishes an externalized event, a
+ * {@link Pinged} to the stream {@code broadcast-tests}, in a transaction. The listener hears it as
+ * a {@link Broadcast} after the commit. The test also puts an entry of a type that is not
+ * externalized in that stream by hand. The listener does not read that entry back.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, BroadcastTests.Listening.class})
@@ -59,7 +60,8 @@ class BroadcastTests {
                 .withStreamKey("broadcast-tests"));
     transaction.executeWithoutResult(status -> events.publishEvent(later));
 
-    // read in order: once the later ping is heard, the entry before it was skipped
+    // The stream is read in order. When the listener hears the later ping, it has skipped the
+    // entry before it.
     await().atMost(Duration.ofSeconds(30)).until(() -> heard.pings().contains(later));
     assertThat(heard.all()).allMatch(Pinged.class::isInstance);
   }
@@ -68,7 +70,7 @@ class BroadcastTests {
   @Externalized("broadcast-tests")
   record Pinged(String id) {}
 
-  /** Listening for broadcasts, in the test's context. */
+  /** Listens for broadcasts in the test's context. */
   @TestConfiguration(proxyBeanMethods = false)
   static class Listening {
     @Bean

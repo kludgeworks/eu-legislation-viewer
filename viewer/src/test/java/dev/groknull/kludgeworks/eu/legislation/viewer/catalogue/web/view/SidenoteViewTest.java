@@ -22,9 +22,10 @@ import java.util.Objects;
 import org.junit.jupiter.api.Test;
 
 /**
- * Who made a difference in 2015/1998, as its sidenote says it (Cellar's versions, dates and
- * amendments, recorded), from the markers the converter keeps on its units in 2015/1998's
- * consolidations and Cellar's amendments of them.
+ * Tests how the sidenote of {@link SidenoteView} says who made a difference in 2015/1998. The
+ * sidenote uses two sources. The first is the markers that the converter keeps on the units of the
+ * consolidations of 2015/1998. The second is Cellar's amendments of those units. The versions,
+ * dates and amendments are Cellar's, recorded.
  */
 class SidenoteViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
@@ -94,7 +95,8 @@ class SidenoteViewTest {
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
-            // Cellar has 1 February 2019 for it, which the version of 1 July 2021 is after
+            // Cellar has 1 February 2019 for this amendment. The version of 1 July 2021 is
+            // already after that date.
             amendments("32019R0103", "AN PO 11.3.2"),
             Language.ENG);
 
@@ -111,11 +113,12 @@ class SidenoteViewTest {
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             inserted,
-            // in point 12.14, which legal-text keeps beside its own points
+            // The amendments are at point 12.14. legal-text keeps the points numbered under
+            // 12.14 beside it.
             amendmentsAt("AN PO 12.14", "AN CHA 12.14"),
             Language.ENG);
 
-    // the marker names only the last act to change it
+    // The marker names only the last act that changed the unit.
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/103, then replaced by 2023/566");
     assertThat(sidenote.dates()).hasSize(2);
   }
@@ -133,7 +136,8 @@ class SidenoteViewTest {
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             indent,
-            // 2022/421 and 2025/920 changed words of appendix 3-B, which the indent is in
+            // 2022/421 and 2025/920 changed words of appendix 3-B. The indent is in that
+            // appendix.
             amendmentsAt("AN CHA 3 APP 3-B TXT"),
             Language.ENG);
 
@@ -271,7 +275,8 @@ class SidenoteViewTest {
             Language.ENG);
 
     var applies = sidenote.dates().getFirst();
-    // its date of application in Cellar is a placeholder; it enters into force on 16 March 2019
+    // Its date of application in Cellar is a placeholder. It enters into force on 16 March
+    // 2019.
     assertThat(
             applies.when() + applies.between() + Objects.requireNonNull(applies.clause()).label())
         .isEqualTo("2019/413 applies from a date set in Article 3 of 2019/413");
@@ -294,7 +299,7 @@ class SidenoteViewTest {
             List.of(),
             Language.ENG);
 
-    // never a line left empty: that no act is named
+    // The line is never empty. It says that no act is named.
     assertThat(sidenote.made()).isEqualTo("Amended by an act not named");
     assertThat(sidenote.why())
         .isEqualTo(
@@ -306,8 +311,8 @@ class SidenoteViewTest {
 
   @Test
   void placesActsThatReplacedAUnitTogetherInTheFirstVersionThatHasThemAll() {
-    // 2019/103 applies in stages, in the versions of 1 February 2019 and 31 December 2021; it
-    // replaced 11.1.2 with 2019/1583, which only the second has
+    // 2019/103 applies in stages, in the versions of 1 February 2019 and 31 December 2021. It
+    // replaced 11.1.2 together with 2019/1583. Only the second version has 2019/1583.
     var point =
         changed(
             "anx/pnt_11.1.2",
@@ -330,9 +335,9 @@ class SidenoteViewTest {
 
   @Test
   void placesTheActTheMarkerNamesLastAfterThoseOnlyCellarNames() {
-    // the text keeps 4.1.3.2 struck under 2019/103's deletion; Cellar has 2017/815 replacing it,
-    // and
-    // (as the dev store's data has) 2019/413; 2019/103 applies in stages, its first before 2019/413
+    // The text keeps 4.1.3.2 struck through under the deletion by 2019/103. Cellar has 2017/815
+    // replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies in
+    // stages, and its first stage is before 2019/413.
     var struck = deleted("anx/pnt_4.1.3.2", new Marker("32019R0103", "deleted", null));
     var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
     var replaced = cellar.getFirst();
@@ -394,7 +399,8 @@ class SidenoteViewTest {
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
-            // Cellar also names 2020/910, of the same version, which the markers don't
+            // Cellar also names 2020/910, which is in the same version. The markers do not name
+            // it.
             amendmentsAt("AN PO 11.1.2"),
             Language.ENG);
 

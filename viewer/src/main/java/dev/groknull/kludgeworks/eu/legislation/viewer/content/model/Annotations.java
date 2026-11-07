@@ -6,25 +6,28 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The identifiers kept out of a node's content: eIds, which change when a text is renumbered while
- * what it says doesn't. Each is taken out as a fact, {@code ["eId", path, eId]}, the path its
- * element's place within a block ([] the node itself), and put back when the text is rebuilt. The
- * facts are the overlay on the edge to the node (Encoder): so the content is shared across
- * versions, and a renumbering changes only overlays, and the hashes of the containers above them.
+ * Keeps identifiers out of the content of a node. The identifiers are eIds. They change when a text
+ * is renumbered, but what the text says does not change.
+ *
+ * <p>Each eId is taken out as a fact, {@code ["eId", path, eId]}. The path is the position of its
+ * element within a block, and {@code []} is the node itself. The eId is put back when the text is
+ * rebuilt. The facts are the overlay on the edge to the node, which {@link Encoder} makes. Thus the
+ * content is shared across versions. A renumbering changes only overlays and the hashes of the
+ * containers above them.
  */
 final class Annotations {
   static final String EID = "eId";
 
   private Annotations() {}
 
-  /** Takes the eIds out of a block's JSON. */
+  /** Takes the eIds out of the JSON of a block. */
   static List<Object> lift(List<?> leaf) {
     var facts = new ArrayList<Object>();
     lift(leaf, List.of(), facts);
     return facts;
   }
 
-  /** Takes the eId out of a container's attributes. */
+  /** Takes the eId out of the attributes of a container. */
   static List<Object> lift(Map<String, Object> attributes) {
     var eId = attributes.remove(EID);
     return eId == null ? new ArrayList<>() : new ArrayList<>(List.of(List.of(EID, List.of(), eId)));
@@ -43,7 +46,7 @@ final class Annotations {
     }
   }
 
-  /** Puts the eIds back into a block's JSON. */
+  /** Puts the eIds back into the JSON of a block. */
   static void apply(List<?> leaf, List<?> facts) {
     for (var fact : facts) {
       var f = (List<?>) fact;
@@ -53,7 +56,7 @@ final class Annotations {
     }
   }
 
-  /** Puts the eId back into a container's attributes. */
+  /** Puts the eId back into the attributes of a container. */
   static void apply(Map<String, Object> attributes, List<?> facts) {
     for (var fact : facts) {
       var f = (List<?>) fact;

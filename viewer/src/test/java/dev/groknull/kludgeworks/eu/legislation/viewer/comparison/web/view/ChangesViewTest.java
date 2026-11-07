@@ -23,9 +23,10 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
- * 2015/1998's consolidations of 22 March and 1 October 2026 compared, as the Changes view shows
- * them: 2026/449's points (c), (e) and (g) of 8.1.2.3 and of 9.1.2.3. The folds' labels on nums as
- * the converter writes them.
+ * Tests how the Changes view of {@link ChangesView} shows the comparison of the consolidations of
+ * 2015/1998 of 22 March and 1 October 2026. The differences are the points (c), (e) and (g) of
+ * 8.1.2.3 and of 9.1.2.3, changed by 2026/449. The labels of the folds use the nums as the
+ * converter writes them.
  */
 class ChangesViewTest {
   static final ChangesView MARCH_TO_OCTOBER =
@@ -121,7 +122,7 @@ class ChangesViewTest {
             tuple("no differences", true),
             tuple("no differences", true),
             tuple("no differences", true));
-    // 8.1.2.3 once, with its points
+    // 8.1.2.3 shows once, with its points.
     var others = (Fold) only9.passages().get(2);
     assertThat(others.units())
         .extracting(Sibling::eId)

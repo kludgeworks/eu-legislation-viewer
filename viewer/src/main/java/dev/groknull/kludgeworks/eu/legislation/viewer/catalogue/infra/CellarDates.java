@@ -22,29 +22,41 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Acts' own dates from the answer to dates.rq: Cellar's typed dates of entry into force, with the
- * clause its comment on each describes in its codes (fd_335 for the type; DATPUB, DATNOT and DATDOC
- * for the day a date counts from; "V ART 2" for see Article 2; "ET" and a CELEX for an act that
- * changed it). The codes are read as far as they are known; the comment is kept as it is.
+ * Reads the dates of acts from the answer to {@code dates.rq}. These are Cellar's typed dates of
+ * entry into force. Cellar describes a clause for each date in the codes of its comment:
+ *
+ * <ul>
+ *   <li>A code from the authority table {@code fd_335} gives the type.
+ *   <li>{@code DATPUB}, {@code DATNOT} and {@code DATDOC} give the day that the date counts from.
+ *   <li>{@code V ART 2} means "see Article 2".
+ *   <li>{@code ET} and a CELEX number give an act that changed the date.
+ * </ul>
+ *
+ * <p>It reads the codes that it knows. It keeps the comment as it is.
  */
 final class CellarDates {
   private static final Logger LOG = LoggerFactory.getLogger(CellarDates.class);
 
-  /** An authority code as Cellar writes it in an annotation: {EV|http://…/fd_335/EV}. */
+  /**
+   * An authority code as Cellar writes it in an annotation. For example, {@code
+   * {EV|http://…/fd_335/EV}}.
+   */
   private static final Pattern CODE = Pattern.compile("\\{([^|}]*)\\|[^}]*}");
 
   private static final Pattern DAYS = Pattern.compile("\\+?(\\d+)");
 
   /**
-   * The first year of a real date: Cellar writes one it doesn't know as 1001-01-01 or 1002-02-02.
+   * The first year of a real date. Cellar writes a date that it does not know as 1001-01-01 or
+   * 1002-02-02.
    */
   private static final int FIRST_YEAR = 1900;
 
   private CellarDates() {}
 
   /**
-   * The dates of each act in the answer, by the act, in date order; consolidations (whose dates
-   * aren't typed) and dates of a type this doesn't know are left out, the latter with a warning.
+   * Returns the dates of each act in the answer, by act, in date order. It leaves out
+   * consolidations, because their dates are not typed. It also leaves out dates of a type that it
+   * does not know, and logs a warning for them.
    */
   static Map<ActIdentifier, List<ActDate>> byAct(ActIdentifier base, SparqlResult answer) {
     var dates = new LinkedHashMap<ActIdentifier, List<ActDate>>();
@@ -70,7 +82,10 @@ final class CellarDates {
     return dates;
   }
 
-  /** The date; none for a type this doesn't know (EV, MA, PE, each also /PART). */
+  /**
+   * Reads one date. The known types are {@code EV}, {@code MA} and {@code PE}, each also with
+   * {@code /PART}. For any other type, it returns none.
+   */
   static Optional<ActDate> date(String value, String type, String comment) {
     var parts = type.split("/", 2);
     var kind =
@@ -89,7 +104,10 @@ final class CellarDates {
     return Optional.of(new ActDate(day(value), kind, partial, clause(text)));
   }
 
-  /** The day; none for a placeholder or a day that doesn't exist (2015-02-29). */
+  /**
+   * Reads the day. It returns none for a placeholder, or for a day that does not exist, for example
+   * 2015-02-29.
+   */
   static @Nullable LocalDate day(String value) {
     try {
       var day = LocalDate.parse(value.length() > 10 ? value.substring(0, 10) : value);
@@ -100,9 +118,18 @@ final class CellarDates {
   }
 
   /**
-   * The clause in Cellar's comment: "DATPUB +20 V ART 2", "MA/PART V ART 2 ET 32020R0910",
-   * "DATNOT", "V ART 2.2(f) ET 2.2(g)". ET joins an act's CELEX to the acts that changed the date,
-   * or a further number to the provisions; V and VOIR (see) and the type repeated are skipped.
+   * Reads the clause in Cellar's comment. Examples:
+   *
+   * <ul>
+   *   <li>{@code DATPUB +20 V ART 2}
+   *   <li>{@code MA/PART V ART 2 ET 32020R0910}
+   *   <li>{@code DATNOT}
+   *   <li>{@code V ART 2.2(f) ET 2.2(g)}
+   * </ul>
+   *
+   * <p>{@code ET} followed by a CELEX number adds an act to the acts that changed the date. {@code
+   * ET} followed by a number adds a provision. It skips {@code V} and {@code VOIR}, which mean
+   * "see", and a repeat of the type.
    */
   static Clause clause(String text) {
     Anchor from = null;
@@ -122,7 +149,7 @@ final class CellarDates {
                 case "DATNOT" -> Anchor.NOTIFICATION;
                 default -> Anchor.DOCUMENT;
               };
-          // "+20", or "+" and "20"
+          // The days are one token "+20", or two tokens "+" and "20".
           if (next != null && next.startsWith("+")) {
             var number = next.length() > 1 ? next : i + 2 < tokens.length ? tokens[i + 2] : "";
             var matcher = DAYS.matcher(number);
@@ -151,19 +178,26 @@ final class CellarDates {
           }
         }
         default -> {
-          // V, VOIR (see), the type repeated (MA/PART, PE), or a code not known: kept in the text
+          // Skip V and VOIR ("see"), a repeat of the type such as MA/PART or PE, and unknown
+          // codes. The clause keeps them in its text.
         }
       }
     }
     return new Clause(from, days, provisions, amendedBy, text);
   }
 
-  /** Whether a token is a provision's number: 2, 2.2(f). Not V, which is "see". */
+  /**
+   * Returns whether a token is the number of a provision, for example 2 or 2.2(f). {@code V} is not
+   * a number. It means "see".
+   */
   private static boolean isNumber(String token) {
     return Character.isDigit(token.charAt(0));
   }
 
-  /** The code of an authority value ({EV|…} is EV), or the value if it isn't one. */
+  /**
+   * Returns the code of an authority value, for example {@code EV} for {@code {EV|…}}. If the value
+   * is not an authority value, it returns the value.
+   */
   private static String code(String value) {
     var matcher = CODE.matcher(value);
     return matcher.find() ? matcher.group(1) : value;

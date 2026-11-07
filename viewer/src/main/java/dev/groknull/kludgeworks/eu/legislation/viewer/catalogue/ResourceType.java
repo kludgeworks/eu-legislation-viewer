@@ -5,9 +5,9 @@ import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * What kind of act an act is, by the code of the EU's resource-type authority table: REG_IMPL (an
- * implementing regulation), DIR, DEC. Finer than the CELEX's type letter (R), and the ELI's type in
- * capitals for most acts.
+ * What kind of act an act is, by the code of the EU's resource-type authority table. For example,
+ * {@code REG_IMPL} for an implementing regulation, {@code DIR} or {@code DEC}. It is finer than the
+ * type letter of the CELEX, such as R. For most acts, it is the type of the ELI in capitals.
  */
 @ValueObject
 public record ResourceType(String code) {
@@ -22,8 +22,9 @@ public record ResourceType(String code) {
   }
 
   /**
-   * The resource type of its URI in the authority table, …/resource-type/REG_IMPL. Not of(…), which
-   * jMolecules takes for the inverse of the code (in JSON, in a path).
+   * Returns the resource type of its URI in the authority table, for example {@code
+   * …/resource-type/REG_IMPL}. The method is not named {@code of}, because jMolecules takes a
+   * method {@code of(…)} to make the type from its code, in JSON and in a path.
    */
   public static ResourceType ofUri(String uri) {
     if (!uri.startsWith(AUTHORITY)) {

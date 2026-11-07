@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
 /**
- * The rules of a comparison, one decision a class.
+ * The rules of a comparison. Each class makes one decision.
  *
  * <ul>
- *   <li>Wording: what a block says, its markers left out, and its words;
- *   <li>Units: a text's units by their eIds, and each one's own blocks;
- *   <li>Differ: the differences, by eId, then block, then word.
+ *   <li>{@link Wording} tells what a block says, without its markers, and gives its words.
+ *   <li>{@link Units} holds the units of a text by their eIds, and the own blocks of each unit.
+ *   <li>{@link Differ} finds the differences, by eId, then by block, then by word.
  * </ul>
  *
- * <p>Pure functions on the content module's elements.
+ * <p>These are pure functions on the elements of the content module.
  */
 @DomainRing
 @NullMarked

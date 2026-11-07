@@ -1,9 +1,15 @@
 // SPDX-License-Identifier: MIT
 /**
- * The content module's web side: legal texts as HTML (LegalRenderer, by the templates in
- * src/main/jte/legal), and the fragments pages transclude, by root (ContentController). Its own
- * named interface (web), for a module that shows legal text as the content module renders it: the
- * comparison's Changes view.
+ * The web side of the content module.
+ *
+ * <ul>
+ *   <li>{@link LegalRenderer} renders legal texts as HTML, with the templates in {@code
+ *       src/main/jte/legal}.
+ *   <li>{@link ContentController} serves the fragments that pages transclude, by root.
+ * </ul>
+ *
+ * <p>It is a named interface of its own ({@code web}). A module that shows legal text as the
+ * content module renders it uses this interface. For example, the Changes view of the comparison.
  */
 @InfrastructureRing
 @NamedInterface("web")

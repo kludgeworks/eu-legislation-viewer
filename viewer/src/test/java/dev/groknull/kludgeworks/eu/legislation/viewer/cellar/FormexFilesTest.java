@@ -62,7 +62,7 @@ class FormexFilesTest {
 
     var version = files(mock).manifestation("32023R1669", "ENG").orElseThrow();
 
-    // the package descriptor, 11 more XML files and 15 images
+    // The package descriptor, 11 more XML files and 15 images.
     assertThat(version.files()).hasSize(27);
     assertThat(version.files().stream().filter(f -> f.mediaType().equals("image/tiff")))
         .hasSize(15);

@@ -4,10 +4,10 @@
 @param gg.jte.Content content
 @param gg.jte.Content head = null
 @param boolean search = true
-<%-- Every page: its head, the notice, the site bar, then its content. What a page adds to its head
-     (head) stays out of a boosted swap, which takes the page's content alone. The site bar has the
-     way back to the reader's last search's results and a small Find an act box, but on the home
-     page (search false), which has its own --%>
+<%-- Lays out every page: its head, the notice, the site bar, then its content. A boosted swap takes
+     only the page's content. Thus what a page adds to its head (head) stays out of the swap.
+     The site bar has a link back to the reader's last search results and a small Find an act box.
+     The home page has its own box, so it leaves out both (search false). --%>
 <!DOCTYPE html>
 <html lang="en" data-theme="${chrome.theme().code()}">
 <head>

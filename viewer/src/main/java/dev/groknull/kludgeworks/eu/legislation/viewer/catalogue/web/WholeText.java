@@ -15,19 +15,29 @@ import java.util.function.BiFunction;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A comparison's Whole text (Design: Mode: Compare, Whole text): the later text, every provision as
- * it reads, those shown differing marked in place, each as {@code marked} renders it (numbered,
- * with its sidenote). A changed one is its own content marked, then the units in it, which may
- * differ too; an inserted one is marked whole; a deleted one, which the later text hasn't, stands
- * where it stood in the earlier text: after the unit beside it before it there, else before the one
- * after it, else at the end. The differences not shown (an act filter's others) read as they are.
+ * Renders the Whole text view of a comparison. It shows every provision of the later text as it
+ * reads. Each shown difference is marked in place, as {@code marked} renders it. For example, with
+ * its number and its sidenote.
+ *
+ * <ul>
+ *   <li>A changed provision has its own content marked, then the units in it. These units can also
+ *       differ.
+ *   <li>An inserted provision is marked as a whole.
+ *   <li>The later text does not have a deleted provision. The deleted provision stands where it
+ *       stood in the earlier text. It goes after the unit before it there. If there is none, it
+ *       goes before the unit after it. If there is none, it goes at the end.
+ * </ul>
+ *
+ * <p>The differences that are not shown read as they are. For example, the differences of other
+ * acts when an act filter is on.
  */
 final class WholeText {
   private WholeText() {}
 
   /**
-   * The later text {@code later}, with the differences {@code shown} marked by {@code marked}, its
-   * deleted ones placed by the earlier text's units ({@code earlier}, its eIds in document order).
+   * Returns the later text {@code later}, with the differences {@code shown} marked by {@code
+   * marked}. It places the deleted differences by the units of the earlier text. {@code earlier}
+   * has the eIds of these units in document order.
    */
   static Content of(
       Element later,
@@ -72,7 +82,7 @@ final class WholeText {
                 if (difference == null) {
                   hooked.asIs(unit).writeTo(out);
                 } else if (difference.difference().kind() == Kind.CHANGED) {
-                  // its own content marked, then the units in it, as the text has them
+                  // Mark its own content, then write the units in it as the text has them.
                   marked
                       .apply(difference, hooked.asIs(difference.difference().shown()))
                       .writeTo(out);
@@ -106,10 +116,19 @@ final class WholeText {
   }
 
   /**
-   * Where a deleted unit {@code eId} in {@code parent} stands among the later text's {@code units}:
-   * after the unit beside it before it in the earlier text, the nearest that the later text has;
-   * else, first in its parent or with none before it, before the one after it; none if there is
-   * none either.
+   * Returns where a deleted unit {@code eId} in {@code parent} stands among the {@code units} of
+   * the later text.
+   *
+   * <ul>
+   *   <li>It stands after the nearest unit before it in the earlier text that the later text has.
+   *       If that unit is inside a sibling, it stands after that sibling.
+   *   <li>If that unit is its parent, or there is no such unit, it stands before the nearest unit
+   *       after it that the later text has. Its own sub-units do not count. If that unit is inside
+   *       a sibling, it stands before that sibling.
+   *   <li>If there is no unit after it either, returns none.
+   * </ul>
+   *
+   * <p>Also returns none if the earlier text does not have {@code eId}.
    */
   private static @Nullable Placed place(
       String eId, @Nullable String parent, List<String> earlier, Set<String> units) {
@@ -124,7 +143,7 @@ final class WholeText {
       }
       var beside = beside(each, parent);
       if (beside == null) {
-        // its parent: it was first in it
+        // This is its parent, so it was first in its parent.
         break;
       }
       return new Placed(beside, true);
@@ -141,8 +160,9 @@ final class WholeText {
   }
 
   /**
-   * The unit {@code eId} is in that is beside the units in {@code parent} (itself, if it is one);
-   * none if it is {@code parent} or in none of them.
+   * Returns the unit that contains {@code eId} and is a child of {@code parent}. If {@code eId} is
+   * itself a child of {@code parent}, returns {@code eId}. Returns none if {@code eId} is {@code
+   * parent}, or if it is not inside {@code parent}.
    */
   private static @Nullable String beside(String eId, @Nullable String parent) {
     var prefix = parent == null ? "" : parent + "/";
@@ -153,7 +173,10 @@ final class WholeText {
     return slash < 0 ? eId : eId.substring(0, slash);
   }
 
-  /** The units in {@code unit}, outermost first, in order: in it, not in another of them. */
+  /**
+   * Returns the outermost units in {@code unit}, in document order. These are the units in it that
+   * are not inside another unit in it.
+   */
   private static List<Element> inside(Element unit) {
     var units = new ArrayList<Element>();
     for (var child : unit.children()) {
@@ -189,8 +212,8 @@ final class WholeText {
   /**
    * Where a deleted unit stands.
    *
-   * @param eId the later text's unit it is beside
-   * @param after whether it is after that unit, or before it
+   * @param eId the unit of the later text that it stands beside
+   * @param after whether it stands after that unit, or before it
    */
   private record Placed(String eId, boolean after) {}
 }

@@ -1,9 +1,12 @@
 # SPDX-License-Identifier: MIT
-# An act's work by its CELEX (CellarActs): its ELI, its resource type, its date of document,
-# whether it is in force, its dates of entry into force (several: Cellar types them with annotations,
-# not read here; the earliest is the entry into force proper) and of end of validity (9999-12-31 while
-# open-ended). One row per combination of values; CellarActs folds them.
-# {{celex}}: a base act's CELEX (32015R1998), escaped by Sparql.fill.
+# Gets the work of an act by its CELEX number, for CellarActs. It gets:
+# - the ELI, the resource type and the date of document.
+# - whether the act is in force.
+# - the dates of entry into force. There can be several. Cellar types them with annotations, which
+#   this query does not read. The earliest date is the entry into force itself.
+# - the date of end of validity. It is 9999-12-31 while the act is open-ended.
+# It gives one row per combination of values. CellarActs folds the rows.
+# {{celex}}: the CELEX number of a base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

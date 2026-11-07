@@ -1,10 +1,12 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView
 @param CompareView.Acts acts
-<%-- The acts between a comparison's two versions (Design: Acts between the two versions): a chip
-     each, linking to the comparison limited to its changes (on: to all acts again), with how many
-     differences it made once counted; until then, counted from beside the page, swapped for this
-     counted. More than six, those that made none here fold. Counted, the differences no one act
-     is known to have made have a dashed chip of their own, and a hint says what the numbers are --%>
+<%-- Shows the acts between a comparison's two versions, as one chip for each act. A chip links to
+     the comparison limited to that act's changes. The chip that is on links back to all acts.
+     After the count, each chip also shows how many differences its act made. Until then, htmx loads
+     the counts from acts.counting() and swaps this whole template for the counted one. If there are
+     more than six chips, the chips of acts that made no differences here go into a fold. After the
+     count, a dashed chip shows the differences that no single act is known to have made. A hint
+     then says what the numbers mean. --%>
 <div class="between" id="acts" hx-get="${acts.counting()}" hx-trigger="${acts.counting() != null ? "load" : null}" hx-swap="outerHTML">
   <span class="card-kind">${acts.head()}</span>
   <div class="chips">

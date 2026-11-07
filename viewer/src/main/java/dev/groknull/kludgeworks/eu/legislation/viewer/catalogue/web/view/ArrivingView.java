@@ -7,16 +7,20 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
- * The versions of a prepared act that appeared since, being prepared (Design: Revisiting, D-61): a
- * notice on its pages, which stay as they are while the reader reads; the versions are there the
- * next time the page loads.
+ * A notice about new versions of a prepared act. These versions appeared after the act was
+ * prepared, and they are being prepared now. The notice shows on the pages of the act. The pages do
+ * not change while the reader reads them. The new versions are there the next time the page loads.
  *
- * @param notice what appeared: A new version has appeared: 02015R1998-20261201, applies from 1
- *     December 2026. It's being prepared and will be here the next time you load this page.
+ * @param notice the text that says what appeared. For example: "A new version has appeared:
+ *     02015R1998-20261201, applies from 1 December 2026. It's being prepared and will be here the
+ *     next time you load this page."
  */
 public record ArrivingView(String notice) {
 
-  /** The notice on a page of the act being prepared in {@code preparation}, if any arrive. */
+  /**
+   * Returns the notice for a page of the act that {@code preparation} prepares. Returns empty if no
+   * new versions arrive.
+   */
   public static Optional<ArrivingView> of(Preparation preparation) {
     var arriving = preparation.arriving();
     if (arriving.isEmpty()) {
@@ -36,7 +40,10 @@ public record ArrivingView(String notice) {
                     + " page."));
   }
 
-  /** 02015R1998-20261201, applies from 1 December 2026. */
+  /**
+   * Returns the CELEX of the version and the date it applies from. For example,
+   * "02015R1998-20261201, applies from 1 December 2026".
+   */
   private static String version(Version version) {
     return version.celex() + ", applies from " + Wording.date(version.date());
   }

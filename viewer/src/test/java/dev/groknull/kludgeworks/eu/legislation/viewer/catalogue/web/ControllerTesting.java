@@ -15,8 +15,9 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 
 /**
- * What a controller's test (@WebMvcTest) needs beside the controller and its mocked modules: the
- * pages' templates, as the app has them (PagesConfiguration, which the slice leaves out).
+ * Gives a controller test with {@code @WebMvcTest} what it needs beside the controller and its
+ * mocked modules. That is the templates of the pages, as the app has them. In the app, {@code
+ * PagesConfiguration} gives them, but the test slice leaves it out.
  */
 @TestConfiguration(proxyBeanMethods = false)
 class ControllerTesting {
@@ -25,7 +26,10 @@ class ControllerTesting {
     return new StaticTemplates();
   }
 
-  /** OneActCellar's act being prepared in {@code language}: none of its texts built yet. */
+  /**
+   * The act of {@link OneActCellar} while it is prepared in {@code language}. None of its texts is
+   * built yet.
+   */
   static Preparation preparing(Language language) {
     var texts = new LinkedHashMap<Version, Text>();
     OneActCellar.ACT

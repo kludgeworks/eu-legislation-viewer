@@ -1,8 +1,9 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView
 @param FailureView failure
-<%-- Why the text couldn't be made, in its place (FailureView): what happened, which version, and
-     only what can help. Try again posts to the page, boosted as its links are, which answers with
-     the page again: preparing, once more --%>
+<%-- Shows why the text could not be made, in place of the text. FailureView supplies the data. It
+     says what happened and which version failed. It offers only the actions that can help.
+     Try again posts to the page. The post is boosted, as the page's links are. The page answers
+     with itself again, which shows the act as preparing once more. --%>
 <div id="text">
   <section class="failure${failure.fault() ? " fault" : ""}" aria-labelledby="failure">
     <div class="failure-head">

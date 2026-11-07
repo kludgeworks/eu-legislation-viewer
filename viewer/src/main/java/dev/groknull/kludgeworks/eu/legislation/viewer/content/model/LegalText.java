@@ -11,16 +11,24 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmNodeKind;
 
 /**
- * What the content model knows of legal-text's schema: its namespaces and the names they give
- * elements and attributes in JSON (local, or prefixed: m:math, xml:lang); which elements are blocks
- * (the tree's leaves); and that text is never mixed with elements (text is only ever in an element
- * of its own, t), so whitespace between elements is only the indentation of whoever wrote the file.
+ * What the content model knows of the legal-text schema.
+ *
+ * <ul>
+ *   <li>Its namespaces, and the names they give to elements and attributes in JSON. A name is
+ *       local, or prefixed, for example {@code m:math} or {@code xml:lang}.
+ *   <li>Which elements are blocks. Blocks are the leaves of the tree.
+ *   <li>That text is never mixed with elements. Text is only in an element of its own, {@code t}.
+ *       Thus whitespace between elements is only the indentation of the writer of the file.
+ * </ul>
  */
 final class LegalText {
 
   static final String NAMESPACE = "https://kludgeworks.groknull.dev/ns/legal-text/1";
 
-  /** The other namespaces a legal text uses, by the prefix their names have in JSON (m:math). */
+  /**
+   * The other namespaces that a legal text uses, by the prefix that their names have in JSON. For
+   * example, {@code m} in {@code m:math}.
+   */
   static final Map<String, String> NAMESPACES =
       Map.of(
           "m", "http://www.w3.org/1998/Math/MathML",
@@ -28,7 +36,8 @@ final class LegalText {
           "xsi", XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
 
   /**
-   * The blocks: what a reader reads and an amendment replaces, besides any element of only text.
+   * The blocks. A block is what a reader reads and what an amendment replaces. Any element that
+   * holds only text is also a block.
    */
   private static final Set<String> BLOCKS =
       Set.of("p", "heading", "tr", "note", "longTitle", "num", "docTitle");
@@ -44,8 +53,8 @@ final class LegalText {
   }
 
   /**
-   * An element's child elements, refusing anything else but whitespace: text beside elements,
-   * comments, processing instructions.
+   * Returns the child elements of an element. It refuses anything else except whitespace, for
+   * example text beside elements, comments or processing instructions.
    */
   static List<XdmNode> elements(XdmNode el) {
     var out = new ArrayList<XdmNode>();
@@ -78,7 +87,10 @@ final class LegalText {
     return false;
   }
 
-  /** The most rows a cell of a table row spans (a leaf's JSON); 0 for anything but a row. */
+  /**
+   * Returns the largest number of rows that a cell of a table row spans. {@code leaf} is the JSON
+   * of a leaf. Returns 0 for anything that is not a row.
+   */
   static int rowspan(List<?> leaf) {
     if (!JsonMl.name(leaf).equals("tr")) {
       return 0;

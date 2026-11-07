@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 /**
- * Acts: an act (a work, identified by CELEX and ELI), its versions and its timeline, and which
- * version applies on a date (Design: Choosing the version to show). The root package is the
- * module's API and the onion's domain ring; {@link Acts} is the repository of all acts, which other
- * modules use directly; its adapter on Cellar is in {@code infra}.
+ * Acts. The module holds an act, which is a work identified by CELEX and ELI, with its versions and
+ * its timeline. It also tells which version applies on a date.
+ *
+ * <p>The root package is the API of the module and the domain ring of the onion. {@link Acts} is
+ * the repository of all acts, and other modules use it directly. Its adapter on Cellar is in {@code
+ * infra}.
  */
 @ApplicationModule(displayName = "Catalogue")
 @DomainRing

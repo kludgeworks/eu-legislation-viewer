@@ -23,11 +23,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Storing a text: encoded into its tree and cut into segments (the model), then kept unless it is
- * already; reading or rebuilding one: its tree read back and decoded; outlining one: its skeleton
- * read back (its containers and their titles). Each is one transaction, one observation
- * (content.store, content.read, content.outline, content.rebuild: a span and a timer) and one log
- * line.
+ * Stores, reads, rebuilds and outlines texts.
+ *
+ * <ul>
+ *   <li>To store a text, the model encodes it into its tree and cuts it into segments. The service
+ *       then keeps the tree, unless it is kept already.
+ *   <li>To read or rebuild a text, the service reads its tree back and decodes it.
+ *   <li>To outline a text, the service reads its skeleton back: its containers and their titles.
+ * </ul>
+ *
+ * <p>Each operation is one transaction, one observation and one log line. The observations are
+ * {@code content.store}, {@code content.read}, {@code content.outline} and {@code content.rebuild}.
+ * Each gives a span and a timer.
  */
 @Service
 class ContentService implements Content {

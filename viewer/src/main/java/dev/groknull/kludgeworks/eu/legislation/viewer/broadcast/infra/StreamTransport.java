@@ -15,14 +15,17 @@ import org.springframework.modulith.events.support.EventExternalizationTransport
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * An externalized event sent to Valkey: added to the stream its @Externalized names (XADD), its
- * type and its JSON, for every instance's StreamReader. A stream keeps only its latest entries
- * (about KEPT, trimmed as Valkey finds cheapest): they are read as they come, never replayed.
+ * Sends an externalized event to Valkey. It adds the type and the JSON of the event to the stream
+ * that its {@code @Externalized} names, with {@code XADD}. The {@link StreamReader} of every
+ * instance reads it.
+ *
+ * <p>A stream keeps only its latest entries, about {@link #KEPT}. Valkey trims them as it finds
+ * cheapest. The entries are read as they come, and never replayed.
  */
 class StreamTransport implements EventExternalizationTransport {
   private static final Logger LOG = LoggerFactory.getLogger(StreamTransport.class);
 
-  /** How many entries a stream keeps, about. */
+  /** About how many entries a stream keeps. */
   static final long KEPT = 1000;
 
   static final String TYPE = "type";

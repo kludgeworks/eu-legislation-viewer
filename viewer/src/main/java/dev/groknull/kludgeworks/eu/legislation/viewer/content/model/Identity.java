@@ -8,10 +8,13 @@ import tools.jackson.databind.SerializationFeature;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * What makes two nodes the same: the SHA-256 of their JSON in one spelling. Jackson with map keys
- * sorted writes the JSON Canonicalization Scheme (RFC 8785) for all a node holds (objects, arrays,
- * strings, integers, null); it parts from JCS only on floating point numbers, and on control
- * characters XML 1.0 doesn't allow, which nodes can't hold.
+ * Decides when two nodes are the same. Two nodes are the same if the SHA-256 of their JSON, in one
+ * spelling, is the same.
+ *
+ * <p>Jackson with sorted map keys writes the JSON Canonicalization Scheme (RFC 8785) for all that a
+ * node holds: objects, arrays, strings, integers and null. It is different from JCS only for
+ * floating point numbers, and for the control characters that XML 1.0 does not allow. Nodes cannot
+ * hold these.
  */
 final class Identity {
   private static final JsonMapper JSON =
@@ -35,7 +38,10 @@ final class Identity {
     return of(bytes(json));
   }
 
-  /** JSON as stored, read back: lists, maps (in their order), strings, integers and null. */
+  /**
+   * Reads back JSON as stored. The result holds lists, maps in their order, strings, integers and
+   * null.
+   */
   static Object parse(byte[] json) {
     return JSON.readValue(json, Object.class);
   }

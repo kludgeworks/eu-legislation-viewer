@@ -1,8 +1,15 @@
 // SPDX-License-Identifier: MIT
 /**
- * What the catalogue's pages show, worked out for their templates: the timeline (TimelineView), in
- * the wording the pages use (Wording) and with links to the versions (Links). Everything a page
- * links to is computed here, so its links are plain hrefs that work without JavaScript.
+ * What the pages of the catalogue show, prepared for their templates. This package contains:
+ *
+ * <ul>
+ *   <li>the timeline, in {@link TimelineView}
+ *   <li>the wording that the pages use, in {@link Wording}
+ *   <li>the links to the versions, in {@link Links}
+ * </ul>
+ *
+ * <p>This package computes every link on a page. Thus the links are plain hrefs that work without
+ * JavaScript.
  */
 @InfrastructureRing
 @NullMarked

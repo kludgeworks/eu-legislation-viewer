@@ -3,10 +3,11 @@
 @param Chrome chrome
 @param String title
 @param HomeView home
-<%-- The home page (Design: Home page): the viewer's name and what it is, the Find an act box, then
-     a search's results: each act's CELEX and kind, its title, the link, and where it goes; filters
-     by kind of act, the pages before and after. Then three notes: what this is, what it adds, what
-     it isn't. The site bar's own small box is left out (search false) --%>
+<%-- Shows the home page. It has the viewer's name, a line that says what it is, and the Find an
+     act box. Then come a search's results. Each result shows the act's CELEX and kind, its title,
+     its link and the pages it goes to. Filters by kind of act and links to the pages before and
+     after go with the results. At the end, three notes say what this is, what it adds and what it
+     is not. The page leaves out the small search box of the site bar (search false). --%>
 @template.layout.page(chrome = chrome, title = title, search = false, content = @`
   <div class="home">
     <header class="home-mast">

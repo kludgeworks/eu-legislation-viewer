@@ -91,8 +91,8 @@ class SparqlTest {
             });
     var sparql = mock.sparql();
 
-    // Cellar holds its answer to the first until both are asked: a second request would fail the
-    // mock's expectation of one
+    // Cellar holds its answer to the first query until both queries are asked. The mock expects
+    // one request, so a second request would fail.
     var first = sparql.answer("SELECT * WHERE {}");
     var second = sparql.answer("SELECT * WHERE {}");
     answer.countDown();

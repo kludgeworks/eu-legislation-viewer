@@ -2,4 +2,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<%-- the notes of deleted text: out of sight, as that text is, but for one its reference was followed to --%><div class="deleted-notes">${html.others(node, "provenance")}</div>
+<%-- Holds the notes of deleted text. They are hidden, as the deleted text is. A note shows only
+     when the reader follows a reference to it. --%><div class="deleted-notes">${html.others(node, "provenance")}</div>

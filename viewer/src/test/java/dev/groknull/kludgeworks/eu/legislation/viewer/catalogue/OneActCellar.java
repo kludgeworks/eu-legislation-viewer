@@ -23,13 +23,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
 /**
- * Cellar, as far as the module's tests need it: one act, 2015/1998, with its original text and four
- * of its consolidations (in English and French; the latest, of 1 October 2026, without a PDF yet),
- * its own dates and some of those of the acts they integrate, as Cellar has them, and what it was
- * asked for, from any thread. What it answers can be changed ({@link #act}): to the same act with
- * its consolidation of 1 March 2022 too (REFRESHED), as if Cellar listed a version more. Searched
- * for words with security among them, it finds 2015/1998 and 2026/449, which amends it; nothing for
- * others.
+ * A stand-in for Cellar, with only what the module's tests need. It knows one act, 2015/1998. The
+ * act has its original text and four of its consolidations, in English and French. The latest
+ * consolidation, of 1 October 2026, has no PDF yet. The act also has its own dates and some dates
+ * of the acts that its consolidations integrate, as Cellar has them.
+ *
+ * <p>The stand-in records what it was asked for, from any thread. A test can change its answer
+ * through {@link #act}. {@link #REFRESHED} is the same act with its consolidation of 1 March 2022
+ * added, as if Cellar listed one more version.
+ *
+ * <p>A search for words that include "security" finds 2015/1998 and 2026/449, which amends it. A
+ * search for other words finds nothing.
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class OneActCellar {
@@ -111,7 +115,7 @@ public class OneActCellar {
           List.of(),
           Map.of());
 
-  /** The act as Cellar lists it with its consolidation of 1 March 2022 too. */
+  /** The act as Cellar lists it when it also has the consolidation of 1 March 2022. */
   static final Act REFRESHED =
       new Act(
           ACT.id(),
@@ -201,7 +205,10 @@ public class OneActCellar {
     };
   }
 
-  /** What Cellar finds for {@code query}: 2015/1998 and 2026/449 for security, else nothing. */
+  /**
+   * What Cellar finds for {@code query}. On the first page, a search for "security" finds 2015/1998
+   * and 2026/449. Any other search finds nothing.
+   */
   public static Search.Found found(Search.Query query) {
     if (!query.words().contains("security") || query.offset() > 0) {
       return new Search.Found(List.of(), false);

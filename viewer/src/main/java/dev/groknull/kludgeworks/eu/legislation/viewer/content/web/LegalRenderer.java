@@ -14,15 +14,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * A legal text as HTML: each element by its template, chosen by convention (Rendering and UI), as
- * XSLT's templates match: legal/{parent}/{name}.jte if there is one (the deleted notes in notes,
- * against deleted blocks), else legal/{name}.jte; a MathML element's name by its prefix's folder
- * (m:mi is legal/m/mi.jte). A template takes its element (node) and this (html), and holds markup
- * only, recursing with {@code ${html.children(node)}}; the text it writes, jte escapes. Adding an
- * element to legal-text is adding its template, which the coverage test asks for.
+ * Renders a legal text as HTML. It renders each element with its template. The template is chosen
+ * by convention, in the way that XSLT templates match:
  *
- * <p>A page can have some units rendered otherwise ({@link #instead}): a comparison's Whole text
- * has each that differs marked, with its sidenote, the rest as they read.
+ * <ul>
+ *   <li>{@code legal/{parent}/{name}.jte}, if there is one. For example, the deleted notes in notes
+ *       have a template different from that of deleted blocks.
+ *   <li>Otherwise {@code legal/{name}.jte}.
+ *   <li>A MathML element uses the folder of its prefix. For example, {@code m:mi} uses {@code
+ *       legal/m/mi.jte}.
+ * </ul>
+ *
+ * <p>A template takes its element as {@code node} and this renderer as {@code html}. It holds only
+ * markup, and recurses with {@code ${html.children(node)}}. jte escapes the text that it writes. To
+ * add an element to legal-text, add its template. The coverage test asks for it.
+ *
+ * <p>A page can render some units in a different way, with {@link #instead}. For example, the Whole
+ * text of a comparison marks each unit that differs and gives it a sidenote. The other units show
+ * as they read.
  */
 @Component
 public class LegalRenderer {
@@ -45,40 +54,47 @@ public class LegalRenderer {
   }
 
   /**
-   * This, but for the units whose eIds {@code instead} has, each rendered as it says: wherever one
-   * is, in whatever this renders.
+   * Returns a copy of this renderer that renders the units whose eIds are in {@code instead} as
+   * {@code instead} says. This applies wherever such a unit is, in all that the copy renders.
    */
   public LegalRenderer instead(Map<String, Otherwise> instead) {
     return new LegalRenderer(templates, chosen, instead);
   }
 
   /**
-   * How a unit is rendered otherwise: given the unit and the renderer rendering it, which can
-   * render it as it is ({@link #asIs}), and what is in it, within what it renders instead.
+   * A different way to render a unit. It gets the unit and the renderer that renders it. Within
+   * what it renders instead, the renderer can render the unit as it is ({@link #asIs}) and what is
+   * in the unit.
    */
   @FunctionalInterface
   public interface Otherwise {
     Content render(Element unit, LegalRenderer html);
   }
 
-  /** {@code element} by its template, even where it is to be rendered otherwise: its own. */
+  /**
+   * Renders {@code element} with its own template, even if it is to be rendered in a different way.
+   */
   public Content asIs(Element element) {
     return out -> template(element, null, out);
   }
 
-  /** {@code element}, with everything in it: a text's element, legalText, is the whole text. */
+  /**
+   * Renders {@code element} with everything in it. The {@code legalText} element of a text renders
+   * the whole text.
+   */
   public Content element(Element element) {
     return out -> render(element, null, out);
   }
 
-  /** {@code element}'s children, each by its template, in order. */
+  /** Renders the children of {@code element} in order, each with its template. */
   public Content children(Element element) {
     return out -> element.children().forEach(child -> render(child, element.name(), out));
   }
 
   /**
-   * {@code element}'s children named {@code names}, in order: where a template puts some apart from
-   * the rest (a row group's heading row, its num, heading and subheading, before its rows).
+   * Renders the children of {@code element} named {@code names}, in order. A template uses this to
+   * put some children apart from the rest. For example, the heading row of a row group shows its
+   * num, heading and subheading before its rows.
    */
   public Content children(Element element, String... names) {
     var named = Set.of(names);
@@ -89,8 +105,9 @@ public class LegalRenderer {
   }
 
   /**
-   * {@code element}'s children not named {@code names}, in order: the rest, once a template has put
-   * those apart (a deletion's content, its provenance in its mark).
+   * Renders the children of {@code element} not named {@code names}, in order. These are the rest,
+   * after a template put the named ones apart. For example, the content of a deletion, after its
+   * provenance went in its mark.
    */
   public Content others(Element element, String... names) {
     var named = Set.of(names);
@@ -101,8 +118,13 @@ public class LegalRenderer {
   }
 
   /**
-   * A number (as written: 6000) as EUR-Lex prints it: a whole number of four digits or more with
-   * its thousands set apart by a no-break space (6 000); any other as written (250, 1.5).
+   * Returns a number, written as in the text, in the form that EUR-Lex prints it.
+   *
+   * <ul>
+   *   <li>A whole number of four digits or more gets a no-break space between its thousands. For
+   *       example, "6000" becomes "6 000".
+   *   <li>Any other number stays as written. For example, "250" or "1.5".
+   * </ul>
    */
   public String thousands(String number) {
     if (!WHOLE.matcher(number).matches()) {
@@ -115,7 +137,7 @@ public class LegalRenderer {
     return out.toString();
   }
 
-  /** Whether {@code element} has any child named {@code names}. */
+  /** Returns whether {@code element} has a child with one of the names {@code names}. */
   public boolean has(Element element, String... names) {
     var named = Set.of(names);
     return element.children().stream().anyMatch(child -> named.contains(child.name()));
@@ -149,12 +171,18 @@ public class LegalRenderer {
         });
   }
 
-  /** The template of an element named {@code name} anywhere: legal/p.jte, legal/m/mi.jte. */
+  /**
+   * Returns the template for an element at {@code path}, wherever the element is. For example,
+   * {@code legal/p.jte} or {@code legal/m/mi.jte}.
+   */
   static String template(String path) {
     return "legal/" + path + ".jte";
   }
 
-  /** An element's name as a path: its own (p), or its prefix's folder (m:mi is m/mi). */
+  /**
+   * Returns the name of an element as a path. A name without a prefix stays the same, for example
+   * {@code p}. A prefix becomes a folder, for example {@code m:mi} becomes {@code m/mi}.
+   */
   static String path(String name) {
     return name.replace(':', '/');
   }

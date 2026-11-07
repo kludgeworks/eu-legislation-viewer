@@ -8,14 +8,17 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An element of a legal text, as it was stored: its eIds and note references as the converter wrote
- * them. Legal-text never mixes text with elements, so an element holds one or the other.
+ * An element of a legal text, as it was stored. Its eIds and note references are as the converter
+ * wrote them. Legal-text never mixes text with elements, so an element holds one or the other.
  *
- * @param name its name, as legal-text's JSON has it: local (p, unit) or prefixed (m:math)
- * @param attributes its attributes, by the same names (eId, xml:lang)
- * @param children its child elements, in order; none for an element of text
- * @param text its text, which only MathML's tokens hold (mi, mo): legal-text's own is in attributes
- *     (t's v, number's v). Empty for any other element
+ * @param name its name, as the legal-text JSON has it. The name is local, for example {@code p} or
+ *     {@code unit}, or prefixed, for example {@code m:math}.
+ * @param attributes its attributes, by the same names. For example, {@code eId} or {@code
+ *     xml:lang}.
+ * @param children its child elements, in order. None for an element of text.
+ * @param text its text. Only the MathML tokens, for example {@code mi} and {@code mo}, hold text.
+ *     Legal-text keeps its own text in attributes, for example the {@code v} of {@code t} or of
+ *     {@code number}. Empty for any other element.
  */
 @ValueObject
 public record Element(
@@ -30,17 +33,25 @@ public record Element(
   }
 
   /**
-   * Its attribute {@code name}; none if it has none (so a template leaves the HTML attribute out).
+   * Returns its attribute {@code name}. Returns null if it has none, so that a template leaves out
+   * the HTML attribute.
    */
   public @Nullable String attribute(String name) {
     return attributes.get(name);
   }
 
   /**
-   * Its units from the one {@code first} to the one {@code last}, in order, each whole, with the
-   * units in it (not again on their own): a run as a comparison folds it, which may start inside a
-   * unit and end outside it; not those a consolidation keeps struck (deleted). None if it hasn't
-   * {@code first}.
+   * Returns its units from the unit {@code first} to the unit {@code last}, in order. This is a run
+   * as a comparison folds it.
+   *
+   * <ul>
+   *   <li>Each unit is whole, with the units in it. The units in it do not appear again on their
+   *       own.
+   *   <li>The run may start inside a unit and end outside it.
+   *   <li>The run leaves out the units that a consolidation keeps struck, in {@code deleted}.
+   * </ul>
+   *
+   * <p>Returns none if it does not have {@code first}.
    */
   public List<Element> units(String first, String last) {
     var run = new ArrayList<Element>();
@@ -48,14 +59,17 @@ public record Element(
     return run;
   }
 
-  /** Where a walk is in a run of units. */
+  /** The position of a walk in a run of units. */
   private enum Run {
     BEFORE,
     IN,
     AFTER
   }
 
-  /** {@code element}'s units in the run to {@code run}, from {@code at}; where it then is. */
+  /**
+   * Adds the units of {@code element} that are in the run to {@code run}, from position {@code at}.
+   * Returns the position after {@code element}.
+   */
   private static Run collect(
       Element element, String first, String last, Run at, List<Element> run) {
     var now = at;
@@ -63,7 +77,7 @@ public record Element(
       if (now == Run.AFTER) {
         return now;
       }
-      // what a consolidation keeps struck: not the text's
+      // A consolidation keeps struck text here. It is not part of the text.
       if (child.name().equals("deleted")) {
         continue;
       }

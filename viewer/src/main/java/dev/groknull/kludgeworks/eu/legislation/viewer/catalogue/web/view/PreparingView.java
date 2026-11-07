@@ -21,18 +21,24 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An act's page while the act is being prepared in its language (Design: Preparing an act): what
- * the reader asked for, which opens at this address once it is ready; the progress panel, its steps
- * as they happened, and what is already known about the act, from the catalogue. The stream pushes
- * the progress and the steps again as they change (PreparationController); the rest stays.
+ * The page of an act while the act is being prepared in its language. The page shows:
  *
- * @param asked what the reader asked for, and that it opens here
- * @param self the page's address, asked again once the act is prepared
- * @param events the stream of the preparation
- * @param progress how it stands
+ * <ul>
+ *   <li>what the reader asked for. It opens at this address when it is ready.
+ *   <li>the progress panel, with the steps as they happened
+ *   <li>what the catalogue already tells about the act
+ * </ul>
+ *
+ * <p>The event stream pushes the progress and the steps again when they change. {@code
+ * PreparationController} sends the stream. The rest of the page does not change.
+ *
+ * @param asked what the reader asked for, and the statement that it opens here
+ * @param self the address of the page, which the page requests again when the act is prepared
+ * @param events the address of the event stream of the preparation
+ * @param progress the state of the preparation
  * @param steps what was done, as it happened
- * @param known what the catalogue says of the act
- * @param eurLex the act on EUR-Lex, in the page's language
+ * @param known what the catalogue tells about the act
+ * @param eurLex the address of the act on EUR-Lex, in the language of the page
  */
 public record PreparingView(
     String asked,
@@ -43,7 +49,9 @@ public record PreparingView(
     List<Fact> known,
     String eurLex) {
 
-  /** Where a step's time is told: Brussels, as the pages' dates are. */
+  /**
+   * The time zone of the time of a step. It is Brussels, the same as for the dates on the pages.
+   */
   private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
 
   private static final DateTimeFormatter TIME = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -54,8 +62,11 @@ public record PreparingView(
   }
 
   /**
-   * The page of {@code act} being prepared ({@code preparation}), asked for as {@code asked}, at
-   * {@code self}, on {@code now}.
+   * Returns the page of {@code act} while {@code preparation} prepares it.
+   *
+   * @param asked what the reader asked for
+   * @param self the address of the page
+   * @param now the time now
    */
   public static PreparingView of(
       Act act, Preparation preparation, String asked, String self, Instant now) {
@@ -70,14 +81,17 @@ public record PreparingView(
         Links.eurLex(act.id().celex(), preparation.language()));
   }
 
-  /** The preparation's steps, as a reader is told them, in the order they were taken. */
+  /**
+   * Returns the steps of the preparation, in the words that the reader sees. The steps are in the
+   * order they were taken.
+   */
   public static List<Step> steps(Preparation preparation) {
     return preparation.steps().stream()
         .map(step -> new Step(TIME.format(step.at().atZone(BRUSSELS)), step(step)))
         .toList();
   }
 
-  /** version 02015R1998-20230401 converted (34 s). */
+  /** Returns the text of a step. For example, "version 02015R1998-20230401 converted (34 s)". */
   private static String step(Preparation.Step step) {
     var version = "version " + step.celex();
     return switch (step.kind()) {
@@ -97,7 +111,10 @@ public record PreparingView(
     };
   }
 
-  /** What is known of the act at once: adopted, in force, applies, takes effect, amended by. */
+  /**
+   * Returns what is known about the act at once. This is when it was adopted, when it is in force,
+   * applies and takes effect, and which acts amended it.
+   */
   private static List<Fact> known(Act act) {
     var known = new ArrayList<Fact>();
     if (act.dateOfDocument() != null) {
@@ -142,7 +159,15 @@ public record PreparingView(
     return known;
   }
 
-  /** from 1 February 2016, Article 3; in part from …; 20 days after its publication, Article 2. */
+  /**
+   * Returns a date of the act and the provisions it is in. For example:
+   *
+   * <ul>
+   *   <li>"from 1 February 2016, Article 3"
+   *   <li>"in part from …"
+   *   <li>"20 days after its publication, Article 2"
+   * </ul>
+   */
   private static String date(ActDate date) {
     var clause = date.clause();
     var when = date.date() != null ? "from " + Wording.date(date.date()) : relative(clause);
@@ -151,7 +176,10 @@ public record PreparingView(
     return (date.partial() ? "in part " : "") + when + (where.isEmpty() ? "" : ", " + where);
   }
 
-  /** A date the clause sets from a day: 20 days after its publication. */
+  /**
+   * Returns a date that the clause sets relative to a day. For example, "20 days after its
+   * publication". If the clause sets no day, returns "on a date not yet known".
+   */
   private static String relative(ActDate.Clause clause) {
     if (clause.from() == null) {
       return "on a date not yet known";
@@ -167,16 +195,20 @@ public record PreparingView(
   }
 
   /**
-   * How the preparation stands, as the stream pushes it.
+   * The state of the preparation, as the event stream pushes it.
    *
-   * @param waiting while nothing has started: why, with how many versions are ahead; none once it
-   *     has. Beside it, one of {@link #ASIDES} at a time, for the eye alone
-   * @param running the versions being built now: Version 16 of 22 · 02015R1998-20230401
+   * @param waiting why nothing has started yet, with how many versions are ahead. Null when
+   *     something has started. Beside it, the page shows one of {@link #ASIDES} at a time, for the
+   *     eye only.
+   * @param running the versions that are being built now. For example, "Version 16 of 22 ·
+   *     02015R1998-20230401".
    * @param settled how many versions are built or failed
    * @param size how many versions there are
-   * @param counts 16 of 22 versions ready, and how many couldn't be made
-   * @param seconds how long it has taken so far, in seconds, for the clock the page keeps
-   * @param elapsed the same as the page shows it: 4:12
+   * @param counts how many versions are ready, and how many could not be made. For example, "16 of
+   *     22 versions ready".
+   * @param seconds how long the preparation has taken so far, in seconds. The clock on the page
+   *     starts from this value.
+   * @param elapsed the same time, as the page shows it. For example, 4:12.
    */
   public record Progress(
       @Nullable String waiting,
@@ -188,8 +220,9 @@ public record PreparingView(
       String elapsed) {
 
     /**
-     * The light lines beside the wait, one at a time, changed every few seconds by the page
-     * (clock.js); hidden from screen readers, which have the plain line.
+     * The light lines that show beside the wait, one at a time. The page changes the line every few
+     * seconds, in {@code clock.js}. The lines are hidden from screen readers, which read the plain
+     * line.
      */
     public static final List<String> ASIDES =
         List.of(
@@ -204,12 +237,12 @@ public record PreparingView(
       running = List.copyOf(running);
     }
 
-    /** The asides, as the page's script reads them: one per line. */
+    /** Returns the asides as the script of the page reads them, one on each line. */
     public String asides() {
       return String.join("\n", ASIDES);
     }
 
-    /** {@code preparation}'s progress, on {@code now}. */
+    /** Returns the state of {@code preparation} at the time {@code now}. */
     public static Progress of(Preparation preparation, Instant now) {
       var versions = preparation.versions();
       var running = new ArrayList<String>();
@@ -246,8 +279,9 @@ public record PreparingView(
     }
 
     /**
-     * Why nothing has started, plainly (Design D-59): About 40 versions of other acts are ahead.
-     * Nothing's wrong; this one starts by itself.
+     * Returns, in plain words, why nothing has started. For example, "About 40 versions of other
+     * acts are ahead. Nothing's wrong; this one starts by itself." From 10 versions ahead, the
+     * number is rounded to the nearest 10.
      */
     static String waiting(int ahead) {
       var calm = "Nothing's wrong; this one starts by itself.";
@@ -262,7 +296,10 @@ public record PreparingView(
           + calm;
     }
 
-    /** 4:12, or 1:04:12 past an hour. */
+    /**
+     * Returns the elapsed time as m:ss, for example 4:12. From one hour, it is h:mm:ss, for example
+     * 1:04:12.
+     */
     static String elapsed(Duration elapsed) {
       var seconds = Math.max(elapsed.toSeconds(), 0);
       return seconds >= 3600
@@ -273,17 +310,23 @@ public record PreparingView(
   }
 
   /**
-   * A step as it happened.
+   * A step of the preparation, as it happened.
    *
-   * @param time when, in Brussels: 10:42:13
-   * @param text what: version 02015R1998-20230401 converted (34 s)
+   * @param time when the step happened, in Brussels time. For example, 10:42:13.
+   * @param text what happened. For example, "version 02015R1998-20230401 converted (34 s)".
    */
   public record Step(String time, String text) {}
 
-  /** A fact of the act's: Applies, from 1 February 2016, Article 3. */
+  /**
+   * A fact about the act. For example, the term "Applies" with the detail "from 1 February 2016,
+   * Article 3".
+   */
   public record Fact(String term, String detail) {}
 
-  /** The receipt once it is prepared: ✓ Prepared · 22 versions in English · took 1:12. */
+  /**
+   * Returns the receipt that shows when the act is prepared. For example, "Prepared · 22 versions
+   * in English · took 1:12".
+   */
   public static String receipt(Preparation preparation, Language language) {
     var size = preparation.size();
     var versions =

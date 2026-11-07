@@ -12,7 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-/** Legal texts encoded into the tree and rebuilt from it, as they were. */
+/**
+ * Tests that {@link Encoder} encodes legal texts into the tree, and that they are rebuilt from it
+ * as they were.
+ */
 class EncoderTest {
   private static final String NS = "xmlns=\"" + LegalText.NAMESPACE + "\"";
 

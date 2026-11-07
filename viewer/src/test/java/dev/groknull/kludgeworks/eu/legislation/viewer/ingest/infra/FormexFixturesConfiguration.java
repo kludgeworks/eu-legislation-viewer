@@ -6,7 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Primary;
 
 /**
- * Formex from the converter's fixtures (FormexFixtures) in place of Cellar's, for the app's tests.
+ * Gives Formex from the converter's fixtures in place of Cellar's, for the app's tests. The source
+ * is {@link FormexFixtures}.
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class FormexFixturesConfiguration {

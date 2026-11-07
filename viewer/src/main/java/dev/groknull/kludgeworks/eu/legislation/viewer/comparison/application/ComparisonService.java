@@ -22,11 +22,19 @@ import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
 
 /**
- * Comparisons of the texts the content module stores: kept ones from the store, others worked out
- * from both texts read whole (Content.read) and kept, on the executor, for the request that asks
- * for one, or ahead of it (ComparisonWanted). One asked for while it's being worked out waits for
- * that one: a reader often asks while it's worked out ahead of them. Working one out is observed
- * (comparison.compare, its diff within it: comparison.diff), its reads the content module's.
+ * Compares the texts that the content module stores.
+ *
+ * <ul>
+ *   <li>A kept comparison comes from the store.
+ *   <li>Otherwise the service reads both texts whole with {@link Content#read}, works out the
+ *       comparison on the executor, and keeps it. It does this for the request that asks for the
+ *       comparison, or before the request, on {@link ComparisonWanted}.
+ *   <li>A request for a comparison that is being worked out waits for that work. A reader often
+ *       asks while the comparison is being worked out before the reader asked.
+ * </ul>
+ *
+ * <p>The work is observed as {@code comparison.compare}, with the diff in it as {@code
+ * comparison.diff}. The content module observes the reads.
  */
 @Service
 class ComparisonService implements Comparisons {
@@ -39,11 +47,12 @@ class ComparisonService implements Comparisons {
   private final ConcurrentMap<Pair, CompletableFuture<Optional<Comparison>>> running =
       new ConcurrentHashMap<>();
 
-  /** The texts a comparison is of. */
+  /** The two texts of a comparison. */
   private record Pair(ContentHash from, ContentHash to) {}
 
   /**
-   * @param executor where comparisons are worked out: Spring Boot's task executor
+   * @param executor the executor that works out comparisons. It is the task executor of Spring
+   *     Boot.
    */
   ComparisonService(
       Content content,
@@ -66,8 +75,9 @@ class ComparisonService implements Comparisons {
   }
 
   /**
-   * The comparison of {@code from} with {@code to}, to come: the kept one, the one being worked out
-   * already, or one worked out now. Fails as {@link #between} throws.
+   * Returns the future comparison of {@code from} with {@code to}. It is the kept one, the one that
+   * is being worked out already, or one that is worked out now. The future fails in the same way
+   * that {@link #between} throws.
    */
   CompletableFuture<Optional<Comparison>> comparing(ContentHash from, ContentHash to) {
     var kept = comparisons.find(from, to);
@@ -84,7 +94,7 @@ class ComparisonService implements Comparisons {
     }
     mine.whenComplete((comparison, failure) -> running.remove(pair, mine));
     try {
-      // kept by now, if another finished it between the look above and this one's start
+      // Another caller may have kept it between the first find and this start, so find it again.
       mine.completeAsync(
           () ->
               comparisons
@@ -95,7 +105,7 @@ class ComparisonService implements Comparisons {
                               .observe(() -> compare(from, to))),
           executor);
     } catch (RuntimeException e) {
-      // the executor refused it
+      // The executor refused the work.
       mine.completeExceptionally(e);
     }
     return mine;

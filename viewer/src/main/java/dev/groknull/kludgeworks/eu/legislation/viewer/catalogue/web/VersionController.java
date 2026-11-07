@@ -48,15 +48,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * A version's page, at the ELI of the act and the date it applies on (any date: the version that
- * applies then), in a language by the EU's code, as an ELI has it: /eli/reg_impl/2015/1998/
- * 2026-03-22/eng. The act is prepared whole in the language, every version of it, before the page
- * shows a text: until then it is the preparing page, which becomes this one in place; then the
- * version's text loads from the content module, its outline beside it, or why it couldn't be made
- * is in its place, with Try again posting to the page where that may help. Versions that appeared
- * since it was prepared are prepared on their own: the page doesn't wait for them, but says so. The
- * act's address without a date goes to the page of the version that applies today, or of the date
- * asked (on).
+ * Shows the page of a version of an act, in a language.
+ *
+ * <p>The address has the ELI of the act, a date, and the EU code of the language, as an ELI has
+ * them. For example, {@code /eli/reg_impl/2015/1998/2026-03-22/eng}. The date can be any date. The
+ * page shows the version that applies on that date.
+ *
+ * <p>The act is prepared whole in the language, with every version, before the page shows a text.
+ * Until then, the page is the preparing page, which becomes this page in place. Then the text of
+ * the version loads from the content module, with its outline beside it. If the text could not be
+ * built, the page shows why in its place. Where a new try may help, Try again posts to the page.
+ *
+ * <p>Versions that appeared after the act was prepared are prepared separately. The page does not
+ * wait for them, but it says that they are being prepared.
+ *
+ * <p>The address of the act without a date redirects to the page of the version that applies today,
+ * or to the page for the date in {@code on}.
  */
 @Controller
 class VersionController {
@@ -80,9 +87,12 @@ class VersionController {
   }
 
   /**
-   * The act in a language, as Read links it: the page of the version that applies today, at its
-   * first day, so that a bookmark of it keeps pointing at that version (the first version before
-   * the act applies); or, as the Reading card's date form asks, the page for the date {@code on}.
+   * Redirects to the page of the version of the act that applies today, in a language. The Read
+   * link uses this address.
+   *
+   * <p>The redirect goes to the first day of the version, so that a bookmark of it keeps pointing
+   * at that version. Before the act applies, it goes to the first version. If {@code on} is given,
+   * it redirects to the page for that date. The date form of the Reading card sends {@code on}.
    */
   @GetMapping(path = "/eli/{type}/{year}/{number}/{language}", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<Void> act(
@@ -105,8 +115,11 @@ class VersionController {
   }
 
   /**
-   * The version's page: while the act is being prepared in the language, the preparing page, which
-   * asks this address again once it is (prepared, for the receipt saying what was).
+   * Returns the page of the version.
+   *
+   * <p>While the act is being prepared in the language, it returns the preparing page. When the act
+   * is prepared, that page requests this address again with {@code prepared}. The page then shows a
+   * receipt that says what was prepared.
    */
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -159,8 +172,9 @@ class VersionController {
   }
 
   /**
-   * Try again, as the failure panel posts it to the version's page: the act's texts that failed
-   * where trying again may help, tried again; then the page, preparing once more.
+   * Tries again to build the texts of the act, when the failure panel posts Try again to the
+   * version page. It tries again only the texts that failed where a new try may help. Then it
+   * redirects to the page, which prepares the act again.
    */
   @PostMapping(path = PATH)
   ResponseEntity<Void> retry(
@@ -177,7 +191,10 @@ class VersionController {
         .build();
   }
 
-  /** What a version's page shows: the act, the version that applies on the date, the language. */
+  /**
+   * The data that a version page shows: the act, the version that applies on the date, and the
+   * language.
+   */
   private final class Page {
     final Eli eli;
     final Act act;
@@ -215,15 +232,24 @@ class VersionController {
     }
 
     /**
-     * The version's text, once the act is prepared: built, or why it couldn't be, with Try again
-     * posting to {@code self}; why the act couldn't be, if none of its texts could, with the way
-     * back to the reader's last search's {@code results}, if any; that it is being prepared, if it
-     * appeared since.
+     * Returns the text of the version, after the act is prepared.
+     *
+     * <ul>
+     *   <li>If the version is not in the language, it returns the failure panel for a missing
+     *       version.
+     *   <li>If no text of the act could be built, it returns the failure panel of the act. The
+     *       panel links back to the last search of the reader, {@code results}, if there is one.
+     *   <li>If the text is built, it returns the text.
+     *   <li>If only this text failed, it returns the failure panel of the version. Try again posts
+     *       to {@code self}.
+     *   <li>If the version appeared after the act was prepared, it says that the text is being
+     *       prepared.
+     * </ul>
      */
     JteModel text(Preparation preparation, String self, Chrome.@Nullable Results results) {
       var text = preparation.texts().get(version);
       if (text == null) {
-        // a version not in the language
+        // The version is not in the language.
         return templates.catalogueTextFailed(FailureView.missing(act, version, language, self));
       }
       if (preparation.ready() == 0) {
@@ -235,7 +261,7 @@ class VersionController {
                 "/content/" + ready.root().hex(),
                 content.outline(ready.root()).orElseGet(Outline::empty),
                 Links.compare(eli, language));
-        // a version that appeared since, being prepared
+        // The version appeared since, and it is being prepared.
         case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->
             templates.catalogueTextFailed(
@@ -244,10 +270,18 @@ class VersionController {
     }
 
     /**
-     * The acts the version's text names that the text of the version before doesn't, where the
-     * Publications Office lists none for it (Design D-19): its Formex's list of the acts it
-     * integrates, kept in the text's lifecycle; none where it lists some, or either text isn't
-     * built.
+     * Returns the acts that the text of the version names, but the text of the version before it
+     * does not name. The text names these acts in the list of integrated acts in its Formex. That
+     * list is kept in the lifecycle of the text.
+     *
+     * <p>Returns none in these cases:
+     *
+     * <ul>
+     *   <li>The version is the original version.
+     *   <li>The Publications Office lists acts that the version integrates.
+     *   <li>There is no version before it.
+     *   <li>Either text is not built.
+     * </ul>
      */
     List<ActIdentifier> named(Preparation preparation) {
       if (version.kind() == Version.Kind.ORIGINAL || !version.integrates().isEmpty()) {
@@ -269,7 +303,10 @@ class VersionController {
       return named;
     }
 
-    /** The acts {@code root}'s text lists as integrated: its lifecycle's amendments. */
+    /**
+     * Returns the acts that the text of {@code root} lists as integrated. These are the amendments
+     * in its lifecycle.
+     */
     private List<ActIdentifier> listed(ContentHash root) {
       return content.read(root).stream()
           .flatMap(text -> text.children().stream())
@@ -285,7 +322,7 @@ class VersionController {
     }
   }
 
-  /** Today, in Brussels. */
+  /** Returns today, in Brussels. */
   private LocalDate today() {
     return Requests.today(clock);
   }

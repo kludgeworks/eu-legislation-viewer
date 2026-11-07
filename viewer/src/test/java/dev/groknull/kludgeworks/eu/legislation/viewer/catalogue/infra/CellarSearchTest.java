@@ -12,7 +12,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search.Match;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-/** Cellar's recorded answer to a search for aviation security, folded into a page of acts. */
+/**
+ * Tests how {@link CellarSearch} folds Cellar's answer to a search for aviation security into a
+ * page of acts. The answer is recorded.
+ */
 class CellarSearchTest {
   private static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
 

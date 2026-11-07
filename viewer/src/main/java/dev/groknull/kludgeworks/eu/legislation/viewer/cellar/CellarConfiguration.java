@@ -9,8 +9,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.client.RestClient;
 
 /**
- * The RestClient every call to Cellar goes through: Spring Boot's, so its timeouts and redirects
- * are Boot's {@code spring.http.clients.*} (application.yaml), with our User-Agent.
+ * Configures the {@code RestClient} that every call to Cellar uses. It is built from Spring Boot's
+ * builder, so the {@code spring.http.clients.*} properties in {@code application.yaml} set its
+ * timeouts and redirects. It sends our User-Agent with every request.
  */
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(CellarProperties.class)

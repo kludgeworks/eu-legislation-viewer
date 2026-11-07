@@ -2,8 +2,9 @@
 @import java.util.List
 @param List<Entry> entries
 @param boolean open
-<%-- A level of the text's outline (Outline): each unit a link to it in the text, by its eId, a unit
-     with units below it a details listing them, open at the outermost level --%>
+<%-- Shows one level of the text's outline (Outline). Each unit links to its place in the text by
+     its eId. A unit with units below it is a details element that lists them. The details elements
+     are open at the outermost level. --%>
 <ul>
   @for(var entry : entries)
     !{var label = (entry.num() + " " + entry.heading()).strip();}

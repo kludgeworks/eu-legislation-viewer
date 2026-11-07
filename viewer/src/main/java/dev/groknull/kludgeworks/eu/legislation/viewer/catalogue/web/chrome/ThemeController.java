@@ -17,21 +17,31 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
 /**
- * The theme switch: the form on every page posts the reader's choice here, kept in a cookie for the
- * server to render the page's data-theme from. A form's post goes back to the page it was on (303);
- * /js/theme.js, which has already switched the page in place, posts the same form by fetch and gets
- * no content (204). The cookie is set only when the reader chooses, and holds only the choice: a
- * user-interface customisation, which needs no consent (Article 29 Working Party, Opinion 04/2012).
+ * The theme switch. The form on every page posts the choice of the reader here. A cookie keeps the
+ * choice, and the server renders the {@code data-theme} of the page from it.
+ *
+ * <ul>
+ *   <li>A post of the form redirects back to the page that it came from, with 303.
+ *   <li>{@code /js/theme.js} switches the page in place first. Then it posts the same form with
+ *       fetch and gets 204, no content.
+ * </ul>
+ *
+ * <p>The cookie is set only when the reader chooses, and it holds only the choice. It is a
+ * user-interface customisation, which needs no consent. See Article 29 Working Party, Opinion
+ * 04/2012.
  */
 @Controller
 class ThemeController {
-  /** As long as browsers keep a cookie: 400 days (RFC 6265bis). */
+  /** The longest time that browsers keep a cookie: 400 days, as RFC 6265bis sets. */
   private static final Duration KEPT = Duration.ofDays(400);
 
   /**
-   * Keeps {@code set} and, for a form's post (a navigation, as Sec-Fetch-Mode says; any request
-   * without it), goes back to {@code back}, a page of this site's; to the home page for any other
-   * address, so the form can't send a reader elsewhere.
+   * Keeps the theme {@code set} in a cookie. Returns 400 for an unknown theme.
+   *
+   * <p>If the request is a post of the form, it redirects to {@code back}. A post of the form is a
+   * navigation, as the {@code Sec-Fetch-Mode} header says, or a request without that header. Any
+   * other request gets 204. If {@code back} is not a page of this site, it redirects to the home
+   * page. Thus the form cannot send a reader to another site.
    */
   @PostMapping("/theme")
   ResponseEntity<Void> choose(
@@ -58,7 +68,10 @@ class ThemeController {
         .build();
   }
 
-  /** {@code back} if it is a path on this site: no scheme, no host; the home page otherwise. */
+  /**
+   * Returns {@code back} if it is a path on this site, with no scheme and no host. Otherwise
+   * returns the home page.
+   */
   static URI local(String back) {
     try {
       var uri = new URI(back);
@@ -69,7 +82,7 @@ class ThemeController {
         return uri;
       }
     } catch (URISyntaxException ignored) {
-      // not an address: home
+      // It is not an address, so return the home page.
     }
     return URI.create("/");
   }

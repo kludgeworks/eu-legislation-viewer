@@ -9,8 +9,8 @@ import org.springframework.test.web.client.MockRestServiceServer;
 import org.springframework.web.client.RestClient;
 
 /**
- * Cellar's responses as recorded (viewer/src/test/resources/cellar), and a mock Cellar to serve
- * them.
+ * Gives Cellar's recorded responses and a mock Cellar to serve them. The responses are in {@code
+ * viewer/src/test/resources/cellar}.
  */
 final class Recorded {
   static final URI SPARQL = URI.create("https://publications.europa.eu/webapi/rdf/sparql");
@@ -26,7 +26,7 @@ final class Recorded {
     }
   }
 
-  /** Cellar as application.yaml has it, with a given row limit. */
+  /** The Cellar settings from {@code application.yaml}, with the row limit {@code maxRows}. */
   static CellarProperties properties(int maxRows) {
     return new CellarProperties(
         SPARQL,
@@ -35,7 +35,7 @@ final class Recorded {
         maxRows);
   }
 
-  /** A client of a mock Cellar: what it answers is set up on {@link #server}. */
+  /** A client of a mock Cellar. A test sets up the answers on {@link #server}. */
   record Mock(MockRestServiceServer server, RestClient client, CellarProperties properties) {
     static Mock of(CellarProperties properties) {
       var builder = RestClient.builder();
@@ -43,7 +43,7 @@ final class Recorded {
       return new Mock(server, builder.build(), properties);
     }
 
-    /** Each query on a virtual thread of its own, as on Spring Boot's task executor. */
+    /** Runs each query on its own virtual thread, as Spring Boot's task executor does. */
     Sparql sparql() {
       return new Sparql(client, properties, query -> Thread.ofVirtual().start(query));
     }

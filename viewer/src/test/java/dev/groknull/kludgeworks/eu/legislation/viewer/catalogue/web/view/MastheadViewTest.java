@@ -13,8 +13,9 @@ import java.time.LocalDate;
 import org.junit.jupiter.api.Test;
 
 /**
- * The head of 2015/1998's page, as Cellar has it (recorded): its versions are in 23 languages, not
- * Irish, and so are its titles.
+ * Tests the head of the page of 2015/1998, made by {@link MastheadView}. The data is Cellar's
+ * answer, recorded. The versions are in 23 languages, without Irish. The titles are in the same 23
+ * languages.
  */
 class MastheadViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));

@@ -8,9 +8,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * The pages' templates, by jte-models' typed facade on the templates jte_library precompiled; the
- * legal text's, by name (LegalRenderer, on the TemplateEngine jte's starter configures). And their
- * today.
+ * Configures the templates of the pages, and their clock.
+ *
+ * <p>The pages use the typed facade of jte-models on the templates that {@code jte_library}
+ * precompiled. The legal text uses its templates by name, through {@code LegalRenderer}, on the
+ * {@code TemplateEngine} that the jte starter configures.
  */
 @Configuration(proxyBeanMethods = false)
 class PagesConfiguration {
@@ -21,11 +23,12 @@ class PagesConfiguration {
   }
 
   /**
-   * What time it is, as the pages tell which version applies today: the one Clock, which the rest
-   * take the time from, as TimeZoneUsage asks of them; in UTC, each saying its own zone.
+   * Returns the one {@link Clock}, which the pages use to tell which version applies today. The
+   * rest of the code takes the time from it, as the {@code TimeZoneUsage} check asks. The clock is
+   * in UTC, and each user of it gives its own zone.
    */
   @Bean
-  @SuppressWarnings("TimeZoneUsage") // the bean TimeZoneUsage has the others inject
+  @SuppressWarnings("TimeZoneUsage") // TimeZoneUsage has the other classes inject this bean
   Clock clock() {
     return Clock.systemUTC();
   }

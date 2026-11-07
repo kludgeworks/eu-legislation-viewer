@@ -11,18 +11,24 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * A text's windows, the segments a reader's page loads, as an index on its tree (not part of it, so
- * how texts are cut can change without changing what they are). A container heavier than the {@link
- * #TARGET} has its children cut into runs: of leaves and of containers lighter than the target (an
- * article, a list); a heavier child is cut the same way inside. A child ends a run with a chance of
- * its weight in the target, decided by its hash, as content-defined chunking does (Dolt's prolly
- * trees): the cuts move with the content, not with what comes before it, so a change rewrites only
- * the run it falls in. Never inside a table row's rowspan. A text no heavier than the target has no
- * segments: it loads whole.
+ * Cuts a text into windows, the segments that the page of a reader loads. The segments are an index
+ * on the tree, not part of it. Thus how texts are cut can change without a change to what they are.
+ *
+ * <ul>
+ *   <li>If a container is heavier than {@link #TARGET}, its children are cut into runs. A run holds
+ *       leaves and containers lighter than the target, for example an article or a list.
+ *   <li>A child heavier than the target is cut in the same way inside.
+ *   <li>A child ends a run with a chance of its weight divided by the target. Its hash decides, as
+ *       in content-defined chunking, for example the prolly trees of Dolt. The cuts move with the
+ *       content, not with what comes before it. Thus a change rewrites only the run that it falls
+ *       in.
+ *   <li>A run never ends inside the rowspan of a table row.
+ *   <li>A text that is not heavier than the target has no segments. It loads whole.
+ * </ul>
  */
 public final class Segmentation {
 
-  /** A segment's weight on average: a few screens of text. */
+  /** The average weight of a segment. This is a few screens of text. */
   static final long TARGET = 64 * 1024;
 
   private static final byte[] ROW = "[\"tr\",".getBytes(StandardCharsets.UTF_8);
@@ -48,7 +54,7 @@ public final class Segmentation {
     var from = 0;
     var start = offset;
     var at = offset;
-    var open = 0; // rows a rowspan still covers
+    var open = 0; // The rows that a rowspan still covers.
     for (var i = 0; i < children.size(); i++) {
       var child = node(children.get(i).child());
       if (child.kind() == Kind.CONTAINER && child.weight() > TARGET) {
@@ -87,7 +93,10 @@ public final class Segmentation {
             segments.size(), Identity.of(run), container.hash(), from, to, start, end - start));
   }
 
-  /** Whether a run ends after this node: with a chance of its weight in the target. */
+  /**
+   * Returns whether a run ends after this node. The chance is the weight of the node divided by the
+   * target.
+   */
   private static boolean ends(Node node) {
     var chance = Long.parseLong(node.hash().hex().substring(0, 8), 16);
     return chance * TARGET < node.weight() << 32;

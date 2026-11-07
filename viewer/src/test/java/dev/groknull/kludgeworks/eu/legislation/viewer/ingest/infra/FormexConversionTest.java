@@ -15,8 +15,9 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 /**
- * A document's legal text converted from its Formex: from the source, by the real converter; here
- * the source is the converter's fixtures, 2015/1998's consolidation of 22 March 2026 among them.
+ * Tests that {@link FormexConversion} converts the Formex of a document into its legal text. The
+ * Formex comes from the source, and the real converter converts it. Here the source is the
+ * converter's fixtures. They include the consolidation of 2015/1998 of 22 March 2026.
  */
 class FormexConversionTest {
   static final Processor SAXON = new Processor(false);
@@ -37,8 +38,9 @@ class FormexConversionTest {
   }
 
   /**
-   * The package's files read from the source give what the converter gives from them on disk (its
-   * expected output): 2024/2867's descriptor, act, annex and table of contents.
+   * Tests that the files of a package, read from the source, give the same result as the converter
+   * gives from them on disk. That result is the converter's expected output. For 2024/2867 the
+   * files are the descriptor, the act, the annex and the table of contents.
    */
   @ParameterizedTest
   @ValueSource(strings = {CONSOLIDATION, "32024R2867"})

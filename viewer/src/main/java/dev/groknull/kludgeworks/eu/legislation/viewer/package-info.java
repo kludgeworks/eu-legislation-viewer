@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-/** The amendment viewer's application; its modules are the packages below. */
+/** The application of the amendment viewer. Its modules are the packages below this one. */
 @NullMarked
 package dev.groknull.kludgeworks.eu.legislation.viewer;
 

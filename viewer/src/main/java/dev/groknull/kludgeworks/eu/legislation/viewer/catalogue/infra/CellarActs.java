@@ -40,13 +40,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 /**
- * Acts as Cellar has them, from its RDF (the CDM ontology): an act's work by its CELEX, found from
- * its ELI if need be, the consolidations based on it (Research: CDM ontology), and the languages
- * each version has its text in (Research: which languages a version is in), the dates of the act
- * and of the acts its versions integrate (CellarDates), its titles, and what other acts did to its
- * provisions (CellarAmendments). Eight queries, beside this class: act.rq, act-by-eli.rq,
- * versions.rq, languages.rq, dates.rq, titles.rq, amendments.rq and publications.rq
- * (CellarPublications); an act's seven side by side.
+ * Reads acts from Cellar's RDF, which uses the CDM ontology. For an act, it reads:
+ *
+ * <ul>
+ *   <li>the work, by its CELEX number. If necessary, it finds the CELEX number from the ELI.
+ *   <li>the consolidations based on the work.
+ *   <li>the languages that each version has its text in.
+ *   <li>the dates of the act, and of the acts that its versions integrate, with {@link
+ *       CellarDates}.
+ *   <li>its titles.
+ *   <li>what other acts did to its provisions, with {@link CellarAmendments}.
+ *   <li>how the act and the acts its versions integrate were published, with {@link
+ *       CellarPublications}.
+ * </ul>
+ *
+ * <p>It uses eight queries, kept next to this class: {@code act.rq}, {@code act-by-eli.rq}, {@code
+ * versions.rq}, {@code languages.rq}, {@code dates.rq}, {@code titles.rq}, {@code amendments.rq}
+ * and {@code publications.rq}. All of them except {@code act-by-eli.rq} run at the same time for
+ * one act.
  */
 @Component
 class CellarActs implements ActSource {
@@ -60,7 +71,7 @@ class CellarActs implements ActSource {
   private static final String AMENDMENTS = Sparql.template(CellarActs.class, "amendments.rq");
   private static final String PUBLICATIONS = Sparql.template(CellarActs.class, "publications.rq");
 
-  /** Cellar's date for one it doesn't know (seen as an entry into force). */
+  /** The date Cellar uses when it does not know a date. It occurs as an entry into force. */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
 
   /** Cellar's end of validity for an act that is open-ended. */
@@ -114,7 +125,7 @@ class CellarActs implements ActSource {
     return act;
   }
 
-  /** The query {@code template} with {@code values}, asked of Cellar. */
+  /** Fills the query {@code template} with {@code values} and sends it to Cellar. */
   private CompletableFuture<SparqlResult> select(String template, Map<String, String> values) {
     return sparql.answer(Sparql.fill(template, values));
   }
@@ -127,9 +138,10 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The act from the answer to act-by-eli.rq; none if no work has the ELI.
+   * Reads the act from the answer to {@code act-by-eli.rq}. It returns none if no work has the ELI.
    *
-   * @throws CellarException if Cellar's answer makes no act
+   * @throws CellarException if the answer does not give one act, for example because several acts
+   *     have the ELI
    */
   static Optional<ActIdentifier> identity(Eli eli, SparqlResult works) {
     try {
@@ -147,11 +159,12 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The act from the answers to act.rq, versions.rq, languages.rq, dates.rq, titles.rq,
-   * amendments.rq and publications.rq; none if act.rq found no work.
+   * Reads the act from the answers to {@code act.rq}, {@code versions.rq}, {@code languages.rq},
+   * {@code dates.rq}, {@code titles.rq}, {@code amendments.rq} and {@code publications.rq}. It
+   * returns none if {@code act.rq} found no work.
    *
-   * @throws CellarException if Cellar's answers make no act: a value missing, repeated or not of
-   *     its kind, or versions the timeline refuses
+   * @throws CellarException if the answers do not make an act. For example, a value is missing,
+   *     repeated or of the wrong kind, or the timeline refuses the versions.
    */
   static Optional<Act> act(
       ActIdentifier id,
@@ -181,7 +194,10 @@ class CellarActs implements ActSource {
     }
   }
 
-  /** The act; an IllegalArgumentException (or a DateTimeException) for what Cellar got wrong. */
+  /**
+   * Reads the act. It throws an {@code IllegalArgumentException} or a {@code DateTimeException} if
+   * Cellar's data is wrong.
+   */
   private static Act read(
       ActIdentifier id,
       SparqlResult work,
@@ -210,8 +226,9 @@ class CellarActs implements ActSource {
             .min(Comparator.naturalOrder());
     var dateOfDocument = row.find("dateOfDocument").map(LocalDate::parse).orElse(null);
     var type = ResourceType.ofUri(types.getFirst());
-    // a treaty edition's entry into force is the treaty's (1958 for the TFEU of 2016): its text is
-    // the edition's from its date, earlier editions being acts of their own
+    // The entry into force of a treaty edition is the entry into force of the treaty. For example,
+    // it is 1958 for the TFEU of 2016. The text of the edition starts on its date of document,
+    // because earlier editions are separate acts.
     var originalFrom =
         type.equals(TREATY) && dateOfDocument != null
             ? dateOfDocument
@@ -225,7 +242,8 @@ class CellarActs implements ActSource {
     var amendingDates = new HashMap<>(dates);
     amendingDates.keySet().retainAll(integrated);
     var published = new HashMap<>(publications);
-    // the act's own, for the act as published, and those its versions integrate
+    // Keep the publications of the acts that the versions integrate. Also keep the publication of
+    // the act itself, for the act as published.
     published.keySet().retainAll(integrated);
     var own = publications.get(id);
     if (own != null) {
@@ -247,8 +265,8 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The act's ELI; none, with a warning, for one that isn't below http://data.europa.eu/eli/: the
-   * act is still read, by its CELEX.
+   * Returns the ELI of the act. If the URI is not below {@code http://data.europa.eu/eli/}, it logs
+   * a warning and returns none. The viewer still reads the act, by its CELEX number.
    */
   private static @Nullable Eli eli(ActIdentifier id, String uri) {
     var eli = Eli.parse(uri);
@@ -259,9 +277,10 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The original text, then the consolidated versions in date order. A consolidation that starts on
-   * the original's own date replaces it, as it's the later text of that day. Each with the Formex
-   * {@code formex} has for its CELEX; none if it has none.
+   * Returns the timeline: the original text, then the consolidated versions in date order. A
+   * consolidation that starts on the date of the original replaces the original, because it is the
+   * later text of that day. Each version gets the Formex that {@code formex} has for its CELEX
+   * number. A version with no entry in {@code formex} gets none.
    */
   static Timeline timeline(
       ActIdentifier id,
@@ -301,15 +320,19 @@ class CellarActs implements ActSource {
     return new Timeline(versions);
   }
 
-  /** A version's Formex: its languages, and when Cellar last modified it; none without. */
+  /**
+   * The Formex of a version: its languages, and when Cellar last modified it. {@link #NONE} is for
+   * a version without Formex.
+   */
   record Formex(Set<Language> languages, @Nullable Instant modified) {
     static final Formex NONE = new Formex(Set.of(), null);
   }
 
   /**
-   * The answer to languages.rq as the Formex of each version, by its CELEX: the key versions.rq
-   * gives a version (Version.celex), to join the two answers on. Official languages only (Cellar
-   * has expressions in others, as Norwegian for the EEA).
+   * Reads the answer to {@code languages.rq} as the Formex of each version, by CELEX number. The
+   * CELEX number is the key that {@code versions.rq} gives a version, {@code Version.celex}, so the
+   * two answers join on it. It keeps official languages only. Cellar also has expressions in other
+   * languages, for example Norwegian for the EEA.
    */
   private static Map<String, Formex> formexByVersion(SparqlResult answer) {
     var formex = new HashMap<String, Formex>();
@@ -329,8 +352,8 @@ class CellarActs implements ActSource {
   }
 
   /**
-   * The answer to titles.rq as the act's titles, by language: official languages only. Two titles
-   * in one language are an IllegalArgumentException.
+   * Reads the answer to {@code titles.rq} as the titles of the act, by language. It keeps official
+   * languages only. It throws an {@code IllegalArgumentException} if one language has two titles.
    */
   private static Map<Language, String> titles(SparqlResult answer) {
     var titles = new EnumMap<Language, String>(Language.class);
@@ -361,7 +384,10 @@ class CellarActs implements ActSource {
     return distinct(result, variable).stream().map(LocalDate::parse).toList();
   }
 
-  /** An xsd:boolean as SPARQL JSON writes it ("true", or Virtuoso's "1"). */
+  /**
+   * Reads an {@code xsd:boolean} as SPARQL JSON writes it. True is {@code "true"}, or {@code "1"}
+   * from Virtuoso.
+   */
   private static boolean isTrue(@Nullable String value) {
     return "true".equals(value) || "1".equals(value);
   }

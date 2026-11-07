@@ -1,20 +1,31 @@
 // SPDX-License-Identifier: MIT
 /**
- * Cellar, the Publications Office's repository of EU law, as the viewer reads it: SPARQL over its
- * RDF ({@link Sparql}), files read one at a time as they come ({@link ContentStreams}), and the
- * Formex files of one version found from the RDF ({@link FormexFiles}).
+ * The viewer's access to Cellar, the repository of EU law of the Publications Office. It gives:
  *
- * <p>Upstream etiquette is enforced here, for every caller: a descriptive User-Agent ({@code
- * viewer.cellar.*}, in application.yaml), identical concurrent SPARQL queries coalesced, and
- * results that hit the row limit refused as possibly truncated. No throttling and no retries: a
- * page waits on the answer, so a failure surfaces at once, as Spring's {@code RestClientException}
- * or a {@link CellarException}; {@link CellarFailures} tells which are Cellar not answering, and
- * may pass. Never a whole zip: a zip-only version's entries are fetched one by one.
+ * <ul>
+ *   <li>SPARQL queries over the RDF of Cellar, with {@link Sparql}.
+ *   <li>Files read one at a time as they arrive, with {@link ContentStreams}.
+ *   <li>The Formex files of one version, found from the RDF, with {@link FormexFiles}.
+ * </ul>
+ *
+ * <p>This module applies the upstream etiquette for every caller:
+ *
+ * <ul>
+ *   <li>It sends a descriptive User-Agent, set by the {@code viewer.cellar.*} properties in {@code
+ *       application.yaml}.
+ *   <li>It merges identical SPARQL queries that run at the same time into one query.
+ *   <li>It refuses a result that reaches the row limit, because the result may be truncated.
+ *   <li>It never fetches a whole zip. It fetches the entries of a zip-only version one by one.
+ * </ul>
+ *
+ * <p>It does not throttle and does not retry. A page waits for the answer, so a failure shows at
+ * once. The failure is a Spring {@code RestClientException} or a {@link CellarException}. {@link
+ * CellarFailures} tells which failures mean that Cellar is not answering. Such a failure may pass.
  *
  * <p>The module holds no state and caches nothing.
  *
- * <p>All of it is infrastructure (the onion's outer ring): only other modules' {@code infra}
- * packages may use it, never their domain.
+ * <p>All of it is infrastructure, the outer ring of the onion. Only the {@code infra} packages of
+ * other modules may use it. Their domain must not use it.
  */
 @ApplicationModule(displayName = "Cellar")
 @InfrastructureRing

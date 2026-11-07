@@ -6,12 +6,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import java.util.Optional;
 
-/** Where acts come from: Cellar, the system of record. */
+/** Where acts come from. This is Cellar, the system of record. */
 public interface ActSource {
 
-  /** The act with this CELEX, none if there is no such work. */
+  /** Returns the act with this CELEX, or empty if there is no such work. */
   Optional<Act> find(ActIdentifier id);
 
-  /** The act this ELI names, none if no act has it. */
+  /** Returns the act that this ELI names, or empty if no act has it. */
   Optional<Act> find(Eli eli);
 }

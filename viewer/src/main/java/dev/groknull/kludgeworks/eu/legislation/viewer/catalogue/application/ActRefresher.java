@@ -10,11 +10,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
 
 /**
- * An act read from Cellar again once it is due (ActRefreshDue), in the background, so its page
- * opens at once as it was kept: kept anew, and the versions that appeared since prepared in each
- * language the act has been prepared in, their pages told (PreparationChanged). Cellar is asked
- * outside any transaction. A refresh that fails is logged and left: the act is kept as it was, and
- * is due again after viewer.catalogue.refresh-after.
+ * Reads an act from Cellar again when an {@link ActRefreshDue} event says it is due. It runs in the
+ * background, so the page of the act opens at once, as the act was stored.
+ *
+ * <ul>
+ *   <li>The act is stored anew.
+ *   <li>The versions that appeared since are prepared in each language that the act has been
+ *       prepared in.
+ *   <li>Their pages are told by {@code PreparationChanged} events.
+ * </ul>
+ *
+ * <p>Cellar is asked outside any transaction. A refresh that fails is logged and left. The act
+ * stays stored as it was, and is due again after {@code viewer.catalogue.refresh-after}.
  */
 @Component
 class ActRefresher {

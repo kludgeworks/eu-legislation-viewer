@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: MIT
-# The CELEX of the act an ELI names (CellarActs). Cellar stores the ELI of the original text,
-# …/eli/{path}/oj, as an xsd:anyURI.
-# {{eli}}: an act's type/year/number (reg_impl/2015/1998, dec/2007/44(1), C/2023/1464) or a
-# treaty's edition (treaty/tfeu_2016), escaped by Sparql.fill.
+# Gets the CELEX number of the act that an ELI names, for CellarActs. Cellar stores the ELI of the
+# original text, …/eli/{path}/oj, as an xsd:anyURI.
+# {{eli}}: the type, year and number of an act, or the edition of a treaty. Examples are
+# reg_impl/2015/1998, dec/2007/44(1), C/2023/1464 and treaty/tfeu_2016. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

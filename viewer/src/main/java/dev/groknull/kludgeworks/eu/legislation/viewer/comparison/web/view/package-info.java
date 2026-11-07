@@ -1,10 +1,16 @@
 // SPDX-License-Identifier: MIT
 /**
- * What the comparison's Changes view shows, worked out for its template (ChangesView): the
- * differences in order, numbered and noted, with the units the same in both folded and the opening
- * of the unit they are in as context; and the later text's outline, its branches counted
- * (OutlineView). Its own named interface (view), for the catalogue's comparison page, which shows
- * it with the acts that made each difference.
+ * What the Changes view of a comparison shows, worked out for its template.
+ *
+ * <ul>
+ *   <li>{@link ChangesView} holds the differences in order, numbered and noted. The units that are
+ *       the same in both texts are folded. The opening of the unit that they are in is the context.
+ *   <li>{@link OutlineView} holds the outline of the later text, with the differences counted on
+ *       its branches.
+ * </ul>
+ *
+ * <p>It is a named interface of its own ({@code view}), for the comparison page of the catalogue.
+ * That page shows it with the acts that made each difference.
  */
 @InfrastructureRing
 @NamedInterface("view")

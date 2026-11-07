@@ -6,7 +6,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import org.jmolecules.event.annotation.DomainEvent;
 
 /**
- * An expression's legal text is stored: everything a listener needs to point the expression at it.
+ * The legal text of an expression is stored. The event has all that a listener needs to point the
+ * expression at the text.
  *
  * @param root the text's root in the content module
  * @param converter the version of the converter that made it

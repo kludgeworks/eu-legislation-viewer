@@ -25,15 +25,17 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 /**
- * The Formex files of a version, found from Cellar's RDF: work (CELEX) → expression (language) →
- * manifestation (fmx4) → items. Two layouts:
+ * Finds the Formex files of a version in Cellar's RDF. The path is work → expression →
+ * manifestation → items. The work has a CELEX number, the expression is a language, and the
+ * manifestation is {@code fmx4}. Cellar uses two layouts:
  *
  * <ul>
- *   <li>one item per file (older OJ acts): each item is a file, named by tdm:stream_name or, where
- *       the technical metadata is missing, by the suffix of its owl:sameAs after ".fmx4.";
- *   <li>one zip item (OJ acts and consolidations from 2023): the RDF says nothing about its
- *       entries, so they come from Cellar's content-stream list, and each is fetched on its own at
- *       {@code …/DOC_1/{entry}}.
+ *   <li>One item per file. Older OJ acts use this layout. Each item is a file. Its name is the
+ *       {@code tdm:stream_name}. If the technical metadata is missing, its name is the suffix of
+ *       its {@code owl:sameAs} after {@code ".fmx4."}.
+ *   <li>One zip item. OJ acts and consolidations from 2023 use this layout. The RDF says nothing
+ *       about the entries of the zip, so this class reads them from Cellar's content-stream list.
+ *       It fetches each entry separately at {@code …/DOC_1/{entry}}.
  * </ul>
  */
 @Component
@@ -58,9 +60,10 @@ public class FormexFiles {
   }
 
   /**
-   * The Formex files of the version {@code celex} names (an OJ act, 32015R1998, or a consolidated
-   * version, 02015R1998-20260322) in {@code language} (an EU authority code: ENG). Where Cellar has
-   * more than one Formex manifestation, the latest modified.
+   * Returns the Formex files of the version that {@code celex} names, in {@code language}. The
+   * version is an OJ act, for example 32015R1998, or a consolidated version, for example
+   * 02015R1998-20260322. The language is an EU authority code, for example ENG. If Cellar has more
+   * than one Formex manifestation, it returns the one modified last.
    */
   public Optional<FormexManifestation> manifestation(String celex, String language) {
     if (!CELEX.matcher(celex).matches() || !LANGUAGE.matcher(language).matches()) {
@@ -99,9 +102,10 @@ public class FormexFiles {
   }
 
   /**
-   * A zip item's entries, from the content-stream list (Accept: application/list;mtype=fmx4 on the
-   * CELEX URI): an XHTML page linking each entry at {@code {zip item}/{entry name}}. The CELEX URI
-   * writes a treaty's slash encoded, as Cellar's owl:sameAs does: celex/02016E%2FTXT-20250315.
+   * Reads the entries of a zip item from the content-stream list. It gets the list from the CELEX
+   * URI with {@code Accept: application/list;mtype=fmx4}. The list is an XHTML page that links each
+   * entry at {@code {zip item}/{entry name}}. The CELEX URI encodes the slash in a treaty's CELEX
+   * number, as Cellar's {@code owl:sameAs} does. For example, {@code celex/02016E%2FTXT-20250315}.
    */
   private List<FormexManifestation.File> entries(String celex, String language, URI zip) {
     var page =
@@ -142,7 +146,10 @@ public class FormexFiles {
     return files;
   }
 
-  /** A zip entry's type, from its name: Cellar labels every entry application/zip. */
+  /**
+   * Returns the media type of a zip entry from its name. Cellar labels every entry {@code
+   * application/zip}, so the label does not help.
+   */
   private static String mediaType(String name) {
     var lower = name.toLowerCase(Locale.ROOT);
     if (lower.endsWith(".xml")) {

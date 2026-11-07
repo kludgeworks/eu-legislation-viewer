@@ -1,30 +1,40 @@
-Responses recorded from Cellar's SPARQL endpoint on 2026-10-30, byte for byte, for the acts module's
-tests: CellarActs's queries (viewer/src/main/resources/…/acts/infra/*.rq) with these values.
+Responses recorded from Cellar's SPARQL endpoint on 2026-10-30, byte for byte, for the tests of the
+acts module. Each response is the answer to a query of CellarActs
+(viewer/src/main/resources/…/acts/infra/*.rq) with the values below.
 
-act-32015R1998.json                 act.rq, celex 32015R1998 (in force; entry into force and application)
-act-32010R0185.json                 act.rq, celex 32010R0185 (repealed by 32015R1998)
+act-32015R1998.json                 act.rq, celex 32015R1998. In force, with entry into force and
+                                    application.
+act-32010R0185.json                 act.rq, celex 32010R0185. Repealed by 32015R1998.
 act-by-eli-reg_impl-2015-1998.json  act-by-eli.rq, eli reg_impl/2015/1998
-versions-32015R1998.json            versions.rq, celex 32015R1998 (22 consolidations, the latest interim)
-versions-32010R0185.json            versions.rq, celex 32010R0185 (16 consolidations)
-languages-32015R1998.json           languages.rq, celex 32015R1998 (recorded 2026-10-31, with each
-                                    version's Formex modification; 23 languages each, no Irish)
-languages-32010R0185.json           languages.rq, celex 32010R0185 (recorded 2026-10-31, likewise;
-                                    the early versions without Croatian)
-dates-32015R1998.json               dates.rq, celex 32015R1998 (recorded 2026-11-04: its own dates and
-                                    those of the 17 acts its versions integrate, with Cellar's
-                                    annotations; 32019R0413's application a placeholder, 1001-01-01)
-dates-32010R0185.json               dates.rq, celex 32010R0185 (recorded 2026-11-04, likewise)
-titles-32015R1998.json              titles.rq, celex 32015R1998 (recorded 2026-11-05: 23 languages, no
-                                    Irish, one title each)
-titles-32010R0185.json              titles.rq, celex 32010R0185 (recorded 2026-11-05, likewise)
-amendments-32015R1998.json          amendments.rq, celex 32015R1998 (recorded 2026-11-05: 386 amended
-                                    locations by 19 acts; 32019R0413's without a day; 32017R0837,
-                                    32022R0463 and 32026R2338 for some languages only)
-amendments-32010R0185.json          amendments.rq, celex 32010R0185 (recorded 2026-11-05, likewise)
-publications-32015R1998.json        publications.rq, celex 32015R1998 (recorded 2026-11-07: 666 rows, the
-                                    act and each act and corrigendum its consolidations integrate,
-                                    by ELI, title and Official Journal reference, the act-by-act
-                                    Journal's from 2024; the consolidations' own, left out)
-publications-32010R0185.json        publications.rq, celex 32010R0185 (recorded 2026-11-07, likewise)
+versions-32015R1998.json            versions.rq, celex 32015R1998. 22 consolidations. The latest is
+                                    interim.
+versions-32010R0185.json            versions.rq, celex 32010R0185. 16 consolidations.
+languages-32015R1998.json           languages.rq, celex 32015R1998. Recorded 2026-10-31, with the
+                                    Formex modification of each version. Each version is in 23
+                                    languages, without Irish.
+languages-32010R0185.json           languages.rq, celex 32010R0185. Recorded 2026-10-31, in the same
+                                    way. The early versions are without Croatian.
+dates-32015R1998.json               dates.rq, celex 32015R1998. Recorded 2026-11-04. The act's own
+                                    dates and the dates of the 17 acts that its versions integrate,
+                                    with Cellar's annotations. The application date of 32019R0413
+                                    is a placeholder, 1001-01-01.
+dates-32010R0185.json               dates.rq, celex 32010R0185. Recorded 2026-11-04, in the same way.
+titles-32015R1998.json              titles.rq, celex 32015R1998. Recorded 2026-11-05. 23 languages,
+                                    without Irish, with one title each.
+titles-32010R0185.json              titles.rq, celex 32010R0185. Recorded 2026-11-05, in the same way.
+amendments-32015R1998.json          amendments.rq, celex 32015R1998. Recorded 2026-11-05. 386 amended
+                                    locations by 19 acts. The amendments by 32019R0413 have no day.
+                                    32017R0837, 32022R0463 and 32026R2338 apply to some languages
+                                    only.
+amendments-32010R0185.json          amendments.rq, celex 32010R0185. Recorded 2026-11-05, in the same
+                                    way.
+publications-32015R1998.json        publications.rq, celex 32015R1998. Recorded 2026-11-07. 666 rows
+                                    for the act and for each act and corrigendum that its
+                                    consolidations integrate. Each has its ELI, title and Official
+                                    Journal reference. From 2024 the references are in the
+                                    act-by-act format of the Journal. The publications of the
+                                    consolidations themselves are left out.
+publications-32010R0185.json        publications.rq, celex 32010R0185. Recorded 2026-11-07, in the
+                                    same way.
 search-aviation-security.json       search.rq, words 'aviation' AND 'security', types RLD, amending no,
-                                    limit 21, offset 0 (recorded 2026-11-05: 21 acts, one row each)
+                                    limit 21, offset 0. Recorded 2026-11-05. 21 acts, one row each.

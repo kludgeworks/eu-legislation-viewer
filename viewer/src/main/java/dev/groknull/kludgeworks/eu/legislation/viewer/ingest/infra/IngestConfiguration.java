@@ -7,8 +7,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.resilience.annotation.EnableResilientMethods;
 
 /**
- * The converter on one Saxon processor (thread-safe, and costly to make); and Spring's resilience
- * annotations, for the limit on conversions running at once (FormexConversion).
+ * Configures the converter on one Saxon processor. The processor is thread-safe and costly to make.
+ * It also enables the resilience annotations of Spring, for the limit on conversions that run at
+ * once in {@link FormexConversion}.
  */
 @Configuration(proxyBeanMethods = false)
 @EnableResilientMethods

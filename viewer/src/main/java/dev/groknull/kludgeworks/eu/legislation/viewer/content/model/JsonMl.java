@@ -13,9 +13,10 @@ import net.sf.saxon.s9api.XdmNode;
 import net.sf.saxon.s9api.XdmNodeKind;
 
 /**
- * A block's XML as JSON, as JsonML has it (jsonml.org): {@code [name, {attributes}, text or child
- * element…]}, names as legal-text gives them (LegalText). The plain mapping, both ways: what is
- * taken out of a block before it is hashed is Annotations' and NoteLinks' work, on this JSON.
+ * Maps the XML of a block to JSON, in the JsonML form (jsonml.org), and back. The form is {@code
+ * [name, {attributes}, text or child element…]}. The names are as legal-text gives them, in {@link
+ * LegalText}. This is only the plain mapping. {@link Annotations} and {@link NoteLinks} take things
+ * out of a block on this JSON, before it is hashed.
  */
 final class JsonMl {
 
@@ -66,7 +67,10 @@ final class JsonMl {
     return out;
   }
 
-  /** The element at {@code path} (positions among child elements) below {@code el}. */
+  /**
+   * Returns the element at {@code path} below {@code el}. The path holds positions among child
+   * elements.
+   */
   static List<?> at(List<?> el, List<?> path) {
     var at = el;
     for (var i : path) {
@@ -75,7 +79,10 @@ final class JsonMl {
     return at;
   }
 
-  /** A legal text's document: its element {@code el}, declaring the namespaces it uses. */
+  /**
+   * Writes the document of a legal text, with its element {@code el}. The element declares the
+   * namespaces that the text uses.
+   */
   static void writeDocument(List<?> el, XMLStreamWriter out) throws XMLStreamException {
     out.writeStartDocument();
     write(el, out, true);
@@ -115,7 +122,7 @@ final class JsonMl {
     }
   }
 
-  /** {@code el} as an Element, and its children. */
+  /** Returns {@code el} and its children as an {@code Element}. */
   static Element element(List<?> el) {
     var attributes = new LinkedHashMap<String, String>();
     attributes(el).forEach((name, value) -> attributes.put(name, (String) value));
@@ -131,7 +138,10 @@ final class JsonMl {
     return new Element(name(el), attributes, children, text.toString());
   }
 
-  /** On a document's element: legal-text's namespace the default, the others by their prefixes. */
+  /**
+   * Declares the namespaces on the element of a document. The legal-text namespace is the default.
+   * The others are declared by their prefixes.
+   */
   private static void declareNamespaces(XMLStreamWriter out) throws XMLStreamException {
     out.writeDefaultNamespace(LegalText.NAMESPACE);
     for (var ns : LegalText.NAMESPACES.entrySet()) {

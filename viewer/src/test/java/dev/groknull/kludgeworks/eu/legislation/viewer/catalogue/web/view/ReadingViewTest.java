@@ -12,7 +12,10 @@ import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-/** The Reading card of 2015/1998's versions, as Cellar has them (recorded), on 5 November 2026. */
+/**
+ * Tests the Reading card of {@link ReadingView} for the versions of 2015/1998. Today is 5 November
+ * 2026. The versions are Cellar's, recorded.
+ */
 class ReadingViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
   static final LocalDate TODAY = LocalDate.of(2026, 11, 5);

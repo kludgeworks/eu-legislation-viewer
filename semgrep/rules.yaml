@@ -47,3 +47,19 @@ rules:
           - pattern: $STMT.executeUpdate(String.format(...), ...)
           - pattern: $CONN.prepareStatement($STR + $X, ...)
           - pattern: $CONN.prepareStatement(String.format(...), ...)
+
+  - id: no-design-document-references
+    languages:
+      - regex
+    severity: ERROR
+    message: "Don't cite the design document or the research notes (Design: …, D-NN, Research: …) in comments: they aren't in the repo, so the reference can't be followed. Say what the code does instead."
+    metadata:
+      category: maintainability
+    paths:
+      include:
+        - "viewer/src/**"
+      exclude:
+        # Flyway checksums applied migrations: their comments can't change
+        - "viewer/src/main/resources/db/migration/**/V*.sql"
+        - "viewer/src/test/resources/**"
+    pattern-regex: '\(Design\b|\bDesign:|\bD-\d{2}\b|\(Research:'

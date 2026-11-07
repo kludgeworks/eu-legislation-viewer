@@ -1,11 +1,13 @@
 # SPDX-License-Identifier: MIT
-# An act's titles (CellarActs): the title of each of its work's expressions, by the authority code of
-# the expression's language (ENG, FRA …), as the Official Journal printed it ("Commission
-# Implementing Regulation (EU) 2015/1998 of 5 November 2015 laying down … (Text with EEA
-# relevance)"). Read with the act, before any of its texts is built, so its page can name it while
-# they are. Cellar has expressions in languages that aren't official (Norwegian, for the EEA):
-# CellarActs keeps the official ones.
-# {{celex}}: a base act's CELEX (32015R1998), escaped by Sparql.fill.
+# Gets the titles of an act, for CellarActs. It gets the title of each expression of the work, by
+# the authority code of the language of the expression, for example ENG or FRA.
+# The title is as the Official Journal printed it. For example, "Commission Implementing Regulation
+# (EU) 2015/1998 of 5 November 2015 laying down … (Text with EEA relevance)".
+# The viewer reads the titles with the act, before it builds any of the texts. So the page of the
+# act can show its name while the texts build.
+# Cellar has expressions in languages that are not official, for example Norwegian for the EEA.
+# CellarActs keeps only the official languages.
+# {{celex}}: the CELEX number of a base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 

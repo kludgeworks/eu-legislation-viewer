@@ -21,8 +21,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 
 /**
- * SELECT queries against Cellar's SPARQL endpoint, each on the executor. The same query asked again
- * while it runs gets that answer, to come, instead of asking Cellar twice.
+ * Runs SELECT queries against Cellar's SPARQL endpoint. Each query runs on the executor. If a
+ * caller asks the same query while it runs, the caller gets the answer of the running query. Cellar
+ * does not get the query twice.
  */
 @Component
 public class Sparql {
@@ -38,8 +39,8 @@ public class Sparql {
   private final Executor executor;
 
   /**
-   * @param executor where the queries run: Spring Boot's task executor, on virtual threads, as each
-   *     mostly waits on Cellar
+   * @param executor where the queries run. This is Spring Boot's task executor, on virtual threads,
+   *     because each query mostly waits for Cellar.
    */
   Sparql(
       @Qualifier(CellarConfiguration.CLIENT) RestClient client,
@@ -53,17 +54,18 @@ public class Sparql {
   /**
    * Runs a SELECT query and waits for its answer.
    *
-   * @throws CellarException if the result has as many rows as the endpoint returns at most ({@code
-   *     viewer.cellar.max-rows}) and so may be cut off
+   * @throws CellarException if the result has as many rows as the endpoint returns at most, so the
+   *     endpoint may have cut it off. The {@code viewer.cellar.max-rows} property sets this limit.
    */
   public SparqlResult select(String query) {
     return join(answer(query));
   }
 
   /**
-   * A SELECT query's answer, to come: the one already coming if the same query is running. Each
-   * caller gets a copy of it, so that completing or cancelling theirs leaves the others' alone.
-   * Fails as {@link #select} throws.
+   * Returns the future answer to a SELECT query. If the same query is running, it returns the
+   * answer of that query. Each caller gets a copy of the future, so a caller that completes or
+   * cancels its copy does not change the copies of other callers. The future fails in the same
+   * cases where {@link #select} throws.
    */
   public CompletableFuture<SparqlResult> answer(String query) {
     var mine = new CompletableFuture<SparqlResult>();
@@ -76,15 +78,16 @@ public class Sparql {
     try {
       mine.completeAsync(() -> ask(query), executor);
     } catch (RuntimeException e) {
-      // the executor refused it
+      // The executor refused the task.
       mine.completeExceptionally(e);
     }
     return mine.copy();
   }
 
   /**
-   * A query's answer once it has one, from {@link #answer}: a failure as it was thrown, not wrapped
-   * in the future's CompletionException, so its caller sees it as itself.
+   * Waits for an answer from {@link #answer} and returns it. If the query failed, it throws the
+   * failure as it was thrown, not wrapped in a {@code CompletionException}. The caller sees the
+   * original failure.
    */
   public static SparqlResult join(CompletableFuture<SparqlResult> answer) {
     try {
@@ -125,8 +128,9 @@ public class Sparql {
   }
 
   /**
-   * A query kept beside the class that runs it: {@code name} in its package on the classpath, with
-   * {@code {{placeholders}}} for {@link #fill} (the corpus script's queries use the same).
+   * Reads a query that is kept next to the class that runs it. The query is the resource {@code
+   * name} in the package of {@code owner} on the classpath. It has {@code {{placeholders}}} for
+   * {@link #fill}. The queries of the corpus script use the same placeholders.
    */
   public static String template(Class<?> owner, String name) {
     try (var in = Objects.requireNonNull(owner.getResourceAsStream(name), name)) {
@@ -137,9 +141,11 @@ public class Sparql {
   }
 
   /**
-   * The query with each {@code {{name}}} replaced by its value, escaped for a string literal
-   * (SPARQL 1.1, ECHAR), where the templates put them ("{{celex}}"^^xsd:string): a value is never
-   * read as part of the query, whatever it holds. A value put into an IRI the caller checks.
+   * Returns the query with each {@code {{name}}} replaced by its value. The templates put each
+   * placeholder in a string literal, for example {@code "{{celex}}"^^xsd:string}. So this method
+   * escapes each value for a string literal, with the SPARQL 1.1 ECHAR rule. Whatever a value
+   * holds, the endpoint never reads it as part of the query. If a template puts a value into an
+   * IRI, the caller must check that value.
    */
   public static String fill(String template, Map<String, String> values) {
     var query = template;
@@ -153,8 +159,8 @@ public class Sparql {
   }
 
   /**
-   * {@code value} as the inside of a SPARQL string literal: backslashes, quotes and line breaks
-   * escaped.
+   * Returns {@code value} as the inside of a SPARQL string literal. It escapes backslashes, quotes
+   * and line breaks.
    */
   private static String escaped(String value) {
     var escaped = new StringBuilder(value.length());

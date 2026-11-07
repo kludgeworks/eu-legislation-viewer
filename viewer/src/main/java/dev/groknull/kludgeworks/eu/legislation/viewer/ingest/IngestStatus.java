@@ -5,7 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import org.jspecify.annotations.Nullable;
 
 /**
- * How an expression's job stands: what a reader waiting for its text is told.
+ * The status of the job of an expression. A reader who waits for its text sees this status.
  *
  * @param stage while running, what it is doing
  * @param attempts how often it was started

@@ -9,7 +9,8 @@ import java.util.Optional;
  * The Formex files of one language version, from Cellar's RDF.
  *
  * @param uri the manifestation
- * @param files the files, by name: XML (the package descriptor, the act, its annexes) and images
+ * @param files the files, by name. The XML files are the package descriptor, the act and its
+ *     annexes. The other files are images.
  */
 public record FormexManifestation(URI uri, List<File> files) {
 
@@ -17,7 +18,7 @@ public record FormexManifestation(URI uri, List<File> files) {
     files = List.copyOf(files);
   }
 
-  /** The file a package descriptor or an INCL.ELEMENT names. */
+  /** Returns the file that a package descriptor or an {@code INCL.ELEMENT} names. */
   public Optional<File> file(String name) {
     return files.stream().filter(f -> f.name().equals(name)).findFirst();
   }
@@ -25,9 +26,10 @@ public record FormexManifestation(URI uri, List<File> files) {
   /**
    * One file.
    *
-   * @param name its name in Formex (L_2009330EN.01008001.xml), which the package refers to
-   * @param uri where to GET it: the item, or the zip item's entry
-   * @param mediaType the item's MIME type; for a zip entry, from its extension
+   * @param name its name in Formex, which the package uses to refer to it. For example, {@code
+   *     L_2009330EN.01008001.xml}.
+   * @param uri where to GET it. This is the item, or the entry of the zip item.
+   * @param mediaType the MIME type of the item. For a zip entry, it comes from the file extension.
    */
   public record File(String name, URI uri, String mediaType) {}
 }
