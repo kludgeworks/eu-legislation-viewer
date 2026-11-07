@@ -56,13 +56,12 @@ public record CompareView(Card from, Card to, Acts acts) {
 
   /**
    * The acts the versions after {@code from}, up to {@code to}, integrate, in their order, their
-   * corrigenda left out.
+   * corrigenda with them.
    */
   public static List<ActIdentifier> between(Act act, Version from, Version to) {
     return act.timeline().versions().stream()
         .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
         .flatMap(v -> v.integrates().stream())
-        .filter(id -> !Wording.corrigendum(id))
         .distinct()
         .toList();
   }
@@ -112,6 +111,13 @@ public record CompareView(Card from, Card to, Acts acts) {
       var acts = between(act, from, to);
       var chips =
           acts.stream()
+              // a corrigendum only where it corrected the text in this language (Design D-30): its
+              // corrections counted here, or its filter on
+              .filter(
+                  each ->
+                      !Wording.corrigendum(each)
+                          || each.equals(only)
+                          || counts.getOrDefault(each, 0) > 0)
               .map(
                   each ->
                       new Chip(
@@ -121,7 +127,8 @@ public record CompareView(Card from, Card to, Acts acts) {
                           // on, it shows all acts again
                           Links.compare(
                               eli, from, to, language, each.equals(only) ? null : each, view),
-                          each.equals(only)))
+                          each.equals(only),
+                          Wording.corrigendum(each)))
               .toList();
       var none =
           chips.size() > CHIPS
@@ -129,8 +136,9 @@ public record CompareView(Card from, Card to, Acts acts) {
                   .filter(chip -> !chip.on() && Integer.valueOf(0).equals(chip.count()))
                   .toList()
               : List.<Chip>of();
+      var amending = acts.stream().filter(each -> !Wording.corrigendum(each)).count();
       return new Acts(
-          acts.size() + (acts.size() == 1 ? " act between them" : " acts between them"),
+          amending + (amending == 1 ? " act between them" : " acts between them"),
           chips.stream().filter(chip -> !none.contains(chip)).toList(),
           none,
           counts.isEmpty() ? counting : null,
@@ -184,9 +192,15 @@ public record CompareView(Card from, Card to, Acts acts) {
    * @param count how many differences it made here; none until counted
    * @param href the comparison limited to its changes; on, the comparison of all acts
    * @param on whether the comparison is limited to its changes
+   * @param corrigendum whether it is a corrigendum, which corrected the text, not amended it
    */
   public record Chip(
-      String label, String title, @Nullable Integer count, String href, boolean on) {}
+      String label,
+      String title,
+      @Nullable Integer count,
+      String href,
+      boolean on,
+      boolean corrigendum) {}
 
   /** A comparison's view (Design: Mode: Compare): what of the two texts it shows, and how. */
   public enum View {

@@ -26,7 +26,7 @@
   @template.comparison.outline(entries = outline.entries())
 </nav>
 <div class="changes">
-  @template.catalogue.controls(changes = changes, views = views, only = only)
+  @template.catalogue.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
   <div class="book legal-text legal-text-consolidated">
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold)

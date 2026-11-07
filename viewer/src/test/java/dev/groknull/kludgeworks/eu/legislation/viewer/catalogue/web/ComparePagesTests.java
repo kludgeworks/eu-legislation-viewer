@@ -103,7 +103,7 @@ class ComparePagesTests {
             "Points (a) and (b) — no differences · show",
             "Point (d) — no differences · show",
             "Point (f) — no differences · show",
-            "Points 9.1.2.4 to ATTACHMENT 12-P — no differences · show");
+            "Point 9.1.2.4 to attachment 12-P — no differences · show");
     // the annex's, 8.1.2.3's and 9.1.2.3's
     assertThat(changes.select(".lead")).hasSize(3);
     assertThat(changes.select("nav.pager a")).hasSize(6);
@@ -219,11 +219,24 @@ class ComparePagesTests {
     assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
     // its neighbours, the same in both, with what last made them as they are
     // those between the first and last of a run of more than three, folded
-    assertThat(synopsis.select(".ledger-fold").eachText())
+    assertThat(synopsis.select(".ledger-fold > summary").eachText())
         .containsExactly(
-            "Points 1.0 to 8.1.2.1 (427 provisions) — no differences",
-            "Points 8.1.3 to 9.1.2.1 — no differences",
-            "Points 9.1.3 to ATTACHMENT 12-O — no differences");
+            "Points 1.0 to 8.1.2.1 (427 provisions) — no differences · show",
+            "Points 8.1.3 to 9.1.2.1 — no differences · show",
+            "Point 9.1.3 to attachment 12-O — no differences · show");
+    // a fold opens in place: its units' rows, each the same in both, with its history
+    var fold = Objects.requireNonNull(synopsis.selectFirst(".ledger-fold"));
+    var rows =
+        Jsoup.parseBodyFragment(
+            Objects.requireNonNull(
+                http.get().uri(URI.create(fold.attr("hx-get"))).retrieve().body(String.class)));
+    // the run's units in the text's order, an attachment's parts too
+    assertThat(rows.select(".ledger-same .provision").eachText())
+        .startsWith("1.0", "1.0.1")
+        .endsWith("8.1.2.1");
+    var opened = Objects.requireNonNull(rows.selectFirst(".ledger-same"));
+    assertThat(opened.select(".from").text()).isEqualTo(opened.select(".to").text()).isNotBlank();
+    assertThat(opened.select(".history").text()).isNotBlank();
     var same = synopsis.select(".ledger-same");
     assertThat(same.select(".provision").eachText())
         .containsSubsequence("8.1.2.2", "8.1.2.3(a)", "8.1.2.3(b)", "8.1.2.3(d)", "8.1.2.3(f)");

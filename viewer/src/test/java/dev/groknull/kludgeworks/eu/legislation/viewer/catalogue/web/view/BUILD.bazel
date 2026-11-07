@@ -22,6 +22,7 @@ java_test_suite(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:recorded-acts",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
 )

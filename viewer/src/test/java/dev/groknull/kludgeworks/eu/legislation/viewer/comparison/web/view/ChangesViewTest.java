@@ -54,7 +54,7 @@ class ChangesViewTest {
             "5",
             "Point (f)",
             "6",
-            "Points 9.1.2.4 to ATTACHMENT 12-P");
+            "Point 9.1.2.4 to attachment 12-P");
     assertThat(MARCH_TO_OCTOBER.count()).isEqualTo("6 differences");
     assertThat(MARCH_TO_OCTOBER.breakdown()).isEqualTo("0 inserted · 0 deleted · 6 amended");
     assertThat(MARCH_TO_OCTOBER.numbers()).containsExactly(1, 2, 3, 4, 5, 6);
@@ -85,7 +85,7 @@ class ChangesViewTest {
             .findFirst()
             .orElseThrow();
     assertThat(fold.query())
-        .isEqualTo("eId=anx%2Fpnt_8.1.2.3%2Fpnt_a&eId=anx%2Fpnt_8.1.2.3%2Fpnt_b");
+        .isEqualTo("first=anx%2Fpnt_8.1.2.3%2Fpnt_a&last=anx%2Fpnt_8.1.2.3%2Fpnt_b");
   }
 
   @Test
@@ -109,7 +109,7 @@ class ChangesViewTest {
             "2",
             "Point (f)",
             "3",
-            "Points 9.1.2.4 to ATTACHMENT 12-P");
+            "Point 9.1.2.4 to attachment 12-P");
     assertThat(only9.passages())
         .filteredOn(Fold.class::isInstance)
         .map(Fold.class::cast)
@@ -164,6 +164,20 @@ class ChangesViewTest {
                     new Sibling("anx/pnt_11.2.7/pnt_b", "point", "(b)"))))
         .isEqualTo("Points 11.1.3 to 11.2.7(b) (4 provisions)");
     assertThat(ChangesView.span(siblings("indent", "—", "—"))).isEqualTo("2 provisions");
+  }
+
+  @Test
+  void namesEachEndOfAFoldOfDifferentSortsByItsOwn() {
+    var attachment = new Sibling("anx/level_ATTACHMENT-1-A", "level", "ATTACHMENT 1-A");
+    var point = new Sibling("anx/pnt_6.1.2", "level", "6.1.2");
+    var nameless = new Sibling("anx/level_ATTACHMENT-1-A/level_1", "level", "");
+
+    assertThat(ChangesView.fold(List.of(attachment, point)))
+        .isEqualTo("Attachment 1-A to point 6.1.2");
+    assertThat(ChangesView.fold(List.of(point, attachment)))
+        .isEqualTo("Point 6.1.2 to attachment 1-A");
+    assertThat(ChangesView.span(List.of(attachment, nameless, point)))
+        .isEqualTo("Attachment 1-A to point 6.1.2 (3 provisions)");
   }
 
   @Test

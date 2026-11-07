@@ -75,6 +75,14 @@ public record SidenoteView(
     dates = List.copyOf(dates);
   }
 
+  /**
+   * Whether corrigenda alone made it: a correction, not an amendment, which the marks show apart
+   * (Design D-31).
+   */
+  public boolean corrected() {
+    return !acts.isEmpty() && acts.stream().allMatch(Wording::corrigendum);
+  }
+
   /** The same, the comparison not limited to an act's changes. */
   public static SidenoteView of(
       Act act,

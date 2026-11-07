@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayDeque;
 import java.util.Deque;
@@ -32,6 +33,27 @@ final class Neighbours {
     Neighbour {
       markers = List.copyOf(markers);
     }
+  }
+
+  /** {@code unit} as a row cites it: its eId, kind and num. */
+  static Sibling sibling(Element unit) {
+    var eId = unit.attribute("eId");
+    var kind = unit.attribute("kind");
+    var num = new StringBuilder();
+    for (var child : unit.children()) {
+      if (child.name().equals("num")) {
+        said(child, num);
+      }
+    }
+    return new Sibling(eId == null ? "" : eId, kind == null ? "" : kind, num.toString().strip());
+  }
+
+  private static void said(Element element, StringBuilder out) {
+    var words = element.attribute("v");
+    if (element.name().equals("t") && words != null) {
+      out.append(words);
+    }
+    element.children().forEach(child -> said(child, out));
   }
 
   /** The units {@code eIds} of {@code later}, by eId; those it hasn't left out. */

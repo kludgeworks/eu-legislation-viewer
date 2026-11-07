@@ -64,6 +64,14 @@ public final class Links {
     return compare(eli, from, to, language) + act(only);
   }
 
+  /**
+   * The units the same in both versions, as a Synopsis fold loads them, the fold's eIds after:
+   * /eli/reg_impl/2015/1998/eng/compare/same?from=2021-07-01&amp;to=2021-12-31.
+   */
+  public static String same(Eli eli, Version from, Version to, Language language) {
+    return compare(eli, language) + "/same?from=" + from.date() + "&to=" + to.date();
+  }
+
   /** The same, in {@code view}: …&amp;view=whole; the Changes view without. */
   public static String compare(
       Eli eli,

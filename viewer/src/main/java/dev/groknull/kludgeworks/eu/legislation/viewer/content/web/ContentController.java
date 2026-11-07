@@ -3,12 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import gg.jte.output.WriterOutput;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
-import java.util.Set;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -43,13 +40,15 @@ class ContentController {
   }
 
   /**
-   * The units {@code eId} of the text at {@code root}, whole, in the text's order; 404 if no text
-   * is stored there. An eId the text hasn't is left out.
+   * The units of the text at {@code root} from the one {@code first} to the one {@code last}, each
+   * whole, in the text's order, as a comparison's fold asks for them; 404 if no text is stored
+   * there. Nothing if the text hasn't {@code first}.
    */
   @GetMapping(path = "/content/{root}/units", produces = MediaType.TEXT_HTML_VALUE)
   void units(
       @PathVariable ContentHash root,
-      @RequestParam("eId") Set<String> eIds,
+      @RequestParam String first,
+      @RequestParam String last,
       HttpServletResponse response)
       throws IOException {
     var text =
@@ -57,16 +56,8 @@ class ContentController {
     response.setContentType(MediaType.TEXT_HTML_VALUE);
     response.setCharacterEncoding("UTF-8");
     var out = new WriterOutput(response.getWriter());
-    for (var unit : units(text, eIds)) {
+    for (var unit : text.units(first, last)) {
       html.element(unit).writeTo(out);
     }
-  }
-
-  /** The units in {@code element} whose eId is one of {@code eIds}, in order. */
-  private static List<Element> units(Element element, Set<String> eIds) {
-    if (element.name().equals("unit") && eIds.contains(element.attribute("eId"))) {
-      return List.of(element);
-    }
-    return element.children().stream().flatMap(child -> units(child, eIds).stream()).toList();
   }
 }

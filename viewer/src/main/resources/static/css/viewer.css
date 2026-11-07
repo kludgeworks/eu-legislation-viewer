@@ -47,6 +47,8 @@
   --ins-bg: light-dark(#e3edfb, #17304f);
   --del-ink: light-dark(#a32d12, #ffa28d);
   --del-bg: light-dark(#fbe9e4, #4a2018);
+  --corr-ink: light-dark(#6b2fa3, #d2b0ff);
+  --corr-bg: light-dark(#f1e9fa, #34204a);
   --cor-line: light-dark(#6b4fa0, #b59ce2);
   --cor-ink: light-dark(#4f3a7a, #cdbaf2);
   --shadow: light-dark(rgba(0,0,0,.12), rgba(0,0,0,.55));
@@ -674,6 +676,12 @@ a.chip:hover {
   color: var(--muted);
 }
 
+/* a corrigendum's chip: dotted, in the corrections' violet (Design D-30) */
+.chip.corrigendum {
+  border-style: dotted;
+  border-color: var(--corr-ink);
+}
+
 /* what the chips' numbers are */
 .between .hint {
   display: block;
@@ -894,6 +902,52 @@ a.chip:hover {
   background: var(--surface);
   font-size: 13.5px;
   color: var(--muted);
+}
+
+/* a Synopsis fold opened in place (D-55): its rows as the ledger's, under its line */
+details.ledger-fold > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details.ledger-fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.ledger-fold .show u {
+  text-underline-offset: 2px;
+}
+
+details.ledger-fold[open] .show {
+  display: none;
+}
+
+details.ledger-fold[open] {
+  padding-bottom: 0;
+}
+
+.ledger-fold-rows {
+  margin: 9px -14px 0;
+  font-size: initial;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* in Compare (D-41), no amendment marks (▼) and none of what a consolidation keeps struck: the
+ * sidenotes and the marks say what happened; Read keeps them */
+.changes .provenance,
+.changes .deleted {
+  display: none;
+}
+
+/* a deleted unit in the Whole text (D-52), where it stood: its number and words struck in red,
+ * greyed a little, so the text around it reads on */
+.whole .difference-deleted > :not(.sidenote, .difference-number) {
+  opacity: 0.7;
+}
+
+.whole .difference-deleted del.diff {
+  background: none;
 }
 
 /* the Changes view (Design: Mode: Compare, Changes): the provisions that differ in the book column,
@@ -1676,6 +1730,32 @@ del.diff {
   color: var(--del-ink);
   background: var(--del-bg);
   text-decoration: line-through;
+}
+
+/* a correction's marks (Design D-31): words a corrigendum put in underlined dotted, words it took out
+ * struck through, both violet, in every view */
+.corrected ins.diff,
+.corrected del.diff {
+  color: var(--corr-ink);
+  background: var(--corr-bg);
+  text-decoration-color: var(--corr-ink);
+}
+
+.corrected ins.diff {
+  text-decoration-style: dotted;
+  text-decoration-thickness: 2px;
+}
+
+/* what the marks on the page are, at the end of the controls' line (Design D-32) */
+.controls .legend {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.controls .legend ins.diff,
+.controls .legend del.diff {
+  padding: 0 3px;
 }
 
 .quoted-structure {

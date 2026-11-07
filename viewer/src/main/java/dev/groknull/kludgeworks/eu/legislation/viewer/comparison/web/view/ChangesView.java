@@ -18,7 +18,6 @@ import java.util.Set;
 import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -243,7 +242,8 @@ public record ChangesView(
    * written, that word once (Article 2; Articles 2 to 5; ANNEXES I and II); other nums after their
    * kind's noun (Point (a); Points (a) and (b); Paragraphs 2. to 4.); units with no num, or only a
    * mark for one (an indent's dash), counted (2 indents; 3 subparagraphs); some of them, by the
-   * first and last with one, all counted (Points 1. to 8.1.2.2 (429 provisions)).
+   * first and last with one, all counted (Points 1. to 8.1.2.2 (429 provisions)); first and last of
+   * different kinds, each by its own (Attachment 1-A to point 6.1.2).
    */
   static String fold(List<Sibling> siblings) {
     var first = siblings.getFirst();
@@ -255,6 +255,9 @@ public record ChangesView(
     }
     if (siblings.stream().anyMatch(sibling -> !WORD.matcher(sibling.num()).find())) {
       return span(siblings);
+    }
+    if (!sort(first).equals(sort(last))) {
+      return mixed(first, last, null);
     }
     var named = siblings.stream().map(sibling -> NAMED.matcher(sibling.num())).toList();
     if (named.stream().allMatch(Matcher::matches)
@@ -283,6 +286,9 @@ public record ChangesView(
     }
     var first = numbered.getFirst();
     var last = numbered.getLast();
+    if (!sort(first).equals(sort(last))) {
+      return mixed(first, last, count);
+    }
     var noun = noun(first.kind());
     var named = NAMED.matcher(first.num()).matches();
     if (numbered.size() == 1) {
@@ -294,6 +300,35 @@ public record ChangesView(
         + " ("
         + count
         + ")";
+  }
+
+  /**
+   * What sort of unit {@code unit} is, as a label names it: the word of a num with one of its own
+   * (ATTACHMENT, ANNEX), otherwise its kind's noun (Point).
+   */
+  private static String sort(Sibling unit) {
+    var named = NAMED.matcher(unit.num());
+    return named.matches() ? named.group(1).toUpperCase(Locale.ROOT) : noun(unit.kind());
+  }
+
+  /**
+   * A run from {@code first} to {@code last}, units of different sorts, each named by its own:
+   * Attachment 1-A to point 6.1.2 (371 provisions); {@code count}, if any, after.
+   */
+  private static String mixed(Sibling first, Sibling last, @Nullable String count) {
+    var end = named(last);
+    var label = named(first) + " to " + Character.toLowerCase(end.charAt(0)) + end.substring(1);
+    return count == null ? label : label + " (" + count + ")";
+  }
+
+  /** {@code unit} named by its sort: Attachment 1-A, Point 6.1.2, Point 11.2.7(b). */
+  private static String named(Sibling unit) {
+    var named = NAMED.matcher(unit.num());
+    if (named.matches()) {
+      var word = named.group(1);
+      return word.charAt(0) + word.substring(1).toLowerCase(Locale.ROOT) + " " + named.group(2);
+    }
+    return noun(unit.kind()) + " " + cited(unit);
   }
 
   /** A unit's num, a point's after the numbered point it is in: 11.2.7(b). */
@@ -369,12 +404,15 @@ public record ChangesView(
       return new Fold(same ? ChangesView.fold(inner) : span(inner), inner, note, same);
     }
 
-    /** The query that asks for its units by eId: eId=anx%2Fpnt_8.1.2.3%2Fpnt_a&amp;eId=… */
+    /**
+     * The query that asks for its units, its first to its last, whatever their number:
+     * first=anx%2Fpnt_8.1.2.3%2Fpnt_a&amp;last=anx%2Fpnt_8.1.2.3%2Fpnt_b
+     */
     public String query() {
-      return units.stream()
-          .map(Sibling::eId)
-          .map(eId -> "eId=" + URLEncoder.encode(eId, StandardCharsets.UTF_8))
-          .collect(Collectors.joining("&"));
+      return "first="
+          + URLEncoder.encode(units.getFirst().eId(), StandardCharsets.UTF_8)
+          + "&last="
+          + URLEncoder.encode(units.getLast().eId(), StandardCharsets.UTF_8);
     }
   }
 

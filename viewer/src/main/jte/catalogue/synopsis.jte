@@ -17,6 +17,7 @@
 @param List<CompareView.ViewLink> views
 @param CompareView.Only only = null
 @param String preamble = ""
+@param String same = ""
 <%-- A comparison's Synopsis view (Design: Mode: Compare, Synopsis): its controls, then a ledger of
      the two texts aligned by provision, From's CELEX and To's heading their columns: each provision
      that differs a row, its unit marked in both, the words it lost struck in From, those it gained
@@ -33,7 +34,7 @@
   @template.comparison.outline(entries = outline.entries())
 </nav>
 <div class="changes synopsis">
-  @template.catalogue.controls(changes = changes, views = views, only = only)
+  @template.catalogue.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two versions, aligned by provision">
     <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="celex">${from}</span></div><div role="columnheader">To<span class="celex">${to}</span></div><div role="columnheader">What changed it</div></div>
     @for(var passage : changes.passages())
@@ -42,11 +43,11 @@
         @for(var each : fold.beside())
           @template.catalogue.neighbour(unit = each, element = neighbours.get(each.eId()), history = histories.get(each.eId()), html = html)
           @if(between != null && each == fold.beside().getFirst())
-            <div class="ledger-fold" role="row"><span role="cell">${between.label()} — ${between.note()}</span></div>
+            @template.catalogue.ledgerfold(fold = between, same = same)
           @endif
         @endfor
       @elseif(passage instanceof ChangesView.Fold fold)
-        <div class="ledger-fold" role="row"><span role="cell">${fold.label()} — ${fold.note()}</span></div>
+        @template.catalogue.ledgerfold(fold = fold, same = same)
       @elseif(passage instanceof ChangesView.NoPreamble)
         <div class="ledger-fold" role="row"><span role="cell">Preamble — ${preamble}</span></div>
       @elseif(passage instanceof ChangesView.Lead lead)
@@ -54,7 +55,7 @@
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
         !{var unit = html.element(shown.unit());}
-        <div class="ledger-row difference-${shown.kind()}${only != null && sidenote != null && !sidenote.candidates().isEmpty() ? " unknown" : ""}" role="row" id="difference-${shown.number()}">
+        <div class="ledger-row difference-${shown.kind()}${only != null && sidenote != null && !sidenote.candidates().isEmpty() ? " unknown" : ""}${sidenote != null && sidenote.corrected() ? " corrected" : ""}" role="row" id="difference-${shown.number()}">
           <div class="provision" role="cell">${shown.cited()}<span class="n">difference ${shown.number()} of ${total}</span></div>
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in this version</p>@else${unit}@endif</div>
           <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in this version</p>@else${unit}@endif</div>

@@ -18,6 +18,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Compare
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.NeighbourView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
@@ -49,6 +50,7 @@ import java.util.IdentityHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -291,7 +293,8 @@ class CompareController {
                                 each, sidenote, greyed(only, sidenote), unit);
                           }),
                       views,
-                      all)
+                      all,
+                      sidenotes.values().stream().anyMatch(SidenoteView::corrected))
                   .render();
           case SYNOPSIS -> {
             // the neighbours of the differences, each with what last made it as it is
@@ -327,7 +330,8 @@ class CompareController {
                     later.celex(),
                     views,
                     all,
-                    preamble)
+                    preamble,
+                    Links.same(page.eli, earlier, later, page.language))
                 .render();
           }
         };
@@ -524,6 +528,61 @@ class CompareController {
     SidenoteView sidenote(Difference difference) {
       return Objects.requireNonNull(sidenotes.get(difference));
     }
+  }
+
+  /**
+   * A Synopsis fold's units, as it opens in place (Design: Synopsis, D-55): each a row, the later
+   * text's in both columns as it is the same in both, with what last made it as it is. 404 at an
+   * address that isn't the comparison's, or before its later text is built.
+   */
+  @GetMapping(path = PATH + "/same", produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  String same(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @RequestParam String first,
+      @RequestParam String last) {
+    var page =
+        new Page(new Eli(type, year, number), code, from, to, null, CompareView.View.SYNOPSIS);
+    if (!page.at(from, to, null)) {
+      throw Requests.notFound();
+    }
+    var started = System.nanoTime();
+    if (!(texts.preparation(page.act, page.language).texts().get(page.to)
+        instanceof Text.Ready later)) {
+      throw Requests.notFound();
+    }
+    var text = content.read(later.root()).orElseThrow(Requests::notFound);
+    var eIds = new ArrayList<String>();
+    for (var unit : text.units(first, last)) {
+      eIds.add(Objects.requireNonNull(unit.attribute("eId")));
+    }
+    var found = Neighbours.of(text, Set.copyOf(eIds));
+    var rows = new ArrayList<NeighbourView>();
+    for (var eId : eIds) {
+      var neighbour = found.get(eId);
+      if (neighbour != null) {
+        rows.add(
+            new NeighbourView(
+                Neighbours.sibling(neighbour.unit()),
+                neighbour.unit(),
+                SidenoteView.history(page.act, page.to, neighbour.markers(), page.language)));
+      }
+    }
+    LOG.info(
+        "Same units of {} from {} to {} in {}: {} of {}, in {} ms",
+        page.act.id(),
+        page.from.date(),
+        page.to.date(),
+        page.language.code(),
+        rows.size(),
+        eIds.size(),
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
+    return templates.catalogueNeighbours(rows, this.html).render();
   }
 
   /**
