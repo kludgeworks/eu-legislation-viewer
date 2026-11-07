@@ -205,12 +205,12 @@
               </xsl:when>
               <xsl:when test="$package">
                 <xsl:sequence select="f:publication($package/PUBLICATION.REF/COLL, $package/PUBLICATION.REF/NO.OJ,
-                                                    $package/PUBLICATION.REF/DATE/@ISO, $package/FMX/DOC.MAIN.PUB/PAGE.FIRST,
+                                                    $package/PUBLICATION.REF/DATE/@ISO, ($package/FMX/DOC.MAIN.PUB/PAGE.FIRST[. != '0'], $doc/BIB.INSTANCE/PAGE.FIRST)[1],
                                                     (f:oj-document($doc/BIB.INSTANCE/DOCUMENT.REF), $content/TITLE/TI/NO.DOC.C)[1])"/>
               </xsl:when>
               <xsl:otherwise>
                 <xsl:variable name="ref" as="element(DOCUMENT.REF)?" select="$doc/BIB.INSTANCE/DOCUMENT.REF"/>
-                <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), $ref/PAGE.FIRST,
+                <xsl:sequence select="f:publication($ref/COLL, $ref/NO.OJ, (), ($doc/BIB.INSTANCE/PAGE.FIRST[. != '0'], $ref/PAGE.FIRST)[1],
                                                     (f:oj-document($ref), $content/TITLE/TI/NO.DOC.C)[1])"/>
               </xsl:otherwise>
             </xsl:choose>
@@ -258,7 +258,9 @@
           </xsl:if>
 
           <!-- the title; a second one (a consolidated document can have two) is text of the body -->
-          <xsl:apply-templates select="$content/TITLE[1]"/>
+          <xsl:apply-templates select="$content/TITLE[1]">
+            <xsl:with-param name="outer-title" as="element(TITLE)?" select="$doc/CONS.DOC.GEN/TITLE[$treaty and not($content is $doc/CONS.DOC.GEN)]" tunnel="yes"/>
+          </xsl:apply-templates>
           <xsl:apply-templates select="$content/PREAMBLE"/>
 
           <body>
@@ -546,8 +548,16 @@
   <xsl:mode name="f:long-title" on-no-match="fail" on-multiple-match="fail"/>
 
   <xsl:template match="TITLE" mode="f:long-title">
-      <longTitle>
-        <xsl:for-each select="TI/(P | LIST | NP)">
+    <xsl:param name="outer-title" as="element(TITLE)?" tunnel="yes"/>
+    <longTitle>
+      <xsl:for-each select="$outer-title/TI/(P | LIST | NP)">
+        <p>
+          <xsl:call-template name="f:inlines">
+            <xsl:with-param name="nodes" as="node()*" select="node()"/>
+          </xsl:call-template>
+        </p>
+      </xsl:for-each>
+      <xsl:for-each select="TI/(P | LIST | NP)">
           <xsl:choose>
             <!-- a line that is a list or a numbered paragraph, or holds a table (a corrigendum's
                  title): its blocks -->

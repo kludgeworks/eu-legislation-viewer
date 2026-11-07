@@ -51,6 +51,7 @@ java_binary(
     runtime_deps = [
         ":converter-test-lib",
         "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+        "//formex-converter/src/test/resources/compare:resources",
     ],
 )
 
@@ -63,6 +64,7 @@ java_binary(
     runtime_deps = [
         ":converter-test-lib",
         "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+        "//formex-converter/src/test/resources/compare:resources",
     ],
 )
 

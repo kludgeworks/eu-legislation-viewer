@@ -31,6 +31,8 @@ public final class ConvertTexts {
     var out = Files.createDirectories(Path.of(args[2]));
     var saxon = new Processor(false);
     var stylesheet = new Stylesheet(saxon);
+    var textConservation = new TextConservation(saxon);
+    var metadataConservation = new MetadataConservation(saxon);
     var log = new StringBuilder();
     var converted = 0;
     for (var line : Files.readAllLines(Path.of(args[1]), StandardCharsets.UTF_8)) {
@@ -46,10 +48,19 @@ public final class ConvertTexts {
       String status;
       try {
         var legalText = stylesheet.transform(manifestation.source(), Optional.of(celex));
+        var outFile = out.resolve(celex + ".xml");
+        Files.createDirectories(outFile.getParent());
         Files.writeString(
-            out.resolve(celex + ".xml"),
-            ExpectedOutput.serialize(saxon, legalText),
-            StandardCharsets.UTF_8);
+            outFile, ExpectedOutput.serialize(saxon, legalText), StandardCharsets.UTF_8);
+        var missing = textConservation.missing(manifestation.source(), legalText);
+        if (!missing.isEmpty()) {
+          System.err.println("MISSING text in " + celex + " (" + missing.size() + "): " + missing);
+        }
+        var missingMeta = metadataConservation.missing(manifestation.source(), legalText);
+        if (!missingMeta.isEmpty()) {
+          System.err.println(
+              "MISSING metadata in " + celex + " (" + missingMeta.size() + "): " + missingMeta);
+        }
         status = "ok";
         converted++;
       } catch (Stylesheet.Failure e) {

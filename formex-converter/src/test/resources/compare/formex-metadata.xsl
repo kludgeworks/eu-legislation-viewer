@@ -79,7 +79,7 @@
     <xsl:sequence select="f:field('oj.series', $ref/COLL)"/>
     <xsl:sequence select="f:field('oj.number', replace(normalize-space($ref/NO.OJ), '^0+', ''))"/>
     <xsl:sequence select="f:field('oj.document', $ref/NO.DOC[@TYPE = 'OJ']!(normalize-space(YEAR) || '/' || normalize-space(NO.CURRENT)))"/>
-    <xsl:sequence select="f:field('oj.page', $ref/PAGE.FIRST)"/>
+    <xsl:sequence select="f:field('oj.page', ($ref/../PAGE.FIRST[. != '0'], $ref/PAGE.FIRST)[1])"/>
   </xsl:function>
 
   <!-- a field, when it has a value -->
