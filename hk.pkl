@@ -138,7 +138,9 @@ local linters = new Mapping<String, Step> {
   ["check_case_conflict"] = Builtins.check_case_conflict
   ["check_added_large_files"] = (Builtins.check_added_large_files) { exclude = raw + generated }
   ["detect_private_key"] = Builtins.detect_private_key
-  ["gitleaks"] = Builtins.gitleaks
+  // every commit's tracked files: not the working tree (gitleaks dir, the builtin's default), which
+  // has the git-ignored corpus, tens of GB of EU texts whose words trip gitleaks' generic rules
+  ["gitleaks"] = (Builtins.gitleaks) { check = "gitleaks git --redact --verbose --no-banner" }
   ["semgrep"] = new Step {
     // .jte, .css, .js and .sql for the project's own text rules (semgrep/rules.yaml)
     glob = List("**/*.java", "**/*.py", "**/*.jte", "**/*.css", "**/*.js", "**/*.sql")
