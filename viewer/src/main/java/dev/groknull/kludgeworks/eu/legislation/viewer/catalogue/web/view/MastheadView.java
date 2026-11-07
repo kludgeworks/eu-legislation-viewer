@@ -6,7 +6,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -26,8 +25,8 @@ import org.jspecify.annotations.Nullable;
  * @param celex the act's CELEX
  * @param celexHref the act on EUR-Lex by its CELEX, in the page's language
  * @param language the page's language, by its own name
- * @param languages the languages the version is in, each a link to its page in it
- * @param missing the official languages it isn't in, by their own names
+ * @param languages the 24 official languages in the EU's order (Design D-16, D-35), each a link to
+ *     the page in it, greyed with why where a version shown isn't in it
  * @param read the version's page, when comparing; none when reading
  * @param compare the comparison, when reading; none when comparing
  * @param preparing whether the act is being prepared: the mode switch is shown, not yet a link
@@ -41,14 +40,12 @@ public record MastheadView(
     String celexHref,
     String language,
     List<Choice> languages,
-    List<String> missing,
     @Nullable String read,
     @Nullable String compare,
     boolean preparing) {
 
   public MastheadView {
     languages = List.copyOf(languages);
-    missing = List.copyOf(missing);
   }
 
   /**
@@ -69,7 +66,13 @@ public record MastheadView(
                         .flatMap(each -> each.successor(version))
                         .map(after -> Links.compare(eli, version, after, language)))
             .orElseGet(() -> Links.compare(eli, version, version, language));
-    return of(act, version, language, each -> Links.read(eli, asked, each), null, compare);
+    return of(
+        act,
+        language,
+        each -> Links.read(eli, asked, each),
+        each -> version.languages().contains(each) ? null : "Not for this version",
+        null,
+        compare);
   }
 
   /**
@@ -80,18 +83,28 @@ public record MastheadView(
     var eli = eli(act);
     return of(
         act,
-        to,
         language,
         each -> Links.compare(eli, from, to, each),
+        each -> {
+          var inFrom = from.languages().contains(each);
+          var inTo = to.languages().contains(each);
+          if (inFrom && inTo) {
+            return null;
+          }
+          var name = each.english();
+          return inFrom
+              ? "To isn’t in " + name
+              : inTo ? "From isn’t in " + name : "Neither version is in " + name;
+        },
         Links.read(eli, to, language),
         null);
   }
 
   private static MastheadView of(
       Act act,
-      Version version,
       Language language,
       Function<Language, String> page,
+      Function<Language, @Nullable String> missing,
       @Nullable String read,
       @Nullable String compare) {
     var eli = eli(act);
@@ -104,13 +117,17 @@ public record MastheadView(
         act.id().celex(),
         Links.eurLex(act.id().celex(), language),
         language.endonym(),
-        version.languages().stream()
-            .sorted()
-            .map(each -> new Choice(each.endonym(), each.iso(), page.apply(each), each == language))
-            .toList(),
-        Arrays.stream(Language.values())
-            .filter(each -> !version.languages().contains(each))
-            .map(Language::endonym)
+        Language.inProtocolOrder().stream()
+            .map(
+                each -> {
+                  var why = missing.apply(each);
+                  return new Choice(
+                      each.endonym(),
+                      each.iso(),
+                      why == null ? page.apply(each) : null,
+                      each == language,
+                      why);
+                })
             .toList(),
         read,
         compare,
@@ -128,7 +145,6 @@ public record MastheadView(
         celexHref,
         language,
         languages,
-        missing,
         read,
         compare,
         true);
@@ -143,8 +159,10 @@ public record MastheadView(
    *
    * @param name its own name
    * @param iso its ISO 639-1 code, as HTML's lang and hreflang have it
-   * @param href the page in it
+   * @param href the page in it; none where a version shown isn't in it
    * @param current whether it is the page's
+   * @param missing why it is greyed: Not for this version; From isn’t in Irish; none where it isn't
    */
-  public record Choice(String name, String iso, String href, boolean current) {}
+  public record Choice(
+      String name, String iso, @Nullable String href, boolean current, @Nullable String missing) {}
 }

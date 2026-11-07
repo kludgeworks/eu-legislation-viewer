@@ -88,12 +88,14 @@ public record TimelineView(
         List.of(
             new Step(
                 "‹ version before",
-                index > 0 ? Links.read(eli, versions.get(index - 1), language) : null),
+                index > 0 ? Links.read(eli, versions.get(index - 1), language) : null,
+                "This is the first version"),
             new Step(
                 "version after ›",
                 index < versions.size() - 1
                     ? Links.read(eli, versions.get(index + 1), language)
-                    : null)));
+                    : null,
+                "This is the latest version")));
   }
 
   /**
@@ -138,22 +140,28 @@ public record TimelineView(
                 "‹ both one version earlier",
                 first > 0
                     ? Links.compare(eli, versions.get(first - 1), versions.get(last - 1), language)
-                    : null),
+                    : null,
+                "From is already the first version"),
             new Step(
                 "both one version later ›",
                 last < versions.size() - 1
                     ? Links.compare(eli, versions.get(first + 1), versions.get(last + 1), language)
-                    : null),
+                    : null,
+                "To is already the latest version"),
             new Step(
                 "compare “to” with the version before",
                 last > 0 && first != last - 1
                     ? Links.compare(eli, versions.get(last - 1), to, language)
-                    : null),
+                    : null,
+                last == 0 ? "To is the first version" : "From is already the version before"),
             new Step(
                 "compare the original with the current version",
                 !(from.equals(original) && to.equals(current)) && !original.equals(current)
                     ? Links.compare(eli, original, current, language)
-                    : null)));
+                    : null,
+                original.equals(current)
+                    ? "The original is the current version"
+                    : "This is already the original against the current version")));
   }
 
   /** {@code act}'s timeline while {@code preparation} is under way: each version's text's state. */
@@ -457,6 +465,7 @@ public record TimelineView(
    * A link to versions either side.
    *
    * @param href where it goes; none where there is nothing that way
+   * @param nowhere why there is nothing that way, as the greyed step's hover says (Design D-34)
    */
-  public record Step(String label, @Nullable String href) {}
+  public record Step(String label, @Nullable String href, String nowhere) {}
 }

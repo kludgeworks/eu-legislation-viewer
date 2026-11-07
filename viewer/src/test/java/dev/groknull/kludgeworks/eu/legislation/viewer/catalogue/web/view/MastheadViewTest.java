@@ -41,10 +41,14 @@ class MastheadViewTest {
   }
 
   @Test
-  void switchesToTheLanguagesTheVersionIsInKeepingTheDateAsked() {
+  void listsAllTheLanguagesInTheEusOrderGreyingThoseTheVersionIsntIn() {
     var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.FRA);
     assertThat(head.language()).isEqualTo("français");
-    assertThat(head.languages()).hasSize(23);
+    assertThat(head.languages())
+        .hasSize(24)
+        .extracting(Choice::iso)
+        .startsWith("bg", "es", "cs")
+        .endsWith("fi", "sv");
     assertThat(head.languages())
         .filteredOn(Choice::current)
         .singleElement()
@@ -55,6 +59,20 @@ class MastheadViewTest {
         .singleElement()
         .extracting(Choice::name, Choice::href)
         .containsExactly("Deutsch", "/eli/reg_impl/2015/1998/2022-01-10/deu");
-    assertThat(head.missing()).containsExactly("Gaeilge");
+    assertThat(head.languages())
+        .filteredOn(choice -> choice.missing() != null)
+        .singleElement()
+        .extracting(Choice::name, Choice::href, Choice::missing)
+        .containsExactly("Gaeilge", null, "Not for this version");
+  }
+
+  @Test
+  void greysALanguageEitherVersionComparedIsntInSayingWhich() {
+    var from = AVSEC.timeline().versions().getFirst();
+    var head = MastheadView.comparing(AVSEC, from, VERSION, Language.ENG);
+    assertThat(head.languages())
+        .filteredOn(choice -> choice.missing() != null)
+        .extracting(Choice::name, Choice::missing)
+        .contains(org.assertj.core.groups.Tuple.tuple("Gaeilge", "Neither version is in Irish"));
   }
 }

@@ -27,6 +27,7 @@
       @template.catalogue.arriving(arriving = arriving)
     @endif
     @template.catalogue.cards(compare = compare)
+    @if(compare.note() != null)<p class="compare-note" role="status">${compare.note()}</p>@endif
     ${changes}
   </div>
 `)

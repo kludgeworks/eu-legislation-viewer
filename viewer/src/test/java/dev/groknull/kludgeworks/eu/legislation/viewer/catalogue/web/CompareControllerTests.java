@@ -61,11 +61,11 @@ class CompareControllerTests {
   }
 
   @Test
-  void opensOnTheLatestVersionAgainstTheOneBefore() {
+  void opensOnTheCurrentVersionAgainstTheOneBeforeSayingSo() {
     assertThat(mvc.get().uri(ACT + "eng/compare"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, PAGE);
+        .hasValue(HttpHeaders.LOCATION, PAGE + "&opened=current");
   }
 
   @Test
@@ -86,11 +86,11 @@ class CompareControllerTests {
   }
 
   @Test
-  void goesToTheComparisonOfAllActsForAnActNotBetweenTheVersions() {
+  void goesToTheComparisonOfAllActsForAnActNotBetweenTheVersionsSayingSo() {
     assertThat(mvc.get().uri(PAGE + "&act=32019R0103"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, PAGE);
+        .hasValue(HttpHeaders.LOCATION, PAGE + "&outside=32019R0103");
   }
 
   @Test

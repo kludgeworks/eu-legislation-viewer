@@ -49,7 +49,7 @@
   </div>
   <nav class="steps" aria-label="Versions either side">
     @for(var step : timeline.steps())
-      @if(step.href() != null)<a href="${step.href()}">${step.label()}</a>@else<span>${step.label()}</span>@endif
+      @if(step.href() != null)<a href="${step.href()}">${step.label()}</a>@else<span aria-disabled="true" title="${step.nowhere()}">${step.label()}</span>@endif
     @endfor
   </nav>
 </section>

@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.language;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 import org.jmolecules.ddd.annotation.ValueObject;
 
@@ -11,39 +12,60 @@ import org.jmolecules.ddd.annotation.ValueObject;
  */
 @ValueObject
 public enum Language {
-  BUL("bg", "български", "Официален вестник на Европейския съюз"),
-  CES("cs", "čeština", "Úřední věstník Evropské unie"),
-  DAN("da", "dansk", "Den Europæiske Unions Tidende"),
-  DEU("de", "Deutsch", "Amtsblatt der Europäischen Union"),
-  ELL("el", "ελληνικά", "Επίσημη Εφημερίδα της Ευρωπαϊκής Ένωσης"),
-  ENG("en", "English", "Official Journal of the European Union"),
-  EST("et", "eesti keel", "Euroopa Liidu Teataja"),
-  FIN("fi", "suomi", "Euroopan unionin virallinen lehti"),
-  FRA("fr", "français", "Journal officiel de l'Union européenne"),
-  GLE("ga", "Gaeilge", "Iris Oifigiúil an Aontais Eorpaigh"),
-  HRV("hr", "hrvatski", "Službeni list Europske unije"),
-  HUN("hu", "magyar", "Az Európai Unió Hivatalos Lapja"),
-  ITA("it", "italiano", "Gazzetta ufficiale dell'Unione europea"),
-  LAV("lv", "latviešu valoda", "Eiropas Savienības Oficiālais Vēstnesis"),
-  LIT("lt", "lietuvių kalba", "Europos Sąjungos oficialusis leidinys"),
-  MLT("mt", "Malti", "Il-Ġurnal Uffiċjali tal-Unjoni Ewropea"),
-  NLD("nl", "Nederlands", "Publicatieblad van de Europese Unie"),
-  POL("pl", "polski", "Dziennik Urzędowy Unii Europejskiej"),
-  POR("pt", "português", "Jornal Oficial da União Europeia"),
-  RON("ro", "română", "Jurnalul Oficial al Uniunii Europene"),
-  SLK("sk", "slovenčina", "Úradný vestník Európskej únie"),
-  SLV("sl", "slovenščina", "Uradni list Evropske unije"),
-  SPA("es", "español", "Diario Oficial de la Unión Europea"),
-  SWE("sv", "svenska", "Europeiska unionens officiella tidning");
+  BUL("bg", "Bulgarian", "български", "Официален вестник на Европейския съюз"),
+  CES("cs", "Czech", "čeština", "Úřední věstník Evropské unie"),
+  DAN("da", "Danish", "dansk", "Den Europæiske Unions Tidende"),
+  DEU("de", "German", "Deutsch", "Amtsblatt der Europäischen Union"),
+  ELL("el", "Greek", "ελληνικά", "Επίσημη Εφημερίδα της Ευρωπαϊκής Ένωσης"),
+  ENG("en", "English", "English", "Official Journal of the European Union"),
+  EST("et", "Estonian", "eesti keel", "Euroopa Liidu Teataja"),
+  FIN("fi", "Finnish", "suomi", "Euroopan unionin virallinen lehti"),
+  FRA("fr", "French", "français", "Journal officiel de l'Union européenne"),
+  GLE("ga", "Irish", "Gaeilge", "Iris Oifigiúil an Aontais Eorpaigh"),
+  HRV("hr", "Croatian", "hrvatski", "Službeni list Europske unije"),
+  HUN("hu", "Hungarian", "magyar", "Az Európai Unió Hivatalos Lapja"),
+  ITA("it", "Italian", "italiano", "Gazzetta ufficiale dell'Unione europea"),
+  LAV("lv", "Latvian", "latviešu valoda", "Eiropas Savienības Oficiālais Vēstnesis"),
+  LIT("lt", "Lithuanian", "lietuvių kalba", "Europos Sąjungos oficialusis leidinys"),
+  MLT("mt", "Maltese", "Malti", "Il-Ġurnal Uffiċjali tal-Unjoni Ewropea"),
+  NLD("nl", "Dutch", "Nederlands", "Publicatieblad van de Europese Unie"),
+  POL("pl", "Polish", "polski", "Dziennik Urzędowy Unii Europejskiej"),
+  POR("pt", "Portuguese", "português", "Jornal Oficial da União Europeia"),
+  RON("ro", "Romanian", "română", "Jurnalul Oficial al Uniunii Europene"),
+  SLK("sk", "Slovak", "slovenčina", "Úradný vestník Európskej únie"),
+  SLV("sl", "Slovenian", "slovenščina", "Uradni list Evropske unije"),
+  SPA("es", "Spanish", "español", "Diario Oficial de la Unión Europea"),
+  SWE("sv", "Swedish", "svenska", "Europeiska unionens officiella tidning");
+
+  /**
+   * The EU's protocol order: by each language's name in itself (Interinstitutional Style Guide,
+   * 7.2.1), as EUR-Lex lists them.
+   */
+  private static final List<Language> PROTOCOL =
+      List.of(
+          BUL, SPA, CES, DAN, DEU, EST, ELL, ENG, FRA, GLE, HRV, ITA, LAV, LIT, HUN, MLT, NLD, POL,
+          POR, RON, SLK, SLV, FIN, SWE);
 
   private final String iso;
+  private final String english;
   private final String endonym;
   private final String journal;
 
-  Language(String iso, String endonym, String journal) {
+  Language(String iso, String english, String endonym, String journal) {
     this.iso = iso;
+    this.english = english;
     this.endonym = endonym;
     this.journal = journal;
+  }
+
+  /** The 24, in the EU's protocol order: български, español, čeština … suomi, svenska. */
+  public static List<Language> inProtocolOrder() {
+    return PROTOCOL;
+  }
+
+  /** Its name in English: Irish, as a reason a version lacks it says it. */
+  public String english() {
+    return english;
   }
 
   /** The EU authority table's code: ENG, as Cellar names the language. */

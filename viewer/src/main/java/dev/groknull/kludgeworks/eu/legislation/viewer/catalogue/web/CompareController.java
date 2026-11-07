@@ -128,16 +128,29 @@ class CompareController {
       @RequestParam(required = false) @Nullable String act,
       @RequestParam(name = "view", defaultValue = "changes") String shown,
       @RequestParam(defaultValue = "false") boolean prepared,
+      @RequestParam(required = false) @Nullable String opened,
+      @RequestParam(required = false) @Nullable String outside,
       HttpServletRequest request) {
     var view = view(shown);
     var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
-      return ResponseEntity.status(HttpStatus.SEE_OTHER)
-          .location(
-              URI.create(
-                  Links.compare(page.eli, page.from, page.to, page.language, page.only, view)))
-          .build();
+      var location = Links.compare(page.eli, page.from, page.to, page.language, page.only, view);
+      // what the page chose, for it to say so
+      if (from == null && to == null && act == null) {
+        location += "&opened=current";
+      } else if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
+        location += "&outside=" + act;
+      }
+      return ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build();
     }
+    var note =
+        "current".equals(opened)
+            ? "Showing the most recent amendment in force: the current version against the one"
+                + " before."
+            : outside != null && ActIdentifier.isCelex(outside)
+                ? Wording.act(new ActIdentifier(outside))
+                    + " isn’t between these two versions; showing every act’s changes."
+                : null;
     var preparation = texts.prepare(page.act, page.language);
     var title = page.from.celex() + " → " + page.to.celex();
     var chrome = Chrome.of(request);
@@ -180,15 +193,19 @@ class CompareController {
                         today,
                         TimelineView.states(preparation)),
                     CompareView.of(
-                        page.act,
-                        page.from,
-                        page.to,
-                        page.language,
-                        today,
-                        page.only,
-                        view,
-                        Links.acts(page.eli, page.from, page.to, page.language, page.only, view)),
-                    page.changes(preparation, self(request), chrome.results()),
+                            page.act,
+                            page.from,
+                            page.to,
+                            page.language,
+                            today,
+                            page.only,
+                            view,
+                            Links.acts(
+                                page.eli, page.from, page.to, page.language, page.only, view))
+                        .noting(note),
+                    page.from.equals(page.to)
+                        ? page.same()
+                        : page.changes(preparation, self(request), chrome.results()),
                     prepared ? PreparingView.receipt(preparation, page.language) : null,
                     ArrivingView.of(page.act, preparation, self(request)).orElse(null))
                 .render());
@@ -707,6 +724,24 @@ class CompareController {
      * either is being prepared, if it appeared since; else the Changes view, loaded from beside the
      * page.
      */
+    /**
+     * What the page says where both ends are one version (Design D-28): that they are, with its
+     * comparison with the version before, if any, and its page.
+     */
+    JteModel same() {
+      return templates.catalogueSame(
+          "Both ends are the same version ("
+              + to.celex()
+              + ", from "
+              + Wording.date(to.date())
+              + ").",
+          timeline
+              .predecessor(to)
+              .map(before -> Links.compare(eli, before, to, language))
+              .orElse(null),
+          Links.read(eli, to, language));
+    }
+
     JteModel changes(Preparation preparation, String self, Chrome.@Nullable Results results) {
       if (preparation.ready() == 0) {
         return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));

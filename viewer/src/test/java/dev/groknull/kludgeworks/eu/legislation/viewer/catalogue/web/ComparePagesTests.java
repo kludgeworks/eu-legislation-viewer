@@ -284,6 +284,28 @@ class ComparePagesTests {
     assertThat(page.select("#text .failure h2").text()).isEqualTo("Not available in English");
   }
 
+  @Test
+  void saysWhatThePageChoseUnderTheCardsAndWhereBothEndsAreOneVersion() {
+    prepared();
+
+    var outside = get(PAGE + "&outside=32019R0103");
+    assertThat(outside.select(".compare-note").text())
+        .isEqualTo("2019/103 isn’t between these two versions; showing every act’s changes.");
+    assertThat(get(PAGE + "&opened=current").select(".compare-note").text())
+        .startsWith("Showing the most recent amendment in force");
+
+    var same = get(ACT + "eng/compare?from=2026-10-01&to=2026-10-01");
+    assertThat(same.select(".same-version p").eachText())
+        .first()
+        .isEqualTo("Both ends are the same version (02015R1998-20261001, from 1 October 2026).");
+    assertThat(same.select(".same-version a").eachAttr("href"))
+        .containsExactly(PAGE, ACT + "2026-10-01/eng");
+  }
+
+  private Document get(String uri) {
+    return Jsoup.parse(Objects.requireNonNull(http.get().uri(uri).retrieve().body(String.class)));
+  }
+
   /** The page, once the act is prepared: its changes loading from beside it. */
   private Document prepared() {
     return await()

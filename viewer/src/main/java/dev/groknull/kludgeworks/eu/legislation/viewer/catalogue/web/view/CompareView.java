@@ -25,8 +25,15 @@ import org.jspecify.annotations.Nullable;
  * @param from the From card
  * @param to the To card
  * @param acts the acts between them
+ * @param note what the reader should know of how the page chose the versions or acts shown: opened
+ *     without dates (Design D-29), an act asked for that isn't between them (D-37); none if nothing
  */
-public record CompareView(Card from, Card to, Acts acts) {
+public record CompareView(Card from, Card to, Acts acts, @Nullable String note) {
+
+  /** The same, saying {@code note} under the cards. */
+  public CompareView noting(@Nullable String note) {
+    return new CompareView(from, to, acts, note);
+  }
 
   /** Above this many chips, those of acts that made no difference here fold. */
   private static final int CHIPS = 6;
@@ -51,7 +58,8 @@ public record CompareView(Card from, Card to, Acts acts) {
     return new CompareView(
         Card.of(act, from, End.FROM, to, language, today, action, first),
         Card.of(act, to, End.TO, from, language, today, action, first),
-        Acts.of(act, from, to, language, only, view, Map.of(), counting));
+        Acts.of(act, from, to, language, only, view, Map.of(), counting),
+        null);
   }
 
   /**

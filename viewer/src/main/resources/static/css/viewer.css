@@ -510,9 +510,10 @@ details.lang [aria-current] {
   text-decoration: none;
 }
 
-details.lang .menu p.missing {
-  margin: 6px 0 0;
+/* a language a version shown isn't in: greyed in place, why on hover */
+details.lang .missing {
   color: var(--disabled);
+  cursor: default;
 }
 
 nav.mode {
@@ -2288,4 +2289,22 @@ form.find-act .ex a {
 
 .about p {
   margin: 0;
+}
+
+/* what the page chose, under the cards: opened without dates, an act asked for that isn't between
+ * them (Design D-29, D-37) */
+.compare-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* both ends one version (Design D-28) */
+.same-version {
+  margin: 24px 0;
+}
+
+.same-version .actions {
+  display: flex;
+  gap: 8px;
 }
