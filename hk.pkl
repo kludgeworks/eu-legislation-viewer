@@ -82,6 +82,8 @@ local linters = new Mapping<String, Step> {
   ["ruff"] = Builtins.ruff
   ["ruff_format"] = Builtins.ruff_format
   ["shellcheck"] = Builtins.shellcheck
+  // the page scripts (.oxlintrc.json). tsc checks their types and Vitest tests them, under Bazel.
+  ["ox_lint"] = (Builtins.ox_lint) { exclude = raw + vendored + generated }
   ["shfmt"] = (Builtins.shfmt) { batch = true }
   // the pending migrations a change touches named NEXT_<NNN>__<description>.sql, their modules
   // numbered whole; not in the release's commit (the release profile), which names them released

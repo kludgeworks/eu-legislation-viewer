@@ -1,0 +1,40 @@
+# SPDX-License-Identifier: MIT
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@npm//:typescript/package_json.bzl", typescript_bin = "bin")
+load("@npm//:vitest/package_json.bzl", vitest_bin = "bin")
+
+# The tests of the page scripts in //viewer/src/main/resources:js, with their config
+js_library(
+    name = "tests",
+    srcs = glob(["*.test.js"]) + [
+        "tsconfig.json",
+        "vitest.config.js",
+    ],
+    deps = [
+        "//:node_modules/happy-dom",
+        "//:node_modules/vitest",
+        "//viewer/src/main/resources:js",
+    ],
+)
+
+# The tests of the page scripts, in happy-dom
+vitest_bin.vitest_test(
+    name = "js",
+    args = ["run"],
+    chdir = package_name(),
+    data = [":tests"],
+)
+
+# The JSDoc types of the page scripts and their tests, checked by tsc in strict mode
+typescript_bin.tsc_test(
+    name = "types",
+    args = [
+        "--project",
+        "tsconfig.json",
+    ],
+    chdir = package_name(),
+    data = [
+        ":tests",
+        "//:node_modules/typescript",
+    ],
+)

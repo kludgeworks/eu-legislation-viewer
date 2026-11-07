@@ -1,0 +1,4 @@
+# SPDX-License-Identifier: MIT
+# The npm packages that may run install scripts. None needs to: fsevents ships built.
+allowBuilds:
+  fsevents: false

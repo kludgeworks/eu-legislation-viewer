@@ -1,24 +1,53 @@
 // SPDX-License-Identifier: MIT
-// A comparison's outline (catalogue/outlinehead.jte), loaded with its view by htmx: its head says
-// which difference the reader is at as they scroll, "Difference 663 of 1,828 · Annex IV", with ↑ ↓
-// to the one before and after (Design D-44, D-25); its button collapses it to a rail of the parts
-// and their counts (D-33), which the reader's browser remembers.
-const RAIL = "outline-rail";
-const AT = 140;
-const format = (n) => n.toLocaleString("en");
+// @ts-check
+/**
+ * @file The outline of a comparison, catalogue/outlinehead.jte. htmx loads it with its view.
+ *
+ * The head of the outline follows the reader as they scroll. It says which difference the reader
+ * is at, for example "Difference 663 of 1,828 · Annex IV". Its ↑ and ↓ links go to the difference
+ * before and after. Its button collapses the outline to a rail of the parts and their counts. The
+ * browser of the reader remembers the choice.
+ */
 
-const remembered = () => {
+/** The localStorage key that remembers if the outline is a rail. */
+export const RAIL = "outline-rail";
+
+/** How far from the top of the window, in pixels, a difference must be to count as passed. */
+export const AT = 140;
+
+/**
+ * Formats a number in English, for example 1,828.
+ *
+ * @param {number} n
+ * @returns {string}
+ */
+export const format = (n) => n.toLocaleString("en");
+
+/**
+ * Returns true if the reader collapsed the outline to a rail before. It returns false if the
+ * browser does not let the page read its storage.
+ *
+ * @param {Pick<Storage, "getItem">} storage
+ * @returns {boolean}
+ */
+export const remembered = (storage) => {
   try {
-    return localStorage.getItem(RAIL) === "true";
+    return storage.getItem(RAIL) === "true";
   } catch {
     return false;
   }
 };
 
-const rail = (nav, on) => {
+/**
+ * Collapses the outline to a rail, or expands it, and labels its button to match.
+ *
+ * @param {Element} nav the outline
+ * @param {boolean} on true to collapse it to a rail
+ */
+export const rail = (nav, on) => {
   nav.classList.toggle("rail", on);
   const button = nav.querySelector(".outline-rail");
-  if (button) {
+  if (button instanceof HTMLElement) {
     button.setAttribute("aria-pressed", String(on));
     const label = on ? "Expand the outline" : "Collapse the outline";
     button.setAttribute("aria-label", label);
@@ -27,36 +56,69 @@ const rail = (nav, on) => {
   }
 };
 
-// the part a difference is in: the last of the outline's top entries that starts at or before it
-const part = (nav, number) => {
+/**
+ * Returns the name of the part that contains a difference. The part is the last top entry of the
+ * outline whose first difference is at or before the difference. It returns an empty string if
+ * there is no such entry.
+ *
+ * @param {Element} nav the outline
+ * @param {number} number the number of the difference
+ * @returns {string}
+ */
+export const part = (nav, number) => {
   let found = "";
   for (const entry of nav.querySelectorAll(":scope > ul > li")) {
     const link = entry.querySelector("a.has");
-    const first = link && Number(link.getAttribute("href").replace("#difference-", ""));
-    if (first && first <= number) {
-      found = link.querySelector("span").textContent.trim();
+    const first = link && Number((link.getAttribute("href") ?? "").replace("#difference-", ""));
+    if (link && first && first <= number) {
+      found = (link.querySelector("span")?.textContent ?? "").trim();
     }
   }
   return found;
 };
 
-const follow = () => {
-  const nav = document.querySelector("nav.outline.counted");
-  const line = nav && nav.querySelector(".outline-follow");
-  if (!line) {
-    return;
-  }
-  const total = Number(line.dataset.total);
+/**
+ * Returns the number of the last difference whose top the reader scrolled past, or 0 if there is
+ * none.
+ *
+ * @param {ParentNode} root
+ * @returns {number}
+ */
+export const at = (root) => {
   let number = 0;
-  for (const difference of document.querySelectorAll("[id^='difference-']")) {
+  for (const difference of root.querySelectorAll("[id^='difference-']")) {
     if (difference.getBoundingClientRect().top > AT) {
       break;
     }
     number = Number(difference.id.replace("difference-", ""));
   }
-  const where = line.querySelector(".where");
-  const up = line.querySelector(".up");
-  const down = line.querySelector(".down");
+  return number;
+};
+
+/**
+ * Updates the head of the outline in `root` to the difference the reader is at, and its ↑ and ↓
+ * links to the differences before and after. It does nothing if `root` has no outline with
+ * counts.
+ *
+ * @param {ParentNode} root
+ */
+export const follow = (root) => {
+  const nav = root.querySelector("nav.outline.counted");
+  const line = nav?.querySelector(".outline-follow");
+  const where = line?.querySelector(".where");
+  const up = line?.querySelector(".up");
+  const down = line?.querySelector(".down");
+  if (
+    !nav ||
+    !(line instanceof HTMLElement) ||
+    !where ||
+    !(up instanceof HTMLAnchorElement) ||
+    !(down instanceof HTMLAnchorElement)
+  ) {
+    return;
+  }
+  const total = Number(line.dataset.total);
+  const number = at(root);
   if (number === 0) {
     where.textContent = total === 1 ? "1 difference" : `${format(total)} differences`;
     up.setAttribute("aria-disabled", "true");
@@ -74,33 +136,36 @@ const follow = () => {
 };
 
 let pending = false;
+
+/** Updates the head of the outline once, at the next frame, however often the page scrolls. */
 const soon = () => {
   if (!pending) {
     pending = true;
     requestAnimationFrame(() => {
       pending = false;
-      follow();
+      follow(document);
     });
   }
 };
 
 document.addEventListener("scroll", soon, { passive: true });
 document.addEventListener("click", (event) => {
-  const button = event.target.closest(".outline-rail");
-  if (button) {
-    const nav = button.closest("nav.outline");
-    const on = !nav.classList.contains("rail");
-    rail(nav, on);
-    try {
-      localStorage.setItem(RAIL, String(on));
-    } catch {
-      // kept for this page only
-    }
+  const button = event.target instanceof Element ? event.target.closest(".outline-rail") : null;
+  const nav = button?.closest("nav.outline");
+  if (!nav) {
+    return;
+  }
+  const on = !nav.classList.contains("rail");
+  rail(nav, on);
+  try {
+    localStorage.setItem(RAIL, String(on));
+  } catch {
+    // The browser does not let the page keep it. The choice holds for this page only.
   }
 });
-document.addEventListener("htmx:afterSettle", () => {
+document.addEventListener("htmx:after:settle", () => {
   for (const nav of document.querySelectorAll("nav.outline.counted")) {
-    rail(nav, remembered());
+    rail(nav, remembered(localStorage));
   }
-  follow();
+  follow(document);
 });

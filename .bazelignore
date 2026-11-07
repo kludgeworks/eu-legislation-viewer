@@ -3,3 +3,5 @@
 formex-corpus
 # text:compare's references (EUR-Lex's HTML) and reports
 text-compare
+# pnpm's packages, if someone runs pnpm install outside Bazel
+node_modules

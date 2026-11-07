@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: MIT
+load("@aspect_rules_js//js:defs.bzl", "js_library")
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
 # the application's configuration (application.yaml), on the classpath root
@@ -32,5 +33,12 @@ java_library(
 filegroup(
     name = "migrations",
     srcs = glob(["db/migration/**/*.sql"]),
+    visibility = ["//viewer:__subpackages__"],
+)
+
+# The scripts of the pages, ES modules, for their tests and type check (//viewer/src/test/js)
+js_library(
+    name = "js",
+    srcs = glob(["static/js/*.js"]),
     visibility = ["//viewer:__subpackages__"],
 )

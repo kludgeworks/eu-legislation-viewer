@@ -1,0 +1,62 @@
+{
+  "$schema": "https://unpkg.com/oxlint@1.92.0/configuration_schema.json",
+  "plugins": [
+    "eslint",
+    "oxc",
+    "unicorn",
+    "import",
+    "jsdoc",
+    "vitest"
+  ],
+  "env": {
+    "browser": true,
+    "es2024": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error"
+  },
+  "rules": {
+    "eqeqeq": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "no-console": "error",
+    "import/no-cycle": "error",
+    "jsdoc/check-tag-names": [
+      "error",
+      {
+        "definedTags": [
+          "file"
+        ]
+      }
+    ],
+    "jsdoc/empty-tags": "error",
+    "jsdoc/no-defaults": "error",
+    "jsdoc/require-param": "error",
+    "jsdoc/require-param-name": "error",
+    "jsdoc/require-param-type": "error",
+    "jsdoc/require-returns-type": "error"
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/*.test.js"
+      ],
+      "rules": {
+        "vitest/consistent-test-it": [
+          "error",
+          {
+            "fn": "test"
+          }
+        ],
+        "vitest/no-identical-title": "error",
+        "vitest/no-focused-tests": "error",
+        "vitest/no-disabled-tests": "error",
+        "vitest/expect-expect": "error",
+        "vitest/valid-expect": "error",
+        "vitest/no-standalone-expect": "error"
+      }
+    }
+  ]
+}

@@ -25,3 +25,6 @@ viewer/spring-modulith-docs/
 mise.local.toml
 .playwright-mcp/
 .DS_Store
+
+# pnpm's packages, if someone runs pnpm install outside Bazel
+/node_modules/

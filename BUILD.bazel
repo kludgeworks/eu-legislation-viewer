@@ -1,5 +1,10 @@
 # SPDX-License-Identifier: MIT
 
+load("@npm//:defs.bzl", "npm_link_all_packages")
+
+# The npm packages of package.json, as //:node_modules/<package>, for the viewer's JavaScript tests
+npm_link_all_packages(name = "node_modules")
+
 # The corpus regression test by a short name: bazel test //:corpus (see mise run corpus:test)
 test_suite(
     name = "corpus",

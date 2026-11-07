@@ -18,10 +18,10 @@
   <link rel="stylesheet" href="${chrome.assets().css()}">
   <script src="${chrome.assets().htmx()}" defer></script>
   <script src="${chrome.assets().sse()}" defer></script>
-  <script src="${chrome.assets().theme()}" defer></script>
-  <script src="${chrome.assets().clock()}" defer></script>
-  <script src="${chrome.assets().outline()}" defer></script>
-  <script src="${chrome.assets().markers()}" defer></script>
+  <script type="module" src="${chrome.assets().theme()}"></script>
+  <script type="module" src="${chrome.assets().clock()}"></script>
+  <script type="module" src="${chrome.assets().outline()}"></script>
+  <script type="module" src="${chrome.assets().markers()}"></script>
   ${head}
 </head>
 <body>
