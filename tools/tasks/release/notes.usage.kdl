@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+// notes.bash's arguments and help (mise run release:notes --help). mise rewraps the help to
+// the terminal but keeps its line breaks: a paragraph is one line.
+
+long_about """
+    Generate structured release notes for a release tag.
+
+    It extracts commits since the previous release tag, categorizes them by type, and appends installation and verification instructions.
+    """
+
+arg "<tag>" env="TAG" help="The release tag: v2026.11.0"
+flag "--repo <repo>" env="REPO" default="kludgeworks/eu-legislation-viewer" help="The GitHub repository name"
+flag "--output <path>" env="OUTPUT" help="Write notes to a file instead of stdout"
+
+example "mise run release:notes v2026.11.2" header="Print release notes" help="Formatted Markdown release notes to stdout"
+example "mise run release:notes v2026.11.2 --output release-notes.md" header="Write release notes to file" help="Write Markdown to release-notes.md"

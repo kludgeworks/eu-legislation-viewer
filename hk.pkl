@@ -119,6 +119,10 @@ local linters = new Mapping<String, Step> {
     glob = List("mise.toml", "tools/tasks.toml")
     check = "mise run lint:mise-tasks"
   }
+  ["usage"] = new Step {
+    glob = List("**/*.usage.kdl")
+    check = "usage lint -W {{files}}"
+  }
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
   ["pinact_update"] = Builtins.pinact_update

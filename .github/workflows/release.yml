@@ -186,6 +186,16 @@ jobs:
     permissions:
       contents: write
     steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: jdx/mise-action@b44d12e7d0d8ee7461bb893e1b1993500433185b # v5.2.7
+        with:
+          version: ${{ env.MISE_VERSION }}
+          cache: false
+
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
           name: dist
@@ -201,10 +211,10 @@ jobs:
         run: |
           set -euo pipefail
           artifact="dist/kludgeworks-viewer-$VERSION.jar"
+          mise run release:notes "$TAG" --repo "${{ github.repository }}" --output release-notes.md
           gh release create "$TAG" \
             --verify-tag \
-            --title "Release $VERSION" \
-            --generate-notes \
-            --notes "Container image: \`$IMAGE:$VERSION\` (\`$DIGEST\`)" \
-            "$artifact" \
-            "$artifact.sha256"
+            --title "$TAG" \
+            --notes-file release-notes.md \
+            "$artifact#Application JAR" \
+            "$artifact.sha256#SHA-256 Checksum"

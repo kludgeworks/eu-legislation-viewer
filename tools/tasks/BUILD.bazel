@@ -8,6 +8,7 @@ exports_files(
         "release/artifact.bash",
         "release/db-migrations.bash",
         "release/image.bash",
+        "release/notes.bash",
     ],
     visibility = ["//tools/test/tasks:__pkg__"],
 )

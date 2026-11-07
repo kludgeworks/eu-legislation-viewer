@@ -50,3 +50,14 @@ bats_test(
         "//tools/tasks:release/image.bash",
     ],
 )
+
+bats_test(
+    name = "release_notes",
+    size = "small",
+    srcs = ["release_notes.bats"],
+    data = [
+        "test_helper.bash",
+        "//tools/tasks:lib/ui.bash",
+        "//tools/tasks:release/notes.bash",
+    ],
+)
