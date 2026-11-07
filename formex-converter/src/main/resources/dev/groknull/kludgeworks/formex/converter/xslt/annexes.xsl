@@ -337,7 +337,8 @@
   <xsl:function name="f:level-scope" as="element()?">
     <xsl:param name="seq" as="element(GR.SEQ)"/>
     <xsl:sequence select="$seq/ancestor::*[self::QUOT.S or self::CONS.ANNEX or self::ANNEX or self::TBL
-                                           or self::CONS.DOC.GEN[parent::CONS.DOC.GEN]][1]"/>
+                                           or self::LETTER or self::INCL.ELEMENT
+                                           or self::CONS.DOC.GEN[parent::CONS.DOC.GEN or @TYPE = 'ANNEX']][1]"/>
   </xsl:function>
 
   <!-- Numbered levels hang off the annex (anx/pnt_12.6.2), except
@@ -424,7 +425,7 @@
             if ($parentLevel and f:label-taken(., f:label($label-line), $earlier))
             then $near else $levelBase,
             'level', f:label($label-line))
-        else f:eid(($parentLevel, $levelBase)[1], 'level',
+        else f:eid(($levels?unlabelledBase, $parentLevel, $levelBase)[1], 'level',
                    string(f:level-ordinal(.) + (if ($parentLevel) then 0 else ($levelOffset, 0)[1])))"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering(.)[not(f:pi-attr(., 'ID') = $levelCtx)])"/>
     <xsl:variable name="inner" as="xs:string*" select="($ctx, f:ids($m))"/>

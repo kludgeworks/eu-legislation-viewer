@@ -315,6 +315,8 @@
         <caption>
           <xsl:call-template name="f:blocks">
             <xsl:with-param name="nodes" as="node()*" select="CAPTION/node()"/>
+            <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
+            <xsl:with-param name="levels" as="map(*)" select="map{'base': $figure, 'ctx': $ctx}" tunnel="yes"/>
           </xsl:call-template>
         </caption>
       </xsl:if>
@@ -344,7 +346,10 @@
        annex stays an annex, under the eId of what includes it: anx/anx_A, or anx/qstr_1/anx_A where an
        amending act quotes it; so does a GENERAL file, an annex whose title is a heading -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'FORMEX.DOC']" mode="block">
+    <xsl:param name="letterOffset" as="xs:integer?" select="()" tunnel="yes"/>
     <xsl:variable name="included" as="element()" select="doc(resolve-uri(@FILEREF, base-uri(.)))/*"/>
+    <xsl:variable name="prior-letters" as="xs:integer" select="
+        xs:integer(sum(preceding::INCL.ELEMENT[@TYPE = 'FORMEX.DOC'][not(ancestor::BIB.INSTANCE)] ! count(doc(resolve-uri(@FILEREF, base-uri(.)))//LETTER)))"/>
     <xsl:choose>
       <xsl:when test="$included[self::ANNEX or self::GENERAL]">
         <xsl:apply-templates select="$included" mode="annex">
@@ -353,7 +358,9 @@
         </xsl:apply-templates>
       </xsl:when>
       <xsl:otherwise>
-        <xsl:apply-templates select="$included" mode="block"/>
+        <xsl:apply-templates select="$included" mode="block">
+          <xsl:with-param name="letterOffset" as="xs:integer?" select="($letterOffset, 0)[1] + $prior-letters" tunnel="yes"/>
+        </xsl:apply-templates>
       </xsl:otherwise>
     </xsl:choose>
   </xsl:template>

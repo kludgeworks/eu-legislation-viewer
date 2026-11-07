@@ -16,6 +16,7 @@
   <xsl:template match="TBL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="levels" as="map(*)?" select="()" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="scope" as="element()?" select="f:scope(.)"/>
@@ -68,6 +69,13 @@
          anx/tab_1/def_1); anything else fails -->
     <xsl:apply-templates select="node() except (TITLE, CORPUS)" mode="block">
       <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+      <xsl:with-param name="levels" as="map(*)" select="map:merge(($levels, map{
+          'base': $eid,
+          'parent': $eid,
+          'labelled': $eid,
+          'unlabelledBase': $base,
+          'ctx': ($ctx, f:ids($m))
+      }), map{'duplicates': 'use-last'})" tunnel="yes"/>
     </xsl:apply-templates>
   </xsl:template>
 

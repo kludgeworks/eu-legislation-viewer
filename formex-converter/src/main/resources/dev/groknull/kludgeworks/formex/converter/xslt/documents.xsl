@@ -20,10 +20,15 @@
        concludes, a protocol, a draft decision); its own annexes and attachments are its sub-entries -->
   <xsl:template match="DOC.SUB.PUB" mode="attachment">
     <xsl:param name="eid" as="xs:string"/>
+    <xsl:variable name="sub-annexes" as="element()*" select="
+        if (DOC.SUB.PUB) then DOC.SUB.PUB[@TYPE = 'ANNEX']
+        else if (not(@TYPE = 'ANNEX')) then let $next-att := following-sibling::DOC.SUB.PUB[f:is-attachment(.)][1]
+             return following-sibling::DOC.SUB.PUB[@TYPE = 'ANNEX'][empty($next-att) or . &lt;&lt; $next-att]
+        else ()"/>
     <xsl:call-template name="f:attachment">
       <xsl:with-param name="doc" as="element()" select="REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/*"/>
       <xsl:with-param name="eid" as="xs:string" select="$eid"/>
-      <xsl:with-param name="annexes" as="element()*" select="DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)"/>
+      <xsl:with-param name="annexes" as="element()*" select="$sub-annexes/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)"/>
       <xsl:with-param name="attachments" as="element()*" select="DOC.SUB.PUB[f:is-attachment(.)]"/>
       <xsl:with-param name="notePrefix" as="xs:string?" select="f:attachment-note-prefix(.)" tunnel="yes"/>
     </xsl:call-template>
@@ -206,13 +211,15 @@
 
   <!-- a letter of an exchange of letters attached to an agreement: let_N, under an attachment's eId -->
   <xsl:template match="LETTER" mode="block">
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:param name="letterOffset" as="xs:integer?" select="()" tunnel="yes"/>
     <!-- an annex's fragments, which may be files of their own: its letters are numbered through them -->
     <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
     <xsl:variable name="scope" as="element()" select="(ancestor::*[self::ANNEX or self::CONS.ANNEX or self::CONS.DOC.GEN or self::QUOT.S
                                                        or self::OLD.CORR or self::NEW.CORR][1], root(.)/*)[1]"/>
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($annexFragments, $scope)"/>
-    <xsl:variable name="earlier" as="xs:integer" select="if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//LETTER) else 0"/>
+    <xsl:variable name="earlier" as="xs:integer" select="if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//LETTER) else ($letterOffset, 0)[1]"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'let', string($earlier + count($scope//LETTER[. &lt;&lt; current()]) + 1))"/>
     <unit eId="{$eid}" kind="letter">
       <!-- "A. Letter from the European Union": A. is the num -->
@@ -224,6 +231,7 @@
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node() except TITLE"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+        <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': $ctx}" tunnel="yes"/>
       </xsl:call-template>
     </unit>
   </xsl:template>

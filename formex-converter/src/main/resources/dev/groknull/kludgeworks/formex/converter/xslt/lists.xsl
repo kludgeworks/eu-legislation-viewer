@@ -98,9 +98,9 @@
        one in the P before -->
   <xsl:function name="f:np-previous" as="element(NP)?">
     <xsl:param name="np" as="element(NP)"/>
-    <xsl:variable name="item" as="element()" select="if ($np/parent::P[count(*) = 1]) then $np/.. else $np"/>
+    <xsl:variable name="item" as="element()" select="if ($np/parent::P[count(*) = 1]) then $np/.. else if ($np/parent::HT[count(*) = 1]/parent::P[count(*) = 1]) then $np/../.. else $np"/>
     <xsl:variable name="previous" as="element()?" select="$item/preceding-sibling::*[1]"/>
-    <xsl:sequence select="($previous/self::NP, $previous/self::P[count(*) = 1]/NP)[f:np-point(.)][1]"/>
+    <xsl:sequence select="($previous/self::NP, $previous/self::P[count(*) = 1]/NP, $previous/self::P[count(*) = 1]/HT[count(*) = 1]/NP)[f:np-point(.)][1]"/>
   </xsl:function>
 
   <!-- the NP points before one in its run, nearest first -->
@@ -137,7 +137,7 @@
         or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL
         or self::CONSID[f:preamble-unit(.)] or self::VISA[f:preamble-unit(.)] or self::NOTE or self::DIVISION
         or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
-        or self::CONS.DOC.GEN[parent::CONS.DOC.GEN] or self::LETTER or self::SUBDIV or self::NP[f:np-point(.)]][1]"/>
+        or self::CONS.DOC.GEN[parent::CONS.DOC.GEN or @TYPE = 'ANNEX'] or self::LETTER or self::SUBDIV or self::INCL.ELEMENT or self::NP[f:np-point(.)]][1]"/>
   </xsl:function>
 
   <xsl:function name="f:preamble-unit" as="xs:boolean">
@@ -160,7 +160,7 @@
     <!-- also directly in an annex, beside its own points, where an item's label is one of theirs
          (point 1. of a list, annex point (1)) -->
     <xsl:variable name="beside-levels" as="xs:boolean" select="exists($scope/self::GR.SEQ//GR.SEQ[f:level-parent(.) is $scope])
-        or exists($scope[self::CONS.ANNEX or self::ANNEX]) and (some $label in $list/(ITEM/NP/NO.P | DLIST.ITEM/PREFIX)/f:label(.)[. != '']
+        or exists($scope[self::CONS.ANNEX or self::ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']]) and (some $label in $list/(self::NP/NO.P | ITEM/NP/NO.P | DLIST.ITEM/PREFIX)/f:label(.)[. != '']
              satisfies exists(key('f:level-label-in-annex', generate-id($scope) || ' ' || $label, root($scope))))"/>
     <xsl:sequence select="
         if ($ordinal gt 1 or $beside-levels)
@@ -181,7 +181,7 @@
 
   <!-- an annex's levels by their labels, for every annex they are in -->
   <xsl:key name="f:level-label-in-annex" match="GR.SEQ"
-           use="let $label := f:label(f:level-num(.)) return ancestor::*[self::CONS.ANNEX or self::ANNEX] ! (generate-id(.) || ' ' || $label)"/>
+           use="let $label := f:label(f:level-num(.)) return ancestor::*[self::CONS.ANNEX or self::ANNEX or self::CONS.DOC.GEN[@TYPE = 'ANNEX']] ! (generate-id(.) || ' ' || $label)"/>
 
   <xsl:template match="LIST" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>

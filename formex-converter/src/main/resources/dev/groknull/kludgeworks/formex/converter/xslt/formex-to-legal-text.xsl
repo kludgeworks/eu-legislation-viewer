@@ -95,7 +95,8 @@
        decision annexes): same shape, TITLE and CONTENTS -->
   <xsl:template match="DOC" mode="document">
     <xsl:variable name="main" as="element()" select="doc(resolve-uri(FMX/DOC.MAIN.PUB/REF.PHYS/@FILE, base-uri(.)))/*"/>
-    <xsl:variable name="annexes" as="element()*" select="FMX/DOC.SUB.PUB[@TYPE = 'ANNEX']/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)"/>
+    <xsl:variable name="first-attachment" as="element(DOC.SUB.PUB)?" select="FMX/DOC.SUB.PUB[not(@TYPE = 'ANNEX')][1]"/>
+    <xsl:variable name="annexes" as="element()*" select="FMX/DOC.SUB.PUB[@TYPE = 'ANNEX'][empty($first-attachment) or . &lt;&lt; $first-attachment]/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)"/>
     <!-- a package of something other than a legal act is refused like the document itself -->
     <xsl:if test="not($main/(self::ACT | self::AGR | self::CORR | self::CONS.ACT | self::CONS.OTH))">
       <xsl:apply-templates select="$main" mode="document"/>
