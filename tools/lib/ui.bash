@@ -40,6 +40,17 @@ die() {
 	exit 1
 }
 
+# markdown: renders the Markdown on stdin as glow does (gum format, glamour's auto style, light or dark
+# to suit the terminal) where stdout is a terminal. Elsewhere (CI, a pipe, the tests) it prints the
+# Markdown as it is. GUM_FORMAT_THEME picks another of glamour's styles.
+markdown() {
+	if [[ -t 1 ]] && command -v gum >/dev/null 2>&1; then
+		gum format --theme "${GUM_FORMAT_THEME:-auto}"
+		return
+	fi
+	cat
+}
+
 # confirm <question>: true on yes, from the terminal; no terminal to ask on is a no.
 # Cancelled (ctrl-c, esc), the script stops.
 confirm() {

@@ -13,10 +13,12 @@ ui_prefix=release
 # shellcheck source=tools/lib/ui.bash
 source "$(dirname "${BASH_SOURCE[0]}")/../lib/ui.bash"
 
+tasks=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../.." && pwd)}
 cd "$root"
 migrations=viewer/src/main/resources/db/migration
 checker=tools/tasks/release/db-migrations.bash
+notes=$tasks/release/notes.bash
 
 latest_tag() {
 	git tag --list --sort=version:refname | grep -E '^v20[0-9]{2}\.(0[1-9]|1[0-2])\.[0-9]+$' |
@@ -84,12 +86,25 @@ wants_push() {
 	confirm "Publish $tag (push main and its tag to origin)?"
 }
 
+# origin's GitHub repository (owner/name), when origin is on GitHub
+github_repo() {
+	local url
+	url=$(git remote get-url origin 2>/dev/null) || return 0
+	[[ "$url" =~ github\.com[:/](.+/[^/]+)$ ]] || return 0
+	echo "${BASH_REMATCH[1]%.git}"
+}
+
 # where origin's GitHub Actions runs are, when origin is on GitHub
 workflow_runs() {
-	local url
-	url=$(git remote get-url origin)
-	[[ "$url" =~ github\.com[:/](.+/[^/]+)$ ]] || return 0
-	echo "https://github.com/${BASH_REMATCH[1]%.git}/actions/workflows/release.yml"
+	local repo
+	repo=$(github_repo)
+	[[ -n "$repo" ]] || return 0
+	echo "https://github.com/$repo/actions/workflows/release.yml"
+}
+
+# The release's notes, as its GitHub release will show them, rendered on a terminal
+show_notes() {
+	REPO_ROOT=$root usage_tag=$1 usage_repo=$(github_repo) "$notes" | markdown
 }
 
 push() {
@@ -168,6 +183,7 @@ main() {
 	fi
 
 	info "Next release" version "$tag" migrations "$(pending_migrations | grep -c . || true)"
+	show_notes "$tag"
 	if [[ ${usage_dry_run:-false} = true ]]; then
 		rename_migrations "$version"
 		exit 0

@@ -209,6 +209,18 @@ HOOK
 	[ "$(git -C "$origin" rev-parse main)" = "$(git -C "$repo" rev-parse main)" ]
 }
 
+@test "shows the next release's notes, in a dry run too" {
+	prepare_release
+	git -C "$repo" remote set-url origin "$origin"
+
+	usage_dry_run=true run main
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"## What's Changed"* ]] || false
+	[[ "$output" = *"* fixture"* ]] || false
+	[ -z "$(git -C "$repo" tag --list v2026.11.0)" ]
+}
+
 @test "pushes a release when asked to" {
 	prepare_release
 	ui_tty="$BATS_TEST_TMPDIR/answer"
@@ -224,6 +236,12 @@ HOOK
 	run info "Next release" version v2026.11.0 migrations 2
 
 	[ "$output" = "release: Next release version=v2026.11.0 migrations=2" ]
+}
+
+@test "prints Markdown as it is where there is no terminal" {
+	run markdown <<<"## What's Changed"
+
+	[ "$output" = "## What's Changed" ]
 }
 
 @test "links to the Release workflow's runs of a GitHub origin" {

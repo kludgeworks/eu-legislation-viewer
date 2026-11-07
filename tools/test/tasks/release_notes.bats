@@ -112,3 +112,16 @@ git_commit() {
 	[ -f "$repo/dist/release-notes.md" ]
 	grep -Fq "feat: output to file" "$repo/dist/release-notes.md"
 }
+
+@test "writes the notes of a release not tagged yet from the commits since the latest tag" {
+	git_commit "chore: initial commit"
+	git -C "$repo" tag v2026.11.0
+	git_commit "feat(search): add full text search"
+
+	notes usage_tag=v2026.11.1
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"* feat(search): add full text search"* ]] || false
+	[[ "$output" != *"initial commit"* ]] || false
+	[[ "$output" = *"compare/v2026.11.0...v2026.11.1"* ]] || false
+}

@@ -15,6 +15,7 @@ bats_test(
         "test_helper.bash",
         "//tools/lib:ui.bash",
         "//tools/tasks:release.bash",
+        "//tools/tasks:release/notes.bash",
     ],
 )
 

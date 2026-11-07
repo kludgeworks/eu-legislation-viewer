@@ -17,12 +17,19 @@ repo=${usage_repo:-kludgeworks/eu-legislation-viewer}
 version=${tag#v}
 output=${usage_output:-}
 
-prev_tag=$(git describe --tags --abbrev=0 "$tag^" 2>/dev/null || true)
+# A tag that isn't made yet is the release of HEAD: mise run release shows its notes before it tags.
+if git rev-parse --quiet --verify "refs/tags/$tag" >/dev/null; then
+	ref=$tag
+	prev_tag=$(git describe --tags --abbrev=0 "$tag^" 2>/dev/null || true)
+else
+	ref=HEAD
+	prev_tag=$(git describe --tags --abbrev=0 HEAD 2>/dev/null || true)
+fi
 if [[ -n "$prev_tag" ]]; then
-	commit_range="$prev_tag..$tag"
+	commit_range="$prev_tag..$ref"
 	compare_url="https://github.com/$repo/compare/$prev_tag...$tag"
 else
-	commit_range="$tag"
+	commit_range="$ref"
 	compare_url="https://github.com/$repo/commits/$tag"
 fi
 

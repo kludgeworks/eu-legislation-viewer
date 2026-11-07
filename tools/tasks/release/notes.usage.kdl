@@ -8,7 +8,7 @@ long_about """
     It extracts commits since the previous release tag, categorizes them by type, and appends installation and verification instructions.
     """
 
-arg "<tag>" env="TAG" help="The release tag: v2026.11.0"
+arg "<tag>" env="TAG" help="The release tag: v2026.11.0. For a tag that isn't made yet, the notes of the commits up to HEAD"
 flag "--repo <repo>" env="REPO" default="kludgeworks/eu-legislation-viewer" help="The GitHub repository name"
 flag "--output <path>" env="OUTPUT" help="Write notes to a file instead of stdout"
 
