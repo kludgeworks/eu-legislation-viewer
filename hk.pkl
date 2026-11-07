@@ -121,9 +121,11 @@ local linters = new Mapping<String, Step> {
     glob = List("mise.toml", "tools/tasks.toml")
     check = "mise run lint:mise-tasks"
   }
+  // usage lint takes one file a run: each file in turn, failing if any fails
   ["usage"] = new Step {
     glob = List("**/*.usage.kdl")
-    check = "usage lint -W {{files}}"
+    check =
+      "status=0; for file in {{files}}; do usage lint -W \"$file\" || status=1; done; exit $status"
   }
   ["jactionlint"] = Builtins.jactionlint
   ["pinact"] = Builtins.pinact
