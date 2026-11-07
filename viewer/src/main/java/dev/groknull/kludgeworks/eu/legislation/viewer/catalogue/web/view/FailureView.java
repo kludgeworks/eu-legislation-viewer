@@ -9,9 +9,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Trace;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -46,11 +48,27 @@ public record FailureView(
 
   /**
    * The page of {@code version}, at {@code self}, whose text in {@code language} couldn't be made
-   * ({@code failure}).
+   * ({@code failed}).
    */
   public static FailureView reading(
-      Act act, Version version, Failure failure, Language language, String self) {
-    return of(act, version, failure, language, self, List.of());
+      Act act, Version version, Text.Failed failed, Language language, String self) {
+    return of(
+        act,
+        version,
+        failed.failure(),
+        trace(version, failed, language),
+        language,
+        self,
+        List.of());
+  }
+
+  /**
+   * The page of {@code version}, at {@code self}, which the Publications Office lists no text of in
+   * {@code language} (Design D-64): as a text it has no Formex of, Not available in Irish, with the
+   * languages it is in.
+   */
+  public static FailureView missing(Act act, Version version, Language language, String self) {
+    return of(act, version, Failure.NO_FORMEX, null, language, self, List.of());
   }
 
   /**
@@ -63,7 +81,7 @@ public record FailureView(
       Version from,
       Version to,
       Version failed,
-      Failure failure,
+      Text.Failed text,
       Language language,
       String self) {
     var eli = eli(act);
@@ -78,7 +96,7 @@ public record FailureView(
               "Compare the versions on either side instead",
               Links.compare(eli, earlier.get(), later.get(), language)));
     }
-    return of(act, failed, failure, language, self, instead);
+    return of(act, failed, text.failure(), trace(failed, text, language), language, self, instead);
   }
 
   /**
@@ -117,6 +135,7 @@ public record FailureView(
       Act act,
       Version version,
       Failure failure,
+      @Nullable String trace,
       Language language,
       String self,
       List<Action> first) {
@@ -142,8 +161,13 @@ public record FailureView(
       }
     }
     var timeline = timeline(act, language);
+    // by date: the version may not be one of the language's
     timeline
-        .flatMap(t -> t.predecessor(version))
+        .flatMap(
+            t ->
+                t.versions().stream()
+                    .filter(each -> each.date().isBefore(version.date()))
+                    .reduce((earlier, later) -> later))
         .ifPresent(
             before ->
                 actions.add(
@@ -151,7 +175,11 @@ public record FailureView(
                         "Read the version before (from " + Wording.date(before.date()) + ")",
                         Links.read(eli, before, language))));
     timeline
-        .flatMap(t -> t.successor(version))
+        .flatMap(
+            t ->
+                t.versions().stream()
+                    .filter(each -> each.date().isAfter(version.date()))
+                    .findFirst())
         .ifPresent(
             after ->
                 actions.add(
@@ -159,7 +187,7 @@ public record FailureView(
                         "Read the version after (from " + Wording.date(after.date()) + ")",
                         Links.read(eli, after, language))));
     actions.add(Action.link("Read this version on EUR-Lex", Links.eurLex(celex, language)));
-    var reference = celex + " " + language.code();
+    var reference = trace;
     return switch (failure) {
       case UNAVAILABLE ->
           new FailureView(
@@ -230,6 +258,15 @@ public record FailureView(
               actions,
               reference);
     };
+  }
+
+  /** What to quote reporting it: 32015R1998 · eng · 7f3c, the attempt's trace (Design D-62). */
+  private static String trace(Version version, Text.Failed failed, Language language) {
+    return version.celex()
+        + " · "
+        + language.code().toLowerCase(Locale.ROOT)
+        + " · "
+        + Trace.of(version.celex(), language, failed.attempt());
   }
 
   private static Eli eli(Act act) {

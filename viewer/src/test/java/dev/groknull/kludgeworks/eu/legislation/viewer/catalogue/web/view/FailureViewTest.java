@@ -31,7 +31,9 @@ class FailureViewTest {
 
   @Test
   void offersToTryAgainWhenThePublicationsOfficeDidntAnswer() {
-    var failure = FailureView.reading(AVSEC, VERSION, Failure.UNAVAILABLE, Language.ENG, SELF);
+    var failure =
+        FailureView.reading(
+            AVSEC, VERSION, new Text.Failed(Failure.UNAVAILABLE, 1), Language.ENG, SELF);
 
     assertThat(failure.heading()).isEqualTo("The Publications Office didn't answer");
     assertThat(failure.fault()).isTrue();
@@ -50,25 +52,59 @@ class FailureViewTest {
 
   @Test
   void offersNoTryAgainWhereItCantHelpButAReferenceWhereAReportCan() {
-    var unsupported = FailureView.reading(AVSEC, VERSION, Failure.UNSUPPORTED, Language.ENG, SELF);
-    var error = FailureView.reading(AVSEC, VERSION, Failure.ERROR, Language.ENG, SELF);
+    var unsupported =
+        FailureView.reading(
+            AVSEC, VERSION, new Text.Failed(Failure.UNSUPPORTED, 1), Language.ENG, SELF);
+    var error =
+        FailureView.reading(AVSEC, VERSION, new Text.Failed(Failure.ERROR, 1), Language.ENG, SELF);
 
     assertThat(unsupported.retry()).isNull();
-    assertThat(unsupported.reference()).isEqualTo("02015R1998-20211231 ENG");
+    assertThat(unsupported.reference()).isEqualTo("02015R1998-20211231 · eng · 1f37");
     assertThat(error.retry()).isEqualTo(SELF);
-    assertThat(error.reference()).isEqualTo("02015R1998-20211231 ENG");
+    assertThat(error.reference()).isEqualTo("02015R1998-20211231 · eng · 1f37");
   }
 
   @Test
   void pointsToTheLanguagesAVersionIsInWhenItHasNoFormexInThisOne() {
     var failure =
         FailureView.reading(
-            AVSEC, VERSION, Failure.NO_FORMEX, Language.GLE, PAGES + "2021-12-31/gle");
+            AVSEC,
+            VERSION,
+            new Text.Failed(Failure.NO_FORMEX, 1),
+            Language.GLE,
+            PAGES + "2021-12-31/gle");
 
     assertThat(failure.heading()).isEqualTo("Not available in Irish");
     assertThat(failure.fault()).isFalse();
     assertThat(failure.retry()).isNull();
     assertThat(failure.facts()).extracting(FailureView.Fact::term).contains("Exists in");
+    assertThat(failure.actions().getFirst())
+        .isEqualTo(new Action("Read it in English", PAGES + "2021-12-31/eng", true));
+  }
+
+  @Test
+  void quotesTheAttemptsTraceSoAReportFindsItsLogLines() {
+    var first =
+        FailureView.reading(AVSEC, VERSION, new Text.Failed(Failure.ERROR, 1), Language.ENG, SELF);
+    var third =
+        FailureView.reading(AVSEC, VERSION, new Text.Failed(Failure.ERROR, 3), Language.ENG, SELF);
+
+    assertThat(first.reference())
+        .isNotEqualTo(third.reference())
+        .startsWith("02015R1998-20211231 · eng · ");
+  }
+
+  @Test
+  void saysAVersionTheLanguageHasNoTextOfIsNotAvailableInItByName() {
+    var failure = FailureView.missing(AVSEC, VERSION, Language.GLE, PAGES + "2021-12-31/gle");
+
+    assertThat(failure.heading()).isEqualTo("Not available in Irish");
+    assertThat(failure.fault()).isFalse();
+    assertThat(failure.reference()).isNull();
+    assertThat(failure.facts())
+        .filteredOn(fact -> fact.term().equals("Exists in"))
+        .extracting(FailureView.Fact::detail)
+        .allMatch(detail -> detail.contains("English") && !detail.contains("ENG"));
     assertThat(failure.actions().getFirst())
         .isEqualTo(new Action("Read it in English", PAGES + "2021-12-31/eng", true));
   }
@@ -83,7 +119,7 @@ class FailureViewTest {
             from,
             VERSION,
             VERSION,
-            Failure.UNAVAILABLE,
+            new Text.Failed(Failure.UNAVAILABLE, 1),
             Language.ENG,
             PAGES + "eng/compare?from=2021-07-01&to=2021-12-31");
 
@@ -98,8 +134,8 @@ class FailureViewTest {
   @Test
   void saysTheActCouldntBePreparedWithItsFirstFailure() {
     var texts = new LinkedHashMap<Version, Text>();
-    texts.put(version("02015R1998-20210701"), new Text.Failed(Failure.NO_FORMEX));
-    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE));
+    texts.put(version("02015R1998-20210701"), new Text.Failed(Failure.NO_FORMEX, 1));
+    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE, 1));
     var preparation =
         new Preparation(
             AVSEC.id(), Language.ENG, Instant.EPOCH, Instant.EPOCH, texts, List.of(), 0);
@@ -130,7 +166,7 @@ class FailureViewTest {
   @Test
   void hasNoWayBackToResultsWithoutASearch() {
     var texts = new LinkedHashMap<Version, Text>();
-    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE));
+    texts.put(VERSION, new Text.Failed(Failure.UNAVAILABLE, 1));
     var preparation =
         new Preparation(
             AVSEC.id(), Language.ENG, Instant.EPOCH, Instant.EPOCH, texts, List.of(), 0);

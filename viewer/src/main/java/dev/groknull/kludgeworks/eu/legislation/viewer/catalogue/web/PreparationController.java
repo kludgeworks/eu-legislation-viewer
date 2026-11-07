@@ -23,7 +23,6 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 /**
@@ -32,9 +31,8 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * it stands, the parts of the page that change (its timeline, its progress, its steps), each
  * swapped in by its id: first as it stands on connecting (or reconnecting), then again whenever it
  * changes (PreparationChanged, broadcast from every instance once committed); once every version is
- * settled, the event done, and the stream ends. A prepared act's page listens too while versions
- * that appeared since are prepared (ArrivingView), for done alone. A stream also ends after a
- * while, and the page connects again.
+ * settled, the event done, and the stream ends. A stream also ends after a while, and the page
+ * connects again.
  */
 @Controller
 class PreparationController {
@@ -56,10 +54,7 @@ class PreparationController {
     this.clock = clock;
   }
 
-  /**
-   * The stream of the act's preparation in the language: for a prepared act's page waiting on the
-   * versions that appeared since ({@code arriving}), done alone.
-   */
+  /** The stream of the act's preparation in the language. */
   @GetMapping(
       path = "/eli/{type}/{year}/{number}/{language}/prepare/events",
       produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -67,14 +62,13 @@ class PreparationController {
       @PathVariable String type,
       @PathVariable int year,
       @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(defaultValue = "false") boolean arriving) {
+      @PathVariable("language") String code) {
     var language = Requests.language(code);
     var act = acts.find(new Eli(type, year, number)).orElseThrow(Requests::notFound);
     if (act.timeline().in(language).isEmpty()) {
       throw Requests.notFound();
     }
-    var stream = new Stream(new SseEmitter(LASTS.toMillis()), act.id(), language, arriving);
+    var stream = new Stream(new SseEmitter(LASTS.toMillis()), act.id(), language);
     stream.emitter().onCompletion(() -> streams.remove(stream));
     stream.emitter().onTimeout(() -> streams.remove(stream));
     stream.emitter().onError(e -> streams.remove(stream));
@@ -106,7 +100,7 @@ class PreparationController {
         stream.emitter().send(SseEmitter.event().name("done").data(""));
         stream.emitter().complete();
         streams.remove(stream);
-      } else if (!stream.arriving()) {
+      } else {
         stream
             .emitter()
             .send(
@@ -127,6 +121,5 @@ class PreparationController {
   }
 
   /** A page's stream. */
-  private record Stream(
-      SseEmitter emitter, ActIdentifier act, Language language, boolean arriving) {}
+  private record Stream(SseEmitter emitter, ActIdentifier act, Language language) {}
 }

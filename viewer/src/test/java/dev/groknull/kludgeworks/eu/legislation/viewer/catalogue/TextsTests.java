@@ -68,7 +68,7 @@ class TextsTests {
                 .map(entry -> entry.getKey().celex()))
         .contains("02015R1998-20260322", "02015R1998-20261001");
     assertThat(prepared.texts().get(timeline.first()))
-        .isEqualTo(new Text.Failed(Failure.NO_FORMEX));
+        .isEqualTo(new Text.Failed(Failure.NO_FORMEX, 1));
     var root = ((Text.Ready) Objects.requireNonNull(prepared.texts().get(version))).root();
     assertThat(
             content.rebuild(
@@ -115,7 +115,7 @@ class TextsTests {
             .until(() -> texts.prepare(act(), Language.FRA), Preparation::settled);
 
     assertThat(prepared.texts().get(consolidation()))
-        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE));
+        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE, 1));
   }
 
   @Test
@@ -154,7 +154,7 @@ class TextsTests {
             List.of(Preparation.Step.Kind.STARTED, Preparation.Step.Kind.FAILED),
             List.of(Preparation.Step.Kind.FAILED));
     assertThat(prepared.texts().get(consolidation()))
-        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE));
+        .isEqualTo(new Text.Failed(Failure.OUT_OF_SCOPE, 1));
   }
 
   @Test

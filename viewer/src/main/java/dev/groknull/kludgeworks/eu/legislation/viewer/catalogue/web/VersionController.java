@@ -125,7 +125,8 @@ class VersionController {
       return page.render(
           chrome,
           masthead,
-          templates.catalogueTextMissing(page.version, page.eurLex()),
+          templates.catalogueTextFailed(
+              FailureView.missing(page.act, page.version, page.language, request.getRequestURI())),
           null,
           Map.of(),
           null,
@@ -153,7 +154,7 @@ class VersionController {
         page.text(preparation, request.getRequestURI(), chrome.results()),
         prepared ? PreparingView.receipt(preparation, page.language) : null,
         TimelineView.states(preparation),
-        ArrivingView.of(page.act, preparation, request.getRequestURI()).orElse(null),
+        ArrivingView.of(preparation).orElse(null),
         page.named(preparation));
   }
 
@@ -223,7 +224,7 @@ class VersionController {
       var text = preparation.texts().get(version);
       if (text == null) {
         // a version not in the language
-        return templates.catalogueTextMissing(version, eurLex());
+        return templates.catalogueTextFailed(FailureView.missing(act, version, language, self));
       }
       if (preparation.ready() == 0) {
         return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));
@@ -238,7 +239,7 @@ class VersionController {
         case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->
             templates.catalogueTextFailed(
-                FailureView.reading(act, version, failed.failure(), language, self));
+                FailureView.reading(act, version, failed, language, self));
       };
     }
 
@@ -281,11 +282,6 @@ class VersionController {
           .map(ActIdentifier::new)
           .distinct()
           .toList();
-    }
-
-    /** The version's text on EUR-Lex, in the language. */
-    String eurLex() {
-      return Links.eurLex(version.celex(), language);
     }
   }
 

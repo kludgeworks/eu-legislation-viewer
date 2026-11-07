@@ -25,7 +25,7 @@
       @endfor
     </div>
     @if(failure.reference() != null)
-      <p class="reference">If you report this, quote <code>${failure.reference()}</code>: it tells us which version, in which language.</p>
+      <p class="reference">If you report this, quote <code>${failure.reference()}</code>: it tells us which version, in which language, and which attempt at it.</p>
     @endif
   </section>
 </div>

@@ -25,27 +25,23 @@ class ArrivingViewTest {
   static final ContentHash ROOT = new ContentHash("ab".repeat(32));
 
   @Test
-  void saysWhichVersionAppearedAndThatEverythingElseIsReady() {
+  void saysWhichVersionAppearedAndThatItIsThereOnTheNextLoad() {
     var latest = AVSEC.timeline().latest();
 
-    var arriving =
-        ArrivingView.of(AVSEC, prepared(new Text.Queued()), "/eli/reg_impl/2015/1998/eng")
-            .orElseThrow();
+    var arriving = ArrivingView.of(prepared(new Text.Queued())).orElseThrow();
 
     var notice =
         "A new version has appeared: "
             + latest.celex()
             + ", applies from "
             + Wording.date(latest.date())
-            + ". It's being prepared; everything else is ready.";
+            + ". It's being prepared and will be here the next time you load this page.";
     assertThat(arriving.notice()).isEqualTo(notice);
-    assertThat(arriving.events())
-        .isEqualTo("/eli/reg_impl/2015/1998/eng/prepare/events?arriving=true");
   }
 
   @Test
   void saysNothingOnceItIsReady() {
-    assertThat(ArrivingView.of(AVSEC, prepared(new Text.Ready(ROOT)), "/")).isEmpty();
+    assertThat(ArrivingView.of(prepared(new Text.Ready(ROOT)))).isEmpty();
   }
 
   /** The act prepared in English, its latest version's text {@code latest}. */

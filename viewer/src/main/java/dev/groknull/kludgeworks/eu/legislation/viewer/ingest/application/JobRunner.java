@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionDeferred;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionFailed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionStarted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Trace;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
@@ -46,9 +47,10 @@ import org.springframework.transaction.support.TransactionTemplate;
  * a little later (EventsConfiguration's resubmission).
  *
  * <p>Its work is a span (ingest.job) in the trace of the request that scheduled it, and its log
- * lines carry the job, the CELEX and the language (MDC). Each job's outcome is logged once, here. A
- * job started again elsewhere meanwhile (taken over: viewer.ingest.takeover) can't be finished
- * here: the start changed its version.
+ * lines carry the job, the CELEX, the language and the attempt's trace (MDC), which a failure
+ * panel's reference quotes. Each job's outcome is logged once, here. A job started again elsewhere
+ * meanwhile (taken over: viewer.ingest.takeover) can't be finished here: the start changed its
+ * version.
  */
 @Component
 class JobRunner {
@@ -118,6 +120,8 @@ class JobRunner {
     try (var id = MDC.putCloseable("job", String.valueOf(job.id()));
         var celex = MDC.putCloseable("celex", job.celex());
         var language = MDC.putCloseable("language", job.language().code());
+        var trace =
+            MDC.putCloseable("trace", Trace.of(job.celex(), job.language(), job.attempts()));
         var scope = tracer.withSpan(span)) {
       return build(job);
     } catch (RuntimeException e) {

@@ -207,7 +207,7 @@ class CompareController {
                         ? page.same()
                         : page.changes(preparation, self(request), chrome.results()),
                     prepared ? PreparingView.receipt(preparation, page.language) : null,
-                    ArrivingView.of(page.act, preparation, self(request)).orElse(null))
+                    ArrivingView.of(preparation).orElse(null))
                 .render());
   }
 
@@ -751,11 +751,11 @@ class CompareController {
       var later = Objects.requireNonNull(preparation.texts().get(to));
       if (earlier instanceof Text.Failed failed) {
         return templates.catalogueTextFailed(
-            FailureView.comparing(act, from, to, from, failed.failure(), language, self));
+            FailureView.comparing(act, from, to, from, failed, language, self));
       }
       if (later instanceof Text.Failed failed) {
         return templates.catalogueTextFailed(
-            FailureView.comparing(act, from, to, to, failed.failure(), language, self));
+            FailureView.comparing(act, from, to, to, failed, language, self));
       }
       if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
         return templates.catalogueCompareReady(Links.changes(eli, from, to, language, only, view));

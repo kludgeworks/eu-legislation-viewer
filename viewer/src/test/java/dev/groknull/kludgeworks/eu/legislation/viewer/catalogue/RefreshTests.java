@@ -74,7 +74,7 @@ class RefreshTests {
                   var text = preparation.texts().get(march);
                   return text != null && text.settled();
                 });
-    assertThat(prepared.texts().get(march)).isEqualTo(new Text.Failed(Failure.NO_FORMEX));
+    assertThat(prepared.texts().get(march)).isEqualTo(new Text.Failed(Failure.NO_FORMEX, 1));
     assertThat(prepared.preparing()).isFalse();
     assertThat(prepared.arriving()).isEmpty();
     assertThat(cellar.asked).filteredOn(OneActCellar.CELEX.celex()::equals).hasSize(2);

@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView.Progress;
+import org.junit.jupiter.api.Test;
+
+/** What the preparing page says while the act waits its turn behind other acts' versions. */
+class PreparingViewTest {
+
+  @Test
+  void saysPlainlyHowManyVersionsOfOtherActsAreAheadRoundingPastTen() {
+    assertThat(Progress.waiting(43))
+        .isEqualTo(
+            "About 40 versions of other acts are ahead. Nothing's wrong; this one starts by"
+                + " itself.");
+    assertThat(Progress.waiting(3)).startsWith("3 versions of other acts are ahead.");
+    assertThat(Progress.waiting(1)).startsWith("1 version of another act is ahead.");
+    assertThat(Progress.waiting(0)).isEqualTo("Nothing's wrong; this one starts by itself.");
+  }
+}

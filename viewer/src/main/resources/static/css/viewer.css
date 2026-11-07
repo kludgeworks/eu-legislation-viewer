@@ -1870,6 +1870,27 @@ del.diff {
   background: var(--bg);
 }
 
+.preparing .waiting p {
+  margin: 0;
+}
+
+.preparing .waiting .aside {
+  margin-top: 6px;
+  color: var(--muted);
+  font-style: italic;
+  transition: opacity 0.4s ease;
+}
+
+.preparing .waiting .aside.turning {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preparing .waiting .aside {
+    transition: none;
+  }
+}
+
 .preparing .stages {
   margin: 0;
   padding-left: 1.4em;

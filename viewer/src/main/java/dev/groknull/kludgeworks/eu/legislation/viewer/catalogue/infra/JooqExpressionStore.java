@@ -179,7 +179,7 @@ class JooqExpressionStore implements ExpressionStore {
       case QUEUED -> new Text.Queued();
       case BUILDING -> new Text.Building(row.getAttempt());
       case BUILT -> new Text.Ready(Objects.requireNonNull(row.getRoot()));
-      case FAILED -> new Text.Failed(Objects.requireNonNull(row.getFailure()));
+      case FAILED -> new Text.Failed(Objects.requireNonNull(row.getFailure()), row.getAttempt());
     };
   }
 }

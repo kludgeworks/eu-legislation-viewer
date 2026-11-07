@@ -170,7 +170,7 @@ public record PreparingView(
    * How the preparation stands, as the stream pushes it.
    *
    * @param waiting while nothing has started: why, with how many versions are ahead; none once it
-   *     has
+   *     has. Beside it, one of {@link #ASIDES} at a time, for the eye alone
    * @param running the versions being built now: Version 16 of 22 · 02015R1998-20230401
    * @param settled how many versions are built or failed
    * @param size how many versions there are
@@ -187,8 +187,26 @@ public record PreparingView(
       long seconds,
       String elapsed) {
 
+    /**
+     * The light lines beside the wait, one at a time, changed every few seconds by the page
+     * (clock.js); hidden from screen readers, which have the plain line.
+     */
+    public static final List<String> ASIDES =
+        List.of(
+            "Taking a number at the Publications Office…",
+            "Our turn applies from a date to be determined…",
+            "Notwithstanding the above, still waiting…",
+            "Without prejudice to the queue…",
+            "Pending entry into force…",
+            "Consolidating our patience…");
+
     public Progress {
       running = List.copyOf(running);
+    }
+
+    /** The asides, as the page's script reads them: one per line. */
+    public String asides() {
+      return String.join("\n", ASIDES);
     }
 
     /** {@code preparation}'s progress, on {@code now}. */
@@ -227,17 +245,21 @@ public record PreparingView(
       return "Version " + index + " of " + size + " · " + version.celex();
     }
 
-    /** Other acts are being prepared first: about 40 versions ahead. */
-    private static String waiting(int ahead) {
+    /**
+     * Why nothing has started, plainly (Design D-59): About 40 versions of other acts are ahead.
+     * Nothing's wrong; this one starts by itself.
+     */
+    static String waiting(int ahead) {
+      var calm = "Nothing's wrong; this one starts by itself.";
       if (ahead == 0) {
-        return "Nothing has started for this act yet.";
+        return calm;
       }
-      var about = ahead < 10 ? ahead : Math.round(ahead / 10.0) * 10;
-      return "Other acts are being prepared first: "
-          + (ahead < 10 ? "" : "about ")
-          + about
-          + (about == 1 ? " version" : " versions")
-          + " ahead. Nothing has started for this act yet.";
+      if (ahead == 1) {
+        return "1 version of another act is ahead. " + calm;
+      }
+      return (ahead < 10 ? String.valueOf(ahead) : "About " + Math.round(ahead / 10.0) * 10)
+          + " versions of other acts are ahead. "
+          + calm;
     }
 
     /** 4:12, or 1:04:12 past an hour. */

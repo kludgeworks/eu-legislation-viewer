@@ -26,6 +26,6 @@ public sealed interface Text {
   /** Being built now. */
   record Building(int attempt) implements Text {}
 
-  /** It couldn't be built, and won't be by asking again. */
-  record Failed(Failure failure) implements Text {}
+  /** It couldn't be built, and won't be by asking again: on its attempt {@code attempt}. */
+  record Failed(Failure failure, int attempt) implements Text {}
 }

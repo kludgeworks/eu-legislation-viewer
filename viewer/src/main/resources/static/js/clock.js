@@ -18,3 +18,23 @@ setInterval(() => {
     time.textContent = h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
   }
 }, 1000);
+
+// While it waits its turn, the light aside beside the plain line (Design D-59): another of its
+// lines, at random, every four seconds; faded out and in, unless the reader asks for less motion
+// (the stylesheet drops the fade then, and this waits for nothing).
+const still = window.matchMedia("(prefers-reduced-motion: reduce)");
+setInterval(() => {
+  for (const aside of document.querySelectorAll("[data-asides]")) {
+    const lines = aside.dataset.asides.split("\n").filter((line) => line !== aside.textContent);
+    const next = lines[Math.floor(Math.random() * lines.length)];
+    if (still.matches) {
+      aside.textContent = next;
+      continue;
+    }
+    aside.classList.add("turning");
+    setTimeout(() => {
+      aside.textContent = next;
+      aside.classList.remove("turning");
+    }, 400);
+  }
+}, 4000);
