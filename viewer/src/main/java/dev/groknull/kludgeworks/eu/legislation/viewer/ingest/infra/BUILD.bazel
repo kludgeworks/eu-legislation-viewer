@@ -14,7 +14,7 @@ java_library(
     ],
     deps = [
         ":jooq",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",

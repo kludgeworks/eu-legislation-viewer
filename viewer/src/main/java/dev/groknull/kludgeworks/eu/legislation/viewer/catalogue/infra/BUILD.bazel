@@ -10,9 +10,9 @@ java_library(
     runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sparql"],
     deps = [
         ":jooq",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/application",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",

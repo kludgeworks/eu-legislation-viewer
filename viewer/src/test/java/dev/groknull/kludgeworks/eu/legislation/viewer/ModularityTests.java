@@ -27,8 +27,8 @@ import org.springframework.modulith.core.VerificationOptions;
  * <ul>
  *   <li>In every module, the domain ring depends on nothing outward.
  *   <li>The application ring depends only on the domain.
- *   <li>Only infrastructure uses infrastructure. Infrastructure is the cellar module and every
- *       {@code infra} package.
+ *   <li>Only infrastructure uses infrastructure. Infrastructure is every {@code infra} package, and
+ *       the cellar library beside the modules.
  * </ul>
  *
  * <p>Two more rules say how to write absence:

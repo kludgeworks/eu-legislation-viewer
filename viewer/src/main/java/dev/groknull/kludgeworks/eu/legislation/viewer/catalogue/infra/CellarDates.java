@@ -1,13 +1,13 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
+import dev.groknull.kludgeworks.eu.legislation.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.util.ArrayList;

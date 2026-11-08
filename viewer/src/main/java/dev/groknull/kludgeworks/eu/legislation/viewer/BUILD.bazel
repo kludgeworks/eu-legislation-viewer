@@ -2,7 +2,8 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_library")
 load("//tools/build:defs.bzl", "spring_boot_jar")
 
-# The application: ViewerApplication and, at run time, its modules, its configuration and migrations,
+# The application: ViewerApplication and, at run time, its modules and the library beside them
+# (cellar), its configuration and migrations,
 # and the starters: web (with jte and htmx), the store (Postgres, Flyway, jOOQ, Modulith's event
 # registry), Valkey (the broadcast events) and observability (OpenTelemetry, Modulith's insight, JDBC
 # spans)
@@ -19,7 +20,6 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/view",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/infra",
@@ -57,6 +57,7 @@ java_library(
         "@maven//:org_webjars_webjars_locator_lite",
     ],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/cellar",
         "//viewer/src/main/jte",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_slf4j_slf4j_api",

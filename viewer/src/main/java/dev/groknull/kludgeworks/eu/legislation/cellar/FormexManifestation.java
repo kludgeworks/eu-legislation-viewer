@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
+package dev.groknull.kludgeworks.eu.legislation.cellar;
 
 import java.net.URI;
 import java.util.List;

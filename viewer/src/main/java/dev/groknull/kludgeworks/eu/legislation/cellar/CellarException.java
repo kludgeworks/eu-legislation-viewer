@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
+package dev.groknull.kludgeworks.eu.legislation.cellar;
 
 /** An error that tells that Cellar gave an answer the viewer cannot use, or gave no answer. */
 public class CellarException extends RuntimeException {
