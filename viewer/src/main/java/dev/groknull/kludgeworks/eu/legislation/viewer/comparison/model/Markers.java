@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -60,12 +61,15 @@ final class Markers {
    *   <li>If neither applies, it returns an empty list.
    * </ul>
    */
-  static List<Marker> deleted(Unit unit, Units after) {
+  static List<Marker> deleted(Unit unit, Units after, Map<String, String> earlierToLater) {
     var struck = after.struck().get(unit.eId());
     if (struck != null) {
       return struck;
     }
-    for (var at = unit.parent(); at != null; ) {
+    if (unit.parent() == null) {
+      return List.of();
+    }
+    for (var at = earlierToLater.get(unit.parent()); at != null; ) {
       var enclosing = after.get(at);
       if (enclosing == null) {
         break;

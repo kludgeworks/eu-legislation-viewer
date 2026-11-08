@@ -1,0 +1,2688 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32022D2319"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2025-03-26"
+           xml:lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="02022D2319-20250326">
+      <publication series="L" number="307" date="2022-11-28" page="135"/>
+   </source>
+   <lifecycle produced="2025-03-25" sequence="009.001.0">
+      <eventRef type="amendment" act="32023D0338" date="2023-02-14" label="M1">
+         <publication series="L" number="47" date="2023-02-15" page="50"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2023/338"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-02-14">
+                  <t v="14 February 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending certain Council decisions and common positions concerning restrictive measures in order to insert provisions on a humanitarian exemption"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023D1574" date="2023-07-28" label="M2">
+         <publication series="L" number="192" date="2023-07-31" page="21"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2023/1574"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-07-28">
+                  <t v="28 July 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023D2575" date="2023-11-13" label="M3">
+         <publication series="L" date="2023-11-14" page="1" document="2023/2575"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2023/2575"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-11-13">
+                  <t v="13 November 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024D0290" date="2024-01-12" label="M4">
+         <publication series="L" date="2024-01-15" page="1" document="2024/290"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2024/290"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-01-12">
+                  <t v="12 January 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024D1804" date="2024-06-24" label="M5">
+         <publication series="L" date="2024-06-25" page="1" document="2024/1804"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2024/1804"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-06-24">
+                  <t v="24 June 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024D1968" date="2024-07-15" label="M6">
+         <publication series="L" date="2024-07-16" page="1" document="2024/1968"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2024/1968"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-07-15">
+                  <t v="15 July 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024D2756" date="2024-10-24" label="M7">
+         <publication series="L" date="2024-10-24" page="1" document="2024/2756"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2024/2756"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-10-24">
+                  <t v="24 October 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024D3139" date="2024-12-16" label="M8">
+         <publication series="L" date="2024-12-16" page="1" document="2024/3139"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2024/3139"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-12-16">
+                  <t v="16 December 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32025D0601" date="2025-03-24" label="M9">
+         <publication series="L" date="2025-03-25" page="1" document="2025/601"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Decision"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(CFSP) 2025/601"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2025-03-24">
+                  <t v="24 March 2025"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Decision (CFSP) 2022/2319 concerning restrictive measures in view of the situation in Haiti"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Decision"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(CFSP) 2022/2319"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate date="2022-11-25">
+               <t v="25 November 2022"/>
+            </docDate>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="concerning restrictive measures in view of the situation in Haiti"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article" rank="1">
+         <provenance amendingAct="32024D1804"
+                     action="replaced"
+                     location="AR:1"
+                     marker="O005001M001000"/>
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <unit eId="art_1/par_1" kind="paragraph">
+            <provenance amendingAct="32025D0601"
+                        action="replaced"
+                        location="AR:1;PT:1;PT:a"
+                        marker="O009001M001000"/>
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The direct or indirect supply, sale, transfer or export of arms and related materiel of all types, including weapons and ammunition, military vehicles and equipment, paramilitary equipment and spare parts for the aforementioned to Haiti, from or through the territories of Member States or by nationals of Member States, or using their flag vessels or aircraft, shall be prohibited whether originating or not in their territories."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_2" kind="paragraph">
+            <provenance amendingAct="32025D0601"
+                        action="replaced"
+                        location="AR:1;PT:1;PT:b"
+                        marker="O009001M002000"/>
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="It shall be prohibited to:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_1/par_2/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="provide technical assistance, training, brokering services or other assistance related to military activities or the provision, manufacture, maintenance or use of any arms and related materiel, directly or indirectly to Haiti;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/par_2/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="provide financing or financial assistance related to military activities or the provision, manufacture, maintenance and use of any arms and related materiel, including but not limited to grants, loans and export credit insurance, as well as insurance and reinsurance for any sale, supply, transfer or export of arms and related materiel, or the provision of related technical assistance, training, brokering services or other assistance, directly or indirectly to Haiti."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_1/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Member States shall inspect, in accordance with their national authorities and legislation and consistent with international law, all cargo to Haiti in their territory, including seaports and airports, if they have information that provides reasonable grounds to believe that the cargo contains items the supply, sale, transfer or export of which is prohibited under this Article."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="Member States shall report in a timely manner to the Committee established by paragraph 19 of United Nations Security Council Resolution ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="UNSCR"/>
+               </quote>
+               <t v=") 2653 (2022) ("/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="the Sanctions Committee"/>
+               </quote>
+               <t v=") cases of violations of the measures under paragraphs 1 and 2. Member States shall also submit to the Sanctions Committee a written report on any seizure of items as a result of an inspection carried out pursuant to paragraph 3."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="Member States shall ensure that adequate marking and record-keeping measures are in place to trace arms, in accordance with the international and regional instruments to which they are parties, and to consider how best to assist, where relevant and upon their request, neighbouring countries in preventing and detecting illicit trafficking and diversion in violation of measures imposed in paragraphs 1 and 2."/>
+            </p>
+         </unit>
+         <unit eId="art_1/par_6" kind="paragraph">
+            <provenance amendingAct="32025D0601"
+                        action="replaced"
+                        location="AR:1;PT:1;PT:c"
+                        marker="O009001M003000"/>
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <t v="The prohibitions set out in paragraphs 1 and 2 shall not apply to:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_1/par_6/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the supply, sale, transfer or export of arms and related materiel, or the provision of technical assistance, training, brokering services, other assistance or personnel or the provision of financing or financial assistance, to or by the United Nations or a United Nations-authorised mission or to a security unit that operates under the command of the Government of Haiti, intended to be used by, or in coordination with, those entities and intended solely to further the objectives of peace and stability in Haiti;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/par_6/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the supply, sale, transfer or export of arms and related materiel, the provision of technical assistance, training, brokering services, other assistance or personnel or the provision of financing or financial assistance to Haiti, as approved in advance by the Sanctions Committee to further the objectives of peace and stability in Haiti;"/>
+                  </p>
+               </unit>
+               <unit eId="art_1/par_6/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the supply, sale, transfer or export of non-lethal military equipment to Haiti intended solely for humanitarian or protective use, or the provision of related technical assistance, training, brokering services or other assistance or of financing or financial assistance, when intended to further the objectives of peace and stability in Haiti."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <deleted>
+         <provenance amendingAct="32025D0601"
+                     action="deleted"
+                     location="AR:1;PT:2"
+                     marker="O009001M004000"/>
+         <unit eId="art_1a" kind="article" rank="1">
+            <provenance amendingAct="32023D1574"
+                        action="inserted"
+                        location="AR:1;PT:2"
+                        marker="O002001M002000"/>
+            <num>
+               <t v="Article 1a"/>
+            </num>
+            <unit eId="art_1a/par_1" kind="paragraph">
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <t v="The direct or indirect supply, sale, transfer or export of arms and related materiel of all types, including weapons and ammunition, military vehicles and equipment, paramilitary equipment and spare parts for the aforementioned, to, or for the benefit of, the persons and entities listed in Annex II by nationals of Member States or from the territories of Member States or using their flag vessels or aircraft shall be prohibited, whether originating or not in their territories."/>
+               </p>
+            </unit>
+            <unit eId="art_1a/par_2" kind="paragraph">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="It shall be prohibited to:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_1a/par_2/pnt_a" kind="point" numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="provide technical assistance, training or other assistance, including the provision of armed mercenary personnel, related to military activities or the provision, maintenance or use of any arms and related materiel directly or indirectly to any person or entity listed in Annex II;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_1a/par_2/pnt_b" kind="point" numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="provide financing or financial assistance related to military activities, including in particular grants, loans and export credit insurance, as well as insurance and reinsurance for any sale, supply, transfer or export of arms and related materiel, or for the provision of related technical or other assistance, directly or indirectly to any person or entity listed in Annex II;"/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_1a/par_3" kind="paragraph">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Member States shall inspect, in accordance with their national authorities and legislation and consistent with international law, all cargo to Haiti in their territory, including seaports and airports, if they have information that provides reasonable grounds to believe that the cargo contains items the supply, sale, transfer or export of which is prohibited under this Article."/>
+               </p>
+            </unit>
+            <unit eId="art_1a/par_4" kind="paragraph">
+               <num>
+                  <t v="4."/>
+               </num>
+               <p>
+                  <t v="Member States shall ensure that adequate marking and recordkeeping measures are in place to trace arms, including small arms and light weapons, in accordance with the international and regional instruments to which they are parties, and to consider how best to assist, where relevant and upon their request, neighbouring countries in preventing and detecting illicit trafficking and diversion in violation of measures imposed in paragraphs 1 and 2."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+      <unit eId="art_2" kind="article" rank="1">
+         <num>
+            <t v="Article 2"/>
+         </num>
+         <unit eId="art_2/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_2/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Member States shall take the necessary measures to prevent the entry into, or transit through, their territories of persons designated by the Sanctions Committee as responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including but not limited to:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_2/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="acting for or on behalf of or at the direction of or otherwise supporting or financing a person or entity designated in connection with the activity described in points (a) and (b), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_d" kind="point" numbered="true">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="acting in violation of the arms embargo, or as having directly or indirectly supplied, sold, or transferred to armed groups or criminal networks in Haiti, or as having been the recipient of, arms or any related materiel, or any technical advice, training, or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_e" kind="point" numbered="true">
+                     <num>
+                        <t v="(e)"/>
+                     </num>
+                     <p>
+                        <t v="planning, directing or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_f" kind="point" numbered="true">
+                     <num>
+                        <t v="(f)"/>
+                     </num>
+                     <p>
+                        <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_g" kind="point" numbered="true">
+                     <num>
+                        <t v="(g)"/>
+                     </num>
+                     <p>
+                        <t v="obstructing delivery of humanitarian assistance to Haiti or access to, or distribution of, humanitarian assistance in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_h" kind="point" numbered="true">
+                     <num>
+                        <t v="(h)"/>
+                     </num>
+                     <p>
+                        <t v="attacking personnel or premises of United Nations missions and operations in Haiti, or providing support for such attacks"/>
+                        <changed amendingAct="32025D0601"
+                                 action="replaced"
+                                 location="AR:1;PT:3"
+                                 marker="O009001M015000">
+                           <t v=";"/>
+                        </changed>
+                     </p>
+                  </unit>
+                  <unit eId="art_2/par_1/sub_1/pnt_i" kind="point" numbered="true">
+                     <provenance amendingAct="32025D0601"
+                                 action="inserted"
+                                 location="AR:1;PT:3"
+                                 marker="O009001M005000"/>
+                     <num>
+                        <t v="(i)"/>
+                     </num>
+                     <p>
+                        <t v="engaging in illicit exploitation of natural resources or illicit trade in natural resources."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_2/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="The persons referred to in this paragraph are listed in "/>
+                  <changed amendingAct="32023D1574"
+                           action="replaced"
+                           location="AR:1;PT:3;PT:a"
+                           marker="O002001M003000">
+                     <t v="Annex I"/>
+                  </changed>
+                  <t v="."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_2/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall not oblige a Member State to refuse its own nationals entry into its territory."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall not apply where entry or transit is necessary for the fulfilment of a judicial process."/>
+            </p>
+         </unit>
+         <unit eId="art_2/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall not apply where the Sanctions Committee determines, on a case-by-case basis, that:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_2/par_4/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="entry or transit is justified on the grounds of humanitarian need, including religious obligation;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2/par_4/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="an exemption would further the objectives of peace and stability in Haiti."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_2/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="In cases where, pursuant to paragraph 3 or 4, a Member State authorises the entry into, or transit through, its territory of persons listed in "/>
+               <changed amendingAct="32023D1574"
+                        action="replaced"
+                        location="AR:1;PT:3;PT:b"
+                        marker="O002001M004000">
+                  <t v="Annex I"/>
+               </changed>
+               <t v=", the authorisation shall be limited to the purpose for which it is given and to the persons concerned by the authorisation."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_2a" kind="article" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="inserted"
+                     location="AR:1;PT:4"
+                     marker="O002001M005000"/>
+         <num>
+            <t v="Article 2a"/>
+         </num>
+         <unit eId="art_2a/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_2a/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Member States shall take the measures necessary to prevent the entry into, or transit through, their territories of natural persons:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_2a/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including:"/>
+                     </p>
+                     <list kind="roman">
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
+                           <num>
+                              <t v="(i)"/>
+                           </num>
+                           <p>
+                              <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
+                           <num>
+                              <t v="(ii)"/>
+                           </num>
+                           <p>
+                              <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
+                           <num>
+                              <t v="(iii)"/>
+                           </num>
+                           <p>
+                              <t v="acting for, on behalf of or at the direction of, or otherwise supporting or financing, a person or entity designated in connection with the activity described in point (i) or (ii), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_iv" kind="point" numbered="true">
+                           <num>
+                              <t v="(iv)"/>
+                           </num>
+                           <p>
+                              <t v="acting in violation of the arms embargo, or having directly or indirectly supplied, sold or transferred to armed groups or criminal networks in Haiti, or having been the recipient of, arms or any related materiel, or any technical advice, training or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_v" kind="point" numbered="true">
+                           <num>
+                              <t v="(v)"/>
+                           </num>
+                           <p>
+                              <t v="planning, directing or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_vi" kind="point" numbered="true">
+                           <num>
+                              <t v="(vi)"/>
+                           </num>
+                           <p>
+                              <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_vii" kind="point" numbered="true">
+                           <num>
+                              <t v="(vii)"/>
+                           </num>
+                           <p>
+                              <t v="obstructing the delivery of humanitarian assistance to Haiti or access to, or the distribution of, humanitarian assistance in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_viii"
+                              kind="point"
+                              numbered="true">
+                           <num>
+                              <t v="(viii)"/>
+                           </num>
+                           <p>
+                              <t v="attacking personnel or premises of Union delegations and Member State diplomatic missions and operations in Haiti, or providing support for such attacks;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_ix" kind="point" numbered="true">
+                           <provenance amendingAct="32025D0601"
+                                       action="inserted"
+                                       location="AR:1;PT:4"
+                                       marker="O009001M006000"/>
+                           <num>
+                              <t v="(ix)"/>
+                           </num>
+                           <p>
+                              <t v="engaging in illicit exploitation of natural resources or illicit trade in natural resources;"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
+                  <unit eId="art_2a/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="undermining democracy or the rule of law in Haiti through serious financial misconduct concerning public funds or the unauthorised export of capital; or"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_2a/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="associated with natural persons designated under points (a) and (b) or under Article 2(1)."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_2a/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="Natural persons as referred to in this paragraph are listed in Annex II."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_2a/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall not oblige a Member State to refuse its own nationals entry into its territory."/>
+            </p>
+         </unit>
+         <unit eId="art_2a/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall be without prejudice to cases where a Member State is bound by an obligation of international law, namely:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_2a/par_3/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="as a host country of an international intergovernmental organisation;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2a/par_3/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="as a host country to an international conference convened by, or under the auspices of, the United Nations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_2a/par_3/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="under a multilateral agreement conferring privileges and immunities; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_2a/par_3/pnt_d" kind="point" numbered="true">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="pursuant to the 1929 Treaty of Conciliation (Lateran Pact) concluded by the Holy See (Vatican City State) and Italy."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_2a/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="Paragraph 3 shall also apply in cases where a Member State is host country of the Organization for Security and Cooperation in Europe (OSCE)."/>
+            </p>
+         </unit>
+         <unit eId="art_2a/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="The Council shall be duly informed in all cases where a Member State grants an exemption pursuant to paragraphs 3 or 4."/>
+            </p>
+         </unit>
+         <unit eId="art_2a/par_6" kind="paragraph">
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <t v="Member States may grant exemptions from the measures imposed under paragraph 1 where travel is justified on the grounds of urgent humanitarian need, or on the grounds of attending intergovernmental meetings or meetings promoted or hosted by the Union, or hosted by a Member State holding the Chairmanship in office of the OSCE, where a political dialogue is conducted that directly promotes the policy objectives of restrictive measures."/>
+            </p>
+         </unit>
+         <unit eId="art_2a/par_7" kind="paragraph">
+            <num>
+               <t v="7."/>
+            </num>
+            <p>
+               <t v="Member States may also grant exemptions from the measures imposed under paragraph 1 where entry or transit is necessary for the fulfilment of a judicial process."/>
+            </p>
+         </unit>
+         <unit eId="art_2a/par_8" kind="paragraph">
+            <num>
+               <t v="8."/>
+            </num>
+            <p>
+               <t v="A Member State wishing to grant exemptions referred to in paragraphs 6 or 7 shall notify the Council in writing. The exemption shall be deemed to be granted unless one or more Member States raise an objection in writing within two working days of receiving notification of the proposed exemption. Should one or more Member States raise an objection, the Council, acting by a qualified majority, may decide to grant the proposed exemption."/>
+            </p>
+         </unit>
+         <unit eId="art_2a/par_9" kind="paragraph">
+            <num>
+               <t v="9."/>
+            </num>
+            <p>
+               <t v="Where, pursuant to paragraph 3, 4, 6 or 7, a Member State authorises the entry into, or transit through, its territory of persons listed in Annex II, the authorisation shall be strictly limited to the purpose for which it is given and to the persons directly concerned thereby."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_3" kind="article" rank="1">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <unit eId="art_3/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_3/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="All funds and economic resources owned or controlled directly or indirectly by persons or entities designated by the Sanctions Committee as responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including but not limited to:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_3/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="acting for or on behalf of or at the direction of or otherwise supporting or financing a person or entity designated in connection with the activity described in points (a) and (b), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_d" kind="point" numbered="true">
+                     <num>
+                        <t v="(d)"/>
+                     </num>
+                     <p>
+                        <t v="acting in violation of the arms embargo, or as having directly or indirectly supplied, sold, or transferred to armed groups or criminal networks in Haiti, or as having been the recipient of, arms or any related materiel, or any technical advice, training or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_e" kind="point" numbered="true">
+                     <num>
+                        <t v="(e)"/>
+                     </num>
+                     <p>
+                        <t v="planning, directing, or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_f" kind="point" numbered="true">
+                     <num>
+                        <t v="(f)"/>
+                     </num>
+                     <p>
+                        <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_g" kind="point" numbered="true">
+                     <num>
+                        <t v="(g)"/>
+                     </num>
+                     <p>
+                        <t v="obstructing delivery of humanitarian assistance to Haiti or access to, or distribution of, humanitarian assistance in Haiti;"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_h" kind="point" numbered="true">
+                     <num>
+                        <t v="(h)"/>
+                     </num>
+                     <p>
+                        <t v="attacking personnel or premises of United Nations missions and operations in Haiti, or providing support for such attacks;"/>
+                     </p>
+                     <p>
+                        <t v="or by persons or entities acting on their behalf or at their direction, or entities owned or controlled by them, shall be frozen"/>
+                        <changed amendingAct="32025D0601"
+                                 action="replaced"
+                                 location="AR:1;PT:5"
+                                 marker="O009001M016000">
+                           <t v=";"/>
+                        </changed>
+                     </p>
+                  </unit>
+                  <unit eId="art_3/par_1/sub_1/pnt_i" kind="point" numbered="true">
+                     <provenance amendingAct="32025D0601"
+                                 action="inserted"
+                                 location="AR:1;PT:5"
+                                 marker="O009001M007000"/>
+                     <num>
+                        <t v="(i)"/>
+                     </num>
+                     <p>
+                        <t v="engaging in illicit exploitation of natural resources or illicit trade in natural resources."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_3/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="The designated persons or entities referred to in this paragraph are listed in "/>
+                  <changed amendingAct="32023D1574"
+                           action="replaced"
+                           location="AR:1;PT:5;PT:a"
+                           marker="O002001M006000">
+                     <t v="Annex I"/>
+                  </changed>
+                  <t v="."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_3/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="No funds or economic resources shall be made available directly or indirectly, to or for the benefit of the persons or entities listed in "/>
+               <changed amendingAct="32023D1574"
+                        action="replaced"
+                        location="AR:1;PT:5;PT:b"
+                        marker="O002001M007000">
+                  <t v="Annex I"/>
+               </changed>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="The measures referred to in paragraphs 1 and 2 shall not apply to funds and economic resources which the relevant Member State has determined to be:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/par_3/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="necessary for basic expenses, including payment for foodstuffs, rent or mortgage, medicines and medical treatment, taxes, insurance premiums and public utility charges;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_3/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="intended exclusively for payment of reasonable professional fees and reimbursement of incurred expenses associated with the provision of legal services or fees or service charges, in accordance with national laws;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_3/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="intended exclusively for the payment of fees or service charges for routine holding or maintenance of frozen funds, other financial assets and economic resources;"/>
+                  </p>
+                  <p>
+                     <t v="after notification by the relevant Member State to the Sanctions Committee of the intention to authorise, where appropriate, access to such funds, other financial assets or economic resources and in the absence of a negative decision by the Sanctions Committee within five working days of such notification."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="The measures referred to in paragraphs 1 and 2 shall not apply to funds or economic resources which the relevant Member State has determined to be:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/par_4/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="necessary for extraordinary expenses, provided that such determination has been notified by the Member States to the Sanctions Committee and has been approved by the Sanctions Committee;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_4/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the subject of a judicial, administrative or arbitral lien or judgment, in which case the funds, other financial assets and economic resources may be used to satisfy that lien or judgment provided that the lien was established or the judgment was rendered prior to the date on which the person or entity was included in "/>
+                     <changed amendingAct="32023D1574"
+                              action="replaced"
+                              location="AR:1;PT:5;PT:c"
+                              marker="O002001M008000">
+                        <t v="Annex I"/>
+                     </changed>
+                     <t v=", is not for the benefit of a person or entity designated by the Sanctions Committee and has been notified by the Member States to the Sanctions Committee."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall not prevent a designated person or entity from making payment due under a contract entered into prior to the listing of such a person or entity, provided that the relevant Member State has determined that the payment is not directly or indirectly received by a person or entity referred to in paragraph 1, and after notification by the relevant Member State to the Sanctions Committee of the intention to make or receive such payments or to authorise, where appropriate, the unfreezing of funds, other financial assets or economic resources for this purpose, 10 working days prior to such authorisation."/>
+            </p>
+         </unit>
+         <unit eId="art_3/par_6" kind="paragraph">
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <t v="Paragraph 2 shall not apply to the addition to frozen accounts of:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/par_6/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="interest or other earnings on those accounts; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_6/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="payments due under contracts, agreements or obligations that arose prior to the date on which those accounts became subject to the measures provided for in paragraphs 1 and 2;"/>
+                  </p>
+                  <p>
+                     <t v="provided that any such interest, other earnings and payments are frozen and continue to be subject to the measures provided for in paragraph 1."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3/par_7" kind="paragraph">
+            <provenance amendingAct="32023D0338"
+                        action="replaced"
+                        location="AR:4"
+                        marker="O001001M001000"/>
+            <num>
+               <t v="7."/>
+            </num>
+            <p>
+               <t v="Paragraphs 1 and 2 shall not apply to the provision, processing or payment of funds, other financial assets or economic resources or to the provision of goods and services which are necessary to ensure the timely delivery of humanitarian assistance or to support other activities that support basic human needs where such assistance and other activities are carried out by:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3/par_7/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the United Nations, including its programmes, funds and other entities and bodies, as well as its specialised agencies and related organisations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_7/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="international organisations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_7/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="humanitarian organisations having observer status with the United Nations General Assembly and members of those humanitarian organisations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_7/pnt_d" kind="point" numbered="true">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="bilaterally or multilaterally funded non-governmental organisations participating in the United Nations Humanitarian Response Plans, Refugee Response Plans, other United Nations appeals or humanitarian clusters coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA);"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_7/pnt_e" kind="point" numbered="true">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="the employees, grantees, subsidiaries, or implementing partners of the entities mentioned in points (a) to (d) while and to the extent that they are acting in those capacities; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_3/par_7/pnt_f" kind="point" numbered="true">
+                  <num>
+                     <t v="(f)"/>
+                  </num>
+                  <p>
+                     <t v="appropriate other actors as determined by the Sanctions Committee."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+      </unit>
+      <unit eId="art_3a" kind="article" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="inserted"
+                     location="AR:1;PT:6"
+                     marker="O002001M009000"/>
+         <num>
+            <t v="Article 3a"/>
+         </num>
+         <unit eId="art_3a/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <unit eId="art_3a/par_1/sub_1" kind="subparagraph">
+               <p>
+                  <t v="All funds and economic resources owned or controlled directly or indirectly by natural or legal persons, entities or bodies:"/>
+               </p>
+               <list kind="alpha">
+                  <unit eId="art_3a/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                     <num>
+                        <t v="(a)"/>
+                     </num>
+                     <p>
+                        <t v="responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including:"/>
+                     </p>
+                     <list kind="roman">
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
+                           <num>
+                              <t v="(i)"/>
+                           </num>
+                           <p>
+                              <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
+                           <num>
+                              <t v="(ii)"/>
+                           </num>
+                           <p>
+                              <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
+                           <num>
+                              <t v="(iii)"/>
+                           </num>
+                           <p>
+                              <t v="acting for, on behalf of or at the direction of, or otherwise supporting or financing, a person or entity designated in connection with the activity described in point (i) or (ii), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_iv" kind="point" numbered="true">
+                           <num>
+                              <t v="(iv)"/>
+                           </num>
+                           <p>
+                              <t v="acting in violation of the arms embargo, or having directly or indirectly supplied, sold or transferred to armed groups or criminal networks in Haiti, or having been the recipient of, arms or any related materiel, or any technical advice, training or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_v" kind="point" numbered="true">
+                           <num>
+                              <t v="(v)"/>
+                           </num>
+                           <p>
+                              <t v="planning, directing or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_vi" kind="point" numbered="true">
+                           <num>
+                              <t v="(vi)"/>
+                           </num>
+                           <p>
+                              <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_vii" kind="point" numbered="true">
+                           <num>
+                              <t v="(vii)"/>
+                           </num>
+                           <p>
+                              <t v="obstructing the delivery of humanitarian assistance to Haiti or access to, or the distribution of, humanitarian assistance in Haiti;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_viii"
+                              kind="point"
+                              numbered="true">
+                           <num>
+                              <t v="(viii)"/>
+                           </num>
+                           <p>
+                              <t v="attacking personnel or premises of Union delegations and Member State diplomatic missions and operations in Haiti, or providing support for such attacks;"/>
+                           </p>
+                        </unit>
+                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_ix" kind="point" numbered="true">
+                           <provenance amendingAct="32025D0601"
+                                       action="inserted"
+                                       location="AR:1;PT:6"
+                                       marker="O009001M008000"/>
+                           <num>
+                              <t v="(ix)"/>
+                           </num>
+                           <p>
+                              <t v="engaging in illicit exploitation of natural resources or illicit trade in natural resources;"/>
+                           </p>
+                        </unit>
+                     </list>
+                  </unit>
+                  <unit eId="art_3a/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                     <num>
+                        <t v="(b)"/>
+                     </num>
+                     <p>
+                        <t v="undermining democracy or the rule of law in Haiti through serious financial misconduct concerning public funds or the unauthorised export of capital; or"/>
+                     </p>
+                  </unit>
+                  <unit eId="art_3a/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                     <num>
+                        <t v="(c)"/>
+                     </num>
+                     <p>
+                        <t v="associated with natural or legal persons, entities or bodies designated under points (a) and (b) or under Article 3(1),"/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="art_3a/par_1/sub_2" kind="subparagraph">
+               <p>
+                  <t v="shall be frozen."/>
+               </p>
+            </unit>
+            <unit eId="art_3a/par_1/sub_3" kind="subparagraph">
+               <p>
+                  <t v="Natural or legal persons, entities or bodies as referred to in this paragraph are listed in Annex II."/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="art_3a/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="No funds or economic resources shall be made available, directly or indirectly, to or for the benefit of the natural or legal persons, entities or bodies listed in Annex II."/>
+            </p>
+         </unit>
+         <unit eId="art_3a/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="By way of derogation from paragraphs 1 and 2, the competent authorities of the Member States may authorise the release of certain frozen funds or economic resources, or the making available of certain funds or economic resources, under such conditions as they deem appropriate, after having determined that the funds or economic resources concerned are:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3a/par_3/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="necessary to satisfy the basic needs of the natural or legal persons, entities or bodies listed in Annex II and dependent family members of such natural persons, including payments for foodstuffs, rent or mortgage, medicines and medical treatment, taxes, insurance premiums and public utility charges;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_3/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="intended exclusively for the payment of reasonable professional fees and the reimbursement of incurred expenses associated with the provision of legal services;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_3/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="intended exclusively for the payment of fees or service charges for the routine holding or maintenance of frozen funds or economic resources;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_3/pnt_d" kind="point" numbered="true">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="necessary for extraordinary expenses, provided that the competent authority has notified the competent authorities of the other Member States and the Commission of the grounds on which it considers that a specific authorisation should be granted, at least two weeks prior to the authorisation; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_3/pnt_e" kind="point" numbered="true">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="to be paid into or from an account of a diplomatic or consular mission or an international organisation enjoying immunities in accordance with international law, insofar as such payments are intended to be used for official purposes of the diplomatic or consular mission or international organisation."/>
+                  </p>
+                  <p>
+                     <t v="The Member State concerned shall inform the other Member States and the Commission of any authorisation granted under this paragraph within two weeks of the authorisation."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3a/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="By way of derogation from paragraph 1, the competent authorities of the Member States may authorise the release of certain frozen funds or economic resources, or the making available of certain funds or economic resources, provided that the following conditions are met:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3a/par_4/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the funds or economic resources are the subject of an arbitral decision rendered prior to the date on which the natural or legal person, entity or body referred to in paragraph 1 was listed in Annex II, or of a judicial or administrative decision rendered in the Union, or a judicial decision enforceable in the Member State concerned, prior to or after that date;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_4/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="the funds or economic resources will be used exclusively to satisfy claims secured by such a decision or recognised as valid in such a decision, within the limits set by applicable laws and regulations governing the rights of persons having such claims;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_4/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="the decision is not for the benefit of a natural or legal person, entity or body listed in Annex II; and"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_4/pnt_d" kind="point" numbered="true">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="the recognition of the decision is not contrary to public policy in the Member State concerned."/>
+                  </p>
+                  <p>
+                     <t v="The Member State concerned shall inform the other Member States and the Commission of any authorisation granted under this paragraph within two weeks of the authorisation."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3a/par_5" kind="paragraph">
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <t v="Paragraph 1 shall not prevent a natural or legal person, entity or body listed in Annex II from making a payment due under a contract or agreement entered into, or an obligation that arose, prior to the date on which that natural or legal person, entity or body was listed therein, provided that the Member State concerned has determined that the payment is not, directly or indirectly, received by a natural or legal person, entity or body referred to in paragraph 1."/>
+            </p>
+         </unit>
+         <unit eId="art_3a/par_6" kind="paragraph">
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <t v="Paragraph 2 shall not apply to the addition to frozen accounts of:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3a/par_6/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="interest or other earnings on those accounts;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_6/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="payments due under contracts, agreements or obligations that were concluded or arose prior to the date on which those accounts became subject to the measures provided for in paragraphs 1 and 2; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_6/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="payments due under judicial, administrative or arbitral decisions rendered in the Union or enforceable in the Member State concerned,"/>
+                  </p>
+                  <p>
+                     <t v="provided that any such interest, other earnings and payments remain subject to the measures provided for in paragraph 1."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3a/par_7" kind="paragraph">
+            <num>
+               <t v="7."/>
+            </num>
+            <p>
+               <t v="Paragraphs 1 and 2 shall not apply to the provision, processing or payment of funds, other financial assets or economic resources, or to the provision of goods and services, which are necessary to ensure the timely delivery of humanitarian assistance or to support other activities that support basic human needs where such assistance and other activities are carried out by:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_3a/par_7/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="the United Nations, including its programmes, funds and other entities and bodies, as well as its specialised agencies and related organisations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_7/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="international organisations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_7/pnt_c" kind="point" numbered="true">
+                  <num>
+                     <t v="(c)"/>
+                  </num>
+                  <p>
+                     <t v="humanitarian organisations having observer status with the United Nations General Assembly and members of those humanitarian organisations;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_7/pnt_d" kind="point" numbered="true">
+                  <num>
+                     <t v="(d)"/>
+                  </num>
+                  <p>
+                     <t v="bilaterally or multilaterally funded non-governmental organisations participating in the United Nations Humanitarian Response Plans, Refugee Response Plans, other United Nations appeals or humanitarian clusters coordinated by OCHA;"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_7/pnt_e" kind="point" numbered="true">
+                  <num>
+                     <t v="(e)"/>
+                  </num>
+                  <p>
+                     <t v="the employees, grantees, subsidiaries or implementing partners of the entities mentioned in points (a) to (d) while and to the extent that they are acting in those capacities; or"/>
+                  </p>
+               </unit>
+               <unit eId="art_3a/par_7/pnt_f" kind="point" numbered="true">
+                  <num>
+                     <t v="(f)"/>
+                  </num>
+                  <p>
+                     <t v="other appropriate actors as determined by the Council."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_3a/par_8" kind="paragraph">
+            <num>
+               <t v="8."/>
+            </num>
+            <unit eId="art_3a/par_8/sub_1" kind="subparagraph">
+               <p>
+                  <t v="Without prejudice to paragraph 7, by way of derogation from paragraphs 1 and 2, and with regard to a natural or legal person, entity or body listed in Annex II, the competent authorities may authorise the release of certain frozen funds or economic resources, or the making available of certain funds or economic resources, under such conditions as they deem appropriate, after having determined that the provision of such funds or economic resources is necessary for the timely delivery of humanitarian assistance or to support other activities that support basic human needs."/>
+               </p>
+            </unit>
+            <unit eId="art_3a/par_8/sub_2" kind="subparagraph">
+               <p>
+                  <t v="The Member State concerned shall inform the other Member States and the Commission of any authorisation granted under this paragraph within 2 weeks of the authorisation."/>
+               </p>
+            </unit>
+         </unit>
+      </unit>
+      <unit eId="art_4" kind="article" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="replaced"
+                     location="AR:1;PT:7"
+                     marker="O002001M010000"/>
+         <num>
+            <t v="Article 4"/>
+         </num>
+         <unit eId="art_4/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The Council, acting by unanimity, shall amend the list in Annex I in accordance with determinations made by the United Nations Security Council (the "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="Security Council"/>
+               </quote>
+               <t v=") or by the Sanctions Committee."/>
+            </p>
+         </unit>
+         <unit eId="art_4/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The Council, acting by unanimity upon a proposal from a Member State or from the High Representative of the Union for Foreign Affairs and Security Policy (the "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="High Representative"/>
+               </quote>
+               <t v="), shall establish and amend the list in Annex II."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_5" kind="article" rank="1">
+         <num>
+            <t v="Article 5"/>
+         </num>
+         <unit eId="art_5/par_1" kind="paragraph">
+            <provenance amendingAct="32023D1574"
+                        action="replaced"
+                        location="AR:1;PT:8;PT:a"
+                        marker="O002001M011000"/>
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="Where the Security Council or the Sanctions Committee designates a person or entity, the Council shall include that person or entity in Annex I. The Council shall communicate its decision, including the grounds for listing, to the person or entity concerned, either directly, if the address is known, or through the publication of a notice, providing that person or entity with an opportunity to present observations."/>
+            </p>
+         </unit>
+         <unit eId="art_5/par_1a" kind="paragraph">
+            <provenance amendingAct="32023D1574"
+                        action="inserted"
+                        location="AR:1;PT:8;PT:b"
+                        marker="O002001M012000"/>
+            <num>
+               <t v="1a."/>
+            </num>
+            <p>
+               <t v="The Council shall communicate the decision referred to in Article 4(2), including the grounds for the listing, to the natural or legal person, entity or body concerned, either directly, if the address is known, or through the publication of a notice, providing that natural or legal person, entity or body with an opportunity to present observations."/>
+            </p>
+         </unit>
+         <unit eId="art_5/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Where observations are submitted or where substantial new evidence is presented, the Council shall review its decision and inform the person or entity concerned accordingly."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_6" kind="article" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="replaced"
+                     location="AR:1;PT:9"
+                     marker="O002001M013000"/>
+         <num>
+            <t v="Article 6"/>
+         </num>
+         <unit eId="art_6/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="Annex I shall include the grounds for listing the persons and entities as provided by the Security Council or the Sanctions Committee."/>
+            </p>
+         </unit>
+         <unit eId="art_6/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="Annex I shall also include, where available, information provided by the Security Council or the Sanctions Committee necessary to identify the persons or entities concerned. With regard to natural persons, such information may include: names and aliases; date and place of birth; nationality; passport and identity card numbers; gender; address, if known; and function or profession. With regard to legal persons, entities or bodies, such information may include: names; place and date of registration; registration number; and place of business."/>
+            </p>
+         </unit>
+         <unit eId="art_6/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="Annex II shall include the grounds for listing the natural and legal persons, entities and bodies referred to therein."/>
+            </p>
+         </unit>
+         <unit eId="art_6/par_4" kind="paragraph">
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <t v="Annex II shall also include, where available, the information necessary to identify the natural or legal persons, entities or bodies concerned. With regard to natural persons, such information may include: names and aliases; date and place of birth; nationality; passport and identity card numbers; gender; address, if known; and function or profession. With regard to legal persons, entities or bodies, such information may include: names; place and date of registration; registration number; and place of business."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_7" kind="article" rank="1">
+         <num>
+            <t v="Article 7"/>
+         </num>
+         <unit eId="art_7/par_1" kind="paragraph">
+            <provenance amendingAct="32023D1574"
+                        action="replaced"
+                        location="AR:1;PT:10"
+                        marker="O002001M014000"/>
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="The Council and the High Representative shall process personal data in order to carry out their tasks under this Decision, in particular:"/>
+            </p>
+            <list kind="alpha">
+               <unit eId="art_7/par_1/pnt_a" kind="point" numbered="true">
+                  <num>
+                     <t v="(a)"/>
+                  </num>
+                  <p>
+                     <t v="as regards the Council, for preparing and making amendments to Annexes I and II;"/>
+                  </p>
+               </unit>
+               <unit eId="art_7/par_1/pnt_b" kind="point" numbered="true">
+                  <num>
+                     <t v="(b)"/>
+                  </num>
+                  <p>
+                     <t v="as regards the High Representative, for preparing amendments to Annexes I and II."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="art_7/par_2" kind="paragraph">
+            <provenance amendingAct="32023D1574"
+                        action="replaced"
+                        location="AR:1;PT:10"
+                        marker="O002001M014000"/>
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The Council and the High Representative may process, where applicable, relevant data relating to criminal offences committed by listed natural persons, and to criminal convictions or security measures concerning such persons, only to the extent that such processing is necessary for the preparation of Annexes I and II."/>
+            </p>
+         </unit>
+         <unit eId="art_7/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="For the purposes of this Decision, the Council and the High Representative are designated as "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="controller"/>
+               </quote>
+               <t v=" within the meaning of Article 3, point (8), of Regulation (EU) 2018/1725 of the European Parliament and of the Council"/>
+               <noteRef href="#note_1" marker="1"/>
+               <t v=", in order to ensure that the natural persons concerned can exercise their rights under that Regulation."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_7a" kind="article" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="inserted"
+                     location="AR:1;PT:11"
+                     marker="O002001M015000"/>
+         <num>
+            <t v="Article 7a"/>
+         </num>
+         <p>
+            <t v="No claims in connection with any contract or transaction the performance of which has been affected, directly or indirectly, in whole or in part, by the measures imposed under this Decision, including claims for indemnity or any other claim of that type, such as a claim for compensation or a claim under a guarantee, in particular a claim for extension or payment of a bond, guarantee or indemnity, in particular a financial guarantee or financial indemnity, of whatever form, shall be satisfied, if they are made by:"/>
+         </p>
+         <list kind="alpha">
+            <unit eId="art_7a/pnt_a" kind="point" numbered="true">
+               <num>
+                  <t v="(a)"/>
+               </num>
+               <p>
+                  <t v="a designated natural or legal person, entity or body listed in Annex II; or"/>
+               </p>
+            </unit>
+            <unit eId="art_7a/pnt_b" kind="point" numbered="true">
+               <num>
+                  <t v="(b)"/>
+               </num>
+               <p>
+                  <t v="any natural or legal person, entity or body acting through or on behalf of a natural or legal person, entity or body as referred to in point (a)."/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+      <unit eId="art_8" kind="article" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="replaced"
+                     location="AR:1;PT:12"
+                     marker="O002001M016000"/>
+         <num>
+            <t v="Article 8"/>
+         </num>
+         <unit eId="art_8/par_1" kind="paragraph">
+            <num>
+               <t v="1."/>
+            </num>
+            <p>
+               <t v="This Decision shall be amended or repealed as appropriate, in accordance with determinations made by the Security Council."/>
+            </p>
+         </unit>
+         <unit eId="art_8/par_2" kind="paragraph">
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <t v="The measures referred to in Article 2a(1) and Article 3a(1) and (2) shall apply until "/>
+               <changed amendingAct="32024D1968"
+                        action="replaced"
+                        location="AR:1"
+                        marker="O006001M001000">
+                  <date date="2025-07-29">
+                     <t v="29 July 2025"/>
+                  </date>
+               </changed>
+               <t v=" and shall be kept under constant review. They shall be renewed or amended, as appropriate, if the Council deems that their objectives have not been met."/>
+            </p>
+         </unit>
+         <unit eId="art_8/par_3" kind="paragraph">
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <t v="In reviewing restrictive measures taken pursuant to Article 2a(1), first subparagraph, point (b), and Article 3a(1), first subparagraph, point (b), the Council shall take into account as appropriate whether the persons in question are subject to judicial proceedings in respect of the conduct for which they were listed."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="art_9" kind="article" rank="1">
+         <num>
+            <t v="Article 9"/>
+         </num>
+         <p>
+            <t v="This Decision shall enter into force on the day of its publication in the "/>
+            <emphasis kind="i">
+               <t v="Official Journal of the European Union"/>
+            </emphasis>
+            <t v="."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
+         <num>
+            <changed amendingAct="32023D1574"
+                     action="renumbered"
+                     location="AR:1;PT:13"
+                     marker="O002001M017000">
+               <t v="ANNEX I"/>
+            </changed>
+         </num>
+         <subheading>
+            <t v="List of persons referred to in Article 1(1), Article 2(1) and Article 3(1), and of entities referred to in Articles 1(1) and 3(1)"/>
+         </subheading>
+         <unit eId="anx_I/level_1" kind="level" depth="1" rank="2">
+            <heading>
+               <t v="PERSONS"/>
+            </heading>
+            <unit eId="anx_I/level_1/list_1/pnt_1" kind="point" numbered="true">
+               <provenance amendingAct="32023D2575"
+                           action="replaced"
+                           location="AR:1 .AND. AX:0"
+                           marker="O003001M001000"/>
+               <num>
+                  <t v="1."/>
+               </num>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Jimmy CHERIZIER"/>
+                  </emphasis>
+                  <t v=" (a.k.a. "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="Barbeque"/>
+                  </quote>
+                  <t v=") has engaged in acts that threaten the peace, security, and stability of Haiti and has planned, directed or committed acts that constitute serious human rights abuses. Jimmy Cherizier is one of Haiti’s most influential gang leaders and leads an alliance of Haitian gangs known as the "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="G9 Family and Allies"/>
+                  </quote>
+                  <t v="."/>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Function:"/>
+                  </emphasis>
+                  <t v=" Former Police Officer"/>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="DOB:"/>
+                  </emphasis>
+                  <date date="1977-03-30">
+                     <t v="30 March 1977"/>
+                  </date>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="POB:"/>
+                  </emphasis>
+                  <t v=" Port-au-Prince, Haiti"/>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Nationality:"/>
+                  </emphasis>
+                  <t v=" Haitian"/>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="National identification no"/>
+                  </emphasis>
+                  <t v=": 001-843-989-7 (NIF – Haiti)"/>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Address:"/>
+                  </emphasis>
+                  <t v=" 16, Imp Manius, Delmas 40 B, Port-au-Prince, Haiti"/>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Date of UN designation"/>
+                  </emphasis>
+                  <t v=": "/>
+                  <date date="2022-10-21">
+                     <t v="21 October 2022"/>
+                  </date>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="anx_I/level_1/level_1" kind="level" depth="2" rank="3">
+            <provenance amendingAct="32023D2575"
+                        action="replaced"
+                        location="AR:1 .AND. AX:0"
+                        marker="O003001M001000"/>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="While serving as an officer in the Haitian National Police (HNP), Cherizier planned and participated in the November 2018 deadly attack against civilians in a Port-au-Prince neighbourhood known as La Saline. During this attack, at least 71 people were killed, over 400 houses were destroyed and at least seven women were raped by armed gangs. Throughout 2018 and 2019, Cherizier led armed groups in coordinated, brutal attacks in Port-au-Prince neighbourhoods. In May 2020, Cherizier led armed gangs in a five-day attack in multiple Port-au-Prince neighbourhoods in which civilians were killed and houses were set on fire. As of "/>
+               <date date="2022-10-11">
+                  <t v="11 October 2022"/>
+               </date>
+               <t v=", Cherizier and his "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="G9 Family and Allies"/>
+               </quote>
+               <t v=" gang confederation have been actively blocking the free movement of fuel from the Varreux fuel terminal – the largest in Haiti. His actions have directly contributed to the economic paralysis and humanitarian crisis in Haiti."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/level_1/list_2/pnt_2" kind="point" numbered="true">
+            <provenance amendingAct="32024D0290"
+                        action="inserted"
+                        location="AR:1 .AND. AX:0"
+                        marker="O004001M001000"/>
+            <num>
+               <t v="2."/>
+            </num>
+            <p>
+               <emphasis kind="b">
+                  <t v="Johnson ANDRE"/>
+               </emphasis>
+               <t v=" (a.k.a. Izo). Listed pursuant to paragraph 15 of United Nations Security Council Resolution 2653 (2022) for the measures listed in paragraphs 3 and 6 of that Resolution, as further elaborated by paragraph 16(a), (e), (f) and (g) of that Resolution."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Function:"/>
+               </emphasis>
+               <t v=" leader of 5 Segond gang"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="DOB:"/>
+               </emphasis>
+               <t v=" 1997"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="POB:"/>
+               </emphasis>
+               <t v=" Port-au-Prince, Haiti"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Nationality:"/>
+               </emphasis>
+               <t v=" Haitian"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Date of UN designation"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="2023-12-08">
+                  <t v="8 December 2023"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Gender:"/>
+               </emphasis>
+               <t v=" male"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Johnson Andre (aka "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="Izo"/>
+               </quote>
+               <t v=") is the main leader of the 5 Segond gang and has played an increasingly influential role within G-Pep alliance (see UN document S/2023/674, para 54). Under Andre’s leadership, 5 Segond has been involved in various criminal activities that threaten the peace, security, and stability of Haiti, including, rape, burglary, despoliation, kidnapping, drug trafficking, trafficking of weapons, and obstructing the delivery of humanitarian assistance (see UN document S/2023/674, Annex 4). Andre is also wanted by the Haitian National Police (HNP) for crimes including murder, kidnapping for ransom, illegal possession of firearms, vehicle theft, and hijacking of goods (see UN document S/2023/674, Annex 11)."/>
+            </p>
+            <p>
+               <t v="With expansionist ambitions and substantial resources acquired through illicit activities, Andre has extended 5 Segond’s influence over the past three years, spreading violence in other areas of Port-au-Prince (see UN document S/2023/674, para 54). Moreover, the gang has carried out attacks against public institutions, including the Court of First Instance, which was ransacked in 2022 and currently remains under the control of the 5 Segond (see UN document S/2023/674, para 29)."/>
+            </p>
+            <p>
+               <t v="Andre has used the maritime route to provide support to his gang’s northern cells, as well as to the Canaan gang, and strategically operates from there, conducting kidnappings in the Delmas, Bon Repos and Lilavois areas, hijacking trucks and stealing goods. Between "/>
+               <date date="2023-04-18">
+                  <t v="April 18"/>
+               </date>
+               <t v=" and "/>
+               <date date="2023-06-23">
+                  <t v="June 23, 2023"/>
+               </date>
+               <t v=", four attacks resulting in the kidnapping of over 30 individuals were attributed to the 5 Segond gang (see UN document S/2023/674, para 64)."/>
+            </p>
+            <p>
+               <t v="The gang’s activities have also severely disrupted the free movement of persons and vehicles along National Roads (NR) 1 and 2, as well as at sea, through acts of piracy. In October 2022, members of 5 Segond intensified the hijacking of freight trucks transporting containers of high value merchandise along NR1. Along NR2 in Martissant, 5 Segond carried out extortion operations (see UN document S/2023/674, para 79). This has restricted access to strategic points, stifled the local economy, and disrupted access to food and other critical goods, including humanitarian aid."/>
+            </p>
+            <p>
+               <t v="In November 2022, the 5 Segond gang took 38 hostages including 36 passengers and 2 drivers, who were in 2 minibuses at the station preparing to go to Miragoâne. In a video, Andre asserted that this kidnapping was in response to the death of one of his men."/>
+            </p>
+            <p>
+               <t v="The 5 Segond gang has exploited the fragile security environment to generate additional revenue through drug trafficking. Some sources indicated that drugs were shipped directly from South America to the Village de Dieu area, sometimes along with firearms. From Village-de-Dieu, Izo has the support of other gangs, such as Canaan, Gran Grif and Kokorat San Ras, to move drugs up to Port-de-Paix and out of the country (see UN document S/2023/674, para 121)."/>
+            </p>
+            <p>
+               <t v="The Panel of Experts also identified rapes committed by the 5 Segond gang (see UN document S/2023/674, para 136)."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/level_1/list_2/pnt_3" kind="point" numbered="true">
+            <provenance amendingAct="32024D0290"
+                        action="inserted"
+                        location="AR:1 .AND. AX:0"
+                        marker="O004001M001000"/>
+            <num>
+               <t v="3."/>
+            </num>
+            <p>
+               <emphasis kind="b">
+                  <t v="Renel DESTINA"/>
+               </emphasis>
+               <t v=" (a.k.a. Ti Lapli). Listed pursuant to paragraph 15 of United Nations Security Council Resolution 2653 (2022) for the measures listed in paragraphs 3 and 6 of that Resolution, as further elaborated by paragraph 16(a), (e), (f) and (g) of that Resolution."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Function:"/>
+               </emphasis>
+               <t v=" leader of Grand Ravine gang"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="DOB:"/>
+               </emphasis>
+               <date date="1982-06-11">
+                  <t v="11 June 1982"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="POB:"/>
+               </emphasis>
+               <t v=" Haiti"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Nationality:"/>
+               </emphasis>
+               <t v=" Haitian"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Date of UN designation"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="2023-12-08">
+                  <t v="8 December 2023"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Gender:"/>
+               </emphasis>
+               <t v=" male"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Renel Destina (aka "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="Ti Lapli"/>
+               </quote>
+               <t v=") is the leader of the Grand Ravine gang and Johnson Andre’s key ally. Grand Ravine, composed of 300 members and an ally of G-Pep coalition, has been involved in various actions that threaten peace, security, and stability in Haiti (see UN document S/2023/674, paragraph 65)."/>
+            </p>
+            <p>
+               <t v="Under Destina’s leadership, Grand Ravine gang has committed serious crimes including murder, rape, armed robbery, destruction of property, kidnapping for ransom, theft of vehicles, hijacking of trucks and goods, and spoliation (see UN document S/2023/674, para. 136, Annex 4). Destina is also wanted by the Haitian National Police for crimes including murder, vehicle theft, truck hijacking, illegal arms possession, and kidnapping for ransom (see UN document S/2023/674, Annex 18)."/>
+            </p>
+            <p>
+               <t v="Since late 2022, the gang has tried to expand its territorial control over the neighborhoods of Carrefour-Feuilles and Savanne Pistache, committing crimes against residents and continuous attacks against the Haitian National Police such as killings, robberies, rapes, looting and burning of residences, and attacks on police officers. Two police officers were killed on "/>
+               <date date="2023-08-04">
+                  <t v="August 4"/>
+               </date>
+               <t v=" and "/>
+               <date date="2023-08-14">
+                  <t v="14, 2023"/>
+               </date>
+               <t v=". On "/>
+               <date date="2023-08-14">
+                  <t v="August 14, 2023"/>
+               </date>
+               <t v=", Grand Ravine attacked and rendered the Haitian electricity substation non-operational in the area. On "/>
+               <date date="2023-08-15">
+                  <t v="August 15, 2023"/>
+               </date>
+               <t v=", approximately "/>
+               <number v="1020"/>
+               <t v=" households, comprising "/>
+               <number v="4972"/>
+               <t v=" individuals, had fled from Carrefour-Feuilles and Savane Pistache (see UN document S/2023/674, paragraph 65). On "/>
+               <date date="2023-05-24">
+                  <t v="May 24, 2023"/>
+               </date>
+               <t v=", gunmen from Grand Ravine attacked the Carrefour-Feuilles area, killing a schoolboy (see UN document S/2023/674, Annex 40)."/>
+            </p>
+            <p>
+               <t v="According to a "/>
+               <date date="2022-11-07">
+                  <t v="November 7, 2022"/>
+               </date>
+               <t v=" Department of Justice press release, Destina was indicted on charges related to the kidnapping a U.S. victim in February 2021. The victim was held for approximately 14 days, during which time the victim was threatened daily at gunpoint, while his family attempted to secure funds for release."/>
+            </p>
+            <p>
+               <t v="According to an "/>
+               <date date="2020-10-22">
+                  <t v="October 22, 2020"/>
+               </date>
+               <t v=" Haitian Times article, Destina announced on a radio broadcast that he had kidnapped Wolf Hall, the president of Titi Loto &amp; T-Sound Lottery organization on "/>
+               <date date="2020-10-18">
+                  <t v="October 18, 2020"/>
+               </date>
+               <t v="."/>
+            </p>
+            <p>
+               <t v="In addition, Grand Ravine has established control along the National Road 2 (NR2) connecting Port-au-Prince to the South, to collect revenue from extortion, hijacking of trucks, contraband, and other illicit activities (see UN document S/2023/674, paragraph 79). This has restricted access to strategic infrastructure and stifled the local economy by disrupting access to food and other critical goods, including humanitarian aid."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/level_1/list_2/pnt_4" kind="point" numbered="true">
+            <provenance amendingAct="32024D0290"
+                        action="inserted"
+                        location="AR:1 .AND. AX:0"
+                        marker="O004001M001000"/>
+            <num>
+               <t v="4."/>
+            </num>
+            <p>
+               <emphasis kind="b">
+                  <t v="Wilson JOSEPH"/>
+               </emphasis>
+               <t v=" (a.k.a. Lanmo San Jou). Listed pursuant to paragraph 15 of United Nations Security Council Resolution 2653 (2022) for the measures listed in paragraphs 3 and 6 of that Resolution, as further elaborated by paragraph 16(a), (b), (d) and (e) of that Resolution."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Function:"/>
+               </emphasis>
+               <t v=" leader of 400 Mawozo gang"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="DOB:"/>
+               </emphasis>
+               <date date="1993-02-28">
+                  <t v="28 February 1993"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="POB:"/>
+               </emphasis>
+               <t v=" Haiti"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Nationality:"/>
+               </emphasis>
+               <t v=" Haitian"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Date of UN designation"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="2023-12-08">
+                  <t v="8 December 2023"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Gender:"/>
+               </emphasis>
+               <t v=" male"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Wilson Joseph (aka "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="Lanmo San Jou"/>
+               </quote>
+               <t v="), is the leader of the 400 Mawozo gang, which is an active gang in the Port-au-Prince metropolitan area, notably in Croix-des-Bouquets commune, and an ally of the G-Pep coalition of gangs (see UN document S/2023/674, Section III(A)(2.3))."/>
+            </p>
+            <p>
+               <t v="Wilson Joseph is responsible – either directly or through orders to his gang members – for the commission of human rights abuses and crimes, including those involving attacks against defenseless individuals causing death and injury, disrupting or impeding humanitarian aid (e.g. medical services), rape (including rape of minors), the recruitment of children, robbery, looting, and destruction of public property such as prisons and police stations, kidnapping, and hijacking of trucks (see UN document S/2023/674, Annex 4). These attacks have resulted in large numbers of internal displacements. Joseph is also wanted by the Haitian National Police for crimes including murder, attempted murder, vehicle theft, and kidnapping (see UN document S/2023/674, Annex 20)."/>
+            </p>
+            <p>
+               <t v="On "/>
+               <date date="2022-07-24">
+                  <t v="July 24, 2022"/>
+               </date>
+               <t v=", a Croix-des-Bouquets Police Commissioner was killed and mutilated by members of 400 Mawozo gang (see UN document S/2023/674, Annex 6). In February 2023, the Higgins Brothers Surgicenter for Hope in Fonds Parisien, located in an area controlled by 400 Mawozo, reported multiple incidents of surgeons, doctors, and nurses being shot, robbed, and kidnapped while on their way to work in the past two years (see UN document S/2023/674, Annex 44). Joseph is also implicated in the high-profile kidnapping case that occurred in October 2021, when 17 foreign Christian missionaries and family members, including five minors, were abducted in Haiti (see UN document S/2023/674, Annex 32)."/>
+            </p>
+            <p>
+               <t v="400 Mawozo gang is actively involved in trafficking arms and ammunition (see UN document S/2023/674, para. 104). Several members known to be responsible for arms and ammunition trafficking have been arrested by the Haiti National Police, including in Malpasse on "/>
+               <date date="2022-04-26">
+                  <t v="April 26, 2022"/>
+               </date>
+               <t v=", and Nippes in the southwest of the country on "/>
+               <date date="2022-05-14">
+                  <t v="May 14, 2022"/>
+               </date>
+               <t v=" (see UN document S/2023/674, Annex 32). In May 2022, three Haitian nationals and one United States citizen were charged with firearms trafficking in support of 400 Mawozo in Haiti (see UN document S/2023/674, Annex 32)."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/level_1/list_2/pnt_5" kind="point" numbered="true">
+            <provenance amendingAct="32024D0290"
+                        action="inserted"
+                        location="AR:1 .AND. AX:0"
+                        marker="O004001M001000"/>
+            <num>
+               <t v="5."/>
+            </num>
+            <p>
+               <emphasis kind="b">
+                  <t v="Vitelhomme INNOCENT"/>
+               </emphasis>
+               <t v=". Listed pursuant to paragraph 15 of United Nations Security Council Resolution 2653 (2022) for the measures listed in paragraphs 3 and 6 of that Resolution, as further elaborated by paragraph 16(a), (e) and (f) of that Resolution."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Function:"/>
+               </emphasis>
+               <t v=" leader of Kraze Barye gang"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="DOB:"/>
+               </emphasis>
+               <date date="1986-03-27">
+                  <t v="27 March 1986"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="POB:"/>
+               </emphasis>
+               <t v=" Port-au-Prince, Haiti"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Nationality:"/>
+               </emphasis>
+               <t v=" Haitian"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="National identification no:"/>
+               </emphasis>
+               <t v=" Haiti 004-341-263-3"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Address:"/>
+               </emphasis>
+               <t v="64, Soisson, Tabarre 49, Port-au-Prince"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Date of UN designation"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="2023-12-08">
+                  <t v="8 December 2023"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Gender:"/>
+               </emphasis>
+               <t v=" male"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Vitelhomme Innocent is the leader of the Kraze Barye gang, which has become one of the most powerful gangs in the Port-au-Prince metropolitan area, with an increasing number of fighters and semi-automatic weapons (see UN document S/2023/674, para. 66). Innocent has been involved in activities that threaten the peace, security, and stability of Haiti."/>
+            </p>
+            <p>
+               <t v="Under Innocent’s leadership, the Krazye Barye gang has committed human rights abuses involving murder rape, recruitment of children, and kidnapping for ransom, as well as other crimes such as armed robbery, destruction of property, theft of vehicles, spoilation of land, and destruction of property (see UN document S/2023/674, para. 141, Annex 4). Innocent is also wanted by the Haitian National Police for crimes including murder, attempted murder, rape, armed robbery vehicle theft, and kidnapping (see UN document S/2023/674, Annex 19)"/>
+            </p>
+            <p>
+               <t v="Kraze Barye has targeted the Haitian National Police on multiple occasions, resulting in the deaths of several police officers and damage to police stations. Moreover, the populations of Petion-Ville, Kenscoff, Tabarre, Croix-des-Bouquets, and Delmas communes have repeatedly suffered attacks by Innocent’s gang over the past three years, which have contributed to displacement of thousands of people. He has continued to commit abuses against the police and the population, including those involving the spoliation of land and property, killings, looting, stealing and kidnapping of influential individuals (see UN document S/2023/674, para 66)."/>
+            </p>
+            <p>
+               <t v="In July 2023, the Kraze Barye gang continued to attack, kill, and rape residents of Fort-Jacques, Truitier and Dumornay. As of "/>
+               <date date="2023-08-10">
+                  <t v="10 August 2023"/>
+               </date>
+               <t v=", Kraze Barye’s attacks had resulted in the displacement of around "/>
+               <number v="2000"/>
+               <t v=" people, including 229 minors (see UN document S/2023/674, para. 151)."/>
+            </p>
+            <p>
+               <t v="Innocent has conducted targeted kidnappings against prominent figures, such as the regional director of APN port of Cap-Haïtien, the director of a private television station on "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="Route des Freres"/>
+               </quote>
+               <t v=", the director of the "/>
+               <quote startQuote="“" endQuote="”">
+                  <t v="Radio Commerciale d’Haiti,"/>
+               </quote>
+               <t v=" as well as a famous journalist and the former president of the Provisional Electoral Commission, among others (see UN document S/2023/674, Annex 22). Innocent was indicted on charges related to the October 2022 armed hostage taking, in Haiti, of two U.S. citizens, one of whom was killed during the event (Press release, United States Attorney’s Office, District of Columbia, "/>
+               <date date="2023-10-24">
+                  <t v="October 24, 2023"/>
+               </date>
+               <t v=")."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/level_1/list_2/pnt_6" kind="point" numbered="true">
+            <provenance amendingAct="32024D2756"
+                        action="inserted"
+                        location="AR:1 .AND. AX:0"
+                        marker="O007001M001000"/>
+            <num>
+               <t v="6."/>
+            </num>
+            <p>
+               <emphasis kind="b">
+                  <t v="Prophane VICTOR"/>
+               </emphasis>
+               <t v=". Listed pursuant to paragraph 15 of UNSC Resolution 2653 (2022) for the measures listed in paragraphs 3, 6, and 11, as further elaborated by paragraphs 16(a) and 16(b) of that Resolution."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Function"/>
+               </emphasis>
+               <t v=": Former member of the Haitian Parliament, involved in weapons trafficking and using violence to secure political gain."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="DOB"/>
+               </emphasis>
+               <t v=": –"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="POB"/>
+               </emphasis>
+               <t v=": –"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Nationality"/>
+               </emphasis>
+               <t v=": Haitian"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Date of UN designation"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="2024-09-27">
+                  <t v="27 September 2024"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Gender"/>
+               </emphasis>
+               <t v=": male"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Prophane Victor has long been involved in activities that threaten the peace, security, and stability of Haiti, as well as the entire region. In particular, he has been supporting and arming gangs, trafficking weapons, diverting government revenues, and using violence to secure his political and financial gains."/>
+            </p>
+            <p>
+               <t v="Prophane Victor served in the most recent National Assembly (2016-2020), where he was Member of Parliament ("/>
+               <emphasis kind="i">
+                  <t v="deputé"/>
+               </emphasis>
+               <t v=") for Petite Riviere, Artibonite department, an area with increasing levels of violence and gang control. To secure his election as "/>
+               <emphasis kind="i">
+                  <t v="deputé"/>
+               </emphasis>
+               <t v=" in 2016 and his control over the area, Prophane Victor started arming young men in Petite Riviere who went on to form the Gran Grif gang, currently the main perpetrator of human rights abuses, including sexual violence, in the Artibonite department (see S/2023/674, para 75). He is no longer a Member of Parliament and is not serving in any political position."/>
+            </p>
+            <p>
+               <t v="In addition to securing his political foothold through the use of gangs, Victor is a former senior Customs officer and a businessman who has control over parts of the Customs department, allowing him to build wealth and enabling him to engage in a range of criminal activities with impunity. According to reporting from January 2023, Victor threatened customs officers in their work."/>
+            </p>
+            <p>
+               <t v="Victor continued to support Gran Grif gang until 2020 and has since supported rival gangs in that area (see S/2023/674, para 75)."/>
+            </p>
+         </unit>
+         <unit eId="anx_I/level_1/list_2/pnt_7" kind="point" numbered="true">
+            <provenance amendingAct="32024D2756"
+                        action="inserted"
+                        location="AR:1 .AND. AX:0"
+                        marker="O007001M001000"/>
+            <num>
+               <t v="7."/>
+            </num>
+            <p>
+               <emphasis kind="b">
+                  <t v="Luckson ELAN"/>
+               </emphasis>
+               <t v=". Listed pursuant to paragraph 15 of UNSC Resolution 2653 (2022) for the measures listed in paragraphs 3, 6, and 11, as further elaborated by paragraphs 16(a) 16(b), 16(d), 16(e), and 16(f) of that Resolution."/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Function"/>
+               </emphasis>
+               <t v=": Leader of Gran Grif gang"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="DOB"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="1988-01-06">
+                  <t v="6 January 1988"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="POB"/>
+               </emphasis>
+               <t v=": –"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Nationality"/>
+               </emphasis>
+               <t v=": Haitian"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Date of UN designation"/>
+               </emphasis>
+               <t v=": "/>
+               <date date="2024-09-27">
+                  <t v="27 September 2024"/>
+               </date>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Gender"/>
+               </emphasis>
+               <t v=": male"/>
+            </p>
+            <p>
+               <emphasis kind="b">
+                  <t v="Additional information from the narrative summary of reasons for listing provided by the Sanctions Committee:"/>
+               </emphasis>
+            </p>
+            <p>
+               <t v="Luckson Elan, leader of the Gran Grif gang, has long been involved in activities that threaten the peace, security, and stability of Haiti, as well as the entire region. His gang is the largest and most powerful in the Artibonite Department and has been expanding its territorial control, committing human rights abuses, and trafficking weapons and ammunition."/>
+            </p>
+            <p>
+               <t v="On "/>
+               <date date="2023-02-08">
+                  <t v="February 8, 2023"/>
+               </date>
+               <t v=", members of the Coalition of Jean Denis self-defence group intercepted a vehicle coming from Port-au-Prince which was carrying several crates of arms and ammunition destined for the Gran Grif gang (see OHCHR report, "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="Criminal Violence Extends beyond Port-au-Prince,"/>
+               </quote>
+               <t v=" Nov 2023)."/>
+            </p>
+            <p>
+               <t v="Under Elan’s leadership, the human rights abuses and other crimes committed by the gang include extrajudicial killings, rape, recruitment of children, robbery, destruction of property, kidnapping, and hijacking of trucks. For example, on "/>
+               <date date="2023-11-30">
+                  <t v="November 30, 2023"/>
+               </date>
+               <t v=", Luckson Elan killed a woman for refusing to have sexual relations with him. In April 2024, Gran Grif committed attacks on the judiciary by killing two lawyers."/>
+            </p>
+            <p>
+               <t v="Between October 2023 and January 2024, Gran Grif committed nine mass kidnappings, including 157 people. Gran Grif has also committed some of the highest levels of child recruitment in Haiti."/>
+            </p>
+         </unit>
+      </unit>
+      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
+         <provenance amendingAct="32023D1574"
+                     action="inserted"
+                     location="AR:1;PT:14 .AND. AX:0"
+                     marker="O002001M018000"/>
+         <num>
+            <t v="ANNEX II"/>
+         </num>
+         <list kind="alphaUpper">
+            <unit eId="anx_II/pnt_A" kind="point" numbered="true">
+               <num>
+                  <t v="A."/>
+               </num>
+               <p>
+                  <t v="List of natural persons referred to in Article 2a(1) and in Article 3a(1)"/>
+               </p>
+               <table cols="5">
+                  <provenance amendingAct="32024D3139"
+                              action="inserted"
+                              location="AR:1 .AND. AX:0"
+                              marker="O008001M001000"/>
+                  <tr header="true">
+                     <td header="true"/>
+                     <td header="true">
+                        <p>
+                           <t v="Name"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Identifying information"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Statement of reasons"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Date of listing"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="1."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Jonel CATEL"/>
+                        </p>
+                        <p>
+                           <t v="a.k.a."/>
+                        </p>
+                        <p>
+                           <t v="Johns CATHEL"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Function: Terre Noire gang leader (affiliated with G9 coalition of gangs)"/>
+                        </p>
+                        <p>
+                           <t v="Nationality: Haitian"/>
+                        </p>
+                        <p>
+                           <t v="Gender: male"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Jonel Catel is the leader of the Terre Noir gang, which is affiliated with the G9 coalition of gangs in Haiti."/>
+                        </p>
+                        <p>
+                           <t v="Under his command, the Terre Noir gang is engaged in violence and criminal activities in Haiti, including robbery, ransoming, kidnapping, extortion, murders and rape."/>
+                        </p>
+                        <p>
+                           <t v="Jonel Catel is therefore responsible for actions that threaten peace, stability and security in Haiti, including engaging in criminal activities and violence involving armed groups and criminal networks that promote violence, including kidnappings, homicides and sexual and gender-based violence."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <date date="2024-12-16">
+                              <t v="16.12.2024"/>
+                           </date>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="2."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Gabriel JEAN-PIERRE"/>
+                        </p>
+                        <p>
+                           <t v="a.k.a. Ti-Gabriel; Ti Gabriel; Gabo"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Function: leader of the GPep coalition of gangs (affiliated with Brooklyn gang)"/>
+                        </p>
+                        <p>
+                           <t v="DOB: "/>
+                           <date date="1984-03-31">
+                              <t v="31.03.1984"/>
+                           </date>
+                        </p>
+                        <p>
+                           <t v="Nationality: Haitian"/>
+                        </p>
+                        <p>
+                           <t v="Gender: male"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Gabriel Jean-Pierre is the leader of the GPep coalition of gangs in Haiti, which is affiliated with Brooklyn gang."/>
+                        </p>
+                        <p>
+                           <t v="Under his command, the GPep is engaged in violence and criminal activities in Haiti, including extortion, destruction of property, kidnapping, assassinations and rape."/>
+                        </p>
+                        <p>
+                           <t v="Gabriel Jean-Pierre is therefore responsible for actions that threaten peace, stability and security in Haiti, including engaging in criminal activities and violence involving armed groups and criminal networks that promote violence, including kidnappings, homicides and sexual and gender-based violence."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <date date="2024-12-16">
+                              <t v="16.12.2024"/>
+                           </date>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="3."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Ferdens TILUS"/>
+                        </p>
+                        <p>
+                           <t v="a.k.a. General Meyer; Jeneral Meyer; Jeneral Meyè"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Function: Kokorat San Ras gang leader"/>
+                        </p>
+                        <p>
+                           <t v="DOB: "/>
+                           <date date="1995-09-15">
+                              <t v="15.09.1995"/>
+                           </date>
+                        </p>
+                        <p>
+                           <t v="Nationality: Haitian"/>
+                        </p>
+                        <p>
+                           <t v="Gender: male"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <t v="Ferdens Tilus is the leader of the Kokorat San Ras Gang in Haiti (area of Atribonite/NorthWest)."/>
+                        </p>
+                        <p>
+                           <t v="Under his command, the Kokorat San Ras gang is engaged in violence and criminal activities in Haiti, including murder, theft, rape, kidnapping and embezzlement of property."/>
+                        </p>
+                        <p>
+                           <t v="Ferdens Tilus is therefore responsible for actions that threaten peace, stability and security in Haiti, including engaging in criminal activities and violence involving armed groups and criminal networks that promote violence, including kidnappings, homicides and sexual and gender-based violence."/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <date date="2024-12-16">
+                              <t v="16.12.2024"/>
+                           </date>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx_II/pnt_B" kind="point" numbered="true">
+               <num>
+                  <t v="B."/>
+               </num>
+               <p>
+                  <t v="List of legal persons, entities and bodies referred to in Article 3a(1)"/>
+               </p>
+            </unit>
+         </list>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Regulation (EU) 2018/1725 of the European Parliament and of the Council of "/>
+            <date date="2018-10-23">
+               <t v="23 October 2018"/>
+            </date>
+            <t v=" on the protection of natural persons with regard to the processing of personal data by the Union institutions, bodies, offices and agencies and on the free movement of such data, and repealing Regulation (EC) No 45/2001 and Decision No 1247/2002/EC ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="295"
+                 date="2018-11-21"
+                 page="39">
+               <t v="OJ L 295, 21.11.2018, p. 39"/>
+            </ref>
+            <t v=")."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

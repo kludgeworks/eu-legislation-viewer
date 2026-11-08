@@ -16,6 +16,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -254,6 +255,480 @@ class DifferTest {
         .hasSize(1);
   }
 
+  @Test
+  void pairsRenumberedSiblingPointsWhenNewPointIsInserted() {
+    var earlier =
+        text(
+            pointWithNum("1/pnt_a", "(a)", "alpha text", "A", "replaced"),
+            pointWithNum("1/pnt_b", "(b)", "known supplier of airport supplies", "A", "replaced"));
+    var later =
+        text(
+            pointWithNum("1/pnt_a", "(a)", "alpha text", "A", "replaced"),
+            pointWithNum(
+                "1/pnt_b", "(b)", "regulated supplier of airport supplies", "B", "inserted"),
+            pointWithNum(
+                "1/pnt_c", "(c)", "known supplier of airport supplies", "B", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    var inserted = find(differences, "1/pnt_b");
+    assertThat(inserted.kind()).isEqualTo(Kind.INSERTED);
+    assertThat(said(inserted.shown())).contains("[+regulated supplier of airport supplies]");
+
+    var renumbered = find(differences, "1/pnt_c");
+    assertThat(renumbered.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(renumbered.shown(), "p"))).isEqualTo("known supplier of airport supplies");
+    assertThat(said(only(renumbered.shown(), "num"))).contains("[-b]", "[+c]");
+  }
+
+  @Test
+  void leavesSubPointsInsideDeletedPointWhenNextPointIsRenumberedUp() {
+    var earlier =
+        text(
+            pointWithNum("1/pnt_a", "(a)", "Alpha", "A", "replaced"),
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "Bravo",
+                "A",
+                "replaced",
+                pointWithNum("1/pnt_b/sub_1", "(i)", "Item 1", "A", "replaced")),
+            pointWithNum("1/pnt_c", "(c)", "Charlie", "A", "replaced"));
+    var later =
+        text(
+            pointWithNum("1/pnt_a", "(a)", "Alpha", "A", "replaced"),
+            pointWithNum("1/pnt_b", "(b)", "Charlie", "B", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_b", Kind.DELETED), tuple("1/pnt_b", Kind.CHANGED));
+    assertThat(differences).extracting(Difference::eId).doesNotContain("1/pnt_b/sub_1");
+    var deleted = differences.getFirst();
+    assertThat(said(deleted.shown())).contains("[-Bravo]", "[-Item 1]");
+  }
+
+  @Test
+  void pairsSubPointsOfRenumberedPoint() {
+    var earlier =
+        text(
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "Bravo",
+                "A",
+                "replaced",
+                pointWithNum("1/pnt_b/sub_1", "(i)", "Item 1", "A", "replaced")));
+    var later =
+        text(
+            pointWithNum("1/pnt_a", "(a)", "Alpha", "B", "inserted"),
+            pointWithNum(
+                "1/pnt_c",
+                "(c)",
+                "Bravo",
+                "B",
+                "renumbered",
+                pointWithNum("1/pnt_c/sub_1", "(i)", "Item 1", "B", "replaced")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_a", Kind.INSERTED), tuple("1/pnt_c", Kind.CHANGED));
+    assertThat(differences)
+        .extracting(Difference::eId)
+        .doesNotContain("1/pnt_b/sub_1", "1/pnt_c/sub_1");
+  }
+
+  @Test
+  void pairsRenumberedPointWhoseWordingAlsoChanged() {
+    var earlier =
+        text(
+            pointWithNum(
+                "1/pnt_a",
+                "(a)",
+                "screening of passengers shall be carried out by walk-through metal detection",
+                "A",
+                "replaced"));
+    var later =
+        text(
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "screening of passengers shall be conducted by walk-through metal detection and"
+                    + " explosives detection",
+                "B",
+                "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    var renumbered = find(differences, "1/pnt_b");
+    assertThat(renumbered.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(renumbered.shown(), "p"))).contains("[-carried out]", "[+conducted]");
+  }
+
+  @Test
+  void showsPointReplacedWhereItStandsAsChangedUnderOwnEId() {
+    var earlier = text(pointWithNum("1/pnt_a", "(a)", "Alpha words", "A", "replaced"));
+    var later = text(pointWithNum("1/pnt_a", "(a)", "Completely new wording", "B", "replaced"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    var replaced = find(differences, "1/pnt_a");
+    assertThat(replaced.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(replaced.shown(), "p")))
+        .contains("[-Alpha words]", "[+Completely new wording]");
+  }
+
+  @Test
+  void countsTotalsOfWholeUnitContainingRenumberedUnit() {
+    var earlier =
+        text(
+            point(
+                "1",
+                "Old lead text",
+                "A",
+                pointWithNum("1/pnt_a", "(a)", "Point a text", "A", "replaced"),
+                pointWithNum("1/pnt_b", "(b)", "Point b text", "A", "replaced")));
+    var later =
+        text(
+            point(
+                "1",
+                "New lead text",
+                "B",
+                pointWithNum("1/pnt_c", "(c)", "Point b text", "B", "renumbered")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences).singleElement().extracting(Difference::eId).isEqualTo("1");
+    var whole = differences.getFirst();
+    assertThat(whole.inserted()).isGreaterThan(0);
+    assertThat(whole.deleted()).isGreaterThan(0);
+    assertThat(said(whole.shown())).contains("[-Point a text]");
+  }
+
+  @Test
+  void pairsRenumberedPointsInNonAsciiLanguageByWordingSimilarity() {
+    var earlier =
+        text(
+            pointWithNum(
+                "1/pnt_a",
+                "(α)",
+                "Έλεγχος ασφαλείας επιβατών με ανιχνευτή μετάλλων",
+                "A",
+                "replaced"));
+    var later =
+        text(
+            pointWithNum("1/pnt_a", "(α)", "Νέο στοιχείο για τους ελέγχους", "B", "inserted"),
+            pointWithNum(
+                "1/pnt_b",
+                "(β)",
+                "Έλεγχος ασφαλείας επιβατών με ανιχνευτή μετάλλων και εκρηκτικών",
+                "B",
+                "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    var renumbered = find(differences, "1/pnt_b");
+    assertThat(renumbered.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(renumbered.shown(), "p"))).contains("[+ και εκρηκτικών]");
+    assertThat(said(only(renumbered.shown(), "num"))).contains("[-α]", "[+β]");
+  }
+
+  @Test
+  void pairsRenumberedPointCorrectlyWhenDeletedSiblingHasOverlappingWording() {
+    var earlier =
+        text(
+            pointWithNum(
+                "1/pnt_a",
+                "(a)",
+                "The competent authority shall maintain records of all inspections.",
+                "A",
+                "replaced"),
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "The competent authority shall conduct security screening and inspections.",
+                "A",
+                "replaced"),
+            pointWithNum(
+                "1/pnt_c",
+                "(c)",
+                "The competent authority shall verify compliance with safety standards.",
+                "A",
+                "replaced"));
+    var later =
+        text(
+            pointWithNum(
+                "1/pnt_a",
+                "(a)",
+                "The competent authority shall maintain records of all inspections.",
+                "A",
+                "replaced"),
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "The competent authority shall verify compliance with safety standards and rules.",
+                "B",
+                "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_b", Kind.DELETED), tuple("1/pnt_b", Kind.CHANGED));
+    var deleted = differences.getFirst();
+    assertThat(said(deleted.shown()))
+        .contains("[-The competent authority shall conduct security screening and inspections.]");
+    var changed = differences.get(1);
+    assertThat(said(only(changed.shown(), "p"))).contains("[+ and rules]");
+    assertThat(said(only(changed.shown(), "num"))).contains("[-c]", "[+b]");
+  }
+
+  @Test
+  void leavesRenumberedPointUnpairedWhenEvidenceIsWeak() {
+    var earlier =
+        text(
+            pointWithNum(
+                "1/pnt_a",
+                "(a)",
+                "The competent authority shall maintain records of all inspections.",
+                "A",
+                "replaced"),
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "Security rules for maritime ports and terminal facilities.",
+                "A",
+                "replaced"));
+    var later =
+        text(
+            pointWithNum(
+                "1/pnt_a",
+                "(a)",
+                "The competent authority shall maintain records of all inspections.",
+                "A",
+                "replaced"),
+            pointWithNum(
+                "1/pnt_b",
+                "(b)",
+                "Civil aviation operations conducted by licensed commercial air carriers.",
+                "B",
+                "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_b", Kind.DELETED), tuple("1/pnt_b", Kind.INSERTED));
+    var deleted = differences.getFirst();
+    assertThat(said(deleted.shown()))
+        .contains("[-Security rules for maritime ports and terminal facilities.]");
+    var inserted = differences.get(1);
+    assertThat(said(inserted.shown()))
+        .contains("[+Civil aviation operations conducted by licensed commercial air carriers.]");
+  }
+
+  @Test
+  void pairsRenumberedPointsInRealJointInvestigationTeamsFixture() {
+    var earlier = text("02017G0119-20220128");
+    var later = text("02017G0119-20260429");
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    var insertedPoint12 = find(differences, "anx/pnt_12");
+    assertThat(insertedPoint12.kind()).isEqualTo(Kind.INSERTED);
+
+    var renumberedPoint13 = find(differences, "anx/pnt_13");
+    assertThat(renumberedPoint13.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(renumberedPoint13.shown(), "num"))).isEqualTo("[-12][+13].");
+
+    var renumberedPoint19 = find(differences, "anx/pnt_19");
+    assertThat(renumberedPoint19.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(renumberedPoint19.shown(), "num"))).isEqualTo("[-18][+19].");
+  }
+
+  @Test
+  void pairsUnitsInRealHighRiskPlantsFixture() {
+    var earlier = text("02018R2019-20250220");
+    var later = text("02018R2019-20250623");
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences).extracting(Difference::eId).doesNotContain("anx");
+    var changedPoint = find(differences, "anx/level_1/pnt_1");
+    assertThat(changedPoint.kind()).isEqualTo(Kind.CHANGED);
+  }
+
+  @Test
+  void pairsUnitsInRealSanctionsDecisionFixture() {
+    var earlier = text("02022D2319-20241216");
+    var later = text("02022D2319-20250326");
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences).extracting(Difference::eId).doesNotContain("anx_I");
+    var changedArticle = find(differences, "art_1/par_1");
+    assertThat(changedArticle.kind()).isEqualTo(Kind.CHANGED);
+  }
+
+  @Test
+  void pairsStructureLevelUnitRenumberedViaProvenance() {
+    var earlier =
+        text(
+            annexWithProvenance(
+                "anx_I", "ANNEX I", "Provisions on security screening.", "A", "replaced"),
+            annexWithProvenance(
+                "anx_II", "ANNEX II", "Provisions on chemical safety.", "A", "replaced"));
+    var later =
+        text(
+            annexWithProvenance(
+                "anx_I", "ANNEX I", "Provisions on chemical safety.", "B", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("anx_I", Kind.DELETED), tuple("anx_I", Kind.CHANGED));
+    var deleted = differences.getFirst();
+    assertThat(said(deleted.shown())).contains("[-Provisions on security screening.]");
+    var changed = differences.get(1);
+    assertThat(said(only(changed.shown(), "p"))).isEqualTo("Provisions on chemical safety.");
+    assertThat(said(only(changed.shown(), "num"))).isEqualTo("ANNEX [-II][+I]");
+  }
+
+  @Test
+  void resolvesAmendingActFromRenumberedAncestorForDeletedUnit() {
+    var earlier =
+        text(
+            articleWithReplacedAndRenumbered(
+                "art_5",
+                "Article 5",
+                "General rules and framework on transport safety across the Union.",
+                "ActA",
+                "",
+                paragraph(
+                    "art_5/par_1",
+                    "1.",
+                    "Scope.",
+                    pointWithNum(
+                        "art_5/par_1/pnt_a",
+                        "(a)",
+                        "Deleted point on inspection requirements.",
+                        "ActA",
+                        "replaced"))),
+            articleWithReplacedAndRenumbered(
+                "art_6",
+                "Article 6",
+                "Special security standards and oversight for international ports.",
+                "ActA",
+                "",
+                paragraph("art_6/par_1", "1.", "Security provisions.")));
+
+    var later =
+        text(
+            articleWithReplacedAndRenumbered(
+                "art_6",
+                "Article 6",
+                "General rules and framework on transport safety across the Union.",
+                "ActX",
+                "ActX",
+                paragraph("art_6/par_1", "1.", "Scope.")),
+            articleWithReplacedAndRenumbered(
+                "art_7",
+                "Article 7",
+                "Special security standards and oversight for international ports.",
+                "WrongAct",
+                "ActX",
+                paragraph("art_7/par_1", "1.", "Security provisions.")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    var deletedPoint = find(differences, "art_5/par_1/pnt_a");
+    assertThat(deletedPoint.kind()).isEqualTo(Kind.DELETED);
+    assertThat(deletedPoint.markers()).containsExactly(new Marker("ActX", "replaced", "art_6"));
+  }
+
+  @Test
+  void pairsRenumberedPointWhenPointWasAlreadyRenumberedByEarlierAct() {
+    var earlier =
+        text(
+            pointWithNum("1/pnt_12", "12.", "Old point twelve wording.", "ActW", "replaced"),
+            pointWithNum("1/pnt_13", "13.", "Point thirteen wording.", "ActX", "renumbered"));
+    var later =
+        text(pointWithNum("1/pnt_13", "13.", "Old point twelve wording.", "ActY", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_13", Kind.CHANGED), tuple("1/pnt_13", Kind.DELETED));
+    var changed = differences.getFirst();
+    assertThat(said(only(changed.shown(), "p"))).isEqualTo("Old point twelve wording.");
+    assertThat(said(only(changed.shown(), "num"))).isEqualTo("[-12][+13].");
+    var deleted = differences.get(1);
+    assertThat(said(deleted.shown())).contains("[-Point thirteen wording.]");
+  }
+
+  @Test
+  void pairsRenumberedPointWhenMarkerAttributeDiffersFromEarlierUnit() {
+    var earlier =
+        text(
+            pointWithNum(
+                "1/pnt_12", "12.", "Old point twelve wording.", "ActX", "M001", "replaced"),
+            pointWithNum(
+                "1/pnt_13", "13.", "Point thirteen wording.", "ActX", "M001", "renumbered"));
+    var later =
+        text(
+            pointWithNum(
+                "1/pnt_13", "13.", "Old point twelve wording.", "ActX", "M002", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_13", Kind.CHANGED), tuple("1/pnt_13", Kind.DELETED));
+    var changed = differences.getFirst();
+    assertThat(said(only(changed.shown(), "p"))).isEqualTo("Old point twelve wording.");
+    assertThat(said(only(changed.shown(), "num"))).isEqualTo("[-12][+13].");
+    var deleted = differences.get(1);
+    assertThat(said(deleted.shown())).contains("[-Point thirteen wording.]");
+  }
+
+  @Test
+  void pairsUnitWithLeftoverRenumberedMarkerUnderSameIdentifier() {
+    var earlier =
+        text(
+            pointWithNum("1/pnt_12", "12.", "Point twelve wording.", "ActW", "replaced"),
+            pointWithNum("1/pnt_13", "13.", "Point thirteen wording.", "ActX", "renumbered"));
+    var later =
+        text(
+            pointWithNum("1/pnt_12", "12.", "Point twelve wording.", "ActW", "replaced"),
+            pointWithNum("1/pnt_13", "13.", "Point thirteen wording.", "ActX", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences).isEmpty();
+  }
+
+  @Test
+  void showsUnitWithLeftoverRenumberedMarkerAsChangedUnderSameIdentifierWhenWordingChanges() {
+    var earlier =
+        text(pointWithNum("1/pnt_13", "13.", "Point thirteen old text.", "ActX", "renumbered"));
+    var later =
+        text(pointWithNum("1/pnt_13", "13.", "Point thirteen new text.", "ActX", "renumbered"));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("1/pnt_13", Kind.CHANGED));
+    var changed = differences.getFirst();
+    assertThat(said(only(changed.shown(), "p"))).isEqualTo("Point thirteen [-old][+new] text.");
+    assertThat(said(only(changed.shown(), "num"))).isEqualTo("13.");
+  }
+
   /**
    * A point {@code eId} with the words {@code words} and the units {@code units}. The act {@code
    * act} replaced it.
@@ -265,6 +740,122 @@ class DifferTest {
     children.add(block("p", words));
     children.addAll(List.of(units));
     return new Element("unit", Map.of("eId", eId, "kind", "point"), children, "");
+  }
+
+  /**
+   * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
+   * act}, action {@code action}, and child units {@code units}.
+   */
+  private static Element pointWithNum(
+      String eId, String num, String words, String act, String action, Element... units) {
+    return pointWithNum(eId, num, words, act, "", action, units);
+  }
+
+  /**
+   * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
+   * act}, marker identifier {@code marker}, action {@code action}, and child units {@code units}.
+   */
+  private static Element pointWithNum(
+      String eId,
+      String num,
+      String words,
+      String act,
+      String marker,
+      String action,
+      Element... units) {
+    var children = new ArrayList<Element>();
+    if (!act.isEmpty() && !action.isEmpty() && !"renumbered".equals(action)) {
+      var attrs = new HashMap<String, String>();
+      attrs.put("amendingAct", act);
+      attrs.put("action", action);
+      if (!marker.isEmpty()) {
+        attrs.put("marker", marker);
+      }
+      children.add(new Element("provenance", attrs, List.of(), ""));
+    }
+    Element numBlock;
+    if ("renumbered".equals(action)) {
+      var attrs = new HashMap<String, String>();
+      attrs.put("action", "renumbered");
+      attrs.put("amendingAct", act);
+      if (!marker.isEmpty()) {
+        attrs.put("marker", marker);
+      }
+      var changed =
+          new Element(
+              "changed", attrs, List.of(new Element("t", Map.of("v", num), List.of(), "")), "");
+      numBlock = new Element("num", Map.of(), List.of(changed), "");
+    } else {
+      numBlock = block("num", num);
+    }
+    children.add(numBlock);
+    children.add(block("p", words));
+    children.addAll(List.of(units));
+    return new Element("unit", Map.of("eId", eId, "kind", "point"), children, "");
+  }
+
+  /** An annex {@code eId} with provenance {@code act} and {@code action}. */
+  private static Element annexWithProvenance(
+      String eId, String num, String words, String act, String action, Element... units) {
+    var children = new ArrayList<Element>();
+    if (act != null && action != null) {
+      children.add(
+          new Element("provenance", Map.of("amendingAct", act, "action", action), List.of(), ""));
+    }
+    children.add(block("num", num));
+    if (!words.isEmpty()) {
+      children.add(block("p", words));
+    }
+    children.addAll(List.of(units));
+    return new Element("unit", Map.of("eId", eId, "kind", "annex"), children, "");
+  }
+
+  /** An article with replaced provenance and renumbered num. */
+  private static Element articleWithReplacedAndRenumbered(
+      String eId,
+      String num,
+      String words,
+      String replacedAct,
+      String renumberedAct,
+      Element... units) {
+    var children = new ArrayList<Element>();
+    if (!replacedAct.isEmpty()) {
+      children.add(
+          new Element(
+              "provenance",
+              Map.of("amendingAct", replacedAct, "action", "replaced"),
+              List.of(),
+              ""));
+    }
+    Element numBlock;
+    if (!renumberedAct.isEmpty()) {
+      var changed =
+          new Element(
+              "changed",
+              Map.of("action", "renumbered", "amendingAct", renumberedAct),
+              List.of(new Element("t", Map.of("v", num), List.of(), "")),
+              "");
+      numBlock = new Element("num", Map.of(), List.of(changed), "");
+    } else {
+      numBlock = block("num", num);
+    }
+    children.add(numBlock);
+    if (!words.isEmpty()) {
+      children.add(block("p", words));
+    }
+    children.addAll(List.of(units));
+    return new Element("unit", Map.of("eId", eId, "kind", "article"), children, "");
+  }
+
+  /** A paragraph {@code eId} with number {@code num} and words {@code words}. */
+  private static Element paragraph(String eId, String num, String words, Element... units) {
+    var children = new ArrayList<Element>();
+    children.add(block("num", num));
+    if (!words.isEmpty()) {
+      children.add(block("p", words));
+    }
+    children.addAll(List.of(units));
+    return new Element("unit", Map.of("eId", eId, "kind", "paragraph"), children, "");
   }
 
   private static Element numbered(String num, String heading) {

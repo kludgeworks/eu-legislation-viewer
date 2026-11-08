@@ -1,0 +1,1765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32017G0119(01)"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2022-01-28"
+           xml:lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="02017G0119-20220128">
+      <publication series="C"
+                   number="18"
+                   date="2017-01-19"
+                   page="1"
+                   document="2017/C 18/01"/>
+   </source>
+   <lifecycle produced="2026-04-16" sequence="001.001.0">
+      <eventRef type="amendment"
+                act="32022G0128(01)"
+                date="2021-12-22"
+                label="M1">
+         <publication series="C" number="44" date="2022-01-28" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Council Resolution on a revised Appendix I to the Model Agreement for setting up a Joint Investigation Team JIT)"/>
+                  </emphasis>
+               </docType>
+               <docNumber>
+                  <noteRef href="#note_1" marker="1"/>
+               </docNumber>
+            </p>
+         </longTitle>
+      </eventRef>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Council Resolution on a Model Agreement for setting up a Joint Investigation Team"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(JIT)"/>
+            </docNumber>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="level_1" kind="level" depth="1" rank="1">
+         <heading>
+            <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
+         </heading>
+         <p>
+            <t v="HAVING REGARD to Article 13 of the Convention on Mutual Assistance in Criminal Matters between the Member States of the European Union of "/>
+            <date date="2000-05-29">
+               <t v="29 May 2000"/>
+            </date>
+            <noteRef href="#note_2" marker="2"/>
+            <t v=" (hereinafter referred to as "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="the Convention"/>
+            </quote>
+            <t v=") and to the Council Framework Decision of "/>
+            <date date="2002-06-13">
+               <t v="13 June 2002"/>
+            </date>
+            <noteRef href="#note_3" marker="3"/>
+            <t v=" on Joint Investigation Teams (hereinafter referred to as the "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Framework Decision"/>
+            </quote>
+            <t v="),"/>
+         </p>
+         <p>
+            <t v="HAVING REGARD to Council Resolution 2010/C-70/01 on a Model Agreement for setting up a Joint Investigation Team (JIT)"/>
+            <noteRef href="#note_4" marker="4"/>
+            <t v=" adopted on "/>
+            <date date="2010-02-26">
+               <t v="26 February 2010"/>
+            </date>
+            <t v=","/>
+         </p>
+         <p>
+            <t v="AWARE that a significant number of JITs have been set up since 2010 between an increasing number of Member States and that, in this context, the JIT Model Agreement is widely used by practitioners and found useful to facilitate the setting up of JITs, since it represents a flexible framework enabling cooperation despite differences in national legislations,"/>
+         </p>
+         <p>
+            <t v="CONVINCED that, on the basis of best practices derived from recent practical experience in the establishment and operation of steadily increasing number JITs, there is room for simplifying the existing Model Agreement and speeding up the setting-up process,"/>
+         </p>
+         <p>
+            <t v="BEARING IN MIND the conclusions of the network of JIT experts set up in 2005, particularly the conclusions reached at its 9th, 10th, 11th, and 12th annual meetings,"/>
+         </p>
+         <p>
+            <t v="CONVINCED that based on the experience gained in the last years in the involvement of third States in Joint Investigation Teams, the Model Agreement should also enable the establishment of JITs with non-EU States, on the basis of the relevant international instruments,"/>
+         </p>
+         <p>
+            <t v="TAKING INTO ACCOUNT, in line with Article 5(1) of Regulation (EU) 2016/794 of "/>
+            <date date="2016-05-11">
+               <t v="11 May 2016"/>
+            </date>
+            <t v=" (the "/>
+            <quote startQuote="‘" endQuote="’">
+               <t v="Europol Regulation"/>
+            </quote>
+            <t v=")"/>
+            <noteRef href="#note_5" marker="5"/>
+            <t v=", the need to specify in the Model Agreement the conditions relating to the participation of Europol staff in a JIT,"/>
+         </p>
+         <p>
+            <t v="ENCOURAGES the competent authorities of the Member States that wish to set up a Joint Investigation Team with the competent authorities from other Member States, in accordance with the terms of the Framework Decision and the Convention, or from non-EU States, on the basis of the relevant international instruments, to use, where appropriate, the Model Agreement set out in the Annex to this Resolution in order to agree upon the modalities for the Joint Investigation Team."/>
+         </p>
+      </unit>
+   </body>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <num>
+            <t v="ANNEX"/>
+         </num>
+         <subheading>
+            <t v="MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM"/>
+         </subheading>
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+            <heading>
+               <emphasis kind="b">
+                  <t v="In accordance with:"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Please indicate here the applicable legal bases, which may be taken from – but not limited to — the instruments listed below:"/>
+               </emphasis>
+            </p>
+            <list kind="dash">
+               <unit eId="anx/level_1/idt_1" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 13 of the Convention on Mutual Assistance in Criminal Matters between the Member States of the European Union of "/>
+                        <date date="2000-05-29">
+                           <t v="29 May 2000"/>
+                        </date>
+                     </emphasis>
+                     <noteRef href="#note_6" marker="6"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_2" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Council Framework Decision of "/>
+                        <date date="2002-06-13">
+                           <t v="13 June 2002"/>
+                        </date>
+                        <t v=" on joint investigation teams"/>
+                     </emphasis>
+                     <noteRef href="#note_7" marker="7"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_3" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 1 of the Agreement between the European Union and the Republic of Iceland and the Kingdom of Norway on the application of certain provisions of the Convention of "/>
+                        <date date="2000-05-29">
+                           <t v="29 May 2000"/>
+                        </date>
+                        <t v=" on Mutual Assistance in Criminal Matters between the Member States of the European Union and the 2001 Protocol thereto of "/>
+                        <date date="2003-12-29">
+                           <t v="29 December 2003"/>
+                        </date>
+                     </emphasis>
+                     <noteRef href="#note_8" marker="8"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_4" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 5 of the Agreement on Mutual Legal Assistance between the European Union and the United States of America"/>
+                     </emphasis>
+                     <noteRef href="#note_9" marker="9"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_5" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 20 of the second additional protocol to the European Convention on Mutual Assistance in Criminal Matters of "/>
+                        <date date="1959-04-20">
+                           <t v="20 April 1959"/>
+                        </date>
+                     </emphasis>
+                     <noteRef href="#note_10" marker="10"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_6" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Articl 9(1)(c) of the United Nations Convention against Illicit Traffic in Narcotic Drugs and Psychotropic Substances (1988)"/>
+                     </emphasis>
+                     <noteRef href="#note_11" marker="11"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_7" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 19 of the United Nations Convention against Transnational Organized Crime (2000)"/>
+                     </emphasis>
+                     <noteRef href="#note_12" marker="12"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_8" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 49 of the United Nations Convention against Corruption (2003)"/>
+                     </emphasis>
+                     <noteRef href="#note_13" marker="13"/>
+                     <t v=";"/>
+                  </p>
+               </unit>
+               <unit eId="anx/level_1/idt_9" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Article 27 of the Police Cooperation Convention for South East Europe (2006)"/>
+                     </emphasis>
+                     <noteRef href="#note_14" marker="14"/>
+                     <t v=".]"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx/pnt_1"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="1."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Parties to the Agreement"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The following parties have concluded an agreement on the setting up of a joint investigation team, hereafter referred to as "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="JIT"/>
+               </quote>
+               <t v=":"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="anx/pnt_1/pnt_1" kind="point" numbered="true">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="["/>
+                     <emphasis kind="i">
+                        <t v="Insert name of the first competent agency/administration of a State as a Party to the agreement"/>
+                     </emphasis>
+                     <t v="]"/>
+                  </p>
+                  <p>
+                     <t v="And"/>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_1/pnt_2" kind="point" numbered="true">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="["/>
+                     <emphasis kind="i">
+                        <t v="Insert name of second competent agency/administration of a State as a party to the agreement"/>
+                     </emphasis>
+                     <t v="]"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The parties to this agreement may decide, by common consent, to invite other States' agencies or administrations to become parties to this agreement."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_2"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="2."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Purpose of the JIT"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="This agreement shall cover the setting up of a JIT for the following purpose:"/>
+            </p>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Please provide a description of the specific purpose of the JIT."/>
+               </emphasis>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="This description should include the circumstances of the crime(s) being investigated in the States involved (date, place and nature) and, if applicable, reference to the ongoing domestic procedures. References to case-related personal data are to be kept to a minimum."/>
+               </emphasis>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="This section should also briefly describe the objectives of the JIT (including e.g. collection of evidence, coordinated arrest of suspects, asset freezing …). In this context, Parties should consider including the initiation and completion of a financial investigation as one of the JIT objectives"/>
+               </emphasis>
+               <noteRef href="#note_15" marker="15"/>
+               <t v=".]"/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_3"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="3."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Period covered by this agreement"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The parties agree that the JIT will operate for ["/>
+               <emphasis kind="i">
+                  <t v="please indicate specific duration"/>
+               </emphasis>
+               <t v="], starting from the entry into force of this agreement."/>
+            </p>
+            <p>
+               <t v="This agreement shall enter into force when the last party to the JIT has signed it. This period may be extended by mutual consent."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_4"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="4."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="States in which the JIT will operate"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The JIT will operate in the States of the parties to this agreement."/>
+            </p>
+            <p>
+               <t v="The team shall carry out its operations in accordance with the law of the States in which it operates at any particular time."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_5"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="5."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="JIT Leader(s)"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The leaders of the team shall be representatives of the competent authorities participating in criminal investigations from the States in which the team operates at any particular time, under whose leadership the members of the JIT shall carry out their tasks."/>
+            </p>
+            <p>
+               <t v="The parties have designated the following persons to act as leaders of the JIT:"/>
+            </p>
+            <table cols="4">
+               <tr header="true">
+                  <td header="true">
+                     <p>
+                        <t v="Name"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Position/Rank"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="Authority/Agency"/>
+                     </p>
+                  </td>
+                  <td header="true">
+                     <p>
+                        <t v="State"/>
+                     </p>
+                  </td>
+               </tr>
+               <tr>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+               </tr>
+               <tr>
+                  <td/>
+                  <td/>
+                  <td/>
+                  <td/>
+               </tr>
+            </table>
+            <p>
+               <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement will be designated without delay. Written notification of such replacement shall be provided to all concerned parties and annexed to this agreement."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_6"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="6."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Members of the JIT"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="In addition to the persons referred to in point 5, a list of JIT members shall be provided by the parties in a dedicated annex to this agreement"/>
+               <noteRef href="#note_16" marker="16"/>
+               <t v="."/>
+            </p>
+            <p>
+               <t v="Should any of the JIT members be unable to carry out their duties, a replacement will be designated without delay by written notification sent by the competent leader of the JIT."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_7"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="7."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Participants in the JIT"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Parties to the JIT agree to involve ["/>
+               <emphasis kind="i">
+                  <t v="Insert here e.g., Eurojust, Europol, OLAF…"/>
+               </emphasis>
+               <t v="] as participants in the JIT. Specific arrangements related to the participation of ["/>
+               <emphasis kind="i">
+                  <t v="Insert name"/>
+               </emphasis>
+               <t v="] are to be dealt with in the relevant appendix to this agreement."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_8"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="8."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Gathering of information and evidence"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The JIT leaders may agree on specific procedures to be followed regarding the gathering of information and evidence by the JIT in the States in which it operates."/>
+            </p>
+            <p>
+               <t v="The parties entrust the JIT leaders with the task of giving advice on the obtaining of evidence."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_9"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="9."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Access to information and evidence"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The JIT leaders shall specify the processes and procedures to be followed regarding the sharing between them of information and evidence obtained pursuant to the JIT in each Member State."/>
+            </p>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="In addition, parties may agree on a clause containing more specific rules on access, handling and use of information and evidence. Such clause may in particular be deemed appropriate when the JIT is based neither on the EU Convention nor on the Framework Decision (which already include specific provisions in this respect – see Article 13(10) of the Convention)"/>
+               </emphasis>
+               <t v=".]"/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_10"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="10."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Exchange of information and evidence obtained prior to the JIT"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Information or evidence already available at the time of the entry into force of this agreement, and which pertains to the investigation described in this agreement, may be shared between the parties in the framework of this agreement."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_11"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="11."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Information and evidence obtained from States not participating in the JIT"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="Should a need arise for a mutual legal assistance request to be sent to a State that does not participate in the JIT, the requesting State shall consider seeking the agreement of the requested State to share with the other JIT party/parties the information or evidence obtained as a result of the execution of the request."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_12"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="12."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Specific arrangements related to seconded members"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="When deemed appropriate, parties may, under this clause, agree on the specific conditions under which seconded members may:"/>
+               </emphasis>
+            </p>
+            <list kind="dash">
+               <unit eId="anx/pnt_12/idt_1" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="carry out investigations – including in particular coercive measures — in the State of operation (if deemed appropriate, domestic legislations may be quoted here or, alternatively, annexed to this agreement)"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_12/idt_2" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="request measures to be carried out in the State of secondment"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_12/idt_3" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="share information collected by the team"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_12/idt_4" kind="indent">
+                  <p>
+                     <emphasis kind="i">
+                        <t v="carry/use weapons"/>
+                     </emphasis>
+                     <t v="]"/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx/pnt_13"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="13."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Amendments to the agreement"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="This agreement may be amended by mutual consent of the parties. Unless otherwise stated in this agreement, amendments can be made in any written form agreed upon by the parties"/>
+               <noteRef href="#note_17" marker="17"/>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_14"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="14."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Consultation and coordination"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The parties will ensure they consult with each other whenever needed for the coordination of the activities of the team, including, but not limited to:"/>
+            </p>
+            <list kind="dash">
+               <unit eId="anx/pnt_14/idt_1" kind="indent">
+                  <p>
+                     <t v="the review of the progress achieved and the performance of the team"/>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_14/idt_2" kind="indent">
+                  <p>
+                     <t v="the timing and method of intervention by the investigators"/>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_14/idt_3" kind="indent">
+                  <p>
+                     <t v="the best manner in which to undertake eventual legal proceedings, consideration of appropriate trial venue, and confiscation."/>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <unit eId="anx/pnt_15"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="15."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Communication with the media"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="If envisaged, timing and content of communication with the media shall be agreed upon by the parties and followed by the participants."/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_16"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="16."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Evaluation"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="The parties may consider evaluating the performance of the JIT, the best practice used and lessons learned. A dedicated meeting may be arranged to carry out the evaluation."/>
+            </p>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="In this context, parties may refer to the specific JITs evaluation form developed by the EU Network of JITs experts. EU funding may be sought to support the evaluation meeting."/>
+               </emphasis>
+               <t v="]"/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_17"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="17."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Specific arrangements"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Please insert, if applicable. The following sub-chapters are intended to highlight possible areas that may be specifically described"/>
+               </emphasis>
+               <t v=".]"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="anx/pnt_17/pnt_17.1" kind="point" numbered="true">
+                  <num>
+                     <t v="17.1."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Rules of disclosure"/>
+                     </emphasis>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Parties may wish to clarify here applicable national rules on communication to the defence and/or annex a copy or a summary of them"/>
+               </emphasis>
+               <t v=".]"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="anx/pnt_17/list_2/pnt_17.2" kind="point" numbered="true">
+                  <num>
+                     <t v="17.2."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Management of assets/asset recovery arrangements"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_17/list_2/pnt_17.3" kind="point" numbered="true">
+                  <num>
+                     <t v="17.3."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Liability"/>
+                     </emphasis>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Parties may wish to regulate this aspect, particularly when the JIT is based neither on the EU Convention nor on the Framework Decision (which already include specific provisions in this respect – see Articles 15 and 16 of the Convention)"/>
+               </emphasis>
+               <t v=".]"/>
+            </p>
+         </unit>
+         <unit eId="anx/pnt_18"
+               kind="level"
+               depth="1"
+               numbered="true"
+               rank="2">
+            <num>
+               <t v="18."/>
+            </num>
+            <heading>
+               <emphasis kind="b">
+                  <t v="Organisational arrangements"/>
+               </emphasis>
+            </heading>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Please insert, if applicable. The following sub-chapters are intended to highlight possible areas that may be specifically described"/>
+               </emphasis>
+               <t v=".]"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="anx/pnt_18/pnt_18.1" kind="point" numbered="true">
+                  <num>
+                     <t v="18.1."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Facilities (office accommodation, vehicles, other technical equipment)"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_18/pnt_18.2" kind="point" numbered="true">
+                  <num>
+                     <t v="18.2."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Costs/expenditures/insurance"/>
+                     </emphasis>
+                  </p>
+               </unit>
+               <unit eId="anx/pnt_18/pnt_18.3" kind="point" numbered="true">
+                  <num>
+                     <t v="18.3."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Financial support to JITs"/>
+                     </emphasis>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="["/>
+               <emphasis kind="i">
+                  <t v="Under this clause, Parties may agree on specific arrangements concerning roles and responsibilities within the team concerning the submission of applications for EU funding."/>
+               </emphasis>
+               <t v="]"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="anx/pnt_18/list_2/pnt_18.4" kind="point" numbered="true">
+                  <num>
+                     <t v="18.4."/>
+                  </num>
+                  <p>
+                     <emphasis kind="i">
+                        <t v="Language of communication"/>
+                     </emphasis>
+                  </p>
+               </unit>
+            </list>
+         </unit>
+         <p>
+            <t v="Done at [place of signature], [date]"/>
+         </p>
+         <p>
+            <t v="[Signatures of all parties]"/>
+         </p>
+         <unit eId="anx/app_I" kind="annex" eurlexAnchor="2" rank="2">
+            <provenance amendingAct="32022G0128(01)"
+                        action="replaced"
+                        location="TO"
+                        marker="O001001M001000"/>
+            <num>
+               <t v="Appendix I"/>
+            </num>
+            <subheading>
+               <t v="TO THE MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM (2017/C 18/01)"/>
+            </subheading>
+            <unit eId="anx/app_I/level_1" kind="level" depth="1" rank="3">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Participants in a JIT"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/app_I/pnt_I"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="4">
+               <num>
+                  <t v="I."/>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Arrangement with Eurojust/Europol/the Commission (OLAF):"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_1" kind="level" depth="3"/>
+            <unit eId="anx/app_I/pnt_I/level_1/level_1"
+                  kind="level"
+                  depth="4"
+                  rank="5">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Eurojust’s participation in the JIT"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The following persons shall participate in the JIT:"/>
+               </p>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Name"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Position"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                  </tr>
+               </table>
+               <p>
+                  <t v="According to point ["/>
+                  <emphasis kind="i">
+                     <t v="insert relevant point"/>
+                  </emphasis>
+                  <t v="] of the JIT Agreement, ["/>
+                  <emphasis kind="i">
+                     <t v="insert name of Member State"/>
+                  </emphasis>
+                  <t v="] has decided that its National Member of Eurojust (Deputy/Assistant to the National Member of Eurojust*) shall participate in the joint investigation team."/>
+               </p>
+               <p>
+                  <t v="Eurojust shall support the JIT’s activities by providing its expertise and facilities for the coordination of the investigations and prosecutions in line with the applicable legal framework."/>
+               </p>
+               <p>
+                  <t v="["/>
+                  <emphasis kind="i">
+                     <t v="Insert name of third country"/>
+                  </emphasis>
+                  <t v="] has decided that its Liaison Prosecutor posted at Eurojust shall participate in the joint investigation team as a formal representative of ["/>
+                  <emphasis kind="i">
+                     <t v="insert name of third country"/>
+                  </emphasis>
+                  <t v="] in accordance with a cooperation agreement signed between Eurojust and ["/>
+                  <emphasis kind="i">
+                     <t v="insert name of third country"/>
+                  </emphasis>
+                  <t v="]."/>
+               </p>
+               <p>
+                  <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement shall be designated. Written notification of the replacement shall be provided to all parties concerned, and annexed to this agreement."/>
+               </p>
+               <p>
+                  <t v="Date/signature* (* if applicable)"/>
+               </p>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_2" kind="level" depth="3"/>
+            <unit eId="anx/app_I/pnt_I/level_2/level_1"
+                  kind="level"
+                  depth="4"
+                  rank="5">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Europol’s participation in the JIT"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Parties to the JIT (ISO codes preferred):"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="Date JIT signed by parties:"/>
+                  </emphasis>
+               </p>
+               <p>
+                  <emphasis kind="b">
+                     <t v="References (optional):"/>
+                  </emphasis>
+               </p>
+            </unit>
+            <unit eId="anx/app_I/pnt_1"
+                  kind="level"
+                  depth="5"
+                  numbered="true"
+                  rank="6">
+               <num>
+                  <t v="1."/>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Europol participants in the JIT"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The following persons (identified by staff number) shall participate in the JIT:"/>
+               </p>
+               <table cols="3">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Europol Staff number"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Position"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Team/Unit"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                     <td/>
+                  </tr>
+               </table>
+               <p>
+                  <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement shall be designated. Written notification of the replacement shall be provided to all parties concerned, and annexed to this agreement."/>
+               </p>
+            </unit>
+            <unit eId="anx/app_I/pnt_2"
+                  kind="level"
+                  depth="5"
+                  numbered="true"
+                  rank="6">
+               <num>
+                  <t v="2."/>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Conditions of participation for Europol staff"/>
+                  </emphasis>
+               </heading>
+               <list kind="other">
+                  <unit eId="anx/app_I/pnt_2/pnt_2.1" kind="point" numbered="true">
+                     <num>
+                        <t v="2.1."/>
+                     </num>
+                     <p>
+                        <t v="Europol staff participating in the joint investigation team shall assist all the members of the team and provide the full range of Europol’s support services to the joint investigation as provided for and in accordance with the Europol Regulation. They shall not apply any coercive measures. However, participating Europol staff may, if instructed and under the guidance of the leader(s) of the team, be present during operational activities of the joint investigation team, in order to render on-the-spot advice and assistance to the members of the team who execute coercive measures, provided that no legal constraints exist at national level where the team operates."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_2/pnt_2.2" kind="point" numbered="true">
+                     <num>
+                        <t v="2.2."/>
+                     </num>
+                     <p>
+                        <t v="Article 11(a) of the Protocol on the Privileges and Immunities of the European Union shall not apply to Europol staff during their participation in the JIT"/>
+                        <emphasis kind="sup">
+                           <t v="1"/>
+                        </emphasis>
+                        <t v=". During the operations of the JIT, Europol staff shall, with respect to offences committed against or by them, be subject to the national law of the Member State of operation applicable to persons with comparable functions."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_2/pnt_2.3" kind="point" numbered="true">
+                     <num>
+                        <t v="2.3."/>
+                     </num>
+                     <p>
+                        <t v="Europol staff may liaise directly with members of the JIT and provide all members of the JIT with all necessary information in accordance with the Europol Regulation"/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="Date/signature"/>
+               </p>
+               <annotation>
+                  <annotation>
+                     <unit eId="anx/app_I/pnt_2/ann_1/list_2/pnt_1"
+                           kind="point"
+                           numbered="true">
+                        <num>
+                           <emphasis kind="sup">
+                              <t v="1"/>
+                           </emphasis>
+                        </num>
+                        <p>
+                           <t v="Protocol on the Privileges and Immunities of the European Union (consolidated version) ("/>
+                           <ref kind="oj"
+                                series="C"
+                                number="326"
+                                date="2012-10-26"
+                                page="266">
+                              <t v="OJ C 326, 26.10.2012, p. 266"/>
+                           </ref>
+                           <t v=")."/>
+                        </p>
+                     </unit>
+                  </annotation>
+               </annotation>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_3" kind="level" depth="3"/>
+            <unit eId="anx/app_I/pnt_I/level_3/level_1"
+                  kind="level"
+                  depth="4"
+                  rank="5">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="OLAF’s participation in the JIT"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_1"
+                  kind="level"
+                  depth="5"
+                  rank="6">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="agreed between the competent judicial authorities of [Member States] on [date]"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="OLAF"/>
+                  <emphasis kind="sup">
+                     <t v="1"/>
+                  </emphasis>
+                  <t v=" shall participate in an assistance, expertise and coordination capacity (if agreed) in the JIT. This participation shall take place under the conditions laid down in this arrangement and as provided for in the applicable EU instruments."/>
+               </p>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_2"
+                  kind="level"
+                  depth="5"
+                  rank="6">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Participants"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The following persons from OLAF shall participate in the JIT:"/>
+               </p>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Name"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Function"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                  </tr>
+               </table>
+               <p>
+                  <t v="OLAF shall notify the other parties of the JIT in writing of any addition to or removal from the above list of persons."/>
+               </p>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3"
+                  kind="level"
+                  depth="5"
+                  rank="6">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Specific arrangements related to the participation of OLAF"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1"
+                  kind="level"
+                  depth="6"
+                  numbered="true"
+                  rank="7">
+               <num>
+                  <t v="1."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="Principles of participation"/>
+                  </emphasis>
+               </heading>
+               <list kind="other">
+                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.1"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="1.1."/>
+                     </num>
+                     <p>
+                        <t v="OLAF staff participating in the JIT shall assist with gathering evidence and provide expertise to the members of the team in accordance with the OLAF legislation and in accordance with the national law of the Member State where the team operates."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.2"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="1.2."/>
+                     </num>
+                     <p>
+                        <t v="The OLAF staff participating in the JIT shall work under the guidance of the leader(s) of the team as identified in point ["/>
+                        <emphasis kind="i">
+                           <t v="insert relevant point"/>
+                        </emphasis>
+                        <t v="] of the agreement, "/>
+                        <quote startQuote="‘" endQuote="’">
+                           <t v="JIT leaders"/>
+                        </quote>
+                        <t v=", and shall provide any assistance and expertise necessary to achieve the objectives and purpose of the JIT, as identified by the leader(s) of the team."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.3"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="1.3."/>
+                     </num>
+                     <p>
+                        <t v="OLAF staff have the right not to perform tasks which they consider to be in breach of their obligations under the OLAF legislation. In such cases, the OLAF staff member shall inform the Director-General of OLAF or a representative thereof. OLAF shall consult with the leader(s) of the team with a view to finding a mutually satisfactory solution."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.4"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="1.4."/>
+                     </num>
+                     <p>
+                        <t v="OLAF staff participating in the JIT shall not take any coercive measures. However, participating OLAF staff may, under the guidance of the leader(s) of the team, be present during operational activities of the JIT, in order to render on-the-spot advice and assistance to the members of the team who execute coercive measures, provided that no legal constraints exist at national level where the team operates."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2"
+                  kind="level"
+                  depth="6"
+                  numbered="true"
+                  rank="7">
+               <num>
+                  <t v="2."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="Type of assistance"/>
+                  </emphasis>
+               </heading>
+               <list kind="other">
+                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2/pnt_2.1"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="2.1."/>
+                     </num>
+                     <p>
+                        <t v="Participating OLAF staff shall provide the full range of OLAF’s assistance services, in accordance with the OLAF legislation, as far as required or requested. This includes providing operational and technical assistance and expertise to the criminal investigations, and providing and verifying information, including forensic data and analytical reports."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2/pnt_2.2"
+                        kind="point"
+                        numbered="true">
+                     <num>
+                        <t v="2.2."/>
+                     </num>
+                     <p>
+                        <t v="OLAF staff participating in the JIT may assist in all activities, in particular by providing administrative, documentary and logistical support, strategic, technical and forensic support, and tactical and operational expertise and advice to the members of the JIT, as required by the leader(s) of the team."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx/app_I/pnt_3"
+                  kind="level"
+                  depth="6"
+                  numbered="true"
+                  rank="7">
+               <num>
+                  <t v="3."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="Access to OLAF’s information processing systems"/>
+                  </emphasis>
+               </heading>
+               <list kind="other">
+                  <unit eId="anx/app_I/pnt_3/pnt_3.1" kind="point" numbered="true">
+                     <num>
+                        <t v="3.1."/>
+                     </num>
+                     <p>
+                        <t v="OLAF staff may liaise directly with members of the JIT and provide members and seconded members of the JIT, in accordance with the OLAF legislation, with information from relevant files in the OLAF Case Management System. The conditions and restrictions on the use of this information must be respected."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_3/pnt_3.2" kind="point" numbered="true">
+                     <num>
+                        <t v="3.2."/>
+                     </num>
+                     <p>
+                        <t v="Information obtained by OLAF staff members while part of the JIT may, with the consent and under the responsibility of the Member State which provided the information, be included in the relevant files of the OLAF Case Management System."/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+            <unit eId="anx/app_I/pnt_4"
+                  kind="level"
+                  depth="6"
+                  numbered="true"
+                  rank="7">
+               <num>
+                  <t v="4."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="Costs and equipment"/>
+                  </emphasis>
+               </heading>
+               <list kind="other">
+                  <unit eId="anx/app_I/pnt_4/pnt_4.1" kind="point" numbered="true">
+                     <num>
+                        <t v="4.1."/>
+                     </num>
+                     <p>
+                        <t v="The Member State in which investigative measures are being undertaken shall be responsible for providing the technical equipment (office equipment, accommodation, telecommunications, etc.) necessary for the accomplishment of the tasks and shall pay the costs incurred. That Member State shall also provide office communication equipment and other technical equipment necessary for the (encrypted) exchange of data. The costs shall be paid by that Member State."/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_4/pnt_4.2" kind="point" numbered="true">
+                     <num>
+                        <t v="4.2."/>
+                     </num>
+                     <p>
+                        <t v="OLAF shall cover the costs incurred as a result of the participation of OLAF staff in the JIT."/>
+                     </p>
+                  </unit>
+               </list>
+               <p>
+                  <t v="Date/signature"/>
+               </p>
+               <annotation>
+                  <annotation>
+                     <unit eId="anx/app_I/pnt_4/ann_2/list_2/pnt_1"
+                           kind="point"
+                           numbered="true">
+                        <num>
+                           <emphasis kind="sup">
+                              <t v="1"/>
+                           </emphasis>
+                        </num>
+                        <p>
+                           <t v="As set up by Commission Decision 1999/352/EC, ECSC, Euratom of "/>
+                           <date date="1999-04-28">
+                              <t v="28 April 1999"/>
+                           </date>
+                           <t v=" establishing the European Anti-Fraud Office (OLAF), last amended by Commission Decision (EU) 2015/512 of "/>
+                           <date date="2015-03-25">
+                              <t v="25 March 2015"/>
+                           </date>
+                           <t v=", and as mandated by Regulation (EU, Euratom) No 883/2013 of the European Parliament and of the Council of "/>
+                           <date date="2013-09-11">
+                              <t v="11 September 2013"/>
+                           </date>
+                           <t v=" concerning investigations conducted by the European Anti-Fraud Office (OLAF) and Council Regulation (EC, Euratom) No 2988/95 of "/>
+                           <date date="1995-12-18">
+                              <t v="18 December 1995"/>
+                           </date>
+                           <t v=" on the protection of the European Communities financial interests (referred to herein as "/>
+                           <quote startQuote="‘" endQuote="’">
+                              <t v="the OLAF legislation"/>
+                           </quote>
+                           <t v=")."/>
+                        </p>
+                     </unit>
+                  </annotation>
+               </annotation>
+            </unit>
+            <unit eId="anx/app_I/pnt_II"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="4">
+               <num>
+                  <t v="II."/>
+               </num>
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Arrangement with bodies competent by virtue of provisions adopted within the framework of the Treaties, and other international bodies:"/>
+                  </emphasis>
+               </heading>
+            </unit>
+            <unit eId="anx/app_I/pnt_II/pnt_1"
+                  kind="level"
+                  depth="3"
+                  numbered="true"
+                  rank="5">
+               <num>
+                  <t v="1."/>
+               </num>
+               <heading>
+                  <t v="The following persons shall participate in the JIT:"/>
+               </heading>
+               <table cols="3">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="Name"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Position/Rank"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Organisation"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                     <td/>
+                  </tr>
+                  <tr>
+                     <td/>
+                     <td/>
+                     <td/>
+                  </tr>
+               </table>
+               <p>
+                  <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement shall be designated. Written notification of such replacement shall be provided to all parties concerned, and annexed to this agreement."/>
+               </p>
+            </unit>
+            <unit eId="anx/app_I/pnt_II/pnt_2"
+                  kind="level"
+                  depth="3"
+                  numbered="true"
+                  rank="5">
+               <num>
+                  <t v="2."/>
+               </num>
+               <heading>
+                  <t v="Specific arrangements:"/>
+               </heading>
+            </unit>
+            <unit eId="anx/app_I/pnt_2.1"
+                  kind="level"
+                  depth="4"
+                  numbered="true"
+                  rank="6">
+               <num>
+                  <t v="2.1."/>
+               </num>
+               <heading>
+                  <emphasis kind="i">
+                     <t v="First participant in the agreement"/>
+                  </emphasis>
+               </heading>
+               <list kind="other">
+                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.1" kind="point" numbered="true">
+                     <num>
+                        <t v="2.1.1."/>
+                     </num>
+                     <p>
+                        <t v="Purpose of participation"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.2" kind="point" numbered="true">
+                     <num>
+                        <t v="2.1.2."/>
+                     </num>
+                     <p>
+                        <t v="Rights conferred (if any)"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.3" kind="point" numbered="true">
+                     <num>
+                        <t v="2.1.3."/>
+                     </num>
+                     <p>
+                        <t v="Provisions concerning costs"/>
+                     </p>
+                  </unit>
+                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.4" kind="point" numbered="true">
+                     <num>
+                        <t v="2.1.4."/>
+                     </num>
+                     <p>
+                        <t v="Purpose and scope of participation"/>
+                     </p>
+                  </unit>
+               </list>
+            </unit>
+         </unit>
+         <unit eId="anx/app_II" kind="annex" eurlexAnchor="3" rank="2">
+            <num>
+               <t v="Appendix II"/>
+            </num>
+            <subheading>
+               <t v="TO THE MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM"/>
+            </subheading>
+            <unit eId="anx/app_II/level_1" kind="level" depth="1" rank="3">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="Agreement to extend a joint investigation team"/>
+                  </emphasis>
+               </heading>
+               <p>
+                  <t v="The parties have agreed to extend the joint investigation team (hereinafter "/>
+                  <quote startQuote="‘" endQuote="’">
+                     <t v="JIT"/>
+                  </quote>
+                  <t v=") set up by agreement of ["/>
+                  <emphasis kind="i">
+                     <t v="insert date"/>
+                  </emphasis>
+                  <t v="], done at ["/>
+                  <emphasis kind="i">
+                     <t v="insert place of signature"/>
+                  </emphasis>
+                  <t v="], a copy of which is attached hereto."/>
+               </p>
+               <p>
+                  <t v="The parties consider that the JIT should be extended beyond the period for which it was set up ["/>
+                  <emphasis kind="i">
+                     <t v="insert date on which period ends"/>
+                  </emphasis>
+                  <t v="], since its purpose as established in Article ["/>
+                  <emphasis kind="i">
+                     <t v="insert article on purpose of JIT here"/>
+                  </emphasis>
+                  <t v="] has not yet been achieved."/>
+               </p>
+               <p>
+                  <t v="The circumstances requiring the JIT to be extended have been carefully examined by all parties. The extension of the JIT is considered essential to the achievement of the purpose for which the JIT was set up."/>
+               </p>
+               <p>
+                  <t v="The JIT will therefore remain in operation for an additional period of ["/>
+                  <emphasis kind="i">
+                     <t v="please indicate specific duration"/>
+                  </emphasis>
+                  <t v="] from the entry into force of this agreement. The above period may be extended further by the parties by mutual consent."/>
+               </p>
+               <p>
+                  <t v="Date/signature"/>
+               </p>
+            </unit>
+         </unit>
+         <unit eId="anx/app_III" kind="annex" eurlexAnchor="4" rank="2">
+            <num>
+               <t v="Appendix III"/>
+            </num>
+            <subheading>
+               <t v="TO THE MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM"/>
+            </subheading>
+            <p>
+               <t v="The parties have agreed to amend the written agreement setting up a joint investigation team (hereinafter "/>
+               <quote startQuote="‘" endQuote="’">
+                  <t v="JIT"/>
+               </quote>
+               <t v=") of ["/>
+               <emphasis kind="i">
+                  <t v="insert date"/>
+               </emphasis>
+               <t v="], done at ["/>
+               <emphasis kind="i">
+                  <t v="insert place"/>
+               </emphasis>
+               <t v="], a copy of which is attached hereto."/>
+            </p>
+            <p>
+               <t v="The signatories have agreed that the following articles shall be amended as follows:"/>
+            </p>
+            <list kind="arabic">
+               <unit eId="anx/app_III/pnt_1" kind="point" numbered="true">
+                  <num>
+                     <t v="1."/>
+                  </num>
+                  <p>
+                     <t v="(Amendment …)"/>
+                  </p>
+               </unit>
+               <unit eId="anx/app_III/pnt_2" kind="point" numbered="true">
+                  <num>
+                     <t v="2."/>
+                  </num>
+                  <p>
+                     <t v="(Amendment …)"/>
+                  </p>
+               </unit>
+            </list>
+            <p>
+               <t v="The circumstances requiring the JIT agreement to be amended have been carefully examined by all parties. The amendment(s) to the JIT agreement is/are deemed essential to achieve the purpose for which the JIT was set up."/>
+            </p>
+            <p>
+               <t v="Date/signature"/>
+            </p>
+         </unit>
+      </unit>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="Resolution approved by the Council by written procedure on "/>
+            <date date="2021-12-22">
+               <t v="22 December 2021"/>
+            </date>
+            <t v=" (ST 15085/21 and CM 5966/21)."/>
+         </p>
+      </note>
+      <note eId="note_2" marker="2" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="197"
+                 date="2000-07-12"
+                 page="3">
+               <t v="OJ C 197, 12.7.2000, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_3" marker="3" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="162"
+                 date="2002-06-20"
+                 page="1">
+               <t v="OJ L 162, 20.6.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_4" marker="4" kind="footnote">
+         <p>
+            <ref kind="oj" series="C" number="70" date="2010-03-19" page="1">
+               <t v="OJ C 70, 19.3.2010, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_5" marker="5" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="135"
+                 date="2016-05-24"
+                 page="53">
+               <t v="OJ L 135, 24.5.2016, p. 53"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_6" marker="6" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="C"
+                 number="197"
+                 date="2000-07-12"
+                 page="3">
+               <t v="OJ C 197, 12.7.2000, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_7" marker="7" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="162"
+                 date="2002-06-20"
+                 page="1">
+               <t v="OJ L 162, 20.6.2002, p. 1"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_8" marker="8" kind="footnote">
+         <p>
+            <ref kind="oj" series="L" number="26" date="2004-01-29" page="3">
+               <t v="OJ L 26, 29.1.2004, p. 3"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_9" marker="9" kind="footnote">
+         <p>
+            <ref kind="oj"
+                 series="L"
+                 number="181"
+                 date="2003-07-19"
+                 page="34">
+               <t v="OJ L 181, 19.7.2003, p. 34"/>
+            </ref>
+            <t v="."/>
+         </p>
+      </note>
+      <note eId="note_10" marker="10" kind="footnote">
+         <p>
+            <t v="CET No 182."/>
+         </p>
+      </note>
+      <note eId="note_11" marker="11" kind="footnote">
+         <p>
+            <t v="United Nations, "/>
+            <emphasis kind="i">
+               <t v="Treaty Series"/>
+            </emphasis>
+            <t v=", vol. 1582, p. 95."/>
+         </p>
+      </note>
+      <note eId="note_12" marker="12" kind="footnote">
+         <p>
+            <t v="United Nations, "/>
+            <emphasis kind="i">
+               <t v="Treaty Series"/>
+            </emphasis>
+            <t v=", vol. 2225, p. 209 Doc. A/RES/55/25."/>
+         </p>
+      </note>
+      <note eId="note_13" marker="13" kind="footnote">
+         <p>
+            <t v="United Nations, "/>
+            <emphasis kind="i">
+               <t v="Treaty Series"/>
+            </emphasis>
+            <t v=", vol. 2349, p. 41; Doc. A/58/422."/>
+         </p>
+      </note>
+      <note eId="note_14" marker="14" kind="footnote">
+         <p>
+            <t v="Registration with the Secretariat of the United Nations: Albania, "/>
+            <date date="2009-06-03">
+               <t v="3 June 2009"/>
+            </date>
+            <t v=", No 46240."/>
+         </p>
+      </note>
+      <note eId="note_15" marker="15" kind="footnote">
+         <p>
+            <t v="Parties should refer in this context to the Council Conclusions and Action Plan on the way forward with regard to financial investigation (Council document 10125/16 + COR1)"/>
+         </p>
+      </note>
+      <note eId="note_16" marker="16" kind="footnote">
+         <p>
+            <t v="When needed, the JIT may include national asset recovery experts."/>
+         </p>
+      </note>
+      <note eId="note_17" marker="17" kind="footnote">
+         <p>
+            <t v="Examples of wordings can be found in Appendices 2 and 3."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+

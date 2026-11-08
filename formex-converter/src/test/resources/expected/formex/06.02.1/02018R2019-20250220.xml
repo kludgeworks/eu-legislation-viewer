@@ -1,0 +1,2520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<legalText xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           act="32018R2019"
+           kind="consolidated"
+           xsi:schemaLocation="https://kludgeworks.groknull.dev/ns/legal-text/1 https://kludgeworks.groknull.dev/schema/legal-text/1.0/legal-text.xsd"
+           version="2025-02-20"
+           xml:lang="en"
+           formexVersion="06.02.1"
+           converter="1.0.0">
+   <source celex="02018R2019-20250220">
+      <publication series="L" number="323" date="2018-12-19" page="10"/>
+   </source>
+   <lifecycle produced="2025-02-18" sequence="025.001.0">
+      <eventRef type="corrigendum"
+                act="32018R2019R(01)"
+                date="2025-02-24"
+                label="C1">
+         <publication series="L" date="2025-02-24" page="1" document="2025/90152"/>
+         <longTitle>
+            <p>
+               <t v="Corrigendum to Commission Implementing Regulation (EU) 2018/2019 of "/>
+               <date date="2018-12-18">
+                  <t v="18 December 2018"/>
+               </date>
+               <t v=" establishing a provisional list of high risk plants, plant products or other objects, within the meaning of Article 42 of Regulation (EU) 2016/2031 and a list of plants for which phytosanitary certificates are not required for introduction into the Union, within the meaning of Article 73 of that Regulation"/>
+            </p>
+            <p>
+               <emphasis kind="i">
+                  <t v="("/>
+                  <ref kind="oj" series="L" number="323" date="2018-12-19">
+                     <t v="Official Journal of the European Union L 323 of 19 December 2018"/>
+                  </ref>
+                  <t v=")"/>
+               </emphasis>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32019R2072" date="2019-11-28" label="M1">
+         <publication series="L" number="319" date="2019-12-10" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2019/2072"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2019-11-28">
+                  <t v="28 November 2019"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="establishing uniform conditions for the implementation of Regulation (EU) 2016/2031 of the European Parliament and the Council, as regards protective measures against pests of plants, and repealing Commission Regulation (EC) No 690/2008 and amending Commission Implementing Regulation (EU) 2018/2019"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R1214" date="2020-08-21" label="M2">
+         <publication series="L" number="275" date="2020-08-24" page="12"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/1214"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2020-08-21">
+                  <t v="21 August 2020"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards wood of "/>
+                  <emphasis kind="i">
+                     <t v="Ulmus"/>
+                  </emphasis>
+                  <t v=" L. and certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Albizia julibrissin"/>
+                  </emphasis>
+                  <t v=" Durazzini and "/>
+                  <emphasis kind="i">
+                     <t v="Robinia pseudoacacia"/>
+                  </emphasis>
+                  <t v=" L. originating in Israel"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32020R1361" date="2020-09-30" label="M3">
+         <publication series="L" number="317" date="2020-10-01" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2020/1361"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2020-09-30">
+                  <t v="30 September 2020"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica"/>
+                  </emphasis>
+                  <t v=", originating in Serbia and certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Acer japonicum"/>
+                  </emphasis>
+                  <t v=" Thunberg"/>
+                  <emphasis kind="i">
+                     <t v=", Acer palmatum"/>
+                  </emphasis>
+                  <t v=" Thunberg "/>
+                  <emphasis kind="i">
+                     <t v="and Acer shirasawanum"/>
+                  </emphasis>
+                  <t v=" Koidzumi, originating in New Zealand"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021R0419" date="2021-03-09" label="M4">
+         <publication series="L" number="83" date="2021-03-10" page="6"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/419"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2021-03-09">
+                  <t v="9 March 2021"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Jasminum polyanthum"/>
+                  </emphasis>
+                  <t v=" Franchet originating in Israel and adapting Combined Nomenclature codes for "/>
+                  <emphasis kind="i">
+                     <t v="Ullucus tuberosus"/>
+                  </emphasis>
+                  <t v=" and amending Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32021R1936" date="2021-11-09" label="M5">
+         <publication series="L" number="396" date="2021-11-10" page="27"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2021/1936"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2021-11-09">
+                  <t v="9 November 2021"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Ficus carica"/>
+                  </emphasis>
+                  <t v=" L. and "/>
+                  <emphasis kind="i">
+                     <t v="Persea americana"/>
+                  </emphasis>
+                  <t v=" Mill. originating in Israel, amending Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory and correcting the latter Implementing Regulation"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R0230" date="2022-02-18" label="M6">
+         <publication series="L" number="39" date="2022-02-21" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/230"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-02-18">
+                  <t v="18 February 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Corylus avellana"/>
+                  </emphasis>
+                  <t v=" L. and "/>
+                  <emphasis kind="i">
+                     <t v="Corylus colurna"/>
+                  </emphasis>
+                  <t v=" L., originating in Serbia"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R0490" date="2022-03-25" label="M7">
+         <publication series="L" number="100" date="2022-03-28" page="10"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/490"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-03-25">
+                  <t v="25 March 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Juglans regia"/>
+                  </emphasis>
+                  <t v=" L., "/>
+                  <emphasis kind="i">
+                     <t v="Nerium oleander"/>
+                  </emphasis>
+                  <t v=" L. and "/>
+                  <emphasis kind="i">
+                     <t v="Robinia pseudoacacia"/>
+                  </emphasis>
+                  <t v=" L. originating in Turkey, and amending Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R0853" date="2022-05-31" label="M8">
+         <publication series="L" number="150" date="2022-06-01" page="62"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/853"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-05-31">
+                  <t v="31 May 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 and Implementing Regulation (EU) 2019/2072 as regards fruits of "/>
+                  <emphasis kind="i">
+                     <t v="Momordica charantia"/>
+                  </emphasis>
+                  <t v=" L., originating in Honduras, Mexico, Sri Lanka and Thailand"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R1309" date="2022-07-26" label="M9">
+         <publication series="L" number="198" date="2022-07-27" page="4"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/1309"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-07-26">
+                  <t v="26 July 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending and correcting Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica"/>
+                  </emphasis>
+                  <t v=" originating in Ukraine and in Serbia"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R1404" date="2022-08-16" label="M10">
+         <publication series="L" number="214" date="2022-08-17" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/1404"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-08-16">
+                  <t v="16 August 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Lonicera"/>
+                  </emphasis>
+                  <t v=" L., originating in Turkey and certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica,"/>
+                  </emphasis>
+                  <t v=" originating in Moldova"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R1916" date="2022-10-07" label="M11">
+         <publication series="L" number="263" date="2022-10-10" page="3"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/1916"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-10-07">
+                  <t v="7 October 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Juglans regia"/>
+                  </emphasis>
+                  <t v=" L. originating in Moldova"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32022R1942" date="2022-10-13" label="M12">
+         <publication series="L" number="268" date="2022-10-14" page="16"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2022/1942"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2022-10-13">
+                  <t v="13 October 2022"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Jasminum polyanthum"/>
+                  </emphasis>
+                  <t v=" Franchet originating in Uganda, amending Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory and correcting Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Jasminum polyanthum"/>
+                  </emphasis>
+                  <t v=" Franchet originating in Israel, into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R0158" date="2023-01-23" label="M13">
+         <publication series="L" number="22" date="2023-01-24" page="15"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/158"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-01-23">
+                  <t v="23 January 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Prunus domestica"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Prunus cerasifera"/>
+                  </emphasis>
+                  <t v=" originating in Ukraine"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R0446" date="2023-02-27" label="M14">
+         <publication series="L" number="65" date="2023-03-02" page="11"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/446"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-02-27">
+                  <t v="27 February 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Ligustrum delavayanum"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Ligustrum japonicum"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom and Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1174" date="2023-06-15" label="M15">
+         <publication series="L" number="155" date="2023-06-16" page="33"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1174"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-06-15">
+                  <t v="15 June 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Crataegus monogyna"/>
+                  </emphasis>
+                  <t v=", originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1203" date="2023-06-21" label="M16">
+         <publication series="L" number="159" date="2023-06-22" page="65"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1203"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-06-21">
+                  <t v="21 June 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulations (EU) 2018/2019 and (EU) 2020/1213 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1511" date="2023-07-20" label="M17">
+         <publication series="L" number="184" date="2023-07-21" page="25"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1511"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-07-20">
+                  <t v="20 July 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulations (EU) 2018/2019 and (EU) 2020/1213 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus sylvestris"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R1535" date="2023-07-24" label="M18">
+         <publication series="L" number="187" date="2023-07-26" page="1"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/1535"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-07-24">
+                  <t v="24 July 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulations (EU) 2018/2019 and (EU) No 2020/1213 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Acer campestre, Acer palmatum, Acer platanoides"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Acer pseudoplatanus"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R2458" date="2023-10-31" label="M19">
+         <publication series="L" date="2023-11-03" page="1" document="2023/2458"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/2458"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-10-31">
+                  <t v="31 October 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Fagus sylvatica"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom and Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32023R2743" date="2023-12-08" label="M20">
+         <publication series="L" date="2023-12-11" page="1" document="2023/2743"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2023/2743"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2023-12-08">
+                  <t v="8 December 2023"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Quercus"/>
+                  </emphasis>
+                  <t v=" petraea and "/>
+                  <emphasis kind="i">
+                     <t v="Quercus robur"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom and Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R0377" date="2024-01-25" label="M21">
+         <publication series="L" date="2024-01-26" page="1" document="2024/377"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/377"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-01-25">
+                  <t v="25 January 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica"/>
+                  </emphasis>
+                  <t v=" originating in Bosnia and Herzegovina"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R0879" date="2024-03-21" label="M22">
+         <publication series="L" date="2024-03-22" page="1" document="2024/879"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/879"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-03-21">
+                  <t v="21 March 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Corylus avellana"/>
+                  </emphasis>
+                  <t v=", originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R1162" date="2024-04-22" label="M23">
+         <publication series="L" date="2024-04-23" page="1" document="2024/1162"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/1162"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-04-22">
+                  <t v="22 April 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica"/>
+                  </emphasis>
+                  <t v=" and certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Berberis thunbergii"/>
+                  </emphasis>
+                  <t v=" originating in Türkiye and amending Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of the "/>
+                  <emphasis kind="i">
+                     <t v="Malus domestica"/>
+                  </emphasis>
+                  <t v=" plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R1436" date="2024-05-24" label="M24">
+         <publication series="L" date="2024-05-27" page="1" document="2024/1436"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/1436"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-05-24">
+                  <t v="24 May 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Ligustrum ovalifolium"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Ligustrum vulgare"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom, and Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R1437" date="2024-05-24" label="M25">
+         <publication series="L" date="2024-05-27" page="1" document="2024/1437"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/1437"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-05-24">
+                  <t v="24 May 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Prunus"/>
+                  </emphasis>
+                  <t v=" L., originating in Moldova"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R1457" date="2024-05-27" label="M26">
+         <publication series="L" date="2024-05-29" page="1" document="2024/1457"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/1457"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-05-27">
+                  <t v="27 May 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Prunus persica, Prunus dulcis, Prunus armeniaca"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Prunus davidiana"/>
+                  </emphasis>
+                  <t v=" originating in Türkiye and Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union territory"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R1958" date="2024-07-17" label="M27">
+         <publication series="L" date="2024-07-18" page="1" document="2024/1958"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/1958"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-07-17">
+                  <t v="17 July 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Tilia cordata"/>
+                  </emphasis>
+                  <t v=" L. and "/>
+                  <emphasis kind="i">
+                     <t v="Tilia platyphyllos"/>
+                  </emphasis>
+                  <t v=" L., originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32024R2931" date="2024-11-27" label="M28">
+         <publication series="L" date="2024-11-28" page="1" document="2024/2931"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2024/2931"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2024-11-27">
+                  <t v="27 November 2024"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Prunus avium, Prunus canescens, Prunus cerasus, Prunus pseudocerasus"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Prunus spinosa"/>
+                  </emphasis>
+                  <t v=" originating in the United Kingdom, and Implementing Regulation (EU) 2020/1213 as regards the phytosanitary measures for the introduction of those plants for planting into the Union"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+      <eventRef type="amendment" act="32025R0312" date="2025-02-14" label="M29">
+         <publication series="L" date="2025-02-17" page="1" document="2025/312"/>
+         <longTitle>
+            <p>
+               <docType>
+                  <emphasis kind="uc">
+                     <t v="Commission Implementing Regulation"/>
+                  </emphasis>
+               </docType>
+               <t v=" "/>
+               <docNumber>
+                  <t v="(EU) 2025/312"/>
+               </docNumber>
+            </p>
+            <p>
+               <t v="of "/>
+               <docDate date="2025-02-14">
+                  <t v="14 February 2025"/>
+               </docDate>
+            </p>
+            <p>
+               <docPurpose>
+                  <t v="amending Implementing Regulation (EU) 2018/2019 as regards certain plants for planting of "/>
+                  <emphasis kind="i">
+                     <t v="Betula pendula"/>
+                  </emphasis>
+                  <t v=" and "/>
+                  <emphasis kind="i">
+                     <t v="Betula pubescens"/>
+                  </emphasis>
+                  <t v=", originating in the United Kingdom"/>
+               </docPurpose>
+            </p>
+         </longTitle>
+      </eventRef>
+   </lifecycle>
+   <preface>
+      <longTitle>
+         <p>
+            <docType>
+               <emphasis kind="uc">
+                  <t v="Commission Implementing Regulation"/>
+               </emphasis>
+            </docType>
+            <t v=" "/>
+            <docNumber>
+               <t v="(EU) 2018/2019"/>
+            </docNumber>
+         </p>
+         <p>
+            <t v="of "/>
+            <docDate date="2018-12-18">
+               <t v="18 December 2018"/>
+            </docDate>
+         </p>
+         <p>
+            <docPurpose>
+               <t v="establishing a provisional list of high risk plants, plant products or other objects, within the meaning of Article 42 of Regulation (EU) 2016/2031 and a list of plants for which phytosanitary certificates are not required for introduction into the Union, within the meaning of Article 73 of that Regulation"/>
+            </docPurpose>
+         </p>
+      </longTitle>
+   </preface>
+   <body>
+      <unit eId="art_1" kind="article" rank="1">
+         <num>
+            <t v="Article 1"/>
+         </num>
+         <heading>
+            <t v="High risk plants, plant products and other objects"/>
+         </heading>
+         <p>
+            <t v="The plants, plant products and other objects listed in Annex I are considered high risk plants, plant products and other objects within the meaning of Article 42(1) of Regulation (EU) 2016/2031, and their introduction into the Union territory shall be prohibited pending a risk assessment."/>
+         </p>
+      </unit>
+      <deleted>
+         <provenance amendingAct="32019R2072"
+                     action="deleted"
+                     location="AR:16;PT:1"
+                     marker="O001001M001000"/>
+         <unit eId="art_2" kind="article" rank="1">
+            <num>
+               <t v="Article 2"/>
+            </num>
+            <heading>
+               <t v="Phytosanitary certificate for the introduction into the Union of certain plants"/>
+            </heading>
+            <unit eId="art_2/unp_1" kind="paragraph">
+               <p>
+                  <t v="A phytosanitary certificate shall be required for the introduction into the Union of plants, other than the plants included in the list referred to in Article 72(1) of Regulation (EU) 2016/2031."/>
+               </p>
+            </unit>
+            <unit eId="art_2/unp_2" kind="paragraph">
+               <p>
+                  <t v="However, fruits listed in Annex II shall be excluded from this requirement."/>
+               </p>
+            </unit>
+         </unit>
+      </deleted>
+      <unit eId="art_3" kind="article" rank="1">
+         <num>
+            <t v="Article 3"/>
+         </num>
+         <heading>
+            <t v="Entry into force and application"/>
+         </heading>
+         <unit eId="art_3/unp_1" kind="paragraph">
+            <p>
+               <t v="This Regulation shall enter into force the twentieth day following that of its publication in the "/>
+               <emphasis kind="i">
+                  <t v="Official Journal of the European Union"/>
+               </emphasis>
+               <t v="."/>
+            </p>
+         </unit>
+         <unit eId="art_3/unp_2" kind="paragraph">
+            <p>
+               <t v="It shall apply from "/>
+               <date date="2019-12-14">
+                  <t v="14 December 2019"/>
+               </date>
+               <t v="."/>
+            </p>
+         </unit>
+      </unit>
+   </body>
+   <conclusions>
+      <p>
+         <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
+      </p>
+   </conclusions>
+   <annexes>
+      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <num>
+            <changed amendingAct="32020R1214"
+                     action="renumbered"
+                     location="AR:1 .AND. AX:0;PT:1"
+                     marker="O002001M001000">
+               <t v="ANNEX"/>
+            </changed>
+         </num>
+         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+            <heading>
+               <emphasis kind="b">
+                  <t v="List of high risk plants, plant products and other objects, within the meaning of Article 42(1) of Regulation (EU) 2016/2031"/>
+               </emphasis>
+            </heading>
+            <unit eId="anx/level_1/pnt_1" kind="point" numbered="true">
+               <num>
+                  <changed amendingAct="32018R2019R(01)"
+                           action="replaced"
+                           location="TO"
+                           marker="O025001M001000">
+                     <t v="1."/>
+                  </changed>
+               </num>
+               <p>
+                  <provenance amendingAct="32018R2019R(01)"
+                              action="replaced"
+                              location="TO"
+                              marker="O025001M001000"/>
+                  <t v="Plants for planting, other than seeds, "/>
+                  <emphasis kind="i">
+                     <t v="in vitro"/>
+                  </emphasis>
+                  <t v=" material and naturally or artificially dwarfed woody plants for planting, originating from all third countries"/>
+                  <noteRef href="#note_1" marker="1"/>
+                  <t v=" and belonging to the following genera or species:"/>
+               </p>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="CN Code"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Description"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Acacia"/>
+                           </emphasis>
+                           <t v=" Mill."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32023R1535"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O016001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Acer"/>
+                           </emphasis>
+                           <t v=" L., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32023R1535"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O016001M002000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_1" kind="indent">
+                              <p>
+                                 <t v="One- to three-year-old bare rooted, dormant, free of leaves, grafted or budded plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer japonicum"/>
+                                 </emphasis>
+                                 <t v=" Thunberg, "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer palmatum"/>
+                                 </emphasis>
+                                 <t v=" Thunberg, and "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer shirasawanum Koidzumi"/>
+                                 </emphasis>
+                                 <t v=", originating in New Zealand;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to fifteen-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer campestre"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 88 mm at the base of the stem, originating in the United Kingdom;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_3" kind="indent">
+                              <p>
+                                 <t v="up to seven-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer palmatum"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_4" kind="indent">
+                              <p>
+                                 <t v="up to seven-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer platanoides"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom; and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_5" kind="indent">
+                              <p>
+                                 <t v="up to seven-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Acer pseudoplatanus"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 88 mm at the base of the stem, originating in the United Kingdom."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32020R1214"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0;PT:2;PT:a"
+                                       marker="O002001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Albizia"/>
+                           </emphasis>
+                           <t v=" Durazz., other than bare-rooted dormant grafted plants for planting with a maximum diameter of 2,5 cm of "/>
+                           <emphasis kind="i">
+                              <t v="Albizia julibrissin"/>
+                           </emphasis>
+                           <t v=" Durazzini originating in Israel"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Alnus"/>
+                           </emphasis>
+                           <t v=" Mill."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Annona"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Bauhinia"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32024R1162"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:2"
+                                       marker="O021001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Berberis"/>
+                           </emphasis>
+                           <t v=" L., other than up to three-year-old plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Berberis thunbergii"/>
+                           </emphasis>
+                           <t v=" in growing medium, with a maximum height of 40 cm, originating in Türkiye."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32025R0312"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O025001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Betula"/>
+                           </emphasis>
+                           <t v=" L., other than plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Betula pendula"/>
+                           </emphasis>
+                           <t v=" and "/>
+                           <emphasis kind="i">
+                              <t v="Betula pubescens"/>
+                           </emphasis>
+                           <t v=", originating in the United Kingdom"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Caesalpinia"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Cassia"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Castanea"/>
+                           </emphasis>
+                           <t v=" Mill."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Cornus"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32024R0879"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O020001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Corylus"/>
+                           </emphasis>
+                           <t v=" L., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32024R0879"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O020001M001000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_2/idt_1" kind="indent">
+                              <p>
+                                 <t v="plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Corylus avellana"/>
+                                 </emphasis>
+                                 <t v=" L. or "/>
+                                 <emphasis kind="i">
+                                    <t v="Corylus colurna"/>
+                                 </emphasis>
+                                 <t v=" L. originating in Serbia; and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_2/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to 15-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Corylus avellana"/>
+                                 </emphasis>
+                                 <t v=" L., with a maximum diameter of 20 cm at the base of the stem, originating in the United Kingdom."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32023R1174"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O015001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Crataegus"/>
+                           </emphasis>
+                           <t v=" L., other than up to 15-year-old plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Crataegus monogyna"/>
+                           </emphasis>
+                           <t v=" with a maximum diameter of 13 cm at the base of the stem, originating in the United Kingdom"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Diospyros"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32023R2458"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O017001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Fagus"/>
+                           </emphasis>
+                           <t v=" L., other than up to fifteen-year-old plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Fagus sylvatica"/>
+                           </emphasis>
+                           <t v=" with a maximum diameter of 80 mm at the base of the stem, originating in the United Kingdom"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32021R1936"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:1"
+                                       marker="O005001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Ficus carica"/>
+                           </emphasis>
+                           <t v=" L., other than bare-rooted, dormant, without leaves, one-year-old plants for planting with a maximum diameter of 2 cm at the base of the stem of "/>
+                           <emphasis kind="i">
+                              <t v="Ficus carica"/>
+                           </emphasis>
+                           <t v=" L., and one-year-old rooted cuttings without leaves of plants for planting with growing medium and with a maximum diameter of 1 cm at the base of the stem of "/>
+                           <emphasis kind="i">
+                              <t v="Ficus carica"/>
+                           </emphasis>
+                           <t v=" L., originating in Israel"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Fraxinus"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Hamamelis"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32022R1942"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O012001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Jasminum"/>
+                           </emphasis>
+                           <t v=" L., other than unrooted cuttings of plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Jasminum polyanthum"/>
+                           </emphasis>
+                           <t v=" Franchet originating in Israel and Uganda"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32022R1916"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O011001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Juglans"/>
+                           </emphasis>
+                           <t v=" L., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32022R1916"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O011001M001000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_3/idt_1" kind="indent">
+                              <p>
+                                 <t v="up to two-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Juglans regia"/>
+                                 </emphasis>
+                                 <t v=" L. which are bare-rooted, free of leaves and with a maximum diameter of 2 cm at the base of the stem, originating in Turkey; and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_3/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to two-year-old, bare-rooted, dormant, free of leaves, grafted plants for planting and rootstocks of "/>
+                                 <emphasis kind="i">
+                                    <t v="Juglans regia"/>
+                                 </emphasis>
+                                 <t v=" L. originating in Moldova"/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32024R1436"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O022001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Ligustrum"/>
+                           </emphasis>
+                           <t v=" L., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32024R1436"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O022001M002000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_4/idt_1" kind="indent">
+                              <p>
+                                 <t v="up to 20-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Ligustrum delavayanum"/>
+                                 </emphasis>
+                                 <t v=" and "/>
+                                 <emphasis kind="i">
+                                    <t v="Ligustrum japonicum"/>
+                                 </emphasis>
+                                 <t v=" in growing medium, with a maximum diameter of 18 cm at the base of the stem, originating in the United Kingdom; and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_4/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to 7-year-old non-grafted plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Ligustrum ovalifolium"/>
+                                 </emphasis>
+                                 <t v=" and "/>
+                                 <emphasis kind="i">
+                                    <t v="Ligustrum vulgare,"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32022R1404"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0;PT:1"
+                                       marker="O010001M003000"/>
+                           <emphasis kind="i">
+                              <t v="Lonicera"/>
+                           </emphasis>
+                           <t v=" L. other than up to four-year-old rooted plants for planting in growing medium of "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera x bella"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera caprifolium"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera caucasica"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera etrusca"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera fragrantissima"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera hellenica"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera ligustrina"/>
+                           </emphasis>
+                           <t v=", "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera sempervirens"/>
+                           </emphasis>
+                           <t v=" and "/>
+                           <emphasis kind="i">
+                              <t v="Lonicera tatarica,"/>
+                           </emphasis>
+                           <t v=" originating in Turkey"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32024R1162"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:1"
+                                       marker="O021001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Malus"/>
+                           </emphasis>
+                           <t v=" Mill., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32024R1162"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:1"
+                                       marker="O021001M001000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_1" kind="indent">
+                              <p>
+                                 <t v="one- to two-year-old bare rooted, dormant, free of leaves, grafted plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica,"/>
+                                 </emphasis>
+                                 <t v=" originating in Serbia;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to three-year-old bare-rooted, dormant, free of leaves, grafted plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica,"/>
+                                 </emphasis>
+                                 <t v=" originating in Moldova;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_3" kind="indent">
+                              <p>
+                                 <t v="up to three-year-old bare-rooted, dormant, free of leaves, rootstocks of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica"/>
+                                 </emphasis>
+                                 <t v=" originating in Ukraine;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_4" kind="indent">
+                              <p>
+                                 <t v="up to three-year old bare-rooted, dormant, free of leaves, grafted plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica"/>
+                                 </emphasis>
+                                 <t v=" originating in Ukraine;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_5" kind="indent">
+                              <p>
+                                 <t v="up to one-year-old free of leaves, cuttings of Malus domestica originating in the United Kingdom;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_6" kind="indent">
+                              <p>
+                                 <t v="up to seven-year-old plants for planting of Malus domestica originating in the United Kingdom;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_7" kind="indent">
+                              <p>
+                                 <t v="up to seven-year-old plants for planting of Malus sylvestris with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_8" kind="indent">
+                              <p>
+                                 <t v="up to two-year-old bare-rooted, dormant, free of leaves, grafted, plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica"/>
+                                 </emphasis>
+                                 <t v=", originating in Bosnia and Herzegovina;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_9" kind="indent">
+                              <p>
+                                 <t v="up to one-year-old, free of leaves, budwood and scions of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica"/>
+                                 </emphasis>
+                                 <t v=" originating in Türkiye;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_10" kind="indent">
+                              <p>
+                                 <t v="plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Malus domestica"/>
+                                 </emphasis>
+                                 <t v=" that are bare-rooted, dormant, free of leaves and with a maximum stem diameter of 3 cm, originating in Türkiye."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32022R0490"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:2"
+                                       marker="O007001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Nerium"/>
+                           </emphasis>
+                           <t v=" L. other than up to four-year-old plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Nerium oleander"/>
+                           </emphasis>
+                           <t v=" L. originating in Turkey"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32021R1936"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:2"
+                                       marker="O005001M002000"/>
+                           <emphasis kind="i">
+                              <t v="Persea"/>
+                           </emphasis>
+                           <t v=" Mill., other than rooted, with leaves, grafted plants for planting with growing medium and a maximum diameter of 1 cm at the base of the stem of "/>
+                           <emphasis kind="i">
+                              <t v="Persea americana"/>
+                           </emphasis>
+                           <t v=" Mill., and unrooted cuttings of plants for planting with a maximum diameter of 2 cm of "/>
+                           <emphasis kind="i">
+                              <t v="Persea americana"/>
+                           </emphasis>
+                           <t v=" Mill., originating in Israel"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Populus"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32024R2931"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O024001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Prunus"/>
+                           </emphasis>
+                           <t v=" L., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32024R2931"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O024001M001000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_1" kind="indent">
+                              <p>
+                                 <t v="bare-rooted, dormant, free of leaves plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus domestica"/>
+                                 </emphasis>
+                                 <t v=" grafted on "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus cerasifera"/>
+                                 </emphasis>
+                                 <t v=" rootstocks originating in Ukraine;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to 2-year-old dormant, free of leaves, unrooted cuttings of "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus persica"/>
+                                 </emphasis>
+                                 <t v=" and "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus dulcis"/>
+                                 </emphasis>
+                                 <t v=" originating in Türkiye;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_3" kind="indent">
+                              <p>
+                                 <t v="up to 2-year-old bare-rooted, dormant, free of leaves plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus persica, Prunus dulcis"/>
+                                 </emphasis>
+                                 <t v=", "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus armeniaca"/>
+                                 </emphasis>
+                                 <t v=" and "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus davidiana"/>
+                                 </emphasis>
+                                 <t v=", originating in Türkiye;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_4" kind="indent">
+                              <p>
+                                 <t v="plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus avium"/>
+                                 </emphasis>
+                                 <t v=", "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus canescens"/>
+                                 </emphasis>
+                                 <t v=", "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus cerasus"/>
+                                 </emphasis>
+                                 <t v=" and "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus pseudocerasus"/>
+                                 </emphasis>
+                                 <t v=" originating in the United Kingdom;"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_5" kind="indent">
+                              <p>
+                                 <t v="up to 1-year-old budwood/graftwood of "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus spinosa"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 12 mm originating in the United Kingdom; and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_6" kind="indent">
+                              <p>
+                                 <t v="up to 7-year-old non-grafted plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Prunus spinosa"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32023R2743"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O018001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Quercus"/>
+                           </emphasis>
+                           <t v=" L., other than:"/>
+                        </p>
+                        <list kind="dash">
+                           <provenance amendingAct="32023R2743"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O018001M001000"/>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_7/idt_1" kind="indent">
+                              <p>
+                                 <t v="up to fifteen-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Quercus petraea"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 80 mm at the base of the stem, originating in the United Kingdom; and"/>
+                              </p>
+                           </unit>
+                           <unit eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_7/idt_2" kind="indent">
+                              <p>
+                                 <t v="up to fifteen-year-old plants for planting of "/>
+                                 <emphasis kind="i">
+                                    <t v="Quercus robur"/>
+                                 </emphasis>
+                                 <t v=" with a maximum diameter of 80 mm at the base of the stem, originating in the United Kingdom."/>
+                              </p>
+                           </unit>
+                        </list>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32022R0490"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I;PT:3"
+                                       marker="O007001M003000"/>
+                           <emphasis kind="i">
+                              <t v="Robinia"/>
+                           </emphasis>
+                           <t v=" L. other than bare rooted dormant grafted plants for planting with a maximum diameter of 2,5 cm of "/>
+                           <emphasis kind="i">
+                              <t v="Robinia pseudoacacia"/>
+                           </emphasis>
+                           <t v=" L. originating in Israel and other than up to seven-year-old plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Robinia pseudoacacia"/>
+                           </emphasis>
+                           <t v=" L. with a maximum diameter of 25 cm, originating in Turkey"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Salix"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Sorbus"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Taxus"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32024R1958"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:0"
+                                       marker="O023001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Tilia"/>
+                           </emphasis>
+                           <t v=" L., other than plants for planting of "/>
+                           <emphasis kind="i">
+                              <t v="Tilia cordata"/>
+                           </emphasis>
+                           <t v=" L. and "/>
+                           <emphasis kind="i">
+                              <t v="Tilia platyphyllos"/>
+                           </emphasis>
+                           <t v=" L. originating in the United Kingdom."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex0602"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Ulmus"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx/level_1/pnt_2" kind="point" numbered="true">
+               <num>
+                  <t v="2."/>
+               </num>
+               <p>
+                  <t v="Plants of "/>
+                  <emphasis kind="i">
+                     <t v="Ullucus tuberosus"/>
+                  </emphasis>
+                  <t v=" originating from all third countries."/>
+               </p>
+               <table cols="2">
+                  <provenance amendingAct="32021R0419"
+                              action="replaced"
+                              location="AR:1 .AND. AX:I;PT:b"
+                              marker="O004001M002000"/>
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="CN code"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Description"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex06011090"/>
+                        </p>
+                        <p>
+                           <t v="ex06012090"/>
+                        </p>
+                        <p>
+                           <t v="ex06042090"/>
+                        </p>
+                        <p>
+                           <t v="ex07149020"/>
+                        </p>
+                        <p>
+                           <t v="ex12099180"/>
+                        </p>
+                        <p>
+                           <t v="ex14049000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Ullucus tuberosus"/>
+                           </emphasis>
+                           <t v=" Loz."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <unit eId="anx/level_1/pnt_3" kind="point" numbered="true">
+               <num>
+                  <t v="3."/>
+               </num>
+               <p>
+                  <t v="Fruits of "/>
+                  <emphasis kind="i">
+                     <t v="Momordica"/>
+                  </emphasis>
+                  <t v=" L. originating from third countries or areas of third countries where "/>
+                  <emphasis kind="i">
+                     <t v="Thrips palmi"/>
+                  </emphasis>
+                  <t v=" Karny is known to occur and where effective mitigation measures for that pest are lacking."/>
+               </p>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="CN Code"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Description"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex07099990"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <provenance amendingAct="32022R0853"
+                                       action="replaced"
+                                       location="AR:1 .AND. AX:I"
+                                       marker="O008001M001000"/>
+                           <emphasis kind="i">
+                              <t v="Momordica"/>
+                           </emphasis>
+                           <t v=" L., other than fruits of "/>
+                           <emphasis kind="i">
+                              <t v="Momordica charantia"/>
+                           </emphasis>
+                           <t v=" L. originating in Honduras, Mexico, Sri Lanka and Thailand"/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+            <deleted>
+               <provenance amendingAct="32020R1214"
+                           action="deleted"
+                           location="AR:1 .AND. AX:0;PT:3"
+                           marker="O002001M004000"/>
+               <unit eId="anx/level_1/pnt_4" kind="point" numbered="true">
+                  <num>
+                     <t v="4."/>
+                  </num>
+                  <p>
+                     <t v="Wood of "/>
+                     <emphasis kind="i">
+                        <t v="Ulmus"/>
+                     </emphasis>
+                     <t v=" L. originating from third countries or areas of third countries where "/>
+                     <emphasis kind="i">
+                        <t v="Saperda tridentata"/>
+                     </emphasis>
+                     <t v=" Olivier is known to occur."/>
+                  </p>
+                  <table cols="2">
+                     <tr header="true">
+                        <td header="true">
+                           <p>
+                              <t v="CN Code"/>
+                           </p>
+                        </td>
+                        <td header="true">
+                           <p>
+                              <t v="Description"/>
+                           </p>
+                        </td>
+                     </tr>
+                     <tr>
+                        <td>
+                           <p>
+                              <t v="ex44031200"/>
+                           </p>
+                           <p>
+                              <t v="ex44012200"/>
+                           </p>
+                           <p>
+                              <t v="ex44013900"/>
+                           </p>
+                           <p>
+                              <t v="ex44039900"/>
+                           </p>
+                           <p>
+                              <t v="ex440799"/>
+                           </p>
+                        </td>
+                        <td>
+                           <p>
+                              <emphasis kind="i">
+                                 <t v="Ulmus"/>
+                              </emphasis>
+                              <t v=" L."/>
+                           </p>
+                        </td>
+                     </tr>
+                  </table>
+               </unit>
+            </deleted>
+         </unit>
+      </unit>
+      <deleted>
+         <provenance amendingAct="32019R2072"
+                     action="deleted"
+                     location="AR:16;PT:2"
+                     marker="O001001M002000"/>
+         <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
+            <num>
+               <t v="ANNEX II"/>
+            </num>
+            <unit eId="anx_II/level_1" kind="level" depth="1" rank="2">
+               <heading>
+                  <emphasis kind="b">
+                     <t v="List of fruits for which a phytosanitary certificate is not required for introduction into the Union, within the meaning of Article 73 of Regulation (EU) 2016/2031"/>
+                  </emphasis>
+               </heading>
+               <table cols="2">
+                  <tr header="true">
+                     <td header="true">
+                        <p>
+                           <t v="CN code"/>
+                        </p>
+                     </td>
+                     <td header="true">
+                        <p>
+                           <t v="Description"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex08043000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Ananas comosus"/>
+                           </emphasis>
+                           <t v=" (L.) Merrill"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex08011200"/>
+                           <t v=", "/>
+                           <t v="ex08011900"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Cocos nucifera"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex08106000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Durio zibethinus"/>
+                           </emphasis>
+                           <t v=" Murray"/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex08031010"/>
+                           <t v=", "/>
+                           <t v="ex08039010"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Musa"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <p>
+                           <t v="ex08041000"/>
+                        </p>
+                     </td>
+                     <td>
+                        <p>
+                           <emphasis kind="i">
+                              <t v="Phoenix dactylifera"/>
+                           </emphasis>
+                           <t v=" L."/>
+                        </p>
+                     </td>
+                  </tr>
+               </table>
+            </unit>
+         </unit>
+      </deleted>
+   </annexes>
+   <notes>
+      <note eId="note_1" marker="1" kind="footnote">
+         <p>
+            <t v="In accordance with the Agreement on the withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community, and in particular Article 5(4) of the Windsor Framework (See Joint Declaration No 1/2023 of the Union and the United Kingdom in the Joint Committee established by the Agreement on the withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community ("/>
+            <ref kind="oj"
+                 series="L"
+                 number="102"
+                 date="2023-04-17"
+                 page="87">
+               <t v="OJ L 102, 17.4.2023, p. 87"/>
+            </ref>
+            <t v=")) in conjunction with Annex 2 to that Framework, for the purposes of this Regulation, references to the United Kingdom do not include Northern Ireland."/>
+         </p>
+      </note>
+   </notes>
+</legalText>
+
