@@ -180,11 +180,11 @@ class JooqActStore implements ActStore {
     db.batch(
             act.timeline().versions().stream()
                 .map(
-                    // The day identifies a version. A kept version keeps its document, because
-                    // its texts refer to that document.
+                    // An act's original text and its same-day consolidation can share a date
+                    // (e.g. 32012R0965), so versions are identified by (act, celex).
                     version ->
                         version(act, version)
-                            .onConflict(VERSION.ACT, VERSION.DATE)
+                            .onConflict(VERSION.ACT, VERSION.CELEX)
                             .doUpdate()
                             .set(VERSION.KIND, version.kind())
                             .set(VERSION.INTERIM, version.interim())

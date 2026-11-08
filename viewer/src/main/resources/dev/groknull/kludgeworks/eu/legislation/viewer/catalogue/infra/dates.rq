@@ -8,8 +8,9 @@
 #   publication, see Article 2. "ET 32020R0910" adds that act, which changed the date.
 # The consolidations also list earlier consolidations. These have dates but no annotations, and
 # CellarDates leaves them out.
-# It uses only consolidations with a CELEX number, as versions.rq does. The other consolidations
-# are Cellar's internal production versions. They may list an act that no version integrates.
+# It uses consolidations with or without a CELEX number: internal production versions name acts
+# that a public consolidation left out. CellarActs retains only dates of acts that a version in the
+# act's timeline integrates.
 # It gives one row per date and annotation.
 # {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
@@ -24,7 +25,6 @@ WHERE {
   } UNION {
     ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
     ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
-         cdm:resource_legal_id_celex ?version ;
          cdm:act_consolidated_consolidates_resource_legal ?work .
   }
   ?work cdm:resource_legal_id_celex ?subject ;

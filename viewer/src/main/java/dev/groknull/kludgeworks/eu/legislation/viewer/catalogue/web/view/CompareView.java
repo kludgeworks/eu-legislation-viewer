@@ -139,7 +139,7 @@ public record CompareView(Card from, Card to, String acts, @Nullable String note
           .kind(end.kind)
           .celex(version.celex())
           .eurLex(version.eurLex(language).toString())
-          .period(Wording.period(act, version, today))
+          .period(Wording.period(act, version, today, language))
           .made(Wording.made(act, version, List.of()))
           .published(published.isEmpty() ? null : act.citations(published, language))
           .lags(act.notYetConsolidated(version).stream().map(Wording::lagOf).toList())

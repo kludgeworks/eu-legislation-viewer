@@ -15,7 +15,7 @@ languages-32015R1998.json           languages.rq, celex 32015R1998. Recorded 202
 languages-32010R0185.json           languages.rq, celex 32010R0185. Recorded 2026-10-31, in the same
                                     way. The early versions are without Croatian.
 dates-32015R1998.json               dates.rq, celex 32015R1998. Recorded 2026-11-04. The act's own
-                                    dates and the dates of the 17 acts that its versions integrate,
+                                    dates and the dates of the 18 acts that its versions integrate,
                                     with Cellar's annotations. The application date of 32019R0413
                                     is a placeholder, 1001-01-01.
 dates-32010R0185.json               dates.rq, celex 32010R0185. Recorded 2026-11-04, in the same way.
@@ -28,7 +28,7 @@ amendments-32015R1998.json          amendments.rq, celex 32015R1998. Recorded 20
                                     only.
 amendments-32010R0185.json          amendments.rq, celex 32010R0185. Recorded 2026-11-05, in the same
                                     way.
-publications-32015R1998.json        publications.rq, celex 32015R1998. Recorded 2026-11-07. 666 rows
+publications-32015R1998.json        publications.rq, celex 32015R1998. Recorded 2026-11-07. 689 rows
                                     for the act and for each act and corrigendum that its
                                     consolidations integrate. Each has its ELI, title and Official
                                     Journal reference. From 2024 the references are in the

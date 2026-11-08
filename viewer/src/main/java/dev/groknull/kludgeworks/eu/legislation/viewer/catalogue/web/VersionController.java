@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
@@ -109,7 +110,10 @@ class VersionController {
     var date =
         on != null
             ? on
-            : act.versionOn(today()).orElseGet(() -> act.timeline().versions().getFirst()).date();
+            : act.versionOn(today(), language)
+                .or(() -> act.timeline().in(language).map(Timeline::first))
+                .orElseGet(() -> act.timeline().versions().getFirst())
+                .date();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
         .location(URI.create(Links.read(eli, date, language)))
         .build();
@@ -207,7 +211,7 @@ class VersionController {
       language = language(code);
       eli = new Eli(type, year, number);
       act = acts.find(eli).orElseThrow(VersionController::notFound);
-      version = act.versionOn(date).orElseThrow(VersionController::notFound);
+      version = act.versionOn(date, language).orElseThrow(VersionController::notFound);
       this.date = date;
     }
 
@@ -288,7 +292,7 @@ class VersionController {
       if (version.kind() == Version.Kind.ORIGINAL || !version.integrates().isEmpty()) {
         return List.of();
       }
-      var before = act.timeline().predecessor(version);
+      var before = act.timeline().in(language).flatMap(t -> t.predecessor(version));
       if (before.isEmpty()
           || !(preparation.texts().get(version) instanceof Text.Ready text)
           || !(preparation.texts().get(before.get()) instanceof Text.Ready earlier)) {

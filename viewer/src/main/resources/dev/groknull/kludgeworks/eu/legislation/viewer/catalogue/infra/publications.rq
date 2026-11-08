@@ -7,7 +7,8 @@
 #   number in the act-by-act Journal, for example 2026/449, or the issue that contains the act, for
 #   example L 21. The act-by-act Journal started in October 2023.
 # - the day of publication for each place. An act that has both places has two days.
-# It uses only consolidations with a CELEX number, as dates.rq does.
+# It uses consolidations with or without a CELEX number, as dates.rq does. CellarActs retains
+# only publications of acts that a version in the act's timeline integrates (and of the act itself).
 # It gives one row per act and title. The details of the Journal are optional. They are often
 # missing for a corrigendum.
 # {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
@@ -19,7 +20,6 @@ SELECT DISTINCT ?subject ?eli ?code ?title ?collection ?number ?published ?issue
 WHERE {
   ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
   ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
-       cdm:resource_legal_id_celex ?version ;
        cdm:act_consolidated_consolidates_resource_legal ?work .
   ?work cdm:resource_legal_id_celex ?subject .
   OPTIONAL { ?work cdm:resource_legal_eli ?eli }

@@ -58,6 +58,7 @@ class CellarActsTest {
                               .startsWith("Commission Implementing Regulation (EU) 2026/449"));
             });
     assertThat(reference(act, "32026R0449")).hasValue("OJ L, 2026/449, 2.3.2026");
+    assertThat(reference(act, "32018R0055")).hasValue("OJ L 10, 13.1.2018");
     assertThat(reference(act, "32019R0103")).hasValue("OJ L 21, 24.1.2019");
     assertThat(reference(act, AVSEC.celex())).hasValue("OJ L 299, 14.11.2015");
   }
@@ -158,6 +159,9 @@ class CellarActsTest {
 
     assertThat(version(versions, "02015R1998-20260322").integrates())
         .containsExactly(new ActIdentifier("32026R0449"), new ActIdentifier("32026R0449R(01)"));
+    // The public consolidation lists no act, but its production version lists 2018/55.
+    assertThat(version(versions, "02015R1998-20180206").integrates())
+        .containsExactly(new ActIdentifier("32018R0055"));
     // Cellar also lists 02010R0358-20160201 here. That is a consolidation of another act.
     assertThat(version(versions, "02015R1998-20190201").integrates())
         .containsExactly(new ActIdentifier("32019R0103"));
@@ -171,7 +175,7 @@ class CellarActsTest {
     assertThat(act.endOfValidity()).isEqualTo(LocalDate.of(2015, 11, 14));
     assertThat(act.timeline().versions()).hasSize(17);
     assertThat(act.timeline().versions().getFirst().date()).isEqualTo(LocalDate.of(2010, 3, 25));
-    assertThat(act.versionOn(LocalDate.of(2020, 1, 1)).orElseThrow().celex())
+    assertThat(act.versionOn(LocalDate.of(2020, 1, 1), Language.ENG).orElseThrow().celex())
         .isEqualTo("02010R0185-20160201");
   }
 
@@ -248,13 +252,29 @@ class CellarActsTest {
   void readsTheDatesOfEachActItsVersionsIntegrate() {
     var dates = act(AVSEC).amendingDates();
 
-    assertThat(dates).hasSize(17).doesNotContainKey(AVSEC);
+    assertThat(dates).hasSize(18).doesNotContainKey(AVSEC);
+    assertThat(dates.getOrDefault(new ActIdentifier("32018R0055"), List.of()))
+        .extracting(ActDate::date, ActDate::kind)
+        .containsExactly(
+            tuple(LocalDate.of(2018, 2, 2), Kind.ENTRY_INTO_FORCE),
+            tuple(LocalDate.of(2018, 2, 6), Kind.APPLICATION));
     // It applies before it enters into force, as its Article 2 says.
     assertThat(dates.getOrDefault(new ActIdentifier("32017R0815"), List.of()))
         .extracting(ActDate::date, ActDate::kind)
         .containsExactly(
             tuple(LocalDate.of(2017, 6, 1), Kind.APPLICATION),
             tuple(LocalDate.of(2017, 6, 2), Kind.ENTRY_INTO_FORCE));
+  }
+
+  @Test
+  void correctsADateCountedFromPublicationAgainstThePublicationDate() {
+    var act = act(AVSEC);
+    var date = act.datesOf(new ActIdentifier("32020R0910")).getFirst();
+
+    // Published 1 July 2020, DATPUB +1: clause sets 2 July 2020; Cellar recorded 6 July 2020.
+    assertThat(date.date()).isEqualTo(LocalDate.of(2020, 7, 2));
+    assertThat(date.kind()).isEqualTo(Kind.ENTRY_INTO_FORCE);
+    assertThat(date.clause().text()).contains("DATPUB +1");
   }
 
   @Test
@@ -348,6 +368,58 @@ class CellarActsTest {
         .extracting(ActDate::date, ActDate::kind)
         .containsExactly(null, Kind.APPLICATION);
     assertThat(dates).hasSize(4);
+  }
+
+  @Test
+  void checkAgainstPublicationLeavesDateUnchangedWhenMatchingPublication() {
+    var actId = new ActIdentifier("32015R1998");
+    var clause =
+        new Clause(
+            Anchor.PUBLICATION,
+            1,
+            List.of(new Provision(Provision.Type.ARTICLE, "4")),
+            List.of(),
+            "DATPUB +1 V ART 4");
+    var date = new ActDate(LocalDate.of(2015, 11, 15), Kind.ENTRY_INTO_FORCE, false, clause);
+    var publication =
+        new Publication(
+            null, Map.of(), new Publication.Journal("L", null, 299, LocalDate.of(2015, 11, 14)));
+
+    var checked =
+        CellarDates.checkAgainstPublication(
+            Map.of(actId, List.of(date)), Map.of(actId, publication));
+
+    assertThat(checked.get(actId))
+        .singleElement()
+        .satisfies(d -> assertThat(d.date()).isEqualTo(LocalDate.of(2015, 11, 15)));
+  }
+
+  @Test
+  void checkAgainstPublicationAdoptsDateFromClauseOnMismatch() {
+    var actId = new ActIdentifier("32020R0910");
+    var clause =
+        new Clause(
+            Anchor.PUBLICATION,
+            1,
+            List.of(new Provision(Provision.Type.ARTICLE, "5")),
+            List.of(),
+            "DATPUB +1 V ART 5");
+    var wrongDate = new ActDate(LocalDate.of(2020, 7, 6), Kind.ENTRY_INTO_FORCE, false, clause);
+    var publication =
+        new Publication(
+            null, Map.of(), new Publication.Journal("L", null, 208, LocalDate.of(2020, 7, 1)));
+
+    var checked =
+        CellarDates.checkAgainstPublication(
+            Map.of(actId, List.of(wrongDate)), Map.of(actId, publication));
+
+    assertThat(checked.get(actId))
+        .singleElement()
+        .satisfies(
+            d -> {
+              assertThat(d.date()).isEqualTo(LocalDate.of(2020, 7, 2));
+              assertThat(d.clause()).isEqualTo(clause);
+            });
   }
 
   @Test
@@ -495,6 +567,54 @@ class CellarActsTest {
                     noPublications()))
         .withMessageStartingWith("Cellar's data for 32015R1998: Two versions on one day")
         .withCauseInstanceOf(IllegalArgumentException.class);
+  }
+
+  @Test
+  void keepsOriginalTextForLanguagesWithoutSameDayConsolidation() {
+    var sameDayConsolidation = result(consolidation("02015R1998-20151115", "2015-11-15"));
+    var languages =
+        languages(
+            new SparqlResult.Row(
+                Map.of(
+                    "version",
+                    "32015R1998",
+                    "languages",
+                    "ENG FRA DEU",
+                    "formexModified",
+                    "2015-11-23T07:58:11.083Z")),
+            new SparqlResult.Row(
+                Map.of(
+                    "version",
+                    "02015R1998-20151115",
+                    "languages",
+                    "DEU",
+                    "formexModified",
+                    "2015-11-23T07:58:11.083Z")));
+
+    var timeline =
+        CellarActs.act(
+                AVSEC,
+                work(Map.of()),
+                sameDayConsolidation,
+                languages,
+                noDates(),
+                noTitles(),
+                noAmendments(),
+                noPublications())
+            .orElseThrow()
+            .timeline();
+
+    assertThat(timeline.versions()).hasSize(2);
+
+    var english = timeline.in(Language.ENG).orElseThrow();
+    assertThat(english.versions()).hasSize(1);
+    assertThat(english.first().celex()).isEqualTo("32015R1998");
+    assertThat(english.first().kind()).isEqualTo(Version.Kind.ORIGINAL);
+
+    var german = timeline.in(Language.DEU).orElseThrow();
+    assertThat(german.versions()).hasSize(1);
+    assertThat(german.first().celex()).isEqualTo("02015R1998-20151115");
+    assertThat(german.first().kind()).isEqualTo(Version.Kind.CONSOLIDATED);
   }
 
   @Test

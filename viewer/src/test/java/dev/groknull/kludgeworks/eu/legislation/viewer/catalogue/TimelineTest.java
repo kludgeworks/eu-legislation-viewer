@@ -3,12 +3,14 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class TimelineTest {
@@ -75,6 +77,92 @@ class TimelineTest {
 
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, sameDay)));
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of()));
+  }
+
+  @Test
+  void allowsSameDayOriginalAndConsolidationWithDisjointLanguages() {
+    var sameDayOriginal =
+        Version.original(
+            FIRST.date(),
+            ACT,
+            EnumSet.of(Language.ENG, Language.FRA),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
+    var sameDayConsolidated =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            FIRST.date(),
+            "02015R1998-X",
+            false,
+            List.of(),
+            EnumSet.of(Language.DEU, Language.FIN),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
+
+    var timeline = new Timeline(List.of(sameDayConsolidated, sameDayOriginal));
+
+    assertThat(timeline.versions()).containsExactly(sameDayOriginal, sameDayConsolidated);
+
+    var english = timeline.in(Language.ENG).orElseThrow();
+    assertThat(english.versions()).containsExactly(sameDayOriginal);
+
+    var german = timeline.in(Language.DEU).orElseThrow();
+    assertThat(german.versions()).containsExactly(sameDayConsolidated);
+
+    assertThat(timeline.in(Language.ITA)).isEmpty();
+  }
+
+  @Test
+  void allowsSameDayVersionWhenLanguagesAreEmptyWhileFetching() {
+    var sameDayOriginal =
+        new Version(
+            Version.Kind.ORIGINAL,
+            FIRST.date(),
+            "32015R1998",
+            false,
+            List.of(),
+            EnumSet.of(Language.ENG),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
+    var sameDayUnfetched =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            FIRST.date(),
+            "02015R1998-UNFETCHED",
+            false,
+            List.of(),
+            Set.of(),
+            null);
+
+    var timeline = new Timeline(List.of(sameDayUnfetched, sameDayOriginal));
+
+    assertThat(timeline.versions()).containsExactly(sameDayOriginal, sameDayUnfetched);
+    assertThat(timeline.in(Language.ENG).orElseThrow().versions()).containsExactly(sameDayOriginal);
+  }
+
+  @Test
+  void refusesLanguageAgnosticLookupsOnTimelineWithSameDayVersions() {
+    var sameDayOriginal =
+        Version.original(
+            FIRST.date(), ACT, EnumSet.of(Language.ENG), Instant.parse("2026-07-10T01:02:19.329Z"));
+    var sameDayConsolidated =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            FIRST.date(),
+            "02015R1998-X",
+            false,
+            List.of(),
+            EnumSet.of(Language.DEU),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
+
+    var timeline = new Timeline(List.of(sameDayConsolidated, sameDayOriginal));
+
+    assertThatIllegalStateException().isThrownBy(() -> timeline.applicableOn(FIRST.date()));
+    assertThatIllegalStateException().isThrownBy(() -> timeline.startingOn(FIRST.date()));
+    assertThatIllegalStateException().isThrownBy(() -> timeline.predecessor(sameDayConsolidated));
+    assertThatIllegalStateException().isThrownBy(() -> timeline.successor(sameDayOriginal));
+
+    assertThat(timeline.applicableOn(FIRST.date(), Language.ENG)).contains(sameDayOriginal);
+    assertThat(timeline.startingOn(FIRST.date(), Language.DEU)).contains(sameDayConsolidated);
+    assertThat(timeline.in(Language.ENG).orElseThrow().applicableOn(FIRST.date()))
+        .contains(sameDayOriginal);
   }
 
   @Test

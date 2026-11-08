@@ -5,9 +5,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -56,16 +58,40 @@ class ReadingViewTest {
         .isEqualTo("the act as published · OJ L 299, 14.11.2015");
     assertThat(card("2016-02-29", "2016-02-29", TODAY).made())
         .isEqualTo("made by 2015/2426 · also 4 corrigenda");
-    assertThat(card("2018-02-06", "2018-02-06", TODAY).made())
-        .isEqualTo("no amending act listed for this version");
+    assertThat(card("2018-02-06", "2018-02-06", TODAY).made()).isEqualTo("made by 2018/55");
   }
 
   @Test
   void namesTheActsAVersionsTextNamesWhereThePublicationsOfficeListsNone() {
+    var actWithUnlisted =
+        new Act(
+            AVSEC.id(),
+            AVSEC.eli(),
+            AVSEC.type(),
+            AVSEC.titles(),
+            AVSEC.dateOfDocument(),
+            AVSEC.inForce(),
+            AVSEC.endOfValidity(),
+            new Timeline(
+                List.of(
+                    AVSEC.timeline().versions().getFirst(),
+                    new Version(
+                        Version.Kind.CONSOLIDATED,
+                        LocalDate.parse("2018-02-06"),
+                        "02015R1998-20180206",
+                        false,
+                        List.of(),
+                        AVSEC.timeline().versions().getFirst().languages(),
+                        Instant.EPOCH))),
+            AVSEC.dates(),
+            AVSEC.amendingDates(),
+            AVSEC.amendments(),
+            AVSEC.publications());
+    var unlisted = actWithUnlisted.timeline().versions().getLast();
     var named =
         ReadingView.of(
-            AVSEC,
-            version("2018-02-06"),
+            actWithUnlisted,
+            unlisted,
             LocalDate.parse("2018-02-06"),
             Language.ENG,
             TODAY,

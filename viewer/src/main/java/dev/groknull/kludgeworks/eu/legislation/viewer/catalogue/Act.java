@@ -186,11 +186,19 @@ public record Act(
   }
 
   /**
-   * Returns the version that applies on {@code date}. Returns empty before the text of the act
-   * first applies.
+   * Returns the timeline in {@code language}. In any one language, there is at most one version a
+   * day. Returns empty if no version has that language.
    */
-  public Optional<Version> versionOn(LocalDate date) {
-    return timeline.applicableOn(date);
+  public Optional<Timeline> timeline(Language language) {
+    return timeline.in(language);
+  }
+
+  /**
+   * Returns the version that applies on {@code date} in {@code language}. Returns empty before the
+   * text of the act first applies, or if no version has that language.
+   */
+  public Optional<Version> versionOn(LocalDate date, Language language) {
+    return timeline.applicableOn(date, language);
   }
 
   /**
@@ -207,7 +215,11 @@ public record Act(
    * them.
    */
   public List<Unconsolidated> notYetConsolidated(Version version) {
-    var until = timeline.successor(version).map(Version::date);
+    var until =
+        timeline.versions().stream()
+            .map(Version::date)
+            .filter(d -> d.isAfter(version.date()))
+            .findFirst();
     if (until.isEmpty()) {
       return List.of();
     }
@@ -249,7 +261,11 @@ public record Act(
    * <p>The acts are in the order in which the later versions include them.
    */
   public List<Uncertain> mayLag(Version version) {
-    var until = timeline.successor(version).map(Version::date);
+    var until =
+        timeline.versions().stream()
+            .map(Version::date)
+            .filter(d -> d.isAfter(version.date()))
+            .findFirst();
     if (until.isEmpty()) {
       return List.of();
     }

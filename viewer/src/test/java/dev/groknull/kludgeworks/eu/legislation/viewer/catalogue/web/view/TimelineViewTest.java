@@ -84,8 +84,7 @@ class TimelineViewTest {
         .isEqualTo("32015R1998 · from 15 November 2015 · the act as published");
     assertThat(ticks)
         .extracting(Tick::label)
-        .contains(
-            "02015R1998-20180206 · from 6 February 2018 · no amending act listed for this version");
+        .contains("02015R1998-20180206 · from 6 February 2018 · made by 2018/55");
     assertThat(ticks)
         .extracting(Tick::label)
         .anySatisfy(
@@ -156,7 +155,7 @@ class TimelineViewTest {
                 "compare the original with the current version",
                 PAGES
                     + "eng/compare?from=2015-11-15&to="
-                    + AVSEC.versionOn(TODAY).orElseThrow().date()));
+                    + AVSEC.versionOn(TODAY, Language.ENG).orElseThrow().date()));
   }
 
   @Test

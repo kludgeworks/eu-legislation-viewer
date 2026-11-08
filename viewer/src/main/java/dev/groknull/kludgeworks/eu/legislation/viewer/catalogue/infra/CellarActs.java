@@ -204,9 +204,10 @@ class CellarActs implements ActSource {
       Map<Language, String> titles,
       SparqlResult consolidations,
       Map<String, Formex> formex,
-      Map<ActIdentifier, List<ActDate>> dates,
+      Map<ActIdentifier, List<ActDate>> rawDates,
       List<Amendment> amendments,
       Map<ActIdentifier, Publication> publications) {
+    var dates = CellarDates.checkAgainstPublication(rawDates, publications);
     var row = work.rows().getFirst();
     var types = distinct(work, "type");
     if (types.size() != 1) {
@@ -278,9 +279,10 @@ class CellarActs implements ActSource {
 
   /**
    * Returns the timeline: the original text, then the consolidated versions in date order. A
-   * consolidation that starts on the date of the original replaces the original, because it is the
-   * later text of that day. Each version gets the Formex that {@code formex} has for its CELEX
-   * number. A version with no entry in {@code formex} gets none.
+   * consolidation that starts on the date of the original replaces the original only in the
+   * languages it exists in; for the remaining languages, the timeline keeps the original text. Each
+   * version gets the Formex that {@code formex} has for its CELEX number. A version with no entry
+   * in {@code formex} gets none.
    */
   static Timeline timeline(
       ActIdentifier id,
@@ -313,9 +315,27 @@ class CellarActs implements ActSource {
               texts.modified()));
     }
     versions.sort(Comparator.comparing(Version::date));
-    if (versions.isEmpty() || versions.getFirst().date().isAfter(originalFrom)) {
-      var texts = formex.getOrDefault(id.celex(), Formex.NONE);
-      versions.addFirst(Version.original(originalFrom, id, texts.languages(), texts.modified()));
+    var originalTexts = formex.getOrDefault(id.celex(), Formex.NONE);
+    var sameDayConsolidations =
+        versions.stream().filter(v -> v.date().equals(originalFrom)).toList();
+    if (sameDayConsolidations.isEmpty()) {
+      if (versions.isEmpty() || versions.getFirst().date().isAfter(originalFrom)) {
+        versions.add(
+            Version.original(
+                originalFrom, id, originalTexts.languages(), originalTexts.modified()));
+      }
+    } else {
+      var consolidatedLanguages = EnumSet.noneOf(Language.class);
+      sameDayConsolidations.forEach(v -> consolidatedLanguages.addAll(v.languages()));
+      var remainingLanguages =
+          originalTexts.languages().isEmpty()
+              ? EnumSet.noneOf(Language.class)
+              : EnumSet.copyOf(originalTexts.languages());
+      remainingLanguages.removeAll(consolidatedLanguages);
+      if (!remainingLanguages.isEmpty()) {
+        versions.add(
+            Version.original(originalFrom, id, remainingLanguages, originalTexts.modified()));
+      }
     }
     return new Timeline(versions);
   }

@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Clause;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -80,6 +81,47 @@ final class CellarDates {
           unknown);
     }
     return dates;
+  }
+
+  /**
+   * Verifies each date whose clause is anchored on publication against the act's publication date
+   * in the Official Journal, if known. Where Cellar's recorded date does not match {@code
+   * publication + days}, it logs a warning and adopts the date given by the clause.
+   */
+  static Map<ActIdentifier, List<ActDate>> checkAgainstPublication(
+      Map<ActIdentifier, List<ActDate>> dates, Map<ActIdentifier, Publication> publications) {
+    var checked = new LinkedHashMap<ActIdentifier, List<ActDate>>();
+    for (var entry : dates.entrySet()) {
+      var act = entry.getKey();
+      var actDates = entry.getValue();
+      var publication = publications.get(act);
+      var published =
+          publication != null && publication.journal() != null
+              ? publication.journal().published()
+              : null;
+      var list = new ArrayList<ActDate>(actDates.size());
+      for (var actDate : actDates) {
+        if (published != null && actDate.clause().from() == Anchor.PUBLICATION) {
+          int days = actDate.clause().days() == null ? 0 : actDate.clause().days();
+          var fromClause = published.plusDays(days);
+          if (actDate.date() != null && !actDate.date().equals(fromClause)) {
+            LOG.debug(
+                "{}: Cellar's date {} doesn't match publication date {} + {} day(s) ({}); using {}",
+                act,
+                actDate.date(),
+                published,
+                days,
+                actDate.clause().text(),
+                fromClause);
+            list.add(new ActDate(fromClause, actDate.kind(), actDate.partial(), actDate.clause()));
+            continue;
+          }
+        }
+        list.add(actDate);
+      }
+      checked.put(act, list);
+    }
+    return checked;
   }
 
   /**

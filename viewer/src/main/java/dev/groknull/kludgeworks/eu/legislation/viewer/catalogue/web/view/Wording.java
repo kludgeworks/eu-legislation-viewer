@@ -215,8 +215,9 @@ public final class Wording {
    *       November 2015 · applied 1 February 2016 to 28 February 2016".
    * </ul>
    */
-  public static String period(Act act, Version version, LocalDate today) {
-    var next = act.timeline().successor(version);
+  public static String period(Act act, Version version, LocalDate today, Language language) {
+    var timeline = act.timeline().in(language);
+    var next = timeline.flatMap(t -> t.successor(version));
     var applies = applies(act, version);
     if (applies.isPresent()) {
       // The act as published was in force before it applied.
@@ -239,7 +240,7 @@ public final class Wording {
                             + Dates.inWords(last);
                       })
                   .orElseGet(() -> "applies" + inPart + " from " + Dates.inWords(from));
-      return label(act, version, today, period);
+      return label(act, version, today, language, period);
     }
     var period =
         next.map(
@@ -251,7 +252,7 @@ public final class Wording {
                       + Dates.inWords(last);
                 })
             .orElseGet(() -> "Applies from " + Dates.inWords(version.date()));
-    return label(act, version, today, period);
+    return label(act, version, today, language, period);
   }
 
   /**
@@ -263,13 +264,18 @@ public final class Wording {
    *   <li>"may still be revised" is an interim version.
    * </ul>
    */
-  private static String label(Act act, Version version, LocalDate today, String period) {
-    var current = act.versionOn(today);
+  private static String label(
+      Act act, Version version, LocalDate today, Language language, String period) {
+    var timeline = act.timeline().in(language);
+    var current = timeline.flatMap(t -> t.applicableOn(today));
     var labelled = period;
     if (current.filter(version::equals).isPresent()) {
       labelled += " · current version";
     } else if (version.date().isAfter(today)
-        && current.flatMap(act.timeline()::successor).filter(version::equals).isPresent()) {
+        && current
+            .flatMap(c -> timeline.flatMap(t -> t.successor(c)))
+            .filter(version::equals)
+            .isPresent()) {
       labelled += " · next version";
     }
     return version.interim() ? labelled + " · may still be revised" : labelled;

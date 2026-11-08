@@ -142,7 +142,8 @@ public record TimelineView(
         };
     var first = versions.indexOf(from);
     var last = versions.indexOf(to);
-    var current = act.versionOn(today).filter(versions::contains).orElseGet(versions::getLast);
+    var current =
+        act.versionOn(today, language).filter(versions::contains).orElseGet(versions::getLast);
     var original = versions.getFirst();
     return new TimelineView(
         axis.years(),

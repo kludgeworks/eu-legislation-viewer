@@ -92,7 +92,7 @@ public record ReadingView(
     return new ReadingView(
         version.celex(),
         version.eurLex(language).toString(),
-        Wording.period(act, version, today),
+        Wording.period(act, version, today, language),
         Wording.made(act, version, named),
         makers.isEmpty() ? null : act.citations(makers, language),
         askedFor

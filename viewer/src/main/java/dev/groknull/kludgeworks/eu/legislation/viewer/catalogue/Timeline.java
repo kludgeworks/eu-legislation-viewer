@@ -3,15 +3,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.NavigableMap;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.TreeMap;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
@@ -23,43 +23,90 @@ import org.jspecify.annotations.Nullable;
  */
 @ValueObject
 public final class Timeline {
+  private final List<Version> versions;
   private final NavigableMap<LocalDate, Version> byDate;
 
-  /** Makes a timeline of the versions, in any order. There is at most one version a day. */
+  /**
+   * Makes a timeline of the versions, in any order. There is at most one version a day in any one
+   * language. An act's original text and a consolidation may share a day when they apply to
+   * different languages.
+   */
   public Timeline(List<Version> versions) {
     if (versions.isEmpty()) {
       throw new IllegalArgumentException("A timeline has at least the original text");
     }
-    NavigableMap<LocalDate, Version> byDate =
-        versions.stream()
-            .collect(
-                Collectors.toMap(
-                    Version::date,
-                    Function.identity(),
-                    (one, other) -> {
-                      throw new IllegalArgumentException(
-                          "Two versions on one day: " + one + ", " + other);
-                    },
-                    TreeMap::new));
-    this.byDate = Collections.unmodifiableNavigableMap(byDate);
+    var sorted = new ArrayList<>(versions);
+    sorted.sort(
+        Comparator.comparing(Version::date)
+            .thenComparingInt(v -> v.kind() == Version.Kind.ORIGINAL ? 0 : 1));
+
+    for (int i = 0; i < sorted.size() - 1; i++) {
+      var current = sorted.get(i);
+      for (int j = i + 1; j < sorted.size(); j++) {
+        var next = sorted.get(j);
+        if (current.date().equals(next.date())) {
+          if (current.kind() == next.kind()
+              || (!current.languages().isEmpty()
+                  && !next.languages().isEmpty()
+                  && !Collections.disjoint(current.languages(), next.languages()))) {
+            throw new IllegalArgumentException("Two versions on one day: " + current + ", " + next);
+          }
+        } else {
+          break;
+        }
+      }
+    }
+
+    NavigableMap<LocalDate, Version> byDateMap = new TreeMap<>();
+    for (var v : sorted) {
+      byDateMap.put(v.date(), v);
+    }
+    this.versions = List.copyOf(sorted);
+    this.byDate = Collections.unmodifiableNavigableMap(byDateMap);
   }
 
   /** Returns the versions in date order. */
   public List<Version> versions() {
-    return List.copyOf(byDate.values());
+    return versions;
   }
 
-  /** Returns the version that applies on {@code date}, or empty before the first applies. */
+  /**
+   * Returns the version that applies on {@code date}, or empty before the first applies.
+   *
+   * @throws IllegalStateException if this timeline mixes versions of different languages on a
+   *     shared day; use {@link #applicableOn(LocalDate, Language)} or {@link #in(Language)}
+   */
   public Optional<Version> applicableOn(LocalDate date) {
+    checkSingleVersionPerDay();
     return value(byDate.floorEntry(date));
+  }
+
+  /**
+   * Returns the version that applies on {@code date} in {@code language}, or empty before the first
+   * applies or if no version has that language.
+   */
+  public Optional<Version> applicableOn(LocalDate date, Language language) {
+    return in(language).flatMap(t -> t.applicableOn(date));
   }
 
   /**
    * Returns the version that starts on {@code date}, or empty if no version does. {@link
    * #applicableOn} returns the version that applies.
+   *
+   * @throws IllegalStateException if this timeline mixes versions of different languages on a
+   *     shared day; use {@link #startingOn(LocalDate, Language)} or {@link #in(Language)}
    */
   public Optional<Version> startingOn(LocalDate date) {
+    checkSingleVersionPerDay();
     return Optional.ofNullable(byDate.get(date));
+  }
+
+  /**
+   * Returns the version that starts on {@code date} in {@code language}, or empty if no version
+   * does.
+   */
+  public Optional<Version> startingOn(LocalDate date, Language language) {
+    return in(language).flatMap(t -> t.startingOn(date));
   }
 
   /**
@@ -71,35 +118,57 @@ public final class Timeline {
    * over. Returns empty if no version is in the language.
    */
   public Optional<Timeline> in(Language language) {
-    var versions = byDate.values().stream().filter(v -> v.languages().contains(language)).toList();
-    return versions.isEmpty() ? Optional.empty() : Optional.of(new Timeline(versions));
+    var inLanguage = versions.stream().filter(v -> v.languages().contains(language)).toList();
+    return inLanguage.isEmpty() ? Optional.empty() : Optional.of(new Timeline(inLanguage));
   }
 
   /** Returns the first version, from which the act's text first applies. */
   public Version first() {
-    return byDate.firstEntry().getValue();
+    return versions.getFirst();
   }
 
   /** Returns the latest version, which may apply only in the future. */
   public Version latest() {
-    return byDate.lastEntry().getValue();
+    return versions.getLast();
   }
 
-  /** Returns the version before {@code version}, or empty for the first. */
+  /**
+   * Returns the version before {@code version}, or empty for the first.
+   *
+   * @throws IllegalStateException if this timeline mixes versions of different languages on a
+   *     shared day; use {@link #in(Language)}
+   */
   public Optional<Version> predecessor(Version version) {
-    return value(byDate.lowerEntry(dateOf(version)));
+    checkSingleVersionPerDay();
+    int index = indexOf(version);
+    return index > 0 ? Optional.of(versions.get(index - 1)) : Optional.empty();
   }
 
-  /** Returns the version after {@code version}, or empty for the latest. */
+  /**
+   * Returns the version after {@code version}, or empty for the latest.
+   *
+   * @throws IllegalStateException if this timeline mixes versions of different languages on a
+   *     shared day; use {@link #in(Language)}
+   */
   public Optional<Version> successor(Version version) {
-    return value(byDate.higherEntry(dateOf(version)));
+    checkSingleVersionPerDay();
+    int index = indexOf(version);
+    return index < versions.size() - 1 ? Optional.of(versions.get(index + 1)) : Optional.empty();
   }
 
-  private LocalDate dateOf(Version version) {
-    if (!version.equals(byDate.get(version.date()))) {
+  private void checkSingleVersionPerDay() {
+    if (versions.size() != byDate.size()) {
+      throw new IllegalStateException(
+          "Timeline has multiple versions on one day in different languages; use in(language)");
+    }
+  }
+
+  private int indexOf(Version version) {
+    int index = versions.indexOf(version);
+    if (index < 0) {
       throw new IllegalArgumentException("Not a version of this act: " + version);
     }
-    return version.date();
+    return index;
   }
 
   private static Optional<Version> value(Map.@Nullable Entry<LocalDate, Version> entry) {
@@ -108,16 +177,16 @@ public final class Timeline {
 
   @Override
   public boolean equals(@Nullable Object other) {
-    return other instanceof Timeline timeline && Objects.equals(byDate, timeline.byDate);
+    return other instanceof Timeline timeline && Objects.equals(versions, timeline.versions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hashCode(byDate);
+    return Objects.hashCode(versions);
   }
 
   @Override
   public String toString() {
-    return "Timeline" + byDate.values();
+    return "Timeline" + versions;
   }
 }
