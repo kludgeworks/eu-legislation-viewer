@@ -51,4 +51,15 @@ class ModularityTests {
   void packagesDeclareARing() {
     SlicedOnion.packagesDeclareARing(modules).check(classes);
   }
+
+  @Test
+  void templatesUseOnlyTheirModule() {
+    // Our templates only, those of src/main/jte: jte-models' jar has templates of its own, in the
+    // same package
+    var templates =
+        new ClassFileImporter()
+            .withImportOption(location -> location.contains("/src/main/jte/"))
+            .importPackages(SlicedOnion.TEMPLATES);
+    SlicedOnion.templatesUseOnlyTheirModule(modules).check(templates);
+  }
 }
