@@ -26,6 +26,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.Compar
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.NeighbourView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.RowFolds;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
@@ -34,6 +36,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
 import gg.jte.generated.precompiled.Templates;
+import gg.jte.output.StringOutput;
 import jakarta.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -45,6 +48,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
+import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -68,6 +72,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *   <li>{@code /acts}: the acts between the two versions, as chips with how many differences each
  *       made
  *   <li>{@code /same}: the units of a fold of the Synopsis, which the Synopsis loads itself
+ *   <li>{@code /difference}: one difference by the eId of its unit, or some rows of one of its
+ *       tables. The views load it when the reader opens an annex inserted whole or a fold of rows.
  * </ul>
  *
  * <p>The parts answer only the canonical address of a comparison, as the page links to it: the
@@ -80,6 +86,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 class ChangesController {
   private static final Logger LOG = LoggerFactory.getLogger(ChangesController.class);
+
+  /** The rows of a fold, as its address gives them. For example, {@code 10-40}. */
+  private static final Pattern ROWS = Pattern.compile("(\\d{1,9})-(\\d{1,9})");
 
   private final Acts acts;
   private final Texts texts;
@@ -172,6 +181,7 @@ class ChangesController {
         differences.add(each);
       }
     }
+    var parts = SidenoteParts.of(sidenotes.values());
     var outline =
         OutlineView.of(
             attributed.outline(), differences.stream().map(ChangesView.Shown::difference).toList());
@@ -196,8 +206,10 @@ class ChangesController {
                       changes,
                       outline,
                       sidenotes,
+                      parts,
                       this.html,
                       "/content/" + attributed.later().hex() + "/units",
+                      page,
                       views,
                       all,
                       preamble)
@@ -212,11 +224,18 @@ class ChangesController {
                           attributed.earlier().eIds(),
                           differences,
                           this.html,
+                          each -> RowFolds.of(each.difference().shown(), each.part(page)),
                           (each, unit) -> {
                             var sidenote = sidenotes.get(each.number());
                             return templates.comparisonDifference(
-                                each, sidenote, greyed(only, sidenote), unit);
+                                each,
+                                sidenote,
+                                greyed(only, sidenote),
+                                unit,
+                                each.part(page),
+                                parts);
                           }),
+                      parts,
                       views,
                       all,
                       sidenotes.values().stream().anyMatch(SidenoteView::corrected))
@@ -248,6 +267,7 @@ class ChangesController {
                     changes,
                     outline,
                     sidenotes,
+                    parts,
                     units,
                     histories,
                     this.html,
@@ -256,7 +276,8 @@ class ChangesController {
                     views,
                     all,
                     preamble,
-                    page.same(earlier.date(), later.date()))
+                    page.same(earlier.date(), later.date()),
+                    page)
                 .render();
           }
         };
@@ -491,6 +512,93 @@ class ChangesController {
     SidenoteView sidenote(Difference difference) {
       return Objects.requireNonNull(sidenotes.get(difference));
     }
+  }
+
+  /**
+   * Returns one difference of the comparison, the one at the unit {@code eId}, as the views mark
+   * it. With {@code table} and {@code rows}, it returns only those rows of that table of the unit,
+   * as they read ({@link RowFolds}). The views load it when the reader opens an annex inserted
+   * whole or a fold of rows, so that a long comparison does not send them until they are asked for.
+   *
+   * <p>If the comparison is limited to the changes of one act, the difference is that of the act's
+   * own comparison, as for the changes.
+   *
+   * <p>Returns 404 if the address is not the canonical address of a comparison, if the texts are
+   * not built yet, if no difference is at {@code eId}, or if the rows are not in the table.
+   */
+  @GetMapping(path = ComparePage.DIFFERENCE_PATH, produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  String difference(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
+      @RequestParam(ComparePage.EID) String eId,
+      @RequestParam(name = ComparePage.TABLE, required = false) @Nullable Integer table,
+      @RequestParam(name = ComparePage.ROWS, required = false) @Nullable String rows,
+      HttpServletRequest request) {
+    var ends = new Ends(new Eli(type, year, number), code, from, to, act);
+    var page =
+        ComparePage.ofPart(
+            request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
+    var started = System.nanoTime();
+    var preparation = texts.preparation(ends.act, ends.language);
+    var only = ends.only;
+    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
+    var earlier = step == null ? ends.from : ends.earlier(step);
+    var later = step == null ? ends.to : step;
+    if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
+        || !(preparation.texts().get(later) instanceof Text.Ready after)) {
+      throw Requests.notFound();
+    }
+    var difference =
+        comparisons.difference(before.root(), after.root(), eId).orElseThrow(Requests::notFound);
+    if (table == null && rows == null) {
+      var html = render(new ChangesView.Shown(0, difference, "").folded(page));
+      LOG.info(
+          "Difference of {} from {} to {} in {}{} at {}, in {} ms",
+          ends.act.id(),
+          earlier.date(),
+          later.date(),
+          ends.language.code(),
+          only == null ? "" : " by " + only,
+          difference.eId(),
+          Duration.ofNanos(System.nanoTime() - started).toMillis());
+      return html;
+    }
+    var span = rows == null ? null : ROWS.matcher(rows);
+    if (table == null || span == null || !span.matches()) {
+      throw Requests.notFound();
+    }
+    var first = Integer.parseInt(span.group(1));
+    var last = Integer.parseInt(span.group(2));
+    var found = RowFolds.rows(difference.shown(), table, first, last);
+    if (found.isEmpty()) {
+      throw Requests.notFound();
+    }
+    var html = new StringBuilder();
+    found.forEach(row -> html.append(render(row)));
+    LOG.info(
+        "Rows of {} from {} to {} in {}{} at {}: {} rows, in {} ms",
+        ends.act.id(),
+        earlier.date(),
+        later.date(),
+        ends.language.code(),
+        only == null ? "" : " by " + only,
+        difference.eId(),
+        found.size(),
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
+    return html.toString();
+  }
+
+  /** Returns {@code element} rendered as the legal text renders it. */
+  private String render(Element element) {
+    var out = new StringOutput();
+    html.element(element).writeTo(out);
+    return out.toString();
   }
 
   /**

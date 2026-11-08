@@ -29,7 +29,9 @@ import org.springframework.transaction.annotation.Transactional;
  *   <li>To store a text, the model encodes it into its tree and cuts it into segments. The service
  *       then keeps the tree, unless it is kept already.
  *   <li>To read or rebuild a text, the service reads its tree back and decodes it.
- *   <li>To outline a text, the service reads its skeleton back: its containers and their titles.
+ *   <li>To outline a text, the service reads the outline that it kept when it stored the text. For
+ *       a text stored before outlines were kept, it reads the skeleton back once (its containers
+ *       and their titles), outlines it and keeps the outline.
  * </ul>
  *
  * <p>Each operation is one transaction, one observation and one log line. The observations are
@@ -61,13 +63,16 @@ class ContentService implements Content {
     var segments = Segmentation.of(tree);
     var encodedIn = millis(start);
     var root = tree.root();
+    var outline = Outlines.of(tree);
     if (store.contains(root)) {
+      store.addOutline(root, outline);
       LOG.info(
           "{} is stored already: {} nodes, encoded in {} ms", root, tree.nodes().size(), encodedIn);
       return root;
     }
     var written = System.nanoTime();
     var added = store.add(tree, segments);
+    store.addOutline(root, outline);
     var bytes = tree.nodes().values().stream().mapToLong(n -> n.content().length).sum();
     LOG.info(
         "Stored {}: {} of {} nodes new, {} KB of JSON, {} segment(s); encoded in {} ms, written in"
@@ -113,7 +118,7 @@ class ContentService implements Content {
   }
 
   @Override
-  @Transactional(readOnly = true)
+  @Transactional
   public Optional<Outline> outline(ContentHash root) {
     return Observation.createNotStarted("content.outline", observations)
         .observe(() -> doOutline(root));
@@ -121,6 +126,11 @@ class ContentService implements Content {
 
   private Optional<Outline> doOutline(ContentHash root) {
     var start = System.nanoTime();
+    var kept = store.outline(root);
+    if (kept.isPresent()) {
+      LOG.debug("Outlined {}: kept, read in {} ms", root, millis(start));
+      return kept;
+    }
     var skeleton = store.skeleton(root);
     if (skeleton.isEmpty()) {
       LOG.debug("Nothing stored at {}", root);
@@ -128,8 +138,9 @@ class ContentService implements Content {
     }
     var read = millis(start);
     var outline = Outlines.of(skeleton.get());
-    LOG.debug(
-        "Outlined {}: {} nodes of its skeleton read in {} ms, outlined in {} ms",
+    store.addOutline(root, outline);
+    LOG.info(
+        "Outlined {} and kept it: {} nodes of its skeleton read in {} ms, outlined in {} ms",
         root,
         skeleton.get().nodes().size(),
         read,

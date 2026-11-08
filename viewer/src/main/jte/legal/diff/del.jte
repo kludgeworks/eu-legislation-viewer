@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<%-- words a comparison found deleted, where they stood (Difference.shown): only ever around text --%><del class="diff">${html.children(node)}</del>
+<%-- words a comparison found deleted, where they stood (Difference.shown): around text, a formula or an image --%><del class="diff">${html.children(node)}</del>

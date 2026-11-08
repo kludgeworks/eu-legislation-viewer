@@ -1,14 +1,17 @@
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
 @import java.util.List
 @import java.util.Map
 @param ChangesView changes
 @param OutlineView outline
 @param Map<Integer, SidenoteView> sidenotes
+@param SidenoteParts parts
 @param Map<String, Element> neighbours
 @param Map<String, SidenoteView.History> histories
 @param LegalRenderer html
@@ -18,6 +21,7 @@
 @param ControlsView.Only only = null
 @param String preamble = ""
 @param String same = ""
+@param ComparePage page
 <%-- Shows a comparison's Synopsis view. The controls come first. Then a ledger aligns the two
      texts by provision. From's CELEX and To's CELEX are in the column heads.
      Each provision that differs is a row, with its unit marked in both texts. Words that it lost are
@@ -28,7 +32,9 @@
      Before each difference come the units of its parent unit that are the same in both texts. The
      unit next to the difference is a row, as the later text has it (neighbours, by eId). That row also says what last made the unit as it is
      (histories). The units between them are in a fold. Units that an act filter leaves out are
-     also in a fold.
+     also in a fold. In a changed table, runs of rows that are the same in both texts are folded,
+     and load from the difference's own address (page) when the reader opens them. An annex
+     inserted whole is a fold that loads from there too (annexfold.jte).
      The later text's outline is beside the view, with a count of differences for each unit. --%>
 !{var total = changes.numbers().size();}
 <div class="outlined">
@@ -39,6 +45,7 @@
 </nav>
 </comparison-outline>
 <div class="changes synopsis">
+  @template.comparison.sidenoteparts(parts = parts)
   @template.comparison.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two versions, aligned by provision">
     <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="celex">${from}</span></div><div role="columnheader">To<span class="celex">${to}</span></div><div role="columnheader">What changed it</div></div>
@@ -59,13 +66,13 @@
         <div class="ledger-row ledger-lead" role="row"><div role="cell"></div><div class="from" role="cell">${html.element(lead.unit())}</div><div class="to" role="cell">${html.element(lead.unit())}</div><div role="cell"></div></div>
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        !{var unit = html.element(shown.unit());}
+        !{var unit = html.element(shown.folded(page));}
         <div class="ledger-row difference-${shown.kind()}${only != null && sidenote != null && !sidenote.candidates().isEmpty() ? " unknown" : ""}${sidenote != null && sidenote.corrected() ? " corrected" : ""}" role="row" id="difference-${shown.number()}">
           <div class="provision" role="cell">${shown.cited()}<span class="n">difference ${shown.number()} of ${total}</span></div>
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in this version</p>@else${unit}@endif</div>
-          <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in this version</p>@else${unit}@endif</div>
+          <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in this version</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, part = shown.part(page))@else${unit}@endif</div>
           <div class="what" role="cell">
-            @template.comparison.sidenote(shown = shown, sidenote = sidenote)
+            @template.comparison.sidenote(shown = shown, sidenote = sidenote, parts = parts)
             <nav class="steps" aria-label="Differences">@if(shown.number() > 1)<a href="#difference-${shown.number() - 1}" aria-label="Previous difference">↑</a>@else<span aria-hidden="true">↑</span>@endif@if(shown.number() < total)<a href="#difference-${shown.number() + 1}" aria-label="Next difference">↓</a>@else<span aria-hidden="true">↓</span>@endif</nav>
           </div>
         </div>

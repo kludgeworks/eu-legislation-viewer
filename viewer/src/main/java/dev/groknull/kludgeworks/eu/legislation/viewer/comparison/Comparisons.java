@@ -15,4 +15,11 @@ public interface Comparisons {
    * one, or it is worked out now. Returns none if one of the texts is not stored.
    */
   Optional<Comparison> between(ContentHash from, ContentHash to);
+
+  /**
+   * Returns the difference at {@code eId} in the comparison of {@code from} with {@code to}, with
+   * its unit whole. An annex inserted whole is in {@link #between} with only its opening, because
+   * the store keeps it apart. Returns none if there is no such difference.
+   */
+  Optional<Difference> difference(ContentHash from, ContentHash to, String eId);
 }

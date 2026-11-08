@@ -96,6 +96,21 @@ class ContentTests {
   }
 
   @Test
+  void keepsTheOutlineWhenItStoresATextAndOutlinesATextStoredBeforeOnceFromItsSkeleton() {
+    var text = LegalTexts.sample(SAMPLE);
+    var root = content.store(text);
+    var outline = Outlines.of(Encoder.encode(text));
+
+    assertThat(outlines(root)).isOne();
+    // A text stored before outlines were kept
+    jdbc.sql("delete from outline where root = ?").param(root.bytes()).update();
+
+    assertThat(content.outline(root)).contains(outline);
+    assertThat(outlines(root)).isOne();
+    assertThat(content.outline(root)).contains(outline);
+  }
+
+  @Test
   void rebuildsNothingWhereNothingIsStored() throws Exception {
     var out = LegalTexts.SAXON.newDocumentBuilder().newBuildingStreamWriter();
 
@@ -109,6 +124,13 @@ class ContentTests {
     return entries.stream()
         .flatMap(entry -> Stream.concat(Stream.of(entry), all(entry.entries()).stream()))
         .toList();
+  }
+
+  private long outlines(ContentHash root) {
+    return jdbc.sql("select count(*) from outline where root = ?")
+        .param(root.bytes())
+        .query(Long.class)
+        .single();
   }
 
   private long rows() {

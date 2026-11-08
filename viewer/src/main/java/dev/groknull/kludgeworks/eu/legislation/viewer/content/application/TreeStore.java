@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree;
 import java.util.List;
@@ -32,6 +33,12 @@ public interface TreeStore {
    * outline from it. The other children of the containers are not in it.
    */
   Optional<Tree> skeleton(ContentHash root);
+
+  /** Returns the outline of the text at {@code root}, if it is kept. */
+  Optional<Outline> outline(ContentHash root);
+
+  /** Keeps the outline of the text at {@code root}, unless it is kept already. */
+  void addOutline(ContentHash root, Outline outline);
 
   /** Returns the segments of the text at {@code root}, in order. */
   List<Segment> segments(ContentHash root);

@@ -1,3 +1,4 @@
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView
@@ -5,6 +6,7 @@
 @param ChangesView changes
 @param OutlineView outline
 @param gg.jte.Content text
+@param SidenoteParts parts
 @param List<ControlsView.ViewLink> views
 @param ControlsView.Only only = null
 @param boolean corrected = false
@@ -20,6 +22,7 @@
 </nav>
 </comparison-outline>
 <div class="changes whole">
+  @template.comparison.sidenoteparts(parts = parts)
   @template.comparison.controls(changes = changes, views = views, only = only, corrected = corrected)
   <div class="book">${text}</div>
 </div>

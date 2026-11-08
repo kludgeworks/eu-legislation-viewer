@@ -107,7 +107,7 @@ class VersionControllerTests {
             .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
             .toList();
     assertThat(assets)
-        .hasSize(11)
+        .hasSize(12)
         .allSatisfy(
             asset -> {
               assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");

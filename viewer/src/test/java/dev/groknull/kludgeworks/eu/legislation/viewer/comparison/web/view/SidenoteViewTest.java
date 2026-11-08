@@ -161,7 +161,8 @@ class SidenoteViewTest {
             null,
             List.of(),
             List.of(),
-            List.of());
+            List.of(),
+            null);
 
     var sidenote =
         SidenoteView.of(
@@ -221,7 +222,8 @@ class SidenoteViewTest {
             null,
             List.of(),
             List.of(new Marker("32019R1583", "inserted", null)),
-            List.of());
+            List.of(),
+            null);
 
     var sidenote =
         SidenoteView.of(
@@ -455,7 +457,8 @@ class SidenoteViewTest {
             null,
             List.of(),
             List.of(),
-            List.of());
+            List.of(),
+            null);
 
     var sidenote =
         SidenoteView.of(
@@ -471,6 +474,40 @@ class SidenoteViewTest {
         .isEqualTo(
             "The text has no marker here; the Publications Office’s data names 2019/103 for"
                 + " point 1.2.3.");
+  }
+
+  @Test
+  void namesTheActsOnlyCellarNamesForOneUnitInOneSentence() {
+    var deleted =
+        new Difference(
+            "anx/pnt_12.3.1",
+            Kind.DELETED,
+            point("anx/pnt_12.3.1"),
+            unit("anx/pnt_12.3.1"),
+            0,
+            0,
+            null,
+            null,
+            null,
+            null,
+            List.of(),
+            List.of(),
+            List.of(),
+            null);
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20160229"),
+            version("02015R1998-20261001"),
+            deleted,
+            amendmentsAt("AN PO 12.3.1"),
+            Language.ENG);
+
+    assertThat(sidenote.why())
+        .isEqualTo(
+            "The text has no marker here; the Publications Office’s data names 2021/255 and"
+                + " 2022/421 for point 12.3.1.");
   }
 
   @Test
@@ -543,7 +580,8 @@ class SidenoteViewTest {
         null,
         List.of(),
         List.of(marker),
-        List.of());
+        List.of(),
+        null);
   }
 
   private static Difference deleted(String eId, Marker marker) {
@@ -560,7 +598,8 @@ class SidenoteViewTest {
         null,
         List.of(),
         List.of(marker),
-        List.of());
+        List.of(),
+        null);
   }
 
   private static Difference changed(String eId, List<Marker> markers, List<Marker> earlier) {
@@ -577,7 +616,8 @@ class SidenoteViewTest {
         null,
         List.of(),
         markers,
-        earlier);
+        earlier,
+        null);
   }
 
   private static Sibling point(String eId) {

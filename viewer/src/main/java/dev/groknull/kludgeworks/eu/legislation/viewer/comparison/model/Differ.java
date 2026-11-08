@@ -12,7 +12,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibl
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Units.Unit;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
-import java.text.BreakIterator;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +31,9 @@ import org.jspecify.annotations.Nullable;
  *   <li>A unit in only one text is inserted or deleted, with its units.
  *   <li>A unit in both texts whose own wording differs is changed.
  * </ul>
+ *
+ * <p>The notes that a unit refers to are compared as part of it. A changed unit shows its notes
+ * under it, marked, if they differ. An inserted or deleted unit shows its notes, marked whole.
  *
  * <p>The blocks of a changed unit are aligned by what they say. {@link Marks} marks a changed block
  * word by word. Both alignments use the Myers diff of java-diff-utils.
@@ -299,13 +301,25 @@ public final class Differ {
    */
   private static DifferenceBuilder whole(Unit unit, Units units, Kind kind, String mark) {
     var marked = Marks.all(unit.element(), mark);
+    var shown = marked.element();
+    var inserted = marked.inserted();
+    var deleted = marked.deleted();
+    var referred = units.notesOf(unit.element());
+    if (!referred.isEmpty()) {
+      var notes = Marks.all(notes(referred), mark);
+      var children = new ArrayList<>(shown.children());
+      children.add(notes.element());
+      shown = copy(shown, children);
+      inserted += notes.inserted();
+      deleted += notes.deleted();
+    }
     return DifferenceBuilder.builder()
         .eId(unit.eId())
         .kind(kind)
         .unit(sibling(unit))
-        .shown(marked.element())
-        .inserted(marked.inserted())
-        .deleted(marked.deleted())
+        .shown(shown)
+        .inserted(inserted)
+        .deleted(deleted)
         .parent(unit.parent())
         .list(unit.list())
         .section(unit.section())
@@ -332,6 +346,9 @@ public final class Differ {
     }
     var marking = marking(from, to);
     var children = own(to.element(), marking.replaced(), marking.deletedAt(), new int[1]);
+    if (marking.notes() != null) {
+      children.add(marking.notes());
+    }
     return DifferenceBuilder.builder()
         .eId(to.eId())
         .kind(Kind.CHANGED)
@@ -347,16 +364,18 @@ public final class Differ {
   }
 
   /**
-   * Returns what the own blocks of {@code unit} say, with its num without the full stop after it.
-   * If a num only gained or lost its full stop, the Publications Office typeset it, and no act
-   * changed it. For example, "11.3" to "11.3.".
+   * Returns what the own blocks of {@code unit} say, with its num without the full stop after it,
+   * and what the notes that they refer to say. A unit whose note an act changed differs. If a num
+   * only gained or lost its full stop, the Publications Office typeset it, and no act changed it.
+   * For example, "11.3" to "11.3.".
    */
   private static List<String> numbered(Unit unit) {
     var wording = new ArrayList<String>();
     for (var block : unit.blocks()) {
-      var said = Wording.of(block);
-      wording.add(block.name().equals("num") ? said.strip().replaceFirst("\\.$", "") : said);
+      var said = Wording.key(block);
+      wording.add(block.name().equals("num") ? said.replaceFirst("\\.$", "") : said);
     }
+    unit.notes().forEach(note -> wording.add("note:" + Wording.key(note)));
     return wording;
   }
 
@@ -367,12 +386,15 @@ public final class Differ {
    * @param replaced each block that differs, marked. It is changed word by word, or inserted whole.
    * @param deletedAt the blocks deleted whole, marked, by the position of the block that they stood
    *     before. Blocks deleted after the last block are at the count of blocks.
+   * @param notes the notes of {@code to}, marked against those of {@code from}, with the deleted
+   *     notes where they stood. Null if the notes say the same.
    * @param inserted how many words are inserted
    * @param deleted how many words are deleted
    */
   private record Marking(
       Map<Integer, Element> replaced,
       Map<Integer, List<Element>> deletedAt,
+      @Nullable Element notes,
       int inserted,
       int deleted) {}
 
@@ -381,31 +403,49 @@ public final class Differ {
     var deletedAt = new HashMap<Integer, List<Element>>();
     var inserted = 0;
     var deleted = 0;
-    var deltas = DiffUtils.diff(from.wording(), to.wording()).getDeltas();
+    var deltas = DiffUtils.diff(from.keys(), to.keys()).getDeltas();
     for (var delta : deltas) {
       var source = delta.getSource();
       var target = delta.getTarget();
-      var paired = Math.min(source.size(), target.size());
-      for (var i = 0; i < target.size(); i++) {
-        var block = to.blocks().get(target.getPosition() + i);
+      var earlier =
+          from.blocks().subList(source.getPosition(), source.getPosition() + source.size());
+      var later = to.blocks().subList(target.getPosition(), target.getPosition() + target.size());
+      var sourceOf = Likeness.pairs(earlier, later);
+      var used = new boolean[earlier.size()];
+      for (var i = 0; i < later.size(); i++) {
+        var block = later.get(i);
+        if (sourceOf[i] >= 0) {
+          used[sourceOf[i]] = true;
+        }
         var marked =
-            i < paired
-                ? Marks.between(from.blocks().get(source.getPosition() + i), block)
+            sourceOf[i] >= 0
+                ? Marks.between(earlier.get(sourceOf[i]), block)
                 : Marks.all(block, Marks.INSERTED);
         replaced.put(target.getPosition() + i, marked.element());
         inserted += marked.inserted();
         deleted += marked.deleted();
       }
-      for (var i = paired; i < source.size(); i++) {
-        var marked = Marks.all(from.blocks().get(source.getPosition() + i), Marks.DELETED);
-        // Put it before the block after the paired blocks, where it stood.
+      for (var i = 0; i < earlier.size(); i++) {
+        if (used[i]) {
+          continue;
+        }
+        var marked = Marks.all(earlier.get(i), Marks.DELETED);
+        // Put it where it stood: before the first block paired with a block after it.
         deletedAt
-            .computeIfAbsent(target.getPosition() + paired, at -> new ArrayList<>())
+            .computeIfAbsent(
+                target.getPosition() + Likeness.before(sourceOf, i), at -> new ArrayList<>())
             .add(marked.element());
         deleted += marked.deleted();
       }
     }
-    return new Marking(replaced, deletedAt, inserted, deleted);
+    @Nullable Element notes = null;
+    if (!keys(from.notes()).equals(keys(to.notes()))) {
+      var marked = Marks.between(notes(from.notes()), notes(to.notes()));
+      notes = marked.element();
+      inserted += marked.inserted();
+      deleted += marked.deleted();
+    }
+    return new Marking(replaced, deletedAt, notes, inserted, deleted);
   }
 
   /**
@@ -589,10 +629,13 @@ public final class Differ {
     var marking =
         difference != null && earlier != null && difference.kind() == Kind.CHANGED
             ? marking(earlier, unit)
-            : new Marking(Map.of(), Map.of(), 0, 0);
+            : new Marking(Map.of(), Map.of(), null, 0, 0);
     var next = new int[1];
     var children = withUnits(unit.element(), unit, marking, next, group);
     children.addAll(marking.deletedAt().getOrDefault(next[0], List.of()));
+    if (marking.notes() != null) {
+      children.add(marking.notes());
+    }
     return copy(unit.element(), children);
   }
 
@@ -718,11 +761,15 @@ public final class Differ {
     return new Element(element.name(), element.attributes(), children, element.text());
   }
 
-  /**
-   * The minimum word similarity score required to align a renumbered unit with an earlier unit.
-   * Weak matches below this threshold are left unpaired so they appear as deleted and inserted.
-   */
-  private static final double MIN_SIMILARITY = 0.5;
+  /** Returns {@code notes} as the notes of a unit, under its blocks and units. */
+  private static Element notes(List<Element> notes) {
+    return new Element("notes", Map.of(), notes, "");
+  }
+
+  /** Returns what each of {@code notes} says, as a comparison matches it. */
+  private static List<String> keys(List<Element> notes) {
+    return notes.stream().map(Wording::key).toList();
+  }
 
   /**
    * Represents a pair of sibling lists waiting to be aligned.
@@ -806,14 +853,14 @@ public final class Differ {
     for (var unit : earlierUnits) {
       var text = substantive(unit);
       earlierTexts.put(unit.eId(), text);
-      earlierWordCounts.put(unit.eId(), wordCounts(text));
+      earlierWordCounts.put(unit.eId(), Likeness.words(text));
     }
     var laterTexts = new HashMap<String, String>();
     var laterWordCounts = new HashMap<String, Map<String, Integer>>();
     for (var unit : laterUnits) {
       var text = substantive(unit);
       laterTexts.put(unit.eId(), text);
-      laterWordCounts.put(unit.eId(), wordCounts(text));
+      laterWordCounts.put(unit.eId(), Likeness.words(text));
     }
 
     var pairedEarlier = new HashSet<String>();
@@ -895,7 +942,7 @@ public final class Differ {
    *
    * <p>Renumbering preserves the relative order of provisions. An earlier sibling is only a
    * candidate if its relative identifier differs from the later unit and their wording similarity
-   * is at least {@link #MIN_SIMILARITY}.
+   * is at least {@link Likeness#MINIMUM}.
    */
   private static void alignRenumbered(
       List<Unit> earlierUnits,
@@ -953,13 +1000,13 @@ public final class Differ {
             score = 1.0;
           } else {
             var sim =
-                similarity(
+                Likeness.of(
                     earlierWordCounts.getOrDefault(earlierUnit.eId(), Map.of()), laterCounts);
-            if (sim >= MIN_SIMILARITY) {
+            if (sim >= Likeness.MINIMUM) {
               score = sim;
             }
           }
-          if (score >= MIN_SIMILARITY) {
+          if (score >= Likeness.MINIMUM) {
             double candidateScore = dp[j - 1][i - 1] + score;
             if (candidateScore > bestScore) {
               bestScore = candidateScore;
@@ -1106,60 +1153,5 @@ public final class Differ {
         collectSubstantiveText(child, builder);
       }
     }
-  }
-
-  /**
-   * Returns the count of each word in {@code text}.
-   *
-   * @param text the substantive text
-   * @return the map of word counts
-   */
-  private static Map<String, Integer> wordCounts(String text) {
-    if (text.isEmpty()) {
-      return Map.of();
-    }
-    var counts = new HashMap<String, Integer>();
-    var breaks = BreakIterator.getWordInstance(Locale.ROOT);
-    breaks.setText(text);
-    for (int start = breaks.first(), end = breaks.next();
-        end != BreakIterator.DONE;
-        start = end, end = breaks.next()) {
-      var word = text.substring(start, end);
-      if (Character.isLetterOrDigit(word.codePointAt(0))) {
-        counts.merge(word, 1, Integer::sum);
-      }
-    }
-    return counts;
-  }
-
-  /**
-   * Returns the word overlap similarity between two word count maps as a ratio between 0.0 and 1.0
-   * (Dice coefficient).
-   *
-   * @param earlierCounts the word counts of the earlier unit
-   * @param laterCounts the word counts of the later unit
-   * @return the similarity ratio between 0.0 and 1.0
-   */
-  private static double similarity(
-      Map<String, Integer> earlierCounts, Map<String, Integer> laterCounts) {
-    if (earlierCounts.isEmpty() || laterCounts.isEmpty()) {
-      return 0.0;
-    }
-    var totalEarlier = 0;
-    for (var count : earlierCounts.values()) {
-      totalEarlier += count;
-    }
-    var totalLater = 0;
-    for (var count : laterCounts.values()) {
-      totalLater += count;
-    }
-    var shared = 0;
-    for (var entry : earlierCounts.entrySet()) {
-      var laterCount = laterCounts.get(entry.getKey());
-      if (laterCount != null) {
-        shared += Math.min(entry.getValue(), laterCount);
-      }
-    }
-    return (2.0 * shared) / (totalEarlier + totalLater);
   }
 }

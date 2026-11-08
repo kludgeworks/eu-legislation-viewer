@@ -2,6 +2,11 @@
 server:
   # links at the host and path a proxy forwards (X-Forwarded-*, Forwarded), read by Spring itself
   forward-headers-strategy: framework
+  # gzip for the pages, fragments, stylesheets and scripts. A comparison's Changes of thousands of
+  # differences is tens of MB of HTML, and under 1 MB gzipped: its sidenotes and tables repeat. The
+  # default types leave out text/event-stream, so the SSE pushes are not held in a gzip buffer.
+  compression:
+    enabled: true
 
 spring:
   application:

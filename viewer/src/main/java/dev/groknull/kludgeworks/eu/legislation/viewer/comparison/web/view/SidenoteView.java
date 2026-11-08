@@ -217,20 +217,28 @@ public record SidenoteView(
       }
     }
     if (marked.isEmpty()) {
+      // One sentence for each place, naming all the acts that the data names for it
+      var byPlace = new LinkedHashMap<String, List<ActIdentifier>>();
       named.forEach(
           (each, amendment) ->
+              byPlace
+                  .computeIfAbsent(amendment.location().name(), place -> new ArrayList<>())
+                  .add(each));
+      byPlace.forEach(
+          (place, acts) ->
               why.add(
                   "The text has no marker here; the Publications Office’s data names "
-                      + each.cited()
+                      + names(acts)
                       + " for "
-                      + amendment.location().name()
+                      + place
                       + "."));
     }
     return new SidenoteView(
         String.join(", then ", chain),
         steps.stream().flatMap(List::stream).toList(),
         List.of(),
-        why.isEmpty() ? null : String.join(" ", why),
+        // Each step of acts together says why their change can't be split: say it once
+        why.isEmpty() ? null : String.join(" ", new LinkedHashSet<>(why)),
         dates,
         before,
         act.citations(steps.stream().flatMap(List::stream).toList(), language));

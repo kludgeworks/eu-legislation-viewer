@@ -92,6 +92,11 @@ class ComparisonServiceTest {
     }
 
     @Override
+    public Optional<Element> annex(ContentHash from, ContentHash to, String eId) {
+      return Optional.empty();
+    }
+
+    @Override
     public void add(Comparison comparison) {
       kept.putIfAbsent(List.of(comparison.from(), comparison.to()), comparison);
     }

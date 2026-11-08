@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.infra;
 
 import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.EDGE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.NODE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.OUTLINE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.OVERLAY;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq.Tables.ROOT_SEGMENT;
 import static org.jooq.impl.DSL.field;
@@ -14,6 +15,7 @@ import static org.jooq.impl.DSL.table;
 import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.application.TreeStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree;
@@ -38,6 +40,7 @@ import org.jooq.Table;
 import org.jooq.impl.SQLDataType;
 import org.jspecify.annotations.Nullable;
 import org.springframework.stereotype.Repository;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Keeps the trees in Postgres, and their segments by root, with jOOQ. The tables are in {@code
@@ -62,9 +65,29 @@ class JooqTreeStore implements TreeStore {
   private static final List<String> TITLES = List.of("num", "heading");
 
   private final DSLContext db;
+  private final JsonMapper json;
 
-  JooqTreeStore(DSLContext db) {
+  JooqTreeStore(DSLContext db, JsonMapper json) {
     this.db = db;
+    this.json = json;
+  }
+
+  @Override
+  public Optional<Outline> outline(ContentHash root) {
+    return db.select(OUTLINE.OUTLINE_)
+        .from(OUTLINE)
+        .where(OUTLINE.ROOT.eq(root))
+        .fetchOptional()
+        .map(row -> json.readValue(row.value1().data(), Outline.class));
+  }
+
+  @Override
+  public void addOutline(ContentHash root, Outline outline) {
+    db.insertInto(OUTLINE)
+        .set(OUTLINE.ROOT, root)
+        .set(OUTLINE.OUTLINE_, JSONB.valueOf(json.writeValueAsString(outline)))
+        .onConflictDoNothing()
+        .execute();
   }
 
   @Override

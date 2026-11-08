@@ -42,6 +42,14 @@ public final class Wording {
   }
 
   /**
+   * Returns what a comparison matches {@code block} on: its wording without spaces. A change of
+   * spaces alone is not a change. For example, "DOB: 30 March 1977" and "DOB:30 March 1977" match.
+   */
+  public static String key(Element block) {
+    return SPACE.matcher(of(block)).replaceAll("");
+  }
+
+  /**
    * Returns the words, spaces and punctuation of a wording, in order. Unicode segments them, with
    * the word {@link BreakIterator} of the JDK. A comparison of two wordings aligns these.
    */

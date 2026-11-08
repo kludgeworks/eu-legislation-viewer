@@ -39,6 +39,12 @@ public record ComparePage(
   /** The segment of the part with the units of a fold that are the same in both versions. */
   public static final String SAME = "same";
 
+  /**
+   * The segment of the part with one difference, or with some rows of one of its tables. A view
+   * loads it when the reader opens a fold in the difference.
+   */
+  public static final String DIFFERENCE = "difference";
+
   /** The path of the part with the changes. */
   public static final String CHANGES_PATH = PATH + "/" + CHANGES;
 
@@ -47,6 +53,9 @@ public record ComparePage(
 
   /** The path of the part with the units of a fold. */
   public static final String SAME_PATH = PATH + "/" + SAME;
+
+  /** The path of the part with one difference. */
+  public static final String DIFFERENCE_PATH = PATH + "/" + DIFFERENCE;
 
   /** The field of the first day of the version at the From end. For example, 2026-03-22. */
   public static final String FROM = "from";
@@ -68,6 +77,15 @@ public record ComparePage(
 
   /** The field of the eId of the last unit of a fold. */
   public static final String LAST = "last";
+
+  /** The field of the eId of the unit of a difference. */
+  public static final String EID = "eId";
+
+  /** The field of the number of a table in a difference, from 0 in the order of the text. */
+  public static final String TABLE = "table";
+
+  /** The field of the rows of a table, by their numbers from 0. For example, {@code 10-40}. */
+  public static final String ROWS = "rows";
 
   /**
    * Returns the page of the part at {@code part}, the path of the part's address. For example,
@@ -99,6 +117,14 @@ public record ComparePage(
   /** Returns the address of the changes, with the page's query. */
   public String changes() {
     return part(CHANGES);
+  }
+
+  /**
+   * Returns the address of the difference at the unit {@code eId}, with the page's query but not
+   * its view. For example, {@code …/compare/difference?from=…&to=…&eId=anx_I}.
+   */
+  public String difference(String eId) {
+    return path + "/" + DIFFERENCE + query(from, to) + act(act) + "&" + EID + "=" + encode(eId);
   }
 
   /** Returns the address of the acts between the two versions, with the page's query. */

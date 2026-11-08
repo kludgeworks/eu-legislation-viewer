@@ -506,6 +506,23 @@ public record ChangesView(
     }
 
     /**
+     * Returns its marked unit as shown, as {@link #unit} does, with the runs of rows in its tables
+     * that are the same in both texts folded ({@link RowFolds}). The folds load their rows from
+     * {@link #part}.
+     */
+    public Element folded(ComparePage page) {
+      return RowFolds.of(unit(), part(page));
+    }
+
+    /**
+     * Returns the address of the part with this difference alone, on the compare page {@code page}.
+     * An annex inserted whole loads from it when the reader opens it.
+     */
+    public String part(ComparePage page) {
+      return page.difference(difference.eId());
+    }
+
+    /**
      * Returns its unit as a ledger cites it, for example "1.2.3.8". A point follows the point that
      * it is in, for example "1.2.3.5(e)".
      */
@@ -518,7 +535,7 @@ public record ChangesView(
      * that a long comparison is not one annex long.
      */
     public boolean annexInserted() {
-      return difference.kind() == Kind.INSERTED && "annex".equals(difference.unit().kind());
+      return difference.annexInserted();
     }
 
     /**
@@ -526,20 +543,8 @@ public record ChangesView(
      * words".
      */
     public String size() {
-      var unit = difference.shown();
-      return String.format(Locale.ROOT, "%,d provisions · %,d words", units(unit), words(unit));
-    }
-
-    private static long units(Element element) {
-      return element.children().stream()
-          .mapToLong(child -> (child.name().equals("unit") ? 1 : 0) + units(child))
-          .sum();
-    }
-
-    private static long words(Element element) {
-      var text = element.name().equals("t") ? element.attribute("v") : null;
-      var own = text == null || text.isBlank() ? 0 : text.strip().split("\\s+").length;
-      return own + element.children().stream().mapToLong(Shown::words).sum();
+      var size = difference.size();
+      return String.format(Locale.ROOT, "%,d provisions · %,d words", size.units(), size.words());
     }
   }
 }

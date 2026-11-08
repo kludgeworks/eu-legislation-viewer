@@ -36,6 +36,8 @@ class ChangesPagesTests {
   private static final String PAGE = ACT + "eng/compare?from=2026-03-22&to=2026-10-01";
   private static final String CHANGES = ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01";
   private static final String ACTS = ACT + "eng/compare/acts?from=2026-03-22&to=2026-10-01";
+  private static final String DIFFERENCE =
+      ACT + "eng/compare/difference?from=2026-03-22&to=2026-10-01";
 
   @LocalServerPort int port;
   RestClient http;
@@ -224,6 +226,24 @@ class ChangesPagesTests {
                 http.get().uri(URI.create(fold.attr("hx-get"))).retrieve().body(String.class)));
     assertThat(units.select("div.unit").eachAttr("id"))
         .containsExactly("anx/pnt_8.1.2.3/pnt_a", "anx/pnt_8.1.2.3/pnt_b");
+  }
+
+  @Test
+  void servesOneDifferenceFromItsOwnAddress() {
+    prepared();
+    var difference = get(DIFFERENCE + "&eId=anx/pnt_8.1.2.3/pnt_c");
+    var c = Objects.requireNonNull(difference.getElementById("anx/pnt_8.1.2.3/pnt_c"));
+    assertThat(c.select("ins.diff").text())
+        .isEqualTo(
+            "applied in accordance with Attachment 6-J to the Annex to Implementing Decision"
+                + " C(2015) 8005");
+    // A unit with no difference, and rows of a table it does not have, are not found.
+    assertThat(status(DIFFERENCE + "&eId=art_1")).isEqualTo(404);
+    assertThat(status(DIFFERENCE + "&eId=anx/pnt_8.1.2.3/pnt_c&table=0&rows=0-3")).isEqualTo(404);
+  }
+
+  private int status(String uri) {
+    return http.get().uri(uri).exchange((request, response) -> response.getStatusCode().value());
   }
 
   private Document get(String uri) {

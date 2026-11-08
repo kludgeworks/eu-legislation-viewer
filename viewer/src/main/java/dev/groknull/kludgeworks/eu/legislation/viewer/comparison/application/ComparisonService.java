@@ -4,6 +4,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
@@ -73,6 +75,28 @@ class ComparisonService implements Comparisons {
     } catch (CompletionException e) {
       throw e.getCause() instanceof RuntimeException cause ? cause : e;
     }
+  }
+
+  @Override
+  public Optional<Difference> difference(ContentHash from, ContentHash to, String eId) {
+    return between(from, to)
+        .flatMap(
+            comparison ->
+                comparison.differences().stream()
+                    .filter(each -> each.eId().equals(eId))
+                    .findFirst())
+        .flatMap(
+            difference ->
+                difference.whole() == null
+                    ? Optional.of(difference)
+                    : comparisons
+                        .annex(from, to, eId)
+                        .map(
+                            annex ->
+                                DifferenceBuilder.builder(difference)
+                                    .shown(annex)
+                                    .whole(null)
+                                    .build()));
   }
 
   /**
@@ -146,7 +170,14 @@ class ComparisonService implements Comparisons {
         (read - start) / 1_000_000,
         (diffed - read) / 1_000_000,
         (kept - diffed) / 1_000_000);
-    return Optional.of(comparison);
+    // As the store gives it: each annex inserted whole with only its opening
+    return Optional.of(
+        new Comparison(
+            from,
+            to,
+            comparison.differences().stream().map(Difference::opening).toList(),
+            comparison.closing(),
+            comparison.withoutPreamble()));
   }
 
   @ApplicationModuleListener

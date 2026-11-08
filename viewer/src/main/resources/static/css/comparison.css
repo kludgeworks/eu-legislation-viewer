@@ -369,6 +369,22 @@ details.ledger-fold[open] {
   scroll-margin-top: 48px;
 }
 
+/* A comparison can have thousands of differences. The browser lays out and paints only those near
+ * the screen, and keeps the height it last laid out for the others (content-visibility). It still
+ * finds their words, for Find in page. It clips what a difference draws outside its box, so the box
+ * reaches 28px into the margin, over its number and the amendment markers of its unit; the columns
+ * don't move. A row of the Synopsis is the same. */
+.changes .difference,
+.ledger-row:not(.ledger-head) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
+}
+
+.changes .difference {
+  margin-left: -28px;
+  padding-left: 28px;
+}
+
 .difference > .unit {
   grid-column: 1;
   grid-row: 1;
@@ -376,7 +392,7 @@ details.ledger-fold[open] {
 
 .difference-number {
   position: absolute;
-  left: -28px;
+  left: 0;
   top: 2px;
   font:
     600 11px/1 ui-sans-serif,
@@ -701,6 +717,26 @@ details.annex-inserted > summary {
 
 details.annex-inserted[open] .show {
   display: none;
+}
+
+/* Rows of a changed table that are the same in both texts, folded. The button loads them in place. */
+.rows-fold > td {
+  padding: 4px 8px;
+}
+
+.rows-fold button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font:
+    13px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+.rows-fold .show u {
+  color: var(--accent);
 }
 
 /* The ▼ mark that shows what amended a unit. It is in the margin beside the number of the unit.

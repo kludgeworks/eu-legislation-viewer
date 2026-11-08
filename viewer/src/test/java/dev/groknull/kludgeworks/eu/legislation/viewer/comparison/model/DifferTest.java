@@ -876,6 +876,238 @@ class DifferTest {
   }
 
   @Test
+  void comparesATableRowByRowAndCellByCell() {
+    var differences =
+        Differ.differences(text("02018R2019-20250220"), text("02018R2019-20250623")).differences();
+    // A list inserted in the cell of Alnus renumbers the lists in the cells after it, list_2 to
+    // list_3 and so on. Their units are not differences of their own.
+    assertThat(differences).extracting(Difference::eId).containsExactly("anx/level_1/pnt_1");
+    var alnus =
+        descendants(differences.getFirst().shown()).stream()
+            .filter(each -> each.name().equals("tr") && said(each).contains("Alnus"))
+            .findFirst()
+            .orElseThrow();
+    var cells = alnus.children().stream().filter(each -> each.name().equals("td")).toList();
+    assertThat(said(cells.get(0))).isEqualTo("ex0602");
+    assertThat(said(cells.get(1)))
+        .startsWith("Alnus Mill.[+, other than:][+up to 2-year-old graftwood of ]");
+  }
+
+  @Test
+  void showsARowDeletedFromATableAsARowWhereItStood() {
+    var from = text(unit("art_1", table(row("A", "1"), row("B", "2"), row("C", "3"))));
+    var to = text(unit("art_1", table(row("A", "1"), row("C", "3"))));
+    var difference = Differ.differences(from, to).differences().getFirst();
+    var rows = only(difference.shown(), "table").children();
+    assertThat(rows).extracting(DifferTest::said).containsExactly("A1", "[-B][-2]", "C3");
+    assertThat(difference.deleted()).isEqualTo(2);
+  }
+
+  @Test
+  void pairsAChangedRowWithTheRowItWasNotWithARowInsertedBeforeIt() {
+    var from =
+        text(
+            unit(
+                "art_1",
+                table(
+                    row("Acacia", "all third countries"),
+                    row("Alnus", "all third countries"),
+                    row("Betula", "all third countries"))));
+    var to =
+        text(
+            unit(
+                "art_1",
+                table(
+                    row("Acacia", "all third countries"),
+                    row("Albizia", "Israel"),
+                    row("Alnus", "all third countries other than the United Kingdom"),
+                    row("Betula", "all third countries"))));
+    var difference = Differ.differences(from, to).differences().getFirst();
+    var rows = only(difference.shown(), "table").children();
+    assertThat(rows)
+        .extracting(DifferTest::said)
+        .containsExactly(
+            "Acaciaall third countries",
+            "[+Albizia][+Israel]",
+            "Alnusall third countries[+ other than the United Kingdom]",
+            "Betulaall third countries");
+  }
+
+  @Test
+  void pairsAChangedBlockWithTheBlockItWasNotWithABlockInsertedBeforeIt() {
+    var from =
+        text(
+            unit(
+                "art_1",
+                block("num", "1."),
+                block("p", "Member States shall notify the Commission."),
+                block("p", "This Regulation shall apply from 1 January 2026.")));
+    var to =
+        text(
+            unit(
+                "art_1",
+                block("num", "1."),
+                block("p", "Operators shall keep records for five years."),
+                block("p", "Member States shall notify the Commission without delay."),
+                block("p", "This Regulation shall apply from 1 January 2026.")));
+    var shown = Differ.differences(from, to).differences().getFirst().shown();
+    assertThat(shown.children())
+        .extracting(DifferTest::said)
+        .containsExactly(
+            "1.",
+            "[+Operators shall keep records for five years.]",
+            "Member States shall notify the Commission[+ without delay].",
+            "This Regulation shall apply from 1 January 2026.");
+  }
+
+  @Test
+  void comparesAChangedCellWithTheCellAboveIt() {
+    var from = text(unit("art_1", table(row("A", "1"), row("B", "2"))));
+    var to = text(unit("art_1", table(row("A", "1"), row("B", "20"))));
+    var difference = Differ.differences(from, to).differences().getFirst();
+    var rows = only(difference.shown(), "table").children();
+    assertThat(rows.get(1).children())
+        .extracting(DifferTest::said)
+        .containsExactly("B", "[-2][+20]");
+  }
+
+  @Test
+  void readsAChangeOfSpacesAloneAsNoChange() {
+    // The consolidation of 26 March 2025 has "DOB:30 March 1977", without the space after the
+    // colon.
+    var differences =
+        Differ.differences(text("02022D2319-20241216"), text("02022D2319-20250326")).differences();
+    assertThat(differences)
+        .extracting(Difference::eId)
+        .doesNotContain("anx_I/level_1/list_1/pnt_1", "anx_I/level_1/list_2/pnt_3");
+  }
+
+  @Test
+  void showsAChangedFormulaWholeAsDeletedThenInserted() {
+    var from = text(unit("art_1", formula("1")));
+    var to = text(unit("art_1", formula("2")));
+    var difference = Differ.differences(from, to).differences().getFirst();
+    var p = only(difference.shown(), "p");
+    assertThat(p.children()).extracting(Element::name).containsExactly("t", "diff:del", "diff:ins");
+    assertThat(p.children().get(1).children()).extracting(Element::name).containsExactly("math");
+    assertThat(p.children().get(2).children()).extracting(Element::name).containsExactly("math");
+  }
+
+  @Test
+  void showsANoteAnActChangedUnderTheUnitThatRefersToIt() {
+    // As 2004/796 changed its note to Silesia: the text that refers to it is the same.
+    var from =
+        withNotes(
+            List.of(unit("art_1", cites("Silesia", "note_1"))), note("note_1", "only in Poland"));
+    var to =
+        withNotes(
+            List.of(unit("art_1", cites("Silesia", "note_1"))),
+            note("note_1", "Only in Poland, as authorised by Decision 2004/297/EC"));
+    var differences = Differ.differences(from, to).differences();
+    assertThat(differences).extracting(Difference::eId).containsExactly("art_1");
+    var notes = only(differences.getFirst().shown(), "notes");
+    assertThat(said(notes))
+        .isEqualTo("[-only][+Only] in Poland[+, as authorised by Decision 2004/297/EC]");
+  }
+
+  @Test
+  void matchesANoteThroughTheReferenceToItNotByItsPlace() {
+    // A note inserted before it renumbers the note of art_2, note_1 to note_2. Its words are the
+    // same.
+    var from =
+        withNotes(
+            List.of(unit("art_1", block("p", "Plain.")), unit("art_2", cites("Cited", "note_1"))),
+            note("note_1", "OJ L 97, 1.4.2004, p. 66."));
+    var to =
+        withNotes(
+            List.of(
+                unit("art_1", cites("Plain", "note_1")), unit("art_2", cites("Cited", "note_2"))),
+            note("note_1", "OJ L 1, 1.1.2026, p. 1."),
+            note("note_2", "OJ L 97, 1.4.2004, p. 66."));
+    var differences = Differ.differences(from, to).differences();
+    assertThat(differences).extracting(Difference::eId).containsExactly("art_1");
+    assertThat(said(only(differences.getFirst().shown(), "notes")))
+        .isEqualTo("[+OJ L 1, 1.1.2026, p. 1.]");
+  }
+
+  @Test
+  void showsTheNotesOfAnInsertedUnitInsertedWithIt() {
+    var from = withNotes(List.of(unit("art_1", block("p", "Plain."))));
+    var to =
+        withNotes(
+            List.of(unit("art_1", block("p", "Plain.")), unit("art_2", cites("New", "note_1"))),
+            note("note_1", "OJ L 1, 1.1.2026, p. 1."));
+    var inserted = Differ.differences(from, to).differences().getFirst();
+    assertThat(inserted.kind()).isEqualTo(Kind.INSERTED);
+    assertThat(said(only(inserted.shown(), "notes"))).isEqualTo("[+OJ L 1, 1.1.2026, p. 1.]");
+  }
+
+  /** A text with the units {@code units} in its body, and the notes {@code notes} at its end. */
+  private static Element withNotes(List<Element> units, Element... notes) {
+    return new Element(
+        "legalText",
+        Map.of(),
+        List.of(
+            new Element("body", Map.of(), units, ""),
+            new Element("notes", Map.of(), List.of(notes), "")),
+        "");
+  }
+
+  private static Element note(String eId, String words) {
+    return new Element(
+        "note",
+        Map.of("eId", eId, "marker", eId.substring(eId.indexOf('_') + 1), "kind", "footnote"),
+        List.of(block("p", words)),
+        "");
+  }
+
+  /** A block that says {@code words} and refers to the note {@code eId}. */
+  private static Element cites(String words, String eId) {
+    return new Element(
+        "p",
+        Map.of(),
+        List.of(
+            new Element("t", Map.of("v", words), List.of(), ""),
+            new Element(
+                "noteRef", Map.of("href", "#" + eId, "marker", eId.substring(5)), List.of(), "")),
+        "");
+  }
+
+  private static Element unit(String eId, Element... blocks) {
+    return new Element("unit", Map.of("eId", eId, "kind", "article"), List.of(blocks), "");
+  }
+
+  private static Element table(Element... rows) {
+    return new Element("table", Map.of(), List.of(rows), "");
+  }
+
+  private static Element row(String... cells) {
+    var tds = new ArrayList<Element>();
+    for (var cell : cells) {
+      tds.add(new Element("td", Map.of(), List.of(block("p", cell)), ""));
+    }
+    return new Element("tr", Map.of(), tds, "");
+  }
+
+  /** A block that says "The rate is x + {@code n}", with x + n a formula. */
+  private static Element formula(String n) {
+    var math =
+        new Element(
+            "math",
+            Map.of(),
+            List.of(
+                new Element("mi", Map.of(), List.of(), "x"),
+                new Element("mo", Map.of(), List.of(), "+"),
+                new Element("mn", Map.of(), List.of(), n)),
+            "");
+    return new Element(
+        "p",
+        Map.of(),
+        List.of(new Element("t", Map.of("v", "The rate is "), List.of(), ""), math),
+        "");
+  }
+
+  @Test
   void showsAChangedUnitWholeWithTheUnitsInItThatTheSameActsChanged() {
     var differences = Differ.differences(JANUARY, MARCH).differences();
     var changed = find(differences, "anx/pnt_1.2.2.3");

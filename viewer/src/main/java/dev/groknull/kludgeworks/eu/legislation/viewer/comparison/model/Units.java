@@ -23,28 +23,88 @@ import org.jspecify.annotations.Nullable;
  * its num, its heading and the blocks that are not in a unit of their own. This is true even inside
  * a list of its points, for example the opening words of a list. A unit without an eId is part of
  * the unit that it is in. If two units have the same eId, the first is kept. A converted text
- * rarely has this.
+ * rarely has this. A table is one block of the unit that it is in, with the units in its cells.
  *
  * <p>What a consolidation keeps of a deletion is not part of the text. This is the legal-text
  * {@code deleted}: the struck words or units that an act deleted, under its marker. A unit in it is
  * not one of the units, and its words are not in the blocks of a unit. The act that struck each
  * unit is kept.
  *
+ * <p>A unit holds the notes that its own blocks refer to. These are the notes of the text, at its
+ * end. A note is matched through the reference to it, not by its eId. The eId of a note is its
+ * place, note_N, and it changes when a note before it comes or goes. The notes of a table are in
+ * the table, and those of a file of an act as published are in its unit. They are compared where
+ * they are, as blocks.
+ *
  * @param byEId the units, by eId, in document order
  * @param outermost the eIds of the units that are in no other unit, in order
  * @param struck the markers of the deletions that keep a unit struck, by the eId of the unit. For
  *     example, "deleted by 2019/103".
+ * @param notes the notes of the text, at its end, by eId
  */
 public record Units(
-    SequencedMap<String, Unit> byEId, List<String> outermost, Map<String, List<Marker>> struck) {
+    SequencedMap<String, Unit> byEId,
+    List<String> outermost,
+    Map<String, List<Marker>> struck,
+    Map<String, Element> notes) {
 
   /** Returns the units of {@code text}. */
   public static Units of(Element text) {
     var units = new LinkedHashMap<String, Unit>();
     var outermost = new ArrayList<String>();
     var struck = new HashMap<String, List<Marker>>();
-    collect(text, null, null, outermost, units, new ArrayDeque<>(), struck);
-    return new Units(units, outermost, struck);
+    var notes = notes(text);
+    collect(text, null, null, outermost, units, new ArrayDeque<>(), struck, notes);
+    return new Units(units, outermost, struck, notes);
+  }
+
+  /**
+   * Returns the notes of the text that {@code element} refers to, at any depth, in the order of
+   * their first reference.
+   */
+  public List<Element> notesOf(Element element) {
+    var found = new LinkedHashMap<String, Element>();
+    referred(element, notes, found);
+    return List.copyOf(found.values());
+  }
+
+  /** Returns the notes of {@code text}, at its end, by eId. */
+  private static Map<String, Element> notes(Element text) {
+    var notes = new HashMap<String, Element>();
+    for (var child : text.children()) {
+      if (!child.name().equals("notes")) {
+        continue;
+      }
+      for (var note : child.children()) {
+        var eId = note.attribute("eId");
+        if (note.name().equals("note") && eId != null) {
+          notes.put(eId, note);
+        }
+      }
+    }
+    return notes;
+  }
+
+  /**
+   * Adds the notes of {@code notes} that {@code element} refers to, to {@code found}, by eId. What
+   * a consolidation keeps of a deletion is not part of the text, nor are its notes.
+   */
+  private static void referred(
+      Element element, Map<String, Element> notes, Map<String, Element> found) {
+    if (element.name().equals("noteRef")) {
+      var href = element.attribute("href");
+      var note = href == null || !href.startsWith("#") ? null : notes.get(href.substring(1));
+      if (note != null) {
+        found.putIfAbsent(href, note);
+      }
+      return;
+    }
+    if (element.name().equals("deleted")) {
+      return;
+    }
+    for (var child : element.children()) {
+      referred(child, notes, found);
+    }
   }
 
   /** Returns the unit {@code eId}. Returns null if there is no such unit. */
@@ -71,9 +131,13 @@ public record Units(
       List<String> siblings,
       Map<String, Unit> units,
       Deque<Ranked> ranked,
-      Map<String, List<Marker>> struck) {
+      Map<String, List<Marker>> struck,
+      Map<String, Element> notes) {
     if (element.name().equals("deleted")) {
       struck(element, markers(element), struck);
+      return;
+    }
+    if (block(element)) {
       return;
     }
     var eId = eId(element);
@@ -82,19 +146,22 @@ public record Units(
       own(element, blocks);
       var section = section(eId, element, parent, units, ranked);
       var list = list(container);
+      var referred = new LinkedHashMap<String, Element>();
+      blocks.forEach(block -> referred(block, notes, referred));
+      var ownNotes = List.copyOf(referred.values());
       // Put the unit now, so that it comes before the units in it in document order. Put it again
       // in the same place when the units in it are known.
-      units.put(eId, new Unit(eId, parent, section, element, blocks, List.of(), list));
+      units.put(eId, new Unit(eId, parent, section, element, blocks, ownNotes, List.of(), list));
       siblings.add(eId);
       var inside = new ArrayList<String>();
       for (var child : element.children()) {
-        collect(child, eId, element, inside, units, ranked, struck);
+        collect(child, eId, element, inside, units, ranked, struck, notes);
       }
-      units.put(eId, new Unit(eId, parent, section, element, blocks, inside, list));
+      units.put(eId, new Unit(eId, parent, section, element, blocks, ownNotes, inside, list));
       return;
     }
     for (var child : element.children()) {
-      collect(child, parent, element, siblings, units, ranked, struck);
+      collect(child, parent, element, siblings, units, ranked, struck, notes);
     }
   }
 
@@ -191,9 +258,20 @@ public record Units(
    * not count.
    */
   static boolean holdsUnits(Element element) {
-    return element.children().stream()
-        .filter(child -> !child.name().equals("deleted"))
-        .anyMatch(child -> eId(child) != null || holdsUnits(child));
+    return !block(element)
+        && element.children().stream()
+            .filter(child -> !child.name().equals("deleted"))
+            .anyMatch(child -> eId(child) != null || holdsUnits(child));
+  }
+
+  /**
+   * Returns whether {@code element} is one block, with the units in it. A table is one block. The
+   * converter numbers the lists in its cells through the document, so one list inserted in a cell
+   * renumbers the units of every list after it. For example, tab_1/tr_14/td_2/list_2/idt_1 becomes
+   * list_3/idt_1. {@link Marks} compares a table by its rows and cells instead.
+   */
+  static boolean block(Element element) {
+    return element.name().equals("table");
   }
 
   /** Returns the eId of a unit. Returns null for any other element, for example a note. */
@@ -210,6 +288,8 @@ public record Units(
    *     the unit itself if the unit has a rank. Null if it is in no such unit.
    * @param element the unit as the text has it, with the units in it
    * @param blocks its own blocks, in order
+   * @param notes the notes of the text that its own blocks refer to, in the order of their first
+   *     reference
    * @param units the eIds of the units directly in it, in order
    * @param list the list that it is an item of, without its items. The list keeps its kind, for
    *     example alpha or dash. Null if it is in no list.
@@ -220,16 +300,18 @@ public record Units(
       @Nullable String section,
       Element element,
       List<Element> blocks,
+      List<Element> notes,
       List<String> units,
       @Nullable Element list) {
     public Unit {
       blocks = List.copyOf(blocks);
+      notes = List.copyOf(notes);
       units = List.copyOf(units);
     }
 
-    /** Returns what each of its own blocks says. */
-    public List<String> wording() {
-      return blocks.stream().map(Wording::of).toList();
+    /** Returns what a comparison matches each of its own blocks on. See {@link Wording#key}. */
+    public List<String> keys() {
+      return blocks.stream().map(Wording::key).toList();
     }
   }
 }

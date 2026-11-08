@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import io.soabase.recordbuilder.core.RecordBuilder;
 import java.util.List;
+import java.util.Set;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
@@ -31,7 +32,8 @@ import org.jspecify.annotations.Nullable;
  * @param unit the unit as a fold names it, as the later text has it. For a deleted unit, as the
  *     earlier text has it. The Changes view uses this when it folds the unit with others that an
  *     act filter leaves out.
- * @param shown the unit as the view shows it, marked
+ * @param shown the unit as the view shows it, marked. For an annex inserted whole that is kept
+ *     apart ({@code whole} is not null), only its opening: its num and its headings.
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
  * @param parent the eId of the unit that it is in. Null for an outermost unit.
@@ -61,6 +63,9 @@ import org.jspecify.annotations.Nullable;
  *     Empty if none of these applies.
  * @param earlierMarkers the same as {@code markers}, in the earlier text. Empty for an inserted
  *     unit.
+ * @param whole the size of an annex inserted whole, if the store keeps the annex apart from the
+ *     comparison. Then {@code shown} is only its opening, and {@link Comparisons#difference} gives
+ *     it whole. Null if {@code shown} is the whole unit.
  */
 @ValueObject
 @RecordBuilder
@@ -77,12 +82,78 @@ public record Difference(
     @Nullable Element lead,
     List<Context> context,
     List<Marker> markers,
-    List<Marker> earlierMarkers) {
+    List<Marker> earlierMarkers,
+    @Nullable Whole whole) {
+
+  /** The children of a unit that are its opening, as {@link #opening} keeps them. */
+  private static final Set<String> OPENING = Set.of("provenance", "num", "heading", "subheading");
 
   public Difference {
     context = List.copyOf(context);
     markers = List.copyOf(markers);
     earlierMarkers = List.copyOf(earlierMarkers);
+  }
+
+  /**
+   * Returns whether it is an annex inserted whole. The views fold such an annex to its size, and
+   * load it when the reader opens the fold. The store keeps it apart from the comparison, because
+   * one annex can be tens of MB.
+   */
+  public boolean annexInserted() {
+    return kind == Kind.INSERTED && "annex".equals(unit.kind());
+  }
+
+  /**
+   * Returns this difference as the store keeps it in the comparison: an annex inserted whole with
+   * only its opening, and its size. Returns it as it is if it is no such annex, or if it is kept so
+   * already.
+   */
+  public Difference opening() {
+    if (!annexInserted() || whole != null) {
+      return this;
+    }
+    var opening =
+        new Element(
+            shown.name(),
+            shown.attributes(),
+            shown.children().stream().filter(child -> OPENING.contains(child.name())).toList(),
+            shown.text());
+    return DifferenceBuilder.builder(this).shown(opening).whole(Whole.of(shown)).build();
+  }
+
+  /**
+   * Returns the size of its unit: from {@code whole} if the store keeps the unit apart, or counted
+   * in {@code shown}.
+   */
+  public Whole size() {
+    return whole == null ? Whole.of(shown) : whole;
+  }
+
+  /**
+   * The size of a unit, as a fold says it. For example, "56 provisions · 1,234 words".
+   *
+   * @param units how many units are in it, at any depth
+   * @param words how many words its text has
+   */
+  @ValueObject
+  public record Whole(long units, long words) {
+
+    /** Returns the size of {@code unit}. */
+    public static Whole of(Element unit) {
+      return new Whole(units(unit), words(unit));
+    }
+
+    private static long units(Element element) {
+      return element.children().stream()
+          .mapToLong(child -> (child.name().equals("unit") ? 1 : 0) + units(child))
+          .sum();
+    }
+
+    private static long words(Element element) {
+      var text = element.name().equals("t") ? element.attribute("v") : null;
+      var own = text == null || text.isBlank() ? 0 : text.strip().split("\\s+").length;
+      return own + element.children().stream().mapToLong(Whole::words).sum();
+    }
   }
 
   /** How a provision differs. */

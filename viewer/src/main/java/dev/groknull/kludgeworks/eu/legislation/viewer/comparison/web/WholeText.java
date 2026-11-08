@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -36,14 +37,16 @@ final class WholeText {
 
   /**
    * Returns the later text {@code later}, with the differences {@code shown} marked by {@code
-   * marked}. It places the deleted differences by the units of the earlier text. {@code earlier}
-   * has the eIds of these units in document order.
+   * marked}. Each difference's unit is as {@code unit} gives it, for example with its rows folded.
+   * It places the deleted differences by the units of the earlier text. {@code earlier} has the
+   * eIds of these units in document order.
    */
   static Content of(
       Element later,
       List<String> earlier,
       List<ChangesView.Shown> shown,
       LegalRenderer html,
+      Function<ChangesView.Shown, Element> unit,
       BiFunction<ChangesView.Shown, Content, Content> marked) {
     var units = new HashSet<String>();
     collect(later, units);
@@ -73,29 +76,25 @@ final class WholeText {
     for (var eId : eIds) {
       instead.put(
           eId,
-          (unit, hooked) ->
+          (element, hooked) ->
               out -> {
                 for (var deleted : before.getOrDefault(eId, List.of())) {
-                  deletion(deleted, hooked, marked).writeTo(out);
+                  deletion(deleted, hooked, unit, marked).writeTo(out);
                 }
                 var difference = at.get(eId);
                 if (difference == null) {
-                  hooked.asIs(unit).writeTo(out);
+                  hooked.asIs(element).writeTo(out);
                 } else if (difference.difference().kind() == Kind.CHANGED) {
                   // Mark its own content, then write the units in it as the text has them.
-                  marked
-                      .apply(difference, hooked.asIs(difference.difference().shown()))
-                      .writeTo(out);
-                  for (var inside : inside(unit)) {
+                  marked.apply(difference, hooked.asIs(unit.apply(difference))).writeTo(out);
+                  for (var inside : inside(element)) {
                     hooked.element(inside).writeTo(out);
                   }
                 } else {
-                  marked
-                      .apply(difference, hooked.asIs(difference.difference().shown()))
-                      .writeTo(out);
+                  marked.apply(difference, hooked.asIs(unit.apply(difference))).writeTo(out);
                 }
                 for (var deleted : after.getOrDefault(eId, List.of())) {
-                  deletion(deleted, hooked, marked).writeTo(out);
+                  deletion(deleted, hooked, unit, marked).writeTo(out);
                 }
               });
     }
@@ -103,7 +102,7 @@ final class WholeText {
     return out -> {
       hooked.element(later).writeTo(out);
       for (var deleted : last) {
-        deletion(deleted, hooked, marked).writeTo(out);
+        deletion(deleted, hooked, unit, marked).writeTo(out);
       }
     };
   }
@@ -111,8 +110,9 @@ final class WholeText {
   private static Content deletion(
       ChangesView.Shown deleted,
       LegalRenderer html,
+      Function<ChangesView.Shown, Element> unit,
       BiFunction<ChangesView.Shown, Content, Content> marked) {
-    return marked.apply(deleted, html.asIs(deleted.difference().shown()));
+    return marked.apply(deleted, html.asIs(unit.apply(deleted)));
   }
 
   /**
