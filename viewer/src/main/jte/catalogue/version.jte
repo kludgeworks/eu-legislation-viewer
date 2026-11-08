@@ -1,5 +1,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version
-@import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView

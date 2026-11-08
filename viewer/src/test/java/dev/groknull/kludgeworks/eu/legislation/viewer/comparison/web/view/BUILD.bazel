@@ -14,8 +14,8 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/comparepage",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparepage",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web/view",

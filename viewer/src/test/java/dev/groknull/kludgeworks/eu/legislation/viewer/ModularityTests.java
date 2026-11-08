@@ -27,9 +27,7 @@ class ModularityTests {
 
   private static ApplicationModules modules;
 
-  /**
-   * The application's own code, with the libraries beside the modules, which modules leaves out.
-   */
+  /** The application's own code, with the library beside the modules, which modules leaves out. */
   private static JavaClasses classes;
 
   @BeforeAll

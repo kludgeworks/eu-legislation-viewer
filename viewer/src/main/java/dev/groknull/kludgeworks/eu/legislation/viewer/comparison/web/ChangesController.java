@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
-import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
-import dev.groknull.kludgeworks.eu.legislation.chrome.Requests;
-import dev.groknull.kludgeworks.eu.legislation.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -16,6 +13,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
@@ -61,7 +61,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  * <p>The compare page is the catalogue's, at {@link ComparePage#PATH}. It has slots that htmx fills
  * from the addresses here, each the page's address with a segment added and the page's query, as
- * the {@code comparepage} library writes them:
+ * the {@code comparepage} module writes them:
  *
  * <ul>
  *   <li>{@code /changes}: the changes, in the view that {@code view} asks for

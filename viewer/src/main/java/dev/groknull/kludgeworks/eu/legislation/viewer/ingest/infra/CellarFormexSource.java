@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.cellar.CellarFailures;
-import dev.groknull.kludgeworks.eu.legislation.cellar.ContentStreams;
-import dev.groknull.kludgeworks.eu.legislation.cellar.FormexFiles;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarFailures;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.ContentStreams;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.FormexFiles;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.SourceUnavailableException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.InputStream;

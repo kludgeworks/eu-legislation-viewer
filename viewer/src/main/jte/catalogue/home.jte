@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HomeView
 @param Chrome chrome
 @param String title

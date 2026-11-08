@@ -1,9 +1,6 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.cellar.CellarException;
-import dev.groknull.kludgeworks.eu.legislation.cellar.Sparql;
-import dev.groknull.kludgeworks.eu.legislation.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -14,6 +11,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActSource;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.DateTimeException;
 import java.time.Duration;

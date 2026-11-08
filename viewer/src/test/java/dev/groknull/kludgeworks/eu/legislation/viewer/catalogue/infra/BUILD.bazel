@@ -15,9 +15,9 @@ java_test_suite(
     ],
     deps = [
         ":recorded-acts",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
@@ -32,8 +32,8 @@ java_library(
     visibility = ["//viewer:__subpackages__"],
     runtime_deps = ["//viewer/src/test/resources/acts:resources"],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
     ],
 )

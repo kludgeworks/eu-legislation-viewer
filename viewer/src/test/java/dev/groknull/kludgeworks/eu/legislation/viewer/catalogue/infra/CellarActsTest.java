@@ -5,8 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.tuple;
 
-import dev.groknull.kludgeworks.eu.legislation.cellar.CellarException;
-import dev.groknull.kludgeworks.eu.legislation.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor;
@@ -20,6 +18,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
 import java.time.LocalDate;

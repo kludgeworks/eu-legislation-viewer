@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
  */
 class CodingRulesTests {
 
-  /** The application's own code: its modules and the libraries beside them. */
+  /** The application's own code: its modules and the library beside them. */
   private static JavaClasses classes;
 
   @BeforeAll

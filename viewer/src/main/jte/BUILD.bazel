@@ -3,7 +3,7 @@ load("//tools/build:defs.bzl", "jte_library")
 
 # The pages and the legal text's templates, precompiled, with jte-models' typed facade (Templates).
 # One root for all of them, because jte compiles one root into one package with one facade:
-# layout/ the page shell (the chrome library), catalogue/ the catalogue's pages, with the compare
+# layout/ the page shell (the chrome module), catalogue/ the catalogue's pages, with the compare
 # page's shell and slots, comparison/ the comparison's parts of the compare page, legal/ one
 # per legal-text element (the legaltext library's LegalRenderer) and legal/diff/ a comparison's
 # marks, legalpart/ the parts of the legal text that aren't an element's, which legal/ calls
@@ -14,10 +14,10 @@ jte_library(
     root = ".",
     visibility = ["//viewer:__subpackages__"],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/legaltext",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/view",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web/view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",

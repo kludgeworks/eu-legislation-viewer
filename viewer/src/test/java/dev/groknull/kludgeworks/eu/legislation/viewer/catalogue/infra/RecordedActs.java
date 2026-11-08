@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import dev.groknull.kludgeworks.eu.legislation.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.util.Objects;

@@ -26,7 +26,7 @@ import org.springframework.modulith.core.ApplicationModules;
  */
 final class SlicedOnion {
 
-  /** The application's packages: its root package, its modules and the libraries beside them. */
+  /** The application's packages: its root package, its modules and the library beside them. */
   static final String APPLICATION = "dev.groknull.kludgeworks.eu.legislation";
 
   /** The application's root package, which holds {@link ViewerApplication}. */
@@ -72,9 +72,9 @@ final class SlicedOnion {
   /**
    * A library uses a module only through the module's API, its root package. A library is a package
    * of the application's own code that is in no module and is not the application's root package:
-   * for example {@code chrome}, {@code legaltext}, {@code comparepage} or {@code cellar}. It may
-   * use a module's API types, such as the content module's {@code Element} or the language module's
-   * {@code Language}. It may not use anything in a module's sub-packages.
+   * today only {@code legaltext}. It may use a module's API types, such as the content module's
+   * {@code Element} or the language module's {@code Language}. It may not use anything in a
+   * module's sub-packages.
    *
    * <p>Spring Modulith's checks do not see this. A library is outside the application's root
    * package, so Spring Modulith neither imports it nor treats it as a module. Without this rule, a

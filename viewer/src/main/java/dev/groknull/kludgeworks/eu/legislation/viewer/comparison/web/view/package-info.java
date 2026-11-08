@@ -13,8 +13,8 @@
  * </ul>
  *
  * <p>The page around these parts is the catalogue's: its masthead, timeline, cards and preparation.
- * The parts know it only by its address, the {@code comparepage} library's {@code ComparePage}:
- * they link back to it, and no Java of the catalogue's web side is used here.
+ * The parts know it only by its address, the {@code comparepage} module's {@code ComparePage}: they
+ * link back to it, and no Java of the catalogue's web side is used here.
  */
 @InfrastructureRing
 @NullMarked
