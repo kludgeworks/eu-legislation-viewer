@@ -5,3 +5,6 @@ formex-corpus
 text-compare
 # pnpm's packages, if someone runs pnpm install outside Bazel
 node_modules
+# Claude Code's worktrees: whole copies of the repository, each with its bazel-* links into its
+# own output base, so its external repositories would be packages of this one
+.claude
