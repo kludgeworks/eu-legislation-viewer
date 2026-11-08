@@ -93,25 +93,36 @@ java_binary(
     ],
 )
 
-# jOOQ's code generator on a module's migrations, run on Postgres in a container (the macro
-# jooq_tables); needs Docker
+# jOOQ's code generator on a module's migrations, run on embedded Postgres (the macro jooq_tables)
 java_binary(
     name = "jooq_codegen",
-    srcs = ["JooqCodegen.java"],
+    srcs = [
+        "JooqCodegen.java",
+        "SourceJar.java",
+    ],
+    # quiet when it works: warnings and errors only, without jOOQ's logo and tips
+    jvm_flags = [
+        "-Dorg.jooq.no-logo=true",
+        "-Dorg.jooq.no-tips=true",
+        "-Dorg.slf4j.simpleLogger.defaultLogLevel=warn",
+    ],
     main_class = "dev.groknull.kludgeworks.build.JooqCodegen",
     runtime_deps = [
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_amd64",
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_arm64v8",
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_amd64",
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_arm64v8",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_postgresql_postgresql",
-        "@maven//:org_slf4j_slf4j_simple",  # Testcontainers' log, in the action's output on failure
+        "@maven//:org_slf4j_slf4j_simple",  # Postgres's log, in the action's output on failure
     ],
     deps = [
         ":package_info",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
+        "@maven//:io_zonky_test_embedded_postgres",
         "@maven//:org_flywaydb_flyway_core",
         "@maven//:org_jooq_jooq_codegen",
         "@maven//:org_jooq_jooq_meta",
-        "@maven//:org_testcontainers_testcontainers",
-        "@maven//:org_testcontainers_testcontainers_postgresql",
     ],
 )
 
@@ -120,6 +131,7 @@ java_binary(
     name = "jte_generate",
     srcs = [
         "JteGenerate.java",
+        "SourceJar.java",
         "TemplatePolicy.java",
     ],
     main_class = "dev.groknull.kludgeworks.build.JteGenerate",

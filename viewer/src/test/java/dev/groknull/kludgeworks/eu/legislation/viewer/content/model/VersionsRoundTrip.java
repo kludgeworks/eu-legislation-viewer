@@ -28,7 +28,7 @@ import org.slf4j.LoggerFactory;
  *
  * <pre>
  * bazel test
- * //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:versions
+ * //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:versions
  * --test_env=LEGAL_TEXT_DIR=…
  * </pre>
  */

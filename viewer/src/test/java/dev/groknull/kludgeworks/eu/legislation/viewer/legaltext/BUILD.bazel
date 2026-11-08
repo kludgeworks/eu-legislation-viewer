@@ -17,9 +17,9 @@ java_test_suite(
     ],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext",
-        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:gg_jte_jte_runtime",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
@@ -37,9 +37,9 @@ java_binary(
     main_class = "dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.RenderTexts",
     runtime_deps = ["//viewer/src/main/jte"],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext",
-        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
         "@maven//:gg_jte_jte_runtime",
     ],
 )

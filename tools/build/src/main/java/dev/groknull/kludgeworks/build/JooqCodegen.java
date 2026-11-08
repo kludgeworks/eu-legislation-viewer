@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.build;
 
 import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
+import io.zonky.test.db.postgres.embedded.EmbeddedPostgres;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,14 +11,13 @@ import org.flywaydb.core.Flyway;
 import org.jooq.codegen.GenerationTool;
 import org.jooq.meta.jaxb.Jdbc;
 import org.jooq.meta.jaxb.Target;
-import org.testcontainers.postgresql.PostgreSQLContainer;
-import org.testcontainers.utility.DockerImageName;
 
 /**
  * A module's tables as jOOQ classes (the macro jooq_tables): its migrations run by Flyway on
- * Postgres itself, in a container, and the schema they make read by jOOQ's generator. Postgres, not
- * an imitation of it, so that what is generated is what the app runs on. Its pending migrations
- * (NEXT_001__description.sql) run too, after the released ones: {@link PendingMigrations}.
+ * Postgres itself, embedded (zonky's binaries, the major version production runs), and the schema
+ * they make read by jOOQ's generator. Postgres, not an imitation of it, so that what is generated
+ * is what the app runs on. Its pending migrations (NEXT_001__description.sql) run too, after the
+ * released ones: {@link PendingMigrations}.
  *
  * <p>Each package that it generates gets a {@code package-info.java} that puts it in the
  * infrastructure ring of the sliced onion. jMolecules does not look for a ring in the parent
@@ -25,7 +25,7 @@ import org.testcontainers.utility.DockerImageName;
  * not check them.
  *
  * <p>Arguments: the generator's configuration (what to generate: forced types and the like), the
- * module's migrations, the package to generate into, the directory to write it in, and the image.
+ * module's migrations, the package to generate into, and the source jar to write.
  */
 public final class JooqCodegen {
   private JooqCodegen() {}
@@ -34,11 +34,12 @@ public final class JooqCodegen {
     var config = Path.of(args[0]);
     var migrations = Path.of(args[1]);
     var packageName = args[2];
-    var directory = Path.of(args[3]);
-    try (var postgres = new PostgreSQLContainer(DockerImageName.parse(args[4]))) {
-      postgres.start();
+    var jar = Path.of(args[3]);
+    var directory = SourceJar.directoryFor(jar);
+    try (var postgres = EmbeddedPostgres.start()) {
+      var url = postgres.getJdbcUrl("postgres", "postgres");
       PendingMigrations.configure(Flyway.configure())
-          .dataSource(postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword())
+          .dataSource(postgres.getPostgresDatabase())
           .locations("filesystem:" + migrations.toAbsolutePath())
           .load()
           .migrate();
@@ -48,9 +49,8 @@ public final class JooqCodegen {
                 .withJdbc(
                     new Jdbc()
                         .withDriver("org.postgresql.Driver")
-                        .withUrl(postgres.getJdbcUrl())
-                        .withUser(postgres.getUsername())
-                        .withPassword(postgres.getPassword()));
+                        .withUrl(url)
+                        .withUser("postgres"));
         var generator = configuration.getGenerator();
         generator
             .getDatabase()
@@ -66,6 +66,7 @@ public final class JooqCodegen {
       }
     }
     inInfrastructureRing(directory);
+    SourceJar.write(directory, jar);
   }
 
   /** Writes a {@code package-info.java} into each package under {@code directory}. */
@@ -88,11 +89,9 @@ public final class JooqCodegen {
               .replace(folder.getFileSystem().getSeparator(), ".");
       Files.writeString(
           folder.resolve("package-info.java"),
-          """
-          @org.jmolecules.architecture.onion.simplified.InfrastructureRing
-          package %s;
-          """
-              .formatted(name));
+          "@org.jmolecules.architecture.onion.simplified.InfrastructureRing\npackage "
+              + name
+              + ";\n");
     }
   }
 }

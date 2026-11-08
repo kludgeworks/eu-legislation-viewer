@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "jooq_tables")
 
 # The comparison module's API and domain: Comparisons, a comparison and its differences
 java_library(
@@ -14,5 +15,122 @@ java_library(
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_springframework_modulith_spring_modulith_api",
+    ],
+)
+
+# application/
+# The comparison module's application ring: comparing two stored texts, and keeping the comparisons
+java_library(
+    name = "application",
+    srcs = glob(["application/*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        ":comparison",
+        ":model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:io_micrometer_micrometer_observation",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_modulith_spring_modulith_events_api",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+    ],
+)
+
+# infra/
+# The comparison module's infrastructure: the comparisons in Postgres, with jOOQ
+java_library(
+    name = "infra",
+    srcs = glob(["infra/*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        ":application",
+        ":comparison",
+        ":jooq",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_tx",
+        "@maven//:tools_jackson_core_jackson_core",
+        "@maven//:tools_jackson_core_jackson_databind",
+    ],
+)
+
+# The module's table (comparison) as jOOQ classes, from its migrations
+jooq_tables(
+    name = "jooq",
+    config = "infra/jooq.xml",
+    migrations = "//viewer/src/main/resources:comparison_migrations",
+    package = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq",
+    deps = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content"],
+)
+
+# model/
+# The rules of a comparison: wording, units, and how two texts differ (java-diff-utils)
+java_library(
+    name = "model",
+    srcs = glob(["model/*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        ":comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:io_github_java_diff_utils_java_diff_utils",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)
+
+# web/
+# The comparison module's web side: the comparison page, its changes and the acts between its
+# versions by htmx
+java_library(
+    name = "web",
+    srcs = glob(["web/*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        ":comparison",
+        ":view",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparepage",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext",
+        "//viewer/src/main/jte",
+        "@maven//:gg_jte_jte_models",
+        "@maven//:gg_jte_jte_runtime",
+        "@maven//:jakarta_servlet_jakarta_servlet_api",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_webmvc",
+    ],
+)
+
+# web/view/
+# What the comparison's parts of the compare page show (the chips, the Changes view, the
+# sidenotes, the outline), worked out for its templates (src/main/jte/comparison): its own target, so the
+# templates can take it while comparison/web renders them
+java_library(
+    name = "view",
+    srcs = glob(["web/view/*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        ":comparison",
+        ":model",
+        "//tools/build:record_builder",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparepage",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
     ],
 )

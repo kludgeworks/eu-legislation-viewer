@@ -31,7 +31,7 @@ use_repo(npm, "npm")
 
 # bats_test: the task scripts' tests (tools/test/tasks), with its own bats; already in the graph
 # through rules_jvm_external and contrib_rules_jvm
-bazel_dep(name = "bazel_lib", version = "3.1.0")
+bazel_dep(name = "bazel_lib", version = "3.7.0")
 
 # A C toolchain for Linux, as Bazel brings its own JDK: nothing here is C, but every java_test needs
 # one to analyse (the Windows launcher maker), so a Linux machine with no compiler would fail. macOS
@@ -84,6 +84,12 @@ maven.install(
         "org.springframework.boot:spring-boot-starter-flyway",
         "org.flywaydb:flyway-database-postgresql",
         "org.postgresql:postgresql",
+        # jOOQ's temporary Postgres: native binaries, so code generation does not need Docker
+        "io.zonky.test:embedded-postgres:2.2.2",
+        "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64",
+        "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8",
+        "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64",
+        "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8",
         "org.springframework.modulith:spring-modulith-starter-jdbc",
         # Valkey (Spring Data Redis, Lettuce): the externalized events every instance reads back (the
         # broadcast module's streams)
@@ -120,7 +126,7 @@ maven.install(
         "org.webjars:webjars-locator-lite",
         # comparisons: Myers's diff of the words of two versions' wording (the comparison module)
         "io.github.java-diff-utils:java-diff-utils:4.18",
-        # builders and withers for records, generated (an annotation processor: //tools/build:record_builder)
+        # builders and withers for records, generated (an annotation processor: //:tools_build_record_builder)
         "io.soabase.record-builder:record-builder-core:53",
         "io.soabase.record-builder:record-builder-processor:53",
         # tests
@@ -162,7 +168,10 @@ maven.install(
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
         "org.springframework.modulith:spring-modulith-bom:2.1.1",
         "org.jmolecules:jmolecules-bom:2025.0.2",
+        # Keep embedded Postgres's native binaries aligned with the Postgres 18 used in production.
+        "io.zonky.test.postgres:embedded-postgres-binaries-bom:18.3.0",
     ],
+    known_contributing_modules = ["protobuf"],
     # the resolved versions and their SHA-256s; after changing the artifacts: mise run pin
     lock_file = "//:maven_install.json",
     repositories = ["https://repo1.maven.org/maven2"],
@@ -216,16 +225,14 @@ http_archive(
 # CDM, the ontology behind Cellar's RDF (Publications Office, CC BY 4.0): what every cdm:, cmr: and
 # annotation: term our SPARQL queries use means, and the list sparql_terms_test checks them against.
 # 4.17.0 is the latest published release; Cellar's endpoint already runs 5.0.0, which isn't
-# published yet (it adds terms and removes none): move up when it is. One zip, from its versioned
-# distribution URI, the Cellar item that resolves to, or the EU Vocabularies download.
+# published yet (it adds terms and removes none): move up when it is. One zip, from the EU
+# Vocabularies download over HTTPS.
 http_archive(
     name = "cdm",
     build_file = "//tools/build:cdm.BUILD",
     sha256 = "95b001c2cba352a1a1c9c3be3423e187f97ae9773133413040c138f2c285cb8b",
     type = "zip",
     urls = [
-        "http://publications.europa.eu/resource/distribution/cdm/20260625-0/zip/zip/cdm-4.17.0.zip",
-        "http://publications.europa.eu/resource/cellar/063f8b56-709d-11f1-9800-01aa75ed71a1.0001.02/DOC_1",
         "https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fdistribution%2Fcdm%2F20260625-0%2Fzip%2Fzip%2Fcdm-4.17.0.zip&fileName=cdm-4.17.0.zip",
     ],
 )

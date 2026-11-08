@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_library", "java_test_suite")
+load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_junit5_test", "java_library", "java_test_suite")
 
 # The app's store in a container (Testcontainers), for the tests that need one, and the viewer on it
 # for running locally (TestViewerApplication, with Grafana's OpenTelemetry stack: ObservabilityContainers)
@@ -71,6 +71,7 @@ java_test_suite(
             "ProductionClasses.java",
             "TestViewerApplication.java",
             "TestcontainersConfiguration.java",
+            "ViewerJarContentsTest.java",
         ],
     ),
     data = [
@@ -106,6 +107,27 @@ java_test_suite(
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_testcontainers_testcontainers_postgresql",
+        "@rules_java//java/runfiles",
+    ],
+)
+
+# What Spring Boot's jar holds: the app, its libraries once each, no test libraries, and the
+# production resources; read from the jar, so no Docker
+java_junit5_test(
+    name = "ViewerJarContentsTest",
+    size = "small",
+    srcs = ["ViewerJarContentsTest.java"],
+    data = ["//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer:viewer-app"],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.ViewerJarContentsTest",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@rules_java//java/runfiles",
     ],
 )

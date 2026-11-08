@@ -1,0 +1,4 @@
+# Copyright 2026 The Project Contributors
+# SPDX-License-Identifier: MIT
+
+exports_files(glob(["*.bzl"]))

@@ -15,11 +15,11 @@ jte_library(
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/view",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparepage",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web/view",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
