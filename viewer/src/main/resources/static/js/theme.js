@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 /**
- * @file The theme switch of the site bar.
+ * @file The theme switch of the site bar, layout/theme.jte.
  *
- * When the reader selects a theme, this script sets it on the page at once. Then it posts the
+ * When the reader selects a theme, `<theme-switch>` sets it on the page at once. Then it posts the
  * choice with fetch to `POST /theme`, so the server keeps it and the page does not load again.
  * Without JavaScript, the form posts and the server sends the reader back to the page.
  */
@@ -38,4 +38,28 @@ export const choose = (event, send) => {
   });
 };
 
-document.addEventListener("submit", (event) => choose(event, fetch));
+/**
+ * Custom element that wraps the theme form and handles asynchronous submission.
+ */
+export class ThemeSwitch extends HTMLElement {
+  connectedCallback() {
+    this.addEventListener("submit", this.#handleSubmit);
+  }
+
+  disconnectedCallback() {
+    this.removeEventListener("submit", this.#handleSubmit);
+  }
+
+  /**
+   * @param {Event} event
+   */
+  #handleSubmit = (event) => {
+    if (event instanceof SubmitEvent) {
+      choose(event, fetch);
+    }
+  };
+}
+
+if (!customElements.get("theme-switch")) {
+  customElements.define("theme-switch", ThemeSwitch);
+}

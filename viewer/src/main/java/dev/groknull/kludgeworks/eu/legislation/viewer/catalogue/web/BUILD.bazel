@@ -19,6 +19,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
         "@maven//:gg_jte_jte_models",
+        "@maven//:gg_jte_jte_models_runtime",
         "@maven//:gg_jte_jte_runtime",
         "@maven//:io_github_wimdeblauwe_htmx_spring_boot",
         "@maven//:jakarta_servlet_jakarta_servlet_api",

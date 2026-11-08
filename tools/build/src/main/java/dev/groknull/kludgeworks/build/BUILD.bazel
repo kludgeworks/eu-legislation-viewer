@@ -123,7 +123,10 @@ java_binary(
         "TemplatePolicy.java",
     ],
     main_class = "dev.groknull.kludgeworks.build.JteGenerate",
-    runtime_deps = ["@maven//:gg_jte_jte_models"],
+    runtime_deps = [
+        "@maven//:gg_jte_jte_jspecify_nullmarked",
+        "@maven//:gg_jte_jte_models",
+    ],
     deps = [
         ":package_info",
         "@maven//:gg_jte_jte",

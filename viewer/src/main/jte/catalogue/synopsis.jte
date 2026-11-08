@@ -32,10 +32,12 @@
      The later text's outline is beside the view, with a count of differences for each unit. --%>
 !{var total = changes.numbers().size();}
 <div class="outlined">
+<comparison-outline>
 <nav class="outline counted" aria-label="Outline">
   @template.catalogue.outlinehead(total = changes.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
+</comparison-outline>
 <div class="changes synopsis">
   @template.catalogue.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two versions, aligned by provision">

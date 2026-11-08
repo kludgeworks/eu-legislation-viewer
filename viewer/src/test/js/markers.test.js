@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import { change, number, said } from "../../main/resources/static/js/markers.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
+  vi.restoreAllMocks();
 });
 
 /**
@@ -32,13 +33,13 @@ describe("number", () => {
 
 describe("said", () => {
   test("says what happened and which act did it", () => {
-    document.body.innerHTML = `<span class="provenance" data-act="32017R0815" data-action="replaced">▼</span>`;
+    document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815" data-action="replaced">▼</amendment-mark>`;
 
     expect(said(mark())).toBe("Replaced by 2017/815 · open this change in Compare");
   });
 
   test("says amended if the mark does not say what happened", () => {
-    document.body.innerHTML = `<span class="provenance" data-act="32017R0815">▼</span>`;
+    document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815">▼</amendment-mark>`;
 
     expect(said(mark())).toBe("Amended by 2017/815 · open this change in Compare");
   });
@@ -48,7 +49,7 @@ describe("change", () => {
   test("opens the comparison of the text, limited to the act's changes", () => {
     document.body.innerHTML = `
       <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <span class="provenance" data-act="32019R0103R(01)">▼</span>
+        <amendment-mark class="provenance" data-act="32019R0103R(01)">▼</amendment-mark>
       </div>`;
 
     expect(change(mark())).toBe(
@@ -57,21 +58,56 @@ describe("change", () => {
   });
 
   test("has no change for a mark outside a text with a comparison", () => {
-    document.body.innerHTML = `<span class="provenance" data-act="32017R0815">▼</span>`;
+    document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815">▼</amendment-mark>`;
 
     expect(change(mark())).toBeNull();
   });
 });
 
-describe("after htmx settles", () => {
-  test("every mark in a text with a comparison has its hover text", () => {
+describe("AmendmentMark", () => {
+  test("sets its hover text when connected inside a comparison-enabled text", () => {
     document.body.innerHTML = `
       <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <span class="provenance" data-act="32017R0815" data-action="inserted">▼</span>
+        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
       </div>`;
 
-    document.dispatchEvent(new Event("htmx:after:settle"));
-
     expect(mark().title).toBe("Inserted by 2017/815 · open this change in Compare");
+  });
+
+  test("leaves hover text empty outside a comparison", () => {
+    document.body.innerHTML = `
+      <div>
+        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
+      </div>`;
+
+    expect(mark().title).toBe("");
+  });
+
+  test("navigates to the comparison on click", () => {
+    const assign = vi.fn();
+    vi.stubGlobal("location", { assign });
+
+    document.body.innerHTML = `
+      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
+        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
+      </div>`;
+
+    mark().click();
+
+    expect(assign).toHaveBeenCalledWith("/eli/reg_impl/2015/1998/eng/compare?act=32017R0815");
+  });
+
+  test("navigates to the comparison on Enter key", () => {
+    const assign = vi.fn();
+    vi.stubGlobal("location", { assign });
+
+    document.body.innerHTML = `
+      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
+        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
+      </div>`;
+
+    mark().dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+
+    expect(assign).toHaveBeenCalledWith("/eli/reg_impl/2015/1998/eng/compare?act=32017R0815");
   });
 });

@@ -3,14 +3,10 @@
 /**
  * @file The amendment marks of the text of a version on the Read page, legal/provenance.jte.
  *
- * The hover text of each mark says what happened and which act did it, for example "Replaced by
- * 2017/815". A click on a mark, or Enter, opens the change of that act in Compare. The text's
- * container holds the address of the comparison in `data-compare`. The script adds the act, so
- * the comparison shows only the changes of that act.
+ * The hover text of each `<amendment-mark>` says what happened and which act did it, for example
+ * "Replaced by 2017/815". A click on a mark, or Enter, opens the change of that act in Compare.
+ * The text's container holds the address of the comparison in `data-compare`.
  */
-
-/** The marks that have an act, in a text that has a comparison. */
-const MARKS = "[data-compare] .provenance[data-act]";
 
 /**
  * Returns the number of an act from its CELEX number. For example, 32017R0815 gives "2017/815",
@@ -57,44 +53,49 @@ export const change = (mark) => {
 };
 
 /**
- * Returns the mark at the target of an event, or null if there is none.
+ * Custom element for an amendment mark in the margin of a legal text.
  *
- * @param {Event} event
- * @returns {HTMLElement | null}
+ * When connected, it sets its hover text if it has an amending act. Clicking the mark or pressing
+ * Enter opens the comparison for that act.
  */
-const markOf = (event) => {
-  const mark = event.target instanceof Element ? event.target.closest(MARKS) : null;
-  return mark instanceof HTMLElement ? mark : null;
-};
-
-/**
- * Opens the change of a mark, if it has one.
- *
- * @param {HTMLElement} mark
- */
-const open = (mark) => {
-  const href = change(mark);
-  if (href) {
-    location.assign(href);
+export class AmendmentMark extends HTMLElement {
+  connectedCallback() {
+    if (this.dataset.act && this.closest("[data-compare]")) {
+      this.title = said(this);
+    }
+    this.addEventListener("click", this.#handleClick);
+    this.addEventListener("keydown", this.#handleKeyDown);
   }
-};
 
-document.addEventListener("htmx:after:settle", () => {
-  for (const mark of document.querySelectorAll(MARKS)) {
-    if (mark instanceof HTMLElement) {
-      mark.title = said(mark);
+  disconnectedCallback() {
+    this.removeEventListener("click", this.#handleClick);
+    this.removeEventListener("keydown", this.#handleKeyDown);
+  }
+
+  #handleClick = () => {
+    this.open();
+  };
+
+  /**
+   * @param {KeyboardEvent} event
+   */
+  #handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      this.open();
+    }
+  };
+
+  /**
+   * Opens the change of this mark, if it has one.
+   */
+  open() {
+    const href = change(this);
+    if (href) {
+      location.assign(href);
     }
   }
-});
-document.addEventListener("click", (event) => {
-  const mark = markOf(event);
-  if (mark) {
-    open(mark);
-  }
-});
-document.addEventListener("keydown", (event) => {
-  const mark = markOf(event);
-  if (mark && event.key === "Enter") {
-    open(mark);
-  }
-});
+}
+
+if (!customElements.get("amendment-mark")) {
+  customElements.define("amendment-mark", AmendmentMark);
+}

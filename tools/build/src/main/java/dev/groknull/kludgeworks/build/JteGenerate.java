@@ -32,7 +32,12 @@ public final class JteGenerate {
     engine.setTrimControlStructures(true);
     engine.setHtmlPolicy(new TemplatePolicy());
     var models = args.length > 2 ? Map.of("excludePattern", args[2]) : Map.<String, String>of();
-    engine.setExtensions(Map.of("gg.jte.models.generator.ModelExtension", models));
+    engine.setExtensions(
+        Map.of(
+            "gg.jte.models.generator.ModelExtension",
+            models,
+            "gg.jte.jspecify.NullMarkedExtension",
+            Map.of()));
     engine.generateAll();
   }
 }

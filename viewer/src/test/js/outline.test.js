@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
-import { afterEach, describe, expect, test } from "vitest";
+import { afterEach, describe, expect, test, vi } from "vitest";
 import {
   AT,
   RAIL,
@@ -14,6 +14,7 @@ import {
 afterEach(() => {
   document.body.innerHTML = "";
   localStorage.clear();
+  vi.restoreAllMocks();
 });
 
 /**
@@ -26,18 +27,20 @@ const one = (selector) => /** @type {HTMLElement} */ (document.querySelector(sel
 
 /** An outline of two parts, Article 1 from difference 1 and Annex IV from difference 3. */
 const OUTLINE = `
-  <nav class="outline counted">
-    <button class="outline-rail" aria-pressed="false">⇤</button>
-    <div class="outline-follow" data-total="1828">
-      <span class="where"></span>
-      <a class="up" href="#">↑</a>
-      <a class="down" href="#">↓</a>
-    </div>
-    <ul>
-      <li><a class="has" href="#difference-1"><span> Article 1 </span></a></li>
-      <li><a class="has" href="#difference-3"><span>Annex IV</span></a></li>
-    </ul>
-  </nav>`;
+  <comparison-outline>
+    <nav class="outline counted">
+      <button class="outline-rail" aria-pressed="false">⇤</button>
+      <div class="outline-follow" data-total="1828">
+        <span class="where"></span>
+        <a class="up" href="#">↑</a>
+        <a class="down" href="#">↓</a>
+      </div>
+      <ul>
+        <li><a class="has" href="#difference-1"><span> Article 1 </span></a></li>
+        <li><a class="has" href="#difference-3"><span>Annex IV</span></a></li>
+      </ul>
+    </nav>
+  </comparison-outline>`;
 
 /**
  * Adds differences 1 to 4 to the page, the first `passed` of them above the line the reader is at.
@@ -79,14 +82,14 @@ describe("remembered", () => {
 describe("rail", () => {
   test("collapses the outline to a rail and expands it again", () => {
     document.body.innerHTML = OUTLINE;
-    const nav = one("nav");
+    const element = one(".outline");
 
-    rail(nav, true);
-    expect(nav.classList.contains("rail")).toBe(true);
+    rail(element, true);
+    expect(element.classList.contains("rail")).toBe(true);
     expect(one(".outline-rail").getAttribute("aria-label")).toBe("Expand the outline");
 
-    rail(nav, false);
-    expect(nav.classList.contains("rail")).toBe(false);
+    rail(element, false);
+    expect(element.classList.contains("rail")).toBe(false);
     expect(one(".outline-rail").getAttribute("aria-pressed")).toBe("false");
   });
 });
@@ -95,9 +98,9 @@ describe("part", () => {
   test("names the last part that starts at or before the difference", () => {
     document.body.innerHTML = OUTLINE;
 
-    expect(part(one("nav"), 2)).toBe("Article 1");
-    expect(part(one("nav"), 3)).toBe("Annex IV");
-    expect(part(one("nav"), 0)).toBe("");
+    expect(part(one(".outline"), 2)).toBe("Article 1");
+    expect(part(one(".outline"), 3)).toBe("Annex IV");
+    expect(part(one(".outline"), 0)).toBe("");
   });
 });
 
@@ -132,7 +135,29 @@ describe("the rail button", () => {
 
     one(".outline-rail").click();
 
-    expect(one("nav").classList.contains("rail")).toBe(true);
+    expect(one(".outline").classList.contains("rail")).toBe(true);
     expect(localStorage.getItem(RAIL)).toBe("true");
+  });
+});
+
+describe("ComparisonOutline", () => {
+  test("restores rail state from storage when connected", async () => {
+    localStorage.setItem(RAIL, "true");
+    document.body.innerHTML = OUTLINE;
+    await Promise.resolve();
+
+    expect(one(".outline").classList.contains("rail")).toBe(true);
+  });
+
+  test("toggles rail state when rail button is clicked", () => {
+    document.body.innerHTML = OUTLINE;
+
+    one(".outline-rail").click();
+    expect(one(".outline").classList.contains("rail")).toBe(true);
+    expect(localStorage.getItem(RAIL)).toBe("true");
+
+    one(".outline-rail").click();
+    expect(one(".outline").classList.contains("rail")).toBe(false);
+    expect(localStorage.getItem(RAIL)).toBe("false");
   });
 });

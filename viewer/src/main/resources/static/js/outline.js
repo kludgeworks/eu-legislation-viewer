@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 /**
- * @file The outline of a comparison, catalogue/outlinehead.jte. htmx loads it with its view.
+ * @file The outline of a comparison, catalogue/outlinehead.jte.
  *
- * The head of the outline follows the reader as they scroll. It says which difference the reader
- * is at, for example "Difference 663 of 1,828 · Annex IV". Its ↑ and ↓ links go to the difference
- * before and after. Its button collapses the outline to a rail of the parts and their counts. The
- * browser of the reader remembers the choice.
+ * The `<comparison-outline>` element follows the reader as they scroll. It says which difference
+ * the reader is at, for example "Difference 663 of 1,828 · Annex IV". Its ↑ and ↓ links go to the
+ * difference before and after. Its button collapses the outline to a rail of the parts and their
+ * counts. The browser of the reader remembers the choice in `localStorage`.
  */
 
 /** The localStorage key that remembers if the outline is a rail. */
@@ -135,37 +135,79 @@ export const follow = (root) => {
   down.toggleAttribute("aria-disabled", number >= total);
 };
 
-let pending = false;
+/**
+ * Custom element for the comparison outline.
+ *
+ * It manages rail collapse and updates its follow indicators as the reader scrolls.
+ */
+export class ComparisonOutline extends HTMLElement {
+  #pending = false;
+  /** @type {MutationObserver | null} */
+  #observer = null;
 
-/** Updates the head of the outline once, at the next frame, however often the page scrolls. */
-const soon = () => {
-  if (!pending) {
-    pending = true;
-    requestAnimationFrame(() => {
-      pending = false;
+  connectedCallback() {
+    if (!this.#initNav()) {
+      this.#observer = new MutationObserver(() => {
+        if (this.#initNav()) {
+          this.#observer?.disconnect();
+          this.#observer = null;
+        }
+      });
+      this.#observer.observe(this, { childList: true });
+    }
+    // Attaches a window scroll listener while connected. There is only one comparison outline per page.
+    window.addEventListener("scroll", this.#onScroll, { passive: true });
+    this.addEventListener("click", this.#onClick);
+  }
+
+  disconnectedCallback() {
+    this.#observer?.disconnect();
+    this.#observer = null;
+    window.removeEventListener("scroll", this.#onScroll);
+    this.removeEventListener("click", this.#onClick);
+  }
+
+  #initNav() {
+    const nav = this.querySelector("nav.outline.counted");
+    if (nav) {
+      rail(nav, remembered(localStorage));
       follow(document);
-    });
+      return true;
+    }
+    return false;
   }
-};
 
-document.addEventListener("scroll", soon, { passive: true });
-document.addEventListener("click", (event) => {
-  const button = event.target instanceof Element ? event.target.closest(".outline-rail") : null;
-  const nav = button?.closest("nav.outline");
-  if (!nav) {
-    return;
-  }
-  const on = !nav.classList.contains("rail");
-  rail(nav, on);
-  try {
-    localStorage.setItem(RAIL, String(on));
-  } catch {
-    // The browser does not let the page keep it. The choice holds for this page only.
-  }
-});
-document.addEventListener("htmx:after:settle", () => {
-  for (const nav of document.querySelectorAll("nav.outline.counted")) {
-    rail(nav, remembered(localStorage));
-  }
-  follow(document);
-});
+  #onScroll = () => {
+    if (!this.#pending) {
+      this.#pending = true;
+      requestAnimationFrame(() => {
+        this.#pending = false;
+        if (this.isConnected) {
+          follow(document);
+        }
+      });
+    }
+  };
+
+  /**
+   * @param {MouseEvent} event
+   */
+  #onClick = (event) => {
+    const button = event.target instanceof Element ? event.target.closest(".outline-rail") : null;
+    const nav = this.querySelector("nav.outline.counted");
+    if (!button || !nav) {
+      return;
+    }
+    const on = !nav.classList.contains("rail");
+    rail(nav, on);
+    try {
+      localStorage.setItem(RAIL, String(on));
+    } catch {
+      // The browser does not let the page keep it. The choice holds for this page only.
+    }
+  };
+}
+
+if (!customElements.get("comparison-outline")) {
+  customElements.define("comparison-outline", ComparisonOutline);
+}

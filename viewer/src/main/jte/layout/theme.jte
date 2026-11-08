@@ -4,7 +4,8 @@
 !{var current = chrome.theme();}
 <%-- Shows the theme switch: light, the device's theme, or dark. It is a plain form and is not
      boosted. The theme is set on the html element, and a boosted swap of the body would not change
-     it. /js/theme.js applies the theme in place. Without JavaScript, the form posts. --%>
+     it. <theme-switch> applies the theme in place. Without JavaScript, the form posts. --%>
+<theme-switch>
 <form class="theme" method="post" action="/theme" role="group" aria-label="Colour theme">
   <input type="hidden" name="back" value="${chrome.here()}">
   <button name="set" value="light" title="Remembered on this device" aria-label="Light" aria-pressed="${String.valueOf(current == Theme.LIGHT)}">
@@ -17,3 +18,4 @@
     <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.5 9.5A5.5 5.5 0 0 1 6.5 2.5a5.5 5.5 0 1 0 7 7z"/></svg>
   </button>
 </form>
+</theme-switch>

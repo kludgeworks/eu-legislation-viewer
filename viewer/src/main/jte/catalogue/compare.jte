@@ -22,7 +22,7 @@
     @template.catalogue.masthead(masthead = masthead)
     @template.catalogue.timeline(timeline = timeline)
     @if(receipt != null)
-      <p class="receipt" role="status">✓ ${receipt} · <button type="button" class="dismiss">dismiss</button></p>
+      <action-receipt class="receipt" role="status">✓ ${receipt} · <button type="button" class="dismiss">dismiss</button></action-receipt>
     @endif
     @if(arriving != null)
       @template.catalogue.arriving(arriving = arriving)

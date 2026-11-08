@@ -5,14 +5,14 @@
      all acts. After the start, it shows the one step, which converts each version. It lists the
      versions that are being converted now.
      Under that, it shows the time the preparation has taken and how many versions are ready. The
-     page's clock (clock.js) keeps the time current. While the act waits, a light aside shows beside
-     the plain line. clock.js changes the aside every few seconds. The stream swaps this element by
+     page's clock (<elapsed-time>) keeps the time current. While the act waits, a light aside shows beside
+     the plain line. <rotating-aside> changes the aside every few seconds. The stream swaps this element by
      its id (#progress). --%>
 <div id="progress" class="progress">
   @if(progress.waiting() != null)
     <div class="waiting">
       <p><strong>Waiting its turn.</strong> ${progress.waiting()}</p>
-      <p class="aside" aria-hidden="true" data-asides="${progress.asides()}">${Progress.ASIDES.getFirst()}</p>
+      <rotating-aside class="aside" aria-hidden="true" asides="${progress.asides()}">${Progress.ASIDES.getFirst()}</rotating-aside>
     </div>
   @else
     <ol class="stages">
@@ -25,5 +25,5 @@
       </li>
     </ol>
   @endif
-  <p class="foot">Elapsed <time data-elapsed="${progress.seconds()}">${progress.elapsed()}</time> · ${progress.counts()}</p>
+  <p class="foot">Elapsed <elapsed-time seconds="${progress.seconds()}"><time datetime="PT${progress.seconds()}S">${progress.elapsed()}</time></elapsed-time> · ${progress.counts()}</p>
 </div>

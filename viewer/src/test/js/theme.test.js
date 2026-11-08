@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test, vi } from "vitest";
-// The script adds its listener when it loads. The tests check that listener, so the import has no
-// name.
+// The custom element registers itself when the script loads.
 // oxlint-disable-next-line import/no-unassigned-import
 import "../../main/resources/static/js/theme.js";
 
@@ -25,15 +24,17 @@ const select = (theme) => {
   form.dispatchEvent(new SubmitEvent("submit", { submitter: button, bubbles: true, cancelable: true }));
 };
 
-describe("the theme switch", () => {
+describe("ThemeSwitch", () => {
   test("sets the theme at once and posts it, without loading the page again", () => {
     const send = vi.fn(() => Promise.resolve(new Response(null, { status: 204 })));
     vi.stubGlobal("fetch", send);
     document.body.innerHTML = `
-      <form class="theme" method="post" action="/theme">
-        <button name="theme" value="light" aria-pressed="true">Light</button>
-        <button name="theme" value="dark" aria-pressed="false">Dark</button>
-      </form>`;
+      <theme-switch>
+        <form class="theme" method="post" action="/theme">
+          <button name="theme" value="light" aria-pressed="true">Light</button>
+          <button name="theme" value="dark" aria-pressed="false">Dark</button>
+        </form>
+      </theme-switch>`;
 
     select("dark");
 
@@ -54,11 +55,18 @@ describe("the theme switch", () => {
     const send = vi.fn();
     vi.stubGlobal("fetch", send);
     document.body.innerHTML = `
+      <theme-switch>
+        <form class="theme" method="post" action="/theme">
+          <button name="theme" value="light" aria-pressed="true">Light</button>
+        </form>
+      </theme-switch>
       <form class="find" method="get" action="/">
         <button name="theme" value="dark">Find</button>
       </form>`;
 
-    select("dark");
+    const find = /** @type {HTMLFormElement} */ (document.querySelector("form.find"));
+    const button = /** @type {HTMLButtonElement} */ (find.querySelector("button"));
+    find.dispatchEvent(new SubmitEvent("submit", { submitter: button, bubbles: true, cancelable: true }));
 
     expect(document.documentElement.dataset.theme).toBeUndefined();
     expect(send).not.toHaveBeenCalled();

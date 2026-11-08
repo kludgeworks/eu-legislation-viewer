@@ -24,10 +24,12 @@
      the view, with a count of differences for each unit. If the view is limited to one act's changes
      (only), a banner says so and links to the changes of all acts. --%>
 <div class="outlined">
+<comparison-outline>
 <nav class="outline counted" aria-label="Outline">
   @template.catalogue.outlinehead(total = changes.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
+</comparison-outline>
 <div class="changes">
   @template.catalogue.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
   <div class="book legal-text legal-text-consolidated">

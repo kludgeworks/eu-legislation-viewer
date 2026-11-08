@@ -3,20 +3,32 @@
 /**
  * @file The dismiss button of a receipt.
  *
- * A receipt says that the server did what the reader asked. Its button `button.dismiss` removes
- * the receipt from the page.
+ * An `<action-receipt>` element shows that the server completed what the reader asked. Its button
+ * `button.dismiss` removes the receipt from the page.
  */
 
 /**
- * Removes the receipt of a dismiss button that the reader clicked.
- *
- * @param {Event} event a click on the page
+ * Custom element that removes itself when its dismiss button is clicked.
  */
-export const dismiss = (event) => {
-  if (!(event.target instanceof Element)) {
-    return;
+export class ActionReceipt extends HTMLElement {
+  connectedCallback() {
+    this.addEventListener("click", this.#handleClick);
   }
-  event.target.closest(".receipt button.dismiss")?.closest(".receipt")?.remove();
-};
 
-document.addEventListener("click", dismiss);
+  disconnectedCallback() {
+    this.removeEventListener("click", this.#handleClick);
+  }
+
+  /**
+   * @param {MouseEvent} event
+   */
+  #handleClick = (event) => {
+    if (event.target instanceof Element && event.target.closest("button.dismiss")) {
+      this.remove();
+    }
+  };
+}
+
+if (!customElements.get("action-receipt")) {
+  customElements.define("action-receipt", ActionReceipt);
+}

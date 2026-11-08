@@ -291,7 +291,12 @@ def jte_library(name, srcs, root, models_exclude = None, deps = [], **kwargs):
         srcs = [":" + name + "_sources"],
         # jte's code, not ours: no Error Prone, doclint or lint warnings
         javacopts = ["-XepDisableAllChecks", "-Xdoclint:none", "-Xlint:none"],
-        deps = deps + ["@maven//:gg_jte_jte_runtime", "@maven//:gg_jte_jte_models"],
+        deps = deps + [
+            "@maven//:gg_jte_jte_runtime",
+            "@maven//:gg_jte_jte_models",
+            "@maven//:gg_jte_jte_models_runtime",
+            "@maven//:org_jspecify_jspecify",
+        ],
         **kwargs
     )
 

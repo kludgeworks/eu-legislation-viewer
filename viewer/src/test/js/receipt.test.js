@@ -1,8 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test } from "vitest";
-// The script adds its listener when it loads. The tests check that listener, so the import has no
-// name.
+// The custom element registers itself when the script loads.
 // oxlint-disable-next-line import/no-unassigned-import
 import "../../main/resources/static/js/receipt.js";
 
@@ -14,10 +13,10 @@ afterEach(() => {
 const click = (selector) =>
   /** @type {HTMLElement} */ (document.querySelector(selector)).click();
 
-describe("the dismiss button of a receipt", () => {
-  test("removes the receipt", () => {
+describe("ActionReceipt", () => {
+  test("removes the receipt when dismiss is clicked", () => {
     document.body.innerHTML = `
-      <main><p class="receipt" role="status">✓ Sent · <button type="button" class="dismiss">dismiss</button></p></main>`;
+      <main><action-receipt class="receipt" role="status">✓ Sent · <button type="button" class="dismiss">dismiss</button></action-receipt></main>`;
 
     click("button.dismiss");
 
@@ -27,7 +26,7 @@ describe("the dismiss button of a receipt", () => {
 
   test("leaves the receipt when the reader clicks elsewhere in it", () => {
     document.body.innerHTML = `
-      <p class="receipt" role="status"><span>✓ Sent</span> · <button type="button" class="dismiss">dismiss</button></p>`;
+      <action-receipt class="receipt" role="status"><span>✓ Sent</span> · <button type="button" class="dismiss">dismiss</button></action-receipt>`;
 
     click(".receipt span");
 

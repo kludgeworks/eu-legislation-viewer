@@ -10,9 +10,10 @@
     "com.h3xstream.findsecbugs:findsecbugs-plugin": -947761330,
     "com.mebigfatguy.sb-contrib:sb-contrib": -1065052473,
     "com.uber.nullaway:nullaway": -1216571949,
-    "gg.jte:jte": -734445851,
-    "gg.jte:jte-models": 283170894,
-    "gg.jte:jte-spring-boot-starter-4": -2063909609,
+    "gg.jte:jte": 1753066982,
+    "gg.jte:jte-jspecify-nullmarked": 309952362,
+    "gg.jte:jte-models": -1524283569,
+    "gg.jte:jte-spring-boot-starter-4": 423603224,
     "io.github.java-diff-utils:java-diff-utils": 1977050384,
     "io.github.wimdeblauwe:htmx-spring-boot": 602530914,
     "io.soabase.record-builder:record-builder-core": -1681324538,
@@ -120,12 +121,14 @@
     "commons-codec:commons-codec": 58403102,
     "commons-io:commons-io": 1072619124,
     "commons-logging:commons-logging": -102005530,
-    "gg.jte:jte": 531597260,
-    "gg.jte:jte-extension-api": -409661487,
-    "gg.jte:jte-models": -269515320,
-    "gg.jte:jte-runtime": -316482381,
-    "gg.jte:jte-spring-boot-starter-4": 361268455,
-    "gg.jte:jte-spring-boot-starter-4-core": 2113755859,
+    "gg.jte:jte": 907072816,
+    "gg.jte:jte-extension-api": 1072899676,
+    "gg.jte:jte-jspecify-nullmarked": 297496520,
+    "gg.jte:jte-models": 96728900,
+    "gg.jte:jte-models-runtime": 1758521571,
+    "gg.jte:jte-runtime": 1392871138,
+    "gg.jte:jte-spring-boot-starter-4": -1868450011,
+    "gg.jte:jte-spring-boot-starter-4-core": -2012820981,
     "io.github.java-diff-utils:java-diff-utils": 668781851,
     "io.github.wimdeblauwe:htmx-spring-boot": -826947741,
     "io.lettuce:lettuce-core": 1593187343,
@@ -603,39 +606,51 @@
     },
     "gg.jte:jte": {
       "shasums": {
-        "jar": "f883902b14518b9b22f0931ead82e98903f4f7c07352dd8cf713963fab719be9"
+        "jar": "c428dc63a28e9af9fdd3921e0a8d2141fac8ba70b452362de220e31264ed8e90"
       },
-      "version": "3.2.4"
+      "version": "3.2.5"
     },
     "gg.jte:jte-extension-api": {
       "shasums": {
-        "jar": "206ff20602487d85fa653b4749f052dbe977702dbef12bd1816d977ee88924bd"
+        "jar": "5dc965c13c08b11102dd40f7ac4b571dcab66a16ed7ae33143251db7af3ea8e8"
       },
-      "version": "3.2.4"
+      "version": "3.2.5"
+    },
+    "gg.jte:jte-jspecify-nullmarked": {
+      "shasums": {
+        "jar": "77fdf51056b4a559ad22d568b4816ffb9f0885b055cb0e5768e85e181918249e"
+      },
+      "version": "3.2.5"
     },
     "gg.jte:jte-models": {
       "shasums": {
-        "jar": "8be1d849a4f61883461be872a2e846ee854dc9d9c73643671b68a37ed12590ec"
+        "jar": "f46973dd101b81323c12e5496610ece77ee07236852b96fcb3d611ae32ad8f25"
       },
-      "version": "3.2.4"
+      "version": "3.2.5"
+    },
+    "gg.jte:jte-models-runtime": {
+      "shasums": {
+        "jar": "a346b3ff2477e3479a51923fc9176a26d6f3e8447f943794c4b506cfc03d5970"
+      },
+      "version": "3.2.5"
     },
     "gg.jte:jte-runtime": {
       "shasums": {
-        "jar": "42219157db480f0b030d0966ed8efa6acce493ed1395429a4db26797c7f15bb7"
+        "jar": "32023c7044336d04d2380ba8884f3f932696c612b0959321558d36775365235f"
       },
-      "version": "3.2.4"
+      "version": "3.2.5"
     },
     "gg.jte:jte-spring-boot-starter-4": {
       "shasums": {
-        "jar": "7c754a291e60a2a296be41542ee096a67f13305d912731dcec74e623ed30d9ab"
+        "jar": "ab355a406a5d0b8957d3f0bdf83f03745dd5acbe9635ff2863bab4b2ab94032b"
       },
-      "version": "3.2.4"
+      "version": "3.2.5"
     },
     "gg.jte:jte-spring-boot-starter-4-core": {
       "shasums": {
-        "jar": "73e9dbedef95a03f5578b226f5b14856bd7c67f266be8701434e9463176c81de"
+        "jar": "58c0f8ba8dc389cc370febc856425ec2963ed387570fddf94a1c07aa4c61145f"
       },
-      "version": "3.2.4"
+      "version": "3.2.5"
     },
     "io.github.java-diff-utils:java-diff-utils": {
       "shasums": {
@@ -2009,9 +2024,16 @@
     "gg.jte:jte-extension-api": [
       "gg.jte:jte-runtime"
     ],
+    "gg.jte:jte-jspecify-nullmarked": [
+      "gg.jte:jte-extension-api"
+    ],
     "gg.jte:jte-models": [
       "gg.jte:jte",
       "gg.jte:jte-extension-api",
+      "gg.jte:jte-models-runtime",
+      "gg.jte:jte-runtime"
+    ],
+    "gg.jte:jte-models-runtime": [
       "gg.jte:jte-runtime"
     ],
     "gg.jte:jte-spring-boot-starter-4": [
@@ -3339,11 +3361,16 @@
     "gg.jte:jte-extension-api": [
       "gg.jte.extension.api"
     ],
+    "gg.jte:jte-jspecify-nullmarked": [
+      "gg.jte.jspecify"
+    ],
     "gg.jte:jte-models": [
       "gg.jte.generated.precompiled.dynamictemplates",
       "gg.jte.generated.precompiled.interfacetemplates",
       "gg.jte.generated.precompiled.statictemplates",
-      "gg.jte.models.generator",
+      "gg.jte.models.generator"
+    ],
+    "gg.jte:jte-models-runtime": [
       "gg.jte.models.runtime"
     ],
     "gg.jte:jte-runtime": [
@@ -6529,7 +6556,9 @@
       "commons-logging:commons-logging",
       "gg.jte:jte",
       "gg.jte:jte-extension-api",
+      "gg.jte:jte-jspecify-nullmarked",
       "gg.jte:jte-models",
+      "gg.jte:jte-models-runtime",
       "gg.jte:jte-runtime",
       "gg.jte:jte-spring-boot-starter-4",
       "gg.jte:jte-spring-boot-starter-4-core",

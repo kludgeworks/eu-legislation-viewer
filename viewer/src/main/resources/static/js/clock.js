@@ -3,13 +3,13 @@
 /**
  * @file The clock and the asides of the preparing page, catalogue/preparing/progress.jte.
  *
- * Each `time[data-elapsed]` element shows how long the preparation took. The server sets the
- * seconds when it renders the page. This script counts up from that number every second. It uses
+ * Each `<elapsed-time>` element shows how long the preparation took. The server sets the
+ * seconds when it renders the page. The element counts up from that number every second. It uses
  * the number from the server, not the clock of the browser, so a wrong browser clock does not show.
  *
- * While the act waits, a light aside shows below the plain line. Every four seconds, this script
- * shows another aside, selected at random. If the reader asks for reduced motion, the aside
- * changes without a fade.
+ * While the act waits, `<rotating-aside>` shows a light aside below the plain line. Every four
+ * seconds, the element shows another aside, selected at random. If the reader asks for reduced
+ * motion, the aside changes without a fade.
  */
 
 /** How long the fade of an aside takes, in milliseconds. The stylesheet uses the same time. */
@@ -37,27 +37,77 @@ export const elapsed = (seconds) => {
   return h > 0 ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`;
 };
 
-/** When this script first saw each clock, in milliseconds. */
-const seen = /** @type {WeakMap<Element, number>} */ (new WeakMap());
-
 /**
- * Sets each clock in `root` to the seconds from the server plus the time since the clock appeared.
+ * Shows elapsed time counting up each second.
  *
- * @param {ParentNode} root
- * @param {number} now the time now, in milliseconds
+ * The element reads the initial duration in whole seconds from its `seconds` attribute. It starts
+ * its timer when connected to the document, and clears it when disconnected.
  */
-export const tick = (root, now) => {
-  for (const time of root.querySelectorAll("time[data-elapsed]")) {
-    if (!(time instanceof HTMLElement)) {
-      continue;
-    }
-    const since = seen.get(time) ?? now;
-    seen.set(time, since);
-    time.textContent = elapsed(
-      Number(time.dataset.elapsed) + Math.floor((now - since) / 1000),
-    );
+export class ElapsedTime extends HTMLElement {
+  static observedAttributes = ["seconds"];
+
+  /** @type {number | undefined} */
+  #timer;
+
+  /** @type {number | undefined} */
+  #seen;
+
+  /**
+   * The duration in whole seconds.
+   *
+   * @returns {number}
+   */
+  get seconds() {
+    return Number(this.getAttribute("seconds") || "0");
   }
-};
+
+  /**
+   * @param {number} value
+   */
+  set seconds(value) {
+    this.setAttribute("seconds", String(value));
+  }
+
+  connectedCallback() {
+    this.#seen ??= Date.now();
+    clearInterval(this.#timer);
+    this.#timer = window.setInterval(() => this.tick(), 1000);
+  }
+
+  disconnectedCallback() {
+    clearInterval(this.#timer);
+    this.#timer = undefined;
+  }
+
+  /**
+   * @param {string} name
+   * @param {string | null} oldValue
+   * @param {string | null} newValue
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    if (name === "seconds" && oldValue !== newValue && this.isConnected) {
+      this.#seen = Date.now();
+      this.tick();
+    }
+  }
+
+  /**
+   * Sets the content to the seconds from the server plus the time since the element appeared.
+   *
+   * @param {number} [now] the time now, in milliseconds
+   */
+  tick(now = Date.now()) {
+    const since = this.#seen ?? now;
+    const total = this.seconds + Math.floor((now - since) / 1000);
+    const time = this.querySelector("time");
+    if (time) {
+      time.textContent = elapsed(total);
+      time.setAttribute("datetime", `PT${total}S`);
+    } else {
+      this.textContent = elapsed(total);
+    }
+  }
+}
 
 /**
  * Returns an aside that is not the one shown now, selected at random. If there is no other aside,
@@ -74,31 +124,65 @@ export const next = (lines, shown, random) => {
 };
 
 /**
- * Shows the next aside in each `[data-asides]` element of `root`. The element holds the asides in
- * `data-asides`, one on each line.
+ * Rotates through light asides every four seconds.
  *
- * @param {ParentNode} root
- * @param {boolean} still true if the reader asks for reduced motion: the aside changes at once
- * @param {() => number} random a number from 0 up to 1, as Math.random returns
+ * The element reads the asides from its `asides` attribute, one on each line. It starts its timer
+ * when connected to the document, and clears it when disconnected.
  */
-export const turn = (root, still, random) => {
-  for (const aside of root.querySelectorAll("[data-asides]")) {
-    if (!(aside instanceof HTMLElement)) {
-      continue;
-    }
-    const line = next((aside.dataset.asides ?? "").split("\n"), aside.textContent ?? "", random);
+export class RotatingAside extends HTMLElement {
+  /** @type {number | undefined} */
+  #timer;
+
+  /** @type {number | undefined} */
+  #fadeTimer;
+
+  /** @type {MediaQueryList | undefined} */
+  #reduced;
+
+  connectedCallback() {
+    this.#reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    clearInterval(this.#timer);
+    this.#timer = window.setInterval(() => {
+      this.turn(this.#reduced?.matches ?? false, Math.random);
+    }, 4000);
+  }
+
+  disconnectedCallback() {
+    clearInterval(this.#timer);
+    clearTimeout(this.#fadeTimer);
+    this.#timer = undefined;
+    this.#fadeTimer = undefined;
+    this.#reduced = undefined;
+  }
+
+  /**
+   * Shows the next aside, selected at random.
+   *
+   * @param {boolean} still true if the reader asks for reduced motion: the aside changes at once
+   * @param {() => number} [random] a number from 0 up to 1, as Math.random returns
+   */
+  turn(still, random = Math.random) {
+    const raw = this.getAttribute("asides") ?? "";
+    const lines = raw.split("\n");
+    const line = next(lines, /** @type {HTMLElement} */ (this).textContent ?? "", random);
     if (still) {
-      aside.textContent = line;
-      continue;
+      this.textContent = line;
+      return;
     }
-    aside.classList.add("turning");
-    setTimeout(() => {
-      aside.textContent = line;
-      aside.classList.remove("turning");
+    this.classList.add("turning");
+    clearTimeout(this.#fadeTimer);
+    this.#fadeTimer = window.setTimeout(() => {
+      this.textContent = line;
+      this.classList.remove("turning");
+      this.#fadeTimer = undefined;
     }, FADE);
   }
-};
+}
 
-const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
-setInterval(() => tick(document, Date.now()), 1000);
-setInterval(() => turn(document, reduced.matches, Math.random), 4000);
+if (!customElements.get("elapsed-time")) {
+  customElements.define("elapsed-time", ElapsedTime);
+}
+
+if (!customElements.get("rotating-aside")) {
+  customElements.define("rotating-aside", RotatingAside);
+}

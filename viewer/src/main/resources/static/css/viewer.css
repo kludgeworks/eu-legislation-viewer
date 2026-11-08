@@ -122,6 +122,13 @@ nav.site {
   color: var(--muted);
 }
 
+/* Custom elements that only add behaviour take no box. */
+comparison-outline,
+elapsed-time,
+theme-switch {
+  display: contents;
+}
+
 /* The theme switch. It is three icons in one pill at the right of the site bar. The current icon is
  * raised. */
 form.theme {
@@ -1160,6 +1167,7 @@ form.on button {
 }
 
 nav.outline {
+  display: block;
   flex: 0 0 250px;
   position: sticky;
   top: 44px;
@@ -1924,6 +1932,7 @@ del.diff {
 }
 
 .preparing .waiting .aside {
+  display: block;
   margin-top: 6px;
   color: var(--muted);
   font-style: italic;
@@ -2017,6 +2026,7 @@ del.diff {
 /* The page just after the act is prepared. A line says what the viewer prepared. The content under
  * it fades in. */
 .receipt {
+  display: block;
   margin: 12px 0 0;
   padding: 8px 12px;
   background: var(--accent-tint);
