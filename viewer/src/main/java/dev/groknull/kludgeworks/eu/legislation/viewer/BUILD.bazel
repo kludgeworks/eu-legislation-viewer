@@ -2,8 +2,8 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_library")
 load("//tools/build:defs.bzl", "spring_boot_jar")
 
-# The application: ViewerApplication and, at run time, its modules, the library beside them
-# (legaltext), its configuration and migrations,
+# The application: ViewerApplication and, at run time, its modules, its configuration and
+# migrations,
 # and the starters: web (with jte and htmx), the store (Postgres, Flyway, jOOQ, Modulith's event
 # registry), Valkey (the broadcast events) and observability (OpenTelemetry, Modulith's insight, JDBC
 # spans)
@@ -32,12 +32,12 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/infra",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext",
         "//viewer/src/main/resources",
         "@maven//:gg_jte_jte_spring_boot_starter_4",
         "@maven//:io_github_wimdeblauwe_htmx_spring_boot",
@@ -60,7 +60,6 @@ java_library(
         "@maven//:org_webjars_webjars_locator_lite",
     ],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/legaltext",
         "//viewer/src/main/jte",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_slf4j_slf4j_api",

@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
-import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
 import gg.jte.Content;
 import java.util.ArrayList;
 import java.util.HashMap;

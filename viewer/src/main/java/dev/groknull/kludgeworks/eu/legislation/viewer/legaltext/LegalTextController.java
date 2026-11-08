@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.content.web;
+package dev.groknull.kludgeworks.eu.legislation.viewer.legaltext;
 
-import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import gg.jte.output.WriterOutput;
@@ -21,11 +20,11 @@ import org.springframework.web.server.ResponseStatusException;
  * it is asked for. The folds of a comparison load some units of a text, by eId, when they open.
  */
 @Controller
-class ContentController {
+class LegalTextController {
   private final Content content;
   private final LegalRenderer html;
 
-  ContentController(Content content, LegalRenderer html) {
+  LegalTextController(Content content, LegalRenderer html) {
     this.content = content;
     this.html = html;
   }

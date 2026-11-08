@@ -31,7 +31,7 @@ import org.junit.jupiter.api.Test;
  */
 class CodingRulesTests {
 
-  /** The application's own code: its modules and the library beside them. */
+  /** The application's own code: its root package and its modules. */
   private static JavaClasses classes;
 
   @BeforeAll
@@ -39,7 +39,7 @@ class CodingRulesTests {
     classes =
         new ClassFileImporter()
             .withImportOption(new ProductionClasses())
-            .importPackages(SlicedOnion.APPLICATION);
+            .importPackages(ViewerApplication.class.getPackageName());
   }
 
   @Test

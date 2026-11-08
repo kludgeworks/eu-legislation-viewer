@@ -18,16 +18,18 @@ import org.springframework.modulith.core.ApplicationModules;
  *   <li>jMolecules, which is on the classpath, so Spring Modulith runs its rules too: in every
  *       module, the domain ring depends on nothing outward, the application ring only on the
  *       domain, and only infrastructure uses infrastructure.
- *   <li>Two rules of our own that neither has, in {@link SlicedOnion}: every package of a module
- *       says which ring it is in, and a library beside the modules uses a module only through its
- *       API.
+ *   <li>A rule of our own that neither has, in {@link SlicedOnion}: every package of a module says
+ *       which ring it is in.
  * </ul>
  */
 class ModularityTests {
 
   private static ApplicationModules modules;
 
-  /** The application's own code, with the library beside the modules, which modules leaves out. */
+  /**
+   * The application's own code, imported by ArchUnit, for the rule of our own. An ArchUnit rule
+   * checks a set of classes that ArchUnit imported, which {@code modules} does not give out.
+   */
   private static JavaClasses classes;
 
   @BeforeAll
@@ -36,7 +38,7 @@ class ModularityTests {
     classes =
         new ClassFileImporter()
             .withImportOption(new ProductionClasses())
-            .importPackages(SlicedOnion.APPLICATION);
+            .importPackages(ViewerApplication.class.getPackageName());
   }
 
   @Test
@@ -48,10 +50,5 @@ class ModularityTests {
   @Test
   void packagesDeclareARing() {
     SlicedOnion.packagesDeclareARing(modules).check(classes);
-  }
-
-  @Test
-  void librariesUseOnlyTheModulesApis() {
-    SlicedOnion.librariesUseOnlyModulesApis(modules).check(classes);
   }
 }

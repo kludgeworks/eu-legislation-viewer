@@ -1,5 +1,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
 <div class="correction-old">${html.children(node)}</div>

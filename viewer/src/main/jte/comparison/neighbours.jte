@@ -1,5 +1,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.NeighbourView
-@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @import java.util.List
 @param List<NeighbourView> rows
 @param LegalRenderer html

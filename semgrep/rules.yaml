@@ -104,13 +104,13 @@ rules:
   # All jte templates compile into one generated package, so the Java rules of the modules can't see
   # which module a template belongs to. The folder of a template says it: jte/catalogue/ is the
   # catalogue's, jte/comparison/ the comparison's, jte/layout/ the chrome module's, and jte/legal/
-  # and jte/legalpart/ the legaltext library's. A module's API (its root package) and the library are
-  # open to every template.
+  # and jte/legalpart/ the legaltext module's. A module's API (its root package) is open to every
+  # template.
   - id: jte-catalogue-uses-only-its-module
     languages:
       - regex
     severity: ERROR
-    message: "A catalogue template uses another module's internals. A template in jte/catalogue/ belongs to the catalogue: it may use the catalogue's packages, any module's API (its root package) and the legaltext library, but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the catalogue needs in its API."
+    message: "A catalogue template uses another module's internals. A template in jte/catalogue/ belongs to the catalogue: it may use the catalogue's packages, any module's API (its root package), but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the catalogue needs in its API."
     metadata:
       category: architecture
     paths:
@@ -122,7 +122,7 @@ rules:
     languages:
       - regex
     severity: ERROR
-    message: "A comparison template uses another module's internals. A template in jte/comparison/ belongs to the comparison: it may use the comparison's packages, any module's API (its root package) and the legaltext library, but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the comparison needs in its API."
+    message: "A comparison template uses another module's internals. A template in jte/comparison/ belongs to the comparison: it may use the comparison's packages, any module's API (its root package), but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the comparison needs in its API."
     metadata:
       category: architecture
     paths:
@@ -134,7 +134,7 @@ rules:
     languages:
       - regex
     severity: ERROR
-    message: "A layout template uses another module's internals. A template in jte/layout/ belongs to the chrome module: it may use the chrome's packages, any module's API (its root package) and the legaltext library, but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the layout needs in its API."
+    message: "A layout template uses another module's internals. A template in jte/layout/ belongs to the chrome module: it may use the chrome's packages, any module's API (its root package), but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the layout needs in its API."
     metadata:
       category: architecture
     paths:
@@ -142,24 +142,24 @@ rules:
         - "viewer/src/main/jte/layout/**/*.jte"
     pattern-regex: '\bdev\.groknull\.kludgeworks\.eu\.legislation\.viewer\.(?!chrome\.)[a-z]\w*\.[a-z]\w*'
 
-  - id: jte-library-uses-only-module-apis
+  - id: jte-legaltext-uses-only-its-module
     languages:
       - regex
     severity: ERROR
-    message: "A library's template uses a module's internals. The templates in jte/legal/ and jte/legalpart/ belong to the legaltext library, which every module's pages use: they may use a module's API (its root package), but no module's sub-packages."
+    message: "A legal-text template uses another module's internals. A template in jte/legal/ or jte/legalpart/ belongs to the legaltext module: it may use the legaltext's packages and any module's API (its root package), but no other module's sub-packages. Move the template to the module that owns the type, or have that module publish what the legal text needs in its API."
     metadata:
       category: architecture
     paths:
       include:
         - "viewer/src/main/jte/legal/**/*.jte"
         - "viewer/src/main/jte/legalpart/**/*.jte"
-    pattern-regex: '\bdev\.groknull\.kludgeworks\.eu\.legislation\.viewer\.[a-z]\w*\.[a-z]\w*'
+    pattern-regex: '\bdev\.groknull\.kludgeworks\.eu\.legislation\.viewer\.(?!legaltext\.)[a-z]\w*\.[a-z]\w*'
 
   - id: jte-folder-has-an-owner
     languages:
       - regex
     severity: ERROR
-    message: "This template is in a folder that no rule names, so nothing checks which module's types it uses. Put it in its module's or its library's folder, or add the new folder to the jte rules in semgrep/rules.yaml."
+    message: "This template is in a folder that no rule names, so nothing checks which module's types it uses. Put it in its module's folder, or add the new folder to the jte rules in semgrep/rules.yaml."
     metadata:
       category: architecture
     paths:

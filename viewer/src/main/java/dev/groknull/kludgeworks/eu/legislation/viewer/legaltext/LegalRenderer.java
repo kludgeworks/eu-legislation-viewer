@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.legaltext;
+package dev.groknull.kludgeworks.eu.legislation.viewer.legaltext;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import gg.jte.Content;

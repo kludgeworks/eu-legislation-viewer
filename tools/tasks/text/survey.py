@@ -34,7 +34,9 @@ from playwright.sync_api import sync_playwright
 ROOT = compare.ROOT
 OUT = compare.OUT / "survey"
 CONVERT = "//formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:convert_texts"
-RENDER = "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/legaltext:render_texts"
+RENDER = (
+    "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext:render_texts"
+)
 CSS = ROOT / "viewer/src/main/resources/static/css/viewer.css"
 LARGEST = 4 * 1024 * 1024  # bytes of Formex: past this, a text takes minutes to compare
 SCHEMA = re.compile(rb"formex-(\d\d\.\d\d)")

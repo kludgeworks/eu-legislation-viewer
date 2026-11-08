@@ -2,7 +2,7 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @param Sibling unit
 @param Element element
 @param SidenoteView.History history = null

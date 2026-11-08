@@ -2,7 +2,7 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView
-@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @import java.util.List
 @import java.util.Map
 @param ChangesView changes
