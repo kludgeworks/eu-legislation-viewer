@@ -1,31 +1,38 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act.Unconsolidated;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provision;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/** The wording that the pages use for dates, acts and provisions. The wording is in English. */
+/**
+ * The wording that the catalogue's pages use for versions, lags and periods. The wording is in
+ * English. A date is in words as every page writes it, {@link Dates}. How an act is cited with its
+ * publication is the act's, {@link Act#citation}.
+ */
 public final class Wording {
-  private static final DateTimeFormatter DATE =
-      DateTimeFormatter.ofPattern("d MMMM uuuu", Locale.ENGLISH);
-
   /**
-   * Matches the CELEX of a corrigendum. This is the CELEX of the act, then R and the number of the
-   * corrigendum in parentheses. For example, 32019R0103R(01).
+   * Finds where the date in a title ends. Group 1 is the title up to its date, for example "…
+   * 2015/1998 of 5 November 2015". Group 2 is the rest of the title. The spaces can be any
+   * horizontal space ({@code \\h}), because the titles in Cellar have no-break spaces in dates. For
+   * example, 18&nbsp;June 2012.
    */
-  private static final Pattern CORRIGENDUM = Pattern.compile("(.+)R\\((\\d+)\\)");
+  public static final Pattern DATED =
+      Pattern.compile("(.+?\\hof\\h\\d{1,2}\\h\\p{Lu}\\p{Ll}+\\h\\d{4})\\h+(.+)");
 
   private Wording() {}
 
@@ -49,32 +56,6 @@ public final class Wording {
     };
   }
 
-  /** Returns the date in words. For example, "1 June 2017". */
-  public static String date(LocalDate date) {
-    return DATE.format(date);
-  }
-
-  /**
-   * Returns how the pages cite an act.
-   *
-   * <ul>
-   *   <li>An act is cited by its number, as the Official Journal cites it. For example, 2017/815.
-   *   <li>A corrigendum is cited by its number and the act. For example, "corrigendum 1 to
-   *       2019/103".
-   *   <li>Anything else is cited by its CELEX.
-   * </ul>
-   */
-  public static String act(ActIdentifier act) {
-    var corrigendum = CORRIGENDUM.matcher(act.celex());
-    if (corrigendum.matches()) {
-      return "corrigendum "
-          + Integer.parseInt(corrigendum.group(2))
-          + " to "
-          + act(new ActIdentifier(corrigendum.group(1)));
-    }
-    return act.number().orElseGet(act::celex);
-  }
-
   /**
    * Returns what made a version.
    *
@@ -90,7 +71,7 @@ public final class Wording {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return "the act as published";
     }
-    var acts = version.integrates().stream().filter(act -> !corrigendum(act)).toList();
+    var acts = version.integrates().stream().filter(act -> !act.corrigendum()).toList();
     var corrigenda = version.integrates().size() - acts.size();
     if (acts.isEmpty()) {
       return corrigenda == 0
@@ -104,34 +85,6 @@ public final class Wording {
           default -> " · also " + corrigenda + " corrigenda";
         };
     return "made by " + names(acts) + also;
-  }
-
-  /**
-   * Returns how {@code each} was published, as its hover says it. {@code each} is an act that
-   * {@code act} integrates, or {@code act} itself. For example, "2026/449: Commission Implementing
-   * Regulation (EU) 2026/449 of 27 February 2026 amending … · OJ L, 2026/449, 2.3.2026". If the act
-   * has no title in {@code language}, the title is in English. If the Publications Office has
-   * nothing, returns only the name of the act.
-   */
-  public static String published(Act act, ActIdentifier each, Language language) {
-    var name = act(each);
-    return act.publication(each)
-        .map(
-            publication -> {
-              var title = publication.title(language).or(() -> publication.title(Language.ENG));
-              var journal = publication.journal();
-              return name
-                  + title.map(t -> ": " + t).orElse("")
-                  + (journal == null ? "" : " · " + journal.reference());
-            })
-        .orElse(name);
-  }
-
-  /** Returns the publications of {@code acts}, one line for each act, as a hover lists them. */
-  public static String published(Act act, List<ActIdentifier> acts, Language language) {
-    return acts.stream()
-        .map(each -> published(act, each, language))
-        .collect(Collectors.joining("\n"));
   }
 
   /**
@@ -179,12 +132,7 @@ public final class Wording {
   }
 
   private static String names(List<ActIdentifier> acts) {
-    return acts.stream().map(Wording::act).collect(Collectors.joining(", "));
-  }
-
-  /** Returns whether {@code act} is a corrigendum. For example, 32019R0103R(01) is one. */
-  public static boolean corrigendum(ActIdentifier act) {
-    return CORRIGENDUM.matcher(act.celex()).matches();
+    return acts.stream().map(ActIdentifier::cited).collect(Collectors.joining(", "));
   }
 
   /**
@@ -193,16 +141,16 @@ public final class Wording {
    * until 7 June 2017."
    */
   public static String lagOn(Unconsolidated lag) {
-    var act = act(lag.act());
+    var act = lag.act().cited();
     var provisions = lag.appliesFrom().clause().provisions();
-    var where = provisions.isEmpty() ? "" : ", " + provision(provisions.getFirst()) + " of " + act;
+    var where = provisions.isEmpty() ? "" : ", " + provisions.getFirst().cited() + " of " + act;
     return "On this date, "
         + act
         + " already applied (from "
-        + date(lag.from())
+        + Dates.inWords(lag.from())
         + where
         + "). No consolidated version includes it until "
-        + date(lag.includedIn().date())
+        + Dates.inWords(lag.includedIn().date())
         + ".";
   }
 
@@ -213,11 +161,11 @@ public final class Wording {
    */
   public static String lagOf(Unconsolidated lag) {
     return "From "
-        + date(lag.from())
+        + Dates.inWords(lag.from())
         + " this text lags the law: "
-        + act(lag.act())
+        + lag.act().cited()
         + " already applied, and no version includes it until "
-        + date(lag.includedIn().date())
+        + Dates.inWords(lag.includedIn().date())
         + ".";
   }
 
@@ -229,20 +177,101 @@ public final class Wording {
   public static String mayLag(Act.Uncertain uncertain) {
     var provisions = uncertain.clause().provisions();
     return "This text may lag the law: "
-        + act(uncertain.act())
+        + uncertain.act().cited()
         + ", in force from "
-        + date(uncertain.inForce())
+        + Dates.inWords(uncertain.inForce())
         + ", applies from a date "
-        + (provisions.isEmpty() ? "it sets" : "its " + provision(provisions.getFirst()) + " sets")
+        + (provisions.isEmpty() ? "it sets" : "its " + provisions.getFirst().cited() + " sets")
         + ", and no version includes it until "
-        + date(uncertain.includedIn().date())
+        + Dates.inWords(uncertain.includedIn().date())
         + ".";
   }
 
-  /** Returns the name of a provision. For example, "Article 2", "Annex" or "Annex II". */
-  public static String provision(Provision provision) {
-    var type = provision.type().name();
-    var name = type.charAt(0) + type.substring(1).toLowerCase(Locale.ROOT);
-    return provision.number() == null ? name : name + " " + provision.number();
+  /**
+   * Returns the day on which the act as published first applied, when that is after it entered into
+   * force. {@code version} is the act as published. The day is the earliest date of application or
+   * taking effect after the date of the version. Returns empty for a later version, or for an act
+   * that applied when it entered into force.
+   */
+  public static Optional<LocalDate> applies(Act act, Version version) {
+    if (version.kind() != Version.Kind.ORIGINAL) {
+      return Optional.empty();
+    }
+    return act.dates().stream()
+        .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE)
+        .map(ActDate::date)
+        .filter(Objects::nonNull)
+        .filter(day -> day.isAfter(version.date()))
+        .min(Comparator.naturalOrder());
+  }
+
+  /**
+   * Returns the period of the version, with its label. For example:
+   *
+   * <ul>
+   *   <li>"Applied 15 March 2021 to 30 December 2021"
+   *   <li>"Applies from 22 March 2026 · current version · may still be revised"
+   *   <li>For the act as published, the period starts at its entry into force: "In force from 15
+   *       November 2015 · applied 1 February 2016 to 28 February 2016".
+   * </ul>
+   */
+  public static String period(Act act, Version version, LocalDate today) {
+    var next = act.timeline().successor(version);
+    var applies = applies(act, version);
+    if (applies.isPresent()) {
+      // The act as published was in force before it applied.
+      var from = applies.get();
+      var partial =
+          act.dates().stream().filter(date -> from.equals(date.date())).allMatch(ActDate::partial);
+      var inPart = partial ? " in part" : "";
+      var period =
+          "In force from "
+              + Dates.inWords(version.date())
+              + " · "
+              + next.map(
+                      after -> {
+                        var last = after.date().minusDays(1);
+                        return (last.isBefore(today) ? "applied" : "applies")
+                            + inPart
+                            + " "
+                            + Dates.inWords(from)
+                            + " to "
+                            + Dates.inWords(last);
+                      })
+                  .orElseGet(() -> "applies" + inPart + " from " + Dates.inWords(from));
+      return label(act, version, today, period);
+    }
+    var period =
+        next.map(
+                after -> {
+                  var last = after.date().minusDays(1);
+                  return (last.isBefore(today) ? "Applied " : "Applies ")
+                      + Dates.inWords(version.date())
+                      + " to "
+                      + Dates.inWords(last);
+                })
+            .orElseGet(() -> "Applies from " + Dates.inWords(version.date()));
+    return label(act, version, today, period);
+  }
+
+  /**
+   * Returns the period with its labels.
+   *
+   * <ul>
+   *   <li>"current version" is the version that applies today.
+   *   <li>"next version" is the version after the current one, if its date is after today.
+   *   <li>"may still be revised" is an interim version.
+   * </ul>
+   */
+  private static String label(Act act, Version version, LocalDate today, String period) {
+    var current = act.versionOn(today);
+    var labelled = period;
+    if (current.filter(version::equals).isPresent()) {
+      labelled += " · current version";
+    } else if (version.date().isAfter(today)
+        && current.flatMap(act.timeline()::successor).filter(version::equals).isPresent()) {
+      labelled += " · next version";
+    }
+    return version.interim() ? labelled + " · may still be revised" : labelled;
   }
 }

@@ -1,5 +1,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
 <figcaption>${html.children(node)}</figcaption>

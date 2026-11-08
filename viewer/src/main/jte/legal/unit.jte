@@ -1,5 +1,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
 <%-- Shows a unit. A unit with a title (rank) shows the title as a heading. A numbered unit with a

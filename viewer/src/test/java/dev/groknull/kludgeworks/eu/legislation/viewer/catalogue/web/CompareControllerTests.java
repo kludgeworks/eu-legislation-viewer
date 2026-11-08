@@ -7,11 +7,7 @@ import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer;
 import jakarta.servlet.http.Cookie;
 import java.io.UnsupportedEncodingException;
 import java.time.Clock;
@@ -34,11 +30,11 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * Tests the controller of the comparison page alone, with {@code @WebMvcTest} and the modules
+ * Tests the controller of the compare page alone, with {@code @WebMvcTest} and the catalogue
  * mocked. The tests check where its addresses lead and what it refuses. The act is the act of
  * {@link OneActCellar}, with nothing of it prepared yet. The tests also check the way back to the
- * last search in the site bar. {@code ComparePagesTests} tests the comparisons as the whole app
- * works them out.
+ * last search in the site bar. {@code ComparePagesTests} tests the page as the whole app works it
+ * out. The comparison's parts of the page are the comparison module's, and its tests test them.
  */
 @WebMvcTest(CompareController.class)
 @Import({ControllerTesting.class, CompareControllerTests.OnTheSixthOfNovember2026.class})
@@ -49,10 +45,6 @@ class CompareControllerTests {
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
   @MockitoBean Texts texts;
-  @MockitoBean Comparisons comparisons;
-  @MockitoBean StepCounts stepCounts;
-  @MockitoBean Content content;
-  @MockitoBean LegalRenderer html;
 
   @BeforeEach
   void act() {
@@ -104,9 +96,11 @@ class CompareControllerTests {
   }
 
   @Test
-  void showsNoViewThereIsnt() {
-    assertThat(mvc.get().uri(PAGE + "&view=sideways").accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
+  void keepsTheViewItIsAskedForWhenItGoesToTheCanonicalAddress() {
+    assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-04-01&to=2026-10-01&view=whole"))
+        .hasStatus(HttpStatus.SEE_OTHER)
+        .headers()
+        .hasValue(HttpHeaders.LOCATION, PAGE + "&view=whole");
   }
 
   @Test

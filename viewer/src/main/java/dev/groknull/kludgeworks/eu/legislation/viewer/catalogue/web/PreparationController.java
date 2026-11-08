@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.broadcast.Broadcast;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;

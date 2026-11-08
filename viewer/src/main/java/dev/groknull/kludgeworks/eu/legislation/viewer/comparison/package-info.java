@@ -1,26 +1,27 @@
 // SPDX-License-Identifier: MIT
 /**
- * Comparisons tell how the texts of two versions differ, provision by provision.
+ * Comparisons tell how the texts of two versions differ, provision by provision. The module also
+ * owns the comparison page, which shows them.
  *
- * <p>Texts are known by their roots in the content module. This module uses no other module. Thus a
- * comparison is of two texts, whatever acts and versions they are. The catalogue decides which
- * versions to compare and which acts made a difference. The catalogue shows the Changes view on the
- * page of an act.
+ * <p>Texts are known by their roots in the content module, so a comparison is of two texts,
+ * whatever acts and versions they are. The page knows the acts and versions from the catalogue's
+ * API: which versions to compare and which acts made a difference. When the catalogue tells that
+ * the texts of two neighbouring versions are built, the module works out their comparison before a
+ * reader asks for it.
  *
  * <p>The module is a sliced onion:
  *
  * <ul>
  *   <li>The root package is the API of the module and part of its domain ring. It holds {@link
- *       Comparisons}, a {@link Comparison} with its differences, and {@link ComparisonWanted}. The
- *       {@code model} package holds the rules that find the differences.
+ *       Comparisons} and a {@link Comparison} with its differences. The {@code model} package holds
+ *       the rules that find the differences.
  *   <li>The {@code application} package is the application ring. It compares two stored texts and
  *       keeps the comparison.
- *   <li>The infrastructure keeps the comparisons in Postgres. It also holds what the Changes view
- *       of a comparison shows, in {@code web.view}. That package is a named interface of its own,
- *       for the page of the catalogue.
+ *   <li>The infrastructure keeps the comparisons in Postgres. It also serves the comparison page,
+ *       in {@code web}, with what the page shows worked out in {@code web.view}.
  * </ul>
  */
-@ApplicationModule(displayName = "Comparison", allowedDependencies = "content")
+@ApplicationModule(displayName = "Comparison")
 @DomainRing
 @NullMarked
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;

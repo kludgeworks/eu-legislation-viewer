@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation.Step;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChanged;
@@ -11,7 +12,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparisonWanted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionDeferred;
@@ -48,9 +48,9 @@ import org.springframework.transaction.annotation.Transactional;
  *       or was lost.
  *   <li>To try an act again queues its failed texts again, where that may help. It also starts the
  *       preparation again.
- *   <li>When a text is built, it asks for its comparison with the version before and with the
- *       version after, if their texts in the language are built too. It publishes a {@link
- *       ComparisonWanted} event for each, so the comparison is ready before a reader asks.
+ *   <li>When a text is built, and the text of the version before or after it in the language is
+ *       built too, it publishes a {@link NeighboursBuilt} event for each such pair. A reader will
+ *       probably compare them, so another module can get ready before the reader asks.
  * </ul>
  */
 @Service
@@ -285,12 +285,12 @@ class TextService implements Texts {
         .get()
         .predecessor(version)
         .flatMap(before -> expressions.root(before.celex(), built.language()))
-        .ifPresent(before -> want(before, built.root()));
+        .ifPresent(before -> neighbours(before, built.root()));
     timeline
         .get()
         .successor(version)
         .flatMap(after -> expressions.root(after.celex(), built.language()))
-        .ifPresent(after -> want(built.root(), after));
+        .ifPresent(after -> neighbours(built.root(), after));
   }
 
   /**
@@ -311,9 +311,10 @@ class TextService implements Texts {
     events.publishEvent(new PreparationChanged(act.id(), language));
   }
 
-  private void want(ContentHash from, ContentHash to) {
-    LOG.debug("Comparison of {} with {} wanted", from, to);
-    events.publishEvent(new ComparisonWanted(from, to));
+  /** Tells that {@code earlier} and {@code later}, texts of neighbouring versions, are built. */
+  private void neighbours(ContentHash earlier, ContentHash later) {
+    LOG.debug("Neighbouring texts {} and {} are built", earlier, later);
+    events.publishEvent(new NeighboursBuilt(earlier, later));
   }
 
   private static List<Version> versions(Act act, Language language) {

@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -68,6 +69,15 @@ public record Version(
       @Nullable Instant formexModified) {
     return new Version(
         Kind.ORIGINAL, date, act.celex(), false, List.of(), languages, formexModified);
+  }
+
+  /**
+   * Returns the address of the version's text on EUR-Lex, by its {@code celex}, in {@code
+   * language}. For a consolidated version, it is the consolidated text. For example, {@code
+   * https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02015R1998-20260322}.
+   */
+  public URI eurLex(Language language) {
+    return EurLex.byCelex(celex, language);
   }
 
   /** Returns whether this version applies only after {@code today}. */

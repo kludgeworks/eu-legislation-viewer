@@ -3,16 +3,18 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
-import java.util.Set;
+import java.util.SequencedSet;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
@@ -89,11 +91,50 @@ public record Act(
   }
 
   /**
-   * Returns the acts that the versions after {@code from}, up to and including {@code to},
-   * integrate.
+   * Returns how {@code each} is cited with its publication: its number, its title and its Official
+   * Journal reference. {@code each} is this act or an act that its versions integrate. For example,
+   * "2026/449: Commission Implementing Regulation (EU) 2026/449 of 27 February 2026 amending … · OJ
+   * L, 2026/449, 2.3.2026". If the act has no title in {@code language}, the title is in English.
+   * If Cellar says nothing of its publication, returns only how it is cited, {@link
+   * ActIdentifier#cited}.
    */
-  public Set<ActIdentifier> integratedBetween(Version from, Version to) {
-    var between = new HashSet<ActIdentifier>();
+  public String citation(ActIdentifier each, Language language) {
+    var name = each.cited();
+    return publication(each)
+        .map(
+            publication -> {
+              var title = publication.title(language).or(() -> publication.title(Language.ENG));
+              var journal = publication.journal();
+              return name
+                  + title.map(t -> ": " + t).orElse("")
+                  + (journal == null ? "" : " · " + journal.reference());
+            })
+        .orElse(name);
+  }
+
+  /** Returns the {@link #citation} of each of {@code acts}, one line for each act. */
+  public String citations(List<ActIdentifier> acts, Language language) {
+    return acts.stream().map(each -> citation(each, language)).collect(Collectors.joining("\n"));
+  }
+
+  /**
+   * Returns the address on EUR-Lex of {@code each}, in {@code language}. {@code each} is this act
+   * or an act that its versions integrate. The address uses the ELI of {@code each} if Cellar has
+   * one. If not, it uses its CELEX.
+   */
+  public URI eurLex(ActIdentifier each, Language language) {
+    return publication(each)
+        .map(Publication::eli)
+        .map(eli -> eli.eurLex(language))
+        .orElseGet(() -> each.eurLex(language));
+  }
+
+  /**
+   * Returns the acts that the versions after {@code from}, up to and including {@code to},
+   * integrate, in the order of the versions. The acts include their corrigenda.
+   */
+  public SequencedSet<ActIdentifier> integratedBetween(Version from, Version to) {
+    var between = new LinkedHashSet<ActIdentifier>();
     for (var version : timeline.versions()) {
       if (version.date().isAfter(from.date()) && !version.date().isAfter(to.date())) {
         between.addAll(version.integrates());

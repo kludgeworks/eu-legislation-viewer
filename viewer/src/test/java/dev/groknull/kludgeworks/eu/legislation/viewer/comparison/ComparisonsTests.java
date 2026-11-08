@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
@@ -45,12 +46,12 @@ class ComparisonsTests {
   }
 
   @Test
-  void worksOutAComparisonWantedAheadOfAReader() {
+  void worksOutTheComparisonOfNeighboursBuiltAheadOfAReader() {
     var january = content.store(LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
     var march = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
 
     transaction.executeWithoutResult(
-        status -> events.publishEvent(new ComparisonWanted(january, march)));
+        status -> events.publishEvent(new NeighboursBuilt(january, march)));
 
     await().atMost(Duration.ofMinutes(1)).until(() -> kept(january, march) == 1);
   }

@@ -128,16 +128,16 @@ public record MastheadView(
     var titled = act.title(language).isPresent() ? language : Language.ENG;
     var full = act.title(titled).orElseGet(act.id()::celex);
     // Split English titles only, for now. The titles in other languages have their own patterns.
-    var dated = HomeView.DATED.matcher(full);
+    var dated = Wording.DATED.matcher(full);
     var split = titled == Language.ENG && dated.matches();
     return new MastheadView(
         split ? dated.group(1) : full,
         split ? dated.group(2) : null,
         act.title(titled).isPresent() ? titled.iso() : null,
         "eli/" + eli.path() + "/oj",
-        Links.eurLex(eli),
+        eli.eurLex().toString(),
         act.id().celex(),
-        Links.eurLex(act.id().celex(), language),
+        act.id().eurLex(language).toString(),
         language.endonym(),
         Language.inProtocolOrder().stream()
             .map(

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -78,7 +79,7 @@ public record PreparingView(
         Progress.of(preparation, now),
         steps(preparation),
         known(act),
-        Links.eurLex(act.id().celex(), preparation.language()));
+        act.id().eurLex(preparation.language()).toString());
   }
 
   /**
@@ -118,7 +119,7 @@ public record PreparingView(
   private static List<Fact> known(Act act) {
     var known = new ArrayList<Fact>();
     if (act.dateOfDocument() != null) {
-      known.add(new Fact("Adopted", Wording.date(act.dateOfDocument())));
+      known.add(new Fact("Adopted", Dates.inWords(act.dateOfDocument())));
     }
     var own = act.datesOf(act.id());
     for (var kind : ActDate.Kind.values()) {
@@ -140,21 +141,19 @@ public record PreparingView(
     }
     var amending = new LinkedHashSet<ActIdentifier>();
     for (var version : act.timeline().versions()) {
-      version.integrates().stream()
-          .filter(each -> !Wording.corrigendum(each))
-          .forEach(amending::add);
+      version.integrates().stream().filter(each -> !each.corrigendum()).forEach(amending::add);
     }
     if (!amending.isEmpty()) {
       known.add(
           new Fact(
               "Amended by",
               amending.size() == 1
-                  ? Wording.act(amending.getFirst())
+                  ? amending.getFirst().cited()
                   : amending.size()
                       + " acts, "
-                      + Wording.act(amending.getFirst())
+                      + amending.getFirst().cited()
                       + " to "
-                      + Wording.act(amending.getLast())));
+                      + amending.getLast().cited()));
     }
     return known;
   }
@@ -170,9 +169,11 @@ public record PreparingView(
    */
   private static String date(ActDate date) {
     var clause = date.clause();
-    var when = date.date() != null ? "from " + Wording.date(date.date()) : relative(clause);
+    var when = date.date() != null ? "from " + Dates.inWords(date.date()) : relative(clause);
     var where =
-        clause.provisions().stream().map(Wording::provision).collect(Collectors.joining(", "));
+        clause.provisions().stream()
+            .map(ActDate.Provision::cited)
+            .collect(Collectors.joining(", "));
     return (date.partial() ? "in part " : "") + when + (where.isEmpty() ? "" : ", " + where);
   }
 

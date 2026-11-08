@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome
 @param Chrome chrome
 @param String title
 @param gg.jte.Content content

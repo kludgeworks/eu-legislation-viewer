@@ -33,6 +33,15 @@ class ActIdentifierTest {
   }
 
   @Test
+  void isCitedByItsNumberAndACorrigendumByTheActsToo() {
+    assertThat(new ActIdentifier("32017R0815").cited()).isEqualTo("2017/815");
+    assertThat(new ActIdentifier("32019R0103R(01)").cited()).isEqualTo("corrigendum 1 to 2019/103");
+    assertThat(new ActIdentifier("12003T/ACT").cited()).isEqualTo("12003T/ACT");
+    assertThat(new ActIdentifier("32019R0103R(01)").corrigendum()).isTrue();
+    assertThat(new ActIdentifier("32019R0103").corrigendum()).isFalse();
+  }
+
+  @Test
   void refusesWhatCantBeOne() {
     assertThat(ActIdentifier.isCelex("")).isFalse();
     assertThat(ActIdentifier.isCelex("32015R1998 x")).isFalse();

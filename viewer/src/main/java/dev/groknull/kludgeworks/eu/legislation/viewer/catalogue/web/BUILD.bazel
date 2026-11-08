@@ -1,20 +1,18 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
-# The catalogue module's web side: a version's page and a comparison's, their text and changes by htmx
+# The catalogue module's web side: the home page, and a version's page, its text by htmx
 java_library(
     name = "web",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/chrome",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/comparepage",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/broadcast",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web/view",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web/view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",

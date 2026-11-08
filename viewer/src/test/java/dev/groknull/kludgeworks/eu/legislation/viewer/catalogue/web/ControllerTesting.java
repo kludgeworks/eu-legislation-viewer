@@ -15,12 +15,13 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 
 /**
- * Gives a controller test with {@code @WebMvcTest} what it needs beside the controller and its
- * mocked modules. That is the templates of the pages, as the app has them. In the app, {@code
- * PagesConfiguration} gives them, but the test slice leaves it out.
+ * Gives a controller test of an act's pages, with {@code @WebMvcTest}, what it needs beside the
+ * controller and its mocked modules. That is the templates of the pages, as the app has them. In
+ * the app, {@code PagesConfiguration} gives them, but the test slice leaves it out. The tests of
+ * the catalogue's pages use it.
  */
 @TestConfiguration(proxyBeanMethods = false)
-class ControllerTesting {
+public class ControllerTesting {
   @Bean
   Templates templates() {
     return new StaticTemplates();
@@ -30,7 +31,7 @@ class ControllerTesting {
    * The act of {@link OneActCellar} while it is prepared in {@code language}. None of its texts is
    * built yet.
    */
-  static Preparation preparing(Language language) {
+  public static Preparation preparing(Language language) {
     var texts = new LinkedHashMap<Version, Text>();
     OneActCellar.ACT
         .timeline()

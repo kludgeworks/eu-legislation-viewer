@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Locale;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
@@ -82,6 +83,12 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clau
     public enum Type {
       ARTICLE,
       ANNEX
+    }
+
+    /** Returns how the act cites the provision. For example, "Article 2", "Annex" or "Annex II". */
+    public String cited() {
+      var name = type.name().charAt(0) + type.name().substring(1).toLowerCase(Locale.ROOT);
+      return number == null ? name : name + " " + number;
     }
 
     /**

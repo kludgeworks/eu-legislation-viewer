@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView

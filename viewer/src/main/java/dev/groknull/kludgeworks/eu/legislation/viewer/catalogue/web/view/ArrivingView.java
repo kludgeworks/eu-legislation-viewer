@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import java.util.Optional;
@@ -45,6 +46,6 @@ public record ArrivingView(String notice) {
    * "02015R1998-20261201, applies from 1 December 2026".
    */
   private static String version(Version version) {
-    return version.celex() + ", applies from " + Wording.date(version.date());
+    return version.celex() + ", applies from " + Dates.inWords(version.date());
   }
 }

@@ -1,0 +1,45 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_test_suite")
+
+# The legal text's templates on the converter's samples: one each, and running text as it reads
+java_test_suite(
+    name = "legaltext",
+    size = "small",
+    srcs = glob(["*Test.java"]),
+    data = ["//formex-converter:legal-text.xsd"],
+    jvm_flags = ["-Dlegal-text.xsd=$(rootpath //formex-converter:legal-text.xsd)"],
+    runner = "junit5",
+    runtime_deps = [
+        "//viewer/src/main/jte",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/legaltext",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
+        "@maven//:gg_jte_jte_runtime",
+        "@maven//:net_sf_saxon_Saxon_HE",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jsoup_jsoup",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+    ],
+)
+
+# Renders a folder of legal texts as the viewer shows them, a page each (mise run text:survey)
+java_binary(
+    name = "render_texts",
+    testonly = True,
+    srcs = ["RenderTexts.java"],
+    main_class = "dev.groknull.kludgeworks.eu.legislation.legaltext.RenderTexts",
+    runtime_deps = ["//viewer/src/main/jte"],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/legaltext",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
+        "@maven//:gg_jte_jte_runtime",
+    ],
+)

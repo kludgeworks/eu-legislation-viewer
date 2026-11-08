@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.net.URI;
 import java.util.Optional;
 import org.jmolecules.ddd.annotation.ValueObject;
 
@@ -59,6 +61,22 @@ public record Eli(String path) {
     } catch (IllegalArgumentException e) {
       return Optional.empty();
     }
+  }
+
+  /**
+   * Returns the address of the act's original text on EUR-Lex. EUR-Lex chooses the language. For
+   * example, {@code https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj}.
+   */
+  public URI eurLex() {
+    return EurLex.byEli(this, null);
+  }
+
+  /**
+   * Returns the address of the act's original text on EUR-Lex, in {@code language}. For example,
+   * {@code https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj/eng}.
+   */
+  public URI eurLex(Language language) {
+    return EurLex.byEli(this, language);
   }
 
   @Override

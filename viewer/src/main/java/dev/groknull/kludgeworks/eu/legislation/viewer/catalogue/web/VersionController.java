@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
+import dev.groknull.kludgeworks.eu.legislation.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
@@ -9,7 +12,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
@@ -17,7 +19,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Masthea
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Wording;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
@@ -156,7 +157,7 @@ class VersionController {
               PreparingView.of(
                   page.act,
                   preparation,
-                  "You asked for the version that applies on " + Wording.date(date),
+                  "You asked for the version that applies on " + Dates.inWords(date),
                   request.getRequestURI(),
                   clock.instant()))
           .render();

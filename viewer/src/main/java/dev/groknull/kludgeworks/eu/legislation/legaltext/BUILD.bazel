@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+
+# A library outside the viewer's modules: legal texts as HTML, with the templates of
+# src/main/jte/legal, for every page that shows legal text
+java_library(
+    name = "legaltext",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:gg_jte_jte_runtime",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+    ],
+)

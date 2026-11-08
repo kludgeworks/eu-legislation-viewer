@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_test_suite")
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library", "java_test_suite")
 
 # A version's page as a browser loads it, its text built while it polls; Postgres in a container, so
 # it needs Docker
@@ -37,7 +37,9 @@ java_junit5_test(
     ],
 )
 
-# it needs Docker
+# The compare page as a browser loads it, its texts built while it shows their preparation, and
+# the addresses its slots load the comparison's parts from; Postgres in a container, so it needs
+# Docker
 java_junit5_test(
     name = "ComparePagesTests",
     size = "medium",
@@ -77,7 +79,7 @@ java_junit5_test(
 java_test_suite(
     name = "controllers",
     size = "small",
-    srcs = ["ControllerTesting.java"] + glob(["*ControllerTests.java"]),
+    srcs = glob(["*ControllerTests.java"]),
     data = ["@maven//:org_mockito_mockito_core"],
     # Mockito as an agent, as its documentation asks: the JDK will stop it attaching itself
     jvm_flags = ["-javaagent:$(rootpath @maven//:org_mockito_mockito_core)"],
@@ -90,11 +92,10 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        ":controller-testing",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
@@ -110,5 +111,22 @@ java_test_suite(
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_test",
         "@maven//:org_springframework_spring_web",
+    ],
+)
+
+# The templates of the pages, for a controller test of an act's pages (@WebMvcTest), and the act of
+# OneActCellar while it is prepared
+java_library(
+    name = "controller-testing",
+    testonly = True,
+    srcs = ["ControllerTesting.java"],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/web",  # its package's @NullMarked
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/jte",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_context",
     ],
 )

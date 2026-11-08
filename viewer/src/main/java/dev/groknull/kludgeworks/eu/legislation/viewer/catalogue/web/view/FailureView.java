@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.ArrayList;
@@ -119,7 +120,7 @@ public record FailureView(
             .toList();
     var size = preparation.size();
     var eurLex =
-        Action.link("Read it on EUR-Lex", Links.eurLex(act.id().celex(), preparation.language()));
+        Action.link("Read it on EUR-Lex", act.id().eurLex(preparation.language()).toString());
     return new FailureView(
         true,
         "This act couldn't be prepared",
@@ -152,7 +153,7 @@ public record FailureView(
     facts.add(
         new Fact(
             "Version",
-            celex + ", from " + Wording.date(version.date()) + " · " + Wording.made(version)));
+            celex + ", from " + Dates.inWords(version.date()) + " · " + Wording.made(version)));
     if (failure == Failure.NO_FORMEX) {
       var others = version.languages().stream().filter(each -> each != language).toList();
       if (!others.isEmpty()) {
@@ -179,7 +180,7 @@ public record FailureView(
             before ->
                 actions.add(
                     Action.button(
-                        "Read the version before (from " + Wording.date(before.date()) + ")",
+                        "Read the version before (from " + Dates.inWords(before.date()) + ")",
                         Links.read(eli, before, language))));
     timeline
         .flatMap(
@@ -191,9 +192,9 @@ public record FailureView(
             after ->
                 actions.add(
                     Action.button(
-                        "Read the version after (from " + Wording.date(after.date()) + ")",
+                        "Read the version after (from " + Dates.inWords(after.date()) + ")",
                         Links.read(eli, after, language))));
-    actions.add(Action.link("Read this version on EUR-Lex", Links.eurLex(celex, language)));
+    actions.add(Action.link("Read this version on EUR-Lex", version.eurLex(language).toString()));
     var reference = trace;
     return switch (failure) {
       case UNAVAILABLE ->

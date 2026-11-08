@@ -1,15 +1,18 @@
 // SPDX-License-Identifier: MIT
 /**
- * What the pages of the catalogue show, prepared for their templates. This package contains:
+ * What the catalogue's pages show, prepared for their templates:
  *
  * <ul>
- *   <li>the timeline, in {@link TimelineView}
- *   <li>the wording that the pages use, in {@link Wording}
- *   <li>the links to the versions, in {@link Links}
+ *   <li>the home page and its search, in {@link HomeView}
+ *   <li>the masthead of an act's page, in {@link MastheadView}, and its timeline, in {@link
+ *       TimelineView}
+ *   <li>the Reading card of the page of a version, in {@link ReadingView}, and the From and To
+ *       cards of the compare page, in {@link CompareView}
+ *   <li>the preparing page, {@link PreparingView}, the failure panel, {@link FailureView}, and the
+ *       versions that are arriving, {@link ArrivingView}
+ *   <li>the wording that the pages use, in {@link Wording}, and the links to every page, in {@link
+ *       Links}, so the links are plain hrefs that work without JavaScript
  * </ul>
- *
- * <p>This package computes every link on a page. Thus the links are plain hrefs that work without
- * JavaScript.
  */
 @InfrastructureRing
 @NullMarked

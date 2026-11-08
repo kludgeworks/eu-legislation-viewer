@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -16,8 +15,9 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The addresses of the pages. The address of an act's page uses the ELI of the act, as {@code
- * VersionController} and {@code CompareController} answer them. The address of the home page can
- * include the results of a search, as {@code HomeController} answers it.
+ * VersionController} and {@code CompareController} answer them. The parts of the compare page that
+ * the comparison module fills are at the addresses of {@link #page}. The address of the home page
+ * can include the results of a search, as {@code HomeController} answers it.
  */
 public final class Links {
   private Links() {}
@@ -29,37 +29,6 @@ public final class Links {
    */
   public static String read(Eli eli, Version version, Language language) {
     return read(eli, version.date(), language);
-  }
-
-  /**
-   * Returns the address of an act on EUR-Lex, by its ELI. For example, {@code
-   * https://eur-lex.europa.eu/eli/reg_impl/2015/1998/oj}.
-   */
-  public static String eurLex(Eli eli) {
-    return "https://eur-lex.europa.eu/eli/" + eli.path() + "/oj";
-  }
-
-  /**
-   * Returns the address on EUR-Lex of {@code each}, in {@code language}. {@code each} is an act
-   * that {@code act} integrates, or {@code act} itself. The address uses the ELI of {@code each} if
-   * the Publications Office has one. If not, the address uses its CELEX.
-   */
-  public static String amending(Act act, ActIdentifier each, Language language) {
-    return act.publication(each)
-        .map(Publication::eli)
-        .map(eli -> eurLex(eli) + "/" + language.code().toLowerCase(Locale.ROOT))
-        .orElseGet(() -> eurLex(each.celex(), language));
-  }
-
-  /**
-   * Returns the address of a document on EUR-Lex, by its CELEX, in {@code language}. The document
-   * can be an act or a consolidated version.
-   */
-  public static String eurLex(String celex, Language language) {
-    return "https://eur-lex.europa.eu/legal-content/"
-        + language.iso().toUpperCase(Locale.ROOT)
-        + "/TXT/?uri=CELEX:"
-        + celex;
   }
 
   /**
@@ -76,7 +45,7 @@ public final class Links {
    * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&to=2026-10-01}.
    */
   public static String compare(Eli eli, Version from, Version to, Language language) {
-    return compare(eli, language) + "?from=" + from.date() + "&to=" + to.date();
+    return page(eli, from, to, language, null, null).href();
   }
 
   /**
@@ -86,21 +55,14 @@ public final class Links {
    */
   public static String compare(
       Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
-    return compare(eli, from, to, language) + act(only);
+    return page(eli, from, to, language, only, null).href();
   }
 
   /**
-   * Returns the address of the units that are the same in both versions. A fold in the Synopsis
-   * loads them from this address. The fold adds its eIds after the address. For example, {@code
-   * /eli/reg_impl/2015/1998/eng/compare/same?from=2021-07-01&to=2021-12-31}.
-   */
-  public static String same(Eli eli, Version from, Version to, Language language) {
-    return compare(eli, language) + "/same?from=" + from.date() + "&to=" + to.date();
-  }
-
-  /**
-   * Returns the address of the same comparison, in {@code view}. For example, {@code …&view=whole}.
-   * The address of the Changes view has no {@code view} parameter.
+   * Returns the address of the same comparison, in the comparison module's view {@code view}. For
+   * example, {@code …&view=whole}. The catalogue does not know the views: it passes the code on as
+   * the reader gave it. Without a view, the address has no {@code view} parameter, and the
+   * comparison module shows its first view.
    */
   public static String compare(
       Eli eli,
@@ -108,59 +70,27 @@ public final class Links {
       Version to,
       Language language,
       @Nullable ActIdentifier only,
-      CompareView.View view) {
-    return compare(eli, from, to, language, only) + view(view);
+      @Nullable String view) {
+    return page(eli, from, to, language, only, view).href();
   }
 
   /**
-   * Returns the address from which the page of a comparison loads the comparison of {@code from}
-   * with {@code to}. The comparison is in {@code view}, for example its Changes or its Whole text.
-   * It is limited to the changes of {@code only}, if any. For example, {@code
-   * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&to=2026-10-01}.
+   * Returns the compare page of the comparison of {@code from} with {@code to}, in {@code view},
+   * limited to the changes of {@code only}, if any. Its parts are the comparison module's: the
+   * compare page loads its changes ({@link ComparePage#changes}) into its text slot, and its acts
+   * ({@link ComparePage#acts}) into its acts slot. The address of each part is the contract between
+   * the two modules, which the {@code comparepage} library writes: the comparison module answers
+   * them ({@code ChangesController}), and no Java ties the two modules together.
    */
-  public static String changes(
+  public static ComparePage page(
       Eli eli,
       Version from,
       Version to,
       Language language,
       @Nullable ActIdentifier only,
-      CompareView.View view) {
-    return compare(eli, language)
-        + "/changes?from="
-        + from.date()
-        + "&to="
-        + to.date()
-        + act(only)
-        + view(view);
-  }
-
-  /**
-   * Returns the address from which the page of a comparison loads the acts between {@code from} and
-   * {@code to}, with their counts. The chip of {@code only}, if any, is on. For example, {@code
-   * /eli/reg_impl/2015/1998/eng/compare/acts?from=…&to=…}.
-   */
-  public static String acts(
-      Eli eli,
-      Version from,
-      Version to,
-      Language language,
-      @Nullable ActIdentifier only,
-      CompareView.View view) {
-    return compare(eli, language)
-        + "/acts?from="
-        + from.date()
-        + "&to="
-        + to.date()
-        + act(only)
-        + view(view);
-  }
-
-  private static String view(CompareView.View view) {
-    return view == CompareView.View.CHANGES ? "" : "&view=" + view.code();
-  }
-
-  private static String act(@Nullable ActIdentifier only) {
-    return only == null ? "" : "&act=" + URLEncoder.encode(only.celex(), StandardCharsets.UTF_8);
+      @Nullable String view) {
+    return new ComparePage(
+        compare(eli, language), from.date(), to.date(), only == null ? null : only.celex(), view);
   }
 
   /**
@@ -195,7 +125,11 @@ public final class Links {
    * /eli/reg_impl/2015/1998/eng/compare?act=32026R0449}.
    */
   public static String changesBy(Eli eli, ActIdentifier amending, Language language) {
-    return compare(eli, language) + "?" + act(amending).substring(1);
+    return compare(eli, language)
+        + "?"
+        + ComparePage.ACT
+        + "="
+        + URLEncoder.encode(amending.celex(), StandardCharsets.UTF_8);
   }
 
   /**

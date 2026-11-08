@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.CompareView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView
@@ -12,8 +12,10 @@
 @param String receipt = null
 @param ArrivingView arriving = null
 <%-- Shows an act's page in Compare mode. It has the act's head, its timeline with the compared
-     range, the From and To cards, and then the changes. Its links are boosted, as on the Read page.
-     Only hx-boost is inherited. The changes load with htmx attributes of their own.
+     range, the From and To cards, and then the changes. The chips of the acts between the cards and
+     the changes are the comparison module's: each has a slot that loads them from that module.
+     Its links are boosted, as on the Read page. Only hx-boost is inherited. The slots load with htmx
+     attributes of their own.
      When the reader comes from the preparing page (receipt), a line says what was prepared. The
      content below that line fades in. If versions appeared after the act was prepared and are being
      prepared now, a notice says so (arriving). --%>
@@ -27,7 +29,7 @@
     @if(arriving != null)
       @template.catalogue.arriving(arriving = arriving)
     @endif
-    @template.catalogue.cards(compare = compare)
+    @template.catalogue.compare.cards(compare = compare)
     @if(compare.note() != null)<p class="compare-note" role="status">${compare.note()}</p>@endif
     ${changes}
   </div>

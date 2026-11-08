@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
@@ -360,7 +361,7 @@ public record TimelineView(
   private static String label(Version version) {
     return version.celex()
         + " · from "
-        + Wording.date(version.date())
+        + Dates.inWords(version.date())
         + " · "
         + Wording.made(version);
   }

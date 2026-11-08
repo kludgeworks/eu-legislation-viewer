@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -37,15 +36,6 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
           Map.entry("DEC", "Decision"),
           Map.entry("DEC_IMPL", "Implementing Decision"),
           Map.entry("DEC_DEL", "Delegated Decision"));
-
-  /**
-   * Finds where the date in a title ends. Group 1 is the title up to its date, for example "…
-   * 2015/1998 of 5 November 2015". Group 2 is the rest of the title. The spaces can be any
-   * horizontal space ({@code \\h}), because the titles in Cellar have no-break spaces in dates. For
-   * example, 18&nbsp;June 2012.
-   */
-  static final Pattern DATED =
-      Pattern.compile("(.+?\\hof\\h\\d{1,2}\\h\\p{Lu}\\p{Ll}+\\h\\d{4})\\h+(.+)");
 
   /** Returns the home page before a search. */
   public static HomeView empty() {
@@ -88,7 +78,7 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
   }
 
   private static Row row(Search.Match match) {
-    var title = DATED.matcher(match.title());
+    var title = Wording.DATED.matcher(match.title());
     var head = title.matches() ? title.group(1) : match.title();
     var rest = title.matches() ? title.group(2) : null;
     var goes = new ArrayList<Go>();

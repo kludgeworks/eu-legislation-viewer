@@ -1,5 +1,5 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.viewer.content.web.LegalRenderer
+@import dev.groknull.kludgeworks.eu.legislation.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
 <%-- Shows only the mark of what an amendment deleted, as EUR-Lex does. Read mode does not show the

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
+import dev.groknull.kludgeworks.eu.legislation.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -8,8 +9,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Cont
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -469,10 +468,7 @@ public record ChangesView(
      * For example, {@code first=anx%2Fpnt_8.1.2.3%2Fpnt_a&last=anx%2Fpnt_8.1.2.3%2Fpnt_b}.
      */
     public String query() {
-      return "first="
-          + URLEncoder.encode(units.getFirst().eId(), StandardCharsets.UTF_8)
-          + "&last="
-          + URLEncoder.encode(units.getLast().eId(), StandardCharsets.UTF_8);
+      return ComparePage.fold(units.getFirst().eId(), units.getLast().eId());
     }
   }
 

@@ -7,6 +7,7 @@ java_library(
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",

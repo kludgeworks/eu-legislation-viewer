@@ -1,0 +1,21 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+
+# A library outside the viewer's modules: what every page has around it, the layout's
+# (src/main/jte/layout), the reader's colour theme and where the page is; and how every page reads
+# and answers a request. Its own target, so the templates can take it while the modules' web
+# packages render them
+java_library(
+    name = "chrome",
+    srcs = glob(["*.java"]),
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:jakarta_servlet_jakarta_servlet_api",
+        "@maven//:org_jmolecules_jmolecules_onion_architecture",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_webmvc",
+    ],
+)

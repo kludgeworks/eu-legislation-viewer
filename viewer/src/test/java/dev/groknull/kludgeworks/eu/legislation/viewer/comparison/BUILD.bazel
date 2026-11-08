@@ -20,6 +20,7 @@ java_junit5_test(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",

@@ -1,8 +1,8 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# What the Changes view shows, on 2015/1998's consolidations of 2026 compared: one test target per
-# *Test.java
+# What the comparison page shows: the Changes view, on 2015/1998's consolidations of 2026 compared,
+# and the cards and sidenotes, on Cellar's recorded answers. One test target per *Test.java
 java_test_suite(
     name = "view",
     size = "small",
@@ -14,13 +14,18 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/comparepage",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison/web/view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:recorded-acts",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content/model:legal-texts",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
 )

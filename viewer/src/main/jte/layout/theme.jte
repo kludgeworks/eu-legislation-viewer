@@ -1,5 +1,5 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Chrome
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.chrome.Theme
+@import dev.groknull.kludgeworks.eu.legislation.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.chrome.Theme
 @param Chrome chrome
 !{var current = chrome.theme();}
 <%-- Shows the theme switch: light, the device's theme, or dark. It is a plain form and is not
