@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
 import java.util.NavigableMap;
 import java.util.Objects;
 import java.util.Optional;
@@ -24,7 +23,7 @@ import org.jspecify.annotations.Nullable;
 @ValueObject
 public final class Timeline {
   private final List<Version> versions;
-  private final NavigableMap<LocalDate, Version> byDate;
+  private final NavigableMap<LocalDate, List<Version>> byDate;
 
   /**
    * Makes a timeline of the versions, in any order. There is at most one version a day in any one
@@ -57,9 +56,9 @@ public final class Timeline {
       }
     }
 
-    NavigableMap<LocalDate, Version> byDateMap = new TreeMap<>();
+    NavigableMap<LocalDate, List<Version>> byDateMap = new TreeMap<>();
     for (var v : sorted) {
-      byDateMap.put(v.date(), v);
+      byDateMap.computeIfAbsent(v.date(), d -> new ArrayList<>()).add(v);
     }
     this.versions = List.copyOf(sorted);
     this.byDate = Collections.unmodifiableNavigableMap(byDateMap);
@@ -78,15 +77,29 @@ public final class Timeline {
    */
   public Optional<Version> applicableOn(LocalDate date) {
     checkSingleVersionPerDay();
-    return value(byDate.floorEntry(date));
+    var entry = byDate.floorEntry(date);
+    return entry == null ? Optional.empty() : Optional.of(entry.getValue().getFirst());
   }
 
   /**
-   * Returns the version that applies on {@code date} in {@code language}, or empty before the first
-   * applies or if no version has that language.
+   * Returns the version that applies on {@code date} for a reader in {@code language}, or empty
+   * before the first version applies. When multiple versions share a day (e.g. an original text and
+   * a same-day consolidation in different languages), it picks the one in {@code language}, falling
+   * back to the other.
    */
   public Optional<Version> applicableOn(LocalDate date, Language language) {
-    return in(language).flatMap(t -> t.applicableOn(date));
+    var entry = byDate.floorEntry(date);
+    if (entry == null) {
+      return Optional.empty();
+    }
+    var onDate = entry.getValue();
+    if (onDate.size() == 1) {
+      return Optional.of(onDate.getFirst());
+    }
+    return onDate.stream()
+        .filter(v -> v.languages().contains(language))
+        .findFirst()
+        .or(() -> Optional.of(onDate.getFirst()));
   }
 
   /**
@@ -98,15 +111,27 @@ public final class Timeline {
    */
   public Optional<Version> startingOn(LocalDate date) {
     checkSingleVersionPerDay();
-    return Optional.ofNullable(byDate.get(date));
+    var onDate = byDate.get(date);
+    return onDate == null || onDate.isEmpty() ? Optional.empty() : Optional.of(onDate.getFirst());
   }
 
   /**
    * Returns the version that starts on {@code date} in {@code language}, or empty if no version
-   * does.
+   * does. When multiple versions share the start day, it picks the one in {@code language}, falling
+   * back to the other.
    */
   public Optional<Version> startingOn(LocalDate date, Language language) {
-    return in(language).flatMap(t -> t.startingOn(date));
+    var onDate = byDate.get(date);
+    if (onDate == null || onDate.isEmpty()) {
+      return Optional.empty();
+    }
+    if (onDate.size() == 1) {
+      return Optional.of(onDate.getFirst());
+    }
+    return onDate.stream()
+        .filter(v -> v.languages().contains(language))
+        .findFirst()
+        .or(() -> Optional.of(onDate.getFirst()));
   }
 
   /**
@@ -169,10 +194,6 @@ public final class Timeline {
       throw new IllegalArgumentException("Not a version of this act: " + version);
     }
     return index;
-  }
-
-  private static Optional<Version> value(Map.@Nullable Entry<LocalDate, Version> entry) {
-    return Optional.ofNullable(entry).map(Map.Entry::getValue);
   }
 
   @Override

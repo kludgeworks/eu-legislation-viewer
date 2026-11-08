@@ -82,6 +82,14 @@ class VersionControllerTests {
   }
 
   @Test
+  void showsMissingVersionWhenVersionLacksTheLanguage() {
+    var doc =
+        page(mvc.get().uri("/eli/reg_impl/2015/1998/2026-03-22/deu").accept(MediaType.TEXT_HTML));
+    assertThat(doc.select(".failure h2").text()).contains("Not available in German");
+    assertThat(doc.select(".failure a").eachText()).contains("Read it in English");
+  }
+
+  @Test
   void triesAgainThenGoesBackToThePage() {
     assertThat(mvc.post().uri(PAGE))
         .hasStatus(HttpStatus.SEE_OTHER)

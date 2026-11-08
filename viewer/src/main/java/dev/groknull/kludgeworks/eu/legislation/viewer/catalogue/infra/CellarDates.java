@@ -86,7 +86,7 @@ final class CellarDates {
   /**
    * Verifies each date whose clause is anchored on publication against the act's publication date
    * in the Official Journal, if known. Where Cellar's recorded date does not match {@code
-   * publication + days}, it logs a warning and adopts the date given by the clause.
+   * publication + days}, it logs at debug and adopts the date given by the clause.
    */
   static Map<ActIdentifier, List<ActDate>> checkAgainstPublication(
       Map<ActIdentifier, List<ActDate>> dates, Map<ActIdentifier, Publication> publications) {

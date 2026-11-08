@@ -161,8 +161,26 @@ class TimelineTest {
 
     assertThat(timeline.applicableOn(FIRST.date(), Language.ENG)).contains(sameDayOriginal);
     assertThat(timeline.startingOn(FIRST.date(), Language.DEU)).contains(sameDayConsolidated);
+    assertThat(timeline.applicableOn(FIRST.date(), Language.FRA)).contains(sameDayOriginal);
     assertThat(timeline.in(Language.ENG).orElseThrow().applicableOn(FIRST.date()))
         .contains(sameDayOriginal);
+  }
+
+  @Test
+  void applicableOnDateReturnsVersionEvenWhenItLacksTheLanguage() {
+    var withoutIrish =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            LocalDate.of(2020, 1, 1),
+            "02015R1998-20200101",
+            false,
+            List.of(),
+            EnumSet.of(Language.ENG),
+            Instant.parse("2026-07-10T01:02:19.329Z"));
+    var timeline = new Timeline(List.of(ORIGINAL, withoutIrish, INTERIM));
+
+    assertThat(timeline.applicableOn(LocalDate.of(2020, 6, 1), Language.GLE))
+        .contains(withoutIrish);
   }
 
   @Test

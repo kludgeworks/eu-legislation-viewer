@@ -193,9 +193,15 @@ public record Act(
     return timeline.in(language);
   }
 
+  /** The version that applies on {@code date}; none before the act's text first applies. */
+  public Optional<Version> versionOn(LocalDate date) {
+    return timeline.applicableOn(date);
+  }
+
   /**
    * Returns the version that applies on {@code date} in {@code language}. Returns empty before the
-   * text of the act first applies, or if no version has that language.
+   * text of the act first applies. When multiple versions share a day, it picks the one in {@code
+   * language}, falling back to the other.
    */
   public Optional<Version> versionOn(LocalDate date, Language language) {
     return timeline.applicableOn(date, language);
