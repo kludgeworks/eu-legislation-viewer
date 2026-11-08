@@ -6,7 +6,7 @@
      comparison with the version before. For the first version, the link goes to the comparison
      with the version after. --%>
 <section class="selection" aria-label="Reading">
-  <div class="card">
+  <article class="card">
     <span class="card-kind">Reading</span>
     <a class="card-celex mono" href="${reading.eurLex()}" title="On EUR-Lex">${reading.celex()}</a>
     <span>${reading.period()}</span>
@@ -25,7 +25,7 @@
       <input id="on" name="on" type="date" value="${reading.on()}" min="${reading.first()}" required>
       <button>Go</button>
     </form>
-  </div>
+  </article>
   @if(reading.compare() != null)
     <a class="button" href="${reading.compare()}">${reading.comparing()}</a>
   @endif

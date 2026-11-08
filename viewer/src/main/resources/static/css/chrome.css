@@ -1,0 +1,223 @@
+/* SPDX-License-Identifier: MIT */
+/*
+ * Styles of the chrome module (layout/page.jte, layout/theme.jte).
+ * Includes design tokens, body resets, site bar, notice, and theme switch.
+ */
+/*
+ * Every colour is a token with a light value and a dark value, set with light-dark(). The
+ * color-scheme of the page selects one. It is the scheme of the device, unless the reader selected
+ * a theme. In that case the server renders the choice from the theme cookie as data-theme. Print
+ * is always light.
+ */
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#fff, #14171b);
+  --ink: light-dark(#1b1f24, #e4e7ea);
+  --ink2: light-dark(#454c55, #c2c8ce);
+  --ink3: light-dark(#30363d, #cfd4d9);
+  --muted: light-dark(#5a6370, #9ba4ae);
+  --muted2: light-dark(#6b737c, #8e97a1);
+  --faint: light-dark(#6b737c, #88919b);
+  --disabled: light-dark(#a7aeb6, #58606a);
+  --line-strong: light-dark(#9aa3ad, #66707b);
+  --line-dot: light-dark(#b7bec6, #4b535c);
+  --line: light-dark(#c4cad1, #49515a);
+  --rule: light-dark(#d5d9de, #333940);
+  --hair: light-dark(#e3e6ea, #2a2f35);
+  --surface: light-dark(#fafbfc, #1b1f24);
+  --surface2: light-dark(#f4f5f7, #22272d);
+  --hover: light-dark(#eef2ef, #1f2b25);
+  --accent: light-dark(#1f4d3f, #82cba8);
+  --accent-hover: light-dark(#123128, #a9dec4);
+  --accent-fill: light-dark(#1f4d3f, #2e765b);
+  --on-fill: #fff;
+  --notice-ink: light-dark(#e6efe9, #f0f8f3);
+  --accent-tint: light-dark(#e5efe9, #1d3429);
+  --band: light-dark(#dcebe2, #1d3429);
+  --chg-tint: light-dark(#f6faf7, #17211c);
+  --accent-line: light-dark(#c9dccf, #2f5646);
+  --target: light-dark(#fff8e1, #3a3216);
+  --warn-bg: light-dark(#fff3cd, #382e10);
+  --warn-line: light-dark(#e8d48a, #7d6622);
+  --warn-ink: light-dark(#5c4a12, #f0dc9e);
+  --warn-stripe: light-dark(#c48a00, #d6a52a);
+  --ins-ink: light-dark(#0a4a99, #a3c8ff);
+  --ins-bg: light-dark(#e3edfb, #17304f);
+  --del-ink: light-dark(#a32d12, #ffa28d);
+  --del-bg: light-dark(#fbe9e4, #4a2018);
+  --corr-ink: light-dark(#6b2fa3, #d2b0ff);
+  --corr-bg: light-dark(#f1e9fa, #34204a);
+  --cor-line: light-dark(#6b4fa0, #b59ce2);
+  --cor-ink: light-dark(#4f3a7a, #cdbaf2);
+  --shadow: light-dark(rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.55));
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+@media print {
+  :root {
+    color-scheme: light;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    15px/1.5 system-ui,
+    sans-serif;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* The frame of every page. First comes the notice that the viewer has no legal effect. It stays in
+ * sight when the page scrolls. The site bar is under it. */
+.notice {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  padding: 8px max(28px, env(safe-area-inset-left, 0px));
+  background: var(--accent-fill);
+  color: var(--notice-ink);
+  font-size: 13px;
+}
+
+.notice b {
+  color: var(--on-fill);
+}
+
+nav.site {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  align-items: center;
+  padding: 8px max(28px, env(safe-area-inset-left, 0px));
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.site-name {
+  font:
+    600 17px Georgia,
+    serif;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.status {
+  color: var(--muted);
+}
+
+/* Custom elements that only add behaviour take no box. */
+comparison-outline,
+elapsed-time,
+theme-switch {
+  display: contents;
+}
+
+/* The theme switch. It is three icons in one pill at the right of the site bar. The current icon is
+ * raised. */
+form.theme {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface2);
+  align-self: center;
+}
+
+form.theme button {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+form.theme button:hover {
+  color: var(--ink);
+}
+
+form.theme button[aria-pressed="true"] {
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: 0 1px 2px var(--shadow);
+}
+
+form.theme button:focus-visible {
+  outline: 2px solid var(--accent);
+}
+
+form.theme svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.4;
+  stroke-linecap: round;
+}
+
+/* The page is centred. An act's page is at most 1,440px wide. The home page is at most 1,120px. */
+main {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: 22px max(28px, env(safe-area-inset-right, 0px)) 24px
+    max(28px, env(safe-area-inset-left, 0px));
+}
+
+/* On act pages, the site bar has a link back to the results of a search, and a small Find an act
+ * box. */
+nav.site .results {
+  font-size: 13.5px;
+  text-decoration: none;
+}
+
+nav.site .results:hover {
+  text-decoration: underline;
+}
+
+form.find {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+form.find label {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+form.find input {
+  width: 16rem;
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13.5px;
+}

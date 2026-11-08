@@ -18,7 +18,7 @@
       <span class="band" style="${timeline.band().style()}"></span>
     @endif
     @for(var year : timeline.years())
-      <span class="year" style="${year.style()}">${year.year()}</span>
+      <time class="year" datetime="${year.year()}" style="${year.style()}">${year.year()}</time>
     @endfor
     @for(var lag : timeline.lags())
       <span class="lag" style="${lag.style()}" title="${lag.text()}"></span>

@@ -1,0 +1,470 @@
+/* SPDX-License-Identifier: MIT */
+/*
+ * Styles of the legaltext module (legal/*.jte, legalpart/*.jte).
+ * Legal document typography: headings, preambles, recitals, articles, lists, and tables.
+ */
+
+.content {
+  flex: 1;
+  min-width: 0;
+  max-width: 50rem;
+}
+
+.content [id] {
+  scroll-margin-top: 48px;
+}
+
+/* the legal text */
+
+.legal-text {
+  font:
+    16px/1.43 "Times New Roman",
+    Times,
+    serif;
+  overflow-wrap: anywhere;
+}
+
+/* Titles are headings. h1 is the long title, and h2 to h6 follow the rank. They take the font of
+ * the text around them, and the rules below say how each one looks. The parts of a title are spans,
+ * each on a line of its own. These parts are the lines of the long title, and the num, heading and
+ * subheading of a title. */
+.legal-text :where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font: inherit;
+}
+
+.legal-text :is(.num, .heading, .subheading),
+.long-title > .norm {
+  display: block;
+}
+
+.legal-text p,
+.legal-text .title,
+.legal-text .num,
+.legal-text .heading,
+.legal-text .subheading,
+.long-title > .norm {
+  margin: 0.5rem 0 0;
+}
+
+p.norm {
+  text-align: justify;
+}
+
+/* The head of the OJ page on which an act as published starts, as EUR-Lex sets it (oj-hd-*). It is
+ * one row with a rule under it. Its columns are the date, the language, the Journal, and the issue
+ * and page. EUR-Lex makes them 10%, 10%, 60% and 20% wide. Here the first two are at least 10%, the
+ * last is at least 20%, and the Journal takes the rest. */
+.journal-header {
+  display: grid;
+  grid-template-columns: minmax(10%, auto) minmax(10%, auto) 1fr minmax(
+      20%,
+      auto
+    );
+  align-items: baseline;
+  padding-bottom: 4px;
+  border-bottom: 1px solid currentcolor;
+}
+
+.journal-header > span {
+  margin: 8px 0;
+  text-align: right;
+}
+
+.journal-header > .journal-name {
+  margin-left: 1rem;
+  text-align: left;
+}
+
+.long-title {
+  font-weight: bold;
+  text-align: center;
+}
+
+.unit-article > .title > .num,
+.unit-annex > .title > .num,
+.unit-annex > .file > .num {
+  margin-top: 1.5rem;
+  font-style: italic;
+  text-align: center;
+}
+
+.unit-article > .title > .heading,
+.unit-annex > .title > .heading {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* In an act as published, the label of an annex is bold and upright (oj-doc-ti). The title that
+ * each file of the annex repeats looks the same. */
+.legal-text:not(.legal-text-consolidated) .unit-annex > .title > .num,
+.legal-text:not(.legal-text-consolidated) .unit-annex > .file > .num {
+  font-style: normal;
+  font-weight: bold;
+}
+
+.unit-division > .title {
+  text-align: center;
+}
+
+/*
+ * The title of a level, as EUR-Lex sets it:
+ * - A numbered heading is on one line. For example, 1. AIRPORT SECURITY. What follows it starts
+ *   from the margin.
+ * - A label and a heading are each on a line of their own. For example, ATTACHMENT 1-A.
+ * - In an act as published, all titles are bold (oj-ti-grseq-1).
+ * - In a consolidated version, the look follows the depth (title-gr-seq-level-N). Depth 1 is bold.
+ *   Depth 2 is italic and centred. Depth 3 is bold. Depth 4 is plain. The words of a numbered
+ *   heading are bold.
+ */
+.title-run-in > :is(.num, .heading) {
+  display: inline;
+}
+
+.title-run-in,
+.unit-level:not(.numbered) > .title {
+  font-weight: bold;
+}
+
+.legal-text-consolidated
+  .unit-level[data-depth="2"]
+  > :is(.title, .num, .heading, .subheading) {
+  font-weight: normal;
+  font-style: italic;
+  text-align: center;
+}
+
+.legal-text-consolidated
+  .unit-level[data-depth="4"]
+  > :is(.title, .num, .heading, .subheading) {
+  font-weight: normal;
+}
+
+.legal-text-consolidated .title-run-in > .heading {
+  font-weight: bold;
+}
+
+/*
+ * Numbered items, as EUR-Lex shows them. Each one is a grid of label and text. This applies to:
+ * - The items of a list.
+ * - A numbered paragraph outside a list. For example, a point in a table cell.
+ * - The recitals.
+ * - The numbered points of an annex. The number of the point is beside its text. For example,
+ *   1.0.1.
+ */
+.list > .unit,
+.unit-point,
+.unit-indent,
+.unit-recital,
+.unit-level.numbered {
+  display: grid;
+  grid-template-columns: minmax(3rem, auto) 1fr;
+  column-gap: 0.5rem;
+}
+
+/* In an act as published, these items are a table of two columns. The label takes 4% of the width,
+ * or more if the label is wider. The text is against the label. Thus each list in an item is 4%
+ * further in. */
+.legal-text:not(.legal-text-consolidated)
+  :is(.list > .unit, .unit-point, .unit-indent, .unit-recital) {
+  grid-template-columns: minmax(4%, auto) 1fr;
+  column-gap: 0;
+}
+
+.list > .unit > .num,
+:is(.unit-point, .unit-indent) > .num,
+.unit-recital > .num,
+.unit-level.numbered > .num {
+  grid-column: 1;
+}
+
+.list > .unit > :not(.num),
+:is(.unit-point, .unit-indent) > :not(.num),
+.unit-recital > :not(.num),
+.unit-level.numbered > :not(.num) {
+  grid-column: 2;
+}
+
+/* In an act as published, the number of a point starts its first paragraph. For example, "1.0.1
+ * Unless …". What follows that paragraph, and its lists, start from the margin (oj-normal). A
+ * consolidated version keeps them beside the number. */
+.legal-text:not(.legal-text-consolidated)
+  .unit-level.numbered
+  > :not(.num, .num + *) {
+  grid-column: 1 / -1;
+}
+
+/* A numbered paragraph outside a list, in a consolidated version. Its text is beside its number.
+ * What follows starts from the margin, as a hanging indent and then p.list. In an act as published,
+ * all of it is beside the number, in the 96% column. */
+.legal-text-consolidated
+  :is(.unit-point, .unit-indent):not(.list > *)
+  > :not(.num, .num + *) {
+  grid-column: 1 / -1;
+}
+
+/* The numbered paragraph of an article, as EUR-Lex prints it. The number starts the first paragraph
+ * of text. This is its own paragraph or the first paragraph of its first subparagraph. The number
+ * comes after any amendment marker. For example, "1.  For the purposes …". Two spaces follow the
+ * number in a consolidated version, and three in an act as published. What follows starts from the
+ * margin. A number that a list or a table follows keeps a line of its own. */
+.unit-paragraph:has(
+  > .num + p,
+  > .num + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+) {
+  margin-top: 0.5rem;
+  text-align: justify;
+}
+
+.unit-paragraph
+  > .num:has(
+    + p,
+    + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+  ),
+.unit-paragraph > .num + p,
+.unit-paragraph
+  > .num
+  + .unit-subparagraph:has(> :is(p:first-child, .provenance:first-child + p)),
+.unit-paragraph
+  > .num
+  + .unit-subparagraph
+  > :is(p:first-child, .provenance:first-child + p) {
+  display: inline;
+}
+
+.unit-paragraph
+  > .num:has(
+    + p,
+    + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+  ) {
+  margin-inline-end: 0.5em;
+}
+
+.legal-text:not(.legal-text-consolidated)
+  .unit-paragraph
+  > .num:has(
+    + p,
+    + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+  ) {
+  margin-inline-end: 0.75em;
+}
+
+/* The entry of a definition list. In a consolidated version, it looks like a list item, with the
+ * term, the separator and the definition beside the prefix. In an act as published, the prefix, the
+ * term in bold, the separator and the first paragraph of the definition make one paragraph. The
+ * rest starts from the margin (oj-normal). */
+.legal-text:not(.legal-text-consolidated) .list-definition > .unit {
+  display: block;
+  margin-top: 0.5rem;
+  text-align: justify;
+}
+
+.legal-text:not(.legal-text-consolidated)
+  .list-definition
+  > .unit
+  > :is(.num, .heading, .separator, .separator + p) {
+  display: inline;
+}
+
+.legal-text:not(.legal-text-consolidated) .list-definition > .unit > .heading {
+  font-weight: bold;
+}
+
+/* A level printed in a box (Formex BOX). EUR-Lex draws it as a frame with 10px of space inside. */
+.unit[data-box="true"] {
+  margin-top: 0.5rem;
+  padding: 10px;
+  border: 1px solid currentcolor;
+}
+
+/* The mark of a list, which its items do not write (ListKind). It is the label of each item. */
+.list-dash > .unit-indent::before,
+.list-ndash > .unit-indent::before,
+.list-bullet > .unit-indent::before {
+  margin-top: 0.5rem;
+}
+
+.list-dash > .unit-indent::before {
+  content: "—";
+}
+
+.list-ndash > .unit-indent::before {
+  content: "–";
+}
+
+.list-bullet > .unit-indent::before {
+  content: "•";
+}
+
+/* An item that an amendment put in. Its amendment mark ▼ is on the line above. The mark of the list
+ * is beside its text. */
+:is(.list-dash, .list-ndash, .list-bullet)
+  > .unit-indent
+  > .provenance:first-child {
+  grid-row: 1;
+}
+
+:is(.list-dash, .list-ndash, .list-bullet)
+  > .unit-indent:has(> .provenance:first-child)::before {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+/* In a consolidated version, each paragraph of an item of a dash list starts with the dash. The
+ * dash hangs in the column of the label, as the dash of the first paragraph does. CONSLEG prints it
+ * this way. For example, "— If not available, …". */
+.legal-text-consolidated .list-dash > .unit-indent > p ~ p::before {
+  content: "—";
+  display: inline-block;
+  width: 3.5rem;
+  margin-left: -3.5rem;
+}
+
+.table-frame {
+  margin-top: 0.5rem;
+  overflow-x: auto;
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table td,
+.table th {
+  border: 1px solid var(--rule);
+  padding: 0.2rem 0.4rem;
+  vertical-align: top;
+}
+
+/* The title of an annotation. For example, NOTES:. It is italic in an act as published (oj-ti-
+ * annotation). It is bold in a consolidated version (title-annotation). */
+.legal-text:not(.legal-text-consolidated) .annotation > .heading {
+  font-style: italic;
+}
+
+.legal-text-consolidated .annotation > .heading {
+  font-weight: bold;
+}
+
+/* The cells of a header row are bold. In an act as published, they are centred, and the text of a
+ * table is smaller (oj-tbl-hdr, oj-tbl-txt). */
+.table th {
+  font-weight: bold;
+  text-align: left;
+}
+
+.legal-text:not(.legal-text-consolidated) .table th > p {
+  text-align: center;
+}
+
+.legal-text:not(.legal-text-consolidated) .table {
+  font-size: 0.9em;
+}
+
+/* The heading of a row group. It is a heading cell, but EUR-Lex sets it as the text of the rows. */
+.row-group-heading > th {
+  font-weight: normal;
+  text-align: left;
+}
+
+.row-group-heading > th > :is(.num, .heading) {
+  display: inline;
+}
+
+.table :is(td, th) > p:first-child {
+  margin-top: 0;
+}
+
+.emphasis-b {
+  font-weight: bold;
+}
+
+.emphasis-i {
+  font-style: italic;
+}
+
+.emphasis-u {
+  text-decoration: underline;
+}
+
+.emphasis-sup {
+  vertical-align: super;
+  font-size: 0.8em;
+}
+
+.emphasis-sub {
+  vertical-align: sub;
+  font-size: 0.8em;
+}
+
+.emphasis-uc {
+  text-transform: uppercase;
+}
+
+.emphasis-sc {
+  font-variant: small-caps;
+}
+
+.emphasis-expanded {
+  letter-spacing: 0.15em;
+}
+
+.emphasis-strike {
+  text-decoration: line-through;
+}
+
+.emphasis-box {
+  border: 1px solid currentcolor;
+}
+
+.note-ref {
+  text-decoration: none;
+}
+
+.notes {
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.8em;
+}
+
+/* The notes of a table. They are under the table, where EUR-Lex prints them in its last row. They
+ * have the size of the table text and no rule. */
+.table-notes {
+  margin-top: 0.25rem;
+  border-top: none;
+  font-size: inherit;
+}
+
+.note {
+  display: grid;
+  grid-template-columns: minmax(2.5rem, auto) 1fr;
+  margin-top: 0.4rem;
+}
+
+.note > :not(.note-marker) {
+  grid-column: 2;
+}
+
+.note > p:first-of-type {
+  margin-top: 0;
+}
+
+/* The closing block of an act, as EUR-Lex sets it (oj-final, oj-signatory). In an act as published,
+ * the block is indented on both sides. The lines of the signatory are centred in a box towards the
+ * right. */
+.legal-text:not(.legal-text-consolidated) .conclusions {
+  margin: 1.5rem 3.375rem 0;
+}
+
+.signatory {
+  margin: 0 3.375rem 0 16.6875rem;
+  text-align: center;
+}
+
+/* The viewer does not keep images. The text [image] shows in their place, in grey italic. */
+.figure::before,
+.img::before {
+  content: "[image]";
+  color: var(--muted);
+  font-style: italic;
+}

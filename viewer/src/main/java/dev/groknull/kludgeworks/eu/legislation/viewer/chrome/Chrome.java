@@ -5,6 +5,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.springframework.web.servlet.resource.ResourceUrlProvider;
@@ -87,13 +88,13 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
   }
 
   /**
-   * The stylesheet and scripts of the page. The URL of each file contains a hash of its content.
-   * For example, {@code /css/viewer-<hash>.css}. The property {@code
+   * The stylesheets and scripts of the page. The URL of each file contains a hash of its content.
+   * For example, {@code /css/chrome-<hash>.css}. The property {@code
    * spring.web.resources.chain.strategy.content} enables this. Thus a page always asks for the
    * current files, never for an old copy that a browser kept.
    */
   public record Assets(
-      String css,
+      List<String> css,
       String htmx,
       String sse,
       String theme,
@@ -108,7 +109,11 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
               request.getAttribute(
                   ResourceUrlProviderExposingInterceptor.RESOURCE_URL_PROVIDER_ATTR);
       return new Assets(
-          url(urls, request, "/css/viewer.css"),
+          List.of(
+              url(urls, request, "/css/chrome.css"),
+              url(urls, request, "/css/catalogue.css"),
+              url(urls, request, "/css/comparison.css"),
+              url(urls, request, "/css/legaltext.css")),
           url(urls, request, "/webjars/htmx.org/dist/htmx.min.js"),
           url(urls, request, "/webjars/htmx.org/dist/ext/hx-sse.min.js"),
           url(urls, request, "/js/theme.js"),

@@ -1,0 +1,798 @@
+/* SPDX-License-Identifier: MIT */
+/*
+ * Styles of the comparison module (comparison/*.jte).
+ * Includes outline navigation, synopsis ledger, changes column, and diff marks.
+ */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 4px 0;
+}
+
+/* The chip of an act. It shows the number of the act and how many differences it made here. When
+ * the chip is on, the comparison shows only the changes of that act. The chip of an act that made
+ * no difference is quiet. */
+.chip {
+  display: inline-flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 2px 8px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+a.chip:hover {
+  border-color: var(--ink);
+}
+
+.chip .label {
+  font-weight: 600;
+}
+
+.chip .count {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.chip.on {
+  padding: 1px 7px;
+  border: 2px solid var(--accent);
+  background: var(--accent-tint);
+}
+
+.chip.zero .label {
+  color: var(--muted2);
+  font-weight: 500;
+}
+
+/* The chip for the differences that no single act is known to have made. */
+.chip.unknown {
+  border-style: dashed;
+  color: var(--muted);
+}
+
+/* The chip of a corrigendum has a dotted border in the violet of corrections. */
+.chip.corrigendum {
+  border-style: dotted;
+  border-color: var(--corr-ink);
+}
+
+/* The hint that says what the numbers on the chips mean. */
+.between .hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+/* The chips of the acts that made no difference here. They are folded. */
+.more-acts > summary {
+  color: var(--accent);
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+  list-style: none;
+}
+
+.more-acts > summary::-webkit-details-marker {
+  display: none;
+}
+
+.more-acts[open] > summary {
+  display: none;
+}
+
+/* The note that the comparison shows the changes of one act only. It has a link back to the changes
+ * of all acts. */
+.controls .only {
+  padding: 3px 10px;
+  border-radius: 3px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 13px;
+}
+
+.controls .only a {
+  color: inherit;
+}
+
+/* The summary of the comparison. It says how many differences there are, and of which kinds. */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: baseline;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 13.5px;
+}
+
+/* The views of the comparison: Changes, Whole text and Synopsis. The page shows one view at a time.
+ */
+.views {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.views .view {
+  padding: 3px 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.views .view + .view {
+  border-left: 1px solid var(--rule);
+}
+
+.views .view[aria-current="page"] {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* The Whole text view shows every provision of the later text. Each provision that differs is
+ * marked in place, as in the Changes view. The text of the other provisions stays in its column. */
+.whole .book {
+  padding: 16px 0 24px 32px;
+}
+
+.whole .book .unit > :not(.unit, .difference) {
+  max-width: 42.5rem;
+}
+
+/* The Synopsis view is a ledger of the two texts, aligned by provision. Each provision that differs
+ * is a tinted row, and the last column says what changed it. The From column shows only the words
+ * it lost. The To column shows only the words it gained. */
+.ledger {
+  margin-top: 16px;
+  border-top: 2px solid var(--ink);
+}
+
+.ledger-head,
+.ledger-row {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1fr) 15rem;
+}
+
+.ledger-head {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--ink);
+}
+
+.ledger-head > div {
+  padding: 8px 14px;
+  font:
+    500 11.5px ui-sans-serif,
+    system-ui,
+    sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.ledger-head .celex {
+  display: block;
+  font:
+    600 13px ui-monospace,
+    monospace;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
+}
+
+.ledger-row {
+  border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 64px;
+}
+
+.ledger-row > div {
+  min-width: 0;
+  padding: 9px 14px;
+}
+
+.ledger-row > div + div,
+.ledger-head > div + div {
+  border-left: 1px solid var(--rule);
+}
+
+.ledger-lead .from,
+.ledger-lead .to {
+  color: var(--muted);
+}
+
+.ledger-row[class*="difference-"] {
+  background: var(--chg-tint);
+}
+
+.ledger-row.unknown > :not(.what) {
+  opacity: 0.55;
+}
+
+.ledger .provision {
+  font:
+    600 12.5px ui-monospace,
+    monospace;
+}
+
+.ledger .provision .n {
+  display: block;
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.ledger .from ins.diff,
+.ledger .to del.diff {
+  display: none;
+}
+
+.ledger .absent {
+  margin: 0;
+  font:
+    italic 13.5px ui-sans-serif,
+    system-ui,
+    sans-serif;
+  color: var(--muted);
+}
+
+.ledger .what {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font:
+    12.5px/1.45 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  color: var(--accent);
+}
+
+.ledger .what .steps {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.ledger .what .steps > * {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  min-height: 28px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.ledger .what .steps span {
+  opacity: 0.4;
+}
+
+.ledger-same .from,
+.ledger-same .to {
+  color: var(--muted);
+}
+
+.ledger .history {
+  font:
+    12px/1.4 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  color: var(--muted);
+}
+
+.ledger .history a {
+  color: inherit;
+}
+
+.ledger-fold {
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface);
+  font-size: 13.5px;
+  color: var(--muted);
+}
+
+/* A Synopsis fold that the reader opens in place. Its rows look like the rows of the ledger and
+ * show under its line. */
+details.ledger-fold > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+details.ledger-fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.ledger-fold .show u {
+  text-underline-offset: 2px;
+}
+
+details.ledger-fold[open] .show {
+  display: none;
+}
+
+details.ledger-fold[open] {
+  padding-bottom: 0;
+}
+
+.ledger-fold-rows {
+  margin: 9px -14px 0;
+  font-size: initial;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+.changes {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Compare hides the amendment marks (▼) and the struck text that a consolidation keeps. The
+ * sidenotes and the change marks say what happened. Read shows them. */
+.changes .provenance,
+.changes .deleted {
+  display: none;
+}
+
+/* A deleted unit in the Whole text shows where it was. Its number and words are struck through in
+ * red and a little grey, so the text around it is easy to read. */
+.whole .difference-deleted > :not(.sidenote, .difference-number) {
+  opacity: 0.7;
+}
+
+.whole .difference-deleted del.diff {
+  background: none;
+}
+
+/* The Changes view shows the provisions that differ in the book column. Each one has its number in
+ * the margin and its note beside it. The opening of the unit that contains them is a quiet grey.
+ * The units that are the same in both texts are folded. */
+.changes .book {
+  padding: 16px 0 24px 32px;
+}
+
+.difference {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 42.5rem) 13rem;
+  column-gap: 32px;
+  margin: 10px 0;
+  scroll-margin-top: 48px;
+}
+
+.difference > .unit {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.difference-number {
+  position: absolute;
+  left: -28px;
+  top: 2px;
+  font:
+    600 11px/1 ui-sans-serif,
+    system-ui,
+    sans-serif;
+  color: var(--accent);
+}
+
+.sidenote {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+  padding-left: 10px;
+  border-left: 2px solid var(--accent-line);
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.sidenote b {
+  margin-right: 4px;
+  color: var(--accent);
+}
+
+/* The lines of a sidenote. First is the act that made the change. Then come the note, when each act
+ * applies, and what the text was before. Each one is on a line of its own. */
+.sidenote .made {
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.sidenote .made + .note,
+.sidenote .applies,
+.sidenote .why,
+.sidenote .before {
+  display: block;
+  margin-top: 3px;
+}
+
+/* What the reader must know about who made the change. For example, acts made it together, it shows
+ * only in the data, or it is not known. */
+.sidenote .why {
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* When the comparison shows the changes of one act only, some changes may be of that act, but this
+ * is not known. These changes are grey. The page never hides them. */
+.difference.unknown > :not(.sidenote) {
+  opacity: 0.6;
+}
+
+.difference-inserted .sidenote {
+  border-left-color: var(--ins-ink);
+}
+
+.difference-deleted .sidenote {
+  border-left-color: var(--del-ink);
+}
+
+.lead {
+  max-width: 42.5rem;
+  margin-top: 18px;
+  color: var(--muted);
+}
+
+.fold {
+  max-width: 42.5rem;
+  margin: 6px 0;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.fold > summary,
+.sidenote {
+  font-family: system-ui, sans-serif;
+}
+
+.fold > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.fold > summary::-webkit-details-marker {
+  display: none;
+}
+
+.fold .show u {
+  color: var(--accent);
+}
+
+.fold[open] .show {
+  display: none;
+}
+
+.fold > .fold-text {
+  margin-top: 6px;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+/* The date lines of six or more acts, folded. */
+.sidenote details.dates > summary {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+/* The part of the page with the text (catalogue/text/ready.jte). The outline is in a sidebar that
+ * stays in sight below the notice. The text is beside it, at the width that EUR-Lex uses. A jump
+ * from the outline stops clear of the notice. */
+.outlined {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding-top: 18px;
+}
+
+nav.outline {
+  display: block;
+  flex: 0 0 250px;
+  position: sticky;
+  top: 44px;
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+  border: 1px solid var(--rule);
+  font-size: 13px;
+}
+
+.outline-head {
+  margin: 0;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--hair);
+  background: var(--surface);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  align-items: center;
+}
+
+nav.outline ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav.outline ul ul {
+  padding-left: 12px;
+}
+
+nav.outline summary {
+  display: flex;
+  gap: 4px;
+  padding-left: 6px;
+  list-style: none;
+  cursor: pointer;
+}
+
+nav.outline summary::-webkit-details-marker {
+  display: none;
+}
+
+nav.outline summary::before {
+  content: "▸";
+  flex: 0 0 10px;
+  padding-top: 3px;
+  font-size: 10px;
+  color: var(--faint);
+}
+
+nav.outline details[open] > summary::before {
+  content: "▾";
+}
+
+nav.outline a {
+  display: block;
+  flex: 1;
+  padding: 3px 10px 3px 20px;
+  color: var(--ink3);
+  text-decoration: none;
+}
+
+nav.outline summary a {
+  padding-left: 0;
+}
+
+nav.outline a:hover {
+  background: var(--hover);
+}
+
+/* The outline of a comparison (comparison/outline.jte). Each unit shows its label, a bar for its
+ * share of the differences, and its count. The differences in the points of a unit show as chips.
+ */
+nav.outline.counted .outline-head {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav.outline.counted a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 34px 20px;
+  gap: 4px;
+  align-items: center;
+}
+
+nav.outline.counted .has {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+nav.outline .bar {
+  display: block;
+  height: 6px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--surface2);
+}
+
+nav.outline .bar i {
+  display: block;
+  height: 6px;
+  background: var(--accent-fill);
+}
+
+nav.outline .n {
+  font:
+    11.5px ui-monospace,
+    monospace;
+  text-align: right;
+  color: var(--ink);
+}
+
+/* The changed provisions in the points of a unit. Each one has a row, as the units above them do. */
+nav.outline .chips {
+  display: block;
+  padding: 0 0 2px 20px;
+}
+
+nav.outline .chips a {
+  display: block;
+  padding: 2px 10px 2px 20px;
+  font:
+    11.5px ui-monospace,
+    monospace;
+  color: var(--accent);
+}
+
+/* The button that collapses the outline to a rail. Under the button, it shows where the reader is.
+ */
+.outline-rail {
+  margin-left: 6px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.outline-rail:hover {
+  color: var(--ink);
+}
+
+.outline-follow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin: 0;
+  padding: 6px 12px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 12.5px;
+  color: var(--ink);
+}
+
+.outline-follow .where {
+  flex: 1;
+  min-width: 0;
+}
+
+nav.outline .outline-follow a {
+  display: inline;
+  padding: 0 4px;
+  color: var(--accent);
+}
+
+nav.outline .outline-follow a[aria-disabled] {
+  pointer-events: none;
+  color: var(--disabled);
+}
+
+/* The outline when it is collapsed. It is a rail of the parts with their counts. Nothing shows
+ * below the parts. */
+nav.outline.rail {
+  flex-basis: 140px;
+}
+
+nav.outline.rail ul ul,
+nav.outline.rail .chips,
+nav.outline.rail .bar,
+nav.outline.rail .outline-follow,
+nav.outline.rail .outline-head > span:nth-child(2) {
+  display: none;
+}
+
+nav.outline.rail summary::before {
+  content: none;
+}
+
+nav.outline.counted.rail a {
+  grid-template-columns: minmax(0, 1fr) 0 26px;
+  padding-left: 10px;
+}
+
+/* An annex that was inserted whole. It is folded, and the fold shows its size. */
+details.annex-inserted > summary {
+  padding: 6px 0;
+  color: var(--ins-ink);
+  cursor: pointer;
+}
+
+details.annex-inserted[open] .show {
+  display: none;
+}
+
+/* The ▼ mark that shows what amended a unit. It is in the margin beside the number of the unit.
+ * Its hover shows the act and what it did. A click opens the change in Compare. Read does not show
+ * the change itself. */
+.legal-text .unit {
+  position: relative;
+}
+
+.legal-text .unit > .provenance,
+.legal-text .unit > .deleted > .provenance {
+  position: absolute;
+  left: -1.3rem;
+  top: 0.15em;
+}
+
+.provenance::before {
+  content: "▼";
+  color: var(--muted);
+  font-size: 0.7em;
+  margin-right: 0.25rem;
+}
+
+.content .provenance {
+  cursor: pointer;
+}
+
+.content .provenance:hover::before,
+.content .provenance:focus-visible::before {
+  color: var(--accent);
+}
+
+/* The notes of deleted text. They show only when the reader follows a reference in that text. */
+.deleted-notes > .note:not(:target) {
+  display: none;
+}
+
+.deleted-notes > .note {
+  color: var(--del-ink);
+  text-decoration: line-through;
+}
+
+ins.changed {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* The marks of a comparison. Inserted words are underlined on a blue tint. Deleted words are struck
+ * through on a red tint. The two marks differ in lightness too, not only in hue. */
+ins.diff {
+  color: var(--ins-ink);
+  background: var(--ins-bg);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+del.diff {
+  color: var(--del-ink);
+  background: var(--del-bg);
+  text-decoration: line-through;
+}
+
+/* The marks of a correction, in every view. Words that a corrigendum added have a dotted
+ * underline. Words that it removed are struck through. Both are violet. */
+.corrected ins.diff,
+.corrected del.diff {
+  color: var(--corr-ink);
+  background: var(--corr-bg);
+  text-decoration-color: var(--corr-ink);
+}
+
+.corrected ins.diff {
+  text-decoration-style: dotted;
+  text-decoration-thickness: 2px;
+}
+
+/* The legend at the end of the line of controls. It says what the marks on the page mean. */
+.controls .legend {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.controls .legend ins.diff,
+.controls .legend del.diff {
+  padding: 0 3px;
+}
+
+.quoted-structure {
+  margin: 0.5rem 0 0 2rem;
+}
+
+.signature {
+  margin-top: 1.5rem;
+}

@@ -21,6 +21,7 @@ path = [
   "mise.lock",
   "package.json",
   ".oxlintrc.json",
+  ".stylelintrc.json",
   "pnpm-lock.yaml",
   "**/tsconfig.json",
   ".mise/locks/**",

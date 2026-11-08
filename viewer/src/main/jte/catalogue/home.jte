@@ -37,8 +37,8 @@
           <p class="none">No act of this kind has all these words in its title.</p>
         @endif
         @for(var row : results.rows())
-          <div class="result">
-            <div class="cx">${row.celex()}<span class="k">${row.kind()}</span></div>
+          <article class="result">
+            <header class="cx">${row.celex()}<span class="k">${row.kind()}</span></header>
             <div class="t">
               @if(row.href() != null)<a href="${row.href()}">${row.head()}</a>@else<span class="head">${row.head()}</span>@endif
               @if(row.rest() != null)<p>${row.rest()}</p>@endif
@@ -46,7 +46,7 @@
                 <a class="to" href="${go.href()}">${go.label()} →</a>
               @endfor
             </div>
-          </div>
+          </article>
         @endfor
         @if(!results.rows().isEmpty() || results.previous() != null)
           <div class="more">

@@ -7,7 +7,7 @@
      from that module's address (compare.acts()) when the slot loads, and swaps the slot for them. --%>
 <section class="selection compare" aria-label="Versions compared">
   @for(var card : java.util.List.of(compare.from(), compare.to()))
-    <div class="card">
+    <article class="card">
       <span class="card-kind">${card.kind()}</span>
       <a class="card-celex mono" href="${card.eurLex()}" title="On EUR-Lex">${card.celex()}</a>
       <span>${card.period()}</span>
@@ -24,7 +24,7 @@
         <input type="hidden" name="${card.keep()}" value="${card.kept()}">
         <button>Go</button>
       </form>
-    </div>
+    </article>
     @if(card == compare.from())
       <span class="arrow" aria-hidden="true">→</span>
     @endif

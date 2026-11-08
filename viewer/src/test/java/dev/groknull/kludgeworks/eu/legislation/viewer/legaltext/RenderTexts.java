@@ -19,8 +19,8 @@ import java.nio.file.Path;
  *
  * <p>Each text is stored and read back with {@link Encoder} and {@link Decoder}, and rendered by
  * its templates. The page frame comes from {@code layout/page.jte} and {@code
- * catalogue/version.jte}. The stylesheet is at {@code /css/viewer.css}. {@code text:survey}
- * compares these pages with EUR-Lex. No database or Cellar is necessary.
+ * catalogue/version.jte}. The stylesheets are at {@code /css/*.css}. {@code text:survey} compares
+ * these pages with EUR-Lex. No database or Cellar is necessary.
  *
  * <pre>
  * bazel run …:render_texts -- {folder} {out} {language}
@@ -60,7 +60,10 @@ public final class RenderTexts {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>%1$s</title>
-      <link rel="stylesheet" href="/css/viewer.css">
+      <link rel="stylesheet" href="/css/chrome.css">
+      <link rel="stylesheet" href="/css/catalogue.css">
+      <link rel="stylesheet" href="/css/comparison.css">
+      <link rel="stylesheet" href="/css/legaltext.css">
     </head>
     <body>
       <header class="site"><a class="site-name" href="/">Amendment viewer</a></header>

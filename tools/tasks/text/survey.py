@@ -37,7 +37,7 @@ CONVERT = "//formex-converter/src/test/java/dev/groknull/kludgeworks/formex/conv
 RENDER = (
     "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext:render_texts"
 )
-CSS = ROOT / "viewer/src/main/resources/static/css/viewer.css"
+CSS = ROOT / "viewer/src/main/resources/static/css"
 LARGEST = 4 * 1024 * 1024  # bytes of Formex: past this, a text takes minutes to compare
 SCHEMA = re.compile(rb"formex-(\d\d\.\d\d)")
 ROOT_ELEMENT = re.compile(rb"<([A-Z][A-Z0-9.]*)[\s>/]")
@@ -305,7 +305,8 @@ def main() -> None:
         bazel_run(CONVERT, str(mirror), str(listed), str(texts))
         bazel_run(RENDER, str(texts), str(pages), language)
         (pages / "css").mkdir(parents=True, exist_ok=True)
-        shutil.copy(CSS, pages / "css" / "viewer.css")
+        for sheet in CSS.glob("*.css"):
+            shutil.copy(sheet, pages / "css" / sheet.name)
     strata = {}
     for line in listed.read_text(encoding="utf-8").splitlines():
         id, celex, _, formex, _, size = line.split("\t")

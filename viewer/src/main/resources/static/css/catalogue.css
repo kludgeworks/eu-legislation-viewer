@@ -1,0 +1,1158 @@
+/* SPDX-License-Identifier: MIT */
+/*
+ * Styles of the catalogue module (catalogue/home.jte, catalogue/version.jte).
+ * Includes home search, act masthead, timeline axis, reading card, and search results.
+ */
+/*
+ * The versions of the act on a time scale (catalogue/timeline.jte):
+ * - Ticks on an axis of years.
+ * - One round mark for versions that are too close to click apart. It opens a list of them.
+ * - Amber hatching where a version lags the law.
+ * - The version that the reader reads is raised and tagged.
+ */
+.timeline {
+  margin: 1rem 0;
+  padding: 0.75rem 0 0.25rem;
+  border-block: 1px solid var(--rule);
+  font-size: 0.8rem;
+}
+
+.timeline-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 0.25rem;
+  color: var(--muted);
+}
+
+.timeline-head > :first-child {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.axis {
+  position: relative;
+  height: 78px;
+  margin: 0 10px;
+}
+
+.axis-line {
+  position: absolute;
+  inset-inline: 0;
+  top: 34px;
+  height: 2px;
+  background: var(--line-strong);
+}
+
+.year {
+  position: absolute;
+  top: 54px;
+  transform: translateX(-50%);
+  font:
+    11px ui-monospace,
+    monospace;
+  color: var(--muted);
+}
+
+.year::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -14px;
+  width: 1px;
+  height: 6px;
+  background: var(--line-strong);
+}
+
+.lag {
+  position: absolute;
+  top: 29px;
+  height: 12px;
+  background: repeating-linear-gradient(
+    45deg,
+    var(--warn-stripe) 0 2px,
+    transparent 2px 5px
+  );
+  border-block: 1px solid var(--warn-stripe);
+  box-sizing: border-box;
+  z-index: 1;
+}
+
+.tick {
+  position: absolute;
+  top: 18px;
+  width: 12px;
+  height: 34px;
+  margin-left: -6px;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.tick::before {
+  content: "";
+  width: 2px;
+  height: 20px;
+  margin-top: 7px;
+  background: var(--muted);
+}
+
+.tick:hover::before,
+.tick:focus-visible::before {
+  width: 4px;
+  background: var(--accent-fill);
+}
+
+.tick[aria-current]::before {
+  width: 4px;
+  height: 34px;
+  margin-top: 0;
+  background: var(--accent-fill);
+}
+
+/*
+ * While the act is prepared (catalogue/preparing.jte), each tick shows the state of the text of its
+ * version:
+ * - Grey: queued.
+ * - Light: being built.
+ * - Dark: built.
+ * - Dashed: failed.
+ * The ticks link to nothing yet.
+ */
+.tick.queued::before {
+  background: var(--line);
+}
+
+.tick.building::before {
+  width: 4px;
+  background: var(--accent-line);
+  animation: building 1.6s ease-in-out infinite alternate;
+}
+
+.tick.ready::before {
+  width: 4px;
+  background: var(--accent-fill);
+}
+
+.tick.failed::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--muted) 0 3px,
+    transparent 3px 6px
+  );
+}
+
+/* After the act is prepared, the tick of a version whose text failed stays dashed. The tick of the
+ * version that the reader asked for is dashed in the ink of faults. */
+.tick.failed[aria-current]::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--del-ink) 0 4px,
+    transparent 4px 7px
+  );
+}
+
+@keyframes building {
+  to {
+    background: var(--accent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tick.building::before {
+    animation: none;
+  }
+}
+
+.merged.queued > summary {
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+.merged.building > summary {
+  border-color: var(--accent-line);
+}
+
+.merged.ready > summary {
+  border-color: var(--accent-fill);
+}
+
+.merged.failed > summary {
+  border-style: dashed;
+}
+
+.merged {
+  position: absolute;
+  top: 21px;
+  z-index: 3;
+}
+
+.merged > summary {
+  min-width: 26px;
+  height: 28px;
+  margin-left: -13px;
+  padding: 0 6px;
+  box-sizing: border-box;
+  border: 2px solid var(--muted);
+  border-radius: 14px;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    600 11.5px/24px ui-monospace,
+    monospace;
+  text-align: center;
+  list-style: none;
+  cursor: pointer;
+}
+
+.merged > summary::-webkit-details-marker {
+  display: none;
+}
+
+.merged > summary:hover {
+  border-color: var(--accent);
+}
+
+.merged.selected > summary {
+  border-color: var(--accent);
+  background: var(--accent-fill);
+  color: var(--on-fill);
+}
+
+.merged[open] > summary {
+  box-shadow: 0 0 0 3px var(--accent-line);
+}
+
+.merged-list {
+  position: absolute;
+  top: 36px;
+  left: -13px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: max-content;
+  max-width: 40rem;
+  padding: 6px 10px 8px;
+  border: 1px solid var(--accent-line);
+  background: var(--chg-tint);
+  box-shadow: 0 2px 6px var(--shadow);
+}
+
+.merged.left .merged-list {
+  left: auto;
+  right: -13px;
+}
+
+.merged-list > span {
+  color: var(--muted);
+}
+
+.merged-list > a[aria-current] {
+  font-weight: 600;
+}
+
+/* The range that the page compares. It is a band from the mark of From to the mark of To, under the
+ * marks. */
+.band {
+  position: absolute;
+  top: 22px;
+  height: 26px;
+  border: 2px solid var(--accent);
+  border-radius: 3px;
+  background: var(--band);
+  box-sizing: border-box;
+}
+
+.tag {
+  position: absolute;
+  top: 2px;
+  transform: translateX(-50%);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 2px 0 8px 10px;
+  color: var(--disabled);
+}
+
+.mono {
+  font-family: ui-monospace, monospace;
+}
+
+/* The head of the act's page (catalogue/masthead.jte). It holds the title, the ids and the language
+ * switch. The mode switch is at the right. A double rule is under them. */
+header.mast {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: end;
+  gap: 12px 24px;
+  padding-bottom: 14px;
+  border-bottom: 3px double var(--ink);
+}
+
+header.mast h1 {
+  margin: 0;
+  font:
+    600 22px/1.25 Georgia,
+    serif;
+  text-wrap: balance;
+}
+
+.ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 13.5px;
+}
+
+.ids > a {
+  color: var(--ink2);
+}
+
+header.mast + .timeline {
+  border-top: 0;
+}
+
+details.lang {
+  position: relative;
+}
+
+details.lang summary {
+  padding: 1px 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  font-size: 13px;
+  list-style: none;
+  cursor: pointer;
+}
+
+details.lang summary::-webkit-details-marker {
+  display: none;
+}
+
+details.lang .menu {
+  position: absolute;
+  z-index: 40;
+  top: 28px;
+  left: 0;
+  width: 320px;
+  padding: 8px 10px;
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  box-shadow: 0 4px 14px var(--shadow);
+  font-size: 13px;
+}
+
+details.lang .menu p {
+  margin: 0 0 6px;
+  color: var(--muted);
+}
+
+details.lang ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+details.lang [aria-current] {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* A language that a version on the page is not in. It stays in place in grey, and its hover says
+ * why. */
+details.lang .missing {
+  color: var(--disabled);
+  cursor: default;
+}
+
+nav.mode {
+  display: flex;
+  border: 1px solid var(--ink);
+  font-size: 14px;
+}
+
+nav.mode > * {
+  padding: 8px 18px;
+}
+
+nav.mode > * + * {
+  border-left: 1px solid var(--ink);
+}
+
+nav.mode a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+nav.mode a:hover {
+  background: var(--hover);
+}
+
+nav.mode [aria-current] {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+nav.mode [aria-disabled] {
+  color: var(--disabled);
+  cursor: default;
+}
+
+/* The Reading card (catalogue/reading.jte). It shows the version, its period and what made it.
+ * Where the version lags the law, it says so in amber. The card also holds the date form. */
+section.selection {
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* Read mode. The card is at the left. The comparison with the version before is beside it. */
+section.selection:not(.compare) {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  align-items: center;
+}
+
+a.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 34px;
+  padding: 0 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  color: var(--ink);
+  font-size: 13.5px;
+  text-decoration: none;
+}
+
+a.button:hover {
+  border-color: var(--ink);
+}
+
+/* Compare mode. The section shows From → To, and then the acts between them. */
+section.selection.compare {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) minmax(0, 1.3fr);
+  gap: 14px;
+  align-items: start;
+}
+
+.arrow {
+  padding-top: 16px;
+  font-size: 22px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+  color: var(--ink2);
+}
+
+.card-kind {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card .card-celex {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card .card-celex:hover {
+  text-decoration: underline;
+}
+
+.card b {
+  color: var(--ink);
+}
+
+.lag-warning {
+  margin-top: 6px;
+  padding: 5px 8px;
+  border: 1px solid var(--warn-line);
+  border-radius: 3px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+/* The note that a text may lag the law, because the date of application of an act is not known.
+ * It is grey and shows on the cards only. */
+.lag-maybe {
+  margin-top: 6px;
+  padding: 5px 8px;
+  border: 1px dashed var(--line);
+  border-radius: 3px;
+  color: var(--muted);
+  font-size: 12.5px;
+  line-height: 1.4;
+}
+
+form.on {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  margin-top: 8px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+form.on input,
+form.on button {
+  min-height: 28px;
+  padding: 0 8px;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+
+form.on button {
+  padding: 0 12px;
+  cursor: pointer;
+}
+
+/* The home page (catalogue/home.jte). It shows the name of the viewer, the Find an act box and the
+ * results of a search. Three notes come after them. */
+.home {
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.home-mast {
+  padding: 12px 0 18px;
+  border-bottom: 3px double var(--ink);
+}
+
+.home-mast .home-name {
+  margin: 0;
+  font:
+    600 34px/1.1 Georgia,
+    serif;
+}
+
+.home-mast p {
+  max-width: 44rem;
+  margin: 6px 0 0;
+  color: var(--ink2);
+  font-size: 15.5px;
+}
+
+form.find-act {
+  margin: 26px 0 0;
+}
+
+form.find-act label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+form.find-act .field {
+  display: flex;
+  max-width: 760px;
+}
+
+form.find-act input {
+  flex: 1;
+  min-width: 0;
+  min-height: 52px;
+  padding: 0 14px;
+  border: 2px solid var(--ink);
+  border-right: 0;
+  border-radius: 3px 0 0 3px;
+  background: var(--bg);
+  color: var(--ink);
+  font: inherit;
+  font-size: 18px;
+}
+
+form.find-act button {
+  padding: 0 22px;
+  border: 2px solid var(--ink);
+  border-radius: 0 3px 3px 0;
+  background: var(--ink);
+  color: var(--bg);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+form.find-act .ex {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+form.find-act .ex a {
+  margin: 0 4px;
+  font:
+    12.5px ui-monospace,
+    monospace;
+}
+
+.home .none {
+  margin: 24px 0 0;
+  color: var(--ink2);
+}
+
+.results-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 20px;
+  margin: 34px 0 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--ink);
+}
+
+.results-head h2 {
+  margin: 0;
+  font:
+    600 21px Georgia,
+    serif;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filters a {
+  padding: 2px 10px;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  color: var(--ink);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.filters a[aria-current] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.result {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  border-bottom: 1px solid var(--hair);
+}
+
+.result:hover {
+  background: var(--chg-tint);
+}
+
+.result > * {
+  padding: 12px 14px;
+}
+
+.result > * + * {
+  border-left: 1px solid var(--hair);
+}
+
+.result .cx {
+  font:
+    600 12.5px ui-monospace,
+    monospace;
+}
+
+.result .cx .k {
+  display: block;
+  color: var(--muted);
+  font:
+    400 11.5px system-ui,
+    sans-serif;
+}
+
+.result .t > a:first-child,
+.result .t .head {
+  color: var(--ink);
+  font:
+    600 17px/1.35 Georgia,
+    serif;
+  text-decoration: none;
+}
+
+.result .t > a:first-child:hover {
+  text-decoration: underline;
+}
+
+.result .t p {
+  margin: 2px 0 0;
+  color: var(--ink2);
+  font:
+    15px/1.45 Georgia,
+    serif;
+}
+
+.result .t .to {
+  display: block;
+  width: fit-content;
+  margin-top: 4px;
+  font-size: 12.5px;
+  text-decoration: none;
+}
+
+.result .t .to:hover {
+  text-decoration: underline;
+}
+
+.more {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 20px;
+  padding: 12px 0 0;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.more .pages {
+  display: flex;
+  gap: 16px;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 28px;
+  margin: 44px 0 60px;
+  padding-top: 18px;
+  border-top: 1px solid var(--rule);
+  color: var(--ink2);
+  font-size: 14px;
+}
+
+.about h3 {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.about p {
+  margin: 0;
+}
+
+/* The note under the cards that says how the page selected the versions. For example, the page
+ * opened without dates, or the reader asked for an act that is not between the two versions. */
+.compare-note {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* Both ends of the comparison are the same version. */
+.same-version {
+  margin: 24px 0;
+}
+
+.same-version .actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* The title of the act in English. The first line goes up to its date. The rest of the title is
+ * under it. */
+.mast .subject {
+  margin: 4px 0 0;
+  max-width: 60rem;
+  color: var(--ink3);
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* The links to the act on EUR-Lex. They are quiet, with a small ↗. */
+.ids a.quiet {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.ids a.quiet:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.ids a.quiet span {
+  font-size: 0.85em;
+}
+
+/*
+ * Styles of async preparation and loading states (catalogue/preparing.jte).
+ * Includes progress indicators, steps-log, failure diagnostics, and skeleton loaders.
+ */
+/* The act's page while the act is prepared (catalogue/preparing.jte). It shows the progress panel.
+ * What is already known about the act is beside it. */
+.preparing {
+  display: grid;
+  grid-template-columns: minmax(0, 42.5rem) 16rem;
+  gap: 32px;
+  padding: 20px 0 32px;
+}
+
+.preparing .panel {
+  padding: 18px 22px;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
+
+.preparing h2 {
+  margin: 0 0 8px;
+  font:
+    600 17px Georgia,
+    serif;
+}
+
+.preparing .panel > p {
+  max-width: 65ch;
+  margin: 0 0 14px;
+}
+
+.preparing .waiting {
+  margin: 0;
+  padding: 10px 12px;
+  border-left: 3px solid var(--line-strong);
+  background: var(--bg);
+}
+
+.preparing .waiting p {
+  margin: 0;
+}
+
+.preparing .waiting .aside {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-style: italic;
+  transition: opacity 0.4s ease;
+}
+
+.preparing .waiting .aside.turning {
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preparing .waiting .aside {
+    transition: none;
+  }
+}
+
+.preparing .stages {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.preparing .stages p {
+  margin: 4px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.preparing progress {
+  width: 100%;
+  height: 8px;
+  margin-top: 6px;
+  accent-color: var(--accent-fill);
+}
+
+.preparing .foot {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.preparing .log {
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.preparing .log > summary {
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.steps-log {
+  max-height: 16rem;
+  overflow-y: auto;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  font:
+    12.5px/1.6 ui-monospace,
+    monospace;
+}
+
+.steps-log time {
+  color: var(--muted);
+}
+
+.preparing .leave {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.preparing .known dl {
+  margin: 0 0 20px;
+  font-size: 14px;
+}
+
+.preparing .known dt {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.preparing .known dd {
+  margin: 2px 0 0;
+}
+
+.preparing .known p {
+  font-size: 14px;
+}
+
+/* The page just after the act is prepared. A line says what the viewer prepared. The content under
+ * it fades in. */
+.receipt {
+  display: block;
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  background: var(--accent-tint);
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.receipt button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#page.arrived > :is(.selection, #text) {
+  animation: arrive 0.5s ease-out;
+}
+
+@keyframes arrive {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* stylelint-disable-next-line selector-max-id */
+  #page.arrived > :is(.selection, #text) {
+    animation: none;
+  }
+}
+
+/* Versions that appeared after the act was prepared, while the viewer prepares them
+ * (catalogue/arriving.jte). */
+.arriving {
+  margin: 12px 0 0;
+  padding: 8px 14px;
+  border: 1px solid var(--ins-ink);
+  background: var(--ins-bg);
+  color: var(--ink);
+  font-size: 13.5px;
+}
+
+.arriving p {
+  margin: 0;
+}
+
+/* Why the viewer could not make a text, shown in place of the text (catalogue/text/failed.jte). It
+ * says what happened, which version, and only what can help. A fault, of the source or of the
+ * viewer, has a warm head. A reason that is not a fault has a grey head. */
+.failure {
+  max-width: 50rem;
+  margin: 20px 0 32px;
+  border: 1px solid var(--rule);
+}
+
+.failure-head {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface2);
+}
+
+.failure.fault .failure-head {
+  background: var(--del-bg);
+}
+
+.failure h2 {
+  margin: 0;
+  font:
+    600 19px Georgia,
+    serif;
+  text-wrap: balance;
+}
+
+.failure-head p {
+  max-width: 65ch;
+  margin: 4px 0 0;
+  color: var(--ink3);
+}
+
+.failure dl {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 4px 14px;
+  margin: 0;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 13.5px;
+}
+
+.failure dt {
+  color: var(--muted);
+}
+
+.failure dd {
+  margin: 0;
+}
+
+.failure-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 14px;
+  align-items: center;
+  padding: 12px 18px;
+  font-size: 13.5px;
+}
+
+.failure-actions form {
+  margin: 0;
+}
+
+.failure-actions button {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--accent-fill);
+  color: var(--on-fill);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.failure-actions button:hover {
+  background: var(--accent-hover);
+}
+
+.failure .reference {
+  margin: 0;
+  padding: 0 18px 12px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+/* A part of the page that loads. First it shows nothing for a moment, then a bar, then the shape of
+ * the page. */
+.loading-bar,
+.skeleton {
+  opacity: 0;
+  animation: appear 0s forwards;
+}
+
+.loading-bar {
+  height: 3px;
+  margin: 12px 0;
+  overflow: hidden;
+  background: var(--surface2);
+  animation-delay: 0.3s;
+}
+
+.loading-bar::after {
+  content: "";
+  display: block;
+  width: 30%;
+  height: 3px;
+  background: var(--accent-fill);
+  animation: sweep 1.2s ease-in-out infinite;
+}
+
+.skeleton {
+  display: grid;
+  gap: 10px;
+  max-width: 42.5rem;
+  animation-delay: 1.5s;
+}
+
+.skeleton i {
+  display: block;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--surface2);
+}
+
+.skeleton i:nth-child(odd) {
+  width: 80%;
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(340%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading-bar::after {
+    animation: none;
+  }
+}

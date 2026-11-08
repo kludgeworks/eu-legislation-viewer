@@ -15,7 +15,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>${title}</title>
-  <link rel="stylesheet" href="${chrome.assets().css()}">
+  @for(var href : chrome.assets().css())
+    <link rel="stylesheet" href="${href}">
+  @endfor
   <script src="${chrome.assets().htmx()}" defer></script>
   <script src="${chrome.assets().sse()}" defer></script>
   <script type="module" src="${chrome.assets().theme()}"></script>
@@ -26,11 +28,11 @@
   ${head}
 </head>
 <body>
-  <div class="notice" role="note">
+  <aside class="notice" aria-label="Disclaimer" role="note">
     <b>Unofficial.</b>
     <span>Consolidated versions, and comparisons of them, have no legal effect. Only the Official
       Journal of the European Union is authentic.</span>
-  </div>
+  </aside>
   <nav class="site" aria-label="Site">
     <a class="site-name" href="/">Amendment viewer</a>
     @if(search && chrome.results() != null)
