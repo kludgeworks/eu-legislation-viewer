@@ -57,11 +57,11 @@ rules:
       category: maintainability
     paths:
       include:
-        - "viewer/src/**"
+        - "/viewer/src/**"
       exclude:
         # Flyway checksums applied migrations: their comments can't change
-        - "viewer/src/main/resources/db/migration/**/V*.sql"
-        - "viewer/src/test/resources/**"
+        - "/viewer/src/main/resources/db/migration/**/V*.sql"
+        - "/viewer/src/test/resources/**"
     pattern-regex: '\(Design\b|\bDesign:|\bD-\d{2}\b|\(Research:'
 
   - id: htmx-4-event-names
@@ -73,8 +73,8 @@ rules:
       category: correctness
     paths:
       include:
-        - "viewer/src/**/*.js"
-        - "viewer/src/**/*.jte"
+        - "/viewer/src/**/*.js"
+        - "/viewer/src/**/*.jte"
     pattern-regex: '\bhtmx:[a-z]+[A-Z]\w*'
 
   - id: modulith-no-named-interface
@@ -86,7 +86,7 @@ rules:
       category: architecture
     paths:
       include:
-        - "viewer/src/**/*.java"
+        - "/viewer/src/**/*.java"
     pattern-regex: '@(org\.springframework\.modulith\.)?NamedInterface\b'
 
   - id: modulith-no-allowed-dependencies
@@ -98,5 +98,5 @@ rules:
       category: architecture
     paths:
       include:
-        - "viewer/src/**/*.java"
+        - "/viewer/src/**/*.java"
     pattern-regex: '\ballowedDependencies\s*='
