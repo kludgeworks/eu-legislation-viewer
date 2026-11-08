@@ -1096,6 +1096,9 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this figure in its current form.</xs:documentation></xs:annotation>
+          </xs:element>
           <xs:element name="caption" type="Caption" minOccurs="0">
             <xs:annotation><xs:documentation>The text printed with the image, usually under it (Formex CAPTION).</xs:documentation></xs:annotation>
           </xs:element>
@@ -1141,6 +1144,9 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
+          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation><xs:documentation>The amending acts that put this formula in its current form.</xs:documentation></xs:annotation>
+          </xs:element>
           <xs:any namespace="http://www.w3.org/1998/Math/MathML" processContents="skip">
             <xs:annotation><xs:documentation>The MathML math element.</xs:documentation></xs:annotation>
           </xs:any>

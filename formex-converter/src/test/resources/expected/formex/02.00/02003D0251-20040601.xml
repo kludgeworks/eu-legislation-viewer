@@ -219,8 +219,18 @@
    </body>
    <annexes>
       <unit eId="att_1" kind="attachment">
-         <figure src="L_2004259EN.01000302.tif" content="form"/>
-         <figure src="L_2004259EN.01000401.tif" content="form"/>
+         <figure src="L_2004259EN.01000302.tif" content="form">
+            <provenance amendingAct="32004D0562"
+                        action="replaced"
+                        location="PT:2 .AND. AX:0;PG:3 .AND. PT:2 .AND. AX:0;PG:4"
+                        marker="O001001M001000"/>
+         </figure>
+         <figure src="L_2004259EN.01000401.tif" content="form">
+            <provenance amendingAct="32004D0562"
+                        action="replaced"
+                        location="PT:2 .AND. AX:0;PG:3 .AND. PT:2 .AND. AX:0;PG:4"
+                        marker="O001001M001000"/>
+         </figure>
          <figure src="L_2003093EN.01004701.tif" content="form"/>
          <figure src="L_2003093EN.01004801.tif" content="form"/>
       </unit>

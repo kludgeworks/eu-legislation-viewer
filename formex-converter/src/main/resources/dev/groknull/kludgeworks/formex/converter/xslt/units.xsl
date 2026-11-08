@@ -248,24 +248,30 @@
   <!-- what an amending act inserts or substitutes; its units get eIds under …/qstr_N -->
   <xsl:template match="QUOT.S" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <!-- an annex's fragments, which may be files of their own: its quotations are numbered through them -->
     <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="scope" as="element()" select="f:quotation-scope(.)"/>
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($annexFragments, $scope)"/>
     <xsl:variable name="earlier" as="xs:integer" select="
         if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//QUOT.S[f:quotation-scope(.) intersect $annexFragments])
         else 0"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'qstr', string($earlier + count($scope//QUOT.S[. &lt;&lt; current()][f:quotation-scope(.) is $scope]) + 1))"/>
-    <quotedStructure eId="{$eid}">
-      <xsl:call-template name="f:blocks">
-        <xsl:with-param name="nodes" as="node()*" select="node()"/>
-        <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-        <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
-        <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': $ctx}" tunnel="yes"/>
-        <xsl:with-param name="quoted" as="xs:boolean" select="true()" tunnel="yes"/>
-      </xsl:call-template>
-    </quotedStructure>
+    <xsl:variable name="quotedStructure" as="element()">
+      <quotedStructure eId="{$eid}">
+        <xsl:call-template name="f:blocks">
+          <xsl:with-param name="nodes" as="node()*" select="node()"/>
+          <xsl:with-param name="ctx" as="xs:string*" select="if ($m[f:is-deletion(.)]) then ($ctx, f:ids($m)) else $ctx" tunnel="yes"/>
+          <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+          <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
+          <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': if ($m[f:is-deletion(.)]) then ($ctx, f:ids($m)) else $ctx}" tunnel="yes"/>
+          <xsl:with-param name="quoted" as="xs:boolean" select="true()" tunnel="yes"/>
+        </xsl:call-template>
+      </quotedStructure>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $quotedStructure)"/>
   </xsl:template>
 
   <!-- an annotation (the notes printed with a form) numbers what it holds apart from the text around
@@ -307,30 +313,40 @@
        whose units hang off fgr_N, numbered through the file -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="figure" as="xs:string" select="f:eid($base, 'fgr', string(count(preceding::INCL.ELEMENT[@TYPE = 'TIFF']) + 1))"/>
-    <figure src="{@FILEREF}">
-      <xsl:sequence select="f:image-content(.)"/>
-      <xsl:if test="CAPTION">
-        <caption>
-          <xsl:call-template name="f:blocks">
-            <xsl:with-param name="nodes" as="node()*" select="CAPTION/node()"/>
-            <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
-            <xsl:with-param name="levels" as="map(*)" select="map{'base': $figure, 'ctx': $ctx}" tunnel="yes"/>
-          </xsl:call-template>
-        </caption>
-      </xsl:if>
-      <xsl:if test="IMG.CNT">
-        <description>
-          <xsl:call-template name="f:blocks">
-            <xsl:with-param name="nodes" as="node()*" select="IMG.CNT/node()"/>
-            <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
-            <xsl:with-param name="levels" as="map(*)" select="map{'base': $figure, 'ctx': $ctx}" tunnel="yes"/>
-          </xsl:call-template>
-        </description>
-      </xsl:if>
-      <xsl:apply-templates select="node() except (CAPTION | IMG.CNT)" mode="unexpected"/>
-    </figure>
+    <xsl:variable name="fig" as="element()">
+      <figure src="{@FILEREF}">
+        <xsl:sequence select="f:image-content(.)"/>
+        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:if test="CAPTION">
+          <caption>
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" as="node()*" select="CAPTION/node()"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map{'base': $figure, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
+            </xsl:call-template>
+          </caption>
+        </xsl:if>
+        <xsl:if test="IMG.CNT">
+          <description>
+            <xsl:call-template name="f:blocks">
+              <xsl:with-param name="nodes" as="node()*" select="IMG.CNT/node()"/>
+              <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
+              <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
+              <xsl:with-param name="base" as="xs:string?" select="$figure" tunnel="yes"/>
+              <xsl:with-param name="levels" as="map(*)" select="map{'base': $figure, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
+            </xsl:call-template>
+          </description>
+        </xsl:if>
+        <xsl:apply-templates select="node() except (CAPTION | IMG.CNT)" mode="unexpected"/>
+      </figure>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $fig)"/>
   </xsl:template>
 
   <!-- CONTENT="TECH.DESIGN" → content="techDesign" -->

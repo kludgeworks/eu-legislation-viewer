@@ -41,9 +41,16 @@
 
   <!-- a displayed formula -->
   <xsl:template match="FORMULA.S" mode="block">
-    <math>
-      <xsl:sequence select="f:math-root(., 'block')"/>
-    </math>
+    <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
+    <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="formula" as="element()">
+      <math>
+        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:math-root(., 'block')"/>
+      </math>
+    </xsl:variable>
+    <xsl:sequence select="f:wrap-deleted($m, $formula)"/>
   </xsl:template>
 
   <xsl:function name="f:math-root" as="element(m:math)">

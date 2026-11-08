@@ -132,4 +132,54 @@
     </x:expect>
   </x:scenario>
 
+  <x:scenario label="A marker around a figure alone">
+    <x:context mode="block" xmlns="">
+      <CONTENTS><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32015L0996R(01)" ACTIVE.LOC="AX:0;PG:25"?><INCL.ELEMENT TYPE="TIFF" FILEREF="image1.tif"/><?CLG.MDFC ID="C1" IDREF="O1"?></CONTENTS>
+    </x:context>
+    <x:expect label="becomes provenance on the figure">
+      <figure src="image1.tif">
+        <provenance amendingAct="32015L0996R(01)" action="replaced" location="AX:0;PG:25" marker="O1"/>
+      </figure>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A deleted figure alone">
+    <x:context mode="block" xmlns="">
+      <CONTENTS><?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" ACTIVE.DOC="32009D0317" ACTIVE.LOC="LI:0;PT:1"?><INCL.ELEMENT TYPE="TIFF" FILEREF="image2.tif"/><?CLG.MDFC ID="C1" IDREF="O1"?></CONTENTS>
+    </x:context>
+    <x:expect label="is wrapped in deleted with provenance">
+      <deleted>
+        <provenance amendingAct="32009D0317" action="deleted" location="LI:0;PT:1" marker="O1"/>
+        <figure src="image2.tif"/>
+      </deleted>
+    </x:expect>
+  </x:scenario>
+
+  <x:scenario label="A marker around a displayed formula alone">
+    <x:context mode="block" xmlns="">
+      <CONTENTS><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32010L0075R(01)" ACTIVE.LOC="AX:V;PT:1"?><FORMULA.S><EXPR TYPE="NONE"><IND>x</IND></EXPR></FORMULA.S><?CLG.MDFC ID="C1" IDREF="O1"?></CONTENTS>
+    </x:context>
+    <x:expect label="becomes provenance on the math block"
+              test="$x:result/self::*:math/*:provenance/@amendingAct = '32010L0075R(01)'
+                    and $x:result/self::*:math/*:provenance/@action = 'replaced'"/>
+  </x:scenario>
+
+  <x:scenario label="A deleted displayed formula alone">
+    <x:context mode="block" xmlns="">
+      <CONTENTS><?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" ACTIVE.DOC="31998L0069" ACTIVE.LOC="AR:1"?><FORMULA.S><EXPR TYPE="NONE"><IND>y</IND></EXPR></FORMULA.S><?CLG.MDFC ID="C1" IDREF="O1"?></CONTENTS>
+    </x:context>
+    <x:expect label="is wrapped in deleted with provenance"
+              test="$x:result/self::*:deleted/*:provenance/@amendingAct = '31998L0069'
+                    and $x:result/self::*:deleted/*:math"/>
+  </x:scenario>
+
+  <x:scenario label="A deleted quotation alone">
+    <x:context mode="block" xmlns="">
+      <CONTENTS><?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" ACTIVE.DOC="32024R1255" ACTIVE.LOC="PT:10"?><QUOT.S><P>quoted text</P></QUOT.S><?CLG.MDFC ID="C1" IDREF="O1"?></CONTENTS>
+    </x:context>
+    <x:expect label="is wrapped in deleted with provenance"
+              test="$x:result/self::*:deleted/*:provenance/@amendingAct = '32024R1255'
+                    and $x:result/self::*:deleted/*:quotedStructure/*:p/*:t/@v = 'quoted text'"/>
+  </x:scenario>
+
 </x:description>

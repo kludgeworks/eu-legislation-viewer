@@ -425,39 +425,27 @@
       </unit>
       <unit eId="att_1" kind="attachment">
          <figure src="L_2006077EN.01003302.tif">
+            <provenance amendingAct="32006D0203"
+                        action="replaced"
+                        location="PT:5"
+                        marker="O001001M001000"/>
             <description>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="ADMINISTRATIVE COMMISSION"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="ON SOCIAL SECURITY FOR"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="MIGRANT WORKERS"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="box">
                      <emphasis kind="b">
                         <t v="E 108"/>
@@ -465,10 +453,6 @@
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="1"/>
@@ -476,236 +460,116 @@
                   <t v=")"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="NOTIFICATION OF SUSPENSION OR WITHDRAWAL OF THE RIGHT TO"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="SICKNESS AND MATERNITY INSURANCE BENEFITS IN KIND"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="Persons residing in a country other than the competent country"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="i">
                      <t v="Regulation (EEC) No 1408/71: Article 19(1)(a) and (2); Article 25(3)(i); Article 26(1); Article 28(1)(a) and Article 29(1)(a)"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="i">
                      <t v="Regulation (EEC) No 574/72: Article 17(2) and (3); Article 27; Article 28; Article 29(5); Article 30; Article 94(4) and Article 95(4)"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="i">
                      <t v="The competent institution or the institution in the place of residence should complete part A of the form and send two copies to the institution in the"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="i">
                      <t v="place of residence or to the competent institution (where appropriate through the liaison body). The receiving institution should complete part B"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="i">
                      <t v="of the form and return one copy to the sending institution"/>
                   </emphasis>
                   <t v="."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="Please complete this form in block letters, writing on the dotted lines only. It consists of 3 pages, none of which may be left out"/>
                   </emphasis>
                   <t v="."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="A. "/>
                   <emphasis kind="b">
                      <t v="Notification"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="1."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Institution to which the form is addressed"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="1.1"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Name: …………………………………………………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="1.2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Identification number of the institution: ……………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="1.3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Address: ………….………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………..."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="2."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Employed person"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Frontier worker (employed)"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Self-employed person"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Frontier worker (self-employed)"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Unemployed person"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Pensioner (scheme for employed persons)"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Pensioner (scheme for self-employed person)"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Pension Claimant"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="2.1"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Surname(s) ("/>
                   <emphasis kind="sup">
                      <t v="2"/>
@@ -713,24 +577,12 @@
                   <t v="):"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="2.2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Forename(s) ("/>
                   <emphasis kind="sup">
                      <t v="3"/>
@@ -738,73 +590,33 @@
                   <t v="):"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Date of birth:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="……………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="……………………………………………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="2.3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Previous name(s): ……………………………………………………………………………………………………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="2.4"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Address in the country of residence: ……………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="……………………………………………………………………………………………………………………………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="2.5"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Personal identification number ("/>
                   <emphasis kind="sup">
                      <t v="4"/>
@@ -812,24 +624,12 @@
                   <t v="):"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="3."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Member of the family ("/>
                   <emphasis kind="sup">
                      <t v="5"/>
@@ -837,17 +637,9 @@
                   <t v=")"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="3.1"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Surname(s) ("/>
                   <emphasis kind="sup">
                      <t v="2"/>
@@ -855,24 +647,12 @@
                   <t v="):"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="3.2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Forename(s) ("/>
                   <emphasis kind="sup">
                      <t v="3"/>
@@ -880,91 +660,47 @@
                   <t v="):"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Date of birth:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="……………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="……………………………………………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="3.3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Previous names: …………………………………………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="3.4"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Address in the country of residence:…………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………..."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="3.5"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Personal identification number:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………….."/>
                </p>
             </description>
          </figure>
          <figure src="L_2006077EN.01003401.tif">
+            <provenance amendingAct="32006D0203"
+                        action="replaced"
+                        location="PT:5"
+                        marker="O001001M001000"/>
             <description>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="box">
                      <emphasis kind="b">
                         <t v="E 108"/>
@@ -972,150 +708,66 @@
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Entitlement to benefits certified on our your form ……………………………… of ………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="has been suspended or withdrawn for the following reason:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4.1"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="The insurance of the above-mentioned insured person ended on ……………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4.2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="None of the registered family members of the insured person has resided in our your country since"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="……………………………………………………………………………………………………………………………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4.3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="The pension of the above-mentioned pensioner has been suspended or withdrawn since ..…………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4.4"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="The person entitled to benefits named in box 2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="or"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="The family member named in box 3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="has not resided in our your country since ……………………………………………………………………... (date)"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="died on …………………………………………………………………………………………………………………………. (date)"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4.5"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="The family member named in 3 has not met the requirements of the legislation of the country of residence since"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="4.6"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="6"/>
@@ -1123,297 +775,137 @@
                   <t v=") ………………………………………………………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Competent institution"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Institution in the place of residence"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5.1"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Name: ………………………………………………………………………………………………………………………………………………...."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5.2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Identification number of the institution: ……………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5.3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Address: ………….………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………..."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5.4"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Stamp"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5.5"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Date: ………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="5.6"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Signature:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="………………………………………………………………."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="B. "/>
                   <emphasis kind="b">
                      <t v="Acknowledgement of receipt"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="6."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="We received the above notification (Part A) on ………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="7."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="The registration of the person(s) indicated in Part A ended on …………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="We confirm the suspension or withdrawal of entitlement to benefits as notified in section 4 which will take effect on ……………………………………………………………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Competent institution"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Institution in the place of residence"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8.1"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Name: …………………………………………………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8.2"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Identification number of the institution: ……………………………………………………………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8.3"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Address: ………….………………………………………………………………………………………………………………………………….."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="…………………………………………………………………………………………………………………………………………………………..."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8.4"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Stamp"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8.5"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Date: ………………………………………………………"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="8.6"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="Signature:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="………………………………………………………………."/>
                </p>
             </description>
          </figure>
          <figure src="L_2006077EN.01003501.tif">
+            <provenance amendingAct="32006D0203"
+                        action="replaced"
+                        location="PT:5"
+                        marker="O001001M001000"/>
             <description>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="box">
                      <emphasis kind="b">
                         <t v="E 108"/>
@@ -1421,19 +913,11 @@
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <emphasis kind="b">
                      <t v="NOTES"/>
                   </emphasis>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="1"/>
@@ -1441,31 +925,15 @@
                   <t v=") Symbol of the country to which the institution which first completes the form belongs: BE = Belgium; CZ = Czech Republic; DK = Denmark;"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="DE = Germany; EE = Estonia; GR = Greece; ES = Spain; FR = France; IE = Ireland; IT = Italy; CY = Cyprus; LV = Latvia; LT = Lithuania;"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="LU = Luxembourg; HU = Hungary; MT = Malta; NL = Netherlands; AT = Austria; PL = Poland; PT = Portugal; SI = Slovenia; SK = Slovakia;"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="FI = Finland; SE = Sweden; UK = United Kingdom; IS = Iceland; LI = Liechtenstein; NO = Norway; CH = Switzerland."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="2"/>
@@ -1473,10 +941,6 @@
                   <t v=") Indicate the full surname in the order of civil status."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="3"/>
@@ -1484,10 +948,6 @@
                   <t v=") Indicate the forenames in the order of civil status."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="4"/>
@@ -1495,45 +955,21 @@
                   <t v=") For the purpose of the competent institution if Italian, give the ‘fiscal code’."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="For the purpose of the competent institution if Maltese, give the Identity Card number in case of Maltese nationals, or the Maltese Social"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="security number in case of a non-Maltese national."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="For the purpose of the competent institution if Slovak, give the Slovak birth number if applicable."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="For the purpose of the institution if Spanish, give the number indicated on the DNI in the case of Spanish nationals, the number indicated"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="on the NIE in the case of non-Spanish national. If the validity period of the DNI or NIE is expired, complete with ‘none’."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="5"/>
@@ -1541,10 +977,6 @@
                   <t v=") Complete if the end of entitlement to benefits affects family members."/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="("/>
                   <emphasis kind="sup">
                      <t v="6"/>
@@ -1552,31 +984,15 @@
                   <t v=") The reason for suspension/withdrawal must be specified using one of the letters below:"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="(a) the pension holder has taken up an occupation in the country of residence;"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="(b) a family member has taken up an occupation in the country of residence;"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="(c) non-payment of contributions;"/>
                </p>
                <p>
-                  <provenance amendingAct="32006D0203"
-                              action="replaced"
-                              location="PT:5"
-                              marker="O001001M001000"/>
                   <t v="(d) other."/>
                </p>
             </description>
