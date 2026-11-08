@@ -206,7 +206,8 @@ def jooq_tables(name, migrations, package, config, deps = [], image = "postgres:
 
     The migrations run on Postgres in a container, and jOOQ's generator reads the schema they make
     (JooqCodegen): so it needs Docker, when the migrations or the configuration change. The
-    generated code is jOOQ's, so it is left out of our checks.
+    generated code is jOOQ's, so it is left out of our checks. Each of its packages is in the
+    infrastructure ring of the sliced onion, so the architecture rules do check how it is used.
 
     Args:
       name: the java_library.
@@ -244,7 +245,8 @@ def jooq_tables(name, migrations, package, config, deps = [], image = "postgres:
         srcs = [":" + name + "_sources"],
         # jOOQ's code, not ours: no Error Prone, doclint or lint warnings
         javacopts = ["-XepDisableAllChecks", "-Xdoclint:none", "-Xlint:none"],
-        deps = deps + ["@maven//:org_jooq_jooq"],
+        # the onion ring that JooqCodegen puts each generated package in
+        deps = deps + ["@maven//:org_jmolecules_jmolecules_onion_architecture", "@maven//:org_jooq_jooq"],
         **kwargs
     )
 

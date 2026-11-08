@@ -6,7 +6,8 @@ import com.tngtech.archunit.core.importer.Location;
 
 /**
  * Includes the viewer's own classes, not the classes of its tests, in Spring Modulith's model of
- * the modules. {@code ModularityTests} and {@code ModuleDocumentation} use it.
+ * the modules. {@code ModularityTests}, {@code CodingRulesTests} and {@code ModuleDocumentation}
+ * use it.
  *
  * <p>ArchUnit's {@code DoNotIncludeTests} does the same for the output folders of Maven and Gradle.
  * This class does it for Bazel, which puts the classes of a test in a jar built from {@code

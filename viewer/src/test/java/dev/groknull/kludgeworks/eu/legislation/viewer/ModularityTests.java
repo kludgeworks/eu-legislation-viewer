@@ -1,96 +1,59 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer;
 
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.codeUnits;
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.fields;
-import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.methods;
-
-import com.tngtech.archunit.core.domain.JavaCodeUnit;
-import com.tngtech.archunit.core.domain.JavaModifier;
-import com.tngtech.archunit.lang.ArchCondition;
-import com.tngtech.archunit.lang.ArchRule;
-import com.tngtech.archunit.lang.ConditionEvents;
-import com.tngtech.archunit.lang.SimpleConditionEvent;
-import java.util.Optional;
-import org.jmolecules.ddd.annotation.Repository;
+import com.tngtech.archunit.core.domain.JavaClasses;
+import com.tngtech.archunit.core.importer.ClassFileImporter;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.modulith.core.ApplicationModules;
-import org.springframework.modulith.core.VerificationOptions;
 
 /**
- * Tests the architecture with the checks of Spring Modulith. There are no cycles between modules,
- * and no module uses the internals of another module.
- *
- * <p>jmolecules-archunit is on the classpath, so the rules of jMolecules apply too. These include
- * the rules of the sliced onion:
+ * Tests the modules and the sliced onion. Each rule is a test of its own, so a failing test names
+ * the rule that is broken.
  *
  * <ul>
- *   <li>In every module, the domain ring depends on nothing outward.
- *   <li>The application ring depends only on the domain.
- *   <li>Only infrastructure uses infrastructure. Infrastructure is every {@code infra} package, and
- *       the cellar library beside the modules.
- * </ul>
- *
- * <p>Two more rules say how to write absence:
- *
- * <ul>
- *   <li>A lookup that can find nothing returns an {@link Optional}.
- *   <li>A value that can be absent is {@code @Nullable}, so no field is an {@link Optional}. Record
- *       components are fields. ArchUnit cannot read {@code @Nullable}, because JSpecify's
- *       annotation is a type-use annotation.
- *   <li>No method or constructor takes an {@link Optional}. A parameter that can be absent is
- *       {@code @Nullable}, or the method has an overload without it. The lambdas that javac
- *       compiles to synthetic methods are not checked, because their parameters are the values they
- *       capture.
+ *   <li>Spring Modulith: there are no cycles between modules, and no module uses the internals of
+ *       another module. A module's {@code infra} and {@code web} are internals, so they are its
+ *       own.
+ *   <li>jMolecules, which is on the classpath, so Spring Modulith runs its rules too: in every
+ *       module, the domain ring depends on nothing outward, the application ring only on the
+ *       domain, and only infrastructure uses infrastructure.
+ *   <li>Two rules of our own that neither has, in {@link SlicedOnion}: every package of a module
+ *       says which ring it is in, and a library beside the modules uses a module only through its
+ *       API.
  * </ul>
  */
 class ModularityTests {
 
-  static final ArchRule NO_OPTIONAL_FIELDS =
-      fields()
-          .should()
-          .notHaveRawType(Optional.class)
-          .because("a value that may be absent, as a record component, is @Nullable");
+  private static ApplicationModules modules;
 
-  static final ArchRule NO_OPTIONAL_PARAMETERS =
-      codeUnits()
-          .should(
-              new ArchCondition<JavaCodeUnit>("not take an Optional") {
-                @Override
-                public void check(JavaCodeUnit unit, ConditionEvents events) {
-                  if (unit.getModifiers().contains(JavaModifier.SYNTHETIC)) {
-                    return;
-                  }
-                  for (var type : unit.getRawParameterTypes()) {
-                    if (type.isEquivalentTo(Optional.class)) {
-                      events.add(
-                          SimpleConditionEvent.violated(
-                              unit, unit.getFullName() + " takes an Optional"));
-                    }
-                  }
-                }
-              })
-          .because("Optional is for return values: a parameter that may be absent is @Nullable");
+  /**
+   * The application's own code, with the libraries beside the modules, which modules leaves out.
+   */
+  private static JavaClasses classes;
 
-  static final ArchRule REPOSITORIES_FIND_OPTIONALS =
-      methods()
-          .that()
-          .areDeclaredInClassesThat()
-          .areMetaAnnotatedWith(Repository.class)
-          .and()
-          .haveNameStartingWith("find")
-          .should()
-          .haveRawReturnType(Optional.class)
-          .because("a lookup that may find nothing returns an Optional");
+  @BeforeAll
+  static void importTheApplication() {
+    modules = ApplicationModules.of(ViewerApplication.class, new ProductionClasses());
+    classes =
+        new ClassFileImporter()
+            .withImportOption(new ProductionClasses())
+            .importPackages(SlicedOnion.APPLICATION);
+  }
 
   @Test
   void modulesRespectTheirBoundaries() {
-    // Use "and", not "with". "with" would replace the default verifications, which include the
-    // rules of jMolecules.
-    ApplicationModules.of(ViewerApplication.class, new ProductionClasses())
-        .verify(
-            VerificationOptions.defaults()
-                .andAdditionalVerifications(
-                    NO_OPTIONAL_FIELDS, NO_OPTIONAL_PARAMETERS, REPOSITORIES_FIND_OPTIONALS));
+    // The default verifications, which include the rules of jMolecules
+    modules.verify();
+  }
+
+  @Test
+  void packagesDeclareARing() {
+    SlicedOnion.packagesDeclareARing(modules).check(classes);
+  }
+
+  @Test
+  void librariesUseOnlyTheModulesApis() {
+    SlicedOnion.librariesUseOnlyModulesApis(modules).check(classes);
   }
 }

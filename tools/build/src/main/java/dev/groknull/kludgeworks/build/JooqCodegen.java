@@ -2,8 +2,10 @@
 package dev.groknull.kludgeworks.build;
 
 import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import org.flywaydb.core.Flyway;
 import org.jooq.codegen.GenerationTool;
 import org.jooq.meta.jaxb.Jdbc;
@@ -16,6 +18,11 @@ import org.testcontainers.utility.DockerImageName;
  * Postgres itself, in a container, and the schema they make read by jOOQ's generator. Postgres, not
  * an imitation of it, so that what is generated is what the app runs on. Its pending migrations
  * (NEXT_001__description.sql) run too, after the released ones: {@link PendingMigrations}.
+ *
+ * <p>Each package that it generates gets a {@code package-info.java} that puts it in the
+ * infrastructure ring of the sliced onion. jMolecules does not look for a ring in the parent
+ * packages, so without it the generated classes would be in no ring, and the module's rules would
+ * not check them.
  *
  * <p>Arguments: the generator's configuration (what to generate: forced types and the like), the
  * module's migrations, the package to generate into, the directory to write it in, and the image.
@@ -57,6 +64,35 @@ public final class JooqCodegen {
                 .withDirectory(directory.toAbsolutePath().toString()));
         GenerationTool.generate(configuration);
       }
+    }
+    inInfrastructureRing(directory);
+  }
+
+  /** Writes a {@code package-info.java} into each package under {@code directory}. */
+  private static void inInfrastructureRing(Path directory) throws IOException {
+    List<Path> packages;
+    try (var files = Files.walk(directory)) {
+      packages =
+          files
+              .filter(file -> file.toString().endsWith(".java"))
+              .map(Path::getParent)
+              .distinct()
+              .sorted()
+              .toList();
+    }
+    for (var folder : packages) {
+      var name =
+          directory
+              .relativize(folder)
+              .toString()
+              .replace(folder.getFileSystem().getSeparator(), ".");
+      Files.writeString(
+          folder.resolve("package-info.java"),
+          """
+          @org.jmolecules.architecture.onion.simplified.InfrastructureRing
+          package %s;
+          """
+              .formatted(name));
     }
   }
 }
