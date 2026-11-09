@@ -11,20 +11,24 @@ import java.util.Optional;
 public interface ComparisonStore {
 
   /**
-   * Returns how the text at {@code from} became the text at {@code to}, if it is kept. An annex
-   * inserted whole has only its opening and its size ({@link Difference#opening}).
+   * Returns how the text at {@code from} became the text at {@code to}, if it is kept. Each
+   * difference is as the store keeps it ({@link Difference#kept}).
    */
   Optional<Comparison> find(ContentHash from, ContentHash to);
 
   /**
-   * Returns the annex inserted whole at {@code eId} in the comparison of {@code from} with {@code
-   * to}, as the view shows it, if it is kept.
+   * Returns the unit of the difference at {@code eId} in the comparison of {@code from} with {@code
+   * to} whole, as the view shows it, if the store keeps it apart. It keeps it apart if the
+   * comparison has it cut down ({@link Difference#kept}).
    */
-  Optional<Element> annex(ContentHash from, ContentHash to, String eId);
+  Optional<Element> whole(ContentHash from, ContentHash to, String eId);
 
   /**
-   * Keeps the comparison, unless it is kept already. It keeps each annex inserted whole apart, and
-   * the comparison with only its opening. This can occur if another caller also worked it out.
+   * Keeps the comparison, unless it is kept already. It keeps each difference as {@link
+   * Difference#kept} gives it, and the whole unit of each that this cuts down apart. The comparison
+   * can be kept already if another caller also worked it out.
+   *
+   * @return the comparison as the store keeps it, as {@link #find} gives it
    */
-  void add(Comparison comparison);
+  Comparison add(Comparison comparison);
 }

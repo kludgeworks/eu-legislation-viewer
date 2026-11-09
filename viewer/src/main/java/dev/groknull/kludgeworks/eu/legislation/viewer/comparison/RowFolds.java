@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
+package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,8 +17,8 @@ import org.jspecify.annotations.Nullable;
  * <p>The tables of a unit are numbered from 0, in the order of the text. A table in a cell of
  * another table is not numbered, and its rows are not folded: it is folded or shown with its row.
  * The rows of a table are numbered from 0, in the order of the text, through its row groups. A fold
- * asks for its rows by these numbers, so the address of a difference with {@code
- * &table=2&rows=10-40} gives rows 10 to 40 of its third table.
+ * names its rows by these numbers: {@code table="2" first="10" last="40"} stands for rows 10 to 40
+ * of the third table. The views give it the address that loads those rows.
  *
  * <ul>
  *   <li>A row with a mark is kept, as is a header row.
@@ -27,12 +26,23 @@ import org.jspecify.annotations.Nullable;
  *   <li>A run is folded only within one row group, and only if it has {@link #LEAST} rows or more.
  * </ul>
  *
- * <p>The fold is a {@code diff:rows} element, which the legal text renders as a row of its own.
+ * <p>The fold is a {@code diff:rows} element, which the legal text renders as a row of its own. A
+ * comparison is kept with its rows folded ({@link Difference#kept}), so folding a unit again leaves
+ * a table that has folds as it is.
  */
 public final class RowFolds {
 
   /** The name of a fold of rows. */
   public static final String FOLD = "diff:rows";
+
+  /** The attribute of a fold with the number of its table in the unit. */
+  public static final String TABLE = "table";
+
+  /** The attribute of a fold with the number of its first row in its table. */
+  public static final String FIRST = "first";
+
+  /** The attribute of a fold with the number of its last row in its table. */
+  public static final String LAST = "last";
 
   /** The rows kept on each side of a row with a mark. */
   static final int CONTEXT = 1;
@@ -45,11 +55,11 @@ public final class RowFolds {
   private RowFolds() {}
 
   /**
-   * Returns {@code unit} with the runs of rows in its tables folded. Each fold loads its rows from
-   * {@code address}, the address of the difference, followed by its table and its rows.
+   * Returns {@code unit} with the runs of rows in its tables folded. A table that has folds already
+   * stays as it is.
    */
-  public static Element of(Element unit, String address) {
-    return new Folding(address).unit(unit);
+  public static Element of(Element unit) {
+    return new Folding().unit(unit);
   }
 
   /**
@@ -104,19 +114,17 @@ public final class RowFolds {
 
   /** Folds the tables of one unit, numbering them in the order of the text. */
   private static final class Folding {
-    private final String address;
     private int tables;
 
     /** The number of the next row of the table being folded. */
     private int row;
 
-    Folding(String address) {
-      this.address = address;
-    }
-
     Element unit(Element element) {
       if (element.name().equals("table")) {
         var number = tables++;
+        if (hasFolds(element)) {
+          return element;
+        }
         var outer = row;
         row = 0;
         var folded = rowsOf(element, number);
@@ -218,20 +226,22 @@ public final class RowFolds {
               String.valueOf(to - from + 1),
               "columns",
               String.valueOf(columns),
-              "href",
-              address
-                  + "&"
-                  + ComparePage.TABLE
-                  + "="
-                  + table
-                  + "&"
-                  + ComparePage.ROWS
-                  + "="
-                  + from
-                  + "-"
-                  + to);
+              TABLE,
+              String.valueOf(table),
+              FIRST,
+              String.valueOf(from),
+              LAST,
+              String.valueOf(to));
       return new Element(FOLD, attributes, List.of(), "");
     }
+  }
+
+  /** Returns whether {@code table} has folds, in it or in its row groups. */
+  private static boolean hasFolds(Element table) {
+    return table.children().stream()
+        .anyMatch(
+            child ->
+                child.name().equals(FOLD) || (child.name().equals("rowGroup") && hasFolds(child)));
   }
 
   /**

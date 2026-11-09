@@ -95,7 +95,7 @@ class ComparisonsTests {
     assertThat(whole.whole()).isNull();
     assertThat(whole.shown().children()).extracting(Element::name).contains("unit");
     assertThat(
-            jdbc.sql("select count(*) from comparison_annex where from_root = ? and to_root = ?")
+            jdbc.sql("select count(*) from comparison_whole where from_root = ? and to_root = ?")
                 .param(from.bytes())
                 .param(to.bytes())
                 .query(Long.class)

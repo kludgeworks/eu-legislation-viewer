@@ -507,11 +507,11 @@ public record ChangesView(
 
     /**
      * Returns its marked unit as shown, as {@link #unit} does, with the runs of rows in its tables
-     * that are the same in both texts folded ({@link RowFolds}). The folds load their rows from
+     * that are the same in both texts folded ({@link RowFoldLinks}). The folds load their rows from
      * {@link #part}.
      */
     public Element folded(ComparePage page) {
-      return RowFolds.of(unit(), part(page));
+      return RowFoldLinks.of(unit(), part(page));
     }
 
     /**

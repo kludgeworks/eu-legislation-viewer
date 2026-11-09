@@ -87,16 +87,17 @@ class ComparisonService implements Comparisons {
                     .findFirst())
         .flatMap(
             difference ->
-                difference.whole() == null
-                    ? Optional.of(difference)
-                    : comparisons
-                        .annex(from, to, eId)
-                        .map(
-                            annex ->
-                                DifferenceBuilder.builder(difference)
-                                    .shown(annex)
-                                    .whole(null)
-                                    .build()));
+                comparisons
+                    .whole(from, to, eId)
+                    .map(
+                        whole ->
+                            DifferenceBuilder.builder(difference).shown(whole).whole(null).build())
+                    // Not cut down, or an annex whose whole unit is lost
+                    .or(
+                        () ->
+                            difference.whole() == null
+                                ? Optional.of(difference)
+                                : Optional.empty()));
   }
 
   /**
@@ -159,7 +160,7 @@ class ComparisonService implements Comparisons {
                       compared.withoutPreamble());
                 });
     var diffed = System.nanoTime();
-    comparisons.add(comparison);
+    var stored = comparisons.add(comparison);
     var kept = System.nanoTime();
     LOG.info(
         "Compared {} with {}: {} differences in {} ms (read {} ms, diff {} ms, keep {} ms)",
@@ -170,14 +171,7 @@ class ComparisonService implements Comparisons {
         (read - start) / 1_000_000,
         (diffed - read) / 1_000_000,
         (kept - diffed) / 1_000_000);
-    // As the store gives it: each annex inserted whole with only its opening
-    return Optional.of(
-        new Comparison(
-            from,
-            to,
-            comparison.differences().stream().map(Difference::opening).toList(),
-            comparison.closing(),
-            comparison.withoutPreamble()));
+    return Optional.of(stored);
   }
 
   @ApplicationModuleListener

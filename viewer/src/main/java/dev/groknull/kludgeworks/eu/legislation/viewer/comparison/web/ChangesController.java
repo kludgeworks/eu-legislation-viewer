@@ -20,13 +20,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ActsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.NeighbourView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.RowFolds;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.RowFoldLinks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
@@ -224,7 +225,7 @@ class ChangesController {
                           attributed.earlier().eIds(),
                           differences,
                           this.html,
-                          each -> RowFolds.of(each.difference().shown(), each.part(page)),
+                          each -> RowFoldLinks.of(each.difference().shown(), each.part(page)),
                           (each, unit) -> {
                             var sidenote = sidenotes.get(each.number());
                             return templates.comparisonDifference(

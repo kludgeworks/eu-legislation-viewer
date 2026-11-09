@@ -37,6 +37,26 @@ java_junit5_test(
     ],
 )
 
+# The comparison module's API: the folds of a difference's rows
+java_test_suite(
+    name = "comparison",
+    size = "small",
+    srcs = glob(["*Test.java"]),
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
 # application/
 # The comparison module's service, on a fake content module and store
 java_test_suite(

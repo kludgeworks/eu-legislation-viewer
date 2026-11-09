@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
+package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,7 +7,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +15,11 @@ import org.junit.jupiter.api.Test;
  * the tables here, a row is named by its text, and a marked row holds a word marked inserted.
  */
 class RowFoldsTest {
-  private static final String DIFFERENCE = "/eli/reg/2015/35/eng/compare/difference?eId=anx_I";
-
   @Test
   void foldsTheRowsAwayFromAChangeAndKeepsOneRowOfContextOnEachSide() {
     var table = table(rows("r", 0, 9), marked("r10"), rows("r", 11, 20));
 
-    assertThat(shown(RowFolds.of(table, DIFFERENCE)))
+    assertThat(shown(RowFolds.of(table)))
         .containsExactly("9 rows from 0 to 8", "r9", "r10", "r11", "9 rows from 12 to 20");
   }
 
@@ -30,8 +27,7 @@ class RowFoldsTest {
   void showsARunTooShortToFoldAsItIs() {
     var table = table(marked("r0"), rows("r", 1, 4), marked("r5"));
 
-    assertThat(shown(RowFolds.of(table, DIFFERENCE)))
-        .containsExactly("r0", "r1", "r2", "r3", "r4", "r5");
+    assertThat(shown(RowFolds.of(table))).containsExactly("r0", "r1", "r2", "r3", "r4", "r5");
   }
 
   @Test
@@ -39,7 +35,7 @@ class RowFoldsTest {
     var header = new Element("tr", Map.of("header", "true"), List.of(cell("head", Map.of())), "");
     var table = table(List.of(header), rows("r", 0, 9), marked("r10"));
 
-    assertThat(shown(RowFolds.of(table, DIFFERENCE)))
+    assertThat(shown(RowFolds.of(table)))
         .containsExactly("head", "r0", "8 rows from 2 to 9", "r9", "r10");
   }
 
@@ -49,8 +45,7 @@ class RowFoldsTest {
     var spanning = new Element("tr", Map.of(), List.of(cell("r7", Map.of("rowspan", "2"))), "");
     var table = table(rows("r", 0, 6), List.of(spanning), rows("r", 8, 8), marked("r9"));
 
-    assertThat(shown(RowFolds.of(table, DIFFERENCE)))
-        .containsExactly("7 rows from 0 to 6", "r7", "r8", "r9");
+    assertThat(shown(RowFolds.of(table))).containsExactly("7 rows from 0 to 6", "r7", "r8", "r9");
   }
 
   @Test
@@ -59,12 +54,12 @@ class RowFoldsTest {
     var second = new Element("rowGroup", Map.of(), flat(rows("b", 0, 3), marked("b4")), "");
     var table = new Element("table", Map.of(), List.of(first, second), "");
 
-    assertThat(shown(RowFolds.of(table, DIFFERENCE)))
+    assertThat(shown(RowFolds.of(table)))
         .containsExactly("5 rows from 0 to 4", "3 rows from 5 to 7", "b3", "b4");
   }
 
   @Test
-  void givesAFoldsRowsFromItsAddress() {
+  void namesTheTableAndTheRowsOfAFold() {
     var unit =
         new Element(
             "unit",
@@ -72,17 +67,20 @@ class RowFoldsTest {
             List.of(table(marked("x0")), table(rows("r", 0, 9), marked("r10"))),
             "");
 
-    var fold = folds(RowFolds.of(unit, DIFFERENCE)).getFirst();
+    var fold = folds(RowFolds.of(unit)).getFirst();
 
-    assertThat(fold.attribute("href")).isEqualTo(DIFFERENCE + "&table=1&rows=0-8");
+    assertThat(fold.attributes())
+        .containsEntry(RowFolds.TABLE, "1")
+        .containsEntry(RowFolds.FIRST, "0")
+        .containsEntry(RowFolds.LAST, "8")
+        .containsEntry("columns", "1");
     assertThat(RowFolds.rows(unit, 1, 0, 8))
         .extracting(RowFoldsTest::text)
         .containsExactly("r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8");
-    assertThat(fold.attribute("columns")).isEqualTo("1");
   }
 
   @Test
-  void numbersTheTablesAsItsAddressDoesWithATableInACell() {
+  void numbersTheTablesWithATableInACell() {
     var inner = table(rows("i", 0, 9));
     var holder =
         new Element("tr", Map.of(), List.of(new Element("td", Map.of(), List.of(inner), "")), "");
@@ -93,10 +91,26 @@ class RowFoldsTest {
             List.of(table(List.of(holder), marked("x0")), table(rows("r", 0, 9), marked("r10"))),
             "");
 
-    var fold = folds(RowFolds.of(unit, DIFFERENCE)).getFirst();
+    var fold = folds(RowFolds.of(unit)).getFirst();
 
-    assertThat(fold.attribute("href")).isEqualTo(DIFFERENCE + "&table=1&rows=0-8");
+    assertThat(fold.attribute(RowFolds.TABLE)).isEqualTo("1");
     assertThat(RowFolds.rows(unit, 1, 0, 0)).extracting(RowFoldsTest::text).containsExactly("r0");
+  }
+
+  @Test
+  void leavesATableThatHasFoldsAsItIs() {
+    var unit =
+        new Element(
+            "unit",
+            Map.of(),
+            List.of(table(rows("a", 0, 9), marked("a10")), table(marked("b0"), rows("b", 1, 9))),
+            "");
+
+    var folded = RowFolds.of(unit);
+
+    assertThat(RowFolds.of(folded)).isEqualTo(folded);
+    assertThat(shown(folded))
+        .containsExactly("9 rows from 0 to 8", "a9", "a10", "b0", "b1", "8 rows from 2 to 9");
   }
 
   @Test
@@ -165,9 +179,12 @@ class RowFoldsTest {
       if (child.name().equals("tr")) {
         shown.add(text(child));
       } else if (child.name().equals(RowFolds.FOLD)) {
-        var rows =
-            Objects.requireNonNull(child.attribute("href")).replaceAll(".*rows=", "").split("-");
-        shown.add(child.attribute("rows") + " rows from " + rows[0] + " to " + rows[1]);
+        shown.add(
+            child.attribute("rows")
+                + " rows from "
+                + child.attribute(RowFolds.FIRST)
+                + " to "
+                + child.attribute(RowFolds.LAST));
       } else {
         collect(child, shown);
       }

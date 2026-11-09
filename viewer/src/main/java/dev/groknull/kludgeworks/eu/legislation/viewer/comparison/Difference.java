@@ -32,8 +32,10 @@ import org.jspecify.annotations.Nullable;
  * @param unit the unit as a fold names it, as the later text has it. For a deleted unit, as the
  *     earlier text has it. The Changes view uses this when it folds the unit with others that an
  *     act filter leaves out.
- * @param shown the unit as the view shows it, marked. For an annex inserted whole that is kept
- *     apart ({@code whole} is not null), only its opening: its num and its headings.
+ * @param shown the unit as the view shows it, marked. As the store keeps it ({@link #kept}), cut
+ *     down: for an annex inserted whole ({@code whole} is not null), only its opening, its num and
+ *     its headings; for any other unit, with the rows of its tables that are the same in both texts
+ *     folded. {@link Comparisons#difference} gives it whole.
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
  * @param parent the eId of the unit that it is in. Null for an outermost unit.
@@ -85,7 +87,7 @@ public record Difference(
     List<Marker> earlierMarkers,
     @Nullable Whole whole) {
 
-  /** The children of a unit that are its opening, as {@link #opening} keeps them. */
+  /** The children of an annex that are its opening, as {@link #kept} keeps them. */
   private static final Set<String> OPENING = Set.of("provenance", "num", "heading", "subheading");
 
   public Difference {
@@ -104,21 +106,32 @@ public record Difference(
   }
 
   /**
-   * Returns this difference as the store keeps it in the comparison: an annex inserted whole with
-   * only its opening, and its size. Returns it as it is if it is no such annex, or if it is kept so
-   * already.
+   * Returns this difference as the store keeps it in the comparison. Its shown unit is cut down,
+   * and the store keeps the whole one apart:
+   *
+   * <ul>
+   *   <li>An annex inserted whole has only its opening, and its size.
+   *   <li>Any other unit has the runs of rows in its tables that are the same in both texts folded
+   *       ({@link RowFolds}).
+   * </ul>
+   *
+   * Returns it as it is if neither cuts it down, or if it is kept so already.
    */
-  public Difference opening() {
-    if (!annexInserted() || whole != null) {
+  public Difference kept() {
+    if (whole != null) {
       return this;
     }
-    var opening =
-        new Element(
-            shown.name(),
-            shown.attributes(),
-            shown.children().stream().filter(child -> OPENING.contains(child.name())).toList(),
-            shown.text());
-    return DifferenceBuilder.builder(this).shown(opening).whole(Whole.of(shown)).build();
+    if (annexInserted()) {
+      var opening =
+          new Element(
+              shown.name(),
+              shown.attributes(),
+              shown.children().stream().filter(child -> OPENING.contains(child.name())).toList(),
+              shown.text());
+      return DifferenceBuilder.builder(this).shown(opening).whole(Whole.of(shown)).build();
+    }
+    var folded = RowFolds.of(shown);
+    return folded.equals(shown) ? this : DifferenceBuilder.builder(this).shown(folded).build();
   }
 
   /**
