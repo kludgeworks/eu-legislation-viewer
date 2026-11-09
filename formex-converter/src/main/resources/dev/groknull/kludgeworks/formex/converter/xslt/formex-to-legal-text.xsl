@@ -98,7 +98,7 @@
     <xsl:variable name="first-attachment" as="element(DOC.SUB.PUB)?" select="FMX/DOC.SUB.PUB[not(@TYPE = 'ANNEX')][1]"/>
     <xsl:variable name="annexes" as="element()*" select="FMX/DOC.SUB.PUB[@TYPE = 'ANNEX'][empty($first-attachment) or . &lt;&lt; $first-attachment]/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)"/>
     <!-- a package of something other than a legal act is refused like the document itself -->
-    <xsl:if test="not($main/(self::ACT | self::AGR | self::CORR | self::CONS.ACT | self::CONS.OTH))">
+    <xsl:if test="not(f:is-act($main))">
       <xsl:apply-templates select="$main" mode="document"/>
     </xsl:if>
     <xsl:sequence select="f:refuse-corrected-notice($main)"/>
@@ -111,7 +111,13 @@
     </xsl:call-template>
   </xsl:template>
 
-  <xsl:template match="ACT | AGR | CORR | CONS.ACT | CONS.OTH" mode="document">
+  <xsl:function name="f:is-act" as="xs:boolean">
+    <xsl:param name="e" as="element()"/>
+    <xsl:sequence select="exists($e/(self::ACT | self::AGR | self::CORR | self::CONS.ACT | self::CONS.OTH))
+        or exists($e/self::GENERAL[CONTENTS/PREAMBLE][CONTENTS/(ARTICLE | DIVISION//ARTICLE)])"/>
+  </xsl:function>
+
+  <xsl:template match="ACT | AGR | CORR | CONS.ACT | CONS.OTH | GENERAL[f:is-act(.)]" mode="document">
     <xsl:sequence select="f:refuse-corrected-notice(.)"/>
     <xsl:call-template name="f:legal-text">
       <xsl:with-param name="act" as="element()" select="."/>
@@ -128,7 +134,7 @@
     </xsl:if>
   </xsl:function>
 
-  <!-- notices (GENERAL), case law, the OJ's tables of contents (PUBLICATION) and the like -->
+  <!-- notices (GENERAL without an act's preamble and articles), case law, the OJ's tables of contents (PUBLICATION) and the like -->
   <xsl:template match="*" mode="document">
     <xsl:sequence select="error(xs:QName('f:out-of-scope'), 'Not a legal act: Formex ' || local-name() || ' is out of scope')"/>
   </xsl:template>
@@ -261,12 +267,15 @@
           <xsl:apply-templates select="$content/TITLE[1]">
             <xsl:with-param name="outer-title" as="element(TITLE)?" select="$doc/CONS.DOC.GEN/TITLE[$treaty and not($content is $doc/CONS.DOC.GEN)]" tunnel="yes"/>
           </xsl:apply-templates>
-          <xsl:apply-templates select="$content/PREAMBLE"/>
+          <xsl:variable name="preamble" as="element(PREAMBLE)?" select="($content/PREAMBLE, $content/CONTENTS/PREAMBLE)[1]"/>
+          <xsl:apply-templates select="$preamble"/>
+
+          <xsl:variable name="final" as="element(FINAL)?" select="($content/FINAL, $content/CONTENTS/FINAL)[1]"/>
 
           <body>
             <xsl:call-template name="f:blocks">
               <!-- ACT.GEN: the whole of an act consolidated with a non-regular structure (CONS.DOC.GEN TYPE="OTH.ACT") -->
-              <xsl:with-param name="nodes" as="node()*" select="$content/ENACTING.TERMS/node() | $content/CONTENTS/(node() except CONS.ANNEX)
+              <xsl:with-param name="nodes" as="node()*" select="$content/ENACTING.TERMS/node() | $content/CONTENTS/(node() except (CONS.ANNEX, $preamble, $final))
                                                    | $content/CONTENTS.CORR/node() | $content/ACT.GEN | f:document-rest($act, $doc, $content)"/>
               <xsl:with-param name="ctx" as="xs:string*" select="()" tunnel="yes"/>
               <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -274,7 +283,7 @@
             </xsl:call-template>
           </body>
 
-          <xsl:apply-templates select="$content/FINAL"/>
+          <xsl:apply-templates select="$final"/>
 
           <!-- a consolidation's annexes: CONS.ANNEX, or for a non-regular structure CONS.DOC.GEN TYPE="ANNEX" -->
           <xsl:variable name="groups" as="array(element())*" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,

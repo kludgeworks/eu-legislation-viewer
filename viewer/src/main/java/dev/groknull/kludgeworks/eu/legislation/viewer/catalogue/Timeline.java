@@ -83,8 +83,9 @@ public final class Timeline {
 
   /**
    * Returns the version that applies on {@code date} for a reader in {@code language}, or empty
-   * before the first version applies. When multiple versions share a day (e.g. an original text and
-   * a same-day consolidation in different languages), it picks the one in {@code language}, falling
+   * before the first version applies. The returned version applies on {@code date} across the act,
+   * but may lack {@code language}. When multiple versions share a day (e.g. an original text and a
+   * same-day consolidation in different languages), it picks the one in {@code language}, falling
    * back to the other.
    */
   public Optional<Version> applicableOn(LocalDate date, Language language) {
@@ -117,8 +118,9 @@ public final class Timeline {
 
   /**
    * Returns the version that starts on {@code date} in {@code language}, or empty if no version
-   * does. When multiple versions share the start day, it picks the one in {@code language}, falling
-   * back to the other.
+   * does. The returned version starts on {@code date} across the act, but may lack {@code
+   * language}. When multiple versions share the start day, it picks the one in {@code language},
+   * falling back to the other.
    */
   public Optional<Version> startingOn(LocalDate date, Language language) {
     var onDate = byDate.get(date);

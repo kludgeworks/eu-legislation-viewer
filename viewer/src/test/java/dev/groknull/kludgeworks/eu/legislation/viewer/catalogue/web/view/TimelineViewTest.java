@@ -7,6 +7,7 @@ import static org.assertj.core.api.Assertions.within;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Merged;
@@ -15,9 +16,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Timelin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Tick;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Year;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
@@ -184,6 +188,70 @@ class TimelineViewTest {
     var comparing = comparing("02015R1998-20200401", "02015R1998-20200702");
 
     assertThat(comparing.steps().get(2).href()).isNull();
+  }
+
+  @Test
+  void comparisonCurrentVersionDoesNotPickFutureVersionWhenTodayLacksLanguage() {
+    var original =
+        new Version(
+            Version.Kind.ORIGINAL,
+            LocalDate.of(2010, 1, 1),
+            "32010R0185",
+            false,
+            List.of(),
+            Set.of(Language.ENG, Language.HRV),
+            Instant.EPOCH);
+    var intermediate =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            LocalDate.of(2012, 1, 1),
+            "02010R0185-20120101",
+            false,
+            List.of(),
+            Set.of(Language.ENG, Language.HRV),
+            Instant.EPOCH);
+    var missingHrv =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            LocalDate.of(2014, 7, 1),
+            "02010R0185-20140701",
+            false,
+            List.of(),
+            Set.of(Language.ENG),
+            Instant.EPOCH);
+    var future =
+        new Version(
+            Version.Kind.CONSOLIDATED,
+            LocalDate.of(2015, 3, 1),
+            "02010R0185-20150301",
+            false,
+            List.of(),
+            Set.of(Language.ENG, Language.HRV),
+            Instant.EPOCH);
+    var act =
+        new Act(
+            AVSEC.id(),
+            AVSEC.eli(),
+            AVSEC.type(),
+            AVSEC.titles(),
+            AVSEC.dateOfDocument(),
+            AVSEC.inForce(),
+            AVSEC.endOfValidity(),
+            new Timeline(List.of(original, intermediate, missingHrv, future)),
+            AVSEC.dates(),
+            AVSEC.amendingDates(),
+            AVSEC.amendments(),
+            AVSEC.publications());
+    // On 2014-08-01, the consolidation in force is 2014-07-01, which lacks Croatian.
+    // The previous Croatian version is 2012-01-01, while 2015-03-01 is in the future.
+    var today = LocalDate.of(2014, 8, 1);
+    var comparing =
+        TimelineView.comparing(act, intermediate, future, Language.HRV, today, Map.of());
+
+    assertThat(comparing.steps().get(3).label())
+        .isEqualTo("compare the original with the current version");
+    assertThat(comparing.steps().get(3).href())
+        .isEqualTo(PAGES + "hrv/compare?from=2010-01-01&to=2012-01-01");
   }
 
   private static TimelineView comparing(String from, String to) {

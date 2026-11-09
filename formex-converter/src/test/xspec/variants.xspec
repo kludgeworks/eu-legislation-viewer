@@ -368,6 +368,25 @@
     <x:expect label="is refused" test="exists($x:result?err)"/>
   </x:scenario>
 
+  <x:scenario label="An act encoded as GENERAL with articles">
+    <x:context xmlns="" select="/*">
+      <GENERAL>
+        <BIB.INSTANCE><DOCUMENT.REF FILE="doc.xml"/><DATE ISO="20040331">20040331</DATE><LG.DOC>EN</LG.DOC><PAGE.FIRST>114</PAGE.FIRST><PAGE.SEQ>1</PAGE.SEQ></BIB.INSTANCE>
+        <TITLE><TI><P>Directive 2004/18/EC</P></TI></TITLE>
+        <CONTENTS>
+          <PREAMBLE><PREAMBLE.INIT>THE EUROPEAN PARLIAMENT,</PREAMBLE.INIT><PREAMBLE.FINAL>HAVE ADOPTED THIS DIRECTIVE:</PREAMBLE.FINAL></PREAMBLE>
+          <DIVISION><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>Definitions</ALINEA></ARTICLE></DIVISION>
+          <FINAL><P>Done at Brussels</P></FINAL>
+        </CONTENTS>
+      </GENERAL>
+    </x:context>
+    <x:expect label="converts as a legal act with preamble, unit-first body, and conclusions"
+              test="$x:result/self::*:legalText
+                    and exists($x:result/*:preamble)
+                    and exists($x:result/*:conclusions)
+                    and $x:result/*:body/*[1]/self::*:unit[@eId = 'division_1']/*:unit[@eId = 'art_1']"/>
+  </x:scenario>
+
   <!-- ============================================================ push style -->
 
   <x:scenario label="An element no rule expects at the top of an act" catch="yes">

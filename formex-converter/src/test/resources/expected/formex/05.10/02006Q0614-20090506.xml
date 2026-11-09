@@ -125,10 +125,12 @@
          </p>
       </longTitle>
    </preface>
-   <body>
-      <p>
-         <t v="THE EUROPEAN PARLIAMENT, THE COUNCIL OF THE EUROPEAN UNION AND THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
-      </p>
+   <preamble eId="pbl_1">
+      <formula name="actingEntity">
+         <p>
+            <t v="THE EUROPEAN PARLIAMENT, THE COUNCIL OF THE EUROPEAN UNION AND THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
+         </p>
+      </formula>
       <p>
          <t v="hereinafter referred to as the "/>
          <quote startQuote="‘" endQuote="’">
@@ -136,9 +138,13 @@
          </quote>
          <t v=","/>
       </p>
-      <p>
-         <t v="HAVE AGREED AS FOLLOWS:"/>
-      </p>
+      <formula name="enactingFormula">
+         <p>
+            <t v="HAVE AGREED AS FOLLOWS:"/>
+         </p>
+      </formula>
+   </preamble>
+   <body>
       <unit eId="pnt_1" kind="point" numbered="true">
          <num>
             <t v="1."/>
