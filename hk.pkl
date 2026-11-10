@@ -107,6 +107,12 @@ local linters = new Mapping<String, Step> {
     glob = migrations
     check = "tools/tasks/release/db-migrations.bash --final"
   }
+  // SQL in Postgres's dialect (.sqlfluff), but not the released migrations (V…): they have run in
+  // production, and Flyway's checksums forbid changing them
+  ["sql_fluff"] = (Builtins.sql_fluff) {
+    batch = true
+    exclude = List("viewer/src/main/resources/db/migration/**/V*.sql")
+  }
   ["kubeconform"] = (Builtins.kubeconform) {
     check {
       command {

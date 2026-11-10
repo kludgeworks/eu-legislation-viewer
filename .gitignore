@@ -22,6 +22,8 @@ formex-corpus/
 text-compare/
 ui-snapshots/
 viewer/spring-modulith-docs/
+# the database's documentation and diagrams, written by mise run db:diagram
+docs/database/
 mise.local.toml
 .playwright-mcp/
 .DS_Store

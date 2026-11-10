@@ -119,6 +119,15 @@
   </Match>
 
   <!--
+    SECCI (Command Injection): SchemaDatabase is a build tool whose job is to run the command its
+    BUILD target gives it (tbls), on the database it starts: the command is its input by design.
+  -->
+  <Match>
+    <Class name="dev.groknull.kludgeworks.build.SchemaDatabase" />
+    <Bug code="SECCI" />
+  </Match>
+
+  <!--
     CE (Class Envy): CompareView.Card builds card view data from Act models.
   -->
   <Match>

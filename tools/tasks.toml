@@ -32,6 +32,10 @@ run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/forme
 description = "Write the modules' documentation (Spring Modulith's Documenter) into viewer/spring-modulith-docs"
 run = "bazel run //viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:modules"
 
+["db:diagram"]
+description = "Write the database's documentation and diagrams (tbls, Mermaid) into docs/database, from the migrations"
+run = "bazel run //viewer/src/test/db:diagram"
+
 [pin]
 description = "Pin the Maven dependencies after changing them in MODULE.bazel"
 run = "REPIN=1 bazel run @maven//:pin"

@@ -2,6 +2,9 @@
 
 load("@npm//:defs.bzl", "npm_link_all_packages")
 
+# tbls's configuration, for the schema's lint (//viewer/src/test/db:schema)
+exports_files([".tbls.yml"])
+
 # The npm packages of package.json, as //:node_modules/<package>, for the viewer's JavaScript tests
 npm_link_all_packages(name = "node_modules")
 

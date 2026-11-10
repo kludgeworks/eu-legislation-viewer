@@ -236,3 +236,23 @@ http_archive(
         "https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fdistribution%2Fcdm%2F20260625-0%2Fzip%2Fzip%2Fcdm-4.17.0.zip&fileName=cdm-4.17.0.zip",
     ],
 )
+
+# tbls (github.com/k1LoW/tbls, MIT): lints and documents the schema the migrations make
+# (//viewer/src/test/db), one release binary a platform (//tools/build:tbls picks it)
+[
+    http_archive(
+        name = "tbls_" + platform,
+        build_file_content = 'exports_files(["tbls"])',
+        sha256 = sha256,
+        urls = ["https://github.com/k1LoW/tbls/releases/download/v1.96.1/tbls_v1.96.1_%s.%s" % (
+            platform,
+            "zip" if platform.startswith("darwin") else "tar.gz",
+        )],
+    )
+    for platform, sha256 in {
+        "darwin_amd64": "c744731de4f96517acac234d65175eb9084968abd1a77268d75007b0443a4241",
+        "darwin_arm64": "99d1d53b02e06635d4d94e2823fecc78b3249e996b1785a199ba1868f9f28a8f",
+        "linux_amd64": "18285eef0ba7d917214e8bd7dd6a22afe5fea021eed52e7149100a3d10a2af95",
+        "linux_arm64": "f5da6e28b787ca934326870f7b69812c76e097d35a8ae612533108060f76850a",
+    }.items()
+]

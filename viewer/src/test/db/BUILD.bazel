@@ -1,0 +1,38 @@
+# SPDX-License-Identifier: MIT
+load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
+load("@rules_shell//shell:sh_test.bzl", "sh_test")
+
+# tbls on the schema the migrations make, built on embedded Postgres, with .tbls.yml: the arguments
+# both targets start with, then tbls's command
+SCHEMA_ARGS = [
+    "$(rootpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_database)",
+    "viewer/src/main/resources/db/migration",
+    "$(rootpath //tools/build:tbls)",
+    "$(rootpath //:.tbls.yml)",
+]
+
+SCHEMA_DATA = [
+    "//:.tbls.yml",
+    "//tools/build:tbls",
+    "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_database",
+    "//viewer/src/main/resources:migrations",
+]
+
+# every table described (COMMENT ON) and in its module's viewpoint
+sh_test(
+    name = "schema",
+    srcs = ["schema.sh"],
+    args = SCHEMA_ARGS + ["lint"],
+    data = SCHEMA_DATA,
+)
+
+# the schema's documentation and Mermaid diagrams, written into docs/database (mise run db:diagram)
+sh_binary(
+    name = "diagram",
+    srcs = ["schema.sh"],
+    args = SCHEMA_ARGS + [
+        "doc",
+        "--rm-dist",
+    ],
+    data = SCHEMA_DATA,
+)

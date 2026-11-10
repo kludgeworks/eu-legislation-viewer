@@ -816,6 +816,12 @@ backend = "pipx:semgrep"
 specifiers = ["1.182.1"]
 uv = { path = ".mise/locks/pipx-semgrep/1.182.1", digest = "sha256:ee0b7825d8888e901dd30eb006f2afa37baea9a3887e6d9e4e14e811c76919ad" }
 
+[[tools."pipx:sqlfluff"]]
+version = "4.5.0"
+backend = "pipx:sqlfluff"
+specifiers = ["4.5.0"]
+uv = { path = ".mise/locks/pipx-sqlfluff/4.5.0", digest = "sha256:076cae04f38f2c2d019153961a2c2913d7e90f86f87440c227b235331cd8de55" }
+
 [[tools.pkl]]
 version = "0.32.2"
 backend = "aqua:apple/pkl"

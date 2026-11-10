@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: MIT
+# SQLFluff: the unreleased migrations (NEXT_*.sql), in Postgres's dialect. Released ones (V*.sql)
+# have run in production and never change, so hk leaves them out (hk.pkl)
+[sqlfluff]
+dialect = postgres
+templater = raw
+max_line_length = 100
+
+[sqlfluff:indentation]
+tab_space_size = 2
+
+[sqlfluff:rules:capitalisation.keywords]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.identifiers]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.functions]
+extended_capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.literals]
+capitalisation_policy = lower
+
+[sqlfluff:rules:capitalisation.types]
+extended_capitalisation_policy = lower
+
+# a description is one string (COMMENT ON … IS '…'), as long as it needs
+[sqlfluff:rules:layout.long_lines]
+ignore_comment_clauses = True
+
+# every statement ends with a semicolon, the last one too
+[sqlfluff:rules:convention.terminator]
+require_final_semicolon = True
+
+# casts as Postgres writes them: value::type, not cast(value as type)
+[sqlfluff:rules:convention.casting_style]
+preferred_type_casting_style = shorthand

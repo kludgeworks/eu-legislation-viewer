@@ -1,0 +1,60 @@
+# SPDX-License-Identifier: MIT
+# tbls: the database's lint (//viewer/src/test/db:schema), and its documentation and diagrams in
+# docs/database (mise run db:diagram). The database is the one SchemaDatabase builds from the
+# migrations, at DATABASE_URL
+dsn: ${DATABASE_URL}
+docPath: docs/database
+er:
+  format: mermaid
+  comment: true
+exclude:
+  # Flyway's own: a history of each module's migrations
+  - flyway_schema_history_*
+# a viewpoint for each module: the tables its migrations make (viewer/src/main/resources/db/migration
+# /<module>). A table in none fails tbls lint (the test //viewer/src/test/db:schema)
+viewpoints:
+  - id: catalogue
+    name: catalogue
+    desc: The acts, their versions and dates, and their texts' preparation in each language.
+    tables:
+      - act
+      - act_amendment
+      - act_date
+      - act_publication
+      - act_publication_title
+      - act_title
+      - expression
+      - preparation
+      - preparation_step
+      - step_act_count
+      - step_count
+      - version
+  - id: comparison
+    name: comparison
+    desc: The comparisons of two texts, kept by their roots.
+    tables:
+      - comparison
+      - comparison_whole
+  - id: content
+    name: content
+    desc: The texts themselves, as chunks, and each text's list of chunks and outline.
+    tables:
+      - chunk
+      - manifest
+  - id: ingest
+    name: ingest
+    desc: The jobs that build the texts.
+    tables:
+      - ingest_job
+  - id: events
+    name: events
+    desc: Spring Modulith's event publication registry, which every module shares (__root).
+    tables:
+      - event_publication
+lint:
+  requireViewpoints:
+    enabled: true
+  # every table says what it holds: COMMENT ON in the migration that makes it. Columns only where
+  # their name does not say it, so no rule for them
+  requireTableComment:
+    enabled: true

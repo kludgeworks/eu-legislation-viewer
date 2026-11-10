@@ -45,6 +45,17 @@ sh_test(
     ],
 )
 
+# tbls for this platform (MODULE.bazel): the schema's lint, //viewer/src/test/db:schema
+alias(
+    name = "tbls",
+    actual = select({
+        "@bazel_tools//src/conditions:darwin_arm64": "@tbls_darwin_arm64//:tbls",
+        "@bazel_tools//src/conditions:darwin_x86_64": "@tbls_darwin_amd64//:tbls",
+        "@bazel_tools//src/conditions:linux_aarch64": "@tbls_linux_arm64//:tbls",
+        "@bazel_tools//src/conditions:linux_x86_64": "@tbls_linux_amd64//:tbls",
+    }),
+)
+
 # SpotBugs with FindSecBugs and sb-contrib plugins (ISS-82)
 spotbugs_binary(
     name = "spotbugs_cli",
