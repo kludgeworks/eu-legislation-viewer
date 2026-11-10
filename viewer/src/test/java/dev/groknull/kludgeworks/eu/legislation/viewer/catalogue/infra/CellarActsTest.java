@@ -159,7 +159,7 @@ class CellarActsTest {
 
     assertThat(version(versions, "02015R1998-20260322").integrates())
         .containsExactly(new ActIdentifier("32026R0449"), new ActIdentifier("32026R0449R(01)"));
-    // The public consolidation lists no act, but its production version lists 2018/55.
+    // The public consolidation lists only the base act, but its production version lists 2018/55.
     assertThat(version(versions, "02015R1998-20180206").integrates())
         .containsExactly(new ActIdentifier("32018R0055"));
     // Cellar also lists 02010R0358-20160201 here. That is a consolidation of another act.
