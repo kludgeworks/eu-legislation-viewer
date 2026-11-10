@@ -59,6 +59,8 @@ public record Amendment(
     DELETION(true, "DEL", "SU"),
     /** Repealed it, wholly or in part. Cellar's codes {@code A} and {@code AP}. */
     REPEAL(true, "A", "AP"),
+    /** Amended it. Cellar's code {@code M}. */
+    AMENDMENT(true, "M"),
     /**
      * Extended how long it applies. Cellar's codes {@code P} and {@code P/PART}, and {@code PI} for
      * an implicit extension.

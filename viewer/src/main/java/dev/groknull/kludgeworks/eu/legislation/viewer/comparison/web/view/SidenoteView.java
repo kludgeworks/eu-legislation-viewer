@@ -559,12 +559,13 @@ public record SidenoteView(
 
   /**
    * Returns what the role of an amendment did, as the action of a marker says it: "replaced",
-   * "inserted" or "deleted".
+   * "inserted", "amended" or "deleted".
    */
   private static String action(Amendment.Role role) {
     return switch (role) {
       case REPLACEMENT -> "replaced";
       case DELETION, REPEAL -> "deleted";
+      case AMENDMENT -> "amended";
       default -> "inserted";
     };
   }
