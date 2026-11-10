@@ -54,7 +54,7 @@ class JooqExpressionStore implements ExpressionStore {
         .from(EXPRESSION)
         .where(
             EXPRESSION.CELEX.in(celexes),
-            EXPRESSION.LANGUAGE.eq(language),
+            EXPRESSION.LANGUAGE_CODE.eq(language),
             EXPRESSION.ROOT.isNotNull())
         .fetchMap(EXPRESSION.CELEX, EXPRESSION.ROOT);
   }
@@ -62,7 +62,7 @@ class JooqExpressionStore implements ExpressionStore {
   @Override
   public Map<String, Text> texts(Collection<String> celexes, Language language) {
     return db.selectFrom(EXPRESSION)
-        .where(EXPRESSION.CELEX.in(celexes), EXPRESSION.LANGUAGE.eq(language))
+        .where(EXPRESSION.CELEX.in(celexes), EXPRESSION.LANGUAGE_CODE.eq(language))
         .fetchMap(EXPRESSION.CELEX, JooqExpressionStore::text);
   }
 
@@ -75,7 +75,7 @@ class JooqExpressionStore implements ExpressionStore {
         db.insertInto(
             EXPRESSION,
             EXPRESSION.CELEX,
-            EXPRESSION.LANGUAGE,
+            EXPRESSION.LANGUAGE_CODE,
             EXPRESSION.STATE,
             EXPRESSION.ATTEMPT);
     for (var celex : celexes) {
@@ -118,13 +118,13 @@ class JooqExpressionStore implements ExpressionStore {
   public boolean keep(String celex, Language language, ContentHash root, String converter) {
     return db.insertInto(EXPRESSION)
             .set(EXPRESSION.CELEX, celex)
-            .set(EXPRESSION.LANGUAGE, language)
+            .set(EXPRESSION.LANGUAGE_CODE, language)
             .set(EXPRESSION.STATE, State.BUILT.name())
             .set(EXPRESSION.ATTEMPT, 0)
             .set(EXPRESSION.ROOT, root)
             .set(EXPRESSION.CONVERTER, converter)
             .set(EXPRESSION.BUILT_AT, currentInstant())
-            .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE)
+            .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE_CODE)
             .doUpdate()
             .set(EXPRESSION.STATE, State.BUILT.name())
             .set(EXPRESSION.ROOT, root)
@@ -158,12 +158,12 @@ class JooqExpressionStore implements ExpressionStore {
   public boolean fail(String celex, Language language, Failure failure, @Nullable String trace) {
     return db.insertInto(EXPRESSION)
             .set(EXPRESSION.CELEX, celex)
-            .set(EXPRESSION.LANGUAGE, language)
+            .set(EXPRESSION.LANGUAGE_CODE, language)
             .set(EXPRESSION.STATE, State.FAILED.name())
             .set(EXPRESSION.ATTEMPT, 0)
             .set(EXPRESSION.FAILURE, failure)
             .set(EXPRESSION.TRACE, trace)
-            .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE)
+            .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE_CODE)
             .doUpdate()
             .set(EXPRESSION.STATE, State.FAILED.name())
             .set(EXPRESSION.FAILURE, failure)
@@ -174,7 +174,7 @@ class JooqExpressionStore implements ExpressionStore {
   }
 
   private static Condition the(String celex, Language language) {
-    return EXPRESSION.CELEX.eq(celex).and(EXPRESSION.LANGUAGE.eq(language));
+    return EXPRESSION.CELEX.eq(celex).and(EXPRESSION.LANGUAGE_CODE.eq(language));
   }
 
   /** Matches a text that is queued or building. Such a text is not built and has not failed. */

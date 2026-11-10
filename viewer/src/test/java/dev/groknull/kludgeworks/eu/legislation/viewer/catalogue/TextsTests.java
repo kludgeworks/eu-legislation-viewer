@@ -137,10 +137,14 @@ class TextsTests {
         .until(() -> texts.prepare(act, Language.FRA), Preparation::settled);
     // This makes it look as if the Publications Office did not answer for the version on any
     // attempt.
-    jdbc.sql("update ingest_job set failure = 'UNAVAILABLE' where celex = ? and language = 'FRA'")
+    jdbc.sql(
+            "update ingest_job set failure = 'UNAVAILABLE' where celex = ? and language_code ="
+                + " 'FRA'")
         .param(celex)
         .update();
-    jdbc.sql("update expression set failure = 'UNAVAILABLE' where celex = ? and language = 'FRA'")
+    jdbc.sql(
+            "update expression set failure = 'UNAVAILABLE' where celex = ? and language_code ="
+                + " 'FRA'")
         .param(celex)
         .update();
 
@@ -231,7 +235,7 @@ class TextsTests {
   /** How many texts in English of {@code celex} are kept as built. */
   private long kept(String celex) {
     return jdbc.sql(
-            "select count(*) from expression where celex = ? and language = 'ENG' and state ="
+            "select count(*) from expression where celex = ? and language_code = 'ENG' and state ="
                 + " 'BUILT'")
         .param(celex)
         .query(Long.class)

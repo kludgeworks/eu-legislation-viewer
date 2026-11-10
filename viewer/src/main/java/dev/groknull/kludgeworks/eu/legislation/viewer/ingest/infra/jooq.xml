@@ -15,7 +15,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>ingest_job\.stage</includeExpression>
+          <includeExpression>ingest_job\.phase</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>
@@ -25,7 +25,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>ingest_job\.language</includeExpression>
+          <includeExpression>ingest_job\.language_code</includeExpression>
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>

@@ -93,20 +93,20 @@ class JooqActStore implements ActStore {
             act ->
                 act(
                     act,
-                    db.select(ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE)
+                    db.select(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE)
                         .from(ACT_TITLE)
                         .where(ACT_TITLE.ACT.eq(act.getCelex()))
-                        .fetchMap(ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE),
+                        .fetchMap(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE),
                     db.selectFrom(VERSION)
                         .where(VERSION.ACT.eq(act.getCelex()))
                         .fetch(JooqActStore::version),
                     db.selectFrom(ACT_DATE)
                         .where(ACT_DATE.ACT.eq(act.getCelex()))
-                        .orderBy(ACT_DATE.SUBJECT, ACT_DATE.POSITION)
+                        .orderBy(ACT_DATE.SUBJECT, ACT_DATE.ORDINAL)
                         .fetch(),
                     db.selectFrom(ACT_AMENDMENT)
                         .where(ACT_AMENDMENT.ACT.eq(act.getCelex()))
-                        .orderBy(ACT_AMENDMENT.POSITION)
+                        .orderBy(ACT_AMENDMENT.ORDINAL)
                         .fetch(JooqActStore::amendment),
                     publications(act.getCelex())));
   }
@@ -202,7 +202,7 @@ class JooqActStore implements ActStore {
     if (act.titles().isEmpty()) {
       return;
     }
-    var titles = db.insertInto(ACT_TITLE, ACT_TITLE.ACT, ACT_TITLE.LANGUAGE, ACT_TITLE.TITLE);
+    var titles = db.insertInto(ACT_TITLE, ACT_TITLE.ACT, ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE);
     for (var title : act.titles().entrySet()) {
       titles = titles.values(act.id(), title.getKey(), title.getValue());
     }
@@ -212,7 +212,7 @@ class JooqActStore implements ActStore {
   private InsertSetMoreStep<VersionRecord> version(Act act, Version version) {
     return db.insertInto(VERSION)
         .set(VERSION.ACT, act.id())
-        .set(VERSION.DATE, version.date())
+        .set(VERSION.STARTS_ON, version.date())
         .set(VERSION.KIND, version.kind())
         .set(VERSION.CELEX, version.celex())
         .set(VERSION.INTERIM, version.interim())
@@ -283,7 +283,7 @@ class JooqActStore implements ActStore {
             ACT_PUBLICATION_TITLE,
             ACT_PUBLICATION_TITLE.ACT,
             ACT_PUBLICATION_TITLE.SUBJECT,
-            ACT_PUBLICATION_TITLE.LANGUAGE,
+            ACT_PUBLICATION_TITLE.LANGUAGE_CODE,
             ACT_PUBLICATION_TITLE.TITLE);
     var any = false;
     for (var publication : act.publications().entrySet()) {
@@ -306,7 +306,7 @@ class JooqActStore implements ActStore {
             title ->
                 titles
                     .computeIfAbsent(title.getSubject(), each -> new EnumMap<>(Language.class))
-                    .put(title.getLanguage(), title.getTitle()));
+                    .put(title.getLanguageCode(), title.getTitle()));
     var publications = new LinkedHashMap<ActIdentifier, Publication>();
     for (var row : db.selectFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act)).fetch()) {
       var series = row.getSeries();
@@ -339,8 +339,8 @@ class JooqActStore implements ActStore {
   private static Amendment amendment(ActAmendmentRecord amendment) {
     return new Amendment(
         amendment.getAmending(),
-        amendment.getLocation(),
-        amendment.getRole(),
+        amendment.getCellarLocation(),
+        amendment.getKind(),
         amendment.getValidFrom(),
         amendment.getValidUntil(),
         Arrays.stream(amendment.getLanguages()).map(Language::valueOf).collect(Collectors.toSet()));
@@ -395,21 +395,21 @@ class JooqActStore implements ActStore {
 
   private static ActDate date(ActDateRecord date) {
     return new ActDate(
-        date.getDate(),
+        date.getFallsOn(),
         date.getKind(),
-        date.getPartial(),
+        date.getInPart(),
         new Clause(
             date.getAnchor(),
-            date.getDays(),
+            date.getDaysAfter(),
             Arrays.stream(date.getProvisions()).map(Provision::parse).toList(),
             Arrays.stream(date.getAmendedBy()).map(ActIdentifier::new).toList(),
-            date.getText()));
+            date.getRemark()));
   }
 
   private static Version version(VersionRecord version) {
     return new Version(
         version.getKind(),
-        version.getDate(),
+        version.getStartsOn(),
         version.getCelex(),
         version.getInterim(),
         Arrays.stream(version.getIntegrates()).map(ActIdentifier::new).toList(),

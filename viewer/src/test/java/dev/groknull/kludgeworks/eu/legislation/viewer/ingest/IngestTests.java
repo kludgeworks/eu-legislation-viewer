@@ -147,7 +147,7 @@ class IngestTests {
     jdbc.sql(
             """
             insert into ingest_job
-              (celex, language, state, stage, attempts, started_at, created_at, version)
+              (celex, language_code, state, phase, attempts, started_at, created_at, revision)
             values ('32024R2867', 'ENG', 'RUNNING', 'CONVERTING', 1, now() - interval '1 hour',
               now() - interval '1 hour', 1)
             """)
@@ -190,7 +190,7 @@ class IngestTests {
   }
 
   private long jobs(String celex, String language) {
-    return jdbc.sql("select count(*) from ingest_job where celex = ? and language = ?")
+    return jdbc.sql("select count(*) from ingest_job where celex = ? and language_code = ?")
         .params(celex, language)
         .query(Long.class)
         .single();

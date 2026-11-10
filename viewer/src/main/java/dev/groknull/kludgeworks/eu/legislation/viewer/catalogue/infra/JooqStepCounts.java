@@ -41,7 +41,7 @@ class JooqStepCounts implements StepCounts {
                             STEP_ACT_COUNT.TO_ROOT.eq(to))
                         .fetchMap(STEP_ACT_COUNT.AMENDING, STEP_ACT_COUNT.DIFFERENCES),
                     step.getTogether(),
-                    step.getUnknown()));
+                    step.getUnattributed()));
   }
 
   @Override
@@ -53,7 +53,7 @@ class JooqStepCounts implements StepCounts {
             .set(STEP_COUNT.FROM_ROOT, from)
             .set(STEP_COUNT.TO_ROOT, to)
             .set(STEP_COUNT.TOGETHER, counted.together())
-            .set(STEP_COUNT.UNKNOWN, counted.unknown())
+            .set(STEP_COUNT.UNATTRIBUTED, counted.unknown())
             .set(STEP_COUNT.COUNTED_AT, currentInstant())
             .onConflictDoNothing()
             .execute();

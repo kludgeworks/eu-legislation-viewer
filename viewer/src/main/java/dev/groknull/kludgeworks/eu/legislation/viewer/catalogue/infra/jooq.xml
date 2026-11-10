@@ -42,12 +42,12 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::code)</converter>
-          <includeExpression>act_amendment\.location</includeExpression>
+          <includeExpression>act_amendment\.cellar_location</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>act_amendment\.role</includeExpression>
+          <includeExpression>act_amendment\.kind</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Anchor</userType>
@@ -57,7 +57,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language|act_title\.language|act_publication_title\.language|preparation\.language|preparation_step\.language</includeExpression>
+          <includeExpression>expression\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_step\.language_code</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>

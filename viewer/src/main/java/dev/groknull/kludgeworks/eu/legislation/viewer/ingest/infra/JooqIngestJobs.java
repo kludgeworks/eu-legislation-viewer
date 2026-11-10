@@ -37,13 +37,13 @@ class JooqIngestJobs implements IngestJobs {
   public boolean schedule(String celex, Language language, @Nullable String traceparent) {
     return db.insertInto(INGEST_JOB)
             .set(INGEST_JOB.CELEX, celex)
-            .set(INGEST_JOB.LANGUAGE, language)
+            .set(INGEST_JOB.LANGUAGE_CODE, language)
             .set(INGEST_JOB.STATE, State.QUEUED)
             .set(INGEST_JOB.ATTEMPTS, 0)
             .set(INGEST_JOB.TRACEPARENT, traceparent)
             .set(INGEST_JOB.CREATED_AT, currentInstant())
-            .set(INGEST_JOB.VERSION, 0L)
-            .onConflict(INGEST_JOB.CELEX, INGEST_JOB.LANGUAGE)
+            .set(INGEST_JOB.REVISION, 0L)
+            .onConflict(INGEST_JOB.CELEX, INGEST_JOB.LANGUAGE_CODE)
             .doNothing()
             .execute()
         == 1;
@@ -52,7 +52,7 @@ class JooqIngestJobs implements IngestJobs {
   @Override
   public Optional<IngestJob> find(String celex, Language language) {
     return db.selectFrom(INGEST_JOB)
-        .where(INGEST_JOB.CELEX.eq(celex), INGEST_JOB.LANGUAGE.eq(language))
+        .where(INGEST_JOB.CELEX.eq(celex), INGEST_JOB.LANGUAGE_CODE.eq(language))
         .fetchOptional()
         .map(JooqIngestJobs::job);
   }
@@ -67,10 +67,10 @@ class JooqIngestJobs implements IngestJobs {
             .set(INGEST_JOB.FAILURE, val(null, INGEST_JOB.FAILURE))
             .set(INGEST_JOB.DETAIL, val(null, INGEST_JOB.DETAIL))
             .set(INGEST_JOB.FINISHED_AT, val(null, INGEST_JOB.FINISHED_AT))
-            .set(INGEST_JOB.VERSION, INGEST_JOB.VERSION.plus(1))
+            .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
             .where(
                 INGEST_JOB.CELEX.eq(celex),
-                INGEST_JOB.LANGUAGE.eq(language),
+                INGEST_JOB.LANGUAGE_CODE.eq(language),
                 INGEST_JOB.STATE.eq(State.FAILED),
                 INGEST_JOB.FAILURE.in(retryable))
             .execute()
@@ -84,26 +84,26 @@ class JooqIngestJobs implements IngestJobs {
             .from(INGEST_JOB)
             .where(
                 INGEST_JOB.CELEX.in(celexes),
-                INGEST_JOB.LANGUAGE.eq(language),
+                INGEST_JOB.LANGUAGE_CODE.eq(language),
                 INGEST_JOB.STATE.eq(State.QUEUED));
     return db.fetchCount(
         INGEST_JOB,
         INGEST_JOB.STATE.in(State.QUEUED, State.RUNNING),
         INGEST_JOB.CREATED_AT.lt(first),
-        not(INGEST_JOB.CELEX.in(celexes).and(INGEST_JOB.LANGUAGE.eq(language))));
+        not(INGEST_JOB.CELEX.in(celexes).and(INGEST_JOB.LANGUAGE_CODE.eq(language))));
   }
 
   @Override
   public Optional<IngestJob> start(String celex, Language language, Duration takeover) {
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, State.RUNNING)
-        .set(INGEST_JOB.STAGE, Stage.CONVERTING)
+        .set(INGEST_JOB.PHASE, Stage.CONVERTING)
         .set(INGEST_JOB.STARTED_AT, currentInstant())
         .set(INGEST_JOB.ATTEMPTS, INGEST_JOB.ATTEMPTS.plus(1))
-        .set(INGEST_JOB.VERSION, INGEST_JOB.VERSION.plus(1))
+        .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
         .where(
             INGEST_JOB.CELEX.eq(celex),
-            INGEST_JOB.LANGUAGE.eq(language),
+            INGEST_JOB.LANGUAGE_CODE.eq(language),
             INGEST_JOB
                 .STATE
                 .eq(State.QUEUED)
@@ -124,15 +124,15 @@ class JooqIngestJobs implements IngestJobs {
     var finished = job.state() == State.BUILT || job.state() == State.FAILED;
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, job.state())
-        .set(INGEST_JOB.STAGE, job.stage())
+        .set(INGEST_JOB.PHASE, job.stage())
         .set(INGEST_JOB.ROOT, job.root())
         .set(INGEST_JOB.CONVERTER, job.converter())
         .set(INGEST_JOB.FAILURE, job.failure())
         .set(INGEST_JOB.DETAIL, job.detail())
         .set(
             INGEST_JOB.FINISHED_AT, finished ? currentInstant() : val(null, INGEST_JOB.FINISHED_AT))
-        .set(INGEST_JOB.VERSION, INGEST_JOB.VERSION.plus(1))
-        .where(INGEST_JOB.ID.eq(job.id()), INGEST_JOB.VERSION.eq(job.version()))
+        .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
+        .where(INGEST_JOB.ID.eq(job.id()), INGEST_JOB.REVISION.eq(job.version()))
         .returning()
         .fetchOptional()
         .map(JooqIngestJobs::job)
@@ -149,15 +149,15 @@ class JooqIngestJobs implements IngestJobs {
     return new IngestJob(
         row.getId(),
         row.getCelex(),
-        row.getLanguage(),
+        row.getLanguageCode(),
         row.getState(),
-        row.getStage(),
+        row.getPhase(),
         row.getAttempts(),
         row.getTraceparent(),
         row.getRoot(),
         row.getConverter(),
         row.getFailure(),
         row.getDetail(),
-        row.getVersion());
+        row.getRevision());
   }
 }

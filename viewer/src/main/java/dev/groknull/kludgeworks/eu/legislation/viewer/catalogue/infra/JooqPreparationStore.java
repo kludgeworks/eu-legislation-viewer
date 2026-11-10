@@ -47,7 +47,7 @@ class JooqPreparationStore implements PreparationStore {
   public void start(ActIdentifier act, Language language) {
     db.insertInto(PREPARATION)
         .set(PREPARATION.ACT, act)
-        .set(PREPARATION.LANGUAGE, language)
+        .set(PREPARATION.LANGUAGE_CODE, language)
         .set(PREPARATION.STATE, State.PREPARING.name())
         .set(PREPARATION.STARTED_AT, currentInstant())
         .onConflictDoNothing()
@@ -56,10 +56,10 @@ class JooqPreparationStore implements PreparationStore {
 
   @Override
   public List<Language> languages(ActIdentifier act) {
-    return db.select(PREPARATION.LANGUAGE)
+    return db.select(PREPARATION.LANGUAGE_CODE)
         .from(PREPARATION)
         .where(PREPARATION.ACT.eq(act))
-        .fetch(PREPARATION.LANGUAGE);
+        .fetch(PREPARATION.LANGUAGE_CODE);
   }
 
   @Override
@@ -103,7 +103,7 @@ class JooqPreparationStore implements PreparationStore {
             == 1;
     if (restarted) {
       db.deleteFrom(PREPARATION_STEP)
-          .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE.eq(language))
+          .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE_CODE.eq(language))
           .execute();
     }
     return restarted;
@@ -120,8 +120,8 @@ class JooqPreparationStore implements PreparationStore {
     db.insertInto(
             PREPARATION_STEP,
             PREPARATION_STEP.ACT,
-            PREPARATION_STEP.LANGUAGE,
-            PREPARATION_STEP.AT,
+            PREPARATION_STEP.LANGUAGE_CODE,
+            PREPARATION_STEP.HAPPENED_AT,
             PREPARATION_STEP.CELEX,
             PREPARATION_STEP.KIND,
             PREPARATION_STEP.ATTEMPT,
@@ -129,7 +129,7 @@ class JooqPreparationStore implements PreparationStore {
         .select(
             select(
                     val(act, PREPARATION_STEP.ACT),
-                    val(language, PREPARATION_STEP.LANGUAGE),
+                    val(language, PREPARATION_STEP.LANGUAGE_CODE),
                     currentInstant(),
                     val(celex),
                     val(kind.name()),
@@ -143,15 +143,15 @@ class JooqPreparationStore implements PreparationStore {
   public List<Step> steps(ActIdentifier act, Language language) {
     var rows =
         db.selectFrom(PREPARATION_STEP)
-            .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE.eq(language))
-            .orderBy(PREPARATION_STEP.AT)
+            .where(PREPARATION_STEP.ACT.eq(act), PREPARATION_STEP.LANGUAGE_CODE.eq(language))
+            .orderBy(PREPARATION_STEP.HAPPENED_AT)
             .fetch();
     // The last start of each text, which gives its attempt and its start time.
     var starts = new HashMap<String, Step>();
     var steps = new ArrayList<Step>(rows.size());
     for (var row : rows) {
       var kind = Step.Kind.valueOf(row.getKind());
-      var at = row.getAt();
+      var at = row.getHappenedAt();
       var celex = row.getCelex();
       var start = starts.get(celex);
       var step =
@@ -180,7 +180,7 @@ class JooqPreparationStore implements PreparationStore {
   }
 
   private static Condition the(ActIdentifier act, Language language) {
-    return PREPARATION.ACT.eq(act).and(PREPARATION.LANGUAGE.eq(language));
+    return PREPARATION.ACT.eq(act).and(PREPARATION.LANGUAGE_CODE.eq(language));
   }
 
   private static Kept kept(PreparationRecord row) {
