@@ -6,13 +6,10 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline.Entry;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.application.TreeStore;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Chunker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Segmentation;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
@@ -29,10 +26,10 @@ import org.springframework.jdbc.core.simple.JdbcClient;
 @Import(TestcontainersConfiguration.class)
 class ContentTests {
   private static final String SAMPLE = "06.02.1/02015R1998-20260322.xml";
+  private static final String NEXT = "06.02.1/02015R1998-20261001.xml";
 
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
-  @Autowired TreeStore trees;
 
   @Test
   void storesATextWholeAndRebuildsIt() throws Exception {
@@ -44,7 +41,18 @@ class ContentTests {
     assertThat(content.rebuild(root, out)).isTrue();
     assertThat(LegalTexts.lines(LegalTexts.canonical(out.getDocumentNode())))
         .containsExactlyElementsOf(LegalTexts.lines(LegalTexts.canonical(text)));
-    assertThat(content.segments(root)).isEqualTo(Segmentation.of(Encoder.encode(text)));
+    assertThat(content.read(root)).isPresent();
+  }
+
+  @Test
+  void writesOnlyTheChunksThatAreNotStoredYet() {
+    content.store(LegalTexts.sample(SAMPLE));
+    var stored = chunks();
+    var next = Chunker.of(Encoder.encode(LegalTexts.sample(NEXT)));
+
+    content.store(LegalTexts.sample(NEXT));
+
+    assertThat(chunks() - stored).isLessThan(next.manifest().size());
   }
 
   @Test
@@ -59,20 +67,13 @@ class ContentTests {
   }
 
   @Test
-  void outlinesATextFromItsContainersAndTheirTitlesOnly() {
+  void keepsTheOutlineOfATextWhenItStoresIt() {
     var text = LegalTexts.sample(SAMPLE);
     var root = content.store(text);
 
     var outline = content.outline(root).orElseThrow();
 
     assertThat(outline).isEqualTo(Outlines.of(Encoder.encode(text)));
-    assertThat(trees.skeleton(root).orElseThrow().nodes().values())
-        .filteredOn(node -> node.kind() == Tree.Kind.LEAF)
-        .isNotEmpty()
-        .allSatisfy(
-            leaf ->
-                assertThat(new String(leaf.content(), StandardCharsets.UTF_8))
-                    .matches("\\[\"(num|heading)\".*"));
     assertThat(outline.entries())
         .extracting(Entry::eId, Entry::kind, Entry::num)
         .containsExactly(
@@ -96,26 +97,11 @@ class ContentTests {
   }
 
   @Test
-  void keepsTheOutlineWhenItStoresATextAndOutlinesATextStoredBeforeOnceFromItsSkeleton() {
-    var text = LegalTexts.sample(SAMPLE);
-    var root = content.store(text);
-    var outline = Outlines.of(Encoder.encode(text));
-
-    assertThat(outlines(root)).isOne();
-    // A text stored before outlines were kept
-    jdbc.sql("delete from outline where root = ?").param(root.bytes()).update();
-
-    assertThat(content.outline(root)).contains(outline);
-    assertThat(outlines(root)).isOne();
-    assertThat(content.outline(root)).contains(outline);
-  }
-
-  @Test
   void rebuildsNothingWhereNothingIsStored() throws Exception {
     var out = LegalTexts.SAXON.newDocumentBuilder().newBuildingStreamWriter();
 
     assertThat(content.rebuild(new ContentHash("0".repeat(64)), out)).isFalse();
-    assertThat(content.segments(new ContentHash("0".repeat(64)))).isEmpty();
+    assertThat(content.read(new ContentHash("0".repeat(64)))).isEmpty();
     assertThat(content.outline(new ContentHash("0".repeat(64)))).isEmpty();
   }
 
@@ -126,17 +112,12 @@ class ContentTests {
         .toList();
   }
 
-  private long outlines(ContentHash root) {
-    return jdbc.sql("select count(*) from outline where root = ?")
-        .param(root.bytes())
-        .query(Long.class)
-        .single();
+  private long chunks() {
+    return jdbc.sql("select count(*) from chunk").query(Long.class).single();
   }
 
   private long rows() {
-    return jdbc.sql(
-            "select (select count(*) from node) + (select count(*) from edge)"
-                + " + (select count(*) from overlay) + (select count(*) from root_segment)")
+    return jdbc.sql("select (select count(*) from chunk) + (select count(*) from manifest)")
         .query(Long.class)
         .single();
   }

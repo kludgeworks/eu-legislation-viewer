@@ -2,7 +2,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "jooq_tables")
 
-# The content module's API and domain: Content, the store of legal texts, and its hashes and segments
+# The content module's API and domain: Content, the store of legal texts, and its hashes and outlines
 java_library(
     name = "content",
     srcs = glob(["*.java"]),
@@ -17,7 +17,7 @@ java_library(
 )
 
 # application/
-# The content module's application ring: storing and rebuilding texts, on a store of trees
+# The content module's application ring: storing and rebuilding texts, on a store of texts
 java_library(
     name = "application",
     srcs = glob(["application/*.java"]),
@@ -36,7 +36,7 @@ java_library(
 )
 
 # infra/
-# The content module's infrastructure: the trees in Postgres, with jOOQ
+# The content module's infrastructure: the texts' chunks in Postgres, with jOOQ
 java_library(
     name = "infra",
     srcs = glob(["infra/*.java"]),
@@ -46,6 +46,7 @@ java_library(
         ":content",
         ":jooq",
         ":model",
+        "@maven//:com_github_luben_zstd_jni",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jooq_jooq",
         "@maven//:org_jspecify_jspecify",
@@ -55,20 +56,17 @@ java_library(
     ],
 )
 
-# The module's tables (node, edge, overlay, root_segment) as jOOQ classes, from its migrations
+# The module's tables (chunk, manifest) as jOOQ classes, from its migrations
 jooq_tables(
     name = "jooq",
     config = "infra/jooq.xml",
     migrations = "//viewer/src/main/resources:content_migrations",
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.content.infra.jooq",
-    deps = [
-        ":content",
-        ":model",
-    ],
+    deps = [":content"],
 )
 
 # model/
-# The content model: legal texts as trees of content-addressed nodes, and back
+# The content model: legal texts as trees of content-addressed nodes, cut into chunks, and back
 java_library(
     name = "model",
     srcs = glob(["model/*.java"]),

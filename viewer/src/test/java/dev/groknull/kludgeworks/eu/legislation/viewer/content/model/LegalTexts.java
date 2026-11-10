@@ -74,9 +74,13 @@ public final class LegalTexts {
 
   /** A text rebuilt from its tree, as a document. */
   public static XdmNode rebuild(Tree tree) {
+    return rebuild(Chunker.of(tree));
+  }
+
+  public static XdmNode rebuild(Chunks chunks) {
     try {
       var out = SAXON.newDocumentBuilder().newBuildingStreamWriter();
-      Decoder.write(tree, out);
+      Decoder.write(chunks, out);
       return out.getDocumentNode();
     } catch (XMLStreamException | SaxonApiException e) {
       throw new IllegalStateException(e);

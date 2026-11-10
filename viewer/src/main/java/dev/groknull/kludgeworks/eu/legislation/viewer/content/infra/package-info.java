@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 /**
- * The infrastructure of the content module. {@link JooqTreeStore} keeps the trees in Postgres. It
- * uses the tables that jOOQ generates from the migrations of the module, in the {@code jooq}
- * package.
+ * The infrastructure of the content module. {@link JooqTextStore} keeps the texts in Postgres, as
+ * chunks. It uses the tables that jOOQ generates from the migrations of the module, in the {@code
+ * jooq} package.
  */
 @InfrastructureRing
 @NullMarked

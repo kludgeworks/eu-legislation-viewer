@@ -8,7 +8,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
 import io.micrometer.observation.ObservationRegistry;
 import java.time.Duration;
 import java.util.List;
@@ -64,11 +63,6 @@ class ComparisonServiceTest {
 
     @Override
     public ContentHash store(XdmNode legalText) {
-      throw new UnsupportedOperationException();
-    }
-
-    @Override
-    public List<Segment> segments(ContentHash root) {
       throw new UnsupportedOperationException();
     }
 

@@ -10,12 +10,13 @@
  *   <li>{@link Annotations} keeps the eIds out of the content, as overlay facts.
  *   <li>{@link NoteLinks} makes footnote references cite notes by their hashes.
  *   <li>{@link Identity} makes the hash of a node, from its canonical JSON.
- *   <li>{@link Encoder} makes the {@link Tree} from a text, and {@link Decoder} makes the text
- *       back.
- *   <li>{@link Segmentation} cuts a text into windows, as an index on its tree.
+ *   <li>{@link Encoder} makes the {@link Tree} from a text.
+ *   <li>{@link Chunker} cuts the tree into {@link Chunks}, as it is stored, and {@link Decoder}
+ *       makes the text back from them.
+ *   <li>{@link Outlines} makes the outline of a text from its tree.
  * </ul>
  *
- * <p>These are pure functions on values. The application stores the tree, in {@code TreeStore}.
+ * <p>These are pure functions on values. The application stores the chunks, in {@code TextStore}.
  */
 @DomainRing
 @NullMarked

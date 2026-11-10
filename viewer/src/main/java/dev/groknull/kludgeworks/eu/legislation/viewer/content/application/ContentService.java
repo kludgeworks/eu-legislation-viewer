@@ -5,14 +5,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.Segment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Chunker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Segmentation;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
-import java.util.List;
 import java.util.Optional;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamWriter;
@@ -26,12 +24,10 @@ import org.springframework.transaction.annotation.Transactional;
  * Stores, reads, rebuilds and outlines texts.
  *
  * <ul>
- *   <li>To store a text, the model encodes it into its tree and cuts it into segments. The service
- *       then keeps the tree, unless it is kept already.
- *   <li>To read or rebuild a text, the service reads its tree back and decodes it.
- *   <li>To outline a text, the service reads the outline that it kept when it stored the text. For
- *       a text stored before outlines were kept, it reads the skeleton back once (its containers
- *       and their titles), outlines it and keeps the outline.
+ *   <li>To store a text, the model encodes it into its tree, cuts the tree into chunks and outlines
+ *       it. The service then keeps the chunks and the outline, unless the text is kept already.
+ *   <li>To read or rebuild a text, the service reads its chunks back and decodes them.
+ *   <li>To outline a text, the service reads the outline that it kept when it stored the text.
  * </ul>
  *
  * <p>Each operation is one transaction, one observation and one log line. The observations are
@@ -42,10 +38,10 @@ import org.springframework.transaction.annotation.Transactional;
 class ContentService implements Content {
   private static final Logger LOG = LoggerFactory.getLogger(ContentService.class);
 
-  private final TreeStore store;
+  private final TextStore store;
   private final ObservationRegistry observations;
 
-  ContentService(TreeStore store, ObservationRegistry observations) {
+  ContentService(TextStore store, ObservationRegistry observations) {
     this.store = store;
     this.observations = observations;
   }
@@ -60,37 +56,32 @@ class ContentService implements Content {
   private ContentHash doStore(XdmNode legalText) {
     var start = System.nanoTime();
     var tree = Encoder.encode(legalText);
-    var segments = Segmentation.of(tree);
-    var encodedIn = millis(start);
     var root = tree.root();
-    var outline = Outlines.of(tree);
     if (store.contains(root)) {
-      store.addOutline(root, outline);
       LOG.info(
-          "{} is stored already: {} nodes, encoded in {} ms", root, tree.nodes().size(), encodedIn);
+          "{} is stored already: {} nodes, encoded in {} ms",
+          root,
+          tree.nodes().size(),
+          millis(start));
       return root;
     }
+    var chunks = Chunker.of(tree);
+    var outline = Outlines.of(tree);
+    var encodedIn = millis(start);
     var written = System.nanoTime();
-    var added = store.add(tree, segments);
-    store.addOutline(root, outline);
-    var bytes = tree.nodes().values().stream().mapToLong(n -> n.content().length).sum();
+    var added = store.add(root, chunks, outline);
+    var bytes = chunks.bodies().values().stream().mapToLong(body -> body.length).sum();
     LOG.info(
-        "Stored {}: {} of {} nodes new, {} KB of JSON, {} segment(s); encoded in {} ms, written in"
-            + " {} ms",
+        "Stored {}: {} of {} chunks new, {} KB of JSON, {} nodes; encoded in {} ms, written in {}"
+            + " ms",
         root,
         added,
-        tree.nodes().size(),
+        chunks.bodies().size(),
         bytes / 1024,
-        segments.size(),
+        tree.nodes().size(),
         encodedIn,
         millis(written));
     return root;
-  }
-
-  @Override
-  @Transactional(readOnly = true)
-  public List<Segment> segments(ContentHash root) {
-    return store.segments(root);
   }
 
   @Override
@@ -101,24 +92,24 @@ class ContentService implements Content {
 
   private Optional<Element> doRead(ContentHash root) {
     var start = System.nanoTime();
-    var tree = store.tree(root);
-    if (tree.isEmpty()) {
+    var chunks = store.chunks(root);
+    if (chunks.isEmpty()) {
       LOG.debug("Nothing stored at {}", root);
       return Optional.empty();
     }
     var read = millis(start);
-    var element = Decoder.element(tree.get());
+    var element = Decoder.element(chunks.get());
     LOG.debug(
-        "Read {}: {} nodes read in {} ms, decoded in {} ms",
+        "Read {}: {} chunks read in {} ms, decoded in {} ms",
         root,
-        tree.get().nodes().size(),
+        chunks.get().bodies().size(),
         read,
         millis(start) - read);
     return Optional.of(element);
   }
 
   @Override
-  @Transactional
+  @Transactional(readOnly = true)
   public Optional<Outline> outline(ContentHash root) {
     return Observation.createNotStarted("content.outline", observations)
         .observe(() -> doOutline(root));
@@ -126,26 +117,13 @@ class ContentService implements Content {
 
   private Optional<Outline> doOutline(ContentHash root) {
     var start = System.nanoTime();
-    var kept = store.outline(root);
-    if (kept.isPresent()) {
-      LOG.debug("Outlined {}: kept, read in {} ms", root, millis(start));
-      return kept;
-    }
-    var skeleton = store.skeleton(root);
-    if (skeleton.isEmpty()) {
-      LOG.debug("Nothing stored at {}", root);
-      return Optional.empty();
-    }
-    var read = millis(start);
-    var outline = Outlines.of(skeleton.get());
-    store.addOutline(root, outline);
-    LOG.info(
-        "Outlined {} and kept it: {} nodes of its skeleton read in {} ms, outlined in {} ms",
+    var outline = store.outline(root);
+    LOG.debug(
+        "Outlined {}: {} in {} ms",
         root,
-        skeleton.get().nodes().size(),
-        read,
-        millis(start) - read);
-    return Optional.of(outline);
+        outline.isPresent() ? "kept" : "nothing stored",
+        millis(start));
+    return outline;
   }
 
   @Override
@@ -164,17 +142,17 @@ class ContentService implements Content {
 
   private boolean doRebuild(ContentHash root, XMLStreamWriter out) throws XMLStreamException {
     var start = System.nanoTime();
-    var tree = store.tree(root);
-    if (tree.isEmpty()) {
+    var chunks = store.chunks(root);
+    if (chunks.isEmpty()) {
       LOG.debug("Nothing stored at {}", root);
       return false;
     }
     var read = millis(start);
-    Decoder.write(tree.get(), out);
+    Decoder.write(chunks.get(), out);
     LOG.debug(
-        "Rebuilt {}: {} nodes read in {} ms, written in {} ms",
+        "Rebuilt {}: {} chunks read in {} ms, written in {} ms",
         root,
-        tree.get().nodes().size(),
+        chunks.get().bodies().size(),
         read,
         millis(start) - read);
     return true;

@@ -15,7 +15,7 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Makes the outline of a text from its tree, or from its skeleton in {@code TreeStore}.
+ * Makes the outline of a text from its tree, when the text is stored.
  *
  * <p>The outline holds the units that have a rank, in the order in which a reader meets them. Each
  * unit is under the last unit of a higher rank before it. The outline also holds the eId of every
@@ -42,10 +42,7 @@ public final class Outlines {
     return new Outline(outlines.outermost.stream().map(Unit::entry).toList(), outlines.eIds);
   }
 
-  /**
-   * Walks a container and the containers in it, in order. It skips the children that are not in a
-   * skeleton.
-   */
+  /** Walks a container and the containers in it, in order. */
   private void walk(Node node, @Nullable Edge to) {
     var content = (Map<?, ?>) Identity.parse(node.content());
     @SuppressWarnings("unchecked")
@@ -60,8 +57,8 @@ public final class Outlines {
       add(node, attributes, Integer.parseInt(rank));
     }
     for (var edge : node.children()) {
-      var child = tree.nodes().get(edge.child());
-      if (child != null && child.kind() == Kind.CONTAINER) {
+      var child = tree.node(edge.child());
+      if (child.kind() == Kind.CONTAINER) {
         walk(child, edge);
       }
     }
@@ -89,8 +86,8 @@ public final class Outlines {
    */
   private String title(Node unit, String name) {
     for (var edge : unit.children()) {
-      var child = tree.nodes().get(edge.child());
-      if (child != null && child.kind() == Kind.LEAF) {
+      var child = tree.node(edge.child());
+      if (child.kind() == Kind.LEAF) {
         var leaf = (List<?>) Identity.parse(child.content());
         if (JsonMl.name(leaf).equals(name)) {
           var text = new StringBuilder();

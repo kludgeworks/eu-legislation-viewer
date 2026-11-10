@@ -50,13 +50,13 @@ java_library(
     ],
 )
 
-# Legal texts encoded into the tree and rebuilt from it, as they were
+# Legal texts encoded into the tree, cut into chunks and rebuilt from them, as they were
 java_test_suite(
     name = "model",
     size = "small",
     srcs = [
+        "model/ChunkerTest.java",
         "model/EncoderTest.java",
-        "model/SegmentationTest.java",
     ],
     runner = "junit5",
     runtime_deps = [
@@ -74,7 +74,7 @@ java_test_suite(
     ],
 )
 
-# Every version of an act, from a directory of legal-text files, rebuilt from one shared tree; run
+# Every version of an act, from a directory of legal-text files, rebuilt from one shared store of chunks; run
 # by hand, not by bazel test //...: --test_env=LEGAL_TEXT_DIR=<dir> (see VersionsRoundTrip)
 java_junit5_test(
     name = "versions",
