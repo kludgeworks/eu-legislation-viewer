@@ -1,4 +1,5 @@
 -- SPDX-License-Identifier: MIT
+-- breaking: columns named after SQL keywords are renamed in place
 -- Renames the columns whose names are SQL keywords (SQLFluff's RF04), so that every name in the
 -- schema is a plain identifier. language becomes language_code: it holds a code (ENG, FRA …).
 -- revision is the job's optimistic lock: each update adds one.

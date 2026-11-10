@@ -1,4 +1,5 @@
 -- SPDX-License-Identifier: MIT
+-- breaking: the old text tables are dropped, and ingest builds the texts again
 -- The texts as chunks (model.Chunker) instead of a row per node: reading a long act walked tens of
 -- thousands of rows. The texts stored so far are dropped, not converted: ingest builds them again.
 -- A text's root, the hash of its tree, is the same as before.

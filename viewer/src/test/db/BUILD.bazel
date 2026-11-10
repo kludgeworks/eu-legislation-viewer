@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test")
 load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
 load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
@@ -35,4 +36,16 @@ sh_binary(
         "--rm-dist",
     ],
     data = SCHEMA_DATA,
+)
+
+# the pending migrations keep the schema the released code uses: expand, then contract, a release
+# apart. ExpandContract's main is the test: it exits non-zero on a problem
+java_test(
+    name = "expand_contract",
+    args = ["viewer/src/main/resources/db/migration"],
+    data = ["//viewer/src/main/resources:migrations"],
+    jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"],
+    main_class = "dev.groknull.kludgeworks.build.ExpandContract",
+    use_testrunner = False,
+    runtime_deps = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:expand_contract"],
 )

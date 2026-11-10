@@ -1,4 +1,5 @@
 -- SPDX-License-Identifier: MIT
+-- breaking: columns named after SQL keywords are renamed in place
 -- Renames the columns whose names are SQL keywords (SQLFluff's RF04), so that every name in the
 -- schema is a plain identifier. Postgres reserves none of them, so they worked, but read as
 -- keywords. language becomes language_code: it holds a code (ENG, FRA …).

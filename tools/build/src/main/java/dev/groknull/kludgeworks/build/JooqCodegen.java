@@ -28,6 +28,20 @@ import org.jooq.meta.jaxb.Target;
  * module's migrations, the package to generate into, and the source jar to write.
  */
 public final class JooqCodegen {
+  /**
+   * The tables and columns whose comment starts with {@code deprecated:}, as patterns of their
+   * names: left out, so that the code can no longer use what a later release drops.
+   */
+  static final String DEPRECATED =
+      """
+      select c.relname || case when d.objsubid = 0 then '' else '\\.' || a.attname end
+      from pg_description as d
+      join pg_class as c on c.oid = d.objoid and d.classoid = 'pg_class'::regclass
+      join pg_namespace as n on n.oid = c.relnamespace
+      left join pg_attribute as a on a.attrelid = c.oid and a.attnum = d.objsubid
+      where n.nspname = 'public' and d.description like 'deprecated:%'
+      """;
+
   private JooqCodegen() {}
 
   public static void main(String[] args) throws Exception {
@@ -57,7 +71,9 @@ public final class JooqCodegen {
             .withName("org.jooq.meta.postgres.PostgresDatabase")
             .withInputSchema("public")
             .withOutputSchemaToDefault(true)
-            .withExcludes("flyway_schema_history");
+            .withExcludes("flyway_schema_history")
+            .withIncludeExcludeColumns(true)
+            .withExcludeSql(DEPRECATED);
         generator.withTarget(
             new Target()
                 .withPackageName(packageName)

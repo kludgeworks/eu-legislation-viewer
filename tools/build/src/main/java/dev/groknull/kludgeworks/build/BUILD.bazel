@@ -149,6 +149,29 @@ java_binary(
     ],
 )
 
+# the check that a release's pending migrations keep the schema the running release uses, with
+# what it runs on: Postgres embedded, and Flyway's support for it (//viewer/src/test/db:expand_contract)
+java_library(
+    name = "expand_contract",
+    srcs = ["ExpandContract.java"],
+    runtime_deps = [
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_amd64",
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_arm64v8",
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_amd64",
+        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_arm64v8",
+        "@maven//:org_flywaydb_flyway_database_postgresql",
+        "@maven//:org_postgresql_postgresql",
+        "@maven//:org_slf4j_slf4j_simple",  # Postgres's and Flyway's log: warnings and errors
+    ],
+    deps = [
+        ":package_info",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
+        "@maven//:io_zonky_test_embedded_postgres",
+        "@maven//:org_flywaydb_flyway_core",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)
+
 # jte templates as Java sources, with jte-models' typed facade (the macro jte_library)
 java_binary(
     name = "jte_generate",

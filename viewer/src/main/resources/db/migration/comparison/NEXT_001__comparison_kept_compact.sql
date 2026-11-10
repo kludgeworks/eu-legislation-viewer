@@ -1,4 +1,5 @@
 -- SPDX-License-Identifier: MIT
+-- breaking: the comparisons are kept as one blob; they are computed again
 -- A comparison is kept compact, because it is read for every page of it and one can be 150 MB as
 -- jsonb (2005/396). kept: the comparison as JSON (differences, closing), with each unit's opening
 -- once rather than in every difference in the unit, and each difference cut down as
