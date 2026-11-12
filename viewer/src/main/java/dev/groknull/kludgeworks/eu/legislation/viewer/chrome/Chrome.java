@@ -105,7 +105,8 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
       String copy,
       String loading,
       String timeline,
-      String datepicker) {
+      String datepicker,
+      Icons icons) {
     static Assets of(HttpServletRequest request) {
       // Spring MVC sets this attribute on every request that its handlers serve.
       var urls =
@@ -128,8 +129,22 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
           url(urls, request, "/js/copy.js"),
           url(urls, request, "/js/loading.js"),
           url(urls, request, "/js/timeline.js"),
-          url(urls, request, "/js/datepicker.js"));
+          url(urls, request, "/js/datepicker.js"),
+          new Icons(
+              url(urls, request, "/favicon.svg"),
+              url(urls, request, "/favicon.ico"),
+              url(urls, request, "/apple-touch-icon.png")));
     }
+
+    /**
+     * The viewer's icon, as the browser's tab and the site bar show it: two bars, the lower one
+     * shifted along, on a green tile (docs/design/DESIGN.md, Favicon).
+     *
+     * @param svg the icon, for browsers that take SVG, and the site bar
+     * @param ico the icon for browsers that do not
+     * @param touch the icon of a page saved to a phone's home screen, 180px square
+     */
+    public record Icons(String svg, String ico, String touch) {}
 
     /**
      * Returns {@code path} with the hash of its content. Returns {@code path} unchanged if Spring

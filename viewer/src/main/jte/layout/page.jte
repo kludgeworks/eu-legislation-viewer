@@ -15,6 +15,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title>${title}</title>
+  <link rel="icon" href="${chrome.assets().icons().svg()}" type="image/svg+xml">
+  <link rel="icon" href="${chrome.assets().icons().ico()}" sizes="32x32">
+  <link rel="apple-touch-icon" href="${chrome.assets().icons().touch()}">
   @for(var href : chrome.assets().css())
     <link rel="stylesheet" href="${href}">
   @endfor
@@ -38,7 +41,7 @@
       Journal of the European Union is authentic.</span>
   </aside>
   <nav class="site" aria-label="Site">
-    <a class="site-name" href="/">Amendment viewer</a>
+    <a class="site-name" href="/"><img src="${chrome.assets().icons().svg()}" width="20" height="20" alt="">Amendment viewer</a>
     @if(search && chrome.results() != null)
       <a class="results" href="${chrome.results().href()}">‹ Results for “${chrome.results().words()}”</a>
     @endif

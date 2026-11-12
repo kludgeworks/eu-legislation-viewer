@@ -56,6 +56,10 @@ class HomeControllerTests {
     assertThat(page.select(".results")).isEmpty();
     assertThat(page.select(".about h3").eachText())
         .containsExactly("What this is", "What it adds", "What it isn’t");
+    assertThat(page.select("h1.home-name").text())
+        .isEqualTo("Read EU legislation as it stood on any day, and see what changed");
+    assertThat(page.select(".home-foot a").eachAttr("href"))
+        .containsExactly("/about", "/about#privacy", "/about#api");
   }
 
   @Test

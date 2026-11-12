@@ -39,7 +39,7 @@
           @endfor
         </dl>
         <h2>While you wait</h2>
-        <p><a href="${preparing.eurLex()}">Read it on EUR-Lex</a>: the official site, without comparison.</p>
+        <p><a href="${preparing.eurLex()}" rel="external">Read it on EUR-Lex<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a>: the official site, without comparison.</p>
         @if(chrome.results() != null)
           <p><a href="${chrome.results().href()}">Back to the results for “${chrome.results().words()}”</a></p>
         @endif

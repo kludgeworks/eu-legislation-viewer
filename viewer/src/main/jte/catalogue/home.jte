@@ -3,16 +3,15 @@
 @param Chrome chrome
 @param String title
 @param HomeView home
-<%-- Shows the home page. It has the viewer's name, a line that says what it is, and the Find an
-     act box. Then come a search's results. Each result shows the act's CELEX and kind, its title,
+<%-- Shows the home page. Its large line says what the viewer does (the site bar has the name), then
+     comes the Find an act box. Then come a search's results. Each result shows the act's CELEX and kind, its title,
      its link and the pages it goes to. Filters by kind of act and links to the pages before and
      after go with the results. At the end, three notes say what this is, what it adds and what it
-     is not. The page leaves out the small search box of the site bar (search false). --%>
+     is not, and a footer links to the About page, its Privacy and its API. The page leaves out the small search box of the site bar (search false). --%>
 @template.layout.page(chrome = chrome, title = title, search = false, content = @`
   <div class="home">
     <header class="home-mast">
-      <p class="home-name">Amendment viewer</p>
-      <p>EU legislation as it read on any version, and exactly what changed between two versions, act by act.</p>
+      <h1 class="home-name">Read EU legislation as it stood on any day, and see what changed</h1>
     </header>
     <form class="find-act" method="get" action="/" role="search">
       <label for="q">Find an act</label>
@@ -61,8 +60,9 @@
     @endif
     <section class="about" aria-label="About this viewer">
       <div><h3>What this is</h3><p>An unofficial reader for EU acts and their consolidated versions, converted from the Publications Office’s Formex files.</p></div>
-      <div><h3>What it adds</h3><p>Pick any two versions of an act and see what differs, provision by provision, with the amending act, its Official Journal reference and the date each change applies from.</p></div>
+      <div><h3>What it adds</h3><p>Pick any two days and see what differs between the law on each, provision by provision, with the amending act, its Official Journal reference and the date each change applies from.</p></div>
       <div><h3>What it isn’t</h3><p>Not the authentic text. Check the Official Journal, or EUR-Lex, before relying on a provision.</p></div>
     </section>
+    <footer class="home-foot"><a href="/about">About</a> · <a href="/about#privacy">Privacy</a> · <a href="/about#api">API</a></footer>
   </div>
 `)

@@ -12,7 +12,8 @@ path = "**"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "The Project Contributors"
 
-# Ours, without room for a header: versions, lock files, the source notes of the recorded files
+# Ours, without room for a header: versions, lock files, the source notes of the recorded files, the
+# viewer's icons
 [[annotations]]
 path = [
   ".bazelversion",
@@ -27,6 +28,9 @@ path = [
   ".mise/locks/**",
   "tools/tasks/**/*.py.lock",
   "**/SOURCE",
+  "viewer/src/main/resources/static/favicon.svg",
+  "viewer/src/main/resources/static/favicon.ico",
+  "viewer/src/main/resources/static/apple-touch-icon.png",
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "The Project Contributors"

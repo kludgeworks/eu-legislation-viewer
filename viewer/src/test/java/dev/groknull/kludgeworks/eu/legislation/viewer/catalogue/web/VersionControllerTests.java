@@ -79,7 +79,8 @@ class VersionControllerTests {
         .isEqualTo("2015/1998 didn’t exist yet on 1 January 2000");
     assertThat(page.select(".failure-actions a").eachText())
         .containsExactly(
-            "Read it as it first came into force", "The act in the Official Journal ↗");
+            "Read it as it first came into force",
+            "The act in the Official Journal ↗ (opens EUR-Lex)");
   }
 
   @Test

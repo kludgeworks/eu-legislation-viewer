@@ -22,7 +22,7 @@
         <form method="post" action="${failure.retry()}"><button type="submit">Try again</button></form>
       @endif
       @for(var action : failure.actions())
-        <a class="${action.button() ? "button" : null}" href="${action.href()}">${action.label()}</a>
+        <a class="${action.button() ? "button" : null}" href="${action.href()}" rel="${action.external() ? "external" : null}">${action.label()}@if(action.external())<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span>@endif</a>
       @endfor
     </div>
     @if(failure.reference() != null)

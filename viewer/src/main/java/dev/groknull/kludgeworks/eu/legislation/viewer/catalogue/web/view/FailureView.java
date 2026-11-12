@@ -157,7 +157,7 @@ public record FailureView(
         null,
         List.of(
             instead,
-            Action.link("The act in the Official Journal ↗", act.id().eurLex(language).toString())),
+            Action.link("The act in the Official Journal", act.id().eurLex(language).toString())),
         null);
   }
 
@@ -355,6 +355,14 @@ public record FailureView(
    *     buttons. The links to EUR-Lex are plain links.
    */
   public record Action(String label, String href, boolean button) {
+    /**
+     * Returns whether the link leaves the site. It then ends with ↗, and says to a screen reader
+     * that it opens EUR-Lex.
+     */
+    public boolean external() {
+      return href.startsWith("https://") || href.startsWith("http://");
+    }
+
     static Action button(String label, String href) {
       return new Action(label, href, true);
     }

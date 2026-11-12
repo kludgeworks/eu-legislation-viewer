@@ -81,7 +81,8 @@ class ChangesPagesTests {
     assertThat(sidenote.select(".applies").text())
         .isEqualTo(
             "2026/449 applies in stages: from 22 March 2026, its entry into force; in part from 1"
-                + " October 2026 · Article 2 of 2026/449 says which part from when");
+                + " October 2026 · Article 2 of 2026/449 ↗ (opens EUR-Lex) says which part from"
+                + " when");
     assertThat(sidenote.select(".applies a").attr("href"))
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
     assertThat(sidenote.select(".before")).isEmpty();
@@ -217,7 +218,8 @@ class ChangesPagesTests {
     assertThat(a.select(".from").text()).isEqualTo(a.select(".to").text());
     assertThat(a.select(".history").text())
         .isEqualTo(
-            "As in the original act · applies from 1 February 2016 · Article 2 of 2015/1998");
+            "As in the original act · applies from 1 February 2016 · Article 2 of 2015/1998 ↗"
+                + " (opens EUR-Lex)");
   }
 
   @Test
