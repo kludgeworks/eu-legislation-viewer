@@ -159,7 +159,9 @@ public record SidenoteView(
     var steps = steps(act, from, to, made.keySet(), marked.keySet(), together(difference, between));
     var dates = new ArrayList<Applies>();
     for (var each : steps.stream().flatMap(List::stream).toList()) {
-      if (!each.corrigendum()) {
+      if (each.corrigendum()) {
+        dates.add(corrects(act, from, to, each));
+      } else {
         var days =
             amendments.stream()
                 .filter(amendment -> amendment.act().equals(each))
@@ -260,6 +262,33 @@ public record SidenoteView(
    * Returns the first version after {@code from}, up to {@code to}, that integrates {@code
    * amending}.
    */
+  /**
+   * Returns the date line of {@code corrigendum}. A corrigendum corrects its act from the start:
+   * from the day the act applies, else from its entry into force. For example, "Corrigendum 4 to
+   * 2017/815 corrects 2017/815 from 1 June 2017 · first included in the version of 1 January 2026".
+   * The day is left out if the act has none.
+   */
+  private static Applies corrects(Act act, Version from, Version to, ActIdentifier corrigendum) {
+    var corrected = corrigendum.corrected().orElseThrow();
+    var dated = act.datesOf(corrected).stream().filter(date -> date.date() != null).toList();
+    var applying =
+        dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
+    var start =
+        (applying.isEmpty() ? dated : applying)
+            .stream().map(ActDate::date).filter(Objects::nonNull).min(Comparator.naturalOrder());
+    var when =
+        corrigendum.cited()
+            + " corrects "
+            + corrected.cited()
+            + start.map(day -> " from " + Dates.inWords(day)).orElse("")
+            + version(act, from, to, corrigendum)
+                .map(
+                    version ->
+                        " · first included in the version of " + Dates.inWords(version.date()))
+                .orElse("");
+    return new Applies(when, "", null, List.of(), "");
+  }
+
   private static Optional<Version> version(
       Act act, Version from, Version to, ActIdentifier amending) {
     return act.timeline().versions().stream()

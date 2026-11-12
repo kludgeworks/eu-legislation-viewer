@@ -228,7 +228,7 @@ class ChangesController {
                       parts,
                       views,
                       all,
-                      sidenotes.values().stream().anyMatch(SidenoteView::corrected))
+                      ControlsView.legend(changes, sidenotes))
                   .render();
           case SYNOPSIS -> {
             // Show the neighbours of the differences. Each neighbour shows what last changed it.

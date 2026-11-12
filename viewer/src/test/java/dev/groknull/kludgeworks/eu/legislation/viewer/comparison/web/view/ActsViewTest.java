@@ -37,7 +37,7 @@ class ActsViewTest {
     assertThat(acts(Map.of(CORRIGENDUM, 2), null).chips())
         .filteredOn(Chip::corrigendum)
         .extracting(Chip::label, Chip::count)
-        .containsExactly(tuple("corrigendum 1 to 2019/103", 2));
+        .containsExactly(tuple("Corrigendum 1 to 2019/103", 2));
     assertThat(acts(Map.of(), CORRIGENDUM).chips()).filteredOn(Chip::on).hasSize(1);
   }
 

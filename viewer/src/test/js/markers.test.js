@@ -22,7 +22,7 @@ describe("number", () => {
   });
 
   test("names a corrigendum with the act it corrects", () => {
-    expect(number("32019R0103R(01)")).toBe("corrigendum 1 to 2019/103");
+    expect(number("32019R0103R(01)")).toBe("Corrigendum 1 to 2019/103");
   });
 
   test("returns anything else as it is", () => {

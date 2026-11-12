@@ -61,6 +61,29 @@ class SidenoteViewTest {
   }
 
   @Test
+  void datesACorrectionFromTheStartOfTheActItCorrectsAndTheVersionThatFirstHasIt() {
+    var c =
+        changed(
+            "anx/pnt_11.3.2", List.of(new Marker("32019R0103R(01)", "corrected", null)), List.of());
+
+    var sidenote =
+        SidenoteView.of(
+            AVSEC,
+            version("02015R1998-20210701"),
+            version("02015R1998-20211231"),
+            c,
+            List.of(),
+            Language.ENG);
+
+    assertThat(sidenote.made()).isEqualTo("Corrected by Corrigendum 1 to 2019/103");
+    assertThat(sidenote.dates())
+        .extracting(SidenoteView.Applies::when)
+        .containsExactly(
+            "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first included in"
+                + " the version of 31 December 2021");
+  }
+
+  @Test
   void datesAChangeFromTheOneOfItsActsDatesCellarHasForTheUnit() {
     var c =
         changed(

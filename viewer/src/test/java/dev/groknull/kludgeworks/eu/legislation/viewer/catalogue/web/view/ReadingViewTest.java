@@ -50,7 +50,7 @@ class ReadingViewTest {
             "2019/103: Commission Implementing Regulation (EU) 2019/103 of 23 January 2019 amending"
                 + " Implementing Regulation (EU) 2015/1998")
         .contains(
-            " · OJ L 21, 24.1.2019\ncorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
+            " · OJ L 21, 24.1.2019\nCorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
         .endsWith("(Text with EEA relevance) · OJ L 208, 1.7.2020");
     assertThat(card.notes()).isEmpty();
     assertThat(card.lags()).isEmpty();

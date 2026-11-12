@@ -45,7 +45,7 @@
 </act-outline>
 <div class="changes synopsis">
   @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
+  @template.comparison.controls(changes = changes, views = views, only = only, legend = ControlsView.legend(changes, sidenotes))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two versions, aligned by provision">
     <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="celex">${from}</span></div><div role="columnheader">To<span class="celex">${to}</span></div><div role="columnheader">What changed it</div></div>
     @for(var passage : changes.passages())

@@ -81,7 +81,7 @@ public record ActIdentifier(String celex) {
    *
    * <ul>
    *   <li>An act is cited by its number, {@link #number()}. For example, 2017/815.
-   *   <li>A corrigendum is cited by its number and the act. For example, "corrigendum 1 to
+   *   <li>A corrigendum is cited by its number and the act. For example, "Corrigendum 1 to
    *       2019/103".
    *   <li>Anything else is cited by its CELEX.
    * </ul>
@@ -89,12 +89,23 @@ public record ActIdentifier(String celex) {
   public String cited() {
     var corrigendum = CORRIGENDUM.matcher(celex);
     if (corrigendum.matches()) {
-      return "corrigendum "
+      return "Corrigendum "
           + Integer.parseInt(corrigendum.group(2))
           + " to "
           + new ActIdentifier(corrigendum.group(1)).cited();
     }
     return number().orElse(celex);
+  }
+
+  /**
+   * Returns the act that this corrigendum corrects, or empty if this is not a corrigendum. For
+   * example, 32019R0103R(01) corrects 32019R0103.
+   */
+  public Optional<ActIdentifier> corrected() {
+    var corrigendum = CORRIGENDUM.matcher(celex);
+    return corrigendum.matches()
+        ? Optional.of(new ActIdentifier(corrigendum.group(1)))
+        : Optional.empty();
   }
 
   /**

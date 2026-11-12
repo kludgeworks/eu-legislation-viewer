@@ -38,7 +38,7 @@
 </act-outline>
 <div class="changes">
   @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, only = only, corrected = sidenotes.values().stream().anyMatch(SidenoteView::corrected))
+  @template.comparison.controls(changes = changes, views = views, only = only, legend = ControlsView.legend(changes, sidenotes))
   <div class="book legal-text legal-text-consolidated">
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold)

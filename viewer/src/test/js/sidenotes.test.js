@@ -41,7 +41,7 @@ describe("MadeBy", () => {
 
 describe("SharedDates", () => {
   test("copies its date lines into the fold when it opens, once", () => {
-    document.body.innerHTML = `${PARTS}<shared-dates data-dates="dates-1"><details class="dates"><summary>2 acts’ dates</summary></details></shared-dates>`;
+    document.body.innerHTML = `${PARTS}<shared-dates data-dates="dates-1"><details class="dates"><summary>2 dates · <span class="show">show</span></summary></details></shared-dates>`;
     const shared = /** @type {import("../../main/resources/static/js/sidenotes.js").SharedDates} */ (
       document.querySelector("shared-dates")
     );

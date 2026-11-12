@@ -9,7 +9,7 @@
 @param SidenoteParts parts
 @param List<ControlsView.ViewLink> views
 @param ControlsView.Only only = null
-@param boolean corrected = false
+@param ControlsView.Legend legend
 <%-- Shows a comparison's Whole text view. The controls come first. Then the text shows every
      provision of the later text (text). Each provision that differs is marked in place, with a
      number and its sidenote. A deleted provision shows where it was. The later text's outline is
@@ -23,7 +23,7 @@
 </act-outline>
 <div class="changes whole">
   @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, only = only, corrected = corrected)
+  @template.comparison.controls(changes = changes, views = views, only = only, legend = legend)
   <div class="book">${text}</div>
 </div>
 </div>

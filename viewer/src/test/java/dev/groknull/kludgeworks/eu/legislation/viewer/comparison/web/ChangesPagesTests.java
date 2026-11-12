@@ -51,6 +51,11 @@ class ChangesPagesTests {
   void comparesTheVersionsOnceTheActIsPrepared() {
     var changes = prepared();
     assertThat(changes.select(".controls b").text()).isEqualTo("6 differences");
+    // 2026/449 made them all. No corrigendum did, so the legend has no corrigendum.
+    assertThat(changes.select(".controls .by").text()).isEqualTo("by 2026/449");
+    assertThat(changes.select(".controls .legend").text())
+        .contains("inserted")
+        .doesNotContain("corrigendum");
     assertThat(changes.select("nav.views .view").eachText())
         .containsExactly("Changes", "Whole text", "Synopsis");
     assertThat(changes.select("nav.views a.view").eachAttr("href"))

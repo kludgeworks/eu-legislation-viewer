@@ -10,7 +10,7 @@
 
 /**
  * Returns the number of an act from its CELEX number. For example, 32017R0815 gives "2017/815",
- * and 32019R0103R(01) gives "corrigendum 1 to 2019/103". A value that is not a CELEX number of an
+ * and 32019R0103R(01) gives "Corrigendum 1 to 2019/103". A value that is not a CELEX number of an
  * act is returned as it is.
  *
  * @param {string | undefined} celex
@@ -22,7 +22,7 @@ export const number = (celex) => {
     return celex ?? "";
   }
   const name = `${act[1]}/${Number(act[2])}`;
-  return act[3] ? `corrigendum ${Number(act[3])} to ${name}` : name;
+  return act[3] ? `Corrigendum ${Number(act[3])} to ${name}` : name;
 };
 
 /**

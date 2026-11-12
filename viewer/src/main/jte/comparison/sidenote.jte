@@ -21,9 +21,9 @@
      the fold from there when the reader opens it. --%>
   !{var dates = parts == null ? null : parts.dates(sidenote);}
   @if(dates != null)
-    <shared-dates data-dates="${dates}"><details class="dates"><summary>${sidenote.dates().size()} acts’ dates</summary></details></shared-dates>
+    <shared-dates data-dates="${dates}"><details class="dates"><summary>${sidenote.dates().size()} dates · <span class="show">show</span></summary></details></shared-dates>
   @elseif(sidenote.dates().size() >= SidenoteParts.FOLDED)
-    <details class="dates"><summary>${sidenote.dates().size()} acts’ dates</summary>
+    <details class="dates"><summary>${sidenote.dates().size()} dates · <span class="show">show</span></summary>
       @for(var applies : sidenote.dates())
         <span class="applies">@template.comparison.applies(applies = applies)</span>
       @endfor
