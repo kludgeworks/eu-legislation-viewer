@@ -18,8 +18,10 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Pattern;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
@@ -52,6 +54,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 class HomeController {
   private static final Logger LOG = LoggerFactory.getLogger(HomeController.class);
+
+  /** The address that looks up an act the catalogue does not have yet. */
+  static final String LOOK_UP = "/lookup";
 
   /** How many acts a page of results has. */
   static final int PAGE = 20;
@@ -109,7 +114,7 @@ class HomeController {
       return page(chrome, "Amendment viewer", HomeView.empty());
     }
     var started = System.nanoTime();
-    var straight = straight(words, chrome, started);
+    var straight = straight(words, chrome, started, null);
     if (straight.isPresent()) {
       return straight.get();
     }
@@ -153,46 +158,111 @@ class HomeController {
   }
 
   /**
-   * Returns the response for {@code words} if they are a CELEX number or an ELI. That is a redirect
-   * to the comparison of the act, or the home page saying that no act has it. Returns none if the
-   * words are title words.
+   * Looks up the act that {@code q}, a CELEX number or an ELI, names, and goes to it. The home page
+   * asks for this address when the catalogue does not have the act yet. Asking the Publications
+   * Office takes seconds, so the home page first says that it looks the act up. A request from htmx
+   * gets the address of the act in {@code HX-Redirect}. If no act has it, the response is the home
+   * page that says so. Other words go to their results.
    */
-  private Optional<ResponseEntity<String>> straight(String words, Chrome chrome, long started) {
-    var celex = CELEX.matcher(words.toUpperCase(Locale.ROOT));
-    var path = ELI.matcher(words.toLowerCase(Locale.ROOT));
-    Optional<Act> act;
-    String as;
-    if (celex.matches()) {
-      act = acts.find(new ActIdentifier(celex.group(1)));
-      as = "CELEX number";
-    } else if (path.matches()) {
-      act = acts.find(new Eli(path.group(1), Integer.parseInt(path.group(2)), path.group(3)));
-      as = "ELI";
-    } else {
+  @GetMapping(path = LOOK_UP, produces = MediaType.TEXT_HTML_VALUE)
+  ResponseEntity<String> lookUp(@RequestParam String q, HttpServletRequest request) {
+    var words = q.strip();
+    return straight(words, Chrome.of(request), System.nanoTime(), request)
+        .orElseGet(
+            () ->
+                ResponseEntity.status(HttpStatus.SEE_OTHER)
+                    .location(URI.create(Links.home(words, Search.Kind.ALL, 1)))
+                    .build());
+  }
+
+  /**
+   * Returns the response for {@code words} if they are a CELEX number or an ELI. That is a redirect
+   * to the comparison of the act, or the home page saying that no act has it. If the catalogue does
+   * not have the act yet and {@code lookingUp} is null, it is the home page that says it looks the
+   * act up. Returns none if the words are title words.
+   *
+   * @param lookingUp the request to {@link #LOOK_UP}, or null for a search
+   */
+  private Optional<ResponseEntity<String>> straight(
+      String words, Chrome chrome, long started, @Nullable HttpServletRequest lookingUp) {
+    var named = Named.of(words);
+    if (named.isEmpty()) {
       return Optional.empty();
     }
+    var name = named.get();
+    var act = name.catalogued(acts);
+    if (act.isEmpty() && lookingUp == null) {
+      LOG.info(
+          "Searched for “{}” by {}: not in the catalogue yet, so the page looks it up",
+          typed(words),
+          name.as());
+      return Optional.of(
+          page(
+              chrome,
+              "Looking up " + name.number() + " · Amendment viewer",
+              HomeView.lookingUp(
+                  words,
+                  "Looking up " + name.number() + " at the Publications Office…",
+                  LOOK_UP + "?q=" + URLEncoder.encode(words, StandardCharsets.UTF_8))));
+    }
+    if (act.isEmpty()) {
+      act = name.find(acts);
+    }
     LOG.info(
-        "Searched for “{}” by {}: {}, in {} ms",
+        "{} “{}” by {}: {}, in {} ms",
+        lookingUp == null ? "Searched for" : "Looked up",
         typed(words),
-        as,
+        name.as(),
         act.map(found -> found.id().celex() + (found.eli() == null ? ", which has no ELI" : ""))
             .orElse("no act has it"),
         millis(started));
+    // An act without an ELI has no page here.
+    var eli = act.map(Act::eli);
+    if (eli.isEmpty()) {
+      return Optional.of(
+          page(
+              chrome,
+              "Amendment viewer",
+              HomeView.none(words, "No act has the CELEX number or ELI " + words + ".")));
+    }
+    var location = Links.act(eli.get(), Language.ENG);
     return Optional.of(
-        // An act without an ELI has no page here.
-        act.map(Act::eli)
-            .map(
-                eli ->
-                    ResponseEntity.status(HttpStatus.SEE_OTHER)
-                        .location(URI.create(Links.act(eli, Language.ENG)))
-                        .<String>build())
-            .orElseGet(
-                () ->
-                    page(
-                        chrome,
-                        "Amendment viewer",
-                        HomeView.none(
-                            words, "No act has the CELEX number or ELI " + words + "."))));
+        lookingUp != null && lookingUp.getHeader("HX-Request") != null
+            ? ResponseEntity.ok().header("HX-Redirect", location).build()
+            : ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build());
+  }
+
+  /**
+   * What a reader typed that names one act: its CELEX number or its ELI.
+   *
+   * @param as how it names the act, for the log. For example, "CELEX number".
+   * @param number the act's number, as a reader reads it. For example, "2015/1998" for a CELEX
+   *     number, or "reg_impl/2015/1998" for an ELI.
+   */
+  private record Named(String as, String number, @Nullable ActIdentifier celex, @Nullable Eli eli) {
+
+    /** Returns the act that {@code words} name, or empty if they are title words. */
+    static Optional<Named> of(String words) {
+      var celex = CELEX.matcher(words.toUpperCase(Locale.ROOT));
+      if (celex.matches()) {
+        var id = new ActIdentifier(celex.group(1));
+        return Optional.of(new Named("CELEX number", id.cited(), id, null));
+      }
+      var path = ELI.matcher(words.toLowerCase(Locale.ROOT));
+      if (path.matches()) {
+        var eli = new Eli(path.group(1), Integer.parseInt(path.group(2)), path.group(3));
+        return Optional.of(new Named("ELI", eli.path(), null, eli));
+      }
+      return Optional.empty();
+    }
+
+    Optional<Act> catalogued(Acts acts) {
+      return celex != null ? acts.catalogued(celex) : acts.catalogued(Objects.requireNonNull(eli));
+    }
+
+    Optional<Act> find(Acts acts) {
+      return celex != null ? acts.find(celex) : acts.find(Objects.requireNonNull(eli));
+    }
   }
 
   /**

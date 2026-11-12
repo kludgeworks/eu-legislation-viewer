@@ -714,6 +714,25 @@ form.find-act .ex a {
   color: var(--ink2);
 }
 
+/* While the page looks an act up at the Publications Office. A dot pulses before the line. */
+.home .looking::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--accent-line);
+  vertical-align: 1px;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home .looking::before {
+    animation: none;
+  }
+}
+
 .results-head {
   display: flex;
   flex-wrap: wrap;
@@ -998,6 +1017,16 @@ form.find-act .ex a {
   margin: 4px 0;
   color: var(--muted);
   font-size: 14px;
+}
+
+.preparing .stages li + li {
+  margin-top: 10px;
+}
+
+/* A step that is done, or still to come, is quieter than the step that runs. */
+.preparing .stages li.done strong::after {
+  content: " ✓";
+  color: var(--accent);
 }
 
 .preparing progress {

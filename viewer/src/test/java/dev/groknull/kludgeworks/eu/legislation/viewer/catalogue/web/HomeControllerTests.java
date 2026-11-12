@@ -43,6 +43,8 @@ class HomeControllerTests {
   void cellar() {
     when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
     when(acts.find(OneActCellar.ELI)).thenReturn(Optional.of(OneActCellar.ACT));
+    when(acts.catalogued(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
+    when(acts.catalogued(OneActCellar.ELI)).thenReturn(Optional.of(OneActCellar.ACT));
     when(search.matching(any())).thenAnswer(asked -> OneActCellar.found(asked.getArgument(0)));
   }
 
@@ -83,9 +85,44 @@ class HomeControllerTests {
   }
 
   @Test
+  void saysAtOnceThatItLooksUpAnActTheCatalogueDoesntHaveYet() {
+    when(acts.catalogued(OneActCellar.CELEX)).thenReturn(Optional.empty());
+
+    var page = page(mvc.get().uri("/?q=32015R1998").exchange());
+
+    var looking = page.select(".looking");
+    assertThat(looking.text()).isEqualTo("Looking up 2015/1998 at the Publications Office…");
+    assertThat(looking.attr("hx-get")).isEqualTo("/lookup?q=32015R1998");
+    assertThat(page.select("noscript meta").attr("content"))
+        .isEqualTo("0;url=/lookup?q=32015R1998");
+  }
+
+  @Test
+  void goesToTheActItLookedUp() {
+    assertThat(mvc.get().uri("/lookup?q=32015R1998"))
+        .hasStatus(HttpStatus.SEE_OTHER)
+        .headers()
+        .hasValue(HttpHeaders.LOCATION, READ);
+    assertThat(mvc.get().uri("/lookup?q=32015R1998").header("HX-Request", "true"))
+        .hasStatusOk()
+        .headers()
+        .hasValue("HX-Redirect", READ);
+  }
+
+  @Test
+  void sendsOtherWordsToBeLookedUpToTheirResults() {
+    assertThat(mvc.get().uri("/lookup?q=air cargo"))
+        .hasStatus(HttpStatus.SEE_OTHER)
+        .headers()
+        .hasValue(HttpHeaders.LOCATION, "/?q=air+cargo");
+  }
+
+  @Test
   void saysNoActHasACelexNumberCellarDoesntKnow() {
     // This is 185/2010. The stand-in Cellar knows only 2015/1998.
-    assertThat(page(mvc.get().uri("/?q=32010R0185").exchange()).select(".none").text())
+    assertThat(page(mvc.get().uri("/?q=32010R0185").exchange()).select(".looking").text())
+        .isEqualTo("Looking up 185/2010 at the Publications Office…");
+    assertThat(page(mvc.get().uri("/lookup?q=32010R0185").exchange()).select(".none").text())
         .isEqualTo("No act has the CELEX number or ELI 32010R0185.");
   }
 

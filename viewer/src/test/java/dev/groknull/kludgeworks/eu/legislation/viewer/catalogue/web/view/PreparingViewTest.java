@@ -10,6 +10,13 @@ import org.junit.jupiter.api.Test;
 class PreparingViewTest {
 
   @Test
+  void countsTheDatesOfTheAmendedProvisions() {
+    assertThat(Progress.dates(386)).isEqualTo("386 dates, one for each amended provision");
+    assertThat(Progress.dates(1)).isEqualTo("1 date, for the one amended provision");
+    assertThat(Progress.dates(0)).isEqualTo("None: no act has amended its provisions");
+  }
+
+  @Test
   void saysPlainlyHowManyVersionsOfOtherActsAreAheadRoundingPastTen() {
     assertThat(Progress.waiting(43))
         .isEqualTo(

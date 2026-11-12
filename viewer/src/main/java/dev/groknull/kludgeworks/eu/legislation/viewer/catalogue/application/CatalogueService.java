@@ -57,6 +57,16 @@ class CatalogueService implements Acts {
     return find("ELI " + eli, () -> store.find(eli), () -> cellar.find(eli));
   }
 
+  @Override
+  public Optional<Act> catalogued(ActIdentifier id) {
+    return store.find(id);
+  }
+
+  @Override
+  public Optional<Act> catalogued(Eli eli) {
+    return store.find(eli);
+  }
+
   private Optional<Act> find(
       String name, Supplier<Optional<Act>> kept, Supplier<Optional<Act>> fromCellar) {
     var act = kept.get();

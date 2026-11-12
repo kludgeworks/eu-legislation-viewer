@@ -25,6 +25,7 @@
     @template.catalogue.timeline(timeline = timeline)
     <div class="preparing" hx-get="${preparing.self()}" hx-trigger="done" hx-vals='{"prepared": true}' hx-target="#page" hx-select="#page" hx-swap="outerHTML">
       <section class="panel" aria-labelledby="preparing-head">
+        <p id="told" class="visually-hidden" aria-live="polite">${preparing.progress().counts()}</p>
         <h2 id="preparing-head">Preparing this act</h2>
         <p>${preparing.asked()}</p>
         @template.catalogue.preparing.progress(progress = preparing.progress())

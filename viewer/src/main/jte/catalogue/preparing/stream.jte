@@ -6,3 +6,4 @@
      htmx swaps each part in for the element with the same id (hx-partial). --%>
 <hx-partial hx-target="#timeline" hx-swap="outerHTML">@template.catalogue.timeline(timeline = timeline)</hx-partial>
 <hx-partial hx-target="#progress" hx-swap="outerHTML">@template.catalogue.preparing.progress(progress = progress)</hx-partial>
+<hx-partial hx-target="#told" hx-swap="innerHTML">${progress.counts()}</hx-partial>

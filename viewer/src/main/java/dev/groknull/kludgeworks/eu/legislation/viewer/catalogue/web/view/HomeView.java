@@ -18,8 +18,11 @@ import org.jspecify.annotations.Nullable;
  * @param results the results of the search. Null before a search.
  * @param none why there are no results, for example because no act has the CELEX or ELI that the
  *     reader typed. Null otherwise.
+ * @param lookingUp the act that the page looks up, if the catalogue does not have the act that the
+ *     reader typed yet. Null otherwise.
  */
-public record HomeView(String words, @Nullable Results results, @Nullable String none) {
+public record HomeView(
+    String words, @Nullable Results results, @Nullable String none, @Nullable LookingUp lookingUp) {
   /**
    * The names of the kinds of act, as the row of each act shows them, by the codes of their
    * resource types.
@@ -39,7 +42,7 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
 
   /** Returns the home page before a search. */
   public static HomeView empty() {
-    return new HomeView("", null, null);
+    return new HomeView("", null, null, null);
   }
 
   /**
@@ -47,7 +50,16 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
    * is the reason.
    */
   public static HomeView none(String words, String none) {
-    return new HomeView(words, null, none);
+    return new HomeView(words, null, none, null);
+  }
+
+  /**
+   * Returns the home page that looks up the act that {@code words}, a CELEX or ELI, name. It says
+   * {@code line} and asks {@code href}, which goes to the act once the Publications Office has
+   * answered.
+   */
+  public static HomeView lookingUp(String words, String line, String href) {
+    return new HomeView(words, null, null, new LookingUp(line, href));
   }
 
   /**
@@ -74,6 +86,7 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
             page > 1 ? Links.home(words, kind, page - 1) : null,
             found.more() ? Links.home(words, kind, page + 1) : null,
             size),
+        null,
         null);
   }
 
@@ -199,4 +212,13 @@ public record HomeView(String words, @Nullable Results results, @Nullable String
    * @param href the address
    */
   public record Go(String label, String href) {}
+
+  /**
+   * The act that the home page looks up at the Publications Office.
+   *
+   * @param line what the page says while it waits. For example, "Looking up 2015/1998 at the
+   *     Publications Office…".
+   * @param href the address that looks the act up and goes to it
+   */
+  public record LookingUp(String line, String href) {}
 }

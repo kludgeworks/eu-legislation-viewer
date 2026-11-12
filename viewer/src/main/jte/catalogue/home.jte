@@ -7,8 +7,12 @@
      comes the Find an act box. Then come a search's results. Each result shows the act's CELEX and kind, its title,
      its link and the pages it goes to. Filters by kind of act and links to the pages before and
      after go with the results. At the end, three notes say what this is, what it adds and what it
-     is not, and a footer links to the About page, its Privacy and its API. The page leaves out the small search box of the site bar (search false). --%>
-@template.layout.page(chrome = chrome, title = title, search = false, content = @`
+     is not, and a footer links to the About page, its Privacy and its API. The page leaves out the small search box of the site bar (search false).
+     For a CELEX number or ELI of an act that the catalogue does not have yet, the page says at once
+     that it looks the act up. htmx then asks the lookup address, which goes to the act when the
+     Publications Office answers, or comes back with the line that no act has it. Without
+     JavaScript, the head sends the browser to the lookup address. --%>
+@template.layout.page(chrome = chrome, title = title, search = false, head = @`@if(home.lookingUp() != null)<noscript><meta http-equiv="refresh" content="0;url=${home.lookingUp().href()}"></noscript>@endif`, content = @`
   <div class="home">
     <header class="home-mast">
       <h1 class="home-name">Read EU legislation as it stood on any day, and see what changed</h1>
@@ -18,6 +22,9 @@
       <div class="field"><input id="q" name="q" type="search" value="${home.words()}" placeholder="Title words, CELEX number or ELI" autofocus="${home.words().isEmpty()}"><button type="submit">Search</button></div>
       <p class="ex">A CELEX number or ELI goes straight to the act. Try <a href="/?q=32015R1998">32015R1998</a> <a href="/?q=eli/reg_impl/2015/1998/oj">eli/reg_impl/2015/1998/oj</a> <a href="/?q=air+cargo+security">air cargo security</a></p>
     </form>
+    @if(home.lookingUp() != null)
+      <p class="none looking" role="status" hx-get="${home.lookingUp().href()}" hx-trigger="load" hx-target="main" hx-select="main" hx-swap="outerHTML">${home.lookingUp().line()}</p>
+    @endif
     @if(home.none() != null)
       <p class="none" role="status">${home.none()}</p>
     @endif

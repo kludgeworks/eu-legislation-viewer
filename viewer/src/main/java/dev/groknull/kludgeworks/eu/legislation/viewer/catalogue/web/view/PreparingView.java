@@ -58,7 +58,7 @@ public record PreparingView(
         asked + "; it opens here, at this address, as soon as the act is ready.",
         self,
         Links.prepare(eli, preparation.language()),
-        Progress.of(preparation, now),
+        Progress.of(act, preparation, now),
         known(act),
         act.id().eurLex(preparation.language()).toString());
   }
@@ -152,8 +152,8 @@ public record PreparingView(
    * @param waiting why nothing has started yet, with how many versions are ahead. Null when
    *     something has started. Beside it, the page shows one of {@link #ASIDES} at a time, for the
    *     eye only.
-   * @param running the versions that are being built now. For example, "Version 16 of 22 ·
-   *     02015R1998-20230401".
+   * @param running the versions that are being built now. For example, "Version 16 of 22 · from 1
+   *     April 2023".
    * @param settled how many versions are built or failed
    * @param size how many versions there are
    * @param counts how many versions are ready, and how many could not be made. For example, "16 of
@@ -161,6 +161,8 @@ public record PreparingView(
    * @param seconds how long the preparation has taken so far, in seconds. The clock on the page
    *     starts from this value.
    * @param elapsed the same time, as the page shows it. For example, 4:12.
+   * @param dates when the amended provisions apply, which Cellar gave with the act. For example,
+   *     "386 dates, one for each amended provision". The third step shows it, done.
    */
   public record Progress(
       @Nullable String waiting,
@@ -169,7 +171,8 @@ public record PreparingView(
       int size,
       String counts,
       long seconds,
-      String elapsed) {
+      String elapsed,
+      String dates) {
 
     /**
      * The light lines that show beside the wait, one at a time. The page changes the line every few
@@ -194,8 +197,8 @@ public record PreparingView(
       return String.join("\n", ASIDES);
     }
 
-    /** Returns the state of {@code preparation} at the time {@code now}. */
-    public static Progress of(Preparation preparation, Instant now) {
+    /** Returns the state of {@code preparation} of {@code act} at the time {@code now}. */
+    public static Progress of(Act act, Preparation preparation, Instant now) {
       var versions = preparation.versions();
       var running = new ArrayList<String>();
       for (var i = 0; i < versions.size(); i++) {
@@ -223,11 +226,24 @@ public record PreparingView(
           size,
           counts,
           Math.max(Duration.between(preparation.started(), now).toSeconds(), 0),
-          elapsed(Duration.between(preparation.started(), now)));
+          elapsed(Duration.between(preparation.started(), now)),
+          dates(act.amendments().size()));
+    }
+
+    /**
+     * Returns how many dates of amended provisions there are, in words. For example, "386 dates,
+     * one for each amended provision".
+     */
+    static String dates(int amended) {
+      return switch (amended) {
+        case 0 -> "None: no act has amended its provisions";
+        case 1 -> "1 date, for the one amended provision";
+        default -> amended + " dates, one for each amended provision";
+      };
     }
 
     private static String running(Version version, int index, int size) {
-      return "Version " + index + " of " + size + " · " + version.celex();
+      return "Version " + index + " of " + size + " · from " + Dates.inWords(version.date());
     }
 
     /**

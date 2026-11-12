@@ -121,7 +121,7 @@ class PreparationController {
                         templates
                             .cataloguePreparingStream(
                                 TimelineView.preparing(act, preparation, Requests.today(clock)),
-                                PreparingView.Progress.of(preparation, clock.instant()))
+                                PreparingView.Progress.of(act, preparation, clock.instant()))
                             .render()));
       }
     } catch (IOException | IllegalStateException e) {
