@@ -184,7 +184,7 @@ class HomeController {
             .map(
                 eli ->
                     ResponseEntity.status(HttpStatus.SEE_OTHER)
-                        .location(URI.create(Links.compare(eli, Language.ENG)))
+                        .location(URI.create(Links.act(eli, Language.ENG)))
                         .<String>build())
             .orElseGet(
                 () ->

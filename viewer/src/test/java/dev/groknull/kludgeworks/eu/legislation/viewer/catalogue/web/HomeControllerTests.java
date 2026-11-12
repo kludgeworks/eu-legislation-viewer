@@ -32,7 +32,8 @@ import org.springframework.test.web.servlet.assertj.MvcTestResult;
 @WebMvcTest(HomeController.class)
 @Import(ControllerTesting.class)
 class HomeControllerTests {
-  private static final String COMPARE = "/eli/reg_impl/2015/1998/eng/compare";
+  private static final String READ = "/eli/reg_impl/2015/1998/eng";
+  private static final String COMPARE = READ + "/compare";
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
@@ -62,7 +63,7 @@ class HomeControllerTests {
     assertThat(mvc.get().uri("/?q=32015r1998"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, COMPARE);
+        .hasValue(HttpHeaders.LOCATION, READ);
   }
 
   @Test
@@ -70,11 +71,11 @@ class HomeControllerTests {
     assertThat(mvc.get().uri("/?q=http://data.europa.eu/eli/reg_impl/2015/1998/oj"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, COMPARE);
+        .hasValue(HttpHeaders.LOCATION, READ);
     assertThat(mvc.get().uri("/?q=eli/reg_impl/2015/1998"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, COMPARE);
+        .hasValue(HttpHeaders.LOCATION, READ);
   }
 
   @Test
@@ -102,9 +103,8 @@ class HomeControllerTests {
         .isEqualTo(
             "laying down detailed measures for the implementation of the common basic standards"
                 + " on aviation security (Text with EEA relevance)");
-    assertThat(avsec.select("a").eachAttr("href")).containsOnly(COMPARE);
-    assertThat(avsec.select("a.to").text())
-        .isEqualTo("Compare the latest version with the one before →");
+    assertThat(avsec.select("a").eachAttr("href")).containsOnly(READ);
+    assertThat(avsec.select("a.to").text()).isEqualTo("Read it as it is today →");
     var amending = page.select(".result .t").get(1);
     assertThat(amending.select("a.to").text()).isEqualTo("What it changed in 2015/1998 →");
     assertThat(amending.select("a.to").attr("href")).isEqualTo(COMPARE + "?act=32026R0449");

@@ -101,7 +101,8 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
       String clock,
       String outline,
       String markers,
-      String sidenotes) {
+      String sidenotes,
+      String copy) {
     static Assets of(HttpServletRequest request) {
       // Spring MVC sets this attribute on every request that its handlers serve.
       var urls =
@@ -120,7 +121,8 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
           url(urls, request, "/js/clock.js"),
           url(urls, request, "/js/outline.js"),
           url(urls, request, "/js/markers.js"),
-          url(urls, request, "/js/sidenotes.js"));
+          url(urls, request, "/js/sidenotes.js"),
+          url(urls, request, "/js/copy.js"));
     }
 
     /**

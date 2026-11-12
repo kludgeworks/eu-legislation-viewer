@@ -151,22 +151,73 @@ public final class Wording {
   }
 
   /**
-   * Returns the text of a lag, for a date within the lag. For example, "On this date, 2017/815
-   * already applied (from 1 June 2017, Article 2 of 2017/815). No consolidated version includes it
-   * until 7 June 2017."
+   * Returns the text of a lag, for {@code day} within the lag. For example, "On 3 June 2017,
+   * 2017/815 already applied; this text doesn’t include it yet (it does from 7 June 2017)."
    */
-  public static String lagOn(Unconsolidated lag) {
-    var act = lag.act().cited();
-    var provisions = lag.appliesFrom().clause().provisions();
-    var where = provisions.isEmpty() ? "" : ", " + provisions.getFirst().cited() + " of " + act;
-    return "On this date, "
-        + act
-        + " already applied (from "
-        + Dates.inWords(lag.from())
-        + where
-        + "). No consolidated version includes it until "
+  public static String lagOn(Unconsolidated lag, LocalDate day) {
+    return "On "
+        + Dates.inWords(day)
+        + ", "
+        + lag.act().cited()
+        + " already applied; this text doesn’t include it yet (it does from "
         + Dates.inWords(lag.includedIn().date())
-        + ".";
+        + ").";
+  }
+
+  /**
+   * Returns how long {@code version} applies, after its first day, for the line under the date on a
+   * card. For example, "applied until 28 February 2022 · current version".
+   *
+   * <ul>
+   *   <li>For the act as published, which was in force before it applied, says both: "in force from
+   *       15 November 2015 · applied 1 February 2016 to 28 February 2016".
+   *   <li>For the latest version, says nothing of an end.
+   *   <li>Adds "current version" or "next version", as {@link #period} does.
+   * </ul>
+   *
+   * <p>Returns an empty text if there is nothing to say.
+   */
+  public static String until(Act act, Version version, LocalDate today, Language language) {
+    var next = act.timeline().in(language).flatMap(t -> t.successor(version));
+    if (applies(act, version).isPresent()) {
+      var period = period(act, version, today, language);
+      return Character.toLowerCase(period.charAt(0)) + period.substring(1);
+    }
+    var until =
+        next.map(
+                after -> {
+                  var last = after.date().minusDays(1);
+                  return (last.isBefore(today) ? "applied until " : "applies until ")
+                      + Dates.inWords(last);
+                })
+            .orElse("");
+    var labelled = label(act, version, today, language, until);
+    return labelled.startsWith(" · ") ? labelled.substring(3) : labelled;
+  }
+
+  /**
+   * Returns the line that says that the act was in force on {@code day} but did not apply yet, if
+   * so. {@code version} is the version on {@code day}. For example, "On 1 December 2015 the act was
+   * in force but didn’t apply yet: it applies from 1 February 2016 · Article 2 of 2015/1998".
+   */
+  public static Optional<String> notApplying(Act act, Version version, LocalDate day) {
+    return applies(act, version)
+        .filter(day::isBefore)
+        .map(
+            from -> {
+              var clause =
+                  act.dates().stream()
+                      .filter(date -> from.equals(date.date()))
+                      .flatMap(date -> date.clause().provisions().stream())
+                      .findFirst()
+                      .map(provision -> " · " + provision.cited() + " of " + act.id().cited())
+                      .orElse("");
+              return "On "
+                  + Dates.inWords(day)
+                  + " the act was in force but didn’t apply yet: it applies from "
+                  + Dates.inWords(from)
+                  + clause;
+            });
   }
 
   /**

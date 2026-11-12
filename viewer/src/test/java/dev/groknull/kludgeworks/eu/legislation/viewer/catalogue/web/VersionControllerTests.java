@@ -54,11 +54,11 @@ class VersionControllerTests {
   }
 
   @Test
-  void opensAnActAtTheVersionThatAppliesToday() {
+  void opensAnActOnToday() {
     assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/eng"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, "/eli/reg_impl/2015/1998/2021-03-15/eng");
+        .hasValue(HttpHeaders.LOCATION, "/eli/reg_impl/2015/1998/2021-06-01/eng");
   }
 
   @Test
@@ -70,9 +70,16 @@ class VersionControllerTests {
   }
 
   @Test
-  void findsNoVersionBeforeTheActsTextApplies() {
-    assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/2000-01-01/eng").accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
+  void saysTheActDidntExistYetOnADayBeforeItWasAdopted() {
+    var page =
+        page(mvc.get().uri("/eli/reg_impl/2015/1998/2000-01-01/eng").accept(MediaType.TEXT_HTML));
+    assertThat(page.title()).isEqualTo("2015/1998 · the law on 1 Jan 2000");
+    assertThat(page.select(".card-day").text()).isEqualTo("1 January 2000");
+    assertThat(page.select("#failure").text())
+        .isEqualTo("2015/1998 didn’t exist yet on 1 January 2000");
+    assertThat(page.select(".failure-actions a").eachText())
+        .containsExactly(
+            "Read it as it first came into force", "The act in the Official Journal ↗");
   }
 
   @Test
@@ -115,7 +122,7 @@ class VersionControllerTests {
             .map(asset -> asset.hasAttr("src") ? asset.attr("src") : asset.attr("href"))
             .toList();
     assertThat(assets)
-        .hasSize(11)
+        .hasSize(12)
         .allSatisfy(
             asset -> {
               assertThat(asset).matches(".*-[0-9a-f]{32}\\.(css|js)");

@@ -42,6 +42,6 @@ class HomeViewTest {
             "on the approval of civil aviation security equipment with ‘EU Stamp’ marking (Text"
                 + " with EEA relevance)");
     assertThat(row.kind()).isEqualTo("Decision");
-    assertThat(row.href()).isEqualTo("/eli/dec/2021/2147/eng/compare");
+    assertThat(row.href()).isEqualTo("/eli/dec/2021/2147/eng");
   }
 }

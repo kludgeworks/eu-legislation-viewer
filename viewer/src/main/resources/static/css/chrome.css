@@ -221,3 +221,24 @@ form.find input {
   font: inherit;
   font-size: 13.5px;
 }
+
+/* Text for screen readers only. For example, "(opens EUR-Lex)" after a link that leaves the site. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* A button that looks like a link. For example, "copy" beside a number. */
+button.link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}

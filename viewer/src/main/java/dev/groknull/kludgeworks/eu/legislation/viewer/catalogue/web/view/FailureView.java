@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -103,6 +104,36 @@ public record FailureView(
               Links.compare(eli, earlier.get(), later.get(), language)));
     }
     return of(act, failed, text.failure(), trace(failed, text, language), language, self, instead);
+  }
+
+  /**
+   * Returns the panel for the law on {@code asked}, a day before the first version of {@code act},
+   * in {@code language}. Nothing moves the day: the panel says that the act didn't exist yet, or
+   * wasn't in force yet if it was adopted by then, and when it was adopted and came into force. Its
+   * actions are the act as it first came into force, and the act in the Official Journal.
+   */
+  public static FailureView before(Act act, LocalDate asked, Language language) {
+    var eli = eli(act);
+    var first = act.timeline().versions().getFirst().date();
+    var adopted = act.dateOfDocument();
+    var cited = act.id().cited();
+    return new FailureView(
+        false,
+        cited
+            + (adopted != null && !asked.isBefore(adopted)
+                ? " wasn’t in force yet on "
+                : " didn’t exist yet on ")
+            + Dates.inWords(asked),
+        (adopted == null ? "It" : "It was adopted on " + Dates.inWords(adopted) + " and")
+            + " came into force on "
+            + Dates.inWords(first)
+            + ".",
+        List.of(),
+        null,
+        List.of(
+            Action.button("Read it as it first came into force", Links.read(eli, first, language)),
+            Action.link("The act in the Official Journal ↗", act.id().eurLex(language).toString())),
+        null);
   }
 
   /**

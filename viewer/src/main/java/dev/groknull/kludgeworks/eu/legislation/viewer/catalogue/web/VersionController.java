@@ -8,7 +8,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
@@ -64,8 +63,11 @@ import org.springframework.web.server.ResponseStatusException;
  * <p>Versions that appeared after the act was prepared are prepared separately. The page does not
  * wait for them, but it says that they are being prepared.
  *
- * <p>The address of the act without a date redirects to the page of the version that applies today,
- * or to the page for the date in {@code on}.
+ * <p>The address of the act without a date redirects to the page for today, or for the date in
+ * {@code on}. The address keeps the day asked: it is never moved to the first day of a version.
+ *
+ * <p>A day before the act's first version shows a panel that says the act didn't exist yet, or
+ * wasn't in force yet.
  */
 @Controller
 class VersionController {
@@ -89,12 +91,9 @@ class VersionController {
   }
 
   /**
-   * Redirects to the page of the version of the act that applies today, in a language. The Read
-   * link uses this address.
-   *
-   * <p>The redirect goes to the first day of the version, so that a bookmark of it keeps pointing
-   * at that version. Before the act applies, it goes to the first version. If {@code on} is given,
-   * it redirects to the page for that date. The date form of the Reading card sends {@code on}.
+   * Redirects to the page of the law on today, in a language. The Read link uses this address. If
+   * {@code on} is given, it redirects to the page for that date. The date form of the Reading card
+   * sends {@code on}.
    */
   @GetMapping(path = "/eli/{type}/{year}/{number}/{language}", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<Void> act(
@@ -106,14 +105,10 @@ class VersionController {
           @Nullable LocalDate on) {
     var language = language(code);
     var eli = new Eli(type, year, number);
-    var act = acts.find(eli).orElseThrow(VersionController::notFound);
-    var date =
-        on != null
-            ? on
-            : act.versionOn(today(), language)
-                .or(() -> act.timeline().in(language).map(Timeline::first))
-                .orElseGet(() -> act.timeline().versions().getFirst())
-                .date();
+    if (acts.find(eli).isEmpty()) {
+      throw notFound();
+    }
+    var date = on != null ? on : today();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
         .location(URI.create(Links.read(eli, date, language)))
         .build();
@@ -138,6 +133,9 @@ class VersionController {
       HttpServletRequest request) {
     var page = new Page(type, year, number, date, code);
     var chrome = Chrome.of(request);
+    if (page.before) {
+      return page.notYet(chrome);
+    }
     var masthead = MastheadView.reading(page.act, page.version, date, page.language);
     if (page.act.timeline().in(page.language).isEmpty()) {
       return page.render(
@@ -198,12 +196,13 @@ class VersionController {
 
   /**
    * The data that a version page shows: the act, the version that applies on the date, and the
-   * language.
+   * language. On a day before the act's first version, the version is the first version.
    */
   private final class Page {
     final Eli eli;
     final Act act;
     final Version version;
+    final boolean before;
     final LocalDate date;
     final Language language;
 
@@ -211,8 +210,28 @@ class VersionController {
       language = language(code);
       eli = new Eli(type, year, number);
       act = acts.find(eli).orElseThrow(VersionController::notFound);
-      version = act.versionOn(date, language).orElseThrow(VersionController::notFound);
+      var first = act.timeline().versions().getFirst();
+      before = date.isBefore(first.date());
+      version =
+          before ? first : act.versionOn(date, language).orElseThrow(VersionController::notFound);
       this.date = date;
+    }
+
+    /**
+     * Returns the page of a day before the act's first version. Its card shows the day and a dash,
+     * and a panel in place of the text says that the act didn't exist yet, or wasn't in force yet.
+     */
+    String notYet(Chrome chrome) {
+      return templates
+          .catalogueVersion(
+              chrome,
+              MastheadView.reading(act, version, date, language),
+              TimelineView.before(act, language),
+              ReadingView.before(act, date, language),
+              templates.catalogueTextFailed(FailureView.before(act, date, language)),
+              false,
+              null)
+          .render();
     }
 
     String render(
@@ -226,7 +245,6 @@ class VersionController {
       return templates
           .catalogueVersion(
               chrome,
-              version,
               masthead,
               TimelineView.reading(act, version, language, states),
               ReadingView.of(act, version, date, language, today(), named),

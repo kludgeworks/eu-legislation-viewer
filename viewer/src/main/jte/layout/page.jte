@@ -25,6 +25,7 @@
   <script type="module" src="${chrome.assets().outline()}"></script>
   <script type="module" src="${chrome.assets().markers()}"></script>
   <script type="module" src="${chrome.assets().sidenotes()}"></script>
+  <script type="module" src="${chrome.assets().copy()}"></script>
   ${head}
 </head>
 <body>

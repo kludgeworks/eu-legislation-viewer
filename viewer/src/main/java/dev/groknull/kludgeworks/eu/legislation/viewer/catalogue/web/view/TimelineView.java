@@ -227,6 +227,28 @@ public record TimelineView(
   }
 
   /**
+   * Returns the timeline of {@code act} as the page of a day before its first version shows it, in
+   * {@code language}. No version is selected. The step after goes to the first version.
+   */
+  public static TimelineView before(Act act, Language language) {
+    var eli = eli(act);
+    var versions = versions(act, language, List.of());
+    var axis = Axis.of(versions);
+    return new TimelineView(
+        axis.years(),
+        marks(versions, axis, v -> false, v -> Links.read(eli, v, language), Map.of()),
+        List.of(),
+        null,
+        "page",
+        List.of(
+            new Step("‹ version before", null, "There is no version before this day"),
+            new Step(
+                "version after ›",
+                Links.read(eli, versions.getFirst(), language),
+                "There is no version")));
+  }
+
+  /**
    * Returns the comparison that a click on {@code version} asks for, when the comparison is from
    * {@code from} to {@code to}. The click moves the nearer end to {@code version}.
    *
