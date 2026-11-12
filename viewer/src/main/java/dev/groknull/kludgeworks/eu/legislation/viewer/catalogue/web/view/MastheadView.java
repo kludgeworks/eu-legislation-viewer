@@ -92,16 +92,18 @@ public record MastheadView(
   }
 
   /**
-   * Returns the head of the comparison of {@code from} with {@code to} for {@code act}, in {@code
-   * language}. The language switch keeps the two versions. It greys each language that {@code from}
-   * or {@code to} is not in.
+   * Returns the head of the comparison of the law on {@code fromDay}, which {@code from} gives,
+   * with the law on {@code toDay}, which {@code to} gives, for {@code act}, in {@code language}.
+   * The language switch keeps the two days. It greys each language that {@code from} or {@code to}
+   * is not in. Read reads the law on {@code toDay}.
    */
-  public static MastheadView comparing(Act act, Version from, Version to, Language language) {
+  public static MastheadView comparing(
+      Act act, Version from, LocalDate fromDay, Version to, LocalDate toDay, Language language) {
     var eli = eli(act);
     return of(
         act,
         language,
-        each -> Links.compare(eli, from, to, each),
+        each -> Links.compare(eli, fromDay, toDay, each),
         each -> {
           var inFrom = from.languages().contains(each);
           var inTo = to.languages().contains(each);
@@ -113,7 +115,7 @@ public record MastheadView(
               ? "To isn’t in " + name
               : inTo ? "From isn’t in " + name : "Neither version is in " + name;
         },
-        Links.read(eli, to, language),
+        Links.read(eli, toDay, language),
         null);
   }
 

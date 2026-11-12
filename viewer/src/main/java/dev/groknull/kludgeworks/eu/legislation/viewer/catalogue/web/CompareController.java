@@ -83,7 +83,9 @@ class CompareController {
   }
 
   /**
-   * Returns the compare page, or redirects to the canonical address of the comparison.
+   * Returns the compare page, or redirects to the canonical address of the comparison. That address
+   * has both days, From before To, and the act asked for only if it is between the two versions.
+   * The days are kept as asked: they are not moved to the first days of their versions.
    *
    * <p>While the act is being prepared in the language, it returns the preparing page. When the act
    * is prepared, that page requests this address again with {@code prepared}. The page's content
@@ -108,7 +110,8 @@ class CompareController {
       HttpServletRequest request) {
     var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
-      var location = Links.compare(page.eli, page.from, page.to, page.language, page.only, view);
+      var location =
+          Links.compare(page.eli, page.fromDay, page.toDay, page.language, page.only, view);
       // Tell the page that the act asked for is not between the versions, so that it can say so.
       if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
         location += "&outside=" + act;
@@ -120,10 +123,22 @@ class CompareController {
             ? new ActIdentifier(outside).cited()
                 + " isn’t between these two versions; showing every act’s changes."
             : null;
-    var preparation = texts.prepare(page.act, page.language);
-    var title = page.from.celex() + " → " + page.to.celex();
+    var title =
+        page.act.id().cited()
+            + " · "
+            + Dates.inShort(page.fromDay)
+            + " → "
+            + Dates.inShort(page.toDay);
     var chrome = Chrome.of(request);
-    var masthead = MastheadView.comparing(page.act, page.from, page.to, page.language);
+    var masthead =
+        MastheadView.comparing(
+            page.act, page.from, page.fromDay, page.to, page.toDay, page.language);
+    if (page.before) {
+      return ResponseEntity.ok()
+          .contentType(Requests.HTML)
+          .body(page.notYet(chrome, title, masthead));
+    }
+    var preparation = texts.prepare(page.act, page.language);
     if (preparation.preparing()) {
       return ResponseEntity.ok()
           .contentType(Requests.HTML)
@@ -137,10 +152,10 @@ class CompareController {
                       PreparingView.of(
                           page.act,
                           preparation,
-                          "You asked for a comparison of the version that applies on "
-                              + Dates.inWords(page.from.date())
-                              + " with the one that applies on "
-                              + Dates.inWords(page.to.date()),
+                          "You asked for a comparison of the law on "
+                              + Dates.inWords(page.fromDay)
+                              + " with the law on "
+                              + Dates.inWords(page.toDay),
                           self(request),
                           clock.instant()))
                   .render());
@@ -164,7 +179,9 @@ class CompareController {
                     CompareView.of(
                             page.act,
                             page.from,
+                            page.fromDay,
                             page.to,
+                            page.toDay,
                             page.language,
                             today,
                             Links.page(page.eli, page.from, page.to, page.language, page.only, view)
@@ -194,7 +211,7 @@ class CompareController {
     var page = new Page(new Eli(type, year, number), code, from, to, null, null);
     texts.retry(page.act, page.language);
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
-        .location(URI.create(Links.compare(page.eli, page.from, page.to, page.language)))
+        .location(URI.create(Links.compare(page.eli, page.fromDay, page.toDay, page.language)))
         .build();
   }
 
@@ -211,9 +228,11 @@ class CompareController {
    *
    * <ul>
    *   <li>the act
-   *   <li>the two versions that apply on the dates asked for, in the language. From is always the
-   *       earlier one. Without dates, they are the version that applies today and the version
-   *       before it.
+   *   <li>the two days asked for, and the versions that give the law on them, in the language. From
+   *       is always the earlier day. Without days, they are the first days of the version that
+   *       applies today and of the version before it. A day before the act's first version has no
+   *       version: the page then says that the act didn't exist yet, or wasn't in force yet, and
+   *       its version here is the first version.
    *   <li>the act asked for, to limit the comparison to its changes, if that act is between the two
    *       versions
    *   <li>the comparison module's view, as the reader gave it, or null
@@ -224,8 +243,11 @@ class CompareController {
     final Language language;
     final Act act;
     final Timeline timeline;
+    final LocalDate fromDay;
+    final LocalDate toDay;
     final Version from;
     final Version to;
+    final boolean before;
     final @Nullable ActIdentifier only;
     final @Nullable String view;
 
@@ -245,21 +267,30 @@ class CompareController {
       var current = timeline.applicableOn(Requests.today(clock)).orElseGet(timeline::latest);
       var later =
           to != null
-              ? timeline.applicableOn(to).orElseThrow(Requests::notFound)
-              : from == null && only != null ? integrating(only).orElse(current) : current;
-      // Without From, if To is the first version, compare it with the version after it.
-      if (to != null && from == null && timeline.predecessor(later).isEmpty()) {
-        later = timeline.successor(later).orElse(later);
+              ? to
+              : (from == null && only != null ? integrating(only).orElse(current) : current).date();
+      var earlier = from;
+      if (earlier == null) {
+        // Without From, From is the first day of the version before To's. If To's version is the
+        // first, From is To, and To is the first day of the version after it.
+        var version = timeline.applicableOn(later);
+        var predecessor = version.flatMap(timeline::predecessor);
+        if (version.isEmpty() || predecessor.isPresent()) {
+          earlier = predecessor.map(Version::date).orElse(later);
+        } else {
+          earlier = later;
+          later = timeline.successor(version.get()).map(Version::date).orElse(later);
+        }
       }
-      var earlier =
-          from == null
-              ? timeline.predecessor(later).orElse(later)
-              : timeline.applicableOn(from).orElseThrow(Requests::notFound);
-      var swapped = earlier.date().isAfter(later.date());
-      this.from = swapped ? later : earlier;
-      this.to = swapped ? earlier : later;
+      var swapped = earlier.isAfter(later);
+      fromDay = swapped ? later : earlier;
+      toDay = swapped ? earlier : later;
+      var first = timeline.versions().getFirst();
+      before = fromDay.isBefore(first.date());
+      this.from = on(fromDay, first);
+      this.to = on(toDay, first);
       this.only =
-          only == null
+          only == null || before
               ? null
               : act.integratedBetween(this.from, this.to).stream()
                   .filter(each -> each.celex().equals(only))
@@ -269,12 +300,48 @@ class CompareController {
 
     /**
      * Returns whether {@code from}, {@code to} and {@code only} are the canonical address of this
-     * comparison. That is, the first days of its two versions, and an act between them, if any.
+     * comparison. That is, its two days, and an act between them, if any.
      */
     boolean at(@Nullable LocalDate from, @Nullable LocalDate to, @Nullable String only) {
-      return this.from.date().equals(from)
-          && this.to.date().equals(to)
+      return fromDay.equals(from)
+          && toDay.equals(to)
           && Objects.equals(only, this.only == null ? null : this.only.celex());
+    }
+
+    /**
+     * Returns the version that gives the law on {@code day}. Before the first version, {@code
+     * first}, there is none: it returns the first version, and the page says so.
+     */
+    private Version on(LocalDate day, Version first) {
+      return day.isBefore(first.date())
+          ? first
+          : timeline.applicableOn(day).orElseThrow(Requests::notFound);
+    }
+
+    /**
+     * Returns the page when From is a day before the act's first version. The From card shows the
+     * day and a dash, and so does the To card if To is before it too. A panel in place of the
+     * changes says that the act didn't exist yet, or wasn't in force yet. Its first button compares
+     * from the day the act came into force.
+     */
+    String notYet(Chrome chrome, String title, MastheadView masthead) {
+      var first = timeline.versions().getFirst();
+      var toBefore = toDay.isBefore(first.date());
+      var compareTo =
+          toBefore ? timeline.successor(first).map(Version::date).orElseGet(first::date) : toDay;
+      var today = Requests.today(clock);
+      return templates
+          .catalogueCompare(
+              chrome,
+              title,
+              masthead,
+              TimelineView.before(act, language),
+              CompareView.before(act, fromDay, toBefore ? null : to, toDay, language, today),
+              templates.catalogueTextFailed(
+                  FailureView.comparingBefore(act, fromDay, compareTo, language)),
+              false,
+              null)
+          .render();
     }
 
     /**
@@ -298,16 +365,12 @@ class CompareController {
      */
     JteModel same() {
       return templates.catalogueCompareSame(
-          "Both ends are the same version ("
-              + to.celex()
-              + ", from "
-              + Dates.inWords(to.date())
-              + ").",
+          "Both ends are the same version (from " + Dates.inWords(to.date()) + ").",
           timeline
               .predecessor(to)
               .map(before -> Links.compare(eli, before, to, language))
               .orElse(null),
-          Links.read(eli, to, language));
+          Links.read(eli, toDay, language));
     }
 
     /**

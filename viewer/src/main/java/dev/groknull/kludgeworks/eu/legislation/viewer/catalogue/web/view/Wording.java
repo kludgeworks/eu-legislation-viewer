@@ -165,6 +165,21 @@ public final class Wording {
   }
 
   /**
+   * Returns which version gives the law on {@code day}, and how long it applies, for the line under
+   * the day on a card. For example, "From the version of 31 December 2021 · applied until 28
+   * February 2022", or "A new version starts on this day · current version" on its first day.
+   */
+  public static String which(
+      Act act, Version version, LocalDate day, LocalDate today, Language language) {
+    var starts =
+        day.equals(version.date())
+            ? "A new version starts on this day"
+            : "From the version of " + Dates.inWords(version.date());
+    var until = until(act, version, today, language);
+    return until.isEmpty() ? starts : starts + " · " + until;
+  }
+
+  /**
    * Returns how long {@code version} applies, after its first day, for the line under the date on a
    * card. For example, "applied until 28 February 2022 · current version".
    *

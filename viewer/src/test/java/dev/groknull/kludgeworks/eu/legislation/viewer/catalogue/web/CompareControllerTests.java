@@ -71,11 +71,12 @@ class CompareControllerTests {
   }
 
   @Test
-  void goesToTheVersionsTheDatesAskForEarlierFirst() {
+  void keepsTheDaysAskedForEarlierFirst() {
     assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-12-01&to=2021-06-01"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, ACT + "eng/compare?from=2021-03-15&to=2026-10-01");
+        .hasValue(HttpHeaders.LOCATION, ACT + "eng/compare?from=2021-06-01&to=2026-12-01");
+    assertThat(mvc.get().uri(ACT + "eng/compare?from=2021-06-01&to=2026-12-01")).hasStatusOk();
   }
 
   @Test
@@ -87,17 +88,26 @@ class CompareControllerTests {
   }
 
   @Test
-  void findsNoVersionBeforeTheActsTextApplies() {
-    assertThat(
-            mvc.get()
-                .uri(ACT + "eng/compare?from=2000-01-01&to=2026-10-01")
-                .accept(MediaType.TEXT_HTML))
-        .hasStatus(HttpStatus.NOT_FOUND);
+  void saysTheActDidntExistYetWhenFromIsBeforeItWasAdopted() throws UnsupportedEncodingException {
+    var result =
+        mvc.get()
+            .uri(ACT + "eng/compare?from=2000-01-01&to=2026-10-01")
+            .accept(MediaType.TEXT_HTML)
+            .exchange();
+    assertThat(result).hasStatusOk();
+    var page = Jsoup.parse(result.getResponse().getContentAsString());
+    assertThat(page.title()).isEqualTo("2015/1998 · 1 Jan 2000 → 1 Oct 2026");
+    assertThat(page.select(".card-day").eachText())
+        .containsExactly("1 January 2000", "1 October 2026");
+    assertThat(page.select("#failure").text())
+        .isEqualTo("2015/1998 didn’t exist yet on 1 January 2000");
+    assertThat(page.select(".failure-actions a.button").eachText())
+        .containsExactly("Compare from 30 November 2015");
   }
 
   @Test
   void keepsTheViewItIsAskedForWhenItGoesToTheCanonicalAddress() {
-    assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-04-01&to=2026-10-01&view=whole"))
+    assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-10-01&to=2026-03-22&view=whole"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
         .hasValue(HttpHeaders.LOCATION, PAGE + "&view=whole");

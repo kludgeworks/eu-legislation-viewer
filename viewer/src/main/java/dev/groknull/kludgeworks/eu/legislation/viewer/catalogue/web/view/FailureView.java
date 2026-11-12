@@ -113,7 +113,32 @@ public record FailureView(
    * actions are the act as it first came into force, and the act in the Official Journal.
    */
   public static FailureView before(Act act, LocalDate asked, Language language) {
-    var eli = eli(act);
+    var first = act.timeline().versions().getFirst().date();
+    return before(
+        act,
+        asked,
+        language,
+        Action.button(
+            "Read it as it first came into force", Links.read(eli(act), first, language)));
+  }
+
+  /**
+   * Returns the panel in place of the changes, when From, {@code asked}, is a day before the first
+   * version of {@code act}. It says what {@link #before(Act, LocalDate, Language)} says. Its first
+   * button compares from the day the act came into force with the law on {@code to}.
+   */
+  public static FailureView comparingBefore(
+      Act act, LocalDate asked, LocalDate to, Language language) {
+    var first = act.timeline().versions().getFirst().date();
+    return before(
+        act,
+        asked,
+        language,
+        Action.button(
+            "Compare from " + Dates.inWords(first), Links.compare(eli(act), first, to, language)));
+  }
+
+  private static FailureView before(Act act, LocalDate asked, Language language, Action instead) {
     var first = act.timeline().versions().getFirst().date();
     var adopted = act.dateOfDocument();
     var cited = act.id().cited();
@@ -131,7 +156,7 @@ public record FailureView(
         List.of(),
         null,
         List.of(
-            Action.button("Read it as it first came into force", Links.read(eli, first, language)),
+            instead,
             Action.link("The act in the Official Journal ↗", act.id().eurLex(language).toString())),
         null);
   }

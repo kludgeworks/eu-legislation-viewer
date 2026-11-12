@@ -79,10 +79,19 @@ class MastheadViewTest {
   @Test
   void greysALanguageEitherVersionComparedIsntInSayingWhich() {
     var from = AVSEC.timeline().versions().getFirst();
-    var head = MastheadView.comparing(AVSEC, from, VERSION, Language.ENG);
+    var head =
+        MastheadView.comparing(
+            AVSEC, from, from.date(), VERSION, VERSION.date().plusDays(3), Language.ENG);
     assertThat(head.languages())
         .filteredOn(choice -> choice.missing() != null)
         .extracting(Choice::name, Choice::missing)
         .contains(org.assertj.core.groups.Tuple.tuple("Gaeilge", "Neither version is in Irish"));
+    // The switch keeps the days asked, not the first days of their versions.
+    assertThat(head.languages())
+        .filteredOn(choice -> choice.name().equals("Deutsch"))
+        .extracting(Choice::href)
+        .singleElement()
+        .asString()
+        .endsWith("to=" + VERSION.date().plusDays(3));
   }
 }

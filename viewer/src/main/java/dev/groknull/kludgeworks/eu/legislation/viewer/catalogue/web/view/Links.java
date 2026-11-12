@@ -49,32 +49,6 @@ public final class Links {
   }
 
   /**
-   * Returns the address of the same comparison, limited to the changes of the act {@code only}. For
-   * example, {@code …&act=32026R0449}. If {@code only} is null, the comparison shows the changes of
-   * all acts.
-   */
-  public static String compare(
-      Eli eli, Version from, Version to, Language language, @Nullable ActIdentifier only) {
-    return page(eli, from, to, language, only, null).href();
-  }
-
-  /**
-   * Returns the address of the same comparison, in the comparison module's view {@code view}. For
-   * example, {@code …&view=whole}. The catalogue does not know the views: it passes the code on as
-   * the reader gave it. Without a view, the address has no {@code view} parameter, and the
-   * comparison module shows its first view.
-   */
-  public static String compare(
-      Eli eli,
-      Version from,
-      Version to,
-      Language language,
-      @Nullable ActIdentifier only,
-      @Nullable String view) {
-    return page(eli, from, to, language, only, view).href();
-  }
-
-  /**
    * Returns the compare page of the comparison of {@code from} with {@code to}, in {@code view},
    * limited to the changes of {@code only}, if any. Its parts are the comparison module's: the
    * compare page loads its changes ({@link ComparePage#changes}) into its text slot, and its acts
@@ -89,8 +63,40 @@ public final class Links {
       Language language,
       @Nullable ActIdentifier only,
       @Nullable String view) {
+    return page(eli, from.date(), to.date(), language, only, view);
+  }
+
+  /**
+   * Returns the address of the comparison of the law on {@code from} with the law on {@code to}.
+   * The address keeps the days: it is not moved to the first days of their versions.
+   */
+  public static String compare(Eli eli, LocalDate from, LocalDate to, Language language) {
+    return page(eli, from, to, language, null, null).href();
+  }
+
+  /**
+   * Returns the address of the comparison of the law on {@code from} with the law on {@code to}, in
+   * {@code view}, limited to the changes of {@code only}, if any.
+   */
+  public static String compare(
+      Eli eli,
+      LocalDate from,
+      LocalDate to,
+      Language language,
+      @Nullable ActIdentifier only,
+      @Nullable String view) {
+    return page(eli, from, to, language, only, view).href();
+  }
+
+  private static ComparePage page(
+      Eli eli,
+      LocalDate from,
+      LocalDate to,
+      Language language,
+      @Nullable ActIdentifier only,
+      @Nullable String view) {
     return new ComparePage(
-        compare(eli, language), from.date(), to.date(), only == null ? null : only.celex(), view);
+        compare(eli, language), from, to, only == null ? null : only.celex(), view);
   }
 
   /**

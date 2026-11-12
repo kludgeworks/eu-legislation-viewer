@@ -94,15 +94,10 @@ public record ReadingView(
     var timeline = act.timeline().in(language).filter(each -> each.versions().contains(version));
     var before = timeline.flatMap(each -> each.predecessor(version));
     var after = timeline.flatMap(each -> each.successor(version));
-    var starts =
-        asked.equals(version.date())
-            ? "A new version starts on this day"
-            : "From the version of " + Dates.inWords(version.date());
-    var until = Wording.until(act, version, today, language);
     return new ReadingView(
         title(act, asked),
         Dates.inWords(asked),
-        until.isEmpty() ? starts : starts + " · " + until,
+        Wording.which(act, version, asked, today, language),
         Wording.made(act, version, named, language),
         makers.isEmpty() ? null : act.citations(makers, language),
         Wording.notApplying(act, version, asked).stream().toList(),
