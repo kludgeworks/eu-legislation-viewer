@@ -270,6 +270,10 @@ details.lang summary {
   cursor: pointer;
 }
 
+details.lang .text-label {
+  color: var(--muted);
+}
+
 details.lang summary::-webkit-details-marker {
   display: none;
 }

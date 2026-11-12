@@ -3,7 +3,8 @@
 <%-- Shows the head of an act's page. MastheadView supplies the data. The act's title shows in
      English up to its date, and the rest of the title shows under it. Then come the act's ELI and
      CELEX, as quiet links to EUR-Lex (↗).
-     The language switch is a details element. It lists the 24 EU languages in the EU's order. Each
+     The language switch, "Text: English ▾", changes only the language of the act's text; the
+     viewer's own labels stay in English. It is a details element. It lists the 24 EU languages in the EU's order. Each
      language links to the same page in that language. The page's language is bold. A language that
      a version on the page is not in is greyed, and its hover says why.
      The mode switch marks the current mode and links to the other mode. While the act is being
@@ -16,7 +17,7 @@
       <a class="mono quiet" href="${masthead.eliHref()}" rel="external" title="On EUR-Lex, by its ELI">${masthead.eli()}<span aria-hidden="true"> ↗</span></a>
       <a class="mono quiet" href="${masthead.celexHref()}" rel="external" title="On EUR-Lex, by its CELEX">${masthead.celex()}<span aria-hidden="true"> ↗</span></a>
       <details class="lang">
-        <summary aria-label="Language: ${masthead.language()}. Change language">${masthead.language()} ▾</summary>
+        <summary aria-label="Text language: ${masthead.language()}. Change the language of the text"><span class="text-label">Text:</span> ${masthead.language()} ▾</summary>
         <div class="menu">
           <ul>
             @for(var choice : masthead.languages())
