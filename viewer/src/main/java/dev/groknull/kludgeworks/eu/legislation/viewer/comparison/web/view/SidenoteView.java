@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -462,7 +463,7 @@ public record SidenoteView(
     if (dates.isEmpty()) {
       return Optional.empty();
     }
-    var name = amending.cited();
+    var name = named(act, amending);
     var dated = dates.stream().filter(date -> date.date() != null).toList();
     var application = dates.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE);
     var applying =
@@ -556,6 +557,18 @@ public record SidenoteView(
         clause == null ? "" : after);
   }
 
+  /**
+   * Returns how a date line names {@code amending}: its number, then its OJ reference where the
+   * catalogue has it. For example, "2026/449 · OJ L, 2026/449, 2.3.2026 ·".
+   */
+  private static String named(Act act, ActIdentifier amending) {
+    return amending.cited()
+        + act.publication(amending)
+            .map(Publication::journal)
+            .map(journal -> " · " + journal.reference() + " ·")
+            .orElse("");
+  }
+
   /** Returns the distinct days of {@code dates}, in order. */
   private static List<LocalDate> days(List<ActDate> dates) {
     return dates.stream().map(ActDate::date).filter(Objects::nonNull).distinct().sorted().toList();
@@ -621,7 +634,7 @@ public record SidenoteView(
       return new History(
           "As in the original act",
           applies(act, act.id(), Set.of(), language)
-              .map(applies -> unnamed(applies, act.id()))
+              .map(applies -> unnamed(applies, act, act.id()))
               .orElseGet(
                   () ->
                       new Applies(
@@ -630,7 +643,9 @@ public record SidenoteView(
     var each = new ActIdentifier(last.act());
     return new History(
         "Last changed by " + each.cited() + " (" + last.action() + ")",
-        applies(act, each, Set.of(), language).map(applies -> unnamed(applies, each)).orElse(null));
+        applies(act, each, Set.of(), language)
+            .map(applies -> unnamed(applies, act, each))
+            .orElse(null));
   }
 
   /**
@@ -638,8 +653,8 @@ public record SidenoteView(
    * names the act already. For example, "Last changed by 2019/103 (replaced) · applies from 1
    * February 2019".
    */
-  private static Applies unnamed(Applies applies, ActIdentifier act) {
-    var name = act.cited() + " ";
+  private static Applies unnamed(Applies applies, Act act, ActIdentifier named) {
+    var name = named(act, named) + " ";
     return applies.when().startsWith(name)
         ? new Applies(
             applies.when().substring(name.length()),

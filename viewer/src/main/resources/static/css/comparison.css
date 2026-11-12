@@ -178,11 +178,11 @@ a.chip:hover {
   color: var(--muted);
 }
 
-.ledger-head .celex {
+.ledger-head .day {
   display: block;
   font:
-    600 13px ui-monospace,
-    monospace;
+    15px/1.3 Georgia,
+    serif;
   letter-spacing: 0;
   text-transform: none;
   color: var(--ink);

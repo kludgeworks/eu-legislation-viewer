@@ -50,7 +50,7 @@ class ChangesPagesTests {
   @Test
   void comparesTheVersionsOnceTheActIsPrepared() {
     var changes = prepared();
-    assertThat(changes.select(".controls b").text()).isEqualTo("6 differences");
+    assertThat(changes.select(".controls b").text()).isEqualTo("6 provisions differ");
     // 2026/449 made them all. No corrigendum did, so the legend has no corrigendum.
     assertThat(changes.select(".controls .by").text()).isEqualTo("by 2026/449");
     assertThat(changes.select(".controls .legend").text())
@@ -146,7 +146,7 @@ class ChangesPagesTests {
     prepared();
     var whole = get(CHANGES + "&view=whole");
     assertThat(whole.select("nav.views [aria-current=page]").text()).isEqualTo("Whole text");
-    assertThat(whole.select(".controls b").text()).isEqualTo("6 differences");
+    assertThat(whole.select(".controls b").text()).isEqualTo("6 provisions differ");
     assertThat(whole.select("section.difference").eachAttr("id"))
         .containsExactly(
             "difference-1",
@@ -172,8 +172,8 @@ class ChangesPagesTests {
     prepared();
     var synopsis = get(CHANGES + "&view=synopsis");
     assertThat(synopsis.select("nav.views [aria-current=page]").text()).isEqualTo("Synopsis");
-    assertThat(synopsis.select(".ledger-head .celex").eachText())
-        .containsExactly("02015R1998-20260322", "02015R1998-20261001");
+    assertThat(synopsis.select(".ledger-head .day").eachText())
+        .containsExactly("the law on 22 March 2026", "the law on 1 October 2026");
     assertThat(synopsis.select(".ledger-row[id^=difference-]")).hasSize(6);
     var first = Objects.requireNonNull(synopsis.getElementById("difference-1"));
     var provision = Objects.requireNonNull(first.selectFirst(".provision"));

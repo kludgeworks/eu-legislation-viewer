@@ -14,7 +14,7 @@
 @if(sidenote != null && sidenote.made() != null)@if(published != null)<made-by class="made" data-published="${published}">${sidenote.made()}</made-by>@else<span class="made" title="${sidenote.published()}">${sidenote.made()}</span>@endif@endif
 <%-- Shows what happened, unless the line about who made it already says it all. Example:
      "Inserted by 2019/1583". --%>
-@if(sidenote == null || sidenote.made() == null || shown.kind().equals("changed"))<span class="note">${shown.note()}</span>@endif
+@if(sidenote == null || sidenote.made() == null)<span class="note">${shown.note()}</span>@endif
 @if(sidenote != null)
   <%-- Shows one date line for each act, and each line starts with the act. Six or more lines go
      into a fold. If the view sends them once for all the sidenotes (parts), js/sidenotes.js fills

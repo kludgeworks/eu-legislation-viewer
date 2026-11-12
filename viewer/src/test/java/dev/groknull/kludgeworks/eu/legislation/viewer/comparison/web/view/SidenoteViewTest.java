@@ -51,8 +51,8 @@ class SidenoteViewTest {
     var applies = sidenote.dates().getFirst();
     assertThat(applies.when())
         .isEqualTo(
-            "2026/449 applies in stages: from 22 March 2026, its entry into force; in part from"
-                + " 1 October 2026");
+            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies in stages: from 22 March 2026, its entry"
+                + " into force; in part from 1 October 2026");
     assertThat(applies.clause())
         .isEqualTo(
             new Link(
@@ -101,7 +101,8 @@ class SidenoteViewTest {
             Language.ENG);
 
     var applies = sidenote.dates().getFirst();
-    assertThat(applies.when()).isEqualTo("2026/449 applies from 1 October 2026");
+    assertThat(applies.when())
+        .isEqualTo("2026/449 · OJ L, 2026/449, 2.3.2026 · applies from 1 October 2026");
     assertThat(applies.clause()).extracting(Link::label).isEqualTo("Article 2 of 2026/449");
     assertThat(applies.after()).isEmpty();
   }
@@ -122,7 +123,8 @@ class SidenoteViewTest {
             amendments("32019R0103", "AN PO 11.3.2"),
             Language.ENG);
 
-    assertThat(sidenote.dates().getFirst().when()).startsWith("2019/103 applies in stages");
+    assertThat(sidenote.dates().getFirst().when())
+        .startsWith("2019/103 · OJ L 21, 24.1.2019 · applies in stages");
   }
 
   @Test
@@ -198,7 +200,9 @@ class SidenoteViewTest {
     assertThat(sidenote.made()).isEqualTo("Deleted by 2026/449");
     assertThat(sidenote.dates())
         .extracting(SidenoteView.Applies::when)
-        .containsExactly("2026/449 applies from 22 March 2026, its entry into force");
+        .containsExactly(
+            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies from 22 March 2026, its entry into"
+                + " force");
   }
 
   @Test
@@ -218,7 +222,8 @@ class SidenoteViewTest {
         .singleElement()
         .satisfies(
             applies -> {
-              assertThat(applies.when()).isEqualTo("2017/815 applies from 1 June 2017");
+              assertThat(applies.when())
+                  .isEqualTo("2017/815 · OJ L 122, 13.5.2017 · applies from 1 June 2017");
               assertThat(applies.between()).isEqualTo(" · ");
               assertThat(applies.clause())
                   .extracting(Link::label)
@@ -258,7 +263,9 @@ class SidenoteViewTest {
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/1583");
     var applies = sidenote.dates().getFirst();
     assertThat(applies.when())
-        .isEqualTo("2019/1583 applies from 31 December 2021, its entry into force");
+        .isEqualTo(
+            "2019/1583 · OJ L 246, 26.9.2019 · applies from 31 December 2021, its entry into"
+                + " force");
     assertThat(applies.amendedBy())
         .containsExactly(
             new Link("2020/910", "https://eur-lex.europa.eu/eli/reg_impl/2020/910/oj/eng"));
@@ -301,7 +308,8 @@ class SidenoteViewTest {
     // 2019.
     assertThat(
             applies.when() + applies.between() + Objects.requireNonNull(applies.clause()).label())
-        .isEqualTo("2019/413 applies from a date set in Article 3 of 2019/413");
+        .isEqualTo(
+            "2019/413 · OJ L 73, 15.3.2019 · applies from a date set in Article 3 of 2019/413");
   }
 
   @Test

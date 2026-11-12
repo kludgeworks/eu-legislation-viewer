@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
@@ -257,8 +258,8 @@ class ChangesController {
                     units,
                     histories,
                     this.html,
-                    earlier.celex(),
-                    later.celex(),
+                    Dates.inWords(page.from()),
+                    Dates.inWords(page.to()),
                     views,
                     all,
                     page.same(earlier.date(), later.date()),

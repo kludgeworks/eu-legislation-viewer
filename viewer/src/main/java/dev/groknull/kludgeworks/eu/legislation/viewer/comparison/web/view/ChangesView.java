@@ -31,14 +31,11 @@ import org.jspecify.annotations.Nullable;
  *       For example, "Points (a) and (b) — no differences".
  * </ul>
  *
- * @param count how many differences there are, for example "6 differences"
- * @param breakdown how many differences there are of each kind, for example "2 inserted · 1 deleted
- *     · 3 amended". Null if there are no differences.
+ * @param count how many provisions differ, for example "6 provisions differ"
  * @param passages what the view shows, in order
  * @param numbers the numbers of the differences, for the pager
  */
-public record ChangesView(
-    String count, @Nullable String breakdown, List<Passage> passages, List<Integer> numbers) {
+public record ChangesView(String count, List<Passage> passages, List<Integer> numbers) {
 
   /** A letter or digit in a num. A num that is only a mark, for example "—" or "•", has none. */
   private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]");
@@ -108,7 +105,7 @@ public record ChangesView(
     }
     place(comparison.closing(), differences, pending, opened);
     pending.fold();
-    return new ChangesView(count(differences.size()), breakdown(differences), passages, numbers);
+    return new ChangesView(count(differences.size()), passages, numbers);
   }
 
   /**
@@ -212,50 +209,23 @@ public record ChangesView(
   }
 
   private static String count(int differences) {
-    return differences == 0
-        ? "No differences"
-        : differences + (differences == 1 ? " difference" : " differences");
-  }
-
-  private static @Nullable String breakdown(List<Difference> differences) {
-    if (differences.isEmpty()) {
-      return null;
-    }
-    return String.join(
-        " · ",
-        kinds(differences, Kind.INSERTED) + " inserted",
-        kinds(differences, Kind.DELETED) + " deleted",
-        kinds(differences, Kind.CHANGED) + " amended");
-  }
-
-  private static long kinds(List<Difference> differences, Kind kind) {
-    return differences.stream().filter(difference -> difference.kind() == kind).count();
+    return switch (differences) {
+      case 0 -> "No provisions differ";
+      case 1 -> "1 provision differs";
+      default -> differences + " provisions differ";
+    };
   }
 
   /**
-   * Returns what happened to {@code difference}. For example, "Inserted" or "Amended: 16 words
-   * inserted, 7 deleted".
+   * Returns what happened to {@code difference}: "Inserted", "Deleted" or "Amended". The sidenote
+   * shows it only when no act is known to have made it; the line of the act says it otherwise.
    */
   static String note(Difference difference) {
     return switch (difference.kind()) {
       case INSERTED -> "Inserted";
       case DELETED -> "Deleted";
-      case CHANGED -> {
-        var parts = new ArrayList<String>();
-        if (difference.inserted() > 0) {
-          parts.add(words(difference.inserted()) + " inserted");
-        }
-        if (difference.deleted() > 0) {
-          parts.add(
-              (parts.isEmpty() ? words(difference.deleted()) : difference.deleted()) + " deleted");
-        }
-        yield parts.isEmpty() ? "Amended" : "Amended: " + String.join(", ", parts);
-      }
+      case CHANGED -> "Amended";
     };
-  }
-
-  private static String words(int words) {
-    return words + (words == 1 ? " word" : " words");
   }
 
   /**

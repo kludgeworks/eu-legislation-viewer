@@ -55,24 +55,17 @@ class ChangesViewTest {
             "Point (f)",
             "6",
             "Point 9.1.2.4 to attachment 12-P");
-    assertThat(MARCH_TO_OCTOBER.count()).isEqualTo("6 differences");
-    assertThat(MARCH_TO_OCTOBER.breakdown()).isEqualTo("0 inserted · 0 deleted · 6 amended");
+    assertThat(MARCH_TO_OCTOBER.count()).isEqualTo("6 provisions differ");
     assertThat(MARCH_TO_OCTOBER.numbers()).containsExactly(1, 2, 3, 4, 5, 6);
   }
 
   @Test
-  void notesHowManyWordsAnAmendmentInsertedAndDeleted() {
+  void notesWhatHappenedToEachDifference() {
     assertThat(MARCH_TO_OCTOBER.passages())
         .filteredOn(Shown.class::isInstance)
         .map(Shown.class::cast)
         .extracting(Shown::note)
-        .containsExactly(
-            "Amended: 16 words inserted",
-            "Amended: 20 words inserted",
-            "Amended: 14 words inserted, 7 deleted",
-            "Amended: 16 words inserted",
-            "Amended: 20 words inserted",
-            "Amended: 14 words inserted, 7 deleted");
+        .containsExactly("Amended", "Amended", "Amended", "Amended", "Amended", "Amended");
   }
 
   @Test
@@ -127,7 +120,7 @@ class ChangesViewTest {
         .extracting(Sibling::eId)
         .contains("anx/pnt_8.1.2.2", "anx/pnt_8.1.2.3", "anx/pnt_8.1.2.4")
         .noneMatch(eId -> eId.startsWith("anx/pnt_8.1.2.3/"));
-    assertThat(only9.count()).isEqualTo("3 differences");
+    assertThat(only9.count()).isEqualTo("3 provisions differ");
     assertThat(only9.numbers()).containsExactly(1, 2, 3);
   }
 

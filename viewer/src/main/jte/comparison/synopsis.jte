@@ -22,7 +22,8 @@
 @param String same = ""
 @param ComparePage page
 <%-- Shows a comparison's Synopsis view. The controls come first. Then a ledger aligns the two
-     texts by provision. From's CELEX and To's CELEX are in the column heads.
+     texts by provision. The column heads name the two days: "From · the law
+     on 22 March 2026".
      Each provision that differs is a row, with its unit marked in both texts. Words that it lost are
      struck through in From. Words that it gained are underlined in To. "Not in this version" shows
      where a text does not have the provision. The last column says what changed it, as a sidenote
@@ -47,7 +48,7 @@
   @template.comparison.sidenoteparts(parts = parts)
   @template.comparison.controls(changes = changes, views = views, only = only, legend = ControlsView.legend(changes, sidenotes))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two versions, aligned by provision">
-    <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="celex">${from}</span></div><div role="columnheader">To<span class="celex">${to}</span></div><div role="columnheader">What changed it</div></div>
+    <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="day">the law on ${from}</span></div><div role="columnheader">To<span class="day">the law on ${to}</span></div><div role="columnheader">What changed it</div></div>
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold && fold.same() && fold.beside().stream().allMatch(unit -> neighbours.containsKey(unit.eId())))
         !{var between = fold.between();}
