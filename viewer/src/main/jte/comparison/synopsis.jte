@@ -67,7 +67,7 @@
         <div class="ledger-row difference-${shown.kind()}${only != null && sidenote != null && !sidenote.candidates().isEmpty() ? " unknown" : ""}${sidenote != null && sidenote.corrected() ? " corrected" : ""}" role="row" id="difference-${shown.number()}">
           <div class="provision" role="cell">${shown.cited()}<span class="n">difference ${shown.number()} of ${total}</span></div>
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in this version</p>@else${unit}@endif</div>
-          <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in this version</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, part = shown.part(page))@else${unit}@endif</div>
+          <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in this version</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, page = page)@else${unit}@endif</div>
           <div class="what" role="cell">
             @template.comparison.sidenote(shown = shown, sidenote = sidenote, parts = parts)
             <nav class="steps" aria-label="Differences">@if(shown.number() > 1)<a href="#difference-${shown.number() - 1}" aria-label="Previous difference">↑</a>@else<span aria-hidden="true">↑</span>@endif@if(shown.number() < total)<a href="#difference-${shown.number() + 1}" aria-label="Next difference">↓</a>@else<span aria-hidden="true">↓</span>@endif</nav>

@@ -247,6 +247,15 @@ class ChangesPagesTests {
     assertThat(status(DIFFERENCE + "&eId=anx/pnt_8.1.2.3/pnt_c&table=0&rows=0-3")).isEqualTo(404);
   }
 
+  @Test
+  void servesTheOutlineOfAUnitWithLinksToItsPlacesInRead() {
+    prepared();
+    var outline = get(DIFFERENCE + "&eId=anx&outline=true");
+    var links = outline.select("ul.annex-outline a").eachAttr("href");
+    assertThat(links).isNotEmpty().allMatch(href -> href.startsWith(ACT + "2026-10-01/eng#anx"));
+    assertThat(status(DIFFERENCE + "&eId=no_such_unit&outline=true")).isEqualTo(404);
+  }
+
   private int status(String uri) {
     return http.get().uri(uri).exchange((request, response) -> response.getStatusCode().value());
   }

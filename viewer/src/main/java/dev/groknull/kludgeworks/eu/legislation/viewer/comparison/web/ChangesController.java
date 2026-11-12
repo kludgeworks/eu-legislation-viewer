@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -218,12 +219,7 @@ class ChangesController {
                           (each, unit) -> {
                             var sidenote = sidenotes.get(each.number());
                             return templates.comparisonDifference(
-                                each,
-                                sidenote,
-                                greyed(only, sidenote),
-                                unit,
-                                each.part(page),
-                                parts);
+                                each, sidenote, greyed(only, sidenote), unit, page, parts);
                           }),
                       parts,
                       views,
@@ -526,6 +522,7 @@ class ChangesController {
       @RequestParam(ComparePage.EID) String eId,
       @RequestParam(name = ComparePage.TABLE, required = false) @Nullable Integer table,
       @RequestParam(name = ComparePage.ROWS, required = false) @Nullable String rows,
+      @RequestParam(name = ComparePage.OUTLINE, defaultValue = "false") boolean outline,
       HttpServletRequest request) {
     var ends = new Ends(new Eli(type, year, number), code, from, to, act);
     var page =
@@ -540,6 +537,14 @@ class ChangesController {
     if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
         || !(preparation.texts().get(later) instanceof Text.Ready after)) {
       throw Requests.notFound();
+    }
+    if (outline) {
+      var entry =
+          content
+              .outline(after.root())
+              .flatMap(each -> entry(each.entries(), eId))
+              .orElseThrow(Requests::notFound);
+      return templates.comparisonAnnexoutline(entry.entries(), page).render();
     }
     var difference =
         comparisons.difference(before.root(), after.root(), eId).orElseThrow(Requests::notFound);
@@ -579,6 +584,20 @@ class ChangesController {
         found.size(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return html.toString();
+  }
+
+  /** Returns the entry of the unit {@code eId} in {@code entries}, at any depth. */
+  private static Optional<Outline.Entry> entry(List<Outline.Entry> entries, String eId) {
+    for (var each : entries) {
+      if (each.eId().equals(eId)) {
+        return Optional.of(each);
+      }
+      var below = entry(each.entries(), eId);
+      if (below.isPresent()) {
+        return below;
+      }
+    }
+    return Optional.empty();
   }
 
   /** Returns {@code element} rendered as the legal text renders it. */

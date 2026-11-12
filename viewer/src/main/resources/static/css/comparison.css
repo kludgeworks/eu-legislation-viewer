@@ -720,14 +720,27 @@ nav.outline.counted.rail a {
 }
 
 /* An annex that was inserted whole. It is folded, and the fold shows its size. */
-details.annex-inserted > summary {
-  padding: 6px 0;
-  color: var(--ins-ink);
-  cursor: pointer;
+.annex-inserted .annex-head {
+  margin: 0;
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  font:
+    13px/1.5 system-ui,
+    sans-serif;
+  color: var(--ink2);
 }
 
-details.annex-inserted[open] .show {
-  display: none;
+.annex-inserted .annex-size {
+  color: var(--ins-ink);
+}
+
+.annex-outline {
+  margin: 8px 0;
+  padding-left: 18px;
+  font:
+    13px/1.6 system-ui,
+    sans-serif;
 }
 
 /* Rows of a changed table that are the same in both texts, folded. The button loads them in place. */

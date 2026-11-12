@@ -78,6 +78,9 @@ public record ComparePage(
   /** The field of the eId of the last unit of a fold. */
   public static final String LAST = "last";
 
+  /** The field that asks a difference for its outline only, with the value {@code true}. */
+  public static final String OUTLINE = "outline";
+
   /** The field of the eId of the unit of a difference. */
   public static final String EID = "eId";
 
@@ -125,6 +128,25 @@ public record ComparePage(
    */
   public String difference(String eId) {
     return path + "/" + DIFFERENCE + query(from, to) + act(act) + "&" + EID + "=" + encode(eId);
+  }
+
+  /**
+   * Returns the address of the outline of the difference at the unit {@code eId}: the units in it,
+   * without their text. An annex inserted whole shows it.
+   */
+  public String outline(String eId) {
+    return difference(eId) + "&" + OUTLINE + "=true";
+  }
+
+  /**
+   * Returns the address of the unit {@code eId} in Read, in the version at the To end. For example,
+   * {@code /eli/reg_impl/2015/1998/2026-10-01/eng#anx_VIII} for the page {@code
+   * /eli/reg_impl/2015/1998/eng/compare}.
+   */
+  public String read(String eId) {
+    var act = path.substring(0, path.lastIndexOf('/'));
+    var language = act.substring(act.lastIndexOf('/') + 1);
+    return act.substring(0, act.lastIndexOf('/')) + "/" + to + "/" + language + "#" + encode(eId);
   }
 
   /** Returns the address of the acts between the two versions, with the page's query. */

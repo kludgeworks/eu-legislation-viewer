@@ -50,7 +50,7 @@
         <div class="lead">${html.element(lead.unit())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        @template.comparison.difference(shown = shown, sidenote = sidenote, greyed = only != null && sidenote != null && !sidenote.candidates().isEmpty(), unit = html.element(shown.folded(page)), part = shown.part(page), parts = parts)
+        @template.comparison.difference(shown = shown, sidenote = sidenote, greyed = only != null && sidenote != null && !sidenote.candidates().isEmpty(), unit = html.element(shown.folded(page)), page = page, parts = parts)
       @endif
     @endfor
   </div>
