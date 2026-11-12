@@ -153,7 +153,7 @@ class VersionController {
       return templates
           .cataloguePreparing(
               chrome,
-              page.version.celex(),
+              ReadingView.title(page.act, date),
               masthead.whilePreparing(),
               TimelineView.preparing(preparation),
               PreparingView.of(

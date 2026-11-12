@@ -36,8 +36,8 @@
       <span aria-current="${masthead.read() == null ? "page" : null}" aria-disabled="true">Read</span>
       <span aria-current="${masthead.compare() == null ? "page" : null}" aria-disabled="true">Compare</span>
     @else
-      @if(masthead.read() != null)<a href="${masthead.read()}">Read</a>@else<span aria-current="page">Read</span>@endif
-      @if(masthead.compare() != null)<a href="${masthead.compare()}">Compare</a>@else<span aria-current="page">Compare</span>@endif
+      @if(masthead.read() != null)<a href="${masthead.read()}" data-view="read">Read</a>@else<span aria-current="page">Read</span>@endif
+      @if(masthead.compare() != null)<a href="${masthead.compare()}" data-view="changes">Compare</a>@else<span aria-current="page">Compare</span>@endif
     @endif
   </nav>
 </header>

@@ -19,15 +19,19 @@ import org.jspecify.annotations.Nullable;
  *   <li>Each branch that leads to a difference has a bar and a count, and is open. The branch goes
  *       down to the unit in the outline that the difference is in, which is its section. For
  *       example, "8.1.2 Screening".
- *   <li>A unit with differences below it lists them as chips. A chip shows the num of the
- *       difference, after the num of its parent if the parent is not the unit. For example,
- *       "8.1.2.3 (c)". Each chip jumps to its difference.
+ *   <li>A unit with differences in its points lists them as rows, one level below it. A row shows
+ *       the difference's own num, for example "(c)", never prefixed with "ANNEX", and the number of
+ *       the difference. Each row jumps to its difference. A unit with more than {@value #ROWS} such
+ *       differences lists none: its count is enough.
  *   <li>A difference in no section, for example a recital, is in none of the branches.
  * </ul>
  *
  * @param entries the outermost units
  */
 public record OutlineView(List<Branch> entries) {
+
+  /** The most rows a unit lists. A unit with more differences in its points lists none. */
+  static final int ROWS = 12;
 
   public OutlineView {
     entries = List.copyOf(entries);
@@ -62,10 +66,10 @@ public record OutlineView(List<Branch> entries) {
               .filter(number -> number > 0)
               .min(Integer::compare)
               .orElse(0);
-      var chips = new ArrayList<Chip>();
+      var rows = new ArrayList<Row>();
       for (var numbered : own) {
         if (!numbered.difference().eId().equals(entry.eId())) {
-          chips.add(new Chip(chip(numbered.difference(), entry.eId()), numbered.number()));
+          rows.add(new Row(row(numbered.difference()), numbered.number()));
         }
       }
       var label = (entry.num() + " " + entry.heading()).strip();
@@ -75,24 +79,25 @@ public record OutlineView(List<Branch> entries) {
               count,
               total == 0 ? 0 : count * 100 / total,
               first,
-              chips,
+              listed(rows),
               below));
     }
     return branches;
   }
 
+  /** Returns {@code rows}, or none if there are more than {@value #ROWS}. */
+  static List<Row> listed(List<Row> rows) {
+    return rows.size() > ROWS ? List.of() : rows;
+  }
+
   /**
-   * Returns the label of the chip of {@code difference} in the section {@code section}. The label
-   * is the num of the difference, after the num of its parent if the parent is not the section. For
-   * example, "8.1.2.3 (c)". Empty if the difference has no num.
+   * Returns the label of the row of {@code difference}: its own num, for example "(c)". Without a
+   * num, it is the num of the unit it opens with, if any. Empty if neither has one.
    */
-  private static String chip(Difference difference, String section) {
+  private static String row(Difference difference) {
     var num = num(difference.shown());
     var lead = difference.lead();
-    if (lead == null || section.equals(difference.parent())) {
-      return num;
-    }
-    return (num(lead) + " " + num).strip();
+    return num.isEmpty() && lead != null ? num(lead) : num;
   }
 
   /**
@@ -115,14 +120,15 @@ public record OutlineView(List<Branch> entries) {
    * @param count how many differences are in it. 0 if none.
    * @param bar its share of the differences of the comparison, in percent
    * @param first the number of the first difference in it, which it jumps to. 0 if none.
-   * @param chips the differences in its points. Each chip jumps to its difference.
+   * @param rows the differences in its points, one row each. Each row jumps to its difference. None
+   *     if there are more than {@value OutlineView#ROWS}.
    * @param entries the units below it
    */
   public record Branch(
-      String label, int count, int bar, int first, List<Chip> chips, List<Branch> entries) {
+      String label, int count, int bar, int first, List<Row> rows, List<Branch> entries) {
 
     public Branch {
-      chips = List.copyOf(chips);
+      rows = List.copyOf(rows);
       entries = List.copyOf(entries);
     }
 
@@ -138,11 +144,10 @@ public record OutlineView(List<Branch> entries) {
   }
 
   /**
-   * A difference in the points of a unit.
+   * A difference in the points of a unit, as a row of the outline.
    *
-   * @param label the num of the point, after the num of its parent if the parent is not the unit.
-   *     For example, "8.1.2.3 (c)".
-   * @param number the number of the difference, which the chip jumps to
+   * @param label the difference's own num. For example, "(c)".
+   * @param number the number of the difference, which the row jumps to
    */
-  public record Chip(String label, int number) {}
+  public record Row(String label, int number) {}
 }

@@ -13,7 +13,7 @@
 <div class="controls">
   <nav class="views" aria-label="View">
     @for(var view : views)
-      <a class="view" href="${view.href()}" aria-current="${view.on() ? "page" : null}">${view.label()}</a>
+      <a class="view" href="${view.href()}" data-view="${view.code()}" aria-current="${view.on() ? "page" : null}">${view.label()}</a>
     @endfor
   </nav>
   <b>${changes.count()}</b>

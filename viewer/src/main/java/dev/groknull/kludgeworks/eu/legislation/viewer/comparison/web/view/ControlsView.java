@@ -20,7 +20,11 @@ public final class ControlsView {
     return Arrays.stream(ComparisonView.values())
         .map(
             view ->
-                new ViewLink(view.label(), page.href(page.act(), view.parameter()), view == shown))
+                new ViewLink(
+                    view.label(),
+                    view.code(),
+                    page.href(page.act(), view.parameter()),
+                    view == shown))
         .toList();
   }
 
@@ -28,10 +32,12 @@ public final class ControlsView {
    * The link to a view.
    *
    * @param label the name of the view. For example, "Whole text".
+   * @param code the code of the view, for example {@code whole}. The page shows the shape of this
+   *     view while it loads.
    * @param href the address of the comparison in this view
    * @param on whether this view shows now
    */
-  public record ViewLink(String label, String href, boolean on) {}
+  public record ViewLink(String label, String code, String href, boolean on) {}
 
   /**
    * The banner of a comparison that is limited to the changes of one act. For example, "Only

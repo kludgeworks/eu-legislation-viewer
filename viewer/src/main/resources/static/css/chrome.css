@@ -121,7 +121,7 @@ nav.site {
 }
 
 /* Custom elements that only add behaviour take no box. */
-comparison-outline,
+act-outline,
 elapsed-time,
 theme-switch {
   display: contents;

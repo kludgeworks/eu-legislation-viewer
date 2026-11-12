@@ -142,7 +142,7 @@ public record ReadingView(
   }
 
   /** Returns the page's title. For example, "2015/1998 · the law on 14 Feb 2022". */
-  private static String title(Act act, LocalDate asked) {
+  public static String title(Act act, LocalDate asked) {
     return act.id().cited() + " · the law on " + Dates.inShort(asked);
   }
 

@@ -6,12 +6,14 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView.Branch;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView.Chip;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView.Row;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
@@ -49,14 +51,23 @@ class OutlineViewTest {
   }
 
   @Test
-  void listsTheDifferencesInAUnitsPointsAsChips() {
-    assertThat(find(MARCH_TO_OCTOBER.entries(), "8.1.2 Screening").chips())
-        .extracting(Chip::label, Chip::number)
-        .containsExactly(tuple("8.1.2.3 (c)", 1), tuple("8.1.2.3 (e)", 2), tuple("8.1.2.3 (g)", 3));
-    assertThat(find(MARCH_TO_OCTOBER.entries(), "9.1.2 Screening").chips())
-        .extracting(Chip::number)
+  void listsTheDifferencesInAUnitsPointsAsRowsByTheirOwnNum() {
+    assertThat(find(MARCH_TO_OCTOBER.entries(), "8.1.2 Screening").rows())
+        .extracting(Row::label, Row::number)
+        .containsExactly(tuple("(c)", 1), tuple("(e)", 2), tuple("(g)", 3));
+    assertThat(find(MARCH_TO_OCTOBER.entries(), "9.1.2 Screening").rows())
+        .extracting(Row::number)
         .containsExactly(4, 5, 6);
-    assertThat(find(MARCH_TO_OCTOBER.entries(), "8.1 SECURITY CONTROLS").chips()).isEmpty();
+    assertThat(find(MARCH_TO_OCTOBER.entries(), "8.1 SECURITY CONTROLS").rows()).isEmpty();
+  }
+
+  @Test
+  void listsNoRowsUnderAUnitWithMoreThanTwelve() {
+    var twelve = IntStream.rangeClosed(1, 12).mapToObj(n -> new Row("(" + n + ")", n)).toList();
+    assertThat(OutlineView.listed(twelve)).hasSize(12);
+    var thirteen = new ArrayList<>(twelve);
+    thirteen.add(new Row("(13)", 13));
+    assertThat(OutlineView.listed(thirteen)).isEmpty();
   }
 
   @Test

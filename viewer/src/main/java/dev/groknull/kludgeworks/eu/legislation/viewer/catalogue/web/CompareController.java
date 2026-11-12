@@ -191,7 +191,8 @@ class CompareController {
                         ? page.same()
                         : page.changes(preparation, self(request), chrome.results()),
                     prepared,
-                    ArrivingView.of(preparation).orElse(null))
+                    ArrivingView.of(preparation).orElse(null),
+                    view)
                 .render());
   }
 
@@ -340,7 +341,8 @@ class CompareController {
               templates.catalogueTextFailed(
                   FailureView.comparingBefore(act, fromDay, compareTo, language)),
               false,
-              null)
+              null,
+              view)
           .render();
     }
 
@@ -404,7 +406,12 @@ class CompareController {
       }
       if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
         return templates.catalogueCompareReady(
-            Links.page(eli, from, to, language, only, view).changes());
+            Links.page(eli, from, to, language, only, view).changes(),
+            "Comparing the law on "
+                + Dates.inWords(fromDay)
+                + " with the law on "
+                + Dates.inWords(toDay)
+                + "…");
       }
       // Either end is a version that appeared since, and it is being prepared.
       return templates.catalogueTextArriving();

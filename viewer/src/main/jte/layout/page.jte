@@ -26,6 +26,7 @@
   <script type="module" src="${chrome.assets().markers()}"></script>
   <script type="module" src="${chrome.assets().sidenotes()}"></script>
   <script type="module" src="${chrome.assets().copy()}"></script>
+  <script type="module" src="${chrome.assets().loading()}"></script>
   ${head}
 </head>
 <body>

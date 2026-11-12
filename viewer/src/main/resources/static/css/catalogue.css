@@ -1092,8 +1092,117 @@ form.find-act .ex a {
   }
 }
 
+/* A skeleton beside sidenotes (Changes, Whole text): text lines, with a block beside some. */
+.skeleton.noted {
+  grid-template-columns: minmax(0, 42.5rem) 16.25rem;
+  column-gap: 40px;
+  max-width: none;
+}
+
+.skeleton.noted i {
+  grid-column: 1;
+}
+
+.skeleton.noted b {
+  display: block;
+  grid-column: 2;
+  height: 48px;
+  border-radius: 3px;
+  background: var(--surface2);
+}
+
+/* A skeleton of table rows (Synopsis). */
+.skeleton.rows {
+  max-width: none;
+}
+
+.skeleton.rows i,
+.skeleton.rows i:nth-child(odd) {
+  width: 100%;
+  height: 28px;
+}
+
+/* A soft shimmer moves across a skeleton's shapes. */
+.skeleton :is(i, b) {
+  background: linear-gradient(
+    90deg,
+    var(--surface2) 40%,
+    var(--hair) 50%,
+    var(--surface2) 60%
+  );
+  background-size: 300% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 100% 0;
+  }
+
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* The wait for the next page of an act, while a boosted link loads it into #page (js/loading.js).
+ * From 300ms a bar runs along the top of #page and the page dims. From 1s the shape of the view
+ * that is coming covers the text. A quick page shows none of this. */
+/* stylelint-disable-next-line selector-max-id */
+#page {
+  position: relative;
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#page::before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--accent-fill);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#page.loading::before {
+  animation: appear 0s 0.3s forwards;
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#page.loading > :not(.skeleton-over, template) {
+  opacity: 0.6;
+  transition: opacity 0.2s 0.3s;
+}
+
+/* stylelint-disable-next-line selector-max-id */
+#text {
+  position: relative;
+}
+
+.skeleton-over {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  padding-top: 12px;
+  background: var(--bg);
+  opacity: 0;
+  animation: appear 0s 1s forwards;
+}
+
+.skeleton-over .skeleton {
+  opacity: 1;
+  animation: none;
+}
+
+/* The link or button the reader chose shows pressed at once. */
+.pressed {
+  box-shadow: inset 0 -2px var(--accent-fill);
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .loading-bar::after {
+  .loading-bar::after,
+  .skeleton :is(i, b) {
     animation: none;
   }
 }

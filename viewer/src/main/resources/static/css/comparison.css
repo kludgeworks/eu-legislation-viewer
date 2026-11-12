@@ -512,6 +512,15 @@ nav.outline {
   font-size: 13px;
 }
 
+/* The head of the outline, and the line that says where the reader is, stay at its top as it
+ * scrolls. */
+.outline-top {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  background: var(--bg);
+}
+
 .outline-head {
   margin: 0;
   padding: 8px 12px;
@@ -575,6 +584,13 @@ nav.outline a:hover {
   background: var(--hover);
 }
 
+/* The entry for the part the reader is in (js/outline.js). */
+nav.outline a[aria-current="location"] {
+  box-shadow: inset 2px 0 var(--accent-fill);
+  background: var(--accent-tint);
+  color: var(--ink);
+}
+
 /* The outline of a comparison (comparison/outline.jte). Each unit shows its label, a bar for its
  * share of the differences, and its count. The differences in the points of a unit show as chips.
  */
@@ -617,19 +633,23 @@ nav.outline .n {
   color: var(--ink);
 }
 
-/* The changed provisions in the points of a unit. Each one has a row, as the units above them do. */
-nav.outline .chips {
-  display: block;
-  padding: 0 0 2px 20px;
-}
-
-nav.outline .chips a {
-  display: block;
-  padding: 2px 10px 2px 20px;
+/* The changed provisions in the points of a unit: a row each, one level below the unit, with a
+ * small dot, the provision's own num, and the number of its difference in grey. */
+nav.outline .rows a {
   font:
     11.5px ui-monospace,
     monospace;
   color: var(--accent);
+}
+
+nav.outline .rows a > span:first-child::before {
+  content: "•";
+  margin-right: 6px;
+  color: var(--faint);
+}
+
+nav.outline .rows .n {
+  color: var(--muted);
 }
 
 /* The button that collapses the outline to a rail. Under the button, it shows where the reader is.
@@ -667,6 +687,7 @@ nav.outline .chips a {
 
 nav.outline .outline-follow a {
   display: inline;
+  flex: none;
   padding: 0 4px;
   color: var(--accent);
 }
@@ -683,7 +704,6 @@ nav.outline.rail {
 }
 
 nav.outline.rail ul ul,
-nav.outline.rail .chips,
 nav.outline.rail .bar,
 nav.outline.rail .outline-follow,
 nav.outline.rail .outline-head > span:nth-child(2) {

@@ -15,12 +15,12 @@
      number and its sidenote. A deleted provision shows where it was. The later text's outline is
      beside the view, with a count of differences for each unit. --%>
 <div class="outlined">
-<comparison-outline>
+<act-outline>
 <nav class="outline counted" aria-label="Outline">
   @template.comparison.outlinehead(total = changes.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
-</comparison-outline>
+</act-outline>
 <div class="changes whole">
   @template.comparison.sidenoteparts(parts = parts)
   @template.comparison.controls(changes = changes, views = views, only = only, corrected = corrected)

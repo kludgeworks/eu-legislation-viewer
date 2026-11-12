@@ -105,7 +105,7 @@ class ChangesPagesTests {
             .orElseThrow();
     assertThat(screening.select(".n").text()).isEqualTo("3");
     assertThat(screening.attr("href")).isEqualTo("#difference-1");
-    assertThat(changes.select("nav.outline .chips a").eachAttr("href"))
+    assertThat(changes.select("nav.outline .rows a").eachAttr("href"))
         .containsExactly(
             "#difference-1",
             "#difference-2",
