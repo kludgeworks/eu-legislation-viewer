@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -68,13 +69,14 @@ public final class Wording {
    * </ul>
    */
   public static String made(Version version) {
-    return made(version, version.integrates());
+    return made(version, version.integrates(), ActIdentifier::cited);
   }
 
   /**
    * Returns what made {@code version}, from {@code integrates}: the acts and corrigenda to name.
    */
-  private static String made(Version version, List<ActIdentifier> integrates) {
+  private static String made(
+      Version version, List<ActIdentifier> integrates, Function<ActIdentifier, String> cite) {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return "the act as published";
     }
@@ -83,7 +85,7 @@ public final class Wording {
     if (acts.isEmpty()) {
       return corrigenda == 0
           ? "no amending act listed for this version"
-          : "made by " + names(integrates);
+          : "made by " + names(integrates, cite);
     }
     var also =
         switch (corrigenda) {
@@ -91,7 +93,7 @@ public final class Wording {
           case 1 -> " · also 1 corrigendum";
           default -> " · also " + corrigenda + " corrigenda";
         };
-    return "made by " + names(acts) + also;
+    return "made by " + names(acts, cite) + also;
   }
 
   /**
@@ -117,7 +119,7 @@ public final class Wording {
               .orElse("");
     }
     if (version.integrates().isEmpty() && !named.isEmpty()) {
-      return "made by " + names(named);
+      return "made by " + names(named, act::cited);
     }
     return made(
         version,
@@ -126,7 +128,8 @@ public final class Wording {
                 each ->
                     !each.corrigendum()
                         || act.publication(each).flatMap(p -> p.title(language)).isPresent())
-            .toList());
+            .toList(),
+        act::cited);
   }
 
   /**
@@ -146,8 +149,8 @@ public final class Wording {
     return version.integrates().isEmpty() ? named : version.integrates();
   }
 
-  private static String names(List<ActIdentifier> acts) {
-    return acts.stream().map(ActIdentifier::cited).collect(Collectors.joining(", "));
+  private static String names(List<ActIdentifier> acts, Function<ActIdentifier, String> cite) {
+    return acts.stream().map(cite).collect(Collectors.joining(", "));
   }
 
   /**

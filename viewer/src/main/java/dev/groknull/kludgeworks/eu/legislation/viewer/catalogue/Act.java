@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.SequencedSet;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
@@ -91,6 +92,46 @@ public record Act(
   }
 
   /**
+   * Returns how {@code each}, this act or an act that its versions integrate, is cited, as {@link
+   * ActIdentifier#cited}. Since 2015 EU acts share one numbering, so the number alone is clear. An
+   * older act also needs its kind, in short form, which its English title gives. For example, "Reg.
+   * (EC) 272/2009" for Regulation (EC) No 272/2009, or "Dir. 2010/18/EU". Cellar's titles may have
+   * a no-break space after "No". If the catalogue has no such title, it is the number alone.
+   */
+  public String cited(ActIdentifier each) {
+    var plain = each.cited();
+    if (each.corrigendum() || each.numberedAlone()) {
+      return plain;
+    }
+    var title = publication(each).flatMap(publication -> publication.title(Language.ENG));
+    if (title.isEmpty()) {
+      return plain;
+    }
+    var regulation =
+        Pattern.compile(
+                "Regulation\\s+\\(([^)]+)\\)\\s+No\\s+" + Pattern.quote(plain) + "\\b",
+                Pattern.UNICODE_CHARACTER_CLASS)
+            .matcher(title.get());
+    if (regulation.find()) {
+      return "Reg. (" + regulation.group(1) + ") " + plain;
+    }
+    var other =
+        Pattern.compile(
+                "(Directive|Decision)\\s+(?:No\\s+)?"
+                    + Pattern.quote(plain)
+                    + "/([A-Za-z]+(?:,\\s?[A-Za-z]+)?)",
+                Pattern.UNICODE_CHARACTER_CLASS)
+            .matcher(title.get());
+    if (other.find()) {
+      return (other.group(1).equals("Directive") ? "Dir. " : "Dec. ")
+          + plain
+          + "/"
+          + other.group(2);
+    }
+    return plain;
+  }
+
+  /**
    * Returns how {@code each} is cited with its publication: its number, its title and its Official
    * Journal reference. {@code each} is this act or an act that its versions integrate. For example,
    * "2026/449: Commission Implementing Regulation (EU) 2026/449 of 27 February 2026 amending … · OJ
@@ -99,7 +140,7 @@ public record Act(
    * ActIdentifier#cited}.
    */
   public String citation(ActIdentifier each, Language language) {
-    var name = each.cited();
+    var name = cited(each);
     return publication(each)
         .map(
             publication -> {

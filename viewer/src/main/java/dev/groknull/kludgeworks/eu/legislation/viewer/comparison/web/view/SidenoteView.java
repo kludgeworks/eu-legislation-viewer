@@ -190,12 +190,12 @@ public record SidenoteView(
       var verb = verb(kind, first, Objects.requireNonNull(made.get(first)));
       verb = i == 0 ? verb : verb.toLowerCase(Locale.ROOT);
       if (step.size() == 1) {
-        chain.add(verb + " by " + names(step));
+        chain.add(verb + " by " + names(act, step));
       } else if (only != null && step.contains(only)) {
         var others = step.stream().filter(each -> !each.equals(only)).toList();
-        chain.add(verb + " by " + only.cited() + ", together with " + names(others));
+        chain.add(verb + " by " + act.cited(only) + ", together with " + names(act, others));
       } else {
-        chain.add(verb + " by " + names(step) + " together");
+        chain.add(verb + " by " + names(act, step) + " together");
       }
     }
     return new SidenoteView(
@@ -229,7 +229,7 @@ public record SidenoteView(
         version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
             .filter(candidates::contains)
             .toList();
-    var names = ordered.stream().map(ActIdentifier::cited).toList();
+    var names = ordered.stream().map(act::cited).toList();
     var verb = verb(difference);
     var dates = new ArrayList<Applies>();
     for (var each : ordered) {
@@ -280,7 +280,7 @@ public record SidenoteView(
     var when =
         corrigendum.cited()
             + " corrects "
-            + corrected.cited()
+            + act.cited(corrected)
             + start.map(day -> " from " + Dates.inWords(day)).orElse("")
             + version(act, from, to, corrigendum)
                 .map(
@@ -410,8 +410,8 @@ public record SidenoteView(
    * Returns the numbers of the acts as a list in words. For example, "2019/103 and 2019/1583", or
    * "2017/815, 2019/103 and 2019/1583".
    */
-  private static String names(Collection<ActIdentifier> acts) {
-    var names = acts.stream().map(ActIdentifier::cited).toList();
+  private static String names(Act act, Collection<ActIdentifier> acts) {
+    var names = acts.stream().map(act::cited).toList();
     return names.size() == 1
         ? names.getFirst()
         : String.join(", ", names.subList(0, names.size() - 1)) + " and " + names.getLast();
@@ -545,14 +545,14 @@ public record SidenoteView(
             : new Link(
                 provisions.stream().map(ActDate.Provision::cited).collect(Collectors.joining(", "))
                     + " of "
-                    + amending.cited(),
+                    + act.cited(amending),
                 act.eurLex(amending, language).toString());
     return new Applies(
         when,
         when.endsWith(" in") ? " " : " · ",
         clause,
         amendedBy.stream()
-            .map(each -> new Link(each.cited(), act.eurLex(each, language).toString()))
+            .map(each -> new Link(act.cited(each), act.eurLex(each, language).toString()))
             .toList(),
         clause == null ? "" : after);
   }
@@ -562,7 +562,7 @@ public record SidenoteView(
    * catalogue has it. For example, "2026/449 · OJ L, 2026/449, 2.3.2026 ·".
    */
   private static String named(Act act, ActIdentifier amending) {
-    return amending.cited()
+    return act.cited(amending)
         + act.publication(amending)
             .map(Publication::journal)
             .map(journal -> " · " + journal.reference() + " ·")
@@ -642,7 +642,7 @@ public record SidenoteView(
     }
     var each = new ActIdentifier(last.act());
     return new History(
-        "Last changed by " + each.cited() + " (" + last.action() + ")",
+        "Last changed by " + act.cited(each) + " (" + last.action() + ")",
         applies(act, each, Set.of(), language)
             .map(applies -> unnamed(applies, act, each))
             .orElse(null));

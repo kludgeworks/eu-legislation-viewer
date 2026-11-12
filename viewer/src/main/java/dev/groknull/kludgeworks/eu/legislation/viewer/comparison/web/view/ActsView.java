@@ -72,7 +72,7 @@ public record ActsView(
             .map(
                 each ->
                     new Chip(
-                        each.cited(),
+                        act.cited(each),
                         title(act, each, language),
                         counts.get(each),
                         // If the chip is on, its link shows all acts again.

@@ -77,6 +77,15 @@ public record ActIdentifier(String celex) {
   }
 
   /**
+   * Returns whether the act's number alone says which act it is. This is true from 2015, when EU
+   * acts started to share one numbering, and for anything that is not a numbered act.
+   */
+  public boolean numberedAlone() {
+    var parts = NUMBERED.matcher(celex);
+    return !parts.matches() || Integer.parseInt(parts.group(1)) >= YEAR_FIRST;
+  }
+
+  /**
    * Returns how the Official Journal cites the act:
    *
    * <ul>
