@@ -68,11 +68,20 @@ public record Units(
     return List.copyOf(found.values());
   }
 
-  /** Returns the notes of {@code text}, at its end, by eId. */
+  /**
+   * Returns the notes of {@code text}, by eId. A consolidation has them at its end. An act as the
+   * Official Journal published it may have them at the end of an annex instead.
+   */
   private static Map<String, Element> notes(Element text) {
     var notes = new HashMap<String, Element>();
-    for (var child : text.children()) {
+    collectNotes(text, notes);
+    return notes;
+  }
+
+  private static void collectNotes(Element element, Map<String, Element> notes) {
+    for (var child : element.children()) {
       if (!child.name().equals("notes")) {
+        collectNotes(child, notes);
         continue;
       }
       for (var note : child.children()) {
@@ -82,7 +91,6 @@ public record Units(
         }
       }
     }
-    return notes;
   }
 
   /**
@@ -237,12 +245,16 @@ public record Units(
   /** A unit with a rank that is still open for the units after it. */
   private record Ranked(String eId, int rank, @Nullable String parent) {}
 
-  /** Adds the blocks of {@code element} that are not in a unit of their own to {@code blocks}. */
+  /**
+   * Adds the blocks of {@code element} that are not in a unit of their own to {@code blocks}. The
+   * notes at the end of an annex are not its blocks: each belongs to the unit that refers to it.
+   */
   private static void own(Element element, List<Element> blocks) {
     for (var child : element.children()) {
       if (eId(child) != null
           || child.name().equals("provenance")
-          || child.name().equals("deleted")) {
+          || child.name().equals("deleted")
+          || child.name().equals("notes")) {
         continue;
       }
       if (holdsUnits(child)) {

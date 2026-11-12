@@ -1031,6 +1031,35 @@ class DifferTest {
   }
 
   @Test
+  void findsTheNotesOfAnActAsPublishedAtTheEndOfItsAnnex() {
+    // As 2015/1998 as published: the note of point 1.0.5 is at the end of the annex. Its
+    // consolidations have it at the end of the text, with another eId. Its words are the same.
+    var annex =
+        new Element(
+            "unit",
+            Map.of("eId", "anx", "kind", "annex"),
+            List.of(
+                unit("anx/pnt_1.0.5", cites("References", "note_anx01000301-2")),
+                new Element(
+                    "notes",
+                    Map.of(),
+                    List.of(note("note_anx01000301-2", "Decision C(2015) 8005 final.")),
+                    "")),
+            "");
+    var from = withNotes(List.of(annex));
+    var to =
+        withNotes(
+            List.of(
+                new Element(
+                    "unit",
+                    Map.of("eId", "anx", "kind", "annex"),
+                    List.of(unit("anx/pnt_1.0.5", cites("References", "note_2"))),
+                    "")),
+            note("note_2", "Decision C(2015) 8005 final."));
+    assertThat(Differ.differences(from, to).differences()).isEmpty();
+  }
+
+  @Test
   void showsTheNotesOfAnInsertedUnitInsertedWithIt() {
     var from = withNotes(List.of(unit("art_1", block("p", "Plain."))));
     var to =
