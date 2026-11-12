@@ -92,12 +92,16 @@ public record OutlineView(List<Branch> entries) {
 
   /**
    * Returns the label of the row of {@code difference}: its own num, for example "(c)". Without a
-   * num, it is the num of the unit it opens with, if any. Empty if neither has one.
+   * num, it is the num of the unit it opens with, if any. Without either, it is the unit's
+   * position, short: "Art. 9, 2nd subpara.". Empty if it has none of these.
    */
   private static String row(Difference difference) {
     var num = num(difference.shown());
     var lead = difference.lead();
-    return num.isEmpty() && lead != null ? num(lead) : num;
+    var label = num.isEmpty() && lead != null ? num(lead) : num;
+    return label.isEmpty()
+        ? Positions.row(difference.eId(), difference.unit().kind()).orElse("")
+        : label;
   }
 
   /**

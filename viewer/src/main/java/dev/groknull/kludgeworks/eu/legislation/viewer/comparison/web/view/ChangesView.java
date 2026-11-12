@@ -266,8 +266,10 @@ public record ChangesView(
    *       "Article 2", "Articles 2 to 5" or "ANNEXES I and II".
    *   <li>Other nums follow the noun of their kind. For example, "Point (a)", "Points (a) and (b)"
    *       or "Paragraphs 2. to 4.".
-   *   <li>Units with no num, or with only a mark such as the dash of an indent, are counted. For
-   *       example, "2 indents" or "3 subparagraphs".
+   *   <li>Units with no num, or with only a mark such as the dash of an indent, are named by their
+   *       positions, as the Joint Practical Guide does. For example, "First and second
+   *       subparagraphs" or "Second to fourth indents". Without positions, they are counted: "2
+   *       indents".
    *   <li>If only some units have a num, the label names the first and the last of those and counts
    *       all the units. For example, "Points 1. to 8.1.2.2 (429 provisions)".
    *   <li>If the first and the last are of different kinds, each has its own noun. For example,
@@ -280,7 +282,8 @@ public record ChangesView(
     var join = siblings.size() == 2 ? " and " : " to ";
     if (siblings.stream().allMatch(sibling -> !WORD.matcher(sibling.num()).find())) {
       var noun = noun(first.kind()).toLowerCase(Locale.ROOT);
-      return siblings.size() + " " + (siblings.size() == 1 ? noun : plural(noun));
+      return Positions.spelled(siblings, noun)
+          .orElseGet(() -> siblings.size() + " " + (siblings.size() == 1 ? noun : plural(noun)));
     }
     if (siblings.stream().anyMatch(sibling -> !WORD.matcher(sibling.num()).find())) {
       return span(siblings);
