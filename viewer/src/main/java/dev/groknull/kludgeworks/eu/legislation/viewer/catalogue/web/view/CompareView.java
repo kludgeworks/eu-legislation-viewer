@@ -83,10 +83,11 @@ public record CompareView(Card from, Card to, @Nullable String acts, @Nullable S
       Language language,
       LocalDate today) {
     var action = Links.compare(eli(act), language);
+    var starts = TimelineView.starts(act, language);
     return new CompareView(
-        Card.before(fromDay, End.FROM, toDay, action),
+        Card.before(fromDay, End.FROM, toDay, starts, action),
         to == null
-            ? Card.before(toDay, End.TO, fromDay, action)
+            ? Card.before(toDay, End.TO, fromDay, starts, action)
             : Card.of(act, to, toDay, End.TO, fromDay, language, today, action),
         null,
         null);
@@ -134,6 +135,8 @@ public record CompareView(Card from, Card to, @Nullable String acts, @Nullable S
    * @param on the date that the form starts at. This is the day.
    * @param keep the field of the other end, which the form sends unchanged
    * @param kept the day of the other end
+   * @param starts the days that a new version starts, which the date picker rings: ISO dates in
+   *     order, separated by spaces
    * @param action the address the form goes to: the comparisons of the act in the language of the
    *     page
    */
@@ -150,6 +153,7 @@ public record CompareView(Card from, Card to, @Nullable String acts, @Nullable S
       String on,
       String keep,
       String kept,
+      String starts,
       String action) {
 
     /**
@@ -178,12 +182,13 @@ public record CompareView(Card from, Card to, @Nullable String acts, @Nullable S
           .on(day.toString())
           .keep(end.other().field)
           .kept(other.toString())
+          .starts(TimelineView.starts(act, language))
           .action(action)
           .build();
     }
 
     /** Returns the card of {@code day}, a day before the act's first version. */
-    static Card before(LocalDate day, End end, LocalDate other, String action) {
+    static Card before(LocalDate day, End end, LocalDate other, String starts, String action) {
       return CompareViewCardBuilder.builder()
           .kind(end.kind)
           .day(Dates.inWords(day))
@@ -191,6 +196,7 @@ public record CompareView(Card from, Card to, @Nullable String acts, @Nullable S
           .on(day.toString())
           .keep(end.other().field)
           .kept(other.toString())
+          .starts(starts)
           .action(action)
           .build();
     }

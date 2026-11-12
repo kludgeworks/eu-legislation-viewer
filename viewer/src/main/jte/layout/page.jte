@@ -28,6 +28,7 @@
   <script type="module" src="${chrome.assets().copy()}"></script>
   <script type="module" src="${chrome.assets().loading()}"></script>
   <script type="module" src="${chrome.assets().timeline()}"></script>
+  <script type="module" src="${chrome.assets().datepicker()}"></script>
   ${head}
 </head>
 <body>

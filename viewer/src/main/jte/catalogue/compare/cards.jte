@@ -5,7 +5,8 @@
      version that is and how long it applied, the acts that made it, and the version's consolidated
      CELEX, small, with a copy button. A day before the act's first version has a dash instead.
      Each card has a GET form that asks for the law on another day at that end. The form keeps the
-     other end as it is.
+     other end as it is; js/datepicker.js turns its date box into a calendar that rings the days a
+     new version starts.
      The acts are the comparison module's, with how many differences each made. htmx loads them
      from that module's address (compare.acts()) when the slot loads, and swaps the slot for them. --%>
 <section class="selection compare" aria-label="Versions compared">
@@ -22,12 +23,14 @@
       @if(card.celex() != null)
         <copy-text class="card-celex" data-text="${card.celex()}"><a class="mono quiet" href="${card.eurLex()}" rel="external">${card.celex()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a> <button type="button" class="link">copy</button></copy-text>
       @endif
-      <form class="on" method="get" action="${card.action()}">
-        <label for="${card.name()}">The law on</label>
-        <input id="${card.name()}" name="${card.name()}" type="date" value="${card.on()}" required>
-        <input type="hidden" name="${card.keep()}" value="${card.kept()}">
-        <button>Go</button>
-      </form>
+      <date-picker data-starts="${card.starts()}">
+        <form class="on" method="get" action="${card.action()}">
+          <label for="${card.name()}">The law on</label>
+          <input id="${card.name()}" name="${card.name()}" type="date" value="${card.on()}" required>
+          <input type="hidden" name="${card.keep()}" value="${card.kept()}">
+          <button>Go</button>
+        </form>
+      </date-picker>
     </article>
     @if(card == compare.from())
       <span class="arrow" aria-hidden="true">→</span>

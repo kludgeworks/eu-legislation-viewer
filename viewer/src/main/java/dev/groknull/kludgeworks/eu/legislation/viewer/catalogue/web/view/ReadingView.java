@@ -22,7 +22,7 @@ import org.jspecify.annotations.Nullable;
  *   <li>the acts that made the version
  *   <li>where the act was in force but did not apply yet, or where the text lags the law on the day
  *   <li>the version's consolidated CELEX, small, with a copy button
- *   <li>a form that asks for the law on another day
+ *   <li>a date picker that asks for the law on another day
  *   <li>the link to the comparison with the version before
  * </ul>
  *
@@ -46,7 +46,8 @@ import org.jspecify.annotations.Nullable;
  *     first version.
  * @param action the address the date form goes to: the act in the language of the page
  * @param on the date that the form starts at. This is the day asked.
- * @param first the earliest date that the form accepts. This is the date of the first version.
+ * @param starts the days that a new version starts, which the date picker rings: ISO dates in
+ *     order, separated by spaces
  * @param compare the address of the comparison of the version with the version before, in the
  *     language of the page. For the first version, the comparison is with the version after. Null
  *     where there is nothing to compare.
@@ -65,7 +66,7 @@ public record ReadingView(
     @Nullable String eurLex,
     String action,
     String on,
-    String first,
+    String starts,
     @Nullable String compare,
     String comparing) {
 
@@ -110,7 +111,7 @@ public record ReadingView(
         version.eurLex(language).toString(),
         Links.act(eli, language),
         asked.toString(),
-        first(act).toString(),
+        TimelineView.starts(act, language),
         before
             .map(each -> Links.compare(eli, each, version, language))
             .or(() -> after.map(each -> Links.compare(eli, version, each, language)))
@@ -136,7 +137,7 @@ public record ReadingView(
         null,
         Links.act(eli, language),
         asked.toString(),
-        first(act).toString(),
+        TimelineView.starts(act, language),
         null,
         "Compare with the version after");
   }
@@ -144,9 +145,5 @@ public record ReadingView(
   /** Returns the page's title. For example, "2015/1998 · the law on 14 Feb 2022". */
   public static String title(Act act, LocalDate asked) {
     return act.id().cited() + " · the law on " + Dates.inShort(asked);
-  }
-
-  private static LocalDate first(Act act) {
-    return act.timeline().versions().getFirst().date();
   }
 }

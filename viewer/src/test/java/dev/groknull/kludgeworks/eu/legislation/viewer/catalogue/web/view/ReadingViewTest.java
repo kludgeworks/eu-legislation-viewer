@@ -56,7 +56,7 @@ class ReadingViewTest {
     assertThat(card.lags()).isEmpty();
     assertThat(card.action()).isEqualTo("/eli/reg_impl/2015/1998/eng");
     assertThat(card.on()).isEqualTo("2022-02-14");
-    assertThat(card.first()).isEqualTo("2015-11-15");
+    assertThat(card.starts()).startsWith("2015-11-15 2016-02-29 ").endsWith(" 2026-10-01");
   }
 
   @Test
@@ -168,7 +168,7 @@ class ReadingViewTest {
     assertThat(before.made()).isNull();
     assertThat(before.celex()).isNull();
     assertThat(before.on()).isEqualTo("2015-01-01");
-    assertThat(before.first()).isEqualTo("2015-11-15");
+    assertThat(before.starts()).startsWith("2015-11-15 ");
   }
 
   /** The card of the version of {@code version}, asked for on {@code asked}, in English. */

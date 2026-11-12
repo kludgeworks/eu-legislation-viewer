@@ -20,6 +20,7 @@ import java.util.Objects;
 import java.util.TreeSet;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -298,6 +299,17 @@ public record TimelineView(
    * Returns the versions in {@code language}. If one of {@code shown} is not in that language,
    * returns all versions.
    */
+  /**
+   * Returns the days that a new version of {@code act} starts in {@code language}, as the date
+   * picker rings them: ISO dates in order, separated by spaces. If the act has no versions in that
+   * language, they are the days of all its versions.
+   */
+  public static String starts(Act act, Language language) {
+    return versions(act, language, List.of()).stream()
+        .map(version -> version.date().toString())
+        .collect(Collectors.joining(" "));
+  }
+
   private static List<Version> versions(Act act, Language language, List<Version> shown) {
     return act.timeline()
         .in(language)
