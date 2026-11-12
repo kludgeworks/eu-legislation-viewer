@@ -261,9 +261,13 @@ public final class Wording {
    *
    * <ul>
    *   <li>"Applied 15 March 2021 to 30 December 2021"
-   *   <li>"Applies from 22 March 2026 · current version · may still be revised"
+   *   <li>"Applies from 22 March 2026 · current version"
    *   <li>For the act as published, the period starts at its entry into force: "In force from 15
    *       November 2015 · applied 1 February 2016 to 28 February 2016".
+   *   <li>An act as published that applies in part says so, and from when it applies in full: "In
+   *       force from 1 August 2024 · applies in part from 2 February 2025, in full from 2 August
+   *       2026". An act with no date for the whole act names the clause that sets the other dates:
+   *       "…; other parts from dates set in Article 141".
    * </ul>
    */
   public static String period(Act act, Version version, LocalDate today, Language language) {
@@ -275,7 +279,6 @@ public final class Wording {
       var from = applies.get();
       var partial =
           act.dates().stream().filter(date -> from.equals(date.date())).allMatch(ActDate::partial);
-      var inPart = partial ? " in part" : "";
       var period =
           "In force from "
               + Dates.inWords(version.date())
@@ -283,14 +286,33 @@ public final class Wording {
               + next.map(
                       after -> {
                         var last = after.date().minusDays(1);
-                        return (last.isBefore(today) ? "applied" : "applies")
-                            + inPart
-                            + " "
-                            + Dates.inWords(from)
-                            + " to "
-                            + Dates.inWords(last);
+                        var verb = last.isBefore(today) ? "applied" : "applies";
+                        if (!partial) {
+                          return verb + " " + Dates.inWords(from) + " to " + Dates.inWords(last);
+                        }
+                        var full = inFull(act, from).filter(day -> !day.isAfter(last));
+                        return full.map(
+                                day ->
+                                    verb
+                                        + " in part from "
+                                        + Dates.inWords(from)
+                                        + ", in full from "
+                                        + Dates.inWords(day)
+                                        + " to "
+                                        + Dates.inWords(last))
+                            .orElseGet(
+                                () ->
+                                    verb
+                                        + " in part "
+                                        + Dates.inWords(from)
+                                        + " to "
+                                        + Dates.inWords(last));
                       })
-                  .orElseGet(() -> "applies" + inPart + " from " + Dates.inWords(from));
+                  .orElseGet(
+                      () ->
+                          partial
+                              ? "applies in part from " + Dates.inWords(from) + rest(act, from)
+                              : "applies from " + Dates.inWords(from));
       return label(act, version, today, language, period);
     }
     var period =
@@ -304,6 +326,41 @@ public final class Wording {
                 })
             .orElseGet(() -> "Applies from " + Dates.inWords(version.date()));
     return label(act, version, today, language, period);
+  }
+
+  /**
+   * Returns the day from which the act as published applies in full, after it applied in part from
+   * {@code from}: its first date of application after that day that is not in part.
+   */
+  private static Optional<LocalDate> inFull(Act act, LocalDate from) {
+    return act.dates().stream()
+        .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && !date.partial())
+        .map(ActDate::date)
+        .filter(Objects::nonNull)
+        .filter(day -> day.isAfter(from))
+        .min(Comparator.naturalOrder());
+  }
+
+  /**
+   * Returns what follows "applies in part from …" for the rest of the act. For example, ", in full
+   * from 2 August 2026", or "; other parts from dates set in Article 141" for an act that has no
+   * date for the whole act. Returns empty if Cellar says neither.
+   */
+  private static String rest(Act act, LocalDate from) {
+    var full = inFull(act, from);
+    if (full.isPresent()) {
+      return ", in full from " + Dates.inWords(full.get());
+    }
+    var provisions =
+        act.dates().stream()
+            .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && date.date() == null)
+            .flatMap(date -> date.clause().provisions().stream())
+            .distinct()
+            .map(ActDate.Provision::cited)
+            .toList();
+    return provisions.isEmpty()
+        ? ""
+        : "; other parts from dates set in " + String.join(", ", provisions);
   }
 
   /**
