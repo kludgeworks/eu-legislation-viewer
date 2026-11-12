@@ -120,7 +120,7 @@ class PreparationController {
                     .data(
                         templates
                             .cataloguePreparingStream(
-                                TimelineView.preparing(preparation),
+                                TimelineView.preparing(act, preparation, Requests.today(clock)),
                                 PreparingView.Progress.of(preparation, clock.instant()))
                             .render()));
       }

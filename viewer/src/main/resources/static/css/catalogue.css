@@ -4,10 +4,9 @@
  * Includes home search, act masthead, timeline axis, reading card, and search results.
  */
 /*
- * The versions of the act on a time scale (catalogue/timeline.jte):
- * - Ticks on an axis of years.
- * - One round mark for versions that are too close to click apart. It opens a list of them.
- * - The version that the reader reads is raised and tagged.
+ * The versions of the act on a book ruler (catalogue/timeline.jte): years as segments as wide as
+ * their versions, a dot per version, and the days the reader chose as green balls. The server
+ * computes every position.
  */
 .timeline {
   margin: 1rem 0;
@@ -30,234 +29,184 @@
   font-weight: 500;
 }
 
-.axis {
+.ruler {
   position: relative;
-  height: 78px;
-  margin: 0 10px;
+  height: 86px;
+  margin: 0 12px;
 }
 
-.axis-line {
-  position: absolute;
-  inset-inline: 0;
-  top: 34px;
-  height: 2px;
-  background: var(--line-strong);
+.ruler:has(.stacked) {
+  height: 120px;
 }
 
-.year {
+/* One black hairline. Vertical lines only ever mean time: a year's start, and the dashed line at
+ * today. */
+.ruler .hairline {
   position: absolute;
-  top: 54px;
-  transform: translateX(-50%);
+  inset: 30px 0 auto;
+  border-top: 1px solid var(--ink);
+}
+
+/* The range between From and To, thickened in green. */
+.ruler .band {
+  position: absolute;
+  top: 29px;
+  height: 3px;
+  background: var(--accent-fill);
+}
+
+/* The years, above the hairline in the serif, like running heads; each year's start a short tick. */
+.ruler .year {
+  position: absolute;
+  top: 6px;
+  padding-left: 3px;
+  border-left: 1px solid var(--ink);
+  height: 25px;
   font:
-    11px ui-monospace,
-    monospace;
+    13px/1 Georgia,
+    serif;
+  color: var(--ink2);
+  white-space: nowrap;
+}
+
+/* A run of years with no version, folded. */
+.ruler .break {
+  position: absolute;
+  top: 21px;
+  padding: 0 2px;
+  transform: translateX(-50%);
+  background: var(--bg);
+  font-size: 13px;
+  line-height: 18px;
   color: var(--muted);
+  cursor: default;
 }
 
-.year::before {
-  content: "";
+.ruler .today {
   position: absolute;
-  left: 50%;
-  top: -14px;
-  width: 1px;
-  height: 6px;
-  background: var(--line-strong);
+  top: 14px;
+  height: 32px;
+  border-left: 1px dashed var(--muted);
 }
 
-.tick {
+/* Every version is a dot on the hairline, grey. Hover or focus enlarges it and says what it is. */
+.ruler .dot {
   position: absolute;
-  top: 18px;
-  width: 12px;
-  height: 34px;
-  margin-left: -6px;
-  display: flex;
-  justify-content: center;
   z-index: 2;
+  top: 31px;
+  width: 9px;
+  height: 9px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: var(--line-strong);
+  box-sizing: border-box;
 }
 
-.tick::before {
-  content: "";
-  width: 2px;
-  height: 20px;
-  margin-top: 7px;
-  background: var(--muted);
+.ruler a.dot:hover,
+.ruler a.dot:focus-visible {
+  z-index: 4;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  background: var(--ink);
 }
 
-.tick:hover::before,
-.tick:focus-visible::before {
-  width: 4px;
-  background: var(--accent-fill);
+.ruler .dot:is(:hover, :focus-visible)::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 3px 7px;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
 }
 
-.tick[aria-current]::before {
-  width: 4px;
-  height: 34px;
-  margin-top: 0;
-  background: var(--accent-fill);
+.ruler .dot.adopted {
+  border: 1px solid var(--ink2);
+  background: var(--bg);
 }
 
-/*
- * While the act is prepared (catalogue/preparing.jte), each tick shows the state of the text of its
- * version:
- * - Grey: queued.
- * - Light: being built.
- * - Dark: built.
- * - Dashed: failed.
- * The ticks link to nothing yet.
- */
-.tick.queued::before {
+.ruler .dot.future {
+  border: 1px dashed var(--ink2);
+  background: var(--bg);
+}
+
+/* While the act is being prepared: grey is queued, light is being built, dark is built, dashed is
+ * failed. After, only the texts that are not ready keep their state. */
+.ruler .dot.queued {
   background: var(--line);
 }
 
-.tick.building::before {
-  width: 4px;
+.ruler .dot.building {
   background: var(--accent-line);
-  animation: building 1.6s ease-in-out infinite alternate;
+  animation: pulse 1.2s ease-in-out infinite;
 }
 
-.tick.ready::before {
-  width: 4px;
-  background: var(--accent-fill);
+.ruler .dot.ready {
+  background: var(--ink);
 }
 
-.tick.failed::before {
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--muted) 0 3px,
-    transparent 3px 6px
-  );
+.ruler .dot.failed {
+  border: 1px dashed var(--del-ink, var(--ink2));
+  background: var(--bg);
 }
 
-/* After the act is prepared, the tick of a version whose text failed stays dashed. The tick of the
- * version that the reader asked for is dashed in the ink of faults. */
-.tick.failed[aria-current]::before {
-  background: repeating-linear-gradient(
-    to bottom,
-    var(--del-ink) 0 4px,
-    transparent 4px 7px
-  );
-}
-
-@keyframes building {
-  to {
-    background: var(--accent);
+@keyframes pulse {
+  50% {
+    opacity: 0.4;
   }
+}
+
+/* The days the reader chose: green balls, with the kicker and the date in the serif below. */
+.ruler .ball {
+  position: absolute;
+  z-index: 3;
+  top: 31px;
+  width: 13px;
+  height: 13px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--accent-fill);
+  pointer-events: none;
+}
+
+.ruler .ball-label {
+  position: absolute;
+  top: 44px;
+  font:
+    15px/1.2 Georgia,
+    serif;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.ruler .ball-label b {
+  display: block;
+  font:
+    600 10px/1.4 system-ui,
+    sans-serif;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.ruler .ball-label.end {
+  transform: translateX(-100%);
+  text-align: right;
+}
+
+.ruler .ball-label.stacked {
+  top: 80px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tick.building::before {
+  .ruler .dot.building {
     animation: none;
   }
-}
-
-.merged.queued > summary {
-  border-color: var(--line);
-  color: var(--muted);
-}
-
-.merged.building > summary {
-  border-color: var(--accent-line);
-}
-
-.merged.ready > summary {
-  border-color: var(--accent-fill);
-}
-
-.merged.failed > summary {
-  border-style: dashed;
-}
-
-.merged {
-  position: absolute;
-  top: 21px;
-  z-index: 3;
-}
-
-.merged > summary {
-  min-width: 26px;
-  height: 28px;
-  margin-left: -13px;
-  padding: 0 6px;
-  box-sizing: border-box;
-  border: 2px solid var(--muted);
-  border-radius: 14px;
-  background: var(--bg);
-  color: var(--ink);
-  font:
-    600 11.5px/24px ui-monospace,
-    monospace;
-  text-align: center;
-  list-style: none;
-  cursor: pointer;
-}
-
-.merged > summary::-webkit-details-marker {
-  display: none;
-}
-
-.merged > summary:hover {
-  border-color: var(--accent);
-}
-
-.merged.selected > summary {
-  border-color: var(--accent);
-  background: var(--accent-fill);
-  color: var(--on-fill);
-}
-
-.merged[open] > summary {
-  box-shadow: 0 0 0 3px var(--accent-line);
-}
-
-.merged-list {
-  position: absolute;
-  top: 36px;
-  left: -13px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  width: max-content;
-  max-width: 40rem;
-  padding: 6px 10px 8px;
-  border: 1px solid var(--accent-line);
-  background: var(--chg-tint);
-  box-shadow: 0 2px 6px var(--shadow);
-}
-
-.merged.left .merged-list {
-  left: auto;
-  right: -13px;
-}
-
-.merged-list > span {
-  color: var(--muted);
-}
-
-.merged-list > a[aria-current] {
-  font-weight: 600;
-}
-
-/* The range that the page compares. It is a band from the mark of From to the mark of To, under the
- * marks. */
-.band {
-  position: absolute;
-  top: 22px;
-  height: 26px;
-  border: 2px solid var(--accent);
-  border-radius: 3px;
-  background: var(--band);
-  box-sizing: border-box;
-}
-
-.tag {
-  position: absolute;
-  top: 2px;
-  transform: translateX(-50%);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  white-space: nowrap;
 }
 
 .steps {

@@ -155,7 +155,7 @@ class VersionController {
               chrome,
               ReadingView.title(page.act, date),
               masthead.whilePreparing(),
-              TimelineView.preparing(preparation),
+              TimelineView.preparing(page.act, preparation, today()),
               PreparingView.of(
                   page.act,
                   preparation,
@@ -226,7 +226,7 @@ class VersionController {
           .catalogueVersion(
               chrome,
               MastheadView.reading(act, version, date, language),
-              TimelineView.before(act, language),
+              TimelineView.before(act, language, today()),
               ReadingView.before(act, date, language),
               templates.catalogueTextFailed(FailureView.before(act, date, language)),
               false,
@@ -246,7 +246,7 @@ class VersionController {
           .catalogueVersion(
               chrome,
               masthead,
-              TimelineView.reading(act, version, language, states),
+              TimelineView.reading(act, version, date, language, today(), states),
               ReadingView.of(act, version, date, language, today(), named),
               text,
               arrived,

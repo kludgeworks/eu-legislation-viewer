@@ -52,7 +52,7 @@ class ComparePagesTests {
 
     var page = prepared(PAGE, ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
     assertThat(page.select("nav.mode a").eachAttr("href")).containsExactly(ACT + "2026-10-01/eng");
-    assertThat(page.select(".tag").eachText()).containsExactly("FROM", "TO");
+    assertThat(page.select(".ball-label b").eachText()).containsExactly("FROM", "TO");
     assertThat(page.select(".card-celex").eachAttr("data-text"))
         .containsExactly("02015R1998-20260322", "02015R1998-20261001");
     var acts = Objects.requireNonNull(page.getElementById("acts"));

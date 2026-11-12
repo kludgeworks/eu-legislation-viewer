@@ -148,7 +148,7 @@ class CompareController {
                       chrome,
                       title,
                       masthead.whilePreparing(),
-                      TimelineView.preparing(preparation),
+                      TimelineView.preparing(page.act, preparation, Requests.today(clock)),
                       PreparingView.of(
                           page.act,
                           preparation,
@@ -172,10 +172,13 @@ class CompareController {
                     TimelineView.comparing(
                         page.act,
                         page.from,
+                        page.fromDay,
                         page.to,
+                        page.toDay,
                         page.language,
                         today,
-                        TimelineView.states(preparation)),
+                        TimelineView.states(preparation),
+                        view),
                     CompareView.of(
                             page.act,
                             page.from,
@@ -336,7 +339,7 @@ class CompareController {
               chrome,
               title,
               masthead,
-              TimelineView.before(act, language),
+              TimelineView.before(act, language, Requests.today(clock)),
               CompareView.before(act, fromDay, toBefore ? null : to, toDay, language, today),
               templates.catalogueTextFailed(
                   FailureView.comparingBefore(act, fromDay, compareTo, language)),

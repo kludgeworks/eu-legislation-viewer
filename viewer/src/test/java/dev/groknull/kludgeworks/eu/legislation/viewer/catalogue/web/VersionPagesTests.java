@@ -122,7 +122,7 @@ class VersionPagesTests {
             tuple(
                 "/eli/reg_impl/2015/1998/2021-03-15/eng",
                 "Read the version after (from 15 March 2021)"));
-    assertThat(page.select("#timeline a.tick.failed[aria-current]")).hasSize(1);
+    assertThat(page.select("#timeline a.dot.failed[aria-current]")).hasSize(1);
   }
 
   @Test
