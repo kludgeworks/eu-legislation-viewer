@@ -12,6 +12,10 @@
  *
  * When the request ends, htmx has swapped in the new `#page`, which has none of this. If it failed,
  * the page is put back as it was.
+ *
+ * A page opened at a fragment, such as a Read mark's link to a unit in Compare, often loads that
+ * unit after the browser looked for it. When a swap brings the fragment's element, the page scrolls
+ * to it, once.
  */
 
 /**
@@ -97,5 +101,25 @@ document.addEventListener("htmx:finally:request", () => {
   const page = document.getElementById("page");
   if (page?.classList.contains("loading")) {
     stop(page);
+  }
+});
+
+/** Whether the page still has to scroll to the element of its fragment. */
+let arriving = location.hash.length > 1;
+
+/**
+ * Scrolls to the element of the page's fragment, if it is there now. Returns whether it was.
+ *
+ * @returns {boolean}
+ */
+export const arrive = () => {
+  const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  target?.scrollIntoView({ block: "start" });
+  return target !== null;
+};
+
+document.addEventListener("htmx:after:swap", () => {
+  if (arriving && arrive()) {
+    arriving = false;
   }
 });

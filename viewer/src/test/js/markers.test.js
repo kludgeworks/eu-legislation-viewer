@@ -35,18 +35,38 @@ describe("said", () => {
   test("says what happened and which act did it", () => {
     document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815" data-action="replaced">▼</amendment-mark>`;
 
-    expect(said(mark())).toBe("Replaced by 2017/815 · open this change in Compare");
+    expect(said(mark())).toBe("Replaced by 2017/815");
+  });
+
+  test("says when the act applies, where the page lists it", () => {
+    document.body.innerHTML = `<div class="marks" hidden><span data-act="32026R0449"
+      data-applies="applies from 1 October 2026 · Article 2 of 2026/449" data-compare="/step"></span></div>
+      <amendment-mark class="provenance" data-act="32026R0449" data-action="replaced">▼</amendment-mark>`;
+
+    expect(said(mark())).toBe(
+      "Replaced by 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449",
+    );
   });
 
   test("says amended if the mark does not say what happened", () => {
     document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815">▼</amendment-mark>`;
 
-    expect(said(mark())).toBe("Amended by 2017/815 · open this change in Compare");
+    expect(said(mark())).toBe("Amended by 2017/815");
   });
 });
 
 describe("change", () => {
-  test("opens the comparison of the text, limited to the act's changes", () => {
+  test("opens the step that made the change, at the unit of the mark", () => {
+    document.body.innerHTML = `
+      <div class="marks" hidden><span data-act="32026R0449" data-compare="/compare?from=2026-03-22&amp;to=2026-10-01"></span></div>
+      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
+        <div id="anx/pnt_8.1.2.3/pnt_c"><amendment-mark class="provenance" data-act="32026R0449">▼</amendment-mark></div>
+      </div>`;
+
+    expect(change(mark())).toBe("/compare?from=2026-03-22&to=2026-10-01#anx%2Fpnt_8.1.2.3%2Fpnt_c");
+  });
+
+  test("opens the comparison of the text, limited to the act's changes, if the act is not listed", () => {
     document.body.innerHTML = `
       <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
         <amendment-mark class="provenance" data-act="32019R0103R(01)">▼</amendment-mark>
@@ -71,7 +91,7 @@ describe("AmendmentMark", () => {
         <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
       </div>`;
 
-    expect(mark().title).toBe("Inserted by 2017/815 · open this change in Compare");
+    expect(mark().title).toBe("Inserted by 2017/815");
   });
 
   test("leaves hover text empty outside a comparison", () => {

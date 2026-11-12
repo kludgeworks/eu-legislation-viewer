@@ -184,6 +184,11 @@ main {
     max(28px, env(safe-area-inset-left, 0px));
 }
 
+/* An element that a link scrolls to stops below the sticky notice, not under it. */
+main [id] {
+  scroll-margin-top: 48px;
+}
+
 /* On act pages, the site bar has a link back to the results of a search, and a small Find an act
  * box. */
 nav.site .results {

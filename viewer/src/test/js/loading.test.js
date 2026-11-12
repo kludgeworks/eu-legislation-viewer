@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
-import { afterEach, describe, expect, test } from "vitest";
-import { coming, pageOf, start, stop } from "../../main/resources/static/js/loading.js";
+import { afterEach, describe, expect, test, vi } from "vitest";
+import { arrive, coming, pageOf, start, stop } from "../../main/resources/static/js/loading.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -62,5 +62,21 @@ describe("loading", () => {
       });
     expect(pageOf(event(true))).toBe(element("page"));
     expect(pageOf(event(false))).toBeNull();
+  });
+});
+
+describe("a page opened at a fragment", () => {
+  test("scrolls to the fragment's element once a swap has brought it", () => {
+    location.hash = "#anx%2Fpnt_8.1.2.3%2Fpnt_c";
+    expect(arrive()).toBe(false);
+
+    document.body.innerHTML = `<section id="anx/pnt_8.1.2.3/pnt_c"></section>`;
+    const target = /** @type {HTMLElement} */ (document.getElementById("anx/pnt_8.1.2.3/pnt_c"));
+    const scrolled = vi.fn();
+    target.scrollIntoView = scrolled;
+
+    expect(arrive()).toBe(true);
+    expect(scrolled).toHaveBeenCalledOnce();
+    location.hash = "";
   });
 });

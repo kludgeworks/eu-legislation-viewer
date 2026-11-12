@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarksView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
@@ -283,7 +284,8 @@ class VersionController {
             templates.catalogueTextReady(
                 "/content/" + ready.root().hex(),
                 content.outline(ready.root()).orElseGet(Outline::empty),
-                Links.compare(eli, language));
+                Links.compare(eli, language),
+                MarksView.of(act, version, language));
         // The version appeared since, and it is being prepared.
         case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->

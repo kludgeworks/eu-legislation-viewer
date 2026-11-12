@@ -3,9 +3,13 @@
 /**
  * @file The amendment marks of the text of a version on the Read page, legal/provenance.jte.
  *
- * The hover text of each `<amendment-mark>` says what happened and which act did it, for example
- * "Replaced by 2017/815". A click on a mark, or Enter, opens the change of that act in Compare.
- * The text's container holds the address of the comparison in `data-compare`.
+ * The hover text of each `<amendment-mark>` says what happened, which act did it and when that act
+ * applies: "Replaced by 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449". A click
+ * on a mark, or Enter, opens the step that made the change in Compare, at the unit of the mark.
+ *
+ * The text is rendered without the act, so the page lists what it knows of each amending act in
+ * `.marks`: a `span` with `data-act`, `data-applies` and `data-compare`. A mark whose act is not
+ * listed opens the act's change from the text's `data-compare`.
  */
 
 /**
@@ -26,20 +30,43 @@ export const number = (celex) => {
 };
 
 /**
- * Returns the hover text of a mark. For example, "Replaced by 2017/815 · open this change in
- * Compare". A mark with no `data-action` says "Amended".
+ * Returns what the page lists of the act of a mark, or null if it lists nothing.
+ *
+ * @param {HTMLElement} mark
+ * @returns {HTMLElement | null}
+ */
+const listed = (mark) => {
+  const act = mark.dataset.act;
+  if (!act) {
+    return null;
+  }
+  for (const each of document.querySelectorAll(".marks [data-act]")) {
+    if (each instanceof HTMLElement && each.dataset.act === act) {
+      return each;
+    }
+  }
+  return null;
+};
+
+/**
+ * Returns the hover text of a mark. For example, "Replaced by 2026/449 · applies from 1 October
+ * 2026 · Article 2 of 2026/449". A mark with no `data-action` says "Amended". Without the date, it
+ * says only what happened and which act did it.
  *
  * @param {HTMLElement} mark
  * @returns {string}
  */
 export const said = (mark) => {
   const action = mark.dataset.action || "amended";
-  return `${action.charAt(0).toUpperCase()}${action.slice(1)} by ${number(mark.dataset.act)} · open this change in Compare`;
+  const applies = listed(mark)?.dataset.applies;
+  return `${action.charAt(0).toUpperCase()}${action.slice(1)} by ${number(mark.dataset.act)}${applies ? ` · ${applies}` : ""}`;
 };
 
 /**
- * Returns the address of the comparison that shows the change of the mark's act. It returns null
- * if the mark has no act or is not in a text that has a comparison.
+ * Returns the address of the comparison that shows the change of the mark's act: the step that
+ * made it, at the unit of the mark. A mark whose act the page does not list opens the act's change
+ * from the text's comparisons. It returns null if the mark has no act or is not in a text that has
+ * a comparison.
  *
  * @param {HTMLElement} mark
  * @returns {string | null}
@@ -49,7 +76,12 @@ export const change = (mark) => {
   if (!(text instanceof HTMLElement) || !mark.dataset.act) {
     return null;
   }
-  return `${text.dataset.compare}?act=${encodeURIComponent(mark.dataset.act)}`;
+  const step = listed(mark)?.dataset.compare;
+  if (!step) {
+    return `${text.dataset.compare}?act=${encodeURIComponent(mark.dataset.act)}`;
+  }
+  const unit = mark.parentElement?.closest("[id]");
+  return unit && text.contains(unit) ? `${step}#${encodeURIComponent(unit.id)}` : step;
 };
 
 /**
