@@ -9,6 +9,7 @@ import {
   part,
   passed,
   rail,
+  railed,
   remembered,
 } from "../../main/resources/static/js/outline.js";
 
@@ -254,5 +255,21 @@ describe("ActOutline", () => {
     one(".outline-rail").click();
     expect(one(".outline").classList.contains("rail")).toBe(false);
     expect(localStorage.getItem(RAIL)).toBe("false");
+  });
+});
+
+describe("railed", () => {
+  test("marks the rail entry of the part that the difference is in", () => {
+    document.body.innerHTML = `<nav class="outline"><div class="rail-map">
+      <a href="#difference-1" data-first="1">Art 3</a>
+      <a href="#difference-4" data-first="4">IV</a>
+      <a href="#difference-9" data-first="9">V</a></div></nav>`;
+    const nav = /** @type {Element} */ (document.querySelector("nav"));
+
+    railed(nav, 6);
+    expect([...nav.querySelectorAll("a.on")].map((a) => a.textContent)).toEqual(["IV"]);
+
+    railed(nav, 0);
+    expect(nav.querySelectorAll("a.on")).toHaveLength(0);
   });
 });

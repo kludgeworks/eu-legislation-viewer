@@ -148,6 +148,68 @@ public record OutlineView(List<Branch> entries) {
   }
 
   /**
+   * Returns the entries of the rail that the outline collapses to: one for each part with
+   * differences, so that the rail still works as a map. In a comparison with differences in one
+   * part only, there is one entry for each section of that part with differences.
+   */
+  public List<RailEntry> rail() {
+    var parts = entries.stream().filter(entry -> entry.count() > 0).toList();
+    if (parts.size() == 1) {
+      var sections =
+          parts.getFirst().entries().stream().filter(entry -> entry.count() > 0).toList();
+      if (sections.size() > 1) {
+        parts = sections;
+      }
+    }
+    return parts.stream()
+        .map(
+            part ->
+                new RailEntry(
+                    shortened(part.label()),
+                    part.label()
+                        + " · "
+                        + part.count()
+                        + (part.count() == 1 ? " difference" : " differences"),
+                    part.count(),
+                    part.first()))
+        .toList();
+  }
+
+  /**
+   * Returns a part's label as short as a rail entry needs it. For example, "IV" for "ANNEX IV",
+   * "Art 3" for "Article 3", or "1." for "1. AIRPORT SECURITY".
+   */
+  static String shortened(String label) {
+    var words = label.strip().split("\\s+");
+    if (words.length > 1 && words[0].equalsIgnoreCase("annex")) {
+      return words[1];
+    }
+    if (words.length > 1 && words[0].equalsIgnoreCase("article")) {
+      return "Art " + words[1];
+    }
+    if (words[0].equalsIgnoreCase("annex")) {
+      return "Anx";
+    }
+    return words[0].length() <= 5 ? words[0] : words[0].substring(0, 4) + ".";
+  }
+
+  /**
+   * An entry of the outline's rail.
+   *
+   * @param label its part, short. For example, "IV".
+   * @param title its part in full, with its count. For example, "ANNEX IV · 549 differences".
+   * @param count how many differences the part has
+   * @param first the number of its first difference, which it jumps to
+   */
+  public record RailEntry(String label, String title, int count, int first) {
+
+    /** Returns the link to its first difference. */
+    public String href() {
+      return "#difference-" + first;
+    }
+  }
+
+  /**
    * A difference in the points of a unit, as a row of the outline.
    *
    * @param label the difference's own num. For example, "(c)".

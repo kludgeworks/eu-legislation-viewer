@@ -100,4 +100,13 @@ class OutlineViewTest {
     return OutlineView.of(
         Outlines.of(later), Differ.differences(earlier, Decoder.element(later)).differences());
   }
+
+  @Test
+  void shortensAPartsLabelForTheRail() {
+    assertThat(OutlineView.shortened("ANNEX IV")).isEqualTo("IV");
+    assertThat(OutlineView.shortened("Article 3")).isEqualTo("Art 3");
+    assertThat(OutlineView.shortened("1. AIRPORT SECURITY")).isEqualTo("1.");
+    assertThat(OutlineView.shortened("ANNEX")).isEqualTo("Anx");
+    assertThat(OutlineView.shortened("PREAMBLE")).isEqualTo("PREA.");
+  }
 }

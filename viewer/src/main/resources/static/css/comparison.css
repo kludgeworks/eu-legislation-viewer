@@ -708,26 +708,73 @@ nav.outline .outline-follow a[aria-disabled] {
   color: var(--disabled);
 }
 
-/* The outline when it is collapsed. It is a rail of the parts with their counts. Nothing shows
- * below the parts. */
-nav.outline.rail {
-  flex-basis: 140px;
-}
-
-nav.outline.rail ul ul,
-nav.outline.rail .bar,
-nav.outline.rail .outline-follow,
-nav.outline.rail .outline-head > span:nth-child(2) {
+/* The outline when it is collapsed. It is a rail of 46px: the expand button, "Outline" set
+ * vertically, the number of differences, and one link for each part with its count. The part in
+ * view is marked. */
+nav.outline .rail-map {
   display: none;
 }
 
-nav.outline.rail summary::before {
-  content: none;
+nav.outline.rail {
+  flex-basis: 46px;
 }
 
-nav.outline.counted.rail a {
-  grid-template-columns: minmax(0, 1fr) 0 26px;
-  padding-left: 10px;
+nav.outline.rail > ul,
+nav.outline.rail .outline-follow,
+nav.outline.rail .outline-head > span {
+  display: none;
+}
+
+nav.outline.rail .outline-head {
+  justify-content: center;
+}
+
+nav.outline.rail .rail-map {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  font-size: 11px;
+}
+
+nav.outline .rail-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+nav.outline .rail-total {
+  font:
+    600 10.5px ui-monospace,
+    monospace;
+  color: var(--ink);
+}
+
+nav.outline .rail-map a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 36px;
+  padding: 2px 0;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  line-height: 1.2;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+nav.outline .rail-map a b {
+  font:
+    600 10.5px ui-monospace,
+    monospace;
+}
+
+nav.outline .rail-map a.on {
+  border: 2px solid var(--accent-fill);
+  background: var(--accent-tint);
 }
 
 /* An annex that was inserted whole. It is folded, and the fold shows its size. */

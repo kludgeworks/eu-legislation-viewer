@@ -226,6 +226,25 @@ export const mark = (nav, link) => {
 };
 
 /**
+ * Marks the rail entry of the part that the difference `number` is in: the last entry whose first
+ * difference is at or before it. Before the first difference, it marks none.
+ *
+ * @param {Element} nav the outline
+ * @param {number} number the number of the difference, or 0
+ */
+export const railed = (nav, number) => {
+  let on = null;
+  for (const link of nav.querySelectorAll(".rail-map a[data-first]")) {
+    if (link instanceof HTMLElement && Number(link.dataset.first) <= number && number > 0) {
+      on = link;
+    }
+  }
+  for (const link of nav.querySelectorAll(".rail-map a")) {
+    link.classList.toggle("on", link === on);
+  }
+};
+
+/**
  * Updates the head of a comparison's outline to the difference the reader is at, `number`, and its
  * ↑ and ↓ links to the differences before and after. Before the first, it counts them.
  *
@@ -246,6 +265,7 @@ const counting = (nav, number) => {
     return;
   }
   const total = Number(line.dataset.total);
+  railed(nav, number);
   if (number === 0) {
     where.textContent = total === 1 ? "1 difference" : `${format(total)} differences`;
     up.setAttribute("aria-disabled", "true");

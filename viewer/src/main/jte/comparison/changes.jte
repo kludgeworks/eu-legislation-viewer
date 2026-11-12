@@ -33,6 +33,7 @@
 <act-outline>
 <nav class="outline counted" aria-label="Outline">
   @template.comparison.outlinehead(total = changes.numbers().size())
+  @template.comparison.outlinerail(outline = outline, total = changes.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
 </act-outline>
