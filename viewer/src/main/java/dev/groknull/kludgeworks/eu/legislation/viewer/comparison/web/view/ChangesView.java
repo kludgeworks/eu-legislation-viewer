@@ -491,6 +491,19 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
+     * Returns its unit by its own kind, as the sidenote names it. For example, "Point 8.1.2.3(c)"
+     * or "Article 2". Returns null for a unit with no num, which the text beside it shows.
+     */
+    public @Nullable String named() {
+      if (difference.unit().num().isBlank()) {
+        return null;
+      }
+      // A num may end with the full stop it has in the text, for example "1.0.6.".
+      var named = ChangesView.named(difference.unit());
+      return named.endsWith(".") ? named.substring(0, named.length() - 1) : named;
+    }
+
+    /**
      * Returns whether it is an annex inserted whole. The views fold such an annex to its size, so
      * that a long comparison is not one annex long.
      */

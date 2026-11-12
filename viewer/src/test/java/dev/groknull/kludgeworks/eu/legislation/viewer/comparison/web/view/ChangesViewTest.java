@@ -60,6 +60,16 @@ class ChangesViewTest {
   }
 
   @Test
+  void namesTheUnitOfEachDifferenceByItsKind() {
+    assertThat(MARCH_TO_OCTOBER.passages())
+        .filteredOn(Shown.class::isInstance)
+        .map(Shown.class::cast)
+        .first()
+        .extracting(Shown::named)
+        .isEqualTo("Point 8.1.2.3(c)");
+  }
+
+  @Test
   void notesWhatHappenedToEachDifference() {
     assertThat(MARCH_TO_OCTOBER.passages())
         .filteredOn(Shown.class::isInstance)

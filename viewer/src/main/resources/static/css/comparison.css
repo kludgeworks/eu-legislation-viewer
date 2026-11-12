@@ -417,6 +417,17 @@ details.ledger-fold[open] {
   color: var(--accent);
 }
 
+/* The unit that the sidenote is about, before what made it: "Point 8.1.2.3(c) — Replaced by …". */
+.sidenote .unit {
+  font-weight: 600;
+  color: var(--ink3);
+}
+
+.sidenote .unit::after {
+  content: " — ";
+  font-weight: 400;
+}
+
 /* The lines of a sidenote. First is the act that made the change. Then come the note and when each
  * act applies. Each one is on a line of its own. */
 .sidenote .made {

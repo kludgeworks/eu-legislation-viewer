@@ -4,10 +4,12 @@
 @param ChangesView.Shown shown
 @param SidenoteView sidenote = null
 @param SidenoteParts parts = null
+@param boolean named = true
 <%-- Shows what a difference's sidenote says. In the Changes and Whole text views, the sidenote is
      beside the difference. In the Synopsis view, it is in the last column. It shows the difference's
-     number, what happened, which acts made it and when each applies. --%>
-<b>${shown.number()}</b>
+     number and its unit, what happened, which acts made it and when each applies. The Synopsis
+     names the unit in its own column (named false). --%>
+<b>${shown.number()}</b>@if(named && shown.named() != null) <span class="unit">${shown.named()}</span>@endif
 <%-- The hover of who made it lists how the acts were published. If the view sends it once for all
      the sidenotes (parts), js/sidenotes.js sets it from there. --%>
 !{var published = parts == null || sidenote == null ? null : parts.published(sidenote);}
