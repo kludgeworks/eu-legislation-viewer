@@ -68,15 +68,22 @@ public final class Wording {
    * </ul>
    */
   public static String made(Version version) {
+    return made(version, version.integrates());
+  }
+
+  /**
+   * Returns what made {@code version}, from {@code integrates}: the acts and corrigenda to name.
+   */
+  private static String made(Version version, List<ActIdentifier> integrates) {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return "the act as published";
     }
-    var acts = version.integrates().stream().filter(act -> !act.corrigendum()).toList();
-    var corrigenda = version.integrates().size() - acts.size();
+    var acts = integrates.stream().filter(act -> !act.corrigendum()).toList();
+    var corrigenda = integrates.size() - acts.size();
     if (acts.isEmpty()) {
       return corrigenda == 0
           ? "no amending act listed for this version"
-          : "made by " + names(version.integrates());
+          : "made by " + names(integrates);
     }
     var also =
         switch (corrigenda) {
@@ -89,16 +96,19 @@ public final class Wording {
 
   /**
    * Returns what made a version, as its card says it. The text is the same as {@link
-   * #made(Version)}, with two differences.
+   * #made(Version)}, with three differences.
    *
    * <ul>
    *   <li>For the original version, it adds the Official Journal reference to "the act as
    *       published".
    *   <li>If the Publications Office lists no act, it names the acts that the text of the version
-   *       names, from {@code named}. It says that they come from the consolidated text.
+   *       names, from {@code named}.
+   *   <li>It counts only the corrigenda published in {@code language}. A corrigendum is published
+   *       only in the languages that it corrects.
    * </ul>
    */
-  public static String made(Act act, Version version, List<ActIdentifier> named) {
+  public static String made(
+      Act act, Version version, List<ActIdentifier> named, Language language) {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return "the act as published"
           + act.publication(act.id())
@@ -107,11 +117,16 @@ public final class Wording {
               .orElse("");
     }
     if (version.integrates().isEmpty() && !named.isEmpty()) {
-      return "made by "
-          + names(named)
-          + " · named in the consolidated text; not in the Publications Office’s list";
+      return "made by " + names(named);
     }
-    return made(version);
+    return made(
+        version,
+        version.integrates().stream()
+            .filter(
+                each ->
+                    !each.corrigendum()
+                        || act.publication(each).flatMap(p -> p.title(language)).isPresent())
+            .toList());
   }
 
   /**
@@ -151,39 +166,6 @@ public final class Wording {
         + where
         + "). No consolidated version includes it until "
         + Dates.inWords(lag.includedIn().date())
-        + ".";
-  }
-
-  /**
-   * Returns the text of a lag, for a version that the lag overlaps. For example, "From 1 June 2017
-   * this text lags the law: 2017/815 already applied, and no version includes it until 7 June
-   * 2017."
-   */
-  public static String lagOf(Unconsolidated lag) {
-    return "From "
-        + Dates.inWords(lag.from())
-        + " this text lags the law: "
-        + lag.act().cited()
-        + " already applied, and no version includes it until "
-        + Dates.inWords(lag.includedIn().date())
-        + ".";
-  }
-
-  /**
-   * Returns the text that says that the text of a version may lag the law. The card shows it in
-   * grey. For example, "This text may lag the law: 2019/413, in force from 16 March 2019, applies
-   * from a date its Article 3 sets, and no version includes it until 15 March 2021."
-   */
-  public static String mayLag(Act.Uncertain uncertain) {
-    var provisions = uncertain.clause().provisions();
-    return "This text may lag the law: "
-        + uncertain.act().cited()
-        + ", in force from "
-        + Dates.inWords(uncertain.inForce())
-        + ", applies from a date "
-        + (provisions.isEmpty() ? "it sets" : "its " + provisions.getFirst().cited() + " sets")
-        + ", and no version includes it until "
-        + Dates.inWords(uncertain.includedIn().date())
         + ".";
   }
 
@@ -261,7 +243,6 @@ public final class Wording {
    * <ul>
    *   <li>"current version" is the version that applies today.
    *   <li>"next version" is the version after the current one, if its date is after today.
-   *   <li>"may still be revised" is an interim version.
    * </ul>
    */
   private static String label(
@@ -278,6 +259,6 @@ public final class Wording {
             .isPresent()) {
       labelled += " · next version";
     }
-    return version.interim() ? labelled + " · may still be revised" : labelled;
+    return labelled;
   }
 }

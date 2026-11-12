@@ -7,7 +7,6 @@
  * The versions of the act on a time scale (catalogue/timeline.jte):
  * - Ticks on an axis of years.
  * - One round mark for versions that are too close to click apart. It opens a list of them.
- * - Amber hatching where a version lags the law.
  * - The version that the reader reads is raised and tagged.
  */
 .timeline {
@@ -63,20 +62,6 @@
   width: 1px;
   height: 6px;
   background: var(--line-strong);
-}
-
-.lag {
-  position: absolute;
-  top: 29px;
-  height: 12px;
-  background: repeating-linear-gradient(
-    45deg,
-    var(--warn-stripe) 0 2px,
-    transparent 2px 5px
-  );
-  border-block: 1px solid var(--warn-stripe);
-  box-sizing: border-box;
-  z-index: 1;
 }
 
 .tick {
@@ -501,18 +486,6 @@ section.selection.compare {
   line-height: 1.4;
 }
 
-/* The note that a text may lag the law, because the date of application of an act is not known.
- * It is grey and shows on the cards only. */
-.lag-maybe {
-  margin-top: 6px;
-  padding: 5px 8px;
-  border: 1px dashed var(--line);
-  border-radius: 3px;
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.4;
-}
-
 form.on {
   display: flex;
   flex-wrap: wrap;
@@ -772,8 +745,8 @@ form.find-act .ex a {
   margin: 0;
 }
 
-/* The note under the cards that says how the page selected the versions. For example, the page
- * opened without dates, or the reader asked for an act that is not between the two versions. */
+/* The note under the cards that says the reader asked for an act that is not between the two
+ * versions. */
 .compare-note {
   margin: 8px 0 0;
   color: var(--muted);
@@ -817,7 +790,7 @@ form.find-act .ex a {
 
 /*
  * Styles of async preparation and loading states (catalogue/preparing.jte).
- * Includes progress indicators, steps-log, failure diagnostics, and skeleton loaders.
+ * Includes progress indicators, failure diagnostics, and skeleton loaders.
  */
 /* The act's page while the act is prepared (catalogue/preparing.jte). It shows the progress panel.
  * What is already known about the act is beside it. */
@@ -900,31 +873,6 @@ form.find-act .ex a {
   font-variant-numeric: tabular-nums;
 }
 
-.preparing .log {
-  margin-top: 14px;
-  font-size: 14px;
-}
-
-.preparing .log > summary {
-  color: var(--accent);
-  cursor: pointer;
-}
-
-.steps-log {
-  max-height: 16rem;
-  overflow-y: auto;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-  font:
-    12.5px/1.6 ui-monospace,
-    monospace;
-}
-
-.steps-log time {
-  color: var(--muted);
-}
-
 .preparing .leave {
   color: var(--muted);
   font-size: 14px;
@@ -951,27 +899,7 @@ form.find-act .ex a {
   font-size: 14px;
 }
 
-/* The page just after the act is prepared. A line says what the viewer prepared. The content under
- * it fades in. */
-.receipt {
-  display: block;
-  margin: 12px 0 0;
-  padding: 8px 12px;
-  background: var(--accent-tint);
-  color: var(--ink);
-  font-size: 14px;
-}
-
-.receipt button {
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--accent);
-  font: inherit;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
+/* The page just after the act is prepared. The cards and the text fade in. */
 /* stylelint-disable-next-line selector-max-id */
 #page.arrived > :is(.selection, #text) {
   animation: arrive 0.5s ease-out;

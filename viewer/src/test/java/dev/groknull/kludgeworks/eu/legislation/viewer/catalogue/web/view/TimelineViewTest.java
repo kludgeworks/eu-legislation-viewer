@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.tuple;
-import static org.assertj.core.api.Assertions.within;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -96,19 +95,6 @@ class TimelineViewTest {
                 assertThat(label)
                     .startsWith("02015R1998-20170607 · from 7 June 2017 · made by ")
                     .contains("2017/815"));
-  }
-
-  @Test
-  void hatchesTheLagUntilAVersionIncludes2017815() {
-    assertThat(timeline.lags())
-        .singleElement()
-        .satisfies(
-            lag -> {
-              assertThat(lag.text())
-                  .startsWith("On this date, 2017/815 already applied (from 1 June 2017")
-                  .endsWith("No consolidated version includes it until 7 June 2017.");
-              assertThat(lag.width()).isCloseTo(0.5, within(0.01));
-            });
   }
 
   @Test

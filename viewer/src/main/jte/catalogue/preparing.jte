@@ -13,7 +13,7 @@
      already known about the act.
      The stream (hx-sse:connect) pushes the timeline, the progress and the steps when they change.
      htmx swaps each part by its id (hx-partial). When the stream sends done, htmx requests this
-     address again with prepared set, so that the page shows a receipt. It swaps that page in for
+     address again with prepared set, so that the page's content fades in. It swaps that page in for
      this one, at the same address.
      Beside the progress is a link back to the reader's last search results, if there are any.
      Without JavaScript, the page reloads every few seconds. The noscript refresh is in the head
@@ -28,10 +28,6 @@
         <h2 id="preparing-head">Preparing this act</h2>
         <p>${preparing.asked()}</p>
         @template.catalogue.preparing.progress(progress = preparing.progress())
-        <details class="log">
-          <summary>Show each step as it happened</summary>
-          @template.catalogue.preparing.steps(steps = preparing.steps())
-        </details>
         <p class="leave">You can leave: this page keeps its address and finishes without you.</p>
       </section>
       <aside class="known" aria-labelledby="known-head">

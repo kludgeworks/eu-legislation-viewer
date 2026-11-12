@@ -29,7 +29,18 @@ class ReadingViewTest {
     assertThat(card.eurLex())
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02015R1998-20211231");
     assertThat(card.period()).isEqualTo("Applied 31 December 2021 to 28 February 2022");
-    assertThat(card.made()).isEqualTo("made by 2019/103, 2019/1583, 2020/910 · also 1 corrigendum");
+    // Corrigendum 1 to 2019/103 corrects the German text only, so the English card leaves it out.
+    assertThat(card.made()).isEqualTo("made by 2019/103, 2019/1583, 2020/910");
+    assertThat(
+            ReadingView.of(
+                    AVSEC,
+                    version("2021-12-31"),
+                    LocalDate.parse("2021-12-31"),
+                    Language.DEU,
+                    TODAY,
+                    List.of())
+                .made())
+        .isEqualTo("made by 2019/103, 2019/1583, 2020/910 · also 1 corrigendum");
     assertThat(card.published())
         .startsWith(
             "2019/103: Commission Implementing Regulation (EU) 2019/103 of 23 January 2019 amending"
@@ -47,7 +58,7 @@ class ReadingViewTest {
   @Test
   void callsTheVersionThatAppliesTodayCurrentAndAnInterimOneRevisable() {
     assertThat(card("2026-10-01", "2026-10-01", TODAY).period())
-        .isEqualTo("Applies from 1 October 2026 · current version · may still be revised");
+        .isEqualTo("Applies from 1 October 2026 · current version");
     assertThat(card("2026-03-22", "2026-03-22", LocalDate.of(2026, 5, 1)).period())
         .isEqualTo("Applies 22 March 2026 to 30 September 2026 · current version");
   }
@@ -56,8 +67,7 @@ class ReadingViewTest {
   void saysWhatMadeEachKindOfVersion() {
     assertThat(card("2015-11-15", "2015-11-15", TODAY).made())
         .isEqualTo("the act as published · OJ L 299, 14.11.2015");
-    assertThat(card("2016-02-29", "2016-02-29", TODAY).made())
-        .isEqualTo("made by 2015/2426 · also 4 corrigenda");
+    assertThat(card("2016-02-29", "2016-02-29", TODAY).made()).isEqualTo("made by 2015/2426");
     assertThat(card("2018-02-06", "2018-02-06", TODAY).made()).isEqualTo("made by 2018/55");
   }
 
@@ -96,10 +106,7 @@ class ReadingViewTest {
             Language.ENG,
             TODAY,
             List.of(new ActIdentifier("32017R0815")));
-    assertThat(named.made())
-        .isEqualTo(
-            "made by 2017/815 · named in the consolidated text; not in the Publications Office’s"
-                + " list");
+    assertThat(named.made()).isEqualTo("made by 2017/815");
     assertThat(named.published()).startsWith("2017/815: Commission Implementing Regulation");
   }
 
@@ -122,24 +129,12 @@ class ReadingViewTest {
   @Test
   void callsTheVersionAfterTheCurrentOneTheNextVersion() {
     assertThat(card("2026-10-01", "2026-10-01", LocalDate.of(2026, 5, 1)).period())
-        .isEqualTo("Applies from 1 October 2026 · next version · may still be revised");
+        .isEqualTo("Applies from 1 October 2026 · next version");
   }
 
   @Test
-  void saysInGreyWhereAnActWithoutADateOfApplicationMayMakeTheTextLag() {
-    assertThat(card("2020-07-02", "2020-07-02", TODAY).mayLag())
-        .containsExactly(
-            "This text may lag the law: 2019/413, in force from 16 March 2019, applies from a date"
-                + " its Article 3 sets, and no version includes it until 15 March 2021.");
-    assertThat(card("2021-03-15", "2021-03-15", TODAY).mayLag()).isEmpty();
-  }
-
-  @Test
-  void warnsWhereTheVersionsTextLagsTheLaw() {
-    assertThat(card("2016-02-29", "2016-02-29", TODAY).lags())
-        .containsExactly(
-            "From 1 June 2017 this text lags the law: 2017/815 already applied, and no version"
-                + " includes it until 7 June 2017.");
+  void saysNothingOfALagLaterInTheVersionsPeriod() {
+    assertThat(card("2016-02-29", "2016-02-29", TODAY).lags()).isEmpty();
   }
 
   @Test

@@ -16,7 +16,6 @@
 @param ComparePage page
 @param List<ControlsView.ViewLink> views
 @param ControlsView.Only only = null
-@param String preamble = ""
 <%-- Shows a comparison's Changes view on an act's page. The controls come first. They show how
      many differences there are and of what kind. Then each provision that differs shows as it reads,
      with its changes marked and a number beside it. A sidenote beside each provision says what
@@ -47,8 +46,6 @@
           <summary>${fold.label()} — ${fold.note()}<span class="show"> · <u>show</u></span></summary>
           <div class="fold-text"><p class="status">Loading…</p></div>
         </details>
-      @elseif(passage instanceof ChangesView.NoPreamble)
-        <p class="fold no-preamble">Preamble — ${preamble}</p>
       @elseif(passage instanceof ChangesView.Lead lead)
         <div class="lead">${html.element(lead.unit())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)

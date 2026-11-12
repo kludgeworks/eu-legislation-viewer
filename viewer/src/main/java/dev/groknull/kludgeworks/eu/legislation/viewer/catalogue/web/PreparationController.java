@@ -31,7 +31,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * events. For example, {@code /eli/reg_impl/2015/1998/eng/prepare/events}.
  *
  * <p>Each message has the current state of the preparation. It contains the parts of the page that
- * change: the timeline, the progress and the steps. The page swaps in each part by its id.
+ * change: the timeline and the progress. The page swaps in each part by its id.
  *
  * <ul>
  *   <li>The stream sends a message when the page connects or connects again.
@@ -120,9 +120,8 @@ class PreparationController {
                     .data(
                         templates
                             .cataloguePreparingStream(
-                                TimelineView.preparing(act, preparation),
-                                PreparingView.Progress.of(preparation, clock.instant()),
-                                PreparingView.steps(preparation))
+                                TimelineView.preparing(preparation),
+                                PreparingView.Progress.of(preparation, clock.instant()))
                             .render()));
       }
     } catch (IOException | IllegalStateException e) {

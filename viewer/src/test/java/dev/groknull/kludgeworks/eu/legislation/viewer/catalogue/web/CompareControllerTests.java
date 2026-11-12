@@ -54,11 +54,11 @@ class CompareControllerTests {
   }
 
   @Test
-  void opensOnTheCurrentVersionAgainstTheOneBeforeSayingSo() {
+  void opensOnTheCurrentVersionAgainstTheOneBefore() {
     assertThat(mvc.get().uri(ACT + "eng/compare"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, PAGE + "&opened=current");
+        .hasValue(HttpHeaders.LOCATION, PAGE);
   }
 
   @Test

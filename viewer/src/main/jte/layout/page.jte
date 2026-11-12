@@ -24,7 +24,6 @@
   <script type="module" src="${chrome.assets().clock()}"></script>
   <script type="module" src="${chrome.assets().outline()}"></script>
   <script type="module" src="${chrome.assets().markers()}"></script>
-  <script type="module" src="${chrome.assets().receipt()}"></script>
   <script type="module" src="${chrome.assets().sidenotes()}"></script>
   ${head}
 </head>

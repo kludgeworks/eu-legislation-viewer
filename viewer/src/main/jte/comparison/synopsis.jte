@@ -19,7 +19,6 @@
 @param String to
 @param List<ControlsView.ViewLink> views
 @param ControlsView.Only only = null
-@param String preamble = ""
 @param String same = ""
 @param ComparePage page
 <%-- Shows a comparison's Synopsis view. The controls come first. Then a ledger aligns the two
@@ -60,8 +59,6 @@
         @endfor
       @elseif(passage instanceof ChangesView.Fold fold)
         @template.comparison.ledgerfold(fold = fold, same = same)
-      @elseif(passage instanceof ChangesView.NoPreamble)
-        <div class="ledger-fold" role="row"><span role="cell">Preamble — ${preamble}</span></div>
       @elseif(passage instanceof ChangesView.Lead lead)
         <div class="ledger-row ledger-lead" role="row"><div role="cell"></div><div class="from" role="cell">${html.element(lead.unit())}</div><div class="to" role="cell">${html.element(lead.unit())}</div><div role="cell"></div></div>
       @elseif(passage instanceof ChangesView.Shown shown)

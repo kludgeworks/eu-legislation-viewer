@@ -18,7 +18,6 @@
       <details class="lang">
         <summary aria-label="Language: ${masthead.language()}. Change language">${masthead.language()} ▾</summary>
         <div class="menu">
-          <p>Switching keeps what you’re looking at. Greyed: not for this version.</p>
           <ul>
             @for(var choice : masthead.languages())
               @if(choice.href() != null)

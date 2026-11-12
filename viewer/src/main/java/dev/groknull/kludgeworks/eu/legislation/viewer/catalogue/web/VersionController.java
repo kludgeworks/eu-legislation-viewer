@@ -123,8 +123,8 @@ class VersionController {
    * Returns the page of the version.
    *
    * <p>While the act is being prepared in the language, it returns the preparing page. When the act
-   * is prepared, that page requests this address again with {@code prepared}. The page then shows a
-   * receipt that says what was prepared.
+   * is prepared, that page requests this address again with {@code prepared}. The page's content
+   * then fades in.
    */
   @GetMapping(path = PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -145,7 +145,7 @@ class VersionController {
           masthead,
           templates.catalogueTextFailed(
               FailureView.missing(page.act, page.version, page.language, request.getRequestURI())),
-          null,
+          false,
           Map.of(),
           null,
           List.of());
@@ -157,7 +157,7 @@ class VersionController {
               chrome,
               page.version.celex(),
               masthead.whilePreparing(),
-              TimelineView.preparing(page.act, preparation),
+              TimelineView.preparing(preparation),
               PreparingView.of(
                   page.act,
                   preparation,
@@ -170,7 +170,7 @@ class VersionController {
         chrome,
         masthead,
         page.text(preparation, request.getRequestURI(), chrome.results()),
-        prepared ? PreparingView.receipt(preparation, page.language) : null,
+        prepared,
         TimelineView.states(preparation),
         ArrivingView.of(preparation).orElse(null),
         page.named(preparation));
@@ -219,7 +219,7 @@ class VersionController {
         Chrome chrome,
         MastheadView masthead,
         JteModel text,
-        @Nullable String receipt,
+        boolean arrived,
         Map<Version, String> states,
         @Nullable ArrivingView arriving,
         List<ActIdentifier> named) {
@@ -231,7 +231,7 @@ class VersionController {
               TimelineView.reading(act, version, language, states),
               ReadingView.of(act, version, date, language, today(), named),
               text,
-              receipt,
+              arrived,
               arriving)
           .render();
     }

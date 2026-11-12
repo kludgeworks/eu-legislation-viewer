@@ -86,8 +86,8 @@ class CompareController {
    * Returns the compare page, or redirects to the canonical address of the comparison.
    *
    * <p>While the act is being prepared in the language, it returns the preparing page. When the act
-   * is prepared, that page requests this address again with {@code prepared}. The page then shows a
-   * receipt that says what was prepared.
+   * is prepared, that page requests this address again with {@code prepared}. The page's content
+   * then fades in.
    */
   @GetMapping(path = ComparePage.PATH, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> page(
@@ -104,28 +104,22 @@ class CompareController {
       @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
       @RequestParam(name = ComparePage.VIEW, required = false) @Nullable String view,
       @RequestParam(defaultValue = "false") boolean prepared,
-      @RequestParam(required = false) @Nullable String opened,
       @RequestParam(required = false) @Nullable String outside,
       HttpServletRequest request) {
     var page = new Page(new Eli(type, year, number), code, from, to, act, view);
     if (!page.at(from, to, act)) {
       var location = Links.compare(page.eli, page.from, page.to, page.language, page.only, view);
-      // Tell the page what it chose, so that it can say so.
-      if (from == null && to == null && act == null) {
-        location += "&opened=current";
-      } else if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
+      // Tell the page that the act asked for is not between the versions, so that it can say so.
+      if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
         location += "&outside=" + act;
       }
       return ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build();
     }
     var note =
-        "current".equals(opened)
-            ? "Showing the most recent amendment in force: the current version against the one"
-                + " before."
-            : outside != null && ActIdentifier.isCelex(outside)
-                ? new ActIdentifier(outside).cited()
-                    + " isn’t between these two versions; showing every act’s changes."
-                : null;
+        outside != null && ActIdentifier.isCelex(outside)
+            ? new ActIdentifier(outside).cited()
+                + " isn’t between these two versions; showing every act’s changes."
+            : null;
     var preparation = texts.prepare(page.act, page.language);
     var title = page.from.celex() + " → " + page.to.celex();
     var chrome = Chrome.of(request);
@@ -139,7 +133,7 @@ class CompareController {
                       chrome,
                       title,
                       masthead.whilePreparing(),
-                      TimelineView.preparing(page.act, preparation),
+                      TimelineView.preparing(preparation),
                       PreparingView.of(
                           page.act,
                           preparation,
@@ -179,7 +173,7 @@ class CompareController {
                     page.from.equals(page.to)
                         ? page.same()
                         : page.changes(preparation, self(request), chrome.results()),
-                    prepared ? PreparingView.receipt(preparation, page.language) : null,
+                    prepared,
                     ArrivingView.of(preparation).orElse(null))
                 .render());
   }

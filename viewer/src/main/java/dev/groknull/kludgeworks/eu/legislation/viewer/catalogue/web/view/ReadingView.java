@@ -19,7 +19,7 @@ import org.jspecify.annotations.Nullable;
  *   <li>its period
  *   <li>the acts that made it
  *   <li>the date that the reader asked for, when it is not the first day of the version
- *   <li>where the text lags the law
+ *   <li>where the text lags the law on the date read
  *   <li>a form that asks for the version on another date
  *   <li>the link to its comparison with the version before
  * </ul>
@@ -34,10 +34,8 @@ import org.jspecify.annotations.Nullable;
  *     hover of {@code made} lists them the same way. Null if there are none.
  * @param asked the date that the reader asked for, when it is not the first day of the version. For
  *     example, "The version that applied on 1 June 2021".
- * @param lags where the text of the version lags the law. This is on the date asked, if the reader
- *     asked for a date. Else it is during the period of the version.
- * @param mayLag where the text of the version may lag the law, because the date of application of
- *     an act is not known. These show in grey.
+ * @param lags where the text of the version lags the law on the date read: an act already applied
+ *     that the version does not include yet
  * @param action the address the date form goes to: the act in the language of the page
  * @param on the date that the form starts at. This is the date asked.
  * @param first the earliest date that the form accepts. This is the date of the first version.
@@ -55,7 +53,6 @@ public record ReadingView(
     @Nullable String published,
     @Nullable String asked,
     List<String> lags,
-    List<String> mayLag,
     String action,
     String on,
     String first,
@@ -64,7 +61,6 @@ public record ReadingView(
 
   public ReadingView {
     lags = List.copyOf(lags);
-    mayLag = List.copyOf(mayLag);
   }
 
   /**
@@ -93,7 +89,7 @@ public record ReadingView(
         version.celex(),
         version.eurLex(language).toString(),
         Wording.period(act, version, today, language),
-        Wording.made(act, version, named),
+        Wording.made(act, version, named, language),
         makers.isEmpty() ? null : act.citations(makers, language),
         askedFor
             ? "The version that "
@@ -104,14 +100,11 @@ public record ReadingView(
                     ? " · the act was in force but didn’t apply yet"
                     : "")
             : null,
-        askedFor
-            ? act.lags().stream()
-                .filter(lag -> !lag.from().isAfter(asked))
-                .filter(lag -> asked.isBefore(lag.includedIn().date()))
-                .map(Wording::lagOn)
-                .toList()
-            : act.notYetConsolidated(version).stream().map(Wording::lagOf).toList(),
-        act.mayLag(version).stream().map(Wording::mayLag).toList(),
+        act.lags().stream()
+            .filter(lag -> !lag.from().isAfter(asked))
+            .filter(lag -> asked.isBefore(lag.includedIn().date()))
+            .map(Wording::lagOn)
+            .toList(),
         Links.act(eli, language),
         asked.toString(),
         act.timeline().versions().getFirst().date().toString(),

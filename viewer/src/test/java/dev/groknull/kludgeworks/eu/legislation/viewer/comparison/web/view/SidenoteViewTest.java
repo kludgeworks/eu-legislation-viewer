@@ -58,7 +58,6 @@ class SidenoteViewTest {
             new Link(
                 "Article 2 of 2026/449", "https://eur-lex.europa.eu/eli/reg_impl/2026/449/oj/eng"));
     assertThat(applies.after()).isEqualTo(" says which part from when");
-    assertThat(sidenote.before()).isEqualTo("Before: original act");
   }
 
   @Test
@@ -177,7 +176,6 @@ class SidenoteViewTest {
     assertThat(sidenote.dates())
         .extracting(SidenoteView.Applies::when)
         .containsExactly("2026/449 applies from 22 March 2026, its entry into force");
-    assertThat(sidenote.before()).isEqualTo("Before: original act");
   }
 
   @Test
@@ -241,7 +239,6 @@ class SidenoteViewTest {
     assertThat(applies.amendedBy())
         .containsExactly(
             new Link("2020/910", "https://eur-lex.europa.eu/eli/reg_impl/2020/910/oj/eng"));
-    assertThat(sidenote.before()).isNull();
   }
 
   @Test
@@ -303,12 +300,7 @@ class SidenoteViewTest {
 
     // The line is never empty. It says that no act is named.
     assertThat(sidenote.made()).isEqualTo("Amended by an act not named");
-    assertThat(sidenote.why())
-        .isEqualTo(
-            "Neither the text’s markers nor the Publications Office’s data name an act between"
-                + " these versions for it.");
     assertThat(sidenote.dates()).isEmpty();
-    assertThat(sidenote.before()).isEqualTo("Before: as replaced by 2023/566");
   }
 
   @Test
@@ -381,8 +373,6 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Deleted by 2017/815");
-    assertThat(sidenote.why())
-        .isEqualTo("2017/815 replaced Part 10 as a whole; this point is not in it.");
   }
 
   @Test
@@ -409,12 +399,10 @@ class SidenoteViewTest {
     assertThat(sidenote.made()).isEqualTo("Replaced by 2019/103 and 2019/1583 together");
     assertThat(sidenote.acts())
         .containsExactly(new ActIdentifier("32019R0103"), new ActIdentifier("32019R1583"));
-    assertThat(sidenote.why())
-        .isEqualTo("There is one wording, so the change can’t be split between them.");
   }
 
   @Test
-  void saysAChangeActsMadeTogetherIsTheirCombinedOneLimitedToOneOfThem() {
+  void namesTheOtherActsOfAChangeMadeTogetherLimitedToOneOfThem() {
     var point =
         changed(
             "anx/pnt_11.1.2",
@@ -434,15 +422,10 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Replaced by 2019/1583, together with 2019/103");
-    assertThat(sidenote.why())
-        .isEqualTo(
-            "Together with 2019/103. Both acts changed this point in the same version, and the"
-                + " wording between their changes exists in no version, so this is their combined"
-                + " change, not 2019/1583’s part alone.");
   }
 
   @Test
-  void saysOnlyCellarNamesTheActWhereTheTextHasNoMarker() {
+  void namesTheActCellarNamesWhereTheTextHasNoMarker() {
     var deleted =
         new Difference(
             "anx/pnt_1.2.3.8",
@@ -470,14 +453,10 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Deleted by 2019/103");
-    assertThat(sidenote.why())
-        .isEqualTo(
-            "The text has no marker here; the Publications Office’s data names 2019/103 for"
-                + " point 1.2.3.");
   }
 
   @Test
-  void namesTheActsOnlyCellarNamesForOneUnitInOneSentence() {
+  void namesEachActCellarNamesForOneUnit() {
     var deleted =
         new Difference(
             "anx/pnt_12.3.1",
@@ -504,14 +483,13 @@ class SidenoteViewTest {
             amendmentsAt("AN PO 12.3.1"),
             Language.ENG);
 
-    assertThat(sidenote.why())
-        .isEqualTo(
-            "The text has no marker here; the Publications Office’s data names 2021/255 and"
-                + " 2022/421 for point 12.3.1.");
+    assertThat(sidenote.acts())
+        .extracting(ActIdentifier::cited)
+        .containsExactlyInAnyOrder("2021/255", "2022/421");
   }
 
   @Test
-  void saysAPointIsNewInTheUnitAnActReplacedWhole() {
+  void namesTheActThatReplacedWholeTheUnitAnInsertedPointIsIn() {
     var d =
         inserted("anx/pnt_11.1.3/pnt_d", new Marker("32019R0103", "replaced", "anx/pnt_11.1.3"));
 
@@ -525,8 +503,6 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/103");
-    assertThat(sidenote.why())
-        .isEqualTo("2019/103 replaced point 11.1.3 as a whole; this point is new in it.");
   }
 
   @Test
@@ -547,7 +523,6 @@ class SidenoteViewTest {
         .isEqualTo("Amended by an act not known: 2019/103, 2019/1583 or 2020/910");
     assertThat(sidenote.acts()).isEmpty();
     assertThat(sidenote.candidates()).hasSize(3);
-    assertThat(sidenote.why()).startsWith("May be 2019/1583’s change");
   }
 
   /** Cellar's amendments of 2015/1998 by {@code act} at {@code location}. */

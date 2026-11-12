@@ -12,11 +12,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -187,14 +185,6 @@ class ChangesController {
         OutlineView.of(
             attributed.outline(), differences.stream().map(ChangesView.Shown::difference).toList());
     var views = ControlsView.views(page, view);
-    var withoutPreamble = attributed.comparison().withoutPreamble();
-    var preamble =
-        withoutPreamble == null
-            ? ""
-            : "not in the consolidation of "
-                + Dates.inWords((withoutPreamble == Side.EARLIER ? earlier : later).date())
-                + ", which the Publications Office published without it; no act changed it, so"
-                + " it isn’t compared";
     var all =
         only == null
             ? null
@@ -212,8 +202,7 @@ class ChangesController {
                       "/content/" + attributed.later().hex() + "/units",
                       page,
                       views,
-                      all,
-                      preamble)
+                      all)
                   .render();
           case WHOLE ->
               templates
@@ -276,7 +265,6 @@ class ChangesController {
                     later.celex(),
                     views,
                     all,
-                    preamble,
                     page.same(earlier.date(), later.date()),
                     page)
                 .render();
@@ -357,7 +345,6 @@ class ChangesController {
     var preparation = texts.preparation(ends.act, ends.language);
     var between = ends.act.integratedBetween(ends.from, ends.to);
     var counts = new HashMap<ActIdentifier, Integer>();
-    var together = 0;
     var unknown = 0;
     // Count the list that the page shows. Do not add up the counts of single steps. That sum counts
     // a provision once for each step that changed it. It also counts a change that one act made
@@ -394,7 +381,6 @@ class ChangesController {
                     counts.put(each, differences);
                   }
                 });
-        together = counted.get().together();
         unknown = counted.get().unknown();
       }
     }
@@ -411,7 +397,7 @@ class ChangesController {
     return templates
         .comparisonActs(
             ActsView.of(ends.act, ends.from, ends.to, ends.language, page, counts, null)
-                .counted(together, unknown))
+                .counted(unknown))
         .render();
   }
 

@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
@@ -82,10 +81,6 @@ public record ChangesView(
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
     var pending = new Pending(passages, others);
-    var withoutPreamble = comparison.withoutPreamble();
-    if (withoutPreamble != null) {
-      passages.add(new NoPreamble(withoutPreamble));
-    }
     // The units whose opening the view shows: a lead, or a shown difference.
     var opened = new HashSet<String>();
     for (var difference : comparison.differences()) {
@@ -418,14 +413,6 @@ public record ChangesView(
   public sealed interface Passage {}
 
   /**
-   * A note, where the preamble stands, that the preamble is not compared. The {@code side} text has
-   * no preamble, as the Publications Office published it, although no act changed it.
-   *
-   * @param side the text without the preamble
-   */
-  public record NoPreamble(Side side) implements Passage {}
-
-  /**
    * Units that stay folded until a reader asks for them. They are the same in both texts, or, under
    * an act filter, other acts changed them.
    *
@@ -538,13 +525,9 @@ public record ChangesView(
       return difference.annexInserted();
     }
 
-    /**
-     * Returns the size of its unit, as its fold says it. For example, "56 provisions · 1,234
-     * words".
-     */
+    /** Returns the size of its unit, as its fold says it. For example, "56 provisions". */
     public String size() {
-      var size = difference.size();
-      return String.format(Locale.ROOT, "%,d provisions · %,d words", size.units(), size.words());
+      return String.format(Locale.ROOT, "%,d provisions", difference.size().units());
     }
   }
 }

@@ -92,8 +92,7 @@ class ComparePagesTests {
     var outside = get(PAGE + "&outside=32019R0103");
     assertThat(outside.select(".compare-note").text())
         .isEqualTo("2019/103 isn’t between these two versions; showing every act’s changes.");
-    assertThat(get(PAGE + "&opened=current").select(".compare-note").text())
-        .startsWith("Showing the most recent amendment in force");
+    assertThat(get(PAGE).select(".compare-note")).isEmpty();
 
     var same = get(ACT + "eng/compare?from=2026-10-01&to=2026-10-01");
     assertThat(same.select(".same-version p").eachText())

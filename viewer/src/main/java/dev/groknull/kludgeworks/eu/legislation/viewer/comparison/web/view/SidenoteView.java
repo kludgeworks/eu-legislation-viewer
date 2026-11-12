@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -46,7 +45,6 @@ import org.jspecify.annotations.Nullable;
  * <p>The sidenote shows the acts as a chain, in the order that the versions integrate them. For
  * example, "Inserted by 2019/103, then replaced by 2021/255". For each act, the sidenote says when
  * the act applies. This date comes from the dates of the act, never from the date of the version.
- * The sidenote also says what the unit was before, from the markers in the earlier text.
  *
  * <p>Acts of one version leave no text between their changes. Thus:
  *
@@ -54,9 +52,8 @@ import org.jspecify.annotations.Nullable;
  *   <li>Where the markers name an act of a version, the sidenote follows the markers. It leaves out
  *       the other acts of that version that Cellar names.
  *   <li>The acts that the markers name together changed the unit together, with one wording. The
- *       sidenote says so. When the comparison is limited to one of these acts, the sidenote says
- *       that the change is their combined change.
- *   <li>If only Cellar names an act, the sidenote says so.
+ *       sidenote names them together.
+ *   <li>If only Cellar names an act, the sidenote names it as if a marker did.
  *   <li>If neither the markers nor Cellar name an act between the two versions, the sidenote does
  *       not guess. If the acts between the versions are all of one version, it says that one of
  *       them made the difference, but not which. If not, it says that no act is named.
@@ -81,12 +78,7 @@ import org.jspecify.annotations.Nullable;
  *     difference counts in the changes of each of these acts.
  * @param candidates the acts of which one made the difference, where it is not known which act.
  *     Empty where the act is known.
- * @param why what the reader should know about who made the difference. For example, that acts made
- *     it together, that only Cellar names the act, or that the unit is new in a unit that an act
- *     replaced as a whole. Null if there is nothing to say.
  * @param dates when each of these acts applies, with what sets the date
- * @param before what the unit was before. For example, "Before: as replaced by 2023/566". Null for
- *     an inserted unit.
  * @param published how the acts that made the difference, or may have made it, were published, one
  *     line for each act. The hover of {@code made} lists them the same way. Null where no act is
  *     named.
@@ -95,9 +87,7 @@ public record SidenoteView(
     @Nullable String made,
     List<ActIdentifier> acts,
     List<ActIdentifier> candidates,
-    @Nullable String why,
     List<Applies> dates,
-    @Nullable String before,
     @Nullable String published) {
 
   public SidenoteView {
@@ -153,7 +143,6 @@ public record SidenoteView(
             .flatMap(Optional::stream)
             .collect(Collectors.toSet());
     var made = new LinkedHashMap<>(marked);
-    var named = new LinkedHashMap<ActIdentifier, Amendment>();
     for (var amendment : amendments) {
       var each = amendment.act();
       // Leave out the act if the markers name an act of the same version. The markers take
@@ -162,15 +151,10 @@ public record SidenoteView(
           && !made.containsKey(each)
           && version(act, from, to, each).filter(markedVersions::contains).isEmpty()) {
         made.put(each, action(amendment.role()));
-        named.put(each, amendment);
       }
     }
-    var before =
-        difference.kind() == Kind.INSERTED
-            ? null
-            : before(acts(difference.earlierMarkers(), a -> true));
     if (made.isEmpty()) {
-      return unknown(act, from, to, difference, only, before, language);
+      return unknown(act, from, to, difference, language);
     }
     var steps = steps(act, from, to, made.keySet(), marked.keySet(), together(difference, between));
     var dates = new ArrayList<Applies>();
@@ -189,9 +173,6 @@ public record SidenoteView(
       }
     }
     var chain = new ArrayList<String>();
-    var why = new ArrayList<String>();
-    var newIn = newIn(difference);
-    newIn.ifPresent(why::add);
     for (var i = 0; i < steps.size(); i++) {
       var step = steps.get(i);
       var first = step.getFirst();
@@ -210,37 +191,15 @@ public record SidenoteView(
       } else if (only != null && step.contains(only)) {
         var others = step.stream().filter(each -> !each.equals(only)).toList();
         chain.add(verb + " by " + only.cited() + ", together with " + names(others));
-        why.add(combined(only, others, difference, newIn.isPresent()));
       } else {
         chain.add(verb + " by " + names(step) + " together");
-        why.add(together(step, difference, newIn.isPresent()));
       }
-    }
-    if (marked.isEmpty()) {
-      // One sentence for each place, naming all the acts that the data names for it
-      var byPlace = new LinkedHashMap<String, List<ActIdentifier>>();
-      named.forEach(
-          (each, amendment) ->
-              byPlace
-                  .computeIfAbsent(amendment.location().name(), place -> new ArrayList<>())
-                  .add(each));
-      byPlace.forEach(
-          (place, acts) ->
-              why.add(
-                  "The text has no marker here; the Publications Office’s data names "
-                      + names(acts)
-                      + " for "
-                      + place
-                      + "."));
     }
     return new SidenoteView(
         String.join(", then ", chain),
         steps.stream().flatMap(List::stream).toList(),
         List.of(),
-        // Each step of acts together says why their change can't be split: say it once
-        why.isEmpty() ? null : String.join(" ", new LinkedHashSet<>(why)),
         dates,
-        before,
         act.citations(steps.stream().flatMap(List::stream).toList(), language));
   }
 
@@ -250,13 +209,7 @@ public record SidenoteView(
    * not, the sidenote does not say who made it.
    */
   private static SidenoteView unknown(
-      Act act,
-      Version from,
-      Version to,
-      Difference difference,
-      @Nullable ActIdentifier only,
-      @Nullable String before,
-      Language language) {
+      Act act, Version from, Version to, Difference difference, Language language) {
     var candidates =
         act.integratedBetween(from, to).stream().filter(each -> !each.corrigendum()).toList();
     var versions =
@@ -267,14 +220,7 @@ public record SidenoteView(
             .count();
     if (candidates.size() < 2 || versions != 1) {
       return new SidenoteView(
-          verb(difference) + " by an act not named",
-          List.of(),
-          List.of(),
-          "Neither the text’s markers nor the Publications Office’s data name an act between"
-              + " these versions for it.",
-          List.of(),
-          before,
-          null);
+          verb(difference) + " by an act not named", List.of(), List.of(), List.of(), null);
     }
     var ordered =
         version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
@@ -294,15 +240,7 @@ public record SidenoteView(
             + names.getLast(),
         List.of(),
         ordered,
-        only != null && ordered.contains(only)
-            ? "May be "
-                + only.cited()
-                + "’s change: neither the text’s marker nor the Publications Office’s data says"
-                + " which act made it."
-            : "Neither the text’s marker nor the Publications Office’s data says which of them"
-                + " made it.",
         dates,
-        before,
         act.citations(ordered, language));
   }
 
@@ -316,138 +254,6 @@ public record SidenoteView(
       case DELETED -> "Deleted";
       case CHANGED -> "Amended";
     };
-  }
-
-  /**
-   * Returns the text that says that the acts of {@code step} made the difference together. The text
-   * always says "There is one wording, so the change can’t be split between them." Before it, the
-   * text says what each act did, if their markers say they did different things. For example,
-   * "2019/1583 replaced the point, and 2019/103 replaced section 11.1 as a whole." It does not say
-   * this if {@code newIn} is true, because the unit is new in a unit that the acts replaced as a
-   * whole, and that text says so already.
-   */
-  private static String together(List<ActIdentifier> step, Difference difference, boolean newIn) {
-    var parts = new ArrayList<String>();
-    var done = new HashSet<String>();
-    for (var marker : difference.markers()) {
-      var each = new ActIdentifier(marker.act());
-      if (step.contains(each)) {
-        var what =
-            marker.action()
-                + " "
-                + (marker.in() == null
-                    ? "the " + noun(difference)
-                    : unit(marker.in(), difference) + " as a whole");
-        done.add(what);
-        parts.add(each.cited() + " " + what);
-      }
-    }
-    var split = "There is one wording, so the change can’t be split between them.";
-    return newIn || done.size() < 2 ? split : String.join(", and ", parts) + ". " + split;
-  }
-
-  /**
-   * Returns the text that says that the unit is new in, or not in, a unit that was replaced as a
-   * whole. The acts that its markers name replaced that unit.
-   *
-   * <ul>
-   *   <li>For an inserted unit, for example: "2019/103 replaced section 11.1 as a whole; this point
-   *       is new in it."
-   *   <li>For a deleted unit, for example: "2017/815 replaced Part 10 as a whole; this point is not
-   *       in it."
-   *   <li>For a changed unit, returns empty.
-   * </ul>
-   */
-  private static Optional<String> newIn(Difference difference) {
-    if (difference.kind() == Kind.CHANGED) {
-      return Optional.empty();
-    }
-    var whole =
-        difference.markers().stream()
-            .filter(marker -> marker.in() != null && marker.action().equals("replaced"))
-            .toList();
-    if (whole.isEmpty()) {
-      return Optional.empty();
-    }
-    var acts = whole.stream().map(marker -> new ActIdentifier(marker.act())).distinct().toList();
-    return Optional.of(
-        names(acts)
-            + " replaced "
-            + unit(Objects.requireNonNull(whole.getFirst().in()), difference)
-            + " as a whole; this "
-            + noun(difference)
-            + (difference.kind() == Kind.INSERTED ? " is new in it." : " is not in it."));
-  }
-
-  /**
-   * Returns the text that says that the change shown is the combined change of the acts, when the
-   * comparison is limited to the changes of {@code only}. For example, "Together with 2019/103.
-   * Both acts changed this point in the same version, and the wording between their changes exists
-   * in no version…". If {@code newIn} is true, the text says only that the wording between their
-   * changes exists in no version. This is because the unit is new in a unit that the acts replaced
-   * as a whole, and that text says the rest already.
-   */
-  private static String combined(
-      ActIdentifier only, List<ActIdentifier> others, Difference difference, boolean newIn) {
-    var acts = others.size() == 1 ? "Both acts" : "All " + (others.size() + 1) + " acts";
-    return "Together with "
-        + names(others)
-        + (newIn
-            ? ": the wording between their changes"
-            : ". "
-                + acts
-                + " changed this "
-                + noun(difference)
-                + " in the same version, and the"
-                + " wording between their changes")
-        + " exists in no version, so this is their combined change, not "
-        + only.cited()
-        + "’s part alone.";
-  }
-
-  /**
-   * Returns the name of the unit of the difference, as a sentence uses it. For example, "point" or
-   * "article". Other units are a "provision".
-   */
-  private static String noun(Difference difference) {
-    var kind = difference.unit().kind();
-    return switch (kind) {
-      case "point", "article", "paragraph", "subparagraph", "indent", "annex", "recital" -> kind;
-      // A numbered point that holds other points. For example, 11.1.2.
-      case "level" -> difference.unit().num().matches("\\d.*") ? "point" : "provision";
-      default -> "provision";
-    };
-  }
-
-  /**
-   * Returns the unit {@code eId} that {@code difference} is in, as a sentence cites it. For
-   * example:
-   *
-   * <ul>
-   *   <li>"section 11.1", if the unit is the section of the difference in the outline
-   *   <li>"point 11.1"
-   *   <li>"Article 5"
-   * </ul>
-   */
-  private static String unit(String eId, Difference difference) {
-    var last = eId.substring(eId.lastIndexOf('/') + 1);
-    var number = last.substring(last.indexOf('_') + 1);
-    if (eId.equals(difference.section()) && last.startsWith("pnt_")) {
-      return "section " + number;
-    }
-    if (last.startsWith("art_")) {
-      return "Article " + number;
-    }
-    if (last.startsWith("anx")) {
-      return last.contains("_") ? "Annex " + number : "the annex";
-    }
-    if (last.startsWith("level_PART-")) {
-      return "Part " + last.substring("level_PART-".length());
-    }
-    if (last.startsWith("level_ATTACHMENT-")) {
-      return "Appendix " + last.substring("level_ATTACHMENT-".length());
-    }
-    return (last.startsWith("par_") ? "paragraph " : "point ") + number;
   }
 
   /**
@@ -604,26 +410,6 @@ public record SidenoteView(
             default -> "Amended";
           };
     };
-  }
-
-  /**
-   * Returns what the unit was before, from the acts that the markers of the earlier text name. For
-   * example, "Before: as replaced by 2023/566". If the markers name no act, returns "Before:
-   * original act".
-   */
-  private static String before(Map<ActIdentifier, String> acts) {
-    if (acts.isEmpty()) {
-      return "Before: original act";
-    }
-    var first = acts.entrySet().iterator().next();
-    var done =
-        first.getKey().corrigendum()
-            ? "corrected"
-            : switch (first.getValue()) {
-              case "replaced", "inserted", "deleted", "renumbered" -> first.getValue();
-              default -> "amended";
-            };
-    return "Before: as " + done + " by " + names(acts.keySet());
   }
 
   /**

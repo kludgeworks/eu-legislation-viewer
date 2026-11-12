@@ -19,7 +19,6 @@ import org.jspecify.annotations.Nullable;
  *   <li>the version, by its CELEX
  *   <li>its period
  *   <li>the acts that made it
- *   <li>where its text lags the law
  *   <li>a form that asks for the version on another date for that end, and keeps the other end
  * </ul>
  *
@@ -88,9 +87,6 @@ public record CompareView(Card from, Card to, String acts, @Nullable String note
    * @param made what made the version
    * @param published how the acts that made the version were published, one line for each act. The
    *     hover of {@code made} lists them the same way. Null if there are none.
-   * @param lags where the text of the version lags the law during its period
-   * @param mayLag where the text of the version may lag the law, because the date of application of
-   *     an act is not known
    * @param name the field of the date form for this end: {@code from} or {@code to}
    * @param on the date that the form starts at. This is the first day of the version.
    * @param keep the field of the other end, which the form sends unchanged
@@ -107,19 +103,12 @@ public record CompareView(Card from, Card to, String acts, @Nullable String note
       String period,
       String made,
       @Nullable String published,
-      List<String> lags,
-      List<String> mayLag,
       String name,
       String on,
       String keep,
       String kept,
       String action,
       String first) {
-
-    public Card {
-      lags = List.copyOf(lags);
-      mayLag = List.copyOf(mayLag);
-    }
 
     /**
      * Returns the card of {@code version} as the {@code end} of the comparison. {@code other} is
@@ -140,10 +129,8 @@ public record CompareView(Card from, Card to, String acts, @Nullable String note
           .celex(version.celex())
           .eurLex(version.eurLex(language).toString())
           .period(Wording.period(act, version, today, language))
-          .made(Wording.made(act, version, List.of()))
+          .made(Wording.made(act, version, List.of(), language))
           .published(published.isEmpty() ? null : act.citations(published, language))
-          .lags(act.notYetConsolidated(version).stream().map(Wording::lagOf).toList())
-          .mayLag(act.mayLag(version).stream().map(Wording::mayLag).toList())
           .name(end.field)
           .on(version.date().toString())
           .keep(end.other().field)

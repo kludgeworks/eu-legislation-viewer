@@ -27,16 +27,13 @@ import org.jspecify.annotations.Nullable;
  *     are counted, or if they cannot be counted.
  * @param unknown how many differences one of the acts made, where it is not known which act. This
  *     number shows as its own chip. Null if there are none, or until the acts are counted.
- * @param hint the text that explains the counts. It says that a difference that acts made together
- *     counts in the chip of each act. Null until the acts are counted.
  */
 public record ActsView(
     String head,
     List<ActsView.Chip> chips,
     List<ActsView.Chip> none,
     @Nullable String counting,
-    @Nullable Integer unknown,
-    @Nullable String hint) {
+    @Nullable Integer unknown) {
 
   /**
    * The largest number of chips that show in full. Above this number, the chips of acts that made
@@ -95,29 +92,17 @@ public record ActsView(
         chips.stream().filter(chip -> !none.contains(chip)).toList(),
         none,
         counts.isEmpty() ? counting : null,
-        null,
         null);
   }
 
   /**
    * Returns the same acts, counted.
    *
-   * @param together the number of differences that acts made together
    * @param unknown the number of differences that one of the acts made, where it is not known which
    *     act
    */
-  public ActsView counted(int together, int unknown) {
-    var hint =
-        "Number = differences that act made in this comparison; click to see only its changes."
-            + (together == 0
-                ? ""
-                : " "
-                    + together
-                    + (together == 1 ? " difference was" : " differences were")
-                    + " made by acts together, so "
-                    + (together == 1 ? "it counts" : "they count")
-                    + " in each of their chips.");
-    return new ActsView(head, chips, none, counting, unknown == 0 ? null : unknown, hint);
+  public ActsView counted(int unknown) {
+    return new ActsView(head, chips, none, counting, unknown == 0 ? null : unknown);
   }
 
   /**

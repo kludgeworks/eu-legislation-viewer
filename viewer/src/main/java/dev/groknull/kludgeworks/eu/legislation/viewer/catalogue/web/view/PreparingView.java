@@ -8,11 +8,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -26,39 +23,24 @@ import org.jspecify.annotations.Nullable;
  *
  * <ul>
  *   <li>what the reader asked for. It opens at this address when it is ready.
- *   <li>the progress panel, with the steps as they happened
+ *   <li>the progress panel
  *   <li>what the catalogue already tells about the act
  * </ul>
  *
- * <p>The event stream pushes the progress and the steps again when they change. {@code
- * PreparationController} sends the stream. The rest of the page does not change.
+ * <p>The event stream pushes the progress again when it changes. {@code PreparationController}
+ * sends the stream. The rest of the page does not change.
  *
  * @param asked what the reader asked for, and the statement that it opens here
  * @param self the address of the page, which the page requests again when the act is prepared
  * @param events the address of the event stream of the preparation
  * @param progress the state of the preparation
- * @param steps what was done, as it happened
  * @param known what the catalogue tells about the act
  * @param eurLex the address of the act on EUR-Lex, in the language of the page
  */
 public record PreparingView(
-    String asked,
-    String self,
-    String events,
-    Progress progress,
-    List<Step> steps,
-    List<Fact> known,
-    String eurLex) {
-
-  /**
-   * The time zone of the time of a step. It is Brussels, the same as for the dates on the pages.
-   */
-  private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
-
-  private static final DateTimeFormatter TIME = DateTimeFormatter.ofPattern("HH:mm:ss");
+    String asked, String self, String events, Progress progress, List<Fact> known, String eurLex) {
 
   public PreparingView {
-    steps = List.copyOf(steps);
     known = List.copyOf(known);
   }
 
@@ -77,39 +59,8 @@ public record PreparingView(
         self,
         Links.prepare(eli, preparation.language()),
         Progress.of(preparation, now),
-        steps(preparation),
         known(act),
         act.id().eurLex(preparation.language()).toString());
-  }
-
-  /**
-   * Returns the steps of the preparation, in the words that the reader sees. The steps are in the
-   * order they were taken.
-   */
-  public static List<Step> steps(Preparation preparation) {
-    return preparation.steps().stream()
-        .map(step -> new Step(TIME.format(step.at().atZone(BRUSSELS)), step(step)))
-        .toList();
-  }
-
-  /** Returns the text of a step. For example, "version 02015R1998-20230401 converted (34 s)". */
-  private static String step(Preparation.Step step) {
-    var version = "version " + step.celex();
-    return switch (step.kind()) {
-      case STARTED ->
-          step.attempt() > 1
-              ? "converting " + version + " again, attempt " + step.attempt()
-              : "converting " + version;
-      case BUILT ->
-          version
-              + " converted"
-              + (step.took() == null ? "" : " (" + Math.max(step.took().toSeconds(), 1) + " s)");
-      case DEFERRED -> version + " didn't convert; it will be tried again";
-      case FAILED ->
-          version
-              + " couldn't be converted: "
-              + (step.failure() == null ? "something went wrong" : Wording.failure(step.failure()));
-    };
   }
 
   /**
@@ -311,33 +262,8 @@ public record PreparingView(
   }
 
   /**
-   * A step of the preparation, as it happened.
-   *
-   * @param time when the step happened, in Brussels time. For example, 10:42:13.
-   * @param text what happened. For example, "version 02015R1998-20230401 converted (34 s)".
-   */
-  public record Step(String time, String text) {}
-
-  /**
    * A fact about the act. For example, the term "Applies" with the detail "from 1 February 2016,
    * Article 3".
    */
   public record Fact(String term, String detail) {}
-
-  /**
-   * Returns the receipt that shows when the act is prepared. For example, "Prepared · 22 versions
-   * in English · took 1:12".
-   */
-  public static String receipt(Preparation preparation, Language language) {
-    var size = preparation.size();
-    var versions =
-        preparation.failed() == 0
-            ? size + (size == 1 ? " version" : " versions")
-            : preparation.ready() + " of " + size + " versions";
-    return "Prepared · "
-        + versions
-        + " in "
-        + Wording.language(language)
-        + preparation.took().map(took -> " · took " + Progress.elapsed(took)).orElse("");
-  }
 }

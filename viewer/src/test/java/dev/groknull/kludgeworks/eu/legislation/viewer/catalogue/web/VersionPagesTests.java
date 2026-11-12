@@ -87,12 +87,10 @@ class VersionPagesTests {
             .until(
                 () -> page(PAGE + "?prepared=true"),
                 page -> page.selectFirst(".content[hx-get^=/content/]") != null);
-    // On arrival from the preparing page, a receipt says what was prepared. It is above the
-    // content that fades in.
-    assertThat(Objects.requireNonNull(arrived.selectFirst(".receipt")).text())
-        .startsWith("✓ Prepared · ")
-        .contains(" in English");
-    assertThat(page(PAGE).selectFirst(".receipt")).isNull();
+    // On arrival from the preparing page, the content fades in. There is no receipt.
+    assertThat(arrived.select("#page.arrived")).isNotEmpty();
+    assertThat(arrived.select(".receipt")).isEmpty();
+    assertThat(page(PAGE).select("#page.arrived")).isEmpty();
     var loads = Objects.requireNonNull(arrived.selectFirst(".content"));
     assertThat(loads.attr("hx-trigger")).isEqualTo("load");
     assertThat(arrived.select("nav.outline > ul > li > :is(a, details > summary > a)"))

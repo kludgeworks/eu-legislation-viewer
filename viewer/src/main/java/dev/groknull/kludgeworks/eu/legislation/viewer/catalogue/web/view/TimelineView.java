@@ -29,8 +29,7 @@ import org.jspecify.annotations.Nullable;
  *
  * <p>A version is a mark at its first day, and the mark is a link. Versions that are too close to
  * click apart merge into one mark that lists them. They are too close if the distance from the
- * version before is less than {@link #GAP} of the axis. Each lag from {@link Act#lags()} is a band.
- * The band goes from the day the act applies to the version that includes it.
+ * version before is less than {@link #GAP} of the axis.
  *
  * <ul>
  *   <li>When the reader reads, from {@link #reading}, the marks link to the pages of the versions.
@@ -45,22 +44,18 @@ import org.jspecify.annotations.Nullable;
  *
  * @param years a mark for each new year on the axis
  * @param marks the versions in date order. Versions that are too close are merged.
- * @param lags where the text of a version lags the law
  * @param tags what is selected, above its mark. This is READING, or FROM and TO.
  * @param band the range that is compared. Null when the reader reads.
  * @param current the value of {@code aria-current} for a selected mark: {@code page} when the
  *     reader reads, {@code true} when the reader compares
- * @param hint what a click on a mark does
  * @param steps the links to the versions on each side
  */
 public record TimelineView(
     List<Year> years,
     List<Mark> marks,
-    List<Lag> lags,
     List<Tag> tags,
     @Nullable Band band,
     String current,
-    String hint,
     List<Step> steps) {
 
   /**
@@ -69,16 +64,9 @@ public record TimelineView(
    */
   static final double GAP = 1.6;
 
-  /**
-   * The smallest width of a lag, in percent of the axis. With this width, a lag of a few days still
-   * shows.
-   */
-  private static final double NARROWEST = 0.5;
-
   public TimelineView {
     years = List.copyOf(years);
     marks = List.copyOf(marks);
-    lags = List.copyOf(lags);
     tags = List.copyOf(tags);
     steps = List.copyOf(steps);
   }
@@ -98,11 +86,9 @@ public record TimelineView(
     return new TimelineView(
         axis.years(),
         marks(versions, axis, reading::equals, v -> Links.read(eli, v, language), states),
-        lags(act, axis),
         List.of(new Tag("READING", axis.markAt(versions, reading))),
         null,
         "page",
-        "Click a version to read it",
         List.of(
             new Step(
                 "‹ version before",
@@ -152,13 +138,11 @@ public record TimelineView(
     return new TimelineView(
         axis.years(),
         marks(versions, axis, v -> v.equals(from) || v.equals(to), nearer, states),
-        lags(act, axis),
         at == until
             ? List.of(new Tag(from.equals(to) ? "FROM = TO" : "FROM · TO", at))
             : List.of(new Tag("FROM", at), new Tag("TO", until)),
         new Band(at, until),
         "true",
-        "Click a version to move the nearer end",
         List.of(
             new Step(
                 "‹ both one version earlier",
@@ -189,10 +173,10 @@ public record TimelineView(
   }
 
   /**
-   * Returns the timeline of {@code act} while {@code preparation} runs. Each mark shows the state
-   * of the text of its version.
+   * Returns the timeline of the act that {@code preparation} prepares, while it runs. Each mark
+   * shows the state of the text of its version.
    */
-  public static TimelineView preparing(Act act, Preparation preparation) {
+  public static TimelineView preparing(Preparation preparation) {
     var versions = preparation.versions();
     var axis = Axis.of(versions);
     var marks = new ArrayList<Mark>();
@@ -211,15 +195,7 @@ public record TimelineView(
               .toList();
       marks.add(ticks.size() == 1 ? ticks.getFirst() : new Merged(at, ticks, merged(group)));
     }
-    return new TimelineView(
-        axis.years(),
-        marks,
-        lags(act, axis),
-        List.of(),
-        null,
-        "page",
-        "Being prepared: the versions open once it is",
-        List.of());
+    return new TimelineView(axis.years(), marks, List.of(), null, "page", List.of());
   }
 
   /**
@@ -315,19 +291,6 @@ public record TimelineView(
       marks.add(ticks.size() == 1 ? ticks.getFirst() : new Merged(at, ticks, merged(group)));
     }
     return marks;
-  }
-
-  private static List<Lag> lags(Act act, Axis axis) {
-    return act.lags().stream()
-        .map(
-            lag -> {
-              var from = axis.at(lag.from());
-              return new Lag(
-                  from,
-                  Math.max(axis.at(lag.includedIn().date()) - from, NARROWEST),
-                  Wording.lagOn(lag));
-            })
-        .toList();
   }
 
   /**
@@ -494,18 +457,6 @@ public record TimelineView(
      */
     public boolean opensLeft() {
       return at > 50;
-    }
-  }
-
-  /**
-   * A lag, which is where the text of a version lags the law.
-   *
-   * @param width how much of the axis the lag spans, in percent
-   * @param text what lags, from when and until when
-   */
-  public record Lag(double at, double width, String text) {
-    public String style() {
-      return left(at) + String.format(Locale.ROOT, "; width: %.2f%%", width);
     }
   }
 

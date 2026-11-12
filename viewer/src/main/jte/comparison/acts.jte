@@ -5,15 +5,14 @@
      After the count, each chip also shows how many differences its act made. Until then, htmx loads
      the counts from acts.counting() and swaps this whole template for the counted one. If there are
      more than six chips, the chips of acts that made no differences here go into a fold. After the
-     count, a dashed chip shows the differences that no single act is known to have made. A hint
-     then says what the numbers mean. --%>
+     count, a dashed chip shows the differences that no single act is known to have made. --%>
 <div class="between" id="acts" hx-get="${acts.counting()}" hx-trigger="${acts.counting() != null ? "load" : null}" hx-swap="outerHTML">
   <span class="card-kind">${acts.head()}</span>
   <div class="chips">
     @for(var chip : acts.chips())
       @template.comparison.chip(chip = chip)
     @endfor
-    @if(acts.unknown() != null)<span class="chip unknown" title="Neither the text’s markers nor the Publications Office’s data says which act made these"><span class="label">act not known</span><span class="count">${acts.unknown()}</span></span>@endif
+    @if(acts.unknown() != null)<span class="chip unknown"><span class="label">act not known</span><span class="count">${acts.unknown()}</span></span>@endif
   </div>
   @if(!acts.none().isEmpty())
     <details class="more-acts">
@@ -25,5 +24,4 @@
       </div>
     </details>
   @endif
-  @if(acts.hint() != null)<span class="hint">${acts.hint()}</span>@endif
 </div>

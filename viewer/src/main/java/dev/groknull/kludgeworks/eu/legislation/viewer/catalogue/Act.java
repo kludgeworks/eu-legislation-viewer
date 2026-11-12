@@ -251,51 +251,6 @@ public record Act(
     return lags;
   }
 
-  /**
-   * Returns the acts in force while {@code version} applies, whose date of application Cellar does
-   * not know, and that only a later version includes. Cellar does not know the date if it has only
-   * a placeholder, or no date with a day. The text of {@code version} may lag the law from the day
-   * each of these acts entered into force.
-   *
-   * <p>For example, 2019/413 is in force from 16 March 2019. It applies from a date that its
-   * Article 3 sets. The version of 15 March 2021 is the first to include it.
-   *
-   * <p>The acts are in the order in which the later versions include them.
-   */
-  public List<Uncertain> mayLag(Version version) {
-    var until =
-        timeline.versions().stream()
-            .map(Version::date)
-            .filter(d -> d.isAfter(version.date()))
-            .findFirst();
-    if (until.isEmpty()) {
-      return List.of();
-    }
-    var included = new HashSet<ActIdentifier>();
-    var uncertain = new ArrayList<Uncertain>();
-    for (var each : timeline.versions()) {
-      for (var act : each.integrates()) {
-        if (!included.add(act) || !each.date().isAfter(version.date())) {
-          continue;
-        }
-        var dates = datesOf(act);
-        var applying = dates.stream().filter(date -> date.kind() != Kind.ENTRY_INTO_FORCE).toList();
-        if (applying.isEmpty() || applying.stream().anyMatch(date -> date.date() != null)) {
-          continue;
-        }
-        dates.stream()
-            .filter(date -> date.kind() == Kind.ENTRY_INTO_FORCE && date.date() != null)
-            .map(date -> Objects.requireNonNull(date.date()))
-            .min(Comparator.naturalOrder())
-            .filter(inForce -> inForce.isBefore(until.get()))
-            .ifPresent(
-                inForce ->
-                    uncertain.add(new Uncertain(act, inForce, applying.getFirst().clause(), each)));
-      }
-    }
-    return uncertain;
-  }
-
   private Optional<ActDate> appliesFrom(ActIdentifier act) {
     var dates = datesOf(act);
     var applying = dates.stream().filter(date -> date.kind() != Kind.ENTRY_INTO_FORCE).toList();
@@ -304,19 +259,6 @@ public record Act(
             .filter(date -> date.date() != null)
             .min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
   }
-
-  /**
-   * An act that is in force before a version of this act includes it, and whose date of application
-   * Cellar does not know. The text may lag the law.
-   *
-   * @param act the act
-   * @param inForce the day it entered into force
-   * @param clause what sets the date it applies from, for example Article 3
-   * @param includedIn the first version that includes it
-   */
-  @ValueObject
-  public record Uncertain(
-      ActIdentifier act, LocalDate inForce, ActDate.Clause clause, Version includedIn) {}
 
   /**
    * An act that applies before a version of this one includes it.

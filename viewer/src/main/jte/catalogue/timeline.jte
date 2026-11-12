@@ -7,11 +7,11 @@
      with the nearer end moved to that version.
      Versions that are too close to click one by one share one mark. That mark is a details element
      that opens a list of them. The details elements share one name, so only one opens at a time.
-     Lags are hatched, and the compared range is a band.
+     The compared range is a band.
      While the act is being prepared, each mark shows the state of its version's text and is not a
      link. The stream swaps this element by its id (#timeline). --%>
 <section id="timeline" class="timeline" aria-label="Versions">
-  <p class="timeline-head"><span>Versions</span><span>${timeline.hint()}</span></p>
+  <p class="timeline-head"><span>Versions</span></p>
   <div class="axis">
     <span class="axis-line"></span>
     @if(timeline.band() != null)
@@ -19,9 +19,6 @@
     @endif
     @for(var year : timeline.years())
       <time class="year" datetime="${year.year()}" style="${year.style()}">${year.year()}</time>
-    @endfor
-    @for(var lag : timeline.lags())
-      <span class="lag" style="${lag.style()}" title="${lag.text()}"></span>
     @endfor
     @for(var mark : timeline.marks())
       @if(mark instanceof Tick tick)

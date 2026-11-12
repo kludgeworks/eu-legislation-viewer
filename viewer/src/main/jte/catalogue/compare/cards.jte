@@ -12,12 +12,6 @@
       <a class="card-celex mono" href="${card.eurLex()}" title="On EUR-Lex">${card.celex()}</a>
       <span>${card.period()}</span>
       <span title="${card.published()}">${card.made()}</span>
-      @for(var lag : card.lags())
-        <span class="lag-warning">${lag}</span>
-      @endfor
-      @for(var lag : card.mayLag())
-        <span class="lag-maybe">${lag}</span>
-      @endfor
       <form class="on" method="get" action="${card.action()}">
         <label for="${card.name()}">or the version on</label>
         <input id="${card.name()}" name="${card.name()}" type="date" value="${card.on()}" min="${card.first()}" required>

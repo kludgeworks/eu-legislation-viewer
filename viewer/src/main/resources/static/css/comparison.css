@@ -417,26 +417,17 @@ details.ledger-fold[open] {
   color: var(--accent);
 }
 
-/* The lines of a sidenote. First is the act that made the change. Then come the note, when each act
- * applies, and what the text was before. Each one is on a line of its own. */
+/* The lines of a sidenote. First is the act that made the change. Then come the note and when each
+ * act applies. Each one is on a line of its own. */
 .sidenote .made {
   font-weight: 600;
   color: var(--ink3);
 }
 
 .sidenote .made + .note,
-.sidenote .applies,
-.sidenote .why,
-.sidenote .before {
+.sidenote .applies {
   display: block;
   margin-top: 3px;
-}
-
-/* What the reader must know about who made the change. For example, acts made it together, it shows
- * only in the data, or it is not known. */
-.sidenote .why {
-  color: var(--muted);
-  font-style: italic;
 }
 
 /* When the comparison shows the changes of one act only, some changes may be of that act, but this

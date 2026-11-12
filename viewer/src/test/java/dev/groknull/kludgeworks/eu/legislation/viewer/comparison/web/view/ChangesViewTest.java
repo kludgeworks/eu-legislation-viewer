@@ -10,7 +10,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibl
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Fold;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Lead;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.NoPreamble;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Passage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Shown;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
@@ -182,14 +181,13 @@ class ChangesViewTest {
   }
 
   @Test
-  void notesFirstThatAPreambleOnlyOneTextHasIsntCompared() {
+  void saysNothingOfAPreambleOnlyOneTextHas() {
     var compared = comparison("02015R1998-20260101", "02015R1998-20260322");
     var without =
         new Comparison(
             compared.from(), compared.to(), compared.differences(), compared.closing(), Side.LATER);
 
-    assertThat(ChangesView.of(without).passages().getFirst()).isEqualTo(new NoPreamble(Side.LATER));
-    assertThat(ChangesView.of(compared).passages()).noneMatch(NoPreamble.class::isInstance);
+    assertThat(ChangesView.of(without).passages()).isEqualTo(ChangesView.of(compared).passages());
   }
 
   private static String passage(Passage passage) {
@@ -197,7 +195,6 @@ class ChangesViewTest {
       case Lead lead -> "lead";
       case Fold fold -> fold.label();
       case Shown shown -> String.valueOf(shown.number());
-      case NoPreamble none -> "no preamble";
     };
   }
 

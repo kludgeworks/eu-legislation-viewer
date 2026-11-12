@@ -6,8 +6,7 @@
 @param SidenoteParts parts = null
 <%-- Shows what a difference's sidenote says. In the Changes and Whole text views, the sidenote is
      beside the difference. In the Synopsis view, it is in the last column. It shows the difference's
-     number, what happened, which acts made it and when each applies. It also says what to know about
-     who made it, and what the text was before. --%>
+     number, what happened, which acts made it and when each applies. --%>
 <b>${shown.number()}</b>
 <%-- The hover of who made it lists how the acts were published. If the view sends it once for all
      the sidenotes (parts), js/sidenotes.js sets it from there. --%>
@@ -34,6 +33,4 @@
       <span class="applies">@template.comparison.applies(applies = applies)</span>
     @endfor
   @endif
-  @if(sidenote.why() != null)<span class="why">${sidenote.why()}</span>@endif
-  @if(sidenote.before() != null)<span class="before">${sidenote.before()}</span>@endif
 @endif

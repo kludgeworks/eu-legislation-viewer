@@ -79,7 +79,7 @@ class ChangesPagesTests {
                 + " October 2026 · Article 2 of 2026/449 says which part from when");
     assertThat(sidenote.select(".applies a").attr("href"))
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
-    assertThat(sidenote.select(".before").text()).isEqualTo("Before: original act");
+    assertThat(sidenote.select(".before")).isEmpty();
     // Each unit of the later text shows once: as a difference, as an opening, or in a fold.
     assertThat(changes.select("details.fold summary").eachText())
         .containsExactly(
