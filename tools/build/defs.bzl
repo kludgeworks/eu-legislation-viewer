@@ -206,8 +206,8 @@ def sparql_terms_test(
 def jooq_tables(name, migrations, package, config, deps = [], **kwargs):
     """A module's tables as jOOQ classes, generated from its Flyway migrations: a java_library.
 
-    The migrations run on embedded Postgres (zonky's binaries, so no Docker), and jOOQ's generator
-    reads the schema they make (JooqCodegen). The generated code is jOOQ's, so it is left out of our
+    The migrations run on Postgres in Docker (production's image, by Testcontainers), and jOOQ's
+    generator reads the schema they make (JooqCodegen). The generated code is jOOQ's, so it is left out of our
     checks. Each of its packages is in the infrastructure ring of the sliced onion, so the
     architecture rules do check how it is used.
 

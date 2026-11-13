@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.build;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import io.zonky.test.db.postgres.embedded.EmbeddedPostgres;
+import dev.groknull.kludgeworks.build.postgres.Postgres;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,24 +14,25 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
+import org.testcontainers.postgresql.PostgreSQLContainer;
 
 /**
- * The expand-contract check on Postgres, embedded: each test with its migrations in a module of its
- * own, on a database of its own. The released schema is a table {@code act}, made by a V file.
+ * The expand-contract check on Postgres, in Docker: each test with its migrations in a module of
+ * its own, on a database of its own. The released schema is a table {@code act}, made by a V file.
  */
 class ExpandContractTest {
   private static final AtomicInteger DATABASES = new AtomicInteger();
-  private static @Nullable EmbeddedPostgres postgres;
+  private static @Nullable PostgreSQLContainer postgres;
 
   @TempDir Path migrations;
 
   @BeforeAll
-  static void start() throws IOException {
-    postgres = EmbeddedPostgres.start();
+  static void start() {
+    postgres = Postgres.start();
   }
 
   @AfterAll
-  static void stop() throws IOException {
+  static void stop() {
     if (postgres != null) {
       postgres.close();
     }
@@ -209,15 +210,15 @@ class ExpandContractTest {
   }
 
   private ExpandContract.Report check() throws IOException, SQLException {
-    var embedded = java.util.Objects.requireNonNull(postgres);
+    var container = java.util.Objects.requireNonNull(postgres);
     var name = "test_" + DATABASES.incrementAndGet();
-    try (var connection = embedded.getPostgresDatabase().getConnection();
+    try (var connection = Postgres.dataSource(container).getConnection();
         var statement = connection.createStatement()) {
       // name is test_ and a counter: no input
       // nosemgrep: semgrep.jdbc-no-raw-sql-concatenation
       statement.execute("create database " + name);
     }
-    return ExpandContract.check(embedded.getDatabase("postgres", name), migrations);
+    return ExpandContract.check(Postgres.dataSource(container, name), migrations);
   }
 
   private void released(String... statements) throws IOException {

@@ -15,6 +15,7 @@ java_library(
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/postgres",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:com_tngtech_archunit_archunit",
         "@maven//:org_flywaydb_flyway_core",

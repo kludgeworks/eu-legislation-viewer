@@ -20,12 +20,6 @@
     "io.soabase.record-builder:record-builder-core": -1681324538,
     "io.soabase.record-builder:record-builder-processor": -967953703,
     "io.xspec:xspec": -1230917719,
-    "io.zonky.test.postgres:embedded-postgres-binaries-bom": -794097725,
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64": 896408245,
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8": 1897381083,
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64": -396164130,
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8": 980877252,
-    "io.zonky.test:embedded-postgres": -1466651417,
     "jakarta.servlet:jakarta.servlet-api": 712477102,
     "jakarta.validation:jakarta.validation-api": -1858198223,
     "name.dmaus.schxslt:schxslt2": 601299804,
@@ -178,13 +172,6 @@
     "io.soabase.record-builder:record-builder-core": -1459491078,
     "io.soabase.record-builder:record-builder-processor": -407928797,
     "io.xspec:xspec": -998869811,
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64": -2033809031,
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8": -90890661,
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64": 2064203907,
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64-alpine": 228035942,
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8": -1505306515,
-    "io.zonky.test.postgres:embedded-postgres-binaries-windows-amd64": 1911047925,
-    "io.zonky.test:embedded-postgres": -1683256338,
     "jakarta.activation:jakarta.activation-api": -1623326611,
     "jakarta.annotation:jakarta.annotation-api": 196616042,
     "jakarta.servlet:jakarta.servlet-api": -1421863120,
@@ -346,7 +333,6 @@
     "org.testcontainers:testcontainers-grafana": 740736833,
     "org.testcontainers:testcontainers-jdbc": 361901508,
     "org.testcontainers:testcontainers-postgresql": 1085468834,
-    "org.tukaani:xz": 1388636806,
     "org.webjars.npm:htmx.org": 1035646194,
     "org.webjars:webjars-locator-lite": -454234071,
     "org.xmlresolver:xmlresolver": 602572078,
@@ -366,10 +352,6 @@
     "com.google.errorprone:error_prone_annotations:2.5.1": "com.google.errorprone:error_prone_annotations:2.50.0",
     "com.google.guava:guava:32.0.1-jre": "com.google.guava:guava:33.6.0-jre",
     "com.google.j2objc:j2objc-annotations:2.8": "com.google.j2objc:j2objc-annotations:3.1",
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64": "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64:18.3.0",
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8": "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8:18.3.0",
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64": "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64:18.3.0",
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8": "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8:18.3.0",
     "jakarta.servlet:jakarta.servlet-api": "jakarta.servlet:jakarta.servlet-api:6.1.0",
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
@@ -923,48 +905,6 @@
         "jar": "ebc83b13f5ec9024bf8281fc7760444d3b90dd91de45adc83f947b5df589037f"
       },
       "version": "4.1.2"
-    },
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64": {
-      "shasums": {
-        "jar": "cb68c57232945f5e74db946e6077d70cec56bfed35959b21acc750cc80ca0977"
-      },
-      "version": "18.3.0"
-    },
-    "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8": {
-      "shasums": {
-        "jar": "a18ec9ec6a905e04f5a08a8f7870bddadd635feb54dee332a3daf80fada3cb1a"
-      },
-      "version": "18.3.0"
-    },
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64": {
-      "shasums": {
-        "jar": "1974c3a59c3ae010e9818e81637e425aad94eaac26e4ef533b42e081fe7ca345"
-      },
-      "version": "18.3.0"
-    },
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64-alpine": {
-      "shasums": {
-        "jar": "510fd314da39f1eeccef774a92428474168fedf55403342548e2adeaed66b483"
-      },
-      "version": "18.3.0"
-    },
-    "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8": {
-      "shasums": {
-        "jar": "1fb555a6602c13a113ab1f0cc9224d599948e85e51ac5f001393605505eaf78e"
-      },
-      "version": "18.3.0"
-    },
-    "io.zonky.test.postgres:embedded-postgres-binaries-windows-amd64": {
-      "shasums": {
-        "jar": "e1e2bb484f775c0b70fbde39c69451a7a4925629a85d622f557fe6f60de37ba1"
-      },
-      "version": "18.3.0"
-    },
-    "io.zonky.test:embedded-postgres": {
-      "shasums": {
-        "jar": "9b1722ccfbfb441b7b1440edd35c1a229b173d82ab25d6111dd8642b48ba66fa"
-      },
-      "version": "2.2.2"
     },
     "jakarta.activation:jakarta.activation-api": {
       "shasums": {
@@ -1932,12 +1872,6 @@
       },
       "version": "2.0.5"
     },
-    "org.tukaani:xz": {
-      "shasums": {
-        "jar": "0a4077f6aeae2865532a564807af8d30c26acc6f63b7928d93bd7ab1f2190449"
-      },
-      "version": "1.11"
-    },
     "org.webjars.npm:htmx.org": {
       "shasums": {
         "jar": "d8384bd35a00f04714a399fee8fd4de9f82830e7350a5415c1906ca8394d1b85"
@@ -2286,19 +2220,6 @@
     ],
     "io.xspec:xspec": [
       "net.sf.saxon:Saxon-HE"
-    ],
-    "io.zonky.test:embedded-postgres": [
-      "commons-codec:commons-codec",
-      "commons-io:commons-io",
-      "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64",
-      "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64",
-      "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64-alpine",
-      "io.zonky.test.postgres:embedded-postgres-binaries-windows-amd64",
-      "org.apache.commons:commons-compress",
-      "org.apache.commons:commons-lang3",
-      "org.postgresql:postgresql",
-      "org.slf4j:slf4j-api",
-      "org.tukaani:xz"
     ],
     "jakarta.xml.bind:jakarta.xml.bind-api": [
       "jakarta.activation:jakarta.activation-api"
@@ -3883,12 +3804,6 @@
     "io.xspec:xspec": [
       "com.jenitennison.xslt.tests",
       "io.xspec.xspec.saxon.funcdefs"
-    ],
-    "io.zonky.test:embedded-postgres": [
-      "io.zonky.test.db.postgres.embedded",
-      "io.zonky.test.db.postgres.junit",
-      "io.zonky.test.db.postgres.junit5",
-      "io.zonky.test.db.postgres.util"
     ],
     "jakarta.activation:jakarta.activation-api": [
       "jakarta.activation",
@@ -6491,17 +6406,6 @@
       "org.testcontainers.containers",
       "org.testcontainers.postgresql"
     ],
-    "org.tukaani:xz": [
-      "org.tukaani.xz",
-      "org.tukaani.xz.check",
-      "org.tukaani.xz.common",
-      "org.tukaani.xz.delta",
-      "org.tukaani.xz.index",
-      "org.tukaani.xz.lz",
-      "org.tukaani.xz.lzma",
-      "org.tukaani.xz.rangecoder",
-      "org.tukaani.xz.simple"
-    ],
     "org.webjars:webjars-locator-lite": [
       "org.webjars"
     ],
@@ -6712,13 +6616,6 @@
       "io.soabase.record-builder:record-builder-core",
       "io.soabase.record-builder:record-builder-processor",
       "io.xspec:xspec",
-      "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64",
-      "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8",
-      "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64",
-      "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64-alpine",
-      "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8",
-      "io.zonky.test.postgres:embedded-postgres-binaries-windows-amd64",
-      "io.zonky.test:embedded-postgres",
       "jakarta.activation:jakarta.activation-api",
       "jakarta.annotation:jakarta.annotation-api",
       "jakarta.servlet:jakarta.servlet-api",
@@ -6880,7 +6777,6 @@
       "org.testcontainers:testcontainers-grafana",
       "org.testcontainers:testcontainers-jdbc",
       "org.testcontainers:testcontainers-postgresql",
-      "org.tukaani:xz",
       "org.webjars.npm:htmx.org",
       "org.webjars:webjars-locator-lite",
       "org.xmlresolver:xmlresolver",

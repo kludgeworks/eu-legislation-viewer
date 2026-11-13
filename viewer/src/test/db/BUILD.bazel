@@ -3,7 +3,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_test")
 load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
 load("@rules_shell//shell:sh_test.bzl", "sh_test")
 
-# tbls on the schema the migrations make, built on embedded Postgres, with .tbls.yml: the arguments
+# tbls on the schema the migrations make, built on Postgres in Docker, with .tbls.yml: the arguments
 # both targets start with, then tbls's command
 SCHEMA_ARGS = [
     "$(rootpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_database)",
@@ -25,6 +25,7 @@ sh_test(
     srcs = ["schema.sh"],
     args = SCHEMA_ARGS + ["lint"],
     data = SCHEMA_DATA,
+    tags = ["requires-docker"],
 )
 
 # the schema's documentation and Mermaid diagrams, written into docs/database (mise run db:diagram)
@@ -46,6 +47,7 @@ java_test(
     data = ["//viewer/src/main/resources:migrations"],
     jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"],
     main_class = "dev.groknull.kludgeworks.build.ExpandContract",
+    tags = ["requires-docker"],
     use_testrunner = False,
     runtime_deps = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:expand_contract"],
 )

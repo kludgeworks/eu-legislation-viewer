@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.build;
 
 import dev.groknull.kludgeworks.build.flyway.ModuleMigrations;
 import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
-import io.zonky.test.db.postgres.embedded.EmbeddedPostgres;
+import dev.groknull.kludgeworks.build.postgres.Postgres;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -264,16 +264,16 @@ public final class ExpandContract {
   }
 
   /**
-   * Checks the modules' migrations in the directory given, on embedded Postgres, and fails if the
-   * release would break the running one without saying so.
+   * Checks the modules' migrations in the directory given, on Postgres in Docker ({@link
+   * Postgres}), and fails if the release would break the running one without saying so.
    */
   public static void main(String[] args) throws IOException, SQLException {
     if (args.length != 1) {
       throw new IllegalArgumentException("Usage: ExpandContract <migrations>");
     }
     Report report;
-    try (var postgres = EmbeddedPostgres.start()) {
-      report = check(postgres.getPostgresDatabase(), Path.of(args[0]));
+    try (var postgres = Postgres.start()) {
+      report = check(Postgres.dataSource(postgres), Path.of(args[0]));
     }
     report.problems().forEach(problem -> System.out.println("✗ " + problem));
     if (report.problems().isEmpty()) {

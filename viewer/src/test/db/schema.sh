@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
-# Runs tbls on the schema the migrations make: SchemaDatabase builds it on embedded Postgres, then
+# Runs tbls on the schema the migrations make: SchemaDatabase builds it on Postgres in Docker, then
 # runs tbls on it, in the workspace when bazel run runs this. Arguments: SchemaDatabase, the
 # migrations' directory, tbls, its configuration, then tbls's command (lint; doc --rm-dist)
 set -euo pipefail

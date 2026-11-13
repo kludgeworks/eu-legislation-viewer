@@ -2,17 +2,14 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
 # The build tools' own tests: one test target per *Test.java. Medium for ExpandContractTest, which
-# starts Postgres (embedded: zonky's binaries, no Docker)
+# starts Postgres in Docker
 java_test_suite(
     name = "build",
     size = "medium",
     srcs = glob(["*.java"]),
     runner = "junit5",
+    tags = ["requires-docker"],
     runtime_deps = [
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_arm64v8",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_arm64v8",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_jooq_jooq",
         "@maven//:org_jooq_jooq_codegen",
@@ -26,7 +23,7 @@ java_test_suite(
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build:expand_contract",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build:jooq_codegen",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build:sparql_terms",
-        "@maven//:io_zonky_test_embedded_postgres",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/postgres",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",

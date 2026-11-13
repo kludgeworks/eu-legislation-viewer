@@ -85,11 +85,6 @@ maven.install(
         "org.flywaydb:flyway-database-postgresql",
         "org.postgresql:postgresql",
         # jOOQ's temporary Postgres: native binaries, so code generation does not need Docker
-        "io.zonky.test:embedded-postgres:2.2.2",
-        "io.zonky.test.postgres:embedded-postgres-binaries-darwin-amd64",
-        "io.zonky.test.postgres:embedded-postgres-binaries-darwin-arm64v8",
-        "io.zonky.test.postgres:embedded-postgres-binaries-linux-amd64",
-        "io.zonky.test.postgres:embedded-postgres-binaries-linux-arm64v8",
         "org.springframework.modulith:spring-modulith-starter-jdbc",
         # Valkey (Spring Data Redis, Lettuce): the externalized events every instance reads back (the
         # broadcast module's streams)
@@ -171,8 +166,6 @@ maven.install(
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
         "org.springframework.modulith:spring-modulith-bom:2.1.1",
         "org.jmolecules:jmolecules-bom:2025.0.2",
-        # Keep embedded Postgres's native binaries aligned with the Postgres 18 used in production.
-        "io.zonky.test.postgres:embedded-postgres-binaries-bom:18.3.0",
     ],
     known_contributing_modules = ["protobuf"],
     # the resolved versions and their SHA-256s; after changing the artifacts: mise run pin

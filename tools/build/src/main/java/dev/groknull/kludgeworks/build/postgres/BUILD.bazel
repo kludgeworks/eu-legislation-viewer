@@ -1,0 +1,19 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+
+# The Postgres the build and the tests run on: production's image, in Docker (Testcontainers)
+java_library(
+    name = "postgres",
+    srcs = glob(["*.java"]),
+    visibility = [
+        "//tools/build:__subpackages__",
+        "//viewer:__subpackages__",
+    ],
+    exports = ["@maven//:org_testcontainers_testcontainers_postgresql"],
+    deps = [
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_postgresql_postgresql",
+        "@maven//:org_testcontainers_testcontainers",
+        "@maven//:org_testcontainers_testcontainers_postgresql",
+    ],
+)

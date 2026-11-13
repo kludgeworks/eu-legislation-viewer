@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer;
 
 import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
 import dev.groknull.kludgeworks.build.flyway.RenamedMigrations;
+import dev.groknull.kludgeworks.build.postgres.Postgres;
 import org.springframework.boot.flyway.autoconfigure.FlywayConfigurationCustomizer;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -22,7 +23,9 @@ import org.testcontainers.utility.DockerImageName;
  */
 @TestConfiguration(proxyBeanMethods = false)
 public class TestcontainersConfiguration {
-  public static final DockerImageName POSTGRES = DockerImageName.parse("postgres:18.6");
+  /** Postgres: the image production runs, which the build runs on too. */
+  public static final DockerImageName POSTGRES = Postgres.IMAGE;
+
   public static final DockerImageName VALKEY = DockerImageName.parse("valkey/valkey:9.1.2");
 
   /** Valkey's port. */

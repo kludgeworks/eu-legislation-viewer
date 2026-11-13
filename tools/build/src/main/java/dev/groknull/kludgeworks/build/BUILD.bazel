@@ -93,7 +93,7 @@ java_binary(
     ],
 )
 
-# jOOQ's code generator on a module's migrations, run on embedded Postgres (the macro jooq_tables)
+# jOOQ's code generator on a module's migrations, run on Postgres in Docker (the macro jooq_tables)
 java_binary(
     name = "jooq_codegen",
     srcs = [
@@ -108,10 +108,6 @@ java_binary(
     ],
     main_class = "dev.groknull.kludgeworks.build.JooqCodegen",
     runtime_deps = [
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_arm64v8",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_arm64v8",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_postgresql_postgresql",
         "@maven//:org_slf4j_slf4j_simple",  # Postgres's log, in the action's output on failure
@@ -119,24 +115,20 @@ java_binary(
     deps = [
         ":package_info",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
-        "@maven//:io_zonky_test_embedded_postgres",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/postgres",
         "@maven//:org_flywaydb_flyway_core",
         "@maven//:org_jooq_jooq_codegen",
         "@maven//:org_jooq_jooq_meta",
     ],
 )
 
-# a command run on embedded Postgres with the app's schema, from its migrations (mise run db:diagram)
+# a command run on Postgres in Docker with the app's schema, from its migrations (mise run db:diagram)
 java_binary(
     name = "schema_database",
     srcs = ["SchemaDatabase.java"],
     jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"],
     main_class = "dev.groknull.kludgeworks.build.SchemaDatabase",
     runtime_deps = [
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_arm64v8",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_arm64v8",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_postgresql_postgresql",
         "@maven//:org_slf4j_slf4j_simple",  # Postgres's and Flyway's log: warnings and errors
@@ -144,21 +136,17 @@ java_binary(
     deps = [
         ":package_info",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
-        "@maven//:io_zonky_test_embedded_postgres",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/postgres",
         "@maven//:org_flywaydb_flyway_core",
     ],
 )
 
 # the check that a release's pending migrations keep the schema the running release uses, with
-# what it runs on: Postgres embedded, and Flyway's support for it (//viewer/src/test/db:expand_contract)
+# what it runs on: Postgres in Docker, and Flyway's support for it (//viewer/src/test/db:expand_contract)
 java_library(
     name = "expand_contract",
     srcs = ["ExpandContract.java"],
     runtime_deps = [
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_darwin_arm64v8",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_amd64",
-        "@maven//:io_zonky_test_postgres_embedded_postgres_binaries_linux_arm64v8",
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_postgresql_postgresql",
         "@maven//:org_slf4j_slf4j_simple",  # Postgres's and Flyway's log: warnings and errors
@@ -166,7 +154,7 @@ java_library(
     deps = [
         ":package_info",
         "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
-        "@maven//:io_zonky_test_embedded_postgres",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/postgres",
         "@maven//:org_flywaydb_flyway_core",
         "@maven//:org_jspecify_jspecify",
     ],

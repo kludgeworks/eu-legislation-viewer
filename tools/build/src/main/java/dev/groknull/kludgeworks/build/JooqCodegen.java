@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.build;
 
 import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
-import io.zonky.test.db.postgres.embedded.EmbeddedPostgres;
+import dev.groknull.kludgeworks.build.postgres.Postgres;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,9 +14,9 @@ import org.jooq.meta.jaxb.Target;
 
 /**
  * A module's tables as jOOQ classes (the macro jooq_tables): its migrations run by Flyway on
- * Postgres itself, embedded (zonky's binaries, the major version production runs), and the schema
- * they make read by jOOQ's generator. Postgres, not an imitation of it, so that what is generated
- * is what the app runs on. Its pending migrations (NEXT_001__description.sql) run too, after the
+ * Postgres itself, in Docker ({@link Postgres}: the image production runs), and the schema they
+ * make read by jOOQ's generator. Postgres, not an imitation of it, so that what is generated is
+ * what the app runs on. Its pending migrations (NEXT_001__description.sql) run too, after the
  * released ones: {@link PendingMigrations}.
  *
  * <p>Each package that it generates gets a {@code package-info.java} that puts it in the
@@ -50,10 +50,9 @@ public final class JooqCodegen {
     var packageName = args[2];
     var jar = Path.of(args[3]);
     var directory = SourceJar.directoryFor(jar);
-    try (var postgres = EmbeddedPostgres.start()) {
-      var url = postgres.getJdbcUrl("postgres", "postgres");
+    try (var postgres = Postgres.start()) {
       PendingMigrations.configure(Flyway.configure())
-          .dataSource(postgres.getPostgresDatabase())
+          .dataSource(Postgres.dataSource(postgres))
           .locations("filesystem:" + migrations.toAbsolutePath())
           .load()
           .migrate();
@@ -63,8 +62,9 @@ public final class JooqCodegen {
                 .withJdbc(
                     new Jdbc()
                         .withDriver("org.postgresql.Driver")
-                        .withUrl(url)
-                        .withUser("postgres"));
+                        .withUrl(postgres.getJdbcUrl())
+                        .withUser(postgres.getUsername())
+                        .withPassword(postgres.getPassword()));
         var generator = configuration.getGenerator();
         generator
             .getDatabase()
