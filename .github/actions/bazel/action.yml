@@ -1,0 +1,79 @@
+# SPDX-License-Identifier: MIT
+name: Bazel
+description: >
+  Bazel with the disk cache every workflow shares, and the homelab remote cache (bazel-remote) over
+  Tailscale when the run may reach it. The remote cache is optional: a run that can't reach it
+  builds with the disk cache alone.
+
+inputs:
+  cache-save:
+    description: Whether to save the disk cache at the end of the job
+    default: "true"
+  remote-cache:
+    description: The remote cache's address (vars.BAZEL_REMOTE_CACHE); none, no remote cache
+    default: ""
+  tailscale-client-id:
+    description: The Tailscale OIDC client (vars.TS_OIDC_CLIENT_ID)
+    default: ""
+  tailscale-audience:
+    description: The Tailscale OIDC audience (vars.TS_OIDC_AUDIENCE)
+    default: ""
+  write-auth:
+    description: >
+      The Authorization header that lets the run write to the remote cache
+      (secrets.BAZEL_CACHE_WRITE_AUTH). Only pushes to main pass it: the repository is public, so a
+      pull request could poison the cache. None, the run reads only.
+    default: ""
+
+runs:
+  using: composite
+  steps:
+    # one disk cache for every workflow: a release is cut from main, so it finds main's actions
+    - uses: bazel-contrib/setup-bazel@f34d6a05eae3c24acab7fa54587492daeaeffdab # 0.19.2
+      with:
+        bazelisk-cache: true
+        disk-cache: bazel-shared
+        repository-cache: true
+        cache-save: ${{ inputs.cache-save }}
+
+    # Only runs with an OIDC token reach the tailnet: pushes, and pull requests from this
+    # repository that Dependabot did not open. The ping fails the step if bazel-cache can't be
+    # reached, and then the run builds without it.
+    - id: tailscale
+      if: >-
+        inputs.remote-cache != '' && inputs.tailscale-client-id != '' &&
+        (github.event_name == 'push' ||
+         (github.event.pull_request.head.repo.full_name == github.repository &&
+          github.actor != 'dependabot[bot]'))
+      continue-on-error: true
+      uses: tailscale/github-action@064b10558093f38325e838ddea35486bdc6b1d5c # v4.4.0
+      with:
+        oauth-client-id: ${{ inputs.tailscale-client-id }}
+        audience: ${{ inputs.tailscale-audience }}
+        tags: tag:ci
+        ping: bazel-cache
+
+    - if: steps.tailscale.outcome == 'success'
+      shell: bash
+      env:
+        REMOTE_CACHE: ${{ inputs.remote-cache }}
+        WRITE_AUTH: ${{ inputs.write-auth }}
+      run: |
+        set -euo pipefail
+        echo "common --remote_cache=$REMOTE_CACHE" >>~/.bazelrc
+        if [[ -n "$WRITE_AUTH" ]]; then
+          printf 'common "--remote_header=Authorization=%s"\n' "$WRITE_AUTH" >>~/.bazelrc
+          echo "Remote cache: $REMOTE_CACHE, read and write"
+        else
+          echo "common --noremote_upload_local_results" >>~/.bazelrc
+          echo "Remote cache: $REMOTE_CACHE, read only"
+        fi
+
+    - if: steps.tailscale.outcome != 'success'
+      shell: bash
+      run: |
+        echo "Remote cache not reachable from this run: the disk cache only"
+
+    # CI stops at the first test that fails (.bazelrc, config ci)
+    - shell: bash
+      run: echo "common --config=ci" >>~/.bazelrc

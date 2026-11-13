@@ -19,9 +19,14 @@ env:
   MISE_VERSION: 2026.11.3
 
 jobs:
-  verify:
+  # The checks, and every test that needs no Docker: the unit tests and the linters' tests
+  # (SpotBugs, PMD). It runs beside integration, from the start: no job waits for another.
+  fast-checks:
     runs-on: ubuntu-26.04
-    timeout-minutes: 180
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      id-token: write # Tailscale's OIDC exchange, for the remote cache
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -33,12 +38,14 @@ jobs:
         with:
           version: ${{ env.MISE_VERSION }}
 
-      - uses: bazel-contrib/setup-bazel@f34d6a05eae3c24acab7fa54587492daeaeffdab # 0.19.2
+      - uses: ./.github/actions/bazel
         with:
-          bazelisk-cache: true
-          disk-cache: ${{ github.workflow }}
-          repository-cache: true
           cache-save: ${{ github.event_name != 'pull_request' }}
+          remote-cache: ${{ vars.BAZEL_REMOTE_CACHE }}
+          tailscale-client-id: ${{ vars.TS_OIDC_CLIENT_ID }}
+          tailscale-audience: ${{ vars.TS_OIDC_AUDIENCE }}
+          # writes only from main: the repository is public, so a pull request could poison it
+          write-auth: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.BAZEL_CACHE_WRITE_AUTH || '' }}
 
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
@@ -46,6 +53,36 @@ jobs:
       - name: Dependency vulnerability check
         run: mise run lint:deps
       # the compile's checks too: Error Prone, NullAway and doclint fail the build
-      - name: Build and test
-        run: mise run test
+      - name: Build and test, without Docker
+        run: bazel test //... --test_tag_filters=-requires-docker
+
+  # The tests that start Postgres and Valkey in Docker (Testcontainers), and the app's JAR.
+  integration:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+      id-token: write # Tailscale's OIDC exchange, for the remote cache
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # the release tags: the expand-contract check compares the pending migrations with them
+          fetch-tags: true
+          persist-credentials: false
+
+      - uses: jdx/mise-action@d5574b52816a478f9d4e6529a3f6ff17a8a36785 # v5.2.8
+        with:
+          version: ${{ env.MISE_VERSION }}
+
+      - uses: ./.github/actions/bazel
+        with:
+          # fast-checks saves the disk cache: one job saves it, so the two don't race
+          cache-save: false
+          remote-cache: ${{ vars.BAZEL_REMOTE_CACHE }}
+          tailscale-client-id: ${{ vars.TS_OIDC_CLIENT_ID }}
+          tailscale-audience: ${{ vars.TS_OIDC_AUDIENCE }}
+          write-auth: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && secrets.BAZEL_CACHE_WRITE_AUTH || '' }}
+
+      - name: Test, with Docker
+        run: bazel test //... --test_tag_filters=requires-docker
       - run: bazel build //viewer:jar

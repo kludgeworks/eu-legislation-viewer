@@ -9,6 +9,9 @@ test --test_timeout=-1,-1,-1,7200
 # the machine holds: what a shard takes, 1 to 2 GB, not its heap's ceiling (8 GB), which only the
 # largest manifestations reach. Bazel's defaults for the smaller sizes
 test --default_test_resources=memory=20,100,300,2500
+# CI (the workflows' Bazel action turns it on): stop at the first test that fails, not after
+# every other test has run
+test:ci --notest_keep_going
 
 # NullAway on every Java target: the @NullMarked packages are checked against their JSpecify
 # annotations, and @Nullable is honoured where unmarked code has it.

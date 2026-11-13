@@ -51,11 +51,13 @@ jobs:
           version: ${{ env.MISE_VERSION }}
           cache: false
 
-      - uses: bazel-contrib/setup-bazel@f34d6a05eae3c24acab7fa54587492daeaeffdab # 0.19.2
+      # main's disk cache, which CI saves, and the remote cache to read: a release only reads it
+      - uses: ./.github/actions/bazel
         with:
-          bazelisk-cache: true
-          disk-cache: ${{ github.workflow }}
-          repository-cache: true
+          cache-save: false
+          remote-cache: ${{ vars.BAZEL_REMOTE_CACHE }}
+          tailscale-client-id: ${{ vars.TS_OIDC_CLIENT_ID }}
+          tailscale-audience: ${{ vars.TS_OIDC_AUDIENCE }}
 
       - env:
           PINACT_GITHUB_TOKEN: ${{ github.token }}
