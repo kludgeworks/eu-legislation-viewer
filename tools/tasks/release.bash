@@ -17,6 +17,8 @@ tasks=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 root=${REPO_ROOT:-$(cd "$(dirname "$0")/../.." && pwd)}
 cd "$root"
 migrations=viewer/src/main/resources/db/migration
+deployment=deploy/k8s/base/viewer.yaml
+image=ghcr.io/kludgeworks/eu-legislation-viewer
 checker=tools/tasks/release/db-migrations.bash
 notes=$tasks/release/notes.bash
 
@@ -157,6 +159,21 @@ rename_migrations() {
 	done < <(pending_migrations)
 }
 
+# The deployment's image at the release's version: its one image: line, the tag replaced
+pin_image() {
+	local version=$1
+	[[ $(grep -Fc "image: $image:" "$deployment" || true) = 1 ]] ||
+		die "$deployment has no image $image to pin, or more than one"
+	if [[ ${usage_dry_run:-false} = true ]]; then
+		info "Would pin the image" version "$version" in "$deployment"
+		return
+	fi
+	sed -E "s#(image: $image:).*\$#\1$version#" "$deployment" >"$deployment.pinning"
+	mv "$deployment.pinning" "$deployment"
+	git add "$deployment"
+	info "Pinned the image" version "$version" in "$deployment"
+}
+
 # A step failed after the release began changing main: back to where it began, which was clean
 # (require_clean_main), so --merge, which keeps unstaged work, has nothing else to keep.
 undo_release() {
@@ -185,6 +202,7 @@ main() {
 	info "Next release" version "$tag" migrations "$(pending_migrations | grep -c . || true)"
 	if [[ ${usage_dry_run:-false} = true ]]; then
 		rename_migrations "$version"
+		pin_image "$version"
 		show_notes "$tag"
 		exit 0
 	fi
@@ -195,6 +213,7 @@ main() {
 	info "Running every check"
 	mise run check
 	rename_migrations "$version"
+	pin_image "$version"
 	"$checker" --final
 	info "Running every test"
 	mise run test

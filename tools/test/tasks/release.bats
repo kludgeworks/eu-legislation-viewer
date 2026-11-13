@@ -9,6 +9,7 @@ setup() {
 	write "viewer/src/main/resources/db/migration/catalogue/V2026_10_0_001__catalogue.sql" "create table act ();\n"
 	write "viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql" "alter table act add column title text;\n"
 	write "viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" "create table ingest_job ();\n"
+	write "deploy/k8s/base/viewer.yaml" $'containers:\n  - name: viewer\n    image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.10.0\n'
 	commit
 	load_release
 }
@@ -58,6 +59,32 @@ viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
 	[ "$status" -eq 0 ]
 	[[ "$output" = *"Would rename from=viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql to=V2026_11_0_001__catalogue_title.sql"* ]] || false
 	[ -f "$repo/viewer/src/main/resources/db/migration/catalogue/NEXT_001__catalogue_title.sql" ]
+}
+
+@test "pins the deployment's image to the release's version, staged" {
+	pin_image 2026.11.0
+
+	[ "$(cat "$repo/deploy/k8s/base/viewer.yaml")" = 'containers:
+  - name: viewer
+    image: ghcr.io/kludgeworks/eu-legislation-viewer:2026.11.0' ]
+	[ "$(git -C "$repo" diff --cached --name-only)" = deploy/k8s/base/viewer.yaml ]
+}
+
+@test "shows the image's pin without making it in a dry run" {
+	usage_dry_run=true run pin_image 2026.11.0
+
+	[ "$status" -eq 0 ]
+	[[ "$output" = *"Would pin the image version=2026.11.0 in=deploy/k8s/base/viewer.yaml"* ]] || false
+	grep -q 'viewer:2026.10.0$' "$repo/deploy/k8s/base/viewer.yaml"
+}
+
+@test "does not release without one image of the viewer to pin" {
+	write "deploy/k8s/base/viewer.yaml" $'containers:\n  - name: viewer\n    image: ghcr.io/kludgeworks/other:1\n'
+
+	run pin_image 2026.11.0
+
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"has no image ghcr.io/kludgeworks/eu-legislation-viewer to pin, or more than one"* ]] || false
 }
 
 @test "pushes with --push and not with --no-push, without asking" {
@@ -181,6 +208,7 @@ prepare_release() {
 	[ "$status" -eq 0 ]
 	[ "$(git -C "$repo" log -1 --format=%s v2026.11.0)" = "chore(release): prepare v2026.11.0" ]
 	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/V2026_11_0_001__ingest_job.sql" ]
+	git -C "$repo" show v2026.11.0:deploy/k8s/base/viewer.yaml | grep -q 'viewer:2026.11.0$'
 	[[ "$output" = *"Kept local, not published version=v2026.11.0 publish=mise run release --push"* ]] || false
 	[ -z "$(git -C "$origin" tag --list v2026.11.0)" ]
 }
@@ -278,5 +306,6 @@ HOOK
 	[ "$(git -C "$repo" rev-parse HEAD)" = "$start" ]
 	[ -z "$(git -C "$repo" status --porcelain)" ]
 	[ -f "$repo/viewer/src/main/resources/db/migration/ingest/NEXT_001__ingest_job.sql" ]
+	grep -q 'viewer:2026.10.0$' "$repo/deploy/k8s/base/viewer.yaml"
 	[ -z "$(git -C "$repo" tag --list v2026.11.0)" ]
 }
