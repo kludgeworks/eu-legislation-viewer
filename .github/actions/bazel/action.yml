@@ -74,6 +74,7 @@ runs:
       run: |
         echo "Remote cache not reachable from this run: the disk cache only"
 
-    # CI stops at the first test that fails (.bazelrc, config ci)
+    # CI stops at the first test that fails (.bazelrc, config ci). For bazel test only: the config
+    # has only test options, and bazel build fails on a --config it has no lines for.
     - shell: bash
-      run: echo "common --config=ci" >>~/.bazelrc
+      run: echo "test --config=ci" >>~/.bazelrc
