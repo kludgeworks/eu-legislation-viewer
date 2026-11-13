@@ -3,26 +3,27 @@
  * Content holds the legal texts themselves.
  *
  * <ul>
- *   <li>A text is encoded as a Merkle tree. There is a node for each block and for each container.
- *       A block is, for example, a paragraph, a heading, a table row or a note. A container is, for
- *       example, a unit, a list or a table.
- *   <li>The SHA-256 of what a node holds is its hash. The hash of the root of the tree is the
- *       identity of the text.
- *   <li>Identifiers that move when a text is amended, the eIds, are not part of the hash of a node.
- *       They are in overlays on the edges to the nodes.
- *   <li>The tree is stored as chunks of about 16 KB. A chunk is a run of nodes, known by its hash.
- *       Content decides where the runs are cut. Thus a chunk that does not change between versions
- *       is stored once.
- *   <li>Nothing stored ever changes. A new version is a new root that reuses the chunks it can.
+ *   <li>A text is the converter's output for one version (by its CELEX) in one language. Content
+ *       keeps one text for each, known by a {@link TextId} that is never used again.
+ *   <li>A text is kept whole, as the JSON of its element tree, compressed with zstd. Its eIds and
+ *       note references are in it as the converter wrote them.
+ *   <li>A text stored again with the same JSON writes nothing. With another JSON, it replaces the
+ *       text before it, which is deleted, and {@link TextReplaced} tells the other modules. They
+ *       delete what they keep by the old identity.
+ *   <li>When Cellar withdraws a version, {@link VersionWithdrawn} deletes its texts in each
+ *       language, and {@link TextRemoved} tells the other modules, which delete what they keep by
+ *       each removed identity.
+ *   <li>To read a text, Content reads its row and parses the JSON into {@link Element} records. A
+ *       part of a text, for example a run of units, is cut from the whole text.
  * </ul>
  *
  * <p>The module is a sliced onion:
  *
  * <ul>
  *   <li>The root package is the API of the module and part of its domain ring. It holds {@link
- *       Content}, its hashes and its outlines. The {@code model} package holds the tree, its chunks
- *       and their rules.
- *   <li>The {@code application} package is the application ring. It stores and rebuilds texts, on a
+ *       Content}, the identities, events and outlines of texts. The {@code model} package holds the
+ *       JSON form of a text and its outline.
+ *   <li>The {@code application} package is the application ring. It stores and reads texts, on a
  *       store of texts that it declares.
  *   <li>The {@code infra} package is the infrastructure: the store in Postgres.
  * </ul>

@@ -26,6 +26,15 @@ public interface Ingest {
    */
   boolean retry(String celex, Language language);
 
+  /**
+   * Builds the expression again, because its source changed: Cellar republished its Formex. It
+   * queues the job again, from its first attempt, if it is built or failed. A job that is queued or
+   * building is left. An expression without a job is queued.
+   *
+   * @return the status of the job of the expression
+   */
+  IngestStatus rebuild(String celex, Language language);
+
   /** Returns the status of the job of the expression. Returns none if it was never scheduled. */
   Optional<IngestStatus> status(String celex, Language language);
 

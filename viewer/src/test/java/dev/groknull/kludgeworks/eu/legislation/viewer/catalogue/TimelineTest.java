@@ -6,21 +6,17 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatIllegalStateException;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 class TimelineTest {
   static final ActIdentifier ACT = new ActIdentifier("32015R1998");
   static final Version ORIGINAL =
-      Version.original(
-          LocalDate.of(2015, 11, 15),
-          ACT,
-          EnumSet.allOf(Language.class),
-          Instant.parse("2026-07-10T01:02:19.329Z"));
+      Version.original(LocalDate.of(2015, 11, 15), ACT, EnumSet.allOf(Language.class), Map.of());
   static final Version FIRST = consolidated("2016-02-29", false);
   static final Version INTERIM = consolidated("2026-10-01", true);
   static final Timeline TIMELINE = new Timeline(List.of(ORIGINAL, FIRST, INTERIM));
@@ -73,7 +69,7 @@ class TimelineTest {
             false,
             List.of(),
             EnumSet.allOf(Language.class),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+            Map.of());
 
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of(FIRST, sameDay)));
     assertThatIllegalArgumentException().isThrownBy(() -> new Timeline(List.of()));
@@ -82,11 +78,7 @@ class TimelineTest {
   @Test
   void allowsSameDayOriginalAndConsolidationWithDisjointLanguages() {
     var sameDayOriginal =
-        Version.original(
-            FIRST.date(),
-            ACT,
-            EnumSet.of(Language.ENG, Language.FRA),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+        Version.original(FIRST.date(), ACT, EnumSet.of(Language.ENG, Language.FRA), Map.of());
     var sameDayConsolidated =
         new Version(
             Version.Kind.CONSOLIDATED,
@@ -95,7 +87,7 @@ class TimelineTest {
             false,
             List.of(),
             EnumSet.of(Language.DEU, Language.FIN),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+            Map.of());
 
     var timeline = new Timeline(List.of(sameDayConsolidated, sameDayOriginal));
 
@@ -120,7 +112,7 @@ class TimelineTest {
             false,
             List.of(),
             EnumSet.of(Language.ENG),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+            Map.of());
     var sameDayUnfetched =
         new Version(
             Version.Kind.CONSOLIDATED,
@@ -129,7 +121,7 @@ class TimelineTest {
             false,
             List.of(),
             Set.of(),
-            null);
+            Map.of());
 
     var timeline = new Timeline(List.of(sameDayUnfetched, sameDayOriginal));
 
@@ -139,9 +131,7 @@ class TimelineTest {
 
   @Test
   void refusesLanguageAgnosticLookupsOnTimelineWithSameDayVersions() {
-    var sameDayOriginal =
-        Version.original(
-            FIRST.date(), ACT, EnumSet.of(Language.ENG), Instant.parse("2026-07-10T01:02:19.329Z"));
+    var sameDayOriginal = Version.original(FIRST.date(), ACT, EnumSet.of(Language.ENG), Map.of());
     var sameDayConsolidated =
         new Version(
             Version.Kind.CONSOLIDATED,
@@ -150,7 +140,7 @@ class TimelineTest {
             false,
             List.of(),
             EnumSet.of(Language.DEU),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+            Map.of());
 
     var timeline = new Timeline(List.of(sameDayConsolidated, sameDayOriginal));
 
@@ -176,7 +166,7 @@ class TimelineTest {
             false,
             List.of(),
             EnumSet.of(Language.ENG),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+            Map.of());
     var timeline = new Timeline(List.of(ORIGINAL, withoutIrish, INTERIM));
 
     assertThat(timeline.applicableOn(LocalDate.of(2020, 6, 1), Language.GLE))
@@ -206,7 +196,7 @@ class TimelineTest {
             false,
             List.of(),
             EnumSet.of(Language.ENG),
-            Instant.parse("2026-07-10T01:02:19.329Z"));
+            Map.of());
     var timeline = new Timeline(List.of(ORIGINAL, withoutIrish, INTERIM));
 
     var irish = timeline.in(Language.GLE).orElseThrow();
@@ -225,6 +215,6 @@ class TimelineTest {
         interim,
         List.of(),
         EnumSet.allOf(Language.class),
-        Instant.parse("2026-07-10T01:02:19.329Z"));
+        Map.of());
   }
 }

@@ -2,12 +2,11 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Collection;
 import java.util.Map;
-import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -19,14 +18,13 @@ import org.jspecify.annotations.Nullable;
  */
 public interface ExpressionStore {
 
-  /** Returns the text's root, if it is built. */
-  Optional<ContentHash> root(String celex, Language language);
-
-  /** Returns the roots of the texts that are built, by CELEX. */
-  Map<String, ContentHash> roots(Collection<String> celexes, Language language);
-
-  /** Returns the texts that are stored, as they stand, by CELEX. */
-  Map<String, Text> texts(Collection<String> celexes, Language language);
+  /**
+   * Returns the texts that are stored, as they stand, by CELEX. A text that is built is ready with
+   * its text in {@code stored}, which the content module gives. A text that is built but not in
+   * {@code stored} is queued: the content module no longer has it.
+   */
+  Map<String, Text> texts(
+      Collection<String> celexes, Language language, Map<String, TextId> stored);
 
   /** Stores as queued the texts that are not stored yet. */
   void queue(Collection<String> celexes, Language language);
@@ -43,8 +41,8 @@ public interface ExpressionStore {
    */
   boolean defer(String celex, Language language, int attempt);
 
-  /** Points the text at the root it was built as, in place of any it had. */
-  boolean keep(String celex, Language language, ContentHash root, String converter);
+  /** Marks the text as built. It does nothing if the text is built already. */
+  boolean keep(String celex, Language language);
 
   /** Queues the failed text again, from its first attempt. */
   boolean requeue(String celex, Language language);

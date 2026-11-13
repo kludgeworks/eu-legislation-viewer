@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
@@ -18,8 +18,12 @@ public sealed interface Text {
     };
   }
 
-  /** Built. Its tree is in the content module. */
-  record Ready(ContentHash root) implements Text {}
+  /**
+   * Built.
+   *
+   * @param text the text in the content module
+   */
+  record Ready(TextId text) implements Text {}
 
   /**
    * Waiting its turn to be built, behind other texts. It waits for the first time, or again after a

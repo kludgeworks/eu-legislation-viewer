@@ -21,6 +21,30 @@ java_test_suite(
     ],
 )
 
+# application/
+# What a change in Cellar does, without Spring: the changes mapped to held acts, their debounce,
+# and the comparison of a held act as stored with the act as Cellar has it now
+java_test_suite(
+    name = "application",
+    size = "small",
+    srcs = glob(["application/*Test.java"]),
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":one-act-cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:application",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
 # Cellar, as far as the module's tests need it: one act
 java_library(
     name = "one-act-cellar",
@@ -110,8 +134,44 @@ java_junit5_test(
     ],
 )
 
-# An act read from Cellar again once it is due, the versions that appeared prepared on their own;
-# on its own, as the act changes; needs Docker
+# The store of the scan for changes: one claim at a time, the watermark moved only by the latest
+# claim and never back, a due change taken by one instance; on its own, as the scan has one row;
+# needs Docker
+java_junit5_test(
+    name = "ChangeStoreTests",
+    size = "medium",
+    timeout = "short",
+    srcs = ["ChangeStoreTests.java"],
+    tags = [
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ChangeStoreTests",
+    runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":one-act-cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:application",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_jdbc",
+        "@maven//:org_springframework_spring_tx",
+    ],
+)
+
+# A held act that Cellar changed read again, each difference acted on: a version that appeared
+# prepared in its languages, one withdrawn after two reads with its texts; on its own, as the act
+# changes; needs Docker
 java_junit5_test(
     name = "RefreshTests",
     size = "medium",
@@ -132,6 +192,7 @@ java_junit5_test(
     deps = [
         ":one-act-cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
@@ -144,6 +205,7 @@ java_junit5_test(
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_jdbc",
+        "@maven//:org_springframework_spring_tx",
     ],
 )
 

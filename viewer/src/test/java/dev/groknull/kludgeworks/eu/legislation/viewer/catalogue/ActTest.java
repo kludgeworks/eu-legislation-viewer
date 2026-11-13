@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -35,7 +34,7 @@ class ActTest {
                       LocalDate.of(2008, 4, 29),
                       SECURITY,
                       EnumSet.allOf(Language.class),
-                      Instant.EPOCH))),
+                      Map.of()))),
           List.of(),
           Map.of(),
           List.of(),

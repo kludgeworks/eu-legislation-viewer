@@ -7,8 +7,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import java.util.Optional;
@@ -27,11 +28,13 @@ import org.springframework.stereotype.Service;
  * Compares the texts that the content module stores.
  *
  * <ul>
- *   <li>A kept comparison comes from the store.
+ *   <li>A kept comparison comes from the store, if the rules of this build worked it out ({@link
+ *       DifferVersion}).
  *   <li>Otherwise the service reads both texts whole with {@link Content#read}, works out the
- *       comparison on the executor, and keeps it. It does this for the request that asks for the
- *       comparison, or before the request, on {@link NeighboursBuilt}: a reader will probably
- *       compare the texts of two neighbouring versions.
+ *       comparison on the executor, and keeps it. It keeps it in place of one that other rules
+ *       worked out. It does this for the request that asks for the comparison, or before the
+ *       request, on {@link NeighboursBuilt}: a reader will probably compare the texts of two
+ *       neighbouring versions.
  *   <li>A request for a comparison that is being worked out waits for that work. A reader often
  *       asks while the comparison is being worked out before the reader asked.
  * </ul>
@@ -51,7 +54,7 @@ class ComparisonService implements Comparisons {
       new ConcurrentHashMap<>();
 
   /** The two texts of a comparison. */
-  private record Pair(ContentHash from, ContentHash to) {}
+  private record Pair(TextId from, TextId to) {}
 
   /**
    * @param executor the executor that works out comparisons. It is the task executor of Spring
@@ -69,7 +72,7 @@ class ComparisonService implements Comparisons {
   }
 
   @Override
-  public Optional<Comparison> between(ContentHash from, ContentHash to) {
+  public Optional<Comparison> between(TextId from, TextId to) {
     try {
       return comparing(from, to).join();
     } catch (CompletionException e) {
@@ -78,7 +81,7 @@ class ComparisonService implements Comparisons {
   }
 
   @Override
-  public Optional<Difference> difference(ContentHash from, ContentHash to, String eId) {
+  public Optional<Difference> difference(TextId from, TextId to, String eId) {
     return between(from, to)
         .flatMap(
             comparison ->
@@ -105,8 +108,8 @@ class ComparisonService implements Comparisons {
    * is being worked out already, or one that is worked out now. The future fails in the same way
    * that {@link #between} throws.
    */
-  CompletableFuture<Optional<Comparison>> comparing(ContentHash from, ContentHash to) {
-    var kept = comparisons.find(from, to);
+  CompletableFuture<Optional<Comparison>> comparing(TextId from, TextId to) {
+    var kept = comparisons.find(from, to, DifferVersion.value());
     if (kept.isPresent()) {
       LOG.debug("Comparison of {} with {} is kept", from, to);
       return CompletableFuture.completedFuture(kept);
@@ -124,7 +127,7 @@ class ComparisonService implements Comparisons {
       mine.completeAsync(
           () ->
               comparisons
-                  .find(from, to)
+                  .find(from, to, DifferVersion.value())
                   .or(
                       () ->
                           Observation.createNotStarted("comparison.compare", observations)
@@ -138,7 +141,7 @@ class ComparisonService implements Comparisons {
   }
 
   /** Works out the comparison of {@code from} with {@code to}, and keeps it. */
-  private Optional<Comparison> compare(ContentHash from, ContentHash to) {
+  private Optional<Comparison> compare(TextId from, TextId to) {
     var start = System.nanoTime();
     var earlier = content.read(from);
     var later = content.read(to);
@@ -160,12 +163,14 @@ class ComparisonService implements Comparisons {
                       compared.withoutPreamble());
                 });
     var diffed = System.nanoTime();
-    var stored = comparisons.add(comparison);
+    var stored = comparisons.add(comparison, DifferVersion.value());
     var kept = System.nanoTime();
     LOG.info(
-        "Compared {} with {}: {} differences in {} ms (read {} ms, diff {} ms, keep {} ms)",
+        "Compared text {} with {} (differ {}): {} differences in {} ms (read {} ms, diff {} ms,"
+            + " keep {} ms)",
         from,
         to,
+        DifferVersion.value(),
         comparison.differences().size(),
         (kept - start) / 1_000_000,
         (read - start) / 1_000_000,

@@ -88,13 +88,12 @@ class CellarActsTest {
     assertThat(act.endOfValidity()).isNull();
     var versions = act.timeline().versions();
     assertThat(versions).hasSize(23);
-    assertThat(versions.getFirst())
-        .isEqualTo(
-            Version.original(
-                LocalDate.of(2015, 11, 15),
-                AVSEC,
-                ALL_BUT_IRISH,
-                Instant.parse("2015-11-23T07:58:11.083Z")));
+    var original = versions.getFirst();
+    assertThat(original.kind()).isEqualTo(Version.Kind.ORIGINAL);
+    assertThat(original.date()).isEqualTo(LocalDate.of(2015, 11, 15));
+    assertThat(original.celex()).isEqualTo(AVSEC.celex());
+    assertThat(original.languages()).isEqualTo(ALL_BUT_IRISH);
+    assertThat(original.formex()).containsOnlyKeys(ALL_BUT_IRISH);
     assertThat(versions.get(1).celex()).isEqualTo("02015R1998-20160229");
     assertThat(versions.getLast().celex()).isEqualTo("02015R1998-20261001");
   }
@@ -194,12 +193,28 @@ class CellarActsTest {
   }
 
   @Test
-  void eachVersionHasWhenCellarLastModifiedItsFormex() {
+  void eachVersionHasItsFormexInEachLanguageWithTheFixityOfItsFiles() {
     var versions = act(AVSEC).timeline().versions();
 
-    // Cellar republished it more than a year after its consolidation.
-    assertThat(version(versions, "02015R1998-20230401").formexModified())
-        .isEqualTo(Instant.parse("2024-06-11T14:53:17.343Z"));
+    // Made final on the day it was recorded: one file, with its SHA-1.
+    assertThat(version(versions, "02015R1998-20261001").formex().get(Language.ENG))
+        .isEqualTo(
+            new Version.Formex(
+                CellarActs.fixity("5d311d6d4be77f9acc47e7bf3203ccb7444e08d7"),
+                Instant.parse("2026-11-12T13:54:59.435Z")));
+    // Cellar has no technical metadata of the early versions.
+    assertThat(version(versions, "02015R1998-20160229").formex().get(Language.BUL))
+        .isEqualTo(new Version.Formex(null, Instant.parse("2016-04-13T17:07:44.543Z")));
+  }
+
+  @Test
+  void theFixityOfAManifestationIsItsFilesFixitiesInAnyOrder() {
+    var one = CellarActs.fixity("b1a2 a3c4");
+
+    assertThat(one).hasSize(64).isEqualTo(CellarActs.fixity(" A3C4  b1a2 "));
+    assertThat(CellarActs.fixity("b1a2 a3c5")).isNotEqualTo(one);
+    assertThat(CellarActs.fixity("b1a2")).isNotEqualTo(one);
+    assertThat(CellarActs.fixity(" ")).isNull();
   }
 
   @Test
@@ -210,14 +225,9 @@ class CellarActsTest {
                 work(Map.of()),
                 result(consolidation("02015R1998-20260322", "2026-03-22")),
                 languages(
-                    new SparqlResult.Row(
-                        Map.of(
-                            "version",
-                            "32015R1998",
-                            "languages",
-                            "DEU ENG NOR",
-                            "formexModified",
-                            "2015-11-23T08:58:11.083+01:00"))),
+                    formex("32015R1998", "DEU"),
+                    formex("32015R1998", "ENG"),
+                    formex("32015R1998", "NOR")),
                 noDates(),
                 noTitles(),
                 noAmendments(),
@@ -228,7 +238,7 @@ class CellarActsTest {
     // Norwegian is an EEA language, but not an official one.
     assertThat(timeline.first().languages()).containsExactly(Language.DEU, Language.ENG);
     assertThat(timeline.latest().languages()).isEmpty();
-    assertThat(timeline.latest().formexModified()).isNull();
+    assertThat(timeline.latest().formex()).isEmpty();
   }
 
   @Test
@@ -574,22 +584,10 @@ class CellarActsTest {
     var sameDayConsolidation = result(consolidation("02015R1998-20151115", "2015-11-15"));
     var languages =
         languages(
-            new SparqlResult.Row(
-                Map.of(
-                    "version",
-                    "32015R1998",
-                    "languages",
-                    "ENG FRA DEU",
-                    "formexModified",
-                    "2015-11-23T07:58:11.083Z")),
-            new SparqlResult.Row(
-                Map.of(
-                    "version",
-                    "02015R1998-20151115",
-                    "languages",
-                    "DEU",
-                    "formexModified",
-                    "2015-11-23T07:58:11.083Z")));
+            formex("32015R1998", "ENG"),
+            formex("32015R1998", "FRA"),
+            formex("32015R1998", "DEU"),
+            formex("02015R1998-20151115", "DEU"));
 
     var timeline =
         CellarActs.act(
@@ -719,9 +717,24 @@ class CellarActsTest {
     return new SparqlResult(List.of("version", "date", "pdf", "listed"), List.of(rows));
   }
 
-  /** languages.rq's answer: one row per version with Formex. */
+  /** languages.rq's answer: one row per version and language with Formex. */
   private static SparqlResult languages(SparqlResult.Row... rows) {
-    return new SparqlResult(List.of("version", "languages"), List.of(rows));
+    return new SparqlResult(
+        List.of("version", "language", "fixities", "formexModified"), List.of(rows));
+  }
+
+  /** A row of languages.rq's answer: the version's Formex in the language, without fixities. */
+  private static SparqlResult.Row formex(String version, String language) {
+    return new SparqlResult.Row(
+        Map.of(
+            "version",
+            version,
+            "language",
+            language,
+            "fixities",
+            "",
+            "formexModified",
+            "2015-11-23T08:58:11.083+01:00"));
   }
 
   private static SparqlResult noLanguages() {

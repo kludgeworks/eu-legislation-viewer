@@ -8,7 +8,10 @@
      language links to the same page in that language. The page's language is bold. A language that
      a version on the page is not in is greyed, and its hover says why.
      The mode switch marks the current mode and links to the other mode. While the act is being
-     prepared, neither mode is a link. --%>
+     prepared, neither mode is a link.
+     Once the act is prepared, the head listens for notices that the act changed while the page is
+     open (hx-sse:connect): a newer version, or a text republished. htmx swaps a notice in for the
+     empty one (hx-partial). The page itself does not change. --%>
 <header class="mast">
   <div>
     <h1 lang="${masthead.titleLanguage()}">${masthead.title()}</h1>
@@ -42,3 +45,7 @@
     @endif
   </nav>
 </header>
+@if(masthead.notices() != null)
+  <div id="notice" hidden></div>
+  <div hx-sse:connect="${masthead.notices()}" hidden></div>
+@endif

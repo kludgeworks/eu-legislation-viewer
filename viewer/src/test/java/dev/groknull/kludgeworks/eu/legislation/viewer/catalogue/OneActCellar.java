@@ -59,7 +59,7 @@ public class OneActCellar {
                       LocalDate.of(2015, 11, 30),
                       CELEX,
                       Set.of(Language.ENG, Language.FRA),
-                      Instant.parse("2015-11-12T10:15:30Z")),
+                      formex(Instant.parse("2015-11-12T10:15:30Z"))),
                   consolidation(
                       LocalDate.of(2021, 3, 15),
                       false,
@@ -116,30 +116,35 @@ public class OneActCellar {
           Map.of());
 
   /** The act as Cellar lists it when it also has the consolidation of 1 March 2022. */
-  static final Act REFRESHED =
-      new Act(
-          ACT.id(),
-          ACT.eli(),
-          ACT.type(),
-          ACT.titles(),
-          ACT.dateOfDocument(),
-          ACT.inForce(),
-          ACT.endOfValidity(),
-          new Timeline(
-              Stream.concat(
-                      ACT.timeline().versions().stream(),
-                      Stream.of(
-                          consolidation(
-                              LocalDate.of(2022, 3, 1),
-                              false,
-                              Instant.parse("2022-03-10T08:00:00Z"),
-                              "32021R0255")))
-                  .sorted(Comparator.comparing(Version::date))
-                  .toList()),
-          ACT.dates(),
-          ACT.amendingDates(),
-          ACT.amendments(),
-          ACT.publications());
+  public static final Act REFRESHED =
+      with(
+          Stream.concat(
+                  ACT.timeline().versions().stream(),
+                  Stream.of(
+                      consolidation(
+                          LocalDate.of(2022, 3, 1),
+                          false,
+                          Instant.parse("2022-03-10T08:00:00Z"),
+                          "32021R0255")))
+              .sorted(Comparator.comparing(Version::date))
+              .toList());
+
+  /** The act as Cellar lists it with these versions. */
+  public static Act with(List<Version> versions) {
+    return new Act(
+        ACT.id(),
+        ACT.eli(),
+        ACT.type(),
+        ACT.titles(),
+        ACT.dateOfDocument(),
+        ACT.inForce(),
+        ACT.endOfValidity(),
+        new Timeline(versions),
+        ACT.dates(),
+        ACT.amendingDates(),
+        ACT.amendments(),
+        ACT.publications());
+  }
 
   final List<String> asked = new CopyOnWriteArrayList<>();
 
@@ -155,7 +160,16 @@ public class OneActCellar {
         interim,
         Arrays.stream(integrates).map(ActIdentifier::new).toList(),
         Set.of(Language.ENG, Language.FRA),
-        modified);
+        formex(modified));
+  }
+
+  /**
+   * Returns the Formex of a version in English and French, modified at {@code modified}. Its fixity
+   * is made of the date, so that a version republished later has another fixity.
+   */
+  public static Map<Language, Version.Formex> formex(Instant modified) {
+    var formex = new Version.Formex(Integer.toHexString(modified.hashCode()), modified);
+    return Map.of(Language.ENG, formex, Language.FRA, formex);
   }
 
   /** A date set by an article, with its clause as Cellar writes it. */

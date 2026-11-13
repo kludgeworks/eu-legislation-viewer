@@ -4,65 +4,58 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Tree.Kind;
 import java.nio.charset.StandardCharsets;
-import java.util.Set;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 /**
- * Tests that {@link Encoder} encodes legal texts into the tree, and that they are rebuilt from it
- * as they were.
+ * Tests that {@link Encoder} writes legal texts as JSON, and that {@link Decoder} reads them back
+ * as the converter wrote them.
  */
 class EncoderTest {
   private static final String NS = "xmlns=\"" + LegalText.NAMESPACE + "\"";
 
   @ParameterizedTest
   @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts#samples")
-  void rebuildsEachSampleAsItWas(String sample) {
+  void decodesEachSampleAsTheConverterWroteIt(String sample) {
     var text = LegalTexts.sample(sample);
 
-    var encoded = Encoder.encode(text);
+    var decoded = Decoder.element(Encoder.encode(text));
 
-    assertThat(LegalTexts.lines(LegalTexts.canonical(LegalTexts.rebuild(encoded))))
+    assertThat(decoded).isEqualTo(LegalTexts.element(text));
+    assertThat(LegalTexts.lines(LegalTexts.canonical(decoded)))
         .containsExactlyElementsOf(LegalTexts.lines(LegalTexts.canonical(text)));
   }
 
-  @ParameterizedTest
-  @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts#samples")
-  void encodesTheRebuiltTextToTheSameRoot(String sample) {
-    var encoded = Encoder.encode(LegalTexts.sample(sample));
+  @Test
+  void writesTheSameJsonWhateverTheOrderOfTheAttributes() {
+    var before = Encoder.encode(LegalTexts.parse(text("eId=\"art_1\" kind=\"article\"")));
+    var after = Encoder.encode(LegalTexts.parse(text("kind=\"article\" eId=\"art_1\"")));
 
-    assertThat(Encoder.encode(LegalTexts.rebuild(encoded)).root()).isEqualTo(encoded.root());
+    assertThat(after).isEqualTo(before);
   }
 
   @Test
-  void keepsEIdsOutOfTheContent() {
-    var before = Encoder.encode(LegalTexts.parse(text("art_1", "Scope")));
-    var after = Encoder.encode(LegalTexts.parse(text("art_2", "Scope")));
-
-    assertThat(after.root()).isNotEqualTo(before.root());
-    assertThat(leaves(after)).isEqualTo(leaves(before));
-  }
-
-  @Test
-  void citesANoteByItsHashAndRebuildsItsHrefAndMarker() {
+  void keepsTheEIdsAndNoteReferencesAsTheConverterWroteThem() {
     var xml =
         """
         <legalText %s><body>
-          <p eId="p_1"><t>See</t><noteRef href="#n_1" marker="1"/></p>
-          <note eId="n_1" marker="1"><p><t>A note.</t></p></note>
+          <p eId="p_1"><t v="See"/><noteRef href="#n_1" marker="1"/></p>
+          <note eId="n_1" marker="1"><p><t v="A note."/></p></note>
         </body></legalText>
         """
             .formatted(NS);
-    var encoded = Encoder.encode(LegalTexts.parse(xml));
 
-    var p = json(encoded, "[\"p\"");
-    assertThat(p).contains("\"note\":\"").doesNotContain("href").doesNotContain("marker");
-    assertThat(LegalTexts.canonical(LegalTexts.rebuild(encoded)))
-        .isEqualTo(LegalTexts.canonical(LegalTexts.parse(xml)));
+    var json = new String(Encoder.encode(LegalTexts.parse(xml)), StandardCharsets.UTF_8);
+
+    assertThat(json)
+        .isEqualTo(
+            "[\"legalText\",{},[\"body\",{},"
+                + "[\"p\",{\"eId\":\"p_1\"},[\"t\",{\"v\":\"See\"}],"
+                + "[\"noteRef\",{\"href\":\"#n_1\",\"marker\":\"1\"}]],"
+                + "[\"note\",{\"eId\":\"n_1\",\"marker\":\"1\"},[\"p\",{},[\"t\",{\"v\":\"A"
+                + " note.\"}]]]]]");
   }
 
   @Test
@@ -75,26 +68,17 @@ class EncoderTest {
         .withMessageContaining("Text beside elements");
   }
 
-  private static String text(String eId, String heading) {
+  @Test
+  void refusesJsonThatIsNotALegalText() {
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> Decoder.element("[\"p\",[]]".getBytes(StandardCharsets.UTF_8)))
+        .withMessageContaining("Not a legal text's JSON");
+  }
+
+  private static String text(String attributes) {
     return """
-    <legalText %s><body><article eId="%s"><heading><t>%s</t></heading>
-      <p><t>This Regulation applies.</t></p></article></body></legalText>
+    <legalText %s><body><unit %s><heading><t v="Scope"/></heading></unit></body></legalText>
     """
-        .formatted(NS, eId, heading);
-  }
-
-  private static Set<?> leaves(Tree encoded) {
-    return encoded.nodes().values().stream()
-        .filter(n -> n.kind() == Kind.LEAF)
-        .map(Tree.Node::hash)
-        .collect(Collectors.toSet());
-  }
-
-  private static String json(Tree encoded, String start) {
-    return encoded.nodes().values().stream()
-        .map(n -> new String(n.content(), StandardCharsets.UTF_8))
-        .filter(s -> s.startsWith(start))
-        .findFirst()
-        .orElseThrow();
+        .formatted(NS, attributes);
   }
 }

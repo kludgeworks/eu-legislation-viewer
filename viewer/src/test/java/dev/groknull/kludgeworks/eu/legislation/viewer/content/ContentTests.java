@@ -2,78 +2,123 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.entry;
 import static org.assertj.core.api.Assertions.tuple;
+import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline.Entry;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Chunker;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CountDownLatch;
 import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.simple.JdbcClient;
+import org.springframework.transaction.support.TransactionTemplate;
 
 /**
- * Tests that legal texts are stored through the module's API in Postgres, in a container, and
- * rebuilt.
+ * Tests that legal texts are stored through the module's API in Postgres, in a container, and read
+ * back.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import(TestcontainersConfiguration.class)
 class ContentTests {
+  private static final String CELEX = "02015R1998-20260322";
   private static final String SAMPLE = "06.02.1/02015R1998-20260322.xml";
   private static final String NEXT = "06.02.1/02015R1998-20261001.xml";
 
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
+  @Autowired TransactionTemplate transactions;
 
   @Test
-  void storesATextWholeAndRebuildsIt() throws Exception {
+  void storesATextWholeAndReadsItAsTheConverterWroteIt() {
     var text = LegalTexts.sample(SAMPLE);
 
-    var root = content.store(text);
+    var id = content.store(CELEX, Language.ENG, "test", text);
 
-    var out = LegalTexts.SAXON.newDocumentBuilder().newBuildingStreamWriter();
-    assertThat(content.rebuild(root, out)).isTrue();
-    assertThat(LegalTexts.lines(LegalTexts.canonical(out.getDocumentNode())))
-        .containsExactlyElementsOf(LegalTexts.lines(LegalTexts.canonical(text)));
-    assertThat(content.read(root)).isPresent();
-  }
-
-  @Test
-  void writesOnlyTheChunksThatAreNotStoredYet() {
-    content.store(LegalTexts.sample(SAMPLE));
-    var stored = chunks();
-    var next = Chunker.of(Encoder.encode(LegalTexts.sample(NEXT)));
-
-    content.store(LegalTexts.sample(NEXT));
-
-    assertThat(chunks() - stored).isLessThan(next.manifest().size());
+    assertThat(content.read(id)).contains(LegalTexts.element(text));
+    assertThat(content.contains(id)).isTrue();
+    assertThat(content.texts(List.of(CELEX, "02015R1998-20261001"), Language.ENG))
+        .containsExactly(entry(CELEX, id));
   }
 
   @Test
   void writesNothingForATextStoredAlready() {
     var text = LegalTexts.sample(SAMPLE);
-    content.store(text);
-    var rows = rows();
+    var id = content.store(CELEX, Language.ENG, "test", text);
+    var stored = storedAt(id);
 
-    content.store(text);
+    assertThat(content.store(CELEX, Language.ENG, "other", text)).isEqualTo(id);
+    assertThat(storedAt(id)).isEqualTo(stored);
+  }
 
-    assertThat(rows()).isEqualTo(rows);
+  @Test
+  void replacesATextStoredAgainWithAnotherContent() {
+    var before = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
+
+    var after = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(NEXT));
+
+    assertThat(after).isNotEqualTo(before);
+    assertThat(content.read(before)).isEmpty();
+    assertThat(content.contains(before)).isFalse();
+    assertThat(content.read(after)).contains(LegalTexts.element(LegalTexts.sample(NEXT)));
+    assertThat(content.texts(List.of(CELEX), Language.ENG)).containsExactly(entry(CELEX, after));
+  }
+
+  @Test
+  void storesATextOnceWhenTwoWritersStoreItFirstAtTheSameTime() throws Exception {
+    var celex = "02015R1998-20990101";
+    var text = LegalTexts.sample(SAMPLE);
+    var stored = new CountDownLatch(1);
+    var release = new CountDownLatch(1);
+    var first =
+        CompletableFuture.supplyAsync(
+            () ->
+                transactions.execute(
+                    status -> {
+                      var id = content.store(celex, Language.ENG, "test", text);
+                      stored.countDown();
+                      await().until(() -> release.getCount() == 0);
+                      return id;
+                    }));
+    stored.await();
+    var second =
+        CompletableFuture.supplyAsync(() -> content.store(celex, Language.ENG, "test", text));
+    await().until(this::aWriterWaitsForALock);
+
+    release.countDown();
+
+    assertThat(second.get()).isEqualTo(first.get());
+    assertThat(content.texts(List.of(celex), Language.ENG))
+        .containsExactly(entry(celex, first.get()));
+  }
+
+  @Test
+  void keepsTheTextsOfEachLanguageApart() {
+    var english = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
+    var french = content.store(CELEX, Language.FRA, "test", LegalTexts.sample(SAMPLE));
+
+    assertThat(french).isNotEqualTo(english);
+    assertThat(content.texts(List.of(CELEX), Language.FRA)).containsExactly(entry(CELEX, french));
   }
 
   @Test
   void keepsTheOutlineOfATextWhenItStoresIt() {
     var text = LegalTexts.sample(SAMPLE);
-    var root = content.store(text);
+    var id = content.store(CELEX, Language.ENG, "test", text);
 
-    var outline = content.outline(root).orElseThrow();
+    var outline = content.outline(id).orElseThrow();
 
-    assertThat(outline).isEqualTo(Outlines.of(Encoder.encode(text)));
+    assertThat(outline).isEqualTo(Outlines.of(LegalTexts.element(text)));
     assertThat(outline.entries())
         .extracting(Entry::eId, Entry::kind, Entry::num)
         .containsExactly(
@@ -97,12 +142,12 @@ class ContentTests {
   }
 
   @Test
-  void rebuildsNothingWhereNothingIsStored() throws Exception {
-    var out = LegalTexts.SAXON.newDocumentBuilder().newBuildingStreamWriter();
+  void readsNothingWhereNothingIsStored() {
+    var none = new TextId(-1);
 
-    assertThat(content.rebuild(new ContentHash("0".repeat(64)), out)).isFalse();
-    assertThat(content.read(new ContentHash("0".repeat(64)))).isEmpty();
-    assertThat(content.outline(new ContentHash("0".repeat(64)))).isEmpty();
+    assertThat(content.read(none)).isEmpty();
+    assertThat(content.outline(none)).isEmpty();
+    assertThat(content.contains(none)).isFalse();
   }
 
   /** The entries and all the entries under them. */
@@ -112,13 +157,18 @@ class ContentTests {
         .toList();
   }
 
-  private long chunks() {
-    return jdbc.sql("select count(*) from chunk").query(Long.class).single();
+  /** Whether a session of the database waits for a lock that another one holds. */
+  private boolean aWriterWaitsForALock() {
+    return jdbc.sql("select exists (select from pg_stat_activity where wait_event_type = 'Lock')")
+        .query(Boolean.class)
+        .single();
   }
 
-  private long rows() {
-    return jdbc.sql("select (select count(*) from chunk) + (select count(*) from manifest)")
-        .query(Long.class)
-        .single();
+  private Instant storedAt(TextId id) {
+    return jdbc.sql("select stored_at from text where id = ?")
+        .param(id.value())
+        .query(Timestamp.class)
+        .single()
+        .toInstant();
   }
 }

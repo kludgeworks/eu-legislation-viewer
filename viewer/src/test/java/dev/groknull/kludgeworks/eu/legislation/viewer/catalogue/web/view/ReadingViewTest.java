@@ -10,9 +10,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -98,7 +98,7 @@ class ReadingViewTest {
                         false,
                         List.of(),
                         AVSEC.timeline().versions().getFirst().languages(),
-                        Instant.EPOCH))),
+                        Map.of()))),
             AVSEC.dates(),
             AVSEC.amendingDates(),
             AVSEC.amendments(),

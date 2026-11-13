@@ -1,0 +1,42 @@
+# SPDX-License-Identifier: MIT
+# Gets the works that Cellar changed after a time, for CellarChanges: the acts, corrigenda and
+# consolidations whose work or one of whose expressions Cellar modified. An expression is in it
+# because a language can change without its work: a PDF added to a version changes the expression
+# only. Each row is one work, and has:
+# - its CELEX number.
+# - the CELEX numbers of the acts that it is based on (a consolidation), amends or corrects,
+#   separated by spaces. Empty if none. A new consolidation or amending act names the held act it
+#   changes only so.
+# - the latest time Cellar modified it or one of its expressions, by Cellar's clock.
+# The scan maps the rows to the acts that the viewer holds. One query a scan, about 1 s for the
+# changes of a few hours.
+# {{since}}: the time to read from, as xsd:dateTime, for example 2026-11-12T08:00:00Z.
+# Sparql.fill escapes it, and CellarChanges writes it from an Instant.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT ?celex
+       (GROUP_CONCAT(DISTINCT ?targetCelex; separator=" ") AS ?targets)
+       (MAX(?modified) AS ?modified)
+WHERE {
+  {
+    ?work cmr:lastModificationDate ?modified .
+    FILTER (?modified > "{{since}}"^^xsd:dateTime)
+  }
+  UNION
+  {
+    ?expression cmr:lastModificationDate ?modified .
+    FILTER (?modified > "{{since}}"^^xsd:dateTime)
+    ?expression cdm:expression_belongs_to_work ?work .
+  }
+  { ?work a cdm:act_consolidated . } UNION { ?work a cdm:resource_legal . }
+  ?work cdm:resource_legal_id_celex ?celex .
+  OPTIONAL {
+    ?work cdm:act_consolidated_based_on_resource_legal
+          | cdm:resource_legal_amends_resource_legal
+          | cdm:resource_legal_corrects_resource_legal ?target .
+    ?target cdm:resource_legal_id_celex ?targetCelex .
+  }
+}
+GROUP BY ?celex

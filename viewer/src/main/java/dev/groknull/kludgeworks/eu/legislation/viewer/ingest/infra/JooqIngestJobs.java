@@ -78,6 +78,24 @@ class JooqIngestJobs implements IngestJobs {
   }
 
   @Override
+  public boolean rebuild(String celex, Language language, @Nullable String traceparent) {
+    return db.update(INGEST_JOB)
+            .set(INGEST_JOB.STATE, State.QUEUED)
+            .set(INGEST_JOB.ATTEMPTS, 0)
+            .set(INGEST_JOB.TRACEPARENT, traceparent)
+            .set(INGEST_JOB.FAILURE, val(null, INGEST_JOB.FAILURE))
+            .set(INGEST_JOB.DETAIL, val(null, INGEST_JOB.DETAIL))
+            .set(INGEST_JOB.FINISHED_AT, val(null, INGEST_JOB.FINISHED_AT))
+            .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
+            .where(
+                INGEST_JOB.CELEX.eq(celex),
+                INGEST_JOB.LANGUAGE_CODE.eq(language),
+                INGEST_JOB.STATE.in(State.BUILT, State.FAILED))
+            .execute()
+        == 1;
+  }
+
+  @Override
   public int ahead(Collection<String> celexes, Language language) {
     var first =
         db.select(min(INGEST_JOB.CREATED_AT))
@@ -125,8 +143,6 @@ class JooqIngestJobs implements IngestJobs {
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, job.state())
         .set(INGEST_JOB.PHASE, job.stage())
-        .set(INGEST_JOB.ROOT, job.root())
-        .set(INGEST_JOB.CONVERTER, job.converter())
         .set(INGEST_JOB.FAILURE, job.failure())
         .set(INGEST_JOB.DETAIL, job.detail())
         .set(
@@ -154,8 +170,6 @@ class JooqIngestJobs implements IngestJobs {
         row.getPhase(),
         row.getAttempts(),
         row.getTraceparent(),
-        row.getRoot(),
-        row.getConverter(),
         row.getFailure(),
         row.getDetail(),
         row.getRevision());

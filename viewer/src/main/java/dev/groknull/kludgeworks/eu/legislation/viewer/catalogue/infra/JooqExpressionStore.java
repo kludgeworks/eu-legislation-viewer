@@ -8,13 +8,12 @@ import static org.jooq.impl.DSL.val;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ExpressionStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ExpressionRecord;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jspecify.annotations.Nullable;
@@ -41,29 +40,11 @@ class JooqExpressionStore implements ExpressionStore {
   }
 
   @Override
-  public Optional<ContentHash> root(String celex, Language language) {
-    return db.select(EXPRESSION.ROOT)
-        .from(EXPRESSION)
-        .where(the(celex, language), EXPRESSION.ROOT.isNotNull())
-        .fetchOptional(EXPRESSION.ROOT);
-  }
-
-  @Override
-  public Map<String, ContentHash> roots(Collection<String> celexes, Language language) {
-    return db.select(EXPRESSION.CELEX, EXPRESSION.ROOT)
-        .from(EXPRESSION)
-        .where(
-            EXPRESSION.CELEX.in(celexes),
-            EXPRESSION.LANGUAGE_CODE.eq(language),
-            EXPRESSION.ROOT.isNotNull())
-        .fetchMap(EXPRESSION.CELEX, EXPRESSION.ROOT);
-  }
-
-  @Override
-  public Map<String, Text> texts(Collection<String> celexes, Language language) {
+  public Map<String, Text> texts(
+      Collection<String> celexes, Language language, Map<String, TextId> stored) {
     return db.selectFrom(EXPRESSION)
         .where(EXPRESSION.CELEX.in(celexes), EXPRESSION.LANGUAGE_CODE.eq(language))
-        .fetchMap(EXPRESSION.CELEX, JooqExpressionStore::text);
+        .fetchMap(EXPRESSION.CELEX, row -> text(row, stored.get(row.getCelex())));
   }
 
   @Override
@@ -115,29 +96,20 @@ class JooqExpressionStore implements ExpressionStore {
   }
 
   @Override
-  public boolean keep(String celex, Language language, ContentHash root, String converter) {
+  public boolean keep(String celex, Language language) {
     return db.insertInto(EXPRESSION)
             .set(EXPRESSION.CELEX, celex)
             .set(EXPRESSION.LANGUAGE_CODE, language)
             .set(EXPRESSION.STATE, State.BUILT.name())
             .set(EXPRESSION.ATTEMPT, 0)
-            .set(EXPRESSION.ROOT, root)
-            .set(EXPRESSION.CONVERTER, converter)
             .set(EXPRESSION.BUILT_AT, currentInstant())
             .onConflict(EXPRESSION.CELEX, EXPRESSION.LANGUAGE_CODE)
             .doUpdate()
             .set(EXPRESSION.STATE, State.BUILT.name())
-            .set(EXPRESSION.ROOT, root)
-            .set(EXPRESSION.CONVERTER, converter)
             .set(EXPRESSION.BUILT_AT, currentInstant())
             .set(EXPRESSION.FAILURE, val(null, EXPRESSION.FAILURE))
             .set(EXPRESSION.TRACE, val(null, EXPRESSION.TRACE))
-            .where(
-                EXPRESSION
-                    .STATE
-                    .ne(State.BUILT.name())
-                    .or(EXPRESSION.ROOT.ne(root))
-                    .or(EXPRESSION.CONVERTER.ne(converter)))
+            .where(EXPRESSION.STATE.ne(State.BUILT.name()))
             .execute()
         == 1;
   }
@@ -182,11 +154,11 @@ class JooqExpressionStore implements ExpressionStore {
     return EXPRESSION.STATE.in(State.QUEUED.name(), State.BUILDING.name());
   }
 
-  private static Text text(ExpressionRecord row) {
+  private static Text text(ExpressionRecord row, @Nullable TextId stored) {
     return switch (State.valueOf(row.getState())) {
       case QUEUED -> new Text.Queued();
       case BUILDING -> new Text.Building(row.getAttempt());
-      case BUILT -> new Text.Ready(Objects.requireNonNull(row.getRoot()));
+      case BUILT -> stored == null ? new Text.Queued() : new Text.Ready(stored);
       case FAILED -> new Text.Failed(Objects.requireNonNull(row.getFailure()), row.getTrace());
     };
   }

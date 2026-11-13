@@ -1,14 +1,22 @@
 # SPDX-License-Identifier: MIT
 load("@aspect_rules_js//js:defs.bzl", "js_library")
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+load("//tools/build:defs.bzl", "build_info")
 
-# the application's configuration (application.yaml), on the classpath root
+# Boot's build info (META-INF/build-info.properties): the release, from --embed_label, as
+# BuildProperties, for the keys of the caches and the entity tags (chrome.Release) and /actuator/info
+build_info(
+    name = "build_info",
+    artifact = "kludgeworks-viewer",
+)
+
+# the application's configuration (application.yaml), on the classpath root, and its build info
 java_library(
     name = "resources",
     resources = glob(
         ["**"],
         exclude = ["BUILD.bazel"],
-    ),
+    ) + [":build_info"],
     visibility = ["//viewer:__subpackages__"],
 )
 

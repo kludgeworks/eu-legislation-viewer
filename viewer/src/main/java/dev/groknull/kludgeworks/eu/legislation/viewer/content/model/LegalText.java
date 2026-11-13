@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.xml.XMLConstants;
 import net.sf.saxon.s9api.QName;
 import net.sf.saxon.s9api.XdmNode;
@@ -16,7 +15,6 @@ import net.sf.saxon.s9api.XdmNodeKind;
  * <ul>
  *   <li>Its namespaces, and the names they give to elements and attributes in JSON. A name is
  *       local, or prefixed, for example {@code m:math} or {@code xml:lang}.
- *   <li>Which elements are blocks. Blocks are the leaves of the tree.
  *   <li>That text is never mixed with elements. Text is only in an element of its own, {@code t}.
  *       Thus whitespace between elements is only the indentation of the writer of the file.
  * </ul>
@@ -35,18 +33,7 @@ final class LegalText {
           "xml", XMLConstants.XML_NS_URI,
           "xsi", XMLConstants.W3C_XML_SCHEMA_INSTANCE_NS_URI);
 
-  /**
-   * The blocks. A block is what a reader reads and what an amendment replaces. Any element that
-   * holds only text is also a block.
-   */
-  private static final Set<String> BLOCKS =
-      Set.of("p", "heading", "tr", "note", "longTitle", "num", "docTitle");
-
   private LegalText() {}
-
-  static boolean isLeaf(XdmNode el) {
-    return BLOCKS.contains(elementName(el.getNodeName())) || !hasElements(el);
-  }
 
   static boolean isRoot(XdmNode el) {
     return new QName(NAMESPACE, "legalText").equals(el.getNodeName());
@@ -85,23 +72,6 @@ final class LegalText {
       }
     }
     return false;
-  }
-
-  /**
-   * Returns the largest number of rows that a cell of a table row spans. {@code leaf} is the JSON
-   * of a leaf. Returns 0 for anything that is not a row.
-   */
-  static int rowspan(List<?> leaf) {
-    if (!JsonMl.name(leaf).equals("tr")) {
-      return 0;
-    }
-    var most = 1;
-    for (var cell : JsonMl.elements(leaf)) {
-      if (JsonMl.attributes(cell).get("rowspan") instanceof String span) {
-        most = Math.max(most, Integer.parseInt(span.strip()));
-      }
-    }
-    return most;
   }
 
   static String elementName(QName name) {

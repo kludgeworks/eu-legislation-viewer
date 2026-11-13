@@ -89,6 +89,10 @@ maven.install(
         # Valkey (Spring Data Redis, Lettuce): the externalized events every instance reads back (the
         # broadcast module's streams)
         "org.springframework.boot:spring-boot-starter-data-redis",
+        # caches by Spring's cache abstraction: rendered HTML in Valkey (RedisCacheManager, the legaltext
+        # module), outlines in the process (Caffeine, the content module)
+        "org.springframework:spring-context-support",
+        "com.github.ben-manes.caffeine:caffeine",
         # observability: OpenTelemetry (traces, metrics, logs over OTLP), a span per module entry and the
         # modules' actuator (Modulith's insight starter), JDBC spans (datasource-micrometer)
         "org.springframework.boot:spring-boot-starter-opentelemetry",

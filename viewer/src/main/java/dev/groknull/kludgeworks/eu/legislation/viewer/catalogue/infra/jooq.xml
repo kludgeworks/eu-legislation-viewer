@@ -6,8 +6,8 @@
      - The kind of a version is Version.Kind.
      - The kind and anchor of an act date are ActDate.Kind and ActDate.Anchor.
      - The location and role of an amendment are Location and Amendment.Role.
-     - The language, root and failure of an expression are Language, ContentHash and Failure.
-     - The roots of a step count are ContentHash.
+     - The language and failure of an expression are Language and Failure.
+     - The texts of a step count are TextId.
      - Times are Instants. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
   <logging>WARN</logging>
@@ -17,7 +17,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
           <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
-          <includeExpression>act\.celex|version\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|step_count\.act|step_act_count\.act|step_act_count\.amending|preparation\.act|preparation_step\.act</includeExpression>
+          <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|text_step_count\.act|text_step_act_count\.act|text_step_act_count\.amending|preparation\.act|preparation_step\.act</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -57,12 +57,12 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_step\.language_code</includeExpression>
+          <includeExpression>expression\.language_code|version_formex\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_step\.language_code</includeExpression>
         </forcedType>
         <forcedType>
-          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>
-          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::new, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::hex)</converter>
-          <includeExpression>expression\.root|step_count\.(from|to)_root|step_act_count\.(from|to)_root</includeExpression>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId</userType>
+          <converter>org.jooq.Converter.ofNullable(Long.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::new, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::value)</converter>
+          <includeExpression>text_step_count\.(from|to)_text|text_step_act_count\.(from|to)_text</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>

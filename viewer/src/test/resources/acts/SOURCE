@@ -9,10 +9,12 @@ act-by-eli-reg_impl-2015-1998.json  act-by-eli.rq, eli reg_impl/2015/1998
 versions-32015R1998.json            versions.rq, celex 32015R1998. 22 consolidations. The latest is
                                     interim.
 versions-32010R0185.json            versions.rq, celex 32010R0185. 16 consolidations.
-languages-32015R1998.json           languages.rq, celex 32015R1998. Recorded 2026-10-31, with the
-                                    Formex modification of each version. Each version is in 23
-                                    languages, without Irish.
-languages-32010R0185.json           languages.rq, celex 32010R0185. Recorded 2026-10-31, in the same
+languages-32015R1998.json           languages.rq, celex 32015R1998. Recorded 2026-11-12, one row per
+                                    version and language, with the SHA-1 fixities of its Formex
+                                    items and its Formex modification. Each version is in 23
+                                    languages, without Irish. Most of the versions before 2024 have
+                                    no fixities. 02015R1998-20261001 was made final that day.
+languages-32010R0185.json           languages.rq, celex 32010R0185. Recorded 2026-11-12, in the same
                                     way. The early versions are without Croatian.
 dates-32015R1998.json               dates.rq, celex 32015R1998. Recorded 2026-11-04. The act's own
                                     dates and the dates of the 18 acts that its versions integrate,

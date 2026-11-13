@@ -12,8 +12,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.Change
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Lead;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Passage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Shown;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
@@ -208,8 +208,8 @@ class ChangesViewTest {
   private static Comparison comparison(String from, String to) {
     var compared = Differ.differences(text(from), text(to));
     return new Comparison(
-        ContentHash.of(new byte[32]),
-        ContentHash.of(new byte[32]),
+        new TextId(1),
+        new TextId(1),
         compared.differences(),
         compared.closing(),
         compared.withoutPreamble());

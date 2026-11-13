@@ -38,6 +38,14 @@ public interface IngestJobs {
   boolean retry(String celex, Language language, @Nullable String traceparent);
 
   /**
+   * Queues the job of the expression again, from its first attempt, with the trace of the request
+   * that asked. It does this only if the job is built or failed.
+   *
+   * @return whether it was queued again
+   */
+  boolean rebuild(String celex, Language language, @Nullable String traceparent);
+
+  /**
    * Returns how many other jobs are queued or running that were queued before the first queued job
    * of {@code celexes}. Returns 0 if no job of {@code celexes} is queued.
    */

@@ -37,6 +37,38 @@ project_version = rule(
     """,
 )
 
+def _build_info_impl(ctx):
+    """Write Spring Boot's build-info.properties, its version from Bazel's stable workspace status."""
+    out = ctx.actions.declare_file("META-INF/build-info.properties")
+    ctx.actions.run_shell(
+        inputs = [ctx.info_file],
+        outputs = [out],
+        arguments = [ctx.info_file.path, out.path, ctx.attr.artifact],
+        command = """\
+set -eu
+version="$(sed -n '/^BUILD_EMBED_LABEL /{s/^BUILD_EMBED_LABEL //;p;q;}' "$1")"
+printf 'build.artifact=%s\\nbuild.name=%s\\n' "$3" "$3" > "$2"
+if [ -n "$version" ]; then
+  printf 'build.version=%s\\n' "$version" >> "$2"
+fi
+""",
+        mnemonic = "BuildInfo",
+        progress_message = "Stamping build info for %{label}",
+    )
+    return [DefaultInfo(files = depset([out]))]
+
+build_info = rule(
+    implementation = _build_info_impl,
+    attrs = {
+        "artifact": attr.string(mandatory = True, doc = "build.artifact and build.name"),
+    },
+    doc = """META-INF/build-info.properties, as Spring Boot's build plugins write it: Boot's BuildProperties.
+
+    Release builds pass their YYYY.MM.MICRO CalVer value through --embed_label, which becomes
+    build.version. An unlabelled build (development, the tests) has no build.version.
+    """,
+)
+
 def xspec_test(name, specs, data = [], **kwargs):
     """One cached JUnit 5 test per .xspec file (run by XSpecTests), plus a test_suite named `name`.
 

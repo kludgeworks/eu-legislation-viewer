@@ -22,11 +22,13 @@ java_junit5_test(
     ],
     deps = [
         ":fixtures",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_awaitility_awaitility",

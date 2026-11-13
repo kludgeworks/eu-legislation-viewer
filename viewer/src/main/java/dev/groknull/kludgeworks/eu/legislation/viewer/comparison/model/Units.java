@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.SequencedMap;
+import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -48,6 +49,31 @@ public record Units(
     Map<String, List<Marker>> struck,
     Map<String, Element> notes) {
 
+  /**
+   * The elements of legal-text that hold only running text or MathML: a paragraph, a num, a formula
+   * and the inline elements. Legal-text has no notes in them.
+   */
+  private static final Set<String> RUNNING =
+      Set.of(
+          "p",
+          "num",
+          "math",
+          "t",
+          "emphasis",
+          "date",
+          "number",
+          "quote",
+          "noteRef",
+          "ref",
+          "eol",
+          "span",
+          "img",
+          "changed",
+          "docType",
+          "docNumber",
+          "docDate",
+          "docPurpose");
+
   /** Returns the units of {@code text}. */
   public static Units of(Element text) {
     var units = new LinkedHashMap<String, Unit>();
@@ -78,8 +104,16 @@ public record Units(
     return notes;
   }
 
+  /**
+   * Adds the notes of each {@code notes} in {@code element} to {@code notes}. A text has them at
+   * its end, at the end of a unit or a file of an annex, and under a table, wherever the table is.
+   * The search does not go into what holds only running text or MathML, which cannot have them.
+   */
   private static void collectNotes(Element element, Map<String, Element> notes) {
     for (var child : element.children()) {
+      if (RUNNING.contains(child.name())) {
+        continue;
+      }
       if (!child.name().equals("notes")) {
         collectNotes(child, notes);
         continue;

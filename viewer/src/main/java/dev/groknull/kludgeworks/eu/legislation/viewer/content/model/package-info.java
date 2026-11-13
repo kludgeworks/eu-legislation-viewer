@@ -1,22 +1,16 @@
 // SPDX-License-Identifier: MIT
 /**
- * The content model. It holds a legal text as a tree of content-addressed nodes. Each class makes
- * one decision.
+ * The content model. It holds a legal text as JSON, as it is stored. Each class makes one decision.
  *
  * <ul>
- *   <li>{@link LegalText} is what the model knows of the legal-text schema: its blocks, names and
- *       whitespace.
- *   <li>{@link JsonMl} maps the XML of a block to JSON, and back.
- *   <li>{@link Annotations} keeps the eIds out of the content, as overlay facts.
- *   <li>{@link NoteLinks} makes footnote references cite notes by their hashes.
- *   <li>{@link Identity} makes the hash of a node, from its canonical JSON.
- *   <li>{@link Encoder} makes the {@link Tree} from a text.
- *   <li>{@link Chunker} cuts the tree into {@link Chunks}, as it is stored, and {@link Decoder}
- *       makes the text back from them.
- *   <li>{@link Outlines} makes the outline of a text from its tree.
+ *   <li>{@link LegalText} is what the model knows of the legal-text schema: its names, namespaces
+ *       and whitespace.
+ *   <li>{@link Encoder} writes a text as JSON, in the JsonML form, and {@link Decoder} reads the
+ *       JSON back into {@code Element} records.
+ *   <li>{@link Outlines} makes the outline of a text.
  * </ul>
  *
- * <p>These are pure functions on values. The application stores the chunks, in {@code TextStore}.
+ * <p>These are pure functions on values. The application stores the JSON, in {@code TextStore}.
  */
 @DomainRing
 @NullMarked

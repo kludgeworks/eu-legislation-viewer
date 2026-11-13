@@ -101,9 +101,20 @@ gg:
 
 viewer:
   catalogue:
-    # how long an act is kept as Cellar had it before a page opening it has it read again, in the
-    # background, for the versions that appeared since
-    refresh-after: 1d
+    # how the held acts are kept as Cellar has them: one instance asks Cellar what changed (one SPARQL
+    # query), and each held act that changed is read again once it is quiet
+    changes:
+      every: 5m
+      # read again before the latest change read: a change shows up to 18 minutes after its date
+      overlap: 30m
+      # a held act is read again no sooner than this after its latest change: Cellar shows a change
+      # 4 to 18 minutes after its date
+      lag: 20m
+      # a new consolidation reaches its languages 7 to 10 minutes apart
+      quiet: 10m
+      at-most: 60m
+      # a work that Cellar deletes and ingests again comes back within minutes
+      withdrawn-after: 30m
   cellar:
     sparql-endpoint: https://publications.europa.eu/webapi/rdf/sparql
     # where Cellar's resource URIs start (…/resource/celex/32015R1998)
@@ -123,3 +134,15 @@ viewer:
     takeover: 50m
     # how often a job is tried before it fails: refusals (no Formex, not a legal act) fail at once
     max-attempts: 3
+  content:
+    outline-cache:
+      # how many outlines an instance keeps in its heap, the texts read last: an outline is about
+      # 100 KB of JSON (at most 500 KB), so a few hundred take tens of MB
+      size: 200
+  legaltext:
+    html-cache:
+      # how long Valkey keeps the HTML of a run of units (a window, a fold) after it is rendered. Its
+      # key names the release and the text, so nothing in it is ever wrong: the TTL only frees what
+      # is no longer read. Valkey's maxmemory and maxmemory-policy (allkeys-lru) are its own
+      # configuration, not the app's: without them, Valkey only drops what has expired
+      ttl: 7d

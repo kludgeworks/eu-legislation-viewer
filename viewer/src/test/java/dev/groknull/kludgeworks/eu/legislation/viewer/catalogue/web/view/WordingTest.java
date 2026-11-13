@@ -11,7 +11,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
@@ -32,7 +31,7 @@ class WordingTest {
           "");
 
   private static Act act(List<ActDate> dates) {
-    var original = Version.original(IN_FORCE, AI, EnumSet.allOf(Language.class), Instant.EPOCH);
+    var original = Version.original(IN_FORCE, AI, EnumSet.allOf(Language.class), Map.of());
     return new Act(
         AI,
         null,

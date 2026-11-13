@@ -37,8 +37,14 @@ import org.springframework.stereotype.Component;
 public class LegalRenderer {
   private static final Pattern WHOLE = Pattern.compile("[1-9][0-9]{3,}");
 
+  /** The parent of an element at the top of what is rendered, as {@link #chosen} keys it. */
+  private static final String NO_PARENT = "";
+
   private final TemplateEngine templates;
-  private final Map<String, String> chosen;
+
+  /** The template chosen for each element name, then for each parent name. */
+  private final Map<String, Map<String, String>> chosen;
+
   private final Map<String, Otherwise> instead;
 
   @Autowired
@@ -47,7 +53,9 @@ public class LegalRenderer {
   }
 
   private LegalRenderer(
-      TemplateEngine templates, Map<String, String> chosen, Map<String, Otherwise> instead) {
+      TemplateEngine templates,
+      Map<String, Map<String, String>> chosen,
+      Map<String, Otherwise> instead) {
     this.templates = templates;
     this.chosen = chosen;
     this.instead = Map.copyOf(instead);
@@ -158,17 +166,19 @@ public class LegalRenderer {
   }
 
   private String template(@Nullable String parent, String name) {
-    return chosen.computeIfAbsent(
-        parent + " " + name,
-        key -> {
-          if (parent != null) {
-            var inParent = template(path(parent) + "/" + path(name));
-            if (templates.hasTemplate(inParent)) {
-              return inParent;
-            }
-          }
-          return template(path(name));
-        });
+    return chosen
+        .computeIfAbsent(name, key -> new ConcurrentHashMap<>())
+        .computeIfAbsent(
+            parent == null ? NO_PARENT : parent,
+            key -> {
+              if (parent != null) {
+                var inParent = template(path(parent) + "/" + path(name));
+                if (templates.hasTemplate(inParent)) {
+                  return inParent;
+                }
+              }
+              return template(path(name));
+            });
   }
 
   /**

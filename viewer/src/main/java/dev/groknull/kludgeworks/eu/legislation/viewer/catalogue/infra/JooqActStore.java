@@ -7,10 +7,15 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.joo
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_PUBLICATION_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.STEP_COUNT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.EXPRESSION;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_STEP;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.TEXT_STEP_COUNT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION_FORMEX;
+import static org.jooq.impl.DSL.any;
 import static org.jooq.impl.DSL.currentInstant;
 import static org.jooq.impl.DSL.select;
+import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
@@ -28,11 +33,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.table
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActDateRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActPublicationRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActRecord;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.VersionFormexRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.VersionRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -44,19 +51,20 @@ import java.util.stream.IntStream;
 import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.InsertSetMoreStep;
-import org.jooq.types.DayToSecond;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Stores the acts in Postgres with jOOQ. The schema is in {@code db/migration/catalogue}. For each
- * act it stores the titles, versions, dates and amendments. It also stores how the act and the acts
- * it integrates were published.
+ * act it stores the titles, versions with their Formex in each language, dates and amendments. It
+ * also stores how the act and the acts it integrates were published.
  *
  * <ul>
  *   <li>{@link #add} writes all of it in one transaction, unless the act is already there.
  *   <li>{@link #update} writes it again when the viewer reads the act from Cellar again. It keeps
- *       the versions, and drops the step counts of the act, which {@code StepCounts} keeps.
+ *       the versions that Cellar no longer lists, marked missing, and drops the step counts of the
+ *       act, which {@code StepCounts} keeps.
+ *   <li>{@link #withdraw} deletes a version, with what the catalogue keeps of its texts.
  * </ul>
  */
 @Repository
@@ -97,9 +105,7 @@ class JooqActStore implements ActStore {
                         .from(ACT_TITLE)
                         .where(ACT_TITLE.ACT.eq(act.getCelex()))
                         .fetchMap(ACT_TITLE.LANGUAGE_CODE, ACT_TITLE.TITLE),
-                    db.selectFrom(VERSION)
-                        .where(VERSION.ACT.eq(act.getCelex()))
-                        .fetch(JooqActStore::version),
+                    versions(act.getCelex()),
                     db.selectFrom(ACT_DATE)
                         .where(ACT_DATE.ACT.eq(act.getCelex()))
                         .orderBy(ACT_DATE.SUBJECT, ACT_DATE.ORDINAL)
@@ -109,6 +115,39 @@ class JooqActStore implements ActStore {
                         .orderBy(ACT_AMENDMENT.ORDINAL)
                         .fetch(JooqActStore::amendment),
                     publications(act.getCelex())));
+  }
+
+  /** Reads the versions of {@code act}, each with its Formex in each language. */
+  private List<Version> versions(ActIdentifier act) {
+    var formex = new HashMap<String, Map<Language, Version.Formex>>();
+    for (var row : db.selectFrom(VERSION_FORMEX).where(VERSION_FORMEX.ACT.eq(act)).fetch()) {
+      formex
+          .computeIfAbsent(row.getCelex(), each -> new EnumMap<>(Language.class))
+          .put(row.getLanguageCode(), new Version.Formex(row.getFixity(), row.getModified()));
+    }
+    return db.selectFrom(VERSION)
+        .where(VERSION.ACT.eq(act))
+        .fetch(row -> version(row, formex.getOrDefault(row.getCelex(), Map.of())));
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Map<String, ActIdentifier> held(Collection<String> celexes) {
+    if (celexes.isEmpty()) {
+      return Map.of();
+    }
+    // One array parameter, however many CELEX numbers a scan read
+    var listed = val(celexes.toArray(String[]::new));
+    var held = new HashMap<String, ActIdentifier>();
+    db.select(VERSION.CELEX, VERSION.ACT)
+        .from(VERSION)
+        .where(VERSION.CELEX.eq(any(listed)))
+        .forEach(row -> held.put(row.value1(), row.value2()));
+    db.select(ACT.CELEX)
+        .from(ACT)
+        .where(ACT.CELEX.cast(String.class).eq(any(listed)))
+        .forEach(row -> held.put(row.value1().celex(), row.value1()));
+    return held;
   }
 
   @Override
@@ -132,6 +171,7 @@ class JooqActStore implements ActStore {
     titles(act);
     db.batch(act.timeline().versions().stream().map(version -> version(act, version)).toList())
         .execute();
+    formex(act);
     dates(act);
     amendments(act);
     publish(act);
@@ -139,19 +179,17 @@ class JooqActStore implements ActStore {
   }
 
   @Override
-  public boolean due(ActIdentifier id, Duration after) {
-    return db.update(ACT)
-            .set(ACT.CHECKED_AT, currentInstant())
-            .where(
-                ACT.CELEX.eq(id),
-                ACT.CHECKED_AT.lt(currentInstant().minus(DayToSecond.valueOf(after))))
-            .execute()
-        == 1;
+  @Transactional(readOnly = true)
+  public Map<String, Instant> missing(ActIdentifier id) {
+    return db.select(VERSION.CELEX, VERSION.MISSING_SINCE)
+        .from(VERSION)
+        .where(VERSION.ACT.eq(id), VERSION.MISSING_SINCE.isNotNull())
+        .fetchMap(VERSION.CELEX, VERSION.MISSING_SINCE);
   }
 
   @Override
   @Transactional
-  public List<Version> update(Act act) {
+  public void update(Act act, Map<String, Instant> missing) {
     db.update(ACT)
         .set(ACT.ELI, act.eli())
         .set(ACT.RESOURCE_TYPE, act.type())
@@ -171,12 +209,7 @@ class JooqActStore implements ActStore {
     db.deleteFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act.id())).execute();
     publish(act);
     // Drop the step counts of the act, because they were counted for the act as it was before.
-    db.deleteFrom(STEP_COUNT).where(STEP_COUNT.ACT.eq(act.id())).execute();
-    var kept =
-        db.select(VERSION.CELEX)
-            .from(VERSION)
-            .where(VERSION.ACT.eq(act.id()))
-            .fetchSet(VERSION.CELEX);
+    db.deleteFrom(TEXT_STEP_COUNT).where(TEXT_STEP_COUNT.ACT.eq(act.id())).execute();
     db.batch(
             act.timeline().versions().stream()
                 .map(
@@ -190,12 +223,52 @@ class JooqActStore implements ActStore {
                             .set(VERSION.INTERIM, version.interim())
                             .set(VERSION.INTEGRATES, integrates(version))
                             .set(VERSION.LANGUAGES, languages(version))
-                            .set(VERSION.FORMEX_MODIFIED, version.formexModified()))
+                            .set(VERSION.MISSING_SINCE, val(null, VERSION.MISSING_SINCE)))
                 .toList())
         .execute();
-    return act.timeline().versions().stream()
-        .filter(version -> !kept.contains(version.celex()))
-        .toList();
+    db.deleteFrom(VERSION_FORMEX)
+        .where(
+            VERSION_FORMEX.ACT.eq(act.id()),
+            VERSION_FORMEX.CELEX.in(
+                act.timeline().versions().stream().map(Version::celex).toList()))
+        .execute();
+    formex(act);
+    missing.forEach(
+        (celex, since) ->
+            db.update(VERSION)
+                .set(VERSION.MISSING_SINCE, since)
+                .where(VERSION.ACT.eq(act.id()), VERSION.CELEX.eq(celex))
+                .execute());
+  }
+
+  @Override
+  @Transactional
+  public void withdraw(ActIdentifier id, String celex) {
+    db.deleteFrom(PREPARATION_STEP).where(PREPARATION_STEP.CELEX.eq(celex)).execute();
+    db.deleteFrom(EXPRESSION).where(EXPRESSION.CELEX.eq(celex)).execute();
+    // Its Formex goes with it (on delete cascade)
+    db.deleteFrom(VERSION).where(VERSION.ACT.eq(id), VERSION.CELEX.eq(celex)).execute();
+  }
+
+  /** Writes the Formex of each version of {@code act} in each language. */
+  private void formex(Act act) {
+    var rows = new ArrayList<VersionFormexRecord>();
+    for (var version : act.timeline().versions()) {
+      version
+          .formex()
+          .forEach(
+              (language, formex) ->
+                  rows.add(
+                      new VersionFormexRecord(
+                          act.id(),
+                          version.celex(),
+                          language,
+                          formex.fixity(),
+                          formex.modified())));
+    }
+    if (!rows.isEmpty()) {
+      db.batchInsert(rows).execute();
+    }
   }
 
   private void titles(Act act) {
@@ -217,8 +290,7 @@ class JooqActStore implements ActStore {
         .set(VERSION.CELEX, version.celex())
         .set(VERSION.INTERIM, version.interim())
         .set(VERSION.INTEGRATES, integrates(version))
-        .set(VERSION.LANGUAGES, languages(version))
-        .set(VERSION.FORMEX_MODIFIED, version.formexModified());
+        .set(VERSION.LANGUAGES, languages(version));
   }
 
   private static String[] integrates(Version version) {
@@ -406,7 +478,7 @@ class JooqActStore implements ActStore {
             date.getRemark()));
   }
 
-  private static Version version(VersionRecord version) {
+  private static Version version(VersionRecord version, Map<Language, Version.Formex> formex) {
     return new Version(
         version.getKind(),
         version.getStartsOn(),
@@ -414,6 +486,6 @@ class JooqActStore implements ActStore {
         version.getInterim(),
         Arrays.stream(version.getIntegrates()).map(ActIdentifier::new).toList(),
         Arrays.stream(version.getLanguages()).map(Language::valueOf).collect(Collectors.toSet()),
-        version.getFormexModified());
+        formex);
   }
 }

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import java.util.Map;
 import java.util.Optional;
 import org.jmolecules.ddd.annotation.Repository;
@@ -9,9 +9,10 @@ import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
  * How many differences each act made in a comparison of two versions of an act. The comparison is
- * of the text of one version with the text of another, by their roots. Each difference is
- * attributed to acts as its sidenote is. The counts are made once and stored, for the chips. The
- * counts of an act are dropped when the act is read again.
+ * of the text of one version with the text of another, by the texts in the content module. Each
+ * difference is attributed to acts as its sidenote is. The counts are made once and stored, for the
+ * chips. The counts of an act are dropped when the act is read again, and the counts of a text when
+ * the text is replaced.
  */
 @Repository
 public interface StepCounts {
@@ -20,12 +21,19 @@ public interface StepCounts {
    * Returns the comparison's counts for {@code act}, from the text at {@code from} to the text at
    * {@code to}.
    */
-  Optional<Counted> find(ActIdentifier act, ContentHash from, ContentHash to);
+  Optional<Counted> find(ActIdentifier act, TextId from, TextId to);
 
   /**
    * Stores the counts, unless they are stored already because another reader counted them first.
    */
-  void add(ActIdentifier act, ContentHash from, ContentHash to, Counted counted);
+  void add(ActIdentifier act, TextId from, TextId to, Counted counted);
+
+  /**
+   * Removes the counts of every comparison of {@code text}, from it or to it.
+   *
+   * @return how many comparisons' counts were removed
+   */
+  int remove(TextId text);
 
   /**
    * A comparison's counts.

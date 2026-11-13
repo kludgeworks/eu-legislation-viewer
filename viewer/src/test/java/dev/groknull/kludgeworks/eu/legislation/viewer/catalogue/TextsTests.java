@@ -7,7 +7,7 @@ import static org.awaitility.Awaitility.await;
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ExpressionStore;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
@@ -16,8 +16,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import net.sf.saxon.s9api.Processor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -46,6 +46,7 @@ class TextsTests {
   @Autowired Texts texts;
   @Autowired ExpressionStore expressions;
   @Autowired Content content;
+  @Autowired StepCounts stepCounts;
   @Autowired JdbcClient jdbc;
   @Autowired ApplicationEventPublisher events;
   @Autowired TransactionTemplate transaction;
@@ -76,11 +77,8 @@ class TextsTests {
     assertThat(prepared.texts().get(timeline.first()))
         .isInstanceOfSatisfying(
             Text.Failed.class, failed -> assertThat(failed.failure()).isEqualTo(Failure.NO_FORMEX));
-    var root = ((Text.Ready) Objects.requireNonNull(prepared.texts().get(version))).root();
-    assertThat(
-            content.rebuild(
-                root, new Processor(false).newDocumentBuilder().newBuildingStreamWriter()))
-        .isTrue();
+    var text = ((Text.Ready) Objects.requireNonNull(prepared.texts().get(version))).text();
+    assertThat(content.read(text)).isPresent();
     await().until(() -> kept(version.celex()), kept -> kept == 1);
     // The preparation settles once. It records what was done to each version as it happened.
     assertThat(prepared.took()).isPresent();
@@ -101,14 +99,24 @@ class TextsTests {
     var earlier = versions.get(1);
     var later = versions.get(2);
     // Any two texts can stand in for the texts of the versions.
-    var before = content.store(LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
-    var after = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
+    var before =
+        content.store(
+            earlier.celex(),
+            Language.ENG,
+            "test",
+            LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
+    var after =
+        content.store(
+            later.celex(),
+            Language.ENG,
+            "test",
+            LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
 
     // The later text is built first. It is kept with no text before it. It is compared when the
     // earlier text is kept.
-    built(later, after);
+    built(later);
     await().until(() -> kept(later.celex()), kept -> kept == 1);
-    built(earlier, before);
+    built(earlier);
 
     await()
         .atMost(Duration.ofMinutes(1))
@@ -193,17 +201,54 @@ class TextsTests {
     assertThat(expressions.start(celex, language, 3)).isTrue();
     assertThat(text(celex, language)).isEqualTo(new Text.Building(3));
 
-    var root = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
-    assertThat(expressions.keep(celex, language, root, "test")).isTrue();
-    assertThat(expressions.keep(celex, language, root, "test")).isFalse();
+    var stored =
+        content.store(
+            celex, language, "test", LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
+    assertThat(expressions.keep(celex, language)).isTrue();
+    assertThat(expressions.keep(celex, language)).isFalse();
     assertThat(expressions.defer(celex, language, 3)).isFalse();
     assertThat(expressions.start(celex, language, 4)).isFalse();
     assertThat(expressions.fail(celex, language, Failure.ERROR, null)).isFalse();
-    assertThat(text(celex, language)).isEqualTo(new Text.Ready(root));
+    assertThat(text(celex, language)).isEqualTo(new Text.Ready(stored));
+  }
+
+  @Test
+  void removesTheStepCountsOfATextThatIsReplaced() {
+    var act = act().id();
+    var replaced =
+        content.store(
+            "test-replaced",
+            Language.ENG,
+            "test",
+            LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
+    var other =
+        content.store(
+            "test-other",
+            Language.ENG,
+            "test",
+            LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
+    var counted = new StepCounts.Counted(Map.of(new ActIdentifier("32026R0449"), 6), 0, 0);
+    stepCounts.add(act, replaced, other, counted);
+    stepCounts.add(act, other, replaced, counted);
+
+    content.store(
+        "test-replaced",
+        Language.ENG,
+        "test",
+        LegalTexts.sample("06.02.1/02015R1998-20261001.xml"));
+
+    await()
+        .atMost(Duration.ofMinutes(1))
+        .until(
+            () ->
+                stepCounts.find(act, replaced, other).isEmpty()
+                    && stepCounts.find(act, other, replaced).isEmpty());
   }
 
   private Text text(String celex, Language language) {
-    return Objects.requireNonNull(expressions.texts(List.of(celex), language).get(celex));
+    var celexes = List.of(celex);
+    return Objects.requireNonNull(
+        expressions.texts(celexes, language, content.texts(celexes, language)).get(celex));
   }
 
   private Act act() {
@@ -218,16 +263,15 @@ class TextsTests {
     return timeline().startingOn(LocalDate.of(2026, 3, 22)).orElseThrow();
   }
 
-  private void built(Version version, ContentHash root) {
+  private void built(Version version) {
     transaction.executeWithoutResult(
-        status ->
-            events.publishEvent(new ExpressionBuilt(version.celex(), Language.ENG, root, "test")));
+        status -> events.publishEvent(new ExpressionBuilt(version.celex(), Language.ENG)));
   }
 
-  private long compared(ContentHash from, ContentHash to) {
-    return jdbc.sql("select count(*) from comparison where from_root = ? and to_root = ?")
-        .param(from.bytes())
-        .param(to.bytes())
+  private long compared(TextId from, TextId to) {
+    return jdbc.sql("select count(*) from text_comparison where from_text = ? and to_text = ?")
+        .param(from.value())
+        .param(to.value())
         .query(Long.class)
         .single();
   }

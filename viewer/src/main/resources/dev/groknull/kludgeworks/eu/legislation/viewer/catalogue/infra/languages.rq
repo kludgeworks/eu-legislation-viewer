@@ -1,22 +1,26 @@
 # SPDX-License-Identifier: MIT
 # Gets the languages that each version of an act has its text in as Formex, for CellarActs.
 # The versions are the work of the act itself, which is the original text, and each consolidation
-# based on it. Each row has:
+# based on it. Each row is one version in one language, and has:
 # - the CELEX number of the version.
-# - the authority codes of the expressions that have a Formex manifestation (fmx4), separated by
-#   spaces. For example, BUL CES … SWE.
-# - the last time Cellar modified any of those manifestations. Cellar modifies a manifestation
-#   when it republishes it. The viewer makes the texts of the version from these manifestations.
+# - the authority code of the language of the expression, for example ENG.
+# - the SHA-1 fixities of the items of its Formex manifestation (fmx4), separated by spaces, in any
+#   order. Cellar keeps one for each file (tdm:stream_fixity). When it republishes the Formex, the
+#   fixity of a file whose content changed changes. Empty if Cellar has no technical metadata.
+# - the last time Cellar modified the manifestation. It moves on a republication, and on a change
+#   of metadata too, so only the fixities tell that the text changed.
 # One query covers the whole timeline. It is separate from versions.rq, because a join would
 # repeat the PDF check of versions.rq on every row.
 # A version without Formex has no row.
 # {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
 PREFIX cmr: <http://publications.europa.eu/ontology/cdm/cmr#>
+PREFIX tdm: <http://publications.europa.eu/ontology/tdm#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 SELECT ?version
-       (GROUP_CONCAT(DISTINCT STRAFTER(STR(?language), "/language/"); separator=" ") AS ?languages)
+       (STRAFTER(STR(?authority), "/language/") AS ?language)
+       (GROUP_CONCAT(DISTINCT ?fixity; separator=" ") AS ?fixities)
        (MAX(?modified) AS ?formexModified)
 WHERE {
   # Each branch binds ?work itself. A BIND of the act would run before ?act is bound.
@@ -27,10 +31,14 @@ WHERE {
           cdm:act_consolidated_date ?date . }
   ?work cdm:resource_legal_id_celex ?version .
   ?expression cdm:expression_belongs_to_work ?work ;
-              cdm:expression_uses_language ?language .
+              cdm:expression_uses_language ?authority .
   ?manifestation cdm:manifestation_manifests_expression ?expression ;
                  cdm:manifestation_type "fmx4"^^xsd:string ;
                  cmr:lastModificationDate ?modified .
+  OPTIONAL {
+    ?item cdm:item_belongs_to_manifestation ?manifestation ;
+          tdm:stream_fixity/tdm:fixity_message_digest ?fixity .
+  }
 }
-GROUP BY ?version
-ORDER BY ?version
+GROUP BY ?version ?authority
+ORDER BY ?version ?authority

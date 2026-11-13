@@ -163,13 +163,19 @@ public final class Differ {
 
   /**
    * Returns whether {@code text} has a preamble with units in it. The units are its citations and
-   * its recitals.
+   * its recitals. Legal-text has the preamble only in the text itself, between its preface and its
+   * body, so the search stops there.
    */
   private static boolean preamble(Element text) {
     if (text.name().equals("preamble")) {
       return Units.holdsUnits(text);
     }
-    return text.children().stream().anyMatch(Differ::preamble);
+    for (var child : text.children()) {
+      if (child.name().equals("preamble") && Units.holdsUnits(child)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   /** Returns {@code element} without its preamble. */
@@ -341,7 +347,10 @@ public final class Differ {
    */
   private static @Nullable DifferenceBuilder changed(
       Unit from, Unit to, Units before, Units after) {
-    if (numbered(from).equals(numbered(to))) {
+    // What the two units say is worked out from their own blocks and notes alone. Most units of
+    // two versions have the same ones, which say the same without working it out.
+    if ((from.blocks().equals(to.blocks()) && from.notes().equals(to.notes()))
+        || numbered(from).equals(numbered(to))) {
       return null;
     }
     var marking = marking(from, to);

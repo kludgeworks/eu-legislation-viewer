@@ -108,6 +108,14 @@ public final class Links {
   }
 
   /**
+   * Returns the address of the event stream of the notices that the act changed, for its pages in
+   * the language. {@code NoticeController} answers it.
+   */
+  public static String notices(Eli eli, Language language) {
+    return act(eli, language) + "/notices";
+  }
+
+  /**
    * Returns the address of the comparisons of the act in {@code language}. The date forms on the
    * From and To cards send their dates to this address.
    */

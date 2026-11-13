@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!-- What jOOQ generates of the comparison module's table (jooq_tables, in BUILD.bazel, which sets
-     the database and the target): the roots as ContentHash, the time as an Instant. The other bytea
-     columns, the kept JSON, stay bytes. -->
+     the database and the target): the texts as TextId, the time as an Instant. The bytea columns,
+     the kept JSON, stay bytes. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
   <logging>WARN</logging>
   <generator>
     <database>
       <forcedTypes>
         <forcedType>
-          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>
-          <converter>org.jooq.Converter.ofNullable(byte[].class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::of, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::bytes)</converter>
-          <includeExpression>(?i:.*\.(from|to)_root)</includeExpression>
-          <includeTypes>bytea</includeTypes>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId</userType>
+          <converter>org.jooq.Converter.ofNullable(Long.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::new, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::value)</converter>
+          <includeExpression>(?i:.*\.(from|to)_text)</includeExpression>
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>

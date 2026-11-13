@@ -15,25 +15,28 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.DateTimeException;
 import java.time.Duration;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.EnumMap;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.HexFormat;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 import java.util.TreeSet;
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -78,6 +81,8 @@ class CellarActs implements ActSource {
   private static final LocalDate OPEN = LocalDate.of(9999, 12, 31);
 
   private static final ResourceType TREATY = new ResourceType("TREATY");
+
+  private static final Pattern WHITESPACE = Pattern.compile("\\s+");
 
   private final Sparql sparql;
 
@@ -203,7 +208,7 @@ class CellarActs implements ActSource {
       SparqlResult work,
       Map<Language, String> titles,
       SparqlResult consolidations,
-      Map<String, Formex> formex,
+      Map<String, Map<Language, Version.Formex>> formex,
       Map<ActIdentifier, List<ActDate>> rawDates,
       List<Amendment> amendments,
       Map<ActIdentifier, Publication> publications) {
@@ -288,7 +293,7 @@ class CellarActs implements ActSource {
       ActIdentifier id,
       LocalDate originalFrom,
       SparqlResult consolidations,
-      Map<String, Formex> formex) {
+      Map<String, Map<Language, Version.Formex>> formex) {
     var byVersion = new LinkedHashMap<String, List<SparqlResult.Row>>();
     for (var row : consolidations.rows()) {
       byVersion.computeIfAbsent(row.get("version"), v -> new ArrayList<>()).add(row);
@@ -303,7 +308,7 @@ class CellarActs implements ActSource {
             .filter(c -> !c.equals(id.celex()))
             .ifPresent(integrates::add);
       }
-      var texts = formex.getOrDefault(first.get("version"), Formex.NONE);
+      var texts = formex.getOrDefault(first.get("version"), Map.of());
       versions.add(
           new Version(
               Version.Kind.CONSOLIDATED,
@@ -311,64 +316,77 @@ class CellarActs implements ActSource {
               first.get("version"),
               !isTrue(first.get("pdf")),
               integrates.stream().map(ActIdentifier::new).toList(),
-              texts.languages(),
-              texts.modified()));
+              texts.keySet(),
+              texts));
     }
     versions.sort(Comparator.comparing(Version::date));
-    var originalTexts = formex.getOrDefault(id.celex(), Formex.NONE);
+    var originalTexts = formex.getOrDefault(id.celex(), Map.of());
     var sameDayConsolidations =
         versions.stream().filter(v -> v.date().equals(originalFrom)).toList();
     if (sameDayConsolidations.isEmpty()) {
       if (versions.isEmpty() || versions.getFirst().date().isAfter(originalFrom)) {
-        versions.add(
-            Version.original(
-                originalFrom, id, originalTexts.languages(), originalTexts.modified()));
+        versions.add(Version.original(originalFrom, id, originalTexts.keySet(), originalTexts));
       }
     } else {
-      var consolidatedLanguages = EnumSet.noneOf(Language.class);
-      sameDayConsolidations.forEach(v -> consolidatedLanguages.addAll(v.languages()));
-      var remainingLanguages =
-          originalTexts.languages().isEmpty()
-              ? EnumSet.noneOf(Language.class)
-              : EnumSet.copyOf(originalTexts.languages());
-      remainingLanguages.removeAll(consolidatedLanguages);
-      if (!remainingLanguages.isEmpty()) {
-        versions.add(
-            Version.original(originalFrom, id, remainingLanguages, originalTexts.modified()));
+      var remaining = new EnumMap<Language, Version.Formex>(Language.class);
+      remaining.putAll(originalTexts);
+      sameDayConsolidations.forEach(v -> remaining.keySet().removeAll(v.languages()));
+      if (!remaining.isEmpty()) {
+        versions.add(Version.original(originalFrom, id, remaining.keySet(), remaining));
       }
     }
     return new Timeline(versions);
   }
 
   /**
-   * The Formex of a version: its languages, and when Cellar last modified it. {@link #NONE} is for
-   * a version without Formex.
+   * Reads the answer to {@code languages.rq} as the Formex of each version in each language, by
+   * CELEX number. The CELEX number is the key that {@code versions.rq} gives a version, {@code
+   * Version.celex}, so the two answers join on it. It keeps official languages only. Cellar also
+   * has expressions in other languages, for example Norwegian for the EEA.
    */
-  record Formex(Set<Language> languages, @Nullable Instant modified) {
-    static final Formex NONE = new Formex(Set.of(), null);
+  static Map<String, Map<Language, Version.Formex>> formexByVersion(SparqlResult answer) {
+    var formex = new HashMap<String, Map<Language, Version.Formex>>();
+    for (var row : answer.rows()) {
+      var code = row.get("language");
+      var language =
+          Arrays.stream(Language.values()).filter(each -> each.code().equals(code)).findFirst();
+      if (language.isEmpty()) {
+        continue;
+      }
+      formex
+          .computeIfAbsent(row.get("version"), each -> new EnumMap<>(Language.class))
+          .put(
+              language.get(),
+              new Version.Formex(
+                  fixity(row.find("fixities").orElse("")),
+                  OffsetDateTime.parse(row.get("formexModified")).toInstant()));
+    }
+    return formex;
   }
 
   /**
-   * Reads the answer to {@code languages.rq} as the Formex of each version, by CELEX number. The
-   * CELEX number is the key that {@code versions.rq} gives a version, {@code Version.celex}, so the
-   * two answers join on it. It keeps official languages only. Cellar also has expressions in other
-   * languages, for example Norwegian for the EEA.
+   * Returns one fixity for the SHA-1 fixities of a manifestation's files, as {@code languages.rq}
+   * lists them, in any order: the SHA-256 of the sorted fixities, in hex. It changes when the
+   * content of any file changes, and only then. Returns null if Cellar lists none.
    */
-  private static Map<String, Formex> formexByVersion(SparqlResult answer) {
-    var formex = new HashMap<String, Formex>();
-    for (var row : answer.rows()) {
-      var listed = Set.of(row.get("languages").split(" "));
-      var official = EnumSet.noneOf(Language.class);
-      Arrays.stream(Language.values())
-          .filter(language -> listed.contains(language.code()))
-          .forEach(official::add);
-      if (!official.isEmpty()) {
-        formex.put(
-            row.get("version"),
-            new Formex(official, OffsetDateTime.parse(row.get("formexModified")).toInstant()));
+  static @Nullable String fixity(String listed) {
+    var each = new TreeSet<String>();
+    for (var fixity : WHITESPACE.split(listed.trim())) {
+      if (!fixity.isEmpty()) {
+        each.add(fixity.toLowerCase(Locale.ROOT));
       }
     }
-    return formex;
+    if (each.isEmpty()) {
+      return null;
+    }
+    try {
+      return HexFormat.of()
+          .formatHex(
+              MessageDigest.getInstance("SHA-256")
+                  .digest(String.join(" ", each).getBytes(StandardCharsets.US_ASCII)));
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException("Every JDK has SHA-256", e);
+    }
   }
 
   /**

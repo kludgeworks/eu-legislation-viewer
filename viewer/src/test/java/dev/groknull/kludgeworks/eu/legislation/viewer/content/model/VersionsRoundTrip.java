@@ -3,13 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,10 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Cuts every version of an act into chunks, in order, keeps them in one shared store, and rebuilds
- * each version from it as it was. The versions are legal-text files in the directory {@code
- * LEGAL_TEXT_DIR}. The test also logs what each version added to the store, to show how much the
- * versions share.
+ * Writes every version of an act as JSON and reads each back, as the converter wrote it. The
+ * versions are legal-text files in the directory {@code LEGAL_TEXT_DIR}. The test also logs the
+ * size of the JSON of each version and how long the decoding took.
  *
  * <p>Run it by hand, on files converted before. For example, the 49 versions of 02005R0396 are 1.1
  * GB.
@@ -34,7 +29,6 @@ import org.slf4j.LoggerFactory;
  */
 class VersionsRoundTrip {
   private static final Logger LOG = LoggerFactory.getLogger(VersionsRoundTrip.class);
-  private static final Map<ContentHash, byte[]> CHUNKS = new HashMap<>();
 
   static Stream<Path> versions() throws IOException {
     var dir = Path.of(Objects.requireNonNull(System.getenv("LEGAL_TEXT_DIR"), "LEGAL_TEXT_DIR"));
@@ -49,31 +43,19 @@ class VersionsRoundTrip {
 
   @ParameterizedTest
   @MethodSource("versions")
-  void rebuildsEachVersionFromTheSharedChunks(Path version) {
+  void decodesEachVersionAsTheConverterWroteIt(Path version) {
     var text = LegalTexts.parse(version);
-    var encoded = Encoder.encode(text);
-    var chunks = Chunker.of(encoded);
-    var added = 0L;
-    var addedBytes = 0L;
-    for (var chunk : chunks.bodies().entrySet()) {
-      if (CHUNKS.putIfAbsent(chunk.getKey(), chunk.getValue()) == null) {
-        added++;
-        addedBytes += chunk.getValue().length;
-      }
-    }
-    var shared = new LinkedHashMap<ContentHash, byte[]>();
-    chunks.manifest().forEach(hash -> shared.put(hash, CHUNKS.get(hash)));
+    var json = Encoder.encode(text);
+    var start = System.nanoTime();
 
-    var rebuilt = LegalTexts.rebuild(new Chunks(chunks.top(), shared));
+    var decoded = Decoder.element(json);
 
     LOG.info(
-        "{}: {} KB of XML, {} nodes, {} chunks ({} new, {} KB)",
+        "{}: {} KB of XML, {} KB of JSON, decoded in {} ms",
         version.getFileName(),
         version.toFile().length() / 1024,
-        encoded.nodes().size(),
-        chunks.bodies().size(),
-        added,
-        addedBytes / 1024);
-    assertThat(LegalTexts.canonical(rebuilt)).isEqualTo(LegalTexts.canonical(text));
+        json.length / 1024,
+        (System.nanoTime() - start) / 1_000_000);
+    assertThat(decoded).isEqualTo(LegalTexts.element(text));
   }
 }

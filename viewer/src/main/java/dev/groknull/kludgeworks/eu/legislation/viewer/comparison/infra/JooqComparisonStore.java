@@ -1,18 +1,19 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra;
 
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq.Tables.COMPARISON;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq.Tables.COMPARISON_WHOLE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq.Tables.TEXT_COMPARISON;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.comparison.infra.jooq.Tables.TEXT_COMPARISON_WHOLE;
 import static org.jooq.impl.DSL.currentInstant;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.ComparisonKept;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application.ComparisonStore;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,31 +22,38 @@ import java.util.Objects;
 import java.util.Optional;
 import org.jooq.DSLContext;
 import org.jspecify.annotations.Nullable;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * Keeps the comparisons in Postgres, in the table {@code comparison}, with jOOQ. Jackson writes
- * each comparison as JSON bytes ({@link Kept}), and Postgres compresses them. Each difference is
- * kept as {@link Difference#kept} gives it. The whole unit of each difference that this cuts down
- * is a row of {@code comparison_whole}, by its eId.
+ * Keeps the comparisons in Postgres, in the table {@code text_comparison}, with jOOQ. Jackson
+ * writes each comparison as JSON bytes ({@link Kept}), and Postgres compresses them. Each
+ * difference is kept as {@link Difference#kept} gives it. The whole unit of each difference that
+ * this cuts down is a row of {@code text_comparison_whole}, by its eId. Each comparison keeps the
+ * version of the rules that worked it out, in {@code differ_version}.
  */
 @Repository
 class JooqComparisonStore implements ComparisonStore {
   private final DSLContext db;
   private final JsonMapper json;
+  private final ApplicationEventPublisher events;
 
-  JooqComparisonStore(DSLContext db, JsonMapper json) {
+  JooqComparisonStore(DSLContext db, JsonMapper json, ApplicationEventPublisher events) {
     this.db = db;
     this.json = json;
+    this.events = events;
   }
 
   @Override
-  public Optional<Comparison> find(ContentHash from, ContentHash to) {
-    return db.select(COMPARISON.KEPT, COMPARISON.WITHOUT_PREAMBLE)
-        .from(COMPARISON)
-        .where(COMPARISON.FROM_ROOT.eq(from), COMPARISON.TO_ROOT.eq(to))
+  public Optional<Comparison> find(TextId from, TextId to, String version) {
+    return db.select(TEXT_COMPARISON.KEPT, TEXT_COMPARISON.WITHOUT_PREAMBLE)
+        .from(TEXT_COMPARISON)
+        .where(
+            TEXT_COMPARISON.FROM_TEXT.eq(from),
+            TEXT_COMPARISON.TO_TEXT.eq(to),
+            TEXT_COMPARISON.DIFFER_VERSION.eq(version))
         .fetchOptional()
         .map(
             row ->
@@ -55,20 +63,20 @@ class JooqComparisonStore implements ComparisonStore {
   }
 
   @Override
-  public Optional<Element> whole(ContentHash from, ContentHash to, String eId) {
-    return db.select(COMPARISON_WHOLE.SHOWN)
-        .from(COMPARISON_WHOLE)
+  public Optional<Element> whole(TextId from, TextId to, String eId) {
+    return db.select(TEXT_COMPARISON_WHOLE.SHOWN)
+        .from(TEXT_COMPARISON_WHOLE)
         .where(
-            COMPARISON_WHOLE.FROM_ROOT.eq(from),
-            COMPARISON_WHOLE.TO_ROOT.eq(to),
-            COMPARISON_WHOLE.E_ID.eq(eId))
+            TEXT_COMPARISON_WHOLE.FROM_TEXT.eq(from),
+            TEXT_COMPARISON_WHOLE.TO_TEXT.eq(to),
+            TEXT_COMPARISON_WHOLE.E_ID.eq(eId))
         .fetchOptional()
         .map(row -> json.readValue(row.value1(), Element.class));
   }
 
   @Override
   @Transactional
-  public Comparison add(Comparison comparison) {
+  public Comparison add(Comparison comparison, String version) {
     var differences = new ArrayList<Difference>();
     var cut = new ArrayList<Difference>();
     for (var each : comparison.differences()) {
@@ -86,15 +94,23 @@ class JooqComparisonStore implements ComparisonStore {
             comparison.closing(),
             comparison.withoutPreamble());
     var withoutPreamble = stored.withoutPreamble();
+    // One that other rules worked out, with its whole units
+    db.deleteFrom(TEXT_COMPARISON)
+        .where(
+            TEXT_COMPARISON.FROM_TEXT.eq(stored.from()),
+            TEXT_COMPARISON.TO_TEXT.eq(stored.to()),
+            TEXT_COMPARISON.DIFFER_VERSION.ne(version))
+        .execute();
     var added =
-        db.insertInto(COMPARISON)
-            .set(COMPARISON.FROM_ROOT, stored.from())
-            .set(COMPARISON.TO_ROOT, stored.to())
-            .set(COMPARISON.KEPT, json.writeValueAsBytes(Kept.of(stored)))
+        db.insertInto(TEXT_COMPARISON)
+            .set(TEXT_COMPARISON.FROM_TEXT, stored.from())
+            .set(TEXT_COMPARISON.TO_TEXT, stored.to())
+            .set(TEXT_COMPARISON.DIFFER_VERSION, version)
+            .set(TEXT_COMPARISON.KEPT, json.writeValueAsBytes(Kept.of(stored)))
             .set(
-                COMPARISON.WITHOUT_PREAMBLE,
+                TEXT_COMPARISON.WITHOUT_PREAMBLE,
                 withoutPreamble == null ? null : withoutPreamble.name())
-            .set(COMPARISON.COMPARED_AT, currentInstant())
+            .set(TEXT_COMPARISON.COMPARED_AT, currentInstant())
             .onConflictDoNothing()
             .execute();
     // Another caller kept it first, with its whole units
@@ -102,14 +118,32 @@ class JooqComparisonStore implements ComparisonStore {
       return stored;
     }
     for (var each : cut) {
-      db.insertInto(COMPARISON_WHOLE)
-          .set(COMPARISON_WHOLE.FROM_ROOT, stored.from())
-          .set(COMPARISON_WHOLE.TO_ROOT, stored.to())
-          .set(COMPARISON_WHOLE.E_ID, each.eId())
-          .set(COMPARISON_WHOLE.SHOWN, json.writeValueAsBytes(each.shown()))
+      db.insertInto(TEXT_COMPARISON_WHOLE)
+          .set(TEXT_COMPARISON_WHOLE.FROM_TEXT, stored.from())
+          .set(TEXT_COMPARISON_WHOLE.TO_TEXT, stored.to())
+          .set(TEXT_COMPARISON_WHOLE.E_ID, each.eId())
+          .set(TEXT_COMPARISON_WHOLE.SHOWN, json.writeValueAsBytes(each.shown()))
           .execute();
     }
+    events.publishEvent(new ComparisonKept(stored.from(), stored.to()));
     return stored;
+  }
+
+  @Override
+  @Transactional
+  public int remove(TextId text) {
+    return db.deleteFrom(TEXT_COMPARISON)
+        .where(TEXT_COMPARISON.FROM_TEXT.eq(text).or(TEXT_COMPARISON.TO_TEXT.eq(text)))
+        .execute();
+  }
+
+  @Override
+  @Transactional
+  public boolean remove(TextId from, TextId to) {
+    return db.deleteFrom(TEXT_COMPARISON)
+            .where(TEXT_COMPARISON.FROM_TEXT.eq(from), TEXT_COMPARISON.TO_TEXT.eq(to))
+            .execute()
+        == 1;
   }
 
   /**
@@ -145,7 +179,7 @@ class JooqComparisonStore implements ComparisonStore {
       return new Kept(openings.byUnit, differences, closing);
     }
 
-    Comparison comparison(ContentHash from, ContentHash to, @Nullable Side withoutPreamble) {
+    Comparison comparison(TextId from, TextId to, @Nullable Side withoutPreamble) {
       var differences =
           this.differences.stream()
               .map(

@@ -9,17 +9,15 @@ import java.util.Optional;
 import java.util.function.Supplier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * The acts, from the store. An act that is not stored yet is read from Cellar and stored, so Cellar
  * is asked for it once.
  *
- * <p>An act stored for longer than {@code viewer.catalogue.refresh-after} is found as stored. The
- * one opening of it that claims the refresh publishes an {@link ActRefreshDue} event. The act is
- * then read again in the background.
+ * <p>A held act is found as stored. It is kept as Cellar has it by the scan of Cellar for changes
+ * ({@link ChangeScan}), never because it is read. The only read from Cellar here is the first read
+ * of an act that the viewer does not hold.
  *
  * <p>Cellar is asked outside any transaction. Its answer takes seconds, and no connection is held
  * for that time.
@@ -30,21 +28,10 @@ class CatalogueService implements Acts {
 
   private final ActStore store;
   private final ActSource cellar;
-  private final ApplicationEventPublisher events;
-  private final TransactionTemplate transactions;
-  private final CatalogueProperties properties;
 
-  CatalogueService(
-      ActStore store,
-      ActSource cellar,
-      ApplicationEventPublisher events,
-      TransactionTemplate transactions,
-      CatalogueProperties properties) {
+  CatalogueService(ActStore store, ActSource cellar) {
     this.store = store;
     this.cellar = cellar;
-    this.events = events;
-    this.transactions = transactions;
-    this.properties = properties;
   }
 
   @Override
@@ -72,23 +59,11 @@ class CatalogueService implements Acts {
     var act = kept.get();
     if (act.isPresent()) {
       LOG.debug("{} is in the catalogue", name);
-      refreshIfDue(act.get().id());
       return act;
     }
     var read = fromCellar.get();
     read.ifPresent(this::keep);
     return read;
-  }
-
-  /** Claims the act's refresh if it is due, and asks for it once the claim is committed. */
-  private void refreshIfDue(ActIdentifier id) {
-    transactions.executeWithoutResult(
-        status -> {
-          if (store.due(id, properties.refreshAfter())) {
-            LOG.debug("{} is due to be read from Cellar again", id);
-            events.publishEvent(new ActRefreshDue(id));
-          }
-        });
   }
 
   private void keep(Act act) {

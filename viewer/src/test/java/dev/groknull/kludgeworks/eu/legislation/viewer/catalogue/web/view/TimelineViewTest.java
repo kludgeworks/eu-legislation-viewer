@@ -17,7 +17,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Timelin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Year;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -232,7 +231,7 @@ class TimelineViewTest {
             false,
             List.of(),
             Set.of(Language.ENG, Language.HRV),
-            Instant.EPOCH);
+            Map.of());
     var intermediate =
         new Version(
             Version.Kind.CONSOLIDATED,
@@ -241,7 +240,7 @@ class TimelineViewTest {
             false,
             List.of(),
             Set.of(Language.ENG, Language.HRV),
-            Instant.EPOCH);
+            Map.of());
     var missingHrv =
         new Version(
             Version.Kind.CONSOLIDATED,
@@ -250,7 +249,7 @@ class TimelineViewTest {
             false,
             List.of(),
             Set.of(Language.ENG),
-            Instant.EPOCH);
+            Map.of());
     var future =
         new Version(
             Version.Kind.CONSOLIDATED,
@@ -259,7 +258,7 @@ class TimelineViewTest {
             false,
             List.of(),
             Set.of(Language.ENG, Language.HRV),
-            Instant.EPOCH);
+            Map.of());
     var act =
         new Act(
             AVSEC.id(),
@@ -342,7 +341,7 @@ class TimelineViewTest {
                         false,
                         List.of(),
                         Set.of(Language.ENG),
-                        Instant.EPOCH))
+                        Map.of()))
             .toList();
     return new Act(
         AVSEC.id(),

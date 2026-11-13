@@ -3,11 +3,15 @@
  * Comparisons tell how the texts of two versions differ, provision by provision. The module also
  * owns the comparison page, which shows them.
  *
- * <p>Texts are known by their roots in the content module, so a comparison is of two texts,
+ * <p>Texts are known by their identities in the content module, so a comparison is of two texts,
  * whatever acts and versions they are. The page knows the acts and versions from the catalogue's
  * API: which versions to compare and which acts made a difference. When the catalogue tells that
  * the texts of two neighbouring versions are built, the module works out their comparison before a
  * reader asks for it.
+ *
+ * <p>A comparison is kept with the version of the rules that worked it out, which the build takes
+ * from their sources. A kept comparison of another version is worked out again when it is read.
+ * When the content module replaces a text, the module deletes the comparisons of the old one.
  *
  * <p>The module is a sliced onion:
  *

@@ -68,6 +68,18 @@ class IngestService implements Ingest {
   }
 
   @Override
+  @Transactional
+  public IngestStatus rebuild(String celex, Language language) {
+    var traceparent = traceparent();
+    if (jobs.rebuild(celex, language, traceparent)) {
+      events.publishEvent(new ExpressionRequested(celex, language, traceparent));
+      LOG.info("Queued {} in {} again: its source changed", celex, language.code());
+      return jobs.find(celex, language).orElseThrow().status();
+    }
+    return schedule(celex, language);
+  }
+
+  @Override
   public Optional<IngestStatus> status(String celex, Language language) {
     return jobs.find(celex, language).map(IngestJob::status);
   }

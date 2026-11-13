@@ -10,7 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Instant;
 import java.util.LinkedHashMap;
@@ -24,7 +24,7 @@ import org.junit.jupiter.api.Test;
  */
 class ArrivingViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
-  static final ContentHash ROOT = new ContentHash("ab".repeat(32));
+  static final TextId TEXT = new TextId(1);
 
   @Test
   void saysWhichVersionAppearedAndThatItIsThereOnTheNextLoad() {
@@ -43,7 +43,7 @@ class ArrivingViewTest {
 
   @Test
   void saysNothingOnceItIsReady() {
-    assertThat(ArrivingView.of(prepared(new Text.Ready(ROOT)))).isEmpty();
+    assertThat(ArrivingView.of(prepared(new Text.Ready(TEXT)))).isEmpty();
   }
 
   /**
@@ -53,7 +53,7 @@ class ArrivingViewTest {
   private static Preparation prepared(Text latest) {
     var texts = new LinkedHashMap<Version, Text>();
     for (var version : AVSEC.timeline().in(Language.ENG).orElseThrow().versions()) {
-      texts.put(version, new Text.Ready(ROOT));
+      texts.put(version, new Text.Ready(TEXT));
     }
     texts.put(AVSEC.timeline().latest(), latest);
     return new Preparation(

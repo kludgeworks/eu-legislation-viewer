@@ -4,12 +4,12 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import java.time.Duration;
-import java.util.List;
+import java.time.Instant;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
 
-/** The stored acts. Each act is stored whole, with its versions. */
+/** The stored acts, which the viewer holds. Each act is stored whole, with its versions. */
 public interface ActStore {
 
   Optional<Act> find(ActIdentifier id);
@@ -23,6 +23,12 @@ public interface ActStore {
   Optional<Act> findByVersion(String celex);
 
   /**
+   * Returns the held act of each of {@code celexes} that is a held act's CELEX or the CELEX of one
+   * of its versions. A CELEX that is neither is left out.
+   */
+  Map<String, ActIdentifier> held(Collection<String> celexes);
+
+  /**
    * Stores the act with its versions, unless it is stored already. It is stored already if the
    * first read of another reader stored it first.
    *
@@ -31,18 +37,20 @@ public interface ActStore {
   boolean add(Act act);
 
   /**
-   * Claims the act's refresh, if it was last read from Cellar more than {@code after} ago. It marks
-   * the act as read now, so that only one opening of it, on any instance, refreshes it.
-   *
-   * @return whether it was due
+   * Returns the stored versions of the act that the last read from Cellar did not have, by CELEX,
+   * with when a read first did not have each.
    */
-  boolean due(ActIdentifier id, Duration after);
+  Map<String, Instant> missing(ActIdentifier id);
 
   /**
    * Stores the act anew, as Cellar has it now, with its titles, dates and versions. A stored
-   * version that Cellar no longer lists stays, because its texts may refer to it.
+   * version that Cellar no longer lists stays, as {@code missing} says, until it is withdrawn.
    *
-   * @return the versions that it did not have, in date order
+   * @param missing the stored versions that Cellar does not list, by CELEX, with when a read first
+   *     did not list each
    */
-  List<Version> update(Act act);
+  void update(Act act, Map<String, Instant> missing);
+
+  /** Deletes a version of the act, with the states of its texts and the steps that name it. */
+  void withdraw(ActIdentifier id, String celex);
 }

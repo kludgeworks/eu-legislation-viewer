@@ -15,32 +15,42 @@ exclude:
 viewpoints:
   - id: catalogue
     name: catalogue
-    desc: The acts, their versions and dates, and their texts' preparation in each language.
+    desc: >-
+      The acts, their versions and dates, and their texts' preparation in each language; the
+      changes Cellar reports for them.
     tables:
       - act
       - act_amendment
+      - act_change
       - act_date
       - act_publication
       - act_publication_title
       - act_title
+      - change_scan
       - expression
       - preparation
       - preparation_step
       - step_act_count
       - step_count
+      - text_step_act_count
+      - text_step_count
       - version
+      - version_formex
   - id: comparison
     name: comparison
-    desc: The comparisons of two texts, kept by their roots.
+    desc: The comparisons of two texts, kept by their identities in the content module.
     tables:
       - comparison
       - comparison_whole
+      - text_comparison
+      - text_comparison_whole
   - id: content
     name: content
-    desc: The texts themselves, as chunks, and each text's list of chunks and outline.
+    desc: The texts themselves, one row each, with its outline.
     tables:
       - chunk
       - manifest
+      - text
   - id: ingest
     name: ingest
     desc: The jobs that build the texts.

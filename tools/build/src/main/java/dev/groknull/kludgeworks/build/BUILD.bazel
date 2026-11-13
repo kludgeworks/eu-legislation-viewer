@@ -82,6 +82,15 @@ java_library(
     ],
 )
 
+# a Java class that gives the SHA-256 of a package's sources, as the version of its rules: the
+# differ's version, in //viewer/.../comparison:differ_version
+java_binary(
+    name = "source_digest",
+    srcs = ["SourceDigest.java"],
+    main_class = "dev.groknull.kludgeworks.build.SourceDigest",
+    deps = [":package_info"],
+)
+
 # Spring Boot's executable jar from Bazel's jars (the rule spring_boot_jar)
 java_binary(
     name = "spring_boot_jar",

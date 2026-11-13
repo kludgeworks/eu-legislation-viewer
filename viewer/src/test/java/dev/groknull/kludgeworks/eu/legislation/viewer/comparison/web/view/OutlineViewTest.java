@@ -95,10 +95,9 @@ class OutlineViewTest {
   }
 
   private static OutlineView outline(String from, String to) {
-    var later = Encoder.encode(LegalTexts.sample("06.02.1/" + to + ".xml"));
+    var later = Decoder.element(Encoder.encode(LegalTexts.sample("06.02.1/" + to + ".xml")));
     var earlier = Decoder.element(Encoder.encode(LegalTexts.sample("06.02.1/" + from + ".xml")));
-    return OutlineView.of(
-        Outlines.of(later), Differ.differences(earlier, Decoder.element(later)).differences());
+    return OutlineView.of(Outlines.of(later), Differ.differences(earlier, later).differences());
   }
 
   @Test

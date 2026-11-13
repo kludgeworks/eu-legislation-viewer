@@ -21,8 +21,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
@@ -282,8 +282,8 @@ class VersionController {
       return switch (text) {
         case Text.Ready ready ->
             templates.catalogueTextReady(
-                "/content/" + ready.root().hex(),
-                content.outline(ready.root()).orElseGet(Outline::empty),
+                "/content/" + ready.text(),
+                content.outline(ready.text()).orElseGet(Outline::empty),
                 Links.compare(eli, language),
                 MarksView.of(act, version, language));
         // The version appeared since, and it is being prepared.
@@ -318,8 +318,8 @@ class VersionController {
           || !(preparation.texts().get(before.get()) instanceof Text.Ready earlier)) {
         return List.of();
       }
-      var named = new ArrayList<>(listed(text.root()));
-      named.removeAll(listed(earlier.root()));
+      var named = new ArrayList<>(listed(text.text()));
+      named.removeAll(listed(earlier.text()));
       LOG.info(
           "{} lists no amending act; its text names {} more than {}'s",
           version.celex(),
@@ -329,12 +329,12 @@ class VersionController {
     }
 
     /**
-     * Returns the acts that the text of {@code root} lists as integrated. These are the amendments
-     * in its lifecycle.
+     * Returns the acts that {@code text} lists as integrated. These are the amendments in its
+     * lifecycle.
      */
-    private List<ActIdentifier> listed(ContentHash root) {
-      return content.read(root).stream()
-          .flatMap(text -> text.children().stream())
+    private List<ActIdentifier> listed(TextId text) {
+      return content.read(text).stream()
+          .flatMap(element -> element.children().stream())
           .filter(child -> child.name().equals("lifecycle"))
           .flatMap(lifecycle -> lifecycle.children().stream())
           .filter(event -> "amendment".equals(event.attribute("type")))

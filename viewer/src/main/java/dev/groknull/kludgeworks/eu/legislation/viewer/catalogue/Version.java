@@ -6,8 +6,11 @@ import java.net.URI;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Collections;
+import java.util.EnumMap;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
@@ -29,9 +32,9 @@ import org.jspecify.annotations.Nullable;
  * @param languages the languages that its text is in as Formex, the only text that the viewer
  *     reads. These are its expressions in Cellar that have a Formex manifestation. They are not
  *     always all 24. For example, the versions of 2015/1998 have no Irish.
- * @param formexModified when Cellar last modified the Formex of any of them, as it does when it
- *     republishes it. A text of the version is made from the Formex, so the text changes with it.
- *     It is null for a version without Formex.
+ * @param formex the Formex of each language, as Cellar last gave it: what tells that Cellar
+ *     republished it. A text of the version is made from the Formex, so the text changes with it. A
+ *     language whose Formex was not read yet has none.
  */
 @ValueObject
 public record Version(
@@ -41,16 +44,16 @@ public record Version(
     boolean interim,
     List<ActIdentifier> integrates,
     Set<Language> languages,
-    @Nullable Instant formexModified) {
+    Map<Language, Formex> formex) {
 
   public Version {
     integrates = List.copyOf(integrates);
     languages =
         Collections.unmodifiableSet(
             languages.isEmpty() ? EnumSet.noneOf(Language.class) : EnumSet.copyOf(languages));
-    if (languages.isEmpty() != (formexModified == null)) {
-      throw new IllegalArgumentException(
-          "A version with Formex has when it was modified, and only one with Formex has");
+    formex = formex.isEmpty() ? Map.of() : Collections.unmodifiableMap(new EnumMap<>(formex));
+    if (!languages.containsAll(formex.keySet())) {
+      throw new IllegalArgumentException("Formex of a language that the version is not in");
     }
     if (kind == Kind.ORIGINAL && (interim || !integrates.isEmpty())) {
       throw new IllegalArgumentException(
@@ -59,16 +62,12 @@ public record Version(
   }
 
   /**
-   * Returns the original text, which applies from {@code date}, in {@code languages}. Its Formex
-   * was modified at {@code formexModified}.
+   * Returns the original text, which applies from {@code date}, in {@code languages}, with the
+   * Formex of each.
    */
   public static Version original(
-      LocalDate date,
-      ActIdentifier act,
-      Set<Language> languages,
-      @Nullable Instant formexModified) {
-    return new Version(
-        Kind.ORIGINAL, date, act.celex(), false, List.of(), languages, formexModified);
+      LocalDate date, ActIdentifier act, Set<Language> languages, Map<Language, Formex> formex) {
+    return new Version(Kind.ORIGINAL, date, act.celex(), false, List.of(), languages, formex);
   }
 
   /**
@@ -83,6 +82,28 @@ public record Version(
   /** Returns whether this version applies only after {@code today}. */
   public boolean isFuture(LocalDate today) {
     return date.isAfter(today);
+  }
+
+  /**
+   * The Formex of a version in a language, as Cellar has it.
+   *
+   * @param fixity the digest of the SHA-1 fixities of its files, which changes when the content of
+   *     one of them changes. Null where Cellar gives no fixities, as for most versions before 2024.
+   * @param modified when Cellar last modified it. It moves when Cellar republishes it, and also
+   *     when Cellar changes its metadata.
+   */
+  @ValueObject
+  public record Formex(@Nullable String fixity, Instant modified) {
+
+    /**
+     * Returns whether {@code later} is this Formex republished: its fixity changed. Cellar has no
+     * fixities for most Formex last modified before 2024, and has them for all modified since. So a
+     * Formex without one that Cellar republishes gains one, which is a change too, and two without
+     * one are the same. The modification alone tells nothing: it moves on a change of metadata too.
+     */
+    public boolean republishedAs(Formex later) {
+      return !Objects.equals(fixity, later.fixity());
+    }
   }
 
   /** What a version's text is. */

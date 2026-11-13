@@ -5,8 +5,8 @@ load("//tools/build:defs.bzl", "spring_boot_jar")
 # The application: ViewerApplication and, at run time, its modules, its configuration and
 # migrations,
 # and the starters: web (with jte and htmx), the store (Postgres, Flyway, jOOQ, Modulith's event
-# registry), Valkey (the broadcast events) and observability (OpenTelemetry, Modulith's insight, JDBC
-# spans)
+# registry), Valkey (the broadcast events, cached HTML), Caffeine (cached outlines) and
+# observability (OpenTelemetry, Modulith's insight, JDBC spans)
 java_library(
     name = "viewer",
     srcs = glob(["*.java"]),
@@ -67,6 +67,7 @@ java_library(
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
         "@maven//:org_springframework_modulith_spring_modulith_api",
         "@maven//:org_springframework_modulith_spring_modulith_events_api",
+        "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
     ],
 )

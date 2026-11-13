@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
@@ -20,6 +21,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ActsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
@@ -30,14 +32,15 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.RowFol
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.output.StringOutput;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -81,8 +84,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * first days of two versions in the language, the earlier first, and an act between them, if any.
  * Anything else is 404: the page redirects to the canonical address before it loads its parts.
  *
- * <p>The comparison module compares the texts by their roots. Each difference has a sidenote. The
- * sidenote gets the acts that made the difference from the facts of the act.
+ * <p>The comparison module compares the texts by their identities. Each difference has a sidenote.
+ * The sidenote gets the acts that made the difference from the facts of the act.
  */
 @Controller
 class ChangesController {
@@ -98,6 +101,7 @@ class ChangesController {
   private final Content content;
   private final Templates templates;
   private final LegalRenderer html;
+  private final Release release;
 
   ChangesController(
       Acts acts,
@@ -106,7 +110,8 @@ class ChangesController {
       StepCounts stepCounts,
       Content content,
       Templates templates,
-      LegalRenderer html) {
+      LegalRenderer html,
+      Release release) {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
@@ -114,6 +119,7 @@ class ChangesController {
     this.content = content;
     this.templates = templates;
     this.html = html;
+    this.release = release;
   }
 
   /**
@@ -201,7 +207,7 @@ class ChangesController {
                       sidenotes,
                       parts,
                       this.html,
-                      "/content/" + attributed.later().hex() + "/units",
+                      "/content/" + attributed.later() + "/units",
                       page,
                       views,
                       all)
@@ -349,7 +355,7 @@ class ChangesController {
     var kept = false;
     if (preparation.texts().get(ends.from) instanceof Text.Ready before
         && preparation.texts().get(ends.to) instanceof Text.Ready after) {
-      var found = stepCounts.find(ends.act.id(), before.root(), after.root());
+      var found = stepCounts.find(ends.act.id(), before.text(), after.text());
       if (found.isEmpty() && !count) {
         return templates
             .comparisonActs(
@@ -367,7 +373,7 @@ class ChangesController {
       kept = found.isPresent();
       if (counted.isPresent()) {
         if (!kept) {
-          stepCounts.add(ends.act.id(), before.root(), after.root(), counted.get());
+          stepCounts.add(ends.act.id(), before.text(), after.text(), counted.get());
         }
         counted
             .get()
@@ -410,11 +416,7 @@ class ChangesController {
    * <p>Returns none if either text is not built.
    */
   private Optional<StepCounts.Counted> count(
-      Ends ends,
-      Preparation preparation,
-      Version from,
-      Version to,
-      Map<ContentHash, Outline> outlines) {
+      Ends ends, Preparation preparation, Version from, Version to, Map<TextId, Outline> outlines) {
     return attributed(ends, preparation, from, to, null, outlines)
         .map(
             attributed -> {
@@ -434,7 +436,7 @@ class ChangesController {
   /**
    * Returns the comparison of {@code from} with {@code to}, with a sidenote for each difference.
    * The sidenotes are limited to the changes of {@code only}, if it is given. Each outline is read
-   * once and kept in {@code outlines}, by root. Returns none if either text is not built.
+   * once and kept in {@code outlines}, by text. Returns none if either text is not built.
    */
   private Optional<Attributed> attributed(
       Ends ends,
@@ -442,17 +444,17 @@ class ChangesController {
       Version from,
       Version to,
       @Nullable ActIdentifier only,
-      Map<ContentHash, Outline> outlines) {
+      Map<TextId, Outline> outlines) {
     if (!(preparation.texts().get(from) instanceof Text.Ready earlier)
         || !(preparation.texts().get(to) instanceof Text.Ready later)) {
       return Optional.empty();
     }
-    var comparison = comparisons.between(earlier.root(), later.root());
+    var comparison = comparisons.between(earlier.text(), later.text());
     if (comparison.isEmpty()) {
       return Optional.empty();
     }
-    var before = outline(earlier.root(), outlines);
-    var outline = outline(later.root(), outlines);
+    var before = outline(earlier.text(), outlines);
+    var outline = outline(later.text(), outlines);
     var amended = ends.act.amended(from, to, before.eIds(), outline.eIds(), ends.language);
     var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
     for (var difference : comparison.get().differences()) {
@@ -468,18 +470,18 @@ class ChangesController {
               ends.language));
     }
     return Optional.of(
-        new Attributed(comparison.get(), later.root(), before, outline, amended, sidenotes));
+        new Attributed(comparison.get(), later.text(), before, outline, amended, sidenotes));
   }
 
-  private Outline outline(ContentHash root, Map<ContentHash, Outline> outlines) {
-    return outlines.computeIfAbsent(root, each -> content.outline(each).orElseGet(Outline::empty));
+  private Outline outline(TextId text, Map<TextId, Outline> outlines) {
+    return outlines.computeIfAbsent(text, each -> content.outline(each).orElseGet(Outline::empty));
   }
 
   /**
    * A comparison, each difference with its sidenote.
    *
    * @param comparison the comparison
-   * @param later the later text's root
+   * @param later the later text
    * @param earlier the earlier text's outline
    * @param outline the later text's outline
    * @param amended Cellar's amendments between the two versions, at the units of their texts
@@ -487,7 +489,7 @@ class ChangesController {
    */
   private record Attributed(
       Comparison comparison,
-      ContentHash later,
+      TextId later,
       Outline earlier,
       Outline outline,
       Amended amended,
@@ -509,10 +511,15 @@ class ChangesController {
    *
    * <p>Returns 404 if the address is not the canonical address of a comparison, if the texts are
    * not built yet, if no difference is at {@code eId}, or if the rows are not in the table.
+   *
+   * <p>Once the address names its two texts, the texts, the version of the differ and the release
+   * decide the response. They are its entity tag, and a browser that has the response gets 304,
+   * with nothing read or rendered. The browser asks each time ({@link Release#REVALIDATED}): a
+   * version's text can be replaced, so the same address can come to name other texts.
    */
   @GetMapping(path = ComparePage.DIFFERENCE_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String difference(
+  @Nullable String difference(
       @PathVariable String type,
       @PathVariable int year,
       @PathVariable String number,
@@ -524,7 +531,8 @@ class ChangesController {
       @RequestParam(name = ComparePage.TABLE, required = false) @Nullable Integer table,
       @RequestParam(name = ComparePage.ROWS, required = false) @Nullable String rows,
       @RequestParam(name = ComparePage.OUTLINE, defaultValue = "false") boolean outline,
-      HttpServletRequest request) {
+      HttpServletRequest request,
+      HttpServletResponse response) {
     var ends = new Ends(new Eli(type, year, number), code, from, to, act);
     var page =
         ComparePage.ofPart(
@@ -539,16 +547,23 @@ class ChangesController {
         || !(preparation.texts().get(later) instanceof Text.Ready after)) {
       throw Requests.notFound();
     }
+    if (Release.notModified(
+        request,
+        response,
+        Release.REVALIDATED,
+        release.etag(before.text(), after.text(), DifferVersion.value()))) {
+      return null;
+    }
     if (outline) {
       var entry =
           content
-              .outline(after.root())
+              .outline(after.text())
               .flatMap(each -> entry(each.entries(), eId))
               .orElseThrow(Requests::notFound);
       return templates.comparisonAnnexoutline(entry.entries(), page).render();
     }
     var difference =
-        comparisons.difference(before.root(), after.root(), eId).orElseThrow(Requests::notFound);
+        comparisons.difference(before.text(), after.text(), eId).orElseThrow(Requests::notFound);
     if (table == null && rows == null) {
       var html = render(new ChangesView.Shown(0, difference, "").folded(page));
       LOG.info(
@@ -634,7 +649,7 @@ class ChangesController {
         instanceof Text.Ready later)) {
       throw Requests.notFound();
     }
-    var text = content.read(later.root()).orElseThrow(Requests::notFound);
+    var text = content.read(later.text()).orElseThrow(Requests::notFound);
     var eIds = new ArrayList<String>();
     for (var unit : text.units(first, last)) {
       eIds.add(Objects.requireNonNull(unit.attribute("eId")));

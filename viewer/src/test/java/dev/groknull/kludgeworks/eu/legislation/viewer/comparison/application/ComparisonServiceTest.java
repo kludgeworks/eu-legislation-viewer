@@ -5,11 +5,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.observation.ObservationRegistry;
 import java.time.Duration;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -17,13 +19,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.xml.stream.XMLStreamWriter;
 import net.sf.saxon.s9api.XdmNode;
 import org.junit.jupiter.api.Test;
 
 class ComparisonServiceTest {
-  private static final ContentHash FROM = new ContentHash("a".repeat(64));
-  private static final ContentHash TO = new ContentHash("b".repeat(64));
+  private static final TextId FROM = new TextId(1);
+  private static final TextId TO = new TextId(2);
 
   @Test
   void worksOutAComparisonOnceWhenItsAskedForAgainMeanwhile() {
@@ -51,7 +52,7 @@ class ComparisonServiceTest {
     final AtomicInteger reads = new AtomicInteger();
 
     @Override
-    public Optional<Element> read(ContentHash root) {
+    public Optional<Element> read(TextId text) {
       reads.incrementAndGet();
       try {
         held.await(5, TimeUnit.SECONDS);
@@ -62,38 +63,53 @@ class ComparisonServiceTest {
     }
 
     @Override
-    public ContentHash store(XdmNode legalText) {
+    public TextId store(String celex, Language language, String converter, XdmNode legalText) {
       throw new UnsupportedOperationException();
     }
 
     @Override
-    public Optional<Outline> outline(ContentHash root) {
+    public Optional<Outline> outline(TextId text) {
       throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean rebuild(ContentHash root, XMLStreamWriter out) {
+    public boolean contains(TextId text) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Map<String, TextId> texts(Collection<String> celexes, Language language) {
       throw new UnsupportedOperationException();
     }
   }
 
   private static final class KeptComparisons implements ComparisonStore {
-    private final Map<List<ContentHash>, Comparison> kept = new ConcurrentHashMap<>();
+    private final Map<List<TextId>, Comparison> kept = new ConcurrentHashMap<>();
 
     @Override
-    public Optional<Comparison> find(ContentHash from, ContentHash to) {
+    public Optional<Comparison> find(TextId from, TextId to, String version) {
       return Optional.ofNullable(kept.get(List.of(from, to)));
     }
 
     @Override
-    public Optional<Element> whole(ContentHash from, ContentHash to, String eId) {
+    public Optional<Element> whole(TextId from, TextId to, String eId) {
       return Optional.empty();
     }
 
     @Override
-    public Comparison add(Comparison comparison) {
+    public Comparison add(Comparison comparison, String version) {
       kept.putIfAbsent(List.of(comparison.from(), comparison.to()), comparison);
       return comparison;
+    }
+
+    @Override
+    public int remove(TextId text) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public boolean remove(TextId from, TextId to) {
+      throw new UnsupportedOperationException();
     }
   }
 }

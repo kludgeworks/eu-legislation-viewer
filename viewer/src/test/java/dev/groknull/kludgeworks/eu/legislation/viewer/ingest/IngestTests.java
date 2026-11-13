@@ -5,6 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
@@ -13,9 +15,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
-import javax.xml.stream.XMLStreamWriter;
-import net.sf.saxon.s9api.Processor;
-import net.sf.saxon.s9api.SaxonApiException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,6 +39,10 @@ import org.springframework.transaction.support.TransactionTemplate;
  *
  * <p>{@code viewer.ingest.max-attempts} is 1, so a job is tried once. A job that cannot be built
  * fails at once.
+ *
+ * <p>A text whose version the catalogue does not hold is deleted again once it is built, as the
+ * text of a withdrawn version. So a test that reads a built text has the catalogue hold its act
+ * first, from {@link OneActCellar}.
  */
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.NONE,
@@ -47,12 +50,14 @@ import org.springframework.transaction.support.TransactionTemplate;
 @Import({
   TestcontainersConfiguration.class,
   FormexFixturesConfiguration.class,
+  OneActCellar.class,
   IngestTests.Events.class
 })
 class IngestTests {
   private static final String CONSOLIDATION = "02015R1998-20260322";
 
   @Autowired Ingest ingest;
+  @Autowired Acts acts;
   @Autowired Content content;
   @Autowired JdbcClient jdbc;
   @Autowired Events events;
@@ -60,23 +65,20 @@ class IngestTests {
   @Autowired TransactionTemplate transactions;
 
   @Test
-  void buildsAnExpressionsTextAndSaysSo() throws Exception {
+  void buildsAnExpressionsTextAndSaysSo() {
+    assertThat(acts.find(OneActCellar.CELEX)).isPresent();
     ingest.schedule(CONSOLIDATION, Language.ENG);
 
     var status = finished(CONSOLIDATION, Language.ENG);
     assertThat(status.state()).isEqualTo(State.BUILT);
     assertThat(status.attempts()).isEqualTo(1);
-    var root = status.root();
-    assertThat(root).isNotNull();
-    assertThat(content.rebuild(root, xmlSink())).isTrue();
+    var text = content.texts(List.of(CONSOLIDATION), Language.ENG).get(CONSOLIDATION);
+    assertThat(text).isNotNull();
+    assertThat(content.read(text)).isPresent();
     assertThat(events.built)
         .filteredOn(built -> built.celex().equals(CONSOLIDATION))
         .singleElement()
-        .satisfies(
-            built -> {
-              assertThat(built.language()).isEqualTo(Language.ENG);
-              assertThat(built.root()).isEqualTo(root);
-            });
+        .satisfies(built -> assertThat(built.language()).isEqualTo(Language.ENG));
   }
 
   @Test
@@ -194,10 +196,6 @@ class IngestTests {
         .params(celex, language)
         .query(Long.class)
         .single();
-  }
-
-  private static XMLStreamWriter xmlSink() throws SaxonApiException {
-    return new Processor(false).newDocumentBuilder().newBuildingStreamWriter();
   }
 
   /** The module's events, as a listener in another module would have them. */

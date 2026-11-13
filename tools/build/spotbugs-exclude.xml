@@ -51,7 +51,7 @@
 
   <!--
     EI / EI2 (Exposing Internal Representation): SpotBugs flags records and domain value objects holding
-    byte[] or collections. Value objects (ContentHash, Tree.Node) and records are treated as immutable representations.
+    byte[] or collections. Value objects (TextStore.Kept with its digest) and records are treated as immutable representations.
   -->
   <Match>
     <Bug code="EI,EI2" />
@@ -141,14 +141,6 @@
   -->
   <Match>
     <Bug code="DLC,STT" />
-  </Match>
-
-  <!--
-    SECUHE (Unsafe Hash Equals): FindSecBugs flags comparing ContentHash with equals() as a timing attack risk.
-    ContentHash is a content-addressable SHA-256 hash of legal document text for tree deduplication, not an auth secret.
-  -->
-  <Match>
-    <Bug code="SECUHE" />
   </Match>
 
   <!--

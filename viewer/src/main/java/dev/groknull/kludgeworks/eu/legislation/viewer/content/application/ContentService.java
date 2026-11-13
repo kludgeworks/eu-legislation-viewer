@@ -2,160 +2,164 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Chunker;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextReplaced;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextStored;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Optional;
-import javax.xml.stream.XMLStreamException;
-import javax.xml.stream.XMLStreamWriter;
 import net.sf.saxon.s9api.XdmNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Stores, reads, rebuilds and outlines texts.
+ * Stores, reads and outlines texts.
  *
  * <ul>
- *   <li>To store a text, the model encodes it into its tree, cuts the tree into chunks and outlines
- *       it. The service then keeps the chunks and the outline, unless the text is kept already.
- *   <li>To read or rebuild a text, the service reads its chunks back and decodes them.
- *   <li>To outline a text, the service reads the outline that it kept when it stored the text.
+ *   <li>To store a text, the model writes it as JSON. If the SHA-256 of the JSON is the digest of
+ *       the text kept for the version and language, nothing more is done. If not, the service
+ *       outlines the text, deletes the text before it and keeps the new one.
+ *   <li>To read a text, the service reads its JSON and decodes it.
+ *   <li>To outline a text, the service reads the outline that it kept when it stored the text. It
+ *       keeps the outlines read last in the process. The decoded texts are not kept.
  * </ul>
  *
- * <p>Each operation is one transaction, one observation and one log line. The observations are
- * {@code content.store}, {@code content.read}, {@code content.outline} and {@code content.rebuild}.
- * Each gives a span and a timer.
+ * <p>Storing and reading are each one transaction, one observation and one log line. The
+ * observations are {@code content.store}, {@code content.read} and {@code content.outline}. Each
+ * gives a span and a timer.
  */
 @Service
 class ContentService implements Content {
   private static final Logger LOG = LoggerFactory.getLogger(ContentService.class);
 
   private final TextStore store;
+  private final ApplicationEventPublisher events;
   private final ObservationRegistry observations;
 
-  ContentService(TextStore store, ObservationRegistry observations) {
+  ContentService(
+      TextStore store, ApplicationEventPublisher events, ObservationRegistry observations) {
     this.store = store;
+    this.events = events;
     this.observations = observations;
   }
 
   @Override
   @Transactional
-  public ContentHash store(XdmNode legalText) {
+  public TextId store(String celex, Language language, String converter, XdmNode legalText) {
     return Observation.createNotStarted("content.store", observations)
-        .observe(() -> doStore(legalText));
+        .observe(() -> doStore(celex, language, converter, legalText));
   }
 
-  private ContentHash doStore(XdmNode legalText) {
+  private TextId doStore(String celex, Language language, String converter, XdmNode legalText) {
     var start = System.nanoTime();
-    var tree = Encoder.encode(legalText);
-    var root = tree.root();
-    if (store.contains(root)) {
+    var json = Encoder.encode(legalText);
+    var digest = sha256(json);
+    var kept = store.lock(celex, language);
+    if (kept.isPresent() && MessageDigest.isEqual(kept.get().digest(), digest)) {
       LOG.info(
-          "{} is stored already: {} nodes, encoded in {} ms",
-          root,
-          tree.nodes().size(),
+          "Text {} of {} in {} is unchanged: {} KB of JSON, in {} ms",
+          kept.get().id(),
+          celex,
+          language.code(),
+          json.length / 1024,
           millis(start));
-      return root;
+      return kept.get().id();
     }
-    var chunks = Chunker.of(tree);
-    var outline = Outlines.of(tree);
-    var encodedIn = millis(start);
-    var written = System.nanoTime();
-    var added = store.add(root, chunks, outline);
-    var bytes = chunks.bodies().values().stream().mapToLong(body -> body.length).sum();
+    var outline = Outlines.of(Decoder.element(json));
+    kept.ifPresent(old -> store.delete(old.id()));
+    var added = store.add(celex, language, converter, digest, outline, json);
+    events.publishEvent(
+        kept.isPresent()
+            ? new TextReplaced(kept.get().id(), added.id(), celex, language)
+            : new TextStored(added.id()));
     LOG.info(
-        "Stored {}: {} of {} chunks new, {} KB of JSON, {} nodes; encoded in {} ms, written in {}"
-            + " ms",
-        root,
-        added,
-        chunks.bodies().size(),
-        bytes / 1024,
-        tree.nodes().size(),
-        encodedIn,
-        millis(written));
-    return root;
+        "Stored text {} of {} in {}{}: {} KB of JSON, {} KB stored, in {} ms",
+        added.id(),
+        celex,
+        language.code(),
+        kept.map(old -> ", replacing " + old.id()).orElse(""),
+        json.length / 1024,
+        added.bytes() / 1024,
+        millis(start));
+    return added.id();
   }
 
   @Override
   @Transactional(readOnly = true)
-  public Optional<Element> read(ContentHash root) {
-    return Observation.createNotStarted("content.read", observations).observe(() -> doRead(root));
+  public Optional<Element> read(TextId text) {
+    return Observation.createNotStarted("content.read", observations).observe(() -> doRead(text));
   }
 
-  private Optional<Element> doRead(ContentHash root) {
+  private Optional<Element> doRead(TextId text) {
     var start = System.nanoTime();
-    var chunks = store.chunks(root);
-    if (chunks.isEmpty()) {
-      LOG.debug("Nothing stored at {}", root);
+    var json = store.json(text);
+    if (json.isEmpty()) {
+      LOG.debug("No text {}", text);
       return Optional.empty();
     }
     var read = millis(start);
-    var element = Decoder.element(chunks.get());
+    var element = Decoder.element(json.get());
     LOG.debug(
-        "Read {}: {} chunks read in {} ms, decoded in {} ms",
-        root,
-        chunks.get().bodies().size(),
+        "Read text {}: {} KB of JSON read in {} ms, decoded in {} ms",
+        text,
+        json.get().length / 1024,
         read,
         millis(start) - read);
     return Optional.of(element);
   }
 
+  /** The outline is cached in the process, by the identity of the text ({@link ContentCaches}). */
   @Override
+  @Cacheable(cacheNames = ContentCaches.OUTLINES, unless = "#result == null")
   @Transactional(readOnly = true)
-  public Optional<Outline> outline(ContentHash root) {
+  public Optional<Outline> outline(TextId text) {
     return Observation.createNotStarted("content.outline", observations)
-        .observe(() -> doOutline(root));
+        .observe(() -> doOutline(text));
   }
 
-  private Optional<Outline> doOutline(ContentHash root) {
+  private Optional<Outline> doOutline(TextId text) {
     var start = System.nanoTime();
-    var outline = store.outline(root);
+    var outline = store.outline(text);
     LOG.debug(
-        "Outlined {}: {} in {} ms",
-        root,
-        outline.isPresent() ? "kept" : "nothing stored",
+        "Outlined text {}, not cached: {} in {} ms",
+        text,
+        outline.isPresent() ? "kept" : "no text",
         millis(start));
     return outline;
   }
 
   @Override
   @Transactional(readOnly = true)
-  public boolean rebuild(ContentHash root, XMLStreamWriter out) throws XMLStreamException {
-    var observation = Observation.start("content.rebuild", observations);
-    try (var scope = observation.openScope()) {
-      return doRebuild(root, out);
-    } catch (XMLStreamException | RuntimeException e) {
-      observation.error(e);
-      throw e;
-    } finally {
-      observation.stop();
-    }
+  public boolean contains(TextId text) {
+    return store.contains(text);
   }
 
-  private boolean doRebuild(ContentHash root, XMLStreamWriter out) throws XMLStreamException {
-    var start = System.nanoTime();
-    var chunks = store.chunks(root);
-    if (chunks.isEmpty()) {
-      LOG.debug("Nothing stored at {}", root);
-      return false;
+  @Override
+  @Transactional(readOnly = true)
+  public Map<String, TextId> texts(Collection<String> celexes, Language language) {
+    return celexes.isEmpty() ? Map.of() : store.texts(celexes, language);
+  }
+
+  private static byte[] sha256(byte[] json) {
+    try {
+      return MessageDigest.getInstance("SHA-256").digest(json);
+    } catch (NoSuchAlgorithmException e) {
+      throw new IllegalStateException("Every JDK has SHA-256", e);
     }
-    var read = millis(start);
-    Decoder.write(chunks.get(), out);
-    LOG.debug(
-        "Rebuilt {}: {} chunks read in {} ms, written in {} ms",
-        root,
-        chunks.get().bodies().size(),
-        read,
-        millis(start) - read);
-    return true;
   }
 
   private static long millis(long since) {

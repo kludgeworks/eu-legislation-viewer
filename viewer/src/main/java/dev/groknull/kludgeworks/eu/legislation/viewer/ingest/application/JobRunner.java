@@ -167,22 +167,21 @@ class JobRunner {
       job = jobs.save(job.storing());
       var storing = job;
       var converter = conversions.converterVersion();
-      var root =
+      var stored =
           Objects.requireNonNull(
               transactions.execute(
                   status -> {
-                    var stored = content.store(text.get());
-                    jobs.save(storing.built(stored, converter));
-                    events.publishEvent(
-                        new ExpressionBuilt(
-                            storing.celex(), storing.language(), stored, converter));
-                    return stored;
+                    var id =
+                        content.store(storing.celex(), storing.language(), converter, text.get());
+                    jobs.save(storing.built());
+                    events.publishEvent(new ExpressionBuilt(storing.celex(), storing.language()));
+                    return id;
                   }));
       LOG.info(
-          "Built {} in {} as {} in {} ms, attempt {}",
+          "Built {} in {} as text {} in {} ms, attempt {}",
           job.celex(),
           job.language().code(),
-          root,
+          stored,
           millis(start),
           job.attempts());
     } catch (OutOfScopeException e) {

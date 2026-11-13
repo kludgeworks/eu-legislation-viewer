@@ -7,9 +7,10 @@ import static org.awaitility.Awaitility.await;
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.StringReader;
 import java.time.Duration;
 import java.util.Map;
@@ -43,8 +44,8 @@ class ComparisonsTests {
 
   @Test
   void worksOutAComparisonTheFirstTimeAndKeepsIt() {
-    var march = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
-    var october = content.store(LegalTexts.sample("06.02.1/02015R1998-20261001.xml"));
+    var march = store("02015R1998-20260322");
+    var october = store("02015R1998-20261001");
 
     var worked = comparisons.between(march, october).orElseThrow();
 
@@ -56,8 +57,8 @@ class ComparisonsTests {
 
   @Test
   void worksOutTheComparisonOfNeighboursBuiltAheadOfAReader() {
-    var january = content.store(LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
-    var march = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
+    var january = store("02015R1998-20260101");
+    var march = store("02015R1998-20260322");
 
     transaction.executeWithoutResult(
         status -> events.publishEvent(new NeighboursBuilt(january, march)));
@@ -66,9 +67,59 @@ class ComparisonsTests {
   }
 
   @Test
+  void worksOutAgainAComparisonThatOtherRulesWorkedOut() {
+    var march = store("02015R1998-20260322");
+    var october = store("02015R1998-20261001");
+    var worked = comparisons.between(march, october).orElseThrow();
+    jdbc.sql("update text_comparison set differ_version = 'older' where to_text = ?")
+        .param(october.value())
+        .update();
+
+    assertThat(comparisons.between(march, october)).contains(worked);
+    assertThat(
+            jdbc.sql("select differ_version from text_comparison where to_text = ?")
+                .param(october.value())
+                .query(String.class)
+                .single())
+        .isNotEqualTo("older");
+  }
+
+  @Test
+  void removesTheComparisonsOfATextThatIsReplaced() {
+    var march = store("02015R1998-20260322");
+    var october = store("02015R1998-20261001");
+    assertThat(comparisons.between(march, october)).isPresent();
+
+    // The text of October is stored again, as another text
+    var replaced =
+        content.store(
+            "02015R1998-20261001",
+            Language.ENG,
+            "test",
+            LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
+
+    assertThat(replaced).isNotEqualTo(october);
+    await().atMost(Duration.ofMinutes(1)).until(() -> kept(march, october) == 0);
+  }
+
+  @Test
+  void removesAComparisonKeptAfterOneOfItsTextsIsGone() {
+    var march = store("02015R1998-20260322");
+    var october = store("02015R1998-20261001");
+    assertThat(comparisons.between(march, october)).isPresent();
+    // As if October were replaced while the comparison was worked out, before it was kept
+    jdbc.sql("delete from text where id = ?").param(october.value()).update();
+
+    transaction.executeWithoutResult(
+        status -> events.publishEvent(new ComparisonKept(march, october)));
+
+    await().atMost(Duration.ofMinutes(1)).until(() -> kept(march, october) == 0);
+  }
+
+  @Test
   void hasNoComparisonOfATextNotStored() {
-    var march = content.store(LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
-    var none = new ContentHash("00".repeat(32));
+    var march = store("02015R1998-20260322");
+    var none = new TextId(-1);
 
     assertThat(comparisons.between(march, none)).isEmpty();
     assertThat(kept(march, none)).isZero();
@@ -77,8 +128,8 @@ class ComparisonsTests {
   @Test
   void keepsAnAnnexInsertedWholeApartAndGivesItWholeByItself() throws SaxonApiException {
     var later = LegalTexts.sample("06.02.1/02018R2019-20250623.xml");
-    var to = content.store(later);
-    var from = content.store(without(later, "anx"));
+    var to = content.store("02018R2019-20250623", Language.ENG, "test", later);
+    var from = content.store("02018R2019-without-anx", Language.ENG, "test", without(later, "anx"));
 
     var annex =
         comparisons.between(from, to).orElseThrow().differences().stream()
@@ -95,9 +146,11 @@ class ComparisonsTests {
     assertThat(whole.whole()).isNull();
     assertThat(whole.shown().children()).extracting(Element::name).contains("unit");
     assertThat(
-            jdbc.sql("select count(*) from comparison_whole where from_root = ? and to_root = ?")
-                .param(from.bytes())
-                .param(to.bytes())
+            jdbc.sql(
+                    "select count(*) from text_comparison_whole where from_text = ? and to_text ="
+                        + " ?")
+                .param(from.value())
+                .param(to.value())
                 .query(Long.class)
                 .single())
         .isOne();
@@ -126,10 +179,16 @@ class ComparisonsTests {
     return result.getXdmNode();
   }
 
-  private long kept(ContentHash from, ContentHash to) {
-    return jdbc.sql("select count(*) from comparison where from_root = ? and to_root = ?")
-        .param(from.bytes())
-        .param(to.bytes())
+  /** Stores the sample {@code celex} of 2015/1998 in English, under its CELEX. */
+  private TextId store(String celex) {
+    return content.store(
+        celex, Language.ENG, "test", LegalTexts.sample("06.02.1/" + celex + ".xml"));
+  }
+
+  private long kept(TextId from, TextId to) {
+    return jdbc.sql("select count(*) from text_comparison where from_text = ? and to_text = ?")
+        .param(from.value())
+        .param(to.value())
         .query(Long.class)
         .single();
   }

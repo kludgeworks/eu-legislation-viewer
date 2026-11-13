@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import java.util.List;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
@@ -10,8 +10,8 @@ import org.jspecify.annotations.Nullable;
 /**
  * How one text differs from another.
  *
- * @param from the root of the earlier text
- * @param to the root of the later text
+ * @param from the earlier text
+ * @param to the later text
  * @param differences the provisions that differ, in the order of the later text. A deleted
  *     provision is where it stood.
  * @param closing what the later text has after the last difference, in the same form as the context
@@ -22,8 +22,8 @@ import org.jspecify.annotations.Nullable;
  */
 @ValueObject
 public record Comparison(
-    ContentHash from,
-    ContentHash to,
+    TextId from,
+    TextId to,
     List<Difference> differences,
     List<Context> closing,
     @Nullable Side withoutPreamble) {

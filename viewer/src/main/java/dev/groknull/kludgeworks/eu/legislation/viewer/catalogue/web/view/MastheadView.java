@@ -44,6 +44,8 @@ import org.jspecify.annotations.Nullable;
  *     compares.
  * @param preparing whether the act is being prepared. If so, the mode switch shows, but it is not a
  *     link yet.
+ * @param notices the address of the stream of notices that the act changed while the page is open
+ *     ({@code NoticeController}). Null while the act is being prepared.
  */
 public record MastheadView(
     String title,
@@ -57,7 +59,8 @@ public record MastheadView(
     List<Choice> languages,
     @Nullable String read,
     @Nullable String compare,
-    boolean preparing) {
+    boolean preparing,
+    @Nullable String notices) {
 
   public MastheadView {
     languages = List.copyOf(languages);
@@ -155,7 +158,8 @@ public record MastheadView(
             .toList(),
         read,
         compare,
-        false);
+        false,
+        Links.notices(eli, language));
   }
 
   /**
@@ -175,7 +179,8 @@ public record MastheadView(
         languages,
         read,
         compare,
-        true);
+        true,
+        null);
   }
 
   private static Eli eli(Act act) {

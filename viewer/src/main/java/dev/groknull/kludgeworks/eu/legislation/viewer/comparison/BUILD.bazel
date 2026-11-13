@@ -70,10 +70,11 @@ jooq_tables(
 )
 
 # model/
-# The rules of a comparison: wording, units, and how two texts differ (java-diff-utils)
+# The rules of a comparison: wording, units, and how two texts differ (java-diff-utils), with
+# their version
 java_library(
     name = "model",
-    srcs = glob(["model/*.java"]),
+    srcs = glob(["model/*.java"]) + [":differ_version"],
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
         ":comparison",
@@ -93,6 +94,7 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
         ":comparison",
+        ":model",
         ":view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
@@ -133,4 +135,15 @@ java_library(
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
     ],
+)
+
+# The version of the rules of a comparison, model.DifferVersion: the SHA-256 of their sources, so
+# that a change to them computes the kept comparisons again, with no migration and nothing to
+# remember to change
+genrule(
+    name = "differ_version",
+    srcs = glob(["model/*.java"]),
+    outs = ["model/DifferVersion.java"],
+    cmd = "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:source_digest) $@ dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model DifferVersion $(SRCS)",
+    tools = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:source_digest"],
 )

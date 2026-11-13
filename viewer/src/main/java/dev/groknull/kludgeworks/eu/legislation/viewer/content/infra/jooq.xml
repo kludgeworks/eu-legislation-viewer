@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
-<!-- What jOOQ generates of the content module's tables (jooq_tables, in BUILD.bazel, which sets
-     the database and the target): the hashes and roots as ContentHash -->
+<!-- What jOOQ generates of the content module's table (jooq_tables, in BUILD.bazel, which sets
+     the database and the target): the id as TextId, the language as Language, the time as an
+     Instant. The digest and the body stay bytes. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
   <logging>WARN</logging>
   <generator>
     <database>
       <forcedTypes>
         <forcedType>
-          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash</userType>
-          <converter>org.jooq.Converter.ofNullable(byte[].class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::of, dev.groknull.kludgeworks.eu.legislation.viewer.content.ContentHash::bytes)</converter>
-          <includeExpression>(?i:.*\.(digest|root))</includeExpression>
-          <includeTypes>bytea</includeTypes>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId</userType>
+          <converter>org.jooq.Converter.ofNullable(Long.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId.class, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::new, dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId::value)</converter>
+          <includeExpression>text\.id</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
+          <enumConverter>true</enumConverter>
+          <includeExpression>text\.language_code</includeExpression>
+        </forcedType>
+        <forcedType>
+          <userType>java.time.Instant</userType>
+          <converter>org.jooq.Converter.ofNullable(java.time.OffsetDateTime.class, java.time.Instant.class, java.time.OffsetDateTime::toInstant, instant -> instant.atOffset(java.time.ZoneOffset.UTC))</converter>
+          <includeTypes>(?i:timestamptz|timestamp\ with\ time\ zone)</includeTypes>
         </forcedType>
       </forcedTypes>
     </database>

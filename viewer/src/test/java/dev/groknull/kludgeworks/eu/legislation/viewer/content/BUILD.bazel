@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library", "java_test_suite")
 
-# Legal texts stored in Postgres in a container, and rebuilt from it; needs Docker
+# Legal texts stored in Postgres in a container, and read back from it; needs Docker
 java_junit5_test(
     name = "ContentTests",
     size = "medium",
@@ -22,21 +22,24 @@ java_junit5_test(
     deps = [
         ":legal-texts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:application",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_awaitility_awaitility",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_jdbc",
+        "@maven//:org_springframework_spring_tx",
     ],
 )
 
 # model/
-# The legal texts the tests encode: the converter's expected output for its fixtures
+# The legal texts the tests encode: the converter's expected output for its fixtures, and their
+# elements as the converter wrote them
 java_library(
     name = "legal-texts",
     testonly = True,
@@ -44,20 +47,18 @@ java_library(
     data = ["//formex-converter:expected"],
     visibility = ["//viewer:__subpackages__"],
     deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@rules_java//java/runfiles",
     ],
 )
 
-# Legal texts encoded into the tree, cut into chunks and rebuilt from them, as they were
+# Legal texts written as JSON and read back, as the converter wrote them
 java_test_suite(
     name = "model",
     size = "small",
-    srcs = [
-        "model/ChunkerTest.java",
-        "model/EncoderTest.java",
-    ],
+    srcs = ["model/EncoderTest.java"],
     runner = "junit5",
     runtime_deps = [
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
@@ -74,7 +75,7 @@ java_test_suite(
     ],
 )
 
-# Every version of an act, from a directory of legal-text files, rebuilt from one shared store of chunks; run
+# Every version of an act, from a directory of legal-text files, written as JSON and read back; run
 # by hand, not by bazel test //...: --test_env=LEGAL_TEXT_DIR=<dir> (see VersionsRoundTrip)
 java_junit5_test(
     name = "versions",
