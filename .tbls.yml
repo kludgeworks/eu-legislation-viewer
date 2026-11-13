@@ -30,8 +30,6 @@ viewpoints:
       - expression
       - preparation
       - preparation_step
-      - step_act_count
-      - step_count
       - text_step_act_count
       - text_step_count
       - version
@@ -40,16 +38,12 @@ viewpoints:
     name: comparison
     desc: The comparisons of two texts, kept by their identities in the content module.
     tables:
-      - comparison
-      - comparison_whole
       - text_comparison
       - text_comparison_whole
   - id: content
     name: content
     desc: The texts themselves, one row each, with its outline.
     tables:
-      - chunk
-      - manifest
       - text
   - id: ingest
     name: ingest
