@@ -600,54 +600,168 @@ class DifferTest {
 
   @Test
   void resolvesAmendingActFromRenumberedAncestorForDeletedUnit() {
-    var earlier =
-        text(
-            articleWithReplacedAndRenumbered(
-                "art_5",
-                "Article 5",
-                "General rules and framework on transport safety across the Union.",
-                "ActA",
-                "",
-                paragraph(
-                    "art_5/par_1",
-                    "1.",
-                    "Scope.",
-                    pointWithNum(
-                        "art_5/par_1/pnt_a",
-                        "(a)",
-                        "Deleted point on inspection requirements.",
-                        "ActA",
-                        "replaced"))),
-            articleWithReplacedAndRenumbered(
-                "art_6",
-                "Article 6",
-                "Special security standards and oversight for international ports.",
-                "ActA",
-                "",
-                paragraph("art_6/par_1", "1.", "Security provisions.")));
-
-    var later =
-        text(
-            articleWithReplacedAndRenumbered(
-                "art_6",
-                "Article 6",
-                "General rules and framework on transport safety across the Union.",
-                "ActX",
-                "ActX",
-                paragraph("art_6/par_1", "1.", "Scope.")),
-            articleWithReplacedAndRenumbered(
-                "art_7",
-                "Article 7",
-                "Special security standards and oversight for international ports.",
-                "WrongAct",
-                "ActX",
-                paragraph("art_7/par_1", "1.", "Security provisions.")));
-
-    var differences = Differ.differences(earlier, later).differences();
+    // Another act renumbered the article than replaced it, so the point differs on its own.
+    var differences =
+        Differ.differences(articlesWithPoint(), articlesRenumbered("ActY")).differences();
 
     var deletedPoint = find(differences, "art_5/par_1/pnt_a");
     assertThat(deletedPoint.kind()).isEqualTo(Kind.DELETED);
+    assertThat(deletedPoint.parent()).isEqualTo("art_6/par_1");
     assertThat(deletedPoint.markers()).containsExactly(new Marker("ActX", "replaced", "art_6"));
+  }
+
+  @Test
+  void showsADeletedPointInTheRenumberedArticleThatTheSameActReplaced() {
+    var differences =
+        Differ.differences(articlesWithPoint(), articlesRenumbered("ActX")).differences();
+
+    assertThat(differences).extracting(Difference::eId).doesNotContain("art_5/par_1/pnt_a");
+    var article = find(differences, "art_6");
+    assertThat(article.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(article.shown())).contains("[-Deleted point on inspection requirements.]");
+  }
+
+  /** Articles 5 and 6. Article 5(1) has a point (a). */
+  private static Element articlesWithPoint() {
+    return text(
+        articleWithReplacedAndRenumbered(
+            "art_5",
+            "Article 5",
+            "General rules and framework on transport safety across the Union.",
+            "ActA",
+            "",
+            paragraph(
+                "art_5/par_1",
+                "1.",
+                "Scope.",
+                pointWithNum(
+                    "art_5/par_1/pnt_a",
+                    "(a)",
+                    "Deleted point on inspection requirements.",
+                    "ActA",
+                    "replaced"))),
+        articleWithReplacedAndRenumbered(
+            "art_6",
+            "Article 6",
+            "Special security standards and oversight for international ports.",
+            "ActA",
+            "",
+            paragraph("art_6/par_1", "1.", "Security provisions.")));
+  }
+
+  /**
+   * The articles of {@link #articlesWithPoint}, as Articles 6 and 7. ActX replaced the first,
+   * without the point (a), and {@code renumberedBy} renumbered it.
+   */
+  private static Element articlesRenumbered(String renumberedBy) {
+    return text(
+        articleWithReplacedAndRenumbered(
+            "art_6",
+            "Article 6",
+            "General rules and framework on transport safety across the Union.",
+            "ActX",
+            renumberedBy,
+            paragraph("art_6/par_1", "1.", "Scope.")),
+        articleWithReplacedAndRenumbered(
+            "art_7",
+            "Article 7",
+            "Special security standards and oversight for international ports.",
+            "WrongAct",
+            "ActX",
+            paragraph("art_7/par_1", "1.", "Security provisions.")));
+  }
+
+  @Test
+  void pairsAPointThatMovedIntoThePointBeforeIt() {
+    var differences = Differ.differences(pointsBeside("2"), pointsWithin("3")).differences();
+
+    assertThat(differences).extracting(Difference::eId).containsExactly("pnt_12.4.2/pnt_12.4.2.1");
+    var moved = differences.getFirst();
+    assertThat(moved.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(moved.shown(), "p"))).isEqualTo("All EDS shall meet standard [-2][+3].");
+  }
+
+  @Test
+  void pairsAPointThatMovedOutOfThePointBeforeIt() {
+    var differences = Differ.differences(pointsWithin("3"), pointsBeside("2")).differences();
+
+    assertThat(differences).extracting(Difference::eId).containsExactly("pnt_12.4.2.1");
+    var moved = differences.getFirst();
+    assertThat(moved.kind()).isEqualTo(Kind.CHANGED);
+    assertThat(said(only(moved.shown(), "p"))).isEqualTo("All EDS shall meet standard [-3][+2].");
+  }
+
+  @Test
+  void doesNotPairAMovedPointWithAPointOfAnotherNum() {
+    var earlier =
+        text(
+            paragraph("pnt_1", "1", "Standards"),
+            paragraph("pnt_1.1", "1.1", "All equipment shall meet the standard."));
+    var later =
+        text(
+            paragraph(
+                "pnt_1",
+                "1",
+                "Standards",
+                paragraph("pnt_1/pnt_1.2", "1.2", "All equipment shall meet the standard.")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("pnt_1/pnt_1.2", Kind.INSERTED), tuple("pnt_1.1", Kind.DELETED));
+  }
+
+  @Test
+  void pairsAMovedUnitWithoutANumByWhatItSays() {
+    var earlier =
+        text(
+            unit("att", block("num", "ATTACHMENT 5-A")),
+            unit(
+                "att/level_1",
+                block("heading", "THIRD COUNTRIES"),
+                block("p", "The following third countries are recognised: Canada.")));
+    var later =
+        text(
+            unit(
+                "att",
+                block("num", "ATTACHMENT 5-A"),
+                unit("att/level_1", block("heading", "HOLD BAGGAGE")),
+                unit(
+                    "att/level_1/level_1",
+                    block("heading", "THIRD COUNTRIES"),
+                    block(
+                        "p", "The following third countries are recognised: Canada and Serbia."))));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    // The unit with only a heading says nothing to pair it by.
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(
+            tuple("att/level_1", Kind.INSERTED), tuple("att/level_1/level_1", Kind.CHANGED));
+  }
+
+  /** Point 12.4.2 with its points 12.4.2.1 and 12.4.2.2 after it, as its siblings. */
+  private static Element pointsBeside(String standard) {
+    return text(
+        paragraph("pnt_12.4.2", "12.4.2", "Standards for EDS"),
+        paragraph("pnt_12.4.2.1", "12.4.2.1", "All EDS shall meet standard " + standard + "."),
+        paragraph("pnt_12.4.2.2", "12.4.2.2", "Standard 2 shall expire in 2020."));
+  }
+
+  /** Point 12.4.2 with its points 12.4.2.1 and 12.4.2.2 in it. */
+  private static Element pointsWithin(String standard) {
+    return text(
+        paragraph(
+            "pnt_12.4.2",
+            "12.4.2",
+            "Standards for EDS",
+            paragraph(
+                "pnt_12.4.2/pnt_12.4.2.1",
+                "12.4.2.1",
+                "All EDS shall meet standard " + standard + "."),
+            paragraph("pnt_12.4.2/pnt_12.4.2.2", "12.4.2.2", "Standard 2 shall expire in 2020.")));
   }
 
   @Test

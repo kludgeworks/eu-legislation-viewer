@@ -108,34 +108,43 @@ final class Likeness {
     return total;
   }
 
+  /** How alike the item {@code from} of one list and the item {@code to} of another are. */
+  @FunctionalInterface
+  interface Score {
+    /** Returns the likeness, from 0 to 1. Below {@link #MINIMUM}, the two do not pair. */
+    double of(int from, int to);
+  }
+
   /**
-   * Pairs the parts that are alike, in order, with the greatest likeness in all. It aligns them as
-   * the longest common subsequence does, with each pair weighed by its likeness.
+   * Pairs the items of two lists that are alike, in order, with the greatest likeness in all. It
+   * aligns them as the longest common subsequence does, with each pair weighed by its likeness.
+   *
+   * @param from how many items the one list has
+   * @param to how many items the other list has
+   * @return for each item of the other list, the position in the one list of the item that it pairs
+   *     with, or -1 if it pairs with none
    */
-  private static void alike(List<Element> from, List<Element> to, int[] sourceOf) {
-    var earlier = from.stream().map(part -> words(Wording.of(part))).toList();
-    var later = to.stream().map(part -> words(Wording.of(part))).toList();
-    var n = from.size();
-    var m = to.size();
-    var likeness = new double[n][m];
-    for (var i = 0; i < n; i++) {
-      for (var j = 0; j < m; j++) {
-        var each =
-            from.get(i).name().equals(to.get(j).name()) ? of(earlier.get(i), later.get(j)) : 0.0;
+  static int[] best(int from, int to, Score score) {
+    var sourceOf = new int[to];
+    Arrays.fill(sourceOf, -1);
+    var likeness = new double[from][to];
+    for (var i = 0; i < from; i++) {
+      for (var j = 0; j < to; j++) {
+        var each = score.of(i, j);
         likeness[i][j] = each >= MINIMUM ? each : 0.0;
       }
     }
-    var best = new double[n + 1][m + 1];
-    var paired = new boolean[n + 1][m + 1];
-    for (var i = 1; i <= n; i++) {
-      for (var j = 1; j <= m; j++) {
+    var best = new double[from + 1][to + 1];
+    var paired = new boolean[from + 1][to + 1];
+    for (var i = 1; i <= from; i++) {
+      for (var j = 1; j <= to; j++) {
         var skip = Math.max(best[i - 1][j], best[i][j - 1]);
         var pair = likeness[i - 1][j - 1] > 0 ? best[i - 1][j - 1] + likeness[i - 1][j - 1] : -1;
         paired[i][j] = pair > skip;
         best[i][j] = Math.max(skip, pair);
       }
     }
-    for (int i = n, j = m; i > 0 && j > 0; ) {
+    for (int i = from, j = to; i > 0 && j > 0; ) {
       if (paired[i][j]) {
         sourceOf[j - 1] = i - 1;
         i--;
@@ -146,6 +155,22 @@ final class Likeness {
         j--;
       }
     }
+    return sourceOf;
+  }
+
+  /** Pairs the parts that are alike, in order, with the greatest likeness in all. */
+  private static void alike(List<Element> from, List<Element> to, int[] sourceOf) {
+    var earlier = from.stream().map(part -> words(Wording.of(part))).toList();
+    var later = to.stream().map(part -> words(Wording.of(part))).toList();
+    var found =
+        best(
+            from.size(),
+            to.size(),
+            (i, j) ->
+                from.get(i).name().equals(to.get(j).name())
+                    ? of(earlier.get(i), later.get(j))
+                    : 0.0);
+    System.arraycopy(found, 0, sourceOf, 0, found.length);
   }
 
   /** Pairs the parts left between two pairs, in order, while they have the same name. */

@@ -7,8 +7,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
+import org.jspecify.annotations.Nullable;
 
 /**
  * Finds the amendment markers on the own content of a unit.
@@ -52,7 +52,8 @@ final class Markers {
 
   /**
    * Returns the markers of the act that deleted {@code unit} of the earlier text. The later text
-   * {@code after} tells which act it was.
+   * {@code after} tells which act it was. The unit was in the unit that {@code in} is in the later
+   * text. {@code in} is null for an outermost unit.
    *
    * <ul>
    *   <li>If a deletion keeps the unit struck, it returns the markers of that deletion.
@@ -61,19 +62,12 @@ final class Markers {
    *   <li>If neither applies, it returns an empty list.
    * </ul>
    */
-  static List<Marker> deleted(Unit unit, Units after, Map<String, String> earlierToLater) {
+  static List<Marker> deleted(Unit unit, Units after, @Nullable Unit in) {
     var struck = after.struck().get(unit.eId());
     if (struck != null) {
       return struck;
     }
-    if (unit.parent() == null) {
-      return List.of();
-    }
-    for (var at = earlierToLater.get(unit.parent()); at != null; ) {
-      var enclosing = after.get(at);
-      if (enclosing == null) {
-        break;
-      }
+    for (var enclosing = in; enclosing != null; ) {
       var found = new ArrayList<Marker>();
       for (var child : enclosing.element().children()) {
         var act = child.attribute("amendingAct");
@@ -85,7 +79,7 @@ final class Markers {
       if (!found.isEmpty()) {
         return List.copyOf(found);
       }
-      at = enclosing.parent();
+      enclosing = enclosing.parent() == null ? null : after.get(enclosing.parent());
     }
     return List.of();
   }

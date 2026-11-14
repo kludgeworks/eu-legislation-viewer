@@ -18,8 +18,9 @@ import org.jspecify.annotations.Nullable;
 /**
  * Marks words in legal-text, as a comparison shows them. Inserted words go in {@code diff:ins}, and
  * deleted words go in {@code diff:del}. The marks are only around text, a formula or an image, that
- * is the words of a {@code t}, a {@code number}, a {@code math} or an {@code img}. Thus an element
- * keeps the parent that it has in the text.
+ * is the words of a {@code t}, a {@code number}, a {@code math} or an {@code img}. A quotation mark
+ * of a {@code quote} that is marked becomes such text. Thus an element keeps the parent that it has
+ * in the text.
  *
  * <p>A block is read as tokens, in the order in which {@link Wording} reads it:
  *
@@ -32,8 +33,9 @@ import org.jspecify.annotations.Nullable;
  *   <li>a whole formula
  * </ul>
  *
- * <p>The tokens of a {@code t}, a {@code number}, a formula and an image are marked. The others are
- * only counted. A deleted run shows its tokens as they were, a formula as a formula.
+ * <p>The tokens of a {@code t}, a {@code number}, a formula and an image are marked, and so are the
+ * marks of a quote. The others are only counted. A deleted run shows its tokens as they were, a
+ * formula as a formula.
  *
  * <p>A table is not one run of tokens. It is compared by its rows and cells. See {@link #parts}.
  *
@@ -82,10 +84,10 @@ final class Marks {
    * Returns {@code to}, marked against {@code from} part by part.
    *
    * <ul>
-   *   <li>The parts are aligned by name and by what they say, with the Myers diff. Of the parts
-   *       that differ between two that are the same, those alike pair. See {@link Likeness#pairs}.
-   *   <li>The cells of two rows with as many cells are aligned by their column. Thus a changed cell
-   *       is compared with the cell above it in the other text.
+   *   <li>The parts match by name and by what they say, and those that differ pair if they are
+   *       alike. See {@link Parts}.
+   *   <li>The cells of two rows with as many cells pair by their column. Thus a changed cell is
+   *       compared with the cell in the same column of the other text.
    *   <li>A part that is in both texts and differs is marked by {@link #between}.
    *   <li>A part that is only in {@code to} is marked inserted whole.
    *   <li>A part that is only in {@code from} is marked deleted whole, where it stood.
@@ -94,98 +96,36 @@ final class Marks {
   private static Marked parts(Element from, Element to) {
     var before = from.children();
     var after = to.children();
-    var replaced = new HashMap<Integer, Element>();
-    var deletedAt = new HashMap<Integer, List<Element>>();
-    var inserted = 0;
-    var deleted = 0;
     var columns = to.name().equals("tr") && before.size() == after.size();
-    var deltas =
-        DiffUtils.diff(
-                columns ? positions(before) : keys(before),
-                columns ? positions(after) : keys(after))
-            .getDeltas();
-    for (var delta : deltas) {
-      var source = delta.getSource();
-      var target = delta.getTarget();
-      var earlier = before.subList(source.getPosition(), source.getPosition() + source.size());
-      var later = after.subList(target.getPosition(), target.getPosition() + target.size());
-      var sourceOf =
-          columns ? inOrder(earlier.size(), later.size()) : Likeness.pairs(earlier, later);
-      for (var i = 0; i < target.size(); i++) {
-        var part = later.get(i);
-        var was = sourceOf[i] < 0 ? null : earlier.get(sourceOf[i]);
-        if (was != null && Wording.key(was).equals(Wording.key(part))) {
-          continue;
+    var differing =
+        columns
+            ? Parts.inOrder(before, after, keys(before), keys(after))
+            : Parts.differing(before, after, keys(before), keys(after));
+    var shown = new Parts.Shown();
+    for (var each : differing) {
+      switch (each) {
+        case Parts.Changed(int at, Element was, Element is) -> {
+          if (was.name().equals(is.name())) {
+            shown.replace(at, between(was, is));
+          } else {
+            shown.delete(at, all(was, DELETED));
+            shown.replace(at, all(is, INSERTED));
+          }
         }
-        if (was != null && !was.name().equals(part.name())) {
-          var gone = all(was, DELETED);
-          deletedAt
-              .computeIfAbsent(target.getPosition() + i, at -> new ArrayList<>())
-              .add(gone.element());
-          deleted += gone.deleted();
-          was = null;
-        }
-        var marked = was == null ? all(part, INSERTED) : between(was, part);
-        replaced.put(target.getPosition() + i, marked.element());
-        inserted += marked.inserted();
-        deleted += marked.deleted();
-      }
-      var used = new boolean[earlier.size()];
-      for (var each : sourceOf) {
-        if (each >= 0) {
-          used[each] = true;
+        case Parts.Inserted(int at, Element is) -> shown.replace(at, all(is, INSERTED));
+        case Parts.Deleted(int at, Element was) -> {
+          if (!Wording.MARKS.contains(was.name())) {
+            shown.delete(at, all(was, DELETED));
+          }
         }
       }
-      for (var i = 0; i < earlier.size(); i++) {
-        var part = earlier.get(i);
-        if (used[i] || Wording.MARKS.contains(part.name())) {
-          continue;
-        }
-        var gone = all(part, DELETED);
-        deletedAt
-            .computeIfAbsent(
-                target.getPosition() + Likeness.before(sourceOf, i), at -> new ArrayList<>())
-            .add(gone.element());
-        deleted += gone.deleted();
-      }
     }
-    var children = new ArrayList<Element>();
-    for (var i = 0; i < after.size(); i++) {
-      children.addAll(deletedAt.getOrDefault(i, List.of()));
-      children.add(replaced.getOrDefault(i, after.get(i)));
-    }
-    children.addAll(deletedAt.getOrDefault(after.size(), List.of()));
-    return new Marked(copy(to, children), inserted, deleted);
-  }
-
-  /**
-   * Returns {@code to} parts paired in order with {@code from} parts, as {@link Likeness#pairs}
-   * returns them. The parts after the last of the shorter pair with none.
-   */
-  private static int[] inOrder(int from, int to) {
-    var sourceOf = new int[to];
-    for (var i = 0; i < to; i++) {
-      sourceOf[i] = i < from ? i : -1;
-    }
-    return sourceOf;
+    return new Marked(copy(to, shown.of(after)), shown.inserted(), shown.deleted());
   }
 
   /** Returns what each of {@code parts} is matched on: its name and its {@link Wording#key}. */
   private static List<String> keys(List<Element> parts) {
     return parts.stream().map(part -> part.name() + ":" + Wording.key(part)).toList();
-  }
-
-  /**
-   * Returns the {@link #keys} of {@code parts}, each after its position. A part then only matches
-   * the part in the same position, and two lists of as many parts align part by part.
-   */
-  private static List<String> positions(List<Element> parts) {
-    var keys = keys(parts);
-    var positioned = new ArrayList<String>();
-    for (var i = 0; i < keys.size(); i++) {
-      positioned.add(i + ":" + keys.get(i));
-    }
-    return positioned;
   }
 
   /** Returns {@code to}, marked against {@code from} word by word. */
@@ -325,21 +265,45 @@ final class Marks {
           // not marked.
           return sink.atom(element, element.text(), false);
         }
-        var before = new ArrayList<Element>();
-        var children = new ArrayList<Element>();
         if (element.name().equals("quote")) {
-          before.addAll(sink.other(element.attributes().getOrDefault("startQuote", "")));
+          return quote(element, sink);
         }
+        var children = new ArrayList<Element>();
         for (var child : element.children()) {
           children.addAll(walk(child, sink));
         }
-        if (element.name().equals("quote")) {
-          children.addAll(sink.other(element.attributes().getOrDefault("endQuote", "")));
-        }
-        before.add(copy(element, children));
-        return before;
+        return List.of(copy(element, children));
       }
     }
+  }
+
+  /**
+   * Returns the quote {@code element} as {@code sink} rebuilds it. Its quotation marks are tokens,
+   * and legal-text has them as attributes. A quotation mark that is marked becomes text in the
+   * quote, in its mark, and the attribute is emptied. Thus it shows where it stands, marked as any
+   * other text is.
+   */
+  private static List<Element> quote(Element element, Sink sink) {
+    var attributes = new HashMap<>(element.attributes());
+    var opening = sink.other(attributes.getOrDefault("startQuote", ""));
+    var children = new ArrayList<Element>();
+    if (opening.marked() != null) {
+      children.add(opening.marked());
+      attributes.put("startQuote", "");
+    }
+    for (var child : element.children()) {
+      children.addAll(walk(child, sink));
+    }
+    var closing = sink.other(attributes.getOrDefault("endQuote", ""));
+    children.addAll(closing.before());
+    if (closing.marked() != null) {
+      children.add(closing.marked());
+      attributes.put("endQuote", "");
+    }
+    // What was deleted before the opening mark goes before the quote.
+    var out = new ArrayList<>(opening.before());
+    out.add(new Element(element.name(), attributes, children, element.text()));
+    return out;
   }
 
   private static Element copy(Element element, List<Element> children) {
@@ -354,11 +318,19 @@ final class Marks {
     /** Visits an element that is one token. Returns what goes in its place. */
     List<Element> atom(Element element, String token, boolean markable);
 
-    /**
-     * Visits a token with no element of its own, for example the marks of a quote. Returns what
-     * goes where it is.
-     */
-    List<Element> other(String token);
+    /** Visits a token with no element of its own: a quotation mark of a quote. */
+    Other other(String token);
+  }
+
+  /**
+   * What a walk makes of a token with no element of its own.
+   *
+   * @param before what goes before the token, for example the words deleted there
+   * @param marked the token as marked text. Null if the token is not marked: it then stays as it
+   *     is.
+   */
+  private record Other(List<Element> before, @Nullable Element marked) {
+    static final Other NONE = new Other(List.of(), null);
   }
 
   /**
@@ -386,12 +358,12 @@ final class Marks {
     }
 
     @Override
-    public List<Element> other(String token) {
+    public Other other(String token) {
       if (!token.isEmpty()) {
         tokens.add(token);
         pieces.add(Mark.text(null, token));
       }
-      return List.of();
+      return Other.NONE;
     }
   }
 
@@ -444,13 +416,14 @@ final class Marks {
     }
 
     @Override
-    public List<Element> other(String token) {
+    public Other other(String token) {
       if (token.isEmpty()) {
-        return List.of();
+        return Other.NONE;
       }
-      var out = deletedBefore();
+      var before = deletedBefore();
+      var shown = marked[next] ? wrap(mark, text(null, token)) : null;
       next++;
-      return out;
+      return new Other(before, shown);
     }
 
     /** Returns the words deleted after the last token. They go at the end of the marked element. */
