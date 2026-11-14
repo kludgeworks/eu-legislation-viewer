@@ -37,13 +37,13 @@ class LegalTextControllerTests {
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Content content;
-  @MockitoBean LegalRenderer html;
-  @MockitoBean RenderedUnits units;
+  @MockitoBean RenderedTexts texts;
 
   @BeforeEach
   void stored() {
     when(content.contains(TEXT)).thenReturn(true);
-    when(units.units(TEXT, "art_1", "art_3")).thenReturn(Optional.of("<p>Article 1</p>"));
+    when(texts.whole(TEXT)).thenReturn(Optional.of("<article>Whole</article>"));
+    when(texts.units(TEXT, "art_1", "art_3")).thenReturn(Optional.of("<p>Article 1</p>"));
   }
 
   @Test
@@ -63,7 +63,7 @@ class LegalTextControllerTests {
 
     assertThat(result).hasStatus(HttpStatus.NOT_MODIFIED);
     assertThat(result).headers().hasValue(HttpHeaders.ETAG, ETAG);
-    verify(units, never()).units(any(), any(), any());
+    verify(texts, never()).units(any(), any(), any());
   }
 
   @Test
@@ -75,11 +75,22 @@ class LegalTextControllerTests {
   }
 
   @Test
-  void answersABrowserThatHasTheWholeTextWithoutReadingIt() {
+  void keepsTheWholeTextByTheReleaseAndTheText() {
+    var result = mvc.get().uri("/content/42").exchange();
+
+    assertThat(result).hasStatusOk().hasBodyTextEqualTo("<article>Whole</article>");
+    assertThat(result)
+        .headers()
+        .hasValue(HttpHeaders.CACHE_CONTROL, "no-cache")
+        .hasValue(HttpHeaders.ETAG, ETAG);
+  }
+
+  @Test
+  void answersABrowserThatHasTheWholeTextWithoutRenderingIt() {
     var result = mvc.get().uri("/content/42").header(HttpHeaders.IF_NONE_MATCH, ETAG).exchange();
 
     assertThat(result).hasStatus(HttpStatus.NOT_MODIFIED);
-    verify(content, never()).read(any());
+    verify(texts, never()).whole(any());
   }
 
   @Test
@@ -89,7 +100,8 @@ class LegalTextControllerTests {
     assertThat(mvc.get().uri(UNITS).header(HttpHeaders.IF_NONE_MATCH, ETAG))
         .hasStatus(HttpStatus.NOT_FOUND);
     assertThat(mvc.get().uri("/content/42")).hasStatus(HttpStatus.NOT_FOUND);
-    verify(units, never()).units(any(), any(), any());
+    verify(texts, never()).whole(any());
+    verify(texts, never()).units(any(), any(), any());
   }
 
   /** The release, as a release build stamps it. */

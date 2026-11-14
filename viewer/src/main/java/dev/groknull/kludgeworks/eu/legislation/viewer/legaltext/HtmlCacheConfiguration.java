@@ -20,8 +20,10 @@ import org.springframework.validation.annotation.Validated;
  * Configures the cache of rendered HTML in Valkey, on the connection of the app.
  *
  * <ul>
- *   <li>A key is {@code html:{release}:{text}:{first}:{last}}. A text identity is never used again,
- *       and a release changes the templates, so no entry is ever wrong and none is invalidated.
+ *   <li>A key is {@code html:{release}:{text}} for a whole text, and {@code
+ *       html:{release}:{text}:{first}:{last}} for a run of its units. A text identity is never used
+ *       again, and a release changes the templates, so no entry is ever wrong and none is
+ *       invalidated.
  *   <li>An entry lives for {@code viewer.legaltext.html-cache.ttl}. Valkey evicts the least
  *       recently used entries first when its memory is full, if its {@code maxmemory-policy} is
  *       {@code allkeys-lru}. That is server configuration, not set here.

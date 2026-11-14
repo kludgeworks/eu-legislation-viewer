@@ -10,8 +10,8 @@
  *   <li>{@link LegalTextController} serves a stored text, or some of its units, as an htmx fragment
  *       at {@code /content/{id}}, which pages transclude. Browsers ask again each time, and get 304
  *       while the release and the text are the same.
- *   <li>{@link RenderedUnits} renders runs of units and keeps their HTML in Valkey, by the release
- *       and the identity of the text ({@link HtmlCacheConfiguration}).
+ *   <li>{@link RenderedTexts} renders texts, whole or a run of their units, and keeps their HTML in
+ *       Valkey, by the release and the identity of the text ({@link HtmlCacheConfiguration}).
  * </ul>
  *
  * <p>It renders the content module's {@code Element} and reads texts through the content module's

@@ -141,8 +141,8 @@ viewer:
       size: 200
   legaltext:
     html-cache:
-      # how long Valkey keeps the HTML of a run of units (a window, a fold) after it is rendered. Its
-      # key names the release and the text, so nothing in it is ever wrong: the TTL only frees what
-      # is no longer read. Valkey's maxmemory and maxmemory-policy (allkeys-lru) are its own
+      # how long Valkey keeps the HTML of a text, or of a run of its units (a fold), after it is
+      # rendered. Its key names the release and the text, so nothing in it is ever wrong: the TTL
+      # only frees what is no longer read. Valkey's maxmemory and maxmemory-policy (allkeys-lru) are its own
       # configuration, not the app's: without them, Valkey only drops what has expired
       ttl: 7d
