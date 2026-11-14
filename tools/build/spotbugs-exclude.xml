@@ -136,6 +136,15 @@
   </Match>
 
   <!--
+    SECCORS (permissive CORS): the API is public and read by any site. It uses no cookies, so the
+    policy sends no credentials (ApiConfiguration.addCorsMappings).
+  -->
+  <Match>
+    <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.ApiConfiguration" />
+    <Bug code="SECCORS" />
+  </Match>
+
+  <!--
     DLC (Dubious List Collection) & STT (String Parsing):
     Amendment.Role uses List where roles are ordered; FormexConverter parses request URIs.
   -->

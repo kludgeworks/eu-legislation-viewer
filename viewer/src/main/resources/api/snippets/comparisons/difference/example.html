@@ -1,0 +1,52 @@
+<figure class="api-example">
+<figcaption><span class="api-method">GET</span> <span class="api-path">/api/acts/32015R1998/comparisons/2026-03-22..2026-10-01/texts/eng/differences/anx/pnt_8.1.2.3/pnt_c</span> <span class="api-status" data-status="200">200 OK</span></figcaption>
+<pre data-tab="Response"><code class="language-json">{
+  &quot;_links&quot; : {
+    &quot;self&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/comparisons/2026-03-22..2026-10-01/texts/eng/differences/anx/pnt_8.1.2.3/pnt_c&quot;
+    },
+    &quot;up&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/comparisons/2026-03-22..2026-10-01/texts/eng&quot;
+    }
+  },
+  &quot;eId&quot; : &quot;anx/pnt_8.1.2.3/pnt_c&quot;,
+  &quot;kind&quot; : &quot;changed&quot;,
+  &quot;unitKind&quot; : &quot;point&quot;,
+  &quot;num&quot; : &quot;(c)&quot;,
+  &quot;inserted&quot; : 16,
+  &quot;deleted&quot; : 0,
+  &quot;parent&quot; : &quot;anx/pnt_8.1.2.3&quot;,
+  &quot;section&quot; : &quot;anx/pnt_8.1.2&quot;,
+  &quot;markers&quot; : [ {
+    &quot;act&quot; : &quot;32026R0449&quot;,
+    &quot;action&quot; : &quot;replaced&quot;,
+    &quot;in&quot; : null
+  } ],
+  &quot;earlierMarkers&quot; : [ ],
+  &quot;amendments&quot; : [ ],
+  &quot;shown&quot; : [ &quot;unit&quot;, {
+    &quot;eId&quot; : &quot;anx/pnt_8.1.2.3/pnt_c&quot;,
+    &quot;kind&quot; : &quot;point&quot;,
+    &quot;numbered&quot; : &quot;true&quot;
+  }, [ &quot;provenance&quot;, {
+    &quot;action&quot; : &quot;replaced&quot;,
+    &quot;amendingAct&quot; : &quot;32026R0449&quot;,
+    &quot;location&quot; : &quot;AR:1 .AND. AX:0;PT:11;PT:a&quot;,
+    &quot;marker&quot; : &quot;O024001M001000&quot;
+  } ], [ &quot;num&quot;, { }, [ &quot;t&quot;, {
+    &quot;v&quot; : &quot;(c)&quot;
+  } ] ], [ &quot;p&quot;, { }, [ &quot;t&quot;, {
+    &quot;v&quot; : &quot;x-ray equipment&quot;
+  } ], [ &quot;diff:ins&quot;, { }, [ &quot;t&quot;, {
+    &quot;v&quot; : &quot; applied in accordance with Attachment 6-J to the Annex to Implementing Decision C(2015) 8005&quot;
+  } ] ], [ &quot;t&quot;, {
+    &quot;v&quot; : &quot;;&quot;
+  } ] ] ]
+}</code></pre>
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: application/hal+json
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl &#39;https://eu-law.groknull.dev/api/acts/32015R1998/comparisons/2026-03-22..2026-10-01/texts/eng/differences/anx/pnt_8.1.2.3/pnt_c&#39; -i -X GET \
+    -H &#39;Accept: application/hal+json&#39;</code></pre>
+</figure>

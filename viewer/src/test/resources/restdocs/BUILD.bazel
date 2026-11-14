@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+
+# Spring REST Docs' templates of the API's examples, as fragments of HTML for its documentation page
+# (ApiSnippets): REST Docs finds a format's templates at org/springframework/restdocs/templates/<id>
+java_library(
+    name = "templates",
+    resource_strip_prefix = "viewer/src/test/resources/restdocs",
+    resources = glob(["org/**/*.snippet"]),
+    visibility = ["//viewer:__subpackages__"],
+)

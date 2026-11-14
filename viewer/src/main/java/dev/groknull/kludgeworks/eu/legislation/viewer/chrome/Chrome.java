@@ -106,6 +106,9 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
       String loading,
       String timeline,
       String datepicker,
+      String highlight,
+      String highlightHttp,
+      String examples,
       Icons icons) {
     static Assets of(HttpServletRequest request) {
       // Spring MVC sets this attribute on every request that its handlers serve.
@@ -130,6 +133,9 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
           url(urls, request, "/js/loading.js"),
           url(urls, request, "/js/timeline.js"),
           url(urls, request, "/js/datepicker.js"),
+          url(urls, request, "/webjars/highlightjs__cdn-assets/highlight.min.js"),
+          url(urls, request, "/webjars/highlightjs__cdn-assets/languages/http.min.js"),
+          url(urls, request, "/js/examples.js"),
           new Icons(
               url(urls, request, "/favicon.svg"),
               url(urls, request, "/favicon.ico"),

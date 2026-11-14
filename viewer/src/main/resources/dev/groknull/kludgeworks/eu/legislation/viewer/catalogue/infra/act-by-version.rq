@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT
+# Gets the CELEX number of the act that a consolidated version is a version of, for CellarActs.
+# {{version}}: the CELEX number of a consolidated version, for example 02015R1998-20260322.
+# Sparql.fill escapes it.
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+SELECT DISTINCT ?celex
+WHERE {
+  ?consolidation cdm:resource_legal_id_celex "{{version}}"^^xsd:string ;
+       cdm:act_consolidated_based_on_resource_legal ?act .
+  ?act cdm:resource_legal_id_celex ?celex .
+}

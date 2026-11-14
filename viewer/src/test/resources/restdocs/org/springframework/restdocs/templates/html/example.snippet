@@ -1,0 +1,12 @@
+<figure class="api-example">
+<figcaption><span class="api-method">{{method}}</span> <span class="api-path">{{path}}</span> <span class="api-status" data-status="{{statusCode}}">{{statusCode}} {{statusReason}}</span></figcaption>
+{{#responseBody}}
+<pre data-tab="Response"><code class="language-json">{{responseBody}}</code></pre>
+{{/responseBody}}
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 {{statusCode}} {{statusReason}}
+{{#headers}}
+{{name}}: {{value}}
+{{/headers}}
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl {{url}} {{options}}</code></pre>
+</figure>

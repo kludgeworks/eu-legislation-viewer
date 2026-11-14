@@ -5,7 +5,7 @@
      offers other programs (API), and the build. The home page's footer links to each part by its
      id. --%>
 @template.layout.page(chrome = chrome, title = "About · Amendment viewer", content = @`
-  <article class="about-page">
+  <article class="text-page">
     <h1>About</h1>
     <section id="what">
       <h2>What this is</h2>
@@ -32,7 +32,8 @@
     </section>
     <section id="api">
       <h2>API</h2>
-      <p>An API for other programs, in HAL, is planned. It isn’t available yet.</p>
+      <p>An API for other programs, in HAL, starts at <a href="/api"><span class="mono">/api</span></a>. It is in
+        development. See its <a href="/api/docs">documentation</a>.</p>
     </section>
     <section id="build">
       <h2>Build</h2>

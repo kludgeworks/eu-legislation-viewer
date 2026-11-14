@@ -68,6 +68,21 @@ class ComparisonServiceTest {
     }
 
     @Override
+    public Optional<byte[]> json(TextId text) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Optional<byte[]> json(TextId text, String eId) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public byte[] json(Element element) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Optional<Outline> outline(TextId text) {
       throw new UnsupportedOperationException();
     }

@@ -28,6 +28,14 @@ class EncoderTest {
         .containsExactlyElementsOf(LegalTexts.lines(LegalTexts.canonical(text)));
   }
 
+  @ParameterizedTest
+  @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts#samples")
+  void writesAnElementReadBackAsTheSameJson(String sample) {
+    var json = Encoder.encode(LegalTexts.sample(sample));
+
+    assertThat(Encoder.encode(Decoder.element(json))).isEqualTo(json);
+  }
+
   @Test
   void writesTheSameJsonWhateverTheOrderOfTheAttributes() {
     var before = Encoder.encode(LegalTexts.parse(text("eId=\"art_1\" kind=\"article\"")));

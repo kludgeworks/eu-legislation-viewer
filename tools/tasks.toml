@@ -64,3 +64,18 @@ if taplo get -o json -f mise.toml tasks >/dev/null 2>&1; then
   exit 1
 fi
 '''
+
+[api-snippets]
+description = "Rewrite the API documentation's examples (api/snippets) from the modules' documenting tests, after a deliberate change"
+run = '''
+bazel test --test_tag_filters=api-snippets --nocache_test_results //viewer/... || true
+set -e
+golden=viewer/src/main/resources/api/snippets
+for outputs in $(find -L bazel-testlogs/viewer -path '*/test.outputs/api/snippets' -type d); do
+  cp -R "$outputs"/. "$golden"/
+done
+# Bazel's outputs are read-only, and its files executable, and cp keeps their mode
+find "$golden" -type d -exec chmod 755 {} +
+find "$golden" -type f -exec chmod 644 {} +
+git status --short viewer/src/main/resources/api/snippets
+'''

@@ -1,0 +1,14 @@
+<p>A unit of the text that changed between the two versions. The link is a template with one variable, <span class="mono">eId</span>.
+  For example, <span class="mono">art_3</span> or <span class="mono">anx/pnt_1.2</span>.</p>
+<p>Its <span class="mono">kind</span> tells how the unit changed:</p>
+<dl class="api-members">
+  <dt>inserted</dt>
+  <dd>Only the later version has the unit.</dd>
+  <dt>deleted</dt>
+  <dd>Only the earlier version has the unit.</dd>
+  <dt>changed</dt>
+  <dd>The wording of the unit changed.</dd>
+</dl>
+<p>A difference also has the number of words inserted and deleted, the amendment markers of the consolidation, and
+  the acts that amended the unit. It shows the unit as JsonML, with <span class="mono">diff:ins</span> and <span class="mono">diff:del</span> around
+  the words that changed.</p>

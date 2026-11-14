@@ -45,6 +45,14 @@ class CatalogueService implements Acts {
   }
 
   @Override
+  public Optional<Act> findByVersion(String celex) {
+    return find(
+        "the version " + celex,
+        () -> store.findByVersion(celex),
+        () -> cellar.findByVersion(celex));
+  }
+
+  @Override
   public Optional<Act> catalogued(ActIdentifier id) {
     return store.find(id);
   }

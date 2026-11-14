@@ -104,6 +104,24 @@ public final class Timeline {
   }
 
   /**
+   * Returns the versions that apply on {@code date}, in any language. That is one version, or the
+   * original text and a consolidation that share the day, in different languages. Returns none
+   * before the first version applies.
+   */
+  public List<Version> allApplicableOn(LocalDate date) {
+    var entry = byDate.floorEntry(date);
+    return entry == null ? List.of() : List.copyOf(entry.getValue());
+  }
+
+  /**
+   * Returns the day on which the next version after {@code date} starts. The versions that apply on
+   * {@code date} apply until that day. Returns empty if no version starts later.
+   */
+  public Optional<LocalDate> nextStartAfter(LocalDate date) {
+    return Optional.ofNullable(byDate.higherKey(date));
+  }
+
+  /**
    * Returns the version that starts on {@code date}, or empty if no version does. {@link
    * #applicableOn} returns the version that applies.
    *

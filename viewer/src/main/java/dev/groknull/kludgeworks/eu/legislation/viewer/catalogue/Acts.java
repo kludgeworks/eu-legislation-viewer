@@ -15,6 +15,12 @@ public interface Acts {
   Optional<Act> find(Eli eli);
 
   /**
+   * Returns the act that has a consolidated version with the CELEX number {@code celex}, for
+   * example {@code 02015R1998-20260322}. Returns empty if Cellar has no such version.
+   */
+  Optional<Act> findByVersion(String celex);
+
+  /**
    * Returns the act with this CELEX if the catalogue has it already, without asking Cellar. Asking
    * Cellar takes seconds, so a page can show that it looks the act up first.
    */

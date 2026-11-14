@@ -10,7 +10,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
@@ -35,7 +34,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
-import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.output.StringOutput;
@@ -152,7 +150,7 @@ class ChangesController {
       @RequestParam(name = ComparePage.VIEW, defaultValue = "changes") String shown,
       HttpServletRequest request) {
     var view = view(shown);
-    var ends = new Ends(new Eli(type, year, number), code, from, to, act);
+    var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
         ComparePage.ofPart(
             request.getRequestURI(),
@@ -336,7 +334,7 @@ class ChangesController {
       @RequestParam(name = ComparePage.COUNT, defaultValue = "false") boolean count,
       HttpServletRequest request) {
     var view = view(shown);
-    var ends = new Ends(new Eli(type, year, number), code, from, to, act);
+    var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
         ComparePage.ofPart(
             request.getRequestURI(),
@@ -533,7 +531,7 @@ class ChangesController {
       @RequestParam(name = ComparePage.OUTLINE, defaultValue = "false") boolean outline,
       HttpServletRequest request,
       HttpServletResponse response) {
-    var ends = new Ends(new Eli(type, year, number), code, from, to, act);
+    var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
         ComparePage.ofPart(
             request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
@@ -643,7 +641,7 @@ class ChangesController {
       @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
       @RequestParam(ComparePage.FIRST) String first,
       @RequestParam(ComparePage.LAST) String last) {
-    var ends = new Ends(new Eli(type, year, number), code, from, to, null);
+    var ends = ends(new Eli(type, year, number), code, from, to, null);
     var started = System.nanoTime();
     if (!(texts.preparation(ends.act, ends.language).texts().get(ends.to)
         instanceof Text.Ready later)) {
@@ -678,62 +676,9 @@ class ChangesController {
     return templates.comparisonNeighbours(rows, this.html).render();
   }
 
-  /**
-   * The two ends of a comparison, from its canonical address:
-   *
-   * <ul>
-   *   <li>the act, and its versions in the language
-   *   <li>the versions that start on {@code from} and on {@code to}. From is not after To.
-   *   <li>the act asked for, to limit the comparison to its changes. It is between the two
-   *       versions.
-   * </ul>
-   *
-   * <p>Anything else is 404. The compare page finds the canonical address for any dates. Its parts
-   * need not.
-   */
-  private final class Ends {
-    final Language language;
-    final Act act;
-    final Timeline timeline;
-    final Version from;
-    final Version to;
-    final @Nullable ActIdentifier only;
-
-    Ends(Eli eli, String code, LocalDate from, LocalDate to, @Nullable String only) {
-      language = Requests.language(code);
-      act = acts.find(eli).orElseThrow(Requests::notFound);
-      timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
-      this.from = timeline.startingOn(from).orElseThrow(Requests::notFound);
-      this.to = timeline.startingOn(to).orElseThrow(Requests::notFound);
-      if (this.from.date().isAfter(this.to.date())) {
-        throw Requests.notFound();
-      }
-      this.only =
-          only == null
-              ? null
-              : act.integratedBetween(this.from, this.to).stream()
-                  .filter(each -> each.celex().equals(only))
-                  .findFirst()
-                  .orElseThrow(Requests::notFound);
-    }
-
-    /**
-     * Returns the version in the language that integrates {@code amending}. The version is after
-     * From and not after To.
-     */
-    Optional<Version> step(ActIdentifier amending) {
-      return timeline.versions().stream()
-          .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-          .filter(v -> act.integratedBetween(earlier(v), v).contains(amending))
-          .findFirst();
-    }
-
-    /**
-     * Returns the version in the language before {@code version}. That is the text just before its
-     * changes. If there is no version before it, returns {@code version}.
-     */
-    Version earlier(Version version) {
-      return timeline.predecessor(version).orElse(version);
-    }
+  /** Returns the ends of the comparison at a canonical address of the compare page. */
+  private Ends ends(Eli eli, String code, LocalDate from, LocalDate to, @Nullable String only) {
+    var language = Requests.language(code);
+    return new Ends(acts.find(eli).orElseThrow(Requests::notFound), language, from, to, only);
   }
 }

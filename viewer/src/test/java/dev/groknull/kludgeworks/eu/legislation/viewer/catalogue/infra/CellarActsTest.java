@@ -552,7 +552,17 @@ class CellarActsTest {
   void identifiesAnActByItsEli() {
     var eli = new Eli("reg_impl", 2015, "1998");
 
-    assertThat(CellarActs.identity(eli, recorded("act-by-eli-reg_impl-2015-1998.json")))
+    assertThat(
+            CellarActs.identity("the ELI " + eli, recorded("act-by-eli-reg_impl-2015-1998.json")))
+        .contains(AVSEC);
+  }
+
+  @Test
+  void identifiesAnActByTheCelexNumberOfAConsolidatedVersion() {
+    assertThat(
+            CellarActs.identity(
+                "the version 02015R1998-20260322",
+                recorded("act-by-version-02015R1998-20260322.json")))
         .contains(AVSEC);
   }
 
@@ -690,7 +700,7 @@ class CellarActsTest {
                 new SparqlResult.Row(Map.of("celex", "32015R1999"))));
 
     assertThatExceptionOfType(CellarException.class)
-        .isThrownBy(() -> CellarActs.identity(eli, twoActs))
+        .isThrownBy(() -> CellarActs.identity("the ELI " + eli, twoActs))
         .withMessageStartingWith("Cellar's data for the ELI reg_impl/2015/1998: several acts");
   }
 

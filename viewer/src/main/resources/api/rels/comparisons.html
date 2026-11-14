@@ -1,0 +1,16 @@
+<p>Finds the comparison of the act's text in one language between the law on two days. The answer redirects to the
+  comparison of the versions that apply on the two days. The comparison lists its differences.</p>
+<p>The link is a template with these query parameters:</p>
+<dl class="api-members">
+  <dt>from</dt>
+  <dd>The first day.</dd>
+  <dt>to</dt>
+  <dd>The second day. It must not be before <span class="mono">from</span>.</dd>
+  <dt>language</dt>
+  <dd>The language. For example, <span class="mono">eng</span>.</dd>
+  <dt>amendingAct</dt>
+  <dd>Optional. The CELEX number of an act. The comparison then shows only the changes of that act.</dd>
+</dl>
+<p>If <span class="mono">from</span>, <span class="mono">to</span> or <span class="mono">language</span> is missing, or <span class="mono">from</span> is after <span class="mono">to</span>, the status is
+  <span class="mono">400 Bad Request</span>. If the texts are not ready yet, the answer is <span class="mono">202 Accepted</span>. See
+  <a href="#answers-waiting">Waiting</a>.</p>

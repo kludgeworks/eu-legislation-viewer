@@ -250,3 +250,313 @@ button.link {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* A page of plain text, at reading width. For example, the About page. */
+.text-page {
+  max-width: 44rem;
+  color: var(--ink2);
+}
+
+.text-page h1 {
+  margin: 0 0 12px;
+  font:
+    600 28px/1.2 Georgia,
+    serif;
+  color: var(--ink);
+}
+
+.text-page h2 {
+  margin: 28px 0 6px;
+  font:
+    600 19px Georgia,
+    serif;
+  color: var(--ink);
+}
+
+/* The documentation of the API (catalogue/api.jte), laid out as a handbook: a column of contents
+ * that stays in view, beside a column of reading width. */
+.api-docs {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 760px);
+  gap: 48px;
+  justify-content: center;
+  padding-block: 14px 40px;
+  color: var(--ink2);
+}
+
+.api-contents {
+  position: sticky;
+  top: 56px;
+  align-self: start;
+  max-height: calc(100vh - 72px);
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+.api-docs .api-contents h2 {
+  margin: 0 0 8px;
+  font:
+    400 11px system-ui,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.api-contents ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.api-contents ul ul {
+  gap: 2px;
+  margin: 4px 0 6px 12px;
+}
+
+.api-contents .api-terms {
+  font-size: 12.5px;
+}
+
+.api-contents a {
+  color: var(--ink2);
+  text-decoration: none;
+}
+
+.api-contents a:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.api-docs h1 {
+  margin: 0 0 8px;
+  font:
+    600 30px/1.2 Georgia,
+    serif;
+  color: var(--ink);
+}
+
+.api-docs .api-lead {
+  margin: 0 0 28px;
+  font-size: 16px;
+}
+
+.api-docs h2 {
+  margin: 36px 0 8px;
+  font:
+    600 21px Georgia,
+    serif;
+  color: var(--ink);
+}
+
+.api-docs h3 {
+  margin: 24px 0 6px;
+  font-size: 16px;
+  color: var(--ink);
+}
+
+/* The steps of the walk, numbered */
+.api-guide {
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.api-guide > li {
+  counter-increment: step;
+}
+
+.api-guide > li > h3::before {
+  content: counter(step);
+  margin-right: 10px;
+  font:
+    600 13px ui-monospace,
+    monospace;
+  color: var(--accent);
+}
+
+.api-docs dt {
+  margin-top: 12px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.api-docs dd {
+  margin-left: 0;
+}
+
+.api-docs dd > p:first-child {
+  margin-top: 0;
+}
+
+/* The members of a problem or the parameters of a template: each name beside what it means */
+.api-docs .api-members {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 4px 16px;
+  margin: 8px 0 12px;
+}
+
+.api-docs .api-members dt {
+  margin: 0;
+  font:
+    600 13px/1.6 ui-monospace,
+    monospace;
+}
+
+.api-docs .api-members ul {
+  margin: 4px 0;
+  padding-left: 18px;
+}
+
+/* An example (js/examples.js): the request, then tabs of the response's body, its headers and the
+ * request as curl. Without the script, the three are one under the other. */
+.api-example {
+  margin: 10px 0 16px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: var(--surface);
+}
+
+.api-example figcaption {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--surface2);
+  font:
+    13px ui-monospace,
+    monospace;
+  color: var(--ink);
+}
+
+.api-method {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--accent-fill);
+  color: var(--on-fill);
+  font-weight: 600;
+}
+
+.api-path {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.api-status {
+  padding: 1px 6px;
+  border-radius: 3px;
+  background: var(--band);
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.api-status[data-status^="4"],
+.api-status[data-status^="5"] {
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+.api-copy {
+  flex: none;
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--ink2);
+  font:
+    12px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+.api-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 0 12px;
+  border-bottom: 1px solid var(--hair);
+  font-size: 13px;
+}
+
+.api-tabs button {
+  padding: 7px 10px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+
+.api-tabs button[aria-selected="true"] {
+  border-bottom-color: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.api-example pre {
+  max-height: 36rem;
+  margin: 0;
+  padding: 14px 16px;
+  overflow: auto;
+  font:
+    13px/1.6 ui-monospace,
+    monospace;
+  color: var(--ink);
+}
+
+.api-example pre + pre {
+  border-top: 1px dashed var(--rule);
+}
+
+.api-example pre[data-tab="curl"] code::before {
+  content: "$ ";
+  color: var(--muted);
+}
+
+/* A fold of an example's body: says what it holds, and opens when pressed */
+.api-fold {
+  padding: 0 6px;
+  border: 1px solid var(--accent-line);
+  border-radius: 10px;
+  background: var(--accent-tint);
+  color: var(--accent);
+  font:
+    12px system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+/* The tokens of an example, as highlight.js names them (js/examples.js), in the theme's colours: the
+ * names of JSON's members and of HTTP's headers, strings, numbers and literals, and the command */
+.api-docs .hljs-attr,
+.api-docs .hljs-attribute {
+  color: light-dark(#1d4f91, #8cb8f0);
+}
+
+.api-docs .hljs-string {
+  color: var(--accent);
+}
+
+.api-docs .hljs-number,
+.api-docs .hljs-literal {
+  color: light-dark(#8a3c0f, #f0a875);
+}
+
+.api-docs .hljs-meta,
+.api-docs .hljs-punctuation {
+  color: var(--muted);
+}
+
+.api-docs .hljs-built_in,
+.api-docs .hljs-keyword {
+  color: light-dark(#6a2c91, #cfa3f0);
+}

@@ -14,4 +14,10 @@ public interface ActSource {
 
   /** Returns the act that this ELI names, or empty if no act has it. */
   Optional<Act> find(Eli eli);
+
+  /**
+   * Returns the act that has a consolidated version with the CELEX number {@code celex}, or empty
+   * if there is no such version.
+   */
+  Optional<Act> findByVersion(String celex);
 }

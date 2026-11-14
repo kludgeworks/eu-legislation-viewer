@@ -100,6 +100,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
+        "@maven//:com_fasterxml_jackson_core_jackson_annotations",
         "@maven//:gg_jte_jte_models",
         "@maven//:gg_jte_jte_models_runtime",
         "@maven//:gg_jte_jte_runtime",
@@ -108,9 +109,15 @@ java_library(
         "@maven//:org_jmolecules_jmolecules_onion_architecture",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_slf4j_slf4j_api",
+        "@maven//:org_springframework_boot_spring_boot_jackson",
+        "@maven//:org_springframework_hateoas_spring_hateoas",
+        "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_core",
         "@maven//:org_springframework_spring_web",
         "@maven//:org_springframework_spring_webmvc",
+        "@maven//:tools_jackson_core_jackson_core",
+        "@maven//:tools_jackson_core_jackson_databind",
     ],
 )
 

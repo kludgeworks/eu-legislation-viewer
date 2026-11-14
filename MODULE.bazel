@@ -69,6 +69,9 @@ maven.install(
         # the app: Spring MVC on Tomcat, and Actuator
         "org.springframework.boot:spring-boot-starter-webmvc",
         "org.springframework.boot:spring-boot-starter-actuator",
+        # the API for other programs, in HAL: Spring HATEOAS, configured by Boot (the api module)
+        "org.springframework.boot:spring-boot-starter-hateoas",
+        "org.springframework.hateoas:spring-hateoas",
         # RestClient.Builder, configured by Boot (spring.http.clients.*)
         "org.springframework.boot:spring-boot-starter-restclient",
         # Jakarta Bean Validation (Hibernate Validator), for @Validated configuration properties
@@ -119,6 +122,8 @@ maven.install(
         "gg.jte:jte-jspecify-nullmarked:3.2.5",
         "gg.jte:jte-spring-boot-starter-4:3.2.5",
         "org.webjars.npm:htmx.org:4.0.1",
+        # the API documentation's examples, tokenised for colour in the browser (catalogue/api.jte)
+        "org.webjars.npm:highlightjs__cdn-assets:11.11.1",
         # htmx's requests in Spring MVC: @HxRequest handlers for fragments, Vary: HX-Request on their
         # responses (not on the full page's: that one sets it itself)
         "io.github.wimdeblauwe:htmx-spring-boot:6.0.1",
@@ -145,6 +150,9 @@ maven.install(
         "org.springframework.boot:spring-boot-test-autoconfigure",
         # the pages' controllers alone (@WebMvcTest, MockMvc), what they ask of the modules mocked
         "org.springframework.boot:spring-boot-webmvc-test",
+        # the API documentation's examples, written by the controllers' tests (Spring REST Docs)
+        "org.springframework.boot:spring-boot-restdocs",
+        "org.springframework.restdocs:spring-restdocs-mockmvc",
         "org.mockito:mockito-core",
         "org.hamcrest:hamcrest",
         # waiting on work done in the background (the ingest workers)

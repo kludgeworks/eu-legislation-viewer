@@ -122,6 +122,34 @@ class ContentService implements Content {
     return Optional.of(element);
   }
 
+  @Override
+  @Transactional(readOnly = true)
+  public Optional<byte[]> json(TextId text) {
+    return store.json(text);
+  }
+
+  @Override
+  @Transactional(readOnly = true)
+  public Optional<byte[]> json(TextId text, String eId) {
+    var start = System.nanoTime();
+    var unit =
+        read(text)
+            .flatMap(element -> element.units(eId, eId).stream().findFirst())
+            .map(Encoder::encode);
+    LOG.debug(
+        "Unit {} of text {}: {} in {} ms",
+        eId,
+        text,
+        unit.map(json -> json.length / 1024 + " KB of JSON").orElse("none"),
+        millis(start));
+    return unit;
+  }
+
+  @Override
+  public byte[] json(Element element) {
+    return Encoder.encode(element);
+  }
+
   /** The outline is cached in the process, by the identity of the text ({@link ContentCaches}). */
   @Override
   @Cacheable(cacheNames = ContentCaches.OUTLINES, unless = "#result == null")

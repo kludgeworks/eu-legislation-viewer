@@ -4,7 +4,7 @@ load("//tools/build:defs.bzl", "spring_boot_jar")
 
 # The application: ViewerApplication and, at run time, its modules, its configuration and
 # migrations,
-# and the starters: web (with jte and htmx), the store (Postgres, Flyway, jOOQ, Modulith's event
+# and the starters: web (with jte and htmx, and HAL for the API), the store (Postgres, Flyway, jOOQ, Modulith's event
 # registry), Valkey (the broadcast events, cached HTML), Caffeine (cached outlines) and
 # observability (OpenTelemetry, Modulith's insight, JDBC spans)
 java_library(
@@ -49,6 +49,7 @@ java_library(
         "@maven//:org_springframework_boot_spring_boot_starter_actuator",
         "@maven//:org_springframework_boot_spring_boot_starter_data_redis",
         "@maven//:org_springframework_boot_spring_boot_starter_flyway",
+        "@maven//:org_springframework_boot_spring_boot_starter_hateoas",
         "@maven//:org_springframework_boot_spring_boot_starter_jooq",
         "@maven//:org_springframework_boot_spring_boot_starter_opentelemetry",
         "@maven//:org_springframework_boot_spring_boot_starter_restclient",
@@ -56,19 +57,28 @@ java_library(
         "@maven//:org_springframework_boot_spring_boot_starter_webmvc",
         "@maven//:org_springframework_modulith_spring_modulith_starter_insight",
         "@maven//:org_springframework_modulith_spring_modulith_starter_jdbc",
+        "@maven//:org_webjars_npm_highlightjs__cdn_assets",
         "@maven//:org_webjars_npm_htmx_org",
         "@maven//:org_webjars_webjars_locator_lite",
     ],
     deps = [
         "//viewer/src/main/jte",
+        "@maven//:org_apache_tomcat_embed_tomcat_embed_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
+        "@maven//:org_springframework_boot_spring_boot_servlet",
+        "@maven//:org_springframework_boot_spring_boot_tomcat",
+        "@maven//:org_springframework_boot_spring_boot_web_server",
+        "@maven//:org_springframework_hateoas_spring_hateoas",
         "@maven//:org_springframework_modulith_spring_modulith_api",
         "@maven//:org_springframework_modulith_spring_modulith_events_api",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_core",
+        "@maven//:org_springframework_spring_web",
+        "@maven//:org_springframework_spring_webmvc",
     ],
 )
 

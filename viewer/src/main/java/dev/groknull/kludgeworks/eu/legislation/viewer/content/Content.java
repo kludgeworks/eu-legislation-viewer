@@ -37,6 +37,26 @@ public interface Content {
   Optional<Element> read(TextId text);
 
   /**
+   * Returns the text as JSON, as it was stored. The form is JsonML (github.com/mckamey/jsonml):
+   * {@code [name, {attributes}, child…]} for an element, or {@code [name, {attributes}, text]} for
+   * an element of text. Returns none if no such text is stored.
+   */
+  Optional<byte[]> json(TextId text);
+
+  /**
+   * Returns the unit {@code eId} of the text, with everything in it, as JSON in the same form as
+   * {@link #json(TextId)}. Returns none if no such text is stored, or if the text has no unit
+   * {@code eId} outside the struck text of a consolidation.
+   */
+  Optional<byte[]> json(TextId text, String eId);
+
+  /**
+   * Returns an element as JSON, in the same form as {@link #json(TextId)}. For example, a unit of a
+   * comparison, marked.
+   */
+  byte[] json(Element element);
+
+  /**
    * Returns the outline of the text, kept when the text was stored. Returns none if no such text is
    * stored.
    */

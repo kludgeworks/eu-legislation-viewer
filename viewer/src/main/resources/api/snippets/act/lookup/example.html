@@ -1,0 +1,9 @@
+<figure class="api-example">
+<figcaption><span class="api-method">GET</span> <span class="api-path">/api/acts?celex&#x3D;32015R1998</span> <span class="api-status" data-status="303">303 See Other</span></figcaption>
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 303 See Other
+Location: https://eu-law.groknull.dev/api/acts/32015R1998
+Cache-Control: max-age&#x3D;3600
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl &#39;https://eu-law.groknull.dev/api/acts?celex&#x3D;32015R1998&#39; -i -X GET \
+    -H &#39;Accept: application/hal+json&#39;</code></pre>
+</figure>

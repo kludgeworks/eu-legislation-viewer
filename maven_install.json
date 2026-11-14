@@ -56,9 +56,11 @@
     "org.springframework.boot:spring-boot-autoconfigure": -919298511,
     "org.springframework.boot:spring-boot-dependencies": 98615043,
     "org.springframework.boot:spring-boot-loader-tools": -1122518281,
+    "org.springframework.boot:spring-boot-restdocs": -791231435,
     "org.springframework.boot:spring-boot-starter-actuator": -1082017891,
     "org.springframework.boot:spring-boot-starter-data-redis": -194155460,
     "org.springframework.boot:spring-boot-starter-flyway": 432056896,
+    "org.springframework.boot:spring-boot-starter-hateoas": 1110708691,
     "org.springframework.boot:spring-boot-starter-jooq": -1231132277,
     "org.springframework.boot:spring-boot-starter-opentelemetry": 1410419211,
     "org.springframework.boot:spring-boot-starter-restclient": 888455491,
@@ -68,12 +70,14 @@
     "org.springframework.boot:spring-boot-test-autoconfigure": -358333758,
     "org.springframework.boot:spring-boot-testcontainers": 152627146,
     "org.springframework.boot:spring-boot-webmvc-test": -490892141,
+    "org.springframework.hateoas:spring-hateoas": -609683625,
     "org.springframework.modulith:spring-modulith-api": -1267837964,
     "org.springframework.modulith:spring-modulith-bom": 1667680144,
     "org.springframework.modulith:spring-modulith-core": 2094793953,
     "org.springframework.modulith:spring-modulith-docs": -1347706499,
     "org.springframework.modulith:spring-modulith-starter-insight": -721434572,
     "org.springframework.modulith:spring-modulith-starter-jdbc": 795712955,
+    "org.springframework.restdocs:spring-restdocs-mockmvc": -747634742,
     "org.springframework:spring-context": -286867064,
     "org.springframework:spring-context-support": 43813702,
     "org.springframework:spring-core": 828592846,
@@ -83,6 +87,7 @@
     "org.testcontainers:testcontainers": -258185670,
     "org.testcontainers:testcontainers-grafana": -2129771727,
     "org.testcontainers:testcontainers-postgresql": 110741309,
+    "org.webjars.npm:highlightjs__cdn-assets": -960016224,
     "org.webjars.npm:htmx.org": -1535533557,
     "org.webjars:webjars-locator-lite": 1938239638,
     "org.xmlunit:xmlunit-assertj3": -355876019,
@@ -116,6 +121,7 @@
     "com.jayway.jsonpath:json-path": -1608107467,
     "com.mebigfatguy.sb-contrib:sb-contrib": 203577479,
     "com.palantir.javapoet:javapoet": -2014275507,
+    "com.samskivert:jmustache": 1730384904,
     "com.squareup.okhttp3:okhttp-jvm": -1014142857,
     "com.squareup.okio:okio-jvm": 501270314,
     "com.structurizr:structurizr-core": 2104432366,
@@ -258,6 +264,7 @@
     "org.springframework.boot:spring-boot-data-commons": 1999396468,
     "org.springframework.boot:spring-boot-data-redis": 1412747784,
     "org.springframework.boot:spring-boot-flyway": 1122814817,
+    "org.springframework.boot:spring-boot-hateoas": -1461622959,
     "org.springframework.boot:spring-boot-health": -1642279449,
     "org.springframework.boot:spring-boot-http-client": 227691599,
     "org.springframework.boot:spring-boot-http-converter": 745525851,
@@ -273,12 +280,14 @@
     "org.springframework.boot:spring-boot-opentelemetry": 1123131315,
     "org.springframework.boot:spring-boot-persistence": -1018883178,
     "org.springframework.boot:spring-boot-restclient": 1077409218,
+    "org.springframework.boot:spring-boot-restdocs": 463088098,
     "org.springframework.boot:spring-boot-servlet": 639711912,
     "org.springframework.boot:spring-boot-sql": -1592924234,
     "org.springframework.boot:spring-boot-starter": -1905590456,
     "org.springframework.boot:spring-boot-starter-actuator": -1286390891,
     "org.springframework.boot:spring-boot-starter-data-redis": 867793389,
     "org.springframework.boot:spring-boot-starter-flyway": -1250505430,
+    "org.springframework.boot:spring-boot-starter-hateoas": 1770639505,
     "org.springframework.boot:spring-boot-starter-jackson": 369527275,
     "org.springframework.boot:spring-boot-starter-jdbc": 683098650,
     "org.springframework.boot:spring-boot-starter-jooq": -52677315,
@@ -302,6 +311,7 @@
     "org.springframework.data:spring-data-commons": 1365953262,
     "org.springframework.data:spring-data-keyvalue": 1294982872,
     "org.springframework.data:spring-data-redis": 514606181,
+    "org.springframework.hateoas:spring-hateoas": -1891654200,
     "org.springframework.modulith:spring-modulith-actuator": -1685703750,
     "org.springframework.modulith:spring-modulith-api": -1671136456,
     "org.springframework.modulith:spring-modulith-apt": -203694605,
@@ -318,6 +328,9 @@
     "org.springframework.modulith:spring-modulith-starter-core": -533285022,
     "org.springframework.modulith:spring-modulith-starter-insight": -679693304,
     "org.springframework.modulith:spring-modulith-starter-jdbc": 324956310,
+    "org.springframework.plugin:spring-plugin-core": 218341417,
+    "org.springframework.restdocs:spring-restdocs-core": -559699652,
+    "org.springframework.restdocs:spring-restdocs-mockmvc": -1754863375,
     "org.springframework:spring-aop": 2140047740,
     "org.springframework:spring-beans": -52091312,
     "org.springframework:spring-context": -1592913882,
@@ -336,6 +349,7 @@
     "org.testcontainers:testcontainers-grafana": 740736833,
     "org.testcontainers:testcontainers-jdbc": 361901508,
     "org.testcontainers:testcontainers-postgresql": 1085468834,
+    "org.webjars.npm:highlightjs__cdn-assets": -779088787,
     "org.webjars.npm:htmx.org": 1035646194,
     "org.webjars:webjars-locator-lite": -454234071,
     "org.xmlresolver:xmlresolver": 602572078,
@@ -383,9 +397,11 @@
     "org.slf4j:slf4j-simple": "org.slf4j:slf4j-simple:2.0.18",
     "org.springframework.boot:spring-boot": "org.springframework.boot:spring-boot:4.1.1",
     "org.springframework.boot:spring-boot-autoconfigure": "org.springframework.boot:spring-boot-autoconfigure:4.1.1",
+    "org.springframework.boot:spring-boot-restdocs": "org.springframework.boot:spring-boot-restdocs:4.1.1",
     "org.springframework.boot:spring-boot-starter-actuator": "org.springframework.boot:spring-boot-starter-actuator:4.1.1",
     "org.springframework.boot:spring-boot-starter-data-redis": "org.springframework.boot:spring-boot-starter-data-redis:4.1.1",
     "org.springframework.boot:spring-boot-starter-flyway": "org.springframework.boot:spring-boot-starter-flyway:4.1.1",
+    "org.springframework.boot:spring-boot-starter-hateoas": "org.springframework.boot:spring-boot-starter-hateoas:4.1.1",
     "org.springframework.boot:spring-boot-starter-jooq": "org.springframework.boot:spring-boot-starter-jooq:4.1.1",
     "org.springframework.boot:spring-boot-starter-opentelemetry": "org.springframework.boot:spring-boot-starter-opentelemetry:4.1.1",
     "org.springframework.boot:spring-boot-starter-restclient": "org.springframework.boot:spring-boot-starter-restclient:4.1.1",
@@ -395,11 +411,13 @@
     "org.springframework.boot:spring-boot-test-autoconfigure": "org.springframework.boot:spring-boot-test-autoconfigure:4.1.1",
     "org.springframework.boot:spring-boot-testcontainers": "org.springframework.boot:spring-boot-testcontainers:4.1.1",
     "org.springframework.boot:spring-boot-webmvc-test": "org.springframework.boot:spring-boot-webmvc-test:4.1.1",
+    "org.springframework.hateoas:spring-hateoas": "org.springframework.hateoas:spring-hateoas:3.1.2",
     "org.springframework.modulith:spring-modulith-api": "org.springframework.modulith:spring-modulith-api:2.1.1",
     "org.springframework.modulith:spring-modulith-core": "org.springframework.modulith:spring-modulith-core:2.1.1",
     "org.springframework.modulith:spring-modulith-docs": "org.springframework.modulith:spring-modulith-docs:2.1.1",
     "org.springframework.modulith:spring-modulith-starter-insight": "org.springframework.modulith:spring-modulith-starter-insight:2.1.1",
     "org.springframework.modulith:spring-modulith-starter-jdbc": "org.springframework.modulith:spring-modulith-starter-jdbc:2.1.1",
+    "org.springframework.restdocs:spring-restdocs-mockmvc": "org.springframework.restdocs:spring-restdocs-mockmvc:4.0.1",
     "org.springframework:spring-context": "org.springframework:spring-context:7.0.9",
     "org.springframework:spring-context-support": "org.springframework:spring-context-support:7.0.9",
     "org.springframework:spring-core": "org.springframework:spring-core:7.0.9",
@@ -562,6 +580,12 @@
         "jar": "66cf4c43ae54c8e8ab10770ba318cdfea755efa631b5ad98f32da2e38fba326a"
       },
       "version": "0.7.0"
+    },
+    "com.samskivert:jmustache": {
+      "shasums": {
+        "jar": "3d4b984abd66908f05b38c9c892325cd4785d01ff33922569ff9b90c9ebfc475"
+      },
+      "version": "1.16"
     },
     "com.squareup.okhttp3:okhttp-jvm": {
       "shasums": {
@@ -1415,6 +1439,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-hateoas": {
+      "shasums": {
+        "jar": "191dade29a858fcd8e801c90605c96744e3a10c08a37e3cbfac051d8b51a5565"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-health": {
       "shasums": {
         "jar": "f60151e1f014b40761d0644be1cb04f82df7fc3e9b7bf6e946848547eec399e7"
@@ -1505,6 +1535,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.boot:spring-boot-restdocs": {
+      "shasums": {
+        "jar": "04ef081a63192074e0a40ee2039f6f89837e1e2f5d210bc52d5984f88a62ce34"
+      },
+      "version": "4.1.1"
+    },
     "org.springframework.boot:spring-boot-servlet": {
       "shasums": {
         "jar": "4dcb156e311a4c1ad5f1ed7eabd94a78ea74510b05c429a4fcfdcf8beb9d5882"
@@ -1538,6 +1574,12 @@
     "org.springframework.boot:spring-boot-starter-flyway": {
       "shasums": {
         "jar": "d9a454f49cc844b1c2940f645f659c506322d02444912422a19ba619de60e6c7"
+      },
+      "version": "4.1.1"
+    },
+    "org.springframework.boot:spring-boot-starter-hateoas": {
+      "shasums": {
+        "jar": "02924f44b6617d97272de07ca72d6cb283cabf67e146e4ff2a9c1926f5a28a37"
       },
       "version": "4.1.1"
     },
@@ -1679,6 +1721,12 @@
       },
       "version": "4.1.1"
     },
+    "org.springframework.hateoas:spring-hateoas": {
+      "shasums": {
+        "jar": "7d5fb2f00f856465486e9367c2d33373f32cfac90b21a2c1151a28022705e840"
+      },
+      "version": "3.1.2"
+    },
     "org.springframework.modulith:spring-modulith-actuator": {
       "shasums": {
         "jar": "49f749e1461ad8024cd3e987bbe9b3b3d5dd1cf31034b59c60dda4b9fb41c3e4"
@@ -1774,6 +1822,24 @@
         "jar": "e074243cc659b3c8846515de8c20ce589e1fce7a811a7fbc140f6b1eb4f1cac9"
       },
       "version": "2.1.1"
+    },
+    "org.springframework.plugin:spring-plugin-core": {
+      "shasums": {
+        "jar": "7e48dac2e47dded5e6fa2cdf37786c5ba3f09dcf44000770e4513a47e63da6fe"
+      },
+      "version": "4.1.0"
+    },
+    "org.springframework.restdocs:spring-restdocs-core": {
+      "shasums": {
+        "jar": "3a1a6dfd64f2d443534dff8addf89318858ca031e33ddbf780602bc4e1418807"
+      },
+      "version": "4.0.1"
+    },
+    "org.springframework.restdocs:spring-restdocs-mockmvc": {
+      "shasums": {
+        "jar": "d3a27e9086c0e39b673302cc097a7ff5d168ebbebdd453bd676850e530a0c999"
+      },
+      "version": "4.0.1"
     },
     "org.springframework:spring-aop": {
       "shasums": {
@@ -1882,6 +1948,12 @@
         "jar": "8dbfb2fda977eb813ed1188ce02f098b8b634910eeab220568d54d6bd5b7ce9f"
       },
       "version": "2.0.5"
+    },
+    "org.webjars.npm:highlightjs__cdn-assets": {
+      "shasums": {
+        "jar": "446ee7df545a31c43ee155f69f57f400199659bf881841a7194e24e8e8ac4d69"
+      },
+      "version": "11.11.1"
     },
     "org.webjars.npm:htmx.org": {
       "shasums": {
@@ -2453,6 +2525,12 @@
       "org.springframework.boot:spring-boot",
       "org.springframework.boot:spring-boot-jdbc"
     ],
+    "org.springframework.boot:spring-boot-hateoas": [
+      "org.springframework.boot:spring-boot",
+      "org.springframework.boot:spring-boot-jackson",
+      "org.springframework.hateoas:spring-hateoas",
+      "org.springframework:spring-webmvc"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot:spring-boot"
     ],
@@ -2523,6 +2601,9 @@
       "org.springframework.boot:spring-boot-http-client",
       "org.springframework.boot:spring-boot-http-converter"
     ],
+    "org.springframework.boot:spring-boot-restdocs": [
+      "org.springframework.restdocs:spring-restdocs-core"
+    ],
     "org.springframework.boot:spring-boot-servlet": [
       "org.springframework.boot:spring-boot",
       "org.springframework:spring-web"
@@ -2554,6 +2635,11 @@
       "org.springframework.boot:spring-boot-jdbc",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-jdbc"
+    ],
+    "org.springframework.boot:spring-boot-starter-hateoas": [
+      "org.springframework.boot:spring-boot-hateoas",
+      "org.springframework.boot:spring-boot-starter",
+      "org.springframework.boot:spring-boot-starter-webmvc"
     ],
     "org.springframework.boot:spring-boot-starter-jackson": [
       "org.springframework.boot:spring-boot-jackson",
@@ -2678,6 +2764,17 @@
       "org.springframework:spring-oxm",
       "org.springframework:spring-tx"
     ],
+    "org.springframework.hateoas:spring-hateoas": [
+      "com.jayway.jsonpath:json-path",
+      "org.jspecify:jspecify",
+      "org.slf4j:slf4j-api",
+      "org.springframework.plugin:spring-plugin-core",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context",
+      "org.springframework:spring-core",
+      "org.springframework:spring-web"
+    ],
     "org.springframework.modulith:spring-modulith-actuator": [
       "org.jspecify:jspecify",
       "org.springframework.boot:spring-boot-actuator",
@@ -2773,6 +2870,24 @@
       "org.springframework.modulith:spring-modulith-events-jackson",
       "org.springframework.modulith:spring-modulith-events-jdbc",
       "org.springframework.modulith:spring-modulith-starter-core"
+    ],
+    "org.springframework.plugin:spring-plugin-core": [
+      "org.jspecify:jspecify",
+      "org.slf4j:slf4j-api",
+      "org.springframework:spring-aop",
+      "org.springframework:spring-beans",
+      "org.springframework:spring-context"
+    ],
+    "org.springframework.restdocs:spring-restdocs-core": [
+      "com.samskivert:jmustache",
+      "org.springframework:spring-web",
+      "tools.jackson.core:jackson-databind"
+    ],
+    "org.springframework.restdocs:spring-restdocs-mockmvc": [
+      "jakarta.servlet:jakarta.servlet-api",
+      "org.springframework.restdocs:spring-restdocs-core",
+      "org.springframework:spring-test",
+      "org.springframework:spring-webmvc"
     ],
     "org.springframework:spring-aop": [
       "org.springframework:spring-beans",
@@ -3234,6 +3349,9 @@
     ],
     "com.palantir.javapoet:javapoet": [
       "com.palantir.javapoet"
+    ],
+    "com.samskivert:jmustache": [
+      "com.samskivert.mustache"
     ],
     "com.squareup.okhttp3:okhttp-jvm": [
       "okhttp3",
@@ -5172,6 +5290,9 @@
       "org.springframework.boot.flyway.docker.compose",
       "org.springframework.boot.flyway.testcontainers"
     ],
+    "org.springframework.boot:spring-boot-hateoas": [
+      "org.springframework.boot.hateoas.autoconfigure"
+    ],
     "org.springframework.boot:spring-boot-health": [
       "org.springframework.boot.health.actuate.endpoint",
       "org.springframework.boot.health.application",
@@ -5287,6 +5408,9 @@
       "org.springframework.boot.restclient.autoconfigure",
       "org.springframework.boot.restclient.autoconfigure.service",
       "org.springframework.boot.restclient.observation"
+    ],
+    "org.springframework.boot:spring-boot-restdocs": [
+      "org.springframework.boot.restdocs.test.autoconfigure"
     ],
     "org.springframework.boot:spring-boot-servlet": [
       "org.springframework.boot.servlet",
@@ -5476,6 +5600,26 @@
       "org.springframework.data.redis.support.collections",
       "org.springframework.data.redis.util"
     ],
+    "org.springframework.hateoas:spring-hateoas": [
+      "org.springframework.hateoas",
+      "org.springframework.hateoas.aot",
+      "org.springframework.hateoas.client",
+      "org.springframework.hateoas.config",
+      "org.springframework.hateoas.mediatype",
+      "org.springframework.hateoas.mediatype.alps",
+      "org.springframework.hateoas.mediatype.collectionjson",
+      "org.springframework.hateoas.mediatype.hal",
+      "org.springframework.hateoas.mediatype.hal.forms",
+      "org.springframework.hateoas.mediatype.html",
+      "org.springframework.hateoas.mediatype.jsonpath",
+      "org.springframework.hateoas.mediatype.problem",
+      "org.springframework.hateoas.mediatype.uber",
+      "org.springframework.hateoas.server",
+      "org.springframework.hateoas.server.core",
+      "org.springframework.hateoas.server.mvc",
+      "org.springframework.hateoas.server.reactive",
+      "org.springframework.hateoas.support"
+    ],
     "org.springframework.modulith:spring-modulith-actuator": [
       "org.springframework.modulith.actuator",
       "org.springframework.modulith.actuator.autoconfigure"
@@ -5567,6 +5711,32 @@
       "org.springframework.modulith.runtime.minidev.json.parser",
       "org.springframework.modulith.runtime.minidev.json.reader",
       "org.springframework.modulith.runtime.minidev.json.writer"
+    ],
+    "org.springframework.plugin:spring-plugin-core": [
+      "org.springframework.plugin.core",
+      "org.springframework.plugin.core.config",
+      "org.springframework.plugin.core.support"
+    ],
+    "org.springframework.restdocs:spring-restdocs-core": [
+      "org.springframework.restdocs",
+      "org.springframework.restdocs.cli",
+      "org.springframework.restdocs.config",
+      "org.springframework.restdocs.constraints",
+      "org.springframework.restdocs.cookies",
+      "org.springframework.restdocs.generate",
+      "org.springframework.restdocs.headers",
+      "org.springframework.restdocs.http",
+      "org.springframework.restdocs.hypermedia",
+      "org.springframework.restdocs.operation",
+      "org.springframework.restdocs.operation.preprocess",
+      "org.springframework.restdocs.payload",
+      "org.springframework.restdocs.request",
+      "org.springframework.restdocs.snippet",
+      "org.springframework.restdocs.templates",
+      "org.springframework.restdocs.templates.mustache"
+    ],
+    "org.springframework.restdocs:spring-restdocs-mockmvc": [
+      "org.springframework.restdocs.mockmvc"
     ],
     "org.springframework:spring-aop": [
       "org.aopalliance.aop",
@@ -6577,6 +6747,7 @@
       "com.jayway.jsonpath:json-path",
       "com.mebigfatguy.sb-contrib:sb-contrib",
       "com.palantir.javapoet:javapoet",
+      "com.samskivert:jmustache",
       "com.squareup.okhttp3:okhttp-jvm",
       "com.squareup.okio:okio-jvm",
       "com.structurizr:structurizr-core",
@@ -6719,6 +6890,7 @@
       "org.springframework.boot:spring-boot-data-commons",
       "org.springframework.boot:spring-boot-data-redis",
       "org.springframework.boot:spring-boot-flyway",
+      "org.springframework.boot:spring-boot-hateoas",
       "org.springframework.boot:spring-boot-health",
       "org.springframework.boot:spring-boot-http-client",
       "org.springframework.boot:spring-boot-http-converter",
@@ -6734,12 +6906,14 @@
       "org.springframework.boot:spring-boot-opentelemetry",
       "org.springframework.boot:spring-boot-persistence",
       "org.springframework.boot:spring-boot-restclient",
+      "org.springframework.boot:spring-boot-restdocs",
       "org.springframework.boot:spring-boot-servlet",
       "org.springframework.boot:spring-boot-sql",
       "org.springframework.boot:spring-boot-starter",
       "org.springframework.boot:spring-boot-starter-actuator",
       "org.springframework.boot:spring-boot-starter-data-redis",
       "org.springframework.boot:spring-boot-starter-flyway",
+      "org.springframework.boot:spring-boot-starter-hateoas",
       "org.springframework.boot:spring-boot-starter-jackson",
       "org.springframework.boot:spring-boot-starter-jdbc",
       "org.springframework.boot:spring-boot-starter-jooq",
@@ -6763,6 +6937,7 @@
       "org.springframework.data:spring-data-commons",
       "org.springframework.data:spring-data-keyvalue",
       "org.springframework.data:spring-data-redis",
+      "org.springframework.hateoas:spring-hateoas",
       "org.springframework.modulith:spring-modulith-actuator",
       "org.springframework.modulith:spring-modulith-api",
       "org.springframework.modulith:spring-modulith-apt",
@@ -6779,6 +6954,9 @@
       "org.springframework.modulith:spring-modulith-starter-core",
       "org.springframework.modulith:spring-modulith-starter-insight",
       "org.springframework.modulith:spring-modulith-starter-jdbc",
+      "org.springframework.plugin:spring-plugin-core",
+      "org.springframework.restdocs:spring-restdocs-core",
+      "org.springframework.restdocs:spring-restdocs-mockmvc",
       "org.springframework:spring-aop",
       "org.springframework:spring-beans",
       "org.springframework:spring-context",
@@ -6797,6 +6975,7 @@
       "org.testcontainers:testcontainers-grafana",
       "org.testcontainers:testcontainers-jdbc",
       "org.testcontainers:testcontainers-postgresql",
+      "org.webjars.npm:highlightjs__cdn-assets",
       "org.webjars.npm:htmx.org",
       "org.webjars:webjars-locator-lite",
       "org.xmlresolver:xmlresolver",

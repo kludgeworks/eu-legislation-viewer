@@ -1,0 +1,47 @@
+<figure class="api-example">
+<figcaption><span class="api-method">GET</span> <span class="api-path">/api/acts/32015R1998</span> <span class="api-status" data-status="200">200 OK</span></figcaption>
+<pre data-tab="Response"><code class="language-json">{
+  &quot;_links&quot; : {
+    &quot;self&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998&quot;
+    },
+    &quot;version-history&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/versions&quot;
+    },
+    &quot;latest-version&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/versions/2026-10-01&quot;
+    },
+    &quot;av:on&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/on/{date}&quot;,
+      &quot;templated&quot; : true
+    },
+    &quot;av:amendments&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/amendments&quot;
+    },
+    &quot;av:comparisons&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/comparisons{?from,to,language,amendingAct}&quot;,
+      &quot;templated&quot; : true
+    },
+    &quot;curies&quot; : [ {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/docs#{rel}&quot;,
+      &quot;name&quot; : &quot;av&quot;,
+      &quot;templated&quot; : true
+    } ]
+  },
+  &quot;celex&quot; : &quot;32015R1998&quot;,
+  &quot;eli&quot; : &quot;reg_impl/2015/1998&quot;,
+  &quot;type&quot; : &quot;REG_IMPL&quot;,
+  &quot;titles&quot; : {
+    &quot;eng&quot; : &quot;Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015 laying down detailed measures for the implementation of the common basic standards on aviation security (Text with EEA relevance)&quot;
+  },
+  &quot;dateOfDocument&quot; : &quot;2015-11-09&quot;,
+  &quot;inForce&quot; : true,
+  &quot;endOfValidity&quot; : null
+}</code></pre>
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: application/hal+json
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl &#39;https://eu-law.groknull.dev/api/acts/32015R1998&#39; -i -X GET \
+    -H &#39;Accept: application/hal+json&#39;</code></pre>
+</figure>

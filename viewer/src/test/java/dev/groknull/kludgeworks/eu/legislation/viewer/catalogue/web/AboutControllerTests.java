@@ -26,7 +26,7 @@ class AboutControllerTests {
     assertThat(result).hasStatusOk();
     var page = Jsoup.parse(result.getResponse().getContentAsString());
 
-    assertThat(page.select(".about-page section").eachAttr("id"))
+    assertThat(page.select(".text-page section").eachAttr("id"))
         .containsExactly("what", "privacy", "api", "build");
     assertThat(page.select("#privacy li b").eachText()).containsExactly("theme", "search");
     assertThat(page.select("#build .mono").text()).isEqualTo("2026.11.7");

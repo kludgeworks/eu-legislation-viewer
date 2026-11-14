@@ -1,0 +1,38 @@
+<figure class="api-example">
+<figcaption><span class="api-method">GET</span> <span class="api-path">/api/acts/32015R1998/on/2026-04-01</span> <span class="api-status" data-status="200">200 OK</span></figcaption>
+<pre data-tab="Response"><code class="language-json">{
+  &quot;_links&quot; : {
+    &quot;self&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/on/2026-04-01&quot;
+    },
+    &quot;up&quot; : {
+      &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998&quot;
+    }
+  },
+  &quot;date&quot; : &quot;2026-04-01&quot;,
+  &quot;until&quot; : &quot;2026-10-01&quot;,
+  &quot;lags&quot; : [ ],
+  &quot;_embedded&quot; : {
+    &quot;av:version&quot; : [ {
+      &quot;_links&quot; : {
+        &quot;self&quot; : {
+          &quot;href&quot; : &quot;https://eu-law.groknull.dev/api/acts/32015R1998/versions/2026-03-22&quot;
+        }
+      },
+      &quot;version&quot; : &quot;2026-03-22&quot;,
+      &quot;kind&quot; : &quot;consolidated&quot;,
+      &quot;date&quot; : &quot;2026-03-22&quot;,
+      &quot;celex&quot; : &quot;02015R1998-20260322&quot;,
+      &quot;interim&quot; : false,
+      &quot;integrates&quot; : [ &quot;32026R0449&quot; ],
+      &quot;languages&quot; : [ &quot;eng&quot;, &quot;fra&quot; ]
+    } ]
+  }
+}</code></pre>
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: application/hal+json
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl &#39;https://eu-law.groknull.dev/api/acts/32015R1998/on/2026-04-01&#39; -i -X GET \
+    -H &#39;Accept: application/hal+json&#39;</code></pre>
+</figure>

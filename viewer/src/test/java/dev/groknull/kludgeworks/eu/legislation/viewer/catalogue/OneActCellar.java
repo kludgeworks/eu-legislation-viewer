@@ -248,6 +248,14 @@ public class OneActCellar {
         asked.add("ELI " + eli);
         return eli.equals(ELI) ? Optional.of(act) : Optional.empty();
       }
+
+      @Override
+      public Optional<Act> findByVersion(String celex) {
+        asked.add("VERSION " + celex);
+        return act.timeline().versions().stream().anyMatch(each -> each.celex().equals(celex))
+            ? Optional.of(act)
+            : Optional.empty();
+      }
     };
   }
 }

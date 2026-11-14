@@ -30,6 +30,14 @@ class TimelineTest {
   }
 
   @Test
+  void tellsEveryVersionThatAppliesOnADayAndTheDayTheyApplyUntil() {
+    assertThat(TIMELINE.allApplicableOn(LocalDate.of(2015, 11, 14))).isEmpty();
+    assertThat(TIMELINE.allApplicableOn(LocalDate.of(2016, 2, 28))).containsExactly(ORIGINAL);
+    assertThat(TIMELINE.nextStartAfter(LocalDate.of(2016, 2, 28))).contains(FIRST.date());
+    assertThat(TIMELINE.nextStartAfter(LocalDate.of(2026, 10, 1))).isEmpty();
+  }
+
+  @Test
   void anInterimVersionAppliesOnceItsDateHasPassed() {
     assertThat(TIMELINE.applicableOn(LocalDate.of(2026, 10, 1))).contains(INTERIM);
   }

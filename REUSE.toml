@@ -13,7 +13,8 @@ precedence = "aggregate"
 SPDX-FileCopyrightText = "The Project Contributors"
 
 # Ours, without room for a header: versions, lock files, the source notes of the recorded files, the
-# viewer's icons
+# viewer's icons, and the API's documentation and REST Docs' templates of its examples, which a page
+# shows as they are
 [[annotations]]
 path = [
   ".bazelversion",
@@ -31,6 +32,8 @@ path = [
   "viewer/src/main/resources/static/favicon.svg",
   "viewer/src/main/resources/static/favicon.ico",
   "viewer/src/main/resources/static/apple-touch-icon.png",
+  "viewer/src/main/resources/api/**",
+  "viewer/src/test/resources/restdocs/**/*.snippet",
 ]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "The Project Contributors"

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.io.ByteArrayOutputStream;
 import java.util.TreeMap;
 import net.sf.saxon.s9api.Axis;
@@ -11,9 +12,9 @@ import tools.jackson.core.ObjectWriteContext;
 import tools.jackson.core.json.JsonFactory;
 
 /**
- * Writes a legal text as JSON, in the JsonML form (jsonml.org): {@code [name, {attributes}, child
- * element…]}, or {@code [name, {attributes}, text]} for an element of text. The names are as {@link
- * LegalText} gives them. {@link Decoder} reads it back.
+ * Writes a legal text as JSON, in the JsonML form (github.com/mckamey/jsonml): {@code [name,
+ * {attributes}, child element…]}, or {@code [name, {attributes}, text]} for an element of text. The
+ * names are as {@link LegalText} gives them. {@link Decoder} reads it back.
  *
  * <p>The same text always gives the same bytes: the attributes are written sorted by name, and the
  * whitespace between elements is left out. Thus the SHA-256 of the JSON tells whether a text
@@ -40,6 +41,36 @@ public final class Encoder {
       write(root, json);
     }
     return out.toByteArray();
+  }
+
+  /**
+   * Writes an element as JSON, in the same form. An element that was read back from the JSON of a
+   * text gives the same bytes again.
+   */
+  public static byte[] encode(Element element) {
+    var out = new ByteArrayOutputStream();
+    try (var json = JSON.createGenerator(ObjectWriteContext.empty(), out)) {
+      write(element, json);
+    }
+    return out.toByteArray();
+  }
+
+  private static void write(Element element, JsonGenerator json) {
+    json.writeStartArray();
+    json.writeString(element.name());
+    json.writeStartObject();
+    for (var attribute : new TreeMap<>(element.attributes()).entrySet()) {
+      json.writeName(attribute.getKey());
+      json.writeString(attribute.getValue());
+    }
+    json.writeEndObject();
+    for (var child : element.children()) {
+      write(child, json);
+    }
+    if (!element.text().isEmpty()) {
+      json.writeString(element.text());
+    }
+    json.writeEndArray();
   }
 
   private static void write(XdmNode el, JsonGenerator json) {

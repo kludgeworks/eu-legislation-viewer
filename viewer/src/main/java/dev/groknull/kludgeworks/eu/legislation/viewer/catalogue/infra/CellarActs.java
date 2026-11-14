@@ -57,16 +57,18 @@ import org.springframework.stereotype.Component;
  *       CellarPublications}.
  * </ul>
  *
- * <p>It uses eight queries, kept next to this class: {@code act.rq}, {@code act-by-eli.rq}, {@code
- * versions.rq}, {@code languages.rq}, {@code dates.rq}, {@code titles.rq}, {@code amendments.rq}
- * and {@code publications.rq}. All of them except {@code act-by-eli.rq} run at the same time for
- * one act.
+ * <p>It uses nine queries, kept next to this class: {@code act.rq}, {@code act-by-eli.rq}, {@code
+ * act-by-version.rq}, {@code versions.rq}, {@code languages.rq}, {@code dates.rq}, {@code
+ * titles.rq}, {@code amendments.rq} and {@code publications.rq}. All of them except the two that
+ * find an act by another identifier run at the same time for one act.
  */
 @Component
 class CellarActs implements ActSource {
   private static final Logger LOG = LoggerFactory.getLogger(CellarActs.class);
   private static final String ACT = Sparql.template(CellarActs.class, "act.rq");
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
+  private static final String ACT_BY_VERSION =
+      Sparql.template(CellarActs.class, "act-by-version.rq");
   private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
   private static final String LANGUAGES = Sparql.template(CellarActs.class, "languages.rq");
   private static final String DATES = Sparql.template(CellarActs.class, "dates.rq");
@@ -137,18 +139,33 @@ class CellarActs implements ActSource {
 
   @Override
   public Optional<Act> find(Eli eli) {
-    var id = identity(eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))));
+    var id =
+        identity(
+            "the ELI " + eli, sparql.select(Sparql.fill(ACT_BY_ELI, Map.of("eli", eli.path()))));
     LOG.debug("ELI {} is {}", eli, id.map(ActIdentifier::celex).orElse("no act in Cellar"));
     return id.flatMap(this::find);
   }
 
+  @Override
+  public Optional<Act> findByVersion(String celex) {
+    var id =
+        identity(
+            "the version " + celex,
+            sparql.select(Sparql.fill(ACT_BY_VERSION, Map.of("version", celex))));
+    LOG.debug(
+        "The version {} is of {}", celex, id.map(ActIdentifier::celex).orElse("no act in Cellar"));
+    return id.flatMap(this::find);
+  }
+
   /**
-   * Reads the act from the answer to {@code act-by-eli.rq}. It returns none if no work has the ELI.
+   * Reads the act from the answer to {@code act-by-eli.rq} or {@code act-by-version.rq}. It returns
+   * none if no work has the identifier. {@code named} says what was asked, for example "the ELI
+   * reg_impl/2015/1998".
    *
    * @throws CellarException if the answer does not give one act, for example because several acts
-   *     have the ELI
+   *     have the identifier
    */
-  static Optional<ActIdentifier> identity(Eli eli, SparqlResult works) {
+  static Optional<ActIdentifier> identity(String named, SparqlResult works) {
     try {
       var celexes = new TreeSet<String>();
       for (var row : works.rows()) {
@@ -159,7 +176,7 @@ class CellarActs implements ActSource {
       }
       return celexes.stream().findFirst().map(ActIdentifier::new);
     } catch (IllegalArgumentException e) {
-      throw new CellarException("Cellar's data for the ELI " + eli + ": " + e.getMessage(), e);
+      throw new CellarException("Cellar's data for " + named + ": " + e.getMessage(), e);
     }
   }
 

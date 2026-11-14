@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: MIT
+# A request for an act that the viewer does not hold yet starts its preparation, and a search asks
+# Cellar. A crawler would start thousands of them, and readers would wait behind it. So a crawler
+# may read the home page and the About page only.
+User-agent: *
+# the pages of an act and its comparisons
+Disallow: /eli/
+# the parts of a page that the page loads itself
+Disallow: /content/
+# a search
+Disallow: /?q=
+# the API, which is for programs that follow its links
+Disallow: /api

@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
+import java.util.List;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,11 +25,12 @@ class CatalogueTests {
   @Test
   void keepsAnActReadFromCellarWhole() {
     var read = acts.find(OneActCellar.CELEX);
+    var askedForTheFirst = List.copyOf(cellar.asked);
     var kept = acts.find(OneActCellar.CELEX);
 
     assertThat(read).contains(OneActCellar.ACT);
     assertThat(kept).contains(OneActCellar.ACT);
-    assertThat(cellar.asked).containsOnlyOnce(OneActCellar.CELEX.celex());
+    assertThat(cellar.asked).isEqualTo(askedForTheFirst);
   }
 
   @Test
@@ -37,6 +39,12 @@ class CatalogueTests {
 
     assertThat(acts.find(OneActCellar.ELI)).contains(OneActCellar.ACT);
     assertThat(cellar.asked).doesNotContain("ELI " + OneActCellar.ELI);
+  }
+
+  @Test
+  void findsAnActByTheCelexNumberOfOneOfItsConsolidatedVersions() {
+    assertThat(acts.findByVersion("02015R1998-20260322")).contains(OneActCellar.ACT);
+    assertThat(acts.findByVersion("02099R9999-20260322")).isEmpty();
   }
 
   @Test

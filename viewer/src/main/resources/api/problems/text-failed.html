@@ -1,0 +1,19 @@
+<p>The viewer could not make the text of the version in that language. The status is <span class="mono">404 Not Found</span>.</p>
+${act/text-failed}
+<dl class="api-members">
+  <dt>failure</dt>
+  <dd>Why the text failed:
+    <ul>
+      <li><span class="mono">no-formex</span>: the Publications Office has no Formex of the text in that language.</li>
+      <li><span class="mono">out-of-scope</span>: the document is not a legal act.</li>
+      <li><span class="mono">misfiled</span>: the Formex is of a different document.</li>
+      <li><span class="mono">unsupported</span>: the Formex uses something that the viewer cannot convert yet.</li>
+      <li><span class="mono">unavailable</span>: the Publications Office did not answer.</li>
+      <li><span class="mono">error</span>: a different error.</li>
+    </ul>
+  </dd>
+  <dt>retryable</dt>
+  <dd><span class="mono">true</span> if trying again may help.</dd>
+  <dt>preparation</dt>
+  <dd>The address of the preparation. Use it to try again.</dd>
+</dl>

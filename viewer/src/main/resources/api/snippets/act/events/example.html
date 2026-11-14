@@ -1,0 +1,11 @@
+<figure class="api-example">
+<figcaption><span class="api-method">GET</span> <span class="api-path">/api/acts/32015R1998/preparations/eng/events</span> <span class="api-status" data-status="200">200 OK</span></figcaption>
+<pre data-tab="Response"><code class="language-json">event:settled
+data:{&quot;language&quot;:&quot;eng&quot;,&quot;started&quot;:&quot;2026-11-14T09:30:00Z&quot;,&quot;settledAt&quot;:&quot;2026-11-14T09:30:03Z&quot;,&quot;ready&quot;:2,&quot;failed&quot;:3,&quot;converting&quot;:0,&quot;ahead&quot;:0}</code></pre>
+<pre data-tab="Headers"><code class="language-http">HTTP/1.1 200 OK
+Cache-Control: no-cache
+Content-Type: text/event-stream
+</code></pre>
+<pre data-tab="curl"><code class="language-bash">curl &#39;https://eu-law.groknull.dev/api/acts/32015R1998/preparations/eng/events&#39; -i -X GET \
+    -H &#39;Accept: text/event-stream&#39;</code></pre>
+</figure>

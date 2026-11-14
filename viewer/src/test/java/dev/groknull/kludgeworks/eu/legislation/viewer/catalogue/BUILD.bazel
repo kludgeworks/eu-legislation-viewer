@@ -341,10 +341,12 @@ java_test_suite(
     deps = [
         ":controller-testing",
         ":one-act-cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
         "@maven//:jakarta_servlet_jakarta_servlet_api",
@@ -355,10 +357,12 @@ java_test_suite(
         "@maven//:org_mockito_mockito_core",
         "@maven//:org_springframework_boot_spring_boot_test",
         "@maven//:org_springframework_boot_spring_boot_webmvc_test",
+        "@maven//:org_springframework_hateoas_spring_hateoas",
         "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_test",
         "@maven//:org_springframework_spring_web",
+        "@maven//:tools_jackson_core_jackson_databind",
     ],
 )
 
@@ -402,5 +406,44 @@ java_test_suite(
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
+# The catalogue's examples for the API's documentation, from the whole app on the recorded act and the
+# converter's fixtures, stored in Postgres in a container; needs Docker. They must be the page's
+# (api/snippets); after a deliberate change: mise run api-snippets
+java_junit5_test(
+    name = "ApiDocumentationTests",
+    size = "medium",
+    timeout = "short",
+    srcs = ["web/ApiDocumentationTests.java"],
+    tags = [
+        "api-snippets",
+        "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
+        "requires-docker",
+    ],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.ApiDocumentationTests",
+    runtime_deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
+        "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":one-act-cellar",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:web",  # its package's @NullMarked
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:api-snippets",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest:fixtures",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_awaitility_awaitility",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_boot_spring_boot_webmvc_test",
+        "@maven//:org_springframework_spring_beans",
+        "@maven//:org_springframework_spring_context",
+        "@maven//:org_springframework_spring_test",
+        "@maven//:org_springframework_spring_web",
     ],
 )
