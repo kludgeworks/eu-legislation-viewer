@@ -2,10 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
+import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
-import java.util.Objects;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -17,23 +17,22 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 class AboutController {
-  /** The version of a build that has none in its jar's manifest, as one run from the source has. */
-  static final String UNVERSIONED = "development build";
-
   private final Templates templates;
+  private final Release release;
 
-  AboutController(Templates templates) {
+  AboutController(Templates templates, Release release) {
     this.templates = templates;
+    this.release = release;
   }
 
-  /** Returns the About page. */
+  /**
+   * Returns the About page. Its version is the release, for example {@code 2026.11.7}. A build from
+   * the source has none, and shows the name that {@link Release} gives it, {@code dev-…}.
+   */
   @GetMapping(path = "/about", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> about(HttpServletRequest request) {
-    var version =
-        Objects.requireNonNullElse(
-            AboutController.class.getPackage().getImplementationVersion(), UNVERSIONED);
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
-        .body(templates.catalogueAbout(Chrome.of(request), version).render());
+        .body(templates.catalogueAbout(Chrome.of(request), release.value()).render());
   }
 }

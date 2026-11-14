@@ -27,8 +27,8 @@
         <li><b>search</b>: your last search, so the site bar can take you back to its results, kept for 2 hours.</li>
       </ul>
       <p>Neither identifies you, and neither is shared. There are no third-party cookies, analytics or adverts.</p>
-      <p>Each request is logged and traced, with the address asked for and how long the answer took, to keep the
-        viewer working.</p>
+      <p>The viewer keeps a technical record of each request: the page asked for, when, and how long the answer
+        took. The record is used only to find faults and to keep the site fast.</p>
     </section>
     <section id="api">
       <h2>API</h2>

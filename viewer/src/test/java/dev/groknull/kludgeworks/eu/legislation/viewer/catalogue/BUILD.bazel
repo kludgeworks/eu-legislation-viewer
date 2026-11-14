@@ -343,6 +343,7 @@ java_test_suite(
         ":one-act-cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:web",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",

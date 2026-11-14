@@ -3,11 +3,14 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
 import java.io.UnsupportedEncodingException;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.WebMvcTest;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
@@ -26,6 +29,15 @@ class AboutControllerTests {
     assertThat(page.select(".about-page section").eachAttr("id"))
         .containsExactly("what", "privacy", "api", "build");
     assertThat(page.select("#privacy li b").eachText()).containsExactly("theme", "search");
-    assertThat(page.select("#build .mono").text()).isEqualTo(AboutController.UNVERSIONED);
+    assertThat(page.select("#build .mono").text()).isEqualTo("2026.11.7");
+  }
+
+  /** The release, as a release build stamps it. */
+  @TestConfiguration(proxyBeanMethods = false)
+  static class Released {
+    @Bean
+    Release release() {
+      return new Release("2026.11.7");
+    }
   }
 }
