@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "A legal text in the public model",
+  "description": "The text of a version of an EU act in one language, as the API gives it. The text is in parts, as the Official Journal prints it. A part holds blocks. Running text has two forms: plain text, and HTML in a closed list of elements.",
+  "type": "object",
+  "properties": {
+    "title": { "$ref": "#/$defs/inline", "description": "The long title." },
+    "preamble": { "$ref": "#/$defs/blocks", "description": "The formulas, the citations and the recitals." },
+    "body": { "$ref": "#/$defs/blocks", "description": "The enacting terms." },
+    "conclusions": { "$ref": "#/$defs/blocks", "description": "The closing formula and the signatures." },
+    "annexes": { "$ref": "#/$defs/blocks", "description": "The annexes and the documents attached to the act." },
+    "notes": { "$ref": "#/$defs/notes", "description": "The footnotes, from wherever they are in the text." }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "inline": {
+      "description": "Running text, in two forms.",
+      "type": "object",
+      "properties": {
+        "text": { "$ref": "#/$defs/text" },
+        "html": { "$ref": "#/$defs/html" }
+      },
+      "required": ["text", "html"],
+      "additionalProperties": false
+    },
+    "text": {
+      "description": "The plain text, as printed. It leaves out the markers of notes and the words that an amendment deleted. A line break is a line feed.",
+      "type": "string"
+    },
+    "html": {
+      "description": "The text as HTML. It uses only these elements: b, i, u, s, sup, sub, span (with class uc, sc, expanded or box; with lang; or with data-act and data-action), time (with datetime), cite, a (with href), br, img (with data-file), ins, del, and math in MathML.",
+      "type": "string"
+    },
+    "blocks": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/block" }
+    },
+    "block": {
+      "description": "A thing that stands on its own lines. Its type tells which.",
+      "oneOf": [
+        { "$ref": "#/$defs/paragraph" },
+        { "$ref": "#/$defs/unit" },
+        { "$ref": "#/$defs/table" },
+        { "$ref": "#/$defs/figure" },
+        { "$ref": "#/$defs/quotation" },
+        { "$ref": "#/$defs/deleted" }
+      ]
+    },
+    "amendedBy": {
+      "description": "The amendments of a consolidated version that gave the block its wording, the outermost first.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/amendment" }
+    },
+    "amendment": {
+      "description": "Which act changed the text, and how.",
+      "type": "object",
+      "properties": {
+        "act": { "type": "string", "description": "The CELEX number of the amending act." },
+        "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] }
+      },
+      "required": ["act", "action"],
+      "additionalProperties": false
+    },
+    "paragraph": {
+      "description": "A paragraph of running text.",
+      "type": "object",
+      "properties": {
+        "type": { "const": "text" },
+        "text": { "$ref": "#/$defs/text" },
+        "html": { "$ref": "#/$defs/html" },
+        "amendedBy": { "$ref": "#/$defs/amendedBy" }
+      },
+      "required": ["type", "text", "html"],
+      "additionalProperties": false
+    },
+    "unit": {
+      "description": "An article, a paragraph, a point, an annex and so on.",
+      "type": "object",
+      "properties": {
+        "type": { "const": "unit" },
+        "eId": { "type": "string", "description": "Its identifier in the text. For example, art_3/par_2/pnt_a." },
+        "kind": { "type": "string", "description": "What it is. For example, article or point. The list can grow." },
+        "num": { "type": "string", "description": "Its label as printed. For example, Article 3 or (a)." },
+        "heading": { "$ref": "#/$defs/inline" },
+        "subheading": { "$ref": "#/$defs/inline" },
+        "amendedBy": { "$ref": "#/$defs/amendedBy" },
+        "content": { "$ref": "#/$defs/blocks" }
+      },
+      "required": ["type", "eId", "kind"],
+      "additionalProperties": false
+    },
+    "table": {
+      "description": "A table. A group of rows starts with its heading row.",
+      "type": "object",
+      "properties": {
+        "type": { "const": "table" },
+        "caption": { "$ref": "#/$defs/blocks" },
+        "rows": { "type": "array", "items": { "$ref": "#/$defs/row" } },
+        "notes": { "$ref": "#/$defs/notes", "description": "The notes of the table, numbered in it." },
+        "amendedBy": { "$ref": "#/$defs/amendedBy" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "row": {
+      "type": "object",
+      "properties": {
+        "header": { "const": true, "description": "Present if it is a heading row." },
+        "cells": { "type": "array", "items": { "$ref": "#/$defs/cell" } }
+      },
+      "required": ["cells"],
+      "additionalProperties": false
+    },
+    "cell": {
+      "type": "object",
+      "properties": {
+        "header": { "const": true, "description": "Present if it is a heading cell." },
+        "colspan": { "type": "integer", "minimum": 2 },
+        "rowspan": { "type": "integer", "minimum": 2 },
+        "content": { "$ref": "#/$defs/blocks", "description": "Empty for an empty cell." }
+      },
+      "required": ["content"],
+      "additionalProperties": false
+    },
+    "figure": {
+      "description": "An image.",
+      "type": "object",
+      "properties": {
+        "type": { "const": "figure" },
+        "file": { "type": "string", "description": "The image file, as the Publications Office names it in the act's files." },
+        "shows": { "enum": ["character", "form", "formula", "signature", "techDesign", "other"] },
+        "caption": { "$ref": "#/$defs/blocks" },
+        "description": { "$ref": "#/$defs/blocks", "description": "The text in the image, written out." },
+        "amendedBy": { "$ref": "#/$defs/amendedBy" }
+      },
+      "required": ["type", "file"],
+      "additionalProperties": false
+    },
+    "quotation": {
+      "description": "Text that an amending act quotes: the units that it inserts or replaces in another act. It is not law of this act.",
+      "type": "object",
+      "properties": {
+        "type": { "const": "quotation" },
+        "eId": { "type": "string" },
+        "content": { "$ref": "#/$defs/blocks" }
+      },
+      "required": ["type", "eId", "content"],
+      "additionalProperties": false
+    },
+    "deleted": {
+      "description": "Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.",
+      "type": "object",
+      "properties": {
+        "type": { "const": "deleted" },
+        "amendedBy": { "$ref": "#/$defs/amendedBy" },
+        "content": { "$ref": "#/$defs/blocks" }
+      },
+      "required": ["type", "amendedBy", "content"],
+      "additionalProperties": false
+    },
+    "notes": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/note" }
+    },
+    "note": {
+      "description": "A footnote. The href of its marker in the HTML is # and its eId.",
+      "type": "object",
+      "properties": {
+        "eId": { "type": "string" },
+        "marker": { "type": "string" },
+        "content": { "$ref": "#/$defs/blocks" }
+      },
+      "required": ["eId", "marker", "content"],
+      "additionalProperties": false
+    }
+  }
+}

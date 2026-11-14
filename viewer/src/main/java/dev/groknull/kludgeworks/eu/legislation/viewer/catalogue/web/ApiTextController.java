@@ -4,7 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import com.fasterxml.jackson.annotation.JsonRawValue;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.nio.charset.StandardCharsets;
@@ -42,8 +43,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriUtils;
 
 /**
- * The text of a version in a language, in the API, with its outline and its units. The text is JSON
- * in the JsonML form, as the content module keeps it.
+ * The text of a version in a language, in the API, with its outline and its units. The text is in
+ * the public model ({@link PublicText}), not in the form that the content module stores.
  *
  * <ul>
  *   <li>A request for a text, its outline or a unit starts the preparation of the act in the
@@ -94,9 +95,9 @@ class ApiTextController {
         asked,
         text ->
             content
-                .json(text)
+                .publicText(text)
                 .map(
-                    json -> {
+                    publicText -> {
                       var self =
                           to(celex, asked.version(), asked.language(), IanaLinkRelations.SELF);
                       var model =
@@ -105,7 +106,7 @@ class ApiTextController {
                                       ApiActController.key(asked.version()),
                                       asked.version().celex(),
                                       ApiActController.code(asked.language().code()),
-                                      new String(json, StandardCharsets.UTF_8)))
+                                      publicText))
                               .link(self)
                               .link(
                                   ApiActController.to(celex, asked.version(), IanaLinkRelations.UP))
@@ -170,11 +171,10 @@ class ApiTextController {
         asked,
         id ->
             content
-                .json(id, eId)
+                .publicUnit(id, eId)
                 .map(
-                    json ->
-                        HalModelBuilder.halModelOf(
-                                new UnitModel(eId, new String(json, StandardCharsets.UTF_8)))
+                    extract ->
+                        HalModelBuilder.halModelOf(new UnitModel(extract.unit(), extract.notes()))
                             .link(Link.of(unitHref(text, eId)))
                             .link(text)
                             .build()));
@@ -260,17 +260,19 @@ class ApiTextController {
    * @param version where the version is among the versions: {@code oj}, or its date
    * @param celex the CELEX number of the document that holds the text
    * @param language the language, by the EU's code. For example, {@code eng}.
-   * @param text the text, JSON in the JsonML form
+   * @param text the text, in the public model
    */
-  record TextModel(String version, String celex, String language, @JsonRawValue String text) {}
+  record TextModel(String version, String celex, String language, PublicText text) {}
 
   /**
    * A unit of a text, as the API shows it.
    *
-   * @param eId its eId. For example, {@code anx/pnt_1.2}.
-   * @param unit the unit, JSON in the JsonML form
+   * @param unit the unit, in the public model
+   * @param notes the notes that the unit refers to, in the order of the text
    */
-  record UnitModel(String eId, @JsonRawValue String unit) {}
+  record UnitModel(
+      PublicText.Unit unit,
+      @JsonInclude(JsonInclude.Include.NON_EMPTY) List<PublicText.Note> notes) {}
 
   /**
    * The outline of a text, as the API shows it.

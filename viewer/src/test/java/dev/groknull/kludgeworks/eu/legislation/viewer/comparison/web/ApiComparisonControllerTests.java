@@ -22,10 +22,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Mark
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -69,7 +69,15 @@ class ApiComparisonControllerTests {
       "/api/acts/32015R1998/comparisons/2021-03-15..2021-12-31";
   private static final TextId EARLIER = new TextId(1);
   private static final TextId LATER = new TextId(2);
-  private static final String SHOWN = "[\"unit\",{\"eId\":\"anx/pnt_1.2\"}]";
+  private static final PublicText.Unit SHOWN =
+      new PublicText.Unit(
+          "anx/pnt_1.2",
+          "point",
+          "1.2.",
+          null,
+          null,
+          List.of(),
+          List.of(new PublicText.Text("Screening.", "<ins>Screening.</ins>", List.of())));
 
   @Autowired MockMvcTester mvc;
   @Autowired ActComparisonLinks actLinks;
@@ -83,7 +91,7 @@ class ApiComparisonControllerTests {
     when(acts.find(any(ActIdentifier.class))).thenReturn(Optional.empty());
     when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
     when(content.outline(any())).thenReturn(Optional.empty());
-    when(content.json(any(Element.class))).thenReturn(SHOWN.getBytes(StandardCharsets.UTF_8));
+    when(content.publicUnit(any(Element.class))).thenReturn(SHOWN);
     var difference = difference();
     when(comparisons.between(EARLIER, LATER))
         .thenReturn(
@@ -160,7 +168,8 @@ class ApiComparisonControllerTests {
         json(mvc.get().uri(COMPARISON + "/texts/eng/differences/anx/pnt_1.2").exchange());
 
     assertThat(difference.at("/eId").asString()).isEqualTo("anx/pnt_1.2");
-    assertThat(difference.at("/shown").toString()).isEqualTo(SHOWN);
+    assertThat(difference.at("/shown/content/0/html").asString())
+        .isEqualTo("<ins>Screening.</ins>");
     assertThat(difference.at("/_links/up/href").asString())
         .isEqualTo(ACT + "/comparisons/2021-03-15..2021-12-31/texts/eng");
     assertThat(mvc.get().uri(COMPARISON + "/texts/eng/differences/art_99"))

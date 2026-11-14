@@ -75,6 +75,30 @@ java_test_suite(
     ],
 )
 
+# Legal texts in the public model, checked against its JSON Schema
+java_test_suite(
+    name = "public",
+    size = "small",
+    srcs = ["model/PublicTextsTest.java"],
+    runner = "junit5",
+    runtime_deps = [
+        "//viewer/src/main/resources",
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":legal-texts",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
+        "@maven//:com_networknt_json_schema_validator",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@maven//:org_junit_jupiter_junit_jupiter_params",
+        "@maven//:tools_jackson_core_jackson_databind",
+    ],
+)
+
 # Every version of an act, from a directory of legal-text files, written as JSON and read back; run
 # by hand, not by bazel test //...: --test_env=LEGAL_TEXT_DIR=<dir> (see VersionsRoundTrip)
 java_junit5_test(

@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -20,6 +19,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
@@ -234,7 +234,7 @@ class ApiComparisonController {
     return HalModelBuilder.halModelOf(
             new DifferenceModel(
                 DifferenceSummary.of(asked.ends.act, difference, amended),
-                new String(content.json(difference.shown()), StandardCharsets.UTF_8)))
+                content.publicUnit(difference.shown())))
         .link(Link.of(differenceHref(comparison, eId)))
         .link(comparison)
         .build();
@@ -429,10 +429,10 @@ class ApiComparisonController {
    * A difference whole, as the API shows it.
    *
    * @param difference what the comparison lists of it
-   * @param shown its unit, marked, JSON in the JsonML form of the legal-text schema. Inserted words
-   *     are in {@code diff:ins} and deleted words in {@code diff:del}.
+   * @param shown its unit, marked, in the public model. In its HTML, inserted words are in {@code
+   *     ins} and deleted words in {@code del}. Its plain text is the text after the change.
    */
-  record DifferenceModel(@JsonUnwrapped DifferenceSummary difference, @JsonRawValue String shown) {}
+  record DifferenceModel(@JsonUnwrapped DifferenceSummary difference, PublicText.Unit shown) {}
 
   /**
    * An amendment marker, as the API shows it. For example, ▼M20.

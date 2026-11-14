@@ -145,6 +145,8 @@ maven.install(
         "org.assertj:assertj-core",
         "org.xmlunit:xmlunit-assertj3:2.14.0",
         "org.jsoup:jsoup:1.23.2",  # the rendered pages' text, as a browser reads it
+        # the public text model, checked against its JSON Schema (api/schema/text.json)
+        "com.networknt:json-schema-validator:3.0.9",
         "org.springframework:spring-test",
         "org.springframework.boot:spring-boot-test",
         "org.springframework.boot:spring-boot-test-autoconfigure",

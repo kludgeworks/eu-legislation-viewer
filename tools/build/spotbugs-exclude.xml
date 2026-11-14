@@ -119,6 +119,16 @@
   </Match>
 
   <!--
+    CC (Cyclomatic Complexity): PublicTexts maps each element of the stored text in one case of a
+    switch on the element's name. javac compiles a switch on strings to a hash and an equals check
+    for each case, so the count is high, but each case is one line of mapping.
+  -->
+  <Match>
+    <Class name="dev.groknull.kludgeworks.eu.legislation.viewer.content.model.PublicTexts" />
+    <Bug code="CC" />
+  </Match>
+
+  <!--
     SECCI (Command Injection): SchemaDatabase is a build tool whose job is to run the command its
     BUILD target gives it (tbls), on the database it starts: the command is its input by design.
   -->

@@ -16,11 +16,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -52,8 +52,15 @@ class ApiTextControllerTests {
   private static final String VERSION = ACT + "/versions/2021-03-15";
   private static final String TEXT = "/api/acts/32015R1998/versions/2021-03-15/texts/eng";
   private static final TextId STORED = new TextId(7);
-  private static final String JSON = "[\"legalText\",{},[\"body\",{}]]";
-  private static final String UNIT = "[\"unit\",{\"eId\":\"anx/pnt_1.2\"}]";
+  private static final PublicText.Unit UNIT =
+      new PublicText.Unit(
+          "anx/pnt_1.2",
+          "point",
+          "1.2.",
+          null,
+          null,
+          List.of(),
+          List.of(new PublicText.Text("Screening.", "<i>Screening.</i>", List.of())));
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
@@ -64,10 +71,13 @@ class ApiTextControllerTests {
   void act() {
     when(acts.find(any(ActIdentifier.class))).thenReturn(Optional.empty());
     when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
-    when(content.json(STORED)).thenReturn(Optional.of(JSON.getBytes(StandardCharsets.UTF_8)));
-    when(content.json(any(), any())).thenReturn(Optional.empty());
-    when(content.json(STORED, "anx/pnt_1.2"))
-        .thenReturn(Optional.of(UNIT.getBytes(StandardCharsets.UTF_8)));
+    when(content.publicText(STORED))
+        .thenReturn(
+            Optional.of(
+                new PublicText(null, List.of(), List.of(), List.of(), List.of(UNIT), List.of())));
+    when(content.publicUnit(any(), any())).thenReturn(Optional.empty());
+    when(content.publicUnit(STORED, "anx/pnt_1.2"))
+        .thenReturn(Optional.of(new PublicText.Extract(UNIT, List.of())));
     when(content.outline(STORED))
         .thenReturn(
             Optional.of(
@@ -85,7 +95,7 @@ class ApiTextControllerTests {
   }
 
   @Test
-  void servesAReadyTextAsJsonMlWithItsLinks() throws UnsupportedEncodingException {
+  void servesAReadyTextInThePublicModelWithItsLinks() throws UnsupportedEncodingException {
     textIs(new Text.Ready(STORED));
 
     var result = mvc.get().uri(TEXT).accept(MediaTypes.HAL_JSON).exchange();
@@ -100,7 +110,9 @@ class ApiTextControllerTests {
     assertThat(text.at("/version").asString()).isEqualTo("2021-03-15");
     assertThat(text.at("/celex").asString()).isEqualTo("02015R1998-20210315");
     assertThat(text.at("/language").asString()).isEqualTo("eng");
-    assertThat(text.at("/text").toString()).isEqualTo(JSON);
+    assertThat(text.at("/text/annexes/0/type").asString()).isEqualTo("unit");
+    assertThat(text.at("/text/annexes/0/content/0/html").asString()).isEqualTo("<i>Screening.</i>");
+    assertThat(text.at("/text/body").isMissingNode()).isTrue();
     assertThat(text.at("/_links/self/href").asString()).isEqualTo(VERSION + "/texts/eng");
     assertThat(text.at("/_links/up/href").asString()).isEqualTo(VERSION);
     assertThat(text.at("/_links/alternate/href").asString()).isEqualTo(VERSION + "/texts/fra");
@@ -194,8 +206,8 @@ class ApiTextControllerTests {
 
     var unit = json(mvc.get().uri(TEXT + "/units/anx/pnt_1.2").exchange());
 
-    assertThat(unit.at("/eId").asString()).isEqualTo("anx/pnt_1.2");
-    assertThat(unit.at("/unit").toString()).isEqualTo(UNIT);
+    assertThat(unit.at("/unit/eId").asString()).isEqualTo("anx/pnt_1.2");
+    assertThat(unit.at("/unit/content/0/text").asString()).isEqualTo("Screening.");
     assertThat(unit.at("/_links/self/href").asString())
         .isEqualTo(VERSION + "/texts/eng/units/anx/pnt_1.2");
     assertThat(unit.at("/_links/up/href").asString()).isEqualTo(VERSION + "/texts/eng");

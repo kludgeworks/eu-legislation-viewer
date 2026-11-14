@@ -36,25 +36,21 @@ public interface Content {
    */
   Optional<Element> read(TextId text);
 
-  /**
-   * Returns the text as JSON, as it was stored. The form is JsonML (github.com/mckamey/jsonml):
-   * {@code [name, {attributes}, child…]} for an element, or {@code [name, {attributes}, text]} for
-   * an element of text. Returns none if no such text is stored.
-   */
-  Optional<byte[]> json(TextId text);
+  /** Returns the text in the public model. Returns none if no such text is stored. */
+  Optional<PublicText> publicText(TextId text);
 
   /**
-   * Returns the unit {@code eId} of the text, with everything in it, as JSON in the same form as
-   * {@link #json(TextId)}. Returns none if no such text is stored, or if the text has no unit
-   * {@code eId} outside the struck text of a consolidation.
+   * Returns the unit {@code eId} of the text in the public model, with the notes that it refers to.
+   * Returns none if no such text is stored, or if the text has no unit {@code eId} outside the
+   * struck text of a consolidation.
    */
-  Optional<byte[]> json(TextId text, String eId);
+  Optional<PublicText.Extract> publicUnit(TextId text, String eId);
 
   /**
-   * Returns an element as JSON, in the same form as {@link #json(TextId)}. For example, a unit of a
-   * comparison, marked.
+   * Returns a unit in the public model. For example, a unit of a comparison, in which {@code
+   * diff:ins} and {@code diff:del} mark what changed.
    */
-  byte[] json(Element element);
+  PublicText.Unit publicUnit(Element unit);
 
   /**
    * Returns the outline of the text, kept when the text was stored. Returns none if no such text is

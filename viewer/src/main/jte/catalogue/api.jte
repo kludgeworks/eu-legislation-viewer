@@ -39,6 +39,7 @@
           </ul>
         </li>
         <li><a href="#answers">How the API answers</a></li>
+        <li><a href="#text">The text</a></li>
         <li><a href="#relations">Link relations</a>
           <ul class="api-terms">
             @for(var relation : relations)
@@ -110,6 +111,54 @@ $unsafe{examples.get("act/events")}
           <dt>Stability</dt>
           <dd>The API is in development. It can change without notice.</dd>
         </dl>
+      </section>
+
+      <section id="text">
+        <h2>The text</h2>
+        <p>A text is in parts, as the Official Journal prints it: <span class="mono">title</span>,
+          <span class="mono">preamble</span>, <span class="mono">body</span>, <span class="mono">conclusions</span>,
+          <span class="mono">annexes</span> and <span class="mono">notes</span>. A part that the text does not have is
+          not in the answer. Its
+          <a href="/api/schema/text.json">JSON Schema</a> gives each member.</p>
+        <p>A part is a list of blocks. The <span class="mono">type</span> of a block tells what it is:</p>
+        <dl class="api-members">
+          <dt>text</dt>
+          <dd>A paragraph of running text.</dd>
+          <dt>unit</dt>
+          <dd>An article, a paragraph, a point, an annex and so on. It has an <span class="mono">eId</span>, a
+            <span class="mono">kind</span>, and its blocks in <span class="mono">content</span>. The list of kinds can
+            grow.</dd>
+          <dt>table</dt>
+          <dd>A table, in <span class="mono">rows</span> of <span class="mono">cells</span>. A cell holds blocks, because
+            a cell can hold units.</dd>
+          <dt>figure</dt>
+          <dd>An image, by the name of its file.</dd>
+          <dt>quotation</dt>
+          <dd>Text that an amending act quotes. It is not law of the act that quotes it.</dd>
+          <dt>deleted</dt>
+          <dd>Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.</dd>
+        </dl>
+        <p>Running text has two forms. <span class="mono">text</span> is plain text. It does not have the markers of
+          notes or the words that an amendment deleted. <span class="mono">html</span> is HTML with only these
+          elements:</p>
+        <ul>
+          <li><span class="mono">b</span>, <span class="mono">i</span>, <span class="mono">u</span>,
+            <span class="mono">s</span>, <span class="mono">sup</span>, <span class="mono">sub</span>, and
+            <span class="mono">span</span> with a <span class="mono">class</span>, for typefaces.</li>
+          <li><span class="mono">time</span>, with <span class="mono">datetime</span>, for a date.</li>
+          <li><span class="mono">cite</span> for a reference to the Official Journal, and <span class="mono">a</span>
+            for a link. The marker of a note links to <span class="mono">#</span> and the note's
+            <span class="mono">eId</span>.</li>
+          <li><span class="mono">span</span> with <span class="mono">data-act</span> and
+            <span class="mono">data-action</span> for words that an amending act changed, and
+            <span class="mono">s</span> with them for words that it deleted.</li>
+          <li><span class="mono">ins</span> and <span class="mono">del</span> for the words that a comparison
+            marks.</li>
+          <li><span class="mono">br</span>, <span class="mono">span</span> with <span class="mono">lang</span>,
+            <span class="mono">img</span>, and <span class="mono">math</span> in MathML.</li>
+        </ul>
+        <p>A block that a consolidation changed has <span class="mono">amendedBy</span>: the amending act, by its
+          CELEX number, and what it did.</p>
       </section>
 
       <section id="relations">

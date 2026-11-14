@@ -10,6 +10,7 @@ java_library(
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "@maven//:com_fasterxml_jackson_core_jackson_annotations",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_jmolecules_jmolecules_ddd",
         "@maven//:org_jmolecules_jmolecules_events",
@@ -80,7 +81,7 @@ jooq_tables(
 )
 
 # model/
-# The content model: legal texts as JSON, and back, and their outlines
+# The content model: legal texts as JSON, and back, their outlines, and the public model
 java_library(
     name = "model",
     srcs = glob(["model/*.java"]),

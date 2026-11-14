@@ -1,0 +1,568 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.content.model;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Cell;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Extract;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Inline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Note;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Row;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Unit;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * Turns a stored legal text, or a part of it, into the public model ({@link PublicText}).
+ *
+ * <p>The stored text follows the converter's schema. This class is the one place that knows both
+ * forms, so a change of the schema stops here. It keeps the meaning and leaves out the form:
+ *
+ * <ul>
+ *   <li>Units, running text, tables, figures, quotations and deleted text keep their structure.
+ *   <li>Lists, groups of tables, boxes, formulas of the preamble, citations, recitals and the files
+ *       of an annex give their blocks to the block around them. Their units keep their kinds, for
+ *       example {@code point}, {@code citation} or {@code recital}.
+ *   <li>A group of rows in a table gives its heading as a heading row.
+ *   <li>A displayed formula is running text, with MathML in its HTML.
+ *   <li>The notes of the files of an annex join the notes of the text.
+ * </ul>
+ *
+ * <p>Running text has two forms. The plain text is the text as printed, without the markers of
+ * notes and without the words that an amendment deleted. The HTML uses only these elements:
+ *
+ * <ul>
+ *   <li>{@code b}, {@code i}, {@code u}, {@code s}, {@code sup} and {@code sub} for typefaces, and
+ *       {@code span} with the class {@code uc}, {@code sc}, {@code expanded} or {@code box} for the
+ *       others;
+ *   <li>{@code time}, with {@code datetime}, for a date;
+ *   <li>{@code cite} for a reference to the Official Journal, and {@code a} for a link;
+ *   <li>{@code sup} with {@code a}, whose {@code href} is {@code #} and a note's eId, for the
+ *       marker of a note;
+ *   <li>{@code br} for a line break, {@code span} with {@code lang} for another language, and
+ *       {@code img} with {@code data-file} for an image;
+ *   <li>{@code span} with {@code data-act} and {@code data-action} for words that an amending act
+ *       changed, and {@code s} with the same attributes for words that it deleted;
+ *   <li>{@code ins} and {@code del} for what a comparison marks;
+ *   <li>{@code math}, in MathML, for a formula.
+ * </ul>
+ */
+public final class PublicTexts {
+  private static final String MATHML = "http://www.w3.org/1998/Math/MathML";
+
+  /** The typefaces that have an element of their own in HTML. */
+  private static final Map<String, String> TYPEFACES =
+      Map.of("b", "b", "i", "i", "u", "u", "sup", "sup", "sub", "sub", "strike", "s");
+
+  /** What a unit holds before its content. */
+  private static final Set<String> UNIT_PARTS =
+      Set.of("provenance", "num", "heading", "subheading");
+
+  /** The notes of the files of an annex, which join the notes of the text. */
+  private final List<Note> notes = new ArrayList<>();
+
+  private PublicTexts() {}
+
+  /**
+   * @param legalText the element of a text, {@code legalText}
+   */
+  public static PublicText of(Element legalText) {
+    var texts = new PublicTexts();
+    Inline title = null;
+    List<Block> preamble = List.of();
+    List<Block> body = List.of();
+    List<Block> conclusions = List.of();
+    List<Block> annexes = List.of();
+    var notes = new ArrayList<Note>();
+    for (var part : legalText.children()) {
+      switch (part.name()) {
+        case "preface" -> title = child(part, "longTitle").map(PublicTexts::lines).orElse(null);
+        case "preamble" -> preamble = texts.preamble(part);
+        case "body" -> body = texts.blocks(part.children());
+        case "conclusions" -> conclusions = texts.conclusions(part);
+        case "annexes" -> annexes = texts.blocks(part.children());
+        case "notes" -> notes.addAll(texts.notes(part));
+        default -> {
+          // The source and the lifecycle are the version's, which the API gives elsewhere
+        }
+      }
+    }
+    notes.addAll(texts.notes);
+    return new PublicText(title, preamble, body, conclusions, annexes, notes);
+  }
+
+  /**
+   * Returns a unit of a text, with the notes that it refers to. Returns none if the text has no
+   * unit {@code eId} outside the text that a consolidation keeps struck.
+   *
+   * @param legalText the element of a text, {@code legalText}
+   */
+  public static Optional<Extract> extract(Element legalText, String eId) {
+    return legalText.units(eId, eId).stream()
+        .findFirst()
+        .map(
+            unit -> {
+              var referred = new LinkedHashSet<String>();
+              references(unit, referred);
+              var all = new LinkedHashMap<String, Note>();
+              new PublicTexts().allNotes(legalText, all);
+              return new Extract(
+                  unit(unit),
+                  referred.stream().map(all::get).filter(note -> note != null).toList());
+            });
+  }
+
+  /**
+   * Returns a unit on its own, for example a unit of a comparison, in which {@code diff:ins} and
+   * {@code diff:del} mark what changed.
+   */
+  public static Unit unit(Element unit) {
+    return new PublicTexts().toUnit(unit);
+  }
+
+  // ------------------------------------------------------------------------------------- parts
+
+  private List<Block> preamble(Element preamble) {
+    var blocks = new ArrayList<Block>();
+    for (var child : preamble.children()) {
+      blocks.addAll(blocks(List.of(child)));
+    }
+    return blocks;
+  }
+
+  private List<Block> conclusions(Element conclusions) {
+    var blocks = new ArrayList<Block>();
+    for (var child : conclusions.children()) {
+      if (child.name().equals("signature")) {
+        for (var line : child.children()) {
+          if (line.name().equals("placeAndDate")) {
+            blocks.add(text(line.children(), List.of()));
+          } else {
+            line.children().stream()
+                .map(PublicTexts::lines)
+                .forEach(lines -> blocks.add(new Text(lines.text(), lines.html(), List.of())));
+          }
+        }
+      } else {
+        blocks.addAll(blocks(List.of(child)));
+      }
+    }
+    return blocks;
+  }
+
+  private List<Note> notes(Element notes) {
+    var found = new ArrayList<Note>();
+    for (var child : notes.children()) {
+      if (child.name().equals("note")) {
+        found.add(note(child));
+      } else {
+        // The notes of the text that an amendment deleted
+        child.children().stream()
+            .filter(note -> note.name().equals("note"))
+            .forEach(note -> found.add(note(note)));
+      }
+    }
+    return found;
+  }
+
+  private Note note(Element note) {
+    return new Note(attribute(note, "eId"), attribute(note, "marker"), blocks(note.children()));
+  }
+
+  // ------------------------------------------------------------------------------------ blocks
+
+  private List<Block> blocks(List<Element> elements) {
+    var blocks = new ArrayList<Block>();
+    for (var element : elements) {
+      switch (element.name()) {
+        case "p" -> blocks.add(text(element.children(), amendments(element)));
+        case "unit" -> blocks.add(toUnit(element));
+        case "table" -> blocks.add(table(element));
+        case "figure" -> blocks.add(figure(element));
+        case "quotedStructure" ->
+            blocks.add(new Quotation(attribute(element, "eId"), blocks(element.children())));
+        case "deleted" ->
+            blocks.add(new Deleted(amendments(element), blocks(withoutProvenance(element))));
+        case "math" -> blocks.add(math(element));
+        case "annotation" -> {
+          child(element, "heading")
+              .map(PublicTexts::lines)
+              .ifPresent(
+                  heading -> blocks.add(new Text(heading.text(), heading.html(), List.of())));
+          blocks.addAll(blocks(withoutParts(element)));
+        }
+        case "tableGroup", "figureGroup" -> {
+          child(element, "caption").ifPresent(caption -> blocks.addAll(blocks(caption.children())));
+          blocks.addAll(blocks(withoutParts(element)));
+        }
+        case "notes" -> notes.addAll(notes(element));
+        case "provenance", "num", "heading", "subheading", "caption" -> {
+          // The block around them gives them
+        }
+        default ->
+            // A list, a box, a formula of the preamble, citations, recitals, an introduction, the
+            // file of an annex, a correction's wording: their blocks join the blocks around them
+            blocks.addAll(blocks(element.children()));
+      }
+    }
+    return blocks;
+  }
+
+  private Unit toUnit(Element unit) {
+    return new Unit(
+        attribute(unit, "eId"),
+        attribute(unit, "kind"),
+        child(unit, "num").map(num -> text(num.children())).orElse(null),
+        child(unit, "heading").map(PublicTexts::lines).orElse(null),
+        child(unit, "subheading").map(PublicTexts::lines).orElse(null),
+        amendments(unit),
+        blocks(unit.children().stream().filter(c -> !UNIT_PARTS.contains(c.name())).toList()));
+  }
+
+  private Table table(Element table) {
+    var rows = new ArrayList<Row>();
+    rows(table.children(), rows);
+    return new Table(
+        blocksOf(table, "caption"),
+        rows,
+        child(table, "notes").map(this::notes).orElseGet(List::of),
+        amendments(table));
+  }
+
+  /** Adds the rows, and the rows of each group after its heading row. */
+  private void rows(List<Element> elements, List<Row> rows) {
+    for (var element : elements) {
+      switch (element.name()) {
+        case "tr" ->
+            rows.add(
+                new Row(
+                    "true".equals(element.attribute("header")),
+                    element.children().stream()
+                        .filter(cell -> cell.name().equals("td"))
+                        .map(this::cell)
+                        .toList()));
+        case "rowGroup" -> {
+          var columns = Integer.parseInt(attribute(element, "columns"));
+          var num = child(element, "num").map(n -> text(n.children())).orElse(null);
+          var heading = child(element, "heading").map(PublicTexts::lines).orElse(null);
+          if (num != null || heading != null) {
+            rows.add(headingRow(columns, title(num, heading)));
+          }
+          child(element, "subheading")
+              .map(PublicTexts::lines)
+              .ifPresent(subheading -> rows.add(headingRow(columns, subheading)));
+          rows(element.children(), rows);
+        }
+        default -> {
+          // The caption, the notes and the provenance are the table's
+        }
+      }
+    }
+  }
+
+  private static Row headingRow(int columns, Inline title) {
+    return new Row(
+        true,
+        List.of(
+            new Cell(
+                true,
+                columns > 1 ? columns : null,
+                null,
+                List.of(new Text(title.text(), title.html(), List.of())))));
+  }
+
+  private static Inline title(@Nullable String num, @Nullable Inline heading) {
+    if (heading == null) {
+      return new Inline(num == null ? "" : num, escape(num == null ? "" : num));
+    }
+    if (num == null) {
+      return heading;
+    }
+    return new Inline(num + " " + heading.text(), escape(num) + " " + heading.html());
+  }
+
+  private Cell cell(Element cell) {
+    return new Cell(
+        "true".equals(cell.attribute("header")),
+        span(cell.attribute("colspan")),
+        span(cell.attribute("rowspan")),
+        blocks(cell.children()));
+  }
+
+  private static @Nullable Integer span(@Nullable String span) {
+    return span == null || span.equals("1") ? null : Integer.valueOf(span);
+  }
+
+  private Figure figure(Element figure) {
+    return new Figure(
+        attribute(figure, "src"),
+        figure.attribute("content"),
+        blocksOf(figure, "caption"),
+        blocksOf(figure, "description"),
+        amendments(figure));
+  }
+
+  private static Text math(Element math) {
+    var text = new StringBuilder();
+    var html = new StringBuilder();
+    for (var child : math.children()) {
+      if (child.name().equals("m:math")) {
+        mathText(child, text);
+        mathml(child, html, true);
+      }
+    }
+    return new Text(text.toString(), html.toString(), amendments(math));
+  }
+
+  // ------------------------------------------------------------------------------ running text
+
+  private static Text text(List<Element> inline, List<Amendment> amendedBy) {
+    var text = text(inline);
+    var html = new StringBuilder();
+    html(inline, html);
+    return new Text(text, html.toString(), amendedBy);
+  }
+
+  /**
+   * Returns the text of a title or a heading. Its lines are inline or, where the source has them
+   * so, paragraphs, directly or in {@code content}: then the lines are joined by line breaks.
+   */
+  private static Inline lines(Element lines) {
+    var children = child(lines, "content").map(Element::children).orElseGet(lines::children);
+    if (children.stream().noneMatch(child -> child.name().equals("p"))) {
+      var html = new StringBuilder();
+      html(children, html);
+      return new Inline(text(children), html.toString());
+    }
+    var texts =
+        new PublicTexts()
+            .blocks(children).stream()
+                .filter(Text.class::isInstance)
+                .map(Text.class::cast)
+                .toList();
+    return new Inline(
+        String.join("\n", texts.stream().map(Text::text).toList()),
+        String.join("<br>", texts.stream().map(Text::html).toList()));
+  }
+
+  /** Returns the plain text: what is printed and in force. */
+  private static String text(List<Element> inline) {
+    var text = new StringBuilder();
+    text(inline, text);
+    return text.toString();
+  }
+
+  private static void text(List<Element> inline, StringBuilder text) {
+    for (var element : inline) {
+      switch (element.name()) {
+        case "t", "number" -> text.append(attribute(element, "v"));
+        case "eol" -> text.append('\n');
+        case "quote" -> {
+          text.append(attribute(element, "startQuote"));
+          text(element.children(), text);
+          text.append(attribute(element, "endQuote"));
+        }
+        case "math" ->
+            element.children().stream()
+                .filter(child -> child.name().equals("m:math"))
+                .forEach(child -> mathText(child, text));
+        case "noteRef", "deleted", "diff:del", "img", "provenance" -> {
+          // Not printed as text, or not in force
+        }
+        default -> text(element.children(), text);
+      }
+    }
+  }
+
+  private static void html(List<Element> inline, StringBuilder html) {
+    for (var element : inline) {
+      switch (element.name()) {
+        case "t", "number" -> html.append(escape(attribute(element, "v")));
+        case "eol" -> html.append("<br>");
+        case "emphasis" -> {
+          var kind = attribute(element, "kind");
+          var tag = TYPEFACES.get(kind);
+          wrap(
+              element,
+              html,
+              tag == null ? "span" : tag,
+              tag == null ? " class=\"" + escape(kind) + "\"" : "");
+        }
+        case "date", "docDate" -> {
+          var date = element.attribute("date");
+          wrap(element, html, "time", date == null ? "" : " datetime=\"" + escape(date) + "\"");
+        }
+        case "quote" -> {
+          html.append(escape(attribute(element, "startQuote")));
+          html(element.children(), html);
+          html.append(escape(attribute(element, "endQuote")));
+        }
+        case "noteRef" ->
+            html.append("<sup><a href=\"")
+                .append(escape(attribute(element, "href")))
+                .append("\">")
+                .append(escape(attribute(element, "marker")))
+                .append("</a></sup>");
+        case "ref" -> {
+          var href = element.attribute("href");
+          if ("uri".equals(element.attribute("kind")) && href != null) {
+            wrap(element, html, "a", " href=\"" + escape(href) + "\"");
+          } else {
+            wrap(element, html, "cite", "");
+          }
+        }
+        case "span" ->
+            wrap(element, html, "span", " lang=\"" + escape(attribute(element, "xml:lang")) + "\"");
+        case "img" ->
+            html.append("<img alt=\"\" data-file=\"")
+                .append(escape(attribute(element, "src")))
+                .append("\">");
+        case "math" ->
+            element.children().stream()
+                .filter(child -> child.name().equals("m:math"))
+                .forEach(child -> mathml(child, html, false));
+        case "changed" -> wrap(element, html, "span", amendment(element));
+        case "deleted" -> wrap(element, html, "s", amendment(element));
+        case "diff:ins" -> wrap(element, html, "ins", "");
+        case "diff:del" -> wrap(element, html, "del", "");
+        case "provenance" -> {
+          // The paragraph gives it
+        }
+        default -> html(element.children(), html);
+      }
+    }
+  }
+
+  private static void wrap(Element element, StringBuilder html, String tag, String attributes) {
+    html.append('<').append(tag).append(attributes).append('>');
+    html(element.children(), html);
+    html.append("</").append(tag).append('>');
+  }
+
+  private static String amendment(Element element) {
+    return " data-act=\""
+        + escape(attribute(element, "amendingAct"))
+        + "\" data-action=\""
+        + escape(attribute(element, "action"))
+        + "\"";
+  }
+
+  // ----------------------------------------------------------------------------------- MathML
+
+  private static void mathText(Element math, StringBuilder text) {
+    text.append(math.text());
+    math.children().forEach(child -> mathText(child, text));
+  }
+
+  private static void mathml(Element element, StringBuilder html, boolean block) {
+    var name = element.name().substring(element.name().indexOf(':') + 1);
+    html.append('<').append(name);
+    if (name.equals("math")) {
+      html.append(" xmlns=\"").append(MATHML).append('"');
+      if (block && !element.attributes().containsKey("display")) {
+        html.append(" display=\"block\"");
+      }
+    }
+    element.attributes().entrySet().stream()
+        .sorted(Map.Entry.comparingByKey())
+        .forEach(
+            attribute ->
+                html.append(' ')
+                    .append(attribute.getKey())
+                    .append("=\"")
+                    .append(escape(attribute.getValue()))
+                    .append('"'));
+    html.append('>').append(escape(element.text()));
+    element.children().forEach(child -> mathml(child, html, block));
+    html.append("</").append(name).append('>');
+  }
+
+  // ---------------------------------------------------------------------------------- helpers
+
+  private static List<Amendment> amendments(Element element) {
+    return element.children().stream()
+        .filter(child -> child.name().equals("provenance"))
+        .map(
+            provenance ->
+                new Amendment(
+                    attribute(provenance, "amendingAct"), attribute(provenance, "action")))
+        .toList();
+  }
+
+  private static List<Element> withoutProvenance(Element element) {
+    return element.children().stream().filter(child -> !child.name().equals("provenance")).toList();
+  }
+
+  /** Returns the blocks of an element, without its provenance, heading and caption. */
+  private static List<Element> withoutParts(Element element) {
+    return element.children().stream()
+        .filter(
+            child ->
+                !child.name().equals("provenance")
+                    && !child.name().equals("heading")
+                    && !child.name().equals("caption"))
+        .toList();
+  }
+
+  /** Returns the blocks of the child {@code name} of {@code element}, or none if it has none. */
+  private List<Block> blocksOf(Element element, String name) {
+    return child(element, name).map(part -> blocks(part.children())).orElseGet(List::of);
+  }
+
+  private static Optional<Element> child(Element element, String name) {
+    return element.children().stream().filter(child -> child.name().equals(name)).findFirst();
+  }
+
+  private static String attribute(Element element, String name) {
+    var value = element.attribute(name);
+    if (value == null) {
+      throw new IllegalArgumentException(element.name() + " has no " + name);
+    }
+    return value;
+  }
+
+  /** Adds the eIds of the notes that {@code element} refers to, in order. */
+  private static void references(Element element, Set<String> eIds) {
+    if (element.name().equals("noteRef")) {
+      eIds.add(attribute(element, "href").substring(1));
+    }
+    element.children().forEach(child -> references(child, eIds));
+  }
+
+  /** Adds every note of the text, wherever it is, by its eId. */
+  private void allNotes(Element element, Map<String, Note> notes) {
+    if (element.name().equals("note")) {
+      notes.put(attribute(element, "eId"), note(element));
+      return;
+    }
+    element.children().forEach(child -> allNotes(child, notes));
+  }
+
+  private static String escape(String text) {
+    var escaped = new StringBuilder(text.length());
+    for (var i = 0; i < text.length(); i++) {
+      var c = text.charAt(i);
+      switch (c) {
+        case '&' -> escaped.append("&amp;");
+        case '<' -> escaped.append("&lt;");
+        case '>' -> escaped.append("&gt;");
+        case '"' -> escaped.append("&quot;");
+        default -> escaped.append(c);
+      }
+    }
+    return escaped.toString();
+  }
+}

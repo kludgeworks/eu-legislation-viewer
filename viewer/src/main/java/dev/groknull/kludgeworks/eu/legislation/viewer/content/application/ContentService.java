@@ -4,12 +4,14 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.content.application;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextReplaced;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextStored;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.PublicTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
@@ -124,30 +126,34 @@ class ContentService implements Content {
 
   @Override
   @Transactional(readOnly = true)
-  public Optional<byte[]> json(TextId text) {
-    return store.json(text);
+  public Optional<PublicText> publicText(TextId text) {
+    return read(text)
+        .map(
+            element -> {
+              var start = System.nanoTime();
+              var model = PublicTexts.of(element);
+              LOG.debug("Text {} in the public model in {} ms", text, millis(start));
+              return model;
+            });
   }
 
   @Override
   @Transactional(readOnly = true)
-  public Optional<byte[]> json(TextId text, String eId) {
+  public Optional<PublicText.Extract> publicUnit(TextId text, String eId) {
     var start = System.nanoTime();
-    var unit =
-        read(text)
-            .flatMap(element -> element.units(eId, eId).stream().findFirst())
-            .map(Encoder::encode);
+    var unit = read(text).flatMap(element -> PublicTexts.extract(element, eId));
     LOG.debug(
-        "Unit {} of text {}: {} in {} ms",
+        "Unit {} of text {} in the public model: {} in {} ms",
         eId,
         text,
-        unit.map(json -> json.length / 1024 + " KB of JSON").orElse("none"),
+        unit.isPresent() ? "found" : "none",
         millis(start));
     return unit;
   }
 
   @Override
-  public byte[] json(Element element) {
-    return Encoder.encode(element);
+  public PublicText.Unit publicUnit(Element unit) {
+    return PublicTexts.unit(unit);
   }
 
   /** The outline is cached in the process, by the identity of the text ({@link ContentCaches}). */

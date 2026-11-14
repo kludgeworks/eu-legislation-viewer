@@ -11,6 +11,7 @@
     "com.google.j2objc:j2objc-annotations": 2003271689,
     "com.h3xstream.findsecbugs:findsecbugs-plugin": -947761330,
     "com.mebigfatguy.sb-contrib:sb-contrib": -1065052473,
+    "com.networknt:json-schema-validator": -704756318,
     "com.uber.nullaway:nullaway": -1216571949,
     "gg.jte:jte": 1753066982,
     "gg.jte:jte-jspecify-nullmarked": 309952362,
@@ -99,6 +100,7 @@
     "aopalliance:aopalliance": 1403132272,
     "ch.qos.logback:logback-classic": -974775885,
     "ch.qos.logback:logback-core": 1703218533,
+    "com.ethlo.time:itu": 1234603439,
     "com.fasterxml.jackson.core:jackson-annotations": 1145483352,
     "com.fasterxml:classmate": 381313761,
     "com.github.ben-manes.caffeine:caffeine": -1094095223,
@@ -120,6 +122,7 @@
     "com.h3xstream.findsecbugs:findsecbugs-plugin": 1411965311,
     "com.jayway.jsonpath:json-path": -1608107467,
     "com.mebigfatguy.sb-contrib:sb-contrib": 203577479,
+    "com.networknt:json-schema-validator": 1368335725,
     "com.palantir.javapoet:javapoet": -2014275507,
     "com.samskivert:jmustache": 1730384904,
     "com.squareup.okhttp3:okhttp-jvm": -1014142857,
@@ -257,6 +260,7 @@
     "org.slf4j:slf4j-api": 500377983,
     "org.slf4j:slf4j-jdk14": 183878048,
     "org.slf4j:slf4j-simple": -1055624668,
+    "org.snakeyaml:snakeyaml-engine": -1273354013,
     "org.springframework.boot:spring-boot": 276724413,
     "org.springframework.boot:spring-boot-actuator": 1574461963,
     "org.springframework.boot:spring-boot-actuator-autoconfigure": -115833215,
@@ -362,7 +366,8 @@
     "tech.picnic.error-prone-support:error-prone-utils": -1035496961,
     "tech.picnic.error-prone-support:refaster-support": -1353830760,
     "tools.jackson.core:jackson-core": -435916916,
-    "tools.jackson.core:jackson-databind": 1277331618
+    "tools.jackson.core:jackson-databind": 1277331618,
+    "tools.jackson.dataformat:jackson-dataformat-yaml": 187021870
   },
   "conflict_resolution": {
     "com.github.ben-manes.caffeine:caffeine": "com.github.ben-manes.caffeine:caffeine:3.2.4",
@@ -448,6 +453,12 @@
         "jar": "a855a0fc97b1d06f4efb1c3bba5ebd0eb508d8b58e68e89e4bbc23a85135c883"
       },
       "version": "1.5.38"
+    },
+    "com.ethlo.time:itu": {
+      "shasums": {
+        "jar": "91415a465dd039adaf98af7a4c04c9fe0d7de1457f8c80ed8d86e53740f32ad2"
+      },
+      "version": "1.17.0"
     },
     "com.fasterxml.jackson.core:jackson-annotations": {
       "shasums": {
@@ -574,6 +585,12 @@
         "jar": "78c7106ec5f7a4fda676d39a3dc1ec38c6b542addfc8f5f871bdfdf0cdad43ee"
       },
       "version": "7.7.4"
+    },
+    "com.networknt:json-schema-validator": {
+      "shasums": {
+        "jar": "6a2aab21c6b64f4ff8acc63a0745d7103e2248b7385ca8cd1a95bccd0e7fd61d"
+      },
+      "version": "3.0.9"
     },
     "com.palantir.javapoet:javapoet": {
       "shasums": {
@@ -1397,6 +1414,12 @@
       },
       "version": "2.0.18"
     },
+    "org.snakeyaml:snakeyaml-engine": {
+      "shasums": {
+        "jar": "0b638c8806112215e02e58e95cbd9e9a69d4bd540991f47553d053919994cc94"
+      },
+      "version": "3.0.1"
+    },
     "org.springframework.boot:spring-boot": {
       "shasums": {
         "jar": "0d92b532b1d4020640e72d78c31af175c23db8e0ddd45b81855b7fdf4c9c70f0"
@@ -2027,6 +2050,12 @@
         "jar": "3a2338d996fd3056791df8d335fa9ba8a62a706ed4245ecf81b3e583df37d08a"
       },
       "version": "3.1.5"
+    },
+    "tools.jackson.dataformat:jackson-dataformat-yaml": {
+      "shasums": {
+        "jar": "afef22789b0a0915b544c6749c71770788d20821c30d574c1210e2b6cffc91ae"
+      },
+      "version": "3.1.5"
     }
   },
   "dependencies": {
@@ -2086,6 +2115,12 @@
     "com.mebigfatguy.sb-contrib:sb-contrib": [
       "jakarta.annotation:jakarta.annotation-api",
       "jakarta.xml.bind:jakarta.xml.bind-api"
+    ],
+    "com.networknt:json-schema-validator": [
+      "com.ethlo.time:itu",
+      "org.slf4j:slf4j-api",
+      "tools.jackson.core:jackson-databind",
+      "tools.jackson.dataformat:jackson-dataformat-yaml"
     ],
     "com.squareup.okhttp3:okhttp-jvm": [
       "com.squareup.okio:okio-jvm",
@@ -2992,6 +3027,11 @@
     "tools.jackson.core:jackson-databind": [
       "com.fasterxml.jackson.core:jackson-annotations",
       "tools.jackson.core:jackson-core"
+    ],
+    "tools.jackson.dataformat:jackson-dataformat-yaml": [
+      "org.snakeyaml:snakeyaml-engine",
+      "tools.jackson.core:jackson-core",
+      "tools.jackson.core:jackson-databind"
     ]
   },
   "packages": {
@@ -3068,6 +3108,14 @@
       "ch.qos.logback.core.subst",
       "ch.qos.logback.core.testUtil",
       "ch.qos.logback.core.util"
+    ],
+    "com.ethlo.time:itu": [
+      "com.ethlo.time",
+      "com.ethlo.time.internal",
+      "com.ethlo.time.internal.fixed",
+      "com.ethlo.time.internal.token",
+      "com.ethlo.time.internal.util",
+      "com.ethlo.time.token"
     ],
     "com.fasterxml.jackson.core:jackson-annotations": [
       "com.fasterxml.jackson.annotation"
@@ -3346,6 +3394,25 @@
       "com.mebigfatguy.fbcontrib.debug",
       "com.mebigfatguy.fbcontrib.detect",
       "com.mebigfatguy.fbcontrib.utils"
+    ],
+    "com.networknt:json-schema-validator": [
+      "com.networknt.org.apache.commons.validator.routines",
+      "com.networknt.schema",
+      "com.networknt.schema.annotation",
+      "com.networknt.schema.dialect",
+      "com.networknt.schema.format",
+      "com.networknt.schema.i18n",
+      "com.networknt.schema.keyword",
+      "com.networknt.schema.output",
+      "com.networknt.schema.path",
+      "com.networknt.schema.regex",
+      "com.networknt.schema.resource",
+      "com.networknt.schema.result",
+      "com.networknt.schema.serialization",
+      "com.networknt.schema.serialization.node",
+      "com.networknt.schema.utils",
+      "com.networknt.schema.vocabulary",
+      "com.networknt.schema.walk"
     ],
     "com.palantir.javapoet:javapoet": [
       "com.palantir.javapoet"
@@ -5146,6 +5213,30 @@
     "org.slf4j:slf4j-simple": [
       "org.slf4j.simple"
     ],
+    "org.snakeyaml:snakeyaml-engine": [
+      "org.snakeyaml.engine.external.com.google.gdata.util.common.base",
+      "org.snakeyaml.engine.v2.api",
+      "org.snakeyaml.engine.v2.api.lowlevel",
+      "org.snakeyaml.engine.v2.comments",
+      "org.snakeyaml.engine.v2.common",
+      "org.snakeyaml.engine.v2.composer",
+      "org.snakeyaml.engine.v2.constructor",
+      "org.snakeyaml.engine.v2.constructor.core",
+      "org.snakeyaml.engine.v2.constructor.json",
+      "org.snakeyaml.engine.v2.emitter",
+      "org.snakeyaml.engine.v2.env",
+      "org.snakeyaml.engine.v2.events",
+      "org.snakeyaml.engine.v2.exceptions",
+      "org.snakeyaml.engine.v2.nodes",
+      "org.snakeyaml.engine.v2.parser",
+      "org.snakeyaml.engine.v2.representer",
+      "org.snakeyaml.engine.v2.resolver",
+      "org.snakeyaml.engine.v2.scanner",
+      "org.snakeyaml.engine.v2.schema",
+      "org.snakeyaml.engine.v2.serializer",
+      "org.snakeyaml.engine.v2.tokens",
+      "org.snakeyaml.engine.v2.util"
+    ],
     "org.springframework.boot:spring-boot": [
       "org.springframework.boot",
       "org.springframework.boot.admin",
@@ -6718,6 +6809,10 @@
       "tools.jackson.databind.type",
       "tools.jackson.databind.util",
       "tools.jackson.databind.util.internal"
+    ],
+    "tools.jackson.dataformat:jackson-dataformat-yaml": [
+      "tools.jackson.dataformat.yaml",
+      "tools.jackson.dataformat.yaml.util"
     ]
   },
   "repositories": {
@@ -6725,6 +6820,7 @@
       "aopalliance:aopalliance",
       "ch.qos.logback:logback-classic",
       "ch.qos.logback:logback-core",
+      "com.ethlo.time:itu",
       "com.fasterxml.jackson.core:jackson-annotations",
       "com.fasterxml:classmate",
       "com.github.ben-manes.caffeine:caffeine",
@@ -6746,6 +6842,7 @@
       "com.h3xstream.findsecbugs:findsecbugs-plugin",
       "com.jayway.jsonpath:json-path",
       "com.mebigfatguy.sb-contrib:sb-contrib",
+      "com.networknt:json-schema-validator",
       "com.palantir.javapoet:javapoet",
       "com.samskivert:jmustache",
       "com.squareup.okhttp3:okhttp-jvm",
@@ -6883,6 +6980,7 @@
       "org.slf4j:slf4j-api",
       "org.slf4j:slf4j-jdk14",
       "org.slf4j:slf4j-simple",
+      "org.snakeyaml:snakeyaml-engine",
       "org.springframework.boot:spring-boot",
       "org.springframework.boot:spring-boot-actuator",
       "org.springframework.boot:spring-boot-actuator-autoconfigure",
@@ -6988,7 +7086,8 @@
       "tech.picnic.error-prone-support:error-prone-utils",
       "tech.picnic.error-prone-support:refaster-support",
       "tools.jackson.core:jackson-core",
-      "tools.jackson.core:jackson-databind"
+      "tools.jackson.core:jackson-databind",
+      "tools.jackson.dataformat:jackson-dataformat-yaml"
     ]
   },
   "services": {
@@ -7365,6 +7464,14 @@
     "tools.jackson.core:jackson-databind": {
       "tools.jackson.databind.ObjectMapper": [
         "tools.jackson.databind.json.JsonMapper"
+      ]
+    },
+    "tools.jackson.dataformat:jackson-dataformat-yaml": {
+      "tools.jackson.core.TokenStreamFactory": [
+        "tools.jackson.dataformat.yaml.YAMLFactory"
+      ],
+      "tools.jackson.databind.ObjectMapper": [
+        "tools.jackson.dataformat.yaml.YAMLMapper"
       ]
     }
   },

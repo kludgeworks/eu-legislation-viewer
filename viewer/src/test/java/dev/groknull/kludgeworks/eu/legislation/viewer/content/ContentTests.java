@@ -8,8 +8,6 @@ import static org.awaitility.Awaitility.await;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline.Entry;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -144,15 +142,17 @@ class ContentTests {
   }
 
   @Test
-  void givesATextAndOneOfItsUnitsAsJson() {
-    var text = LegalTexts.sample(SAMPLE);
-    var id = content.store(CELEX, Language.ENG, "test", text);
+  void givesATextAndOneOfItsUnitsInThePublicModel() {
+    var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
 
-    assertThat(content.json(id)).contains(Encoder.encode(text));
-    var unit = Decoder.element(content.json(id, "anx/pnt_1.1.1").orElseThrow());
-    assertThat(unit.name()).isEqualTo("unit");
-    assertThat(unit.attribute("eId")).isEqualTo("anx/pnt_1.1.1");
-    assertThat(content.json(id, "art_99")).isEmpty();
+    assertThat(content.publicText(id).orElseThrow().annexes()).isNotEmpty();
+    var unit = content.publicUnit(id, "anx/pnt_1.1.1").orElseThrow().unit();
+    assertThat(unit.eId()).isEqualTo("anx/pnt_1.1.1");
+    assertThat(unit.heading())
+        .isNotNull()
+        .extracting(PublicText.Inline::text)
+        .isEqualTo("Boundaries");
+    assertThat(content.publicUnit(id, "art_99")).isEmpty();
   }
 
   @Test
@@ -160,8 +160,8 @@ class ContentTests {
     var none = new TextId(-1);
 
     assertThat(content.read(none)).isEmpty();
-    assertThat(content.json(none)).isEmpty();
-    assertThat(content.json(none, "art_1")).isEmpty();
+    assertThat(content.publicText(none)).isEmpty();
+    assertThat(content.publicUnit(none, "art_1")).isEmpty();
     assertThat(content.outline(none)).isEmpty();
     assertThat(content.contains(none)).isFalse();
   }

@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.observation.ObservationRegistry;
@@ -68,17 +69,17 @@ class ComparisonServiceTest {
     }
 
     @Override
-    public Optional<byte[]> json(TextId text) {
+    public Optional<PublicText> publicText(TextId text) {
       throw new UnsupportedOperationException();
     }
 
     @Override
-    public Optional<byte[]> json(TextId text, String eId) {
+    public Optional<PublicText.Extract> publicUnit(TextId text, String eId) {
       throw new UnsupportedOperationException();
     }
 
     @Override
-    public byte[] json(Element element) {
+    public PublicText.Unit publicUnit(Element unit) {
       throw new UnsupportedOperationException();
     }
 

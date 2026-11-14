@@ -24,24 +24,21 @@
   } ],
   &quot;earlierMarkers&quot; : [ ],
   &quot;amendments&quot; : [ ],
-  &quot;shown&quot; : [ &quot;unit&quot;, {
+  &quot;shown&quot; : {
+    &quot;type&quot; : &quot;unit&quot;,
     &quot;eId&quot; : &quot;anx/pnt_8.1.2.3/pnt_c&quot;,
     &quot;kind&quot; : &quot;point&quot;,
-    &quot;numbered&quot; : &quot;true&quot;
-  }, [ &quot;provenance&quot;, {
-    &quot;action&quot; : &quot;replaced&quot;,
-    &quot;amendingAct&quot; : &quot;32026R0449&quot;,
-    &quot;location&quot; : &quot;AR:1 .AND. AX:0;PT:11;PT:a&quot;,
-    &quot;marker&quot; : &quot;O024001M001000&quot;
-  } ], [ &quot;num&quot;, { }, [ &quot;t&quot;, {
-    &quot;v&quot; : &quot;(c)&quot;
-  } ] ], [ &quot;p&quot;, { }, [ &quot;t&quot;, {
-    &quot;v&quot; : &quot;x-ray equipment&quot;
-  } ], [ &quot;diff:ins&quot;, { }, [ &quot;t&quot;, {
-    &quot;v&quot; : &quot; applied in accordance with Attachment 6-J to the Annex to Implementing Decision C(2015) 8005&quot;
-  } ] ], [ &quot;t&quot;, {
-    &quot;v&quot; : &quot;;&quot;
-  } ] ] ]
+    &quot;num&quot; : &quot;(c)&quot;,
+    &quot;amendedBy&quot; : [ {
+      &quot;act&quot; : &quot;32026R0449&quot;,
+      &quot;action&quot; : &quot;replaced&quot;
+    } ],
+    &quot;content&quot; : [ {
+      &quot;type&quot; : &quot;text&quot;,
+      &quot;text&quot; : &quot;x-ray equipment applied in accordance with Attachment 6-J to the Annex to Implementing Decision C(2015) 8005;&quot;,
+      &quot;html&quot; : &quot;x-ray equipment&lt;ins&gt; applied in accordance with Attachment 6-J to the Annex to Implementing Decision C(2015) 8005&lt;/ins&gt;;&quot;
+    } ]
+  }
 }</code></pre>
 <pre data-tab="Headers"><code class="language-http">HTTP/1.1 200 OK
 Cache-Control: no-cache
