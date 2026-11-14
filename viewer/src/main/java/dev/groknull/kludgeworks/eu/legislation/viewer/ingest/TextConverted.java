@@ -5,8 +5,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import org.jmolecules.event.annotation.DomainEvent;
 
 /**
- * The legal text of an expression is stored. The content module has it, by the CELEX and the
- * language.
+ * The text of a version in a language is converted and stored. The content module has it, by the
+ * CELEX and the language.
  */
 @DomainEvent
-public record ExpressionBuilt(String celex, Language language) {}
+public record TextConverted(String celex, Language language) {}

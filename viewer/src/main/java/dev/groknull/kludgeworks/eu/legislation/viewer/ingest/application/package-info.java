@@ -3,7 +3,7 @@
  * The application ring of the ingest module.
  *
  * <ul>
- *   <li>{@link IngestService} schedules expressions.
+ *   <li>{@link IngestService} queues the conversions that are asked for.
  *   <li>{@link JobRunner} runs their jobs when they are requested.
  *   <li>{@link Conversions} is the conversion that the infrastructure provides.
  * </ul>

@@ -287,7 +287,7 @@ class VersionController {
                 Links.compare(eli, language),
                 MarksView.of(act, version, language));
         // The version appeared since, and it is being prepared.
-        case Text.Queued _, Text.Building _ -> templates.catalogueTextArriving();
+        case Text.Waiting _, Text.Converting _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->
             templates.catalogueTextFailed(
                 FailureView.reading(act, version, failed, language, self));

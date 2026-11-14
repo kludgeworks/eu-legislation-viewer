@@ -29,6 +29,8 @@ java_junit5_test(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer:testing",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
+        "@maven//:io_micrometer_micrometer_observation",
+        "@maven//:io_micrometer_micrometer_tracing",
         "@maven//:net_sf_saxon_Saxon_HE",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_awaitility_awaitility",

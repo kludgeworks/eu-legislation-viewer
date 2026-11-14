@@ -8,12 +8,18 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguratio
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionRequested.Reason;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionQueued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.tracing.Tracer;
 import java.time.Duration;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,11 +69,13 @@ class IngestTests {
   @Autowired Events events;
   @Autowired ApplicationEventPublisher publisher;
   @Autowired TransactionTemplate transactions;
+  @Autowired Tracer tracer;
+  @Autowired ObservationRegistry observations;
 
   @Test
   void buildsAnExpressionsTextAndSaysSo() {
     assertThat(acts.find(OneActCellar.CELEX)).isPresent();
-    ingest.schedule(CONSOLIDATION, Language.ENG);
+    request(CONSOLIDATION, Language.ENG, Reason.NEEDED);
 
     var status = finished(CONSOLIDATION, Language.ENG);
     assertThat(status.state()).isEqualTo(State.BUILT);
@@ -108,34 +116,48 @@ class IngestTests {
 
   @Test
   void triesAgainOnlyWhatFailedWhereTryingAgainMayHelp() {
-    ingest.schedule("32024R2867", Language.SWE);
+    request("32024R2867", Language.SWE, Reason.NEEDED);
     finished("32024R2867", Language.SWE);
-    ingest.schedule("32024R2867", Language.FRA);
+    request("32024R2867", Language.FRA, Reason.NEEDED);
     finished("32024R2867", Language.FRA);
 
-    assertThat(ingest.retry("32024R2867", Language.FRA)).isFalse();
-    assertThat(ingest.retry("32024R2867", Language.SWE)).isTrue();
+    request("32024R2867", Language.FRA, Reason.RETRIED);
+    request("32024R2867", Language.SWE, Reason.RETRIED);
 
+    // Both are told to have failed a second time: the Swedish after another attempt, the French
+    // as it stood.
+    await().until(() -> failures("32024R2867", Language.SWE), failures -> failures == 2);
+    await().until(() -> failures("32024R2867", Language.FRA), failures -> failures == 2);
+    assertThat(starts("32024R2867", Language.SWE)).isEqualTo(2);
+    assertThat(starts("32024R2867", Language.FRA)).isEqualTo(1);
     var status = finished("32024R2867", Language.SWE);
     assertThat(status.failure()).isEqualTo(Failure.UNAVAILABLE);
     // The retry starts again from the first attempt.
     assertThat(status.attempts()).isEqualTo(1);
-    assertThat(events.failed)
-        .filteredOn(
-            failed -> failed.celex().equals("32024R2867") && failed.language() == Language.SWE)
-        .hasSize(2);
+  }
+
+  @Test
+  void convertsAgainWhatCellarRepublished() {
+    request(CONSOLIDATION, Language.POL, Reason.NEEDED);
+    finished(CONSOLIDATION, Language.POL);
+
+    request(CONSOLIDATION, Language.POL, Reason.REPUBLISHED);
+
+    await().until(() -> failures(CONSOLIDATION, Language.POL), failures -> failures == 2);
+    assertThat(starts(CONSOLIDATION, Language.POL)).isEqualTo(2);
   }
 
   @Test
   void queuesAnExpressionOnce() {
-    ingest.schedule(CONSOLIDATION, Language.SPA);
-    ingest.schedule(CONSOLIDATION, Language.SPA);
+    request(CONSOLIDATION, Language.SPA, Reason.NEEDED);
+    request(CONSOLIDATION, Language.SPA, Reason.NEEDED);
     finished(CONSOLIDATION, Language.SPA);
 
-    var status = ingest.schedule(CONSOLIDATION, Language.SPA);
+    request(CONSOLIDATION, Language.SPA, Reason.NEEDED);
 
-    assertThat(status.state()).isEqualTo(State.FAILED);
-    assertThat(status.attempts()).isEqualTo(1);
+    // It is not converted again: ingest tells again that it failed.
+    await().until(() -> failures(CONSOLIDATION, Language.SPA), failures -> failures >= 2);
+    assertThat(starts(CONSOLIDATION, Language.SPA)).isEqualTo(1);
     assertThat(jobs(CONSOLIDATION, "SPA")).isEqualTo(1);
   }
 
@@ -149,14 +171,13 @@ class IngestTests {
     jdbc.sql(
             """
             insert into ingest_job
-              (celex, language_code, state, phase, attempts, started_at, created_at, revision)
-            values ('32024R2867', 'ENG', 'RUNNING', 'CONVERTING', 1, now() - interval '1 hour',
+              (celex, language_code, state, attempts, started_at, created_at, revision)
+            values ('32024R2867', 'ENG', 'RUNNING', 1, now() - interval '1 hour',
               now() - interval '1 hour', 1)
             """)
         .update();
     transactions.executeWithoutResult(
-        status ->
-            publisher.publishEvent(new ExpressionRequested("32024R2867", Language.ENG, null)));
+        status -> publisher.publishEvent(new ConversionQueued("32024R2867", Language.ENG, null)));
 
     var status = finished("32024R2867", Language.ENG);
 
@@ -165,12 +186,33 @@ class IngestTests {
   }
 
   @Test
-  void hasNoStatusForWhatWasNeverScheduled() {
-    assertThat(ingest.status(CONSOLIDATION, Language.POL)).isEmpty();
+  void continuesTheTraceOfWhoeverAsked() {
+    // An observation, as a web request is: its trace goes with the request to ingest's thread.
+    var trace =
+        Observation.createNotStarted("asking", observations)
+            .observe(
+                () -> {
+                  request(CONSOLIDATION, Language.DAN, Reason.NEEDED);
+                  return Objects.requireNonNull(tracer.currentSpan()).context().traceId();
+                });
+
+    finished(CONSOLIDATION, Language.DAN);
+
+    assertThat(
+            jdbc.sql("select traceparent from ingest_job where celex = ? and language_code = 'DAN'")
+                .param(CONSOLIDATION)
+                .query(String.class)
+                .single())
+        .contains(trace);
+  }
+
+  @Test
+  void hasNoStatusForWhatWasNeverAskedFor() {
+    assertThat(ingest.status(CONSOLIDATION, Language.SLK)).isEmpty();
   }
 
   private void assertFails(String celex, Language language, Failure failure) {
-    ingest.schedule(celex, language);
+    request(celex, language, Reason.NEEDED);
 
     var status = finished(celex, language);
 
@@ -187,8 +229,31 @@ class IngestTests {
     return await()
         .atMost(Duration.ofMinutes(1))
         .until(
-            () -> ingest.status(celex, language).orElseThrow(),
-            status -> status.state() == State.BUILT || status.state() == State.FAILED);
+            () ->
+                ingest
+                    .status(celex, language)
+                    .filter(
+                        status -> status.state() == State.BUILT || status.state() == State.FAILED),
+            Optional::isPresent)
+        .orElseThrow();
+  }
+
+  /** Asks for the text, as another module does: in a transaction, which the registry needs. */
+  private void request(String celex, Language language, Reason reason) {
+    transactions.executeWithoutResult(
+        status -> publisher.publishEvent(new ConversionRequested(celex, language, reason)));
+  }
+
+  private long failures(String celex, Language language) {
+    return events.failed.stream()
+        .filter(failed -> failed.celex().equals(celex) && failed.language() == language)
+        .count();
+  }
+
+  private long starts(String celex, Language language) {
+    return events.started.stream()
+        .filter(started -> started.celex().equals(celex) && started.language() == language)
+        .count();
   }
 
   private long jobs(String celex, String language) {
@@ -201,17 +266,23 @@ class IngestTests {
   /** The module's events, as a listener in another module would have them. */
   @TestConfiguration(proxyBeanMethods = false)
   static class Events {
-    final List<ExpressionBuilt> built = new CopyOnWriteArrayList<>();
-    final List<ExpressionFailed> failed = new CopyOnWriteArrayList<>();
+    final List<TextConverted> built = new CopyOnWriteArrayList<>();
+    final List<ConversionFailed> failed = new CopyOnWriteArrayList<>();
+    final List<ConversionStarted> started = new CopyOnWriteArrayList<>();
 
     @EventListener
-    void on(ExpressionBuilt event) {
+    void on(TextConverted event) {
       built.add(event);
     }
 
     @EventListener
-    void on(ExpressionFailed event) {
+    void on(ConversionFailed event) {
       failed.add(event);
+    }
+
+    @EventListener
+    void on(ConversionStarted event) {
+      started.add(event);
     }
   }
 }

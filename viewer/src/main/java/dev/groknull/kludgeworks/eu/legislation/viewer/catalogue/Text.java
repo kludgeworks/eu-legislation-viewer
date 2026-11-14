@@ -14,7 +14,7 @@ public sealed interface Text {
   default boolean settled() {
     return switch (this) {
       case Ready _, Failed _ -> true;
-      case Queued _, Building _ -> false;
+      case Waiting _, Converting _ -> false;
     };
   }
 
@@ -26,13 +26,19 @@ public sealed interface Text {
   record Ready(TextId text) implements Text {}
 
   /**
-   * Waiting its turn to be built, behind other texts. It waits for the first time, or again after a
-   * failed attempt.
+   * Waiting its turn to be converted, behind other texts. It waits for the first time, or again
+   * after a failed attempt.
+   *
+   * @param attempt the last attempt that failed. It is 0 if none was made yet.
    */
-  record Queued() implements Text {}
+  record Waiting(int attempt) implements Text {}
 
-  /** Being built now. */
-  record Building(int attempt) implements Text {}
+  /**
+   * Being converted now.
+   *
+   * @param attempt which attempt this is, from 1
+   */
+  record Converting(int attempt) implements Text {}
 
   /**
    * The text could not be built. Another request does not try again.

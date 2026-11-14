@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
@@ -26,8 +27,8 @@ public interface ExpressionStore {
   Map<String, Text> texts(
       Collection<String> celexes, Language language, Map<String, TextId> stored);
 
-  /** Stores as queued the texts that are not stored yet. */
-  void queue(Collection<String> celexes, Language language);
+  /** Stores as queued the texts that are not stored yet. Returns the CELEXes of those it stored. */
+  List<String> queue(Collection<String> celexes, Language language);
 
   /**
    * Marks the text as being built, on {@code attempt}. It does nothing if the text is on that

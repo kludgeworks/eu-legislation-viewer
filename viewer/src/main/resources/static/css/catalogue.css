@@ -136,13 +136,13 @@
   background: var(--bg);
 }
 
-/* While the act is being prepared: grey is queued, light is being built, dark is built, dashed is
- * failed. After, only the texts that are not ready keep their state. */
-.ruler .dot.queued {
+/* While the act is being prepared: grey is waiting, light is being converted, dark is ready, dashed
+ * is failed. After, only the texts that are not ready keep their state. */
+.ruler .dot.waiting {
   background: var(--line);
 }
 
-.ruler .dot.building {
+.ruler .dot.converting {
   background: var(--accent-line);
   animation: pulse 1.2s ease-in-out infinite;
 }
@@ -204,7 +204,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ruler .dot.building {
+  .ruler .dot.converting {
     animation: none;
   }
 }

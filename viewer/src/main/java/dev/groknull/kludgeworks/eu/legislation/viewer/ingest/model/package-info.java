@@ -4,7 +4,7 @@
  *
  * <ul>
  *   <li>{@link IngestJob} is the ingest job, and {@link IngestJobs} holds the jobs.
- *   <li>{@link ExpressionRequested} is the request that queues a job.
+ *   <li>{@link ConversionQueued} is the request that queues a job.
  *   <li>{@link ConversionException} and its subclasses are the refusals of the converter.
  * </ul>
  */

@@ -12,6 +12,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import org.jooq.Condition;
@@ -48,9 +49,9 @@ class JooqExpressionStore implements ExpressionStore {
   }
 
   @Override
-  public void queue(Collection<String> celexes, Language language) {
+  public List<String> queue(Collection<String> celexes, Language language) {
     if (celexes.isEmpty()) {
-      return;
+      return List.of();
     }
     var insert =
         db.insertInto(
@@ -62,7 +63,7 @@ class JooqExpressionStore implements ExpressionStore {
     for (var celex : celexes) {
       insert = insert.values(celex, language, State.QUEUED.name(), 0);
     }
-    insert.onConflictDoNothing().execute();
+    return insert.onConflictDoNothing().returning(EXPRESSION.CELEX).fetch(EXPRESSION.CELEX);
   }
 
   @Override
@@ -156,9 +157,9 @@ class JooqExpressionStore implements ExpressionStore {
 
   private static Text text(ExpressionRecord row, @Nullable TextId stored) {
     return switch (State.valueOf(row.getState())) {
-      case QUEUED -> new Text.Queued();
-      case BUILDING -> new Text.Building(row.getAttempt());
-      case BUILT -> stored == null ? new Text.Queued() : new Text.Ready(stored);
+      case QUEUED -> new Text.Waiting(row.getAttempt());
+      case BUILDING -> new Text.Converting(row.getAttempt());
+      case BUILT -> stored == null ? new Text.Waiting(0) : new Text.Ready(stored);
       case FAILED -> new Text.Failed(Objects.requireNonNull(row.getFailure()), row.getTrace());
     };
   }

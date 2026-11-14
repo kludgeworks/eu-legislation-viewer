@@ -92,7 +92,7 @@ public record Preparation(
    * act waits its turn, with its texts queued behind the texts of other acts.
    */
   public int running() {
-    return count(Text.Building.class);
+    return count(Text.Converting.class);
   }
 
   /** Returns how many versions are prepared. These are the versions in the language. */

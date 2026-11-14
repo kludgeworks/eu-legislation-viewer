@@ -12,7 +12,7 @@ import org.springframework.dao.OptimisticLockingFailureException;
 /**
  * The ingest jobs, one for each expression, as they stand.
  *
- * <p>The event registry decides which job a worker runs next, with {@link ExpressionRequested}. The
+ * <p>The event registry decides which job a worker runs next, with {@link ConversionQueued}. The
  * jobs decide only if a job can start, so that no two workers run one job. The times come from the
  * store, so one clock measures the times of all the instances.
  */
@@ -20,30 +20,31 @@ import org.springframework.dao.OptimisticLockingFailureException;
 public interface IngestJobs {
 
   /**
-   * Queues a job for the expression unless it has one.
+   * Adds a job for the expression, in the state queued, unless it has one.
    *
-   * @return whether it was queued
+   * @return whether it was added
    */
-  boolean schedule(String celex, Language language, @Nullable String traceparent);
+  boolean add(String celex, Language language, @Nullable String traceparent);
 
   Optional<IngestJob> find(String celex, Language language);
 
   /**
-   * Queues the job of the expression again, from its first attempt, with the trace of the request
-   * that asked. It does this only if the job failed and another attempt may help ({@code
-   * Failure.retryable}).
+   * Resets the job of the expression if it failed and another attempt may help ({@code
+   * Failure.retryable}). A reset job is as a job just added: queued, at its first attempt, without
+   * its outcome, and with the trace of the request that asked.
    *
-   * @return whether it was queued again
+   * @return whether it was reset
    */
-  boolean retry(String celex, Language language, @Nullable String traceparent);
+  boolean resetRetryable(String celex, Language language, @Nullable String traceparent);
 
   /**
-   * Queues the job of the expression again, from its first attempt, with the trace of the request
-   * that asked. It does this only if the job is built or failed.
+   * Resets the job of the expression if it is finished: built or failed. A reset job is as a job
+   * just added: queued, at its first attempt, without its outcome, and with the trace of the
+   * request that asked.
    *
-   * @return whether it was queued again
+   * @return whether it was reset
    */
-  boolean rebuild(String celex, Language language, @Nullable String traceparent);
+  boolean resetFinished(String celex, Language language, @Nullable String traceparent);
 
   /**
    * Returns how many other jobs are queued or running that were queued before the first queued job

@@ -2,13 +2,13 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionBuilt;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionDeferred;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionFailed;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionStarted;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionPostponed;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionStarted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.TextConverted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionException;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionQueued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.MisfiledFormexException;
@@ -36,22 +36,22 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 /**
  * Runs a requested job on one of the workers of this instance. The event registry gives the runner
- * an {@link ExpressionRequested} after the request is committed.
+ * an {@link ConversionQueued} after the request is committed.
  *
  * <ol>
- *   <li>The runner starts the job and publishes {@link ExpressionStarted}. If the job is running or
+ *   <li>The runner starts the job and publishes {@link ConversionStarted}. If the job is running or
  *       done already, the runner does nothing.
  *   <li>The runner converts the Formex of the expression.
  *   <li>In one transaction, it stores the text, marks the job built and publishes {@link
- *       ExpressionBuilt}.
+ *       TextConverted}.
  * </ol>
  *
- * <p>If the job fails, the runner publishes {@link ExpressionFailed}. A refusal of the converter
+ * <p>If the job fails, the runner publishes {@link ConversionFailed}. A refusal of the converter
  * fails the job at once. For example, Cellar has no Formex, the document is not a legal act, or the
  * converter does not handle its Formex. Any other error fails the job only on the last attempt
  * ({@code viewer.ingest.max-attempts}). The failure is "unavailable" if Cellar did not answer
  * ({@link SourceUnavailableException}), and "error" if not. Before the last attempt, the runner
- * puts the job back in the queue and publishes {@link ExpressionDeferred}. It also fails the
+ * puts the job back in the queue and publishes {@link ConversionPostponed}. It also fails the
  * request, so that the registry gives it out again a little later. The resubmission of {@code
  * EventsConfiguration} does this.
  *
@@ -100,7 +100,7 @@ class JobRunner {
    */
   @Async(IngestApplicationConfiguration.WORKERS)
   @TransactionalEventListener
-  CompletableFuture<@Nullable Void> on(ExpressionRequested requested) {
+  CompletableFuture<@Nullable Void> on(ConversionQueued requested) {
     var started = Objects.requireNonNull(transactions.execute(status -> start(requested)));
     if (started.isEmpty()) {
       LOG.debug(
@@ -115,12 +115,12 @@ class JobRunner {
         : CompletableFuture.failedFuture(deferred);
   }
 
-  private Optional<IngestJob> start(ExpressionRequested requested) {
+  private Optional<IngestJob> start(ConversionQueued requested) {
     var job = jobs.start(requested.celex(), requested.language(), properties.takeover());
     job.ifPresent(
         each ->
             events.publishEvent(
-                new ExpressionStarted(each.celex(), each.language(), each.attempts())));
+                new ConversionStarted(each.celex(), each.language(), each.attempts())));
     return job;
   }
 
@@ -154,27 +154,22 @@ class JobRunner {
         .start();
   }
 
-  private @Nullable RuntimeException build(IngestJob started) {
+  private @Nullable RuntimeException build(IngestJob job) {
     var start = System.nanoTime();
-    // The job as last written. Each write changes its version.
-    var job = started;
     try {
       var text = conversions.convert(job.celex(), job.language());
       if (text.isEmpty()) {
         fail(job, Failure.NO_FORMEX, "Cellar has no Formex of it in the language");
         return null;
       }
-      job = jobs.save(job.storing());
-      var storing = job;
       var converter = conversions.converterVersion();
       var stored =
           Objects.requireNonNull(
               transactions.execute(
                   status -> {
-                    var id =
-                        content.store(storing.celex(), storing.language(), converter, text.get());
-                    jobs.save(storing.built());
-                    events.publishEvent(new ExpressionBuilt(storing.celex(), storing.language()));
+                    var id = content.store(job.celex(), job.language(), converter, text.get());
+                    jobs.save(job.built());
+                    events.publishEvent(new TextConverted(job.celex(), job.language()));
                     return id;
                   }));
       LOG.info(
@@ -230,7 +225,7 @@ class JobRunner {
         status -> {
           jobs.save(job.failed(failure, detail));
           events.publishEvent(
-              new ExpressionFailed(job.celex(), job.language(), failure, detail, traceId()));
+              new ConversionFailed(job.celex(), job.language(), failure, detail, traceId()));
         });
     LOG.info(
         "Couldn't build {} in {}: {}, {}", job.celex(), job.language().code(), failure, detail);
@@ -250,7 +245,7 @@ class JobRunner {
         status -> {
           jobs.save(job.retry());
           events.publishEvent(
-              new ExpressionDeferred(job.celex(), job.language(), job.attempts(), detail));
+              new ConversionPostponed(job.celex(), job.language(), job.attempts(), detail));
         });
   }
 

@@ -36,7 +36,7 @@ public class ControllerTesting {
     OneActCellar.ACT
         .timeline()
         .versions()
-        .forEach(version -> texts.put(version, new Text.Queued()));
+        .forEach(version -> texts.put(version, new Text.Waiting(0)));
     return new Preparation(
         OneActCellar.CELEX,
         language,

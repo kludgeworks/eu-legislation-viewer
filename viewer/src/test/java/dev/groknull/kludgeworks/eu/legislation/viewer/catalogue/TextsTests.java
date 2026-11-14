@@ -9,8 +9,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.Expr
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionBuilt;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.TextConverted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
@@ -194,12 +194,12 @@ class TextsTests {
     assertThat(expressions.defer(celex, language, 1)).isTrue();
     // The start of the first attempt arrives again, late.
     assertThat(expressions.start(celex, language, 1)).isFalse();
-    assertThat(text(celex, language)).isEqualTo(new Text.Queued());
+    assertThat(text(celex, language)).isEqualTo(new Text.Waiting(1));
     // The deferral of the second attempt arrives before its start.
     assertThat(expressions.defer(celex, language, 2)).isTrue();
     assertThat(expressions.start(celex, language, 2)).isFalse();
     assertThat(expressions.start(celex, language, 3)).isTrue();
-    assertThat(text(celex, language)).isEqualTo(new Text.Building(3));
+    assertThat(text(celex, language)).isEqualTo(new Text.Converting(3));
 
     var stored =
         content.store(
@@ -265,7 +265,7 @@ class TextsTests {
 
   private void built(Version version) {
     transaction.executeWithoutResult(
-        status -> events.publishEvent(new ExpressionBuilt(version.celex(), Language.ENG)));
+        status -> events.publishEvent(new TextConverted(version.celex(), Language.ENG)));
   }
 
   private long compared(TextId from, TextId to) {

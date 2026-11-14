@@ -253,8 +253,8 @@ public record TimelineView(
   /** Returns the state of a text, as its dot shows it. */
   private static String state(Text text) {
     return switch (text) {
-      case Text.Queued _ -> "queued";
-      case Text.Building _ -> "building";
+      case Text.Waiting _ -> "waiting";
+      case Text.Converting _ -> "converting";
       case Text.Ready _ -> "ready";
       case Text.Failed _ -> "failed";
     };
@@ -368,7 +368,7 @@ public record TimelineView(
             + (versions.indexOf(version) + 1);
     return switch (state) {
       case "failed" -> label + " · couldn't be prepared";
-      case "queued", "building" -> label + " · being prepared";
+      case "waiting", "converting" -> label + " · being prepared";
       case null, default -> label;
     };
   }
@@ -565,7 +565,7 @@ public record TimelineView(
    * @param selected whether the version gives the law on a day the reader chose
    * @param href where a click on the dot goes. Null while the act is being prepared.
    * @param label what its hover says: the version's first day, the acts that made it and its number
-   * @param state the state of the text of the version: {@code queued}, {@code building}, {@code
+   * @param state the state of the text of the version: {@code waiting}, {@code converting}, {@code
    *     ready} or {@code failed}. While the act is being prepared, every dot has a state. When the
    *     act is prepared, only the dots of texts that are not ready have one.
    * @param future whether the version starts after today. Its dot is dashed.

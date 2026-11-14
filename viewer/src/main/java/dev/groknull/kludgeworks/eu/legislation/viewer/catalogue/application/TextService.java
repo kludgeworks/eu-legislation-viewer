@@ -19,12 +19,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionRepublish
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.VersionWithdrawn;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionBuilt;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionDeferred;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionFailed;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ExpressionStarted;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionPostponed;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionRequested;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionRequested.Reason;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionStarted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Ingest;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.TextConverted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
 import java.time.Duration;
@@ -33,7 +35,6 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,20 +44,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Prepares an act in a language, and stores the state of the texts of its versions. It stores each
- * state as the events of ingest tell it, each event in its own transaction. A text can be queued,
- * being built, queued again after a failed attempt, built, or failed.
+ * Prepares an act in a language, and stores the state of the texts of its versions. It asks ingest
+ * for a text with {@link ConversionRequested}, and stores each state as the events of ingest tell
+ * it, each event in its own transaction. A text can be waiting, being converted, waiting again
+ * after a failed attempt, ready, or failed.
  *
  * <ul>
  *   <li>Each change to a text is a step of the preparation of its act. It publishes a {@link
  *       PreparationChanged} event.
  *   <li>The last text to settle settles the preparation, once. This publishes {@link
  *       PreparationCompleted}, or {@link PreparationFailed} if no text was built.
- *   <li>To prepare an act starts its preparation, queues its texts and schedules the texts that are
- *       not settled. What ingest says of each text corrects a text whose event is not stored yet,
- *       or was lost.
- *   <li>To try an act again queues its failed texts again, where that may help. It also starts the
- *       preparation again.
+ *   <li>To prepare an act starts its preparation, and queues and asks for the texts that are not
+ *       stored yet. A text is asked for once, in the transaction that queues it: the event registry
+ *       keeps the request until ingest has it.
+ *   <li>To try an act again queues its failed texts again, where that may help, and asks for them
+ *       again. It also starts the preparation again.
  *   <li>When a text is built, and the text of the version before or after it in the language is
  *       built too, it publishes a {@link NeighboursBuilt} event for each such pair. A reader will
  *       probably compare them, so another module can get ready before the reader asks.
@@ -98,23 +100,18 @@ class TextService implements Texts {
   @Override
   @Transactional
   public Preparation prepare(Act act, Language language) {
-    var celexes = celexes(act, language);
-    expressions.queue(celexes, language);
-    var changed = false;
-    for (var text : texts(celexes, language).entrySet()) {
-      if (!text.getValue().settled()) {
-        changed |= schedule(text.getKey(), language);
-      }
+    for (var celex : expressions.queue(celexes(act, language), language)) {
+      events.publishEvent(new ConversionRequested(celex, language, Reason.NEEDED));
     }
     // Start the preparation after the texts, because a change of a text locks the text first and
     // then the preparation.
     preparations.start(act.id(), language);
-    changed |=
+    var settled =
         preparations
             .lock(act.id(), language)
             .map(kept -> settle(act, language, kept))
             .orElse(false);
-    if (changed) {
+    if (settled) {
       events.publishEvent(new PreparationChanged(act.id(), language));
     }
     return preparation(act, language);
@@ -127,8 +124,8 @@ class TextService implements Texts {
     for (var text : texts(celexes(act, language), language).entrySet()) {
       if (text.getValue() instanceof Text.Failed failed
           && failed.failure().retryable()
-          && ingest.retry(text.getKey(), language)) {
-        expressions.requeue(text.getKey(), language);
+          && expressions.requeue(text.getKey(), language)) {
+        events.publishEvent(new ConversionRequested(text.getKey(), language, Reason.RETRIED));
         retried++;
       }
     }
@@ -150,12 +147,12 @@ class TextService implements Texts {
     var kept = texts(celexes, language);
     var texts = new LinkedHashMap<Version, Text>();
     for (var version : versions) {
-      texts.put(version, kept.getOrDefault(version.celex(), new Text.Queued()));
+      texts.put(version, kept.getOrDefault(version.celex(), new Text.Waiting(0)));
     }
     var preparation = preparations.find(act.id(), language);
     var waiting =
-        texts.values().stream().noneMatch(Text.Building.class::isInstance)
-            && texts.values().stream().anyMatch(Text.Queued.class::isInstance);
+        texts.values().stream().noneMatch(Text.Converting.class::isInstance)
+            && texts.values().stream().anyMatch(Text.Waiting.class::isInstance);
     return new Preparation(
         act.id(),
         language,
@@ -164,25 +161,6 @@ class TextService implements Texts {
         texts,
         preparations.steps(act.id(), language),
         waiting ? ingest.ahead(celexes, language) : 0);
-  }
-
-  /**
-   * Schedules the text, and corrects its state as ingest says it stands. Returns whether that
-   * changed the text.
-   */
-  private boolean schedule(String celex, Language language) {
-    var status = ingest.schedule(celex, language);
-    return switch (status.state()) {
-      case QUEUED -> expressions.defer(celex, language, status.attempts());
-      case RUNNING -> expressions.start(celex, language, status.attempts());
-      case BUILT -> {
-        LOG.debug("{} in {} is built, not yet kept", celex, language.code());
-        yield expressions.keep(celex, language);
-      }
-      // ingest keeps no trace id. A text that is failed already keeps the one it has.
-      case FAILED ->
-          expressions.fail(celex, language, Objects.requireNonNull(status.failure()), null);
-    };
   }
 
   /**
@@ -219,12 +197,12 @@ class TextService implements Texts {
   }
 
   @ApplicationModuleListener
-  void on(ExpressionStarted started) {
+  void on(ConversionStarted started) {
     var act = acts.findByVersion(started.celex());
     if (act.isPresent()
         && expressions.start(started.celex(), started.language(), started.attempt())) {
       LOG.debug(
-          "{} in {} is being built, attempt {}",
+          "{} in {} is being converted, attempt {}",
           started.celex(),
           started.language().code(),
           started.attempt());
@@ -239,12 +217,12 @@ class TextService implements Texts {
   }
 
   @ApplicationModuleListener
-  void on(ExpressionDeferred deferred) {
+  void on(ConversionPostponed deferred) {
     var act = acts.findByVersion(deferred.celex());
     if (act.isPresent()
         && expressions.defer(deferred.celex(), deferred.language(), deferred.attempt())) {
       LOG.debug(
-          "{} in {} is queued again after attempt {}",
+          "{} in {} waits again after attempt {}",
           deferred.celex(),
           deferred.language().code(),
           deferred.attempt());
@@ -259,12 +237,12 @@ class TextService implements Texts {
   }
 
   @ApplicationModuleListener
-  void on(ExpressionFailed failed) {
+  void on(ConversionFailed failed) {
     var act = acts.findByVersion(failed.celex());
     if (act.isPresent()
         && expressions.fail(failed.celex(), failed.language(), failed.failure(), failed.trace())) {
       LOG.debug(
-          "{} in {} couldn't be built: {}",
+          "{} in {} couldn't be converted: {}",
           failed.celex(),
           failed.language().code(),
           failed.failure());
@@ -292,18 +270,19 @@ class TextService implements Texts {
 
   /**
    * Prepares the text of a version in a language, which Cellar added or, {@code again},
-   * republished. It is queued and scheduled, whether or not the act was ever prepared in the
-   * language. A text built already stays as it is, and is read, until the new text replaces it in
+   * republished. It is queued and asked for, whether or not the act was ever prepared in the
+   * language. A text ready already stays as it is, and is read, until the new text replaces it in
    * the content module. A text that failed is queued again. Each step is idempotent: an event
-   * handed out twice schedules the text once, or builds it again to the same text.
+   * handed out twice asks for the text once, or converts it again to the same text.
    */
   private void prepareText(ActIdentifier act, String celex, Language language, boolean again) {
-    expressions.queue(List.of(celex), language);
+    var queued = !expressions.queue(List.of(celex), language).isEmpty();
     var changed = again && expressions.requeue(celex, language);
     if (again) {
-      ingest.rebuild(celex, language);
+      events.publishEvent(new ConversionRequested(celex, language, Reason.REPUBLISHED));
+    } else if (queued) {
+      events.publishEvent(new ConversionRequested(celex, language, Reason.NEEDED));
     }
-    changed |= schedule(celex, language);
     LOG.info(
         "Preparing {} of {} in {}{}",
         celex,
@@ -316,17 +295,18 @@ class TextService implements Texts {
   }
 
   @ApplicationModuleListener
-  void on(ExpressionBuilt built) {
+  void on(TextConverted built) {
     var act = acts.findByVersion(built.celex());
     if (act.isEmpty()) {
       // A version that the catalogue does not have, or no longer has: it was withdrawn while its
       // text was built. The content module deletes the text again.
-      LOG.info("{} in {} is built, but the version was withdrawn", built.celex(), built.language());
+      LOG.info(
+          "{} in {} is converted, but the version was withdrawn", built.celex(), built.language());
       events.publishEvent(new VersionWithdrawn(built.celex()));
       return;
     }
     if (expressions.keep(built.celex(), built.language())) {
-      LOG.info("{} in {} is built", built.celex(), built.language().code());
+      LOG.info("{} in {} is ready", built.celex(), built.language().code());
       changed(act.get(), built.celex(), built.language(), Step.Kind.BUILT, null, null);
     }
     var timeline = act.get().timeline().in(built.language());

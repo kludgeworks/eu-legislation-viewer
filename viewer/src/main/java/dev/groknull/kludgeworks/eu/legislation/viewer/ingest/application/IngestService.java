@@ -1,9 +1,13 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.ingest.application;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionRequested;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionStarted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Ingest;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ExpressionRequested;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.TextConverted;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.ConversionQueued;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJobs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -11,21 +15,23 @@ import io.micrometer.tracing.Tracer;
 import io.micrometer.tracing.propagation.Propagator;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.modulith.events.ApplicationModuleListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Schedules expressions to be built.
+ * Queues the conversions that are asked for, and tells where they stand.
  *
- * <p>To schedule an expression, the service queues a job with the trace of the request that asked
- * for it. In the same transaction, it publishes {@link ExpressionRequested}. When the transaction
- * commits, a worker in {@link JobRunner} gets the request. A retried job is queued again in the
- * same way, from its first attempt.
+ * <p>A text has one job, which is its status. The work itself is an event. When {@link
+ * ConversionRequested} arrives, the service adds a job, or resets one to run again, and publishes
+ * {@link ConversionQueued} in the same transaction, with the trace of the request that asked. When
+ * the transaction commits, a worker in {@link JobRunner} gets it. For a job that it leaves as it
+ * is, the service publishes where the job stands, so that whoever asked comes to know.
  */
 @Service
 class IngestService implements Ingest {
@@ -44,39 +50,47 @@ class IngestService implements Ingest {
     this.propagator = propagator;
   }
 
-  @Override
-  @Transactional
-  public IngestStatus schedule(String celex, Language language) {
+  @ApplicationModuleListener
+  void on(ConversionRequested requested) {
+    var celex = requested.celex();
+    var language = requested.language();
     var traceparent = traceparent();
-    if (jobs.schedule(celex, language, traceparent)) {
-      events.publishEvent(new ExpressionRequested(celex, language, traceparent));
-      LOG.info("Queued {} in {}", celex, language.code());
+    var queued =
+        switch (requested.reason()) {
+          case NEEDED -> false;
+          case RETRIED -> jobs.resetRetryable(celex, language, traceparent);
+          case REPUBLISHED -> jobs.resetFinished(celex, language, traceparent);
+        };
+    if (queued || jobs.add(celex, language, traceparent)) {
+      events.publishEvent(new ConversionQueued(celex, language, traceparent));
+      LOG.info("Queued {} in {}: {}", celex, language.code(), requested.reason());
+    } else {
+      jobs.find(celex, language).ifPresent(this::tell);
     }
-    return jobs.find(celex, language).orElseThrow().status();
   }
 
-  @Override
-  @Transactional
-  public boolean retry(String celex, Language language) {
-    var traceparent = traceparent();
-    if (!jobs.retry(celex, language, traceparent)) {
-      return false;
+  /** Publishes where the job stands, if it started: the event that told it first, once more. */
+  private void tell(IngestJob job) {
+    var celex = job.celex();
+    var language = job.language();
+    // A queued job has nothing to tell: it waits its turn, as whoever asked takes it to.
+    @Nullable Object told =
+        switch (job.state()) {
+          case QUEUED -> null;
+          case RUNNING -> new ConversionStarted(celex, language, job.attempts());
+          case BUILT -> new TextConverted(celex, language);
+          case FAILED ->
+              new ConversionFailed(
+                  celex,
+                  language,
+                  Objects.requireNonNull(job.failure()),
+                  Objects.requireNonNullElse(job.detail(), ""),
+                  null);
+        };
+    if (told != null) {
+      LOG.debug("{} in {} is {} already: telling so again", celex, language.code(), job.state());
+      events.publishEvent(told);
     }
-    events.publishEvent(new ExpressionRequested(celex, language, traceparent));
-    LOG.info("Queued {} in {} again", celex, language.code());
-    return true;
-  }
-
-  @Override
-  @Transactional
-  public IngestStatus rebuild(String celex, Language language) {
-    var traceparent = traceparent();
-    if (jobs.rebuild(celex, language, traceparent)) {
-      events.publishEvent(new ExpressionRequested(celex, language, traceparent));
-      LOG.info("Queued {} in {} again: its source changed", celex, language.code());
-      return jobs.find(celex, language).orElseThrow().status();
-    }
-    return schedule(celex, language);
   }
 
   @Override

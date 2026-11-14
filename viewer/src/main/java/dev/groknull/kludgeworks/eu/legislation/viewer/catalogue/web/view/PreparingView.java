@@ -6,7 +6,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import java.time.Duration;
 import java.time.Instant;
@@ -152,9 +151,10 @@ public record PreparingView(
    * @param waiting why nothing has started yet, with how many versions are ahead. Null when
    *     something has started. Beside it, the page shows one of {@link #ASIDES} at a time, for the
    *     eye only.
-   * @param running the versions that are being built now. For example, "Version 16 of 22 · from 1
-   *     April 2023".
-   * @param settled how many versions are built or failed
+   * @param running the versions that are worked on now, each with what is done to it. A version is
+   *     being converted, or waits to be tried again after an attempt that failed. For example,
+   *     "Version 16 of 22 · from 1 April 2023 · converting".
+   * @param settled how many versions are ready or failed
    * @param size how many versions there are
    * @param counts how many versions are ready, and how many could not be made. For example, "16 of
    *     22 versions ready".
@@ -203,8 +203,21 @@ public record PreparingView(
       var running = new ArrayList<String>();
       for (var i = 0; i < versions.size(); i++) {
         var version = versions.get(i);
-        if (preparation.texts().get(version) instanceof Text.Building) {
-          running.add(running(version, i + 1, versions.size()));
+        var line =
+            "Version "
+                + (i + 1)
+                + " of "
+                + versions.size()
+                + " · from "
+                + Dates.inWords(version.date());
+        switch (preparation.texts().get(version)) {
+          case Text.Converting _ -> running.add(line + " · converting");
+          case Text.Waiting waiting when waiting.attempt() > 0 ->
+              running.add(
+                  line + " · attempt " + waiting.attempt() + " didn't work; trying again shortly");
+          case null, default -> {
+            // not worked on: waiting its turn, or settled
+          }
         }
       }
       var settled = preparation.ready() + preparation.failed();
@@ -240,10 +253,6 @@ public record PreparingView(
         case 1 -> "1 date, for the one amended provision";
         default -> amended + " dates, one for each amended provision";
       };
-    }
-
-    private static String running(Version version, int index, int size) {
-      return "Version " + index + " of " + size + " · from " + Dates.inWords(version.date());
     }
 
     /**

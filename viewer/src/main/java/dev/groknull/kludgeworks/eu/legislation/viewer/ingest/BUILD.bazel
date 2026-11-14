@@ -2,8 +2,8 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "jooq_tables")
 
-# The ingest module's API: scheduling an expression's legal text to be built (Ingest), its job's
-# status, and the events that say how it went
+# The ingest module's API: the request for a text (ConversionRequested), where its job stands
+# (Ingest, with its status), and the events that say how it went
 java_library(
     name = "ingest",
     srcs = glob(["*.java"]),
@@ -18,7 +18,7 @@ java_library(
 )
 
 # application/
-# The ingest module's application ring: scheduling expressions and running their jobs, in the
+# The ingest module's application ring: queueing conversions and running their jobs, in the
 # background, on the conversions the infrastructure provides
 java_library(
     name = "application",
@@ -37,6 +37,7 @@ java_library(
         "@maven//:org_slf4j_slf4j_api",
         "@maven//:org_springframework_boot_spring_boot",
         "@maven//:org_springframework_boot_spring_boot_autoconfigure",
+        "@maven//:org_springframework_modulith_spring_modulith_events_api",
         "@maven//:org_springframework_spring_context",
         "@maven//:org_springframework_spring_tx",
     ],

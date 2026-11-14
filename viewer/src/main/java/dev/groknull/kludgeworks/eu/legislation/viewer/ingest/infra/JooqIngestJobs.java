@@ -8,7 +8,6 @@ import static org.jooq.impl.DSL.not;
 import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
-import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.Stage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.IngestStatus.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.jooq.tables.records.IngestJobRecord;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.model.IngestJob;
@@ -18,6 +17,7 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Optional;
+import org.jooq.Condition;
 import org.jooq.DSLContext;
 import org.jooq.types.DayToSecond;
 import org.jspecify.annotations.Nullable;
@@ -34,7 +34,7 @@ class JooqIngestJobs implements IngestJobs {
   }
 
   @Override
-  public boolean schedule(String celex, Language language, @Nullable String traceparent) {
+  public boolean add(String celex, Language language, @Nullable String traceparent) {
     return db.insertInto(INGEST_JOB)
             .set(INGEST_JOB.CELEX, celex)
             .set(INGEST_JOB.LANGUAGE_CODE, language)
@@ -58,27 +58,23 @@ class JooqIngestJobs implements IngestJobs {
   }
 
   @Override
-  public boolean retry(String celex, Language language, @Nullable String traceparent) {
+  public boolean resetRetryable(String celex, Language language, @Nullable String traceparent) {
     var retryable = Arrays.stream(Failure.values()).filter(Failure::retryable).toList();
-    return db.update(INGEST_JOB)
-            .set(INGEST_JOB.STATE, State.QUEUED)
-            .set(INGEST_JOB.ATTEMPTS, 0)
-            .set(INGEST_JOB.TRACEPARENT, traceparent)
-            .set(INGEST_JOB.FAILURE, val(null, INGEST_JOB.FAILURE))
-            .set(INGEST_JOB.DETAIL, val(null, INGEST_JOB.DETAIL))
-            .set(INGEST_JOB.FINISHED_AT, val(null, INGEST_JOB.FINISHED_AT))
-            .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
-            .where(
-                INGEST_JOB.CELEX.eq(celex),
-                INGEST_JOB.LANGUAGE_CODE.eq(language),
-                INGEST_JOB.STATE.eq(State.FAILED),
-                INGEST_JOB.FAILURE.in(retryable))
-            .execute()
-        == 1;
+    return reset(
+        celex,
+        language,
+        traceparent,
+        INGEST_JOB.STATE.eq(State.FAILED).and(INGEST_JOB.FAILURE.in(retryable)));
   }
 
   @Override
-  public boolean rebuild(String celex, Language language, @Nullable String traceparent) {
+  public boolean resetFinished(String celex, Language language, @Nullable String traceparent) {
+    return reset(celex, language, traceparent, INGEST_JOB.STATE.in(State.BUILT, State.FAILED));
+  }
+
+  /** Resets the job of the expression, to a job just added, if it is as {@code when}. */
+  private boolean reset(
+      String celex, Language language, @Nullable String traceparent, Condition when) {
     return db.update(INGEST_JOB)
             .set(INGEST_JOB.STATE, State.QUEUED)
             .set(INGEST_JOB.ATTEMPTS, 0)
@@ -87,10 +83,7 @@ class JooqIngestJobs implements IngestJobs {
             .set(INGEST_JOB.DETAIL, val(null, INGEST_JOB.DETAIL))
             .set(INGEST_JOB.FINISHED_AT, val(null, INGEST_JOB.FINISHED_AT))
             .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
-            .where(
-                INGEST_JOB.CELEX.eq(celex),
-                INGEST_JOB.LANGUAGE_CODE.eq(language),
-                INGEST_JOB.STATE.in(State.BUILT, State.FAILED))
+            .where(INGEST_JOB.CELEX.eq(celex), INGEST_JOB.LANGUAGE_CODE.eq(language), when)
             .execute()
         == 1;
   }
@@ -115,7 +108,6 @@ class JooqIngestJobs implements IngestJobs {
   public Optional<IngestJob> start(String celex, Language language, Duration takeover) {
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, State.RUNNING)
-        .set(INGEST_JOB.PHASE, Stage.CONVERTING)
         .set(INGEST_JOB.STARTED_AT, currentInstant())
         .set(INGEST_JOB.ATTEMPTS, INGEST_JOB.ATTEMPTS.plus(1))
         .set(INGEST_JOB.REVISION, INGEST_JOB.REVISION.plus(1))
@@ -142,7 +134,6 @@ class JooqIngestJobs implements IngestJobs {
     var finished = job.state() == State.BUILT || job.state() == State.FAILED;
     return db.update(INGEST_JOB)
         .set(INGEST_JOB.STATE, job.state())
-        .set(INGEST_JOB.PHASE, job.stage())
         .set(INGEST_JOB.FAILURE, job.failure())
         .set(INGEST_JOB.DETAIL, job.detail())
         .set(
@@ -167,7 +158,6 @@ class JooqIngestJobs implements IngestJobs {
         row.getCelex(),
         row.getLanguageCode(),
         row.getState(),
-        row.getPhase(),
         row.getAttempts(),
         row.getTraceparent(),
         row.getFailure(),

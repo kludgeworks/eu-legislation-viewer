@@ -6,14 +6,14 @@ import org.jmolecules.event.annotation.DomainEvent;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A request to build an expression. Its job is queued.
+ * A conversion waits its turn: its job is queued.
  *
  * <p>This event is the entry in the queue. The event registry of Modulith keeps it with the job.
  * The registry gives it to a worker in {@code JobRunner} when the job is committed. If a worker
  * stops, the registry gives the event out again.
  *
- * @param traceparent the trace of the request that asked for the build, in W3C Trace Context form.
+ * @param traceparent the trace of the request that asked for the text, in W3C Trace Context form.
  *     The work continues this trace.
  */
 @DomainEvent
-public record ExpressionRequested(String celex, Language language, @Nullable String traceparent) {}
+public record ConversionQueued(String celex, Language language, @Nullable String traceparent) {}

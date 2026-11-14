@@ -12,7 +12,7 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
  *
  * <p>There are {@code viewer.ingest.workers} virtual threads. The requests that do not get a worker
  * wait in the in-memory queue of the executor. The event registry also keeps each {@code
- * ExpressionRequested}. Thus, if this instance does not get to a request, the registry gives it out
+ * ConversionQueued}. Thus, if this instance does not get to a request, the registry gives it out
  * again.
  */
 @Configuration(proxyBeanMethods = false)

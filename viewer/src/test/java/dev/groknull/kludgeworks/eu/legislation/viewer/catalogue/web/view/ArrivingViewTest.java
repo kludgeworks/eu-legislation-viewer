@@ -30,7 +30,7 @@ class ArrivingViewTest {
   void saysWhichVersionAppearedAndThatItIsThereOnTheNextLoad() {
     var latest = AVSEC.timeline().latest();
 
-    var arriving = ArrivingView.of(prepared(new Text.Queued())).orElseThrow();
+    var arriving = ArrivingView.of(prepared(new Text.Waiting(0))).orElseThrow();
 
     var notice =
         "A new version has appeared: "
