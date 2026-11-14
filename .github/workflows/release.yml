@@ -15,7 +15,7 @@ env:
   IMAGE: ghcr.io/kludgeworks/eu-legislation-viewer
   # The mise every job runs, the one mise.toml's min_version asks of everyone: mise-action
   # otherwise takes the newest, whose lockfile may differ from the one committed
-  MISE_VERSION: 2026.11.3
+  MISE_VERSION: 2026.11.6
 
 jobs:
   # The checks, the tests and the CalVer-stamped JAR, which the image is built from.

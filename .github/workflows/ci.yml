@@ -16,7 +16,7 @@ concurrency:
 env:
   # The mise CI runs, the one mise.toml's min_version asks of everyone: mise-action otherwise takes
   # the newest, whose lockfile may differ from the one committed
-  MISE_VERSION: 2026.11.3
+  MISE_VERSION: 2026.11.6
 
 jobs:
   # The checks, and every test that needs no Docker: the unit tests and the linters' tests
