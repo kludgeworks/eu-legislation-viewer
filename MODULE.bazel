@@ -225,14 +225,16 @@ http_archive(
 # CDM, the ontology behind Cellar's RDF (Publications Office, CC BY 4.0): what every cdm:, cmr: and
 # annotation: term our SPARQL queries use means, and the list sparql_terms_test checks them against.
 # 4.17.0 is the latest published release; Cellar's endpoint already runs 5.0.0, which isn't
-# published yet (it adds terms and removes none): move up when it is. One zip, from the EU
-# Vocabularies download over HTTPS.
+# published yet (it adds terms and removes none): move up when it is. One zip, from Cellar,
+# which holds it. The EU Vocabularies download hands out the same zip, but now and then answers
+# 404 to CI, so it is only the fallback.
 http_archive(
     name = "cdm",
     build_file = "//tools/build:cdm.BUILD",
     sha256 = "95b001c2cba352a1a1c9c3be3423e187f97ae9773133413040c138f2c285cb8b",
     type = "zip",
     urls = [
+        "https://publications.europa.eu/resource/distribution/cdm/20260625-0/zip/zip/cdm-4.17.0.zip",
         "https://op.europa.eu/o/opportal-service/euvoc-download-handler?cellarURI=http%3A%2F%2Fpublications.europa.eu%2Fresource%2Fdistribution%2Fcdm%2F20260625-0%2Fzip%2Fzip%2Fcdm-4.17.0.zip&fileName=cdm-4.17.0.zip",
     ],
 )
