@@ -25,6 +25,12 @@ reason = "Semgrep CLI dependency: MCP server auth not reachable in CLI static an
 id = "GHSA-xcq7-p3pf-p88h"
 reason = "Semgrep CLI dependency: OpenTelemetry Python tracestate DoS not reachable in CLI static analysis"
 
+# Fixed in opentelemetry-api 1.45.2. Semgrep, up to 1.185.0, asks for ~=1.37.0: remove this when a
+# Semgrep release moves up.
+[[IgnoredVulns]]
+id = "GHSA-mf5v-w3w3-f6cg"
+reason = "Semgrep CLI dependency: OpenTelemetry Python traceparent ReDoS needs a traceparent from an untrusted carrier, which CLI static analysis never reads"
+
 # --- Guava (transitive build/compiler dependency) ---
 [[IgnoredVulns]]
 id = "GHSA-xxph-c9ww-hj94"
