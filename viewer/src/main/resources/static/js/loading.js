@@ -16,6 +16,11 @@
  * A page opened at a fragment, such as a Read mark's link to a unit in Compare, often loads that
  * unit after the browser looked for it. When a swap brings the fragment's element, the page scrolls
  * to it, once.
+ *
+ * A jump to a fragment lands on its element exactly. The browser lays out the tables of a text and
+ * the differences of a comparison only near the screen (content-visibility), and guesses the height
+ * of the others. Thus its own jump can stop short of the element or pass it. The page scrolls to
+ * the element again until it stays where it is.
  */
 
 /**
@@ -104,6 +109,32 @@ document.addEventListener("htmx:finally:request", () => {
   }
 });
 
+/** How many frames a jump waits, at most, for its element to stay where it is. */
+const FRAMES = 10;
+
+/**
+ * Scrolls to `target`, and again in each frame after it, until `target` stays where it is: what
+ * the browser lays out when `target` comes near the screen can move it.
+ *
+ * @param {Element} target
+ */
+export const land = (target) => {
+  /** @type {number | null} */
+  let last = null;
+  let frames = 0;
+  const again = () => {
+    const top = target.getBoundingClientRect().top;
+    if (top === last || frames++ === FRAMES) {
+      return;
+    }
+    last = top;
+    target.scrollIntoView({ block: "start" });
+    requestAnimationFrame(again);
+  };
+  target.scrollIntoView({ block: "start" });
+  requestAnimationFrame(again);
+};
+
 /** Whether the page still has to scroll to the element of its fragment. */
 let arriving = location.hash.length > 1;
 
@@ -114,7 +145,9 @@ let arriving = location.hash.length > 1;
  */
 export const arrive = () => {
   const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-  target?.scrollIntoView({ block: "start" });
+  if (target) {
+    land(target);
+  }
   return target !== null;
 };
 
@@ -123,3 +156,6 @@ document.addEventListener("htmx:after:swap", () => {
     arriving = false;
   }
 });
+
+// a link within the page, for example an entry of the outline
+window.addEventListener("hashchange", arrive);

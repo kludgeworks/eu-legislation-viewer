@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { arrive, coming, pageOf, start, stop } from "../../main/resources/static/js/loading.js";
+import { arrive, coming, land, pageOf, start, stop } from "../../main/resources/static/js/loading.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
+  vi.unstubAllGlobals();
 });
 
 const PAGE = `
@@ -78,5 +79,55 @@ describe("a page opened at a fragment", () => {
     expect(arrive()).toBe(true);
     expect(scrolled).toHaveBeenCalledOnce();
     location.hash = "";
+  });
+});
+
+/**
+ * Stubs the frames of the browser. Returns a function that runs the frames asked for so far, and
+ * returns how many there were.
+ */
+const frames = () => {
+  /** @type {FrameRequestCallback[]} */
+  let asked = [];
+  vi.stubGlobal("requestAnimationFrame", (/** @type {FrameRequestCallback} */ frame) => asked.push(frame));
+  return () => {
+    const due = asked;
+    asked = [];
+    due.forEach((frame) => frame(0));
+    return due.length;
+  };
+};
+
+/** @param {number[]} tops where the element is in each frame; it stays at the last */
+const moving = (tops) => {
+  const target = document.createElement("section");
+  const scrolled = vi.fn();
+  target.scrollIntoView = scrolled;
+  target.getBoundingClientRect = () => /** @type {DOMRect} */ ({ top: tops.length > 1 ? tops.shift() : tops[0] });
+  return { target, scrolled };
+};
+
+describe("a jump to an element", () => {
+  test("scrolls again until the element stays where it is", () => {
+    const run = frames();
+    const { target, scrolled } = moving([2796, 300, 48]);
+
+    land(target);
+    while (run() > 0);
+
+    // the jump, then once for each place the element was at, the last of which it stays at
+    expect(scrolled).toHaveBeenCalledTimes(4);
+  });
+
+  test("gives up on an element that never stays", () => {
+    const run = frames();
+    let top = 0;
+    const { target, scrolled } = moving([0]);
+    target.getBoundingClientRect = () => /** @type {DOMRect} */ ({ top: top++ });
+
+    land(target);
+    while (run() > 0);
+
+    expect(scrolled).toHaveBeenCalledTimes(11);
   });
 });

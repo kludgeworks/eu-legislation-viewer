@@ -325,6 +325,16 @@ p.norm {
   overflow-x: auto;
 }
 
+/* The largest texts are mostly tables: thousands of them, with tens of thousands of rows. Where a
+ * text is read, the browser lays out and paints only the tables near the screen, and keeps the
+ * height it last laid out for the others (content-visibility). It still finds their words, for Find
+ * in page, and prints them. The frame scrolls, so it already clips its table and keeps its margins:
+ * nothing in the text moves. A jump to a unit lands on it all the same (js/loading.js). */
+.content .table-frame {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 200px;
+}
+
 .table {
   border-collapse: collapse;
 }
