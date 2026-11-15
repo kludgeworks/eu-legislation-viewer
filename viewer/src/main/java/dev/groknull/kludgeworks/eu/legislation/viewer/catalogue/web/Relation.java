@@ -9,8 +9,9 @@ import org.springframework.hateoas.mediatype.hal.HalLinkRelation;
  * otherwise, under the {@code av} CURIE. For example, {@code av:act}.
  *
  * <p>The name of a relation is in kebab-case, and it is a word of the domain. The address of the
- * CURIE gives the documentation of a relation: {@code /api/docs#act}. Its text is the resource
- * {@code api/rels/act.html}, as {@link ApiDocsController} reads it.
+ * CURIE gives the documentation of a relation: {@code /api/docs#act}. Its text is a section of a
+ * resource of the API, for example {@code api/resources/02-act.html}, as {@link ApiDocsController}
+ * reads it.
  */
 enum Relation {
   ACT("act"),

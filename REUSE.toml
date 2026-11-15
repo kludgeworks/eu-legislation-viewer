@@ -33,7 +33,7 @@ path = [
   "viewer/src/main/resources/static/favicon.ico",
   "viewer/src/main/resources/static/apple-touch-icon.png",
   "viewer/src/main/resources/api/**",
-  "viewer/src/main/resources/static/api/schema/*.json",
+  "viewer/src/main/resources/static/api/schemas/**/*.schema.json",
   "viewer/src/test/resources/restdocs/**/*.snippet",
 ]
 precedence = "aggregate"

@@ -70,6 +70,6 @@
       <div><h3>What it adds</h3><p>Pick any two days and see what differs between the law on each, provision by provision, with the amending act, its Official Journal reference and the date each change applies from.</p></div>
       <div><h3>What it isn’t</h3><p>Not the authentic text. Check the Official Journal, or EUR-Lex, before relying on a provision.</p></div>
     </section>
-    <footer class="home-foot"><a href="/about">About</a> · <a href="/about#privacy">Privacy</a> · <a href="/about#api">API</a></footer>
+    <footer class="home-foot"><a href="/about">About</a> · <a href="/about#privacy">Privacy</a> · <a href="/api/docs">API</a></footer>
   </div>
 `)

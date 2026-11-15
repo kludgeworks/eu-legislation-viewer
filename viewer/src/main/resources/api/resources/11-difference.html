@@ -1,0 +1,45 @@
+<h3>Difference</h3>
+<p>A unit of the text that changed between the two versions of a comparison. Its JSON Schema is
+  <a class="mono" href="/api/schemas/v1/difference.schema.json">difference.schema.json</a>. If the comparison has no
+  difference at the unit, the status is <span class="mono">404 Not Found</span>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>eId</dt>
+  <dd>The eId of the unit. For example, <span class="mono">art_3</span> or <span class="mono">anx/pnt_1.2</span>.</dd>
+  <dt>kind</dt>
+  <dd><span class="mono">inserted</span>: only the later version has the unit. <span class="mono">deleted</span>: only
+    the earlier version has the unit. <span class="mono">changed</span>: the wording of the unit changed.</dd>
+  <dt>unitKind</dt>
+  <dd>What the unit is. For example, <span class="mono">article</span>.</dd>
+  <dt>num</dt>
+  <dd>The number of the unit as printed. For example, <span class="mono">(a)</span>. Empty if it has none.</dd>
+  <dt>inserted, deleted</dt>
+  <dd>How many words the change inserted and deleted.</dd>
+  <dt>parent</dt>
+  <dd>The eId of the unit that holds the unit. Null for an outermost unit.</dd>
+  <dt>section</dt>
+  <dd>The eId of the unit with a title that holds the unit, as the <a href="#outline">outline</a> has them.</dd>
+  <dt>markers, earlierMarkers</dt>
+  <dd>The amendment markers of the later text and of the earlier text: which acts gave the unit its form, and how.</dd>
+  <dt>amendments</dt>
+  <dd>The changes that the Publications Office records at the unit between the two versions, as in
+    <a href="#amendments">Amendments</a>.</dd>
+  <dt>before, after</dt>
+  <dd>The plain text of the unit before and after the change.</dd>
+  <dt>changes</dt>
+  <dd>The runs of words, in order. <span class="mono">op</span> is <span class="mono">equal</span> for words in both
+    versions, <span class="mono">insert</span> for words only in the later version, and
+    <span class="mono">delete</span> for words only in the earlier version. <span class="mono">text</span> is the
+    words. A line feed ends each paragraph, and each number and heading of a unit in the unit, except the last.</dd>
+  <dt>shown</dt>
+  <dd>The unit, as a block of the <a href="#text">text</a>. In its HTML, <span class="mono">ins</span> and
+    <span class="mono">del</span> are around the words that changed. Its plain text is the text after the change.</dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>up</dt>
+  <dd>The comparison.</dd>
+  <dt>describedby</dt>
+  <dd>The JSON Schema of the answer.</dd>
+</dl>
+${comparisons/difference}

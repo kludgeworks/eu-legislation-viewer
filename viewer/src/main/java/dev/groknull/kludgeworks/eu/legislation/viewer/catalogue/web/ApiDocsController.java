@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiStepView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiResourceView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiTermView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
@@ -27,12 +27,14 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * The documentation of the API for people, on one page, {@code /api/docs}: a walk from the root to
- * a comparison, how the API answers, and what each link relation and problem type means.
+ * The documentation of the API for people, on one page, {@code /api/docs}: how the API answers,
+ * each resource with its members and links, and each problem type.
  *
  * <ul>
  *   <li>The {@code av} CURIE of a HAL document leads to a relation on the page: {@code
- *       /api/docs#act}. The {@code service-doc} link of the root leads to the page.
+ *       /api/docs#act}. A relation that leads to a resource has the anchor of the resource. The
+ *       others, a search or an action, have theirs in the links of the resource that has them. The
+ *       {@code service-doc} link of the root leads to the page.
  *   <li>The {@code type} of a problem leads to a problem type on the page: {@code
  *       /api/docs#text-failed}.
  * </ul>
@@ -40,17 +42,16 @@ import org.springframework.web.bind.annotation.GetMapping;
  * <p>Each module documents its own part of the API, in resources, and the page puts them together:
  *
  * <ul>
- *   <li>{@code api/guide/<order>-<name>.html}: a step of the walk, an HTML fragment that starts
- *       with its title, {@code <h3>Find an act</h3>}. The steps are in the order of their names.
- *       For example, the catalogue's {@code api/guide/1-act.html} and the comparison's {@code
- *       api/guide/4-comparisons.html}. A step shows an example by its name: {@code ${act/lookup}}.
+ *   <li>{@code api/resources/<order>-<name>.html}: a resource, an HTML fragment that starts with
+ *       its title, {@code <h3>Act</h3>}. The resources are in the order of their names. For
+ *       example, the catalogue's {@code api/resources/02-act.html} and the comparison's {@code
+ *       api/resources/10-comparison.html}. A resource shows an example by its name: {@code
+ *       ${act/lookup}}.
  *   <li>{@code api/snippets/<name>/example.html}: an example, an exchange, as the module's
  *       documenting tests write it with Spring REST Docs. For example, {@code
  *       api/snippets/act/lookup/example.html}.
- *   <li>{@code api/rels/<name>.html}: a link relation, an HTML fragment. For example, {@code
- *       api/rels/act.html}.
  *   <li>{@code api/problems/<name>.html}: a problem type, an HTML fragment. It shows its example as
- *       a step does: {@code ${act/text-failed}}.
+ *       a resource does: {@code ${act/text-failed}}.
  * </ul>
  *
  * Thus a module documents its part without the catalogue knowing it. The resources are small, so
@@ -63,29 +64,26 @@ class ApiDocsController {
 
   private static final String SNIPPETS = "api/snippets/";
 
-  /** The title that a step starts with. */
+  /** The title that a resource starts with. */
   private static final Pattern TITLE = Pattern.compile("\\A<h3>(.+)</h3>\\R");
 
-  /** The examples in a step, {@code ${act/lookup}}: an unknown one is an error. */
+  /** The examples in a resource, {@code ${act/lookup}}: an unknown one is an error. */
   private static final PropertyPlaceholderHelper EXAMPLES =
       new PropertyPlaceholderHelper("${", "}", null, null, false);
 
   private final Templates templates;
-  private final Resource[] guide;
+  private final Resource[] resources;
   private final Resource[] examples;
-  private final Resource[] relations;
   private final Resource[] problems;
 
   ApiDocsController(
       Templates templates,
-      @Value("classpath*:api/guide/*.html") Resource[] guide,
+      @Value("classpath*:api/resources/*.html") Resource[] resources,
       @Value("classpath*:api/snippets/*/*/example.html") Resource[] examples,
-      @Value("classpath*:api/rels/*.html") Resource[] relations,
       @Value("classpath*:api/problems/*.html") Resource[] problems) {
     this.templates = templates;
-    this.guide = guide.clone();
+    this.resources = resources.clone();
     this.examples = examples.clone();
-    this.relations = relations.clone();
     this.problems = problems.clone();
   }
 
@@ -99,27 +97,28 @@ class ApiDocsController {
             templates
                 .catalogueApi(
                     Frame.of(request),
-                    terms(guide, shown).stream().map(ApiDocsController::step).toList(),
+                    terms(resources, shown).stream().map(ApiDocsController::resource).toList(),
                     shown,
-                    terms(relations, shown),
                     terms(problems, shown))
                 .render());
   }
 
   /**
-   * Returns a step, {@code 1-act}, with its examples: its anchor is {@code start-act}, and its
-   * title is the one it starts with.
+   * Returns a resource, {@code 02-act}, with its examples: its anchor is {@code act}, and its title
+   * is the one it starts with.
    */
-  private static ApiStepView step(ApiTermView step) {
-    var title = TITLE.matcher(step.description());
+  private static ApiResourceView resource(ApiTermView resource) {
+    var title = TITLE.matcher(resource.description());
     if (!title.find()) {
       throw new IllegalStateException(
-          "The step api/guide/" + step.name() + ".html does not start with <h3>its title</h3>");
+          "The resource api/resources/"
+              + resource.name()
+              + ".html does not start with <h3>its title</h3>");
     }
-    return new ApiStepView(
-        "start-" + step.name().substring(step.name().indexOf('-') + 1),
+    return new ApiResourceView(
+        resource.name().substring(resource.name().indexOf('-') + 1),
         title.group(1),
-        step.description().substring(title.end()));
+        resource.description().substring(title.end()));
   }
 
   /** Returns each example by its name, for example {@code act/lookup}. */

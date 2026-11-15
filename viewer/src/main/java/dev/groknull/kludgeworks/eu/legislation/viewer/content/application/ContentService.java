@@ -156,6 +156,11 @@ class ContentService implements Content {
     return PublicTexts.unit(unit);
   }
 
+  @Override
+  public PublicText.Marked publicWording(Element unit) {
+    return PublicTexts.marked(unit);
+  }
+
   /** The outline is cached in the process, by the identity of the text ({@link ContentCaches}). */
   @Override
   @Cacheable(cacheNames = ContentCaches.OUTLINES, unless = "#result == null")

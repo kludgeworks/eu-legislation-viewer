@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://eu-law.groknull.dev/api/schemas/v1/difference.schema.json",
+  "title": "A difference",
+  "description": "A difference that a comparison of two versions found in one unit, in version 1 of the API. A later minor change can add members, so a client ignores the members it does not know.",
+  "type": "object",
+  "properties": {
+    "_links": { "$ref": "text.schema.json#/$defs/links" },
+    "eId": { "type": "string", "description": "The eId of its unit." },
+    "kind": { "enum": ["inserted", "deleted", "changed"] },
+    "unitKind": { "type": "string", "description": "The kind of its unit. For example, article." },
+    "num": { "type": "string", "description": "The label of its unit as printed. For example, (a). Empty if it has none." },
+    "inserted": { "type": "integer", "minimum": 0, "description": "How many words it inserted." },
+    "deleted": { "type": "integer", "minimum": 0, "description": "How many words it deleted." },
+    "parent": { "type": ["string", "null"], "description": "The eId of the unit that it is in. Null for an outermost unit." },
+    "section": { "type": ["string", "null"], "description": "The eId of the unit with a title that it is in, as the outline nests them." },
+    "markers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the later text: which acts gave the unit its form, and how." },
+    "earlierMarkers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the earlier text." },
+    "amendments": {
+      "description": "The amendments that Cellar records at the unit between the two versions.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/amendment" }
+    },
+    "before": { "type": "string", "description": "The plain text of the unit before the change." },
+    "after": { "type": "string", "description": "The plain text of the unit after the change." },
+    "changes": {
+      "description": "The runs of words, in order. The text before is the runs that are not insert. The text after is the runs that are not delete. A line feed ends each paragraph, and each number and heading of a unit in the unit, except the last.",
+      "type": "array",
+      "items": { "$ref": "#/$defs/change" }
+    },
+    "shown": {
+      "$ref": "text.schema.json#/$defs/unit",
+      "description": "The unit, marked. In its HTML, inserted words are in ins and deleted words are in del. Its plain text is the text after the change."
+    }
+  },
+  "required": ["_links", "eId", "kind", "unitKind", "num", "inserted", "deleted", "markers", "earlierMarkers", "amendments", "before", "after", "changes", "shown"],
+  "$defs": {
+    "markers": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/marker" }
+    },
+    "marker": {
+      "description": "An amendment marker. For example, ▼M20.",
+      "type": "object",
+      "properties": {
+        "act": { "type": "string", "description": "The CELEX number of the amending act." },
+        "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] },
+        "in": { "type": ["string", "null"], "description": "The eId of the unit that the act gave its form as a whole. Null for a marker of the unit itself." }
+      },
+      "required": ["act", "action", "in"]
+    },
+    "amendment": {
+      "description": "An amendment that Cellar records at a unit.",
+      "type": "object",
+      "properties": {
+        "act": { "type": "string", "description": "The CELEX number of the amending act." },
+        "cited": { "type": "string", "description": "How the Official Journal cites the amending act. For example, 2019/103." },
+        "location": { "type": "string", "description": "Where it acts, as Cellar codes it." },
+        "role": { "type": "string", "description": "What it did. For example, replacement." },
+        "from": { "type": ["string", "null"], "format": "date", "description": "The day from which it applies, as Cellar records it. Null if Cellar has none." }
+      },
+      "required": ["act", "cited", "location", "role", "from"]
+    },
+    "change": {
+      "description": "A run of words, and what the comparison found of it.",
+      "type": "object",
+      "properties": {
+        "op": { "enum": ["equal", "insert", "delete"], "description": "equal: the run is in both versions. insert: only in the later version. delete: only in the earlier version." },
+        "text": { "type": "string", "description": "The words." }
+      },
+      "required": ["op", "text"]
+    }
+  }
+}

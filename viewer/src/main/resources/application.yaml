@@ -52,6 +52,15 @@ spring:
     # errors as RFC 9457 problem details (application/problem+json)
     problemdetails:
       enabled: true
+    # the version of the API: a major number, in the media type that a client accepts
+    # (Accept: application/hal+json;version=1). A request without one gets the default. A breaking
+    # change makes a new version, and a controller method serves it with @GetMapping(version = "2")
+    apiversion:
+      use:
+        media-type-parameter:
+          "[application/hal+json]": version
+      supported: 1
+      default: 1
   # the store: Postgres at spring.datasource.* (locally a container: TestcontainersConfiguration)
   jooq:
     sql-dialect: postgres

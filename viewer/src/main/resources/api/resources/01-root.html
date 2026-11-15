@@ -1,0 +1,19 @@
+<h3>Root</h3>
+<p>The start of the API, <span class="mono">/api</span>. It has only links.</p>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>av:act</dt>
+  <dd>An <a href="#act">act</a>, by its CELEX number. A template with one variable, <span class="mono">celex</span>. For example,
+    <span class="mono">32015R1998</span> or <span class="mono">12016E/TXT</span>.</dd>
+  <dt id="act-by-celex">av:act-by-celex</dt>
+  <dd>Finds an act by a CELEX number, in the query parameter <span class="mono">celex</span>. The answer redirects to the
+    act. The CELEX number of a consolidated version redirects to that version. For example,
+    <span class="mono">02015R1998-20260322</span>.</dd>
+  <dt id="act-by-eli">av:act-by-eli</dt>
+  <dd>Finds an act by its ELI, in the query parameter <span class="mono">eli</span>. For example,
+    <span class="mono">reg_impl/2015/1998</span>. The answer redirects to the act.</dd>
+  <dt>service-doc</dt>
+  <dd>This page.</dd>
+</dl>
+<p>For example, find an act by its CELEX number:</p>
+${act/lookup}

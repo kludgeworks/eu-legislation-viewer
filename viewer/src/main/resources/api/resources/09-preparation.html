@@ -1,0 +1,61 @@
+<h3>Preparation</h3>
+<p>The preparation of the texts of an act in one language. The viewer converts the text of each version in that
+  language, from the Formex of the Publications Office. See <a href="#waiting">Waiting</a>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>language</dt>
+  <dd>The language, by the EU's code. For example, <span class="mono">eng</span>.</dd>
+  <dt>started</dt>
+  <dd>When someone first asked for the act in the language.</dd>
+  <dt>settledAt</dt>
+  <dd>When its last text was made or failed. Null while the viewer prepares it.</dd>
+  <dt>ready</dt>
+  <dd>How many texts are ready.</dd>
+  <dt>failed</dt>
+  <dd>How many texts failed.</dd>
+  <dt>converting</dt>
+  <dd>How many texts the viewer makes now.</dd>
+  <dt>ahead</dt>
+  <dd>About how many texts of all acts are before its texts in the queue, while the viewer makes none of its
+    texts.</dd>
+</dl>
+<p>The state of each text is in <span class="mono">_embedded.item</span>. A text that is ready links to it,
+  <a class="mono" href="#text">av:text</a>. Each state has:</p>
+<dl class="api-members">
+  <dt>version</dt>
+  <dd>Where the version is among the versions: <span class="mono">oj</span>, or its date.</dd>
+  <dt>celex</dt>
+  <dd>The CELEX number of the document that holds the text.</dd>
+  <dt>state</dt>
+  <dd><span class="mono">waiting</span>, <span class="mono">converting</span>, <span class="mono">ready</span> or
+    <span class="mono">failed</span>.</dd>
+  <dt>attempt</dt>
+  <dd>The attempt that runs, or the last attempt that failed while the text waits. 0 before the first attempt and
+    when the text is ready or failed.</dd>
+  <dt>failure</dt>
+  <dd>Why the text failed, as in the problem <a class="mono" href="#text-failed">text-failed</a>. Null unless it
+    failed.</dd>
+  <dt>retryable</dt>
+  <dd>Whether to try again may help. Null unless it failed.</dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>up</dt>
+  <dd>The act.</dd>
+  <dt id="events">av:events</dt>
+  <dd>
+    <p>The changes of the preparation, as a stream of server-sent events (<span class="mono">text/event-stream</span>).
+      Use it to wait for a text without asking again.</p>
+    <dl class="api-members">
+      <dt>preparation</dt>
+      <dd>The preparation changed. The data is its state, as JSON.</dd>
+      <dt>settled</dt>
+      <dd>Every text is ready or failed. The data is the last state. Then the stream ends.</dd>
+    </dl>
+    <p>The state has no links. To follow a link, ask for the preparation.</p>
+  </dd>
+  <dt id="retry">av:retry</dt>
+  <dd>Tries again to make the texts that failed, if to try again may help. Send <span class="mono">POST</span>, with no
+    body. The answer is <span class="mono">202 Accepted</span>, with the preparation. The link is there only while
+    such a text exists.</dd>
+</dl>

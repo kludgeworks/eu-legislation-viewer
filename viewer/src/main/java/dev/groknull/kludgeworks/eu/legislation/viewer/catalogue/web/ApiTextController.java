@@ -40,6 +40,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
 
 /**
@@ -63,6 +64,13 @@ import org.springframework.web.util.UriUtils;
 class ApiTextController {
   private static final String TEXT = ApiActController.VERSION + "/texts/{language}";
 
+  /**
+   * The IANA relation of a link to the schema of an answer, as the registry spells it. Spring
+   * HATEOAS's {@code IanaLinkRelations.DESCRIBED_BY} is {@code describedBy}, and a HAL client looks
+   * up its links by the exact name.
+   */
+  private static final LinkRelation DESCRIBED_BY = LinkRelation.of("describedby");
+
   /** How long a client waits before it asks again for a text that is not ready. */
   private static final Duration RETRY_AFTER = Duration.ofSeconds(5);
 
@@ -85,6 +93,7 @@ class ApiTextController {
    *   <li>{@code alternate}: the text in each other language of the version, with {@code hreflang}.
    *   <li>{@code av:outline}, {@code av:unit}: its outline, and a unit by its eId.
    *   <li>{@code av:preparation}: the preparation of the act in the language.
+   *   <li>{@code describedby}: the JSON Schema of the answer.
    * </ul>
    */
   @GetMapping(TEXT)
@@ -116,6 +125,7 @@ class ApiTextController {
                                               .outline(celex, key, language))
                                       .withRel(Relation.OUTLINE.rel()))
                               .link(unitTemplate(self))
+                              .link(schema("text"))
                               .link(ApiPreparationController.to(celex, asked.language()));
                       for (var other : asked.version().languages()) {
                         if (other != asked.language()) {
@@ -156,7 +166,8 @@ class ApiTextController {
 
   /**
    * Returns the unit {@code eId} of the text, with everything in it. Its eId is the rest of the
-   * path, for example {@code anx/pnt_1.2}. Returns 404 if the text has no such unit.
+   * path, for example {@code anx/pnt_1.2}. Returns 404 if the text has no such unit. It links to
+   * the text, {@code up}, and to its JSON Schema, {@code describedby}.
    */
   @GetMapping(TEXT + "/units/{*eId}")
   ResponseEntity<RepresentationModel<?>> unit(
@@ -177,6 +188,7 @@ class ApiTextController {
                         HalModelBuilder.halModelOf(new UnitModel(extract.unit(), extract.notes()))
                             .link(Link.of(unitHref(text, eId)))
                             .link(text)
+                            .link(schema("unit"))
                             .build()));
   }
 
@@ -235,6 +247,19 @@ class ApiTextController {
     problem.setProperty(
         "preparation", ApiPreparationController.to(asked.act().id(), asked.language()).getHref());
     return new ErrorResponseException(HttpStatus.NOT_FOUND, problem, null);
+  }
+
+  /**
+   * Returns the link to the JSON Schema of an answer, {@code describedby}. The schemas are static
+   * files, one folder for each major version of the API.
+   */
+  static Link schema(String answer) {
+    return Link.of(
+        ServletUriComponentsBuilder.fromCurrentContextPath()
+            .path("/api/schemas/v1/{answer}.schema.json")
+            .buildAndExpand(answer)
+            .toUriString(),
+        DESCRIBED_BY);
   }
 
   /** Returns the link to a unit of {@code text} by its eId, a URI template. */

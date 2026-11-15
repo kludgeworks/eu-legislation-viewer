@@ -52,6 +52,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
 
 /**
@@ -82,6 +83,16 @@ class ApiComparisonController {
 
   /** The relation of a difference, which the viewer's CURIE documents. */
   static final HalLinkRelation DIFFERENCE = HalLinkRelation.curied("av", "difference");
+
+  /**
+   * The IANA relation of a link to the schema of an answer, as the registry spells it. Spring
+   * HATEOAS's {@code IanaLinkRelations.DESCRIBED_BY} is {@code describedBy}, and a HAL client looks
+   * up its links by the exact name.
+   */
+  private static final LinkRelation DESCRIBED_BY = LinkRelation.of("describedby");
+
+  /** The JSON Schema of a difference, in version 1 of the API. */
+  private static final String DIFFERENCE_SCHEMA = "/api/schemas/v1/difference.schema.json";
 
   /** How long a client waits before it asks again for a comparison whose texts are not ready. */
   private static final Duration RETRY_AFTER = Duration.ofSeconds(5);
@@ -205,7 +216,8 @@ class ApiComparisonController {
   /**
    * Returns the difference of the comparison at the unit {@code eId}, with its unit whole and
    * marked. Its eId is the rest of the path, for example {@code anx/pnt_1.2}. Returns 404 if the
-   * comparison has no difference there.
+   * comparison has no difference there. It links to the comparison, {@code up}, and to its JSON
+   * Schema, {@code describedby}.
    */
   @GetMapping(COMPARISON + "/differences/{*eId}")
   RepresentationModel<?> difference(
@@ -234,9 +246,16 @@ class ApiComparisonController {
     return HalModelBuilder.halModelOf(
             new DifferenceModel(
                 DifferenceSummary.of(asked.ends.act, difference, amended),
+                content.publicWording(difference.shown()),
                 content.publicUnit(difference.shown())))
         .link(Link.of(differenceHref(comparison, eId)))
         .link(comparison)
+        .link(
+            Link.of(
+                ServletUriComponentsBuilder.fromCurrentContextPath()
+                    .path(DIFFERENCE_SCHEMA)
+                    .toUriString(),
+                DESCRIBED_BY))
         .build();
   }
 
@@ -429,10 +448,15 @@ class ApiComparisonController {
    * A difference whole, as the API shows it.
    *
    * @param difference what the comparison lists of it
+   * @param wording the plain text of its unit before and after the change, and the runs of words
+   *     that stayed, went in and went out
    * @param shown its unit, marked, in the public model. In its HTML, inserted words are in {@code
    *     ins} and deleted words in {@code del}. Its plain text is the text after the change.
    */
-  record DifferenceModel(@JsonUnwrapped DifferenceSummary difference, PublicText.Unit shown) {}
+  record DifferenceModel(
+      @JsonUnwrapped DifferenceSummary difference,
+      @JsonUnwrapped PublicText.Marked wording,
+      PublicText.Unit shown) {}
 
   /**
    * An amendment marker, as the API shows it. For example, ▼M20.

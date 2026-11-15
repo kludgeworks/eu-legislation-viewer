@@ -8,6 +8,7 @@ import static org.springframework.restdocs.operation.preprocess.Preprocessors.pr
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.prettyPrint;
 import static org.springframework.restdocs.operation.preprocess.Preprocessors.replacePattern;
 
+import com.networknt.schema.Error;
 import com.samskivert.mustache.Mustache;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -35,10 +36,12 @@ import org.springframework.restdocs.http.HttpResponseSnippet;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
 import org.springframework.restdocs.mockmvc.RestDocumentationResultHandler;
 import org.springframework.restdocs.operation.Operation;
+import org.springframework.restdocs.snippet.Snippet;
 import org.springframework.restdocs.snippet.TemplatedSnippet;
 import org.springframework.restdocs.templates.StandardTemplateResourceResolver;
 import org.springframework.restdocs.templates.TemplateFormat;
 import org.springframework.restdocs.templates.mustache.MustacheTemplateEngine;
+import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Writes the examples of the API's documentation from a module's tests, with Spring REST Docs, and
@@ -56,6 +59,9 @@ import org.springframework.restdocs.templates.mustache.MustacheTemplateEngine;
  *
  * <p>The examples are at the viewer's public address, and their answers have no header that changes
  * from run to run.
+ *
+ * <p>An answer that names its JSON Schema ({@code describedby}) must also be valid against it, with
+ * no member that the schema does not name ({@link ApiSchemas}).
  */
 @NullMarked
 public final class ApiSnippets implements BeforeEachCallback, AfterEachCallback {
@@ -181,7 +187,7 @@ public final class ApiSnippets implements BeforeEachCallback, AfterEachCallback 
                   .withPort(443)
                   .and()
                   .snippets()
-                  .withDefaults(new Example())
+                  .withDefaults(new Example(), new Described())
                   .withTemplateFormat(HTML));
     }
   }
@@ -212,6 +218,32 @@ public final class ApiSnippets implements BeforeEachCallback, AfterEachCallback 
               ? uri.getRawPath()
               : uri.getRawPath() + "?" + uri.getRawQuery());
       return model;
+    }
+  }
+
+  /**
+   * Checks an answer against the JSON Schema that it names, {@code _links.describedby}, closed
+   * ({@link ApiSchemas}). It writes nothing. An answer that names no schema is not checked.
+   */
+  private static final class Described implements Snippet {
+    private static final JsonMapper JSON = JsonMapper.builder().build();
+
+    @Override
+    public void document(Operation operation) {
+      var type = operation.getResponse().getHeaders().getContentType();
+      if (type == null
+          || !("json".equals(type.getSubtype()) || "json".equals(type.getSubtypeSuffix()))) {
+        return;
+      }
+      var body = JSON.readTree(operation.getResponse().getContentAsString());
+      var schema = body.at("/_links/describedby/href");
+      if (schema.isMissingNode()) {
+        return;
+      }
+      assertThat(ApiSchemas.schema(schema.asString()).validate(body))
+          .as("The answer of %s against its schema, %s", operation.getName(), schema.asString())
+          .extracting(Error::toString)
+          .isEmpty();
     }
   }
 

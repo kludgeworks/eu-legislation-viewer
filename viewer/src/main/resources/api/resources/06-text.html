@@ -1,0 +1,77 @@
+<h3>Text</h3>
+<p>The text of a version in one language. Its JSON Schema is
+  <a class="mono" href="/api/schemas/v1/text.schema.json">text.schema.json</a>.</p>
+<p>The viewer makes a text the first time that someone asks for it. Until the text is ready, the answer is
+  <span class="mono">202 Accepted</span>. See <a href="#waiting">Waiting</a>. If the viewer cannot make the text, the
+  answer is the problem <a class="mono" href="#text-failed">text-failed</a>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>version</dt>
+  <dd>Where the version is among the versions: <span class="mono">oj</span>, or its date.</dd>
+  <dt>celex</dt>
+  <dd>The CELEX number of the document that holds the text.</dd>
+  <dt>language</dt>
+  <dd>The language, by the EU's code. For example, <span class="mono">eng</span>.</dd>
+  <dt>text</dt>
+  <dd>The text, in its parts, as the Official Journal prints it: <span class="mono">title</span>,
+    <span class="mono">preamble</span>, <span class="mono">body</span>, <span class="mono">conclusions</span>,
+    <span class="mono">annexes</span> and <span class="mono">notes</span>. A part that the text does not have is not in
+    the answer. <span class="mono">title</span> is running text. <span class="mono">notes</span> is a list of
+    footnotes, each with its <span class="mono">eId</span>, its <span class="mono">marker</span> and its blocks. Each
+    other part is a list of blocks.</dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>up</dt>
+  <dd>The version.</dd>
+  <dt>alternate</dt>
+  <dd>The text in each other language of the version. The <span class="mono">hreflang</span> of the link gives the
+    language.</dd>
+  <dt>av:outline</dt>
+  <dd>The <a href="#outline">outline</a> of the text.</dd>
+  <dt>av:unit</dt>
+  <dd>A <a href="#unit">unit</a> of the text, by its eId. A template with one variable, <span class="mono">eId</span>.
+    For example, <span class="mono">art_3</span> or <span class="mono">anx/pnt_1.2</span>.</dd>
+  <dt>av:preparation</dt>
+  <dd>The <a href="#preparation">preparation</a> of the texts of the act in the language.</dd>
+  <dt>describedby</dt>
+  <dd>The JSON Schema of the answer.</dd>
+</dl>
+<h4>Blocks</h4>
+<p>The <span class="mono">type</span> of a block tells what it is:</p>
+<dl class="api-members">
+  <dt>text</dt>
+  <dd>A paragraph of running text.</dd>
+  <dt>unit</dt>
+  <dd>An article, a paragraph, a point, an annex and so on. It has an <span class="mono">eId</span>, a
+    <span class="mono">kind</span>, and its blocks in <span class="mono">content</span>. It can have a
+    <span class="mono">num</span>, a <span class="mono">heading</span> and a <span class="mono">subheading</span>. The
+    list of kinds can grow.</dd>
+  <dt>table</dt>
+  <dd>A table, in <span class="mono">rows</span> of <span class="mono">cells</span>. A cell holds blocks, because a cell
+    can hold units.</dd>
+  <dt>figure</dt>
+  <dd>An image, by the name of its file.</dd>
+  <dt>quotation</dt>
+  <dd>Text that an amending act quotes. It is not law of the act that quotes it.</dd>
+  <dt>deleted</dt>
+  <dd>Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.</dd>
+</dl>
+<p>A block that a consolidation changed has <span class="mono">amendedBy</span>: the amending act, by its CELEX number,
+  and what it did.</p>
+<h4>Running text</h4>
+<p>Running text has two forms. <span class="mono">text</span> is plain text. It does not have the markers of notes or
+  the words that an amendment deleted. <span class="mono">html</span> is HTML with only these elements:</p>
+<ul>
+  <li><span class="mono">b</span>, <span class="mono">i</span>, <span class="mono">u</span>, <span class="mono">s</span>,
+    <span class="mono">sup</span>, <span class="mono">sub</span>, and <span class="mono">span</span> with a
+    <span class="mono">class</span>, for typefaces.</li>
+  <li><span class="mono">time</span>, with <span class="mono">datetime</span>, for a date.</li>
+  <li><span class="mono">cite</span> for a reference to the Official Journal, and <span class="mono">a</span> for a
+    link. The marker of a note links to <span class="mono">#</span> and the note's <span class="mono">eId</span>.</li>
+  <li><span class="mono">span</span> with <span class="mono">data-act</span> and <span class="mono">data-action</span>
+    for words that an amending act changed, and <span class="mono">s</span> with them for words that it deleted.</li>
+  <li><span class="mono">ins</span> and <span class="mono">del</span> for the words that a comparison marks.</li>
+  <li><span class="mono">br</span>, <span class="mono">span</span> with <span class="mono">lang</span>,
+    <span class="mono">img</span>, and <span class="mono">math</span> in MathML.</li>
+</ul>

@@ -53,6 +53,12 @@ public interface Content {
   PublicText.Unit publicUnit(Element unit);
 
   /**
+   * Returns the wording of a unit of a comparison, in which {@code diff:ins} and {@code diff:del}
+   * mark what changed: the text before and after the change, and the runs of words.
+   */
+  PublicText.Marked publicWording(Element unit);
+
+  /**
    * Returns the outline of the text, kept when the text was stored. Returns none if no such text is
    * stored.
    */

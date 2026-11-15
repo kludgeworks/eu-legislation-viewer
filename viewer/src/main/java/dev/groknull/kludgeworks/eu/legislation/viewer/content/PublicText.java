@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import java.util.List;
@@ -14,7 +15,7 @@ import org.jspecify.annotations.Nullable;
  * <p>The public model is small, and it is not the form in which the text is stored. The stored form
  * follows the converter's schema, which changes as the converter learns more of Formex. The public
  * model changes only when the meaning of a text changes. So a client depends on the public model,
- * never on the schema. {@code api/schema/text.json} is its JSON Schema.
+ * never on the schema. {@code api/schemas/v1/text.schema.json} is its JSON Schema.
  *
  * <ul>
  *   <li>The text is in parts, as the Official Journal prints it: the title, the preamble, the
@@ -252,6 +253,46 @@ public record PublicText(
    */
   @ValueObject
   public record Amendment(String act, String action) {}
+
+  /**
+   * The wording of a unit that a comparison marked: the plain text before and after the change, and
+   * the runs of words that stayed, went in and went out.
+   *
+   * @param before the text before the change
+   * @param after the text after the change
+   * @param changes the runs, in order. The text before is the runs that are not inserted, and the
+   *     text after is the runs that are not deleted. Each paragraph, and each number and heading of
+   *     a unit in the unit, ends with a line feed, except the last.
+   */
+  @ValueObject
+  public record Marked(String before, String after, List<Change> changes) {
+    public Marked {
+      changes = List.copyOf(changes);
+    }
+  }
+
+  /**
+   * A run of words, and what a comparison found of it.
+   *
+   * @param op {@code equal}, {@code insert} or {@code delete}
+   * @param text the words
+   */
+  @ValueObject
+  public record Change(Op op, String text) {
+
+    /** What a comparison found of a run of words. */
+    public enum Op {
+      /** The run is in both versions. */
+      @JsonProperty("equal")
+      EQUAL,
+      /** The run is only in the later version. */
+      @JsonProperty("insert")
+      INSERT,
+      /** The run is only in the earlier version. */
+      @JsonProperty("delete")
+      DELETE
+    }
+  }
 
   /**
    * A unit and the notes that it refers to: what the API gives for one unit.

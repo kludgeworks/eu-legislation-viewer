@@ -5,20 +5,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.networknt.schema.Error;
 import com.networknt.schema.Schema;
-import com.networknt.schema.SchemaRegistry;
-import com.networknt.schema.SpecificationVersion;
+import dev.groknull.kludgeworks.eu.legislation.viewer.ApiSchemas;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Unit;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -36,7 +34,8 @@ import tools.jackson.databind.json.JsonMapper;
 class PublicTextsTest {
   private static final String NS = "xmlns=\"" + LegalText.NAMESPACE + "\"";
   private static final JsonMapper JSON = JsonMapper.builder().build();
-  private static final Schema SCHEMA = schema();
+  private static final Schema SCHEMA =
+      ApiSchemas.schema(ApiSchemas.V1 + "text.schema.json#/$defs/legalText");
 
   @ParameterizedTest
   @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts#samples")
@@ -174,6 +173,38 @@ class PublicTextsTest {
             new Text("Fees of EUR 12", "Fees of <del>EUR 10</del><ins>EUR 12</ins>", List.of()));
   }
 
+  @Test
+  void givesTheWordingOfAComparisonBeforeAndAfterAndItsRuns() {
+    var marked =
+        PublicTexts.marked(
+            element(
+                "unit",
+                Map.of("eId", "art_1", "kind", "article"),
+                element("num", Map.of(), t("Article 1")),
+                element(
+                    "p",
+                    Map.of(),
+                    t("Fees of "),
+                    element("diff:del", Map.of(), t("EUR 10")),
+                    element("diff:ins", Map.of(), t("EUR 12")),
+                    element("noteRef", Map.of("href", "#note_1", "marker", "1"))),
+                element(
+                    "unit",
+                    Map.of("eId", "art_1/pnt_a", "kind", "point"),
+                    element("num", Map.of(), t("(a)")),
+                    element("p", Map.of(), element("diff:ins", Map.of(), t("new point"))))));
+
+    assertThat(marked.before()).isEqualTo("Fees of EUR 10\n(a)");
+    assertThat(marked.after()).isEqualTo("Fees of EUR 12\n(a) new point");
+    assertThat(marked.changes())
+        .containsExactly(
+            new Change(Op.EQUAL, "Fees of "),
+            new Change(Op.DELETE, "EUR 10"),
+            new Change(Op.INSERT, "EUR 12"),
+            new Change(Op.EQUAL, "\n(a) "),
+            new Change(Op.INSERT, "new point"));
+  }
+
   private static Element element(String name, Map<String, String> attributes, Element... children) {
     return new Element(name, attributes, List.of(children), "");
   }
@@ -220,15 +251,5 @@ class PublicTextsTest {
     }
     element.children().forEach(child -> units(child, eIds));
     return eIds;
-  }
-
-  private static Schema schema() {
-    try (InputStream in =
-        PublicTextsTest.class.getResourceAsStream("/static/api/schema/text.json")) {
-      return SchemaRegistry.withDefaultDialect(SpecificationVersion.DRAFT_2020_12)
-          .getSchema(Objects.requireNonNull(in, "static/api/schema/text.json"));
-    } catch (IOException e) {
-      throw new UncheckedIOException(e);
-    }
   }
 }

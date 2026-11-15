@@ -1,9 +1,0 @@
-<p>The changes of a preparation, as a stream of server-sent events (<span class="mono">text/event-stream</span>). Use it to wait for
-  a text without asking again. See <a href="#answers-waiting">Waiting</a> for an example.</p>
-<dl class="api-members">
-  <dt>preparation</dt>
-  <dd>The preparation changed. The data is its state, as JSON.</dd>
-  <dt>settled</dt>
-  <dd>Every text is ready or failed. The data is the last state. Then the stream ends.</dd>
-</dl>
-<p>The state has no links. To follow a link, ask for the preparation.</p>

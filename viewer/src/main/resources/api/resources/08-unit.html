@@ -1,0 +1,19 @@
+<h3>Unit</h3>
+<p>A unit of a text, by its eId, with all its content and the notes that it refers to. Its JSON Schema is
+  <a class="mono" href="/api/schemas/v1/unit.schema.json">unit.schema.json</a>. If the text has no such unit, the
+  status is <span class="mono">404 Not Found</span>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>unit</dt>
+  <dd>The unit, as a block of the <a href="#text">text</a>.</dd>
+  <dt>notes</dt>
+  <dd>The notes that the unit refers to, in the order of the text. Absent if there are none.</dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>up</dt>
+  <dd>The text.</dd>
+  <dt>describedby</dt>
+  <dd>The JSON Schema of the answer.</dd>
+</dl>
+${act/unit}

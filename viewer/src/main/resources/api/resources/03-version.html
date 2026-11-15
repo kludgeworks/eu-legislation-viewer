@@ -1,0 +1,39 @@
+<h3>Version</h3>
+<p>A version of an act: its original text, or a consolidated version. A version applies from its date until the date
+  of the next version.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>version</dt>
+  <dd>Where it is among the versions: <span class="mono">oj</span> for the original text, or the day from which it
+    applies.</dd>
+  <dt>kind</dt>
+  <dd><span class="mono">original</span> or <span class="mono">consolidated</span>.</dd>
+  <dt>date</dt>
+  <dd>The day from which it applies.</dd>
+  <dt>celex</dt>
+  <dd>The CELEX number of the document that holds its text.</dd>
+  <dt>interim</dt>
+  <dd>Whether the Publications Office can still revise it.</dd>
+  <dt>integrates</dt>
+  <dd>The CELEX numbers of the acts that the Publications Office consolidated in this version.</dd>
+  <dt>languages</dt>
+  <dd>The languages in which the viewer can show its text, by the EU's codes.</dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>up</dt>
+  <dd>The act.</dd>
+  <dt>version-history</dt>
+  <dd>The list of the versions of the act.</dd>
+  <dt>predecessor-version</dt>
+  <dd>The version before it. Absent for the first version.</dd>
+  <dt>successor-version</dt>
+  <dd>The version after it. Absent for the latest version.</dd>
+  <dt>av:text</dt>
+  <dd>Its <a href="#text">text</a>, one link for each language. The <span class="mono">hreflang</span> of the link
+    gives the language.</dd>
+</dl>
+<p>The list of versions, <span class="mono">version-history</span>, has each version in
+  <span class="mono">_embedded.item</span>, the first one first. It links to the act, <span class="mono">up</span>, to
+  the first version, <span class="mono">first</span>, and to the latest version,
+  <span class="mono">latest-version</span>.</p>

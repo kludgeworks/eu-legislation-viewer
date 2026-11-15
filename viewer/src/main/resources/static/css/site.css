@@ -358,24 +358,15 @@ button.link {
   color: var(--ink);
 }
 
-/* The steps of the walk, numbered */
-.api-guide {
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.api-guide > li {
-  counter-increment: step;
-}
-
-.api-guide > li > h3::before {
-  content: counter(step);
-  margin-right: 10px;
+/* The parts of a resource: its members and its links */
+.api-docs h4 {
+  margin: 16px 0 4px;
   font:
-    600 13px ui-monospace,
-    monospace;
-  color: var(--accent);
+    400 11px system-ui,
+    sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
 .api-docs dt {

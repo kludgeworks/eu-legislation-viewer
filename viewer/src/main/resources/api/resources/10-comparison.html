@@ -1,0 +1,32 @@
+<h3>Comparison</h3>
+<p>The comparison of the text of an act in one language between two versions. It lists each provision that changed.
+  To get it, fill in the template <a class="mono" href="#comparisons">av:comparisons</a> of the act:</p>
+${comparisons/lookup}
+<p>If a text is not ready, the answer is <span class="mono">202 Accepted</span>. See <a href="#waiting">Waiting</a>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>from</dt>
+  <dd>The first day of the earlier version.</dd>
+  <dt>to</dt>
+  <dd>The first day of the later version.</dd>
+  <dt>language</dt>
+  <dd>The language, by the EU's code. For example, <span class="mono">eng</span>.</dd>
+  <dt>amendingAct</dt>
+  <dd>The act whose changes the comparison is limited to. Null if it is not limited.</dd>
+  <dt>withoutPreamble</dt>
+  <dd><span class="mono">earlier</span> or <span class="mono">later</span>: the text that has no preamble while the
+    other has one. The comparison then does not compare the preambles. Null if both or neither have one.</dd>
+</dl>
+<p>The differences are in <span class="mono">_embedded.item</span>, in the order of the text. Each has the members of a
+  <a href="#difference">difference</a> except <span class="mono">before</span>, <span class="mono">after</span>,
+  <span class="mono">changes</span> and <span class="mono">shown</span>, and a link to the difference,
+  <span class="mono">self</span>.</p>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>up</dt>
+  <dd>The act.</dd>
+  <dt>av:difference</dt>
+  <dd>A <a href="#difference">difference</a>, by the eId of its unit. A template with one variable,
+    <span class="mono">eId</span>.</dd>
+</dl>
+${comparisons/comparison}

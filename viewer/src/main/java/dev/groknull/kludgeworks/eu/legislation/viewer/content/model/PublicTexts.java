@@ -6,10 +6,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Cell;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Extract;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Inline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Marked;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Note;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Row;
@@ -133,6 +136,23 @@ public final class PublicTexts {
     return new PublicTexts().toUnit(unit);
   }
 
+  /**
+   * Returns the wording of a unit of a comparison, in which {@code diff:ins} and {@code diff:del}
+   * mark what changed: the plain text before and after the change, and the runs of words that
+   * stayed, went in and went out. The lines of the unit's paragraphs, and the numbers and headings
+   * of the units in it, end with a line feed. The unit's own number and heading are not in it.
+   */
+  public static Marked marked(Element unit) {
+    var words = new Words();
+    lines(content(unit), words);
+    return new Marked(words.before().strip(), words.after().strip(), words.changes());
+  }
+
+  /** Returns what a unit holds after its number, headings and provenance. */
+  private static List<Element> content(Element unit) {
+    return unit.children().stream().filter(child -> !UNIT_PARTS.contains(child.name())).toList();
+  }
+
   // ------------------------------------------------------------------------------------- parts
 
   private List<Block> preamble(Element preamble) {
@@ -229,7 +249,7 @@ public final class PublicTexts {
         child(unit, "heading").map(PublicTexts::lines).orElse(null),
         child(unit, "subheading").map(PublicTexts::lines).orElse(null),
         amendments(unit),
-        blocks(unit.children().stream().filter(c -> !UNIT_PARTS.contains(c.name())).toList()));
+        blocks(content(unit)));
   }
 
   private Table table(Element table) {
@@ -360,31 +380,132 @@ public final class PublicTexts {
 
   /** Returns the plain text: what is printed and in force. */
   private static String text(List<Element> inline) {
-    var text = new StringBuilder();
-    text(inline, text);
-    return text.toString();
+    var words = new Words();
+    words(inline, Op.EQUAL, words);
+    return words.after();
   }
 
-  private static void text(List<Element> inline, StringBuilder text) {
+  /**
+   * Adds the words of running text to {@code words} as {@code op} did them, or as a comparison
+   * marks them. Leaves out what is not printed as text, and what is not in force.
+   */
+  private static void words(List<Element> inline, Op op, Words words) {
     for (var element : inline) {
       switch (element.name()) {
-        case "t", "number" -> text.append(attribute(element, "v"));
-        case "eol" -> text.append('\n');
+        case "t", "number" -> words.add(op, attribute(element, "v"));
+        case "eol" -> words.add(op, "\n");
         case "quote" -> {
-          text.append(attribute(element, "startQuote"));
-          text(element.children(), text);
-          text.append(attribute(element, "endQuote"));
+          words.add(op, attribute(element, "startQuote"));
+          words(element.children(), op, words);
+          words.add(op, attribute(element, "endQuote"));
         }
         case "math" ->
             element.children().stream()
                 .filter(child -> child.name().equals("m:math"))
-                .forEach(child -> mathText(child, text));
-        case "noteRef", "deleted", "diff:del", "img", "provenance" -> {
+                .forEach(
+                    child -> {
+                      var text = new StringBuilder();
+                      mathText(child, text);
+                      words.add(op, text.toString());
+                    });
+        case "diff:ins" -> words(element.children(), Op.INSERT, words);
+        case "diff:del" -> words(element.children(), Op.DELETE, words);
+        case "noteRef", "deleted", "img", "provenance" -> {
           // Not printed as text, or not in force
         }
-        default -> text(element.children(), text);
+        default -> words(element.children(), op, words);
       }
     }
+  }
+
+  /**
+   * Adds the lines of the blocks to {@code words}: a paragraph, the number and heading of a unit, a
+   * formula. Each line ends with a line feed.
+   */
+  private static void lines(List<Element> blocks, Words words) {
+    for (var element : blocks) {
+      switch (element.name()) {
+        case "p" -> {
+          words(element.children(), Op.EQUAL, words);
+          words.add(Op.EQUAL, "\n");
+        }
+        case "unit" -> {
+          child(element, "num")
+              .ifPresent(
+                  num -> {
+                    words(num.children(), Op.EQUAL, words);
+                    words.add(Op.EQUAL, " ");
+                  });
+          for (var title : List.of("heading", "subheading")) {
+            child(element, title)
+                .ifPresent(
+                    heading -> {
+                      words(heading.children(), Op.EQUAL, words);
+                      words.add(Op.EQUAL, "\n");
+                    });
+          }
+          lines(content(element), words);
+        }
+        case "math" -> {
+          words(List.of(element), Op.EQUAL, words);
+          words.add(Op.EQUAL, "\n");
+        }
+        case "deleted", "provenance", "notes", "caption" -> {
+          // Not in force, or not the unit's wording
+        }
+        default -> lines(element.children(), words);
+      }
+    }
+  }
+
+  /** Runs of words, each as a comparison marks it. A run follows a run that is marked otherwise. */
+  private static final class Words {
+    private final List<Run> runs = new ArrayList<>();
+
+    void add(Op op, String text) {
+      if (text.isEmpty()) {
+        return;
+      }
+      var last = runs.isEmpty() ? null : runs.getLast();
+      if (last != null && last.op() == op) {
+        last.text().append(text);
+      } else {
+        runs.add(new Run(op, new StringBuilder(text)));
+      }
+    }
+
+    /** Returns the words before the change: all but the inserted ones. */
+    String before() {
+      return join(Op.INSERT);
+    }
+
+    /** Returns the words after the change: all but the deleted ones. */
+    String after() {
+      return join(Op.DELETE);
+    }
+
+    private String join(Op without) {
+      var text = new StringBuilder();
+      runs.stream().filter(run -> run.op() != without).forEach(run -> text.append(run.text()));
+      return text.toString();
+    }
+
+    /** Returns the runs, without the line feed that ends the last line. */
+    List<Change> changes() {
+      var changes = new ArrayList<Change>();
+      runs.forEach(run -> changes.add(new Change(run.op(), run.text().toString())));
+      if (!changes.isEmpty() && changes.getLast().text().endsWith("\n")) {
+        var last = changes.removeLast();
+        var text = last.text().substring(0, last.text().length() - 1);
+        if (!text.isEmpty()) {
+          changes.add(new Change(last.op(), text));
+        }
+      }
+      return changes;
+    }
+
+    /** A run of words, which grows while the next words are marked as it is. */
+    private record Run(Op op, StringBuilder text) {}
   }
 
   private static void html(List<Element> inline, StringBuilder html) {

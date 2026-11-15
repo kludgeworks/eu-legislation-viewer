@@ -92,6 +92,12 @@ class ApiComparisonControllerTests {
     when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
     when(content.outline(any())).thenReturn(Optional.empty());
     when(content.publicUnit(any(Element.class))).thenReturn(SHOWN);
+    when(content.publicWording(any(Element.class)))
+        .thenReturn(
+            new PublicText.Marked(
+                "",
+                "Screening.",
+                List.of(new PublicText.Change(PublicText.Change.Op.INSERT, "Screening."))));
     var difference = difference();
     when(comparisons.between(EARLIER, LATER))
         .thenReturn(
@@ -168,6 +174,8 @@ class ApiComparisonControllerTests {
         json(mvc.get().uri(COMPARISON + "/texts/eng/differences/anx/pnt_1.2").exchange());
 
     assertThat(difference.at("/eId").asString()).isEqualTo("anx/pnt_1.2");
+    assertThat(difference.at("/after").asString()).isEqualTo("Screening.");
+    assertThat(difference.at("/changes/0/op").asString()).isEqualTo("insert");
     assertThat(difference.at("/shown/content/0/html").asString())
         .isEqualTo("<ins>Screening.</ins>");
     assertThat(difference.at("/_links/up/href").asString())

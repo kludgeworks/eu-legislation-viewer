@@ -1,18 +1,55 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "A legal text in the public model",
-  "description": "The text of a version of an EU act in one language, as the API gives it. The text is in parts, as the Official Journal prints it. A part holds blocks. Running text has two forms: plain text, and HTML in a closed list of elements.",
+  "$id": "https://eu-law.groknull.dev/api/schemas/v1/text.schema.json",
+  "title": "The text of a version",
+  "description": "The text of a version of an EU act in one language, in version 1 of the API. A later minor change can add members, so a client ignores the members it does not know.",
   "type": "object",
   "properties": {
-    "title": { "$ref": "#/$defs/inline", "description": "The long title." },
-    "preamble": { "$ref": "#/$defs/blocks", "description": "The formulas, the citations and the recitals." },
-    "body": { "$ref": "#/$defs/blocks", "description": "The enacting terms." },
-    "conclusions": { "$ref": "#/$defs/blocks", "description": "The closing formula and the signatures." },
-    "annexes": { "$ref": "#/$defs/blocks", "description": "The annexes and the documents attached to the act." },
-    "notes": { "$ref": "#/$defs/notes", "description": "The footnotes, from wherever they are in the text." }
+    "_links": { "$ref": "#/$defs/links" },
+    "version": { "type": "string", "description": "Where the version is among the versions of the act: oj, or the date from which it applies." },
+    "celex": { "type": "string", "description": "The CELEX number of the document that holds the text." },
+    "language": { "type": "string", "description": "The language, by the EU's code. For example, eng." },
+    "text": { "$ref": "#/$defs/legalText" }
   },
-  "additionalProperties": false,
+  "required": ["_links", "version", "celex", "language", "text"],
   "$defs": {
+    "links": {
+      "description": "The links of the answer, by their relation. A relation is in the IANA registry, or is a relation of this API with the prefix av.",
+      "type": "object",
+      "additionalProperties": {
+        "oneOf": [
+          { "$ref": "#/$defs/link" },
+          { "type": "array", "items": { "$ref": "#/$defs/link" } }
+        ]
+      }
+    },
+    "link": {
+      "description": "A HAL link.",
+      "type": "object",
+      "properties": {
+        "href": { "type": "string", "description": "The address, or a URI template if templated is true." },
+        "templated": { "type": "boolean" },
+        "type": { "type": "string" },
+        "deprecation": { "type": "string" },
+        "name": { "type": "string" },
+        "profile": { "type": "string" },
+        "title": { "type": "string" },
+        "hreflang": { "type": "string", "description": "The language of the target. For example, en." }
+      },
+      "required": ["href"]
+    },
+    "legalText": {
+      "description": "A legal text in the public model. The text is in parts, as the Official Journal prints it. A part holds blocks. Running text has two forms: plain text, and HTML in a closed list of elements.",
+      "type": "object",
+      "properties": {
+        "title": { "$ref": "#/$defs/inline", "description": "The long title." },
+        "preamble": { "$ref": "#/$defs/blocks", "description": "The formulas, the citations and the recitals." },
+        "body": { "$ref": "#/$defs/blocks", "description": "The enacting terms." },
+        "conclusions": { "$ref": "#/$defs/blocks", "description": "The closing formula and the signatures." },
+        "annexes": { "$ref": "#/$defs/blocks", "description": "The annexes and the documents attached to the act." },
+        "notes": { "$ref": "#/$defs/notes", "description": "The footnotes, from wherever they are in the text." }
+      }
+    },
     "inline": {
       "description": "Running text, in two forms.",
       "type": "object",
@@ -20,8 +57,7 @@
         "text": { "$ref": "#/$defs/text" },
         "html": { "$ref": "#/$defs/html" }
       },
-      "required": ["text", "html"],
-      "additionalProperties": false
+      "required": ["text", "html"]
     },
     "text": {
       "description": "The plain text, as printed. It leaves out the markers of notes and the words that an amendment deleted. A line break is a line feed.",
@@ -58,8 +94,7 @@
         "act": { "type": "string", "description": "The CELEX number of the amending act." },
         "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] }
       },
-      "required": ["act", "action"],
-      "additionalProperties": false
+      "required": ["act", "action"]
     },
     "paragraph": {
       "description": "A paragraph of running text.",
@@ -70,8 +105,7 @@
         "html": { "$ref": "#/$defs/html" },
         "amendedBy": { "$ref": "#/$defs/amendedBy" }
       },
-      "required": ["type", "text", "html"],
-      "additionalProperties": false
+      "required": ["type", "text", "html"]
     },
     "unit": {
       "description": "An article, a paragraph, a point, an annex and so on.",
@@ -86,8 +120,7 @@
         "amendedBy": { "$ref": "#/$defs/amendedBy" },
         "content": { "$ref": "#/$defs/blocks" }
       },
-      "required": ["type", "eId", "kind"],
-      "additionalProperties": false
+      "required": ["type", "eId", "kind"]
     },
     "table": {
       "description": "A table. A group of rows starts with its heading row.",
@@ -99,8 +132,7 @@
         "notes": { "$ref": "#/$defs/notes", "description": "The notes of the table, numbered in it." },
         "amendedBy": { "$ref": "#/$defs/amendedBy" }
       },
-      "required": ["type"],
-      "additionalProperties": false
+      "required": ["type"]
     },
     "row": {
       "type": "object",
@@ -108,8 +140,7 @@
         "header": { "const": true, "description": "Present if it is a heading row." },
         "cells": { "type": "array", "items": { "$ref": "#/$defs/cell" } }
       },
-      "required": ["cells"],
-      "additionalProperties": false
+      "required": ["cells"]
     },
     "cell": {
       "type": "object",
@@ -119,8 +150,7 @@
         "rowspan": { "type": "integer", "minimum": 2 },
         "content": { "$ref": "#/$defs/blocks", "description": "Empty for an empty cell." }
       },
-      "required": ["content"],
-      "additionalProperties": false
+      "required": ["content"]
     },
     "figure": {
       "description": "An image.",
@@ -133,8 +163,7 @@
         "description": { "$ref": "#/$defs/blocks", "description": "The text in the image, written out." },
         "amendedBy": { "$ref": "#/$defs/amendedBy" }
       },
-      "required": ["type", "file"],
-      "additionalProperties": false
+      "required": ["type", "file"]
     },
     "quotation": {
       "description": "Text that an amending act quotes: the units that it inserts or replaces in another act. It is not law of this act.",
@@ -144,8 +173,7 @@
         "eId": { "type": "string" },
         "content": { "$ref": "#/$defs/blocks" }
       },
-      "required": ["type", "eId", "content"],
-      "additionalProperties": false
+      "required": ["type", "eId", "content"]
     },
     "deleted": {
       "description": "Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.",
@@ -155,8 +183,7 @@
         "amendedBy": { "$ref": "#/$defs/amendedBy" },
         "content": { "$ref": "#/$defs/blocks" }
       },
-      "required": ["type", "amendedBy", "content"],
-      "additionalProperties": false
+      "required": ["type", "amendedBy", "content"]
     },
     "notes": {
       "type": "array",
@@ -170,8 +197,7 @@
         "marker": { "type": "string" },
         "content": { "$ref": "#/$defs/blocks" }
       },
-      "required": ["eId", "marker", "content"],
-      "additionalProperties": false
+      "required": ["eId", "marker", "content"]
     }
   }
 }

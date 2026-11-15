@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
  * Tests the page that documents the API, which puts together the parts that the modules give: the
- * catalogue's and the comparison's steps of the walk, link relations and problem types.
+ * catalogue's and the comparison's resources and problem types.
  */
 @WebMvcTest(ApiDocsController.class)
 @Import(ControllerTesting.class)
@@ -32,43 +33,57 @@ class ApiDocsControllerTests {
   }
 
   @Test
-  void walksFromAnActToAComparisonInTheOrderOfTheSteps() {
-    assertThat(page.select(".api-guide > li > h3").eachText())
-        .containsExactly("Find an act", "The law on a day", "Read the text", "Compare two days");
-    assertThat(page.select(".api-guide figcaption").eachText())
-        .first()
-        .asString()
+  void showsEveryResourceOfEveryModuleInTheOrderOfItsName() {
+    assertThat(page.select("#resources > section").eachAttr("id"))
+        .containsExactly(
+            "root",
+            "act",
+            "version",
+            "on",
+            "amendments",
+            "text",
+            "outline",
+            "unit",
+            "preparation",
+            "comparison",
+            "difference");
+    assertThat(page.select("#resources > section > h3").eachText())
+        .startsWith("Root", "Act", "Version", "The law on a day");
+    assertThat(page.select("#root figcaption").text())
         .contains("GET /api/acts?celex=32015R1998", "303");
   }
 
   @Test
-  void listsEveryStepInTheContentsByItsAnchor() {
-    assertThat(page.select("nav a[href^=#start-]").eachAttr("href"))
-        .containsExactly("#start-act", "#start-on", "#start-text", "#start-comparisons");
-    assertThat(page.select(".api-guide > li").eachAttr("id"))
-        .containsExactly("start-act", "start-on", "start-text", "start-comparisons");
+  void listsEveryResourceInTheContentsByItsAnchor() {
+    assertThat(page.select("nav a[href=#resources] + ul a").eachAttr("href"))
+        .containsExactlyElementsOf(
+            page.select("#resources > section").eachAttr("id").stream()
+                .map(id -> "#" + id)
+                .toList());
   }
 
   @Test
-  void showsEveryRelationOfEveryModuleWithTheCurieAsItsAnchor() {
-    assertThat(page.select("#relations section").eachAttr("id"))
-        .containsExactly(
-            "act",
-            "act-by-celex",
-            "act-by-eli",
-            "amendments",
-            "comparisons",
-            "difference",
-            "events",
-            "on",
-            "outline",
-            "preparation",
-            "retry",
-            "text",
-            "unit",
-            "version");
-    assertThat(page.select("#act-by-eli h3").text()).isEqualTo("av:act-by-eli");
-    assertThat(page.select("#act-by-eli p").text()).contains("ELI");
+  void hasAnAnchorInTheResourcesForEveryRelationOfEveryModule() {
+    assertThat(
+            List.of(
+                "act",
+                "act-by-celex",
+                "act-by-eli",
+                "amendments",
+                "comparisons",
+                "difference",
+                "events",
+                "on",
+                "outline",
+                "preparation",
+                "retry",
+                "text",
+                "unit",
+                "version"))
+        .allSatisfy(
+            relation -> assertThat(page.select("#resources #" + relation)).as(relation).hasSize(1));
+    assertThat(page.select("#act-by-eli").text()).isEqualTo("av:act-by-eli");
+    assertThat(page.select("#act-by-eli + dd").text()).contains("ELI");
   }
 
   @Test
@@ -82,12 +97,11 @@ class ApiDocsControllerTests {
 
   @Test
   void showsTheEventsOfAPreparationWhereItTellsHowToWait() {
-    assertThat(page.select("#answers-waiting + dd figcaption").text()).contains("/events");
+    assertThat(page.select("#waiting + dd figcaption").text()).contains("/events");
   }
 
   @Test
-  void listsEveryTermInTheContents() {
-    assertThat(page.select("nav a[href=#difference]").text()).isEqualTo("av:difference");
+  void listsEveryProblemTypeInTheContents() {
     assertThat(page.select("nav a[href=#text-failed]").text()).isEqualTo("text-failed");
   }
 }

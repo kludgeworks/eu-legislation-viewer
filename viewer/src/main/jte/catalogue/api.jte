@@ -1,17 +1,16 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiStepView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiResourceView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiTermView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame
 @import java.util.List
 @param Frame frame
-@param List<ApiStepView> guide
+@param List<ApiResourceView> resources
 @param java.util.Map<String, String> examples
-@param List<ApiTermView> relations
 @param List<ApiTermView> problems
-<%-- Shows the documentation of the API for people, on one page: a walk from the root to a
-     comparison, how the API answers, and what each link relation and problem type means. Each
-     module gives its steps of the walk, as HTML fragments, and its relations and problem types
-     (ApiDocsController). The av CURIE of a HAL document links to a relation by its name,
-     /api/docs#act, and the type of a problem to its problem type, /api/docs#text-failed.
+<%-- Shows the documentation of the API for people, on one page: how the API answers, each resource
+     with its members and links, and each problem type. Each module gives its resources and problem
+     types as HTML fragments (ApiDocsController). The av CURIE of a HAL document links to a relation
+     by its name, /api/docs#act, and the type of a problem to its problem type,
+     /api/docs#text-failed.
 
      A column of contents beside the page, as a handbook has. An example is a card (figure
      .api-example): the request, then the response's body, its headers and the request as curl.
@@ -31,19 +30,11 @@
       </ul>
       <h2>API</h2>
       <ul>
-        <li><a href="#start">Start here</a>
+        <li><a href="#conventions">Conventions</a></li>
+        <li><a href="#resources">Resources</a>
           <ul>
-            @for(var step : guide)
-              <li><a href="#${step.id()}">${step.title()}</a></li>
-            @endfor
-          </ul>
-        </li>
-        <li><a href="#answers">How the API answers</a></li>
-        <li><a href="#text">The text</a></li>
-        <li><a href="#relations">Link relations</a>
-          <ul class="api-terms">
-            @for(var relation : relations)
-              <li><a class="mono" href="#${relation.name()}">av:${relation.name()}</a></li>
+            @for(var resource : resources)
+              <li><a href="#${resource.id()}">${resource.title()}</a></li>
             @endfor
           </ul>
         </li>
@@ -63,35 +54,37 @@
         days, provision by provision. It is free and needs no key. It starts at
         <a href="/api"><span class="mono">/api</span></a>.</p>
 
-      <section id="start">
-        <h2>Start here</h2>
-        <p>Each answer has links, in <span class="mono">_links</span>. To make the next request, follow a link. The
-          examples are real answers, for the act 2015/1998.</p>
-
-        <ol class="api-guide">
-          @for(var step : guide)
-            <li id="${step.id()}">
-              <h3>${step.title()}</h3>
-              $unsafe{step.html()}
-            </li>
-          @endfor
-        </ol>
-      </section>
-
-      <section id="answers">
-        <h2>How the API answers</h2>
+      <section id="conventions">
+        <h2>Conventions</h2>
         <dl>
+          <dt>Links</dt>
+          <dd>Start at <a href="/api"><span class="mono">/api</span></a>. Each answer has links, in
+            <span class="mono">_links</span>. To make the next request, follow a link. Do not make addresses yourself,
+            because an address can change. The name of a link does not change. A link with
+            <span class="mono">"templated" : true</span> is a template. Replace each <span class="mono">{name}</span>
+            in it with a value.</dd>
           <dt>Format</dt>
           <dd>The answers are HAL, <span class="mono">application/hal+json</span>. A link name from the
             <a href="https://www.iana.org/assignments/link-relations/link-relations.xhtml" rel="external">IANA registry<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens the IANA registry)</span></a>
             has its usual meaning, for example <span class="mono">self</span> or <span class="mono">up</span>. A link
-            name that starts with <span class="mono">av:</span> is one of the <a href="#relations">link relations</a>
-            below.</dd>
-          <dt>Links</dt>
-          <dd>Follow the links. Do not make addresses yourself, because an address can change. The name of a link does
-            not change. A link with <span class="mono">"templated" : true</span> is a template. Replace each
-            <span class="mono">{name}</span> in it with a value.</dd>
-          <dt id="answers-waiting">Waiting</dt>
+            name that starts with <span class="mono">av:</span> is a name of this API. Its link in
+            <span class="mono">curies</span> leads to its description on this page.</dd>
+          <dt id="versions">Versions</dt>
+          <dd>
+            <p>The API has a major version. This is version 1. To ask for a version, give it in the media type:
+              <span class="mono">Accept: application/hal+json;version=1</span>. A request without a version gets
+              version 1. A request for a version that the API does not have gets
+              <span class="mono">400 Bad Request</span>.</p>
+            <p>A version can get new members and new links. So ignore the members and links that you do not know. A
+              change that can break a client makes a new version. The API then also keeps the earlier version until a
+              date that it announces in the header <span class="mono">Sunset</span> of its answers.</p>
+          </dd>
+          <dt>Schemas</dt>
+          <dd>An answer for a <a href="#text">text</a>, a <a href="#unit">unit</a> or a
+            <a href="#difference">difference</a> links to its JSON Schema, <span class="mono">describedby</span>. The
+            schemas of version 1 are in <span class="mono">/api/schemas/v1/</span>. A schema lets an answer have
+            members that it does not name.</dd>
+          <dt id="waiting">Waiting</dt>
           <dd>
             <p>The viewer makes a text the first time that someone asks for it. Until the text is ready, the answer is
               <span class="mono">202 Accepted</span>. The answer has <span class="mono">Retry-After</span>, in
@@ -109,64 +102,17 @@ $unsafe{examples.get("act/events")}
             <span class="mono">If-None-Match</span>. If the answer did not change, the status is
             <span class="mono">304 Not Modified</span>.</dd>
           <dt>Stability</dt>
-          <dd>The API is in development. It can change without notice.</dd>
+          <dd>The API is in development. Until its first release, version 1 can change without notice.</dd>
         </dl>
       </section>
 
-      <section id="text">
-        <h2>The text</h2>
-        <p>A text is in parts, as the Official Journal prints it: <span class="mono">title</span>,
-          <span class="mono">preamble</span>, <span class="mono">body</span>, <span class="mono">conclusions</span>,
-          <span class="mono">annexes</span> and <span class="mono">notes</span>. A part that the text does not have is
-          not in the answer. Its
-          <a href="/api/schema/text.json">JSON Schema</a> gives each member.</p>
-        <p>A part is a list of blocks. The <span class="mono">type</span> of a block tells what it is:</p>
-        <dl class="api-members">
-          <dt>text</dt>
-          <dd>A paragraph of running text.</dd>
-          <dt>unit</dt>
-          <dd>An article, a paragraph, a point, an annex and so on. It has an <span class="mono">eId</span>, a
-            <span class="mono">kind</span>, and its blocks in <span class="mono">content</span>. The list of kinds can
-            grow.</dd>
-          <dt>table</dt>
-          <dd>A table, in <span class="mono">rows</span> of <span class="mono">cells</span>. A cell holds blocks, because
-            a cell can hold units.</dd>
-          <dt>figure</dt>
-          <dd>An image, by the name of its file.</dd>
-          <dt>quotation</dt>
-          <dd>Text that an amending act quotes. It is not law of the act that quotes it.</dd>
-          <dt>deleted</dt>
-          <dd>Blocks that an amendment deleted, which the consolidated version still shows. They are not in force.</dd>
-        </dl>
-        <p>Running text has two forms. <span class="mono">text</span> is plain text. It does not have the markers of
-          notes or the words that an amendment deleted. <span class="mono">html</span> is HTML with only these
-          elements:</p>
-        <ul>
-          <li><span class="mono">b</span>, <span class="mono">i</span>, <span class="mono">u</span>,
-            <span class="mono">s</span>, <span class="mono">sup</span>, <span class="mono">sub</span>, and
-            <span class="mono">span</span> with a <span class="mono">class</span>, for typefaces.</li>
-          <li><span class="mono">time</span>, with <span class="mono">datetime</span>, for a date.</li>
-          <li><span class="mono">cite</span> for a reference to the Official Journal, and <span class="mono">a</span>
-            for a link. The marker of a note links to <span class="mono">#</span> and the note's
-            <span class="mono">eId</span>.</li>
-          <li><span class="mono">span</span> with <span class="mono">data-act</span> and
-            <span class="mono">data-action</span> for words that an amending act changed, and
-            <span class="mono">s</span> with them for words that it deleted.</li>
-          <li><span class="mono">ins</span> and <span class="mono">del</span> for the words that a comparison
-            marks.</li>
-          <li><span class="mono">br</span>, <span class="mono">span</span> with <span class="mono">lang</span>,
-            <span class="mono">img</span>, and <span class="mono">math</span> in MathML.</li>
-        </ul>
-        <p>A block that a consolidation changed has <span class="mono">amendedBy</span>: the amending act, by its
-          CELEX number, and what it did.</p>
-      </section>
-
-      <section id="relations">
-        <h2>Link relations</h2>
-        @for(var relation : relations)
-          <section id="${relation.name()}">
-            <h3 class="mono">av:${relation.name()}</h3>
-            $unsafe{relation.description()}
+      <section id="resources">
+        <h2>Resources</h2>
+        <p>The examples are real answers, for the act 2015/1998.</p>
+        @for(var resource : resources)
+          <section id="${resource.id()}">
+            <h3>${resource.title()}</h3>
+            $unsafe{resource.html()}
           </section>
         @endfor
       </section>

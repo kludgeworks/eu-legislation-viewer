@@ -1,0 +1,45 @@
+<h3>Amendments</h3>
+<p>The changes that other acts made to the provisions of an act, as the Publications Office records them. It links to
+  the act, <span class="mono">up</span>.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>amendments</dt>
+  <dd>
+    <p>Each change. It has:</p>
+    <dl class="api-members">
+      <dt>act</dt>
+      <dd>The CELEX number of the amending act.</dd>
+      <dt>cited</dt>
+      <dd>How the Official Journal cites the amending act. For example, <span class="mono">2019/103</span>.</dd>
+      <dt>location</dt>
+      <dd>Where it acts, as the Publications Office codes it. For example,
+        <span class="mono">AN PO 8.1.2.3 PTA (c)</span>.</dd>
+      <dt>role</dt>
+      <dd>What it did: <span class="mono">replacement</span>, <span class="mono">addition</span>,
+        <span class="mono">deletion</span>, <span class="mono">repeal</span>, <span class="mono">amendment</span>,
+        <span class="mono">extension</span>, <span class="mono">suspension</span>, <span class="mono">deferral</span>
+        or <span class="mono">other</span>.</dd>
+      <dt>from</dt>
+      <dd>The day from which it applies. Null if the Publications Office has none.</dd>
+      <dt>until</dt>
+      <dd>The day on which it ends, for a change that lapses. Null for the others.</dd>
+      <dt>languages</dt>
+      <dd>For an act that corrects only some languages: those languages. Empty if it changes all of them.</dd>
+    </dl>
+  </dd>
+  <dt>dates</dt>
+  <dd>
+    <p>The dates of each amending act, by its CELEX number. Each date has:</p>
+    <dl class="api-members">
+      <dt>date</dt>
+      <dd>The day. Null if the Publications Office has a placeholder or a date that cannot be.</dd>
+      <dt>kind</dt>
+      <dd><span class="mono">entry_into_force</span>, <span class="mono">application</span> or
+        <span class="mono">taking_effect</span>.</dd>
+      <dt>partial</dt>
+      <dd>Whether it is for a part of the act only.</dd>
+      <dt>clause</dt>
+      <dd>What sets it, as the Publications Office writes it. For example, <span class="mono">DATPUB +20 V ART 2</span>.</dd>
+    </dl>
+  </dd>
+</dl>

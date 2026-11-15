@@ -84,6 +84,11 @@ class ComparisonServiceTest {
     }
 
     @Override
+    public PublicText.Marked publicWording(Element unit) {
+      throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Optional<Outline> outline(TextId text) {
       throw new UnsupportedOperationException();
     }

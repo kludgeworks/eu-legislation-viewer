@@ -1,0 +1,52 @@
+<h3>Act</h3>
+<p>An EU act, by its CELEX number.</p>
+<h4>Members</h4>
+<dl class="api-members">
+  <dt>celex</dt>
+  <dd>Its CELEX number.</dd>
+  <dt>eli</dt>
+  <dd>The path of its ELI. For example, <span class="mono">reg_impl/2015/1998</span>. Older acts have none.</dd>
+  <dt>type</dt>
+  <dd>Its resource type, as the code of the Publications Office. For example, <span class="mono">REG_IMPL</span>.</dd>
+  <dt>titles</dt>
+  <dd>Its title in each language that the Publications Office has, by the EU's code of the language. For example,
+    <span class="mono">eng</span>.</dd>
+  <dt>dateOfDocument</dt>
+  <dd>The day on which it was adopted or signed.</dd>
+  <dt>inForce</dt>
+  <dd>Whether it is in force, as the Publications Office records it.</dd>
+  <dt>endOfValidity</dt>
+  <dd>The day on which it stops to apply. Null if it has no end.</dd>
+</dl>
+<h4>Links</h4>
+<dl class="api-members">
+  <dt>version-history</dt>
+  <dd>The list of its <a href="#version">versions</a>.</dd>
+  <dt>latest-version</dt>
+  <dd>Its latest version.</dd>
+  <dt>av:on</dt>
+  <dd><a href="#on">The law on a day</a>. A template with one variable, <span class="mono">date</span>. For example,
+    <span class="mono">2022-02-14</span>.</dd>
+  <dt>av:amendments</dt>
+  <dd>The <a href="#amendments">amendments</a> of its provisions.</dd>
+  <dt id="comparisons">av:comparisons</dt>
+  <dd>
+    <p>Finds the <a href="#comparison">comparison</a> of its text in one language between the law on two days. The
+      answer redirects to the comparison of the versions that apply on the two days. A template with these query
+      parameters:</p>
+    <dl class="api-members">
+      <dt>from</dt>
+      <dd>The first day.</dd>
+      <dt>to</dt>
+      <dd>The second day. It must not be before <span class="mono">from</span>.</dd>
+      <dt>language</dt>
+      <dd>The language. For example, <span class="mono">eng</span>.</dd>
+      <dt>amendingAct</dt>
+      <dd>Optional. The CELEX number of an act. The comparison then shows only the changes of that act.</dd>
+    </dl>
+    <p>If <span class="mono">from</span>, <span class="mono">to</span> or <span class="mono">language</span> is missing,
+      or <span class="mono">from</span> is after <span class="mono">to</span>, the status is
+      <span class="mono">400 Bad Request</span>.</p>
+  </dd>
+</dl>
+${act/act}
