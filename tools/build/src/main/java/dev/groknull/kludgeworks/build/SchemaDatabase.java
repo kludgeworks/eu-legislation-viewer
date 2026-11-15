@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.build.flyway.PendingMigrations;
 import dev.groknull.kludgeworks.build.postgres.Postgres;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
 import java.util.Arrays;
 import org.flywaydb.core.Flyway;
 import org.testcontainers.postgresql.PostgreSQLContainer;
@@ -20,8 +21,10 @@ import org.testcontainers.postgresql.PostgreSQLContainer;
  * released ones ({@link PendingMigrations}). The command gets the database's address in {@code
  * DATABASE_URL}, and Postgres stops when it ends.
  *
- * <p>Arguments: the directory of the modules' migrations, then the command. Relative paths and the
- * command are taken from the workspace when run by {@code bazel run}.
+ * <p>Arguments: the directory of the modules' migrations, then the command. The command runs in the
+ * workspace when run by {@code bazel run}, so its relative paths are the workspace's. Its program,
+ * when given as a path, is a tool in the runfiles, for example tbls: it is found before the command
+ * moves to the workspace.
  */
 public final class SchemaDatabase {
   private SchemaDatabase() {}
@@ -32,7 +35,10 @@ public final class SchemaDatabase {
     }
     var workspace = Path.of(System.getenv().getOrDefault("BUILD_WORKSPACE_DIRECTORY", "."));
     var migrations = workspace.resolve(args[0]);
-    var command = Arrays.asList(args).subList(1, args.length);
+    var command = new ArrayList<>(Arrays.asList(args).subList(1, args.length));
+    if (command.getFirst().contains("/")) {
+      command.set(0, Path.of(command.getFirst()).toAbsolutePath().toString());
+    }
     try (var postgres = Postgres.start()) {
       for (var module : ModuleMigrations.modules(migrations)) {
         ModuleMigrations.configure(PendingMigrations.configure(Flyway.configure()), module)

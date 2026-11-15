@@ -137,12 +137,11 @@ java_binary(
     ],
 )
 
-# a command run on Postgres in Docker with the app's schema, from its migrations (mise run db:diagram)
-java_binary(
+# a command run on Postgres in Docker with the app's schema, from its migrations: tbls's lint and
+# documentation (//viewer/src/test/db:schema and :diagram, mise run db:diagram)
+java_library(
     name = "schema_database",
     srcs = ["SchemaDatabase.java"],
-    jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"],
-    main_class = "dev.groknull.kludgeworks.build.SchemaDatabase",
     runtime_deps = [
         "@maven//:org_flywaydb_flyway_database_postgresql",
         "@maven//:org_postgresql_postgresql",

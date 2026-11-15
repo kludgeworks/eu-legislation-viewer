@@ -1,42 +1,50 @@
 # SPDX-License-Identifier: MIT
-load("@contrib_rules_jvm//java:defs.bzl", "java_test")
-load("@rules_shell//shell:sh_binary.bzl", "sh_binary")
-load("@rules_shell//shell:sh_test.bzl", "sh_test")
+load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_test")
 
-# tbls on the schema the migrations make, built on Postgres in Docker, with .tbls.yml: the arguments
-# both targets start with, then tbls's command
+# tbls on the schema the migrations make, built on Postgres in Docker (SchemaDatabase), with
+# .tbls.yml: the arguments both targets start with, then tbls's command and its configuration
 SCHEMA_ARGS = [
-    "$(rootpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_database)",
     "viewer/src/main/resources/db/migration",
     "$(rootpath //tools/build:tbls)",
+]
+
+SCHEMA_CONFIG = [
+    "--config",
     "$(rootpath //:.tbls.yml)",
 ]
 
 SCHEMA_DATA = [
     "//:.tbls.yml",
     "//tools/build:tbls",
-    "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_database",
     "//viewer/src/main/resources:migrations",
 ]
 
-# every table described (COMMENT ON) and in its module's viewpoint
-sh_test(
+SCHEMA_DATABASE = "//tools/build/src/main/java/dev/groknull/kludgeworks/build:schema_database"
+
+# every table described (COMMENT ON) and in its module's viewpoint. SchemaDatabase's main is the
+# test: it exits with tbls's status
+java_test(
     name = "schema",
-    srcs = ["schema.sh"],
-    args = SCHEMA_ARGS + ["lint"],
+    args = SCHEMA_ARGS + ["lint"] + SCHEMA_CONFIG,
     data = SCHEMA_DATA,
+    jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"],
+    main_class = "dev.groknull.kludgeworks.build.SchemaDatabase",
     tags = ["requires-docker"],
+    use_testrunner = False,
+    runtime_deps = [SCHEMA_DATABASE],
 )
 
 # the schema's documentation and Mermaid diagrams, written into docs/database (mise run db:diagram)
-sh_binary(
+java_binary(
     name = "diagram",
-    srcs = ["schema.sh"],
     args = SCHEMA_ARGS + [
         "doc",
         "--rm-dist",
-    ],
+    ] + SCHEMA_CONFIG,
     data = SCHEMA_DATA,
+    jvm_flags = ["-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"],
+    main_class = "dev.groknull.kludgeworks.build.SchemaDatabase",
+    runtime_deps = [SCHEMA_DATABASE],
 )
 
 # the pending migrations keep the schema the released code uses: expand, then contract, a release
