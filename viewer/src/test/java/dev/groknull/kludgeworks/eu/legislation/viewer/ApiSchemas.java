@@ -62,9 +62,17 @@ public final class ApiSchemas {
     }
   }
 
-  /** Gives every object schema below {@code node} that names its members no others. */
+  /**
+   * Gives every object schema below {@code node} that names its members no others. An object schema
+   * has {@code "type": "object"}. A condition, such as the {@code if} that picks a block's schema
+   * by its type, does not, and stays open.
+   */
   private static void close(JsonNode node) {
-    if (node.isObject() && node.has("properties") && !node.has("additionalProperties")) {
+    if (node.isObject()
+        && node.path("type").isString()
+        && node.path("type").asString().equals("object")
+        && node.has("properties")
+        && !node.has("additionalProperties")) {
       ((ObjectNode) node).put("additionalProperties", false);
     }
     node.values().forEach(ApiSchemas::close);
