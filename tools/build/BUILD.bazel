@@ -2,7 +2,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "pmd_binary", "pmd_ruleset", "spotbugs_binary", "spotbugs_config")
 load("@rules_java//java:defs.bzl", "java_import", "java_library", "java_package_configuration", "java_plugin")
 load("@rules_java//toolchains:default_java_toolchain.bzl", "DEFAULT_TOOLCHAIN_CONFIGURATION", "default_java_toolchain")
-load("@rules_shell//shell:sh_test.bzl", "sh_test")
+load("//tools/bzl/rules:cpd_test.bzl", "cpd_test")
 
 package(default_visibility = ["//visibility:public"])
 
@@ -33,17 +33,16 @@ pmd_ruleset(
     shallow = False,
 )
 
-# CPD (Copy-Paste Detector) test (ISS-82). It reads the Java sources from the workspace, not from
-# its inputs, so Bazel must never cache its result (external)
-sh_test(
+# CPD (Copy-Paste Detector) test (ISS-82): the viewer's sources, through the app's dependencies,
+# and the build tools' sources
+cpd_test(
     name = "cpd",
-    srcs = ["cpd.sh"],
-    args = ["$(rootpath :pmd_cli)"],
-    data = [":pmd_cli"],
-    tags = [
-        "external",
-        "local",
-        "no-sandbox",
+    size = "small",
+    targets = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build:java_sources",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/flyway",
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/postgres",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
     ],
 )
 

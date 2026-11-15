@@ -3,6 +3,12 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_binary", "java_library")
 
 package(default_visibility = ["//visibility:public"])
 
+# The package's Java sources, for the copy-paste check (//tools/build:cpd)
+filegroup(
+    name = "java_sources",
+    srcs = glob(["*.java"]),
+)
+
 # The package's @NullMarked (package-info), for NullAway: each target here depends on it
 java_library(
     name = "package_info",
