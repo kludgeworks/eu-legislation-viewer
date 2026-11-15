@@ -16,6 +16,9 @@
  *
  * In Compare its button collapses the outline to a rail of the parts and their counts. The
  * browser of the reader remembers the choice in `localStorage`.
+ *
+ * The `<page-contents>` element follows the reader in the same way beside a page of reference,
+ * About and the API's documentation.
  */
 
 /** The localStorage key that remembers if the outline is a rail. */
@@ -413,4 +416,64 @@ export class ActOutline extends HTMLElement {
 
 if (!customElements.get("act-outline")) {
   customElements.define("act-outline", ActOutline);
+}
+
+/**
+ * Marks the entry of a page's contents for the part the reader is in: the last place in the page
+ * that its links go to and that the reader passed. Before the first, the reader is in the first.
+ *
+ * @param {HTMLElement} nav the contents
+ * @param {Document} root
+ * @param {Element[]} [ordered] the places the contents go to, if they are known
+ */
+export const locate = (nav, root, ordered) => {
+  const all = ordered ?? places(nav, root);
+  mark(nav, entry(nav, root, all, all.length > 0 ? Math.max(passed(all), 0) : -1));
+};
+
+/**
+ * Custom element for the contents beside a page of reference, for example About and the API's
+ * documentation (catalogue/handbook.jte). It marks the entry of the part the reader is in, as the
+ * outline of an act does. Only the links in the page itself, `#name`, follow the reader.
+ */
+export class PageContents extends HTMLElement {
+  /** @type {IntersectionObserver | null} */
+  #observer = null;
+  /** @type {Element[]} */
+  #places = [];
+
+  connectedCallback() {
+    const nav = this.querySelector("nav");
+    if (!nav) {
+      return;
+    }
+    this.#places = places(nav, document);
+    if (typeof IntersectionObserver === "function") {
+      this.#observer = new IntersectionObserver(this.#update, {
+        rootMargin: `-${AT}px 0px -50% 0px`,
+      });
+      for (const place of this.#places) {
+        this.#observer.observe(place);
+      }
+    }
+    window.addEventListener("scrollend", this.#update);
+    this.#update();
+  }
+
+  disconnectedCallback() {
+    this.#observer?.disconnect();
+    this.#observer = null;
+    window.removeEventListener("scrollend", this.#update);
+  }
+
+  #update = () => {
+    const nav = this.querySelector("nav");
+    if (nav && this.isConnected) {
+      locate(nav, document, this.#places);
+    }
+  };
+}
+
+if (!customElements.get("page-contents")) {
+  customElements.define("page-contents", PageContents);
 }

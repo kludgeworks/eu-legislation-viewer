@@ -251,31 +251,10 @@ button.link {
   cursor: pointer;
 }
 
-/* A page of plain text, at reading width. For example, the About page. */
-.text-page {
-  max-width: 44rem;
-  color: var(--ink2);
-}
-
-.text-page h1 {
-  margin: 0 0 12px;
-  font:
-    600 28px/1.2 Georgia,
-    serif;
-  color: var(--ink);
-}
-
-.text-page h2 {
-  margin: 28px 0 6px;
-  font:
-    600 19px Georgia,
-    serif;
-  color: var(--ink);
-}
-
-/* The documentation of the API (catalogue/api.jte), laid out as a handbook: a column of contents
- * that stays in view, beside a column of reading width. */
-.api-docs {
+/* A page of reference, About and the API's documentation (catalogue/handbook.jte), laid out as a
+ * handbook: a column of contents that stays in view, beside a column of reading width. Both pages
+ * have the same columns, so the page does not move between them. */
+.handbook {
   display: grid;
   grid-template-columns: 220px minmax(0, 760px);
   gap: 48px;
@@ -284,7 +263,7 @@ button.link {
   color: var(--ink2);
 }
 
-.api-contents {
+.handbook-contents {
   position: sticky;
   top: 56px;
   align-self: start;
@@ -293,7 +272,7 @@ button.link {
   font-size: 14px;
 }
 
-.api-docs .api-contents h2 {
+.handbook .handbook-contents h2 {
   margin: 0 0 8px;
   font:
     400 11px system-ui,
@@ -303,7 +282,7 @@ button.link {
   color: var(--muted);
 }
 
-.api-contents ul {
+.handbook-contents ul {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -312,26 +291,42 @@ button.link {
   list-style: none;
 }
 
-.api-contents ul ul {
+.handbook-contents ul ul {
   gap: 2px;
   margin: 4px 0 6px 12px;
 }
 
-.api-contents .api-terms {
+.handbook-contents .handbook-terms {
   font-size: 12.5px;
 }
 
-.api-contents a {
+.handbook-contents a {
+  display: block;
+  margin-left: -10px;
+  padding-left: 8px;
+  border-left: 2px solid transparent;
   color: var(--ink2);
   text-decoration: none;
 }
 
-.api-contents a:hover {
+.handbook-contents a:hover {
   color: var(--accent);
   text-decoration: underline;
 }
 
-.api-docs h1 {
+/* The part the reader is in (js/outline.js, page-contents), and the parts that hold it */
+.handbook-contents a[aria-current="location"] {
+  border-left-color: var(--accent);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.handbook-contents li:has(a[aria-current="location"]) > a:not([aria-current]) {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.handbook h1 {
   margin: 0 0 8px;
   font:
     600 30px/1.2 Georgia,
@@ -339,12 +334,12 @@ button.link {
   color: var(--ink);
 }
 
-.api-docs .api-lead {
+.handbook .api-lead {
   margin: 0 0 28px;
   font-size: 16px;
 }
 
-.api-docs h2 {
+.handbook article h2 {
   margin: 36px 0 8px;
   font:
     600 21px Georgia,

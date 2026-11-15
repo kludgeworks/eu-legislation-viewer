@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * catalogue's and the comparison's resources and problem types.
  */
 @WebMvcTest(ApiDocsController.class)
-@Import(ControllerTesting.class)
+@Import({ControllerTesting.class, ApiDocs.class})
 class ApiDocsControllerTests {
   @Autowired MockMvcTester mvc;
 
@@ -60,6 +60,7 @@ class ApiDocsControllerTests {
             page.select("#resources > section").eachAttr("id").stream()
                 .map(id -> "#" + id)
                 .toList());
+    assertThat(page.select("nav a[href=/about#what]").text()).isEqualTo("What this is");
   }
 
   @Test

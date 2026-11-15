@@ -6,6 +6,7 @@ import {
   RAIL,
   follow,
   format,
+  locate,
   part,
   passed,
   rail,
@@ -271,5 +272,58 @@ describe("railed", () => {
 
     railed(nav, 0);
     expect(nav.querySelectorAll("a.on")).toHaveLength(0);
+  });
+});
+
+/** The contents of a page: two of its parts, one nested, and a part of another page. */
+const CONTENTS = `
+  <nav>
+    <ul>
+      <li><a href="#resources">Resources</a>
+        <ul><li><a href="#act">Act</a></li></ul>
+      </li>
+      <li><a href="/about#what">What this is</a></li>
+    </ul>
+  </nav>
+  <section id="resources"><section id="act"></section></section>`;
+
+/**
+ * Puts the top of a part of the page above or below the line the reader is at.
+ *
+ * @param {string} id
+ * @param {boolean} above
+ */
+const at = (id, above) => {
+  one(`#${id}`).getBoundingClientRect = () => DOMRect.fromRect({ y: above ? AT - 10 : AT + 100 });
+};
+
+
+describe("locate", () => {
+  test("marks the deepest part of the page the reader is in", () => {
+    document.body.innerHTML = CONTENTS;
+    at("resources", true);
+    at("act", true);
+
+    locate(one("nav"), document);
+
+    expect(one("a[aria-current]").getAttribute("href")).toBe("#act");
+  });
+
+  test("marks the first part before the reader reaches it", () => {
+    document.body.innerHTML = CONTENTS;
+    at("resources", false);
+    at("act", false);
+
+    locate(one("nav"), document);
+
+    expect(one("a[aria-current]").getAttribute("href")).toBe("#resources");
+  });
+
+  test("marks none if no link goes to the page", () => {
+    document.body.innerHTML = `<nav><ul><li><a href="/about#what">What this is</a></li></ul></nav>`;
+
+    locate(one("nav"), document);
+
+    expect(document.querySelector("a[aria-current]")).toBeNull();
   });
 });

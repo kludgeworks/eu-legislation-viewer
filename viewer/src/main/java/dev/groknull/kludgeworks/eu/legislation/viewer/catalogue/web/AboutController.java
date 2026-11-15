@@ -19,20 +19,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 class AboutController {
   private final Templates templates;
   private final Release release;
+  private final ApiDocs docs;
 
-  AboutController(Templates templates, Release release) {
+  AboutController(Templates templates, Release release, ApiDocs docs) {
     this.templates = templates;
     this.release = release;
+    this.docs = docs;
   }
 
   /**
    * Returns the About page. Its version is the release, for example {@code 2026.11.7}. A build from
    * the source has none, and shows the name that {@link Release} gives it, {@code dev-…}.
+   *
+   * <p>The page has the contents of the API's documentation beside it, so the two pages have the
+   * same frame.
    */
   @GetMapping(path = "/about", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> about(HttpServletRequest request) {
+    var parts = docs.read();
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
-        .body(templates.catalogueAbout(Frame.of(request), release.value()).render());
+        .body(
+            templates
+                .catalogueAbout(
+                    Frame.of(request), release.value(), parts.resources(), parts.problems())
+                .render());
   }
 }
