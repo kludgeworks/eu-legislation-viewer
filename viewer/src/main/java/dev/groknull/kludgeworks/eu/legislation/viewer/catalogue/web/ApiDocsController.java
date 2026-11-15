@@ -3,8 +3,8 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiStepView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiTermView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -98,7 +98,7 @@ class ApiDocsController {
         .body(
             templates
                 .catalogueApi(
-                    Chrome.of(request),
+                    Frame.of(request),
                     terms(guide, shown).stream().map(ApiDocsController::step).toList(),
                     shown,
                     terms(relations, shown),

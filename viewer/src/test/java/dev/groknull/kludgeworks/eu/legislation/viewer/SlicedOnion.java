@@ -69,11 +69,11 @@ final class SlicedOnion {
    * module of its name.
    */
   private static final Map<String, String> FOLDERS =
-      Map.of("layout", "chrome", "legal", "legaltext", "legalpart", "legaltext");
+      Map.of("layout", "site", "legal", "legaltext", "legalpart", "legaltext");
 
   /**
-   * The templates a module publishes, as its API is: any template may call them. The chrome
-   * module's page is the shell of every page.
+   * The templates a module publishes, as its API is: any template may call them. The site module's
+   * page is the shell of every page.
    */
   private static final Set<String> PUBLISHED = Set.of(TEMPLATES + ".layout.JtepageGenerated");
 

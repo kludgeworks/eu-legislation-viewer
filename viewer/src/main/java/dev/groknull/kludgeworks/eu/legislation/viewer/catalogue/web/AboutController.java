@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.MediaType;
@@ -33,6 +33,6 @@ class AboutController {
   ResponseEntity<String> about(HttpServletRequest request) {
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
-        .body(templates.catalogueAbout(Chrome.of(request), release.value()).render());
+        .body(templates.catalogueAbout(Frame.of(request), release.value()).render());
   }
 }

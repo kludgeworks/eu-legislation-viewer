@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
 import java.io.UnsupportedEncodingException;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.Test;

@@ -322,7 +322,7 @@ java_junit5_test(
 )
 
 # The pages' controllers alone (@WebMvcTest, MockMvc), what they ask of the modules mocked: where
-# their addresses lead, what they refuse, the pages' chrome. No store, no containers.
+# their addresses lead, what they refuse, the frame of the pages. No store, no containers.
 java_test_suite(
     name = "controllers",
     size = "small",
@@ -344,10 +344,10 @@ java_test_suite(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:web",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/site",
         "//viewer/src/main/jte",
         "@maven//:jakarta_servlet_jakarta_servlet_api",
         "@maven//:org_assertj_assertj_core",
@@ -399,10 +399,10 @@ java_test_suite(
         ":recorded-acts",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:view",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/site",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",

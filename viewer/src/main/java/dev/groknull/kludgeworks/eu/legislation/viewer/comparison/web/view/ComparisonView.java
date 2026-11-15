@@ -7,8 +7,8 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * A view of a comparison. It sets what part of the two texts the comparison shows, and how. The
- * address of a comparison names it, in the {@code view} field of the {@code comparepage} module's
- * {@code ComparePage}.
+ * address of a comparison names it, in the {@code view} field of the catalogue's {@code
+ * ComparePage}.
  */
 public enum ComparisonView {
   /** Only the provisions that differ, with the opening of the unit each is in. */

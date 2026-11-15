@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.chrome;
+package dev.groknull.kludgeworks.eu.legislation.viewer.site;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
@@ -52,7 +52,7 @@ class ThemeController {
     var theme =
         Theme.ofCode(set).orElseThrow(() -> new ResponseStatusException(HttpStatus.BAD_REQUEST));
     var cookie =
-        ResponseCookie.from(Chrome.THEME, theme.code())
+        ResponseCookie.from(Frame.THEME, theme.code())
             .path("/")
             .maxAge(KEPT)
             .httpOnly(true)

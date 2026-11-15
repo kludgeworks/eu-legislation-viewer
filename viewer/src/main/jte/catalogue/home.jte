@@ -1,6 +1,6 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HomeView
-@param Chrome chrome
+@param Frame frame
 @param String title
 @param HomeView home
 <%-- Shows the home page. Its large line says what the viewer does (the site bar has the name), then
@@ -12,7 +12,7 @@
      that it looks the act up. htmx then asks the lookup address, which goes to the act when the
      Publications Office answers, or comes back with the line that no act has it. Without
      JavaScript, the head sends the browser to the lookup address. --%>
-@template.layout.page(chrome = chrome, title = title, search = false, head = @`@if(home.lookingUp() != null)<noscript><meta http-equiv="refresh" content="0;url=${home.lookingUp().href()}"></noscript>@endif`, content = @`
+@template.layout.page(frame = frame, title = title, search = false, head = @`@if(home.lookingUp() != null)<noscript><meta http-equiv="refresh" content="0;url=${home.lookingUp().href()}"></noscript>@endif`, content = @`
   <div class="home">
     <header class="home-mast">
       <h1 class="home-name">Read EU legislation as it stood on any day, and see what changed</h1>

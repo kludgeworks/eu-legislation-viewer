@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline.Entry
 @import java.util.List
 @param List<Entry> entries

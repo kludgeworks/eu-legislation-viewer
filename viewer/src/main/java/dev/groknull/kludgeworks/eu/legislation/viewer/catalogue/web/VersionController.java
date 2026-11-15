@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
@@ -17,13 +18,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Masthea
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
 import jakarta.servlet.http.HttpServletRequest;
@@ -133,14 +134,14 @@ class VersionController {
       @RequestParam(defaultValue = "false") boolean prepared,
       HttpServletRequest request) {
     var page = new Page(type, year, number, date, code);
-    var chrome = Chrome.of(request);
+    var frame = Frame.of(request);
     if (page.before) {
-      return page.notYet(chrome);
+      return page.notYet(frame);
     }
     var masthead = MastheadView.reading(page.act, page.version, date, page.language);
     if (page.act.timeline().in(page.language).isEmpty()) {
       return page.render(
-          chrome,
+          frame,
           masthead,
           templates.catalogueTextFailed(
               FailureView.missing(page.act, page.version, page.language, request.getRequestURI())),
@@ -153,7 +154,7 @@ class VersionController {
     if (preparation.preparing()) {
       return templates
           .cataloguePreparing(
-              chrome,
+              frame,
               ReadingView.title(page.act, date),
               masthead.whilePreparing(),
               TimelineView.preparing(page.act, preparation, today()),
@@ -166,9 +167,9 @@ class VersionController {
           .render();
     }
     return page.render(
-        chrome,
+        frame,
         masthead,
-        page.text(preparation, request.getRequestURI(), chrome.results()),
+        page.text(preparation, request.getRequestURI(), frame.results()),
         prepared,
         TimelineView.states(preparation),
         ArrivingView.of(preparation).orElse(null),
@@ -222,10 +223,10 @@ class VersionController {
      * Returns the page of a day before the act's first version. Its card shows the day and a dash,
      * and a panel in place of the text says that the act didn't exist yet, or wasn't in force yet.
      */
-    String notYet(Chrome chrome) {
+    String notYet(Frame frame) {
       return templates
           .catalogueVersion(
-              chrome,
+              frame,
               MastheadView.reading(act, version, date, language),
               TimelineView.before(act, language, today()),
               ReadingView.before(act, date, language),
@@ -236,7 +237,7 @@ class VersionController {
     }
 
     String render(
-        Chrome chrome,
+        Frame frame,
         MastheadView masthead,
         JteModel text,
         boolean arrived,
@@ -245,7 +246,7 @@ class VersionController {
         List<ActIdentifier> named) {
       return templates
           .catalogueVersion(
-              chrome,
+              frame,
               masthead,
               TimelineView.reading(act, version, date, language, today(), states),
               ReadingView.of(act, version, date, language, today(), named),
@@ -270,7 +271,7 @@ class VersionController {
      *       prepared.
      * </ul>
      */
-    JteModel text(Preparation preparation, String self, Chrome.@Nullable Results results) {
+    JteModel text(Preparation preparation, String self, Frame.@Nullable Results results) {
       var text = preparation.texts().get(version);
       if (text == null) {
         // The version is not in the language.
@@ -349,7 +350,7 @@ class VersionController {
 
   /** Returns today, in Brussels. */
   private LocalDate today() {
-    return Requests.today(clock);
+    return Timeline.today(clock);
   }
 
   private static Language language(String code) {

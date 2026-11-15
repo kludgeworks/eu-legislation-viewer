@@ -1,10 +1,10 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome
-@param Chrome chrome
+@import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame
+@param Frame frame
 @param String version
 <%-- Shows the About page: what the viewer is, what it keeps about a reader (Privacy), what it
      offers other programs (API), and the build. The home page's footer links to each part by its
      id. --%>
-@template.layout.page(chrome = chrome, title = "About · Amendment viewer", content = @`
+@template.layout.page(frame = frame, title = "About · Amendment viewer", content = @`
   <article class="text-page">
     <h1>About</h1>
     <section id="what">

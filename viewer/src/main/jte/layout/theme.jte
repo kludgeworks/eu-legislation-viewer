@@ -1,13 +1,13 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome
-@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Theme
-@param Chrome chrome
-!{var current = chrome.theme();}
+@import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame
+@import dev.groknull.kludgeworks.eu.legislation.viewer.site.Theme
+@param Frame frame
+!{var current = frame.theme();}
 <%-- Shows the theme switch: light, the device's theme, or dark. It is a plain form and is not
      boosted. The theme is set on the html element, and a boosted swap of the body would not change
      it. <theme-switch> applies the theme in place. Without JavaScript, the form posts. --%>
 <theme-switch>
 <form class="theme" method="post" action="/theme" role="group" aria-label="Colour theme">
-  <input type="hidden" name="back" value="${chrome.here()}">
+  <input type="hidden" name="back" value="${frame.here()}">
   <button name="set" value="light" title="Light" aria-label="Light" aria-pressed="${String.valueOf(current == Theme.LIGHT)}">
     <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6 13 13M3 13l1.4-1.4M11.6 4.4 13 3"/></svg>
   </button>

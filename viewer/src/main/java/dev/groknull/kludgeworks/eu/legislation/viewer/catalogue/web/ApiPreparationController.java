@@ -13,9 +13,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChang
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.Instant;

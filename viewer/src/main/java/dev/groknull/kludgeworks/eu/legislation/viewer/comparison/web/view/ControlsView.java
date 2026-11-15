@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import java.util.Arrays;
 import java.util.LinkedHashSet;

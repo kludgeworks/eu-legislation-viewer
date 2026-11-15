@@ -163,13 +163,13 @@ java_test_suite(
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:web",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/site",
         "//viewer/src/main/jte",
         "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue:one-act-cellar",
         "@maven//:gg_jte_jte_runtime",
@@ -204,7 +204,6 @@ java_test_suite(
     ],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparepage",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:view",

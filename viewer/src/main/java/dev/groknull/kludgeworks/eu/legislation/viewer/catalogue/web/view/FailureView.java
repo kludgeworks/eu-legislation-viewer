@@ -7,10 +7,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -168,7 +168,7 @@ public record FailureView(
    * back to its results.
    */
   public static FailureView act(
-      Act act, Preparation preparation, String self, Chrome.@Nullable Results results) {
+      Act act, Preparation preparation, String self, Frame.@Nullable Results results) {
     var failures =
         preparation.texts().values().stream()
             .map(text -> text instanceof Text.Failed failed ? failed.failure() : null)

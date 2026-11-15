@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.comparepage;
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -14,6 +14,11 @@ import org.jspecify.annotations.Nullable;
  * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&to=2026-10-01} has its changes at {@code
  * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&to=2026-10-01}. A part finds its page
  * by dropping its own segment, {@link #ofPart}.
+ *
+ * <p>The page is the catalogue's, and its parts are the comparison module's. The rule that ties a
+ * part to its page is the contract between the two: a part's address is the page's address with a
+ * segment added, and the page's query. The comparison module maps its controller to the constants
+ * here, so the rule is written once.
  *
  * <p>The constants are the paths and the names of the query's fields. They are constant
  * expressions, so that a controller can map them.

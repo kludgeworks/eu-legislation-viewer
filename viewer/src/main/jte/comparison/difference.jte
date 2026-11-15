@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView

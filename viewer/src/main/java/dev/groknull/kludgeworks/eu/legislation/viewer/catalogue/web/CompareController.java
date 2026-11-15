@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
@@ -17,11 +18,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.models.runtime.JteModel;
 import jakarta.servlet.http.HttpServletRequest;
@@ -129,14 +129,14 @@ class CompareController {
             + Dates.inShort(page.fromDay)
             + " → "
             + Dates.inShort(page.toDay);
-    var chrome = Chrome.of(request);
+    var frame = Frame.of(request);
     var masthead =
         MastheadView.comparing(
             page.act, page.from, page.fromDay, page.to, page.toDay, page.language);
     if (page.before) {
       return ResponseEntity.ok()
           .contentType(Requests.HTML)
-          .body(page.notYet(chrome, title, masthead));
+          .body(page.notYet(frame, title, masthead));
     }
     var preparation = texts.prepare(page.act, page.language);
     if (preparation.preparing()) {
@@ -145,10 +145,10 @@ class CompareController {
           .body(
               templates
                   .cataloguePreparing(
-                      chrome,
+                      frame,
                       title,
                       masthead.whilePreparing(),
-                      TimelineView.preparing(page.act, preparation, Requests.today(clock)),
+                      TimelineView.preparing(page.act, preparation, Timeline.today(clock)),
                       PreparingView.of(
                           page.act,
                           preparation,
@@ -160,13 +160,13 @@ class CompareController {
                           clock.instant()))
                   .render());
     }
-    var today = Requests.today(clock);
+    var today = Timeline.today(clock);
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
             templates
                 .catalogueCompare(
-                    chrome,
+                    frame,
                     title,
                     masthead,
                     TimelineView.comparing(
@@ -192,7 +192,7 @@ class CompareController {
                         .noting(note),
                     page.from.equals(page.to)
                         ? page.same()
-                        : page.changes(preparation, self(request), chrome.results()),
+                        : page.changes(preparation, self(request), frame.results()),
                     prepared,
                     ArrivingView.of(preparation).orElse(null),
                     view)
@@ -268,7 +268,7 @@ class CompareController {
       act = acts.find(eli).orElseThrow(Requests::notFound);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
       // Without dates, use the version that applies today. If none applies today, use the latest.
-      var current = timeline.applicableOn(Requests.today(clock)).orElseGet(timeline::latest);
+      var current = timeline.applicableOn(Timeline.today(clock)).orElseGet(timeline::latest);
       var later =
           to != null
               ? to
@@ -328,18 +328,18 @@ class CompareController {
      * changes says that the act didn't exist yet, or wasn't in force yet. Its first button compares
      * from the day the act came into force.
      */
-    String notYet(Chrome chrome, String title, MastheadView masthead) {
+    String notYet(Frame frame, String title, MastheadView masthead) {
       var first = timeline.versions().getFirst();
       var toBefore = toDay.isBefore(first.date());
       var compareTo =
           toBefore ? timeline.successor(first).map(Version::date).orElseGet(first::date) : toDay;
-      var today = Requests.today(clock);
+      var today = Timeline.today(clock);
       return templates
           .catalogueCompare(
-              chrome,
+              frame,
               title,
               masthead,
-              TimelineView.before(act, language, Requests.today(clock)),
+              TimelineView.before(act, language, Timeline.today(clock)),
               CompareView.before(act, fromDay, toBefore ? null : to, toDay, language, today),
               templates.catalogueTextFailed(
                   FailureView.comparingBefore(act, fromDay, compareTo, language)),
@@ -392,7 +392,7 @@ class CompareController {
      *       being prepared.
      * </ul>
      */
-    JteModel changes(Preparation preparation, String self, Chrome.@Nullable Results results) {
+    JteModel changes(Preparation preparation, String self, Frame.@Nullable Results results) {
       if (preparation.ready() == 0) {
         return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));
       }

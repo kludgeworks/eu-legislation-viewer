@@ -14,7 +14,7 @@
  *   what is nested deeper than {@link DEPTH};
  * - highlight.js, which the page loads before this module with its grammar of HTTP, colours the
  *   headers and the command, and this module colours the body with highlight.js's class names.
- *   chrome.css gives them the theme's colours.
+ *   site.css gives them the theme's colours.
  */
 
 /** @type {{ highlightElement(element: HTMLElement): void } | undefined} */

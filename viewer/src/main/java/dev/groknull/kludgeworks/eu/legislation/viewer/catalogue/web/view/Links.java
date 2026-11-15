@@ -2,10 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -53,8 +53,8 @@ public final class Links {
    * limited to the changes of {@code only}, if any. Its parts are the comparison module's: the
    * compare page loads its changes ({@link ComparePage#changes}) into its text slot, and its acts
    * ({@link ComparePage#acts}) into its acts slot. The address of each part is the contract between
-   * the two modules, which the {@code comparepage} module writes: the comparison module answers
-   * them ({@code ChangesController}), and no Java ties the two modules together.
+   * the two modules, which {@link ComparePage} writes: the comparison module answers them ({@code
+   * ChangesController}), and no Java ties the two modules together.
    */
   public static ComparePage page(
       Eli eli,

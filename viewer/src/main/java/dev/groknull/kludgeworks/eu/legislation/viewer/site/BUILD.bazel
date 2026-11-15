@@ -1,12 +1,12 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 
-# The chrome module: what every page has around it, the layout's
+# The site module: the frame of every page, the layout's
 # (src/main/jte/layout), the reader's colour theme and where the page is; and how every page reads
 # and answers a request, and how a browser caches the answer (Release). Its own target, so the
 # templates can take it while the modules' web packages render them
 java_library(
-    name = "chrome",
+    name = "site",
     srcs = glob(["*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
     deps = [

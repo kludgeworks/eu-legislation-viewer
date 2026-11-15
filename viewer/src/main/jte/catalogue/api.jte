@@ -1,8 +1,8 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiStepView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ApiTermView
-@import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome
+@import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame
 @import java.util.List
-@param Chrome chrome
+@param Frame frame
 @param List<ApiStepView> guide
 @param java.util.Map<String, String> examples
 @param List<ApiTermView> relations
@@ -17,10 +17,10 @@
      .api-example): the request, then the response's body, its headers and the request as curl.
      js/examples.js turns them into tabs, folds the repetitive parts of a body, and colours them;
      without it, the card shows all three. --%>
-@template.layout.page(chrome = chrome, title = "API · Amendment viewer", content = @`
-  <script src="${chrome.assets().highlight()}" defer></script>
-  <script src="${chrome.assets().highlightHttp()}" defer></script>
-  <script type="module" src="${chrome.assets().examples()}"></script>
+@template.layout.page(frame = frame, title = "API · Amendment viewer", content = @`
+  <script src="${frame.assets().highlight()}" defer></script>
+  <script src="${frame.assets().highlightHttp()}" defer></script>
+  <script type="module" src="${frame.assets().examples()}"></script>
   <div class="api-docs">
     <nav class="api-contents" aria-label="Contents">
       <h2>About</h2>

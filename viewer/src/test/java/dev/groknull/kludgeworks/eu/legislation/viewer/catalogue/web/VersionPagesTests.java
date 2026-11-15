@@ -36,7 +36,7 @@ import org.springframework.web.client.RestClient;
  * events. Then the version page takes its place, with its outline and the text. The text is
  * transcluded from the content module. The data is the converter's fixtures, with the consolidation
  * of 2015/1998 of 22 March 2026 in English. Today is 1 June 2021. {@code VersionControllerTests}
- * tests where the addresses lead, what they refuse and the chrome.
+ * tests where the addresses lead, what they refuse and the frame.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})

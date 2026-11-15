@@ -11,9 +11,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView.Action;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -149,7 +149,7 @@ class FailureViewTest {
             AVSEC,
             preparation,
             SELF,
-            new Chrome.Results("aviation security", "/?q=aviation%20security"));
+            new Frame.Results("aviation security", "/?q=aviation%20security"));
 
     assertThat(failure.heading()).isEqualTo("This act couldn't be prepared");
     assertThat(failure.words())

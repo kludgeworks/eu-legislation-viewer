@@ -5,16 +5,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -35,6 +32,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import gg.jte.output.StringOutput;
 import jakarta.servlet.http.HttpServletRequest;
@@ -67,7 +67,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  * <p>The compare page is the catalogue's, at {@link ComparePage#PATH}. It has slots that htmx fills
  * from the addresses here, each the page's address with a segment added and the page's query, as
- * the {@code comparepage} module writes them:
+ * the catalogue's {@link ComparePage} writes them:
  *
  * <ul>
  *   <li>{@code /changes}: the changes, in the view that {@code view} asks for

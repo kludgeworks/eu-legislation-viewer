@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import org.jspecify.annotations.Nullable;
 

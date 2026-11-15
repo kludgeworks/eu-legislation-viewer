@@ -4,10 +4,10 @@
  * request.
  *
  * <ul>
- *   <li>{@link Chrome}: controllers make it from the request and pass it to the layout, {@code
+ *   <li>{@link Frame}: controllers make it from the request and pass it to the layout, {@code
  *       src/main/jte/layout}. It holds the colour theme of the reader and the location of the page.
  *       {@code POST /theme} sets the theme, in {@link ThemeController}.
- *   <li>{@link Requests}: the language of a request, today, not found, the media type of a page.
+ *   <li>{@link Requests}: the language of a request, not found, the media type of a page.
  *   <li>{@link Release}: the release of the app, and the entity tags and {@code Cache-Control} of
  *       the responses that the identities in their address decide.
  * </ul>
@@ -16,10 +16,10 @@
  * infrastructure, the outer ring of the onion, so only the infrastructure of the other modules, for
  * example their {@code web} packages, may use it.
  */
-@ApplicationModule(displayName = "Chrome")
+@ApplicationModule(displayName = "Site")
 @InfrastructureRing
 @NullMarked
-package dev.groknull.kludgeworks.eu.legislation.viewer.chrome;
+package dev.groknull.kludgeworks.eu.legislation.viewer.site;
 
 import org.jmolecules.architecture.onion.simplified.InfrastructureRing;
 import org.jspecify.annotations.NullMarked;

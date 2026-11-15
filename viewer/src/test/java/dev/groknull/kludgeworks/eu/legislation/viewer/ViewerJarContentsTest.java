@@ -54,7 +54,7 @@ class ViewerJarContentsTest {
                 "application.yaml",
                 "db/migration/__root/V2026_11_0_001__event_publication.sql",
                 "db/migration/catalogue/V2026_11_0_001__catalogue.sql",
-                "static/css/chrome.css",
+                "static/css/site.css",
                 "static/js/clock.js");
       }
     }

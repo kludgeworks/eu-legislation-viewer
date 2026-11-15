@@ -40,7 +40,7 @@ spring:
         strategy:
           content:
             # each asset's URL with a hash of its content in it (/css/viewer-<hash>.css, the pages'
-            # links: Chrome.Assets), so a page never runs a copy a browser kept from before it changed
+            # links: Frame.Assets), so a page never runs a copy a browser kept from before it changed
             enabled: true
             paths: /**
       cache:

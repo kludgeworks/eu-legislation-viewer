@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.legaltext;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Release;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
 import jakarta.validation.constraints.NotNull;
 import java.time.Duration;
 import java.util.Set;

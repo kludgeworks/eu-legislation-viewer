@@ -15,8 +15,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Timelin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Dot;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Step;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView.Year;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;

@@ -33,7 +33,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 /**
  * Tests the controller of the version page alone, with {@code @WebMvcTest} and the modules mocked.
  * The tests check where its addresses lead and what it refuses. The act is the act of {@link
- * OneActCellar}, with nothing of it prepared yet. The tests also check the chrome of the page: its
+ * OneActCellar}, with nothing of it prepared yet. The tests also check the frame of the page: its
  * theme and assets. {@code VersionPagesTests} tests the pages as the whole app builds them.
  */
 @WebMvcTest(VersionController.class)

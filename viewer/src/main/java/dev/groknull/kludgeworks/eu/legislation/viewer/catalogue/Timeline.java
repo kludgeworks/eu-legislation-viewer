@@ -2,7 +2,9 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.Clock;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -19,11 +21,21 @@ import org.jspecify.annotations.Nullable;
  *
  * <p>The version that applies on a date is the last one that starts on or before that date. Interim
  * versions are included once their date has passed. After a repeal, the last version applies.
+ *
+ * <p>Today is the day in Brussels, {@link #today}: the EU adopts its acts there, and the Official
+ * Journal dates them there.
  */
 @ValueObject
 public final class Timeline {
+  private static final ZoneId BRUSSELS = ZoneId.of("Europe/Brussels");
+
   private final List<Version> versions;
   private final NavigableMap<LocalDate, List<Version>> byDate;
+
+  /** Returns today in the EU: the date in Brussels. */
+  public static LocalDate today(Clock clock) {
+    return LocalDate.ofInstant(clock.instant(), BRUSSELS);
+  }
 
   /**
    * Makes a timeline of the versions, in any order. There is at most one version a day in any one

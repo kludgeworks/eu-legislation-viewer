@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
 
-# The pages' chrome: the theme switch
+# The site module: the theme switch and the date wording
 java_test_suite(
-    name = "chrome",
+    name = "site",
     size = "small",
     srcs = glob(["*Test.java"]),
     runner = "junit5",
@@ -14,7 +14,7 @@ java_test_suite(
         "@maven//:org_junit_platform_junit_platform_reporting",
     ],
     deps = [
-        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/chrome",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/site",
         "@maven//:org_assertj_assertj_core",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
         "@maven//:org_springframework_spring_test",

@@ -8,9 +8,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HomeView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Chrome;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
@@ -44,7 +44,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *       kind of act. For example, {@code ?type=regulation}.
  * </ul>
  *
- * <p>The search is kept in the {@link Chrome#SEARCH} cookie for a while. The site bar uses it to
+ * <p>The search is kept in the {@link Frame#SEARCH} cookie for a while. The site bar uses it to
  * link back to the results.
  *
  * <p>Search is a placeholder for now. Each search is logged once, at INFO. The log line has what
@@ -109,20 +109,19 @@ class HomeController {
       throw Requests.notFound();
     }
     var words = q.strip();
-    var chrome = Chrome.of(request);
+    var frame = Frame.of(request);
     if (words.isEmpty()) {
-      return page(chrome, "Amendment viewer", HomeView.empty());
+      return page(frame, "Amendment viewer", HomeView.empty());
     }
     var started = System.nanoTime();
-    var straight = straight(words, chrome, started, null);
+    var straight = straight(words, frame, started, null);
     if (straight.isPresent()) {
       return straight.get();
     }
     var query = Search.Query.of(words, kind, (page - 1) * PAGE, PAGE);
     if (query.isEmpty()) {
       LOG.info("Searched for “{}”: no words to search by", typed(words));
-      return page(
-          chrome, "Amendment viewer", HomeView.none(words, "Type words of an act's title."));
+      return page(frame, "Amendment viewer", HomeView.none(words, "Type words of an act's title."));
     }
     var found = search.matching(query.get());
     LOG.info(
@@ -136,7 +135,7 @@ class HomeController {
         millis(started));
     var remembered =
         ResponseCookie.from(
-                Chrome.SEARCH,
+                Frame.SEARCH,
                 "q="
                     + URLEncoder.encode(words, StandardCharsets.UTF_8)
                     + (kind == Search.Kind.ALL ? "" : "&type=" + kind.code()))
@@ -151,7 +150,7 @@ class HomeController {
         .body(
             templates
                 .catalogueHome(
-                    chrome,
+                    frame,
                     "Acts matching “" + words + "” · Amendment viewer",
                     HomeView.found(words, kind, page, PAGE, found))
                 .render());
@@ -167,7 +166,7 @@ class HomeController {
   @GetMapping(path = LOOK_UP, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> lookUp(@RequestParam String q, HttpServletRequest request) {
     var words = q.strip();
-    return straight(words, Chrome.of(request), System.nanoTime(), request)
+    return straight(words, Frame.of(request), System.nanoTime(), request)
         .orElseGet(
             () ->
                 ResponseEntity.status(HttpStatus.SEE_OTHER)
@@ -184,7 +183,7 @@ class HomeController {
    * @param lookingUp the request to {@link #LOOK_UP}, or null for a search
    */
   private Optional<ResponseEntity<String>> straight(
-      String words, Chrome chrome, long started, @Nullable HttpServletRequest lookingUp) {
+      String words, Frame frame, long started, @Nullable HttpServletRequest lookingUp) {
     var named = Named.of(words);
     if (named.isEmpty()) {
       return Optional.empty();
@@ -198,7 +197,7 @@ class HomeController {
           name.as());
       return Optional.of(
           page(
-              chrome,
+              frame,
               "Looking up " + name.number() + " · Amendment viewer",
               HomeView.lookingUp(
                   words,
@@ -221,7 +220,7 @@ class HomeController {
     if (eli.isEmpty()) {
       return Optional.of(
           page(
-              chrome,
+              frame,
               "Amendment viewer",
               HomeView.none(words, "No act has the CELEX number or ELI " + words + ".")));
     }
@@ -277,9 +276,9 @@ class HomeController {
     return Duration.ofNanos(System.nanoTime() - started).toMillis();
   }
 
-  private ResponseEntity<String> page(Chrome chrome, String title, HomeView home) {
+  private ResponseEntity<String> page(Frame frame, String title, HomeView home) {
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
-        .body(templates.catalogueHome(chrome, title, home).render());
+        .body(templates.catalogueHome(frame, title, home).render());
   }
 }

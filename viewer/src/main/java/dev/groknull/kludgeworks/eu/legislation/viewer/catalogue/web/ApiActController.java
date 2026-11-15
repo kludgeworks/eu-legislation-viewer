@@ -10,8 +10,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -304,7 +305,7 @@ class ApiActController {
 
   /** Returns the link to the version that applies today, if one does. */
   private Optional<Link> latest(Act act) {
-    var applying = act.timeline().allApplicableOn(Requests.today(clock));
+    var applying = act.timeline().allApplicableOn(Timeline.today(clock));
     return applying.isEmpty()
         ? Optional.empty()
         : Optional.of(to(act.id(), applying.getLast(), IanaLinkRelations.LATEST_VERSION));

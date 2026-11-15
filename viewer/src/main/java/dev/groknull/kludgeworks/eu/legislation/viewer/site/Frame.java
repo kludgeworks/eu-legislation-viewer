@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-package dev.groknull.kludgeworks.eu.legislation.viewer.chrome;
+package dev.groknull.kludgeworks.eu.legislation.viewer.site;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
@@ -14,7 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.web.util.WebUtils;
 
 /**
- * The chrome of a page. UI design uses this word for what frames the content of every page:
+ * The frame of a page: what is around the content of every page:
  *
  * <ul>
  *   <li>the site bar
@@ -23,7 +23,7 @@ import org.springframework.web.util.WebUtils;
  *   <li>the link back to the results of a search
  * </ul>
  *
- * <p>A controller makes the chrome from the request with {@link #of}. It passes the chrome to the
+ * <p>A controller makes the frame from the request with {@link #of}. It passes the frame to the
  * template of its page, for the layout.
  *
  * @param theme the colour theme of the reader, from the {@link #THEME} cookie. It is {@link
@@ -33,7 +33,7 @@ import org.springframework.web.util.WebUtils;
  * @param results the last search of the reader, from the {@link #SEARCH} cookie. It is none if
  *     there is no cookie.
  */
-public record Chrome(Theme theme, String here, Assets assets, @Nullable Results results) {
+public record Frame(Theme theme, String here, Assets assets, @Nullable Results results) {
   /** The cookie that keeps the theme of the reader. */
   public static final String THEME = "theme";
 
@@ -44,11 +44,11 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
    */
   public static final String SEARCH = "search";
 
-  /** Returns the chrome of the page that {@code request} asks for. */
-  public static Chrome of(HttpServletRequest request) {
+  /** Returns the frame of the page that {@code request} asks for. */
+  public static Frame of(HttpServletRequest request) {
     var cookie = WebUtils.getCookie(request, THEME);
     var query = request.getQueryString();
-    return new Chrome(
+    return new Frame(
         Theme.ofCode(cookie == null ? null : cookie.getValue()).orElse(Theme.SYSTEM),
         request.getRequestURI() + (query == null ? "" : "?" + query),
         Assets.of(request),
@@ -89,7 +89,7 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
 
   /**
    * The stylesheets and scripts of the page. The URL of each file contains a hash of its content.
-   * For example, {@code /css/chrome-<hash>.css}. The property {@code
+   * For example, {@code /css/site-<hash>.css}. The property {@code
    * spring.web.resources.chain.strategy.content} enables this. Thus a page always asks for the
    * current files, never for an old copy that a browser kept.
    */
@@ -118,7 +118,7 @@ public record Chrome(Theme theme, String here, Assets assets, @Nullable Results 
                   ResourceUrlProviderExposingInterceptor.RESOURCE_URL_PROVIDER_ATTR);
       return new Assets(
           List.of(
-              url(urls, request, "/css/chrome.css"),
+              url(urls, request, "/css/site.css"),
               url(urls, request, "/css/catalogue.css"),
               url(urls, request, "/css/comparison.css"),
               url(urls, request, "/css/legaltext.css")),

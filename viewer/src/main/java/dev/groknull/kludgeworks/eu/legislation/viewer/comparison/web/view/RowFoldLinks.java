@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.HashMap;

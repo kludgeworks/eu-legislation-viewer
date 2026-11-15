@@ -60,7 +60,7 @@ public final class RenderTexts {
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <title>%1$s</title>
-      <link rel="stylesheet" href="/css/chrome.css">
+      <link rel="stylesheet" href="/css/site.css">
       <link rel="stylesheet" href="/css/catalogue.css">
       <link rel="stylesheet" href="/css/comparison.css">
       <link rel="stylesheet" href="/css/legaltext.css">

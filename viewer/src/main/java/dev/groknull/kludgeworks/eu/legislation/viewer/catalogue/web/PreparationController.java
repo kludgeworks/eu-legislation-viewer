@@ -7,10 +7,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Requests;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import java.io.IOException;
 import java.time.Clock;
@@ -120,7 +121,7 @@ class PreparationController {
                     .data(
                         templates
                             .cataloguePreparingStream(
-                                TimelineView.preparing(act, preparation, Requests.today(clock)),
+                                TimelineView.preparing(act, preparation, Timeline.today(clock)),
                                 PreparingView.Progress.of(act, preparation, clock.instant()))
                             .render()));
       }

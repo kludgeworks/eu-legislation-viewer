@@ -1,4 +1,4 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparepage.ComparePage
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
 @param ChangesView.Shown shown
 @param ComparePage page

@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.chrome.Dates;
+import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
