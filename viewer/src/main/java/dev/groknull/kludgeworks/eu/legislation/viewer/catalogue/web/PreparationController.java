@@ -15,11 +15,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
 import java.io.IOException;
 import java.time.Clock;
-import java.time.Duration;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.context.event.EventListener;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -45,12 +40,7 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  */
 @Controller
 class PreparationController {
-  private static final Logger LOG = LoggerFactory.getLogger(PreparationController.class);
-
-  /** How long a stream lasts before the page is asked to connect again. */
-  private static final Duration LASTS = Duration.ofMinutes(10);
-
-  private final Set<Stream> streams = new CopyOnWriteArraySet<>();
+  private final PreparationStreams streams = new PreparationStreams(this::send);
   private final Acts acts;
   private final Texts texts;
   private final Templates templates;
@@ -77,61 +67,35 @@ class PreparationController {
     if (act.timeline().in(language).isEmpty()) {
       throw Requests.notFound();
     }
-    var stream = new Stream(new SseEmitter(LASTS.toMillis()), act.id(), language);
-    stream.emitter().onCompletion(() -> streams.remove(stream));
-    stream.emitter().onTimeout(() -> streams.remove(stream));
-    stream.emitter().onError(e -> streams.remove(stream));
-    streams.add(stream);
-    send(stream);
-    return stream.emitter();
+    return streams.open(act.id(), language);
   }
 
-  /**
-   * Sends the current state of a preparation that changed. It sends to each stream of that act in
-   * that language.
-   */
+  /** Sends the preparation that changed to each page that waits for it. */
   @EventListener
   void on(Broadcast<PreparationChanged> broadcast) {
-    var changed = broadcast.event();
-    for (var stream : streams) {
-      if (stream.language() == changed.language() && stream.act().equals(changed.act())) {
-        send(stream);
-      }
-    }
+    streams.changed(broadcast.event());
   }
 
   /**
-   * Sends the current state of the act of {@code stream}, or {@code done} if the act is settled. It
-   * reads the act again, because the act may have versions that it did not have when the stream
-   * began.
+   * Sends the parts of the page that change, or {@code done} if the act is settled.
+   *
+   * @return whether the act is settled
    */
-  private void send(Stream stream) {
-    var act = acts.find(stream.act()).orElseThrow();
-    var preparation = texts.preparation(act, stream.language());
-    try {
-      if (preparation.settled()) {
-        stream.emitter().send(SseEmitter.event().name("done").data(""));
-        stream.emitter().complete();
-        streams.remove(stream);
-      } else {
-        stream
-            .emitter()
-            .send(
-                SseEmitter.event()
-                    .data(
-                        templates
-                            .cataloguePreparingStream(
-                                TimelineView.preparing(act, preparation, Timeline.today(clock)),
-                                PreparingView.Progress.of(act, preparation, clock.instant()))
-                            .render()));
-      }
-    } catch (IOException | IllegalStateException e) {
-      // The page closed, so its stream is no longer necessary.
-      LOG.debug("A preparation's stream closed: {}", e.toString());
-      streams.remove(stream);
+  private boolean send(SseEmitter emitter, ActIdentifier id, Language language) throws IOException {
+    var act = acts.find(id).orElseThrow();
+    var preparation = texts.preparation(act, language);
+    if (preparation.settled()) {
+      emitter.send(SseEmitter.event().name("done").data(""));
+      return true;
     }
+    emitter.send(
+        SseEmitter.event()
+            .data(
+                templates
+                    .cataloguePreparingStream(
+                        TimelineView.preparing(act, preparation, Timeline.today(clock)),
+                        PreparingView.Progress.of(act, preparation, clock.instant()))
+                    .render()));
+    return false;
   }
-
-  /** A page's stream. */
-  private record Stream(SseEmitter emitter, ActIdentifier act, Language language) {}
 }

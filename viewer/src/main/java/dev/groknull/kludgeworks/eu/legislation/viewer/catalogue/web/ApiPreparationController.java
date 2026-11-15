@@ -17,11 +17,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.io.IOException;
-import java.time.Duration;
 import java.time.Instant;
 import java.util.Locale;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,10 +52,7 @@ class ApiPreparationController {
 
   private static final String PREPARATION = ApiActController.ACT + "/preparations/{language}";
 
-  /** How long a stream lasts before the client connects again. */
-  private static final Duration LASTS = Duration.ofMinutes(10);
-
-  private final Set<Stream> streams = new CopyOnWriteArraySet<>();
+  private final PreparationStreams streams = new PreparationStreams(this::send);
   private final Acts acts;
   private final Texts texts;
 
@@ -119,24 +113,13 @@ class ApiPreparationController {
   @GetMapping(path = PREPARATION + "/events", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
   SseEmitter events(@PathVariable ActIdentifier celex, @PathVariable String language) {
     var act = found(celex);
-    var stream = new Stream(new SseEmitter(LASTS.toMillis()), act.id(), in(act, language));
-    stream.emitter().onCompletion(() -> streams.remove(stream));
-    stream.emitter().onTimeout(() -> streams.remove(stream));
-    stream.emitter().onError(e -> streams.remove(stream));
-    streams.add(stream);
-    send(stream);
-    return stream.emitter();
+    return streams.open(act.id(), in(act, language));
   }
 
-  /** Sends the preparation that changed to each stream of it. */
+  /** Sends the preparation that changed to each client that follows it. */
   @EventListener
   void on(Broadcast<PreparationChanged> broadcast) {
-    var changed = broadcast.event();
-    for (var stream : streams) {
-      if (stream.language() == changed.language() && stream.act().equals(changed.act())) {
-        send(stream);
-      }
-    }
+    streams.changed(broadcast.event());
   }
 
   /** Returns a link to the preparation of the act in the language, {@code av:preparation}. */
@@ -210,32 +193,20 @@ class ApiPreparationController {
   }
 
   /**
-   * Sends the current state of the preparation of {@code stream}. It reads the act again, because
-   * the act may have versions that it did not have when the stream began.
+   * Sends the state of the preparation, as the event {@code preparation}, or {@code settled} if it
+   * is settled.
+   *
+   * @return whether the preparation is settled
    */
-  private void send(Stream stream) {
-    var act = acts.find(stream.act()).orElseThrow();
-    var preparation = texts.preparation(act, stream.language());
-    try {
-      stream
-          .emitter()
-          .send(
-              SseEmitter.event()
-                  .name(preparation.settled() ? "settled" : "preparation")
-                  .data(PreparationModel.of(preparation), MediaType.APPLICATION_JSON));
-      if (preparation.settled()) {
-        stream.emitter().complete();
-        streams.remove(stream);
-      }
-    } catch (IOException | IllegalStateException e) {
-      // The client went away, so its stream is no longer necessary.
-      LOG.debug("A preparation's stream in the API closed: {}", e.toString());
-      streams.remove(stream);
-    }
+  private boolean send(SseEmitter emitter, ActIdentifier celex, Language language)
+      throws IOException {
+    var preparation = texts.preparation(acts.find(celex).orElseThrow(), language);
+    emitter.send(
+        SseEmitter.event()
+            .name(preparation.settled() ? "settled" : "preparation")
+            .data(PreparationModel.of(preparation), MediaType.APPLICATION_JSON));
+    return preparation.settled();
   }
-
-  /** A client's stream. */
-  private record Stream(SseEmitter emitter, ActIdentifier act, Language language) {}
 
   /**
    * A preparation, as the API shows it.

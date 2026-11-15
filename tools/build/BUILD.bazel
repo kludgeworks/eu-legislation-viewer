@@ -33,13 +33,15 @@ pmd_ruleset(
     shallow = False,
 )
 
-# CPD (Copy-Paste Detector) test (ISS-82)
+# CPD (Copy-Paste Detector) test (ISS-82). It reads the Java sources from the workspace, not from
+# its inputs, so Bazel must never cache its result (external)
 sh_test(
     name = "cpd",
     srcs = ["cpd.sh"],
     args = ["$(rootpath :pmd_cli)"],
     data = [":pmd_cli"],
     tags = [
+        "external",
         "local",
         "no-sandbox",
     ],
