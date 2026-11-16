@@ -179,6 +179,30 @@ public final class Timeline {
     return inLanguage.isEmpty() ? Optional.empty() : Optional.of(new Timeline(inLanguage));
   }
 
+  /**
+   * Returns whether {@code date} is before the first version: no version applies on it. For
+   * example, a day before the act entered into force.
+   */
+  public boolean startsAfter(LocalDate date) {
+    return date.isBefore(first().date());
+  }
+
+  /**
+   * Returns the latest version that starts before {@code date}, or empty if none does. {@code date}
+   * need not be the first day of a version.
+   */
+  public Optional<Version> lastBefore(LocalDate date) {
+    return Optional.ofNullable(byDate.lowerEntry(date)).map(entry -> entry.getValue().getFirst());
+  }
+
+  /**
+   * Returns the first version that starts after {@code date}, or empty if none does. {@code date}
+   * need not be the first day of a version.
+   */
+  public Optional<Version> firstAfter(LocalDate date) {
+    return Optional.ofNullable(byDate.higherEntry(date)).map(entry -> entry.getValue().getFirst());
+  }
+
   /** Returns the first version, from which the act's text first applies. */
   public Version first() {
     return versions.getFirst();

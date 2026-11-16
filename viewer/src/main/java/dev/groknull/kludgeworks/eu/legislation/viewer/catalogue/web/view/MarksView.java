@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -13,6 +14,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
@@ -65,34 +67,38 @@ public record MarksView(List<Mark> marks) {
   }
 
   /**
-   * Returns when {@code amending} applies, with the clause that says so. For example, "applies from
-   * 1 April 2023 · Article 2 of 2023/566", or "applies in stages from 22 March 2026 · Article 2 of
-   * 2026/449". It is the act's date, not the unit's: an act that applies in stages says when the
-   * first stage starts. Returns null if Cellar has no day for it.
+   * Returns when {@code amending} applies, with the clause that says so, from {@link Act#applying}.
+   * For example, "applies from 1 April 2023 · Article 2 of 2023/566", or "applies in stages from 22
+   * March 2026 · Article 2 of 2026/449". It is the act's date, not the unit's: an act that applies
+   * in stages says when the first stage starts. Returns null if Cellar has no day for it and no
+   * clause that sets one.
    */
   static @Nullable String applies(Act act, ActIdentifier amending) {
-    var dated = act.datesOf(amending).stream().filter(date -> date.date() != null).toList();
-    var applying =
-        dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
-    // If every date of application is in part, the entry into force is when the rest applies.
-    var used = applying.stream().allMatch(ActDate::partial) ? dated : applying;
-    var days =
-        used.stream().map(ActDate::date).filter(Objects::nonNull).distinct().sorted().toList();
-    if (days.isEmpty()) {
-      return null;
-    }
-    var provisions = new LinkedHashSet<ActDate.Provision>();
-    used.forEach(date -> provisions.addAll(date.clause().provisions()));
-    return (days.size() == 1 ? "applies from " : "applies in stages from ")
-        + Dates.inWords(days.getFirst())
-        + (provisions.isEmpty()
-            ? ""
-            : " · "
-                + provisions.stream()
-                    .map(ActDate.Provision::cited)
-                    .collect(Collectors.joining(", "))
-                + " of "
-                + amending.cited());
+    return act.applying(amending, Set.of())
+        .map(
+            applying -> {
+              var provisions = new LinkedHashSet<ActDate.Provision>();
+              applying.dates().forEach(date -> provisions.addAll(date.clause().provisions()));
+              var clause =
+                  provisions.isEmpty()
+                      ? ""
+                      : provisions.stream()
+                              .map(ActDate.Provision::cited)
+                              .collect(Collectors.joining(", "))
+                          + " of "
+                          + amending.cited();
+              var cited = clause.isEmpty() ? "" : " · " + clause;
+              return switch (applying) {
+                case Applying.From from -> "applies from " + Dates.inWords(from.day()) + cited;
+                case Applying.InStages stages ->
+                    "applies in stages from " + Dates.inWords(stages.first()) + cited;
+                case Applying.InForce inForce ->
+                    "in force from " + Dates.inWords(inForce.day()) + cited;
+                case Applying.SetBy set ->
+                    clause.isEmpty() ? null : "applies from a date set in " + clause;
+              };
+            })
+        .orElse(null);
   }
 
   /**

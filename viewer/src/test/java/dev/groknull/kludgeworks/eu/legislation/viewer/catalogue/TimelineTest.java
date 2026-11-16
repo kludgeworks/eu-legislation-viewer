@@ -60,6 +60,17 @@ class TimelineTest {
   }
 
   @Test
+  void findsTheVersionsBeforeAndAfterAnyDay() {
+    var day = LocalDate.of(2020, 1, 1);
+    assertThat(TIMELINE.lastBefore(day)).contains(FIRST);
+    assertThat(TIMELINE.firstAfter(day)).contains(INTERIM);
+    assertThat(TIMELINE.lastBefore(FIRST.date())).contains(ORIGINAL);
+    assertThat(TIMELINE.firstAfter(INTERIM.date())).isEmpty();
+    assertThat(TIMELINE.startsAfter(LocalDate.of(2015, 11, 14))).isTrue();
+    assertThat(TIMELINE.startsAfter(ORIGINAL.date())).isFalse();
+  }
+
+  @Test
   void ordersTheVersionsByDate() {
     var timeline = new Timeline(List.of(INTERIM, ORIGINAL, FIRST));
 

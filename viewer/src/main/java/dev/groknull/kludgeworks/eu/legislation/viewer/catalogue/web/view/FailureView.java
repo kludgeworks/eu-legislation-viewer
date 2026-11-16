@@ -227,11 +227,7 @@ public record FailureView(
     // Find the versions before and after by date. The version may not be in the timeline of the
     // language.
     timeline
-        .flatMap(
-            t ->
-                t.versions().stream()
-                    .filter(each -> each.date().isBefore(version.date()))
-                    .reduce((earlier, later) -> later))
+        .flatMap(t -> t.lastBefore(version.date()))
         .ifPresent(
             before ->
                 actions.add(
@@ -239,11 +235,7 @@ public record FailureView(
                         "Read the version before (from " + Dates.inWords(before.date()) + ")",
                         Links.read(eli, before, language))));
     timeline
-        .flatMap(
-            t ->
-                t.versions().stream()
-                    .filter(each -> each.date().isAfter(version.date()))
-                    .findFirst())
+        .flatMap(t -> t.firstAfter(version.date()))
         .ifPresent(
             after ->
                 actions.add(

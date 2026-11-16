@@ -5,6 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -443,87 +444,72 @@ public record SidenoteView(
   }
 
   /**
-   * Returns when {@code amending} applies, from its own dates.
-   *
-   * <ul>
-   *   <li>If it has one date of application, it applies from that date. If it has no date of
-   *       application, it applies from its date of entry into force.
-   *   <li>If it has several dates, it applies from the date that the amendments of the unit in
-   *       Cellar have. {@code days} holds these dates.
-   *   <li>If it has several dates or applies in part, and Cellar does not choose a date, it applies
-   *       in stages.
-   *   <li>If Cellar has no day for its date of application, it applies from a date that its clause
-   *       sets.
-   *   <li>If Cellar has no dates of the act, returns empty.
-   * </ul>
+   * Returns when {@code amending} applies, in words, from {@link Act#applying}. {@code days} holds
+   * the days that the amendments of the unit in Cellar have. Returns empty if Cellar has no dates
+   * of the act, or if it has no day and no clause that sets one.
    */
   private static Optional<Applies> applies(
       Act act, ActIdentifier amending, Set<LocalDate> days, Language language) {
-    var dates = act.datesOf(amending);
-    if (dates.isEmpty()) {
-      return Optional.empty();
-    }
     var name = named(act, amending);
-    var dated = dates.stream().filter(date -> date.date() != null).toList();
-    var application = dates.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE);
-    var applying =
-        dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
-    // Cellar has only a placeholder for a date of application, or no dates with a day.
-    if (dated.isEmpty() || (applying.isEmpty() && application.findAny().isPresent())) {
-      var undated = dates.stream().filter(date -> date.date() == null).toList();
-      var set = applies(act, name + " applies from a date set in", undated, amending, language, "");
-      // There is nothing to say if no clause sets the date.
-      return set.clause() == null ? Optional.empty() : Optional.of(set);
-    }
-    // Use the date of the act that Cellar has for the unit.
-    if (days.size() == 1) {
-      var day = days.iterator().next();
-      var on = dated.stream().filter(date -> day.equals(date.date())).toList();
-      if (!on.isEmpty()) {
-        return Optional.of(
-            applies(
-                act,
-                name
-                    + " applies from "
-                    + Dates.inWords(day)
-                    + (on.stream().allMatch(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE)
-                        ? ", its entry into force"
-                        : ""),
-                on,
-                amending,
-                language,
-                ""));
-      }
-    }
-    var applies = days(applying.isEmpty() ? dated : applying);
-    if (applies.size() == 1 && applying.stream().noneMatch(ActDate::partial)) {
-      var day = Dates.inWords(applies.getFirst());
-      return Optional.of(
-          applies(
-              act,
-              name + " applies from " + day + (applying.isEmpty() ? ", its entry into force" : ""),
-              applying.isEmpty() ? dated : applying,
-              amending,
-              language,
-              ""));
-    }
-    var stages = new ArrayList<String>();
-    for (var day : days(dated)) {
-      var on = dated.stream().filter(date -> day.equals(date.date())).toList();
-      var from = "from " + Dates.inWords(day);
-      stages.add(
-          on.stream().allMatch(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE)
-              ? from + ", its entry into force"
-              : on.stream().allMatch(ActDate::partial) ? "in part " + from : from);
-    }
-    return Optional.of(
-        applies(
-            act,
-            name + " applies in stages: " + String.join("; ", stages),
-            dated,
-            amending,
-            language,
-            " says which part from when"));
+    return act.applying(amending, days)
+        .flatMap(
+            applying ->
+                switch (applying) {
+                  case Applying.SetBy set -> {
+                    var words =
+                        applies(
+                            act,
+                            name + " applies from a date set in",
+                            set.dates(),
+                            amending,
+                            language,
+                            "");
+                    // There is nothing to say if no clause sets the date.
+                    yield words.clause() == null ? Optional.empty() : Optional.of(words);
+                  }
+                  case Applying.From from ->
+                      Optional.of(
+                          applies(
+                              act,
+                              name
+                                  + " applies from "
+                                  + Dates.inWords(from.day())
+                                  + (from.entryIntoForce() ? ", its entry into force" : ""),
+                              from.dates(),
+                              amending,
+                              language,
+                              ""));
+                  case Applying.InForce inForce ->
+                      Optional.of(
+                          applies(
+                              act,
+                              name + " in force from " + Dates.inWords(inForce.day()),
+                              inForce.dates(),
+                              amending,
+                              language,
+                              ""));
+                  case Applying.InStages stages ->
+                      Optional.of(
+                          applies(
+                              act,
+                              name
+                                  + " applies in stages: "
+                                  + stages.stages().stream()
+                                      .map(SidenoteView::stage)
+                                      .collect(Collectors.joining("; ")),
+                              stages.dates(),
+                              amending,
+                              language,
+                              " says which part from when"));
+                });
+  }
+
+  /** Returns a stage in words. For example, "in part from 1 October 2026". */
+  private static String stage(Applying.Stage stage) {
+    var from = "from " + Dates.inWords(stage.day());
+    return stage.entryIntoForce()
+        ? from + ", its entry into force"
+        : stage.inPart() ? "in part " + from : from;
   }
 
   private static Applies applies(
@@ -567,11 +553,6 @@ public record SidenoteView(
             .map(Publication::journal)
             .map(journal -> " · " + journal.reference() + " ·")
             .orElse("");
-  }
-
-  /** Returns the distinct days of {@code dates}, in order. */
-  private static List<LocalDate> days(List<ActDate> dates) {
-    return dates.stream().map(ActDate::date).filter(Objects::nonNull).distinct().sorted().toList();
   }
 
   /**

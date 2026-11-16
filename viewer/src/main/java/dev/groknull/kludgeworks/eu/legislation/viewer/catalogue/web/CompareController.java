@@ -289,10 +289,9 @@ class CompareController {
       var swapped = earlier.isAfter(later);
       fromDay = swapped ? later : earlier;
       toDay = swapped ? earlier : later;
-      var first = timeline.versions().getFirst();
-      before = fromDay.isBefore(first.date());
-      this.from = on(fromDay, first);
-      this.to = on(toDay, first);
+      before = timeline.startsAfter(fromDay);
+      this.from = on(fromDay);
+      this.to = on(toDay);
       this.only =
           only == null || before
               ? null
@@ -313,12 +312,12 @@ class CompareController {
     }
 
     /**
-     * Returns the version that gives the law on {@code day}. Before the first version, {@code
-     * first}, there is none: it returns the first version, and the page says so.
+     * Returns the version that gives the law on {@code day}. Before the first version, there is
+     * none: it returns the first version, and the page says so.
      */
-    private Version on(LocalDate day, Version first) {
-      return day.isBefore(first.date())
-          ? first
+    private Version on(LocalDate day) {
+      return timeline.startsAfter(day)
+          ? timeline.first()
           : timeline.applicableOn(day).orElseThrow(Requests::notFound);
     }
 
@@ -329,8 +328,8 @@ class CompareController {
      * from the day the act came into force.
      */
     String notYet(Frame frame, String title, MastheadView masthead) {
-      var first = timeline.versions().getFirst();
-      var toBefore = toDay.isBefore(first.date());
+      var first = timeline.first();
+      var toBefore = timeline.startsAfter(toDay);
       var compareTo =
           toBefore ? timeline.successor(first).map(Version::date).orElseGet(first::date) : toDay;
       var today = Timeline.today(clock);

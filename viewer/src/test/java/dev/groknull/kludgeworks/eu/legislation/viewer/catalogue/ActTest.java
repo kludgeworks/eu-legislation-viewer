@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 
@@ -78,6 +79,44 @@ class ActTest {
               RECENT,
               published("Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015")));
 
+  /**
+   * 2024/1689 as published. It enters into force on 1 August 2024, applies in part from 2 February
+   * 2025 and in full from 2 August 2026. Article 113 sets one more day that Cellar does not know.
+   */
+  private static final Act STAGED =
+      new Act(
+          new ActIdentifier("32024R1689"),
+          null,
+          new ResourceType("REG"),
+          Map.of(),
+          null,
+          true,
+          null,
+          new Timeline(
+              List.of(
+                  Version.original(
+                      LocalDate.of(2024, 8, 1),
+                      new ActIdentifier("32024R1689"),
+                      EnumSet.allOf(Language.class),
+                      Map.of()))),
+          List.of(
+              date(LocalDate.of(2024, 8, 1), ActDate.Kind.ENTRY_INTO_FORCE, false),
+              date(LocalDate.of(2025, 2, 2), ActDate.Kind.APPLICATION, true),
+              date(LocalDate.of(2026, 8, 2), ActDate.Kind.APPLICATION, false),
+              new ActDate(
+                  null,
+                  ActDate.Kind.APPLICATION,
+                  true,
+                  new ActDate.Clause(
+                      null,
+                      null,
+                      List.of(new ActDate.Provision(ActDate.Provision.Type.ARTICLE, "113")),
+                      List.of(),
+                      ""))),
+          Map.of(),
+          List.of(),
+          Map.of());
+
   private static ActDate date(@Nullable LocalDate day, ActDate.Kind kind, boolean partial) {
     return new ActDate(
         day, kind, partial, new ActDate.Clause(null, null, List.of(), List.of(), ""));
@@ -118,6 +157,80 @@ class ActTest {
   @Test
   void aDirectiveWithOnlyAnEntryIntoForceHasNoDateForTheWholeAct() {
     assertThat(ACT.appliesFrom(PAYMENTS)).isEmpty();
+  }
+
+  @Test
+  void anActAsPublishedThatAppliesInStagesSaysWhenEachStageStarts() {
+    var published = STAGED.timeline().first();
+    var inPart = LocalDate.of(2025, 2, 2);
+    assertThat(STAGED.appliesLater(published)).hasValue(inPart);
+    assertThat(STAGED.inPartFrom(inPart)).isTrue();
+    assertThat(STAGED.inFullAfter(inPart)).hasValue(LocalDate.of(2026, 8, 2));
+    assertThat(STAGED.inPartFrom(LocalDate.of(2026, 8, 2))).isFalse();
+    assertThat(STAGED.unknownDays())
+        .containsExactly(new ActDate.Provision(ActDate.Provision.Type.ARTICLE, "113"));
+  }
+
+  @Test
+  void anActAppliesInPartFromItsFirstDateForAPart() {
+    assertThat(ACT.appliesInPartOn(SUPPLEMENT, LocalDate.of(2009, 5, 31))).isFalse();
+    assertThat(ACT.appliesInPartOn(SUPPLEMENT, LocalDate.of(2009, 6, 1))).isTrue();
+  }
+
+  @Test
+  void aProvisionAppliesOnlyFromADayThatTheActCanApplyFrom() {
+    assertThat(ACT.appliesFromDay(SUPPLEMENT, LocalDate.of(2009, 6, 1))).isTrue();
+    assertThat(ACT.appliesFromDay(SUPPLEMENT, LocalDate.of(2009, 4, 22))).isTrue();
+    assertThat(ACT.appliesFromDay(RECENT, LocalDate.of(2015, 11, 15))).isFalse();
+    assertThat(ACT.appliesFromDay(PAYMENTS, LocalDate.of(2016, 1, 12))).isFalse();
+    assertThat(ACT.appliesFromDay(RECENT, LocalDate.of(2016, 3, 1))).isFalse();
+  }
+
+  @Test
+  void anActWithOneDateForTheWholeActAppliesFromIt() {
+    assertThat(ACT.applying(RECENT, Set.of()))
+        .get()
+        .isInstanceOfSatisfying(
+            Applying.From.class,
+            from -> {
+              assertThat(from.day()).isEqualTo(LocalDate.of(2016, 2, 1));
+              assertThat(from.entryIntoForce()).isFalse();
+            });
+  }
+
+  @Test
+  void anActWithADateForAPartAppliesInStagesUnlessCellarGivesTheDayOfTheProvision() {
+    assertThat(ACT.applying(SUPPLEMENT, Set.of()))
+        .get()
+        .isInstanceOfSatisfying(
+            Applying.InStages.class,
+            stages -> {
+              assertThat(stages.first()).isEqualTo(LocalDate.of(2009, 4, 22));
+              assertThat(stages.stages())
+                  .containsExactly(
+                      new Applying.Stage(LocalDate.of(2009, 4, 22), true, false),
+                      new Applying.Stage(LocalDate.of(2009, 6, 1), false, true));
+            });
+    assertThat(ACT.applying(SUPPLEMENT, Set.of(LocalDate.of(2009, 6, 1))))
+        .get()
+        .isInstanceOfSatisfying(
+            Applying.From.class,
+            from -> assertThat(from.day()).isEqualTo(LocalDate.of(2009, 6, 1)));
+  }
+
+  @Test
+  void aDirectiveWithOnlyAnEntryIntoForceIsInForceWithoutADayItApplies() {
+    assertThat(ACT.applying(PAYMENTS, Set.of(LocalDate.of(2016, 1, 12))))
+        .get()
+        .isInstanceOfSatisfying(
+            Applying.InForce.class,
+            inForce -> assertThat(inForce.day()).isEqualTo(LocalDate.of(2016, 1, 12)));
+  }
+
+  @Test
+  void anActWithoutADayForItsApplicationAppliesFromADaySetByItsClauses() {
+    assertThat(ACT.applying(EURATOM, Set.of())).get().isInstanceOf(Applying.SetBy.class);
+    assertThat(ACT.applying(UNTITLED, Set.of())).isEmpty();
   }
 
   @Test

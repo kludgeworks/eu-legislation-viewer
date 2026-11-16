@@ -30,8 +30,9 @@ import org.jspecify.annotations.Nullable;
  * <p>The rule is in the Notion page "Which date applies to a changed place":
  *
  * <ol>
- *   <li>A place date is accepted if it is one of the dates of the amending act. It is rejected if
- *       it is only its entry into force, and the whole act applies from another day.
+ *   <li>A place date is accepted if the provision can apply from it, {@link Act#appliesFromDay}: if
+ *       it is one of the dates of the amending act. It is rejected if it is only its entry into
+ *       force, and the whole act applies from another day.
  *   <li>An accepted place date that is the version date is the date of the provision.
  *   <li>If they differ, the version date is the date of the provision if the place date was
  *       rejected, or if a version that starts on the place date includes the act but does not mark
@@ -174,7 +175,7 @@ final class Divergences {
     }
     var version = marked.get().version();
     var from = place.from();
-    if (from == null || !accepted(amending, from)) {
+    if (from == null || !act.appliesFromDay(amending, from)) {
       // The version date stands. Without a version, the date is not confirmed.
       return version == null ? Optional.empty() : Optional.of(Answer.AGREES);
     }
@@ -288,21 +289,6 @@ final class Divergences {
     return texts.keySet().containsAll(versions)
         ? List.of(new Divergence(Kind.LATE, amending, applies.get(), null, List.of()))
         : List.of();
-  }
-
-  /**
-   * Returns whether {@code day} is accepted as the day from which a provision of {@code amending}
-   * applies. It is accepted if it is one of the dates of the act. It is rejected if it is only its
-   * entry into force, and the whole act applies from another day or from a day that Cellar does not
-   * know.
-   */
-  private boolean accepted(ActIdentifier amending, LocalDate day) {
-    var dates = act.datesOf(amending).stream().filter(each -> day.equals(each.date())).toList();
-    if (dates.stream().anyMatch(each -> each.kind() != ActDate.Kind.ENTRY_INTO_FORCE)) {
-      return true;
-    }
-    return !dates.isEmpty()
-        && act.appliesFrom(amending).map(Divergences::day).filter(day::equals).isPresent();
   }
 
   /**

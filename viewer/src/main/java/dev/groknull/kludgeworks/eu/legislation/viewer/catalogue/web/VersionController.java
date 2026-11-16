@@ -215,10 +215,12 @@ class VersionController {
       language = language(code);
       eli = new Eli(type, year, number);
       act = acts.find(eli).orElseThrow(VersionController::notFound);
-      var first = act.timeline().versions().getFirst();
-      before = date.isBefore(first.date());
+      var timeline = act.timeline();
+      before = timeline.startsAfter(date);
       version =
-          before ? first : act.versionOn(date, language).orElseThrow(VersionController::notFound);
+          before
+              ? timeline.first()
+              : act.versionOn(date, language).orElseThrow(VersionController::notFound);
       this.date = date;
     }
 

@@ -329,4 +329,162 @@ public record Act(
     }
     return Optional.empty();
   }
+
+  /**
+   * Returns whether a provision of {@code act} can apply from {@code day}. It can if {@code day} is
+   * one of the dates of the act. It cannot if {@code day} is only its entry into force, and the
+   * whole act applies from another day or from a day that Cellar does not know. {@code act} is this
+   * act, an act that its versions integrate or an act that amends it.
+   */
+  public boolean appliesFromDay(ActIdentifier act, LocalDate day) {
+    var on = datesOf(act).stream().filter(date -> day.equals(date.date())).toList();
+    if (on.stream().anyMatch(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE)) {
+      return true;
+    }
+    return !on.isEmpty() && appliesFrom(act).map(ActDate::date).filter(day::equals).isPresent();
+  }
+
+  /**
+   * Returns when {@code act} applies, as its dates tell. {@code act} is this act, an act that its
+   * versions integrate or an act that amends it.
+   *
+   * <ol>
+   *   <li>If Cellar has no day for any date of application, the act applies from a day that its
+   *       clauses set.
+   *   <li>If Cellar gives one day for the provision, in {@code placeDays}, and the provision can
+   *       apply from it ({@link #appliesFromDay}), the act applies from that day.
+   *   <li>If it applies from one day, and not in part, it applies from {@link #appliesFrom}. A
+   *       directive that has only an entry into force is in force, and Cellar does not tell from
+   *       when it applies.
+   *   <li>Otherwise it applies in stages, one on each day of its dates.
+   * </ol>
+   *
+   * <p>Returns empty if Cellar has no dates of the act.
+   *
+   * @param placeDays the days that Cellar gives for the provision, from its amendments
+   */
+  public Optional<Applying> applying(ActIdentifier act, Set<LocalDate> placeDays) {
+    var all = datesOf(act);
+    if (all.isEmpty()) {
+      return Optional.empty();
+    }
+    var dated = all.stream().filter(date -> date.date() != null).toList();
+    var applying =
+        dated.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
+    if (dated.isEmpty()
+        || (applying.isEmpty()
+            && all.stream().anyMatch(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE))) {
+      return Optional.of(
+          new Applying.SetBy(all.stream().filter(date -> date.date() == null).toList()));
+    }
+    if (placeDays.size() == 1) {
+      var day = placeDays.iterator().next();
+      if (appliesFromDay(act, day)) {
+        var on = on(dated, day);
+        return Optional.of(new Applying.From(day, onlyEntryIntoForce(on), on));
+      }
+    }
+    var used = applying.isEmpty() ? dated : applying;
+    if (days(used).size() == 1 && applying.stream().noneMatch(ActDate::partial)) {
+      var whole = appliesFrom(act).map(ActDate::date);
+      if (whole.isPresent()) {
+        return Optional.of(new Applying.From(whole.get(), applying.isEmpty(), used));
+      }
+      if (applying.isEmpty()) {
+        return Optional.of(new Applying.InForce(days(dated).getFirst(), dated));
+      }
+    }
+    var whole = appliesFrom(act).map(ActDate::date);
+    var stages =
+        days(dated).stream()
+            .map(
+                day -> {
+                  var on = on(dated, day);
+                  return new Applying.Stage(
+                      day, onlyEntryIntoForce(on), on.stream().allMatch(ActDate::partial));
+                })
+            .toList();
+    var first =
+        stages.stream()
+            .filter(
+                stage -> !stage.entryIntoForce() || whole.filter(stage.day()::equals).isPresent())
+            .findFirst()
+            .orElseGet(stages::getFirst)
+            .day();
+    return Optional.of(new Applying.InStages(stages, first, dated));
+  }
+
+  /** Returns the dates among {@code dates} that fall on {@code day}. */
+  private static List<ActDate> on(List<ActDate> dates, LocalDate day) {
+    return dates.stream().filter(date -> day.equals(date.date())).toList();
+  }
+
+  /** Returns whether each of {@code dates} is an entry into force. */
+  private static boolean onlyEntryIntoForce(List<ActDate> dates) {
+    return dates.stream().allMatch(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE);
+  }
+
+  /** Returns the days of {@code dates}, without repeats, in order. */
+  private static List<LocalDate> days(List<ActDate> dates) {
+    return dates.stream().map(ActDate::date).filter(Objects::nonNull).distinct().sorted().toList();
+  }
+
+  /**
+   * Returns the day from which {@code version} first applies, if that is after the day on which it
+   * starts. Only the act as published can apply later: it starts on its entry into force, and can
+   * apply from a later day. That day is its earliest date after the version starts that is not its
+   * entry into force. For example, 2016/679 enters into force on 24 May 2016 and applies from 25
+   * May 2018. Returns empty for a consolidated version, and for an act that applies from its entry
+   * into force.
+   */
+  public Optional<LocalDate> appliesLater(Version version) {
+    if (version.kind() != Version.Kind.ORIGINAL) {
+      return Optional.empty();
+    }
+    return dates.stream()
+        .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE)
+        .map(ActDate::date)
+        .filter(Objects::nonNull)
+        .filter(day -> day.isAfter(version.date()))
+        .min(Comparator.naturalOrder());
+  }
+
+  /**
+   * Returns whether this act applies only in part from {@code day}: each of its dates on that day
+   * is for a part. For example, 2024/1689 applies in part from 2 February 2025.
+   */
+  public boolean inPartFrom(LocalDate day) {
+    return dates.stream().filter(date -> day.equals(date.date())).allMatch(ActDate::partial);
+  }
+
+  /**
+   * Returns the day from which the whole of this act applies, {@link #appliesFrom}, if that is
+   * after {@code day}. For example, 2024/1689 applies in part from 2 February 2025, and in full
+   * from 2 August 2026.
+   */
+  public Optional<LocalDate> inFullAfter(LocalDate day) {
+    return appliesFrom(id).map(ActDate::date).filter(from -> from.isAfter(day));
+  }
+
+  /**
+   * Returns whether {@code act} applies in part on {@code day}: a date for a part of it falls on or
+   * before that day. {@code act} is this act, an act that its versions integrate or an act that
+   * amends it.
+   */
+  public boolean appliesInPartOn(ActIdentifier act, LocalDate day) {
+    return datesOf(act).stream()
+        .anyMatch(date -> date.partial() && date.date() != null && !date.date().isAfter(day));
+  }
+
+  /**
+   * Returns the provisions that set a day from which this act applies, where Cellar does not know
+   * the day. For example, a day that an article sets by an event.
+   */
+  public List<ActDate.Provision> unknownDays() {
+    return dates.stream()
+        .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && date.date() == null)
+        .flatMap(date -> date.clause().provisions().stream())
+        .distinct()
+        .toList();
+  }
 }

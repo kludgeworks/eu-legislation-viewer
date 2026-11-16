@@ -15,6 +15,10 @@
  * <p>The page around these parts is the catalogue's: its masthead, timeline, cards and preparation.
  * The parts know it only by its address, the catalogue's {@code ComparePage}: they link back to it,
  * and no Java of the catalogue's web side is used here.
+ *
+ * <p>A view only formats. Each decision about the law or its dates, such as from when an act
+ * applies, is a method of a domain class with its own test. A view reads the kind of a date or
+ * whether it is for a part only to print it.
  */
 @InfrastructureRing
 @NullMarked

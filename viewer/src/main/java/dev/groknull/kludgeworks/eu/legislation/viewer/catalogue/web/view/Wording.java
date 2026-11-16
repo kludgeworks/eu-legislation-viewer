@@ -10,11 +10,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -182,7 +179,7 @@ public final class Wording {
    */
   public static String until(Act act, Version version, LocalDate today, Language language) {
     var next = act.timeline().in(language).flatMap(t -> t.successor(version));
-    if (applies(act, version).isPresent()) {
+    if (act.appliesLater(version).isPresent()) {
       var period = period(act, version, today, language);
       return Character.toLowerCase(period.charAt(0)) + period.substring(1);
     }
@@ -196,24 +193,6 @@ public final class Wording {
             .orElse("");
     var labelled = label(act, version, today, language, until);
     return labelled.startsWith(" · ") ? labelled.substring(3) : labelled;
-  }
-
-  /**
-   * Returns the day on which the act as published first applied, when that is after it entered into
-   * force. {@code version} is the act as published. The day is the earliest date of application or
-   * taking effect after the date of the version. Returns empty for a later version, or for an act
-   * that applied when it entered into force.
-   */
-  public static Optional<LocalDate> applies(Act act, Version version) {
-    if (version.kind() != Version.Kind.ORIGINAL) {
-      return Optional.empty();
-    }
-    return act.dates().stream()
-        .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE)
-        .map(ActDate::date)
-        .filter(Objects::nonNull)
-        .filter(day -> day.isAfter(version.date()))
-        .min(Comparator.naturalOrder());
   }
 
   /**
@@ -233,12 +212,11 @@ public final class Wording {
   public static String period(Act act, Version version, LocalDate today, Language language) {
     var timeline = act.timeline().in(language);
     var next = timeline.flatMap(t -> t.successor(version));
-    var applies = applies(act, version);
+    var applies = act.appliesLater(version);
     if (applies.isPresent()) {
       // The act as published was in force before it applied.
       var from = applies.get();
-      var partial =
-          act.dates().stream().filter(date -> from.equals(date.date())).allMatch(ActDate::partial);
+      var partial = act.inPartFrom(from);
       var period =
           "In force from "
               + Dates.inWords(version.date())
@@ -250,7 +228,7 @@ public final class Wording {
                         if (!partial) {
                           return verb + " " + Dates.inWords(from) + " to " + Dates.inWords(last);
                         }
-                        var full = inFull(act, from).filter(day -> !day.isAfter(last));
+                        var full = act.inFullAfter(from).filter(day -> !day.isAfter(last));
                         return full.map(
                                 day ->
                                     verb
@@ -289,35 +267,16 @@ public final class Wording {
   }
 
   /**
-   * Returns the day from which the act as published applies in full, after it applied in part from
-   * {@code from}: its first date of application after that day that is not in part.
-   */
-  private static Optional<LocalDate> inFull(Act act, LocalDate from) {
-    return act.dates().stream()
-        .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && !date.partial())
-        .map(ActDate::date)
-        .filter(Objects::nonNull)
-        .filter(day -> day.isAfter(from))
-        .min(Comparator.naturalOrder());
-  }
-
-  /**
    * Returns what follows "applies in part from …" for the rest of the act. For example, ", in full
    * from 2 August 2026", or "; other parts from dates set in Article 141" for an act that has no
    * date for the whole act. Returns empty if Cellar says neither.
    */
   private static String rest(Act act, LocalDate from) {
-    var full = inFull(act, from);
+    var full = act.inFullAfter(from);
     if (full.isPresent()) {
       return ", in full from " + Dates.inWords(full.get());
     }
-    var provisions =
-        act.dates().stream()
-            .filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && date.date() == null)
-            .flatMap(date -> date.clause().provisions().stream())
-            .distinct()
-            .map(ActDate.Provision::cited)
-            .toList();
+    var provisions = act.unknownDays().stream().map(ActDate.Provision::cited).toList();
     return provisions.isEmpty()
         ? ""
         : "; other parts from dates set in " + String.join(", ", provisions);

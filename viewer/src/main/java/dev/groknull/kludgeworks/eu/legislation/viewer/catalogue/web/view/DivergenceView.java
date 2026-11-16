@@ -87,9 +87,7 @@ public record DivergenceView(
   private static DivergenceView early(
       Act act, Divergence early, Eli eli, LocalDate asked, Language language) {
     var from = early.appliesFrom();
-    var inPart =
-        act.datesOf(early.act()).stream()
-            .anyMatch(date -> date.partial() && date.date() != null && !date.date().isAfter(asked));
+    var inPart = act.appliesInPartOn(early.act(), asked);
     var clause =
         early.applies().clause().provisions().stream()
             .findFirst()
