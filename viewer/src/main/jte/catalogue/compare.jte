@@ -20,7 +20,8 @@
      attributes of their own. The page's view (view) is the comparison module's code, as the reader
      gave it: while the next page loads, the page shows the shape of the view that is coming.
      Where the law on some days was the From text with the changes shown, an amber notice under
-     the cards says so (compare.unshown()). The Reading card of a late text links here.
+     the cards says so (compare.unshown()). The Reading card of a late text links here, with its day:
+     the notice then links back to that day (compare.back()).
      When the reader comes from the preparing page (arrived), the cards and the text fade in. If versions appeared after the act was prepared and are being
      prepared now, a notice says so (arriving). --%>
 @template.layout.page(frame = frame, title = title, content = @`
@@ -32,7 +33,7 @@
       @template.catalogue.arriving(arriving = arriving)
     @endif
     @template.catalogue.compare.cards(compare = compare)
-    @if(compare.unshown() != null)<p class="compare-unshown" role="note"><b>${compare.unshown()}</b> No version shows it.</p>@endif
+    @if(compare.unshown() != null)<p class="compare-unshown" role="note"><b>${compare.unshown()}</b> No version shows it.@if(compare.back() != null) <a href="${compare.back()}">${compare.backTo()}</a>@endif</p>@endif
     @if(compare.note() != null)<p class="compare-note" role="status">${compare.note()}</p>@endif
     ${changes}
   </div>

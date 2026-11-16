@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -36,7 +37,8 @@ import org.jspecify.annotations.Nullable;
  * <p>Where the comparison shows the changes of one act that applied before the To version included
  * it, a notice under the cards says that the law on those days was the From text with these
  * changes, {@link Act#unshown}: "From 1 to 6 June 2017 the law was the “From” text with the changes
- * of 2017/815." The Reading card of a late text links here.
+ * of 2017/815." The Reading card of a late text links here, with the day it shows. If that day is
+ * one of those days, the notice links back to it: "Back to 3 June 2017".
  *
  * <p>A day before the act's first version has no version: its card shows the day and a dash.
  *
@@ -53,13 +55,22 @@ import org.jspecify.annotations.Nullable;
  *     nothing to say.
  * @param unshown the notice of the days on which the law was the From text with the changes shown,
  *     which no version shows. Null if there are none.
+ * @param back the address of the Read page of the day that the reader came from, one of those days.
+ *     Null if the reader did not come from one.
+ * @param backTo the words of the link to {@code back}: "Back to 3 June 2017". Null without it.
  */
 public record CompareView(
-    Card from, Card to, @Nullable String acts, @Nullable String note, @Nullable String unshown) {
+    Card from,
+    Card to,
+    @Nullable String acts,
+    @Nullable String note,
+    @Nullable String unshown,
+    @Nullable String back,
+    @Nullable String backTo) {
 
   /** Returns the same comparison, with {@code note} under the cards. */
   public CompareView noting(@Nullable String note) {
-    return new CompareView(from, to, acts, note, unshown);
+    return new CompareView(from, to, acts, note, unshown, back, backTo);
   }
 
   /**
@@ -70,6 +81,7 @@ public record CompareView(
    * @param marks the marks of the built texts in {@code language}, by version, which tell where a
    *     text is not the law
    * @param only the act whose changes alone the comparison shows. Null if it shows each act's.
+   * @param on the day of the Read page that the reader came from. Null if not known.
    */
   public static CompareView of(
       Act act,
@@ -81,18 +93,20 @@ public record CompareView(
       LocalDate today,
       String acts,
       Map<Version, TextMarks> marks,
-      @Nullable ActIdentifier only) {
+      @Nullable ActIdentifier only,
+      @Nullable LocalDate on) {
     var action = Links.compare(eli(act), language);
+    var unshown =
+        only == null ? Optional.<Unshown>empty() : act.unshown(from, to, only, language, marks);
+    var back = unshown.isPresent() && on != null && unshown.get().on(on) ? on : null;
     return new CompareView(
         Card.of(act, from, fromDay, End.FROM, toDay, language, today, action, marks),
         Card.of(act, to, toDay, End.TO, fromDay, language, today, action, marks),
         acts,
         null,
-        only == null
-            ? null
-            : act.unshown(from, to, only, language, marks)
-                .map(each -> unshown(act, each))
-                .orElse(null));
+        unshown.map(each -> unshown(act, each)).orElse(null),
+        back == null ? null : Links.read(eli(act), back, language),
+        back == null ? null : "Back to " + Dates.inWords(back));
   }
 
   /** Returns the notice of the days on which the law was the From text with the changes shown. */
@@ -127,6 +141,8 @@ public record CompareView(
         to == null
             ? Card.before(toDay, End.TO, fromDay, starts, action)
             : Card.of(act, to, toDay, End.TO, fromDay, language, today, action, marks),
+        null,
+        null,
         null,
         null,
         null);

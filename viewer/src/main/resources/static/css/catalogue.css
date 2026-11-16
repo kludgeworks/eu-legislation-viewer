@@ -962,6 +962,11 @@ form.find-act .ex a {
   color: var(--warn-ink);
 }
 
+.compare-unshown a {
+  color: inherit;
+  font-weight: 600;
+}
+
 /* The text of a card's version is not the law on its day. */
 .card-divergence {
   display: flex;

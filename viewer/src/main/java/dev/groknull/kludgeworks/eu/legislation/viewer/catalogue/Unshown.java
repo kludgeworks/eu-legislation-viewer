@@ -14,4 +14,10 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * @param last the last of the days
  */
 @ValueObject
-public record Unshown(ActIdentifier act, LocalDate first, LocalDate last) {}
+public record Unshown(ActIdentifier act, LocalDate first, LocalDate last) {
+
+  /** Returns whether {@code day} is one of the days. */
+  public boolean on(LocalDate day) {
+    return !day.isBefore(first) && !day.isAfter(last);
+  }
+}

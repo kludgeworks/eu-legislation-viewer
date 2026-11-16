@@ -146,7 +146,8 @@ class ReadingViewTest {
             new DivergenceView(
                 "Not included: 2017/815",
                 "Applied from 1 June 2017. Included from 7 June 2017.",
-                "/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-07&act=32017R0815",
+                "/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-07&act=32017R0815"
+                    + "&on=2017-06-03",
                 "See its changes in a comparison",
                 false));
     assertThat(late.on()).isEqualTo("2017-06-03");

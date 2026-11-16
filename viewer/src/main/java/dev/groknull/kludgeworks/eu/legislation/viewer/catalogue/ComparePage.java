@@ -71,6 +71,12 @@ public record ComparePage(
   /** The field of the CELEX of the act that the comparison is limited to. */
   public static final String ACT = "act";
 
+  /**
+   * The field of the day of the Read page that the reader comes from, where its warning of a late
+   * text links here. Only the page reads it, to link back to that day. Its parts do not have it.
+   */
+  public static final String ON = "on";
+
   /** The field of the code of the view. */
   public static final String VIEW = "view";
 

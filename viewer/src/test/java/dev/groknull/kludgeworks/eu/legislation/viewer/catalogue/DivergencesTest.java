@@ -254,6 +254,12 @@ class DivergencesTest {
     assertThat(act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act)))
         .contains(
             new Unshown(AMENDING, LocalDate.parse("2017-06-01"), LocalDate.parse("2017-06-06")));
+    var unshown =
+        act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act))
+            .orElseThrow();
+    assertThat(unshown.on(LocalDate.parse("2017-06-03"))).isTrue();
+    assertThat(unshown.on(LocalDate.parse("2017-06-07"))).isFalse();
+    assertThat(unshown.on(LocalDate.parse("2017-05-31"))).isFalse();
     // The version before that lacks more than the act.
     assertThat(act.unshown(versions.get(0), versions.get(2), AMENDING, Language.ENG, texts(act)))
         .isEmpty();

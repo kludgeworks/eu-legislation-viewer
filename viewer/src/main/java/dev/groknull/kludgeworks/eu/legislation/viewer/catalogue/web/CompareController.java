@@ -106,6 +106,9 @@ class CompareController {
           @Nullable LocalDate to,
       @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
       @RequestParam(name = ComparePage.VIEW, required = false) @Nullable String view,
+      @RequestParam(name = ComparePage.ON, required = false)
+          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+          @Nullable LocalDate on,
       @RequestParam(defaultValue = "false") boolean prepared,
       @RequestParam(required = false) @Nullable String outside,
       HttpServletRequest request) {
@@ -116,6 +119,9 @@ class CompareController {
       // Tell the page that the act asked for is not between the versions, so that it can say so.
       if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
         location += "&outside=" + act;
+      }
+      if (on != null) {
+        location += "&" + ComparePage.ON + "=" + on;
       }
       return ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build();
     }
@@ -191,7 +197,8 @@ class CompareController {
                             Links.page(page.eli, page.from, page.to, page.language, page.only, view)
                                 .acts(),
                             texts.marks(preparation),
-                            page.only)
+                            page.only,
+                            on)
                         .noting(note),
                     page.from.equals(page.to)
                         ? page.same()

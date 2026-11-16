@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -58,7 +59,7 @@ public record DivergenceView(
       LocalDate today) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     return switch (divergence.kind()) {
-      case LATE -> late(act, divergence, version, eli, language, today);
+      case LATE -> late(act, divergence, version, eli, asked, language, today);
       case EARLY ->
           divergence.whole(act.id())
               ? early(act, divergence, eli, asked, language)
@@ -67,8 +68,18 @@ public record DivergenceView(
     };
   }
 
+  /**
+   * Returns the entry for a late text. Its link to the comparison keeps {@code asked}, so that the
+   * comparison can link back to it.
+   */
   private static DivergenceView late(
-      Act act, Divergence late, Version version, Eli eli, Language language, LocalDate today) {
+      Act act,
+      Divergence late,
+      Version version,
+      Eli eli,
+      LocalDate asked,
+      Language language,
+      LocalDate today) {
     var title = "Not included: " + act.cited(late.act());
     var from = late.appliesFrom();
     var applies = (from.isAfter(today) ? "Applies from " : "Applied from ") + Dates.inWords(from);
@@ -84,7 +95,11 @@ public record DivergenceView(
     return new DivergenceView(
         title,
         applies + ". Included from " + Dates.inWords(included.date()) + "." + places(late),
-        Links.compare(eli, version.date(), included.date(), language, late.act(), null),
+        Links.compare(eli, version.date(), included.date(), language, late.act(), null)
+            + "&"
+            + ComparePage.ON
+            + "="
+            + asked,
         "See its changes in a comparison",
         false);
   }
