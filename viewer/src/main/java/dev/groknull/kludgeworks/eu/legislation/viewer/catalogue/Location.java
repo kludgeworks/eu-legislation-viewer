@@ -273,29 +273,36 @@ public record Location(String code) {
           Map.entry("PTA", "point"),
           Map.entry("PT", "point"),
           Map.entry("PTI", "point"),
-          Map.entry("SCT", "section"),
-          Map.entry("SBS", "subsection"),
-          Map.entry("PRT", "part"),
+          Map.entry("SCT", "Section"),
+          Map.entry("SBS", "Subsection"),
+          Map.entry("PRT", "Part"),
           Map.entry("TIRE", "indent"),
           Map.entry("AN", "Annex"),
           Map.entry("TIT", "Title"),
-          Map.entry("CHA", "chapter"),
+          Map.entry("CHA", "Chapter"),
           Map.entry("APP", "Appendix"));
 
   /**
-   * Returns the unit that it names, as a page cites it. For example:
+   * Returns the unit that it names, as a page cites it, with the units that hold it. For example:
    *
    * <ul>
    *   <li>point 1.2.3
    *   <li>point 8.1.2.3(c), where a lettered point follows the point that it is in
    *   <li>Article 89(1)
+   *   <li>Annex II, Part VI, Section 3.3
+   *   <li>Appendix 4-C, point (c), indent 6
+   *   <li>point 1.2.6.2, paragraph 2
    *   <li>the annex, for the one annex of an act.
    * </ul>
    *
-   * <p>What is finer than a unit, such as a sentence or a subparagraph, is left out.
+   * <p>A unit that holds the next one is left out where the next one tells it: an article is
+   * numbered across the act, point 6.8.1.6 is in chapter 6, and Appendix 5-A is in chapter 5. The
+   * one annex of an act is left out too. What is finer than a unit, such as a sentence or a
+   * subparagraph, is left out.
    */
   public String name() {
     var tokens = tokens();
+    var parts = new ArrayList<String>();
     String noun = null;
     var cited = "";
     for (var i = 0; i < tokens.size(); i++) {
@@ -319,11 +326,18 @@ public record Location(String code) {
       // that it is in. A subparagraph is not cited.
       if (token.equals("ALN") && noun != null) {
         continue;
-      } else if (number.startsWith("(") && noun != null && !cited.isEmpty()) {
+      } else if (number.startsWith("(")
+          && ("Article".equals(noun) || "point".equals(noun))
+          && !cited.isEmpty()) {
         cited += number;
       } else if (token.equals("PA") && "Article".equals(noun)) {
         cited += "(" + number + ")";
       } else {
+        if (token.equals("AR")) {
+          parts.clear();
+        } else if (noun != null && holds(noun, cited, number)) {
+          parts.add(cited.isEmpty() ? noun : noun + " " + cited);
+        }
         noun = NOUNS.get(token);
         cited = number;
       }
@@ -331,7 +345,18 @@ public record Location(String code) {
     if (noun == null) {
       return code;
     }
-    return cited.isEmpty() ? noun : noun + " " + cited;
+    parts.add(cited.isEmpty() ? noun : noun + " " + cited);
+    return String.join(", ", parts);
+  }
+
+  /**
+   * Returns whether the name of a unit keeps the unit {@code noun} {@code cited} that holds it,
+   * where the unit is numbered {@code number}. It does not keep the one annex of an act, or a unit
+   * whose number starts the number of the unit: point 6.8.1.6 is in chapter 6.
+   */
+  private static boolean holds(String noun, String cited, String number) {
+    return !cited.isEmpty() && !number.startsWith(cited + ".") && !number.startsWith(cited + "-")
+        || !noun.equals("the annex") && cited.isEmpty();
   }
 
   /**

@@ -143,6 +143,20 @@ class LocationTest {
     assertThat(new Location("AR 89 PA 1 ALN 1").name()).isEqualTo("Article 89(1)");
     assertThat(new Location("AN PO 11.1.2 FR").name()).isEqualTo("point 11.1.2");
     assertThat(new Location("AN CHA 5 APP 5-A").name()).isEqualTo("Appendix 5-A");
+    assertThat(new Location("AN CHA 6 PO 6.8.1.6").name()).isEqualTo("point 6.8.1.6");
+    assertThat(new Location("AR 1 PA 4 PO (c) PT (v)").name()).isEqualTo("Article 1(4)(c)(v)");
+  }
+
+  @Test
+  void citesTheUnitsThatHoldTheUnitItNames() {
+    assertThat(new Location("AN APP 4-C PTA (c) TIRE 6").name())
+        .isEqualTo("Appendix 4-C, point (c), indent 6");
+    assertThat(new Location("AN PO 1.2.6.2 PA 2").name()).isEqualTo("point 1.2.6.2, paragraph 2");
+    assertThat(new Location("AN II PRT VI SCT 3.3").name())
+        .isEqualTo("Annex II, Part VI, Section 3.3");
+    assertThat(new Location("AN V PRT B PTA (C)").name()).isEqualTo("Annex V, Part B, point (C)");
+    assertThat(new Location("CHA IXA").name()).isEqualTo("Chapter IXA");
+    assertThat(new Location("CHA III AR 5").name()).isEqualTo("Article 5");
   }
 
   private static Optional<Found> in(String code, List<String> eIds) {
