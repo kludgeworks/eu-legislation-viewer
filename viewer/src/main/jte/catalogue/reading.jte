@@ -2,8 +2,8 @@
 @param ReadingView reading
 <%-- Shows the Reading card: the law on the day the reader asked for. ReadingView supplies the
      data. The day is the headline. Under it: which version that is and how long it applied, the
-     acts that made it, a line where the act didn't apply yet, and an amber line where the text lags
-     the law on the day. Then the version's consolidated CELEX, small, with a copy button.
+     acts that made it, and an amber warning where the text is not the law on the day: each entry
+     says what differs, from when, and has one link. Then the version's consolidated CELEX, small, with a copy button.
      Before the act's first version there is no version: a dash stands for it, and the panel in
      place of the text says why. A GET form asks for the law on another day; js/datepicker.js turns
      its date box into a calendar that rings the days a new version starts. A link goes to the
@@ -18,12 +18,21 @@
     @else
       <span>—</span>
     @endif
-    @for(var note : reading.notes())
-      <span>${note}</span>
-    @endfor
-    @for(var lag : reading.lags())
-      <span class="lag-warning">${lag}</span>
-    @endfor
+    @if(!reading.divergences().isEmpty())
+      <div class="divergences" role="note">
+        @for(var each : reading.divergences())
+          <p>
+            <b>${each.title()}</b>
+            <span>${each.detail()}</span>
+            @if(each.external())
+              <a href="${each.href()}" rel="external">${each.link()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a>
+            @else
+              <a href="${each.href()}">${each.link()}</a>
+            @endif
+          </p>
+        @endfor
+      </div>
+    @endif
     @if(reading.celex() != null)
       <copy-text class="card-celex" data-text="${reading.celex()}"><a class="mono quiet" href="${reading.eurLex()}" rel="external">${reading.celex()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a> <button type="button" class="link">copy</button></copy-text>
     @endif

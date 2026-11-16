@@ -9,18 +9,24 @@
   <dd>The day asked.</dd>
   <dt>until</dt>
   <dd>The day on which the next version starts. Null if no version starts later.</dd>
-  <dt>lags</dt>
+  <dt>divergences</dt>
   <dd>
-    <p>The acts that apply on the day, but that only a later version includes. Each has:</p>
+    <p>Where the text of the versions is not the law on the day. Each has:</p>
     <dl class="api-members">
+      <dt>kind</dt>
+      <dd><span class="mono">late</span>: the act applies, but the text does not include it.
+        <span class="mono">early</span>: the text is included, but the act does not apply yet.</dd>
       <dt>act</dt>
-      <dd>Its CELEX number.</dd>
+      <dd>The CELEX number of the act.</dd>
       <dt>cited</dt>
       <dd>How the Official Journal cites it. For example, <span class="mono">2017/815</span>.</dd>
       <dt>appliesFrom</dt>
-      <dd>The day from which it applies.</dd>
+      <dd>The day from which the act applies.</dd>
       <dt>includedIn</dt>
-      <dd>The first version that includes it: <span class="mono">oj</span>, or its date.</dd>
+      <dd>The first version that includes its text: <span class="mono">oj</span>, or its date. Null for a late text
+        that no version includes yet.</dd>
+      <dt>languages</dt>
+      <dd>The languages whose text differs. An amending act can change the text of some languages only.</dd>
     </dl>
   </dd>
 </dl>

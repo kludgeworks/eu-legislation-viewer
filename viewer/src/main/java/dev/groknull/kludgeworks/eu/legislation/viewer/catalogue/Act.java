@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URI;
 import java.time.LocalDate;
@@ -19,7 +19,6 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
 import org.jmolecules.ddd.annotation.Identity;
-import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -245,78 +244,83 @@ public record Act(
   }
 
   /**
-   * Returns the acts that already apply while {@code version} applies, but that only a later
-   * version includes. Thus the text of {@code version} is not yet the law.
-   *
-   * <p>For example, 2017/815 applies from 1 June 2017. On that day the version of 2015/1998 of 29
-   * February 2016 applies. The version of 7 June is the first to include 2017/815.
-   *
-   * <p>An act applies from its earliest date of application or of taking effect, in whole or in
-   * part. Dates in part count, because if all the dates are in part, the parts make the whole act.
-   * An act that has neither kind of date applies from its entry into force. An act whose date
-   * Cellar does not know is left out. The acts are in the order in which the later versions include
-   * them.
+   * Returns where the text that a reader in {@code language} gets on {@code day} is not the law on
+   * that day, as {@link #divergences(Language)} finds it.
    */
-  public List<Unconsolidated> notYetConsolidated(Version version) {
-    var until =
-        timeline.versions().stream()
-            .map(Version::date)
-            .filter(d -> d.isAfter(version.date()))
-            .findFirst();
-    if (until.isEmpty()) {
-      return List.of();
-    }
-    return lags().stream()
-        .filter(lag -> lag.includedIn().date().isAfter(version.date()))
-        .filter(lag -> lag.from().isBefore(until.get()))
-        .toList();
+  public List<Divergence> divergences(LocalDate day, Language language) {
+    return divergences(language).stream().filter(each -> each.on(day)).toList();
   }
 
   /**
-   * Returns the acts that apply before the first version that includes them. Each act lags the law
-   * from the day it applies, as {@link #notYetConsolidated} finds it, to the date of that version.
-   * The acts are in the order in which the versions include them.
+   * Returns each period in which the text of the versions in {@code language} is not the law.
+   *
+   * <ul>
+   *   <li>The text is early while the act is in force but does not apply yet. For example, 2016/679
+   *       is in force from 24 May 2016 and applies from 25 May 2018.
+   *   <li>The text is late while an amending act applies but no version includes it. For example,
+   *       2017/815 applies from 1 June 2017, and the version of 2015/1998 of 7 June 2017 is the
+   *       first to include it.
+   * </ul>
+   *
+   * <p>An amending act that does not change the text in {@code language} makes no text late. For
+   * example, 2017/837 corrects only the Swedish and the Polish text of 2015/1998. An act whose date
+   * Cellar does not know is left out. The early text is first, and then the late texts in the order
+   * in which the versions include the acts.
    */
-  public List<Unconsolidated> lags() {
+  public List<Divergence> divergences(Language language) {
+    var versions = timeline(language).map(Timeline::versions).orElseGet(List::of);
+    var divergences = new ArrayList<Divergence>();
+    if (!versions.isEmpty()) {
+      var first = versions.getFirst();
+      appliesFrom(id)
+          .filter(from -> Objects.requireNonNull(from.date()).isAfter(first.date()))
+          .ifPresent(from -> divergences.add(new Divergence(Kind.EARLY, id, from, first)));
+    }
     var included = new HashSet<ActIdentifier>();
-    var lags = new ArrayList<Unconsolidated>();
-    for (var each : timeline.versions()) {
+    for (var each : versions) {
       for (var act : each.integrates()) {
-        if (included.add(act)) {
+        if (included.add(act) && changes(act, language)) {
           appliesFrom(act)
               .filter(from -> Objects.requireNonNull(from.date()).isBefore(each.date()))
-              .ifPresent(from -> lags.add(new Unconsolidated(act, from, each)));
+              .ifPresent(from -> divergences.add(new Divergence(Kind.LATE, act, from, each)));
         }
       }
     }
-    return lags;
-  }
-
-  private Optional<ActDate> appliesFrom(ActIdentifier act) {
-    var dates = datesOf(act);
-    var applying = dates.stream().filter(date -> date.kind() != Kind.ENTRY_INTO_FORCE).toList();
-    return (applying.isEmpty() ? dates : applying)
-        .stream()
-            .filter(date -> date.date() != null)
-            .min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
+    return divergences;
   }
 
   /**
-   * An act that applies before a version of this one includes it.
+   * Returns the date from which the whole of {@code act} applies. {@code act} is this act or an act
+   * that its versions integrate.
    *
-   * @param act the act
-   * @param appliesFrom the date it applies from, with what sets it
-   * @param includedIn the first version that includes it
+   * <ul>
+   *   <li>It is the act's date of application or of taking effect that is not for a part.
+   *   <li>An act that has no such date applies from its entry into force.
+   *   <li>A date for a part is an exception for that part. It does not move the date of the whole
+   *       act. For example, 2021/255 enters into force on 11 March 2021, and only four of its
+   *       points apply from later dates. So it applies from 11 March 2021.
+   * </ul>
+   *
+   * <p>Returns empty if Cellar does not know the date. For example, 2019/413 applies from a date
+   * that its Article 3 sets by an event.
    */
-  @ValueObject
-  public record Unconsolidated(ActIdentifier act, ActDate appliesFrom, Version includedIn) {
-
-    /**
-     * Returns the day it applies from. This is the date of {@link #appliesFrom}, which an act that
-     * a version lags always has.
-     */
-    public LocalDate from() {
-      return Objects.requireNonNull(appliesFrom.date());
+  public Optional<ActDate> appliesFrom(ActIdentifier act) {
+    var whole = datesOf(act).stream().filter(date -> !date.partial()).toList();
+    var applying =
+        whole.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
+    var dates = applying.isEmpty() ? whole : applying;
+    if (dates.stream().anyMatch(date -> date.date() == null)) {
+      return Optional.empty();
     }
+    return dates.stream().min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
+  }
+
+  /**
+   * Returns whether {@code amending} changes the text in {@code language}. An act for which Cellar
+   * lists no amended location is taken to change every language.
+   */
+  private boolean changes(ActIdentifier amending, Language language) {
+    var own = amendments.stream().filter(each -> each.act().equals(amending)).toList();
+    return own.isEmpty() || own.stream().anyMatch(each -> each.changes(language));
   }
 }

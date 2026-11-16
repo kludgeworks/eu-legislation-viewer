@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -16,6 +17,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -179,9 +182,9 @@ class ApiActController {
 
   /**
    * Returns the law on {@code date}: the day asked, the versions that apply on it, the day they
-   * apply until, and the acts that already apply on the day but that only a later version includes.
-   * More than one version applies when the original text and a consolidation share a day, in
-   * different languages.
+   * apply until, and where their text is not the law on the day, because it is late or early. More
+   * than one version applies when the original text and a consolidation share a day, in different
+   * languages.
    *
    * <p>A day before the first version returns 404, as a problem of the type {@link
    * ProblemType#BEFORE_FIRST_VERSION}. It has the day the act was adopted, the day its text first
@@ -197,22 +200,51 @@ class ApiActController {
     if (applying.isEmpty()) {
       throw beforeTheFirstVersion(act, date);
     }
-    var lags =
-        act.notYetConsolidated(applying.getFirst()).stream()
-            .filter(lag -> !lag.from().isAfter(date))
-            .map(
-                lag ->
-                    new LagModel(
-                        lag.act().celex(), act.cited(lag.act()), lag.from(), key(lag.includedIn())))
-            .toList();
+    var divergences = divergences(act, applying, date);
     return HalModelBuilder.halModelOf(
-            new LawModel(date, timeline.nextStartAfter(date).orElse(null), lags))
+            new LawModel(date, timeline.nextStartAfter(date).orElse(null), divergences))
         .embed(
             applying.stream().map(version -> summary(celex, version)).toList(),
             Relation.VERSION.rel())
         .link(linkTo(methodOn(ApiActController.class).on(celex, date)).withSelfRel())
         .link(up(celex))
         .build();
+  }
+
+  /**
+   * Returns the divergences of {@code act} on {@code date}, each with the languages of the versions
+   * {@code applying} whose text differs. An amending act can change the text of some languages
+   * only.
+   */
+  private static List<DivergenceModel> divergences(
+      Act act, List<Version> applying, LocalDate date) {
+    var languages = new LinkedHashMap<Divergence, List<String>>();
+    applying.stream()
+        .flatMap(version -> version.languages().stream())
+        .distinct()
+        .sorted()
+        .forEach(
+            language ->
+                act.divergences(date, language)
+                    .forEach(
+                        each ->
+                            languages
+                                .computeIfAbsent(each, key -> new ArrayList<>())
+                                .add(code(language.code()))));
+    return languages.entrySet().stream()
+        .map(
+            each -> {
+              var divergence = each.getKey();
+              var included = divergence.included();
+              return new DivergenceModel(
+                  code(divergence.kind().name()),
+                  divergence.act().celex(),
+                  act.cited(divergence.act()),
+                  divergence.appliesFrom(),
+                  included == null ? null : key(included),
+                  each.getValue());
+            })
+        .toList();
   }
 
   /**
@@ -460,19 +492,29 @@ class ApiActController {
    *
    * @param date the day asked
    * @param until the day the next version starts, or null if no version starts later
-   * @param lags the acts that already apply on the day but that only a later version includes
+   * @param divergences where the text of the versions is not the law on the day
    */
-  record LawModel(LocalDate date, @Nullable LocalDate until, List<LagModel> lags) {}
+  record LawModel(LocalDate date, @Nullable LocalDate until, List<DivergenceModel> divergences) {}
 
   /**
-   * An act that applies before a version includes it.
+   * Where the text is not the law on a day, as the API shows it.
    *
-   * @param act its CELEX number
+   * @param kind {@code late}: the act applies, but the text does not include it. {@code early}: the
+   *     text is included, but the act does not apply yet.
+   * @param act the CELEX number of the act
    * @param cited how the Official Journal cites it. For example, {@code 2017/815}.
-   * @param appliesFrom the day it applies from
-   * @param includedIn the first version that includes it: {@code oj}, or its date
+   * @param appliesFrom the day from which the act applies
+   * @param includedIn the first version that includes its text: {@code oj}, or its date. Null for a
+   *     late text that no version includes yet.
+   * @param languages the languages whose text differs
    */
-  record LagModel(String act, String cited, LocalDate appliesFrom, String includedIn) {}
+  record DivergenceModel(
+      String kind,
+      String act,
+      String cited,
+      LocalDate appliesFrom,
+      @Nullable String includedIn,
+      List<String> languages) {}
 
   /**
    * What other acts did to the provisions of an act, as the API shows it.

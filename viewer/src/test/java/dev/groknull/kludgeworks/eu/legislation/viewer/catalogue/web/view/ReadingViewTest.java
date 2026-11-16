@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.InstanceOfAssertFactories.STRING;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
@@ -52,8 +51,7 @@ class ReadingViewTest {
         .contains(
             " · OJ L 21, 24.1.2019\nCorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
         .endsWith("(Text with EEA relevance) · OJ L 208, 1.7.2020");
-    assertThat(card.notes()).isEmpty();
-    assertThat(card.lags()).isEmpty();
+    assertThat(card.divergences()).isEmpty();
     assertThat(card.action()).isEqualTo("/eli/reg_impl/2015/1998/eng");
     assertThat(card.on()).isEqualTo("2022-02-14");
     assertThat(card.starts()).startsWith("2015-11-15 2016-02-29 ").endsWith(" 2026-10-01");
@@ -126,11 +124,6 @@ class ReadingViewTest {
     assertThat(published.compare())
         .isEqualTo("/eli/reg_impl/2015/1998/eng/compare?from=2015-11-15&to=2016-02-29");
     assertThat(published.comparing()).isEqualTo("Compare with the version after");
-    assertThat(card("2015-11-15", "2016-01-10", TODAY).notes())
-        .singleElement(STRING)
-        .startsWith(
-            "On 10 January 2016 the act was in force but didn’t apply yet: it applies from 1"
-                + " February 2016");
     assertThat(card("2016-02-29", "2016-02-29", TODAY).comparing())
         .isEqualTo("Compare with the version before");
   }
@@ -142,21 +135,34 @@ class ReadingViewTest {
   }
 
   @Test
-  void saysNothingOfALagLaterInTheVersionsPeriod() {
-    assertThat(card("2016-02-29", "2016-02-29", TODAY).lags()).isEmpty();
+  void warnsOfALateTextOnlyOnTheDaysThatTheActAppliesUnincluded() {
+    var late = card("2016-02-29", "2017-06-03", TODAY);
+    assertThat(late.version())
+        .isEqualTo("From the version of 29 February 2016 · applied until 6 June 2017");
+    assertThat(late.divergences())
+        .containsExactly(
+            new DivergenceView(
+                "Not included: 2017/815",
+                "Applied from 1 June 2017. Included from 7 June 2017.",
+                "/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-07&act=32017R0815",
+                "See its changes in a comparison",
+                false));
+    assertThat(late.on()).isEqualTo("2017-06-03");
+    assertThat(card("2016-02-29", "2017-05-01", TODAY).divergences()).isEmpty();
+    assertThat(card("2016-02-29", "2016-02-29", TODAY).divergences()).isEmpty();
   }
 
   @Test
-  void warnsOnADateAskedOnlyWhenTheTextLagsThenItself() {
-    var lagging = card("2016-02-29", "2017-06-03", TODAY);
-    assertThat(lagging.version())
-        .isEqualTo("From the version of 29 February 2016 · applied until 6 June 2017");
-    assertThat(lagging.lags())
+  void warnsOfAnEarlyTextWhileTheActIsInForceButDoesNotApply() {
+    assertThat(card("2015-11-15", "2015-12-01", TODAY).divergences())
         .containsExactly(
-            "On 3 June 2017, 2017/815 already applied; this text doesn’t include it yet (it does"
-                + " from 7 June 2017).");
-    assertThat(lagging.on()).isEqualTo("2017-06-03");
-    assertThat(card("2016-02-29", "2017-05-01", TODAY).lags()).isEmpty();
+            new DivergenceView(
+                "In force. Does not apply yet.",
+                "Applies from 1 February 2016 · Article 2 of 2015/1998.",
+                "/eli/reg_impl/2015/1998/2016-02-01/eng",
+                "Go to 1 February 2016, the first day it applies",
+                false));
+    assertThat(card("2015-11-15", "2016-02-01", TODAY).divergences()).isEmpty();
   }
 
   @Test

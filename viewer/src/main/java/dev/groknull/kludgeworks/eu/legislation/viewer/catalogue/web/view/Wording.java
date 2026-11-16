@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act.Unconsolidated;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
@@ -21,9 +20,9 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
- * The wording that the catalogue's pages use for versions, lags and periods. The wording is in
- * English. A date is in words as every page writes it, {@link Dates}. How an act is cited with its
- * publication is the act's, {@link Act#citation}.
+ * The wording that the catalogue's pages use for versions and periods. The wording is in English. A
+ * date is in words as every page writes it, {@link Dates}. How an act is cited with its publication
+ * is the act's, {@link Act#citation}.
  */
 public final class Wording {
   /**
@@ -154,20 +153,6 @@ public final class Wording {
   }
 
   /**
-   * Returns the text of a lag, for {@code day} within the lag. For example, "On 3 June 2017,
-   * 2017/815 already applied; this text doesn’t include it yet (it does from 7 June 2017)."
-   */
-  public static String lagOn(Unconsolidated lag, LocalDate day) {
-    return "On "
-        + Dates.inWords(day)
-        + ", "
-        + lag.act().cited()
-        + " already applied; this text doesn’t include it yet (it does from "
-        + Dates.inWords(lag.includedIn().date())
-        + ").";
-  }
-
-  /**
    * Returns which version gives the law on {@code day}, and how long it applies, for the line under
    * the day on a card. For example, "From the version of 31 December 2021 · applied until 28
    * February 2022", or "A new version starts on this day · current version" on its first day.
@@ -211,31 +196,6 @@ public final class Wording {
             .orElse("");
     var labelled = label(act, version, today, language, until);
     return labelled.startsWith(" · ") ? labelled.substring(3) : labelled;
-  }
-
-  /**
-   * Returns the line that says that the act was in force on {@code day} but did not apply yet, if
-   * so. {@code version} is the version on {@code day}. For example, "On 1 December 2015 the act was
-   * in force but didn’t apply yet: it applies from 1 February 2016 · Article 2 of 2015/1998".
-   */
-  public static Optional<String> notApplying(Act act, Version version, LocalDate day) {
-    return applies(act, version)
-        .filter(day::isBefore)
-        .map(
-            from -> {
-              var clause =
-                  act.dates().stream()
-                      .filter(date -> from.equals(date.date()))
-                      .flatMap(date -> date.clause().provisions().stream())
-                      .findFirst()
-                      .map(provision -> " · " + provision.cited() + " of " + act.id().cited())
-                      .orElse("");
-              return "On "
-                  + Dates.inWords(day)
-                  + " the act was in force but didn’t apply yet: it applies from "
-                  + Dates.inWords(from)
-                  + clause;
-            });
   }
 
   /**

@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate.Provisio
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment.Role;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
@@ -27,10 +28,9 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -307,31 +307,42 @@ class CellarActsTest {
   }
 
   @Test
-  void onlyTheVersionAnActAppliesInBeforeItIsIncludedLagsTheLaw() {
-    var act = act(AVSEC);
-    var lagging =
-        act.timeline().versions().stream()
-            .collect(
-                Collectors.toMap(
-                    Version::celex, act::notYetConsolidated, (one, other) -> one, TreeMap::new));
-
-    assertThat(lagging).hasSize(23);
-    assertThat(lagging.values().stream().filter(acts -> !acts.isEmpty()).count()).isOne();
-    assertThat(lagging.get("02015R1998-20160229"))
-        .singleElement()
-        .satisfies(
-            unconsolidated -> {
-              assertThat(unconsolidated.act()).isEqualTo(new ActIdentifier("32017R0815"));
-              assertThat(unconsolidated.appliesFrom().date()).isEqualTo("2017-06-01");
-              assertThat(unconsolidated.includedIn().celex()).isEqualTo("02015R1998-20170607");
-            });
+  void theTextIsEarlyUntilTheActAppliesAndLateWhileAnActAppliesUnincluded() {
+    assertThat(act(AVSEC).divergences(Language.ENG))
+        .extracting(
+            Divergence::kind,
+            each -> each.act().celex(),
+            Divergence::appliesFrom,
+            each -> Objects.requireNonNull(each.included()).celex())
+        .containsExactly(
+            tuple(Divergence.Kind.EARLY, "32015R1998", LocalDate.of(2016, 2, 1), "32015R1998"),
+            tuple(
+                Divergence.Kind.LATE,
+                "32017R0815",
+                LocalDate.of(2017, 6, 1),
+                "02015R1998-20170607"),
+            // Only four points of 2021/255 apply later than its entry into force.
+            tuple(
+                Divergence.Kind.LATE,
+                "32021R0255",
+                LocalDate.of(2021, 3, 11),
+                "02015R1998-20210315"));
   }
 
   @Test
-  void theActLagsTheLawOnlyWhile2017815AppliesUnincluded() {
-    assertThat(act(AVSEC).lags())
-        .extracting(lag -> lag.act().celex(), lag -> lag.from(), lag -> lag.includedIn().celex())
-        .containsExactly(tuple("32017R0815", LocalDate.of(2017, 6, 1), "02015R1998-20170607"));
+  void theTextDiffersFromTheLawOnlyOnTheDaysOfADivergence() {
+    var act = act(AVSEC);
+
+    assertThat(act.divergences(LocalDate.of(2017, 5, 31), Language.ENG)).isEmpty();
+    assertThat(act.divergences(LocalDate.of(2017, 6, 1), Language.ENG))
+        .extracting(each -> each.act().celex())
+        .containsExactly("32017R0815");
+    assertThat(act.divergences(LocalDate.of(2017, 6, 6), Language.ENG)).hasSize(1);
+    assertThat(act.divergences(LocalDate.of(2017, 6, 7), Language.ENG)).isEmpty();
+    assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG))
+        .extracting(Divergence::kind)
+        .containsExactly(Divergence.Kind.EARLY);
+    assertThat(act.divergences(LocalDate.of(2016, 2, 1), Language.ENG)).isEmpty();
   }
 
   @Test
