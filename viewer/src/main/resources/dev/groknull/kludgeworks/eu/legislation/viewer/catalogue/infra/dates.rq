@@ -1,16 +1,20 @@
 # SPDX-License-Identifier: MIT
-# Gets the dates of an act, and the dates of every act that its consolidations integrate, for
-# CellarDates. It gets each date of entry into force as Cellar has it, with the annotations that
-# type the date:
-# - The type of date, from the authority table fd_335. EV is entry into force, MA is application
-#   and PE is taking effect. /PART means that the date applies to part of the act.
-# - Cellar's comment on the date. For example, "DATPUB +20 V ART 2" means 20 days after
-#   publication, see Article 2. "ET 32020R0910" adds that act, which changed the date.
+# Gets the dates of an act, the dates of every act that its consolidations integrate, and the dates
+# of every act that amends it, for CellarDates. An act that amends it can be in no consolidation
+# yet. It gets two kinds of dates, and ?property tells which:
+# - Each date of entry into force as Cellar has it, with the annotations that type the date:
+#   - The type of date, from the authority table fd_335. EV is entry into force, MA is application
+#     and PE is taking effect. /PART means that the date applies to part of the act.
+#   - Cellar's comment on the date. For example, "DATPUB +20 V ART 2" means 20 days after
+#     publication, see Article 2. "ET 32020R0910" adds that act, which changed the date.
+# - Each date of transposition of a directive. It has no type. Its comment starts with a code from
+#   the authority table fd_361: APPLICATION is the day from which the Member States apply their
+#   measures, and ADOPTION is the day by which they adopt them.
 # The consolidations also list earlier consolidations. These have dates but no annotations, and
 # CellarDates leaves them out.
 # It uses consolidations with or without a CELEX number: internal production versions name acts
 # that a public consolidation left out. CellarActs retains only dates of acts that a version in the
-# act's timeline integrates.
+# act's timeline integrates, or that amend the act.
 # It gives one row per date and annotation.
 # {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
@@ -18,7 +22,7 @@ PREFIX annotation: <http://publications.europa.eu/ontology/annotation#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
-SELECT DISTINCT ?subject ?date ?type ?comment
+SELECT DISTINCT ?subject ?property ?date ?type ?comment
 WHERE {
   {
     ?work cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
@@ -26,12 +30,16 @@ WHERE {
     ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
     ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
          cdm:act_consolidated_consolidates_resource_legal ?work .
+  } UNION {
+    ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
+    ?work cdm:resource_legal_amends_resource_legal ?act .
   }
+  VALUES ?property { cdm:resource_legal_date_entry-into-force cdm:directive_date_transposition }
   ?work cdm:resource_legal_id_celex ?subject ;
-       cdm:resource_legal_date_entry-into-force ?date .
+       ?property ?date .
   OPTIONAL {
     ?axiom owl:annotatedSource ?work ;
-         owl:annotatedProperty cdm:resource_legal_date_entry-into-force ;
+         owl:annotatedProperty ?property ;
          owl:annotatedTarget ?date .
     OPTIONAL { ?axiom annotation:type_of_date ?type }
     OPTIONAL { ?axiom annotation:comment_on_date ?comment }

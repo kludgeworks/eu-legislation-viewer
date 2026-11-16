@@ -24,6 +24,7 @@ import java.io.UnsupportedEncodingException;
 import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -91,7 +92,8 @@ class ApiTextControllerTests {
                             List.of(
                                 new Outline.Entry(
                                     "anx/pnt_1", "level", "1.", "AIRPORT SECURITY", List.of())))),
-                    List.of("anx", "anx/pnt_1"))));
+                    List.of("anx", "anx/pnt_1"),
+                    Map.of())));
   }
 
   @Test

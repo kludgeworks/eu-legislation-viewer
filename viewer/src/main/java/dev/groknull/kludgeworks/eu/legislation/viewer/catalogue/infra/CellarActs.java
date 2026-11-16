@@ -260,14 +260,17 @@ class CellarActs implements ActSource {
       throw new IllegalArgumentException("neither an entry into force nor a date of document");
     }
     var timeline = timeline(id, originalFrom, consolidations, formex);
-    var integrated = new HashSet<ActIdentifier>();
-    timeline.versions().forEach(v -> integrated.addAll(v.integrates()));
+    // The acts that the versions integrate, and the acts that amend the act. An act that amends it
+    // can be in no version yet.
+    var amending = new HashSet<ActIdentifier>();
+    timeline.versions().forEach(v -> amending.addAll(v.integrates()));
+    amendments.forEach(amendment -> amending.add(amendment.act()));
     var amendingDates = new HashMap<>(dates);
-    amendingDates.keySet().retainAll(integrated);
+    amendingDates.keySet().retainAll(amending);
     var published = new HashMap<>(publications);
-    // Keep the publications of the acts that the versions integrate. Also keep the publication of
-    // the act itself, for the act as published.
-    published.keySet().retainAll(integrated);
+    // Keep the publications of those acts. Also keep the publication of the act itself, for the
+    // act as published.
+    published.keySet().retainAll(amending);
     var own = publications.get(id);
     if (own != null) {
       published.put(id, own);

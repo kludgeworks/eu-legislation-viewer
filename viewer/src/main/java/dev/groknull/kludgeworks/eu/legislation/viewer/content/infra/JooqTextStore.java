@@ -38,6 +38,9 @@ class JooqTextStore implements TextStore {
   /** The compression level of zstd: its default, fast to write and to read. */
   private static final int LEVEL = 3;
 
+  /** The member of an outline's JSON that holds its marks. */
+  private static final String MARKS = "marks";
+
   private final DSLContext db;
   private final JsonMapper json;
 
@@ -117,12 +120,27 @@ class JooqTextStore implements TextStore {
         .fetchOptional(row -> decompress(row.value1()));
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * <p>An outline kept before outlines held marks has no member {@code marks} in its JSON.
+   */
   @Override
   public Optional<Outline> outline(TextId text) {
     return db.select(TEXT.OUTLINE)
         .from(TEXT)
         .where(TEXT.ID.eq(text))
-        .fetchOptional(row -> json.readValue(row.value1().data(), Outline.class));
+        .fetchOptional(row -> json.readTree(row.value1().data()))
+        .filter(tree -> tree.has(MARKS))
+        .map(tree -> json.treeToValue(tree, Outline.class));
+  }
+
+  @Override
+  public void outline(TextId text, Outline outline) {
+    db.update(TEXT)
+        .set(TEXT.OUTLINE, JSONB.valueOf(json.writeValueAsString(outline)))
+        .where(TEXT.ID.eq(text))
+        .execute();
   }
 
   @Override

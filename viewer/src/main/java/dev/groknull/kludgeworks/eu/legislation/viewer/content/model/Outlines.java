@@ -6,9 +6,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Deque;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Makes the outline of a text, when the text is stored.
@@ -17,6 +20,10 @@ import java.util.Set;
  * unit is under the last unit of a higher rank before it. The outline also holds the eId of every
  * container: an element that holds elements and is not a block. The labels and headings are read as
  * plain text, without the notes that they cite and without the text that an amendment deleted.
+ *
+ * <p>It also holds the marks of each unit: the acts that its {@code provenance} elements name. A
+ * {@code provenance} in a block that has no eId, such as a paragraph or a deleted text, marks the
+ * nearest unit around it.
  */
 public final class Outlines {
 
@@ -32,6 +39,7 @@ public final class Outlines {
 
   private final List<Unit> outermost = new ArrayList<>();
   private final List<String> eIds = new ArrayList<>();
+  private final Map<String, Set<String>> marks = new LinkedHashMap<>();
   private final Deque<Unit> open = new ArrayDeque<>();
 
   private Outlines() {}
@@ -42,7 +50,26 @@ public final class Outlines {
   public static Outline of(Element text) {
     var outlines = new Outlines();
     outlines.walk(text);
-    return new Outline(outlines.outermost.stream().map(Unit::entry).toList(), outlines.eIds);
+    outlines.mark(text, "");
+    return new Outline(
+        outlines.outermost.stream().map(Unit::entry).toList(), outlines.eIds, outlines.marks);
+  }
+
+  /**
+   * Adds the acts that the {@code provenance} elements in {@code element} name to the marks of
+   * their unit. {@code unit} is the eId of the nearest unit around {@code element}, or empty for
+   * none.
+   */
+  private void mark(Element element, String unit) {
+    var eId = Objects.requireNonNullElse(element.attribute("eId"), unit);
+    if (element.name().equals("provenance")) {
+      var act = element.attribute("amendingAct");
+      if (act != null && !eId.isEmpty()) {
+        marks.computeIfAbsent(eId, each -> new TreeSet<>()).add(act);
+      }
+      return;
+    }
+    element.children().forEach(child -> mark(child, eId));
   }
 
   /** Walks a container and the containers in it, in order. */

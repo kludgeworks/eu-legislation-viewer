@@ -9,7 +9,8 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * One of an act's own dates, as Cellar types it. It is the date when the act enters into force,
- * applies or takes effect, wholly or in part. It comes with the clause that sets it.
+ * applies or takes effect, wholly or in part. For a directive, it can also be the date from which
+ * the Member States apply it. It comes with the clause that sets it.
  *
  * <p>Cellar keeps these dates up to date when a later act moves one. For example, 2019/103 applies
  * in part from 31 December 2021, by its Article 2 as amended by 2020/910. The per-provision dates
@@ -31,7 +32,14 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clau
     /** It applies. Cellar's code {@code MA}. */
     APPLICATION,
     /** It takes effect, as a decision does on its notification. Cellar's code {@code PE}. */
-    TAKING_EFFECT
+    TAKING_EFFECT,
+    /**
+     * The Member States apply their measures for a directive from this day. Cellar has it as a date
+     * of transposition with the code {@code APPLICATION}. For example, the Member States apply
+     * 2019/878 from 29 December 2020, by its Article 2(1). A directive can have more than one such
+     * day, and Cellar does not tell if a day is for a part of the directive.
+     */
+    TRANSPOSITION
   }
 
   /**

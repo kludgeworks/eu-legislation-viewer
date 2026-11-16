@@ -13,6 +13,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.time.Clock;
@@ -55,6 +56,7 @@ class ApiActControllerTests {
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
+  @MockitoBean Texts texts;
 
   @BeforeEach
   void act() {

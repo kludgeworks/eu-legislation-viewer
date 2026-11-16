@@ -2,6 +2,8 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.content;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
@@ -15,20 +17,28 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * <p>It also holds the eIds of all its units, with a title or not. These find a unit for a {@code
  * Location}.
  *
+ * <p>It also holds the marks of the units. A consolidated text marks the wording that an act gave,
+ * with the act. For example, the version of 2015/1998 of 7 June 2017 marks point 4.1.3.3 of its
+ * annex with 2017/815.
+ *
  * @param entries the outermost units
  * @param eIds the eIds of all its units and other containers that have one, in document order
+ * @param marks the acts that each unit marks, by the eId of the unit. A mark is on the unit, or on
+ *     a block in it that has no eId of its own. An act is its CELEX, for example {@code
+ *     32017R0815}. A unit without marks is left out.
  */
 @ValueObject
-public record Outline(List<Entry> entries, List<String> eIds) {
+public record Outline(List<Entry> entries, List<String> eIds, Map<String, Set<String>> marks) {
 
   public Outline {
     entries = List.copyOf(entries);
     eIds = List.copyOf(eIds);
+    marks = Map.copyOf(marks);
   }
 
   /** Returns the outline of a text that has no units. */
   public static Outline empty() {
-    return new Outline(List.of(), List.of());
+    return new Outline(List.of(), List.of(), Map.of());
   }
 
   /**

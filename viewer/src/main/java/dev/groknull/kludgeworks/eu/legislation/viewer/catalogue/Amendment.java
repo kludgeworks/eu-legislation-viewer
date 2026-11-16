@@ -86,6 +86,14 @@ public record Amendment(
       return wording;
     }
 
+    /**
+     * Returns whether it changes a provision that the text has already: it changes the words, and
+     * it is not an addition.
+     */
+    public boolean changesExisting() {
+      return wording && this != ADDITION;
+    }
+
     /** Returns whether it takes the provision out of the text, as a deletion or a repeal does. */
     public boolean removes() {
       return this == DELETION || this == REPEAL;

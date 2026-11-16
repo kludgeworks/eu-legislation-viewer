@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.util.Map;
 
 /**
  * The texts of versions. They are built in the background. When a page of an act is first opened in
@@ -26,4 +27,10 @@ public interface Texts {
 
   /** Returns the state of the act's preparation in the language, as stored. It asks for nothing. */
   Preparation preparation(Act act, Language language);
+
+  /**
+   * Returns the marks of the texts of {@code preparation} that are built, by version. It asks for
+   * nothing. A version whose text is not built is left out.
+   */
+  Map<Version, TextMarks> marks(Preparation preparation);
 }

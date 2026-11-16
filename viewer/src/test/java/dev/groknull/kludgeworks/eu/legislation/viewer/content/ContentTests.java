@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.stream.Stream;
@@ -139,6 +140,33 @@ class ContentTests {
             tuple("anx/pnt_1.1.2", "Security restricted areas"),
             tuple("anx/pnt_1.1.3", "Critical parts of security restricted areas"));
     assertThat(all(outline.entries())).hasSize(355);
+  }
+
+  @Test
+  void keepsTheActsThatMarkEachUnitInTheOutline() {
+    var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
+
+    assertThat(content.outline(id).orElseThrow().marks())
+        .hasSize(447)
+        .containsEntry("anx/pnt_4.1.3.3", Set.of("32017R0815"))
+        .containsEntry("anx/pnt_6.8.3.1", Set.of("32017R0815", "32022R1174"))
+        .doesNotContainKey("art_1");
+  }
+
+  @Test
+  void outlinesATextKeptBeforeOutlinesHeldMarksAgainAndKeepsTheNewOutline() {
+    var text = LegalTexts.sample(SAMPLE);
+    // A language that no other test stores, so that no outline of it is cached
+    var id = content.store(CELEX, Language.ITA, "test", text);
+    jdbc.sql("update text set outline = outline - 'marks' where id = ?").param(id.value()).update();
+
+    assertThat(content.outline(id)).contains(Outlines.of(LegalTexts.element(text)));
+    assertThat(
+            jdbc.sql("select jsonb_exists(outline, 'marks') from text where id = ?")
+                .param(id.value())
+                .query(Boolean.class)
+                .single())
+        .isTrue();
   }
 
   @Test

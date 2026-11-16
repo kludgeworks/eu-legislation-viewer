@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -148,7 +149,8 @@ class VersionController {
           false,
           Map.of(),
           null,
-          List.of());
+          List.of(),
+          Map.of());
     }
     var preparation = texts.prepare(page.act, page.language);
     if (preparation.preparing()) {
@@ -173,7 +175,8 @@ class VersionController {
         prepared,
         TimelineView.states(preparation),
         ArrivingView.of(preparation).orElse(null),
-        page.named(preparation));
+        page.named(preparation),
+        texts.marks(preparation));
   }
 
   /**
@@ -243,13 +246,14 @@ class VersionController {
         boolean arrived,
         Map<Version, String> states,
         @Nullable ArrivingView arriving,
-        List<ActIdentifier> named) {
+        List<ActIdentifier> named,
+        Map<Version, TextMarks> marks) {
       return templates
           .catalogueVersion(
               frame,
               masthead,
               TimelineView.reading(act, version, date, language, today(), states),
-              ReadingView.of(act, version, date, language, today(), named),
+              ReadingView.of(act, version, date, language, today(), named, marks),
               text,
               arrived,
               arriving)

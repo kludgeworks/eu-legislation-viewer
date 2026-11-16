@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
@@ -19,12 +20,19 @@ import org.jspecify.annotations.Nullable;
  * @param applies the date from which {@code act} applies, with the clause that sets it
  * @param included the first version that includes the text of {@code act}. Null for a late text
  *     that no version includes yet.
+ * @param places the provisions where the text differs, as Cellar annotates them. Empty where the
+ *     whole act differs, or where Cellar does not say where.
  */
 @ValueObject
 public record Divergence(
-    Kind kind, ActIdentifier act, ActDate applies, @Nullable Version included) {
+    Kind kind,
+    ActIdentifier act,
+    ActDate applies,
+    @Nullable Version included,
+    List<Amendment> places) {
 
   public Divergence {
+    places = List.copyOf(places);
     Objects.requireNonNull(applies.date(), "A divergence needs the day from which the act applies");
     if (kind == Kind.EARLY && included == null) {
       throw new IllegalArgumentException("An early text is in a version");

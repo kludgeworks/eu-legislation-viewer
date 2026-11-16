@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: MIT
-# Gets how the acts that the consolidations of an act integrate were published, for
-# CellarPublications. This includes corrigenda. For each act it gets:
+# Gets how the acts that the consolidations of an act integrate, and the acts that amend it, were
+# published, for CellarPublications. This includes corrigenda. An act that amends it can be in no
+# consolidation yet. For each act it gets:
 # - the ELI.
 # - the title in each language.
 # - the place in the Official Journal. This is the collection, for example OJ-L. It is also the
@@ -8,7 +9,8 @@
 #   example L 21. The act-by-act Journal started in October 2023.
 # - the day of publication for each place. An act that has both places has two days.
 # It uses consolidations with or without a CELEX number, as dates.rq does. CellarActs retains
-# only publications of acts that a version in the act's timeline integrates (and of the act itself).
+# only publications of acts that a version in the act's timeline integrates, of acts that amend
+# the act, and of the act itself.
 # It gives one row per act and title. The details of the Journal are optional. They are often
 # missing for a corrigendum.
 # {{celex}}: the CELEX number of the base act, for example 32015R1998. Sparql.fill escapes it.
@@ -19,8 +21,12 @@ SELECT DISTINCT ?subject ?eli ?code ?title ?collection ?number ?published ?issue
     ?issuePublished
 WHERE {
   ?act cdm:resource_legal_id_celex "{{celex}}"^^xsd:string .
-  ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
-       cdm:act_consolidated_consolidates_resource_legal ?work .
+  {
+    ?consolidation cdm:act_consolidated_based_on_resource_legal ?act ;
+         cdm:act_consolidated_consolidates_resource_legal ?work .
+  } UNION {
+    ?work cdm:resource_legal_amends_resource_legal ?act .
+  }
   ?work cdm:resource_legal_id_celex ?subject .
   OPTIONAL { ?work cdm:resource_legal_eli ?eli }
   OPTIONAL {

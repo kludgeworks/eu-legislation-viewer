@@ -118,6 +118,15 @@ public record ActIdentifier(String celex) {
   }
 
   /**
+   * Returns whether this is a directive: a numbered act of secondary law whose type in the CELEX
+   * number is {@code L}. For example, 32013L0036.
+   */
+  public boolean directive() {
+    var parts = NUMBERED.matcher(celex);
+    return parts.matches() && parts.group(2).equals("L");
+  }
+
+  /**
    * Returns whether this is a corrigendum. A corrigendum corrects the text of an act. It does not
    * amend it. For example, 32019R0103R(01) is one.
    */

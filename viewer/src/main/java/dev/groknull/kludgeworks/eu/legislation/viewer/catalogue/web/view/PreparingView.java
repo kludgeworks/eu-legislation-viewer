@@ -85,6 +85,7 @@ public record PreparingView(
                   case ENTRY_INTO_FORCE -> "In force";
                   case APPLICATION -> "Applies";
                   case TAKING_EFFECT -> "Takes effect";
+                  case TRANSPOSITION -> "Applies in the Member States";
                 },
                 dates));
       }

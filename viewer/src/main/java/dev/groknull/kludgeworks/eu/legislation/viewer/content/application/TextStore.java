@@ -10,7 +10,8 @@ import java.util.Optional;
 
 /**
  * The store of texts. It keeps one text for each version and language: its JSON, the digest of the
- * JSON, its outline and the converter that made it. All of it is written once, with the text.
+ * JSON, its outline and the converter that made it. All of it is written once, with the text. Only
+ * an outline kept before outlines held marks is written again.
  */
 public interface TextStore {
 
@@ -47,8 +48,14 @@ public interface TextStore {
   /** Returns the JSON of the text, if it is kept. */
   Optional<byte[]> json(TextId text);
 
-  /** Returns the outline of the text, if it is kept. */
+  /**
+   * Returns the outline of the text, if it is kept and holds the marks of its units. Returns empty
+   * for an outline kept before outlines held marks.
+   */
   Optional<Outline> outline(TextId text);
+
+  /** Replaces the outline of the text, which must be kept. */
+  void outline(TextId text, Outline outline);
 
   /** Returns whether the text is kept. */
   boolean contains(TextId text);

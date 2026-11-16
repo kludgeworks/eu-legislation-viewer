@@ -11,12 +11,14 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChang
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationCompleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationFailed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionAdded;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.VersionRepublished;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.VersionWithdrawn;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.ConversionFailed;
@@ -32,9 +34,12 @@ import java.time.Clock;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -138,6 +143,54 @@ class TextService implements Texts {
     preparations.restart(act.id(), language);
     LOG.info("Trying {} in {} again: {} versions", act.id(), language.code(), retried);
     events.publishEvent(new PreparationChanged(act.id(), language));
+  }
+
+  /**
+   * {@inheritDoc}
+   *
+   * <p>The marks are in the outline of each text, which the content module keeps.
+   */
+  @Override
+  public Map<Version, TextMarks> marks(Preparation preparation) {
+    var start = System.nanoTime();
+    var marks = new LinkedHashMap<Version, TextMarks>();
+    preparation
+        .texts()
+        .forEach(
+            (version, text) -> {
+              switch (text) {
+                case Text.Ready ready ->
+                    content.outline(ready.text()).ifPresent(o -> marks.put(version, marks(o)));
+                case Text.Waiting _, Text.Converting _, Text.Failed _ -> {
+                  // not built: it gives no marks
+                }
+              }
+            });
+    LOG.debug(
+        "Marks of {} of {} texts of {} in {}, in {} ms",
+        marks.size(),
+        preparation.texts().size(),
+        preparation.act(),
+        preparation.language().code(),
+        (System.nanoTime() - start) / 1_000_000);
+    return marks;
+  }
+
+  /** Returns the marks in {@code outline}, by act. A mark that is not a CELEX is left out. */
+  private static TextMarks marks(Outline outline) {
+    var byAct = new HashMap<ActIdentifier, Set<String>>();
+    outline
+        .marks()
+        .forEach(
+            (unit, acts) ->
+                acts.stream()
+                    .filter(ActIdentifier::isCelex)
+                    .forEach(
+                        act ->
+                            byAct
+                                .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
+                                .add(unit)));
+    return new TextMarks(outline.eIds(), byAct);
   }
 
   @Override

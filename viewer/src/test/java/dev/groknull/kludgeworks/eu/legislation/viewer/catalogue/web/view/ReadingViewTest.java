@@ -41,7 +41,8 @@ class ReadingViewTest {
                     LocalDate.parse("2021-12-31"),
                     Language.DEU,
                     TODAY,
-                    List.of())
+                    List.of(),
+                    Map.of())
                 .made())
         .isEqualTo("made by 2019/103, 2019/1583, 2020/910 · also 1 corrigendum");
     assertThat(card.published())
@@ -109,7 +110,8 @@ class ReadingViewTest {
             LocalDate.parse("2018-02-06"),
             Language.ENG,
             TODAY,
-            List.of(new ActIdentifier("32017R0815")));
+            List.of(new ActIdentifier("32017R0815")),
+            Map.of());
     assertThat(named.made()).isEqualTo("made by 2017/815");
     assertThat(named.published()).startsWith("2017/815: Commission Implementing Regulation");
   }
@@ -180,7 +182,7 @@ class ReadingViewTest {
   /** The card of the version of {@code version}, asked for on {@code asked}, in English. */
   private static ReadingView card(String version, String asked, LocalDate today) {
     return ReadingView.of(
-        AVSEC, version(version), LocalDate.parse(asked), Language.ENG, today, List.of());
+        AVSEC, version(version), LocalDate.parse(asked), Language.ENG, today, List.of(), Map.of());
   }
 
   private static Version version(String date) {

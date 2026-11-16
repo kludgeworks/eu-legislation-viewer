@@ -38,6 +38,8 @@ import org.junit.jupiter.api.Test;
  * viewer/src/test/resources/acts}.
  */
 class CellarActsTest {
+  private static final String CDM = "http://publications.europa.eu/ontology/cdm#";
+
   static final ActIdentifier AVSEC = new ActIdentifier("32015R1998");
   static final ActIdentifier REPEALED = new ActIdentifier("32010R0185");
   static final Set<Language> ALL_BUT_IRISH = EnumSet.complementOf(EnumSet.of(Language.GLE));
@@ -45,8 +47,10 @@ class CellarActsTest {
   @Test
   void readsHowItAndTheActsItsVersionsIntegrateWerePublished() {
     var act = act(AVSEC);
-    // The act itself and the acts its versions integrate, corrigenda included. No consolidation.
-    assertThat(act.publications()).hasSize(act.integratedBetween(first(act), last(act)).size() + 1);
+    // The act itself, the acts its versions integrate, corrigenda included, and 2026/2338, which
+    // amends it and is in no version. No consolidation.
+    assertThat(act.publications()).hasSize(act.integratedBetween(first(act), last(act)).size() + 2);
+    assertThat(reference(act, "32026R2338")).isPresent();
     assertThat(act.publication(new ActIdentifier("32026R0449")))
         .hasValueSatisfying(
             published -> {
@@ -259,10 +263,17 @@ class CellarActsTest {
   }
 
   @Test
-  void readsTheDatesOfEachActItsVersionsIntegrate() {
-    var dates = act(AVSEC).amendingDates();
+  void readsTheDatesOfEachActItsVersionsIntegrateOrThatAmendsIt() {
+    var act = act(AVSEC);
+    var dates = act.amendingDates();
+    var inNoVersion = new ActIdentifier("32026R2338");
 
-    assertThat(dates).hasSize(18).doesNotContainKey(AVSEC);
+    // The 18 acts that the versions integrate, and 2026/2338, which is in no version.
+    assertThat(dates).hasSize(19).doesNotContainKey(AVSEC);
+    assertThat(act.timeline().versions())
+        .noneMatch(each -> each.integrates().contains(inNoVersion));
+    assertThat(act.appliesFrom(inNoVersion).map(ActDate::date))
+        .hasValue(LocalDate.of(2026, 11, 12));
     assertThat(dates.getOrDefault(new ActIdentifier("32018R0055"), List.of()))
         .extracting(ActDate::date, ActDate::kind)
         .containsExactly(
@@ -308,7 +319,7 @@ class CellarActsTest {
 
   @Test
   void theTextIsEarlyUntilTheActAppliesAndLateWhileAnActAppliesUnincluded() {
-    assertThat(act(AVSEC).divergences(Language.ENG))
+    assertThat(act(AVSEC).divergences(Language.ENG, Map.of()))
         .extracting(
             Divergence::kind,
             each -> each.act().celex(),
@@ -333,16 +344,37 @@ class CellarActsTest {
   void theTextDiffersFromTheLawOnlyOnTheDaysOfADivergence() {
     var act = act(AVSEC);
 
-    assertThat(act.divergences(LocalDate.of(2017, 5, 31), Language.ENG)).isEmpty();
-    assertThat(act.divergences(LocalDate.of(2017, 6, 1), Language.ENG))
+    assertThat(act.divergences(LocalDate.of(2017, 5, 31), Language.ENG, Map.of())).isEmpty();
+    assertThat(act.divergences(LocalDate.of(2017, 6, 1), Language.ENG, Map.of()))
         .extracting(each -> each.act().celex())
         .containsExactly("32017R0815");
-    assertThat(act.divergences(LocalDate.of(2017, 6, 6), Language.ENG)).hasSize(1);
-    assertThat(act.divergences(LocalDate.of(2017, 6, 7), Language.ENG)).isEmpty();
-    assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG))
+    assertThat(act.divergences(LocalDate.of(2017, 6, 6), Language.ENG, Map.of())).hasSize(1);
+    assertThat(act.divergences(LocalDate.of(2017, 6, 7), Language.ENG, Map.of())).isEmpty();
+    assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of()))
         .extracting(Divergence::kind)
         .containsExactly(Divergence.Kind.EARLY);
-    assertThat(act.divergences(LocalDate.of(2016, 2, 1), Language.ENG)).isEmpty();
+    assertThat(act.divergences(LocalDate.of(2016, 2, 1), Language.ENG, Map.of())).isEmpty();
+  }
+
+  @Test
+  void keepsTheDateOfTranspositionFromWhichTheMemberStatesApplyADirective() {
+    var directive = new ActIdentifier("32019L2034");
+    var dates =
+        CellarDates.byAct(
+            AVSEC,
+            dates(
+                dateRow("32019L2034", "2019-12-25", "EV", "{DATPUB|x} +20 {V|x} {ART|x} 68"),
+                transpositionRow("32019L2034", "2020-03-26", "{ADOPTION|x} {V|x} {ART|x} 67.1"),
+                transpositionRow(
+                    "32019L2034", "2021-06-26", "{APPLICATION|x} {V|x} {ART|x} 67.1")));
+
+    var read = dates.getOrDefault(directive, List.of());
+    assertThat(read)
+        .extracting(ActDate::date, ActDate::kind, ActDate::partial)
+        .containsExactly(
+            tuple(LocalDate.of(2019, 12, 25), Kind.ENTRY_INTO_FORCE, false),
+            tuple(LocalDate.of(2021, 6, 26), Kind.TRANSPOSITION, false));
+    assertThat(read.getLast().clause().provisions()).containsExactly(article("67.1"));
   }
 
   @Test
@@ -764,13 +796,39 @@ class CellarActsTest {
 
   /** dates.rq's answer: one row per date. */
   private static SparqlResult dates(SparqlResult.Row... rows) {
-    return new SparqlResult(List.of("subject", "date", "type", "comment"), List.of(rows));
+    return new SparqlResult(
+        List.of("subject", "property", "date", "type", "comment"), List.of(rows));
   }
 
+  /** A date of entry into force, with its type. */
   private static SparqlResult.Row dateRow(
       String subject, String date, String type, String comment) {
     return new SparqlResult.Row(
-        Map.of("subject", subject, "date", date, "type", "{" + type + "|x}", "comment", comment));
+        Map.of(
+            "subject",
+            subject,
+            "property",
+            CDM + "resource_legal_date_entry-into-force",
+            "date",
+            date,
+            "type",
+            "{" + type + "|x}",
+            "comment",
+            comment));
+  }
+
+  /** A date of transposition of a directive. It has no type. */
+  private static SparqlResult.Row transpositionRow(String subject, String date, String comment) {
+    return new SparqlResult.Row(
+        Map.of(
+            "subject",
+            subject,
+            "property",
+            CDM + "directive_date_transposition",
+            "date",
+            date,
+            "comment",
+            comment));
   }
 
   private static Provision article(String number) {

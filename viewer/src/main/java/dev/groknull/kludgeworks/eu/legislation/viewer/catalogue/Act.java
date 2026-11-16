@@ -1,13 +1,12 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.net.URI;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
+import java.util.EnumSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -15,6 +14,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.SequencedSet;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
@@ -35,13 +35,14 @@ import org.jspecify.annotations.Nullable;
  * @param timeline its versions
  * @param dates its own dates. These are the dates when it enters into force, applies or takes
  *     effect.
- * @param amendingDates the own dates of each act that its versions integrate, by act. An act that
- *     Cellar has no dates for is left out.
+ * @param amendingDates the own dates of each act that its versions integrate or that amends it, by
+ *     act. An act that amends it can be in no version yet. An act that Cellar has no dates for is
+ *     left out.
  * @param amendments what other acts did to its provisions, as Cellar annotates them. Each amendment
  *     has one location.
- * @param publications how this act and each act that its versions integrate were published. Each
- *     publication has the ELI, the titles and the Official Journal reference. An act that Cellar
- *     has nothing for is left out.
+ * @param publications how this act, each act that its versions integrate and each act that amends
+ *     it were published. Each publication has the ELI, the titles and the Official Journal
+ *     reference. An act that Cellar has nothing for is left out.
  */
 @AggregateRoot
 public record Act(
@@ -57,6 +58,16 @@ public record Act(
     Map<ActIdentifier, List<ActDate>> amendingDates,
     List<Amendment> amendments,
     Map<ActIdentifier, Publication> publications) {
+
+  /**
+   * The kinds of date that tell from when a whole act applies, in the order in which {@link
+   * #appliesFrom} looks for them.
+   */
+  private static final List<Set<ActDate.Kind>> WHOLE_ACT =
+      List.of(
+          EnumSet.of(ActDate.Kind.APPLICATION, ActDate.Kind.TAKING_EFFECT),
+          EnumSet.of(ActDate.Kind.TRANSPOSITION),
+          EnumSet.of(ActDate.Kind.ENTRY_INTO_FORCE));
 
   public Act {
     publications = Map.copyOf(publications);
@@ -75,8 +86,8 @@ public record Act(
   }
 
   /**
-   * Returns the own dates of {@code act}, if it is this act or an act that its versions integrate.
-   * For any other act, returns an empty list.
+   * Returns the own dates of {@code act}, if it is this act, an act that its versions integrate or
+   * an act that amends it. For any other act, returns an empty list.
    */
   public List<ActDate> datesOf(ActIdentifier act) {
     return act.equals(id) ? dates : amendingDates.getOrDefault(act, List.of());
@@ -244,11 +255,12 @@ public record Act(
   }
 
   /**
-   * Returns where the text that a reader in {@code language} gets on {@code day} is not the law on
-   * that day, as {@link #divergences(Language)} finds it.
+   * Returns where the text that a reader gets on {@code day} is not the law on that day, as {@link
+   * #divergences(Language, Map)} finds it.
    */
-  public List<Divergence> divergences(LocalDate day, Language language) {
-    return divergences(language).stream().filter(each -> each.on(day)).toList();
+  public List<Divergence> divergences(
+      LocalDate day, Language language, Map<Version, TextMarks> texts) {
+    return divergences(language, texts).stream().filter(each -> each.on(day)).toList();
   }
 
   /**
@@ -257,70 +269,64 @@ public record Act(
    * <ul>
    *   <li>The text is early while the act is in force but does not apply yet. For example, 2016/679
    *       is in force from 24 May 2016 and applies from 25 May 2018.
-   *   <li>The text is late while an amending act applies but no version includes it. For example,
-   *       2017/815 applies from 1 June 2017, and the version of 2015/1998 of 7 June 2017 is the
-   *       first to include it.
+   *   <li>The text is late where a provision of an amending act applies, but the text does not
+   *       include it yet. For example, 2017/815 applies from 1 June 2017, and the version of
+   *       2015/1998 of 7 June 2017 is the first to include it.
+   *   <li>The text is early where it includes a provision of an amending act before the provision
+   *       applies. For example, the version of 767/2008 of 12 January 2018 includes provisions of
+   *       2017/2226 that apply later.
    * </ul>
    *
-   * <p>An amending act that does not change the text in {@code language} makes no text late. For
-   * example, 2017/837 corrects only the Swedish and the Polish text of 2015/1998. An act whose date
-   * Cellar does not know is left out. The early text is first, and then the late texts in the order
-   * in which the versions include the acts.
+   * <p>{@code texts} gives the marks of the texts in {@code language} that are built. They tell
+   * which version first includes each provision. {@link Divergences} tells how. An amending act
+   * that does not change the text in {@code language} makes no text late. For example, 2017/837
+   * corrects only the Swedish and the Polish text of 2015/1998.
    */
-  public List<Divergence> divergences(Language language) {
-    var versions = timeline(language).map(Timeline::versions).orElseGet(List::of);
-    var divergences = new ArrayList<Divergence>();
-    if (!versions.isEmpty()) {
-      var first = versions.getFirst();
-      appliesFrom(id)
-          .filter(from -> Objects.requireNonNull(from.date()).isAfter(first.date()))
-          .ifPresent(from -> divergences.add(new Divergence(Kind.EARLY, id, from, first)));
-    }
-    var included = new HashSet<ActIdentifier>();
-    for (var each : versions) {
-      for (var act : each.integrates()) {
-        if (included.add(act) && changes(act, language)) {
-          appliesFrom(act)
-              .filter(from -> Objects.requireNonNull(from.date()).isBefore(each.date()))
-              .ifPresent(from -> divergences.add(new Divergence(Kind.LATE, act, from, each)));
-        }
-      }
-    }
-    return divergences;
+  public List<Divergence> divergences(Language language, Map<Version, TextMarks> texts) {
+    return Divergences.of(this, language, texts);
   }
 
   /**
-   * Returns the date from which the whole of {@code act} applies. {@code act} is this act or an act
-   * that its versions integrate.
+   * Returns the date from which the whole of {@code act} applies. {@code act} is this act, an act
+   * that its versions integrate or an act that amends it.
    *
    * <ul>
    *   <li>It is the act's date of application or of taking effect that is not for a part.
-   *   <li>An act that has no such date applies from its entry into force.
+   *   <li>A directive that has no such date applies from the day from which the Member States apply
+   *       it. For example, 2019/878 enters into force on 27 June 2019, and the Member States apply
+   *       it from 29 December 2020.
+   *   <li>An act that has neither date applies from its entry into force. A directive does not: the
+   *       Member States apply it through their own measures, so its entry into force does not tell
+   *       from when it applies. For example, 2015/2366 enters into force on 12 January 2016, and
+   *       the Member States apply it from 13 January 2018. Cellar has that day only as the deadline
+   *       for transposition, and that deadline is not always the day from which they apply it.
    *   <li>A date for a part is an exception for that part. It does not move the date of the whole
    *       act. For example, 2021/255 enters into force on 11 March 2021, and only four of its
    *       points apply from later dates. So it applies from 11 March 2021.
    * </ul>
    *
    * <p>Returns empty if Cellar does not know the date. For example, 2019/413 applies from a date
-   * that its Article 3 sets by an event.
+   * that its Article 3 sets by an event. It also returns empty for a directive that the Member
+   * States apply from more than one day, because Cellar does not tell which day is for the whole
+   * directive. For example, they apply one point of 2019/2034 from 26 March 2020, and the rest from
+   * 26 June 2021.
    */
   public Optional<ActDate> appliesFrom(ActIdentifier act) {
     var whole = datesOf(act).stream().filter(date -> !date.partial()).toList();
-    var applying =
-        whole.stream().filter(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE).toList();
-    var dates = applying.isEmpty() ? whole : applying;
-    if (dates.stream().anyMatch(date -> date.date() == null)) {
-      return Optional.empty();
+    for (var kinds : WHOLE_ACT) {
+      if (act.directive() && kinds.contains(ActDate.Kind.ENTRY_INTO_FORCE)) {
+        return Optional.empty();
+      }
+      var dates = whole.stream().filter(date -> kinds.contains(date.kind())).toList();
+      if (dates.stream().anyMatch(date -> date.date() == null)
+          || (kinds.contains(ActDate.Kind.TRANSPOSITION) && dates.size() > 1)) {
+        return Optional.empty();
+      }
+      if (!dates.isEmpty()) {
+        return dates.stream()
+            .min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
+      }
     }
-    return dates.stream().min(Comparator.comparing(date -> Objects.requireNonNull(date.date())));
-  }
-
-  /**
-   * Returns whether {@code amending} changes the text in {@code language}. An act for which Cellar
-   * lists no amended location is taken to change every language.
-   */
-  private boolean changes(ActIdentifier amending, Language language) {
-    var own = amendments.stream().filter(each -> each.act().equals(amending)).toList();
-    return own.isEmpty() || own.stream().anyMatch(each -> each.changes(language));
+    return Optional.empty();
   }
 }

@@ -3,11 +3,13 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
@@ -78,6 +80,8 @@ public record ReadingView(
    * @param today the date today
    * @param named the acts that the text of the version names and the text of the version before
    *     does not. They are used for a version for which the Publications Office lists no acts.
+   * @param marks the marks of the texts of the act in {@code language} that are built. They tell
+   *     where the text is not the law.
    */
   public static ReadingView of(
       Act act,
@@ -85,7 +89,8 @@ public record ReadingView(
       LocalDate asked,
       Language language,
       LocalDate today,
-      List<ActIdentifier> named) {
+      List<ActIdentifier> named,
+      Map<Version, TextMarks> marks) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var makers = Wording.makers(act, version, named);
     var timeline = act.timeline().in(language).filter(each -> each.versions().contains(version));
@@ -97,7 +102,7 @@ public record ReadingView(
         Wording.which(act, version, asked, today, language),
         Wording.made(act, version, named, language),
         makers.isEmpty() ? null : act.citations(makers, language),
-        act.divergences(asked, language).stream()
+        act.divergences(asked, language, marks).stream()
             .map(each -> DivergenceView.of(act, each, version, asked, language, today))
             .toList(),
         version.celex(),

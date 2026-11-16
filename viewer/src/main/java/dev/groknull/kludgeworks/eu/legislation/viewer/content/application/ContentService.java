@@ -37,7 +37,8 @@ import org.springframework.transaction.annotation.Transactional;
  *       outlines the text, deletes the text before it and keeps the new one.
  *   <li>To read a text, the service reads its JSON and decodes it.
  *   <li>To outline a text, the service reads the outline that it kept when it stored the text. It
- *       keeps the outlines read last in the process. The decoded texts are not kept.
+ *       keeps the outlines read last in the process. The decoded texts are not kept. A text kept
+ *       before outlines held marks is outlined again from its JSON, the first time it is outlined.
  * </ul>
  *
  * <p>Storing and reading are each one transaction, one observation and one log line. The
@@ -161,10 +162,14 @@ class ContentService implements Content {
     return PublicTexts.marked(unit);
   }
 
-  /** The outline is cached in the process, by the identity of the text ({@link ContentCaches}). */
+  /**
+   * The outline is cached in the process, by the identity of the text ({@link ContentCaches}). A
+   * text kept before outlines held marks is outlined again from its JSON, once, and its new outline
+   * is kept.
+   */
   @Override
   @Cacheable(cacheNames = ContentCaches.OUTLINES, unless = "#result == null")
-  @Transactional(readOnly = true)
+  @Transactional
   public Optional<Outline> outline(TextId text) {
     return Observation.createNotStarted("content.outline", observations)
         .observe(() -> doOutline(text));
@@ -172,13 +177,33 @@ class ContentService implements Content {
 
   private Optional<Outline> doOutline(TextId text) {
     var start = System.nanoTime();
-    var outline = store.outline(text);
+    var outline = store.outline(text).or(() -> outlineAgain(text, start));
     LOG.debug(
         "Outlined text {}, not cached: {} in {} ms",
         text,
         outline.isPresent() ? "kept" : "no text",
         millis(start));
     return outline;
+  }
+
+  /**
+   * Outlines the text again from its JSON, and keeps the new outline. Returns empty if no such text
+   * is kept.
+   */
+  private Optional<Outline> outlineAgain(TextId text, long start) {
+    return store
+        .json(text)
+        .map(
+            json -> {
+              var outline = Outlines.of(Decoder.element(json));
+              store.outline(text, outline);
+              LOG.info(
+                  "Outlined text {} again, for the marks of its units: {} units marked, in {} ms",
+                  text,
+                  outline.marks().size(),
+                  millis(start));
+              return outline;
+            });
   }
 
   @Override

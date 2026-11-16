@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
@@ -88,10 +89,12 @@ class ApiActController {
   private static final CacheControl LOOKED_UP = CacheControl.maxAge(Duration.ofHours(1));
 
   private final Acts acts;
+  private final Texts texts;
   private final Clock clock;
 
-  ApiActController(Acts acts, Clock clock) {
+  ApiActController(Acts acts, Texts texts, Clock clock) {
     this.acts = acts;
+    this.texts = texts;
     this.clock = clock;
   }
 
@@ -214,10 +217,10 @@ class ApiActController {
   /**
    * Returns the divergences of {@code act} on {@code date}, each with the languages of the versions
    * {@code applying} whose text differs. An amending act can change the text of some languages
-   * only.
+   * only. The marks of the texts that are built in a language tell where its text differs. A
+   * language without built texts is compared act by act.
    */
-  private static List<DivergenceModel> divergences(
-      Act act, List<Version> applying, LocalDate date) {
+  private List<DivergenceModel> divergences(Act act, List<Version> applying, LocalDate date) {
     var languages = new LinkedHashMap<Divergence, List<String>>();
     applying.stream()
         .flatMap(version -> version.languages().stream())
@@ -225,7 +228,7 @@ class ApiActController {
         .sorted()
         .forEach(
             language ->
-                act.divergences(date, language)
+                act.divergences(date, language, texts.marks(texts.preparation(act, language)))
                     .forEach(
                         each ->
                             languages
@@ -242,6 +245,11 @@ class ApiActController {
                   act.cited(divergence.act()),
                   divergence.appliesFrom(),
                   included == null ? null : key(included),
+                  divergence.places().stream()
+                      .map(
+                          place -> new PlaceModel(place.location().code(), place.location().name()))
+                      .distinct()
+                      .toList(),
                   each.getValue());
             })
         .toList();
@@ -506,6 +514,7 @@ class ApiActController {
    * @param appliesFrom the day from which the act applies
    * @param includedIn the first version that includes its text: {@code oj}, or its date. Null for a
    *     late text that no version includes yet.
+   * @param places the provisions where the text differs. Empty where the whole act differs.
    * @param languages the languages whose text differs
    */
   record DivergenceModel(
@@ -514,7 +523,17 @@ class ApiActController {
       String cited,
       LocalDate appliesFrom,
       @Nullable String includedIn,
+      List<PlaceModel> places,
       List<String> languages) {}
+
+  /**
+   * A provision where the text is not the law, as the API shows it.
+   *
+   * @param location where, in Cellar's codes, as in {@code amendments}. For example, {@code AN PO
+   *     4.1.3.3}.
+   * @param name the provision, as a page cites it. For example, {@code point 4.1.3.3}.
+   */
+  record PlaceModel(String location, String name) {}
 
   /**
    * What other acts did to the provisions of an act, as the API shows it.

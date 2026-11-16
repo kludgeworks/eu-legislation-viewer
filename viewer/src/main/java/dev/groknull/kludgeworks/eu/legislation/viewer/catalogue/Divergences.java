@@ -1,0 +1,365 @@
+// SPDX-License-Identifier: MIT
+package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import org.jspecify.annotations.Nullable;
+
+/**
+ * Finds where the text of the versions of an act in a language is not the law. It compares, for
+ * each provision that an amending act changes, two dates:
+ *
+ * <ul>
+ *   <li>The place date: the day from which the provision applies, as Cellar annotates the
+ *       amendment.
+ *   <li>The version date: the first day of the first version whose text newly marks the provision
+ *       with the amending act.
+ * </ul>
+ *
+ * <p>The rule is in the Notion page "Which date applies to a changed place":
+ *
+ * <ol>
+ *   <li>A place date is accepted if it is one of the dates of the amending act. It is rejected if
+ *       it is only its entry into force, and the whole act applies from another day.
+ *   <li>An accepted place date that is the version date is the date of the provision.
+ *   <li>If they differ, the version date is the date of the provision if the place date was
+ *       rejected, or if a version that starts on the place date includes the act but does not mark
+ *       the provision.
+ *   <li>Otherwise, a place date before the version date makes the text late between them, and a
+ *       place date after the version date makes the text early between them.
+ *   <li>A provision that the amending act replaces, amends, deletes or repeals does not make the
+ *       text late if the version before the version date does not have it. The provision is not in
+ *       the text yet, so the text cannot have its old words. For example, 2024/2994 replaces
+ *       Article 74(1)(b) of 2013/36 from 24 December 2024. But 2024/1619 puts point (b) in, from 11
+ *       January 2026.
+ *   <li>A provision of an act that no version includes makes the text late from its accepted place
+ *       date.
+ * </ol>
+ *
+ * <p>A provision gives no answer if no version marks it while some version includes the act, or if
+ * a version before the answer has no built text. An amending act whose provisions give no answer at
+ * all is compared as a whole: the day from which the whole act applies, {@link Act#appliesFrom},
+ * against the first version that includes it.
+ */
+final class Divergences {
+
+  private final Act act;
+  private final Language language;
+  private final List<Version> versions;
+  private final Map<Version, TextMarks> texts;
+
+  private Divergences(Act act, Language language, Map<Version, TextMarks> texts) {
+    this.act = act;
+    this.language = language;
+    this.versions = act.timeline(language).map(Timeline::versions).orElseGet(List::of);
+    this.texts = texts;
+  }
+
+  /**
+   * Returns each period in which the text of the versions of {@code act} in {@code language} is not
+   * the law. The early text of the act itself is first. The others are in the order of the day on
+   * which they start.
+   *
+   * @param texts the marks of the texts in {@code language} that are built, by version
+   */
+  static List<Divergence> of(Act act, Language language, Map<Version, TextMarks> texts) {
+    return new Divergences(act, language, texts).find();
+  }
+
+  private List<Divergence> find() {
+    var found = new ArrayList<Divergence>();
+    if (versions.isEmpty()) {
+      return found;
+    }
+    var first = versions.getFirst();
+    act.appliesFrom(act.id())
+        .filter(from -> day(from).isAfter(first.date()))
+        .ifPresent(from -> found.add(new Divergence(Kind.EARLY, act.id(), from, first, List.of())));
+    var amending = new LinkedHashSet<ActIdentifier>();
+    versions.forEach(each -> amending.addAll(each.integrates()));
+    act.amendments().forEach(each -> amending.add(each.act()));
+    amending.remove(act.id());
+    var others = new ArrayList<Divergence>();
+    for (var each : amending) {
+      others.addAll(of(each));
+    }
+    others.sort(Comparator.comparing(Divergences::start));
+    found.addAll(others);
+    return found;
+  }
+
+  /** Returns the divergences that {@code amending} makes. */
+  private List<Divergence> of(ActIdentifier amending) {
+    var own = act.amendments().stream().filter(each -> each.act().equals(amending)).toList();
+    var places = own.stream().filter(each -> each.changes(language)).toList();
+    if (!own.isEmpty() && places.isEmpty()) {
+      // It changes the text in other languages only.
+      return List.of();
+    }
+    var groups = new LinkedHashMap<Answer, List<Amendment>>();
+    var answered = false;
+    for (var place : places) {
+      var answer = answer(amending, place);
+      if (answer.isPresent()) {
+        answered = true;
+        if (answer.get().kind() != null) {
+          groups.computeIfAbsent(answer.get(), key -> new ArrayList<>()).add(place);
+        }
+      }
+    }
+    if (!answered) {
+      return whole(amending);
+    }
+    return groups.entrySet().stream()
+        .map(
+            each ->
+                new Divergence(
+                    Objects.requireNonNull(each.getKey().kind()),
+                    amending,
+                    Objects.requireNonNull(each.getKey().applies()),
+                    each.getKey().included(),
+                    inTextOrder(each.getValue(), each.getKey().included())))
+        .toList();
+  }
+
+  /**
+   * Returns {@code places} in the order of the text of {@code version}, or of the latest built text
+   * if {@code version} is null or has none. A place that the text does not have is last.
+   */
+  private List<Amendment> inTextOrder(List<Amendment> places, @Nullable Version version) {
+    var text =
+        Optional.ofNullable(version)
+            .map(texts::get)
+            .or(
+                () ->
+                    versions.reversed().stream()
+                        .map(texts::get)
+                        .filter(Objects::nonNull)
+                        .findFirst());
+    if (text.isEmpty()) {
+      return places;
+    }
+    var eIds = text.get().eIds();
+    return places.stream().sorted(Comparator.comparingInt(place -> position(place, eIds))).toList();
+  }
+
+  /**
+   * Returns where {@code place} is among {@code eIds}, or {@link Integer#MAX_VALUE} if they do not
+   * have it.
+   */
+  private static int position(Amendment place, List<String> eIds) {
+    var found = place.location().in(eIds);
+    return found.isPresent() ? eIds.indexOf(found.get().eIds().getFirst()) : Integer.MAX_VALUE;
+  }
+
+  /**
+   * Returns how the text and {@code place} of {@code amending} compare. Returns empty if the texts
+   * do not tell.
+   */
+  private Optional<Answer> answer(ActIdentifier amending, Amendment place) {
+    var marked = firstMarking(amending, place);
+    if (marked.isEmpty()) {
+      return Optional.empty();
+    }
+    var version = marked.get().version();
+    var from = place.from();
+    if (from == null || !accepted(amending, from)) {
+      // The version date stands. Without a version, the date is not confirmed.
+      return version == null ? Optional.empty() : Optional.of(Answer.AGREES);
+    }
+    if (version == null) {
+      return Optional.of(Answer.differs(Kind.LATE, date(amending, from), null));
+    }
+    var marking = marked.get().marking();
+    if (from.equals(version.date())
+        || versions.stream()
+            .anyMatch(
+                each ->
+                    each.date().equals(from)
+                        && includes(each, amending)
+                        && !marking.contains(each))) {
+      return Optional.of(Answer.AGREES);
+    }
+    if (from.isAfter(version.date())) {
+      return Optional.of(Answer.differs(Kind.EARLY, date(amending, from), version));
+    }
+    if (place.role().changesExisting()) {
+      var before = versions.indexOf(version) - 1;
+      var text = before < 0 ? null : texts.get(versions.get(before));
+      if (text == null) {
+        return Optional.empty();
+      }
+      if (place.location().in(text.eIds()).isEmpty()) {
+        // The provision is not in the text yet: an act that applies later puts it in.
+        return Optional.of(Answer.AGREES);
+      }
+    }
+    return Optional.of(Answer.differs(Kind.LATE, date(amending, from), version));
+  }
+
+  /**
+   * Returns the first version whose text newly marks {@code place} with {@code amending}. A unit
+   * marks the place if it is a unit of the place, or a unit in it. If no version marks it, it is
+   * the first version that marks a unit around the place. It is the version that starts on the
+   * place date instead, if that version also newly marks the place.
+   *
+   * <p>Returns a {@link Marked} without a version if no version includes {@code amending}. Returns
+   * empty if a version before the answer has no built text, or if no version marks the place while
+   * some version includes the act.
+   */
+  private Optional<Marked> firstMarking(ActIdentifier amending, Amendment place) {
+    Version first = null;
+    Version around = null;
+    var newly = new ArrayList<Version>();
+    var marking = new HashSet<Version>();
+    Set<String> before = Set.of();
+    for (var version : versions) {
+      var text = texts.get(version);
+      if (text == null) {
+        if (first == null) {
+          return Optional.empty();
+        }
+        continue;
+      }
+      var units = place.location().in(text.eIds()).map(Location.Found::eIds).orElseGet(List::of);
+      if (units.isEmpty()) {
+        continue;
+      }
+      var marks = text.marked(amending);
+      var now = new HashSet<String>();
+      for (var mark : marks) {
+        if (units.stream().anyMatch(unit -> mark.equals(unit) || mark.startsWith(unit + "/"))) {
+          now.add(mark);
+        } else if (around == null && units.stream().anyMatch(unit -> unit.startsWith(mark + "/"))) {
+          around = version;
+        }
+      }
+      if (!now.isEmpty()) {
+        marking.add(version);
+      }
+      if (!before.containsAll(now)) {
+        newly.add(version);
+        if (first == null) {
+          first = version;
+        }
+      }
+      before = now;
+    }
+    var from = place.from();
+    var onTheDay = newly.stream().filter(each -> each.date().equals(from)).findFirst();
+    if (onTheDay.isPresent()) {
+      return Optional.of(new Marked(onTheDay.get(), marking));
+    }
+    if (first != null || around != null) {
+      return Optional.of(new Marked(first != null ? first : around, marking));
+    }
+    var included = versions.stream().anyMatch(each -> includes(each, amending));
+    return included ? Optional.empty() : Optional.of(new Marked(null, marking));
+  }
+
+  /**
+   * Returns the divergence of {@code amending} as a whole: the day from which the whole act applies
+   * against the first version that includes it. If no version includes it, the text is late from
+   * that day, once every text is built.
+   */
+  private List<Divergence> whole(ActIdentifier amending) {
+    var applies = act.appliesFrom(amending);
+    if (applies.isEmpty()) {
+      return List.of();
+    }
+    var from = day(applies.get());
+    var first = versions.stream().filter(each -> includes(each, amending)).findFirst();
+    if (first.isPresent()) {
+      return from.isBefore(first.get().date())
+          ? List.of(new Divergence(Kind.LATE, amending, applies.get(), first.get(), List.of()))
+          : List.of();
+    }
+    return texts.keySet().containsAll(versions)
+        ? List.of(new Divergence(Kind.LATE, amending, applies.get(), null, List.of()))
+        : List.of();
+  }
+
+  /**
+   * Returns whether {@code day} is accepted as the day from which a provision of {@code amending}
+   * applies. It is accepted if it is one of the dates of the act. It is rejected if it is only its
+   * entry into force, and the whole act applies from another day or from a day that Cellar does not
+   * know.
+   */
+  private boolean accepted(ActIdentifier amending, LocalDate day) {
+    var dates = act.datesOf(amending).stream().filter(each -> day.equals(each.date())).toList();
+    if (dates.stream().anyMatch(each -> each.kind() != ActDate.Kind.ENTRY_INTO_FORCE)) {
+      return true;
+    }
+    return !dates.isEmpty()
+        && act.appliesFrom(amending).map(Divergences::day).filter(day::equals).isPresent();
+  }
+
+  /**
+   * Returns the date of {@code amending} that falls on {@code day}. A date of application is taken
+   * before an entry into force on the same day. {@code day} must be accepted.
+   */
+  private ActDate date(ActIdentifier amending, LocalDate day) {
+    return act.datesOf(amending).stream()
+        .filter(each -> day.equals(each.date()))
+        .min(Comparator.comparing(each -> each.kind() == ActDate.Kind.ENTRY_INTO_FORCE))
+        .orElseThrow();
+  }
+
+  /**
+   * Returns whether {@code version} includes {@code amending}: the Publications Office lists it, or
+   * its text marks a unit with it.
+   */
+  private boolean includes(Version version, ActIdentifier amending) {
+    var text = texts.get(version);
+    return version.integrates().contains(amending) || (text != null && text.marks(amending));
+  }
+
+  /** Returns the day on which a divergence starts. */
+  private static LocalDate start(Divergence divergence) {
+    var included = divergence.included();
+    return divergence.kind() == Kind.EARLY && included != null
+        ? included.date()
+        : divergence.appliesFrom();
+  }
+
+  private static LocalDate day(ActDate date) {
+    return Objects.requireNonNull(date.date());
+  }
+
+  /**
+   * The first version that marks a provision.
+   *
+   * @param version the version, or null if no version includes the amending act
+   * @param marking every version whose text marks the provision
+   */
+  private record Marked(@Nullable Version version, Set<Version> marking) {}
+
+  /**
+   * How the text and a provision compare.
+   *
+   * @param kind how the text differs, or null if it agrees with the law
+   * @param applies the date from which the provision applies, if the text differs
+   * @param included the first version that includes the provision, if the text differs. Null if no
+   *     version includes it.
+   */
+  private record Answer(
+      @Nullable Kind kind, @Nullable ActDate applies, @Nullable Version included) {
+
+    static final Answer AGREES = new Answer(null, null, null);
+
+    static Answer differs(Kind kind, ActDate applies, @Nullable Version included) {
+      return new Answer(kind, applies, included);
+    }
+  }
+}

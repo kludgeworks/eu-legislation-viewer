@@ -59,8 +59,8 @@ public interface Content {
   PublicText.Marked publicWording(Element unit);
 
   /**
-   * Returns the outline of the text, kept when the text was stored. Returns none if no such text is
-   * stored.
+   * Returns the outline of the text, with the marks of its units, kept when the text was stored.
+   * Returns none if no such text is stored.
    */
   Optional<Outline> outline(TextId text);
 

@@ -24,13 +24,16 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Reads the dates of acts from the answer to {@code dates.rq}. These are Cellar's typed dates of
- * entry into force. Cellar describes a clause for each date in the codes of its comment:
+ * entry into force, and the dates of transposition of directives. Cellar describes a clause for
+ * each date in the codes of its comment:
  *
  * <ul>
  *   <li>A code from the authority table {@code fd_335} gives the type.
  *   <li>{@code DATPUB}, {@code DATNOT} and {@code DATDOC} give the day that the date counts from.
  *   <li>{@code V ART 2} means "see Article 2".
  *   <li>{@code ET} and a CELEX number give an act that changed the date.
+ *   <li>For a date of transposition, a code from the authority table {@code fd_361} tells what the
+ *       Member States do: {@code APPLICATION} or {@code ADOPTION}.
  * </ul>
  *
  * <p>It reads the codes that it knows. It keeps the comment as it is.
@@ -52,12 +55,27 @@ final class CellarDates {
    */
   private static final int FIRST_YEAR = 1900;
 
+  /** The end of the name of Cellar's property for a date of transposition of a directive. */
+  private static final String TRANSPOSITION = "directive_date_transposition";
+
+  /**
+   * The code that starts the comment on a date of transposition from which the Member States apply
+   * their measures.
+   */
+  private static final String APPLY_FROM = "APPLICATION";
+
   private CellarDates() {}
 
   /**
-   * Returns the dates of each act in the answer, by act, in date order. It leaves out
-   * consolidations, because their dates are not typed. It also leaves out dates of a type that it
-   * does not know, and logs a warning for them.
+   * Returns the dates of each act in the answer, by act, in date order.
+   *
+   * <ul>
+   *   <li>It leaves out consolidations, because their dates are not typed.
+   *   <li>It leaves out dates of entry into force of a type that it does not know, and logs a
+   *       warning for them.
+   *   <li>Of the dates of transposition, it keeps the dates from which the Member States apply
+   *       their measures. It leaves out the others, for example the day by which they adopt them.
+   * </ul>
    */
   static Map<ActIdentifier, List<ActDate>> byAct(ActIdentifier base, SparqlResult answer) {
     var dates = new LinkedHashMap<ActIdentifier, List<ActDate>>();
@@ -67,8 +85,18 @@ final class CellarDates {
       if (!ActIdentifier.isCelex(subject)) {
         continue;
       }
+      var comment = row.find("comment").orElse("");
+      if (row.get("property").endsWith(TRANSPOSITION)) {
+        transposition(row.get("date"), comment)
+            .ifPresent(
+                d ->
+                    dates
+                        .computeIfAbsent(new ActIdentifier(subject), a -> new ArrayList<>())
+                        .add(d));
+        continue;
+      }
       var type = row.find("type").map(CellarDates::code).orElse("");
-      var date = date(row.get("date"), type, row.find("comment").orElse(""));
+      var date = date(row.get("date"), type, comment);
       date.ifPresentOrElse(
           d -> dates.computeIfAbsent(new ActIdentifier(subject), a -> new ArrayList<>()).add(d),
           () -> unknown.add(subject + " " + row.get("date") + " " + type));
@@ -144,6 +172,19 @@ final class CellarDates {
     var partial =
         parts.length > 1 || text.startsWith(parts[0] + "/PART") || text.startsWith("/PART");
     return Optional.of(new ActDate(day(value), kind, partial, clause(text)));
+  }
+
+  /**
+   * Reads one date of transposition. It returns the date if the Member States apply their measures
+   * from it: its comment starts with {@code APPLICATION}. For any other date of transposition, it
+   * returns none. The date is for the whole directive.
+   */
+  static Optional<ActDate> transposition(String value, String comment) {
+    var text = CODE.matcher(comment).replaceAll("$1").strip();
+    if (!text.equals(APPLY_FROM) && !text.startsWith(APPLY_FROM + " ")) {
+      return Optional.empty();
+    }
+    return Optional.of(new ActDate(day(value), Kind.TRANSPOSITION, false, clause(text)));
   }
 
   /**
