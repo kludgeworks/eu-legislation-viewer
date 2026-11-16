@@ -287,6 +287,45 @@ public record Act(
   }
 
   /**
+   * Returns the days on which the law is the text of {@code from} with the changes of {@code
+   * amending}, which no version shows. This is so where {@code amending} applies before {@code to},
+   * the first version that includes it, and {@code from} is the version just before {@code to}. The
+   * days start when {@code amending} applies, or when {@code from} starts if that is later, and end
+   * the day before {@code to}. Empty in each other case.
+   *
+   * <p>For example, 2017/815 applies from 1 June 2017, and the version of 2015/1998 of 7 June 2017
+   * is the first to include it. The version before it starts on 29 February 2016. From 1 to 6 June
+   * 2017, the law is the text of 29 February 2016 with the changes of 2017/815.
+   *
+   * @param texts the marks of the texts in {@code language} that are built, as {@link
+   *     #divergences(Language, Map)} takes them
+   */
+  public Optional<Unshown> unshown(
+      Version from,
+      Version to,
+      ActIdentifier amending,
+      Language language,
+      Map<Version, TextMarks> texts) {
+    var before = timeline(language).flatMap(each -> each.predecessor(to));
+    if (before.isEmpty() || !before.get().equals(from)) {
+      return Optional.empty();
+    }
+    return divergences(language, texts).stream()
+        .filter(
+            each ->
+                each.kind() == Divergence.Kind.LATE
+                    && each.act().equals(amending)
+                    && to.equals(each.included()))
+        .findFirst()
+        .map(
+            late -> {
+              var first =
+                  late.appliesFrom().isAfter(from.date()) ? late.appliesFrom() : from.date();
+              return new Unshown(amending, first, to.date().minusDays(1));
+            });
+  }
+
+  /**
    * Returns the date from which the whole of {@code act} applies. {@code act} is this act, an act
    * that its versions integrate or an act that amends it.
    *

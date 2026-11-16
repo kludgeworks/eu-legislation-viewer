@@ -9,6 +9,8 @@ import java.util.Locale;
 public final class Dates {
   private static final DateTimeFormatter WORDS =
       DateTimeFormatter.ofPattern("d MMMM uuuu", Locale.ENGLISH);
+  private static final DateTimeFormatter DAY_MONTH =
+      DateTimeFormatter.ofPattern("d MMMM", Locale.ENGLISH);
   private static final DateTimeFormatter SHORT =
       DateTimeFormatter.ofPattern("d MMM uuuu", Locale.ENGLISH);
 
@@ -17,6 +19,21 @@ public final class Dates {
   /** Returns the date in words. For example, "1 June 2017". */
   public static String inWords(LocalDate date) {
     return WORDS.format(date);
+  }
+
+  /**
+   * Returns the days from {@code first} to {@code last} in words, without the month or the year
+   * twice. For example, "1 to 6 June 2017", "30 May to 6 June 2017" or "30 December 2016 to 6
+   * January 2017".
+   */
+  public static String range(LocalDate first, LocalDate last) {
+    var start =
+        first.getYear() != last.getYear()
+            ? inWords(first)
+            : first.getMonth() != last.getMonth()
+                ? DAY_MONTH.format(first)
+                : String.valueOf(first.getDayOfMonth());
+    return start + " to " + inWords(last);
   }
 
   /**

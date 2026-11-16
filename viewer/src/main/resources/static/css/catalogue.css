@@ -952,6 +952,27 @@ form.find-act .ex a {
 
 /* The note under the cards that says the reader asked for an act that is not between the two
  * versions. */
+/* The law on some days was the From text with the changes shown, and no version shows it. */
+.compare-unshown {
+  margin: 12px 0 0;
+  padding: 8px 12px;
+  border: 1px solid var(--warn-line);
+  border-radius: 3px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+}
+
+/* The text of a card's version is not the law on its day. */
+.card-divergence {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border: 1px dashed var(--warn-stripe);
+  border-radius: 3px;
+}
+
 .compare-note {
   margin: 8px 0 0;
   color: var(--muted);

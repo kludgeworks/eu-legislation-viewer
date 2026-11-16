@@ -220,6 +220,40 @@ class DivergencesTest {
   }
 
   @Test
+  void theLawWhileTheTextIsLateIsTheVersionBeforeWithTheChangesOfTheAct() {
+    application("2017-06-01");
+    place("2017-06-01");
+    version("2016-02-29", false);
+    version("2017-06-07", true, POINT);
+    var act = act();
+    var versions = act.timeline().versions();
+
+    assertThat(act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act)))
+        .contains(
+            new Unshown(AMENDING, LocalDate.parse("2017-06-01"), LocalDate.parse("2017-06-06")));
+    // The version before that lacks more than the act.
+    assertThat(act.unshown(versions.get(0), versions.get(2), AMENDING, Language.ENG, texts(act)))
+        .isEmpty();
+    // An act that does not make the text late.
+    assertThat(act.unshown(versions.get(1), versions.get(2), BASE, Language.ENG, texts(act)))
+        .isEmpty();
+  }
+
+  @Test
+  void theLawWhileTheTextIsLateStartsNoEarlierThanTheVersionBefore() {
+    application("2016-01-01");
+    place("2016-01-01");
+    version("2016-02-29", false);
+    version("2017-06-07", true, POINT);
+    var act = act();
+    var versions = act.timeline().versions();
+
+    assertThat(act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act)))
+        .contains(
+            new Unshown(AMENDING, LocalDate.parse("2016-02-29"), LocalDate.parse("2017-06-06")));
+  }
+
+  @Test
   void theEarlyTextOfTheActItselfIsTheWholeText() {
     var early =
         new Divergence(

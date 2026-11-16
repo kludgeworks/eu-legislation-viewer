@@ -3,7 +3,8 @@
 <%-- Shows a comparison's From and To cards, and then the slot of the acts between them. CompareView
      supplies the data. Each card is the law on a day: the day is the headline. Under it: which
      version that is and how long it applied, the acts that made it, and the version's consolidated
-     CELEX, small, with a copy button. A day before the act's first version has a dash instead.
+     CELEX, small, with a copy button. Where the text of the version is not the law on the day, a
+     dashed amber note says why, as the Reading card does, without its link. A day before the act's first version has a dash instead.
      Each card has a GET form that asks for the law on another day at that end. The form keeps the
      other end as it is; js/datepicker.js turns its date box into a calendar that rings the days a
      new version starts.
@@ -20,6 +21,9 @@
       @else
         <span>—</span>
       @endif
+      @for(var each : card.divergences())
+        <p class="card-divergence" role="note"><b>${each.title()}</b> <span>${each.detail()}</span></p>
+      @endfor
       @if(card.celex() != null)
         <copy-text class="card-celex" data-text="${card.celex()}"><a class="mono quiet" href="${card.eurLex()}" rel="external">${card.celex()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a> <button type="button" class="link">copy</button></copy-text>
       @endif

@@ -28,6 +28,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import org.jspecify.annotations.Nullable;
@@ -188,7 +189,9 @@ class CompareController {
                             page.language,
                             today,
                             Links.page(page.eli, page.from, page.to, page.language, page.only, view)
-                                .acts())
+                                .acts(),
+                            texts.marks(preparation),
+                            page.only)
                         .noting(note),
                     page.from.equals(page.to)
                         ? page.same()
@@ -339,7 +342,8 @@ class CompareController {
               title,
               masthead,
               TimelineView.before(act, language, Timeline.today(clock)),
-              CompareView.before(act, fromDay, toBefore ? null : to, toDay, language, today),
+              CompareView.before(
+                  act, fromDay, toBefore ? null : to, toDay, language, today, Map.of()),
               templates.catalogueTextFailed(
                   FailureView.comparingBefore(act, fromDay, compareTo, language)),
               false,
