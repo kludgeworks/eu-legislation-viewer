@@ -38,7 +38,11 @@ import org.springframework.web.client.RestClient;
  * of 2015/1998 of 22 March 2026 in English. Today is 1 June 2021. {@code VersionControllerTests}
  * tests where the addresses lead, what they refuse and the frame.
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// Bind to 127.0.0.1, where the test client calls. On the wildcard address, the port that the
+// system picks can be one that another program, such as an IDE, holds on 127.0.0.1.
+@SpringBootTest(
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    properties = "server.address=127.0.0.1")
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class VersionPagesTests {
   private static final String PAGE = "/eli/reg_impl/2015/1998/2026-03-22/eng";

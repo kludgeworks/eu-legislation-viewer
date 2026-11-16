@@ -29,7 +29,11 @@ import org.springframework.web.client.RestClient;
  * data is the converter's fixtures: the consolidations of 2015/1998 of 22 March and 1 October 2026,
  * in English. {@code ChangesControllerTests} tests what the parts refuse.
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// Bind to 127.0.0.1, where the test client calls. On the wildcard address, the port that the
+// system picks can be one that another program, such as an IDE, holds on 127.0.0.1.
+@SpringBootTest(
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    properties = "server.address=127.0.0.1")
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class ChangesPagesTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";

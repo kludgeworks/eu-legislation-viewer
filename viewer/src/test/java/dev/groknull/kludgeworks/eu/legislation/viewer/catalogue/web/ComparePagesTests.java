@@ -27,7 +27,11 @@ import org.springframework.web.client.RestClient;
  * consolidations of 2015/1998 of 22 March and 1 October 2026, in English. {@code
  * CompareControllerTests} tests where the addresses lead, what they refuse and the site bar.
  */
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+// Bind to 127.0.0.1, where the test client calls. On the wildcard address, the port that the
+// system picks can be one that another program, such as an IDE, holds on 127.0.0.1.
+@SpringBootTest(
+    webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,
+    properties = "server.address=127.0.0.1")
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class ComparePagesTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";
