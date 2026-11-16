@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarginView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarksView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
@@ -168,15 +169,16 @@ class VersionController {
                   clock.instant()))
           .render();
     }
+    var marks = texts.marks(preparation);
     return page.render(
         frame,
         masthead,
-        page.text(preparation, request.getRequestURI(), frame.results()),
+        page.text(preparation, marks, request.getRequestURI(), frame.results()),
         prepared,
         TimelineView.states(preparation),
         ArrivingView.of(preparation).orElse(null),
         page.named(preparation),
-        texts.marks(preparation));
+        marks);
   }
 
   /**
@@ -270,14 +272,19 @@ class VersionController {
      *       version.
      *   <li>If no text of the act could be built, it returns the failure panel of the act. The
      *       panel links back to the last search of the reader, {@code results}, if there is one.
-     *   <li>If the text is built, it returns the text.
+     *   <li>If the text is built, it returns the text, with the marks in its margin where it is not
+     *       the law on the day, {@link MarginView}. {@code marks} are the marks of the built texts.
      *   <li>If only this text failed, it returns the failure panel of the version. Try again posts
      *       to {@code self}.
      *   <li>If the version appeared after the act was prepared, it says that the text is being
      *       prepared.
      * </ul>
      */
-    JteModel text(Preparation preparation, String self, Frame.@Nullable Results results) {
+    JteModel text(
+        Preparation preparation,
+        Map<Version, TextMarks> marks,
+        String self,
+        Frame.@Nullable Results results) {
       var text = preparation.texts().get(version);
       if (text == null) {
         // The version is not in the language.
@@ -292,7 +299,8 @@ class VersionController {
                 "/content/" + ready.text(),
                 content.outline(ready.text()).orElseGet(Outline::empty),
                 Links.compare(eli, language),
-                MarksView.of(act, version, language));
+                MarksView.of(act, version, language),
+                MarginView.of(act, version, date, language, marks, today()));
         // The version appeared since, and it is being prepared.
         case Text.Waiting _, Text.Converting _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->

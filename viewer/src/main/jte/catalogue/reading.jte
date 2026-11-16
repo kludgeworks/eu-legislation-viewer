@@ -19,7 +19,7 @@
       <span>—</span>
     @endif
     @if(!reading.divergences().isEmpty())
-      <div class="divergences" role="note">
+      <div id="divergences" class="divergences" role="note">
         @for(var each : reading.divergences())
           <p>
             <b>${each.title()}</b>

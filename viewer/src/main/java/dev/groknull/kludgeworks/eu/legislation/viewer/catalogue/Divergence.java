@@ -2,6 +2,8 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.time.LocalDate;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
 import org.jmolecules.ddd.annotation.ValueObject;
@@ -46,6 +48,55 @@ public record Divergence(
     /** The text is included, but it does not apply yet. */
     EARLY
   }
+
+  /**
+   * Returns whether the whole text of {@code base} differs: this is the early text of {@code base}
+   * itself, which is in force but does not apply yet. For example, 2016/679 on 1 March 2017.
+   */
+  public boolean whole(ActIdentifier base) {
+    return kind == Kind.EARLY && act.equals(base);
+  }
+
+  /**
+   * Returns the units of a text that this divergence touches, in the order of the text, each once.
+   * {@code eIds} are the units of the text, in document order.
+   *
+   * <ul>
+   *   <li>A place that the text has is each of its units.
+   *   <li>A place that the text does not have is in the unit that holds it, {@link
+   *       Location#around}. For example, a point that a late act inserts is in the point above it.
+   *   <li>A place for which the text has no unit is left out.
+   * </ul>
+   */
+  public List<Unit> in(List<String> eIds) {
+    var found = new LinkedHashMap<String, Unit>();
+    for (var place : places) {
+      var exact = place.location().in(eIds);
+      if (exact.isPresent()) {
+        exact.get().eIds().forEach(eId -> found.put(eId, new Unit(eId, false)));
+      } else {
+        place
+            .location()
+            .around(eIds)
+            .ifPresent(
+                around ->
+                    around.eIds().forEach(eId -> found.putIfAbsent(eId, new Unit(eId, true))));
+      }
+    }
+    return found.values().stream()
+        .sorted(Comparator.comparingInt(unit -> eIds.indexOf(unit.eId())))
+        .toList();
+  }
+
+  /**
+   * A unit of a text that a divergence touches.
+   *
+   * @param eId the eId of the unit
+   * @param holds whether the place is not in the text, and this unit holds it. Only the heading of
+   *     the unit is then marked, not all of it.
+   */
+  @ValueObject
+  public record Unit(String eId, boolean holds) {}
 
   /** Returns the day from which {@code act} applies. */
   public LocalDate appliesFrom() {

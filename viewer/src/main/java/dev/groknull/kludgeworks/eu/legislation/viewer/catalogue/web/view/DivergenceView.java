@@ -56,7 +56,7 @@ public record DivergenceView(
     return switch (divergence.kind()) {
       case LATE -> late(act, divergence, version, eli, language, today);
       case EARLY ->
-          divergence.act().equals(act.id())
+          divergence.whole(act.id())
               ? early(act, divergence, eli, asked, language)
               : included(act, divergence, eli, language);
     };

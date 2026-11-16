@@ -116,6 +116,18 @@ class LocationTest {
   }
 
   @Test
+  void findsTheUnitThatHoldsAPlaceTheTextDoesNotHave() {
+    // An act inserts point 6.3.1.5. The text from before it has point 6.3.1.4 only.
+    var points = List.of("anx", "anx/pnt_6.3.1", "anx/pnt_6.3.1.4");
+    assertThat(new Location("AN PO 6.3.1.5").around(points))
+        .contains(new Found(List.of("anx/pnt_6.3.1"), true));
+    assertThat(new Location("AN I SCT I PTA (j)").around(EMIR))
+        .contains(new Found(List.of("anx_I/level_1/pnt_I"), true));
+    assertThat(new Location("AR 89 PA 1 ALN 1").around(EMIR)).contains(exact("art_89/par_1/sub_1"));
+    assertThat(new Location("DU 1").around(EMIR)).isEmpty();
+  }
+
+  @Test
   void dropsTheUrisOfCellarsCodes() {
     assertThat(
             Location.parse(

@@ -474,6 +474,47 @@ section.selection.compare {
   font-weight: 600;
 }
 
+/* Where the text is not the law on the day (js/margin.js): a dashed amber rule beside each unit
+ * that the warning names, and a small link at its side up to the warning. A text that does not
+ * apply at all has the rule beside all of it, and a note at its top that stays in sight. */
+.content .divergent,
+.content.divergent-whole > .legal-text {
+  position: relative;
+  margin-left: -21px;
+  padding-left: 18px;
+  border-left: 3px dashed var(--warn-stripe);
+}
+
+/* The links need room beside the text. */
+.outlined:has(> margin-rules > span) {
+  padding-right: 15rem;
+}
+
+.divergent-link {
+  position: absolute;
+  top: 0;
+  left: calc(100% + 24px);
+  width: 12rem;
+  color: var(--warn-ink);
+  font:
+    12.5px/1.4 system-ui,
+    sans-serif;
+}
+
+.margin-note {
+  position: sticky;
+  z-index: 1;
+  top: 44px;
+  margin: 0 0 18px;
+  padding: 6px 10px;
+  border: 1px dashed var(--warn-stripe);
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font:
+    13px/1.45 system-ui,
+    sans-serif;
+}
+
 form.on {
   display: flex;
   flex-wrap: wrap;

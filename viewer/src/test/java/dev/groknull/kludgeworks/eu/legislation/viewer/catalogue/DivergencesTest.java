@@ -204,6 +204,40 @@ class DivergencesTest {
         .containsExactly(tuple(Divergence.Kind.LATE, LocalDate.parse("2017-06-01"), List.of()));
   }
 
+  @Test
+  void aLateProvisionIsItsUnitInTheTextOrTheUnitThatHoldsIt() {
+    application("2017-06-01");
+    place("2017-06-01");
+    version("2016-02-29", false);
+    version("2017-06-07", true, POINT);
+
+    var late = divergences().getFirst();
+
+    assertThat(late.in(UNITS)).containsExactly(new Divergence.Unit(POINT, false));
+    assertThat(late.in(List.of("anx", "anx/pnt_1", "anx/pnt_1.2")))
+        .containsExactly(new Divergence.Unit("anx/pnt_1", true));
+    assertThat(late.whole(BASE)).isFalse();
+  }
+
+  @Test
+  void theEarlyTextOfTheActItselfIsTheWholeText() {
+    var early =
+        new Divergence(
+            Divergence.Kind.EARLY,
+            BASE,
+            new ActDate(
+                LocalDate.parse("2016-02-01"),
+                Kind.APPLICATION,
+                false,
+                new ActDate.Clause(null, null, List.of(), List.of(), "")),
+            Version.original(
+                LocalDate.parse("2015-11-15"), BASE, EnumSet.of(Language.ENG), Map.of()),
+            List.of());
+
+    assertThat(early.whole(BASE)).isTrue();
+    assertThat(early.in(UNITS)).isEmpty();
+  }
+
   // ------------------------------------------------------------------------------------ helpers
 
   private void application(String day) {

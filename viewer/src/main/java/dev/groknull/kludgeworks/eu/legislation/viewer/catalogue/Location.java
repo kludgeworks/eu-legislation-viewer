@@ -91,6 +91,24 @@ public record Location(String code) {
    * 11.3.2-11.3.5}, is each unit from the first to the last.
    */
   public Optional<Found> in(List<String> eIds) {
+    return find(eIds, false);
+  }
+
+  /**
+   * Returns the units of a text that it is, as {@link #in} does. If the text does not have it, it
+   * returns the nearest unit that holds it, as within. For example, a point 4.1.3.4 that an act
+   * inserts is in point 4.1.3 of a text from before the act. Returns empty if the text has no unit
+   * that holds it, or if a code finds several units.
+   */
+  public Optional<Found> around(List<String> eIds) {
+    return find(eIds, true);
+  }
+
+  /**
+   * Returns the units of a text that it is. If {@code around}, a code that finds no unit stops the
+   * search at the unit found so far.
+   */
+  private Optional<Found> find(List<String> eIds, boolean around) {
     var units = new HashSet<>(eIds);
     var tokens = tokens();
     var at = "";
@@ -109,34 +127,24 @@ public record Location(String code) {
       }
       var names = STEPS.get(token);
       if (names == null) {
-        return Optional.empty();
+        return around ? held(at) : Optional.empty();
       }
       if (!numbered || next == null) {
         if (!token.equals("AN")) {
           within = true;
           continue;
         }
-        // the act's one annex
-        var annexes = eIds.stream().filter(e -> e.startsWith("anx") && !e.contains("/")).toList();
-        if (annexes.size() != 1) {
+        var annex = oneAnnex(eIds);
+        if (annex == null) {
           return Optional.empty();
         }
-        at = annexes.getFirst();
+        at = annex;
         continue;
       }
       i++;
       var number = token.equals("APP") ? next.replaceAll("[()]", "") : number(next);
       if (number.contains("-") && (token.equals("PO") || token.equals("PTA"))) {
-        var ends = number.split("-", 2);
-        var first = below(units, at, outer, names, ends[0]);
-        var last = below(units, at, outer, names, ends[1]);
-        if (first.size() != 1 || last.size() != 1) {
-          return Optional.empty();
-        }
-        return Optional.of(
-            new Found(
-                eIds.subList(eIds.indexOf(first.getFirst()), eIds.indexOf(last.getFirst()) + 1),
-                within));
+        return range(eIds, units, at, outer, names, number, within, around);
       }
       var found = below(units, at, outer, names, number);
       // a numbered paragraph coded as a point
@@ -155,11 +163,72 @@ public record Location(String code) {
       } else if (found.isEmpty() && (token.equals("ALN") || token.equals("PA"))) {
         // A subparagraph or a paragraph that our units do not number, for example one of a point.
         within = true;
+      } else if (found.isEmpty() && around) {
+        return holding(units, at, outer, names, number);
       } else {
         return Optional.empty();
       }
     }
     return at.isEmpty() ? Optional.empty() : Optional.of(new Found(List.of(at), within));
+  }
+
+  /** Returns the eId of the act's one annex, or null if it has none or several. */
+  private static @Nullable String oneAnnex(List<String> eIds) {
+    var annexes = eIds.stream().filter(e -> e.startsWith("anx") && !e.contains("/")).toList();
+    return annexes.size() == 1 ? annexes.getFirst() : null;
+  }
+
+  /**
+   * Returns each unit of a range of points, for example {@code 11.3.2-11.3.5}, below {@code at}.
+   * Returns empty if an end finds no unit or several. If {@code around}, and neither end is there,
+   * returns {@code at} as the unit that holds the range.
+   */
+  private static Optional<Found> range(
+      List<String> eIds,
+      Set<String> units,
+      String at,
+      @Nullable String outer,
+      List<String> names,
+      String number,
+      boolean within,
+      boolean around) {
+    var ends = number.split("-", 2);
+    var first = below(units, at, outer, names, ends[0]);
+    var last = below(units, at, outer, names, ends[1]);
+    if (first.size() == 1 && last.size() == 1) {
+      return Optional.of(
+          new Found(
+              eIds.subList(eIds.indexOf(first.getFirst()), eIds.indexOf(last.getFirst()) + 1),
+              within));
+    }
+    return around && first.isEmpty() && last.isEmpty() ? held(at) : Optional.empty();
+  }
+
+  /**
+   * Returns the unit that holds a point numbered {@code number} that is not below {@code at}. A
+   * point numbered 4.1.3.4 is in point 4.1.3, if there is one, or else in {@code at}.
+   */
+  private static Optional<Found> holding(
+      Set<String> units, String at, @Nullable String outer, List<String> names, String number) {
+    List<String> found = List.of();
+    for (var upper = upper(number); upper != null && found.isEmpty(); upper = upper(upper)) {
+      found = below(units, at, outer, names, upper);
+    }
+    return held(found.size() == 1 ? found.getFirst() : at);
+  }
+
+  /** Returns {@code unit} as the unit that holds a location, or empty if it is no unit. */
+  private static Optional<Found> held(String unit) {
+    return unit.isEmpty() ? Optional.empty() : Optional.of(new Found(List.of(unit), true));
+  }
+
+  /**
+   * Returns the number of the point that holds the point numbered {@code number}, or null if the
+   * number has no parts. For example, 4.1.3 for 4.1.3.4.
+   */
+  private static @Nullable String upper(String number) {
+    var dot = number.lastIndexOf('.');
+    return dot > 0 ? number.substring(0, dot) : null;
   }
 
   /**
