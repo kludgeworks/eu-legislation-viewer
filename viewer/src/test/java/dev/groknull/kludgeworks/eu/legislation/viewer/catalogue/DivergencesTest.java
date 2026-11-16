@@ -205,6 +205,29 @@ class DivergencesTest {
   }
 
   @Test
+  void anActThatNoVersionIncludesAndWhoseDayOfApplicationIsNotKnownIsNotConfirmed() {
+    entryIntoForce("2021-08-02");
+    applicationOnADayNotKnown();
+    version("2016-02-29", false);
+
+    assertThat(divergences())
+        .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d))
+        .containsExactly(tuple(Divergence.Kind.UNCONFIRMED, LocalDate.parse("2021-08-02"), null));
+    assertThat(divergences().getFirst().on(LocalDate.parse("2021-08-01"))).isFalse();
+    assertThat(divergences().getFirst().on(LocalDate.parse("2026-11-16"))).isTrue();
+  }
+
+  @Test
+  void anActThatAVersionIncludesAndWhoseDayOfApplicationIsNotKnownTakesTheVersionDate() {
+    entryIntoForce("2021-08-02");
+    applicationOnADayNotKnown();
+    version("2016-02-29", false);
+    version("2022-01-01", true, POINT);
+
+    assertThat(divergences()).isEmpty();
+  }
+
+  @Test
   void aLateProvisionIsItsUnitInTheTextOrTheUnitThatHoldsIt() {
     application("2017-06-01");
     place("2017-06-01");
@@ -280,6 +303,18 @@ class DivergencesTest {
 
   private void partialApplication(String day) {
     date(day, Kind.APPLICATION, true);
+  }
+
+  /** Adds a date of application of the whole act whose day Cellar has as a placeholder. */
+  private void applicationOnADayNotKnown() {
+    dates
+        .computeIfAbsent(AMENDING, act -> new ArrayList<>())
+        .add(
+            new ActDate(
+                null,
+                Kind.APPLICATION,
+                false,
+                new ActDate.Clause(null, null, List.of(), List.of(), "")));
   }
 
   private void entryIntoForce(String day) {

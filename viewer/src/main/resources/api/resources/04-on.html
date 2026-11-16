@@ -15,17 +15,20 @@
     <dl class="api-members">
       <dt>kind</dt>
       <dd><span class="mono">late</span>: the act applies, but the text does not include it.
-        <span class="mono">early</span>: the text is included, but the act does not apply yet.</dd>
+        <span class="mono">early</span>: the text is included, but the act does not apply yet.
+        <span class="mono">unconfirmed</span>: the act is in force and the text does not include it, but Cellar does not
+        give the day from which it applies.</dd>
       <dt>act</dt>
       <dd>The CELEX number of the act.</dd>
       <dt>cited</dt>
       <dd>How the Official Journal cites it. For example, <span class="mono">2017/815</span>.</dd>
       <dt>appliesFrom</dt>
       <dd>The day from which the provisions in <span class="mono">places</span> apply. If
-        <span class="mono">places</span> is empty, the day from which the whole act applies.</dd>
+        <span class="mono">places</span> is empty, the day from which the whole act applies. Null for an
+        <span class="mono">unconfirmed</span> text.</dd>
       <dt>includedIn</dt>
       <dd>The first version that includes its text: <span class="mono">oj</span>, or its date. Null for a late text
-        that no version includes yet.</dd>
+        that no version includes yet, and for an <span class="mono">unconfirmed</span> text.</dd>
       <dt>places</dt>
       <dd>The provisions that the act changes and that are late or early, in the order of the text. Each has a
         <span class="mono">location</span>, as Cellar gives it, and a <span class="mono">name</span>, for example

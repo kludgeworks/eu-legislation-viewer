@@ -51,7 +51,8 @@ import org.jspecify.annotations.Nullable;
  * <p>A provision gives no answer if no version marks it while some version includes the act, or if
  * a version before the answer has no built text. An amending act whose provisions give no answer at
  * all is compared as a whole: the day from which the whole act applies, {@link Act#appliesFrom},
- * against the first version that includes it.
+ * against the first version that includes it. If no version includes it, and Cellar does not give
+ * that day, the date of the text is not confirmed from the act's entry into force.
  */
 final class Divergences {
 
@@ -120,7 +121,7 @@ final class Divergences {
       }
     }
     if (!answered) {
-      return whole(amending);
+      return whole(amending, places);
     }
     return groups.entrySet().stream()
         .map(
@@ -272,12 +273,13 @@ final class Divergences {
   /**
    * Returns the divergence of {@code amending} as a whole: the day from which the whole act applies
    * against the first version that includes it. If no version includes it, the text is late from
-   * that day, once every text is built.
+   * that day, once every text is built. If Cellar does not give that day either, the date of the
+   * text is not confirmed from the act's entry into force, at {@code places}.
    */
-  private List<Divergence> whole(ActIdentifier amending) {
+  private List<Divergence> whole(ActIdentifier amending, List<Amendment> places) {
     var applies = act.appliesFrom(amending);
     if (applies.isEmpty()) {
-      return List.of();
+      return unconfirmed(amending, places);
     }
     var from = day(applies.get());
     var first = versions.stream().filter(each -> includes(each, amending)).findFirst();
@@ -289,6 +291,27 @@ final class Divergences {
     return texts.keySet().containsAll(versions)
         ? List.of(new Divergence(Kind.LATE, amending, applies.get(), null, List.of()))
         : List.of();
+  }
+
+  /**
+   * Returns the divergence of {@code amending}, whose day of application Cellar does not give, if
+   * no version includes it: from its entry into force, the text can lack it. Empty if a version
+   * includes it, if a text is not built, or if Cellar has no day for its entry into force.
+   */
+  private List<Divergence> unconfirmed(ActIdentifier amending, List<Amendment> places) {
+    if (versions.stream().anyMatch(each -> includes(each, amending))
+        || !texts.keySet().containsAll(versions)) {
+      return List.of();
+    }
+    return act.datesOf(amending).stream()
+        .filter(each -> each.kind() == ActDate.Kind.ENTRY_INTO_FORCE && each.date() != null)
+        .min(Comparator.comparing(Divergences::day))
+        .map(
+            force ->
+                List.of(
+                    new Divergence(
+                        Kind.UNCONFIRMED, amending, force, null, inTextOrder(places, null))))
+        .orElseGet(List::of);
   }
 
   /**

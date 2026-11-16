@@ -243,7 +243,9 @@ class ApiActController {
                   code(divergence.kind().name()),
                   divergence.act().celex(),
                   act.cited(divergence.act()),
-                  divergence.appliesFrom(),
+                  divergence.kind() == Divergence.Kind.UNCONFIRMED
+                      ? null
+                      : divergence.appliesFrom(),
                   included == null ? null : key(included),
                   divergence.places().stream()
                       .map(
@@ -508,10 +510,11 @@ class ApiActController {
    * Where the text is not the law on a day, as the API shows it.
    *
    * @param kind {@code late}: the act applies, but the text does not include it. {@code early}: the
-   *     text is included, but the act does not apply yet.
+   *     text is included, but the act does not apply yet. {@code unconfirmed}: the act is in force,
+   *     the text does not include it, and Cellar does not give the day from which it applies.
    * @param act the CELEX number of the act
    * @param cited how the Official Journal cites it. For example, {@code 2017/815}.
-   * @param appliesFrom the day from which the act applies
+   * @param appliesFrom the day from which the act applies. Null if Cellar does not give it.
    * @param includedIn the first version that includes its text: {@code oj}, or its date. Null for a
    *     late text that no version includes yet.
    * @param places the provisions where the text differs. Empty where the whole act differs.
@@ -521,7 +524,7 @@ class ApiActController {
       String kind,
       String act,
       String cited,
-      LocalDate appliesFrom,
+      @Nullable LocalDate appliesFrom,
       @Nullable String includedIn,
       List<PlaceModel> places,
       List<String> languages) {}

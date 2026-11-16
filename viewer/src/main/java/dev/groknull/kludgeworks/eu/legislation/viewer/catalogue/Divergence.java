@@ -19,9 +19,10 @@ import org.jspecify.annotations.Nullable;
  * @param kind whether the text is late or early
  * @param act the act that the text lacks, for a late text. For an early text, the act whose text
  *     does not apply yet.
- * @param applies the date from which {@code act} applies, with the clause that sets it
+ * @param applies the date from which {@code act} applies, with the clause that sets it. For a text
+ *     whose date is not confirmed, the date from which {@code act} can apply: its entry into force.
  * @param included the first version that includes the text of {@code act}. Null for a late text
- *     that no version includes yet.
+ *     that no version includes yet, and for a text whose date is not confirmed.
  * @param places the provisions where the text differs, as Cellar annotates them. Empty where the
  *     whole act differs, or where Cellar does not say where.
  */
@@ -39,6 +40,9 @@ public record Divergence(
     if (kind == Kind.EARLY && included == null) {
       throw new IllegalArgumentException("An early text is in a version");
     }
+    if (kind == Kind.UNCONFIRMED && included != null) {
+      throw new IllegalArgumentException("A text whose date is not confirmed is in no version");
+    }
   }
 
   /** How a text differs from the law. */
@@ -46,7 +50,13 @@ public record Divergence(
     /** The act applies, but the text does not include it. */
     LATE,
     /** The text is included, but it does not apply yet. */
-    EARLY
+    EARLY,
+    /**
+     * The act is in force, and the text does not include it. Cellar does not give the day from
+     * which it applies, so it can apply already. For example, 2021/1133 changes 2018/1862 from a
+     * date that its Article 6 sets, and no version includes it.
+     */
+    UNCONFIRMED
   }
 
   /**
@@ -107,6 +117,8 @@ public record Divergence(
    * Returns whether the text and the law differ on {@code day}.
    *
    * <ul>
+   *   <li>A text whose date is not confirmed can differ on each day from the entry into force of
+   *       the act.
    *   <li>A late text differs from the day the act applies to the day before the version that
    *       includes it. If no version includes it, it differs on each day from the day it applies.
    *   <li>An early text differs from the first day of the version that includes it to the day
@@ -119,6 +131,7 @@ public record Divergence(
           !day.isBefore(appliesFrom()) && (included == null || day.isBefore(included.date()));
       case EARLY ->
           !day.isBefore(Objects.requireNonNull(included).date()) && day.isBefore(appliesFrom());
+      case UNCONFIRMED -> !day.isBefore(appliesFrom());
     };
   }
 }

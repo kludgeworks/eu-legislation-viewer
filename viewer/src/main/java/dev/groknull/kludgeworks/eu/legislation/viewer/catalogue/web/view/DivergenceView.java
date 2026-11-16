@@ -19,6 +19,10 @@ import java.util.Objects;
  *       includes the act yet, the link goes to the act on EUR-Lex.
  *   <li>An early text: "In force. Does not apply yet.", "Applies from 25 May 2018 · Article 99(2)
  *       of 2016/679.", and a link to the first day on which it applies.
+ *   <li>An act in force that no version includes, whose day of application Cellar does not give:
+ *       "Date not confirmed: 2021/1133", "In force from 2 August 2021. No version includes it. It
+ *       applies from a date set in Article 6 of 2021/1133, and Cellar does not give the day.", and
+ *       a link to the act on EUR-Lex.
  *   <li>Text of an amending act that is included before it applies: "Included before it applies:
  *       2017/2226", "Applies from 11 October 2019. Included from 12 January 2018.", and a link to
  *       the comparison that shows what the act changed.
@@ -59,6 +63,7 @@ public record DivergenceView(
           divergence.whole(act.id())
               ? early(act, divergence, eli, asked, language)
               : included(act, divergence, eli, language);
+      case UNCONFIRMED -> unconfirmed(act, divergence, language);
     };
   }
 
@@ -82,6 +87,20 @@ public record DivergenceView(
         Links.compare(eli, version.date(), included.date(), language, late.act(), null),
         "See its changes in a comparison",
         false);
+  }
+
+  private static DivergenceView unconfirmed(Act act, Divergence unconfirmed, Language language) {
+    var applies = MarksView.applies(act, unconfirmed.act());
+    return new DivergenceView(
+        "Date not confirmed: " + act.cited(unconfirmed.act()),
+        "In force from "
+            + Dates.inWords(unconfirmed.appliesFrom())
+            + ". No version includes it."
+            + (applies == null ? "" : " It " + applies + ", and Cellar does not give the day.")
+            + places(unconfirmed),
+        act.eurLex(unconfirmed.act(), language).toString(),
+        "Official Journal",
+        true);
   }
 
   private static DivergenceView early(

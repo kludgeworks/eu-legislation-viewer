@@ -100,7 +100,7 @@ public record MarginView(List<Rule> rules, @Nullable String note) {
   private static String label(Act act, Divergence divergence) {
     var cited = act.cited(divergence.act());
     return switch (divergence.kind()) {
-      case LATE -> cited + " not included";
+      case LATE, UNCONFIRMED -> cited + " not included";
       case EARLY -> cited + " does not apply yet";
     };
   }
