@@ -600,6 +600,70 @@ class ChangesController {
     return html.toString();
   }
 
+  /**
+   * Returns the differences at the units {@code eIds} of the comparison, as the views mark them
+   * ({@link Comparison#at}). The page of an amending act loads the wording of one of its changes
+   * from here. If the units are the same in both texts, it says so.
+   *
+   * <p>Returns 404 if the address is not the canonical address of a comparison, or if the texts are
+   * not built yet. The entity tag is as for one difference.
+   */
+  @GetMapping(path = ComparePage.PLACE_PATH, produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  @Nullable String place(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
+      @RequestParam(ComparePage.EID) List<String> eIds,
+      HttpServletRequest request,
+      HttpServletResponse response) {
+    var ends = ends(new Eli(type, year, number), code, from, to, act);
+    var page =
+        ComparePage.ofPart(
+            request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
+    var started = System.nanoTime();
+    var preparation = texts.preparation(ends.act, ends.language);
+    var only = ends.only;
+    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
+    var earlier = step == null ? ends.from : ends.earlier(step);
+    var later = step == null ? ends.to : step;
+    if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
+        || !(preparation.texts().get(later) instanceof Text.Ready after)) {
+      throw Requests.notFound();
+    }
+    if (Release.notModified(
+        request,
+        response,
+        Release.REVALIDATED,
+        release.etag(before.text(), after.text(), DifferVersion.value()))) {
+      return null;
+    }
+    var shown =
+        comparisons
+            .between(before.text(), after.text())
+            .orElseThrow(Requests::notFound)
+            .at(eIds)
+            .stream()
+            .map(difference -> new ChangesView.Shown(0, difference, ""))
+            .toList();
+    var rendered = templates.comparisonPlace(shown, html, page).render();
+    LOG.info(
+        "Place of {} from {} to {} in {}{} at {} units: {} differences, in {} ms",
+        ends.act.id(),
+        earlier.date(),
+        later.date(),
+        ends.language.code(),
+        only == null ? "" : " by " + only,
+        eIds.size(),
+        shown.size(),
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
+    return rendered;
+  }
+
   /** Returns the entry of the unit {@code eId} in {@code entries}, at any depth. */
   private static Optional<Outline.Entry> entry(List<Outline.Entry> entries, String eId) {
     for (var each : entries) {

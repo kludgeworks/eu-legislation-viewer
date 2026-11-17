@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import java.util.Comparator;
 import java.util.List;
 import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
@@ -30,6 +31,32 @@ public record Comparison(
   public Comparison {
     differences = List.copyOf(differences);
     closing = List.copyOf(closing);
+  }
+
+  /**
+   * Returns the differences at the units {@code eIds}, in the order of the comparison. These are
+   * the differences of the units themselves and of the units in them. If there are none, it is the
+   * one difference of the nearest unit that holds one of the units. For example, a chapter that an
+   * act inserted whole is one difference, and an article in the chapter has no difference of its
+   * own. Returns empty if the units are the same in both texts.
+   */
+  public List<Difference> at(List<String> eIds) {
+    var within =
+        differences.stream()
+            .filter(
+                each ->
+                    eIds.stream()
+                        .anyMatch(
+                            eId -> each.eId().equals(eId) || each.eId().startsWith(eId + "/")))
+            .toList();
+    if (!within.isEmpty()) {
+      return within;
+    }
+    return differences.stream()
+        .filter(each -> eIds.stream().anyMatch(eId -> eId.startsWith(each.eId() + "/")))
+        .max(Comparator.comparingInt(each -> each.eId().length()))
+        .map(List::of)
+        .orElseGet(List::of);
   }
 
   /** One of the two texts compared. */

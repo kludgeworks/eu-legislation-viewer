@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
+import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -49,6 +50,15 @@ public record ComparePage(
    * loads it when the reader opens a fold in the difference.
    */
   public static final String DIFFERENCE = "difference";
+
+  /**
+   * The segment of the part with the differences at one place: the units that an amendment names.
+   * The page of an amending act loads the wording of each of its changes from it.
+   */
+  public static final String PLACE = "place";
+
+  /** The path of the part with the differences at one place. */
+  public static final String PLACE_PATH = PATH + "/" + PLACE;
 
   /** The path of the part with the changes. */
   public static final String CHANGES_PATH = PATH + "/" + CHANGES;
@@ -139,6 +149,16 @@ public record ComparePage(
    */
   public String difference(String eId) {
     return path + "/" + DIFFERENCE + query(from, to) + act(act) + "&" + EID + "=" + encode(eId);
+  }
+
+  /**
+   * Returns the address of the differences at the units {@code eIds}, with the page's query but not
+   * its view. For example, {@code …/compare/place?from=…&to=…&act=32022R1190&eId=art_3%2Fpnt_8}.
+   */
+  public String place(List<String> eIds) {
+    var units = new StringBuilder();
+    eIds.forEach(eId -> units.append('&').append(EID).append('=').append(encode(eId)));
+    return path + "/" + PLACE + query(from, to) + act(act) + units;
   }
 
   /**

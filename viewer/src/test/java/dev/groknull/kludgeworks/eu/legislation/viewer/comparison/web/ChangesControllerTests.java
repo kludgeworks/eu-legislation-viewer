@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
@@ -58,6 +59,9 @@ class ChangesControllerTests {
   private static final String ACTS = ACT + "eng/compare/acts?from=2026-03-22&to=2026-10-01";
   private static final String DIFFERENCE =
       ACT + "eng/compare/difference?from=2026-03-22&to=2026-10-01&eId=art_1";
+
+  private static final String PLACE =
+      ACT + "eng/compare/place?from=2026-03-22&to=2026-10-01&eId=art_1&eId=art_2";
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
@@ -135,6 +139,25 @@ class ChangesControllerTests {
     mvc.get().uri(DIFFERENCE).header(HttpHeaders.IF_NONE_MATCH, stale).exchange();
 
     verify(comparisons).difference(new TextId(1), new TextId(2), "art_1");
+  }
+
+  @Test
+  void saysThatAPlaceIsTheSameInBothTexts() throws UnsupportedEncodingException {
+    when(texts.preparation(any(), any())).thenAnswer(asked -> built(asked.getArgument(1)));
+    when(comparisons.between(new TextId(1), new TextId(2)))
+        .thenReturn(
+            Optional.of(new Comparison(new TextId(1), new TextId(2), List.of(), List.of(), null)));
+
+    var result = mvc.get().uri(PLACE).exchange();
+
+    assertThat(result).hasStatusOk();
+    assertThat(Jsoup.parse(result.getResponse().getContentAsString()).select("p.hint").text())
+        .isEqualTo("The text before this act and the text with it have the same wording here.");
+  }
+
+  @Test
+  void findsNoPlaceWhileTheTextsAreNotBuilt() {
+    assertThat(mvc.get().uri(PLACE).accept(MediaType.TEXT_HTML)).hasStatus(HttpStatus.NOT_FOUND);
   }
 
   /**
