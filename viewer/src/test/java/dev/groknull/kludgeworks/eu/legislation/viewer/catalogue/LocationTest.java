@@ -159,6 +159,76 @@ class LocationTest {
     assertThat(new Location("CHA III AR 5").name()).isEqualTo("Article 5");
   }
 
+  /** The eIds are from 2018/1862, 692/2008 and 923/2012. */
+  static final List<String> OTHERS =
+      List.of(
+          "cpt_IXa",
+          "art_2",
+          "art_2/pnt_90",
+          "art_2/pnt_90/pnt_a",
+          "art_9",
+          "art_9/unp_1",
+          "art_9/unp_1/pnt_1",
+          "art_9/unp_1/pnt_4",
+          "anx",
+          "anx/anx_I",
+          "anx/anx_I/app_3",
+          "anx/anx_I/app_3/pnt_3.2.15.1",
+          "anx/anx_IIIA",
+          "anx/anx_IIIA/pnt_2.1",
+          "anx/level_1",
+          "anx/level_SECTION-1",
+          "anx/pnt_SERA.5005",
+          "anx/pnt_SERA.5005/pnt_c",
+          "anx/pnt_3",
+          "anx/level_CHAPTER-3");
+
+  /** The eIds are from 2016/399, which has more than one annex. */
+  static final List<String> BORDERS = List.of("anx_III", "anx_III/level_PART-D", "anx_V");
+
+  @Test
+  void findsANumberThatCellarWritesInAnotherCase() {
+    assertThat(in("CHA IXa", OTHERS)).contains(exact("cpt_IXa"));
+    assertThat(in("CHA IXA", OTHERS)).contains(exact("cpt_IXa"));
+    assertThat(in("AN IIIA PO 2.1", OTHERS)).contains(exact("anx/anx_IIIA/pnt_2.1"));
+    assertThat(in("AN PO SERA.5005 PO C)", OTHERS)).contains(exact("anx/pnt_SERA.5005/pnt_c"));
+  }
+
+  @Test
+  void findsAnAppendixOfAnAnnexOfTheAnnex() {
+    assertThat(in("AN I APP 3 PO 3.2.15.1", OTHERS))
+        .contains(exact("anx/anx_I/app_3/pnt_3.2.15.1"));
+  }
+
+  @Test
+  void findsAPartAndASectionOfAnAnnexByItsNamedLevel() {
+    assertThat(in("AN III P D", BORDERS)).contains(exact("anx_III/level_PART-D"));
+    assertThat(in("AN III PRT D", BORDERS)).contains(exact("anx_III/level_PART-D"));
+    assertThat(in("AN SECTION 1", OTHERS)).contains(exact("anx/level_SECTION-1"));
+  }
+
+  @Test
+  void findsAChapterOfAnAnnexThatIsAPointBeforeALevelWithItsNumber() {
+    assertThat(in("AN CHA 3", OTHERS)).contains(exact("anx/pnt_3"));
+  }
+
+  @Test
+  void findsANumberedPointThatCellarCodesAsAParagraph() {
+    assertThat(in("AR 2 PA 90 PO (a)", OTHERS)).contains(exact("art_2/pnt_90/pnt_a"));
+  }
+
+  @Test
+  void doesNotTakeAPointBelowAnUnnumberedParagraphForAParagraph() {
+    assertThat(in("AR 9 PA 1 PO 4", OTHERS))
+        .contains(new Found(List.of("art_9/unp_1/pnt_4"), true));
+  }
+
+  @Test
+  void leavesATableOrAFootnoteAtTheUnitItIsIn() {
+    assertThat(in("AN PO SERA.5005 TABL S5-1 FOOTNOTE 2", OTHERS))
+        .contains(new Found(List.of("anx/pnt_SERA.5005"), true));
+  }
+
   private static Optional<Found> in(String code, List<String> eIds) {
     return new Location(code).in(eIds);
   }

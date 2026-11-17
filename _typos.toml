@@ -2,9 +2,10 @@
 # Words typos would "correct" that are right: the Official Journal's name in Spanish, Portuguese and
 # Romanian (Diario Oficial, Jornal Oficial, Jurnalul Oficial), and the Union's initials in French,
 # Spanish, Italian and Portuguese (Règlement d'exécution (UE) 2015/1998), and the suffix of a short
-# ordinal ("2nd subpara.")
+# ordinal ("2nd subpara."), and Cellar's code for a table in the location of an amendment (TABL)
 [default.extend-words]
 oficial = "oficial"
 jornal = "jornal"
 ue = "ue"
 nd = "nd"
+tabl = "tabl"

@@ -4,7 +4,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -46,23 +45,33 @@ public record Location(String code) {
           Map.entry("PTA", List.of("pnt")),
           Map.entry("PT", List.of("pnt")),
           Map.entry("PTI", List.of("pnt")),
-          Map.entry("SCT", List.of("pnt", "sct", "level")),
+          Map.entry("SCT", List.of("pnt", "sct", "level_SECTION", "level")),
+          Map.entry("SECTION", List.of("pnt", "sct", "level_SECTION", "level")),
           Map.entry("SBS", List.of("pnt", "level")),
-          Map.entry("PRT", List.of("prt", "level")),
+          Map.entry("PRT", List.of("prt", "level_PART", "level")),
+          Map.entry("P", List.of("prt", "level_PART")),
           Map.entry("TIRE", List.of("idt")),
           Map.entry("AN", List.of("anx")),
           Map.entry("TIT", List.of("tis")),
-          Map.entry("CHA", List.of("cpt", "chp", "pnt")),
-          Map.entry("APP", List.of("level_ATTACHMENT")));
+          Map.entry("CHA", List.of("cpt", "chp", "pnt", "level_CHAPTER")),
+          Map.entry("APP", List.of("level_ATTACHMENT", "app")));
 
   /**
    * Codes that may only frame what our eIds keep flat. A step with such a code is passed when no
    * unit has it.
    */
-  private static final Set<String> FRAMES = Set.of("TIT", "CHA", "SCT", "SBS", "PRT");
+  private static final Set<String> FRAMES = Set.of("TIT", "CHA", "SCT", "SECTION", "SBS", "PRT");
+
+  /**
+   * Codes of a unit that our eIds do not always number. Where no unit has the number, the location
+   * is in the unit found so far. {@code P} is a part of an annex in some acts and a paragraph of a
+   * point in others.
+   */
+  private static final Set<String> WITHIN = Set.of("ALN", "PA", "P");
 
   /** Codes finer than our units. The location is in the unit that contains them. */
-  private static final Set<String> FINER = Set.of("TXT", "TEXT", "FR", "L", "TAB", "COL");
+  private static final Set<String> FINER =
+      Set.of("TXT", "TEXT", "FR", "L", "TAB", "TABL", "COL", "FOOTNOTE", "FIGURE");
 
   /** Matches an authority code as Cellar writes it, for example {@code {AR|http://…/fd_370/AR}}. */
   private static final Pattern CODE = Pattern.compile("\\{([A-Z0-9/-]+)\\|[^}]*}");
@@ -77,8 +86,6 @@ public record Location(String code) {
    * suffix {@code BI} means bis, so {@code 5BI} is paragraph 5a.
    */
   private static final Pattern PARAGRAPH = Pattern.compile("\\.(\\d+)(BI)?");
-
-  private static final Pattern ROMAN = Pattern.compile("[IVXLC]+");
 
   /** Returns the location in Cellar's annotation, without the URIs of its codes. */
   public static Location parse(String annotation) {
@@ -142,7 +149,7 @@ public record Location(String code) {
         continue;
       }
       i++;
-      var number = token.equals("APP") ? next.replaceAll("[()]", "") : number(next);
+      var number = number(next);
       if (number.contains("-") && (token.equals("PO") || token.equals("PTA"))) {
         return range(eIds, units, at, outer, names, number, within, around);
       }
@@ -150,6 +157,10 @@ public record Location(String code) {
       // a numbered paragraph coded as a point
       if (found.isEmpty() && (token.equals("PO") || token.equals("PT")) && isDigits(number)) {
         found = below(units, at, outer, List.of("par"), number);
+      }
+      // a numbered point coded as a paragraph, for example a definition of an article
+      if (found.isEmpty() && token.equals("PA") && units.contains(at + "/pnt_" + number)) {
+        found = List.of(at + "/pnt_" + number);
       }
       var in = at;
       outer = null;
@@ -160,7 +171,7 @@ public record Location(String code) {
         }
       } else if (found.isEmpty() && FRAMES.contains(token)) {
         // a frame our eIds don't have
-      } else if (found.isEmpty() && (token.equals("ALN") || token.equals("PA"))) {
+      } else if (found.isEmpty() && WITHIN.contains(token)) {
         // A subparagraph or a paragraph that our units do not number, for example one of a point.
         within = true;
       } else if (found.isEmpty() && around) {
@@ -243,24 +254,38 @@ public record Location(String code) {
 
   /**
    * Returns the units named {@code names} and {@code number} below {@code at}. These are its
-   * children if there are any, or else any of its descendants.
+   * children if there are any, or else any of its descendants. The first name that a unit has
+   * decides. A unit that has the number in the same case is tried first, because Cellar and our
+   * eIds do not always agree on the case: Cellar writes {@code IXA} and {@code C)} where our eIds
+   * have {@code IXa} and {@code c}.
    */
   private static List<String> below(
       Set<String> units, String at, List<String> names, String number) {
     var prefix = at.isEmpty() ? "" : at + "/";
-    var steps = new ArrayList<String>();
-    for (var name : names) {
-      steps.add(name + (name.equals("level_ATTACHMENT") ? "-" : "_") + number);
+    var steps =
+        names.stream()
+            .map(name -> name + (name.startsWith("level_") ? "-" : "_") + number)
+            .toList();
+    var under = units.stream().filter(unit -> unit.startsWith(prefix)).sorted().toList();
+    var children = under.stream().filter(unit -> unit.indexOf('/', prefix.length()) < 0).toList();
+    for (var among : List.of(children, under)) {
+      for (var exact : List.of(true, false)) {
+        for (var step : steps) {
+          var found =
+              among.stream()
+                  .filter(
+                      unit -> {
+                        var last = unit.substring(unit.lastIndexOf('/') + 1);
+                        return exact ? last.equals(step) : last.equalsIgnoreCase(step);
+                      })
+                  .toList();
+          if (!found.isEmpty()) {
+            return found;
+          }
+        }
+      }
     }
-    var children = steps.stream().map(step -> prefix + step).filter(units::contains).toList();
-    if (!children.isEmpty()) {
-      return children;
-    }
-    return units.stream()
-        .filter(unit -> unit.startsWith(prefix))
-        .filter(unit -> steps.contains(unit.substring(unit.lastIndexOf('/') + 1)))
-        .sorted()
-        .toList();
+    return List.of();
   }
 
   /** What each code calls its unit, as a page names it. */
@@ -274,6 +299,7 @@ public record Location(String code) {
           Map.entry("PT", "point"),
           Map.entry("PTI", "point"),
           Map.entry("SCT", "Section"),
+          Map.entry("SECTION", "Section"),
           Map.entry("SBS", "Subsection"),
           Map.entry("PRT", "Part"),
           Map.entry("TIRE", "indent"),
@@ -379,13 +405,9 @@ public record Location(String code) {
     return tokens;
   }
 
-  /**
-   * Returns a number as our eIds write it. For example, {@code (c)} and {@code C)} become {@code
-   * c}. Roman numerals, such as I or IV, stay as they are.
-   */
+  /** Returns a number without its brackets. For example, {@code (c)} and {@code C)} become c. */
   private static String number(String value) {
-    var bare = value.replaceAll("[()]", "");
-    return ROMAN.matcher(bare).matches() ? bare : bare.toLowerCase(Locale.ROOT);
+    return value.replaceAll("[()]", "");
   }
 
   private static boolean isDigits(String value) {
