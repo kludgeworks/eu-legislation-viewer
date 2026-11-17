@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
@@ -11,11 +10,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
-import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -77,16 +74,7 @@ public record MarksView(List<Mark> marks) {
     return act.applying(amending, Set.of())
         .map(
             applying -> {
-              var provisions = new LinkedHashSet<ActDate.Provision>();
-              applying.dates().forEach(date -> provisions.addAll(date.clause().provisions()));
-              var clause =
-                  provisions.isEmpty()
-                      ? ""
-                      : provisions.stream()
-                              .map(ActDate.Provision::cited)
-                              .collect(Collectors.joining(", "))
-                          + " of "
-                          + amending.cited();
+              var clause = Wording.clause(applying.dates(), amending);
               var cited = clause.isEmpty() ? "" : " · " + clause;
               return switch (applying) {
                 case Applying.From from -> "applies from " + Dates.inWords(from.day()) + cited;

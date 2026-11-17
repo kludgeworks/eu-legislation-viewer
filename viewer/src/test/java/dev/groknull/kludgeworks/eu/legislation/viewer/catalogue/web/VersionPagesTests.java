@@ -71,7 +71,7 @@ class VersionPagesTests {
                   .attr("hx-sse:connect"))
           .isEqualTo(EVENTS);
       assertThat(preparing.select("h2").eachText()).contains("Preparing this act");
-      assertThat(first.select("nav.mode [aria-disabled]")).hasSize(2);
+      assertThat(first.select("nav.mode [aria-disabled]")).hasSize(3);
       // Without JavaScript, the page reloads from a meta tag in the head. The tag is never in
       // what a boosted request swaps in.
       assertThat(first.head().html()).contains("<meta http-equiv=\"refresh\" content=\"5\">");

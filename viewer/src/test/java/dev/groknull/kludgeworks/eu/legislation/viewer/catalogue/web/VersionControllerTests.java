@@ -6,6 +6,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -14,6 +15,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Clock;
 import java.time.Instant;
 import java.time.ZoneOffset;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -54,7 +57,32 @@ class VersionControllerTests {
   }
 
   @Test
-  void opensAnActOnToday() {
+  void opensAnActThatHasAmendingActsOnItsHistory() {
+    assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/eng"))
+        .hasStatus(HttpStatus.SEE_OTHER)
+        .headers()
+        .hasValue(HttpHeaders.LOCATION, "/eli/reg_impl/2015/1998/eng/history");
+  }
+
+  @Test
+  void opensAnActThatNoActChangedOnTheLawOnToday() {
+    var published = OneActCellar.with(List.of(OneActCellar.ACT.timeline().first()));
+    when(acts.find(OneActCellar.ELI))
+        .thenReturn(
+            Optional.of(
+                new Act(
+                    published.id(),
+                    published.eli(),
+                    published.type(),
+                    published.titles(),
+                    published.dateOfDocument(),
+                    published.inForce(),
+                    published.endOfValidity(),
+                    published.timeline(),
+                    published.dates(),
+                    Map.of(),
+                    List.of(),
+                    Map.of())));
     assertThat(mvc.get().uri("/eli/reg_impl/2015/1998/eng"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()

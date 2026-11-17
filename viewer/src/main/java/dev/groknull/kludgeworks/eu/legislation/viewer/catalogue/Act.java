@@ -453,6 +453,262 @@ public record Act(
     return Optional.of(new Applying.InStages(stages, first, dated));
   }
 
+  /**
+   * Returns the acts that amend this act and change its text in {@code language}, newest first.
+   * These are the acts that its versions in {@code language} integrate, and the acts whose
+   * amendments Cellar annotates. An act can be in no version yet.
+   *
+   * <ul>
+   *   <li>This act and the corrigenda are left out. A corrigendum is not an amending act.
+   *   <li>An act that corrects only other languages is left out. For example, 2017/837 corrects
+   *       only the Swedish and the Polish text of 2015/1998.
+   *   <li>An act is newer if its first dated date is later. An act without a dated date has the
+   *       first day of the first version that integrates it. An act without either is last.
+   * </ul>
+   */
+  public List<ActIdentifier> amendingActs(Language language) {
+    var found = new LinkedHashSet<ActIdentifier>();
+    timeline(language).orElse(timeline).versions().forEach(each -> found.addAll(each.integrates()));
+    amendments.forEach(each -> found.add(each.act()));
+    Comparator<ActIdentifier> newest =
+        Comparator.comparing(
+            (ActIdentifier each) -> firstDay(each, language).orElse(null),
+            Comparator.nullsFirst(Comparator.naturalOrder()));
+    return found.stream()
+        .filter(each -> !each.equals(id) && !each.corrigendum() && inLanguage(each, language))
+        .sorted(newest.thenComparing(ActIdentifier::celex).reversed())
+        .toList();
+  }
+
+  /**
+   * Returns the acts of {@link #amendingActs(Language)} whose first day, {@link #firstDay}, is in a
+   * period. The period starts on {@code from} and ends on {@code to}. A null end is open. An act
+   * without a first day is in no period.
+   */
+  public List<ActIdentifier> amendingActs(
+      Language language, @Nullable LocalDate from, @Nullable LocalDate to) {
+    return amendingActs(language).stream()
+        .filter(
+            each ->
+                firstDay(each, language)
+                    .filter(first -> from == null || !first.isBefore(from))
+                    .filter(first -> to == null || !first.isAfter(to))
+                    .isPresent())
+        .toList();
+  }
+
+  /**
+   * Returns the first version in {@code language} that integrates {@code amending}. The text of
+   * this version is the first that has the changes of the act. The text of the version before it is
+   * the text before the act. Returns empty if no version in the language integrates the act.
+   */
+  public Optional<Version> integrating(ActIdentifier amending, Language language) {
+    return timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
+        .filter(version -> version.integrates().contains(amending))
+        .findFirst();
+  }
+
+  /**
+   * Returns the units of {@code change} in the comparison of two texts, by their eIds. {@code
+   * later} are the units of the first text with the changes of the act, and {@code earlier} are the
+   * units of the text before it, each in document order.
+   *
+   * <p>The units are those of the later text, if it has the place itself. If only the earlier text
+   * has the place itself, the act deleted it, and the units are those of the earlier text. If
+   * neither has the place itself, the units are those that the place is in: for example, the
+   * article of a sentence. Returns empty if neither text has the place.
+   */
+  public static List<String> units(Amendment change, List<String> later, List<String> earlier) {
+    var after = change.location().in(later);
+    var before = change.location().in(earlier);
+    return after
+        .filter(found -> !found.within())
+        .or(() -> before.filter(found -> !found.within()))
+        .or(() -> after)
+        .or(() -> before)
+        .map(Location.Found::eIds)
+        .orElseGet(List::of);
+  }
+
+  /**
+   * Returns the first day of {@code amending}: its first dated date, which is usually its entry
+   * into force. If Cellar has no dated date of it, it is the first day of the first version in
+   * {@code language} that integrates it. Returns empty if there is neither.
+   */
+  public Optional<LocalDate> firstDay(ActIdentifier amending, Language language) {
+    return datesOf(amending).stream()
+        .map(ActDate::date)
+        .filter(Objects::nonNull)
+        .min(Comparator.naturalOrder())
+        .or(
+            () ->
+                timeline(language).orElse(timeline).versions().stream()
+                    .filter(version -> version.integrates().contains(amending))
+                    .map(Version::date)
+                    .findFirst());
+  }
+
+  /**
+   * Returns {@code changes} in the order of a text. {@code eIds} are the units of the text, in
+   * document order. A change has the position of its place. A place that the text does not have,
+   * for example a deleted provision, has the position of the unit that holds it. A change with no
+   * position is last.
+   */
+  public static List<Amendment> inTextOrder(List<Amendment> changes, List<String> eIds) {
+    return changes.stream()
+        .sorted(
+            Comparator.comparing(
+                change ->
+                    change
+                        .location()
+                        .in(eIds)
+                        .or(() -> change.location().around(eIds))
+                        .map(found -> eIds.indexOf(found.eIds().getFirst()))
+                        .orElse(Integer.MAX_VALUE)))
+        .toList();
+  }
+
+  /**
+   * Returns the corrigenda of {@code corrected} that change the text of this act in {@code
+   * language}, in the order of their numbers. {@code corrected} is this act or an act that amends
+   * it. A corrigendum is published only in the languages that it corrects. So a corrigendum whose
+   * publication has no title in {@code language} is left out.
+   */
+  public List<ActIdentifier> corrigendaOf(ActIdentifier corrected, Language language) {
+    var found = new LinkedHashSet<ActIdentifier>();
+    timeline(language).orElse(timeline).versions().forEach(each -> found.addAll(each.integrates()));
+    amendments.forEach(each -> found.add(each.act()));
+    return found.stream()
+        .filter(each -> each.corrected().filter(corrected::equals).isPresent())
+        .filter(each -> inLanguage(each, language))
+        .filter(
+            each ->
+                publication(each)
+                    .map(publication -> publication.title(language).isPresent())
+                    .orElse(true))
+        .sorted(Comparator.comparing(ActIdentifier::celex))
+        .toList();
+  }
+
+  /**
+   * Returns whether {@code amending} can change the text in {@code language}. It cannot if each of
+   * its amendments is for other languages only.
+   */
+  private boolean inLanguage(ActIdentifier amending, Language language) {
+    var own = amendments.stream().filter(each -> each.act().equals(amending)).toList();
+    return own.isEmpty()
+        || own.stream()
+            .anyMatch(each -> each.languages().isEmpty() || each.languages().contains(language));
+  }
+
+  /**
+   * Returns the changes that {@code amending} makes to the text of this act in {@code language}, as
+   * Cellar annotates them. Each change has one place.
+   */
+  public List<Amendment> changesBy(ActIdentifier amending, Language language) {
+    return amendments.stream()
+        .filter(each -> each.act().equals(amending) && each.changes(language))
+        .toList();
+  }
+
+  /**
+   * Returns the day on which {@code act} enters into force, or empty if Cellar does not give it.
+   * {@code act} is this act, an act that its versions integrate or an act that amends it.
+   */
+  public Optional<LocalDate> entryIntoForce(ActIdentifier act) {
+    return datesOf(act).stream()
+        .filter(date -> date.kind() == ActDate.Kind.ENTRY_INTO_FORCE)
+        .map(ActDate::date)
+        .filter(Objects::nonNull)
+        .min(Comparator.naturalOrder());
+  }
+
+  /**
+   * Returns the day from which a change of {@code amending} applies, if the data gives one day for
+   * it: {@link #applying} gives a day, and not stages. {@code placeDays} are the days that Cellar
+   * gives for the place of the change. Returns empty if the data does not tell the stage of the
+   * change.
+   */
+  public Optional<LocalDate> stageOf(ActIdentifier amending, Set<LocalDate> placeDays) {
+    return applying(amending, placeDays)
+        .flatMap(
+            applying ->
+                switch (applying) {
+                  case Applying.From from -> Optional.of(from.day());
+                  case Applying.InStages _, Applying.SetBy _, Applying.InForce _ ->
+                      Optional.empty();
+                });
+  }
+
+  /**
+   * Returns the state on {@code day} of {@code act}, or of one change that it makes. {@code act} is
+   * this act, an act that its versions integrate or an act that amends it. {@code placeDays} are
+   * the days that Cellar gives for the place of the change. They are empty for the act as a whole.
+   *
+   * <ol>
+   *   <li>Before the entry into force of the act, it is not in force.
+   *   <li>If it applies from one day ({@link #applying}), it applies from that day, and does not
+   *       apply yet before it.
+   *   <li>If it applies in stages, it does not apply yet before the first stage. It applies from
+   *       the last stage, unless a clause sets one more day that Cellar does not know. Between
+   *       them, Cellar does not tell which stage the change is in, so the state is not known.
+   *   <li>In each other case the state is not known. For example, a clause sets the day by an
+   *       event, or Cellar has no dates of the act.
+   * </ol>
+   */
+  public State stateOn(ActIdentifier act, Set<LocalDate> placeDays, LocalDate day) {
+    if (entryIntoForce(act).filter(day::isBefore).isPresent()) {
+      return State.NOT_IN_FORCE;
+    }
+    var openDay =
+        datesOf(act).stream()
+            .anyMatch(date -> date.kind() != ActDate.Kind.ENTRY_INTO_FORCE && date.date() == null);
+    return applying(act, placeDays)
+        .map(
+            applying ->
+                switch (applying) {
+                  case Applying.From from ->
+                      day.isBefore(from.day()) ? State.NOT_APPLYING : State.APPLIES;
+                  case Applying.InStages stages -> {
+                    if (day.isBefore(stages.first())) {
+                      yield State.NOT_APPLYING;
+                    }
+                    yield !openDay && !day.isBefore(stages.stages().getLast().day())
+                        ? State.APPLIES
+                        : State.NOT_KNOWN;
+                  }
+                  case Applying.SetBy _, Applying.InForce _ -> State.NOT_KNOWN;
+                })
+        .orElse(State.NOT_KNOWN);
+  }
+
+  /**
+   * Returns how {@code amending} stands on {@code day}: the number of its changes to the text in
+   * {@code language} in each state, {@link #stateOn}. If Cellar lists no changed place for it, the
+   * act counts as one change, with the state of the whole act.
+   */
+  public Standing standingOn(ActIdentifier amending, Language language, LocalDate day) {
+    var changes = changesBy(amending, language);
+    var states =
+        changes.isEmpty()
+            ? List.of(stateOn(amending, Set.of(), day))
+            : changes.stream().map(each -> stateOn(amending, days(each), day)).toList();
+    return new Standing(
+        states.contains(State.NOT_IN_FORCE),
+        count(states, State.APPLIES),
+        count(states, State.NOT_APPLYING),
+        count(states, State.NOT_KNOWN));
+  }
+
+  /** Returns the days that Cellar gives for the place of {@code change}: one day, or none. */
+  public static Set<LocalDate> days(Amendment change) {
+    return change.from() == null ? Set.of() : Set.of(change.from());
+  }
+
+  private static int count(List<State> states, State state) {
+    return (int) states.stream().filter(state::equals).count();
+  }
+
   /** Returns the dates among {@code dates} that fall on {@code day}. */
   private static List<ActDate> on(List<ActDate> dates, LocalDate day) {
     return dates.stream().filter(date -> day.equals(date.date())).toList();

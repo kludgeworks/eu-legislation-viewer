@@ -147,6 +147,28 @@ public final class Links {
   }
 
   /**
+   * Returns the address of the history of the act {@code eli} on {@code day}, in {@code language}.
+   * The history lists its amending acts. Without a day, the history is for today. For example,
+   * {@code /eli/reg/2018/1862/eng/history?on=2022-08-01}.
+   */
+  public static String history(Eli eli, @Nullable LocalDate day, Language language) {
+    return act(eli, language) + "/history" + (day == null ? "" : "?on=" + day);
+  }
+
+  /**
+   * Returns the address of what {@code amending} changed in the act {@code eli}, on {@code day}, in
+   * {@code language}. Without a day, the page is for today. For example, {@code
+   * /eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01}.
+   */
+  public static String amending(
+      Eli eli, ActIdentifier amending, @Nullable LocalDate day, Language language) {
+    return act(eli, language)
+        + "/history/"
+        + URLEncoder.encode(amending.celex(), StandardCharsets.UTF_8)
+        + (day == null ? "" : "?on=" + day);
+  }
+
+  /**
    * Returns the address of the home page with the results of a search for {@code words}, of {@code
    * kind}, on page {@code page}. Pages start at 1. For example, {@code
    * /?q=aviation+security&type=regulation&page=2}. The address has no {@code type} parameter for

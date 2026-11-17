@@ -5,11 +5,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView.Choice;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -93,5 +97,67 @@ class MastheadViewTest {
         .singleElement()
         .asString()
         .endsWith("to=" + VERSION.date().plusDays(3));
+  }
+
+  @Test
+  void labelsTheHistoryWithTheNumberOfAmendingActs() {
+    var head = MastheadView.reading(AVSEC, VERSION, ASKED, Language.ENG);
+    assertThat(head.historyLabel())
+        .isEqualTo("Amending acts (%s)", AVSEC.amendingActs(Language.ENG).size());
+    assertThat(head.historyEmpty()).isFalse();
+  }
+
+  @Test
+  void saysThatTheHistoryIsEmptyForAnActWithNoAmendingActAndNoCorrigendum() {
+    var alone =
+        new Act(
+            AVSEC.id(),
+            AVSEC.eli(),
+            AVSEC.type(),
+            AVSEC.titles(),
+            AVSEC.dateOfDocument(),
+            AVSEC.inForce(),
+            AVSEC.endOfValidity(),
+            new Timeline(List.of(AVSEC.timeline().first())),
+            AVSEC.dates(),
+            Map.of(),
+            List.of(),
+            Map.of());
+    var head = MastheadView.reading(alone, alone.timeline().first(), ASKED, Language.ENG);
+    assertThat(head.historyLabel()).isEqualTo("Amending acts (0)");
+    assertThat(head.historyEmpty()).isTrue();
+  }
+
+  @Test
+  void namesTheCorrigendaWhereTheyAreAllThatTheHistoryShows() {
+    var corrigendum = new ActIdentifier("32015R1998R(01)");
+    var first = AVSEC.timeline().first();
+    var corrected =
+        new Act(
+            AVSEC.id(),
+            AVSEC.eli(),
+            AVSEC.type(),
+            AVSEC.titles(),
+            AVSEC.dateOfDocument(),
+            AVSEC.inForce(),
+            AVSEC.endOfValidity(),
+            new Timeline(
+                List.of(
+                    first,
+                    new Version(
+                        Version.Kind.CONSOLIDATED,
+                        first.date().plusDays(30),
+                        "02015R1998-corrected",
+                        false,
+                        List.of(corrigendum),
+                        first.languages(),
+                        Map.of()))),
+            AVSEC.dates(),
+            Map.of(),
+            List.of(),
+            Map.of(corrigendum, new Publication(null, Map.of(Language.ENG, "Corrigendum"), null)));
+    var head = MastheadView.reading(corrected, first, ASKED, Language.ENG);
+    assertThat(head.historyLabel()).isEqualTo("Amending acts (0) · Corrigenda (1)");
+    assertThat(head.historyEmpty()).isFalse();
   }
 }

@@ -38,8 +38,13 @@ import org.jspecify.annotations.Nullable;
  * @param language the language of the page, by its own name
  * @param languages the 24 official languages, in the EU's order. Each one links to the page in that
  *     language. A language is greyed, with the reason, where a version on the page is not in it.
- * @param read the address of the page of the version, when the reader compares. Null when the
- *     reader reads.
+ * @param history the address of the history of the act. Null when the page is the history.
+ * @param historyLabel the label of the link to the history, with the number of amending acts. For
+ *     example, "Amending acts (4)". For an act with no amending act and with corrigenda, it has the
+ *     number of corrigenda also: "Amending acts (0) · Corrigenda (3)".
+ * @param historyEmpty whether the history has nothing to show: the act has no amending act and no
+ *     corrigendum in the language. Then the label is not a link.
+ * @param read the address of the page of the version. Null when the reader reads.
  * @param compare the address of the comparison, when the reader reads. Null when the reader
  *     compares.
  * @param preparing whether the act is being prepared. If so, the mode switch shows, but it is not a
@@ -57,6 +62,9 @@ public record MastheadView(
     String celexHref,
     String language,
     List<Choice> languages,
+    @Nullable String history,
+    String historyLabel,
+    boolean historyEmpty,
     @Nullable String read,
     @Nullable String compare,
     boolean preparing,
@@ -90,6 +98,7 @@ public record MastheadView(
         language,
         each -> Links.read(eli, asked, each),
         each -> version.languages().contains(each) ? null : "Not for this version",
+        Links.history(eli, asked, language),
         null,
         compare);
   }
@@ -118,8 +127,28 @@ public record MastheadView(
               ? "To isn’t in " + name
               : inTo ? "From isn’t in " + name : "Neither version is in " + name;
         },
+        Links.history(eli, toDay, language),
         Links.read(eli, toDay, language),
         null);
+  }
+
+  /**
+   * Returns the head of the history of {@code act} on {@code day}, in {@code language}, and of the
+   * page of one of its amending acts. The language switch keeps the day. Read reads the law on
+   * {@code day}. Compare compares the version of that day with the version before it.
+   */
+  public static MastheadView history(Act act, LocalDate day, Language language) {
+    var eli = eli(act);
+    var version = act.versionOn(day, language).orElseGet(act.timeline()::first);
+    var reading = reading(act, version, day, language);
+    return of(
+        act,
+        language,
+        each -> Links.history(eli, day, each),
+        each -> null,
+        null,
+        Links.read(eli, day, language),
+        reading.compare());
   }
 
   private static MastheadView of(
@@ -127,6 +156,7 @@ public record MastheadView(
       Language language,
       Function<Language, String> page,
       Function<Language, @Nullable String> missing,
+      @Nullable String history,
       @Nullable String read,
       @Nullable String compare) {
     var eli = eli(act);
@@ -156,10 +186,27 @@ public record MastheadView(
                       why);
                 })
             .toList(),
+        history,
+        historyLabel(act, language),
+        act.amendingActs(language).isEmpty() && act.corrigendaOf(act.id(), language).isEmpty(),
         read,
         compare,
         false,
         Links.notices(eli, language));
+  }
+
+  /**
+   * Returns the label of the link to the history of {@code act}. The history lists the amending
+   * acts, and below them the corrigenda. The label names the corrigenda only where they are all
+   * that the history shows.
+   */
+  private static String historyLabel(Act act, Language language) {
+    var amending = act.amendingActs(language).size();
+    var corrigenda = act.corrigendaOf(act.id(), language).size();
+    return "Amending acts ("
+        + amending
+        + ")"
+        + (amending == 0 && corrigenda > 0 ? " · Corrigenda (" + corrigenda + ")" : "");
   }
 
   /**
@@ -177,6 +224,9 @@ public record MastheadView(
         celexHref,
         language,
         languages,
+        history,
+        historyLabel,
+        historyEmpty,
         read,
         compare,
         true,

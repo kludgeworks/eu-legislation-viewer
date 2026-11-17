@@ -145,7 +145,7 @@ class HomeControllerTests {
             "laying down detailed measures for the implementation of the common basic standards"
                 + " on aviation security (Text with EEA relevance)");
     assertThat(avsec.select("a").eachAttr("href")).containsOnly(READ);
-    assertThat(avsec.select("a.to").text()).isEqualTo("Read it as it is today →");
+    assertThat(avsec.select("a.to").text()).isEqualTo("Open this act →");
     var amending = page.select(".result .t").get(1);
     assertThat(amending.select("a.to").text()).isEqualTo("What it changed in 2015/1998 →");
     assertThat(amending.select("a.to").attr("href")).isEqualTo(COMPARE + "?act=32026R0449");

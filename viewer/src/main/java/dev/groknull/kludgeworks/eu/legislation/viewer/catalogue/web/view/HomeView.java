@@ -96,7 +96,7 @@ public record HomeView(
     var rest = title.matches() ? title.group(2) : null;
     var goes = new ArrayList<Go>();
     if (match.amends().isEmpty() && match.eli() != null) {
-      goes.add(new Go("Read it as it is today", Links.act(match.eli(), Language.ENG)));
+      goes.add(new Go("Open this act", Links.act(match.eli(), Language.ENG)));
     }
     for (var amended : match.amends()) {
       var eli = amended.eli();

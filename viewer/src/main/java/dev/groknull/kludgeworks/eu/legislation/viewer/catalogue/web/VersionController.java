@@ -67,8 +67,9 @@ import org.springframework.web.server.ResponseStatusException;
  * <p>Versions that appeared after the act was prepared are prepared separately. The page does not
  * wait for them, but it says that they are being prepared.
  *
- * <p>The address of the act without a date redirects to the page for today, or for the date in
- * {@code on}. The address keeps the day asked: it is never moved to the first day of a version.
+ * <p>The address of the act without a date redirects to the history of the act, if it has amending
+ * acts. If not, or if the address has a date in {@code on}, it redirects to the page for today or
+ * for that date. The address keeps the day asked: it is never moved to the first day of a version.
  *
  * <p>A day before the act's first version shows a panel that says the act didn't exist yet, or
  * wasn't in force yet.
@@ -95,9 +96,9 @@ class VersionController {
   }
 
   /**
-   * Redirects to the page of the law on today, in a language. The Read link uses this address. If
-   * {@code on} is given, it redirects to the page for that date. The date form of the Reading card
-   * sends {@code on}.
+   * Redirects to the first page of an act, in a language. An act that has amending acts opens on
+   * its history. An act that no act changed opens on the law on today. If {@code on} is given, it
+   * redirects to the law on that date. The date form of the Reading card sends {@code on}.
    */
   @GetMapping(path = "/eli/{type}/{year}/{number}/{language}", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<Void> act(
@@ -109,12 +110,14 @@ class VersionController {
           @Nullable LocalDate on) {
     var language = language(code);
     var eli = new Eli(type, year, number);
-    if (acts.find(eli).isEmpty()) {
-      throw notFound();
-    }
-    var date = on != null ? on : today();
+    var found = acts.find(eli).orElseThrow(VersionController::notFound);
+    var history = on == null && !found.amendingActs(language).isEmpty();
     return ResponseEntity.status(HttpStatus.SEE_OTHER)
-        .location(URI.create(Links.read(eli, date, language)))
+        .location(
+            URI.create(
+                history
+                    ? Links.history(eli, null, language)
+                    : Links.read(eli, on != null ? on : today(), language)))
         .build();
   }
 

@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Function;
@@ -143,6 +144,21 @@ public final class Wording {
       return List.of(act.id());
     }
     return version.integrates().isEmpty() ? named : version.integrates();
+  }
+
+  /**
+   * Returns the provisions that set {@code dates}, cited with their act. {@code dates} are dates of
+   * {@code act}. For example, "Article 2 of 2023/566". Returns an empty text if Cellar names no
+   * provision.
+   */
+  public static String clause(List<ActDate> dates, ActIdentifier act) {
+    var provisions = new LinkedHashSet<ActDate.Provision>();
+    dates.forEach(date -> provisions.addAll(date.clause().provisions()));
+    return provisions.isEmpty()
+        ? ""
+        : provisions.stream().map(ActDate.Provision::cited).collect(Collectors.joining(", "))
+            + " of "
+            + act.cited();
   }
 
   private static String names(List<ActIdentifier> acts, Function<ActIdentifier, String> cite) {
