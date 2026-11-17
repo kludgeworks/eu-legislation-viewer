@@ -33,6 +33,7 @@ class DivergencesTest {
   private final Map<ActIdentifier, List<ActDate>> dates = new HashMap<>();
   private @Nullable LocalDate placeDate;
   private Role role = Role.REPLACEMENT;
+  private Set<Language> changedLanguages = Set.of();
 
   @Test
   void aProvisionThatAppliesBeforeTheFirstVersionThatMarksItMakesTheTextLate() {
@@ -228,6 +229,21 @@ class DivergencesTest {
   }
 
   @Test
+  void anActThatChangesOnlyOtherLanguagesMakesNoTextLate() {
+    application("2017-06-01");
+    place("2017-06-01");
+    version("2016-02-29", false);
+    version("2017-06-07", true, POINT);
+    changedLanguages = Set.of(Language.SWE, Language.POL);
+
+    assertThat(divergences()).isEmpty();
+
+    changedLanguages = Set.of(Language.SWE, Language.ENG);
+
+    assertThat(divergences()).extracting(Divergence::kind).containsExactly(Divergence.Kind.LATE);
+  }
+
+  @Test
   void aLateProvisionIsItsUnitInTheTextOrTheUnitThatHoldsIt() {
     application("2017-06-01");
     place("2017-06-01");
@@ -406,7 +422,8 @@ class DivergencesTest {
         List.of(),
         dates,
         List.of(
-            new Amendment(AMENDING, new Location("AN PO 1.1"), role, placeDate, null, Set.of())),
+            new Amendment(
+                AMENDING, new Location("AN PO 1.1"), role, placeDate, null, changedLanguages)),
         Map.of());
   }
 
