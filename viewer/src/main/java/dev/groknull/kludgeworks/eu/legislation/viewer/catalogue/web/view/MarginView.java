@@ -9,49 +9,48 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import org.jspecify.annotations.Nullable;
+import java.util.Objects;
 
 /**
- * The marks in the margin of the text on the Read page, where the text is not the law on the day
- * asked. The Reading card has the warning. The margin shows where.
+ * The marks in the text on the Read page, where the text is not the law on the day asked. The
+ * status lines of the Reading card say which acts. The marks show where.
  *
  * <ul>
- *   <li>A dashed amber rule beside each unit that a divergence touches, {@link Divergence#in}, and
- *       a small link up to the warning: "2017/815 not included ↑".
- *   <li>For a place that the text does not have, the rule is beside the heading of the unit that
- *       holds it.
- *   <li>For the early text of the act itself, the whole text, and a note at the top: "Does not
- *       apply on this day. Applies from 25 May 2018 · Article 99(2) of 2016/679."
+ *   <li>A change that the text has and that does not apply on the day has an amber rule beside its
+ *       unit, and a short line with the act: "2022/1190 · does not apply yet". The act is a link to
+ *       its page.
+ *   <li>A change that the text does not show has one grey marker at its place: "Not in this text:
+ *       Article 18a · 2021/1133". If the text has the unit, the marker is before it. If not, the
+ *       marker is at the end of the unit that holds the place, or of the unit before it.
+ *   <li>The act itself, where it does not apply at all on the day, has no mark: the status line
+ *       says so one time.
  * </ul>
  *
  * <p>The content module renders the text without the act. So the page sends the marks, and
- * js/margin.js puts them on the text when it arrives.
+ * js/margin.js puts them on the text when it arrives. It also gives the outline a dot on each part
+ * that has a mark.
  *
- * @param rules the units to mark, in the order of the text
- * @param note the note at the top of a text that does not apply at all on the day, after "Does not
- *     apply on this day.": from when it applies. For example, "Applies from 25 May 2018 · Article
- *     99(2) of 2016/679.". Null if the text applies.
+ * @param marks the marks, in the order of the text
  */
-public record MarginView(List<Rule> rules, @Nullable String note) {
+public record MarginView(List<Mark> marks) {
 
   public MarginView {
-    rules = List.copyOf(rules);
+    marks = List.copyOf(marks);
   }
 
   /** Returns the view with no marks. */
   public static MarginView none() {
-    return new MarginView(List.of(), null);
+    return new MarginView(List.of());
   }
 
   /**
    * Returns the marks of the text of {@code version} of {@code act}, for the day {@code asked}.
    *
    * @param marks the marks of the built texts in {@code language}, by version. Without the text of
-   *     {@code version}, there are no rules.
-   * @param today the date today, which tells "applied" from "applies" in the note
+   *     {@code version}, there are no marks.
+   * @param today the date today, which gives the tense
    */
   public static MarginView of(
       Act act,
@@ -61,57 +60,54 @@ public record MarginView(List<Rule> rules, @Nullable String note) {
       Map<Version, TextMarks> marks,
       LocalDate today) {
     var text = marks.get(version);
-    var found = new LinkedHashMap<String, Rule>();
-    String note = null;
+    if (text == null) {
+      return none();
+    }
+    var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
+    var past = asked.isBefore(today);
+    var kept = asked.equals(today) ? null : asked;
+    var found = new ArrayList<Mark>();
     for (var divergence : act.divergences(asked, language, marks)) {
       if (divergence.whole(act.id())) {
-        note = DivergenceView.of(act, divergence, version, asked, language, today).detail();
         continue;
       }
-      if (text == null) {
-        continue;
-      }
-      var label = label(act, divergence);
+      var cited = act.cited(divergence.act());
+      var href = Links.amending(eli, divergence.act(), kept, language);
+      var early = divergence.kind() == Divergence.Kind.EARLY;
       for (var unit : divergence.in(text.eIds())) {
-        found.merge(unit.eId(), new Rule(unit.eId(), unit.holds(), label), MarginView::merge);
+        found.add(
+            new Mark(
+                unit.eId(),
+                !early,
+                unit.holds(),
+                early
+                    ? past ? "did not apply yet" : "does not apply yet"
+                    : unit.places().stream()
+                        .map(place -> place.location().name())
+                        .distinct()
+                        .reduce((one, other) -> one + ", " + other)
+                        .orElse(""),
+                cited,
+                href));
       }
     }
-    var eIds = text == null ? List.<String>of() : text.eIds();
-    var rules =
-        found.values().stream()
-            .sorted(Comparator.comparingInt(rule -> eIds.indexOf(rule.unit())))
-            .toList();
-    return new MarginView(rules, note);
+    found.sort(Comparator.comparingInt(mark -> text.eIds().indexOf(mark.unit())));
+    return new MarginView(found);
   }
 
   /**
-   * Returns one rule for a unit that two divergences touch. It marks the whole unit if either does,
-   * and names each act once.
-   */
-  private static Rule merge(Rule one, Rule other) {
-    var labels = new ArrayList<>(List.of(one.label().split("; ")));
-    if (!labels.contains(other.label())) {
-      labels.add(other.label());
-    }
-    return new Rule(one.unit(), one.heading() && other.heading(), String.join("; ", labels));
-  }
-
-  /** Returns the words of the link beside a unit. For example, "2017/815 not included". */
-  private static String label(Act act, Divergence divergence) {
-    var cited = act.cited(divergence.act());
-    return switch (divergence.kind()) {
-      case LATE, UNCONFIRMED -> cited + " not included";
-      case EARLY -> cited + " does not apply yet";
-    };
-  }
-
-  /**
-   * A unit to mark.
+   * One mark on a unit of the text.
    *
    * @param unit the eId of the unit
-   * @param heading whether to mark only its heading, because it holds a place that the text does
-   *     not have
-   * @param label the words of the link up to the warning
+   * @param marker whether it is a marker for a change that the text does not show. If not, it is a
+   *     rule for a change that does not apply on the day.
+   * @param holds whether the text does not have the place, and the unit holds it or is before it. A
+   *     marker is then at the end of the unit. A rule is then beside the heading of the unit.
+   * @param words for a rule, the state of the change: "does not apply yet". For a marker, the
+   *     provisions that the text does not show: "Article 18a, Article 50a".
+   * @param act the act, as cited
+   * @param href the address of the page of the act
    */
-  public record Rule(String unit, boolean heading, String label) {}
+  public record Mark(
+      String unit, boolean marker, boolean holds, String words, String act, String href) {}
 }

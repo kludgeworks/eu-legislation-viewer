@@ -229,6 +229,17 @@ class LocationTest {
         .contains(new Found(List.of("anx/pnt_SERA.5005"), true));
   }
 
+  @Test
+  void putsAUnitThatTheTextDoesNotHaveAtTheUnitWithItsNumberAlone() {
+    // An act inserts Article 89a after Article 89.
+    assertThat(new Location("AR 89a").in(EMIR)).isEmpty();
+    assertThat(new Location("AR 89a").around(EMIR)).contains(new Found(List.of("art_89"), true));
+    assertThat(new Location("AR 89a PA 2").around(EMIR))
+        .contains(new Found(List.of("art_89"), true));
+    // No Article 90 is in the text, so Article 90a has no place.
+    assertThat(new Location("AR 90a").around(EMIR)).isEmpty();
+  }
+
   private static Optional<Found> in(String code, List<String> eIds) {
     return new Location(code).in(eIds);
   }

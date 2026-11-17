@@ -252,9 +252,9 @@ class DivergencesTest {
 
     var late = divergences().getFirst();
 
-    assertThat(late.in(UNITS)).containsExactly(new Divergence.Unit(POINT, false));
+    assertThat(late.in(UNITS)).containsExactly(new Divergence.Unit(POINT, false, late.places()));
     assertThat(late.in(List.of("anx", "anx/pnt_1", "anx/pnt_1.2")))
-        .containsExactly(new Divergence.Unit("anx/pnt_1", true));
+        .containsExactly(new Divergence.Unit("anx/pnt_1", true, late.places()));
     assertThat(late.whole(BASE)).isFalse();
   }
 

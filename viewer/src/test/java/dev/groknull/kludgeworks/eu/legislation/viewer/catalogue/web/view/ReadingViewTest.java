@@ -52,7 +52,7 @@ class ReadingViewTest {
         .contains(
             " · OJ L 21, 24.1.2019\nCorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
         .endsWith("(Text with EEA relevance) · OJ L 208, 1.7.2020");
-    assertThat(card.divergences()).isEmpty();
+    assertThat(card.status().size()).isZero();
     assertThat(card.action()).isEqualTo("/eli/reg_impl/2015/1998/eng");
     assertThat(card.on()).isEqualTo("2022-02-14");
     assertThat(card.starts()).startsWith("2015-11-15 2016-02-29 ").endsWith(" 2026-10-01");
@@ -141,31 +141,39 @@ class ReadingViewTest {
     var late = card("2016-02-29", "2017-06-03", TODAY);
     assertThat(late.version())
         .isEqualTo("From the version of 29 February 2016 · applied until 6 June 2017");
-    assertThat(late.divergences())
+    assertThat(late.status().day()).isEqualTo("3 June 2017");
+    assertThat(late.status().lines())
         .containsExactly(
-            new DivergenceView(
-                "Not included: 2017/815",
-                "Applied from 1 June 2017. Included from 7 June 2017.",
-                "/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-07&act=32017R0815"
-                    + "&on=2017-06-03",
-                "See its changes in a comparison",
-                false));
+            new StatusView.Line(
+                "2017/815",
+                "/eli/reg_impl/2015/1998/eng/history/32017R0815?on=2017-06-03",
+                "applied from 1 June 2017 · Article 2 of 2017/815. The text shows it from 7 June"
+                    + " 2017."));
     assertThat(late.on()).isEqualTo("2017-06-03");
-    assertThat(card("2016-02-29", "2017-05-01", TODAY).divergences()).isEmpty();
-    assertThat(card("2016-02-29", "2016-02-29", TODAY).divergences()).isEmpty();
+    assertThat(card("2016-02-29", "2017-05-01", TODAY).status().size()).isZero();
+    assertThat(card("2016-02-29", "2016-02-29", TODAY).status().size()).isZero();
   }
 
   @Test
   void warnsOfAnEarlyTextWhileTheActIsInForceButDoesNotApply() {
-    assertThat(card("2015-11-15", "2015-12-01", TODAY).divergences())
+    assertThat(card("2015-11-15", "2015-12-01", TODAY).status().lines())
         .containsExactly(
-            new DivergenceView(
-                "In force. Does not apply yet.",
-                "Applies from 1 February 2016 · Article 2 of 2015/1998.",
-                "/eli/reg_impl/2015/1998/2016-02-01/eng",
-                "Go to 1 February 2016, the first day it applies",
-                false));
-    assertThat(card("2015-11-15", "2016-02-01", TODAY).divergences()).isEmpty();
+            new StatusView.Line(
+                "2015/1998",
+                null,
+                "was in force and did not apply yet. It applied from 1 February 2016 · Article 2 of"
+                    + " 2015/1998."));
+    // The tense obeys the day: for the same day as today, the act "is in force".
+    assertThat(
+            card("2015-11-15", "2015-12-01", LocalDate.of(2015, 12, 1))
+                .status()
+                .lines()
+                .getFirst()
+                .words())
+        .isEqualTo(
+            "is in force and does not apply yet. It applies from 1 February 2016 · Article 2 of"
+                + " 2015/1998.");
+    assertThat(card("2015-11-15", "2016-02-01", TODAY).status().size()).isZero();
   }
 
   @Test

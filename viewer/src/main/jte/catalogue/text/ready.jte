@@ -13,9 +13,11 @@
      hidden list holds, for each amending act, when it applies and the step of Compare that made its
      changes; js/markers.js reads it for each mark's hover and click. data-compare is the act's
      comparisons, for a mark whose act is not in the list.
-     Where the text is not the law on the day, <margin-rules> lists the units to mark in the
-     margin, and the note for a text that does not apply at all; js/margin.js puts them on the text
-     when it arrives. Each mark links up to the warning in the Reading card. --%>
+     Where the text is not the law on the day, <margin-rules> lists the marks; js/margin.js puts
+     them on the text when it arrives. A change that does not apply on the day gets an amber rule
+     and a short line with the act. A change that the text does not show gets one grey marker,
+     "Not in this text", at its place. Each act is a link to its page. The outline gets a dot on
+     each part that has a mark. --%>
 <div id="text" class="outlined">
   <act-outline>
   <nav class="outline" aria-label="Outline">
@@ -32,11 +34,12 @@
     @endfor
   </div>
   <margin-rules hidden>
-    @if(margin.note() != null)
-      <p class="margin-note" role="note"><b>Does not apply on this day.</b> ${margin.note()}</p>
-    @endif
-    @for(var rule : margin.rules())
-      <span data-unit="${rule.unit()}" data-heading="${rule.heading()}" data-label="${rule.label()}"></span>
+    @for(var mark : margin.marks())
+      @if(mark.marker())
+        <p class="marker" data-unit="${mark.unit()}" data-end="${mark.holds()}"><span class="marker-kind">Not in this text</span>@if(!mark.words().isEmpty()): ${mark.words()}@endif · <a href="${mark.href()}">${mark.act()}</a></p>
+      @else
+        <p class="rule-note" data-unit="${mark.unit()}" data-heading="${mark.holds()}"><a href="${mark.href()}">${mark.act()}</a> · ${mark.words()}</p>
+      @endif
     @endfor
   </margin-rules>
   <div class="content" data-compare="${compare}" hx-get="${content}" hx-trigger="load" hx-swap="innerHTML">

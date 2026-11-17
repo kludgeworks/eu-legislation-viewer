@@ -7,127 +7,151 @@ afterEach(() => {
   document.body.innerHTML = "";
 });
 
+const OUTLINE = `
+  <nav class="outline"><ul>
+    <li><details><summary><a href="#anx">Annex</a></summary><ul>
+      <li><a href="#anx/pnt_4.1.3">4.1.3 Screening of liquids</a></li>
+      <li><a href="#anx/pnt_4.2">4.2 Protection of passengers</a></li>
+    </ul></details></li>
+  </ul></nav>`;
+
 const TEXT = `
-  <div class="content">
+  <div class="content"><div class="unit" id="anx">
     <div class="unit" id="anx/pnt_4.1.3"><div class="title">4.1.3 Screening of liquids</div>
       <div class="unit" id="anx/pnt_4.1.3.3">4.1.3.3 The screening of LAGs</div>
     </div>
     <div class="unit" id="anx/pnt_4.2">4.2 Protection of passengers</div>
-  </div>`;
+  </div></div>`;
+
+const ACT = "/eli/reg_impl/2015/1998/eng/history/32017R0815";
 
 /**
- * Returns the list of marks and the text of a page.
+ * Returns a rule for a change that does not apply on the day, as the page lists it.
+ *
+ * @param {string} unit
+ * @param {boolean} [heading]
+ * @returns {string}
+ */
+const rule = (unit, heading = false) =>
+  `<p class="rule-note" data-unit="${unit}" data-heading="${heading}"><a href="${ACT}">2017/815</a> · does not apply yet</p>`;
+
+/**
+ * Returns a marker for a change that the text does not show, as the page lists it.
+ *
+ * @param {string} unit
+ * @param {boolean} end
+ * @returns {string}
+ */
+const marker = (unit, end) =>
+  `<p class="marker" data-unit="${unit}" data-end="${end}"><span class="marker-kind">Not in this text</span>: point 4.1.3.4 · <a href="${ACT}">2017/815</a></p>`;
+
+/**
+ * Returns the list of marks, the text and the outline of a page.
  *
  * @param {string} rules
- * @returns {{ rules: HTMLElement, content: HTMLElement }}
+ * @returns {{ rules: HTMLElement, content: HTMLElement, outline: HTMLElement }}
  */
 const page = (rules) => {
-  document.body.innerHTML = `<margin-rules hidden>${rules}</margin-rules>${TEXT}`;
+  document.body.innerHTML = `${OUTLINE}<margin-rules hidden>${rules}</margin-rules>${TEXT}`;
   return {
     rules: /** @type {HTMLElement} */ (document.querySelector("margin-rules")),
     content: /** @type {HTMLElement} */ (document.querySelector(".content")),
+    outline: /** @type {HTMLElement} */ (document.querySelector("nav.outline")),
   };
 };
 
+/**
+ * Returns the unit with the eId `id`.
+ *
+ * @param {string} id
+ * @returns {HTMLElement}
+ */
+const unit = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
+
 describe("mark", () => {
-  test("marks each unit, with a link up to the warning", () => {
-    const { rules, content } = page(
-      `<span data-unit="anx/pnt_4.1.3.3" data-heading="false" data-label="2017/815 not included"></span>`,
-    );
+  test("gives a change that does not apply a rule and a note with the act as a link", () => {
+    const { rules, content } = page(rule("anx/pnt_4.1.3.3"));
 
     mark(rules, content);
 
-    const unit = /** @type {HTMLElement} */ (document.getElementById("anx/pnt_4.1.3.3"));
-    expect(unit.classList.contains("divergent")).toBe(true);
-    const link = /** @type {HTMLAnchorElement} */ (unit.querySelector("a.divergent-link"));
-    expect(link.getAttribute("href")).toBe("#divergences");
-    expect(link.textContent).toBe("2017/815 not included ↑");
+    expect(unit("anx/pnt_4.1.3.3").classList.contains("not-applying")).toBe(true);
+    const note = /** @type {HTMLElement} */ (unit("anx/pnt_4.1.3.3").querySelector(".rule-note"));
+    expect(note.textContent).toBe("2017/815 · does not apply yet");
+    expect(note.querySelector("a")?.getAttribute("href")).toBe(ACT);
+    expect(note.dataset.unit).toBeUndefined();
   });
 
-  test("links only the first unit of a run of units with the same words", () => {
-    const { rules, content } = page(`
-      <span data-unit="anx/pnt_4.1.3" data-heading="false" data-label="2017/815 not included"></span>
-      <span data-unit="anx/pnt_4.2" data-heading="false" data-label="2017/815 not included"></span>`);
+  test("gives one note to a run of units with the same words", () => {
+    const { rules, content } = page(rule("anx/pnt_4.1.3") + rule("anx/pnt_4.2"));
 
     mark(rules, content);
 
-    expect(content.querySelectorAll(".divergent")).toHaveLength(2);
-    expect(content.querySelectorAll(".divergent-link")).toHaveLength(1);
+    expect(content.querySelectorAll(".not-applying")).toHaveLength(2);
+    expect(content.querySelectorAll(".rule-note")).toHaveLength(1);
   });
 
-  test("links a run that starts at a marked heading once", () => {
-    document.body.innerHTML = `<margin-rules hidden>
-      <span data-unit="anx/pnt_4.1.3" data-heading="true" data-label="2017/815 not included"></span>
-      <span data-unit="anx/pnt_4.1.3.1" data-heading="false" data-label="2017/815 not included"></span>
-    </margin-rules><div class="content">
-      <div class="unit" id="anx/pnt_4.1.3"><h2 class="title">4.1.3 Screening of liquids</h2></div>
-      <div class="unit" id="anx/pnt_4.1.3.1">4.1.3.1 LAGs carried by passengers</div>
-    </div>`;
-    const rules = /** @type {HTMLElement} */ (document.querySelector("margin-rules"));
-    const content = /** @type {HTMLElement} */ (document.querySelector(".content"));
+  test("marks only the heading of a unit that holds the place", () => {
+    const { rules, content } = page(rule("anx/pnt_4.1.3", true));
 
     mark(rules, content);
 
-    expect(content.querySelectorAll(".divergent")).toHaveLength(2);
-    expect(content.querySelectorAll(".divergent-link")).toHaveLength(1);
+    expect(unit("anx/pnt_4.1.3").classList.contains("not-applying")).toBe(false);
+    expect(content.querySelector(".title")?.classList.contains("not-applying")).toBe(true);
   });
 
-  test("marks only the heading of a unit that holds a place the text does not have", () => {
-    const { rules, content } = page(
-      `<span data-unit="anx/pnt_4.1.3" data-heading="true" data-label="2017/815 not included"></span>`,
-    );
+  test("does not mark a unit in a unit that has the rule", () => {
+    const { rules, content } = page(rule("anx/pnt_4.1.3") + rule("anx/pnt_4.1.3.3"));
 
     mark(rules, content);
 
-    const unit = /** @type {HTMLElement} */ (document.getElementById("anx/pnt_4.1.3"));
-    expect(unit.classList.contains("divergent")).toBe(false);
-    expect(unit.querySelector(":scope > .title")?.classList.contains("divergent")).toBe(true);
+    expect(content.querySelectorAll(".not-applying")).toHaveLength(1);
   });
 
-  test("does not mark a unit in a marked unit, nor a unit the text does not have", () => {
-    const { rules, content } = page(`
-      <span data-unit="anx/pnt_4.1.3" data-heading="false" data-label="2017/815 not included"></span>
-      <span data-unit="anx/pnt_4.1.3.3" data-heading="false" data-label="2017/815 not included"></span>
-      <span data-unit="anx/pnt_9" data-heading="false" data-label="2017/815 not included"></span>`);
+  test("puts a marker before a unit that the text has", () => {
+    const { rules, content } = page(marker("anx/pnt_4.2", false));
 
     mark(rules, content);
 
-    expect(content.querySelectorAll(".divergent")).toHaveLength(1);
+    const made = /** @type {HTMLElement} */ (unit("anx/pnt_4.2").previousElementSibling);
+    expect(made.classList.contains("marker")).toBe(true);
+    expect(made.textContent).toBe("Not in this text: point 4.1.3.4 · 2017/815");
+    expect(unit("anx/pnt_4.2").classList.contains("not-applying")).toBe(false);
   });
 
-  test("puts the note at the top of a text that does not apply at all, once", () => {
-    const { rules, content } = page(
-      `<p class="margin-note"><b>Does not apply on this day.</b> Applies from 25 May 2018.</p>`,
-    );
+  test("puts a marker at the end of the unit that holds a place that the text does not have", () => {
+    const { rules, content } = page(marker("anx/pnt_4.1.3", true));
 
     mark(rules, content);
-    mark(rules, content);
 
-    expect(content.classList.contains("divergent-whole")).toBe(true);
-    expect(content.querySelectorAll(".margin-note")).toHaveLength(1);
-    expect(content.firstElementChild?.classList.contains("margin-note")).toBe(true);
+    expect(unit("anx/pnt_4.1.3").lastElementChild?.classList.contains("marker")).toBe(true);
   });
 
-  test("waits for the text", () => {
-    document.body.innerHTML = `<margin-rules hidden><span data-unit="anx" data-label="x"></span></margin-rules><div class="content"><p class="status">Loading the text…</p></div>`;
-    const rules = /** @type {HTMLElement} */ (document.querySelector("margin-rules"));
-    const content = /** @type {HTMLElement} */ (document.querySelector(".content"));
+  test("gives the outline a dot on the entry of a mark and on the entries that hold it", () => {
+    const { rules, content, outline } = page(rule("anx/pnt_4.1.3.3") + marker("anx/pnt_4.2", false));
+
+    mark(rules, content, outline);
+
+    // Point 4.1.3.3 has no entry: the dot is on point 4.1.3, which holds it.
+    const liquids = /** @type {HTMLElement} */ (outline.querySelector('a[href="#anx/pnt_4.1.3"]'));
+    expect(liquids.classList.contains("has-rule")).toBe(true);
+    expect(liquids.textContent).toContain("has a change that does not apply on the day");
+    const passengers = /** @type {HTMLElement} */ (outline.querySelector('a[href="#anx/pnt_4.2"]'));
+    expect(passengers.classList.contains("has-marker")).toBe(true);
+    const annex = /** @type {HTMLElement} */ (outline.querySelector('a[href="#anx"]'));
+    expect(annex.classList.contains("has-rule")).toBe(true);
+    expect(annex.classList.contains("has-marker")).toBe(true);
+  });
+
+  test("does nothing for a text that has its marks, or that is not there yet", () => {
+    const { rules, content } = page(rule("anx/pnt_4.2"));
 
     mark(rules, content);
+    mark(rules, content);
 
-    expect(content.querySelector(".divergent")).toBeNull();
-  });
-});
-
-describe("MarginRules", () => {
-  test("marks the text when htmx swaps it in", () => {
-    document.body.innerHTML = `<div id="text"><margin-rules hidden><span data-unit="anx/pnt_4.2" data-heading="false" data-label="2017/815 not included"></span></margin-rules><div class="content"><p class="status">Loading the text…</p></div></div>`;
-    const content = /** @type {HTMLElement} */ (document.querySelector(".content"));
-    expect(content.querySelector(".divergent")).toBeNull();
-
-    content.innerHTML = TEXT;
-    content.dispatchEvent(new Event("htmx:after:swap", { bubbles: true }));
-
-    expect(document.getElementById("anx/pnt_4.2")?.classList.contains("divergent")).toBe(true);
+    expect(content.querySelectorAll(".rule-note")).toHaveLength(1);
+    document.body.innerHTML = `<margin-rules hidden>${rule("anx/pnt_4.2")}</margin-rules><div class="content"><p class="status">Loading</p></div>`;
+    const empty = /** @type {HTMLElement} */ (document.querySelector(".content"));
+    mark(/** @type {HTMLElement} */ (document.querySelector("margin-rules")), empty);
+    expect(empty.querySelector(".not-applying")).toBeNull();
   });
 });

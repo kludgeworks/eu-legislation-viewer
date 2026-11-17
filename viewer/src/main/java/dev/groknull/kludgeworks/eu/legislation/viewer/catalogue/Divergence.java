@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -82,15 +83,9 @@ public record Divergence(
     var found = new LinkedHashMap<String, Unit>();
     for (var place : places) {
       var exact = place.location().in(eIds);
-      if (exact.isPresent()) {
-        exact.get().eIds().forEach(eId -> found.put(eId, new Unit(eId, false)));
-      } else {
-        place
-            .location()
-            .around(eIds)
-            .ifPresent(
-                around ->
-                    around.eIds().forEach(eId -> found.putIfAbsent(eId, new Unit(eId, true))));
+      var units = exact.or(() -> place.location().around(eIds));
+      for (var eId : units.map(Location.Found::eIds).orElseGet(List::of)) {
+        found.merge(eId, new Unit(eId, exact.isEmpty(), List.of(place)), Unit::with);
       }
     }
     return found.values().stream()
@@ -104,9 +99,24 @@ public record Divergence(
    * @param eId the eId of the unit
    * @param holds whether the place is not in the text, and this unit holds it. Only the heading of
    *     the unit is then marked, not all of it.
+   * @param places the places of the divergence that are this unit, or that this unit holds
    */
   @ValueObject
-  public record Unit(String eId, boolean holds) {}
+  public record Unit(String eId, boolean holds, List<Amendment> places) {
+    public Unit {
+      places = List.copyOf(places);
+    }
+
+    /**
+     * Returns this unit with the places of {@code other}, the same unit for another place. A unit
+     * that is a place itself is marked whole, also if it holds another place.
+     */
+    Unit with(Unit other) {
+      var all = new ArrayList<>(places);
+      all.addAll(other.places);
+      return new Unit(eId, holds && other.holds, all);
+    }
+  }
 
   /** Returns the day from which {@code act} applies. */
   public LocalDate appliesFrom() {

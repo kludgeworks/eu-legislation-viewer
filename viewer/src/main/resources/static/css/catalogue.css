@@ -444,77 +444,123 @@ section.selection.compare {
   color: var(--ink);
 }
 
-/* The warning on the Reading card. Each entry is a text that is late or early: what differs, from
- * when, and one link. */
-.divergences {
+/* The status lines on the Reading card: where the text is not the law on the day. One line is for
+ * one act. They are words of the viewer, in ink. Amber is only in the text, on a change that does
+ * not apply on the day. */
+.status-lines {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   margin-top: 6px;
   padding: 8px 10px;
-  border: 1px solid var(--warn-line);
+  border: 1px solid var(--line);
   border-radius: 3px;
-  background: var(--warn-bg);
-  color: var(--warn-ink);
-  font-size: 12.5px;
-  line-height: 1.4;
+  color: var(--ink);
+  font-size: 13px;
+  line-height: 1.45;
 }
 
-.divergences p {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+.status-lines p {
   margin: 0;
 }
 
-.divergences b {
-  font-size: 14px;
+.status-lines a {
+  color: var(--accent);
 }
 
-.divergences a {
-  color: inherit;
-  font-weight: 600;
+.status-lines details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-/* Where the text is not the law on the day (js/margin.js): a dashed amber rule beside each unit
- * that the warning names, and a small link at its side up to the warning. A text that does not
- * apply at all has the rule beside all of it, and a note at its top that stays in sight. */
-.content .divergent,
-.content.divergent-whole > .legal-text {
+.status-lines summary {
+  width: fit-content;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.status-lines details[open] > summary {
+  display: none;
+}
+
+.status-lines details > p {
+  margin-top: 6px;
+}
+
+/* A change that the text has and that does not apply on the day (js/margin.js): a dashed amber
+ * rule beside its unit, and a short note at its side with the act. */
+.content .not-applying {
   position: relative;
   margin-left: -21px;
   padding-left: 18px;
   border-left: 3px dashed var(--warn-stripe);
 }
 
-/* The links need room beside the text. */
-.outlined:has(> margin-rules > span) {
+/* The notes need room beside the text. */
+.outlined:has(> margin-rules > .rule-note) {
   padding-right: 15rem;
 }
 
-.divergent-link {
+.content .rule-note {
   position: absolute;
   top: 0;
   left: calc(100% + 24px);
   width: 12rem;
+  margin: 0;
   color: var(--warn-ink);
   font:
     12.5px/1.4 system-ui,
     sans-serif;
 }
 
-.margin-note {
-  position: sticky;
-  z-index: 1;
-  top: 44px;
-  margin: 0 0 18px;
-  padding: 6px 10px;
-  border: 1px dashed var(--warn-stripe);
-  background: var(--warn-bg);
-  color: var(--warn-ink);
+.content .rule-note a {
+  color: inherit;
+  font-weight: 600;
+}
+
+/* A change that the text does not show: one marker at its place. It is grey with a broken
+ * outline, not amber, because it has a different meaning. */
+.content .marker {
+  width: fit-content;
+  max-width: 42.5rem;
+  margin: 10px 0;
+  padding: 4px 10px;
+  border: 1px dashed var(--muted);
+  border-radius: 3px;
+  color: var(--ink);
   font:
     13px/1.45 system-ui,
     sans-serif;
+}
+
+.content .marker-kind {
+  font-weight: 600;
+}
+
+.content .marker a {
+  color: var(--accent);
+}
+
+/* The dots of the outline: amber for a part with a change that does not apply on the day, hollow
+ * for a part with a change that the text does not show. */
+nav.outline a.has-rule::after,
+nav.outline a.has-marker::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin: 0 4px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+nav.outline a.has-rule::after {
+  background: var(--warn-stripe);
+}
+
+nav.outline a.has-marker::before {
+  border: 1px solid var(--ink);
 }
 
 form.on {

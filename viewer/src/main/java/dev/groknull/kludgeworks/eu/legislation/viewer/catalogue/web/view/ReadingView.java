@@ -22,7 +22,7 @@ import org.jspecify.annotations.Nullable;
  *   <li>which version that is and how long it applied: "From the version of 31 December 2021 ·
  *       applied until 28 February 2022", or "A new version starts on this day · …" on its first day
  *   <li>the acts that made the version
- *   <li>a warning where the text is not the law on the day: the text is late or early
+ *   <li>the status lines, where the text is not the law on the day: one line for each act
  *   <li>the version's consolidated CELEX, small, with a copy button
  *   <li>a date picker that asks for the law on another day
  *   <li>the link to the comparison with the version before
@@ -39,8 +39,8 @@ import org.jspecify.annotations.Nullable;
  *     before the first version.
  * @param published how the acts that made the version were published, one line for each act. The
  *     hover of {@code made} lists them the same way. Null if there are none.
- * @param divergences why the text of the version is not the law on the day. An act already applied
- *     that the version does not include yet, or the act was in force but did not apply yet.
+ * @param status the status lines: where the text of the version is not the law on the day, one line
+ *     for each act
  * @param celex the consolidated CELEX of the version. Null before the first version.
  * @param eurLex the address of the version on EUR-Lex, in the language of the page. Null before the
  *     first version.
@@ -60,7 +60,7 @@ public record ReadingView(
     @Nullable String version,
     @Nullable String made,
     @Nullable String published,
-    List<DivergenceView> divergences,
+    StatusView status,
     @Nullable String celex,
     @Nullable String eurLex,
     String action,
@@ -68,10 +68,6 @@ public record ReadingView(
     String starts,
     @Nullable String compare,
     String comparing) {
-
-  public ReadingView {
-    divergences = List.copyOf(divergences);
-  }
 
   /**
    * Returns the Reading card of the law on {@code asked}, which {@code version} of {@code act}
@@ -102,9 +98,7 @@ public record ReadingView(
         Wording.which(act, version, asked, today, language),
         Wording.made(act, version, named, language),
         makers.isEmpty() ? null : act.citations(makers, language),
-        act.divergences(asked, language, marks).stream()
-            .map(each -> DivergenceView.of(act, each, version, asked, language, today))
-            .toList(),
+        StatusView.of(act, asked, language, today, marks),
         version.celex(),
         version.eurLex(language).toString(),
         Links.act(eli, language),
@@ -129,7 +123,7 @@ public record ReadingView(
         null,
         null,
         null,
-        List.of(),
+        StatusView.none(asked),
         null,
         null,
         Links.act(eli, language),

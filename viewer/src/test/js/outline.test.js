@@ -201,6 +201,19 @@ describe("follow in Read", () => {
     expect(document.querySelector("[aria-current]")).toBeNull();
   });
 
+  test("names the section in view without the words that only a screen reader gets", () => {
+    document.body.innerHTML = READ;
+    units(["art_1", "art_1__para_2", "art_2"]);
+    const hidden = document.createElement("span");
+    hidden.className = "visually-hidden";
+    hidden.textContent = " (has a change that this text does not show)";
+    one("a[href='#art_2']").append(hidden);
+
+    follow(document);
+
+    expect(one(".where").textContent).toBe("Article 2 Definitions");
+  });
+
   test("names the section in view and opens its branch", () => {
     document.body.innerHTML = READ;
     units(["art_1", "art_1__para_2", "art_2"]);

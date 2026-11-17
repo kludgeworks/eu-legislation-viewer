@@ -38,7 +38,7 @@ provision applies, and until when.
 | See the amending acts of an act, and their state on a day | History |
 | See what one amending act changed, and from when each change applies | The page of an amending act |
 | Read the law as it was on a day | Read |
-| See if the text of that day is the law on that day | Read: the warning and the margin marks |
+| See if the text of that day is the law on that day | Read: the status lines and the marks in the text |
 | Compare the law on two days | Compare |
 | See what one amending act changed | Compare, limited to one act |
 | Find which act made a change, and from when it applies | Compare: the side note |
@@ -69,8 +69,10 @@ are not changed yet, so their rows in the table are as the pages are now.
 | From, To | The two ends of a comparison. From is the earlier day. |
 | acts between them | The acts that the versions after From, up to To, include. |
 | side note | The note beside a difference. It names the act and the date. |
-| warning | The notice on the Read page where the text is not the law on the day. |
-| late, early | Late: an act applies, and the text does not include it. Early: the text includes an act that does not apply yet. |
+| status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
+| marker | The sign in the text of Read where the text does not show a change: "Not in this text". |
+| warning | The notice on a card of Compare where the text is not the law on the day. Read does not use it. |
+| late, early | Words of Compare only. Late: an act applies, and the text does not include it. Early: the text includes an act that does not apply yet. |
 | fold | A group of provisions that the page hides until the reader opens it. |
 | outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
@@ -118,8 +120,8 @@ and a dark value. The tokens are in
 | Blue | `--ins-…` | Inserted words, and the side note of an inserted provision. |
 | Red | `--del-…` | Deleted words, and the side note of a deleted provision. |
 | Purple | `--corr-…` | A correction by a corrigendum. |
-| Amber | `--warn-…` | The reader must take care: the text is not the law on the day, or an act filter is on. On History and on the page of an amending act: a change does not apply on the day. |
-| Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state. |
+| Amber | `--warn-…` | On Read, on History and on the page of an amending act: a change does not apply on the day. On Compare: the text is not the law on the day, or an act filter is on. |
+| Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the marker). In the outline, a hollow dot is the sign of a marker. |
 
 Colour is not the only signal. Inserted and deleted words are `ins` and `del` elements. A warning
 has words.

@@ -286,6 +286,21 @@ const counting = (nav, number) => {
 };
 
 /**
+ * Returns the name of an entry of the outline, as a reader sees it. It leaves out the words that
+ * only a screen reader gets, such as the words of a dot (js/margin.js).
+ *
+ * @param {Element} link
+ * @returns {string}
+ */
+const named = (link) => {
+  const seen = /** @type {Element} */ (link.cloneNode(true));
+  for (const hidden of seen.querySelectorAll(".visually-hidden")) {
+    hidden.remove();
+  }
+  return seen.textContent?.trim() ?? "";
+};
+
+/**
  * Updates the outline in `root` to where the reader is: it marks the part in view, and says in its
  * head where the reader is. It does nothing if `root` has no outline.
  *
@@ -308,7 +323,7 @@ export const follow = (root, ordered) => {
   const line = nav.querySelector(".outline-follow");
   const where = line?.querySelector(".where");
   if (line instanceof HTMLElement && where) {
-    where.textContent = link?.textContent?.trim() ?? "";
+    where.textContent = link ? named(link) : "";
     line.hidden = !link;
   }
 };

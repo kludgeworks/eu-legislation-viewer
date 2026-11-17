@@ -216,8 +216,14 @@ public record Location(String code) {
   }
 
   /**
-   * Returns the unit that holds a point numbered {@code number} that is not below {@code at}. A
-   * point numbered 4.1.3.4 is in point 4.1.3, if there is one, or else in {@code at}.
+   * Returns the unit that holds a unit numbered {@code number} that is not below {@code at}.
+   *
+   * <ul>
+   *   <li>A point numbered 4.1.3.4 is in point 4.1.3, if there is one.
+   *   <li>A unit whose number has a letter after it is at the unit with the number alone. An act
+   *       inserts Article 18a after Article 18.
+   *   <li>If not, it is in {@code at}.
+   * </ul>
    */
   private static Optional<Found> holding(
       Set<String> units, String at, @Nullable String outer, List<String> names, String number) {
@@ -225,7 +231,23 @@ public record Location(String code) {
     for (var upper = upper(number); upper != null && found.isEmpty(); upper = upper(upper)) {
       found = below(units, at, outer, names, upper);
     }
+    var alone = withoutLetters(number);
+    if (found.isEmpty() && !alone.equals(number)) {
+      found = below(units, at, outer, names, alone);
+    }
     return held(found.size() == 1 ? found.getFirst() : at);
+  }
+
+  /**
+   * Returns {@code number} without the letters after it. For example, 18 for 18a. Returns {@code
+   * number} as it is if it does not start with a digit, or if it has no letter after it.
+   */
+  private static String withoutLetters(String number) {
+    var end = number.length();
+    while (end > 0 && Character.isLetter(number.charAt(end - 1))) {
+      end--;
+    }
+    return end > 0 && isDigits(number.substring(0, end)) ? number.substring(0, end) : number;
   }
 
   /** Returns {@code unit} as the unit that holds a location, or empty if it is no unit. */

@@ -1,23 +1,28 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 /**
- * @file The marks in the margin of the text on the Read page, where the text is not the law on
- * the day asked, catalogue/text/ready.jte.
+ * @file The marks in the text on the Read page, where the text is not the law on the day asked,
+ * catalogue/text/ready.jte.
  *
  * The content module renders the text without the act, and htmx loads it into `.content`. So the
- * page lists the marks in `<margin-rules>`, next to the text. Each `span` names a unit by its eId
- * (`data-unit`), whether only its heading is marked (`data-heading`), and the words of its link
- * (`data-label`). A `.margin-note` is the note for a text that does not apply at all on the day.
+ * page lists the marks in `<margin-rules>`, next to the text. Each mark names a unit by its eId
+ * (`data-unit`).
  *
- * When the text arrives, each unit gets a dashed amber rule (`.divergent`) and a link up to the
- * warning in the Reading card, `#divergences`. A unit in a unit that is marked already is not
- * marked again. A unit right after a marked unit with the same words has no link of its own: one
- * link serves the run. The note goes to the top of the text, and the whole text gets the rule.
+ * - A `.rule-note` is for a change that does not apply on the day. Its unit gets an amber rule
+ *   (`.not-applying`) and the note beside it: the act, as a link to its page, and the state. With
+ *   `data-heading`, only the heading of the unit gets the rule. A unit in a unit that has the rule
+ *   already is not marked again. A unit right after a marked unit with the same words has no note
+ *   of its own: one note serves the run.
+ * - A `.marker` is for a change that the text does not show. It goes before its unit, or at the
+ *   end of the unit with `data-end`.
+ *
+ * The outline beside the text gets a dot on each entry that has a mark, and on the entries that
+ * hold it: `.has-rule` or `.has-marker`, with words for a screen reader.
  */
 
 /**
  * Returns whether `unit` comes right after a unit that is marked with `label`, or whose heading
- * is. Then the mark of that unit has the link.
+ * is. Then the note of that unit serves this one.
  *
  * @param {HTMLElement} unit
  * @param {string} label
@@ -30,48 +35,104 @@ const follows = (unit, label) => {
   }
   const heading = previous.querySelector(":scope > .title");
   return (
-    previous.dataset.divergent === label ||
-    (heading instanceof HTMLElement && heading.dataset.divergent === label)
+    previous.dataset.notApplying === label ||
+    (heading instanceof HTMLElement && heading.dataset.notApplying === label)
   );
 };
 
+/** The words that a screen reader gets for each dot of the outline. */
+const DOTS = {
+  "has-rule": " (has a change that does not apply on the day)",
+  "has-marker": " (has a change that this text does not show)",
+};
+
 /**
- * Puts the marks that `rules` lists on the text in `content`. It does nothing if the text is not
- * there yet, or has its marks already.
+ * Gives the outline a dot for a mark on `unit`: on the entry of the unit, or of the nearest unit
+ * that holds it and has an entry, and on each entry that holds that entry.
+ *
+ * @param {Element | null} outline
+ * @param {HTMLElement} unit
+ * @param {"has-rule" | "has-marker"} dot
+ */
+const dotOutline = (outline, unit, dot) => {
+  if (!outline) {
+    return;
+  }
+  /** @type {Element | null} */
+  let held = unit;
+  /** @type {Element | null} */
+  let entry = null;
+  while (held && !entry) {
+    entry = held.id ? outline.querySelector(`a[href="#${CSS.escape(held.id)}"]`) : null;
+    held = held.parentElement ? held.parentElement.closest("[id]") : null;
+  }
+  for (let item = entry?.closest("li"); item; item = item.parentElement?.closest("li")) {
+    const link = item.querySelector(":scope > a, :scope > details > summary > a");
+    if (link && !link.classList.contains(dot)) {
+      link.classList.add(dot);
+      const words = link.ownerDocument.createElement("span");
+      words.className = "visually-hidden";
+      words.textContent = DOTS[dot];
+      link.append(words);
+    }
+  }
+};
+
+/**
+ * Returns a copy of the mark `each` for the text, without the data that places it.
+ *
+ * @param {HTMLElement} each
+ * @returns {HTMLElement}
+ */
+const copy = (each) => {
+  const made = /** @type {HTMLElement} */ (each.cloneNode(true));
+  delete made.dataset.unit;
+  delete made.dataset.heading;
+  delete made.dataset.end;
+  return made;
+};
+
+/**
+ * Puts the marks that `rules` lists on the text in `content`, and the dots on `outline`. It does
+ * nothing if the text is not there yet, or has its marks already.
  *
  * @param {HTMLElement} rules
  * @param {HTMLElement} content
+ * @param {Element | null} [outline]
  */
-export const mark = (rules, content) => {
-  if (!content.querySelector("[id]") || content.querySelector(".divergent, .margin-note")) {
+export const mark = (rules, content, outline = null) => {
+  if (!content.querySelector("[id]") || content.querySelector(".not-applying, .marker")) {
     return;
   }
-  const note = rules.querySelector(".margin-note");
-  if (note) {
-    content.prepend(note.cloneNode(true));
-    content.classList.add("divergent-whole");
-  }
-  for (const each of rules.querySelectorAll("span[data-unit]")) {
+  for (const each of rules.querySelectorAll("[data-unit]")) {
     if (!(each instanceof HTMLElement) || !each.dataset.unit) {
       continue;
     }
     const unit = content.ownerDocument.getElementById(each.dataset.unit);
-    if (!unit || !content.contains(unit) || unit.closest(".divergent")) {
+    if (!unit || !content.contains(unit)) {
+      continue;
+    }
+    if (each.classList.contains("marker")) {
+      if (each.dataset.end === "true") {
+        unit.append(copy(each));
+      } else {
+        unit.before(copy(each));
+      }
+      dotOutline(outline, unit, "has-marker");
+      continue;
+    }
+    dotOutline(outline, unit, "has-rule");
+    if (unit.closest(".not-applying")) {
       continue;
     }
     const heading = each.dataset.heading === "true" ? unit.querySelector(":scope > .title") : null;
     const target = heading instanceof HTMLElement ? heading : unit;
-    target.classList.add("divergent");
-    const label = each.dataset.label ?? "";
-    target.dataset.divergent = label;
-    if (follows(target, label)) {
-      continue;
+    target.classList.add("not-applying");
+    const label = each.textContent?.trim() ?? "";
+    target.dataset.notApplying = label;
+    if (!follows(target, label)) {
+      target.append(copy(each));
     }
-    const link = content.ownerDocument.createElement("a");
-    link.className = "divergent-link";
-    link.href = "#divergences";
-    link.textContent = `${label} ↑`;
-    target.append(link);
   }
 };
 
@@ -98,7 +159,7 @@ export class MarginRules extends HTMLElement {
   apply() {
     const content = this.#content();
     if (content) {
-      mark(this, content);
+      mark(this, content, this.parentElement?.querySelector(":scope nav.outline") ?? null);
     }
   }
 
