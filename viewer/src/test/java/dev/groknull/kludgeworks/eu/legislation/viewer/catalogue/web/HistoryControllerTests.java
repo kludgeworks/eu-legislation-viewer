@@ -179,6 +179,8 @@ class HistoryControllerTests {
             compare + "&act=32022R1190&eId=art_3%2Fpnt_8",
             compare + "&act=32022R1190&eId=art_79%2Fpar_7",
             compare + "&act=32022R1190&eId=art_20%2Fpar_1");
+    // 2022/1190 is the only act of its version: no change can be of another act.
+    assertThat(page.select("[hx-get*=/compare/either]")).isEmpty();
     // The page has few changes, so each wording is open and loads with the page.
     assertThat(page.select("details.wording[open]")).hasSize(3);
     assertThat(page.select("details.wording").eachAttr("hx-trigger")).containsOnly("load");

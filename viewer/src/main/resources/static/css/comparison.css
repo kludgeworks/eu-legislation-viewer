@@ -337,9 +337,12 @@ details.ledger-fold[open] {
 }
 
 /* Compare hides the amendment marks (▼) and the struck text that a consolidation keeps. The
- * sidenotes and the change marks say what happened. Read shows them. */
+ * sidenotes and the change marks say what happened. Read shows them. The wording of a change on
+ * the page of an amending act hides them too: the page says the act. */
 .changes .provenance,
-.changes .deleted {
+.changes .deleted,
+.wording-text .provenance,
+.wording-text .deleted {
   display: none;
 }
 

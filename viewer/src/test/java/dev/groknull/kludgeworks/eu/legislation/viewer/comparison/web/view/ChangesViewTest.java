@@ -218,4 +218,20 @@ class ChangesViewTest {
   private static Element text(String celex) {
     return Decoder.element(Encoder.encode(LegalTexts.sample("06.02.1/" + celex + ".xml")));
   }
+
+  @Test
+  void headsTheChangesThatOneOfTwoOrMoreActsMade() {
+    assertThat(ChangesView.either(List.of("2019/413"))).isEqualTo("By this act or by 2019/413");
+    assertThat(ChangesView.either(List.of("2019/413", "2021/255")))
+        .isEqualTo("By this act, by 2019/413 or by 2021/255");
+  }
+
+  @Test
+  void namesAUnitWithNoNumByTheNearestNumberedUnitThatItIsIn() {
+    assertThat(ChangesView.within("anx/level_ATTACHMENT-3-B/level_1/level_1"))
+        .isEqualTo("In Attachment 3-B");
+    assertThat(ChangesView.within("art_5/unp_1")).isEqualTo("In Article 5");
+    assertThat(ChangesView.within("anx/level_2")).isEqualTo("In the annex");
+    assertThat(ChangesView.within("pbl")).isEqualTo("A provision with no number");
+  }
 }

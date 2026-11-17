@@ -509,6 +509,19 @@ public record Act(
   }
 
   /**
+   * Returns the other acts that the first version with {@code amending} integrates, in {@code
+   * language}, without corrigenda. The text marks most changes with the act that made them. For a
+   * change with no mark, the data does not say which of these acts or {@code amending} made it.
+   * Returns empty if no version integrates {@code amending}, or if it is the only act of its
+   * version.
+   */
+  public List<ActIdentifier> integratedWith(ActIdentifier amending, Language language) {
+    return integrating(amending, language).map(Version::integrates).orElseGet(List::of).stream()
+        .filter(each -> !each.corrigendum() && !each.equals(amending))
+        .toList();
+  }
+
+  /**
    * Returns the units of {@code change} in the comparison of two texts, by their eIds. {@code
    * later} are the units of the first text with the changes of the act, and {@code earlier} are the
    * units of the text before it, each in document order.

@@ -45,6 +45,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -97,6 +98,14 @@ class ChangesController {
   private final Comparisons comparisons;
   private final StepCounts stepCounts;
   private final Content content;
+
+  /**
+   * The list of the changes that one of two acts made shows the wording of each change when it
+   * opens, up to this many changes. The page of an amending act has the same limit for its own
+   * changes.
+   */
+  private static final int OPEN = 25;
+
   private final Templates templates;
   private final LegalRenderer html;
   private final Release release;
@@ -659,6 +668,70 @@ class ChangesController {
         ends.language.code(),
         only == null ? "" : " by " + only,
         eIds.size(),
+        shown.size(),
+        Duration.ofNanos(System.nanoTime() - started).toMillis());
+    return rendered;
+  }
+
+  /**
+   * Returns the differences that the act {@code act} or another act of its version made, where the
+   * data does not say which. These are the differences with no mark of an act, in a version that
+   * integrates two acts or more. The page of an amending act shows them in a separate list, under
+   * "By this act or by …". If there are none, the part is empty.
+   *
+   * <p>Returns 404 if the address is not the canonical address of a comparison that is limited to
+   * one act, or if the texts are not built yet.
+   */
+  @GetMapping(path = ComparePage.EITHER_PATH, produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  String either(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable("language") String code,
+      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
+      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
+      @RequestParam(ComparePage.ACT) String act,
+      HttpServletRequest request) {
+    var ends = ends(new Eli(type, year, number), code, from, to, act);
+    var only = Objects.requireNonNull(ends.only);
+    var page = ComparePage.ofPart(request.getRequestURI(), from, to, only.celex(), null);
+    var started = System.nanoTime();
+    var step = ends.step(only).orElseThrow(Requests::notFound);
+    var attributed =
+        attributed(
+                ends,
+                texts.preparation(ends.act, ends.language),
+                ends.earlier(step),
+                step,
+                only,
+                new HashMap<>())
+            .orElseThrow(Requests::notFound);
+    var others = new LinkedHashSet<ActIdentifier>();
+    var shown = new ArrayList<ChangesView.Shown>();
+    for (var difference : attributed.comparison().differences()) {
+      var candidates = attributed.sidenote(difference).candidates();
+      if (candidates.contains(only)) {
+        candidates.stream().filter(each -> !each.equals(only)).forEach(others::add);
+        shown.add(new ChangesView.Shown(0, difference, ""));
+      }
+    }
+    var rendered =
+        templates
+            .comparisonEither(
+                ChangesView.either(others.stream().map(ends.act::cited).toList()),
+                shown,
+                shown.size() <= OPEN,
+                html,
+                page)
+            .render();
+    LOG.info(
+        "Differences of {} from {} to {} in {} by {} or another act: {}, in {} ms",
+        ends.act.id(),
+        ends.earlier(step).date(),
+        step.date(),
+        ends.language.code(),
+        only,
         shown.size(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return rendered;

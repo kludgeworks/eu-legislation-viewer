@@ -345,6 +345,59 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   }
 
   /**
+   * A kind of unit that an eId numbers.
+   *
+   * @param start the start of its step in an eId, before the number. For example, {@code art_}.
+   * @param name the name of the unit, for example "Article"
+   */
+  private record Numbered(String start, String name) {}
+
+  /** The kinds of unit that an eId numbers. */
+  private static final List<Numbered> NUMBERED =
+      List.of(
+          new Numbered("art_", "Article"),
+          new Numbered("anx_", "Annex"),
+          new Numbered("app_", "Appendix"),
+          new Numbered("level_ATTACHMENT-", "Attachment"),
+          new Numbered("pnt_", "point"),
+          new Numbered("par_", "paragraph"));
+
+  /**
+   * Returns where the unit {@code eId} is, by the nearest unit that it is in that has a number in
+   * its eId. For example, "In Attachment 3-B" for {@code anx/level_ATTACHMENT-3-B/level_1}. Returns
+   * "In the annex" for a unit of the one annex of an act, and "A provision with no number" if no
+   * unit that it is in has a number.
+   */
+  static String within(String eId) {
+    var steps = List.of(eId.split("/"));
+    for (var step : steps.reversed().subList(1, steps.size())) {
+      for (var each : NUMBERED) {
+        if (step.startsWith(each.start())) {
+          return "In " + each.name() + " " + step.substring(each.start().length());
+        }
+      }
+    }
+    return steps.getFirst().equals("anx") && steps.size() > 1
+        ? "In the annex"
+        : "A provision with no number";
+  }
+
+  /**
+   * Returns the heading of the differences that the act of a page or one of {@code others} made,
+   * where the data does not say which. {@code others} are the other acts, as cited. For example,
+   * "By this act or by 2019/413", or "By this act, by 2019/413 or by 2021/255".
+   */
+  public static String either(List<String> others) {
+    var by = others.stream().map(each -> "by " + each).toList();
+    return by.isEmpty()
+        ? "By this act"
+        : "By this act"
+            + (by.size() > 1 ? ", " + String.join(", ", by.subList(0, by.size() - 1)) : "")
+            + " or "
+            + by.getLast();
+  }
+
+  /**
    * Returns the num of a unit. The num of a point follows the numbered point that it is in. For
    * example, "11.2.7(b)".
    */
@@ -480,6 +533,25 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
      */
     public String part(ComparePage page) {
       return page.difference(difference.eId());
+    }
+
+    /**
+     * Returns its unit as a list names it, where no text beside it tells the unit. This is its own
+     * name ({@link #named}). A unit with no num is named by the nearest unit that it is in that has
+     * a number in its eId. For example, "In Attachment 3-B" or "In Article 5".
+     */
+    public String place() {
+      var named = named();
+      return named != null ? named : ChangesView.within(difference.eId());
+    }
+
+    /** Returns what happened to its unit, in one word: "Inserted", "Deleted" or "Changed". */
+    public String made() {
+      return switch (difference.kind()) {
+        case INSERTED -> "Inserted";
+        case DELETED -> "Deleted";
+        case CHANGED -> "Changed";
+      };
     }
 
     /**

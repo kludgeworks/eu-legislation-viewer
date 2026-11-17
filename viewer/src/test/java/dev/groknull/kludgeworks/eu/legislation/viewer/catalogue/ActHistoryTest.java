@@ -139,6 +139,33 @@ class ActHistoryTest {
   }
 
   @Test
+  void theOtherActsOfTheVersionOfAnActAreWithoutCorrigendaAndWithoutTheActItself() {
+    var shared =
+        new Act(
+            BASE,
+            null,
+            new ResourceType("REG"),
+            Map.of(),
+            null,
+            true,
+            null,
+            new Timeline(
+                List.of(
+                    Version.original(
+                        LocalDate.of(2018, 12, 27), BASE, EnumSet.allOf(Language.class), Map.of()),
+                    version("2021-03-15", SIMPLE, EVENT, CORRIGENDUM))),
+            List.of(),
+            Map.of(),
+            List.of(),
+            Map.of());
+    assertThat(shared.integratedWith(SIMPLE, Language.ENG)).containsExactly(EVENT);
+    assertThat(shared.integratedWith(EVENT, Language.ENG)).containsExactly(SIMPLE);
+    // 2022/1190 is the only act of its version. No version integrates 2021/1133.
+    assertThat(ACT.integratedWith(STAGED, Language.ENG)).isEmpty();
+    assertThat(ACT.integratedWith(EVENT, Language.ENG)).isEmpty();
+  }
+
+  @Test
   void theUnitsOfAChangeAreInTheTextWithTheActOrInTheTextBeforeItForADeletedPlace() {
     var change = change(STAGED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");

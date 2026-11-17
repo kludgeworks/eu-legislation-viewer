@@ -48,6 +48,9 @@ import org.jspecify.annotations.Nullable;
  *     few changes. If not, the reader opens the wording of a change.
  * @param wording the address of the wording of its changes in a comparison. Null if no version
  *     includes the act.
+ * @param either the address of the changes that the amending act or another act of its version
+ *     made, where the data does not say which. Null if the texts are not built, or if the act is
+ *     the only act of its version.
  * @param corrigenda the corrigenda of the amending act that correct the text in the language
  */
 public record AmendingView(
@@ -69,6 +72,7 @@ public record AmendingView(
     boolean ordered,
     boolean open,
     @Nullable String wording,
+    @Nullable String either,
     List<HistoryView.Corrigendum> corrigenda) {
 
   /** The page shows the wording of each change when it opens, up to this many changes. */
@@ -150,6 +154,9 @@ public record AmendingView(
         text != null,
         shown.size() <= OPEN,
         integrated ? Links.changesBy(eli, amending, language) : null,
+        compare == null || act.integratedWith(amending, language).isEmpty()
+            ? null
+            : compare.either(),
         act.corrigendaOf(amending, language).stream()
             .map(each -> HistoryView.Corrigendum.of(act, each, language))
             .toList());
@@ -260,9 +267,7 @@ public record AmendingView(
                                   + ".")
                       .orElse("");
           case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
-          case NOT_KNOWN ->
-              "The data does not give the stage of this provision. "
-                  + States.dates(amending, act.applying(amending, Set.of()).orElse(null));
+          case NOT_KNOWN -> States.unknown(amending, act.applying(amending, Set.of()).orElse(null));
         };
     return new Change(
         name.isEmpty() ? change.location().code() : name,

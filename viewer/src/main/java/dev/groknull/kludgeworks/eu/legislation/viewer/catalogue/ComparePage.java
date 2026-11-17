@@ -60,6 +60,15 @@ public record ComparePage(
   /** The path of the part with the differences at one place. */
   public static final String PLACE_PATH = PATH + "/" + PLACE;
 
+  /**
+   * The segment of the part with the differences that one of two or more acts made, where the data
+   * does not say which. The page of an amending act shows them in a separate list.
+   */
+  public static final String EITHER = "either";
+
+  /** The path of the part with the differences that one of two or more acts made. */
+  public static final String EITHER_PATH = PATH + "/" + EITHER;
+
   /** The path of the part with the changes. */
   public static final String CHANGES_PATH = PATH + "/" + CHANGES;
 
@@ -149,6 +158,15 @@ public record ComparePage(
    */
   public String difference(String eId) {
     return path + "/" + DIFFERENCE + query(from, to) + act(act) + "&" + EID + "=" + encode(eId);
+  }
+
+  /**
+   * Returns the address of the differences that the page's act or another act of its version made,
+   * where the data does not say which. For example, {@code
+   * …/compare/either?from=…&to=…&act=32019R0413}.
+   */
+  public String either() {
+    return path + "/" + EITHER + query(from, to) + act(act);
   }
 
   /**

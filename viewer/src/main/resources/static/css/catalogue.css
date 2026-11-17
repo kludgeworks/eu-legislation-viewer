@@ -1690,7 +1690,9 @@ ul.changes-list.worded li {
 }
 
 /* The wording of one change, in a fold under the name of its provision. */
+/* The summary is as wide as its words, so the place to press is the words and not the row. */
 details.wording > summary {
+  width: fit-content;
   cursor: pointer;
   list-style: none;
 }

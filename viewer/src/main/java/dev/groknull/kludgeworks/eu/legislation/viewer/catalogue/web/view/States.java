@@ -137,6 +137,31 @@ final class States {
   }
 
   /**
+   * Returns why the page does not say if a change of {@code act} applies on the day. {@code
+   * applying} is when the act applies, or null if Cellar has no dates of it. For example:
+   *
+   * <ul>
+   *   <li>"Applies from a day that Article 3 of 2019/413 sets. The data does not give that day."
+   *   <li>"The data does not give the stage. In stages: 1 August 2022, 15 October 2026 · Article 2
+   *       of 2022/1190"
+   *   <li>"The data does not give the day from which this applies."
+   * </ul>
+   */
+  static String unknown(ActIdentifier act, @Nullable Applying applying) {
+    if (applying == null) {
+      return "The data has no dates for this act.";
+    }
+    var clause = Wording.clause(applying.dates(), act);
+    return switch (applying) {
+      case Applying.InStages _ -> "The data does not give the stage. " + dates(act, applying);
+      case Applying.SetBy _ when !clause.isEmpty() ->
+          "Applies from a day that " + clause + " sets. The data does not give that day.";
+      case Applying.SetBy _, Applying.From _, Applying.InForce _ ->
+          "The data does not give the day from which this applies.";
+    };
+  }
+
+  /**
    * Returns the clause of {@code act} that sets its dates on {@code day}, with a separator before
    * it. For example, " · Article 99 of 2016/679". Returns an empty text if Cellar names none.
    */
