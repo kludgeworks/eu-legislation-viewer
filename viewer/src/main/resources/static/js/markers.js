@@ -5,11 +5,14 @@
  *
  * The hover text of each `<amendment-mark>` says what happened, which act did it and when that act
  * applies: "Replaced by 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449". A click
- * on a mark, or Enter, opens the step that made the change in Compare, at the unit of the mark.
+ * on a mark, or Enter, opens the history of the provision of the mark, under the provision: the
+ * acts that changed it. A second click closes it.
  *
  * The text is rendered without the act, so the page lists what it knows of each amending act in
- * `.marks`: a `span` with `data-act`, `data-applies` and `data-compare`. A mark whose act is not
- * listed opens the act's change from the text's `data-compare`.
+ * `.marks`: a `span` with `data-act` and `data-applies`. `<provision-links>` has the address of
+ * the histories (`data-href`), and lists the provisions that have a history (`data-unit`). A
+ * listed provision that has no mark of its own gets a hollow sign, ▽, in the place of the mark. It
+ * opens the history as a mark does.
  */
 
 /**
@@ -63,36 +66,116 @@ export const said = (mark) => {
 };
 
 /**
- * Returns the address of the comparison that shows the change of the mark's act: the step that
- * made it, at the unit of the mark. A mark whose act the page does not list opens the act's change
- * from the text's comparisons. It returns null if the mark has no act or is not in a text that has
- * a comparison.
+ * Returns the unit of the text that `mark` is on: the nearest element with an id that holds it.
  *
- * @param {HTMLElement} mark
+ * @param {Element} mark
+ * @returns {HTMLElement | null}
+ */
+export const unitOf = (mark) => {
+  const unit = mark.parentElement?.closest("[id]");
+  return unit instanceof HTMLElement ? unit : null;
+};
+
+/**
+ * Returns the address of the history of the provision that is `unit`, or null if the page does not
+ * give the address of the histories.
+ *
+ * @param {HTMLElement} unit
  * @returns {string | null}
  */
-export const change = (mark) => {
-  const text = mark.closest("[data-compare]");
-  if (!(text instanceof HTMLElement) || !mark.dataset.act) {
+export const history = (unit) => {
+  const links = unit.ownerDocument.querySelector("provision-links");
+  if (!(links instanceof HTMLElement) || !links.dataset.href) {
     return null;
   }
-  const step = listed(mark)?.dataset.compare;
-  if (!step) {
-    return `${text.dataset.compare}?act=${encodeURIComponent(mark.dataset.act)}`;
+  return `${links.dataset.href}?unit=${encodeURIComponent(unit.id)}`;
+};
+
+/**
+ * Returns the history of the provision that is `unit`, if it is open. The history of a unit with a
+ * heading is after the heading. The history of any other unit is after the unit, below its words.
+ * Each history has the eId of its unit in `data-unit`, because the history of a unit without a
+ * heading is in the unit that holds it.
+ *
+ * @param {HTMLElement} unit
+ * @returns {Element | null}
+ */
+const opened = (unit) =>
+  [unit.querySelector(":scope > .title + .provision-history"), unit.nextElementSibling].find(
+    (each) => each instanceof HTMLElement && each.dataset.unit === unit.id,
+  ) ?? null;
+
+/**
+ * Puts `box`, the history of the provision that is `unit`, on the page: after the heading of the
+ * unit, or after a unit that has no heading. Then the words of the unit stay together, and the
+ * history is below them.
+ *
+ * @param {HTMLElement} unit
+ * @param {Element} box
+ */
+const place = (unit, box) => {
+  const heading = unit.querySelector(":scope > .title");
+  if (heading) {
+    heading.after(box);
+  } else {
+    unit.after(box);
   }
-  const unit = mark.parentElement?.closest("[id]");
-  return unit && text.contains(unit) ? `${step}#${encodeURIComponent(unit.id)}` : step;
+};
+
+/**
+ * Opens the history of the provision that is `unit` below it, or closes it if it is open. A
+ * history that is below the window comes into view. `from`
+ * is the mark or the link that the reader used. It says if the history is open (`aria-expanded`).
+ *
+ * @param {HTMLElement} unit
+ * @param {HTMLElement} from
+ * @returns {Promise<void>}
+ */
+export const toggle = async (unit, from) => {
+  const open = opened(unit);
+  if (open) {
+    open.remove();
+    from.setAttribute("aria-expanded", "false");
+    return;
+  }
+  const href = history(unit);
+  if (!href) {
+    return;
+  }
+  const box = unit.ownerDocument.createElement("div");
+  box.className = "provision-history";
+  box.dataset.unit = unit.id;
+  box.setAttribute("role", "status");
+  box.textContent = "Loading the history…";
+  place(unit, box);
+  from.setAttribute("aria-expanded", "true");
+  try {
+    const response = await fetch(href, { headers: { Accept: "text/html" } });
+    if (!response.ok) {
+      throw new Error(`${response.status}`);
+    }
+    const made = new DOMParser().parseFromString(await response.text(), "text/html");
+    const loaded = made.querySelector(".provision-history");
+    if (!(loaded instanceof HTMLElement)) {
+      throw new Error("no history");
+    }
+    loaded.dataset.unit = unit.id;
+    box.replaceWith(loaded);
+    loaded.scrollIntoView?.({ block: "nearest", behavior: "smooth" });
+  } catch {
+    box.textContent = "The history of this provision did not load. Try again.";
+  }
 };
 
 /**
  * Custom element for an amendment mark in the margin of a legal text.
  *
  * When connected, it sets its hover text if it has an amending act. Clicking the mark or pressing
- * Enter opens the comparison for that act.
+ * Enter opens the history of its provision.
  */
 export class AmendmentMark extends HTMLElement {
   connectedCallback() {
-    if (this.dataset.act && this.closest("[data-compare]")) {
+    if (this.dataset.act && this.closest(".content")) {
       this.title = said(this);
     }
     this.addEventListener("click", this.#handleClick);
@@ -112,22 +195,94 @@ export class AmendmentMark extends HTMLElement {
    * @param {KeyboardEvent} event
    */
   #handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
       this.open();
     }
   };
 
   /**
-   * Opens the change of this mark, if it has one.
+   * Opens the history of the provision of this mark, or closes it.
    */
   open() {
-    const href = change(this);
-    if (href) {
-      location.assign(href);
+    const unit = unitOf(this);
+    if (unit) {
+      void toggle(unit, this);
+    }
+  }
+}
+
+/**
+ * Gives each provision that `links` lists the sign ▽, if it is in `content` and has no mark of
+ * its own. The sign is a button that opens the history of the provision. It does nothing if the text is not there yet, or has its links already.
+ *
+ * @param {HTMLElement} links
+ * @param {HTMLElement} content
+ */
+export const link = (links, content) => {
+  if (!content.querySelector("[id]") || content.querySelector(".provision-link")) {
+    return;
+  }
+  for (const each of links.querySelectorAll("[data-unit]")) {
+    if (!(each instanceof HTMLElement) || !each.dataset.unit) {
+      continue;
+    }
+    const unit = content.ownerDocument.getElementById(each.dataset.unit);
+    if (!unit || !content.contains(unit)) {
+      continue;
+    }
+    const marked = [...unit.querySelectorAll("amendment-mark")].some(
+      (mark) => unitOf(mark) === unit,
+    );
+    if (marked) {
+      continue;
+    }
+    const made = content.ownerDocument.createElement("button");
+    made.type = "button";
+    made.className = "provision-link";
+    made.textContent = "▽";
+    made.title = "History of this provision";
+    made.setAttribute("aria-label", "History of this provision");
+    made.setAttribute("aria-expanded", "false");
+    made.addEventListener("click", () => {
+      void toggle(unit, made);
+    });
+    unit.prepend(made);
+  }
+};
+
+/**
+ * Custom element that has the address of the histories of the provisions, and lists the
+ * provisions that have a history. It puts the links on the text in the `.content` beside it after
+ * each htmx swap, or at once if the text is there.
+ */
+export class ProvisionLinks extends HTMLElement {
+  connectedCallback() {
+    document.addEventListener("htmx:after:swap", this.#handleSwap);
+    this.apply();
+  }
+
+  disconnectedCallback() {
+    document.removeEventListener("htmx:after:swap", this.#handleSwap);
+  }
+
+  #handleSwap = () => {
+    this.apply();
+  };
+
+  /** Puts the links on the text, if it is there. */
+  apply() {
+    const content = this.parentElement?.querySelector(":scope > .content");
+    if (content instanceof HTMLElement) {
+      link(this, content);
     }
   }
 }
 
 if (!customElements.get("amendment-mark")) {
   customElements.define("amendment-mark", AmendmentMark);
+}
+
+if (!customElements.get("provision-links")) {
+  customElements.define("provision-links", ProvisionLinks);
 }

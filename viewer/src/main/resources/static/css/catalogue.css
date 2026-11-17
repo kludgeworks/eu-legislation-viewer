@@ -542,6 +542,94 @@ section.selection.compare {
   color: var(--accent);
 }
 
+/* The history of a provision, under the provision: the acts that changed it. These are words of
+ * the viewer, so the box has the type of the viewer, not of the legal text. */
+.content .provision-history {
+  max-width: 42.5rem;
+  margin: 8px 0 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+  font:
+    13px/1.5 system-ui,
+    sans-serif;
+  text-align: left;
+}
+
+.content .provision-history p {
+  margin: 0 0 6px;
+}
+
+.content .provision-history p:last-child {
+  margin-bottom: 0;
+}
+
+.content .provision-history ul {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.content .provision-history li {
+  margin: 4px 0;
+  padding-left: 10px;
+  border-left: 3px solid transparent;
+}
+
+.content .provision-history li.warn {
+  border-left-color: var(--warn-stripe);
+}
+
+.content .provision-history li.open {
+  border-left: 3px dashed var(--line-strong);
+}
+
+.content .provision-history a {
+  color: var(--accent);
+}
+
+/* The sign that opens the history of a provision that has no ▼ mark. It is hollow, and it is in
+ * the place of the mark: in the margin beside the number of the unit. */
+.content .unit > .provision-link {
+  position: absolute;
+  left: -1.45rem;
+  top: 0.15em;
+  padding: 0 2px;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font:
+    0.7em/1.4 system-ui,
+    sans-serif;
+  cursor: pointer;
+}
+
+/* On Read, the ▼ mark and the ▽ sign are links to the history of a provision, so they have the
+ * colour of a link. */
+.content .provenance::before {
+  color: var(--accent);
+}
+
+.content .provision-link:hover,
+.content .provision-link:focus-visible,
+.content .provenance:hover::before,
+.content .provenance:focus-visible::before {
+  color: var(--accent-hover);
+}
+
+/* The change that the history of a provision links to, on the page of an amending act. The
+ * outline is as wide as the change, not as wide as the page. */
+.changes-list li:target {
+  width: fit-content;
+  max-width: 100%;
+  outline: 2px solid var(--accent);
+  outline-offset: 6px;
+  border-radius: 2px;
+  scroll-margin-top: 5rem;
+}
+
 /* The dots of the outline: amber for a part with a change that does not apply on the day, hollow
  * for a part with a change that the text does not show. */
 nav.outline a.has-rule::after,

@@ -82,7 +82,7 @@ The primary task changes.
 27. In the outline, a part that has a rule has an amber dot. A part that has a marker has the sign of the marker.
 28. If the whole act does not apply on the day, the status line says so one time. There is no rule along the text and no second note.
 29. A provision that an act changed has a link to its history. The history lists the acts that changed it, with the dates, and a link to each change.
-30. If more than one act changed the provision, the history has a link "Compare its wording on two days".
+30. If more than one act changed the provision, the history has a link "See how its wording changed".
 31. If the data gives two acts and does not say which one: "The data does not say which act deleted this. It was 2019/413 or 2021/255." Each number is a link.
 32. If the data gives no act: "The data does not say which act inserted Article 17a. It first appears in the text of 29 December 2017." A link opens that text on EUR-Lex.
 

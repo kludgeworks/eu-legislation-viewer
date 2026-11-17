@@ -849,11 +849,6 @@ nav.outline .rail-map a.on {
   cursor: pointer;
 }
 
-.content .provenance:hover::before,
-.content .provenance:focus-visible::before {
-  color: var(--accent);
-}
-
 /* The notes of deleted text. They show only when the reader follows a reference in that text. */
 .deleted-notes > .note:not(:target) {
   display: none;

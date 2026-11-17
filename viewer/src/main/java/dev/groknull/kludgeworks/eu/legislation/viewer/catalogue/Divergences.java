@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -61,11 +62,15 @@ final class Divergences {
   private final List<Version> versions;
   private final Map<Version, TextMarks> texts;
 
+  /** The units of each built text, made ready to find the places of the amendments. */
+  private final Map<Version, Location.Units> units = new HashMap<>();
+
   private Divergences(Act act, Language language, Map<Version, TextMarks> texts) {
     this.act = act;
     this.language = language;
     this.versions = act.timeline(language).map(Timeline::versions).orElseGet(List::of);
     this.texts = texts;
+    texts.forEach((version, text) -> units.put(version, Location.units(text.eIds())));
   }
 
   /**
@@ -153,15 +158,23 @@ final class Divergences {
       return places;
     }
     var eIds = text.get().eIds();
-    return places.stream().sorted(Comparator.comparingInt(place -> position(place, eIds))).toList();
+    var units = Location.units(eIds);
+    return places.stream()
+        .sorted(Comparator.comparingInt(place -> position(place, eIds, units)))
+        .toList();
+  }
+
+  /** Returns the units of {@code text}, the text of {@code version}, made ready one time. */
+  private Location.Units unitsOf(Version version, TextMarks text) {
+    return units.computeIfAbsent(version, each -> Location.units(text.eIds()));
   }
 
   /**
    * Returns where {@code place} is among {@code eIds}, or {@link Integer#MAX_VALUE} if they do not
    * have it.
    */
-  private static int position(Amendment place, List<String> eIds) {
-    var found = place.location().in(eIds);
+  private static int position(Amendment place, List<String> eIds, Location.Units units) {
+    var found = place.location().in(units);
     return found.isPresent() ? eIds.indexOf(found.get().eIds().getFirst()) : Integer.MAX_VALUE;
   }
 
@@ -202,7 +215,7 @@ final class Divergences {
       if (text == null) {
         return Optional.empty();
       }
-      if (place.location().in(text.eIds()).isEmpty()) {
+      if (place.location().in(unitsOf(versions.get(before), text)).isEmpty()) {
         // The provision is not in the text yet: an act that applies later puts it in.
         return Optional.of(Answer.AGREES);
       }
@@ -234,7 +247,8 @@ final class Divergences {
         }
         continue;
       }
-      var units = place.location().in(text.eIds()).map(Location.Found::eIds).orElseGet(List::of);
+      var units =
+          place.location().in(unitsOf(version, text)).map(Location.Found::eIds).orElseGet(List::of);
       if (units.isEmpty()) {
         continue;
       }

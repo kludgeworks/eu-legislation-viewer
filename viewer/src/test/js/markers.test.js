@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { change, number, said } from "../../main/resources/static/js/markers.js";
+import { history, link, number, said, toggle, unitOf } from "../../main/resources/static/js/markers.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -40,7 +40,7 @@ describe("said", () => {
 
   test("says when the act applies, where the page lists it", () => {
     document.body.innerHTML = `<div class="marks" hidden><span data-act="32026R0449"
-      data-applies="applies from 1 October 2026 · Article 2 of 2026/449" data-compare="/step"></span></div>
+      data-applies="applies from 1 October 2026 · Article 2 of 2026/449"></span></div>
       <amendment-mark class="provenance" data-act="32026R0449" data-action="replaced">▼</amendment-mark>`;
 
     expect(said(mark())).toBe(
@@ -55,46 +55,175 @@ describe("said", () => {
   });
 });
 
-describe("change", () => {
-  test("opens the step that made the change, at the unit of the mark", () => {
-    document.body.innerHTML = `
-      <div class="marks" hidden><span data-act="32026R0449" data-compare="/compare?from=2026-03-22&amp;to=2026-10-01"></span></div>
-      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <div id="anx/pnt_8.1.2.3/pnt_c"><amendment-mark class="provenance" data-act="32026R0449">▼</amendment-mark></div>
-      </div>`;
+/**
+ * Puts a text with one marked paragraph and one paragraph without a mark on the page, with the
+ * address of the histories.
+ *
+ * @param {string} [listed] the eIds that the page lists as having a history
+ */
+const text = (listed = "") => {
+  document.body.innerHTML = `
+    <div id="text">
+      <provision-links hidden data-href="/eli/reg/2008/767/2026-11-17/eng/provision">${listed
+        .split(" ")
+        .filter(Boolean)
+        .map((unit) => `<span data-unit="${unit}"></span>`)
+        .join("")}</provision-links>
+      <div class="content">
+        <div id="art_6"><h3 class="title">Article 6</h3>
+          <div id="art_6/par_1"><span class="num">1.</span><p>One.</p></div>
+          <div id="art_6/par_2"><amendment-mark class="provenance" data-act="32024R1356" data-action="replaced"></amendment-mark><span class="num">2.</span><p>Two.</p></div>
+        </div>
+      </div>
+    </div>`;
+};
 
-    expect(change(mark())).toBe("/compare?from=2026-03-22&to=2026-10-01#anx%2Fpnt_8.1.2.3%2Fpnt_c");
-  });
+/**
+ * Makes `fetch` answer with `body`.
+ *
+ * @param {string} body
+ * @param {boolean} [ok]
+ * @returns {import("vitest").Mock}
+ */
+const answer = (body, ok = true) => {
+  const fetched = vi.fn(async () => ({ ok, status: ok ? 200 : 404, text: async () => body }));
+  vi.stubGlobal("fetch", fetched);
+  return fetched;
+};
 
-  test("opens the comparison of the text, limited to the act's changes, if the act is not listed", () => {
-    document.body.innerHTML = `
-      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <amendment-mark class="provenance" data-act="32019R0103R(01)">▼</amendment-mark>
-      </div>`;
+const unit = (/** @type {string} */ id) =>
+  /** @type {HTMLElement} */ (document.getElementById(id));
 
-    expect(change(mark())).toBe(
-      "/eli/reg_impl/2015/1998/eng/compare?act=32019R0103R(01)",
+describe("history", () => {
+  test("is the address of the histories with the unit", () => {
+    text();
+
+    expect(history(unit("art_6/par_2"))).toBe(
+      "/eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6%2Fpar_2",
     );
   });
 
-  test("has no change for a mark outside a text with a comparison", () => {
-    document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815">▼</amendment-mark>`;
+  test("is null on a page without the address of the histories", () => {
+    document.body.innerHTML = `<div id="art_6"></div>`;
 
-    expect(change(mark())).toBeNull();
+    expect(history(unit("art_6"))).toBeNull();
+  });
+});
+
+describe("toggle", () => {
+  test("loads the history under the provision, and closes it again", async () => {
+    text();
+    const fetched = answer(`<aside class="provision-history"><p>History of Article 6(2)</p></aside>`);
+    const from = mark();
+
+    await toggle(unit("art_6/par_2"), from);
+
+    expect(fetched).toHaveBeenCalledWith(
+      "/eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6%2Fpar_2",
+      expect.anything(),
+    );
+    expect(unit("art_6/par_2").nextElementSibling?.textContent).toBe("History of Article 6(2)");
+    expect(from.getAttribute("aria-expanded")).toBe("true");
+
+    await toggle(unit("art_6/par_2"), from);
+
+    expect(document.querySelector(".provision-history")).toBeNull();
+    expect(from.getAttribute("aria-expanded")).toBe("false");
+  });
+
+  test("puts the history of an article after its heading", async () => {
+    text();
+    answer(`<aside class="provision-history">History</aside>`);
+
+    await toggle(unit("art_6"), mark());
+
+    expect(unit("art_6").querySelector(".title")?.nextElementSibling?.className).toBe(
+      "provision-history",
+    );
+  });
+
+  test("keeps the history of a paragraph open when the history of its article opens", async () => {
+    text();
+    answer(`<aside class="provision-history">History</aside>`);
+
+    await toggle(unit("art_6/par_2"), mark());
+    await toggle(unit("art_6"), mark());
+
+    expect(document.querySelectorAll(".provision-history")).toHaveLength(2);
+
+    await toggle(unit("art_6"), mark());
+
+    expect(document.querySelectorAll(".provision-history")).toHaveLength(1);
+    expect(unit("art_6/par_2").nextElementSibling?.className).toBe("provision-history");
+  });
+
+  test("says so if the history does not load", async () => {
+    text();
+    answer("", false);
+
+    await toggle(unit("art_6/par_2"), mark());
+
+    expect(document.querySelector(".provision-history")?.textContent).toBe(
+      "The history of this provision did not load. Try again.",
+    );
+  });
+});
+
+const links = () => /** @type {HTMLElement} */ (document.querySelector("provision-links"));
+const content = () => /** @type {HTMLElement} */ (document.querySelector(".content"));
+
+describe("link", () => {
+  test("gives a listed provision without a mark a link that opens its history", async () => {
+    text("art_6/par_1");
+    const fetched = answer(`<aside class="provision-history">History</aside>`);
+
+    link(links(), content());
+    const made = /** @type {HTMLElement} */ (unit("art_6/par_1").querySelector(".provision-link"));
+    made.click();
+    await vi.waitFor(() => expect(made.getAttribute("aria-expanded")).toBe("true"));
+
+    expect(made.textContent).toBe("▽");
+    expect(made.getAttribute("aria-label")).toBe("History of this provision");
+    expect(fetched).toHaveBeenCalledWith(
+      "/eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6%2Fpar_1",
+      expect.anything(),
+    );
+  });
+
+  test("gives no link to a provision that has a mark of its own", () => {
+    text("art_6/par_2");
+
+    link(links(), content());
+
+    expect(document.querySelector(".provision-link")).toBeNull();
+  });
+
+  test("gives a link to a provision whose marks are all on its units", () => {
+    text("art_6");
+
+    link(links(), content());
+
+    expect(unit("art_6").querySelector(":scope > .provision-link")).not.toBeNull();
+  });
+
+  test("does not link a text two times", () => {
+    text("art_6/par_1");
+
+    link(links(), content());
+    link(links(), content());
+
+    expect(document.querySelectorAll(".provision-link")).toHaveLength(1);
   });
 });
 
 describe("AmendmentMark", () => {
-  test("sets its hover text when connected inside a comparison-enabled text", () => {
-    document.body.innerHTML = `
-      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
-      </div>`;
+  test("sets its hover text when connected inside the text of Read", () => {
+    text();
 
-    expect(mark().title).toBe("Inserted by 2017/815");
+    expect(mark().title).toBe("Replaced by 2024/1356");
   });
 
-  test("leaves hover text empty outside a comparison", () => {
+  test("leaves hover text empty outside the text of Read", () => {
     document.body.innerHTML = `
       <div>
         <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
@@ -103,31 +232,22 @@ describe("AmendmentMark", () => {
     expect(mark().title).toBe("");
   });
 
-  test("navigates to the comparison on click", () => {
-    const assign = vi.fn();
-    vi.stubGlobal("location", { assign });
-
-    document.body.innerHTML = `
-      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
-      </div>`;
+  test("opens the history of its provision on click", async () => {
+    text();
+    const fetched = answer(`<aside class="provision-history">History</aside>`);
 
     mark().click();
+    await vi.waitFor(() => expect(mark().getAttribute("aria-expanded")).toBe("true"));
 
-    expect(assign).toHaveBeenCalledWith("/eli/reg_impl/2015/1998/eng/compare?act=32017R0815");
+    expect(unitOf(mark())?.id).toBe("art_6/par_2");
+    expect(fetched).toHaveBeenCalledTimes(1);
   });
 
-  test("navigates to the comparison on Enter key", () => {
-    const assign = vi.fn();
-    vi.stubGlobal("location", { assign });
-
-    document.body.innerHTML = `
-      <div data-compare="/eli/reg_impl/2015/1998/eng/compare">
-        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
-      </div>`;
+  test("opens the history of its provision on Enter", async () => {
+    text();
+    const fetched = answer(`<aside class="provision-history">History</aside>`);
 
     mark().dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
-
-    expect(assign).toHaveBeenCalledWith("/eli/reg_impl/2015/1998/eng/compare?act=32017R0815");
+    await vi.waitFor(() => expect(fetched).toHaveBeenCalledTimes(1));
   });
 });

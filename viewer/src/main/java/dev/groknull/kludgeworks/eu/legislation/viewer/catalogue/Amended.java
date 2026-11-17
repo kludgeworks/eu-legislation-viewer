@@ -60,7 +60,7 @@ public record Amended(Map<String, List<Amendment>> byUnit, int unplaced) {
    * For a numbered point, it is also true for a point numbered under it that legal-text keeps
    * beside it. For example, {@code anx/pnt_3.0.1} and its points are in {@code anx/pnt_3}.
    */
-  private static boolean in(String eId, String unit) {
+  static boolean in(String eId, String unit) {
     if (eId.startsWith(unit + "/")) {
       return true;
     }

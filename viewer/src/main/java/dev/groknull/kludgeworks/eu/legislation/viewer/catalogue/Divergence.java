@@ -81,9 +81,10 @@ public record Divergence(
    */
   public List<Unit> in(List<String> eIds) {
     var found = new LinkedHashMap<String, Unit>();
+    var text = Location.units(eIds);
     for (var place : places) {
-      var exact = place.location().in(eIds);
-      var units = exact.or(() -> place.location().around(eIds));
+      var exact = place.location().in(text);
+      var units = exact.or(() -> place.location().around(text));
       for (var eId : units.map(Location.Found::eIds).orElseGet(List::of)) {
         found.merge(eId, new Unit(eId, exact.isEmpty(), List.of(place)), Unit::with);
       }

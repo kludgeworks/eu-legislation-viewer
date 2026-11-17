@@ -126,6 +126,12 @@ class VersionControllerTests {
   }
 
   @Test
+  void findsNoHistoryOfAProvisionWhileTheTextIsNotBuilt() {
+    assertThat(mvc.get().uri(PAGE + "/provision?unit=anx").accept(MediaType.TEXT_HTML))
+        .hasStatus(HttpStatus.NOT_FOUND);
+  }
+
+  @Test
   void triesAgainThenGoesBackToThePage() {
     assertThat(mvc.post().uri(PAGE))
         .hasStatus(HttpStatus.SEE_OTHER)

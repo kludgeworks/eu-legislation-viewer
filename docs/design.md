@@ -39,6 +39,7 @@ provision applies, and until when.
 | See what one amending act changed, and from when each change applies | The page of an amending act |
 | Read the law as it was on a day | Read |
 | See if the text of that day is the law on that day | Read: the status lines and the marks in the text |
+| See which acts changed one provision | Read: the history of a provision |
 | Compare the law on two days | Compare |
 | See what one amending act changed | Compare, limited to one act |
 | Find which act made a change, and from when it applies | Compare: the side note |
@@ -79,6 +80,7 @@ are not changed yet, so their rows in the table are as the pages are now.
 | state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". |
 | stage | A group of changes of one act that apply from the same day. |
 | history | The list of the amending acts of an act, newest first. |
+| history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ mark of the provision opens it. A provision that has a history and no ▼ mark has a hollow sign, ▽, in the same place. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.
 
@@ -94,8 +96,9 @@ Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its
    - the words of the viewer: side notes, warnings, labels, folds
 3. **Show only what has legal effect.** Before you add a line or a label, ask if it changes what
    the reader does. Keep notes about how the viewer made the data to a minimum.
-4. **Do not guess.** If the data does not name an act or a date, say so. For example: "an act not
-   known", "Date not confirmed". Do not hide the difference.
+4. **Do not guess.** If the data does not name an act or a date, say so. For example: "The data
+   does not say which act inserted this provision. It first appears in the text of 29 December
+   2017." Do not hide the difference.
 5. **Give the source of each date.** Show the act, its Official Journal reference and the clause
    that sets the date.
 6. **Show the state of the page.** The reader must see the days, the direction of the comparison,
@@ -192,6 +195,7 @@ of the viewer before each path.
 | Read, early text of the act itself | `/eli/reg/2016/679/2017-01-01/eng` |
 | Read, early provisions | `/eli/reg/2008/767/2018-01-01/eng` |
 | Read, date not confirmed | `/eli/reg/2018/1862/2026-11-17/eng` |
+| Read, the history of a provision: the ▼ mark of Article 6(2) | `/eli/reg/2008/767/2026-11-17/eng#art_6` |
 | Read, version not in the language | `/eli/reg_impl/2015/1998/2021-12-31/gle` |
 | Compare, Changes | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |
 | Compare, Whole text | the same, with `&view=whole` |

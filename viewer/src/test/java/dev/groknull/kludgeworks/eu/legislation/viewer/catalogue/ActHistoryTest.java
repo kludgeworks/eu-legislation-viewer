@@ -244,4 +244,67 @@ class ActHistoryTest {
     assertThat(ACT.standingOn(SIMPLE, Language.ENG, IN_PART))
         .isEqualTo(new Standing(false, 1, 0, 0));
   }
+
+  /** The marks of a text of the act, with the units that the changes of the act are at. */
+  private static final TextMarks TEXT =
+      new TextMarks(
+          List.of(
+              "art_3",
+              "art_3/pnt_8",
+              "art_20",
+              "art_20/par_1",
+              "art_20/par_1/pnt_a",
+              "art_21",
+              "art_21/par_1",
+              "art_22",
+              "art_22/par_1"),
+          Map.of(
+              STAGED,
+              Set.of("art_20/par_1"),
+              SIMPLE,
+              Set.of("art_20/par_1", "art_22/par_1"),
+              BASE,
+              Set.of("art_20/par_1")));
+
+  @Test
+  void theUnitsWithAChangeOfTheirOwnAreThePlacesThatTheTextHas() {
+    assertThat(ACT.changedUnits(TEXT.eIds(), Language.ENG).keySet())
+        .containsExactly("art_3/pnt_8", "art_20/par_1");
+  }
+
+  @Test
+  void theHistoryOfAProvisionHasItsChangesAndTheOtherActsThatTheTextMarksItWith() {
+    var history = ACT.historyOf("art_20/par_1", TEXT, Language.ENG);
+
+    assertThat(history.changes())
+        .extracting(change -> change.location().code())
+        .containsExactly("AR 20 PA 1");
+    assertThat(history.marking()).containsExactly(SIMPLE);
+    assertThat(history.acts()).containsExactly(STAGED, SIMPLE);
+  }
+
+  @Test
+  void aChangeOfTheUnitThatHoldsAProvisionIsInItsHistoryAndAChangeInItIsNot() {
+    assertThat(ACT.historyOf("art_20/par_1/pnt_a", TEXT, Language.ENG).changes())
+        .extracting(change -> change.location().code())
+        .containsExactly("AR 20 PA 1");
+    assertThat(ACT.historyOf("art_20", TEXT, Language.ENG).acts()).isEmpty();
+  }
+
+  @Test
+  void aUnitThatTheActAsPublishedDoesNotHaveAndThatTheDataNamesNoActForIsNotAttributed() {
+    var versions = ACT.timeline().versions();
+    var texts =
+        Map.of(
+            versions.getFirst(),
+            new TextMarks(List.of("art_3", "art_20", "art_20/par_1"), Map.of()),
+            versions.getLast(),
+            TEXT);
+
+    // Article 3, point 8 has a change. Point (a) is in a paragraph that has one. Article 22 has a
+    // mark in it. Article 21(1) is in Article 21.
+    assertThat(ACT.unattributed(versions.getLast(), Language.ENG, texts)).containsExactly("art_21");
+    assertThat(ACT.firstWith("art_21", Language.ENG, texts)).hasValue(versions.getLast());
+    assertThat(ACT.unattributed(versions.getFirst(), Language.ENG, texts)).isEmpty();
+  }
 }

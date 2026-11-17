@@ -15,6 +15,7 @@
      from the comparison module when the fold of the provision opens. The folds are open when the
      page has few changes, and then htmx loads each wording when the page loads: a fold that is
      open at the start gives no toggle event that htmx gets. A provision whose wording the texts do not give shows by its name only.
+     Each change has an anchor, so the history of a provision on Read can link to it.
      A run that does not apply on the day has an amber rule.
      Where the first version with the act integrates another act too, htmx loads a separate list
      below the runs: the changes that this act or the other act made, where the data does not say
@@ -54,14 +55,14 @@
             <ul class="changes-list${run.worded() ? " worded" : ""}">
               @for(var change : run.changes())
                 @if(change.wording() != null)
-                  <li>
+                  <li id="${change.anchor()}">
                     <details class="wording" open="${amending.open()}" hx-get="${change.wording()}" hx-trigger="${amending.open() ? "load" : "toggle once"}" hx-target="find .wording-text" hx-swap="innerHTML">
                       <summary><span class="place">${change.place()}</span> <span class="made">${change.made()}</span><span class="show"> · <u>wording</u></span></summary>
                       <div class="wording-text"><p class="status">Loading…</p></div>
                     </details>
                   </li>
                 @else
-                  <li><span class="place">${change.place()}</span> <span class="made">${change.made()}</span></li>
+                  <li id="${change.anchor()}"><span class="place">${change.place()}</span> <span class="made">${change.made()}</span></li>
                 @endif
               @endfor
             </ul>

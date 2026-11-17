@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
@@ -158,6 +159,38 @@ final class States {
           "Applies from a day that " + clause + " sets. The data does not give that day.";
       case Applying.SetBy _, Applying.From _, Applying.InForce _ ->
           "The data does not give the day from which this applies.";
+    };
+  }
+
+  /**
+   * Returns the state on {@code day} of one change of {@code amending}, with the date and the
+   * clause, as sentences. {@code placeDays} are the days that Cellar gives for the place of the
+   * change. For example, "Does not apply yet. Applies from 15 October 2026 · Article 2 of
+   * 2022/1190." Returns null for a change that applies, where the data gives no day for it.
+   */
+  static @Nullable String note(
+      Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
+    var from = act.stageOf(amending, placeDays);
+    return switch (act.stateOn(amending, placeDays, day)) {
+      case APPLIES ->
+          from.map(
+                  each ->
+                      (past ? "Applied from " : "Applies from ")
+                          + Dates.inWords(each)
+                          + clauseOn(act, amending, each)
+                          + ".")
+              .orElse(null);
+      case NOT_APPLYING ->
+          (past ? "Did not apply yet." : "Does not apply yet.")
+              + from.map(
+                      each ->
+                          " Applies from "
+                              + Dates.inWords(each)
+                              + clauseOn(act, amending, each)
+                              + ".")
+                  .orElse("");
+      case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
+      case NOT_KNOWN -> unknown(amending, act.applying(amending, Set.of()).orElse(null));
     };
   }
 

@@ -18,6 +18,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarginV
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarksView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ProvisionView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
@@ -185,6 +186,33 @@ class VersionController {
   }
 
   /**
+   * Returns the history of one provision of the text of the version: the acts that changed it, with
+   * the state of each change on the date. {@code unit} is the eId of the unit of the text. The Read
+   * page loads it under the provision. For example, {@code
+   * /eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6/par_2}.
+   */
+  @GetMapping(path = PATH + "/provision", produces = MediaType.TEXT_HTML_VALUE)
+  @ResponseBody
+  String provision(
+      @PathVariable String type,
+      @PathVariable int year,
+      @PathVariable String number,
+      @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
+      @PathVariable("language") String code,
+      @RequestParam String unit) {
+    var page = new Page(type, year, number, date, code);
+    var marks = texts.marks(texts.preparation(page.act, page.language));
+    var text = marks.get(page.version);
+    if (page.before || text == null || !text.eIds().contains(unit)) {
+      throw notFound();
+    }
+    return templates
+        .catalogueProvision(
+            ProvisionView.of(page.act, page.version, unit, date, today(), page.language, marks))
+        .render();
+  }
+
+  /**
    * Tries again to build the texts of the act, when the failure panel posts Try again to the
    * version page. It tries again only the texts that failed where a new try may help. Then it
    * redirects to the page, which prepares the act again.
@@ -301,9 +329,10 @@ class VersionController {
             templates.catalogueTextReady(
                 "/content/" + ready.text(),
                 content.outline(ready.text()).orElseGet(Outline::empty),
-                Links.compare(eli, language),
                 MarksView.of(act, version, language),
-                MarginView.of(act, version, date, language, marks, today()));
+                MarginView.of(act, version, date, language, marks, today()),
+                Links.read(eli, date, language) + "/provision",
+                ProvisionView.units(act, version, language, marks));
         // The version appeared since, and it is being prepared.
         case Text.Waiting _, Text.Converting _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->

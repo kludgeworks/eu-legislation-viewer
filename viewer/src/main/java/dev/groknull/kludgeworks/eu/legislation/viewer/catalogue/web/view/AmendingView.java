@@ -245,43 +245,36 @@ public record AmendingView(
     var units = step == null ? List.<String>of() : Act.units(change, step.later(), step.earlier());
     var days = Act.days(change);
     var state = act.stateOn(amending, days, day);
-    var from = act.stageOf(amending, days);
     var name = change.location().name();
-    var note =
-        switch (state) {
-          case APPLIES ->
-              from.map(
-                      each ->
-                          (past ? "Applied from " : "Applies from ")
-                              + Dates.inWords(each)
-                              + States.clauseOn(act, amending, each)
-                              + ".")
-                  .orElse(null);
-          case NOT_APPLYING ->
-              (past ? "Did not apply yet." : "Does not apply yet.")
-                  + from.map(
-                          each ->
-                              " Applies from "
-                                  + Dates.inWords(each)
-                                  + States.clauseOn(act, amending, each)
-                                  + ".")
-                      .orElse("");
-          case NOT_IN_FORCE -> past ? "Was not in force yet." : "Not in force yet.";
-          case NOT_KNOWN -> States.unknown(amending, act.applying(amending, Set.of()).orElse(null));
-        };
+    var note = States.note(act, amending, days, day, past);
     return new Change(
         name.isEmpty() ? change.location().code() : name,
-        switch (change.role()) {
-          case REPLACEMENT -> "Replaced";
-          case ADDITION -> "Inserted";
-          case DELETION -> "Deleted";
-          case REPEAL -> "Repealed";
-          case AMENDMENT -> "Amended";
-          case EXTENSION, SUSPENSION, DEFERRAL, OTHER -> "Changed";
-        },
+        made(change.role()),
         note,
         States.tone(state),
+        anchor(change),
         compare == null || units.isEmpty() ? null : compare.place(units));
+  }
+
+  /** Returns what an act did to a provision, as one word. For example, "Replaced". */
+  static String made(Amendment.Role role) {
+    return switch (role) {
+      case REPLACEMENT -> "Replaced";
+      case ADDITION -> "Inserted";
+      case DELETION -> "Deleted";
+      case REPEAL -> "Repealed";
+      case AMENDMENT -> "Amended";
+      case EXTENSION, SUSPENSION, DEFERRAL, OTHER -> "Changed";
+    };
+  }
+
+  /**
+   * Returns the anchor of {@code change} on the page of its act. It is the place in Cellar's codes,
+   * with a line for each space. For example, "at-AR_6_PA_2". The history of a provision links to
+   * it.
+   */
+  static String anchor(Amendment change) {
+    return "at-" + change.location().code().replace(' ', '_');
   }
 
   /**
@@ -304,6 +297,7 @@ public record AmendingView(
    *     day for a change that applies.
    * @param tone "warn" where the change does not apply on the day, "open" where Cellar does not
    *     tell, "off" where the act is not in force yet. Null where the change applies.
+   * @param anchor the anchor of the change on the page, {@link #anchor}
    * @param wording the address of the wording of the change: the differences at its place between
    *     the text before the act and the first text with it. Null if the texts are not built, or if
    *     neither text has the place.
@@ -313,6 +307,7 @@ public record AmendingView(
       String made,
       @Nullable String note,
       @Nullable String tone,
+      String anchor,
       @Nullable String wording) {}
 
   /**

@@ -213,6 +213,8 @@ public record Act(
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
     var between = integratedBetween(from, to);
+    var before = Location.units(earlier);
+    var after = Location.units(later);
     var byUnit = new LinkedHashMap<String, List<Amendment>>();
     var unplaced = 0;
     for (var amendment : amendments) {
@@ -224,7 +226,7 @@ public record Act(
           || (applies != null && applies.isAfter(to.date()))) {
         continue;
       }
-      var found = amendment.location().in(amendment.role().removes() ? earlier : later);
+      var found = amendment.location().in(amendment.role().removes() ? before : after);
       if (found.isEmpty()) {
         unplaced++;
         continue;
@@ -544,6 +546,145 @@ public record Act(
   }
 
   /**
+   * Returns the units of a text that have a change of their own, by their eIds, each with its
+   * changes in {@code language}. {@code eIds} are the units of the text, in document order. A
+   * change is at the unit that is its place. If its place is finer than the units, for example a
+   * sentence, it is at the unit that the place is in. A change whose place the text does not have
+   * is at no unit.
+   */
+  public Map<String, List<Amendment>> changedUnits(List<String> eIds, Language language) {
+    var byUnit = new LinkedHashMap<String, List<Amendment>>();
+    var units = Location.units(eIds);
+    for (var amendment : amendments) {
+      if (!amendment.changes(language)) {
+        continue;
+      }
+      amendment
+          .location()
+          .in(units)
+          .ifPresent(
+              found ->
+                  found
+                      .eIds()
+                      .forEach(
+                          eId ->
+                              byUnit
+                                  .computeIfAbsent(eId, unit -> new ArrayList<>())
+                                  .add(amendment)));
+    }
+    return byUnit;
+  }
+
+  /**
+   * Returns the history of the provision that is the unit {@code unit} of a text: the acts that
+   * changed it. {@code text} are the marks of the text.
+   *
+   * <ul>
+   *   <li>A change at the unit is a change of the provision. So is a change at a part of it that
+   *       the text does not number, for example a sentence.
+   *   <li>A change at a unit that holds the provision is a change of the provision. For example, an
+   *       act that replaces Article 6 changes Article 6(2).
+   *   <li>A change at a unit in the provision is not in its history. That unit has its own history.
+   *   <li>An act that the text marks the unit with changed the provision, also if Cellar annotates
+   *       no change of it there.
+   * </ul>
+   *
+   * <p>The newest act is first: the act with the latest first day, {@link #firstDay}.
+   */
+  public ProvisionHistory historyOf(String unit, TextMarks text, Language language) {
+    Comparator<ActIdentifier> newest =
+        Comparator.comparing(
+                (ActIdentifier each) -> firstDay(each, language).orElse(null),
+                Comparator.nullsFirst(Comparator.<LocalDate>naturalOrder()))
+            .thenComparing(ActIdentifier::celex)
+            .reversed();
+    var units = Location.units(text.eIds());
+    var changes =
+        amendments.stream()
+            .filter(amendment -> amendment.changes(language))
+            .filter(
+                amendment ->
+                    amendment
+                        .location()
+                        .in(units)
+                        .filter(
+                            found ->
+                                found.eIds().contains(unit)
+                                    || (!found.within()
+                                        && found.eIds().stream()
+                                            .anyMatch(holder -> Amended.in(unit, holder))))
+                        .isPresent())
+            .sorted(Comparator.comparing(Amendment::act, newest))
+            .toList();
+    var named = changes.stream().map(Amendment::act).collect(Collectors.toSet());
+    var marking =
+        text.byAct().entrySet().stream()
+            .filter(each -> each.getValue().contains(unit))
+            .map(Map.Entry::getKey)
+            .filter(each -> !each.equals(id) && !named.contains(each))
+            .sorted(newest)
+            .toList();
+    return new ProvisionHistory(unit, changes, marking);
+  }
+
+  /**
+   * Returns the units of the text of {@code reading} that are not in the act as published, where
+   * the data does not say which act inserted them. {@code texts} are the marks of the built texts
+   * in {@code language}.
+   *
+   * <p>The data says nothing of a unit if the text marks no act at it, at a unit that holds it or
+   * at a unit in it, and Cellar annotates no change at these units. Of such units, only the outer
+   * unit is returned: a unit in it is not. Returns none if the text of the act as published or the
+   * text of {@code reading} is not built.
+   */
+  public List<String> unattributed(
+      Version reading, Language language, Map<Version, TextMarks> texts) {
+    var first = timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
+    var published = first.map(texts::get).orElse(null);
+    var text = texts.get(reading);
+    if (published == null
+        || text == null
+        || first.orElseThrow().kind() != Version.Kind.ORIGINAL
+        || first.orElseThrow().equals(reading)) {
+      return List.of();
+    }
+    var original = Set.copyOf(published.eIds());
+    var said = new LinkedHashSet<>(changedUnits(text.eIds(), language).keySet());
+    text.byAct().values().forEach(said::addAll);
+    var holders = new LinkedHashSet<String>();
+    said.forEach(each -> holders.addAll(holding(each)));
+    return text.eIds().stream()
+        .filter(eId -> !original.contains(eId))
+        .filter(eId -> holding(eId).stream().allMatch(original::contains))
+        .filter(eId -> !said.contains(eId) && !holders.contains(eId))
+        .filter(eId -> holding(eId).stream().noneMatch(said::contains))
+        .toList();
+  }
+
+  /**
+   * Returns the first version in {@code language} whose text has the unit {@code unit}. {@code
+   * texts} are the marks of the built texts. Returns empty if no built text has the unit.
+   */
+  public Optional<Version> firstWith(
+      String unit, Language language, Map<Version, TextMarks> texts) {
+    return timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
+        .filter(
+            version ->
+                Optional.ofNullable(texts.get(version)).stream()
+                    .anyMatch(marks -> marks.eIds().contains(unit)))
+        .findFirst();
+  }
+
+  /** Returns the eIds of the units that hold the unit {@code eId}, as its eId names them. */
+  private static List<String> holding(String eId) {
+    var holders = new ArrayList<String>();
+    for (var at = eId.lastIndexOf('/'); at > 0; at = eId.lastIndexOf('/', at - 1)) {
+      holders.add(eId.substring(0, at));
+    }
+    return holders;
+  }
+
+  /**
    * Returns the first day of {@code amending}: its first dated date, which is usually its entry
    * into force. If Cellar has no dated date of it, it is the first day of the first version in
    * {@code language} that integrates it. Returns empty if there is neither.
@@ -568,14 +709,15 @@ public record Act(
    * position is last.
    */
   public static List<Amendment> inTextOrder(List<Amendment> changes, List<String> eIds) {
+    var units = Location.units(eIds);
     return changes.stream()
         .sorted(
             Comparator.comparing(
                 change ->
                     change
                         .location()
-                        .in(eIds)
-                        .or(() -> change.location().around(eIds))
+                        .in(units)
+                        .or(() -> change.location().around(units))
                         .map(found -> eIds.indexOf(found.eIds().getFirst()))
                         .orElse(Integer.MAX_VALUE)))
         .toList();

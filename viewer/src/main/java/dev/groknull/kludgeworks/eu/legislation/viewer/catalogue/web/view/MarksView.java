@@ -8,10 +8,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -21,9 +19,8 @@ import org.jspecify.annotations.Nullable;
  * renders without knowing the act; js/markers.js looks each mark's act up here.
  *
  * <p>A mark's hover says what happened, which act did it and when that act applies: "Replaced by
- * 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449". A click opens the step that made
- * the change in Compare: from the version before the one that first includes the act, to that
- * version.
+ * 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449". A click opens the history of the
+ * provision, {@link ProvisionView}.
  *
  * @param marks one entry for each amending act, in the order the versions include them
  */
@@ -38,29 +35,20 @@ public record MarksView(List<Mark> marks) {
    * language}.
    */
   public static MarksView of(Act act, Version reading, Language language) {
-    var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var versions =
         act.timeline()
             .in(language)
             .map(Timeline::versions)
             .filter(those -> those.contains(reading))
             .orElseGet(() -> act.timeline().versions());
-    var seen = new HashSet<ActIdentifier>();
-    var marks = new ArrayList<Mark>();
-    for (var i = 1; i < versions.size() && !versions.get(i).date().isAfter(reading.date()); i++) {
-      var version = versions.get(i);
-      var before = versions.get(i - 1);
-      for (var each : version.integrates()) {
-        if (seen.add(each)) {
-          marks.add(
-              new Mark(
-                  each.celex(),
-                  applies(act, each),
-                  Links.compare(eli, before.date(), version.date(), language)));
-        }
+    var seen = new LinkedHashSet<ActIdentifier>();
+    for (var version : versions) {
+      if (!version.date().isAfter(reading.date())) {
+        seen.addAll(version.integrates());
       }
     }
-    return new MarksView(marks);
+    return new MarksView(
+        seen.stream().map(each -> new Mark(each.celex(), applies(act, each))).toList());
   }
 
   /**
@@ -94,7 +82,6 @@ public record MarksView(List<Mark> marks) {
    *
    * @param act the CELEX of the amending act, as the marks name it
    * @param applies when the act applies, with the clause that says so. Null if not known.
-   * @param compare the address of the step that made the act's changes, in Compare
    */
-  public record Mark(String act, @Nullable String applies, String compare) {}
+  public record Mark(String act, @Nullable String applies) {}
 }

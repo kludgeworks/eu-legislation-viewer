@@ -2,8 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -98,7 +100,20 @@ public record Location(String code) {
    * 11.3.2-11.3.5}, is each unit from the first to the last.
    */
   public Optional<Found> in(List<String> eIds) {
-    return find(eIds, false);
+    return find(new Units(eIds), false);
+  }
+
+  /**
+   * Returns the units of a text that it is, as {@link #in(List)} does. Use this to find many
+   * locations in one text: {@code units} are made one time, {@link #units}.
+   */
+  public Optional<Found> in(Units units) {
+    return find(units, false);
+  }
+
+  /** Returns the units of a text for {@link #in(Units)} and {@link #around(Units)}. */
+  public static Units units(List<String> eIds) {
+    return new Units(eIds);
   }
 
   /**
@@ -108,15 +123,19 @@ public record Location(String code) {
    * that holds it, or if a code finds several units.
    */
   public Optional<Found> around(List<String> eIds) {
-    return find(eIds, true);
+    return find(new Units(eIds), true);
+  }
+
+  /** Returns the units of a text that it is or that hold it, as {@link #around(List)} does. */
+  public Optional<Found> around(Units units) {
+    return find(units, true);
   }
 
   /**
    * Returns the units of a text that it is. If {@code around}, a code that finds no unit stops the
    * search at the unit found so far.
    */
-  private Optional<Found> find(List<String> eIds, boolean around) {
-    var units = new HashSet<>(eIds);
+  private Optional<Found> find(Units units, boolean around) {
     var tokens = tokens();
     var at = "";
     // The unit in which a frame, such as a chapter, was found. What follows the frame may be
@@ -141,7 +160,7 @@ public record Location(String code) {
           within = true;
           continue;
         }
-        var annex = oneAnnex(eIds);
+        var annex = units.annex();
         if (annex == null) {
           return Optional.empty();
         }
@@ -151,7 +170,7 @@ public record Location(String code) {
       i++;
       var number = number(next);
       if (number.contains("-") && (token.equals("PO") || token.equals("PTA"))) {
-        return range(eIds, units, at, outer, names, number, within, around);
+        return range(units, at, outer, names, number, within, around);
       }
       var found = below(units, at, outer, names, number);
       // a numbered paragraph coded as a point
@@ -183,20 +202,13 @@ public record Location(String code) {
     return at.isEmpty() ? Optional.empty() : Optional.of(new Found(List.of(at), within));
   }
 
-  /** Returns the eId of the act's one annex, or null if it has none or several. */
-  private static @Nullable String oneAnnex(List<String> eIds) {
-    var annexes = eIds.stream().filter(e -> e.startsWith("anx") && !e.contains("/")).toList();
-    return annexes.size() == 1 ? annexes.getFirst() : null;
-  }
-
   /**
    * Returns each unit of a range of points, for example {@code 11.3.2-11.3.5}, below {@code at}.
    * Returns empty if an end finds no unit or several. If {@code around}, and neither end is there,
    * returns {@code at} as the unit that holds the range.
    */
   private static Optional<Found> range(
-      List<String> eIds,
-      Set<String> units,
+      Units units,
       String at,
       @Nullable String outer,
       List<String> names,
@@ -209,7 +221,8 @@ public record Location(String code) {
     if (first.size() == 1 && last.size() == 1) {
       return Optional.of(
           new Found(
-              eIds.subList(eIds.indexOf(first.getFirst()), eIds.indexOf(last.getFirst()) + 1),
+              units.eIds.subList(
+                  units.eIds.indexOf(first.getFirst()), units.eIds.indexOf(last.getFirst()) + 1),
               within));
     }
     return around && first.isEmpty() && last.isEmpty() ? held(at) : Optional.empty();
@@ -226,7 +239,7 @@ public record Location(String code) {
    * </ul>
    */
   private static Optional<Found> holding(
-      Set<String> units, String at, @Nullable String outer, List<String> names, String number) {
+      Units units, String at, @Nullable String outer, List<String> names, String number) {
     List<String> found = List.of();
     for (var upper = upper(number); upper != null && found.isEmpty(); upper = upper(upper)) {
       found = below(units, at, outer, names, upper);
@@ -269,7 +282,7 @@ public record Location(String code) {
    * and {@code at} is a frame, returns those below {@code outer}, the unit that the frame is in.
    */
   private static List<String> below(
-      Set<String> units, String at, @Nullable String outer, List<String> names, String number) {
+      Units units, String at, @Nullable String outer, List<String> names, String number) {
     var found = below(units, at, names, number);
     return found.isEmpty() && outer != null ? below(units, outer, names, number) : found;
   }
@@ -281,25 +294,20 @@ public record Location(String code) {
    * eIds do not always agree on the case: Cellar writes {@code IXA} and {@code C)} where our eIds
    * have {@code IXa} and {@code c}.
    */
-  private static List<String> below(
-      Set<String> units, String at, List<String> names, String number) {
+  private static List<String> below(Units units, String at, List<String> names, String number) {
     var prefix = at.isEmpty() ? "" : at + "/";
     var steps =
         names.stream()
             .map(name -> name + (name.startsWith("level_") ? "-" : "_") + number)
             .toList();
-    var under = units.stream().filter(unit -> unit.startsWith(prefix)).sorted().toList();
-    var children = under.stream().filter(unit -> unit.indexOf('/', prefix.length()) < 0).toList();
-    for (var among : List.of(children, under)) {
+    for (var children : List.of(true, false)) {
       for (var exact : List.of(true, false)) {
         for (var step : steps) {
           var found =
-              among.stream()
-                  .filter(
-                      unit -> {
-                        var last = unit.substring(unit.lastIndexOf('/') + 1);
-                        return exact ? last.equals(step) : last.equalsIgnoreCase(step);
-                      })
+              units.named(step).stream()
+                  .filter(unit -> unit.startsWith(prefix))
+                  .filter(unit -> !children || unit.indexOf('/', prefix.length()) < 0)
+                  .filter(unit -> !exact || unit.substring(unit.lastIndexOf('/') + 1).equals(step))
                   .toList();
           if (!found.isEmpty()) {
             return found;
@@ -308,6 +316,56 @@ public record Location(String code) {
       }
     }
     return List.of();
+  }
+
+  /**
+   * The units of one text, by their eIds, made ready to find locations among them. To find many
+   * locations in one text, make it one time.
+   */
+  public static final class Units {
+    private final List<String> eIds;
+    private final Set<String> all;
+
+    /**
+     * The units by the last step of their eIds in lower case, each list in the order of the eIds.
+     */
+    private final Map<String, List<String>> byStep = new HashMap<>();
+
+    private final @Nullable String annex;
+
+    private Units(List<String> eIds) {
+      this.eIds = List.copyOf(eIds);
+      this.all = new HashSet<>(eIds);
+      for (var unit : all.stream().sorted().toList()) {
+        byStep
+            .computeIfAbsent(
+                unit.substring(unit.lastIndexOf('/') + 1).toLowerCase(Locale.ROOT),
+                step -> new ArrayList<>())
+            .add(unit);
+      }
+      var annexes = eIds.stream().filter(e -> e.startsWith("anx") && !e.contains("/")).toList();
+      this.annex = annexes.size() == 1 ? annexes.getFirst() : null;
+    }
+
+    /** Returns whether the text has the unit {@code eId}. */
+    boolean contains(String eId) {
+      return all.contains(eId);
+    }
+
+    /** Returns the eId of the one annex of the text, or null if it has none or several. */
+    @Nullable String annex() {
+      return annex;
+    }
+
+    /**
+     * Returns the units whose eIds end with the step {@code step}, in any case, sorted by their
+     * eIds.
+     */
+    List<String> named(String step) {
+      return byStep.getOrDefault(step.toLowerCase(Locale.ROOT), List.of()).stream()
+          .filter(unit -> unit.substring(unit.lastIndexOf('/') + 1).equalsIgnoreCase(step))
+          .toList();
+    }
   }
 
   /** What each code calls its unit, as a page names it. */
