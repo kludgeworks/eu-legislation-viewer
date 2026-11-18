@@ -41,13 +41,30 @@ class SearchRebuild {
   @Scheduled(
       initialDelayString = "${viewer.catalogue.search.start-delay:10s}",
       fixedRateString = "${viewer.catalogue.search.check-every:1h}")
-  void tick() throws SQLException {
+  void tick() {
     try (var job = MDC.putCloseable("job", "search-rebuild")) {
-      var run =
-          Observation.createNotStarted("catalogue.search.rebuild", observations)
-              .lowCardinalityKeyValue("outcome", "running");
-      run.observeChecked(() -> runOnce(run));
+      long start = System.nanoTime();
+      try {
+        rebuildNow();
+      } catch (RuntimeException | SQLException failure) {
+        // Logged here once, with the job's MDC: the scheduler does not log it again.
+        LOG.warn(
+            "Search rebuild failed after {} ms",
+            Duration.ofNanos(System.nanoTime() - start).toMillis(),
+            failure);
+      }
     }
+  }
+
+  /**
+   * Builds and publishes the index if a build is due and no other viewer builds it. Throws what
+   * made the build fail; {@link #tick} logs it.
+   */
+  void rebuildNow() throws SQLException {
+    var run =
+        Observation.createNotStarted("catalogue.search.rebuild", observations)
+            .lowCardinalityKeyValue("outcome", "running");
+    run.observeChecked(() -> runOnce(run));
   }
 
   private void runOnce(Observation run) throws SQLException {

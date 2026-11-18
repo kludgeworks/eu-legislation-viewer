@@ -39,12 +39,15 @@ It issues 39 sequential Cellar queries per build. All instances search the previ
 and use Cellar until the first index is available. Catalogue maintainers review exact names and acronyms in SQL migrations.
 
 Rebuild logs carry the MDC field `job=search-rebuild`. INFO records the start and the committed act count and duration.
-WARN records failures. DEBUG shows skipped runs and row counts for each Cellar extract.
+WARN records a failure once, with its duration and stack trace. DEBUG shows skipped runs and row counts for each Cellar extract.
+A failed build waits 24 hours before it tries again. To build again sooner, run
+`update catalogue_search_rebuild set claimed_at = '-infinity';` in the catalogue's database.
 The viewer's Micrometer registry records these observations:
 
 | Observation | What it measures |
 | --- | --- |
 | `catalogue.search.rebuild` | Duration and outcome of each tick: published, skipped, or failed. |
+| `catalogue.search.extract` | Duration and errors of each Cellar extract, by family. |
 | `catalogue.search.identify` | Time spent looking up a citation or alias. |
 | `catalogue.search.match` | Search duration by act kind, backend, and result. Postgres distinguishes lexical matches, typo matches, and empty pages. |
 

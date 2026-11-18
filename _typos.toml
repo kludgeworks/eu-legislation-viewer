@@ -9,3 +9,6 @@ jornal = "jornal"
 ue = "ue"
 nd = "nd"
 tabl = "tabl"
+# Misspelled search queries that test how search tolerates typos (docs/briefs/postgres-search.md)
+securty = "securty"
+passanger = "passanger"

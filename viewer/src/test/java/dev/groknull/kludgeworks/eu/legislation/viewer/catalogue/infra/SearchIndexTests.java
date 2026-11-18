@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
@@ -123,7 +124,7 @@ class SearchIndexTests {
             })
         .when(cellar)
         .copyCsv(anyString(), any());
-    assertThatThrownBy(job::tick).isInstanceOf(IllegalStateException.class);
+    assertThatThrownBy(job::rebuildNow).isInstanceOf(IllegalStateException.class);
     job.tick();
     assertThat(attempts).hasValue(39);
     assertThat(search.matching(query)).isEqualTo(first);
@@ -210,7 +211,7 @@ class SearchIndexTests {
     for (int rejected : List.of(0, 94)) {
       staged.set(rejected);
       makeRebuildDue();
-      assertThatThrownBy(job::tick)
+      assertThatThrownBy(job::rebuildNow)
           .hasMessageContaining("%d acts staged, 100 previously indexed", rejected);
       assertThat(
               database.queryForObject("select count(*) from catalogue_search_work", Integer.class))
@@ -219,6 +220,13 @@ class SearchIndexTests {
     staged.set(95);
     makeRebuildDue();
     job.tick();
+    assertThat(database.queryForObject("select count(*) from catalogue_search_work", Integer.class))
+        .isEqualTo(95);
+
+    // The scheduled tick logs a failure itself and does not throw it to the scheduler.
+    staged.set(0);
+    makeRebuildDue();
+    assertThatCode(job::tick).doesNotThrowAnyException();
     assertThat(database.queryForObject("select count(*) from catalogue_search_work", Integer.class))
         .isEqualTo(95);
   }
