@@ -43,6 +43,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  *       act, for example {@code ?type=regulation}.
  * </ul>
  *
+ * <p>Each search is logged once at INFO.
+ *
  * <p>The search is kept in the {@link Frame#SEARCH} cookie for a while. The site bar uses it to
  * link back to the results.
  */

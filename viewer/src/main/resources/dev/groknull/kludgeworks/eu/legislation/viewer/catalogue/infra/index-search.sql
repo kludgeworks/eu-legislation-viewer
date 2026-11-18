@@ -8,7 +8,8 @@ query as (
     -- A longer query can name an act cited in another title, such as "GDPR adequate protection Japan".
     select replace(' '||i.typed||' ',' '||a.alias_norm||' ',
       ' '||w.year||'/'||w.natural_number||' ') terms
-    from catalogue_search_alias a join catalogue_search_work w using (celex)
+    from (select celex,is_exact_redirect,regexp_replace(alias_norm,'[^[:alnum:]/]+',' ','g') alias_norm
+          from catalogue_search_alias) a join catalogue_search_work w using (celex)
     where a.is_exact_redirect and i.typed <> a.alias_norm
       and strpos(' '||i.typed||' ',' '||a.alias_norm||' ') > 0
     order by length(a.alias_norm) desc,a.alias_norm limit 1

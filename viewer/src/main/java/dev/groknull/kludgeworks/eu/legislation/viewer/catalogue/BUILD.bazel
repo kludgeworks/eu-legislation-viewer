@@ -49,7 +49,10 @@ java_library(
     name = "infra",
     srcs = glob(["infra/*.java"]),
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
-    runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sparql"],
+    runtime_deps = [
+        "//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sparql",
+        "//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sql",
+    ],
     deps = [
         ":application",
         ":catalogue",

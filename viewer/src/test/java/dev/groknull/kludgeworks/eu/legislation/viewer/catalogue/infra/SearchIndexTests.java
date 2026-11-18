@@ -53,6 +53,21 @@ class SearchIndexTests {
               String csv = answer(queryText);
               if (calls.incrementAndGet() == 1) {
                 // A second viewer ticks while the first still owns the claim.
+                assertThat(
+                        database.queryForObject(
+                            """
+                            select claimed_at > now() - interval '1 minute' and completed_at is null
+                            from catalogue_search_rebuild
+                            """,
+                            Boolean.class))
+                    .isTrue();
+                assertThat(
+                        database.queryForObject(
+                            """
+                            select pg_try_advisory_xact_lock('catalogue_search_rebuild'::regclass::oid::bigint)
+                            """,
+                            Boolean.class))
+                    .isFalse();
                 job.tick();
               }
               sink.copy(new ByteArrayInputStream(csv.getBytes(StandardCharsets.UTF_8)));
@@ -94,15 +109,29 @@ class SearchIndexTests {
     var pastEnd = Search.Query.of("aviation", Search.Kind.ALL, 2, 1).orElseThrow();
     assertThat(search.matching(pastEnd).acts()).isEmpty();
 
-    database.update("update catalogue_search_rebuild set completed_at=now()-interval '2 days'");
-    doAnswer(call -> null).when(cellar).copyCsv(anyString(), any());
+    makeRebuildDue();
+    var attempts = new AtomicInteger();
+    doAnswer(
+            call -> {
+              if (attempts.incrementAndGet() == 39)
+                throw new IllegalStateException("last extract failed");
+              Sparql.CsvSink sink = call.getArgument(1);
+              sink.copy(
+                  new ByteArrayInputStream(
+                      answer(call.getArgument(0)).getBytes(StandardCharsets.UTF_8)));
+              return null;
+            })
+        .when(cellar)
+        .copyCsv(anyString(), any());
     assertThatThrownBy(job::tick).isInstanceOf(IllegalStateException.class);
+    job.tick();
+    assertThat(attempts).hasValue(39);
     assertThat(search.matching(query)).isEqualTo(first);
 
     assertThat(meters.get("catalogue.search.rebuild").tag("outcome", "published").timer().count())
         .isEqualTo(1);
     assertThat(meters.get("catalogue.search.rebuild").tag("outcome", "skipped").timer().count())
-        .isEqualTo(2);
+        .isEqualTo(3);
     assertThat(
             meters
                 .get("catalogue.search.rebuild")
@@ -136,6 +165,93 @@ class SearchIndexTests {
         .isPositive();
     assertThat(meters.get("catalogue.search.identify").tag("method", "citation").timer().count())
         .isPositive();
+    assertThat(
+            meters
+                .get("catalogue.search.extract")
+                .tag("family", "amends")
+                .tag("error", "IllegalStateException")
+                .timer()
+                .count())
+        .isEqualTo(1);
+    assertThat(meters.get("catalogue.search.extract").tag("family", "citations").timer().count())
+        .isEqualTo(2);
+    verifyShrinkGuard();
+  }
+
+  private void verifyShrinkGuard() throws Exception {
+    // Force the cooldown to expire, then exercise the guard against a known 100-act index.
+    database.update(
+        """
+        insert into catalogue_search_work (celex,citation_count)
+        select '32016D' || lpad(n::text,4,'0'),0 from generate_series(1,98) n
+        """);
+    var staged = new AtomicInteger();
+    doAnswer(
+            call -> {
+              String queryText = call.getArgument(0);
+              String csv = answer(queryText).lines().findFirst().orElseThrow() + "\n";
+              if (queryText.contains("3201[5-9]")) {
+                var rows = new StringBuilder(csv);
+                for (int n = 1; n <= staged.get(); n++) {
+                  var celex = "32016D%04d".formatted(n);
+                  if (queryText.contains("SELECT ?celex ?eli"))
+                    rows.append(celex).append(",,,,true\n");
+                  if (queryText.contains("SELECT ?celex ?title"))
+                    rows.append(celex).append(",Example\n");
+                }
+                csv = rows.toString();
+              }
+              Sparql.CsvSink sink = call.getArgument(1);
+              sink.copy(new ByteArrayInputStream(csv.getBytes(StandardCharsets.UTF_8)));
+              return null;
+            })
+        .when(cellar)
+        .copyCsv(anyString(), any());
+    for (int rejected : List.of(0, 94)) {
+      staged.set(rejected);
+      makeRebuildDue();
+      assertThatThrownBy(job::tick)
+          .hasMessageContaining("%d acts staged, 100 previously indexed", rejected);
+      assertThat(
+              database.queryForObject("select count(*) from catalogue_search_work", Integer.class))
+          .isEqualTo(100);
+    }
+    staged.set(95);
+    makeRebuildDue();
+    job.tick();
+    assertThat(database.queryForObject("select count(*) from catalogue_search_work", Integer.class))
+        .isEqualTo(95);
+  }
+
+  private void makeRebuildDue() {
+    database.update(
+        """
+        update catalogue_search_rebuild set claimed_at=now()-interval '3 days',
+          completed_at=now()-interval '2 days'
+        """);
+  }
+
+  @Test
+  @Transactional
+  void expandsHyphenatedAliasOnlyForMatchingLongerQueries() {
+    database.update("update catalogue_search_rebuild set completed_at=now()");
+    database.update(
+        """
+        insert into catalogue_search_work (celex,citation_count)
+        values ('32023R1114',1), ('32024L0002',1)
+        """);
+    database.update(
+        """
+        insert into catalogue_search_expression
+        values ('32024L0002','ENG','Reporting','Reporting','{}',to_tsvector('english','reporting 2023/1114'))
+        """);
+    assertThat(search.identified("Markets in Crypto-Assets"))
+        .contains(new ActIdentifier("32023R1114"));
+    var typed = "markets in crypto-assets reporting";
+    assertThat(search.identified(typed)).isEmpty();
+    assertThat(search.matching(Search.Query.of(typed, Search.Kind.ALL, 0, 5).orElseThrow()).acts())
+        .extracting(match -> match.id().celex())
+        .containsExactly("32024L0002");
   }
 
   @Test

@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_ALIAS;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_WORK;
+import static org.jooq.impl.DSL.substring;
+
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
@@ -17,6 +21,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.jooq.DSLContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -27,12 +32,14 @@ import org.springframework.transaction.support.TransactionOperations;
 @Component
 class PostgresSearch implements Search {
   private static final Logger LOG = LoggerFactory.getLogger(PostgresSearch.class);
-  private static final String SEARCH = Sparql.template(PostgresSearch.class, "index-search.sql");
+  private static final String SEARCH = SearchSql.read("index-search.sql");
+  private static final Pattern SEARCH_WORD = Pattern.compile("[\\p{L}\\p{N}]+");
   private static final Pattern CITATION =
       Pattern.compile(
           "(?:(?:(implementing|delegated)\\s+)?(regulation|directive|decision)\\s+(?:\\((?:eu|ec|eec)\\)\\s+)?(?:no\\s+)?)?"
               + "(\\d{1,4})\\s*/\\s*(\\d{1,4})(?:/(?:eu|ec|eec))?",
           Pattern.CASE_INSENSITIVE);
+  private final DSLContext catalogue;
   private final JdbcTemplate db;
   private final CellarSearch cellar;
   private final TransactionOperations transactions;
@@ -40,11 +47,13 @@ class PostgresSearch implements Search {
   private final ObservationRegistry observations;
 
   PostgresSearch(
+      DSLContext catalogue,
       JdbcTemplate db,
       Sparql sparql,
       TransactionOperations transactions,
       ObservationRegistry observations) {
     this.observations = observations;
+    this.catalogue = catalogue;
     this.db = db;
     this.transactions = transactions;
     this.cellar = new CellarSearch(sparql);
@@ -84,32 +93,41 @@ class PostgresSearch implements Search {
           && left >= 50) {
         left += 1900;
       }
+      var work = CATALOGUE_SEARCH_WORK;
+      var condition =
+          work.YEAR
+              .eq(left)
+              .and(work.NATURAL_NUMBER.eq(right))
+              .or(work.YEAR.eq(right).and(work.NATURAL_NUMBER.eq(left)));
+      if (!kind.isEmpty()) {
+        condition = condition.and(substring(work.CELEX, 6, 1).eq(kind));
+      }
+      if (!subtype.isEmpty()) {
+        condition =
+            condition.and(
+                work.RESOURCE_TYPE.endsWith("_" + subtype).or(work.RESOURCE_TYPE.eq(subtype)));
+      }
       ids =
-          db.query(
-              """
-              select celex from catalogue_search_work
-              where ((year,natural_number)=(?,?) or (year,natural_number)=(?,?))
-                and (?='' or substring(celex,6,1)=?)
-                and (?='' or split_part(resource_type,'_',-1)=?) limit 2
-              """,
-              (row, number) -> new ActIdentifier(row.getString(1)),
-              left,
-              right,
-              right,
-              left,
-              kind,
-              kind,
-              subtype,
-              subtype);
+          catalogue
+              .select(work.CELEX)
+              .from(work)
+              .where(condition)
+              .limit(2)
+              .fetch(row -> new ActIdentifier(row.value1()));
     } else {
+      var alias = CATALOGUE_SEARCH_ALIAS;
+      var work = CATALOGUE_SEARCH_WORK;
       ids =
-          db.query(
-              """
-              select a.celex from catalogue_search_alias a join catalogue_search_work w using (celex)
-              where a.alias_norm=? and a.is_exact_redirect
-              """,
-              (row, number) -> new ActIdentifier(row.getString(1)),
-              typed.strip().toLowerCase(Locale.ROOT).replaceAll("\\s+", " "));
+          catalogue
+              .select(alias.CELEX)
+              .from(alias)
+              .join(work)
+              .on(work.CELEX.eq(alias.CELEX))
+              .where(
+                  alias.ALIAS_NORM.eq(
+                      typed.strip().toLowerCase(Locale.ROOT).replaceAll("\\s+", " ")))
+              .and(alias.IS_EXACT_REDIRECT)
+              .fetch(row -> new ActIdentifier(row.value1()));
     }
     return ids.size() == 1 ? Optional.of(ids.getFirst()) : Optional.empty();
   }
@@ -144,7 +162,6 @@ class PostgresSearch implements Search {
   }
 
   private Found local(Query query, Observation observation) {
-    var words = query.terms();
     var kind =
         switch (query.kind()) {
           case REGULATION -> "R";
@@ -157,11 +174,21 @@ class PostgresSearch implements Search {
         db.query(
             SEARCH,
             page,
-            words,
+            terms(query),
             kind,
-            query.words().size() <= 3 && query.typedLength() <= 28,
+            query.words().size() <= 3 && query.typed().length() <= 28,
             (long) query.size() + 1,
             query.offset()));
+  }
+
+  private static String terms(Query query) {
+    // Preserve slashes inside citations, discarding punctuation outside the first ten words.
+    var lower = query.typed().toLowerCase(Locale.ROOT);
+    var words = SEARCH_WORD.matcher(lower).results().limit(Search.Query.MOST_WORDS).toList();
+    if (words.isEmpty()) return "";
+    return lower
+        .substring(words.getFirst().start(), words.getLast().end())
+        .replaceAll("[^\\p{L}\\p{N}/]+", " ");
   }
 
   private static Found read(ResultSet rows, int limit, Observation observation)

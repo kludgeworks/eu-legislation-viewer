@@ -70,15 +70,13 @@ public interface Search {
    *     letters and digits.
    * @param kind the kind of act
    * @param offset how many matches come before the page
-   * @param terms normalized words for Postgres, retaining slashes in citations
-   * @param typedLength length of the trimmed input, including punctuation, for the typo lookup
-   *     budget
+   * @param typed the trimmed original input, including punctuation
    * @param size the most matches that the page has
    */
   @ValueObject
-  record Query(List<String> words, Kind kind, int offset, int size, String terms, int typedLength) {
+  record Query(List<String> words, Kind kind, int offset, int size, String typed) {
     public Query(List<String> words, Kind kind, int offset, int size) {
-      this(words, kind, offset, size, String.join(" ", words), String.join(" ", words).length());
+      this(words, kind, offset, size, String.join(" ", words));
     }
 
     /** Matches a word of letters and digits, in any script. */
@@ -108,11 +106,7 @@ public interface Search {
         return Optional.empty();
       }
       var words = tokens.stream().map(MatchResult::group).toList();
-      var terms =
-          lower
-              .substring(tokens.getFirst().start(), tokens.getLast().end())
-              .replaceAll("[^\\p{L}\\p{N}/]+", " ");
-      return Optional.of(new Query(words, kind, offset, size, terms, text.strip().length()));
+      return Optional.of(new Query(words, kind, offset, size, text.strip()));
     }
   }
 

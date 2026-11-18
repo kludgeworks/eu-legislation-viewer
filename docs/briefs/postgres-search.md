@@ -24,3 +24,9 @@ Replaying the archived Spike 6 and 7 implementations identified the two typo que
 The viewer also misses three prototype queries that the spike answered with topical aliases: “liquids in hand luggage”, “cookie consent privacy”, and “right to be forgotten”. The production seed contains act identifiers and short names. Catalogue maintainers can update it through reviewed migrations.
 
 The Publications Office documents automated access to Cellar. A recurring bulk-query allowance remains unconfirmed. The viewer can run the job on an enabled instance and issue one request at a time. [Cellar access guidance](https://op.europa.eu/en/web/eu-vocabularies/cellar)
+
+## Rebuild operation
+
+One viewer holds a PostgreSQL session advisory lock while building the index. It records the attempt before contacting Cellar and commits each extract into session-private staging tables. After a failed attempt the hourly check waits until 24 hours after the claim to retry. After a successful build the next nightly boundary makes the index eligible again.
+
+The final transaction checks that the staged inventory is nonempty and contains at least 95% of the previously published act count, applies the index changes, and records completion. Readers keep the last published index if the build fails. The `catalogue.search.extract` observation records duration and errors by extract family, including `citations`.
