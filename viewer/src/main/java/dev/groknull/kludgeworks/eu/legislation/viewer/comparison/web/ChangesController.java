@@ -412,30 +412,22 @@ class ChangesController {
     var started = System.nanoTime();
     var preparation = texts.preparation(ends.act, ends.language);
     var only = ends.only;
-    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
-    var earlier = step == null ? ends.from : ends.earlier(step);
-    var later = step == null ? ends.to : step;
-    if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
-        || !(preparation.texts().get(later) instanceof Text.Ready after)) {
-      throw Requests.notFound();
-    }
-    if (Release.notModified(
-        request,
-        response,
-        Release.REVALIDATED,
-        release.etag(before.text(), after.text(), DifferVersion.value()))) {
+    var pair = ready(ends, preparation);
+    var earlier = pair.earlier();
+    var later = pair.later();
+    if (notModified(request, response, pair)) {
       return null;
     }
     if (outline) {
       var entry =
           content
-              .outline(after.text())
+              .outline(pair.after())
               .flatMap(each -> entry(each.entries(), eId))
               .orElseThrow(Requests::notFound);
       return templates.comparisonAnnexoutline(entry.entries(), page).render();
     }
     var difference =
-        comparisons.difference(before.text(), after.text(), eId).orElseThrow(Requests::notFound);
+        comparisons.difference(pair.before(), pair.after(), eId).orElseThrow(Requests::notFound);
     if (table == null && rows == null) {
       var html = render(new ChangesView.Shown(0, difference, "").folded(page));
       LOG.info(
@@ -518,22 +510,14 @@ class ChangesController {
     var started = System.nanoTime();
     var preparation = texts.preparation(ends.act, ends.language);
     var only = ends.only;
-    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
-    var earlier = step == null ? ends.from : ends.earlier(step);
-    var later = step == null ? ends.to : step;
-    if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
-        || !(preparation.texts().get(later) instanceof Text.Ready after)) {
-      throw Requests.notFound();
-    }
-    if (Release.notModified(
-        request,
-        response,
-        Release.REVALIDATED,
-        release.etag(before.text(), after.text(), DifferVersion.value()))) {
+    var pair = ready(ends, preparation);
+    var earlier = pair.earlier();
+    var later = pair.later();
+    if (notModified(request, response, pair)) {
       return null;
     }
     var found =
-        comparisons.between(before.text(), after.text()).orElseThrow(Requests::notFound).at(eIds);
+        comparisons.between(pair.before(), pair.after()).orElseThrow(Requests::notFound).at(eIds);
     String lead = null;
     if (found.isEmpty() && only != null) {
       // A chapter that the annex keeps flat has no difference of its own. Show the differences in
@@ -638,6 +622,46 @@ class ChangesController {
   }
 
   /** Returns the entry of the unit {@code eId} in {@code entries}, at any depth. */
+  /**
+   * Returns the two texts of a part of the page of an amending act, or of a comparison: the text
+   * before {@code ends.only} and the first text with it, or the texts of the two ends. Throws 404
+   * if either text is not built.
+   */
+  private static ReadyTexts ready(Ends ends, Preparation preparation) {
+    var only = ends.only;
+    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
+    var earlier = step == null ? ends.from : ends.earlier(step);
+    var later = step == null ? ends.to : step;
+    if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
+        || !(preparation.texts().get(later) instanceof Text.Ready after)) {
+      throw Requests.notFound();
+    }
+    return new ReadyTexts(earlier, later, before.text(), after.text());
+  }
+
+  /**
+   * Returns whether the browser has the part for {@code texts} already. Then the answer is "not
+   * modified", with no body.
+   */
+  private boolean notModified(
+      HttpServletRequest request, HttpServletResponse response, ReadyTexts texts) {
+    return Release.notModified(
+        request,
+        response,
+        Release.REVALIDATED,
+        release.etag(texts.before(), texts.after(), DifferVersion.value()));
+  }
+
+  /**
+   * The two built texts of a part.
+   *
+   * @param earlier the version of the earlier text
+   * @param later the version of the later text
+   * @param before the earlier text
+   * @param after the later text
+   */
+  private record ReadyTexts(Version earlier, Version later, TextId before, TextId after) {}
+
   private static Optional<Outline.Entry> entry(List<Outline.Entry> entries, String eId) {
     for (var each : entries) {
       if (each.eId().equals(eId)) {
