@@ -1241,7 +1241,7 @@ form.find-act .ex a {
 
 /* The history of an act (catalogue/history.jte) and the page of one amending act
  * (catalogue/amending.jte). The status line gives the state on the day. The list has one row for
- * each amending act. Amber is only on a state, a stage or a change that does not apply on the
+ * each amending act. Amber is only on a state, a group or a change that does not apply on the
  * day. A state that the data does not give is grey, with a broken outline. */
 section.history {
   padding: 14px 0 40px;
@@ -1385,14 +1385,14 @@ table.acts td p {
   padding-left: 0;
 }
 
-nav.stages {
+nav.groups {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin: 12px 0;
 }
 
-a.stage {
+a.group {
   display: inline-flex;
   gap: 8px;
   align-items: center;
@@ -1405,25 +1405,25 @@ a.stage {
   text-decoration: none;
 }
 
-a.stage:hover {
+a.group:hover {
   border-color: var(--ink);
 }
 
-a.stage .count {
+a.group .count {
   font-weight: 600;
 }
 
-a.stage.warn {
+a.group.warn {
   border-color: var(--warn-stripe);
   background: var(--warn-bg);
   color: var(--warn-ink);
 }
 
-a.stage.open {
+a.group.open {
   border-style: dashed;
 }
 
-a.stage[aria-current] {
+a.group[aria-current] {
   border-color: var(--accent-fill);
   box-shadow: inset 0 0 0 1px var(--accent-fill);
 }

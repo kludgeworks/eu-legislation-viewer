@@ -21,7 +21,7 @@ class ActHistoryTest {
   private static final ActIdentifier BASE = new ActIdentifier("32018R1862");
 
   /** Enters into force and applies in part on one day. Applies in full from a later day. */
-  private static final ActIdentifier STAGED = new ActIdentifier("32022R1190");
+  private static final ActIdentifier PHASED = new ActIdentifier("32022R1190");
 
   /** Applies from a day that a clause sets by an event. Cellar does not know the day. */
   private static final ActIdentifier EVENT = new ActIdentifier("32021R1133");
@@ -36,7 +36,7 @@ class ActHistoryTest {
   private static final ActIdentifier POLISH = new ActIdentifier("32021R1150");
 
   private static final ActIdentifier CORRIGENDUM = new ActIdentifier("32018R1862R(01)");
-  private static final ActIdentifier CORRIGENDUM_OF_STAGED = new ActIdentifier("32022R1190R(01)");
+  private static final ActIdentifier CORRIGENDUM_OF_PHASED = new ActIdentifier("32022R1190R(01)");
   private static final ActIdentifier GERMAN_CORRIGENDUM = new ActIdentifier("32018R1862R(02)");
 
   private static final LocalDate IN_PART = LocalDate.of(2022, 8, 1);
@@ -57,10 +57,10 @@ class ActHistoryTest {
                       LocalDate.of(2018, 12, 27), BASE, EnumSet.allOf(Language.class), Map.of()),
                   version("2019-06-11", SIMPLE, CORRIGENDUM, GERMAN_CORRIGENDUM),
                   version("2020-05-01", UNDATED),
-                  version("2022-08-01", STAGED, CORRIGENDUM_OF_STAGED))),
+                  version("2022-08-01", PHASED, CORRIGENDUM_OF_PHASED))),
           List.of(),
           Map.of(
-              STAGED,
+              PHASED,
               List.of(
                   date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false),
                   date(IN_PART, ActDate.Kind.APPLICATION, true),
@@ -74,9 +74,9 @@ class ActHistoryTest {
               POLISH,
               List.of(date(LocalDate.of(2021, 8, 3), ActDate.Kind.ENTRY_INTO_FORCE, false))),
           List.of(
-              change(STAGED, "AR 79 PA 7", IN_PART, Set.of()),
-              change(STAGED, "AR 3 PO 8", IN_FULL, Set.of()),
-              change(STAGED, "AR 20 PA 1", IN_FULL, Set.of()),
+              change(PHASED, "AR 79 PA 7", IN_PART, Set.of()),
+              change(PHASED, "AR 3 PO 8", IN_FULL, Set.of()),
+              change(PHASED, "AR 20 PA 1", IN_FULL, Set.of()),
               change(EVENT, "AR 18a", null, Set.of()),
               change(POLISH, "AR 4", LocalDate.of(2021, 8, 3), Set.of(Language.POL))),
           Map.of(
@@ -108,9 +108,9 @@ class ActHistoryTest {
 
   @Test
   void theAmendingActsAreNewestFirstWithoutCorrigendaAndWithoutActsForOtherLanguages() {
-    assertThat(ACT.amendingActs(Language.ENG)).containsExactly(STAGED, EVENT, UNDATED, SIMPLE);
+    assertThat(ACT.amendingActs(Language.ENG)).containsExactly(PHASED, EVENT, UNDATED, SIMPLE);
     assertThat(ACT.amendingActs(Language.POL))
-        .containsExactly(STAGED, POLISH, EVENT, UNDATED, SIMPLE);
+        .containsExactly(PHASED, POLISH, EVENT, UNDATED, SIMPLE);
   }
 
   @Test
@@ -118,13 +118,13 @@ class ActHistoryTest {
     assertThat(ACT.amendingActs(Language.ENG, LocalDate.of(2020, 1, 1), LocalDate.of(2021, 12, 31)))
         .containsExactly(EVENT, UNDATED);
     assertThat(ACT.amendingActs(Language.ENG, LocalDate.of(2022, 1, 1), null))
-        .containsExactly(STAGED);
+        .containsExactly(PHASED);
   }
 
   @Test
   void theChangesAreInTheOrderOfTheTextAndADeletedPlaceIsWhereItsUnitIs() {
     var units = List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1", "art_79");
-    var changes = ACT.changesBy(STAGED, Language.ENG);
+    var changes = ACT.changesBy(PHASED, Language.ENG);
     assertThat(Act.inTextOrder(changes, units))
         .extracting(change -> change.location().code())
         .containsExactly("AR 3 PO 8", "AR 20 PA 1", "AR 79 PA 7");
@@ -132,7 +132,7 @@ class ActHistoryTest {
 
   @Test
   void theFirstVersionThatIntegratesAnActIsTheFirstTextWithItsChanges() {
-    assertThat(ACT.integrating(STAGED, Language.ENG))
+    assertThat(ACT.integrating(PHASED, Language.ENG))
         .map(Version::date)
         .hasValue(LocalDate.of(2022, 8, 1));
     assertThat(ACT.integrating(EVENT, Language.ENG)).isEmpty();
@@ -161,13 +161,13 @@ class ActHistoryTest {
     assertThat(shared.integratedWith(SIMPLE, Language.ENG)).containsExactly(EVENT);
     assertThat(shared.integratedWith(EVENT, Language.ENG)).containsExactly(SIMPLE);
     // 2022/1190 is the only act of its version. No version integrates 2021/1133.
-    assertThat(ACT.integratedWith(STAGED, Language.ENG)).isEmpty();
+    assertThat(ACT.integratedWith(PHASED, Language.ENG)).isEmpty();
     assertThat(ACT.integratedWith(EVENT, Language.ENG)).isEmpty();
   }
 
   @Test
   void theUnitsOfAChangeAreInTheTextWithTheActOrInTheTextBeforeItForADeletedPlace() {
-    var change = change(STAGED, "AR 20 PA 1", IN_FULL, Set.of());
+    var change = change(PHASED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");
     var without = List.of("art_20");
     assertThat(Act.units(change, with, without)).containsExactly("art_20/par_1");
@@ -181,35 +181,35 @@ class ActHistoryTest {
   void theCorrigendaOfAnActAreTheOnesPublishedInTheLanguage() {
     assertThat(ACT.corrigendaOf(BASE, Language.ENG)).containsExactly(CORRIGENDUM);
     assertThat(ACT.corrigendaOf(BASE, Language.DEU)).containsExactly(GERMAN_CORRIGENDUM);
-    assertThat(ACT.corrigendaOf(STAGED, Language.ENG)).containsExactly(CORRIGENDUM_OF_STAGED);
+    assertThat(ACT.corrigendaOf(PHASED, Language.ENG)).containsExactly(CORRIGENDUM_OF_PHASED);
   }
 
   @Test
   void theChangesOfAnActAreItsChangesToTheTextInTheLanguage() {
-    assertThat(ACT.changesBy(STAGED, Language.ENG)).hasSize(3);
+    assertThat(ACT.changesBy(PHASED, Language.ENG)).hasSize(3);
     assertThat(ACT.changesBy(POLISH, Language.ENG)).isEmpty();
     assertThat(ACT.changesBy(POLISH, Language.POL)).hasSize(1);
   }
 
   @Test
   void anActIsNotInForceBeforeItsEntryIntoForce() {
-    assertThat(ACT.stateOn(STAGED, Set.of(IN_FULL), IN_PART.minusDays(1)))
+    assertThat(ACT.stateOn(PHASED, Set.of(IN_FULL), IN_PART.minusDays(1)))
         .isEqualTo(State.NOT_IN_FORCE);
   }
 
   @Test
   void aChangeWithADayAppliesFromThatDay() {
-    assertThat(ACT.stateOn(STAGED, Set.of(IN_PART), IN_PART)).isEqualTo(State.APPLIES);
-    assertThat(ACT.stateOn(STAGED, Set.of(IN_FULL), IN_PART)).isEqualTo(State.NOT_APPLYING);
-    assertThat(ACT.stateOn(STAGED, Set.of(IN_FULL), IN_FULL)).isEqualTo(State.APPLIES);
-    assertThat(ACT.stageOf(STAGED, Set.of(IN_FULL))).hasValue(IN_FULL);
+    assertThat(ACT.stateOn(PHASED, Set.of(IN_PART), IN_PART)).isEqualTo(State.APPLIES);
+    assertThat(ACT.stateOn(PHASED, Set.of(IN_FULL), IN_PART)).isEqualTo(State.NOT_APPLYING);
+    assertThat(ACT.stateOn(PHASED, Set.of(IN_FULL), IN_FULL)).isEqualTo(State.APPLIES);
+    assertThat(ACT.changeAppliesFrom(PHASED, Set.of(IN_FULL))).hasValue(IN_FULL);
   }
 
   @Test
-  void aChangeWithoutADayOfAnActInStagesHasNoKnownStateBetweenTheStages() {
-    assertThat(ACT.stageOf(STAGED, Set.of())).isEmpty();
-    assertThat(ACT.stateOn(STAGED, Set.of(), IN_PART)).isEqualTo(State.NOT_KNOWN);
-    assertThat(ACT.stateOn(STAGED, Set.of(), IN_FULL)).isEqualTo(State.APPLIES);
+  void aChangeWithoutADayOfAnActInPartsHasNoKnownStateBetweenTheParts() {
+    assertThat(ACT.changeAppliesFrom(PHASED, Set.of())).isEmpty();
+    assertThat(ACT.stateOn(PHASED, Set.of(), IN_PART)).isEqualTo(State.NOT_KNOWN);
+    assertThat(ACT.stateOn(PHASED, Set.of(), IN_FULL)).isEqualTo(State.APPLIES);
   }
 
   @Test
@@ -227,13 +227,13 @@ class ActHistoryTest {
 
   @Test
   void anActStandsAsItsChangesStand() {
-    assertThat(ACT.standingOn(STAGED, Language.ENG, IN_PART))
+    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART))
         .isEqualTo(new Standing(false, 1, 2, 0))
         .extracting(Standing::whole)
         .isEqualTo(Standing.Whole.IN_PART);
-    assertThat(ACT.standingOn(STAGED, Language.ENG, IN_FULL).whole())
+    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_FULL).whole())
         .isEqualTo(Standing.Whole.APPLIES);
-    assertThat(ACT.standingOn(STAGED, Language.ENG, IN_PART.minusDays(1)).whole())
+    assertThat(ACT.standingOn(PHASED, Language.ENG, IN_PART.minusDays(1)).whole())
         .isEqualTo(Standing.Whole.NOT_IN_FORCE);
     assertThat(ACT.standingOn(EVENT, Language.ENG, IN_PART).whole())
         .isEqualTo(Standing.Whole.NOT_KNOWN);
@@ -259,7 +259,7 @@ class ActHistoryTest {
               "art_22",
               "art_22/par_1"),
           Map.of(
-              STAGED,
+              PHASED,
               Set.of("art_20/par_1"),
               SIMPLE,
               Set.of("art_20/par_1", "art_22/par_1"),
@@ -280,7 +280,7 @@ class ActHistoryTest {
         .extracting(change -> change.location().code())
         .containsExactly("AR 20 PA 1");
     assertThat(history.marking()).containsExactly(SIMPLE);
-    assertThat(history.acts()).containsExactly(STAGED, SIMPLE);
+    assertThat(history.acts()).containsExactly(PHASED, SIMPLE);
   }
 
   @Test

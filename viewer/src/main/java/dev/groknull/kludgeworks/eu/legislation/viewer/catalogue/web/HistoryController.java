@@ -90,8 +90,8 @@ class HistoryController {
   }
 
   /**
-   * Returns the page of the amending act {@code celex} on the day {@code on}. If {@code stage} is
-   * given, the page shows only the changes of that stage.
+   * Returns the page of the amending act {@code celex} on the day {@code on}. If {@code applies} is
+   * given, the page shows only the changes that apply from that day.
    */
   @GetMapping(path = HISTORY + "/{celex}", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -103,7 +103,7 @@ class HistoryController {
       @PathVariable String celex,
       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate on,
-      @RequestParam(required = false) @Nullable String stage,
+      @RequestParam(required = false) @Nullable String applies,
       HttpServletRequest request) {
     var language = Requests.language(code);
     var act = act(type, year, number);
@@ -127,7 +127,7 @@ class HistoryController {
                 day,
                 today,
                 language,
-                stage,
+                applies,
                 latest(act, language, marks),
                 step(act, amending, language, marks)))
         .render();

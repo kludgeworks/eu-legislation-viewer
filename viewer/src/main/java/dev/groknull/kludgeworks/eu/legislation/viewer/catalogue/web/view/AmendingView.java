@@ -2,8 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
@@ -22,8 +24,8 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The page of one amending act: what it changed in an act, and the state of each change on a day.
- * The rules are the act's: {@link Act#changesBy}, {@link Act#stateOn} and {@link Act#stageOf}. This
- * view puts them into words.
+ * The rules are the act's: {@link Act#changesBy}, {@link Act#stateOn} and {@link
+ * Act#changeAppliesFrom}. This view puts them into words.
  *
  * @param title the title of the page
  * @param heading the heading, for example "What 2022/1190 changed in 2018/1862"
@@ -38,9 +40,12 @@ import org.jspecify.annotations.Nullable;
  * @param base how the amended act is cited
  * @param state how the amending act stands on the day, as sentences
  * @param dates its dates, with the clause that sets them
- * @param stages the stages of its changes, each a link that limits the page. The first is all of
- *     its changes. Empty if Cellar lists no changed place.
- * @param runs its changes, in the order of the text, limited to the stage that is on. Changes that
+ * @param clause a link to the article that sets the day from which the act applies, where Cellar
+ *     does not know the day. Null in each other case.
+ * @param groups its changes in groups, by the day from which they apply. Each is a link that limits
+ *     the page. The first is all of its changes. Empty if the changes are in one group only: a
+ *     limit would change nothing.
+ * @param runs its changes, in the order of the text, limited to the group that is on. Changes that
  *     follow each other and have the same state are one run, so the page says the state one time.
  * @param ordered whether the changes are in the order of the text. They are in the order of the
  *     data while no text of the act is built.
@@ -65,7 +70,8 @@ public record AmendingView(
     String base,
     String state,
     String dates,
-    List<Stage> stages,
+    @Nullable Clause clause,
+    List<Group> groups,
     List<Run> runs,
     boolean ordered,
     boolean open,
@@ -75,11 +81,11 @@ public record AmendingView(
   /** The page shows the wording of each change when it opens, up to this many changes. */
   private static final int OPEN = 25;
 
-  /** The value of the stage parameter for the changes whose stage the data does not give. */
-  public static final String NO_STAGE = "none";
+  /** The value of the parameter for the changes whose day of application the data does not give. */
+  public static final String NOT_KNOWN = "unknown";
 
   public AmendingView {
-    stages = List.copyOf(stages);
+    groups = List.copyOf(groups);
     runs = List.copyOf(runs);
     corrigenda = List.copyOf(corrigenda);
   }
@@ -87,7 +93,8 @@ public record AmendingView(
   /**
    * Returns the page of {@code amending} for {@code act} on {@code day}, in {@code language}.
    *
-   * @param stage the stage that limits the page: a day, or {@link #NO_STAGE}. Null for all changes.
+   * @param group the day of application that limits the page, or {@link #NOT_KNOWN}. Null for all
+   *     changes.
    * @param text the marks of the latest built text of the act, which give the order of the text.
    *     Null if no text is built.
    * @param step the two texts that show the wording of the changes. Null if they are not built, or
@@ -99,7 +106,7 @@ public record AmendingView(
       LocalDate day,
       LocalDate today,
       Language language,
-      @Nullable String stage,
+      @Nullable String group,
       @Nullable TextMarks text,
       @Nullable Step step) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
@@ -118,7 +125,7 @@ public record AmendingView(
                 Links.compare(eli, language), step.from(), step.to(), amending.celex(), null);
     var shown =
         inOrder.stream()
-            .filter(change -> stage == null || stage.equals(key(act, amending, change)))
+            .filter(change -> group == null || group.equals(key(act, amending, change)))
             .toList();
     return new AmendingView(
         cited + " in " + act.cited(act.id()) + " · on " + Dates.inShort(day),
@@ -141,7 +148,8 @@ public record AmendingView(
                 : " It changed "
                     + (all.size() == 1 ? "1 provision." : all.size() + " provisions.")),
         States.dates(amending, act.applying(amending, Set.of()).orElse(null)),
-        stages(act, amending, all, day, past, page, stage),
+        clause(act, amending, language),
+        groups(act, amending, all, day, past, page, group),
         runs(
             shown.stream()
                 .map(change -> change(act, amending, change, day, past, compare, step))
@@ -156,12 +164,14 @@ public record AmendingView(
             .toList());
   }
 
-  /** Returns the value of the stage parameter for {@code change}: its day, or {@link #NO_STAGE}. */
+  /** Returns the group of {@code change}: the day from which it applies, or {@link #NOT_KNOWN}. */
   private static String key(Act act, ActIdentifier amending, Amendment change) {
-    return act.stageOf(amending, Act.days(change)).map(LocalDate::toString).orElse(NO_STAGE);
+    return act.changeAppliesFrom(amending, Act.days(change))
+        .map(LocalDate::toString)
+        .orElse(NOT_KNOWN);
   }
 
-  private static List<Stage> stages(
+  private static List<Group> groups(
       Act act,
       ActIdentifier amending,
       List<Amendment> all,
@@ -169,35 +179,72 @@ public record AmendingView(
       boolean past,
       String page,
       @Nullable String on) {
-    if (all.isEmpty()) {
-      return List.of();
-    }
     Map<Optional<LocalDate>, Integer> counts =
         new TreeMap<>(
             Comparator.comparing(
                 (Optional<LocalDate> each) -> each.orElse(LocalDate.MAX),
                 Comparator.naturalOrder()));
-    all.forEach(change -> counts.merge(act.stageOf(amending, Act.days(change)), 1, Integer::sum));
+    all.forEach(
+        change -> counts.merge(act.changeAppliesFrom(amending, Act.days(change)), 1, Integer::sum));
+    if (counts.size() < 2) {
+      return List.of();
+    }
     var separator = page.contains("?") ? "&" : "?";
-    var stages = new ArrayList<Stage>();
-    stages.add(new Stage("All", all.size(), page, on == null, null));
+    var groups = new ArrayList<Group>();
+    groups.add(new Group("All changes", all.size(), page, on == null, null));
     counts.forEach(
         (from, count) -> {
-          var key = from.map(LocalDate::toString).orElse(NO_STAGE);
+          var key = from.map(LocalDate::toString).orElse(NOT_KNOWN);
           var state = from.map(each -> act.stateOn(amending, Set.of(each), day));
-          stages.add(
-              new Stage(
-                  from.map(each -> label(state.orElseThrow(), each, past))
-                      .orElse("Stage not given by the data"),
+          groups.add(
+              new Group(
+                  from.map(each -> label(state.orElseThrow(), each, past)).orElse("Day not known"),
                   count,
-                  page + separator + "stage=" + key,
+                  page + separator + "applies=" + key,
                   key.equals(on),
                   state.isPresent() ? States.tone(state.get()) : States.OPEN));
         });
-    return stages;
+    return groups;
   }
 
-  /** Returns the label of the stage that starts on {@code from}. */
+  /**
+   * Returns a link to the article of {@code amending} that sets the day from which it applies.
+   * Returns null if Cellar knows the day, or if it names no article. The address is the text of the
+   * act on EUR-Lex, at the anchor of the article: "art_" and its number.
+   */
+  private static @Nullable Clause clause(Act act, ActIdentifier amending, Language language) {
+    return act.applying(amending, Set.of())
+        .flatMap(
+            applying ->
+                switch (applying) {
+                  case Applying.SetBy set ->
+                      set.dates().stream()
+                          .flatMap(date -> date.clause().provisions().stream())
+                          .filter(each -> each.type() == ActDate.Provision.Type.ARTICLE)
+                          .filter(each -> !article(each).isEmpty())
+                          .findFirst()
+                          .map(
+                              each ->
+                                  new Clause(
+                                      "Read " + each.cited(),
+                                      act.eurLex(amending, language) + "#art_" + article(each)));
+                  case Applying.From _, Applying.InParts _, Applying.InForce _ ->
+                      Optional.<Clause>empty();
+                })
+        .orElse(null);
+  }
+
+  /** Returns the number of the article of {@code provision}: 2 for Article 2.2(f). */
+  private static String article(ActDate.Provision provision) {
+    var number = provision.number() == null ? "" : provision.number();
+    var end = 0;
+    while (end < number.length() && Character.isDigit(number.charAt(end))) {
+      end++;
+    }
+    return number.substring(0, end);
+  }
+
+  /** Returns the label of the group of the changes that apply from {@code from}. */
   private static String label(State state, LocalDate from, boolean past) {
     var day = Dates.inWords(from);
     return switch (state) {
@@ -272,15 +319,23 @@ public record AmendingView(
   }
 
   /**
-   * A stage of the changes, as a link that limits the page.
+   * The changes that apply from the same day, as a link that limits the page.
    *
-   * @param label what the stage is, for example "Does not apply yet, from 15 October 2026"
+   * @param label what the group is, for example "Does not apply yet, from 15 October 2026"
    * @param count how many changes are in it
-   * @param href the address of the page, limited to the stage
-   * @param on whether the page is limited to this stage now
+   * @param href the address of the page, limited to the group
+   * @param on whether the page is limited to this group now
    * @param tone as {@link Change#tone}
    */
-  public record Stage(String label, int count, String href, boolean on, @Nullable String tone) {}
+  public record Group(String label, int count, String href, boolean on, @Nullable String tone) {}
+
+  /**
+   * A link to the article that sets a day.
+   *
+   * @param label the words of the link, for example "Read Article 3"
+   * @param href the address of the article on EUR-Lex
+   */
+  public record Clause(String label, String href) {}
 
   /**
    * One change of the amending act.

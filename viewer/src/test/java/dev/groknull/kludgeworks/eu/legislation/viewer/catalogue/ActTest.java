@@ -83,7 +83,7 @@ class ActTest {
    * 2024/1689 as published. It enters into force on 1 August 2024, applies in part from 2 February
    * 2025 and in full from 2 August 2026. Article 113 sets one more day that Cellar does not know.
    */
-  private static final Act STAGED =
+  private static final Act PHASED =
       new Act(
           new ActIdentifier("32024R1689"),
           null,
@@ -160,14 +160,14 @@ class ActTest {
   }
 
   @Test
-  void anActAsPublishedThatAppliesInStagesSaysWhenEachStageStarts() {
-    var published = STAGED.timeline().first();
+  void anActAsPublishedThatAppliesInPartsSaysWhenEachPartStarts() {
+    var published = PHASED.timeline().first();
     var inPart = LocalDate.of(2025, 2, 2);
-    assertThat(STAGED.appliesLater(published)).hasValue(inPart);
-    assertThat(STAGED.inPartFrom(inPart)).isTrue();
-    assertThat(STAGED.inFullAfter(inPart)).hasValue(LocalDate.of(2026, 8, 2));
-    assertThat(STAGED.inPartFrom(LocalDate.of(2026, 8, 2))).isFalse();
-    assertThat(STAGED.unknownDays())
+    assertThat(PHASED.appliesLater(published)).hasValue(inPart);
+    assertThat(PHASED.inPartFrom(inPart)).isTrue();
+    assertThat(PHASED.inFullAfter(inPart)).hasValue(LocalDate.of(2026, 8, 2));
+    assertThat(PHASED.inPartFrom(LocalDate.of(2026, 8, 2))).isFalse();
+    assertThat(PHASED.unknownDays())
         .containsExactly(new ActDate.Provision(ActDate.Provision.Type.ARTICLE, "113"));
   }
 
@@ -199,17 +199,17 @@ class ActTest {
   }
 
   @Test
-  void anActWithADateForAPartAppliesInStagesUnlessCellarGivesTheDayOfTheProvision() {
+  void anActWithADateForAPartAppliesInPartsUnlessCellarGivesTheDayOfTheProvision() {
     assertThat(ACT.applying(SUPPLEMENT, Set.of()))
         .get()
         .isInstanceOfSatisfying(
-            Applying.InStages.class,
-            stages -> {
-              assertThat(stages.first()).isEqualTo(LocalDate.of(2009, 4, 22));
-              assertThat(stages.stages())
+            Applying.InParts.class,
+            parts -> {
+              assertThat(parts.first()).isEqualTo(LocalDate.of(2009, 4, 22));
+              assertThat(parts.starts())
                   .containsExactly(
-                      new Applying.Stage(LocalDate.of(2009, 4, 22), true, false),
-                      new Applying.Stage(LocalDate.of(2009, 6, 1), false, true));
+                      new Applying.Start(LocalDate.of(2009, 4, 22), true, false),
+                      new Applying.Start(LocalDate.of(2009, 6, 1), false, true));
             });
     assertThat(ACT.applying(SUPPLEMENT, Set.of(LocalDate.of(2009, 6, 1))))
         .get()

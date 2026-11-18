@@ -83,7 +83,7 @@ class ChangesPagesTests {
     assertThat(sidenote.select(".made").text()).isEqualTo("Replaced by 2026/449");
     assertThat(sidenote.select(".applies").text())
         .isEqualTo(
-            "2026/449 applies in stages: from 22 March 2026, its entry into force; in part from 1"
+            "2026/449 applies in parts: from 22 March 2026, its entry into force; in part from 1"
                 + " October 2026 · Article 2 of 2026/449 ↗ (opens EUR-Lex) says which part from"
                 + " when");
     assertThat(sidenote.select(".applies a").attr("href"))

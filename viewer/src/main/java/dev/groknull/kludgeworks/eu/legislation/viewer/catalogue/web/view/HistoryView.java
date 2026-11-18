@@ -153,10 +153,10 @@ public record HistoryView(
                               + Dates.inWords(one.day())
                               + States.clauseOn(act, id, one.day())
                               + ".";
-                      case Applying.InStages stages ->
+                      case Applying.InParts parts ->
                           " Its first part applies from "
-                              + Dates.inWords(stages.first())
-                              + States.clauseOn(act, id, stages.first())
+                              + Dates.inWords(parts.first())
+                              + States.clauseOn(act, id, parts.first())
                               + ".";
                       case Applying.SetBy _, Applying.InForce _ -> "";
                     })
@@ -187,7 +187,7 @@ public record HistoryView(
     var id = act.id();
     if (!act.appliesInPartOn(id, day)) {
       return (past ? " was in force." : " is in force.")
-          + " The data does not give the day it applies.";
+          + " The viewer has no date for the day from which it applies.";
     }
     var inPart = past ? " applied in part." : " applies in part.";
     var full = act.inFullAfter(day);

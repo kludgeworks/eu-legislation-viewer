@@ -29,28 +29,28 @@ public sealed interface Applying {
   }
 
   /**
-   * The act applies in stages, and Cellar does not tell which stage a provision is in.
+   * The act applies in parts, and Cellar does not tell which part a provision is in.
    *
-   * @param stages each day on which a stage starts, in order
-   * @param first the first day from which a part of it applies. Its entry into force is a stage,
-   *     but a part applies from it only if no later day is for the whole act.
+   * @param starts each day from which a part applies, in order
+   * @param first the first day from which a part of it applies. Its entry into force is a part, but
+   *     a part applies from it only if no later day is for the whole act.
    * @param dates its dates that have a day
    */
-  record InStages(List<Stage> stages, LocalDate first, List<ActDate> dates) implements Applying {
-    public InStages {
-      stages = List.copyOf(stages);
+  record InParts(List<Start> starts, LocalDate first, List<ActDate> dates) implements Applying {
+    public InParts {
+      starts = List.copyOf(starts);
       dates = List.copyOf(dates);
     }
   }
 
   /**
-   * A day on which a stage starts.
+   * A day on which a part starts.
    *
    * @param day the day
    * @param entryIntoForce whether the day is only its entry into force
    * @param inPart whether each of its dates on that day is for a part
    */
-  record Stage(LocalDate day, boolean entryIntoForce, boolean inPart) {}
+  record Start(LocalDate day, boolean entryIntoForce, boolean inPart) {}
 
   /**
    * The act applies from a day that Cellar does not know. Its clauses set the day, for example by

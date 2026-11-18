@@ -26,8 +26,8 @@ import org.jspecify.annotations.Nullable;
  *       2018/1862."
  *   <li>"2022/1190 was in force and did not apply yet. It applies from 15 October 2026 · Article 2
  *       of 2022/1190. 17 provisions, marked in the text."
- *   <li>"2021/1133 was in force. Article 6 of 2021/1133 sets the day it applies, and the data does
- *       not give that day. 3 provisions, not in this text."
+ *   <li>"2021/1133 was in force. Article 6 of 2021/1133 sets the day from which it applies. The
+ *       viewer has no date for that day. 3 provisions, not in this text."
  * </ul>
  *
  * <p>The acts that get a line are the acts of {@link Act#divergences}: the act itself if it does
@@ -172,8 +172,8 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
             .map(applying -> Wording.clause(applying.dates(), unconfirmed.act()))
             .orElse("");
     return clause.isEmpty()
-        ? "The data does not give the day it applies."
-        : clause + " sets the day it applies, and the data does not give that day.";
+        ? "The viewer has no date for the day from which it applies."
+        : clause + " sets the day from which it applies. The viewer has no date for that day.";
   }
 
   /**

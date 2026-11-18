@@ -29,7 +29,7 @@ class MarksViewTest {
     assertThat(last)
         .get()
         .extracting(Mark::applies)
-        .isEqualTo("applies in stages from 22 March 2026 · Article 2 of 2026/449");
+        .isEqualTo("applies in parts from 22 March 2026 · Article 2 of 2026/449");
   }
 
   @Test

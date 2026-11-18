@@ -53,9 +53,9 @@ public record MarksView(List<Mark> marks) {
 
   /**
    * Returns when {@code amending} applies, with the clause that says so, from {@link Act#applying}.
-   * For example, "applies from 1 April 2023 · Article 2 of 2023/566", or "applies in stages from 22
+   * For example, "applies from 1 April 2023 · Article 2 of 2023/566", or "applies in parts from 22
    * March 2026 · Article 2 of 2026/449". It is the act's date, not the unit's: an act that applies
-   * in stages says when the first stage starts. Returns null if Cellar has no day for it and no
+   * in parts says when the first part starts. Returns null if Cellar has no day for it and no
    * clause that sets one.
    */
   static @Nullable String applies(Act act, ActIdentifier amending) {
@@ -66,8 +66,8 @@ public record MarksView(List<Mark> marks) {
               var cited = clause.isEmpty() ? "" : " · " + clause;
               return switch (applying) {
                 case Applying.From from -> "applies from " + Dates.inWords(from.day()) + cited;
-                case Applying.InStages stages ->
-                    "applies in stages from " + Dates.inWords(stages.first()) + cited;
+                case Applying.InParts parts ->
+                    "applies in parts from " + Dates.inWords(parts.first()) + cited;
                 case Applying.InForce inForce ->
                     "in force from " + Dates.inWords(inForce.day()) + cited;
                 case Applying.SetBy set ->

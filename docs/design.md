@@ -78,15 +78,14 @@ show which days have a change: the History lists them.
 | outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
 | state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". |
-| stage | A group of changes of one act that apply from the same day. |
 | history | The list of the amending acts of an act, newest first. |
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ mark of the provision opens it. A provision that has a history and no ▼ mark has a hollow sign, ▽, in the same place. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.
 
 The pages do not use these words in text that the reader sees: "late", "early", "included",
-"version", "an act not known", "an act not named", "not included". Say what the reader sees. Examples:
-"the text", "does not apply yet", "the data does not say which act changed this". The pages of the API
+"version", "stage", "an act not known", "an act not named", "not included". Say what the reader sees. Examples:
+"the text", "does not apply yet", "applies in parts", "the data does not say which act changed this". The pages of the API
 are not in this rule: `versions` is the name of a resource of the API.
 
 ## Principles
@@ -107,7 +106,7 @@ are not in this rule: `versions` is the name of a resource of the API.
 5. **Give the source of each date.** Show the act, its Official Journal reference and the clause
    that sets the date.
 6. **Show the state of the page.** The reader must see the day, or the two days of a comparison.
-7. **Give a limit a way out.** A period, a stage or a provision that limits a page shows a link
+7. **Give a limit a way out.** A period, a day of application or a provision that limits a page shows a link
    back to all.
 8. **A view only formats.** Rules about the law are domain methods with tests. See the
    package documents of the view packages.
@@ -191,9 +190,9 @@ of the viewer before each path.
 | Case | Path |
 | --- | --- |
 | Home, with results | `/?q=aviation+security` |
-| History, with stages and a day that the data does not give | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
+| History, with an act that applies in parts and a day that the viewer does not have | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
 | History, limited to a period | `/eli/reg_impl/2015/1998/eng/history?from=2019-01-01&to=2019-12-31` |
-| An amending act with two stages | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
+| An amending act that applies in parts, from two days | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
 | An act that no act changed opens on Read | `/eli/reg/2016/679/eng` |
 | Read the law on a day | `/eli/reg_impl/2015/1998/2021-12-31/eng` |
 | Read, an act applies that the text does not have, with marks in the text | `/eli/reg_impl/2015/1998/2017-06-03/eng` |

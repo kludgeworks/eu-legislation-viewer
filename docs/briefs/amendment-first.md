@@ -55,11 +55,11 @@ The primary task changes.
 ### The page of an amending act
 
 14. The title is "What 2022/1190 changed in 2018/1862".
-15. A summary gives the stages with a count for each stage. Each stage is a link. The link limits the page to the changes of that stage.
+15. A summary gives the days from which the changes apply, with a count for each day. Each day is a link. The link limits the page to the changes that apply from that day. The page shows the summary only if the changes apply from two or more days.
 16. The changes are in the order of the text.
 17. A change that does not apply on the day has an amber rule, the date and the clause.
 18. A change that applies on the day has no mark.
-19. If the data does not give the stage of a provision, the page shows the stages and the clause. It does not give one day.
+19. If the data does not give the day from which a change applies, the page shows the possible days and the clause. It does not give one day.
 20. The data can give two acts for a change and not say which one. Then the change shows on the page of each of the two acts, in a separate short list: "By this act or by 2019/413".
 21. A corrigendum of the amending act shows on this page.
 
@@ -70,7 +70,7 @@ The primary task changes.
     > **On 1 August 2022.**
     > **2018/1862** applied in part. It applies in full from 7 March 2023 · Article 79(5).
     > **2022/1190** was in force and did not apply yet. It applies from 15 October 2026. 17 provisions, marked in the text.
-    > **2021/1133** was in force. Article 6 sets the day it applies, and the data does not give that day. 3 provisions, not in this text.
+    > **2021/1133** was in force. Article 6 of 2021/1133 sets the day from which it applies. The viewer has no date for that day. 3 provisions, not in this text.
 
 23. A line shows only for these acts:
     - the act itself, if it does not apply in full
@@ -111,7 +111,7 @@ The primary task changes.
 | The sign in the outline, for a marker | Words of the viewer | A hollow dot in `--ink…`, with a text label |
 | Inserted and deleted words | Differences | `--ins-…`, `--del-…` |
 | A correction by a corrigendum | Differences | `--corr-…` |
-| Links, the selected tab, the selected stage | Words of the viewer | `--accent…` |
+| Links, the selected tab, the selected day of application | Words of the viewer | `--accent…` |
 | The period of the history, "Show all" | Words of the viewer | `--ink…`, `--line…` |
 
 - Amber has one meaning: this change does not apply on the day.
@@ -130,15 +130,15 @@ The primary task changes.
 | Ready | The page as in section 2. |
 | Missing | The act does not have the day in the language. The page offers a different language. |
 | Failed | What failed, and a link to EUR-Lex. |
-| Empty | History with no amending act: the reader does not land there (step 6). If the act has a corrigendum and the reader opens the tab: "No act changed 2016/679.", then the corrigenda. If it has none, the tab does not operate. A period with no act: "No amending act in this period", with "Show all". A stage with no change: the link shows 0 and does not operate. Compare with no difference: "The wording is the same on the two days." |
+| Empty | History with no amending act: the reader does not land there (step 6). If the act has a corrigendum and the reader opens the tab: "No act changed 2016/679.", then the corrigenda. If it has none, the tab does not operate. A period with no act: "No amending act in this period", with "Show all". A day of application with no change: the page does not show a link for it. Compare with no difference: "The wording is the same on the two days." |
 
 ## 5. Acceptance criteria
 
-1. **2018/1862, 1 August 2022, History.** The row of 2022/1190 says "In force, did not apply yet", with 15 October 2026 and the clause. The row of 2021/1133 says that Article 6 sets the day and that the data does not give it.
+1. **2018/1862, 1 August 2022, History.** The row of 2022/1190 says "In force, did not apply yet", with 15 October 2026 and the clause. The row of 2021/1133 says that Article 6 sets the day and that the viewer has no date for it.
 2. **2018/1862, 1 August 2022, Read.** The page has the three status lines of step 22 and no other notice. Article 3, point 8 has an amber rule and names 2022/1190. A marker for Article 18a names 2021/1133. The outline has a dot on Article 3.
 3. **2016/679, from the search.** The result opens Read. The tab says "Amending acts (0) · Corrigenda (n)", with the number of corrigenda of 2016/679 in English. It is a link.
 4. **2016/679, 1 January 2017, Read.** One status line says that the act was in force and did not apply yet, and that it applies from 25 May 2018 · Article 99. The text has no rule along its length and no second note.
-5. **2013/36, the page of 2019/878.** The summary lists each stage with a count. Each stage is a link that limits the page.
+5. **2013/36, the page of 2019/878.** The summary lists each day of application with a count. Each day is a link that limits the page.
 6. **767/2008, today, Read.** The history of Article 6(2) lists 2021/1152 and 2024/1356 and has the link to Compare. Compare shows the wording on the two days and the two steps.
 7. **2015/1998, 3 June 2017.** Read has a status line for 2017/815 that says "not in this text". Compare from 29 February 2016 to 3 June 2017 shows these two days. No page says "No version shows it".
 8. **2015/1998, the deletion by 2019/413 or 2021/255.** It shows on the page of each of the two acts under "By this act or by …". No page says "not known".
@@ -153,7 +153,7 @@ The primary task changes.
 | Not decided | Who decides |
 | --- | --- |
 | The rule for the date of a changed place. ISS-195 decided it on 16 November 2026. The new pages use that rule for the state of each change. They do not add a second rule. | Decided: ISS-195 |
-| Places that the viewer cannot map from Cellar to a provision. The spike of ISS-195 got no answer for 608 of 1,893 places. For these, the page shows the stages and the clause (step 19). | The user |
+| Places that the viewer cannot map from Cellar to a provision. The spike of ISS-195 got no answer for 608 of 1,893 places. For these, the page shows the possible days and the clause (step 19). | The user |
 | The rule for the text on a day that no version shows, for example 2015/1998 on 3 June 2017. | The Business rules catalogue, with a test |
 | The rule for which acts get a status line on a day. | The Business rules catalogue, with a test |
 | The solution for ISS-200. Until then, some changes have no act. | The user |
@@ -170,14 +170,13 @@ The primary task changes.
 - **Terms.** Delete "warning", "late, early" and "acts between them". Change "version": the viewer uses versions, and the pages do not show the word. Change "From, To" to "the two days of a comparison". Add:
   - the day: the day that a page shows
   - state: "Applies", "Applies in part", "In force, does not apply yet"
-  - stage: a group of changes of one act that apply from the same day
   - history: the list of the amending acts of an act
   - history of a provision: the list of the acts that changed one provision
   - status line: one line on Read about one act on the day
   - marker: the sign where the text does not show a change
 - **Principle 4.** Replace the examples "an act not known" and "Date not confirmed" with the messages of steps 31 and 32.
 - **Principle 6.** Replace with: "Show the state of the page. The reader must see the day, or the two days of a comparison."
-- **Principle 7.** Replace with: "Give a limit a way out. A period or a stage that limits a page shows a link back to all."
+- **Principle 7.** Replace with: "Give a limit a way out. A period or a day of application that limits a page shows a link back to all."
 - **New Convention.** The tense obeys the day.
 - **New Convention.** A corrigendum is not a row of the history. It has its own list.
 - **Colour.** Amber: "A change does not apply on the day." Delete "the text is not the law on the day, or an act filter is on". Grey: add "the marker where the text does not show a change".

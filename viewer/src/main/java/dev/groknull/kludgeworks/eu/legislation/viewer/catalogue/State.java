@@ -13,8 +13,8 @@ public enum State {
   /** It applies on the day. */
   APPLIES,
   /**
-   * Cellar does not tell. For example, the act applies in stages, the day is between two stages,
-   * and Cellar does not tell which stage the change is in.
+   * Cellar does not tell. For example, the act applies in parts, the day is between two parts, and
+   * Cellar does not tell which part the change is in.
    */
   NOT_KNOWN
 }

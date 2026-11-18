@@ -220,7 +220,7 @@ public record Act(
     for (var amendment : amendments) {
       var applies = amendment.from();
       // An amendment that applies only after the later version is not in its text. It is a later
-      // stage of the act.
+      // part of the act.
       if (!between.contains(amendment.act())
           || !amendment.changes(language)
           || (applies != null && applies.isAfter(to.date()))) {
@@ -420,7 +420,7 @@ public record Act(
    *   <li>If it applies from one day, and not in part, it applies from {@link #appliesFrom}. A
    *       directive that has only an entry into force is in force, and Cellar does not tell from
    *       when it applies.
-   *   <li>Otherwise it applies in stages, one on each day of its dates.
+   *   <li>Otherwise it applies in parts, one on each day of its dates.
    * </ol>
    *
    * <p>Returns empty if Cellar has no dates of the act.
@@ -459,23 +459,22 @@ public record Act(
       }
     }
     var whole = appliesFrom(act).map(ActDate::date);
-    var stages =
+    var parts =
         days(dated).stream()
             .map(
                 day -> {
                   var on = on(dated, day);
-                  return new Applying.Stage(
+                  return new Applying.Start(
                       day, onlyEntryIntoForce(on), on.stream().allMatch(ActDate::partial));
                 })
             .toList();
     var first =
-        stages.stream()
-            .filter(
-                stage -> !stage.entryIntoForce() || whole.filter(stage.day()::equals).isPresent())
+        parts.stream()
+            .filter(part -> !part.entryIntoForce() || whole.filter(part.day()::equals).isPresent())
             .findFirst()
-            .orElseGet(stages::getFirst)
+            .orElseGet(parts::getFirst)
             .day();
-    return Optional.of(new Applying.InStages(stages, first, dated));
+    return Optional.of(new Applying.InParts(parts, first, dated));
   }
 
   /**
@@ -803,18 +802,17 @@ public record Act(
 
   /**
    * Returns the day from which a change of {@code amending} applies, if the data gives one day for
-   * it: {@link #applying} gives a day, and not stages. {@code placeDays} are the days that Cellar
-   * gives for the place of the change. Returns empty if the data does not tell the stage of the
+   * it: {@link #applying} gives a day, and not parts. {@code placeDays} are the days that Cellar
+   * gives for the place of the change. Returns empty if the data does not tell the part of the
    * change.
    */
-  public Optional<LocalDate> stageOf(ActIdentifier amending, Set<LocalDate> placeDays) {
+  public Optional<LocalDate> changeAppliesFrom(ActIdentifier amending, Set<LocalDate> placeDays) {
     return applying(amending, placeDays)
         .flatMap(
             applying ->
                 switch (applying) {
                   case Applying.From from -> Optional.of(from.day());
-                  case Applying.InStages _, Applying.SetBy _, Applying.InForce _ ->
-                      Optional.empty();
+                  case Applying.InParts _, Applying.SetBy _, Applying.InForce _ -> Optional.empty();
                 });
   }
 
@@ -827,9 +825,9 @@ public record Act(
    *   <li>Before the entry into force of the act, it is not in force.
    *   <li>If it applies from one day ({@link #applying}), it applies from that day, and does not
    *       apply yet before it.
-   *   <li>If it applies in stages, it does not apply yet before the first stage. It applies from
-   *       the last stage, unless a clause sets one more day that Cellar does not know. Between
-   *       them, Cellar does not tell which stage the change is in, so the state is not known.
+   *   <li>If it applies in parts, it does not apply yet before the first part. It applies from the
+   *       last part, unless a clause sets one more day that Cellar does not know. Between them,
+   *       Cellar does not tell which part the change is in, so the state is not known.
    *   <li>In each other case the state is not known. For example, a clause sets the day by an
    *       event, or Cellar has no dates of the act.
    * </ol>
@@ -847,11 +845,11 @@ public record Act(
                 switch (applying) {
                   case Applying.From from ->
                       day.isBefore(from.day()) ? State.NOT_APPLYING : State.APPLIES;
-                  case Applying.InStages stages -> {
-                    if (day.isBefore(stages.first())) {
+                  case Applying.InParts parts -> {
+                    if (day.isBefore(parts.first())) {
                       yield State.NOT_APPLYING;
                     }
-                    yield !openDay && !day.isBefore(stages.stages().getLast().day())
+                    yield !openDay && !day.isBefore(parts.starts().getLast().day())
                         ? State.APPLIES
                         : State.NOT_KNOWN;
                   }

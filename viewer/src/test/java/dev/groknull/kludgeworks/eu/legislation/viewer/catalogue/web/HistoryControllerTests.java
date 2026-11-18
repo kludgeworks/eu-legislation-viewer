@@ -45,30 +45,30 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 /**
  * Tests the history of an act and the page of an amending act, with {@code @WebMvcTest} and the
  * modules mocked. Today is 1 June 2021. The history is of the act of {@link OneActCellar}. The page
- * of an amending act is of a made-up act with changes in two stages.
+ * of an amending act is of a made-up act with changes in two groups.
  */
 @WebMvcTest(HistoryController.class)
 @Import({ControllerTesting.class, HistoryControllerTests.OnTheFirstOfJune2021.class})
 class HistoryControllerTests {
   private static final String HISTORY = "/eli/reg_impl/2015/1998/eng/history";
 
-  private static final Eli STAGED_ELI = new Eli("reg/2018/1862");
-  private static final ActIdentifier STAGED_BASE = new ActIdentifier("32018R1862");
-  private static final ActIdentifier STAGED = new ActIdentifier("32022R1190");
+  private static final Eli PHASED_ELI = new Eli("reg/2018/1862");
+  private static final ActIdentifier PHASED_BASE = new ActIdentifier("32018R1862");
+  private static final ActIdentifier PHASED = new ActIdentifier("32022R1190");
   private static final LocalDate IN_PART = LocalDate.of(2022, 8, 1);
   private static final LocalDate IN_FULL = LocalDate.of(2026, 10, 15);
   private static final String AMENDING = "/eli/reg/2018/1862/eng/history/32022R1190";
 
   private static final Version ORIGINAL =
       Version.original(
-          LocalDate.of(2018, 12, 27), STAGED_BASE, EnumSet.allOf(Language.class), Map.of());
-  private static final Version WITH_STAGED =
+          LocalDate.of(2018, 12, 27), PHASED_BASE, EnumSet.allOf(Language.class), Map.of());
+  private static final Version WITH_PHASED =
       new Version(
           Version.Kind.CONSOLIDATED,
           IN_PART,
           "02018R1862-20220801",
           false,
-          List.of(STAGED),
+          List.of(PHASED),
           EnumSet.allOf(Language.class),
           Map.of());
 
@@ -79,7 +79,7 @@ class HistoryControllerTests {
   @BeforeEach
   void acts() {
     when(acts.find(OneActCellar.ELI)).thenReturn(Optional.of(OneActCellar.ACT));
-    when(acts.find(STAGED_ELI)).thenReturn(Optional.of(staged()));
+    when(acts.find(PHASED_ELI)).thenReturn(Optional.of(phased()));
     when(texts.preparation(any(), any()))
         .thenAnswer(asked -> ControllerTesting.preparing(asked.getArgument(1)));
     when(texts.marks(any())).thenReturn(Map.of());
@@ -100,9 +100,11 @@ class HistoryControllerTests {
             "Not in force yet", "No dates", "No dates", "No dates", "In force", "In force");
     assertThat(page.select("table.acts tbody tr").get(4).select("td p").text())
         .isEqualTo(
-            "Article 3 of 2019/413 sets the day it applies. The data does not give that day.");
+            "Article 3 of 2019/413 sets the day from which it applies. The viewer has no date for"
+                + " that day.");
     assertThat(page.select("table.acts tbody tr").get(5).select("td p").text())
-        .isEqualTo("In stages: 1 February 2019, 31 December 2021 · Article 2 of 2019/103");
+        .isEqualTo(
+            "Applies in parts from 1 February 2019 and 31 December 2021 · Article 2 of 2019/103");
     assertThat(page.select("nav.mode [aria-current]").text()).isEqualTo("Amending acts (6)");
   }
 
@@ -124,17 +126,19 @@ class HistoryControllerTests {
   }
 
   @Test
-  void showsTheStagesOfAnAmendingActAndMarksTheChangesThatDoNotApplyYet() {
+  void showsTheGroupsOfAnAmendingActAndMarksTheChangesThatDoNotApplyYet() {
     var page = page(AMENDING + "?on=2022-08-01");
     assertThat(page.select("h2").eachText().getFirst())
         .isEqualTo("What 2022/1190 changed in 2018/1862");
     assertThat(page.select(".status").text())
         .startsWith("On 1 August 2022. 2022/1190 applies in part. It changed 3 provisions.");
-    assertThat(page.select("a.stage").eachText())
+    assertThat(page.select("a.group").eachText())
         .containsExactly(
-            "All3", "Applies from 1 August 20221", "Does not apply yet, from 15 October 20262");
-    assertThat(page.select("a.stage.open")).isEmpty();
-    assertThat(page.select("a.stage.warn")).hasSize(1);
+            "All changes3",
+            "Applies from 1 August 20221",
+            "Does not apply yet, from 15 October 20262");
+    assertThat(page.select("a.group.open")).isEmpty();
+    assertThat(page.select("a.group.warn")).hasSize(1);
     assertThat(page.select("section.run .note").eachText())
         .containsExactly(
             "Applies from 1 August 2022. 1 provision",
@@ -146,10 +150,21 @@ class HistoryControllerTests {
   }
 
   @Test
-  void limitsThePageOfAnAmendingActToOneStage() {
-    var page = page(AMENDING + "?on=2022-08-01&stage=2022-08-01");
+  void linksTheArticleThatSetsTheDayAndShowsNoGroupsWhereTheChangesAreInOne() {
+    var page = page(HISTORY + "/32019R0413");
+    assertThat(page.select(".status").text())
+        .contains("Article 3 of 2019/413 sets the day from which it applies.");
+    assertThat(page.select(".status a[rel=external]").text()).startsWith("Read Article 3");
+    assertThat(page.select(".status a[rel=external]").attr("href")).endsWith("#art_3");
+    assertThat(page.select("a.group")).isEmpty();
+    assertThat(page.select("section.run .note")).isEmpty();
+  }
+
+  @Test
+  void limitsThePageOfAnAmendingActToOneGroup() {
+    var page = page(AMENDING + "?on=2022-08-01&applies=2022-08-01");
     assertThat(page.select("ul.changes-list .place").eachText()).containsExactly("Article 79(7)");
-    assertThat(page.select("a.stage[aria-current]").text())
+    assertThat(page.select("a.group[aria-current]").text())
         .startsWith("Applies from 1 August 2022");
   }
 
@@ -166,7 +181,7 @@ class HistoryControllerTests {
             Map.of(
                 ORIGINAL,
                 new TextMarks(List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1"), Map.of()),
-                WITH_STAGED,
+                WITH_PHASED,
                 new TextMarks(
                     List.of("art_3", "art_3/pnt_8", "art_79", "art_79/par_7"), Map.of())));
 
@@ -205,21 +220,21 @@ class HistoryControllerTests {
   /**
    * A made-up act with one amending act. The amending act enters into force and applies in part on
    * 1 August 2022, and applies in full from 15 October 2026. One of its changes is in the first
-   * stage, and two are in the second stage.
+   * group, and two are in the second group.
    */
-  private static Act staged() {
+  private static Act phased() {
     return new Act(
-        STAGED_BASE,
-        STAGED_ELI,
+        PHASED_BASE,
+        PHASED_ELI,
         new ResourceType("REG"),
         Map.of(),
         null,
         true,
         null,
-        new Timeline(List.of(ORIGINAL, WITH_STAGED)),
+        new Timeline(List.of(ORIGINAL, WITH_PHASED)),
         List.of(),
         Map.of(
-            STAGED,
+            PHASED,
             List.of(
                 date(IN_PART, ActDate.Kind.ENTRY_INTO_FORCE, false),
                 date(IN_PART, ActDate.Kind.APPLICATION, true),
@@ -238,7 +253,7 @@ class HistoryControllerTests {
 
   private static Amendment change(String place, LocalDate from) {
     return new Amendment(
-        STAGED, new Location(place), Amendment.Role.REPLACEMENT, from, null, Set.of());
+        PHASED, new Location(place), Amendment.Role.REPLACEMENT, from, null, Set.of());
   }
 
   /** Sets today for the pages to 1 June 2021. */

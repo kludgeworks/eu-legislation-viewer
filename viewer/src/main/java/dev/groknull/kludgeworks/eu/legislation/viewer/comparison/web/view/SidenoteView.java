@@ -64,8 +64,8 @@ import org.jspecify.annotations.Nullable;
  * <p>An act can have several dates. The texts do not say from which of these dates a provision
  * applies. The amendment of the unit in Cellar chooses the date, if its day is one of the dates of
  * the act and is after the earlier version. The earlier version does not have the change. Otherwise
- * the sidenote says that the act applies in stages, and that the clause says which part applies
- * from when.
+ * the sidenote says that the act applies in parts, and that the clause says which part applies from
+ * when.
  *
  * @param made who made the difference. For example:
  *     <ul>
@@ -354,7 +354,7 @@ public record SidenoteView(
         act.timeline().versions().stream()
             .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
             .toList();
-    // The version of each act is the first version that has it. An act that applies in stages is
+    // The version of each act is the first version that has it. An act that applies in parts is
     // in several versions.
     var at = new HashMap<ActIdentifier, Version>();
     for (var each : acts) {
@@ -511,28 +511,28 @@ public record SidenoteView(
                               amending,
                               language,
                               ""));
-                  case Applying.InStages stages ->
+                  case Applying.InParts parts ->
                       Optional.of(
                           applies(
                               act,
                               name
-                                  + " applies in stages: "
-                                  + stages.stages().stream()
-                                      .map(SidenoteView::stage)
+                                  + " applies in parts: "
+                                  + parts.starts().stream()
+                                      .map(SidenoteView::part)
                                       .collect(Collectors.joining("; ")),
-                              stages.dates(),
+                              parts.dates(),
                               amending,
                               language,
                               " says which part from when"));
                 });
   }
 
-  /** Returns a stage in words. For example, "in part from 1 October 2026". */
-  private static String stage(Applying.Stage stage) {
-    var from = "from " + Dates.inWords(stage.day());
-    return stage.entryIntoForce()
+  /** Returns a part in words. For example, "in part from 1 October 2026". */
+  private static String part(Applying.Start part) {
+    var from = "from " + Dates.inWords(part.day());
+    return part.entryIntoForce()
         ? from + ", its entry into force"
-        : stage.inPart() ? "in part " + from : from;
+        : part.inPart() ? "in part " + from : from;
   }
 
   private static Applies applies(
@@ -583,14 +583,14 @@ public record SidenoteView(
    * Article 2 of 2026/449, as amended by 2020/910".
    *
    * @param when when the act applies. For example, "applies from 1 October 2026", or "2026/449
-   *     applies in stages: from 22 March 2026, its entry into force; in part from 1 October 2026".
+   *     applies in parts: from 22 March 2026, its entry into force; in part from 1 October 2026".
    * @param between what goes between {@code when} and the clause. This is a dot, or a space after
    *     "set in".
    * @param clause the clause that sets the date, linked to EUR-Lex. For example, "Article 2 of
    *     2026/449". Null where Cellar does not say.
    * @param amendedBy the acts that changed the clause since, linked to EUR-Lex. For example,
    *     2020/910.
-   * @param after what follows the clause. For stages, this is "says which part from when".
+   * @param after what follows the clause. For parts, this is "says which part from when".
    */
   public record Applies(
       String when, String between, @Nullable Link clause, List<Link> amendedBy, String after) {

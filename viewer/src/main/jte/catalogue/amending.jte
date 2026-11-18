@@ -7,8 +7,10 @@
 <%-- Shows the page of one amending act: what it changed in the act, and the state of each change on
      a day. AmendingView supplies the data. Under the head of the act come a link back to the
      history, the heading, the day with its date form, and one line with the state of the amending
-     act. The stages are links: each limits the page to the changes of that stage, and "All" removes
-     the limit. The changes are in the order of the text. Changes that follow each other and have
+     act. Where the data does not give the day from which the act applies, the line ends with a link
+     to the article that sets the day. The groups are the changes that apply from the same day. Each is a link that limits the page to
+     its changes, and "All changes" removes the limit. The page shows them only where the changes
+     are in two or more groups. The changes are in the order of the text. Changes that follow each other and have
      the same state are one run: the run says the state, the date and the clause one time, and then
      lists its provisions. Under a provision is the wording of its change: the provision as it reads
      in the first text with the act, with the inserted and the deleted words marked. htmx loads it
@@ -20,7 +22,7 @@
      Where the first version with the act integrates another act too, htmx loads a separate list
      below the runs: the changes that this act or the other act made, where the data does not say
      which. Its heading is "By this act or by …". A run that
-     applies has no rule. Where the data does not give the stage, the rule is grey and broken. --%>
+     applies has no rule. Where the data does not give the day, the rule is grey and broken. --%>
 @template.layout.page(frame = frame, title = amending.title(), content = @`
   <div id="page" data-view="history" hx-boost:inherited="target:#page select:#page swap:outerHTML">
     @template.catalogue.skeletons()
@@ -34,11 +36,11 @@
         <input id="on" name="on" type="date" value="${amending.on()}" required>
         <button>Go</button>
       </form>
-      <p class="status"><b>On ${amending.day()}.</b> ${amending.state()} ${amending.dates()}</p>
-      @if(!amending.stages().isEmpty())
-        <nav class="stages" aria-label="Stages">
-          @for(var stage : amending.stages())
-            <a class="stage ${stage.tone()}" href="${stage.href()}" aria-current="${stage.on() ? "true" : null}">${stage.label()}<span class="count">${stage.count()}</span></a>
+      <p class="status"><b>On ${amending.day()}.</b> ${amending.state()} ${amending.dates()}@if(amending.clause() != null) <a href="${amending.clause().href()}" rel="external">${amending.clause().label()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a>@endif</p>
+      @if(!amending.groups().isEmpty())
+        <nav class="groups" aria-label="Changes by the day from which they apply">
+          @for(var group : amending.groups())
+            <a class="group ${group.tone()}" href="${group.href()}" aria-current="${group.on() ? "true" : null}">${group.label()}<span class="count">${group.count()}</span></a>
           @endfor
         </nav>
       @endif

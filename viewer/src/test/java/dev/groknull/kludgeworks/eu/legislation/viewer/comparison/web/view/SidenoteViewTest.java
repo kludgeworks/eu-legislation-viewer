@@ -31,7 +31,7 @@ class SidenoteViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
 
   @Test
-  void namesTheActBetweenTheVersionsAndTheStagesItAppliesInWhereCellarDoesntSayWhich() {
+  void namesTheActBetweenTheVersionsAndThePartsItAppliesInWhereCellarDoesntSayWhich() {
     var c =
         changed(
             "anx/pnt_8.1.2.3/pnt_c",
@@ -51,7 +51,7 @@ class SidenoteViewTest {
     var applies = sidenote.dates().getFirst();
     assertThat(applies.when())
         .isEqualTo(
-            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies in stages: from 22 March 2026, its entry"
+            "2026/449 · OJ L, 2026/449, 2.3.2026 · applies in parts: from 22 March 2026, its entry"
                 + " into force; in part from 1 October 2026");
     assertThat(applies.clause())
         .isEqualTo(
@@ -124,7 +124,7 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.dates().getFirst().when())
-        .startsWith("2019/103 · OJ L 21, 24.1.2019 · applies in stages");
+        .startsWith("2019/103 · OJ L 21, 24.1.2019 · applies in parts");
   }
 
   @Test
@@ -336,7 +336,7 @@ class SidenoteViewTest {
 
   @Test
   void placesActsThatReplacedAUnitTogetherInTheFirstVersionThatHasThemAll() {
-    // 2019/103 applies in stages, in the versions of 1 February 2019 and 31 December 2021. It
+    // 2019/103 applies in parts, in the versions of 1 February 2019 and 31 December 2021. It
     // replaced 11.1.2 together with 2019/1583. Only the second version has 2019/1583.
     var point =
         changed(
@@ -362,7 +362,7 @@ class SidenoteViewTest {
   void placesTheActTheMarkerNamesLastAfterThoseOnlyCellarNames() {
     // The text keeps 4.1.3.2 struck through under the deletion by 2019/103. Cellar has 2017/815
     // replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies in
-    // stages, and its first stage is before 2019/413.
+    // parts, and its first part is before 2019/413.
     var struck = deleted("anx/pnt_4.1.3.2", new Marker("32019R0103", "deleted", null));
     var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
     var replaced = cellar.getFirst();

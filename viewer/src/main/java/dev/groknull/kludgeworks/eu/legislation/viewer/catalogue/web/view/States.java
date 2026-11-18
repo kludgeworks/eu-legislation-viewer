@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -96,7 +95,7 @@ final class States {
       parts.add((past ? "Did not apply yet: " : "Does not apply yet: ") + standing.notApplying());
     }
     if (standing.notKnown() > 0) {
-      parts.add("State not given: " + standing.notKnown());
+      parts.add("State not known: " + standing.notKnown());
     }
     return parts.size() < 2 ? "" : String.join(" · ", parts);
   }
@@ -107,58 +106,67 @@ final class States {
    *
    * <ul>
    *   <li>"From 1 June 2017 · Article 2 of 2017/815"
-   *   <li>"In stages: 1 August 2022, 15 October 2026 · Article 2 of 2022/1190"
-   *   <li>"Article 6 of 2021/1133 sets the day it applies. The data does not give that day."
+   *   <li>"Applies in parts from 1 August 2022 and 15 October 2026 · Article 2 of 2022/1190"
+   *   <li>"Article 6 of 2021/1133 sets the day from which it applies. The viewer has no date for
+   *       that day."
    * </ul>
    */
   static String dates(ActIdentifier act, @Nullable Applying applying) {
     if (applying == null) {
-      return "The data has no dates for this act.";
+      return "The viewer has no dates for this act.";
     }
     var clause = Wording.clause(applying.dates(), act);
     var cited = clause.isEmpty() ? "" : " · " + clause;
     return switch (applying) {
       case Applying.From from -> "From " + Dates.inWords(from.day()) + cited;
-      case Applying.InStages stages ->
-          "In stages: "
-              + stages.stages().stream()
-                  .map(stage -> Dates.inWords(stage.day()))
-                  .collect(Collectors.joining(", "))
-              + cited;
+      case Applying.InParts parts -> "Applies in parts from " + days(parts, " and ") + cited;
       case Applying.SetBy _ ->
           clause.isEmpty()
-              ? "The data does not give the day it applies."
-              : clause + " sets the day it applies. The data does not give that day.";
+              ? "The viewer has no date for the day from which it applies."
+              : clause
+                  + " sets the day from which it applies. The viewer has no date for that day.";
       case Applying.InForce inForce ->
           "In force from "
               + Dates.inWords(inForce.day())
               + cited
-              + ". The data does not give the day it applies.";
+              + ". The viewer has no date for the day from which it applies.";
     };
+  }
+
+  /** Returns the days of {@code parts} in words, with {@code last} before the last day. */
+  private static String days(Applying.InParts parts, String last) {
+    var days = parts.starts().stream().map(part -> Dates.inWords(part.day())).toList();
+    return days.size() < 2
+        ? String.join("", days)
+        : String.join(", ", days.subList(0, days.size() - 1)) + last + days.getLast();
   }
 
   /**
    * Returns why the page does not say if a change of {@code act} applies on the day. {@code
-   * applying} is when the act applies, or null if Cellar has no dates of it. For example:
+   * applying} is when the act applies, or null if Cellar has no dates of it. Returns null for an
+   * act that applies from a day that Cellar does not know: each change has the state of the act,
+   * and {@link #dates} says it one time for the act. For example:
    *
    * <ul>
-   *   <li>"Applies from a day that Article 3 of 2019/413 sets. The data does not give that day."
-   *   <li>"The data does not give the stage. In stages: 1 August 2022, 15 October 2026 · Article 2
-   *       of 2022/1190"
-   *   <li>"The data does not give the day from which this applies."
+   *   <li>"The viewer cannot tell from which of these days this change applies: 1 August 2022 or 15
+   *       October 2026 · Article 2 of 2022/1190"
+   *   <li>"The viewer has no date for the day from which this applies."
    * </ul>
    */
-  static String unknown(ActIdentifier act, @Nullable Applying applying) {
+  static @Nullable String unknown(ActIdentifier act, @Nullable Applying applying) {
     if (applying == null) {
-      return "The data has no dates for this act.";
+      return "The viewer has no dates for this act.";
     }
-    var clause = Wording.clause(applying.dates(), act);
     return switch (applying) {
-      case Applying.InStages _ -> "The data does not give the stage. " + dates(act, applying);
-      case Applying.SetBy _ when !clause.isEmpty() ->
-          "Applies from a day that " + clause + " sets. The data does not give that day.";
-      case Applying.SetBy _, Applying.From _, Applying.InForce _ ->
-          "The data does not give the day from which this applies.";
+      case Applying.InParts parts -> {
+        var clause = Wording.clause(parts.dates(), act);
+        yield "The viewer cannot tell from which of these days this change applies: "
+            + days(parts, " or ")
+            + (clause.isEmpty() ? "" : " · " + clause);
+      }
+      case Applying.SetBy _ -> null;
+      case Applying.From _, Applying.InForce _ ->
+          "The viewer has no date for the day from which this applies.";
     };
   }
 
@@ -166,11 +174,12 @@ final class States {
    * Returns the state on {@code day} of one change of {@code amending}, with the date and the
    * clause, as sentences. {@code placeDays} are the days that Cellar gives for the place of the
    * change. For example, "Does not apply yet. Applies from 15 October 2026 · Article 2 of
-   * 2022/1190." Returns null for a change that applies, where the data gives no day for it.
+   * 2022/1190." Returns null for a change that applies, where the data gives no day for it, and
+   * where {@link #unknown} has no words.
    */
   static @Nullable String note(
       Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
-    var from = act.stageOf(amending, placeDays);
+    var from = act.changeAppliesFrom(amending, placeDays);
     return switch (act.stateOn(amending, placeDays, day)) {
       case APPLIES ->
           from.map(
