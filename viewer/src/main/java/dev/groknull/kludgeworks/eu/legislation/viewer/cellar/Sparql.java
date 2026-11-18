@@ -13,6 +13,7 @@ import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executor;
+import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -68,6 +69,11 @@ public class Sparql {
    * cases where {@link #select} throws.
    */
   public CompletableFuture<SparqlResult> answer(String query) {
+    return answer(query, null);
+  }
+
+  /** Labels the outbound HTTP span with a stable query-template name when one is available. */
+  public CompletableFuture<SparqlResult> answer(String query, @Nullable String templateName) {
     var mine = new CompletableFuture<SparqlResult>();
     var theirs = running.putIfAbsent(query, mine);
     if (theirs != null) {
@@ -76,7 +82,7 @@ public class Sparql {
     }
     mine.whenComplete((result, failure) -> running.remove(query, mine));
     try {
-      mine.completeAsync(() -> ask(query), executor);
+      mine.completeAsync(() -> ask(query, templateName), executor);
     } catch (RuntimeException e) {
       // The executor refused the task.
       mine.completeExceptionally(e);
@@ -97,13 +103,15 @@ public class Sparql {
     }
   }
 
-  private SparqlResult ask(String query) {
+  private SparqlResult ask(String query, @Nullable String templateName) {
     LOG.trace("SPARQL query: {}", query);
     var started = System.nanoTime();
+    var request = client.post().uri(properties.sparqlEndpoint());
+    if (templateName != null) {
+      request.attribute(CellarConfiguration.SPAN_NAME, "cellar.sparql." + templateName);
+    }
     var body =
-        client
-            .post()
-            .uri(properties.sparqlEndpoint())
+        request
             .contentType(MediaType.APPLICATION_FORM_URLENCODED)
             .accept(RESULTS)
             .body("query=" + URLEncoder.encode(query, StandardCharsets.UTF_8))
