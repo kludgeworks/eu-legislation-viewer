@@ -46,8 +46,6 @@ import org.jspecify.annotations.Nullable;
  *     data while no text of the act is built.
  * @param open whether the wording of each change shows when the page opens. It does if the page has
  *     few changes. If not, the reader opens the wording of a change.
- * @param wording the address of the wording of its changes in a comparison. Null if no version
- *     includes the act.
  * @param either the address of the changes that the amending act or another act of its version
  *     made, where the data does not say which. Null if the texts are not built, or if the act is
  *     the only act of its version.
@@ -71,7 +69,6 @@ public record AmendingView(
     List<Run> runs,
     boolean ordered,
     boolean open,
-    @Nullable String wording,
     @Nullable String either,
     List<HistoryView.Corrigendum> corrigenda) {
 
@@ -114,8 +111,6 @@ public record AmendingView(
     var standing = act.standingOn(amending, language, day);
     var subject = HistoryView.Subject.of(act, amending, language);
     var cited = act.cited(amending);
-    var integrated =
-        act.timeline().versions().stream().anyMatch(each -> each.integrates().contains(amending));
     var compare =
         step == null
             ? null
@@ -153,7 +148,6 @@ public record AmendingView(
                 .toList()),
         text != null,
         shown.size() <= OPEN,
-        integrated ? Links.changesBy(eli, amending, language) : null,
         compare == null || act.integratedWith(amending, language).isEmpty()
             ? null
             : compare.either(),

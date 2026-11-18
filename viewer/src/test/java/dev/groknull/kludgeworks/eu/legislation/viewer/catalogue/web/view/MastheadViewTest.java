@@ -81,15 +81,18 @@ class MastheadViewTest {
   }
 
   @Test
-  void greysALanguageEitherVersionComparedIsntInSayingWhich() {
+  void greysALanguageThatHasNoTextForADayComparedSayingWhich() {
     var from = AVSEC.timeline().versions().getFirst();
     var head =
-        MastheadView.comparing(
-            AVSEC, from, from.date(), VERSION, VERSION.date().plusDays(3), Language.ENG);
+        MastheadView.comparing(AVSEC, from.date(), VERSION.date().plusDays(3), null, Language.ENG);
     assertThat(head.languages())
         .filteredOn(choice -> choice.missing() != null)
         .extracting(Choice::name, Choice::missing)
-        .contains(org.assertj.core.groups.Tuple.tuple("Gaeilge", "Neither version is in Irish"));
+        .contains(
+            org.assertj.core.groups.Tuple.tuple("Gaeilge", "No text in Irish for the two days"));
+    // No tab opens Compare. On the Compare page, the history and Read are links.
+    assertThat(head.history()).isNotNull();
+    assertThat(head.read()).isNotNull();
     // The switch keeps the days asked, not the first days of their versions.
     assertThat(head.languages())
         .filteredOn(choice -> choice.name().equals("Deutsch"))
@@ -97,6 +100,16 @@ class MastheadViewTest {
         .singleElement()
         .asString()
         .endsWith("to=" + VERSION.date().plusDays(3));
+    // It keeps the provision that the page is limited to.
+    assertThat(
+            MastheadView.comparing(
+                    AVSEC, from.date(), VERSION.date().plusDays(3), "anx/pnt_1", Language.ENG)
+                .languages())
+        .filteredOn(choice -> choice.name().equals("Deutsch"))
+        .extracting(Choice::href)
+        .singleElement()
+        .asString()
+        .endsWith("&unit=anx%2Fpnt_1");
   }
 
   @Test

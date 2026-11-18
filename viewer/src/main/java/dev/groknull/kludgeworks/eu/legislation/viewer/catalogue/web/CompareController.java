@@ -2,12 +2,12 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -28,9 +28,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.net.URI;
 import java.time.Clock;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -43,31 +43,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * Shows the page of an act in Compare mode: two versions of the act, in a language.
+ * Shows the Compare page of an act: the law on two days, in a language.
  *
- * <p>For example, {@code /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&amp;to=2026-10-01}.
- * Each end can be any date. The comparison uses the version that applies on that date.
+ * <p>For example, {@code /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&amp;to=2017-06-03}.
+ * Each end can be any day. The page shows the two days as the reader gave them. The text for a day
+ * is the act's rule, {@link Act#textOn}.
+ *
+ * <p>With {@code unit}, the page is limited to one provision: the wording of the provision on each
+ * of the two days, and the steps between them. The history of a provision on Read links there.
  *
  * <p>The page redirects to the canonical address of the comparison in these cases:
  *
  * <ul>
- *   <li>A date is not the first day of its version.
  *   <li>From is after To.
- *   <li>A date is missing. A missing To is the version that applies today. A missing From is the
- *       version before To. If the comparison is limited to the changes of one act and both dates
- *       are missing, To is the first version that integrates that act.
- *   <li>The act in {@code act} is not between the two versions.
+ *   <li>A day is missing. A missing To is the first day of the version that applies today. A
+ *       missing From is the first day of the version before the version of To.
  * </ul>
  *
- * <p>The page is the catalogue's: the act's masthead, its timeline, the From and To cards, and the
- * states of its preparation. What the comparison found is the comparison module's. The page has two
- * slots for it, which htmx fills from that module's addresses ({@link ComparePage#changes}, {@link
- * ComparePage#acts}, from {@link Links#page}) once both texts are built: the chips of the acts
- * between the versions, and the changes. The page passes {@code view} on to them as the reader gave
- * it. It does not know the views.
+ * <p>The page is the catalogue's: the head of the act, the two days, the amending acts between
+ * them, and the states of its preparation. What the comparison found is the comparison module's.
+ * The page has a slot for it, which htmx fills from an address of that module ({@link
+ * ComparePage#changes}, or {@link ComparePage#sides} for one provision) once both texts are built.
+ * The page passes {@code view} on as the reader gave it. It does not know the views.
  *
- * <p>The act is prepared whole in the language, with every version, before the page shows changes.
- * Until then, the page is the preparing page, which becomes this page in place.
+ * <p>The act is prepared whole in the language before the page shows changes. Until then, the page
+ * is the preparing page, which becomes this page in place.
  */
 @Controller
 class CompareController {
@@ -85,8 +85,7 @@ class CompareController {
 
   /**
    * Returns the compare page, or redirects to the canonical address of the comparison. That address
-   * has both days, From before To, and the act asked for only if it is between the two versions.
-   * The days are kept as asked: they are not moved to the first days of their versions.
+   * has both days, From before To. The days are kept as asked.
    *
    * <p>While the act is being prepared in the language, it returns the preparing page. When the act
    * is prepared, that page requests this address again with {@code prepared}. The page's content
@@ -104,32 +103,16 @@ class CompareController {
       @RequestParam(name = ComparePage.TO, required = false)
           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate to,
-      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
       @RequestParam(name = ComparePage.VIEW, required = false) @Nullable String view,
-      @RequestParam(name = ComparePage.ON, required = false)
-          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate on,
+      @RequestParam(name = ComparePage.UNIT, required = false) @Nullable String unit,
       @RequestParam(defaultValue = "false") boolean prepared,
-      @RequestParam(required = false) @Nullable String outside,
       HttpServletRequest request) {
-    var page = new Page(new Eli(type, year, number), code, from, to, act, view);
-    if (!page.at(from, to, act)) {
-      var location =
-          Links.compare(page.eli, page.fromDay, page.toDay, page.language, page.only, view);
-      // Tell the page that the act asked for is not between the versions, so that it can say so.
-      if (act != null && page.only == null && ActIdentifier.isCelex(act)) {
-        location += "&outside=" + act;
-      }
-      if (on != null) {
-        location += "&" + ComparePage.ON + "=" + on;
-      }
-      return ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(location)).build();
+    var page = new Page(new Eli(type, year, number), code, from, to, view, unit);
+    if (!page.at(from, to)) {
+      return ResponseEntity.status(HttpStatus.SEE_OTHER)
+          .location(URI.create(page.address()))
+          .build();
     }
-    var note =
-        outside != null && ActIdentifier.isCelex(outside)
-            ? new ActIdentifier(outside).cited()
-                + " isn’t between these two versions; showing every act’s changes."
-            : null;
     var title =
         page.act.id().cited()
             + " · "
@@ -137,13 +120,25 @@ class CompareController {
             + " → "
             + Dates.inShort(page.toDay);
     var frame = Frame.of(request);
-    var masthead =
-        MastheadView.comparing(
-            page.act, page.from, page.fromDay, page.to, page.toDay, page.language);
+    var masthead = MastheadView.comparing(page.act, page.fromDay, page.toDay, unit, page.language);
+    var today = Timeline.today(clock);
     if (page.before) {
       return ResponseEntity.ok()
           .contentType(Requests.HTML)
-          .body(page.notYet(frame, title, masthead));
+          .body(
+              templates
+                  .catalogueCompare(
+                      frame,
+                      title,
+                      masthead,
+                      CompareView.before(page.act, page.fromDay, page.toDay, page.language),
+                      templates.catalogueTextFailed(
+                          FailureView.comparingBefore(
+                              page.act, page.fromDay, page.afterFirst(), page.language)),
+                      false,
+                      null,
+                      view)
+                  .render());
     }
     var preparation = texts.prepare(page.act, page.language);
     if (preparation.preparing()) {
@@ -155,7 +150,7 @@ class CompareController {
                       frame,
                       title,
                       masthead.whilePreparing(),
-                      TimelineView.preparing(page.act, preparation, Timeline.today(clock)),
+                      TimelineView.preparing(page.act, preparation, today),
                       PreparingView.of(
                           page.act,
                           preparation,
@@ -167,7 +162,9 @@ class CompareController {
                           clock.instant()))
                   .render());
     }
-    var today = Timeline.today(clock);
+    var marks = texts.marks(preparation);
+    var earlier = page.text(page.fromDay, marks);
+    var later = page.text(page.toDay, marks);
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
@@ -176,33 +173,22 @@ class CompareController {
                     frame,
                     title,
                     masthead,
-                    TimelineView.comparing(
+                    CompareView.of(
                         page.act,
-                        page.from,
+                        earlier,
                         page.fromDay,
-                        page.to,
+                        later,
                         page.toDay,
+                        unit,
                         page.language,
                         today,
-                        TimelineView.states(preparation),
-                        view),
-                    CompareView.of(
-                            page.act,
-                            page.from,
-                            page.fromDay,
-                            page.to,
-                            page.toDay,
-                            page.language,
-                            today,
-                            Links.page(page.eli, page.from, page.to, page.language, page.only, view)
-                                .acts(),
-                            texts.marks(preparation),
-                            page.only,
-                            on)
-                        .noting(note),
-                    page.from.equals(page.to)
-                        ? page.same()
-                        : page.changes(preparation, self(request), frame.results()),
+                        marks),
+                    earlier.equals(later)
+                        ? templates.catalogueCompareSame(
+                            "The wording is the same on the two days.",
+                            Links.read(page.eli, page.toDay, page.language),
+                            "Read the law on " + Dates.inWords(page.toDay))
+                        : page.changes(preparation, earlier, later, self(request), frame.results()),
                     prepared,
                     ArrivingView.of(preparation).orElse(null),
                     view)
@@ -224,9 +210,7 @@ class CompareController {
       @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to) {
     var page = new Page(new Eli(type, year, number), code, from, to, null, null);
     texts.retry(page.act, page.language);
-    return ResponseEntity.status(HttpStatus.SEE_OTHER)
-        .location(URI.create(Links.compare(page.eli, page.fromDay, page.toDay, page.language)))
-        .build();
+    return ResponseEntity.status(HttpStatus.SEE_OTHER).location(URI.create(page.address())).build();
   }
 
   /**
@@ -242,14 +226,12 @@ class CompareController {
    *
    * <ul>
    *   <li>the act
-   *   <li>the two days asked for, and the versions that give the law on them, in the language. From
-   *       is always the earlier day. Without days, they are the first days of the version that
-   *       applies today and of the version before it. A day before the act's first version has no
-   *       version: the page then says that the act didn't exist yet, or wasn't in force yet, and
-   *       its version here is the first version.
-   *   <li>the act asked for, to limit the comparison to its changes, if that act is between the two
-   *       versions
+   *   <li>the two days asked for. From is always the earlier day. Without days, they are the first
+   *       days of the version that applies today and of the version before it. A day before the
+   *       first version of the act has no text: the page then says that the act didn't exist yet,
+   *       or wasn't in force yet.
    *   <li>the comparison module's view, as the reader gave it, or null
+   *   <li>the provision that the page is limited to, or null
    * </ul>
    */
   private final class Page {
@@ -259,30 +241,28 @@ class CompareController {
     final Timeline timeline;
     final LocalDate fromDay;
     final LocalDate toDay;
-    final Version from;
-    final Version to;
     final boolean before;
-    final @Nullable ActIdentifier only;
     final @Nullable String view;
+    final @Nullable String unit;
 
     Page(
         Eli eli,
         String code,
         @Nullable LocalDate from,
         @Nullable LocalDate to,
-        @Nullable String only,
-        @Nullable String view) {
+        @Nullable String view,
+        @Nullable String unit) {
       this.eli = eli;
       this.view = view;
+      this.unit = unit;
       language = Requests.language(code);
       act = acts.find(eli).orElseThrow(Requests::notFound);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
       // Without dates, use the version that applies today. If none applies today, use the latest.
-      var current = timeline.applicableOn(Timeline.today(clock)).orElseGet(timeline::latest);
       var later =
           to != null
               ? to
-              : (from == null && only != null ? integrating(only).orElse(current) : current).date();
+              : timeline.applicableOn(Timeline.today(clock)).orElseGet(timeline::latest).date();
       var earlier = from;
       if (earlier == null) {
         // Without From, From is the first day of the version before To's. If To's version is the
@@ -300,96 +280,38 @@ class CompareController {
       fromDay = swapped ? later : earlier;
       toDay = swapped ? earlier : later;
       before = timeline.startsAfter(fromDay);
-      this.from = on(fromDay);
-      this.to = on(toDay);
-      this.only =
-          only == null || before
-              ? null
-              : act.integratedBetween(this.from, this.to).stream()
-                  .filter(each -> each.celex().equals(only))
-                  .findFirst()
-                  .orElse(null);
+    }
+
+    /** Returns whether {@code from} and {@code to} are the two days of this comparison. */
+    boolean at(@Nullable LocalDate from, @Nullable LocalDate to) {
+      return fromDay.equals(from) && toDay.equals(to);
+    }
+
+    /** Returns the address of the page, with its days, and its view or its provision. */
+    String address() {
+      var page = new ComparePage(Links.compare(eli, language), fromDay, toDay, null, view);
+      return unit == null ? page.href() : page.href(unit);
+    }
+
+    /** Returns the version whose text shows the law on {@code day}, {@link Act#textOn}. */
+    Version text(LocalDate day, Map<Version, TextMarks> marks) {
+      return act.textOn(day, language, marks).orElseThrow(Requests::notFound);
     }
 
     /**
-     * Returns whether {@code from}, {@code to} and {@code only} are the canonical address of this
-     * comparison. That is, its two days, and an act between them, if any.
+     * Returns the day that a comparison can end on, where From is before the first version: To, or
+     * the first day of the second version if To is before the first version also.
      */
-    boolean at(@Nullable LocalDate from, @Nullable LocalDate to, @Nullable String only) {
-      return fromDay.equals(from)
-          && toDay.equals(to)
-          && Objects.equals(only, this.only == null ? null : this.only.celex());
-    }
-
-    /**
-     * Returns the version that gives the law on {@code day}. Before the first version, there is
-     * none: it returns the first version, and the page says so.
-     */
-    private Version on(LocalDate day) {
-      return timeline.startsAfter(day)
-          ? timeline.first()
-          : timeline.applicableOn(day).orElseThrow(Requests::notFound);
-    }
-
-    /**
-     * Returns the page when From is a day before the act's first version. The From card shows the
-     * day and a dash, and so does the To card if To is before it too. A panel in place of the
-     * changes says that the act didn't exist yet, or wasn't in force yet. Its first button compares
-     * from the day the act came into force.
-     */
-    String notYet(Frame frame, String title, MastheadView masthead) {
+    LocalDate afterFirst() {
       var first = timeline.first();
-      var toBefore = timeline.startsAfter(toDay);
-      var compareTo =
-          toBefore ? timeline.successor(first).map(Version::date).orElseGet(first::date) : toDay;
-      var today = Timeline.today(clock);
-      return templates
-          .catalogueCompare(
-              frame,
-              title,
-              masthead,
-              TimelineView.before(act, language, Timeline.today(clock)),
-              CompareView.before(
-                  act, fromDay, toBefore ? null : to, toDay, language, today, Map.of()),
-              templates.catalogueTextFailed(
-                  FailureView.comparingBefore(act, fromDay, compareTo, language)),
-              false,
-              null,
-              view)
-          .render();
+      return timeline.startsAfter(toDay)
+          ? timeline.successor(first).map(Version::date).orElseGet(first::date)
+          : toDay;
     }
 
     /**
-     * Returns the first version in the language that integrates the act {@code celex}. A comparison
-     * limited to the changes of that act goes there if it has no From and no To. For example, the
-     * "What it changed in …" link of a search goes there.
-     */
-    private Optional<Version> integrating(String celex) {
-      return timeline.versions().stream()
-          .filter(
-              v ->
-                  act.integratedBetween(timeline.predecessor(v).orElse(v), v).stream()
-                      .anyMatch(each -> each.celex().equals(celex)))
-          .findFirst();
-    }
-
-    /**
-     * Returns what the page says if both ends are the same version. It says so, and links to the
-     * page of the version. It also links to the comparison of the version with the version before
-     * it, if there is one.
-     */
-    JteModel same() {
-      return templates.catalogueCompareSame(
-          "Both ends are the same version (from " + Dates.inWords(to.date()) + ").",
-          timeline
-              .predecessor(to)
-              .map(before -> Links.compare(eli, before, to, language))
-              .orElse(null),
-          Links.read(eli, toDay, language));
-    }
-
-    /**
-     * Returns the changes slot, after the act is prepared in the language.
+     * Returns the changes slot, after the act is prepared in the language. {@code from} and {@code
+     * to} are the versions whose texts show the law on the two days.
      *
      * <ul>
      *   <li>If no text of the act could be built, it returns the failure panel of the act. The
@@ -397,37 +319,49 @@ class CompareController {
      *   <li>If either text could not be built, it returns the failure panel of that text. Try again
      *       posts to {@code self}.
      *   <li>If both texts are built, it returns the slot that loads the changes from the comparison
-     *       module.
+     *       module. For one provision, the slot loads the wording of the provision on the two days.
      *   <li>Otherwise, either version appeared after the act was prepared. It says that the text is
      *       being prepared.
      * </ul>
      */
-    JteModel changes(Preparation preparation, String self, Frame.@Nullable Results results) {
+    JteModel changes(
+        Preparation preparation,
+        Version from,
+        Version to,
+        String self,
+        Frame.@Nullable Results results) {
       if (preparation.ready() == 0) {
         return templates.catalogueTextFailed(FailureView.act(act, preparation, self, results));
       }
       // Both texts are in the language, because the versions come from the timeline in it.
       var earlier = Objects.requireNonNull(preparation.texts().get(from));
       var later = Objects.requireNonNull(preparation.texts().get(to));
-      if (earlier instanceof Text.Failed failed) {
-        return templates.catalogueTextFailed(
-            FailureView.comparing(act, from, to, from, failed, language, self));
-      }
-      if (later instanceof Text.Failed failed) {
-        return templates.catalogueTextFailed(
-            FailureView.comparing(act, from, to, to, failed, language, self));
-      }
-      if (earlier instanceof Text.Ready && later instanceof Text.Ready) {
-        return templates.catalogueCompareReady(
-            Links.page(eli, from, to, language, only, view).changes(),
-            "Comparing the law on "
-                + Dates.inWords(fromDay)
-                + " with the law on "
-                + Dates.inWords(toDay)
-                + "…");
-      }
-      // Either end is a version that appeared since, and it is being prepared.
-      return templates.catalogueTextArriving();
+      return switch (earlier) {
+        case Text.Failed failed ->
+            templates.catalogueTextFailed(
+                FailureView.comparing(act, from, to, from, failed, language, self));
+        case Text.Ready ready ->
+            switch (later) {
+              case Text.Failed failed ->
+                  templates.catalogueTextFailed(
+                      FailureView.comparing(act, from, to, to, failed, language, self));
+              case Text.Ready alsoReady -> {
+                var parts = Links.page(eli, from, to, language, null, view).on(fromDay, toDay);
+                yield templates.catalogueCompareReady(
+                    unit == null ? parts.changes() : parts.sides(List.of(unit)),
+                    "Comparing the law on "
+                        + Dates.inWords(fromDay)
+                        + " with the law on "
+                        + Dates.inWords(toDay)
+                        + "…");
+              }
+              // The version appeared since, and it is being prepared.
+              case Text.Waiting waiting -> templates.catalogueTextArriving();
+              case Text.Converting converting -> templates.catalogueTextArriving();
+            };
+        case Text.Waiting waiting -> templates.catalogueTextArriving();
+        case Text.Converting converting -> templates.catalogueTextArriving();
+      };
     }
   }
 }

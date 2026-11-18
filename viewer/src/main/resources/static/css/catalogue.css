@@ -385,19 +385,75 @@ a.button:hover {
   border-color: var(--ink);
 }
 
-/* Compare mode. The section shows From → To, and then the acts between them. */
+/* Compare. The section shows the heading, the form with the two days, and one line with the
+ * amending acts between the days. */
 section.selection.compare {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) minmax(0, 1.3fr);
-  gap: 14px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
 }
 
-.arrow {
-  padding-top: 16px;
-  font-size: 22px;
-  color: var(--muted);
-  text-align: center;
+section.selection.compare h2 {
+  margin: 0;
+  font:
+    600 20px Georgia,
+    serif;
+  color: var(--ink);
+}
+
+section.selection.compare p {
+  margin: 0;
+  color: var(--ink2);
+  font-size: 13.5px;
+}
+
+section.selection.compare p b {
+  color: var(--ink);
+}
+
+section.selection.compare a {
+  color: var(--accent);
+}
+
+/* The steps between the two days of the comparison of one provision. One line is for one change,
+ * as in the history of a provision on Read. An amber rule: the change does not apply on the later
+ * day. */
+.compare-steps {
+  max-width: 60rem;
+  margin: 24px 0;
+  font-size: 13.5px;
+  color: var(--ink2);
+}
+
+.compare-steps h2 {
+  margin: 0 0 6px;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.compare-steps ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compare-steps li {
+  margin: 4px 0;
+  padding-left: 10px;
+  border-left: 3px solid transparent;
+}
+
+.compare-steps li.warn {
+  border-left-color: var(--warn-stripe);
+}
+
+.compare-steps li.open {
+  border-left: 3px dashed var(--line-strong);
+}
+
+.compare-steps a {
+  color: var(--accent);
 }
 
 .card {
@@ -1086,41 +1142,7 @@ form.find-act .ex a {
   font-size: 13px;
 }
 
-/* The note under the cards that says the reader asked for an act that is not between the two
- * versions. */
-/* The law on some days was the From text with the changes shown, and no version shows it. */
-.compare-unshown {
-  margin: 12px 0 0;
-  padding: 8px 12px;
-  border: 1px solid var(--warn-line);
-  border-radius: 3px;
-  background: var(--warn-bg);
-  color: var(--warn-ink);
-}
-
-.compare-unshown a {
-  color: inherit;
-  font-weight: 600;
-}
-
-/* The text of a card's version is not the law on its day. */
-.card-divergence {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin: 8px 0 0;
-  padding: 8px 12px;
-  border: 1px dashed var(--warn-stripe);
-  border-radius: 3px;
-}
-
-.compare-note {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-/* Both ends of the comparison are the same version. */
+/* The wording is the same on the two days of the comparison. */
 .same-version {
   margin: 24px 0;
 }

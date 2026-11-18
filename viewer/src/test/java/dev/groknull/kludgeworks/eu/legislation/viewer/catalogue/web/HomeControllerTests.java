@@ -33,7 +33,6 @@ import org.springframework.test.web.servlet.assertj.MvcTestResult;
 @Import(ControllerTesting.class)
 class HomeControllerTests {
   private static final String READ = "/eli/reg_impl/2015/1998/eng";
-  private static final String COMPARE = READ + "/compare";
 
   @Autowired MockMvcTester mvc;
   @MockitoBean Acts acts;
@@ -148,7 +147,7 @@ class HomeControllerTests {
     assertThat(avsec.select("a.to").text()).isEqualTo("Open this act →");
     var amending = page.select(".result .t").get(1);
     assertThat(amending.select("a.to").text()).isEqualTo("What it changed in 2015/1998 →");
-    assertThat(amending.select("a.to").attr("href")).isEqualTo(COMPARE + "?act=32026R0449");
+    assertThat(amending.select("a.to").attr("href")).isEqualTo(READ + "/history/32026R0449");
     assertThat(page.select(".filters a").eachText())
         .containsExactly("All", "Regulations", "Directives", "Decisions", "Amending acts");
     assertThat(page.select(".filters a[aria-current=page]").text()).isEqualTo("All");

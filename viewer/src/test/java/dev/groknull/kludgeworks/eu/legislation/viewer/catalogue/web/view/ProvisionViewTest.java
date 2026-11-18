@@ -58,7 +58,7 @@ class ProvisionViewTest {
 
     assertThat(view.compare())
         .startsWith("/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2026-10-01")
-        .endsWith("#anx%2Fpnt_4.1.3.1");
+        .endsWith("&unit=anx%2Fpnt_4.1.3.1");
   }
 
   @Test

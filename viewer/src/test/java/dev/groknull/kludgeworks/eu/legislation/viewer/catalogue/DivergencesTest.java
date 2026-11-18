@@ -259,7 +259,7 @@ class DivergencesTest {
   }
 
   @Test
-  void theLawWhileTheTextIsLateIsTheVersionBeforeWithTheChangesOfTheAct() {
+  void theTextForADayWithALateActIsTheFirstVersionThatIncludesTheAct() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -267,35 +267,56 @@ class DivergencesTest {
     var act = act();
     var versions = act.timeline().versions();
 
-    assertThat(act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act)))
-        .contains(
-            new Unshown(AMENDING, LocalDate.parse("2017-06-01"), LocalDate.parse("2017-06-06")));
-    var unshown =
-        act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act))
-            .orElseThrow();
-    assertThat(unshown.on(LocalDate.parse("2017-06-03"))).isTrue();
-    assertThat(unshown.on(LocalDate.parse("2017-06-07"))).isFalse();
-    assertThat(unshown.on(LocalDate.parse("2017-05-31"))).isFalse();
-    // The version before that lacks more than the act.
-    assertThat(act.unshown(versions.get(0), versions.get(2), AMENDING, Language.ENG, texts(act)))
-        .isEmpty();
-    // An act that does not make the text late.
-    assertThat(act.unshown(versions.get(1), versions.get(2), BASE, Language.ENG, texts(act)))
-        .isEmpty();
+    // From 1 to 6 June 2017 the act applies, and the version of 29 February 2016 does not have it.
+    assertThat(act.textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
+        .contains(versions.get(2));
+    assertThat(act.textOn(LocalDate.parse("2017-06-01"), Language.ENG, texts(act)))
+        .contains(versions.get(2));
+    // Before the act applies, and from the version that includes it, the text is the version of
+    // the day.
+    assertThat(act.textOn(LocalDate.parse("2017-05-31"), Language.ENG, texts(act)))
+        .contains(versions.get(1));
+    assertThat(act.textOn(LocalDate.parse("2017-06-07"), Language.ENG, texts(act)))
+        .contains(versions.get(2));
   }
 
   @Test
-  void theLawWhileTheTextIsLateStartsNoEarlierThanTheVersionBefore() {
-    application("2016-01-01");
-    place("2016-01-01");
+  void theTextForADayWithALateActThatNoVersionIncludesIsTheVersionOfTheDay() {
+    application("2017-06-01");
+    place("2017-06-01");
     version("2016-02-29", false);
-    version("2017-06-07", true, POINT);
     var act = act();
-    var versions = act.timeline().versions();
 
-    assertThat(act.unshown(versions.get(1), versions.get(2), AMENDING, Language.ENG, texts(act)))
-        .contains(
-            new Unshown(AMENDING, LocalDate.parse("2016-02-29"), LocalDate.parse("2017-06-06")));
+    assertThat(act.textOn(LocalDate.parse("2017-06-03"), Language.ENG, texts(act)))
+        .contains(act.timeline().versions().get(1));
+  }
+
+  @Test
+  void aDayBeforeTheFirstVersionHasNoText() {
+    version("2016-02-29", false);
+    var act = act();
+
+    assertThat(act.textOn(LocalDate.parse("2015-01-01"), Language.ENG, texts(act))).isEmpty();
+  }
+
+  @Test
+  void aUnitWithAChangeThatDoesNotApplyOnTheDayYetIsPending() {
+    entryIntoForce("2017-12-29");
+    partialApplication("2019-10-11");
+    place("2019-10-11");
+    version("2016-02-29", false);
+    version("2018-01-12", true, POINT);
+    var act = act();
+    var early = act.timeline().versions().get(2);
+
+    var pending = act.pending(early, LocalDate.parse("2018-06-01"), Language.ENG, texts(act));
+    assertThat(pending.at(POINT)).contains(AMENDING);
+    // The unit that the point is in has a change that does not apply yet also.
+    assertThat(pending.at("anx/pnt_1")).contains(AMENDING);
+    assertThat(pending.at("anx/pnt_1.2")).isEmpty();
+    // From the day the change applies, no unit is pending.
+    assertThat(act.pending(early, LocalDate.parse("2019-10-11"), Language.ENG, texts(act)).byUnit())
+        .isEmpty();
   }
 
   @Test

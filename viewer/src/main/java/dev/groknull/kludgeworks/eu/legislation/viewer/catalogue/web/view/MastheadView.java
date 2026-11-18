@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -19,9 +20,9 @@ import org.jspecify.annotations.Nullable;
  * the page if Cellar has it, else in English. If Cellar has neither, the title is the CELEX of the
  * act.
  *
- * <p>The mode switch links to the other mode. When the reader reads a version, it links to the
- * comparison of that version with the version before. When the reader compares two versions, it
- * links to the page of the later version.
+ * <p>The mode switch links to the history and to Read. No tab opens Compare: the reader gets there
+ * from the history of a provision or from a period of the history. On the Compare page, the two
+ * tabs are links, and Read reads the law on the later day.
  *
  * @param title the title of the act. In English, the title stops at its date. For example,
  *     "Commission Implementing Regulation (EU) 2015/1998 of 5 November 2015".
@@ -45,8 +46,6 @@ import org.jspecify.annotations.Nullable;
  * @param historyEmpty whether the history has nothing to show: the act has no amending act and no
  *     corrigendum in the language. Then the label is not a link.
  * @param read the address of the page of the version. Null when the reader reads.
- * @param compare the address of the comparison, when the reader reads. Null when the reader
- *     compares.
  * @param preparing whether the act is being prepared. If so, the mode switch shows, but it is not a
  *     link yet.
  * @param notices the address of the stream of notices that the act changed while the page is open
@@ -66,7 +65,6 @@ public record MastheadView(
     String historyLabel,
     boolean historyEmpty,
     @Nullable String read,
-    @Nullable String compare,
     boolean preparing,
     @Nullable String notices) {
 
@@ -80,75 +78,62 @@ public record MastheadView(
    */
   public static MastheadView reading(Act act, Version version, LocalDate asked, Language language) {
     var eli = eli(act);
-    var timeline = act.timeline().in(language).filter(each -> each.versions().contains(version));
-    // Compare with the version before. The first version has none, so compare it with the version
-    // after. If there is no version after, compare the version with itself.
-    var compare =
-        timeline
-            .flatMap(each -> each.predecessor(version))
-            .map(before -> Links.compare(eli, before, version, language))
-            .or(
-                () ->
-                    timeline
-                        .flatMap(each -> each.successor(version))
-                        .map(after -> Links.compare(eli, version, after, language)))
-            .orElseGet(() -> Links.compare(eli, version, version, language));
     return of(
         act,
         language,
         each -> Links.read(eli, asked, each),
         each -> version.languages().contains(each) ? null : "Not for this version",
         Links.history(eli, asked, language),
-        null,
-        compare);
+        null);
   }
 
   /**
-   * Returns the head of the comparison of the law on {@code fromDay}, which {@code from} gives,
-   * with the law on {@code toDay}, which {@code to} gives, for {@code act}, in {@code language}.
-   * The language switch keeps the two days. It greys each language that {@code from} or {@code to}
-   * is not in. Read reads the law on {@code toDay}.
+   * Returns the head of the comparison of the law on {@code fromDay} with the law on {@code toDay},
+   * for {@code act}, in {@code language}. The language switch keeps the two days, and the provision
+   * {@code unit} if the page is limited to one. It greys each language that the act has no text in
+   * on a day. Read reads the law on {@code toDay}.
    */
   public static MastheadView comparing(
-      Act act, Version from, LocalDate fromDay, Version to, LocalDate toDay, Language language) {
+      Act act, LocalDate fromDay, LocalDate toDay, @Nullable String unit, Language language) {
     var eli = eli(act);
     return of(
         act,
         language,
-        each -> Links.compare(eli, fromDay, toDay, each),
         each -> {
-          var inFrom = from.languages().contains(each);
-          var inTo = to.languages().contains(each);
-          if (inFrom && inTo) {
+          var page = new ComparePage(Links.compare(eli, each), fromDay, toDay, null, null);
+          return unit == null ? page.href() : page.href(unit);
+        },
+        each -> {
+          var inFrom = act.versionOn(fromDay, each).filter(v -> v.languages().contains(each));
+          var inTo = act.versionOn(toDay, each).filter(v -> v.languages().contains(each));
+          if (inFrom.isPresent() && inTo.isPresent()) {
             return null;
           }
           var name = each.english();
-          return inFrom
-              ? "To isn’t in " + name
-              : inTo ? "From isn’t in " + name : "Neither version is in " + name;
+          return inFrom.isPresent()
+              ? "No text in " + name + " for the To day"
+              : inTo.isPresent()
+                  ? "No text in " + name + " for the From day"
+                  : "No text in " + name + " for the two days";
         },
         Links.history(eli, toDay, language),
-        Links.read(eli, toDay, language),
-        null);
+        Links.read(eli, toDay, language));
   }
 
   /**
    * Returns the head of the history of {@code act} on {@code day}, in {@code language}, and of the
    * page of one of its amending acts. The language switch keeps the day. Read reads the law on
-   * {@code day}. Compare compares the version of that day with the version before it.
+   * {@code day}.
    */
   public static MastheadView history(Act act, LocalDate day, Language language) {
     var eli = eli(act);
-    var version = act.versionOn(day, language).orElseGet(act.timeline()::first);
-    var reading = reading(act, version, day, language);
     return of(
         act,
         language,
         each -> Links.history(eli, day, each),
         each -> null,
         null,
-        Links.read(eli, day, language),
-        reading.compare());
+        Links.read(eli, day, language));
   }
 
   private static MastheadView of(
@@ -157,8 +142,7 @@ public record MastheadView(
       Function<Language, String> page,
       Function<Language, @Nullable String> missing,
       @Nullable String history,
-      @Nullable String read,
-      @Nullable String compare) {
+      @Nullable String read) {
     var eli = eli(act);
     var titled = act.title(language).isPresent() ? language : Language.ENG;
     var full = act.title(titled).orElseGet(act.id()::celex);
@@ -190,7 +174,6 @@ public record MastheadView(
         historyLabel(act, language),
         act.amendingActs(language).isEmpty() && act.corrigendaOf(act.id(), language).isEmpty(),
         read,
-        compare,
         false,
         Links.notices(eli, language));
   }
@@ -228,7 +211,6 @@ public record MastheadView(
         historyLabel,
         historyEmpty,
         read,
-        compare,
         true,
         null);
   }

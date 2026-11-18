@@ -3,7 +3,9 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ProvisionHistory;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -18,6 +20,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.function.Predicate;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -31,8 +34,8 @@ import org.jspecify.annotations.Nullable;
  *     act.
  * @param lines one line for each change, newest act first
  * @param unknown what the page says where the data names no act. Null if it names one.
- * @param compare the address of the comparison of the wording of the provision on two days. Null if
- *     fewer than two amending acts changed it.
+ * @param compare the address of the Compare page of the provision, for two days. Null if fewer than
+ *     two amending acts changed it.
  */
 public record ProvisionView(
     String heading,
@@ -61,29 +64,84 @@ public record ProvisionView(
       LocalDate today,
       Language language,
       Map<Version, TextMarks> texts) {
-    var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var text = Objects.requireNonNull(texts.get(reading), "the text of the version is not built");
     var history = act.historyOf(unit, text, language);
+    var name = name(history, unit, text);
+    var lines = lines(act, history, name, day, today, language, each -> true);
+    var acts = history.acts().stream().filter(each -> !each.corrigendum()).toList();
+    return new ProvisionView(
+        "History of " + (name == null ? "this provision" : name),
+        lines.isEmpty()
+            ? null
+            : acts.size() == 1
+                ? "1 amending act changed it"
+                : acts.size() + " amending acts changed it",
+        lines,
+        lines.isEmpty() ? unknown(act, unit, language, texts) : null,
+        acts.size() < 2 ? null : compare(act, acts, reading, unit, language));
+  }
+
+  /**
+   * Returns the name of the unit {@code unit} of {@code text}, as a change of the provision names
+   * it. For example, "Article 6(2)". Null if no change names it.
+   */
+  static @Nullable String name(Act act, String unit, TextMarks text, Language language) {
+    return name(act.historyOf(unit, text, language), unit, text);
+  }
+
+  private static @Nullable String name(ProvisionHistory history, String unit, TextMarks text) {
+    return history.changes().stream()
+        .filter(
+            change ->
+                change
+                    .location()
+                    .in(text.eIds())
+                    .filter(found -> !found.within() && found.eIds().equals(List.of(unit)))
+                    .isPresent())
+        .map(change -> change.location().name())
+        .filter(each -> !each.isEmpty())
+        .findFirst()
+        .orElse(null);
+  }
+
+  /**
+   * Returns the changes that {@code acts} made to the unit {@code unit} of {@code text}, oldest act
+   * first, with the state of each change on {@code day}. The Compare page of one provision lists
+   * them as the steps between its two days.
+   */
+  static List<Line> steps(
+      Act act,
+      String unit,
+      TextMarks text,
+      LocalDate day,
+      LocalDate today,
+      Language language,
+      List<ActIdentifier> acts) {
+    var history = act.historyOf(unit, text, language);
+    return lines(act, history, name(history, unit, text), day, today, language, acts::contains)
+        .reversed();
+  }
+
+  /** Returns one line for each change of {@code history} by an act that {@code kept} accepts. */
+  private static List<Line> lines(
+      Act act,
+      ProvisionHistory history,
+      @Nullable String name,
+      LocalDate day,
+      LocalDate today,
+      Language language,
+      Predicate<ActIdentifier> kept) {
+    var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);
-    var kept = day.equals(today) ? null : day;
+    var on = day.equals(today) ? null : day;
     var amending = act.amendingActs(language);
-    var name =
-        history.changes().stream()
-            .filter(
-                change ->
-                    change
-                        .location()
-                        .in(text.eIds())
-                        .filter(found -> !found.within() && found.eIds().equals(List.of(unit)))
-                        .isPresent())
-            .map(change -> change.location().name())
-            .filter(each -> !each.isEmpty())
-            .findFirst()
-            .orElse(null);
     var lines = new ArrayList<Line>();
     for (var change : history.changes()) {
+      if (!kept.test(change.act())) {
+        continue;
+      }
       var place = change.location().name();
-      var page = href(eli, change.act(), kept, language, amending);
+      var page = href(eli, change.act(), on, language, amending);
       lines.add(
           new Line(
               act.cited(change.act()),
@@ -101,26 +159,19 @@ public record ProvisionView(
                   : null));
     }
     for (var each : history.marking()) {
+      if (!kept.test(each)) {
+        continue;
+      }
       lines.add(
           new Line(
               act.cited(each),
-              href(eli, each, kept, language, amending),
+              href(eli, each, on, language, amending),
               each.corrigendum() ? "corrected it." : "changed it.",
               each.corrigendum() ? null : sentence(States.note(act, each, Set.of(), day, past)),
               each.corrigendum() ? null : States.tone(act.stateOn(each, Set.of(), day)),
               null));
     }
-    var acts = history.acts().stream().filter(each -> !each.corrigendum()).toList();
-    return new ProvisionView(
-        "History of " + (name == null ? "this provision" : name),
-        lines.isEmpty()
-            ? null
-            : acts.size() == 1
-                ? "1 amending act changed it"
-                : acts.size() + " amending acts changed it",
-        lines,
-        lines.isEmpty() ? unknown(act, unit, language, texts) : null,
-        acts.size() < 2 ? null : compare(act, acts, reading, unit, language));
+    return lines;
   }
 
   /** Returns {@code note} with a full stop at its end, if it has none. */
@@ -189,9 +240,8 @@ public record ProvisionView(
     return from.filter(each -> each.date().isBefore(to.date()))
         .map(
             each ->
-                Links.compare(eli, each.date(), to.date(), language)
-                    + "#"
-                    + URLEncoder.encode(unit, StandardCharsets.UTF_8))
+                new ComparePage(Links.compare(eli, language), each.date(), to.date(), null, null)
+                    .href(unit))
         .orElse(null);
   }
 

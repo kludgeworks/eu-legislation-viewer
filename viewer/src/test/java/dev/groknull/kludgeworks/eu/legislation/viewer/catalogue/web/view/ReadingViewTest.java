@@ -123,11 +123,6 @@ class ReadingViewTest {
         .isEqualTo(
             "A new version starts on this day · in force from 15 November 2015 · applied 1"
                 + " February 2016 to 28 February 2016");
-    assertThat(published.compare())
-        .isEqualTo("/eli/reg_impl/2015/1998/eng/compare?from=2015-11-15&to=2016-02-29");
-    assertThat(published.comparing()).isEqualTo("Compare with the version after");
-    assertThat(card("2016-02-29", "2016-02-29", TODAY).comparing())
-        .isEqualTo("Compare with the version before");
   }
 
   @Test

@@ -132,21 +132,6 @@ public final class Links {
   }
 
   /**
-   * Returns the address of what {@code amending} changed in the act {@code eli}, in {@code
-   * language}. This is the comparison of the version that first integrates {@code amending} with
-   * the version before it. It shows only the changes of {@code amending}. {@code CompareController}
-   * finds the two versions. For example, {@code
-   * /eli/reg_impl/2015/1998/eng/compare?act=32026R0449}.
-   */
-  public static String changesBy(Eli eli, ActIdentifier amending, Language language) {
-    return compare(eli, language)
-        + "?"
-        + ComparePage.ACT
-        + "="
-        + URLEncoder.encode(amending.celex(), StandardCharsets.UTF_8);
-  }
-
-  /**
    * Returns the address of the history of the act {@code eli} on {@code day}, in {@code language}.
    * The history lists its amending acts. Without a day, the history is for today. For example,
    * {@code /eli/reg/2018/1862/eng/history?on=2022-08-01}.

@@ -159,6 +159,12 @@ a.chip:hover {
   grid-template-columns: 8rem minmax(0, 1fr) minmax(0, 1fr) 15rem;
 }
 
+/* The wording of one provision on the two days of a comparison: the two texts only. */
+.ledger.sides .ledger-head,
+.ledger.sides .ledger-row {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
 .ledger-head {
   position: sticky;
   top: env(safe-area-inset-top, 0px);
@@ -341,6 +347,8 @@ details.ledger-fold[open] {
  * the page of an amending act hides them too: the page says the act. */
 .changes .provenance,
 .changes .deleted,
+.sides .provenance,
+.sides .deleted,
 .wording-text .provenance,
 .wording-text .deleted {
   display: none;
@@ -452,6 +460,22 @@ details.ledger-fold[open] {
 
 .difference-inserted .sidenote {
   border-left-color: var(--ins-ink);
+}
+
+/* A difference with a change that does not apply on the later day of the comparison yet. It has an
+ * amber rule beside its sidenote, and the sidenote says so in words. A row of the Synopsis has the
+ * rule on its last cell. */
+.difference.pending .sidenote,
+.ledger-row.pending .what {
+  border-left: 3px solid var(--warn-stripe);
+}
+
+.sidenote .pending,
+.ledger .what .pending {
+  display: block;
+  margin-top: 3px;
+  font-weight: 600;
+  color: var(--warn-ink);
 }
 
 .difference-deleted .sidenote {

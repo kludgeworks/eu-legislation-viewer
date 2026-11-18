@@ -40,8 +40,7 @@ provision applies, and until when.
 | Read the law as it was on a day | Read |
 | See if the text of that day is the law on that day | Read: the status lines and the marks in the text |
 | See which acts changed one provision | Read: the history of a provision |
-| Compare the law on two days | Compare |
-| See what one amending act changed | Compare, limited to one act |
+| Compare the wording on two days | Compare, from the history of a provision or from a period of the History |
 | Find which act made a change, and from when it applies | Compare: the side note |
 | Go to a different version | The timeline and the calendar |
 
@@ -51,8 +50,11 @@ opens on Read. The tab of the History has the label "Amending acts" and their nu
 does not operate if the act has no amending act and no corrigendum. If the act has no amending act
 and has corrigenda, the tab gives their number also: "Amending acts (0) · Corrigenda (3)".
 
-The brief [amendment-first](briefs/amendment-first.md) changes Read and Compare also. Those pages
-are not changed yet, so their rows in the table are as the pages are now.
+No tab opens Compare. The reader gets there from the history of a provision on Read, or from a
+period of the History. Compare shows two days. It does not name versions, and it has no act filter.
+
+The brief [amendment-first](briefs/amendment-first.md) deletes the timeline and the calendar also.
+They are not deleted yet, so their row in the table is as the pages are now.
 
 ## Terms
 
@@ -67,13 +69,11 @@ are not changed yet, so their rows in the table are as the pages are now.
 | the law on a day | What applies on that day. It is not always the text of a version. |
 | provision | A part of the text with its own place: an article, a paragraph, a point. |
 | difference | A provision that an act inserted, deleted or changed between two versions. |
-| From, To | The two ends of a comparison. From is the earlier day. |
-| acts between them | The acts that the versions after From, up to To, include. |
+| the two days of a comparison | The days that the reader gave to Compare. From is the earlier day, To the later day. |
+| steps | The changes of one provision between the two days of a comparison, oldest first. |
 | side note | The note beside a difference. It names the act and the date. |
 | status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
 | marker | The sign in the text of Read where the text does not show a change: "Not in this text". |
-| warning | The notice on a card of Compare where the text is not the law on the day. Read does not use it. |
-| late, early | Words of Compare only. Late: an act applies, and the text does not include it. Early: the text includes an act that does not apply yet. |
 | fold | A group of provisions that the page hides until the reader opens it. |
 | outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
@@ -101,9 +101,9 @@ Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its
    2017." Do not hide the difference.
 5. **Give the source of each date.** Show the act, its Official Journal reference and the clause
    that sets the date.
-6. **Show the state of the page.** The reader must see the days, the direction of the comparison,
-   the view and the act filter, if one is on.
-7. **Give a filter a way out.** An act filter that is on shows a link back to all acts.
+6. **Show the state of the page.** The reader must see the day, or the two days of a comparison.
+7. **Give a limit a way out.** A period, a stage or a provision that limits a page shows a link
+   back to all.
 8. **A view only formats.** Rules about the law are domain methods with tests. See the
    package documents of the view packages.
 9. **The tense obeys the day.** For today or a later day: "does not apply yet". For a day in the
@@ -123,11 +123,11 @@ and a dark value. The tokens are in
 | Blue | `--ins-…` | Inserted words, and the side note of an inserted provision. |
 | Red | `--del-…` | Deleted words, and the side note of a deleted provision. |
 | Purple | `--corr-…` | A correction by a corrigendum. |
-| Amber | `--warn-…` | On Read, on History and on the page of an amending act: a change does not apply on the day. On Compare: the text is not the law on the day, or an act filter is on. |
+| Amber | `--warn-…` | A change does not apply on the day. On Compare, the day is the later day. |
 | Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the marker). In the outline, a hollow dot is the sign of a marker. |
 
-Colour is not the only signal. Inserted and deleted words are `ins` and `del` elements. A warning
-has words.
+Colour is not the only signal. Inserted and deleted words are `ins` and `del` elements. An amber
+rule has words.
 
 **Open.**
 
@@ -200,8 +200,9 @@ of the viewer before each path.
 | Compare, Changes | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |
 | Compare, Whole text | the same, with `&view=whole` |
 | Compare, Synopsis | the same, with `&view=synopsis` |
-| Compare, one act, with the days that no version shows | `/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-07&act=32017R0815&on=2017-06-03` |
-| Compare, acts that apply in stages | `/eli/dir/2013/36/eng/compare?from=2018-07-09&to=2020-12-29&act=32019L0878` |
+| Compare, a day on which an act applies that the text of the day does not have | `/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03` |
+| Compare, changes that do not apply on the later day | `/eli/reg/2018/1862/eng/compare?from=2021-08-03&to=2022-08-01` |
+| Compare, one provision: the wording on the two days and the steps | `/eli/reg/2008/767/eng/compare?from=2017-12-29&to=2026-06-12&unit=art_6%2Fpar_2` |
 | Preparing | `/eli/reg/2010/185/eng`, the first time |
 
 `mise run ui:snapshots` saves nine of these pages in the light theme and the dark theme. See

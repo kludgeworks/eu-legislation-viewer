@@ -42,9 +42,6 @@
           @endfor
         </nav>
       @endif
-      @if(amending.wording() != null)
-        <p><a class="button" href="${amending.wording()}" data-view="changes">See the wording of these changes</a></p>
-      @endif
       @if(!amending.runs().isEmpty())
         @if(!amending.ordered())
           <p class="hint">The text of ${amending.base()} is not prepared yet. The changes are in the order of the data, not of the text.</p>

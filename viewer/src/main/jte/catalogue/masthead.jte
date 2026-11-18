@@ -7,8 +7,8 @@
      viewer's own labels stay in English. It is a details element. It lists the 24 EU languages in the EU's order. Each
      language links to the same page in that language. The page's language is bold. A language that
      a version on the page is not in is greyed, and its hover says why.
-     The mode switch marks the current mode and links to the other modes: the history, Read and
-     Compare. The label of the history is "Amending acts", with their number. Where the act has
+     The mode switch marks the current mode and links to the other mode: the history and Read.
+     No tab opens Compare. On the Compare page, the two tabs are links. The label of the history is "Amending acts", with their number. Where the act has
      no amending act and has corrigenda, the label has the number of corrigenda also. It is not a link if
      the act has no amending act and no corrigendum: its hover says so. While the act is being
      prepared, neither mode is a link.
@@ -42,11 +42,9 @@
     @if(masthead.preparing())
       <span aria-current="${masthead.history() == null ? "page" : null}" aria-disabled="true">${masthead.historyLabel()}</span>
       <span aria-current="${masthead.read() == null ? "page" : null}" aria-disabled="true">Read</span>
-      <span aria-current="${masthead.compare() == null ? "page" : null}" aria-disabled="true">Compare</span>
     @else
       @if(masthead.history() == null)<span aria-current="page">${masthead.historyLabel()}</span>@elseif(masthead.historyEmpty())<span aria-disabled="true" title="No act changed this act, and it has no corrigendum.">${masthead.historyLabel()}</span>@else<a href="${masthead.history()}" data-view="history">${masthead.historyLabel()}</a>@endif
       @if(masthead.read() != null)<a href="${masthead.read()}" data-view="read">Read</a>@else<span aria-current="page">Read</span>@endif
-      @if(masthead.compare() != null)<a href="${masthead.compare()}" data-view="changes">Compare</a>@else<span aria-current="page">Compare</span>@endif
     @endif
   </nav>
 </header>

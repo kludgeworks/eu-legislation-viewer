@@ -8,13 +8,16 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The address of a compare page: the comparison of two versions of an act, in one language. It
- * gives the addresses of the page and of its parts.
+ * The address of a compare page: the comparison of the law on two days, for an act in one language.
+ * It gives the addresses of the page and of its parts.
+ *
+ * <p>The page has the two days that the reader gave. Its parts have the first days of the two
+ * versions whose texts show the law on those days ({@code Act.textOn}), and the two days also.
  *
  * <p>For example, the page {@code
- * /eli/reg_impl/2015/1998/eng/compare?from=2026-03-22&to=2026-10-01} has its changes at {@code
- * /eli/reg_impl/2015/1998/eng/compare/changes?from=2026-03-22&to=2026-10-01}. A part finds its page
- * by dropping its own segment, {@link #ofPart}.
+ * /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03} has its changes at {@code
+ * /eli/reg_impl/2015/1998/eng/compare/changes?from=2016-02-29&to=2017-06-07&fromDay=2016-02-29&toDay=2017-06-03}.
+ * A part finds its page by dropping its own segment, {@link #ofPart}, and by its days, {@link #on}.
  *
  * <p>The page is the catalogue's, and its parts are the comparison module's. The rule that ties a
  * part to its page is the contract between the two: a part's address is the page's address with a
@@ -29,9 +32,24 @@ import org.jspecify.annotations.Nullable;
  * @param to the first day of the version at the To end
  * @param act the CELEX of the act that the comparison is limited to, or null for all acts
  * @param view the code of the view that the page shows, or null for the first view
+ * @param fromDay the earlier day of the page. Null where the page has the first days of the
+ *     versions as its days.
+ * @param toDay the later day of the page. Null as {@code fromDay}.
  */
 public record ComparePage(
-    String path, LocalDate from, LocalDate to, @Nullable String act, @Nullable String view) {
+    String path,
+    LocalDate from,
+    LocalDate to,
+    @Nullable String act,
+    @Nullable String view,
+    @Nullable LocalDate fromDay,
+    @Nullable LocalDate toDay) {
+
+  /** Makes the address of a page whose days are the first days of its versions. */
+  public ComparePage(
+      String path, LocalDate from, LocalDate to, @Nullable String act, @Nullable String view) {
+    this(path, from, to, act, view, null, null);
+  }
 
   /** The path of the compare page, with the ELI of the act and the code of the language. */
   public static final String PATH = "/eli/{type}/{year}/{number}/{language}/compare";
@@ -90,14 +108,26 @@ public record ComparePage(
   /** The field of the CELEX of the act that the comparison is limited to. */
   public static final String ACT = "act";
 
+  /** The field of the earlier day of the page, which only its parts have. */
+  public static final String FROM_DAY = "fromDay";
+
+  /** The field of the later day of the page, which only its parts have. */
+  public static final String TO_DAY = "toDay";
+
   /**
-   * The field of the day of the Read page that the reader comes from, where its warning of a late
-   * text links here. Only the page reads it, to link back to that day. Its parts do not have it.
+   * The field of the eId of the provision that the page is limited to. Only the page has it. For
+   * example, {@code art_6/par_2}.
    */
-  public static final String ON = "on";
+  public static final String UNIT = "unit";
 
   /** The field of the code of the view. */
   public static final String VIEW = "view";
+
+  /**
+   * The field that asks the differences at a place for the wording on each of the two days, side by
+   * side, with the value {@code true}.
+   */
+  public static final String SIDES = "sides";
 
   /** The field that asks the acts for their counts, with the value {@code true}. */
   public static final String COUNT = "count";
@@ -131,11 +161,45 @@ public record ComparePage(
   }
 
   /**
-   * Returns the address of the page. For example, {@code …/compare?from=…&to=…&act=32026R0449}. The
+   * Returns the address of the same page, with the days {@code fromDay} and {@code toDay}. A null
+   * day is the first day of the version at that end. A day that is the first day of its version is
+   * not kept apart, so that the addresses of the parts stay short.
+   */
+  public ComparePage on(@Nullable LocalDate fromDay, @Nullable LocalDate toDay) {
+    return new ComparePage(
+        path,
+        from,
+        to,
+        act,
+        view,
+        from.equals(fromDay) ? null : fromDay,
+        to.equals(toDay) ? null : toDay);
+  }
+
+  /** Returns the earlier day of the page. */
+  public LocalDate earlier() {
+    return fromDay == null ? from : fromDay;
+  }
+
+  /** Returns the later day of the page. */
+  public LocalDate later() {
+    return toDay == null ? to : toDay;
+  }
+
+  /**
+   * Returns the address of the page, with its days. For example, {@code …/compare?from=…&to=…}. The
    * address has no {@code act} field for all acts, and no {@code view} field for the first view.
    */
   public String href() {
-    return path + query(from, to) + act(act) + view(view);
+    return path + query(earlier(), later()) + act(act) + view(view);
+  }
+
+  /**
+   * Returns the address of the page, limited to the provision {@code unit}. For example, {@code
+   * …/compare?from=…&to=…&unit=art_6%2Fpar_2}.
+   */
+  public String href(String unit) {
+    return path + query(earlier(), later()) + "&" + UNIT + "=" + encode(unit);
   }
 
   /**
@@ -144,7 +208,7 @@ public record ComparePage(
    * null, the page shows its first view.
    */
   public String href(@Nullable String act, @Nullable String view) {
-    return new ComparePage(path, from, to, act, view).href();
+    return new ComparePage(path, from, to, act, view, fromDay, toDay).href();
   }
 
   /** Returns the address of the changes, with the page's query. */
@@ -177,6 +241,14 @@ public record ComparePage(
     var units = new StringBuilder();
     eIds.forEach(eId -> units.append('&').append(EID).append('=').append(encode(eId)));
     return path + "/" + PLACE + query(from, to) + act(act) + units;
+  }
+
+  /**
+   * Returns the address of the wording of the units {@code eIds} on each of the two days of the
+   * page, side by side. It is the address of {@link #place}, with {@link #SIDES} and the days.
+   */
+  public String sides(List<String> eIds) {
+    return place(eIds) + "&" + SIDES + "=true" + days();
   }
 
   /**
@@ -226,7 +298,12 @@ public record ComparePage(
   }
 
   private String part(String segment) {
-    return path + "/" + segment + query(from, to) + act(act) + view(view);
+    return path + "/" + segment + query(from, to) + act(act) + view(view) + days();
+  }
+
+  private String days() {
+    return (fromDay == null ? "" : "&" + FROM_DAY + "=" + fromDay)
+        + (toDay == null ? "" : "&" + TO_DAY + "=" + toDay);
   }
 
   private static String query(LocalDate from, LocalDate to) {

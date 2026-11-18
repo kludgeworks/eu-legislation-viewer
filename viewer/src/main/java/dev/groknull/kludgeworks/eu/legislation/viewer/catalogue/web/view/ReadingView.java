@@ -48,11 +48,6 @@ import org.jspecify.annotations.Nullable;
  * @param on the date that the form starts at. This is the day asked.
  * @param starts the days that a new version starts, which the date picker rings: ISO dates in
  *     order, separated by spaces
- * @param compare the address of the comparison of the version with the version before, in the
- *     language of the page. For the first version, the comparison is with the version after. Null
- *     where there is nothing to compare.
- * @param comparing the text of the compare link: "Compare with the version before" or "Compare with
- *     the version after"
  */
 public record ReadingView(
     String title,
@@ -65,9 +60,7 @@ public record ReadingView(
     @Nullable String eurLex,
     String action,
     String on,
-    String starts,
-    @Nullable String compare,
-    String comparing) {
+    String starts) {
 
   /**
    * Returns the Reading card of the law on {@code asked}, which {@code version} of {@code act}
@@ -89,9 +82,6 @@ public record ReadingView(
       Map<Version, TextMarks> marks) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var makers = Wording.makers(act, version, named);
-    var timeline = act.timeline().in(language).filter(each -> each.versions().contains(version));
-    var before = timeline.flatMap(each -> each.predecessor(version));
-    var after = timeline.flatMap(each -> each.successor(version));
     return new ReadingView(
         title(act, asked),
         Dates.inWords(asked),
@@ -103,12 +93,7 @@ public record ReadingView(
         version.eurLex(language).toString(),
         Links.act(eli, language),
         asked.toString(),
-        TimelineView.starts(act, language),
-        before
-            .map(each -> Links.compare(eli, each, version, language))
-            .or(() -> after.map(each -> Links.compare(eli, version, each, language)))
-            .orElse(null),
-        before.isPresent() ? "Compare with the version before" : "Compare with the version after");
+        TimelineView.starts(act, language));
   }
 
   /**
@@ -128,9 +113,7 @@ public record ReadingView(
         null,
         Links.act(eli, language),
         asked.toString(),
-        TimelineView.starts(act, language),
-        null,
-        "Compare with the version after");
+        TimelineView.starts(act, language));
   }
 
   /** Returns the page's title. For example, "2015/1998 · the law on 14 Feb 2022". */

@@ -289,42 +289,65 @@ public record Act(
   }
 
   /**
-   * Returns the days on which the law is the text of {@code from} with the changes of {@code
-   * amending}, which no version shows. This is so where {@code amending} applies before {@code to},
-   * the first version that includes it, and {@code from} is the version just before {@code to}. The
-   * days start when {@code amending} applies, or when {@code from} starts if that is later, and end
-   * the day before {@code to}. Empty in each other case.
+   * Returns the version whose text a comparison shows for {@code day}, in {@code language}.
+   *
+   * <ul>
+   *   <li>It is the version that applies on the day.
+   *   <li>If an amending act applies on the day and that version does not include it, it is the
+   *       first version that includes the act. If there are two or more such acts, it is the latest
+   *       of their versions. That text can include a change that does not apply on the day yet: an
+   *       early divergence of the day says where.
+   *   <li>An act that no version includes does not move the version.
+   * </ul>
    *
    * <p>For example, 2017/815 applies from 1 June 2017, and the version of 2015/1998 of 7 June 2017
-   * is the first to include it. The version before it starts on 29 February 2016. From 1 to 6 June
-   * 2017, the law is the text of 29 February 2016 with the changes of 2017/815.
+   * is the first to include it. The text for 3 June 2017 is the version of 7 June 2017, not the
+   * version of 29 February 2016 that applies on that day.
+   *
+   * <p>Returns empty before the first version of the act.
    *
    * @param texts the marks of the texts in {@code language} that are built, as {@link
    *     #divergences(Language, Map)} takes them
    */
-  public Optional<Unshown> unshown(
-      Version from,
-      Version to,
-      ActIdentifier amending,
-      Language language,
-      Map<Version, TextMarks> texts) {
-    var before = timeline(language).flatMap(each -> each.predecessor(to));
-    if (before.isEmpty() || !before.get().equals(from)) {
-      return Optional.empty();
+  public Optional<Version> textOn(LocalDate day, Language language, Map<Version, TextMarks> texts) {
+    var applies = timeline(language).flatMap(each -> each.applicableOn(day));
+    if (applies.isEmpty()) {
+      return applies;
     }
-    return divergences(language, texts).stream()
-        .filter(
-            each ->
-                each.kind() == Divergence.Kind.LATE
-                    && each.act().equals(amending)
-                    && to.equals(each.included()))
-        .findFirst()
-        .map(
-            late -> {
-              var first =
-                  late.appliesFrom().isAfter(from.date()) ? late.appliesFrom() : from.date();
-              return new Unshown(amending, first, to.date().minusDays(1));
-            });
+    return divergences(day, language, texts).stream()
+        .filter(each -> each.kind() == Divergence.Kind.LATE)
+        .map(Divergence::included)
+        .filter(Objects::nonNull)
+        .filter(included -> included.date().isAfter(applies.get().date()))
+        .max(Comparator.comparing(Version::date))
+        .or(() -> applies);
+  }
+
+  /**
+   * Returns the units of the text of {@code version} that have a change that does not apply on
+   * {@code day} yet. They are the units of each early divergence of the day, {@link Divergence#in}.
+   * A comparison gives the difference at such a unit an amber rule. Where the act itself does not
+   * apply yet, no unit is given: the whole text is early.
+   *
+   * <p>Empty if the text of {@code version} is not built.
+   *
+   * @param texts the marks of the texts in {@code language} that are built, as {@link
+   *     #divergences(Language, Map)} takes them
+   */
+  public Pending pending(
+      Version version, LocalDate day, Language language, Map<Version, TextMarks> texts) {
+    var byUnit = new LinkedHashMap<String, ActIdentifier>();
+    var text = texts.get(version);
+    if (text != null) {
+      for (var divergence : divergences(day, language, texts)) {
+        if (divergence.kind() == Divergence.Kind.EARLY && !divergence.whole(id)) {
+          divergence
+              .in(text.eIds())
+              .forEach(unit -> byUnit.putIfAbsent(unit.eId(), divergence.act()));
+        }
+      }
+    }
+    return new Pending(day, byUnit);
   }
 
   /**

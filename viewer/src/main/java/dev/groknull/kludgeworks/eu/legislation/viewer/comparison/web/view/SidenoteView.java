@@ -84,18 +84,39 @@ import org.jspecify.annotations.Nullable;
  * @param published how the acts that made the difference, or may have made it, were published, one
  *     line for each act. The hover of {@code made} lists them the same way. Null where no act is
  *     named.
+ * @param pending what the sidenote says where a change of the difference does not apply on the
+ *     later day of the comparison yet. For example, "2022/1190 did not apply yet on 1 August 2022".
+ *     The difference then has an amber rule. Null where each change applies.
  */
 public record SidenoteView(
     @Nullable String made,
     List<ActIdentifier> acts,
     List<ActIdentifier> candidates,
     List<Applies> dates,
-    @Nullable String published) {
+    @Nullable String published,
+    @Nullable String pending) {
 
   public SidenoteView {
     acts = List.copyOf(acts);
     candidates = List.copyOf(candidates);
     dates = List.copyOf(dates);
+  }
+
+  /**
+   * Returns this sidenote for a difference that has a change of {@code amending} that does not
+   * apply on {@code day} yet, the later day of the comparison ({@code Act.pending}). {@code today}
+   * gives the tense.
+   */
+  public SidenoteView notApplying(Act act, ActIdentifier amending, LocalDate day, LocalDate today) {
+    return new SidenoteView(
+        made,
+        acts,
+        candidates,
+        dates,
+        published,
+        act.cited(amending)
+            + (day.isBefore(today) ? " did not apply yet on " : " does not apply yet on ")
+            + Dates.inWords(day));
   }
 
   /**
@@ -204,7 +225,8 @@ public record SidenoteView(
         steps.stream().flatMap(List::stream).toList(),
         List.of(),
         dates,
-        act.citations(steps.stream().flatMap(List::stream).toList(), language));
+        act.citations(steps.stream().flatMap(List::stream).toList(), language),
+        null);
   }
 
   /**
@@ -224,7 +246,7 @@ public record SidenoteView(
             .count();
     if (candidates.size() < 2 || versions != 1) {
       return new SidenoteView(
-          verb(difference) + " by an act not named", List.of(), List.of(), List.of(), null);
+          verb(difference) + " by an act not named", List.of(), List.of(), List.of(), null, null);
     }
     var ordered =
         version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
@@ -245,7 +267,8 @@ public record SidenoteView(
         List.of(),
         ordered,
         dates,
-        act.citations(ordered, language));
+        act.citations(ordered, language),
+        null);
   }
 
   /**

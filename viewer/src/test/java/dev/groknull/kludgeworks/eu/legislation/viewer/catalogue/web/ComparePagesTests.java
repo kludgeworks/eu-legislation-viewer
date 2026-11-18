@@ -46,7 +46,7 @@ class ComparePagesTests {
   }
 
   @Test
-  void showsTheVersionsAndLoadsTheComparisonIntoItsSlotsOnceTheActIsPrepared() {
+  void showsTheTwoDaysAndLoadsTheComparisonIntoItsSlotOnceTheActIsPrepared() {
     var first = get(PAGE);
     // This is the preparing page, unless another test prepared the act first.
     var preparing = first.selectFirst(".preparing");
@@ -57,27 +57,38 @@ class ComparePagesTests {
     var page = prepared(PAGE, ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
     assertThat(page.select("nav.mode a").eachAttr("href"))
         .containsExactly(ACT + "eng/history?on=2026-10-01", ACT + "2026-10-01/eng");
-    assertThat(page.select(".ball-label b").eachText()).containsExactly("FROM", "TO");
-    assertThat(page.select(".card-celex").eachAttr("data-text"))
-        .containsExactly("02015R1998-20260322", "02015R1998-20261001");
-    var acts = Objects.requireNonNull(page.getElementById("acts"));
-    assertThat(acts.attr("hx-get"))
-        .isEqualTo(ACT + "eng/compare/acts?from=2026-03-22&to=2026-10-01");
-    assertThat(acts.attr("hx-trigger")).isEqualTo("load");
+    assertThat(page.select("#compare-head").text()).isEqualTo("2015/1998 on two days");
+    assertThat(page.select("form.period input[type=date]").eachAttr("value"))
+        .containsExactly("2026-03-22", "2026-10-01");
+    assertThat(page.select("section.compare p").eachText().getFirst())
+        .startsWith("From 22 March 2026 to 1 October 2026.")
+        .contains("between these days");
+    // The page shows days only: no version, no timeline, no act filter.
+    assertThat(page.select(".timeline, .card-celex, #acts")).isEmpty();
     var text = Objects.requireNonNull(page.getElementById("text"));
     assertThat(text.attr("hx-trigger")).isEqualTo("load");
     assertThat(text.select(".loading")).hasSize(1);
   }
 
   @Test
-  void passesTheActAndTheViewOnToItsSlots() {
+  void passesTheViewAndTheDaysOnToItsSlot() {
+    prepared(
+        PAGE + "&view=whole", ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&view=whole");
+    // A day that is not the first day of its version goes to the slot beside that first day.
+    prepared(
+        ACT + "eng/compare?from=2026-03-22&to=2026-10-05",
+        ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&toDay=2026-10-05");
+  }
+
+  @Test
+  void loadsTheWordingOfOneProvisionOnTheTwoDays() {
     var page =
         prepared(
-            PAGE + "&act=32026R0449&view=whole",
-            ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&act=32026R0449&view=whole");
-    assertThat(Objects.requireNonNull(page.getElementById("acts")).attr("hx-get"))
-        .isEqualTo(
-            ACT + "eng/compare/acts?from=2026-03-22&to=2026-10-01&act=32026R0449&view=whole");
+            PAGE + "&unit=anx",
+            ACT + "eng/compare/place?from=2026-03-22&to=2026-10-01&eId=anx&sides=true");
+    assertThat(page.select("#compare-head").text()).endsWith("of 2015/1998 on two days");
+    assertThat(page.select("form.period input[name=unit]").attr("value")).isEqualTo("anx");
+    assertThat(page.select("section.compare a[data-view=changes]").attr("href")).isEqualTo(PAGE);
   }
 
   @Test
@@ -91,20 +102,17 @@ class ComparePagesTests {
   }
 
   @Test
-  void saysWhatThePageChoseUnderTheCardsAndWhereBothEndsAreOneVersion() {
+  void saysThatTheWordingIsTheSameWhereTheTwoDaysHaveOneText() {
     prepared(PAGE, ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
 
-    var outside = get(PAGE + "&outside=32019R0103");
-    assertThat(outside.select(".compare-note").text())
-        .isEqualTo("2019/103 isn’t between these two versions; showing every act’s changes.");
-    assertThat(get(PAGE).select(".compare-note")).isEmpty();
-
-    var same = get(ACT + "eng/compare?from=2026-10-01&to=2026-10-01");
+    var same = get(ACT + "eng/compare?from=2026-10-01&to=2026-10-09");
     assertThat(same.select(".same-version p").eachText())
         .first()
-        .isEqualTo("Both ends are the same version (from 1 October 2026).");
+        .isEqualTo("The wording is the same on the two days.");
     assertThat(same.select(".same-version a").eachAttr("href"))
-        .containsExactly(PAGE, ACT + "2026-10-01/eng");
+        .containsExactly(ACT + "2026-10-09/eng");
+    assertThat(same.select("section.compare p").eachText().getFirst())
+        .contains("No amending act changed 2015/1998 between these days.");
   }
 
   private Document get(String uri) {

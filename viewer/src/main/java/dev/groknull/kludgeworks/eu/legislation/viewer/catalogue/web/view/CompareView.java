@@ -5,83 +5,79 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Unshown;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
-import io.soabase.recordbuilder.core.RecordBuilder;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The From and To cards of a comparison, and the slot of the acts between them. From is the law on
- * one day, To the law on another.
+ * The head of the Compare page: the two days of the comparison, and the amending acts between them.
+ * The page shows days only. It does not name the versions that give the texts.
  *
- * <p>Each card shows:
+ * <p>The head shows:
  *
  * <ul>
- *   <li>its end and the day, as its headline: "From · the law on", "22 March 2026"
- *   <li>which version gives the law on the day, and how long it applied: "A new version starts on
- *       this day · applied until 30 September 2026"
- *   <li>the acts that made the version
- *   <li>the version's consolidated CELEX, small, with a copy button
- *   <li>where the text of the version is not the law on the day, why, as the Reading card says it:
- *       "In force. Does not apply yet.", "Applies from 1 February 2016 · Article 2 of 2015/1998."
- *   <li>a form that asks for the law on another day for that end, and keeps the other end
+ *   <li>a heading: "767/2008 on two days", or "Article 6(2) of 767/2008 on two days" where the page
+ *       is limited to one provision
+ *   <li>a form with the two days
+ *   <li>one line with the amending acts between the two days: "From 2 August 2021 to 17 November
+ *       2026. 2 amending acts changed Article 6(2) between these days: 2021/1152 and 2024/1356."
+ *       Each act is a link to its page.
  * </ul>
  *
- * <p>Where the comparison shows the changes of one act that applied before the To version included
- * it, a notice under the cards says that the law on those days was the From text with these
- * changes, {@link Act#unshown}: "From 1 to 6 June 2017 the law was the “From” text with the changes
- * of 2017/815." The Reading card of a late text links here, with the day it shows. If that day is
- * one of those days, the notice links back to it: "Back to 3 June 2017".
+ * <p>The acts are the amending acts that the text of the To day includes and the text of the From
+ * day does not, {@link Act#integratedBetween} and {@link Act#amendingActs}. For one provision, they
+ * are those of them that changed the provision, {@link Act#historyOf}. The line leaves out the
+ * corrigenda, and the acts that change only the text in other languages.
  *
- * <p>A day before the act's first version has no version: its card shows the day and a dash.
+ * <p>For one provision, the page also lists the steps between the two days, oldest first: one line
+ * for each change, as the history of the provision on Read has it ({@link ProvisionView}). A link
+ * opens the comparison of the whole act on the same two days.
  *
- * <p>The acts between the cards are the comparison module's: they come with how many differences
- * each act made, and only that module knows. Their chips load into a slot between the cards, from
- * the comparison module's address, {@code acts}.
- *
- * @param from the From card
- * @param to the To card
- * @param acts the address that the chips of the acts between the two versions load from. Null if
- *     there is nothing to compare.
- * @param note what the reader should know about how the page chose the acts that it shows. For
- *     example, the reader asked for an act that is not between the two versions. Null if there is
- *     nothing to say.
- * @param unshown the notice of the days on which the law was the From text with the changes shown,
- *     which no version shows. Null if there are none.
- * @param back the address of the Read page of the day that the reader came from, one of those days.
- *     Null if the reader did not come from one.
- * @param backTo the words of the link to {@code back}: "Back to 3 June 2017". Null without it.
+ * @param heading the heading of the page
+ * @param days the two days, in words: "From 2 August 2021 to 17 November 2026."
+ * @param from the From day, as the form has it
+ * @param to the To day, as the form has it
+ * @param action the address the form goes to: the comparisons of the act in the language
+ * @param unit the eId of the provision that the page is limited to, which the form keeps. Null for
+ *     the whole act.
+ * @param said how many amending acts changed the act or the provision between the days. Null where
+ *     a day is before the first text of the act.
+ * @param acts the amending acts, in the order that the texts include them
+ * @param whole the address of the comparison of the whole act on the two days. Null where the page
+ *     shows the whole act.
+ * @param steps the changes of the provision between the two days, oldest first. Empty for the whole
+ *     act.
  */
 public record CompareView(
-    Card from,
-    Card to,
-    @Nullable String acts,
-    @Nullable String note,
-    @Nullable String unshown,
-    @Nullable String back,
-    @Nullable String backTo) {
+    String heading,
+    String days,
+    String from,
+    String to,
+    String action,
+    @Nullable String unit,
+    @Nullable String said,
+    List<Link> acts,
+    @Nullable String whole,
+    List<ProvisionView.Line> steps) {
 
-  /** Returns the same comparison, with {@code note} under the cards. */
-  public CompareView noting(@Nullable String note) {
-    return new CompareView(from, to, acts, note, unshown, back, backTo);
+  public CompareView {
+    acts = List.copyOf(acts);
+    steps = List.copyOf(steps);
   }
 
   /**
-   * Returns the cards of the comparison of the law on {@code fromDay}, which {@code from} gives,
-   * with the law on {@code toDay}, which {@code to} gives, for {@code act}, on {@code today}. The
-   * chips of the acts between them load from {@code acts}.
+   * Returns the head of the comparison of the law on {@code fromDay} with the law on {@code toDay},
+   * for {@code act}, on {@code today}. {@code from} and {@code to} are the versions whose texts
+   * show the law on the two days, {@link Act#textOn}.
    *
-   * @param marks the marks of the built texts in {@code language}, by version, which tell where a
-   *     text is not the law
-   * @param only the act whose changes alone the comparison shows. Null if it shows each act's.
-   * @param on the day of the Read page that the reader came from. Null if not known.
+   * @param unit the eId of the provision that the page is limited to, or null
+   * @param marks the marks of the built texts in {@code language}, by version
    */
   public static CompareView of(
       Act act,
@@ -89,63 +85,88 @@ public record CompareView(
       LocalDate fromDay,
       Version to,
       LocalDate toDay,
-      Language language,
-      LocalDate today,
-      String acts,
-      Map<Version, TextMarks> marks,
-      @Nullable ActIdentifier only,
-      @Nullable LocalDate on) {
-    var action = Links.compare(eli(act), language);
-    var unshown =
-        only == null ? Optional.<Unshown>empty() : act.unshown(from, to, only, language, marks);
-    var back = unshown.isPresent() && on != null && unshown.get().on(on) ? on : null;
-    return new CompareView(
-        Card.of(act, from, fromDay, End.FROM, toDay, language, today, action, marks),
-        Card.of(act, to, toDay, End.TO, fromDay, language, today, action, marks),
-        acts,
-        null,
-        unshown.map(each -> unshown(act, each)).orElse(null),
-        back == null ? null : Links.read(eli(act), back, language),
-        back == null ? null : "Back to " + Dates.inWords(back));
-  }
-
-  /** Returns the notice of the days on which the law was the From text with the changes shown. */
-  private static String unshown(Act act, Unshown unshown) {
-    var days =
-        unshown.first().equals(unshown.last())
-            ? "On " + Dates.inWords(unshown.first())
-            : "From " + Dates.range(unshown.first(), unshown.last());
-    return days
-        + " the law was the “From” text with the changes of "
-        + act.cited(unshown.act())
-        + ".";
-  }
-
-  /**
-   * Returns the cards of a comparison whose From, {@code fromDay}, is a day before the first
-   * version of {@code act}. The From card shows the day and a dash. The To card shows the law on
-   * {@code toDay}, which {@code to} gives, or a dash too if there is no version then.
-   */
-  public static CompareView before(
-      Act act,
-      LocalDate fromDay,
-      @Nullable Version to,
-      LocalDate toDay,
+      @Nullable String unit,
       Language language,
       LocalDate today,
       Map<Version, TextMarks> marks) {
-    var action = Links.compare(eli(act), language);
-    var starts = TimelineView.starts(act, language);
+    var eli = eli(act);
+    var amending = act.amendingActs(language);
+    var between = act.integratedBetween(from, to).stream().filter(amending::contains).toList();
+    var text = unit == null ? null : marks.get(to);
+    var name = text == null || unit == null ? null : ProvisionView.name(act, unit, text, language);
+    var changed =
+        text == null || unit == null
+            ? between
+            : act.historyOf(unit, text, language).acts().stream()
+                .filter(between::contains)
+                .toList()
+                .reversed();
+    var kept = toDay.equals(today) ? null : toDay;
+    var subject = unit == null ? act.id().cited() : name == null ? "this provision" : name;
     return new CompareView(
-        Card.before(fromDay, End.FROM, toDay, starts, action),
-        to == null
-            ? Card.before(toDay, End.TO, fromDay, starts, action)
-            : Card.of(act, to, toDay, End.TO, fromDay, language, today, action, marks),
+        heading(act, unit, name),
+        days(fromDay, toDay),
+        fromDay.toString(),
+        toDay.toString(),
+        Links.compare(eli, language),
+        unit,
+        said(changed.size(), subject),
+        links(act, changed, kept, language),
+        unit == null ? null : Links.compare(eli, fromDay, toDay, language),
+        text == null || unit == null
+            ? List.of()
+            : ProvisionView.steps(act, unit, text, toDay, today, language, changed));
+  }
+
+  /**
+   * Returns the head of a comparison whose From, {@code fromDay}, is a day before the first text of
+   * {@code act}. It has the days and no acts: a panel in place of the changes says why.
+   */
+  public static CompareView before(Act act, LocalDate fromDay, LocalDate toDay, Language language) {
+    return new CompareView(
+        heading(act, null, null),
+        days(fromDay, toDay),
+        fromDay.toString(),
+        toDay.toString(),
+        Links.compare(eli(act), language),
         null,
         null,
+        List.of(),
         null,
-        null,
-        null);
+        List.of());
+  }
+
+  /** Returns the acts of the line, each with what comes after it. */
+  private static List<Link> links(
+      Act act, List<ActIdentifier> acts, @Nullable LocalDate kept, Language language) {
+    var links = new ArrayList<Link>();
+    for (var i = 0; i < acts.size(); i++) {
+      var each = acts.get(i);
+      links.add(
+          new Link(
+              act.cited(each),
+              Links.amending(eli(act), each, kept, language),
+              i == acts.size() - 1 ? "." : i == acts.size() - 2 ? " and" : ","));
+    }
+    return links;
+  }
+
+  private static String heading(Act act, @Nullable String unit, @Nullable String name) {
+    var cited = act.id().cited();
+    return (unit == null ? cited : (name == null ? "A provision" : name) + " of " + cited)
+        + " on two days";
+  }
+
+  private static String days(LocalDate fromDay, LocalDate toDay) {
+    return "From " + Dates.inWords(fromDay) + " to " + Dates.inWords(toDay) + ".";
+  }
+
+  private static String said(int acts, String subject) {
+    return switch (acts) {
+      case 0 -> "No amending act changed " + subject + " between these days.";
+      case 1 -> "1 amending act changed " + subject + " between these days:";
+      default -> acts + " amending acts changed " + subject + " between these days:";
+    };
   }
 
   private static Eli eli(Act act) {
@@ -153,117 +174,11 @@ public record CompareView(
   }
 
   /**
-   * An end of a comparison. It has the heading of its card and its field in the address of the
-   * comparison.
-   */
-  private enum End {
-    FROM("From · the law on", "from"),
-    TO("To · the law on", "to");
-
-    private final String kind;
-    private final String field;
-
-    End(String kind, String field) {
-      this.kind = kind;
-      this.field = field;
-    }
-
-    End other() {
-      return this == FROM ? TO : FROM;
-    }
-  }
-
-  /**
-   * The card of an end of the comparison: the law on a day.
+   * An amending act between the two days.
    *
-   * @param kind which end the card is: "From · the law on" or "To · the law on"
-   * @param day the day, in words. For example, "22 March 2026".
-   * @param version which version gives the law on the day, and how long it applies. Null before the
-   *     first version.
-   * @param made what made the version. Null before the first version.
-   * @param published how the acts that made the version were published, one line for each act. The
-   *     hover of {@code made} lists them the same way. Null if there are none.
-   * @param celex the consolidated CELEX of the version. Null before the first version.
-   * @param eurLex the address of the version on EUR-Lex, in the language of the page. Null before
-   *     the first version.
-   * @param divergences why the text of the version is not the law on the day, as the Reading card
-   *     says it. Their links are not shown. Empty if it is the law.
-   * @param name the field of the date form for this end: {@code from} or {@code to}
-   * @param on the date that the form starts at. This is the day.
-   * @param keep the field of the other end, which the form sends unchanged
-   * @param kept the day of the other end
-   * @param starts the days that a new version starts, which the date picker rings: ISO dates in
-   *     order, separated by spaces
-   * @param action the address the form goes to: the comparisons of the act in the language of the
-   *     page
+   * @param act the act, as cited
+   * @param href the address of the page of the act
+   * @param after what comes after the act in the line: a comma, " and", or a full stop
    */
-  @RecordBuilder
-  public record Card(
-      String kind,
-      String day,
-      @Nullable String version,
-      @Nullable String made,
-      @Nullable String published,
-      @Nullable String celex,
-      @Nullable String eurLex,
-      List<DivergenceView> divergences,
-      String name,
-      String on,
-      String keep,
-      String kept,
-      String starts,
-      String action) {
-
-    /**
-     * Returns the card of the law on {@code day}, which {@code version} gives, as the {@code end}
-     * of the comparison. {@code other} is the day at the other end. {@code marks} are the marks of
-     * the built texts, which tell where the text is not the law on the day.
-     */
-    static Card of(
-        Act act,
-        Version version,
-        LocalDate day,
-        End end,
-        LocalDate other,
-        Language language,
-        LocalDate today,
-        String action,
-        Map<Version, TextMarks> marks) {
-      var published = Wording.makers(act, version, List.of());
-      return CompareViewCardBuilder.builder()
-          .kind(end.kind)
-          .day(Dates.inWords(day))
-          .version(Wording.which(act, version, day, today, language))
-          .made(Wording.made(act, version, List.of(), language))
-          .published(published.isEmpty() ? null : act.citations(published, language))
-          .celex(version.celex())
-          .eurLex(version.eurLex(language).toString())
-          .divergences(
-              act.divergences(day, language, marks).stream()
-                  .map(each -> DivergenceView.of(act, each, version, day, language, today))
-                  .toList())
-          .name(end.field)
-          .on(day.toString())
-          .keep(end.other().field)
-          .kept(other.toString())
-          .starts(TimelineView.starts(act, language))
-          .action(action)
-          .build();
-    }
-
-    /** Returns the card of {@code day}, a day before the act's first version. */
-    static Card before(LocalDate day, End end, LocalDate other, String starts, String action) {
-      return CompareViewCardBuilder.builder()
-          .kind(end.kind)
-          .day(Dates.inWords(day))
-          .divergences(List.of())
-          .name(end.field)
-          .on(day.toString())
-          .keep(end.other().field)
-          .kept(other.toString())
-          .starts(starts)
-          .action(action)
-          .build();
-    }
-  }
+  public record Link(String act, String href, String after) {}
 }

@@ -104,7 +104,7 @@ public record HomeView(
         goes.add(
             new Go(
                 "What it changed in " + cited(amended.id()),
-                Links.changesBy(eli, match.id(), Language.ENG)));
+                Links.amending(eli, match.id(), null, Language.ENG)));
       }
     }
     return new Row(match.id().celex(), kind(match), head, rest, goes);

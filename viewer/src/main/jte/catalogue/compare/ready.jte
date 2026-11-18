@@ -2,7 +2,7 @@
 @param String said
 <%-- Shows the slot of the changes when both texts are built. htmx loads the changes from the
      comparison module's address (changes) when this element loads, in the view that the page's
-     address asks for. The comparison module calculates the comparison if no earlier request did.
+     address asks for. For one provision, the address is that of its wording on the two days. The comparison module calculates the comparison if no earlier request did.
      While it loads, the reader first sees nothing, then a bar, then the page's shape. A polite
      status line says what is being compared (said): "Comparing the law on 1 July 2021 with the law
      on 31 December 2021…". --%>

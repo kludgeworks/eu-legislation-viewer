@@ -7,7 +7,8 @@
 @param boolean named = true
 <%-- Shows what a difference's sidenote says. In the Changes and Whole text views, the sidenote is
      beside the difference. In the Synopsis view, it is in the last column. It shows the difference's
-     number and its unit, what happened, which acts made it and when each applies. The Synopsis
+     number and its unit, what happened, which acts made it and when each applies. Where a change
+     does not apply on the later day of the comparison yet, a line in amber says so. The Synopsis
      names the unit in its own column (named false). --%>
 <b>${shown.number()}</b>@if(named && shown.named() != null) <span class="unit">${shown.named()}</span>@endif
 <%-- The hover of who made it lists how the acts were published. If the view sends it once for all
@@ -17,6 +18,8 @@
 <%-- Shows what happened, unless the line about who made it already says it all. Example:
      "Inserted by 2019/1583". --%>
 @if(sidenote == null || sidenote.made() == null)<span class="note">${shown.note()}</span>@endif
+<%-- A change of the difference does not apply on the later day of the comparison yet. --%>
+@if(sidenote != null && sidenote.pending() != null)<span class="pending">${sidenote.pending()}</span>@endif
 @if(sidenote != null)
   <%-- Shows one date line for each act, and each line starts with the act. Six or more lines go
      into a fold. If the view sends them once for all the sidenotes (parts), js/sidenotes.js fills

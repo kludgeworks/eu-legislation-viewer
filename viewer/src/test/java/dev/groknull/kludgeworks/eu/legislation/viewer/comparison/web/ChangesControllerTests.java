@@ -25,7 +25,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Release;
 import gg.jte.generated.precompiled.StaticTemplates;
 import gg.jte.generated.precompiled.Templates;
 import java.io.UnsupportedEncodingException;
+import java.time.Clock;
 import java.time.Instant;
+import java.time.ZoneOffset;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Objects;
@@ -218,6 +220,12 @@ class ChangesControllerTests {
     @Bean
     Release release() {
       return new Release("2026.11.5");
+    }
+
+    @Bean
+    @SuppressWarnings("TimeZoneUsage") // a fixed stand-in for the app's Clock bean
+    Clock sixthOfNovember2026() {
+      return Clock.fixed(Instant.parse("2026-11-06T08:00:00Z"), ZoneOffset.UTC);
     }
   }
 }

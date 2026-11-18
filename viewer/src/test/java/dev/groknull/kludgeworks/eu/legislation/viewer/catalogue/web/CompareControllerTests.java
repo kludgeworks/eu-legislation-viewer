@@ -62,15 +62,6 @@ class CompareControllerTests {
   }
 
   @Test
-  void opensAnActsChangesOnTheVersionThatFirstIntegratesIt() {
-    assertThat(mvc.get().uri(ACT + "eng/compare?act=32026R0449"))
-        .hasStatus(HttpStatus.SEE_OTHER)
-        .headers()
-        .hasValue(
-            HttpHeaders.LOCATION, ACT + "eng/compare?from=2021-12-31&to=2026-03-22&act=32026R0449");
-  }
-
-  @Test
   void keepsTheDaysAskedForEarlierFirst() {
     assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-12-01&to=2021-06-01"))
         .hasStatus(HttpStatus.SEE_OTHER)
@@ -80,11 +71,13 @@ class CompareControllerTests {
   }
 
   @Test
-  void goesToTheComparisonOfAllActsForAnActNotBetweenTheVersionsSayingSo() {
-    assertThat(mvc.get().uri(PAGE + "&act=32019R0103"))
+  void keepsTheProvisionThatThePageIsLimitedTo() {
+    assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-12-01&to=2021-06-01&unit=anx/pnt_1"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
-        .hasValue(HttpHeaders.LOCATION, PAGE + "&outside=32019R0103");
+        .hasValue(
+            HttpHeaders.LOCATION,
+            ACT + "eng/compare?from=2021-06-01&to=2026-12-01&unit=anx%2Fpnt_1");
   }
 
   @Test
@@ -97,8 +90,13 @@ class CompareControllerTests {
     assertThat(result).hasStatusOk();
     var page = Jsoup.parse(result.getResponse().getContentAsString());
     assertThat(page.title()).isEqualTo("2015/1998 · 1 Jan 2000 → 1 Oct 2026");
-    assertThat(page.select(".card-day").eachText())
-        .containsExactly("1 January 2000", "1 October 2026");
+    assertThat(page.select("#compare-head").text()).isEqualTo("2015/1998 on two days");
+    assertThat(page.select("form.period input[type=date]").eachAttr("value"))
+        .containsExactly("2000-01-01", "2026-10-01");
+    assertThat(page.select("section.compare p b").text())
+        .isEqualTo("From 1 January 2000 to 1 October 2026.");
+    // No tab opens Compare.
+    assertThat(page.select("nav.mode").text()).doesNotContain("Compare");
     assertThat(page.select("#failure").text())
         .isEqualTo("2015/1998 didn’t exist yet on 1 January 2000");
     assertThat(page.select(".failure-actions a.button").eachText())

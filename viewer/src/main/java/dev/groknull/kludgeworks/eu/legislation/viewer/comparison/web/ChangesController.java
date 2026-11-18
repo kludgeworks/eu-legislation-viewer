@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
@@ -39,6 +40,7 @@ import gg.jte.generated.precompiled.Templates;
 import gg.jte.output.StringOutput;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.time.Clock;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -109,6 +111,7 @@ class ChangesController {
   private final Templates templates;
   private final LegalRenderer html;
   private final Release release;
+  private final Clock clock;
 
   ChangesController(
       Acts acts,
@@ -118,7 +121,8 @@ class ChangesController {
       Content content,
       Templates templates,
       LegalRenderer html,
-      Release release) {
+      Release release,
+      Clock clock) {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
@@ -127,6 +131,7 @@ class ChangesController {
     this.templates = templates;
     this.html = html;
     this.release = release;
+    this.clock = clock;
   }
 
   /**
@@ -143,6 +148,11 @@ class ChangesController {
    * against the wording just after it. The view shows the differences that the act made and folds
    * the others.
    *
+   * <p>{@code fromDay} and {@code toDay} are the two days of the page, where they are not the first
+   * days of the two versions. The links of the views keep them. A difference with a change that
+   * does not apply on the later day yet has an amber rule, and its sidenote says so ({@link
+   * Act#pending}).
+   *
    * <p>Returns 404 if the address is not the canonical address of a comparison, if the view does
    * not exist, or if the texts are not built yet.
    */
@@ -157,16 +167,23 @@ class ChangesController {
       @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
       @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
       @RequestParam(name = ComparePage.VIEW, defaultValue = "changes") String shown,
+      @RequestParam(name = ComparePage.FROM_DAY, required = false)
+          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+          @Nullable LocalDate fromDay,
+      @RequestParam(name = ComparePage.TO_DAY, required = false)
+          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+          @Nullable LocalDate toDay,
       HttpServletRequest request) {
     var view = view(shown);
     var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
         ComparePage.ofPart(
-            request.getRequestURI(),
-            from,
-            to,
-            ends.only == null ? null : ends.only.celex(),
-            view.parameter());
+                request.getRequestURI(),
+                from,
+                to,
+                ends.only == null ? null : ends.only.celex(),
+                view.parameter())
+            .on(fromDay, toDay);
     var started = System.nanoTime();
     var preparation = texts.preparation(ends.act, ends.language);
     var only = ends.only;
@@ -174,7 +191,14 @@ class ChangesController {
     var earlier = step == null ? ends.from : ends.earlier(step);
     var later = step == null ? ends.to : step;
     var attributed =
-        attributed(ends, preparation, earlier, later, only, new HashMap<>())
+        attributed(
+                ends,
+                preparation,
+                earlier,
+                later,
+                only,
+                only == null ? page.later() : null,
+                new HashMap<>())
             .orElseThrow(Requests::notFound);
     var changes =
         only == null
@@ -271,8 +295,8 @@ class ChangesController {
                     units,
                     histories,
                     this.html,
-                    Dates.inWords(page.from()),
-                    Dates.inWords(page.to()),
+                    Dates.inWords(page.earlier()),
+                    Dates.inWords(page.later()),
                     views,
                     all,
                     page.same(earlier.date(), later.date()),
@@ -424,7 +448,7 @@ class ChangesController {
    */
   private Optional<StepCounts.Counted> count(
       Ends ends, Preparation preparation, Version from, Version to, Map<TextId, Outline> outlines) {
-    return attributed(ends, preparation, from, to, null, outlines)
+    return attributed(ends, preparation, from, to, null, null, outlines)
         .map(
             attributed -> {
               var differences = new HashMap<ActIdentifier, Integer>();
@@ -442,8 +466,10 @@ class ChangesController {
 
   /**
    * Returns the comparison of {@code from} with {@code to}, with a sidenote for each difference.
-   * The sidenotes are limited to the changes of {@code only}, if it is given. Each outline is read
-   * once and kept in {@code outlines}, by text. Returns none if either text is not built.
+   * The sidenotes are limited to the changes of {@code only}, if it is given. With {@code day}, the
+   * later day of the comparison, a sidenote says where a change does not apply on that day yet.
+   * Each outline is read once and kept in {@code outlines}, by text. Returns none if either text is
+   * not built.
    */
   private Optional<Attributed> attributed(
       Ends ends,
@@ -451,6 +477,7 @@ class ChangesController {
       Version from,
       Version to,
       @Nullable ActIdentifier only,
+      @Nullable LocalDate day,
       Map<TextId, Outline> outlines) {
     if (!(preparation.texts().get(from) instanceof Text.Ready earlier)
         || !(preparation.texts().get(to) instanceof Text.Ready later)) {
@@ -463,10 +490,12 @@ class ChangesController {
     var before = outline(earlier.text(), outlines);
     var outline = outline(later.text(), outlines);
     var amended = ends.act.amended(from, to, before.eIds(), outline.eIds(), ends.language);
+    var pending =
+        day == null ? null : ends.act.pending(to, day, ends.language, texts.marks(preparation));
+    var today = Timeline.today(clock);
     var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
     for (var difference : comparison.get().differences()) {
-      sidenotes.put(
-          difference,
+      var sidenote =
           SidenoteView.of(
               ends.act,
               from,
@@ -474,7 +503,15 @@ class ChangesController {
               difference,
               amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
               only,
-              ends.language));
+              ends.language);
+      sidenotes.put(
+          difference,
+          pending == null
+              ? sidenote
+              : pending
+                  .at(difference.eId())
+                  .map(each -> sidenote.notApplying(ends.act, each, pending.day(), today))
+                  .orElse(sidenote));
     }
     return Optional.of(
         new Attributed(comparison.get(), later.text(), before, outline, amended, sidenotes));
@@ -614,6 +651,10 @@ class ChangesController {
    * ({@link Comparison#at}). The page of an amending act loads the wording of one of its changes
    * from here. If the units are the same in both texts, it says so.
    *
+   * <p>With {@code sides}, it returns the wording on each of the two days of the Compare page, side
+   * by side. The Compare page of one provision loads it. {@code fromDay} and {@code toDay} are the
+   * two days, where they are not the first days of the two versions.
+   *
    * <p>Returns 404 if the address is not the canonical address of a comparison, or if the texts are
    * not built yet. The entity tag is as for one difference.
    */
@@ -628,12 +669,24 @@ class ChangesController {
       @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
       @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
       @RequestParam(ComparePage.EID) List<String> eIds,
+      @RequestParam(name = ComparePage.SIDES, defaultValue = "false") boolean sides,
+      @RequestParam(name = ComparePage.FROM_DAY, required = false)
+          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+          @Nullable LocalDate fromDay,
+      @RequestParam(name = ComparePage.TO_DAY, required = false)
+          @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+          @Nullable LocalDate toDay,
       HttpServletRequest request,
       HttpServletResponse response) {
     var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
         ComparePage.ofPart(
-            request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
+                request.getRequestURI(),
+                from,
+                to,
+                ends.only == null ? null : ends.only.celex(),
+                null)
+            .on(fromDay, toDay);
     var started = System.nanoTime();
     var preparation = texts.preparation(ends.act, ends.language);
     var only = ends.only;
@@ -659,7 +712,13 @@ class ChangesController {
             .stream()
             .map(difference -> new ChangesView.Shown(0, difference, ""))
             .toList();
-    var rendered = templates.comparisonPlace(shown, html, page).render();
+    var rendered =
+        sides
+            ? templates
+                .comparisonSides(
+                    shown, html, page, Dates.inWords(page.earlier()), Dates.inWords(page.later()))
+                .render()
+            : templates.comparisonPlace(shown, html, page).render();
     LOG.info(
         "Place of {} from {} to {} in {}{} at {} units: {} differences, in {} ms",
         ends.act.id(),
@@ -705,6 +764,7 @@ class ChangesController {
                 ends.earlier(step),
                 step,
                 only,
+                null,
                 new HashMap<>())
             .orElseThrow(Requests::notFound);
     var others = new LinkedHashSet<ActIdentifier>();

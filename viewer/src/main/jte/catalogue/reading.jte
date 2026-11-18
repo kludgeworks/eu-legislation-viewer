@@ -8,8 +8,7 @@
      Then the version's consolidated CELEX, small, with a copy button.
      Before the act's first version there is no version: a dash stands for it, and the panel in
      place of the text says why. A GET form asks for the law on another day; js/datepicker.js turns
-     its date box into a calendar that rings the days a new version starts. A link goes to the
-     comparison with the version before, or after for the first version. --%>
+     its date box into a calendar that rings the days a new version starts. --%>
 <section class="selection" aria-label="Reading">
   <article class="card">
     <span class="card-kind">The law on</span>
@@ -47,7 +46,4 @@
       </form>
     </date-picker>
   </article>
-  @if(reading.compare() != null)
-    <a class="button" href="${reading.compare()}">${reading.comparing()}</a>
-  @endif
 </section>
