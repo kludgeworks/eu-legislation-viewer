@@ -15,8 +15,9 @@ dark one (the theme cookie), and left to load what htmx loads into it (its chang
 it is saved as it stands: its stylesheet inlined, its scripts and htmx's attributes removed, so the
 file opens anywhere, without the viewer, and shows what the reader saw. Beside each, a full-page PNG.
 ui-snapshots/ (ignored by git) gets them and index.json, which lists each page, its address and what
-it shows. The pages' addresses are 2015/1998's, an act the viewer has prepared; Preparing is a
-second act, 185/2010, caught while it is prepared (the first run prepares it: it takes a while).
+it shows. The pages are the review scenarios of docs/design.md, and Home before a search. Their
+acts are 2015/1998, 2018/1862, 767/2008 and 2016/679; the first run prepares them, which takes a
+while. Preparing is 185/2010, caught while it is prepared, so it shows only on the first run.
 """
 
 import argparse
@@ -36,6 +37,9 @@ HEIGHT = 900
 THEMES = ("light", "dark")
 
 AVSEC = "/eli/reg_impl/2015/1998"
+SIS = "/eli/reg/2018/1862"
+VIS = "/eli/reg/2008/767"
+GDPR = "/eli/reg/2016/679"
 STEP = AVSEC + "/eng/compare?from=2021-07-01&to=2021-12-31"
 
 
@@ -45,8 +49,8 @@ class Shown:
 
     name: the file's name; page: which page it is, as the design names it; state: what it shows;
     path: its address; settled: whether it finishes loading (a page being prepared streams until
-    the act is ready, so it is saved as soon as it shows); chip: open the first act chip's address
-    instead (an act filter, whichever acts the step has).
+    the act is ready, so it is saved as soon as it shows); click: what to click once the page has
+    loaded, for a state that the reader opens (a CSS selector, or None).
     """
 
     name: str
@@ -54,18 +58,70 @@ class Shown:
     state: str
     path: str
     settled: bool = True
-    chip: bool = False
+    click: str | None = None
 
 
 PAGES = (
     Shown("home", "Home", "Before a search", "/"),
     Shown("home-results", "Home", "A search's results", "/?q=aviation+security"),
-    Shown("read", "Read", "A version", AVSEC + "/2021-12-31/eng"),
-    Shown("read-missing", "Read", "A version not in the language", AVSEC + "/2021-12-31/gle"),
+    Shown(
+        "history",
+        "History",
+        "An act that applies in parts, and a day that the data does not give",
+        SIS + "/eng/history?on=2022-08-01",
+    ),
+    Shown(
+        "history-two-days",
+        "History",
+        "Two days",
+        AVSEC + "/eng/history?from=2020-07-02&to=2021-03-15",
+    ),
+    Shown(
+        "amending",
+        "The page of an amending act",
+        "An act that applies in parts, from two days",
+        SIS + "/eng/history/32022R1190?on=2022-08-01",
+    ),
+    Shown("read-unchanged", "Read", "An act that no act changed opens on Read", GDPR + "/eng"),
+    Shown("read", "Read", "The law on a day", AVSEC + "/2021-12-31/eng"),
+    Shown(
+        "read-late",
+        "Read",
+        "An act applies that the text does not have, with marks in the text",
+        AVSEC + "/2017-06-03/eng",
+    ),
+    Shown("read-early", "Read", "The act itself does not apply yet", GDPR + "/2017-01-01/eng"),
+    Shown("read-pending", "Read", "Provisions that do not apply yet", VIS + "/2018-01-01/eng"),
+    Shown("read-unconfirmed", "Read", "A date not confirmed", SIS + "/2026-11-17/eng"),
+    Shown(
+        "read-provision",
+        "Read",
+        "The history of a provision: Article 6(2)",
+        VIS + "/2026-11-17/eng#art_6",
+        click='[id="art_6/par_2"] amendment-mark',
+    ),
+    Shown("read-missing", "Read", "No text in the language", AVSEC + "/2021-12-31/gle"),
     Shown("compare-changes", "Compare", "Changes", STEP),
     Shown("compare-whole", "Compare", "Whole text", STEP + "&view=whole"),
     Shown("compare-synopsis", "Compare", "Synopsis", STEP + "&view=synopsis"),
-    Shown("compare-act", "Compare", "Changes, one act's", STEP, chip=True),
+    Shown(
+        "compare-late",
+        "Compare",
+        "A day on which an act applies that the text of the day does not have",
+        AVSEC + "/eng/compare?from=2016-02-29&to=2017-06-03",
+    ),
+    Shown(
+        "compare-pending",
+        "Compare",
+        "Changes that do not apply on the later day",
+        SIS + "/eng/compare?from=2021-08-03&to=2022-08-01",
+    ),
+    Shown(
+        "compare-provision",
+        "Compare",
+        "One provision: the wording on the two days and the steps",
+        VIS + "/eng/compare?from=2017-12-29&to=2026-06-12&unit=art_6%2Fpar_2",
+    ),
     Shown(
         "preparing", "Preparing", "An act being prepared", "/eli/reg/2010/185/eng", settled=False
     ),
@@ -94,28 +150,31 @@ INLINE = """async () => {
 
 
 def opened(page: Page, base: str, shown: Shown) -> str:
-    """Opens {shown}, its act chip's address for an act filter; its address."""
+    """Opens {shown}, and what it clicks once the page has loaded; its address."""
     url = base + shown.path
     page.goto(url, wait_until="domcontentloaded")
-    if shown.chip:
-        settle(page)
-        chip = page.locator(".between a.chip").first
-        href = chip.get_attribute("href")
-        if href is None:
-            raise SystemExit(f"{url} has no act chip to filter by: is the act prepared?")
-        url = base + href
-        page.goto(url, wait_until="domcontentloaded")
     if shown.settled:
         settle(page)
     else:
         page.wait_for_timeout(1500)
+    if shown.click:
+        page.locator(shown.click).first.click()
+        settle(page)
     return url
 
 
+# whether htmx still loads a part of the page. A page of an act keeps a stream of notices open
+# (hx-sse:connect), so the network is never idle: the stream does not count.
+LOADING = """() => document.readyState === 'complete' && ![...document.querySelectorAll('.htmx-request')]
+  .some((element) => !element.hasAttribute('hx-sse:connect'))"""
+
+
 def settle(page: Page) -> None:
-    """Waits until what htmx loads has loaded: nothing more asked for a while."""
+    """Waits until what htmx loads has loaded: no part asked for, twice over half a second."""
     try:
-        page.wait_for_load_state("networkidle", timeout=60_000)
+        for _ in range(2):
+            page.wait_for_timeout(500)
+            page.wait_for_function(LOADING, timeout=60_000)
     except TimeoutError:
         print(f"  {page.url} still loading after a minute; saved as it stands", file=sys.stderr)
 

@@ -223,7 +223,8 @@ of the viewer before each path.
 | Compare, one provision: the wording on the two days and the steps | `/eli/reg/2008/767/eng/compare?from=2017-12-29&to=2026-06-12&unit=art_6%2Fpar_2` |
 | Preparing | `/eli/reg/2010/185/eng`, the first time |
 
-`mise run ui:snapshots` saves nine of these pages in the light theme and the dark theme. See
+`mise run ui:snapshots` saves each of these pages, and Home before a search, in the light theme
+and the dark theme. See
 [snapshots.py](../tools/tasks/ui/snapshots.py). The saved pages have no scripts. Check interactions
 in the viewer while it runs.
 
