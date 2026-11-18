@@ -24,7 +24,10 @@
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>
-          <converter>org.jooq.Converter.ofNullable(java.time.OffsetDateTime.class, java.time.Instant.class, java.time.OffsetDateTime::toInstant, instant -> instant.atOffset(java.time.ZoneOffset.UTC))</converter>
+          <lambdaConverter>
+            <from>java.time.OffsetDateTime::toInstant</from>
+            <to>instant -> instant.atOffset(java.time.ZoneOffset.UTC)</to>
+          </lambdaConverter>
           <includeTypes>(?i:timestamptz|timestamp\ with\ time\ zone)</includeTypes>
         </forcedType>
       </forcedTypes>

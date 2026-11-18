@@ -16,17 +16,26 @@
       <forcedTypes>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier</userType>
-          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex)</converter>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new</from>
+            <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex</to>
+          </lambdaConverter>
           <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|preparation\.act|preparation_step\.act</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
-          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::path)</converter>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::new</from>
+            <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli::path</to>
+          </lambdaConverter>
           <includeExpression>act\.eli|act_publication\.eli</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType</userType>
-          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType::code)</converter>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType::new</from>
+            <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType::code</to>
+          </lambdaConverter>
           <includeExpression>act\.resource_type</includeExpression>
         </forcedType>
         <forcedType>
@@ -41,7 +50,10 @@
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location</userType>
-          <converter>org.jooq.Converter.ofNullable(String.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.class, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::new, dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::code)</converter>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::new</from>
+            <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location::code</to>
+          </lambdaConverter>
           <includeExpression>act_amendment\.cellar_location</includeExpression>
         </forcedType>
         <forcedType>
@@ -66,7 +78,10 @@
         </forcedType>
         <forcedType>
           <userType>java.time.Instant</userType>
-          <converter>org.jooq.Converter.ofNullable(java.time.OffsetDateTime.class, java.time.Instant.class, java.time.OffsetDateTime::toInstant, instant -> instant.atOffset(java.time.ZoneOffset.UTC))</converter>
+          <lambdaConverter>
+            <from>java.time.OffsetDateTime::toInstant</from>
+            <to>instant -> instant.atOffset(java.time.ZoneOffset.UTC)</to>
+          </lambdaConverter>
           <includeTypes>(?i:timestamptz|timestamp\ with\ time\ zone)</includeTypes>
         </forcedType>
       </forcedTypes>
