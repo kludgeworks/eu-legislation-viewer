@@ -36,7 +36,8 @@ import org.jspecify.annotations.Nullable;
  * inserted in its place.
  *
  * <p>The notes that a unit refers to are compared as part of it. A changed unit shows its notes
- * under it, marked, if they differ. An inserted or deleted unit shows its notes, marked whole.
+ * under it, marked, if they differ. An inserted or deleted unit shows its notes, marked whole. A
+ * note that only one text has, and each reference to it, says so ({@link Marks#ONLY}).
  *
  * <p>The own blocks of a changed unit are matched by what they say ({@link Parts}). {@link Marks}
  * marks a changed block word by word.
@@ -477,7 +478,7 @@ public final class Differ {
       if (marking != null && marking.notes() != null) {
         children.add(marking.notes());
       }
-      return copy(element, children);
+      return Marks.referring(copy(element, children));
     }
 
     private List<Element> in(Element element) {

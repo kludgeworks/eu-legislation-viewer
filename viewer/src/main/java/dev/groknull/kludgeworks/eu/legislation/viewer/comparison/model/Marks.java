@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -52,6 +53,13 @@ import org.jspecify.annotations.Nullable;
 final class Marks {
   static final String INSERTED = "diff:ins";
   static final String DELETED = "diff:del";
+
+  /**
+   * The attribute of a note, or of a reference to a note, that only one of the two texts has. Its
+   * value is "ins" or "del". The marker of a note and a reference to a note are not words, so no
+   * mark is around them. With the attribute, a page can show them only with the text that has them.
+   */
+  static final String ONLY = "diff";
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
   private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]");
@@ -177,8 +185,52 @@ final class Marks {
     var marked = new boolean[tokens.size()];
     Arrays.fill(marked, true);
     var words = words(said(tokens));
-    var shown = mark(element, mark, marked, Map.of());
+    var shown = only(mark(element, mark, marked, Map.of()), mark.equals(INSERTED) ? "ins" : "del");
     return mark.equals(INSERTED) ? new Marked(shown, words, 0) : new Marked(shown, 0, words);
+  }
+
+  /**
+   * Returns {@code element} with each note and each reference to a note in it set {@link #ONLY}.
+   */
+  private static Element only(Element element, String value) {
+    if (element.name().equals("note") || element.name().equals("noteRef")) {
+      var attributes = new HashMap<>(element.attributes());
+      attributes.put(ONLY, value);
+      return new Element(element.name(), attributes, element.children(), element.text());
+    }
+    return copy(element, element.children().stream().map(child -> only(child, value)).toList());
+  }
+
+  /**
+   * Returns {@code element} with each reference to an inserted note of it set {@link #ONLY}. A
+   * block that changed can refer to a note that only the later text has. The reference is then only
+   * in the later text also.
+   */
+  static Element referring(Element element) {
+    var inserted = new HashSet<String>();
+    insertedNotes(element, inserted);
+    return inserted.isEmpty() ? element : referring(element, inserted);
+  }
+
+  private static void insertedNotes(Element element, Set<String> found) {
+    if (element.name().equals("note")) {
+      var eId = element.attribute("eId");
+      if (eId != null && "ins".equals(element.attribute(ONLY))) {
+        found.add("#" + eId);
+      }
+      return;
+    }
+    element.children().forEach(child -> insertedNotes(child, found));
+  }
+
+  private static Element referring(Element element, Set<String> inserted) {
+    if (element.name().equals("noteRef")) {
+      return element.attribute(ONLY) == null && inserted.contains(element.attribute("href"))
+          ? only(element, "ins")
+          : element;
+    }
+    return copy(
+        element, element.children().stream().map(child -> referring(child, inserted)).toList());
   }
 
   /**

@@ -1185,6 +1185,36 @@ class DifferTest {
     assertThat(said(only(inserted.shown(), "notes"))).isEqualTo("[+OJ L 1, 1.1.2026, p. 1.]");
   }
 
+  @Test
+  void saysThatANoteAndTheReferenceToItAreOnlyInTheLaterText() {
+    // As Article 6(2) of 767/2008: 2024/1356 changed the words and added a note to them.
+    var from = withNotes(List.of(unit("art_1", block("p", "The authorities."))));
+    var to =
+        withNotes(
+            List.of(unit("art_1", cites("The screening authorities", "note_1"))),
+            note("note_1", "OJ L, 2024/1356, 22.5.2024."));
+    var shown = Differ.differences(from, to).differences().getFirst().shown();
+    assertThat(only(only(shown, "notes"), "note").attribute("diff")).isEqualTo("ins");
+    assertThat(only(only(shown, "p"), "noteRef").attribute("diff")).isEqualTo("ins");
+  }
+
+  @Test
+  void saysThatANoteIsOnlyInTheEarlierTextAndLeavesTheNotesOfBothTextsAsTheyAre() {
+    var from =
+        withNotes(
+            List.of(unit("art_1", cites("Silesia", "note_1"))), note("note_1", "only in Poland"));
+    var to = withNotes(List.of(unit("art_1", block("p", "Silesia and Pomerania"))));
+    var deleted = Differ.differences(from, to).differences().getFirst().shown();
+    assertThat(only(only(deleted, "notes"), "note").attribute("diff")).isEqualTo("del");
+
+    var changed =
+        withNotes(
+            List.of(unit("art_1", cites("Silesia", "note_1"))), note("note_1", "Only in Poland."));
+    var kept = Differ.differences(from, changed).differences().getFirst().shown();
+    assertThat(only(only(kept, "notes"), "note").attribute("diff")).isNull();
+    assertThat(only(only(kept, "p"), "noteRef").attribute("diff")).isNull();
+  }
+
   /** A text with the units {@code units} in its body, and the notes {@code notes} at its end. */
   private static Element withNotes(List<Element> units, Element... notes) {
     return new Element(

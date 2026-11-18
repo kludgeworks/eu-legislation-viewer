@@ -236,7 +236,9 @@ a.chip:hover {
 }
 
 .ledger .from ins.diff,
-.ledger .to del.diff {
+.ledger .to del.diff,
+.ledger .from .note-ins,
+.ledger .to .note-del {
   display: none;
 }
 
