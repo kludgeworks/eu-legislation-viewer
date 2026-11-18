@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
+import io.micrometer.core.instrument.MeterRegistry;
 import java.io.ByteArrayInputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
@@ -31,6 +32,7 @@ import org.springframework.transaction.annotation.Transactional;
     properties = {"viewer.catalogue.search.enabled=true", "viewer.catalogue.search.start-delay=1d"})
 @Import(TestcontainersConfiguration.class)
 class SearchIndexTests {
+  @Autowired MeterRegistry meters;
   @Autowired SearchRebuild job;
   @Autowired Search search;
   @Autowired JdbcTemplate database;
@@ -96,6 +98,44 @@ class SearchIndexTests {
     doAnswer(call -> null).when(cellar).copyCsv(anyString(), any());
     assertThatThrownBy(job::tick).isInstanceOf(IllegalStateException.class);
     assertThat(search.matching(query)).isEqualTo(first);
+
+    assertThat(meters.get("catalogue.search.rebuild").tag("outcome", "published").timer().count())
+        .isEqualTo(1);
+    assertThat(meters.get("catalogue.search.rebuild").tag("outcome", "skipped").timer().count())
+        .isEqualTo(2);
+    assertThat(
+            meters
+                .get("catalogue.search.rebuild")
+                .tag("outcome", "failed")
+                .tag("error", "IllegalStateException")
+                .timer()
+                .count())
+        .isEqualTo(1);
+    assertThat(
+            meters
+                .get("catalogue.search.match")
+                .tags("backend", "cellar", "kind", "all")
+                .timer()
+                .count())
+        .isEqualTo(1);
+    assertThat(
+            meters
+                .get("catalogue.search.match")
+                .tags("backend", "postgres", "kind", "directive")
+                .timer()
+                .count())
+        .isPositive();
+    assertThat(
+            meters
+                .get("catalogue.search.match")
+                .tags("backend", "postgres", "result", "typo")
+                .timer()
+                .count())
+        .isPositive();
+    assertThat(meters.get("catalogue.search.identify").tag("method", "alias").timer().count())
+        .isPositive();
+    assertThat(meters.get("catalogue.search.identify").tag("method", "citation").timer().count())
+        .isPositive();
   }
 
   @Test

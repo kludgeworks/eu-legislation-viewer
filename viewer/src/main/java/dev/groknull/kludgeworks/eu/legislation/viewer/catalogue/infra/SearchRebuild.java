@@ -2,12 +2,18 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.postgresql.PGConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -19,10 +25,13 @@ import org.springframework.stereotype.Component;
 @Component
 @ConditionalOnProperty(name = "viewer.catalogue.search.enabled", havingValue = "true")
 class SearchRebuild {
+  private static final Logger LOG = LoggerFactory.getLogger(SearchRebuild.class);
+  private final ObservationRegistry observations;
   private final DataSource database;
   private final Sparql cellar;
 
-  SearchRebuild(DataSource database, Sparql cellar) {
+  SearchRebuild(DataSource database, Sparql cellar, ObservationRegistry observations) {
+    this.observations = observations;
     this.database = database;
     this.cellar = cellar;
   }
@@ -31,19 +40,46 @@ class SearchRebuild {
       initialDelayString = "${viewer.catalogue.search.start-delay:10s}",
       fixedRateString = "${viewer.catalogue.search.check-every:1h}")
   void tick() throws SQLException {
+    try (var job = MDC.putCloseable("job", "search-rebuild")) {
+      var run =
+          Observation.createNotStarted("catalogue.search.rebuild", observations)
+              .lowCardinalityKeyValue("outcome", "running");
+      run.observeChecked(() -> runOnce(run));
+    }
+  }
+
+  private void runOnce(Observation run) throws SQLException {
+    long start = System.nanoTime();
     try (var connection = database.getConnection()) {
       connection.setAutoCommit(false);
       try {
-        rebuild(connection);
+        long acts = rebuild(connection);
         connection.commit();
+        if (acts == 0) {
+          run.lowCardinalityKeyValue("outcome", "skipped");
+          LOG.debug("Skipped search rebuild: no run claimed");
+        } else {
+          run.lowCardinalityKeyValue("outcome", "published");
+          LOG.info(
+              "Published search index with {} acts in {} ms",
+              acts,
+              Duration.ofNanos(System.nanoTime() - start).toMillis());
+        }
       } catch (RuntimeException | SQLException failure) {
         connection.rollback();
         throw failure;
       }
+    } catch (RuntimeException | SQLException failure) {
+      run.lowCardinalityKeyValue("outcome", "failed");
+      LOG.warn(
+          "Search rebuild failed after {} ms: {}",
+          Duration.ofNanos(System.nanoTime() - start).toMillis(),
+          failure.toString());
+      throw failure;
     }
   }
 
-  private void rebuild(Connection connection) throws SQLException {
+  private long rebuild(Connection connection) throws SQLException {
     try (var sql = connection.createStatement()) {
       // Only this row is locked during extraction. A crash releases the claim with the session.
       if (sql.executeUpdate(
@@ -54,8 +90,9 @@ class SearchRebuild {
                 for update skip locked)
               """)
           == 0) {
-        return;
+        return 0;
       }
+      LOG.info("Building the search index from Cellar");
       sql.execute(resource("index-stage.sql"));
       for (String family : List.of("skos_en", "citations", "short_titles_en")) {
         copy(connection, family, resource("index-" + family + ".rq"));
@@ -82,29 +119,43 @@ class SearchRebuild {
         }
         sql.execute(resource("index-partition.sql"));
       }
+      long acts;
       try (var counts =
           sql.executeQuery(
               """
-              select count(*) > 0 and count(*) >= 0.95 * (select count(*) from catalogue_search_work)
+              select count(*), (select count(*) from catalogue_search_work)
               from tmp_work
               """)) {
         counts.next();
-        if (!counts.getBoolean(1)) {
-          throw new IllegalStateException("Incomplete Cellar search inventory");
+        acts = counts.getLong(1);
+        long previous = counts.getLong(2);
+        if (acts == 0 || acts * 100 < previous * 95) {
+          throw new IllegalStateException(
+              "Incomplete Cellar search inventory: "
+                  + acts
+                  + " acts staged, "
+                  + previous
+                  + " previously indexed");
         }
       }
       sql.execute(resource("index-publish.sql"));
+      return acts;
     }
   }
 
   private void copy(Connection connection, String family, String query) throws SQLException {
     var copy = connection.unwrap(PGConnection.class).getCopyAPI();
+    LOG.debug("Loading Cellar search extract {}", family);
     cellar.copyCsv(
         query,
         input -> {
           try {
-            return copy.copyIn(
-                "copy pg_temp." + family + " from stdin with (format csv, header match)", input);
+            long rows =
+                copy.copyIn(
+                    "copy pg_temp." + family + " from stdin with (format csv, header match)",
+                    input);
+            LOG.debug("Copied {} rows from Cellar search extract {}", rows, family);
+            return rows;
           } catch (SQLException failure) {
             throw new IllegalStateException("Cannot load search extract " + family, failure);
           }

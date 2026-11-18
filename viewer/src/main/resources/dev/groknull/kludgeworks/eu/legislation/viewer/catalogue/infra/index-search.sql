@@ -23,19 +23,19 @@ filtered as not materialized (
   where e.language_code='ENG' and (q.kind='all' or substring(w.celex,6,1)=q.kind
     or (q.kind='amending' and exists(select from catalogue_search_amendment a where a.act=w.celex)))
 ), lexical as (
-  select celex,in_force,amending,exact_number,ts_rank_cd('{0.05,0.15,0.6,1.0}',search_tsv,words,32)
+  select celex,in_force,amending,exact_number,false as typo,ts_rank_cd('{0.05,0.15,0.6,1.0}',search_tsv,words,32)
     * (1+ln(1.0+citation_count)) * case when in_force is false then 0.5 else 1 end score
   from filtered where search_tsv @@ words
 ), candidates as (
   select * from lexical
   union all
-  select celex,in_force,amending,exact_number,word_similarity(typed,substantive_title) * (1+ln(1.0+citation_count)) score
+  select celex,in_force,amending,exact_number,true as typo,word_similarity(typed,substantive_title) * (1+ln(1.0+citation_count)) score
   from filtered where allow_typos and not exists (select from lexical) and typed <% substantive_title
 ), page as (
   select * from candidates
   order by exact_number desc,score desc,amending,(in_force is true) desc,celex desc limit ? offset ?
 )
-select p.celex,w.eli,w.resource_type,p.in_force,e.title,a.amends,a.amends_eli
+select p.typo,p.celex,w.eli,w.resource_type,p.in_force,e.title,a.amends,a.amends_eli
 from page p join catalogue_search_work w using (celex)
 join catalogue_search_expression e on e.celex=p.celex and e.language_code='ENG'
 left join catalogue_search_amendment a on a.act=p.celex

@@ -38,6 +38,16 @@ The first build starts after ten seconds. The viewer checks hourly for the first
 It issues 39 sequential Cellar queries per build. All instances search the previous complete index during a refresh
 and use Cellar until the first index is available. Catalogue maintainers review exact names and acronyms in SQL migrations.
 
+Rebuild logs carry the MDC field `job=search-rebuild`. INFO records the start and the committed act count and duration.
+WARN records failures. DEBUG shows skipped runs and row counts for each Cellar extract.
+The viewer's Micrometer registry records these observations:
+
+| Observation | What it measures |
+| --- | --- |
+| `catalogue.search.rebuild` | Duration and outcome of each tick: published, skipped, or failed. |
+| `catalogue.search.identify` | Time spent looking up a citation or alias. |
+| `catalogue.search.match` | Search duration by act kind, backend, and result. Postgres distinguishes lexical matches, typo matches, and empty pages. |
+
 ## Develop
 
 Java 25, Spring Boot and Spring Modulith, Postgres, htmx; built with Bazel. Tools come from [mise](https://mise.jdx.dev).
