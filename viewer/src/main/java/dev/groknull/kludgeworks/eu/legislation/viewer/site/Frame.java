@@ -144,7 +144,7 @@ public record Frame(Theme theme, String here, Assets assets, @Nullable Results r
 
     /**
      * The viewer's icon, as the browser's tab and the site bar show it: two bars, the lower one
-     * shifted along, on a green tile (docs/design/DESIGN.md, Favicon).
+     * shifted along, on a green tile.
      *
      * @param svg the icon, for browsers that take SVG, and the site bar
      * @param ico the icon for browsers that do not
