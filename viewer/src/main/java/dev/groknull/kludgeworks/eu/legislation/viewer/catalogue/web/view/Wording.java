@@ -81,7 +81,7 @@ public final class Wording {
     var corrigenda = integrates.size() - acts.size();
     if (acts.isEmpty()) {
       return corrigenda == 0
-          ? "no amending act listed for this version"
+          ? "no amending act listed for this text"
           : "made by " + names(integrates, cite);
     }
     var also =
@@ -167,28 +167,28 @@ public final class Wording {
 
   /**
    * Returns which version gives the law on {@code day}, and how long it applies, for the line under
-   * the day on a card. For example, "From the version of 31 December 2021 · applied until 28
-   * February 2022", or "A new version starts on this day · current version" on its first day.
+   * the day on a card. For example, "From the text of 31 December 2021 · applied until 28 February
+   * 2022", or "A new text starts on this day · current text" on its first day.
    */
   public static String which(
       Act act, Version version, LocalDate day, LocalDate today, Language language) {
     var starts =
         day.equals(version.date())
-            ? "A new version starts on this day"
-            : "From the version of " + Dates.inWords(version.date());
+            ? "A new text starts on this day"
+            : "From the text of " + Dates.inWords(version.date());
     var until = until(act, version, today, language);
     return until.isEmpty() ? starts : starts + " · " + until;
   }
 
   /**
    * Returns how long {@code version} applies, after its first day, for the line under the date on a
-   * card. For example, "applied until 28 February 2022 · current version".
+   * card. For example, "applied until 28 February 2022 · current text".
    *
    * <ul>
    *   <li>For the act as published, which was in force before it applied, says both: "in force from
    *       15 November 2015 · applied 1 February 2016 to 28 February 2016".
    *   <li>For the latest version, says nothing of an end.
-   *   <li>Adds "current version" or "next version", as {@link #period} does.
+   *   <li>Adds "current text" or "next text", as {@link #period} does.
    * </ul>
    *
    * <p>Returns an empty text if there is nothing to say.
@@ -216,7 +216,7 @@ public final class Wording {
    *
    * <ul>
    *   <li>"Applied 15 March 2021 to 30 December 2021"
-   *   <li>"Applies from 22 March 2026 · current version"
+   *   <li>"Applies from 22 March 2026 · current text"
    *   <li>For the act as published, the period starts at its entry into force: "In force from 15
    *       November 2015 · applied 1 February 2016 to 28 February 2016".
    *   <li>An act as published that applies in part says so, and from when it applies in full: "In
@@ -302,8 +302,8 @@ public final class Wording {
    * Returns the period with its labels.
    *
    * <ul>
-   *   <li>"current version" is the version that applies today.
-   *   <li>"next version" is the version after the current one, if its date is after today.
+   *   <li>"current text" is the version that applies today.
+   *   <li>"next text" is the version after the current one, if its date is after today.
    * </ul>
    */
   private static String label(
@@ -312,13 +312,13 @@ public final class Wording {
     var current = timeline.flatMap(t -> t.applicableOn(today));
     var labelled = period;
     if (current.filter(version::equals).isPresent()) {
-      labelled += " · current version";
+      labelled += " · current text";
     } else if (version.date().isAfter(today)
         && current
             .flatMap(c -> timeline.flatMap(t -> t.successor(c)))
             .filter(version::equals)
             .isPresent()) {
-      labelled += " · next version";
+      labelled += " · next text";
     }
     return labelled;
   }

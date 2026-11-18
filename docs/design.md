@@ -42,7 +42,7 @@ provision applies, and until when.
 | See which acts changed one provision | Read: the history of a provision |
 | Compare the wording on two days | Compare, from the history of a provision or from a period of the History |
 | Find which act made a change, and from when it applies | Compare: the side note |
-| Go to a different version | The timeline and the calendar |
+| Go to a different day | The form with the date, on History and on Read |
 
 The amendment is the primary subject. A page shows what an amending act changed, and if each
 change applies on a day. An act that has amending acts opens on History. An act that no act changed
@@ -53,8 +53,8 @@ and has corrigenda, the tab gives their number also: "Amending acts (0) · Corri
 No tab opens Compare. The reader gets there from the history of a provision on Read, or from a
 period of the History. Compare shows two days. It does not name versions, and it has no act filter.
 
-The brief [amendment-first](briefs/amendment-first.md) deletes the timeline and the calendar also.
-They are not deleted yet, so their row in the table is as the pages are now.
+The pages have no timeline and no calendar. A form with a date sets the day. The form does not
+show which days have a change: the History lists them.
 
 ## Terms
 
@@ -65,7 +65,7 @@ They are not deleted yet, so their row in the table is as the pages are now.
 | act | A legal act, for example Regulation 2015/1998. Cite it by its number: "2015/1998". |
 | amending act | An act that changes a different act. |
 | corrigendum | A correction of an act. It is not an amending act. |
-| version | The text of an act from one day. It is the act as published, or a consolidated version. |
+| version | The text of an act from one day. It is the act as published, or a consolidated version. The pages do not use this word. They say "text": "the text of 31 December 2021". |
 | the law on a day | What applies on that day. It is not always the text of a version. |
 | provision | A part of the text with its own place: an article, a paragraph, a point. |
 | difference | A provision that an act inserted, deleted or changed between two versions. |
@@ -83,6 +83,11 @@ They are not deleted yet, so their row in the table is as the pages are now.
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ mark of the provision opens it. A provision that has a history and no ▼ mark has a hollow sign, ▽, in the same place. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.
+
+The pages do not use these words in text that the reader sees: "late", "early", "included",
+"version", "an act not known", "an act not named", "not included". Say what the reader sees. Examples:
+"the text", "does not apply yet", "the data does not say which act changed this". The pages of the API
+are not in this rule: `versions` is the name of a resource of the API.
 
 ## Principles
 
@@ -190,13 +195,13 @@ of the viewer before each path.
 | History, limited to a period | `/eli/reg_impl/2015/1998/eng/history?from=2019-01-01&to=2019-12-31` |
 | An amending act with two stages | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
 | An act that no act changed opens on Read | `/eli/reg/2016/679/eng` |
-| Read a version | `/eli/reg_impl/2015/1998/2021-12-31/eng` |
-| Read, late text, with margin marks | `/eli/reg_impl/2015/1998/2017-06-03/eng` |
-| Read, early text of the act itself | `/eli/reg/2016/679/2017-01-01/eng` |
-| Read, early provisions | `/eli/reg/2008/767/2018-01-01/eng` |
+| Read the law on a day | `/eli/reg_impl/2015/1998/2021-12-31/eng` |
+| Read, an act applies that the text does not have, with marks in the text | `/eli/reg_impl/2015/1998/2017-06-03/eng` |
+| Read, the act itself does not apply yet | `/eli/reg/2016/679/2017-01-01/eng` |
+| Read, provisions that do not apply yet | `/eli/reg/2008/767/2018-01-01/eng` |
 | Read, date not confirmed | `/eli/reg/2018/1862/2026-11-17/eng` |
 | Read, the history of a provision: the ▼ mark of Article 6(2) | `/eli/reg/2008/767/2026-11-17/eng#art_6` |
-| Read, version not in the language | `/eli/reg_impl/2015/1998/2021-12-31/gle` |
+| Read, no text in the language | `/eli/reg_impl/2015/1998/2021-12-31/gle` |
 | Compare, Changes | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |
 | Compare, Whole text | the same, with `&view=whole` |
 | Compare, Synopsis | the same, with `&view=synopsis` |
@@ -214,7 +219,7 @@ in the viewer while it runs.
 | Subject | File |
 | --- | --- |
 | Colour tokens, the site bar, the theme | [site.css](../viewer/src/main/resources/static/css/site.css) |
-| Home, Read, the cards, the timeline | [catalogue.css](../viewer/src/main/resources/static/css/catalogue.css) |
+| Home, Read, the cards | [catalogue.css](../viewer/src/main/resources/static/css/catalogue.css) |
 | Compare | [comparison.css](../viewer/src/main/resources/static/css/comparison.css) |
 | The legal text | [legaltext.css](../viewer/src/main/resources/static/css/legaltext.css) |
 | Templates | [viewer/src/main/jte](../viewer/src/main/jte) |

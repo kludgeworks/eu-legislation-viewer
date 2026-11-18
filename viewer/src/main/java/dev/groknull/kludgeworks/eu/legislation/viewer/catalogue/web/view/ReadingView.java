@@ -19,13 +19,12 @@ import org.jspecify.annotations.Nullable;
  *
  * <ul>
  *   <li>the day, as its headline: "The law on 14 February 2022"
- *   <li>which version that is and how long it applied: "From the version of 31 December 2021 ·
- *       applied until 28 February 2022", or "A new version starts on this day · …" on its first day
+ *   <li>which version that is and how long it applied: "From the text of 31 December 2021 · applied
+ *       until 28 February 2022", or "A new text starts on this day · …" on its first day
  *   <li>the acts that made the version
  *   <li>the status lines, where the text is not the law on the day: one line for each act
  *   <li>the version's consolidated CELEX, small, with a copy button
- *   <li>a date picker that asks for the law on another day
- *   <li>the link to the comparison with the version before
+ *   <li>a form with a date, which asks for the law on another day
  * </ul>
  *
  * <p>Before the act's first version, there is no version: the card shows the day and a dash, and
@@ -46,8 +45,6 @@ import org.jspecify.annotations.Nullable;
  *     first version.
  * @param action the address the date form goes to: the act in the language of the page
  * @param on the date that the form starts at. This is the day asked.
- * @param starts the days that a new version starts, which the date picker rings: ISO dates in
- *     order, separated by spaces
  */
 public record ReadingView(
     String title,
@@ -59,8 +56,7 @@ public record ReadingView(
     @Nullable String celex,
     @Nullable String eurLex,
     String action,
-    String on,
-    String starts) {
+    String on) {
 
   /**
    * Returns the Reading card of the law on {@code asked}, which {@code version} of {@code act}
@@ -92,8 +88,7 @@ public record ReadingView(
         version.celex(),
         version.eurLex(language).toString(),
         Links.act(eli, language),
-        asked.toString(),
-        TimelineView.starts(act, language));
+        asked.toString());
   }
 
   /**
@@ -112,8 +107,7 @@ public record ReadingView(
         null,
         null,
         Links.act(eli, language),
-        asked.toString(),
-        TimelineView.starts(act, language));
+        asked.toString());
   }
 
   /** Returns the page's title. For example, "2015/1998 · the law on 14 Feb 2022". */

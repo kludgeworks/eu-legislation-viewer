@@ -7,9 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import gg.jte.generated.precompiled.Templates;
@@ -27,7 +25,8 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * events. For example, {@code /eli/reg_impl/2015/1998/eng/prepare/events}.
  *
  * <p>Each message has the current state of the preparation. It contains the parts of the page that
- * change: the timeline and the progress. The page swaps in each part by its id.
+ * change: the progress and the count that a screen reader hears. The page swaps in each part by its
+ * id.
  *
  * <ul>
  *   <li>The stream sends a message when the page connects or connects again.
@@ -93,7 +92,6 @@ class PreparationController {
             .data(
                 templates
                     .cataloguePreparingStream(
-                        TimelineView.preparing(act, preparation, Timeline.today(clock)),
                         PreparingView.Progress.of(act, preparation, clock.instant()))
                     .render()));
     return false;

@@ -20,7 +20,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Masthea
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ProvisionView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
@@ -152,7 +151,6 @@ class VersionController {
           templates.catalogueTextFailed(
               FailureView.missing(page.act, page.version, page.language, request.getRequestURI())),
           false,
-          Map.of(),
           null,
           List.of(),
           Map.of());
@@ -164,11 +162,10 @@ class VersionController {
               frame,
               ReadingView.title(page.act, date),
               masthead.whilePreparing(),
-              TimelineView.preparing(page.act, preparation, today()),
               PreparingView.of(
                   page.act,
                   preparation,
-                  "You asked for the version that applies on " + Dates.inWords(date),
+                  "You asked for the law on " + Dates.inWords(date),
                   request.getRequestURI(),
                   clock.instant()))
           .render();
@@ -179,7 +176,6 @@ class VersionController {
         masthead,
         page.text(preparation, marks, request.getRequestURI(), frame.results()),
         prepared,
-        TimelineView.states(preparation),
         ArrivingView.of(preparation).orElse(null),
         page.named(preparation),
         marks);
@@ -266,7 +262,6 @@ class VersionController {
           .catalogueVersion(
               frame,
               MastheadView.reading(act, version, date, language),
-              TimelineView.before(act, language, today()),
               ReadingView.before(act, date, language),
               templates.catalogueTextFailed(FailureView.before(act, date, language)),
               false,
@@ -279,7 +274,6 @@ class VersionController {
         MastheadView masthead,
         JteModel text,
         boolean arrived,
-        Map<Version, String> states,
         @Nullable ArrivingView arriving,
         List<ActIdentifier> named,
         Map<Version, TextMarks> marks) {
@@ -287,7 +281,6 @@ class VersionController {
           .catalogueVersion(
               frame,
               masthead,
-              TimelineView.reading(act, version, date, language, today(), states),
               ReadingView.of(act, version, date, language, today(), named, marks),
               text,
               arrived,

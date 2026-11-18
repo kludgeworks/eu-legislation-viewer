@@ -77,7 +77,7 @@ class MastheadViewTest {
         .filteredOn(choice -> choice.missing() != null)
         .singleElement()
         .extracting(Choice::name, Choice::href, Choice::missing)
-        .containsExactly("Gaeilge", null, "Not for this version");
+        .containsExactly("Gaeilge", null, "Not for this text");
   }
 
   @Test

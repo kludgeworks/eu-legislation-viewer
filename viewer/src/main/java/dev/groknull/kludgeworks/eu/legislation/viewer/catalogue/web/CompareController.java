@@ -17,7 +17,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Failure
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
@@ -150,7 +149,6 @@ class CompareController {
                       frame,
                       title,
                       masthead.whilePreparing(),
-                      TimelineView.preparing(page.act, preparation, today),
                       PreparingView.of(
                           page.act,
                           preparation,

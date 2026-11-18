@@ -16,7 +16,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +45,6 @@ class TextsTests {
   @Autowired Texts texts;
   @Autowired ExpressionStore expressions;
   @Autowired Content content;
-  @Autowired StepCounts stepCounts;
   @Autowired JdbcClient jdbc;
   @Autowired ApplicationEventPublisher events;
   @Autowired TransactionTemplate transaction;
@@ -210,39 +208,6 @@ class TextsTests {
     assertThat(expressions.start(celex, language, 4)).isFalse();
     assertThat(expressions.fail(celex, language, Failure.ERROR, null)).isFalse();
     assertThat(text(celex, language)).isEqualTo(new Text.Ready(stored));
-  }
-
-  @Test
-  void removesTheStepCountsOfATextThatIsReplaced() {
-    var act = act().id();
-    var replaced =
-        content.store(
-            "test-replaced",
-            Language.ENG,
-            "test",
-            LegalTexts.sample("06.02.1/02015R1998-20260101.xml"));
-    var other =
-        content.store(
-            "test-other",
-            Language.ENG,
-            "test",
-            LegalTexts.sample("06.02.1/02015R1998-20260322.xml"));
-    var counted = new StepCounts.Counted(Map.of(new ActIdentifier("32026R0449"), 6), 0, 0);
-    stepCounts.add(act, replaced, other, counted);
-    stepCounts.add(act, other, replaced, counted);
-
-    content.store(
-        "test-replaced",
-        Language.ENG,
-        "test",
-        LegalTexts.sample("06.02.1/02015R1998-20261001.xml"));
-
-    await()
-        .atMost(Duration.ofMinutes(1))
-        .until(
-            () ->
-                stepCounts.find(act, replaced, other).isEmpty()
-                    && stepCounts.find(act, other, replaced).isEmpty());
   }
 
   private Text text(String celex, Language language) {

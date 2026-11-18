@@ -33,7 +33,7 @@ class ArrivingViewTest {
     var arriving = ArrivingView.of(prepared(new Text.Waiting(0))).orElseThrow();
 
     var notice =
-        "A new version has appeared: "
+        "A new text has appeared: "
             + latest.celex()
             + ", applies from "
             + Dates.inWords(latest.date())

@@ -100,7 +100,7 @@ public record FailureView(
     if (earlier.isPresent() && later.isPresent()) {
       instead.add(
           Action.button(
-              "Compare the versions on either side instead",
+              "Compare the texts on either side instead",
               Links.compare(eli, earlier.get(), later.get(), language)));
     }
     return of(act, failed, text.failure(), trace(failed, text, language), language, self, instead);
@@ -180,7 +180,7 @@ public record FailureView(
     return new FailureView(
         true,
         "This act couldn't be prepared",
-        (size == 1 ? "Its only version" : "None of its " + size + " versions")
+        (size == 1 ? "Its only text" : "None of its " + size + " texts")
             + " could be converted. The first failure: "
             + (failures.isEmpty() ? "something went wrong" : Wording.failure(failures.getFirst()))
             + ".",
@@ -208,7 +208,7 @@ public record FailureView(
     var facts = new ArrayList<Fact>();
     facts.add(
         new Fact(
-            "Version",
+            "Text",
             celex + ", from " + Dates.inWords(version.date()) + " · " + Wording.made(version)));
     if (failure == Failure.NO_FORMEX) {
       var others = version.languages().stream().filter(each -> each != language).toList();
@@ -232,7 +232,7 @@ public record FailureView(
             before ->
                 actions.add(
                     Action.button(
-                        "Read the version before (from " + Dates.inWords(before.date()) + ")",
+                        "Read the text before (from " + Dates.inWords(before.date()) + ")",
                         Links.read(eli, before, language))));
     timeline
         .flatMap(t -> t.firstAfter(version.date()))
@@ -240,16 +240,16 @@ public record FailureView(
             after ->
                 actions.add(
                     Action.button(
-                        "Read the version after (from " + Dates.inWords(after.date()) + ")",
+                        "Read the text after (from " + Dates.inWords(after.date()) + ")",
                         Links.read(eli, after, language))));
-    actions.add(Action.link("Read this version on EUR-Lex", version.eurLex(language).toString()));
+    actions.add(Action.link("Read this text on EUR-Lex", version.eurLex(language).toString()));
     var reference = trace;
     return switch (failure) {
       case UNAVAILABLE ->
           new FailureView(
               true,
               "The Publications Office didn't answer",
-              "We asked it for version "
+              "We asked it for text "
                   + celex
                   + " several times and got no answer. This is usually temporary.",
               facts,
@@ -260,7 +260,7 @@ public record FailureView(
           new FailureView(
               false,
               "Not available in " + Wording.language(language),
-              "The Publications Office has no file of this version in "
+              "The Publications Office has no file of this text in "
                   + Wording.language(language)
                   + ", so it can't be shown here. Nothing is machine-translated.",
               facts,
@@ -282,10 +282,10 @@ public record FailureView(
       case UNSUPPORTED ->
           new FailureView(
               false,
-              "This version uses something the viewer can't show yet",
-              "Part of version "
+              "This text uses something the viewer can't show yet",
+              "Part of text "
                   + celex
-                  + " uses a structure the viewer doesn't handle yet. The other versions aren't"
+                  + " uses a structure the viewer doesn't handle yet. The other texts aren't"
                   + " affected.",
               facts,
               null,
@@ -295,9 +295,7 @@ public record FailureView(
           new FailureView(
               false,
               "This document isn't a legal act the viewer shows",
-              "Version "
-                  + celex
-                  + " is a kind of document the viewer doesn't show, such as a notice.",
+              "Text " + celex + " is a kind of document the viewer doesn't show, such as a notice.",
               facts,
               null,
               actions,
@@ -306,7 +304,7 @@ public record FailureView(
           new FailureView(
               true,
               "Something went wrong on our side",
-              "Preparing version "
+              "Preparing text "
                   + celex
                   + " failed because of a fault in the viewer, not the source.",
               facts,

@@ -4,7 +4,6 @@
  * src/main/jte/comparison}.
  *
  * <ul>
- *   <li>{@link ActsView} holds the acts between the two versions as chips, with their counts.
  *   <li>{@link ChangesView} holds the differences in order, numbered and noted. The units that are
  *       the same in both texts are folded. The opening of the unit that they are in is the context.
  *   <li>{@link SidenoteView} holds the note beside each difference: the acts that made it.

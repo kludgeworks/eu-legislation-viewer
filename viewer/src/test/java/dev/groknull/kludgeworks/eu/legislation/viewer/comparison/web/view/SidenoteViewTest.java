@@ -79,8 +79,8 @@ class SidenoteViewTest {
     assertThat(sidenote.dates())
         .extracting(SidenoteView.Applies::when)
         .containsExactly(
-            "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first included in"
-                + " the version of 31 December 2021");
+            "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first in the text"
+                + " of 31 December 2021");
   }
 
   @Test
@@ -330,7 +330,7 @@ class SidenoteViewTest {
             Language.ENG);
 
     // The line is never empty. It says that no act is named.
-    assertThat(sidenote.made()).isEqualTo("Amended by an act not named");
+    assertThat(sidenote.made()).isEqualTo("The data does not say which act changed this.");
     assertThat(sidenote.dates()).isEmpty();
   }
 
@@ -551,7 +551,9 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.made())
-        .isEqualTo("Amended by an act not known: 2019/103, 2019/1583 or 2020/910");
+        .isEqualTo(
+            "The data does not say which act changed this. It was 2019/103, 2019/1583 or"
+                + " 2020/910.");
     assertThat(sidenote.acts()).isEmpty();
     assertThat(sidenote.candidates()).hasSize(3);
   }

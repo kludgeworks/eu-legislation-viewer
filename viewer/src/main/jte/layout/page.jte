@@ -31,14 +31,12 @@
   <script type="module" src="${frame.assets().sidenotes()}"></script>
   <script type="module" src="${frame.assets().copy()}"></script>
   <script type="module" src="${frame.assets().loading()}"></script>
-  <script type="module" src="${frame.assets().timeline()}"></script>
-  <script type="module" src="${frame.assets().datepicker()}"></script>
   ${head}
 </head>
 <body>
   <aside class="notice" aria-label="Disclaimer" role="note">
     <b>Unofficial.</b>
-    <span>Consolidated versions, and comparisons of them, have no legal effect. Only the Official
+    <span>Consolidated texts, and comparisons of them, have no legal effect. Only the Official
       Journal of the European Union is authentic.</span>
   </aside>
   <nav class="site" aria-label="Site">

@@ -39,7 +39,6 @@ class ChangesPagesTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";
   private static final String PAGE = ACT + "eng/compare?from=2026-03-22&to=2026-10-01";
   private static final String CHANGES = ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01";
-  private static final String ACTS = ACT + "eng/compare/acts?from=2026-03-22&to=2026-10-01";
   private static final String DIFFERENCE =
       ACT + "eng/compare/difference?from=2026-03-22&to=2026-10-01";
 
@@ -126,18 +125,8 @@ class ChangesPagesTests {
   }
 
   @Test
-  void countsTheDifferencesEachActMadeAndLimitsTheComparisonToOnesChanges() {
+  void limitsTheComparisonToTheChangesOfOneAct() {
     prepared();
-    // Until the counts are kept, the chips come at once, and load their counts after.
-    var acts = Objects.requireNonNull(get(ACTS).getElementById("acts"));
-    var counted = acts.attr("hx-get").isEmpty() ? acts.ownerDocument() : get(acts.attr("hx-get"));
-    var chip = Objects.requireNonNull(Objects.requireNonNull(counted).selectFirst("#acts a.chip"));
-    assertThat(chip.select(".label").text()).isEqualTo("2026/449");
-    assertThat(chip.select(".count").text()).isEqualTo("6");
-    assertThat(chip.attr("href")).isEqualTo(PAGE + "&act=32026R0449");
-    // Once kept, they come counted at once.
-    assertThat(get(ACTS).select("#acts a.chip .count").text()).isEqualTo("6");
-
     var changes = get(CHANGES + "&act=32026R0449");
     assertThat(changes.select(".controls .only").text())
         .isEqualTo("Only 2026/449’s changes · show all acts");

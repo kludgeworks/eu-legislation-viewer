@@ -205,7 +205,7 @@ public record PreparingView(
       for (var i = 0; i < versions.size(); i++) {
         var version = versions.get(i);
         var line =
-            "Version "
+            "Text "
                 + (i + 1)
                 + " of "
                 + versions.size()
@@ -228,7 +228,7 @@ public record PreparingView(
           preparation.ready()
               + " of "
               + size
-              + (size == 1 ? " version" : " versions")
+              + (size == 1 ? " text" : " texts")
               + " ready"
               + (preparation.failed() == 0
                   ? ""
@@ -267,10 +267,10 @@ public record PreparingView(
         return calm;
       }
       if (ahead == 1) {
-        return "1 version of another act is ahead. " + calm;
+        return "1 text of another act is ahead. " + calm;
       }
       return (ahead < 10 ? String.valueOf(ahead) : "About " + Math.round(ahead / 10.0) * 10)
-          + " versions of other acts are ahead. "
+          + " texts of other acts are ahead. "
           + calm;
     }
 

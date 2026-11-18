@@ -8,7 +8,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
@@ -19,7 +18,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ActsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
@@ -98,7 +96,6 @@ class ChangesController {
   private final Acts acts;
   private final Texts texts;
   private final Comparisons comparisons;
-  private final StepCounts stepCounts;
   private final Content content;
 
   /**
@@ -117,7 +114,6 @@ class ChangesController {
       Acts acts,
       Texts texts,
       Comparisons comparisons,
-      StepCounts stepCounts,
       Content content,
       Templates templates,
       LegalRenderer html,
@@ -126,7 +122,6 @@ class ChangesController {
     this.acts = acts;
     this.texts = texts;
     this.comparisons = comparisons;
-    this.stepCounts = stepCounts;
     this.content = content;
     this.templates = templates;
     this.html = html;
@@ -336,132 +331,6 @@ class ChangesController {
    */
   private static ComparisonView view(String code) {
     return ComparisonView.of(code).orElseThrow(Requests::notFound);
-  }
-
-  /**
-   * Returns the acts between the versions of the comparison, which the compare page loads into its
-   * acts slot.
-   *
-   * <p>Each act shows how many of the listed differences it made. The count uses the same
-   * attribution as the sidenotes: {@link Act#amended} and the markers. Thus a chip counts the list
-   * that it filters. If the two texts are not both built, no act gets a count. The counts are
-   * computed once and kept in {@link StepCounts}.
-   *
-   * <p>If the counts are not kept yet, and {@code count} is not set, it returns the chips without
-   * counts at once. They load their counts from this address with {@code count} set. Thus the chips
-   * show while the counting runs.
-   *
-   * <p>Returns 404 if the address is not the canonical address of a comparison.
-   */
-  @GetMapping(path = ComparePage.ACTS_PATH, produces = MediaType.TEXT_HTML_VALUE)
-  @ResponseBody
-  String acts(
-      @PathVariable String type,
-      @PathVariable int year,
-      @PathVariable String number,
-      @PathVariable("language") String code,
-      @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
-      @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
-      @RequestParam(name = ComparePage.VIEW, defaultValue = "changes") String shown,
-      @RequestParam(name = ComparePage.COUNT, defaultValue = "false") boolean count,
-      HttpServletRequest request) {
-    var view = view(shown);
-    var ends = ends(new Eli(type, year, number), code, from, to, act);
-    var page =
-        ComparePage.ofPart(
-            request.getRequestURI(),
-            from,
-            to,
-            ends.only == null ? null : ends.only.celex(),
-            view.parameter());
-    var started = System.nanoTime();
-    var preparation = texts.preparation(ends.act, ends.language);
-    var between = ends.act.integratedBetween(ends.from, ends.to);
-    var counts = new HashMap<ActIdentifier, Integer>();
-    var unknown = 0;
-    // Count the list that the page shows. Do not add up the counts of single steps. That sum counts
-    // a provision once for each step that changed it. It also counts a change that one act made
-    // and the next act undid.
-    var kept = false;
-    if (preparation.texts().get(ends.from) instanceof Text.Ready before
-        && preparation.texts().get(ends.to) instanceof Text.Ready after) {
-      var found = stepCounts.find(ends.act.id(), before.text(), after.text());
-      if (found.isEmpty() && !count) {
-        return templates
-            .comparisonActs(
-                ActsView.of(
-                    ends.act,
-                    ends.from,
-                    ends.to,
-                    ends.language,
-                    page,
-                    Map.of(),
-                    page.countedActs()))
-            .render();
-      }
-      var counted = found.or(() -> count(ends, preparation, ends.from, ends.to, new HashMap<>()));
-      kept = found.isPresent();
-      if (counted.isPresent()) {
-        if (!kept) {
-          stepCounts.add(ends.act.id(), before.text(), after.text(), counted.get());
-        }
-        counted
-            .get()
-            .differences()
-            .forEach(
-                (each, differences) -> {
-                  if (between.contains(each)) {
-                    counts.put(each, differences);
-                  }
-                });
-        unknown = counted.get().unknown();
-      }
-    }
-    LOG.info(
-        "Acts of {} from {} to {} in {}: {} of {} counted{}, in {} ms",
-        ends.act.id(),
-        ends.from.date(),
-        ends.to.date(),
-        ends.language.code(),
-        counts.size(),
-        between.size(),
-        kept ? " (kept)" : "",
-        Duration.ofNanos(System.nanoTime() - started).toMillis());
-    return templates
-        .comparisonActs(
-            ActsView.of(ends.act, ends.from, ends.to, ends.language, page, counts, null)
-                .counted(unknown))
-        .render();
-  }
-
-  /**
-   * Returns the counts of the step from {@code from} to {@code to}:
-   *
-   * <ul>
-   *   <li>how many differences each act of the step made
-   *   <li>how many differences more than one act made together
-   *   <li>how many differences one of the acts made, where it is not known which act
-   * </ul>
-   *
-   * <p>Returns none if either text is not built.
-   */
-  private Optional<StepCounts.Counted> count(
-      Ends ends, Preparation preparation, Version from, Version to, Map<TextId, Outline> outlines) {
-    return attributed(ends, preparation, from, to, null, null, outlines)
-        .map(
-            attributed -> {
-              var differences = new HashMap<ActIdentifier, Integer>();
-              ends.act.integratedBetween(from, to).forEach(each -> differences.put(each, 0));
-              var together = 0;
-              var unknown = 0;
-              for (var sidenote : attributed.sidenotes().values()) {
-                sidenote.acts().forEach(each -> differences.merge(each, 1, Integer::sum));
-                together += sidenote.acts().size() > 1 ? 1 : 0;
-                unknown += sidenote.candidates().isEmpty() ? 0 : 1;
-              }
-              return new StepCounts.Counted(differences, together, unknown);
-            });
   }
 
   /**

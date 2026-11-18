@@ -13,10 +13,10 @@
   <h1>About</h1>
   <section id="what">
     <h2>What this is</h2>
-    <p>An unofficial reader of EU acts and their consolidated versions. It shows an act as it stood on any day,
+    <p>An unofficial reader of EU acts and their consolidated texts. It shows an act as it stood on any day,
       and what changed between two days, provision by provision, with the act that made each change and the date
       it applies from.</p>
-    <p>Consolidated versions, and comparisons of them, have no legal effect. Only the Official Journal of the
+    <p>Consolidated texts, and comparisons of them, have no legal effect. Only the Official Journal of the
       European Union is authentic. Check it, or
       <a href="https://eur-lex.europa.eu/" rel="external">EUR-Lex<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a>,
       before relying on a provision.</p>
@@ -36,6 +36,6 @@
   </section>
   <section id="build">
     <h2>Build</h2>
-    <p>Version: <span class="mono">${version}</span></p>
+    <p>Release: <span class="mono">${version}</span></p>
   </section>
 `)

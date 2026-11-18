@@ -31,11 +31,11 @@ public record ArrivingView(String notice) {
     return Optional.of(
         new ArrivingView(
             arriving.size() == 1
-                ? "A new version has appeared: "
+                ? "A new text has appeared: "
                     + versions
                     + ". It's being prepared and will be here the next time you load this page."
                 : arriving.size()
-                    + " new versions have appeared: "
+                    + " new texts have appeared: "
                     + versions
                     + ". They're being prepared and will be here the next time you load this"
                     + " page."));

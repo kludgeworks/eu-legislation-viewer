@@ -72,8 +72,9 @@ import org.jspecify.annotations.Nullable;
  *       <li>"Replaced by 2026/449"
  *       <li>"Inserted by 2019/103, then replaced by 2021/255"
  *       <li>"Replaced by 2019/103 and 2019/1583 together"
- *       <li>"Amended by an act not known: 2019/103 or 2019/1583"
- *       <li>"Deleted by an act not named", where nothing names an act between the two versions
+ *       <li>"The data does not say which act changed this. It was 2019/103 or 2019/1583."
+ *       <li>"The data does not say which act deleted this.", where nothing names an act between the
+ *           two versions
  *     </ul>
  *
  * @param acts the acts that made the difference, in the order that the versions integrate them. The
@@ -245,25 +246,24 @@ public record SidenoteView(
             .distinct()
             .count();
     if (candidates.size() < 2 || versions != 1) {
-      return new SidenoteView(
-          verb(difference) + " by an act not named", List.of(), List.of(), List.of(), null, null);
+      return new SidenoteView(unsaid(difference), List.of(), List.of(), List.of(), null, null);
     }
     var ordered =
         version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
             .filter(candidates::contains)
             .toList();
     var names = ordered.stream().map(act::cited).toList();
-    var verb = verb(difference);
     var dates = new ArrayList<Applies>();
     for (var each : ordered) {
       applies(act, each, Set.of(), language).ifPresent(dates::add);
     }
     return new SidenoteView(
-        verb
-            + " by an act not known: "
+        unsaid(difference)
+            + " It was "
             + String.join(", ", names.subList(0, names.size() - 1))
             + " or "
-            + names.getLast(),
+            + names.getLast()
+            + ".",
         List.of(),
         ordered,
         dates,
@@ -272,15 +272,17 @@ public record SidenoteView(
   }
 
   /**
-   * Returns what happened to {@code difference}, as the first word of the made line: "Inserted",
-   * "Deleted" or "Amended".
+   * Returns the words for a difference for which the data names no act: "The data does not say
+   * which act deleted this."
    */
-  private static String verb(Difference difference) {
-    return switch (difference.kind()) {
-      case INSERTED -> "Inserted";
-      case DELETED -> "Deleted";
-      case CHANGED -> "Amended";
-    };
+  private static String unsaid(Difference difference) {
+    var did =
+        switch (difference.kind()) {
+          case INSERTED -> "inserted";
+          case DELETED -> "deleted";
+          case CHANGED -> "changed";
+        };
+    return "The data does not say which act " + did + " this.";
   }
 
   /**
@@ -290,8 +292,8 @@ public record SidenoteView(
   /**
    * Returns the date line of {@code corrigendum}. A corrigendum corrects its act from the start:
    * from the day the act applies, else from its entry into force. For example, "Corrigendum 4 to
-   * 2017/815 corrects 2017/815 from 1 June 2017 · first included in the version of 1 January 2026".
-   * The day is left out if the act has none.
+   * 2017/815 corrects 2017/815 from 1 June 2017 · first in the text of 1 January 2026". The day is
+   * left out if the act has none.
    */
   private static Applies corrects(Act act, Version from, Version to, ActIdentifier corrigendum) {
     var corrected = corrigendum.corrected().orElseThrow();
@@ -307,9 +309,7 @@ public record SidenoteView(
             + act.cited(corrected)
             + start.map(day -> " from " + Dates.inWords(day)).orElse("")
             + version(act, from, to, corrigendum)
-                .map(
-                    version ->
-                        " · first included in the version of " + Dates.inWords(version.date()))
+                .map(version -> " · first in the text of " + Dates.inWords(version.date()))
                 .orElse("");
     return new Applies(when, "", null, List.of(), "");
   }

@@ -1,17 +1,14 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TimelineView
 @param Frame frame
 @param String title
 @param MastheadView masthead
-@param TimelineView timeline
 @param PreparingView preparing
 <%-- Shows an act's page while the act is being prepared in its language. The page can be for a
      version or for a comparison. It has the act's head, with a mode switch that is not a link yet.
-     The timeline shows the state of each version's text. Then come the progress panel and what is
-     already known about the act.
-     The stream (hx-sse:connect) pushes the timeline, the progress and the steps when they change.
+     Then come the progress panel and what is already known about the act.
+     The stream (hx-sse:connect) pushes the progress and the steps when they change.
      htmx swaps each part by its id (hx-partial). When the stream sends done, htmx requests this
      address again with prepared set, so that the page's content fades in. It swaps that page in for
      this one, at the same address.
@@ -22,7 +19,6 @@
 @template.layout.page(frame = frame, title = title, head = @`<noscript><meta http-equiv="refresh" content="5"></noscript>`, content = @`
   <div id="page" hx-boost:inherited="true">
     @template.catalogue.masthead(masthead = masthead)
-    @template.catalogue.timeline(timeline = timeline)
     <div class="preparing" hx-get="${preparing.self()}" hx-trigger="done" hx-vals='{"prepared": true}' hx-target="#page" hx-select="#page" hx-swap="outerHTML">
       <section class="panel" aria-labelledby="preparing-head">
         <p id="told" class="visually-hidden" aria-live="polite">${preparing.progress().counts()}</p>

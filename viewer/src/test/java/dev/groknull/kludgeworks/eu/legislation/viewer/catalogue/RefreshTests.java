@@ -7,13 +7,11 @@ import static org.awaitility.Awaitility.await;
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ActChanged;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.ingest.infra.FormexFixturesConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Map;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -41,15 +39,12 @@ import org.springframework.transaction.support.TransactionTemplate;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
 @Import({TestcontainersConfiguration.class, OneActCellar.class, FormexFixturesConfiguration.class})
 class RefreshTests {
-  private static final TextId FROM = new TextId(1);
-  private static final TextId TO = new TextId(2);
   private static final String MARCH_2026 = "02015R1998-20260322";
 
   @Autowired Acts acts;
   @Autowired Texts texts;
   @Autowired Content content;
   @Autowired OneActCellar cellar;
-  @Autowired StepCounts stepCounts;
   @Autowired JdbcClient jdbc;
   @Autowired ApplicationEventPublisher events;
   @Autowired TransactionTemplate transactions;
@@ -61,9 +56,6 @@ class RefreshTests {
         .atMost(Duration.ofMinutes(2))
         .until(() -> texts.prepare(act, Language.ENG), preparation -> !preparation.preparing());
     assertThat(content.texts(List.of(MARCH_2026), Language.ENG)).containsKey(MARCH_2026);
-    // A step counted against the act as it was.
-    var counted = new StepCounts.Counted(Map.of(new ActIdentifier("32026R0449"), 6), 0, 0);
-    stepCounts.add(OneActCellar.CELEX, FROM, TO, counted);
 
     // Cellar lists one more version.
     cellar.act = OneActCellar.REFRESHED;
@@ -90,8 +82,6 @@ class RefreshTests {
       // Built, and failed: the converter's fixtures have no Formex of it for the version.
       assertThat(prepared.texts().get(march)).isInstanceOf(Text.Failed.class);
     }
-    // The step is to be counted again, against the act as it is now.
-    assertThat(stepCounts.find(OneActCellar.CELEX, FROM, TO)).isEmpty();
 
     // Cellar no longer lists the consolidation of 22 March 2026: one read notes it missing.
     cellar.act =

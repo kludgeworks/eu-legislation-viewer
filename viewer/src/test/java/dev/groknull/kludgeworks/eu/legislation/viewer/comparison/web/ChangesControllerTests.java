@@ -10,7 +10,6 @@ import static org.mockito.Mockito.when;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.StepCounts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -30,7 +29,6 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import org.jsoup.Jsoup;
 import org.junit.jupiter.api.BeforeEach;
@@ -58,7 +56,6 @@ class ChangesControllerTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";
   private static final String PAGE = ACT + "eng/compare?from=2026-03-22&to=2026-10-01";
   private static final String CHANGES = ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01";
-  private static final String ACTS = ACT + "eng/compare/acts?from=2026-03-22&to=2026-10-01";
   private static final String DIFFERENCE =
       ACT + "eng/compare/difference?from=2026-03-22&to=2026-10-01&eId=art_1";
 
@@ -69,7 +66,6 @@ class ChangesControllerTests {
   @MockitoBean Acts acts;
   @MockitoBean Texts texts;
   @MockitoBean Comparisons comparisons;
-  @MockitoBean StepCounts stepCounts;
   @MockitoBean Content content;
   @MockitoBean LegalRenderer html;
 
@@ -96,25 +92,12 @@ class ChangesControllerTests {
     // From after To
     assertThat(
             mvc.get()
-                .uri(ACT + "eng/compare/acts?from=2026-10-01&to=2026-03-22")
+                .uri(ACT + "eng/compare/changes?from=2026-10-01&to=2026-03-22")
                 .accept(MediaType.TEXT_HTML))
         .hasStatus(HttpStatus.NOT_FOUND);
     // An act that is not between the two versions
-    assertThat(mvc.get().uri(ACTS + "&act=32019R0103").accept(MediaType.TEXT_HTML))
+    assertThat(mvc.get().uri(CHANGES + "&act=32019R0103").accept(MediaType.TEXT_HTML))
         .hasStatus(HttpStatus.NOT_FOUND);
-  }
-
-  @Test
-  void linksTheChipsBackToThePageTheyArePartOf() throws UnsupportedEncodingException {
-    var result = mvc.get().uri(ACTS + "&view=whole").exchange();
-    assertThat(result).hasStatusOk();
-    var chips = Jsoup.parse(result.getResponse().getContentAsString());
-
-    var chip = Objects.requireNonNull(chips.selectFirst("#acts a.chip"));
-    assertThat(chip.select(".label").text()).isEqualTo("2026/449");
-    assertThat(chip.attr("href")).isEqualTo(PAGE + "&act=32026R0449&view=whole");
-    // Neither text is built, so nothing is counted.
-    assertThat(chip.select(".count")).isEmpty();
   }
 
   @Test

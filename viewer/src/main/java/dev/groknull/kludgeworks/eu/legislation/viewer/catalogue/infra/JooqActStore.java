@@ -9,7 +9,6 @@ import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.joo
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.ACT_TITLE;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.EXPRESSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.PREPARATION_STEP;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.TEXT_STEP_COUNT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.VERSION_FORMEX;
 import static org.jooq.impl.DSL.any;
@@ -62,8 +61,7 @@ import org.springframework.transaction.annotation.Transactional;
  * <ul>
  *   <li>{@link #add} writes all of it in one transaction, unless the act is already there.
  *   <li>{@link #update} writes it again when the viewer reads the act from Cellar again. It keeps
- *       the versions that Cellar no longer lists, marked missing, and drops the step counts of the
- *       act, which {@code StepCounts} keeps.
+ *       the versions that Cellar no longer lists, marked missing.
  *   <li>{@link #withdraw} deletes a version, with what the catalogue keeps of its texts.
  * </ul>
  */
@@ -208,8 +206,6 @@ class JooqActStore implements ActStore {
     db.deleteFrom(ACT_PUBLICATION_TITLE).where(ACT_PUBLICATION_TITLE.ACT.eq(act.id())).execute();
     db.deleteFrom(ACT_PUBLICATION).where(ACT_PUBLICATION.ACT.eq(act.id())).execute();
     publish(act);
-    // Drop the step counts of the act, because they were counted for the act as it was before.
-    db.deleteFrom(TEXT_STEP_COUNT).where(TEXT_STEP_COUNT.ACT.eq(act.id())).execute();
     db.batch(
             act.timeline().versions().stream()
                 .map(

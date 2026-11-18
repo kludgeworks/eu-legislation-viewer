@@ -57,9 +57,6 @@ public record ComparePage(
   /** The segment of the part with the changes, in the view that {@link #VIEW} asks for. */
   public static final String CHANGES = "changes";
 
-  /** The segment of the part with the acts between the two versions. */
-  public static final String ACTS = "acts";
-
   /** The segment of the part with the units of a fold that are the same in both versions. */
   public static final String SAME = "same";
 
@@ -89,9 +86,6 @@ public record ComparePage(
 
   /** The path of the part with the changes. */
   public static final String CHANGES_PATH = PATH + "/" + CHANGES;
-
-  /** The path of the part with the acts. */
-  public static final String ACTS_PATH = PATH + "/" + ACTS;
 
   /** The path of the part with the units of a fold. */
   public static final String SAME_PATH = PATH + "/" + SAME;
@@ -128,9 +122,6 @@ public record ComparePage(
    * side, with the value {@code true}.
    */
   public static final String SIDES = "sides";
-
-  /** The field that asks the acts for their counts, with the value {@code true}. */
-  public static final String COUNT = "count";
 
   /** The field of the eId of the first unit of a fold. */
   public static final String FIRST = "first";
@@ -268,16 +259,6 @@ public record ComparePage(
     var act = path.substring(0, path.lastIndexOf('/'));
     var language = act.substring(act.lastIndexOf('/') + 1);
     return act.substring(0, act.lastIndexOf('/')) + "/" + to + "/" + language + "#" + encode(eId);
-  }
-
-  /** Returns the address of the acts between the two versions, with the page's query. */
-  public String acts() {
-    return part(ACTS);
-  }
-
-  /** Returns the address of the acts between the two versions, with their counts. */
-  public String countedActs() {
-    return acts() + "&" + COUNT + "=true";
   }
 
   /**

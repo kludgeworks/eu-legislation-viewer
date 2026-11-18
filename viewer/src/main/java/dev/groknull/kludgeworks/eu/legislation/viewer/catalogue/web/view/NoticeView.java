@@ -18,7 +18,7 @@ public record NoticeView(String notice) {
   /** Returns the notice that a version that applies from {@code date} appeared. */
   public static NoticeView newerVersion(LocalDate date) {
     return new NoticeView(
-        "A newer version exists: it applies from "
+        "A newer text exists: it applies from "
             + Dates.inWords(date)
             + ". Load this page again to see it.");
   }

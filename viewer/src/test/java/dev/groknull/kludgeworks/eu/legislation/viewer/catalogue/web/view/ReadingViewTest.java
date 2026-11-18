@@ -28,7 +28,7 @@ class ReadingViewTest {
     assertThat(card.title()).isEqualTo("2015/1998 · the law on 14 Feb 2022");
     assertThat(card.day()).isEqualTo("14 February 2022");
     assertThat(card.version())
-        .isEqualTo("From the version of 31 December 2021 · applied until 28 February 2022");
+        .isEqualTo("From the text of 31 December 2021 · applied until 28 February 2022");
     assertThat(card.celex()).isEqualTo("02015R1998-20211231");
     assertThat(card.eurLex())
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02015R1998-20211231");
@@ -55,17 +55,15 @@ class ReadingViewTest {
     assertThat(card.status().size()).isZero();
     assertThat(card.action()).isEqualTo("/eli/reg_impl/2015/1998/eng");
     assertThat(card.on()).isEqualTo("2022-02-14");
-    assertThat(card.starts()).startsWith("2015-11-15 2016-02-29 ").endsWith(" 2026-10-01");
   }
 
   @Test
   void saysANewVersionStartsOnItsFirstDayAndCallsTheOneThatAppliesTodayCurrent() {
     assertThat(card("2026-10-01", "2026-10-01", TODAY).version())
-        .isEqualTo("A new version starts on this day · current version");
+        .isEqualTo("A new text starts on this day · current text");
     assertThat(card("2026-03-22", "2026-04-02", LocalDate.of(2026, 5, 1)).version())
         .isEqualTo(
-            "From the version of 22 March 2026 · applies until 30 September 2026 · current"
-                + " version");
+            "From the text of 22 March 2026 · applies until 30 September 2026 · current" + " text");
   }
 
   @Test
@@ -121,21 +119,21 @@ class ReadingViewTest {
     var published = card("2015-11-15", "2015-11-15", TODAY);
     assertThat(published.version())
         .isEqualTo(
-            "A new version starts on this day · in force from 15 November 2015 · applied 1"
+            "A new text starts on this day · in force from 15 November 2015 · applied 1"
                 + " February 2016 to 28 February 2016");
   }
 
   @Test
   void callsTheVersionAfterTheCurrentOneTheNextVersion() {
     assertThat(card("2026-10-01", "2026-10-01", LocalDate.of(2026, 5, 1)).version())
-        .isEqualTo("A new version starts on this day · next version");
+        .isEqualTo("A new text starts on this day · next text");
   }
 
   @Test
   void warnsOfALateTextOnlyOnTheDaysThatTheActAppliesUnincluded() {
     var late = card("2016-02-29", "2017-06-03", TODAY);
     assertThat(late.version())
-        .isEqualTo("From the version of 29 February 2016 · applied until 6 June 2017");
+        .isEqualTo("From the text of 29 February 2016 · applied until 6 June 2017");
     assertThat(late.status().day()).isEqualTo("3 June 2017");
     assertThat(late.status().lines())
         .containsExactly(
@@ -180,7 +178,6 @@ class ReadingViewTest {
     assertThat(before.made()).isNull();
     assertThat(before.celex()).isNull();
     assertThat(before.on()).isEqualTo("2015-01-01");
-    assertThat(before.starts()).startsWith("2015-11-15 ");
   }
 
   /** The card of the version of {@code version}, asked for on {@code asked}, in English. */

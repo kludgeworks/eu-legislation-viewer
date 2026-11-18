@@ -43,10 +43,10 @@ class FailureViewTest {
     assertThat(failure.actions())
         .extracting(Action::label, Action::href, Action::button)
         .containsExactly(
-            tuple("Read the version before (from 1 July 2021)", PAGES + "2021-07-01/eng", true),
-            tuple("Read the version after (from 1 March 2022)", PAGES + "2022-03-01/eng", true),
+            tuple("Read the text before (from 1 July 2021)", PAGES + "2021-07-01/eng", true),
+            tuple("Read the text after (from 1 March 2022)", PAGES + "2022-03-01/eng", true),
             tuple(
-                "Read this version on EUR-Lex",
+                "Read this text on EUR-Lex",
                 "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02015R1998-20211231",
                 false));
     assertThat(failure.reference()).isNull();
@@ -130,7 +130,7 @@ class FailureViewTest {
     assertThat(failure.actions().getFirst())
         .isEqualTo(
             new Action(
-                "Compare the versions on either side instead",
+                "Compare the texts on either side instead",
                 PAGES + "eng/compare?from=2021-07-01&to=2022-03-01",
                 true));
   }
@@ -154,7 +154,7 @@ class FailureViewTest {
     assertThat(failure.heading()).isEqualTo("This act couldn't be prepared");
     assertThat(failure.words())
         .isEqualTo(
-            "None of its 2 versions could be converted. The first failure: the Publications"
+            "None of its 2 texts could be converted. The first failure: the Publications"
                 + " Office has no Formex of it in this language.");
     // One of them can answer now, so a retry can help.
     assertThat(failure.retry()).isEqualTo(SELF);

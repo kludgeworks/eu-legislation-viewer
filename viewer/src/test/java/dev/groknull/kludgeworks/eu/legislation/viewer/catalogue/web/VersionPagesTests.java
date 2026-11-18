@@ -76,9 +76,6 @@ class VersionPagesTests {
       // what a boosted request swaps in.
       assertThat(first.head().html()).contains("<meta http-equiv=\"refresh\" content=\"5\">");
       assertThat(first.select("#page noscript")).isEmpty();
-      assertThat(first.select("#timeline .tick, #timeline .merged"))
-          .isNotEmpty()
-          .noneMatch(mark -> mark.is("a"));
     }
 
     var arrived =
@@ -125,8 +122,7 @@ class VersionPagesTests {
             tuple("/eli/reg_impl/2015/1998/2015-11-30/fra", "Read it in French"),
             tuple(
                 "/eli/reg_impl/2015/1998/2021-03-15/eng",
-                "Read the version after (from 15 March 2021)"));
-    assertThat(page.select("#timeline a.dot.failed[aria-current]")).hasSize(1);
+                "Read the text after (from 15 March 2021)"));
   }
 
   @Test
@@ -152,8 +148,8 @@ class VersionPagesTests {
                   .toList());
       if (!stands.isBlank()) {
         assertThat(stands)
-            .contains("<hx-partial hx-target=\"#timeline\"", "<hx-partial hx-target=\"#progress\"")
-            .containsAnyOf("versions ready", "Waiting its turn");
+            .contains("<hx-partial hx-target=\"#progress\"")
+            .containsAnyOf("texts ready", "Waiting its turn");
       }
       assertThat(page(PAGE).selectFirst(".outlined")).isNotNull();
     }
@@ -171,7 +167,7 @@ class VersionPagesTests {
             .body(String.class);
     var page = Jsoup.parse(Objects.requireNonNull(boosted)).getElementById("page");
     assertThat(page).isNotNull();
-    assertThat(page.select("header.mast, section.timeline, #text")).hasSize(3);
+    assertThat(page.select("header.mast, #text")).hasSize(2);
   }
 
   private Document page(String uri) {

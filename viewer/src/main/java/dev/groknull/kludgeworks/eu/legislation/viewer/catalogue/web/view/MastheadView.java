@@ -82,7 +82,7 @@ public record MastheadView(
         act,
         language,
         each -> Links.read(eli, asked, each),
-        each -> version.languages().contains(each) ? null : "Not for this version",
+        each -> version.languages().contains(each) ? null : "Not for this text",
         Links.history(eli, asked, language),
         null);
   }
