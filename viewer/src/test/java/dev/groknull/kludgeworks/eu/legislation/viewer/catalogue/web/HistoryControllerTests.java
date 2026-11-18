@@ -100,8 +100,8 @@ class HistoryControllerTests {
             "Not in force yet", "No dates", "No dates", "No dates", "In force", "In force");
     assertThat(page.select("table.acts tbody tr").get(4).select("td p").text())
         .isEqualTo(
-            "Article 3 of 2019/413 sets the day from which it applies. The viewer has no date for"
-                + " that day.");
+            "Article 3 of 2019/413 sets the day from which it applies. The data does not give a"
+                + " date for that day.");
     assertThat(page.select("table.acts tbody tr").get(5).select("td p").text())
         .isEqualTo(
             "Applies in parts from 1 February 2019 and 31 December 2021 · Article 2 of 2019/103");

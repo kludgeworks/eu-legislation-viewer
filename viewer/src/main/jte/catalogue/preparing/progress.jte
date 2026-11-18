@@ -19,7 +19,7 @@
       <rotating-aside class="aside" aria-hidden="true" asides="${progress.asides()}">${Progress.ASIDES.getFirst()}</rotating-aside>
     </div>
   @else
-    <ol class="stages">
+    <ol class="progress-steps">
       <li>
         <strong>Convert each version</strong>
         @for(var line : progress.running())

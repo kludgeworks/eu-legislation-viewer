@@ -236,7 +236,7 @@ public record HistoryView(
     var id = act.id();
     if (!act.appliesInPartOn(id, day)) {
       return (past ? " was in force." : " is in force.")
-          + " The viewer has no date for the day from which it applies.";
+          + " The data does not give the day from which it applies.";
     }
     var inPart = past ? " applied in part." : " applies in part.";
     var full = act.inFullAfter(day);

@@ -26,15 +26,15 @@ class StatesTest {
 
   @Test
   void saysThatTheDataHasNoDatesForAnActWithout() {
-    assertThat(States.unknown(EVENT, null)).isEqualTo("The viewer has no dates for this act.");
+    assertThat(States.unknown(EVENT, null)).isEqualTo("The data has no dates for this act.");
   }
 
   @Test
   void saysThatTheDataDoesNotGiveTheDayWhereNoClauseIsNamed() {
     assertThat(States.dates(EVENT, new Applying.SetBy(List.of(UNDATED))))
-        .isEqualTo("The viewer has no date for the day from which it applies.");
+        .isEqualTo("The data does not give the day from which it applies.");
     assertThat(States.unknown(EVENT, new Applying.InForce(LocalDate.of(2019, 3, 15), List.of())))
-        .isEqualTo("The viewer has no date for the day from which this applies.");
+        .isEqualTo("The data does not give the day from which this applies.");
   }
 
   @Test
@@ -53,7 +53,7 @@ class StatesTest {
             List.of());
     assertThat(States.unknown(PHASED, parts))
         .isEqualTo(
-            "The viewer cannot tell from which of these days this change applies: 1 August 2022 or"
+            "The data does not say from which of these days this change applies: 1 August 2022 or"
                 + " 15 October 2026");
   }
 }

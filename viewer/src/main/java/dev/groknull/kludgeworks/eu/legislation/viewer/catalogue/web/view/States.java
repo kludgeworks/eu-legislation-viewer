@@ -107,13 +107,13 @@ final class States {
    * <ul>
    *   <li>"From 1 June 2017 · Article 2 of 2017/815"
    *   <li>"Applies in parts from 1 August 2022 and 15 October 2026 · Article 2 of 2022/1190"
-   *   <li>"Article 6 of 2021/1133 sets the day from which it applies. The viewer has no date for
-   *       that day."
+   *   <li>"Article 6 of 2021/1133 sets the day from which it applies. The data does not give a date
+   *       for that day."
    * </ul>
    */
   static String dates(ActIdentifier act, @Nullable Applying applying) {
     if (applying == null) {
-      return "The viewer has no dates for this act.";
+      return "The data has no dates for this act.";
     }
     var clause = Wording.clause(applying.dates(), act);
     var cited = clause.isEmpty() ? "" : " · " + clause;
@@ -122,14 +122,15 @@ final class States {
       case Applying.InParts parts -> "Applies in parts from " + days(parts, " and ") + cited;
       case Applying.SetBy _ ->
           clause.isEmpty()
-              ? "The viewer has no date for the day from which it applies."
+              ? "The data does not give the day from which it applies."
               : clause
-                  + " sets the day from which it applies. The viewer has no date for that day.";
+                  + " sets the day from which it applies. The data does not give a date for that"
+                  + " day.";
       case Applying.InForce inForce ->
           "In force from "
               + Dates.inWords(inForce.day())
               + cited
-              + ". The viewer has no date for the day from which it applies.";
+              + ". The data does not give the day from which it applies.";
     };
   }
 
@@ -148,25 +149,25 @@ final class States {
    * and {@link #dates} says it one time for the act. For example:
    *
    * <ul>
-   *   <li>"The viewer cannot tell from which of these days this change applies: 1 August 2022 or 15
+   *   <li>"The data does not say from which of these days this change applies: 1 August 2022 or 15
    *       October 2026 · Article 2 of 2022/1190"
-   *   <li>"The viewer has no date for the day from which this applies."
+   *   <li>"The data does not give the day from which this applies."
    * </ul>
    */
   static @Nullable String unknown(ActIdentifier act, @Nullable Applying applying) {
     if (applying == null) {
-      return "The viewer has no dates for this act.";
+      return "The data has no dates for this act.";
     }
     return switch (applying) {
       case Applying.InParts parts -> {
         var clause = Wording.clause(parts.dates(), act);
-        yield "The viewer cannot tell from which of these days this change applies: "
+        yield "The data does not say from which of these days this change applies: "
             + days(parts, " or ")
             + (clause.isEmpty() ? "" : " · " + clause);
       }
       case Applying.SetBy _ -> null;
       case Applying.From _, Applying.InForce _ ->
-          "The viewer has no date for the day from which this applies.";
+          "The data does not give the day from which this applies.";
     };
   }
 

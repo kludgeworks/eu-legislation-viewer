@@ -1158,23 +1158,23 @@ form.find-act .ex a {
   }
 }
 
-.preparing .stages {
+.preparing .progress-steps {
   margin: 0;
   padding-left: 1.4em;
 }
 
-.preparing .stages p {
+.preparing .progress-steps p {
   margin: 4px 0;
   color: var(--muted);
   font-size: 14px;
 }
 
-.preparing .stages li + li {
+.preparing .progress-steps li + li {
   margin-top: 10px;
 }
 
 /* A step that is done, or still to come, is quieter than the step that runs. */
-.preparing .stages li.done strong::after {
+.preparing .progress-steps li.done strong::after {
   content: " ✓";
   color: var(--accent);
 }

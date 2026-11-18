@@ -18,7 +18,7 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Finds how one text differs from another, as the Changes view shows it. It works in four stages:
+ * Finds how one text differs from another, as the Changes view shows it. It works in four steps:
  *
  * <ol>
  *   <li>{@link Units} reads the units of each text.

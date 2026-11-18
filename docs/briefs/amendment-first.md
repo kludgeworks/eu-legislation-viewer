@@ -70,7 +70,7 @@ The primary task changes.
     > **On 1 August 2022.**
     > **2018/1862** applied in part. It applies in full from 7 March 2023 · Article 79(5).
     > **2022/1190** was in force and did not apply yet. It applies from 15 October 2026. 17 provisions, marked in the text.
-    > **2021/1133** was in force. Article 6 of 2021/1133 sets the day from which it applies. The viewer has no date for that day. 3 provisions, not in this text.
+    > **2021/1133** was in force. Article 6 of 2021/1133 sets the day from which it applies. The data does not give a date for that day. 3 provisions, not in this text.
 
 23. A line shows only for these acts:
     - the act itself, if it does not apply in full
@@ -134,7 +134,7 @@ The primary task changes.
 
 ## 5. Acceptance criteria
 
-1. **2018/1862, 1 August 2022, History.** The row of 2022/1190 says "In force, did not apply yet", with 15 October 2026 and the clause. The row of 2021/1133 says that Article 6 sets the day and that the viewer has no date for it.
+1. **2018/1862, 1 August 2022, History.** The row of 2022/1190 says "In force, did not apply yet", with 15 October 2026 and the clause. The row of 2021/1133 says that Article 6 sets the day and that the data does not give a date for it.
 2. **2018/1862, 1 August 2022, Read.** The page has the three status lines of step 22 and no other notice. Article 3, point 8 has an amber rule and names 2022/1190. A marker for Article 18a names 2021/1133. The outline has a dot on Article 3.
 3. **2016/679, from the search.** The result opens Read. The tab says "Amending acts (0) · Corrigenda (n)", with the number of corrigenda of 2016/679 in English. It is a link.
 4. **2016/679, 1 January 2017, Read.** One status line says that the act was in force and did not apply yet, and that it applies from 25 May 2018 · Article 99. The text has no rule along its length and no second note.

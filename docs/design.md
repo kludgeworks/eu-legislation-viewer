@@ -204,7 +204,7 @@ of the viewer before each path.
 | Case | Path |
 | --- | --- |
 | Home, with results | `/?q=aviation+security` |
-| History, with an act that applies in parts and a day that the viewer does not have | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
+| History, with an act that applies in parts and a day that the data does not give | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
 | History, two days | `/eli/reg_impl/2015/1998/eng/history?from=2020-07-02&to=2021-03-15` |
 | An amending act that applies in parts, from two days | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
 | An act that no act changed opens on Read | `/eli/reg/2016/679/eng` |
