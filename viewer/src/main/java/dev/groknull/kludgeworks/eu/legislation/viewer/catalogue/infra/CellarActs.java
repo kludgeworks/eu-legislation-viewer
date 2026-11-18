@@ -65,16 +65,9 @@ import org.springframework.stereotype.Component;
 @Component
 class CellarActs implements ActSource {
   private static final Logger LOG = LoggerFactory.getLogger(CellarActs.class);
-  private static final String ACT = Sparql.template(CellarActs.class, "act.rq");
   private static final String ACT_BY_ELI = Sparql.template(CellarActs.class, "act-by-eli.rq");
   private static final String ACT_BY_VERSION =
       Sparql.template(CellarActs.class, "act-by-version.rq");
-  private static final String VERSIONS = Sparql.template(CellarActs.class, "versions.rq");
-  private static final String LANGUAGES = Sparql.template(CellarActs.class, "languages.rq");
-  private static final String DATES = Sparql.template(CellarActs.class, "dates.rq");
-  private static final String TITLES = Sparql.template(CellarActs.class, "titles.rq");
-  private static final String AMENDMENTS = Sparql.template(CellarActs.class, "amendments.rq");
-  private static final String PUBLICATIONS = Sparql.template(CellarActs.class, "publications.rq");
 
   /** The date Cellar uses when it does not know a date. It occurs as an entry into force. */
   private static final LocalDate UNKNOWN = LocalDate.of(1001, 1, 1);
@@ -96,13 +89,13 @@ class CellarActs implements ActSource {
   public Optional<Act> find(ActIdentifier id) {
     var started = System.nanoTime();
     var values = Map.of("celex", id.celex());
-    var work = select(ACT, values);
-    var versions = select(VERSIONS, values);
-    var languages = select(LANGUAGES, values);
-    var dates = select(DATES, values);
-    var titles = select(TITLES, values);
-    var amendments = select(AMENDMENTS, values);
-    var publications = select(PUBLICATIONS, values);
+    var work = select(ActQuery.ACT, values);
+    var versions = select(ActQuery.VERSIONS, values);
+    var languages = select(ActQuery.LANGUAGES, values);
+    var dates = select(ActQuery.DATES, values);
+    var titles = select(ActQuery.TITLES, values);
+    var amendments = select(ActQuery.AMENDMENTS, values);
+    var publications = select(ActQuery.PUBLICATIONS, values);
     var act =
         act(
             id,
@@ -132,9 +125,22 @@ class CellarActs implements ActSource {
     return act;
   }
 
-  /** Fills the query {@code template} with {@code values} and sends it to Cellar. */
-  private CompletableFuture<SparqlResult> select(String template, Map<String, String> values) {
-    return sparql.answer(Sparql.fill(template, values));
+  private enum ActQuery {
+    ACT,
+    VERSIONS,
+    LANGUAGES,
+    DATES,
+    TITLES,
+    AMENDMENTS,
+    PUBLICATIONS;
+
+    final String templateName = name().toLowerCase(Locale.ROOT);
+    final String template = Sparql.template(CellarActs.class, templateName + ".rq");
+  }
+
+  /** Fills the query template with {@code values} and sends it to Cellar. */
+  private CompletableFuture<SparqlResult> select(ActQuery query, Map<String, String> values) {
+    return sparql.answer(Sparql.fill(query.template, values), query.templateName);
   }
 
   @Override
