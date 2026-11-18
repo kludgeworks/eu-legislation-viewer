@@ -141,6 +141,15 @@ public final class Links {
   }
 
   /**
+   * Returns the address of the history of the act {@code eli} with two days, in {@code language}.
+   * The history lists the amending acts between the days. For example, {@code
+   * /eli/reg/2018/1862/eng/history?from=2021-08-03&to=2022-08-01}.
+   */
+  public static String history(Eli eli, LocalDate from, LocalDate to, Language language) {
+    return act(eli, language) + "/history?from=" + from + "&to=" + to;
+  }
+
+  /**
    * Returns the address of what {@code amending} changed in the act {@code eli}, on {@code day}, in
    * {@code language}. Without a day, the page is for today. For example, {@code
    * /eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01}.

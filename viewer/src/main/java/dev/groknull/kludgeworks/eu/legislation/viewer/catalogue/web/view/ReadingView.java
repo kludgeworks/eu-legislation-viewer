@@ -43,8 +43,7 @@ import org.jspecify.annotations.Nullable;
  * @param celex the consolidated CELEX of the version. Null before the first version.
  * @param eurLex the address of the version on EUR-Lex, in the language of the page. Null before the
  *     first version.
- * @param action the address the date form goes to: the act in the language of the page
- * @param on the date that the form starts at. This is the day asked.
+ * @param picker the day control. With two days, it goes to the comparison of the act.
  */
 public record ReadingView(
     String title,
@@ -55,8 +54,7 @@ public record ReadingView(
     StatusView status,
     @Nullable String celex,
     @Nullable String eurLex,
-    String action,
-    String on) {
+    DayView picker) {
 
   /**
    * Returns the Reading card of the law on {@code asked}, which {@code version} of {@code act}
@@ -87,8 +85,14 @@ public record ReadingView(
         StatusView.of(act, asked, language, today, marks),
         version.celex(),
         version.eurLex(language).toString(),
-        Links.act(eli, language),
-        asked.toString());
+        DayView.of(
+            act,
+            asked,
+            null,
+            Links.act(eli, language),
+            Links.compare(eli, language),
+            null,
+            language));
   }
 
   /**
@@ -106,8 +110,14 @@ public record ReadingView(
         StatusView.none(asked),
         null,
         null,
-        Links.act(eli, language),
-        asked.toString());
+        DayView.of(
+            act,
+            asked,
+            null,
+            Links.act(eli, language),
+            Links.compare(eli, language),
+            null,
+            language));
   }
 
   /** Returns the page's title. For example, "2015/1998 · the law on 14 Feb 2022". */

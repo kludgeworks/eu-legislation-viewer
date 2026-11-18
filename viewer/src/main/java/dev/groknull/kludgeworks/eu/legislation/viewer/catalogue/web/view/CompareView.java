@@ -24,7 +24,7 @@ import org.jspecify.annotations.Nullable;
  * <ul>
  *   <li>a heading: "767/2008 on two days", or "Article 6(2) of 767/2008 on two days" where the page
  *       is limited to one provision
- *   <li>a form with the two days
+ *   <li>the day control, with the two days
  *   <li>one line with the amending acts between the two days: "From 2 August 2021 to 17 November
  *       2026. 2 amending acts changed Article 6(2) between these days: 2021/1152 and 2024/1356."
  *       Each act is a link to its page.
@@ -41,11 +41,8 @@ import org.jspecify.annotations.Nullable;
  *
  * @param heading the heading of the page
  * @param days the two days, in words: "From 2 August 2021 to 17 November 2026."
- * @param from the From day, as the form has it
- * @param to the To day, as the form has it
- * @param action the address the form goes to: the comparisons of the act in the language
- * @param unit the eId of the provision that the page is limited to, which the form keeps. Null for
- *     the whole act.
+ * @param picker the day control, with the two days. It keeps the provision that the page is limited
+ *     to. With one day, it goes to the history of the act.
  * @param said how many amending acts changed the act or the provision between the days. Null where
  *     a day is before the first text of the act.
  * @param acts the amending acts, in the order that the texts include them
@@ -57,10 +54,7 @@ import org.jspecify.annotations.Nullable;
 public record CompareView(
     String heading,
     String days,
-    String from,
-    String to,
-    String action,
-    @Nullable String unit,
+    DayView picker,
     @Nullable String said,
     List<Link> acts,
     @Nullable String whole,
@@ -106,10 +100,14 @@ public record CompareView(
     return new CompareView(
         heading(act, unit, name),
         days(fromDay, toDay),
-        fromDay.toString(),
-        toDay.toString(),
-        Links.compare(eli, language),
-        unit,
+        DayView.of(
+            act,
+            toDay,
+            fromDay,
+            Links.history(eli, null, language),
+            Links.compare(eli, language),
+            unit,
+            language),
         said(changed.size(), subject),
         links(act, changed, kept, language),
         unit == null ? null : Links.compare(eli, fromDay, toDay, language),
@@ -126,10 +124,14 @@ public record CompareView(
     return new CompareView(
         heading(act, null, null),
         days(fromDay, toDay),
-        fromDay.toString(),
-        toDay.toString(),
-        Links.compare(eli(act), language),
-        null,
+        DayView.of(
+            act,
+            toDay,
+            fromDay,
+            Links.history(eli(act), null, language),
+            Links.compare(eli(act), language),
+            null,
+            language),
         null,
         List.of(),
         null,

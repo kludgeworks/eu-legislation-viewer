@@ -118,11 +118,39 @@ class HistoryControllerTests {
   }
 
   @Test
-  void limitsTheListToAPeriodAndGivesAWayOut() {
-    var page = page(HISTORY + "?from=2019-01-01&to=2019-12-31");
-    assertThat(page.select("table.acts .cited").eachText()).containsExactly("2019/413", "2019/103");
-    assertThat(page.select("form.period a").text()).isEqualTo("Show all 6");
-    assertThat(page.select("form.period a").attr("href")).isEqualTo(HISTORY);
+  void listsTheAmendingActsBetweenTwoDaysAndOpensTheirComparison() {
+    // The later day comes first in the address: the page puts the days in order.
+    var page = page(HISTORY + "?from=2021-06-01&to=2019-01-01");
+    assertThat(page.title()).isEqualTo("2015/1998 · 1 Jan 2019 → 1 Jun 2021");
+    assertThat(page.select(".between p").text())
+        .isEqualTo(
+            "From 1 January 2019 to 1 June 2021. 5 amending acts changed 2015/1998 between these"
+                + " days.");
+    assertThat(page.select("table.acts .cited").eachText())
+        .containsExactly("2020/910", "2019/1583", "2021/255", "2019/413", "2019/103");
+    assertThat(page.select("table.acts thead th").get(1).text()).isEqualTo("State on 1 June 2021");
+    assertThat(page.select(".between a.button").attr("href"))
+        .isEqualTo("/eli/reg_impl/2015/1998/eng/compare?from=2019-01-01&to=2021-06-01");
+    assertThat(page.select(".history-head a").text()).isEqualTo("Show all 6");
+    assertThat(page.select(".history-head a").attr("href")).isEqualTo(HISTORY);
+    assertThat(page.select("day-picker input[type=date]").eachAttr("name"))
+        .containsExactly("from", "to");
+    assertThat(page.select("day-picker").attr("data-range")).isEqualTo(HISTORY);
+  }
+
+  @Test
+  void hasOneDateBoxAndTheDaysWithAChangeForTheCalendar() {
+    var page = page(HISTORY);
+    assertThat(page.select("day-picker input[type=date]").eachAttr("name")).containsExactly("on");
+    assertThat(page.select("day-picker").attr("data-single")).isEqualTo(HISTORY);
+    assertThat(page.select("day-picker").attr("data-changes"))
+        .isEqualTo(
+            "2019-02-01=A part of 2019/103 applies from this day;"
+                + "2021-12-31=A part of 2019/103 applies from this day;"
+                + "2026-03-22=A part of 2026/449 applies from this day;"
+                + "2026-10-01=A part of 2026/449 applies from this day");
+    // The page of an amending act takes one day only.
+    assertThat(page(HISTORY + "/32019R0413").select("day-picker").hasAttr("data-range")).isFalse();
   }
 
   @Test

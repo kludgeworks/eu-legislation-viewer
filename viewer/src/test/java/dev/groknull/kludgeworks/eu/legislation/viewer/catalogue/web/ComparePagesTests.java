@@ -58,7 +58,7 @@ class ComparePagesTests {
     assertThat(page.select("nav.mode a").eachAttr("href"))
         .containsExactly(ACT + "eng/history?on=2026-10-01", ACT + "2026-10-01/eng");
     assertThat(page.select("#compare-head").text()).isEqualTo("2015/1998 on two days");
-    assertThat(page.select("form.period input[type=date]").eachAttr("value"))
+    assertThat(page.select("day-picker input[type=date]").eachAttr("value"))
         .containsExactly("2026-03-22", "2026-10-01");
     assertThat(page.select("section.compare p").eachText().getFirst())
         .startsWith("From 22 March 2026 to 1 October 2026.")
@@ -87,7 +87,7 @@ class ComparePagesTests {
             PAGE + "&unit=anx",
             ACT + "eng/compare/place?from=2026-03-22&to=2026-10-01&eId=anx&sides=true");
     assertThat(page.select("#compare-head").text()).endsWith("of 2015/1998 on two days");
-    assertThat(page.select("form.period input[name=unit]").attr("value")).isEqualTo("anx");
+    assertThat(page.select("day-picker input[name=unit]").attr("value")).isEqualTo("anx");
     assertThat(page.select("section.compare a[data-view=changes]").attr("href")).isEqualTo(PAGE);
   }
 

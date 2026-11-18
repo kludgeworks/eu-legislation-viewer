@@ -38,8 +38,10 @@ class CompareViewTest {
 
     assertThat(view.heading()).isEqualTo("2015/1998 on two days");
     assertThat(view.days()).isEqualTo("From 15 March 2016 to 3 June 2017.");
-    assertThat(view.from()).isEqualTo("2016-03-15");
-    assertThat(view.to()).isEqualTo("2017-06-03");
+    assertThat(view.picker().from()).isEqualTo("2016-03-15");
+    assertThat(view.picker().on()).isEqualTo("2017-06-03");
+    assertThat(view.picker().single()).isEqualTo("/eli/reg_impl/2015/1998/eng/history");
+    assertThat(view.picker().range()).isEqualTo("/eli/reg_impl/2015/1998/eng/compare");
     assertThat(view.said()).isEqualTo("1 amending act changed 2015/1998 between these days:");
     assertThat(view.acts())
         .containsExactly(
@@ -73,7 +75,7 @@ class CompareViewTest {
             Map.of(LATEST, new TextMarks(UNITS, Map.of())));
 
     assertThat(view.heading()).endsWith(" of 2015/1998 on two days").doesNotContain("A provision");
-    assertThat(view.unit()).isEqualTo(POINT);
+    assertThat(view.picker().unit()).isEqualTo(POINT);
     assertThat(view.said()).contains(" amending acts changed ").endsWith(" between these days:");
     assertThat(view.acts()).extracting(CompareView.Link::act).contains("2017/815", "2019/103");
     assertThat(view.acts().getLast().after()).isEqualTo(".");

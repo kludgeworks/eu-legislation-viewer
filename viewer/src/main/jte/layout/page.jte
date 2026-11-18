@@ -30,6 +30,7 @@
   <script type="module" src="${frame.assets().margin()}"></script>
   <script type="module" src="${frame.assets().sidenotes()}"></script>
   <script type="module" src="${frame.assets().copy()}"></script>
+  <script type="module" src="${frame.assets().daypicker()}"></script>
   <script type="module" src="${frame.assets().loading()}"></script>
   ${head}
 </head>

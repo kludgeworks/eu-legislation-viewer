@@ -60,8 +60,9 @@ class HistoryController {
   }
 
   /**
-   * Returns the history of the act on the day {@code on}. If {@code from} or {@code to} is given,
-   * the history shows only the amending acts of that period.
+   * Returns the history of the act on the day {@code on}. If {@code from} and {@code to} are given,
+   * the history is of these two days: it shows the amending acts between them, and their state on
+   * the later day.
    */
   @GetMapping(path = HISTORY, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -80,12 +81,19 @@ class HistoryController {
     var language = Requests.language(code);
     var act = act(type, year, number);
     var today = Timeline.today(clock);
+    LocalDate first = null;
     var day = on != null ? on : today;
+    if (from != null && to != null && !from.equals(to)) {
+      first = from.isBefore(to) ? from : to;
+      day = from.isBefore(to) ? to : from;
+    }
+    Map<Version, TextMarks> marks =
+        first == null ? Map.of() : texts.marks(texts.preparation(act, language));
     return templates
         .catalogueHistory(
             Frame.of(request),
             MastheadView.history(act, day, language),
-            HistoryView.of(act, day, today, language, from, to))
+            HistoryView.of(act, day, today, language, first, marks))
         .render();
   }
 

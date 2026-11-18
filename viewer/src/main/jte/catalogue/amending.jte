@@ -31,11 +31,7 @@
       <p class="crumb"><a href="${amending.history()}">‹ History of ${amending.base()}</a></p>
       <h2 id="amending-head">${amending.heading()}</h2>
       <p class="subject">@if(amending.subject() != null)<span lang="${amending.subjectLanguage()}">${amending.subject()}</span> · @endif<a class="quiet" href="${amending.journalHref()}" rel="external">${amending.journal()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a></p>
-      <form class="on" method="get" action="${amending.action()}">
-        <label for="on">The law on</label>
-        <input id="on" name="on" type="date" value="${amending.on()}" required>
-        <button>Go</button>
-      </form>
+      @template.catalogue.day(day = amending.picker())
       <p class="status"><b>On ${amending.day()}.</b> ${amending.state()} ${amending.dates()}@if(amending.clause() != null) <a href="${amending.clause().href()}" rel="external">${amending.clause().label()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a>@endif</p>
       @if(!amending.groups().isEmpty())
         <nav class="groups" aria-label="Changes by the day from which they apply">

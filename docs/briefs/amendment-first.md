@@ -18,7 +18,7 @@ The primary task changes.
 | See what one amending act changed, and from when each change applies | The page of an amending act |
 | Read the law on a day | Read |
 | See which acts changed one provision | The history of a provision, on Read |
-| Compare the wording on two days | Compare, from a provision or from a period of the history |
+| Compare the wording on two days | Compare, from a provision or from the day control with two days |
 
 ## 2. Behaviour
 
@@ -48,8 +48,8 @@ The primary task changes.
    - the number of changed provisions, as a link to the page of that act
 9. The state of an amending act comes from the states of its changes.
 10. A row that applies in full has no amber.
-11. The reader can limit the list to a period. A link "Show all" stops the limit.
-12. With a period set, a link opens Compare for the first day and the last day of the period.
+11. The day control is one field. Its calendar opens on one day, and a switch lets the reader select two days. With two days, the list has the amending acts between the days, with their state on the later day. A link "Show all" goes back to one day.
+12. With two days, a button opens Compare for the two days. The acts between two days are the same on History and on Compare.
 13. A separate list below the history shows the corrigenda. Each line has the day of publication, the link to the Official Journal and the corrected provisions. The list shows only the corrigenda that change the language on the page.
 
 ### The page of an amending act
@@ -88,7 +88,7 @@ The primary task changes.
 
 ### Compare
 
-33. No tab opens Compare. The reader gets there from the history of a provision or from a period of the history.
+33. No tab opens Compare. The reader gets there from the history of a provision, or from the day control with two days, on History and on Read.
 34. The reader gives two days. The page shows those two days.
 35. One line gives the amending acts between the two days. Each act is a link.
 36. Each difference has a side note with the act and the date. A change that does not apply on the second day has the amber rule.
@@ -112,12 +112,12 @@ The primary task changes.
 | Inserted and deleted words | Differences | `--ins-…`, `--del-…` |
 | A correction by a corrigendum | Differences | `--corr-…` |
 | Links, the selected tab, the selected day of application | Words of the viewer | `--accent…` |
-| The period of the history, "Show all" | Words of the viewer | `--ink…`, `--line…` |
+| The day control, its calendar, "Show all" | Words of the viewer | `--ink…`, `--line…`, `--accent…` for the day of the page |
 
 - Amber has one meaning: this change does not apply on the day.
 - The marker means: the text does not show a change here. It is grey, not amber, because it has a different meaning.
 - Compare keeps its three views: Changes, Whole text and Synopsis.
-- The timeline and the calendar of versions go away. The day control replaces them.
+- The timeline and the calendar of versions go away. The day control replaces them. Its calendar marks the days with a change, not the days of the versions.
 - The link with the arrow "↑" goes away.
 - No link or button is in a `summary` element.
 
@@ -130,7 +130,7 @@ The primary task changes.
 | Ready | The page as in section 2. |
 | Missing | The act does not have the day in the language. The page offers a different language. |
 | Failed | What failed, and a link to EUR-Lex. |
-| Empty | History with no amending act: the reader does not land there (step 6). If the act has a corrigendum and the reader opens the tab: "No act changed 2016/679.", then the corrigenda. If it has none, the tab does not operate. A period with no act: "No amending act in this period", with "Show all". A day of application with no change: the page does not show a link for it. Compare with no difference: "The wording is the same on the two days." |
+| Empty | History with no amending act: the reader does not land there (step 6). If the act has a corrigendum and the reader opens the tab: "No act changed 2016/679.", then the corrigenda. If it has none, the tab does not operate. Two days with no act between them: "No amending act changed the act between these days.", with "Show all". A day of application with no change: the page does not show a link for it. Compare with no difference: "The wording is the same on the two days." |
 
 ## 5. Acceptance criteria
 
@@ -139,7 +139,7 @@ The primary task changes.
 3. **2016/679, from the search.** The result opens Read. The tab says "Amending acts (0) · Corrigenda (n)", with the number of corrigenda of 2016/679 in English. It is a link.
 4. **2016/679, 1 January 2017, Read.** One status line says that the act was in force and did not apply yet, and that it applies from 25 May 2018 · Article 99. The text has no rule along its length and no second note.
 5. **2013/36, the page of 2019/878.** The summary lists each day of application with a count. Each day is a link that limits the page.
-6. **767/2008, today, Read.** The history of Article 6(2) lists 2021/1152 and 2024/1356 and has the link to Compare. Compare shows the wording on the two days and the two steps.
+6. **767/2008, today, Read.** The history of Article 6(2) lists four acts and has the link to Compare: 2019/817 and 2021/1134 replaced the unit that holds the paragraph, and 2021/1152 and 2024/1356 replaced the paragraph. Compare shows the wording on the two days and the four steps.
 7. **2015/1998, 3 June 2017.** Read has a status line for 2017/815 that says "not in this text". Compare from 29 February 2016 to 3 June 2017 shows these two days. No page says "No version shows it".
 8. **2015/1998, the deletion by 2019/413 or 2021/255.** It shows on the page of each of the two acts under "By this act or by …". No page says "not known".
 9. **767/2008, Article 17a.** Until ISS-200 has a solution, the provision gives the message of step 32.
@@ -176,7 +176,7 @@ The primary task changes.
   - marker: the sign where the text does not show a change
 - **Principle 4.** Replace the examples "an act not known" and "Date not confirmed" with the messages of steps 31 and 32.
 - **Principle 6.** Replace with: "Show the state of the page. The reader must see the day, or the two days of a comparison."
-- **Principle 7.** Replace with: "Give a limit a way out. A period or a day of application that limits a page shows a link back to all."
+- **Principle 7.** Replace with: "Give a limit a way out. Two days or a day of application that limits a page shows a link back to all."
 - **New Convention.** The tense obeys the day.
 - **New Convention.** A corrigendum is not a row of the history. It has its own list.
 - **Colour.** Amber: "A change does not apply on the day." Delete "the text is not the law on the day, or an act filter is on". Grey: add "the marker where the text does not show a change".

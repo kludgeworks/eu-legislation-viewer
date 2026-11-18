@@ -91,7 +91,7 @@ class CompareControllerTests {
     var page = Jsoup.parse(result.getResponse().getContentAsString());
     assertThat(page.title()).isEqualTo("2015/1998 · 1 Jan 2000 → 1 Oct 2026");
     assertThat(page.select("#compare-head").text()).isEqualTo("2015/1998 on two days");
-    assertThat(page.select("form.period input[type=date]").eachAttr("value"))
+    assertThat(page.select("day-picker input[type=date]").eachAttr("value"))
         .containsExactly("2000-01-01", "2026-10-01");
     assertThat(page.select("section.compare p b").text())
         .isEqualTo("From 1 January 2000 to 1 October 2026.");

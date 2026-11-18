@@ -53,8 +53,10 @@ class ReadingViewTest {
             " · OJ L 21, 24.1.2019\nCorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
         .endsWith("(Text with EEA relevance) · OJ L 208, 1.7.2020");
     assertThat(card.status().size()).isZero();
-    assertThat(card.action()).isEqualTo("/eli/reg_impl/2015/1998/eng");
-    assertThat(card.on()).isEqualTo("2022-02-14");
+    assertThat(card.picker().single()).isEqualTo("/eli/reg_impl/2015/1998/eng");
+    assertThat(card.picker().range()).isEqualTo("/eli/reg_impl/2015/1998/eng/compare");
+    assertThat(card.picker().on()).isEqualTo("2022-02-14");
+    assertThat(card.picker().from()).isNull();
   }
 
   @Test
@@ -142,7 +144,7 @@ class ReadingViewTest {
                 "/eli/reg_impl/2015/1998/eng/history/32017R0815?on=2017-06-03",
                 "applied from 1 June 2017 · Article 2 of 2017/815. The text shows it from 7 June"
                     + " 2017."));
-    assertThat(late.on()).isEqualTo("2017-06-03");
+    assertThat(late.picker().on()).isEqualTo("2017-06-03");
     assertThat(card("2016-02-29", "2017-05-01", TODAY).status().size()).isZero();
     assertThat(card("2016-02-29", "2016-02-29", TODAY).status().size()).isZero();
   }
@@ -177,7 +179,7 @@ class ReadingViewTest {
     assertThat(before.version()).isNull();
     assertThat(before.made()).isNull();
     assertThat(before.celex()).isNull();
-    assertThat(before.on()).isEqualTo("2015-01-01");
+    assertThat(before.picker().on()).isEqualTo("2015-01-01");
   }
 
   /** The card of the version of {@code version}, asked for on {@code asked}, in English. */

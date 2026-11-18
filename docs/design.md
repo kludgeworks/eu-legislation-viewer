@@ -40,9 +40,9 @@ provision applies, and until when.
 | Read the law as it was on a day | Read |
 | See if the text of that day is the law on that day | Read: the status lines and the marks in the text |
 | See which acts changed one provision | Read: the history of a provision |
-| Compare the wording on two days | Compare, from the history of a provision or from a period of the History |
+| Compare the wording on two days | Compare, from the history of a provision, or from the day control with two days |
 | Find which act made a change, and from when it applies | Compare: the side note |
-| Go to a different day | The form with the date, on History and on Read |
+| Go to a different day, or to two days | The day control, on each page of an act |
 
 The amendment is the primary subject. A page shows what an amending act changed, and if each
 change applies on a day. An act that has amending acts opens on History. An act that no act changed
@@ -50,11 +50,25 @@ opens on Read. The tab of the History has the label "Amending acts" and their nu
 does not operate if the act has no amending act and no corrigendum. If the act has no amending act
 and has corrigenda, the tab gives their number also: "Amending acts (0) · Corrigenda (3)".
 
-No tab opens Compare. The reader gets there from the history of a provision on Read, or from a
-period of the History. Compare shows two days. It does not name versions, and it has no act filter.
+No tab opens Compare. The reader gets there from the history of a provision on Read, or from the
+day control with two days. Compare shows two days. It does not name versions, and it has no act
+filter.
 
-The pages have no timeline and no calendar. A form with a date sets the day. The form does not
-show which days have a change: the History lists them.
+The pages have no timeline. The day control sets the day of a page:
+
+- It is one field. The reader types a day in it, or opens its calendar.
+- The calendar opens on one day. On History, Read and Compare, a switch lets the reader select two
+  days. The page of an amending act takes one day only.
+- With two days, History lists the amending acts between the days, with their state on the later
+  day, and a button opens Compare. Read goes to Compare. The acts between two days are the same
+  on History and on Compare.
+- With one day on Compare, the page goes to History.
+- A dot marks each day from which an amending act, or a part of one, applies. The hover of the
+  day names its acts, three at most, and then says how many more there are.
+- The days between two days have no shade. The day of the page has a fill. The first of two days
+  has an outline.
+- "Previous change" and "Next change" move to the nearest day with a dot.
+- Without scripts, the control is a form with date boxes.
 
 ## Terms
 
@@ -106,8 +120,8 @@ are not in this rule: `versions` is the name of a resource of the API.
 5. **Give the source of each date.** Show the act, its Official Journal reference and the clause
    that sets the date.
 6. **Show the state of the page.** The reader must see the day, or the two days of a comparison.
-7. **Give a limit a way out.** A period, a day of application or a provision that limits a page shows a link
-   back to all.
+7. **Give a limit a way out.** Two days, a day of application or a provision that limits a page
+   shows a link back to all.
 8. **A view only formats.** Rules about the law are domain methods with tests. See the
    package documents of the view packages.
 9. **The tense obeys the day.** For today or a later day: "does not apply yet". For a day in the
@@ -191,7 +205,7 @@ of the viewer before each path.
 | --- | --- |
 | Home, with results | `/?q=aviation+security` |
 | History, with an act that applies in parts and a day that the viewer does not have | `/eli/reg/2018/1862/eng/history?on=2022-08-01` |
-| History, limited to a period | `/eli/reg_impl/2015/1998/eng/history?from=2019-01-01&to=2019-12-31` |
+| History, two days | `/eli/reg_impl/2015/1998/eng/history?from=2020-07-02&to=2021-03-15` |
 | An amending act that applies in parts, from two days | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
 | An act that no act changed opens on Read | `/eli/reg/2016/679/eng` |
 | Read the law on a day | `/eli/reg_impl/2015/1998/2021-12-31/eng` |

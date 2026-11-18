@@ -7,7 +7,8 @@
      act is a link to its page. Three lines show, and "Show all" opens the others.
      Then the version's consolidated CELEX, small, with a copy button.
      Before the act's first version there is no version: a dash stands for it, and the panel in
-     place of the text says why. A GET form with a date asks for the law on another day. --%>
+     place of the text says why. The day control (day.jte) asks for the law on another day. With two days, it
+     opens the comparison of the act. --%>
 <section class="selection" aria-label="Reading">
   <article class="card">
     <span class="card-kind">The law on</span>
@@ -37,10 +38,6 @@
     @if(reading.celex() != null)
       <copy-text class="card-celex" data-text="${reading.celex()}"><a class="mono quiet" href="${reading.eurLex()}" rel="external">${reading.celex()}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a> <button type="button" class="link">copy</button></copy-text>
     @endif
-    <form class="on" method="get" action="${reading.action()}">
-      <label for="on">The law on</label>
-      <input id="on" name="on" type="date" value="${reading.on()}" required>
-      <button>Go</button>
-    </form>
+    @template.catalogue.day(day = reading.picker())
   </article>
 </section>

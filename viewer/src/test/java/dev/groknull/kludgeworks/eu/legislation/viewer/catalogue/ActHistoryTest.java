@@ -114,11 +114,35 @@ class ActHistoryTest {
   }
 
   @Test
-  void aPeriodLimitsTheAmendingActsToTheOnesWhoseFirstDayIsInIt() {
-    assertThat(ACT.amendingActs(Language.ENG, LocalDate.of(2020, 1, 1), LocalDate.of(2021, 12, 31)))
-        .containsExactly(EVENT, UNDATED);
-    assertThat(ACT.amendingActs(Language.ENG, LocalDate.of(2022, 1, 1), null))
-        .containsExactly(PHASED);
+  void theAmendingActsBetweenTwoDaysAreTheOnesThatOnlyTheTextOfTheLaterDayIncludes() {
+    // No version includes EVENT. The text of 1 January 2020 includes SIMPLE.
+    assertThat(
+            ACT.amendingActsBetween(
+                LocalDate.of(2019, 1, 1), LocalDate.of(2022, 8, 1), Language.ENG, Map.of()))
+        .hasValue(List.of(PHASED, UNDATED, SIMPLE));
+    assertThat(
+            ACT.amendingActsBetween(
+                LocalDate.of(2020, 1, 1), LocalDate.of(2022, 8, 1), Language.ENG, Map.of()))
+        .hasValue(List.of(PHASED, UNDATED));
+  }
+
+  @Test
+  void aDayBeforeTheFirstVersionHasNoAmendingActsBetweenItAndALaterDay() {
+    assertThat(
+            ACT.amendingActsBetween(
+                LocalDate.of(2018, 1, 1), LocalDate.of(2022, 8, 1), Language.ENG, Map.of()))
+        .isEmpty();
+  }
+
+  @Test
+  void theDaysOfChangeAreTheDaysFromWhichAnAmendingActOrAPartOfItApplies() {
+    // EVENT applies from a day that Cellar does not know, and UNDATED has no dates: no day.
+    // POLISH does not change the English text.
+    var days = ACT.changeDays(Language.ENG);
+    assertThat(days.keySet()).containsExactly(LocalDate.of(2019, 6, 11), IN_PART, IN_FULL);
+    assertThat(days.get(LocalDate.of(2019, 6, 11))).containsExactly(SIMPLE);
+    assertThat(days.get(IN_PART)).containsExactly(PHASED);
+    assertThat(days.get(IN_FULL)).containsExactly(PHASED);
   }
 
   @Test

@@ -15,6 +15,8 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.SequencedSet;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import org.jmolecules.ddd.annotation.AggregateRoot;
@@ -505,20 +507,66 @@ public record Act(
   }
 
   /**
-   * Returns the acts of {@link #amendingActs(Language)} whose first day, {@link #firstDay}, is in a
-   * period. The period starts on {@code from} and ends on {@code to}. A null end is open. An act
-   * without a first day is in no period.
+   * Returns the amending acts between two days, newest first. They are the acts of {@link
+   * #amendingActs(Language)} that the text of {@code to} includes and the text of {@code from} does
+   * not: {@link #textOn} gives the two texts, and {@link #integratedBetween} the acts. A comparison
+   * of the two days shows the changes of these acts, so the history of two days and the comparison
+   * name the same acts.
+   *
+   * <p>Returns empty if one of the days is before the first version of the act.
+   *
+   * @param texts the marks of the texts in {@code language} that are built, as {@link #textOn}
+   *     takes them
    */
-  public List<ActIdentifier> amendingActs(
-      Language language, @Nullable LocalDate from, @Nullable LocalDate to) {
-    return amendingActs(language).stream()
-        .filter(
-            each ->
-                firstDay(each, language)
-                    .filter(first -> from == null || !first.isBefore(from))
-                    .filter(first -> to == null || !first.isAfter(to))
-                    .isPresent())
-        .toList();
+  public Optional<List<ActIdentifier>> amendingActsBetween(
+      LocalDate from, LocalDate to, Language language, Map<Version, TextMarks> texts) {
+    var earlier = textOn(from, language, texts);
+    var later = textOn(to, language, texts);
+    if (earlier.isEmpty() || later.isEmpty()) {
+      return Optional.empty();
+    }
+    var between = integratedBetween(earlier.get(), later.get());
+    return Optional.of(amendingActs(language).stream().filter(between::contains).toList());
+  }
+
+  /**
+   * Returns the days on which an amending act changes this act, in order, each with its acts. A
+   * calendar marks these days.
+   *
+   * <ul>
+   *   <li>An act that applies from one day ({@link #applying}) changes the act on that day.
+   *   <li>An act that applies in parts changes it on each day from which a part applies. Its entry
+   *       into force is such a day only if it is the first day from which a part applies.
+   *   <li>An act that is in force, where Cellar does not tell from when it applies, has the day of
+   *       its entry into force.
+   *   <li>An act that applies from a day that Cellar does not know has no day. An act without dates
+   *       has none.
+   * </ul>
+   */
+  public SortedMap<LocalDate, List<ActIdentifier>> changeDays(Language language) {
+    var days = new TreeMap<LocalDate, List<ActIdentifier>>();
+    for (var each : amendingActs(language).reversed()) {
+      var own =
+          applying(each, Set.of())
+              .map(
+                  applying ->
+                      switch (applying) {
+                        case Applying.From from -> List.of(from.day());
+                        case Applying.InParts parts ->
+                            parts.starts().stream()
+                                .filter(
+                                    start ->
+                                        !start.entryIntoForce()
+                                            || start.day().equals(parts.first()))
+                                .map(Applying.Start::day)
+                                .toList();
+                        case Applying.InForce inForce -> List.of(inForce.day());
+                        case Applying.SetBy _ -> List.<LocalDate>of();
+                      })
+              .orElseGet(List::of);
+      own.forEach(day -> days.computeIfAbsent(day, _ -> new ArrayList<>()).add(each));
+    }
+    return days;
   }
 
   /**

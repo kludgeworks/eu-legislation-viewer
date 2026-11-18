@@ -7,50 +7,60 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The history of an act on a day: its own state, its amending acts with the state of each, and its
- * corrigenda. The rules are the act's: {@link Act#amendingActs}, {@link Act#standingOn} and {@link
- * Act#corrigendaOf}. This view puts them into words.
+ * The history of an act on a day, or between two days: its own state, its amending acts with the
+ * state of each, and its corrigenda. The rules are the act's: {@link Act#amendingActs}, {@link
+ * Act#amendingActsBetween}, {@link Act#standingOn} and {@link Act#corrigendaOf}. This view puts
+ * them into words.
+ *
+ * <p>With one day, the rows are all the amending acts. With two days, the rows are the amending
+ * acts between the days, and the state of each is its state on the second day. The comparison of
+ * the two days shows the changes of the same acts.
  *
  * @param title the title of the page
- * @param day the day, in words
- * @param on the day, as the date box has it
- * @param action the address that the date form and the period form send to
- * @param today the address of the history for today. Null if the day is today.
- * @param state the state of the act itself on the day, with the date and the clause
+ * @param day the day, in words. With two days, it is the second day.
+ * @param picker the day control. With two days, it goes to this page.
+ * @param today the address of the history for today. Null if the page is for today only.
+ * @param state the state of the act itself on the day, with the date and the clause. Null with two
+ *     days.
  * @param read the address of the law on the day
+ * @param between the two days in words, and how many amending acts changed the act between them.
+ *     For example, "From 2 July 2020 to 15 March 2021." and "2 amending acts changed 2015/1998
+ *     between these days." Null with one day.
+ * @param compare the address of the comparison of the law on the two days. Null with one day, and
+ *     where a day is before the first text of the act.
+ * @param heading the heading of the rows
  * @param rows one row for each amending act that is shown, newest first
  * @param all how many amending acts the act has
- * @param from the first day of the period that limits the rows, as the date box has it, or null
- * @param to the last day of the period, or null
- * @param showAll the address of the history without the period. Null if no period is set.
- * @param compare the address of the comparison of the law on the two days of the period. Null if
- *     the period does not have two days.
+ * @param showAll the address of the history with all the amending acts, on the second day. Null
+ *     with one day.
  * @param corrigenda the corrigenda of the act that correct the text in the language
  */
 public record HistoryView(
     String title,
     String day,
-    String on,
-    String action,
+    DayView picker,
     @Nullable String today,
-    String state,
+    @Nullable String state,
     String read,
+    @Nullable Between between,
+    @Nullable String compare,
+    String heading,
     List<Row> rows,
     int all,
-    @Nullable String from,
-    @Nullable String to,
     @Nullable String showAll,
-    @Nullable String compare,
     List<Corrigendum> corrigenda) {
 
   public HistoryView {
@@ -59,42 +69,81 @@ public record HistoryView(
   }
 
   /**
-   * Returns the history of {@code act} on {@code day}, in {@code language}. If {@code from} or
-   * {@code to} is given, the rows are the amending acts of that period, as {@link
-   * Act#amendingActs(Language, LocalDate, LocalDate)} gives them.
+   * The two days of a history, in words.
+   *
+   * @param days the days: "From 2 July 2020 to 15 March 2021."
+   * @param said how many amending acts changed the act between them, or that the act has no text on
+   *     the first day
+   */
+  public record Between(String days, String said) {}
+
+  /**
+   * Returns the history of {@code act} on {@code day}, in {@code language}. If {@code first} is
+   * given, the history is of the two days {@code first} and {@code day}: the rows are the amending
+   * acts between them, as {@link Act#amendingActsBetween} gives them.
+   *
+   * @param first the first of two days, before {@code day}. Null for one day.
+   * @param marks the marks of the texts of the act in {@code language} that are built. They tell
+   *     which text shows the law on a day. They are used with two days only.
    */
   public static HistoryView of(
       Act act,
       LocalDate day,
       LocalDate today,
       Language language,
-      @Nullable LocalDate from,
-      @Nullable LocalDate to) {
+      @Nullable LocalDate first,
+      Map<Version, TextMarks> marks) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);
     var kept = day.equals(today) ? null : day;
     var amending = act.amendingActs(language);
-    var limited = from != null || to != null;
-    var rows =
-        (limited ? act.amendingActs(language, from, to) : amending)
-            .stream().map(each -> row(act, eli, each, day, kept, past, language)).toList();
+    var cited = act.cited(act.id());
+    var found = first == null ? null : act.amendingActsBetween(first, day, language, marks);
+    var shown = found == null ? amending : found.orElseGet(List::of);
     return new HistoryView(
-        act.cited(act.id()) + " · history on " + Dates.inShort(day),
+        cited
+            + (first == null
+                ? " · history on " + Dates.inShort(day)
+                : " · " + Dates.inShort(first) + " → " + Dates.inShort(day)),
         Dates.inWords(day),
-        day.toString(),
-        Links.history(eli, null, language),
-        kept == null ? null : Links.history(eli, null, language),
-        own(act, day, past),
+        DayView.of(
+            act,
+            day,
+            first,
+            Links.history(eli, null, language),
+            Links.history(eli, null, language),
+            null,
+            language),
+        kept == null && first == null ? null : Links.history(eli, null, language),
+        first == null ? own(act, day, past) : null,
         Links.read(eli, day, language),
-        rows,
+        first == null || found == null
+            ? null
+            : new Between(
+                "From " + Dates.inWords(first) + " to " + Dates.inWords(day) + ".",
+                found
+                    .map(acts -> said(acts.size(), cited))
+                    .orElseGet(() -> cited + " has no text on " + Dates.inWords(first) + ".")),
+        first == null || found == null || found.isEmpty()
+            ? null
+            : Links.compare(eli, first, day, language),
+        first == null
+            ? "Amending acts, newest first"
+            : "Amending acts between these days, newest first",
+        shown.stream().map(each -> row(act, eli, each, day, kept, past, language)).toList(),
         amending.size(),
-        from == null ? null : from.toString(),
-        to == null ? null : to.toString(),
-        limited ? Links.history(eli, kept, language) : null,
-        from != null && to != null ? Links.compare(eli, from, to, language) : null,
+        first == null ? null : Links.history(eli, kept, language),
         act.corrigendaOf(act.id(), language).stream()
             .map(each -> Corrigendum.of(act, each, language))
             .toList());
+  }
+
+  private static String said(int acts, String cited) {
+    return switch (acts) {
+      case 0 -> "No amending act changed " + cited + " between these days.";
+      case 1 -> "1 amending act changed " + cited + " between these days.";
+      default -> acts + " amending acts changed " + cited + " between these days.";
+    };
   }
 
   private static Row row(

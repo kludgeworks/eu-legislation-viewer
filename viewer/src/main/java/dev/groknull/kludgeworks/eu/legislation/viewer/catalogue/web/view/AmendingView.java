@@ -34,8 +34,7 @@ import org.jspecify.annotations.Nullable;
  * @param journalHref the address of the amending act on EUR-Lex
  * @param journal its Official Journal reference
  * @param day the day, in words
- * @param on the day, as the date box has it
- * @param action the address that the date form sends to
+ * @param picker the day control. The page takes one day only.
  * @param history the address of the history of the act, on the day
  * @param base how the amended act is cited
  * @param state how the amending act stands on the day, as sentences
@@ -64,8 +63,7 @@ public record AmendingView(
     String journalHref,
     String journal,
     String day,
-    String on,
-    String action,
+    DayView picker,
     String history,
     String base,
     String state,
@@ -135,8 +133,8 @@ public record AmendingView(
         act.eurLex(amending, language).toString(),
         HistoryView.journal(act, amending),
         Dates.inWords(day),
-        day.toString(),
-        Links.amending(eli, amending, null, language),
+        DayView.of(
+            act, day, null, Links.amending(eli, amending, null, language), null, null, language),
         Links.history(eli, kept, language),
         act.cited(act.id()),
         cited
