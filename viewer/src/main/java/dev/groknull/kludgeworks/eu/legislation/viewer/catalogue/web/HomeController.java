@@ -37,19 +37,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  * The home page. It has one box, Find an act.
  *
  * <ul>
- *   <li>A CELEX number or an ELI goes directly to the comparison page of the act. The comparison is
- *       the first page of an act that a search opens.
- *   <li>Title words list the acts that have the words in their English title. The list shows one
- *       page at a time, with the closest match first. The link of a filter limits the list to a
- *       kind of act. For example, {@code ?type=regulation}.
+ *   <li>A CELEX number or ELI opens the act. The local index can also identify an act by a curated
+ *       name or an unambiguous citation.
+ *   <li>Other words list matching acts, one page at a time. A filter limits results to a kind of
+ *       act, for example {@code ?type=regulation}.
  * </ul>
  *
  * <p>The search is kept in the {@link Frame#SEARCH} cookie for a while. The site bar uses it to
  * link back to the results.
- *
- * <p>Search is a placeholder for now. Each search is logged once, at INFO. The log line has what
- * the reader typed, how it was read, the kind, the page, what it found and how long it took. Real
- * use can then show how to change the ranking, the languages and the act numbers that readers type.
  */
 @Controller
 class HomeController {
@@ -114,7 +109,7 @@ class HomeController {
       return page(frame, "Amendment viewer", HomeView.empty());
     }
     var started = System.nanoTime();
-    var straight = straight(words, frame, started, null);
+    var straight = straight(words, frame, started, null, kind);
     if (straight.isPresent()) {
       return straight.get();
     }
@@ -166,7 +161,7 @@ class HomeController {
   @GetMapping(path = LOOK_UP, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> lookUp(@RequestParam String q, HttpServletRequest request) {
     var words = q.strip();
-    return straight(words, Frame.of(request), System.nanoTime(), request)
+    return straight(words, Frame.of(request), System.nanoTime(), request, Search.Kind.ALL)
         .orElseGet(
             () ->
                 ResponseEntity.status(HttpStatus.SEE_OTHER)
@@ -175,16 +170,24 @@ class HomeController {
   }
 
   /**
-   * Returns the response for {@code words} if they are a CELEX number or an ELI. That is a redirect
-   * to the comparison of the act, or the home page saying that no act has it. If the catalogue does
-   * not have the act yet and {@code lookingUp} is null, it is the home page that says it looks the
-   * act up. Returns none if the words are title words.
+   * Returns the response when {@code words} identify one act. That is a redirect to the comparison
+   * of the act, or the home page saying that no act has it. If the catalogue does not have the act
+   * yet and {@code lookingUp} is null, it is the home page that says it looks the act up. Returns
+   * none if the words are title words.
    *
    * @param lookingUp the request to {@link #LOOK_UP}, or null for a search
    */
   private Optional<ResponseEntity<String>> straight(
-      String words, Frame frame, long started, @Nullable HttpServletRequest lookingUp) {
+      String words,
+      Frame frame,
+      long started,
+      @Nullable HttpServletRequest lookingUp,
+      Search.Kind kind) {
     var named = Named.of(words);
+    if (named.isEmpty() && kind == Search.Kind.ALL) {
+      named =
+          search.identified(words).map(id -> new Named("indexed identifier", id.cited(), id, null));
+    }
     if (named.isEmpty()) {
       return Optional.empty();
     }

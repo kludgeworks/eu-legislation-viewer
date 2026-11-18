@@ -11,12 +11,17 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Acts by the words of their title. The search runs on Cellar, in English, as one query when a
- * reader asks. The closest match comes first. It finds only regulations, directives and decisions.
- * These are the acts whose versions, or whose changes, a reader compares.
+ * Acts by the words of their title. Search uses the local English index after its first successful
+ * build. The closest match comes first. It finds only regulations, directives and decisions. These
+ * are the acts whose versions, or whose changes, a reader compares.
  */
 @Repository
 public interface Search {
+  /** Returns the one act identified by a curated name or unambiguous natural number. */
+  default Optional<ActIdentifier> identified(String typed) {
+    return Optional.empty();
+  }
+
   /** Returns a page of the acts that match {@code query}. */
   Found matching(Query query);
 
@@ -65,10 +70,17 @@ public interface Search {
    *     letters and digits.
    * @param kind the kind of act
    * @param offset how many matches come before the page
+   * @param terms normalized words for Postgres, retaining slashes in citations
+   * @param typedLength length of the trimmed input, including punctuation, for the typo lookup
+   *     budget
    * @param size the most matches that the page has
    */
   @ValueObject
-  record Query(List<String> words, Kind kind, int offset, int size) {
+  record Query(List<String> words, Kind kind, int offset, int size, String terms, int typedLength) {
+    public Query(List<String> words, Kind kind, int offset, int size) {
+      this(words, kind, offset, size, String.join(" ", words), String.join(" ", words).length());
+    }
+
     /** Matches a word of letters and digits, in any script. */
     private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]+");
 
@@ -90,13 +102,17 @@ public interface Search {
      * punctuation or a hyphen, is left out. Returns empty if the text has no words.
      */
     public static Optional<Query> of(String text, Kind kind, int offset, int size) {
-      var words =
-          WORD.matcher(text.toLowerCase(Locale.ROOT))
-              .results()
-              .limit(MOST_WORDS)
-              .map(MatchResult::group)
-              .toList();
-      return words.isEmpty() ? Optional.empty() : Optional.of(new Query(words, kind, offset, size));
+      var lower = text.strip().toLowerCase(Locale.ROOT);
+      var tokens = WORD.matcher(lower).results().limit(MOST_WORDS).toList();
+      if (tokens.isEmpty()) {
+        return Optional.empty();
+      }
+      var words = tokens.stream().map(MatchResult::group).toList();
+      var terms =
+          lower
+              .substring(tokens.getFirst().start(), tokens.getLast().end())
+              .replaceAll("[^\\p{L}\\p{N}/]+", " ");
+      return Optional.of(new Query(words, kind, offset, size, terms, text.strip().length()));
     }
   }
 

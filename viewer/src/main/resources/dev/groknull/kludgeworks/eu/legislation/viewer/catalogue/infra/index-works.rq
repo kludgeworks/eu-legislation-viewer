@@ -1,0 +1,10 @@
+# SPDX-License-Identifier: MIT
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+SELECT ?celex ?eli ?type ?date ?inForce WHERE {
+  ?w cdm:resource_legal_id_celex ?celex .
+  FILTER(REGEX(STR(?celex), '{{pattern}}'))
+  OPTIONAL { ?w cdm:resource_legal_eli ?eli }
+  OPTIONAL { ?w cdm:work_has_resource-type ?type }
+  OPTIONAL { ?w cdm:work_date_document ?date }
+  OPTIONAL { ?w cdm:resource_legal_in-force ?inForce }
+}

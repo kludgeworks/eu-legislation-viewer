@@ -1,0 +1,11 @@
+# SPDX-License-Identifier: MIT
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+SELECT ?celex ?short ?alt WHERE {
+  ?w cdm:resource_legal_id_celex ?celex .
+  FILTER(REGEX(STR(?celex), '^3[0-9]{4}[RLD][0-9]{4}$'))
+  ?e cdm:expression_belongs_to_work ?w ;
+     cdm:expression_uses_language <http://publications.europa.eu/resource/authority/language/ENG> .
+  { ?e cdm:expression_title_short ?short }
+  UNION
+  { ?e cdm:expression_title_alternative ?alt }
+}

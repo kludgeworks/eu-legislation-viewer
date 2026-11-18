@@ -1,0 +1,16 @@
+# SPDX-License-Identifier: MIT
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+SELECT ?concept ?label ?alt WHERE {
+  VALUES ?scheme {
+    <http://eurovoc.europa.eu>
+    <http://publications.europa.eu/resource/authority/subject-matter>
+    <http://publications.europa.eu/resource/authority/dir-eu-legal-act>
+  }
+  ?concept skos:inScheme ?scheme ;
+           skos:prefLabel ?label .
+  FILTER (LANG(?label) = 'en')
+  OPTIONAL {
+    ?concept skos:altLabel ?alt .
+    FILTER (LANG(?alt) = 'en')
+  }
+}

@@ -1,0 +1,7 @@
+# SPDX-License-Identifier: MIT
+PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
+SELECT ?celex (COUNT(DISTINCT ?citing) AS ?citations) WHERE {
+  ?w cdm:resource_legal_id_celex ?celex .
+  FILTER(REGEX(STR(?celex), '^3[0-9]{4}[RLD][0-9]{4}$'))
+  ?citing cdm:work_cites_work ?w .
+} GROUP BY ?celex

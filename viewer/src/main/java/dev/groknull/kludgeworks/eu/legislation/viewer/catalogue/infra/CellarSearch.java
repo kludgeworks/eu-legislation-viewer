@@ -18,14 +18,12 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 
 /**
  * Finds acts by the words of their English title. Cellar's full-text index finds and ranks them,
  * with the query {@code search.rq} kept next to this class. It asks for one page of acts and one
  * more act. The extra act tells whether there are more acts.
  */
-@Component
 class CellarSearch implements Search {
   private static final Logger LOG = LoggerFactory.getLogger(CellarSearch.class);
   private static final String SEARCH = Sparql.template(CellarSearch.class, "search.rq");

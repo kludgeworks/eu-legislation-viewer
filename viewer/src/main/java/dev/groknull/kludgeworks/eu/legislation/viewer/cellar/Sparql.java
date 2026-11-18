@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.cellar;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UncheckedIOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -101,6 +102,37 @@ public class Sparql {
     } catch (CompletionException e) {
       throw e.getCause() instanceof RuntimeException cause ? cause : e;
     }
+  }
+
+  /** Streams a complete bulk answer into the index builder without materialising it in the heap. */
+  public void copyCsv(String query, CsvSink sink) {
+    client
+        .post()
+        .uri(properties.sparqlEndpoint())
+        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+        .accept(MediaType.parseMediaType("text/csv"))
+        .body("query=" + URLEncoder.encode(query, StandardCharsets.UTF_8))
+        .exchange(
+            (request, response) -> {
+              var headers = response.getHeaders();
+              if (response.getStatusCode().value() != 200
+                  || headers.containsHeader("X-SQL-State")
+                  || headers.containsHeader("X-SPARQL-MaxRows")
+                  || headers.containsHeader("X-SQL-Message")) {
+                throw new CellarException(
+                    "Incomplete bulk answer from Cellar: " + response.getStatusCode());
+              }
+              long count = sink.copy(response.getBody());
+              if (count >= properties.maxRows()) {
+                throw new CellarException("Bulk answer reached Cellar's row limit");
+              }
+              return count;
+            });
+  }
+
+  @FunctionalInterface
+  public interface CsvSink {
+    long copy(InputStream input) throws IOException;
   }
 
   private SparqlResult ask(String query, @Nullable String templateName) {

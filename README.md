@@ -31,6 +31,13 @@ flowchart LR
 An act's text is fetched from Cellar the first time someone asks for it, converted from Formex, and stored as a tree that
 every version shares, so an unchanged provision is stored once and two versions compare quickly.
 
+### Act search
+
+Set `VIEWER_CATALOGUE_SEARCH_ENABLED=true` on a viewer instance to build the shared Postgres search index.
+The first build starts after ten seconds. The viewer checks hourly for the first successful build after 02:00 UTC.
+It issues 39 sequential Cellar queries per build. All instances search the previous complete index during a refresh
+and use Cellar until the first index is available. Catalogue maintainers review exact names and acronyms in SQL migrations.
+
 ## Develop
 
 Java 25, Spring Boot and Spring Modulith, Postgres, htmx; built with Bazel. Tools come from [mise](https://mise.jdx.dev).

@@ -72,6 +72,16 @@ class HomeControllerTests {
   }
 
   @Test
+  void opensAnIndexedNameAndRespectsTheKindOnAFilteredSearch() {
+    when(search.identified("GDPR")).thenReturn(Optional.of(OneActCellar.CELEX));
+    assertThat(mvc.get().uri("/?q=GDPR"))
+        .hasStatus(HttpStatus.SEE_OTHER)
+        .headers()
+        .hasValue(HttpHeaders.LOCATION, READ);
+    assertThat(mvc.get().uri("/?q=GDPR&type=directive")).hasStatusOk();
+  }
+
+  @Test
   void goesStraightToTheActForItsEli() {
     assertThat(mvc.get().uri("/?q=http://data.europa.eu/eli/reg_impl/2015/1998/oj"))
         .hasStatus(HttpStatus.SEE_OTHER)

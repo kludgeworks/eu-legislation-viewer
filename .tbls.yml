@@ -26,6 +26,11 @@ viewpoints:
       - act_publication
       - act_publication_title
       - act_title
+      - catalogue_search_alias
+      - catalogue_search_amendment
+      - catalogue_search_expression
+      - catalogue_search_rebuild
+      - catalogue_search_work
       - change_scan
       - expression
       - preparation

@@ -110,6 +110,9 @@ gg:
 
 viewer:
   catalogue:
+    search:
+      # Enable on viewer instances that may perform the nightly Cellar bulk extract.
+      enabled: false
     # how the held acts are kept as Cellar has them: one instance asks Cellar what changed (one SPARQL
     # query), and each held act that changed is read again once it is quiet
     changes:
