@@ -244,6 +244,29 @@ class LocationTest {
     return new Location(code).in(eIds);
   }
 
+  @Test
+  void putsThePointsAndTheAttachmentsOfAFlatChapterInIt() {
+    // The annex of 2015/1998 keeps a chapter flat: point 3 is the heading only.
+    assertThat(Location.holds("anx/pnt_3", "anx/pnt_3.0.1")).isTrue();
+    assertThat(Location.holds("anx/pnt_3", "anx/pnt_3.1.3/pnt_a")).isTrue();
+    assertThat(Location.holds("anx/pnt_3", "anx/level_ATTACHMENT-3-B")).isTrue();
+    assertThat(Location.holds("anx/pnt_3", "anx/level_ATTACHMENT-3-B/pnt_1")).isTrue();
+  }
+
+  @Test
+  void putsNoUnitOfADifferentNumberInAFlatChapter() {
+    assertThat(Location.holds("anx/pnt_3", "anx/pnt_30.1")).isFalse();
+    assertThat(Location.holds("anx/pnt_3", "anx/pnt_4.1")).isFalse();
+    assertThat(Location.holds("anx/pnt_3", "anx/level_ATTACHMENT-30-B")).isFalse();
+    assertThat(Location.holds("anx/pnt_3", "anx/level_ATTACHMENT-6-F")).isFalse();
+    // The unit itself, and the units below it by their eIds, are not beside it.
+    assertThat(Location.holds("anx/pnt_3", "anx/pnt_3")).isFalse();
+    assertThat(Location.holds("anx/pnt_3", "anx/pnt_3/pnt_a")).isFalse();
+    // A unit of a different annex, and a unit that is not a point.
+    assertThat(Location.holds("anx_I/pnt_3", "anx_II/pnt_3.1")).isFalse();
+    assertThat(Location.holds("art_3", "art_3.1")).isFalse();
+  }
+
   private static Found exact(String eId) {
     return new Found(List.of(eId), false);
   }

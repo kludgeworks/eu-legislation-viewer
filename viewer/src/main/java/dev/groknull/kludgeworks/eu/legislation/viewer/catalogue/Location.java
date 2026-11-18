@@ -89,6 +89,37 @@ public record Location(String code) {
    */
   private static final Pattern PARAGRAPH = Pattern.compile("\\.(\\d+)(BI)?");
 
+  /**
+   * Returns whether the numbered point {@code holder} of an annex holds the unit {@code eId} by its
+   * number, where the text has the two beside each other. Some annexes keep a chapter flat: the
+   * chapter is a point with only its heading, and its points and its attachments come after it. A
+   * point numbered 3 holds:
+   *
+   * <ul>
+   *   <li>the points beside it whose numbers start with "3.", for example {@code anx/pnt_3.0.1}
+   *   <li>the attachments beside it whose numbers start with "3-", for example {@code
+   *       anx/level_ATTACHMENT-3-B}
+   *   <li>the units in these, for example {@code anx/pnt_3.1.3/pnt_a}
+   * </ul>
+   *
+   * <p>It does not hold itself, and it does not hold the units below it, which are in it by their
+   * eIds.
+   */
+  public static boolean holds(String holder, String eId) {
+    var slash = holder.lastIndexOf('/');
+    var step = holder.substring(slash + 1);
+    var prefix = holder.substring(0, slash + 1);
+    if (!step.startsWith("pnt_") || !eId.startsWith(prefix)) {
+      return false;
+    }
+    var number = step.substring("pnt_".length());
+    var rest = eId.substring(prefix.length());
+    var end = rest.indexOf('/');
+    var beside = end < 0 ? rest : rest.substring(0, end);
+    return beside.startsWith("pnt_" + number + ".")
+        || beside.startsWith("level_ATTACHMENT-" + number + "-");
+  }
+
   /** Returns the location in Cellar's annotation, without the URIs of its codes. */
   public static Location parse(String annotation) {
     return new Location(CODE.matcher(annotation).replaceAll("$1").strip());

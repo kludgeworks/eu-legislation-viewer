@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -573,21 +574,33 @@ class ChangesController {
         release.etag(before.text(), after.text(), DifferVersion.value()))) {
       return null;
     }
-    var shown =
-        comparisons
-            .between(before.text(), after.text())
-            .orElseThrow(Requests::notFound)
-            .at(eIds)
-            .stream()
-            .map(difference -> new ChangesView.Shown(0, difference, ""))
-            .toList();
+    var found =
+        comparisons.between(before.text(), after.text()).orElseThrow(Requests::notFound).at(eIds);
+    String lead = null;
+    if (found.isEmpty() && only != null) {
+      // A chapter that the annex keeps flat has no difference of its own. Show the differences in
+      // its points and its attachments that the text marks with the act.
+      var attributed =
+          attributed(ends, preparation, earlier, later, only, null, new HashMap<>())
+              .orElseThrow(Requests::notFound);
+      found =
+          attributed.comparison().differences().stream()
+              .filter(each -> eIds.stream().anyMatch(eId -> Location.holds(eId, each.eId())))
+              .filter(each -> attributed.sidenote(each).acts().contains(only))
+              .toList();
+      lead =
+          found.isEmpty()
+              ? null
+              : "The text marks these changes in this part of the annex with " + only.cited() + ".";
+    }
+    var shown = found.stream().map(difference -> new ChangesView.Shown(0, difference, "")).toList();
     var rendered =
         sides
             ? templates
                 .comparisonSides(
                     shown, html, page, Dates.inWords(page.earlier()), Dates.inWords(page.later()))
                 .render()
-            : templates.comparisonPlace(shown, html, page).render();
+            : templates.comparisonPlace(shown, html, page, lead).render();
     LOG.info(
         "Place of {} from {} to {} in {}{} at {} units: {} differences, in {} ms",
         ends.act.id(),
