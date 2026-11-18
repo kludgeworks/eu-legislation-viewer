@@ -18,7 +18,6 @@
 @param String from
 @param String to
 @param List<ControlsView.ViewLink> views
-@param ControlsView.Only only = null
 @param String same = ""
 @param ComparePage page
 <%-- Shows a comparison's Synopsis view. The controls come first. Then a ledger aligns the two
@@ -47,7 +46,7 @@
 </act-outline>
 <div class="changes synopsis">
   @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, only = only, legend = ControlsView.legend(changes, sidenotes))
+  @template.comparison.controls(changes = changes, views = views, legend = ControlsView.legend(changes, sidenotes))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two texts, aligned by provision">
     <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="day">the law on ${from}</span></div><div role="columnheader">To<span class="day">the law on ${to}</span></div><div role="columnheader">What changed it</div></div>
     @for(var passage : changes.passages())
@@ -66,7 +65,7 @@
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
         !{var unit = html.element(shown.folded(page));}
-        <div class="ledger-row difference-${shown.kind()}${only != null && sidenote != null && !sidenote.candidates().isEmpty() ? " unknown" : ""}${sidenote != null && sidenote.corrected() ? " corrected" : ""}${sidenote != null && sidenote.pending() != null ? " pending" : ""}" role="row" id="difference-${shown.number()}">
+        <div class="ledger-row difference-${shown.kind()}${sidenote != null && sidenote.corrected() ? " corrected" : ""}${sidenote != null && sidenote.pending() != null ? " pending" : ""}" role="row" id="difference-${shown.number()}">
           <div class="provision" role="cell">${shown.cited()}<span class="n">difference ${shown.number()} of ${total}</span></div>
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in the text on this day</p>@else${unit}@endif</div>
           <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in the text on this day</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, page = page)@else${unit}@endif</div>

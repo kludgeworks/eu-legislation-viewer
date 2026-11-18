@@ -125,13 +125,13 @@ class ChangesPagesTests {
   }
 
   @Test
-  void limitsTheComparisonToTheChangesOfOneAct() {
+  void doesNotLimitTheComparisonToTheChangesOfOneAct() {
     prepared();
+    // Compare has no act filter. An old address with an act shows the changes of all acts.
     var changes = get(CHANGES + "&act=32026R0449");
-    assertThat(changes.select(".controls .only").text())
-        .isEqualTo("Only 2026/449’s changes · show all acts");
-    assertThat(changes.select(".controls .only a").attr("href")).isEqualTo(PAGE);
-    assertThat(changes.select("section.difference")).hasSize(6);
+    assertThat(changes.select(".controls .only")).isEmpty();
+    assertThat(changes.select(".controls b").text()).isEqualTo("6 provisions differ");
+    assertThat(changes.select("section.difference.unknown")).isEmpty();
   }
 
   @Test

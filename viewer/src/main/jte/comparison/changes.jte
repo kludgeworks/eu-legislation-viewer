@@ -15,7 +15,6 @@
 @param String units
 @param ComparePage page
 @param List<ControlsView.ViewLink> views
-@param ControlsView.Only only = null
 <%-- Shows a comparison's Changes view on an act's page. The controls come first. They show how
      many differences there are and of what kind. Then each provision that differs shows as it reads,
      with its changes marked and a number beside it. A sidenote beside each provision says what
@@ -27,8 +26,8 @@
      inserted whole shows only its size. These load from the difference's own address (page) when
      the reader opens them. The
      opening of the unit that holds a difference shows as context. The later text's outline is beside
-     the view, with a count of differences for each unit. If the view is limited to one act's changes
-     (only), a banner says so and links to the changes of all acts. --%>
+     the view, with a count of differences for each unit. Compare has no act filter: the view shows the
+     changes of all acts. --%>
 <div class="outlined">
 <act-outline>
 <nav class="outline counted" aria-label="Outline">
@@ -39,7 +38,7 @@
 </act-outline>
 <div class="changes">
   @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, only = only, legend = ControlsView.legend(changes, sidenotes))
+  @template.comparison.controls(changes = changes, views = views, legend = ControlsView.legend(changes, sidenotes))
   <div class="book legal-text legal-text-consolidated">
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold)
@@ -51,7 +50,7 @@
         <div class="lead">${html.element(lead.unit())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        @template.comparison.difference(shown = shown, sidenote = sidenote, greyed = only != null && sidenote != null && !sidenote.candidates().isEmpty(), unit = html.element(shown.folded(page)), page = page, parts = parts)
+        @template.comparison.difference(shown = shown, sidenote = sidenote, unit = html.element(shown.folded(page)), page = page, parts = parts)
       @endif
     @endfor
   </div>

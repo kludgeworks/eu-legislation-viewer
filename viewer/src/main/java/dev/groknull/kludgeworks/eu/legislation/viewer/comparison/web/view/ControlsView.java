@@ -85,13 +85,4 @@ public final class ControlsView {
    * @param on whether this view shows now
    */
   public record ViewLink(String label, String code, String href, boolean on) {}
-
-  /**
-   * The banner of a comparison that is limited to the changes of one act. For example, "Only
-   * 2026/449's changes · show all acts".
-   *
-   * @param act the act, by its number
-   * @param all the address of the comparison of all acts
-   */
-  public record Only(String act, String all) {}
 }

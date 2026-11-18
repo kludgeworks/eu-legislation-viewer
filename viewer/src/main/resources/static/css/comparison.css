@@ -86,20 +86,6 @@ a.chip:hover {
   display: none;
 }
 
-/* The note that the comparison shows the changes of one act only. It has a link back to the changes
- * of all acts. */
-.controls .only {
-  padding: 3px 10px;
-  border-radius: 3px;
-  background: var(--warn-bg);
-  color: var(--warn-ink);
-  font-size: 13px;
-}
-
-.controls .only a {
-  color: inherit;
-}
-
 /* The summary of the comparison. It says how many differences there are, and of which kinds. */
 .controls {
   display: flex;
@@ -216,10 +202,6 @@ a.chip:hover {
 
 .ledger-row[class*="difference-"] {
   background: var(--chg-tint);
-}
-
-.ledger-row.unknown > :not(.what) {
-  opacity: 0.55;
 }
 
 .ledger .provision {
@@ -452,12 +434,6 @@ details.ledger-fold[open] {
 .sidenote .applies {
   display: block;
   margin-top: 3px;
-}
-
-/* When the comparison shows the changes of one act only, some changes may be of that act, but this
- * is not known. These changes are grey. The page never hides them. */
-.difference.unknown > :not(.sidenote) {
-  opacity: 0.6;
 }
 
 .difference-inserted .sidenote {

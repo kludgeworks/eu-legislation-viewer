@@ -161,7 +161,6 @@ class ChangesController {
       @PathVariable("language") String code,
       @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
       @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(name = ComparePage.ACT, required = false) @Nullable String act,
       @RequestParam(name = ComparePage.VIEW, defaultValue = "changes") String shown,
       @RequestParam(name = ComparePage.FROM_DAY, required = false)
           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
@@ -171,42 +170,18 @@ class ChangesController {
           @Nullable LocalDate toDay,
       HttpServletRequest request) {
     var view = view(shown);
-    var ends = ends(new Eli(type, year, number), code, from, to, act);
+    var ends = ends(new Eli(type, year, number), code, from, to, null);
     var page =
-        ComparePage.ofPart(
-                request.getRequestURI(),
-                from,
-                to,
-                ends.only == null ? null : ends.only.celex(),
-                view.parameter())
+        ComparePage.ofPart(request.getRequestURI(), from, to, null, view.parameter())
             .on(fromDay, toDay);
     var started = System.nanoTime();
     var preparation = texts.preparation(ends.act, ends.language);
-    var only = ends.only;
-    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
-    var earlier = step == null ? ends.from : ends.earlier(step);
-    var later = step == null ? ends.to : step;
+    var earlier = ends.from;
+    var later = ends.to;
     var attributed =
-        attributed(
-                ends,
-                preparation,
-                earlier,
-                later,
-                only,
-                only == null ? page.later() : null,
-                new HashMap<>())
+        attributed(ends, preparation, earlier, later, null, page.later(), new HashMap<>())
             .orElseThrow(Requests::notFound);
-    var changes =
-        only == null
-            ? ChangesView.of(attributed.comparison())
-            : ChangesView.of(
-                attributed.comparison(),
-                // Also show the differences that the act may have made. For these, it is not
-                // known which act made them.
-                difference ->
-                    attributed.sidenote(difference).acts().contains(only)
-                        || attributed.sidenote(difference).candidates().contains(only),
-                "not changed by " + only.cited());
+    var changes = ChangesView.of(attributed.comparison());
     var sidenotes = new HashMap<Integer, SidenoteView>();
     var differences = new ArrayList<ChangesView.Shown>();
     for (var passage : changes.passages()) {
@@ -220,10 +195,6 @@ class ChangesController {
         OutlineView.of(
             attributed.outline(), differences.stream().map(ChangesView.Shown::difference).toList());
     var views = ControlsView.views(page, view);
-    var all =
-        only == null
-            ? null
-            : new ControlsView.Only(only.cited(), page.href(null, view.parameter()));
     var html =
         switch (view) {
           case CHANGES ->
@@ -236,8 +207,7 @@ class ChangesController {
                       this.html,
                       "/content/" + attributed.later() + "/units",
                       page,
-                      views,
-                      all)
+                      views)
                   .render();
           case WHOLE ->
               templates
@@ -253,11 +223,10 @@ class ChangesController {
                           (each, unit) -> {
                             var sidenote = sidenotes.get(each.number());
                             return templates.comparisonDifference(
-                                each, sidenote, greyed(only, sidenote), unit, page, parts);
+                                each, sidenote, unit, page, parts);
                           }),
                       parts,
                       views,
-                      all,
                       ControlsView.legend(changes, sidenotes))
                   .render();
           case SYNOPSIS -> {
@@ -294,36 +263,25 @@ class ChangesController {
                     Dates.inWords(page.earlier()),
                     Dates.inWords(page.later()),
                     views,
-                    all,
                     page.same(earlier.date(), later.date()),
                     page)
                 .render();
           }
         };
     LOG.info(
-        "{} of {} from {} to {} in {}{}: {} of {} differences, {} of Cellar's amendments"
+        "{} of {} from {} to {} in {}: {} of {} differences, {} of Cellar's amendments"
             + " between them at their units, {} at none, in {} ms",
         view.label(),
         ends.act.id(),
         earlier.date(),
         later.date(),
         ends.language.code(),
-        only == null ? "" : " by " + only,
         differences.size(),
         attributed.comparison().differences().size(),
         attributed.amended().placed(),
         attributed.amended().unplaced(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return html;
-  }
-
-  /**
-   * Returns whether a difference with {@code sidenote} is greyed. It is greyed if the comparison is
-   * limited to the changes of {@code only}, and that act may have made the difference, but it is
-   * not known.
-   */
-  private static boolean greyed(@Nullable ActIdentifier only, @Nullable SidenoteView sidenote) {
-    return only != null && sidenote != null && !sidenote.candidates().isEmpty();
   }
 
   /**
