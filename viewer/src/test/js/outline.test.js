@@ -183,9 +183,9 @@ describe("follow in Read", () => {
       <nav class="outline">
         <p class="outline-follow" hidden><span class="where"></span></p>
         <ul>
-          <li><details open><summary><a href="#art_1">Article 1 Subject</a></summary>
+          <li class="branch"><a href="#art_1">Article 1 Subject</a><details open><summary></summary>
             <ul><li><a href="#art_1__para_2">2.</a></li></ul></details></li>
-          <li><details><summary><a href="#art_2">Article 2 Definitions</a></summary>
+          <li class="branch"><a href="#art_2">Article 2 Definitions</a><details><summary></summary>
             <ul><li><a href="#art_2__para_1">1.</a></li></ul></details></li>
         </ul>
       </nav>

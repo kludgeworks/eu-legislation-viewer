@@ -215,6 +215,10 @@ export const mark = (nav, link) => {
     return;
   }
   link.setAttribute("aria-current", "location");
+  // The fold of the link's own parts is after the link, and the folds of its parents are above it.
+  if (link.nextElementSibling instanceof HTMLDetailsElement) {
+    link.nextElementSibling.open = true;
+  }
   for (let up = link.parentElement; up && up !== nav; up = up.parentElement) {
     if (up instanceof HTMLDetailsElement) {
       up.open = true;

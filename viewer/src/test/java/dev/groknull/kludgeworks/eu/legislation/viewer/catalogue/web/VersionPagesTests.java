@@ -94,7 +94,8 @@ class VersionPagesTests {
     assertThat(page(PAGE).select("#page.arrived")).isEmpty();
     var loads = Objects.requireNonNull(arrived.selectFirst(".content"));
     assertThat(loads.attr("hx-trigger")).isEqualTo("load");
-    assertThat(arrived.select("nav.outline > ul > li > :is(a, details > summary > a)"))
+    assertThat(arrived.select("nav.outline summary a")).isEmpty();
+    assertThat(arrived.select("nav.outline > ul > li > a"))
         .extracting(link -> link.attr("href"), Element::text)
         .startsWith(tuple("#art_1", "Article 1"), tuple("#art_2", "Article 2"));
 

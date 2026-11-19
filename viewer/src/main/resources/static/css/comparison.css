@@ -560,10 +560,20 @@ nav.outline ul ul {
   padding-left: 12px;
 }
 
-nav.outline summary {
-  display: flex;
-  gap: 4px;
-  padding-left: 6px;
+/* A unit with parts: its link, then the fold of its parts. The fold's summary is only its button,
+ * in the gutter before the link (a link in a summary is not reliable for the keyboard and for screen
+ * readers). */
+nav.outline li.branch {
+  position: relative;
+}
+
+nav.outline li.branch > details > summary {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  padding: 3px 0 0 6px;
+  box-sizing: border-box;
   list-style: none;
   cursor: pointer;
 }
@@ -574,8 +584,6 @@ nav.outline summary::-webkit-details-marker {
 
 nav.outline summary::before {
   content: "▸";
-  flex: 0 0 10px;
-  padding-top: 3px;
   font-size: 10px;
   color: var(--faint);
 }
@@ -590,10 +598,6 @@ nav.outline a {
   padding: 3px 10px 3px 20px;
   color: var(--ink3);
   text-decoration: none;
-}
-
-nav.outline summary a {
-  padding-left: 0;
 }
 
 nav.outline a:hover {

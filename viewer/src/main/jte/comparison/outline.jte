@@ -10,13 +10,15 @@
   @for(var entry : entries)
     !{var has = entry.count() > 0 ? "has" : null;}
     !{var count = entry.count() > 0 ? String.valueOf(entry.count()) : "";}
-    <li>
+    <li class="${entry.entries().isEmpty() ? null : "branch"}">
+      <a href="${entry.href()}" class="${has}"><span>${entry.label()}</span>@if(entry.count() > 0)<span class="bar"><i style="${entry.barStyle()}"></i></span>@else<span></span>@endif<span class="n">${count}</span></a>
       @if(entry.entries().isEmpty())
-        <a href="${entry.href()}" class="${has}"><span>${entry.label()}</span>@if(entry.count() > 0)<span class="bar"><i style="${entry.barStyle()}"></i></span>@else<span></span>@endif<span class="n">${count}</span></a>
         @template.comparison.outlinerows(entry = entry)
       @else
+        <%-- Its summary is only the fold's button: a link in a summary is not reliable for the
+             keyboard and for screen readers. --%>
         <details open="${entry.count() > 0}">
-          <summary><a href="${entry.href()}" class="${has}"><span>${entry.label()}</span>@if(entry.count() > 0)<span class="bar"><i style="${entry.barStyle()}"></i></span>@else<span></span>@endif<span class="n">${count}</span></a></summary>
+          <summary><span class="visually-hidden">The parts of ${entry.label()}</span></summary>
           @template.comparison.outlinerows(entry = entry)
           @template.comparison.outline(entries = entry.entries())
         </details>
