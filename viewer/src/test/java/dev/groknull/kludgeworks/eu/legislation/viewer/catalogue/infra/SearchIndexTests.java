@@ -26,7 +26,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.support.TransactionTemplate;
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.NONE,
@@ -37,6 +38,7 @@ class SearchIndexTests {
   @Autowired SearchRebuild job;
   @Autowired Search search;
   @Autowired JdbcTemplate database;
+  @Autowired PlatformTransactionManager transactionManager;
   @MockitoBean Sparql cellar;
 
   @Test
@@ -240,8 +242,11 @@ class SearchIndexTests {
   }
 
   @Test
-  @Transactional
   void expandsHyphenatedAliasOnlyForMatchingLongerQueries() {
+    rolledBack(this::expandsHyphenatedAlias);
+  }
+
+  private void expandsHyphenatedAlias() {
     database.update("update catalogue_search_rebuild set completed_at=now()");
     database.update(
         """
@@ -263,8 +268,11 @@ class SearchIndexTests {
   }
 
   @Test
-  @Transactional
   void listsBothOwnersOfAnAmbiguousNumberBeforeActsThatCiteIt() {
+    rolledBack(this::listsBothOwnersOfAnAmbiguousNumber);
+  }
+
+  private void listsBothOwnersOfAnAmbiguousNumber() {
     database.update("update catalogue_search_rebuild set completed_at=now()");
     database.update(
         """
@@ -284,10 +292,23 @@ class SearchIndexTests {
         .containsExactly("32010D0185", "32010R0185", "32015R1998");
   }
 
+  /**
+   * Runs {@code test} in a transaction that is rolled back, so that the rows that it inserts leave
+   * the index as the other tests expect it. The search joins the transaction.
+   */
+  private void rolledBack(Runnable test) {
+    new TransactionTemplate(transactionManager)
+        .executeWithoutResult(
+            status -> {
+              status.setRollbackOnly();
+              test.run();
+            });
+  }
+
   private static String answer(String query) {
     boolean inPartition = query.contains("3201[5-9]");
     if (query.contains("SELECT ?celex ?eli")) {
-      return "celex,eli,type,date,inForce\n"
+      return "celex,eli,resource_type,document_date,in_force\n"
           + (inPartition ? "32016R0679,,,,true\n32016L0001,,,,false\n" : "");
     }
     if (query.contains("SELECT ?celex ?title")) {
@@ -299,12 +320,13 @@ class SearchIndexTests {
               : "");
     }
     if (query.contains("SELECT ?celex ?amends")) {
-      return "celex,amends,amendsEli\n" + (inPartition ? "32016L0001,32016R0679,\n" : "");
+      return "celex,amends,amends_eli\n" + (inPartition ? "32016L0001,32016R0679,\n" : "");
     }
     if (query.contains("AS ?citations")) return "celex,citations\n32016R0679,50\n";
-    if (query.contains("?concept ?label ?alt")) return "concept,label,alt\n";
-    if (query.contains("?short ?alt")) return "celex,short,alt\n";
-    if (query.contains("SELECT ?celex ?c WHERE")) return "celex,c\n";
+    if (query.contains("?concept ?pref_label ?alt_label")) return "concept,pref_label,alt_label\n";
+    if (query.contains("?short_title ?alternative_title"))
+      return "celex,short_title,alternative_title\n";
+    if (query.contains("SELECT ?celex ?concept WHERE")) return "celex,concept\n";
     throw new AssertionError(query);
   }
 }

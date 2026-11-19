@@ -29,7 +29,18 @@ viewpoints:
       - catalogue_search_alias
       - catalogue_search_amendment
       - catalogue_search_expression
+      - catalogue_search_extract_amendment
+      - catalogue_search_extract_citation
+      - catalogue_search_extract_concept
+      - catalogue_search_extract_label
+      - catalogue_search_extract_short_title
+      - catalogue_search_extract_title
+      - catalogue_search_extract_vocabulary
+      - catalogue_search_extract_work
       - catalogue_search_rebuild
+      - catalogue_search_stage_amendment
+      - catalogue_search_stage_expression
+      - catalogue_search_stage_work
       - catalogue_search_work
       - change_scan
       - expression

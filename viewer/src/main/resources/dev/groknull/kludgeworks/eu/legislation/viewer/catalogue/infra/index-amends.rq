@@ -1,10 +1,10 @@
 # SPDX-License-Identifier: MIT
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
-SELECT ?celex ?amends ?amendsEli WHERE {
+SELECT ?celex ?amends ?amends_eli WHERE {
   ?w cdm:resource_legal_id_celex ?celex ;
      cdm:resource_legal_amends_resource_legal ?t .
   FILTER(REGEX(STR(?celex), '{{pattern}}'))
   ?t cdm:resource_legal_id_celex ?amends .
   FILTER(REGEX(STR(?amends), '^3[0-9]{4}[RLD][0-9]{4}$'))
-  OPTIONAL { ?t cdm:resource_legal_eli ?amendsEli }
+  OPTIONAL { ?t cdm:resource_legal_eli ?amends_eli }
 }

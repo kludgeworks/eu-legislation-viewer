@@ -1,9 +1,9 @@
 # SPDX-License-Identifier: MIT
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>
-SELECT ?celex ?c WHERE {
+SELECT ?celex ?concept WHERE {
   ?w cdm:resource_legal_id_celex ?celex .
   FILTER(REGEX(STR(?celex), '{{pattern}}'))
   ?w cdm:work_is_about_concept_eurovoc
      | cdm:resource_legal_is_about_subject-matter
-     | cdm:resource_legal_is_about_concept_directory-code ?c .
+     | cdm:resource_legal_is_about_concept_directory-code ?concept .
 }

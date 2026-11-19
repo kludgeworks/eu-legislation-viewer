@@ -1,17 +1,51 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_AMENDMENT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXPRESSION;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_AMENDMENT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_CITATION;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_CONCEPT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_LABEL;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_SHORT_TITLE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_TITLE;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_VOCABULARY;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXTRACT_WORK;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_REBUILD;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_STAGE_AMENDMENT;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_STAGE_EXPRESSION;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_STAGE_WORK;
+import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_WORK;
+import static org.jooq.impl.DSL.excluded;
+import static org.jooq.impl.DSL.field;
+import static org.jooq.impl.DSL.function;
+import static org.jooq.impl.DSL.inline;
+import static org.jooq.impl.DSL.notExists;
+import static org.jooq.impl.DSL.row;
+import static org.jooq.impl.DSL.select;
+import static org.jooq.impl.DSL.selectOne;
+
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Routines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.time.Clock;
 import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import javax.sql.DataSource;
+import org.jooq.DSLContext;
+import org.jooq.Field;
+import org.jooq.SQLDialect;
+import org.jooq.Table;
+import org.jooq.impl.DSL;
+import org.jooq.impl.SQLDataType;
 import org.postgresql.PGConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,21 +55,75 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Publishes the complete English index on one connection. Readers see the previous build until
- * commit.
+ * Builds the English index of acts from Cellar, and publishes it. One viewer builds at a time.
+ *
+ * <ol>
+ *   <li>The build takes a session advisory lock on its own connection. A second viewer, or a second
+ *       tick, finds the lock taken and skips.
+ *   <li>It claims the build in {@code catalogue_search_rebuild}, and commits the claim before it
+ *       asks Cellar. A build is due after 02:00 UTC each day. After a failed claim, the next is 24
+ *       hours later.
+ *   <li>It copies Cellar's extracts into the unlogged {@code catalogue_search_extract_*} tables.
+ *       Each copy commits by itself. The functions {@code catalogue_search_stage_vocabulary} and
+ *       {@code catalogue_search_stage_partition} of the migration turn them into the rows of the
+ *       next index, in {@code catalogue_search_stage_*}, one partition of years at a time.
+ *   <li>It publishes the staged rows in one short transaction, if they hold at least 95% of the
+ *       acts of the index. Readers see the previous index until then.
+ * </ol>
  */
 @Component
 @ConditionalOnProperty(name = "viewer.catalogue.search.enabled", havingValue = "true")
 class SearchRebuild {
   private static final Logger LOG = LoggerFactory.getLogger(SearchRebuild.class);
+
+  /** The key of the advisory lock: the identifier of the table of the build. */
+  private static final Field<Long> LOCK =
+      field("{0}::regclass::oid::bigint", SQLDataType.BIGINT, inline("catalogue_search_rebuild"));
+
+  /** The time of day after which a new build is due. */
+  private static final LocalTime DUE = LocalTime.of(2, 0);
+
+  /** How long after a failed claim the next claim waits. */
+  private static final Duration BACK_OFF = Duration.ofHours(24);
+
+  /** Nine partitions of years that cover all years without overlap, future decades too. */
+  private static final List<String> YEARS =
+      List.of(
+          "(?:0...|1[0-8]..|19[0-7].)",
+          "198.",
+          "199[0-4]",
+          "199[5-9]",
+          "200[0-4]",
+          "200[5-9]",
+          "201[0-4]",
+          "201[5-9]",
+          "(?:20[2-9].|2[1-9]..|[3-9]...)");
+
+  /** The tables that a build fills, and empties when it starts and ends. */
+  private static final List<Table<?>> STAGING =
+      List.of(
+          CATALOGUE_SEARCH_EXTRACT_WORK,
+          CATALOGUE_SEARCH_EXTRACT_TITLE,
+          CATALOGUE_SEARCH_EXTRACT_CONCEPT,
+          CATALOGUE_SEARCH_EXTRACT_AMENDMENT,
+          CATALOGUE_SEARCH_EXTRACT_CITATION,
+          CATALOGUE_SEARCH_EXTRACT_LABEL,
+          CATALOGUE_SEARCH_EXTRACT_SHORT_TITLE,
+          CATALOGUE_SEARCH_EXTRACT_VOCABULARY,
+          CATALOGUE_SEARCH_STAGE_WORK,
+          CATALOGUE_SEARCH_STAGE_AMENDMENT,
+          CATALOGUE_SEARCH_STAGE_EXPRESSION);
+
   private final ObservationRegistry observations;
   private final DataSource database;
   private final Sparql cellar;
+  private final Clock clock;
 
-  SearchRebuild(DataSource database, Sparql cellar, ObservationRegistry observations) {
+  SearchRebuild(DataSource database, Sparql cellar, ObservationRegistry observations, Clock clock) {
     this.observations = observations;
     this.database = database;
     this.cellar = cellar;
+    this.clock = clock;
   }
 
   @Scheduled(
@@ -88,120 +176,214 @@ class SearchRebuild {
     }
   }
 
+  /** Builds and publishes the index on {@code connection}. Returns how many acts, or 0 if none. */
   private long rebuild(Connection connection) throws SQLException {
-    try (var sql = connection.createStatement()) {
-      // A session lock survives commits between extracts and is released if the connection dies.
-      try (var lock =
-          sql.executeQuery(
-              "select pg_try_advisory_lock('catalogue_search_rebuild'::regclass::oid::bigint)")) {
-        lock.next();
-        if (!lock.getBoolean(1)) return 0;
+    // The lock is the session's: it holds across the commits of the copies, and Postgres releases
+    // it if the connection dies.
+    var db = DSL.using(connection, SQLDialect.POSTGRES);
+    if (!Boolean.TRUE.equals(
+        db.select(function("pg_try_advisory_lock", SQLDataType.BOOLEAN, LOCK)).fetchOne(0))) {
+      return 0;
+    }
+    try (var session = new RebuildSession(connection, db)) {
+      if (!claim(db)) {
+        return 0;
       }
-      try (var session = new RebuildSession(connection)) {
-        // Commit the attempt before contacting Cellar. Failed attempts wait 24 hours;
-        // successful builds are due again at the next nightly boundary.
-        if (sql.executeUpdate(
-                """
-                update catalogue_search_rebuild set claimed_at=clock_timestamp()
-                where only_row
-                  and (completed_at is null or completed_at < date_bin(interval '1 day', now(), timestamptz '2000-01-01 02:00+00'))
-                  and (claimed_at <= completed_at or claimed_at <= now() - interval '24 hours')
-                """)
-            == 0) return 0;
-        session.staging = true;
-        stage(connection, sql);
-        connection.setAutoCommit(false);
-        long acts = publish(sql);
-        connection.commit();
-        return acts;
-      }
+      session.staging = true;
+      empty(db);
+      stage(connection, db);
+      return db.transactionResult(published -> publish(published.dsl()));
     }
   }
 
+  /**
+   * Claims the build, if one is due and no failed claim is recent. A build is due once a day, after
+   * 02:00 UTC.
+   */
+  private boolean claim(DSLContext db) {
+    var now = clock.instant();
+    var rebuild = CATALOGUE_SEARCH_REBUILD;
+    return db.update(rebuild)
+            .set(rebuild.CLAIMED_AT, now)
+            .where(rebuild.ONLY_ROW)
+            .and(rebuild.COMPLETED_AT.isNull().or(rebuild.COMPLETED_AT.lt(lastDue(now))))
+            .and(
+                rebuild
+                    .CLAIMED_AT
+                    .le(rebuild.COMPLETED_AT)
+                    .or(rebuild.CLAIMED_AT.le(now.minus(BACK_OFF))))
+            .execute()
+        > 0;
+  }
+
+  /** Returns the last time at or before {@code now} from which a build is due. */
+  static Instant lastDue(Instant now) {
+    var today = now.atOffset(ZoneOffset.UTC).toLocalDate();
+    var due = today.atTime(DUE).toInstant(ZoneOffset.UTC);
+    return due.isAfter(now) ? due.minus(Duration.ofDays(1)) : due;
+  }
+
+  /** Releases the lock of a build, and empties what it staged. */
   private static final class RebuildSession implements AutoCloseable {
     private final Connection connection;
+    private final DSLContext db;
     private boolean staging;
 
-    RebuildSession(Connection connection) {
+    RebuildSession(Connection connection, DSLContext db) {
       this.connection = connection;
+      this.db = db;
     }
 
     @Override
     public void close() throws SQLException {
-      try (var sql = connection.createStatement()) {
-        if (!connection.getAutoCommit()) {
-          connection.rollback();
-          connection.setAutoCommit(true);
-        }
+      try {
         if (staging) {
-          sql.execute(
-              """
-              drop table if exists pg_temp.works, pg_temp.titles, pg_temp.concepts, pg_temp.amends,
-                pg_temp.citations, pg_temp.skos_en, pg_temp.short_titles_en, pg_temp.labels,
-                pg_temp.tmp_work, pg_temp.tmp_amendment, pg_temp.tmp_expression
-              """);
+          empty(db);
         }
-        sql.execute("select pg_advisory_unlock('catalogue_search_rebuild'::regclass::oid::bigint)");
-      } catch (SQLException failure) {
-        // A session with uncertain lock or staging state must not return to the pool.
+        db.select(function("pg_advisory_unlock", SQLDataType.BOOLEAN, LOCK)).fetch();
+      } catch (RuntimeException failure) {
+        // A session with uncertain lock state must not return to the pool.
         connection.abort(Runnable::run);
         throw failure;
       }
     }
   }
 
-  private void stage(Connection connection, Statement sql) throws SQLException {
+  private static void empty(DSLContext db) {
+    STAGING.forEach(table -> db.truncate(table).execute());
+  }
+
+  /** Copies Cellar's extracts, and stages the rows of the next index, partition by partition. */
+  private void stage(Connection connection, DSLContext db) throws SQLException {
     LOG.info("Building the search index from Cellar");
-    sql.execute(SearchSql.read("index-stage.sql"));
     for (Extract extract : List.of(Extract.SKOS_EN, Extract.CITATIONS, Extract.SHORT_TITLES_EN)) {
       copy(connection, extract, extract.query);
     }
-    sql.execute(SearchSql.read("index-vocabulary.sql"));
-    // Nine non-overlapping partitions cover all years, including future decades.
-    for (String years :
-        List.of(
-            "(?:0...|1[0-8]..|19[0-7].)",
-            "198.",
-            "199[0-4]",
-            "199[5-9]",
-            "200[0-4]",
-            "200[5-9]",
-            "201[0-4]",
-            "201[5-9]",
-            "(?:20[2-9].|2[1-9]..|[3-9]...)")) {
+    Routines.catalogueSearchStageVocabulary(db.configuration());
+    for (String years : YEARS) {
       for (Extract extract :
           List.of(Extract.WORKS, Extract.TITLES, Extract.CONCEPTS, Extract.AMENDS)) {
-        var query =
+        copy(
+            connection,
+            extract,
             Sparql.fill(
                 extract.query,
-                Map.of("pattern", "^3" + years.replace(".", "[0-9]") + "[RLD][0-9]{4}$"));
-        copy(connection, extract, query);
+                Map.of("pattern", "^3" + years.replace(".", "[0-9]") + "[RLD][0-9]{4}$")));
       }
-      sql.execute(SearchSql.read("index-partition.sql"));
+      Routines.catalogueSearchStagePartition(db.configuration());
     }
   }
 
-  private static long publish(Statement sql) throws SQLException {
-    long acts;
-    try (var counts =
-        sql.executeQuery(
-            """
-            select count(*), (select count(*) from catalogue_search_work)
-            from tmp_work
-            """)) {
-      counts.next();
-      acts = counts.getLong(1);
-      long previous = counts.getLong(2);
-      if (acts == 0 || acts * 100 < previous * 95) {
-        throw new IllegalStateException(
-            "Incomplete Cellar search inventory: "
-                + acts
-                + " acts staged, "
-                + previous
-                + " previously indexed");
-      }
+  /**
+   * Replaces the index with the staged rows, in the transaction of {@code db}, and records the
+   * time. Throws if the staged acts are fewer than 95% of the acts of the index. Returns how many
+   * acts the index has.
+   */
+  private long publish(DSLContext db) {
+    var staged = CATALOGUE_SEARCH_STAGE_WORK;
+    var work = CATALOGUE_SEARCH_WORK;
+    long acts = db.fetchCount(staged);
+    long previous = db.fetchCount(work);
+    if (acts == 0 || acts * 100 < previous * 95) {
+      throw new IllegalStateException(
+          "Incomplete Cellar search inventory: "
+              + acts
+              + " acts staged, "
+              + previous
+              + " previously indexed");
     }
-    sql.execute(SearchSql.read("index-publish.sql"));
+
+    db.deleteFrom(work)
+        .where(notExists(selectOne().from(staged).where(staged.CELEX.eq(work.CELEX))))
+        .execute();
+    db.insertInto(
+            work, work.CELEX, work.ELI, work.RESOURCE_TYPE, work.IN_FORCE, work.CITATION_COUNT)
+        .select(
+            select(
+                    staged.CELEX,
+                    staged.ELI,
+                    staged.RESOURCE_TYPE,
+                    staged.IN_FORCE,
+                    staged.CITATION_COUNT)
+                .from(staged))
+        .onConflict(work.CELEX)
+        .doUpdate()
+        .set(work.ELI, excluded(work.ELI))
+        .set(work.RESOURCE_TYPE, excluded(work.RESOURCE_TYPE))
+        .set(work.IN_FORCE, excluded(work.IN_FORCE))
+        .set(work.CITATION_COUNT, excluded(work.CITATION_COUNT))
+        .where(
+            row(work.ELI, work.RESOURCE_TYPE, work.IN_FORCE, work.CITATION_COUNT)
+                .isDistinctFrom(
+                    row(
+                        excluded(work.ELI),
+                        excluded(work.RESOURCE_TYPE),
+                        excluded(work.IN_FORCE),
+                        excluded(work.CITATION_COUNT))))
+        .execute();
+
+    var stagedAmendment = CATALOGUE_SEARCH_STAGE_AMENDMENT;
+    var amendment = CATALOGUE_SEARCH_AMENDMENT;
+    db.deleteFrom(amendment)
+        .where(
+            notExists(
+                selectOne()
+                    .from(stagedAmendment)
+                    .where(stagedAmendment.ACT.eq(amendment.ACT))
+                    .and(stagedAmendment.AMENDS.eq(amendment.AMENDS))))
+        .execute();
+    db.insertInto(amendment, amendment.ACT, amendment.AMENDS, amendment.AMENDS_ELI)
+        .select(
+            select(stagedAmendment.ACT, stagedAmendment.AMENDS, stagedAmendment.AMENDS_ELI)
+                .from(stagedAmendment))
+        .onConflict(amendment.ACT, amendment.AMENDS)
+        .doUpdate()
+        .set(amendment.AMENDS_ELI, excluded(amendment.AMENDS_ELI))
+        .where(amendment.AMENDS_ELI.isDistinctFrom(excluded(amendment.AMENDS_ELI)))
+        .execute();
+
+    var stagedExpression = CATALOGUE_SEARCH_STAGE_EXPRESSION;
+    var expression = CATALOGUE_SEARCH_EXPRESSION;
+    db.insertInto(
+            expression,
+            expression.CELEX,
+            expression.LANGUAGE_CODE,
+            expression.TITLE,
+            expression.SUBSTANTIVE_TITLE,
+            expression.SHORT_TITLES_NORM,
+            expression.SEARCH_TSV)
+        .select(
+            select(
+                    stagedExpression.CELEX,
+                    stagedExpression.LANGUAGE_CODE,
+                    stagedExpression.TITLE,
+                    stagedExpression.SUBSTANTIVE_TITLE,
+                    stagedExpression.SHORT_TITLES_NORM,
+                    stagedExpression.SEARCH_TSV)
+                .from(stagedExpression))
+        .onConflict(expression.CELEX, expression.LANGUAGE_CODE)
+        .doUpdate()
+        .set(expression.TITLE, excluded(expression.TITLE))
+        .set(expression.SUBSTANTIVE_TITLE, excluded(expression.SUBSTANTIVE_TITLE))
+        .set(expression.SHORT_TITLES_NORM, excluded(expression.SHORT_TITLES_NORM))
+        // The column has no Java type, so set(field, field) and set(field, value) would both fit.
+        .set(Map.of(expression.SEARCH_TSV, excluded(expression.SEARCH_TSV)))
+        .where(
+            row(
+                    expression.TITLE,
+                    expression.SUBSTANTIVE_TITLE,
+                    expression.SHORT_TITLES_NORM,
+                    expression.SEARCH_TSV)
+                .isDistinctFrom(
+                    row(
+                        excluded(expression.TITLE),
+                        excluded(expression.SUBSTANTIVE_TITLE),
+                        excluded(expression.SHORT_TITLES_NORM),
+                        excluded(expression.SEARCH_TSV))))
+        .execute();
+
+    var rebuild = CATALOGUE_SEARCH_REBUILD;
+    db.update(rebuild).set(rebuild.COMPLETED_AT, clock.instant()).where(rebuild.ONLY_ROW).execute();
     return acts;
   }
 
@@ -225,20 +407,24 @@ class SearchRebuild {
                     }));
   }
 
+  /**
+   * One of Cellar's extracts: its SPARQL query, and the COPY that loads its CSV answer into its
+   * table. jOOQ has no COPY. The CSV header must match the columns of the table.
+   */
   private enum Extract {
-    SKOS_EN("copy pg_temp.skos_en from stdin with (format csv, header match)"),
-    CITATIONS("copy pg_temp.citations from stdin with (format csv, header match)"),
-    SHORT_TITLES_EN("copy pg_temp.short_titles_en from stdin with (format csv, header match)"),
-    WORKS("copy pg_temp.works from stdin with (format csv, header match)"),
-    TITLES("copy pg_temp.titles from stdin with (format csv, header match)"),
-    CONCEPTS("copy pg_temp.concepts from stdin with (format csv, header match)"),
-    AMENDS("copy pg_temp.amends from stdin with (format csv, header match)");
+    SKOS_EN(CATALOGUE_SEARCH_EXTRACT_LABEL),
+    CITATIONS(CATALOGUE_SEARCH_EXTRACT_CITATION),
+    SHORT_TITLES_EN(CATALOGUE_SEARCH_EXTRACT_SHORT_TITLE),
+    WORKS(CATALOGUE_SEARCH_EXTRACT_WORK),
+    TITLES(CATALOGUE_SEARCH_EXTRACT_TITLE),
+    CONCEPTS(CATALOGUE_SEARCH_EXTRACT_CONCEPT),
+    AMENDS(CATALOGUE_SEARCH_EXTRACT_AMENDMENT);
 
     final String query;
     final String copy;
 
-    Extract(String copy) {
-      this.copy = copy;
+    Extract(Table<?> table) {
+      this.copy = "copy " + table.getName() + " from stdin with (format csv, header match)";
       this.query =
           Sparql.template(SearchRebuild.class, "index-" + name().toLowerCase(Locale.ROOT) + ".rq");
     }

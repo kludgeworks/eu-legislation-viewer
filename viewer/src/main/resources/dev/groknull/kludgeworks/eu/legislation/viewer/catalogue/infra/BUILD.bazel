@@ -9,12 +9,6 @@ java_library(
     visibility = ["//viewer:__subpackages__"],
 )
 
-java_library(
-    name = "sql",
-    resources = glob(["*.sql"]),
-    visibility = ["//viewer:__subpackages__"],
-)
-
 # every cdm:, cmr: and annotation: term they use is in CDM, and not deprecated
 sparql_terms_test(
     name = "sparql_terms",

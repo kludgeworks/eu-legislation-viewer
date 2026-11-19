@@ -20,7 +20,7 @@
             <from>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::new</from>
             <to>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier::celex</to>
           </lambdaConverter>
-          <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|preparation\.act|preparation_step\.act</includeExpression>
+          <includeExpression>act\.celex|version\.act|version_formex\.act|act_change\.act|act_date\.act|act_date\.subject|act_title\.act|act_amendment\.act|act_amendment\.amending|act_publication\.(act|subject)|act_publication_title\.(act|subject)|preparation\.act|preparation_step\.act|catalogue_search_(stage_)?(work|expression)\.celex|catalogue_search_alias\.celex|catalogue_search_(stage_)?amendment\.(act|amends)</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli</userType>
@@ -69,7 +69,7 @@
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.language.Language</userType>
           <enumConverter>true</enumConverter>
-          <includeExpression>expression\.language_code|version_formex\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_step\.language_code</includeExpression>
+          <includeExpression>expression\.language_code|version_formex\.language_code|act_title\.language_code|act_publication_title\.language_code|preparation\.language_code|preparation_step\.language_code|catalogue_search_(stage_)?expression\.language_code</includeExpression>
         </forcedType>
         <forcedType>
           <userType>dev.groknull.kludgeworks.eu.legislation.viewer.ingest.Failure</userType>
