@@ -56,7 +56,7 @@ java_library(
         ":application",
         ":catalogue",
         ":jooq",
-        "//libs/jooq-extension/src/main/java/dev/groknull/kludgeworks/jooq/postgres",
+        "//libs/jooq-extension",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
@@ -84,7 +84,7 @@ jooq_tables(
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq",
     deps = [
         ":catalogue",
-        "//libs/jooq-extension/src/main/java/dev/groknull/kludgeworks/jooq/postgres",
+        "//libs/jooq-extension",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",

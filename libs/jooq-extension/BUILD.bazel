@@ -1,0 +1,37 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library", "java_test_suite")
+
+# The jOOQ extension: what jOOQ lacks for Postgres's full-text search and trigram similarity, the
+# types tsvector and tsquery, the rank weights and the operators. A library of its own, outside the
+# viewer's application modules. Laid out as Maven lays out a project: the library in src/main/java,
+# in the package dev.groknull.kludgeworks.jooq.postgres; its tests in src/test/java.
+
+# The library, by the short name //libs/jooq-extension
+java_library(
+    name = "jooq-extension",
+    srcs = glob(["src/main/java/**/*.java"]),
+    visibility = ["//viewer:__subpackages__"],
+    deps = [
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)
+
+# The SQL that the operators render: one test target per *Test.java
+java_test_suite(
+    name = "tests",
+    size = "small",
+    srcs = glob(["src/test/java/**/*Test.java"]),
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        ":jooq-extension",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
