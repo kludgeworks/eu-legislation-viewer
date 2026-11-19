@@ -27,6 +27,6 @@ The Publications Office documents automated access to Cellar. A recurring bulk-q
 
 ## Rebuild operation
 
-One viewer holds a PostgreSQL session advisory lock while building the index. It records the attempt before contacting Cellar and commits each extract into session-private staging tables. After a failed attempt the hourly check waits until 24 hours after the claim to retry. A restart during a build counts as a failed attempt. To build again sooner, set `claimed_at` to `-infinity`. After a successful build the next nightly boundary makes the index eligible again.
+One viewer holds a PostgreSQL session advisory lock while building the index. It records the attempt before contacting Cellar and commits each extract into unlogged staging tables of the migration. Two functions of the migration turn the extracts into the rows of the next index, and the build empties the staging tables when it starts and ends. After a failed attempt the hourly check waits until 24 hours after the claim to retry. A restart during a build counts as a failed attempt. To build again sooner, set `claimed_at` to `-infinity`. After a successful build the next nightly boundary makes the index eligible again.
 
 The final transaction checks that the staged inventory is nonempty and contains at least 95% of the previously published act count, applies the index changes, and records completion. Readers keep the last published index if the build fails. The `catalogue.search.extract` observation records duration and errors by extract family, including `citations`.
