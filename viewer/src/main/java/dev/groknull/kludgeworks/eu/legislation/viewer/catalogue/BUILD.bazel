@@ -101,6 +101,7 @@ java_library(
         ":catalogue",
         ":view",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/broadcast",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",

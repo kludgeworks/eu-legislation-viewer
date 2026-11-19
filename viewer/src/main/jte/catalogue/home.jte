@@ -10,8 +10,11 @@
      is not, and a footer links to the About page, its Privacy and its API. The page leaves out the small search box of the site bar (search false).
      For a CELEX number or ELI of an act that the catalogue does not have yet, the page says at once
      that it looks the act up. htmx then asks the lookup address, which goes to the act when the
-     Publications Office answers, or comes back with the line that no act has it. Without
-     JavaScript, the head sends the browser to the lookup address. --%>
+     Publications Office answers, or comes back with the line that no act has it. After 15 s, a
+     second line says that the Publications Office is slow. If the Publications Office does not
+     answer, the page says so (catalogue/unanswered.jte). If the request times out or its
+     connection fails, js/loading.js shows the same from the template. Without JavaScript, the
+     head sends the browser to the lookup address. --%>
 @template.layout.page(frame = frame, title = title, search = false, head = @`@if(home.lookingUp() != null)<noscript><meta http-equiv="refresh" content="0;url=${home.lookingUp().href()}"></noscript>@endif`, content = @`
   <div class="home">
     <header class="home-mast">
@@ -23,7 +26,14 @@
       <p class="ex">A CELEX number or ELI goes straight to the act. Try <a href="/?q=32015R1998">32015R1998</a> <a href="/?q=eli/reg_impl/2015/1998/oj">eli/reg_impl/2015/1998/oj</a> <a href="/?q=air+cargo+security">air cargo security</a></p>
     </form>
     @if(home.lookingUp() != null)
-      <p class="none looking" role="status" hx-get="${home.lookingUp().href()}" hx-trigger="load" hx-target="main" hx-select="main" hx-swap="outerHTML">${home.lookingUp().line()}</p>
+      <div class="looking" role="status" hx-get="${home.lookingUp().href()}" hx-trigger="load" hx-target="main" hx-select="main" hx-swap="outerHTML">
+        <p class="none">${home.lookingUp().line()}</p>
+        <p class="slow">The Publications Office is slow to answer.</p>
+        <template class="failed">@template.catalogue.unanswered(unanswered = home.lookingUp().unanswered())</template>
+      </div>
+    @endif
+    @if(home.unanswered() != null)
+      @template.catalogue.unanswered(unanswered = home.unanswered())
     @endif
     @if(home.none() != null)
       <p class="none" role="status">${home.none()}</p>

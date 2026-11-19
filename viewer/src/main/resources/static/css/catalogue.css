@@ -894,8 +894,9 @@ form.find-act .ex a {
   color: var(--ink2);
 }
 
-/* While the page looks an act up at the Publications Office. A dot pulses before the line. */
-.home .looking::before {
+/* While the page looks an act up at the Publications Office. A dot pulses before the line. After
+ * 15 s, a second line says that the Publications Office is slow. */
+.home .looking > .none::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -907,8 +908,21 @@ form.find-act .ex a {
   animation: pulse 1.2s ease-in-out infinite;
 }
 
+.home .looking > .slow {
+  margin: 6px 0 0 18px;
+  color: var(--ink3);
+  visibility: hidden;
+  animation: slow 0s 15s forwards;
+}
+
+@keyframes slow {
+  to {
+    visibility: visible;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .home .looking::before {
+  .home .looking > .none::before {
     animation: none;
   }
 }

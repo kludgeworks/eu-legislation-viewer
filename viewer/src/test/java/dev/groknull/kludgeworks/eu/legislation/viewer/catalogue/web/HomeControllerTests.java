@@ -22,6 +22,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.assertj.MvcTestResult;
+import org.springframework.web.client.ResourceAccessException;
 
 /**
  * Tests the controller of the home page alone, with {@code @WebMvcTest} and the modules mocked. The
@@ -100,10 +101,33 @@ class HomeControllerTests {
     var page = page(mvc.get().uri("/?q=32015R1998").exchange());
 
     var looking = page.select(".looking");
-    assertThat(looking.text()).isEqualTo("Looking up 2015/1998 at the Publications Office…");
+    assertThat(page.select(".looking > p").eachText())
+        .containsExactly(
+            "Looking up 2015/1998 at the Publications Office…",
+            "The Publications Office is slow to answer.");
     assertThat(looking.attr("hx-get")).isEqualTo("/lookup?q=32015R1998");
     assertThat(page.select("noscript meta").attr("content"))
         .isEqualTo("0;url=/lookup?q=32015R1998");
+    // If the request times out, the page shows what can help.
+    assertThat(looking.select("template.failed a").eachAttr("href"))
+        .containsExactly(
+            "/?q=32015R1998",
+            "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32015R1998");
+  }
+
+  @Test
+  void saysThatThePublicationsOfficeDidntAnswerALookup() {
+    when(acts.catalogued(OneActCellar.CELEX)).thenReturn(Optional.empty());
+    when(acts.find(OneActCellar.CELEX)).thenThrow(new ResourceAccessException("Read timed out"));
+
+    var result = mvc.get().uri("/lookup?q=32015R1998").header("HX-Request", "true").exchange();
+
+    assertThat(result).hasStatus(HttpStatus.SERVICE_UNAVAILABLE);
+    var failure = Objects.requireNonNull(Jsoup.parse(body(result)).selectFirst("main .failure"));
+    assertThat(failure.select("h2").text()).isEqualTo("The lookup did not finish");
+    assertThat(failure.select("a").eachText())
+        .containsExactly("Try again", "Read it on EUR-Lex ↗ (opens EUR-Lex)");
+    assertThat(failure.select("a").eachAttr("href")).first().isEqualTo("/?q=32015R1998");
   }
 
   @Test
@@ -129,7 +153,7 @@ class HomeControllerTests {
   @Test
   void saysNoActHasACelexNumberCellarDoesntKnow() {
     // This is 185/2010. The stand-in Cellar knows only 2015/1998.
-    assertThat(page(mvc.get().uri("/?q=32010R0185").exchange()).select(".looking").text())
+    assertThat(page(mvc.get().uri("/?q=32010R0185").exchange()).select(".looking > .none").text())
         .isEqualTo("Looking up 185/2010 at the Publications Office…");
     assertThat(page(mvc.get().uri("/lookup?q=32010R0185").exchange()).select(".none").text())
         .isEqualTo("No act has the CELEX number or ELI 32010R0185.");
@@ -177,8 +201,12 @@ class HomeControllerTests {
 
   static Document page(MvcTestResult result) {
     assertThat(result).hasStatusOk();
+    return Jsoup.parse(body(result));
+  }
+
+  private static String body(MvcTestResult result) {
     try {
-      return Jsoup.parse(result.getResponse().getContentAsString());
+      return result.getResponse().getContentAsString();
     } catch (java.io.UnsupportedEncodingException e) {
       throw new IllegalStateException(e);
     }

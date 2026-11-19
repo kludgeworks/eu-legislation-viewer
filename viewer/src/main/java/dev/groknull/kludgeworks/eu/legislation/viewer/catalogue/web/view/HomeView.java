@@ -20,9 +20,15 @@ import org.jspecify.annotations.Nullable;
  *     reader typed. Null otherwise.
  * @param lookingUp the act that the page looks up, if the catalogue does not have the act that the
  *     reader typed yet. Null otherwise.
+ * @param unanswered what can help when the Publications Office did not answer a lookup. Null
+ *     otherwise.
  */
 public record HomeView(
-    String words, @Nullable Results results, @Nullable String none, @Nullable LookingUp lookingUp) {
+    String words,
+    @Nullable Results results,
+    @Nullable String none,
+    @Nullable LookingUp lookingUp,
+    @Nullable Unanswered unanswered) {
   /**
    * The names of the kinds of act, as the row of each act shows them, by the codes of their
    * resource types.
@@ -42,7 +48,7 @@ public record HomeView(
 
   /** Returns the home page before a search. */
   public static HomeView empty() {
-    return new HomeView("", null, null, null);
+    return new HomeView("", null, null, null, null);
   }
 
   /**
@@ -50,16 +56,24 @@ public record HomeView(
    * is the reason.
    */
   public static HomeView none(String words, String none) {
-    return new HomeView(words, null, none, null);
+    return new HomeView(words, null, none, null, null);
   }
 
   /**
    * Returns the home page that looks up the act that {@code words}, a CELEX or ELI, name. It says
    * {@code line} and asks {@code href}, which goes to the act once the Publications Office has
-   * answered.
+   * answered. If the answer does not come, the page shows {@code unanswered}.
    */
-  public static HomeView lookingUp(String words, String line, String href) {
-    return new HomeView(words, null, null, new LookingUp(line, href));
+  public static HomeView lookingUp(String words, String line, String href, Unanswered unanswered) {
+    return new HomeView(words, null, null, new LookingUp(line, href, unanswered), null);
+  }
+
+  /**
+   * Returns the home page that says that the Publications Office did not answer the lookup of the
+   * act that {@code words}, a CELEX or ELI, name.
+   */
+  public static HomeView unanswered(String words, Unanswered unanswered) {
+    return new HomeView(words, null, null, null, unanswered);
   }
 
   /**
@@ -86,6 +100,7 @@ public record HomeView(
             page > 1 ? Links.home(words, kind, page - 1) : null,
             found.more() ? Links.home(words, kind, page + 1) : null,
             size),
+        null,
         null,
         null);
   }
@@ -219,6 +234,15 @@ public record HomeView(
    * @param line what the page says while it waits. For example, "Looking up 2015/1998 at the
    *     Publications Office…".
    * @param href the address that looks the act up and goes to it
+   * @param unanswered what can help if the answer does not come
    */
-  public record LookingUp(String line, String href) {}
+  public record LookingUp(String line, String href, Unanswered unanswered) {}
+
+  /**
+   * What can help when the Publications Office did not answer the lookup of an act.
+   *
+   * @param again the search again, which looks the act up again
+   * @param eurLex the act on EUR-Lex
+   */
+  public record Unanswered(String again, String eurLex) {}
 }

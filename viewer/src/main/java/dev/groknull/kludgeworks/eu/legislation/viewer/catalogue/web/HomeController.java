@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.HomeView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
+import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.CellarException;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Frame;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
@@ -32,13 +33,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestClientException;
 
 /**
  * The home page. It has one box, Find an act.
  *
  * <ul>
- *   <li>A CELEX number or ELI opens the act. The local index can also identify an act by a curated
- *       name or an unambiguous citation.
+ *   <li>A CELEX number or ELI opens the act. The local index can also identify an act by an
+ *       unambiguous citation.
  *   <li>Other words list matching acts, one page at a time. A filter limits results to a kind of
  *       act, for example {@code ?type=regulation}.
  * </ul>
@@ -158,7 +160,9 @@ class HomeController {
    * asks for this address when the catalogue does not have the act yet. Asking the Publications
    * Office takes seconds, so the home page first says that it looks the act up. A request from htmx
    * gets the address of the act in {@code HX-Redirect}. If no act has it, the response is the home
-   * page that says so. Other words go to their results.
+   * page that says so. If the Publications Office does not answer, the response is the home page
+   * that says so, with 503. Other words go to their results. A lookup is logged when it starts and
+   * when it ends.
    */
   @GetMapping(path = LOOK_UP, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> lookUp(@RequestParam String q, HttpServletRequest request) {
@@ -195,6 +199,8 @@ class HomeController {
     }
     var name = named.get();
     var act = name.catalogued(acts);
+    var unanswered =
+        new HomeView.Unanswered(Links.home(words, Search.Kind.ALL, 1), name.eurLex().toString());
     if (act.isEmpty() && lookingUp == null) {
       LOG.info(
           "Searched for “{}” by {}: not in the catalogue yet, so the page looks it up",
@@ -207,10 +213,29 @@ class HomeController {
               HomeView.lookingUp(
                   words,
                   "Looking up " + name.number() + " at the Publications Office…",
-                  LOOK_UP + "?q=" + URLEncoder.encode(words, StandardCharsets.UTF_8))));
+                  LOOK_UP + "?q=" + URLEncoder.encode(words, StandardCharsets.UTF_8),
+                  unanswered)));
     }
     if (act.isEmpty()) {
-      act = name.find(acts);
+      LOG.info("Looking up “{}” by {} at the Publications Office", typed(words), name.as());
+      try {
+        act = name.find(acts);
+      } catch (CellarException | RestClientException e) {
+        LOG.warn(
+            "Looked up “{}” by {}: the Publications Office did not answer, in {} ms",
+            typed(words),
+            name.as(),
+            millis(started),
+            e);
+        return Optional.of(
+            ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .contentType(Requests.HTML)
+                .body(
+                    templates
+                        .catalogueHome(
+                            frame, "Amendment viewer", HomeView.unanswered(words, unanswered))
+                        .render()));
+      }
     }
     LOG.info(
         "{} “{}” by {}: {}, in {} ms",
@@ -266,6 +291,13 @@ class HomeController {
 
     Optional<Act> find(Acts acts) {
       return celex != null ? acts.find(celex) : acts.find(Objects.requireNonNull(eli));
+    }
+
+    /** Returns the act on EUR-Lex, in English. */
+    URI eurLex() {
+      return celex != null
+          ? celex.eurLex(Language.ENG)
+          : Objects.requireNonNull(eli).eurLex(Language.ENG);
     }
   }
 

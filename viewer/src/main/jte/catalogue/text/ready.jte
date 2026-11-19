@@ -59,7 +59,7 @@
     <p class="status">Loading the text…</p>
     <noscript><p><a href="${content}">The text</a></p></noscript>
     <template class="failed">
-      <section class="failure" role="alert" aria-labelledby="text-failed">
+      <section class="failure fault" role="alert" aria-labelledby="text-failed">
         <div class="failure-head">
           <h2 id="text-failed">The text did not load</h2>
           <p>The viewer did not send the text in time, or the connection failed.</p>
