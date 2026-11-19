@@ -21,9 +21,10 @@ import org.jooq.impl.DSL;
 /**
  * A pending migration's new name, in a database it already ran on: before Flyway validates, the
  * schema history's row of a pending migration (version 9999.NNN: {@link PendingMigrations}) whose
- * file is gone is moved to the migration that is that file renamed: the one not run yet with the
- * same description and contents (checksum). So a database the app ran on in development stays valid
- * when the release gives its pending migrations their final names, or the lint numbers them again
+ * file is gone, or whose number a new pending migration took, is moved to the migration that is
+ * that file renamed: the one not run yet with the same description and contents (checksum). The new
+ * pending migration then runs. So a database the app ran on in development stays valid when the
+ * release gives its pending migrations their final names, or the lint numbers them again
  * (release:db-migrations --fix); a pending migration changed since it ran still fails, as Flyway
  * would have it.
  */
@@ -53,7 +54,7 @@ public final class RenamedMigrations implements Callback {
       var renamed =
           notRun.stream()
               .filter(m -> m.getDescription().equals(gone.getDescription()))
-              .filter(m -> Objects.equals(m.getChecksum(), gone.getChecksum()))
+              .filter(m -> Objects.equals(m.getChecksum(), gone.getAppliedChecksum()))
               .toList();
       if (renamed.size() == 1) {
         move(context, configuration, gone, renamed.getFirst());
@@ -76,9 +77,15 @@ public final class RenamedMigrations implements Callback {
         .all();
   }
 
+  /**
+   * A pending migration that ran, and whose file may be gone: no file has its version, or the file
+   * of its version has other contents. The second is a new pending migration that took its number
+   * when it was renamed, or the same file changed since it ran: {@link #handle} moves the row only
+   * if a migration not run yet has the contents that ran.
+   */
   private static boolean isPendingWithoutFile(MigrationInfo migration) {
     return migration.isApplied()
-        && !migration.getState().isResolved()
+        && (!migration.getState().isResolved() || !migration.isChecksumMatching())
         && !migration.getState().isFailed()
         && migration.getVersion() != null
         && migration.getVersion().getVersion().startsWith(PendingMigrations.VERSION + ".");

@@ -102,6 +102,24 @@ class PendingMigrationsTest {
   }
 
   @Test
+  void followsAPendingMigrationReleasedWhenANewOneTakesItsNumber() throws IOException {
+    write("V2026_11_0_001__act.sql", "create table act (id int);");
+    write("NEXT_001__title.sql", "alter table act add column title text;");
+    flyway().migrate();
+
+    rename("NEXT_001__title.sql", "V2026_12_0_001__title.sql");
+    write("NEXT_001__date.sql", "alter table act add column date date;");
+    var result = flyway().migrate();
+
+    assertThat(result.migrationsExecuted).isEqualTo(1);
+    assertThat(applied())
+        .containsExactly(
+            "2026.11.0.001 V2026_11_0_001__act.sql",
+            "2026.12.0.001 V2026_12_0_001__title.sql",
+            "9999.001 V9999_001__date.sql");
+  }
+
+  @Test
   void leavesAPendingMigrationChangedSinceItRanToFlyway() throws IOException {
     write("NEXT_001__act.sql", "create table act (id int);");
     flyway().migrate();
