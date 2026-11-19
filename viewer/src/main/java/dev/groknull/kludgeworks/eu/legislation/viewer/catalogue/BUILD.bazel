@@ -6,7 +6,7 @@ load("//tools/build:defs.bzl", "jooq_tables")
 java_library(
     name = "catalogue",
     srcs = glob(["*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
@@ -25,7 +25,7 @@ java_library(
 java_library(
     name = "application",
     srcs = glob(["application/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":catalogue",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
@@ -48,7 +48,7 @@ java_library(
 java_library(
     name = "infra",
     srcs = glob(["infra/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     runtime_deps = [
         "//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue/infra:sparql",
     ],
@@ -56,6 +56,7 @@ java_library(
         ":application",
         ":catalogue",
         ":jooq",
+        "//libs/jooq-extension/src/main/java/dev/groknull/kludgeworks/jooq/postgres",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
@@ -83,6 +84,7 @@ jooq_tables(
     package = "dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq",
     deps = [
         ":catalogue",
+        "//libs/jooq-extension/src/main/java/dev/groknull/kludgeworks/jooq/postgres",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/ingest",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
@@ -94,7 +96,7 @@ jooq_tables(
 java_library(
     name = "web",
     srcs = glob(["web/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":catalogue",
         ":view",
@@ -133,7 +135,7 @@ java_library(
 java_library(
     name = "view",
     srcs = glob(["web/view/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":catalogue",
         "//tools/build:record_builder",

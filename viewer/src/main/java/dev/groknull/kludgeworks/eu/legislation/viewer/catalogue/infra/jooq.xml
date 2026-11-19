@@ -8,7 +8,8 @@
      - The location and role of an amendment are Location and Amendment.Role.
      - The language and failure of an expression are Language and Failure.
      - The texts of a step count are TextId.
-     - Times are Instants. -->
+     - Times are Instants.
+     - Every tsvector column is a TsVector of the library libs/jooq-extension. -->
 <configuration xmlns="http://www.jooq.org/xsd/jooq-codegen-3.21.0.xsd">
   <logging>WARN</logging>
   <generator>
@@ -83,6 +84,14 @@
             <to>instant -> instant.atOffset(java.time.ZoneOffset.UTC)</to>
           </lambdaConverter>
           <includeTypes>(?i:timestamptz|timestamp\ with\ time\ zone)</includeTypes>
+        </forcedType>
+        <forcedType>
+          <userType>dev.groknull.kludgeworks.jooq.postgres.TsVector</userType>
+          <lambdaConverter>
+            <from>dev.groknull.kludgeworks.jooq.postgres.TsVector::of</from>
+            <to>dev.groknull.kludgeworks.jooq.postgres.TsVector::text</to>
+          </lambdaConverter>
+          <includeTypes>(?i:tsvector)</includeTypes>
         </forcedType>
       </forcedTypes>
     </database>

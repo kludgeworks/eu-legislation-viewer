@@ -366,8 +366,7 @@ class SearchRebuild {
         .set(expression.TITLE, excluded(expression.TITLE))
         .set(expression.SUBSTANTIVE_TITLE, excluded(expression.SUBSTANTIVE_TITLE))
         .set(expression.SHORT_TITLES_NORM, excluded(expression.SHORT_TITLES_NORM))
-        // The column has no Java type, so set(field, field) and set(field, value) would both fit.
-        .set(Map.of(expression.SEARCH_TSV, excluded(expression.SEARCH_TSV)))
+        .set(expression.SEARCH_TSV, excluded(expression.SEARCH_TSV))
         .where(
             row(
                     expression.TITLE,

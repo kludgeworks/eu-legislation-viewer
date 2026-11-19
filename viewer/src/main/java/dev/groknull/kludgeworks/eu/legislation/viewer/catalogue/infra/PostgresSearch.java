@@ -1,18 +1,16 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.ENGLISH;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.either;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.matches;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.plainToTsQuery;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.rankCd;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.tsvector;
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.wordSimilar;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_ALIAS;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_AMENDMENT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXPRESSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_REBUILD;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_WORK;
+import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.either;
+import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.matches;
+import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.plainToTsQuery;
+import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.rankCd;
+import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.wordSimilar;
 import static org.jooq.impl.DSL.concat;
 import static org.jooq.impl.DSL.exists;
 import static org.jooq.impl.DSL.field;
@@ -36,12 +34,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.TsQuery;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.TextSearch.Weights;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Routines;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.CatalogueSearchAmendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import dev.groknull.kludgeworks.jooq.postgres.RankWeights;
+import dev.groknull.kludgeworks.jooq.postgres.TsQuery;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
 import java.math.BigDecimal;
@@ -76,8 +74,11 @@ class PostgresSearch implements Search {
   /** How like a run of words of a title the typed words must be to match it with typos. */
   private static final BigDecimal TYPO_THRESHOLD = new BigDecimal("0.60");
 
+  /** The text search configuration that the index of acts is built with. */
+  private static final String ENGLISH = "english";
+
   /** The weight of each class of word in a rank: D, C, B and A. */
-  private static final Weights WEIGHTS = new Weights(0.05f, 0.15f, 0.6f, 1.0f);
+  private static final RankWeights WEIGHTS = new RankWeights(0.05f, 0.15f, 0.6f, 1.0f);
 
   // The columns of the matches, as the steps of the search name them.
   private static final Field<ActIdentifier> CELEX =
@@ -314,7 +315,7 @@ class PostgresSearch implements Search {
     var score =
         typo
             ? Routines.wordSimilarity(val(typed), expression.SUBSTANTIVE_TITLE).times(cited)
-            : rankCd(WEIGHTS, tsvector(expression.SEARCH_TSV), words, 32)
+            : rankCd(WEIGHTS, expression.SEARCH_TSV, words, 32)
                 .times(cited)
                 .times(
                     when(work.IN_FORCE.isFalse(), inline(new BigDecimal("0.5")))
@@ -339,7 +340,7 @@ class PostgresSearch implements Search {
         .and(
             typo
                 ? wordSimilar(val(typed), expression.SUBSTANTIVE_TITLE)
-                : matches(tsvector(expression.SEARCH_TSV), words));
+                : matches(expression.SEARCH_TSV, words));
   }
 
   /** Returns the column {@code like} of the step {@code table}. */

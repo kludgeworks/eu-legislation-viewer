@@ -1,0 +1,17 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_library")
+
+# Postgres's full-text search and trigram similarity for jOOQ: the types tsvector and tsquery, and
+# the operators. A library of its own, outside the viewer's application modules
+java_library(
+    name = "postgres",
+    srcs = glob(["*.java"]),
+    visibility = [
+        "//libs/jooq-extension:__subpackages__",
+        "//viewer:__subpackages__",
+    ],
+    deps = [
+        "@maven//:org_jooq_jooq",
+        "@maven//:org_jspecify_jspecify",
+    ],
+)
