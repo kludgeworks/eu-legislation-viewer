@@ -21,15 +21,15 @@
   @else
     <ol class="progress-steps">
       <li>
-        <strong>Convert each version</strong>
+        <strong>Convert each text</strong>
         @for(var line : progress.running())
           <p>${line}</p>
         @endfor
         <progress value="${progress.settled()}" max="${progress.size()}">${progress.counts()}</progress>
       </li>
       <li>
-        <strong>Match provisions between versions</strong>
-        <p>Each pair of neighbouring versions, as soon as both are ready</p>
+        <strong>Match the provisions of each text to the next</strong>
+        <p>As soon as both texts are ready</p>
       </li>
       <li class="done">
         <strong>Load when each amended provision applies</strong>

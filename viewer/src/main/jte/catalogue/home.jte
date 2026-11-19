@@ -66,7 +66,7 @@
       </section>
     @endif
     <section class="about" aria-label="About this viewer">
-      <div><h3>What this is</h3><p>An unofficial reader for EU acts and their consolidated versions, converted from the Publications Office’s Formex files.</p></div>
+      <div><h3>What this is</h3><p>An unofficial reader for EU acts and their consolidated texts, converted from the Publications Office’s Formex files.</p></div>
       <div><h3>What it adds</h3><p>Pick any two days and see what differs between the law on each, provision by provision, with the amending act, its Official Journal reference and the date each change applies from.</p></div>
       <div><h3>What it isn’t</h3><p>Not the authentic text. Check the Official Journal, or EUR-Lex, before relying on a provision.</p></div>
     </section>

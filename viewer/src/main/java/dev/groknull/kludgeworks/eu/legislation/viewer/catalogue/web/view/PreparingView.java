@@ -154,11 +154,11 @@ public record PreparingView(
    *     eye only.
    * @param running the versions that are worked on now, each with what is done to it. A version is
    *     being converted, or waits to be tried again after an attempt that failed. For example,
-   *     "Version 16 of 22 · from 1 April 2023 · converting".
+   *     "Text 16 of 22 · from 1 April 2023 · converting".
    * @param settled how many versions are ready or failed
    * @param size how many versions there are
    * @param counts how many versions are ready, and how many could not be made. For example, "16 of
-   *     22 versions ready".
+   *     22 texts ready".
    * @param seconds how long the preparation has taken so far, in seconds. The clock on the page
    *     starts from this value.
    * @param elapsed the same time, as the page shows it. For example, 4:12.
@@ -257,9 +257,9 @@ public record PreparingView(
     }
 
     /**
-     * Returns, in plain words, why nothing has started. For example, "About 40 versions of other
-     * acts are ahead. Nothing's wrong; this one starts by itself." From 10 versions ahead, the
-     * number is rounded to the nearest 10.
+     * Returns, in plain words, why nothing has started. For example, "About 40 texts of other acts
+     * are ahead. Nothing's wrong; this one starts by itself." From 10 versions ahead, the number is
+     * rounded to the nearest 10.
      */
     static String waiting(int ahead) {
       var calm = "Nothing's wrong; this one starts by itself.";
