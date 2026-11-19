@@ -16,8 +16,8 @@
  * @returns {Element | null}
  */
 export const part = (id) => {
-  const parts = document.getElementById("sidenote-parts");
-  if (!id || !(parts instanceof HTMLTemplateElement)) {
+  const parts = document.querySelector("template#sidenote-parts");
+  if (!id || !parts) {
     return null;
   }
   return parts.content.getElementById(id);
