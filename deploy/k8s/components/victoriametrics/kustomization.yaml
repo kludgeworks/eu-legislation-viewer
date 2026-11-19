@@ -1,0 +1,8 @@
+# SPDX-License-Identifier: MIT
+# For a cluster with the VictoriaMetrics operator: its vmagent collects Valkey's statistics, from
+# the exporter beside Valkey (base/valkey.yaml). Add it to a Flux Kustomization at deploy/k8s/base
+# or at an overlay with components: [../components/victoriametrics].
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+resources:
+  - vmpodscrape.yaml

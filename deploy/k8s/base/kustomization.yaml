@@ -1,7 +1,8 @@
 # SPDX-License-Identifier: MIT
-# The viewer on Kubernetes, in a namespace of its own, with Valkey for its broadcast events, on a
+# The viewer on Kubernetes, in a namespace of its own, with Valkey for its broadcast events and its cache, on a
 # Postgres of your own: kubectl apply -k deploy/k8s/base, or a Flux Kustomization at this path. With
-# its own Postgres too: deploy/k8s/overlays/with-postgres (the Component components/postgres).
+# its own Postgres too: deploy/k8s/overlays/with-postgres (the Component components/postgres). With the VictoriaMetrics
+# operator, the Component components/victoriametrics collects Valkey's statistics.
 #
 # Made outside the repository, in the namespace: the Secret viewer-database, with the keys url
 # (jdbc:postgresql://<host>:5432/<database>), username and password. Not with the Component,

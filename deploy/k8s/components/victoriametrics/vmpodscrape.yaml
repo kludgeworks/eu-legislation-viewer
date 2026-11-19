@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: MIT
+# Valkey's statistics, from its exporter's port metrics, for the operator's vmagent
+apiVersion: operator.victoriametrics.com/v1beta1
+kind: VMPodScrape
+metadata:
+  name: valkey
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: valkey
+  podMetricsEndpoints:
+    - port: metrics
