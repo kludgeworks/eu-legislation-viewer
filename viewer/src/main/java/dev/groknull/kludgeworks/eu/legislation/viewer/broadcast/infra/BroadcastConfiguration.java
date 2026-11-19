@@ -48,8 +48,11 @@ import tools.jackson.databind.json.JsonMapper;
 class BroadcastConfiguration {
   private static final Logger LOG = LoggerFactory.getLogger(BroadcastConfiguration.class);
 
-  /** How long a read waits for an entry before reading again. */
-  private static final Duration POLL = Duration.ofSeconds(10);
+  /**
+   * How long a read waits for an entry before reading again. It is shorter than Valkey's command
+   * timeout ({@code spring.data.redis.timeout}), which also ends a read that blocks.
+   */
+  private static final Duration POLL = Duration.ofSeconds(2);
 
   /**
    * How long to wait before reading again after a read failed. Mostly, a read fails because Valkey

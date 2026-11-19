@@ -28,6 +28,14 @@ spring:
       # Boot's executor (applicationTaskExecutor: the listeners', Cellar's reads) alongside ingest's
       # workers, which would otherwise stand in for it
       mode: force
+  data:
+    redis:
+      # Valkey: a cache that does not answer is skipped (CachingConfiguration), but only when its
+      # command ends. Lettuce's default is 60 s, which can hold a text's request for a minute. The
+      # timeout is longer than the poll of the broadcast's streams (BroadcastConfiguration.POLL),
+      # which blocks for its whole time
+      connect-timeout: 2s
+      timeout: 5s
   http:
     clients:
       # every RestClient Boot builds, so Cellar's: to open a connection, and for a response, since

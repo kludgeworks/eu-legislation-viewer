@@ -13,6 +13,9 @@
  * When the request ends, htmx has swapped in the new `#page`, which has none of this. If it failed,
  * the page is put back as it was.
  *
+ * A part of the page that loads with its own request, such as the text, shows its failure when the
+ * request times out or its connection fails ({@link fail}).
+ *
  * A page opened at a fragment, such as a Read mark's link to a unit in Compare, often loads that
  * unit after the browser looked for it. When a swap brings the fragment's element, the page scrolls
  * to it, once.
@@ -94,6 +97,30 @@ export const pageOf = (event) => {
     ? page
     : null;
 };
+
+/**
+ * Shows in `slot` its failure, from its `<template class="failed">`, and returns whether it has
+ * one. A slot loads its part of the page with a request of its own, as the text does. When that
+ * request times out or its connection fails, htmx swaps nothing, and the slot would say "Loading…"
+ * until the reader leaves. The template stays in the slot.
+ *
+ * @param {Element} slot
+ * @returns {boolean}
+ */
+export const fail = (slot) => {
+  const shape = slot.querySelector(":scope > template.failed");
+  if (!(shape instanceof HTMLTemplateElement)) {
+    return false;
+  }
+  slot.replaceChildren(shape, shape.content.cloneNode(true));
+  return true;
+};
+
+document.addEventListener("htmx:error", (event) => {
+  if (event.target instanceof Element) {
+    fail(event.target);
+  }
+});
 
 document.addEventListener("htmx:before:request", (event) => {
   const page = pageOf(event);

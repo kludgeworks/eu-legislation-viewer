@@ -325,7 +325,9 @@ class VersionController {
                 MarksView.of(act, version, language),
                 MarginView.of(act, version, date, language, marks, today()),
                 Links.read(eli, date, language) + "/provision",
-                ProvisionView.units(act, version, language, marks));
+                ProvisionView.units(act, version, language, marks),
+                self,
+                version.eurLex(language).toString());
         // The version appeared since, and it is being prepared.
         case Text.Waiting _, Text.Converting _ -> templates.catalogueTextArriving();
         case Text.Failed failed ->

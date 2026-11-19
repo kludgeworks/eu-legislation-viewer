@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { arrive, coming, land, pageOf, start, stop } from "../../main/resources/static/js/loading.js";
+import { arrive, coming, fail, land, pageOf, start, stop } from "../../main/resources/static/js/loading.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -129,5 +129,32 @@ describe("a jump to an element", () => {
     while (run() > 0);
 
     expect(scrolled).toHaveBeenCalledTimes(11);
+  });
+});
+
+describe("a part of the page that loads by itself", () => {
+  const SLOT = `
+    <div class="content" hx-get="/content/5"><p class="status">Loading the text…</p>
+      <template class="failed"><section class="failure"><h2>The text did not load</h2>
+        <a class="button" href="/read">Try again</a></section></template></div>`;
+
+  test("shows its failure when its request times out or its connection fails", () => {
+    document.body.innerHTML = SLOT;
+    const slot = /** @type {HTMLElement} */ (document.querySelector(".content"));
+
+    slot.dispatchEvent(new CustomEvent("htmx:error", { bubbles: true }));
+
+    expect(slot.querySelector(".status")).toBeNull();
+    expect(slot.querySelector("section.failure h2")?.textContent).toBe("The text did not load");
+    expect(slot.querySelector("a.button")?.getAttribute("href")).toBe("/read");
+    // The template stays, for a later failure.
+    expect(fail(slot)).toBe(true);
+    expect(slot.querySelectorAll("section.failure")).toHaveLength(1);
+  });
+
+  test("leaves a part without a failure as it is", () => {
+    document.body.innerHTML = `<div id="other"><p>Loading…</p></div>`;
+    expect(fail(element("other"))).toBe(false);
+    expect(element("other").textContent).toBe("Loading…");
   });
 });

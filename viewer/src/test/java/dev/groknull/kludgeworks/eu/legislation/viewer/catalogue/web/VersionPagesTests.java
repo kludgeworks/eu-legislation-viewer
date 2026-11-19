@@ -94,6 +94,10 @@ class VersionPagesTests {
     assertThat(page(PAGE).select("#page.arrived")).isEmpty();
     var loads = Objects.requireNonNull(arrived.selectFirst(".content"));
     assertThat(loads.attr("hx-trigger")).isEqualTo("load");
+    // If the text does not arrive, the page shows its failure: Try again, and EUR-Lex.
+    assertThat(loads.select("template.failed a"))
+        .extracting(Element::text)
+        .containsExactly("Try again", "Read it on EUR-Lex ↗ (opens EUR-Lex)");
     assertThat(arrived.select("nav.outline summary a")).isEmpty();
     assertThat(arrived.select("nav.outline > ul > li > a"))
         .extracting(link -> link.attr("href"), Element::text)

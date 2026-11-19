@@ -7,6 +7,8 @@
 @param MarginView margin
 @param String provision
 @param java.util.List<String> provisions
+@param String self
+@param String eurLex
 <%-- Shows the built text with its outline beside it. htmx loads the text from the content module.
      The outline follows the reader (js/outline.js): it marks the section in view and names it in
      its head. Without the script, the head names nothing.
@@ -50,8 +52,23 @@
       @endif
     @endfor
   </margin-rules>
+  <%-- If the request for the text times out or its connection fails, htmx swaps nothing.
+       js/loading.js then shows the failure from the template: what failed, Try again (the page
+       again), and the version on EUR-Lex. --%>
   <div class="content" hx-get="${content}" hx-trigger="load" hx-swap="innerHTML">
     <p class="status">Loading the text…</p>
     <noscript><p><a href="${content}">The text</a></p></noscript>
+    <template class="failed">
+      <section class="failure" role="alert" aria-labelledby="text-failed">
+        <div class="failure-head">
+          <h2 id="text-failed">The text did not load</h2>
+          <p>The viewer did not send the text in time, or the connection failed.</p>
+        </div>
+        <div class="failure-actions">
+          <a class="button" href="${self}">Try again</a>
+          <a href="${eurLex}" rel="external">Read it on EUR-Lex<span aria-hidden="true"> ↗</span><span class="visually-hidden"> (opens EUR-Lex)</span></a>
+        </div>
+      </section>
+    </template>
   </div>
 </div>
