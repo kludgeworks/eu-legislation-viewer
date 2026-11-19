@@ -19,7 +19,8 @@
  *
  * The calendar puts a dot on each day with a change. The hover of such a day shows what changes on
  * it, and so does its focus when the reader moves with the keys. "Previous change" and "Next change" move the focus to the nearest day with a
- * dot. The days between two days have no shade.
+ * dot. With two days, they also set the box that has the frame to that day, and the frame stays. The
+ * days between two days have no shade.
  *
  * In the calendar, the arrow keys move by a day and a week, Page Up and Page Down by a month, and
  * Escape closes it.
@@ -538,20 +539,12 @@ export class DayPicker extends HTMLElement {
     const tip = element("div", { class: "day-tip", "aria-hidden": "true", hidden: "" });
     const wrap = element("div", { class: "day-days" });
     wrap.append(grid, tip);
-    const { previous, next } = around(days, this.#focus);
     const foot = element("div", { class: "day-foot" });
-    for (const [day, text] of /** @type {const} */ ([
-      [previous, "‹ Previous change"],
-      [next, "Next change ›"],
-    ])) {
-      const step = element("button", { type: "button", class: "link" }, text);
-      if (day) {
-        step.dataset.move = day;
-      } else {
-        step.disabled = true;
-      }
-      foot.append(step);
-    }
+    foot.append(
+      element("button", { type: "button", class: "link", "data-step": "previous" }, "‹ Previous change"),
+      element("button", { type: "button", class: "link", "data-step": "next" }, "Next change ›"),
+    );
+    this.#steps(foot);
     foot.append(
       this.#two
         ? element("button", { type: "button", class: "day-show", "data-show": "" }, "Show")
@@ -574,11 +567,45 @@ export class DayPicker extends HTMLElement {
   }
 
   /**
-   * Moves the focus to `day`, turning the month if it is in another.
+   * Sets the days of "Previous change" and "Next change" in `foot`. They count from the day of the
+   * focus, and with two days from the day of the box that has the frame, if it has a day.
+   *
+   * @param {ParentNode | null | undefined} foot
+   */
+  #steps(foot) {
+    const from = (this.#two && (this.#end === "first" ? this.#first : this.#day)) || this.#focus;
+    const nearest = around([...this.changes.keys()], from);
+    for (const step of foot?.querySelectorAll("[data-step]") ?? []) {
+      if (!(step instanceof HTMLButtonElement)) {
+        continue;
+      }
+      const day = step.dataset.step === "previous" ? nearest.previous : nearest.next;
+      step.disabled = !day;
+      if (day) {
+        step.dataset.move = day;
+      } else {
+        delete step.dataset.move;
+      }
+    }
+  }
+
+  /**
+   * Moves the focus to `day`, turning the month if it is in another. With two days, `day` is also
+   * the day that has the frame, and the frame stays on it: the reader can step on from change to
+   * change.
    *
    * @param {string} day an ISO date
    */
   #move(day) {
+    if (this.#two) {
+      if (this.#end === "first") {
+        this.#first = day;
+      } else {
+        this.#day = day;
+      }
+      this.#error = "";
+      this.#write();
+    }
     this.#focus = day;
     this.#shown = day;
     this.#render("day");
@@ -656,6 +683,7 @@ export class DayPicker extends HTMLElement {
       for (const label of panel.querySelectorAll(".day-ends label")) {
         label.classList.toggle("active", label.contains(box));
       }
+      this.#steps(panel.querySelector(".day-foot"));
     }
     const button = event.target.closest(".day-grid button");
     if (event.type === "focusin" && !this.#keys) {

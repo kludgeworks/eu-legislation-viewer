@@ -67,7 +67,9 @@ The pages have no timeline. The day control sets the day of a page:
   day names its acts, three at most, and then says how many more there are.
 - The days between two days have no shade. The day of the page has a fill. The first of two days
   has an outline.
-- "Previous change" and "Next change" move to the nearest day with a dot.
+- "Previous change" and "Next change" move to the nearest day with a dot. With two days, they
+  also set the day box that has the frame to that day. The frame stays on that box, so the
+  reader can step from change to change.
 - Without scripts, the control is a form with date boxes.
 
 ## Terms

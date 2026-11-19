@@ -222,6 +222,26 @@ describe("the day control", () => {
     expect(values(form)).toEqual({ from: "2021-03-15", to: "2021-03-20", unit: "art_6" });
   });
 
+  test("puts the day of the previous or next change in the day with the frame, and keeps the frame", () => {
+    const { picker, sent } = control();
+    click(picker, ".day-open");
+    click(picker, '[data-mode="two"]');
+    const box = (/** @type {string} */ end) =>
+      /** @type {HTMLInputElement} */ (picker.querySelector(`.day-ends input[data-end="${end}"]`)).value;
+    click(picker, '[data-step="next"]');
+    expect(box("first")).toBe("31 December 2021");
+    expect(picker.querySelector(".day-ends .active input")?.getAttribute("data-end")).toBe("first");
+    expect(picker.querySelector('[data-step="next"]')?.hasAttribute("disabled")).toBe(true);
+    // The second day takes the change when it has the frame, counted from its own day.
+    /** @type {HTMLInputElement} */ (picker.querySelector('.day-ends input[data-end="second"]')).focus();
+    click(picker, '[data-step="next"]');
+    expect(box("second")).toBe("31 December 2021");
+    click(picker, '[data-step="previous"]');
+    expect(box("second")).toBe("11 March 2021");
+    expect(box("first")).toBe("31 December 2021");
+    expect(sent).not.toHaveBeenCalled();
+  });
+
   test("does not ask for two days while one is not given", () => {
     const { picker, sent } = control();
     click(picker, ".day-open");
