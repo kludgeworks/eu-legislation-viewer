@@ -72,13 +72,13 @@ class HomeControllerTests {
   }
 
   @Test
-  void opensAnIndexedNameAndRespectsTheKindOnAFilteredSearch() {
-    when(search.identified("GDPR")).thenReturn(Optional.of(OneActCellar.CELEX));
-    assertThat(mvc.get().uri("/?q=GDPR"))
+  void opensACitedActAndRespectsTheKindOnAFilteredSearch() {
+    when(search.identified("2015/1998")).thenReturn(Optional.of(OneActCellar.CELEX));
+    assertThat(mvc.get().uri("/?q=2015/1998"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
         .hasValue(HttpHeaders.LOCATION, READ);
-    assertThat(mvc.get().uri("/?q=GDPR&type=directive")).hasStatusOk();
+    assertThat(mvc.get().uri("/?q=2015/1998&type=directive")).hasStatusOk();
   }
 
   @Test

@@ -32,11 +32,6 @@ public final class TextSearch {
         "plainto_tsquery({0}::regconfig, {1})", TsQuery.DATA_TYPE, DSL.inline(configuration), text);
   }
 
-  /** Returns a query that matches what {@code one} or {@code other} matches: {@code ||}. */
-  public static Field<TsQuery> either(Field<TsQuery> one, Field<TsQuery> other) {
-    return DSL.field("({0} || {1})", TsQuery.DATA_TYPE, one, other);
-  }
-
   /** Returns whether {@code vector} matches {@code query}: {@code @@}. */
   public static Condition matches(Field<TsVector> vector, Field<TsQuery> query) {
     return DSL.condition("{0} @@ {1}", vector, query);

@@ -21,7 +21,9 @@ The Postgres run used the viewer repository on PostgreSQL 18.6 and the archived 
 
 Replaying the archived Spike 6 and 7 implementations identified the two typo queries behind the change from 41 to 39 first-place hits. At a trigram threshold of 0.52, both schemas ranked an expected act first for `aviaton securty`. For `passanger rights`, Spike 6 returned the expected rail passenger regulation and Spike 7 ranked a different act first even at 0.52. At the specified 0.60 threshold, Spike 7 returned no act for either query. Changing the ranking formula at 0.60 recovered neither.
 
-The viewer also misses three prototype queries that the spike answered with topical aliases: “liquids in hand luggage”, “cookie consent privacy”, and “right to be forgotten”. The production seed contains act identifiers and short names. Catalogue maintainers can update it through reviewed migrations.
+The viewer also misses three prototype queries that the spike answered with topical aliases: “liquids in hand luggage”, “cookie consent privacy”, and “right to be forgotten”.
+
+The viewer keeps no list of names of its own. A short name such as “GDPR” finds an act only through the titles and short titles that Cellar gives. The figures above were measured with a seeded list of short names, which was removed later. They must be measured again.
 
 The Publications Office documents automated access to Cellar. A recurring bulk-query allowance remains unconfirmed. The viewer can run the job on an enabled instance and issue one request at a time. [Cellar access guidance](https://op.europa.eu/en/web/eu-vocabularies/cellar)
 

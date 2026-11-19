@@ -27,16 +27,6 @@ class TextSearchTest {
   }
 
   @Test
-  void joinsTwoQueriesSoThatEitherMatches() {
-    var one = TextSearch.plainToTsQuery("english", DSL.val("gdpr"));
-    var other = TextSearch.plainToTsQuery("english", DSL.val("2016/679"));
-    assertThat(POSTGRES.renderInlined(TextSearch.either(one, other)))
-        .isEqualTo(
-            "(plainto_tsquery('english'::regconfig, 'gdpr')"
-                + " || plainto_tsquery('english'::regconfig, '2016/679'))");
-  }
-
-  @Test
   void ranksWithTheWeightsInPostgresOrder() {
     var query = TextSearch.plainToTsQuery("simple", DSL.val("reach"));
     var weights = new RankWeights(0.05f, 0.15f, 0.6f, 1.0f);

@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra;
 
-import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_ALIAS;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_AMENDMENT;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_EXPRESSION;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_REBUILD;
 import static dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.Tables.CATALOGUE_SEARCH_WORK;
-import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.either;
 import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.matches;
 import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.plainToTsQuery;
 import static dev.groknull.kludgeworks.jooq.postgres.TextSearch.rankCd;
@@ -15,13 +13,10 @@ import static org.jooq.impl.DSL.concat;
 import static org.jooq.impl.DSL.exists;
 import static org.jooq.impl.DSL.field;
 import static org.jooq.impl.DSL.inline;
-import static org.jooq.impl.DSL.length;
 import static org.jooq.impl.DSL.ln;
 import static org.jooq.impl.DSL.name;
 import static org.jooq.impl.DSL.noCondition;
 import static org.jooq.impl.DSL.notExists;
-import static org.jooq.impl.DSL.position;
-import static org.jooq.impl.DSL.regexpReplaceAll;
 import static org.jooq.impl.DSL.select;
 import static org.jooq.impl.DSL.selectOne;
 import static org.jooq.impl.DSL.substring;
@@ -115,68 +110,53 @@ class PostgresSearch implements Search {
   @Override
   public Optional<ActIdentifier> identified(String typed) {
     var citation = CITATION.matcher(typed.strip());
-    boolean numbered = citation.matches();
+    if (!citation.matches()) {
+      return Optional.empty();
+    }
     return Observation.createNotStarted("catalogue.search.identify", observations)
-        .lowCardinalityKeyValue("method", numbered ? "citation" : "alias")
-        .observe(() -> identify(typed, citation, numbered));
+        .observe(() -> identify(citation));
   }
 
-  private Optional<ActIdentifier> identify(String typed, Matcher citation, boolean numbered) {
-    List<ActIdentifier> ids;
-    if (numbered) {
-      int left = Integer.parseInt(citation.group(3));
-      int right = Integer.parseInt(citation.group(4));
-      String kind =
-          switch (Objects.toString(citation.group(2), "").toLowerCase(Locale.ROOT)) {
-            case "regulation" -> "R";
-            case "directive" -> "L";
-            case "decision" -> "D";
-            default -> "";
-          };
-      String subtype =
-          switch (Objects.toString(citation.group(1), "").toLowerCase(Locale.ROOT)) {
-            case "implementing" -> "IMPL";
-            case "delegated" -> "DEL";
-            default -> "";
-          };
-      // Pre-2000 directives may cite the year with two digits, as in 95/46/EC.
-      if (!kind.isEmpty()
-          && citation.group(3).length() == 2
-          && citation.group(4).length() < 4
-          && left >= 50) {
-        left += 1900;
-      }
-      var work = CATALOGUE_SEARCH_WORK;
-      var condition =
-          work.ACT_YEAR
-              .eq(left)
-              .and(work.NATURAL_NUMBER.eq(right))
-              .or(work.ACT_YEAR.eq(right).and(work.NATURAL_NUMBER.eq(left)));
-      if (!kind.isEmpty()) {
-        condition = condition.and(sector(work.CELEX).eq(kind));
-      }
-      if (!subtype.isEmpty()) {
-        condition =
-            condition.and(
-                work.RESOURCE_TYPE.endsWith("_" + subtype).or(work.RESOURCE_TYPE.eq(subtype)));
-      }
-      ids =
-          catalogue.select(work.CELEX).from(work).where(condition).limit(2).fetch(Record1::value1);
-    } else {
-      var alias = CATALOGUE_SEARCH_ALIAS;
-      var work = CATALOGUE_SEARCH_WORK;
-      ids =
-          catalogue
-              .select(alias.CELEX)
-              .from(alias)
-              .join(work)
-              .on(work.CELEX.eq(alias.CELEX))
-              .where(
-                  alias.ALIAS_NORM.eq(
-                      typed.strip().toLowerCase(Locale.ROOT).replaceAll("\\s+", " ")))
-              .and(alias.IS_EXACT_REDIRECT)
-              .fetch(Record1::value1);
+  /** Returns the one act that the typed citation names, if it names exactly one. */
+  private Optional<ActIdentifier> identify(Matcher citation) {
+    int left = Integer.parseInt(citation.group(3));
+    int right = Integer.parseInt(citation.group(4));
+    String kind =
+        switch (Objects.toString(citation.group(2), "").toLowerCase(Locale.ROOT)) {
+          case "regulation" -> "R";
+          case "directive" -> "L";
+          case "decision" -> "D";
+          default -> "";
+        };
+    String subtype =
+        switch (Objects.toString(citation.group(1), "").toLowerCase(Locale.ROOT)) {
+          case "implementing" -> "IMPL";
+          case "delegated" -> "DEL";
+          default -> "";
+        };
+    // Pre-2000 directives may cite the year with two digits, as in 95/46/EC.
+    if (!kind.isEmpty()
+        && citation.group(3).length() == 2
+        && citation.group(4).length() < 4
+        && left >= 50) {
+      left += 1900;
     }
+    var work = CATALOGUE_SEARCH_WORK;
+    var condition =
+        work.ACT_YEAR
+            .eq(left)
+            .and(work.NATURAL_NUMBER.eq(right))
+            .or(work.ACT_YEAR.eq(right).and(work.NATURAL_NUMBER.eq(left)));
+    if (!kind.isEmpty()) {
+      condition = condition.and(sector(work.CELEX).eq(kind));
+    }
+    if (!subtype.isEmpty()) {
+      condition =
+          condition.and(
+              work.RESOURCE_TYPE.endsWith("_" + subtype).or(work.RESOURCE_TYPE.eq(subtype)));
+    }
+    List<ActIdentifier> ids =
+        catalogue.select(work.CELEX).from(work).where(condition).limit(2).fetch(Record1::value1);
     return ids.size() == 1 ? Optional.of(ids.getFirst()) : Optional.empty();
   }
 
@@ -216,8 +196,6 @@ class PostgresSearch implements Search {
    * has one row for each act that it amends.
    *
    * <ol>
-   *   <li>The words are the typed words, and the typed words with a curated name in them replaced
-   *       by its act's number ({@link #expanded}).
    *   <li>An act matches if its words match ({@code @@}). Its score is how close the words are in
    *       its title ({@code ts_rank_cd}), more for an act that more acts cite, and less for an act
    *       not in force.
@@ -235,10 +213,6 @@ class PostgresSearch implements Search {
     var typed = terms(query);
     var allowTypos = query.words().size() <= 3 && query.typed().length() <= 28;
     var words = plainToTsQuery(ENGLISH, Routines.unaccent2(typed));
-    var expanded = expanded(typed);
-    if (expanded.isPresent()) {
-      words = either(words, plainToTsQuery(ENGLISH, Routines.unaccent2(expanded.get())));
-    }
 
     // Each use is its own subquery, so that Postgres plans it with the filter of that use.
     var lexical = name("lexical").as(scored(query, typed, false, words));
@@ -363,35 +337,6 @@ class PostgresSearch implements Search {
   /** Returns the letter of the kind of act in {@code celex}: R, L or D. */
   private static Field<String> sector(Field<ActIdentifier> celex) {
     return substring(celex.coerce(SQLDataType.CLOB), 6, 1);
-  }
-
-  /**
-   * Returns {@code typed} with the longest curated name in it replaced by the number of its act, if
-   * {@code typed} has one and is not that name alone. For example, "gdpr adequacy japan" is
-   * "2016/679 adequacy japan", so that the acts that cite the GDPR by number match. A name is
-   * compared as words: its hyphens and other marks are spaces, as in {@code typed}.
-   */
-  private Optional<String> expanded(String typed) {
-    var alias = CATALOGUE_SEARCH_ALIAS;
-    var work = CATALOGUE_SEARCH_WORK;
-    var name = regexpReplaceAll(alias.ALIAS_NORM, "[^[:alnum:]/]+", " ");
-    var padded = " " + typed + " ";
-    return catalogue
-        .select(name, work.ACT_YEAR, work.NATURAL_NUMBER)
-        .from(alias)
-        .join(work)
-        .on(work.CELEX.eq(alias.CELEX))
-        .where(name.ne(typed))
-        .and(alias.IS_EXACT_REDIRECT)
-        .and(position(val(padded), inline(" ").concat(name).concat(inline(" "))).gt(0))
-        .orderBy(length(name).desc(), name)
-        .limit(1)
-        .fetchOptional(
-            row ->
-                padded
-                    .replace(
-                        " " + row.value1() + " ", " " + row.value2() + "/" + row.value3() + " ")
-                    .strip());
   }
 
   private static String terms(Query query) {

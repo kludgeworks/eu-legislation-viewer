@@ -39,38 +39,6 @@ create table catalogue_search_amendment (
 );
 create index catalogue_search_amended on catalogue_search_amendment (amends);
 
--- Curated independently of the nightly inventory so aliases survive withdrawals and reappearances.
-create table catalogue_search_alias (
-  alias_norm text primary key,
-  celex text not null check (celex ~ '^3[0-9]{4}[RLD][0-9]{4}$'),
-  is_exact_redirect boolean not null
-);
-insert into catalogue_search_alias values
-('gdpr', '32016R0679', true),
-('general data protection regulation', '32016R0679', true),
-('ai act', '32024R1689', true),
-('artificial intelligence act', '32024R1689', true),
-('dsa', '32022R2065', true),
-('digital services act', '32022R2065', true),
-('dma', '32022R1925', true),
-('digital markets act', '32022R1925', true),
-('dora', '32022R2554', true),
-('digital operational resilience act', '32022R2554', true),
-('mica', '32023R1114', true),
-('markets in crypto-assets', '32023R1114', true),
-('nis2', '32022L2555', true),
-('nis 2', '32022L2555', true),
-('nis 2 directive', '32022L2555', true),
-('psd2', '32015L2366', true),
-('reach', '32006R1907', true),
-('emir', '32012R0648', true),
-('cbam', '32023R0956', true),
-('csrd', '32022L2464', true),
-('cra', '32024R2847', true),
-('cyber resilience act', '32024R2847', true),
-('data act', '32023R2854', true),
-('eidas', '32014R0910', true);
-
 create table catalogue_search_rebuild (
   only_row boolean primary key default true check (only_row),
   claimed_at timestamptz not null default '-infinity',
@@ -84,8 +52,6 @@ comment on column catalogue_search_work.citation_count is 'Distinct works citing
 comment on table catalogue_search_expression is 'Searchable words and display title by act and language.';
 comment on column catalogue_search_expression.search_tsv is 'Weights A for identifiers and names, B for substantive title, C for title, amendments and vocabulary.';
 comment on table catalogue_search_amendment is 'Acts amended by each search result, including their ELI when known.';
-comment on table catalogue_search_alias is 'Reviewed names and identifiers maintained by catalogue maintainers through migrations.';
-comment on column catalogue_search_alias.is_exact_redirect is 'The complete name identifies one act directly.';
 comment on table catalogue_search_rebuild is 'A single viewer builds the index on startup and nightly.';
 comment on column catalogue_search_rebuild.completed_at is 'Time the complete index became visible. Null until first successful publication.';
 
@@ -196,8 +162,6 @@ begin
         s.celex,
         regexp_split_to_table(concat_ws(';', s.short_title, s.alternative_title), ';') as name
       from catalogue_search_extract_short_title as s
-      union all
-      select a.celex, a.alias_norm from catalogue_search_alias as a
     ) as n
     where trim(n.name) <> ''
     group by n.celex

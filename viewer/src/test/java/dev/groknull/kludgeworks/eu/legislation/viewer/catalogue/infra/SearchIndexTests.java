@@ -11,7 +11,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Search;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.Sparql;
 import dev.groknull.kludgeworks.eu.legislation.viewer.cellar.SparqlResult;
@@ -85,7 +84,7 @@ class SearchIndexTests {
     var first = search.matching(query);
     assertThat(first.more()).isTrue();
     assertThat(first.acts().getFirst().id().celex()).isEqualTo("32016R0679");
-    assertThat(search.identified("GDPR")).contains(new ActIdentifier("32016R0679"));
+    assertThat(search.identified("GDPR")).isEmpty();
     assertThat(search.identified("679/2016")).isEqualTo(search.identified("2016/679"));
     assertThat(search.identified("2016/679")).isPresent();
     var second = search.matching(Search.Query.of("aviation", Search.Kind.ALL, 1, 1).orElseThrow());
@@ -104,11 +103,11 @@ class SearchIndexTests {
                 .acts())
         .hasSize(1);
 
-    var citing = Search.Query.of("GDPR adequacy Japan", Search.Kind.DIRECTIVE, 0, 5).orElseThrow();
+    var citing =
+        Search.Query.of("2016/679 adequacy Japan", Search.Kind.DIRECTIVE, 0, 5).orElseThrow();
     assertThat(search.matching(citing).acts())
         .extracting(match -> match.id().celex())
         .containsExactly("32016L0001");
-    assertThat(search.identified("GDPR adequacy Japan")).isEmpty();
     var pastEnd = Search.Query.of("aviation", Search.Kind.ALL, 2, 1).orElseThrow();
     assertThat(search.matching(pastEnd).acts()).isEmpty();
 
@@ -164,10 +163,7 @@ class SearchIndexTests {
                 .timer()
                 .count())
         .isPositive();
-    assertThat(meters.get("catalogue.search.identify").tag("method", "alias").timer().count())
-        .isPositive();
-    assertThat(meters.get("catalogue.search.identify").tag("method", "citation").timer().count())
-        .isPositive();
+    assertThat(meters.get("catalogue.search.identify").timer().count()).isPositive();
     assertThat(
             meters
                 .get("catalogue.search.extract")
@@ -239,32 +235,6 @@ class SearchIndexTests {
         update catalogue_search_rebuild set claimed_at=now()-interval '3 days',
           completed_at=now()-interval '2 days'
         """);
-  }
-
-  @Test
-  void expandsHyphenatedAliasOnlyForMatchingLongerQueries() {
-    rolledBack(this::expandsHyphenatedAlias);
-  }
-
-  private void expandsHyphenatedAlias() {
-    database.update("update catalogue_search_rebuild set completed_at=now()");
-    database.update(
-        """
-        insert into catalogue_search_work (celex,citation_count)
-        values ('32023R1114',1), ('32024L0002',1)
-        """);
-    database.update(
-        """
-        insert into catalogue_search_expression
-        values ('32024L0002','ENG','Reporting','Reporting','{}',to_tsvector('english','reporting 2023/1114'))
-        """);
-    assertThat(search.identified("Markets in Crypto-Assets"))
-        .contains(new ActIdentifier("32023R1114"));
-    var typed = "markets in crypto-assets reporting";
-    assertThat(search.identified(typed)).isEmpty();
-    assertThat(search.matching(Search.Query.of(typed, Search.Kind.ALL, 0, 5).orElseThrow()).acts())
-        .extracting(match -> match.id().celex())
-        .containsExactly("32024L0002");
   }
 
   @Test
