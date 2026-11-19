@@ -12,8 +12,8 @@ import net.sf.saxon.s9api.SaxonApiException;
 
 /**
  * Writes the converter's expected output for every fixture in scope into
- * formex-converter/src/test/resources/expected, and removes the files of fixtures that are gone.
- * Run it after a deliberate change to the converter, then review the diff: {@code mise run
+ * libs/formex-converter/src/test/resources/expected, and removes the files of fixtures that are
+ * gone. Run it after a deliberate change to the converter, then review the diff: {@code mise run
  * expected}.
  */
 public final class UpdateExpected {
@@ -25,7 +25,8 @@ public final class UpdateExpected {
     if (workspace == null) {
       throw new IllegalStateException("run with bazel run (mise run expected)");
     }
-    var out = Path.of(workspace, "formex-converter", "src", "test", "resources", "expected");
+    var out =
+        Path.of(workspace, "libs", "formex-converter", "src", "test", "resources", "expected");
     var saxon = new Processor(false);
     var stylesheet = new Stylesheet(saxon);
     var written = new HashSet<Path>();

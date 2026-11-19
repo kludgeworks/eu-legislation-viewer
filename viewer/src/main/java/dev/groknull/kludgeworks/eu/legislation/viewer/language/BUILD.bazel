@@ -5,7 +5,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 java_library(
     name = "language",
     srcs = glob(["*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         "@maven//:org_jmolecules_jmolecules_ddd",
         "@maven//:org_jmolecules_jmolecules_onion_architecture",

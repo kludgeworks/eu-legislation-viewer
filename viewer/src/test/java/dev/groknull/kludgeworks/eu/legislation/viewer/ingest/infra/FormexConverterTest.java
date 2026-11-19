@@ -23,7 +23,7 @@ import org.junit.jupiter.api.Test;
  *   <li>it reports as exceptions what the stylesheet cannot or will not convert.
  * </ul>
  *
- * <p>{@code StylesheetTest} in {@code //formex-converter} tests the contract of the stylesheet
+ * <p>{@code StylesheetTest} in {@code //libs/formex-converter} tests the contract of the stylesheet
  * itself.
  */
 class FormexConverterTest {

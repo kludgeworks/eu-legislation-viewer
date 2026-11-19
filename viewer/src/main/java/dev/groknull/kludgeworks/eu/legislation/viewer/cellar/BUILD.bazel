@@ -6,7 +6,7 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 java_library(
     name = "cellar",
     srcs = glob(["*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     runtime_deps = ["//viewer/src/main/resources/dev/groknull/kludgeworks/eu/legislation/viewer/cellar:sparql"],
     deps = [
         "@maven//:jakarta_validation_jakarta_validation_api",

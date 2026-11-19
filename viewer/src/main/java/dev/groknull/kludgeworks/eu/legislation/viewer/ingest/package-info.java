@@ -14,7 +14,7 @@
  *       package holds the rest of the domain ring: the ingest job and its refusals.
  *   <li>The {@code application} package is the application ring. It queues and runs jobs.
  *   <li>The {@code infra} package is the infrastructure. It reads the Formex from Cellar and runs
- *       the stylesheets of //formex-converter.
+ *       the stylesheets of //libs/formex-converter.
  * </ul>
  */
 @ApplicationModule(displayName = "Ingest")

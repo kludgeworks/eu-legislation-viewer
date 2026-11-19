@@ -6,8 +6,8 @@ java_test_suite(
     name = "legaltext",
     size = "small",
     srcs = glob(["*Test.java"]),
-    data = ["//formex-converter:legal-text.xsd"],
-    jvm_flags = ["-Dlegal-text.xsd=$(rootpath //formex-converter:legal-text.xsd)"],
+    data = ["//libs/formex-converter:legal-text.xsd"],
+    jvm_flags = ["-Dlegal-text.xsd=$(rootpath //libs/formex-converter:legal-text.xsd)"],
     runner = "junit5",
     runtime_deps = [
         "//viewer/src/main/jte",

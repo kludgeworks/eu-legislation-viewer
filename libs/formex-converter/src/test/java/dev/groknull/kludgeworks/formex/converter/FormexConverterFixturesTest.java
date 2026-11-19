@@ -81,7 +81,7 @@ class FormexConverterFixturesTest {
     validator.validate(new StreamSource(new StringReader(xml)));
   }
 
-  /** The output is what formex-converter/src/test/resources/expected holds for the fixture. */
+  /** The output is what libs/formex-converter/src/test/resources/expected holds for the fixture. */
   @Test
   void matchesTheExpectedOutput() throws IOException, SaxonApiException {
     var expected = ExpectedOutput.of(fixture);

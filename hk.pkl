@@ -10,7 +10,7 @@ import "package://github.com/jdx/hk/releases/download/v2.9.0/hk@2.9.0#/Builtins.
 // excluded from every fixer
 local raw =
   List(
-    "formex-converter/src/test/resources/fixtures/**",
+    "libs/formex-converter/src/test/resources/fixtures/**",
     "viewer/src/test/resources/acts/**",
     "viewer/src/test/resources/cellar/**",
     "**/xslt/subdivision.rdf",
@@ -19,8 +19,8 @@ local raw =
 // licence texts, as SPDX publishes them
 local vendored =
   List(
-    "formex-converter/src/test/resources/mathml3/**",
-    "formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/schema/xml.xsd",
+    "libs/formex-converter/src/test/resources/mathml3/**",
+    "libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/schema/xml.xsd",
     "**/*.patch",
     "LICENSES/**",
   )
@@ -29,7 +29,7 @@ local vendored =
 local generated =
   List(
     "maven_install.json",
-    "formex-converter/src/test/resources/expected/**/*.xml",
+    "libs/formex-converter/src/test/resources/expected/**/*.xml",
     ".mise/locks/**",
   )
 // the legal text's templates: their files end without a newline, which jte would write into running

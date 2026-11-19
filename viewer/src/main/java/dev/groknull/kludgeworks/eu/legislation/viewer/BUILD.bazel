@@ -10,7 +10,7 @@ load("//tools/build:defs.bzl", "spring_boot_jar")
 java_library(
     name = "viewer",
     srcs = glob(["*.java"]),
-    # the viewer only: //formex-converter never depends on it. The copy-paste check (//tools/build:cpd)
+    # the viewer only: //libs/formex-converter never depends on it. The copy-paste check (//tools/build:cpd)
     # reads its sources
     visibility = [
         "//tools/build:__pkg__",

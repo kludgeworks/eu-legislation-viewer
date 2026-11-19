@@ -15,15 +15,15 @@ java_test_suite(
         ],
     ),
     data = [
-        "//formex-converter/src/test/resources/expected",
-        "//formex-converter/src/test/resources/fixtures",
+        "//libs/formex-converter/src/test/resources/expected",
+        "//libs/formex-converter/src/test/resources/fixtures",
     ],
     runner = "junit5",
     runtime_deps = [
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
-        "//formex-converter/src/test/resources/compare:resources",
-        "//formex-converter/src/test/resources/mathml3:resources",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+        "//libs/formex-converter/src/test/resources/compare:resources",
+        "//libs/formex-converter/src/test/resources/mathml3:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",
@@ -46,12 +46,12 @@ java_test_suite(
 java_binary(
     name = "update_expected",
     testonly = True,
-    data = ["//formex-converter/src/test/resources/fixtures"],
+    data = ["//libs/formex-converter/src/test/resources/fixtures"],
     main_class = "dev.groknull.kludgeworks.formex.converter.UpdateExpected",
     runtime_deps = [
         ":converter-test-lib",
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
-        "//formex-converter/src/test/resources/compare:resources",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+        "//libs/formex-converter/src/test/resources/compare:resources",
     ],
 )
 
@@ -63,8 +63,8 @@ java_binary(
     main_class = "dev.groknull.kludgeworks.formex.converter.ConvertTexts",
     runtime_deps = [
         ":converter-test-lib",
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
-        "//formex-converter/src/test/resources/compare:resources",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+        "//libs/formex-converter/src/test/resources/compare:resources",
     ],
 )
 
@@ -117,9 +117,9 @@ java_junit5_test(
     visibility = ["//:__pkg__"],  # for the //:corpus suite
     runtime_deps = [
         ":corpus-tests",
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
-        "//formex-converter/src/test/resources/compare:resources",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+        "//libs/formex-converter/src/test/resources/compare:resources",
         "@maven//:org_junit_jupiter_junit_jupiter_engine",
         "@maven//:org_junit_platform_junit_platform_launcher",
         "@maven//:org_junit_platform_junit_platform_reporting",

@@ -179,7 +179,8 @@ public final class LegalTexts {
       return Path.of(
           Runfiles.preload()
               .withSourceRepository(AutoBazelRepository_LegalTexts.NAME)
-              .rlocation("kludgeworks_viewer/formex-converter/src/test/resources/expected/formex"));
+              .rlocation(
+                  "kludgeworks_viewer/libs/formex-converter/src/test/resources/expected/formex"));
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }

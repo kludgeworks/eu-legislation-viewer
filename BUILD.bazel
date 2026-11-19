@@ -12,5 +12,5 @@ npm_link_all_packages(name = "node_modules")
 test_suite(
     name = "corpus",
     tags = ["manual"],  # not part of //...
-    tests = ["//formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
+    tests = ["//libs/formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:corpus"],
 )

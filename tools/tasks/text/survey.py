@@ -33,7 +33,9 @@ from playwright.sync_api import sync_playwright
 
 ROOT = compare.ROOT
 OUT = compare.OUT / "survey"
-CONVERT = "//formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:convert_texts"
+CONVERT = (
+    "//libs/formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:convert_texts"
+)
 RENDER = (
     "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/legaltext:render_texts"
 )

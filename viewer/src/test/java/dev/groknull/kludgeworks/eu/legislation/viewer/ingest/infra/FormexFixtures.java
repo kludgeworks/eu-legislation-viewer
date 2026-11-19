@@ -122,6 +122,6 @@ final class FormexFixtures implements FormexSource {
     return Path.of(
         Runfiles.preload()
             .withSourceRepository(AutoBazelRepository_FormexFixtures.NAME)
-            .rlocation("kludgeworks_viewer/formex-converter/src/test/resources/" + path));
+            .rlocation("kludgeworks_viewer/libs/formex-converter/src/test/resources/" + path));
   }
 }

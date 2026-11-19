@@ -54,8 +54,8 @@ java_library(
         "infra/FormexFixturesConfiguration.java",
     ],
     data = [
-        "//formex-converter:expected",
-        "//formex-converter:fixtures",
+        "//libs/formex-converter:expected",
+        "//libs/formex-converter:fixtures",
     ],
     visibility = ["//viewer:__subpackages__"],
     deps = [

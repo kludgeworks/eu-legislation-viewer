@@ -34,7 +34,7 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Turns Formex 4 into legal-text XML with {@code formex-to-legal-text.xsl}. It is the adapter of
- * the ingest module on the stylesheets of //formex-converter. It runs the stylesheet by its
+ * the ingest module on the stylesheets of //libs/formex-converter. It runs the stylesheet by its
  * contract, which is in the header of the stylesheet. It turns the refusals of the stylesheet into
  * exceptions. The stylesheet is compiled once. Each call gets its own transformer, so one instance
  * serves concurrent calls.

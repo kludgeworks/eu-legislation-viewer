@@ -17,5 +17,5 @@ after_long_help "hk's xml step runs it on the XML a change touches (hk.pkl), and
 
 arg "<file>..." help="The XML files to check"
 
-example "mise run lint:xml formex-converter/src/test/xspec/*.xspec" header="Check some files" help="Nothing printed when they're well-formed"
+example "mise run lint:xml libs/formex-converter/src/test/xspec/*.xspec" header="Check some files" help="Nothing printed when they're well-formed"
 example "hk check --step xml --all" header="Check every XML file, as CI does" help="The files hk's xml step covers: not the raw Cellar fixtures"

@@ -7,7 +7,7 @@ load("//tools/build:defs.bzl", "jooq_tables")
 java_library(
     name = "ingest",
     srcs = glob(["*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_jmolecules_jmolecules_events",
@@ -23,7 +23,7 @@ java_library(
 java_library(
     name = "application",
     srcs = glob(["application/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":ingest",
         ":model",
@@ -45,14 +45,14 @@ java_library(
 
 # infra/
 # The ingest module's infrastructure: a document's Formex from Cellar, converted by
-# //formex-converter's stylesheets; the jobs in Postgres, with jOOQ
+# //libs/formex-converter's stylesheets; the jobs in Postgres, with jOOQ
 java_library(
     name = "infra",
     srcs = glob(["infra/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     runtime_deps = [
-        "//formex-converter:schema",
-        "//formex-converter:stylesheets",
+        "//libs/formex-converter:schema",
+        "//libs/formex-converter:stylesheets",
     ],
     deps = [
         ":application",
@@ -90,7 +90,7 @@ jooq_tables(
 java_library(
     name = "model",
     srcs = glob(["model/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":ingest",
         "//tools/build:record_builder",

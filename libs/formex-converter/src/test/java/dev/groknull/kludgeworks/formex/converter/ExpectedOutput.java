@@ -13,10 +13,10 @@ import net.sf.saxon.s9api.XdmNode;
 
 /**
  * The converter's expected output for each fixture, checked in as
- * formex-converter/src/test/resources/expected/&lt;fixture&gt;.xml, so that a change to the output
- * is a diff to review: an eId that changes is a major version of the converter. Indented, which
- * changes nothing: legal-text keeps its text in attributes (t/@v), so whitespace between elements
- * means nothing. {@link UpdateExpected} writes them.
+ * libs/formex-converter/src/test/resources/expected/&lt;fixture&gt;.xml, so that a change to the
+ * output is a diff to review: an eId that changes is a major version of the converter. Indented,
+ * which changes nothing: legal-text keeps its text in attributes (t/@v), so whitespace between
+ * elements means nothing. {@link UpdateExpected} writes them.
  */
 @AutoBazelRepository
 final class ExpectedOutput {
@@ -30,7 +30,7 @@ final class ExpectedOutput {
           Runfiles.preload()
               .withSourceRepository(AutoBazelRepository_ExpectedOutput.NAME)
               .rlocation(
-                  "kludgeworks_viewer/formex-converter/src/test/resources/expected/"
+                  "kludgeworks_viewer/libs/formex-converter/src/test/resources/expected/"
                       + fixture.name()
                       + ".xml"));
     } catch (IOException e) {

@@ -11,40 +11,40 @@ load("//tools/build:defs.bzl", "xslt_quality_test")
 # formex-to-legal-text.xsl, the modules it includes and version.txt, on the classpath
 alias(
     name = "stylesheets",
-    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
+    actual = "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:stylesheets",
     visibility = ["//visibility:public"],
 )
 
 # legal-text.xsd and what it needs, on the classpath at /dev/groknull/kludgeworks/formex/converter/schema/
 alias(
     name = "schema",
-    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
+    actual = "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema",
     visibility = ["//visibility:public"],
 )
 
 alias(
     name = "legal-text.xsd",
-    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema/legal-text.xsd",
+    actual = "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema/legal-text.xsd",
     visibility = ["//visibility:public"],
 )
 
 alias(
     name = "xml.xsd",
-    actual = "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema/xml.xsd",
+    actual = "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:schema/xml.xsd",
     visibility = ["//visibility:public"],
 )
 
 # the converter's output for each fixture: samples of legal text for the viewer's tests
 alias(
     name = "expected",
-    actual = "//formex-converter/src/test/resources/expected",
+    actual = "//libs/formex-converter/src/test/resources/expected",
     visibility = ["//visibility:public"],
 )
 
 # the fixtures' Formex, raw as Cellar serves it: for tests that read real documents
 alias(
     name = "fixtures",
-    actual = "//formex-converter/src/test/resources/fixtures:formex",
+    actual = "//libs/formex-converter/src/test/resources/fixtures:formex",
     visibility = ["//visibility:public"],
 )
 
@@ -52,7 +52,7 @@ alias(
 xslt_quality_test(
     name = "xslt_quality",
     srcs = [
-        "//formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:xslt",
-        "//formex-converter/src/test/resources/compare",
+        "//libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter:xslt",
+        "//libs/formex-converter/src/test/resources/compare",
     ],
 )

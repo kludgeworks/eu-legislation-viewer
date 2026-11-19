@@ -22,11 +22,11 @@ run = "bazel run //viewer:dev"
 
 ["test:xspec"]
 description = "Run the XSpec suites"
-run = "bazel test //formex-converter/src/test/xspec/..."
+run = "bazel test //libs/formex-converter/src/test/xspec/..."
 
 [expected]
 description = "Rewrite the converter's expected output from the fixtures, after a deliberate change"
-run = "bazel run //formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:update_expected"
+run = "bazel run //libs/formex-converter/src/test/java/dev/groknull/kludgeworks/formex/converter:update_expected"
 
 [modules]
 description = "Write the modules' documentation (Spring Modulith's Documenter) into viewer/spring-modulith-docs"

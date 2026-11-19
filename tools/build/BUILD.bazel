@@ -198,7 +198,7 @@ java_package_configuration(
 package_group(
     name = "ours",
     packages = [
-        "//formex-converter/...",
+        "//libs/...",
         "//tools/...",
         "//viewer/...",
     ],

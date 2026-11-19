@@ -10,9 +10,9 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 /**
- * The fixtures, the manifestations checked in under formex-converter/src/test/resources/fixtures
- * (the test target's data), as argument sources for parameterized tests: raw Formex as Cellar
- * serves it.
+ * The fixtures, the manifestations checked in under
+ * libs/formex-converter/src/test/resources/fixtures (the test target's data), as argument sources
+ * for parameterized tests: raw Formex as Cellar serves it.
  */
 @AutoBazelRepository
 final class Manifestations {
@@ -66,7 +66,7 @@ final class Manifestations {
       return Path.of(
           Runfiles.preload()
               .withSourceRepository(AutoBazelRepository_Manifestations.NAME)
-              .rlocation("kludgeworks_viewer/formex-converter/src/test/resources/fixtures"));
+              .rlocation("kludgeworks_viewer/libs/formex-converter/src/test/resources/fixtures"));
     } catch (IOException e) {
       throw new UncheckedIOException(e);
     }

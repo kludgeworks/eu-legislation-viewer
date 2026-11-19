@@ -51,7 +51,7 @@ SPDX-License-Identifier = "MIT"
 # EU legal documents in Formex as Cellar serves them: the fixtures, and a package recorded from Cellar
 [[annotations]]
 path = [
-  "formex-converter/src/test/resources/fixtures/**/*.xml",
+  "libs/formex-converter/src/test/resources/fixtures/**/*.xml",
   "viewer/src/test/resources/cellar/*.xml",
 ]
 precedence = "override"
@@ -60,7 +60,7 @@ SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
 
 # The converter's output for the fixtures (mise run expected): the same EU documents, as legal text
 [[annotations]]
-path = "formex-converter/src/test/resources/expected/**/*.xml"
+path = "libs/formex-converter/src/test/resources/expected/**/*.xml"
 precedence = "override"
 SPDX-FileCopyrightText = "European Union, https://eur-lex.europa.eu"
 SPDX-License-Identifier = "LicenseRef-EUR-Lex-reuse"
@@ -78,21 +78,21 @@ SPDX-License-Identifier = "CC0-1.0"
 
 # The EU subdivision authority table (EU Vocabularies), the one third-party file the converter ships
 [[annotations]]
-path = "formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/xslt/subdivision.rdf"
+path = "libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/xslt/subdivision.rdf"
 precedence = "override"
 SPDX-FileCopyrightText = "European Union, Publications Office of the European Union (EU Vocabularies)"
 SPDX-License-Identifier = "CC-BY-4.0"
 
 # W3C's schema of the xml: namespace (xml:lang), unchanged: https://www.w3.org/2001/xml.xsd
 [[annotations]]
-path = "formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/schema/xml.xsd"
+path = "libs/formex-converter/src/main/resources/dev/groknull/kludgeworks/formex/converter/schema/xml.xsd"
 precedence = "override"
 SPDX-FileCopyrightText = "World Wide Web Consortium"
 SPDX-License-Identifier = "W3C-20150513"
 
 # W3C's MathML 3 schema, unchanged (see its SOURCE)
 [[annotations]]
-path = "formex-converter/src/test/resources/mathml3/*.xsd"
+path = "libs/formex-converter/src/test/resources/mathml3/*.xsd"
 precedence = "override"
 SPDX-FileCopyrightText = "World Wide Web Consortium"
 SPDX-License-Identifier = "W3C-20150513"

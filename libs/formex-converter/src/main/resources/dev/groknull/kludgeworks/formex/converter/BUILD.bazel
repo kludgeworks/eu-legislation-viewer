@@ -2,7 +2,7 @@
 load("@contrib_rules_jvm//java:defs.bzl", "java_library")
 load("//tools/build:defs.bzl", "project_version")
 
-package(default_visibility = ["//formex-converter:__subpackages__"])
+package(default_visibility = ["//libs/formex-converter:__subpackages__"])
 
 # The converter's classpath resources, at /dev/groknull/kludgeworks/formex/converter/: the path the
 # viewer's adapter loads them by, and the tests' package

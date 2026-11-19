@@ -6,7 +6,7 @@ load("//tools/build:defs.bzl", "jooq_tables")
 java_library(
     name = "comparison",
     srcs = glob(["*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         "//tools/build:record_builder",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
@@ -23,7 +23,7 @@ java_library(
 java_library(
     name = "application",
     srcs = glob(["application/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":comparison",
         ":model",
@@ -44,7 +44,7 @@ java_library(
 java_library(
     name = "infra",
     srcs = glob(["infra/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":application",
         ":comparison",
@@ -75,7 +75,7 @@ jooq_tables(
 java_library(
     name = "model",
     srcs = glob(["model/*.java"]) + [":differ_version"],
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":comparison",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
@@ -91,7 +91,7 @@ java_library(
 java_library(
     name = "web",
     srcs = glob(["web/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":comparison",
         ":model",
@@ -123,7 +123,7 @@ java_library(
 java_library(
     name = "view",
     srcs = glob(["web/view/*.java"]),
-    visibility = ["//viewer:__subpackages__"],  # the viewer only: //formex-converter never depends on it
+    visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":comparison",
         ":model",

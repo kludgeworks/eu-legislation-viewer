@@ -45,7 +45,7 @@ java_library(
     name = "legal-texts",
     testonly = True,
     srcs = ["model/LegalTexts.java"],
-    data = ["//formex-converter:expected"],
+    data = ["//libs/formex-converter:expected"],
     visibility = ["//viewer:__subpackages__"],
     deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
