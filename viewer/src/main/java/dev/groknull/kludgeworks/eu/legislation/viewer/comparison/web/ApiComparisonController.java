@@ -294,7 +294,7 @@ class ApiComparisonController {
       LocalDate to,
       String language,
       @Nullable String amendingAct) {
-    var ends = new Ends(found(celex), Requests.language(language), from, to, amendingAct);
+    var ends = new Ends(found(celex), Requests.language(language), from, to, amendingAct, texts);
     var only = ends.only;
     var later = only == null ? ends.to : ends.step(only).orElseThrow(Requests::notFound);
     var earlier = only == null ? ends.from : ends.earlier(later);

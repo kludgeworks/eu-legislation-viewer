@@ -249,6 +249,15 @@ public record Act(
   }
 
   /**
+   * Returns the acts that the versions of this act in {@code language} include: Cellar's lists, and
+   * the acts that their texts mark first ({@link Inclusions}). {@code texts} are the marks of the
+   * texts in {@code language} that are built.
+   */
+  public Inclusions inclusions(Language language, Map<Version, TextMarks> texts) {
+    return Inclusions.of(timeline(language).orElse(timeline), texts);
+  }
+
+  /**
    * Returns the version that applies on {@code date} for a reader in {@code language}. Returns
    * empty before the text of the act first applies. The returned version applies on {@code date}
    * across the act, but may lack {@code language}. When multiple versions share a day, it picks the

@@ -175,7 +175,7 @@ class ChangesController {
         ComparePage.ofPart(request.getRequestURI(), from, to, null, view.parameter())
             .on(fromDay, toDay);
     var started = System.nanoTime();
-    var preparation = texts.preparation(ends.act, ends.language);
+    var preparation = ends.preparation;
     var earlier = ends.from;
     var later = ends.to;
     var attributed =
@@ -248,7 +248,11 @@ class ChangesController {
                         histories.put(
                             eId,
                             SidenoteView.history(
-                                ends.act, later, neighbour.markers(), ends.language));
+                                ends.act,
+                                ends.included,
+                                later,
+                                neighbour.markers(),
+                                ends.language));
                       });
             }
             yield templates
@@ -326,6 +330,7 @@ class ChangesController {
       var sidenote =
           SidenoteView.of(
               ends.act,
+              ends.included,
               from,
               to,
               difference,
@@ -410,7 +415,7 @@ class ChangesController {
         ComparePage.ofPart(
             request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
     var started = System.nanoTime();
-    var preparation = texts.preparation(ends.act, ends.language);
+    var preparation = ends.preparation;
     var only = ends.only;
     var pair = ready(ends, preparation);
     var earlier = pair.earlier();
@@ -508,7 +513,7 @@ class ChangesController {
                 null)
             .on(fromDay, toDay);
     var started = System.nanoTime();
-    var preparation = texts.preparation(ends.act, ends.language);
+    var preparation = ends.preparation;
     var only = ends.only;
     var pair = ready(ends, preparation);
     var earlier = pair.earlier();
@@ -582,14 +587,7 @@ class ChangesController {
     var started = System.nanoTime();
     var step = ends.step(only).orElseThrow(Requests::notFound);
     var attributed =
-        attributed(
-                ends,
-                texts.preparation(ends.act, ends.language),
-                ends.earlier(step),
-                step,
-                only,
-                null,
-                new HashMap<>())
+        attributed(ends, ends.preparation, ends.earlier(step), step, only, null, new HashMap<>())
             .orElseThrow(Requests::notFound);
     var others = new LinkedHashSet<ActIdentifier>();
     var shown = new ArrayList<ChangesView.Shown>();
@@ -704,8 +702,7 @@ class ChangesController {
       @RequestParam(ComparePage.LAST) String last) {
     var ends = ends(new Eli(type, year, number), code, from, to, null);
     var started = System.nanoTime();
-    if (!(texts.preparation(ends.act, ends.language).texts().get(ends.to)
-        instanceof Text.Ready later)) {
+    if (!(ends.preparation.texts().get(ends.to) instanceof Text.Ready later)) {
       throw Requests.notFound();
     }
     var text = content.read(later.text()).orElseThrow(Requests::notFound);
@@ -722,7 +719,8 @@ class ChangesController {
             new NeighbourView(
                 Neighbours.sibling(neighbour.unit()),
                 neighbour.unit(),
-                SidenoteView.history(ends.act, ends.to, neighbour.markers(), ends.language)));
+                SidenoteView.history(
+                    ends.act, ends.included, ends.to, neighbour.markers(), ends.language)));
       }
     }
     LOG.info(
@@ -740,6 +738,7 @@ class ChangesController {
   /** Returns the ends of the comparison at a canonical address of the compare page. */
   private Ends ends(Eli eli, String code, LocalDate from, LocalDate to, @Nullable String only) {
     var language = Requests.language(code);
-    return new Ends(acts.find(eli).orElseThrow(Requests::notFound), language, from, to, only);
+    return new Ends(
+        acts.find(eli).orElseThrow(Requests::notFound), language, from, to, only, texts);
   }
 }

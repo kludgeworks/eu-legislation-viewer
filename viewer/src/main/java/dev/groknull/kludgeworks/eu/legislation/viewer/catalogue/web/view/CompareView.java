@@ -85,7 +85,10 @@ public record CompareView(
       Map<Version, TextMarks> marks) {
     var eli = eli(act);
     var amending = act.amendingActs(language);
-    var between = act.integratedBetween(from, to).stream().filter(amending::contains).toList();
+    var between =
+        act.inclusions(language, marks).between(from, to).stream()
+            .filter(amending::contains)
+            .toList();
     var text = unit == null ? null : marks.get(to);
     var name = text == null || unit == null ? null : ProvisionView.name(act, unit, text, language);
     var changed =

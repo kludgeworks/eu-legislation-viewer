@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActDate;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -134,18 +135,21 @@ public record SidenoteView(
    */
   public static SidenoteView of(
       Act act,
+      Inclusions included,
       Version from,
       Version to,
       Difference difference,
       List<Amendment> amendments,
       Language language) {
-    return of(act, from, to, difference, amendments, null, language);
+    return of(act, included, from, to, difference, amendments, null, language);
   }
 
   /**
    * Returns the sidenote of {@code difference}, in the comparison of the version {@code from} of
    * {@code act} with the version {@code to}.
    *
+   * @param included the acts that each version includes ({@link Inclusions}): Cellar's lists, and
+   *     the acts that the built texts mark first
    * @param amendments the amendments of the unit in Cellar, by the acts between the two versions.
    *     {@code Amended.of} finds them.
    * @param only the act whose changes the comparison is limited to, if any
@@ -153,17 +157,18 @@ public record SidenoteView(
    */
   public static SidenoteView of(
       Act act,
+      Inclusions included,
       Version from,
       Version to,
       Difference difference,
       List<Amendment> amendments,
       @Nullable ActIdentifier only,
       Language language) {
-    var between = act.integratedBetween(from, to);
+    var between = included.between(from, to);
     var marked = acts(difference.markers(), between::contains);
     var markedVersions =
         marked.keySet().stream()
-            .map(each -> version(act, from, to, each))
+            .map(each -> version(included, from, to, each))
             .flatMap(Optional::stream)
             .collect(Collectors.toSet());
     var made = new LinkedHashMap<>(marked);
@@ -173,18 +178,19 @@ public record SidenoteView(
       // priority.
       if (between.contains(each)
           && !made.containsKey(each)
-          && version(act, from, to, each).filter(markedVersions::contains).isEmpty()) {
+          && version(included, from, to, each).filter(markedVersions::contains).isEmpty()) {
         made.put(each, action(amendment.role()));
       }
     }
     if (made.isEmpty()) {
-      return unknown(act, from, to, difference, language);
+      return unknown(act, included, from, to, difference, language);
     }
-    var steps = steps(act, from, to, made.keySet(), marked.keySet(), together(difference, between));
+    var steps =
+        steps(included, from, to, made.keySet(), marked.keySet(), together(difference, between));
     var dates = new ArrayList<Applies>();
     for (var each : steps.stream().flatMap(List::stream).toList()) {
       if (each.corrigendum()) {
-        dates.add(corrects(act, from, to, each));
+        dates.add(corrects(act, included, from, to, each));
       } else {
         var days =
             amendments.stream()
@@ -236,12 +242,17 @@ public record SidenoteView(
    * not, the sidenote does not say who made it.
    */
   private static SidenoteView unknown(
-      Act act, Version from, Version to, Difference difference, Language language) {
+      Act act,
+      Inclusions included,
+      Version from,
+      Version to,
+      Difference difference,
+      Language language) {
     var candidates =
-        act.integratedBetween(from, to).stream().filter(each -> !each.corrigendum()).toList();
+        included.between(from, to).stream().filter(each -> !each.corrigendum()).toList();
     var versions =
         candidates.stream()
-            .map(each -> version(act, from, to, each))
+            .map(each -> version(included, from, to, each))
             .flatMap(Optional::stream)
             .distinct()
             .count();
@@ -249,7 +260,7 @@ public record SidenoteView(
       return new SidenoteView(unsaid(difference), List.of(), List.of(), List.of(), null, null);
     }
     var ordered =
-        version(act, from, to, candidates.getFirst()).orElseThrow().integrates().stream()
+        included.of(version(included, from, to, candidates.getFirst()).orElseThrow()).stream()
             .filter(candidates::contains)
             .toList();
     var names = ordered.stream().map(act::cited).toList();
@@ -286,16 +297,13 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the first version after {@code from}, up to {@code to}, that integrates {@code
-   * amending}.
-   */
-  /**
    * Returns the date line of {@code corrigendum}. A corrigendum corrects its act from the start:
    * from the day the act applies, else from its entry into force. For example, "Corrigendum 4 to
    * 2017/815 corrects 2017/815 from 1 June 2017 · first in the text of 1 January 2026". The day is
    * left out if the act has none.
    */
-  private static Applies corrects(Act act, Version from, Version to, ActIdentifier corrigendum) {
+  private static Applies corrects(
+      Act act, Inclusions included, Version from, Version to, ActIdentifier corrigendum) {
     var corrected = corrigendum.corrected().orElseThrow();
     var dated = act.datesOf(corrected).stream().filter(date -> date.date() != null).toList();
     var applying =
@@ -308,17 +316,20 @@ public record SidenoteView(
             + " corrects "
             + act.cited(corrected)
             + start.map(day -> " from " + Dates.inWords(day)).orElse("")
-            + version(act, from, to, corrigendum)
+            + version(included, from, to, corrigendum)
                 .map(version -> " · first in the text of " + Dates.inWords(version.date()))
                 .orElse("");
     return new Applies(when, "", null, List.of(), "");
   }
 
+  /**
+   * Returns the first version after {@code from}, up to {@code to}, that includes {@code amending}.
+   */
   private static Optional<Version> version(
-      Act act, Version from, Version to, ActIdentifier amending) {
-    return act.timeline().versions().stream()
+      Inclusions included, Version from, Version to, ActIdentifier amending) {
+    return included.timeline().versions().stream()
         .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-        .filter(v -> v.integrates().contains(amending))
+        .filter(v -> included.includes(v, amending))
         .findFirst();
   }
 
@@ -344,14 +355,14 @@ public record SidenoteView(
    * that version.
    */
   private static List<List<ActIdentifier>> steps(
-      Act act,
+      Inclusions included,
       Version from,
       Version to,
       Collection<ActIdentifier> acts,
       Collection<ActIdentifier> marked,
       List<Set<ActIdentifier>> together) {
     var between =
-        act.timeline().versions().stream()
+        included.timeline().versions().stream()
             .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
             .toList();
     // The version of each act is the first version that has it. An act that applies in parts is
@@ -360,7 +371,7 @@ public record SidenoteView(
     for (var each : acts) {
       if (!marked.contains(each)) {
         between.stream()
-            .filter(v -> v.integrates().contains(each))
+            .filter(v -> included.includes(v, each))
             .findFirst()
             .ifPresent(version -> at.put(each, version));
       }
@@ -377,17 +388,17 @@ public record SidenoteView(
               .orElseGet(() -> Set.of(each));
       var after = between.stream().filter(v -> floor == null || !v.date().isBefore(floor)).toList();
       after.stream()
-          .filter(v -> v.integrates().containsAll(with))
+          .filter(v -> included.of(v).containsAll(with))
           .findFirst()
-          .or(() -> after.stream().filter(v -> v.integrates().contains(each)).findFirst())
-          .or(() -> between.stream().filter(v -> v.integrates().contains(each)).findFirst())
+          .or(() -> after.stream().filter(v -> included.includes(v, each)).findFirst())
+          .or(() -> between.stream().filter(v -> included.includes(v, each)).findFirst())
           .ifPresent(version -> at.put(each, version));
     }
     var steps = new ArrayList<List<ActIdentifier>>();
     for (var version : between) {
       // Keep the order that the version gives the acts.
       var step =
-          version.integrates().stream()
+          included.of(version).stream()
               .filter(each -> acts.contains(each) && version.equals(at.get(each)))
               .toList();
       if (!step.isEmpty()) {
@@ -614,7 +625,8 @@ public record SidenoteView(
    * <p>If no act changed the provision, the history says "As in the original act". It then applies
    * from the dates of the act, or else from the first version of the act.
    */
-  public static History history(Act act, Version to, List<Marker> markers, Language language) {
+  public static History history(
+      Act act, Inclusions included, Version to, List<Marker> markers, Language language) {
     @Nullable Marker last = null;
     @Nullable LocalDate integrated = null;
     for (var marker : markers) {
@@ -623,9 +635,9 @@ public record SidenoteView(
         continue;
       }
       var on =
-          act.timeline().versions().stream()
+          included.timeline().versions().stream()
               .filter(version -> !version.date().isAfter(to.date()))
-              .filter(version -> version.integrates().contains(each))
+              .filter(version -> included.includes(version, each))
               .map(Version::date)
               .min(LocalDate::compareTo);
       if (on.isPresent() && (integrated == null || on.get().isAfter(integrated))) {

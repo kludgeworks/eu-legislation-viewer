@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -41,6 +42,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20260322"),
             version("02015R1998-20261001"),
             c,
@@ -61,6 +63,36 @@ class SidenoteViewTest {
   }
 
   @Test
+  void namesAnActThatTheTextMarksFirstThoughCellarDoesNotListIt() {
+    // As 767/2008 of 29 December 2017, which marks 2017/2226 before Cellar lists it.
+    var marked = new ActIdentifier("32017R2226");
+    var c =
+        changed(
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Marker(marked.celex(), "replaced", null)),
+            List.of());
+    var from = version("02015R1998-20260322");
+    var to = version("02015R1998-20261001");
+
+    var listed =
+        SidenoteView.of(
+            AVSEC, Inclusions.listed(AVSEC.timeline()), from, to, c, List.of(), Language.ENG);
+    var included =
+        SidenoteView.of(
+            AVSEC,
+            new Inclusions(AVSEC.timeline(), Map.of(to, List.of(marked))),
+            from,
+            to,
+            c,
+            List.of(),
+            Language.ENG);
+
+    assertThat(listed.acts()).doesNotContain(marked);
+    assertThat(included.made()).isEqualTo("Replaced by %s", AVSEC.cited(marked));
+    assertThat(included.acts()).containsExactly(marked);
+  }
+
+  @Test
   void datesACorrectionFromTheStartOfTheActItCorrectsAndTheVersionThatFirstHasIt() {
     var c =
         changed(
@@ -69,6 +101,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             c,
@@ -94,6 +127,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20260322"),
             version("02015R1998-20261001"),
             c,
@@ -115,6 +149,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
@@ -134,6 +169,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             inserted,
@@ -157,6 +193,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             indent,
@@ -191,6 +228,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20260101"),
             version("02015R1998-20260322"),
             deleted,
@@ -210,6 +248,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20170607"),
             changed(
@@ -254,6 +293,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             inserted,
@@ -276,6 +316,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             changed(
@@ -296,6 +337,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20200702"),
             version("02015R1998-20210315"),
             changed(
@@ -323,6 +365,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20260322"),
             version("02015R1998-20261001"),
             f,
@@ -349,6 +392,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             point,
@@ -378,6 +422,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             struck,
@@ -397,6 +442,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             a,
@@ -419,6 +465,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
@@ -445,6 +492,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
@@ -477,6 +525,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             deleted,
@@ -508,6 +557,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
             deleted,
@@ -527,6 +577,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             d,
@@ -543,6 +594,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.of(
             AVSEC,
+            Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
