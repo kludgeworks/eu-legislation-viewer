@@ -229,6 +229,11 @@ final class Divergences {
    * the first version that marks a unit around the place. It is the version that starts on the
    * place date instead, if that version also newly marks the place.
    *
+   * <p>A deletion or a repeal leaves no unit where the provision stood. The consolidation keeps its
+   * mark there, in the unit around it, with a line of dashes: point (d) of Article 1(2) of 2014/65,
+   * deleted by 2019/2177. So in a text that no longer has the unit of such a place, the unit around
+   * where it stood marks the place, by a mark on that unit itself.
+   *
    * <p>Returns a {@link Marked} without a version if no version includes {@code amending}. Returns
    * empty if a version before the answer has no built text, or if no version marks the place while
    * some version includes the act.
@@ -249,13 +254,24 @@ final class Divergences {
       }
       var units =
           place.location().in(unitsOf(version, text)).map(Location.Found::eIds).orElseGet(List::of);
+      var gone = units.isEmpty() && place.role().removes();
+      if (gone) {
+        units =
+            place
+                .location()
+                .around(unitsOf(version, text))
+                .map(Location.Found::eIds)
+                .orElseGet(List::of);
+      }
       if (units.isEmpty()) {
         continue;
       }
       var marks = text.marked(amending);
       var now = new HashSet<String>();
       for (var mark : marks) {
-        if (units.stream().anyMatch(unit -> mark.equals(unit) || mark.startsWith(unit + "/"))) {
+        if (gone
+            ? units.contains(mark)
+            : units.stream().anyMatch(unit -> mark.equals(unit) || mark.startsWith(unit + "/"))) {
           now.add(mark);
         } else if (around == null && units.stream().anyMatch(unit -> unit.startsWith(mark + "/"))) {
           around = version;
