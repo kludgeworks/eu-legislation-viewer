@@ -7,9 +7,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
@@ -41,6 +43,23 @@ import org.jspecify.annotations.Nullable;
  *   <li>they have the same num, or
  *   <li>neither has a num, and they are alike in what they say.
  * </ul>
+ *
+ * <p>Last, a unit that moved further pairs with the unit that it was: a consolidation can put a
+ * unit in other units, or take it out of them, without a change to its words. For example, the
+ * consolidation of 692/2008 of 27 July 2017 has point 3.2.12.2.1.11 of Annex XVIII directly in the
+ * annex, and the one of 16 May 2016 has it four units down. Each unit that still pairs with none
+ * pairs with the unit of the other text that pairs with none and has the same last step of its eId,
+ * if:
+ *
+ * <ul>
+ *   <li>each unit that the two are in pairs, so that neither shows in a unit that is inserted or
+ *       deleted whole,
+ *   <li>no other unit that pairs with none has that step in the two units that hold them, the
+ *       nearest that pair with each other. The whole text holds them if no such units do. For
+ *       example, Annex I of 692/2008 also had a point 3.2.12.2.1.11 until 2017. It is not in Annex
+ *       XVIII, so it does not stop the pair.
+ *   <li>they have the same num, and say the same, or are alike from {@link Likeness#MINIMUM}.
+ * </ul>
  */
 final class Pairing {
   private static final Set<String> TITLES = Set.of("num", "heading", "subheading");
@@ -59,7 +78,119 @@ final class Pairing {
   static Pairing of(Units before, Units after) {
     var pairing = new Pairing(before, after);
     pairing.within(null, null);
+    pairing.movedFurther();
     return pairing;
+  }
+
+  /**
+   * Pairs the units that pair with none and moved further than into the unit before them or out of
+   * it. See the rule above.
+   */
+  private void movedFurther() {
+    var earlier = alone(before, true);
+    var later = alone(after, false);
+    for (var step : later.entrySet()) {
+      var from = earlier.getOrDefault(step.getKey(), List.of());
+      for (var is : step.getValue()) {
+        for (var was : from) {
+          if (is(was) == null
+              && was(is) == null
+              && inPaired(was, before, true)
+              && inPaired(is, after, false)
+              && alone(was, is, from, step.getValue())
+              && alike(was, is)) {
+            pair(was, is);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Returns whether {@code was} and {@code is} are the only units of {@code earlier} and {@code
+   * later} in the two units that hold them, the nearest that pair with each other. {@code earlier}
+   * and {@code later} are the units that pair with none and have their step.
+   */
+  private boolean alone(Unit was, Unit is, List<Unit> earlier, List<Unit> later) {
+    var holder = after.get(Objects.requireNonNullElse(is.parent(), ""));
+    while (holder != null) {
+      var paired = was(holder);
+      if (paired != null && holds(before, paired, was)) {
+        break;
+      }
+      holder = after.get(Objects.requireNonNullElse(holder.parent(), ""));
+    }
+    var earlierHolder = holder == null ? null : was(holder);
+    var at = holder;
+    return earlier.stream().filter(each -> holds(before, earlierHolder, each)).count() == 1
+        && later.stream().filter(each -> holds(after, at, each)).count() == 1;
+  }
+
+  /**
+   * Returns whether {@code holder} of {@code units} holds {@code unit}. The whole text, a null
+   * {@code holder}, holds each unit.
+   */
+  private static boolean holds(Units units, @Nullable Unit holder, Unit unit) {
+    if (holder == null) {
+      return true;
+    }
+    for (var at = unit.parent(); at != null; ) {
+      if (at.equals(holder.eId())) {
+        return true;
+      }
+      var up = units.get(at);
+      at = up == null ? null : up.parent();
+    }
+    return false;
+  }
+
+  /**
+   * Returns the units of {@code units} that pair with none, by the last step of their eIds, in
+   * document order. {@code earlier} tells whether they are the units of the earlier text.
+   */
+  private Map<String, List<Unit>> alone(Units units, boolean earlier) {
+    var found = new LinkedHashMap<String, List<Unit>>();
+    for (var unit : units.byEId().values()) {
+      if ((earlier ? is(unit) : was(unit)) == null) {
+        found.computeIfAbsent(step(unit.eId()), each -> new ArrayList<>()).add(unit);
+      }
+    }
+    return found;
+  }
+
+  /** Returns the last step of {@code eId}. For example, pnt_3.2 for anx/pnt_3/pnt_3.2. */
+  private static String step(String eId) {
+    return eId.substring(eId.lastIndexOf('/') + 1);
+  }
+
+  /**
+   * Returns whether each unit that {@code unit} of {@code units} is in pairs. {@code earlier} tells
+   * whether they are the units of the earlier text.
+   */
+  private boolean inPaired(Unit unit, Units units, boolean earlier) {
+    for (var at = unit.parent(); at != null; ) {
+      var holder = units.get(at);
+      if (holder == null || (earlier ? is(holder) : was(holder)) == null) {
+        return false;
+      }
+      at = holder.parent();
+    }
+    return true;
+  }
+
+  /**
+   * Returns whether {@code earlier} and {@code later} have the same num, and say the same in their
+   * other blocks or are alike in them.
+   */
+  private static boolean alike(Unit earlier, Unit later) {
+    if (!num(earlier).equals(num(later))) {
+      return false;
+    }
+    var was = titled(earlier);
+    var is = titled(later);
+    return was.equals(is)
+        || Likeness.of(Likeness.words(was), Likeness.words(is)) >= Likeness.MINIMUM;
   }
 
   /** Returns the earlier unit that {@code later} pairs with. Returns null if it pairs with none. */
@@ -326,9 +457,22 @@ final class Pairing {
    * A renumbering changes the num, so two units are alike by the rest.
    */
   private static String substantive(Unit unit) {
+    return said(unit, TITLES);
+  }
+
+  /** Returns what {@code unit} says in its own blocks, with its headings but without its num. */
+  private static String titled(Unit unit) {
+    return said(unit, Set.of("num"));
+  }
+
+  /**
+   * Returns what {@code unit} says in its own blocks, without the blocks named {@code without}, in
+   * lower case.
+   */
+  private static String said(Unit unit, Set<String> without) {
     var said = new StringBuilder();
     for (var block : unit.blocks()) {
-      if (!TITLES.contains(block.name())) {
+      if (!without.contains(block.name())) {
         substantive(block, said);
       }
     }

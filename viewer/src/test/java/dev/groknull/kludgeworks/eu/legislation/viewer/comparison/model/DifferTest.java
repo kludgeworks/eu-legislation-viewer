@@ -742,6 +742,179 @@ class DifferTest {
             tuple("att/level_1", Kind.INSERTED), tuple("att/level_1/level_1", Kind.CHANGED));
   }
 
+  @Test
+  void pairsAPointThatMovedOutOfUnitsFurtherUp() {
+    // As 692/2008 from 16 May 2016 to 27 July 2017: point 3.2.12.2.1.11 of Annex XVIII is no
+    // longer four units down, but directly in the annex.
+    var earlier = annexWithPointIn("3");
+    var later =
+        text(
+            paragraph(
+                "anx",
+                "ANNEX",
+                "",
+                paragraph(
+                    "anx/level_1",
+                    "A",
+                    "Equipment",
+                    paragraph("anx/level_1/pnt_3.2", "3.2", "Standards for EDS"))),
+            paragraph("anx/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 3."));
+
+    assertThat(Differ.differences(earlier, later).differences()).isEmpty();
+  }
+
+  @Test
+  void pairsAMovedPointThatAnotherAnnexAlsoHad() {
+    // As 692/2008 in 2017: Annex I also had a point 3.2.12.2.1.11, and lost it.
+    var earlier =
+        text(
+            paragraph(
+                "anx_I",
+                "ANNEX I",
+                "",
+                paragraph("anx_I/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 3.")),
+            paragraph(
+                "anx_II",
+                "ANNEX II",
+                "",
+                paragraph(
+                    "anx_II/pnt_3.2",
+                    "3.2",
+                    "Standards for EDS",
+                    paragraph(
+                        "anx_II/pnt_3.2/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 3.")),
+                paragraph("anx_II/pnt_3.3", "3.3", "Tests")));
+    var later =
+        text(
+            paragraph("anx_I", "ANNEX I", ""),
+            paragraph(
+                "anx_II",
+                "ANNEX II",
+                "",
+                paragraph("anx_II/pnt_3.2", "3.2", "Standards for EDS"),
+                paragraph("anx_II/pnt_3.3", "3.3", "Tests"),
+                paragraph("anx_II/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 3.")));
+
+    assertThat(Differ.differences(earlier, later).differences())
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("anx_I/pnt_3.2.1", Kind.DELETED));
+  }
+
+  @Test
+  void doesNotPairAMovedPointInAnInsertedUnit() {
+    var earlier = text(paragraph("anx/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 2."));
+    var later = annexWithPointIn("3");
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("anx/pnt_3.2.1", Kind.DELETED), tuple("anx", Kind.INSERTED));
+  }
+
+  @Test
+  void pairsAPointThatMovedIntoUnitsFurtherDown() {
+    var earlier =
+        text(
+            paragraph(
+                "anx",
+                "ANNEX",
+                "",
+                paragraph(
+                    "anx/level_1",
+                    "A",
+                    "Equipment",
+                    paragraph("anx/level_1/pnt_3.2", "3.2", "Standards for EDS")),
+                paragraph("anx/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 2.")));
+    var later = annexWithPointIn("3");
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(tuple("anx/level_1/pnt_3.2/pnt_3.2.1", Kind.CHANGED));
+    assertThat(said(only(differences.getFirst().shown(), "p")))
+        .isEqualTo("All EDS shall meet standard [-2][+3].");
+  }
+
+  @Test
+  void doesNotPairAMovedPointThatAnotherPointHasTheStepOf() {
+    var earlier =
+        text(
+            paragraph(
+                "anx",
+                "ANNEX",
+                "",
+                paragraph("anx/pnt_1", "1", "Scope", pointA("anx/pnt_1/pnt_a")),
+                paragraph("anx/pnt_2", "2", "Rules", pointA("anx/pnt_2/pnt_a"))));
+    var later =
+        text(
+            paragraph(
+                "anx",
+                "ANNEX",
+                "",
+                pointA("anx/pnt_a"),
+                paragraph("anx/pnt_1", "1", "Scope"),
+                paragraph("anx/pnt_2", "2", "Rules")));
+
+    var differences = Differ.differences(earlier, later).differences();
+
+    assertThat(differences)
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(
+            tuple("anx/pnt_a", Kind.INSERTED),
+            tuple("anx/pnt_1/pnt_a", Kind.DELETED),
+            tuple("anx/pnt_2/pnt_a", Kind.DELETED));
+  }
+
+  @Test
+  void doesNotPairAMovedPointWithAPointThatSaysOtherThings() {
+    var earlier = annexWithPointIn("3");
+    var later =
+        text(
+            paragraph(
+                "anx",
+                "ANNEX",
+                "",
+                paragraph(
+                    "anx/level_1",
+                    "A",
+                    "Equipment",
+                    paragraph("anx/level_1/pnt_3.2", "3.2", "Standards for EDS"))),
+            paragraph("anx/pnt_3.2.1", "3.2.1", "Fees are paid to the national authority."));
+
+    assertThat(Differ.differences(earlier, later).differences())
+        .extracting(Difference::eId, Difference::kind)
+        .containsExactly(
+            tuple("anx/level_1/pnt_3.2/pnt_3.2.1", Kind.DELETED),
+            tuple("anx/pnt_3.2.1", Kind.INSERTED));
+  }
+
+  /** An annex with point 3.2.1 in point 3.2, in a unit A. */
+  private static Element annexWithPointIn(String standard) {
+    return text(
+        paragraph(
+            "anx",
+            "ANNEX",
+            "",
+            paragraph(
+                "anx/level_1",
+                "A",
+                "Equipment",
+                paragraph(
+                    "anx/level_1/pnt_3.2",
+                    "3.2",
+                    "Standards for EDS",
+                    paragraph(
+                        "anx/level_1/pnt_3.2/pnt_3.2.1",
+                        "3.2.1",
+                        "All EDS shall meet standard " + standard + ".")))));
+  }
+
+  private static Element pointA(String eId) {
+    return paragraph(eId, "(a)", "Each operator keeps a register.");
+  }
+
   /** Point 12.4.2 with its points 12.4.2.1 and 12.4.2.2 after it, as its siblings. */
   private static Element pointsBeside(String standard) {
     return text(
