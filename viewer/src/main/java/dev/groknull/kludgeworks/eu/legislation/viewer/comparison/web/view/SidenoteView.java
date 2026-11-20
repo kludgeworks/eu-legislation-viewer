@@ -165,10 +165,15 @@ public record SidenoteView(
       @Nullable ActIdentifier only,
       Language language) {
     var between = included.between(from, to);
-    var marked = acts(difference.markers(), between::contains);
+    var parts = parts(act, included, from, to, difference, between);
+    var marked =
+        acts(difference.markers(), each -> between.contains(each) || parts.containsKey(each));
     var markedVersions =
         marked.keySet().stream()
-            .map(each -> version(included, from, to, each))
+            .map(
+                each ->
+                    Optional.ofNullable(parts.get(each))
+                        .or(() -> version(included, from, to, each)))
             .flatMap(Optional::stream)
             .collect(Collectors.toSet());
     var made = new LinkedHashMap<>(marked);
@@ -186,21 +191,30 @@ public record SidenoteView(
       return unknown(act, included, from, to, difference, language);
     }
     var steps =
-        steps(included, from, to, made.keySet(), marked.keySet(), together(difference, between));
+        steps(
+            included,
+            from,
+            to,
+            made.keySet(),
+            marked.keySet(),
+            parts,
+            together(difference, between));
     var dates = new ArrayList<Applies>();
     for (var each : steps.stream().flatMap(List::stream).toList()) {
       if (each.corrigendum()) {
         dates.add(corrects(act, included, from, to, each));
       } else {
         var days =
-            amendments.stream()
-                .filter(amendment -> amendment.act().equals(each))
-                .map(Amendment::from)
-                .filter(Objects::nonNull)
-                // A day that is not after the earlier text is stale, because the earlier text
-                // does not have the change. The points of 2019/103 are an example.
-                .filter(day -> day.isAfter(from.date()))
-                .collect(Collectors.toSet());
+            parts.containsKey(each)
+                ? partDays(act, each, from, to)
+                : amendments.stream()
+                    .filter(amendment -> amendment.act().equals(each))
+                    .map(Amendment::from)
+                    .filter(Objects::nonNull)
+                    // A day that is not after the earlier text is stale, because the earlier
+                    // text does not have the change. The points of 2019/103 are an example.
+                    .filter(day -> day.isAfter(from.date()))
+                    .collect(Collectors.toSet());
         applies(act, each, days, language).ifPresent(dates::add);
       }
     }
@@ -334,6 +348,54 @@ public record SidenoteView(
   }
 
   /**
+   * Returns the acts that changed the unit of {@code difference} in a part that applies between the
+   * two versions, by the version that takes the part in. Such an act is not between the two
+   * versions: an earlier version included it already. Its marker on the unit is new in this step:
+   * the earlier text does not have it. And one of its dates falls after {@code from}, up to {@code
+   * to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January 2026: the act is
+   * included from July 2024, and a part of it applies from 11 January 2026.
+   *
+   * <p>A marker can also be new only because the earlier text has no markers. The date tells these
+   * apart.
+   */
+  private static Map<ActIdentifier, Version> parts(
+      Act act,
+      Inclusions included,
+      Version from,
+      Version to,
+      Difference difference,
+      Collection<ActIdentifier> between) {
+    var earlier = difference.earlierMarkers().stream().map(Marker::act).collect(Collectors.toSet());
+    var parts = new LinkedHashMap<ActIdentifier, Version>();
+    for (var marker : difference.markers()) {
+      var each = new ActIdentifier(marker.act());
+      if (between.contains(each) || earlier.contains(marker.act()) || parts.containsKey(each)) {
+        continue;
+      }
+      partDays(act, each, from, to).stream()
+          .min(Comparator.naturalOrder())
+          .flatMap(
+              day ->
+                  included.timeline().versions().stream()
+                      .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
+                      .filter(v -> !v.date().isBefore(day))
+                      .findFirst())
+          .ifPresent(version -> parts.put(each, version));
+    }
+    return parts;
+  }
+
+  /** Returns the dates of {@code amending} after {@code from}, up to {@code to}. */
+  private static Set<LocalDate> partDays(
+      Act act, ActIdentifier amending, Version from, Version to) {
+    return act.datesOf(amending).stream()
+        .map(ActDate::date)
+        .filter(Objects::nonNull)
+        .filter(day -> day.isAfter(from.date()) && !day.isAfter(to.date()))
+        .collect(Collectors.toSet());
+  }
+
+  /**
    * Returns the acts that {@code markers} name and that {@code kept} accepts, in order. Each act
    * comes with the action of its first marker.
    */
@@ -360,6 +422,7 @@ public record SidenoteView(
       Version to,
       Collection<ActIdentifier> acts,
       Collection<ActIdentifier> marked,
+      Map<ActIdentifier, Version> parts,
       List<Set<ActIdentifier>> together) {
     var between =
         included.timeline().versions().stream()
@@ -381,6 +444,11 @@ public record SidenoteView(
     // in the first version that has all of them.
     var floor = at.values().stream().map(Version::date).max(Comparator.naturalOrder()).orElse(null);
     for (var each : marked) {
+      var part = parts.get(each);
+      if (part != null) {
+        at.put(each, part);
+        continue;
+      }
       var with =
           together.stream()
               .filter(group -> group.contains(each))
@@ -397,10 +465,18 @@ public record SidenoteView(
     var steps = new ArrayList<List<ActIdentifier>>();
     for (var version : between) {
       // Keep the order that the version gives the acts.
-      var step =
-          included.of(version).stream()
-              .filter(each -> acts.contains(each) && version.equals(at.get(each)))
-              .toList();
+      var step = new ArrayList<ActIdentifier>();
+      included.of(version).stream()
+          .filter(each -> acts.contains(each) && version.equals(at.get(each)))
+          .forEach(step::add);
+      parts.entrySet().stream()
+          .filter(
+              part ->
+                  acts.contains(part.getKey())
+                      && version.equals(part.getValue())
+                      && !step.contains(part.getKey()))
+          .map(Map.Entry::getKey)
+          .forEach(step::add);
       if (!step.isEmpty()) {
         steps.add(step);
       }

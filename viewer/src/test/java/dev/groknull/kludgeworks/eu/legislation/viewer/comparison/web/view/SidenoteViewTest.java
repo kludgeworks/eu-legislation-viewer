@@ -7,6 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -90,6 +91,50 @@ class SidenoteViewTest {
     assertThat(listed.acts()).doesNotContain(marked);
     assertThat(included.made()).isEqualTo("Replaced by %s", AVSEC.cited(marked));
     assertThat(included.acts()).containsExactly(marked);
+  }
+
+  @Test
+  void namesAnActThatAnEarlierVersionIncludedByItsNewMarkerWhereAPartOfItAppliesInTheStep() {
+    // As 2024/1619 on 2013/36 on 11 January 2026, for which Cellar lists no act. Here 2026/449 on
+    // 2015/1998: included from 22 March 2026, and in part from 1 October 2026. Cellar's listing of
+    // it in October is taken away.
+    var amending = new ActIdentifier("32026R0449");
+    var from = version("02015R1998-20260322");
+    var listed = version("02015R1998-20261001");
+    var to =
+        new Version(
+            listed.kind(),
+            listed.date(),
+            listed.celex(),
+            listed.interim(),
+            List.of(),
+            listed.languages(),
+            listed.formex());
+    var versions = new ArrayList<>(AVSEC.timeline().versions());
+    versions.set(versions.indexOf(listed), to);
+    var included = Inclusions.listed(new Timeline(versions));
+    var marker = new Marker(amending.celex(), "replaced", null);
+
+    var newMark = changed("anx/pnt_8.1.2.3/pnt_c", List.of(marker), List.of());
+    var oldMark = changed("anx/pnt_8.1.2.3/pnt_c", List.of(marker), List.of(marker));
+    var noPart =
+        changed(
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Marker("32019R0103", "replaced", null)),
+            List.of());
+
+    assertThat(of(included, from, to, newMark).made()).isEqualTo("Replaced by 2026/449");
+    assertThat(of(included, from, to, newMark).dates().getFirst().when())
+        .contains("from 1 October 2026");
+    // The earlier text has the marker: the act changed the unit before.
+    assertThat(of(included, from, to, oldMark).acts()).isEmpty();
+    // No part of 2019/103 applies in the step: its marker is old, not new.
+    assertThat(of(included, from, to, noPart).acts()).isEmpty();
+  }
+
+  private static SidenoteView of(
+      Inclusions included, Version from, Version to, Difference difference) {
+    return SidenoteView.of(AVSEC, included, from, to, difference, List.of(), Language.ENG);
   }
 
   @Test
