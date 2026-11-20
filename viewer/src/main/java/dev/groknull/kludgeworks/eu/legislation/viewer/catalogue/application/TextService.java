@@ -127,9 +127,7 @@ class TextService implements Texts {
   public void retry(Act act, Language language) {
     var retried = 0;
     for (var text : texts(celexes(act, language), language).entrySet()) {
-      if (text.getValue() instanceof Text.Failed failed
-          && failed.failure().retryable()
-          && expressions.requeue(text.getKey(), language)) {
+      if (text.getValue().retryable() && expressions.requeue(text.getKey(), language)) {
         events.publishEvent(new ConversionRequested(text.getKey(), language, Reason.RETRIED));
         retried++;
       }

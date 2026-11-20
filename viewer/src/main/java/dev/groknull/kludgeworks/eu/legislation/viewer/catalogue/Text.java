@@ -24,6 +24,11 @@ public sealed interface Text {
     return null;
   }
 
+  /** Returns whether the text is retryable. */
+  default boolean retryable() {
+    return false;
+  }
+
   /**
    * Built.
    *
@@ -55,6 +60,11 @@ public sealed interface Text {
     @Override
     public Failure failure() {
       return failure;
+    }
+
+    @Override
+    public boolean retryable() {
+      return failure().retryable();
     }
   }
 }
