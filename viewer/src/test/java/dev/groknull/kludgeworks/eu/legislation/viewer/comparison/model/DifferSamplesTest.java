@@ -56,17 +56,17 @@ class DifferSamplesTest {
   private static final List<String> FOUND =
       List.of(
           "dcccb4670928e8ef7cc07037f29d7229767c12365af4459bfc430dbd41c8e3d6",
-          "8426408e54674fe4a15aaddd2eb2c89dc3710f632d5360ac3f74ffa04f64d688",
+          "24ebaa4072baba0316d99278a0ec0012c5c5043f2b165db8f5074c309d19a35e",
           "27dc5fce68f549247440e2095000a4c28d8ffdc2c46a33bf4c043a80e427610e",
           "e0861247c0e9c41d470c4e5566d4009ef44e2181927816d9e7358cfcc8e85842",
           "05ed3eb163fedbcb7ada6a99922eeb609ce62cac57a69649fd0882f88eddf4e8",
           "ef57c2ced8b8eb5006d3621110aae221168df4791b6b02be091d4ed936d5a54a",
-          "c74da5de23b9489629c93bf52519bcfb94eb9a4950bc25c644b5a6dfbfbcffa2",
-          "a2e9736be75c16d79ccd9e4893cf12ecbd3c7aa98d4d85b9ee0655ba43248324",
-          "291fa589d51eb9060bd482c731c99edb8b34f57ae6c20ef1d82b000717a2d0b2",
+          "c60f4504c52e54e2a72b2e6c25620fbbcdc533bd52897129e06400570c12d310",
+          "f0c56e02a2cbbda30ce874b1040adfc9097e9bac4a3ceb51f08c73d5ab7ae378",
+          "95dd82081334aaafbcc200918db46ef2ee75fb710cf278349f26d187ab6abf09",
           "6eb675b8f7f06301cd67aab2f2dcec53cad3f08240f075b9207955ee4464b8fd",
-          "eee0075485a6cc30b0361b47d7461b6ab8e8b2a0be63a1ca80506869bb2a69fc",
-          "b0a638230f4db68a50826410e1dade307fecaafdb7079cbc9c64a05f89d5b1c8");
+          "31a19de0ccadf9b950cdaf897f948e98e6d4cb9f20c8a9bb06db10d87fa54707",
+          "dffcee6add08cf225509db6b50d5987120f00f970aacb85894c2b8a763db891e");
 
   @Test
   void findsWhatItFoundBefore() {

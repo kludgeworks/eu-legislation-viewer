@@ -267,8 +267,23 @@ final class Marks {
   }
 
   /** Returns the tokens as they are compared. A run of spaces becomes one space. */
+  /**
+   * Returns what {@code tokens} say, as the marks compare them: a run of spaces as one space, and a
+   * word with each apostrophe in its plain form ({@link Wording#plain}). Thus "institution's" and
+   * "institution’s" are the same word. A quotation mark alone keeps its form: the plain form of an
+   * opening mark and of a closing mark is the same, and the marks would then match one with the
+   * other.
+   */
   private static List<String> said(List<String> tokens) {
-    return tokens.stream().map(token -> SPACE.matcher(token).matches() ? " " : token).toList();
+    return tokens.stream()
+        .map(
+            token ->
+                SPACE.matcher(token).matches()
+                    ? " "
+                    : token.codePoints().anyMatch(Character::isLetterOrDigit)
+                        ? Wording.plain(token)
+                        : token)
+        .toList();
   }
 
   private static boolean spaces(List<String> tokens) {

@@ -1097,6 +1097,40 @@ class DifferTest {
   }
 
   @Test
+  void readsAChangeOfApostrophesOrQuotationMarksAloneAsNoChange() {
+    // As 2013/36 of 30 December 2024: the consolidation sets each apostrophe curly. No act changed
+    // the text.
+    var from =
+        text(
+            unit("art_1", block("p", "the institution's own funds")),
+            unit("art_2", block("p", "the term \"group\" means")));
+    var to =
+        text(
+            unit("art_1", block("p", "the institution’s own funds")),
+            unit("art_2", block("p", "the term “group” means")));
+    assertThat(Differ.differences(from, to).differences()).isEmpty();
+  }
+
+  @Test
+  void marksNoWordWhoseApostropheAloneChangedInAChangedUnit() {
+    var from = text(unit("art_1", block("p", "the institution's capital")));
+    var to = text(unit("art_1", block("p", "the institution’s own capital")));
+    var difference = Differ.differences(from, to).differences().getFirst();
+    assertThat(said(only(difference.shown(), "p"))).isEqualTo("the institution’s[+ own] capital");
+  }
+
+  @Test
+  void matchesAnOpeningQuotationMarkOnlyWithAnOpeningOne() {
+    // As point 11.0.2 of 2015/1998: one term quoted becomes two.
+    var from = text(unit("art_1", block("p", "‘certification and recertification’ means a test")));
+    var to = text(unit("art_1", block("p", "‘certification’ and ‘recertification’ mean a test")));
+    var difference = Differ.differences(from, to).differences().getFirst();
+    assertThat(said(only(difference.shown(), "p")))
+        .contains("recertification’ [-means][+mean] a test")
+        .doesNotContain("[+recertification");
+  }
+
+  @Test
   void showsAChangedFormulaWholeAsDeletedThenInserted() {
     var from = text(unit("art_1", formula("1")));
     var to = text(unit("art_1", formula("2")));

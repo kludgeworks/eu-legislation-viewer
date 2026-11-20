@@ -42,21 +42,46 @@ public final class Wording {
   }
 
   /**
-   * Returns what a comparison matches {@code block} on: its wording without spaces. A change of
-   * spaces alone is not a change. For example, "DOB: 30 March 1977" and "DOB:30 March 1977" match.
+   * Returns what a comparison matches {@code block} on: its wording without spaces, and with each
+   * apostrophe and quotation mark in its plain form ({@link #plain}). A change of spaces alone is
+   * not a change. For example, "DOB: 30 March 1977" and "DOB:30 March 1977" match.
    */
   public static String key(Element block) {
-    return SPACE.matcher(of(block)).replaceAll("");
+    return SPACE.matcher(plain(of(block))).replaceAll("");
+  }
+
+  /**
+   * Returns {@code text} with each apostrophe and single quotation mark as ', and each double
+   * quotation mark as ". The Publications Office chooses these forms when it sets a text. No act
+   * changes them, so a change of these forms alone is not a change. For example, "institution's"
+   * and "institution’s" match, as do "“group”" and "\"group\"".
+   */
+  public static String plain(String text) {
+    var out = new StringBuilder(text.length());
+    for (var i = 0; i < text.length(); i++) {
+      var c = text.charAt(i);
+      out.append(
+          switch (c) {
+            case '‘', '’', '‚', '‛', 'ʼ', '‹', '›' -> '\'';
+            case '“', '”', '„', '‟', '«', '»' -> '"';
+            default -> c;
+          });
+    }
+    return out.toString();
   }
 
   /**
    * Returns the words, spaces and punctuation of a wording, in order. Unicode segments them, with
    * the word {@link BreakIterator} of the JDK. A comparison of two wordings aligns these.
+   *
+   * <p>The breaks are those of the {@link #plain} wording. The JDK breaks "institution’s" at its
+   * apostrophe, but not "institution's". Thus both forms give the same words.
    */
   public static List<String> words(String wording) {
     var words = new ArrayList<String>();
     var breaks = BreakIterator.getWordInstance(Locale.ROOT);
-    breaks.setText(wording);
+    // The plain wording has the same length, so its breaks are at the same places.
+    breaks.setText(plain(wording));
     for (int start = breaks.first(), end = breaks.next();
         end != BreakIterator.DONE;
         start = end, end = breaks.next()) {
