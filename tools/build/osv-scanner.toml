@@ -17,6 +17,13 @@ reason = "Semgrep CLI dependency: MCP session accumulation not reachable in CLI 
 id = "GHSA-rwrf-2pqf-9j8j"
 reason = "Semgrep CLI dependency: MCP ref fetching not reachable in CLI static analysis"
 
+# mcp 1.30.0 fixes it, but was published on 19 November 2026, after the lock's exclude-newer
+# cooldown. Upgrade mcp in .mise/locks/pipx-semgrep when the cooldown allows; until then, it expires
+[[IgnoredVulns]]
+id = "GHSA-qx49-fqc8-xw99"
+ignoreUntil = 2026-12-04T00:00:00Z
+reason = "Semgrep CLI dependency: MCP OAuth client credentials not reachable in CLI static analysis, which makes no MCP OAuth connection"
+
 [[IgnoredVulns]]
 id = "GHSA-w4fh-qvv9-3v23"
 reason = "Semgrep CLI dependency: MCP server auth not reachable in CLI static analysis"
