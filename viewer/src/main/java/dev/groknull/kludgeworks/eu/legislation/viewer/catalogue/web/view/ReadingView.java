@@ -75,7 +75,7 @@ public record ReadingView(
       List<ActIdentifier> named,
       Map<Version, TextMarks> marks) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
-    var makers = Wording.makers(act, version, named);
+    var makers = Wording.makers(act, version, named, language);
     return new ReadingView(
         title(act, asked),
         Dates.inWords(asked),

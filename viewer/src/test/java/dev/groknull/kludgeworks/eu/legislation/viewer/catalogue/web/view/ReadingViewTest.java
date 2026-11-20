@@ -49,8 +49,8 @@ class ReadingViewTest {
         .startsWith(
             "2019/103: Commission Implementing Regulation (EU) 2019/103 of 23 January 2019 amending"
                 + " Implementing Regulation (EU) 2015/1998")
-        .contains(
-            " · OJ L 21, 24.1.2019\nCorrigendum 1 to 2019/103 · OJ L 397, 26.11.2020\n2019/1583: ")
+        // The hover names the same acts as the line: not the German corrigendum.
+        .contains(" · OJ L 21, 24.1.2019\n2019/1583: ")
         .endsWith("(Text with EEA relevance) · OJ L 208, 1.7.2020");
     assertThat(card.status().size()).isZero();
     assertThat(card.picker().single()).isEqualTo("/eli/reg_impl/2015/1998/eng");
@@ -74,6 +74,20 @@ class ReadingViewTest {
         .isEqualTo("the act as published · OJ L 299, 14.11.2015");
     assertThat(card("2016-02-29", "2016-02-29", TODAY).made()).isEqualTo("made by 2015/2426");
     assertThat(card("2018-02-06", "2018-02-06", TODAY).made()).isEqualTo("made by 2018/55");
+  }
+
+  @Test
+  void namesOnlyTheActsThatChangeThePagesLanguage() {
+    // 2022/463 changes only the German text of 2015/1998. Its version of 12 April 2022 has the same
+    // English wording as the text before.
+    var april = version("2022-04-12");
+    var english =
+        ReadingView.of(AVSEC, april, april.date(), Language.ENG, TODAY, List.of(), Map.of());
+    var german =
+        ReadingView.of(AVSEC, april, april.date(), Language.DEU, TODAY, List.of(), Map.of());
+
+    assertThat(english.made()).isEqualTo("Same wording in English as the text of 4 April 2022");
+    assertThat(german.made()).isEqualTo("made by 2022/463");
   }
 
   @Test

@@ -95,15 +95,18 @@ public final class Wording {
 
   /**
    * Returns what made a version, as its card says it. The text is the same as {@link
-   * #made(Version)}, with three differences.
+   * #made(Version)}, with four differences.
    *
    * <ul>
    *   <li>For the original version, it adds the Official Journal reference to "the act as
    *       published".
    *   <li>If the Publications Office lists no act, it names the acts that the text of the version
    *       names, from {@code named}.
-   *   <li>It counts only the corrigenda published in {@code language}. A corrigendum is published
-   *       only in the languages that it corrects.
+   *   <li>It names only the acts and corrigenda that change the text in {@code language} ({@link
+   *       Act#changingIn}).
+   *   <li>If the Publications Office lists acts, but none of them changes the text in {@code
+   *       language}, it says that the wording is the same as the text before: "Same wording in
+   *       English as the text of 31 December 2021".
    * </ul>
    */
   public static String made(
@@ -118,15 +121,17 @@ public final class Wording {
     if (version.integrates().isEmpty() && !named.isEmpty()) {
       return "made by " + names(named, act::cited);
     }
-    return made(
-        version,
-        version.integrates().stream()
-            .filter(
-                each ->
-                    !each.corrigendum()
-                        || act.publication(each).flatMap(p -> p.title(language)).isPresent())
-            .toList(),
-        act::cited);
+    var changing = act.changingIn(version, language);
+    if (changing.isEmpty() && !version.integrates().isEmpty()) {
+      var before = act.timeline(language).flatMap(timeline -> timeline.predecessor(version));
+      if (before.isPresent()) {
+        return "Same wording in "
+            + language.english()
+            + " as the text of "
+            + Dates.inWords(before.get().date());
+      }
+    }
+    return made(version, changing, act::cited);
   }
 
   /**
@@ -135,15 +140,17 @@ public final class Wording {
    *
    * <ul>
    *   <li>For the act as published, returns the act.
-   *   <li>Else returns the acts that the version integrates.
+   *   <li>Else returns the acts that the version integrates and that change the text in {@code
+   *       language} ({@link Act#changingIn}).
    *   <li>If there are none, returns the acts that its text names.
    * </ul>
    */
-  public static List<ActIdentifier> makers(Act act, Version version, List<ActIdentifier> named) {
+  public static List<ActIdentifier> makers(
+      Act act, Version version, List<ActIdentifier> named, Language language) {
     if (version.kind() == Version.Kind.ORIGINAL) {
       return List.of(act.id());
     }
-    return version.integrates().isEmpty() ? named : version.integrates();
+    return version.integrates().isEmpty() ? named : act.changingIn(version, language);
   }
 
   /**

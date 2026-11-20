@@ -825,6 +825,24 @@ public record Act(
   }
 
   /**
+   * Returns the acts and corrigenda that Cellar lists for {@code version} and that change its text
+   * in {@code language}, in Cellar's order. An act changes the text in a language unless each of
+   * its amendments is for other languages only ({@link #inLanguage}). A corrigendum is published
+   * only in the languages that it corrects, so one without a title in {@code language} is left out.
+   * For example, the version of 2015/1998 of 12 April 2022 lists 2022/463, which changes only the
+   * German text: in English it lists none.
+   */
+  public List<ActIdentifier> changingIn(Version version, Language language) {
+    return version.integrates().stream()
+        .filter(
+            each ->
+                each.corrigendum()
+                    ? publication(each).flatMap(p -> p.title(language)).isPresent()
+                    : inLanguage(each, language))
+        .toList();
+  }
+
+  /**
    * Returns whether {@code amending} can change the text in {@code language}. It cannot if each of
    * its amendments is for other languages only.
    */
