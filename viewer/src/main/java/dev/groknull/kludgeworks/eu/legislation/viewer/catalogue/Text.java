@@ -18,13 +18,16 @@ public sealed interface Text {
     };
   }
 
-  /** Returns the failure, or null if the text is not failed. */
+  /** Returns why the text could not be built, or null if it is not {@link Failed}. */
   @Nullable
   default Failure failure() {
     return null;
   }
 
-  /** Returns whether the text is retryable. */
+  /**
+   * Returns whether trying again may build the text: it failed for a reason that another attempt
+   * may help ({@link Failure#retryable}). A text that did not fail is never tried again.
+   */
   default boolean retryable() {
     return false;
   }
@@ -52,16 +55,12 @@ public sealed interface Text {
   record Converting(int attempt) implements Text {}
 
   /**
-   * The text could not be built. Another request does not try again.
+   * The text could not be built. Another request does not try again. Its {@code failure} accessor
+   * is the {@link Text#failure} of the interface.
    *
    * @param trace the trace id of the attempt that failed. It is null if no trace was recorded.
    */
   record Failed(Failure failure, @Nullable String trace) implements Text {
-    @Override
-    public Failure failure() {
-      return failure;
-    }
-
     @Override
     public boolean retryable() {
       return failure().retryable();
