@@ -18,6 +18,12 @@ public sealed interface Text {
     };
   }
 
+  /** Returns the failure, or null if the text is not failed. */
+  @Nullable
+  default Failure failure() {
+    return null;
+  }
+
   /**
    * Built.
    *
@@ -45,5 +51,10 @@ public sealed interface Text {
    *
    * @param trace the trace id of the attempt that failed. It is null if no trace was recorded.
    */
-  record Failed(Failure failure, @Nullable String trace) implements Text {}
+  record Failed(Failure failure, @Nullable String trace) implements Text {
+    @Override
+    public Failure failure() {
+      return failure;
+    }
+  }
 }

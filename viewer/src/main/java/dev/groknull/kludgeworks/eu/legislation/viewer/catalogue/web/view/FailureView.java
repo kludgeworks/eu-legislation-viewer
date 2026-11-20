@@ -170,10 +170,7 @@ public record FailureView(
   public static FailureView act(
       Act act, Preparation preparation, String self, Frame.@Nullable Results results) {
     var failures =
-        preparation.texts().values().stream()
-            .map(text -> text instanceof Text.Failed failed ? failed.failure() : null)
-            .filter(Objects::nonNull)
-            .toList();
+        preparation.texts().values().stream().map(Text::failure).filter(Objects::nonNull).toList();
     var size = preparation.size();
     var eurLex =
         Action.link("Read it on EUR-Lex", act.id().eurLex(preparation.language()).toString());
