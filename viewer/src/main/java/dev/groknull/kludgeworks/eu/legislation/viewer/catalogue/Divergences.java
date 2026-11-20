@@ -1,8 +1,11 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -57,6 +60,24 @@ import org.jspecify.annotations.Nullable;
  */
 final class Divergences {
 
+  /**
+   * The units in all the texts that {@link #KNOWN} keeps, at most. Each is an eId of some tens of
+   * characters, so the keys keep about 50 MB at most.
+   */
+  private static final long UNITS_KEPT = 500_000;
+
+  /**
+   * The divergences found, by what they were found from. A page finds them two to four times for
+   * one request, and each request again: to find them is the most work of a page. The key is the
+   * act and the texts themselves, so a change to either finds them again.
+   */
+  private static final Cache<Key, List<Divergence>> KNOWN =
+      Caffeine.newBuilder()
+          .maximumWeight(UNITS_KEPT)
+          .weigher((Key key, List<Divergence> found) -> key.units())
+          .expireAfterAccess(Duration.ofHours(1))
+          .build();
+
   private final Act act;
   private final Language language;
   private final List<Version> versions;
@@ -70,7 +91,6 @@ final class Divergences {
     this.language = language;
     this.versions = act.timeline(language).map(Timeline::versions).orElseGet(List::of);
     this.texts = texts;
-    texts.forEach((version, text) -> units.put(version, Location.units(text.eIds())));
   }
 
   /**
@@ -81,7 +101,9 @@ final class Divergences {
    * @param texts the marks of the texts in {@code language} that are built, by version
    */
   static List<Divergence> of(Act act, Language language, Map<Version, TextMarks> texts) {
-    return new Divergences(act, language, texts).find();
+    return KNOWN.get(
+        new Key(act, language, Map.copyOf(texts)),
+        key -> new Divergences(key.act(), key.language(), key.texts()).find());
   }
 
   private List<Divergence> find() {
@@ -145,20 +167,16 @@ final class Divergences {
    * if {@code version} is null or has none. A place that the text does not have is last.
    */
   private List<Amendment> inTextOrder(List<Amendment> places, @Nullable Version version) {
-    var text =
+    var of =
         Optional.ofNullable(version)
-            .map(texts::get)
-            .or(
-                () ->
-                    versions.reversed().stream()
-                        .map(texts::get)
-                        .filter(Objects::nonNull)
-                        .findFirst());
-    if (text.isEmpty()) {
+            .filter(texts::containsKey)
+            .or(() -> versions.reversed().stream().filter(texts::containsKey).findFirst());
+    if (of.isEmpty()) {
       return places;
     }
-    var eIds = text.get().eIds();
-    var units = Location.units(eIds);
+    var text = Objects.requireNonNull(texts.get(of.get()));
+    var eIds = text.eIds();
+    var units = unitsOf(of.get(), text);
     return places.stream()
         .sorted(Comparator.comparingInt(place -> position(place, eIds, units)))
         .toList();
@@ -266,14 +284,13 @@ final class Divergences {
       if (units.isEmpty()) {
         continue;
       }
-      var marks = text.marked(amending);
+      var found = Set.copyOf(units);
+      var holders = holders(units);
       var now = new HashSet<String>();
-      for (var mark : marks) {
-        if (gone
-            ? units.contains(mark)
-            : units.stream().anyMatch(unit -> mark.equals(unit) || mark.startsWith(unit + "/"))) {
+      for (var mark : text.marked(amending)) {
+        if (gone ? found.contains(mark) : inOneOf(mark, found)) {
           now.add(mark);
-        } else if (around == null && units.stream().anyMatch(unit -> unit.startsWith(mark + "/"))) {
+        } else if (around == null && holders.contains(mark)) {
           around = version;
         }
       }
@@ -298,6 +315,30 @@ final class Divergences {
     }
     var included = versions.stream().anyMatch(each -> includes(each, amending));
     return included ? Optional.empty() : Optional.of(new Marked(null, marking));
+  }
+
+  /** Returns whether {@code eId} is one of {@code units}, or a unit in one of them. */
+  private static boolean inOneOf(String eId, Set<String> units) {
+    if (units.contains(eId)) {
+      return true;
+    }
+    for (var slash = eId.lastIndexOf('/'); slash > 0; slash = eId.lastIndexOf('/', slash - 1)) {
+      if (units.contains(eId.substring(0, slash))) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /** Returns the eIds of the units that hold one of {@code units}. */
+  private static Set<String> holders(List<String> units) {
+    var holders = new HashSet<String>();
+    for (var unit : units) {
+      for (var slash = unit.indexOf('/'); slash > 0; slash = unit.indexOf('/', slash + 1)) {
+        holders.add(unit.substring(0, slash));
+      }
+    }
+    return holders;
   }
 
   /**
@@ -374,6 +415,19 @@ final class Divergences {
 
   private static LocalDate day(ActDate date) {
     return Objects.requireNonNull(date.date());
+  }
+
+  /**
+   * What divergences are found from.
+   *
+   * @param units the number of units in the texts, which tells how much memory the key keeps
+   */
+  private record Key(Act act, Language language, Map<Version, TextMarks> texts, int units) {
+
+    Key(Act act, Language language, Map<Version, TextMarks> texts) {
+      this(
+          act, language, texts, texts.values().stream().mapToInt(text -> text.eIds().size()).sum());
+    }
   }
 
   /**

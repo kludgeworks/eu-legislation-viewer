@@ -367,13 +367,15 @@ public record Location(String code) {
     private Units(List<String> eIds) {
       this.eIds = List.copyOf(eIds);
       this.all = new HashSet<>(eIds);
+      var named = new HashMap<String, List<String>>();
       for (var unit : all.stream().sorted().toList()) {
-        byStep
+        named
             .computeIfAbsent(
                 unit.substring(unit.lastIndexOf('/') + 1).toLowerCase(Locale.ROOT),
                 step -> new ArrayList<>())
             .add(unit);
       }
+      named.forEach((step, units) -> byStep.put(step, List.copyOf(units)));
       var annexes = eIds.stream().filter(e -> e.startsWith("anx") && !e.contains("/")).toList();
       this.annex = annexes.size() == 1 ? annexes.getFirst() : null;
     }
@@ -393,9 +395,7 @@ public record Location(String code) {
      * eIds.
      */
     List<String> named(String step) {
-      return byStep.getOrDefault(step.toLowerCase(Locale.ROOT), List.of()).stream()
-          .filter(unit -> unit.substring(unit.lastIndexOf('/') + 1).equalsIgnoreCase(step))
-          .toList();
+      return byStep.getOrDefault(step.toLowerCase(Locale.ROOT), List.of());
     }
   }
 
