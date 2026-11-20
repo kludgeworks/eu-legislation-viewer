@@ -185,6 +185,11 @@ narrower or wider. Do not design a different layout for a phone.
 | Failed | What failed, and a link to EUR-Lex. |
 | Empty | No differences, or no results. The page says so in words. |
 
+**Convention.** A page that waits for the Publications Office shows a second line after 15 s:
+"The Publications Office is slow to answer." The line needs no script. If the wait stops, the
+page shows the Failed state. Example: the home page, when it looks up an act that the catalogue
+does not have yet (`catalogue/home.jte`).
+
 ## Content that breaks layouts
 
 **Convention.** Check a design against these.
