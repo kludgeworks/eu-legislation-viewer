@@ -42,21 +42,22 @@ public final class Wording {
   }
 
   /**
-   * Returns what a comparison matches {@code block} on: its wording without spaces, without a form
-   * blank at its end ({@link #BLANK}), and with each apostrophe and quotation mark in its plain
-   * form ({@link #plain}). A change of these alone is not a change. For example, "DOB: 30 March
-   * 1977" and "DOB:30 March 1977" match.
+   * Returns what a comparison matches {@code block} on: its wording without spaces, without form
+   * blanks ({@link #BLANK}), and with each apostrophe and quotation mark in its plain form ({@link
+   * #plain}). A change of these alone is not a change. For example, "DOB: 30 March 1977" and
+   * "DOB:30 March 1977" match.
    */
   public static String key(Element block) {
-    return SPACE.matcher(BLANK.matcher(plain(of(block))).replaceFirst("")).replaceAll("");
+    return SPACE.matcher(BLANK.matcher(plain(of(block))).replaceAll("")).replaceAll("");
   }
 
   /**
-   * A form blank: an ellipsis at the end of a block, where a form leaves room to fill in. For
-   * example, "Make (trade name of manufacturer): …". The Publications Office chooses whether a
-   * consolidation prints it. An ellipsis inside a sentence is not a blank.
+   * A form blank: an ellipsis that stands alone as a word, where a form leaves room to fill in. For
+   * example, "Make (trade name of manufacturer): …" and "Mass in running order: … kg". The
+   * Publications Office chooses whether a consolidation prints it. An ellipsis joined to a word, as
+   * in "Annex…", is not a blank.
    */
-  private static final Pattern BLANK = Pattern.compile("\\s*…$");
+  private static final Pattern BLANK = Pattern.compile("(?<![\\p{L}\\p{N}])…(?![\\p{L}\\p{N}])");
 
   /**
    * Returns {@code text} with each apostrophe and single quotation mark as ', and each double

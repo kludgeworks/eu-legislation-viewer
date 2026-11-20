@@ -1121,9 +1121,17 @@ class DifferTest {
   }
 
   @Test
-  void readsAnEllipsisInASentenceAsAChange() {
-    var from = text(unit("art_1", block("p", "the Member States … shall")));
-    var to = text(unit("art_1", block("p", "the Member States shall")));
+  void readsAFormBlankInsideAFieldThatOnlyOneTextPrintsAsNoChange() {
+    // As point 2.17.1 of Appendix 3 to Annex I to 692/2008, of 1 January 2016.
+    var from = text(unit("pnt_2.17.1", block("p", "Mass in running order: … kg")));
+    var to = text(unit("pnt_2.17.1", block("p", "Mass in running order: kg")));
+    assertThat(Differ.differences(from, to).differences()).isEmpty();
+  }
+
+  @Test
+  void readsAnEllipsisJoinedToAWordAsAChange() {
+    var from = text(unit("art_1", block("p", "as set out in Annex…")));
+    var to = text(unit("art_1", block("p", "as set out in Annex")));
     assertThat(Differ.differences(from, to).differences()).hasSize(1);
   }
 
