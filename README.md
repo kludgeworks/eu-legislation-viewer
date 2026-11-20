@@ -33,10 +33,10 @@ every version shares, so an unchanged provision is stored once and two versions 
 
 ### Act search
 
-Set `VIEWER_CATALOGUE_SEARCH_ENABLED=true` on a viewer instance to build the shared Postgres search index.
-The first build starts after ten seconds. The viewer checks hourly for the first successful build after 02:00 UTC.
-It issues 39 sequential Cellar queries per build. All instances search the previous complete index during a refresh
-and use Cellar until the first index is available. Catalogue maintainers review exact names and acronyms in SQL migrations.
+Every viewer builds the shared Postgres search index from Cellar, one at a time: a Postgres advisory lock lets one
+instance build while the others skip. Each instance checks hourly, from an hour after it starts, for the first
+successful build after 02:00 UTC. It issues 39 sequential Cellar queries per build. All instances search the previous
+complete index during a refresh, and search Cellar until the first index is published. A CELEX number, an ELI or a citation such as 2015/1998 goes straight to its act.
 
 Rebuild logs carry the MDC field `job=search-rebuild`. INFO records the start and the committed act count and duration.
 WARN records a failure once, with its duration and stack trace. DEBUG shows skipped runs and row counts for each Cellar extract.

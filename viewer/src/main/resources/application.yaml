@@ -118,9 +118,11 @@ gg:
 
 viewer:
   catalogue:
+    # the search index, built from Cellar once a day after 02:00 UTC (SearchRebuild): every instance
+    # checks each hour, from an hour after it starts, and one builds while the others skip
     search:
-      # Enable on viewer instances that may perform the nightly Cellar bulk extract.
-      enabled: false
+      start-delay: 1h
+      check-every: 1h
     # how the held acts are kept as Cellar has them: one instance asks Cellar what changed (one SPARQL
     # query), and each held act that changed is read again once it is quiet
     changes:

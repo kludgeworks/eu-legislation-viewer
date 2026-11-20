@@ -50,12 +50,12 @@ import org.postgresql.PGConnection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
- * Builds the English index of acts from Cellar, and publishes it. One viewer builds at a time.
+ * Builds the English index of acts from Cellar, and publishes it. Every viewer checks each hour,
+ * from an hour after it starts. One viewer builds at a time.
  *
  * <ol>
  *   <li>The build takes a session advisory lock on its own connection. A second viewer, or a second
@@ -72,7 +72,6 @@ import org.springframework.stereotype.Component;
  * </ol>
  */
 @Component
-@ConditionalOnProperty(name = "viewer.catalogue.search.enabled", havingValue = "true")
 class SearchRebuild {
   private static final Logger LOG = LoggerFactory.getLogger(SearchRebuild.class);
 
@@ -127,7 +126,7 @@ class SearchRebuild {
   }
 
   @Scheduled(
-      initialDelayString = "${viewer.catalogue.search.start-delay:10s}",
+      initialDelayString = "${viewer.catalogue.search.start-delay:1h}",
       fixedRateString = "${viewer.catalogue.search.check-every:1h}")
   void tick() {
     try (var job = MDC.putCloseable("job", "search-rebuild")) {

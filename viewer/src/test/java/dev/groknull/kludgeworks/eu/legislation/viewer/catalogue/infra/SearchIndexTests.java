@@ -30,7 +30,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 @SpringBootTest(
     webEnvironment = SpringBootTest.WebEnvironment.NONE,
-    properties = {"viewer.catalogue.search.enabled=true", "viewer.catalogue.search.start-delay=1d"})
+    properties = "viewer.catalogue.search.start-delay=1d")
 @Import(TestcontainersConfiguration.class)
 class SearchIndexTests {
   @Autowired MeterRegistry meters;
