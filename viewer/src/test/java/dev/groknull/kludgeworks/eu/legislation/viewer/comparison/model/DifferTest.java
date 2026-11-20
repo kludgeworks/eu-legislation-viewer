@@ -1112,6 +1112,22 @@ class DifferTest {
   }
 
   @Test
+  void readsAFormBlankThatOnlyOneTextPrintsAsNoChange() {
+    // As point 0.1 of Appendix 3 to Annex I to 692/2008: the consolidation of 1 January 2016 no
+    // longer prints the blank to fill in.
+    var from = text(unit("pnt_0.1", block("p", "Make (trade name of manufacturer): …")));
+    var to = text(unit("pnt_0.1", block("p", "Make (trade name of manufacturer):")));
+    assertThat(Differ.differences(from, to).differences()).isEmpty();
+  }
+
+  @Test
+  void readsAnEllipsisInASentenceAsAChange() {
+    var from = text(unit("art_1", block("p", "the Member States … shall")));
+    var to = text(unit("art_1", block("p", "the Member States shall")));
+    assertThat(Differ.differences(from, to).differences()).hasSize(1);
+  }
+
+  @Test
   void marksNoWordWhoseApostropheAloneChangedInAChangedUnit() {
     var from = text(unit("art_1", block("p", "the institution's capital")));
     var to = text(unit("art_1", block("p", "the institution’s own capital")));
