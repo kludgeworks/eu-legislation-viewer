@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguratio
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline.Entry;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.OutlinesVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -147,26 +148,31 @@ class ContentTests {
     var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
 
     assertThat(content.outline(id).orElseThrow().marks())
-        .hasSize(447)
+        // 6 of them only by marks of words inside a sentence
+        .hasSize(453)
         .containsEntry("anx/pnt_4.1.3.3", Set.of("32017R0815"))
         .containsEntry("anx/pnt_6.8.3.1", Set.of("32017R0815", "32022R1174"))
+        // A mark of words inside a sentence: "changed", not "provenance"
+        .hasEntrySatisfying("anx/pnt_3.1.1.3", acts -> assertThat(acts).contains("32022R1174"))
         .doesNotContainKey("art_1");
   }
 
   @Test
-  void outlinesATextKeptBeforeOutlinesHeldMarksAgainAndKeepsTheNewOutline() {
+  void outlinesATextThatOtherOutlineRulesOutlinedAgainAndKeepsTheNewOutline() {
     var text = LegalTexts.sample(SAMPLE);
     // A language that no other test stores, so that no outline of it is cached
     var id = content.store(CELEX, Language.ITA, "test", text);
-    jdbc.sql("update text set outline = outline - 'marks' where id = ?").param(id.value()).update();
+    jdbc.sql("update text set outline = outline - 'marks' || '{\"rules\": \"older\"}' where id = ?")
+        .param(id.value())
+        .update();
 
     assertThat(content.outline(id)).contains(Outlines.of(LegalTexts.element(text)));
     assertThat(
-            jdbc.sql("select jsonb_exists(outline, 'marks') from text where id = ?")
+            jdbc.sql("select outline ->> 'rules' from text where id = ?")
                 .param(id.value())
-                .query(Boolean.class)
+                .query(String.class)
                 .single())
-        .isTrue();
+        .isEqualTo(OutlinesVersion.value());
   }
 
   @Test

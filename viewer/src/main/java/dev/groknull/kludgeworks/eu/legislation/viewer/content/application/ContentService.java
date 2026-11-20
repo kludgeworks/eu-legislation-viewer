@@ -11,6 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextStored;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Outlines;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.OutlinesVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.PublicTexts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.micrometer.observation.Observation;
@@ -37,8 +38,9 @@ import org.springframework.transaction.annotation.Transactional;
  *       outlines the text, deletes the text before it and keeps the new one.
  *   <li>To read a text, the service reads its JSON and decodes it.
  *   <li>To outline a text, the service reads the outline that it kept when it stored the text. It
- *       keeps the outlines read last in the process. The decoded texts are not kept. A text kept
- *       before outlines held marks is outlined again from its JSON, the first time it is outlined.
+ *       keeps the outlines read last in the process. The decoded texts are not kept. A text whose
+ *       outline other outline rules made ({@link OutlinesVersion}) is outlined again from its JSON,
+ *       the first time it is outlined.
  * </ul>
  *
  * <p>Storing and reading are each one transaction, one observation and one log line. The
@@ -84,7 +86,8 @@ class ContentService implements Content {
     }
     var outline = Outlines.of(Decoder.element(json));
     kept.ifPresent(old -> store.delete(old.id()));
-    var added = store.add(celex, language, converter, digest, outline, json);
+    var added =
+        store.add(celex, language, converter, digest, outline, OutlinesVersion.value(), json);
     events.publishEvent(
         kept.isPresent()
             ? new TextReplaced(kept.get().id(), added.id(), celex, language)
@@ -164,8 +167,8 @@ class ContentService implements Content {
 
   /**
    * The outline is cached in the process, by the identity of the text ({@link ContentCaches}). A
-   * text kept before outlines held marks is outlined again from its JSON, once, and its new outline
-   * is kept.
+   * text whose outline other outline rules made is outlined again from its JSON, once, and its new
+   * outline is kept.
    */
   @Override
   @Cacheable(cacheNames = ContentCaches.OUTLINES, unless = "#result == null")
@@ -177,7 +180,7 @@ class ContentService implements Content {
 
   private Optional<Outline> doOutline(TextId text) {
     var start = System.nanoTime();
-    var outline = store.outline(text).or(() -> outlineAgain(text, start));
+    var outline = store.outline(text, OutlinesVersion.value()).or(() -> outlineAgain(text, start));
     LOG.debug(
         "Outlined text {}, not cached: {} in {} ms",
         text,
@@ -196,10 +199,11 @@ class ContentService implements Content {
         .map(
             json -> {
               var outline = Outlines.of(Decoder.element(json));
-              store.outline(text, outline);
+              store.outline(text, outline, OutlinesVersion.value());
               LOG.info(
-                  "Outlined text {} again, for the marks of its units: {} units marked, in {} ms",
+                  "Outlined text {} again, by the outline rules {}: {} units marked, in {} ms",
                   text,
+                  OutlinesVersion.value(),
                   outline.marks().size(),
                   millis(start));
               return outline;

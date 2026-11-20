@@ -84,7 +84,7 @@ jooq_tables(
 # The content model: legal texts as JSON, and back, their outlines, and the public model
 java_library(
     name = "model",
-    srcs = glob(["model/*.java"]),
+    srcs = glob(["model/*.java"]) + [":outlines_version"],
     visibility = ["//viewer:__subpackages__"],  # the viewer only: //libs/formex-converter never depends on it
     deps = [
         ":content",
@@ -93,4 +93,15 @@ java_library(
         "@maven//:org_jspecify_jspecify",
         "@maven//:tools_jackson_core_jackson_core",
     ],
+)
+
+# The version of the outline rules, model.OutlinesVersion: the SHA-256 of Outlines, so that a change
+# to it outlines the kept texts again, the first time each is outlined, with no migration and
+# nothing to remember to change
+genrule(
+    name = "outlines_version",
+    srcs = ["model/Outlines.java"],
+    outs = ["model/OutlinesVersion.java"],
+    cmd = "$(execpath //tools/build/src/main/java/dev/groknull/kludgeworks/build:source_digest) $@ dev.groknull.kludgeworks.eu.legislation.viewer.content.model OutlinesVersion $(SRCS)",
+    tools = ["//tools/build/src/main/java/dev/groknull/kludgeworks/build:source_digest"],
 )

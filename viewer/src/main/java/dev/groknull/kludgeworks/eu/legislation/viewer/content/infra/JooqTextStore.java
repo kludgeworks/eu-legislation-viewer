@@ -20,6 +20,7 @@ import org.jooq.DSLContext;
 import org.jooq.JSONB;
 import org.springframework.stereotype.Repository;
 import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.node.ObjectNode;
 
 /**
  * Keeps the texts in Postgres, in the table {@code text}, with jOOQ. The table is in {@code
@@ -38,8 +39,11 @@ class JooqTextStore implements TextStore {
   /** The compression level of zstd: its default, fast to write and to read. */
   private static final int LEVEL = 3;
 
-  /** The member of an outline's JSON that holds its marks. */
-  private static final String MARKS = "marks";
+  /**
+   * The member of an outline's JSON that holds the version of the outline rules that made it. An
+   * outline kept before it had this member has none.
+   */
+  private static final String RULES = "rules";
 
   private final DSLContext db;
   private final JsonMapper json;
@@ -83,6 +87,7 @@ class JooqTextStore implements TextStore {
       String converter,
       byte[] digest,
       Outline outline,
+      String rules,
       byte[] json) {
     var body = Zstd.compress(json, LEVEL);
     var id =
@@ -92,7 +97,7 @@ class JooqTextStore implements TextStore {
             .set(TEXT.DIGEST, digest)
             .set(TEXT.CONVERTER, converter)
             .set(TEXT.STORED_AT, currentInstant())
-            .set(TEXT.OUTLINE, JSONB.valueOf(this.json.writeValueAsString(outline)))
+            .set(TEXT.OUTLINE, outline(outline, rules))
             .set(TEXT.BODY, body)
             .returning(TEXT.ID)
             .fetchSingle(TEXT.ID);
@@ -123,24 +128,28 @@ class JooqTextStore implements TextStore {
   /**
    * {@inheritDoc}
    *
-   * <p>An outline kept before outlines held marks has no member {@code marks} in its JSON.
+   * <p>The version of the rules is the member {@code rules} of the outline's JSON.
    */
   @Override
-  public Optional<Outline> outline(TextId text) {
+  public Optional<Outline> outline(TextId text, String rules) {
     return db.select(TEXT.OUTLINE)
         .from(TEXT)
         .where(TEXT.ID.eq(text))
         .fetchOptional(row -> json.readTree(row.value1().data()))
-        .filter(tree -> tree.has(MARKS))
-        .map(tree -> json.treeToValue(tree, Outline.class));
+        .filter(tree -> tree.has(RULES) && rules.equals(tree.get(RULES).asString()))
+        .map(tree -> json.treeToValue(((ObjectNode) tree).without(RULES), Outline.class));
   }
 
   @Override
-  public void outline(TextId text, Outline outline) {
-    db.update(TEXT)
-        .set(TEXT.OUTLINE, JSONB.valueOf(json.writeValueAsString(outline)))
-        .where(TEXT.ID.eq(text))
-        .execute();
+  public void outline(TextId text, Outline outline, String rules) {
+    db.update(TEXT).set(TEXT.OUTLINE, outline(outline, rules)).where(TEXT.ID.eq(text)).execute();
+  }
+
+  /** Returns the JSON of {@code outline}, with the version of the {@code rules} that made it. */
+  private JSONB outline(Outline outline, String rules) {
+    ObjectNode tree = json.valueToTree(outline);
+    tree.put(RULES, rules);
+    return JSONB.valueOf(json.writeValueAsString(tree));
   }
 
   @Override

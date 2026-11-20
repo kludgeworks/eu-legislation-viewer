@@ -10,8 +10,9 @@ import java.util.Optional;
 
 /**
  * The store of texts. It keeps one text for each version and language: its JSON, the digest of the
- * JSON, its outline and the converter that made it. All of it is written once, with the text. Only
- * an outline kept before outlines held marks is written again.
+ * JSON, its outline, the version of the outline rules that made the outline and the converter that
+ * made the text. All of it is written once, with the text. Only an outline that other outline rules
+ * made is written again.
  */
 public interface TextStore {
 
@@ -25,6 +26,7 @@ public interface TextStore {
   /**
    * Keeps a text. There must be no text for the version in the language.
    *
+   * @param rules the version of the outline rules that made {@code outline}
    * @param json the text as {@code Encoder} writes it
    */
   Added add(
@@ -33,6 +35,7 @@ public interface TextStore {
       String converter,
       byte[] digest,
       Outline outline,
+      String rules,
       byte[] json);
 
   /** Deletes the text. */
@@ -49,13 +52,13 @@ public interface TextStore {
   Optional<byte[]> json(TextId text);
 
   /**
-   * Returns the outline of the text, if it is kept and holds the marks of its units. Returns empty
-   * for an outline kept before outlines held marks.
+   * Returns the outline of the text, if it is kept and the outline rules of {@code rules} made it.
+   * Returns empty for an outline that other rules made.
    */
-  Optional<Outline> outline(TextId text);
+  Optional<Outline> outline(TextId text, String rules);
 
-  /** Replaces the outline of the text, which must be kept. */
-  void outline(TextId text, Outline outline);
+  /** Replaces the outline of the text, which must be kept, with one that {@code rules} made. */
+  void outline(TextId text, Outline outline, String rules);
 
   /** Returns whether the text is kept. */
   boolean contains(TextId text);

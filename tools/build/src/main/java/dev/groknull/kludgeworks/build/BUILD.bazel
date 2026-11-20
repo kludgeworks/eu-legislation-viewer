@@ -89,7 +89,8 @@ java_library(
 )
 
 # a Java class that gives the SHA-256 of a package's sources, as the version of its rules: the
-# differ's version, in //viewer/.../comparison:differ_version
+# differ's version, in //viewer/.../comparison:differ_version, and the outline rules' version, in
+# //viewer/.../content:outlines_version
 java_binary(
     name = "source_digest",
     srcs = ["SourceDigest.java"],

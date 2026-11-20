@@ -21,9 +21,14 @@ import java.util.TreeSet;
  * container: an element that holds elements and is not a block. The labels and headings are read as
  * plain text, without the notes that they cite and without the text that an amendment deleted.
  *
- * <p>It also holds the marks of each unit: the acts that its {@code provenance} elements name. A
- * {@code provenance} in a block that has no eId, such as a paragraph or a deleted text, marks the
- * nearest unit around it.
+ * <p>It also holds the marks of each unit: the acts that its {@code provenance} elements name, and
+ * the acts that its {@code changed} elements name. A {@code changed} element marks words that an
+ * act changed inside a sentence. For example, in Article 15(1) of 767/2008 of 18 October 2013, "or
+ * extend the visa" is marked with 2009/810. A mark in a block that has no eId, such as a paragraph
+ * or a deleted text, marks the nearest unit around it.
+ *
+ * <p>{@link OutlinesVersion} is the version of these rules. A kept outline that other rules made is
+ * made again.
  */
 public final class Outlines {
 
@@ -56,20 +61,21 @@ public final class Outlines {
   }
 
   /**
-   * Adds the acts that the {@code provenance} elements in {@code element} name to the marks of
-   * their unit. {@code unit} is the eId of the nearest unit around {@code element}, or empty for
-   * none.
+   * Adds the acts that the {@code provenance} and {@code changed} elements in {@code element} name
+   * to the marks of their unit. {@code unit} is the eId of the nearest unit around {@code element},
+   * or empty for none.
    */
   private void mark(Element element, String unit) {
     var eId = Objects.requireNonNullElse(element.attribute("eId"), unit);
-    if (element.name().equals("provenance")) {
+    if (element.name().equals("provenance") || element.name().equals("changed")) {
       var act = element.attribute("amendingAct");
       if (act != null && !eId.isEmpty()) {
         marks.computeIfAbsent(eId, each -> new TreeSet<>()).add(act);
       }
-      return;
     }
-    element.children().forEach(child -> mark(child, eId));
+    if (!element.name().equals("provenance")) {
+      element.children().forEach(child -> mark(child, eId));
+    }
   }
 
   /** Walks a container and the containers in it, in order. */
