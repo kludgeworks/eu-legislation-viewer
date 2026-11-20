@@ -423,6 +423,44 @@ class SidenoteViewTest {
   }
 
   @Test
+  void namesTheVersionWhereAChangeNothingAttributesFirstAppearsAndWhatItConsolidates() {
+    // As points 12.9.3.14 and 12.9.3.15 of 2015/1998, deleted in the version of 22 March 2026.
+    var deleted = deleted("anx/pnt_12.9.3.14", new Marker("32019R0103", "replaced", null));
+    var march = version("02015R1998-20260322");
+    var included = Inclusions.listed(AVSEC.timeline());
+
+    var sidenote = SidenoteView.appeared(AVSEC, included, march, deleted);
+
+    assertThat(sidenote.made())
+        .startsWith("Deleted in the version of 22 March 2026, which consolidates ")
+        .contains("2026/449");
+    // It names no act as the one that made it.
+    assertThat(sidenote.acts()).isEmpty();
+    assertThat(sidenote.candidates()).isEmpty();
+    assertThat(sidenote.dates()).isEmpty();
+  }
+
+  @Test
+  void namesOnlyTheVersionWhereCellarListsNoActForIt() {
+    var march = version("02015R1998-20260322");
+    var empty =
+        new Version(
+            march.kind(),
+            march.date(),
+            march.celex(),
+            march.interim(),
+            List.of(),
+            march.languages(),
+            march.formex());
+    var changed = changed("anx/pnt_12.9.3.14", List.of(), List.of());
+
+    var sidenote =
+        SidenoteView.appeared(AVSEC, Inclusions.listed(AVSEC.timeline()), empty, changed);
+
+    assertThat(sidenote.made()).isEqualTo("Changed in the version of 22 March 2026");
+  }
+
+  @Test
   void placesActsThatReplacedAUnitTogetherInTheFirstVersionThatHasThemAll() {
     // 2019/103 applies in parts, in the versions of 1 February 2019 and 31 December 2021. It
     // replaced 11.1.2 together with 2019/1583. Only the second version has 2019/1583.

@@ -297,6 +297,42 @@ public record SidenoteView(
   }
 
   /**
+   * Returns whether the sidenote names no act: neither the act that made the difference, nor acts
+   * of which one made it.
+   */
+  public boolean unattributed() {
+    return acts.isEmpty() && candidates.isEmpty();
+  }
+
+  /**
+   * Returns the sidenote of {@code difference}, which no marker and no amendment in Cellar
+   * attributes, in {@code version}, the version where the change first appears. It names the
+   * version and what the version consolidates, and no act as the one that made the change. For
+   * example, "Deleted in the version of 22 March 2026, which consolidates 2026/449 and Corrigendum
+   * 1 to 2026/449". If the version consolidates no act, it names the version only.
+   */
+  public static SidenoteView appeared(
+      Act act, Inclusions included, Version version, Difference difference) {
+    var did =
+        switch (difference.kind()) {
+          case INSERTED -> "Inserted";
+          case DELETED -> "Deleted";
+          case CHANGED -> "Changed";
+        };
+    var consolidates = included.of(version);
+    return new SidenoteView(
+        did
+            + " in the version of "
+            + Dates.inWords(version.date())
+            + (consolidates.isEmpty() ? "" : ", which consolidates " + names(act, consolidates)),
+        List.of(),
+        List.of(),
+        List.of(),
+        null,
+        null);
+  }
+
+  /**
    * Returns the words for a difference for which the data names no act: "The data does not say
    * which act deleted this."
    */

@@ -53,6 +53,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -326,17 +327,34 @@ class ChangesController {
         day == null ? null : ends.act.pending(to, day, ends.language, texts.marks(preparation));
     var today = Timeline.today(clock);
     var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
+    var made = new ArrayList<Map.Entry<Difference, SidenoteView>>();
     for (var difference : comparison.get().differences()) {
-      var sidenote =
-          SidenoteView.of(
-              ends.act,
-              ends.included,
-              from,
-              to,
+      made.add(
+          Map.entry(
               difference,
-              amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
-              only,
-              ends.language);
+              SidenoteView.of(
+                  ends.act,
+                  ends.included,
+                  from,
+                  to,
+                  difference,
+                  amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
+                  only,
+                  ends.language)));
+    }
+    var unattributed =
+        made.stream()
+            .filter(each -> each.getValue().unattributed())
+            .map(each -> each.getKey().eId())
+            .collect(Collectors.toSet());
+    var appeared = appeared(ends, from, to, unattributed);
+    for (var entry : made) {
+      var difference = entry.getKey();
+      var version = entry.getValue().unattributed() ? appeared.get(difference.eId()) : null;
+      var sidenote =
+          version == null
+              ? entry.getValue()
+              : SidenoteView.appeared(ends.act, ends.included, version, difference);
       sidenotes.put(
           difference,
           pending == null
@@ -733,6 +751,46 @@ class ChangesController {
         eIds.size(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates.comparisonNeighbours(rows, this.html).render();
+  }
+
+  /**
+   * Returns the version where each change of {@code eIds} first appears, by the eId of its unit.
+   * The comparison of {@code from} with {@code to} has these changes, and no source attributes them
+   * to an act. Each pair of neighbouring versions after {@code from}, up to {@code to}, is
+   * compared, in order: the first pair whose comparison has a difference at the unit gives its
+   * later version. Preparing the act compares these pairs already, so their comparisons are kept. A
+   * pair whose texts are not both built is skipped. If {@code to} follows {@code from}, every
+   * change appears in {@code to}.
+   */
+  private Map<String, Version> appeared(Ends ends, Version from, Version to, Set<String> eIds) {
+    var found = new HashMap<String, Version>();
+    if (eIds.isEmpty()) {
+      return found;
+    }
+    if (ends.timeline.predecessor(to).filter(from::equals).isPresent()) {
+      eIds.forEach(eId -> found.put(eId, to));
+      return found;
+    }
+    for (var version : ends.timeline.versions()) {
+      if (!version.date().isAfter(from.date()) || version.date().isAfter(to.date())) {
+        continue;
+      }
+      var before = ends.timeline.predecessor(version);
+      if (before.isEmpty()
+          || !(ends.preparation.texts().get(before.get()) instanceof Text.Ready earlier)
+          || !(ends.preparation.texts().get(version) instanceof Text.Ready later)) {
+        continue;
+      }
+      comparisons.between(earlier.text(), later.text()).stream()
+          .flatMap(step -> step.differences().stream())
+          .map(Difference::eId)
+          .filter(eIds::contains)
+          .forEach(eId -> found.putIfAbsent(eId, version));
+      if (found.size() == eIds.size()) {
+        break;
+      }
+    }
+    return found;
   }
 
   /** Returns the ends of the comparison at a canonical address of the compare page. */
