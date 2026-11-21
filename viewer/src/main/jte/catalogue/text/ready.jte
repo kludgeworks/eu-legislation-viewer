@@ -1,10 +1,10 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarginView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.DivergenceNotesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TagsView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline
 @param String content
 @param Outline outline
 @param TagsView tags
-@param MarginView margin
+@param DivergenceNotesView notes
 @param String provision
 @param java.util.List<String> provisions
 @param String self
@@ -18,11 +18,11 @@
      acts that changed it. <provision-links> has the address of that history, and lists the
      provisions that have a history and can have no tag; js/tags.js gives each of these a
      hollow sign, ▽, in the place of the tag.
-     Where the text is not the law on the day, <margin-rules> lists the marks; js/margin.js puts
-     them on the text when it arrives. A change that does not apply on the day gets an amber rule
-     and a short line with the act. A change that the text does not show gets one grey marker,
-     "Not in this text", at its place. Each act is a link to its page. The outline gets a dot on
-     each part that has a mark. --%>
+     Where the text is not the law on the day, <divergence-notes> lists the divergence notes, and
+     js/divergence-notes.js puts them on the text when it arrives. A prospective amendment, a change
+     that does not apply on the day, gets an amber bar and a short note with the act. A pending
+     amendment, a change that the text does not show, gets one grey note, "Not in this text", at its
+     place. Each act is a link to its page. The outline gets a dot on each part that has a note. --%>
 <div id="text" class="outlined">
   <act-outline>
   <nav class="outline" aria-label="Outline">
@@ -43,15 +43,15 @@
       <span data-occurrence="${occurrence}"></span>
     @endfor
   </provision-links>
-  <margin-rules hidden>
-    @for(var mark : margin.marks())
-      @if(mark.marker())
-        <p class="marker" data-occurrence="${mark.occurrence()}" data-end="${mark.holds()}"><span class="marker-kind">Not in this text</span>@if(!mark.words().isEmpty()): ${mark.words()}@endif · <a href="${mark.href()}">${mark.act()}</a></p>
+  <divergence-notes hidden>
+    @for(var note : notes.notes())
+      @if(note.pending())
+        <p class="pending-note" data-occurrence="${note.occurrence()}" data-end="${note.holds()}"><span class="pending-note-kind">Not in this text</span>@if(!note.words().isEmpty()): ${note.words()}@endif · <a href="${note.href()}">${note.act()}</a></p>
       @else
-        <p class="rule-note" data-occurrence="${mark.occurrence()}" data-heading="${mark.holds()}"><a href="${mark.href()}">${mark.act()}</a> · ${mark.words()}</p>
+        <p class="prospective-note" data-occurrence="${note.occurrence()}" data-heading="${note.holds()}"><a href="${note.href()}">${note.act()}</a> · ${note.words()}</p>
       @endif
     @endfor
-  </margin-rules>
+  </divergence-notes>
   <%-- If the request for the text times out or its connection fails, htmx swaps nothing.
        js/loading.js then shows the failure from the template: what failed, Try again (the page
        again), and the version on EUR-Lex. --%>

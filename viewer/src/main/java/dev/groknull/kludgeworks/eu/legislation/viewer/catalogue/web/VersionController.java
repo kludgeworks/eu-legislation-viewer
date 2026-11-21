@@ -11,9 +11,9 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ArrivingView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.DivergenceNotesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarginView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ProvisionView;
@@ -297,8 +297,9 @@ class VersionController {
      *       version.
      *   <li>If no text of the act could be built, it returns the failure panel of the act. The
      *       panel links back to the last search of the reader, {@code results}, if there is one.
-     *   <li>If the text is built, it returns the text, with the marks in its margin where it is not
-     *       the law on the day, {@link MarginView}. {@code tags} are the tags of the built texts.
+     *   <li>If the text is built, it returns the text, with the divergence notes beside it where it
+     *       is not the law on the day, {@link DivergenceNotesView}. {@code tags} are the tags of
+     *       the built texts.
      *   <li>If only this text failed, it returns the failure panel of the version. Try again posts
      *       to {@code self}.
      *   <li>If the version appeared after the act was prepared, it says that the text is being
@@ -324,7 +325,7 @@ class VersionController {
                 "/content/" + ready.text(),
                 content.outline(ready.text()).orElseGet(Outline::empty),
                 TagsView.of(act, version, language),
-                MarginView.of(act, version, date, language, tags, today()),
+                DivergenceNotesView.of(act, version, date, language, tags, today()),
                 Links.read(eli, date, language) + "/provision",
                 ProvisionView.occurrences(act, version, language, tags),
                 self,

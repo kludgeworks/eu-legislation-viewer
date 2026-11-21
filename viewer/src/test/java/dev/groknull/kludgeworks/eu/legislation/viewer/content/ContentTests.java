@@ -144,7 +144,7 @@ class ContentTests {
   }
 
   @Test
-  void keepsTheActsThatMarkEachOccurrenceInTheOutline() {
+  void keepsTheActsThatTagEachOccurrenceInTheOutline() {
     var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
 
     assertThat(content.outline(id).orElseThrow().tags())

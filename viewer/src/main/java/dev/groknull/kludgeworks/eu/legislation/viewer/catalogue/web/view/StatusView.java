@@ -25,14 +25,15 @@ import org.jspecify.annotations.Nullable;
  *   <li>"2018/1862 applied in part. It applies in full from 7 March 2023 · Article 79(5) of
  *       2018/1862."
  *   <li>"2022/1190 was in force and did not apply yet. It applies from 15 October 2026 · Article 2
- *       of 2022/1190. 17 provisions, marked in the text."
+ *       of 2022/1190. 17 provisions, with a note in the text."
  *   <li>"2021/1133 was in force. Article 6 of 2021/1133 sets the day from which it applies. The
  *       data does not give a date for that day. 3 provisions, not in this text."
  * </ul>
  *
  * <p>The acts that get a line are the acts of {@link Act#divergences}: the act itself if it does
- * not apply in full, an amending act whose text is in the text before it applies, and an amending
- * act with changes that the text does not show. The tense obeys the day.
+ * not apply in full, a prospective amendment (an amending act whose text is in the text before it
+ * applies), and a pending amendment (an amending act with changes that the text does not show). The
+ * tense obeys the day.
  *
  * @param day the day, in words
  * @param lines the first lines, three at most
@@ -107,7 +108,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
     var count =
         divergence.places().stream().map(place -> place.location().name()).distinct().count();
     return switch (divergence.kind()) {
-      case EARLY ->
+      case PROSPECTIVE ->
           new Line(
               cited,
               href,
@@ -118,8 +119,8 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
                   + day
                   + clause(act, divergence)
                   + "."
-                  + count(count, ", marked in the text."));
-      case LATE ->
+                  + count(count, ", with a note in the text."));
+      case PENDING ->
           new Line(
               cited,
               href,
@@ -130,7 +131,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
                   + "."
                   + shown(divergence)
                   + count(count, ", not in this text."));
-      case UNCONFIRMED ->
+      case UNDATED ->
           new Line(
               cited,
               href,
@@ -157,19 +158,21 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
         .orElse("");
   }
 
-  /** Returns from when the text shows a late act, as a sentence with a space before it. */
-  private static String shown(Divergence late) {
-    var included = late.included();
+  /** Returns from when the text shows a pending amendment, as a sentence with a space before it. */
+  private static String shown(Divergence pending) {
+    var included = pending.included();
     return included == null
         ? " No text shows it yet."
         : " The text shows it from " + Dates.inWords(included.date()) + ".";
   }
 
-  /** Returns what sets the day of an act whose day the data does not give. */
-  private static String setBy(Act act, Divergence unconfirmed) {
+  /**
+   * Returns what sets the day of an undated pending amendment, whose day the data does not give.
+   */
+  private static String setBy(Act act, Divergence undated) {
     var clause =
-        act.applying(unconfirmed.act(), Set.of())
-            .map(applying -> Wording.clause(applying.dates(), unconfirmed.act()))
+        act.applying(undated.act(), Set.of())
+            .map(applying -> Wording.clause(applying.dates(), undated.act()))
             .orElse("");
     return clause.isEmpty()
         ? "The data does not give the day from which it applies."
@@ -179,7 +182,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
 
   /**
    * Returns how many provisions, with {@code where} after it and a space before it. For example, "
-   * 17 provisions, marked in the text.". Returns an empty text if Cellar names no provision.
+   * 17 provisions, with a note in the text.". Returns an empty text if Cellar names no provision.
    */
   private static String count(long count, String where) {
     return count == 0 ? "" : " " + (count == 1 ? "1 provision" : count + " provisions") + where;

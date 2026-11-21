@@ -18,11 +18,11 @@
      page has few changes, and then htmx loads each wording when the page loads: a fold that is
      open at the start gives no toggle event that htmx gets. A provision whose wording the texts do not give shows by its name only.
      Each change has an anchor, so the history of a provision on Read can link to it.
-     A run that does not apply on the day has an amber rule.
+     A run that does not apply on the day has an amber bar.
      Where the first version with the act integrates another act too, htmx loads a separate list
      below the runs: the changes that this act or the other act made, where the data does not say
      which. Its heading is "By this act or by …". A run that
-     applies has no rule. Where the data does not give the day, the rule is grey and broken. --%>
+     applies has no bar. Where the data does not give the day, the bar is grey and broken. --%>
 @template.layout.page(frame = frame, title = amending.title(), content = @`
   <div id="page" data-view="history" hx-boost:inherited="target:#page select:#page swap:outerHTML">
     @template.catalogue.skeletons()

@@ -7,8 +7,9 @@ import java.util.Optional;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * The occurrences of a text that have a change that does not apply on a day yet. The text includes
- * the change, and its act applies there from a later day. {@link Act#pending} finds them.
+ * The occurrences of a text that have a prospective amendment on a day: a change that the text
+ * includes, and that does not apply on the day yet. Its act applies there from a later day. {@link
+ * Act#prospective} finds them.
  *
  * <p>For example, the text of 2018/1862 of 1 August 2022 includes the changes of 2022/1190, which
  * apply from 15 October 2026. On 1 August 2022, Article 3, point 8 is such an occurrence.
@@ -17,9 +18,9 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * @param byOccurrence the act of the change, by the eId of the occurrence
  */
 @ValueObject
-public record Pending(LocalDate day, Map<String, ActIdentifier> byOccurrence) {
+public record Prospective(LocalDate day, Map<String, ActIdentifier> byOccurrence) {
 
-  public Pending {
+  public Prospective {
     byOccurrence = Map.copyOf(byOccurrence);
   }
 

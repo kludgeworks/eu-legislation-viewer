@@ -15,15 +15,16 @@ import org.jspecify.annotations.Nullable;
  * of the act, unchanged. A divergence tells on which days that text and the law differ, and why.
  *
  * <p>For example, 2017/815 applies from 1 June 2017, and the first version of 2015/1998 that
- * includes it starts on 7 June 2017. The text is late from 1 to 6 June 2017.
+ * includes it starts on 7 June 2017. From 1 to 6 June 2017, 2017/815 is a pending amendment: the
+ * text does not include it.
  *
- * @param kind whether the text is late or early
- * @param act the act that the text lacks, for a late text. For an early text, the act whose text
- *     does not apply yet.
- * @param applies the date from which {@code act} applies, with the clause that sets it. For a text
- *     whose date is not confirmed, the date from which {@code act} can apply: its entry into force.
- * @param included the first version that includes the text of {@code act}. Null for a late text
- *     that no version includes yet, and for a text whose date is not confirmed.
+ * @param kind whether {@code act} is a pending, a prospective or an undated pending amendment
+ * @param act the act that the text lacks, for a pending amendment. For a prospective amendment, the
+ *     act whose text does not apply yet.
+ * @param applies the date from which {@code act} applies, with the clause that sets it. For an
+ *     undated pending amendment, the date from which {@code act} can apply: its entry into force.
+ * @param included the first version that includes the text of {@code act}. Null for a pending
+ *     amendment that no version includes yet, and for an undated pending amendment.
  * @param places the provisions where the text differs, as Cellar annotates them. Empty where the
  *     whole act differs, or where Cellar does not say where.
  */
@@ -38,34 +39,34 @@ public record Divergence(
   public Divergence {
     places = List.copyOf(places);
     Objects.requireNonNull(applies.date(), "A divergence needs the day from which the act applies");
-    if (kind == Kind.EARLY && included == null) {
-      throw new IllegalArgumentException("An early text is in a version");
+    if (kind == Kind.PROSPECTIVE && included == null) {
+      throw new IllegalArgumentException("A prospective amendment is in a version");
     }
-    if (kind == Kind.UNCONFIRMED && included != null) {
-      throw new IllegalArgumentException("A text whose date is not confirmed is in no version");
+    if (kind == Kind.UNDATED && included != null) {
+      throw new IllegalArgumentException("An undated pending amendment is in no version");
     }
   }
 
   /** How a text differs from the law. */
   public enum Kind {
-    /** The act applies, but the text does not include it. */
-    LATE,
-    /** The text is included, but it does not apply yet. */
-    EARLY,
+    /** A pending amendment: the act applies, but the text does not include it. */
+    PENDING,
+    /** A prospective amendment: the text includes it, but it does not apply yet. */
+    PROSPECTIVE,
     /**
-     * The act is in force, and the text does not include it. Cellar does not give the day from
-     * which it applies, so it can apply already. For example, 2021/1133 changes 2018/1862 from a
-     * date that its Article 6 sets, and no version includes it.
+     * An undated pending amendment: the act is in force, and the text does not include it. Cellar
+     * does not give the day from which it applies, so it can apply already. For example, 2021/1133
+     * changes 2018/1862 from a date that its Article 6 sets, and no version includes it.
      */
-    UNCONFIRMED
+    UNDATED
   }
 
   /**
-   * Returns whether the whole text of {@code base} differs: this is the early text of {@code base}
-   * itself, which is in force but does not apply yet. For example, 2016/679 on 1 March 2017.
+   * Returns whether the whole text of {@code base} differs: {@code base} itself is in force but
+   * does not apply yet, so its whole text is prospective. For example, 2016/679 on 1 March 2017.
    */
   public boolean whole(ActIdentifier base) {
-    return kind == Kind.EARLY && act.equals(base);
+    return kind == Kind.PROSPECTIVE && act.equals(base);
   }
 
   /**
@@ -75,7 +76,8 @@ public record Divergence(
    * <ul>
    *   <li>A place that the text has is each of its occurrences.
    *   <li>A place that the text does not have is in the occurrence that holds it, {@link
-   *       Location#around}. For example, a point that a late act inserts is in the point above it.
+   *       Location#around}. For example, a point that a pending amendment inserts is in the point
+   *       above it.
    *   <li>A place for which the text has no occurrence is left out.
    * </ul>
    */
@@ -98,8 +100,8 @@ public record Divergence(
    * An occurrence of a text that a divergence touches.
    *
    * @param eId the eId of the occurrence
-   * @param holds whether the place is not in the text, and this occurrence holds it. Only the
-   *     heading of the occurrence is then marked, not all of it.
+   * @param holds whether the place is not in the text, and this occurrence holds it. The divergence
+   *     note is then beside the heading of the occurrence only, not beside all of it.
    * @param places the places of the divergence that are this occurrence, or that this occurrence
    *     holds
    */
@@ -111,7 +113,8 @@ public record Divergence(
 
     /**
      * Returns this occurrence with the places of {@code other}, the same occurrence for another
-     * place. An occurrence that is a place itself is marked whole, also if it holds another place.
+     * place. An occurrence that is a place itself gets its divergence note whole, also if it holds
+     * another place.
      */
     Occurrence with(Occurrence other) {
       var all = new ArrayList<>(places);
@@ -129,21 +132,21 @@ public record Divergence(
    * Returns whether the text and the law differ on {@code day}.
    *
    * <ul>
-   *   <li>A text whose date is not confirmed can differ on each day from the entry into force of
-   *       the act.
-   *   <li>A late text differs from the day the act applies to the day before the version that
-   *       includes it. If no version includes it, it differs on each day from the day it applies.
-   *   <li>An early text differs from the first day of the version that includes it to the day
-   *       before the act applies.
+   *   <li>An undated pending amendment can make them differ on each day from the entry into force
+   *       of the act.
+   *   <li>A pending amendment makes them differ from the day the act applies to the day before the
+   *       version that includes it. If no version includes it, on each day from the day it applies.
+   *   <li>A prospective amendment makes them differ from the first day of the version that includes
+   *       it to the day before the act applies.
    * </ul>
    */
   public boolean on(LocalDate day) {
     return switch (kind) {
-      case LATE ->
+      case PENDING ->
           !day.isBefore(appliesFrom()) && (included == null || day.isBefore(included.date()));
-      case EARLY ->
+      case PROSPECTIVE ->
           !day.isBefore(Objects.requireNonNull(included).date()) && day.isBefore(appliesFrom());
-      case UNCONFIRMED -> !day.isBefore(appliesFrom());
+      case UNDATED -> !day.isBefore(appliesFrom());
     };
   }
 }

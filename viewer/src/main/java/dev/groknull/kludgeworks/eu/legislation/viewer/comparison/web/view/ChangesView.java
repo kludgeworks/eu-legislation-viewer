@@ -80,15 +80,15 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     var differences = comparison.differences().stream().filter(shown).toList();
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
-    var pending = new Pending(passages, others);
+    var next = new NextFold(passages, others);
     // The occurrences whose opening the view shows: a lead, or a shown difference.
     var opened = new HashSet<String>();
     for (var difference : comparison.differences()) {
-      place(difference.context(), differences, pending, opened);
+      place(difference.context(), differences, next, opened);
       if (!shown.test(difference)) {
         if (difference.kind() != Kind.DELETED && !holds(differences, difference.eId())) {
-          pending.add(List.of(difference.occurrence()), difference.parent());
-          pending.hidden++;
+          next.add(List.of(difference.occurrence()), difference.parent());
+          next.hidden++;
         }
         continue;
       }
@@ -98,17 +98,17 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
       var parent = difference.parent();
       var lead = difference.lead();
       if (parent != null && lead != null && opened.add(parent)) {
-        pending.fold();
+        next.fold();
         passages.add(new Lead(lead));
       }
-      pending.fold();
+      next.fold();
       var number = numbers.size() + 1;
       numbers.add(number);
       passages.add(new Shown(number, difference, note(difference)));
       opened.add(difference.eId());
     }
-    place(comparison.closing(), differences, pending, opened);
-    pending.fold();
+    place(comparison.closing(), differences, next, opened);
+    next.fold();
     return new ChangesView(count(differences.size()), passages, numbers);
   }
 
@@ -122,19 +122,19 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * </ul>
    */
   private static void place(
-      List<Context> context, List<Difference> shown, Pending pending, Set<String> opened) {
+      List<Context> context, List<Difference> shown, NextFold next, Set<String> opened) {
     for (var each : context) {
       var opening = each.opening();
       if (opening == null) {
-        pending.add(each.occurrences(), each.parent());
+        next.add(each.occurrences(), each.parent());
       } else if (holds(shown, each.occurrences().getFirst().eId())) {
-        pending.fold();
-        pending.passages.add(new Lead(opening));
+        next.fold();
+        next.passages.add(new Lead(opening));
         opened.add(each.occurrences().getFirst().eId());
       } else {
         // It holds differences, but the filter leaves out all of them.
-        pending.add(each.occurrences(), each.parent());
-        pending.hidden++;
+        next.add(each.occurrences(), each.parent());
+        next.hidden++;
       }
     }
   }
@@ -148,7 +148,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * The occurrences that wait to be folded, in order, each once, and how many of them differ. The
    * occurrences that are the same in both texts and in one occurrence get a fold of their own.
    */
-  private static final class Pending {
+  private static final class NextFold {
     private final List<Passage> passages;
     private final String others;
     private final List<Sibling> occurrences = new ArrayList<>();
@@ -156,7 +156,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     private final Set<@Nullable String> parents = new HashSet<>();
     private int hidden;
 
-    Pending(List<Passage> passages, String others) {
+    NextFold(List<Passage> passages, String others) {
       this.passages = passages;
       this.others = others;
     }

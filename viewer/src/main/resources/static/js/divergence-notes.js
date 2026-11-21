@@ -1,28 +1,29 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 /**
- * @file The marks in the text on the Read page, where the text is not the law on the day asked,
- * catalogue/text/ready.jte.
+ * @file The divergence notes on the Read page, beside the text where it is not the law on the day
+ * asked, catalogue/text/ready.jte.
  *
  * The content module renders the text without the act, and htmx loads it into `.content`. So the
- * page lists the marks in `<margin-rules>`, next to the text. Each mark names an occurrence by its eId
- * (`data-occurrence`).
+ * page lists the notes in `<divergence-notes>`, next to the text. Each note names an occurrence by
+ * its eId (`data-occurrence`).
  *
- * - A `.rule-note` is for a change that does not apply on the day. Its occurrence gets an amber rule
- *   (`.not-applying`) and the note beside it: the act, as a link to its page, and the state. With
- *   `data-heading`, only the heading of the occurrence gets the rule. An occurrence in an occurrence that has the rule
- *   already is not marked again. An occurrence right after a marked occurrence with the same words has no note
- *   of its own: one note serves the run.
- * - A `.marker` is for a change that the text does not show. It goes before its occurrence, or at the
- *   end of the occurrence with `data-end`.
+ * - A `.prospective-note` is for a prospective amendment, a change that does not apply on the day.
+ *   Its occurrence gets an amber bar (`.not-applying`) and the note beside it: the act, as a link to
+ *   its page, and the state. With `data-heading`, only the heading of the occurrence gets the bar.
+ *   An occurrence in an occurrence that has the bar already gets no bar of its own. An occurrence
+ *   right after an occurrence with the bar and the same words has no note of its own: one note
+ *   serves the run.
+ * - A `.pending-note` is for a pending amendment, a change that the text does not show. It goes
+ *   before its occurrence, or at the end of the occurrence with `data-end`.
  *
- * The outline beside the text gets a dot on each entry that has a mark, and on the entries that
- * hold it: `.has-rule` or `.has-marker`, with words for a screen reader.
+ * The outline beside the text gets a dot on each entry that has a note, and on the entries that
+ * hold it: `.has-prospective` or `.has-pending`, with words for a screen reader.
  */
 
 /**
- * Returns whether `occurrence` comes right after an occurrence that is marked with `label`, or whose heading
- * is. Then the note of that occurrence serves this one.
+ * Returns whether `occurrence` comes right after an occurrence that has the bar with `label`, or
+ * whose heading has it. Then the note of that occurrence serves this one.
  *
  * @param {HTMLElement} occurrence
  * @param {string} label
@@ -42,17 +43,17 @@ const follows = (occurrence, label) => {
 
 /** The words that a screen reader gets for each dot of the outline. */
 const DOTS = {
-  "has-rule": " (has a change that does not apply on the day)",
-  "has-marker": " (has a change that this text does not show)",
+  "has-prospective": " (has a change that does not apply on the day)",
+  "has-pending": " (has a change that this text does not show)",
 };
 
 /**
- * Gives the outline a dot for a mark on `occurrence`: on the entry of the occurrence, or of the nearest occurrence
+ * Gives the outline a dot for a note on `occurrence`: on the entry of the occurrence, or of the nearest occurrence
  * that holds it and has an entry, and on each entry that holds that entry.
  *
  * @param {Element | null} outline
  * @param {HTMLElement} occurrence
- * @param {"has-rule" | "has-marker"} dot
+ * @param {"has-prospective" | "has-pending"} dot
  */
 const dotOutline = (outline, occurrence, dot) => {
   if (!outline) {
@@ -79,7 +80,7 @@ const dotOutline = (outline, occurrence, dot) => {
 };
 
 /**
- * Returns a copy of the mark `each` for the text, without the data that places it.
+ * Returns a copy of the note `each` for the text, without the data that places it.
  *
  * @param {HTMLElement} each
  * @returns {HTMLElement}
@@ -93,18 +94,18 @@ const copy = (each) => {
 };
 
 /**
- * Puts the marks that `rules` lists on the text in `content`, and the dots on `outline`. It does
- * nothing if the text is not there yet, or has its marks already.
+ * Puts the notes that `notes` lists on the text in `content`, and the dots on `outline`. It does
+ * nothing if the text is not there yet, or has its notes already.
  *
- * @param {HTMLElement} rules
+ * @param {HTMLElement} notes
  * @param {HTMLElement} content
  * @param {Element | null} [outline]
  */
-export const mark = (rules, content, outline = null) => {
-  if (!content.querySelector("[id]") || content.querySelector(".not-applying, .marker")) {
+export const place = (notes, content, outline = null) => {
+  if (!content.querySelector("[id]") || content.querySelector(".not-applying, .pending-note")) {
     return;
   }
-  for (const each of rules.querySelectorAll("[data-occurrence]")) {
+  for (const each of notes.querySelectorAll("[data-occurrence]")) {
     if (!(each instanceof HTMLElement) || !each.dataset.occurrence) {
       continue;
     }
@@ -112,16 +113,16 @@ export const mark = (rules, content, outline = null) => {
     if (!occurrence || !content.contains(occurrence)) {
       continue;
     }
-    if (each.classList.contains("marker")) {
+    if (each.classList.contains("pending-note")) {
       if (each.dataset.end === "true") {
         occurrence.append(copy(each));
       } else {
         occurrence.before(copy(each));
       }
-      dotOutline(outline, occurrence, "has-marker");
+      dotOutline(outline, occurrence, "has-pending");
       continue;
     }
-    dotOutline(outline, occurrence, "has-rule");
+    dotOutline(outline, occurrence, "has-prospective");
     if (occurrence.closest(".not-applying")) {
       continue;
     }
@@ -137,11 +138,11 @@ export const mark = (rules, content, outline = null) => {
 };
 
 /**
- * Custom element that lists the marks of the margin. It puts them on the text in the `.content`
- * beside it after each htmx swap, or at once if the text is there. A swap of anything else leaves
- * the text as it is, and a text that has its marks keeps them.
+ * Custom element that lists the divergence notes. It puts them on the text in the `.content` beside
+ * it after each htmx swap, or at once if the text is there. A swap of anything else leaves the text
+ * as it is, and a text that has its notes keeps them.
  */
-export class MarginRules extends HTMLElement {
+export class DivergenceNotes extends HTMLElement {
   connectedCallback() {
     document.addEventListener("htmx:after:swap", this.#handleSwap);
     this.apply();
@@ -155,11 +156,11 @@ export class MarginRules extends HTMLElement {
     this.apply();
   };
 
-  /** Puts the marks on the text, if it is there. */
+  /** Puts the notes on the text, if it is there. */
   apply() {
     const content = this.#content();
     if (content) {
-      mark(this, content, this.parentElement?.querySelector(":scope nav.outline") ?? null);
+      place(this, content, this.parentElement?.querySelector(":scope nav.outline") ?? null);
     }
   }
 
@@ -174,6 +175,6 @@ export class MarginRules extends HTMLElement {
   }
 }
 
-if (!customElements.get("margin-rules")) {
-  customElements.define("margin-rules", MarginRules);
+if (!customElements.get("divergence-notes")) {
+  customElements.define("divergence-notes", DivergenceNotes);
 }

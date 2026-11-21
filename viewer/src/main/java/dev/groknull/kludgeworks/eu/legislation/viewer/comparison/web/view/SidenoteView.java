@@ -86,9 +86,10 @@ import org.jspecify.annotations.Nullable;
  * @param published how the acts that made the difference, or may have made it, were published, one
  *     line for each act. The hover of {@code made} lists them the same way. Null where no act is
  *     named.
- * @param pending what the sidenote says where a change of the difference does not apply on the
- *     later day of the comparison yet. For example, "2022/1190 did not apply yet on 1 August 2022".
- *     The difference then has an amber rule. Null where each change applies.
+ * @param prospective what the sidenote says where a change of the difference does not apply on the
+ *     later day of the comparison yet, a prospective amendment. For example, "2022/1190 did not
+ *     apply yet on 1 August 2022". The difference then has an amber bar. Null where each change
+ *     applies.
  */
 public record SidenoteView(
     @Nullable String made,
@@ -96,7 +97,7 @@ public record SidenoteView(
     List<ActIdentifier> candidates,
     List<Applies> dates,
     @Nullable String published,
-    @Nullable String pending) {
+    @Nullable String prospective) {
 
   public SidenoteView {
     acts = List.copyOf(acts);
@@ -106,8 +107,8 @@ public record SidenoteView(
 
   /**
    * Returns this sidenote for a difference that has a change of {@code amending} that does not
-   * apply on {@code day} yet, the later day of the comparison ({@code Act.pending}). {@code today}
-   * gives the tense.
+   * apply on {@code day} yet, the later day of the comparison ({@code Act.prospective}). {@code
+   * today} gives the tense.
    */
   public SidenoteView notApplying(Act act, ActIdentifier amending, LocalDate day, LocalDate today) {
     return new SidenoteView(

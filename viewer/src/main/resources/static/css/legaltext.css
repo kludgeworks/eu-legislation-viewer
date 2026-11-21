@@ -349,7 +349,7 @@ p.norm {
 
 .table td,
 .table th {
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
   padding: 0.2rem 0.4rem;
   vertical-align: top;
 }
@@ -441,7 +441,7 @@ p.norm {
 
 .notes {
   margin-top: 2rem;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line-faint);
   font-size: 0.8em;
 }
 

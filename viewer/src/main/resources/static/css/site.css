@@ -22,7 +22,7 @@
   --line-strong: light-dark(#9aa3ad, #66707b);
   --line-dot: light-dark(#b7bec6, #4b535c);
   --line: light-dark(#c4cad1, #49515a);
-  --rule: light-dark(#d5d9de, #333940);
+  --line-faint: light-dark(#d5d9de, #333940);
   --hair: light-dark(#e3e6ea, #2a2f35);
   --surface: light-dark(#fafbfc, #1b1f24);
   --surface2: light-dark(#f4f5f7, #22272d);
@@ -104,7 +104,7 @@ nav.site {
   gap: 8px 18px;
   align-items: center;
   padding: 8px max(28px, env(safe-area-inset-left, 0px));
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
   background: var(--surface);
 }
 
@@ -403,7 +403,7 @@ button.link {
 .api-example {
   margin: 10px 0 16px;
   overflow: hidden;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
   border-radius: 6px;
   background: var(--surface);
 }
@@ -413,7 +413,7 @@ button.link {
   align-items: center;
   gap: 10px;
   padding: 8px 12px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
   background: var(--surface2);
   font:
     13px ui-monospace,
@@ -500,7 +500,7 @@ button.link {
 }
 
 .api-example pre + pre {
-  border-top: 1px dashed var(--rule);
+  border-top: 1px dashed var(--line-faint);
 }
 
 .api-example pre[data-tab="curl"] code::before {

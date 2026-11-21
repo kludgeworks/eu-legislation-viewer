@@ -85,14 +85,21 @@ PAGES = (
     Shown("read-unchanged", "Read", "An act that no act changed opens on Read", GDPR + "/eng"),
     Shown("read", "Read", "The law on a day", AVSEC + "/2021-12-31/eng"),
     Shown(
-        "read-late",
+        "read-pending",
         "Read",
-        "An act applies that the text does not have, with marks in the text",
+        "A pending amendment: an act applies that the text does not have, with divergence notes",
         AVSEC + "/2017-06-03/eng",
     ),
-    Shown("read-early", "Read", "The act itself does not apply yet", GDPR + "/2017-01-01/eng"),
-    Shown("read-pending", "Read", "Provisions that do not apply yet", VIS + "/2018-01-01/eng"),
-    Shown("read-unconfirmed", "Read", "A date not confirmed", SIS + "/2026-11-17/eng"),
+    Shown(
+        "read-not-applying", "Read", "The act itself does not apply yet", GDPR + "/2017-01-01/eng"
+    ),
+    Shown(
+        "read-prospective",
+        "Read",
+        "Prospective amendments: provisions that do not apply yet",
+        VIS + "/2018-01-01/eng",
+    ),
+    Shown("read-undated", "Read", "An undated pending amendment", SIS + "/2026-11-17/eng"),
     Shown(
         "read-provision",
         "Read",

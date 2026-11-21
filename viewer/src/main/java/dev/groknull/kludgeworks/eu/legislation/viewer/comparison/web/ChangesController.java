@@ -148,8 +148,8 @@ class ChangesController {
    *
    * <p>{@code fromDay} and {@code toDay} are the two days of the page, where they are not the first
    * days of the two versions. The links of the views keep them. A difference with a change that
-   * does not apply on the later day yet has an amber rule, and its sidenote says so ({@link
-   * Act#pending}).
+   * does not apply on the later day yet, a prospective amendment, has an amber bar, and its
+   * sidenote says so ({@link Act#prospective}).
    *
    * <p>Returns 404 if the address is not the canonical address of a comparison, if the view does
    * not exist, or if the texts are not built yet.
@@ -320,8 +320,8 @@ class ChangesController {
     var before = outline(earlier.text(), outlines);
     var outline = outline(later.text(), outlines);
     var amended = ends.act.amended(from, to, before.eIds(), outline.eIds(), ends.language);
-    var pending =
-        day == null ? null : ends.act.pending(to, day, ends.language, texts.tags(preparation));
+    var prospective =
+        day == null ? null : ends.act.prospective(to, day, ends.language, texts.tags(preparation));
     var today = Timeline.today(clock);
     var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
     var made = new ArrayList<Map.Entry<Difference, SidenoteView>>();
@@ -354,11 +354,11 @@ class ChangesController {
               : SidenoteView.appeared(ends.act, ends.included, version, difference);
       sidenotes.put(
           difference,
-          pending == null
+          prospective == null
               ? sidenote
-              : pending
+              : prospective
                   .at(difference.eId())
-                  .map(each -> sidenote.notApplying(ends.act, each, pending.day(), today))
+                  .map(each -> sidenote.notApplying(ends.act, each, prospective.day(), today))
                   .orElse(sidenote));
     }
     return Optional.of(

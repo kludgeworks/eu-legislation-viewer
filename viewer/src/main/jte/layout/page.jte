@@ -27,7 +27,7 @@
   <script type="module" src="${frame.assets().clock()}"></script>
   <script type="module" src="${frame.assets().outline()}"></script>
   <script type="module" src="${frame.assets().tags()}"></script>
-  <script type="module" src="${frame.assets().margin()}"></script>
+  <script type="module" src="${frame.assets().divergenceNotes()}"></script>
   <script type="module" src="${frame.assets().sidenotes()}"></script>
   <script type="module" src="${frame.assets().copy()}"></script>
   <script type="module" src="${frame.assets().daypicker()}"></script>

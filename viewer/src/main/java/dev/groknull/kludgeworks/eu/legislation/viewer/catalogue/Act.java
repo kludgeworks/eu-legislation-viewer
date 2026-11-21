@@ -280,20 +280,20 @@ public record Act(
    * Returns each period in which the text of the versions in {@code language} is not the law.
    *
    * <ul>
-   *   <li>The text is early while the act is in force but does not apply yet. For example, 2016/679
-   *       is in force from 24 May 2016 and applies from 25 May 2018.
-   *   <li>The text is late where a provision of an amending act applies, but the text does not
-   *       include it yet. For example, 2017/815 applies from 1 June 2017, and the version of
+   *   <li>The whole text is prospective while the act is in force but does not apply yet. For
+   *       example, 2016/679 is in force from 24 May 2016 and applies from 25 May 2018.
+   *   <li>A provision of an amending act that applies, but that the text does not include yet, is a
+   *       pending amendment. For example, 2017/815 applies from 1 June 2017, and the version of
    *       2015/1998 of 7 June 2017 is the first to include it.
-   *   <li>The text is early where it includes a provision of an amending act before the provision
-   *       applies. For example, the version of 767/2008 of 12 January 2018 includes provisions of
-   *       2017/2226 that apply later.
+   *   <li>A provision of an amending act that the text includes before the provision applies is a
+   *       prospective amendment. For example, the version of 767/2008 of 12 January 2018 includes
+   *       provisions of 2017/2226 that apply later.
    * </ul>
    *
    * <p>{@code texts} gives the tags of the texts in {@code language} that are built. They tell
    * which version first includes each provision. {@link Divergences} tells how. An amending act
-   * that does not change the text in {@code language} makes no text late. For example, 2017/837
-   * corrects only the Swedish and the Polish text of 2015/1998.
+   * that does not change the text in {@code language} is no pending amendment of that text. For
+   * example, 2017/837 corrects only the Swedish and the Polish text of 2015/1998.
    */
   public List<Divergence> divergences(Language language, Map<Version, TextTags> texts) {
     return Divergences.of(this, language, texts);
@@ -306,8 +306,8 @@ public record Act(
    *   <li>It is the version that applies on the day.
    *   <li>If an amending act applies on the day and that version does not include it, it is the
    *       first version that includes the act. If there are two or more such acts, it is the latest
-   *       of their versions. That text can include a change that does not apply on the day yet: an
-   *       early divergence of the day says where.
+   *       of their versions. That text can include a change that does not apply on the day yet: a
+   *       prospective amendment of the day says where.
    *   <li>An act that no version includes does not move the version.
    * </ul>
    *
@@ -326,7 +326,7 @@ public record Act(
       return applies;
     }
     return divergences(day, language, texts).stream()
-        .filter(each -> each.kind() == Divergence.Kind.LATE)
+        .filter(each -> each.kind() == Divergence.Kind.PENDING)
         .map(Divergence::included)
         .filter(Objects::nonNull)
         .filter(included -> included.date().isAfter(applies.get().date()))
@@ -336,29 +336,29 @@ public record Act(
 
   /**
    * Returns the occurrences of the text of {@code version} that have a change that does not apply
-   * on {@code day} yet. They are the occurrences of each early divergence of the day, {@link
-   * Divergence#in}. A comparison gives the difference at such an occurrence an amber rule. Where
-   * the act itself does not apply yet, no occurrence is given: the whole text is early.
+   * on {@code day} yet. They are the occurrences of each prospective amendment of the day, {@link
+   * Divergence#in}. A comparison gives the difference at such an occurrence an amber bar. Where the
+   * act itself does not apply yet, no occurrence is given: the whole text is prospective.
    *
    * <p>Empty if the text of {@code version} is not built.
    *
    * @param texts the tags of the texts in {@code language} that are built, as {@link
    *     #divergences(Language, Map)} takes them
    */
-  public Pending pending(
+  public Prospective prospective(
       Version version, LocalDate day, Language language, Map<Version, TextTags> texts) {
     var byOccurrence = new LinkedHashMap<String, ActIdentifier>();
     var text = texts.get(version);
     if (text != null) {
       for (var divergence : divergences(day, language, texts)) {
-        if (divergence.kind() == Divergence.Kind.EARLY && !divergence.whole(id)) {
+        if (divergence.kind() == Divergence.Kind.PROSPECTIVE && !divergence.whole(id)) {
           divergence
               .in(text.eIds())
               .forEach(occurrence -> byOccurrence.putIfAbsent(occurrence.eId(), divergence.act()));
         }
       }
     }
-    return new Pending(day, byOccurrence);
+    return new Prospective(day, byOccurrence);
   }
 
   /**

@@ -62,7 +62,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesAnActThatTheTextMarksFirstThoughCellarDoesNotListIt() {
+  void namesAnActThatTheTextTagsFirstThoughCellarDoesNotListIt() {
     // As 767/2008 of 29 December 2017, which tags 2017/2226 before Cellar lists it.
     var tagged = new ActIdentifier("32017R2226");
     var c =
@@ -90,7 +90,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesAnActThatAnEarlierVersionIncludedByItsNewMarkerWhereAPartOfItAppliesInTheStep() {
+  void namesAnActThatAnEarlierVersionIncludedByItsNewTagWhereAPartOfItAppliesInTheStep() {
     // As 2024/1619 on 2013/36 on 11 January 2026, for which Cellar lists no act. Here 2026/449 on
     // 2015/1998: included from 22 March 2026, and in part from 1 October 2026. Cellar's listing of
     // it in October is taken away.
@@ -244,7 +244,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesTheActCellarSaysDeletedAnOccurrenceWhichLeavesNoMarker() {
+  void namesTheActCellarSaysDeletedAnOccurrenceWhichLeavesNoTag() {
     var deleted =
         new Difference(
             "anx/pnt_6.8.1.8",
@@ -475,7 +475,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void placesTheActTheMarkerNamesLastAfterThoseOnlyCellarNames() {
+  void placesTheActTheTagNamesLastAfterThoseOnlyCellarNames() {
     // The text keeps 4.1.3.2 struck through under the deletion by 2019/103. Cellar has 2017/815
     // replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies in
     // parts, and its first part is before 2019/413.
@@ -524,7 +524,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void saysActsOfOneVersionTheMarkersNameMadeItTogetherFollowingTheMarkersOverCellar() {
+  void saysActsOfOneVersionTheTagsNameMadeItTogetherFollowingTheTagsOverCellar() {
     var point =
         changed(
             "anx/pnt_11.1.2",
@@ -573,7 +573,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesTheActCellarNamesWhereTheTextHasNoMarker() {
+  void namesTheActCellarNamesWhereTheTextHasNoTag() {
     var deleted =
         new Difference(
             "anx/pnt_1.2.3.8",

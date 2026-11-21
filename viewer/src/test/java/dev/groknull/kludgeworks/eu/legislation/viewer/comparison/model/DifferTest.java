@@ -81,7 +81,7 @@ class DifferTest {
   }
 
   @Test
-  void keepsTheTextsStructureAroundItsMarks() {
+  void keepsTheTextsStructureAroundItsEdits() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst().shown();
     assertThat(c.children()).extracting(Element::name).containsExactly("tag", "num", "p");
     assertThat(descendants(c))
@@ -956,7 +956,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsRenumberedPointWhenMarkerAttributeDiffersFromEarlierOccurrence() {
+  void pairsRenumberedPointWhenTagIdAttributeDiffersFromEarlierOccurrence() {
     var earlier =
         text(
             pointWithNum(
@@ -981,7 +981,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsOccurrenceWithLeftoverRenumberedMarkerUnderSameIdentifier() {
+  void pairsOccurrenceWithLeftoverRenumberedTagUnderSameIdentifier() {
     var earlier =
         text(
             pointWithNum("1/pnt_12", "12.", "Point twelve wording.", "ActW", "replaced"),
@@ -997,7 +997,7 @@ class DifferTest {
   }
 
   @Test
-  void showsOccurrenceWithLeftoverRenumberedMarkerAsChangedUnderSameIdentifierWhenWordingChanges() {
+  void showsOccurrenceWithLeftoverRenumberedTagAsChangedUnderSameIdentifierWhenWordingChanges() {
     var earlier =
         text(pointWithNum("1/pnt_13", "13.", "Point thirteen old text.", "ActX", "renumbered"));
     var later =
@@ -1536,7 +1536,7 @@ class DifferTest {
   }
 
   @Test
-  void namesTheActsThatMarkAnOccurrenceInEachText() {
+  void namesTheActsThatTagAnOccurrenceInEachText() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.tags()).containsExactly(new Tag("32026R0449", "replaced", null));
     // In March the point has no tag, and it is in no occurrence that an act put in whole. So it
@@ -1546,7 +1546,7 @@ class DifferTest {
   }
 
   @Test
-  void readsAPointWithoutMarkersAsTheActThatPutThePointItIsInWholePutIt() {
+  void readsAPointWithoutTagsAsTheActThatPutThePointItIsInWholePutIt() {
     var occurrences = Occurrences.of(MARCH);
     var a = Objects.requireNonNull(occurrences.get("anx/pnt_1.2.2.3/pnt_a"));
     assertThat(Tags.of(a, occurrences))

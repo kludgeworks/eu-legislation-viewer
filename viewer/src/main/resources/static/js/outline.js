@@ -291,7 +291,7 @@ const counting = (nav, number) => {
 
 /**
  * Returns the name of an entry of the outline, as a reader sees it. It leaves out the words that
- * only a screen reader gets, such as the words of a dot (js/margin.js).
+ * only a screen reader gets, such as the words of a dot (js/divergence-notes.js).
  *
  * @param {Element} link
  * @returns {string}

@@ -9,7 +9,7 @@ import static org.jooq.impl.DSL.val;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ChangeStore;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.PendingChange;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.WaitingRefresh;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.jooq.tables.records.ActChangeRecord;
 import java.time.Duration;
 import java.time.Instant;
@@ -58,7 +58,7 @@ class JooqChangeStore implements ChangeStore {
   }
 
   @Override
-  public Map<ActIdentifier, PendingChange> pending(Collection<ActIdentifier> acts) {
+  public Map<ActIdentifier, WaitingRefresh> waiting(Collection<ActIdentifier> acts) {
     if (acts.isEmpty()) {
       return Map.of();
     }
@@ -69,7 +69,7 @@ class JooqChangeStore implements ChangeStore {
   }
 
   @Override
-  public void save(Collection<PendingChange> changes) {
+  public void save(Collection<WaitingRefresh> changes) {
     if (changes.isEmpty()) {
       return;
     }
@@ -94,7 +94,7 @@ class JooqChangeStore implements ChangeStore {
   }
 
   @Override
-  public List<PendingChange> due(Instant now) {
+  public List<WaitingRefresh> due(Instant now) {
     return db.selectFrom(ACT_CHANGE)
         .where(ACT_CHANGE.DUE_AT.le(now))
         .orderBy(ACT_CHANGE.DUE_AT)
@@ -103,8 +103,8 @@ class JooqChangeStore implements ChangeStore {
         .fetch(JooqChangeStore::change);
   }
 
-  private static PendingChange change(ActChangeRecord row) {
-    return new PendingChange(
+  private static WaitingRefresh change(ActChangeRecord row) {
+    return new WaitingRefresh(
         row.getAct(), row.getModified(), row.getFirstSeen(), row.getDueAt(), row.getReadAt());
   }
 }

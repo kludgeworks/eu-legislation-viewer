@@ -4,7 +4,7 @@
      js/tags.js loads it into the text of the Read page, below the provision. One line is for one
      change, newest act first: the act as a link to its page, what it did, the state of the change
      on the day with the date and the clause, and a link to the change on the page of the act. A
-     change that does not apply on the day has an amber rule. Where the data names no act, the box
+     change that does not apply on the day has an amber bar. Where the data names no act, the box
      says so, with a link to the first text that has the provision. If two or more amending acts
      changed the provision, a link opens the comparison of its wording before the first of them and after the last. --%>
 <aside class="provision-history" aria-label="${provision.heading()}">

@@ -41,22 +41,23 @@ import org.jspecify.annotations.Nullable;
  *   <li>If they differ, the version date is the date of the provision if the place date was
  *       rejected, or if a version that starts on the place date includes the act but does not tag
  *       the provision.
- *   <li>Otherwise, a place date before the version date makes the text late between them, and a
- *       place date after the version date makes the text early between them.
- *   <li>A provision that the amending act replaces, amends, deletes or repeals does not make the
- *       text late if the version before the version date does not have it. The provision is not in
+ *   <li>Otherwise, a place date before the version date makes the provision a pending amendment
+ *       between them, and a place date after the version date makes it a prospective amendment
+ *       between them.
+ *   <li>A provision that the amending act replaces, amends, deletes or repeals is no pending
+ *       amendment if the version before the version date does not have it. The provision is not in
  *       the text yet, so the text cannot have its old words. For example, 2024/2994 replaces
  *       Article 74(1)(b) of 2013/36 from 24 December 2024. But 2024/1619 puts point (b) in, from 11
  *       January 2026.
- *   <li>A provision of an act that no version includes makes the text late from its accepted place
- *       date.
+ *   <li>A provision of an act that no version includes is a pending amendment from its accepted
+ *       place date.
  * </ol>
  *
  * <p>A provision gives no answer if no version tags it while some version includes the act, or if a
  * version before the answer has no built text. An amending act whose provisions give no answer at
  * all is compared as a whole: the day from which the whole act applies, {@link Act#appliesFrom},
  * against the first version that includes it. If no version includes it, and Cellar does not give
- * that day, the date of the text is not confirmed from the act's entry into force.
+ * that day, the act is an undated pending amendment from its entry into force.
  */
 final class Divergences {
 
@@ -95,8 +96,8 @@ final class Divergences {
 
   /**
    * Returns each period in which the text of the versions of {@code act} in {@code language} is not
-   * the law. The early text of the act itself is first. The others are in the order of the day on
-   * which they start.
+   * the law. The prospective text of the act itself is first. The others are in the order of the
+   * day on which they start.
    *
    * @param texts the tags of the texts in {@code language} that are built, by version
    */
@@ -114,7 +115,8 @@ final class Divergences {
     var first = versions.getFirst();
     act.appliesFrom(act.id())
         .filter(from -> day(from).isAfter(first.date()))
-        .ifPresent(from -> found.add(new Divergence(Kind.EARLY, act.id(), from, first, List.of())));
+        .ifPresent(
+            from -> found.add(new Divergence(Kind.PROSPECTIVE, act.id(), from, first, List.of())));
     var amending = new LinkedHashSet<ActIdentifier>();
     versions.forEach(each -> amending.addAll(each.integrates()));
     act.amendments().forEach(each -> amending.add(each.act()));
@@ -209,11 +211,11 @@ final class Divergences {
     var version = tagged.get().version();
     var from = place.from();
     if (from == null || !act.appliesFromDay(amending, from)) {
-      // The version date stands. Without a version, the date is not confirmed.
+      // The version date stands. Without a version, the date is not known.
       return version == null ? Optional.empty() : Optional.of(Answer.AGREES);
     }
     if (version == null) {
-      return Optional.of(Answer.differs(Kind.LATE, date(amending, from), null));
+      return Optional.of(Answer.differs(Kind.PENDING, date(amending, from), null));
     }
     var tagging = tagged.get().tagging();
     if (from.equals(version.date())
@@ -226,7 +228,7 @@ final class Divergences {
       return Optional.of(Answer.AGREES);
     }
     if (from.isAfter(version.date())) {
-      return Optional.of(Answer.differs(Kind.EARLY, date(amending, from), version));
+      return Optional.of(Answer.differs(Kind.PROSPECTIVE, date(amending, from), version));
     }
     if (place.role().changesExisting()) {
       var before = versions.indexOf(version) - 1;
@@ -239,7 +241,7 @@ final class Divergences {
         return Optional.of(Answer.AGREES);
       }
     }
-    return Optional.of(Answer.differs(Kind.LATE, date(amending, from), version));
+    return Optional.of(Answer.differs(Kind.PENDING, date(amending, from), version));
   }
 
   /**
@@ -350,33 +352,34 @@ final class Divergences {
 
   /**
    * Returns the divergence of {@code amending} as a whole: the day from which the whole act applies
-   * against the first version that includes it. If no version includes it, the text is late from
-   * that day, once every text is built. If Cellar does not give that day either, the date of the
-   * text is not confirmed from the act's entry into force, at {@code places}.
+   * against the first version that includes it. If no version includes it, the act is a pending
+   * amendment from that day, once every text is built. If Cellar does not give that day either, it
+   * is an undated pending amendment from the act's entry into force, at {@code places}.
    */
   private List<Divergence> whole(ActIdentifier amending, List<Amendment> places) {
     var applies = act.appliesFrom(amending);
     if (applies.isEmpty()) {
-      return unconfirmed(amending, places);
+      return undated(amending, places);
     }
     var from = day(applies.get());
     var first = versions.stream().filter(each -> includes(each, amending)).findFirst();
     if (first.isPresent()) {
       return from.isBefore(first.get().date())
-          ? List.of(new Divergence(Kind.LATE, amending, applies.get(), first.get(), List.of()))
+          ? List.of(new Divergence(Kind.PENDING, amending, applies.get(), first.get(), List.of()))
           : List.of();
     }
     return texts.keySet().containsAll(versions)
-        ? List.of(new Divergence(Kind.LATE, amending, applies.get(), null, List.of()))
+        ? List.of(new Divergence(Kind.PENDING, amending, applies.get(), null, List.of()))
         : List.of();
   }
 
   /**
    * Returns the divergence of {@code amending}, whose day of application Cellar does not give, if
-   * no version includes it: from its entry into force, the text can lack it. Empty if a version
-   * includes it, if a text is not built, or if Cellar has no day for its entry into force.
+   * no version includes it: an undated pending amendment. From its entry into force, the text can
+   * lack it. Empty if a version includes it, if a text is not built, or if Cellar has no day for
+   * its entry into force.
    */
-  private List<Divergence> unconfirmed(ActIdentifier amending, List<Amendment> places) {
+  private List<Divergence> undated(ActIdentifier amending, List<Amendment> places) {
     if (versions.stream().anyMatch(each -> includes(each, amending))
         || !texts.keySet().containsAll(versions)) {
       return List.of();
@@ -387,8 +390,7 @@ final class Divergences {
         .map(
             force ->
                 List.of(
-                    new Divergence(
-                        Kind.UNCONFIRMED, amending, force, null, inTextOrder(places, null))))
+                    new Divergence(Kind.UNDATED, amending, force, null, inTextOrder(places, null))))
         .orElseGet(List::of);
   }
 
@@ -415,7 +417,7 @@ final class Divergences {
   /** Returns the day on which a divergence starts. */
   private static LocalDate start(Divergence divergence) {
     var included = divergence.included();
-    return divergence.kind() == Kind.EARLY && included != null
+    return divergence.kind() == Kind.PROSPECTIVE && included != null
         ? included.date()
         : divergence.appliesFrom();
   }

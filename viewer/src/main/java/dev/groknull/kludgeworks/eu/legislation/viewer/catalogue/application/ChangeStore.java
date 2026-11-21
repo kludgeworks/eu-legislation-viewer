@@ -11,7 +11,7 @@ import java.util.Optional;
 
 /**
  * The state of the scan of Cellar for changes: how far it has read, which instance scans, and the
- * held acts that changed ({@link PendingChange}). The times of the claims come from the store, so
+ * held acts that changed ({@link WaitingRefresh}). The times of the claims come from the store, so
  * one clock measures them for all the instances.
  */
 public interface ChangeStore {
@@ -33,17 +33,17 @@ public interface ChangeStore {
    */
   boolean advance(Claim claim, Instant watermark);
 
-  /** Returns the pending changes of these acts. An act without one has none. */
-  Map<ActIdentifier, PendingChange> pending(Collection<ActIdentifier> acts);
+  /** Returns the waiting refreshes of these acts. An act without one has none. */
+  Map<ActIdentifier, WaitingRefresh> waiting(Collection<ActIdentifier> acts);
 
-  /** Writes the pending changes. */
-  void save(Collection<PendingChange> changes);
+  /** Writes the waiting refreshes. */
+  void save(Collection<WaitingRefresh> changes);
 
   /**
-   * Returns the pending changes due at {@code now}, locked until the transaction ends. A change
+   * Returns the waiting refreshes due at {@code now}, locked until the transaction ends. A change
    * that another transaction has locked is skipped.
    */
-  List<PendingChange> due(Instant now);
+  List<WaitingRefresh> due(Instant now);
 
   /**
    * A claim of the scan.

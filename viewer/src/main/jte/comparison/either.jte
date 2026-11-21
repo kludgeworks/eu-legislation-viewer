@@ -11,7 +11,7 @@
      data does not say which. The page of an amending act loads it under its own changes. The
      heading names the acts: "By this act or by 2019/413". Each difference has the name of its
      provision, what happened to it, and its wording with the inserted and the deleted words
-     shown. The rule beside the list is grey and broken, as for all that the data does not tell.
+     shown. The bar beside the list is grey and broken, as for all that the data does not tell.
      The wording is in a fold. The folds are open if the list has few changes, as on the page
      that loads the part. If there is no such difference, the part is empty and stays hidden. --%>
 @if(shown.isEmpty())

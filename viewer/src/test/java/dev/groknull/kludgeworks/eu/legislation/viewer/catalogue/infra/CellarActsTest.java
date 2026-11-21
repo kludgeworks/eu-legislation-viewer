@@ -318,7 +318,8 @@ class CellarActsTest {
   }
 
   @Test
-  void theTextIsEarlyUntilTheActAppliesAndLateWhileAnActAppliesUnincluded() {
+  void
+      theTextHasAProspectiveAmendmentUntilTheActAppliesAndAPendingOneWhileTheTextLacksAnActThatApplies() {
     assertThat(act(AVSEC).divergences(Language.ENG, Map.of()))
         .extracting(
             Divergence::kind,
@@ -326,15 +327,16 @@ class CellarActsTest {
             Divergence::appliesFrom,
             each -> Objects.requireNonNull(each.included()).celex())
         .containsExactly(
-            tuple(Divergence.Kind.EARLY, "32015R1998", LocalDate.of(2016, 2, 1), "32015R1998"),
             tuple(
-                Divergence.Kind.LATE,
+                Divergence.Kind.PROSPECTIVE, "32015R1998", LocalDate.of(2016, 2, 1), "32015R1998"),
+            tuple(
+                Divergence.Kind.PENDING,
                 "32017R0815",
                 LocalDate.of(2017, 6, 1),
                 "02015R1998-20170607"),
             // Only four points of 2021/255 apply later than its entry into force.
             tuple(
-                Divergence.Kind.LATE,
+                Divergence.Kind.PENDING,
                 "32021R0255",
                 LocalDate.of(2021, 3, 11),
                 "02015R1998-20210315"));
@@ -352,7 +354,7 @@ class CellarActsTest {
     assertThat(act.divergences(LocalDate.of(2017, 6, 7), Language.ENG, Map.of())).isEmpty();
     assertThat(act.divergences(LocalDate.of(2016, 1, 31), Language.ENG, Map.of()))
         .extracting(Divergence::kind)
-        .containsExactly(Divergence.Kind.EARLY);
+        .containsExactly(Divergence.Kind.PROSPECTIVE);
     assertThat(act.divergences(LocalDate.of(2016, 2, 1), Language.ENG, Map.of())).isEmpty();
   }
 

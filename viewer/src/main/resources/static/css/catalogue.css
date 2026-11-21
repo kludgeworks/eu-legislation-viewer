@@ -154,7 +154,7 @@ nav.mode [aria-disabled] {
  * date form. */
 section.selection {
   padding: 14px 0;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
 }
 
 /* Read mode. The card is at the left. The comparison with the version before is beside it. */
@@ -213,7 +213,7 @@ section.selection.compare a {
 }
 
 /* The steps between the two days of the comparison of one provision. One line is for one change,
- * as in the history of a provision on Read. An amber rule: the change does not apply on the later
+ * as in the history of a provision on Read. An amber bar: the change does not apply on the later
  * day. */
 .compare-steps {
   max-width: 60rem;
@@ -340,8 +340,9 @@ section.selection.compare a {
   margin-top: 6px;
 }
 
-/* A change that the text has and that does not apply on the day (js/margin.js): a dashed amber
- * rule beside its occurrence, and a short note at its side with the act. */
+/* A prospective amendment, a change that the text has and that does not apply on the day
+ * (js/divergence-notes.js): a dashed amber bar beside its occurrence, and a short divergence note
+ * at its side with the act. */
 .content .not-applying {
   position: relative;
   margin-left: -21px;
@@ -350,11 +351,11 @@ section.selection.compare a {
 }
 
 /* The notes need room beside the text. */
-.outlined:has(> margin-rules > .rule-note) {
+.outlined:has(> divergence-notes > .prospective-note) {
   padding-right: 15rem;
 }
 
-.content .rule-note {
+.content .prospective-note {
   position: absolute;
   top: 0;
   left: calc(100% + 24px);
@@ -366,14 +367,14 @@ section.selection.compare a {
     sans-serif;
 }
 
-.content .rule-note a {
+.content .prospective-note a {
   color: inherit;
   font-weight: 600;
 }
 
-/* A change that the text does not show: one marker at its place. It is grey with a broken
- * outline, not amber, because it has a different meaning. */
-.content .marker {
+/* A pending amendment, a change that the text does not show: one divergence note at its place. It
+ * is grey with a broken outline, not amber, because it has a different meaning. */
+.content .pending-note {
   width: fit-content;
   max-width: 42.5rem;
   margin: 10px 0;
@@ -386,11 +387,11 @@ section.selection.compare a {
     sans-serif;
 }
 
-.content .marker-kind {
+.content .pending-note-kind {
   font-weight: 600;
 }
 
-.content .marker a {
+.content .pending-note a {
   color: var(--accent);
 }
 
@@ -482,10 +483,10 @@ section.selection.compare a {
   scroll-margin-top: 5rem;
 }
 
-/* The dots of the outline: amber for a part with a change that does not apply on the day, hollow
- * for a part with a change that the text does not show. */
-nav.outline a.has-rule::after,
-nav.outline a.has-marker::before {
+/* The dots of the outline: amber for a part with a prospective amendment, hollow for a part with a
+ * pending amendment. */
+nav.outline a.has-prospective::after,
+nav.outline a.has-pending::before {
   content: "";
   display: inline-block;
   width: 7px;
@@ -495,11 +496,11 @@ nav.outline a.has-marker::before {
   vertical-align: middle;
 }
 
-nav.outline a.has-rule::after {
+nav.outline a.has-prospective::after {
   background: var(--warn-stripe);
 }
 
-nav.outline a.has-marker::before {
+nav.outline a.has-pending::before {
   border: 1px solid var(--ink);
 }
 
@@ -1066,7 +1067,7 @@ form.find-act .ex a {
   gap: 28px;
   margin: 44px 0 60px;
   padding-top: 18px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--line-faint);
   color: var(--ink2);
   font-size: 14px;
 }
@@ -1141,7 +1142,7 @@ form.find-act .ex a {
 
 .preparing .panel {
   padding: 18px 22px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
   background: var(--surface);
 }
 
@@ -1287,12 +1288,12 @@ form.find-act .ex a {
 .failure {
   max-width: 50rem;
   margin: 20px 0 32px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
 }
 
 .failure-head {
   padding: 14px 18px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
   background: var(--surface2);
 }
 

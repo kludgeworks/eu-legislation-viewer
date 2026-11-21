@@ -4,7 +4,7 @@
      amending acts made to it, oldest first. One line is for one change, as in the history of the
      provision on Read (provision.jte): the act as a link to its page, what it did, the state of the
      change on the To day with the date and the clause, and a link to the change on the page of the
-     act. A change that does not apply on the To day has an amber rule. --%>
+     act. A change that does not apply on the To day has an amber bar. --%>
 <section class="compare-steps" aria-labelledby="steps-head">
   <h2 id="steps-head">The steps between these days</h2>
   <ol>

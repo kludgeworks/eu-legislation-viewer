@@ -178,7 +178,7 @@ class ApiComparisonController {
     if (texts == null) {
       return ResponseEntity.status(HttpStatus.ACCEPTED)
           .header(HttpHeaders.RETRY_AFTER, Long.toString(RETRY_AFTER.toSeconds()))
-          .body(HalModelBuilder.halModelOf(Pending.of(asked)).link(self).link(up(celex)).build());
+          .body(HalModelBuilder.halModelOf(Preparing.of(asked)).link(self).link(up(celex)).build());
     }
     var comparison =
         comparisons.between(texts.earlier(), texts.later()).orElseThrow(Requests::notFound);
@@ -360,10 +360,10 @@ class ApiComparisonController {
    * @param to the first day of the later version
    * @param language the language, by the EU's code
    */
-  record Pending(LocalDate from, LocalDate to, String language) {
+  record Preparing(LocalDate from, LocalDate to, String language) {
 
-    static Pending of(Asked asked) {
-      return new Pending(
+    static Preparing of(Asked asked) {
+      return new Preparing(
           asked.earlier.date(), asked.later.date(), code(asked.ends.language.code()));
     }
   }

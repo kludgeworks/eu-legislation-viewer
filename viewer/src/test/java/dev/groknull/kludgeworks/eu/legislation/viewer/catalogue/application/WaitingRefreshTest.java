@@ -13,17 +13,17 @@ import org.junit.jupiter.api.Test;
  * change, no sooner than 20 minutes after the date of that change, and at most 60 minutes after its
  * first. The scan sees each change again on each scan for a while, and that does not delay it.
  */
-class PendingChangeTest {
+class WaitingRefreshTest {
   private static final ActIdentifier ACT = new ActIdentifier("32015R1998");
-  private static final PendingChange.Debounce DEBOUNCE =
-      new PendingChange.Debounce(
+  private static final WaitingRefresh.Debounce DEBOUNCE =
+      new WaitingRefresh.Debounce(
           Duration.ofMinutes(10), Duration.ofMinutes(60), Duration.ofMinutes(20));
   private static final Instant T = Instant.parse("2026-11-10T15:00:00Z");
 
   @Test
   void anActIsReadAgainOnceQuietAndOnceCellarShowsItsChange() {
     // A change dated 15:00, seen at 15:15: Cellar shows changes up to 20 minutes late.
-    var seen = PendingChange.none(ACT).seen(T, at(15), DEBOUNCE);
+    var seen = WaitingRefresh.none(ACT).seen(T, at(15), DEBOUNCE);
 
     assertThat(seen.waiting()).isTrue();
     assertThat(seen.due()).isEqualTo(at(25));
@@ -34,12 +34,12 @@ class PendingChangeTest {
   @Test
   void aChangeSeenLateWaitsTheQuietTime() {
     // Seen at 15:18: 20 minutes after its date is earlier than 10 quiet minutes.
-    assertThat(PendingChange.none(ACT).seen(T, at(18), DEBOUNCE).due()).isEqualTo(at(28));
+    assertThat(WaitingRefresh.none(ACT).seen(T, at(18), DEBOUNCE).due()).isEqualTo(at(28));
   }
 
   @Test
   void theSameChangeSeenAgainDoesNotDelayTheAct() {
-    var seen = PendingChange.none(ACT).seen(T, at(5), DEBOUNCE);
+    var seen = WaitingRefresh.none(ACT).seen(T, at(5), DEBOUNCE);
 
     // The overlap of the next scans shows it again.
     assertThat(seen.seen(T, at(10), DEBOUNCE)).isEqualTo(seen);
@@ -49,7 +49,7 @@ class PendingChangeTest {
   @Test
   void aNewChangeDelaysTheActButNoLongerThanAnHourAfterTheFirst() {
     // A language every 8 minutes, each seen 5 minutes after its date.
-    var change = PendingChange.none(ACT).seen(T, at(5), DEBOUNCE);
+    var change = WaitingRefresh.none(ACT).seen(T, at(5), DEBOUNCE);
     for (var minute = 8; minute <= 64; minute += 8) {
       change = change.seen(at(minute), at(minute + 5), DEBOUNCE);
     }
@@ -60,7 +60,7 @@ class PendingChangeTest {
 
   @Test
   void aChangeThatTheLastReadHadIsNotReadAgain() {
-    var read = PendingChange.none(ACT).seen(T, at(5), DEBOUNCE).read(at(25));
+    var read = WaitingRefresh.none(ACT).seen(T, at(5), DEBOUNCE).read(at(25));
 
     assertThat(read.waiting()).isFalse();
     assertThat(read.readAt()).isEqualTo(at(25));
@@ -74,10 +74,10 @@ class PendingChangeTest {
 
   @Test
   void aRecheckIsDueAtItsTimeUnlessAChangeIsDueSooner() {
-    var recheck = PendingChange.none(ACT).recheck(at(45), at(15));
+    var recheck = WaitingRefresh.none(ACT).recheck(at(45), at(15));
 
     assertThat(recheck.due()).isEqualTo(at(45));
-    assertThat(PendingChange.none(ACT).seen(T, at(5), DEBOUNCE).recheck(at(45), at(15)).due())
+    assertThat(WaitingRefresh.none(ACT).seen(T, at(5), DEBOUNCE).recheck(at(45), at(15)).due())
         .isEqualTo(at(20));
     assertThat(recheck.recheck(at(40), at(16)).due()).isEqualTo(at(40));
   }

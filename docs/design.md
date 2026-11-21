@@ -38,7 +38,7 @@ provision applies, and until when.
 | See the amending acts of an act, and their state on a day | History |
 | See what one amending act changed, and from when each change applies | The page of an amending act |
 | Read the law as it was on a day | Read |
-| See if the text of that day is the law on that day | Read: the status lines and the marks in the text |
+| See if the text of that day is the law on that day | Read: the status lines and the divergence notes |
 | See which acts changed one provision | Read: the history of a provision |
 | Compare the wording on two days | Compare, from the history of a provision, or from the day control with two days |
 | Find which act made a change, and from when it applies | Compare: the side note |
@@ -83,6 +83,8 @@ The pages have no timeline. The day control sets the day of a page:
 | corrigendum | A correction of an act. It is not an amending act. |
 | version | The text of an act from one day. It is the act as published, or a consolidated version. The pages do not use this word. They say "text": "the text of 31 December 2021". |
 | the law on a day | What applies on that day. It is not always the text of a version. |
+| pending amendment | An amending act that applies on the day, but the text of the day does not include it. EUR-Lex calls these "pending amendments". If the data does not give the day from which it applies, it is an undated pending amendment. |
+| prospective amendment | An amendment that the text of the day includes, but that does not apply on the day yet. |
 | provision | A part of the act that has legal effect and its own place: an article, a paragraph, a point, an annex or a part of an annex. A citation or a recital is not a provision. |
 | difference | A provision that an act inserted, deleted or changed between two versions. |
 | the two days of a comparison | The days that the reader gave to Compare. From is the earlier day, To the later day. |
@@ -90,7 +92,7 @@ The pages have no timeline. The day control sets the day of a page:
 | side note | The note beside a difference. It names the act and the date. |
 | status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
 | tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
-| marker | The sign in the text of Read where the text does not show a change: "Not in this text". |
+| divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. |
 | fold | A group of provisions that the page hides until the reader opens it. |
 | outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
@@ -145,10 +147,10 @@ and a dark value. The tokens are in
 | Red | `--del-…` | Deleted words, and the side note of a deleted provision. |
 | Purple | `--corr-…` | A correction by a corrigendum. |
 | Amber | `--warn-…` | A change does not apply on the day. On Compare, the day is the later day. |
-| Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the marker). In the outline, a hollow dot is the sign of a marker. |
+| Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the note of a pending amendment). In the outline, a hollow dot is the sign of that note. |
 
 Colour is not the only signal. Inserted and deleted words are `ins` and `del` elements. An amber
-rule has words.
+bar has words.
 
 **Open.**
 
@@ -224,10 +226,10 @@ of the viewer before each path.
 | An amending act that applies in parts, from two days | `/eli/reg/2018/1862/eng/history/32022R1190?on=2022-08-01` |
 | An act that no act changed opens on Read | `/eli/reg/2016/679/eng` |
 | Read the law on a day | `/eli/reg_impl/2015/1998/2021-12-31/eng` |
-| Read, an act applies that the text does not have, with marks in the text | `/eli/reg_impl/2015/1998/2017-06-03/eng` |
+| Read, a pending amendment: an act applies that the text does not have, with divergence notes | `/eli/reg_impl/2015/1998/2017-06-03/eng` |
 | Read, the act itself does not apply yet | `/eli/reg/2016/679/2017-01-01/eng` |
-| Read, provisions that do not apply yet | `/eli/reg/2008/767/2018-01-01/eng` |
-| Read, date not confirmed | `/eli/reg/2018/1862/2026-11-17/eng` |
+| Read, prospective amendments: provisions that do not apply yet | `/eli/reg/2008/767/2018-01-01/eng` |
+| Read, an undated pending amendment | `/eli/reg/2018/1862/2026-11-17/eng` |
 | Read, the history of a provision: the ▼ tag of Article 6(2) | `/eli/reg/2008/767/2026-11-17/eng#art_6` |
 | Read, no text in the language | `/eli/reg_impl/2015/1998/2021-12-31/gle` |
 | Compare, Changes | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |

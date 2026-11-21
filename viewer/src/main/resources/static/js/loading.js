@@ -16,7 +16,7 @@
  * A part of the page that loads with its own request, such as the text, shows its failure when the
  * request times out or its connection fails ({@link fail}).
  *
- * A page opened at a fragment, such as a Read mark's link to an occurrence in Compare, often loads that
+ * A page opened at a fragment, such as a link from the history of a provision on Read to an occurrence in Compare, often loads that
  * occurrence after the browser looked for it. When a swap brings the fragment's element, the page scrolls
  * to it, once.
  *

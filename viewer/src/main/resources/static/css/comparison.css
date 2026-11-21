@@ -93,7 +93,7 @@ a.chip:hover {
   gap: 12px;
   align-items: baseline;
   padding: 12px 0;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
   font-size: 13.5px;
 }
 
@@ -101,7 +101,7 @@ a.chip:hover {
  */
 .views {
   display: inline-flex;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -113,7 +113,7 @@ a.chip:hover {
 }
 
 .views .view + .view {
-  border-left: 1px solid var(--rule);
+  border-left: 1px solid var(--line-faint);
 }
 
 .views .view[aria-current="page"] {
@@ -181,7 +181,7 @@ a.chip:hover {
 }
 
 .ledger-row {
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
   scroll-margin-top: 64px;
 }
 
@@ -192,7 +192,7 @@ a.chip:hover {
 
 .ledger-row > div + div,
 .ledger-head > div + div {
-  border-left: 1px solid var(--rule);
+  border-left: 1px solid var(--line-faint);
 }
 
 .ledger-lead .from,
@@ -256,7 +256,7 @@ a.chip:hover {
   justify-content: center;
   min-width: 30px;
   min-height: 28px;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
   border-radius: 3px;
   color: inherit;
   text-decoration: none;
@@ -285,7 +285,7 @@ a.chip:hover {
 
 .ledger-fold {
   padding: 9px 14px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--line-faint);
   background: var(--surface);
   font-size: 13.5px;
   color: var(--muted);
@@ -440,16 +440,16 @@ details.ledger-fold[open] {
   border-left-color: var(--ins-ink);
 }
 
-/* A difference with a change that does not apply on the later day of the comparison yet. It has an
- * amber rule beside its sidenote, and the sidenote says so in words. A row of the Synopsis has the
- * rule on its last cell. */
-.difference.pending .sidenote,
-.ledger-row.pending .what {
+/* A difference with a change that does not apply on the later day of the comparison yet, a
+ * prospective amendment. It has an amber bar beside its sidenote, and the sidenote says so in words.
+ * A row of the Synopsis has the bar on its last cell. */
+.difference.prospective .sidenote,
+.ledger-row.prospective .what {
   border-left: 3px solid var(--warn-stripe);
 }
 
-.sidenote .pending,
-.ledger .what .pending {
+.sidenote .prospective,
+.ledger .what .prospective {
   display: block;
   margin-top: 3px;
   font-weight: 600;
@@ -524,7 +524,7 @@ nav.outline {
   top: 44px;
   max-height: calc(100vh - 60px);
   overflow: auto;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--line-faint);
   font-size: 13px;
 }
 

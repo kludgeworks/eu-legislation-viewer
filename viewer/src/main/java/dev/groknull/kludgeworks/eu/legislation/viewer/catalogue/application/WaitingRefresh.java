@@ -27,22 +27,22 @@ import org.jspecify.annotations.Nullable;
  * @param due when the act is to be read again. Null when nothing is waiting.
  * @param readAt when the act was last sent to be read again. Null if never.
  */
-public record PendingChange(
+public record WaitingRefresh(
     ActIdentifier act,
     @Nullable Instant modified,
     @Nullable Instant firstSeen,
     @Nullable Instant due,
     @Nullable Instant readAt) {
 
-  public PendingChange {
+  public WaitingRefresh {
     if ((firstSeen == null) != (due == null)) {
       throw new IllegalArgumentException("A waiting change has when it was seen and when it's due");
     }
   }
 
   /** An act that the scan never saw change. */
-  static PendingChange none(ActIdentifier act) {
-    return new PendingChange(act, null, null, null, null);
+  static WaitingRefresh none(ActIdentifier act) {
+    return new WaitingRefresh(act, null, null, null, null);
   }
 
   /** Returns whether a change is waiting. */
@@ -68,17 +68,17 @@ public record PendingChange(
    *   <li>A change seen already, or dated before the latest seen, does not make it wait longer.
    * </ul>
    */
-  PendingChange seen(Instant changed, Instant now, Debounce debounce) {
+  WaitingRefresh seen(Instant changed, Instant now, Debounce debounce) {
     if (readAt != null && !changed.plus(debounce.lag()).isAfter(readAt)) {
       return this;
     }
     if (firstSeen == null) {
-      return new PendingChange(act, changed, now, due(changed, now, now, debounce), readAt);
+      return new WaitingRefresh(act, changed, now, due(changed, now, now, debounce), readAt);
     }
     if (modified != null && !changed.isAfter(modified)) {
       return this;
     }
-    return new PendingChange(
+    return new WaitingRefresh(
         act, changed, firstSeen, due(changed, now, firstSeen, debounce), readAt);
   }
 
@@ -99,19 +99,19 @@ public record PendingChange(
    * Returns this after the act was sent to be read again at {@code now}. Nothing is waiting any
    * more.
    */
-  PendingChange read(Instant now) {
-    return new PendingChange(act, null, null, null, now);
+  WaitingRefresh read(Instant now) {
+    return new WaitingRefresh(act, null, null, null, now);
   }
 
   /**
    * Returns this with the act to be read again by {@code at}, as a version that went missing needs
    * a second read ({@link Refresh}). A change that is due earlier stays due then.
    */
-  PendingChange recheck(Instant at, Instant now) {
+  WaitingRefresh recheck(Instant at, Instant now) {
     if (due == null) {
-      return new PendingChange(act, modified, now, at, readAt);
+      return new WaitingRefresh(act, modified, now, at, readAt);
     }
-    return due.isAfter(at) ? new PendingChange(act, modified, firstSeen, at, readAt) : this;
+    return due.isAfter(at) ? new WaitingRefresh(act, modified, firstSeen, at, readAt) : this;
   }
 
   /**

@@ -26,9 +26,9 @@ import org.springframework.transaction.support.TransactionOperations;
  *       changed since the watermark, less {@code overlap}. A change becomes visible up to 18
  *       minutes after its date, so it reads the latest part again.
  *   <li>It maps the changes to the held acts ({@link CellarChange#byHeldAct}).
- *   <li>In one transaction, it notes each held act that changed ({@link PendingChange#seen}), moves
- *       the watermark to the latest change it read, and publishes {@link ActChanged} for each act
- *       that is now quiet. The event publication registry keeps the events until {@link
+ *   <li>In one transaction, it notes each held act that changed ({@link WaitingRefresh#seen}),
+ *       moves the watermark to the latest change it read, and publishes {@link ActChanged} for each
+ *       act that is now quiet. The event publication registry keeps the events until {@link
  *       ActRefresher} has read each act.
  * </ol>
  *
@@ -108,14 +108,14 @@ class ChangeScan {
         Objects.requireNonNull(
             transactions.execute(
                 status -> {
-                  var pending = store.pending(touched.keySet());
+                  var waiting = store.waiting(touched.keySet());
                   store.save(
                       touched.entrySet().stream()
                           .map(
                               each ->
-                                  pending
+                                  waiting
                                       .getOrDefault(
-                                          each.getKey(), PendingChange.none(each.getKey()))
+                                          each.getKey(), WaitingRefresh.none(each.getKey()))
                                       .seen(each.getValue(), now, properties.debounce()))
                           .toList());
                   if (!store.advance(claim.get(), watermark)) {
@@ -126,7 +126,7 @@ class ChangeScan {
                   var due = store.due(now);
                   store.save(due.stream().map(each -> each.read(now)).toList());
                   due.forEach(each -> events.publishEvent(new ActChanged(each.act())));
-                  return due.stream().map(PendingChange::act).toList();
+                  return due.stream().map(WaitingRefresh::act).toList();
                 }));
     LOG.info(
         "Scanned Cellar since {}: {} changes, {} held acts, {} read again {}, in {} ms",

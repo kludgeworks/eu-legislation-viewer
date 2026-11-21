@@ -85,7 +85,7 @@ class ProvisionViewTest {
   }
 
   @Test
-  void anActThatOnlyTheTextMarksTheProvisionWithChangedIt() {
+  void anActThatOnlyTheTextTagsTheProvisionWithChangedIt() {
     var tagged = new ActIdentifier("32020R0910");
     var view =
         history(

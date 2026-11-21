@@ -41,8 +41,8 @@ record CatalogueProperties(@NotNull @Valid Changes changes) {
       @NotNull Duration withdrawnAfter) {
 
     /** How an act waits before it is read again. */
-    PendingChange.Debounce debounce() {
-      return new PendingChange.Debounce(quiet, atMost, lag);
+    WaitingRefresh.Debounce debounce() {
+      return new WaitingRefresh.Debounce(quiet, atMost, lag);
     }
   }
 }

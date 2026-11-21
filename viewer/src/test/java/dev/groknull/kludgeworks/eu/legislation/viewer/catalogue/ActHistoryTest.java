@@ -297,7 +297,7 @@ class ActHistoryTest {
   }
 
   @Test
-  void theHistoryOfAProvisionHasItsChangesAndTheOtherActsThatTheTextMarksItWith() {
+  void theHistoryOfAProvisionHasItsChangesAndTheOtherActsThatTheTextTagsItWith() {
     var history = ACT.historyOf("art_20/par_1", TEXT, Language.ENG);
 
     assertThat(history.changes())

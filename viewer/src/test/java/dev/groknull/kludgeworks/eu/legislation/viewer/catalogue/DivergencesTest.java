@@ -36,7 +36,7 @@ class DivergencesTest {
   private Set<Language> changedLanguages = Set.of();
 
   @Test
-  void aProvisionThatAppliesBeforeTheFirstVersionThatMarksItMakesTheTextLate() {
+  void aProvisionThatAppliesBeforeTheFirstVersionThatTagsItIsAPendingAmendment() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -46,14 +46,14 @@ class DivergencesTest {
         .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d), d -> places(d))
         .containsExactly(
             tuple(
-                Divergence.Kind.LATE,
+                Divergence.Kind.PENDING,
                 LocalDate.parse("2017-06-01"),
                 LocalDate.parse("2017-06-07"),
                 List.of("AN PO 1.1")));
   }
 
   @Test
-  void aProvisionThatAppliesOnTheDayOfTheFirstVersionThatMarksItAgreesWithTheLaw() {
+  void aProvisionThatAppliesOnTheDayOfTheFirstVersionThatTagsItAgreesWithTheLaw() {
     application("2017-06-07");
     place("2017-06-07");
     version("2016-02-29", false);
@@ -63,7 +63,7 @@ class DivergencesTest {
   }
 
   @Test
-  void aProvisionThatAVersionMarksBeforeItAppliesMakesTheTextEarly() {
+  void aProvisionThatAVersionTagsBeforeItAppliesIsAProspectiveAmendment() {
     entryIntoForce("2017-12-29");
     partialApplication("2019-10-11");
     place("2019-10-11");
@@ -75,7 +75,7 @@ class DivergencesTest {
         .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d))
         .containsExactly(
             tuple(
-                Divergence.Kind.EARLY,
+                Divergence.Kind.PROSPECTIVE,
                 LocalDate.parse("2019-10-11"),
                 LocalDate.parse("2018-01-12")));
   }
@@ -102,7 +102,7 @@ class DivergencesTest {
   }
 
   @Test
-  void aVersionOnThePlaceDateThatIncludesTheActButDoesNotMarkTheProvisionKeepsTheVersionDate() {
+  void aVersionOnThePlaceDateThatIncludesTheActButDoesNotTagTheProvisionKeepsTheVersionDate() {
     application("2017-06-01");
     partialApplication("2017-08-01");
     place("2017-06-01");
@@ -114,7 +114,7 @@ class DivergencesTest {
   }
 
   @Test
-  void theVersionOnThePlaceDateIsTheVersionDateIfItNewlyMarksTheProvision() {
+  void theVersionOnThePlaceDateIsTheVersionDateIfItNewlyTagsTheProvision() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -126,7 +126,7 @@ class DivergencesTest {
   }
 
   @Test
-  void aProvisionOfAnActThatNoVersionIncludesMakesTheTextLateFromItsDate() {
+  void aProvisionOfAnActThatNoVersionIncludesIsAPendingAmendmentFromItsDate() {
     application("2026-11-12");
     place("2026-11-12");
     version("2016-02-29", false);
@@ -134,11 +134,11 @@ class DivergencesTest {
 
     assertThat(divergences())
         .extracting(Divergence::kind, Divergence::appliesFrom, Divergence::included)
-        .containsExactly(tuple(Divergence.Kind.LATE, LocalDate.parse("2026-11-12"), null));
+        .containsExactly(tuple(Divergence.Kind.PENDING, LocalDate.parse("2026-11-12"), null));
   }
 
   @Test
-  void aDeletionIsMarkedOnTheOccurrenceAroundWhereTheDeletedProvisionStood() {
+  void aDeletionHasItsNoteOnTheOccurrenceAroundWhereTheDeletedProvisionStood() {
     // As point (d) of Article 1(2) of 2014/65, deleted by 2019/2177: the consolidation keeps a tag
     // and a line of dashes where the point stood, in the occurrence around it.
     role = Role.DELETION;
@@ -152,14 +152,14 @@ class DivergencesTest {
         .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d), d -> places(d))
         .containsExactly(
             tuple(
-                Divergence.Kind.LATE,
+                Divergence.Kind.PENDING,
                 LocalDate.parse("2017-06-01"),
                 LocalDate.parse("2017-06-07"),
                 List.of("AN PO 1.1")));
   }
 
   @Test
-  void aReplacedProvisionThatTheVersionBeforeDoesNotHaveMakesNoTextLate() {
+  void aReplacedProvisionThatTheVersionBeforeDoesNotHaveIsNoPendingAmendment() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -170,7 +170,7 @@ class DivergencesTest {
   }
 
   @Test
-  void anAddedProvisionThatTheVersionBeforeDoesNotHaveMakesTheTextLate() {
+  void anAddedProvisionThatTheVersionBeforeDoesNotHaveIsAPendingAmendment() {
     role = Role.ADDITION;
     application("2017-06-01");
     place("2017-06-01");
@@ -180,11 +180,11 @@ class DivergencesTest {
 
     assertThat(divergences())
         .extracting(Divergence::kind, d -> included(d))
-        .containsExactly(tuple(Divergence.Kind.LATE, LocalDate.parse("2017-06-07")));
+        .containsExactly(tuple(Divergence.Kind.PENDING, LocalDate.parse("2017-06-07")));
   }
 
   @Test
-  void anActThatNoVersionIncludesMakesNoTextLateUntilEveryTextIsBuilt() {
+  void anActThatNoVersionIncludesIsNoPendingAmendmentUntilEveryTextIsBuilt() {
     application("2026-11-12");
     place("2026-11-12");
     version("2016-02-29", false);
@@ -198,7 +198,7 @@ class DivergencesTest {
   }
 
   @Test
-  void anActWhoseProvisionsNoVersionMarksIsComparedAsAWhole() {
+  void anActWhoseProvisionsNoVersionTagsIsComparedAsAWhole() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -208,7 +208,7 @@ class DivergencesTest {
         .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d), d -> places(d))
         .containsExactly(
             tuple(
-                Divergence.Kind.LATE,
+                Divergence.Kind.PENDING,
                 LocalDate.parse("2017-06-01"),
                 LocalDate.parse("2017-06-07"),
                 List.of()));
@@ -223,7 +223,7 @@ class DivergencesTest {
 
     assertThat(act().divergences(Language.ENG, Map.of()))
         .extracting(Divergence::kind, Divergence::appliesFrom, d -> places(d))
-        .containsExactly(tuple(Divergence.Kind.LATE, LocalDate.parse("2017-06-01"), List.of()));
+        .containsExactly(tuple(Divergence.Kind.PENDING, LocalDate.parse("2017-06-01"), List.of()));
   }
 
   @Test
@@ -234,7 +234,7 @@ class DivergencesTest {
 
     assertThat(divergences())
         .extracting(Divergence::kind, Divergence::appliesFrom, d -> included(d))
-        .containsExactly(tuple(Divergence.Kind.UNCONFIRMED, LocalDate.parse("2021-08-02"), null));
+        .containsExactly(tuple(Divergence.Kind.UNDATED, LocalDate.parse("2021-08-02"), null));
     assertThat(divergences().getFirst().on(LocalDate.parse("2021-08-01"))).isFalse();
     assertThat(divergences().getFirst().on(LocalDate.parse("2026-11-16"))).isTrue();
   }
@@ -250,7 +250,7 @@ class DivergencesTest {
   }
 
   @Test
-  void anActThatChangesOnlyOtherLanguagesMakesNoTextLate() {
+  void anActThatChangesOnlyOtherLanguagesIsNoPendingAmendment() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -261,27 +261,27 @@ class DivergencesTest {
 
     changedLanguages = Set.of(Language.SWE, Language.ENG);
 
-    assertThat(divergences()).extracting(Divergence::kind).containsExactly(Divergence.Kind.LATE);
+    assertThat(divergences()).extracting(Divergence::kind).containsExactly(Divergence.Kind.PENDING);
   }
 
   @Test
-  void aLateProvisionIsItsOccurrenceInTheTextOrTheOccurrenceThatHoldsIt() {
+  void aPendingAmendmentIsAtItsOccurrenceInTheTextOrTheOccurrenceThatHoldsIt() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
     version("2017-06-07", true, POINT);
 
-    var late = divergences().getFirst();
+    var pending = divergences().getFirst();
 
-    assertThat(late.in(OCCURRENCES))
-        .containsExactly(new Divergence.Occurrence(POINT, false, late.places()));
-    assertThat(late.in(List.of("anx", "anx/pnt_1", "anx/pnt_1.2")))
-        .containsExactly(new Divergence.Occurrence("anx/pnt_1", true, late.places()));
-    assertThat(late.whole(BASE)).isFalse();
+    assertThat(pending.in(OCCURRENCES))
+        .containsExactly(new Divergence.Occurrence(POINT, false, pending.places()));
+    assertThat(pending.in(List.of("anx", "anx/pnt_1", "anx/pnt_1.2")))
+        .containsExactly(new Divergence.Occurrence("anx/pnt_1", true, pending.places()));
+    assertThat(pending.whole(BASE)).isFalse();
   }
 
   @Test
-  void theTextForADayWithALateActIsTheFirstVersionThatIncludesTheAct() {
+  void theTextForADayWithAPendingAmendmentIsTheFirstVersionThatIncludesTheAct() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -303,7 +303,7 @@ class DivergencesTest {
   }
 
   @Test
-  void theTextForADayWithALateActThatNoVersionIncludesIsTheVersionOfTheDay() {
+  void theTextForADayWithAPendingAmendmentThatNoVersionIncludesIsTheVersionOfTheDay() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -322,32 +322,33 @@ class DivergencesTest {
   }
 
   @Test
-  void anOccurrenceWithAChangeThatDoesNotApplyOnTheDayYetIsPending() {
+  void anOccurrenceWithAChangeThatDoesNotApplyOnTheDayYetIsProspective() {
     entryIntoForce("2017-12-29");
     partialApplication("2019-10-11");
     place("2019-10-11");
     version("2016-02-29", false);
     version("2018-01-12", true, POINT);
     var act = act();
-    var early = act.timeline().versions().get(2);
+    var including = act.timeline().versions().get(2);
 
-    var pending = act.pending(early, LocalDate.parse("2018-06-01"), Language.ENG, texts(act));
-    assertThat(pending.at(POINT)).contains(AMENDING);
+    var prospective =
+        act.prospective(including, LocalDate.parse("2018-06-01"), Language.ENG, texts(act));
+    assertThat(prospective.at(POINT)).contains(AMENDING);
     // The occurrence that the point is in has a change that does not apply yet also.
-    assertThat(pending.at("anx/pnt_1")).contains(AMENDING);
-    assertThat(pending.at("anx/pnt_1.2")).isEmpty();
-    // From the day the change applies, no occurrence is pending.
+    assertThat(prospective.at("anx/pnt_1")).contains(AMENDING);
+    assertThat(prospective.at("anx/pnt_1.2")).isEmpty();
+    // From the day the change applies, no occurrence has a prospective amendment.
     assertThat(
-            act.pending(early, LocalDate.parse("2019-10-11"), Language.ENG, texts(act))
+            act.prospective(including, LocalDate.parse("2019-10-11"), Language.ENG, texts(act))
                 .byOccurrence())
         .isEmpty();
   }
 
   @Test
-  void theEarlyTextOfTheActItselfIsTheWholeText() {
-    var early =
+  void theProspectiveTextOfTheActItselfIsTheWholeText() {
+    var prospective =
         new Divergence(
-            Divergence.Kind.EARLY,
+            Divergence.Kind.PROSPECTIVE,
             BASE,
             new ActDate(
                 LocalDate.parse("2016-02-01"),
@@ -358,8 +359,8 @@ class DivergencesTest {
                 LocalDate.parse("2015-11-15"), BASE, EnumSet.of(Language.ENG), Map.of()),
             List.of());
 
-    assertThat(early.whole(BASE)).isTrue();
-    assertThat(early.in(OCCURRENCES)).isEmpty();
+    assertThat(prospective.whole(BASE)).isTrue();
+    assertThat(prospective.in(OCCURRENCES)).isEmpty();
   }
 
   // ------------------------------------------------------------------------------------ helpers

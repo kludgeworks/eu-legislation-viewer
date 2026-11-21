@@ -18,8 +18,9 @@
 <%-- Shows what happened, unless the line about who made it already says it all. Example:
      "Inserted by 2019/1583". --%>
 @if(sidenote == null || sidenote.made() == null)<span class="note">${shown.note()}</span>@endif
-<%-- A change of the difference does not apply on the later day of the comparison yet. --%>
-@if(sidenote != null && sidenote.pending() != null)<span class="pending">${sidenote.pending()}</span>@endif
+<%-- A change of the difference does not apply on the later day of the comparison yet: a
+     prospective amendment. --%>
+@if(sidenote != null && sidenote.prospective() != null)<span class="prospective">${sidenote.prospective()}</span>@endif
 @if(sidenote != null)
   <%-- Shows one date line for each act, and each line starts with the act. Six or more lines go
      into a fold. If the view sends them once for all the sidenotes (parts), js/sidenotes.js fills

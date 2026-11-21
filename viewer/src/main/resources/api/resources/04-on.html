@@ -14,10 +14,11 @@
     <p>Where the text of the versions is not the law on the day. Each has:</p>
     <dl class="api-members">
       <dt>kind</dt>
-      <dd><span class="mono">late</span>: the act applies, but the text does not include it.
-        <span class="mono">early</span>: the text is included, but the act does not apply yet.
-        <span class="mono">unconfirmed</span>: the act is in force and the text does not include it, but Cellar does not
-        give the day from which it applies.</dd>
+      <dd><span class="mono">pending</span>: a pending amendment. The act applies, but the text does not include it.
+        <span class="mono">prospective</span>: a prospective amendment. The text includes it, but the act does not apply
+        yet.
+        <span class="mono">undated</span>: an undated pending amendment. The act is in force and the text does not include
+        it, but Cellar does not give the day from which it applies.</dd>
       <dt>act</dt>
       <dd>The CELEX number of the act.</dd>
       <dt>cited</dt>
@@ -25,12 +26,12 @@
       <dt>appliesFrom</dt>
       <dd>The day from which the provisions in <span class="mono">places</span> apply. If
         <span class="mono">places</span> is empty, the day from which the whole act applies. Null for an
-        <span class="mono">unconfirmed</span> text.</dd>
+        <span class="mono">undated</span> one.</dd>
       <dt>includedIn</dt>
-      <dd>The first version that includes its text: <span class="mono">oj</span>, or its date. Null for a late text
-        that no version includes yet, and for an <span class="mono">unconfirmed</span> text.</dd>
+      <dd>The first version that includes its text: <span class="mono">oj</span>, or its date. Null for a pending
+        amendment that no version includes yet, and for an <span class="mono">undated</span> one.</dd>
       <dt>places</dt>
-      <dd>The provisions that the act changes and that are late or early, in the order of the text. Each has a
+      <dd>The provisions that the act changes and that are pending or prospective, in the order of the text. Each has a
         <span class="mono">location</span>, as Cellar gives it, and a <span class="mono">name</span>, for example
         <span class="mono">point 4.1.3.3</span>. Empty if the texts do not tell which provisions; then the act is
         compared as a whole.</dd>

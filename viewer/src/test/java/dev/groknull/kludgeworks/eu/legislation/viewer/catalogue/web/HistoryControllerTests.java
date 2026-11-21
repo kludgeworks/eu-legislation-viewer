@@ -154,7 +154,7 @@ class HistoryControllerTests {
   }
 
   @Test
-  void showsTheGroupsOfAnAmendingActAndMarksTheChangesThatDoNotApplyYet() {
+  void showsTheGroupsOfAnAmendingActAndWarnsOfTheChangesThatDoNotApplyYet() {
     var page = page(AMENDING + "?on=2022-08-01");
     assertThat(page.select("h2").eachText().getFirst())
         .isEqualTo("What 2022/1190 changed in 2018/1862");

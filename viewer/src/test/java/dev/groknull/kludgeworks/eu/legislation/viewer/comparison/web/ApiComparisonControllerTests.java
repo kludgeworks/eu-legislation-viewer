@@ -126,7 +126,7 @@ class ApiComparisonControllerTests {
   }
 
   @Test
-  void listsTheDifferencesWithTheirMarkersAndLinks() throws UnsupportedEncodingException {
+  void listsTheDifferencesWithTheirTagsAndLinks() throws UnsupportedEncodingException {
     textsAre(new Text.Ready(EARLIER), new Text.Ready(LATER));
 
     var comparison = json(mvc.get().uri(COMPARISON + "/texts/eng").exchange());
@@ -167,7 +167,7 @@ class ApiComparisonControllerTests {
   }
 
   @Test
-  void showsADifferenceWholeAndMarked() throws UnsupportedEncodingException {
+  void showsADifferenceWholeWithItsEdits() throws UnsupportedEncodingException {
     textsAre(new Text.Ready(EARLIER), new Text.Ready(LATER));
 
     var difference =

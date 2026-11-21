@@ -135,7 +135,7 @@ class ChangesPagesTests {
   }
 
   @Test
-  void showsTheWholeLaterTextWithItsDifferencesMarkedInPlace() {
+  void showsTheWholeLaterTextWithTheEditsOfItsDifferencesInPlace() {
     prepared();
     var whole = get(CHANGES + "&view=whole");
     assertThat(whole.select("nav.views [aria-current=page]").text()).isEqualTo("Whole text");

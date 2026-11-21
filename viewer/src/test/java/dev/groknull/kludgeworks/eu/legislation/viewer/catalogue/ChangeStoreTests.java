@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.TestcontainersConfiguration;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.ChangeStore;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.PendingChange;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.application.WaitingRefresh;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.time.Instant;
@@ -86,19 +86,19 @@ class ChangeStoreTests {
   @Test
   void keepsAPendingChange() {
     var act = acts.find(OneActCellar.CELEX).orElseThrow().id();
-    var change = new PendingChange(act, WATERMARK, WATERMARK, WATERMARK.plus(HOUR), null);
+    var change = new WaitingRefresh(act, WATERMARK, WATERMARK, WATERMARK.plus(HOUR), null);
 
     transactions.executeWithoutResult(status -> store.save(List.of(change)));
 
-    Map<ActIdentifier, PendingChange> pending =
-        transactions.execute(status -> store.pending(List.of(act)));
-    assertThat(pending).containsExactlyEntriesOf(Map.of(act, change));
+    Map<ActIdentifier, WaitingRefresh> waiting =
+        transactions.execute(status -> store.waiting(List.of(act)));
+    assertThat(waiting).containsExactlyEntriesOf(Map.of(act, change));
   }
 
   @Test
   void twoInstancesDoNotTakeTheSameDueChange() throws Exception {
     var act = acts.find(OneActCellar.CELEX).orElseThrow().id();
-    var change = new PendingChange(act, WATERMARK, WATERMARK, WATERMARK, null);
+    var change = new WaitingRefresh(act, WATERMARK, WATERMARK, WATERMARK, null);
     transactions.executeWithoutResult(status -> store.save(List.of(change)));
     var taken = new CountDownLatch(1);
     var release = new CountDownLatch(1);

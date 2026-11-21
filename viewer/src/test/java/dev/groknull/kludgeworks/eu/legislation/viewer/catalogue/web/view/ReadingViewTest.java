@@ -146,25 +146,25 @@ class ReadingViewTest {
   }
 
   @Test
-  void warnsOfALateTextOnlyOnTheDaysThatTheActAppliesUnincluded() {
-    var late = card("2016-02-29", "2017-06-03", TODAY);
-    assertThat(late.version())
+  void warnsOfAPendingAmendmentOnlyOnTheDaysThatTheActAppliesAndTheTextLacksIt() {
+    var pending = card("2016-02-29", "2017-06-03", TODAY);
+    assertThat(pending.version())
         .isEqualTo("From the text of 29 February 2016 · applied until 6 June 2017");
-    assertThat(late.status().day()).isEqualTo("3 June 2017");
-    assertThat(late.status().lines())
+    assertThat(pending.status().day()).isEqualTo("3 June 2017");
+    assertThat(pending.status().lines())
         .containsExactly(
             new StatusView.Line(
                 "2017/815",
                 "/eli/reg_impl/2015/1998/eng/history/32017R0815?on=2017-06-03",
                 "applied from 1 June 2017 · Article 2 of 2017/815. The text shows it from 7 June"
                     + " 2017."));
-    assertThat(late.picker().on()).isEqualTo("2017-06-03");
+    assertThat(pending.picker().on()).isEqualTo("2017-06-03");
     assertThat(card("2016-02-29", "2017-05-01", TODAY).status().size()).isZero();
     assertThat(card("2016-02-29", "2016-02-29", TODAY).status().size()).isZero();
   }
 
   @Test
-  void warnsOfAnEarlyTextWhileTheActIsInForceButDoesNotApply() {
+  void warnsOfAProspectiveTextWhileTheActIsInForceButDoesNotApply() {
     assertThat(card("2015-11-15", "2015-12-01", TODAY).status().lines())
         .containsExactly(
             new StatusView.Line(

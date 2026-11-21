@@ -98,11 +98,11 @@ class ActRefresher {
           refresh.withdrawn().forEach(celex -> store.withdraw(changed.act(), celex));
           var recheckAt = refresh.recheckAt();
           if (recheckAt != null) {
-            var pending =
+            var waiting =
                 changes
-                    .pending(List.of(changed.act()))
-                    .getOrDefault(changed.act(), PendingChange.none(changed.act()));
-            changes.save(List.of(pending.recheck(recheckAt, now)));
+                    .waiting(List.of(changed.act()))
+                    .getOrDefault(changed.act(), WaitingRefresh.none(changed.act()));
+            changes.save(List.of(waiting.recheck(recheckAt, now)));
           }
           refresh.events().forEach(events::publishEvent);
         });

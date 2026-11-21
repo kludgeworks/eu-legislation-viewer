@@ -65,7 +65,7 @@
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
         !{var occurrence = html.element(shown.folded(page));}
-        <div class="ledger-row difference-${shown.kind()}${sidenote != null && sidenote.corrected() ? " corrected" : ""}${sidenote != null && sidenote.pending() != null ? " pending" : ""}" role="row" id="difference-${shown.number()}">
+        <div class="ledger-row difference-${shown.kind()}${sidenote != null && sidenote.corrected() ? " corrected" : ""}${sidenote != null && sidenote.prospective() != null ? " prospective" : ""}" role="row" id="difference-${shown.number()}">
           <div class="provision" role="cell">${shown.cited()}<span class="n">difference ${shown.number()} of ${total}</span></div>
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in the text on this day</p>@else${occurrence}@endif</div>
           <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in the text on this day</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, page = page)@else${occurrence}@endif</div>

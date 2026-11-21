@@ -29,7 +29,7 @@ class InclusionsTest {
       new Timeline(List.of(OCTOBER_2013, DECEMBER_2017, JUNE_2019, AUGUST_2021));
 
   @Test
-  void aVersionIncludesTheActsThatCellarListsAndThoseItsTextMarksFirst() {
+  void aVersionIncludesTheActsThatCellarListsAndThoseItsTextTagsFirst() {
     var included =
         Inclusions.of(
             TIMELINE,
@@ -57,7 +57,7 @@ class InclusionsTest {
   }
 
   @Test
-  void anActThatAnEarlierVersionIncludesIsNotFirstMarkedLater() {
+  void anActThatAnEarlierVersionIncludesIsNotFirstTaggedLater() {
     // The text of 2013 is not built, but Cellar lists the act from it.
     var timeline =
         new Timeline(List.of(version("2013-10-18", EES), version("2017-12-29", CORRIGENDUM)));
