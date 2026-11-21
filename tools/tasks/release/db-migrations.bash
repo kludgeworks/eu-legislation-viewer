@@ -28,6 +28,8 @@ check_released() {
 	local tag=$1 path
 	while IFS= read -r path; do
 		[[ -n "$path" ]] || continue
+		# a module's repeatable migration changes by design: Flyway runs it again when it does
+		[[ "${path##*/}" != R__* ]] || continue
 		if ! git diff --quiet "$tag" -- "$path"; then
 			die "A released migration changed: $path differs from released tag $tag" restore "git checkout $tag -- $path"
 		fi
@@ -111,7 +113,11 @@ pending() {
 		fi
 		stem=${name%.*}
 		if [[ "$stem" =~ ^[Rr]__ ]]; then
-			problem "$path" "a repeatable migration (R__): migrations here are versioned"
+			# the one repeatable migration a module may have: it empties the module, and runs again
+			# each time its text changes
+			if [[ "$stem" != "R__$(with_module "$path" emptied)" ]]; then
+				problem "$path" "a repeatable migration other than R__$(with_module "$path" emptied).sql, which empties its module"
+			fi
 			continue
 		elif [[ "$stem" =~ ^[Nn][Ee][Xx][Tt]_*([0-9]+)(_+(.*))?$ ]]; then
 			class=0 key=$(version_key "${BASH_REMATCH[1]}") summary=${BASH_REMATCH[3]}
@@ -191,7 +197,7 @@ apply() {
 check_final() {
 	local invalid duplicates
 	invalid=$(find "$migrations" -mindepth 1 \( -type f -o -type l \) |
-		grep -Ev "^$migrations/[^/]+/V20[0-9]{2}_(0[1-9]|1[0-2])_[0-9]+_[0-9]{3}__[a-z0-9]+(_[a-z0-9]+)*\.sql$" || true)
+		grep -Ev "^$migrations/[^/]+/(V20[0-9]{2}_(0[1-9]|1[0-2])_[0-9]+_[0-9]{3}__[a-z0-9]+(_[a-z0-9]+)*|R__([a-z0-9]+_)?emptied)\.sql$" || true)
 	if [[ -n "$invalid" ]]; then
 		die "$(printf 'Not named as released migrations are:\n%s' "$invalid")"
 	fi

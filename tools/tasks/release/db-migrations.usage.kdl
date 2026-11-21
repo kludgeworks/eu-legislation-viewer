@@ -9,6 +9,8 @@ long_about """
 
     Released, it is V<year>_<month>_<micro>_<NNN>__<description>.sql (V2026_11_0_007__catalogue_step_count.sql), and never changes: the latest release tag's migrations must be as they were.
 
+    A module may also have one repeatable migration, R__<module>_emptied.sql (R__emptied.sql in __root), which empties the module's tables. Flyway runs it again each time its text changes, so a change that needs the store emptied (a new format of the converter) edits its first line. It is never renamed, and it may change after a release.
+
     Not released yet, it is NEXT_<NNN>__<description>.sql, which the release renames with its version (mise run release). NNN numbers a module's pending migrations from 001, with no gaps, in the order they run.
 
     A description is lower-case words joined by _, the first the module's name, so that a name says whose it is (catalogue_step_count in catalogue/; none in __root). Flyway keeps 200 characters of it at most.
@@ -25,7 +27,7 @@ long_about """
 
     - two NEXT_ with one number in a module, or two unnumbered: which runs first?
     - a migration with no description, or one over 200 characters
-    - a repeatable migration (R__)
+    - a repeatable migration other than R__<module>_emptied.sql
     - a file outside a module's directory, or not .sql
     - a released migration changed, renamed or deleted
     """

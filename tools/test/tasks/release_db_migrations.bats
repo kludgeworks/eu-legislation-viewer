@@ -171,6 +171,27 @@ catalogue/V2026_11_0_001__catalogue.sql" ]
 	[[ "$output" = *"a description over 200 characters"* ]] || false
 }
 
+@test "allows a module's repeatable migration that empties it, changed after a release" {
+	write "$migrations/catalogue/R__catalogue_emptied.sql" "truncate table act;\n"
+	write "$migrations/__root/R__emptied.sql" "truncate table event_publication;\n"
+	commit
+	git -C "$repo" tag v2026.11.1
+	write "$migrations/catalogue/R__catalogue_emptied.sql" "-- again\ntruncate table act;\n"
+
+	check
+	[ "$status" -eq 0 ]
+	check --final
+	[ "$status" -eq 0 ]
+}
+
+@test "rejects a repeatable migration that is not its module's emptying one" {
+	write "$migrations/catalogue/R__catalogue_view.sql" "select 1;\n"
+
+	check
+	[ "$status" -ne 0 ]
+	[[ "$output" = *"R__catalogue_view.sql: a repeatable migration other than R__catalogue_emptied.sql"* ]] || false
+}
+
 @test "requires final CalVer names when requested" {
 	write "$migrations/catalogue/NEXT_001__catalogue_title.sql" "alter table act add column title text;\n"
 
