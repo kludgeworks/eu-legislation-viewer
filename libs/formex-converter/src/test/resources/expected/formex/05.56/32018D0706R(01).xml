@@ -31,7 +31,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 4, Annex, column "/>
             <quote startQuote="‘" endQuote="’">
@@ -39,7 +39,7 @@
             </quote>
             <t v=", in entries 162 and 163, the addresses are deleted."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

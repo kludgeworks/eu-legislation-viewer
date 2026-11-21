@@ -10,7 +10,7 @@
  *
  * The text is rendered without the act, so the page lists what it knows of each amending act in
  * `.marks`: a `span` with `data-act` and `data-applies`. `<provision-links>` has the address of
- * the histories (`data-href`), and lists the provisions that have a history (`data-unit`). A
+ * the histories (`data-href`), and lists the provisions that have a history (`data-occurrence`). A
  * listed provision that has no mark of its own gets a hollow sign, ▽, in the place of the mark. It
  * opens the history as a mark does.
  */
@@ -66,88 +66,88 @@ export const said = (mark) => {
 };
 
 /**
- * Returns the unit of the text that `mark` is on: the nearest element with an id that holds it.
+ * Returns the occurrence of the text that `mark` is on: the nearest element with an id that holds it.
  *
  * @param {Element} mark
  * @returns {HTMLElement | null}
  */
-export const unitOf = (mark) => {
-  const unit = mark.parentElement?.closest("[id]");
-  return unit instanceof HTMLElement ? unit : null;
+export const occurrenceOf = (mark) => {
+  const occurrence = mark.parentElement?.closest("[id]");
+  return occurrence instanceof HTMLElement ? occurrence : null;
 };
 
 /**
- * Returns the address of the history of the provision that is `unit`, or null if the page does not
+ * Returns the address of the history of the provision that is `occurrence`, or null if the page does not
  * give the address of the histories.
  *
- * @param {HTMLElement} unit
+ * @param {HTMLElement} occurrence
  * @returns {string | null}
  */
-export const history = (unit) => {
-  const links = unit.ownerDocument.querySelector("provision-links");
+export const history = (occurrence) => {
+  const links = occurrence.ownerDocument.querySelector("provision-links");
   if (!(links instanceof HTMLElement) || !links.dataset.href) {
     return null;
   }
-  return `${links.dataset.href}?unit=${encodeURIComponent(unit.id)}`;
+  return `${links.dataset.href}?occurrence=${encodeURIComponent(occurrence.id)}`;
 };
 
 /**
- * Returns the history of the provision that is `unit`, if it is open. The history of a unit with a
- * heading is after the heading. The history of any other unit is after the unit, below its words.
- * Each history has the eId of its unit in `data-unit`, because the history of a unit without a
- * heading is in the unit that holds it.
+ * Returns the history of the provision that is `occurrence`, if it is open. The history of an occurrence with a
+ * heading is after the heading. The history of any other occurrence is after the occurrence, below its words.
+ * Each history has the eId of its occurrence in `data-occurrence`, because the history of an occurrence without a
+ * heading is in the occurrence that holds it.
  *
- * @param {HTMLElement} unit
+ * @param {HTMLElement} occurrence
  * @returns {Element | null}
  */
-const opened = (unit) =>
-  [unit.querySelector(":scope > .title + .provision-history"), unit.nextElementSibling].find(
-    (each) => each instanceof HTMLElement && each.dataset.unit === unit.id,
+const opened = (occurrence) =>
+  [occurrence.querySelector(":scope > .title + .provision-history"), occurrence.nextElementSibling].find(
+    (each) => each instanceof HTMLElement && each.dataset.occurrence === occurrence.id,
   ) ?? null;
 
 /**
- * Puts `box`, the history of the provision that is `unit`, on the page: after the heading of the
- * unit, or after a unit that has no heading. Then the words of the unit stay together, and the
+ * Puts `box`, the history of the provision that is `occurrence`, on the page: after the heading of the
+ * occurrence, or after an occurrence that has no heading. Then the words of the occurrence stay together, and the
  * history is below them.
  *
- * @param {HTMLElement} unit
+ * @param {HTMLElement} occurrence
  * @param {Element} box
  */
-const place = (unit, box) => {
-  const heading = unit.querySelector(":scope > .title");
+const place = (occurrence, box) => {
+  const heading = occurrence.querySelector(":scope > .title");
   if (heading) {
     heading.after(box);
   } else {
-    unit.after(box);
+    occurrence.after(box);
   }
 };
 
 /**
- * Opens the history of the provision that is `unit` below it, or closes it if it is open. A
+ * Opens the history of the provision that is `occurrence` below it, or closes it if it is open. A
  * history that is below the window comes into view. `from`
  * is the mark or the link that the reader used. It says if the history is open (`aria-expanded`).
  *
- * @param {HTMLElement} unit
+ * @param {HTMLElement} occurrence
  * @param {HTMLElement} from
  * @returns {Promise<void>}
  */
-export const toggle = async (unit, from) => {
-  const open = opened(unit);
+export const toggle = async (occurrence, from) => {
+  const open = opened(occurrence);
   if (open) {
     open.remove();
     from.setAttribute("aria-expanded", "false");
     return;
   }
-  const href = history(unit);
+  const href = history(occurrence);
   if (!href) {
     return;
   }
-  const box = unit.ownerDocument.createElement("div");
+  const box = occurrence.ownerDocument.createElement("div");
   box.className = "provision-history";
-  box.dataset.unit = unit.id;
+  box.dataset.occurrence = occurrence.id;
   box.setAttribute("role", "status");
   box.textContent = "Loading the history…";
-  place(unit, box);
+  place(occurrence, box);
   from.setAttribute("aria-expanded", "true");
   try {
     const response = await fetch(href, { headers: { Accept: "text/html" } });
@@ -159,7 +159,7 @@ export const toggle = async (unit, from) => {
     if (!(loaded instanceof HTMLElement)) {
       throw new Error("no history");
     }
-    loaded.dataset.unit = unit.id;
+    loaded.dataset.occurrence = occurrence.id;
     box.replaceWith(loaded);
     loaded.scrollIntoView?.({ block: "nearest", behavior: "smooth" });
   } catch {
@@ -205,9 +205,9 @@ export class AmendmentMark extends HTMLElement {
    * Opens the history of the provision of this mark, or closes it.
    */
   open() {
-    const unit = unitOf(this);
-    if (unit) {
-      void toggle(unit, this);
+    const occurrence = occurrenceOf(this);
+    if (occurrence) {
+      void toggle(occurrence, this);
     }
   }
 }
@@ -223,16 +223,16 @@ export const link = (links, content) => {
   if (!content.querySelector("[id]") || content.querySelector(".provision-link")) {
     return;
   }
-  for (const each of links.querySelectorAll("[data-unit]")) {
-    if (!(each instanceof HTMLElement) || !each.dataset.unit) {
+  for (const each of links.querySelectorAll("[data-occurrence]")) {
+    if (!(each instanceof HTMLElement) || !each.dataset.occurrence) {
       continue;
     }
-    const unit = content.ownerDocument.getElementById(each.dataset.unit);
-    if (!unit || !content.contains(unit)) {
+    const occurrence = content.ownerDocument.getElementById(each.dataset.occurrence);
+    if (!occurrence || !content.contains(occurrence)) {
       continue;
     }
-    const marked = [...unit.querySelectorAll("amendment-mark")].some(
-      (mark) => unitOf(mark) === unit,
+    const marked = [...occurrence.querySelectorAll("amendment-mark")].some(
+      (mark) => occurrenceOf(mark) === occurrence,
     );
     if (marked) {
       continue;
@@ -245,9 +245,9 @@ export const link = (links, content) => {
     made.setAttribute("aria-label", "History of this provision");
     made.setAttribute("aria-expanded", "false");
     made.addEventListener("click", () => {
-      void toggle(unit, made);
+      void toggle(occurrence, made);
     });
-    unit.prepend(made);
+    occurrence.prepend(made);
   }
 };
 

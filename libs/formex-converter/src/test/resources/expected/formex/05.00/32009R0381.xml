@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
                <date date="2007-10-22">
@@ -58,7 +58,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 144(1), in conjunction with Article 4 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -66,7 +66,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -75,31 +75,31 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" certificates of authenticity attesting that the products originate in Switzerland are to be issued before certain products are imported. The name of the issuing authority for those certificates is given in Annex III to that Regulation. Article 4(2) of that Regulation provides that Annex III may be revised in case a new issuing authority is appointed."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Switzerland has notified the Commission that it has appointed a new body that will be authorised to issue certificates of authenticity."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Regulation (EC) No 2092/2004 should therefore be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for the Common Organisation of Agricultural Markets,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -108,15 +108,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Annex III to Regulation (EC) No 2092/2004 is replaced by the text set out in the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -127,7 +127,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -188,45 +188,45 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx_III" kind="annex" rank="2">
+            <occurrence eId="anx/qstr_1/anx_III" kind="annex" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX III"/>
                </num>
-               <unit eId="anx/qstr_1/anx_III/level_1"
-                     kind="level"
-                     depth="1"
-                     rank="3">
+               <occurrence eId="anx/qstr_1/anx_III/level_1"
+                           kind="level"
+                           depth="1"
+                           rank="3">
                   <heading>
                      <emphasis kind="b">
                         <t v="List of authorities in exporting countries empowered to issue certificates of authenticity"/>
                      </emphasis>
                   </heading>
-               </unit>
-               <unit eId="anx/qstr_1/anx_III/level_1/level_1"
-                     kind="level"
-                     depth="2"
-                     rank="4">
+               </occurrence>
+               <occurrence eId="anx/qstr_1/anx_III/level_1/level_1"
+                           kind="level"
+                           depth="2"
+                           rank="4">
                   <heading>
                      <t v="SWITZERLAND"/>
                   </heading>
                   <list kind="dash">
-                     <unit eId="anx/qstr_1/anx_III/level_1/level_1/idt_1" kind="indent">
+                     <occurrence eId="anx/qstr_1/anx_III/level_1/level_1/idt_1" kind="indent">
                         <p>
                            <t v="Office fédéral de l'agriculture/Bundesamt für Landwirtschaft/Ufficio federale dell'agricoltura."/>
                            <t v="’"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </list>
-               </unit>
-            </unit>
+               </occurrence>
+            </occurrence>
          </quotedStructure>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

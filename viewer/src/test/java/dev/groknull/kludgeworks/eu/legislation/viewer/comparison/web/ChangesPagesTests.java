@@ -89,7 +89,7 @@ class ChangesPagesTests {
     assertThat(sidenote.select(".applies a").attr("href"))
         .isEqualTo("https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32026R0449");
     assertThat(sidenote.select(".before")).isEmpty();
-    // Each unit of the later text shows once: as a difference, as an opening, or in a fold.
+    // Each occurrence of the later text shows once: as a difference, as an opening, or in a fold.
     assertThat(changes.select("details.fold summary").eachText())
         .containsExactly(
             "Articles 1 to 3 — no differences · show",
@@ -172,7 +172,7 @@ class ChangesPagesTests {
     var provision = Objects.requireNonNull(first.selectFirst(".provision"));
     assertThat(provision.ownText()).isEqualTo("8.1.2.3(c)");
     assertThat(provision.select(".n").text()).isEqualTo("difference 1 of 6");
-    // Both sides have the same marked unit. In From, the style of the page hides its
+    // Both sides have the same marked occurrence. In From, the style of the page hides its
     // insertions.
     assertThat(first.select(".from ins.diff").text())
         .isEqualTo(first.select(".to ins.diff").text())
@@ -180,20 +180,22 @@ class ChangesPagesTests {
     assertThat(first.select(".what .made").text()).isEqualTo("Replaced by 2026/449");
     assertThat(first.select(".what .steps a").eachAttr("href")).containsExactly("#difference-2");
     // Its neighbours are the same in both texts. Each shows what last made it as it is. In a run
-    // of more than three, the units between the first and the last are folded.
+    // of more than three, the occurrences between the first and the last are folded.
     assertThat(synopsis.select(".ledger-fold > summary").eachText())
         .containsExactly(
             "Points 1.0 to 8.1.2.1 (427 provisions) — no differences · show",
             "Points 8.1.3 to 9.1.2.1 — no differences · show",
             "Point 9.1.3 to attachment 12-O — no differences · show");
-    // A fold opens in place. It shows a row for each of its units, the same in both texts, with
-    // the history of the unit.
+    // A fold opens in place. It shows a row for each of its occurrences, the same in both texts,
+    // with
+    // the history of the occurrence.
     var fold = Objects.requireNonNull(synopsis.selectFirst(".ledger-fold"));
     var rows =
         Jsoup.parseBodyFragment(
             Objects.requireNonNull(
                 http.get().uri(URI.create(fold.attr("hx-get"))).retrieve().body(String.class)));
-    // The units of the run are in the order of the text. This includes the parts of an attachment.
+    // The occurrences of the run are in the order of the text. This includes the parts of an
+    // attachment.
     assertThat(rows.select(".ledger-same .provision").eachText())
         .startsWith("1.0", "1.0.1")
         .endsWith("8.1.2.1");
@@ -216,15 +218,15 @@ class ChangesPagesTests {
   }
 
   @Test
-  void opensAFoldWithItsUnitsFromTheText() {
+  void opensAFoldWithItsOccurrencesFromTheText() {
     var changes = prepared();
     var fold =
         Objects.requireNonNull(changes.selectFirst("details.fold:contains(Points (a) and (b))"));
-    var units =
+    var occurrences =
         Jsoup.parse(
             Objects.requireNonNull(
                 http.get().uri(URI.create(fold.attr("hx-get"))).retrieve().body(String.class)));
-    assertThat(units.select("div.unit").eachAttr("id"))
+    assertThat(occurrences.select("div.occurrence").eachAttr("id"))
         .containsExactly("anx/pnt_8.1.2.3/pnt_a", "anx/pnt_8.1.2.3/pnt_b");
   }
 
@@ -237,18 +239,18 @@ class ChangesPagesTests {
         .isEqualTo(
             "applied in accordance with Attachment 6-J to the Annex to Implementing Decision"
                 + " C(2015) 8005");
-    // A unit with no difference, and rows of a table it does not have, are not found.
+    // An occurrence with no difference, and rows of a table it does not have, are not found.
     assertThat(status(DIFFERENCE + "&eId=art_1")).isEqualTo(404);
     assertThat(status(DIFFERENCE + "&eId=anx/pnt_8.1.2.3/pnt_c&table=0&rows=0-3")).isEqualTo(404);
   }
 
   @Test
-  void servesTheOutlineOfAUnitWithLinksToItsPlacesInRead() {
+  void servesTheOutlineOfAnOccurrenceWithLinksToItsPlacesInRead() {
     prepared();
     var outline = get(DIFFERENCE + "&eId=anx&outline=true");
     var links = outline.select("ul.annex-outline a").eachAttr("href");
     assertThat(links).isNotEmpty().allMatch(href -> href.startsWith(ACT + "2026-10-01/eng#anx"));
-    assertThat(status(DIFFERENCE + "&eId=no_such_unit&outline=true")).isEqualTo(404);
+    assertThat(status(DIFFERENCE + "&eId=no_such_occurrence&outline=true")).isEqualTo(404);
   }
 
   private int status(String uri) {

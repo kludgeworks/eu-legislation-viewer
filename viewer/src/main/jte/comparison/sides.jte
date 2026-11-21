@@ -19,10 +19,10 @@
   <div class="ledger sides legal-text legal-text-consolidated" role="table" aria-label="The wording on the two days">
     <div class="ledger-head" role="row"><div role="columnheader">On<span class="day">${from}</span></div><div role="columnheader">On<span class="day">${to}</span></div></div>
     @for(var each : shown)
-      !{var unit = html.element(each.folded(page));}
+      !{var occurrence = html.element(each.folded(page));}
       <div class="ledger-row difference-${each.kind()}" role="row">
-        <div class="from" role="cell">@if(each.kind().equals("inserted"))<p class="absent">Not in the text on this day</p>@else${unit}@endif</div>
-        <div class="to" role="cell">@if(each.kind().equals("deleted"))<p class="absent">Not in the text on this day</p>@elseif(each.annexInserted())@template.comparison.annexfold(shown = each, page = page)@else${unit}@endif</div>
+        <div class="from" role="cell">@if(each.kind().equals("inserted"))<p class="absent">Not in the text on this day</p>@else${occurrence}@endif</div>
+        <div class="to" role="cell">@if(each.kind().equals("deleted"))<p class="absent">Not in the text on this day</p>@elseif(each.annexInserted())@template.comparison.annexfold(shown = each, page = page)@else${occurrence}@endif</div>
       </div>
     @endfor
   </div>

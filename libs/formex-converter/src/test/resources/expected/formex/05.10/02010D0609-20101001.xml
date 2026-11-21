@@ -75,12 +75,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on European Union, and in particular the third paragraph of Article 38 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2010/576/CFSP of "/>
                <date date="2010-09-23">
@@ -90,7 +90,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 10(1) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -98,15 +98,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Pursuant to Article 10(1) of Decision 2010/576/CFSP, the Political and Security Committee is authorised, in accordance with Article 38 of the Treaty, to take the relevant decisions for the purpose of exercising the political control and strategic direction of EUPOL RD Congo, including in particular the decision to appoint a Head of Mission.&#xA;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -117,7 +117,7 @@
                </date>
                <t v=",&#xA;"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -126,7 +126,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -137,12 +137,12 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/unp_1" kind="paragraph">
+         <occurrence eId="art_2/unp_1" kind="paragraph">
             <provenance amendingAct="32010D0609R(01)"
                         action="replaced"
                         location="TO"
@@ -154,13 +154,13 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_2/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply until the end of EUPOL RD Congo mandate."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

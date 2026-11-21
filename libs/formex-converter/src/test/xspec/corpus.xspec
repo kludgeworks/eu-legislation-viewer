@@ -28,13 +28,13 @@
         <ENACTING.TERMS/>
       </ACT>
     </x:context>
-    <x:expect label="are division units with their heading" test="
-        $x:result//*:recitals/*:unit[@kind = 'division']/@eId = 'pbl_1/division_A'
-        and $x:result//*:recitals/*:unit[@kind = 'division']/*:num/*:t/@v = 'A.'
-        and $x:result//*:recitals/*:unit[@kind = 'division']/*:heading/*:t/@v = 'PROCEDURE'"/>
-    <x:expect label="nest" test="$x:result//*:unit[@eId = 'pbl_1/division_A']/*:unit[@kind = 'division']/@eId = 'pbl_1/division_A/division_1'"/>
-    <x:expect label="keep preamble-wide recital eIds" test="$x:result//*:unit[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2', 'pbl_1/rct_3')"/>
-    <x:expect label="keep what a group holds besides recitals" test="exists($x:result//*:unit[@eId = 'pbl_1/division_A/division_1']/*:table)"/>
+    <x:expect label="are division occurrences with their heading" test="
+        $x:result//*:recitals/*:occurrence[@kind = 'division']/@eId = 'pbl_1/division_A'
+        and $x:result//*:recitals/*:occurrence[@kind = 'division']/*:num/*:t/@v = 'A.'
+        and $x:result//*:recitals/*:occurrence[@kind = 'division']/*:heading/*:t/@v = 'PROCEDURE'"/>
+    <x:expect label="nest" test="$x:result//*:occurrence[@eId = 'pbl_1/division_A']/*:occurrence[@kind = 'division']/@eId = 'pbl_1/division_A/division_1'"/>
+    <x:expect label="keep preamble-wide recital eIds" test="$x:result//*:occurrence[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2', 'pbl_1/rct_3')"/>
+    <x:expect label="keep what a group holds besides recitals" test="exists($x:result//*:occurrence[@eId = 'pbl_1/division_A/division_1']/*:table)"/>
   </x:scenario>
 
   <x:scenario label="Recitals written as a list">
@@ -46,7 +46,7 @@
         <ENACTING.TERMS/>
       </ACT>
     </x:context>
-    <x:expect label="are recitals" test="$x:result//*:recitals/*:unit[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2')"/>
+    <x:expect label="are recitals" test="$x:result//*:recitals/*:occurrence[@kind = 'recital']/@eId = ('pbl_1/rct_1', 'pbl_1/rct_2')"/>
   </x:scenario>
 
   <x:scenario label="A recital of two numbered paragraphs (02.00)">
@@ -56,8 +56,8 @@
         <ENACTING.TERMS/>
       </ACT>
     </x:context>
-    <x:expect label="takes the first number" test="$x:result//*:unit[@kind = 'recital']/@eId = 'pbl_1/rct_1'"/>
-    <x:expect label="keeps the second paragraph as a point of its own" test="$x:result//*:unit[@kind = 'recital']/*:unit[@kind = 'point']/*:num/*:t/@v = '(2)'"/>
+    <x:expect label="takes the first number" test="$x:result//*:occurrence[@kind = 'recital']/@eId = 'pbl_1/rct_1'"/>
+    <x:expect label="keeps the second paragraph as a point of its own" test="$x:result//*:occurrence[@kind = 'recital']/*:occurrence[@kind = 'point']/*:num/*:t/@v = '(2)'"/>
   </x:scenario>
 
   <x:scenario label="Recitals that are only their opening words">
@@ -87,7 +87,7 @@
       <GR.SEQ><TITLE><TI><P>1. Producers</P></TI></TITLE><P><HT TYPE="BOX"><GR.SEQ LEVEL="2"><TITLE><TI><P>Producer</P></TI></TITLE><P>Arkema</P></GR.SEQ></HT></P></GR.SEQ>
     </x:context>
     <x:expect label="is a level in a box" test="
-        $x:result//*:blockContainer[@emphasis = 'box']/*:unit[@kind = 'level'][*:heading/*:t/@v = 'Producer']/*:p/*:t/@v = 'Arkema'"/>
+        $x:result//*:blockContainer[@emphasis = 'box']/*:occurrence[@kind = 'level'][*:heading/*:t/@v = 'Producer']/*:p/*:t/@v = 'Arkema'"/>
   </x:scenario>
 
   <x:scenario label="A heading whose numbered paragraph holds a second paragraph">
@@ -191,7 +191,7 @@
     <x:context mode="block" xmlns="">
       <AGR><COLL.LETTERS><LETTER><TITLE><TI><NP><NO.P>A.</NO.P><TXT>Letter from the Union</TXT></NP></TI></TITLE><CONTENTS><P>Sir,</P></CONTENTS></LETTER></COLL.LETTERS></AGR>
     </x:context>
-    <x:expect label="are letters" test="$x:result/self::*:unit[@kind = 'letter']/@eId = 'let_1' and $x:result/*:num/*:t/@v = 'A.'"/>
+    <x:expect label="are letters" test="$x:result/self::*:occurrence[@kind = 'letter']/@eId = 'let_1' and $x:result/*:num/*:t/@v = 'A.'"/>
   </x:scenario>
 
   <x:scenario label="Corrections grouped under a heading">
@@ -204,7 +204,7 @@
       </CORR>
     </x:context>
     <x:expect label="keep the heading and number the corrections through the document" test="
-        $x:result/*:body/*:p/*:t/@v = 'In Annex V:' and $x:result/*:body/*:unit/@eId = ('cor_1', 'cor_2')"/>
+        $x:result/*:body/*:p/*:t/@v = 'In Annex V:' and $x:result/*:body/*:occurrence/@eId = ('cor_1', 'cor_2')"/>
   </x:scenario>
 
   <x:scenario label="A long title with a list">
@@ -216,12 +216,12 @@
     </x:context>
     <x:expect label="keeps the list" test="
         $x:result//*:longTitle/*:p/*:t/@v = 'Corrigendum to:'
-        and $x:result//*:longTitle/*:list/*:unit/*:p/*:t/@v = ('Regulation (EU) No 1', 'Regulation (EU) No 2')"/>
+        and $x:result//*:longTitle/*:list/*:occurrence/*:p/*:t/@v = ('Regulation (EU) No 1', 'Regulation (EU) No 2')"/>
   </x:scenario>
 
   <x:scenario label="A corrigendum whose text is in an included file">
     <x:context mode="block" xmlns=""><CORR><BIB.INSTANCE/><TITLE><TI><P>Corrigendum to Notice EPSO/AD/45/06</P></TI></TITLE><CONTENTS.CORR><CORRECTION><DESCRIPTION><P>On page 2:</P></DESCRIPTION></CORRECTION></CONTENTS.CORR></CORR></x:context>
-    <x:expect label="is its title and its corrections" test="$x:result[1]/self::*:p/*:t/@v = 'Corrigendum to Notice EPSO/AD/45/06' and $x:result[2]/self::*:unit[@kind = 'correction']/*:p/*:t/@v = 'On page 2:'"/>
+    <x:expect label="is its title and its corrections" test="$x:result[1]/self::*:p/*:t/@v = 'Corrigendum to Notice EPSO/AD/45/06' and $x:result[2]/self::*:occurrence[@kind = 'correction']/*:p/*:t/@v = 'On page 2:'"/>
   </x:scenario>
 
   <!-- ============================================================ what the source gets wrong -->

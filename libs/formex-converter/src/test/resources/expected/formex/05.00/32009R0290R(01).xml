@@ -29,13 +29,13 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 77, Annex I(1), replace the footnote to paragraph 7 of Section III of Part 1 with the following:"/>
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/idt_1" kind="indent">
+               <occurrence eId="cor_1/new/qstr_1/idt_1" kind="indent">
                   <num>
                      <t v="‘"/>
                      <t v="(*)"/>
@@ -192,11 +192,11 @@
                      <t v="’"/>
                      <t v=";"/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="on page 78, Annex II, paragraph 2 of Part 1(I), replace the formula with the following:"/>
          </p>
@@ -241,8 +241,8 @@
                <t v=";"/>
             </p>
          </new>
-      </unit>
-      <unit eId="cor_3" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_3" kind="correction">
          <p>
             <t v="on page 96, Annex III, footnote 1:"/>
          </p>
@@ -251,7 +251,7 @@
                <t v="for:"/>
             </p>
             <quotedStructure eId="cor_3/old/qstr_1">
-               <unit eId="cor_3/old/qstr_1/pnt_1" kind="point" numbered="true">
+               <occurrence eId="cor_3/old/qstr_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="("/>
@@ -335,7 +335,7 @@
                      <t v=") as the estimated variance of the estimator of parameter ."/>
                      <t v="’"/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
          </old>
          <new>
@@ -343,7 +343,7 @@
                <t v="read:"/>
             </p>
             <quotedStructure eId="cor_3/new/qstr_1">
-               <unit eId="cor_3/new/qstr_1/pnt_1" kind="point" numbered="true">
+               <occurrence eId="cor_3/new/qstr_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="("/>
@@ -427,10 +427,10 @@
                      <t v=") as the estimated variance of the estimator of parameter θ."/>
                      <t v="’"/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

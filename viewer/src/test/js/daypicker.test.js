@@ -33,7 +33,7 @@ const control = ({ range = true, from = "" } = {}) => {
   const holder = document.createElement("div");
   holder.innerHTML = `<day-picker data-single="/history" ${range ? 'data-range="/compare"' : ""}
       data-changes="${CHANGES}"><form method="get" action="/history">${boxes}
-      <input type="hidden" name="unit" value="art_6"><button>Go</button></form></day-picker>`;
+      <input type="hidden" name="occurrence" value="art_6"><button>Go</button></form></day-picker>`;
   const picker = /** @type {HTMLElement} */ (holder.firstElementChild);
   document.body.append(picker);
   const form = /** @type {HTMLFormElement} */ (picker.querySelector("form"));
@@ -209,7 +209,7 @@ describe("the day control", () => {
     expect(picker.querySelector(".day-ends .active input")?.getAttribute("data-end")).toBe("second");
     click(picker, "[data-show]");
     expect(sent).toHaveBeenCalledOnce();
-    expect(values(form)).toEqual({ from: "2021-03-02", to: "2021-03-15", unit: "art_6" });
+    expect(values(form)).toEqual({ from: "2021-03-02", to: "2021-03-15", occurrence: "art_6" });
     expect(form.action).toContain("/compare");
   });
 
@@ -219,7 +219,7 @@ describe("the day control", () => {
     click(picker, '[data-mode="two"]');
     click(picker, '[data-day="2021-03-20"]');
     click(picker, "[data-show]");
-    expect(values(form)).toEqual({ from: "2021-03-15", to: "2021-03-20", unit: "art_6" });
+    expect(values(form)).toEqual({ from: "2021-03-15", to: "2021-03-20", occurrence: "art_6" });
   });
 
   test("puts the day of the previous or next change in the day with the frame, and keeps the frame", () => {

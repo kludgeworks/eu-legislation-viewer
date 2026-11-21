@@ -34,7 +34,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On the cover page, in the title:"/>
          </p>
@@ -82,8 +82,8 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="On page 1, in the title:"/>
          </p>
@@ -149,7 +149,7 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

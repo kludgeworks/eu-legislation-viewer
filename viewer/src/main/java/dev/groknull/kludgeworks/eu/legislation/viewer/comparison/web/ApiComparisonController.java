@@ -157,9 +157,9 @@ class ApiComparisonController {
    * <ul>
    *   <li>{@code item}: each difference, embedded, in the order of the later text, with the
    *       amendment markers of the consolidations and the amendments that Cellar records at its
-   *       unit. Each links to the difference whole.
+   *       occurrence. Each links to the difference whole.
    *   <li>{@code up}: the act.
-   *   <li>{@code av:difference}: a difference by the eId of its unit, a URI template.
+   *   <li>{@code av:difference}: a difference by the eId of its occurrence, a URI template.
    * </ul>
    *
    * <p>Returns 404 if the dates are not the first days of two versions in the language, in order,
@@ -214,10 +214,10 @@ class ApiComparisonController {
   }
 
   /**
-   * Returns the difference of the comparison at the unit {@code eId}, with its unit whole and
-   * marked. Its eId is the rest of the path, for example {@code anx/pnt_1.2}. Returns 404 if the
-   * comparison has no difference there. It links to the comparison, {@code up}, and to its JSON
-   * Schema, {@code describedby}.
+   * Returns the difference of the comparison at the occurrence {@code eId}, with its occurrence
+   * whole and marked. Its eId is the rest of the path, for example {@code anx/pnt_1.2}. Returns 404
+   * if the comparison has no difference there. It links to the comparison, {@code up}, and to its
+   * JSON Schema, {@code describedby}.
    */
   @GetMapping(COMPARISON + "/differences/{*eId}")
   RepresentationModel<?> difference(
@@ -247,7 +247,7 @@ class ApiComparisonController {
             new DifferenceModel(
                 DifferenceSummary.of(asked.ends.act, difference, amended),
                 content.publicWording(difference.shown()),
-                content.publicUnit(difference.shown())))
+                content.publicOccurrence(difference.shown())))
         .link(Link.of(differenceHref(comparison, eId)))
         .link(comparison)
         .link(
@@ -400,23 +400,23 @@ class ApiComparisonController {
   /**
    * A difference, as a comparison lists it.
    *
-   * @param eId the eId of its unit
+   * @param eId the eId of its occurrence
    * @param kind {@code inserted}, {@code deleted} or {@code changed}
-   * @param unitKind the kind of its unit in legal-text. For example, {@code article}.
-   * @param num the number of its unit, as written. For example, {@code (a)}. Empty if none.
+   * @param occurrenceKind the kind of its occurrence in legal-text. For example, {@code article}.
+   * @param num the number of its occurrence, as written. For example, {@code (a)}. Empty if none.
    * @param inserted how many words it inserted
    * @param deleted how many words it deleted
-   * @param parent the eId of the unit that it is in, or null for an outermost unit
-   * @param section the eId of the unit with a rank that it is in, as the outline nests them
-   * @param markers the amendment markers of the later text that tell which acts put the unit in its
-   *     form, and how
+   * @param parent the eId of the occurrence that it is in, or null for an outermost occurrence
+   * @param section the eId of the occurrence with a rank that it is in, as the outline nests them
+   * @param markers the amendment markers of the later text that tell which acts put the occurrence
+   *     in its form, and how
    * @param earlierMarkers the same, in the earlier text
-   * @param amendments the amendments that Cellar records at the unit between the two versions
+   * @param amendments the amendments that Cellar records at the occurrence between the two versions
    */
   record DifferenceSummary(
       String eId,
       String kind,
-      String unitKind,
+      String occurrenceKind,
       String num,
       int inserted,
       int deleted,
@@ -430,8 +430,8 @@ class ApiComparisonController {
       return new DifferenceSummary(
           difference.eId(),
           code(difference.kind().name()),
-          difference.unit().kind(),
-          difference.unit().num(),
+          difference.occurrence().kind(),
+          difference.occurrence().num(),
           difference.inserted(),
           difference.deleted(),
           difference.parent(),
@@ -448,23 +448,23 @@ class ApiComparisonController {
    * A difference whole, as the API shows it.
    *
    * @param difference what the comparison lists of it
-   * @param wording the plain text of its unit before and after the change, and the runs of words
-   *     that stayed, went in and went out
-   * @param shown its unit, marked, in the public model. In its HTML, inserted words are in {@code
-   *     ins} and deleted words in {@code del}. Its plain text is the text after the change.
+   * @param wording the plain text of its occurrence before and after the change, and the runs of
+   *     words that stayed, went in and went out
+   * @param shown its occurrence, marked, in the public model. In its HTML, inserted words are in
+   *     {@code ins} and deleted words in {@code del}. Its plain text is the text after the change.
    */
   record DifferenceModel(
       @JsonUnwrapped DifferenceSummary difference,
       @JsonUnwrapped PublicText.Marked wording,
-      PublicText.Unit shown) {}
+      PublicText.Occurrence shown) {}
 
   /**
    * An amendment marker, as the API shows it. For example, ▼M20.
    *
    * @param act the CELEX number of the amending act
    * @param action what the act did: replaced, inserted, deleted or renumbered
-   * @param in the eId of the enclosing unit that the act put in its form whole, or null for a
-   *     marker of the unit itself
+   * @param in the eId of the enclosing occurrence that the act put in its form whole, or null for a
+   *     marker of the occurrence itself
    */
   record MarkerModel(String act, String action, @Nullable String in) {
 
@@ -474,7 +474,7 @@ class ApiComparisonController {
   }
 
   /**
-   * An amendment that Cellar records at a unit, as the API shows it.
+   * An amendment that Cellar records at an occurrence, as the API shows it.
    *
    * @param act the CELEX number of the amending act
    * @param cited how the Official Journal cites the amending act. For example, {@code 2019/103}.

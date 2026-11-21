@@ -49,8 +49,8 @@ public record ProvisionView(
   }
 
   /**
-   * Returns the history of the unit {@code unit} of the text of {@code reading}, for the day {@code
-   * day}.
+   * Returns the history of the occurrence {@code occurrence} of the text of {@code reading}, for
+   * the day {@code day}.
    *
    * @param texts the marks of the built texts in {@code language}, by version. They must have the
    *     text of {@code reading}.
@@ -59,14 +59,14 @@ public record ProvisionView(
   public static ProvisionView of(
       Act act,
       Version reading,
-      String unit,
+      String occurrence,
       LocalDate day,
       LocalDate today,
       Language language,
       Map<Version, TextMarks> texts) {
     var text = Objects.requireNonNull(texts.get(reading), "the text of the version is not built");
-    var history = act.historyOf(unit, text, language);
-    var name = name(history, unit, text);
+    var history = act.historyOf(occurrence, text, language);
+    var name = name(history, occurrence, text);
     var lines = lines(act, history, name, day, today, language, each -> true);
     var acts = history.acts().stream().filter(each -> !each.corrigendum()).toList();
     return new ProvisionView(
@@ -77,26 +77,27 @@ public record ProvisionView(
                 ? "1 amending act changed it"
                 : acts.size() + " amending acts changed it",
         lines,
-        lines.isEmpty() ? unknown(act, unit, language, texts) : null,
-        acts.size() < 2 ? null : compare(act, acts, reading, unit, language));
+        lines.isEmpty() ? unknown(act, occurrence, language, texts) : null,
+        acts.size() < 2 ? null : compare(act, acts, reading, occurrence, language));
   }
 
   /**
-   * Returns the name of the unit {@code unit} of {@code text}, as a change of the provision names
-   * it. For example, "Article 6(2)". Null if no change names it.
+   * Returns the name of the occurrence {@code occurrence} of {@code text}, as a change of the
+   * provision names it. For example, "Article 6(2)". Null if no change names it.
    */
-  static @Nullable String name(Act act, String unit, TextMarks text, Language language) {
-    return name(act.historyOf(unit, text, language), unit, text);
+  static @Nullable String name(Act act, String occurrence, TextMarks text, Language language) {
+    return name(act.historyOf(occurrence, text, language), occurrence, text);
   }
 
-  private static @Nullable String name(ProvisionHistory history, String unit, TextMarks text) {
+  private static @Nullable String name(
+      ProvisionHistory history, String occurrence, TextMarks text) {
     return history.changes().stream()
         .filter(
             change ->
                 change
                     .location()
                     .in(text.eIds())
-                    .filter(found -> !found.within() && found.eIds().equals(List.of(unit)))
+                    .filter(found -> !found.within() && found.eIds().equals(List.of(occurrence)))
                     .isPresent())
         .map(change -> change.location().name())
         .filter(each -> !each.isEmpty())
@@ -105,20 +106,21 @@ public record ProvisionView(
   }
 
   /**
-   * Returns the changes that {@code acts} made to the unit {@code unit} of {@code text}, oldest act
-   * first, with the state of each change on {@code day}. The Compare page of one provision lists
-   * them as the steps between its two days.
+   * Returns the changes that {@code acts} made to the occurrence {@code occurrence} of {@code
+   * text}, oldest act first, with the state of each change on {@code day}. The Compare page of one
+   * provision lists them as the steps between its two days.
    */
   static List<Line> steps(
       Act act,
-      String unit,
+      String occurrence,
       TextMarks text,
       LocalDate day,
       LocalDate today,
       Language language,
       List<ActIdentifier> acts) {
-    var history = act.historyOf(unit, text, language);
-    return lines(act, history, name(history, unit, text), day, today, language, acts::contains)
+    var history = act.historyOf(occurrence, text, language);
+    return lines(
+            act, history, name(history, occurrence, text), day, today, language, acts::contains)
         .reversed();
   }
 
@@ -200,8 +202,8 @@ public record ProvisionView(
    * has it.
    */
   private static Unknown unknown(
-      Act act, String unit, Language language, Map<Version, TextMarks> texts) {
-    return act.firstWith(unit, language, texts)
+      Act act, String occurrence, Language language, Map<Version, TextMarks> texts) {
+    return act.firstWith(occurrence, language, texts)
         .filter(first -> first.kind() != Version.Kind.ORIGINAL)
         .map(
             first ->
@@ -217,14 +219,14 @@ public record ProvisionView(
   }
 
   /**
-   * Returns the address of the comparison that shows the wording of the unit before the first of
-   * {@code acts} and after the last. It starts at the version before the first version that
+   * Returns the address of the comparison that shows the wording of the occurrence before the first
+   * of {@code acts} and after the last. It starts at the version before the first version that
    * integrates one of the acts. It ends at the last version that integrates one of them, or at
    * {@code reading} if that is later. Null if no version integrates an act, or if no version is
    * before it.
    */
   private static @Nullable String compare(
-      Act act, List<ActIdentifier> acts, Version reading, String unit, Language language) {
+      Act act, List<ActIdentifier> acts, Version reading, String occurrence, Language language) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var integrating =
         acts.stream()
@@ -241,25 +243,25 @@ public record ProvisionView(
         .map(
             each ->
                 new ComparePage(Links.compare(eli, language), each.date(), to.date(), null, null)
-                    .href(unit))
+                    .href(occurrence))
         .orElse(null);
   }
 
   /**
-   * Returns the units of the text of {@code reading} that have a history to show, by their eIds:
-   * the units with a change of their own, and the units that the data names no act for. The text
-   * shows a link at each of them that has no ▼ mark. A unit with a ▼ mark opens its history from
-   * the mark.
+   * Returns the occurrences of the text of {@code reading} that have a history to show, by their
+   * eIds: the occurrences with a change of their own, and the occurrences that the data names no
+   * act for. The text shows a link at each of them that has no ▼ mark. An occurrence with a ▼ mark
+   * opens its history from the mark.
    */
-  public static List<String> units(
+  public static List<String> occurrences(
       Act act, Version reading, Language language, Map<Version, TextMarks> texts) {
     var text = texts.get(reading);
     if (text == null) {
       return List.of();
     }
-    var units = new ArrayList<>(act.changedUnits(text.eIds(), language).keySet());
-    units.addAll(act.unattributed(reading, language, texts));
-    return units;
+    var occurrences = new ArrayList<>(act.changedOccurrences(text.eIds(), language).keySet());
+    occurrences.addAll(act.unattributed(reading, language, texts));
+    return occurrences;
   }
 
   /**

@@ -19,7 +19,7 @@
       <label for="${id}">compared with</label>
       <input id="${id}" name="to" type="date" value="${day.on()}" required>
     @endif
-    @if(day.unit() != null)<input type="hidden" name="unit" value="${day.unit()}">@endif
+    @if(day.occurrence() != null)<input type="hidden" name="occurrence" value="${day.occurrence()}">@endif
     <button>Go</button>
   </form>
 </day-picker>

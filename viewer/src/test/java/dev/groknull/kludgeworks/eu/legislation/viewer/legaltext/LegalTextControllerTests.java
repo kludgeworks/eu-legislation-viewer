@@ -32,7 +32,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
 @Import(LegalTextControllerTests.Released.class)
 class LegalTextControllerTests {
   private static final TextId TEXT = new TextId(42);
-  private static final String UNITS = "/content/42/units?first=art_1&last=art_3";
+  private static final String OCCURRENCES = "/content/42/occurrences?first=art_1&last=art_3";
   private static final String ETAG = "W/\"2026.11.5-42\"";
 
   @Autowired MockMvcTester mvc;
@@ -43,12 +43,12 @@ class LegalTextControllerTests {
   void stored() {
     when(content.contains(TEXT)).thenReturn(true);
     when(texts.whole(TEXT)).thenReturn(Optional.of("<article>Whole</article>"));
-    when(texts.units(TEXT, "art_1", "art_3")).thenReturn(Optional.of("<p>Article 1</p>"));
+    when(texts.occurrences(TEXT, "art_1", "art_3")).thenReturn(Optional.of("<p>Article 1</p>"));
   }
 
   @Test
-  void keepsUnitsForAYearByTheReleaseAndTheText() {
-    var result = mvc.get().uri(UNITS).exchange();
+  void keepsOccurrencesForAYearByTheReleaseAndTheText() {
+    var result = mvc.get().uri(OCCURRENCES).exchange();
 
     assertThat(result).hasStatusOk().hasBodyTextEqualTo("<p>Article 1</p>");
     assertThat(result)
@@ -58,18 +58,21 @@ class LegalTextControllerTests {
   }
 
   @Test
-  void answersABrowserThatHasTheUnitsWithoutRenderingThem() {
-    var result = mvc.get().uri(UNITS).header(HttpHeaders.IF_NONE_MATCH, ETAG).exchange();
+  void answersABrowserThatHasTheOccurrencesWithoutRenderingThem() {
+    var result = mvc.get().uri(OCCURRENCES).header(HttpHeaders.IF_NONE_MATCH, ETAG).exchange();
 
     assertThat(result).hasStatus(HttpStatus.NOT_MODIFIED);
     assertThat(result).headers().hasValue(HttpHeaders.ETAG, ETAG);
-    verify(texts, never()).units(any(), any(), any());
+    verify(texts, never()).occurrences(any(), any(), any());
   }
 
   @Test
-  void rendersTheUnitsAgainForAnotherRelease() {
+  void rendersTheOccurrencesAgainForAnotherRelease() {
     var result =
-        mvc.get().uri(UNITS).header(HttpHeaders.IF_NONE_MATCH, "W/\"2026.11.4-42\"").exchange();
+        mvc.get()
+            .uri(OCCURRENCES)
+            .header(HttpHeaders.IF_NONE_MATCH, "W/\"2026.11.4-42\"")
+            .exchange();
 
     assertThat(result).hasStatusOk().hasBodyTextEqualTo("<p>Article 1</p>");
   }
@@ -97,11 +100,11 @@ class LegalTextControllerTests {
   void answersATextNoLongerStoredWithNotFoundEvenToABrowserThatHasIt() {
     when(content.contains(TEXT)).thenReturn(false);
 
-    assertThat(mvc.get().uri(UNITS).header(HttpHeaders.IF_NONE_MATCH, ETAG))
+    assertThat(mvc.get().uri(OCCURRENCES).header(HttpHeaders.IF_NONE_MATCH, ETAG))
         .hasStatus(HttpStatus.NOT_FOUND);
     assertThat(mvc.get().uri("/content/42")).hasStatus(HttpStatus.NOT_FOUND);
     verify(texts, never()).whole(any());
-    verify(texts, never()).units(any(), any(), any());
+    verify(texts, never()).occurrences(any(), any(), any());
   }
 
   /** The release, as a release build stamps it. */

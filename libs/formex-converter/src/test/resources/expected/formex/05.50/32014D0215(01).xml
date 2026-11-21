@@ -44,7 +44,7 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 337/75 of "/>
                <date date="1975-02-10">
@@ -54,12 +54,12 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the nomination submitted to the Council by the Commission in the category of employees' representatives,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -67,7 +67,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -87,15 +87,15 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="A member's seat is available for Spain on the Governing Board of the Centre in the category of employees' representatives,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -104,7 +104,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article" rank="1">
+      <occurrence eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>
@@ -136,7 +136,7 @@
                </tr>
             </rowGroup>
          </table>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

@@ -50,12 +50,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
                <date date="2007-10-22">
@@ -65,7 +65,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 191, in conjunction with Article 4 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -73,15 +73,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="World market prices for dairy products have collapsed notably due to an increased world supply and a drop in demand in connection with the financial and economic crisis. Community market prices for dairy products have fallen significantly. As a result of a combination of market measures taken since the beginning of this year community prices have stabilised around support price levels. It is essential that these market support measures, notably public intervention, continue to apply as long as necessary for avoiding further deterioration of prices and disturbance of the community market."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -92,16 +92,16 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The Commission made a proposal for a Council Regulation on an extension for 2009 and 2010 of the period for public intervention for butter and skimmed milk powder as provided for in Article 11(e) of Regulation (EC) No 1234/2007, which was welcomed by the Council."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -112,8 +112,8 @@
                </date>
                <t v=" and the practical problem that, following the recent elections, the European Parliament is not likely to be in a position to deliver an opinion in due time, the Commission has to adopt the necessary emergency measures."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
@@ -122,8 +122,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" lays down rules to be followed when the Commission decides that the buying-in of butter is to take place under a tendering procedure."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -132,16 +132,16 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" lays down rules to be followed when the Commission decides that the buying-in of skimmed milk powder is to take place under a tendering procedure."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="In view of the special situation on the dairy market and in order that the system is more efficient, it is appropriate to increase, by way of derogation from Regulations (EC) No 214/2001 and (EC) No 105/2008, the frequency of the tenders to twice a month."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
@@ -152,8 +152,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
@@ -168,15 +168,15 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_10" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_10" kind="recital">
             <num>
                <t v="(10)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for the Common Organisation of Agricultural Markets,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -185,7 +185,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_I" kind="division" rank="1">
+      <occurrence eId="cpt_I" kind="division" rank="1">
          <num>
             <t v="CHAPTER I"/>
          </num>
@@ -194,7 +194,7 @@
                <t v="BUTTER"/>
             </emphasis>
          </subheading>
-         <unit eId="art_1" kind="article" rank="2">
+         <occurrence eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -209,26 +209,26 @@
                </date>
                <t v=", under the conditions provided for in Section 3 of Chapter II of Regulation (EC) No 105/2008 and in this Regulation."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
-            <unit eId="art_2/par_1" kind="paragraph">
+            <occurrence eId="art_2/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
-               <unit eId="art_2/par_1/sub_1" kind="subparagraph">
+               <occurrence eId="art_2/par_1/sub_1" kind="subparagraph">
                   <p>
                      <t v="By way of derogation from Article 13(3) of Regulation (EC) No 105/2008, the time limit for the submission of tenders in response to the individual invitations to tender shall be 11.00 (Brussels time) on the first and third Tuesday of the month."/>
                   </p>
-               </unit>
-               <unit eId="art_2/par_1/sub_2" kind="subparagraph">
+               </occurrence>
+               <occurrence eId="art_2/par_1/sub_2" kind="subparagraph">
                   <p>
                      <t v="If Tuesday is a public holiday the time limit shall be 11.00 (Brussels time) on the previous working day."/>
                   </p>
-               </unit>
-               <unit eId="art_2/par_1/sub_3" kind="subparagraph">
+               </occurrence>
+               <occurrence eId="art_2/par_1/sub_3" kind="subparagraph">
                   <p>
                      <t v="The time limit for submission of tenders for the first individual invitation to tender shall be 11.00 (Brussels time) on "/>
                      <date date="2009-09-01">
@@ -236,9 +236,9 @@
                      </date>
                      <t v="."/>
                   </p>
-               </unit>
-            </unit>
-            <unit eId="art_2/par_2" kind="paragraph">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="art_2/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
@@ -247,10 +247,10 @@
                   <noteRef href="#note_4" marker="4"/>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="cpt_II" kind="division" rank="1">
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="cpt_II" kind="division" rank="1">
          <num>
             <t v="CHAPTER II"/>
          </num>
@@ -259,7 +259,7 @@
                <t v="SKIMMED MILK POWDER"/>
             </emphasis>
          </subheading>
-         <unit eId="art_3" kind="article" rank="2">
+         <occurrence eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -274,26 +274,26 @@
                </date>
                <t v=", under the conditions provided for in Section 4 of Chapter II of Regulation (EC) No 214/2001 and in this Regulation."/>
             </p>
-         </unit>
-         <unit eId="art_4" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
-            <unit eId="art_4/par_1" kind="paragraph">
+            <occurrence eId="art_4/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
-               <unit eId="art_4/par_1/sub_1" kind="subparagraph">
+               <occurrence eId="art_4/par_1/sub_1" kind="subparagraph">
                   <p>
                      <t v="By way of derogation from Article 14(2) of Regulation (EC) No 214/2001, the time limit for the submission of tenders in response to the individual invitations to tender shall be 11.00 (Brussels time) on the first and third Tuesday of the month."/>
                   </p>
-               </unit>
-               <unit eId="art_4/par_1/sub_2" kind="subparagraph">
+               </occurrence>
+               <occurrence eId="art_4/par_1/sub_2" kind="subparagraph">
                   <p>
                      <t v="If Tuesday is a public holiday the time limit shall be 11.00 (Brussels time) on the previous working day."/>
                   </p>
-               </unit>
-               <unit eId="art_4/par_1/sub_3" kind="subparagraph">
+               </occurrence>
+               <occurrence eId="art_4/par_1/sub_3" kind="subparagraph">
                   <p>
                      <t v="The time limit for submission of tenders for the first individual invitation to tender shall be 11.00 (Brussels time) on "/>
                      <date date="2009-09-01">
@@ -301,9 +301,9 @@
                      </date>
                      <t v="."/>
                   </p>
-               </unit>
-            </unit>
-            <unit eId="art_4/par_2" kind="paragraph">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="art_4/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
@@ -312,9 +312,9 @@
                   <noteRef href="#note_4" marker="4"/>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_5" kind="article" rank="2">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -325,8 +325,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>

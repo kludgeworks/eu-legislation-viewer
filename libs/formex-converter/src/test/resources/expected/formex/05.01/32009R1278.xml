@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 104/2000 of "/>
                <date date="1999-12-17">
@@ -58,8 +58,8 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 2813/2000 of "/>
                <date date="2000-12-21">
@@ -69,7 +69,7 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 1 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -77,30 +77,30 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="The aid should not exceed the sum of technical and financial costs recorded in the EU during the fishing year preceding the year in question."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="To discourage long-term storage, to shorten payment times and to reduce the burden of controls, private storage aid should be paid in one single instalment."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the Management Committee for Fishery Products,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -109,7 +109,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -117,7 +117,7 @@
             <t v="For the 2010 fishing year the amount of private storage aid, referred to in Article 25 of Regulation (EC) No 104/2000, for the products listed in Annex II to that Regulation shall be as follows:"/>
          </p>
          <list kind="definition" separator=":">
-            <unit eId="art_1/def_1" kind="definition">
+            <occurrence eId="art_1/def_1" kind="definition">
                <num>
                   <t v="—"/>
                </num>
@@ -127,8 +127,8 @@
                <p>
                   <t v="EUR 219 per tonne"/>
                </p>
-            </unit>
-            <unit eId="art_1/def_2" kind="definition">
+            </occurrence>
+            <occurrence eId="art_1/def_2" kind="definition">
                <num>
                   <t v="—"/>
                </num>
@@ -138,14 +138,14 @@
                <p>
                   <t v="EUR 0 per tonne"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/unp_1" kind="paragraph">
+         <occurrence eId="art_2/unp_1" kind="paragraph">
             <p>
                <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
                <emphasis kind="i">
@@ -153,8 +153,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_2/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
                <date date="2010-01-01">
@@ -162,8 +162,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>

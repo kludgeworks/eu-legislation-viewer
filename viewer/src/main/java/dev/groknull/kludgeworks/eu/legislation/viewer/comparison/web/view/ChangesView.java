@@ -22,13 +22,14 @@ import org.jspecify.annotations.Nullable;
  * The Changes view of a comparison.
  *
  * <p>It shows only the provisions that differ, in the order of the later text. Each is numbered and
- * has a note of what happened to it. Between them, it shows each other unit of the later text once:
+ * has a note of what happened to it. Between them, it shows each other occurrence of the later text
+ * once:
  *
  * <ul>
- *   <li>The opening of a unit that holds differences shows as context, where the differences enter
- *       it.
- *   <li>The units that are the same in both texts are folded, one fold for each run in one unit.
- *       For example, "Points (a) and (b) — no differences".
+ *   <li>The opening of an occurrence that holds differences shows as context, where the differences
+ *       enter it.
+ *   <li>The occurrences that are the same in both texts are folded, one fold for each run in one
+ *       occurrence. For example, "Points (a) and (b) — no differences".
  * </ul>
  *
  * @param count how many provisions differ, for example "6 provisions differ"
@@ -41,7 +42,8 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]");
 
   /**
-   * The eId of a unit in a numbered point. For example, {@code anx/pnt_11.2.7/pnt_b} is in 11.2.7.
+   * The eId of an occurrence in a numbered point. For example, {@code anx/pnt_11.2.7/pnt_b} is in
+   * 11.2.7.
    */
   private static final Pattern IN_POINT = Pattern.compile("pnt_(\\d+(?:\\.\\d+)*)/[^/]+$");
 
@@ -66,11 +68,12 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * shown} keeps. For example, the differences of one act, under its filter.
    *
    * <ul>
-   *   <li>The other differences are folded with the units around them that are the same in both
-   *       texts. {@code others} tells what they are, for example "not changed by 2019/1583".
-   *   <li>A unit is folded once, with its units.
-   *   <li>A unit that holds a shown difference shows only its opening.
-   *   <li>A deleted unit is left out, because the units of a fold are those of the later text.
+   *   <li>The other differences are folded with the occurrences around them that are the same in
+   *       both texts. {@code others} tells what they are, for example "not changed by 2019/1583".
+   *   <li>An occurrence is folded once, with its occurrences.
+   *   <li>An occurrence that holds a shown difference shows only its opening.
+   *   <li>A deleted occurrence is left out, because the occurrences of a fold are those of the
+   *       later text.
    * </ul>
    */
   public static ChangesView of(Comparison comparison, Predicate<Difference> shown, String others) {
@@ -78,18 +81,19 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
     var pending = new Pending(passages, others);
-    // The units whose opening the view shows: a lead, or a shown difference.
+    // The occurrences whose opening the view shows: a lead, or a shown difference.
     var opened = new HashSet<String>();
     for (var difference : comparison.differences()) {
       place(difference.context(), differences, pending, opened);
       if (!shown.test(difference)) {
         if (difference.kind() != Kind.DELETED && !holds(differences, difference.eId())) {
-          pending.add(List.of(difference.unit()), difference.parent());
+          pending.add(List.of(difference.occurrence()), difference.parent());
           pending.hidden++;
         }
         continue;
       }
-      // If it is in a unit whose difference the filter leaves out, show the opening of that unit as
+      // If it is in an occurrence whose difference the filter leaves out, show the opening of that
+      // occurrence as
       // context.
       var parent = difference.parent();
       var lead = difference.lead();
@@ -112,9 +116,9 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * Places {@code context} in the view.
    *
    * <ul>
-   *   <li>The opening of a unit that holds a difference in {@code shown} becomes a lead.
-   *   <li>The opening of a unit that holds no shown difference is folded whole.
-   *   <li>The units that are the same in both texts wait to be folded.
+   *   <li>The opening of an occurrence that holds a difference in {@code shown} becomes a lead.
+   *   <li>The opening of an occurrence that holds no shown difference is folded whole.
+   *   <li>The occurrences that are the same in both texts wait to be folded.
    * </ul>
    */
   private static void place(
@@ -122,32 +126,32 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     for (var each : context) {
       var opening = each.opening();
       if (opening == null) {
-        pending.add(each.units(), each.parent());
-      } else if (holds(shown, each.units().getFirst().eId())) {
+        pending.add(each.occurrences(), each.parent());
+      } else if (holds(shown, each.occurrences().getFirst().eId())) {
         pending.fold();
         pending.passages.add(new Lead(opening));
-        opened.add(each.units().getFirst().eId());
+        opened.add(each.occurrences().getFirst().eId());
       } else {
         // It holds differences, but the filter leaves out all of them.
-        pending.add(each.units(), each.parent());
+        pending.add(each.occurrences(), each.parent());
         pending.hidden++;
       }
     }
   }
 
-  /** Returns whether one of {@code differences} is in the unit {@code eId}. */
+  /** Returns whether one of {@code differences} is in the occurrence {@code eId}. */
   private static boolean holds(List<Difference> differences, String eId) {
     return differences.stream().anyMatch(d -> d.eId().startsWith(eId + "/"));
   }
 
   /**
-   * The units that wait to be folded, in order, each once, and how many of them differ. The units
-   * that are the same in both texts and in one unit get a fold of their own.
+   * The occurrences that wait to be folded, in order, each once, and how many of them differ. The
+   * occurrences that are the same in both texts and in one occurrence get a fold of their own.
    */
   private static final class Pending {
     private final List<Passage> passages;
     private final String others;
-    private final List<Sibling> units = new ArrayList<>();
+    private final List<Sibling> occurrences = new ArrayList<>();
     private final Set<String> eIds = new HashSet<>();
     private final Set<@Nullable String> parents = new HashSet<>();
     private int hidden;
@@ -159,8 +163,8 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
 
     /**
      * Adds {@code siblings} in {@code parent}. It skips a sibling that is already waiting, or that
-     * is in a unit that is waiting. If the waiting units are the same in both texts and in another
-     * unit, it folds them first.
+     * is in an occurrence that is waiting. If the waiting occurrences are the same in both texts
+     * and in another occurrence, it folds them first.
      */
     void add(List<Sibling> siblings, @Nullable String parent) {
       if (hidden == 0 && !parents.isEmpty() && !parents.contains(parent)) {
@@ -168,14 +172,14 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
       }
       for (var sibling : siblings) {
         if (!in(sibling.eId())) {
-          units.add(sibling);
+          occurrences.add(sibling);
           eIds.add(sibling.eId());
           parents.add(parent);
         }
       }
     }
 
-    /** Returns whether the unit {@code eId}, or a unit that it is in, is waiting. */
+    /** Returns whether the occurrence {@code eId}, or an occurrence that it is in, is waiting. */
     private boolean in(String eId) {
       for (var at = eId; ; at = at.substring(0, at.lastIndexOf('/'))) {
         if (eIds.contains(at)) {
@@ -188,20 +192,20 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Adds the fold of the waiting units after the passages, and empties them. The note of the fold
-     * is "no differences". If some of the units differ, the note is {@code others}, and the label
-     * spans the units. For example, "Points 11.1.3 to 11.2.7(b) (21 provisions)". Does nothing if
-     * no units are waiting.
+     * Adds the fold of the waiting occurrences after the passages, and empties them. The note of
+     * the fold is "no differences". If some of the occurrences differ, the note is {@code others},
+     * and the label spans the occurrences. For example, "Points 11.1.3 to 11.2.7(b) (21
+     * provisions)". Does nothing if no occurrences are waiting.
      */
     void fold() {
-      if (units.isEmpty()) {
+      if (occurrences.isEmpty()) {
         return;
       }
       passages.add(
           hidden == 0
-              ? new Fold(ChangesView.fold(units), units, "no differences", true)
-              : new Fold(span(units), units, others, false));
-      units.clear();
+              ? new Fold(ChangesView.fold(occurrences), occurrences, "no differences", true)
+              : new Fold(span(occurrences), occurrences, others, false));
+      occurrences.clear();
       eIds.clear();
       parents.clear();
       hidden = 0;
@@ -229,19 +233,20 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   }
 
   /**
-   * Returns the label of a fold of {@code siblings}, made from the nums and the kind of the units.
+   * Returns the label of a fold of {@code siblings}, made from the nums and the kind of the
+   * occurrences.
    *
    * <ul>
    *   <li>A num that has its own word keeps it as written, and the word appears once. For example,
    *       "Article 2", "Articles 2 to 5" or "ANNEXES I and II".
    *   <li>Other nums follow the noun of their kind. For example, "Point (a)", "Points (a) and (b)"
    *       or "Paragraphs 2. to 4.".
-   *   <li>Units with no num, or with only a mark such as the dash of an indent, are named by their
-   *       positions, as the Joint Practical Guide does. For example, "First and second
+   *   <li>Occurrences with no num, or with only a mark such as the dash of an indent, are named by
+   *       their positions, as the Joint Practical Guide does. For example, "First and second
    *       subparagraphs" or "Second to fourth indents". Without positions, they are counted: "2
    *       indents".
-   *   <li>If only some units have a num, the label names the first and the last of those and counts
-   *       all the units. For example, "Points 1. to 8.1.2.2 (429 provisions)".
+   *   <li>If only some occurrences have a num, the label names the first and the last of those and
+   *       counts all the occurrences. For example, "Points 1. to 8.1.2.2 (429 provisions)".
    *   <li>If the first and the last are of different kinds, each has its own noun. For example,
    *       "Attachment 1-A to point 6.1.2".
    * </ul>
@@ -276,19 +281,21 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   }
 
   /**
-   * Returns the label of a fold of units that crosses units. It names the first and the last unit
-   * with a num, and tells how many units there are. For example, "Points 11.1.3 to 11.2.7(b) (21
-   * provisions)".
+   * Returns the label of a fold of occurrences that crosses occurrences. It names the first and the
+   * last occurrence with a num, and tells how many occurrences there are. For example, "Points
+   * 11.1.3 to 11.2.7(b) (21 provisions)".
    *
    * <ul>
    *   <li>A point is cited with the point that it is in, because its num alone does not tell which
    *       point it is.
-   *   <li>If no unit has a num, the label only counts the units. For example, "3 provisions".
+   *   <li>If no occurrence has a num, the label only counts the occurrences. For example, "3
+   *       provisions".
    * </ul>
    */
-  static String span(List<Sibling> units) {
-    var numbered = units.stream().filter(unit -> WORD.matcher(unit.num()).find()).toList();
-    var count = units.size() + (units.size() == 1 ? " provision" : " provisions");
+  static String span(List<Sibling> occurrences) {
+    var numbered =
+        occurrences.stream().filter(occurrence -> WORD.matcher(occurrence.num()).find()).toList();
+    var count = occurrences.size() + (occurrences.size() == 1 ? " provision" : " provisions");
     if (numbered.isEmpty()) {
       return count;
     }
@@ -311,19 +318,19 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   }
 
   /**
-   * Returns the sort of {@code unit}, as a label names it. If its num has a word of its own, the
-   * sort is that word, for example "ATTACHMENT" or "ANNEX". If not, it is the noun of its kind, for
-   * example "Point".
+   * Returns the sort of {@code occurrence}, as a label names it. If its num has a word of its own,
+   * the sort is that word, for example "ATTACHMENT" or "ANNEX". If not, it is the noun of its kind,
+   * for example "Point".
    */
-  private static String sort(Sibling unit) {
-    var named = NAMED.matcher(unit.num());
-    return named.matches() ? named.group(1).toUpperCase(Locale.ROOT) : noun(unit.kind());
+  private static String sort(Sibling occurrence) {
+    var named = NAMED.matcher(occurrence.num());
+    return named.matches() ? named.group(1).toUpperCase(Locale.ROOT) : noun(occurrence.kind());
   }
 
   /**
-   * Returns the label of a run from {@code first} to {@code last}, which are units of different
-   * sorts. Each is named by its own sort. {@code count}, if any, comes after. For example,
-   * "Attachment 1-A to point 6.1.2 (371 provisions)".
+   * Returns the label of a run from {@code first} to {@code last}, which are occurrences of
+   * different sorts. Each is named by its own sort. {@code count}, if any, comes after. For
+   * example, "Attachment 1-A to point 6.1.2 (371 provisions)".
    */
   private static String mixed(Sibling first, Sibling last, @Nullable String count) {
     var end = named(last);
@@ -332,27 +339,27 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   }
 
   /**
-   * Returns {@code unit} named by its sort. For example, "Attachment 1-A", "Point 6.1.2" or "Point
-   * 11.2.7(b)".
+   * Returns {@code occurrence} named by its sort. For example, "Attachment 1-A", "Point 6.1.2" or
+   * "Point 11.2.7(b)".
    */
-  private static String named(Sibling unit) {
-    var named = NAMED.matcher(unit.num());
+  private static String named(Sibling occurrence) {
+    var named = NAMED.matcher(occurrence.num());
     if (named.matches()) {
       var word = named.group(1);
       return word.charAt(0) + word.substring(1).toLowerCase(Locale.ROOT) + " " + named.group(2);
     }
-    return noun(unit.kind()) + " " + cited(unit);
+    return noun(occurrence.kind()) + " " + cited(occurrence);
   }
 
   /**
-   * A kind of unit that an eId numbers.
+   * A kind of occurrence that an eId numbers.
    *
    * @param start the start of its step in an eId, before the number. For example, {@code art_}.
-   * @param name the name of the unit, for example "Article"
+   * @param name the name of the occurrence, for example "Article"
    */
   private record Numbered(String start, String name) {}
 
-  /** The kinds of unit that an eId numbers. */
+  /** The kinds of occurrence that an eId numbers. */
   private static final List<Numbered> NUMBERED =
       List.of(
           new Numbered("art_", "Article"),
@@ -363,10 +370,10 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
           new Numbered("par_", "paragraph"));
 
   /**
-   * Returns where the unit {@code eId} is, by the nearest unit that it is in that has a number in
-   * its eId. For example, "In Attachment 3-B" for {@code anx/level_ATTACHMENT-3-B/level_1}. Returns
-   * "In the annex" for a unit of the one annex of an act, and "A provision with no number" if no
-   * unit that it is in has a number.
+   * Returns where the occurrence {@code eId} is, by the nearest occurrence that it is in that has a
+   * number in its eId. For example, "In Attachment 3-B" for {@code
+   * anx/level_ATTACHMENT-3-B/level_1}. Returns "In the annex" for an occurrence of the one annex of
+   * an act, and "A provision with no number" if no occurrence that it is in has a number.
    */
   static String within(String eId) {
     var steps = List.of(eId.split("/"));
@@ -398,17 +405,19 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   }
 
   /**
-   * Returns the num of a unit. The num of a point follows the numbered point that it is in. For
-   * example, "11.2.7(b)".
+   * Returns the num of an occurrence. The num of a point follows the numbered point that it is in.
+   * For example, "11.2.7(b)".
    */
-  public static String cited(Sibling unit) {
-    var in = IN_POINT.matcher(unit.eId());
-    return unit.num().startsWith("(") && in.find() ? in.group(1) + unit.num() : unit.num();
+  public static String cited(Sibling occurrence) {
+    var in = IN_POINT.matcher(occurrence.eId());
+    return occurrence.num().startsWith("(") && in.find()
+        ? in.group(1) + occurrence.num()
+        : occurrence.num();
   }
 
   /**
-   * Returns the name of a unit of {@code kind}, for when its num does not tell it. For example,
-   * "Point" or "Paragraph".
+   * Returns the name of an occurrence of {@code kind}, for when its num does not tell it. For
+   * example, "Point" or "Paragraph".
    */
   private static String noun(String kind) {
     return switch (kind) {
@@ -439,64 +448,67 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   public sealed interface Passage {}
 
   /**
-   * Units that stay folded until a reader asks for them. They are the same in both texts, or, under
-   * an act filter, other acts changed them.
+   * Occurrences that stay folded until a reader asks for them. They are the same in both texts, or,
+   * under an act filter, other acts changed them.
    *
-   * @param label which units they are. For example, "Points (a) and (b)".
-   * @param units its units, as the later text has them, in order, each with the units in it
+   * @param label which occurrences they are. For example, "Points (a) and (b)".
+   * @param occurrences its occurrences, as the later text has them, in order, each with the
+   *     occurrences in it
    * @param note why they are folded. For example, "no differences" or "not changed by 2019/1583".
    * @param same whether they are the same in both texts. Then they are the neighbours of the
-   *     difference after them, in the unit that they are in. False if some of them differ, by an
-   *     act that the view leaves out.
+   *     difference after them, in the occurrence that they are in. False if some of them differ, by
+   *     an act that the view leaves out.
    */
-  public record Fold(String label, List<Sibling> units, String note, boolean same)
+  public record Fold(String label, List<Sibling> occurrences, String note, boolean same)
       implements Passage {
     public Fold {
-      units = List.copyOf(units);
+      occurrences = List.copyOf(occurrences);
     }
 
     /**
-     * Returns its units beside the differences around it. These are its first and last units, or
-     * all its units if it has three or fewer.
+     * Returns its occurrences beside the differences around it. These are its first and last
+     * occurrences, or all its occurrences if it has three or fewer.
      */
     public List<Sibling> beside() {
-      return units.size() <= 3 ? units : List.of(units.getFirst(), units.getLast());
+      return occurrences.size() <= 3
+          ? occurrences
+          : List.of(occurrences.getFirst(), occurrences.getLast());
     }
 
     /**
-     * Returns its units except the first and the last, folded as this fold is. The first and the
-     * last are the neighbours of the differences around it. Returns null if it has three units or
-     * fewer, because all of them are neighbours.
+     * Returns its occurrences except the first and the last, folded as this fold is. The first and
+     * the last are the neighbours of the differences around it. Returns null if it has three
+     * occurrences or fewer, because all of them are neighbours.
      */
     public @Nullable Fold between() {
-      if (units.size() <= 3) {
+      if (occurrences.size() <= 3) {
         return null;
       }
-      var inner = units.subList(1, units.size() - 1);
+      var inner = occurrences.subList(1, occurrences.size() - 1);
       return new Fold(same ? ChangesView.fold(inner) : span(inner), inner, note, same);
     }
 
     /**
-     * Returns the query that asks for its units, from its first to its last, whatever their number.
-     * For example, {@code first=anx%2Fpnt_8.1.2.3%2Fpnt_a&last=anx%2Fpnt_8.1.2.3%2Fpnt_b}.
+     * Returns the query that asks for its occurrences, from its first to its last, whatever their
+     * number. For example, {@code first=anx%2Fpnt_8.1.2.3%2Fpnt_a&last=anx%2Fpnt_8.1.2.3%2Fpnt_b}.
      */
     public String query() {
-      return ComparePage.fold(units.getFirst().eId(), units.getLast().eId());
+      return ComparePage.fold(occurrences.getFirst().eId(), occurrences.getLast().eId());
     }
   }
 
   /**
-   * The opening of the unit that the differences after it are in, shown as context.
+   * The opening of the occurrence that the differences after it are in, shown as context.
    *
-   * @param unit its num, heading and first block
+   * @param occurrence its num, heading and first block
    */
-  public record Lead(Element unit) implements Passage {}
+  public record Lead(Element occurrence) implements Passage {}
 
   /**
    * A difference, numbered.
    *
    * @param number its number, from 1, as its mark and the pager show it
-   * @param difference the difference, with its unit as shown
+   * @param difference the difference, with its occurrence as shown
    * @param note what happened to it
    */
   public record Shown(int number, Difference difference, String note) implements Passage {
@@ -506,11 +518,11 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Returns its marked unit as shown, in the list that it is an item of in the text. Read lays it
-     * out in the same way, with its number hanging beside its text. Returns the unit alone if it is
-     * in no list.
+     * Returns its marked occurrence as shown, in the list that it is an item of in the text. Read
+     * lays it out in the same way, with its number hanging beside its text. Returns the occurrence
+     * alone if it is in no list.
      */
-    public Element unit() {
+    public Element occurrence() {
       var list = difference.list();
       var shown = difference.shown();
       return list == null
@@ -519,12 +531,12 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Returns its marked unit as shown, as {@link #unit} does, with the runs of rows in its tables
-     * that are the same in both texts folded ({@link RowFoldLinks}). The folds load their rows from
-     * {@link #part}.
+     * Returns its marked occurrence as shown, as {@link #occurrence} does, with the runs of rows in
+     * its tables that are the same in both texts folded ({@link RowFoldLinks}). The folds load
+     * their rows from {@link #part}.
      */
     public Element folded(ComparePage page) {
-      return RowFoldLinks.of(unit(), part(page));
+      return RowFoldLinks.of(occurrence(), part(page));
     }
 
     /**
@@ -536,16 +548,17 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Returns its unit as a list names it, where no text beside it tells the unit. This is its own
-     * name ({@link #named}). A unit with no num is named by the nearest unit that it is in that has
-     * a number in its eId. For example, "In Attachment 3-B" or "In Article 5".
+     * Returns its occurrence as a list names it, where no text beside it tells the occurrence. This
+     * is its own name ({@link #named}). An occurrence with no num is named by the nearest
+     * occurrence that it is in that has a number in its eId. For example, "In Attachment 3-B" or
+     * "In Article 5".
      */
     public String place() {
       var named = named();
       return named != null ? named : ChangesView.within(difference.eId());
     }
 
-    /** Returns what happened to its unit, in one word: "Inserted", "Deleted" or "Changed". */
+    /** Returns what happened to its occurrence, in one word: "Inserted", "Deleted" or "Changed". */
     public String made() {
       return switch (difference.kind()) {
         case INSERTED -> "Inserted";
@@ -555,23 +568,24 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Returns its unit as a ledger cites it, for example "1.2.3.8". A point follows the point that
-     * it is in, for example "1.2.3.5(e)".
+     * Returns its occurrence as a ledger cites it, for example "1.2.3.8". A point follows the point
+     * that it is in, for example "1.2.3.5(e)".
      */
     public String cited() {
-      return ChangesView.cited(difference.unit());
+      return ChangesView.cited(difference.occurrence());
     }
 
     /**
-     * Returns its unit by its own kind, as the sidenote names it. For example, "Point 8.1.2.3(c)"
-     * or "Article 2". Returns null for a unit with no num, which the text beside it shows.
+     * Returns its occurrence by its own kind, as the sidenote names it. For example, "Point
+     * 8.1.2.3(c)" or "Article 2". Returns null for an occurrence with no num, which the text beside
+     * it shows.
      */
     public @Nullable String named() {
-      if (difference.unit().num().isBlank()) {
+      if (difference.occurrence().num().isBlank()) {
         return null;
       }
       // A num may end with the full stop it has in the text, for example "1.0.6.".
-      var named = ChangesView.named(difference.unit());
+      var named = ChangesView.named(difference.occurrence());
       return named.endsWith(".") ? named.substring(0, named.length() - 1) : named;
     }
 
@@ -583,9 +597,9 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
       return difference.annexInserted();
     }
 
-    /** Returns the size of its unit, as its fold says it. For example, "56 provisions". */
+    /** Returns the size of its occurrence, as its fold says it. For example, "56 provisions". */
     public String size() {
-      return String.format(Locale.ROOT, "%,d provisions", difference.size().units());
+      return String.format(Locale.ROOT, "%,d provisions", difference.size().occurrences());
     }
   }
 }

@@ -14,11 +14,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Inline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Marked;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Note;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Row;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Unit;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -35,10 +35,11 @@ import org.jspecify.annotations.Nullable;
  * forms, so a change of the schema stops here. It keeps the meaning and leaves out the form:
  *
  * <ul>
- *   <li>Units, running text, tables, figures, quotations and deleted text keep their structure.
+ *   <li>Occurrences, running text, tables, figures, quotations and deleted text keep their
+ *       structure.
  *   <li>Lists, groups of tables, boxes, formulas of the preamble, citations, recitals and the files
- *       of an annex give their blocks to the block around them. Their units keep their kinds, for
- *       example {@code point}, {@code citation} or {@code recital}.
+ *       of an annex give their blocks to the block around them. Their occurrences keep their kinds,
+ *       for example {@code point}, {@code citation} or {@code recital}.
  *   <li>A group of rows in a table gives its heading as a heading row.
  *   <li>A displayed formula is running text, with MathML in its HTML.
  *   <li>The notes of the files of an annex join the notes of the text.
@@ -70,8 +71,8 @@ public final class PublicTexts {
   private static final Map<String, String> TYPEFACES =
       Map.of("b", "b", "i", "i", "u", "u", "sup", "sup", "sub", "sub", "strike", "s");
 
-  /** What a unit holds before its content. */
-  private static final Set<String> UNIT_PARTS =
+  /** What an occurrence holds before its content. */
+  private static final Set<String> OCCURRENCE_PARTS =
       Set.of("provenance", "num", "heading", "subheading");
 
   /** The notes of the files of an annex, which join the notes of the text. */
@@ -108,49 +109,52 @@ public final class PublicTexts {
   }
 
   /**
-   * Returns a unit of a text, with the notes that it refers to. Returns none if the text has no
-   * unit {@code eId} outside the text that a consolidation keeps struck.
+   * Returns an occurrence of a text, with the notes that it refers to. Returns none if the text has
+   * no occurrence {@code eId} outside the text that a consolidation keeps struck.
    *
    * @param legalText the element of a text, {@code legalText}
    */
   public static Optional<Extract> extract(Element legalText, String eId) {
-    return legalText.units(eId, eId).stream()
+    return legalText.occurrences(eId, eId).stream()
         .findFirst()
         .map(
-            unit -> {
+            occurrence -> {
               var referred = new LinkedHashSet<String>();
-              references(unit, referred);
+              references(occurrence, referred);
               var all = new LinkedHashMap<String, Note>();
               new PublicTexts().allNotes(legalText, all);
               return new Extract(
-                  unit(unit),
+                  occurrence(occurrence),
                   referred.stream().map(all::get).filter(note -> note != null).toList());
             });
   }
 
   /**
-   * Returns a unit on its own, for example a unit of a comparison, in which {@code diff:ins} and
-   * {@code diff:del} mark what changed.
+   * Returns an occurrence on its own, for example an occurrence of a comparison, in which {@code
+   * diff:ins} and {@code diff:del} mark what changed.
    */
-  public static Unit unit(Element unit) {
-    return new PublicTexts().toUnit(unit);
+  public static Occurrence occurrence(Element occurrence) {
+    return new PublicTexts().toOccurrence(occurrence);
   }
 
   /**
-   * Returns the wording of a unit of a comparison, in which {@code diff:ins} and {@code diff:del}
-   * mark what changed: the plain text before and after the change, and the runs of words that
-   * stayed, went in and went out. The lines of the unit's paragraphs, and the numbers and headings
-   * of the units in it, end with a line feed. The unit's own number and heading are not in it.
+   * Returns the wording of an occurrence of a comparison, in which {@code diff:ins} and {@code
+   * diff:del} mark what changed: the plain text before and after the change, and the runs of words
+   * that stayed, went in and went out. The lines of the occurrence's paragraphs, and the numbers
+   * and headings of the occurrences in it, end with a line feed. The occurrence's own number and
+   * heading are not in it.
    */
-  public static Marked marked(Element unit) {
+  public static Marked marked(Element occurrence) {
     var words = new Words();
-    lines(content(unit), words);
+    lines(content(occurrence), words);
     return new Marked(words.before().strip(), words.after().strip(), words.changes());
   }
 
-  /** Returns what a unit holds after its number, headings and provenance. */
-  private static List<Element> content(Element unit) {
-    return unit.children().stream().filter(child -> !UNIT_PARTS.contains(child.name())).toList();
+  /** Returns what an occurrence holds after its number, headings and provenance. */
+  private static List<Element> content(Element occurrence) {
+    return occurrence.children().stream()
+        .filter(child -> !OCCURRENCE_PARTS.contains(child.name()))
+        .toList();
   }
 
   // ------------------------------------------------------------------------------------- parts
@@ -209,7 +213,7 @@ public final class PublicTexts {
     for (var element : elements) {
       switch (element.name()) {
         case "p" -> blocks.add(text(element.children(), amendments(element)));
-        case "unit" -> blocks.add(toUnit(element));
+        case "occurrence" -> blocks.add(toOccurrence(element));
         case "table" -> blocks.add(table(element));
         case "figure" -> blocks.add(figure(element));
         case "quotedStructure" ->
@@ -241,15 +245,15 @@ public final class PublicTexts {
     return blocks;
   }
 
-  private Unit toUnit(Element unit) {
-    return new Unit(
-        attribute(unit, "eId"),
-        attribute(unit, "kind"),
-        child(unit, "num").map(num -> text(num.children())).orElse(null),
-        child(unit, "heading").map(PublicTexts::lines).orElse(null),
-        child(unit, "subheading").map(PublicTexts::lines).orElse(null),
-        amendments(unit),
-        blocks(content(unit)));
+  private Occurrence toOccurrence(Element occurrence) {
+    return new Occurrence(
+        attribute(occurrence, "eId"),
+        attribute(occurrence, "kind"),
+        child(occurrence, "num").map(num -> text(num.children())).orElse(null),
+        child(occurrence, "heading").map(PublicTexts::lines).orElse(null),
+        child(occurrence, "subheading").map(PublicTexts::lines).orElse(null),
+        amendments(occurrence),
+        blocks(content(occurrence)));
   }
 
   private Table table(Element table) {
@@ -419,8 +423,8 @@ public final class PublicTexts {
   }
 
   /**
-   * Adds the lines of the blocks to {@code words}: a paragraph, the number and heading of a unit, a
-   * formula. Each line ends with a line feed.
+   * Adds the lines of the blocks to {@code words}: a paragraph, the number and heading of an
+   * occurrence, a formula. Each line ends with a line feed.
    */
   private static void lines(List<Element> blocks, Words words) {
     for (var element : blocks) {
@@ -429,7 +433,7 @@ public final class PublicTexts {
           words(element.children(), Op.EQUAL, words);
           words.add(Op.EQUAL, "\n");
         }
-        case "unit" -> {
+        case "occurrence" -> {
           child(element, "num")
               .ifPresent(
                   num -> {
@@ -451,7 +455,7 @@ public final class PublicTexts {
           words.add(Op.EQUAL, "\n");
         }
         case "deleted", "provenance", "notes", "caption" -> {
-          // Not in force, or not the unit's wording
+          // Not in force, or not the occurrence's wording
         }
         default -> lines(element.children(), words);
       }

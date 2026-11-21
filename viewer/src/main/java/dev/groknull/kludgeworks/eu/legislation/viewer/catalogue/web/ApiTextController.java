@@ -43,11 +43,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.springframework.web.util.UriUtils;
 
 /**
- * The text of a version in a language, in the API, with its outline and its units. The text is in
- * the public model ({@link PublicText}), not in the form that the content module stores.
+ * The text of a version in a language, in the API, with its outline and its occurrences. The text
+ * is in the public model ({@link PublicText}), not in the form that the content module stores.
  *
  * <ul>
- *   <li>A request for a text, its outline or a unit starts the preparation of the act in the
+ *   <li>A request for a text, its outline or an occurrence starts the preparation of the act in the
  *       language, as a page of the act does. The client does not ask for it: the request is safe in
  *       the sense of RFC 9110.
  *   <li>While the text is not ready, the answer is 202, with the preparation and {@code
@@ -90,7 +90,7 @@ class ApiTextController {
    * <ul>
    *   <li>{@code up}: the version.
    *   <li>{@code alternate}: the text in each other language of the version, with {@code hreflang}.
-   *   <li>{@code av:outline}, {@code av:unit}: its outline, and a unit by its eId.
+   *   <li>{@code av:outline}, {@code av:occurrence}: its outline, and an occurrence by its eId.
    *   <li>{@code av:preparation}: the preparation of the act in the language.
    *   <li>{@code describedby}: the JSON Schema of the answer.
    * </ul>
@@ -123,7 +123,7 @@ class ApiTextController {
                                           methodOn(ApiTextController.class)
                                               .outline(celex, key, language))
                                       .withRel(Relation.OUTLINE.rel()))
-                              .link(unitTemplate(self))
+                              .link(occurrenceTemplate(self))
                               .link(schema("text"))
                               .link(ApiPreparationController.to(celex, asked.language()));
                       for (var other : asked.version().languages()) {
@@ -137,8 +137,8 @@ class ApiTextController {
   }
 
   /**
-   * Returns the outline of the text: its units that have a title, nested by rank. It links to the
-   * text, {@code up}, and to a unit by its eId, {@code av:unit}.
+   * Returns the outline of the text: its occurrences that have a title, nested by rank. It links to
+   * the text, {@code up}, and to an occurrence by its eId, {@code av:occurrence}.
    */
   @GetMapping(TEXT + "/outline")
   ResponseEntity<RepresentationModel<?>> outline(
@@ -159,17 +159,17 @@ class ApiTextController {
                                             .outline(celex, key, language))
                                     .withSelfRel())
                             .link(text)
-                            .link(unitTemplate(text))
+                            .link(occurrenceTemplate(text))
                             .build()));
   }
 
   /**
-   * Returns the unit {@code eId} of the text, with everything in it. Its eId is the rest of the
-   * path, for example {@code anx/pnt_1.2}. Returns 404 if the text has no such unit. It links to
-   * the text, {@code up}, and to its JSON Schema, {@code describedby}.
+   * Returns the occurrence {@code eId} of the text, with everything in it. Its eId is the rest of
+   * the path, for example {@code anx/pnt_1.2}. Returns 404 if the text has no such occurrence. It
+   * links to the text, {@code up}, and to its JSON Schema, {@code describedby}.
    */
-  @GetMapping(TEXT + "/units/{*eId}")
-  ResponseEntity<RepresentationModel<?>> unit(
+  @GetMapping(TEXT + "/occurrences/{*eId}")
+  ResponseEntity<RepresentationModel<?>> occurrence(
       @PathVariable ActIdentifier celex,
       @PathVariable String key,
       @PathVariable String language,
@@ -181,13 +181,14 @@ class ApiTextController {
         asked,
         id ->
             content
-                .publicUnit(id, eId)
+                .publicOccurrence(id, eId)
                 .map(
                     extract ->
-                        HalModelBuilder.halModelOf(new UnitModel(extract.unit(), extract.notes()))
-                            .link(Link.of(unitHref(text, eId)))
+                        HalModelBuilder.halModelOf(
+                                new OccurrenceModel(extract.occurrence(), extract.notes()))
+                            .link(Link.of(occurrenceHref(text, eId)))
                             .link(text)
-                            .link(schema("unit"))
+                            .link(schema("occurrence"))
                             .build()));
   }
 
@@ -261,15 +262,16 @@ class ApiTextController {
         DESCRIBED_BY);
   }
 
-  /** Returns the link to a unit of {@code text} by its eId, a URI template. */
-  private static Link unitTemplate(Link text) {
-    return Link.of(UriTemplate.of(text.getHref() + "/units/{+eId}"), Relation.UNIT.rel());
+  /** Returns the link to an occurrence of {@code text} by its eId, a URI template. */
+  private static Link occurrenceTemplate(Link text) {
+    return Link.of(
+        UriTemplate.of(text.getHref() + "/occurrences/{+eId}"), Relation.OCCURRENCE.rel());
   }
 
-  /** Returns the address of the unit {@code eId} of {@code text}. Its {@code /} stays. */
-  private static String unitHref(Link text, String eId) {
+  /** Returns the address of the occurrence {@code eId} of {@code text}. Its {@code /} stays. */
+  private static String occurrenceHref(Link text, String eId) {
     return text.getHref()
-        + "/units/"
+        + "/occurrences/"
         + Arrays.stream(eId.split("/", -1))
             .map(segment -> UriUtils.encodePathSegment(segment, StandardCharsets.UTF_8))
             .collect(Collectors.joining("/"));
@@ -289,19 +291,19 @@ class ApiTextController {
   record TextModel(String version, String celex, String language, PublicText text) {}
 
   /**
-   * A unit of a text, as the API shows it.
+   * An occurrence of a text, as the API shows it.
    *
-   * @param unit the unit, in the public model
-   * @param notes the notes that the unit refers to, in the order of the text
+   * @param occurrence the occurrence, in the public model
+   * @param notes the notes that the occurrence refers to, in the order of the text
    */
-  record UnitModel(
-      PublicText.Unit unit,
+  record OccurrenceModel(
+      PublicText.Occurrence occurrence,
       @JsonInclude(JsonInclude.Include.NON_EMPTY) List<PublicText.Note> notes) {}
 
   /**
    * The outline of a text, as the API shows it.
    *
-   * @param entries the outermost units that have a title
+   * @param entries the outermost occurrences that have a title
    */
   record OutlineModel(List<Entry> entries) {
 
@@ -310,13 +312,13 @@ class ApiTextController {
     }
 
     /**
-     * A unit in the outline.
+     * An occurrence in the outline.
      *
      * @param eId its eId. For example, {@code art_3}.
      * @param kind its kind in legal-text. For example, {@code article}.
      * @param num its label as printed. For example, "Article 3". Empty if it has none.
      * @param heading its heading. Empty if it has none.
-     * @param entries the units ranked below it
+     * @param entries the occurrences ranked below it
      */
     record Entry(String eId, String kind, String num, String heading, List<Entry> entries) {
 

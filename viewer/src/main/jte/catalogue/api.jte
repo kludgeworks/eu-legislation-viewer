@@ -51,7 +51,7 @@
             date that it announces in the header <span class="mono">Sunset</span> of its answers.</p>
         </dd>
         <dt>Schemas</dt>
-        <dd>An answer for a <a href="#text">text</a>, a <a href="#unit">unit</a> or a
+        <dd>An answer for a <a href="#text">text</a>, a <a href="#occurrence">occurrence</a> or a
           <a href="#difference">difference</a> links to its JSON Schema, <span class="mono">describedby</span>. The
           schemas of version 1 are in <span class="mono">/api/schemas/v1/</span>. A schema lets an answer have
           members that it does not name.</dd>

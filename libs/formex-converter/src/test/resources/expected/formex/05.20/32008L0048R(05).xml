@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="The Corrigendum which was published in the "/>
             <ref kind="oj"
@@ -49,11 +49,11 @@
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/pnt_3"
-                     kind="level"
-                     depth="1"
-                     numbered="true"
-                     rank="1">
+               <occurrence eId="cor_1/new/qstr_1/pnt_3"
+                           kind="level"
+                           depth="1"
+                           numbered="true"
+                           rank="1">
                   <num>
                      <t v="‘"/>
                      <t v="3."/>
@@ -75,21 +75,21 @@
                               <t v="[ %"/>
                            </p>
                            <list kind="dash">
-                              <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_1" kind="indent">
+                              <occurrence eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_1" kind="indent">
                                  <p>
                                     <t v="fixed, or"/>
                                  </p>
-                              </unit>
-                              <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_2" kind="indent">
+                              </occurrence>
+                              <occurrence eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_2" kind="indent">
                                  <p>
                                     <t v="variable (with the index or reference rate applicable to the initial borrowing rate),"/>
                                  </p>
-                              </unit>
-                              <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_3" kind="indent">
+                              </occurrence>
+                              <occurrence eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_1/td_2/idt_3" kind="indent">
                                  <p>
                                     <t v="periods]"/>
                                  </p>
-                              </unit>
+                              </occurrence>
                            </list>
                         </td>
                      </tr>
@@ -127,14 +127,14 @@
                      </tr>
                      <tr>
                         <td>
-                           <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_4/td_1/list_2/idt_1" kind="indent">
+                           <occurrence eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_4/td_1/list_2/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
                               <p>
                                  <t v="an insurance policy securing the credit, or"/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </td>
                         <td>
                            <p>
@@ -144,14 +144,14 @@
                      </tr>
                      <tr>
                         <td>
-                           <unit eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_5/td_1/list_3/idt_1" kind="indent">
+                           <occurrence eId="cor_1/new/qstr_1/pnt_3/tab_1/tr_5/td_1/list_3/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
                               <p>
                                  <t v="another ancillary service contract?"/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </td>
                         <td>
                            <p>
@@ -254,10 +254,10 @@
                         </tr>
                      </rowGroup>
                   </table>
-               </unit>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

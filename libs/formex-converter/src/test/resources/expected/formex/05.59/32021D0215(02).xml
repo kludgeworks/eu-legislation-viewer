@@ -44,11 +44,11 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -56,7 +56,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -74,8 +74,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -88,16 +88,16 @@
                <noteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Various initiatives across Europe are taken in order to encourage and drive the market towards more standardisation and innovation under the auspices of, among others, the Cards Stakeholders Group, the Euro Retail Payments Board and the European Payments Council. Having regard to those initiatives, the need for a formal forum for stakeholders which allows for a structural exchange of views on issues related to those developments still remains. It is therefore appropriate that the Payment Systems Market Expert Group continues its work for another 5 years."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -108,7 +108,7 @@
                </date>
                <t v=" should therefore be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -117,7 +117,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article" rank="1">
+      <occurrence eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>
@@ -140,7 +140,7 @@
             </quote>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

@@ -30,31 +30,31 @@ class ComparisonTest {
           null);
 
   @Test
-  void theDifferenceOfAUnitIsAtTheUnit() {
+  void theDifferenceOfAnOccurrenceIsAtTheOccurrence() {
     assertThat(eIds(List.of("art_3/pnt_8"))).containsExactly("art_3/pnt_8");
   }
 
   @Test
-  void theDifferencesOfTheUnitsInAUnitAreAtTheUnit() {
+  void theDifferencesOfTheOccurrencesInAnOccurrenceAreAtTheOccurrence() {
     assertThat(eIds(List.of("art_20/par_1")))
         .containsExactly("art_20/par_1/sub_1", "art_20/par_1/sub_2");
   }
 
   @Test
-  void theDifferencesOfEachUnitOfARangeAreAtTheRange() {
+  void theDifferencesOfEachOccurrenceOfARangeAreAtTheRange() {
     assertThat(eIds(List.of("art_3/pnt_8", "art_20/par_2")))
         .containsExactly("art_3/pnt_8", "art_20/par_2/pnt_b");
   }
 
   @Test
-  void aUnitInAUnitInsertedWholeIsAtTheDifferenceOfThatUnit() {
+  void anOccurrenceInAnOccurrenceInsertedWholeIsAtTheDifferenceOfThatOccurrence() {
     assertThat(eIds(List.of("cpt_IXa/art_37a/par_1"))).containsExactly("cpt_IXa");
   }
 
   @Test
-  void aUnitThatIsTheSameInBothTextsHasNoDifference() {
+  void anOccurrenceThatIsTheSameInBothTextsHasNoDifference() {
     assertThat(eIds(List.of("art_4"))).isEmpty();
-    // art_2 is not art_20: a unit is in another by its path, not by its letters.
+    // art_2 is not art_20: an occurrence is in another by its path, not by its letters.
     assertThat(eIds(List.of("art_2"))).isEmpty();
   }
 
@@ -67,7 +67,7 @@ class ComparisonTest {
         eId,
         kind,
         new Sibling(eId, "level", ""),
-        new Element("unit", Map.of("eId", eId), List.of(), ""),
+        new Element("occurrence", Map.of("eId", eId), List.of(), ""),
         1,
         0,
         null,

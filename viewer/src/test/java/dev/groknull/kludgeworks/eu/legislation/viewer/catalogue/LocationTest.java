@@ -9,9 +9,9 @@ import java.util.Optional;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests how Cellar's locations of amendments are found among the units of a text. The location
- * codes come from Cellar's annotations on 648/2012 (EMIR) and 2015/1998. The eIds come from the
- * texts of their consolidations.
+ * Tests how Cellar's locations of amendments are found among the occurrences of a text. The
+ * location codes come from Cellar's annotations on 648/2012 (EMIR) and 2015/1998. The eIds come
+ * from the texts of their consolidations.
  */
 class LocationTest {
   static final List<String> EMIR =
@@ -93,7 +93,7 @@ class LocationTest {
   }
 
   @Test
-  void findsWhatIsFinerThanOurUnitsInTheUnitItIsIn() {
+  void findsWhatIsFinerThanOurOccurrencesInTheOccurrenceItIsIn() {
     assertThat(in("AN PO 6.3.1.4 ALN 3", AVSEC))
         .contains(new Found(List.of("anx/pnt_6.3.1.4"), true));
     assertThat(in("AN PO 12.4.2.4 FR", AVSEC))
@@ -107,7 +107,7 @@ class LocationTest {
   }
 
   @Test
-  void findsNoneWhereACodeFindsNoUnitOrSeveral() {
+  void findsNoneWhereACodeFindsNoOccurrenceOrSeveral() {
     // The text does not have this point.
     assertThat(in("AN I SCT I PTA (j)", EMIR)).isEmpty();
     // Both sections have a point (i), and the section in Cellar's code is not found.
@@ -116,7 +116,7 @@ class LocationTest {
   }
 
   @Test
-  void findsTheUnitThatHoldsAPlaceTheTextDoesNotHave() {
+  void findsTheOccurrenceThatHoldsAPlaceTheTextDoesNotHave() {
     // An act inserts point 6.3.1.5. The text from before it has point 6.3.1.4 only.
     var points = List.of("anx", "anx/pnt_6.3.1", "anx/pnt_6.3.1.4");
     assertThat(new Location("AN PO 6.3.1.5").around(points))
@@ -137,7 +137,7 @@ class LocationTest {
   }
 
   @Test
-  void citesTheUnitItNames() {
+  void citesTheOccurrenceItNames() {
     assertThat(new Location("AN PO 1.2.3").name()).isEqualTo("point 1.2.3");
     assertThat(new Location("AN PO 8.1.2.3 PTA (c)").name()).isEqualTo("point 8.1.2.3(c)");
     assertThat(new Location("AR 89 PA 1 ALN 1").name()).isEqualTo("Article 89(1)");
@@ -148,7 +148,7 @@ class LocationTest {
   }
 
   @Test
-  void citesTheUnitsThatHoldTheUnitItNames() {
+  void citesTheOccurrencesThatHoldTheOccurrenceItNames() {
     assertThat(new Location("AN APP 4-C PTA (c) TIRE 6").name())
         .isEqualTo("Appendix 4-C, point (c), indent 6");
     assertThat(new Location("AN PO 1.2.6.2 PA 2").name()).isEqualTo("point 1.2.6.2, paragraph 2");
@@ -224,13 +224,13 @@ class LocationTest {
   }
 
   @Test
-  void leavesATableOrAFootnoteAtTheUnitItIsIn() {
+  void leavesATableOrAFootnoteAtTheOccurrenceItIsIn() {
     assertThat(in("AN PO SERA.5005 TABL S5-1 FOOTNOTE 2", OTHERS))
         .contains(new Found(List.of("anx/pnt_SERA.5005"), true));
   }
 
   @Test
-  void putsAUnitThatTheTextDoesNotHaveAtTheUnitWithItsNumberAlone() {
+  void putsAnOccurrenceThatTheTextDoesNotHaveAtTheOccurrenceWithItsNumberAlone() {
     // An act inserts Article 89a after Article 89.
     assertThat(new Location("AR 89a").in(EMIR)).isEmpty();
     assertThat(new Location("AR 89a").around(EMIR)).contains(new Found(List.of("art_89"), true));
@@ -254,15 +254,15 @@ class LocationTest {
   }
 
   @Test
-  void putsNoUnitOfADifferentNumberInAFlatChapter() {
+  void putsNoOccurrenceOfADifferentNumberInAFlatChapter() {
     assertThat(Location.holds("anx/pnt_3", "anx/pnt_30.1")).isFalse();
     assertThat(Location.holds("anx/pnt_3", "anx/pnt_4.1")).isFalse();
     assertThat(Location.holds("anx/pnt_3", "anx/level_ATTACHMENT-30-B")).isFalse();
     assertThat(Location.holds("anx/pnt_3", "anx/level_ATTACHMENT-6-F")).isFalse();
-    // The unit itself, and the units below it by their eIds, are not beside it.
+    // The occurrence itself, and the occurrences below it by their eIds, are not beside it.
     assertThat(Location.holds("anx/pnt_3", "anx/pnt_3")).isFalse();
     assertThat(Location.holds("anx/pnt_3", "anx/pnt_3/pnt_a")).isFalse();
-    // A unit of a different annex, and a unit that is not a point.
+    // An occurrence of a different annex, and an occurrence that is not a point.
     assertThat(Location.holds("anx_I/pnt_3", "anx_II/pnt_3.1")).isFalse();
     assertThat(Location.holds("art_3", "art_3.1")).isFalse();
   }

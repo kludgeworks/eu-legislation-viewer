@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 139, Title 3 and Chapter 3 1 should read as follows:"/>
          </p>
@@ -112,7 +112,7 @@
                </table>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

@@ -81,29 +81,29 @@ p.norm {
   text-align: center;
 }
 
-.unit-article > .title > .num,
-.unit-annex > .title > .num,
-.unit-annex > .file > .num {
+.occurrence-article > .title > .num,
+.occurrence-annex > .title > .num,
+.occurrence-annex > .file > .num {
   margin-top: 1.5rem;
   font-style: italic;
   text-align: center;
 }
 
-.unit-article > .title > .heading,
-.unit-annex > .title > .heading {
+.occurrence-article > .title > .heading,
+.occurrence-annex > .title > .heading {
   font-weight: bold;
   text-align: center;
 }
 
 /* In an act as published, the label of an annex is bold and upright (oj-doc-ti). The title that
  * each file of the annex repeats looks the same. */
-.legal-text:not(.legal-text-consolidated) .unit-annex > .title > .num,
-.legal-text:not(.legal-text-consolidated) .unit-annex > .file > .num {
+.legal-text:not(.legal-text-consolidated) .occurrence-annex > .title > .num,
+.legal-text:not(.legal-text-consolidated) .occurrence-annex > .file > .num {
   font-style: normal;
   font-weight: bold;
 }
 
-.unit-division > .title {
+.occurrence-division > .title {
   text-align: center;
 }
 
@@ -122,12 +122,12 @@ p.norm {
 }
 
 .title-run-in,
-.unit-level:not(.numbered) > .title {
+.occurrence-level:not(.numbered) > .title {
   font-weight: bold;
 }
 
 .legal-text-consolidated
-  .unit-level[data-depth="2"]
+  .occurrence-level[data-depth="2"]
   > :is(.title, .num, .heading, .subheading) {
   font-weight: normal;
   font-style: italic;
@@ -135,7 +135,7 @@ p.norm {
 }
 
 .legal-text-consolidated
-  .unit-level[data-depth="4"]
+  .occurrence-level[data-depth="4"]
   > :is(.title, .num, .heading, .subheading) {
   font-weight: normal;
 }
@@ -152,11 +152,11 @@ p.norm {
  * - The numbered points of an annex. The number of the point is beside its text. For example,
  *   1.0.1.
  */
-.list > .unit,
-.unit-point,
-.unit-indent,
-.unit-recital,
-.unit-level.numbered {
+.list > .occurrence,
+.occurrence-point,
+.occurrence-indent,
+.occurrence-recital,
+.occurrence-level.numbered {
   display: grid;
   grid-template-columns: minmax(3rem, auto) 1fr;
   column-gap: 0.5rem;
@@ -166,22 +166,27 @@ p.norm {
  * or more if the label is wider. The text is against the label. Thus each list in an item is 4%
  * further in. */
 .legal-text:not(.legal-text-consolidated)
-  :is(.list > .unit, .unit-point, .unit-indent, .unit-recital) {
+  :is(
+    .list > .occurrence,
+    .occurrence-point,
+    .occurrence-indent,
+    .occurrence-recital
+  ) {
   grid-template-columns: minmax(4%, auto) 1fr;
   column-gap: 0;
 }
 
-.list > .unit > .num,
-:is(.unit-point, .unit-indent) > .num,
-.unit-recital > .num,
-.unit-level.numbered > .num {
+.list > .occurrence > .num,
+:is(.occurrence-point, .occurrence-indent) > .num,
+.occurrence-recital > .num,
+.occurrence-level.numbered > .num {
   grid-column: 1;
 }
 
-.list > .unit > :not(.num),
-:is(.unit-point, .unit-indent) > :not(.num),
-.unit-recital > :not(.num),
-.unit-level.numbered > :not(.num) {
+.list > .occurrence > :not(.num),
+:is(.occurrence-point, .occurrence-indent) > :not(.num),
+.occurrence-recital > :not(.num),
+.occurrence-level.numbered > :not(.num) {
   grid-column: 2;
 }
 
@@ -189,7 +194,7 @@ p.norm {
  * Unless …". What follows that paragraph, and its lists, start from the margin (oj-normal). A
  * consolidated version keeps them beside the number. */
 .legal-text:not(.legal-text-consolidated)
-  .unit-level.numbered
+  .occurrence-level.numbered
   > :not(.num, .num + *) {
   grid-column: 1 / -1;
 }
@@ -198,7 +203,7 @@ p.norm {
  * What follows starts from the margin, as a hanging indent and then p.list. In an act as published,
  * all of it is beside the number, in the 96% column. */
 .legal-text-consolidated
-  :is(.unit-point, .unit-indent):not(.list > *)
+  :is(.occurrence-point, .occurrence-indent):not(.list > *)
   > :not(.num, .num + *) {
   grid-column: 1 / -1;
 }
@@ -208,43 +213,47 @@ p.norm {
  * comes after any amendment marker. For example, "1.  For the purposes …". Two spaces follow the
  * number in a consolidated version, and three in an act as published. What follows starts from the
  * margin. A number that a list or a table follows keeps a line of its own. */
-.unit-paragraph:has(
+.occurrence-paragraph:has(
   > .num + p,
-  > .num + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+  > .num
+    + .occurrence-subparagraph
+    > :is(p:first-child, .provenance:first-child + p)
 ) {
   margin-top: 0.5rem;
   text-align: justify;
 }
 
-.unit-paragraph
+.occurrence-paragraph
   > .num:has(
     + p,
-    + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+    + .occurrence-subparagraph > :is(p:first-child, .provenance:first-child + p)
   ),
-.unit-paragraph > .num + p,
-.unit-paragraph
+.occurrence-paragraph > .num + p,
+.occurrence-paragraph
   > .num
-  + .unit-subparagraph:has(> :is(p:first-child, .provenance:first-child + p)),
-.unit-paragraph
+  + .occurrence-subparagraph:has(
+    > :is(p:first-child, .provenance:first-child + p)
+  ),
+.occurrence-paragraph
   > .num
-  + .unit-subparagraph
+  + .occurrence-subparagraph
   > :is(p:first-child, .provenance:first-child + p) {
   display: inline;
 }
 
-.unit-paragraph
+.occurrence-paragraph
   > .num:has(
     + p,
-    + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+    + .occurrence-subparagraph > :is(p:first-child, .provenance:first-child + p)
   ) {
   margin-inline-end: 0.5em;
 }
 
 .legal-text:not(.legal-text-consolidated)
-  .unit-paragraph
+  .occurrence-paragraph
   > .num:has(
     + p,
-    + .unit-subparagraph > :is(p:first-child, .provenance:first-child + p)
+    + .occurrence-subparagraph > :is(p:first-child, .provenance:first-child + p)
   ) {
   margin-inline-end: 0.75em;
 }
@@ -253,7 +262,7 @@ p.norm {
  * term, the separator and the definition beside the prefix. In an act as published, the prefix, the
  * term in bold, the separator and the first paragraph of the definition make one paragraph. The
  * rest starts from the margin (oj-normal). */
-.legal-text:not(.legal-text-consolidated) .list-definition > .unit {
+.legal-text:not(.legal-text-consolidated) .list-definition > .occurrence {
   display: block;
   margin-top: 0.5rem;
   text-align: justify;
@@ -261,51 +270,54 @@ p.norm {
 
 .legal-text:not(.legal-text-consolidated)
   .list-definition
-  > .unit
+  > .occurrence
   > :is(.num, .heading, .separator, .separator + p) {
   display: inline;
 }
 
-.legal-text:not(.legal-text-consolidated) .list-definition > .unit > .heading {
+.legal-text:not(.legal-text-consolidated)
+  .list-definition
+  > .occurrence
+  > .heading {
   font-weight: bold;
 }
 
 /* A level printed in a box (Formex BOX). EUR-Lex draws it as a frame with 10px of space inside. */
-.unit[data-box="true"] {
+.occurrence[data-box="true"] {
   margin-top: 0.5rem;
   padding: 10px;
   border: 1px solid currentcolor;
 }
 
 /* The mark of a list, which its items do not write (ListKind). It is the label of each item. */
-.list-dash > .unit-indent::before,
-.list-ndash > .unit-indent::before,
-.list-bullet > .unit-indent::before {
+.list-dash > .occurrence-indent::before,
+.list-ndash > .occurrence-indent::before,
+.list-bullet > .occurrence-indent::before {
   margin-top: 0.5rem;
 }
 
-.list-dash > .unit-indent::before {
+.list-dash > .occurrence-indent::before {
   content: "—";
 }
 
-.list-ndash > .unit-indent::before {
+.list-ndash > .occurrence-indent::before {
   content: "–";
 }
 
-.list-bullet > .unit-indent::before {
+.list-bullet > .occurrence-indent::before {
   content: "•";
 }
 
 /* An item that an amendment put in. Its amendment mark ▼ is on the line above. The mark of the list
  * is beside its text. */
 :is(.list-dash, .list-ndash, .list-bullet)
-  > .unit-indent
+  > .occurrence-indent
   > .provenance:first-child {
   grid-row: 1;
 }
 
 :is(.list-dash, .list-ndash, .list-bullet)
-  > .unit-indent:has(> .provenance:first-child)::before {
+  > .occurrence-indent:has(> .provenance:first-child)::before {
   grid-row: 2;
   grid-column: 1;
 }
@@ -313,7 +325,7 @@ p.norm {
 /* In a consolidated version, each paragraph of an item of a dash list starts with the dash. The
  * dash hangs in the column of the label, as the dash of the first paragraph does. CONSLEG prints it
  * this way. For example, "— If not available, …". */
-.legal-text-consolidated .list-dash > .unit-indent > p ~ p::before {
+.legal-text-consolidated .list-dash > .occurrence-indent > p ~ p::before {
   content: "—";
   display: inline-block;
   width: 3.5rem;
@@ -329,7 +341,7 @@ p.norm {
  * text is read, the browser lays out and paints only the tables near the screen, and keeps the
  * height it last laid out for the others (content-visibility). It still finds their words, for Find
  * in page, and prints them. The frame scrolls, so it already clips its table and keeps its margins:
- * nothing in the text moves. A jump to a unit lands on it all the same (js/loading.js). */
+ * nothing in the text moves. A jump to an occurrence lands on it all the same (js/loading.js). */
 .content .table-frame {
   content-visibility: auto;
   contain-intrinsic-size: auto 200px;

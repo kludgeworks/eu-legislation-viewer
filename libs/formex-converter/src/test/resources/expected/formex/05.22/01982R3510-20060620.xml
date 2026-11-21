@@ -193,18 +193,18 @@
                         action="deleted"
                         location="AR:2"
                         marker="O004001M001000"/>
-            <unit eId="pbl_1/cit_1" kind="citation">
+            <occurrence eId="pbl_1/cit_1" kind="citation">
                <p>
                   <t v="Having regard to the Treaty establishing the European Economic Community,"/>
                </p>
-            </unit>
-            <unit eId="pbl_1/cit_2" kind="citation">
+            </occurrence>
+            <occurrence eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation (EEC) No 3796/81 of 29 December 1981 on the common organization of the market in fishery products"/>
                   <noteRef href="#note_1" marker="1"/>
                   <t v=", and in particular Article 17 (6) thereof,"/>
                </p>
-            </unit>
+            </occurrence>
          </deleted>
       </citations>
       <recitals>
@@ -213,7 +213,7 @@
                         action="deleted"
                         location="AR:2"
                         marker="O004001M001000"/>
-            <unit eId="pbl_1/rct_1" kind="recital">
+            <occurrence eId="pbl_1/rct_1" kind="recital">
                <p>
                   <t v="Whereas a Community producer price is fixed every year for "/>
                   <changed amendingAct="31987R3940"
@@ -231,8 +231,8 @@
                   </changed>
                   <t v=" intended for the canning industry;"/>
                </p>
-            </unit>
-            <unit eId="pbl_1/rct_2" kind="recital">
+            </occurrence>
+            <occurrence eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas the conversion factors applicable to the different species, sizes and presentations of "/>
                   <changed amendingAct="31987R3940"
@@ -250,12 +250,12 @@
                   </changed>
                   <t v=" should also be fixed;"/>
                </p>
-            </unit>
-            <unit eId="pbl_1/rct_3" kind="recital">
+            </occurrence>
+            <occurrence eId="pbl_1/rct_3" kind="recital">
                <p>
                   <t v="Whereas the measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Fishery Products,"/>
                </p>
-            </unit>
+            </occurrence>
          </deleted>
       </recitals>
       <formula name="enactingFormula">
@@ -276,7 +276,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O004001M001000"/>
-         <unit eId="art_1" kind="article" rank="1">
+         <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -297,15 +297,15 @@
                </changed>
                <t v=" shall be as listed in the Annex hereto."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
             <p>
                <t v="This Regulation shall enter into force on 1 January 1983."/>
             </p>
-         </unit>
+         </occurrence>
       </deleted>
    </body>
    <conclusions>
@@ -325,7 +325,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O004001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <provenance amendingAct="31992R3899"
                         action="replaced"
                         location="AR:1 .AND. AX:0"
@@ -367,14 +367,14 @@
                   <rowGroup columns="2">
                      <tr>
                         <td>
-                           <unit eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
+                           <occurrence eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
                               <p>
                                  <t v="weighing more than 10 kg each"/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </td>
                         <td>
                            <p>
@@ -384,14 +384,14 @@
                      </tr>
                      <tr>
                         <td>
-                           <unit eId="anx/tab_1/tr_3/td_1/list_2/idt_1" kind="indent">
+                           <occurrence eId="anx/tab_1/tr_3/td_1/list_2/idt_1" kind="indent">
                               <num>
                                  <t v="—"/>
                               </num>
                               <p>
                                  <t v="weighing not more than 10 kg each"/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </td>
                         <td>
                            <p>
@@ -403,10 +403,10 @@
                </rowGroup>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_4/td_1/pnt_B"
-                           kind="level"
-                           depth="1"
-                           numbered="true">
+                     <occurrence eId="anx/tab_1/tr_4/td_1/pnt_B"
+                                 kind="level"
+                                 depth="1"
+                                 numbered="true">
                         <num>
                            <t v="B."/>
                         </num>
@@ -416,7 +416,7 @@
                               <t v="(Thunnus alalunga)"/>
                            </emphasis>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -426,10 +426,10 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_5/td_1/pnt_C"
-                           kind="level"
-                           depth="1"
-                           numbered="true">
+                     <occurrence eId="anx/tab_1/tr_5/td_1/pnt_C"
+                                 kind="level"
+                                 depth="1"
+                                 numbered="true">
                         <num>
                            <t v="C."/>
                         </num>
@@ -439,7 +439,7 @@
                               <t v="[Euthynnus (Katsuwonus) pelamis]"/>
                            </emphasis>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -449,17 +449,17 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_6/td_1/pnt_D"
-                           kind="level"
-                           depth="1"
-                           numbered="true">
+                     <occurrence eId="anx/tab_1/tr_6/td_1/pnt_D"
+                                 kind="level"
+                                 depth="1"
+                                 numbered="true">
                         <num>
                            <t v="D."/>
                         </num>
                         <p>
                            <t v="Other species"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -490,17 +490,17 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_2/tr_2/td_1/pnt_A"
-                           kind="level"
-                           depth="1"
-                           numbered="true">
+                     <occurrence eId="anx/tab_2/tr_2/td_1/pnt_A"
+                                 kind="level"
+                                 depth="1"
+                                 numbered="true">
                         <num>
                            <t v="A."/>
                         </num>
                         <p>
                            <t v="Whole"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -510,17 +510,17 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_2/tr_3/td_1/pnt_B"
-                           kind="level"
-                           depth="1"
-                           numbered="true">
+                     <occurrence eId="anx/tab_2/tr_3/td_1/pnt_B"
+                                 kind="level"
+                                 depth="1"
+                                 numbered="true">
                         <num>
                            <t v="B."/>
                         </num>
                         <p>
                            <t v="Gutted and without gills"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -530,17 +530,17 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_2/tr_4/td_1/pnt_C"
-                           kind="level"
-                           depth="1"
-                           numbered="true">
+                     <occurrence eId="anx/tab_2/tr_4/td_1/pnt_C"
+                                 kind="level"
+                                 depth="1"
+                                 numbered="true">
                         <num>
                            <t v="C."/>
                         </num>
                         <p>
                            <t v="Other"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -549,7 +549,7 @@
                   </td>
                </tr>
             </table>
-         </unit>
+         </occurrence>
       </deleted>
    </annexes>
    <notes>

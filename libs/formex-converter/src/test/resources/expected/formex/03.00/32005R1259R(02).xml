@@ -29,12 +29,12 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 90, in Article 1(2):"/>
          </p>
          <list kind="definition" separator=":">
-            <unit eId="cor_1/def_1" kind="definition">
+            <occurrence eId="cor_1/def_1" kind="definition">
                <heading>
                   <t v="for"/>
                </heading>
@@ -79,8 +79,8 @@
                      </tr>
                   </table>
                </quotedStructure>
-            </unit>
-            <unit eId="cor_1/def_2" kind="definition">
+            </occurrence>
+            <occurrence eId="cor_1/def_2" kind="definition">
                <heading>
                   <t v="read"/>
                </heading>
@@ -125,12 +125,12 @@
                      </tr>
                   </table>
                </quotedStructure>
-            </unit>
+            </occurrence>
          </list>
          <p>
             <t v="Where applicable, the correct spelling of the company names and seat, as set out above, should also apply throughout the text of Regulation (EC) No 1259/2005 wherever they appear, and namely under recitals (8)(b), (17), (39) and (122)."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

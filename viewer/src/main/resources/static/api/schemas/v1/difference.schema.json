@@ -2,38 +2,38 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://eu-law.groknull.dev/api/schemas/v1/difference.schema.json",
   "title": "A difference",
-  "description": "A difference that a comparison of two versions found in one unit, in version 1 of the API. A later minor change can add members, so a client ignores the members it does not know.",
+  "description": "A difference that a comparison of two versions found in one occurrence, in version 1 of the API. A later minor change can add members, so a client ignores the members it does not know.",
   "type": "object",
   "properties": {
     "_links": { "$ref": "text.schema.json#/$defs/links" },
-    "eId": { "type": "string", "description": "The eId of its unit." },
+    "eId": { "type": "string", "description": "The eId of its occurrence." },
     "kind": { "enum": ["inserted", "deleted", "changed"] },
-    "unitKind": { "type": "string", "description": "The kind of its unit. For example, article." },
-    "num": { "type": "string", "description": "The label of its unit as printed. For example, (a). Empty if it has none." },
+    "occurrenceKind": { "type": "string", "description": "The kind of its occurrence. For example, article." },
+    "num": { "type": "string", "description": "The label of its occurrence as printed. For example, (a). Empty if it has none." },
     "inserted": { "type": "integer", "minimum": 0, "description": "How many words it inserted." },
     "deleted": { "type": "integer", "minimum": 0, "description": "How many words it deleted." },
-    "parent": { "type": ["string", "null"], "description": "The eId of the unit that it is in. Null for an outermost unit." },
-    "section": { "type": ["string", "null"], "description": "The eId of the unit with a title that it is in, as the outline nests them." },
-    "markers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the later text: which acts gave the unit its form, and how." },
+    "parent": { "type": ["string", "null"], "description": "The eId of the occurrence that it is in. Null for an outermost occurrence." },
+    "section": { "type": ["string", "null"], "description": "The eId of the occurrence with a title that it is in, as the outline nests them." },
+    "markers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the later text: which acts gave the occurrence its form, and how." },
     "earlierMarkers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the earlier text." },
     "amendments": {
-      "description": "The amendments that Cellar records at the unit between the two versions.",
+      "description": "The amendments that Cellar records at the occurrence between the two versions.",
       "type": "array",
       "items": { "$ref": "#/$defs/amendment" }
     },
-    "before": { "type": "string", "description": "The plain text of the unit before the change." },
-    "after": { "type": "string", "description": "The plain text of the unit after the change." },
+    "before": { "type": "string", "description": "The plain text of the occurrence before the change." },
+    "after": { "type": "string", "description": "The plain text of the occurrence after the change." },
     "changes": {
-      "description": "The runs of words, in order. The text before is the runs that are not insert. The text after is the runs that are not delete. A line feed ends each paragraph, and each number and heading of a unit in the unit, except the last.",
+      "description": "The runs of words, in order. The text before is the runs that are not insert. The text after is the runs that are not delete. A line feed ends each paragraph, and each number and heading of an occurrence in the occurrence, except the last.",
       "type": "array",
       "items": { "$ref": "#/$defs/change" }
     },
     "shown": {
-      "$ref": "text.schema.json#/$defs/unit",
-      "description": "The unit, marked. In its HTML, inserted words are in ins and deleted words are in del. Its plain text is the text after the change."
+      "$ref": "text.schema.json#/$defs/occurrence",
+      "description": "The occurrence, marked. In its HTML, inserted words are in ins and deleted words are in del. Its plain text is the text after the change."
     }
   },
-  "required": ["_links", "eId", "kind", "unitKind", "num", "inserted", "deleted", "markers", "earlierMarkers", "amendments", "before", "after", "changes", "shown"],
+  "required": ["_links", "eId", "kind", "occurrenceKind", "num", "inserted", "deleted", "markers", "earlierMarkers", "amendments", "before", "after", "changes", "shown"],
   "$defs": {
     "markers": {
       "type": "array",
@@ -45,12 +45,12 @@
       "properties": {
         "act": { "type": "string", "description": "The CELEX number of the amending act." },
         "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] },
-        "in": { "type": ["string", "null"], "description": "The eId of the unit that the act gave its form as a whole. Null for a marker of the unit itself." }
+        "in": { "type": ["string", "null"], "description": "The eId of the occurrence that the act gave its form as a whole. Null for a marker of the occurrence itself." }
       },
       "required": ["act", "action", "in"]
     },
     "amendment": {
-      "description": "An amendment that Cellar records at a unit.",
+      "description": "An amendment that Cellar records at an occurrence.",
       "type": "object",
       "properties": {
         "act": { "type": "string", "description": "The CELEX number of the amending act." },

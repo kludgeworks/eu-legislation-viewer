@@ -180,14 +180,14 @@ class TextService implements Texts {
     outline
         .marks()
         .forEach(
-            (unit, acts) ->
+            (occurrence, acts) ->
                 acts.stream()
                     .filter(ActIdentifier::isCelex)
                     .forEach(
                         act ->
                             byAct
                                 .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
-                                .add(unit)));
+                                .add(occurrence)));
     return new TextMarks(outline.eIds(), byAct);
   }
 

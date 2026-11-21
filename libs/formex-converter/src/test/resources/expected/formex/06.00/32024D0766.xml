@@ -50,12 +50,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2019/631 of the European Parliament and of the Council of "/>
                <date date="2019-04-17">
@@ -69,7 +69,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 11(4) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -77,7 +77,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -102,8 +102,8 @@
                <noteRef href="#note_4" marker="4"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -116,8 +116,8 @@
                </emphasis>
                <t v=" savings and of the statistical margin for the innovative technology approved by Implementing Decision (EU) 2019/1119."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -128,8 +128,8 @@
                </emphasis>
                <t v=" savings in accordance with Implementing Decision (EU) 2019/1119."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -140,15 +140,15 @@
                </emphasis>
                <t v=" savings and the statistical margin, and to adapt the testing methodology set out in the Annex to Implementing Decision (EU) 2019/1119 accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="Implementing Decision (EU) 2019/1119 should therefore be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -157,15 +157,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The Annex to Implementing Decision (EU) 2019/1119 is amended as set out in the Annex to this Decision."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -176,7 +176,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -294,7 +294,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -302,7 +302,7 @@
             <t v="The Annex to Implementing Decision (EU) 2019/1119 is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -325,8 +325,8 @@
                      <t v=";"/>
                   </p>
                </quotedStructure>
-            </unit>
-            <unit eId="anx/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -345,9 +345,9 @@
                      <t v="."/>
                   </p>
                </quotedStructure>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

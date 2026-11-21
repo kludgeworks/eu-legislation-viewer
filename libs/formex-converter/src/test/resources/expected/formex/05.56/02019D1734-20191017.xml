@@ -98,7 +98,7 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Free Trade Agreement between the European Union and its Member States, of the one part, and the Republic of Korea, of the other part, ("/>
                <quote startQuote="‘" endQuote="’">
@@ -106,7 +106,7 @@
                </quote>
                <t v=") and in particular Article 13.15(3) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -114,15 +114,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Pursuant to Article 13.15(3) of the Agreement, the Parties are to establish a list of at least 15 persons willing and able to serve as panellists with regard to matters arising under Chapter 13 on Trade and Sustainable Development and who have expertise in the issues covered by that Chapter. Of those individuals, at least five are to be non-nationals of either Party and are to serve as chair of the Panel of Experts."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -135,23 +135,23 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=" establishing a list of 18 experts that may serve as panellists."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The Republic of Korea expressed its wish to replace some of the Korean nationals on the list of experts. In order for this amendment to take effect, the revised list of experts should be approved by the EU-Korea Committee on Trade and Sustainable Development."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Therefore, the Parties have revised the list of experts established by Decision No 2/2012 and the revised list of experts, as set out in the Annex, should be adopted,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -160,29 +160,29 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The list of experts that may serve as panellists for the purposes of Article 13.15 of the Agreement, which is set out in the Annex to Decision No 2/2012, is replaced by the list of experts set out in the Annex to this Decision."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision takes effect on the date of its adoption."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="List of experts willing and able to serve as panellists with regard to matters arising under chapter 13 (trade and sustainable development) of the agreement"/>
@@ -194,36 +194,36 @@
                </emphasis>
             </p>
             <list kind="none">
-               <unit eId="anx/level_1/idt_1" kind="indent">
+               <occurrence eId="anx/level_1/idt_1" kind="indent">
                   <p>
                      <t v="Sung Wook LEE"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_2" kind="indent">
                   <p>
                      <t v="Jaemin LEE"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_3" kind="indent">
                   <p>
                      <t v="Chang Young KWON"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_4" kind="indent">
                   <p>
                      <t v="Suh-Yong CHUNG"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_5" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_5" kind="indent">
                   <p>
                      <t v="Taek-Whan HAN"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_6" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_6" kind="indent">
                   <p>
                      <t v="Won-Mog CHOI"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <emphasis kind="i">
@@ -231,36 +231,36 @@
                </emphasis>
             </p>
             <list kind="none">
-               <unit eId="anx/level_1/list_2/idt_1" kind="indent">
+               <occurrence eId="anx/level_1/list_2/idt_1" kind="indent">
                   <p>
                      <t v="Eddy LAURIJSSEN"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_2/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_2/idt_2" kind="indent">
                   <p>
                      <t v="Jorge CARDONA"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_2/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_2/idt_3" kind="indent">
                   <p>
                      <t v="Karin LUKAS"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_2/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_2/idt_4" kind="indent">
                   <p>
                      <t v="Hélène RUIZ FABRI"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_2/idt_5" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_2/idt_5" kind="indent">
                   <p>
                      <t v="Laurence BOISSON DE CHAZOURNES"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_2/idt_6" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_2/idt_6" kind="indent">
                   <p>
                      <t v="Geert VAN CALSTER"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <emphasis kind="i">
@@ -268,39 +268,39 @@
                </emphasis>
             </p>
             <list kind="none">
-               <unit eId="anx/level_1/list_3/idt_1" kind="indent">
+               <occurrence eId="anx/level_1/list_3/idt_1" kind="indent">
                   <p>
                      <t v="Thomas P. PINANSKY"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_3/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_3/idt_2" kind="indent">
                   <p>
                      <t v="Nguyen Van TAI"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_3/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_3/idt_3" kind="indent">
                   <p>
                      <t v="Le HA THANH"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_3/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_3/idt_4" kind="indent">
                   <p>
                      <t v="Jill MURRAY"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_3/idt_5" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_3/idt_5" kind="indent">
                   <p>
                      <t v="Ricardo MELÉNDEZ-ORTIZ"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/list_3/idt_6" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/list_3/idt_6" kind="indent">
                   <p>
                      <t v="Nathalie BERNASCONI-OSTERWALDER"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

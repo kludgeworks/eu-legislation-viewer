@@ -31,7 +31,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 12, Annex II, point 5, table, heading, second column:"/>
          </p>
@@ -41,7 +41,7 @@
             </p>
             <quotedStructure eId="cor_1/old/qstr_1">
                <list kind="definition" separator=":">
-                  <unit eId="cor_1/old/qstr_1/def_1" kind="definition">
+                  <occurrence eId="cor_1/old/qstr_1/def_1" kind="definition">
                      <heading>
                         <emphasis kind="b">
                            <t v="‘"/>
@@ -56,7 +56,7 @@
                         <t v="’"/>
                         <t v=","/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
             </quotedStructure>
          </old>
@@ -66,7 +66,7 @@
             </p>
             <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="definition" separator=":">
-                  <unit eId="cor_1/new/qstr_1/def_1" kind="definition">
+                  <occurrence eId="cor_1/new/qstr_1/def_1" kind="definition">
                      <heading>
                         <emphasis kind="b">
                            <t v="‘"/>
@@ -81,11 +81,11 @@
                         <t v="’"/>
                         <t v="."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

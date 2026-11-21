@@ -197,7 +197,7 @@ public record Act(
   }
 
   /**
-   * Returns Cellar's amendments of this act's provisions, placed at the units of two texts.
+   * Returns Cellar's amendments of this act's provisions, placed at the occurrences of two texts.
    *
    * <p>An amendment is included if its act is integrated between {@code from} and {@code to}, and
    * if it changes the text in {@code language}. An amendment that applies only after {@code to} is
@@ -205,19 +205,19 @@ public record Act(
    * weeks, so its date does not tell what the version already contains.
    *
    * <ul>
-   *   <li>An addition or a replacement is placed at a unit of the later text. {@code later} holds
-   *       the eIds of its units, in document order.
-   *   <li>A deletion or a repeal is placed at a unit of the earlier text. {@code earlier} holds the
-   *       eIds of its units, in document order.
+   *   <li>An addition or a replacement is placed at an occurrence of the later text. {@code later}
+   *       holds the eIds of its occurrences, in document order.
+   *   <li>A deletion or a repeal is placed at an occurrence of the earlier text. {@code earlier}
+   *       holds the eIds of its occurrences, in document order.
    *   <li>An amendment whose location is in neither text is counted as unplaced.
    * </ul>
    */
   public Amended amended(
       Version from, Version to, List<String> earlier, List<String> later, Language language) {
     var between = integratedBetween(from, to);
-    var before = Location.units(earlier);
-    var after = Location.units(later);
-    var byUnit = new LinkedHashMap<String, List<Amendment>>();
+    var before = Location.occurrences(earlier);
+    var after = Location.occurrences(later);
+    var byOccurrence = new LinkedHashMap<String, List<Amendment>>();
     var unplaced = 0;
     for (var amendment : amendments) {
       var applies = amendment.from();
@@ -234,10 +234,10 @@ public record Act(
         continue;
       }
       for (var eId : found.get().eIds()) {
-        byUnit.computeIfAbsent(eId, unit -> new ArrayList<>()).add(amendment);
+        byOccurrence.computeIfAbsent(eId, occurrence -> new ArrayList<>()).add(amendment);
       }
     }
-    return new Amended(byUnit, unplaced);
+    return new Amended(byOccurrence, unplaced);
   }
 
   /**
@@ -335,10 +335,10 @@ public record Act(
   }
 
   /**
-   * Returns the units of the text of {@code version} that have a change that does not apply on
-   * {@code day} yet. They are the units of each early divergence of the day, {@link Divergence#in}.
-   * A comparison gives the difference at such a unit an amber rule. Where the act itself does not
-   * apply yet, no unit is given: the whole text is early.
+   * Returns the occurrences of the text of {@code version} that have a change that does not apply
+   * on {@code day} yet. They are the occurrences of each early divergence of the day, {@link
+   * Divergence#in}. A comparison gives the difference at such an occurrence an amber rule. Where
+   * the act itself does not apply yet, no occurrence is given: the whole text is early.
    *
    * <p>Empty if the text of {@code version} is not built.
    *
@@ -347,18 +347,18 @@ public record Act(
    */
   public Pending pending(
       Version version, LocalDate day, Language language, Map<Version, TextMarks> texts) {
-    var byUnit = new LinkedHashMap<String, ActIdentifier>();
+    var byOccurrence = new LinkedHashMap<String, ActIdentifier>();
     var text = texts.get(version);
     if (text != null) {
       for (var divergence : divergences(day, language, texts)) {
         if (divergence.kind() == Divergence.Kind.EARLY && !divergence.whole(id)) {
           divergence
               .in(text.eIds())
-              .forEach(unit -> byUnit.putIfAbsent(unit.eId(), divergence.act()));
+              .forEach(occurrence -> byOccurrence.putIfAbsent(occurrence.eId(), divergence.act()));
         }
       }
     }
-    return new Pending(day, byUnit);
+    return new Pending(day, byOccurrence);
   }
 
   /**
@@ -603,16 +603,17 @@ public record Act(
   }
 
   /**
-   * Returns the units of {@code change} in the comparison of two texts, by their eIds. {@code
-   * later} are the units of the first text with the changes of the act, and {@code earlier} are the
-   * units of the text before it, each in document order.
+   * Returns the occurrences of {@code change} in the comparison of two texts, by their eIds. {@code
+   * later} are the occurrences of the first text with the changes of the act, and {@code earlier}
+   * are the occurrences of the text before it, each in document order.
    *
-   * <p>The units are those of the later text, if it has the place itself. If only the earlier text
-   * has the place itself, the act deleted it, and the units are those of the earlier text. If
-   * neither has the place itself, the units are those that the place is in: for example, the
-   * article of a sentence. Returns empty if neither text has the place.
+   * <p>The occurrences are those of the later text, if it has the place itself. If only the earlier
+   * text has the place itself, the act deleted it, and the occurrences are those of the earlier
+   * text. If neither has the place itself, the occurrences are those that the place is in: for
+   * example, the article of a sentence. Returns empty if neither text has the place.
    */
-  public static List<String> units(Amendment change, List<String> later, List<String> earlier) {
+  public static List<String> occurrences(
+      Amendment change, List<String> later, List<String> earlier) {
     var after = change.location().in(later);
     var before = change.location().in(earlier);
     return after
@@ -625,59 +626,60 @@ public record Act(
   }
 
   /**
-   * Returns the units of a text that have a change of their own, by their eIds, each with its
-   * changes in {@code language}. {@code eIds} are the units of the text, in document order. A
-   * change is at the unit that is its place. If its place is finer than the units, for example a
-   * sentence, it is at the unit that the place is in. A change whose place the text does not have
-   * is at no unit.
+   * Returns the occurrences of a text that have a change of their own, by their eIds, each with its
+   * changes in {@code language}. {@code eIds} are the occurrences of the text, in document order. A
+   * change is at the occurrence that is its place. If its place is finer than the occurrences, for
+   * example a sentence, it is at the occurrence that the place is in. A change whose place the text
+   * does not have is at no occurrence.
    */
-  public Map<String, List<Amendment>> changedUnits(List<String> eIds, Language language) {
-    var byUnit = new LinkedHashMap<String, List<Amendment>>();
-    var units = Location.units(eIds);
+  public Map<String, List<Amendment>> changedOccurrences(List<String> eIds, Language language) {
+    var byOccurrence = new LinkedHashMap<String, List<Amendment>>();
+    var occurrences = Location.occurrences(eIds);
     for (var amendment : amendments) {
       if (!amendment.changes(language)) {
         continue;
       }
       amendment
           .location()
-          .in(units)
+          .in(occurrences)
           .ifPresent(
               found ->
                   found
                       .eIds()
                       .forEach(
                           eId ->
-                              byUnit
-                                  .computeIfAbsent(eId, unit -> new ArrayList<>())
+                              byOccurrence
+                                  .computeIfAbsent(eId, occurrence -> new ArrayList<>())
                                   .add(amendment)));
     }
-    return byUnit;
+    return byOccurrence;
   }
 
   /**
-   * Returns the history of the provision that is the unit {@code unit} of a text: the acts that
-   * changed it. {@code text} are the marks of the text.
+   * Returns the history of the provision that is the occurrence {@code occurrence} of a text: the
+   * acts that changed it. {@code text} are the marks of the text.
    *
    * <ul>
-   *   <li>A change at the unit is a change of the provision. So is a change at a part of it that
-   *       the text does not number, for example a sentence.
-   *   <li>A change at a unit that holds the provision is a change of the provision. For example, an
-   *       act that replaces Article 6 changes Article 6(2).
-   *   <li>A change at a unit in the provision is not in its history. That unit has its own history.
-   *   <li>An act that the text marks the unit with changed the provision, also if Cellar annotates
-   *       no change of it there.
+   *   <li>A change at the occurrence is a change of the provision. So is a change at a part of it
+   *       that the text does not number, for example a sentence.
+   *   <li>A change at an occurrence that holds the provision is a change of the provision. For
+   *       example, an act that replaces Article 6 changes Article 6(2).
+   *   <li>A change at an occurrence in the provision is not in its history. That occurrence has its
+   *       own history.
+   *   <li>An act that the text marks the occurrence with changed the provision, also if Cellar
+   *       annotates no change of it there.
    * </ul>
    *
    * <p>The newest act is first: the act with the latest first day, {@link #firstDay}.
    */
-  public ProvisionHistory historyOf(String unit, TextMarks text, Language language) {
+  public ProvisionHistory historyOf(String occurrence, TextMarks text, Language language) {
     Comparator<ActIdentifier> newest =
         Comparator.comparing(
                 (ActIdentifier each) -> firstDay(each, language).orElse(null),
                 Comparator.nullsFirst(Comparator.<LocalDate>naturalOrder()))
             .thenComparing(ActIdentifier::celex)
             .reversed();
-    var units = Location.units(text.eIds());
+    var occurrences = Location.occurrences(text.eIds());
     var changes =
         amendments.stream()
             .filter(amendment -> amendment.changes(language))
@@ -685,36 +687,36 @@ public record Act(
                 amendment ->
                     amendment
                         .location()
-                        .in(units)
+                        .in(occurrences)
                         .filter(
                             found ->
-                                found.eIds().contains(unit)
+                                found.eIds().contains(occurrence)
                                     || (!found.within()
                                         && found.eIds().stream()
-                                            .anyMatch(holder -> Amended.in(unit, holder))))
+                                            .anyMatch(holder -> Amended.in(occurrence, holder))))
                         .isPresent())
             .sorted(Comparator.comparing(Amendment::act, newest))
             .toList();
     var named = changes.stream().map(Amendment::act).collect(Collectors.toSet());
     var marking =
         text.byAct().entrySet().stream()
-            .filter(each -> each.getValue().contains(unit))
+            .filter(each -> each.getValue().contains(occurrence))
             .map(Map.Entry::getKey)
             .filter(each -> !each.equals(id) && !named.contains(each))
             .sorted(newest)
             .toList();
-    return new ProvisionHistory(unit, changes, marking);
+    return new ProvisionHistory(occurrence, changes, marking);
   }
 
   /**
-   * Returns the units of the text of {@code reading} that are not in the act as published, where
-   * the data does not say which act inserted them. {@code texts} are the marks of the built texts
-   * in {@code language}.
+   * Returns the occurrences of the text of {@code reading} that are not in the act as published,
+   * where the data does not say which act inserted them. {@code texts} are the marks of the built
+   * texts in {@code language}.
    *
-   * <p>The data says nothing of a unit if the text marks no act at it, at a unit that holds it or
-   * at a unit in it, and Cellar annotates no change at these units. Of such units, only the outer
-   * unit is returned: a unit in it is not. Returns none if the text of the act as published or the
-   * text of {@code reading} is not built.
+   * <p>The data says nothing of an occurrence if the text marks no act at it, at an occurrence that
+   * holds it or at an occurrence in it, and Cellar annotates no change at these occurrences. Of
+   * such occurrences, only the outer occurrence is returned: an occurrence in it is not. Returns
+   * none if the text of the act as published or the text of {@code reading} is not built.
    */
   public List<String> unattributed(
       Version reading, Language language, Map<Version, TextMarks> texts) {
@@ -728,7 +730,7 @@ public record Act(
       return List.of();
     }
     var original = Set.copyOf(published.eIds());
-    var said = new LinkedHashSet<>(changedUnits(text.eIds(), language).keySet());
+    var said = new LinkedHashSet<>(changedOccurrences(text.eIds(), language).keySet());
     text.byAct().values().forEach(said::addAll);
     var holders = new LinkedHashSet<String>();
     said.forEach(each -> holders.addAll(holding(each)));
@@ -741,20 +743,24 @@ public record Act(
   }
 
   /**
-   * Returns the first version in {@code language} whose text has the unit {@code unit}. {@code
-   * texts} are the marks of the built texts. Returns empty if no built text has the unit.
+   * Returns the first version in {@code language} whose text has the occurrence {@code occurrence}.
+   * {@code texts} are the marks of the built texts. Returns empty if no built text has the
+   * occurrence.
    */
   public Optional<Version> firstWith(
-      String unit, Language language, Map<Version, TextMarks> texts) {
+      String occurrence, Language language, Map<Version, TextMarks> texts) {
     return timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
         .filter(
             version ->
                 Optional.ofNullable(texts.get(version)).stream()
-                    .anyMatch(marks -> marks.eIds().contains(unit)))
+                    .anyMatch(marks -> marks.eIds().contains(occurrence)))
         .findFirst();
   }
 
-  /** Returns the eIds of the units that hold the unit {@code eId}, as its eId names them. */
+  /**
+   * Returns the eIds of the occurrences that hold the occurrence {@code eId}, as its eId names
+   * them.
+   */
   private static List<String> holding(String eId) {
     var holders = new ArrayList<String>();
     for (var at = eId.lastIndexOf('/'); at > 0; at = eId.lastIndexOf('/', at - 1)) {
@@ -782,21 +788,21 @@ public record Act(
   }
 
   /**
-   * Returns {@code changes} in the order of a text. {@code eIds} are the units of the text, in
-   * document order. A change has the position of its place. A place that the text does not have,
-   * for example a deleted provision, has the position of the unit that holds it. A change with no
-   * position is last.
+   * Returns {@code changes} in the order of a text. {@code eIds} are the occurrences of the text,
+   * in document order. A change has the position of its place. A place that the text does not have,
+   * for example a deleted provision, has the position of the occurrence that holds it. A change
+   * with no position is last.
    */
   public static List<Amendment> inTextOrder(List<Amendment> changes, List<String> eIds) {
-    var units = Location.units(eIds);
+    var occurrences = Location.occurrences(eIds);
     return changes.stream()
         .sorted(
             Comparator.comparing(
                 change ->
                     change
                         .location()
-                        .in(units)
-                        .or(() -> change.location().around(units))
+                        .in(occurrences)
+                        .or(() -> change.location().around(occurrences))
                         .map(found -> eIds.indexOf(found.eIds().getFirst()))
                         .orElse(Integer.MAX_VALUE)))
         .toList();

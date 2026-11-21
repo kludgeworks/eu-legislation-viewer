@@ -43,11 +43,11 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the European Union, and in particular Article 15(5) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -55,7 +55,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -66,15 +66,15 @@
                </date>
                <t v=", the term of office of the current President of the European Council Mr Herman VAN ROMPUY will come to an end."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="A new President of the European Council should therefore be elected,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -83,7 +83,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -98,16 +98,16 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision shall be notified to Mr Donald TUSK by the Secretary-General of the Council."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -118,7 +118,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

@@ -69,53 +69,54 @@ public record Divergence(
   }
 
   /**
-   * Returns the units of a text that this divergence touches, in the order of the text, each once.
-   * {@code eIds} are the units of the text, in document order.
+   * Returns the occurrences of a text that this divergence touches, in the order of the text, each
+   * once. {@code eIds} are the occurrences of the text, in document order.
    *
    * <ul>
-   *   <li>A place that the text has is each of its units.
-   *   <li>A place that the text does not have is in the unit that holds it, {@link
+   *   <li>A place that the text has is each of its occurrences.
+   *   <li>A place that the text does not have is in the occurrence that holds it, {@link
    *       Location#around}. For example, a point that a late act inserts is in the point above it.
-   *   <li>A place for which the text has no unit is left out.
+   *   <li>A place for which the text has no occurrence is left out.
    * </ul>
    */
-  public List<Unit> in(List<String> eIds) {
-    var found = new LinkedHashMap<String, Unit>();
-    var text = Location.units(eIds);
+  public List<Occurrence> in(List<String> eIds) {
+    var found = new LinkedHashMap<String, Occurrence>();
+    var text = Location.occurrences(eIds);
     for (var place : places) {
       var exact = place.location().in(text);
-      var units = exact.or(() -> place.location().around(text));
-      for (var eId : units.map(Location.Found::eIds).orElseGet(List::of)) {
-        found.merge(eId, new Unit(eId, exact.isEmpty(), List.of(place)), Unit::with);
+      var occurrences = exact.or(() -> place.location().around(text));
+      for (var eId : occurrences.map(Location.Found::eIds).orElseGet(List::of)) {
+        found.merge(eId, new Occurrence(eId, exact.isEmpty(), List.of(place)), Occurrence::with);
       }
     }
     return found.values().stream()
-        .sorted(Comparator.comparingInt(unit -> eIds.indexOf(unit.eId())))
+        .sorted(Comparator.comparingInt(occurrence -> eIds.indexOf(occurrence.eId())))
         .toList();
   }
 
   /**
-   * A unit of a text that a divergence touches.
+   * An occurrence of a text that a divergence touches.
    *
-   * @param eId the eId of the unit
-   * @param holds whether the place is not in the text, and this unit holds it. Only the heading of
-   *     the unit is then marked, not all of it.
-   * @param places the places of the divergence that are this unit, or that this unit holds
+   * @param eId the eId of the occurrence
+   * @param holds whether the place is not in the text, and this occurrence holds it. Only the
+   *     heading of the occurrence is then marked, not all of it.
+   * @param places the places of the divergence that are this occurrence, or that this occurrence
+   *     holds
    */
   @ValueObject
-  public record Unit(String eId, boolean holds, List<Amendment> places) {
-    public Unit {
+  public record Occurrence(String eId, boolean holds, List<Amendment> places) {
+    public Occurrence {
       places = List.copyOf(places);
     }
 
     /**
-     * Returns this unit with the places of {@code other}, the same unit for another place. A unit
-     * that is a place itself is marked whole, also if it holds another place.
+     * Returns this occurrence with the places of {@code other}, the same occurrence for another
+     * place. An occurrence that is a place itself is marked whole, also if it holds another place.
      */
-    Unit with(Unit other) {
+    Occurrence with(Occurrence other) {
       var all = new ArrayList<>(places);
       all.addAll(other.places);
-      return new Unit(eId, holds && other.holds, all);
+      return new Occurrence(eId, holds && other.holds, all);
     }
   }
 

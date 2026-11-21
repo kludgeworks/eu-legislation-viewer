@@ -29,13 +29,13 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="Page 57, recommendation 3, first sentence:"/>
          </p>
          <old>
             <list kind="definition">
-               <unit eId="cor_1/old/def_1" kind="definition">
+               <occurrence eId="cor_1/old/def_1" kind="definition">
                   <heading>
                      <emphasis kind="i">
                         <t v="for:"/>
@@ -49,12 +49,12 @@
                         <t v=","/>
                      </p>
                   </quotedStructure>
-               </unit>
+               </occurrence>
             </list>
          </old>
          <new>
             <list kind="definition">
-               <unit eId="cor_1/new/def_1" kind="definition">
+               <occurrence eId="cor_1/new/def_1" kind="definition">
                   <heading>
                      <emphasis kind="i">
                         <t v="read:"/>
@@ -68,10 +68,10 @@
                         <t v="."/>
                      </p>
                   </quotedStructure>
-               </unit>
+               </occurrence>
             </list>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

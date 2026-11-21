@@ -49,12 +49,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Economic Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2658/87 of "/>
                <date date="1987-07-23">
@@ -66,36 +66,36 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 9 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Whereas in order to ensure uniform application of the combined nomenclature annexed to that Regulation, it is necessary to adopt measures concerning the classification of the goods referred to in the annex to the present Regulation;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <p>
                <t v="Whereas Regulation (EEC) No 2658/87 has set down the general rules for the interpretation of the combined nomenclature and these rules also apply to any other nomenclature which is wholly or partly based on it or which adds any additional subdivisions to it and which is established by specific Community provisions, with a view to the application of tariff or other measures relating to trade in goods;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <p>
                <t v="Whereas, pursuant to the said general rules, the goods described in column 1 of the table annexed to this Regulation must be classified under the appropriate CN codes indicated in column 2, by virtue of the reasons set out in column 3;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <p>
                <t v="Whereas this Regulation concerns also the products referred to in Commission Regulations (EEC) No 1278/83"/>
                <noteRef href="#note_3" marker="3"/>
                <t v="; whereas, therefore, the latter Regulation should be repealed;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <p>
                <t v="Whereas the measures provided for in this Regulation are in accordance with the opinion of the Nomenclature Committee,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -104,23 +104,23 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The goods described in column 1 of the annexed table are now classified within the combined nomenclature under the appropriate CN codes indicated in column 2 of the table."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="Regulation (EEC) No 1287/83 is hereby repealed."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -131,7 +131,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -200,7 +200,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -295,7 +295,7 @@
                </tr>
             </rowGroup>
          </table>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

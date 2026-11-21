@@ -70,21 +70,21 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the Treaty of Accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia, and in particular Article 2(3) thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the Act of Accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia, and in particular Article 57(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -92,15 +92,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Certain technical amendments are necessary in several Commission Regulations concerning organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs in order to carry out the necessary adaptations by reason of accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia (hereinafter referred to as the new Member States) to the Union."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -113,8 +113,8 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=" establishes the models of the Community logo as well as the indications to be inserted in that logo. Annex V, Part B.2 and B.3, should be completed in order to include the language versions of the new Member States."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -127,8 +127,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" lays down the list of third countries referred to in Article 11(1)(a) of Regulation (EEC) No 2092/91. The references in that Annex to the Czech Republic and to Hungary should be deleted."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -145,8 +145,8 @@
                </date>
                <t v=", inform each other and the Commission on the measures they have taken for the purpose of implementing the system of certificates, in particular as concerns the competent authorities. That date should be adapted with regard to the new Member States, taking into account the necessity of ensuring that information concerning the competent bodies in the new Member States is available throughout the Community at the date of accession."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
@@ -167,8 +167,8 @@
                </date>
                <t v=", provide a report on the implementation and the results of these measures. It is necessary to adapt these dates with regard to the new Member States, in order to give them sufficient time to provide the required information."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -185,15 +185,15 @@
                </date>
                <t v=". It is necessary to adapt that date with regard to the new Member States."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="Regulations (EEC) No 2092/91, (EEC) No 94/92, (EC) No 1788/2001, (EC) No 473/2002 and (EC) No 223/2003 should therefore be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -202,7 +202,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -210,18 +210,18 @@
             <t v="In Annex V to Regulation (EEC) No 2092/91, Part B is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_1/pnt_1" kind="point" numbered="true">
+            <occurrence eId="art_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
                <p>
                   <t v="Part B.2 is replaced by the following:"/>
                </p>
-               <unit eId="art_1/pnt_1/pnt_B.2"
-                     kind="level"
-                     depth="1"
-                     numbered="true"
-                     rank="2">
+               <occurrence eId="art_1/pnt_1/pnt_B.2"
+                           kind="level"
+                           depth="1"
+                           numbered="true"
+                           rank="2">
                   <num>
                      <t v="B.2"/>
                   </num>
@@ -230,9 +230,9 @@
                   </heading>
                   <figure src="L_2004122EN.01001201.tif"/>
                   <figure src="L_2004122EN.01001301.tif"/>
-               </unit>
-            </unit>
-            <unit eId="art_1/pnt_2" kind="point" numbered="true">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="art_1/pnt_2" kind="point" numbered="true">
                <provenance amendingAct="32004R0746R(01)"
                            action="replaced"
                            location="TO"
@@ -244,11 +244,11 @@
                   <t v="Part B.3.1 is replaced as follows:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1"
-                        kind="level"
-                        depth="1"
-                        numbered="true"
-                        rank="2">
+                  <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1"
+                              kind="level"
+                              depth="1"
+                              numbered="true"
+                              rank="2">
                      <num>
                         <t v="‘"/>
                         <t v="B.3.1."/>
@@ -257,159 +257,159 @@
                         <t v="Single indications:"/>
                      </heading>
                      <list kind="definition" separator=":">
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_1" kind="definition">
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_1" kind="definition">
                            <heading>
                               <t v="ES"/>
                            </heading>
                            <p>
                               <t v="AGRICULTURA ECOLÓGICA"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_2" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_2" kind="definition">
                            <heading>
                               <t v="CS"/>
                            </heading>
                            <p>
                               <t v="EKOLOGICKÉ ZEMĚDĚLSTVÍ"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_3" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_3" kind="definition">
                            <heading>
                               <t v="DA"/>
                            </heading>
                            <p>
                               <t v="ØKOLOGISK JORDBRUG"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_4" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_4" kind="definition">
                            <heading>
                               <t v="DE"/>
                            </heading>
                            <p>
                               <t v="BIOLOGISCHE LANDWIRTSCHAFT, ÖKOLOGISCHER LANDBAU"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_5" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_5" kind="definition">
                            <heading>
                               <t v="ET"/>
                            </heading>
                            <p>
                               <t v="MAHEPÕLLUMAJANDUS, ÖKOLOOGILINE PÕLLUMAJANDUS"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_6" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_6" kind="definition">
                            <heading>
                               <t v="EL"/>
                            </heading>
                            <p>
                               <t v="ΒΙΟΛΟΓΙΚΗ ΓΕΩΡΓΙΑ"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_7" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_7" kind="definition">
                            <heading>
                               <t v="EN"/>
                            </heading>
                            <p>
                               <t v="ORGANIC FARMING"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_8" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_8" kind="definition">
                            <heading>
                               <t v="FR"/>
                            </heading>
                            <p>
                               <t v="AGRICULTURE BIOLOGIQUE"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_9" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_9" kind="definition">
                            <heading>
                               <t v="IT"/>
                            </heading>
                            <p>
                               <t v="AGRICOLTURA BIOLOGICA"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_10" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_10" kind="definition">
                            <heading>
                               <t v="LV"/>
                            </heading>
                            <p>
                               <t v="BIOLOĞISKĀ LAUKSAIMNIECĪBA"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_11" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_11" kind="definition">
                            <heading>
                               <t v="LT"/>
                            </heading>
                            <p>
                               <t v="EKOLOGINIS ŽEMĖS ŪKIS"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_12" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_12" kind="definition">
                            <heading>
                               <t v="HU"/>
                            </heading>
                            <p>
                               <t v="ÖKOLÓGIAI GAZDÁLKODÁS"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_13" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_13" kind="definition">
                            <heading>
                               <t v="MT"/>
                            </heading>
                            <p>
                               <t v="AGRIKULTURA ORGANIKA"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_14" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_14" kind="definition">
                            <heading>
                               <t v="NL"/>
                            </heading>
                            <p>
                               <t v="BIOLOGISCHE LANDBOUW"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_15" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_15" kind="definition">
                            <heading>
                               <t v="PL"/>
                            </heading>
                            <p>
                               <t v="ROLNICTWO EKOLOGICZNE"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_16" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_16" kind="definition">
                            <heading>
                               <t v="PT"/>
                            </heading>
                            <p>
                               <t v="AGRICULTURA BIOLÓGICA"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_17" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_17" kind="definition">
                            <heading>
                               <t v="SK"/>
                            </heading>
                            <p>
                               <t v="EKOLOGICKÉ POĽNOHOSPODÁRSTVO"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_18" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_18" kind="definition">
                            <heading>
                               <t v="SL"/>
                            </heading>
                            <p>
                               <t v="EKOLOŠKO KMETIJSTVO"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_19" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_19" kind="definition">
                            <heading>
                               <t v="FI"/>
                            </heading>
                            <p>
                               <t v="LUONNONMUKAINEN MAATALOUSTUOTANTO"/>
                            </p>
-                        </unit>
-                        <unit eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_20" kind="definition">
+                        </occurrence>
+                        <occurrence eId="art_1/pnt_2/qstr_1/pnt_B.3.1/def_20" kind="definition">
                            <heading>
                               <t v="SV"/>
                            </heading>
@@ -417,22 +417,22 @@
                               <t v="EKOLOGISKT JORDBRUK"/>
                               <t v="’"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
+                  </occurrence>
                </quotedStructure>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="In the Annex to Regulation (EEC) No 94/1992, the entries on the Czech Republic and Hungary are deleted."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -440,7 +440,7 @@
             <t v="In Article 7 of Regulation (EC) No 1788/2001, the following paragraph is added:"/>
          </p>
          <quotedStructure eId="art_3/qstr_1">
-            <unit eId="art_3/qstr_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_3/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date of information referred to in the second paragraph shall be "/>
@@ -450,10 +450,10 @@
                      <t v="."/>
                   </quote>
                </p>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -461,7 +461,7 @@
             <t v="In Article 2 of Regulation (EC) No 473/2002, the following paragraph is inserted after the first paragraph:"/>
          </p>
          <quotedStructure eId="art_4/qstr_1">
-            <unit eId="art_4/qstr_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_4/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date referred to in the first indent of the first paragraph shall be "/>
@@ -475,10 +475,10 @@
                      <t v="."/>
                   </quote>
                </p>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_5" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
@@ -486,7 +486,7 @@
             <t v="In Article 6 of Regulation (EC) No 223/2003, the following paragraph is added:"/>
          </p>
          <quotedStructure eId="art_5/qstr_1">
-            <unit eId="art_5/qstr_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_5/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="For the Czech Republic, Cyprus, Estonia, Hungary, Latvia, Lithuania, Malta, Poland, Slovakia and Slovenia, the date of application referred to in point (a) of the first paragraph shall be "/>
@@ -496,17 +496,17 @@
                      <t v=" at the latest."/>
                   </quote>
                </p>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_6" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
          <p>
             <t v="This Regulation shall enter into force subject to and on the date of the entry into force of the Treaty of Accession of the Czech Republic, Estonia, Cyprus, Latvia, Lithuania, Hungary, Malta, Poland, Slovenia and Slovakia."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>

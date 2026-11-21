@@ -48,8 +48,8 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Each end can be any day. The page shows the two days as the reader gave them. The text for a day
  * is the act's rule, {@link Act#textOn}.
  *
- * <p>With {@code unit}, the page is limited to one provision: the wording of the provision on each
- * of the two days, and the steps between them. The history of a provision on Read links there.
+ * <p>With {@code occurrence}, the page is limited to one provision: the wording of the provision on
+ * each of the two days, and the steps between them. The history of a provision on Read links there.
  *
  * <p>The page redirects to the canonical address of the comparison in these cases:
  *
@@ -103,10 +103,10 @@ class CompareController {
           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate to,
       @RequestParam(name = ComparePage.VIEW, required = false) @Nullable String view,
-      @RequestParam(name = ComparePage.UNIT, required = false) @Nullable String unit,
+      @RequestParam(name = ComparePage.OCCURRENCE, required = false) @Nullable String occurrence,
       @RequestParam(defaultValue = "false") boolean prepared,
       HttpServletRequest request) {
-    var page = new Page(new Eli(type, year, number), code, from, to, view, unit);
+    var page = new Page(new Eli(type, year, number), code, from, to, view, occurrence);
     if (!page.at(from, to)) {
       return ActLookupPages.seeOther(page.address(), request);
     }
@@ -117,7 +117,8 @@ class CompareController {
             + " → "
             + Dates.inShort(page.toDay);
     var frame = Frame.of(request);
-    var masthead = MastheadView.comparing(page.act, page.fromDay, page.toDay, unit, page.language);
+    var masthead =
+        MastheadView.comparing(page.act, page.fromDay, page.toDay, occurrence, page.language);
     var today = Timeline.today(clock);
     if (page.before) {
       return ResponseEntity.ok()
@@ -175,7 +176,7 @@ class CompareController {
                         page.fromDay,
                         later,
                         page.toDay,
-                        unit,
+                        occurrence,
                         page.language,
                         today,
                         marks),
@@ -239,7 +240,7 @@ class CompareController {
     final LocalDate toDay;
     final boolean before;
     final @Nullable String view;
-    final @Nullable String unit;
+    final @Nullable String occurrence;
 
     Page(
         Eli eli,
@@ -247,10 +248,10 @@ class CompareController {
         @Nullable LocalDate from,
         @Nullable LocalDate to,
         @Nullable String view,
-        @Nullable String unit) {
+        @Nullable String occurrence) {
       this.eli = eli;
       this.view = view;
-      this.unit = unit;
+      this.occurrence = occurrence;
       language = Requests.language(code);
       act = acts.act(eli);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
@@ -286,7 +287,7 @@ class CompareController {
     /** Returns the address of the page, with its days, and its view or its provision. */
     String address() {
       var page = new ComparePage(Links.compare(eli, language), fromDay, toDay, null, view);
-      return unit == null ? page.href() : page.href(unit);
+      return occurrence == null ? page.href() : page.href(occurrence);
     }
 
     /** Returns the version whose text shows the law on {@code day}, {@link Act#textOn}. */
@@ -344,7 +345,7 @@ class CompareController {
               case Text.Ready alsoReady -> {
                 var parts = Links.page(eli, from, to, language, null, view).on(fromDay, toDay);
                 yield templates.catalogueCompareReady(
-                    unit == null ? parts.changes() : parts.sides(List.of(unit)),
+                    occurrence == null ? parts.changes() : parts.sides(List.of(occurrence)),
                     "Comparing the law on "
                         + Dates.inWords(fromDay)
                         + " with the law on "

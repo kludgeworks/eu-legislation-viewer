@@ -21,7 +21,7 @@
       </ACT>
     </x:context>
     <x:expect label="numbers the citations through the preamble, not within each group"
-              test="$x:result/*:preamble/*:citations/*:unit/@eId => string-join(' ') = 'pbl_1/cit_1 pbl_1/cit_2 pbl_1/cit_3'"/>
+              test="$x:result/*:preamble/*:citations/*:occurrence/@eId => string-join(' ') = 'pbl_1/cit_1 pbl_1/cit_2 pbl_1/cit_3'"/>
   </x:scenario>
 
   <x:scenario label="Unnumbered CONSIDs among numbered recitals">
@@ -41,11 +41,11 @@
       </ACT>
     </x:context>
     <x:expect label="are no recitals of their own: rct_1 and rct_2, not a third by position"
-              test="$x:result//*:recitals/*:unit/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2'"/>
+              test="$x:result//*:recitals/*:occurrence/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2'"/>
     <x:expect label="one before the first numbered recital opens them"
               test="$x:result//*:recitals/*:intro//*:t/@v = 'Whereas:'"/>
     <x:expect label="one after a numbered recital continues it"
-              test="$x:result//*:recitals/*:unit[1]//*:t/@v = 'All interested parties were informed.'"/>
+              test="$x:result//*:recitals/*:occurrence[1]//*:t/@v = 'All interested parties were informed.'"/>
   </x:scenario>
 
   <x:scenario label="A paragraph number the published text gives twice (2. and 2), printed differently)">
@@ -60,10 +60,10 @@
       </ACT>
     </x:context>
     <x:expect label="keeps the label as published: both are art_1/par_2, marked ambiguous"
-              test="count($x:result//*:unit[@eId = 'art_1/par_2'][@ambiguous = 'true']) = 2"/>
+              test="count($x:result//*:occurrence[@eId = 'art_1/par_2'][@ambiguous = 'true']) = 2"/>
     <x:expect label="and so are the points under them"
-              test="count($x:result//*:unit[@eId = 'art_1/par_2/pnt_a'][@ambiguous = 'true']) = 2"/>
-    <x:expect label="the paragraph numbered once isn't" test="empty($x:result//*:unit[@eId = 'art_1/par_1']/@ambiguous)"/>
+              test="count($x:result//*:occurrence[@eId = 'art_1/par_2/pnt_a'][@ambiguous = 'true']) = 2"/>
+    <x:expect label="the paragraph numbered once isn't" test="empty($x:result//*:occurrence[@eId = 'art_1/par_1']/@ambiguous)"/>
   </x:scenario>
 
   <x:scenario label="A recital holding headed sections">
@@ -82,7 +82,7 @@
       </ACT>
     </x:context>
     <x:expect label="numbers them within the recital: rct_1/level_1, rct_1/level_2"
-              test="$x:result//*:recitals//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pbl_1/rct_1/level_1 pbl_1/rct_1/level_2'"/>
+              test="$x:result//*:recitals//*:occurrence[@kind = 'level']/@eId => string-join(' ') = 'pbl_1/rct_1/level_1 pbl_1/rct_1/level_2'"/>
   </x:scenario>
 
   <x:scenario label="Recitals in groups, with unnumbered CONSIDs and a number printed twice">
@@ -103,12 +103,12 @@
       </ACT>
     </x:context>
     <x:expect label="the unnumbered ones are no recitals: only (1) and the two (2)"
-              test="$x:result//*:unit[@kind = 'recital']/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2 pbl_1/rct_2'"/>
+              test="$x:result//*:occurrence[@kind = 'recital']/@eId => string-join(' ') = 'pbl_1/rct_1 pbl_1/rct_2 pbl_1/rct_2'"/>
     <x:expect label="Whereas: opens the recitals" test="$x:result//*:recitals/*:intro//*:t/@v = 'Whereas:'"/>
     <x:expect label="the lone one in group B is the group's text"
-              test="$x:result//*:unit[@eId = 'pbl_1/division_B']/*:p//*:t/@v = 'No sampling was needed.'"/>
+              test="$x:result//*:occurrence[@eId = 'pbl_1/division_B']/*:p//*:t/@v = 'No sampling was needed.'"/>
     <x:expect label="(2) in two groups is the source repeating a preamble-wide number: both marked"
-              test="count($x:result//*:unit[@eId = 'pbl_1/rct_2'][@ambiguous = 'true']) = 2"/>
+              test="count($x:result//*:occurrence[@eId = 'pbl_1/rct_2'][@ambiguous = 'true']) = 2"/>
   </x:scenario>
 
   <x:scenario label="An article printed without a number">
@@ -123,7 +123,7 @@
       </ACT>
     </x:context>
     <x:expect label="is art_unnumbered-1, not art_2 by position, which Article 2 prints"
-              test="$x:result//*:unit[@kind = 'article']/@eId => string-join(' ') = 'art_1 art_unnumbered-1 art_2'"/>
+              test="$x:result//*:occurrence[@kind = 'article']/@eId => string-join(' ') = 'art_1 art_unnumbered-1 art_2'"/>
   </x:scenario>
 
   <x:scenario label="An act printed in two languages (Article 2, Artículo 2)">
@@ -137,7 +137,7 @@
       </ACT>
     </x:context>
     <x:expect label="gives the article's two versions one eId, marked ambiguous"
-              test="count($x:result//*:unit[@eId = 'art_2'][@ambiguous = 'true']) = 2"/>
+              test="count($x:result//*:occurrence[@eId = 'art_2'][@ambiguous = 'true']) = 2"/>
   </x:scenario>
 
   <x:scenario label="An OJ act's preamble and signature">
@@ -159,7 +159,7 @@
     <x:expect label="has the formulas around citations and recitals"
               test="$x:result/*:preamble/*/local-name() = ('formula', 'citations', 'recitals', 'formula') and $x:result/*:preamble/*:formula/@name = ('actingEntity', 'enactingFormula')"/>
     <x:expect label="numbers citations by position and recitals by label"
-              test="$x:result/*:preamble/*:citations/*:unit/@eId = ('pbl_1/cit_1', 'pbl_1/cit_2') and $x:result/*:preamble/*:recitals/*:unit/@eId = 'pbl_1/rct_1'"/>
+              test="$x:result/*:preamble/*:citations/*:occurrence/@eId = ('pbl_1/cit_1', 'pbl_1/cit_2') and $x:result/*:preamble/*:recitals/*:occurrence/@eId = 'pbl_1/rct_1'"/>
     <x:expect label="keeps the recitals' intro" test="$x:result/*:preamble/*:recitals/*:intro/*:p/*:t/@v = 'Whereas:'"/>
     <x:expect label="types the date of the signature, keeping the place as text" test="$x:result//*:placeAndDate">
       <placeAndDate><t v="Done at Brussels, "/><date date="2026-02-27"><t v="27 February 2026"/></date><t v="."/></placeAndDate>

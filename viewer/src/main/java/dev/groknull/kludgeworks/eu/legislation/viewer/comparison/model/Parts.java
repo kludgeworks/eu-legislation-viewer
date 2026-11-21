@@ -11,7 +11,7 @@ import java.util.Map;
 
 /**
  * The parts of one element against the parts of the same element in the other text. The parts are
- * the own blocks of a unit, or the rows and cells of a table.
+ * the own blocks of an occurrence, or the rows and cells of a table.
  *
  * <p>The parts that say the same in both texts match, in order, with the Myers diff of
  * java-diff-utils. Between two matches, each part differs:

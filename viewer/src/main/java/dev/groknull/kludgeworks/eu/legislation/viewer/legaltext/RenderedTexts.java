@@ -11,10 +11,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
 
 /**
- * Renders texts, whole or a run of their units, for example the fold of a comparison, and keeps the
- * HTML in Valkey ({@link HtmlCacheConfiguration}). The text is read and decoded whole either way,
- * which takes tenths of a second for the largest texts, and rendering the largest whole takes as
- * long again, so the HTML is kept and the text is read once. The decoded text is not kept.
+ * Renders texts, whole or a run of their occurrences, for example the fold of a comparison, and
+ * keeps the HTML in Valkey ({@link HtmlCacheConfiguration}). The text is read and decoded whole
+ * either way, which takes tenths of a second for the largest texts, and rendering the largest whole
+ * takes as long again, so the HTML is kept and the text is read once. The decoded text is not kept.
  */
 @Component
 class RenderedTexts {
@@ -55,28 +55,30 @@ class RenderedTexts {
   }
 
   /**
-   * Returns the units of the text from the unit {@code first} to the unit {@code last}, as HTML.
-   * Each unit is whole, in the order of the text. Returns empty HTML if the text does not have
-   * {@code first}, and none if no such text is stored. Only what is returned is cached.
+   * Returns the occurrences of the text from the occurrence {@code first} to the occurrence {@code
+   * last}, as HTML. Each occurrence is whole, in the order of the text. Returns empty HTML if the
+   * text does not have {@code first}, and none if no such text is stored. Only what is returned is
+   * cached.
    */
   @Cacheable(
       cacheNames = HtmlCacheConfiguration.CACHE,
       key = "#text.value() + ':' + #first + ':' + #last",
       unless = "#result == null")
-  public Optional<String> units(TextId text, String first, String last) {
+  public Optional<String> occurrences(TextId text, String first, String last) {
     var start = System.nanoTime();
     var read = content.read(text);
     if (read.isEmpty()) {
       return Optional.empty();
     }
     var out = new StringOutput();
-    var units = read.get().units(first, last);
-    units.forEach(unit -> html.element(unit).writeTo(out));
+    var occurrences = read.get().occurrences(first, last);
+    occurrences.forEach(occurrence -> html.element(occurrence).writeTo(out));
     var rendered = out.toString();
     LOG.debug(
-        "Rendered a run of units of text {}, not cached: {} units, {} KB of HTML, in {} ms",
+        "Rendered a run of occurrences of text {}, not cached: {} occurrences, {} KB of HTML, in {}"
+            + " ms",
         text.value(),
-        units.size(),
+        occurrences.size(),
         rendered.length() / 1024,
         (System.nanoTime() - start) / 1_000_000);
     return Optional.of(rendered);

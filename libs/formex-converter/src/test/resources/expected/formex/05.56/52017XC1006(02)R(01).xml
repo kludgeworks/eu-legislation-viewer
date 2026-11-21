@@ -29,14 +29,14 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 74, Annex IV, the following text is inserted after the entry for Bulgaria:"/>
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="definition" separator=":">
-                  <unit eId="cor_1/new/qstr_1/def_1" kind="definition">
+                  <occurrence eId="cor_1/new/qstr_1/def_1" kind="definition">
                      <heading>
                         <t v="‘"/>
                         <emphasis kind="b">
@@ -47,11 +47,11 @@
                         <t v="Croatian. In urgent cases, the Republic of Croatia will accept a translation into English on condition of reciprocity."/>
                         <t v="’"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

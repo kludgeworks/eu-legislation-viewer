@@ -26,7 +26,7 @@
    </preface>
    <body/>
    <annexes>
-      <unit eId="let_1" kind="letter" rank="1">
+      <occurrence eId="let_1" kind="letter" rank="1">
          <num>
             <t v="A."/>
          </num>
@@ -69,17 +69,17 @@
             <t v="I therefore suggest that all provisions of that Agreement (Articles 1 to 19) be made to apply to EUFOR RCA, on the understanding that:"/>
          </p>
          <list kind="dash">
-            <unit eId="let_1/idt_1" kind="indent">
+            <occurrence eId="let_1/idt_1" kind="indent">
                <p>
                   <t v="each mention of EUFOR in the above-mentioned articles will be considered to refer to EUFOR RCA;"/>
                </p>
-            </unit>
-            <unit eId="let_1/idt_2" kind="indent">
+            </occurrence>
+            <occurrence eId="let_1/idt_2" kind="indent">
                <p>
                   <t v="the means of transport referred to in Articles 1(3)(a), 3(2) and 4(3) will be considered to include the means of transport belonging to the national contingents making up EUFOR RCA, but also those hired or chartered by EUFOR RCA;"/>
                </p>
-            </unit>
-            <unit eId="let_1/idt_3" kind="indent">
+            </occurrence>
+            <occurrence eId="let_1/idt_3" kind="indent">
                <p>
                   <t v="the reference to United Nations Security Council Resolution 1778 (2007) of "/>
                   <date date="2007-09-25">
@@ -91,7 +91,7 @@
                   </date>
                   <t v="."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <p>
             <t v="I should be grateful if you would let me know whether you accept these suggestions. If you do accept, this letter, together with your reply, will constitute a legally-binding international agreement between the Central African Republic and the European Union on the status of EUFOR RCA, which will enter into force on the date on which your letter of reply is received."/>
@@ -114,8 +114,8 @@
             <t v="&#xA;                "/>
          </p>
          <figure src="L_2014098EN.01000302.tif" content="signature"/>
-      </unit>
-      <unit eId="let_2" kind="letter" rank="1">
+      </occurrence>
+      <occurrence eId="let_2" kind="letter" rank="1">
          <num>
             <t v="B."/>
          </num>
@@ -158,17 +158,17 @@
                <t v="I therefore suggest that all provisions of that Agreement (Articles 1 to 19) be made to apply to EUFOR RCA, on the understanding that:"/>
             </p>
             <list kind="dash">
-               <unit eId="let_2/qstr_1/idt_1" kind="indent">
+               <occurrence eId="let_2/qstr_1/idt_1" kind="indent">
                   <p>
                      <t v="each mention of EUFOR in the above-mentioned articles will be considered to refer to EUFOR RCA;"/>
                   </p>
-               </unit>
-               <unit eId="let_2/qstr_1/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="let_2/qstr_1/idt_2" kind="indent">
                   <p>
                      <t v="the means of transport referred to in Articles 1(3)(a), 3(2) and 4(3) will be considered to include the means of transport belonging to the national contingents making up EUFOR RCA, but also those hired or chartered by EUFOR RCA;"/>
                   </p>
-               </unit>
-               <unit eId="let_2/qstr_1/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="let_2/qstr_1/idt_3" kind="indent">
                   <p>
                      <t v="the reference to United Nations Security Council Resolution 1778 (2007) of "/>
                      <date date="2007-09-25">
@@ -180,7 +180,7 @@
                      </date>
                      <t v="."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="I should be grateful if you would let me know whether you accept these suggestions. If you do accept, this letter, together with your reply, will constitute a legally-binding international agreement between the Central African Republic and the European Union on the status of EUFOR RCA, which will enter into force on the date on which your letter of reply is received."/>
@@ -209,7 +209,7 @@
             <t v="&#xA;                "/>
          </p>
          <figure src="L_2014098EN.01000401.tif" content="signature"/>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

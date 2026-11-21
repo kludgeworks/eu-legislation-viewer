@@ -16,7 +16,7 @@ import org.jmolecules.ddd.annotation.ValueObject;
  *
  * <p>A version includes the acts that Cellar lists for it ({@link Version#integrates}), and the
  * acts that its own text marks first. Cellar's list can lack an act that the text already marks.
- * For example, the version of 767/2008 of 29 December 2017 marks 16 units with 2017/2226, but
+ * For example, the version of 767/2008 of 29 December 2017 marks 16 occurrences with 2017/2226, but
  * Cellar lists 2017/2226 only from the version of 11 June 2019.
  *
  * <p>An act that the text of a version marks is first marked there if no earlier version includes

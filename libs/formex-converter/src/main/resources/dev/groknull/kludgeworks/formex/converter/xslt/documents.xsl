@@ -3,7 +3,7 @@
 <!--
   Documents within documents: attachments (related documents), corrigenda (CORRECTION, OLD.CORR,
   NEW.CORR) and letters of an exchange of letters. Included Formex files (INCL.ELEMENT) are in
-  units.xsl. Part of formex-to-legal-text.xsl.
+  occurrences.xsl. Part of formex-to-legal-text.xsl.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -56,7 +56,7 @@
     <xsl:variable name="all" as="element(CONS.ANNEX)+" select="CONTENTS/CONS.ANNEX"/>
     <xsl:variable name="own" as="element(CONS.ANNEX)*" select="$all[exists(f:protocol(.))]"/>
     <xsl:variable name="top" as="element(CONS.ANNEX)+" select="$all except $own"/>
-    <unit eId="{$eid}" kind="attachment">
+    <occurrence eId="{$eid}" kind="attachment">
       <heading>
         <xsl:call-template name="f:lines">
           <xsl:with-param name="lines" as="element()*" select="TITLE/TI/*, TITLE/STI/*"/>
@@ -74,7 +74,7 @@
           <xsl:with-param name="annexBase" as="xs:string?" select="()" tunnel="yes"/>
         </xsl:apply-templates>
       </xsl:for-each>
-    </unit>
+    </occurrence>
   </xsl:template>
 
   <!-- one of a consolidated treaty's documents whose content is just protocols or annexes -->
@@ -113,14 +113,14 @@
     <xsl:sequence select="'att' || f:file-seq($entry/REF.PHYS/@FILE) || '-'"/>
   </xsl:function>
 
-  <!-- an attached document: unit kind="attachment" (AKN's attachment), its title as heading, then
+  <!-- an attached document: occurrence kind="attachment" (AKN's attachment), its title as heading, then
        its text, with its articles, annexes and attachments under it (att_1/art_1, att_1/anx) -->
   <xsl:template name="f:attachment">
     <xsl:param name="doc" as="element()"/>
     <xsl:param name="eid" as="xs:string"/>
     <xsl:param name="annexes" as="element()*"/>
     <xsl:param name="attachments" as="element()*"/>
-    <unit eId="{$eid}" kind="attachment">
+    <occurrence eId="{$eid}" kind="attachment">
       <xsl:if test="$doc/TITLE">
         <heading>
           <xsl:call-template name="f:lines">
@@ -163,7 +163,7 @@
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         </xsl:apply-templates>
       </xsl:for-each>
-    </unit>
+    </occurrence>
   </xsl:template>
 
   <!-- ============================================================ corrigenda, letters, embedded documents -->
@@ -171,12 +171,12 @@
   <!-- one correction of a corrigendum: where, then the old and the new wording -->
   <xsl:template match="CORRECTION" mode="block">
     <xsl:variable name="eid" as="xs:string" select="f:eid((), 'cor', string(count(preceding::CORRECTION) + 1))"/>
-    <unit eId="{$eid}" kind="correction">
+    <occurrence eId="{$eid}" kind="correction">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
       </xsl:call-template>
-    </unit>
+    </occurrence>
   </xsl:template>
 
   <xsl:template match="DESCRIPTION" mode="block">
@@ -221,7 +221,7 @@
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($annexFragments, $scope)"/>
     <xsl:variable name="earlier" as="xs:integer" select="if (exists($at)) then count(subsequence($annexFragments, 1, $at - 1)//LETTER) else ($letterOffset, 0)[1]"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'let', string($earlier + count($scope//LETTER[. &lt;&lt; current()]) + 1))"/>
-    <unit eId="{$eid}" kind="letter">
+    <occurrence eId="{$eid}" kind="letter">
       <!-- "A. Letter from the European Union": A. is the num -->
       <xsl:call-template name="f:title">
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -233,7 +233,7 @@
         <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': $ctx}" tunnel="yes"/>
       </xsl:call-template>
-    </unit>
+    </occurrence>
   </xsl:template>
 
   <!-- the parts of an act met inside another document's content (CONS.OTH, letters): their text,
@@ -263,7 +263,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- a table of contents is navigation the reader builds from the units; not text -->
+  <!-- a table of contents is navigation the reader builds from the occurrences; not text -->
   <xsl:template match="TOC" mode="block"/>
 
   <!-- notes are collected after their file, or a consolidated version's table; what else a group of

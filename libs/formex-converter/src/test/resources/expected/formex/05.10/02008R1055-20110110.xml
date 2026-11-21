@@ -73,12 +73,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 184/2005 of the European Parliament and of the Council of "/>
                <date date="2005-01-12">
@@ -88,7 +88,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 4(3) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -96,30 +96,30 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Regulation (EC) No 184/2005 establishes a common framework for the systematic production of Community statistics concerning balance of payments, international trade in services and foreign direct investment."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="It is necessary to specify the common quality standards, as well as the content and periodicity of the quality reports, in accordance with Article 4(3) of Regulation (EC) No 184/2005."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Balance of Payments Committee set up by Regulation (EC) No 184/2005,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -128,15 +128,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Member States shall supply on an annual basis a quality report drawn up in accordance with the rules laid down in the Annex."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -147,8 +147,8 @@
                         marker="O001001M001000"/>
             <t v="Member States shall supply their quality report not later than 31 May every year."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -159,7 +159,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -167,7 +167,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32010R1227"
                      action="replaced"
                      location="AR:1;PT:2 .AND. AX:0"
@@ -175,11 +175,11 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pnt_1"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         <occurrence eId="anx/pnt_1"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -191,12 +191,12 @@
             <p>
                <t v="The quality report shall contain both quantitative and qualitative indicators of quality. The Commission (Eurostat) shall provide the results of the quantitative indicators for each Member State, calculated on the basis of data provided. Member States shall interpret and comment on them, in the light of their collection methodology."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_2"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_2"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -206,23 +206,23 @@
                </emphasis>
             </heading>
             <list kind="dash">
-               <unit eId="anx/pnt_2/idt_1" kind="indent">
+               <occurrence eId="anx/pnt_2/idt_1" kind="indent">
                   <p>
                      <t v="Every year, by the end of the first quarter, the Commission (Eurostat) shall supply the Member States with draft documents for quality reports, based on data sent the previous year, partially pre-filled with most of the quantitative indicators and other information available to the Commission (Eurostat)."/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_2/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_2/idt_2" kind="indent">
                   <p>
                      <t v="Every year, within two months of receiving the pre-filled quality report and not later than 31 May, Member States shall supply the Commission (Eurostat) with the completed quality report."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_3"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_3"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -234,8 +234,8 @@
             <p>
                <t v="The quality report shall contain quantitative and qualitative indicators covering all the quality criteria defined in Article 12(1) of Regulation (EC) No 223/2009."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

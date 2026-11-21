@@ -14,19 +14,19 @@
 
   <sch:ns prefix="lt" uri="https://kludgeworks.groknull.dev/ns/legal-text/1"/>
 
-  <!-- units, quoted structures and notes that are in force: not inside a deleted placeholder -->
-  <xsl:key name="live-eid" match="(lt:unit | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]" use="@eId"/>
+  <!-- occurrences, quoted structures and notes that are in force: not inside a deleted placeholder -->
+  <xsl:key name="live-eid" match="(lt:occurrence | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]" use="@eId"/>
   <xsl:key name="note" match="lt:note" use="@eId"/>
   <xsl:key name="marker" match="lt:*[@marker][@amendingAct]" use="@marker"/>
 
   <sch:pattern id="eids">
-    <sch:title>eIds identify units</sch:title>
-    <!-- a deleted placeholder keeps its old eId, which a later insertion may reuse; units whose label
+    <sch:title>eIds identify occurrences</sch:title>
+    <!-- a deleted placeholder keeps its old eId, which a later insertion may reuse; occurrences whose label
          the published text repeats under one parent share theirs, each marked ambiguous -->
-    <sch:rule context="(lt:unit | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]">
+    <sch:rule context="(lt:occurrence | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]">
       <sch:assert id="unique-live-eid" test="count(key('live-eid', @eId)) = 1 or (every $u in key('live-eid', @eId) satisfies $u/@ambiguous = 'true')">
         The eId <sch:value-of select="@eId"/> belongs to <sch:value-of select="count(key('live-eid', @eId))"/>
-        units in force; it must belong to one, unless all are marked ambiguous.
+        occurrences in force; it must belong to one, unless all are marked ambiguous.
       </sch:assert>
     </sch:rule>
   </sch:pattern>
@@ -45,10 +45,10 @@
 
   <sch:pattern id="kinds">
     <sch:title>What the schema documents per kind holds</sch:title>
-    <sch:rule context="lt:unit[@depth or @box]">
+    <sch:rule context="lt:occurrence[@depth or @box]">
       <sch:assert id="levels-only" test="@kind = 'level'">depth and box belong to levels; <sch:value-of select="@eId"/> is a <sch:value-of select="@kind"/>.</sch:assert>
     </sch:rule>
-    <sch:rule context="lt:unit[@eurlexAnchor]">
+    <sch:rule context="lt:occurrence[@eurlexAnchor]">
       <sch:assert id="annexes-only" test="@kind = 'annex'">eurlexAnchor belongs to annexes; <sch:value-of select="@eId"/> is a <sch:value-of select="@kind"/>.</sch:assert>
     </sch:rule>
     <sch:rule context="lt:ref">
@@ -57,7 +57,7 @@
       </sch:assert>
     </sch:rule>
     <sch:rule context="lt:old | lt:new">
-      <sch:assert id="correction-sides" test="ancestor::lt:unit[1]/@kind = 'correction'">old and new are the sides of a correction.</sch:assert>
+      <sch:assert id="correction-sides" test="ancestor::lt:occurrence[1]/@kind = 'correction'">old and new are the sides of a correction.</sch:assert>
     </sch:rule>
   </sch:pattern>
 

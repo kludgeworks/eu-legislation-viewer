@@ -131,7 +131,7 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Article 81(a) of Council Regulation (EEC) No 1408/71 of "/>
                <date date="1971-06-14">
@@ -141,28 +141,28 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", pursuant to which it is the duty of the Administrative Commission to deal with all administrative matters arising from Regulation (EEC) No 1408/71 and subsequent regulations,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Article 2(1) of Council Regulation (EEC) No 574/72"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=", pursuant to which it is the duty of the Administrative Commission to draw up models of certificates, certified statements, declarations, applications and other documents necessary for the application of the regulations,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Decision No 153"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" on the model forms necessary for the application of these Regulations (E 001, E 103 to E 127),"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_4" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to Decision No 170"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=" concerning the compilation of the lists provided for in Article 94(4) and Article 95(4) of Council Regulation (EEC) No 574/72,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -170,38 +170,38 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="It is necessary to update the forms to take account of changes to national legislation in the Member States."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="The current structure of form E 108 as shown in Decision No 153 does not allow the institution in the place of residence to notify the competent institution of the cessation of entitlement to health benefits affecting both the pensioner and any members of his or her family residing in a Member State other than the competent State."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The amendment of form E 108 requires certain amendments to Decision No 170 to adapt it to the new function of form E 108."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The one-year validity of form E 121 issued by German, French, Italian and Portuguese institutions can only relate to the application of Article 30, and not Article 29, of Regulation (EEC) No 574/72,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -210,23 +210,23 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="list_5/pnt_1" kind="point" numbered="true">
+      <occurrence eId="list_5/pnt_1" kind="point" numbered="true">
          <num>
             <t v="1."/>
          </num>
          <p>
             <t v="The model form E 108 as set out in Decision No 153 shall be replaced by the model appended hereto."/>
          </p>
-      </unit>
-      <unit eId="list_5/pnt_2" kind="point" numbered="true">
+      </occurrence>
+      <occurrence eId="list_5/pnt_2" kind="point" numbered="true">
          <num>
             <t v="2."/>
          </num>
          <p>
             <t v="Decision No 170 is amended in accordance with the Annex to this Decision."/>
          </p>
-      </unit>
-      <unit eId="list_5/pnt_3" kind="point" numbered="true">
+      </occurrence>
+      <occurrence eId="list_5/pnt_3" kind="point" numbered="true">
          <num>
             <t v="3."/>
          </num>
@@ -237,10 +237,10 @@
             </emphasis>
             <t v=". It shall be applicable from the date of its adoption by the Administrative Commission of the European Communities on Social Security for Migrant Workers."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -248,7 +248,7 @@
             <t v="Decision No 170 is amended as follows:"/>
          </p>
          <list kind="alpha">
-            <unit eId="anx/pnt_a" kind="point" numbered="true">
+            <occurrence eId="anx/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -260,7 +260,7 @@
                   <t v=" is amended as follows:"/>
                </p>
                <list kind="roman">
-                  <unit eId="anx/pnt_a/pnt_i" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_a/pnt_i" kind="point" numbered="true">
                      <num>
                         <t v="(i)"/>
                      </num>
@@ -268,7 +268,7 @@
                         <t v="point 3 is replaced by the following:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_a/pnt_i/qstr_1">
-                        <unit eId="anx/pnt_a/pnt_i/qstr_1/pnt_3" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_a/pnt_i/qstr_1/pnt_3" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="3."/>
@@ -277,13 +277,13 @@
                               <t v="The competent institution or the institution of the place of residence, as the case may be, shall inform the institution of the place of residence or the competent institution of the suspension or withdrawal of entitlement to benefits in kind by sending it two copies of form E 108, with part A completed. The receiving institution, after completing part B of the form, must return one copy to the sending institution."/>
                               <t v="’"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </quotedStructure>
                      <p>
                         <t v=";"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_a/pnt_ii" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_a/pnt_ii" kind="point" numbered="true">
                      <num>
                         <t v="(ii)"/>
                      </num>
@@ -291,7 +291,7 @@
                         <t v="in point 4 the existing paragraphs (c) and (d) are renumbered (d) and (e), and a new paragraph (c) is added as follows:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_a/pnt_ii/qstr_1">
-                        <unit eId="anx/pnt_a/pnt_ii/qstr_1/pnt_c" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_a/pnt_ii/qstr_1/pnt_c" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="(c)"/>
@@ -300,13 +300,13 @@
                               <t v="the date of suspension or withdrawal of entitlement notified by the institution of the place of residence to the competent institution. This date shall be stated on form E 108 and shall be the date on which form E 109 ceases to apply."/>
                               <t v="’"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </quotedStructure>
                      <p>
                         <t v=";"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_a/pnt_iii" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_a/pnt_iii" kind="point" numbered="true">
                      <num>
                         <t v="(iii)"/>
                      </num>
@@ -314,7 +314,7 @@
                         <t v="point 5 is replaced by the following:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_a/pnt_iii/qstr_1">
-                        <unit eId="anx/pnt_a/pnt_iii/qstr_1/pnt_5" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_a/pnt_iii/qstr_1/pnt_5" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="5."/>
@@ -323,15 +323,15 @@
                               <t v="The institution of the place of residence shall keep the list up to date, by taking as a basis its own information or that provided by the competent institution concerning acquisition of entitlement (form E 109) or suspension or withdrawal of such entitlement (form E 108), and taking account of the one-year validity of E 109 forms issued by German, French, Italian and Portuguese institutions, though without prejudice to the form with which it is possible to end validity of this entitlement as soon as facts occur which, under the legislation of these Member States, justify the withdrawal or suspension of entitlement to benefits."/>
                               <t v="’"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </quotedStructure>
                      <p>
                         <t v=";"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/pnt_b" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
@@ -343,7 +343,7 @@
                   <t v=" is amended as follows:"/>
                </p>
                <list kind="roman">
-                  <unit eId="anx/pnt_b/pnt_i" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_b/pnt_i" kind="point" numbered="true">
                      <num>
                         <t v="(i)"/>
                      </num>
@@ -363,8 +363,8 @@
                      <p>
                         <t v=";"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_b/pnt_ii" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_b/pnt_ii" kind="point" numbered="true">
                      <num>
                         <t v="(ii)"/>
                      </num>
@@ -376,7 +376,7 @@
                         <t v=" in point 4 the existing paragraphs (d) and (e) becomes (e) and (f), and a new paragraph (d) is added as follows:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_b/pnt_ii/qstr_1">
-                        <unit eId="anx/pnt_b/pnt_ii/qstr_1/pnt_d" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_b/pnt_ii/qstr_1/pnt_d" kind="point" numbered="true">
                            <provenance amendingAct="32003D0148R(01)"
                                        action="replaced"
                                        location="TO"
@@ -389,7 +389,7 @@
                               <t v="the date of suspension or withdrawal of entitlement notified by the institution of the place of residence to the competent institution. This date shall be stated on form E 108 and shall be the date on which form E 121 ceases to apply."/>
                               <t v="’"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </quotedStructure>
                      <p>
                         <provenance amendingAct="32003D0148R(01)"
@@ -398,8 +398,8 @@
                                     marker="O000001M001000"/>
                         <t v=";"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_b/pnt_iii" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_b/pnt_iii" kind="point" numbered="true">
                      <num>
                         <t v="(iii)"/>
                      </num>
@@ -407,7 +407,7 @@
                         <t v="point 5 is replaced by the following:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_b/pnt_iii/qstr_1">
-                        <unit eId="anx/pnt_b/pnt_iii/qstr_1/pnt_5" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_b/pnt_iii/qstr_1/pnt_5" kind="point" numbered="true">
                            <num>
                               <t v="‘"/>
                               <t v="5."/>
@@ -416,14 +416,14 @@
                               <t v="The institution of the place of residence shall keep the list up to date by taking as a basis its own information or that supplied by the institution responsible for the pension, or the competent sickness insurance organisation of the Member State responsible for the pension, concerning acquisition of entitlement (form E 121) or the suspension or withdrawal of entitlement to benefits (form E 108), and taking account of the one-year validity period of E 121 forms issued by the German, French, Italian and Portuguese institutions concerning cases in which pensioners' family members reside in a Member State other than the competent Member State where the pensioner resides (Article 30 of Regulation (EEC) No 574/72), though without prejudice to the form with which it is possible to end validity of this entitlement as soon as facts occur which, under the legislation of these Member States, justify the withdrawal or suspension of entitlement to benefits."/>
                               <t v="’"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </quotedStructure>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="att_1" kind="attachment">
+      </occurrence>
+      <occurrence eId="att_1" kind="attachment">
          <figure src="L_2006077EN.01003302.tif">
             <provenance amendingAct="32006D0203"
                         action="replaced"
@@ -997,7 +997,7 @@
                </p>
             </description>
          </figure>
-      </unit>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

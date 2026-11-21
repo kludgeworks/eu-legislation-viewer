@@ -39,16 +39,16 @@
     @endfor
   </div>
   <provision-links hidden data-href="${provision}">
-    @for(var unit : provisions)
-      <span data-unit="${unit}"></span>
+    @for(var occurrence : provisions)
+      <span data-occurrence="${occurrence}"></span>
     @endfor
   </provision-links>
   <margin-rules hidden>
     @for(var mark : margin.marks())
       @if(mark.marker())
-        <p class="marker" data-unit="${mark.unit()}" data-end="${mark.holds()}"><span class="marker-kind">Not in this text</span>@if(!mark.words().isEmpty()): ${mark.words()}@endif · <a href="${mark.href()}">${mark.act()}</a></p>
+        <p class="marker" data-occurrence="${mark.occurrence()}" data-end="${mark.holds()}"><span class="marker-kind">Not in this text</span>@if(!mark.words().isEmpty()): ${mark.words()}@endif · <a href="${mark.href()}">${mark.act()}</a></p>
       @else
-        <p class="rule-note" data-unit="${mark.unit()}" data-heading="${mark.holds()}"><a href="${mark.href()}">${mark.act()}</a> · ${mark.words()}</p>
+        <p class="rule-note" data-occurrence="${mark.occurrence()}" data-heading="${mark.holds()}"><a href="${mark.href()}">${mark.act()}</a> · ${mark.words()}</p>
       @endif
     @endfor
   </margin-rules>

@@ -14,7 +14,7 @@
  *       language, and {@link TextRemoved} tells the other modules, which delete what they keep by
  *       each removed identity.
  *   <li>To read a text, Content reads its row and parses the JSON into {@link Element} records. A
- *       part of a text, for example a run of units, is cut from the whole text.
+ *       part of a text, for example a run of occurrences, is cut from the whole text.
  * </ul>
  *
  * <p>The module is a sliced onion:

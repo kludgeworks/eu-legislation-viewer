@@ -29,11 +29,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="The publication of United Kingdom Government notice 2013/C 320/02 is to be considered null and void."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

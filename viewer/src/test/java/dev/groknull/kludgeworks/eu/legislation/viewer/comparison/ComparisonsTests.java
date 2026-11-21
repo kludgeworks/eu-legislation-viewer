@@ -140,11 +140,11 @@ class ComparisonsTests {
 
     // The comparison has its opening and size, and the annex is a row of its own
     assertThat(annex.annexInserted()).isTrue();
-    assertThat(annex.shown().children()).extracting(Element::name).doesNotContain("unit");
+    assertThat(annex.shown().children()).extracting(Element::name).doesNotContain("occurrence");
     assertThat(annex.whole()).isEqualTo(Difference.Whole.of(whole.shown()));
     assertThat(annex.size().words()).isPositive();
     assertThat(whole.whole()).isNull();
-    assertThat(whole.shown().children()).extracting(Element::name).contains("unit");
+    assertThat(whole.shown().children()).extracting(Element::name).contains("occurrence");
     assertThat(
             jdbc.sql(
                     "select count(*) from text_comparison_whole where from_text = ? and to_text ="
@@ -157,7 +157,7 @@ class ComparisonsTests {
     assertThat(comparisons.difference(from, to, "art_1")).isEmpty();
   }
 
-  /** Returns {@code text} without its unit {@code eId}. */
+  /** Returns {@code text} without its occurrence {@code eId}. */
   private static XdmNode without(XdmNode text, String eId) throws SaxonApiException {
     var xslt =
         """
@@ -165,7 +165,7 @@ class ComparisonsTests {
             xmlns:lt="https://kludgeworks.groknull.dev/ns/legal-text/1">
           <xsl:param name="eId"/>
           <xsl:mode on-no-match="shallow-copy"/>
-          <xsl:template match="lt:unit[@eId = $eId]"/>
+          <xsl:template match="lt:occurrence[@eId = $eId]"/>
         </xsl:stylesheet>
         """;
     var transformer =

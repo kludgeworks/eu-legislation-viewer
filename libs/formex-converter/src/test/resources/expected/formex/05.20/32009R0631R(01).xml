@@ -29,12 +29,12 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 20, Annex, Part II, Chapter 4: Upper legform to bonnet leading edge test, Figure 4 is replaced as follows:"/>
          </p>
          <new>
-            <unit eId="cor_1/new/level_Figure-4" kind="level" depth="1" rank="1">
+            <occurrence eId="cor_1/new/level_Figure-4" kind="level" depth="1" rank="1">
                <num>
                   <emphasis kind="i">
                      <t v="Figure 4"/>
@@ -46,15 +46,15 @@
                   </emphasis>
                </subheading>
                <figure src="L_2011229EN.01001602.tif" content="other"/>
-            </unit>
+            </occurrence>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="On page 42, Annex, Part IV, Chapter IV: Upper legform to Frontal Protection System Leading Edge test, Figure 4 is replaced as follows:"/>
          </p>
          <new>
-            <unit eId="cor_2/new/level_Figure-4" kind="level" depth="1" rank="1">
+            <occurrence eId="cor_2/new/level_Figure-4" kind="level" depth="1" rank="1">
                <num>
                   <emphasis kind="i">
                      <t v="Figure 4"/>
@@ -66,9 +66,9 @@
                   </emphasis>
                </subheading>
                <figure src="L_2011229EN.01001701.tif" content="other"/>
-            </unit>
+            </occurrence>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

@@ -31,12 +31,12 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On cover page I, Notice No 2010/C 9/03, delete the footnote reference in the title;"/>
          </p>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="on page 2 of the text, under the title, delete the line "/>
             <quote startQuote="‘" endQuote="’">
@@ -44,7 +44,7 @@
             </quote>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

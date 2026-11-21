@@ -31,41 +31,41 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="Annex II is inserted as follows:"/>
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/anx_II" kind="annex" rank="1">
+               <occurrence eId="cor_1/new/qstr_1/anx_II" kind="annex" rank="1">
                   <num>
                      <t v="‘"/>
                      <t v="ANNEX II"/>
                   </num>
-                  <unit eId="cor_1/new/qstr_1/anx_II/level_1"
-                        kind="level"
-                        depth="1"
-                        rank="2">
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/level_1"
+                              kind="level"
+                              depth="1"
+                              rank="2">
                      <heading>
                         <emphasis kind="b">
                            <t v="APPROVAL MARK AND CERTIFICATE"/>
                         </emphasis>
                      </heading>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_I"
-                        kind="level"
-                        depth="2"
-                        numbered="true"
-                        rank="3">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_I"
+                              kind="level"
+                              depth="2"
+                              numbered="true"
+                              rank="3">
                      <num>
                         <t v="I."/>
                      </num>
                      <heading>
                         <t v="APPROVAL MARK"/>
                      </heading>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1"
-                           kind="point"
-                           numbered="true">
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1"
+                                 kind="point"
+                                 numbered="true">
                         <num>
                            <t v="1."/>
                         </num>
@@ -73,9 +73,9 @@
                            <t v="The approval mark shall be made up of:"/>
                         </p>
                         <list kind="alpha">
-                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_a"
-                                 kind="point"
-                                 numbered="true">
+                           <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_a"
+                                       kind="point"
+                                       numbered="true">
                               <num>
                                  <t v="(a)"/>
                               </num>
@@ -427,32 +427,32 @@
                               <p>
                                  <t v="and"/>
                               </p>
-                           </unit>
-                           <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_b"
-                                 kind="point"
-                                 numbered="true">
+                           </occurrence>
+                           <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_1/pnt_b"
+                                       kind="point"
+                                       numbered="true">
                               <num>
                                  <t v="(b)"/>
                               </num>
                               <p>
                                  <t v="an approval number corresponding to the number of the approval certificate drawn up for the prototype of the recording equipment or the record sheet or to the number of a tachograph card, placed at any point within the immediate proximity of that rectangle."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
-                     </unit>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_2"
-                           kind="point"
-                           numbered="true">
+                     </occurrence>
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_2"
+                                 kind="point"
+                                 numbered="true">
                         <num>
                            <t v="2."/>
                         </num>
                         <p>
                            <t v="The approval mark shall be shown on the descriptive plaque of each set of equipment and on each record sheet and on each tachograph card. It must be indelible and must always remain clearly legible."/>
                         </p>
-                     </unit>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_3"
-                           kind="point"
-                           numbered="true">
+                     </occurrence>
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_I/pnt_3"
+                                 kind="point"
+                                 numbered="true">
                         <num>
                            <t v="3."/>
                         </num>
@@ -462,13 +462,13 @@
                            <t v=" are expressed in millimetres, these dimensions being minima. The ratios between the dimensions must be maintained."/>
                         </p>
                         <figure src="L_2016146EN.01003301.tif" content="techDesign"/>
-                     </unit>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II"
-                        kind="level"
-                        depth="2"
-                        numbered="true"
-                        rank="3">
+                     </occurrence>
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II"
+                              kind="level"
+                              depth="2"
+                              numbered="true"
+                              rank="3">
                      <num>
                         <t v="II."/>
                      </num>
@@ -478,11 +478,11 @@
                      <p>
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1"
-                        kind="level"
-                        depth="3"
-                        rank="4">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1"
+                              kind="level"
+                              depth="3"
+                              rank="4">
                      <heading>
                         <t v="APPROVAL CERTIFICATE"/>
                      </heading>
@@ -495,26 +495,26 @@
                         <t v=":"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_1" kind="indent">
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_1" kind="indent">
                            <p>
                               <t v="approval of a type of recording equipment"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_2" kind="indent">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_2" kind="indent">
                            <p>
                               <t v="withdrawal of approval of a type of recording equipment"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_3" kind="indent">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_3" kind="indent">
                            <p>
                               <t v="approval of a model record sheet"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_4" kind="indent">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/idt_4" kind="indent">
                            <p>
                               <t v="withdrawal of approval of a model record sheet"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="Approval No:"/>
@@ -523,156 +523,156 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_1"
-                              kind="point"
-                              numbered="true">
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_1"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="1."/>
                            </num>
                            <p>
                               <t v="Trade mark or name …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_2"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_2"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="2."/>
                            </num>
                            <p>
                               <t v="Name of type or model …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_3"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_3"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="3."/>
                            </num>
                            <p>
                               <t v="Name of manufacturer …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_4"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_4"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="4."/>
                            </num>
                            <p>
                               <t v="Address of manufacturer …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_5"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_5"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="5."/>
                            </num>
                            <p>
                               <t v="Submitted for approval on …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_6"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_6"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="6."/>
                            </num>
                            <p>
                               <t v="Tested at …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_7"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_7"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="7."/>
                            </num>
                            <p>
                               <t v="Date and number of the test(s) …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_8"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_8"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="8."/>
                            </num>
                            <p>
                               <t v="Date of approval …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_9"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_9"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="9."/>
                            </num>
                            <p>
                               <t v="Date of withdrawal of approval …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_10"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_10"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="10."/>
                            </num>
                            <p>
                               <t v="Type or types of recording equipment in which sheet is designed to be used"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_11"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_11"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="11."/>
                            </num>
                            <p>
                               <t v="Place …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_12"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_12"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="12."/>
                            </num>
                            <p>
                               <t v="Date …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_13"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_13"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="13."/>
                            </num>
                            <p>
                               <t v="Descriptive documents annexed …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_14"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_II/level_1/list_2/pnt_14"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="14."/>
                            </num>
                            <p>
                               <t v="Remarks (including the position of seals if applicable)"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="(Signature)"/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_III"
-                        kind="level"
-                        depth="2"
-                        numbered="true"
-                        rank="3">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III"
+                              kind="level"
+                              depth="2"
+                              numbered="true"
+                              rank="3">
                      <num>
                         <t v="III."/>
                      </num>
@@ -682,11 +682,11 @@
                      <p>
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1"
-                        kind="level"
-                        depth="3"
-                        rank="4">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1"
+                              kind="level"
+                              depth="3"
+                              rank="4">
                      <heading>
                         <t v="APPROVAL CERTIFICATE FOR DIGITAL TACHOGRAPHS"/>
                      </heading>
@@ -698,32 +698,32 @@
                         <noteRef href="#note_anx01003201-3" marker="3"/>
                         <t v=":"/>
                      </p>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_1" kind="indent">
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_1" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
                         <p>
                            <t v="approval of:"/>
                         </p>
-                     </unit>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_2" kind="indent">
+                     </occurrence>
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_2" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
                         <p>
                            <t v="withdrawal of approval of:"/>
                         </p>
-                     </unit>
+                     </occurrence>
                      <list kind="other">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_1" kind="point">
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_1" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="recording equipment model"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_2" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_2" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -731,39 +731,39 @@
                               <t v="recording equipment component"/>
                               <noteRef href="#note_anx01003201-4" marker="4"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_3" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_3" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a driver's card"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_4" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_4" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a workshop card"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_5" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_5" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a company card"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_6" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_6" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a controller's card"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="Approval No:"/>
@@ -772,156 +772,156 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_1"
-                              kind="point"
-                              numbered="true">
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_1"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="1."/>
                            </num>
                            <p>
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_2"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_2"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="2."/>
                            </num>
                            <p>
                               <t v="Name of model …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_3"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_3"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="3."/>
                            </num>
                            <p>
                               <t v="Name of manufacturer …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_4"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_4"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="4."/>
                            </num>
                            <p>
                               <t v="Address of manufacturer …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_5"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_5"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="5."/>
                            </num>
                            <p>
                               <t v="Submitted for approval for …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_6"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_6"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="6."/>
                            </num>
                            <p>
                               <t v="Laboratory(-ies) …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_7"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_7"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="7."/>
                            </num>
                            <p>
                               <t v="Date and number of test report …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_8"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_8"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="8."/>
                            </num>
                            <p>
                               <t v="Date of approval …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_9"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_9"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="9."/>
                            </num>
                            <p>
                               <t v="Date of withdrawal of approval …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_10"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_10"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="10."/>
                            </num>
                            <p>
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_11"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_11"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="11."/>
                            </num>
                            <p>
                               <t v="Place …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_12"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_12"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="12."/>
                            </num>
                            <p>
                               <t v="Date …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_13"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_13"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="13."/>
                            </num>
                            <p>
                               <t v="Descriptive documents annexed …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_14"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_3/pnt_14"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="14."/>
                            </num>
                            <p>
                               <t v="Remarks (including the position of seals if applicable)"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="(Signature)"/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV"
-                        kind="level"
-                        depth="2"
-                        numbered="true"
-                        rank="3">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV"
+                              kind="level"
+                              depth="2"
+                              numbered="true"
+                              rank="3">
                      <num>
                         <t v="IV."/>
                      </num>
@@ -931,11 +931,11 @@
                      <p>
                         <t v="A Member State which has granted approval shall issue the applicant with an approval certificate, the model of which is given below. When informing other Member States of approvals issued or, if the occasion should arise, withdrawn, a Member State shall use copies of that certificate."/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1"
-                        kind="level"
-                        depth="3"
-                        rank="4">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1"
+                              kind="level"
+                              depth="3"
+                              rank="4">
                      <heading>
                         <t v="APPROVAL CERTIFICATE FOR SMART TACHOGRAPHS"/>
                      </heading>
@@ -947,32 +947,32 @@
                         <noteRef href="#note_anx01003201-5" marker="5"/>
                         <t v=":"/>
                      </p>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_1" kind="indent">
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_1" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
                         <p>
                            <t v="approval of:"/>
                         </p>
-                     </unit>
-                     <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_2" kind="indent">
+                     </occurrence>
+                     <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_2" kind="indent">
                         <num>
                            <t v="☐"/>
                         </num>
                         <p>
                            <t v="withdrawal of approval of:"/>
                         </p>
-                     </unit>
+                     </occurrence>
                      <list kind="other">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_1" kind="point">
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_1" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="recording equipment model"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_2" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_2" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
@@ -980,39 +980,39 @@
                               <t v="recording equipment component"/>
                               <noteRef href="#note_anx01003201-6" marker="6"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_3" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_3" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a driver's card"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_4" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_4" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a workshop card"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_5" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_5" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a company card"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_6" kind="point">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_6" kind="point">
                            <num>
                               <t v="☐"/>
                            </num>
                            <p>
                               <t v="a controller's card"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="Approval No:"/>
@@ -1021,213 +1021,213 @@
                         <t v="…."/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_1"
-                              kind="point"
-                              numbered="true">
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_1"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="1."/>
                            </num>
                            <p>
                               <t v="Manufacturing brand or trademark …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_2"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_2"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="2."/>
                            </num>
                            <p>
                               <t v="Name of model …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_3"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_3"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="3."/>
                            </num>
                            <p>
                               <t v="Name of manufacturer …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_4"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_4"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="4."/>
                            </num>
                            <p>
                               <t v="Address of manufacturer …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_5"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_5"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="5."/>
                            </num>
                            <p>
                               <t v="Submitted for approval for …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="6."/>
                            </num>
                            <list kind="alpha">
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_a"
-                                    kind="point"
-                                    numbered="true">
+                              <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_a"
+                                          kind="point"
+                                          numbered="true">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
                                  <p>
                                     <t v="Test laboratory for functional certification …"/>
                                  </p>
-                              </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_b"
-                                    kind="point"
-                                    numbered="true">
+                              </occurrence>
+                              <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_b"
+                                          kind="point"
+                                          numbered="true">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
                                  <p>
                                     <t v="Test laboratory for security certification …"/>
                                  </p>
-                              </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_c"
-                                    kind="point"
-                                    numbered="true">
+                              </occurrence>
+                              <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_6/pnt_c"
+                                          kind="point"
+                                          numbered="true">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
                                  <p>
                                     <t v="Test laboratory for interoperability certification …"/>
                                  </p>
-                              </unit>
+                              </occurrence>
                            </list>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="7."/>
                            </num>
                            <list kind="alpha">
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_a"
-                                    kind="point"
-                                    numbered="true">
+                              <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_a"
+                                          kind="point"
+                                          numbered="true">
                                  <num>
                                     <t v="(a)"/>
                                  </num>
                                  <p>
                                     <t v="Date and number of functional certificate …"/>
                                  </p>
-                              </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_b"
-                                    kind="point"
-                                    numbered="true">
+                              </occurrence>
+                              <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_b"
+                                          kind="point"
+                                          numbered="true">
                                  <num>
                                     <t v="(b)"/>
                                  </num>
                                  <p>
                                     <t v="Date and number of security certificate …"/>
                                  </p>
-                              </unit>
-                              <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_c"
-                                    kind="point"
-                                    numbered="true">
+                              </occurrence>
+                              <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_7/pnt_c"
+                                          kind="point"
+                                          numbered="true">
                                  <num>
                                     <t v="(c)"/>
                                  </num>
                                  <p>
                                     <t v="Date and number of interoperability certificate …"/>
                                  </p>
-                              </unit>
+                              </occurrence>
                            </list>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_8"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_8"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="8."/>
                            </num>
                            <p>
                               <t v="Date of approval …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_9"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_9"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="9."/>
                            </num>
                            <p>
                               <t v="Date of withdrawal of approval …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_10"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_10"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="10."/>
                            </num>
                            <p>
                               <t v="Model of recording equipment(s) with which the component is designed to be used"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_11"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_11"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="11."/>
                            </num>
                            <p>
                               <t v="Place …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_12"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_12"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="12."/>
                            </num>
                            <p>
                               <t v="Date …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_13"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_13"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="13."/>
                            </num>
                            <p>
                               <t v="Descriptive documents annexed …"/>
                            </p>
-                        </unit>
-                        <unit eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_14"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_3/pnt_14"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="14."/>
                            </num>
                            <p>
                               <t v="Remarks (including the position of seals if applicable)"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="(Signature)"/>
                      </p>
-                  </unit>
-               </unit>
+                  </occurrence>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
    <notes>
       <note eId="note_anx01003201-1" marker="1" kind="chapter">

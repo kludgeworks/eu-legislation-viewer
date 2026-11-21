@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 20:"/>
          </p>
@@ -38,7 +38,7 @@
                <t v="for:"/>
             </p>
             <quotedStructure eId="cor_1/old/qstr_1">
-               <unit eId="cor_1/old/qstr_1/tis_VII" kind="division" rank="1">
+               <occurrence eId="cor_1/old/qstr_1/tis_VII" kind="division" rank="1">
                   <num>
                      <t v="‘"/>
                      <t v="TITLE VII"/>
@@ -46,7 +46,7 @@
                   <subheading>
                      <t v="TAXABLE AMOUNT"/>
                   </subheading>
-                  <unit eId="cor_1/old/qstr_1/tis_VII/cpt_4" kind="division" rank="2">
+                  <occurrence eId="cor_1/old/qstr_1/tis_VII/cpt_4" kind="division" rank="2">
                      <num>
                         <t v="CHAPTER 4"/>
                      </num>
@@ -55,8 +55,8 @@
                         <t v="’"/>
                         <t v=","/>
                      </subheading>
-                  </unit>
-               </unit>
+                  </occurrence>
+               </occurrence>
             </quotedStructure>
          </old>
          <new>
@@ -64,7 +64,7 @@
                <t v="read:"/>
             </p>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/tis_VII" kind="division" rank="1">
+               <occurrence eId="cor_1/new/qstr_1/tis_VII" kind="division" rank="1">
                   <num>
                      <t v="‘"/>
                      <t v="TITLE VII"/>
@@ -72,7 +72,7 @@
                   <subheading>
                      <t v="TAXABLE AMOUNT"/>
                   </subheading>
-                  <unit eId="cor_1/new/qstr_1/tis_VII/cpt_1" kind="division" rank="2">
+                  <occurrence eId="cor_1/new/qstr_1/tis_VII/cpt_1" kind="division" rank="2">
                      <num>
                         <t v="CHAPTER 1"/>
                      </num>
@@ -81,11 +81,11 @@
                         <t v="’"/>
                         <t v="."/>
                      </subheading>
-                  </unit>
-               </unit>
+                  </occurrence>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

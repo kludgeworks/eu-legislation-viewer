@@ -49,12 +49,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on European Union and to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Directive 2006/22/EC of the European Parliament and of the Council of "/>
                <date date="2006-03-15">
@@ -64,7 +64,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 11(3) and 13 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -72,15 +72,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="The primary source of information at the roadside checks is the recordings made in the tachograph. The lack of records should only be justified where tachograph records, including manual entries, were not possible for objective reasons. In such cases the attestation confirming such reasons should be established."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -89,8 +89,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" proved to be insufficient to cover all cases where it is technically impossible to record a driver’s activities on the recording equipment."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -103,16 +103,16 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=", the form should be modified by the insertion of additional elements to those indicated in Article 11(3) of Directive 2006/22/EC."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The form of attestation should be used only if the tachograph records, for objective technical reasons, are unable to demonstrate that the provisions of Regulation (EC) No 561/2006 have been respected."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
@@ -125,7 +125,7 @@
                <noteRef href="#note_4" marker="4"/>
                <t v=","/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -134,22 +134,22 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The Annex to Decision 2007/230/EC is replaced by the text in the Annex to this Decision."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Member States."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -231,7 +231,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -369,7 +369,7 @@
                </p>
             </description>
          </figure>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

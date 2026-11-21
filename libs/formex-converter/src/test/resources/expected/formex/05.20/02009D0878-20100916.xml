@@ -80,11 +80,11 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Protocol on transitional provisions, and in particular Article 4 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -92,15 +92,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Article 4 of the Protocol on transitional provisions provides that until the entry into force of the European Council Decision referred to in the first subparagraph of Article 16(6) of the Treaty on European Union regarding the list of Council configurations, the list of Council configurations, in addition to the General Affairs and the Foreign Affairs ones, should be established by the General Affairs Council, acting by a simple majority."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -119,15 +119,15 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="In order to comply with the provisions of the Treaties, it is appropriate to adapt this list, which is to be inserted in the Council's Rules of Procedure,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -136,24 +136,24 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The list of Council configurations referred to in Article 4 of the Protocol on transitional provisions is set out in Annex."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/unp_1" kind="paragraph">
+         <occurrence eId="art_2/unp_1" kind="paragraph">
             <p>
                <t v="This Decision shall enter into force on the day of its adoption."/>
             </p>
-         </unit>
-         <unit eId="art_2/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="It shall be published in the "/>
                <emphasis kind="i">
@@ -161,21 +161,21 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="LIST OF COUNCIL CONFIGURATIONS"/>
                </emphasis>
             </heading>
-            <unit eId="anx/level_1/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/level_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -184,8 +184,8 @@
                   <noteRef href="#note_1" marker="1"/>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -194,8 +194,8 @@
                   <noteRef href="#note_2" marker="2"/>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_3" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -204,8 +204,8 @@
                   <noteRef href="#note_3" marker="3"/>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_4" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_4" kind="point" numbered="true">
                <num>
                   <t v="4."/>
                </num>
@@ -214,16 +214,16 @@
                   <noteRef href="#note_4" marker="4"/>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_5" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_5" kind="point" numbered="true">
                <num>
                   <t v="5."/>
                </num>
                <p>
                   <t v="Employment, social policy, health and consumer affairs;"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_6" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_6" kind="point" numbered="true">
                <num>
                   <changed amendingAct="32010D0594"
                            action="replaced"
@@ -242,32 +242,32 @@
                   <noteRef href="#note_5" marker="5"/>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_7" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_7" kind="point" numbered="true">
                <num>
                   <t v="7."/>
                </num>
                <p>
                   <t v="Transport, telecommunications and energy;"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_8" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_8" kind="point" numbered="true">
                <num>
                   <t v="8."/>
                </num>
                <p>
                   <t v="Agriculture and fisheries;"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_9" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_9" kind="point" numbered="true">
                <num>
                   <t v="9."/>
                </num>
                <p>
                   <t v="Environment;"/>
                </p>
-            </unit>
-            <unit eId="anx/level_1/pnt_10" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_10" kind="point" numbered="true">
                <num>
                   <changed amendingAct="32010D0594"
                            action="replaced"
@@ -286,9 +286,9 @@
                   <noteRef href="#note_6" marker="6"/>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
+            </occurrence>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

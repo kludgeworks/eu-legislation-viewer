@@ -30,8 +30,8 @@ import org.jspecify.annotations.Nullable;
  * @param single the address that takes one day, in the parameter {@code on}
  * @param range the address that takes two days, in the parameters {@code from} and {@code to}. Null
  *     if the page takes one day only.
- * @param unit the eId of the provision that a page with two days is limited to, which the form
- *     keeps. Null for the whole act.
+ * @param occurrence the eId of the provision that a page with two days is limited to, which the
+ *     form keeps. Null for the whole act.
  * @param changes the days with a change, for the calendar. The days are in order, with a semicolon
  *     between them. A day is its ISO date, an equals sign, and what each act does on it, with a
  *     vertical bar between the acts.
@@ -41,7 +41,7 @@ public record DayView(
     @Nullable String from,
     String single,
     @Nullable String range,
-    @Nullable String unit,
+    @Nullable String occurrence,
     String changes) {
 
   /**
@@ -56,14 +56,14 @@ public record DayView(
       @Nullable LocalDate first,
       String single,
       @Nullable String range,
-      @Nullable String unit,
+      @Nullable String occurrence,
       Language language) {
     return new DayView(
         day.toString(),
         first == null ? null : first.toString(),
         single,
         range,
-        unit,
+        occurrence,
         act.changeDays(language).entrySet().stream()
             .map(
                 each ->

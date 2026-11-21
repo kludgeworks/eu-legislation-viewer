@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 8, in the first recital of Decision of the EEA Joint Committee No 50/2007, the text of the footnote 1 shall become: "/>
             <quote startQuote="‘" endQuote="’">
@@ -43,7 +43,7 @@
                <t v="."/>
             </quote>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

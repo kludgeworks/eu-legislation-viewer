@@ -22,16 +22,16 @@ public interface ComparisonStore {
   Optional<Comparison> find(TextId from, TextId to, String version);
 
   /**
-   * Returns the unit of the difference at {@code eId} in the comparison of {@code from} with {@code
-   * to} whole, as the view shows it, if the store keeps it apart. It keeps it apart if the
+   * Returns the occurrence of the difference at {@code eId} in the comparison of {@code from} with
+   * {@code to} whole, as the view shows it, if the store keeps it apart. It keeps it apart if the
    * comparison has it cut down ({@link Difference#kept}).
    */
   Optional<Element> whole(TextId from, TextId to, String eId);
 
   /**
    * Keeps the comparison that the rules of {@code version} worked out, in place of one of another
-   * version. It keeps each difference as {@link Difference#kept} gives it, and the whole unit of
-   * each that this cuts down apart. The comparison can be kept already if another caller also
+   * version. It keeps each difference as {@link Difference#kept} gives it, and the whole occurrence
+   * of each that this cuts down apart. The comparison can be kept already if another caller also
    * worked it out. If it was not, it publishes {@link ComparisonKept} in the same transaction.
    *
    * @return the comparison as the store keeps it, as {@link #find} gives it

@@ -27,11 +27,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="This publication should be considered null and void."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

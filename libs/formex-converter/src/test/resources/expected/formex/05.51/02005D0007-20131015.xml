@@ -151,12 +151,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 3220/84 of "/>
                <date date="1984-11-13">
@@ -166,7 +166,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 5(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -174,7 +174,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -187,47 +187,47 @@
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="The Government of Cyprus has requested the Commission to authorise one method for grading pig carcases and has submitted the results of its dissection trial which was executed before the day of accession, by presenting part two of the protocol provided for in Article 3 of Regulation (EEC) No 2967/85."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The evaluation of this request has revealed that the conditions for authorising this grading method are fulfilled."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="In Cyprus, commercial practice does not require that the tongue and the kidneys are removed from the pig carcase; this should be taken into account in adjusting the weight for standard presentation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="No modification of the apparatus or the grading method may be authorised except by means of a new Commission Decision adopted in the light of experience gained; for this reason, the present authorisation may be revoked."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Management Committee for Pigmeat,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -236,7 +236,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <provenance amendingAct="32011D0418"
                      action="replaced"
                      location="AR:1;PT:1"
@@ -244,14 +244,14 @@
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/unp_1" kind="paragraph">
+         <occurrence eId="art_1/unp_1" kind="paragraph">
             <p>
                <t v="The use of the following methods is authorised for grading pig carcasses pursuant to point 1 of Section B.IV of Annex V to Council Regulation (EC) No 1234/2007"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=" in Cyprus:"/>
             </p>
             <list kind="dash">
-               <unit eId="art_1/unp_1/idt_1" kind="indent">
+               <occurrence eId="art_1/unp_1/idt_1" kind="indent">
                   <p>
                      <t v="the "/>
                      <quote startQuote="‘" endQuote="’">
@@ -259,8 +259,8 @@
                      </quote>
                      <t v=" apparatus and the assessment methods related thereto, details of which are given in Part I of the Annex,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/unp_1/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="art_1/unp_1/idt_2" kind="indent">
                   <p>
                      <t v="the "/>
                      <quote startQuote="‘" endQuote="’">
@@ -268,10 +268,10 @@
                      </quote>
                      <t v=" apparatus and the assessment methods related thereto, details of which are given in Part II of the Annex."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_1/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/unp_2" kind="paragraph">
             <p>
                <t v="As regards the apparatus "/>
                <quote startQuote="‘" endQuote="’">
@@ -287,9 +287,9 @@
                </emphasis>
                <t v=" on the site provided for in the Annex, Part II, point 3. The corresponding marking of the measurement site must be made at the same time as the measurement procedure."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <provenance amendingAct="32013D0502"
                      action="replaced"
                      location="AR:1"
@@ -297,12 +297,12 @@
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/unp_1" kind="paragraph">
+         <occurrence eId="art_2/unp_1" kind="paragraph">
             <p>
                <t v="Notwithstanding the standard presentation laid down in the first paragraph of point B.III of Annex V to Regulation (EC) No 1234/2007, pig carcasses in Cyprus may be presented without removing the tongue, kidneys and flare fat before the carcass is weighed and graded."/>
             </p>
-         </unit>
-         <unit eId="art_2/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="In the case of such presentation the recorded hot carcass weight shall be adjusted in accordance with the following formula:"/>
             </p>
@@ -338,27 +338,27 @@
                   </m:math>
                </math>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <p>
             <t v="Modifications of the apparatus or the assessment method shall not be authorised."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Republic of Cyprus."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32011D0418"
                      action="replaced"
                      location="AR:1;PT:2 .AND. AX:0"
@@ -366,14 +366,14 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="METHODS FOR GRADING PIG CARCASSES IN CYPRUS"/>
                </emphasis>
             </heading>
-         </unit>
-         <unit eId="anx/level_PART-I" kind="level" depth="2" rank="3">
+         </occurrence>
+         <occurrence eId="anx/level_PART-I" kind="level" depth="2" rank="3">
             <num>
                <t v="PART I"/>
             </num>
@@ -382,7 +382,7 @@
                   <t v="Hennessy Grading Probe (HGP 4)"/>
                </emphasis>
             </subheading>
-            <unit eId="anx/level_PART-I/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/level_PART-I/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -393,16 +393,16 @@
                   </quote>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="anx/level_PART-I/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_PART-I/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
                <p>
                   <t v="The apparatus shall be equipped with a probe of 5,95 millimetres diameter (and of 6,3 millimetres at the blade of the top of the probe) containing a photodiode (Siemens LED of the type LYU 260-EO) and photodetector of the type 58 MR and having an operating distance of between 0 and 120 millimetres. The results of the measurements shall be converted into estimated lean meat content by means of the HGP 4 itself or a computer linked to it."/>
                </p>
-            </unit>
-            <unit eId="anx/level_PART-I/pnt_3" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_PART-I/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -444,15 +444,15 @@
                   <t v="where:"/>
                </p>
                <list kind="definition" separator="=">
-                  <unit eId="anx/level_PART-I/pnt_3/def_1" kind="definition">
+                  <occurrence eId="anx/level_PART-I/pnt_3/def_1" kind="definition">
                      <heading>
                         <t v="Ŷ"/>
                      </heading>
                      <p>
                         <t v="the estimated percentage of lean meat in the carcass,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/level_PART-I/pnt_3/def_2" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/level_PART-I/pnt_3/def_2" kind="definition">
                      <heading>
                         <t v="X"/>
                         <emphasis kind="sub">
@@ -462,8 +462,8 @@
                      <p>
                         <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 centimetres off the midline of the split carcass, between the third and fourth last ribs,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/level_PART-I/pnt_3/def_3" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/level_PART-I/pnt_3/def_3" kind="definition">
                      <heading>
                         <t v="X"/>
                         <emphasis kind="sub">
@@ -477,14 +477,14 @@
                         </emphasis>
                         <t v="."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="This formula shall be valid for carcasses weighing between 55 and 120 kilograms."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="anx/level_PART-II" kind="level" depth="2" rank="3">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="anx/level_PART-II" kind="level" depth="2" rank="3">
             <num>
                <t v="PART II"/>
             </num>
@@ -493,7 +493,7 @@
                   <t v="Ultra FOM 300"/>
                </emphasis>
             </subheading>
-            <unit eId="anx/level_PART-II/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/level_PART-II/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -504,8 +504,8 @@
                   </quote>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="anx/level_PART-II/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_PART-II/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -515,8 +515,8 @@
                <p>
                   <t v="The results of the measurements shall be converted into estimated lean meat content by the Ultra FOM 300 apparatus itself."/>
                </p>
-            </unit>
-            <unit eId="anx/level_PART-II/pnt_3" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_PART-II/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -558,15 +558,15 @@
                   <t v="where:"/>
                </p>
                <list kind="definition" separator="=">
-                  <unit eId="anx/level_PART-II/pnt_3/def_1" kind="definition">
+                  <occurrence eId="anx/level_PART-II/pnt_3/def_1" kind="definition">
                      <heading>
                         <t v="Ŷ"/>
                      </heading>
                      <p>
                         <t v="the estimated percentage of lean meat in the carcass,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/level_PART-II/pnt_3/def_2" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/level_PART-II/pnt_3/def_2" kind="definition">
                      <heading>
                         <t v="X"/>
                         <emphasis kind="sub">
@@ -576,8 +576,8 @@
                      <p>
                         <t v="the thickness of back-fat (including rind) in millimetres, measured at 6 centimetres off the midline of the split carcass, between the third and fourth last ribs,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/level_PART-II/pnt_3/def_3" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/level_PART-II/pnt_3/def_3" kind="definition">
                      <heading>
                         <t v="X"/>
                         <emphasis kind="sub">
@@ -591,14 +591,14 @@
                         </emphasis>
                         <t v="."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="This formula shall be valid for carcasses weighing between 55 and 120 kilograms."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
+            </occurrence>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

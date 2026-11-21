@@ -537,7 +537,7 @@ class CellarActsTest {
   }
 
   @Test
-  void findsTheAmendmentsBetweenTwoVersionsAtTheUnitsOfTheirTexts() {
+  void findsTheAmendmentsBetweenTwoVersionsAtTheOccurrencesOfTheirTexts() {
     var act = act(AVSEC);
     var from = version(act.timeline().versions(), "02015R1998-20260101");
     var to = version(act.timeline().versions(), "02015R1998-20260322");
@@ -550,7 +550,8 @@ class CellarActsTest {
             List.of("anx", "anx/pnt_6.8.1", "anx/pnt_8.1.2.3/pnt_c", "anx/pnt_8.1.4.8"),
             Language.ENG);
 
-    // A deletion is found at the unit of the earlier text. An addition is found at the unit of the
+    // A deletion is found at the occurrence of the earlier text. An addition is found at the
+    // occurrence of the
     // later text.
     assertThat(amended.of("anx/pnt_6.8.1.8", true))
         .extracting(Amendment::act, Amendment::role)
@@ -572,14 +573,18 @@ class CellarActsTest {
   @Test
   void findsNoAmendmentOfALanguageVersionInAnother() {
     var act = act(AVSEC);
-    var units = List.of("anx", "anx/pnt_8.3.1");
+    var occurrences = List.of("anx", "anx/pnt_8.3.1");
 
     var from = version(act.timeline().versions(), "02015R1998-20160229");
     var to = version(act.timeline().versions(), "02015R1998-20170607");
 
-    assertThat(act.amended(from, to, units, units, Language.ENG).of("anx/pnt_8.3.1", false))
+    assertThat(
+            act.amended(from, to, occurrences, occurrences, Language.ENG)
+                .of("anx/pnt_8.3.1", false))
         .isEmpty();
-    assertThat(act.amended(from, to, units, units, Language.SWE).of("anx/pnt_8.3.1", false))
+    assertThat(
+            act.amended(from, to, occurrences, occurrences, Language.SWE)
+                .of("anx/pnt_8.3.1", false))
         .extracting(amendment -> amendment.act().celex())
         .containsExactly("32017R0837");
   }

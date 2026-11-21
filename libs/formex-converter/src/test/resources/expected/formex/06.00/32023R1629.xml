@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) No 1308/2013 of the European Parliament and of the Council of "/>
                <date date="2013-12-17">
@@ -58,7 +58,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 187, points (a) to (e), thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -66,7 +66,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -75,8 +75,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" lays down the rules for the management of import and export tariff quotas for agricultural products managed by a system of import and export licences and provides for specific rules."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -85,39 +85,39 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=", amends the quantities of products to be imported under some tariff quotas opened in favour of Brazil. The amendments concern tariff quotas in the sector of poultry with the following order numbers: 09.4211, 09.4214, 09.4217, 09.4251, 09.4252, 09.4253, 09.4410 and 09.4420 and tariff quota 09.4318 in the sector of sugar, and the creation of two additional tariff quotas in the sector of sugar."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The amendments made by that Agreement should be reflected in the respective Annexes to Implementing Regulation (EU) 2020/761: in Annex IV on tariff quotas in the sector of sugar and in Annex XII on tariff quotas in the sector of poultry."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Implementing Regulation (EU) 2020/761 should therefore be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The amendments to Implementing Regulation (EU) 2020/761 should apply to tariff quota periods starting after the entry into force of this Regulation. It is necessary to clarify that operators could apply for the difference between the new quantities and the quantities already allocated in the course of the ongoing tariff quota period as from the first application period starting after the entry into force of this Regulation. In particular, for the tariff quotas with order numbers 09.4211, 09.4214, 09.4217, 09.4251, 09.4252, 09.4410, and 09.4420 which are divided in sub-periods, the difference between new quantities allocated to sub-periods already expired and the quantities actually allocated during those sub-periods should be available for allocation as from the allocation period starting after the entry into force of this Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Committee for the Common Organisation of Agricultural Markets,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -126,7 +126,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -136,33 +136,33 @@
          <p>
             <t v="Annexes IV and XII to Implementing Regulation (EU) 2020/761 are amended in accordance with the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <heading>
             <t v="Transitional provisions"/>
          </heading>
-         <unit eId="art_2/unp_1" kind="paragraph">
+         <occurrence eId="art_2/unp_1" kind="paragraph">
             <p>
                <t v="Where the tariff quota period has already started on the day of entry into force of this Regulation, the difference between the new quantity and the quantities already allocated shall be made available to applications lodged after the entry into force of this Regulation."/>
             </p>
-         </unit>
-         <unit eId="art_2/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="The new quantity for tariff quotas 09.4211, 09.4214, 09.4217, 09.4251, 09.4252, 09.4410, and 09.4420 shall follow the rules on distributions among sub-periods provided for in Annex XII to Implementing Regulation (EU) 2020/761. The difference between the quantities allocated and the new quantity that remained unused in the sub-periods expired before the entry into force of this Regulation, shall be allocated as of the first application period following the entry into force of this Regulation."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <heading>
             <t v="Entry into force and application"/>
          </heading>
-         <unit eId="art_3/unp_1" kind="paragraph">
+         <occurrence eId="art_3/unp_1" kind="paragraph">
             <p>
                <t v="This Regulation shall enter into force on the seventh day following that of its publication in the "/>
                <emphasis kind="i">
@@ -170,13 +170,13 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_3/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply as of the first application period following the entry into force of this Regulation."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -259,7 +259,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -267,7 +267,7 @@
             <t v="Annexes IV and XII to Implementing Regulation (EU) 2020/761 are amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -275,7 +275,7 @@
                   <t v="Annex IV is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -283,7 +283,7 @@
                         <t v="the table relating to the tariff quota with order number 09.4318 is amended as follows:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx/pnt_1/pnt_a/pnt_i" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -361,8 +361,8 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_ii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -414,10 +414,10 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
-                  <unit eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1069,10 +1069,10 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -1080,7 +1080,7 @@
                   <t v="Annex XII is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1124,8 +1124,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1169,8 +1169,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -1214,8 +1214,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_d" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -1259,8 +1259,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_e" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -1304,8 +1304,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_f" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
@@ -1337,8 +1337,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_g" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
@@ -1370,8 +1370,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_h" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_h" kind="point" numbered="true">
                      <num>
                         <t v="(h)"/>
                      </num>
@@ -1403,11 +1403,11 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

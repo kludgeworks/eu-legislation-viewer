@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 4, Article 3 is replaced as follows:"/>
          </p>
@@ -41,7 +41,7 @@
             <p>
                <t v="Entry into force and application"/>
             </p>
-            <unit eId="cor_1/qstr_1/sub_1" kind="subparagraph">
+            <occurrence eId="cor_1/qstr_1/sub_1" kind="subparagraph">
                <p>
                   <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
                   <emphasis kind="i">
@@ -49,8 +49,8 @@
                   </emphasis>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="cor_1/qstr_1/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="cor_1/qstr_1/sub_2" kind="subparagraph">
                <p>
                   <t v="It shall apply from "/>
                   <date date="2021-10-01">
@@ -58,8 +58,8 @@
                   </date>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="cor_1/qstr_1/sub_3" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="cor_1/qstr_1/sub_3" kind="subparagraph">
                <p>
                   <t v="However, Article 2 shall apply from "/>
                   <date date="2019-12-01">
@@ -67,8 +67,8 @@
                   </date>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="cor_1/qstr_1/sub_4" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="cor_1/qstr_1/sub_4" kind="subparagraph">
                <p>
                   <t v="Substances and mixtures may, before "/>
                   <date date="2021-10-01">
@@ -77,9 +77,9 @@
                   <t v=", be classified, labelled and packaged in accordance with Regulation (EC) No 1272/2008 as amended by this Regulation."/>
                   <t v="’"/>
                </p>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

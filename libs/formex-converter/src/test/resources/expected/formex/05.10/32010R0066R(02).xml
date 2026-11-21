@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 13, in Annex II, the "/>
             <quote startQuote="‘" endQuote="’">
@@ -43,37 +43,37 @@
                   <p>
                      <t v="Better for the environment …"/>
                   </p>
-                  <unit eId="cor_1/new/fgr_2/idt_1" kind="indent">
+                  <occurrence eId="cor_1/new/fgr_2/idt_1" kind="indent">
                      <num>
                         <t v="•"/>
                      </num>
                      <p>
                         <t v="[text specified in criteria]"/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/fgr_2/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/fgr_2/idt_2" kind="indent">
                      <num>
                         <t v="•"/>
                      </num>
                      <p>
                         <t v="[text specified in criteria]"/>
                      </p>
-                  </unit>
-                  <unit eId="cor_1/new/fgr_2/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="cor_1/new/fgr_2/idt_3" kind="indent">
                      <num>
                         <t v="•"/>
                      </num>
                      <p>
                         <t v="[text specified in criteria]"/>
                      </p>
-                  </unit>
+                  </occurrence>
                   <p>
                      <t v="… better for you."/>
                   </p>
                </description>
             </figure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

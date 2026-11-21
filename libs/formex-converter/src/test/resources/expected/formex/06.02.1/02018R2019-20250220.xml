@@ -1051,7 +1051,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -1061,39 +1061,39 @@
          <p>
             <t v="The plants, plant products and other objects listed in Annex I are considered high risk plants, plant products and other objects within the meaning of Article 42(1) of Regulation (EU) 2016/2031, and their introduction into the Union territory shall be prohibited pending a risk assessment."/>
          </p>
-      </unit>
+      </occurrence>
       <deleted>
          <provenance amendingAct="32019R2072"
                      action="deleted"
                      location="AR:16;PT:1"
                      marker="O001001M001000"/>
-         <unit eId="art_2" kind="article" rank="1">
+         <occurrence eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
             <heading>
                <t v="Phytosanitary certificate for the introduction into the Union of certain plants"/>
             </heading>
-            <unit eId="art_2/unp_1" kind="paragraph">
+            <occurrence eId="art_2/unp_1" kind="paragraph">
                <p>
                   <t v="A phytosanitary certificate shall be required for the introduction into the Union of plants, other than the plants included in the list referred to in Article 72(1) of Regulation (EU) 2016/2031."/>
                </p>
-            </unit>
-            <unit eId="art_2/unp_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_2/unp_2" kind="paragraph">
                <p>
                   <t v="However, fruits listed in Annex II shall be excluded from this requirement."/>
                </p>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
       </deleted>
-      <unit eId="art_3" kind="article" rank="1">
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <heading>
             <t v="Entry into force and application"/>
          </heading>
-         <unit eId="art_3/unp_1" kind="paragraph">
+         <occurrence eId="art_3/unp_1" kind="paragraph">
             <p>
                <t v="This Regulation shall enter into force the twentieth day following that of its publication in the "/>
                <emphasis kind="i">
@@ -1101,8 +1101,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_3/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
                <date date="2019-12-14">
@@ -1110,8 +1110,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -1119,7 +1119,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <changed amendingAct="32020R1214"
                      action="renumbered"
@@ -1128,13 +1128,13 @@
                <t v="ANNEX"/>
             </changed>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="List of high risk plants, plant products and other objects, within the meaning of Article 42(1) of Regulation (EU) 2016/2031"/>
                </emphasis>
             </heading>
-            <unit eId="anx/level_1/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/level_1/pnt_1" kind="point" numbered="true">
                <num>
                   <changed amendingAct="32018R2019R(01)"
                            action="replaced"
@@ -1206,7 +1206,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:I"
                                        marker="O016001M002000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_1" kind="indent">
                               <p>
                                  <t v="One- to three-year-old bare rooted, dormant, free of leaves, grafted or budded plants for planting of "/>
                                  <emphasis kind="i">
@@ -1222,8 +1222,8 @@
                                  </emphasis>
                                  <t v=", originating in New Zealand;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_2" kind="indent">
                               <p>
                                  <t v="up to fifteen-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1231,8 +1231,8 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 88 mm at the base of the stem, originating in the United Kingdom;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_3" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_3" kind="indent">
                               <p>
                                  <t v="up to seven-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1240,8 +1240,8 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_4" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_4" kind="indent">
                               <p>
                                  <t v="up to seven-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1249,8 +1249,8 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom; and"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_5" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_5" kind="indent">
                               <p>
                                  <t v="up to seven-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1258,7 +1258,7 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 88 mm at the base of the stem, originating in the United Kingdom."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -1462,7 +1462,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:0"
                                        marker="O020001M001000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_2/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_2/idt_1" kind="indent">
                               <p>
                                  <t v="plants for planting of "/>
                                  <emphasis kind="i">
@@ -1474,8 +1474,8 @@
                                  </emphasis>
                                  <t v=" L. originating in Serbia; and"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_2/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_2/idt_2" kind="indent">
                               <p>
                                  <t v="up to 15-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1483,7 +1483,7 @@
                                  </emphasis>
                                  <t v=" L., with a maximum diameter of 20 cm at the base of the stem, originating in the United Kingdom."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -1650,7 +1650,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:0"
                                        marker="O011001M001000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_3/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_3/idt_1" kind="indent">
                               <p>
                                  <t v="up to two-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1658,8 +1658,8 @@
                                  </emphasis>
                                  <t v=" L. which are bare-rooted, free of leaves and with a maximum diameter of 2 cm at the base of the stem, originating in Turkey; and"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_3/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_3/idt_2" kind="indent">
                               <p>
                                  <t v="up to two-year-old, bare-rooted, dormant, free of leaves, grafted plants for planting and rootstocks of "/>
                                  <emphasis kind="i">
@@ -1667,7 +1667,7 @@
                                  </emphasis>
                                  <t v=" L. originating in Moldova"/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -1693,7 +1693,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:I"
                                        marker="O022001M002000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_4/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_4/idt_1" kind="indent">
                               <p>
                                  <t v="up to 20-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -1705,8 +1705,8 @@
                                  </emphasis>
                                  <t v=" in growing medium, with a maximum diameter of 18 cm at the base of the stem, originating in the United Kingdom; and"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_4/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_4/idt_2" kind="indent">
                               <p>
                                  <t v="up to 7-year-old non-grafted plants for planting of "/>
                                  <emphasis kind="i">
@@ -1718,7 +1718,7 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -1799,7 +1799,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:I;PT:1"
                                        marker="O021001M001000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_1" kind="indent">
                               <p>
                                  <t v="one- to two-year-old bare rooted, dormant, free of leaves, grafted plants for planting of "/>
                                  <emphasis kind="i">
@@ -1807,8 +1807,8 @@
                                  </emphasis>
                                  <t v=" originating in Serbia;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_2" kind="indent">
                               <p>
                                  <t v="up to three-year-old bare-rooted, dormant, free of leaves, grafted plants for planting of "/>
                                  <emphasis kind="i">
@@ -1816,8 +1816,8 @@
                                  </emphasis>
                                  <t v=" originating in Moldova;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_3" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_3" kind="indent">
                               <p>
                                  <t v="up to three-year-old bare-rooted, dormant, free of leaves, rootstocks of "/>
                                  <emphasis kind="i">
@@ -1825,8 +1825,8 @@
                                  </emphasis>
                                  <t v=" originating in Ukraine;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_4" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_4" kind="indent">
                               <p>
                                  <t v="up to three-year old bare-rooted, dormant, free of leaves, grafted plants for planting of "/>
                                  <emphasis kind="i">
@@ -1834,23 +1834,23 @@
                                  </emphasis>
                                  <t v=" originating in Ukraine;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_5" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_5" kind="indent">
                               <p>
                                  <t v="up to one-year-old free of leaves, cuttings of Malus domestica originating in the United Kingdom;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_6" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_6" kind="indent">
                               <p>
                                  <t v="up to seven-year-old plants for planting of Malus domestica originating in the United Kingdom;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_7" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_7" kind="indent">
                               <p>
                                  <t v="up to seven-year-old plants for planting of Malus sylvestris with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_8" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_8" kind="indent">
                               <p>
                                  <t v="up to two-year-old bare-rooted, dormant, free of leaves, grafted, plants for planting of "/>
                                  <emphasis kind="i">
@@ -1858,8 +1858,8 @@
                                  </emphasis>
                                  <t v=", originating in Bosnia and Herzegovina;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_9" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_9" kind="indent">
                               <p>
                                  <t v="up to one-year-old, free of leaves, budwood and scions of "/>
                                  <emphasis kind="i">
@@ -1867,8 +1867,8 @@
                                  </emphasis>
                                  <t v=" originating in Türkiye;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_10" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_5/idt_10" kind="indent">
                               <p>
                                  <t v="plants for planting of "/>
                                  <emphasis kind="i">
@@ -1876,7 +1876,7 @@
                                  </emphasis>
                                  <t v=" that are bare-rooted, dormant, free of leaves and with a maximum stem diameter of 3 cm, originating in Türkiye."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -1967,7 +1967,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:I"
                                        marker="O024001M001000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_1" kind="indent">
                               <p>
                                  <t v="bare-rooted, dormant, free of leaves plants for planting of "/>
                                  <emphasis kind="i">
@@ -1979,8 +1979,8 @@
                                  </emphasis>
                                  <t v=" rootstocks originating in Ukraine;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_2" kind="indent">
                               <p>
                                  <t v="up to 2-year-old dormant, free of leaves, unrooted cuttings of "/>
                                  <emphasis kind="i">
@@ -1992,8 +1992,8 @@
                                  </emphasis>
                                  <t v=" originating in Türkiye;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_3" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_3" kind="indent">
                               <p>
                                  <t v="up to 2-year-old bare-rooted, dormant, free of leaves plants for planting of "/>
                                  <emphasis kind="i">
@@ -2009,8 +2009,8 @@
                                  </emphasis>
                                  <t v=", originating in Türkiye;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_4" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_4" kind="indent">
                               <p>
                                  <t v="plants for planting of "/>
                                  <emphasis kind="i">
@@ -2030,8 +2030,8 @@
                                  </emphasis>
                                  <t v=" originating in the United Kingdom;"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_5" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_5" kind="indent">
                               <p>
                                  <t v="up to 1-year-old budwood/graftwood of "/>
                                  <emphasis kind="i">
@@ -2039,8 +2039,8 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 12 mm originating in the United Kingdom; and"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_6" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_6/idt_6" kind="indent">
                               <p>
                                  <t v="up to 7-year-old non-grafted plants for planting of "/>
                                  <emphasis kind="i">
@@ -2048,7 +2048,7 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 40 mm at the base of the stem, originating in the United Kingdom."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -2074,7 +2074,7 @@
                                        action="replaced"
                                        location="AR:1 .AND. AX:I"
                                        marker="O018001M001000"/>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_7/idt_1" kind="indent">
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_7/idt_1" kind="indent">
                               <p>
                                  <t v="up to fifteen-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -2082,8 +2082,8 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 80 mm at the base of the stem, originating in the United Kingdom; and"/>
                               </p>
-                           </unit>
-                           <unit eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_7/idt_2" kind="indent">
+                           </occurrence>
+                           <occurrence eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_7/idt_2" kind="indent">
                               <p>
                                  <t v="up to fifteen-year-old plants for planting of "/>
                                  <emphasis kind="i">
@@ -2091,7 +2091,7 @@
                                  </emphasis>
                                  <t v=" with a maximum diameter of 80 mm at the base of the stem, originating in the United Kingdom."/>
                               </p>
-                           </unit>
+                           </occurrence>
                         </list>
                      </td>
                   </tr>
@@ -2210,8 +2210,8 @@
                      </td>
                   </tr>
                </table>
-            </unit>
-            <unit eId="anx/level_1/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -2270,8 +2270,8 @@
                      </td>
                   </tr>
                </table>
-            </unit>
-            <unit eId="anx/level_1/pnt_3" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/level_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -2323,13 +2323,13 @@
                      </td>
                   </tr>
                </table>
-            </unit>
+            </occurrence>
             <deleted>
                <provenance amendingAct="32020R1214"
                            action="deleted"
                            location="AR:1 .AND. AX:0;PT:3"
                            marker="O002001M004000"/>
-               <unit eId="anx/level_1/pnt_4" kind="point" numbered="true">
+               <occurrence eId="anx/level_1/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
@@ -2385,20 +2385,20 @@
                         </td>
                      </tr>
                   </table>
-               </unit>
+               </occurrence>
             </deleted>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
       <deleted>
          <provenance amendingAct="32019R2072"
                      action="deleted"
                      location="AR:16;PT:2"
                      marker="O001001M002000"/>
-         <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
+         <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
             <num>
                <t v="ANNEX II"/>
             </num>
-            <unit eId="anx_II/level_1" kind="level" depth="1" rank="2">
+            <occurrence eId="anx_II/level_1" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="List of fruits for which a phytosanitary certificate is not required for introduction into the Union, within the meaning of Article 73 of Regulation (EU) 2016/2031"/>
@@ -2497,8 +2497,8 @@
                      </td>
                   </tr>
                </table>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
       </deleted>
    </annexes>
    <notes>

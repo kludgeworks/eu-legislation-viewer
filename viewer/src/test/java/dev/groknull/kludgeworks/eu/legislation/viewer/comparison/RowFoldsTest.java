@@ -60,21 +60,21 @@ class RowFoldsTest {
 
   @Test
   void namesTheTableAndTheRowsOfAFold() {
-    var unit =
+    var occurrence =
         new Element(
-            "unit",
+            "occurrence",
             Map.of(),
             List.of(table(marked("x0")), table(rows("r", 0, 9), marked("r10"))),
             "");
 
-    var fold = folds(RowFolds.of(unit)).getFirst();
+    var fold = folds(RowFolds.of(occurrence)).getFirst();
 
     assertThat(fold.attributes())
         .containsEntry(RowFolds.TABLE, "1")
         .containsEntry(RowFolds.FIRST, "0")
         .containsEntry(RowFolds.LAST, "8")
         .containsEntry("columns", "1");
-    assertThat(RowFolds.rows(unit, 1, 0, 8))
+    assertThat(RowFolds.rows(occurrence, 1, 0, 8))
         .extracting(RowFoldsTest::text)
         .containsExactly("r0", "r1", "r2", "r3", "r4", "r5", "r6", "r7", "r8");
   }
@@ -84,29 +84,31 @@ class RowFoldsTest {
     var inner = table(rows("i", 0, 9));
     var holder =
         new Element("tr", Map.of(), List.of(new Element("td", Map.of(), List.of(inner), "")), "");
-    var unit =
+    var occurrence =
         new Element(
-            "unit",
+            "occurrence",
             Map.of(),
             List.of(table(List.of(holder), marked("x0")), table(rows("r", 0, 9), marked("r10"))),
             "");
 
-    var fold = folds(RowFolds.of(unit)).getFirst();
+    var fold = folds(RowFolds.of(occurrence)).getFirst();
 
     assertThat(fold.attribute(RowFolds.TABLE)).isEqualTo("1");
-    assertThat(RowFolds.rows(unit, 1, 0, 0)).extracting(RowFoldsTest::text).containsExactly("r0");
+    assertThat(RowFolds.rows(occurrence, 1, 0, 0))
+        .extracting(RowFoldsTest::text)
+        .containsExactly("r0");
   }
 
   @Test
   void leavesATableThatHasFoldsAsItIs() {
-    var unit =
+    var occurrence =
         new Element(
-            "unit",
+            "occurrence",
             Map.of(),
             List.of(table(rows("a", 0, 9), marked("a10")), table(marked("b0"), rows("b", 1, 9))),
             "");
 
-    var folded = RowFolds.of(unit);
+    var folded = RowFolds.of(occurrence);
 
     assertThat(RowFolds.of(folded)).isEqualTo(folded);
     assertThat(shown(folded))

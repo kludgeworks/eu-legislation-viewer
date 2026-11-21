@@ -85,12 +85,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Directive 1999/2/EC of the European Parliament and of the Council of "/>
                <date date="1999-02-22">
@@ -100,7 +100,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -108,38 +108,38 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="According to Directive 1999/2/EC a foodstuff treated with ionising radiation may not be imported from a third country unless it has been treated in an irradiation facility approved by the Community."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="The Commission received an application for approval from three irradiation facilities in South Africa and one in Hungary through their competent authorities. Commission experts inspected the irradiation facilities in order to check whether they comply with the requirements of Directive 1999/2/EC and, in particular, if official supervision guarantees that they comply with the requirements of Article 7 of that Directive."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The facilities in South Africa and Hungary complied with most of the requirements of Directive 1999/2/EC. The shortcomings identified by the Commission have been adequately addressed by the South African and Hungarian competent authorities. The list to be adopted by this Decision should be kept under regular review."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -148,25 +148,25 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The list of approved irradiation facilities within the meaning of Article 9(2) of Directive 1999/2/EC is as set out in the Annex to this Decision."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Member States."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32004D0691"
                      action="replaced"
                      location="AR:1 .AND. AX:0"
@@ -174,7 +174,7 @@
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <t v="List of irradiation facilities in third countries approved by the Community"/>
             </heading>
@@ -310,8 +310,8 @@
             <p>
                <t v="Fax (41-062) 288 90 70"/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

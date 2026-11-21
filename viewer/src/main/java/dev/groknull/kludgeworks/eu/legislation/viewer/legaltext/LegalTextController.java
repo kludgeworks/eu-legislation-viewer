@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 /**
  * Serves texts as htmx fragments, by their identity. A page transcludes a fragment with {@code
  * hx-get} when its text is built. An identity always names the same text, so its fragment is the
- * same wherever it is asked for. The folds of a comparison load some units of a text, by eId, when
- * they open. The HTML is cached in Valkey ({@link RenderedTexts}).
+ * same wherever it is asked for. The folds of a comparison load some occurrences of a text, by eId,
+ * when they open. The HTML is cached in Valkey ({@link RenderedTexts}).
  *
  * <p>An identity is never used again, but the HTML of a text changes with the release. Thus a
  * browser asks again each time ({@link Release#REVALIDATED}), with an entity tag of the release and
@@ -62,13 +62,14 @@ class LegalTextController {
   }
 
   /**
-   * Writes the units of the text {@code id} from the unit {@code first} to the unit {@code last},
-   * as the fold of a comparison asks for them. Each unit is whole, in the order of the text.
-   * Responds 404 if no such text is stored. Writes nothing if the text does not have {@code first}.
+   * Writes the occurrences of the text {@code id} from the occurrence {@code first} to the
+   * occurrence {@code last}, as the fold of a comparison asks for them. Each occurrence is whole,
+   * in the order of the text. Responds 404 if no such text is stored. Writes nothing if the text
+   * does not have {@code first}.
    */
-  @GetMapping(path = "/content/{id}/units", produces = MediaType.TEXT_HTML_VALUE)
+  @GetMapping(path = "/content/{id}/occurrences", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  @Nullable String units(
+  @Nullable String occurrences(
       @PathVariable TextId id,
       @RequestParam String first,
       @RequestParam String last,
@@ -78,9 +79,9 @@ class LegalTextController {
       return null;
     }
     var start = System.nanoTime();
-    var rendered = texts.units(id, first, last).orElseThrow(Requests::notFound);
+    var rendered = texts.occurrences(id, first, last).orElseThrow(Requests::notFound);
     LOG.debug(
-        "Units of text {}: {} KB of HTML, in {} ms",
+        "Occurrences of text {}: {} KB of HTML, in {} ms",
         id.value(),
         rendered.length() / 1024,
         (System.nanoTime() - start) / 1_000_000);

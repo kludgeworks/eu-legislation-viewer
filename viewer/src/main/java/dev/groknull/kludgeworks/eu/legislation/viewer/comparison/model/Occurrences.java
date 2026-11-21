@@ -17,34 +17,35 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The units of a text that have an eId, in document order. Examples are articles, points and
+ * The occurrences of a text that have an eId, in document order. Examples are articles, points and
  * annexes.
  *
- * <p>Each unit holds the unit that it is in, the units in it and its own blocks. Its own blocks are
- * its num, its heading and the blocks that are not in a unit of their own. This is true even inside
- * a list of its points, for example the opening words of a list. A unit without an eId is part of
- * the unit that it is in. If two units have the same eId, the first is kept. A converted text
- * rarely has this. A table is one block of the unit that it is in, with the units in its cells.
+ * <p>Each occurrence holds the occurrence that it is in, the occurrences in it and its own blocks.
+ * Its own blocks are its num, its heading and the blocks that are not in an occurrence of their
+ * own. This is true even inside a list of its points, for example the opening words of a list. An
+ * occurrence without an eId is part of the occurrence that it is in. If two occurrences have the
+ * same eId, the first is kept. A converted text rarely has this. A table is one block of the
+ * occurrence that it is in, with the occurrences in its cells.
  *
  * <p>What a consolidation keeps of a deletion is not part of the text. This is the legal-text
- * {@code deleted}: the struck words or units that an act deleted, under its marker. A unit in it is
- * not one of the units, and its words are not in the blocks of a unit. The act that struck each
- * unit is kept.
+ * {@code deleted}: the struck words or occurrences that an act deleted, under its marker. An
+ * occurrence in it is not one of the occurrences, and its words are not in the blocks of an
+ * occurrence. The act that struck each occurrence is kept.
  *
- * <p>A unit holds the notes that its own blocks refer to. These are the notes of the text, at its
- * end. A note is matched through the reference to it, not by its eId. The eId of a note is its
- * place, note_N, and it changes when a note before it comes or goes. The notes of a table are in
- * the table, and those of a file of an act as published are in its unit. They are compared where
- * they are, as blocks.
+ * <p>An occurrence holds the notes that its own blocks refer to. These are the notes of the text,
+ * at its end. A note is matched through the reference to it, not by its eId. The eId of a note is
+ * its place, note_N, and it changes when a note before it comes or goes. The notes of a table are
+ * in the table, and those of a file of an act as published are in its occurrence. They are compared
+ * where they are, as blocks.
  *
- * @param byEId the units, by eId, in document order
- * @param outermost the eIds of the units that are in no other unit, in order
- * @param struck the markers of the deletions that keep a unit struck, by the eId of the unit. For
- *     example, "deleted by 2019/103".
+ * @param byEId the occurrences, by eId, in document order
+ * @param outermost the eIds of the occurrences that are in no other occurrence, in order
+ * @param struck the markers of the deletions that keep an occurrence struck, by the eId of the
+ *     occurrence. For example, "deleted by 2019/103".
  * @param notes the notes of the text, at its end, by eId
  */
-public record Units(
-    SequencedMap<String, Unit> byEId,
+public record Occurrences(
+    SequencedMap<String, Occurrence> byEId,
     List<String> outermost,
     Map<String, List<Marker>> struck,
     Map<String, Element> notes) {
@@ -74,14 +75,14 @@ public record Units(
           "docDate",
           "docPurpose");
 
-  /** Returns the units of {@code text}. */
-  public static Units of(Element text) {
-    var units = new LinkedHashMap<String, Unit>();
+  /** Returns the occurrences of {@code text}. */
+  public static Occurrences of(Element text) {
+    var occurrences = new LinkedHashMap<String, Occurrence>();
     var outermost = new ArrayList<String>();
     var struck = new HashMap<String, List<Marker>>();
     var notes = notes(text);
-    collect(text, null, null, outermost, units, new ArrayDeque<>(), struck, notes);
-    return new Units(units, outermost, struck, notes);
+    collect(text, null, null, outermost, occurrences, new ArrayDeque<>(), struck, notes);
+    return new Occurrences(occurrences, outermost, struck, notes);
   }
 
   /**
@@ -106,8 +107,9 @@ public record Units(
 
   /**
    * Adds the notes of each {@code notes} in {@code element} to {@code notes}. A text has them at
-   * its end, at the end of a unit or a file of an annex, and under a table, wherever the table is.
-   * The search does not go into what holds only running text or MathML, which cannot have them.
+   * its end, at the end of an occurrence or a file of an annex, and under a table, wherever the
+   * table is. The search does not go into what holds only running text or MathML, which cannot have
+   * them.
    */
   private static void collectNotes(Element element, Map<String, Element> notes) {
     for (var child : element.children()) {
@@ -149,21 +151,21 @@ public record Units(
     }
   }
 
-  /** Returns the unit {@code eId}. Returns null if there is no such unit. */
-  public @Nullable Unit get(String eId) {
+  /** Returns the occurrence {@code eId}. Returns null if there is no such occurrence. */
+  public @Nullable Occurrence get(String eId) {
     return byEId.get(eId);
   }
 
   /**
-   * Returns the eIds of the units directly in the unit {@code parent}. If {@code parent} is null,
-   * returns the eIds of the outermost units.
+   * Returns the eIds of the occurrences directly in the occurrence {@code parent}. If {@code
+   * parent} is null, returns the eIds of the outermost occurrences.
    */
   public List<String> in(@Nullable String parent) {
     if (parent == null) {
       return outermost;
     }
-    var unit = get(parent);
-    return unit == null ? List.of() : unit.units();
+    var occurrence = get(parent);
+    return occurrence == null ? List.of() : occurrence.occurrences();
   }
 
   private static void collect(
@@ -171,7 +173,7 @@ public record Units(
       @Nullable String parent,
       @Nullable Element container,
       List<String> siblings,
-      Map<String, Unit> units,
+      Map<String, Occurrence> occurrences,
       Deque<Ranked> ranked,
       Map<String, List<Marker>> struck,
       Map<String, Element> notes) {
@@ -183,41 +185,44 @@ public record Units(
       return;
     }
     var eId = eId(element);
-    if (eId != null && !units.containsKey(eId)) {
+    if (eId != null && !occurrences.containsKey(eId)) {
       var blocks = new ArrayList<Element>();
       own(element, blocks);
-      var section = section(eId, element, parent, units, ranked);
+      var section = section(eId, element, parent, occurrences, ranked);
       var list = list(container);
       var referred = new LinkedHashMap<String, Element>();
       blocks.forEach(block -> referred(block, notes, referred));
       var ownNotes = List.copyOf(referred.values());
-      // Put the unit now, so that it comes before the units in it in document order. Put it again
-      // in the same place when the units in it are known.
-      units.put(eId, new Unit(eId, parent, section, element, blocks, ownNotes, List.of(), list));
+      // Put the occurrence now, so that it comes before the occurrences in it in document order.
+      // Put it again
+      // in the same place when the occurrences in it are known.
+      occurrences.put(
+          eId, new Occurrence(eId, parent, section, element, blocks, ownNotes, List.of(), list));
       siblings.add(eId);
       var inside = new ArrayList<String>();
       for (var child : element.children()) {
-        collect(child, eId, element, inside, units, ranked, struck, notes);
+        collect(child, eId, element, inside, occurrences, ranked, struck, notes);
       }
-      units.put(eId, new Unit(eId, parent, section, element, blocks, ownNotes, inside, list));
+      occurrences.put(
+          eId, new Occurrence(eId, parent, section, element, blocks, ownNotes, inside, list));
       return;
     }
     for (var child : element.children()) {
-      collect(child, parent, element, siblings, units, ranked, struck, notes);
+      collect(child, parent, element, siblings, occurrences, ranked, struck, notes);
     }
   }
 
   /**
-   * Returns the section of the unit {@code eId}. If the unit has a rank, the section is the unit
-   * itself. It goes under the last open unit ranked above it, as {@code Outlines} nests them. If
-   * the unit has no rank, the section is the last open ranked unit whose parent also encloses this
-   * unit.
+   * Returns the section of the occurrence {@code eId}. If the occurrence has a rank, the section is
+   * the occurrence itself. It goes under the last open occurrence ranked above it, as {@code
+   * Outlines} nests them. If the occurrence has no rank, the section is the last open ranked
+   * occurrence whose parent also encloses this occurrence.
    */
   private static @Nullable String section(
       String eId,
       Element element,
       @Nullable String parent,
-      Map<String, Unit> units,
+      Map<String, Occurrence> occurrences,
       Deque<Ranked> ranked) {
     var rank = element.attribute("rank");
     if (rank != null) {
@@ -229,7 +234,7 @@ public record Units(
       return eId;
     }
     var enclosing = new HashSet<String>();
-    for (var at = parent; at != null; at = Objects.requireNonNull(units.get(at)).parent()) {
+    for (var at = parent; at != null; at = Objects.requireNonNull(occurrences.get(at)).parent()) {
       enclosing.add(at);
     }
     for (var open : ranked) {
@@ -263,7 +268,7 @@ public record Units(
     return List.copyOf(markers);
   }
 
-  /** Records the outermost units in {@code element} as struck by {@code markers}. */
+  /** Records the outermost occurrences in {@code element} as struck by {@code markers}. */
   private static void struck(
       Element element, List<Marker> markers, Map<String, List<Marker>> struck) {
     for (var child : element.children()) {
@@ -276,12 +281,13 @@ public record Units(
     }
   }
 
-  /** A unit with a rank that is still open for the units after it. */
+  /** An occurrence with a rank that is still open for the occurrences after it. */
   private record Ranked(String eId, int rank, @Nullable String parent) {}
 
   /**
-   * Adds the blocks of {@code element} that are not in a unit of their own to {@code blocks}. The
-   * notes at the end of an annex are not its blocks: each belongs to the unit that refers to it.
+   * Adds the blocks of {@code element} that are not in an occurrence of their own to {@code
+   * blocks}. The notes at the end of an annex are not its blocks: each belongs to the occurrence
+   * that refers to it.
    */
   private static void own(Element element, List<Element> blocks) {
     for (var child : element.children()) {
@@ -291,7 +297,7 @@ public record Units(
           || child.name().equals("notes")) {
         continue;
       }
-      if (holdsUnits(child)) {
+      if (holdsOccurrences(child)) {
         own(child, blocks);
       } else {
         blocks.add(child);
@@ -300,59 +306,61 @@ public record Units(
   }
 
   /**
-   * Returns whether {@code element} has a unit of the text in it, at any depth. A struck unit does
-   * not count.
+   * Returns whether {@code element} has an occurrence of the text in it, at any depth. A struck
+   * occurrence does not count.
    */
-  static boolean holdsUnits(Element element) {
+  static boolean holdsOccurrences(Element element) {
     return !block(element)
         && element.children().stream()
             .filter(child -> !child.name().equals("deleted"))
-            .anyMatch(child -> eId(child) != null || holdsUnits(child));
+            .anyMatch(child -> eId(child) != null || holdsOccurrences(child));
   }
 
   /**
-   * Returns whether {@code element} is one block, with the units in it. A table is one block. The
-   * converter numbers the lists in its cells through the document, so one list inserted in a cell
-   * renumbers the units of every list after it. For example, tab_1/tr_14/td_2/list_2/idt_1 becomes
-   * list_3/idt_1. {@link Marks} compares a table by its rows and cells instead.
+   * Returns whether {@code element} is one block, with the occurrences in it. A table is one block.
+   * The converter numbers the lists in its cells through the document, so one list inserted in a
+   * cell renumbers the occurrences of every list after it. For example,
+   * tab_1/tr_14/td_2/list_2/idt_1 becomes list_3/idt_1. {@link Marks} compares a table by its rows
+   * and cells instead.
    */
   static boolean block(Element element) {
     return element.name().equals("table");
   }
 
-  /** Returns the eId of a unit. Returns null for any other element, for example a note. */
+  /** Returns the eId of an occurrence. Returns null for any other element, for example a note. */
   static @Nullable String eId(Element element) {
-    return element.name().equals("unit") ? element.attribute("eId") : null;
+    return element.name().equals("occurrence") ? element.attribute("eId") : null;
   }
 
   /**
-   * A unit.
+   * An occurrence.
    *
    * @param eId its eId
-   * @param parent the eId of the unit that it is in. Null for an outermost unit.
-   * @param section the eId of the unit with a rank that it is in, as an outline nests them. It is
-   *     the unit itself if the unit has a rank. Null if it is in no such unit.
-   * @param element the unit as the text has it, with the units in it
+   * @param parent the eId of the occurrence that it is in. Null for an outermost occurrence.
+   * @param section the eId of the occurrence with a rank that it is in, as an outline nests them.
+   *     It is the occurrence itself if the occurrence has a rank. Null if it is in no such
+   *     occurrence.
+   * @param element the occurrence as the text has it, with the occurrences in it
    * @param blocks its own blocks, in order
    * @param notes the notes of the text that its own blocks refer to, in the order of their first
    *     reference
-   * @param units the eIds of the units directly in it, in order
+   * @param occurrences the eIds of the occurrences directly in it, in order
    * @param list the list that it is an item of, without its items. The list keeps its kind, for
    *     example alpha or dash. Null if it is in no list.
    */
-  public record Unit(
+  public record Occurrence(
       String eId,
       @Nullable String parent,
       @Nullable String section,
       Element element,
       List<Element> blocks,
       List<Element> notes,
-      List<String> units,
+      List<String> occurrences,
       @Nullable Element list) {
-    public Unit {
+    public Occurrence {
       blocks = List.copyOf(blocks);
       notes = List.copyOf(notes);
-      units = List.copyOf(units);
+      occurrences = List.copyOf(occurrences);
     }
 
     /** Returns what a comparison matches each of its own blocks on. See {@link Wording#key}. */

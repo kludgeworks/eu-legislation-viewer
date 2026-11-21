@@ -7,7 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Cont
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.DifferenceBuilder;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Units.Unit;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,44 +21,45 @@ import org.jspecify.annotations.Nullable;
  * Finds how one text differs from another, as the Changes view shows it. It works in four steps:
  *
  * <ol>
- *   <li>{@link Units} reads the units of each text.
- *   <li>{@link Pairing} pairs the units of the two texts: siblings with siblings, and a unit that
- *       moved into the unit before it, or out of it.
- *   <li>The units are compared, from the outermost units inwards. A unit in only one text is
- *       inserted or deleted, with its units. A unit in both texts whose own wording differs is
- *       changed, and the units in it are compared in turn.
+ *   <li>{@link Occurrences} reads the occurrences of each text.
+ *   <li>{@link Pairing} pairs the occurrences of the two texts: siblings with siblings, and an
+ *       occurrence that moved into the occurrence before it, or out of it.
+ *   <li>The occurrences are compared, from the outermost occurrences inwards. An occurrence in only
+ *       one text is inserted or deleted, with its occurrences. An occurrence in both texts whose
+ *       own wording differs is changed, and the occurrences in it are compared in turn.
  *   <li>The differences are shown in the order of the later text, each with what the later text has
  *       before it.
  * </ol>
  *
- * <p>The units of the two texts are in one order: the units of the later text in their order, and
- * each deleted unit after the unit that it stood after. Thus a deleted unit comes before the units
- * inserted in its place.
+ * <p>The occurrences of the two texts are in one order: the occurrences of the later text in their
+ * order, and each deleted occurrence after the occurrence that it stood after. Thus a deleted
+ * occurrence comes before the occurrences inserted in its place.
  *
- * <p>The notes that a unit refers to are compared as part of it. A changed unit shows its notes
- * under it, marked, if they differ. An inserted or deleted unit shows its notes, marked whole. A
- * note that only one text has, and each reference to it, says so ({@link Marks#ONLY}).
+ * <p>The notes that an occurrence refers to are compared as part of it. A changed occurrence shows
+ * its notes under it, marked, if they differ. An inserted or deleted occurrence shows its notes,
+ * marked whole. A note that only one text has, and each reference to it, says so ({@link
+ * Marks#ONLY}).
  *
- * <p>The own blocks of a changed unit are matched by what they say ({@link Parts}). {@link Marks}
- * marks a changed block word by word.
+ * <p>The own blocks of a changed occurrence are matched by what they say ({@link Parts}). {@link
+ * Marks} marks a changed block word by word.
  *
- * <p>Each unit of the later text is placed once, as one of these:
+ * <p>Each occurrence of the later text is placed once, as one of these:
  *
  * <ul>
  *   <li>a difference
- *   <li>the opening of a unit that holds differences
- *   <li>a unit that is the same in both texts, with its units. It is folded in a run of such units
- *       in the same unit.
+ *   <li>the opening of an occurrence that holds differences
+ *   <li>an occurrence that is the same in both texts, with its occurrences. It is folded in a run
+ *       of such occurrences in the same occurrence.
  * </ul>
  *
  * <p>These rules decide what counts as one difference:
  *
  * <ul>
- *   <li>A changed unit and the units in it that differ are one difference if the same acts made all
- *       of them. The difference shows whole, and each unit is marked where it differs. For example,
- *       11.1.3 with its points (a) to (d), all from 2019/103.
- *   <li>If the num of a unit only gained or lost its full stop, no act changed it. Thus the unit
- *       does not differ. For example, "11.3" to "11.3.".
+ *   <li>A changed occurrence and the occurrences in it that differ are one difference if the same
+ *       acts made all of them. The difference shows whole, and each occurrence is marked where it
+ *       differs. For example, 11.1.3 with its points (a) to (d), all from 2019/103.
+ *   <li>If the num of an occurrence only gained or lost its full stop, no act changed it. Thus the
+ *       occurrence does not differ. For example, "11.3" to "11.3.".
  * </ul>
  */
 public final class Differ {
@@ -87,7 +88,7 @@ public final class Differ {
 
   /**
    * Returns the differences of {@code to} from {@code from}, in the order of {@code to}. Each
-   * deleted unit is where it stood, before the units inserted in its place.
+   * deleted occurrence is where it stood, before the occurrences inserted in its place.
    *
    * <p>If only one text has a preamble, the preamble is not compared. The Publications Office
    * publishes some consolidations without the preamble, although no act removed it. For example,
@@ -98,24 +99,25 @@ public final class Differ {
     var laterPreamble = preamble(to);
     @Nullable Side withoutPreamble =
         earlierPreamble == laterPreamble ? null : earlierPreamble ? Side.LATER : Side.EARLIER;
-    var before = Units.of(withoutPreamble == Side.LATER ? withoutPreamble(from) : from);
-    var after = Units.of(withoutPreamble == Side.EARLIER ? withoutPreamble(to) : to);
+    var before = Occurrences.of(withoutPreamble == Side.LATER ? withoutPreamble(from) : from);
+    var after = Occurrences.of(withoutPreamble == Side.EARLIER ? withoutPreamble(to) : to);
     var show = new Show();
-    show.units(new Compare(before, after, Pairing.of(before, after)).units(null, null), null);
+    show.occurrences(
+        new Compare(before, after, Pairing.of(before, after)).occurrences(null, null), null);
     return new Compared(show.placed, show.context, withoutPreamble);
   }
 
   /**
-   * Returns whether {@code text} has a preamble with units in it. The units are its citations and
-   * its recitals. Legal-text has the preamble only in the text itself, between its preface and its
-   * body, so the search stops there.
+   * Returns whether {@code text} has a preamble with occurrences in it. The occurrences are its
+   * citations and its recitals. Legal-text has the preamble only in the text itself, between its
+   * preface and its body, so the search stops there.
    */
   private static boolean preamble(Element text) {
     if (text.name().equals("preamble")) {
-      return Units.holdsUnits(text);
+      return Occurrences.holdsOccurrences(text);
     }
     for (var child : text.children()) {
-      if (child.name().equals("preamble") && Units.holdsUnits(child)) {
+      if (child.name().equals("preamble") && Occurrences.holdsOccurrences(child)) {
         return true;
       }
     }
@@ -134,48 +136,51 @@ public final class Differ {
   }
 
   /**
-   * A unit of the two texts, compared.
+   * An occurrence of the two texts, compared.
    *
-   * @param unit the unit, as the later text has it. For a deleted unit, as the earlier text has it.
-   * @param earlier whether the unit is of only the earlier text: it is deleted
-   * @param difference how the unit differs. Null if its own wording is the same in both texts.
-   * @param marking how its own blocks and notes differ. Null if the unit is not changed.
-   * @param units the units in it, compared, in the one order of the two texts. Empty for an
-   *     inserted or deleted unit, which is one difference with its units.
-   * @param differs whether the unit differs, or a unit in it does
+   * @param occurrence the occurrence, as the later text has it. For a deleted occurrence, as the
+   *     earlier text has it.
+   * @param earlier whether the occurrence is of only the earlier text: it is deleted
+   * @param difference how the occurrence differs. Null if its own wording is the same in both
+   *     texts.
+   * @param marking how its own blocks and notes differ. Null if the occurrence is not changed.
+   * @param occurrences the occurrences in it, compared, in the one order of the two texts. Empty
+   *     for an inserted or deleted occurrence, which is one difference with its occurrences.
+   * @param differs whether the occurrence differs, or an occurrence in it does
    */
   private record Node(
-      Unit unit,
+      Occurrence occurrence,
       boolean earlier,
       @Nullable DifferenceBuilder difference,
       @Nullable Marking marking,
-      List<Node> units,
+      List<Node> occurrences,
       boolean differs) {
 
     static Node of(
-        Unit unit,
+        Occurrence occurrence,
         boolean earlier,
         @Nullable DifferenceBuilder difference,
         @Nullable Marking marking,
-        List<Node> units) {
-      var differs = difference != null || units.stream().anyMatch(Node::differs);
-      return new Node(unit, earlier, difference, marking, units, differs);
+        List<Node> occurrences) {
+      var differs = difference != null || occurrences.stream().anyMatch(Node::differs);
+      return new Node(occurrence, earlier, difference, marking, occurrences, differs);
     }
 
     /**
-     * Returns whether the unit shows whole, as one difference with the units in it that differ. It
-     * does if it is changed, and the acts that changed it also made every difference in it.
+     * Returns whether the occurrence shows whole, as one difference with the occurrences in it that
+     * differ. It does if it is changed, and the acts that changed it also made every difference in
+     * it.
      */
     boolean showsWhole() {
       return difference != null
           && difference.kind() == Kind.CHANGED
-          && units.stream().anyMatch(Node::differs)
+          && occurrences.stream().anyMatch(Node::differs)
           && madeBy(acts(difference));
     }
 
-    /** Returns whether {@code acts} made every difference in the unit. */
+    /** Returns whether {@code acts} made every difference in the occurrence. */
     private boolean madeBy(Set<String> acts) {
-      for (var each : units) {
+      for (var each : occurrences) {
         var in = each.difference();
         if ((in != null && !acts(in).equals(acts)) || !each.madeBy(acts)) {
           return false;
@@ -184,21 +189,22 @@ public final class Differ {
       return true;
     }
 
-    /** Returns how many words are inserted in the unit and the units in it. */
+    /** Returns how many words are inserted in the occurrence and the occurrences in it. */
     int inserted() {
       var own = difference == null ? 0 : difference.inserted();
-      return own + units.stream().mapToInt(Node::inserted).sum();
+      return own + occurrences.stream().mapToInt(Node::inserted).sum();
     }
 
-    /** Returns how many words are deleted in the unit and the units in it. */
+    /** Returns how many words are deleted in the occurrence and the occurrences in it. */
     int deleted() {
       var own = difference == null ? 0 : difference.deleted();
-      return own + units.stream().mapToInt(Node::deleted).sum();
+      return own + occurrences.stream().mapToInt(Node::deleted).sum();
     }
 
     /**
-     * Returns the unit as it shows in a unit that shows whole. An inserted or deleted unit is
-     * marked whole. Any other unit is marked where it and the units in it differ.
+     * Returns the occurrence as it shows in an occurrence that shows whole. An inserted or deleted
+     * occurrence is marked whole. Any other occurrence is marked where it and the occurrences in it
+     * differ.
      */
     Element within() {
       return difference != null && difference.kind() != Kind.CHANGED
@@ -208,81 +214,87 @@ public final class Differ {
   }
 
   /**
-   * Compares the units of two texts.
+   * Compares the occurrences of two texts.
    *
-   * @param before the units of the earlier text
-   * @param after the units of the later text
-   * @param pairs which unit of the later text is which unit of the earlier text
+   * @param before the occurrences of the earlier text
+   * @param after the occurrences of the later text
+   * @param pairs which occurrence of the later text is which occurrence of the earlier text
    */
-  private record Compare(Units before, Units after, Pairing pairs) {
+  private record Compare(Occurrences before, Occurrences after, Pairing pairs) {
 
     /**
-     * Returns the units in the unit {@code is} of the later text, compared with the units in the
-     * unit {@code was} that it pairs with. If both are null, returns the outermost units.
+     * Returns the occurrences in the occurrence {@code is} of the later text, compared with the
+     * occurrences in the occurrence {@code was} that it pairs with. If both are null, returns the
+     * outermost occurrences.
      *
-     * <p>The units are in the order of the later text. Each deleted unit comes after the later unit
-     * that pairs with the last paired unit before it, or first if there is no such unit. A unit
-     * that moved out of {@code was} is not deleted: it shows where the later text has it.
+     * <p>The occurrences are in the order of the later text. Each deleted occurrence comes after
+     * the later occurrence that pairs with the last paired occurrence before it, or first if there
+     * is no such occurrence. An occurrence that moved out of {@code was} is not deleted: it shows
+     * where the later text has it.
      */
-    List<Node> units(@Nullable Unit was, @Nullable Unit is) {
+    List<Node> occurrences(@Nullable Occurrence was, @Nullable Occurrence is) {
       var later = in(after, is);
-      // The deleted units that stood first, then those that stood after each later unit.
+      // The deleted occurrences that stood first, then those that stood after each later
+      // occurrence.
       var deleted = new ArrayList<List<Node>>();
       for (var j = 0; j <= later.size(); j++) {
         deleted.add(new ArrayList<>());
       }
       var place = 0;
-      for (var unit : in(before, was)) {
-        var now = pairs.is(unit);
+      for (var occurrence : in(before, was)) {
+        var now = pairs.is(occurrence);
         if (now == null) {
-          deleted.get(place).add(deleted(unit, is));
+          deleted.get(place).add(deleted(occurrence, is));
         } else if (later.contains(now)) {
           place = later.indexOf(now) + 1;
         }
       }
       var nodes = new ArrayList<Node>(deleted.get(0));
       for (var j = 0; j < later.size(); j++) {
-        var unit = later.get(j);
-        var earlier = pairs.was(unit);
-        nodes.add(earlier == null ? inserted(unit) : paired(earlier, unit));
+        var occurrence = later.get(j);
+        var earlier = pairs.was(occurrence);
+        nodes.add(earlier == null ? inserted(occurrence) : paired(earlier, occurrence));
         nodes.addAll(deleted.get(j + 1));
       }
       return nodes;
     }
 
     /**
-     * Returns the unit {@code unit} of only the earlier text. It was in the later unit {@code in}.
+     * Returns the occurrence {@code occurrence} of only the earlier text. It was in the later
+     * occurrence {@code in}.
      */
-    private Node deleted(Unit unit, @Nullable Unit in) {
+    private Node deleted(Occurrence occurrence, @Nullable Occurrence in) {
       var difference =
-          whole(unit, before, Kind.DELETED, in == null ? null : in.eId())
-              .earlierMarkers(Markers.of(unit, before))
-              .markers(Markers.deleted(unit, after, in));
-      return Node.of(unit, true, difference, null, List.of());
+          whole(occurrence, before, Kind.DELETED, in == null ? null : in.eId())
+              .earlierMarkers(Markers.of(occurrence, before))
+              .markers(Markers.deleted(occurrence, after, in));
+      return Node.of(occurrence, true, difference, null, List.of());
     }
 
-    /** Returns the unit {@code unit} of only the later text. */
-    private Node inserted(Unit unit) {
+    /** Returns the occurrence {@code occurrence} of only the later text. */
+    private Node inserted(Occurrence occurrence) {
       var difference =
-          whole(unit, after, Kind.INSERTED, unit.parent()).markers(Markers.of(unit, after));
-      return Node.of(unit, false, difference, null, List.of());
+          whole(occurrence, after, Kind.INSERTED, occurrence.parent())
+              .markers(Markers.of(occurrence, after));
+      return Node.of(occurrence, false, difference, null, List.of());
     }
 
     /**
-     * Returns the unit {@code is} of the later text, compared with the unit {@code was} of the
-     * earlier text that it pairs with. The unit is changed if its own blocks or notes differ.
+     * Returns the occurrence {@code is} of the later text, compared with the occurrence {@code was}
+     * of the earlier text that it pairs with. The occurrence is changed if its own blocks or notes
+     * differ.
      */
-    private Node paired(Unit was, Unit is) {
+    private Node paired(Occurrence was, Occurrence is) {
       var marking = Marking.of(was, is);
-      var units = units(was, is);
+      var occurrences = occurrences(was, is);
       if (marking == null) {
-        return Node.of(is, false, null, null, units);
+        return Node.of(is, false, null, null, occurrences);
       }
       var difference =
           DifferenceBuilder.builder()
               .eId(is.eId())
               .kind(Kind.CHANGED)
-              .unit(sibling(is))
+              .occurrence(sibling(is))
               .inserted(marking.blocks().inserted())
               .deleted(marking.blocks().deleted())
               .parent(is.parent())
@@ -290,24 +302,24 @@ public final class Differ {
               .section(is.section())
               .markers(Markers.of(is, after))
               .earlierMarkers(Markers.of(was, before));
-      var node = Node.of(is, false, difference, marking, units);
+      var node = Node.of(is, false, difference, marking, occurrences);
       difference.shown(Content.of(node, false));
       return node;
     }
 
     /**
-     * Returns {@code unit} of {@code units} as a whole difference, with every word in it marked
-     * inserted or deleted, by its {@code kind}. The unit is in the unit {@code parent} of the later
-     * text.
+     * Returns {@code occurrence} of {@code occurrences} as a whole difference, with every word in
+     * it marked inserted or deleted, by its {@code kind}. The occurrence is in the occurrence
+     * {@code parent} of the later text.
      */
     private static DifferenceBuilder whole(
-        Unit unit, Units units, Kind kind, @Nullable String parent) {
+        Occurrence occurrence, Occurrences occurrences, Kind kind, @Nullable String parent) {
       var mark = kind == Kind.INSERTED ? Marks.INSERTED : Marks.DELETED;
-      var marked = Marks.all(unit.element(), mark);
+      var marked = Marks.all(occurrence.element(), mark);
       var shown = marked.element();
       var inserted = marked.inserted();
       var deleted = marked.deleted();
-      var referred = units.notesOf(unit.element());
+      var referred = occurrences.notesOf(occurrence.element());
       if (!referred.isEmpty()) {
         var notes = Marks.all(notes(referred), mark);
         var children = new ArrayList<>(shown.children());
@@ -317,24 +329,27 @@ public final class Differ {
         deleted += notes.deleted();
       }
       return DifferenceBuilder.builder()
-          .eId(unit.eId())
+          .eId(occurrence.eId())
           .kind(kind)
-          .unit(sibling(unit))
+          .occurrence(sibling(occurrence))
           .shown(shown)
           .inserted(inserted)
           .deleted(deleted)
           .parent(parent)
-          .list(unit.list())
-          .section(unit.section())
+          .list(occurrence.list())
+          .section(occurrence.section())
           .markers(List.of())
           .earlierMarkers(List.of());
     }
 
-    /** Returns the units directly in {@code unit} of {@code units}, or its outermost units. */
-    private static List<Unit> in(Units units, @Nullable Unit unit) {
-      var found = new ArrayList<Unit>();
-      for (var eId : units.in(unit == null ? null : unit.eId())) {
-        var each = units.get(eId);
+    /**
+     * Returns the occurrences directly in {@code occurrence} of {@code occurrences}, or its
+     * outermost occurrences.
+     */
+    private static List<Occurrence> in(Occurrences occurrences, @Nullable Occurrence occurrence) {
+      var found = new ArrayList<Occurrence>();
+      for (var eId : occurrences.in(occurrence == null ? null : occurrence.eId())) {
+        var each = occurrences.get(eId);
         if (each != null) {
           found.add(each);
         }
@@ -344,7 +359,7 @@ public final class Differ {
   }
 
   /**
-   * How the own blocks and notes of a unit differ from those of the unit that it was.
+   * How the own blocks and notes of an occurrence differ from those of the occurrence that it was.
    *
    * @param blocks its own blocks as they show: a changed block marked word by word, an inserted
    *     block marked whole, and each deleted block marked whole, where it stood. It counts the
@@ -355,10 +370,12 @@ public final class Differ {
   private record Marking(Parts.Shown blocks, @Nullable Element notes) {
 
     /**
-     * Returns how {@code to} differs from {@code from}. Returns null if the two units say the same.
+     * Returns how {@code to} differs from {@code from}. Returns null if the two occurrences say the
+     * same.
      */
-    static @Nullable Marking of(Unit from, Unit to) {
-      // What the two units say is worked out from their own blocks and notes alone. Most units of
+    static @Nullable Marking of(Occurrence from, Occurrence to) {
+      // What the two occurrences say is worked out from their own blocks and notes alone. Most
+      // occurrences of
       // two versions have the same ones, which say the same without working it out.
       if ((from.blocks().equals(to.blocks()) && from.notes().equals(to.notes()))
           || numbered(from).equals(numbered(to))) {
@@ -385,18 +402,18 @@ public final class Differ {
     }
 
     /**
-     * Returns what the own blocks of {@code unit} say, with its num without the full stop after it,
-     * and what the notes that they refer to say. A unit whose note an act changed differs. If a num
-     * only gained or lost its full stop, the Publications Office typeset it, and no act changed it.
-     * For example, "11.3" to "11.3.".
+     * Returns what the own blocks of {@code occurrence} say, with its num without the full stop
+     * after it, and what the notes that they refer to say. An occurrence whose note an act changed
+     * differs. If a num only gained or lost its full stop, the Publications Office typeset it, and
+     * no act changed it. For example, "11.3" to "11.3.".
      */
-    private static List<String> numbered(Unit unit) {
+    private static List<String> numbered(Occurrence occurrence) {
       var wording = new ArrayList<String>();
-      for (var block : unit.blocks()) {
+      for (var block : occurrence.blocks()) {
         var said = Wording.key(block);
         wording.add(block.name().equals("num") ? said.replaceFirst("\\.$", "") : said);
       }
-      unit.notes().forEach(note -> wording.add("note:" + Wording.key(note)));
+      occurrence.notes().forEach(note -> wording.add("note:" + Wording.key(note)));
       return wording;
     }
 
@@ -407,39 +424,42 @@ public final class Differ {
   }
 
   /**
-   * The content of a unit of the later text as a difference shows it, in the order of the text.
+   * The content of an occurrence of the later text as a difference shows it, in the order of the
+   * text.
    *
    * <ul>
    *   <li>Its own blocks show as its {@link Marking} has them. The blocks deleted after its last
    *       block come right after that block.
-   *   <li>A changed unit that does not show whole has only its own content: the units in it differ
-   *       on their own. A container with only units in it is then left out.
-   *   <li>A unit that shows whole has the units in it too, each as {@link Node#within} shows it. A
-   *       deleted unit shows beside a unit that it stood beside. See {@link #place}.
-   *   <li>What a consolidation keeps of a deletion is left out. See {@link Units}.
+   *   <li>A changed occurrence that does not show whole has only its own content: the occurrences
+   *       in it differ on their own. A container with only occurrences in it is then left out.
+   *   <li>An occurrence that shows whole has the occurrences in it too, each as {@link Node#within}
+   *       shows it. A deleted occurrence shows beside an occurrence that it stood beside. See
+   *       {@link #place}.
+   *   <li>What a consolidation keeps of a deletion is left out. See {@link Occurrences}.
    * </ul>
    */
   private static final class Content {
-    private final boolean withUnits;
+    private final boolean withOccurrences;
     private final Parts.Shown blocks;
     private final int count;
-    private final Map<String, Node> units = new HashMap<>();
+    private final Map<String, Node> occurrences = new HashMap<>();
     private final Map<String, List<Node>> deletedBefore = new HashMap<>();
     private final Map<String, List<Node>> deletedAfter = new HashMap<>();
     private final List<Node> deletedAlone = new ArrayList<>();
     private int next;
 
-    private Content(Node node, boolean withUnits) {
+    private Content(Node node, boolean withOccurrences) {
       var marking = node.marking();
-      this.withUnits = withUnits;
+      this.withOccurrences = withOccurrences;
       this.blocks = marking == null ? new Parts.Shown() : marking.blocks();
-      this.count = node.unit().blocks().size();
-      place(node.units());
+      this.count = node.occurrence().blocks().size();
+      place(node.occurrences());
     }
 
     /**
-     * Places each deleted unit of {@code nodes} beside a unit of the later text: before the next
-     * such unit, or after the last one if there is no next. Thus a deleted item shows in a list.
+     * Places each deleted occurrence of {@code nodes} beside an occurrence of the later text:
+     * before the next such occurrence, or after the last one if there is no next. Thus a deleted
+     * item shows in a list.
      */
     private void place(List<Node> nodes) {
       var waiting = new ArrayList<Node>();
@@ -449,8 +469,8 @@ public final class Differ {
           waiting.add(each);
           continue;
         }
-        last = each.unit().eId();
-        units.put(last, each);
+        last = each.occurrence().eId();
+        occurrences.put(last, each);
         if (!waiting.isEmpty()) {
           deletedBefore.put(last, List.copyOf(waiting));
           waiting.clear();
@@ -463,15 +483,19 @@ public final class Differ {
       }
     }
 
-    /** Returns the unit of {@code node} as it shows, with the units in it if {@code withUnits}. */
-    static Element of(Node node, boolean withUnits) {
-      var content = new Content(node, withUnits);
-      var element = node.unit().element();
-      // A unit with no blocks left shows its deleted blocks first.
+    /**
+     * Returns the occurrence of {@code node} as it shows, with the occurrences in it if {@code
+     * withOccurrences}.
+     */
+    static Element of(Node node, boolean withOccurrences) {
+      var content = new Content(node, withOccurrences);
+      var element = node.occurrence().element();
+      // An occurrence with no blocks left shows its deleted blocks first.
       var children = new ArrayList<>(content.count == 0 ? content.blocks.before(0) : List.of());
       children.addAll(content.in(element));
-      if (withUnits) {
-        // The later unit has no units left. Its deleted units go after its blocks.
+      if (withOccurrences) {
+        // The later occurrence has no occurrences left. Its deleted occurrences go after its
+        // blocks.
         children.addAll(listed(content.deletedAlone));
       }
       var marking = node.marking();
@@ -484,18 +508,18 @@ public final class Differ {
     private List<Element> in(Element element) {
       var out = new ArrayList<Element>();
       for (var child : element.children()) {
-        var eId = Units.eId(child);
+        var eId = Occurrences.eId(child);
         if (child.name().equals("deleted")) {
           continue;
         }
         if (eId != null) {
-          if (withUnits) {
-            out.addAll(unit(eId, child));
+          if (withOccurrences) {
+            out.addAll(occurrence(eId, child));
           }
         } else if (child.name().equals("provenance") || child.name().equals("notes")) {
-          // The notes at the end of an annex are not its blocks. See Units.
+          // The notes at the end of an annex are not its blocks. See Occurrences.
           out.add(child);
-        } else if (Units.holdsUnits(child)) {
+        } else if (Occurrences.holdsOccurrences(child)) {
           var inside = in(child);
           if (!inside.isEmpty()) {
             out.add(copy(child, inside));
@@ -512,24 +536,27 @@ public final class Differ {
       return out;
     }
 
-    /** Returns the unit {@code eId} in it, with the deleted units that are placed beside it. */
-    private List<Element> unit(String eId, Element element) {
+    /**
+     * Returns the occurrence {@code eId} in it, with the deleted occurrences that are placed beside
+     * it.
+     */
+    private List<Element> occurrence(String eId, Element element) {
       var out = new ArrayList<Element>();
       deletedBefore.getOrDefault(eId, List.of()).forEach(deleted -> out.add(deleted.within()));
-      var node = units.get(eId);
+      var node = occurrences.get(eId);
       out.add(node == null ? element : node.within());
       deletedAfter.getOrDefault(eId, List.of()).forEach(deleted -> out.add(deleted.within()));
       return out;
     }
 
     /**
-     * Returns the deleted units of {@code nodes} as they show, each in the list that it was an item
-     * of. Units of one list go in one list.
+     * Returns the deleted occurrences of {@code nodes} as they show, each in the list that it was
+     * an item of. Occurrences of one list go in one list.
      */
     private static List<Element> listed(List<Node> nodes) {
       var out = new ArrayList<Element>();
       for (var node : nodes) {
-        var list = node.unit().list();
+        var list = node.occurrence().list();
         var last = out.isEmpty() ? null : out.getLast();
         if (list == null) {
           out.add(node.within());
@@ -548,31 +575,32 @@ public final class Differ {
   }
 
   /**
-   * Shows the compared units as the differences of the later text, in order, each with what the
-   * later text has before it.
+   * Shows the compared occurrences as the differences of the later text, in order, each with what
+   * the later text has before it.
    */
   private static final class Show {
     private final List<Difference> placed = new ArrayList<>();
     private List<Context> context = new ArrayList<>();
 
     /**
-     * Places {@code nodes}, the units in the unit {@code in} of the later text, in order. {@code
-     * in} is null for the outermost units.
+     * Places {@code nodes}, the occurrences in the occurrence {@code in} of the later text, in
+     * order. {@code in} is null for the outermost occurrences.
      */
-    void units(List<Node> nodes, @Nullable Unit in) {
-      // The run of units that are the same in both texts, which waits to be folded.
+    void occurrences(List<Node> nodes, @Nullable Occurrence in) {
+      // The run of occurrences that are the same in both texts, which waits to be folded.
       var same = new ArrayList<Sibling>();
       for (var node : nodes) {
-        var unit = node.unit();
+        var occurrence = node.occurrence();
         var difference = node.difference();
         if (!node.differs()) {
-          same.add(sibling(unit));
+          same.add(sibling(occurrence));
           continue;
         }
         fold(same, in);
         if (difference == null) {
-          context.add(new Context(List.of(sibling(unit)), unit.parent(), lead(unit)));
-          units(node.units(), unit);
+          context.add(
+              new Context(List.of(sibling(occurrence)), occurrence.parent(), lead(occurrence)));
+          occurrences(node.occurrences(), occurrence);
           continue;
         }
         var whole = node.showsWhole();
@@ -584,14 +612,14 @@ public final class Differ {
         placed.add(difference.lead(in == null ? null : lead(in)).context(context).build());
         context = new ArrayList<>();
         if (!whole) {
-          units(node.units(), unit);
+          occurrences(node.occurrences(), occurrence);
         }
       }
       fold(same, in);
     }
 
     /** Folds the run {@code same} into the context and empties it. */
-    private void fold(List<Sibling> same, @Nullable Unit in) {
+    private void fold(List<Sibling> same, @Nullable Occurrence in) {
       if (!same.isEmpty()) {
         context.add(new Context(same, in == null ? null : in.eId(), null));
         same.clear();
@@ -612,36 +640,36 @@ public final class Differ {
   }
 
   /**
-   * Returns the opening of {@code unit}: its num, heading and subheading, and its first other
+   * Returns the opening of {@code occurrence}: its num, heading and subheading, and its first other
    * block.
    */
-  private static Element lead(Unit unit) {
+  private static Element lead(Occurrence occurrence) {
     var opening = new ArrayList<Element>();
-    for (var block : unit.blocks()) {
+    for (var block : occurrence.blocks()) {
       opening.add(block);
       if (!TITLES.contains(block.name())) {
         break;
       }
     }
-    return copy(unit.element(), opening);
+    return copy(occurrence.element(), opening);
   }
 
-  private static Sibling sibling(Unit unit) {
+  private static Sibling sibling(Occurrence occurrence) {
     var num =
-        unit.blocks().stream()
+        occurrence.blocks().stream()
             .filter(block -> block.name().equals("num"))
             .findFirst()
             .map(Wording::of)
             .orElse("");
-    var kind = unit.element().attribute("kind");
-    return new Sibling(unit.eId(), kind == null ? "" : kind, num);
+    var kind = occurrence.element().attribute("kind");
+    return new Sibling(occurrence.eId(), kind == null ? "" : kind, num);
   }
 
   private static Element copy(Element element, List<Element> children) {
     return new Element(element.name(), element.attributes(), children, element.text());
   }
 
-  /** Returns {@code notes} as the notes of a unit, under its blocks and units. */
+  /** Returns {@code notes} as the notes of an occurrence, under its blocks and occurrences. */
   private static Element notes(List<Element> notes) {
     return new Element("notes", Map.of(), notes, "");
   }

@@ -83,7 +83,7 @@ The pages have no timeline. The day control sets the day of a page:
 | corrigendum | A correction of an act. It is not an amending act. |
 | version | The text of an act from one day. It is the act as published, or a consolidated version. The pages do not use this word. They say "text": "the text of 31 December 2021". |
 | the law on a day | What applies on that day. It is not always the text of a version. |
-| provision | A part of the text with its own place: an article, a paragraph, a point. |
+| provision | A part of the act that has legal effect and its own place: an article, a paragraph, a point, an annex or a part of an annex. A citation or a recital is not a provision. |
 | difference | A provision that an act inserted, deleted or changed between two versions. |
 | the two days of a comparison | The days that the reader gave to Compare. From is the earlier day, To the later day. |
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
@@ -234,7 +234,7 @@ of the viewer before each path.
 | Compare, Synopsis | the same, with `&view=synopsis` |
 | Compare, a day on which an act applies that the text of the day does not have | `/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03` |
 | Compare, changes that do not apply on the later day | `/eli/reg/2018/1862/eng/compare?from=2021-08-03&to=2022-08-01` |
-| Compare, one provision: the wording on the two days and the steps | `/eli/reg/2008/767/eng/compare?from=2017-12-29&to=2026-06-12&unit=art_6%2Fpar_2` |
+| Compare, one provision: the wording on the two days and the steps | `/eli/reg/2008/767/eng/compare?from=2017-12-29&to=2026-06-12&occurrence=art_6%2Fpar_2` |
 | Preparing | `/eli/reg/2010/185/eng`, the first time |
 
 `mise run ui:snapshots` saves each of these pages, and Home before a search, in the light theme

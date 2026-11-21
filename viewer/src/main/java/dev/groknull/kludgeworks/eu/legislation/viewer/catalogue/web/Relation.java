@@ -24,7 +24,7 @@ enum Relation {
   PREPARATION("preparation"),
   RETRY("retry"),
   TEXT("text"),
-  UNIT("unit"),
+  OCCURRENCE("occurrence"),
   VERSION("version");
 
   /** The name of the viewer's CURIE, which {@code ApiConfiguration} gives its address. */

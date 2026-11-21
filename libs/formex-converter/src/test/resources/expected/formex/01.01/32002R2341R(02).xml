@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 73, in Annex III, concerning "/>
             <quote startQuote="‘" endQuote="’">
@@ -75,8 +75,8 @@
                <t v="."/>
             </p>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="On page 84, in Annex V, point 6(d), (e) and (f):"/>
          </p>
@@ -102,8 +102,8 @@
                <t v="."/>
             </p>
          </new>
-      </unit>
-      <unit eId="cor_3" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_3" kind="correction">
          <p>
             <t v="On page 110, in Annex XVI, in the second line of the table ("/>
             <emphasis kind="i">
@@ -112,12 +112,12 @@
             <t v=" spp.):"/>
          </p>
          <list kind="dash">
-            <unit eId="cor_3/idt_1" kind="indent">
+            <occurrence eId="cor_3/idt_1" kind="indent">
                <p>
                   <t v="in the first column:"/>
                </p>
                <list kind="definition" separator=":">
-                  <unit eId="cor_3/idt_1/def_1" kind="definition">
+                  <occurrence eId="cor_3/idt_1/def_1" kind="definition">
                      <heading>
                         <t v="for"/>
                      </heading>
@@ -127,8 +127,8 @@
                         </quote>
                         <t v=","/>
                      </p>
-                  </unit>
-                  <unit eId="cor_3/idt_1/def_2" kind="definition">
+                  </occurrence>
+                  <occurrence eId="cor_3/idt_1/def_2" kind="definition">
                      <heading>
                         <t v="read"/>
                      </heading>
@@ -138,15 +138,15 @@
                         </quote>
                         <t v="."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="cor_3/idt_2" kind="indent">
+            </occurrence>
+            <occurrence eId="cor_3/idt_2" kind="indent">
                <p>
                   <t v="in the third column:"/>
                </p>
                <list kind="definition" separator=":">
-                  <unit eId="cor_3/idt_2/def_1" kind="definition">
+                  <occurrence eId="cor_3/idt_2/def_1" kind="definition">
                      <heading>
                         <t v="for"/>
                      </heading>
@@ -156,8 +156,8 @@
                         </quote>
                         <t v=","/>
                      </p>
-                  </unit>
-                  <unit eId="cor_3/idt_2/def_2" kind="definition">
+                  </occurrence>
+                  <occurrence eId="cor_3/idt_2/def_2" kind="definition">
                      <heading>
                         <t v="read"/>
                      </heading>
@@ -171,11 +171,11 @@
                         </quote>
                         <t v="."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

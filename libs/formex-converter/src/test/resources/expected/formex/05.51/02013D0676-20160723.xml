@@ -67,7 +67,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -83,16 +83,16 @@
             </changed>
             <t v=" to designate the taxable person to whom the supplies of goods or services referred to in Article 2 of this Decision are made as the person liable for the payment of the tax."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="The derogation provided for in Article 1 shall apply to supplies of wood products by taxable persons including standing timber, round or cleft working wood, fuel wood, timber products, as well as square edged or chipped wood and wood in the rough, processed or semi-manufactured wood."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -108,15 +108,15 @@
             </changed>
             <t v=", and shall be accompanied by a report which includes an assessment of the efficiency of the measure and an evaluation of the risk of fraud in the wood sector."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
          <p>
             <t v="This Decision is addressed to Romania."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

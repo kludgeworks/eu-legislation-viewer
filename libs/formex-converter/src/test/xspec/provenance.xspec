@@ -10,19 +10,19 @@
       <GR.SEQ LEVEL="3"><NO.GR.SEQ>1.0.3</NO.GR.SEQ><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="STRUCTURE" ACTIVE.DOC="32017R0815" ACTIVE.LOC="AR:1 .AND. AX:0;PT:1"?><P>new text</P><?CLG.MDFC ID="C1" IDREF="O1"?><P>old text</P></GR.SEQ>
     </x:context>
     <x:expect label="becomes provenance on that paragraph only">
-      <unit eId="pnt_1.0.3" kind="level" depth="3" numbered="true"><num><t v="1.0.3"/></num>
+      <occurrence eId="pnt_1.0.3" kind="level" depth="3" numbered="true"><num><t v="1.0.3"/></num>
         <p><provenance amendingAct="32017R0815" action="replaced" location="AR:1 .AND. AX:0;PT:1" marker="O1"/><t v="new text"/></p>
         <p><t v="old text"/></p>
-      </unit>
+      </occurrence>
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="A marker before a unit">
+  <x:scenario label="A marker before an occurrence">
     <x:context mode="block" xmlns="">
       <LIST TYPE="alpha"><?CLG.MDFO ID="O1" IDREF="C1" ACTION="INSERTED" ACTIVE.DOC="32026R0449" ACTIVE.LOC="AR:1"?><ITEM><NP><NO.P>(a)</NO.P><TXT>staff and crew;</TXT></NP></ITEM><?CLG.MDFC ID="C1" IDREF="O1"?></LIST>
     </x:context>
-    <x:expect label="is the unit's provenance, and its text has none"
-              test="$x:result/*:unit/*:provenance/@action = 'inserted' and empty($x:result/*:unit/*:p/*:provenance)"/>
+    <x:expect label="is the occurrence's provenance, and its text has none"
+              test="$x:result/*:occurrence/*:provenance/@action = 'inserted' and empty($x:result/*:occurrence/*:p/*:provenance)"/>
   </x:scenario>
 
   <x:scenario label="A marker that opens before a point's number and closes inside its text (02005L0036, Article 10(e))">
@@ -30,10 +30,10 @@
       <LIST TYPE="alpha"><ITEM><NP><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32005L0036R(03)" ACTIVE.LOC="LI:0;EL:3"?> <NO.P>(e)</NO.P><TXT>a title<?CLG.MDFC ID="C1" IDREF="O1"?> listed in Annex V;</TXT></NP></ITEM></LIST>
     </x:context>
     <x:expect label="changes the number and the words up to its close, not the rest"
-              test="$x:result/*:unit/*:num/*:changed/*:t/@v = '(e)'
-                    and empty($x:result/*:unit/*:p/*:provenance)
-                    and deep-equal($x:result/*:unit/*:p/*:changed/*:t/@v ! string(), 'a title')
-                    and $x:result/*:unit/*:p/*:t/@v = ' listed in Annex V;'"/>
+              test="$x:result/*:occurrence/*:num/*:changed/*:t/@v = '(e)'
+                    and empty($x:result/*:occurrence/*:p/*:provenance)
+                    and deep-equal($x:result/*:occurrence/*:p/*:changed/*:t/@v ! string(), 'a title')
+                    and $x:result/*:occurrence/*:p/*:t/@v = ' listed in Annex V;'"/>
   </x:scenario>
 
   <x:scenario label="A marker that opens in an item before its NP and closes inside its text (02008R1126, IFRS 3 B21(d))">
@@ -42,9 +42,9 @@
 <NP><NO.P>(d)</NO.P><TXT>the amount recognised.<?CLG.MDFC ID="C1" IDREF="O1"?> However, the equity structure reflects it.</TXT></NP></ITEM></LIST>
     </x:context>
     <x:expect label="changes the words up to its close, not the rest"
-              test="empty($x:result/*:unit/*:p/*:provenance)
-                    and $x:result/*:unit/*:p/*:changed/*:t/@v = 'the amount recognised.'
-                    and $x:result/*:unit/*:p/*:t/@v = ' However, the equity structure reflects it.'"/>
+              test="empty($x:result/*:occurrence/*:p/*:provenance)
+                    and $x:result/*:occurrence/*:p/*:changed/*:t/@v = 'the amount recognised.'
+                    and $x:result/*:occurrence/*:p/*:t/@v = ' However, the equity structure reflects it.'"/>
   </x:scenario>
 
   <x:scenario label="Markers nested three deep (point 12.6.2)">
@@ -53,11 +53,11 @@
         <?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" ACTIVE.DOC="32023R0566" ACTIVE.LOC="PT:19"?><GR.SEQ LEVEL="4"><NO.GR.SEQ>12.6.2</NO.GR.SEQ><P>The standard for explosives applies.</P><?CLG.MDFO ID="O2" IDREF="C2" ACTION="REPLACED" ACTIVE.DOC="32024R1255" ACTIVE.LOC="PT:19"?><P>It shall apply as of <?CLG.MDFO ID="O3" IDREF="C3" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:27"?><DATE ISO="20261231">31 December 2026</DATE><?CLG.MDFC ID="C3" IDREF="O3"?> to equipment.</P><?CLG.MDFC ID="C2" IDREF="O2"?></GR.SEQ><?CLG.MDFC ID="C1" IDREF="O1"?>
       </CONTENTS>
     </x:context>
-    <x:expect label="unit: the act that replaced the point" test="$x:result/self::*:unit/*:provenance/@amendingAct = '32023R0566'"/>
-    <x:expect label="block: the act that replaced the paragraph" test="$x:result/self::*:unit/*:p[2]/*:provenance/@amendingAct = '32024R1255'"/>
+    <x:expect label="occurrence: the act that replaced the point" test="$x:result/self::*:occurrence/*:provenance/@amendingAct = '32023R0566'"/>
+    <x:expect label="block: the act that replaced the paragraph" test="$x:result/self::*:occurrence/*:p[2]/*:provenance/@amendingAct = '32024R1255'"/>
     <x:expect label="inline: the act that replaced the date"
-              test="$x:result/self::*:unit/*:p[2]/*:changed[@amendingAct = '32026R0449']/*:date/@date = '2026-12-31'"/>
-    <x:expect label="the first paragraph carries no provenance of its own" test="empty($x:result/self::*:unit/*:p[1]/*:provenance)"/>
+              test="$x:result/self::*:occurrence/*:p[2]/*:changed[@amendingAct = '32026R0449']/*:date/@date = '2026-12-31'"/>
+    <x:expect label="the first paragraph carries no provenance of its own" test="empty($x:result/self::*:occurrence/*:p[1]/*:provenance)"/>
   </x:scenario>
 
   <x:scenario label="A marker around all the text of a paragraph">
@@ -82,11 +82,11 @@
       <GR.SEQ LEVEL="4"><NO.GR.SEQ>11.1.1</NO.GR.SEQ><P>The following personnel</P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="STRUCTURE" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:23"?><P>Point (b) shall apply from <DATE ISO="20230101">1 January 2023</DATE>.</P><?CLG.MDFC ID="C1" IDREF="O1"?></GR.SEQ>
     </x:context>
     <x:expect label="is kept inside deleted, with the deleting act">
-      <unit eId="pnt_11.1.1" kind="level" depth="4" numbered="true"><num><t v="11.1.1"/></num>
+      <occurrence eId="pnt_11.1.1" kind="level" depth="4" numbered="true"><num><t v="11.1.1"/></num>
         <p><t v="The following personnel"/></p>
         <deleted><provenance amendingAct="32026R0449" action="deleted" location="PT:23" marker="O1"/>
           <p><t v="Point (b) shall apply from "/><date date="2023-01-01"><t v="1 January 2023"/></date><t v="."/></p></deleted>
-      </unit>
+      </occurrence>
     </x:expect>
   </x:scenario>
 
@@ -97,21 +97,21 @@
     </x:expect>
   </x:scenario>
 
-  <x:scenario label="A deletion over several units, wrapped one by one">
+  <x:scenario label="A deletion over several occurrences, wrapped one by one">
     <x:context mode="f:deletions" xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter">
-      <unit eId="anx" kind="annex">
-        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><unit eId="anx/level_1" kind="level"/></deleted>
-        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><unit eId="anx/level_2" kind="level"/></deleted>
-        <deleted><provenance amendingAct="32026R0449" action="deleted" marker="O2"/><unit eId="anx/level_3" kind="level"/></deleted>
-        <unit eId="anx/level_4" kind="level"/>
-      </unit>
+      <occurrence eId="anx" kind="annex">
+        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><occurrence eId="anx/level_1" kind="level"/></deleted>
+        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><occurrence eId="anx/level_2" kind="level"/></deleted>
+        <deleted><provenance amendingAct="32026R0449" action="deleted" marker="O2"/><occurrence eId="anx/level_3" kind="level"/></deleted>
+        <occurrence eId="anx/level_4" kind="level"/>
+      </occurrence>
     </x:context>
     <x:expect label="becomes one deleted for each deletion, as EUR-Lex shows one mark">
-      <unit eId="anx" kind="annex">
-        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><unit eId="anx/level_1" kind="level"/><unit eId="anx/level_2" kind="level"/></deleted>
-        <deleted><provenance amendingAct="32026R0449" action="deleted" marker="O2"/><unit eId="anx/level_3" kind="level"/></deleted>
-        <unit eId="anx/level_4" kind="level"/>
-      </unit>
+      <occurrence eId="anx" kind="annex">
+        <deleted><provenance amendingAct="32022R1174" action="deleted" marker="O1"/><occurrence eId="anx/level_1" kind="level"/><occurrence eId="anx/level_2" kind="level"/></deleted>
+        <deleted><provenance amendingAct="32026R0449" action="deleted" marker="O2"/><occurrence eId="anx/level_3" kind="level"/></deleted>
+        <occurrence eId="anx/level_4" kind="level"/>
+      </occurrence>
     </x:expect>
   </x:scenario>
 
@@ -120,7 +120,7 @@
       <LIST TYPE="alpha"><ITEM><NP><NO.P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32026R0449" ACTIVE.LOC="PT:16"?>(c)<?CLG.MDFC ID="C1" IDREF="O1"?></NO.P><TXT>known supplier</TXT></NP></ITEM></LIST>
     </x:context>
     <x:expect label="has the change in its num, where the renumbering shows"
-              test="$x:result/*:unit/*:num/*:changed/*:t/@v = '(c)' and empty($x:result/*:unit/*:provenance)"/>
+              test="$x:result/*:occurrence/*:num/*:changed/*:t/@v = '(c)' and empty($x:result/*:occurrence/*:provenance)"/>
   </x:scenario>
 
   <x:scenario label="A marker with attributes without whitespace separation (01979L0117)">

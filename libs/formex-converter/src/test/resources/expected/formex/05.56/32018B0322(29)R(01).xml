@@ -36,9 +36,9 @@
          </quote>
          <t v=":"/>
       </p>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <list kind="dash">
-            <unit eId="cor_1/idt_1" kind="indent">
+            <occurrence eId="cor_1/idt_1" kind="indent">
                <p>
                   <t v="row "/>
                   <quote startQuote="‘" endQuote="’">
@@ -46,7 +46,7 @@
                   </quote>
                   <t v=":"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <old>
             <p>
@@ -78,10 +78,10 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <list kind="dash">
-            <unit eId="cor_2/idt_1" kind="indent">
+            <occurrence eId="cor_2/idt_1" kind="indent">
                <p>
                   <t v="row "/>
                   <quote startQuote="‘" endQuote="’">
@@ -89,7 +89,7 @@
                   </quote>
                   <t v=":"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <old>
             <p>
@@ -121,10 +121,10 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_3" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_3" kind="correction">
          <list kind="dash">
-            <unit eId="cor_3/idt_1" kind="indent">
+            <occurrence eId="cor_3/idt_1" kind="indent">
                <p>
                   <t v="row "/>
                   <quote startQuote="‘" endQuote="’">
@@ -132,7 +132,7 @@
                   </quote>
                   <t v=":"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <old>
             <p>
@@ -164,10 +164,10 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_4" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_4" kind="correction">
          <list kind="dash">
-            <unit eId="cor_4/idt_1" kind="indent">
+            <occurrence eId="cor_4/idt_1" kind="indent">
                <p>
                   <t v="row "/>
                   <quote startQuote="‘" endQuote="’">
@@ -175,7 +175,7 @@
                   </quote>
                   <t v=":"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <old>
             <p>
@@ -207,10 +207,10 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_5" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_5" kind="correction">
          <list kind="dash">
-            <unit eId="cor_5/idt_1" kind="indent">
+            <occurrence eId="cor_5/idt_1" kind="indent">
                <p>
                   <t v="row "/>
                   <quote startQuote="‘" endQuote="’">
@@ -218,7 +218,7 @@
                   </quote>
                   <t v=":"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <old>
             <p>
@@ -250,7 +250,7 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

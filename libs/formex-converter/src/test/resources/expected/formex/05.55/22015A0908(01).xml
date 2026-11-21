@@ -27,7 +27,7 @@
    </preface>
    <body/>
    <annexes>
-      <unit eId="let_1" kind="letter" rank="1">
+      <occurrence eId="let_1" kind="letter" rank="1">
          <num>
             <t v="A."/>
          </num>
@@ -67,8 +67,8 @@
                <t v="For the European Union"/>
             </emphasis>
          </p>
-      </unit>
-      <unit eId="let_2" kind="letter" rank="1">
+      </occurrence>
+      <occurrence eId="let_2" kind="letter" rank="1">
          <num>
             <t v="B."/>
          </num>
@@ -119,7 +119,7 @@
                <t v="For the CCSBT,"/>
             </emphasis>
          </p>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

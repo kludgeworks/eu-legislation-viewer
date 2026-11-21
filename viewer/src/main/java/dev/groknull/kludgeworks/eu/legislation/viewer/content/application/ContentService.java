@@ -143,26 +143,26 @@ class ContentService implements Content {
 
   @Override
   @Transactional(readOnly = true)
-  public Optional<PublicText.Extract> publicUnit(TextId text, String eId) {
+  public Optional<PublicText.Extract> publicOccurrence(TextId text, String eId) {
     var start = System.nanoTime();
-    var unit = read(text).flatMap(element -> PublicTexts.extract(element, eId));
+    var occurrence = read(text).flatMap(element -> PublicTexts.extract(element, eId));
     LOG.debug(
-        "Unit {} of text {} in the public model: {} in {} ms",
+        "Occurrence {} of text {} in the public model: {} in {} ms",
         eId,
         text,
-        unit.isPresent() ? "found" : "none",
+        occurrence.isPresent() ? "found" : "none",
         millis(start));
-    return unit;
+    return occurrence;
   }
 
   @Override
-  public PublicText.Unit publicUnit(Element unit) {
-    return PublicTexts.unit(unit);
+  public PublicText.Occurrence publicOccurrence(Element occurrence) {
+    return PublicTexts.occurrence(occurrence);
   }
 
   @Override
-  public PublicText.Marked publicWording(Element unit) {
-    return PublicTexts.marked(unit);
+  public PublicText.Marked publicWording(Element occurrence) {
+    return PublicTexts.marked(occurrence);
   }
 
   /**
@@ -201,7 +201,8 @@ class ContentService implements Content {
               var outline = Outlines.of(Decoder.element(json));
               store.outline(text, outline, OutlinesVersion.value());
               LOG.info(
-                  "Outlined text {} again, by the outline rules {}: {} units marked, in {} ms",
+                  "Outlined text {} again, by the outline rules {}: {} occurrences marked, in {}"
+                      + " ms",
                   text,
                   OutlinesVersion.value(),
                   outline.marks().size(),

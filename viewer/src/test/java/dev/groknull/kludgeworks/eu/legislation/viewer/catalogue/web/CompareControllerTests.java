@@ -72,12 +72,13 @@ class CompareControllerTests {
 
   @Test
   void keepsTheProvisionThatThePageIsLimitedTo() {
-    assertThat(mvc.get().uri(ACT + "eng/compare?from=2026-12-01&to=2021-06-01&unit=anx/pnt_1"))
+    assertThat(
+            mvc.get().uri(ACT + "eng/compare?from=2026-12-01&to=2021-06-01&occurrence=anx/pnt_1"))
         .hasStatus(HttpStatus.SEE_OTHER)
         .headers()
         .hasValue(
             HttpHeaders.LOCATION,
-            ACT + "eng/compare?from=2021-06-01&to=2026-12-01&unit=anx%2Fpnt_1");
+            ACT + "eng/compare?from=2021-06-01&to=2026-12-01&occurrence=anx%2Fpnt_1");
   }
 
   @Test

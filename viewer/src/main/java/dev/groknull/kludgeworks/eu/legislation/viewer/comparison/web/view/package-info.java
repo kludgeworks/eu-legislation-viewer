@@ -4,8 +4,9 @@
  * src/main/jte/comparison}.
  *
  * <ul>
- *   <li>{@link ChangesView} holds the differences in order, numbered and noted. The units that are
- *       the same in both texts are folded. The opening of the unit that they are in is the context.
+ *   <li>{@link ChangesView} holds the differences in order, numbered and noted. The occurrences
+ *       that are the same in both texts are folded. The opening of the occurrence that they are in
+ *       is the context.
  *   <li>{@link SidenoteView} holds the note beside each difference: the acts that made it.
  *   <li>{@link OutlineView} holds the outline of the later text, with the differences counted on
  *       its branches.

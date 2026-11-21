@@ -109,7 +109,7 @@ class MastheadViewTest {
         .extracting(Choice::href)
         .singleElement()
         .asString()
-        .endsWith("&unit=anx%2Fpnt_1");
+        .endsWith("&occurrence=anx%2Fpnt_1");
   }
 
   @Test

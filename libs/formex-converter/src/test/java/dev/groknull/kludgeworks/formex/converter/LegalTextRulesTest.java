@@ -24,18 +24,18 @@ class LegalTextRulesTest {
     var text =
         legalText(
             """
-            <body><unit eId="art_1" kind="article"><p><t v="a"/><noteRef href="#note_1" marker="1"/></p></unit>
-                  <unit eId="art_2" kind="article"/></body>
+            <body><occurrence eId="art_1" kind="article"><p><t v="a"/><noteRef href="#note_1" marker="1"/></p></occurrence>
+                  <occurrence eId="art_2" kind="article"/></body>
             <notes><note eId="note_1" marker="1" kind="footnote"/></notes>\
             """);
     assertThat(RULES.violations(text)).isEmpty();
   }
 
   @Test
-  void rejectsTwoLiveUnitsWithOneEId() throws SaxonApiException {
+  void rejectsTwoLiveOccurrencesWithOneEId() throws SaxonApiException {
     var text =
         legalText(
-            "<body><unit eId=\"art_1\" kind=\"article\"/><unit eId=\"art_1\""
+            "<body><occurrence eId=\"art_1\" kind=\"article\"/><occurrence eId=\"art_1\""
                 + " kind=\"article\"/></body>");
     assertThat(RULES.violations(text))
         .extracting(Schematron.Finding::id)
@@ -48,19 +48,19 @@ class LegalTextRulesTest {
         legalText(
             """
             <body><deleted><provenance amendingAct="32026R0449" action="deleted" marker="O1"/>
-                    <unit eId="art_1" kind="article"/></deleted>
-                  <unit eId="art_1" kind="article"/></body>\
+                    <occurrence eId="art_1" kind="article"/></deleted>
+                  <occurrence eId="art_1" kind="article"/></body>\
             """);
     assertThat(RULES.violations(text)).isEmpty();
   }
 
   @Test
-  void letsUnitsWhoseLabelTheSourceRepeatsShareAnEId() throws SaxonApiException {
+  void letsOccurrencesWhoseLabelTheSourceRepeatsShareAnEId() throws SaxonApiException {
     var text =
         legalText(
             """
-            <body><unit eId="art_1" kind="article" ambiguous="true"/>
-                  <unit eId="art_1" kind="article" ambiguous="true"/></body>\
+            <body><occurrence eId="art_1" kind="article" ambiguous="true"/>
+                  <occurrence eId="art_1" kind="article" ambiguous="true"/></body>\
             """);
     assertThat(RULES.violations(text)).isEmpty();
   }
@@ -70,8 +70,8 @@ class LegalTextRulesTest {
     var text =
         legalText(
             """
-            <body><unit eId="art_1" kind="article" ambiguous="true"/>
-                  <unit eId="art_1" kind="article"/></body>\
+            <body><occurrence eId="art_1" kind="article" ambiguous="true"/>
+                  <occurrence eId="art_1" kind="article"/></body>\
             """);
     assertThat(RULES.violations(text))
         .extracting(Schematron.Finding::id)
@@ -134,11 +134,13 @@ class LegalTextRulesTest {
   @CsvSource(
       delimiter = '|',
       value = {
-        "levels-only | <body><unit eId=\"art_1\" kind=\"article\" depth=\"2\"/></body>",
-        "annexes-only | <body><unit eId=\"art_1\" kind=\"article\" eurlexAnchor=\"1\"/></body>",
+        "levels-only | <body><occurrence eId=\"art_1\" kind=\"article\" depth=\"2\"/></body>",
+        "annexes-only | <body><occurrence eId=\"art_1\" kind=\"article\""
+            + " eurlexAnchor=\"1\"/></body>",
         "ref-by-kind | <body><p><ref kind=\"uri\" href=\"http://x\" series=\"L\"><t"
             + " v=\"x\"/></ref></p></body>",
-        "correction-sides | <body><unit eId=\"art_1\" kind=\"article\"><old/></unit></body>",
+        "correction-sides | <body><occurrence eId=\"art_1\""
+            + " kind=\"article\"><old/></occurrence></body>",
         "deletion-in-deleted | <body><p><provenance amendingAct=\"32026R0449\" action=\"deleted\""
             + " marker=\"O1\"/><t v=\"x\"/></p></body>",
         "note-marker | <body><p><noteRef href=\"#note_1\" marker=\"2\"/></p></body><notes><note"

@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1290/2005 of "/>
                <date date="2005-06-21">
@@ -58,7 +58,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 42 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -66,7 +66,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -75,8 +75,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=". The setting of this threshold should not prevent Member States from applying the provisions referred to above to cases exceeding EUR 100, if properly justified."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -93,31 +93,31 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" because Article 6(3) of that Regulation provides for a specific regime for the non-application of reductions and exclusions amounting to EUR 100 or less."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The obligation for the Member States to recover undue amounts above EUR 100 can be executed in different ways. Without prejudice to any other enforcement action provided for in national law, an effective and cost-efficient way to do so is to deduct any outstanding amounts from future payments to the debtor, once the debt has been established in conformity with national legislation. This method should therefore be made compulsory for Member States to apply."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Regulation (EC) No 885/2006 should therefore be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Committee on the Agricultural Funds,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -126,7 +126,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -134,7 +134,7 @@
             <t v="In Regulation (EC) No 885/2006 the following Chapter 1a is inserted:"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/cpt_1a" kind="division" rank="2">
+            <occurrence eId="art_1/qstr_1/cpt_1a" kind="division" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="CHAPTER 1a"/>
@@ -142,7 +142,7 @@
                <subheading>
                   <t v="RECOVERY OF DEBTS"/>
                </subheading>
-               <unit eId="art_1/qstr_1/art_5a" kind="article" rank="3">
+               <occurrence eId="art_1/qstr_1/art_5a" kind="article" rank="3">
                   <num>
                      <t v="Article 5a"/>
                   </num>
@@ -154,8 +154,8 @@
                      <noteRef href="#note_4" marker="*"/>
                      <t v=", the conditions of Articles 32(6)(a) and 33(7) of Regulation (EC) No 1290/2005 are considered to be fulfilled if the amount to be recovered from the beneficiary in relation to an individual payment for an aid scheme, not including interests, does not exceed EUR 100."/>
                   </p>
-               </unit>
-               <unit eId="art_1/qstr_1/art_5b" kind="article" rank="3">
+               </occurrence>
+               <occurrence eId="art_1/qstr_1/art_5b" kind="article" rank="3">
                   <num>
                      <t v="Article 5b"/>
                   </num>
@@ -165,11 +165,11 @@
                   <p>
                      <t v="Without prejudice to any other enforcement action provided for in national law, Member States shall off-set any still outstanding debt of a beneficiary which has been established in accordance with national law against any future payment to be made by the paying agency responsible for the recovery of the debt to the same beneficiary."/>
                   </p>
-               </unit>
-            </unit>
+               </occurrence>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -180,7 +180,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>

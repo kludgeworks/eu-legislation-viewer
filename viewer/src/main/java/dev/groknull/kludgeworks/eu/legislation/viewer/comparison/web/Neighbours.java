@@ -15,34 +15,36 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Finds the neighbours of the differences of a comparison, as the Synopsis shows them. A neighbour
- * is a unit near a difference that is the same in both texts.
+ * is an occurrence near a difference that is the same in both texts.
  *
- * <p>Each neighbour is the unit as the later text has it, with the amendment markers on its own
- * content. If its own content has no markers, it gets the markers of the nearest enclosing unit
- * that has a provenance of its own. An act put that enclosing unit in its current form as a whole,
- * with the units in it. The Differences of a comparison get their markers in the same way.
+ * <p>Each neighbour is the occurrence as the later text has it, with the amendment markers on its
+ * own content. If its own content has no markers, it gets the markers of the nearest enclosing
+ * occurrence that has a provenance of its own. An act put that enclosing occurrence in its current
+ * form as a whole, with the occurrences in it. The Differences of a comparison get their markers in
+ * the same way.
  */
 final class Neighbours {
   private Neighbours() {}
 
   /**
-   * A unit the same in both texts.
+   * An occurrence the same in both texts.
    *
-   * @param unit the unit, as the later text has it, with the units in it
-   * @param markers the markers on its own content, or the markers of the nearest enclosing unit
+   * @param occurrence the occurrence, as the later text has it, with the occurrences in it
+   * @param markers the markers on its own content, or the markers of the nearest enclosing
+   *     occurrence
    */
-  record Neighbour(Element unit, List<Marker> markers) {
+  record Neighbour(Element occurrence, List<Marker> markers) {
     Neighbour {
       markers = List.copyOf(markers);
     }
   }
 
-  /** Returns {@code unit} as a row cites it: its eId, kind and num. */
-  static Sibling sibling(Element unit) {
-    var eId = unit.attribute("eId");
-    var kind = unit.attribute("kind");
+  /** Returns {@code occurrence} as a row cites it: its eId, kind and num. */
+  static Sibling sibling(Element occurrence) {
+    var eId = occurrence.attribute("eId");
+    var kind = occurrence.attribute("kind");
     var num = new StringBuilder();
-    for (var child : unit.children()) {
+    for (var child : occurrence.children()) {
       if (child.name().equals("num")) {
         said(child, num);
       }
@@ -59,8 +61,8 @@ final class Neighbours {
   }
 
   /**
-   * Returns the units {@code eIds} of {@code later}, by eId. A unit that {@code later} does not
-   * have is not in the result.
+   * Returns the occurrences {@code eIds} of {@code later}, by eId. An occurrence that {@code later}
+   * does not have is not in the result.
    */
   static Map<String, Neighbour> of(Element later, Set<String> eIds) {
     var found = new HashMap<String, Neighbour>();
@@ -69,8 +71,8 @@ final class Neighbours {
   }
 
   /**
-   * Finds the neighbours in {@code element}, which is inside the units {@code enclosing}. The
-   * innermost enclosing unit is first.
+   * Finds the neighbours in {@code element}, which is inside the occurrences {@code enclosing}. The
+   * innermost enclosing occurrence is first.
    */
   private static void walk(
       Element element, Set<String> eIds, Deque<Element> enclosing, Map<String, Neighbour> found) {
@@ -89,9 +91,9 @@ final class Neighbours {
     }
   }
 
-  private static List<Marker> markers(Element unit, Deque<Element> enclosing) {
+  private static List<Marker> markers(Element occurrence, Deque<Element> enclosing) {
     var found = new LinkedHashSet<Marker>();
-    own(unit, found);
+    own(occurrence, found);
     for (var each : enclosing) {
       if (!found.isEmpty()) {
         break;
@@ -109,7 +111,7 @@ final class Neighbours {
 
   /**
    * Adds the markers on the own content of {@code element} to {@code found}. It does not add the
-   * markers of the units in it.
+   * markers of the occurrences in it.
    */
   private static void own(Element element, Set<Marker> found) {
     for (var child : element.children()) {
@@ -126,6 +128,6 @@ final class Neighbours {
   }
 
   private static @Nullable String eId(Element element) {
-    return element.name().equals("unit") ? element.attribute("eId") : null;
+    return element.name().equals("occurrence") ? element.attribute("eId") : null;
   }
 }

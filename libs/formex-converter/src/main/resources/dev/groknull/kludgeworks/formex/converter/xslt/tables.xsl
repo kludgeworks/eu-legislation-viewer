@@ -160,7 +160,7 @@
   </xsl:template>
 
   <!-- a cell is a context: what it numbers restarts in the next row (a level "PART A" in every row
-       of a list of substances), so its units hang off tab_1/tr_103/td_7, by the source's column -->
+       of a list of substances), so its occurrences hang off tab_1/tr_103/td_7, by the source's column -->
   <xsl:template match="CELL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="table" as="map(*)?" tunnel="yes"/>

@@ -42,8 +42,8 @@ import tools.jackson.databind.JsonNode;
 import tools.jackson.databind.json.JsonMapper;
 
 /**
- * Tests the text of a version in the API, with its outline and units, with the catalogue and the
- * content mocked. The act is the act of {@link OneActCellar}, and the text asked for is its
+ * Tests the text of a version in the API, with its outline and occurrences, with the catalogue and
+ * the content mocked. The act is the act of {@link OneActCellar}, and the text asked for is its
  * consolidation of 15 March 2021 in English.
  */
 @WebMvcTest(ApiTextController.class)
@@ -53,8 +53,8 @@ class ApiTextControllerTests {
   private static final String VERSION = ACT + "/versions/2021-03-15";
   private static final String TEXT = "/api/acts/32015R1998/versions/2021-03-15/texts/eng";
   private static final TextId STORED = new TextId(7);
-  private static final PublicText.Unit UNIT =
-      new PublicText.Unit(
+  private static final PublicText.Occurrence OCCURRENCE =
+      new PublicText.Occurrence(
           "anx/pnt_1.2",
           "point",
           "1.2.",
@@ -75,10 +75,11 @@ class ApiTextControllerTests {
     when(content.publicText(STORED))
         .thenReturn(
             Optional.of(
-                new PublicText(null, List.of(), List.of(), List.of(), List.of(UNIT), List.of())));
-    when(content.publicUnit(any(), any())).thenReturn(Optional.empty());
-    when(content.publicUnit(STORED, "anx/pnt_1.2"))
-        .thenReturn(Optional.of(new PublicText.Extract(UNIT, List.of())));
+                new PublicText(
+                    null, List.of(), List.of(), List.of(), List.of(OCCURRENCE), List.of())));
+    when(content.publicOccurrence(any(), any())).thenReturn(Optional.empty());
+    when(content.publicOccurrence(STORED, "anx/pnt_1.2"))
+        .thenReturn(Optional.of(new PublicText.Extract(OCCURRENCE, List.of())));
     when(content.outline(STORED))
         .thenReturn(
             Optional.of(
@@ -112,7 +113,7 @@ class ApiTextControllerTests {
     assertThat(text.at("/version").asString()).isEqualTo("2021-03-15");
     assertThat(text.at("/celex").asString()).isEqualTo("02015R1998-20210315");
     assertThat(text.at("/language").asString()).isEqualTo("eng");
-    assertThat(text.at("/text/annexes/0/type").asString()).isEqualTo("unit");
+    assertThat(text.at("/text/annexes/0/type").asString()).isEqualTo("occurrence");
     assertThat(text.at("/text/annexes/0/content/0/html").asString()).isEqualTo("<i>Screening.</i>");
     assertThat(text.at("/text/body").isMissingNode()).isTrue();
     assertThat(text.at("/_links/self/href").asString()).isEqualTo(VERSION + "/texts/eng");
@@ -121,9 +122,9 @@ class ApiTextControllerTests {
     assertThat(text.at("/_links/alternate/hreflang").asString()).isEqualTo("fr");
     assertThat(text.at("/_links/av:outline/href").asString())
         .isEqualTo(VERSION + "/texts/eng/outline");
-    assertThat(text.at("/_links/av:unit/href").asString())
-        .isEqualTo(VERSION + "/texts/eng/units/{+eId}");
-    assertThat(text.at("/_links/av:unit/templated").asBoolean()).isTrue();
+    assertThat(text.at("/_links/av:occurrence/href").asString())
+        .isEqualTo(VERSION + "/texts/eng/occurrences/{+eId}");
+    assertThat(text.at("/_links/av:occurrence/templated").asBoolean()).isTrue();
     assertThat(text.at("/_links/av:preparation/href").asString())
         .isEqualTo(ACT + "/preparations/eng");
     verify(texts).prepare(OneActCellar.ACT, Language.ENG);
@@ -198,22 +199,22 @@ class ApiTextControllerTests {
     assertThat(outline.at("/_links/self/href").asString())
         .isEqualTo(VERSION + "/texts/eng/outline");
     assertThat(outline.at("/_links/up/href").asString()).isEqualTo(VERSION + "/texts/eng");
-    assertThat(outline.at("/_links/av:unit/href").asString())
-        .isEqualTo(VERSION + "/texts/eng/units/{+eId}");
+    assertThat(outline.at("/_links/av:occurrence/href").asString())
+        .isEqualTo(VERSION + "/texts/eng/occurrences/{+eId}");
   }
 
   @Test
-  void servesAUnitByItsEIdWithItsSlash() throws UnsupportedEncodingException {
+  void servesAnOccurrenceByItsEIdWithItsSlash() throws UnsupportedEncodingException {
     textIs(new Text.Ready(STORED));
 
-    var unit = json(mvc.get().uri(TEXT + "/units/anx/pnt_1.2").exchange());
+    var occurrence = json(mvc.get().uri(TEXT + "/occurrences/anx/pnt_1.2").exchange());
 
-    assertThat(unit.at("/unit/eId").asString()).isEqualTo("anx/pnt_1.2");
-    assertThat(unit.at("/unit/content/0/text").asString()).isEqualTo("Screening.");
-    assertThat(unit.at("/_links/self/href").asString())
-        .isEqualTo(VERSION + "/texts/eng/units/anx/pnt_1.2");
-    assertThat(unit.at("/_links/up/href").asString()).isEqualTo(VERSION + "/texts/eng");
-    assertThat(mvc.get().uri(TEXT + "/units/art_99")).hasStatus(HttpStatus.NOT_FOUND);
+    assertThat(occurrence.at("/occurrence/eId").asString()).isEqualTo("anx/pnt_1.2");
+    assertThat(occurrence.at("/occurrence/content/0/text").asString()).isEqualTo("Screening.");
+    assertThat(occurrence.at("/_links/self/href").asString())
+        .isEqualTo(VERSION + "/texts/eng/occurrences/anx/pnt_1.2");
+    assertThat(occurrence.at("/_links/up/href").asString()).isEqualTo(VERSION + "/texts/eng");
+    assertThat(mvc.get().uri(TEXT + "/occurrences/art_99")).hasStatus(HttpStatus.NOT_FOUND);
   }
 
   /** Has the preparation in English hold {@code text} for the consolidation of 15 March 2021. */

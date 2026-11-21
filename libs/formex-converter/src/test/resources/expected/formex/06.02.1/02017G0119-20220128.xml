@@ -51,7 +51,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="level_1" kind="level" depth="1" rank="1">
+      <occurrence eId="level_1" kind="level" depth="1" rank="1">
          <heading>
             <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
          </heading>
@@ -113,17 +113,17 @@
          <p>
             <t v="ENCOURAGES the competent authorities of the Member States that wish to set up a Joint Investigation Team with the competent authorities from other Member States, in accordance with the terms of the Framework Decision and the Convention, or from non-EU States, on the basis of the relevant international instruments, to use, where appropriate, the Model Agreement set out in the Annex to this Resolution in order to agree upon the modalities for the Joint Investigation Team."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <subheading>
             <t v="MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM"/>
          </subheading>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="In accordance with:"/>
@@ -136,7 +136,7 @@
                </emphasis>
             </p>
             <list kind="dash">
-               <unit eId="anx/level_1/idt_1" kind="indent">
+               <occurrence eId="anx/level_1/idt_1" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 13 of the Convention on Mutual Assistance in Criminal Matters between the Member States of the European Union of "/>
@@ -147,8 +147,8 @@
                      <noteRef href="#note_6" marker="6"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_2" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Council Framework Decision of "/>
@@ -160,8 +160,8 @@
                      <noteRef href="#note_7" marker="7"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_3" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 1 of the Agreement between the European Union and the Republic of Iceland and the Kingdom of Norway on the application of certain provisions of the Convention of "/>
@@ -176,8 +176,8 @@
                      <noteRef href="#note_8" marker="8"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_4" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 5 of the Agreement on Mutual Legal Assistance between the European Union and the United States of America"/>
@@ -185,8 +185,8 @@
                      <noteRef href="#note_9" marker="9"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_5" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_5" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 20 of the second additional protocol to the European Convention on Mutual Assistance in Criminal Matters of "/>
@@ -197,8 +197,8 @@
                      <noteRef href="#note_10" marker="10"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_6" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_6" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Articl 9(1)(c) of the United Nations Convention against Illicit Traffic in Narcotic Drugs and Psychotropic Substances (1988)"/>
@@ -206,8 +206,8 @@
                      <noteRef href="#note_11" marker="11"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_7" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_7" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 19 of the United Nations Convention against Transnational Organized Crime (2000)"/>
@@ -215,8 +215,8 @@
                      <noteRef href="#note_12" marker="12"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_8" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_8" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 49 of the United Nations Convention against Corruption (2003)"/>
@@ -224,8 +224,8 @@
                      <noteRef href="#note_13" marker="13"/>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_1/idt_9" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/level_1/idt_9" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="Article 27 of the Police Cooperation Convention for South East Europe (2006)"/>
@@ -233,14 +233,14 @@
                      <noteRef href="#note_14" marker="14"/>
                      <t v=".]"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_1"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_1"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -257,7 +257,7 @@
                <t v=":"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/pnt_1/pnt_1" kind="point" numbered="true">
+               <occurrence eId="anx/pnt_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -271,8 +271,8 @@
                   <p>
                      <t v="And"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_1/pnt_2" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_1/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
@@ -283,17 +283,17 @@
                      </emphasis>
                      <t v="]"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="The parties to this agreement may decide, by common consent, to invite other States' agencies or administrations to become parties to this agreement."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_2"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_2"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -323,12 +323,12 @@
                <noteRef href="#note_15" marker="15"/>
                <t v=".]"/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_3"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_3"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -347,12 +347,12 @@
             <p>
                <t v="This agreement shall enter into force when the last party to the JIT has signed it. This period may be extended by mutual consent."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_4"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_4"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="4."/>
             </num>
@@ -367,12 +367,12 @@
             <p>
                <t v="The team shall carry out its operations in accordance with the law of the States in which it operates at any particular time."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_5"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_5"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="5."/>
             </num>
@@ -426,12 +426,12 @@
             <p>
                <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement will be designated without delay. Written notification of such replacement shall be provided to all concerned parties and annexed to this agreement."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_6"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_6"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="6."/>
             </num>
@@ -448,12 +448,12 @@
             <p>
                <t v="Should any of the JIT members be unable to carry out their duties, a replacement will be designated without delay by written notification sent by the competent leader of the JIT."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_7"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_7"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="7."/>
             </num>
@@ -473,12 +473,12 @@
                </emphasis>
                <t v="] are to be dealt with in the relevant appendix to this agreement."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_8"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_8"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="8."/>
             </num>
@@ -493,12 +493,12 @@
             <p>
                <t v="The parties entrust the JIT leaders with the task of giving advice on the obtaining of evidence."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_9"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_9"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="9."/>
             </num>
@@ -517,12 +517,12 @@
                </emphasis>
                <t v=".]"/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_10"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_10"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="10."/>
             </num>
@@ -534,12 +534,12 @@
             <p>
                <t v="Information or evidence already available at the time of the entry into force of this agreement, and which pertains to the investigation described in this agreement, may be shared between the parties in the framework of this agreement."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_11"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_11"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="11."/>
             </num>
@@ -551,12 +551,12 @@
             <p>
                <t v="Should a need arise for a mutual legal assistance request to be sent to a State that does not participate in the JIT, the requesting State shall consider seeking the agreement of the requested State to share with the other JIT party/parties the information or evidence obtained as a result of the execution of the request."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_12"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_12"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="12."/>
             </num>
@@ -572,42 +572,42 @@
                </emphasis>
             </p>
             <list kind="dash">
-               <unit eId="anx/pnt_12/idt_1" kind="indent">
+               <occurrence eId="anx/pnt_12/idt_1" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="carry out investigations – including in particular coercive measures — in the State of operation (if deemed appropriate, domestic legislations may be quoted here or, alternatively, annexed to this agreement)"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_12/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_12/idt_2" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="request measures to be carried out in the State of secondment"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_12/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_12/idt_3" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="share information collected by the team"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_12/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_12/idt_4" kind="indent">
                   <p>
                      <emphasis kind="i">
                         <t v="carry/use weapons"/>
                      </emphasis>
                      <t v="]"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_13"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_13"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="13."/>
             </num>
@@ -621,12 +621,12 @@
                <noteRef href="#note_17" marker="17"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_14"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_14"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="14."/>
             </num>
@@ -639,28 +639,28 @@
                <t v="The parties will ensure they consult with each other whenever needed for the coordination of the activities of the team, including, but not limited to:"/>
             </p>
             <list kind="dash">
-               <unit eId="anx/pnt_14/idt_1" kind="indent">
+               <occurrence eId="anx/pnt_14/idt_1" kind="indent">
                   <p>
                      <t v="the review of the progress achieved and the performance of the team"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_14/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_14/idt_2" kind="indent">
                   <p>
                      <t v="the timing and method of intervention by the investigators"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_14/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_14/idt_3" kind="indent">
                   <p>
                      <t v="the best manner in which to undertake eventual legal proceedings, consideration of appropriate trial venue, and confiscation."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_15"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_15"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="15."/>
             </num>
@@ -672,12 +672,12 @@
             <p>
                <t v="If envisaged, timing and content of communication with the media shall be agreed upon by the parties and followed by the participants."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_16"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_16"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="16."/>
             </num>
@@ -696,12 +696,12 @@
                </emphasis>
                <t v="]"/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_17"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_17"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="17."/>
             </num>
@@ -718,7 +718,7 @@
                <t v=".]"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/pnt_17/pnt_17.1" kind="point" numbered="true">
+               <occurrence eId="anx/pnt_17/pnt_17.1" kind="point" numbered="true">
                   <num>
                      <t v="17.1."/>
                   </num>
@@ -727,7 +727,7 @@
                         <t v="Rules of disclosure"/>
                      </emphasis>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="["/>
@@ -737,7 +737,7 @@
                <t v=".]"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/pnt_17/list_2/pnt_17.2" kind="point" numbered="true">
+               <occurrence eId="anx/pnt_17/list_2/pnt_17.2" kind="point" numbered="true">
                   <num>
                      <t v="17.2."/>
                   </num>
@@ -746,8 +746,8 @@
                         <t v="Management of assets/asset recovery arrangements"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_17/list_2/pnt_17.3" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_17/list_2/pnt_17.3" kind="point" numbered="true">
                   <num>
                      <t v="17.3."/>
                   </num>
@@ -756,7 +756,7 @@
                         <t v="Liability"/>
                      </emphasis>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="["/>
@@ -765,12 +765,12 @@
                </emphasis>
                <t v=".]"/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_18"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_18"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="18."/>
             </num>
@@ -787,7 +787,7 @@
                <t v=".]"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/pnt_18/pnt_18.1" kind="point" numbered="true">
+               <occurrence eId="anx/pnt_18/pnt_18.1" kind="point" numbered="true">
                   <num>
                      <t v="18.1."/>
                   </num>
@@ -796,8 +796,8 @@
                         <t v="Facilities (office accommodation, vehicles, other technical equipment)"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_18/pnt_18.2" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_18/pnt_18.2" kind="point" numbered="true">
                   <num>
                      <t v="18.2."/>
                   </num>
@@ -806,8 +806,8 @@
                         <t v="Costs/expenditures/insurance"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_18/pnt_18.3" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_18/pnt_18.3" kind="point" numbered="true">
                   <num>
                      <t v="18.3."/>
                   </num>
@@ -816,7 +816,7 @@
                         <t v="Financial support to JITs"/>
                      </emphasis>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="["/>
@@ -826,7 +826,7 @@
                <t v="]"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/pnt_18/list_2/pnt_18.4" kind="point" numbered="true">
+               <occurrence eId="anx/pnt_18/list_2/pnt_18.4" kind="point" numbered="true">
                   <num>
                      <t v="18.4."/>
                   </num>
@@ -835,16 +835,16 @@
                         <t v="Language of communication"/>
                      </emphasis>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
+         </occurrence>
          <p>
             <t v="Done at [place of signature], [date]"/>
          </p>
          <p>
             <t v="[Signatures of all parties]"/>
          </p>
-         <unit eId="anx/app_I" kind="annex" eurlexAnchor="2" rank="2">
+         <occurrence eId="anx/app_I" kind="annex" eurlexAnchor="2" rank="2">
             <provenance amendingAct="32022G0128(01)"
                         action="replaced"
                         location="TO"
@@ -855,18 +855,18 @@
             <subheading>
                <t v="TO THE MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM (2017/C 18/01)"/>
             </subheading>
-            <unit eId="anx/app_I/level_1" kind="level" depth="1" rank="3">
+            <occurrence eId="anx/app_I/level_1" kind="level" depth="1" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Participants in a JIT"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/app_I/pnt_I"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="I."/>
                </num>
@@ -875,12 +875,12 @@
                      <t v="Arrangement with Eurojust/Europol/the Commission (OLAF):"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_1" kind="level" depth="3"/>
-            <unit eId="anx/app_I/pnt_I/level_1/level_1"
-                  kind="level"
-                  depth="4"
-                  rank="5">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_1" kind="level" depth="3"/>
+            <occurrence eId="anx/app_I/pnt_I/level_1/level_1"
+                        kind="level"
+                        depth="4"
+                        rank="5">
                <heading>
                   <emphasis kind="b">
                      <t v="Eurojust’s participation in the JIT"/>
@@ -946,12 +946,12 @@
                <p>
                   <t v="Date/signature* (* if applicable)"/>
                </p>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_2" kind="level" depth="3"/>
-            <unit eId="anx/app_I/pnt_I/level_2/level_1"
-                  kind="level"
-                  depth="4"
-                  rank="5">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_2" kind="level" depth="3"/>
+            <occurrence eId="anx/app_I/pnt_I/level_2/level_1"
+                        kind="level"
+                        depth="4"
+                        rank="5">
                <heading>
                   <emphasis kind="b">
                      <t v="Europol’s participation in the JIT"/>
@@ -972,12 +972,12 @@
                      <t v="References (optional):"/>
                   </emphasis>
                </p>
-            </unit>
-            <unit eId="anx/app_I/pnt_1"
-                  kind="level"
-                  depth="5"
-                  numbered="true"
-                  rank="6">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_1"
+                        kind="level"
+                        depth="5"
+                        numbered="true"
+                        rank="6">
                <num>
                   <t v="1."/>
                </num>
@@ -1026,12 +1026,12 @@
                <p>
                   <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement shall be designated. Written notification of the replacement shall be provided to all parties concerned, and annexed to this agreement."/>
                </p>
-            </unit>
-            <unit eId="anx/app_I/pnt_2"
-                  kind="level"
-                  depth="5"
-                  numbered="true"
-                  rank="6">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_2"
+                        kind="level"
+                        depth="5"
+                        numbered="true"
+                        rank="6">
                <num>
                   <t v="2."/>
                </num>
@@ -1041,15 +1041,15 @@
                   </emphasis>
                </heading>
                <list kind="other">
-                  <unit eId="anx/app_I/pnt_2/pnt_2.1" kind="point" numbered="true">
+                  <occurrence eId="anx/app_I/pnt_2/pnt_2.1" kind="point" numbered="true">
                      <num>
                         <t v="2.1."/>
                      </num>
                      <p>
                         <t v="Europol staff participating in the joint investigation team shall assist all the members of the team and provide the full range of Europol’s support services to the joint investigation as provided for and in accordance with the Europol Regulation. They shall not apply any coercive measures. However, participating Europol staff may, if instructed and under the guidance of the leader(s) of the team, be present during operational activities of the joint investigation team, in order to render on-the-spot advice and assistance to the members of the team who execute coercive measures, provided that no legal constraints exist at national level where the team operates."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_2/pnt_2.2" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_2/pnt_2.2" kind="point" numbered="true">
                      <num>
                         <t v="2.2."/>
                      </num>
@@ -1060,24 +1060,24 @@
                         </emphasis>
                         <t v=". During the operations of the JIT, Europol staff shall, with respect to offences committed against or by them, be subject to the national law of the Member State of operation applicable to persons with comparable functions."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_2/pnt_2.3" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_2/pnt_2.3" kind="point" numbered="true">
                      <num>
                         <t v="2.3."/>
                      </num>
                      <p>
                         <t v="Europol staff may liaise directly with members of the JIT and provide all members of the JIT with all necessary information in accordance with the Europol Regulation"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="Date/signature"/>
                </p>
                <annotation>
                   <annotation>
-                     <unit eId="anx/app_I/pnt_2/ann_1/list_2/pnt_1"
-                           kind="point"
-                           numbered="true">
+                     <occurrence eId="anx/app_I/pnt_2/ann_1/list_2/pnt_1"
+                                 kind="point"
+                                 numbered="true">
                         <num>
                            <emphasis kind="sup">
                               <t v="1"/>
@@ -1094,25 +1094,25 @@
                            </ref>
                            <t v=")."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </annotation>
                </annotation>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_3" kind="level" depth="3"/>
-            <unit eId="anx/app_I/pnt_I/level_3/level_1"
-                  kind="level"
-                  depth="4"
-                  rank="5">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_3" kind="level" depth="3"/>
+            <occurrence eId="anx/app_I/pnt_I/level_3/level_1"
+                        kind="level"
+                        depth="4"
+                        rank="5">
                <heading>
                   <emphasis kind="b">
                      <t v="OLAF’s participation in the JIT"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_1"
-                  kind="level"
-                  depth="5"
-                  rank="6">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_1"
+                        kind="level"
+                        depth="5"
+                        rank="6">
                <heading>
                   <emphasis kind="b">
                      <t v="agreed between the competent judicial authorities of [Member States] on [date]"/>
@@ -1125,11 +1125,11 @@
                   </emphasis>
                   <t v=" shall participate in an assistance, expertise and coordination capacity (if agreed) in the JIT. This participation shall take place under the conditions laid down in this arrangement and as provided for in the applicable EU instruments."/>
                </p>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_2"
-                  kind="level"
-                  depth="5"
-                  rank="6">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_2"
+                        kind="level"
+                        depth="5"
+                        rank="6">
                <heading>
                   <emphasis kind="b">
                      <t v="Participants"/>
@@ -1167,22 +1167,22 @@
                <p>
                   <t v="OLAF shall notify the other parties of the JIT in writing of any addition to or removal from the above list of persons."/>
                </p>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3"
-                  kind="level"
-                  depth="5"
-                  rank="6">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3"
+                        kind="level"
+                        depth="5"
+                        rank="6">
                <heading>
                   <emphasis kind="b">
                      <t v="Specific arrangements related to the participation of OLAF"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1"
-                  kind="level"
-                  depth="6"
-                  numbered="true"
-                  rank="7">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1"
+                        kind="level"
+                        depth="6"
+                        numbered="true"
+                        rank="7">
                <num>
                   <t v="1."/>
                </num>
@@ -1192,19 +1192,19 @@
                   </emphasis>
                </heading>
                <list kind="other">
-                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.1"
-                        kind="point"
-                        numbered="true">
+                  <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.1"
+                              kind="point"
+                              numbered="true">
                      <num>
                         <t v="1.1."/>
                      </num>
                      <p>
                         <t v="OLAF staff participating in the JIT shall assist with gathering evidence and provide expertise to the members of the team in accordance with the OLAF legislation and in accordance with the national law of the Member State where the team operates."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.2"
-                        kind="point"
-                        numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.2"
+                              kind="point"
+                              numbered="true">
                      <num>
                         <t v="1.2."/>
                      </num>
@@ -1219,34 +1219,34 @@
                         </quote>
                         <t v=", and shall provide any assistance and expertise necessary to achieve the objectives and purpose of the JIT, as identified by the leader(s) of the team."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.3"
-                        kind="point"
-                        numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.3"
+                              kind="point"
+                              numbered="true">
                      <num>
                         <t v="1.3."/>
                      </num>
                      <p>
                         <t v="OLAF staff have the right not to perform tasks which they consider to be in breach of their obligations under the OLAF legislation. In such cases, the OLAF staff member shall inform the Director-General of OLAF or a representative thereof. OLAF shall consult with the leader(s) of the team with a view to finding a mutually satisfactory solution."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.4"
-                        kind="point"
-                        numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_1/pnt_1.4"
+                              kind="point"
+                              numbered="true">
                      <num>
                         <t v="1.4."/>
                      </num>
                      <p>
                         <t v="OLAF staff participating in the JIT shall not take any coercive measures. However, participating OLAF staff may, under the guidance of the leader(s) of the team, be present during operational activities of the JIT, in order to render on-the-spot advice and assistance to the members of the team who execute coercive measures, provided that no legal constraints exist at national level where the team operates."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2"
-                  kind="level"
-                  depth="6"
-                  numbered="true"
-                  rank="7">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2"
+                        kind="level"
+                        depth="6"
+                        numbered="true"
+                        rank="7">
                <num>
                   <t v="2."/>
                </num>
@@ -1256,33 +1256,33 @@
                   </emphasis>
                </heading>
                <list kind="other">
-                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2/pnt_2.1"
-                        kind="point"
-                        numbered="true">
+                  <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2/pnt_2.1"
+                              kind="point"
+                              numbered="true">
                      <num>
                         <t v="2.1."/>
                      </num>
                      <p>
                         <t v="Participating OLAF staff shall provide the full range of OLAF’s assistance services, in accordance with the OLAF legislation, as far as required or requested. This includes providing operational and technical assistance and expertise to the criminal investigations, and providing and verifying information, including forensic data and analytical reports."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2/pnt_2.2"
-                        kind="point"
-                        numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_I/level_3/level_1/level_3/pnt_2/pnt_2.2"
+                              kind="point"
+                              numbered="true">
                      <num>
                         <t v="2.2."/>
                      </num>
                      <p>
                         <t v="OLAF staff participating in the JIT may assist in all activities, in particular by providing administrative, documentary and logistical support, strategic, technical and forensic support, and tactical and operational expertise and advice to the members of the JIT, as required by the leader(s) of the team."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/app_I/pnt_3"
-                  kind="level"
-                  depth="6"
-                  numbered="true"
-                  rank="7">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_3"
+                        kind="level"
+                        depth="6"
+                        numbered="true"
+                        rank="7">
                <num>
                   <t v="3."/>
                </num>
@@ -1292,29 +1292,29 @@
                   </emphasis>
                </heading>
                <list kind="other">
-                  <unit eId="anx/app_I/pnt_3/pnt_3.1" kind="point" numbered="true">
+                  <occurrence eId="anx/app_I/pnt_3/pnt_3.1" kind="point" numbered="true">
                      <num>
                         <t v="3.1."/>
                      </num>
                      <p>
                         <t v="OLAF staff may liaise directly with members of the JIT and provide members and seconded members of the JIT, in accordance with the OLAF legislation, with information from relevant files in the OLAF Case Management System. The conditions and restrictions on the use of this information must be respected."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_3/pnt_3.2" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_3/pnt_3.2" kind="point" numbered="true">
                      <num>
                         <t v="3.2."/>
                      </num>
                      <p>
                         <t v="Information obtained by OLAF staff members while part of the JIT may, with the consent and under the responsibility of the Member State which provided the information, be included in the relevant files of the OLAF Case Management System."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/app_I/pnt_4"
-                  kind="level"
-                  depth="6"
-                  numbered="true"
-                  rank="7">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_4"
+                        kind="level"
+                        depth="6"
+                        numbered="true"
+                        rank="7">
                <num>
                   <t v="4."/>
                </num>
@@ -1324,31 +1324,31 @@
                   </emphasis>
                </heading>
                <list kind="other">
-                  <unit eId="anx/app_I/pnt_4/pnt_4.1" kind="point" numbered="true">
+                  <occurrence eId="anx/app_I/pnt_4/pnt_4.1" kind="point" numbered="true">
                      <num>
                         <t v="4.1."/>
                      </num>
                      <p>
                         <t v="The Member State in which investigative measures are being undertaken shall be responsible for providing the technical equipment (office equipment, accommodation, telecommunications, etc.) necessary for the accomplishment of the tasks and shall pay the costs incurred. That Member State shall also provide office communication equipment and other technical equipment necessary for the (encrypted) exchange of data. The costs shall be paid by that Member State."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_4/pnt_4.2" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_4/pnt_4.2" kind="point" numbered="true">
                      <num>
                         <t v="4.2."/>
                      </num>
                      <p>
                         <t v="OLAF shall cover the costs incurred as a result of the participation of OLAF staff in the JIT."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="Date/signature"/>
                </p>
                <annotation>
                   <annotation>
-                     <unit eId="anx/app_I/pnt_4/ann_2/list_2/pnt_1"
-                           kind="point"
-                           numbered="true">
+                     <occurrence eId="anx/app_I/pnt_4/ann_2/list_2/pnt_1"
+                                 kind="point"
+                                 numbered="true">
                         <num>
                            <emphasis kind="sup">
                               <t v="1"/>
@@ -1377,15 +1377,15 @@
                            </quote>
                            <t v=")."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </annotation>
                </annotation>
-            </unit>
-            <unit eId="anx/app_I/pnt_II"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_II"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="II."/>
                </num>
@@ -1394,12 +1394,12 @@
                      <t v="Arrangement with bodies competent by virtue of provisions adopted within the framework of the Treaties, and other international bodies:"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/app_I/pnt_II/pnt_1"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="5">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_II/pnt_1"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="5">
                <num>
                   <t v="1."/>
                </num>
@@ -1438,24 +1438,24 @@
                <p>
                   <t v="Should any of the abovementioned persons be unable to carry out their duties, a replacement shall be designated. Written notification of such replacement shall be provided to all parties concerned, and annexed to this agreement."/>
                </p>
-            </unit>
-            <unit eId="anx/app_I/pnt_II/pnt_2"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="5">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_II/pnt_2"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="5">
                <num>
                   <t v="2."/>
                </num>
                <heading>
                   <t v="Specific arrangements:"/>
                </heading>
-            </unit>
-            <unit eId="anx/app_I/pnt_2.1"
-                  kind="level"
-                  depth="4"
-                  numbered="true"
-                  rank="6">
+            </occurrence>
+            <occurrence eId="anx/app_I/pnt_2.1"
+                        kind="level"
+                        depth="4"
+                        numbered="true"
+                        rank="6">
                <num>
                   <t v="2.1."/>
                </num>
@@ -1465,49 +1465,49 @@
                   </emphasis>
                </heading>
                <list kind="other">
-                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.1" kind="point" numbered="true">
+                  <occurrence eId="anx/app_I/pnt_2.1/pnt_2.1.1" kind="point" numbered="true">
                      <num>
                         <t v="2.1.1."/>
                      </num>
                      <p>
                         <t v="Purpose of participation"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.2" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_2.1/pnt_2.1.2" kind="point" numbered="true">
                      <num>
                         <t v="2.1.2."/>
                      </num>
                      <p>
                         <t v="Rights conferred (if any)"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.3" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_2.1/pnt_2.1.3" kind="point" numbered="true">
                      <num>
                         <t v="2.1.3."/>
                      </num>
                      <p>
                         <t v="Provisions concerning costs"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/app_I/pnt_2.1/pnt_2.1.4" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/app_I/pnt_2.1/pnt_2.1.4" kind="point" numbered="true">
                      <num>
                         <t v="2.1.4."/>
                      </num>
                      <p>
                         <t v="Purpose and scope of participation"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-         </unit>
-         <unit eId="anx/app_II" kind="annex" eurlexAnchor="3" rank="2">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="anx/app_II" kind="annex" eurlexAnchor="3" rank="2">
             <num>
                <t v="Appendix II"/>
             </num>
             <subheading>
                <t v="TO THE MODEL AGREEMENT ON THE ESTABLISHMENT OF A JOINT INVESTIGATION TEAM"/>
             </subheading>
-            <unit eId="anx/app_II/level_1" kind="level" depth="1" rank="3">
+            <occurrence eId="anx/app_II/level_1" kind="level" depth="1" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Agreement to extend a joint investigation team"/>
@@ -1552,9 +1552,9 @@
                <p>
                   <t v="Date/signature"/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="anx/app_III" kind="annex" eurlexAnchor="4" rank="2">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="anx/app_III" kind="annex" eurlexAnchor="4" rank="2">
             <num>
                <t v="Appendix III"/>
             </num>
@@ -1580,22 +1580,22 @@
                <t v="The signatories have agreed that the following articles shall be amended as follows:"/>
             </p>
             <list kind="arabic">
-               <unit eId="anx/app_III/pnt_1" kind="point" numbered="true">
+               <occurrence eId="anx/app_III/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
                   <p>
                      <t v="(Amendment …)"/>
                   </p>
-               </unit>
-               <unit eId="anx/app_III/pnt_2" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/app_III/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
                   <p>
                      <t v="(Amendment …)"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="The circumstances requiring the JIT agreement to be amended have been carefully examined by all parties. The amendment(s) to the JIT agreement is/are deemed essential to achieve the purpose for which the JIT was set up."/>
@@ -1603,8 +1603,8 @@
             <p>
                <t v="Date/signature"/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

@@ -183,9 +183,9 @@ class VersionController {
 
   /**
    * Returns the history of one provision of the text of the version: the acts that changed it, with
-   * the state of each change on the date. {@code unit} is the eId of the unit of the text. The Read
-   * page loads it under the provision. For example, {@code
-   * /eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6/par_2}.
+   * the state of each change on the date. {@code occurrence} is the eId of the occurrence of the
+   * text. The Read page loads it under the provision. For example, {@code
+   * /eli/reg/2008/767/2026-11-17/eng/provision?occurrence=art_6/par_2}.
    */
   @GetMapping(path = PATH + "/provision", produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
@@ -195,16 +195,17 @@ class VersionController {
       @PathVariable String number,
       @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date,
       @PathVariable("language") String code,
-      @RequestParam String unit) {
+      @RequestParam String occurrence) {
     var page = new Page(type, year, number, date, code);
     var marks = texts.marks(texts.preparation(page.act, page.language));
     var text = marks.get(page.version);
-    if (page.before || text == null || !text.eIds().contains(unit)) {
+    if (page.before || text == null || !text.eIds().contains(occurrence)) {
       throw notFound();
     }
     return templates
         .catalogueProvision(
-            ProvisionView.of(page.act, page.version, unit, date, today(), page.language, marks))
+            ProvisionView.of(
+                page.act, page.version, occurrence, date, today(), page.language, marks))
         .render();
   }
 
@@ -325,7 +326,7 @@ class VersionController {
                 MarksView.of(act, version, language),
                 MarginView.of(act, version, date, language, marks, today()),
                 Links.read(eli, date, language) + "/provision",
-                ProvisionView.units(act, version, language, marks),
+                ProvisionView.occurrences(act, version, language, marks),
                 self,
                 version.eurLex(language).toString());
         // The version appeared since, and it is being prepared.

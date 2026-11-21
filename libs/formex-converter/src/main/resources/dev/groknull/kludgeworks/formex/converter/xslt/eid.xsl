@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!--
-  eIds, AKN4EU style: segments joined by "/", each an abbreviation plus the unit's own label,
+  eIds, AKN4EU style: segments joined by "/", each an abbreviation plus the occurrence's own label,
   e.g. art_3/par_2/pnt_a, anx/pnt_1.2.2.6, pbl_1/rct_12. Labels are taken literally: brackets and
-  trailing dots are dropped, whitespace becomes "-", nothing is interpreted. Units without a label
+  trailing dots are dropped, whitespace becomes "-", nothing is interpreted. Occurrences without a label
   are numbered by position (unp_2, idt_3, level_1). Letters and digits of any script are kept, so that
   labels that differ in print differ here: "ANNEX ΙII", with a Greek capital iota, isn't anx_II.
 
@@ -12,14 +12,14 @@
   where ELI has none the Akoma Ntoso naming convention's (list, level, qstr, division,
   subdivision, att, note, tr, td, old, new); cor, ann, def and let are ours.
 
-  An eId hangs off its context: wherever numbering restarts (the AKN rule). A unit's prefix is the
-  eId of the unit that holds it ($base and its kin, units.xsl); its number, when it has no label,
-  counts the units of its kind in the same context. What is a context differs by kind, on purpose,
+  An eId hangs off its context: wherever numbering restarts (the AKN rule). An occurrence's prefix is the
+  eId of the occurrence that holds it ($base and its kin, occurrences.xsl); its number, when it has no label,
+  counts the occurrences of its kind in the same context. What is a context differs by kind, on purpose,
   each in one function:
     lists, list items outside a list   f:scope (lists.xsl): items, articles, paragraphs, alineas,
                                        levels, annexes, quotations, tables, notes, divisions,
                                        corrections, letters, subdivisions and more
-    quotations                         f:quotation-scope (units.xsl): the unit the eId hangs off
+    quotations                         f:quotation-scope (occurrences.xsl): the occurrence the eId hangs off
     annexes in content                 f:annex-scope (annexes.xsl)
     annex levels                       f:level-parent and f:level-scope (annexes.xsl): levels are
                                        flat, so their parent is a level or what holds the annex

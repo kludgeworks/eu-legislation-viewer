@@ -32,7 +32,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 5, in Annex I, in the first paragraph of the column "/>
             <quote startQuote="‘" endQuote="’">
@@ -74,8 +74,8 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="On page 7, in Annex II, in point (2), in the amendments to Part B of the Annex to Implementing Regulation (EU) No 540/2011, in the first paragraph of the column "/>
             <quote startQuote="‘" endQuote="’">
@@ -117,7 +117,7 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

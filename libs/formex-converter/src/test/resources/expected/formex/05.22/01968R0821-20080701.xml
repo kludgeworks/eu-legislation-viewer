@@ -134,18 +134,18 @@
                         action="deleted"
                         location="AR:2"
                         marker="O002001M001000"/>
-            <unit eId="pbl_1/cit_1" kind="citation">
+            <occurrence eId="pbl_1/cit_1" kind="citation">
                <p>
                   <t v="Having regard to the Treaty establishing the European Economic Community;"/>
                </p>
-            </unit>
-            <unit eId="pbl_1/cit_2" kind="citation">
+            </occurrence>
+            <occurrence eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation No 120/67/EEC"/>
                   <noteRef href="#note_1" marker="1"/>
                   <t v=". of 13 June 1967 on the common organisation of the market in cereals, and in particular Article 16 (4) thereof:"/>
                </p>
-            </unit>
+            </occurrence>
          </deleted>
       </citations>
       <recitals>
@@ -154,7 +154,7 @@
                         action="deleted"
                         location="AR:2"
                         marker="O002001M001000"/>
-            <unit eId="pbl_1/rct_1" kind="recital">
+            <occurrence eId="pbl_1/rct_1" kind="recital">
                <p>
                   <t v="Whereas the export refund should take into account the quality of the product processed from cereals which qualifies for it lest public funds contribute to the export of goods of inferior quality; whereas it is therefore necessary to establish a precise definition, applicable in each Member State, of cereal grains qualifying for the refund on "/>
                   <quote startQuote="‘" endQuote="’">
@@ -166,12 +166,12 @@
                   </quote>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="pbl_1/rct_2" kind="recital">
+            </occurrence>
+            <occurrence eId="pbl_1/rct_2" kind="recital">
                <p>
                   <t v="Whereas the measures provided for in this Regulation are in accordance with the Opinion of the Management Committee for Cereals;"/>
                </p>
-            </unit>
+            </occurrence>
          </deleted>
       </recitals>
       <formula name="enactingFormula">
@@ -192,22 +192,22 @@
                      action="deleted"
                      location="AR:2"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article" rank="1">
+         <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
             <p>
                <t v="For the granting of export refunds pearled grains and hulled grains of cereals shall be those which possess the characteristics listed in the Annex."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
             <p>
                <t v="This Regulation shall enter into force on 1 July 1968."/>
             </p>
-         </unit>
+         </occurrence>
       </deleted>
    </body>
    <conclusions>
@@ -227,7 +227,7 @@
                      action="deleted"
                      location="AR:2"
                      marker="O002001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
             </num>
@@ -241,7 +241,7 @@
                   <t v="PEARLED GRAINS"/>
                </quote>
             </subheading>
-            <unit eId="anx/pnt_A" kind="level" depth="1" numbered="true">
+            <occurrence eId="anx/pnt_A" kind="level" depth="1" numbered="true">
                <num>
                   <t v="A."/>
                </num>
@@ -251,12 +251,12 @@
                   </quote>
                   <t v=" includes shelled and husked grains:"/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_1"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_1"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="2">
                <num>
                   <t v="1."/>
                </num>
@@ -266,12 +266,12 @@
                <p>
                   <t v="are cereal grains with the pericarp removed or bracted cereal grains (see explanatory notes to tariff heading No 10.03: grains) with the bracts removed with cling to the pericarp (as for example with bearded barley) or which enclose the grains so firmly that the bracts cannot be detached by threshing etc. (as with oats)."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_2"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_2"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="2">
                <num>
                   <t v="2."/>
                </num>
@@ -281,8 +281,8 @@
                <p>
                   <t v="are grains (in the case of barley, with the bracts removed) which have the major part of the pericarp and tegument testa) removed."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_B" kind="level" depth="1" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_B" kind="level" depth="1" numbered="true">
                <num>
                   <changed amendingAct="31971R1634"
                            action="replaced"
@@ -301,12 +301,12 @@
                   </quote>
                   <t v=" include:"/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_I"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_I"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="2">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -317,8 +317,8 @@
                <heading>
                   <t v="First class grains:"/>
                </heading>
-            </unit>
-            <unit eId="anx/pnt_1" kind="level" depth="3" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_1" kind="level" depth="3" numbered="true">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -332,8 +332,8 @@
                <p>
                   <t v="pearled cereal grains, principally barley, which have the whole of the tegument, pericarp, germ and the major part of the outer layer and aleuronic layer removed, and which are of uniform size and rounded form;"/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_2" kind="level" depth="3" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_2" kind="level" depth="3" numbered="true">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -348,50 +348,50 @@
                   <t v="regularity of the grains:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
                      <p>
                         <t v="75 % of the grains must not exceed 20 % of the dm;&#xA;"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
                      <p>
                         <t v="94 % of the grains added progressively between 3 % and 97 % must not exceed 30 % of the dm;"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
                      <p>
                         <t v="100 % of the grains must not exceed 50 % of the dm;"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="Determination of regularity by sieve analysis using sieves with round holes."/>
                </p>
                <list kind="definition" separator=":">
-                  <unit eId="anx/pnt_2/list_2/def_1" kind="definition">
+                  <occurrence eId="anx/pnt_2/list_2/def_1" kind="definition">
                      <heading>
                         <t v="dm"/>
                      </heading>
                      <p>
                         <t v="the median value obtained from the graph of the results of sieve analysis at the point at which 50 % of the product has passed through the sieve."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/pnt_II"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_II"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="2">
                <provenance amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -405,35 +405,35 @@
                <p>
                   <t v="grains which correspond to the definition under B I (1)."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_B/level_1" kind="level" depth="2" rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_B/level_1" kind="level" depth="2" rank="2">
                <heading>
                   <t v="Sieve analysis"/>
                </heading>
-            </unit>
-            <unit eId="anx/pnt_B/level_1/level_1" kind="level" depth="3" rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_B/level_1/level_1" kind="level" depth="3" rank="3">
                <heading>
                   <t v="Apparatus:"/>
                </heading>
                <list kind="dash">
-                  <unit eId="anx/pnt_B/level_1/level_1/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_B/level_1/level_1/idt_1" kind="indent">
                      <p>
                         <t v="Set of sieves with round hole (diameter 200 mm, diameter of holes 4·0 to 1·0 mm, at 0·25 mm intervals);"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_B/level_1/level_1/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_B/level_1/level_1/idt_2" kind="indent">
                      <p>
                         <t v="Sieving apparatus — sieving should be done by hand; sieving aids (rubber cubes of 20 mm side);"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_B/level_1/level_1/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_B/level_1/level_1/idt_3" kind="indent">
                      <p>
                         <t v="Precision scales."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/pnt_B/level_1/level_2" kind="level" depth="3" rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_B/level_1/level_2" kind="level" depth="3" rank="3">
                <heading>
                   <t v="Method:"/>
                </heading>
@@ -452,8 +452,8 @@
                <p>
                   <t v="The median value (dm) is the hole width expressed in hundreths of mm for ∈ (%) = 50, and is read off the graph obtained by joining the points by straight lines."/>
                </p>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
       </deleted>
    </annexes>
    <notes>

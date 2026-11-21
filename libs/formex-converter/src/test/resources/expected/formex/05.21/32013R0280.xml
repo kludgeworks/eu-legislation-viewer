@@ -46,12 +46,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Directive 2008/57/EC of the European Parliament and of the Council of "/>
                <date date="2008-06-17">
@@ -61,7 +61,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6(1) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -69,7 +69,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -86,8 +86,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -102,23 +102,23 @@
                </quote>
                <t v=")."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Regulation (EC) No 62/2006 should therefore be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Committee established in accordance with Article 29(1) of Directive 2008/57/EC,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -127,15 +127,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Annex A to Regulation (EC) No 62/2006 is replaced by the text set out in the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -146,7 +146,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -203,12 +203,12 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx_A" kind="annex" rank="2">
+            <occurrence eId="anx/qstr_1/anx_A" kind="annex" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX A"/>
@@ -430,9 +430,9 @@
                      </tr>
                   </table>
                </tableGroup>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

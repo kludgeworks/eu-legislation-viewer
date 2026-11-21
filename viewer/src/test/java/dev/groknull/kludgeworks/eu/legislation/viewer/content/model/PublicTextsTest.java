@@ -13,10 +13,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Unit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -29,7 +29,7 @@ import tools.jackson.databind.json.JsonMapper;
 
 /**
  * Tests that {@link PublicTexts} gives each text in the public model: valid against its JSON
- * Schema, with every unit of the stored text, and with running text in its two forms.
+ * Schema, with every occurrence of the stored text, and with running text in its two forms.
  */
 class PublicTextsTest {
   private static final String NS = "xmlns=\"" + LegalText.NAMESPACE + "\"";
@@ -47,16 +47,16 @@ class PublicTextsTest {
 
   @ParameterizedTest
   @MethodSource("dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts#samples")
-  void keepsEveryUnitOfEachSample(String sample) {
+  void keepsEveryOccurrenceOfEachSample(String sample) {
     var stored = LegalTexts.element(LegalTexts.sample(sample));
 
     var text = PublicTexts.of(stored);
 
     var eIds = new ArrayList<String>();
     Stream.of(text.preamble(), text.body(), text.conclusions(), text.annexes())
-        .forEach(part -> units(part, eIds));
-    text.notes().forEach(note -> units(note.content(), eIds));
-    assertThat(eIds).containsExactlyInAnyOrderElementsOf(units(stored, new ArrayList<>()));
+        .forEach(part -> occurrences(part, eIds));
+    text.notes().forEach(note -> occurrences(note.content(), eIds));
+    assertThat(eIds).containsExactlyInAnyOrderElementsOf(occurrences(stored, new ArrayList<>()));
   }
 
   @Test
@@ -131,15 +131,15 @@ class PublicTextsTest {
   }
 
   @Test
-  void givesAUnitWithTheNotesThatItRefersTo() {
+  void givesAnOccurrenceWithTheNotesThatItRefersTo() {
     var stored =
         LegalTexts.element(
             LegalTexts.parse(
                 """
                 <legalText %s><body>
-                  <unit eId="art_1" kind="article"><num><t v="Article 1"/></num>
-                    <p><t v="See"/><noteRef href="#note_2" marker="2"/></p></unit>
-                  <unit eId="art_2" kind="article"><p><t v="Other"/></p></unit>
+                  <occurrence eId="art_1" kind="article"><num><t v="Article 1"/></num>
+                    <p><t v="See"/><noteRef href="#note_2" marker="2"/></p></occurrence>
+                  <occurrence eId="art_2" kind="article"><p><t v="Other"/></p></occurrence>
                 </body><notes>
                   <note eId="note_1" marker="1"><p><t v="One."/></p></note>
                   <note eId="note_2" marker="2"><p><t v="Two."/></p></note>
@@ -149,17 +149,17 @@ class PublicTextsTest {
 
     var extract = PublicTexts.extract(stored, "art_1").orElseThrow();
 
-    assertThat(extract.unit().num()).isEqualTo("Article 1");
+    assertThat(extract.occurrence().num()).isEqualTo("Article 1");
     assertThat(extract.notes()).extracting(PublicText.Note::eId).containsExactly("note_2");
     assertThat(PublicTexts.extract(stored, "art_9")).isEmpty();
   }
 
   @Test
   void marksWhatAComparisonChangedAndGivesTheTextAfterIt() {
-    var unit =
-        PublicTexts.unit(
+    var occurrence =
+        PublicTexts.occurrence(
             element(
-                "unit",
+                "occurrence",
                 Map.of("eId", "art_1", "kind", "article"),
                 element(
                     "p",
@@ -168,7 +168,7 @@ class PublicTextsTest {
                     element("diff:del", Map.of(), t("EUR 10")),
                     element("diff:ins", Map.of(), t("EUR 12")))));
 
-    assertThat(unit.content())
+    assertThat(occurrence.content())
         .containsExactly(
             new Text("Fees of EUR 12", "Fees of <del>EUR 10</del><ins>EUR 12</ins>", List.of()));
   }
@@ -178,7 +178,7 @@ class PublicTextsTest {
     var marked =
         PublicTexts.marked(
             element(
-                "unit",
+                "occurrence",
                 Map.of("eId", "art_1", "kind", "article"),
                 element("num", Map.of(), t("Article 1")),
                 element(
@@ -189,7 +189,7 @@ class PublicTextsTest {
                     element("diff:ins", Map.of(), t("EUR 12")),
                     element("noteRef", Map.of("href", "#note_1", "marker", "1"))),
                 element(
-                    "unit",
+                    "occurrence",
                     Map.of("eId", "art_1/pnt_a", "kind", "point"),
                     element("num", Map.of(), t("(a)")),
                     element("p", Map.of(), element("diff:ins", Map.of(), t("new point"))))));
@@ -218,38 +218,40 @@ class PublicTextsTest {
         LegalTexts.element(LegalTexts.parse("<legalText %s>%s</legalText>".formatted(NS, parts))));
   }
 
-  /** Adds the eIds of the units in the blocks, wherever they are. */
-  private static void units(List<Block> blocks, List<String> eIds) {
+  /** Adds the eIds of the occurrences in the blocks, wherever they are. */
+  private static void occurrences(List<Block> blocks, List<String> eIds) {
     for (var block : blocks) {
       switch (block) {
-        case Unit unit -> {
-          eIds.add(unit.eId());
-          units(unit.content(), eIds);
+        case Occurrence occurrence -> {
+          eIds.add(occurrence.eId());
+          occurrences(occurrence.content(), eIds);
         }
         case Table table -> {
-          units(table.caption(), eIds);
-          table.rows().forEach(row -> row.cells().forEach(cell -> units(cell.content(), eIds)));
-          table.notes().forEach(note -> units(note.content(), eIds));
+          occurrences(table.caption(), eIds);
+          table
+              .rows()
+              .forEach(row -> row.cells().forEach(cell -> occurrences(cell.content(), eIds)));
+          table.notes().forEach(note -> occurrences(note.content(), eIds));
         }
         case Figure figure -> {
-          units(figure.caption(), eIds);
-          units(figure.description(), eIds);
+          occurrences(figure.caption(), eIds);
+          occurrences(figure.description(), eIds);
         }
-        case Quotation quotation -> units(quotation.content(), eIds);
-        case Deleted deleted -> units(deleted.content(), eIds);
+        case Quotation quotation -> occurrences(quotation.content(), eIds);
+        case Deleted deleted -> occurrences(deleted.content(), eIds);
         case Text _ -> {
-          // Running text holds no units
+          // Running text holds no occurrences
         }
       }
     }
   }
 
-  /** Adds the eIds of the units of a stored text, wherever they are. */
-  private static List<String> units(Element element, List<String> eIds) {
-    if (element.name().equals("unit")) {
+  /** Adds the eIds of the occurrences of a stored text, wherever they are. */
+  private static List<String> occurrences(Element element, List<String> eIds) {
+    if (element.name().equals("occurrence")) {
       eIds.add(Objects.requireNonNull(element.attribute("eId")));
     }
-    element.children().forEach(child -> units(child, eIds));
+    element.children().forEach(child -> occurrences(child, eIds));
     return eIds;
   }
 }

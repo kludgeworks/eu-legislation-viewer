@@ -50,12 +50,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 443/2009 of the European Parliament and of the Council of "/>
                <date date="2009-04-23">
@@ -69,7 +69,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 12(4) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -77,7 +77,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -102,8 +102,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -112,32 +112,32 @@
                <noteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The application refers to an efficient exterior lighting system including low-beam headlamp, high-beam headlamp, front position, front fog, rear fog, front turn signal, rear turn signal, licence plate and reversing lamps fitted with LEDs.."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The Commission finds that the information provided in the application demonstrates that the conditions and criteria referred to in Article 12 of Regulation (EC) No 443/2009 and in Articles 2 and 4 of Implementing Regulation (EU) No 725/2011 have been met."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The applicant has demonstrated that the use of the LEDs in the in the low-beam headlamp, the high-beam headlamp, the front position, front fog lamp, rear fog lamp, front turn signal, rear turn signal, licence plate and reversing lamp did not exceed 3 % of the new passenger cars registered in the reference year 2009. In support of this the applicant has referred to the Technical Guidelines, which provides for the summary of the CLEPA Light Sight Safety report. The applicant has used predefined functions and averaged data in line with the simplified approach specified in the Technical Guidelines (version February 2013)."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -148,8 +148,8 @@
                </emphasis>
                <t v="-reducing capacity of the efficient exterior lighting system with the use of LEDs in the low-beam headlamp, the high-beam headlamp, the front position, front fog lamp, rear fog lamp, front turn signal, rear turn signal, licence plate and reversing lamp."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
@@ -164,8 +164,8 @@
                </emphasis>
                <t v=" emissions benefits of the innovative technology with strong statistical significance in accordance with Article 6 of Implementing Regulation (EU) No 725/2011."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
@@ -184,8 +184,8 @@
                </emphasis>
                <t v="/km."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
@@ -200,8 +200,8 @@
                <noteRef href="#note_5" marker="5"/>
                <t v=", the Commission is satisfied that the lighting functions in question are not covered by the standard test cycle."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_10" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_10" kind="recital">
             <num>
                <t v="(10)"/>
             </num>
@@ -212,24 +212,24 @@
                </emphasis>
                <t v=" emission reduction due to the use of the innovative technology."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_11" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_11" kind="recital">
             <num>
                <t v="(11)"/>
             </num>
             <p>
                <t v="The Commission finds that the verification report has been prepared by Vehicles Certification Agency which is an independent and certified body and that the report supports the findings set out in the application."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_12" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_12" kind="recital">
             <num>
                <t v="(12)"/>
             </num>
             <p>
                <t v="Against that background, the Commission finds that no objections should be raised as regards the approval of the innovative technology in question."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_13" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_13" kind="recital">
             <num>
                <t v="(13)"/>
             </num>
@@ -244,8 +244,8 @@
                </emphasis>
                <t v=" savings from the use of the innovative technology approved by this Decision, should in accordance with Article 11(1) of Implementing Regulation (EU) No 725/2011, refer to this Decision in its application for an EC type-approval certificate for the vehicles concerned."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_14" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_14" kind="recital">
             <num>
                <t v="(14)"/>
             </num>
@@ -254,7 +254,7 @@
                <noteRef href="#note_6" marker="6"/>
                <t v=", the individual code to be used for the innovative technology approved through this Implementing Decision should be specified,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -263,11 +263,11 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/par_1" kind="paragraph">
+         <occurrence eId="art_1/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -278,8 +278,8 @@
                </emphasis>
                <t v=" vehicles is approved as an innovative technology within the meaning of Article 12 of Regulation (EC) No 443/2009."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -290,8 +290,8 @@
                </emphasis>
                <t v=" emissions reduction from the use of the efficient exterior lighting system including all, or an appropriate combination of the lighting functions referred to in paragraph 1 shall be determined using the methodology set out in the Annex."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
@@ -302,9 +302,9 @@
                </quote>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -315,7 +315,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -438,15 +438,15 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/pnt_1"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         <occurrence eId="anx/pnt_1"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="1."/>
             </num>
@@ -467,23 +467,23 @@
                <t v=" vehicle, it is necessary to establish the following:"/>
             </p>
             <list kind="alpha">
-               <unit eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
+               <occurrence eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="the testing conditions;"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="the test procedure;"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_1/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_1/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -494,16 +494,16 @@
                      </emphasis>
                      <t v=" savings;"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_1/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
                   <p>
                      <t v="the formulae for calculating the standard deviation;"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_1/pnt_e" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/pnt_1/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -514,14 +514,14 @@
                      </emphasis>
                      <t v=" savings for the certification by type approval authorities."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_2"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_2"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="2."/>
             </num>
@@ -535,12 +535,12 @@
                <noteRef href="#note_anx01007301-1" marker="1"/>
                <t v=" on uniform provisions concerning the approval of motor vehicle headlamps emitting an asymmetrical passing beam or a driving beam or both and equipped with filament lamps and/or light-emitting diode (LED) modules shall apply. For determining the power consumption, the reference is to be made to point 6.1.4 of Regulation No 112, and points 3.2.1 and 3.2.2 of Annex 10 to Regulation No 112."/>
             </p>
-         </unit>
-         <unit eId="anx/pnt_3"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         </occurrence>
+         <occurrence eId="anx/pnt_3"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="3."/>
             </num>
@@ -553,19 +553,19 @@
                <t v="Measurements are to be performed as shown in the figure. The following equipment is to be used:"/>
             </p>
             <list kind="dash">
-               <unit eId="anx/pnt_3/list_1/idt_1" kind="indent">
+               <occurrence eId="anx/pnt_3/list_1/idt_1" kind="indent">
                   <p>
                      <t v="a power supply unit (i.e. variable voltage supplier),"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_3/list_1/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_3/list_1/idt_2" kind="indent">
                   <p>
                      <t v="two digital multi-meters, one for measuring the DC current, and the other for measuring the DC voltage. In the figure the test set-up shows the possible case of the DC voltage meter integrated in the power supply unit."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_3/level_1" kind="level" depth="2" rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_3/level_1" kind="level" depth="2" rank="3">
             <heading>
                <emphasis kind="b">
                   <t v="Test set-up"/>
@@ -584,7 +584,7 @@
                   </p>
                </description>
             </figure>
-         </unit>
+         </occurrence>
          <p>
             <t v="In total, five measurements on the current should be done at 13,2 V for each type of lighting used in the vehicle (i.e. low-beam headlamp, high-beam headlamp, front position, front fog, rear fog, front turn signal, rear turn signal, licence plate and reversing lamps). LED module(s) operated by an electronic light source control gear, shall be measured as specified by the applicant."/>
          </p>
@@ -594,11 +594,11 @@
          <p>
             <t v="The exact installed voltages and the measured current are to be recorded in four decimals."/>
          </p>
-         <unit eId="anx/pnt_4"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         <occurrence eId="anx/pnt_4"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <t v="4."/>
             </num>
@@ -619,12 +619,12 @@
                <t v="/km is met:"/>
             </p>
             <list kind="none">
-               <unit eId="anx/pnt_4/list_1/idt_1" kind="indent">
+               <occurrence eId="anx/pnt_4/list_1/idt_1" kind="indent">
                   <p>
                      <t v="Step 1: Calculation of the power savings"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4/list_1/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_4/list_1/idt_2" kind="indent">
                   <p>
                      <t v="Step 2: Calculation of the CO"/>
                      <emphasis kind="sub">
@@ -632,8 +632,8 @@
                      </emphasis>
                      <t v=" savings"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4/list_1/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_4/list_1/idt_3" kind="indent">
                   <p>
                      <t v="Step 3: Calculation of the error in the CO"/>
                      <emphasis kind="sub">
@@ -641,19 +641,19 @@
                      </emphasis>
                      <t v=" savings"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4/list_1/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="anx/pnt_4/list_1/idt_4" kind="indent">
                   <p>
                      <t v="Step 4: Verification of the threshold value."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="anx/pnt_4.1"
-               kind="level"
-               depth="2"
-               numbered="true"
-               rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_4.1"
+                     kind="level"
+                     depth="2"
+                     numbered="true"
+                     rank="3">
             <num>
                <t v="4.1"/>
             </num>
@@ -687,15 +687,15 @@
                <t v="Where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/pnt_4.1/def_1" kind="definition">
+               <occurrence eId="anx/pnt_4.1/def_1" kind="definition">
                   <heading>
                      <t v="ΔP"/>
                   </heading>
                   <p>
                      <t v="Power savings [W];"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.1/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.1/def_2" kind="definition">
                   <heading>
                      <t v="P"/>
                      <emphasis kind="sub">
@@ -705,8 +705,8 @@
                   <p>
                      <t v="Power of the baseline, specified in Table 1 [W];"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.1/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.1/def_3" kind="definition">
                   <heading>
                      <t v="P"/>
                      <emphasis kind="sub">
@@ -716,7 +716,7 @@
                   <p>
                      <t v="Mean value of the used power of the eco-innovation [W]."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <table cols="2">
                <caption>
@@ -852,12 +852,12 @@
                   </td>
                </tr>
             </table>
-         </unit>
-         <unit eId="anx/pnt_4.2"
-               kind="level"
-               depth="2"
-               numbered="true"
-               rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_4.2"
+                     kind="level"
+                     depth="2"
+                     numbered="true"
+                     rank="3">
             <num>
                <t v="4.2"/>
             </num>
@@ -1147,7 +1147,7 @@
                <t v="The input data for the formulae (2), (3) and (4) are:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/pnt_4.2/def_1" kind="definition">
+               <occurrence eId="anx/pnt_4.2/def_1" kind="definition">
                   <heading>
                      <t v="ΔP"/>
                      <emphasis kind="sub">
@@ -1157,8 +1157,8 @@
                   <p>
                      <t v="Saved electrical power in W of the type of lighting j, which is the result of step 1"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_2" kind="definition">
                   <heading>
                      <t v="UF"/>
                      <emphasis kind="sub">
@@ -1168,24 +1168,24 @@
                   <p>
                      <t v="Usage factor of the type of lighting j, specified in Table 2"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_3" kind="definition">
                   <heading>
                      <t v="m"/>
                   </heading>
                   <p>
                      <t v="Number of types of lighting in the innovative technology package"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_4" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_4" kind="definition">
                   <heading>
                      <t v="v"/>
                   </heading>
                   <p>
                      <t v="Mean driving speed of the NEDC, which is 33,58 km/h"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_5" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_5" kind="definition">
                   <heading>
                      <t v="V"/>
                      <emphasis kind="sub">
@@ -1195,8 +1195,8 @@
                   <p>
                      <t v="Consumption of effective power for petrol-fuelled vehicles, which is 0,264 l/kWh"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_6" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_6" kind="definition">
                   <heading>
                      <t v="V"/>
                      <emphasis kind="sub">
@@ -1206,8 +1206,8 @@
                   <p>
                      <t v="Consumption of effective power for diesel-fuelled vehicles, which is 0,22 l/kWh"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_7" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_7" kind="definition">
                   <heading>
                      <t v="V"/>
                      <emphasis kind="sub">
@@ -1217,8 +1217,8 @@
                   <p>
                      <t v="Consumption of effective power for petrol-fuelled vehicles with turbo charger, which is 0,28 l/kWh"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_8" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_8" kind="definition">
                   <heading>
                      <t v="η"/>
                      <emphasis kind="sub">
@@ -1228,8 +1228,8 @@
                   <p>
                      <t v="Efficiency of the alternator, which is 0,67"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_9" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_9" kind="definition">
                   <heading>
                      <t v="CF"/>
                      <emphasis kind="sub">
@@ -1245,8 +1245,8 @@
                      </emphasis>
                      <t v="/l"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.2/def_10" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.2/def_10" kind="definition">
                   <heading>
                      <t v="CF"/>
                      <emphasis kind="sub">
@@ -1262,7 +1262,7 @@
                      </emphasis>
                      <t v="/l"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <table cols="2">
                <caption>
@@ -1398,12 +1398,12 @@
                   </td>
                </tr>
             </table>
-         </unit>
-         <unit eId="anx/pnt_4.3"
-               kind="level"
-               depth="2"
-               numbered="true"
-               rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_4.3"
+                     kind="level"
+                     depth="2"
+                     numbered="true"
+                     rank="3">
             <num>
                <t v="4.3"/>
             </num>
@@ -1510,7 +1510,7 @@
                <t v="Where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/pnt_4.3/def_1" kind="definition">
+               <occurrence eId="anx/pnt_4.3/def_1" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1535,8 +1535,8 @@
                   <p>
                      <t v="Standard deviation of the sample mean [W]"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.3/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.3/def_2" kind="definition">
                   <heading>
                      <t v="x"/>
                      <emphasis kind="sub">
@@ -1546,8 +1546,8 @@
                   <p>
                      <t v="Sample data [W]"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.3/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.3/def_3" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1567,15 +1567,15 @@
                   <p>
                      <t v="Mean of the sample data [W]"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.3/def_4" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.3/def_4" kind="definition">
                   <heading>
                      <t v="n"/>
                   </heading>
                   <p>
                      <t v="Number of observations of the sample, which is five."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="In order to calculate the error in the CO"/>
@@ -1709,7 +1709,7 @@
                <t v="Where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/pnt_4.3/list_2/def_1" kind="definition">
+               <occurrence eId="anx/pnt_4.3/list_2/def_1" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1747,8 +1747,8 @@
                      </emphasis>
                      <t v="/km]"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.3/list_2/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.3/list_2/def_2" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1815,8 +1815,8 @@
                         <t v="j"/>
                      </emphasis>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.3/list_2/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.3/list_2/def_3" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -1866,15 +1866,15 @@
                      </math>
                      <t v=" [W]"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.3/list_2/def_4" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.3/list_2/def_4" kind="definition">
                   <heading>
                      <t v="m"/>
                   </heading>
                   <p>
                      <t v="Number of types of lighting in the innovative technology package"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="Substituting formula (2) in formula (6) results in formula (7) for calculating the error in CO"/>
@@ -2170,12 +2170,12 @@
                   </m:math>
                </math>
             </p>
-         </unit>
-         <unit eId="anx/pnt_4.4"
-               kind="level"
-               depth="2"
-               numbered="true"
-               rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_4.4"
+                     kind="level"
+                     depth="2"
+                     numbered="true"
+                     rank="3">
             <num>
                <t v="4.4"/>
             </num>
@@ -2254,7 +2254,7 @@
                <t v="Where:"/>
             </p>
             <list kind="definition">
-               <unit eId="anx/pnt_4.4/def_1" kind="definition">
+               <occurrence eId="anx/pnt_4.4/def_1" kind="definition">
                   <heading>
                      <t v="MT"/>
                   </heading>
@@ -2265,8 +2265,8 @@
                      </emphasis>
                      <t v="/km],"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.4/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.4/def_2" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -2299,8 +2299,8 @@
                      </emphasis>
                      <t v="/km], which must be expressed in four decimals,"/>
                   </p>
-               </unit>
-               <unit eId="anx/pnt_4.4/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="anx/pnt_4.4/def_3" kind="definition">
                   <heading>
                      <math>
                         <m:math xmlns:m="http://www.w3.org/1998/Math/MathML" display="inline">
@@ -2338,7 +2338,7 @@
                      </emphasis>
                      <t v="/km], which must be expressed in four decimals."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="Where the total CO"/>
@@ -2347,7 +2347,7 @@
                </emphasis>
                <t v=" emission savings of the innovative technology (efficient exterior lighting system), as a result of the calculation using formula (10), are below the threshold specified in Article 9(1) of Implementing Regulation (EU) No 725/2011, the second subparagraph of Article 11(2) of that Regulation shall apply."/>
             </p>
-         </unit>
+         </occurrence>
          <notes>
             <note eId="note_anx01007301-1" marker="1" kind="footnote">
                <p>
@@ -2359,7 +2359,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

@@ -43,7 +43,7 @@
    </preface>
    <preamble eId="pbl_1">
       <formula name="actingEntity">
-         <unit eId="pnt_1" kind="point" numbered="true">
+         <occurrence eId="pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
@@ -190,11 +190,11 @@
             <p>
                <t v="UNITED KINGDOM"/>
             </p>
-         </unit>
+         </occurrence>
          <p>
             <t v="and"/>
          </p>
-         <unit eId="list_2/pnt_2" kind="point" numbered="true">
+         <occurrence eId="list_2/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
@@ -203,7 +203,7 @@
                   <t v="European Central Bank (ECB)"/>
                </emphasis>
             </p>
-         </unit>
+         </occurrence>
          <p>
             <t v="(hereinafter the "/>
             <quote startQuote="‘" endQuote="’">
@@ -218,7 +218,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="1."/>
             </num>
@@ -241,16 +241,16 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="Under the terms of the Resolution, ERM II is designed to help ensure that non-euro area Member States participating in ERM II orient their policies to stability, foster convergence and thereby help the non-euro area Member States in their efforts to adopt the euro."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="3."/>
             </num>
@@ -297,8 +297,8 @@
                </quote>
                <t v=")."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="4."/>
             </num>
@@ -322,15 +322,15 @@
                </date>
                <t v=" and Lietuvos bankas should no longer be party to the ERM II Central Bank Agreement from that date."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="5."/>
             </num>
             <p>
                <t v="It is therefore necessary to amend the ERM II Central Bank Agreement to take account of the abrogation of the derogation in favour of Lithuania,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -339,7 +339,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -353,8 +353,8 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -364,15 +364,15 @@
          <p>
             <t v="Annex II to the ERM II Central Bank Agreement is replaced by the text set out in the Annex to this Agreement."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <heading>
             <t v="Final provisions"/>
          </heading>
-         <unit eId="art_3/par_1" kind="paragraph">
+         <occurrence eId="art_3/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -383,8 +383,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_3/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -395,8 +395,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -639,7 +639,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -1051,7 +1051,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

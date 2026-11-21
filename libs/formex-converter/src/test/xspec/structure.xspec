@@ -10,7 +10,7 @@
       <ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>The measures are set out in the Annex.</ALINEA></ARTICLE>
     </x:context>
     <x:expect label="has the text as its content, as in AKN (no unp_1)">
-      <unit eId="art_1" kind="article"><num><t v="Article 1"/></num><p><t v="The measures are set out in the Annex."/></p></unit>
+      <occurrence eId="art_1" kind="article"><num><t v="Article 1"/></num><p><t v="The measures are set out in the Annex."/></p></occurrence>
     </x:expect>
   </x:scenario>
 
@@ -19,10 +19,10 @@
       <ARTICLE IDENTIFIER="003"><TI.ART>Article 3</TI.ART><ALINEA>This Regulation shall enter into force.</ALINEA><ALINEA>It shall apply from <DATE ISO="20160201">1 February 2016</DATE>.</ALINEA></ARTICLE>
     </x:context>
     <x:expect label="has two unnumbered paragraphs">
-      <unit eId="art_3" kind="article"><num><t v="Article 3"/></num>
-        <unit eId="art_3/unp_1" kind="paragraph"><p><t v="This Regulation shall enter into force."/></p></unit>
-        <unit eId="art_3/unp_2" kind="paragraph"><p><t v="It shall apply from "/><date date="2016-02-01"><t v="1 February 2016"/></date><t v="."/></p></unit>
-      </unit>
+      <occurrence eId="art_3" kind="article"><num><t v="Article 3"/></num>
+        <occurrence eId="art_3/unp_1" kind="paragraph"><p><t v="This Regulation shall enter into force."/></p></occurrence>
+        <occurrence eId="art_3/unp_2" kind="paragraph"><p><t v="It shall apply from "/><date date="2016-02-01"><t v="1 February 2016"/></date><t v="."/></p></occurrence>
+      </occurrence>
     </x:expect>
   </x:scenario>
 
@@ -34,9 +34,9 @@
       </ARTICLE>
     </x:context>
     <x:expect label="the heading" test="$x:result/*:heading/*:t/@v = 'Derogations'"/>
-    <x:expect label="paragraph 1 holds its text directly" test="$x:result/*:unit[1]/@eId = 'art_6/par_1' and $x:result/*:unit[1]/*:p"/>
+    <x:expect label="paragraph 1 holds its text directly" test="$x:result/*:occurrence[1]/@eId = 'art_6/par_1' and $x:result/*:occurrence[1]/*:p"/>
     <x:expect label="paragraph 2 has subparagraphs"
-              test="$x:result/*:unit[2]/*:unit/@eId = ('art_6/par_2/sub_1', 'art_6/par_2/sub_2') and $x:result/*:unit[2]/*:unit/@kind = 'subparagraph'"/>
+              test="$x:result/*:occurrence[2]/*:occurrence/@eId = ('art_6/par_2/sub_1', 'art_6/par_2/sub_2') and $x:result/*:occurrence[2]/*:occurrence/@kind = 'subparagraph'"/>
   </x:scenario>
 
   <x:scenario label="A paragraph that contains a list">
@@ -45,7 +45,7 @@
     </x:context>
     <x:expect label="becomes a p and a list, side by side">
       <p><t v="The following personnel:"/></p>
-      <list kind="alpha"><unit eId="pnt_a" kind="point" numbered="true"><num><t v="(a)"/></num><p><t v="crew;"/></p></unit></list>
+      <list kind="alpha"><occurrence eId="pnt_a" kind="point" numbered="true"><num><t v="(a)"/></num><p><t v="crew;"/></p></occurrence></list>
     </x:expect>
   </x:scenario>
 
@@ -58,7 +58,7 @@
 
   <x:scenario label="Items without a number">
     <x:context mode="block" xmlns=""><LIST TYPE="DASH"><ITEM><P>first</P></ITEM><ITEM><P>second</P></ITEM></LIST></x:context>
-    <x:expect label="are indents numbered by position" test="$x:result/*:unit/@eId = ('idt_1', 'idt_2') and $x:result/*:unit/@kind = 'indent'"/>
+    <x:expect label="are indents numbered by position" test="$x:result/*:occurrence/@eId = ('idt_1', 'idt_2') and $x:result/*:occurrence/@kind = 'indent'"/>
   </x:scenario>
 
   <x:scenario label="Two lists in one point (6.5.2)">
@@ -66,7 +66,7 @@
       <GR.SEQ LEVEL="3"><NO.GR.SEQ>6.5.2</NO.GR.SEQ><P>first:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>x</TXT></NP></ITEM></LIST></P><P>second:<LIST TYPE="alpha"><ITEM><NP><NO.P>(a)</NO.P><TXT>y</TXT></NP></ITEM></LIST></P></GR.SEQ>
     </x:context>
     <x:expect label="the first list keeps plain eIds, the second gets list_2"
-              test="$x:result//*:list/*:unit/@eId = ('pnt_6.5.2/pnt_a', 'pnt_6.5.2/list_2/pnt_a')"/>
+              test="$x:result//*:list/*:occurrence/@eId = ('pnt_6.5.2/pnt_a', 'pnt_6.5.2/list_2/pnt_a')"/>
   </x:scenario>
 
   <x:scenario label="A label repeated in one list (2025/24)">
@@ -74,14 +74,14 @@
       <LIST TYPE="ARAB"><ITEM><NP><NO.P>(2)</NO.P><TXT>Annex III</TXT></NP></ITEM><ITEM><NP><NO.P>(3)</NO.P><TXT>Annex IV</TXT></NP></ITEM><ITEM><NP><NO.P>(2)</NO.P><TXT>point (b)(1)</TXT></NP></ITEM></LIST>
     </x:context>
     <x:expect label="keeps the repeat as published: two pnt_2 (the document marks them ambiguous)"
-              test="$x:result/*:unit/@eId => string-join(' ') = 'pnt_2 pnt_3 pnt_2'"/>
+              test="$x:result/*:occurrence/@eId => string-join(' ') = 'pnt_2 pnt_3 pnt_2'"/>
   </x:scenario>
 
   <x:scenario label="A deleted point and a new one with its label">
     <x:context mode="block" xmlns="">
       <LIST TYPE="ARAB"><?CLG.MDFO ID="O1" ACTION="DELETED" ACTIVE.DOC="32026R0449"?><ITEM><NP><NO.P>(2)</NO.P><TXT>old</TXT></NP></ITEM><?CLG.MDFC IDREF="O1"?><ITEM><NP><NO.P>(2)</NO.P><TXT>new</TXT></NP></ITEM></LIST>
     </x:context>
-    <x:expect label="keep the plain label" test="$x:result//*:unit/@eId = ('pnt_2', 'pnt_2')"/>
+    <x:expect label="keep the plain label" test="$x:result//*:occurrence/@eId = ('pnt_2', 'pnt_2')"/>
   </x:scenario>
 
   <x:scenario label="A definition list">
@@ -89,7 +89,7 @@
       <DLIST><DLIST.ITEM><PREFIX>(1)</PREFIX><TERM>'cargo'</TERM><DEFINITION>means any property</DEFINITION></DLIST.ITEM></DLIST>
     </x:context>
     <x:expect label="has the prefix as num and the term as heading">
-      <list kind="definition"><unit eId="pnt_1" kind="definition" numbered="true"><num><t v="(1)"/></num><heading><t v="'cargo'"/></heading><p><t v="means any property"/></p></unit></list>
+      <list kind="definition"><occurrence eId="pnt_1" kind="definition" numbered="true"><num><t v="(1)"/></num><heading><t v="'cargo'"/></heading><p><t v="means any property"/></p></occurrence></list>
     </x:expect>
   </x:scenario>
 
@@ -107,7 +107,7 @@
         <DLIST.ITEM><TERM>'mail'</TERM><DEFINITION>means dispatches of correspondence</DEFINITION></DLIST.ITEM></DLIST>
     </x:context>
     <x:expect label="numbers the definitions by position as def_N, apart from points labelled 1, 2"
-              test="$x:result//*:unit/@eId => string-join(' ') = 'def_1 def_2'"/>
+              test="$x:result//*:occurrence/@eId => string-join(' ') = 'def_1 def_2'"/>
   </x:scenario>
 
   <x:scenario label="List points each holding a level 1.">
@@ -118,7 +118,7 @@
       </LIST>
     </x:context>
     <x:expect label="number each level under its point: pnt_a/pnt_1, pnt_b/pnt_1"
-              test="$x:result//*:unit[@kind = 'level']/@eId => string-join(' ') = 'pnt_a/pnt_1 pnt_b/pnt_1'"/>
+              test="$x:result//*:occurrence[@kind = 'level']/@eId => string-join(' ') = 'pnt_a/pnt_1 pnt_b/pnt_1'"/>
   </x:scenario>
 
   <x:scenario label="A level holding a list point 1. and a sub-level (1)">
@@ -127,7 +127,7 @@
         <GR.SEQ LEVEL="2"><NO.GR.SEQ>(1)</NO.GR.SEQ><P>y</P></GR.SEQ></GR.SEQ>
     </x:context>
     <x:expect label="sets the list apart (list_1), the sub-level keeps pnt_1"
-              test="sort($x:result/descendant-or-self::*:unit/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/list_1/pnt_1 pnt_2/pnt_1'"/>
+              test="sort($x:result/descendant-or-self::*:occurrence/@eId ! string(.)) => string-join(' ') = 'pnt_2 pnt_2/list_1/pnt_1 pnt_2/pnt_1'"/>
   </x:scenario>
 
   <x:scenario label="An item an amendment put after its list's end (in Bulgarian:)">
@@ -135,7 +135,7 @@
       <P>one of the following:<LIST TYPE="NONE"><ITEM><P>in Danish: dybfrossen,</P></ITEM><ITEM><P>in Slovak: hlbokozmrazené,</P></ITEM></LIST><ITEM><P>in Bulgarian: бързо замразена</P></ITEM></P>
     </x:context>
     <x:expect label="is a list of its own, numbered after the list: list_2/idt_1"
-              test="$x:result/descendant-or-self::*:unit/@eId => string-join(' ') = 'idt_1 idt_2 list_2/idt_1'"/>
+              test="$x:result/descendant-or-self::*:occurrence/@eId => string-join(' ') = 'idt_1 idt_2 list_2/idt_1'"/>
   </x:scenario>
 
   <x:scenario label="An article with quotations in two ALINEAs">
@@ -155,8 +155,8 @@
         <ROW><CELL COL="1"><P><NP><NO.P>—</NO.P><TXT>a</TXT></NP></P><P><NP><NO.P>—</NO.P><TXT>b</TXT></NP></P></CELL></ROW>
       </CORPUS></TBL>
     </x:context>
-    <x:expect label="holds its list, which hangs off it" test="$x:result/*:tr[1]/*:td/*:unit[@eId = 'tab_1/tr_1/td_1/pnt_9.2']/*:list/*:unit/@eId = ('tab_1/tr_1/td_1/pnt_9.2/idt_1', 'tab_1/tr_1/td_1/pnt_9.2/idt_2')"/>
-    <x:expect label="makes paragraphs marked only by a dash a run, numbered by place, a list among the table's" test="$x:result/*:tr[2]/*:td/*:unit/@eId = ('tab_1/tr_2/td_1/list_2/idt_1', 'tab_1/tr_2/td_1/list_2/idt_2')"/>
+    <x:expect label="holds its list, which hangs off it" test="$x:result/*:tr[1]/*:td/*:occurrence[@eId = 'tab_1/tr_1/td_1/pnt_9.2']/*:list/*:occurrence/@eId = ('tab_1/tr_1/td_1/pnt_9.2/idt_1', 'tab_1/tr_1/td_1/pnt_9.2/idt_2')"/>
+    <x:expect label="makes paragraphs marked only by a dash a run, numbered by place, a list among the table's" test="$x:result/*:tr[2]/*:td/*:occurrence/@eId = ('tab_1/tr_2/td_1/list_2/idt_1', 'tab_1/tr_2/td_1/list_2/idt_2')"/>
   </x:scenario>
 
   <x:scenario label="A table">
@@ -170,8 +170,8 @@
     <x:expect label="has a caption" test="$x:result/*:caption/*:p/*:t/@v = 'Table 1'"/>
     <x:expect label="marks header rows and cells" test="$x:result/*:tr[1]/@header = 'true' and $x:result/*:tr[1]/*:td/@header = 'true'"/>
     <x:expect label="keeps colspan" test="$x:result/*:tr[2]/*:td/@colspan = '2'"/>
-    <x:expect label="a numbered paragraph in a cell is a point, its text in it" test="$x:result/*:tr[2]/*:td/*:unit[@kind = 'point'][@eId = 'tab_1/tr_2/td_1/pnt_1']/(*:num/*:t/@v = '1.' and *:p/*:t/@v = 'whole row')"/>
-    <x:expect label="numbered by its label" test="$x:result/*:tr[2]/*:td/*:unit/@numbered = 'true'"/>
+    <x:expect label="a numbered paragraph in a cell is a point, its text in it" test="$x:result/*:tr[2]/*:td/*:occurrence[@kind = 'point'][@eId = 'tab_1/tr_2/td_1/pnt_1']/(*:num/*:t/@v = '1.' and *:p/*:t/@v = 'whole row')"/>
+    <x:expect label="numbered by its label" test="$x:result/*:tr[2]/*:td/*:occurrence/@numbered = 'true'"/>
     <x:expect label="an empty cell is empty" test="empty($x:result/*:tr[3]/*:td[2]/node())"/>
   </x:scenario>
 
@@ -182,7 +182,7 @@
       </CORPUS></TBL>
     </x:context>
     <x:expect label="keeps the line in its caption, its number before its text" test="deep-equal($x:result/*:caption/*:p[2]/*:t/string(@v), ('A —', ' ', 'Individual systems'))"/>
-    <x:expect label="makes it no point, which another table's A would share an eId with" test="empty($x:result/*:caption//*:unit)"/>
+    <x:expect label="makes it no point, which another table's A would share an eId with" test="empty($x:result/*:caption//*:occurrence)"/>
   </x:scenario>
 
   <x:scenario label="A group of rows with a heading (BLK)">
@@ -218,7 +218,7 @@
       </CORPUS></TBL>
     </x:context>
     <x:expect label="scopes each to its cell, by row and the source's column"
-              test="$x:result//*:unit/@eId => string-join(' ') = 'tab_1/tr_1/td_2/level_PART-A tab_1/tr_2/td_2/level_PART-A'"/>
+              test="$x:result//*:occurrence/@eId => string-join(' ') = 'tab_1/tr_1/td_2/level_PART-A tab_1/tr_2/td_2/level_PART-A'"/>
   </x:scenario>
 
   <x:scenario label="A correction with two &quot;for … read …&quot; pairs">
@@ -238,8 +238,8 @@
     <x:context mode="block" xmlns="">
       <ITEM><NP><NO.P>(1)</NO.P><TXT>in point 1.2.2.2, point (b) is replaced by the following:</TXT><P><QUOT.S LEVEL="1"><LIST TYPE="alpha"><ITEM><NP><NO.P>(b)</NO.P><TXT>a valid crew identification card;</TXT></NP></ITEM></LIST></QUOT.S></P></NP></ITEM>
     </x:context>
-    <x:expect label="holds the quoted units, with eIds under qstr_1"
-              test="$x:result/*:quotedStructure/@eId = 'pnt_1/qstr_1' and $x:result/*:quotedStructure/*:list/*:unit/@eId = 'pnt_1/qstr_1/pnt_b'"/>
+    <x:expect label="holds the quoted occurrences, with eIds under qstr_1"
+              test="$x:result/*:quotedStructure/@eId = 'pnt_1/qstr_1' and $x:result/*:quotedStructure/*:list/*:occurrence/@eId = 'pnt_1/qstr_1/pnt_b'"/>
     <x:expect label="follows the instruction" test="$x:result/*:p/*:t/@v = 'in point 1.2.2.2, point (b) is replaced by the following:'"/>
   </x:scenario>
 

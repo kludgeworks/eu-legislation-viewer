@@ -1,6 +1,6 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView.Branch
 @param Branch entry
-<%-- Shows the differences in a unit's points as rows of the outline, one level below the unit:
+<%-- Shows the differences in an occurrence's points as rows of the outline, one level below the occurrence:
      a dot, the point's own num, and the number of the difference in grey. Each row jumps to its
      difference. --%>
 @if(!entry.rows().isEmpty())

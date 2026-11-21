@@ -70,12 +70,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Protocol on the Statute of the European System of Central Banks and of the European Central Bank and in particular to Article 27.1 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the Recommendation of the Governing Council of the European Central Bank (hereinafter referred to as the "/>
                <quote startQuote="‘" endQuote="’">
@@ -83,19 +83,19 @@
                </quote>
                <t v=") of 19 June 1998,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Whereas the accounts of the ECB and national central banks are to be audited by independent external auditors recommended by the Governing Council and approved by the Council of the European Union;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <p>
                <t v="Whereas the Governing Council of the ECB has recommended Coopers and Lybrand as the external auditors of the ECB,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -104,7 +104,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <provenance amendingAct="32008D0571"
                      action="replaced"
                      location="AR:1"
@@ -115,16 +115,16 @@
          <p>
             <t v="PricewaterhouseCoopers Aktiengesellschaft Wirtschaftsprüfungsgesellschaft is hereby approved as the external auditors of the ECB for the financial years 2008 to 2012."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision shall be notified to the ECB."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -135,7 +135,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

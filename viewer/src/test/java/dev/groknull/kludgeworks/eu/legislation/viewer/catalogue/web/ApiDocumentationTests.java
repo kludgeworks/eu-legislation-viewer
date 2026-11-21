@@ -66,13 +66,13 @@ class ApiDocumentationTests {
   }
 
   @Test
-  void showsAUnitOfAText() {
-    var unit = ACT + "/versions/2026-10-01/texts/eng/units/art_1";
+  void showsAnOccurrenceOfAText() {
+    var occurrence = ACT + "/versions/2026-10-01/texts/eng/occurrences/art_1";
     await()
         .atMost(Duration.ofSeconds(60))
-        .until(() -> get(unit).getResponse().getStatus() == HttpStatus.OK.value());
+        .until(() -> get(occurrence).getResponse().getStatus() == HttpStatus.OK.value());
 
-    assertThat(documented("act/unit", unit)).hasStatusOk();
+    assertThat(documented("act/occurrence", occurrence)).hasStatusOk();
   }
 
   @Test

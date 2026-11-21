@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 638/2003 of "/>
                <date date="2003-04-09">
@@ -58,7 +58,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 17(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -66,13 +66,13 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Having checked the quantities booked by product category for the January 2005 tranche, a Member State was found to have made a booking error. As a result of this error, the quantities available for the May 2005 tranche in the Annex to Commission Regulation (EC) No 94/2005"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=" were less than they should have been. The Regulation in question should therefore be amended to take account of the applications actually lodged for the January tranche and to make them available for the May tranche,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -81,15 +81,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The Annex to Regulation (EC) No 94/2005 is replaced by the Annex hereto."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -100,7 +100,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -157,7 +157,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -212,7 +212,7 @@
                      <p>
                         <t v="OCT (Article 10(1)(a) and (b) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <unit eId="anx/tab_1/tr_3/td_1/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_3/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
@@ -220,7 +220,7 @@
                            <t v="CN code "/>
                            <t v="1006"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -267,7 +267,7 @@
                      <p>
                         <t v="ACP (Article 3(1) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <unit eId="anx/tab_2/tr_2/td_1/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_2/tr_2/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
@@ -281,7 +281,7 @@
                            <t v=" and "/>
                            <t v="100630"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -299,7 +299,7 @@
                      <p>
                         <t v="ACP (Article 5(1) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <unit eId="anx/tab_2/tr_3/td_1/list_2/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_2/tr_3/td_1/list_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
@@ -307,7 +307,7 @@
                            <t v="CN codes "/>
                            <t v="10064000"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -322,7 +322,7 @@
                </tr>
             </table>
          </tableGroup>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

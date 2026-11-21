@@ -94,19 +94,19 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/par_1" kind="paragraph">
+         <occurrence eId="art_1/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="The Commission shall be entrusted with winding-up the financial operations of the European Coal and Steel Community which are still in progress when the ECSC Treaty expires. Where an ECSC debtor defaults during the liquidation period, the resulting loss shall be charged first to the existing capital and then to the revenue of the current year. The Commission, before writing off any claim against an ECSC debtor in default, will exhaust all remedies including the call on guarantees (mortgages, cautions, bank guaranties or other). The Commission will reserve all possible actions in case that the debtor regains solvency."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_1a" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_1a" kind="paragraph">
             <provenance amendingAct="32021D1208"
                         action="inserted"
                         location="AR:1;PT:1"
@@ -118,33 +118,33 @@
                <t v="The Commission shall write off claims, even before exhausting all the said remedies, in the following cases:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/par_1a/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_1/par_1a/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="where the foreseeable cost of recovery would exceed the amount to be recovered and the write-off would not harm the image of the Union;"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1a/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_1/par_1a/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="where the claim cannot be recovered in view of the insolvency of the debtor, or of any other insolvency proceedings;"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1a/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_1/par_1a/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="where recovery is inconsistent with the principle of proportionality."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_1/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -155,9 +155,9 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <provenance amendingAct="32021D1208"
                      action="replaced"
                      location="AR:1;PT:2"
@@ -165,24 +165,24 @@
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/par_1" kind="paragraph">
+         <occurrence eId="art_2/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="The assets shall be managed by the Commission in such a manner as to keep an annual Research Fund for Coal and Steel allocation of EUR 111 million until the year 2027 to finance research in the sectors related to the coal and steel industry, namely EUR 40 million to finance collaborative research in those sectors and EUR 71 million to finance research for breakthrough technologies leading to near-zero-carbon steelmaking and research projects for managing the just transition of formerly operating coal mines or coal mines in the process of closure, and related infrastructure in line with the Just Transition Mechanism and in compliance with Article 4(2). After the year 2027, the assets shall be managed by the Commission in such a manner as to ensure a long-term return. The assets shall be invested with the objective of preserving, and where possible enhancing, the value of those assets."/>
             </p>
-         </unit>
-         <unit eId="art_2/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="The annual allocation of EUR 111 million shall be constituted of the net revenue from the investments, and, if that revenue is insufficient, the sale of part of the assets of the ECSC in liquidation and, on completion of the liquidation, the assets of the Research Fund for Coal and Steel."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <provenance amendingAct="32021D1208"
                      action="replaced"
                      location="AR:1;PT:3"
@@ -190,16 +190,16 @@
          <num>
             <t v="Article 3"/>
          </num>
-         <unit eId="art_3/par_1" kind="paragraph">
+         <occurrence eId="art_3/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
-            <unit eId="art_3/par_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_3/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="Each year a profit-and-loss account, balance sheet and financial report shall be drawn up to show, separately from the other financial operations of the Union, the liquidation operations provided for in Article 1 and the investment transactions and asset management operations under Article 2."/>
                </p>
-            </unit>
-            <unit eId="art_3/par_1/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_3/par_1/sub_2" kind="subparagraph">
                <p>
                   <t v="These financial statements shall be annexed to the financial statements drawn up by the Commission annually under Article 318 TFEU and Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council"/>
                   <noteRef href="#note_1" marker="1"/>
@@ -209,22 +209,22 @@
                   </quote>
                   <t v=")."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_3/par_2" kind="paragraph">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_3/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="The powers of the European Parliament, the Council and the Court of Auditors concerning control and discharge as set out in the Treaty on the Functioning of the European Union and in the Financial Regulation shall apply to the operations referred to in paragraph 1."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
-         <unit eId="art_4/par_1" kind="paragraph">
+         <occurrence eId="art_4/par_1" kind="paragraph">
             <provenance amendingAct="32021D1208"
                         action="replaced"
                         location="AR:1;PT:4;PT:a"
@@ -235,30 +235,30 @@
             <p>
                <t v="Net revenue from the investments provided for under Article 2 and the revenue generated by selling part of the assets shall constitute revenue in the general budget of the Union. This revenue shall be earmarked for a specific purpose, namely financing research projects in the sectors related to the coal and steel industry not covered by the Research Framework Programme. It shall form the Research Fund for Coal and Steel and shall be managed by the Commission."/>
             </p>
-         </unit>
-         <unit eId="art_4/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_4/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="The revenue referred to in paragraph 1 shall be distributed, 27,2 % being allocated to the coal-related research and 72,8 % to the steel-related research. Should it prove necessary, the Council, acting unanimously on a proposal from the Commission, shall modify the breakdown between coal-related research and steel-related research."/>
             </p>
-         </unit>
+         </occurrence>
          <deleted>
             <provenance amendingAct="32021D1208"
                         action="deleted"
                         location="AR:1;PT:4;PT:b"
                         marker="O002001M005000"/>
-            <unit eId="art_4/par_3" kind="paragraph">
+            <occurrence eId="art_4/par_3" kind="paragraph">
                <num>
                   <t v="3."/>
                </num>
                <p>
                   <t v="The multiannual technical guidelines for the programme shall be adopted by the Council acting by qualified majority on a proposal from the Commission and after consulting the European Parliament."/>
                </p>
-            </unit>
+            </occurrence>
          </deleted>
-         <unit eId="art_4/par_4" kind="paragraph">
+         <occurrence eId="art_4/par_4" kind="paragraph">
             <provenance amendingAct="32018D0599"
                         action="replaced"
                         location="AR:1;PT:1"
@@ -269,8 +269,8 @@
             <p>
                <t v="Unused revenue and appropriations deriving from this revenue still available on 31 December in any given year, as well as amounts recovered, shall be carried over automatically to the following year. Those appropriations may not be transferred to other budget items."/>
             </p>
-         </unit>
-         <unit eId="art_4/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_4/par_5" kind="paragraph">
             <provenance amendingAct="32018D0599"
                         action="replaced"
                         location="AR:1;PT:1"
@@ -281,9 +281,9 @@
             <p>
                <t v="Budgetary appropriations corresponding to cancellations of commitments shall automatically lapse at the end of each financial year. Provisions for commitments released as a result of the cancellations shall be made available to the Research Fund for Coal and Steel."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_4a" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_4a" kind="article" rank="1">
          <provenance amendingAct="32018D0599"
                      action="inserted"
                      location="AR:1;PT:2"
@@ -302,35 +302,35 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_5" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
-         <unit eId="art_5/par_1" kind="paragraph">
+         <occurrence eId="art_5/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="Net revenue available to finance research projects for year n+2 shall be recorded in the balance sheet of the ECSC in liquidation of year n and, on completion of the liquidation, in the balance sheet of the Assets of the Research Fund for Coal and Steel."/>
             </p>
-         </unit>
+         </occurrence>
          <deleted>
             <provenance amendingAct="32021D1208"
                         action="deleted"
                         location="AR:1;PT:5"
                         marker="O002001M006000"/>
-            <unit eId="art_5/par_2" kind="paragraph">
+            <occurrence eId="art_5/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
                <p>
                   <t v="In order to minimise fluctuations in research funding due to movements on the financial markets, a smoothing shall be effected and a provision made for a contingency. Details of the calculations for smoothing and determining the size of the contingency provision are contained in the Annex."/>
                </p>
-            </unit>
+            </occurrence>
          </deleted>
-      </unit>
-      <unit eId="art_6" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_6" kind="article" rank="1">
          <num>
             <t v="Article 6"/>
          </num>
@@ -345,8 +345,8 @@
             </date>
             <t v=", shall be met by the Commission from the general budget of the European Union."/>
          </p>
-      </unit>
-      <unit eId="art_7" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
@@ -357,12 +357,12 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_8" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_8" kind="article" rank="1">
          <num>
             <t v="Article 8"/>
          </num>
-         <unit eId="art_8/unp_1" kind="paragraph">
+         <occurrence eId="art_8/unp_1" kind="paragraph">
             <p>
                <t v="This Decision shall take effect on the day following that of its publication in the "/>
                <emphasis kind="i">
@@ -370,8 +370,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_8/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_8/unp_2" kind="paragraph">
             <p>
                <t v="It shall apply from "/>
                <date date="2002-07-24">
@@ -379,16 +379,16 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_9" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Member States."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
       <deleted>
@@ -396,18 +396,18 @@
                      action="deleted"
                      location="AR:1;PT:6"
                      marker="O002001M007000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
             </num>
             <subheading>
                <t v="Procedures to be followed to establish the amount of net revenue to be allocated to the Research Fund for Coal and Steel"/>
             </subheading>
-            <unit eId="anx/pnt_1"
-                  kind="level"
-                  depth="1"
-                  numbered="true"
-                  rank="2">
+            <occurrence eId="anx/pnt_1"
+                        kind="level"
+                        depth="1"
+                        numbered="true"
+                        rank="2">
                <num>
                   <t v="1."/>
                </num>
@@ -417,12 +417,12 @@
                <p>
                   <t v="Net revenue which may be used to finance research projects corresponds to the annual net result of the ECSC in liquidation and subsequently, when liquidation has been completed, to the annual net result of the Assets of the Research Fund for Coal and Steel. The method employed consists of establishing the funding for coal and steel research for year n+2 when producing the balance sheet for year n, taking into account half of the increase or decrease in the net result in relation to the last level of funding adopted for coal and steel research."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_2"
-                  kind="level"
-                  depth="1"
-                  numbered="true"
-                  rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_2"
+                        kind="level"
+                        depth="1"
+                        numbered="true"
+                        rank="2">
                <num>
                   <t v="2."/>
                </num>
@@ -430,15 +430,15 @@
                   <t v="DEFINITION"/>
                </heading>
                <list kind="definition" separator=":">
-                  <unit eId="anx/pnt_2/def_1" kind="definition">
+                  <occurrence eId="anx/pnt_2/def_1" kind="definition">
                      <heading>
                         <t v="n"/>
                      </heading>
                      <p>
                         <t v="reference year"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_2/def_2" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/def_2" kind="definition">
                      <heading>
                         <t v="R"/>
                         <emphasis kind="sub">
@@ -448,8 +448,8 @@
                      <p>
                         <t v="net result for year n"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_2/def_3" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/def_3" kind="definition">
                      <heading>
                         <t v="P"/>
                         <emphasis kind="sub">
@@ -459,8 +459,8 @@
                      <p>
                         <t v="contingency provision for year n"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_2/def_4" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/def_4" kind="definition">
                      <heading>
                         <t v="D"/>
                         <emphasis kind="sub">
@@ -470,8 +470,8 @@
                      <p>
                         <t v="allocation for research for year n+1 (established when the balance sheet for year n - 1 is produced)"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_2/def_5" kind="definition">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/def_5" kind="definition">
                      <heading>
                         <t v="D"/>
                         <emphasis kind="sub">
@@ -481,14 +481,14 @@
                      <p>
                         <t v="allocation for research for year n+2"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/pnt_3"
-                  kind="level"
-                  depth="1"
-                  numbered="true"
-                  rank="2">
+            </occurrence>
+            <occurrence eId="anx/pnt_3"
+                        kind="level"
+                        depth="1"
+                        numbered="true"
+                        rank="2">
                <num>
                   <t v="3."/>
                </num>
@@ -499,7 +499,7 @@
                   <t v="The algorithms used to establish the size of the contingency provision and the allocations for research for year n+2, which will appear in the balance sheet for year n, are as follows:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx/pnt_3/pnt_3.1" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_3/pnt_3.1" kind="point" numbered="true">
                      <num>
                         <t v="3.1."/>
                      </num>
@@ -555,8 +555,8 @@
                            </m:math>
                         </math>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_3/pnt_3.2" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_3/pnt_3.2" kind="point" numbered="true">
                      <num>
                         <t v="3.2."/>
                      </num>
@@ -621,10 +621,10 @@
                      <p>
                         <t v="Where appropriate, the amount needed for rounding up (or the amount left over from rounding down) will be taken from (or returned to) the contingency provision."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
       </deleted>
    </annexes>
    <notes>

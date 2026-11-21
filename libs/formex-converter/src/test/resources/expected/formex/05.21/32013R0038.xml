@@ -50,12 +50,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1234/2007 of "/>
                <date date="2007-10-22">
@@ -65,8 +65,8 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 1301/2006 of "/>
                <date date="2006-08-31">
@@ -76,7 +76,7 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 7(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -84,7 +84,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -93,8 +93,8 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" opens and provides for the administration of tariff quotas and introduces a system of import licences and certificates of origin for garlic and other agricultural products imported from third countries."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -105,8 +105,8 @@
                </quote>
                <t v=" licence applications have been lodged by traditional importers and by new importers during the first seven working days of January 2013, pursuant to Article 10(1) of Regulation (EC) No 341/2007 exceed the quantities available for products originating in China."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -121,15 +121,15 @@
                </date>
                <t v=" can be met in accordance with Article 12 of Regulation (EC) No 341/2007."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="In order to ensure sound management of the procedure of issuing import licences, the present Regulation should enter into force immediately after its publication,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -138,7 +138,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -153,8 +153,8 @@
             </date>
             <t v=" shall be met at a percentage rate of the quantities applied for as set out in the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -165,7 +165,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -238,7 +238,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -266,14 +266,14 @@
                </heading>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_2/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="Traditional importers"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -289,14 +289,14 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_3/td_1/list_2/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_3/td_1/list_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="New importers"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -317,14 +317,14 @@
                </heading>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_4/td_1/list_3/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_4/td_1/list_3/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="Traditional importers"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -340,14 +340,14 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_5/td_1/list_4/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_5/td_1/list_4/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="New importers"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -368,14 +368,14 @@
                </heading>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_6/td_1/list_5/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_6/td_1/list_5/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="Traditional importers"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -391,14 +391,14 @@
                </tr>
                <tr>
                   <td>
-                     <unit eId="anx/tab_1/tr_7/td_1/list_6/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_7/td_1/list_6/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="New importers"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -414,7 +414,7 @@
                </tr>
             </rowGroup>
          </table>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

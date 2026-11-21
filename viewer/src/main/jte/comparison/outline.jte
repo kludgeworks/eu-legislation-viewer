@@ -2,9 +2,9 @@
 @import java.util.List
 @param List<Branch> entries
 <%-- Shows one level of the later text's outline in a comparison. OutlineView supplies the data.
-     Each unit shows its count of differences and links to its first difference. A unit with units
-     below it is a details element, open if the unit has differences. A bar shows the share of the
-     differences of each unit that has any, down to the point. The differences in a unit's points are rows one level below it:
+     Each occurrence shows its count of differences and links to its first difference. An occurrence with occurrences
+     below it is a details element, open if the occurrence has differences. A bar shows the share of the
+     differences of each occurrence that has any, down to the point. The differences in an occurrence's points are rows one level below it:
      a dot, the point's own num and the number of the difference. --%>
 <ul>
   @for(var entry : entries)

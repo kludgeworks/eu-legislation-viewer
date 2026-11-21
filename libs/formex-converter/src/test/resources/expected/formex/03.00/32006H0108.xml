@@ -43,11 +43,11 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community, and in particular Articles 112(2)(b) and 122(4) thereof, and to Articles 11.2 and 43.3 of the Protocol on the Statute of the European System of Central Banks and of the European Central Bank,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -55,7 +55,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="The term of office of Mr Otmar ISSING expires on "/>
                <date date="2006-05-31">
@@ -63,7 +63,7 @@
                </date>
                <t v=". A member of the Executive Board of the European Central Bank must be appointed,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>

@@ -143,22 +143,22 @@
                      action="deleted"
                      location="AR:12"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article" rank="1">
+         <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
             <heading>
                <t v="XXXX"/>
             </heading>
-            <unit eId="art_1/par_1" kind="paragraph">
+            <occurrence eId="art_1/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
                <p>
                   <t v="XXXX"/>
                </p>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
       </deleted>
    </body>
 </legalText>

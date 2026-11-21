@@ -46,12 +46,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2019/6 of the European Parliament and of the Council of "/>
                <date date="2018-12-11">
@@ -61,7 +61,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 60(1) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -69,7 +69,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -78,39 +78,39 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" establishes a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Based upon experience gained, the Coordination Group on Veterinary Medicinal Products advised the Commission to amend one of the entries in the Annex to Regulation (EU) 2021/17 in order to include in the list of variations not requiring assessment a variation amending the contact details of the distributor(s)."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The Commission agrees that this type of variation does not require an assessment, as such change is of an administrative nature and does not require a scientific assessment."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Implementing Regulation (EU) 2021/17 should therefore be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on Veterinary Medicinal Products,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -119,19 +119,19 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The Annex to Implementing Regulation (EU) 2021/17 is amended in accordance with the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/unp_1" kind="paragraph">
+         <occurrence eId="art_2/unp_1" kind="paragraph">
             <p>
                <t v="This Regulation shall enter into force on the twentieth day following that of its publication in the "/>
                <emphasis kind="i">
@@ -139,13 +139,13 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_2/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/unp_2" kind="paragraph">
             <p>
                <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -208,7 +208,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -230,12 +230,12 @@
                   </td>
                   <td>
                      <list kind="dash">
-                        <unit eId="anx/qstr_1/tab_1/tr_1/td_2/idt_1" kind="indent">
+                        <occurrence eId="anx/qstr_1/tab_1/tr_1/td_2/idt_1" kind="indent">
                            <p>
                               <t v="administrative information concerning the holder’s representative or the distributor(s)"/>
                               <noteRef href="#note_anx000201-1" marker="*"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                   </td>
                   <td/>
@@ -251,7 +251,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

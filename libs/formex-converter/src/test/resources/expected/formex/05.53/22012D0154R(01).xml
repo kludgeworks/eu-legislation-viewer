@@ -31,13 +31,13 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 3, the following recital shall be added:"/>
          </p>
          <new>
             <quotedStructure eId="cor_1/new/qstr_1">
-               <unit eId="cor_1/new/qstr_1/pnt_6" kind="point" numbered="true">
+               <occurrence eId="cor_1/new/qstr_1/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="(6)"/>
@@ -46,10 +46,10 @@
                      <t v="Annex I to the EEA Agreement should therefore be amended accordingly,"/>
                      <t v="’"/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

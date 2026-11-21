@@ -8,7 +8,7 @@
  *   <li>{@link Encoder} writes a text as JSON, in the JsonML form, and {@link Decoder} reads the
  *       JSON back into {@code Element} records.
  *   <li>{@link Outlines} makes the outline of a text.
- *   <li>{@link PublicTexts} gives a text, or a unit of it, in the public model, for the API.
+ *   <li>{@link PublicTexts} gives a text, or an occurrence of it, in the public model, for the API.
  * </ul>
  *
  * <p>These are pure functions on values. The application stores the JSON, in {@code TextStore}.

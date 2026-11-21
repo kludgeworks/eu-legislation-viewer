@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the Agreement of "/>
                <date date="2009-06-25">
@@ -62,8 +62,8 @@
                </quote>
                <t v="),"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2009/556/EC of "/>
                <date date="2009-06-25">
@@ -73,7 +73,7 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular the second paragraph of Article 5 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -81,7 +81,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Article 19(4) of the Agreement states that the joint committee set up by that Agreement (hereinafter "/>
                <quote startQuote="‘" endQuote="’">
@@ -89,7 +89,7 @@
                </quote>
                <t v=") must adopt its rules of procedure,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -98,14 +98,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article" rank="1">
+      <occurrence eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>
          <p>
             <t v="The position to be taken by the European Union within the EU-Switzerland Joint Committee on the rules of procedure to be adopted in accordance with Article 19(4) of the Agreement shall be laid down in the attached draft decision of the EU-Switzerland Joint Committee."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -163,7 +163,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="att_1" kind="attachment" rank="1">
+      <occurrence eId="att_1" kind="attachment" rank="1">
          <heading>
             <t v="Draft"/>
             <eol/>
@@ -188,7 +188,7 @@
          <p>
             <t v="HAS AGREED AS FOLLOWS:"/>
          </p>
-         <unit eId="att_1/cpt_I" kind="division" rank="2">
+         <occurrence eId="att_1/cpt_I" kind="division" rank="2">
             <num>
                <t v="CHAPTER I"/>
             </num>
@@ -197,30 +197,30 @@
                   <t v="RULES OF PROCEDURE"/>
                </emphasis>
             </subheading>
-            <unit eId="att_1/art_1" kind="article" rank="3">
+            <occurrence eId="att_1/art_1" kind="article" rank="3">
                <num>
                   <t v="Article 1"/>
                </num>
                <heading>
                   <t v="Composition and chair"/>
                </heading>
-               <unit eId="att_1/art_1/unp_1" kind="paragraph">
+               <occurrence eId="att_1/art_1/unp_1" kind="paragraph">
                   <p>
                      <t v="The Joint Committee shall be composed of representatives of the European Union and representatives of the Swiss Confederation. The committee shall be chaired alternately by the parties for one calendar year."/>
                   </p>
-               </unit>
-               <unit eId="att_1/art_1/unp_2" kind="paragraph">
+               </occurrence>
+               <occurrence eId="att_1/art_1/unp_2" kind="paragraph">
                   <p>
                      <t v="Before each meeting, the chair shall be informed of the intended composition of the delegation of each party."/>
                   </p>
-               </unit>
-               <unit eId="att_1/art_1/unp_3" kind="paragraph">
+               </occurrence>
+               <occurrence eId="att_1/art_1/unp_3" kind="paragraph">
                   <p>
                      <t v="If both parties agree, the Joint Committee may invite experts to its meetings to provide the specific information requested."/>
                   </p>
-               </unit>
-            </unit>
-            <unit eId="att_1/art_2" kind="article" rank="3">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="att_1/art_2" kind="article" rank="3">
                <num>
                   <t v="Article 2"/>
                </num>
@@ -230,8 +230,8 @@
                <p>
                   <t v="The chair shall carry out the tasks of secretary of the Joint Committee. All correspondence to the Joint Committee, including requests for items to be included in agendas, must be addressed to the chair."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_3" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_3" kind="article" rank="3">
                <num>
                   <t v="Article 3"/>
                </num>
@@ -241,49 +241,49 @@
                <p>
                   <t v="Once he has obtained the Agreement of the parties, the chair of the Joint Committee shall fix the date and place of meetings. Meetings shall be held alternately in Brussels and Switzerland."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_4" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_4" kind="article" rank="3">
                <num>
                   <t v="Article 4"/>
                </num>
                <heading>
                   <t v="Agendas for meetings"/>
                </heading>
-               <unit eId="att_1/art_4/unp_1" kind="paragraph">
+               <occurrence eId="att_1/art_4/unp_1" kind="paragraph">
                   <p>
                      <t v="The chair shall draw up a provisional agenda for each meeting. It shall be forwarded to the parties not later than 10 days before the beginning of the meeting."/>
                   </p>
-               </unit>
-               <unit eId="att_1/art_4/unp_2" kind="paragraph">
+               </occurrence>
+               <occurrence eId="att_1/art_4/unp_2" kind="paragraph">
                   <p>
                      <t v="The provisional agenda shall consist of those items in respect of which the request for inclusion has reached the chair at least 15 days before the beginning of the meeting. Supporting documentation must be received by both parties at least seven days ahead of the meeting. In cases of special urgency, these time limits may be shortened provided both parties agree."/>
                   </p>
-               </unit>
-               <unit eId="att_1/art_4/unp_3" kind="paragraph">
+               </occurrence>
+               <occurrence eId="att_1/art_4/unp_3" kind="paragraph">
                   <p>
                      <t v="The agenda shall be adopted by the Joint Committee at the beginning of each meeting."/>
                   </p>
-               </unit>
-            </unit>
-            <unit eId="att_1/art_5" kind="article" rank="3">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="att_1/art_5" kind="article" rank="3">
                <num>
                   <t v="Article 5"/>
                </num>
                <heading>
                   <t v="Advertising"/>
                </heading>
-               <unit eId="att_1/art_5/unp_1" kind="paragraph">
+               <occurrence eId="att_1/art_5/unp_1" kind="paragraph">
                   <p>
                      <t v="Unless otherwise agreed, the meetings of the Joint Committee shall not be made public."/>
                   </p>
-               </unit>
-               <unit eId="att_1/art_5/unp_2" kind="paragraph">
+               </occurrence>
+               <occurrence eId="att_1/art_5/unp_2" kind="paragraph">
                   <p>
                      <t v="The Joint Committee’s deliberations shall be confidential."/>
                   </p>
-               </unit>
-            </unit>
-            <unit eId="att_1/art_6" kind="article" rank="3">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="att_1/art_6" kind="article" rank="3">
                <num>
                   <t v="Article 6"/>
                </num>
@@ -293,8 +293,8 @@
                <p>
                   <t v="After each meeting, the chair shall draw up the minutes. The draft minutes shall be submitted to the Joint Committee for approval. Once the minutes have been approved, they shall be signed by the chair and a copy sent to the parties."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_7" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_7" kind="article" rank="3">
                <num>
                   <t v="Article 7"/>
                </num>
@@ -312,8 +312,8 @@
                   </quote>
                   <t v=" respectively, followed by a serial number, the date of their adoption and a description of their subject. They shall be signed by the chair and sent to the parties."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_8" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
@@ -323,8 +323,8 @@
                <p>
                   <t v="In cases of special urgency, decisions and recommendations may be adopted by the written procedure provided both parties agree."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_9" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_9" kind="article" rank="3">
                <num>
                   <t v="Article 9"/>
                </num>
@@ -334,8 +334,8 @@
                <p>
                   <t v="Each party shall bear the expenses it incurs in taking part in the meetings of the Joint Committee."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_10" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_10" kind="article" rank="3">
                <num>
                   <t v="Article 10"/>
                </num>
@@ -345,9 +345,9 @@
                <p>
                   <t v="The Joint Committee shall draw up a list of umpires as required in Annex III to the Agreement within two months of its decision to submit a dispute to arbitration as provided for in Article 29(3) of the Agreement."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="att_1/cpt_II" kind="division" rank="2">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="att_1/cpt_II" kind="division" rank="2">
             <num>
                <t v="CHAPTER II"/>
             </num>
@@ -356,7 +356,7 @@
                   <t v="WORKING PARTY"/>
                </emphasis>
             </subheading>
-            <unit eId="att_1/art_11" kind="article" rank="3">
+            <occurrence eId="att_1/art_11" kind="article" rank="3">
                <num>
                   <t v="Article 11"/>
                </num>
@@ -366,8 +366,8 @@
                <p>
                   <t v="A working group shall be set up to assist the Joint Committee in carrying out its tasks in the areas referred to in Chapters II (procedures) and III (customs security measures) of the Agreement."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_12" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_12" kind="article" rank="3">
                <num>
                   <t v="Article 12"/>
                </num>
@@ -381,8 +381,8 @@
                   </emphasis>
                   <t v=", to the meetings of the working group."/>
                </p>
-            </unit>
-            <unit eId="att_1/art_13" kind="article" rank="3">
+            </occurrence>
+            <occurrence eId="att_1/art_13" kind="article" rank="3">
                <num>
                   <t v="Article 13"/>
                </num>
@@ -392,8 +392,8 @@
                <p>
                   <t v="This Decision shall take effect on the day following its adoption."/>
                </p>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
          <p>
             <t v="Done at Brussels, …"/>
          </p>
@@ -421,7 +421,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

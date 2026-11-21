@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Units.Unit;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
@@ -55,18 +55,18 @@ class DifferSamplesTest {
   /** The SHA-256 of each comparison of {@link #PAIRS} written out, in order. */
   private static final List<String> FOUND =
       List.of(
-          "dcccb4670928e8ef7cc07037f29d7229767c12365af4459bfc430dbd41c8e3d6",
-          "24ebaa4072baba0316d99278a0ec0012c5c5043f2b165db8f5074c309d19a35e",
-          "27dc5fce68f549247440e2095000a4c28d8ffdc2c46a33bf4c043a80e427610e",
-          "e0861247c0e9c41d470c4e5566d4009ef44e2181927816d9e7358cfcc8e85842",
-          "21b7772490bcf4873d51cf39931d0a35f3b4967f580daf44cca338ee0cbca931",
-          "2a430e8b1003fdcf40d45b22aabadd87f3da09d25fbbe6c048da9131d2e0e696",
-          "8d292cc55c5e6a0004d7bc293186025df1b707e61f24203cb3e580bf23601542",
-          "bc90bd8416c8b16f13a53c557e638e5456031bdbffad95c8899b506aaed33a84",
-          "95dd82081334aaafbcc200918db46ef2ee75fb710cf278349f26d187ab6abf09",
-          "6eb675b8f7f06301cd67aab2f2dcec53cad3f08240f075b9207955ee4464b8fd",
-          "2fc3045a5b9666a6c5e28702c857c7ddfe5082eb91b4f66a8c335b40919eb5a4",
-          "dffcee6add08cf225509db6b50d5987120f00f970aacb85894c2b8a763db891e");
+          "4d35afdd6c45080f49539e0c6ba13e5ab0052900639d5ce57541537e4c73cddb",
+          "2d02c9ae8832c16d5742c05fc02e48d1e306b841e98575f8d4c16e57b40e891e",
+          "066f4c00f0ce4b6a58a0b026c8e8c297bccfe1bc1098ee24f79ea632f86cc9df",
+          "107dd653741bfd7263219e42b9e132e2f33dd585b44edb684283a4fb38028201",
+          "896c8440f539bb979c2b354bd9384d8c9f0d9028bfcd29bb978f854cecb5971b",
+          "966981830bc69c283d520242c7203f8112352bc7240345389fd0fc648d883ad5",
+          "c3fde84526a36d7f4afd9420808ad683fcfd7be423abcde5898d3595c18a8395",
+          "d32099f8f09603bf45222d420cd13e3614d2c5817f9fe4cba61912f6353bb880",
+          "f9858fd873df12730e483e670432f6d20615a7db382bdea9702c18b565b70b77",
+          "e4a80023e4fb346e42257bdf3e0958820aa5b4e22534ca64c40060a9488e6586",
+          "d0b018ba3591ad2844a40afd605a2347725b41562baa0d4ac3a9c96bc3e292ea",
+          "7dc86294df5c8024e84dd95e5ca6271d484c3190ba120cb6ace4294d23f261b7");
 
   @Test
   void findsWhatItFoundBefore() {
@@ -83,9 +83,9 @@ class DifferSamplesTest {
    * text says. Read without what it marks inserted, it says what the earlier text says. Thus no
    * word of either text is lost, and no word that only one text has shows unmarked.
    *
-   * <p>A unit is read by its own blocks. A difference that shows a unit whole is read unit by unit,
-   * because a deleted unit shows beside a unit of the later text, not always where it stood. The
-   * notes under a unit are not read.
+   * <p>An occurrence is read by its own blocks. A difference that shows an occurrence whole is read
+   * occurrence by occurrence, because a deleted occurrence shows beside an occurrence of the later
+   * text, not always where it stood. The notes under an occurrence are not read.
    */
   @Test
   void showsWhatBothTextsSay() {
@@ -93,12 +93,13 @@ class DifferSamplesTest {
     for (var pair : PAIRS) {
       var from = text(pair.get(0));
       var to = text(pair.get(1));
-      var before = Units.of(from);
-      var after = Units.of(to);
+      var before = Occurrences.of(from);
+      var after = Occurrences.of(to);
       var pairs = Pairing.of(before, after);
-      var was = new HashMap<String, Unit>();
-      for (var unit : after.byEId().values()) {
-        Optional.ofNullable(pairs.was(unit)).ifPresent(earlier -> was.put(unit.eId(), earlier));
+      var was = new HashMap<String, Occurrence>();
+      for (var occurrence : after.byEId().values()) {
+        Optional.ofNullable(pairs.was(occurrence))
+            .ifPresent(earlier -> was.put(occurrence.eId(), earlier));
       }
       for (var difference : Differ.differences(from, to).differences()) {
         var later = new TreeMap<String, String>();
@@ -131,10 +132,10 @@ class DifferSamplesTest {
       String text,
       Map<String, String> read,
       Map<String, String> said) {
-    var units = new TreeSet<>(read.keySet());
-    units.addAll(said.keySet());
-    var unit =
-        units.stream()
+    var occurrences = new TreeSet<>(read.keySet());
+    occurrences.addAll(said.keySet());
+    var occurrence =
+        occurrences.stream()
             .filter(eId -> !read.getOrDefault(eId, "").equals(said.getOrDefault(eId, "")))
             .findFirst()
             .orElse("");
@@ -145,57 +146,65 @@ class DifferSamplesTest {
             difference.kind(),
             difference.eId(),
             text,
-            unit,
-            read.getOrDefault(unit, ""),
-            said.getOrDefault(unit, ""));
+            occurrence,
+            read.getOrDefault(occurrence, ""),
+            said.getOrDefault(occurrence, ""));
   }
 
   /**
-   * Adds to {@code said} what each unit that {@code difference} shows says in {@code units}, by its
-   * eId: the unit of the difference, and the units that it shows in it.
+   * Adds to {@code said} what each occurrence that {@code difference} shows says in {@code
+   * occurrences}, by its eId: the occurrence of the difference, and the occurrences that it shows
+   * in it.
    */
-  private static void said(Units units, Difference difference, Map<String, String> said) {
+  private static void said(
+      Occurrences occurrences, Difference difference, Map<String, String> said) {
     for (var eId : shown(difference)) {
-      Optional.ofNullable(units.get(eId)).ifPresent(unit -> put(said, eId, unit));
+      Optional.ofNullable(occurrences.get(eId)).ifPresent(occurrence -> put(said, eId, occurrence));
     }
   }
 
   /**
-   * Adds to {@code said} what each unit that the changed {@code difference} shows said in the
-   * earlier text, by the eId under which the difference shows it. A unit of both texts shows under
-   * its later eId, and a deleted unit under its own.
+   * Adds to {@code said} what each occurrence that the changed {@code difference} shows said in the
+   * earlier text, by the eId under which the difference shows it. An occurrence of both texts shows
+   * under its later eId, and a deleted occurrence under its own.
    */
   private static void saidBefore(
-      Units before, Map<String, Unit> was, Difference difference, Map<String, String> said) {
+      Occurrences before,
+      Map<String, Occurrence> was,
+      Difference difference,
+      Map<String, String> said) {
     for (var eId : shown(difference)) {
       var paired = Optional.ofNullable(was.get(eId));
       paired
           .or(() -> deleted(difference.shown(), eId, before))
-          .ifPresent(unit -> put(said, eId, unit));
+          .ifPresent(occurrence -> put(said, eId, occurrence));
     }
   }
 
-  private static void put(Map<String, String> said, String eId, Unit unit) {
-    var words = key(unit.blocks());
+  private static void put(Map<String, String> said, String eId, Occurrence occurrence) {
+    var words = key(occurrence.blocks());
     if (!words.isEmpty()) {
       said.put(eId, words);
     }
   }
 
-  /** Returns the earlier unit {@code eId}, if {@code shown} marks every word of it deleted. */
-  private static Optional<Unit> deleted(Element shown, String eId, Units before) {
-    var later = find(shown, eId).map(unit -> read(unit, Marks.DELETED)).orElseGet(Map::of);
+  /**
+   * Returns the earlier occurrence {@code eId}, if {@code shown} marks every word of it deleted.
+   */
+  private static Optional<Occurrence> deleted(Element shown, String eId, Occurrences before) {
+    var later =
+        find(shown, eId).map(occurrence -> read(occurrence, Marks.DELETED)).orElseGet(Map::of);
     return later.containsKey(eId) ? Optional.empty() : Optional.ofNullable(before.get(eId));
   }
 
   private static Optional<Element> find(Element element, String eId) {
-    if (eId.equals(Units.eId(element))) {
+    if (eId.equals(Occurrences.eId(element))) {
       return Optional.of(element);
     }
     return element.children().stream().flatMap(child -> find(child, eId).stream()).findFirst();
   }
 
-  /** Returns the eIds of the units that {@code difference} shows. A table is one block. */
+  /** Returns the eIds of the occurrences that {@code difference} shows. A table is one block. */
   private static List<String> shown(Difference difference) {
     var eIds = new ArrayList<String>();
     eIds(difference.shown(), eIds);
@@ -203,18 +212,18 @@ class DifferSamplesTest {
   }
 
   private static void eIds(Element element, List<String> eIds) {
-    var eId = Units.eId(element);
+    var eId = Occurrences.eId(element);
     if (eId != null) {
       eIds.add(eId);
     }
-    if (!Units.block(element)) {
+    if (!Occurrences.block(element)) {
       element.children().forEach(child -> eIds(child, eIds));
     }
   }
 
   /**
-   * Returns what each unit in {@code shown} says in its own blocks, by its eId, read without what
-   * is in the mark {@code without}. A unit that then says nothing is left out.
+   * Returns what each occurrence in {@code shown} says in its own blocks, by its eId, read without
+   * what is in the mark {@code without}. An occurrence that then says nothing is left out.
    */
   private static Map<String, String> read(Element shown, String without) {
     var said = new TreeMap<String, StringBuilder>();
@@ -230,15 +239,15 @@ class DifferSamplesTest {
   }
 
   private static void read(
-      Element element, String without, String unit, Map<String, StringBuilder> said) {
+      Element element, String without, String occurrence, Map<String, StringBuilder> said) {
     var name = element.name();
     if (name.equals(without) || name.equals("notes") || Wording.MARKS.contains(name)) {
       return;
     }
-    var eId = Units.eId(element);
-    var in = eId == null ? unit : eId;
+    var eId = Occurrences.eId(element);
+    var in = eId == null ? occurrence : eId;
     var words = said.computeIfAbsent(in, each -> new StringBuilder());
-    if (Units.block(element)) {
+    if (Occurrences.block(element)) {
       words.append(Wording.key(without(element, without)));
       return;
     }

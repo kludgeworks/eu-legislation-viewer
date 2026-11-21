@@ -19,11 +19,11 @@ public final class RowFoldLinks {
   private RowFoldLinks() {}
 
   /**
-   * Returns {@code unit} with the runs of rows in its tables folded, if they are not yet, and each
-   * fold loading its rows from {@code address}, the address of the difference.
+   * Returns {@code occurrence} with the runs of rows in its tables folded, if they are not yet, and
+   * each fold loading its rows from {@code address}, the address of the difference.
    */
-  public static Element of(Element unit, String address) {
-    return linked(RowFolds.of(unit), address);
+  public static Element of(Element occurrence, String address) {
+    return linked(RowFolds.of(occurrence), address);
   }
 
   private static Element linked(Element element, String address) {

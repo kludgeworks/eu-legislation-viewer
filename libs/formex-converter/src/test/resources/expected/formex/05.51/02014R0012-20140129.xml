@@ -70,12 +70,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) No 1151/2012 of the European Parliament and of the Council of "/>
                <date date="2012-11-21">
@@ -85,7 +85,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 52(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -93,7 +93,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -109,8 +109,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -121,7 +121,7 @@
                </quote>
                <t v=" should therefore be entered in the register,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -130,15 +130,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The name contained in the Annex to this Regulation is hereby entered in the register."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -148,7 +148,7 @@
                <t v="Official Journal of the European Union."/>
             </emphasis>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -156,18 +156,18 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <p>
             <t v="Agricultural products and foodstuffs listed in Annex I(I) to Regulation (EU) No 1151/2012:"/>
          </p>
-         <unit eId="anx/pnt_Class-2.3"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         <occurrence eId="anx/pnt_Class-2.3"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <changed amendingAct="32014R0012R(01)"
                         action="replaced"
@@ -188,16 +188,16 @@
                   </emphasis>
                </changed>
             </heading>
-         </unit>
-         <unit eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2" rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2" rank="3">
             <heading>
                <t v="LATVIA"/>
             </heading>
             <p>
                <t v="Salinātā rudzu rupjmaize (TSG)"/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

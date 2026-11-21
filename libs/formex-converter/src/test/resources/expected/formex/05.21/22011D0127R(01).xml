@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 9, in point 1 of Article 1, the words "/>
             <quote startQuote="‘" endQuote="’">
@@ -40,7 +40,7 @@
             </quote>
             <t v=" shall be deleted."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

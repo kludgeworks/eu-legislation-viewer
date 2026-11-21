@@ -281,7 +281,8 @@ public record AmendingView(
       boolean past,
       @Nullable ComparePage compare,
       @Nullable Step step) {
-    var units = step == null ? List.<String>of() : Act.units(change, step.later(), step.earlier());
+    var occurrences =
+        step == null ? List.<String>of() : Act.occurrences(change, step.later(), step.earlier());
     var days = Act.days(change);
     var state = act.stateOn(amending, days, day);
     var name = change.location().name();
@@ -292,7 +293,7 @@ public record AmendingView(
         note,
         States.tone(state),
         anchor(change),
-        compare == null || units.isEmpty() ? null : compare.place(units));
+        compare == null || occurrences.isEmpty() ? null : compare.place(occurrences));
   }
 
   /** Returns what an act did to a provision, as one word. For example, "Replaced". */
@@ -362,8 +363,8 @@ public record AmendingView(
    *
    * @param from the first day of the version before the act
    * @param to the first day of the first version that integrates the act
-   * @param earlier the eIds of the units of the text of {@code from}, in document order
-   * @param later the eIds of the units of the text of {@code to}, in document order
+   * @param earlier the eIds of the occurrences of the text of {@code from}, in document order
+   * @param later the eIds of the occurrences of the text of {@code to}, in document order
    */
   public record Step(LocalDate from, LocalDate to, List<String> earlier, List<String> later) {
     public Step {

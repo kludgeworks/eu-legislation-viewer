@@ -43,16 +43,16 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union, and in particular Article 43(3) thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the European Commission,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -60,15 +60,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Article 43(3) of the Treaty provides that the Council, on a proposal from the Commission, is to adopt measures on the fixing and allocation of fishing opportunities."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -77,24 +77,24 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=" requires that conservation measures be adopted taking into account available scientific, technical and economic advice, including, where relevant, reports drawn up by the Scientific, Technical and Economic Committee for Fisheries (STECF)."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="It is incumbent upon the Council to adopt measures on the fixing and allocation of fishing opportunities by fishery or group of fisheries in the Black Sea, including certain conditions functionally linked thereto, as appropriate. Fishing opportunities should be allocated to Member States in such a way as to ensure relative stability of fishing activities of each Member State for each fish stock or fishery and having due regard to the objectives of the Common Fisheries Policy established in Regulation (EU) No 1380/2013."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="TACs should be established on the basis of the available scientific advice, taking into account biological and socioeconomic aspects whilst ensuring fair treatment between fishing sectors, as well as in the light of the opinions expressed during the consultation of stakeholders."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
@@ -103,8 +103,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" and in particular to Articles 33 and 34 thereof concerning, respectively, the recording of catches and fishing effort and the notification of data on the exhaustion of fishing opportunities. It is therefore necessary to specify the codes to be used by the Member States when sending data to the Commission relating to landings of stocks subject to this Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -113,8 +113,8 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=", the stocks that are subject to the various measures referred to therein must be identified."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
@@ -125,7 +125,7 @@
                </date>
                <t v=". For reasons of urgency, this Regulation should enter into force immediately after its publication,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -134,7 +134,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="cpt_I" kind="division" rank="1">
+      <occurrence eId="cpt_I" kind="division" rank="1">
          <num>
             <t v="CHAPTER I"/>
          </num>
@@ -143,7 +143,7 @@
                <t v="SCOPE AND DEFINITIONS"/>
             </emphasis>
          </subheading>
-         <unit eId="art_1" kind="article" rank="2">
+         <occurrence eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -153,8 +153,8 @@
             <p>
                <t v="This Regulation fixes the fishing opportunities for 2014 for certain fish stocks and groups of fish stocks in the Black Sea."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -164,8 +164,8 @@
             <p>
                <t v="This Regulation shall apply to EU vessels operating in the Black Sea."/>
             </p>
-         </unit>
-         <unit eId="art_3" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -176,7 +176,7 @@
                <t v="For the purposes of this Regulation, the following definitions shall apply:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -186,8 +186,8 @@
                      </quote>
                      <t v=" means General Fisheries Commission for the Mediterranean;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -199,8 +199,8 @@
                      <noteRef href="#note_4" marker="4"/>
                      <t v=" and in Resolution GFCM/33/2009/2;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -210,8 +210,8 @@
                      </quote>
                      <t v=" means a fishing vessel flying the flag of a Member State and registered in the Union;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -221,8 +221,8 @@
                      </quote>
                      <t v=" means the quantity that can be taken from each stock each year;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/pnt_e" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -232,11 +232,11 @@
                      </quote>
                      <t v=" means a proportion of the TAC allocated to the Union, a Member State or a third country."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="cpt_II" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="cpt_II" kind="division" rank="1">
          <num>
             <t v="CHAPTER II"/>
          </num>
@@ -245,7 +245,7 @@
                <t v="FISHING OPPORTUNITIES"/>
             </emphasis>
          </subheading>
-         <unit eId="art_4" kind="article" rank="2">
+         <occurrence eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -255,8 +255,8 @@
             <p>
                <t v="The TACs for EU vessels, the allocation of such TACs among Member States, and the conditions functionally linked thereto, where appropriate, are set out in the Annex."/>
             </p>
-         </unit>
-         <unit eId="art_5" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -267,49 +267,49 @@
                <t v="The allocation of fishing opportunities among Member States as set out in in this Regulation shall be without prejudice to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_5/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_5/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="exchanges made pursuant to Article 16(8) of Regulation (EU) No 1380/2013;"/>
                   </p>
-               </unit>
-               <unit eId="art_5/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_5/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="deductions and reallocations made pursuant to Article 37 of Regulation (EC) No 1224/2009;"/>
                   </p>
-               </unit>
-               <unit eId="art_5/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_5/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="additional landings allowed under Article 3 of Regulation (EC) No 847/96;"/>
                   </p>
-               </unit>
-               <unit eId="art_5/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_5/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
                   <p>
                      <t v="quantities withheld in accordance with Article 4 of Regulation (EC) No 847/96;"/>
                   </p>
-               </unit>
-               <unit eId="art_5/pnt_e" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_5/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
                   <p>
                      <t v="deductions made pursuant to Articles 105 and 107 of Regulation (EC) No 1224/2009."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_6" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
@@ -320,26 +320,26 @@
                <t v="Fish from stocks for which fishing opportunities are fixed by this Regulation shall be retained on board or landed only if:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_6/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="the catches have been taken by vessels of a Member State having a quota and that quota is not exhausted; or"/>
                   </p>
-               </unit>
-               <unit eId="art_6/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="the catches consist of a share in a Union quota which has not been allocated by quota among Member States, and that Union quota has not been exhausted."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="cpt_III" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="cpt_III" kind="division" rank="1">
          <num>
             <t v="CHAPTER III"/>
          </num>
@@ -348,7 +348,7 @@
                <t v="FINAL PROVISIONS"/>
             </emphasis>
          </subheading>
-         <unit eId="art_7" kind="article" rank="2">
+         <occurrence eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -358,15 +358,15 @@
             <p>
                <t v="When, pursuant to Articles 33 and 34 of Regulation (EC) No 1224/2009, Member States send the Commission data relating to landings of quantities of stocks caught, they shall use the stock codes set out in the Annex to this Regulation."/>
             </p>
-         </unit>
-         <unit eId="art_8" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
             <heading>
                <t v="Entry into force"/>
             </heading>
-            <unit eId="art_8/unp_1" kind="paragraph">
+            <occurrence eId="art_8/unp_1" kind="paragraph">
                <p>
                   <t v="This Regulation shall enter into force on the day following that of its publication in the "/>
                   <emphasis kind="i">
@@ -374,8 +374,8 @@
                   </emphasis>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="art_8/unp_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_8/unp_2" kind="paragraph">
                <p>
                   <t v="It shall apply from "/>
                   <date date="2014-01-01">
@@ -383,9 +383,9 @@
                   </date>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
+            </occurrence>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -490,11 +490,11 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
-         <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="TACs APPLICABLE TO EU VESSELS IN AREAS WHERE TACs EXIST BY SPECIES AND BY AREA"/>
@@ -567,7 +567,7 @@
                <tr header="true">
                   <td colspan="2" header="true">
                      <list kind="definition" separator=":">
-                        <unit eId="anx/level_1/tab_2/tr_1/td_1/def_1" kind="definition">
+                        <occurrence eId="anx/level_1/tab_2/tr_1/td_1/def_1" kind="definition">
                            <heading>
                               <t v="Species"/>
                            </heading>
@@ -579,12 +579,12 @@
                                  <t v="Psetta maxima"/>
                               </emphasis>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                   </td>
                   <td header="true">
                      <list kind="definition" separator=":">
-                        <unit eId="anx/level_1/tab_2/tr_1/td_3/list_2/def_1" kind="definition">
+                        <occurrence eId="anx/level_1/tab_2/tr_1/td_3/list_2/def_1" kind="definition">
                            <heading>
                               <t v="Zone"/>
                            </heading>
@@ -594,7 +594,7 @@
                            <p>
                               <t v="TUR/F37.4.2.C"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                   </td>
                </tr>
@@ -648,10 +648,10 @@
                      </p>
                   </td>
                   <td>
-                     <unit eId="anx/level_1/tab_2/tr_5/td_3/level_1"
-                           kind="level"
-                           depth="2"
-                           box="true">
+                     <occurrence eId="anx/level_1/tab_2/tr_5/td_3/level_1"
+                                 kind="level"
+                                 depth="2"
+                                 box="true">
                         <p>
                            <t v="Analytical TAC"/>
                         </p>
@@ -661,7 +661,7 @@
                         <p>
                            <t v="Article 4 of Regulation (EC) No 847/96 shall not apply."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                </tr>
             </table>
@@ -669,7 +669,7 @@
                <tr header="true">
                   <td colspan="2" header="true">
                      <list kind="definition" separator=":">
-                        <unit eId="anx/level_1/tab_3/tr_1/td_1/def_1" kind="definition">
+                        <occurrence eId="anx/level_1/tab_3/tr_1/td_1/def_1" kind="definition">
                            <heading>
                               <t v="Species"/>
                            </heading>
@@ -681,12 +681,12 @@
                                  <t v="Sprattus sprattus"/>
                               </emphasis>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                   </td>
                   <td header="true">
                      <list kind="definition" separator=":">
-                        <unit eId="anx/level_1/tab_3/tr_1/td_3/list_2/def_1" kind="definition">
+                        <occurrence eId="anx/level_1/tab_3/tr_1/td_3/list_2/def_1" kind="definition">
                            <heading>
                               <t v="Zone"/>
                            </heading>
@@ -696,7 +696,7 @@
                            <p>
                               <t v="SPR/F37.4.2.C"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                   </td>
                </tr>
@@ -749,10 +749,10 @@
                      </p>
                   </td>
                   <td>
-                     <unit eId="anx/level_1/tab_3/tr_5/td_3/level_2"
-                           kind="level"
-                           depth="2"
-                           box="true">
+                     <occurrence eId="anx/level_1/tab_3/tr_5/td_3/level_2"
+                                 kind="level"
+                                 depth="2"
+                                 box="true">
                         <p>
                            <t v="Analytical TAC"/>
                         </p>
@@ -762,11 +762,11 @@
                         <p>
                            <t v="Article 4 of Regulation (EC) No 847/96 shall not apply."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                </tr>
             </table>
-         </unit>
+         </occurrence>
          <notes>
             <note eId="note_anx01000401-1" marker="1" kind="table">
                <p>
@@ -782,7 +782,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

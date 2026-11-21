@@ -27,7 +27,7 @@ class DivergencesTest {
   private static final ActIdentifier BASE = new ActIdentifier("32015R1998");
   private static final ActIdentifier AMENDING = new ActIdentifier("32017R0815");
   private static final String POINT = "anx/pnt_1.1";
-  private static final List<String> UNITS = List.of("anx", "anx/pnt_1", POINT, "anx/pnt_1.2");
+  private static final List<String> OCCURRENCES = List.of("anx", "anx/pnt_1", POINT, "anx/pnt_1.2");
 
   private final List<Planned> planned = new ArrayList<>();
   private final Map<ActIdentifier, List<ActDate>> dates = new HashMap<>();
@@ -138,9 +138,9 @@ class DivergencesTest {
   }
 
   @Test
-  void aDeletionIsMarkedOnTheUnitAroundWhereTheDeletedProvisionStood() {
+  void aDeletionIsMarkedOnTheOccurrenceAroundWhereTheDeletedProvisionStood() {
     // As point (d) of Article 1(2) of 2014/65, deleted by 2019/2177: the consolidation keeps a mark
-    // and a line of dashes where the point stood, in the unit around it.
+    // and a line of dashes where the point stood, in the occurrence around it.
     role = Role.DELETION;
     application("2017-06-01");
     place("2017-06-01");
@@ -265,7 +265,7 @@ class DivergencesTest {
   }
 
   @Test
-  void aLateProvisionIsItsUnitInTheTextOrTheUnitThatHoldsIt() {
+  void aLateProvisionIsItsOccurrenceInTheTextOrTheOccurrenceThatHoldsIt() {
     application("2017-06-01");
     place("2017-06-01");
     version("2016-02-29", false);
@@ -273,9 +273,10 @@ class DivergencesTest {
 
     var late = divergences().getFirst();
 
-    assertThat(late.in(UNITS)).containsExactly(new Divergence.Unit(POINT, false, late.places()));
+    assertThat(late.in(OCCURRENCES))
+        .containsExactly(new Divergence.Occurrence(POINT, false, late.places()));
     assertThat(late.in(List.of("anx", "anx/pnt_1", "anx/pnt_1.2")))
-        .containsExactly(new Divergence.Unit("anx/pnt_1", true, late.places()));
+        .containsExactly(new Divergence.Occurrence("anx/pnt_1", true, late.places()));
     assertThat(late.whole(BASE)).isFalse();
   }
 
@@ -321,7 +322,7 @@ class DivergencesTest {
   }
 
   @Test
-  void aUnitWithAChangeThatDoesNotApplyOnTheDayYetIsPending() {
+  void anOccurrenceWithAChangeThatDoesNotApplyOnTheDayYetIsPending() {
     entryIntoForce("2017-12-29");
     partialApplication("2019-10-11");
     place("2019-10-11");
@@ -332,11 +333,13 @@ class DivergencesTest {
 
     var pending = act.pending(early, LocalDate.parse("2018-06-01"), Language.ENG, texts(act));
     assertThat(pending.at(POINT)).contains(AMENDING);
-    // The unit that the point is in has a change that does not apply yet also.
+    // The occurrence that the point is in has a change that does not apply yet also.
     assertThat(pending.at("anx/pnt_1")).contains(AMENDING);
     assertThat(pending.at("anx/pnt_1.2")).isEmpty();
-    // From the day the change applies, no unit is pending.
-    assertThat(act.pending(early, LocalDate.parse("2019-10-11"), Language.ENG, texts(act)).byUnit())
+    // From the day the change applies, no occurrence is pending.
+    assertThat(
+            act.pending(early, LocalDate.parse("2019-10-11"), Language.ENG, texts(act))
+                .byOccurrence())
         .isEmpty();
   }
 
@@ -356,7 +359,7 @@ class DivergencesTest {
             List.of());
 
     assertThat(early.whole(BASE)).isTrue();
-    assertThat(early.in(UNITS)).isEmpty();
+    assertThat(early.in(OCCURRENCES)).isEmpty();
   }
 
   // ------------------------------------------------------------------------------------ helpers
@@ -401,11 +404,12 @@ class DivergencesTest {
   }
 
   /**
-   * Adds a consolidated version that starts on {@code day}, whose text marks {@code units} with the
-   * amending act. {@code lists} tells whether the Publications Office lists the act for it.
+   * Adds a consolidated version that starts on {@code day}, whose text marks {@code occurrences}
+   * with the amending act. {@code lists} tells whether the Publications Office lists the act for
+   * it.
    */
-  private void version(String day, boolean lists, String... units) {
-    planned.add(new Planned(LocalDate.parse(day), lists, Set.of(units), UNITS));
+  private void version(String day, boolean lists, String... occurrences) {
+    planned.add(new Planned(LocalDate.parse(day), lists, Set.of(occurrences), OCCURRENCES));
   }
 
   /** Adds a consolidated version that starts on {@code day}, whose text does not have the point. */
@@ -415,16 +419,16 @@ class DivergencesTest {
 
   /**
    * Adds a consolidated version that starts on {@code day}, whose text does not have the point and
-   * marks {@code units} with the amending act. {@code lists} tells whether the Publications Office
-   * lists the act for it.
+   * marks {@code occurrences} with the amending act. {@code lists} tells whether the Publications
+   * Office lists the act for it.
    */
-  private void versionWithoutThePoint(String day, boolean lists, String... units) {
+  private void versionWithoutThePoint(String day, boolean lists, String... occurrences) {
     planned.add(
         new Planned(
             LocalDate.parse(day),
             lists,
-            Set.of(units),
-            UNITS.stream().filter(unit -> !unit.equals(POINT)).toList()));
+            Set.of(occurrences),
+            OCCURRENCES.stream().filter(occurrence -> !occurrence.equals(POINT)).toList()));
   }
 
   private List<Divergence> divergences() {
@@ -440,9 +444,10 @@ class DivergencesTest {
       var marked = each.marks();
       texts.put(
           versions.get(i),
-          new TextMarks(each.units(), marked.isEmpty() ? Map.of() : Map.of(AMENDING, marked)));
+          new TextMarks(
+              each.occurrences(), marked.isEmpty() ? Map.of() : Map.of(AMENDING, marked)));
     }
-    texts.put(versions.getFirst(), new TextMarks(UNITS, Map.of()));
+    texts.put(versions.getFirst(), new TextMarks(OCCURRENCES, Map.of()));
     return texts;
   }
 
@@ -494,8 +499,9 @@ class DivergencesTest {
    *
    * @param start the day it starts
    * @param lists whether the Publications Office lists the amending act for it
-   * @param marks the units that its text marks with the amending act
-   * @param units the eIds of the units of its text
+   * @param marks the occurrences that its text marks with the amending act
+   * @param occurrences the eIds of the occurrences of its text
    */
-  private record Planned(LocalDate start, boolean lists, Set<String> marks, List<String> units) {}
+  private record Planned(
+      LocalDate start, boolean lists, Set<String> marks, List<String> occurrences) {}
 }

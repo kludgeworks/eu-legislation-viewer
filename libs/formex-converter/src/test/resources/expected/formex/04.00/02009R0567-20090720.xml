@@ -73,12 +73,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 509/2006 of "/>
                <date date="2006-03-20">
@@ -88,7 +88,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular the first subparagraph of Article 9(4) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -96,7 +96,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -112,16 +112,16 @@
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="As no objection under Article 9 of Regulation (EC) No 509/2006 has been received by the Commission, this name should be entered in the register.&#xA;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <provenance amendingAct="32009R1026"
                         action="replaced"
                         location="AR:1;PT:1"
@@ -136,7 +136,7 @@
                </quote>
                <t v=" in so far as, in the absence of objections, it could not be demonstrated that the use of the name is lawful, renowned and economically significant for similar agricultural products or foodstuffs."/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -145,16 +145,16 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/unp_1" kind="paragraph">
+         <occurrence eId="art_1/unp_1" kind="paragraph">
             <p>
                <t v="The name contained in the Annex to this Regulation is hereby entered in the register."/>
             </p>
-         </unit>
-         <unit eId="art_1/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/unp_2" kind="paragraph">
             <provenance amendingAct="32009R1026"
                         action="inserted"
                         location="AR:1;PT:2"
@@ -162,9 +162,9 @@
             <p>
                <t v="The protection provided for in Article 13(2) of Regulation (EC) No 509/2006 shall apply."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -175,7 +175,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -183,18 +183,18 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <p>
             <t v="Foodstuffs referred to in Annex I to Regulation (EC) No 509/2006:"/>
          </p>
-         <unit eId="anx/pnt_Class-2.3"
-               kind="level"
-               depth="1"
-               numbered="true"
-               rank="2">
+         <occurrence eId="anx/pnt_Class-2.3"
+                     kind="level"
+                     depth="1"
+                     numbered="true"
+                     rank="2">
             <num>
                <emphasis kind="b">
                   <t v="Class 2.3."/>
@@ -205,8 +205,8 @@
                   <t v="Confectionery, bread, pastry, cakes, biscuits and other baker’s wares"/>
                </emphasis>
             </heading>
-         </unit>
-         <unit eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2" rank="3">
+         </occurrence>
+         <occurrence eId="anx/pnt_Class-2.3/level_1" kind="level" depth="2" rank="3">
             <heading>
                <t v="POLAND"/>
             </heading>
@@ -220,8 +220,8 @@
                            marker="O000001M003000"/>
                <t v="The use of the name is reserved."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

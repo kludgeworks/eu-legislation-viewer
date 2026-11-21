@@ -49,7 +49,7 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Agreement on the European Economic Area ("/>
                <quote startQuote="‘" endQuote="’">
@@ -57,7 +57,7 @@
                </quote>
                <t v="), and in particular Article 98 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -65,7 +65,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -78,15 +78,15 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=" is to be incorporated into the EEA Agreement."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Annex XI to the EEA Agreement should therefore be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -95,7 +95,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -104,7 +104,7 @@
          </p>
          <quotedStructure eId="art_1/qstr_1">
             <list kind="other">
-               <unit eId="art_1/qstr_1/pnt_5eq" kind="point" numbered="true">
+               <occurrence eId="art_1/qstr_1/pnt_5eq" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="5eq."/>
@@ -128,11 +128,11 @@
                      <t v=")."/>
                      <t v="’"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
          </quotedStructure>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -143,8 +143,8 @@
             </emphasis>
             <t v=", shall be authentic."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -157,8 +157,8 @@
             <noteRef href="#note_2" marker="*"/>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -169,7 +169,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -220,7 +220,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <heading>
             <t v="Joint Declaration by the Contracting Parties to Decision No 144/2017 incorporating Commission Implementing Decision (EU) 2016/1250 pursuant to Directive 95/46/EC of the European Parliament and of the Council on the adequacy of the protection provided by the EU-U.S. Privacy Shield into the Agreement"/>
          </heading>
@@ -242,7 +242,7 @@
          <p>
             <t v="The Contracting Parties understand that the Commission will consult the EFTA States as regards the composition of the list of arbitrators, and take the EFTA States’ opinion into account, prior to the designation of these arbitrators."/>
          </p>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

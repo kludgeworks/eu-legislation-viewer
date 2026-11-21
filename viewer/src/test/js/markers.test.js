@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { history, link, number, said, toggle, unitOf } from "../../main/resources/static/js/markers.js";
+import { history, link, number, said, toggle, occurrenceOf } from "../../main/resources/static/js/markers.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -67,7 +67,7 @@ const text = (listed = "") => {
       <provision-links hidden data-href="/eli/reg/2008/767/2026-11-17/eng/provision">${listed
         .split(" ")
         .filter(Boolean)
-        .map((unit) => `<span data-unit="${unit}"></span>`)
+        .map((occurrence) => `<span data-occurrence="${occurrence}"></span>`)
         .join("")}</provision-links>
       <div class="content">
         <div id="art_6"><h3 class="title">Article 6</h3>
@@ -91,22 +91,22 @@ const answer = (body, ok = true) => {
   return fetched;
 };
 
-const unit = (/** @type {string} */ id) =>
+const occurrence = (/** @type {string} */ id) =>
   /** @type {HTMLElement} */ (document.getElementById(id));
 
 describe("history", () => {
-  test("is the address of the histories with the unit", () => {
+  test("is the address of the histories with the occurrence", () => {
     text();
 
-    expect(history(unit("art_6/par_2"))).toBe(
-      "/eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6%2Fpar_2",
+    expect(history(occurrence("art_6/par_2"))).toBe(
+      "/eli/reg/2008/767/2026-11-17/eng/provision?occurrence=art_6%2Fpar_2",
     );
   });
 
   test("is null on a page without the address of the histories", () => {
     document.body.innerHTML = `<div id="art_6"></div>`;
 
-    expect(history(unit("art_6"))).toBeNull();
+    expect(history(occurrence("art_6"))).toBeNull();
   });
 });
 
@@ -116,16 +116,16 @@ describe("toggle", () => {
     const fetched = answer(`<aside class="provision-history"><p>History of Article 6(2)</p></aside>`);
     const from = mark();
 
-    await toggle(unit("art_6/par_2"), from);
+    await toggle(occurrence("art_6/par_2"), from);
 
     expect(fetched).toHaveBeenCalledWith(
-      "/eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6%2Fpar_2",
+      "/eli/reg/2008/767/2026-11-17/eng/provision?occurrence=art_6%2Fpar_2",
       expect.anything(),
     );
-    expect(unit("art_6/par_2").nextElementSibling?.textContent).toBe("History of Article 6(2)");
+    expect(occurrence("art_6/par_2").nextElementSibling?.textContent).toBe("History of Article 6(2)");
     expect(from.getAttribute("aria-expanded")).toBe("true");
 
-    await toggle(unit("art_6/par_2"), from);
+    await toggle(occurrence("art_6/par_2"), from);
 
     expect(document.querySelector(".provision-history")).toBeNull();
     expect(from.getAttribute("aria-expanded")).toBe("false");
@@ -135,9 +135,9 @@ describe("toggle", () => {
     text();
     answer(`<aside class="provision-history">History</aside>`);
 
-    await toggle(unit("art_6"), mark());
+    await toggle(occurrence("art_6"), mark());
 
-    expect(unit("art_6").querySelector(".title")?.nextElementSibling?.className).toBe(
+    expect(occurrence("art_6").querySelector(".title")?.nextElementSibling?.className).toBe(
       "provision-history",
     );
   });
@@ -146,22 +146,22 @@ describe("toggle", () => {
     text();
     answer(`<aside class="provision-history">History</aside>`);
 
-    await toggle(unit("art_6/par_2"), mark());
-    await toggle(unit("art_6"), mark());
+    await toggle(occurrence("art_6/par_2"), mark());
+    await toggle(occurrence("art_6"), mark());
 
     expect(document.querySelectorAll(".provision-history")).toHaveLength(2);
 
-    await toggle(unit("art_6"), mark());
+    await toggle(occurrence("art_6"), mark());
 
     expect(document.querySelectorAll(".provision-history")).toHaveLength(1);
-    expect(unit("art_6/par_2").nextElementSibling?.className).toBe("provision-history");
+    expect(occurrence("art_6/par_2").nextElementSibling?.className).toBe("provision-history");
   });
 
   test("says so if the history does not load", async () => {
     text();
     answer("", false);
 
-    await toggle(unit("art_6/par_2"), mark());
+    await toggle(occurrence("art_6/par_2"), mark());
 
     expect(document.querySelector(".provision-history")?.textContent).toBe(
       "The history of this provision did not load. Try again.",
@@ -178,14 +178,14 @@ describe("link", () => {
     const fetched = answer(`<aside class="provision-history">History</aside>`);
 
     link(links(), content());
-    const made = /** @type {HTMLElement} */ (unit("art_6/par_1").querySelector(".provision-link"));
+    const made = /** @type {HTMLElement} */ (occurrence("art_6/par_1").querySelector(".provision-link"));
     made.click();
     await vi.waitFor(() => expect(made.getAttribute("aria-expanded")).toBe("true"));
 
     expect(made.textContent).toBe("▽");
     expect(made.getAttribute("aria-label")).toBe("History of this provision");
     expect(fetched).toHaveBeenCalledWith(
-      "/eli/reg/2008/767/2026-11-17/eng/provision?unit=art_6%2Fpar_1",
+      "/eli/reg/2008/767/2026-11-17/eng/provision?occurrence=art_6%2Fpar_1",
       expect.anything(),
     );
   });
@@ -198,12 +198,12 @@ describe("link", () => {
     expect(document.querySelector(".provision-link")).toBeNull();
   });
 
-  test("gives a link to a provision whose marks are all on its units", () => {
+  test("gives a link to a provision whose marks are all on its occurrences", () => {
     text("art_6");
 
     link(links(), content());
 
-    expect(unit("art_6").querySelector(":scope > .provision-link")).not.toBeNull();
+    expect(occurrence("art_6").querySelector(":scope > .provision-link")).not.toBeNull();
   });
 
   test("does not link a text two times", () => {
@@ -239,7 +239,7 @@ describe("AmendmentMark", () => {
     mark().click();
     await vi.waitFor(() => expect(mark().getAttribute("aria-expanded")).toBe("true"));
 
-    expect(unitOf(mark())?.id).toBe("art_6/par_2");
+    expect(occurrenceOf(mark())?.id).toBe("art_6/par_2");
     expect(fetched).toHaveBeenCalledTimes(1);
   });
 

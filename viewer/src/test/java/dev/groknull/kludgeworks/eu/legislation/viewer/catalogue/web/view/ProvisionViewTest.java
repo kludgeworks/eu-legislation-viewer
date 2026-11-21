@@ -28,16 +28,16 @@ class ProvisionViewTest {
   static final Version READING =
       AVSEC.timeline().startingOn(LocalDate.of(2026, 10, 1)).orElseThrow();
   static final String ARTICLE = "art_9";
-  static final List<String> UNITS =
+  static final List<String> OCCURRENCES =
       List.of("anx", "anx/pnt_4", "anx/pnt_4.1", "anx/pnt_4.1.3", POINT, ARTICLE);
 
-  private static ProvisionView history(String unit, Map<Version, TextMarks> texts) {
-    return ProvisionView.of(AVSEC, READING, unit, TODAY, TODAY, Language.ENG, texts);
+  private static ProvisionView history(String occurrence, Map<Version, TextMarks> texts) {
+    return ProvisionView.of(AVSEC, READING, occurrence, TODAY, TODAY, Language.ENG, texts);
   }
 
   @Test
   void listsTheActsThatChangedTheProvisionNewestFirstWithALinkToEachChange() {
-    var view = history(POINT, Map.of(READING, new TextMarks(UNITS, Map.of())));
+    var view = history(POINT, Map.of(READING, new TextMarks(OCCURRENCES, Map.of())));
 
     assertThat(view.heading()).startsWith("History of ").doesNotContain("this provision");
     assertThat(view.count()).endsWith(" amending acts changed it");
@@ -54,11 +54,11 @@ class ProvisionViewTest {
 
   @Test
   void offersTheComparisonOfTheWordingIfTwoActsChangedTheProvision() {
-    var view = history(POINT, Map.of(READING, new TextMarks(UNITS, Map.of())));
+    var view = history(POINT, Map.of(READING, new TextMarks(OCCURRENCES, Map.of())));
 
     assertThat(view.compare())
         .startsWith("/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2026-10-01")
-        .endsWith("&unit=anx%2Fpnt_4.1.3.1");
+        .endsWith("&occurrence=anx%2Fpnt_4.1.3.1");
   }
 
   @Test
@@ -72,7 +72,7 @@ class ProvisionViewTest {
             day,
             TODAY,
             Language.ENG,
-            Map.of(READING, new TextMarks(UNITS, Map.of())));
+            Map.of(READING, new TextMarks(OCCURRENCES, Map.of())));
 
     var oldest =
         view.lines().stream()
@@ -88,7 +88,8 @@ class ProvisionViewTest {
   void anActThatOnlyTheTextMarksTheProvisionWithChangedIt() {
     var marked = new ActIdentifier("32020R0910");
     var view =
-        history(ARTICLE, Map.of(READING, new TextMarks(UNITS, Map.of(marked, Set.of(ARTICLE)))));
+        history(
+            ARTICLE, Map.of(READING, new TextMarks(OCCURRENCES, Map.of(marked, Set.of(ARTICLE)))));
 
     assertThat(view.heading()).isEqualTo("History of this provision");
     assertThat(view.count()).isEqualTo("1 amending act changed it");
@@ -106,9 +107,9 @@ class ProvisionViewTest {
             ARTICLE,
             Map.of(
                 first,
-                new TextMarks(UNITS.subList(0, 5), Map.of()),
+                new TextMarks(OCCURRENCES.subList(0, 5), Map.of()),
                 READING,
-                new TextMarks(UNITS, Map.of())));
+                new TextMarks(OCCURRENCES, Map.of())));
 
     assertThat(view.lines()).isEmpty();
     assertThat(view.count()).isNull();
@@ -123,19 +124,19 @@ class ProvisionViewTest {
   }
 
   @Test
-  void theUnitsWithAHistoryToShowAreTheChangedUnitsAndTheUnitsWithNoAct() {
+  void theOccurrencesWithAHistoryToShowAreTheChangedOccurrencesAndTheOccurrencesWithNoAct() {
     var first = AVSEC.timeline().versions().getFirst();
-    var units =
-        ProvisionView.units(
+    var occurrences =
+        ProvisionView.occurrences(
             AVSEC,
             READING,
             Language.ENG,
             Map.of(
                 first,
-                new TextMarks(UNITS.subList(0, 5), Map.of()),
+                new TextMarks(OCCURRENCES.subList(0, 5), Map.of()),
                 READING,
-                new TextMarks(UNITS, Map.of())));
+                new TextMarks(OCCURRENCES, Map.of())));
 
-    assertThat(units).contains(POINT, ARTICLE);
+    assertThat(occurrences).contains(POINT, ARTICLE);
   }
 }

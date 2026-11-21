@@ -29,29 +29,29 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union, and in particular the sixth paragraph of Article 253 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Atomic Energy Community, and in particular Article 106a(1) thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the Protocol on the Statute of the Court of Justice of the European Union, and in particular Article 63 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Whereas it is appropriate to set out, in the Rules of Procedure, the detailed rules implementing the procedure whereby the Court first decides whether an appeal should be allowed to proceed referred to in Article 58a of the Protocol on the Statute of the Court of Justice of the European Union, and to determine both the procedure for submission and examination of requests that an appeal be allowed to proceed and the specific conduct of the proceedings following such examination,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <p>
                <t v="With the approval of the Council given on "/>
                <date date="2019-04-09">
@@ -59,7 +59,7 @@
                </date>
                <t v=","/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -68,7 +68,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -81,7 +81,7 @@
             <t v=":"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/cpt_1a" kind="division" rank="2">
+            <occurrence eId="art_1/qstr_1/cpt_1a" kind="division" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="Chapter 1a"/>
@@ -89,78 +89,78 @@
                <subheading>
                   <t v="PRIOR DETERMINATION AS TO WHETHER APPEALS UNDER ARTICLE 58a OF THE STATUTE SHOULD BE ALLOWED TO PROCEED"/>
                </subheading>
-               <unit eId="art_1/qstr_1/art_170a" kind="article" rank="3">
+               <occurrence eId="art_1/qstr_1/art_170a" kind="article" rank="3">
                   <num>
                      <t v="Article 170a"/>
                   </num>
                   <heading>
                      <t v="Request that the appeal be allowed to proceed"/>
                   </heading>
-                  <unit eId="art_1/qstr_1/art_170a/par_1" kind="paragraph">
+                  <occurrence eId="art_1/qstr_1/art_170a/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
                      <p>
                         <t v="In the situations referred to in the first and second paragraphs of Article 58a of the Statute, the appellant shall annex to the appeal a request that the appeal be allowed to proceed, setting out the issue raised by the appeal that is significant with respect to the unity, consistency or development of European Union law and containing all the information necessary to enable the Court of Justice to rule on that request. If there is no such request, the Vice-President of the Court shall declare the appeal inadmissible."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/qstr_1/art_170a/par_2" kind="paragraph">
+                  </occurrence>
+                  <occurrence eId="art_1/qstr_1/art_170a/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
                      <p>
                         <t v="The request that the appeal be allowed to proceed shall not exceed seven pages and shall be drawn up taking into account all the formal requirements contained in the Practice Directions to parties concerning cases brought before the Court, adopted on the basis of these Rules."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/qstr_1/art_170a/par_3" kind="paragraph">
+                  </occurrence>
+                  <occurrence eId="art_1/qstr_1/art_170a/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
                      </num>
                      <p>
                         <t v="If the request that the appeal be allowed to proceed does not comply with the requirements set out in the preceding paragraph, the Registrar shall prescribe a reasonable time-limit within which the appellant is to put the request in order. If the appellant fails to put the request in order within the time-limit prescribed, the Vice-President of the Court shall decide, on a proposal from the Judge-Rapporteur and after hearing the Advocate General, whether the non-compliance with that formal requirement renders the appeal formally inadmissible."/>
                      </p>
-                  </unit>
-               </unit>
-               <unit eId="art_1/qstr_1/art_170b" kind="article" rank="3">
+                  </occurrence>
+               </occurrence>
+               <occurrence eId="art_1/qstr_1/art_170b" kind="article" rank="3">
                   <num>
                      <t v="Article 170b"/>
                   </num>
                   <heading>
                      <t v="Decision on the request that the appeal be allowed to proceed"/>
                   </heading>
-                  <unit eId="art_1/qstr_1/art_170b/par_1" kind="paragraph">
+                  <occurrence eId="art_1/qstr_1/art_170b/par_1" kind="paragraph">
                      <num>
                         <t v="1."/>
                      </num>
                      <p>
                         <t v="The Court of Justice shall rule as soon as possible on the request that the appeal be allowed to proceed."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/qstr_1/art_170b/par_2" kind="paragraph">
+                  </occurrence>
+                  <occurrence eId="art_1/qstr_1/art_170b/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
                      </num>
                      <p>
                         <t v="The decision on that request shall be taken, on a proposal from the Judge-Rapporteur and after hearing the Advocate General, by a Chamber specially established for that purpose, presided over by the Vice-President of the Court and including also the Judge-Rapporteur and the President of the Chamber of three Judges to which the Judge-Rapporteur is attached on the date on which the request is made."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/qstr_1/art_170b/par_3" kind="paragraph">
+                  </occurrence>
+                  <occurrence eId="art_1/qstr_1/art_170b/par_3" kind="paragraph">
                      <num>
                         <t v="3."/>
                      </num>
                      <p>
                         <t v="The decision on the request that the appeal be allowed to proceed shall take the form of a reasoned order."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/qstr_1/art_170b/par_4" kind="paragraph">
+                  </occurrence>
+                  <occurrence eId="art_1/qstr_1/art_170b/par_4" kind="paragraph">
                      <num>
                         <t v="4."/>
                      </num>
                      <p>
                         <t v="Where the Court of Justice decides that the appeal should be allowed to proceed, wholly or in part, having regard to the criteria set out in the third paragraph of Article 58a of the Statute, the proceedings shall continue in accordance with Articles 171 to 190a of these Rules. The order referred to in the preceding paragraph shall be served, together with the appeal, on the parties to the relevant case before the General Court and shall specify, where the appeal is to be allowed to proceed in part, the pleas in law or parts of the appeal to which the response must relate."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/qstr_1/art_170b/par_5" kind="paragraph">
+                  </occurrence>
+                  <occurrence eId="art_1/qstr_1/art_170b/par_5" kind="paragraph">
                      <num>
                         <t v="5."/>
                      </num>
@@ -168,12 +168,12 @@
                         <t v="The General Court and, if they were not parties to the proceedings before it, the Member States, the European Parliament, the Council and the European Commission shall forthwith be informed by the Registrar of the decision that the appeal should be allowed to proceed."/>
                         <t v="’"/>
                      </p>
-                  </unit>
-               </unit>
-            </unit>
+                  </occurrence>
+               </occurrence>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -184,7 +184,7 @@
             </emphasis>
             <t v=" and shall enter into force on the first day of the month following that of their publication."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

@@ -89,15 +89,15 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Annex IV to Regulation (EC) No 314/2004 is amended as set out in the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -108,7 +108,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -116,7 +116,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -125,7 +125,7 @@
          </p>
          <quotedStructure eId="anx/qstr_1">
             <list kind="arabic">
-               <unit eId="anx/qstr_1/pnt_4" kind="point" numbered="true">
+               <occurrence eId="anx/qstr_1/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="4."/>
@@ -135,10 +135,10 @@
                      <t v="’"/>
                      <t v="."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
          </quotedStructure>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

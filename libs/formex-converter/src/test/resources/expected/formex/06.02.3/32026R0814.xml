@@ -46,12 +46,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2016/429 of the European Parliament and of the Council of "/>
                <date date="2016-03-09">
@@ -65,7 +65,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 230(1), Article 232(1), point (b) and Article 232(3), point (b) thereof."/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -73,15 +73,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Regulation (EU) 2016/429 provides that consignments of animals, germinal products and products of animal origin from third countries or territories are only to be allowed to enter into the Union if the third countries or territories concerned are listed in accordance with Article 230(1) of that Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -90,8 +90,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" lays down the animal health requirements that consignments of certain species and categories of animals, germinal products and products of animal origin, from third countries, territories, or zones thereof, or compartments thereof in the case of aquaculture animals, must comply with in order to enter the Union."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -100,16 +100,16 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" lays down the lists of third countries, territories, or zones thereof, from which the entry into the Union of the species and categories of animals, germinal products and products of animal origin, falling within the scope of Delegated Regulation (EU) 2020/692, is permitted. Those lists and certain general rules concerning those lists are set out in Annexes I to XXII to that Implementing Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="More particularly, Annexes V and XIV to Implementing Regulation (EU) 2021/404 set out the lists of third countries, territories, or zones thereof, authorised for the entry into the Union, respectively, of consignments of poultry and germinal products of poultry, and of fresh meat of poultry and game birds."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
@@ -124,8 +124,8 @@
                </date>
                <t v=" by laboratory analysis (RT-PCR)."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -144,40 +144,40 @@
                </date>
                <t v=" by laboratory analysis (RT-PCR)."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="Following those recent outbreaks of HPAI, the veterinary authorities of Chile and the United States notified the establishment of restricted zones of at least 10 km around the affected establishments and the implementation of a stamping-out policy to control the presence of HPAI and limit the spread of that disease."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
             <p>
                <t v="Chile and the United States have submitted further information to the Commission on the epidemiological situation on their respective territories and the measures that were taken to prevent the further spread of HPAI following those recent HPAI outbreaks."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
             <p>
                <t v="The information provided by Chile and the United States has been evaluated by the Commission. In view of the animal health situation in the areas under restrictions established by the veterinary authorities of Chile and the United States, it is appropriate to suspend the entry into the Union of consignments of poultry and germinal products of poultry, and of fresh meat of poultry and game birds from the areas concerned by the new outbreaks in those third countries in order to protect the animal health status of the Union, taking into account the dates when the outbreaks were confirmed. Therefore, the entries for Chile and the United States in the tables set out in Section B of Part 1 and in Part 2 of Annex V, and the table set out in Section B of Part 1 of Annex XIV to Implementing Regulation (EU) 2021/404 should be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_10" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_10" kind="recital">
             <num>
                <t v="(10)"/>
             </num>
             <p>
                <t v="In addition, the United Kingdom has provided updated information to the Commission in relation to the epidemiological situation on its territory as regards earlier outbreaks of HPAI that gave rise to the suspension of the entry into the Union of consignments of poultry and germinal products of poultry, and of fresh meat of poultry and game birds, as set out in the table in Section B of Part 1 of Annex V, and in the table in Section B of Part 1 of Annex XIV to Implementing Regulation (EU) 2021/404."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_11" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_11" kind="recital">
             <num>
                <t v="(11)"/>
             </num>
@@ -196,39 +196,39 @@
                </date>
                <t v=" by laboratory analysis (RT-PCR)."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_12" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_12" kind="recital">
             <num>
                <t v="(12)"/>
             </num>
             <p>
                <t v="The United Kingdom has informed the Commission that, following those earlier outbreaks of HPAI, it had implemented a stamping out policy in order to control and limit the spread of that disease, and it had also completed the requisite cleaning and disinfection following the implementation of the stamping out policy in the infected poultry establishments."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_13" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_13" kind="recital">
             <num>
                <t v="(13)"/>
             </num>
             <p>
                <t v="The Commission has evaluated the information submitted by the United Kingdom in that regard and considers that it has provided appropriate guarantees that the animal health situation that had given rise to the suspension of the entry of consignments of poultry and germinal products of poultry, and of fresh meat of poultry and game birds into the Union from the affected zones, as set out in the table in Section B of Part 1 of Annex V, and in the table in Section B of Part 1 of Annex XIV to Implementing Regulation (EU) 2021/404, no longer represents a threat to animal or public health in the Union, and that, consequently, the entry into the Union of those consignments from the affected zones of the United Kingdom, from which entry into the Union had been suspended, should be re-authorised. Therefore, the entries for the United Kingdom in those tables in those Annexes should be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_14" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_14" kind="recital">
             <num>
                <t v="(14)"/>
             </num>
             <p>
                <t v="Taking into account the new HPAI outbreaks in Chile and the United States, and in order to avoid any unnecessary disruption in trade with the United Kingdom, the amendments to be made to Annexes V and XIV to Implementing Regulation (EU) 2021/404 by this Regulation should take effect as a matter of urgency."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_15" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_15" kind="recital">
             <num>
                <t v="(15)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on Plants, Animals, Food and Feed,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -237,15 +237,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Annexes V and XIV to Implementing Regulation (EU) 2021/404 are amended in accordance with the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -256,7 +256,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -347,7 +347,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -355,7 +355,7 @@
             <t v="Annexes V and XIV to Implementing Regulation (EU) 2021/404 are amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -363,7 +363,7 @@
                   <t v="Annex V is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -371,7 +371,7 @@
                         <t v="in Part 1, Section B is amended as follows:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx/pnt_1/pnt_a/pnt_i" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -420,8 +420,8 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_ii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -503,8 +503,8 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_iii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
@@ -559,8 +559,8 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_iv" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
@@ -615,8 +615,8 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
-                        <unit eId="anx/pnt_1/pnt_a/pnt_v" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_1/pnt_a/pnt_v" kind="point" numbered="true">
                            <num>
                               <t v="(v)"/>
                            </num>
@@ -917,10 +917,10 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
-                  <unit eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -928,7 +928,7 @@
                         <t v="Part 2 is amended as follows:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="anx/pnt_1/pnt_b/pnt_i" kind="point" numbered="true">
+                        <occurrence eId="anx/pnt_1/pnt_b/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
@@ -967,8 +967,8 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
-                        <unit eId="anx/pnt_1/pnt_b/pnt_ii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_1/pnt_b/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
@@ -1229,12 +1229,12 @@
                                  </tr>
                               </table>
                            </quotedStructure>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="anx/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -1242,7 +1242,7 @@
                   <t v="in Annex XIV, in Part 1, Section B is amended as follows:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_2/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1312,8 +1312,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
@@ -1454,8 +1454,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
@@ -1537,8 +1537,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_d" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -1620,8 +1620,8 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
-                  <unit eId="anx/pnt_2/pnt_e" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_2/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
@@ -2255,11 +2255,11 @@
                            </tr>
                         </table>
                      </quotedStructure>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

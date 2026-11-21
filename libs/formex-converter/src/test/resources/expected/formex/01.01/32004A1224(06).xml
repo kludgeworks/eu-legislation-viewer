@@ -44,12 +44,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1466/97 of "/>
                <date date="1997-07-07">
@@ -59,17 +59,17 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the recommendation of the Commission,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_4" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="After consulting the Economic and Financial Committee,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>

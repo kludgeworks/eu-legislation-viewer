@@ -3,7 +3,7 @@
 @param ChangesView.Shown shown
 @param ComparePage page
 <%-- Shows an annex inserted whole as a box that says how many provisions it has, with three ways
-     to see it: its outline, which loads the annex's units without their text; the annex itself,
+     to see it: its outline, which loads the annex's occurrences without their text; the annex itself,
      which loads it from the address of its difference; and the annex on its own in Read, in the
      version at the To end. The outline and the annex open in place, under the box. The annex is
      not sent until the reader asks: one annex can be tens of MB. --%>

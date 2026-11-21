@@ -49,12 +49,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Directive 2002/55/EC of "/>
                <date date="2002-06-13">
@@ -64,12 +64,12 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 49 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the request submitted by the United Kingdom,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -77,38 +77,38 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Under Directive 2002/55/EC the Commission may, subject to certain conditions, release a Member State from obligations for the marketing of vegetable seed set out in that Directive."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="The United Kingdom has applied for release from its obligations in respect of certain species and a sub-species."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Since the seed of those species and of that sub-species is not normally reproduced in the United Kingdom and the normal reproduction concerns exclusively propagating and planting material other than seed, the United Kingdom should be released from certain obligations under Directive 2002/55/EC in respect of the species and the sub-species in question."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee on Seeds and Propagating Material for Agriculture, Horticulture and Forestry,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -117,7 +117,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -134,14 +134,14 @@
                </heading>
                <tr>
                   <td>
-                     <unit eId="art_1/tab_1/tr_1/td_1/idt_1" kind="indent">
+                     <occurrence eId="art_1/tab_1/tr_1/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
                         <p>
                            <t v="Aggregatum Group"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -211,15 +211,15 @@
                </td>
             </tr>
          </table>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision is addressed to the United Kingdom."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

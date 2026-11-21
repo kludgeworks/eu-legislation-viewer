@@ -33,11 +33,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="The publication of Commission Recommendation 2016/C 235/01 is to be considered null and void."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

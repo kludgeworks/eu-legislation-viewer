@@ -256,7 +256,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <provenance amendingAct="32024D1804"
                      action="replaced"
                      location="AR:1"
@@ -264,7 +264,7 @@
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/par_1" kind="paragraph">
+         <occurrence eId="art_1/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -275,8 +275,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", to Haiti by nationals of Member States or from the territories of Member States, or using their flag vessels or aircraft, shall be prohibited whether originating or not in their territories."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -284,33 +284,33 @@
                <t v="It shall be prohibited to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/par_2/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_1/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="provide technical assistance, training or other assistance, including the provision of armed mercenary personnel, related to the provision, manufacture, maintenance and use of items mentioned in paragraph 1 directly or indirectly to Haiti;"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_2/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_1/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="provide related financing or financial assistance, including in particular grants, loans and export credit insurance, as well as insurance and reinsurance, for any sale, supply, transfer or export of items mentioned in paragraph 1, or for the provision of related technical or other assistance, directly or indirectly to Haiti."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_1/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="Member States shall inspect, in accordance with their national authorities and legislation and consistent with international law, all cargo to Haiti in their territory, including seaports and airports, if they have information that provides reasonable grounds to believe that the cargo contains items the supply, sale, transfer or export of which is prohibited under this Article."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
@@ -325,16 +325,16 @@
                </quote>
                <t v=") cases of violations of the measures under paragraphs 1 and 2. Member States shall also submit to the Sanctions Committee a written report on any seizure of items as a result of an inspection carried out pursuant to paragraph 3."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_5" kind="paragraph">
             <num>
                <t v="5."/>
             </num>
             <p>
                <t v="Member States shall ensure that adequate marking and record-keeping measures are in place to trace arms, in accordance with the international and regional instruments to which they are parties, and to consider how best to assist, where relevant and upon their request, neighbouring countries in preventing and detecting illicit trafficking and diversion in violation of measures imposed in paragraphs 1 and 2."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_6" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_6" kind="paragraph">
             <num>
                <t v="6."/>
             </num>
@@ -342,26 +342,26 @@
                <t v="The prohibitions set out in paragraphs 1 and 2 shall not apply to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/par_6/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_1/par_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="the supply, sale, transfer or export of items as referred to in paragraph 1, or the provision of technical assistance, training or other assistance or of financing or financial assistance as referred to in paragraph 2, points (a) and (b), to the UN or a UN-authorised mission or to a security unit that operates under the command of the Government of Haiti, intended to be used by or in coordination with those entities and intended solely to further the objectives of peace and stability in Haiti;"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_6/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_1/par_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="the supply, sale, transfer or export of items as referred to in paragraph 1, or the provision of technical assistance, training or other assistance or of financing or financial assistance as referred to in paragraph 2, points (a) and (b), where approved in advance by the Sanctions Committee to further the objectives of peace and stability in Haiti."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="art_1a" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_1a" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="inserted"
                      location="AR:1;PT:2"
@@ -369,15 +369,15 @@
          <num>
             <t v="Article 1a"/>
          </num>
-         <unit eId="art_1a/par_1" kind="paragraph">
+         <occurrence eId="art_1a/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="The direct or indirect supply, sale, transfer or export of arms and related materiel of all types, including weapons and ammunition, military vehicles and equipment, paramilitary equipment and spare parts for the aforementioned, to, or for the benefit of, the persons and entities listed in Annex II by nationals of Member States or from the territories of Member States or using their flag vessels or aircraft shall be prohibited, whether originating or not in their territories."/>
             </p>
-         </unit>
-         <unit eId="art_1a/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1a/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -385,121 +385,121 @@
                <t v="It shall be prohibited to:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1a/par_2/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_1a/par_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="provide technical assistance, training or other assistance, including the provision of armed mercenary personnel, related to military activities or the provision, maintenance or use of any arms and related materiel directly or indirectly to any person or entity listed in Annex II;"/>
                   </p>
-               </unit>
-               <unit eId="art_1a/par_2/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_1a/par_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="provide financing or financial assistance related to military activities, including in particular grants, loans and export credit insurance, as well as insurance and reinsurance for any sale, supply, transfer or export of arms and related materiel, or for the provision of related technical or other assistance, directly or indirectly to any person or entity listed in Annex II;"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_1a/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1a/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="Member States shall inspect, in accordance with their national authorities and legislation and consistent with international law, all cargo to Haiti in their territory, including seaports and airports, if they have information that provides reasonable grounds to believe that the cargo contains items the supply, sale, transfer or export of which is prohibited under this Article."/>
             </p>
-         </unit>
-         <unit eId="art_1a/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1a/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
             <p>
                <t v="Member States shall ensure that adequate marking and recordkeeping measures are in place to trace arms, including small arms and light weapons, in accordance with the international and regional instruments to which they are parties, and to consider how best to assist, where relevant and upon their request, neighbouring countries in preventing and detecting illicit trafficking and diversion in violation of measures imposed in paragraphs 1 and 2."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
-         <unit eId="art_2/par_1" kind="paragraph">
+         <occurrence eId="art_2/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
-            <unit eId="art_2/par_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_2/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="Member States shall take the necessary measures to prevent the entry into, or transit through, their territories of persons designated by the Sanctions Committee as responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including but not limited to:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_2/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="art_2/par_1/sub_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
                      <p>
                         <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
                      <p>
                         <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
                      <p>
                         <t v="acting for or on behalf of or at the direction of or otherwise supporting or financing a person or entity designated in connection with the activity described in points (a) and (b), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_d" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
                      <p>
                         <t v="acting in violation of the arms embargo, or as having directly or indirectly supplied, sold, or transferred to armed groups or criminal networks in Haiti, or as having been the recipient of, arms or any related materiel, or any technical advice, training, or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_e" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
                      <p>
                         <t v="planning, directing or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_f" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
                      <p>
                         <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_g" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
                      <p>
                         <t v="obstructing delivery of humanitarian assistance to Haiti or access to, or distribution of, humanitarian assistance in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2/par_1/sub_1/pnt_h" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2/par_1/sub_1/pnt_h" kind="point" numbered="true">
                      <num>
                         <t v="(h)"/>
                      </num>
                      <p>
                         <t v="attacking personnel or premises of United Nations missions and operations in Haiti, or providing support for such attacks."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="art_2/par_1/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_2/par_1/sub_2" kind="subparagraph">
                <p>
                   <t v="The persons referred to in this paragraph are listed in "/>
                   <changed amendingAct="32023D1574"
@@ -510,25 +510,25 @@
                   </changed>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_2/par_2" kind="paragraph">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_2/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="Paragraph 1 shall not oblige a Member State to refuse its own nationals entry into its territory."/>
             </p>
-         </unit>
-         <unit eId="art_2/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="Paragraph 1 shall not apply where entry or transit is necessary for the fulfilment of a judicial process."/>
             </p>
-         </unit>
-         <unit eId="art_2/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
@@ -536,25 +536,25 @@
                <t v="Paragraph 1 shall not apply where the Sanctions Committee determines, on a case-by-case basis, that:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_2/par_4/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_2/par_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="entry or transit is justified on the grounds of humanitarian need, including religious obligation;"/>
                   </p>
-               </unit>
-               <unit eId="art_2/par_4/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/par_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="an exemption would further the objectives of peace and stability in Haiti."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_2/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_5" kind="paragraph">
             <num>
                <t v="5."/>
             </num>
@@ -568,9 +568,9 @@
                </changed>
                <t v=", the authorisation shall be limited to the purpose for which it is given and to the persons concerned by the authorisation."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2a" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2a" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="inserted"
                      location="AR:1;PT:4"
@@ -578,16 +578,16 @@
          <num>
             <t v="Article 2a"/>
          </num>
-         <unit eId="art_2a/par_1" kind="paragraph">
+         <occurrence eId="art_2a/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
-            <unit eId="art_2a/par_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_2a/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="Member States shall take the measures necessary to prevent the entry into, or transit through, their territories of natural persons:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_2a/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="art_2a/par_1/sub_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -595,107 +595,107 @@
                         <t v="responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
                            <p>
                               <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
                            <p>
                               <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
                            <p>
                               <t v="acting for, on behalf of or at the direction of, or otherwise supporting or financing, a person or entity designated in connection with the activity described in point (i) or (ii), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_iv" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
                            <p>
                               <t v="acting in violation of the arms embargo, or having directly or indirectly supplied, sold or transferred to armed groups or criminal networks in Haiti, or having been the recipient of, arms or any related materiel, or any technical advice, training or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_v" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_v" kind="point" numbered="true">
                            <num>
                               <t v="(v)"/>
                            </num>
                            <p>
                               <t v="planning, directing or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_vi" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_vi" kind="point" numbered="true">
                            <num>
                               <t v="(vi)"/>
                            </num>
                            <p>
                               <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_vii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_vii" kind="point" numbered="true">
                            <num>
                               <t v="(vii)"/>
                            </num>
                            <p>
                               <t v="obstructing the delivery of humanitarian assistance to Haiti or access to, or the distribution of, humanitarian assistance in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_2a/par_1/sub_1/pnt_a/pnt_viii"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_viii"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="(viii)"/>
                            </num>
                            <p>
                               <t v="attacking personnel or premises of Union delegations and Member State diplomatic missions and operations in Haiti, or providing support for such attacks;"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
-                  <unit eId="art_2a/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2a/par_1/sub_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
                      <p>
                         <t v="undermining democracy or the rule of law in Haiti through serious financial misconduct concerning public funds or the unauthorised export of capital; or"/>
                      </p>
-                  </unit>
-                  <unit eId="art_2a/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_2a/par_1/sub_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
                      <p>
                         <t v="associated with natural persons designated under points (a) and (b) or under Article 2(1)."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="art_2a/par_1/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_2a/par_1/sub_2" kind="subparagraph">
                <p>
                   <t v="Natural persons as referred to in this paragraph are listed in Annex II."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_2a/par_2" kind="paragraph">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_2a/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="Paragraph 1 shall not oblige a Member State to refuse its own nationals entry into its territory."/>
             </p>
-         </unit>
-         <unit eId="art_2a/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
@@ -703,159 +703,159 @@
                <t v="Paragraph 1 shall be without prejudice to cases where a Member State is bound by an obligation of international law, namely:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_2a/par_3/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_2a/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="as a host country of an international intergovernmental organisation;"/>
                   </p>
-               </unit>
-               <unit eId="art_2a/par_3/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2a/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="as a host country to an international conference convened by, or under the auspices of, the United Nations;"/>
                   </p>
-               </unit>
-               <unit eId="art_2a/par_3/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2a/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="under a multilateral agreement conferring privileges and immunities; or"/>
                   </p>
-               </unit>
-               <unit eId="art_2a/par_3/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2a/par_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
                   <p>
                      <t v="pursuant to the 1929 Treaty of Conciliation (Lateran Pact) concluded by the Holy See (Vatican City State) and Italy."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_2a/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
             <p>
                <t v="Paragraph 3 shall also apply in cases where a Member State is host country of the Organization for Security and Cooperation in Europe (OSCE)."/>
             </p>
-         </unit>
-         <unit eId="art_2a/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_5" kind="paragraph">
             <num>
                <t v="5."/>
             </num>
             <p>
                <t v="The Council shall be duly informed in all cases where a Member State grants an exemption pursuant to paragraphs 3 or 4."/>
             </p>
-         </unit>
-         <unit eId="art_2a/par_6" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_6" kind="paragraph">
             <num>
                <t v="6."/>
             </num>
             <p>
                <t v="Member States may grant exemptions from the measures imposed under paragraph 1 where travel is justified on the grounds of urgent humanitarian need, or on the grounds of attending intergovernmental meetings or meetings promoted or hosted by the Union, or hosted by a Member State holding the Chairmanship in office of the OSCE, where a political dialogue is conducted that directly promotes the policy objectives of restrictive measures."/>
             </p>
-         </unit>
-         <unit eId="art_2a/par_7" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_7" kind="paragraph">
             <num>
                <t v="7."/>
             </num>
             <p>
                <t v="Member States may also grant exemptions from the measures imposed under paragraph 1 where entry or transit is necessary for the fulfilment of a judicial process."/>
             </p>
-         </unit>
-         <unit eId="art_2a/par_8" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_8" kind="paragraph">
             <num>
                <t v="8."/>
             </num>
             <p>
                <t v="A Member State wishing to grant exemptions referred to in paragraphs 6 or 7 shall notify the Council in writing. The exemption shall be deemed to be granted unless one or more Member States raise an objection in writing within two working days of receiving notification of the proposed exemption. Should one or more Member States raise an objection, the Council, acting by a qualified majority, may decide to grant the proposed exemption."/>
             </p>
-         </unit>
-         <unit eId="art_2a/par_9" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2a/par_9" kind="paragraph">
             <num>
                <t v="9."/>
             </num>
             <p>
                <t v="Where, pursuant to paragraph 3, 4, 6 or 7, a Member State authorises the entry into, or transit through, its territory of persons listed in Annex II, the authorisation shall be strictly limited to the purpose for which it is given and to the persons directly concerned thereby."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
-         <unit eId="art_3/par_1" kind="paragraph">
+         <occurrence eId="art_3/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
-            <unit eId="art_3/par_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_3/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="All funds and economic resources owned or controlled directly or indirectly by persons or entities designated by the Sanctions Committee as responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including but not limited to:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_3/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="art_3/par_1/sub_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
                      <p>
                         <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
                      <p>
                         <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
                      <p>
                         <t v="acting for or on behalf of or at the direction of or otherwise supporting or financing a person or entity designated in connection with the activity described in points (a) and (b), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_d" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
                      <p>
                         <t v="acting in violation of the arms embargo, or as having directly or indirectly supplied, sold, or transferred to armed groups or criminal networks in Haiti, or as having been the recipient of, arms or any related materiel, or any technical advice, training or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_e" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
                      <p>
                         <t v="planning, directing, or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_f" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
                      <p>
                         <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_g" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_g" kind="point" numbered="true">
                      <num>
                         <t v="(g)"/>
                      </num>
                      <p>
                         <t v="obstructing delivery of humanitarian assistance to Haiti or access to, or distribution of, humanitarian assistance in Haiti;"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/par_1/sub_1/pnt_h" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3/par_1/sub_1/pnt_h" kind="point" numbered="true">
                      <num>
                         <t v="(h)"/>
                      </num>
@@ -865,10 +865,10 @@
                      <p>
                         <t v="or by persons or entities acting on their behalf or at their direction, or entities owned or controlled by them, shall be frozen."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="art_3/par_1/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_3/par_1/sub_2" kind="subparagraph">
                <p>
                   <t v="The designated persons or entities referred to in this paragraph are listed in "/>
                   <changed amendingAct="32023D1574"
@@ -879,9 +879,9 @@
                   </changed>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_3/par_2" kind="paragraph">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_3/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -895,8 +895,8 @@
                </changed>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_3/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
@@ -904,23 +904,23 @@
                <t v="The measures referred to in paragraphs 1 and 2 shall not apply to funds and economic resources which the relevant Member State has determined to be:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_3/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="necessary for basic expenses, including payment for foodstuffs, rent or mortgage, medicines and medical treatment, taxes, insurance premiums and public utility charges;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_3/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="intended exclusively for payment of reasonable professional fees and reimbursement of incurred expenses associated with the provision of legal services or fees or service charges, in accordance with national laws;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_3/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -930,10 +930,10 @@
                   <p>
                      <t v="after notification by the relevant Member State to the Sanctions Committee of the intention to authorise, where appropriate, access to such funds, other financial assets or economic resources and in the absence of a negative decision by the Sanctions Committee within five working days of such notification."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
@@ -941,15 +941,15 @@
                <t v="The measures referred to in paragraphs 1 and 2 shall not apply to funds or economic resources which the relevant Member State has determined to be:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_4/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3/par_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="necessary for extraordinary expenses, provided that such determination has been notified by the Member States to the Sanctions Committee and has been approved by the Sanctions Committee;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_4/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -963,18 +963,18 @@
                      </changed>
                      <t v=", is not for the benefit of a person or entity designated by the Sanctions Committee and has been notified by the Member States to the Sanctions Committee."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/par_5" kind="paragraph">
             <num>
                <t v="5."/>
             </num>
             <p>
                <t v="Paragraph 1 shall not prevent a designated person or entity from making payment due under a contract entered into prior to the listing of such a person or entity, provided that the relevant Member State has determined that the payment is not directly or indirectly received by a person or entity referred to in paragraph 1, and after notification by the relevant Member State to the Sanctions Committee of the intention to make or receive such payments or to authorise, where appropriate, the unfreezing of funds, other financial assets or economic resources for this purpose, 10 working days prior to such authorisation."/>
             </p>
-         </unit>
-         <unit eId="art_3/par_6" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/par_6" kind="paragraph">
             <num>
                <t v="6."/>
             </num>
@@ -982,15 +982,15 @@
                <t v="Paragraph 2 shall not apply to the addition to frozen accounts of:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_6/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3/par_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="interest or other earnings on those accounts; or"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_6/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1000,10 +1000,10 @@
                   <p>
                      <t v="provided that any such interest, other earnings and payments are frozen and continue to be subject to the measures provided for in paragraph 1."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3/par_7" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/par_7" kind="paragraph">
             <provenance amendingAct="32023D0338"
                         action="replaced"
                         location="AR:4"
@@ -1015,58 +1015,58 @@
                <t v="Paragraphs 1 and 2 shall not apply to the provision, processing or payment of funds, other financial assets or economic resources or to the provision of goods and services which are necessary to ensure the timely delivery of humanitarian assistance or to support other activities that support basic human needs where such assistance and other activities are carried out by:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3/par_7/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3/par_7/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="the United Nations, including its programmes, funds and other entities and bodies, as well as its specialised agencies and related organisations;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_7/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_7/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="international organisations;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_7/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_7/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="humanitarian organisations having observer status with the United Nations General Assembly and members of those humanitarian organisations;"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_7/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_7/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
                   <p>
                      <t v="bilaterally or multilaterally funded non-governmental organisations participating in the United Nations Humanitarian Response Plans, Refugee Response Plans, other United Nations appeals or humanitarian clusters coordinated by the United Nations Office for the Coordination of Humanitarian Affairs (OCHA);"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_7/pnt_e" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_7/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
                   <p>
                      <t v="the employees, grantees, subsidiaries, or implementing partners of the entities mentioned in points (a) to (d) while and to the extent that they are acting in those capacities; or"/>
                   </p>
-               </unit>
-               <unit eId="art_3/par_7/pnt_f" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3/par_7/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
                   <p>
                      <t v="appropriate other actors as determined by the Sanctions Committee."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="art_3a" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_3a" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="inserted"
                      location="AR:1;PT:6"
@@ -1074,16 +1074,16 @@
          <num>
             <t v="Article 3a"/>
          </num>
-         <unit eId="art_3a/par_1" kind="paragraph">
+         <occurrence eId="art_3a/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
-            <unit eId="art_3a/par_1/sub_1" kind="subparagraph">
+            <occurrence eId="art_3a/par_1/sub_1" kind="subparagraph">
                <p>
                   <t v="All funds and economic resources owned or controlled directly or indirectly by natural or legal persons, entities or bodies:"/>
                </p>
                <list kind="alpha">
-                  <unit eId="art_3a/par_1/sub_1/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="art_3a/par_1/sub_1/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
@@ -1091,112 +1091,112 @@
                         <t v="responsible for or complicit in, or having engaged in, directly or indirectly, actions that threaten the peace, stability and security of Haiti, including:"/>
                      </p>
                      <list kind="roman">
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_i" kind="point" numbered="true">
                            <num>
                               <t v="(i)"/>
                            </num>
                            <p>
                               <t v="engaging in, directly or indirectly, or supporting criminal activities and violence involving armed groups and criminal networks that promote violence, including forcible recruitment of children by such groups and networks, kidnappings, trafficking in persons and the smuggling of migrants, and homicides and sexual and gender-based violence;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_ii" kind="point" numbered="true">
                            <num>
                               <t v="(ii)"/>
                            </num>
                            <p>
                               <t v="supporting illicit trafficking and diversion of arms and related materiel, or illicit financial flows related thereto;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_iii" kind="point" numbered="true">
                            <num>
                               <t v="(iii)"/>
                            </num>
                            <p>
                               <t v="acting for, on behalf of or at the direction of, or otherwise supporting or financing, a person or entity designated in connection with the activity described in point (i) or (ii), including through the direct or indirect use of the proceeds from organised crime, including proceeds from illicit production and trafficking in drugs and their precursors originating in or transiting through Haiti, the trafficking in persons and the smuggling of migrants from Haiti, or the smuggling and trafficking of arms to or from Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_iv" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_iv" kind="point" numbered="true">
                            <num>
                               <t v="(iv)"/>
                            </num>
                            <p>
                               <t v="acting in violation of the arms embargo, or having directly or indirectly supplied, sold or transferred to armed groups or criminal networks in Haiti, or having been the recipient of, arms or any related materiel, or any technical advice, training or assistance, including financing and financial assistance, related to violent activities of armed groups or criminal networks in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_v" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_v" kind="point" numbered="true">
                            <num>
                               <t v="(v)"/>
                            </num>
                            <p>
                               <t v="planning, directing or committing acts that violate international human rights law or acts that constitute human rights abuses, including those involving extrajudicial killing, including of women and children, and the commission of acts of violence, abduction, enforced disappearances or kidnappings for ransom in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_vi" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_vi" kind="point" numbered="true">
                            <num>
                               <t v="(vi)"/>
                            </num>
                            <p>
                               <t v="planning, directing or committing acts involving sexual and gender-based violence, including rape and sexual slavery, in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_vii" kind="point" numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_vii" kind="point" numbered="true">
                            <num>
                               <t v="(vii)"/>
                            </num>
                            <p>
                               <t v="obstructing the delivery of humanitarian assistance to Haiti or access to, or the distribution of, humanitarian assistance in Haiti;"/>
                            </p>
-                        </unit>
-                        <unit eId="art_3a/par_1/sub_1/pnt_a/pnt_viii"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_viii"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="(viii)"/>
                            </num>
                            <p>
                               <t v="attacking personnel or premises of Union delegations and Member State diplomatic missions and operations in Haiti, or providing support for such attacks;"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
-                  <unit eId="art_3a/par_1/sub_1/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3a/par_1/sub_1/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
                      <p>
                         <t v="undermining democracy or the rule of law in Haiti through serious financial misconduct concerning public funds or the unauthorised export of capital; or"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3a/par_1/sub_1/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_3a/par_1/sub_1/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
                      <p>
                         <t v="associated with natural or legal persons, entities or bodies designated under points (a) and (b) or under Article 3(1),"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="art_3a/par_1/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_3a/par_1/sub_2" kind="subparagraph">
                <p>
                   <t v="shall be frozen."/>
                </p>
-            </unit>
-            <unit eId="art_3a/par_1/sub_3" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_3a/par_1/sub_3" kind="subparagraph">
                <p>
                   <t v="Natural or legal persons, entities or bodies as referred to in this paragraph are listed in Annex II."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_3a/par_2" kind="paragraph">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_3a/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="No funds or economic resources shall be made available, directly or indirectly, to or for the benefit of the natural or legal persons, entities or bodies listed in Annex II."/>
             </p>
-         </unit>
-         <unit eId="art_3a/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3a/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
@@ -1204,39 +1204,39 @@
                <t v="By way of derogation from paragraphs 1 and 2, the competent authorities of the Member States may authorise the release of certain frozen funds or economic resources, or the making available of certain funds or economic resources, under such conditions as they deem appropriate, after having determined that the funds or economic resources concerned are:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3a/par_3/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3a/par_3/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="necessary to satisfy the basic needs of the natural or legal persons, entities or bodies listed in Annex II and dependent family members of such natural persons, including payments for foodstuffs, rent or mortgage, medicines and medical treatment, taxes, insurance premiums and public utility charges;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_3/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_3/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="intended exclusively for the payment of reasonable professional fees and the reimbursement of incurred expenses associated with the provision of legal services;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_3/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_3/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="intended exclusively for the payment of fees or service charges for the routine holding or maintenance of frozen funds or economic resources;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_3/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_3/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
                   <p>
                      <t v="necessary for extraordinary expenses, provided that the competent authority has notified the competent authorities of the other Member States and the Commission of the grounds on which it considers that a specific authorisation should be granted, at least two weeks prior to the authorisation; or"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_3/pnt_e" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_3/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -1246,10 +1246,10 @@
                   <p>
                      <t v="The Member State concerned shall inform the other Member States and the Commission of any authorisation granted under this paragraph within two weeks of the authorisation."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3a/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3a/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
@@ -1257,31 +1257,31 @@
                <t v="By way of derogation from paragraph 1, the competent authorities of the Member States may authorise the release of certain frozen funds or economic resources, or the making available of certain funds or economic resources, provided that the following conditions are met:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3a/par_4/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3a/par_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="the funds or economic resources are the subject of an arbitral decision rendered prior to the date on which the natural or legal person, entity or body referred to in paragraph 1 was listed in Annex II, or of a judicial or administrative decision rendered in the Union, or a judicial decision enforceable in the Member State concerned, prior to or after that date;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_4/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="the funds or economic resources will be used exclusively to satisfy claims secured by such a decision or recognised as valid in such a decision, within the limits set by applicable laws and regulations governing the rights of persons having such claims;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_4/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_4/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="the decision is not for the benefit of a natural or legal person, entity or body listed in Annex II; and"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_4/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_4/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -1291,18 +1291,18 @@
                   <p>
                      <t v="The Member State concerned shall inform the other Member States and the Commission of any authorisation granted under this paragraph within two weeks of the authorisation."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3a/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3a/par_5" kind="paragraph">
             <num>
                <t v="5."/>
             </num>
             <p>
                <t v="Paragraph 1 shall not prevent a natural or legal person, entity or body listed in Annex II from making a payment due under a contract or agreement entered into, or an obligation that arose, prior to the date on which that natural or legal person, entity or body was listed therein, provided that the Member State concerned has determined that the payment is not, directly or indirectly, received by a natural or legal person, entity or body referred to in paragraph 1."/>
             </p>
-         </unit>
-         <unit eId="art_3a/par_6" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3a/par_6" kind="paragraph">
             <num>
                <t v="6."/>
             </num>
@@ -1310,23 +1310,23 @@
                <t v="Paragraph 2 shall not apply to the addition to frozen accounts of:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3a/par_6/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3a/par_6/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="interest or other earnings on those accounts;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_6/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_6/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="payments due under contracts, agreements or obligations that were concluded or arose prior to the date on which those accounts became subject to the measures provided for in paragraphs 1 and 2; or"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_6/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_6/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1336,10 +1336,10 @@
                   <p>
                      <t v="provided that any such interest, other earnings and payments remain subject to the measures provided for in paragraph 1."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3a/par_7" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3a/par_7" kind="paragraph">
             <num>
                <t v="7."/>
             </num>
@@ -1347,73 +1347,73 @@
                <t v="Paragraphs 1 and 2 shall not apply to the provision, processing or payment of funds, other financial assets or economic resources, or to the provision of goods and services, which are necessary to ensure the timely delivery of humanitarian assistance or to support other activities that support basic human needs where such assistance and other activities are carried out by:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_3a/par_7/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_3a/par_7/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="the United Nations, including its programmes, funds and other entities and bodies, as well as its specialised agencies and related organisations;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_7/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_7/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="international organisations;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_7/pnt_c" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_7/pnt_c" kind="point" numbered="true">
                   <num>
                      <t v="(c)"/>
                   </num>
                   <p>
                      <t v="humanitarian organisations having observer status with the United Nations General Assembly and members of those humanitarian organisations;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_7/pnt_d" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_7/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="(d)"/>
                   </num>
                   <p>
                      <t v="bilaterally or multilaterally funded non-governmental organisations participating in the United Nations Humanitarian Response Plans, Refugee Response Plans, other United Nations appeals or humanitarian clusters coordinated by OCHA;"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_7/pnt_e" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_7/pnt_e" kind="point" numbered="true">
                   <num>
                      <t v="(e)"/>
                   </num>
                   <p>
                      <t v="the employees, grantees, subsidiaries or implementing partners of the entities mentioned in points (a) to (d) while and to the extent that they are acting in those capacities; or"/>
                   </p>
-               </unit>
-               <unit eId="art_3a/par_7/pnt_f" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_3a/par_7/pnt_f" kind="point" numbered="true">
                   <num>
                      <t v="(f)"/>
                   </num>
                   <p>
                      <t v="other appropriate actors as determined by the Council."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3a/par_8" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3a/par_8" kind="paragraph">
             <num>
                <t v="8."/>
             </num>
-            <unit eId="art_3a/par_8/sub_1" kind="subparagraph">
+            <occurrence eId="art_3a/par_8/sub_1" kind="subparagraph">
                <p>
                   <t v="Without prejudice to paragraph 7, by way of derogation from paragraphs 1 and 2, and with regard to a natural or legal person, entity or body listed in Annex II, the competent authorities may authorise the release of certain frozen funds or economic resources, or the making available of certain funds or economic resources, under such conditions as they deem appropriate, after having determined that the provision of such funds or economic resources is necessary for the timely delivery of humanitarian assistance or to support other activities that support basic human needs."/>
                </p>
-            </unit>
-            <unit eId="art_3a/par_8/sub_2" kind="subparagraph">
+            </occurrence>
+            <occurrence eId="art_3a/par_8/sub_2" kind="subparagraph">
                <p>
                   <t v="The Member State concerned shall inform the other Member States and the Commission of any authorisation granted under this paragraph within 2 weeks of the authorisation."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="replaced"
                      location="AR:1;PT:7"
@@ -1421,7 +1421,7 @@
          <num>
             <t v="Article 4"/>
          </num>
-         <unit eId="art_4/par_1" kind="paragraph">
+         <occurrence eId="art_4/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -1432,8 +1432,8 @@
                </quote>
                <t v=") or by the Sanctions Committee."/>
             </p>
-         </unit>
-         <unit eId="art_4/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_4/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -1444,13 +1444,13 @@
                </quote>
                <t v="), shall establish and amend the list in Annex II."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_5" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
-         <unit eId="art_5/par_1" kind="paragraph">
+         <occurrence eId="art_5/par_1" kind="paragraph">
             <provenance amendingAct="32023D1574"
                         action="replaced"
                         location="AR:1;PT:8;PT:a"
@@ -1461,8 +1461,8 @@
             <p>
                <t v="Where the Security Council or the Sanctions Committee designates a person or entity, the Council shall include that person or entity in Annex I. The Council shall communicate its decision, including the grounds for listing, to the person or entity concerned, either directly, if the address is known, or through the publication of a notice, providing that person or entity with an opportunity to present observations."/>
             </p>
-         </unit>
-         <unit eId="art_5/par_1a" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_5/par_1a" kind="paragraph">
             <provenance amendingAct="32023D1574"
                         action="inserted"
                         location="AR:1;PT:8;PT:b"
@@ -1473,17 +1473,17 @@
             <p>
                <t v="The Council shall communicate the decision referred to in Article 4(2), including the grounds for the listing, to the natural or legal person, entity or body concerned, either directly, if the address is known, or through the publication of a notice, providing that natural or legal person, entity or body with an opportunity to present observations."/>
             </p>
-         </unit>
-         <unit eId="art_5/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_5/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="Where observations are submitted or where substantial new evidence is presented, the Council shall review its decision and inform the person or entity concerned accordingly."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_6" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_6" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="replaced"
                      location="AR:1;PT:9"
@@ -1491,44 +1491,44 @@
          <num>
             <t v="Article 6"/>
          </num>
-         <unit eId="art_6/par_1" kind="paragraph">
+         <occurrence eId="art_6/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="Annex I shall include the grounds for listing the persons and entities as provided by the Security Council or the Sanctions Committee."/>
             </p>
-         </unit>
-         <unit eId="art_6/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_6/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="Annex I shall also include, where available, information provided by the Security Council or the Sanctions Committee necessary to identify the persons or entities concerned. With regard to natural persons, such information may include: names and aliases; date and place of birth; nationality; passport and identity card numbers; gender; address, if known; and function or profession. With regard to legal persons, entities or bodies, such information may include: names; place and date of registration; registration number; and place of business."/>
             </p>
-         </unit>
-         <unit eId="art_6/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_6/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="Annex II shall include the grounds for listing the natural and legal persons, entities and bodies referred to therein."/>
             </p>
-         </unit>
-         <unit eId="art_6/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_6/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
             <p>
                <t v="Annex II shall also include, where available, the information necessary to identify the natural or legal persons, entities or bodies concerned. With regard to natural persons, such information may include: names and aliases; date and place of birth; nationality; passport and identity card numbers; gender; address, if known; and function or profession. With regard to legal persons, entities or bodies, such information may include: names; place and date of registration; registration number; and place of business."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_7" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_7" kind="article" rank="1">
          <num>
             <t v="Article 7"/>
          </num>
-         <unit eId="art_7/par_1" kind="paragraph">
+         <occurrence eId="art_7/par_1" kind="paragraph">
             <provenance amendingAct="32023D1574"
                         action="replaced"
                         location="AR:1;PT:10"
@@ -1540,25 +1540,25 @@
                <t v="The Council and the High Representative shall process personal data in order to carry out their tasks under this Decision, in particular:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_7/par_1/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_7/par_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="as regards the Council, for preparing and making amendments to Annexes I and II;"/>
                   </p>
-               </unit>
-               <unit eId="art_7/par_1/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_7/par_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="as regards the High Representative, for preparing amendments to Annexes I and II."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_7/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_7/par_2" kind="paragraph">
             <provenance amendingAct="32023D1574"
                         action="replaced"
                         location="AR:1;PT:10"
@@ -1569,8 +1569,8 @@
             <p>
                <t v="The Council and the High Representative may process, where applicable, relevant data relating to criminal offences committed by listed natural persons, and to criminal convictions or security measures concerning such persons, only to the extent that such processing is necessary for the preparation of Annexes I and II."/>
             </p>
-         </unit>
-         <unit eId="art_7/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_7/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
@@ -1583,9 +1583,9 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=", in order to ensure that the natural persons concerned can exercise their rights under that Regulation."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_7a" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_7a" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="inserted"
                      location="AR:1;PT:11"
@@ -1597,25 +1597,25 @@
             <t v="No claims in connection with any contract or transaction the performance of which has been affected, directly or indirectly, in whole or in part, by the measures imposed under this Decision, including claims for indemnity or any other claim of that type, such as a claim for compensation or a claim under a guarantee, in particular a claim for extension or payment of a bond, guarantee or indemnity, in particular a financial guarantee or financial indemnity, of whatever form, shall be satisfied, if they are made by:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_7a/pnt_a" kind="point" numbered="true">
+            <occurrence eId="art_7a/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
                <p>
                   <t v="a designated natural or legal person, entity or body listed in Annex II; or"/>
                </p>
-            </unit>
-            <unit eId="art_7a/pnt_b" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="art_7a/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
                <p>
                   <t v="any natural or legal person, entity or body acting through or on behalf of a natural or legal person, entity or body as referred to in point (a)."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="art_8" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_8" kind="article" rank="1">
          <provenance amendingAct="32023D1574"
                      action="replaced"
                      location="AR:1;PT:12"
@@ -1623,15 +1623,15 @@
          <num>
             <t v="Article 8"/>
          </num>
-         <unit eId="art_8/par_1" kind="paragraph">
+         <occurrence eId="art_8/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="This Decision shall be amended or repealed as appropriate, in accordance with determinations made by the Security Council."/>
             </p>
-         </unit>
-         <unit eId="art_8/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_8/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -1647,17 +1647,17 @@
                </changed>
                <t v=" and shall be kept under constant review. They shall be renewed or amended, as appropriate, if the Council deems that their objectives have not been met."/>
             </p>
-         </unit>
-         <unit eId="art_8/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_8/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="In reviewing restrictive measures taken pursuant to Article 2a(1), first subparagraph, point (b), and Article 3a(1), first subparagraph, point (b), the Council shall take into account as appropriate whether the persons in question are subject to judicial proceedings in respect of the conduct for which they were listed."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_9" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_9" kind="article" rank="1">
          <num>
             <t v="Article 9"/>
          </num>
@@ -1668,10 +1668,10 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <changed amendingAct="32023D1574"
                      action="renumbered"
@@ -1683,11 +1683,11 @@
          <subheading>
             <t v="List of persons referred to in Article 1(1), Article 2(1) and Article 3(1), and of entities referred to in Articles 1(1) and 3(1)"/>
          </subheading>
-         <unit eId="anx_I/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx_I/level_1" kind="level" depth="1" rank="2">
             <heading>
                <t v="PERSONS"/>
             </heading>
-            <unit eId="anx_I/level_1/list_1/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx_I/level_1/list_1/pnt_1" kind="point" numbered="true">
                <provenance amendingAct="32023D2575"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
@@ -1757,9 +1757,9 @@
                      <t v="21 October 2022"/>
                   </date>
                </p>
-            </unit>
-         </unit>
-         <unit eId="anx_I/level_1/level_1" kind="level" depth="2" rank="3">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="anx_I/level_1/level_1" kind="level" depth="2" rank="3">
             <provenance amendingAct="32023D2575"
                         action="replaced"
                         location="AR:1 .AND. AX:0"
@@ -1780,8 +1780,8 @@
                </quote>
                <t v=" gang confederation have been actively blocking the free movement of fuel from the Varreux fuel terminal – the largest in Haiti. His actions have directly contributed to the economic paralysis and humanitarian crisis in Haiti."/>
             </p>
-         </unit>
-         <unit eId="anx_I/level_1/list_2/pnt_2" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="anx_I/level_1/list_2/pnt_2" kind="point" numbered="true">
             <provenance amendingAct="32024D0290"
                         action="inserted"
                         location="AR:1 .AND. AX:0"
@@ -1872,8 +1872,8 @@
             <p>
                <t v="The Panel of Experts also identified rapes committed by the 5 Segond gang (see UN document S/2023/674, para 136)."/>
             </p>
-         </unit>
-         <unit eId="anx_I/level_1/list_2/pnt_3" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="anx_I/level_1/list_2/pnt_3" kind="point" numbered="true">
             <provenance amendingAct="32024D0290"
                         action="inserted"
                         location="AR:1 .AND. AX:0"
@@ -1992,8 +1992,8 @@
             <p>
                <t v="In addition, Grand Ravine has established control along the National Road 2 (NR2) connecting Port-au-Prince to the South, to collect revenue from extortion, hijacking of trucks, contraband, and other illicit activities (see UN document S/2023/674, paragraph 79). This has restricted access to strategic infrastructure and stifled the local economy by disrupting access to food and other critical goods, including humanitarian aid."/>
             </p>
-         </unit>
-         <unit eId="anx_I/level_1/list_2/pnt_4" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="anx_I/level_1/list_2/pnt_4" kind="point" numbered="true">
             <provenance amendingAct="32024D0290"
                         action="inserted"
                         location="AR:1 .AND. AX:0"
@@ -2082,8 +2082,8 @@
                </date>
                <t v=" (see UN document S/2023/674, Annex 32). In May 2022, three Haitian nationals and one United States citizen were charged with firearms trafficking in support of 400 Mawozo in Haiti (see UN document S/2023/674, Annex 32)."/>
             </p>
-         </unit>
-         <unit eId="anx_I/level_1/list_2/pnt_5" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="anx_I/level_1/list_2/pnt_5" kind="point" numbered="true">
             <provenance amendingAct="32024D0290"
                         action="inserted"
                         location="AR:1 .AND. AX:0"
@@ -2190,8 +2190,8 @@
                </date>
                <t v=")."/>
             </p>
-         </unit>
-         <unit eId="anx_I/level_1/list_2/pnt_6" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="anx_I/level_1/list_2/pnt_6" kind="point" numbered="true">
             <provenance amendingAct="32024D2756"
                         action="inserted"
                         location="AR:1 .AND. AX:0"
@@ -2269,8 +2269,8 @@
             <p>
                <t v="Victor continued to support Gran Grif gang until 2020 and has since supported rival gangs in that area (see S/2023/674, para 75)."/>
             </p>
-         </unit>
-         <unit eId="anx_I/level_1/list_2/pnt_7" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="anx_I/level_1/list_2/pnt_7" kind="point" numbered="true">
             <provenance amendingAct="32024D2756"
                         action="inserted"
                         location="AR:1 .AND. AX:0"
@@ -2355,9 +2355,9 @@
             <p>
                <t v="Between October 2023 and January 2024, Gran Grif committed nine mass kidnappings, including 157 people. Gran Grif has also committed some of the highest levels of child recruitment in Haiti."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <provenance amendingAct="32023D1574"
                      action="inserted"
                      location="AR:1;PT:14 .AND. AX:0"
@@ -2366,7 +2366,7 @@
             <t v="ANNEX II"/>
          </num>
          <list kind="alphaUpper">
-            <unit eId="anx_II/pnt_A" kind="point" numbered="true">
+            <occurrence eId="anx_II/pnt_A" kind="point" numbered="true">
                <num>
                   <t v="A."/>
                </num>
@@ -2549,17 +2549,17 @@
                      </td>
                   </tr>
                </table>
-            </unit>
-            <unit eId="anx_II/pnt_B" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx_II/pnt_B" kind="point" numbered="true">
                <num>
                   <t v="B."/>
                </num>
                <p>
                   <t v="List of legal persons, entities and bodies referred to in Article 3a(1)"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

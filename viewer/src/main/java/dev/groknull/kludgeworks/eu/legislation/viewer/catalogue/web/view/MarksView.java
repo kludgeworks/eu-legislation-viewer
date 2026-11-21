@@ -54,9 +54,9 @@ public record MarksView(List<Mark> marks) {
   /**
    * Returns when {@code amending} applies, with the clause that says so, from {@link Act#applying}.
    * For example, "applies from 1 April 2023 · Article 2 of 2023/566", or "applies in parts from 22
-   * March 2026 · Article 2 of 2026/449". It is the act's date, not the unit's: an act that applies
-   * in parts says when the first part starts. Returns null if Cellar has no day for it and no
-   * clause that sets one.
+   * March 2026 · Article 2 of 2026/449". It is the act's date, not the occurrence's: an act that
+   * applies in parts says when the first part starts. Returns null if Cellar has no day for it and
+   * no clause that sets one.
    */
   static @Nullable String applies(Act act, ActIdentifier amending) {
     return act.applying(amending, Set.of())

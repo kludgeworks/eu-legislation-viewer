@@ -71,17 +71,17 @@ class CodingRulesTests {
         .should(
             new ArchCondition<JavaCodeUnit>("not take an Optional") {
               @Override
-              public void check(JavaCodeUnit unit, ConditionEvents events) {
+              public void check(JavaCodeUnit occurrence, ConditionEvents events) {
                 // The lambdas that javac compiles to synthetic methods take the values they
                 // capture as parameters
-                if (unit.getModifiers().contains(JavaModifier.SYNTHETIC)) {
+                if (occurrence.getModifiers().contains(JavaModifier.SYNTHETIC)) {
                   return;
                 }
-                for (var type : unit.getRawParameterTypes()) {
+                for (var type : occurrence.getRawParameterTypes()) {
                   if (type.isEquivalentTo(Optional.class)) {
                     events.add(
                         SimpleConditionEvent.violated(
-                            unit, unit.getFullName() + " takes an Optional"));
+                            occurrence, occurrence.getFullName() + " takes an Optional"));
                   }
                 }
               }

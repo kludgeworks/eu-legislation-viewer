@@ -31,7 +31,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 17, Annex II, point 13, the formula is replaced by the following:"/>
          </p>
@@ -84,8 +84,8 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="on page 17, Annex II, point 17, the formula is replaced by the following:"/>
          </p>
@@ -143,14 +143,14 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
-      <unit eId="cor_3" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_3" kind="correction">
          <p>
             <t v="on page 28, Annex IV, point 13(d) is replaced by the following:"/>
          </p>
          <new>
             <quotedStructure eId="cor_3/new/qstr_1">
-               <unit eId="cor_3/new/qstr_1/pnt_d" kind="point" numbered="true">
+               <occurrence eId="cor_3/new/qstr_1/pnt_d" kind="point" numbered="true">
                   <num>
                      <t v="‘"/>
                      <t v="(d)"/>
@@ -211,10 +211,10 @@
                      <t v="’"/>
                      <t v="."/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

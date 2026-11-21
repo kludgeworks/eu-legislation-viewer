@@ -30,9 +30,9 @@ import tools.jackson.databind.json.JsonMapper;
 /**
  * Keeps the comparisons in Postgres, in the table {@code text_comparison}, with jOOQ. Jackson
  * writes each comparison as JSON bytes ({@link Kept}), and Postgres compresses them. Each
- * difference is kept as {@link Difference#kept} gives it. The whole unit of each difference that
- * this cuts down is a row of {@code text_comparison_whole}, by its eId. Each comparison keeps the
- * version of the rules that worked it out, in {@code differ_version}.
+ * difference is kept as {@link Difference#kept} gives it. The whole occurrence of each difference
+ * that this cuts down is a row of {@code text_comparison_whole}, by its eId. Each comparison keeps
+ * the version of the rules that worked it out, in {@code differ_version}.
  */
 @Repository
 class JooqComparisonStore implements ComparisonStore {
@@ -94,7 +94,7 @@ class JooqComparisonStore implements ComparisonStore {
             comparison.closing(),
             comparison.withoutPreamble());
     var withoutPreamble = stored.withoutPreamble();
-    // One that other rules worked out, with its whole units
+    // One that other rules worked out, with its whole occurrences
     db.deleteFrom(TEXT_COMPARISON)
         .where(
             TEXT_COMPARISON.FROM_TEXT.eq(stored.from()),
@@ -113,7 +113,7 @@ class JooqComparisonStore implements ComparisonStore {
             .set(TEXT_COMPARISON.COMPARED_AT, currentInstant())
             .onConflictDoNothing()
             .execute();
-    // Another caller kept it first, with its whole units
+    // Another caller kept it first, with its whole occurrences
     if (added == 0) {
       return stored;
     }
@@ -147,12 +147,12 @@ class JooqComparisonStore implements ComparisonStore {
   }
 
   /**
-   * A comparison as it is kept, with each unit's opening once. A difference's lead and a context's
-   * opening are both the opening of a unit, and the differences in one unit all have its opening as
-   * their lead. So the openings are kept by the eId of their unit, and each difference and context
-   * names its opening's unit instead of holding the opening.
+   * A comparison as it is kept, with each occurrence's opening once. A difference's lead and a
+   * context's opening are both the opening of an occurrence, and the differences in one occurrence
+   * all have its opening as their lead. So the openings are kept by the eId of their occurrence,
+   * and each difference and context names its opening's occurrence instead of holding the opening.
    *
-   * @param openings the openings, by the eId of their unit
+   * @param openings the openings, by the eId of their occurrence
    * @param differences the differences, without their leads and the openings of their contexts
    * @param closing the closing, without the openings of its contexts
    */
@@ -176,7 +176,7 @@ class JooqComparisonStore implements ComparisonStore {
                   })
               .toList();
       var closing = comparison.closing().stream().map(openings::kept).toList();
-      return new Kept(openings.byUnit, differences, closing);
+      return new Kept(openings.byOccurrence, differences, closing);
     }
 
     Comparison comparison(TextId from, TextId to, @Nullable Side withoutPreamble) {
@@ -199,7 +199,7 @@ class JooqComparisonStore implements ComparisonStore {
       var context = kept.context();
       return kept.opening() == null
           ? context
-          : new Context(context.units(), context.parent(), openings.get(kept.opening()));
+          : new Context(context.occurrences(), context.parent(), openings.get(kept.opening()));
     }
   }
 
@@ -208,8 +208,8 @@ class JooqComparisonStore implements ComparisonStore {
    *
    * @param difference the difference, without its context, and without its lead if {@code lead}
    *     names it
-   * @param lead the eId of the unit whose opening is its lead, or null if the difference holds its
-   *     lead itself, or has none
+   * @param lead the eId of the occurrence whose opening is its lead, or null if the difference
+   *     holds its lead itself, or has none
    * @param context its context
    */
   record KeptDifference(Difference difference, @Nullable String lead, List<KeptContext> context) {}
@@ -218,35 +218,37 @@ class JooqComparisonStore implements ComparisonStore {
    * A context as it is kept.
    *
    * @param context the context, without its opening if {@code opening} names it
-   * @param opening the eId of the unit whose opening it is, or null if the context holds its
+   * @param opening the eId of the occurrence whose opening it is, or null if the context holds its
    *     opening itself, or has none
    */
   record KeptContext(Context context, @Nullable String opening) {}
 
-  /** The openings of a comparison, by the eId of their unit, as {@link Kept#of} collects them. */
+  /**
+   * The openings of a comparison, by the eId of their occurrence, as {@link Kept#of} collects them.
+   */
   private static final class Openings {
-    private final Map<String, Element> byUnit = new HashMap<>();
+    private final Map<String, Element> byOccurrence = new HashMap<>();
 
     /**
-     * Returns {@code unit}, under which the openings keep {@code opening}. Returns null if there is
-     * no opening, or if the openings have another opening for the unit: then whoever has it holds
-     * it.
+     * Returns {@code occurrence}, under which the openings keep {@code opening}. Returns null if
+     * there is no opening, or if the openings have another opening for the occurrence: then whoever
+     * has it holds it.
      */
-    @Nullable String name(@Nullable String unit, @Nullable Element opening) {
-      if (unit == null || opening == null) {
+    @Nullable String name(@Nullable String occurrence, @Nullable Element opening) {
+      if (occurrence == null || opening == null) {
         return null;
       }
-      var known = byUnit.putIfAbsent(unit, opening);
-      return known == null || Objects.equals(known, opening) ? unit : null;
+      var known = byOccurrence.putIfAbsent(occurrence, opening);
+      return known == null || Objects.equals(known, opening) ? occurrence : null;
     }
 
     KeptContext kept(Context context) {
       var opening =
-          context.units().size() == 1
-              ? name(context.units().getFirst().eId(), context.opening())
+          context.occurrences().size() == 1
+              ? name(context.occurrences().getFirst().eId(), context.opening())
               : null;
       return new KeptContext(
-          opening == null ? context : new Context(context.units(), context.parent(), null),
+          opening == null ? context : new Context(context.occurrences(), context.parent(), null),
           opening);
     }
   }

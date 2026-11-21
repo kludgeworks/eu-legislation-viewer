@@ -16,19 +16,19 @@ class RowFoldLinksTest {
 
   @Test
   void givesAFoldTheAddressOfItsTableAndRows() {
-    var unit = new Element("unit", Map.of(), List.of(table(), table()), "");
+    var occurrence = new Element("occurrence", Map.of(), List.of(table(), table()), "");
 
-    assertThat(folds(RowFoldLinks.of(unit, DIFFERENCE)))
+    assertThat(folds(RowFoldLinks.of(occurrence, DIFFERENCE)))
         .extracting(fold -> fold.attribute(RowFoldLinks.HREF))
         .containsExactly(DIFFERENCE + "&table=0&rows=0-8", DIFFERENCE + "&table=1&rows=0-8");
   }
 
   @Test
-  void givesTheSameAddressesToAUnitKeptFolded() {
-    var unit = new Element("unit", Map.of(), List.of(table(), table()), "");
+  void givesTheSameAddressesToAnOccurrenceKeptFolded() {
+    var occurrence = new Element("occurrence", Map.of(), List.of(table(), table()), "");
 
-    assertThat(RowFoldLinks.of(RowFolds.of(unit), DIFFERENCE))
-        .isEqualTo(RowFoldLinks.of(unit, DIFFERENCE));
+    assertThat(RowFoldLinks.of(RowFolds.of(occurrence), DIFFERENCE))
+        .isEqualTo(RowFoldLinks.of(occurrence, DIFFERENCE));
   }
 
   /** Returns a table of rows r0 to r9, the same in both texts, then r10 with a word inserted. */

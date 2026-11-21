@@ -25,11 +25,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="From page I/502 to page I/509, II/514 and II/515, II/519, II/1000 to II/1006 and II/1057, all the differentiated appropriations must be read as non-differentiated appropriations."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

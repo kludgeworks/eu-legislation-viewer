@@ -115,11 +115,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/par_1" kind="paragraph">
+         <occurrence eId="art_1/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -136,8 +136,8 @@
                <t v="69074000"/>
                <t v=" and originating in India or Türkiye."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -351,8 +351,8 @@
                   </td>
                </tr>
             </table>
-         </unit>
-         <unit eId="art_1/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_3" kind="paragraph">
             <provenance amendingAct="32023R0265R(01)"
                         action="replaced"
                         location="CR:2;NT:0"
@@ -363,8 +363,8 @@
             <p>
                <t v="Anti-dumping duties are not applicable to the Indian exporting producer the Lavish Group, consisting of Lavish Granito Pvt Ltd, Lavish Ceramics, Lakme Vitrified LLP. and Liva Ceramics (TARIC additional code C903), and are not applicable to the Turkish exporting producer Vitra Karo Sanayi ve Ticaret A.Ș. (TARIC additional code C902)."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
@@ -377,17 +377,17 @@
                </emphasis>
                <t v=" If no such invoice is presented, the duty applicable to all other companies shall apply."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_5" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_5" kind="paragraph">
             <num>
                <t v="5."/>
             </num>
             <p>
                <t v="Unless otherwise specified, the provisions in force concerning customs duties shall apply."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -395,7 +395,7 @@
             <t v="Article 1(2) may be amended to add new exporting producers from India or Türkiye and make them subject to the appropriate weighted average anti-dumping duty rate for cooperating companies not included in the sample. A new exporting producer shall provide evidence that:"/>
          </p>
          <list kind="alpha">
-            <unit eId="art_2/pnt_a" kind="point" numbered="true">
+            <occurrence eId="art_2/pnt_a" kind="point" numbered="true">
                <num>
                   <t v="(a)"/>
                </num>
@@ -410,26 +410,26 @@
                   </date>
                   <t v=");"/>
                </p>
-            </unit>
-            <unit eId="art_2/pnt_b" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="art_2/pnt_b" kind="point" numbered="true">
                <num>
                   <t v="(b)"/>
                </num>
                <p>
                   <t v="it is not related to an exporter or producer subject to the measures imposed by this Regulation, and which could have cooperated in the original investigation; and"/>
                </p>
-            </unit>
-            <unit eId="art_2/pnt_c" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="art_2/pnt_c" kind="point" numbered="true">
                <num>
                   <t v="(c)"/>
                </num>
                <p>
                   <t v="it has either actually exported the product concerned or has entered into an irrevocable contractual obligation to export a significant quantity to the Union after the end of the period of investigation."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -440,7 +440,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -448,11 +448,11 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX I"/>
          </num>
-         <unit eId="anx_I/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx_I/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="Indian cooperating exporting producers not sampled"/>
@@ -2871,13 +2871,13 @@
                   </td>
                </tr>
             </table>
-         </unit>
-      </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
-         <unit eId="anx_II/level_1" kind="level" depth="1" rank="2">
+         <occurrence eId="anx_II/level_1" kind="level" depth="1" rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="Turkish cooperating exporting producers not sampled"/>
@@ -3171,8 +3171,8 @@
                   </note>
                </notes>
             </table>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
 </legalText>
 

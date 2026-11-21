@@ -77,12 +77,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Directive 70/524/EEC of "/>
                <date date="1970-11-23">
@@ -94,7 +94,7 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Articles 3 and 9e(1) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -102,23 +102,23 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Directive 70/524/EEC provides that no additive may be put into circulation unless a Community authorisation has been granted."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="In the case of additives referred to in Part II of Annex C to Directive 70/524, which includes micro-organisms, provisional authorisation of a new use of an additive already authorised may be given if the conditions laid down in that Directive are satisfied, and if it is reasonable to assume, in view of the available results, that when used in animal nutrition it has one of the effects referred to in Article 2(a) of that Directive. Such provisional authorisation may be given for a period not exceeding four years in the case of additives referred to in Part II of Annex C to that Directive."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -127,24 +127,24 @@
                <noteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="New data were submitted in support of an application to extend the authorisation of this additive to dairy cows."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The assessment of the application for authorisation submitted in respect of the new use of this additive, shows that the conditions provided for in Directive 70/524/EEC for provisional authorisation are satisfied."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -155,16 +155,16 @@
                </date>
                <t v=" on the safety of the additive when used in the animal category dairy cows, under the conditions of use set out in the annex to this Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="The use of this additive for dairy cows should therefore be provisionally authorised for a period of four years."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
@@ -177,15 +177,15 @@
                <noteRef href="#note_4" marker="4"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -194,7 +194,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -205,8 +205,8 @@
             </quote>
             <t v=" as set out in the Annex is provisionally authorised for use as additive in animal nutrition under the conditions laid down in that Annex."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -217,7 +217,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -225,7 +225,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -376,7 +376,7 @@
                </tr>
             </rowGroup>
          </table>
-      </unit>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

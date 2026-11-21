@@ -76,9 +76,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *   <li>{@code /changes}: the changes, in the view that {@code view} asks for
  *   <li>{@code /acts}: the acts between the two versions, as chips with how many differences each
  *       made
- *   <li>{@code /same}: the units of a fold of the Synopsis, which the Synopsis loads itself
- *   <li>{@code /difference}: one difference by the eId of its unit, or some rows of one of its
- *       tables. The views load it when the reader opens an annex inserted whole or a fold of rows.
+ *   <li>{@code /same}: the occurrences of a fold of the Synopsis, which the Synopsis loads itself
+ *   <li>{@code /difference}: one difference by the eId of its occurrence, or some rows of one of
+ *       its tables. The views load it when the reader opens an annex inserted whole or a fold of
+ *       rows.
  * </ul>
  *
  * <p>The parts answer only the canonical address of a comparison, as the page links to it: the
@@ -138,7 +139,7 @@ class ChangesController {
    * <p>The comparison module supplies the comparison. If no one asked for it before, the module
    * computes it now. The outline of the later text shows beside the changes. Each difference has a
    * sidenote. The sidenote comes from the amendment markers and from the amendments that Cellar
-   * records for the unit, {@link Act#amended}.
+   * records for the occurrence, {@link Act#amended}.
    *
    * <p>If the comparison is limited to the changes of one act, it compares the version that
    * integrates that act with the version before it. That is the wording just before the change
@@ -206,7 +207,7 @@ class ChangesController {
                       sidenotes,
                       parts,
                       this.html,
-                      "/content/" + attributed.later() + "/units",
+                      "/content/" + attributed.later() + "/occurrences",
                       page,
                       views)
                   .render();
@@ -221,10 +222,10 @@ class ChangesController {
                           differences,
                           this.html,
                           each -> RowFoldLinks.of(each.difference().shown(), each.part(page)),
-                          (each, unit) -> {
+                          (each, occurrence) -> {
                             var sidenote = sidenotes.get(each.number());
                             return templates.comparisonDifference(
-                                each, sidenote, unit, page, parts);
+                                each, sidenote, occurrence, page, parts);
                           }),
                       parts,
                       views,
@@ -235,17 +236,17 @@ class ChangesController {
             var same = new HashSet<String>();
             for (var passage : changes.passages()) {
               if (passage instanceof ChangesView.Fold fold && fold.same()) {
-                fold.beside().forEach(unit -> same.add(unit.eId()));
+                fold.beside().forEach(occurrence -> same.add(occurrence.eId()));
               }
             }
-            var units = new HashMap<String, Element>();
+            var occurrences = new HashMap<String, Element>();
             var histories = new HashMap<String, SidenoteView.History>();
             if (!same.isEmpty()) {
               var text = content.read(attributed.later()).orElseThrow(Requests::notFound);
               Neighbours.of(text, same)
                   .forEach(
                       (eId, neighbour) -> {
-                        units.put(eId, neighbour.unit());
+                        occurrences.put(eId, neighbour.occurrence());
                         histories.put(
                             eId,
                             SidenoteView.history(
@@ -262,7 +263,7 @@ class ChangesController {
                     outline,
                     sidenotes,
                     parts,
-                    units,
+                    occurrences,
                     histories,
                     this.html,
                     Dates.inWords(page.earlier()),
@@ -275,7 +276,7 @@ class ChangesController {
         };
     LOG.info(
         "{} of {} from {} to {} in {}: {} of {} differences, {} of Cellar's amendments"
-            + " between them at their units, {} at none, in {} ms",
+            + " between them at their occurrences, {} at none, in {} ms",
         view.label(),
         ends.act.id(),
         earlier.date(),
@@ -379,7 +380,7 @@ class ChangesController {
    * @param later the later text
    * @param earlier the earlier text's outline
    * @param outline the later text's outline
-   * @param amended Cellar's amendments between the two versions, at the units of their texts
+   * @param amended Cellar's amendments between the two versions, at the occurrences of their texts
    * @param sidenotes each difference's sidenote, by the difference
    */
   private record Attributed(
@@ -396,10 +397,11 @@ class ChangesController {
   }
 
   /**
-   * Returns one difference of the comparison, the one at the unit {@code eId}, as the views mark
-   * it. With {@code table} and {@code rows}, it returns only those rows of that table of the unit,
-   * as they read ({@link RowFolds}). The views load it when the reader opens an annex inserted
-   * whole or a fold of rows, so that a long comparison does not send them until they are asked for.
+   * Returns one difference of the comparison, the one at the occurrence {@code eId}, as the views
+   * mark it. With {@code table} and {@code rows}, it returns only those rows of that table of the
+   * occurrence, as they read ({@link RowFolds}). The views load it when the reader opens an annex
+   * inserted whole or a fold of rows, so that a long comparison does not send them until they are
+   * asked for.
    *
    * <p>If the comparison is limited to the changes of one act, the difference is that of the act's
    * own comparison, as for the changes.
@@ -490,9 +492,9 @@ class ChangesController {
   }
 
   /**
-   * Returns the differences at the units {@code eIds} of the comparison, as the views mark them
-   * ({@link Comparison#at}). The page of an amending act loads the wording of one of its changes
-   * from here. If the units are the same in both texts, it says so.
+   * Returns the differences at the occurrences {@code eIds} of the comparison, as the views mark
+   * them ({@link Comparison#at}). The page of an amending act loads the wording of one of its
+   * changes from here. If the occurrences are the same in both texts, it says so.
    *
    * <p>With {@code sides}, it returns the wording on each of the two days of the Compare page, side
    * by side. The Compare page of one provision loads it. {@code fromDay} and {@code toDay} are the
@@ -567,7 +569,7 @@ class ChangesController {
                 .render()
             : templates.comparisonPlace(shown, html, page, lead).render();
     LOG.info(
-        "Place of {} from {} to {} in {}{} at {} units: {} differences, in {} ms",
+        "Place of {} from {} to {} in {}{} at {} occurrences: {} differences, in {} ms",
         ends.act.id(),
         earlier.date(),
         later.date(),
@@ -637,7 +639,7 @@ class ChangesController {
     return rendered;
   }
 
-  /** Returns the entry of the unit {@code eId} in {@code entries}, at any depth. */
+  /** Returns the entry of the occurrence {@code eId} in {@code entries}, at any depth. */
   /**
    * Returns the two texts of a part of the page of an amending act, or of a comparison: the text
    * before {@code ends.only} and the first text with it, or the texts of the two ends. Throws 404
@@ -699,10 +701,11 @@ class ChangesController {
   }
 
   /**
-   * Returns the units of a Synopsis fold, which opens in place.
+   * Returns the occurrences of a Synopsis fold, which opens in place.
    *
-   * <p>Each unit is a row. The row shows the unit of the later text in both columns, because the
-   * unit is the same in both texts. The row also shows what last changed the unit.
+   * <p>Each occurrence is a row. The row shows the occurrence of the later text in both columns,
+   * because the occurrence is the same in both texts. The row also shows what last changed the
+   * occurrence.
    *
    * <p>Returns 404 if the address is not the canonical address of a comparison, or if the later
    * text is not built yet.
@@ -725,8 +728,8 @@ class ChangesController {
     }
     var text = content.read(later.text()).orElseThrow(Requests::notFound);
     var eIds = new ArrayList<String>();
-    for (var unit : text.units(first, last)) {
-      eIds.add(Objects.requireNonNull(unit.attribute("eId")));
+    for (var occurrence : text.occurrences(first, last)) {
+      eIds.add(Objects.requireNonNull(occurrence.attribute("eId")));
     }
     var found = Neighbours.of(text, Set.copyOf(eIds));
     var rows = new ArrayList<NeighbourView>();
@@ -735,14 +738,14 @@ class ChangesController {
       if (neighbour != null) {
         rows.add(
             new NeighbourView(
-                Neighbours.sibling(neighbour.unit()),
-                neighbour.unit(),
+                Neighbours.sibling(neighbour.occurrence()),
+                neighbour.occurrence(),
                 SidenoteView.history(
                     ends.act, ends.included, ends.to, neighbour.markers(), ends.language)));
       }
     }
     LOG.info(
-        "Same units of {} from {} to {} in {}: {} of {}, in {} ms",
+        "Same occurrences of {} from {} to {} in {}: {} of {}, in {} ms",
         ends.act.id(),
         ends.from.date(),
         ends.to.date(),
@@ -754,13 +757,13 @@ class ChangesController {
   }
 
   /**
-   * Returns the version where each change of {@code eIds} first appears, by the eId of its unit.
-   * The comparison of {@code from} with {@code to} has these changes, and no source attributes them
-   * to an act. Each pair of neighbouring versions after {@code from}, up to {@code to}, is
-   * compared, in order: the first pair whose comparison has a difference at the unit gives its
-   * later version. Preparing the act compares these pairs already, so their comparisons are kept. A
-   * pair whose texts are not both built is skipped. If {@code to} follows {@code from}, every
-   * change appears in {@code to}.
+   * Returns the version where each change of {@code eIds} first appears, by the eId of its
+   * occurrence. The comparison of {@code from} with {@code to} has these changes, and no source
+   * attributes them to an act. Each pair of neighbouring versions after {@code from}, up to {@code
+   * to}, is compared, in order: the first pair whose comparison has a difference at the occurrence
+   * gives its later version. Preparing the act compares these pairs already, so their comparisons
+   * are kept. A pair whose texts are not both built is skipped. If {@code to} follows {@code from},
+   * every change appears in {@code to}.
    */
   private Map<String, Version> appeared(Ends ends, Version from, Version to, Set<String> eIds) {
     var found = new HashMap<String, Version>();

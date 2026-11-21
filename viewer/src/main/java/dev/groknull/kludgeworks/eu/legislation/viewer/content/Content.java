@@ -40,27 +40,27 @@ public interface Content {
   Optional<PublicText> publicText(TextId text);
 
   /**
-   * Returns the unit {@code eId} of the text in the public model, with the notes that it refers to.
-   * Returns none if no such text is stored, or if the text has no unit {@code eId} outside the
-   * struck text of a consolidation.
+   * Returns the occurrence {@code eId} of the text in the public model, with the notes that it
+   * refers to. Returns none if no such text is stored, or if the text has no occurrence {@code eId}
+   * outside the struck text of a consolidation.
    */
-  Optional<PublicText.Extract> publicUnit(TextId text, String eId);
+  Optional<PublicText.Extract> publicOccurrence(TextId text, String eId);
 
   /**
-   * Returns a unit in the public model. For example, a unit of a comparison, in which {@code
-   * diff:ins} and {@code diff:del} mark what changed.
+   * Returns an occurrence in the public model. For example, an occurrence of a comparison, in which
+   * {@code diff:ins} and {@code diff:del} mark what changed.
    */
-  PublicText.Unit publicUnit(Element unit);
+  PublicText.Occurrence publicOccurrence(Element occurrence);
 
   /**
-   * Returns the wording of a unit of a comparison, in which {@code diff:ins} and {@code diff:del}
-   * mark what changed: the text before and after the change, and the runs of words.
+   * Returns the wording of an occurrence of a comparison, in which {@code diff:ins} and {@code
+   * diff:del} mark what changed: the text before and after the change, and the runs of words.
    */
-  PublicText.Marked publicWording(Element unit);
+  PublicText.Marked publicWording(Element occurrence);
 
   /**
-   * Returns the outline of the text, with the marks of its units, kept when the text was stored.
-   * Returns none if no such text is stored.
+   * Returns the outline of the text, with the marks of its occurrences, kept when the text was
+   * stored. Returns none if no such text is stored.
    */
   Optional<Outline> outline(TextId text);
 

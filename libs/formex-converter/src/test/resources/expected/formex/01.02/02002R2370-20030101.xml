@@ -69,25 +69,25 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community, and in particular Articles 36 and 37 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the Commission"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the opinion of the European Parliament"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -95,7 +95,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -108,64 +108,64 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" has afforded decommissioning incentives as a way of bringing about a balanced ratio of fleet capacity to available resources in the long term."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Several stocks of major importance to Community fisheries are now seriously depleted. The owners of fishing vessels whose fishing opportunities have been severely reduced as a result of a recovery plan adopted by the Council should therefore be offered additional decommissioning incentives on top of those already provided for in Regulation (EC) No 2792/1999. Sufficient additional funds should be made available to Member States for this purpose."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Only those vessel owners who are severely affected by a recovery plan should be afforded access to additional decommissioning incentives for the scrapping of fishing vessels defined by this Regulation. A reduction of 25 % or more in the fishing opportunities of the vessel concerned should be regarded as an objective indicator of severe impact."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The maximum amounts for the scrapping premiums laid down in Article 7 of Regulation (EC) No 2792/1999 are insufficient to enable the higher premiums to be paid."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="For conservation reasons the Community measure should be established as soon as possible and should be limited in time to ensure that suitable restructuring of the fleet can proceed without delay."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="It is necessary to ensure adequate flexibility of the distribution of the additional scrapping funds to allow them to be directed to those Member States most in need."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="The roles of all parties involved in the implementation of the financial measure should be clearly defined and steps taken to guarantee the transparency and equity of the procedures for the management and monitoring of the measure."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
             <p>
                <t v="Rules on the financial contributions made under this Regulation should be defined by reference to those laid down in Regulation (EC) No 2792/1999."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
@@ -178,15 +178,15 @@
                <noteRef href="#note_4" marker="4"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_10" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_10" kind="recital">
             <num>
                <t v="(10)"/>
             </num>
             <p>
                <t v="It is necessary and appropriate for the achievement of the basic objective of this Regulation, namely the conservation and sustainable exploitation of fisheries resources, to lay down rules on the scrapping of fishing vessels. In accordance with the principle of proportionality as set out in Article 5 of the Treaty, this Regulation does not go beyond what is necessary in order to achieve that objective,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -195,14 +195,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="tis_I" kind="division" rank="1">
+      <occurrence eId="tis_I" kind="division" rank="1">
          <num>
             <t v="TITLE I"/>
          </num>
          <heading>
             <t v="SUBJECT MATTER AND ELIGIBILITY"/>
          </heading>
-         <unit eId="art_1" kind="article" rank="2">
+         <occurrence eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -212,8 +212,8 @@
             <p>
                <t v="An emergency Community measure to assist Member States to achieve additional reductions in fishing effort resulting from recovery plans adopted by the Council is hereby instituted for the period from 2003 to 2006. The measure shall consist of a special incentive to provide Member States with funds to co-finance their additional needs to scrap fishing vessels affected by recovery plans."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -224,7 +224,7 @@
                <t v="Any fishing vessel covered by a recovery plan adopted by the Council shall be eligible for an increased scrapping premium in accordance with Article 3 provided that:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_2/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_2/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -234,18 +234,18 @@
                   <p>
                      <t v="and"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="its fishing effort has had to be reduced by 25 % or more as a consequence of a recovery plan."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
@@ -255,16 +255,16 @@
             <p>
                <t v="Owners of fishing vessels may be granted public aid in respect of eligible fishing vessels within the meaning of Article 2 on the basis of the scales referred to in point (a) of Article 7(5) of Regulation (EC) No 2792/1999, increased by 20 %."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="tis_II" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_II" kind="division" rank="1">
          <num>
             <t v="TITLE II"/>
          </num>
          <heading>
             <t v="YEAR 2003"/>
          </heading>
-         <unit eId="art_4" kind="article" rank="2">
+         <occurrence eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -278,8 +278,8 @@
                </quote>
                <t v=") for their expenditure incurred under Article 3. The financial contribution shall be calculated in accordance with the rates set out in Table 3, Group 1 of Annex IV to Regulation (EC) No 2792/1999."/>
             </p>
-         </unit>
-         <unit eId="art_5" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
@@ -293,15 +293,15 @@
                </date>
                <t v=" a plan of their proposed decommissioning expenditure for the year 2003, under this emergency Community measure. The Commission shall proceed with the commitment of the global annual amount available in the budget for this emergency Community measure."/>
             </p>
-         </unit>
-         <unit eId="art_6" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
             <heading>
                <t v="Procedure"/>
             </heading>
-            <unit eId="art_6/par_1" kind="paragraph">
+            <occurrence eId="art_6/par_1" kind="paragraph">
                <num>
                   <changed amendingAct="32002R2370R(01)"
                            action="replaced"
@@ -323,8 +323,8 @@
                   </changed>
                   <t v=" On the basis of the applications, and the situation of each Member State in respect of the impact of recovery plans, the Commission shall decide on the financial contribution to be paid to each Member State. The Commission shall pay up to 50 % of the assistance on receipt of the application and the balance after certification by the authorities referred to in paragraph 2."/>
                </p>
-            </unit>
-            <unit eId="art_6/par_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_6/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
@@ -337,25 +337,25 @@
                   <noteRef href="#note_5" marker="5"/>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="art_6/par_3" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_6/par_3" kind="paragraph">
                <num>
                   <t v="3."/>
                </num>
                <p>
                   <t v="Except in the case of contrary provisions arising form this Regulation, the relevant provisions of Regulation (EC) No 1260/1999, in particular Articles 33 to 39, as well as derived legislation, shall apply."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="tis_III" kind="division" rank="1">
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_III" kind="division" rank="1">
          <num>
             <t v="TITLE III"/>
          </num>
          <heading>
             <t v="PERIOD 2004-2006"/>
          </heading>
-         <unit eId="art_7" kind="article" rank="2">
+         <occurrence eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
@@ -368,16 +368,16 @@
                </changed>
                <t v=" shall be made available by reprogramming of the Structural Funds provided for in Articles 41 and 44 of Regulation (EC) No 1260/1999 and be programmed within the existing Financial Instrument for Fisheries Guidance programmes."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="tis_IV" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_IV" kind="division" rank="1">
          <num>
             <t v="TITLE IV"/>
          </num>
          <heading>
             <t v="IMPLEMENTATION AND ENTRY INTO FORCE"/>
          </heading>
-         <unit eId="art_8" kind="article" rank="2">
+         <occurrence eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -393,8 +393,8 @@
                <noteRef href="#note_6" marker="6"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_9" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -408,8 +408,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>

@@ -82,11 +82,11 @@ final class Marks {
   /**
    * The elements that a comparison reads as a sequence of parts, not as one run of words. They are
    * a table and what is in it: its caption, its rows and groups of rows, its cells, and the lists,
-   * units and notes in a cell. Thus the words deleted from a cell stay in that cell, and a row
-   * inserted or deleted whole shows as a row.
+   * occurrences and notes in a cell. Thus the words deleted from a cell stay in that cell, and a
+   * row inserted or deleted whole shows as a row.
    */
   private static final Set<String> PARTS =
-      Set.of("table", "caption", "rowGroup", "tr", "td", "list", "unit", "notes", "note");
+      Set.of("table", "caption", "rowGroup", "tr", "td", "list", "occurrence", "notes", "note");
 
   /**
    * Returns {@code to}, marked against {@code from} part by part.

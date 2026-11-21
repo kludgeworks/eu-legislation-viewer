@@ -146,10 +146,10 @@ class ActHistoryTest {
   }
 
   @Test
-  void theChangesAreInTheOrderOfTheTextAndADeletedPlaceIsWhereItsUnitIs() {
-    var units = List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1", "art_79");
+  void theChangesAreInTheOrderOfTheTextAndADeletedPlaceIsWhereItsOccurrenceIs() {
+    var occurrences = List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1", "art_79");
     var changes = ACT.changesBy(PHASED, Language.ENG);
-    assertThat(Act.inTextOrder(changes, units))
+    assertThat(Act.inTextOrder(changes, occurrences))
         .extracting(change -> change.location().code())
         .containsExactly("AR 3 PO 8", "AR 20 PA 1", "AR 79 PA 7");
   }
@@ -190,15 +190,15 @@ class ActHistoryTest {
   }
 
   @Test
-  void theUnitsOfAChangeAreInTheTextWithTheActOrInTheTextBeforeItForADeletedPlace() {
+  void theOccurrencesOfAChangeAreInTheTextWithTheActOrInTheTextBeforeItForADeletedPlace() {
     var change = change(PHASED, "AR 20 PA 1", IN_FULL, Set.of());
     var with = List.of("art_20", "art_20/par_1");
     var without = List.of("art_20");
-    assertThat(Act.units(change, with, without)).containsExactly("art_20/par_1");
-    assertThat(Act.units(change, without, with)).containsExactly("art_20/par_1");
+    assertThat(Act.occurrences(change, with, without)).containsExactly("art_20/par_1");
+    assertThat(Act.occurrences(change, without, with)).containsExactly("art_20/par_1");
     // Neither text has the paragraph itself: the change is in the article.
-    assertThat(Act.units(change, without, without)).containsExactly("art_20");
-    assertThat(Act.units(change, List.of("art_3"), List.of("art_3"))).isEmpty();
+    assertThat(Act.occurrences(change, without, without)).containsExactly("art_20");
+    assertThat(Act.occurrences(change, List.of("art_3"), List.of("art_3"))).isEmpty();
   }
 
   @Test
@@ -269,7 +269,7 @@ class ActHistoryTest {
         .isEqualTo(new Standing(false, 1, 0, 0));
   }
 
-  /** The marks of a text of the act, with the units that the changes of the act are at. */
+  /** The marks of a text of the act, with the occurrences that the changes of the act are at. */
   private static final TextMarks TEXT =
       new TextMarks(
           List.of(
@@ -291,8 +291,8 @@ class ActHistoryTest {
               Set.of("art_20/par_1")));
 
   @Test
-  void theUnitsWithAChangeOfTheirOwnAreThePlacesThatTheTextHas() {
-    assertThat(ACT.changedUnits(TEXT.eIds(), Language.ENG).keySet())
+  void theOccurrencesWithAChangeOfTheirOwnAreThePlacesThatTheTextHas() {
+    assertThat(ACT.changedOccurrences(TEXT.eIds(), Language.ENG).keySet())
         .containsExactly("art_3/pnt_8", "art_20/par_1");
   }
 
@@ -308,7 +308,7 @@ class ActHistoryTest {
   }
 
   @Test
-  void aChangeOfTheUnitThatHoldsAProvisionIsInItsHistoryAndAChangeInItIsNot() {
+  void aChangeOfTheOccurrenceThatHoldsAProvisionIsInItsHistoryAndAChangeInItIsNot() {
     assertThat(ACT.historyOf("art_20/par_1/pnt_a", TEXT, Language.ENG).changes())
         .extracting(change -> change.location().code())
         .containsExactly("AR 20 PA 1");
@@ -316,7 +316,7 @@ class ActHistoryTest {
   }
 
   @Test
-  void aUnitThatTheActAsPublishedDoesNotHaveAndThatTheDataNamesNoActForIsNotAttributed() {
+  void anOccurrenceThatTheActAsPublishedDoesNotHaveAndThatTheDataNamesNoActForIsNotAttributed() {
     var versions = ACT.timeline().versions();
     var texts =
         Map.of(

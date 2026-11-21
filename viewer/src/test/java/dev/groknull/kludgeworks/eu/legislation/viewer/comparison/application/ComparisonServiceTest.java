@@ -74,17 +74,17 @@ class ComparisonServiceTest {
     }
 
     @Override
-    public Optional<PublicText.Extract> publicUnit(TextId text, String eId) {
+    public Optional<PublicText.Extract> publicOccurrence(TextId text, String eId) {
       throw new UnsupportedOperationException();
     }
 
     @Override
-    public PublicText.Unit publicUnit(Element unit) {
+    public PublicText.Occurrence publicOccurrence(Element occurrence) {
       throw new UnsupportedOperationException();
     }
 
     @Override
-    public PublicText.Marked publicWording(Element unit) {
+    public PublicText.Marked publicWording(Element occurrence) {
       throw new UnsupportedOperationException();
     }
 

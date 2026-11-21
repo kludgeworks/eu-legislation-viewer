@@ -95,7 +95,7 @@ class ComparisonService implements Comparisons {
                     .map(
                         whole ->
                             DifferenceBuilder.builder(difference).shown(whole).whole(null).build())
-                    // Not cut down, or an annex whose whole unit is lost
+                    // Not cut down, or an annex whose whole occurrence is lost
                     .or(
                         () ->
                             difference.whole() == null

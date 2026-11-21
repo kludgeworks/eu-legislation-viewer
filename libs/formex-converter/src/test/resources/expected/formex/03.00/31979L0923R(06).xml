@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="The Corrigendum published on page 99 of "/>
             <ref kind="oj" series="L" number="190" date="2006-07-12">
@@ -40,7 +40,7 @@
             </ref>
             <t v=" is annulled."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

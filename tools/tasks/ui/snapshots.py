@@ -120,7 +120,7 @@ PAGES = (
         "compare-provision",
         "Compare",
         "One provision: the wording on the two days and the steps",
-        VIS + "/eng/compare?from=2017-12-29&to=2026-06-12&unit=art_6%2Fpar_2",
+        VIS + "/eng/compare?from=2017-12-29&to=2026-06-12&occurrence=art_6%2Fpar_2",
     ),
     Shown(
         "preparing", "Preparing", "An act being prepared", "/eli/reg/2010/185/eng", settled=False

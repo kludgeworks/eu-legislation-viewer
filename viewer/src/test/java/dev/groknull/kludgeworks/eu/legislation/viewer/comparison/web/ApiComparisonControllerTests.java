@@ -69,8 +69,8 @@ class ApiComparisonControllerTests {
       "/api/acts/32015R1998/comparisons/2021-03-15..2021-12-31";
   private static final TextId EARLIER = new TextId(1);
   private static final TextId LATER = new TextId(2);
-  private static final PublicText.Unit SHOWN =
-      new PublicText.Unit(
+  private static final PublicText.Occurrence SHOWN =
+      new PublicText.Occurrence(
           "anx/pnt_1.2",
           "point",
           "1.2.",
@@ -91,7 +91,7 @@ class ApiComparisonControllerTests {
     when(acts.find(any(ActIdentifier.class))).thenReturn(Optional.empty());
     when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
     when(content.outline(any())).thenReturn(Optional.empty());
-    when(content.publicUnit(any(Element.class))).thenReturn(SHOWN);
+    when(content.publicOccurrence(any(Element.class))).thenReturn(SHOWN);
     when(content.publicWording(any(Element.class)))
         .thenReturn(
             new PublicText.Marked(
@@ -212,12 +212,12 @@ class ApiComparisonControllerTests {
   }
 
   private static Difference difference() {
-    var unit = new Element("unit", Map.of("eId", "anx/pnt_1.2"), List.of(), "");
+    var occurrence = new Element("occurrence", Map.of("eId", "anx/pnt_1.2"), List.of(), "");
     return new Difference(
         "anx/pnt_1.2",
         Kind.CHANGED,
         new Sibling("anx/pnt_1.2", "level", "1.2"),
-        unit,
+        occurrence,
         3,
         1,
         "anx/pnt_1",

@@ -34,11 +34,11 @@ public record Comparison(
   }
 
   /**
-   * Returns the differences at the units {@code eIds}, in the order of the comparison. These are
-   * the differences of the units themselves and of the units in them. If there are none, it is the
-   * one difference of the nearest unit that holds one of the units. For example, a chapter that an
-   * act inserted whole is one difference, and an article in the chapter has no difference of its
-   * own. Returns empty if the units are the same in both texts.
+   * Returns the differences at the occurrences {@code eIds}, in the order of the comparison. These
+   * are the differences of the occurrences themselves and of the occurrences in them. If there are
+   * none, it is the one difference of the nearest occurrence that holds one of the occurrences. For
+   * example, a chapter that an act inserted whole is one difference, and an article in the chapter
+   * has no difference of its own. Returns empty if the occurrences are the same in both texts.
    */
   public List<Difference> at(List<String> eIds) {
     var within =

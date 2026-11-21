@@ -8,7 +8,7 @@
 # - the day the amendment applies from.
 # - the day the amendment ends, if it lapses.
 # - the languages, if the act corrects only some language versions. For example, "SV".
-# It gets only amendments with a location. The others give nothing that a unit can be joined to.
+# It gets only amendments with a location. The others give nothing that an occurrence can be joined to.
 # It gives one row per amended location.
 # {{celex}}: the CELEX number of a base act, for example 32015R1998. Sparql.fill escapes it.
 PREFIX cdm: <http://publications.europa.eu/ontology/cdm#>

@@ -83,16 +83,16 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on European Union, and in particular Article 37 thereof, in conjunction with Article 218(5) and (6) of the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the High Representative of the Union for Foreign Affairs and Security Policy,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -100,15 +100,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Conditions regarding the participation of third States in European Union crisis management operations should be laid down in an agreement establishing a framework for such possible future participation, rather than being defined on a case-by-case basis for each operation concerned."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -123,15 +123,15 @@
                </quote>
                <t v=")."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="The Agreement should be approved,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -140,30 +140,30 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/unp_1" kind="paragraph">
+         <occurrence eId="art_1/unp_1" kind="paragraph">
             <p>
                <t v="The Agreement between the European Union and Georgia establishing a framework for the participation of Georgia in the European Union crisis management operations is hereby approved on behalf of the Union."/>
             </p>
-         </unit>
-         <unit eId="art_1/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/unp_2" kind="paragraph">
             <p>
                <t v="The text of the Agreement is attached to this Decision."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="The President of the Council is hereby authorised to designate the person(s) empowered to sign the Agreement in order to bind the Union."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -172,15 +172,15 @@
             <noteRef href="#note_1" marker="1"/>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
          <p>
             <t v="This Decision shall enter into force on the date of its adoption."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

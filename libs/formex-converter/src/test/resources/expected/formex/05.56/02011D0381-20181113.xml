@@ -156,7 +156,7 @@
                      action="deleted"
                      location="AR:6"
                      marker="O002001M001000"/>
-         <unit eId="art_1" kind="article" rank="1">
+         <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
             </num>
@@ -168,49 +168,49 @@
                <t v=" shall comprise the following categories:"/>
             </p>
             <list kind="definition" separator=":">
-               <unit eId="art_1/def_1" kind="definition">
+               <occurrence eId="art_1/def_1" kind="definition">
                   <heading>
                      <t v="Category 1"/>
                   </heading>
                   <p>
                      <t v="hydraulic fluids and tractor transmission oils"/>
                   </p>
-               </unit>
-               <unit eId="art_1/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/def_2" kind="definition">
                   <heading>
                      <t v="Category 2"/>
                   </heading>
                   <p>
                      <t v="greases and stern tube greases"/>
                   </p>
-               </unit>
-               <unit eId="art_1/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/def_3" kind="definition">
                   <heading>
                      <t v="Category 3"/>
                   </heading>
                   <p>
                      <t v="chainsaw oils, concrete release agents, wire rope lubricants, stern tube oils and other total loss lubricants"/>
                   </p>
-               </unit>
-               <unit eId="art_1/def_4" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/def_4" kind="definition">
                   <heading>
                      <t v="Category 4"/>
                   </heading>
                   <p>
                      <t v="two-stroke oils"/>
                   </p>
-               </unit>
-               <unit eId="art_1/def_5" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/def_5" kind="definition">
                   <heading>
                      <t v="Category 5"/>
                   </heading>
                   <p>
                      <t v="industrial and marine gear oils."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="1">
             <num>
                <t v="Article 2"/>
             </num>
@@ -218,7 +218,7 @@
                <t v="For the purpose of this Decision, the following definitions shall apply:"/>
             </p>
             <list kind="arabic">
-               <unit eId="art_2/pnt_1" kind="point" numbered="true">
+               <occurrence eId="art_2/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="(1)"/>
                   </num>
@@ -228,8 +228,8 @@
                      </quote>
                      <t v=" means a preparation consisting of base fluids and additives;"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_2" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="(2)"/>
                   </num>
@@ -239,8 +239,8 @@
                      </quote>
                      <t v=" means a lubricating fluid whose flow, ageing, lubricity and anti-wear properties, as well as its properties regarding contaminant suspension, have not been improved by the inclusion of additive(s);"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_3" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="(3)"/>
                   </num>
@@ -250,8 +250,8 @@
                      </quote>
                      <t v=" means a chemical element and its compounds in the natural state or obtained by any production process, including any additive necessary to preserve the stability of the products and any impurity deriving from the process used, but excluding any solvent which may be separated without affecting the stability of the substance or changing its composition;"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_4" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="(4)"/>
                   </num>
@@ -261,8 +261,8 @@
                      </quote>
                      <t v=" means one or more substances in the base fluid used to thicken or modify the rheology of a lubricating fluid or grease;"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_5" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="(5)"/>
                   </num>
@@ -272,8 +272,8 @@
                      </quote>
                      <t v=" means any substance accounting for more than 5 % by weight of the lubricant;"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_6" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="(6)"/>
                   </num>
@@ -283,8 +283,8 @@
                      </quote>
                      <t v=" means a substance or mixture whose primary functions are the improvement of the flow, ageing, lubricity, anti-wear properties or of contaminant suspension;"/>
                   </p>
-               </unit>
-               <unit eId="art_2/pnt_7" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_2/pnt_7" kind="point" numbered="true">
                   <num>
                      <t v="(7)"/>
                   </num>
@@ -298,10 +298,10 @@
                      </quote>
                      <t v=" and may include other ingredients imparting special properties in a liquid lubricant."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_3" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_3" kind="article" rank="1">
             <num>
                <t v="Article 3"/>
             </num>
@@ -312,8 +312,8 @@
                </quote>
                <t v=" as defined in Article 1 of this Decision and shall comply with the criteria as well as the related assessment and verification requirements set out in the Annex to this Decision."/>
             </p>
-         </unit>
-         <unit eId="art_4" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_4" kind="article" rank="1">
             <provenance amendingAct="32015D0877"
                         action="replaced"
                         location="AR:3"
@@ -332,8 +332,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_5" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_5" kind="article" rank="1">
             <num>
                <t v="Article 5"/>
             </num>
@@ -348,20 +348,20 @@
                </quote>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_6" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_6" kind="article" rank="1">
             <num>
                <t v="Article 6"/>
             </num>
             <p>
                <t v="Decision 2005/360/EC is repealed."/>
             </p>
-         </unit>
-         <unit eId="art_7" kind="article" rank="1">
+         </occurrence>
+         <occurrence eId="art_7" kind="article" rank="1">
             <num>
                <t v="Article 7"/>
             </num>
-            <unit eId="art_7/par_1" kind="paragraph">
+            <occurrence eId="art_7/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
@@ -372,8 +372,8 @@
                   </quote>
                   <t v=" submitted before the date of adoption of this Decision shall be evaluated in accordance with the conditions laid down in Decision 2005/360/EC."/>
                </p>
-            </unit>
-            <unit eId="art_7/par_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_7/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
@@ -388,24 +388,24 @@
                   </date>
                   <t v=" at the latest may be based either on the criteria set out in Decision 2005/360/EC or on the criteria set out in this Decision. Those applications shall be evaluated in accordance with the criteria on which they are based."/>
                </p>
-            </unit>
-            <unit eId="art_7/par_3" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_7/par_3" kind="paragraph">
                <num>
                   <t v="3."/>
                </num>
                <p>
                   <t v="Where the EU Ecolabel is awarded on the basis of an application evaluated according to the criteria set out in Decision 2005/360/EC, that EU Ecolabel may be used for 12 months from the date of adoption of this Decision."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_8" kind="article" rank="1">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_8" kind="article" rank="1">
             <num>
                <t v="Article 8"/>
             </num>
             <p>
                <t v="This Decision is addressed to the Member States."/>
             </p>
-         </unit>
+         </occurrence>
       </deleted>
    </body>
    <annexes>
@@ -414,18 +414,18 @@
                      action="deleted"
                      location="AR:6"
                      marker="O002001M001000"/>
-         <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+         <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
             </num>
-            <unit eId="anx/level_1" kind="level" depth="1" rank="2">
+            <occurrence eId="anx/level_1" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="FRAMEWORK"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/level_1/level_1" kind="level" depth="2" rank="3">
+            </occurrence>
+            <occurrence eId="anx/level_1/level_1" kind="level" depth="2" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="The aims of the criteria"/>
@@ -434,82 +434,82 @@
                <p>
                   <t v="These criteria aim in particular at promoting products that have a reduced impact on the water and soil during its use and contain a large fraction of biobased material."/>
                </p>
-            </unit>
-            <unit eId="anx/level_2" kind="level" depth="1" rank="2">
+            </occurrence>
+            <occurrence eId="anx/level_2" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="CRITERIA"/>
                   </emphasis>
                </heading>
-               <unit eId="anx/level_2/list_1/pnt_1" kind="point" numbered="true">
+               <occurrence eId="anx/level_2/list_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
                   <p>
                      <t v="Excluded or limited substances and mixtures"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_2/list_1/pnt_2" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/level_2/list_1/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
                   <p>
                      <t v="Exclusion of specific substances"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_2/list_1/pnt_3" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/level_2/list_1/pnt_3" kind="point" numbered="true">
                   <num>
                      <t v="3."/>
                   </num>
                   <p>
                      <t v="Additional aquatic toxicity requirements"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_2/list_1/pnt_4" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/level_2/list_1/pnt_4" kind="point" numbered="true">
                   <num>
                      <t v="4."/>
                   </num>
                   <p>
                      <t v="Biodegradability and bioaccumulative potential"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_2/list_1/pnt_5" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/level_2/list_1/pnt_5" kind="point" numbered="true">
                   <num>
                      <t v="5."/>
                   </num>
                   <p>
                      <t v="Renewable raw materials"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_2/list_1/pnt_6" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/level_2/list_1/pnt_6" kind="point" numbered="true">
                   <num>
                      <t v="6."/>
                   </num>
                   <p>
                      <t v="Minimum technical performance"/>
                   </p>
-               </unit>
-               <unit eId="anx/level_2/list_1/pnt_7" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="anx/level_2/list_1/pnt_7" kind="point" numbered="true">
                   <num>
                      <t v="7."/>
                   </num>
                   <p>
                      <t v="Information appearing on the EU Ecolabel"/>
                   </p>
-               </unit>
-            </unit>
-            <unit eId="anx/level_2/level_1" kind="level" depth="2" rank="3">
+               </occurrence>
+            </occurrence>
+            <occurrence eId="anx/level_2/level_1" kind="level" depth="2" rank="3">
                <heading>
                   <emphasis kind="b">
                      <t v="Assessment and verification requirements"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/level_2/level_1/pnt_a"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/level_2/level_1/pnt_a"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="(a)"/>
                </num>
@@ -537,12 +537,12 @@
                <p>
                   <t v="The general scheme for the assessment of any constituent substance in a lubricant product is given in Table 1."/>
                </p>
-            </unit>
-            <unit eId="anx/level_2/level_1/pnt_b"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/level_2/level_1/pnt_b"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="(b)"/>
                </num>
@@ -556,38 +556,38 @@
                   <t v="The criteria shall apply as follows:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/level_2/level_1/pnt_b/idt_1" kind="indent">
+                  <occurrence eId="anx/level_2/level_1/pnt_b/idt_1" kind="indent">
                      <p>
                         <t v="to the applied lubricant for criteria 1(a), 6 and 7,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/level_2/level_1/pnt_b/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/level_2/level_1/pnt_b/idt_2" kind="indent">
                      <p>
                         <t v="to each stated substance intentionally added or formed above 0,010 % (w/w) for criterion 1(b) and 2,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/level_2/level_1/pnt_b/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/level_2/level_1/pnt_b/idt_3" kind="indent">
                      <p>
                         <t v="to each stated substance intentionally added or formed above 0,10 % (w/w) for criteria 3, 4 and 5."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="In addition the total fraction of the stated substances where the formulated criteria 3 and 4 do not apply shall remain below 0,5 % (w/w)."/>
                </p>
-            </unit>
-            <unit eId="anx/level_3" kind="level" depth="1" rank="2">
+            </occurrence>
+            <occurrence eId="anx/level_3" kind="level" depth="1" rank="2">
                <heading>
                   <emphasis kind="b">
                      <t v="EU ECOLABEL CRITERIA"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/pnt_Criterion-1"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-1"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 1 –"/>
@@ -598,12 +598,12 @@
                      <t v="Excluded or limited substances and mixtures"/>
                   </emphasis>
                </heading>
-            </unit>
-            <unit eId="anx/pnt_Criterion-1/pnt_a"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-1/pnt_a"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="(a)"/>
                </num>
@@ -1208,12 +1208,12 @@
                <p>
                   <t v="The evaluation of a product for hazards to the environment shall be performed by the conventional method as indicated in Annex III to Directive 1999/45/EC or by the summation method in Section 4.1.3.5.2 of Regulation (EC) No 1272/2008. However, as defined by Part C of Annex III to Directive 1999/45/EC or by Section 4.1.3.3 of Regulation (EC) No 1272/2008, the results of testing the preparation (either the product preparation or the additive package) as such can be used to modify the classification concerning the aquatic toxicity that would have been obtained using the conventional or summation method."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-1/pnt_b"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-1/pnt_b"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="(b)"/>
                </num>
@@ -1240,12 +1240,12 @@
                   <noteRef href="#note_9" marker="1"/>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-2"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-2"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 2 –"/>
@@ -1260,7 +1260,7 @@
                   <t v="The following stated substances are not allowed in quantities exceeding 0,010 % (w/w) of the final product:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_Criterion-2/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_Criterion-2/idt_1" kind="indent">
                      <p>
                         <t v="substances appearing in the Union List of priority substances in the field of water policy in Annex X to Directive 2000/60/EC of the European Parliament and of the Council"/>
                         <noteRef href="#note_10" marker="1"/>
@@ -1268,17 +1268,17 @@
                         <noteRef href="#note_11" marker="1"/>
                         <t v=" and the OSPAR List of Chemicals for Priority Action (http://www.ospar.org/content/content.asp?menu=00950304450000_000000_000000),"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-2/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-2/idt_2" kind="indent">
                      <p>
                         <t v="organic halogen compounds and nitrite compounds,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-2/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-2/idt_3" kind="indent">
                      <p>
                         <t v="metals or metallic compounds with the exception of sodium, potassium, magnesium and calcium. In the case of thickeners, also lithium and/or aluminium compounds may be used up to concentrations limited by the other criteria included in the Annex to this Decision."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <emphasis kind="i">
@@ -1286,12 +1286,12 @@
                   </emphasis>
                   <t v=" conformance with these requirements shall be stated in writing and signed by the applicant."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-3"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-3"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 3 –"/>
@@ -1305,12 +1305,12 @@
                <p>
                   <t v="The applicant shall demonstrate compliance by meeting the requirements of either criterion 3.1 or criterion 3.2."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-3.1"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-3.1"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 3.1. –"/>
@@ -1349,12 +1349,12 @@
                   </emphasis>
                   <t v="C50 for algae, (48hr)EC50 for daphnia and (96hr)LC50 for fish are accepted."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-3.2"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-3.2"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 3.2. –"/>
@@ -1397,33 +1397,33 @@
                   <t v="An aquatic toxicity study does not need to be conducted when:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_Criterion-3.2/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_Criterion-3.2/idt_1" kind="indent">
                      <p>
                         <t v="the classification of the substance, base fluid or additive is already stated on the Lubricant Substance Classification list, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-3.2/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-3.2/idt_2" kind="indent">
                      <p>
                         <t v="a valid letter of compliance from a competent body can be submitted, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-3.2/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-3.2/idt_3" kind="indent">
                      <p>
                         <t v="the substance is unlikely to cross biological membranes MM &gt; 800 g/mol or molecular diameter &gt; 1,5 nm (&gt; 15 Å), or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-3.2/idt_4" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-3.2/idt_4" kind="indent">
                      <p>
                         <t v="the substance is a polymer and its molecular weight fraction below "/>
                         <number v="1000"/>
                         <t v=" g/mol is less than 1 %, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-3.2/idt_5" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-3.2/idt_5" kind="indent">
                      <p>
                         <t v="the substance is highly insoluble in water (water solubility &lt; 10 μg/l),"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="as such substances are not regarded as toxic for algae and daphnia in the aquatic system."/>
@@ -1436,12 +1436,12 @@
                   <number v="1000"/>
                   <t v=" g/mol of a polymer shall be determined according to Part A.19 of the Annex to Regulation (EC) No 440/2008 or equivalent test methods."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-4"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-4"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 4 –"/>
@@ -1470,12 +1470,12 @@
                <p>
                   <t v="High quality test reports or literature data (testing according to acceptable protocols and GLP) including the references on the biodegradability and when required on the (potential) bioaccumulation of each constituent substance."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_4.1"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/pnt_4.1"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="4.1."/>
                </num>
@@ -1492,7 +1492,7 @@
                   <t v=" (aerobic) if:"/>
                </p>
                <list kind="arabic">
-                  <unit eId="anx/pnt_4.1/pnt_1" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_4.1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="1."/>
                      </num>
@@ -1500,29 +1500,29 @@
                         <t v="In a 28-day biodegradation study according Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306, OECD 310 the following levels of biodegradation are achieved:"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="anx/pnt_4.1/pnt_1/idt_1" kind="indent">
+                        <occurrence eId="anx/pnt_4.1/pnt_1/idt_1" kind="indent">
                            <p>
                               <t v="in the ultimately biodegradable tests based upon dissolved organic carbon ≥ 70 %,"/>
                            </p>
-                        </unit>
-                        <unit eId="anx/pnt_4.1/pnt_1/idt_2" kind="indent">
+                        </occurrence>
+                        <occurrence eId="anx/pnt_4.1/pnt_1/idt_2" kind="indent">
                            <p>
                               <t v="in the ultimately biodegradable tests based upon oxygen depletion or carbon dioxide generation ≥ 60 % of the theoretical maxima."/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <t v="In these ultimately biodegradable tests the 10-day window principle will not necessarily apply. If the substance reaches the biodegradation pass level within 28 days but not within the 10-day time-window, a slower degradation rate is assumed."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.1/pnt_2" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.1/pnt_2" kind="point" numbered="true">
                      <num>
                         <t v="2."/>
                      </num>
                      <p>
                         <t v="The BOD5/ThOD or BOD5/COD ratio ≥ 0,5. The BOD5/(ThOD or COD) ratio can only be used if no data based on Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306 or OECD 310 or any other equivalent test methods are available. The BOD5 shall be assessed according to Part C.5 of the Annex to Regulation (EC) No 440/2008 or equivalent methods while the COD shall be assessed according to Part C.6 of the Annex to Regulation (EC) No 440/2008 or equivalent methods."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="A substance is considered "/>
@@ -1532,31 +1532,31 @@
                   <t v=" if it shows:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_4.1/list_2/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_4.1/list_2/idt_1" kind="indent">
                      <p>
                         <t v="a biodegradation &gt; 70 % in the Part C.9 of the Annex to Regulation (EC) No 440/2008 or OECD 302 C test for inherent biodegradation or equivalent methods, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.1/list_2/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.1/list_2/idt_2" kind="indent">
                      <p>
                         <t v="a biodegradation &gt; 20 % but &lt; 60 % after 28 days in Part C.4 of the Annex to Regulation (EC) No 440/2008, OECD 306, OECD 310 tests based on oxygen depletion or carbon dioxide generation or equivalent methods."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="The biodegradation test does not need to be conducted when:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_4.1/list_3/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_4.1/list_3/idt_1" kind="indent">
                      <p>
                         <t v="the classification of the substance, base fluid or additive is already stated on the Lubricant Substance Classification list or a valid letter of compliance from a competent body can be submitted,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.1/list_3/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.1/list_3/idt_2" kind="indent">
                      <p>
                         <t v="a substance is non-biodegradable if it fails the criteria for ultimate and inherent biodegradability."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="The applicant may also use read-across data to estimate the biodegradability of a substance. "/>
@@ -1565,12 +1565,12 @@
                   </quote>
                   <t v=" for the assessment of the biodegradability of a substance shall be acceptable if the reference substance differs by only one functional group or fragment from the substance applied in the product. If the reference substance is readily or inherently biodegradable and the functional group has a positive effect on the aerobic biodegradation then the applied substance may also be regarded as readily or inherently biodegradable. Functional groups or fragments with a positive effect on the biodegradation are: aliphatic and aromatic alcohol [-OH], aliphatic and aromatic acid [-C(=O)-OH], aldehyde [-CHO], Ester [-C(=O)-O-C], amide [-C(=O)–N or -C(=S)–N]. Adequate and reliable documentation of the study on the reference substance should be provided. In case of a comparison with a fragment, not included here above, adequate and reliable documentation of the studies should be provided on the positive effect of the functional group on the biodegradation of structurally similar substances."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_4.2"
-                  kind="level"
-                  depth="3"
-                  numbered="true"
-                  rank="4">
+            </occurrence>
+            <occurrence eId="anx/pnt_4.2"
+                        kind="level"
+                        depth="3"
+                        numbered="true"
+                        rank="4">
                <num>
                   <t v="4.2."/>
                </num>
@@ -1583,17 +1583,17 @@
                   <t v="The (potential) bioaccumulation does not need to be established when the substance:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_4.2/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_4.2/idt_1" kind="indent">
                      <p>
                         <t v="has a MM &gt; 800 g/mol, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.2/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.2/idt_2" kind="indent">
                      <p>
                         <t v="has a molecular diameter &gt; 1,5 nm (&gt; 15 Å), or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.2/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.2/idt_3" kind="indent">
                      <p>
                         <t v="has an octanol-water partition coefficient, log K"/>
                         <emphasis kind="sub">
@@ -1601,19 +1601,19 @@
                         </emphasis>
                         <t v=", value of &lt; 3 or &gt; 7, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.2/idt_4" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.2/idt_4" kind="indent">
                      <p>
                         <t v="has a measured BCF of ≤ 100 L/kg, or"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_4.2/idt_5" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_4.2/idt_5" kind="indent">
                      <p>
                         <t v="is a polymer and its molecular weight fraction below "/>
                         <number v="1000"/>
                         <t v=" g/mol is less than 1 %."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="Since most substances used in lubricants are quite hydrophobic the BCF-value should be based on the lipid weight content and care must be shown to ensure a sufficient exposure time."/>
@@ -1639,12 +1639,12 @@
                   </emphasis>
                   <t v=" values are applicable to organic chemicals only. To assess the bioaccumulation potential of non-organic compounds, surfactants, and some organo-metallic compounds, BCF measurements shall be carried out."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-5"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-5"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 5 –"/>
@@ -1659,31 +1659,31 @@
                   <t v="The formulated product shall have a carbon content derived from renewable raw materials that shall be:"/>
                </p>
                <list kind="dash">
-                  <unit eId="anx/pnt_Criterion-5/idt_1" kind="indent">
+                  <occurrence eId="anx/pnt_Criterion-5/idt_1" kind="indent">
                      <p>
                         <t v="≥ 50 % (m/m) for Category 1,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-5/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-5/idt_2" kind="indent">
                      <p>
                         <t v="≥ 45 % (m/m) for Category 2,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-5/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-5/idt_3" kind="indent">
                      <p>
                         <t v="≥ 70 % (m/m) for Category 3,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-5/idt_4" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-5/idt_4" kind="indent">
                      <p>
                         <t v="≥ 50 % (m/m) for Category 4,"/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-5/idt_5" kind="indent">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-5/idt_5" kind="indent">
                      <p>
                         <t v="≥ 50 % (m/m) for Category 5."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <t v="Carbon content derived from renewable raw material means the mass percentage of component A × [number of C-atoms in component A, which are derived from (vegetable) oils or (animal) fats divided by the total number of C-atoms in component A] plus mass percentage of component B × [number of C-atoms in component B, which are derived from (vegetable) oils or (animal) fats divided by the total number of C-atoms in component B] plus the mass percentage of component C × [number of C-atoms in component C, which are derived from (vegetable) oils or (animal) fats divided by the total number of C-atoms in component C], and so on."/>
@@ -1697,12 +1697,12 @@
                   </emphasis>
                   <t v=" the applicant shall provide the competent body with a declaration of compliance with this criterion."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-6"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-6"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 6 –"/>
@@ -1714,31 +1714,31 @@
                   </emphasis>
                </heading>
                <list kind="alpha">
-                  <unit eId="anx/pnt_Criterion-6/pnt_a" kind="point" numbered="true">
+                  <occurrence eId="anx/pnt_Criterion-6/pnt_a" kind="point" numbered="true">
                      <num>
                         <t v="(a)"/>
                      </num>
                      <p>
                         <t v="For Hydraulic fluids: at least the technical performance criteria as laid down in the current ISO 15380, Tables 2 to 5. The supplier shall list on his product information sheet which 2 elastomers have been tested."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-6/pnt_b" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-6/pnt_b" kind="point" numbered="true">
                      <num>
                         <t v="(b)"/>
                      </num>
                      <p>
                         <t v="For Industrial and marine gear oils: at least the technical performance requirements as in the DIN 51517. The supplier shall list on his product information sheet which Section (I, II or III) was selected."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-6/pnt_c" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-6/pnt_c" kind="point" numbered="true">
                      <num>
                         <t v="(c)"/>
                      </num>
                      <p>
                         <t v="For chainsaw oils: at least the technical performance criteria as laid down in the RAL UZ 48 of the Blue Angel."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-6/pnt_d" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-6/pnt_d" kind="point" numbered="true">
                      <num>
                         <t v="(d)"/>
                      </num>
@@ -1749,23 +1749,23 @@
                         </quote>
                         <t v=" of NMMA TC-W3."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-6/pnt_e" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-6/pnt_e" kind="point" numbered="true">
                      <num>
                         <t v="(e)"/>
                      </num>
                      <p>
                         <t v="For two-stroke oils for terrestrial applications: at least meet the EGD level of technical performance criteria laid down in ISO 13738:2000."/>
                      </p>
-                  </unit>
-                  <unit eId="anx/pnt_Criterion-6/pnt_f" kind="point" numbered="true">
+                  </occurrence>
+                  <occurrence eId="anx/pnt_Criterion-6/pnt_f" kind="point" numbered="true">
                      <num>
                         <t v="(f)"/>
                      </num>
                      <p>
                         <t v="For all other lubricants: fit for purpose."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
                <p>
                   <emphasis kind="i">
@@ -1773,12 +1773,12 @@
                   </emphasis>
                   <t v=" the applicant shall provide the competent body with a declaration of compliance with this criterion, together with related documentation."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_Criterion-7"
-                  kind="level"
-                  depth="2"
-                  numbered="true"
-                  rank="3">
+            </occurrence>
+            <occurrence eId="anx/pnt_Criterion-7"
+                        kind="level"
+                        depth="2"
+                        numbered="true"
+                        rank="3">
                <num>
                   <emphasis kind="b">
                      <t v="Criterion 7 –"/>
@@ -1794,7 +1794,7 @@
                </p>
                <quotedStructure eId="anx/pnt_Criterion-7/qstr_1">
                   <list kind="dash">
-                     <unit eId="anx/pnt_Criterion-7/qstr_1/idt_1" kind="point">
+                     <occurrence eId="anx/pnt_Criterion-7/qstr_1/idt_1" kind="point">
                         <num>
                            <t v="‘"/>
                            <t v="—"/>
@@ -1802,8 +1802,8 @@
                         <p>
                            <t v="Reduced harm for water and soil during use"/>
                         </p>
-                     </unit>
-                     <unit eId="anx/pnt_Criterion-7/qstr_1/idt_2" kind="point">
+                     </occurrence>
+                     <occurrence eId="anx/pnt_Criterion-7/qstr_1/idt_2" kind="point">
                         <num>
                            <t v="—"/>
                         </num>
@@ -1812,7 +1812,7 @@
                            <t v="’"/>
                            <t v="."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </list>
                </quotedStructure>
                <p>
@@ -2835,8 +2835,8 @@
                      </td>
                   </tr>
                </table>
-            </unit>
-         </unit>
+            </occurrence>
+         </occurrence>
       </deleted>
    </annexes>
    <notes>

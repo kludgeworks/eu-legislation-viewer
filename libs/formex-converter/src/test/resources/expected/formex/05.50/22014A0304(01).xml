@@ -27,7 +27,7 @@
    </preface>
    <body/>
    <annexes>
-      <unit eId="let_1" kind="letter" rank="1">
+      <occurrence eId="let_1" kind="letter" rank="1">
          <num>
             <t v="A."/>
          </num>
@@ -49,7 +49,7 @@
             <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
          </p>
          <list kind="arabic">
-            <unit eId="let_1/pnt_1" kind="point" numbered="true">
+            <occurrence eId="let_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -57,7 +57,7 @@
                   <t v="The European Union shall incorporate in its schedule, for the customs territory of the EU 27, the concessions contained in the schedule of the EU 25 with the following modifications:"/>
                </p>
                <list kind="none">
-                  <unit eId="let_1/pnt_1/idt_1" kind="indent">
+                  <occurrence eId="let_1/pnt_1/idt_1" kind="indent">
                      <p>
                         <t v="On tariff line "/>
                         <t v="0703 20 00"/>
@@ -65,8 +65,8 @@
                         <number v="12375"/>
                         <t v=" tonnes to the allocation for People’s Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
                      </p>
-                  </unit>
-                  <unit eId="let_1/pnt_1/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="let_1/pnt_1/idt_2" kind="indent">
                      <p>
                         <t v="Add 800 tonnes (drained net weight) to the allocation for People's Republic of China under the EU tariff rate quota for mushroom of species "/>
                         <emphasis kind="i">
@@ -84,8 +84,8 @@
                         <t v="0711 51 00"/>
                         <t v=" (out of quota rate 9,6 + 191,0 EUR/100 kg/net eda) in the quota."/>
                      </p>
-                  </unit>
-                  <unit eId="let_1/pnt_1/idt_3" kind="indent">
+                  </occurrence>
+                  <occurrence eId="let_1/pnt_1/idt_3" kind="indent">
                      <p>
                         <t v="Create a tariff rate quota of "/>
                         <number v="2026"/>
@@ -103,8 +103,8 @@
                         <t v="1806 90"/>
                         <t v=")."/>
                      </p>
-                  </unit>
-                  <unit eId="let_1/pnt_1/idt_4" kind="indent">
+                  </occurrence>
+                  <occurrence eId="let_1/pnt_1/idt_4" kind="indent">
                      <p>
                         <t v="Create a tariff rate quota of "/>
                         <number v="2289"/>
@@ -116,8 +116,8 @@
                         <t v="1704"/>
                         <t v=")."/>
                      </p>
-                  </unit>
-                  <unit eId="let_1/pnt_1/idt_5" kind="indent">
+                  </occurrence>
+                  <occurrence eId="let_1/pnt_1/idt_5" kind="indent">
                      <p>
                         <t v="Create a tariff rate quota of 409 tonnes ("/>
                         <emphasis kind="i">
@@ -127,17 +127,17 @@
                         <t v="1905 90"/>
                         <t v=")."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="let_1/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="let_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
                <p>
                   <t v="The People’s Republic of China accepts the European Union’s approach to netting-out of tariff rate quotas as a way of adjusting the GATT obligations of the EU 25 and those of the Republic of Bulgaria and Romania following the recent enlargement of the European Union."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
          <p>
             <t v="The European Union and the People’s Republic of China shall notify each other the completion of their internal procedures for the entry into force of the agreement. The agreement shall enter into force 14 days after the date of receipt of the latest notification."/>
@@ -154,8 +154,8 @@
             </emphasis>
          </p>
          <figure src="L_2014064EN.01000202.tif" content="signature"/>
-      </unit>
-      <unit eId="let_2" kind="letter" rank="1">
+      </occurrence>
+      <occurrence eId="let_2" kind="letter" rank="1">
          <num>
             <t v="B."/>
          </num>
@@ -182,7 +182,7 @@
                <t v="Following negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade 1994 (GATT) relating to the modification of the Schedules of the Republic of Bulgaria and Romania in the course of their accession to the European Union, I have the honour to propose the following:"/>
             </p>
             <list kind="arabic">
-               <unit eId="let_2/qstr_1/pnt_1" kind="point" numbered="true">
+               <occurrence eId="let_2/qstr_1/pnt_1" kind="point" numbered="true">
                   <num>
                      <t v="1."/>
                   </num>
@@ -190,7 +190,7 @@
                      <t v="The European Union shall incorporate in its schedule, for the customs territory of the EU 27, the concessions contained in the schedule of the EU 25 with the following modifications:"/>
                   </p>
                   <list kind="none">
-                     <unit eId="let_2/qstr_1/pnt_1/idt_1" kind="indent">
+                     <occurrence eId="let_2/qstr_1/pnt_1/idt_1" kind="indent">
                         <p>
                            <t v="On tariff line "/>
                            <t v="0703 20 00"/>
@@ -198,8 +198,8 @@
                            <number v="12375"/>
                            <t v=" tonnes to the allocation for People's Republic of China under the EU tariff rate quota for garlic, maintaining the present in quota rate of 9,6 %."/>
                         </p>
-                     </unit>
-                     <unit eId="let_2/qstr_1/pnt_1/idt_2" kind="indent">
+                     </occurrence>
+                     <occurrence eId="let_2/qstr_1/pnt_1/idt_2" kind="indent">
                         <p>
                            <t v="Add 800 tonnes (drained net weight) to the allocation for People’s Republic of China under the EU tariff rate quota for mushroom of species "/>
                            <emphasis kind="i">
@@ -217,8 +217,8 @@
                            <t v="0711 51 00"/>
                            <t v=" (out of quota rate 9,6 + 191,0 EUR/100 kg/net eda) in the quota."/>
                         </p>
-                     </unit>
-                     <unit eId="let_2/qstr_1/pnt_1/idt_3" kind="indent">
+                     </occurrence>
+                     <occurrence eId="let_2/qstr_1/pnt_1/idt_3" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of "/>
                            <number v="2026"/>
@@ -236,8 +236,8 @@
                            <t v="1806 90"/>
                            <t v=")."/>
                         </p>
-                     </unit>
-                     <unit eId="let_2/qstr_1/pnt_1/idt_4" kind="indent">
+                     </occurrence>
+                     <occurrence eId="let_2/qstr_1/pnt_1/idt_4" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of "/>
                            <number v="2289"/>
@@ -249,8 +249,8 @@
                            <t v="1704"/>
                            <t v=")."/>
                         </p>
-                     </unit>
-                     <unit eId="let_2/qstr_1/pnt_1/idt_5" kind="indent">
+                     </occurrence>
+                     <occurrence eId="let_2/qstr_1/pnt_1/idt_5" kind="indent">
                         <p>
                            <t v="Create a tariff rate quota of 409 tonnes ("/>
                            <emphasis kind="i">
@@ -260,17 +260,17 @@
                            <t v="1905 90"/>
                            <t v=")."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </list>
-               </unit>
-               <unit eId="let_2/qstr_1/pnt_2" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="let_2/qstr_1/pnt_2" kind="point" numbered="true">
                   <num>
                      <t v="2."/>
                   </num>
                   <p>
                      <t v="The People’s Republic of China accepts the European Union’s approach to netting-out of tariff rate quotas as a way of adjusting the GATT obligations of the EU 25 and those of the Republic of Bulgaria and Romania following the recent enlargement of the European Union."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="The European Union and the People’s Republic of China shall notify each other the completion of their internal procedures for the entry into force of the agreement. The agreement shall enter into force 14 days after the date of receipt of the latest notification."/>
@@ -289,7 +289,7 @@
             </emphasis>
          </p>
          <figure src="L_2014064EN.01000301.tif" content="signature"/>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
 <!--
-  Units and blocks. Mode "block" turns Formex structure into <unit>s and blocks; f:blocks turns
+  Occurrences and blocks. Mode "block" turns Formex structure into <occurrence>s and blocks; f:blocks turns
   mixed content (a P holding text and a LIST, a CELL, a TXT) into a sequence of blocks, wrapping
   each run of inline content in a <p>.
 
   Tunnel parameters:
-    $ctx         ids of the amendment markers already attributed to an enclosing unit or block
+    $ctx         ids of the amendment markers already attributed to an enclosing occurrence or block
     $pending     markers covering an element that produces no block of its own (a P that becomes
                  a p and a list, a single ALINEA): attached to every block it produces
-    $base        the eId of the enclosing unit
-    $levels      the levels' context (annexes.xsl), which each unit that numbers levels within it
+    $base        the eId of the enclosing occurrence
+    $levels      the levels' context (annexes.xsl), which each occurrence that numbers levels within it
                  starts afresh (an annex, an article, a point, a cell, a quoted structure):
                    base     the eId its levels hang off
                    ctx      $ctx there: levels are flat, so a level's provenance is everything
@@ -30,7 +30,7 @@
                  the fragments (files) of the annex being converted: what is numbered through them
                  (quotations, letters) counts the earlier ones
     $quoted      inside a quoted structure: an annex there is numbered among the quotation's
-    $table       the enclosing table: its eId, and each of its rows' numbers: units in cells hang
+    $table       the enclosing table: its eId, and each of its rows' numbers: occurrences in cells hang
                  off tab_N/tr_N/td_N (tables.xsl)
     $init        the recitals' opening words, where 01.01 puts them inside the first CONSID
 
@@ -235,7 +235,7 @@
 
   <!-- ============================================================ other blocks -->
 
-  <!-- the unit a quotation is numbered within: the one its eId hangs off (an ALINEA's text is its
+  <!-- the occurrence a quotation is numbered within: the one its eId hangs off (an ALINEA's text is its
        article's or paragraph's); outside any (the body, an attachment's file), the file -->
   <xsl:function name="f:quotation-scope" as="element()">
     <xsl:param name="quote" as="element(QUOT.S)"/>
@@ -245,7 +245,7 @@
                                              or self::CONSID or self::VISA or self::NOTE][1], root($quote)/*)[1]"/>
   </xsl:function>
 
-  <!-- what an amending act inserts or substitutes; its units get eIds under …/qstr_N -->
+  <!-- what an amending act inserts or substitutes; its occurrences get eIds under …/qstr_N -->
   <xsl:template match="QUOT.S" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
@@ -310,7 +310,7 @@
   </xsl:template>
 
   <!-- an image with its caption, and the transcription of its text (IMG.CNT) as its description,
-       whose units hang off fgr_N, numbered through the file -->
+       whose occurrences hang off fgr_N, numbered through the file -->
   <xsl:template match="INCL.ELEMENT[@TYPE = 'TIFF']" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>

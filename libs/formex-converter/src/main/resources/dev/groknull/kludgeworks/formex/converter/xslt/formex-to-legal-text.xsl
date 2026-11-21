@@ -43,7 +43,7 @@
   <xsl:include href="provenance.xsl"/>
   <xsl:include href="eid.xsl"/>
   <xsl:include href="inline.xsl"/>
-  <xsl:include href="units.xsl"/>
+  <xsl:include href="occurrences.xsl"/>
   <xsl:include href="articles.xsl"/>
   <xsl:include href="lists.xsl"/>
   <xsl:include href="annexes.xsl"/>
@@ -288,7 +288,7 @@
           <!-- a consolidation's annexes: CONS.ANNEX, or for a non-regular structure CONS.DOC.GEN TYPE="ANNEX" -->
           <xsl:variable name="groups" as="array(element())*" select="f:annex-groups(($content/CONS.ANNEX, $content/CONTENTS/CONS.ANNEX,
                                                               $content/self::CONS.DOC.GEN/CONS.DOC.GEN[@TYPE = 'ANNEX'], $annexes))"/>
-          <xsl:variable name="annex-units" as="element()*">
+          <xsl:variable name="annex-occurrences" as="element()*">
             <xsl:for-each select="$groups">
               <xsl:variable name="fragments" as="element()*" select="?*"/>
               <xsl:apply-templates select="$fragments[1]" mode="annex">
@@ -323,7 +323,7 @@
             </xsl:for-each>
           </xsl:variable>
           <!-- the notes of the act's file and those it includes, printed after it as each file's are
-               (an annex's or an attached document's, in its unit): before the annexes if they are
+               (an annex's or an attached document's, in its occurrence): before the annexes if they are
                files of their own, else after them. A consolidated version's table notes are its table's -->
           <xsl:variable name="notes" as="element()?">
             <xsl:call-template name="f:notes">
@@ -332,9 +332,9 @@
           </xsl:variable>
           <xsl:variable name="files" as="xs:boolean" select="exists($annexes | $package/FMX/DOC.SUB.PUB[f:is-attachment(.)])"/>
           <xsl:sequence select="$notes[$files]"/>
-          <xsl:if test="$annex-units or $letters or $attachments">
+          <xsl:if test="$annex-occurrences or $letters or $attachments">
             <annexes>
-              <xsl:sequence select="$annex-units, $letters, $attachments"/>
+              <xsl:sequence select="$annex-occurrences, $letters, $attachments"/>
             </annexes>
           </xsl:if>
           <xsl:sequence select="$notes[not($files)]"/>
@@ -381,15 +381,15 @@
   <!-- ============================================================ labels the source repeats -->
 
   <!-- Where the published text gives one label twice under one parent (Annex XI points 1., 2., 2.),
-       the units keep the label, and so share their eId, as published; they are marked ambiguous, which
+       the occurrences keep the label, and so share their eId, as published; they are marked ambiguous, which
        legal-text.sch allows. A shared eId without that (no label, or different labels) is a
        converter error. -->
   <xsl:mode name="f:ambiguity" on-no-match="shallow-copy" on-multiple-match="fail"/>
 
-  <!-- units and quoted structures: a quotation in a unit the source repeats shares its eId too -->
-  <xsl:key name="f:live-unit" match="(lt:unit | lt:quotedStructure)[not(ancestor::lt:deleted)]" use="@eId"/>
+  <!-- occurrences and quoted structures: a quotation in an occurrence the source repeats shares its eId too -->
+  <xsl:key name="f:live-occurrence" match="(lt:occurrence | lt:quotedStructure)[not(ancestor::lt:deleted)]" use="@eId"/>
 
-  <xsl:template match="(lt:unit | lt:quotedStructure)[not(ancestor::lt:deleted)][f:ambiguous(.)]" mode="f:ambiguity">
+  <xsl:template match="(lt:occurrence | lt:quotedStructure)[not(ancestor::lt:deleted)][f:ambiguous(.)]" mode="f:ambiguity">
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="#current"/>
       <xsl:attribute name="ambiguous" select="true()"/>
@@ -397,27 +397,27 @@
     </xsl:copy>
   </xsl:template>
 
-  <!-- a unit shares its eId because the source repeats its label in one sequence (the same list,
+  <!-- an occurrence shares its eId because the source repeats its label in one sequence (the same list,
        article or annex: copies in two lists are two sequences, which the eIds must tell apart), or
        because its parent's eId is shared that way: then its own (pnt_2/pnt_a under both points 2) is
        too -->
   <xsl:function name="f:ambiguous" as="xs:boolean">
-    <xsl:param name="unit" as="element()"/>
-    <xsl:variable name="copies" as="element()+" select="key('f:live-unit', $unit/@eId, root($unit))"/>
+    <xsl:param name="occurrence" as="element()"/>
+    <xsl:variable name="copies" as="element()+" select="key('f:live-occurrence', $occurrence/@eId, root($occurrence))"/>
     <xsl:sequence select="count($copies) gt 1 and (
-        (f:printed-label($unit) != ''
-         and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($unit)
-              and f:sequence($c) is f:sequence($unit)))
-        or (every $c in $copies satisfies f:unit-parent($c)[self::lt:unit or self::lt:quotedStructure][f:ambiguous(.)])
-        or f:eid-parents-ambiguous($unit))"/>
+        (f:printed-label($occurrence) != ''
+         and (every $c in $copies satisfies f:printed-label($c) = f:printed-label($occurrence)
+              and f:sequence($c) is f:sequence($occurrence)))
+        or (every $c in $copies satisfies f:occurrence-parent($c)[self::lt:occurrence or self::lt:quotedStructure][f:ambiguous(.)])
+        or f:eid-parents-ambiguous($occurrence))"/>
   </xsl:function>
 
-  <!-- the units whose eId this one's extends (a flat annex level's parent level isn't its XML
+  <!-- the occurrences whose eId this one's extends (a flat annex level's parent level isn't its XML
        parent): shared, all marked ambiguous, so this one's eId is shared through them -->
   <xsl:function name="f:eid-parents-ambiguous" as="xs:boolean">
-    <xsl:param name="unit" as="element()"/>
-    <xsl:variable name="parent-eid" as="xs:string?" select="f:eid-base($unit/@eId)"/>
-    <xsl:variable name="parents" as="element()*" select="$parent-eid ! key('f:live-unit', ., root($unit))"/>
+    <xsl:param name="occurrence" as="element()"/>
+    <xsl:variable name="parent-eid" as="xs:string?" select="f:eid-base($occurrence/@eId)"/>
+    <xsl:variable name="parents" as="element()*" select="$parent-eid ! key('f:live-occurrence', ., root($occurrence))"/>
     <xsl:sequence select="count($parents) gt 1 and (every $p in $parents satisfies f:ambiguous($p))"/>
   </xsl:function>
 
@@ -426,36 +426,36 @@
        the EU subdivision table named, its kind and number, in any language (CHAPTER I and CAPÍTULO I,
        Article 2 and Artículo 2 of a text printed in two) -->
   <xsl:function name="f:printed-label" as="xs:string">
-    <xsl:param name="unit" as="element()"/>
-    <xsl:variable name="segment" as="xs:string" select="f:eid-segment($unit/@eId)"/>
+    <xsl:param name="occurrence" as="element()"/>
+    <xsl:variable name="segment" as="xs:string" select="f:eid-segment($occurrence/@eId)"/>
     <xsl:sequence select="
-        if (($unit/@kind = 'division' and f:eid-abbr($unit/@eId) = ($f:division-codes ! lower-case(.)) or $unit/@kind = ('article', 'annex'))
-            and exists($unit/lt:num) and not(starts-with($segment, 'art_unnumbered'))) then $segment
-        else lower-case(replace(string-join($unit/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
+        if (($occurrence/@kind = 'division' and f:eid-abbr($occurrence/@eId) = ($f:division-codes ! lower-case(.)) or $occurrence/@kind = ('article', 'annex'))
+            and exists($occurrence/lt:num) and not(starts-with($segment, 'art_unnumbered'))) then $segment
+        else lower-case(replace(string-join($occurrence/lt:num//@v), '[^\p{L}\p{N}]', ''))"/>
   </xsl:function>
 
-  <!-- the sequence a unit is numbered in: its parent, through divisions, which group units without
+  <!-- the sequence an occurrence is numbered in: its parent, through divisions, which group occurrences without
        adding to their eIds (articles act-wide, recitals preamble-wide); a list is a sequence of its own -->
   <xsl:function name="f:sequence" as="node()">
-    <xsl:param name="unit" as="element()"/>
-    <xsl:sequence select="$unit/ancestor::*[not(self::lt:unit[@kind = 'division'])][1]"/>
+    <xsl:param name="occurrence" as="element()"/>
+    <xsl:sequence select="$occurrence/ancestor::*[not(self::lt:occurrence[@kind = 'division'])][1]"/>
   </xsl:function>
 
-  <xsl:function name="f:unit-parent" as="node()">
-    <xsl:param name="unit" as="element()"/>
-    <xsl:sequence select="($unit/ancestor::*[@eId][1], root($unit))[1]"/>
+  <xsl:function name="f:occurrence-parent" as="node()">
+    <xsl:param name="occurrence" as="element()"/>
+    <xsl:sequence select="($occurrence/ancestor::*[@eId][1], root($occurrence))[1]"/>
   </xsl:function>
 
   <!-- ============================================================ the outline -->
 
-  <!-- A unit with a title has its title's rank in the text's outline: 1 the outermost, a title under
+  <!-- An occurrence with a title has its title's rank in the text's outline: 1 the outermost, a title under
        another one deeper. A title is an article's, an annex's, a division's, a letter's or an attached
        document's label and heading, or an annex level's heading or label line (PART 2); not a
        point's, a paragraph's or a recital's number, nor a definition's term. A text an amendment
-       quotes is under the unit quoting it. -->
+       quotes is under the occurrence quoting it. -->
   <xsl:mode name="f:outline" on-no-match="shallow-copy" on-multiple-match="fail"/>
 
-  <xsl:template match="lt:unit[f:titled(.)]" mode="f:outline">
+  <xsl:template match="lt:occurrence[f:titled(.)]" mode="f:outline">
     <xsl:copy>
       <xsl:apply-templates select="@*" mode="#current"/>
       <xsl:attribute name="rank" select="f:rank(.)"/>
@@ -464,26 +464,26 @@
   </xsl:template>
 
   <xsl:function name="f:titled" as="xs:boolean" cache="yes">
-    <xsl:param name="unit" as="element(lt:unit)"/>
+    <xsl:param name="occurrence" as="element(lt:occurrence)"/>
     <xsl:sequence select="
-        $unit/@kind = ('division', 'subdivision', 'article', 'annex', 'attachment', 'letter') and exists($unit/(lt:num | lt:heading))
-        or $unit/@kind = 'level' and exists($unit/lt:heading | $unit[not(xs:boolean(@numbered))]/lt:num)"/>
+        $occurrence/@kind = ('division', 'subdivision', 'article', 'annex', 'attachment', 'letter') and exists($occurrence/(lt:num | lt:heading))
+        or $occurrence/@kind = 'level' and exists($occurrence/lt:heading | $occurrence[not(xs:boolean(@numbered))]/lt:num)"/>
   </xsl:function>
 
   <xsl:function name="f:rank" as="xs:integer" cache="yes">
-    <xsl:param name="unit" as="element(lt:unit)"/>
-    <xsl:sequence select="(f:outer($unit) ! (f:rank(.) + 1), 1)[1]"/>
+    <xsl:param name="occurrence" as="element(lt:occurrence)"/>
+    <xsl:sequence select="(f:outer($occurrence) ! (f:rank(.) + 1), 1)[1]"/>
   </xsl:function>
 
-  <!-- the unit with a title this one's is under: an annex level's, the nearest level before it the
+  <!-- the occurrence with a title this one's is under: an annex level's, the nearest level before it the
        source nests less deep (annex levels are flat), else its parent's; anything else's, its
        nearest titled ancestor's -->
-  <xsl:function name="f:outer" as="element(lt:unit)?">
-    <xsl:param name="unit" as="element(lt:unit)"/>
-    <xsl:variable name="scope" as="element()?" select="($unit/ancestor::lt:unit[1], $unit/ancestor::lt:body[1], root($unit)/*)[1]"/>
-    <xsl:variable name="enclosing" as="element(lt:unit)?" select="
-        ($unit[@kind = 'level'] ! ($scope//lt:unit[@kind = 'level'][. &lt;&lt; $unit][xs:integer(@depth) lt xs:integer($unit/@depth)])[last()],
-         $unit/ancestor::lt:unit[1])[1]"/>
+  <xsl:function name="f:outer" as="element(lt:occurrence)?">
+    <xsl:param name="occurrence" as="element(lt:occurrence)"/>
+    <xsl:variable name="scope" as="element()?" select="($occurrence/ancestor::lt:occurrence[1], $occurrence/ancestor::lt:body[1], root($occurrence)/*)[1]"/>
+    <xsl:variable name="enclosing" as="element(lt:occurrence)?" select="
+        ($occurrence[@kind = 'level'] ! ($scope//lt:occurrence[@kind = 'level'][. &lt;&lt; $occurrence][xs:integer(@depth) lt xs:integer($occurrence/@depth)])[last()],
+         $occurrence/ancestor::lt:occurrence[1])[1]"/>
     <xsl:sequence select="$enclosing[f:titled(.)], $enclosing[not(f:titled(.))] ! f:outer(.)"/>
   </xsl:function>
 
@@ -691,17 +691,17 @@
       <xsl:for-each select="VISA">
         <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
         <xsl:variable name="eid" as="xs:string" select="f:eid('pbl_1', 'cit', string($before + position()))"/>
-        <xsl:variable name="unit" as="element()">
-          <unit eId="{$eid}" kind="citation">
+        <xsl:variable name="occurrence" as="element()">
+          <occurrence eId="{$eid}" kind="citation">
             <xsl:sequence select="f:provenance($m)"/>
             <xsl:call-template name="f:blocks">
               <xsl:with-param name="nodes" as="node()*" select="node()"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
               <xsl:with-param name="ctx" as="xs:string*" select="f:ids($m)" tunnel="yes"/>
             </xsl:call-template>
-          </unit>
+          </occurrence>
         </xsl:variable>
-        <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+        <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
       </xsl:for-each>
     </citations>
   </xsl:template>
@@ -797,8 +797,8 @@
         if (f:numbered-recital(.)) then following-sibling::CONSID[f:continues-recital(.)][empty($next) or . &lt;&lt; $next] else ()"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid('pbl_1', 'rct', (f:label($number)[. != ''], string(f:recital-position(.)))[1])"/>
     <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="recital">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="recital">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:if test="$number">
           <num>
@@ -815,13 +815,13 @@
           <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <!-- recitals grouped under a heading (DIV.CONSID, "A. PROCEDURE"), as divisions group articles:
-       unit kind="division", eId pbl_1/division_A, nested under the enclosing group -->
+       occurrence kind="division", eId pbl_1/division_A, nested under the enclosing group -->
   <xsl:template match="DIV.CONSID" mode="recital">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="groupIntro" as="element(GR.CONSID.INIT)*" select="()"/>
@@ -832,8 +832,8 @@
                                          else f:typed-label(string($line), $f:division-codes, .))[. != ''],
                                         string(count(preceding-sibling::DIV.CONSID) + 1))[1]"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(($division?eid, 'pbl_1')[1], 'division', $label)"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="division">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -865,9 +865,9 @@
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each-group>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <!-- a CONSID that only wraps a group (01.01), and recitals written as a LIST: their content; opening

@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1964/2005 of "/>
                <date date="2005-11-29">
@@ -58,7 +58,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 2 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -66,7 +66,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -81,8 +81,8 @@
                <t v="08030019"/>
                <t v=") originating in ACP countries."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -93,8 +93,8 @@
                </date>
                <t v=". The Commission should therefore adopt interim measures for the issue of import licences for January and February 2006 to ensure Community supplies, ensure the continuity of trade with the ACP countries and avoid disruptions of trade flow. These measure are without prejudice to the detailed rules to be adopted later in 2006."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -113,8 +113,8 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" and who actually imported bananas originating in the ACP countries in 2005. Given the temporary nature of these measures, applications lodged by new operators not registered in previous years should not be accepted."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -131,8 +131,8 @@
                <number v="10000"/>
                <t v=" tonnes of products of ACP origin were released into free circulation in the new Member States."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
@@ -141,55 +141,55 @@
                <number v="750000"/>
                <t v=" tonnes, determined by reference to imports of ACP bananas, licences may be issued on the basis of the reference quantity or annual allocation notified for 2005."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="In the case of operators who obtained a reference quantity or annual allocation for 2005 under either the tariff quotas A/B or the accession-related additional quantity set by Regulation (EC) No 1892/2004, on the basis of imports of products from all third countries, not specifically products originating in ACP countries, provision should be made for licence applications to be accompanied by proof of actual import of products originating in ACP countries in 2005. The lodging of applications for quantities unrelated to imports of products from the origin in question during 2005 should be prevented. In the interests of management and monitoring, the number of applications per operator should be restricted."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="However, to help improve the fluidity of trade flows and give operators greater flexibility of action, a ceiling should not be set on the quantity for which a licence application may be lodged."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
             <p>
                <t v="Licences should be issued in proportion to the quantities requested, in accordance with the simultaneous examination method."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
             <p>
                <t v="Appropriate detailed rules should therefore be adopted."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_10" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_10" kind="recital">
             <num>
                <t v="(10)"/>
             </num>
             <p>
                <t v="To enable licence applications to be lodged in time, this Regulation should enter into force immediately."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_11" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_11" kind="recital">
             <num>
                <t v="(11)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Management Committee for Bananas,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -198,14 +198,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="tis_I" kind="division" rank="1">
+      <occurrence eId="tis_I" kind="division" rank="1">
          <num>
             <t v="TITLE I"/>
          </num>
          <subheading>
             <t v="General provisions"/>
          </subheading>
-         <unit eId="art_1" kind="article" rank="2">
+         <occurrence eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -217,8 +217,8 @@
                <t v="08030019"/>
                <t v=" originating in the ACP countries under the tariff quota referred to in Article 1(2) of Regulation (EC) No 1964/2005, for January and February 2006."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
@@ -229,57 +229,57 @@
                <t v="For January and February 2006,"/>
             </p>
             <list kind="dash">
-               <unit eId="art_2/idt_1" kind="indent">
+               <occurrence eId="art_2/idt_1" kind="indent">
                   <p>
                      <t v="a quantity of "/>
                      <number v="135000"/>
                      <t v=" tonnes shall be available for the issue of import licences to operators referred to in Title II. This tariff quota’s serial number shall be 09.4160,"/>
                   </p>
-               </unit>
-               <unit eId="art_2/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="art_2/idt_2" kind="indent">
                   <p>
                      <t v="a quantity of "/>
                      <number v="25000"/>
                      <t v=" tonnes shall be available for the issue of import licences to operators referred to in Title III. This tariff quota’s serial number shall be 09.4162."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="tis_II" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_II" kind="division" rank="1">
          <num>
             <t v="TITLE II"/>
          </num>
          <subheading>
             <t v="Operators registered under tariff quota C, referred to in Article 18(1) of Regulation (EEC) No 404/93, for 2005"/>
          </subheading>
-         <unit eId="art_3" kind="article" rank="2">
+         <occurrence eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
             <heading>
                <t v="Lodging of licence applications"/>
             </heading>
-            <unit eId="art_3/unp_1" kind="paragraph">
+            <occurrence eId="art_3/unp_1" kind="paragraph">
                <p>
                   <t v="For January and February 2006, each traditional operator C and each non-traditional operator C, as referred to in Article 3(3) and Article 7(1) of Commission Regulation (EC) No 896/2001"/>
                   <noteRef href="#note_4" marker="4"/>
                   <t v=" respectively, may lodge one or more import licence applications for up to a maximum, as the case may be, of"/>
                </p>
                <list kind="dash">
-                  <unit eId="art_3/unp_1/idt_1" kind="indent">
+                  <occurrence eId="art_3/unp_1/idt_1" kind="indent">
                      <p>
                         <t v="in the case of traditional operators C, the reference quantity established and notified in respect of 2005 under tariff quota C, pursuant to Article 5(4) of Regulation (EC) No 896/2001,"/>
                      </p>
-                  </unit>
-                  <unit eId="art_3/unp_1/idt_2" kind="indent">
+                  </occurrence>
+                  <occurrence eId="art_3/unp_1/idt_2" kind="indent">
                      <p>
                         <t v="in the case of non-traditional operators C, the quantity established and notified in respect of 2005 under tariff quota C, pursuant to Article 9(3) of Regulation (EC) No 896/2001."/>
                      </p>
-                  </unit>
+                  </occurrence>
                </list>
-            </unit>
-            <unit eId="art_3/unp_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_3/unp_2" kind="paragraph">
                <p>
                   <t v="Box 20 of licence applications and licences shall contain the entry "/>
                   <quote startQuote="‘" endQuote="’">
@@ -287,32 +287,32 @@
                   </quote>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="tis_III" kind="division" rank="1">
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_III" kind="division" rank="1">
          <num>
             <t v="TITLE III"/>
          </num>
          <subheading>
             <t v="Other operators"/>
          </subheading>
-         <unit eId="art_4" kind="article" rank="2">
+         <occurrence eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
             <heading>
                <t v="Lodging of licence applications"/>
             </heading>
-            <unit eId="art_4/par_1" kind="paragraph">
+            <occurrence eId="art_4/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
                <p>
                   <t v="Operators established in the Community, registered for the quotas A/B referred to in Article 18(1) of Regulation (EEC) No 404/93 or the additional quantity set by Regulation (EC) No 1892/2004, who, in 2005, have released bananas originating in ACP countries into free circulation may lodge a single import licence application in relation to the quantity set in the second indent of Article 2."/>
                </p>
-            </unit>
-            <unit eId="art_4/par_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_4/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
@@ -321,8 +321,8 @@
                   <noteRef href="#note_5" marker="5"/>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="art_4/par_3" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_4/par_3" kind="paragraph">
                <num>
                   <t v="3."/>
                </num>
@@ -333,24 +333,24 @@
                   </quote>
                   <t v="."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="tis_IV" kind="division" rank="1">
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_IV" kind="division" rank="1">
          <num>
             <t v="TITLE IV"/>
          </num>
          <subheading>
             <t v="Common provisions"/>
          </subheading>
-         <unit eId="art_5" kind="article" rank="2">
+         <occurrence eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
             <heading>
                <t v="Applications"/>
             </heading>
-            <unit eId="art_5/par_1" kind="paragraph">
+            <occurrence eId="art_5/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
@@ -365,24 +365,24 @@
                   </date>
                   <t v=" with the competent authorities of the Member State which established the reference quantity, in the case of traditional operators, and of the Member State where the operator is registered in the case of non-traditional operators, accompanied by proof that a security has been provided for an amount of EUR 150 per tonne under Title III of Regulation (EEC) No 2220/85."/>
                </p>
-            </unit>
-            <unit eId="art_5/par_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_5/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
                <p>
                   <t v="Applications which are not submitted in accordance with Articles 3 and 4 shall not be admissible."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_6" kind="article" rank="2">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
             <heading>
                <t v="Issuing of licences"/>
             </heading>
-            <unit eId="art_6/par_1" kind="paragraph">
+            <occurrence eId="art_6/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
@@ -393,48 +393,48 @@
                   </date>
                   <t v=" of the total quantity for which admissible licence applications have been lodged, giving separate figures for the operators referred to in Title II and those referred to in Title III."/>
                </p>
-            </unit>
-            <unit eId="art_6/par_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_6/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
                <p>
                   <t v="In the light of the notifications under paragraph 1 and having regard to the quantity set in Article 2, the Commission shall, if appropriate, set reduction coefficients to be applied to each licence application in the case of the operators referred to in Title II and Title III respectively."/>
                </p>
-            </unit>
-            <unit eId="art_6/par_3" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_6/par_3" kind="paragraph">
                <num>
                   <t v="3."/>
                </num>
                <p>
                   <t v="The competent authorities shall issue import licences, where appropriate applying the reduction coefficients referred to in paragraph 2."/>
                </p>
-            </unit>
-            <unit eId="art_6/par_4" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_6/par_4" kind="paragraph">
                <num>
                   <t v="4."/>
                </num>
                <p>
                   <t v="Where, in cases in which paragraph 3 applies, the licence is issued for a quantity less than the quantity requested, the security referred to in Article 4(3) shall be released without delay for the quantity not awarded."/>
                </p>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="tis_V" kind="division" rank="1">
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="tis_V" kind="division" rank="1">
          <num>
             <t v="TITLE V"/>
          </num>
          <subheading>
             <t v="Final provisions"/>
          </subheading>
-         <unit eId="art_7" kind="article" rank="2">
+         <occurrence eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
             <heading>
                <t v="Period of validity and charging of licences"/>
             </heading>
-            <unit eId="art_7/par_1" kind="paragraph">
+            <occurrence eId="art_7/par_1" kind="paragraph">
                <num>
                   <t v="1."/>
                </num>
@@ -449,17 +449,17 @@
                   </date>
                   <t v="."/>
                </p>
-            </unit>
-            <unit eId="art_7/par_2" kind="paragraph">
+            </occurrence>
+            <occurrence eId="art_7/par_2" kind="paragraph">
                <num>
                   <t v="2."/>
                </num>
                <p>
                   <t v="The quantities for which licences have been used under this Regulation shall be taken into account for the administration of the tariff quota provided for in Article 1(2) of Regulation (EC) No 1964/2005 and, where appropriate, charged to the allocations to be granted to operators subsequently for 2006 under that tariff quota."/>
                </p>
-            </unit>
-         </unit>
-         <unit eId="art_8" kind="article" rank="2">
+            </occurrence>
+         </occurrence>
+         <occurrence eId="art_8" kind="article" rank="2">
             <num>
                <t v="Article 8"/>
             </num>
@@ -473,8 +473,8 @@
                </date>
                <t v=" of the quantities for which licences have been issued, a clear distinction being made between quantities issued to operators referred to in Title II and operators referred to in Title III."/>
             </p>
-         </unit>
-         <unit eId="art_9" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_9" kind="article" rank="2">
             <num>
                <t v="Article 9"/>
             </num>
@@ -488,8 +488,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>

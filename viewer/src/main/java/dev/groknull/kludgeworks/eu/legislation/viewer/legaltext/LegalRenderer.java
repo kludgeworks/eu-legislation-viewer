@@ -29,9 +29,9 @@ import org.springframework.stereotype.Component;
  * markup, and recurses with {@code ${html.children(node)}}. jte escapes the text that it writes. To
  * add an element to legal-text, add its template. The coverage test asks for it.
  *
- * <p>A page can render some units in a different way, with {@link #instead}. For example, the Whole
- * text of a comparison marks each unit that differs and gives it a sidenote. The other units show
- * as they read.
+ * <p>A page can render some occurrences in a different way, with {@link #instead}. For example, the
+ * Whole text of a comparison marks each occurrence that differs and gives it a sidenote. The other
+ * occurrences show as they read.
  */
 @Component
 public class LegalRenderer {
@@ -62,21 +62,22 @@ public class LegalRenderer {
   }
 
   /**
-   * Returns a copy of this renderer that renders the units whose eIds are in {@code instead} as
-   * {@code instead} says. This applies wherever such a unit is, in all that the copy renders.
+   * Returns a copy of this renderer that renders the occurrences whose eIds are in {@code instead}
+   * as {@code instead} says. This applies wherever such an occurrence is, in all that the copy
+   * renders.
    */
   public LegalRenderer instead(Map<String, Otherwise> instead) {
     return new LegalRenderer(templates, chosen, instead);
   }
 
   /**
-   * A different way to render a unit. It gets the unit and the renderer that renders it. Within
-   * what it renders instead, the renderer can render the unit as it is ({@link #asIs}) and what is
-   * in the unit.
+   * A different way to render an occurrence. It gets the occurrence and the renderer that renders
+   * it. Within what it renders instead, the renderer can render the occurrence as it is ({@link
+   * #asIs}) and what is in the occurrence.
    */
   @FunctionalInterface
   public interface Otherwise {
-    Content render(Element unit, LegalRenderer html);
+    Content render(Element occurrence, LegalRenderer html);
   }
 
   /**
@@ -152,7 +153,7 @@ public class LegalRenderer {
   }
 
   private void render(Element element, @Nullable String parent, TemplateOutput out) {
-    var eId = element.name().equals("unit") ? element.attribute("eId") : null;
+    var eId = element.name().equals("occurrence") ? element.attribute("eId") : null;
     var otherwise = eId == null ? null : instead.get(eId);
     if (otherwise != null) {
       otherwise.render(element, this).writeTo(out);

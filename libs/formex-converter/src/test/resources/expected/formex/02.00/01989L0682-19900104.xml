@@ -70,35 +70,35 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Economic Community, and in particular Article 100a thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the Commission"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="In cooperation with the European Parliament"/>
                <noteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_4" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to the opinion of the Economic and Social Committee"/>
                <noteRef href="#note_3" marker="3"/>
                <t v=","/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Whereas it is necessary to adopt measures with the aim of progressively establishing the internal market over a period expiring on "/>
                <date date="1992-12-31">
@@ -106,29 +106,29 @@
                </date>
                <t v="; whereas the internal market comprises an area without internal frontiers in which the free movement of goods, persons, services and capital is ensured;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <p>
                <t v="Whereas Article 13 of Directive 86/298/EEC"/>
                <noteRef href="#note_4" marker="4"/>
                <t v=" lays down that the provisions at present in force shall be supplemented by provisions introducing additional impact tests into the dynamic test procedure;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <p>
                <t v="Whereas, since provision is already made for an additional test in the case of the static test procedure, it is necessary also in that of the dynamic test procedure to provide for an additional test which more accurately reflects the situation in the event of tractor roll-over in order that these two test procedures may be rendered equivalent and the present imbalance between them eliminated;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <p>
                <t v="Whereas the purely theoretical parameters and calculations on which the additional dynamic impact test was initially based have been the subject of practical experiments that leave no doubt as to their reliability;"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <p>
                <t v="Whereas it is also necessary to amend the scope of Directive 86/298/EEC so as to clarify the wording of the second indent of Article 1 concerning the tyres fitted to the front and rear axles, and thus eliminate any possibility of differing interpretations,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -137,7 +137,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -145,7 +145,7 @@
             <t v="Directive 86/298/EEC is hereby amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="art_1/pnt_1" kind="point" numbered="true">
+            <occurrence eId="art_1/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -153,7 +153,7 @@
                   <t v="the second indent of Article 1 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_1/qstr_1">
-                  <unit eId="art_1/pnt_1/qstr_1/idt_1" kind="point">
+                  <occurrence eId="art_1/pnt_1/qstr_1/idt_1" kind="point">
                      <num>
                         <t v="‘"/>
                         <t v="—"/>
@@ -168,10 +168,10 @@
                         <t v=" mm;"/>
                         <t v="’"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </quotedStructure>
-            </unit>
-            <unit eId="art_1/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="art_1/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -179,10 +179,10 @@
                   <t v="in Annex II, point 3.1.1 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_2/qstr_1">
-                  <unit eId="art_1/pnt_2/qstr_1/pnt_3.1.1"
-                        kind="level"
-                        depth="1"
-                        numbered="true">
+                  <occurrence eId="art_1/pnt_2/qstr_1/pnt_3.1.1"
+                              kind="level"
+                              depth="1"
+                              numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="3.1.1."/>
@@ -194,13 +194,13 @@
                         <t v="If, during the dynamic test, significant tears or cracks appear, an additional impact test or crushing test as defined in point 1.6 of Annex III (A) must be performed immediately after the test which caused these tears or cracks to appear."/>
                         <t v="’"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </quotedStructure>
                <p>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="art_1/pnt_3" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="art_1/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -208,11 +208,11 @@
                   <t v="in Annex III (A), point 1.6 is replaced by the following:"/>
                </p>
                <quotedStructure eId="art_1/pnt_3/qstr_1">
-                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6"
-                        kind="level"
-                        depth="1"
-                        numbered="true"
-                        rank="2">
+                  <occurrence eId="art_1/pnt_3/qstr_1/pnt_1.6"
+                              kind="level"
+                              depth="1"
+                              numbered="true"
+                              rank="2">
                      <num>
                         <t v="‘"/>
                         <t v="1.6."/>
@@ -220,11 +220,11 @@
                      <heading>
                         <t v="Additional tests"/>
                      </heading>
-                  </unit>
-                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.1"
-                        kind="level"
-                        depth="2"
-                        numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_1/pnt_3/qstr_1/pnt_1.6.1"
+                              kind="level"
+                              depth="2"
+                              numbered="true">
                      <num>
                         <t v="1.6.1."/>
                      </num>
@@ -284,11 +284,11 @@
                      <p>
                         <t v="In order to be able to carry out the additional test, it is necessary to measure the elastic deformation during all of the impact tests."/>
                      </p>
-                  </unit>
-                  <unit eId="art_1/pnt_3/qstr_1/pnt_1.6.2"
-                        kind="level"
-                        depth="2"
-                        numbered="true">
+                  </occurrence>
+                  <occurrence eId="art_1/pnt_3/qstr_1/pnt_1.6.2"
+                              kind="level"
+                              depth="2"
+                              numbered="true">
                      <num>
                         <t v="1.6.2."/>
                      </num>
@@ -300,13 +300,13 @@
                         <t v=", shall be performed immediately after the crushing test which caused these tears and cracks to appear."/>
                         <t v="’"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </quotedStructure>
                <p>
                   <t v=";"/>
                </p>
-            </unit>
-            <unit eId="art_1/pnt_4" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="art_1/pnt_4" kind="point" numbered="true">
                <provenance amendingAct="31989L0682R(01)"
                            action="replaced"
                            location="TO"
@@ -318,10 +318,10 @@
                   <t v="in Annex V, the following point is inserted:"/>
                </p>
                <quotedStructure eId="art_1/pnt_4/qstr_1">
-                  <unit eId="art_1/pnt_4/qstr_1/pnt_7.3"
-                        kind="level"
-                        depth="1"
-                        numbered="true">
+                  <occurrence eId="art_1/pnt_4/qstr_1/pnt_7.3"
+                              kind="level"
+                              depth="1"
+                              numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="7.3."/>
@@ -330,15 +330,15 @@
                         <t v="Indication and results of any additional dynamic test"/>
                         <t v="’"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </quotedStructure>
                <p>
                   <t v="."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -349,15 +349,15 @@
             </date>
             <t v=". They shall forthwith inform the Commission thereof."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <p>
             <t v="This Directive is addressed to the Member States."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

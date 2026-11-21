@@ -57,7 +57,7 @@ public record ComparePage(
   /** The segment of the part with the changes, in the view that {@link #VIEW} asks for. */
   public static final String CHANGES = "changes";
 
-  /** The segment of the part with the units of a fold that are the same in both versions. */
+  /** The segment of the part with the occurrences of a fold that are the same in both versions. */
   public static final String SAME = "same";
 
   /**
@@ -67,8 +67,8 @@ public record ComparePage(
   public static final String DIFFERENCE = "difference";
 
   /**
-   * The segment of the part with the differences at one place: the units that an amendment names.
-   * The page of an amending act loads the wording of each of its changes from it.
+   * The segment of the part with the differences at one place: the occurrences that an amendment
+   * names. The page of an amending act loads the wording of each of its changes from it.
    */
   public static final String PLACE = "place";
 
@@ -87,7 +87,7 @@ public record ComparePage(
   /** The path of the part with the changes. */
   public static final String CHANGES_PATH = PATH + "/" + CHANGES;
 
-  /** The path of the part with the units of a fold. */
+  /** The path of the part with the occurrences of a fold. */
   public static final String SAME_PATH = PATH + "/" + SAME;
 
   /** The path of the part with one difference. */
@@ -112,7 +112,7 @@ public record ComparePage(
    * The field of the eId of the provision that the page is limited to. Only the page has it. For
    * example, {@code art_6/par_2}.
    */
-  public static final String UNIT = "unit";
+  public static final String OCCURRENCE = "occurrence";
 
   /** The field of the code of the view. */
   public static final String VIEW = "view";
@@ -123,16 +123,16 @@ public record ComparePage(
    */
   public static final String SIDES = "sides";
 
-  /** The field of the eId of the first unit of a fold. */
+  /** The field of the eId of the first occurrence of a fold. */
   public static final String FIRST = "first";
 
-  /** The field of the eId of the last unit of a fold. */
+  /** The field of the eId of the last occurrence of a fold. */
   public static final String LAST = "last";
 
   /** The field that asks a difference for its outline only, with the value {@code true}. */
   public static final String OUTLINE = "outline";
 
-  /** The field of the eId of the unit of a difference. */
+  /** The field of the eId of the occurrence of a difference. */
   public static final String EID = "eId";
 
   /** The field of the number of a table in a difference, from 0 in the order of the text. */
@@ -186,11 +186,11 @@ public record ComparePage(
   }
 
   /**
-   * Returns the address of the page, limited to the provision {@code unit}. For example, {@code
-   * …/compare?from=…&to=…&unit=art_6%2Fpar_2}.
+   * Returns the address of the page, limited to the provision {@code occurrence}. For example,
+   * {@code …/compare?from=…&to=…&occurrence=art_6%2Fpar_2}.
    */
-  public String href(String unit) {
-    return path + query(earlier(), later()) + "&" + UNIT + "=" + encode(unit);
+  public String href(String occurrence) {
+    return path + query(earlier(), later()) + "&" + OCCURRENCE + "=" + encode(occurrence);
   }
 
   /**
@@ -208,8 +208,8 @@ public record ComparePage(
   }
 
   /**
-   * Returns the address of the difference at the unit {@code eId}, with the page's query but not
-   * its view. For example, {@code …/compare/difference?from=…&to=…&eId=anx_I}.
+   * Returns the address of the difference at the occurrence {@code eId}, with the page's query but
+   * not its view. For example, {@code …/compare/difference?from=…&to=…&eId=anx_I}.
    */
   public String difference(String eId) {
     return path + "/" + DIFFERENCE + query(from, to) + act(act) + "&" + EID + "=" + encode(eId);
@@ -225,34 +225,35 @@ public record ComparePage(
   }
 
   /**
-   * Returns the address of the differences at the units {@code eIds}, with the page's query but not
-   * its view. For example, {@code …/compare/place?from=…&to=…&act=32022R1190&eId=art_3%2Fpnt_8}.
+   * Returns the address of the differences at the occurrences {@code eIds}, with the page's query
+   * but not its view. For example, {@code
+   * …/compare/place?from=…&to=…&act=32022R1190&eId=art_3%2Fpnt_8}.
    */
   public String place(List<String> eIds) {
-    var units = new StringBuilder();
-    eIds.forEach(eId -> units.append('&').append(EID).append('=').append(encode(eId)));
-    return path + "/" + PLACE + query(from, to) + act(act) + units;
+    var occurrences = new StringBuilder();
+    eIds.forEach(eId -> occurrences.append('&').append(EID).append('=').append(encode(eId)));
+    return path + "/" + PLACE + query(from, to) + act(act) + occurrences;
   }
 
   /**
-   * Returns the address of the wording of the units {@code eIds} on each of the two days of the
-   * page, side by side. It is the address of {@link #place}, with {@link #SIDES} and the days.
+   * Returns the address of the wording of the occurrences {@code eIds} on each of the two days of
+   * the page, side by side. It is the address of {@link #place}, with {@link #SIDES} and the days.
    */
   public String sides(List<String> eIds) {
     return place(eIds) + "&" + SIDES + "=true" + days();
   }
 
   /**
-   * Returns the address of the outline of the difference at the unit {@code eId}: the units in it,
-   * without their text. An annex inserted whole shows it.
+   * Returns the address of the outline of the difference at the occurrence {@code eId}: the
+   * occurrences in it, without their text. An annex inserted whole shows it.
    */
   public String outline(String eId) {
     return difference(eId) + "&" + OUTLINE + "=true";
   }
 
   /**
-   * Returns the address of the unit {@code eId} in Read, in the version at the To end. For example,
-   * {@code /eli/reg_impl/2015/1998/2026-10-01/eng#anx_VIII} for the page {@code
+   * Returns the address of the occurrence {@code eId} in Read, in the version at the To end. For
+   * example, {@code /eli/reg_impl/2015/1998/2026-10-01/eng#anx_VIII} for the page {@code
    * /eli/reg_impl/2015/1998/eng/compare}.
    */
   public String read(String eId) {
@@ -262,17 +263,18 @@ public record ComparePage(
   }
 
   /**
-   * Returns the address of the units that are the same in the versions from {@code earlier} and
-   * from {@code later}. A fold loads them from this address, followed by {@code &} and its {@link
-   * #fold} query. For example, {@code /eli/reg_impl/2015/1998/eng/compare/same?from=…&to=…}.
+   * Returns the address of the occurrences that are the same in the versions from {@code earlier}
+   * and from {@code later}. A fold loads them from this address, followed by {@code &} and its
+   * {@link #fold} query. For example, {@code /eli/reg_impl/2015/1998/eng/compare/same?from=…&to=…}.
    */
   public String same(LocalDate earlier, LocalDate later) {
     return path + "/" + SAME + query(earlier, later);
   }
 
   /**
-   * Returns the query that asks for the units of a fold, from the unit {@code first} to the unit
-   * {@code last}, by their eIds. For example, {@code first=anx%2Fpnt_a&last=anx%2Fpnt_b}.
+   * Returns the query that asks for the occurrences of a fold, from the occurrence {@code first} to
+   * the occurrence {@code last}, by their eIds. For example, {@code
+   * first=anx%2Fpnt_a&last=anx%2Fpnt_b}.
    */
   public static String fold(String first, String last) {
     return FIRST + "=" + encode(first) + "&" + LAST + "=" + encode(last);

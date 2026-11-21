@@ -95,7 +95,7 @@
   <x:scenario label="A consolidated agreement with annexes and related documents (1994/604, CONS.OTH)">
     <x:context href="../resources/fixtures/formex/01.02/01994D0604-20040601/CL1994D0604EN0050010.0001.xml"/>
     <x:expect label="keeps the act's own text (ACT.GEN)" test="exists($x:result/*:body/*:p)"/>
-    <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:unit[@kind = 'annex']/@eId = 'anx'"/>
+    <x:expect label="makes the annex (CONS.DOC.GEN TYPE=ANNEX) an annex" test="$x:result/*:annexes/*:occurrence[@kind = 'annex']/@eId = 'anx'"/>
   </x:scenario>
 
   <x:scenario label="A consolidated treaty, numbered in the title around its documents (02016ME/TXT: 2016/C 202/01)">
@@ -130,7 +130,7 @@
       </CONS.OTH>
     </x:context>
     <x:expect label="falls back to the outer document when there is no inner document with enacting terms"
-              test="$x:result/*:body/*:unit[@kind = 'article']/@eId = 'art_1'
+              test="$x:result/*:body/*:occurrence[@kind = 'article']/@eId = 'art_1'
                     and $x:result/*:source/@celex = '02016M/TXT-20190501'"/>
   </x:scenario>
 
@@ -151,7 +151,7 @@
       </CONS.OTH>
     </x:context>
     <x:expect label="converts the document from the outer CONS.DOC.GEN"
-              test="$x:result/*:body/*:unit[@kind = 'article']/@eId = 'art_1'
+              test="$x:result/*:body/*:occurrence[@kind = 'article']/@eId = 'art_1'
                     and $x:result/*:source/@celex = '02005S/TXT-20091218'"/>
   </x:scenario>
 
@@ -176,9 +176,9 @@
       </CONS.ACT>
     </x:context>
     <x:expect label="rank a chapter, then its article, an annex, then its levels each under the one before it the source nests less deep"
-              test="deep-equal($x:result//*:unit[@rank] ! (@kind || ' ' || @rank), ('division 1', 'article 2', 'annex 1', 'level 2', 'level 3', 'level 4'))"/>
+              test="deep-equal($x:result//*:occurrence[@rank] ! (@kind || ' ' || @rank), ('division 1', 'article 2', 'annex 1', 'level 2', 'level 3', 'level 4'))"/>
     <x:expect label="a paragraph's or a point's number isn't a title"
-              test="empty($x:result//*:unit[@kind = ('paragraph', 'point')]/@rank)"/>
+              test="empty($x:result//*:occurrence[@kind = ('paragraph', 'point')]/@rank)"/>
   </x:scenario>
 
 </x:description>

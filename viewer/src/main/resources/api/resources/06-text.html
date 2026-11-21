@@ -29,8 +29,8 @@
     language.</dd>
   <dt>av:outline</dt>
   <dd>The <a href="#outline">outline</a> of the text.</dd>
-  <dt>av:unit</dt>
-  <dd>A <a href="#unit">unit</a> of the text, by its eId. A template with one variable, <span class="mono">eId</span>.
+  <dt>av:occurrence</dt>
+  <dd>A <a href="#occurrence">occurrence</a> of the text, by its eId. A template with one variable, <span class="mono">eId</span>.
     For example, <span class="mono">art_3</span> or <span class="mono">anx/pnt_1.2</span>.</dd>
   <dt>av:preparation</dt>
   <dd>The <a href="#preparation">preparation</a> of the texts of the act in the language.</dd>
@@ -42,14 +42,14 @@
 <dl class="api-members">
   <dt>text</dt>
   <dd>A paragraph of running text.</dd>
-  <dt>unit</dt>
+  <dt>occurrence</dt>
   <dd>An article, a paragraph, a point, an annex and so on. It has an <span class="mono">eId</span>, a
     <span class="mono">kind</span>, and its blocks in <span class="mono">content</span>. It can have a
     <span class="mono">num</span>, a <span class="mono">heading</span> and a <span class="mono">subheading</span>. The
     list of kinds can grow.</dd>
   <dt>table</dt>
   <dd>A table, in <span class="mono">rows</span> of <span class="mono">cells</span>. A cell holds blocks, because a cell
-    can hold units.</dd>
+    can hold occurrences.</dd>
   <dt>figure</dt>
   <dd>An image, by the name of its file.</dd>
   <dt>quotation</dt>

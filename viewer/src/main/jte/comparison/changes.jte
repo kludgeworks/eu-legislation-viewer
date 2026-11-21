@@ -12,7 +12,7 @@
 @param Map<Integer, SidenoteView> sidenotes
 @param SidenoteParts parts
 @param LegalRenderer html
-@param String units
+@param String occurrences
 @param ComparePage page
 @param List<ControlsView.ViewLink> views
 <%-- Shows a comparison's Changes view on an act's page. The controls come first. They show how
@@ -20,13 +20,13 @@
      with its changes marked and a number beside it. A sidenote beside each provision says what
      happened, which acts made the change and when each applies. It also says what the provision was
      before. The sidenotes map is keyed by difference number.
-     Units before a difference that are the same in both texts are in a fold. When the reader opens
-     the fold, htmx loads them from the content module through the units address, by eId. In a
+     Occurrences before a difference that are the same in both texts are in a fold. When the reader opens
+     the fold, htmx loads them from the content module through the occurrences address, by eId. In a
      changed table, runs of rows that are the same in both texts are folded too, and an annex
      inserted whole shows only its size. These load from the difference's own address (page) when
      the reader opens them. The
-     opening of the unit that holds a difference shows as context. The later text's outline is beside
-     the view, with a count of differences for each unit. Compare has no act filter: the view shows the
+     opening of the occurrence that holds a difference shows as context. The later text's outline is beside
+     the view, with a count of differences for each occurrence. Compare has no act filter: the view shows the
      changes of all acts. --%>
 <div class="outlined">
 <act-outline>
@@ -42,15 +42,15 @@
   <div class="book legal-text legal-text-consolidated">
     @for(var passage : changes.passages())
       @if(passage instanceof ChangesView.Fold fold)
-        <details class="fold" hx-get="${units}?${fold.query()}" hx-trigger="toggle once" hx-target="find .fold-text" hx-swap="innerHTML">
+        <details class="fold" hx-get="${occurrences}?${fold.query()}" hx-trigger="toggle once" hx-target="find .fold-text" hx-swap="innerHTML">
           <summary>${fold.label()} — ${fold.note()}<span class="show"> · <u>show</u></span></summary>
           <div class="fold-text"><p class="status">Loading…</p></div>
         </details>
       @elseif(passage instanceof ChangesView.Lead lead)
-        <div class="lead">${html.element(lead.unit())}</div>
+        <div class="lead">${html.element(lead.occurrence())}</div>
       @elseif(passage instanceof ChangesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        @template.comparison.difference(shown = shown, sidenote = sidenote, unit = html.element(shown.folded(page)), page = page, parts = parts)
+        @template.comparison.difference(shown = shown, sidenote = sidenote, occurrence = html.element(shown.folded(page)), page = page, parts = parts)
       @endif
     @endfor
   </div>

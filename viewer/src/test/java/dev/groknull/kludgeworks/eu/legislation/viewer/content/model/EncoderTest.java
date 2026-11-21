@@ -85,7 +85,7 @@ class EncoderTest {
 
   private static String text(String attributes) {
     return """
-    <legalText %s><body><unit %s><heading><t v="Scope"/></heading></unit></body></legalText>
+    <legalText %s><body><occurrence %s><heading><t v="Scope"/></heading></occurrence></body></legalText>
     """
         .formatted(NS, attributes);
   }

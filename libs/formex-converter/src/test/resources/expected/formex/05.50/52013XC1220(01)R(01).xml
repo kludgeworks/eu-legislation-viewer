@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="The Notice of the expiry of certain anti-dumping measures 2013/C 373/11 which was published under the section "/>
             <quote startQuote="‘" endQuote="’">
@@ -45,7 +45,7 @@
             </quote>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

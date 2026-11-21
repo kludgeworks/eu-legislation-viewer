@@ -5,7 +5,7 @@
  * comparison/changes.jte and the other views).
  *
  * The `<act-outline>` element follows the reader. One IntersectionObserver watches the places the
- * outline leads to: the units its links go to in Read, and every difference in Compare. When the
+ * outline leads to: the occurrences its links go to in Read, and every difference in Compare. When the
  * reader passes one, the outline marks the entry for the part in view, opens the branches above
  * it, and scrolls itself to keep it in sight. Its head says where the reader is: in Compare
  * "Difference 663 of 1,828 · Annex IV", with ↑ and ↓ links to the difference before and after; in
@@ -106,7 +106,7 @@ const links = (nav) =>
 
 /**
  * Returns the places the outline follows, in the order of the page: every difference in Compare
- * (an outline with counts), the units the outline links to in Read.
+ * (an outline with counts), the occurrences the outline links to in Read.
  *
  * @param {Element} nav the outline
  * @param {Document} root
@@ -355,7 +355,7 @@ export class ActOutline extends HTMLElement {
       });
       this.#waiting.observe(this, { childList: true });
     }
-    // The text of Read loads after the outline, and a fold adds units when it opens.
+    // The text of Read loads after the outline, and a fold adds occurrences when it opens.
     document.addEventListener("htmx:after:swap", this.#watch);
     window.addEventListener("scrollend", this.#update);
     this.addEventListener("click", this.#onClick);

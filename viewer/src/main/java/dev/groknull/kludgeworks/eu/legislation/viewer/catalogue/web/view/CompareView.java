@@ -70,7 +70,7 @@ public record CompareView(
    * for {@code act}, on {@code today}. {@code from} and {@code to} are the versions whose texts
    * show the law on the two days, {@link Act#textOn}.
    *
-   * @param unit the eId of the provision that the page is limited to, or null
+   * @param occurrence the eId of the provision that the page is limited to, or null
    * @param marks the marks of the built texts in {@code language}, by version
    */
   public static CompareView of(
@@ -79,7 +79,7 @@ public record CompareView(
       LocalDate fromDay,
       Version to,
       LocalDate toDay,
-      @Nullable String unit,
+      @Nullable String occurrence,
       Language language,
       LocalDate today,
       Map<Version, TextMarks> marks) {
@@ -89,19 +89,22 @@ public record CompareView(
         act.inclusions(language, marks).between(from, to).stream()
             .filter(amending::contains)
             .toList();
-    var text = unit == null ? null : marks.get(to);
-    var name = text == null || unit == null ? null : ProvisionView.name(act, unit, text, language);
+    var text = occurrence == null ? null : marks.get(to);
+    var name =
+        text == null || occurrence == null
+            ? null
+            : ProvisionView.name(act, occurrence, text, language);
     var changed =
-        text == null || unit == null
+        text == null || occurrence == null
             ? between
-            : act.historyOf(unit, text, language).acts().stream()
+            : act.historyOf(occurrence, text, language).acts().stream()
                 .filter(between::contains)
                 .toList()
                 .reversed();
     var kept = toDay.equals(today) ? null : toDay;
-    var subject = unit == null ? act.id().cited() : name == null ? "this provision" : name;
+    var subject = occurrence == null ? act.id().cited() : name == null ? "this provision" : name;
     return new CompareView(
-        heading(act, unit, name),
+        heading(act, occurrence, name),
         days(fromDay, toDay),
         DayView.of(
             act,
@@ -109,14 +112,14 @@ public record CompareView(
             fromDay,
             Links.history(eli, null, language),
             Links.compare(eli, language),
-            unit,
+            occurrence,
             language),
         said(changed.size(), subject),
         links(act, changed, kept, language),
-        unit == null ? null : Links.compare(eli, fromDay, toDay, language),
-        text == null || unit == null
+        occurrence == null ? null : Links.compare(eli, fromDay, toDay, language),
+        text == null || occurrence == null
             ? List.of()
-            : ProvisionView.steps(act, unit, text, toDay, today, language, changed));
+            : ProvisionView.steps(act, occurrence, text, toDay, today, language, changed));
   }
 
   /**
@@ -156,9 +159,9 @@ public record CompareView(
     return links;
   }
 
-  private static String heading(Act act, @Nullable String unit, @Nullable String name) {
+  private static String heading(Act act, @Nullable String occurrence, @Nullable String name) {
     var cited = act.id().cited();
-    return (unit == null ? cited : (name == null ? "A provision" : name) + " of " + cited)
+    return (occurrence == null ? cited : (name == null ? "A provision" : name) + " of " + cited)
         + " on two days";
   }
 

@@ -20,7 +20,8 @@ import org.jspecify.annotations.Nullable;
  * <ul>
  *   <li>The text is in parts, as the Official Journal prints it: the title, the preamble, the
  *       enacting terms (the body), the conclusions, the annexes and the notes.
- *   <li>A part holds blocks: running text, units, tables, figures, quotations and deleted text.
+ *   <li>A part holds blocks: running text, occurrences, tables, figures, quotations and deleted
+ *       text.
  *   <li>Running text has two forms: plain {@code text}, and {@code html} in a closed list of
  *       elements.
  * </ul>
@@ -64,20 +65,21 @@ public record PublicText(
   @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, property = "type")
   @JsonSubTypes({
     @JsonSubTypes.Type(value = Text.class, name = "text"),
-    @JsonSubTypes.Type(value = Unit.class, name = "unit"),
+    @JsonSubTypes.Type(value = Occurrence.class, name = "occurrence"),
     @JsonSubTypes.Type(value = Table.class, name = "table"),
     @JsonSubTypes.Type(value = Figure.class, name = "figure"),
     @JsonSubTypes.Type(value = Quotation.class, name = "quotation"),
     @JsonSubTypes.Type(value = Deleted.class, name = "deleted")
   })
-  public sealed interface Block permits Text, Unit, Table, Figure, Quotation, Deleted {}
+  public sealed interface Block permits Text, Occurrence, Table, Figure, Quotation, Deleted {}
 
   /**
    * A paragraph of running text.
    *
    * @param text the plain text
    * @param html the text as HTML
-   * @param amendedBy the amendments that gave the paragraph its wording, if they are not its unit's
+   * @param amendedBy the amendments that gave the paragraph its wording, if they are not its
+   *     occurrence's
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -92,7 +94,7 @@ public record PublicText(
   }
 
   /**
-   * A unit: an article, a paragraph, a point, an annex and so on.
+   * An occurrence: an article, a paragraph, a point, an annex and so on.
    *
    * @param eId its identifier in the text. For example, {@code art_3/par_2/pnt_a}.
    * @param kind what it is. For example, {@code article} or {@code point}. The list can grow.
@@ -100,12 +102,12 @@ public record PublicText(
    *     has none.
    * @param heading its heading. Absent if it has none.
    * @param subheading a second heading, under the first. Absent if it has none.
-   * @param amendedBy the amendments that gave the unit its wording, the outermost first
+   * @param amendedBy the amendments that gave the occurrence its wording, the outermost first
    * @param content what it holds, in order
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
-  public record Unit(
+  public record Occurrence(
       String eId,
       String kind,
       @Nullable String num,
@@ -114,7 +116,7 @@ public record PublicText(
       List<Amendment> amendedBy,
       List<Block> content)
       implements Block {
-    public Unit {
+    public Occurrence {
       amendedBy = List.copyOf(amendedBy);
       content = List.copyOf(content);
     }
@@ -126,7 +128,8 @@ public record PublicText(
    * @param caption its title
    * @param rows its rows, in order. A group of rows starts with its heading row.
    * @param notes the notes of the table, numbered in it
-   * @param amendedBy the amendments that gave the table its wording, if they are not its unit's
+   * @param amendedBy the amendments that gave the table its wording, if they are not its
+   *     occurrence's
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -182,7 +185,7 @@ public record PublicText(
    *     signature}, {@code techDesign} or {@code other}. Absent if the source does not say.
    * @param caption the text printed with the image
    * @param description the text in the image, written out
-   * @param amendedBy the amendments that gave the image its form, if they are not its unit's
+   * @param amendedBy the amendments that gave the image its form, if they are not its occurrence's
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -201,8 +204,8 @@ public record PublicText(
   }
 
   /**
-   * Text that an amending act quotes: the units that it inserts or replaces in another act. It is
-   * not law of this act.
+   * Text that an amending act quotes: the occurrences that it inserts or replaces in another act.
+   * It is not law of this act.
    *
    * @param eId its identifier in the text
    * @param content the quoted blocks
@@ -255,14 +258,14 @@ public record PublicText(
   public record Amendment(String act, String action) {}
 
   /**
-   * The wording of a unit that a comparison marked: the plain text before and after the change, and
-   * the runs of words that stayed, went in and went out.
+   * The wording of an occurrence that a comparison marked: the plain text before and after the
+   * change, and the runs of words that stayed, went in and went out.
    *
    * @param before the text before the change
    * @param after the text after the change
    * @param changes the runs, in order. The text before is the runs that are not inserted, and the
    *     text after is the runs that are not deleted. Each paragraph, and each number and heading of
-   *     a unit in the unit, ends with a line feed, except the last.
+   *     an occurrence in the occurrence, ends with a line feed, except the last.
    */
   @ValueObject
   public record Marked(String before, String after, List<Change> changes) {
@@ -295,13 +298,13 @@ public record PublicText(
   }
 
   /**
-   * A unit and the notes that it refers to: what the API gives for one unit.
+   * An occurrence and the notes that it refers to: what the API gives for one occurrence.
    *
-   * @param unit the unit
-   * @param notes the notes that the unit refers to, in the order of the text
+   * @param occurrence the occurrence
+   * @param notes the notes that the occurrence refers to, in the order of the text
    */
   @ValueObject
-  public record Extract(Unit unit, List<Note> notes) {
+  public record Extract(Occurrence occurrence, List<Note> notes) {
     public Extract {
       notes = List.copyOf(notes);
     }

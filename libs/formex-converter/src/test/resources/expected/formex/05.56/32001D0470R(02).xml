@@ -31,11 +31,11 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 30, Article 15, paragraphs 4 and 5 are renumbered as paragraphs 3 and 4 respectively."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

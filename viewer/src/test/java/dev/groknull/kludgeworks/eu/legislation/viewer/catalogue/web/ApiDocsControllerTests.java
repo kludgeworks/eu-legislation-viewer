@@ -43,7 +43,7 @@ class ApiDocsControllerTests {
             "amendments",
             "text",
             "outline",
-            "unit",
+            "occurrence",
             "preparation",
             "comparison",
             "difference");
@@ -79,7 +79,7 @@ class ApiDocsControllerTests {
                 "preparation",
                 "retry",
                 "text",
-                "unit",
+                "occurrence",
                 "version"))
         .allSatisfy(
             relation -> assertThat(page.select("#resources #" + relation)).as(relation).hasSize(1));

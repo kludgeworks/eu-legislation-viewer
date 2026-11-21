@@ -60,7 +60,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -79,15 +79,15 @@
                </date>
                <t v=", specific provisions laid down in Article 3(2) of that Protocol."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="It is recalled that it is the practice of the Council to devote every effort to strengthening the democratic legitimacy of decisions taken by a qualified majority,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -96,7 +96,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="sct_1" kind="division" rank="1">
+      <occurrence eId="sct_1" kind="division" rank="1">
          <num>
             <t v="SECTION 1"/>
          </num>
@@ -112,7 +112,7 @@
                </date>
             </emphasis>
          </subheading>
-         <unit eId="art_1" kind="article" rank="2">
+         <occurrence eId="art_1" kind="article" rank="2">
             <num>
                <t v="Article 1"/>
             </num>
@@ -128,45 +128,45 @@
                <t v=", if members of the Council, representing:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_1/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_1/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="at least three quarters of the population; or"/>
                   </p>
-               </unit>
-               <unit eId="art_1/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_1/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="at least three quarters of the number of Member States;"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="necessary to constitute a blocking minority resulting from the application of Article 9C(4), first subparagraph, of the Treaty on European Union or Article 205(2) of the Treaty on the Functioning of the European Union, indicate their opposition to the Council adopting an act by a qualified majority, the Council shall discuss the issue."/>
             </p>
-         </unit>
-         <unit eId="art_2" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_2" kind="article" rank="2">
             <num>
                <t v="Article 2"/>
             </num>
             <p>
                <t v="The Council shall, in the course of these discussions, do all in its power to reach, within a reasonable time and without prejudicing obligatory time limits laid down by Union law, a satisfactory solution to address concerns raised by the members of the Council referred to in Article 1."/>
             </p>
-         </unit>
-         <unit eId="art_3" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_3" kind="article" rank="2">
             <num>
                <t v="Article 3"/>
             </num>
             <p>
                <t v="To this end, the President of the Council, with the assistance of the Commission and in compliance with the Rules of Procedure of the Council, shall undertake any initiative necessary to facilitate a wider basis of agreement in the Council. The members of the Council shall lend him or her their assistance."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="sct_2" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="sct_2" kind="division" rank="1">
          <num>
             <t v="SECTION 2"/>
          </num>
@@ -178,7 +178,7 @@
                </date>
             </emphasis>
          </subheading>
-         <unit eId="art_4" kind="article" rank="2">
+         <occurrence eId="art_4" kind="article" rank="2">
             <num>
                <t v="Article 4"/>
             </num>
@@ -190,45 +190,45 @@
                <t v=", if members of the Council, representing:"/>
             </p>
             <list kind="alpha">
-               <unit eId="art_4/pnt_a" kind="point" numbered="true">
+               <occurrence eId="art_4/pnt_a" kind="point" numbered="true">
                   <num>
                      <t v="(a)"/>
                   </num>
                   <p>
                      <t v="at least 55 % of the population; or"/>
                   </p>
-               </unit>
-               <unit eId="art_4/pnt_b" kind="point" numbered="true">
+               </occurrence>
+               <occurrence eId="art_4/pnt_b" kind="point" numbered="true">
                   <num>
                      <t v="(b)"/>
                   </num>
                   <p>
                      <t v="at least 55 % of the number of Member States;"/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
             <p>
                <t v="necessary to constitute a blocking minority resulting from the application of Article 9C(4), first subparagraph, of the Treaty on European Union or Article 205(2) of the Treaty on the Functioning of the European Union, indicate their opposition to the Council adopting an act by a qualified majority, the Council shall discuss the issue."/>
             </p>
-         </unit>
-         <unit eId="art_5" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_5" kind="article" rank="2">
             <num>
                <t v="Article 5"/>
             </num>
             <p>
                <t v="The Council shall, in the course of these discussions, do all in its power to reach, within a reasonable time and without prejudicing obligatory time limits laid down by Union law, a satisfactory solution to address concerns raised by the members of the Council referred to in Article 4."/>
             </p>
-         </unit>
-         <unit eId="art_6" kind="article" rank="2">
+         </occurrence>
+         <occurrence eId="art_6" kind="article" rank="2">
             <num>
                <t v="Article 6"/>
             </num>
             <p>
                <t v="To this end, the President of the Council, with the assistance of the Commission and in compliance with the Rules of Procedure of the Council, shall undertake any initiative necessary to facilitate a wider basis of agreement in the Council. The members of the Council shall lend him or her their assistance."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="sct_3" kind="division" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="sct_3" kind="division" rank="1">
          <num>
             <t v="SECTION 3"/>
          </num>
@@ -237,15 +237,15 @@
                <t v="ENTRY INTO FORCE"/>
             </emphasis>
          </subheading>
-         <unit eId="art_7" kind="article" rank="2">
+         <occurrence eId="art_7" kind="article" rank="2">
             <num>
                <t v="Article 7"/>
             </num>
             <p>
                <t v="This Decision shall enter into force on the date of the entry into force of the Treaty of Lisbon."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

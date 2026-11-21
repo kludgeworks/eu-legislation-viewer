@@ -33,7 +33,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 8, footnote 2, destination "/>
             <t v="F09"/>
@@ -43,7 +43,7 @@
             </quote>
             <t v=" is deleted."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

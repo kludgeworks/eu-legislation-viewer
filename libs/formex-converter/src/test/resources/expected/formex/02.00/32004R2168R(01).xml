@@ -29,14 +29,14 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 14, in the Annex, Part A.1, the logo for Protected Designation of Origin in Dutch is replaced by the following:"/>
          </p>
          <new>
             <figure src="L_2005088EN.01003802.tif"/>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

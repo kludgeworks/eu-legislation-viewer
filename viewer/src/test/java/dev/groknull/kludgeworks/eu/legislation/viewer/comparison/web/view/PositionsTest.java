@@ -7,7 +7,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibl
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-/** Tests how {@link Positions} names units without a number, as the Joint Practical Guide does. */
+/**
+ * Tests how {@link Positions} names occurrences without a number, as the Joint Practical Guide
+ * does.
+ */
 class PositionsTest {
 
   @Test
@@ -29,7 +32,7 @@ class PositionsTest {
   }
 
   @Test
-  void leavesUnitsWithoutAPositionOrOfMixedKindsToBeCounted() {
+  void leavesOccurrencesWithoutAPositionOrOfMixedKindsToBeCounted() {
     assertThat(Positions.spelled(List.of(new Sibling("indent_—", "indent", "—")), "indent"))
         .isEmpty();
     assertThat(

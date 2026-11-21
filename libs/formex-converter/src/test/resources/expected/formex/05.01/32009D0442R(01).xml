@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On the second page of the cover, at the end of the title of Commission Decision 2009/442/EC, the footnote reference "/>
             <quote startQuote="‘" endQuote="’">
@@ -41,8 +41,8 @@
             </quote>
             <t v=" is deleted."/>
          </p>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="On page 18, the sub-title "/>
             <quote startQuote="‘" endQuote="’">
@@ -50,7 +50,7 @@
             </quote>
             <t v=" is deleted."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

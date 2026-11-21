@@ -70,12 +70,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1763/2004 of "/>
                <date date="2004-10-11">
@@ -85,7 +85,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 10(a) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -93,15 +93,15 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Annex I to Regulation (EC) No 1763/2004 lists the persons covered by the freezing of funds and economic resources under that Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
@@ -120,7 +120,7 @@
                </date>
                <t v=" implements that Common Position. Annex I to Regulation (EC) No 1763/2004 should, therefore, be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -129,15 +129,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Annex I to Regulation (EC) No 1763/2004 is hereby amended as set out in the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -152,7 +152,7 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -160,7 +160,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -168,7 +168,7 @@
             <t v="The following persons shall be removed from Annex I to Regulation (EC) No 1763/2004:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="1."/>
                </num>
@@ -179,8 +179,8 @@
                   </date>
                   <t v=". Place of birth: Kozarac, Municipality of Prijedor, Bosnia and Herzegovina. Nationality: Bosnia and Herzegovina."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="2."/>
                </num>
@@ -191,8 +191,8 @@
                   </date>
                   <t v=". Place of birth: Senjski Rudnik, Serbia and Montenegro. Nationality: Serbia and Montenegro."/>
                </p>
-            </unit>
-            <unit eId="anx/pnt_3" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_3" kind="point" numbered="true">
                <num>
                   <t v="3."/>
                </num>
@@ -203,9 +203,9 @@
                   </date>
                   <t v=". Place of birth: Sekovici, Bosnia and Herzegovina. Nationality: Serbia and Montenegro."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

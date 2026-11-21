@@ -73,12 +73,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EEC) No 2658/87 of "/>
                <date date="1987-07-23">
@@ -88,7 +88,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(1)(a) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -96,31 +96,31 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="In order to ensure uniform application of the Combined Nomenclature annexed to Regulation (EEC) No 2658/87, it is necessary to adopt measures concerning the classification of the goods referred to in the Annex to this Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Regulation (EEC) No 2658/87 has laid down the general rules for the interpretation of the Combined Nomenclature. Those rules also apply to any other nomenclature which is wholly or partly based on it or which adds any additional subdivision to it and which is established by specific Community provisions, with a view to the application of tariff and other measures relating to trade in goods."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Pursuant to the said general rules, the goods described in column 1 of the table, set out in the Annex to this Regulation, should be classified under the CN codes indicated in column 2, by virtue of the reasons set out in column 3."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -133,15 +133,15 @@
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Customs Code Committee,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -150,23 +150,23 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The goods described in column 1 of the table set out in the Annex shall be classified within the Combined Nomenclature under the CN codes indicated in column 2 of that table."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="Binding tariff information issued by the customs authorities of Member States which is not in accordance with this Regulation can continue to be invoked for a period of three months under Article 12(6) of Regulation (EEC) No 2913/92."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -177,7 +177,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -185,7 +185,7 @@
       </p>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -229,7 +229,7 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx/tab_1/tr_3/td_1/pnt_1" kind="point" numbered="true">
+                  <occurrence eId="anx/tab_1/tr_3/td_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="1."/>
                      </num>
@@ -246,7 +246,7 @@
                         <t v="(See photograph)"/>
                         <noteRef href="#note_3" marker="1"/>
                      </p>
-                  </unit>
+                  </occurrence>
                </td>
                <td>
                   <p>
@@ -275,7 +275,7 @@
             </tr>
             <tr>
                <td>
-                  <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2" kind="point" numbered="true">
+                  <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2" kind="point" numbered="true">
                      <num>
                         <t v="2."/>
                      </num>
@@ -286,9 +286,9 @@
                         <t v="The label contains the following information:"/>
                      </p>
                      <list kind="arabic">
-                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1"
-                              kind="point"
-                              numbered="true">
+                        <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="1)"/>
                            </num>
@@ -299,7 +299,7 @@
                               <t v="Medicinally active ingredients:"/>
                            </p>
                            <list kind="definition">
-                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_1" kind="definition">
+                              <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_1" kind="definition">
                                  <num>
                                     <t v="—"/>
                                  </num>
@@ -310,8 +310,8 @@
                                     <t v="0,47"/>
                                     <t v=" g"/>
                                  </p>
-                              </unit>
-                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_2" kind="definition">
+                              </occurrence>
+                              <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_2" kind="definition">
                                  <num>
                                     <t v="—"/>
                                  </num>
@@ -322,8 +322,8 @@
                                     <t v="0,45"/>
                                     <t v=" g"/>
                                  </p>
-                              </unit>
-                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_3" kind="definition">
+                              </occurrence>
+                              <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_3" kind="definition">
                                  <num>
                                     <t v="—"/>
                                  </num>
@@ -334,8 +334,8 @@
                                     <t v="0,38"/>
                                     <t v=" g"/>
                                  </p>
-                              </unit>
-                              <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_4" kind="definition">
+                              </occurrence>
+                              <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_1/def_4" kind="definition">
                                  <num>
                                     <t v="—"/>
                                  </num>
@@ -346,7 +346,7 @@
                                     <t v="0,20"/>
                                     <t v=" g"/>
                                  </p>
-                              </unit>
+                              </occurrence>
                            </list>
                            <p>
                               <t v="Other ingredients:"/>
@@ -354,10 +354,10 @@
                            <p>
                               <t v="Rose hip husks, cornflower leaves, peppermint leaves, marigold blossom, liquorice root."/>
                            </p>
-                        </unit>
-                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_2"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_2"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="2)"/>
                            </num>
@@ -367,10 +367,10 @@
                            <p>
                               <t v="Pour one cup (approximately 150 ml) of boiling water onto one tea bag, cover and leave to brew for approximately 15 minutes and then remove the tea bag. Unless otherwise prescribed, one cup of freshly brewed tea 3 to 4 times a day between meals."/>
                            </p>
-                        </unit>
-                        <unit eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_3"
-                              kind="point"
-                              numbered="true">
+                        </occurrence>
+                        <occurrence eId="anx/tab_1/tr_4/td_1/list_2/pnt_2/pnt_3"
+                                    kind="point"
+                                    numbered="true">
                            <num>
                               <t v="3)"/>
                            </num>
@@ -380,9 +380,9 @@
                            <p>
                               <t v="To increase the volume of urine in the case of kidney or bladder catarrh and to prevent urinary gravel or stones."/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
-                  </unit>
+                  </occurrence>
                </td>
                <td>
                   <p>
@@ -424,7 +424,7 @@
             </notes>
          </table>
          <figure src="L_2005106EN.01001201.tif" content="other"/>
-      </unit>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

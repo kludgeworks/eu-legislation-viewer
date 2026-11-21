@@ -47,12 +47,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 1901/2006 of the European Parliament and of the Council of "/>
                <date date="2006-12-12">
@@ -62,7 +62,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 4(1) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -70,23 +70,23 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Article 4(1) of Regulation (EC) No 1901/2006 requires that the Commission appoints representatives of health professionals and patient associations to the European Medicines Agency Paediatric Committee."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="In accordance with Article 4(1) of Regulation (EC) No 1901/2006, a public call for expression of interest has been undertaken by the Commission. The European Parliament has been consulted on the result of the evaluation of the applications received in the framework of this call for expression of interest."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -97,15 +97,15 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Where a member or alternate representing health professionals appointed by this decision is no longer capable of contributing efficiently to the work of the Committee, or resigns, the Commission may replace this member from the reserve list, for the remaining duration of the member’s mandate,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -114,11 +114,11 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/par_1" kind="paragraph">
+         <occurrence eId="art_1/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -130,7 +130,7 @@
                <t v=":"/>
             </p>
             <list kind="definition" separator=":">
-               <unit eId="art_1/par_1/def_1" kind="definition">
+               <occurrence eId="art_1/par_1/def_1" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -140,8 +140,8 @@
                   <p>
                      <t v="Riccardo Riccardi,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_1/def_2" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -151,8 +151,8 @@
                   <p>
                      <t v="Maria Grazia Valsecchi,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_1/def_3" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -162,8 +162,8 @@
                   <p>
                      <t v="Antje Neubert,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1/def_4" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_1/def_4" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -173,8 +173,8 @@
                   <p>
                      <t v="Paolo Paolucci,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1/def_5" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_1/def_5" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -184,8 +184,8 @@
                   <p>
                      <t v="Johannes Taminiau,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_1/def_6" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_1/def_6" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -195,10 +195,10 @@
                   <p>
                      <t v="Doina Plesca."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-         <unit eId="art_1/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -210,7 +210,7 @@
                <t v=":"/>
             </p>
             <list kind="definition" separator=":">
-               <unit eId="art_1/par_2/def_1" kind="definition">
+               <occurrence eId="art_1/par_2/def_1" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -220,8 +220,8 @@
                   <p>
                      <t v="Günther Auerswald,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_2/def_2" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_2/def_2" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -231,8 +231,8 @@
                   <p>
                      <t v="Paola Baiardi,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_2/def_3" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_2/def_3" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -242,8 +242,8 @@
                   <p>
                      <t v="Michal Odermarsky"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_2/def_4" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_2/def_4" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -253,8 +253,8 @@
                   <p>
                      <t v="Milena Stevanovic,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_2/def_5" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_2/def_5" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -264,8 +264,8 @@
                   <p>
                      <t v="Tsvetana Schyns-Liharska,"/>
                   </p>
-               </unit>
-               <unit eId="art_1/par_2/def_6" kind="definition">
+               </occurrence>
+               <occurrence eId="art_1/par_2/def_6" kind="definition">
                   <num>
                      <t v="—"/>
                   </num>
@@ -275,11 +275,11 @@
                   <p>
                      <t v="Kerry Leeson-Beevers."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -287,18 +287,18 @@
             <t v="The following are hereby placed on a reserve list for health professionals by order of merit:"/>
          </p>
          <list kind="dash">
-            <unit eId="art_2/idt_1" kind="indent">
+            <occurrence eId="art_2/idt_1" kind="indent">
                <p>
                   <t v="Maurizio Scarpa,"/>
                </p>
-            </unit>
-            <unit eId="art_2/idt_2" kind="indent">
+            </occurrence>
+            <occurrence eId="art_2/idt_2" kind="indent">
                <p>
                   <t v="Jorrit Gerritsen."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

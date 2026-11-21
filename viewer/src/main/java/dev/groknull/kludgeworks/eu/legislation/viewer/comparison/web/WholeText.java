@@ -21,12 +21,12 @@ import org.jspecify.annotations.Nullable;
  * its number and its sidenote.
  *
  * <ul>
- *   <li>A changed provision has its own content marked, then the units in it. These units can also
- *       differ.
+ *   <li>A changed provision has its own content marked, then the occurrences in it. These
+ *       occurrences can also differ.
  *   <li>An inserted provision is marked as a whole.
  *   <li>The later text does not have a deleted provision. The deleted provision stands where it
- *       stood in the earlier text. It goes after the unit before it there. If there is none, it
- *       goes before the unit after it. If there is none, it goes at the end.
+ *       stood in the earlier text. It goes after the occurrence before it there. If there is none,
+ *       it goes before the occurrence after it. If there is none, it goes at the end.
  * </ul>
  *
  * <p>The differences that are not shown read as they are. For example, the differences of other
@@ -37,19 +37,19 @@ final class WholeText {
 
   /**
    * Returns the later text {@code later}, with the differences {@code shown} marked by {@code
-   * marked}. Each difference's unit is as {@code unit} gives it, for example with its rows folded.
-   * It places the deleted differences by the units of the earlier text. {@code earlier} has the
-   * eIds of these units in document order.
+   * marked}. Each difference's occurrence is as {@code occurrence} gives it, for example with its
+   * rows folded. It places the deleted differences by the occurrences of the earlier text. {@code
+   * earlier} has the eIds of these occurrences in document order.
    */
   static Content of(
       Element later,
       List<String> earlier,
       List<ChangesView.Shown> shown,
       LegalRenderer html,
-      Function<ChangesView.Shown, Element> unit,
+      Function<ChangesView.Shown, Element> occurrence,
       BiFunction<ChangesView.Shown, Content, Content> marked) {
-    var units = new HashSet<String>();
-    collect(later, units);
+    var occurrences = new HashSet<String>();
+    collect(later, occurrences);
     var at = new HashMap<String, ChangesView.Shown>();
     var before = new HashMap<String, List<ChangesView.Shown>>();
     var after = new HashMap<String, List<ChangesView.Shown>>();
@@ -60,7 +60,7 @@ final class WholeText {
         at.put(difference.eId(), each);
         continue;
       }
-      var placed = place(difference.eId(), difference.parent(), earlier, units);
+      var placed = place(difference.eId(), difference.parent(), earlier, occurrences);
       if (placed == null) {
         last.add(each);
       } else {
@@ -79,22 +79,22 @@ final class WholeText {
           (element, hooked) ->
               out -> {
                 for (var deleted : before.getOrDefault(eId, List.of())) {
-                  deletion(deleted, hooked, unit, marked).writeTo(out);
+                  deletion(deleted, hooked, occurrence, marked).writeTo(out);
                 }
                 var difference = at.get(eId);
                 if (difference == null) {
                   hooked.asIs(element).writeTo(out);
                 } else if (difference.difference().kind() == Kind.CHANGED) {
-                  // Mark its own content, then write the units in it as the text has them.
-                  marked.apply(difference, hooked.asIs(unit.apply(difference))).writeTo(out);
+                  // Mark its own content, then write the occurrences in it as the text has them.
+                  marked.apply(difference, hooked.asIs(occurrence.apply(difference))).writeTo(out);
                   for (var inside : inside(element)) {
                     hooked.element(inside).writeTo(out);
                   }
                 } else {
-                  marked.apply(difference, hooked.asIs(unit.apply(difference))).writeTo(out);
+                  marked.apply(difference, hooked.asIs(occurrence.apply(difference))).writeTo(out);
                 }
                 for (var deleted : after.getOrDefault(eId, List.of())) {
-                  deletion(deleted, hooked, unit, marked).writeTo(out);
+                  deletion(deleted, hooked, occurrence, marked).writeTo(out);
                 }
               });
     }
@@ -102,7 +102,7 @@ final class WholeText {
     return out -> {
       hooked.element(later).writeTo(out);
       for (var deleted : last) {
-        deletion(deleted, hooked, unit, marked).writeTo(out);
+        deletion(deleted, hooked, occurrence, marked).writeTo(out);
       }
     };
   }
@@ -110,35 +110,35 @@ final class WholeText {
   private static Content deletion(
       ChangesView.Shown deleted,
       LegalRenderer html,
-      Function<ChangesView.Shown, Element> unit,
+      Function<ChangesView.Shown, Element> occurrence,
       BiFunction<ChangesView.Shown, Content, Content> marked) {
-    return marked.apply(deleted, html.asIs(unit.apply(deleted)));
+    return marked.apply(deleted, html.asIs(occurrence.apply(deleted)));
   }
 
   /**
-   * Returns where a deleted unit {@code eId} in {@code parent} stands among the {@code units} of
-   * the later text.
+   * Returns where a deleted occurrence {@code eId} in {@code parent} stands among the {@code
+   * occurrences} of the later text.
    *
    * <ul>
-   *   <li>It stands after the nearest unit before it in the earlier text that the later text has.
-   *       If that unit is inside a sibling, it stands after that sibling.
-   *   <li>If that unit is its parent, or there is no such unit, it stands before the nearest unit
-   *       after it that the later text has. Its own sub-units do not count. If that unit is inside
-   *       a sibling, it stands before that sibling.
-   *   <li>If there is no unit after it either, returns none.
+   *   <li>It stands after the nearest occurrence before it in the earlier text that the later text
+   *       has. If that occurrence is inside a sibling, it stands after that sibling.
+   *   <li>If that occurrence is its parent, or there is no such occurrence, it stands before the
+   *       nearest occurrence after it that the later text has. The occurrences in it do not count.
+   *       If that occurrence is inside a sibling, it stands before that sibling.
+   *   <li>If there is no occurrence after it either, returns none.
    * </ul>
    *
    * <p>Also returns none if the earlier text does not have {@code eId}.
    */
   private static @Nullable Placed place(
-      String eId, @Nullable String parent, List<String> earlier, Set<String> units) {
+      String eId, @Nullable String parent, List<String> earlier, Set<String> occurrences) {
     var index = earlier.indexOf(eId);
     if (index < 0) {
       return null;
     }
     for (var i = index - 1; i >= 0; i--) {
       var each = earlier.get(i);
-      if (!units.contains(each)) {
+      if (!occurrences.contains(each)) {
         continue;
       }
       var beside = beside(each, parent);
@@ -150,7 +150,7 @@ final class WholeText {
     }
     for (var i = index + 1; i < earlier.size(); i++) {
       var each = earlier.get(i);
-      if (each.startsWith(eId + "/") || !units.contains(each)) {
+      if (each.startsWith(eId + "/") || !occurrences.contains(each)) {
         continue;
       }
       var beside = beside(each, parent);
@@ -160,9 +160,9 @@ final class WholeText {
   }
 
   /**
-   * Returns the unit that contains {@code eId} and is a child of {@code parent}. If {@code eId} is
-   * itself a child of {@code parent}, returns {@code eId}. Returns none if {@code eId} is {@code
-   * parent}, or if it is not inside {@code parent}.
+   * Returns the occurrence that contains {@code eId} and is a child of {@code parent}. If {@code
+   * eId} is itself a child of {@code parent}, returns {@code eId}. Returns none if {@code eId} is
+   * {@code parent}, or if it is not inside {@code parent}.
    */
   private static @Nullable String beside(String eId, @Nullable String parent) {
     var prefix = parent == null ? "" : parent + "/";
@@ -174,46 +174,46 @@ final class WholeText {
   }
 
   /**
-   * Returns the outermost units in {@code unit}, in document order. These are the units in it that
-   * are not inside another unit in it.
+   * Returns the outermost occurrences in {@code occurrence}, in document order. These are the
+   * occurrences in it that are not inside another occurrence in it.
    */
-  private static List<Element> inside(Element unit) {
-    var units = new ArrayList<Element>();
-    for (var child : unit.children()) {
-      outermost(child, units);
+  private static List<Element> inside(Element occurrence) {
+    var occurrences = new ArrayList<Element>();
+    for (var child : occurrence.children()) {
+      outermost(child, occurrences);
     }
-    return units;
+    return occurrences;
   }
 
-  private static void outermost(Element element, List<Element> units) {
+  private static void outermost(Element element, List<Element> occurrences) {
     if (eId(element) != null) {
-      units.add(element);
+      occurrences.add(element);
       return;
     }
     for (var child : element.children()) {
-      outermost(child, units);
+      outermost(child, occurrences);
     }
   }
 
-  private static void collect(Element element, Set<String> units) {
+  private static void collect(Element element, Set<String> occurrences) {
     var eId = eId(element);
     if (eId != null) {
-      units.add(eId);
+      occurrences.add(eId);
     }
     for (var child : element.children()) {
-      collect(child, units);
+      collect(child, occurrences);
     }
   }
 
   private static @Nullable String eId(Element element) {
-    return element.name().equals("unit") ? element.attribute("eId") : null;
+    return element.name().equals("occurrence") ? element.attribute("eId") : null;
   }
 
   /**
-   * Where a deleted unit stands.
+   * Where a deleted occurrence stands.
    *
-   * @param eId the unit of the later text that it stands beside
-   * @param after whether it stands after that unit, or before it
+   * @param eId the occurrence of the later text that it stands beside
+   * @param after whether it stands after that occurrence, or before it
    */
   private record Placed(String eId, boolean after) {}
 }

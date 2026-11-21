@@ -5,31 +5,31 @@
  * catalogue/text/ready.jte.
  *
  * The content module renders the text without the act, and htmx loads it into `.content`. So the
- * page lists the marks in `<margin-rules>`, next to the text. Each mark names a unit by its eId
- * (`data-unit`).
+ * page lists the marks in `<margin-rules>`, next to the text. Each mark names an occurrence by its eId
+ * (`data-occurrence`).
  *
- * - A `.rule-note` is for a change that does not apply on the day. Its unit gets an amber rule
+ * - A `.rule-note` is for a change that does not apply on the day. Its occurrence gets an amber rule
  *   (`.not-applying`) and the note beside it: the act, as a link to its page, and the state. With
- *   `data-heading`, only the heading of the unit gets the rule. A unit in a unit that has the rule
- *   already is not marked again. A unit right after a marked unit with the same words has no note
+ *   `data-heading`, only the heading of the occurrence gets the rule. An occurrence in an occurrence that has the rule
+ *   already is not marked again. An occurrence right after a marked occurrence with the same words has no note
  *   of its own: one note serves the run.
- * - A `.marker` is for a change that the text does not show. It goes before its unit, or at the
- *   end of the unit with `data-end`.
+ * - A `.marker` is for a change that the text does not show. It goes before its occurrence, or at the
+ *   end of the occurrence with `data-end`.
  *
  * The outline beside the text gets a dot on each entry that has a mark, and on the entries that
  * hold it: `.has-rule` or `.has-marker`, with words for a screen reader.
  */
 
 /**
- * Returns whether `unit` comes right after a unit that is marked with `label`, or whose heading
- * is. Then the note of that unit serves this one.
+ * Returns whether `occurrence` comes right after an occurrence that is marked with `label`, or whose heading
+ * is. Then the note of that occurrence serves this one.
  *
- * @param {HTMLElement} unit
+ * @param {HTMLElement} occurrence
  * @param {string} label
  * @returns {boolean}
  */
-const follows = (unit, label) => {
-  const previous = unit.previousElementSibling;
+const follows = (occurrence, label) => {
+  const previous = occurrence.previousElementSibling;
   if (!(previous instanceof HTMLElement)) {
     return false;
   }
@@ -47,19 +47,19 @@ const DOTS = {
 };
 
 /**
- * Gives the outline a dot for a mark on `unit`: on the entry of the unit, or of the nearest unit
+ * Gives the outline a dot for a mark on `occurrence`: on the entry of the occurrence, or of the nearest occurrence
  * that holds it and has an entry, and on each entry that holds that entry.
  *
  * @param {Element | null} outline
- * @param {HTMLElement} unit
+ * @param {HTMLElement} occurrence
  * @param {"has-rule" | "has-marker"} dot
  */
-const dotOutline = (outline, unit, dot) => {
+const dotOutline = (outline, occurrence, dot) => {
   if (!outline) {
     return;
   }
   /** @type {Element | null} */
-  let held = unit;
+  let held = occurrence;
   /** @type {Element | null} */
   let entry = null;
   while (held && !entry) {
@@ -86,7 +86,7 @@ const dotOutline = (outline, unit, dot) => {
  */
 const copy = (each) => {
   const made = /** @type {HTMLElement} */ (each.cloneNode(true));
-  delete made.dataset.unit;
+  delete made.dataset.occurrence;
   delete made.dataset.heading;
   delete made.dataset.end;
   return made;
@@ -104,29 +104,29 @@ export const mark = (rules, content, outline = null) => {
   if (!content.querySelector("[id]") || content.querySelector(".not-applying, .marker")) {
     return;
   }
-  for (const each of rules.querySelectorAll("[data-unit]")) {
-    if (!(each instanceof HTMLElement) || !each.dataset.unit) {
+  for (const each of rules.querySelectorAll("[data-occurrence]")) {
+    if (!(each instanceof HTMLElement) || !each.dataset.occurrence) {
       continue;
     }
-    const unit = content.ownerDocument.getElementById(each.dataset.unit);
-    if (!unit || !content.contains(unit)) {
+    const occurrence = content.ownerDocument.getElementById(each.dataset.occurrence);
+    if (!occurrence || !content.contains(occurrence)) {
       continue;
     }
     if (each.classList.contains("marker")) {
       if (each.dataset.end === "true") {
-        unit.append(copy(each));
+        occurrence.append(copy(each));
       } else {
-        unit.before(copy(each));
+        occurrence.before(copy(each));
       }
-      dotOutline(outline, unit, "has-marker");
+      dotOutline(outline, occurrence, "has-marker");
       continue;
     }
-    dotOutline(outline, unit, "has-rule");
-    if (unit.closest(".not-applying")) {
+    dotOutline(outline, occurrence, "has-rule");
+    if (occurrence.closest(".not-applying")) {
       continue;
     }
-    const heading = each.dataset.heading === "true" ? unit.querySelector(":scope > .title") : null;
-    const target = heading instanceof HTMLElement ? heading : unit;
+    const heading = each.dataset.heading === "true" ? occurrence.querySelector(":scope > .title") : null;
+    const target = heading instanceof HTMLElement ? heading : occurrence;
     target.classList.add("not-applying");
     const label = each.textContent?.trim() ?? "";
     target.dataset.notApplying = label;

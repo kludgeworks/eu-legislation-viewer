@@ -16,16 +16,17 @@ import java.util.TreeSet;
 /**
  * Makes the outline of a text, when the text is stored.
  *
- * <p>The outline holds the units that have a rank, in the order in which a reader meets them. Each
- * unit is under the last unit of a higher rank before it. The outline also holds the eId of every
- * container: an element that holds elements and is not a block. The labels and headings are read as
- * plain text, without the notes that they cite and without the text that an amendment deleted.
+ * <p>The outline holds the occurrences that have a rank, in the order in which a reader meets them.
+ * Each occurrence is under the last occurrence of a higher rank before it. The outline also holds
+ * the eId of every container: an element that holds elements and is not a block. The labels and
+ * headings are read as plain text, without the notes that they cite and without the text that an
+ * amendment deleted.
  *
- * <p>It also holds the marks of each unit: the acts that its {@code provenance} elements name, and
- * the acts that its {@code changed} elements name. A {@code changed} element marks words that an
- * act changed inside a sentence. For example, in Article 15(1) of 767/2008 of 18 October 2013, "or
- * extend the visa" is marked with 2009/810. A mark in a block that has no eId, such as a paragraph
- * or a deleted text, marks the nearest unit around it.
+ * <p>It also holds the marks of each occurrence: the acts that its {@code provenance} elements
+ * name, and the acts that its {@code changed} elements name. A {@code changed} element marks words
+ * that an act changed inside a sentence. For example, in Article 15(1) of 767/2008 of 18 October
+ * 2013, "or extend the visa" is marked with 2009/810. A mark in a block that has no eId, such as a
+ * paragraph or a deleted text, marks the nearest occurrence around it.
  *
  * <p>{@link OutlinesVersion} is the version of these rules. A kept outline that other rules made is
  * made again.
@@ -42,10 +43,10 @@ public final class Outlines {
   /** What the text of a title leaves out: note references, deleted text, images and formulas. */
   private static final Set<String> UNREAD = Set.of("noteRef", "deleted", "img", "m:math");
 
-  private final List<Unit> outermost = new ArrayList<>();
+  private final List<Occurrence> outermost = new ArrayList<>();
   private final List<String> eIds = new ArrayList<>();
   private final Map<String, Set<String>> marks = new LinkedHashMap<>();
-  private final Deque<Unit> open = new ArrayDeque<>();
+  private final Deque<Occurrence> open = new ArrayDeque<>();
 
   private Outlines() {}
 
@@ -57,16 +58,16 @@ public final class Outlines {
     outlines.walk(text);
     outlines.mark(text, "");
     return new Outline(
-        outlines.outermost.stream().map(Unit::entry).toList(), outlines.eIds, outlines.marks);
+        outlines.outermost.stream().map(Occurrence::entry).toList(), outlines.eIds, outlines.marks);
   }
 
   /**
    * Adds the acts that the {@code provenance} and {@code changed} elements in {@code element} name
-   * to the marks of their unit. {@code unit} is the eId of the nearest unit around {@code element},
-   * or empty for none.
+   * to the marks of their occurrence. {@code occurrence} is the eId of the nearest occurrence
+   * around {@code element}, or empty for none.
    */
-  private void mark(Element element, String unit) {
-    var eId = Objects.requireNonNullElse(element.attribute("eId"), unit);
+  private void mark(Element element, String occurrence) {
+    var eId = Objects.requireNonNullElse(element.attribute("eId"), occurrence);
     if (element.name().equals("provenance") || element.name().equals("changed")) {
       var act = element.attribute("amendingAct");
       if (act != null && !eId.isEmpty()) {
@@ -85,7 +86,7 @@ public final class Outlines {
       eIds.add(eId);
     }
     var rank = container.attribute("rank");
-    if (container.name().equals("unit") && rank != null) {
+    if (container.name().equals("occurrence") && rank != null) {
       add(container, Integer.parseInt(rank));
     }
     for (var child : container.children()) {
@@ -95,10 +96,10 @@ public final class Outlines {
     }
   }
 
-  /** Adds a unit with a title, under the last open unit that is ranked above it. */
+  /** Adds an occurrence with a title, under the last open occurrence that is ranked above it. */
   private void add(Element element, int rank) {
-    var unit =
-        new Unit(
+    var occurrence =
+        new Occurrence(
             element.attributes().getOrDefault("eId", ""),
             Objects.requireNonNullElse(element.attribute("kind"), ""),
             title(element, "num"),
@@ -107,16 +108,16 @@ public final class Outlines {
     while (!open.isEmpty() && open.peek().rank >= rank) {
       open.pop();
     }
-    (open.isEmpty() ? outermost : open.peek().under).add(unit);
-    open.push(unit);
+    (open.isEmpty() ? outermost : open.peek().under).add(occurrence);
+    open.push(occurrence);
   }
 
   /**
-   * Returns the text of the child {@code name} of the unit, for example its num or its heading.
-   * Returns an empty string if the unit has no such child.
+   * Returns the text of the child {@code name} of the occurrence, for example its num or its
+   * heading. Returns an empty string if the occurrence has no such child.
    */
-  private static String title(Element unit, String name) {
-    for (var child : unit.children()) {
+  private static String title(Element occurrence, String name) {
+    for (var child : occurrence.children()) {
       if (child.name().equals(name)) {
         var text = new StringBuilder();
         read(child, text);
@@ -140,16 +141,18 @@ public final class Outlines {
     element.children().forEach(child -> read(child, text));
   }
 
-  /** A unit in the outline while it is read. The units under it are still being added. */
-  private static final class Unit {
+  /**
+   * An occurrence in the outline while it is read. The occurrences under it are still being added.
+   */
+  private static final class Occurrence {
     final String eId;
     final String kind;
     final String num;
     final String heading;
     final int rank;
-    final List<Unit> under = new ArrayList<>();
+    final List<Occurrence> under = new ArrayList<>();
 
-    Unit(String eId, String kind, String num, String heading, int rank) {
+    Occurrence(String eId, String kind, String num, String heading, int rank) {
       this.eId = eId;
       this.kind = kind;
       this.num = num;
@@ -158,7 +161,8 @@ public final class Outlines {
     }
 
     Outline.Entry entry() {
-      return new Outline.Entry(eId, kind, num, heading, under.stream().map(Unit::entry).toList());
+      return new Outline.Entry(
+          eId, kind, num, heading, under.stream().map(Occurrence::entry).toList());
     }
   }
 }

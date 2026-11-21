@@ -22,7 +22,7 @@ class CompareViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
   static final LocalDate TODAY = LocalDate.of(2026, 11, 17);
   static final String POINT = "anx/pnt_4.1.3.1";
-  static final List<String> UNITS =
+  static final List<String> OCCURRENCES =
       List.of("anx", "anx/pnt_4", "anx/pnt_4.1", "anx/pnt_4.1.3", POINT);
   static final Version FROM = AVSEC.timeline().startingOn(LocalDate.of(2016, 2, 29)).orElseThrow();
   static final Version TO = AVSEC.timeline().startingOn(LocalDate.of(2017, 6, 7)).orElseThrow();
@@ -72,10 +72,10 @@ class CompareViewTest {
             POINT,
             Language.ENG,
             TODAY,
-            Map.of(LATEST, new TextMarks(UNITS, Map.of())));
+            Map.of(LATEST, new TextMarks(OCCURRENCES, Map.of())));
 
     assertThat(view.heading()).endsWith(" of 2015/1998 on two days").doesNotContain("A provision");
-    assertThat(view.picker().unit()).isEqualTo(POINT);
+    assertThat(view.picker().occurrence()).isEqualTo(POINT);
     assertThat(view.said()).contains(" amending acts changed ").endsWith(" between these days:");
     assertThat(view.acts()).extracting(CompareView.Link::act).contains("2017/815", "2019/103");
     assertThat(view.acts().getLast().after()).isEqualTo(".");

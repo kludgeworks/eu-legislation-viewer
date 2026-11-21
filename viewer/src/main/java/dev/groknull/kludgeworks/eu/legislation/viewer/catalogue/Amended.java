@@ -10,16 +10,17 @@ import java.util.regex.Pattern;
 import org.jmolecules.ddd.annotation.ValueObject;
 
 /**
- * Cellar's amendments of an act's provisions between two of its versions, placed at the units of
- * their texts. {@link Act#amended} makes it.
+ * Cellar's amendments of an act's provisions between two of its versions, placed at the occurrences
+ * of their texts. {@link Act#amended} makes it.
  *
- * @param byUnit the amendments at each unit, by the eId of the unit, in the order found. An
- *     addition or a replacement is at a unit of the later text. A deletion or a repeal is at a unit
- *     of the earlier text.
- * @param unplaced how many of the amendments have a location that is not a unit of those texts
+ * @param byOccurrence the amendments at each occurrence, by the eId of the occurrence, in the order
+ *     found. An addition or a replacement is at an occurrence of the later text. A deletion or a
+ *     repeal is at an occurrence of the earlier text.
+ * @param unplaced how many of the amendments have a location that is not an occurrence of those
+ *     texts
  */
 @ValueObject
-public record Amended(Map<String, List<Amendment>> byUnit, int unplaced) {
+public record Amended(Map<String, List<Amendment>> byOccurrence, int unplaced) {
 
   /**
    * Matches the eId of a numbered point, for example {@code pnt_3} or {@code pnt_11.2}. legal-text
@@ -29,26 +30,28 @@ public record Amended(Map<String, List<Amendment>> byUnit, int unplaced) {
 
   public Amended {
     var copy = new LinkedHashMap<String, List<Amendment>>();
-    byUnit.forEach((unit, amendments) -> copy.put(unit, List.copyOf(amendments)));
-    byUnit = Collections.unmodifiableMap(copy);
+    byOccurrence.forEach((occurrence, amendments) -> copy.put(occurrence, List.copyOf(amendments)));
+    byOccurrence = Collections.unmodifiableMap(copy);
   }
 
   /**
-   * Returns the amendments of the unit {@code eId}. Each amendment appears once.
+   * Returns the amendments of the occurrence {@code eId}. Each amendment appears once.
    *
    * <ul>
-   *   <li>The amendments at the unit itself.
-   *   <li>The amendments at a unit that contains it. For example, an article replaced whole is an
-   *       amendment of its paragraph.
-   *   <li>If {@code withItsUnits} is true, the amendments at a unit in it. Use this for a unit
-   *       inserted or deleted whole, with its units.
+   *   <li>The amendments at the occurrence itself.
+   *   <li>The amendments at an occurrence that contains it. For example, an article replaced whole
+   *       is an amendment of its paragraph.
+   *   <li>If {@code withItsOccurrences} is true, the amendments at an occurrence in it. Use this
+   *       for an occurrence inserted or deleted whole, with its occurrences.
    * </ul>
    */
-  public List<Amendment> of(String eId, boolean withItsUnits) {
+  public List<Amendment> of(String eId, boolean withItsOccurrences) {
     var found = new LinkedHashSet<Amendment>();
-    byUnit.forEach(
-        (unit, amendments) -> {
-          if (unit.equals(eId) || in(eId, unit) || (withItsUnits && in(unit, eId))) {
+    byOccurrence.forEach(
+        (occurrence, amendments) -> {
+          if (occurrence.equals(eId)
+              || in(eId, occurrence)
+              || (withItsOccurrences && in(occurrence, eId))) {
             found.addAll(amendments);
           }
         });
@@ -56,20 +59,21 @@ public record Amended(Map<String, List<Amendment>> byUnit, int unplaced) {
   }
 
   /**
-   * Returns whether the unit {@code eId} is in {@code unit}. This is true if it is below the unit.
-   * For a numbered point, it is also true for a point numbered under it that legal-text keeps
-   * beside it. For example, {@code anx/pnt_3.0.1} and its points are in {@code anx/pnt_3}.
+   * Returns whether the occurrence {@code eId} is in {@code occurrence}. This is true if it is
+   * below the occurrence. For a numbered point, it is also true for a point numbered under it that
+   * legal-text keeps beside it. For example, {@code anx/pnt_3.0.1} and its points are in {@code
+   * anx/pnt_3}.
    */
-  static boolean in(String eId, String unit) {
-    if (eId.startsWith(unit + "/")) {
+  static boolean in(String eId, String occurrence) {
+    if (eId.startsWith(occurrence + "/")) {
       return true;
     }
-    return NUMBERED.matcher(unit.substring(unit.lastIndexOf('/') + 1)).matches()
-        && eId.startsWith(unit + ".");
+    return NUMBERED.matcher(occurrence.substring(occurrence.lastIndexOf('/') + 1)).matches()
+        && eId.startsWith(occurrence + ".");
   }
 
-  /** Returns how many amendments are at a unit. Each amendment counts once. */
+  /** Returns how many amendments are at an occurrence. Each amendment counts once. */
   public int placed() {
-    return (int) byUnit.values().stream().flatMap(List::stream).distinct().count();
+    return (int) byOccurrence.values().stream().flatMap(List::stream).distinct().count();
   }
 }

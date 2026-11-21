@@ -41,8 +41,8 @@
     <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid($run-base, 'pnt', $label)
         else f:eid($run-base, 'idt', string(count(f:np-run-before(.)) + 1))"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="{if ($label != '') then 'point' else 'indent'}">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="{if ($label != '') then 'point' else 'indent'}">
         <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
         <num>
@@ -58,9 +58,9 @@
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <!-- a heading's numbered line, set as blocks where the heading holds some (a table's title, a
@@ -120,7 +120,7 @@
   <xsl:function name="f:np-point" as="xs:boolean">
     <xsl:param name="np" as="element(NP)"/>
     <xsl:sequence select="empty($np/parent::*[self::ITEM or self::TI or self::STI or self::TI.BLK])
-        and empty($np/parent::CONSID[f:preamble-unit(.)][NP[1] is $np])
+        and empty($np/parent::CONSID[f:preamble-occurrence(.)][NP[1] is $np])
         and empty($np/parent::GR.SEQ[f:level-num(.)/.. is $np])"/>
   </xsl:function>
 
@@ -128,25 +128,25 @@
       'ARAB': 'arabic', 'alpha': 'alpha', 'ALPHA': 'alphaUpper', 'roman': 'roman', 'ROMAN': 'romanUpper',
       'DASH': 'dash', 'NDASH': 'ndash', 'BULLET': 'bullet', 'NONE': 'none', 'OTHER': 'other'}"/>
 
-  <!-- the element whose eId a list's points hang off. Citations and recitals are units only in the
+  <!-- the element whose eId a list's points hang off. Citations and recitals are occurrences only in the
        main document's preamble: in an act inside another document (an attached act, a letter's, a
        consolidation's related document) its preamble is text, and its lists hang off that document -->
   <xsl:function name="f:scope" as="element()?">
     <xsl:param name="e" as="element()"/>
     <xsl:sequence select="$e/ancestor::*[self::ITEM or self::ARTICLE or self::PARAG or self::ALINEA or self::GR.SEQ
         or self::DLIST.ITEM or self::CONS.ANNEX or self::ANNEX or self::QUOT.S or self::TBL
-        or self::CONSID[f:preamble-unit(.)] or self::VISA[f:preamble-unit(.)] or self::NOTE or self::DIVISION
+        or self::CONSID[f:preamble-occurrence(.)] or self::VISA[f:preamble-occurrence(.)] or self::NOTE or self::DIVISION
         or self::CORRECTION or self::OLD.CORR or self::NEW.CORR
         or self::CONS.DOC.GEN[parent::CONS.DOC.GEN or @TYPE = 'ANNEX'] or self::LETTER or self::SUBDIV or self::INCL.ELEMENT or self::NP[f:np-point(.)]][1]"/>
   </xsl:function>
 
-  <xsl:function name="f:preamble-unit" as="xs:boolean">
+  <xsl:function name="f:preamble-occurrence" as="xs:boolean">
     <xsl:param name="e" as="element()"/>
     <xsl:sequence select="empty($e/ancestor::*[self::CONS.DOC.GEN or self::LETTER])
         and not(contains(root($e)/*/BIB.INSTANCE/NO.SEQ, '.'))"/>
   </xsl:function>
 
-  <!-- points of a list hang off the enclosing unit; when it holds several lists (6.5.2 has two,
+  <!-- points of a list hang off the enclosing occurrence; when it holds several lists (6.5.2 has two,
        each (a) to (d)), the second and later get a segment of their own: …/list_2/pnt_a. The first
        keeps plain eIds, so adding a list doesn't rename the points already there. In a level with
        sub-levels, which number themselves under it too (point I. of a list, sub-level I.), every
@@ -278,8 +278,8 @@
     <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid(f:item-base(., $base), 'pnt', $label)
         else f:eid(f:item-base(., $base), 'idt', string(count(preceding-sibling::ITEM) + 1))"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">
         <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:if test="NP/NO.P">
@@ -298,12 +298,12 @@
           <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
           <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
-  <!-- definition lists: each entry is a unit with its prefix as num and its term as heading; what
+  <!-- definition lists: each entry is an occurrence with its prefix as num and its term as heading; what
        is printed between term and definition (—), the list's separator -->
   <xsl:template match="DLIST" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
@@ -337,11 +337,11 @@
     <xsl:variable name="eid" as="xs:string" select="
         if ($label != '') then f:eid(f:item-base(., $base), 'pnt', $label)
         else f:eid(f:item-base(., $base), 'def', string(count(preceding-sibling::DLIST.ITEM) + 1))"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="definition">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="definition">
         <xsl:sequence select="f:numbered($label)"/>
         <xsl:sequence select="f:provenance($m)"/>
-        <xsl:call-template name="f:unit-content">
+        <xsl:call-template name="f:occurrence-content">
           <xsl:with-param name="num" as="element()?" select="PREFIX"/>
           <xsl:with-param name="heading" as="element()?" select="TERM"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -349,9 +349,9 @@
           <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
           <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <xsl:template match="DEFINITION" mode="block">

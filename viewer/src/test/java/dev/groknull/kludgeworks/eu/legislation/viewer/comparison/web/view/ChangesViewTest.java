@@ -32,7 +32,7 @@ class ChangesViewTest {
       ChangesView.of(comparison("02015R1998-20260322", "02015R1998-20261001"));
 
   @Test
-  void leadsEachUnitsDifferencesOnceWithEveryOtherUnitFolded() {
+  void leadsEachOccurrencesDifferencesOnceWithEveryOtherOccurrenceFolded() {
     assertThat(MARCH_TO_OCTOBER.passages())
         .extracting(ChangesViewTest::passage)
         .containsExactly(
@@ -60,7 +60,7 @@ class ChangesViewTest {
   }
 
   @Test
-  void namesTheUnitOfEachDifferenceByItsKind() {
+  void namesTheOccurrenceOfEachDifferenceByItsKind() {
     assertThat(MARCH_TO_OCTOBER.passages())
         .filteredOn(Shown.class::isInstance)
         .map(Shown.class::cast)
@@ -79,7 +79,7 @@ class ChangesViewTest {
   }
 
   @Test
-  void asksForAFoldsUnitsByTheirEIds() {
+  void asksForAFoldsOccurrencesByTheirEIds() {
     var fold =
         MARCH_TO_OCTOBER.passages().stream()
             .filter(Fold.class::isInstance)
@@ -92,7 +92,7 @@ class ChangesViewTest {
   }
 
   @Test
-  void foldsTheDifferencesAnActFilterLeavesOutWithTheUnitsAroundThem() {
+  void foldsTheDifferencesAnActFilterLeavesOutWithTheOccurrencesAroundThem() {
     var only9 =
         ChangesView.of(
             comparison("02015R1998-20260322", "02015R1998-20261001"),
@@ -126,7 +126,7 @@ class ChangesViewTest {
             tuple("no differences", true));
     // 8.1.2.3 shows once, with its points.
     var others = (Fold) only9.passages().get(2);
-    assertThat(others.units())
+    assertThat(others.occurrences())
         .extracting(Sibling::eId)
         .contains("anx/pnt_8.1.2.2", "anx/pnt_8.1.2.3", "anx/pnt_8.1.2.4")
         .noneMatch(eId -> eId.startsWith("anx/pnt_8.1.2.3/"));
@@ -135,7 +135,7 @@ class ChangesViewTest {
   }
 
   @Test
-  void namesAFoldByItsUnitsNums() {
+  void namesAFoldByItsOccurrencesNums() {
     assertThat(ChangesView.fold(siblings("article", "Article 2", "Article 3", "Article 4")))
         .isEqualTo("Articles 2 to 4");
     assertThat(ChangesView.fold(siblings("annex", "ANNEX I", "ANNEX II")))
@@ -157,7 +157,7 @@ class ChangesViewTest {
   }
 
   @Test
-  void namesAFoldAcrossUnitsByItsFirstAndLastNumsCitingAPointsWithItsPoint() {
+  void namesAFoldAcrossOccurrencesByItsFirstAndLastNumsCitingAPointsWithItsPoint() {
     assertThat(
             ChangesView.span(
                 List.of(
@@ -227,7 +227,7 @@ class ChangesViewTest {
   }
 
   @Test
-  void namesAUnitWithNoNumByTheNearestNumberedUnitThatItIsIn() {
+  void namesAnOccurrenceWithNoNumByTheNearestNumberedOccurrenceThatItIsIn() {
     assertThat(ChangesView.within("anx/level_ATTACHMENT-3-B/level_1/level_1"))
         .isEqualTo("In Attachment 3-B");
     assertThat(ChangesView.within("art_5/unp_1")).isEqualTo("In Article 5");

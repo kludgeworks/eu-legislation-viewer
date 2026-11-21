@@ -90,18 +90,18 @@ public record MastheadView(
   /**
    * Returns the head of the comparison of the law on {@code fromDay} with the law on {@code toDay},
    * for {@code act}, in {@code language}. The language switch keeps the two days, and the provision
-   * {@code unit} if the page is limited to one. It greys each language that the act has no text in
-   * on a day. Read reads the law on {@code toDay}.
+   * {@code occurrence} if the page is limited to one. It greys each language that the act has no
+   * text in on a day. Read reads the law on {@code toDay}.
    */
   public static MastheadView comparing(
-      Act act, LocalDate fromDay, LocalDate toDay, @Nullable String unit, Language language) {
+      Act act, LocalDate fromDay, LocalDate toDay, @Nullable String occurrence, Language language) {
     var eli = eli(act);
     return of(
         act,
         language,
         each -> {
           var page = new ComparePage(Links.compare(eli, each), fromDay, toDay, null, null);
-          return unit == null ? page.href() : page.href(unit);
+          return occurrence == null ? page.href() : page.href(occurrence);
         },
         each -> {
           var inFrom = act.versionOn(fromDay, each).filter(v -> v.languages().contains(each));

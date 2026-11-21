@@ -54,7 +54,7 @@
   <!-- metadata: identity, publication and lifecycle become attributes of the legal text -->
   <xsl:template match="BIB.INSTANCE | BIB.INSTANCE.CONS | BIB.DOC | BIB.DATA | INFO.CONSLEG | INFO.PROD
                        | FAM.COMP | GR.MOD.ACT | DOCUMENT.REF | DOCUMENT.REF.CONS | NO.CELEX"/>
-  <!-- navigation the reader builds from the units -->
+  <!-- navigation the reader builds from the occurrences -->
   <xsl:template match="TOC"/>
   <!-- where the source prints notes; the notes themselves are kept -->
   <xsl:template match="LOC.NOTES"/>

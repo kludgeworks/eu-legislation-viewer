@@ -46,12 +46,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 1831/2003 of the European Parliament and of the Council of "/>
                <date date="2003-09-22">
@@ -61,7 +61,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -69,23 +69,23 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Regulation (EC) No 1831/2003 provides for the authorisation of additives for use in animal nutrition and for the grounds and procedures for granting such authorisation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="In accordance with Article 7 of Regulation (EC) No 1831/2003 an application was submitted for the authorisation of a canthaxanthin. That application was accompanied by the particulars and documents required under Article 7(3) of Regulation (EC) No 1831/2003."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -96,8 +96,8 @@
                </quote>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -113,23 +113,23 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" that, under the proposed conditions of use, the preparation of canthaxanthin does not have an adverse effect on animal health, human health or the environment, and that it has a potential to stabilise the reproductive performance of breeder hens. The Authority does not consider that there is a need for specific requirements of post-market monitoring. It also verified the report on the method of analysis of the feed additive in feed submitted by the Reference Laboratory set up by Regulation (EC) No 1831/2003."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The assessment of the preparation of canthaxanthin shows that the conditions for authorisation, as provided for in Article 5 of Regulation (EC) No 1831/2003, are satisfied. Accordingly, the use of that preparation should be authorised as specified in the Annex to this Regulation."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="The measures provided for in this Regulation are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -138,7 +138,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -156,8 +156,8 @@
             </quote>
             <t v=", is authorised as an additive in animal nutrition, subject to the conditions laid down in that Annex."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -168,7 +168,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -225,7 +225,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -326,21 +326,21 @@
                         <t v="Preparation containing minimum:"/>
                      </p>
                      <list kind="none">
-                        <unit eId="anx/tab_1/tr_3/td_4/idt_1" kind="indent">
+                        <occurrence eId="anx/tab_1/tr_3/td_4/idt_1" kind="indent">
                            <p>
                               <t v="10 % of canthaxanthin;"/>
                            </p>
-                        </unit>
-                        <unit eId="anx/tab_1/tr_3/td_4/idt_2" kind="indent">
+                        </occurrence>
+                        <occurrence eId="anx/tab_1/tr_3/td_4/idt_2" kind="indent">
                            <p>
                               <t v="≤ 2,2 % ethoxyquin;"/>
                            </p>
-                        </unit>
-                        <unit eId="anx/tab_1/tr_3/td_4/idt_3" kind="indent">
+                        </occurrence>
+                        <occurrence eId="anx/tab_1/tr_3/td_4/idt_3" kind="indent">
                            <p>
                               <t v="dichloromethane: ≤ 10 mg/kg additive."/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                      <p>
                         <emphasis kind="i">
@@ -380,16 +380,16 @@
                         <noteRef href="#note_anx01002201-1" marker="1"/>
                      </p>
                      <list kind="dash">
-                        <unit eId="anx/tab_1/tr_3/td_4/list_2/idt_1" kind="indent">
+                        <occurrence eId="anx/tab_1/tr_3/td_4/list_2/idt_1" kind="indent">
                            <p>
                               <t v="For the determination of canthaxanthin in the feed additive: spectrophotometry (426 nm)"/>
                            </p>
-                        </unit>
-                        <unit eId="anx/tab_1/tr_3/td_4/list_2/idt_2" kind="indent">
+                        </occurrence>
+                        <occurrence eId="anx/tab_1/tr_3/td_4/list_2/idt_2" kind="indent">
                            <p>
                               <t v="For the determination of canthaxanthin in premixtures and feedingtuffs: Normal Phase High Performance Liquid Chromatography coupled to VIS detection (NP-HPLC-VIS, 466 nm)"/>
                            </p>
-                        </unit>
+                        </occurrence>
                      </list>
                   </td>
                   <td>
@@ -413,38 +413,38 @@
                      </p>
                   </td>
                   <td>
-                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_1" kind="point" numbered="true">
+                     <occurrence eId="anx/tab_1/tr_3/td_9/list_3/pnt_1" kind="point" numbered="true">
                         <num>
                            <t v="1."/>
                         </num>
                         <p>
                            <t v="In the directions for use of the additive and premixture, indicate the storage conditions and stability to heat processing."/>
                         </p>
-                     </unit>
-                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_2" kind="point" numbered="true">
+                     </occurrence>
+                     <occurrence eId="anx/tab_1/tr_3/td_9/list_3/pnt_2" kind="point" numbered="true">
                         <num>
                            <t v="2."/>
                         </num>
                         <p>
                            <t v="The mixture of different sources of canthaxanthin shall not exceeded 6 mg canthaxanthin/kg of complete feedingstuff."/>
                         </p>
-                     </unit>
-                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_3" kind="point" numbered="true">
+                     </occurrence>
+                     <occurrence eId="anx/tab_1/tr_3/td_9/list_3/pnt_3" kind="point" numbered="true">
                         <num>
                            <t v="3."/>
                         </num>
                         <p>
                            <t v="The mixture of this preparation with canthaxanthin and other carotenoids is allowed provided that the total concentration of the mixture does not exceed 80 mg/kg of complete feedingstuff."/>
                         </p>
-                     </unit>
-                     <unit eId="anx/tab_1/tr_3/td_9/list_3/pnt_4" kind="point" numbered="true">
+                     </occurrence>
+                     <occurrence eId="anx/tab_1/tr_3/td_9/list_3/pnt_4" kind="point" numbered="true">
                         <num>
                            <t v="4."/>
                         </num>
                         <p>
                            <t v="For user safety: breathing protection, safety glasses and gloves should be worn during handling."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -468,7 +468,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

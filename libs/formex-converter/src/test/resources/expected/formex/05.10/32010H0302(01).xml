@@ -44,11 +44,11 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union, and in particular Articles 283(2) and 139(2)(h) thereof, and having regard to Articles 11.2 and 42.3 of the Protocol on the Statute of the European System of Central Banks and of the European Central Bank,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>

@@ -61,10 +61,10 @@ import org.jspecify.annotations.Nullable;
 final class Divergences {
 
   /**
-   * The units in all the texts that {@link #KNOWN} keeps, at most. Each is an eId of some tens of
-   * characters, so the keys keep about 50 MB at most.
+   * The occurrences in all the texts that {@link #KNOWN} keeps, at most. Each is an eId of some
+   * tens of characters, so the keys keep about 50 MB at most.
    */
-  private static final long UNITS_KEPT = 500_000;
+  private static final long OCCURRENCES_KEPT = 500_000;
 
   /**
    * The divergences found, by what they were found from. A page finds them two to four times for
@@ -73,8 +73,8 @@ final class Divergences {
    */
   private static final Cache<Key, List<Divergence>> KNOWN =
       Caffeine.newBuilder()
-          .maximumWeight(UNITS_KEPT)
-          .weigher((Key key, List<Divergence> found) -> key.units())
+          .maximumWeight(OCCURRENCES_KEPT)
+          .weigher((Key key, List<Divergence> found) -> key.occurrences())
           .expireAfterAccess(Duration.ofHours(1))
           .build();
 
@@ -83,8 +83,8 @@ final class Divergences {
   private final List<Version> versions;
   private final Map<Version, TextMarks> texts;
 
-  /** The units of each built text, made ready to find the places of the amendments. */
-  private final Map<Version, Location.Units> units = new HashMap<>();
+  /** The occurrences of each built text, made ready to find the places of the amendments. */
+  private final Map<Version, Location.Occurrences> occurrences = new HashMap<>();
 
   private Divergences(Act act, Language language, Map<Version, TextMarks> texts) {
     this.act = act;
@@ -176,23 +176,24 @@ final class Divergences {
     }
     var text = Objects.requireNonNull(texts.get(of.get()));
     var eIds = text.eIds();
-    var units = unitsOf(of.get(), text);
+    var occurrences = occurrencesOf(of.get(), text);
     return places.stream()
-        .sorted(Comparator.comparingInt(place -> position(place, eIds, units)))
+        .sorted(Comparator.comparingInt(place -> position(place, eIds, occurrences)))
         .toList();
   }
 
-  /** Returns the units of {@code text}, the text of {@code version}, made ready one time. */
-  private Location.Units unitsOf(Version version, TextMarks text) {
-    return units.computeIfAbsent(version, each -> Location.units(text.eIds()));
+  /** Returns the occurrences of {@code text}, the text of {@code version}, made ready one time. */
+  private Location.Occurrences occurrencesOf(Version version, TextMarks text) {
+    return occurrences.computeIfAbsent(version, each -> Location.occurrences(text.eIds()));
   }
 
   /**
    * Returns where {@code place} is among {@code eIds}, or {@link Integer#MAX_VALUE} if they do not
    * have it.
    */
-  private static int position(Amendment place, List<String> eIds, Location.Units units) {
-    var found = place.location().in(units);
+  private static int position(
+      Amendment place, List<String> eIds, Location.Occurrences occurrences) {
+    var found = place.location().in(occurrences);
     return found.isPresent() ? eIds.indexOf(found.get().eIds().getFirst()) : Integer.MAX_VALUE;
   }
 
@@ -233,7 +234,7 @@ final class Divergences {
       if (text == null) {
         return Optional.empty();
       }
-      if (place.location().in(unitsOf(versions.get(before), text)).isEmpty()) {
+      if (place.location().in(occurrencesOf(versions.get(before), text)).isEmpty()) {
         // The provision is not in the text yet: an act that applies later puts it in.
         return Optional.of(Answer.AGREES);
       }
@@ -242,15 +243,16 @@ final class Divergences {
   }
 
   /**
-   * Returns the first version whose text newly marks {@code place} with {@code amending}. A unit
-   * marks the place if it is a unit of the place, or a unit in it. If no version marks it, it is
-   * the first version that marks a unit around the place. It is the version that starts on the
-   * place date instead, if that version also newly marks the place.
+   * Returns the first version whose text newly marks {@code place} with {@code amending}. An
+   * occurrence marks the place if it is an occurrence of the place, or an occurrence in it. If no
+   * version marks it, it is the first version that marks an occurrence around the place. It is the
+   * version that starts on the place date instead, if that version also newly marks the place.
    *
-   * <p>A deletion or a repeal leaves no unit where the provision stood. The consolidation keeps its
-   * mark there, in the unit around it, with a line of dashes: point (d) of Article 1(2) of 2014/65,
-   * deleted by 2019/2177. So in a text that no longer has the unit of such a place, the unit around
-   * where it stood marks the place, by a mark on that unit itself.
+   * <p>A deletion or a repeal leaves no occurrence where the provision stood. The consolidation
+   * keeps its mark there, in the occurrence around it, with a line of dashes: point (d) of Article
+   * 1(2) of 2014/65, deleted by 2019/2177. So in a text that no longer has the occurrence of such a
+   * place, the occurrence around where it stood marks the place, by a mark on that occurrence
+   * itself.
    *
    * <p>Returns a {@link Marked} without a version if no version includes {@code amending}. Returns
    * empty if a version before the answer has no built text, or if no version marks the place while
@@ -270,22 +272,26 @@ final class Divergences {
         }
         continue;
       }
-      var units =
-          place.location().in(unitsOf(version, text)).map(Location.Found::eIds).orElseGet(List::of);
-      var gone = units.isEmpty() && place.role().removes();
+      var occurrences =
+          place
+              .location()
+              .in(occurrencesOf(version, text))
+              .map(Location.Found::eIds)
+              .orElseGet(List::of);
+      var gone = occurrences.isEmpty() && place.role().removes();
       if (gone) {
-        units =
+        occurrences =
             place
                 .location()
-                .around(unitsOf(version, text))
+                .around(occurrencesOf(version, text))
                 .map(Location.Found::eIds)
                 .orElseGet(List::of);
       }
-      if (units.isEmpty()) {
+      if (occurrences.isEmpty()) {
         continue;
       }
-      var found = Set.copyOf(units);
-      var holders = holders(units);
+      var found = Set.copyOf(occurrences);
+      var holders = holders(occurrences);
       var now = new HashSet<String>();
       for (var mark : text.marked(amending)) {
         if (gone ? found.contains(mark) : inOneOf(mark, found)) {
@@ -317,25 +323,27 @@ final class Divergences {
     return included ? Optional.empty() : Optional.of(new Marked(null, marking));
   }
 
-  /** Returns whether {@code eId} is one of {@code units}, or a unit in one of them. */
-  private static boolean inOneOf(String eId, Set<String> units) {
-    if (units.contains(eId)) {
+  /** Returns whether {@code eId} is one of {@code occurrences}, or an occurrence in one of them. */
+  private static boolean inOneOf(String eId, Set<String> occurrences) {
+    if (occurrences.contains(eId)) {
       return true;
     }
     for (var slash = eId.lastIndexOf('/'); slash > 0; slash = eId.lastIndexOf('/', slash - 1)) {
-      if (units.contains(eId.substring(0, slash))) {
+      if (occurrences.contains(eId.substring(0, slash))) {
         return true;
       }
     }
     return false;
   }
 
-  /** Returns the eIds of the units that hold one of {@code units}. */
-  private static Set<String> holders(List<String> units) {
+  /** Returns the eIds of the occurrences that hold one of {@code occurrences}. */
+  private static Set<String> holders(List<String> occurrences) {
     var holders = new HashSet<String>();
-    for (var unit : units) {
-      for (var slash = unit.indexOf('/'); slash > 0; slash = unit.indexOf('/', slash + 1)) {
-        holders.add(unit.substring(0, slash));
+    for (var occurrence : occurrences) {
+      for (var slash = occurrence.indexOf('/');
+          slash > 0;
+          slash = occurrence.indexOf('/', slash + 1)) {
+        holders.add(occurrence.substring(0, slash));
       }
     }
     return holders;
@@ -398,7 +406,7 @@ final class Divergences {
 
   /**
    * Returns whether {@code version} includes {@code amending}: the Publications Office lists it, or
-   * its text marks a unit with it.
+   * its text marks an occurrence with it.
    */
   private boolean includes(Version version, ActIdentifier amending) {
     var text = texts.get(version);
@@ -420,9 +428,10 @@ final class Divergences {
   /**
    * What divergences are found from.
    *
-   * @param units the number of units in the texts, which tells how much memory the key keeps
+   * @param occurrences the number of occurrences in the texts, which tells how much memory the key
+   *     keeps
    */
-  private record Key(Act act, Language language, Map<Version, TextMarks> texts, int units) {
+  private record Key(Act act, Language language, Map<Version, TextMarks> texts, int occurrences) {
 
     Key(Act act, Language language, Map<Version, TextMarks> texts) {
       this(

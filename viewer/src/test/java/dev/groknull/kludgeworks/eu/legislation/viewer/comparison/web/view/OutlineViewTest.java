@@ -21,13 +21,14 @@ import org.junit.jupiter.api.Test;
  * Tests the comparison of the consolidations of 2015/1998 of 22 March and 1 October 2026 on the
  * outline of the October text, made by {@link OutlineView}. The comparison has the six amendments
  * by 2026/449: the points (c), (e) and (g) of 8.1.2.3 and of 9.1.2.3. Their sections are 8.1.2 and
- * 9.1.2, both with the heading Screening. A section is the unit with a rank that a point is in.
+ * 9.1.2, both with the heading Screening. A section is the occurrence with a rank that a point is
+ * in.
  */
 class OutlineViewTest {
   static final OutlineView MARCH_TO_OCTOBER = outline("02015R1998-20260322", "02015R1998-20261001");
 
   @Test
-  void countsTheDifferencesOnEachBranchDownToTheUnitTheyAreIn() {
+  void countsTheDifferencesOnEachBranchDownToTheOccurrenceTheyAreIn() {
     assertThat(counted(MARCH_TO_OCTOBER.entries()))
         .containsExactly(
             "ANNEX 6",
@@ -51,7 +52,7 @@ class OutlineViewTest {
   }
 
   @Test
-  void listsTheDifferencesInAUnitsPointsAsRowsByTheirOwnNum() {
+  void listsTheDifferencesInAnOccurrencesPointsAsRowsByTheirOwnNum() {
     assertThat(find(MARCH_TO_OCTOBER.entries(), "8.1.2 Screening").rows())
         .extracting(Row::label, Row::number)
         .containsExactly(tuple("(c)", 1), tuple("(e)", 2), tuple("(g)", 3));
@@ -62,7 +63,7 @@ class OutlineViewTest {
   }
 
   @Test
-  void listsNoRowsUnderAUnitWithMoreThanTwelve() {
+  void listsNoRowsUnderAnOccurrenceWithMoreThanTwelve() {
     var twelve = IntStream.rangeClosed(1, 12).mapToObj(n -> new Row("(" + n + ")", n)).toList();
     assertThat(OutlineView.listed(twelve)).hasSize(12);
     var thirteen = new ArrayList<>(twelve);
@@ -71,7 +72,7 @@ class OutlineViewTest {
   }
 
   @Test
-  void leavesAUnitWithoutDifferencesUncountedAndWithoutAJump() {
+  void leavesAnOccurrenceWithoutDifferencesUncountedAndWithoutAJump() {
     var general = find(MARCH_TO_OCTOBER.entries(), "8.1.1 Security controls — general provisions");
     assertThat(general.count()).isZero();
     assertThat(general.href()).isNull();

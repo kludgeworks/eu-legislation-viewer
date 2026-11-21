@@ -144,7 +144,7 @@ class ContentTests {
   }
 
   @Test
-  void keepsTheActsThatMarkEachUnitInTheOutline() {
+  void keepsTheActsThatMarkEachOccurrenceInTheOutline() {
     var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
 
     assertThat(content.outline(id).orElseThrow().marks())
@@ -176,17 +176,17 @@ class ContentTests {
   }
 
   @Test
-  void givesATextAndOneOfItsUnitsInThePublicModel() {
+  void givesATextAndOneOfItsOccurrencesInThePublicModel() {
     var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
 
     assertThat(content.publicText(id).orElseThrow().annexes()).isNotEmpty();
-    var unit = content.publicUnit(id, "anx/pnt_1.1.1").orElseThrow().unit();
-    assertThat(unit.eId()).isEqualTo("anx/pnt_1.1.1");
-    assertThat(unit.heading())
+    var occurrence = content.publicOccurrence(id, "anx/pnt_1.1.1").orElseThrow().occurrence();
+    assertThat(occurrence.eId()).isEqualTo("anx/pnt_1.1.1");
+    assertThat(occurrence.heading())
         .isNotNull()
         .extracting(PublicText.Inline::text)
         .isEqualTo("Boundaries");
-    assertThat(content.publicUnit(id, "art_99")).isEmpty();
+    assertThat(content.publicOccurrence(id, "art_99")).isEmpty();
   }
 
   @Test
@@ -195,7 +195,7 @@ class ContentTests {
 
     assertThat(content.read(none)).isEmpty();
     assertThat(content.publicText(none)).isEmpty();
-    assertThat(content.publicUnit(none, "art_1")).isEmpty();
+    assertThat(content.publicOccurrence(none, "art_1")).isEmpty();
     assertThat(content.outline(none)).isEmpty();
     assertThat(content.contains(none)).isFalse();
   }

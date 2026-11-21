@@ -44,11 +44,11 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Article 41(2) of the Rules of Procedure,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>
@@ -57,7 +57,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 1"/>
@@ -71,7 +71,7 @@
             <t v=", the dates of the judicial vacations within the meaning of Article 41(2) and (6) of the Rules of Procedure are as follows:"/>
          </p>
          <list kind="dash">
-            <unit eId="art_1/idt_1" kind="indent">
+            <occurrence eId="art_1/idt_1" kind="indent">
                <p>
                   <t v="Christmas 2016: from Monday "/>
                   <date date="2016-12-19">
@@ -83,8 +83,8 @@
                   </date>
                   <t v=" inclusive,"/>
                </p>
-            </unit>
-            <unit eId="art_1/idt_2" kind="indent">
+            </occurrence>
+            <occurrence eId="art_1/idt_2" kind="indent">
                <p>
                   <t v="Easter 2017: from Monday "/>
                   <date date="2017-04-10">
@@ -96,8 +96,8 @@
                   </date>
                   <t v=" inclusive,"/>
                </p>
-            </unit>
-            <unit eId="art_1/idt_3" kind="indent">
+            </occurrence>
+            <occurrence eId="art_1/idt_3" kind="indent">
                <p>
                   <t v="Summer 2017: from Friday "/>
                   <date date="2017-07-21">
@@ -109,10 +109,10 @@
                   </date>
                   <t v=" inclusive."/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 2"/>
@@ -125,7 +125,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

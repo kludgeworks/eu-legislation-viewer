@@ -28,17 +28,17 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty of the Functioning of the European Union, and in particular its Article 16,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the Charter of Fundamental Rights of the European Union, and in particular Articles 7 and 8 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Directive 95/46/EC of the European Parliament and of the Council of "/>
                <date date="1995-10-24">
@@ -46,8 +46,8 @@
                </date>
                <t v=" on the protection of individuals with regard to the processing of personal data and on the free movement of such data,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_4" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to Regulation (EC) No 45/2001 of the European Parliament and of the Council of "/>
                <date date="2000-12-18">
@@ -55,7 +55,7 @@
                </date>
                <t v=" on the protection of individuals with regard to the processing of personal data by the Community institutions and bodies and on the free movement of such data, and in particular Article 28(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>
@@ -76,7 +76,7 @@
       <p>
          <t v="With regard to linking administrative records, as foreseen in Article 11, we also highlight the need for ensuring that any such linking must be done in compliance with data protection law, subject to necessity, proportionality, and specific safeguards under Member State or Union law."/>
       </p>
-      <unit eId="pnt_1" kind="level" depth="1" numbered="true" rank="1">
+      <occurrence eId="pnt_1" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="1."/>
          </num>
@@ -85,7 +85,7 @@
                <t v="Background and purpose of the Proposal"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_1/pnt_1" kind="point" numbered="true">
+         <occurrence eId="pnt_1/pnt_1" kind="point" numbered="true">
             <num>
                <t v="(1)"/>
             </num>
@@ -118,8 +118,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pnt_1/pnt_2" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_1/pnt_2" kind="point" numbered="true">
             <num>
                <t v="(2)"/>
             </num>
@@ -130,8 +130,8 @@
                </quote>
                <t v="), the purpose of the Proposal is to establish a common framework for European statistics relating to persons and households, based on data at individual level collected from samples."/>
             </p>
-         </unit>
-         <unit eId="pnt_1/pnt_3" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_1/pnt_3" kind="point" numbered="true">
             <num>
                <t v="(3)"/>
             </num>
@@ -139,25 +139,25 @@
                <t v="The EDPS takes note of the policy objectives of the Proposal. He welcomes:"/>
             </p>
             <list kind="dash">
-               <unit eId="pnt_1/pnt_3/idt_1" kind="indent">
+               <occurrence eId="pnt_1/pnt_3/idt_1" kind="indent">
                   <p>
                      <t v="the fact that he has been consulted and that a reference to this consultation has been made in Recital 23 of the proposed Regulation;"/>
                   </p>
-               </unit>
-               <unit eId="pnt_1/pnt_3/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_1/pnt_3/idt_2" kind="indent">
                   <p>
                      <t v="the inclusion of Recital 20 referring to applicable data protection law (Regulation 95/46/EC and Regulation (EC) No 45/2001 of the European Parliament and of the Council); as well as"/>
                   </p>
-               </unit>
-               <unit eId="pnt_1/pnt_3/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_1/pnt_3/idt_3" kind="indent">
                   <p>
                      <t v="the reference to data protection rules when linking different records regarding an individual (Article 11)."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="pnt_2" kind="level" depth="1" numbered="true" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_2" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="2."/>
          </num>
@@ -166,7 +166,7 @@
                <t v="Overview and key concerns"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_2/pnt_4" kind="point" numbered="true">
+         <occurrence eId="pnt_2/pnt_4" kind="point" numbered="true">
             <num>
                <t v="(4)"/>
             </num>
@@ -183,8 +183,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pnt_2/pnt_5" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_2/pnt_5" kind="point" numbered="true">
             <num>
                <t v="(5)"/>
             </num>
@@ -197,16 +197,16 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=" as a legal basis for the processing of personal data; unless the provision of information is specifically required under Union or Member States law in accordance with applicable data protection law."/>
             </p>
-         </unit>
-         <unit eId="pnt_2/pnt_6" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_2/pnt_6" kind="point" numbered="true">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="In light of these concerns, we would particularly welcome if the legislators could introduce more clarity in the way Article 8 (on data sources and methods) is drafted."/>
             </p>
-         </unit>
-         <unit eId="pnt_2/pnt_7" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_2/pnt_7" kind="point" numbered="true">
             <num>
                <t v="(7)"/>
             </num>
@@ -214,7 +214,7 @@
                <t v="Other relevant provisions that the EDPS considers could be improved may include the following:"/>
             </p>
             <list kind="dash">
-               <unit eId="pnt_2/pnt_7/idt_1" kind="indent">
+               <occurrence eId="pnt_2/pnt_7/idt_1" kind="indent">
                   <p>
                      <t v="Article 2(e) on the definition of "/>
                      <emphasis kind="i">
@@ -224,8 +224,8 @@
                      </emphasis>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="pnt_2/pnt_7/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_2/pnt_7/idt_2" kind="indent">
                   <p>
                      <t v="Recital 4 on the use of "/>
                      <quote startQuote="‘" endQuote="’">
@@ -233,8 +233,8 @@
                      </quote>
                      <t v=" for statistical purposes;"/>
                   </p>
-               </unit>
-               <unit eId="pnt_2/pnt_7/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_2/pnt_7/idt_3" kind="indent">
                   <p>
                      <t v="Recital 20 on applicable data protection law and the notion of "/>
                      <emphasis kind="i">
@@ -244,16 +244,16 @@
                      </emphasis>
                      <t v=";"/>
                   </p>
-               </unit>
-               <unit eId="pnt_2/pnt_7/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_2/pnt_7/idt_4" kind="indent">
                   <p>
                      <t v="Article 11(1) on sampling frames."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
-      <unit eId="pnt_3" kind="level" depth="1" numbered="true" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_3" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="3."/>
          </num>
@@ -262,12 +262,12 @@
                <t v="Recommendations"/>
             </emphasis>
          </heading>
-      </unit>
-      <unit eId="pnt_3.1"
-            kind="level"
-            depth="2"
-            numbered="true"
-            rank="2">
+      </occurrence>
+      <occurrence eId="pnt_3.1"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
          <num>
             <t v="3.1."/>
          </num>
@@ -276,7 +276,7 @@
                <t v="References to applicable data protection law (Recital 20)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.1/pnt_8" kind="point" numbered="true">
+         <occurrence eId="pnt_3.1/pnt_8" kind="point" numbered="true">
             <num>
                <t v="(8)"/>
             </num>
@@ -287,16 +287,16 @@
                </date>
                <t v=", and by references to the new legal instrument replacing Regulation (EC) No 45/2001."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.1/pnt_9" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.1/pnt_9" kind="point" numbered="true">
             <num>
                <t v="(9)"/>
             </num>
             <p>
                <t v="We would also welcome a reference, in a recital, to compliance with the safeguards relating to processing for statistical purposes under Article 89 of the GDPR."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.1/pnt_10" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.1/pnt_10" kind="point" numbered="true">
             <num>
                <t v="(10)"/>
             </num>
@@ -305,13 +305,13 @@
                <noteRef href="#note_4" marker="4"/>
                <t v=" currently under revision (or to the new ePrivacy Regulation if appropriate considering the timelines)."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="pnt_3.2"
-            kind="level"
-            depth="2"
-            numbered="true"
-            rank="2">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_3.2"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
          <num>
             <t v="3.2."/>
          </num>
@@ -324,7 +324,7 @@
                <t v=" (Recital 20)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.2/pnt_11" kind="point" numbered="true">
+         <occurrence eId="pnt_3.2/pnt_11" kind="point" numbered="true">
             <num>
                <t v="(11)"/>
             </num>
@@ -343,13 +343,13 @@
                </quote>
                <t v=". Should the text refer to the GDPR, the appropriate reference would be Article 9(2)(g) of the GDPR."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="pnt_3.3"
-            kind="level"
-            depth="2"
-            numbered="true"
-            rank="2">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_3.3"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
          <num>
             <t v="3.3."/>
          </num>
@@ -358,7 +358,7 @@
                <t v="Definition of administrative records (Article 2(e) and Recital 4)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.3/pnt_12" kind="point" numbered="true">
+         <occurrence eId="pnt_3.3/pnt_12" kind="point" numbered="true">
             <num>
                <t v="(12)"/>
             </num>
@@ -384,8 +384,8 @@
                </emphasis>
                <t v=" is then used in Article 8 as well as in Recital 4."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.3/pnt_13" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.3/pnt_13" kind="point" numbered="true">
             <num>
                <t v="(13)"/>
             </num>
@@ -410,8 +410,8 @@
                   <t v="."/>
                </emphasis>
             </p>
-         </unit>
-         <unit eId="pnt_3.3/pnt_14" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.3/pnt_14" kind="point" numbered="true">
             <num>
                <t v="(14)"/>
             </num>
@@ -439,8 +439,8 @@
                </quote>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.3/pnt_15" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.3/pnt_15" kind="point" numbered="true">
             <num>
                <t v="(15)"/>
             </num>
@@ -460,13 +460,13 @@
                   <t v="."/>
                </emphasis>
             </p>
-         </unit>
-      </unit>
-      <unit eId="pnt_3.4"
-            kind="level"
-            depth="2"
-            numbered="true"
-            rank="2">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_3.4"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
          <num>
             <t v="3.4."/>
          </num>
@@ -475,7 +475,7 @@
                <t v="Data sources and methods (Article 8)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.4/pnt_16" kind="point" numbered="true">
+         <occurrence eId="pnt_3.4/pnt_16" kind="point" numbered="true">
             <num>
                <t v="(16)"/>
             </num>
@@ -488,8 +488,8 @@
                   <t v="."/>
                </emphasis>
             </p>
-         </unit>
-         <unit eId="pnt_3.4/pnt_17" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.4/pnt_17" kind="point" numbered="true">
             <num>
                <t v="(17)"/>
             </num>
@@ -508,46 +508,46 @@
                </emphasis>
                <t v=" and Article 13 on feasibility and pilot studies, which also discusses the use of other data sources."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.4/pnt_18" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.4/pnt_18" kind="point" numbered="true">
             <num>
                <t v="(18)"/>
             </num>
             <p>
                <t v="In the field of statistics, as in other fields, big data may bring benefits, such as increased efficiency. However, it can also create additional risks. The new data protection framework, and the adoption of the GDPR in particular, aims to address these risks in a way that provides protection but also allows flexibility for further data use, including for statistical purposes."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.4/pnt_19" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.4/pnt_19" kind="point" numbered="true">
             <num>
                <t v="(19)"/>
             </num>
             <p>
                <t v="Further legislative measures in the field of national or Union law governing statistics, however, will likely to be still required, in order to allow more widespread use of big data in statistics in a way compatible with applicable data protection law."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.4/pnt_20" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.4/pnt_20" kind="point" numbered="true">
             <num>
                <t v="(20)"/>
             </num>
             <p>
                <t v="The current Proposal should not provide the illusion that Article 8 itself is providing a sufficient legal basis for using big data for the purposes of the Proposal. It is essential that the recitals and Article 8, combined, make it clear that any such use of big data sources is subject to applicable data protection law, including the need for an appropriate legal basis under Article 6 of the GDPR."/>
             </p>
-         </unit>
-         <unit eId="pnt_3.4/pnt_21" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.4/pnt_21" kind="point" numbered="true">
             <num>
                <t v="(21)"/>
             </num>
             <p>
                <t v="To this effect, we recommend that Article 8 be revised as follows:"/>
             </p>
-            <unit eId="pnt_3.4/pnt_21/art_8" kind="article" rank="3">
+            <occurrence eId="pnt_3.4/pnt_21/art_8" kind="article" rank="3">
                <num>
                   <t v="Article 8"/>
                </num>
                <heading>
                   <t v="Data sources and methods"/>
                </heading>
-               <unit eId="pnt_3.4/pnt_21/art_8/par_1" kind="paragraph">
+               <occurrence eId="pnt_3.4/pnt_21/art_8/par_1" kind="paragraph">
                   <num>
                      <t v="1."/>
                   </num>
@@ -560,7 +560,7 @@
                      </emphasis>
                   </p>
                   <list kind="alpha">
-                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_a" kind="point" numbered="true">
+                     <occurrence eId="pnt_3.4/pnt_21/art_8/par_1/pnt_a" kind="point" numbered="true">
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -573,33 +573,33 @@
                            </emphasis>
                            <t v=";"/>
                         </p>
-                     </unit>
-                     <unit eId="pnt_3.4/pnt_21/art_8/par_1/pnt_b" kind="point" numbered="true">
+                     </occurrence>
+                     <occurrence eId="pnt_3.4/pnt_21/art_8/par_1/pnt_b" kind="point" numbered="true">
                         <num>
                            <t v="(b)"/>
                         </num>
                         <p>
                            <t v="administrative records and any other sources, methods or innovative approaches in so far as they allow for the production of data that are comparable and compliant with the applicable specific requirements laid down by this Regulation."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </list>
-               </unit>
-               <unit eId="pnt_3.4/pnt_21/art_8/par_2" kind="paragraph">
+               </occurrence>
+               <occurrence eId="pnt_3.4/pnt_21/art_8/par_2" kind="paragraph">
                   <num>
                      <t v="2."/>
                   </num>
                   <p>
                      <t v="Member States shall provide the Commission (Eurostat) with detailed information on the sources and methods used."/>
                   </p>
-               </unit>
-            </unit>
-         </unit>
-      </unit>
-      <unit eId="pnt_3.5"
-            kind="level"
-            depth="2"
-            numbered="true"
-            rank="2">
+               </occurrence>
+            </occurrence>
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_3.5"
+                  kind="level"
+                  depth="2"
+                  numbered="true"
+                  rank="2">
          <num>
             <t v="3.5."/>
          </num>
@@ -608,7 +608,7 @@
                <t v="Sampling frames (Article 11)"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_3.5/pnt_22" kind="point" numbered="true">
+         <occurrence eId="pnt_3.5/pnt_22" kind="point" numbered="true">
             <num>
                <t v="(22)"/>
             </num>
@@ -621,8 +621,8 @@
                   <t v="."/>
                </emphasis>
             </p>
-         </unit>
-         <unit eId="pnt_3.5/pnt_23" kind="point" numbered="true">
+         </occurrence>
+         <occurrence eId="pnt_3.5/pnt_23" kind="point" numbered="true">
             <num>
                <t v="(23)"/>
             </num>
@@ -635,9 +635,9 @@
                   <t v=" rights and freedoms and legitimate interest'."/>
                </emphasis>
             </p>
-         </unit>
-      </unit>
-      <unit eId="pnt_4" kind="level" depth="1" numbered="true" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="pnt_4" kind="level" depth="1" numbered="true" rank="1">
          <num>
             <t v="4."/>
          </num>
@@ -646,7 +646,7 @@
                <t v="Conclusions"/>
             </emphasis>
          </heading>
-         <unit eId="pnt_4/pnt_24" kind="point" numbered="true">
+         <occurrence eId="pnt_4/pnt_24" kind="point" numbered="true">
             <num>
                <t v="(24)"/>
             </num>
@@ -654,12 +654,12 @@
                <t v="The EDPS recommends:"/>
             </p>
             <list kind="dash">
-               <unit eId="pnt_4/pnt_24/idt_1" kind="indent">
+               <occurrence eId="pnt_4/pnt_24/idt_1" kind="indent">
                   <p>
                      <t v="including a reference to the ePrivacy Directive when referring to applicable law in Recital 20 as well as making the necessary updates to all relevant references, if needed, in light of the current review of the data protection framework;"/>
                   </p>
-               </unit>
-               <unit eId="pnt_4/pnt_24/idt_2" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_4/pnt_24/idt_2" kind="indent">
                   <p>
                      <t v="clarifying references to "/>
                      <emphasis kind="i">
@@ -669,18 +669,18 @@
                      </emphasis>
                      <t v=" in Recital 20;"/>
                   </p>
-               </unit>
-               <unit eId="pnt_4/pnt_24/idt_3" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_4/pnt_24/idt_3" kind="indent">
                   <p>
                      <t v="substantially revising Article 8 in order to ensure that any data processing involving administrative records and other data sources must be done in compliance with applicable data protection laws and that any direct provision of data by individuals (apart from certain exceptions as provided by law and subject to appropriate safeguards) must be made on a voluntary basis;"/>
                   </p>
-               </unit>
-               <unit eId="pnt_4/pnt_24/idt_4" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_4/pnt_24/idt_4" kind="indent">
                   <p>
                      <t v="with regard to linking administrative records, as foreseen in Article 11, ensuring that any such linking must be done in compliance with data protection law, subject to necessity, proportionality, and specific safeguards under Member State or Union law;"/>
                   </p>
-               </unit>
-               <unit eId="pnt_4/pnt_24/idt_5" kind="indent">
+               </occurrence>
+               <occurrence eId="pnt_4/pnt_24/idt_5" kind="indent">
                   <p>
                      <t v="considering a revision of the definition of "/>
                      <emphasis kind="i">
@@ -690,10 +690,10 @@
                      </emphasis>
                      <t v=" in Article 2(e) and adding a reference to the protection of the right to the protection of personal data in the related Recital 4."/>
                   </p>
-               </unit>
+               </occurrence>
             </list>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

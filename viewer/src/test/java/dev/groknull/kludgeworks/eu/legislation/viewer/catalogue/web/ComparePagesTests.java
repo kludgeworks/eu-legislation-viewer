@@ -84,10 +84,10 @@ class ComparePagesTests {
   void loadsTheWordingOfOneProvisionOnTheTwoDays() {
     var page =
         prepared(
-            PAGE + "&unit=anx",
+            PAGE + "&occurrence=anx",
             ACT + "eng/compare/place?from=2026-03-22&to=2026-10-01&eId=anx&sides=true");
     assertThat(page.select("#compare-head").text()).endsWith("of 2015/1998 on two days");
-    assertThat(page.select("day-picker input[name=unit]").attr("value")).isEqualTo("anx");
+    assertThat(page.select("day-picker input[name=occurrence]").attr("value")).isEqualTo("anx");
     assertThat(page.select("section.compare a[data-view=changes]").attr("href")).isEqualTo(PAGE);
   }
 

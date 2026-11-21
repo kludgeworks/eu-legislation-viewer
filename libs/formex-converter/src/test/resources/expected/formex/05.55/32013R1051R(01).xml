@@ -31,7 +31,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 4, Article 1(1):"/>
          </p>
@@ -41,7 +41,7 @@
             </p>
             <quotedStructure eId="cor_1/old/qstr_1">
                <list kind="arabic">
-                  <unit eId="cor_1/old/qstr_1/pnt_1" kind="point" numbered="true">
+                  <occurrence eId="cor_1/old/qstr_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="(1)"/>
@@ -49,7 +49,7 @@
                      <p>
                         <t v="in Title II, the following Chapter is added:"/>
                      </p>
-                     <unit eId="cor_1/old/qstr_1/pnt_1/cpt_IVa" kind="division" rank="1">
+                     <occurrence eId="cor_1/old/qstr_1/pnt_1/cpt_IVa" kind="division" rank="1">
                         <num>
                            <emphasis kind="i">
                               <t v="“CHAPTER IVa"/>
@@ -62,14 +62,14 @@
                               </emphasis>
                            </emphasis>
                         </subheading>
-                        <unit eId="cor_1/old/qstr_1/pnt_1/art_19a" kind="article" rank="2">
+                        <occurrence eId="cor_1/old/qstr_1/pnt_1/art_19a" kind="article" rank="2">
                            <num>
                               <t v="Article 19a"/>
                            </num>
                            <heading>
                               <t v="Measures at external borders and support by the Agency"/>
                            </heading>
-                           <unit eId="cor_1/old/qstr_1/pnt_1/art_19a/par_1" kind="paragraph">
+                           <occurrence eId="cor_1/old/qstr_1/pnt_1/art_19a/par_1" kind="paragraph">
                               <num>
                                  <t v="1."/>
                               </num>
@@ -78,10 +78,10 @@
                                  <t v="’"/>
                                  <t v=","/>
                               </p>
-                           </unit>
-                        </unit>
-                     </unit>
-                  </unit>
+                           </occurrence>
+                        </occurrence>
+                     </occurrence>
+                  </occurrence>
                </list>
             </quotedStructure>
          </old>
@@ -91,7 +91,7 @@
             </p>
             <quotedStructure eId="cor_1/new/qstr_1">
                <list kind="arabic">
-                  <unit eId="cor_1/new/qstr_1/pnt_1" kind="point" numbered="true">
+                  <occurrence eId="cor_1/new/qstr_1/pnt_1" kind="point" numbered="true">
                      <num>
                         <t v="‘"/>
                         <t v="(1)"/>
@@ -99,7 +99,7 @@
                      <p>
                         <t v="in Title II, the following Chapter is added:"/>
                      </p>
-                     <unit eId="cor_1/new/qstr_1/pnt_1/cpt_IVa" kind="division" rank="1">
+                     <occurrence eId="cor_1/new/qstr_1/pnt_1/cpt_IVa" kind="division" rank="1">
                         <num>
                            <emphasis kind="i">
                               <t v="“CHAPTER IVa"/>
@@ -112,14 +112,14 @@
                               </emphasis>
                            </emphasis>
                         </subheading>
-                        <unit eId="cor_1/new/qstr_1/pnt_1/art_19b" kind="article" rank="2">
+                        <occurrence eId="cor_1/new/qstr_1/pnt_1/art_19b" kind="article" rank="2">
                            <num>
                               <t v="Article 19b"/>
                            </num>
                            <heading>
                               <t v="Measures at external borders and support by the Agency"/>
                            </heading>
-                           <unit eId="cor_1/new/qstr_1/pnt_1/art_19b/par_1" kind="paragraph">
+                           <occurrence eId="cor_1/new/qstr_1/pnt_1/art_19b/par_1" kind="paragraph">
                               <num>
                                  <t v="1."/>
                               </num>
@@ -128,14 +128,14 @@
                                  <t v="’"/>
                                  <t v="."/>
                               </p>
-                           </unit>
-                        </unit>
-                     </unit>
-                  </unit>
+                           </occurrence>
+                        </occurrence>
+                     </occurrence>
+                  </occurrence>
                </list>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

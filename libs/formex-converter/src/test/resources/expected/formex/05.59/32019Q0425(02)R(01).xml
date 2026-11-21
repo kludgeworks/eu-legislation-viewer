@@ -27,7 +27,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 43, the publication of "/>
             <quote startQuote="‘" endQuote="’">
@@ -35,7 +35,7 @@
             </quote>
             <t v=" is to be considered null and void."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

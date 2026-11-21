@@ -127,7 +127,7 @@ a.chip:hover {
   padding: 16px 0 24px 32px;
 }
 
-.whole .book .unit > :not(.unit, .difference) {
+.whole .book .occurrence > :not(.occurrence, .difference) {
   max-width: 42.5rem;
 }
 
@@ -338,7 +338,7 @@ details.ledger-fold[open] {
   display: none;
 }
 
-/* A deleted unit in the Whole text shows where it was. Its number and words are struck through in
+/* A deleted occurrence in the Whole text shows where it was. Its number and words are struck through in
  * red and a little grey, so the text around it is easy to read. */
 .whole .difference-deleted > :not(.sidenote, .difference-number) {
   opacity: 0.7;
@@ -349,8 +349,8 @@ details.ledger-fold[open] {
 }
 
 /* The Changes view shows the provisions that differ in the book column. Each one has its number in
- * the margin and its note beside it. The opening of the unit that contains them is a quiet grey.
- * The units that are the same in both texts are folded. */
+ * the margin and its note beside it. The opening of the occurrence that contains them is a quiet grey.
+ * The occurrences that are the same in both texts are folded. */
 .changes .book {
   padding: 16px 0 24px 32px;
 }
@@ -367,7 +367,7 @@ details.ledger-fold[open] {
 /* A comparison can have thousands of differences. The browser lays out and paints only those near
  * the screen, and keeps the height it last laid out for the others (content-visibility). It still
  * finds their words, for Find in page. It clips what a difference draws outside its box, so the box
- * reaches 28px into the margin, over its number and the amendment markers of its unit; the columns
+ * reaches 28px into the margin, over its number and the amendment markers of its occurrence; the columns
  * don't move. A row of the Synopsis is the same. */
 .changes .difference,
 .ledger-row:not(.ledger-head) {
@@ -380,7 +380,7 @@ details.ledger-fold[open] {
   padding-left: 28px;
 }
 
-.difference > .unit {
+.difference > .occurrence {
   grid-column: 1;
   grid-row: 1;
 }
@@ -412,13 +412,13 @@ details.ledger-fold[open] {
   color: var(--accent);
 }
 
-/* The unit that the sidenote is about, before what made it: "Point 8.1.2.3(c) — Replaced by …". */
-.sidenote .unit {
+/* The occurrence that the sidenote is about, before what made it: "Point 8.1.2.3(c) — Replaced by …". */
+.sidenote .occurrence {
   font-weight: 600;
   color: var(--ink3);
 }
 
-.sidenote .unit::after {
+.sidenote .occurrence::after {
   content: " — ";
   font-weight: 400;
 }
@@ -560,7 +560,7 @@ nav.outline ul ul {
   padding-left: 12px;
 }
 
-/* A unit with parts: its link, then the fold of its parts. The fold's summary is only its button,
+/* An occurrence with parts: its link, then the fold of its parts. The fold's summary is only its button,
  * in the gutter before the link (a link in a summary is not reliable for the keyboard and for screen
  * readers). */
 nav.outline li.branch {
@@ -611,8 +611,8 @@ nav.outline a[aria-current="location"] {
   color: var(--ink);
 }
 
-/* The outline of a comparison (comparison/outline.jte). Each unit shows its label, a bar for its
- * share of the differences, and its count. The differences in the points of a unit show as chips.
+/* The outline of a comparison (comparison/outline.jte). Each occurrence shows its label, a bar for its
+ * share of the differences, and its count. The differences in the points of an occurrence show as chips.
  */
 nav.outline.counted .outline-head {
   display: flex;
@@ -653,7 +653,7 @@ nav.outline .n {
   color: var(--ink);
 }
 
-/* The changed provisions in the points of a unit: a row each, one level below the unit, with a
+/* The changed provisions in the points of an occurrence: a row each, one level below the occurrence, with a
  * small dot, the provision's own num, and the number of its difference in grey. */
 nav.outline .rows a {
   font:
@@ -830,15 +830,15 @@ nav.outline .rail-map a.on {
   color: var(--accent);
 }
 
-/* The ▼ mark that shows what amended a unit. It is in the margin beside the number of the unit.
+/* The ▼ mark that shows what amended an occurrence. It is in the margin beside the number of the occurrence.
  * Its hover shows the act and what it did. A click opens the change in Compare. Read does not show
  * the change itself. */
-.legal-text .unit {
+.legal-text .occurrence {
   position: relative;
 }
 
-.legal-text .unit > .provenance,
-.legal-text .unit > .deleted > .provenance {
+.legal-text .occurrence > .provenance,
+.legal-text .occurrence > .deleted > .provenance {
   position: absolute;
   left: -1.3rem;
   top: 0.15em;

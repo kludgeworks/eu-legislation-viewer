@@ -73,19 +73,19 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Protocol 4 on cotton"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=", annexed to the Act of Accession of Greece,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 1051/2001 of "/>
                <date date="2001-05-22">
@@ -95,7 +95,7 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 4 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -103,7 +103,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -114,15 +114,15 @@
                <noteRef href="#note_4" marker="4"/>
                <t v=" are based are wrong. The said Regulations should therefore be corrected."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="It should be possible at the request of the interested party for the corrections to apply from the date of entry into force of the corrected Regulations,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -131,7 +131,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -139,7 +139,7 @@
             <t v="Article 1 of Regulation (EC) No 2281/2003 is hereby replaced by the following:"/>
          </p>
          <quotedStructure eId="art_1/qstr_1">
-            <unit eId="art_1/qstr_1/art_1" kind="article" rank="2">
+            <occurrence eId="art_1/qstr_1/art_1" kind="article" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="Article 1"/>
@@ -148,10 +148,10 @@
                   <t v="The world price for unginned cotton as referred to in Article 4 of Regulation (EC) No 1051/2001 is hereby determined as equalling EUR 32,077/100 kg."/>
                   <t v="’"/>
                </p>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -159,7 +159,7 @@
             <t v="Article 1 of Regulation (EC) No 2299/2003 is hereby replaced by the following:"/>
          </p>
          <quotedStructure eId="art_2/qstr_1">
-            <unit eId="art_2/qstr_1/art_1" kind="article" rank="2">
+            <occurrence eId="art_2/qstr_1/art_1" kind="article" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="Article 1"/>
@@ -168,14 +168,14 @@
                   <t v="The world price for unginned cotton as referred to in Article 4 of Regulation (EC) No 1051/2001 is hereby determined as equalling EUR 31,820/100 kg."/>
                   <t v="’"/>
                </p>
-            </unit>
+            </occurrence>
          </quotedStructure>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
-         <unit eId="art_3/unp_1" kind="paragraph">
+         <occurrence eId="art_3/unp_1" kind="paragraph">
             <p>
                <t v="This Regulation shall enter into force on the day of its publication in the "/>
                <emphasis kind="i">
@@ -183,8 +183,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_3/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/unp_2" kind="paragraph">
             <p>
                <deleted amendingAct="32004R1476"
                         action="deleted"
@@ -198,8 +198,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_3/unp_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_3/unp_3" kind="paragraph">
             <p>
                <deleted amendingAct="32004R1476"
                         action="deleted"
@@ -213,8 +213,8 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>

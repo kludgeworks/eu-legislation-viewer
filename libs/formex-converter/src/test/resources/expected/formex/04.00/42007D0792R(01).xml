@@ -29,12 +29,12 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 32, in the Sole Article, last sentence of paragraph 1 of the quoted matter:"/>
          </p>
          <list kind="definition" separator=":">
-            <unit eId="cor_1/def_1" kind="definition">
+            <occurrence eId="cor_1/def_1" kind="definition">
                <heading>
                   <t v="delete"/>
                </heading>
@@ -43,9 +43,9 @@
                      <t v="This date could be reviewed if need be."/>
                   </quote>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

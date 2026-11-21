@@ -49,12 +49,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Directive 2001/89/EC of "/>
                <date date="2001-10-23">
@@ -64,7 +64,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 16(1) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -72,7 +72,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -81,39 +81,39 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" was adopted as one of a number of measures to combat classical swine fever."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Slovakia has informed the Commission about the recent evolution of that disease in feral pigs in certain areas bordering Hungary."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Hungary has informed the Commission that in the light of the epidemiological situation, the measures set out in the plan for the eradication of classical swine fever in feral pigs need to be extended to certain areas of the Pest County in Hungary."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Decision 2007/683/EC should therefore be amended accordingly."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -122,22 +122,22 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="The Annex to Decision 2007/683/EC is replaced by the text in the Annex to this Decision."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Republic of Hungary."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -203,17 +203,17 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
          <quotedStructure eId="anx/qstr_1">
-            <unit eId="anx/qstr_1/anx" kind="annex" rank="2">
+            <occurrence eId="anx/qstr_1/anx" kind="annex" rank="2">
                <num>
                   <t v="‘"/>
                   <t v="ANNEX"/>
                </num>
-               <unit eId="anx/qstr_1/anx/level_1" kind="level" depth="1" rank="3">
+               <occurrence eId="anx/qstr_1/anx/level_1" kind="level" depth="1" rank="3">
                   <heading>
                      <t v="Areas where the plan for the eradication of classical swine fever in feral pigs is to be implemented"/>
                   </heading>
@@ -222,10 +222,10 @@
                      <t v="’"/>
                      <t v="."/>
                   </p>
-               </unit>
-            </unit>
+               </occurrence>
+            </occurrence>
          </quotedStructure>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

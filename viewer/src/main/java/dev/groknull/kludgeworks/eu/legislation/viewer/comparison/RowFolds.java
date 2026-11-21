@@ -14,11 +14,11 @@ import org.jspecify.annotations.Nullable;
  * on each side, and a fold for each longer run of other rows. A fold loads its rows when the reader
  * opens it.
  *
- * <p>The tables of a unit are numbered from 0, in the order of the text. A table in a cell of
- * another table is not numbered, and its rows are not folded: it is folded or shown with its row.
- * The rows of a table are numbered from 0, in the order of the text, through its row groups. A fold
- * names its rows by these numbers: {@code table="2" first="10" last="40"} stands for rows 10 to 40
- * of the third table. The views give it the address that loads those rows.
+ * <p>The tables of an occurrence are numbered from 0, in the order of the text. A table in a cell
+ * of another table is not numbered, and its rows are not folded: it is folded or shown with its
+ * row. The rows of a table are numbered from 0, in the order of the text, through its row groups. A
+ * fold names its rows by these numbers: {@code table="2" first="10" last="40"} stands for rows 10
+ * to 40 of the third table. The views give it the address that loads those rows.
  *
  * <ul>
  *   <li>A row with a mark is kept, as is a header row.
@@ -27,15 +27,15 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>The fold is a {@code diff:rows} element, which the legal text renders as a row of its own. A
- * comparison is kept with its rows folded ({@link Difference#kept}), so folding a unit again leaves
- * a table that has folds as it is.
+ * comparison is kept with its rows folded ({@link Difference#kept}), so folding an occurrence again
+ * leaves a table that has folds as it is.
  */
 public final class RowFolds {
 
   /** The name of a fold of rows. */
   public static final String FOLD = "diff:rows";
 
-  /** The attribute of a fold with the number of its table in the unit. */
+  /** The attribute of a fold with the number of its table in the occurrence. */
   public static final String TABLE = "table";
 
   /** The attribute of a fold with the number of its first row in its table. */
@@ -55,19 +55,19 @@ public final class RowFolds {
   private RowFolds() {}
 
   /**
-   * Returns {@code unit} with the runs of rows in its tables folded. A table that has folds already
-   * stays as it is.
+   * Returns {@code occurrence} with the runs of rows in its tables folded. A table that has folds
+   * already stays as it is.
    */
-  public static Element of(Element unit) {
-    return new Folding().unit(unit);
+  public static Element of(Element occurrence) {
+    return new Folding().occurrence(occurrence);
   }
 
   /**
-   * Returns the rows {@code first} to {@code last} of table {@code table} of {@code unit}, as they
-   * are. Returns none if it has no such table or rows.
+   * Returns the rows {@code first} to {@code last} of table {@code table} of {@code occurrence}, as
+   * they are. Returns none if it has no such table or rows.
    */
-  public static List<Element> rows(Element unit, int table, int first, int last) {
-    var found = table < 0 ? null : table(unit, table);
+  public static List<Element> rows(Element occurrence, int table, int first, int last) {
+    var found = table < 0 ? null : table(occurrence, table);
     if (found == null) {
       return List.of();
     }
@@ -80,9 +80,9 @@ public final class RowFolds {
   }
 
   /** Returns the table numbered {@code number}, or null if there is none. */
-  private static @Nullable Element table(Element unit, int number) {
+  private static @Nullable Element table(Element occurrence, int number) {
     var tables = new ArrayList<Element>();
-    tables(unit, tables);
+    tables(occurrence, tables);
     return number < tables.size() ? tables.get(number) : null;
   }
 
@@ -112,14 +112,14 @@ public final class RowFolds {
     return MARKS.contains(element.name()) || element.children().stream().anyMatch(RowFolds::marked);
   }
 
-  /** Folds the tables of one unit, numbering them in the order of the text. */
+  /** Folds the tables of one occurrence, numbering them in the order of the text. */
   private static final class Folding {
     private int tables;
 
     /** The number of the next row of the table being folded. */
     private int row;
 
-    Element unit(Element element) {
+    Element occurrence(Element element) {
       if (element.name().equals("table")) {
         var number = tables++;
         if (hasFolds(element)) {
@@ -134,7 +134,7 @@ public final class RowFolds {
       if (element.children().isEmpty()) {
         return element;
       }
-      return copy(element, element.children().stream().map(this::unit).toList());
+      return copy(element, element.children().stream().map(this::occurrence).toList());
     }
 
     /**
@@ -153,7 +153,7 @@ public final class RowFolds {
         if (child.name().equals("rowGroup")) {
           children.add(rowsOf(child, table));
         } else {
-          children.add(unit(child));
+          children.add(occurrence(child));
         }
       }
       children.addAll(folded(rows, table));

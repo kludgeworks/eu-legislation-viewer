@@ -37,12 +37,12 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 131, point 2. (b) should read as follows:"/>
          </p>
          <new>
-            <unit eId="cor_1/new/pnt_2.-b" kind="point" numbered="true">
+            <occurrence eId="cor_1/new/pnt_2.-b" kind="point" numbered="true">
                <num>
                   <t v="2. (b)"/>
                </num>
@@ -52,9 +52,9 @@
                <p>
                   <t v="One of the two management level officials was appointed Head of Unit in DG PRESS. The other, after spending a short period of time in DG ADMIN as Adviser, was appointed Head of Unit in DG ADMIN."/>
                </p>
-            </unit>
+            </occurrence>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

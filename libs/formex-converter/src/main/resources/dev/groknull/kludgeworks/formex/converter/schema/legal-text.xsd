@@ -18,7 +18,7 @@
       paragraphs, points, annexes), its inline meaning (dates, references, quotations, footnotes) and
       where each part comes from (the amending act that inserted, replaced or deleted it).
 
-      This schema checks the structure. The rules it can't express (eIds unique among the units in
+      This schema checks the structure. The rules it can't express (eIds unique among the occurrences in
       force, note references that resolve, consistent amendment markers) are in legal-text.sch, an
       ISO Schematron file with the XSLT 3.0 binding: a legal text is valid against both.
 
@@ -38,7 +38,7 @@
   <xs:element name="legalText" type="LegalText">
     <xs:annotation>
       <xs:documentation>
-        The root element. eIds are unique among live units; a deleted placeholder keeps the eId it had,
+        The root element. eIds are unique among live occurrences; a deleted placeholder keeps the eId it had,
         which a later insertion may reuse, so uniqueness is not expressed in the schema.
       </xs:documentation>
     </xs:annotation>
@@ -72,7 +72,7 @@
           <xs:documentation>
             The annexes, and the footnotes of the act's own file, collected from wherever they occur in it, printed
             after it as the OJ prints them: before the annexes where they are files of their own (an act as
-            published: each file's notes are in its unit), else after them.
+            published: each file's notes are in its occurrence), else after them.
           </xs:documentation>
         </xs:annotation>
         <xs:sequence>
@@ -136,7 +136,7 @@
       </xs:enumeration>
       <xs:enumeration value="corrigendum">
         <xs:annotation>
-          <xs:documentation>A corrigendum: corrections to a published text, each a unit of kind correction with its old and new wording.</xs:documentation>
+          <xs:documentation>A corrigendum: corrections to a published text, each an occurrence of kind correction with its old and new wording.</xs:documentation>
         </xs:annotation>
       </xs:enumeration>
     </xs:restriction>
@@ -366,7 +366,7 @@
           <xs:annotation><xs:documentation>Words before the first citation (Formex GR.VISA.INIT).</xs:documentation></xs:annotation>
         </xs:element>
         <xs:choice maxOccurs="unbounded">
-          <xs:element name="unit" type="Unit">
+          <xs:element name="occurrence" type="Occurrence">
             <xs:annotation><xs:documentation>One citation (kind citation, eId pbl_1/cit_N by position).</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="deleted" type="DeletedBlock">
@@ -387,7 +387,7 @@
             <xs:annotation><xs:documentation>The words before the first recital: "Whereas:".</xs:documentation></xs:annotation>
           </xs:element>
           <xs:choice maxOccurs="unbounded">
-            <xs:element name="unit" type="Unit">
+            <xs:element name="occurrence" type="Occurrence">
               <xs:annotation>
                 <xs:documentation>
                   One recital (kind recital, eId pbl_1/rct_N by its number), or a group of recitals under a heading (kind
@@ -428,7 +428,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:choice maxOccurs="unbounded">
-      <xs:element name="unit" type="Unit">
+      <xs:element name="occurrence" type="Occurrence">
         <xs:annotation>
           <xs:documentation>One annex (kind annex; eId anx for a single annex, else anx_ and its label), a letter of an exchange of letters (kind letter), or an attached document (kind attachment, eId att_N).</xs:documentation>
         </xs:annotation>
@@ -557,9 +557,9 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <!-- ============================================================ units -->
+  <!-- ============================================================ occurrences -->
 
-  <xs:complexType name="Unit">
+  <xs:complexType name="Occurrence">
     <xs:annotation>
       <xs:documentation>
         A part of the hierarchy of the text: article, paragraph, point, annex, annex level and so on. One element
@@ -571,7 +571,7 @@
       <xs:extension base="Block">
         <xs:sequence>
           <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation><xs:documentation>The amending acts that put this unit in its current form, outermost first.</xs:documentation></xs:annotation>
+            <xs:annotation><xs:documentation>The amending acts that put this occurrence in its current form, outermost first.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="num" type="InlineContent" minOccurs="0">
             <xs:annotation><xs:documentation>The label as printed: "Article 3", "(a)", "1.2.2.6", "ANNEX II".</xs:documentation></xs:annotation>
@@ -598,10 +598,10 @@
           </xs:choice>
         </xs:sequence>
         <xs:attribute name="eId" type="EId" use="required">
-          <xs:annotation><xs:documentation>The unit's identifier, e.g. art_3/par_2/pnt_a or anx/pnt_1.2.2.6.</xs:documentation></xs:annotation>
+          <xs:annotation><xs:documentation>The occurrence's identifier, e.g. art_3/par_2/pnt_a or anx/pnt_1.2.2.6.</xs:documentation></xs:annotation>
         </xs:attribute>
-        <xs:attribute name="kind" type="UnitKind" use="required">
-          <xs:annotation><xs:documentation>What the unit is.</xs:documentation></xs:annotation>
+        <xs:attribute name="kind" type="OccurrenceKind" use="required">
+          <xs:annotation><xs:documentation>What the occurrence is.</xs:documentation></xs:annotation>
         </xs:attribute>
         <xs:attribute name="depth" type="xs:positiveInteger">
           <xs:annotation><xs:documentation>Levels only: the nesting depth in the source (Formex LEVEL), for indentation.</xs:documentation></xs:annotation>
@@ -615,7 +615,7 @@
         <xs:attribute name="rank" type="xs:positiveInteger">
           <xs:annotation>
             <xs:documentation>
-              A unit with a title (an article's, an annex's, a division's label and heading, an annex level's heading
+              An occurrence with a title (an article's, an annex's, a division's label and heading, an annex level's heading
               or label line): the title's rank in the text's outline, 1 the outermost. None for a point's, a
               paragraph's or a recital's number, or a definition's term.
             </xs:documentation>
@@ -625,7 +625,7 @@
           <xs:annotation>
             <xs:documentation>
               The published text gives this label twice under the same parent (Annex XI points 1., 2., 2.): the
-              units keep the label and share their eId, as published, and each is marked. A reference to the
+              occurrences keep the label and share their eId, as published, and each is marked. A reference to the
               label can't tell them apart.
             </xs:documentation>
           </xs:annotation>
@@ -635,7 +635,7 @@
             <xs:documentation>
               Annexes only: the number EUR-Lex's HTML gives the annex in its anchor, #anx_N, so that a reader can link to
               it there (https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:32015R1998#anx_1). EUR-Lex counts
-              the files an annex is split into, where this text joins them, so it can't be worked out from the units.
+              the files an annex is split into, where this text joins them, so it can't be worked out from the occurrences.
             </xs:documentation>
           </xs:annotation>
         </xs:attribute>
@@ -648,12 +648,12 @@
       <xs:documentation>
         One file of an annex the OJ prints across several (2015/1998's, across four): the Publications Office's
         cut, which EUR-Lex prints as it is, each file under the annex's title and followed by its notes. The
-        annex is one unit, its levels numbered through the files, so eIds don't depend on the cut.
+        annex is one occurrence, its levels numbered through the files, so eIds don't depend on the cut.
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
       <xs:element name="num" type="InlineContent" minOccurs="0">
-        <xs:annotation><xs:documentation>The title the file repeats ("ANNEX"); the first file's is the unit's.</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>The title the file repeats ("ANNEX"); the first file's is the occurrence's.</xs:documentation></xs:annotation>
       </xs:element>
       <xs:element name="heading" type="Lines" minOccurs="0"/>
       <xs:element name="subheading" type="Lines" minOccurs="0"/>
@@ -667,8 +667,8 @@
     </xs:attribute>
   </xs:complexType>
 
-  <xs:simpleType name="UnitKind">
-    <xs:annotation><xs:documentation>The kinds of unit (AKN4EU names).</xs:documentation></xs:annotation>
+  <xs:simpleType name="OccurrenceKind">
+    <xs:annotation><xs:documentation>The kinds of occurrence (AKN4EU names).</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="division">
         <xs:annotation>
@@ -756,11 +756,11 @@
   <xs:simpleType name="EId">
     <xs:annotation>
       <xs:documentation>
-        An AKN4EU-style identifier: segments joined by "/", each an abbreviation plus the unit's own label taken
+        An AKN4EU-style identifier: segments joined by "/", each an abbreviation plus the occurrence's own label taken
         literally (brackets and trailing dots dropped, whitespace as "-", letters and digits of any script kept), e.g. art_3/par_2/pnt_a, anx/pnt_1.2.2.6,
-        pbl_1/rct_12. Units without a label are numbered by position. The codes are AKN4EU's, which are ELI's
-        subdivision codes, and where ELI has none Akoma Ntoso's. Besides the units' own, segments name where
-        numbering restarts: tab_N/tr_N/td_N (units in a table cell), list_N (a unit's second and later lists),
+        pbl_1/rct_12. Occurrences without a label are numbered by position. The codes are AKN4EU's, which are ELI's
+        subdivision codes, and where ELI has none Akoma Ntoso's. Besides the occurrences' own, segments name where
+        numbering restarts: tab_N/tr_N/td_N (occurrences in a table cell), list_N (an occurrence's second and later lists),
         qstr_N (quoted text), old and new (the sides of a correction), ann_N (an annotation), fgr_N (a figure's
         description), def_N (an unlabelled definition).
       </xs:documentation>
@@ -772,7 +772,7 @@
   </xs:simpleType>
 
   <xs:simpleType name="EIdRef">
-    <xs:annotation><xs:documentation>A reference to a unit or note of the same document: # and its eId, e.g. #note_3.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>A reference to an occurrence or note of the same document: # and its eId, e.g. #note_3.</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="#[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?(/[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?)*"/>
     </xs:restriction>
@@ -802,7 +802,7 @@
   <!-- ============================================================ blocks -->
 
   <xs:complexType name="Block" abstract="true">
-    <xs:annotation><xs:documentation>Anything that stands on its own line: a unit, a paragraph, a list, a table.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>Anything that stands on its own line: an occurrence, a paragraph, a list, a table.</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="PreambleContent"/>
     </xs:complexContent>
@@ -822,14 +822,14 @@
   </xs:complexType>
 
   <xs:group name="blocks">
-    <xs:annotation><xs:documentation>The content of a unit, cell, note or annotation: blocks in reading order.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>The content of an occurrence, cell, note or annotation: blocks in reading order.</xs:documentation></xs:annotation>
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="p" type="Paragraph"><xs:annotation><xs:documentation>A paragraph of running text.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="list" type="ListBlock"><xs:annotation><xs:documentation>A list of points, indents or definitions.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="table" type="Table"><xs:annotation><xs:documentation>A table.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="tableGroup" type="TableGroup"><xs:annotation><xs:documentation>Tables that share one caption.</xs:documentation></xs:annotation></xs:element>
-        <xs:element name="unit" type="Unit"><xs:annotation><xs:documentation>A level of the hierarchy: an article, a point, an annex and so on.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="occurrence" type="Occurrence"><xs:annotation><xs:documentation>A level of the hierarchy: an article, a point, an annex and so on.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="quotedStructure" type="QuotedStructure"><xs:annotation><xs:documentation>Text an amending act quotes.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="annotation" type="Annotation"><xs:annotation><xs:documentation>A notes box or a caption of a form.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="figure" type="Figure"><xs:annotation><xs:documentation>An image as a block.</xs:documentation></xs:annotation></xs:element>
@@ -885,7 +885,7 @@
       <xs:extension base="Block">
         <xs:sequence>
           <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation><xs:documentation>The amending acts that put this paragraph in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
+            <xs:annotation><xs:documentation>The amending acts that put this paragraph in its current form, when they differ from its occurrence's.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:group ref="inline"/>
         </xs:sequence>
@@ -899,10 +899,10 @@
       <xs:extension base="Block">
         <xs:sequence>
           <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation><xs:documentation>The amending acts that put this list in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
+            <xs:annotation><xs:documentation>The amending acts that put this list in its current form, when they differ from its occurrence's.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:choice maxOccurs="unbounded">
-            <xs:element name="unit" type="Unit">
+            <xs:element name="occurrence" type="Occurrence">
               <xs:annotation><xs:documentation>An item: kind point, indent or definition.</xs:documentation></xs:annotation>
             </xs:element>
             <xs:element name="deleted" type="DeletedBlock">
@@ -943,7 +943,7 @@
       <xs:extension base="Block">
         <xs:sequence>
           <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation><xs:documentation>The amending acts that put this table in its current form, when they differ from its unit's.</xs:documentation></xs:annotation>
+            <xs:annotation><xs:documentation>The amending acts that put this table in its current form, when they differ from its occurrence's.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="caption" type="Caption" minOccurs="0">
             <xs:annotation><xs:documentation>The table's title.</xs:documentation></xs:annotation>
@@ -1057,18 +1057,18 @@
   <xs:complexType name="QuotedStructure">
     <xs:annotation>
       <xs:documentation>
-        The units an amending act inserts or substitutes (Formex QUOT.S). The instruction ("point 1.2.2.3 is
-        replaced by the following:") is the paragraph before it in the same unit.
+        The occurrences an amending act inserts or substitutes (Formex QUOT.S). The instruction ("point 1.2.2.3 is
+        replaced by the following:") is the paragraph before it in the same occurrence.
       </xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:group ref="blocks"/>
         <xs:attribute name="eId" type="EId" use="required">
-          <xs:annotation><xs:documentation>The enclosing unit's eId plus qstr_N; the quoted units' eIds hang off it.</xs:documentation></xs:annotation>
+          <xs:annotation><xs:documentation>The enclosing occurrence's eId plus qstr_N; the quoted occurrences' eIds hang off it.</xs:documentation></xs:annotation>
         </xs:attribute>
         <xs:attribute name="ambiguous" type="xs:boolean" default="false">
-          <xs:annotation><xs:documentation>Inside a unit marked ambiguous, whose eId this one shares through it.</xs:documentation></xs:annotation>
+          <xs:annotation><xs:documentation>Inside an occurrence marked ambiguous, whose eId this one shares through it.</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>
     </xs:complexContent>
@@ -1208,7 +1208,7 @@
   <xs:complexType name="Provenance">
     <xs:annotation>
       <xs:documentation>
-        Which amending act put a unit or block in its current form, from the consolidation's amendment markers
+        Which amending act put an occurrence or block in its current form, from the consolidation's amendment markers
         (Formex CLG.MDFO and CLG.MDFC processing instructions).
       </xs:documentation>
     </xs:annotation>

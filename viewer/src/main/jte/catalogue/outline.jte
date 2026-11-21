@@ -2,8 +2,8 @@
 @import java.util.List
 @param List<Entry> entries
 @param boolean open
-<%-- Shows one level of the text's outline (Outline). Each unit links to its place in the text by
-     its eId. A unit with units below it has a details element after its link that lists them. Its
+<%-- Shows one level of the text's outline (Outline). Each occurrence links to its place in the text by
+     its eId. An occurrence with occurrences below it has a details element after its link that lists them. Its
      summary is only the fold's button, because a link in a summary is not reliable for the keyboard
      and for screen readers. The details elements are open at the outermost level. --%>
 <ul>

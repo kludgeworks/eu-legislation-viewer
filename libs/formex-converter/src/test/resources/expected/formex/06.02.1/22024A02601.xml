@@ -35,7 +35,7 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="HAVING REGARD to the Agreement between the European Economic Community and the Republic of Iceland signed on "/>
                <date date="1972-07-22">
@@ -43,12 +43,12 @@
                </date>
                <t v=", and to the existing arrangements for trade in fish and fishery products between Iceland and the Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="HAVING REGARD to the Additional Protocol to the Agreement between the European Economic Community and Iceland concerning special provisions applicable for the period 2014–2021 to imports into the Union of certain fish and fishery products, and in particular Article 1 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>
@@ -57,13 +57,13 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 1"/>
             </emphasis>
          </num>
-         <unit eId="art_1/par_1" kind="paragraph">
+         <occurrence eId="art_1/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
@@ -74,31 +74,31 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="art_1/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="At the end of this period, the Contracting Parties will assess the need to maintain the special provisions referred to in paragraph 1 and, if necessary, review the quota levels while taking into account all relevant interests."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 2"/>
             </emphasis>
          </num>
-         <unit eId="art_2/par_1" kind="paragraph">
+         <occurrence eId="art_2/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="The tariff quotas shall be opened on the day on which the provisional application of this Protocol becomes effective, according to procedures laid down in paragraph 3 of Article 4."/>
             </p>
-         </unit>
-         <unit eId="art_2/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
@@ -113,8 +113,8 @@
                </date>
                <t v=" onwards, subsequent tariff quotas shall be allocated annually from 1 May to 30 April until the end of the period referred to in Article 1 of this Protocol."/>
             </p>
-         </unit>
-         <unit eId="art_2/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
@@ -125,17 +125,17 @@
                </date>
                <t v=" until the provisional application this Protocol shall be proportionally allocated and made available for the rest of the period referred to in Article 1 of this Protocol."/>
             </p>
-         </unit>
-         <unit eId="art_2/par_4" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_2/par_4" kind="paragraph">
             <num>
                <t v="4."/>
             </num>
             <p>
                <t v="In case tariff quotas referred to in Article 1 are not exhausted during the period referred to in Article 1, and in case a subsequent protocol establishing duty-free tariff quotas for the same products is not provisionally applied, imports from Iceland can be made for the remaining accumulated quota volume of those tariff quotas for up to two years following the end of the period referred to in Article 1, but not longer than provisional application of a subsequent protocol establishing duty-free tariff quotas for the same products."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 3"/>
@@ -148,39 +148,39 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 4"/>
             </emphasis>
          </num>
-         <unit eId="art_4/par_1" kind="paragraph">
+         <occurrence eId="art_4/par_1" kind="paragraph">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="This Protocol shall be ratified or approved by the Parties in accordance with their own procedures. The instruments of ratification or approval shall be deposited with the General Secretariat of the Council of the European Union."/>
             </p>
-         </unit>
-         <unit eId="art_4/par_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_4/par_2" kind="paragraph">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="It shall enter into force on the first day of the second month after the last instrument of ratification or approval has been deposited."/>
             </p>
-         </unit>
-         <unit eId="art_4/par_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_4/par_3" kind="paragraph">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="Pending the completion of the procedures referred to in paragraphs 1 and 2, this Protocol shall be applied on a provisional basis from the first day of the third month following the deposit of the last notification to this effect."/>
             </p>
-         </unit>
-      </unit>
-      <unit eId="art_5" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_5" kind="article" rank="1">
          <num>
             <emphasis kind="i">
                <t v="Article 5"/>
@@ -189,7 +189,7 @@
          <p>
             <t v="This Protocol, drawn up in a single original, in the Bulgarian, Croatian, Czech, Danish, Dutch, English, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Irish, Latvian, Lithuanian, Maltese, Polish, Portuguese, Romanian, Slovak, Slovenian, Spanish, Swedish and Icelandic languages, the text in each of these texts being equally authentic, shall be deposited with the General Secretariat of the Council of the European Union, which will remit a certified copy to each of the Parties."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -204,7 +204,7 @@
       </signature>
    </conclusions>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -1094,7 +1094,7 @@
                </p>
             </note>
          </notes>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

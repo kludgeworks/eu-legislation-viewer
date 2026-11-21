@@ -70,7 +70,7 @@ jooq_tables(
 )
 
 # model/
-# The rules of a comparison: wording, units, and how two texts differ (java-diff-utils), with
+# The rules of a comparison: wording, occurrences, and how two texts differ (java-diff-utils), with
 # their version
 java_library(
     name = "model",

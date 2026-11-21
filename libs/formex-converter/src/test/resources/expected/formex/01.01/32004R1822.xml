@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 2286/2002 of "/>
                <date date="2002-12-10">
@@ -58,8 +58,8 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to Council Decision 2001/822/EC of "/>
                <date date="2001-11-27">
@@ -69,8 +69,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_4" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to Commission Regulation (EC) No 638/2003 of "/>
                <date date="2003-04-09">
@@ -80,7 +80,7 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=", and in particular Article 17(2) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -88,11 +88,11 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Examination of the quantities for which applications have been submitted shows that licences for the October 2004 tranche should be issued for the quantities applied for reduced, where appropriate, by the percentages not covered,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -101,15 +101,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Import licences for rice against applications submitted during the first five working days of October 2004 pursuant to Regulation (EC) No 638/2003 and notified to the Commission shall be issued for the quantities applied for reduced, where appropriate, by the percentages set out in the Annex hereto."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -120,7 +120,7 @@
             </date>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -189,7 +189,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -244,7 +244,7 @@
                      <p>
                         <t v="OCT (Article 10(1)(a) and (b) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <unit eId="anx/tab_1/tr_3/td_1/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_1/tr_3/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
@@ -252,7 +252,7 @@
                            <t v="CN code "/>
                            <t v="1006"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -294,7 +294,7 @@
                      <p>
                         <t v="ACP (Article 3(1) of Regulation (EC) No 638/2003)"/>
                      </p>
-                     <unit eId="anx/tab_2/tr_2/td_1/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_2/tr_2/td_1/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
@@ -308,7 +308,7 @@
                            <t v=" and "/>
                            <t v="100630"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -321,7 +321,7 @@
                      <p>
                         <t v="ACP (Article 5(1) of Regulation (EC) No 638/2003"/>
                      </p>
-                     <unit eId="anx/tab_2/tr_3/td_1/list_2/idt_1" kind="indent">
+                     <occurrence eId="anx/tab_2/tr_3/td_1/list_2/idt_1" kind="indent">
                         <num>
                            <t v="—"/>
                         </num>
@@ -329,7 +329,7 @@
                            <t v="CN codes "/>
                            <t v="10064000"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </td>
                   <td>
                      <p>
@@ -339,7 +339,7 @@
                </tr>
             </table>
          </tableGroup>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

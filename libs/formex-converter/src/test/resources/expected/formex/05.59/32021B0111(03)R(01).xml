@@ -31,7 +31,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 11, chapters 3 6, 3 7, Title 3 — Total, Grand total:"/>
          </p>
@@ -409,7 +409,7 @@
                </table>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

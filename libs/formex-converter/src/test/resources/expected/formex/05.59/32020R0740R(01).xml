@@ -31,7 +31,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 15, Annex I, part C:"/>
          </p>
@@ -47,7 +47,7 @@
             </p>
             <figure src="L_2020241EN.01004602.tif" content="other"/>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

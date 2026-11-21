@@ -19,8 +19,8 @@ public interface Comparisons {
 
   /**
    * Returns the difference at {@code eId} in the comparison of {@code from} with {@code to}, with
-   * its unit whole. An annex inserted whole is in {@link #between} with only its opening, because
-   * the store keeps it apart. Returns none if there is no such difference.
+   * its occurrence whole. An annex inserted whole is in {@link #between} with only its opening,
+   * because the store keeps it apart. Returns none if there is no such difference.
    */
   Optional<Difference> difference(TextId from, TextId to, String eId);
 }

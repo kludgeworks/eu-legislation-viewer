@@ -25,9 +25,9 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests how the sidenote of {@link SidenoteView} says who made a difference in 2015/1998. The
- * sidenote uses two sources. The first is the markers that the converter keeps on the units of the
- * consolidations of 2015/1998. The second is Cellar's amendments of those units. The versions,
- * dates and amendments are Cellar's, recorded.
+ * sidenote uses two sources. The first is the markers that the converter keeps on the occurrences
+ * of the consolidations of 2015/1998. The second is Cellar's amendments of those occurrences. The
+ * versions, dates and amendments are Cellar's, recorded.
  */
 class SidenoteViewTest {
   static final Act AVSEC = RecordedActs.act(new ActIdentifier("32015R1998"));
@@ -126,7 +126,7 @@ class SidenoteViewTest {
     assertThat(of(included, from, to, newMark).made()).isEqualTo("Replaced by 2026/449");
     assertThat(of(included, from, to, newMark).dates().getFirst().when())
         .contains("from 1 October 2026");
-    // The earlier text has the marker: the act changed the unit before.
+    // The earlier text has the marker: the act changed the occurrence before.
     assertThat(of(included, from, to, oldMark).acts()).isEmpty();
     // No part of 2019/103 applies in the step: its marker is old, not new.
     assertThat(of(included, from, to, noPart).acts()).isEmpty();
@@ -162,7 +162,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void datesAChangeFromTheOneOfItsActsDatesCellarHasForTheUnit() {
+  void datesAChangeFromTheOneOfItsActsDatesCellarHasForTheOccurrence() {
     var c =
         changed(
             "anx/pnt_8.1.2.3/pnt_c",
@@ -208,7 +208,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void chainsTheActsThatChangedAUnitInTheOrderTheVersionsIntegrateThem() {
+  void chainsTheActsThatChangedAnOccurrenceInTheOrderTheVersionsIntegrateThem() {
     var inserted = inserted("anx/pnt_12.14.1", new Marker("32023R0566", "replaced", null));
 
     var sidenote =
@@ -223,13 +223,13 @@ class SidenoteViewTest {
             amendmentsAt("AN PO 12.14", "AN CHA 12.14"),
             Language.ENG);
 
-    // The marker names only the last act that changed the unit.
+    // The marker names only the last act that changed the occurrence.
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/103, then replaced by 2023/566");
     assertThat(sidenote.dates()).hasSize(2);
   }
 
   @Test
-  void saysAUnitStillThereWasAmendedWhereWordsWereDeletedFromIt() {
+  void saysAnOccurrenceStillThereWasAmendedWhereWordsWereDeletedFromIt() {
     var indent =
         inserted(
             "anx/level_ATTACHMENT-3-B/level_1/idt_9",
@@ -252,13 +252,13 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesTheActCellarSaysDeletedAUnitWhichLeavesNoMarker() {
+  void namesTheActCellarSaysDeletedAnOccurrenceWhichLeavesNoMarker() {
     var deleted =
         new Difference(
             "anx/pnt_6.8.1.8",
             Kind.DELETED,
             point("anx/pnt_6.8.1.8"),
-            unit("anx/pnt_6.8.1.8"),
+            occurrence("anx/pnt_6.8.1.8"),
             0,
             0,
             null,
@@ -323,7 +323,7 @@ class SidenoteViewTest {
             "anx/pnt_1.0.6",
             Kind.INSERTED,
             point("anx/pnt_1.0.6"),
-            unit("anx/pnt_1.0.6"),
+            occurrence("anx/pnt_1.0.6"),
             0,
             0,
             null,
@@ -400,7 +400,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void claimsNoActOutsideTheVersionsAndSaysWhatTheUnitWasBefore() {
+  void claimsNoActOutsideTheVersionsAndSaysWhatTheOccurrenceWasBefore() {
     var f =
         changed(
             "anx/pnt_8.1.2.3/pnt_f",
@@ -461,7 +461,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void placesActsThatReplacedAUnitTogetherInTheFirstVersionThatHasThemAll() {
+  void placesActsThatReplacedAnOccurrenceTogetherInTheFirstVersionThatHasThemAll() {
     // 2019/103 applies in parts, in the versions of 1 February 2019 and 31 December 2021. It
     // replaced 11.1.2 together with 2019/1583. Only the second version has 2019/1583.
     var point =
@@ -517,7 +517,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesTheActThatReplacedTheUnitADeletedOneWasInWhole() {
+  void namesTheActThatReplacedTheOccurrenceADeletedOneWasInWhole() {
     var a =
         deleted(
             "anx/level_PART-10/pnt_a", new Marker("32017R0815", "replaced", "anx/level_PART-10"));
@@ -593,7 +593,7 @@ class SidenoteViewTest {
             "anx/pnt_1.2.3.8",
             Kind.DELETED,
             point("anx/pnt_1.2.3.8"),
-            unit("anx/pnt_1.2.3.8"),
+            occurrence("anx/pnt_1.2.3.8"),
             0,
             0,
             null,
@@ -619,13 +619,13 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesEachActCellarNamesForOneUnit() {
+  void namesEachActCellarNamesForOneOccurrence() {
     var deleted =
         new Difference(
             "anx/pnt_12.3.1",
             Kind.DELETED,
             point("anx/pnt_12.3.1"),
-            unit("anx/pnt_12.3.1"),
+            occurrence("anx/pnt_12.3.1"),
             0,
             0,
             null,
@@ -653,7 +653,7 @@ class SidenoteViewTest {
   }
 
   @Test
-  void namesTheActThatReplacedWholeTheUnitAnInsertedPointIsIn() {
+  void namesTheActThatReplacedWholeTheOccurrenceAnInsertedPointIsIn() {
     var d =
         inserted("anx/pnt_11.1.3/pnt_d", new Marker("32019R0103", "replaced", "anx/pnt_11.1.3"));
 
@@ -714,7 +714,7 @@ class SidenoteViewTest {
         eId,
         Kind.INSERTED,
         point(eId),
-        unit(eId),
+        occurrence(eId),
         0,
         0,
         null,
@@ -732,7 +732,7 @@ class SidenoteViewTest {
         eId,
         Kind.DELETED,
         point(eId),
-        unit(eId),
+        occurrence(eId),
         0,
         0,
         null,
@@ -750,7 +750,7 @@ class SidenoteViewTest {
         eId,
         Kind.CHANGED,
         point(eId),
-        unit(eId),
+        occurrence(eId),
         0,
         0,
         null,
@@ -767,8 +767,8 @@ class SidenoteViewTest {
     return new Sibling(eId, "point", "");
   }
 
-  private static Element unit(String eId) {
-    return new Element("unit", Map.of("eId", eId), List.of(), "");
+  private static Element occurrence(String eId) {
+    return new Element("occurrence", Map.of("eId", eId), List.of(), "");
   }
 
   private static Version version(String celex) {

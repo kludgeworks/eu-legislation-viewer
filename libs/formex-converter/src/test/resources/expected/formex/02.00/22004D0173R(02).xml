@@ -22,7 +22,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="In point 1 of Article 1 of Decision of the EEA Joint Committee No 173/2004 the abbreviation "/>
             <quote startQuote="‘" endQuote="’">
@@ -34,7 +34,7 @@
             </quote>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

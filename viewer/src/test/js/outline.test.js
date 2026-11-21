@@ -162,17 +162,17 @@ describe("follow in Compare", () => {
 });
 
 /**
- * Adds the units to the page, those in `above` above the line the reader is at.
+ * Adds the occurrences to the page, those in `above` above the line the reader is at.
  *
  * @param {string[]} above
  */
-const units = (above) => {
+const occurrences = (above) => {
   ["art_1", "art_1__para_2", "art_2", "art_2__para_1"].forEach((id, n) => {
-    const unit = document.createElement("section");
-    unit.id = id;
+    const occurrence = document.createElement("section");
+    occurrence.id = id;
     const top = above.includes(id) ? AT - 10 : AT + 100 * (n + 1);
-    unit.getBoundingClientRect = () => DOMRect.fromRect({ y: top });
-    document.body.append(unit);
+    occurrence.getBoundingClientRect = () => DOMRect.fromRect({ y: top });
+    document.body.append(occurrence);
   });
 };
 
@@ -191,9 +191,9 @@ describe("follow in Read", () => {
       </nav>
     </act-outline>`;
 
-  test("names nothing before the reader reaches the first unit", () => {
+  test("names nothing before the reader reaches the first occurrence", () => {
     document.body.innerHTML = READ;
-    units([]);
+    occurrences([]);
 
     follow(document);
 
@@ -203,7 +203,7 @@ describe("follow in Read", () => {
 
   test("names the section in view without the words that only a screen reader gets", () => {
     document.body.innerHTML = READ;
-    units(["art_1", "art_1__para_2", "art_2"]);
+    occurrences(["art_1", "art_1__para_2", "art_2"]);
     const hidden = document.createElement("span");
     hidden.className = "visually-hidden";
     hidden.textContent = " (has a change that this text does not show)";
@@ -216,7 +216,7 @@ describe("follow in Read", () => {
 
   test("names the section in view and opens its branch", () => {
     document.body.innerHTML = READ;
-    units(["art_1", "art_1__para_2", "art_2"]);
+    occurrences(["art_1", "art_1__para_2", "art_2"]);
 
     follow(document);
 
@@ -231,7 +231,7 @@ describe("follow in Read", () => {
 
   test("marks the deepest entry the reader has reached", () => {
     document.body.innerHTML = READ;
-    units(["art_1", "art_1__para_2"]);
+    occurrences(["art_1", "art_1__para_2"]);
 
     follow(document);
 

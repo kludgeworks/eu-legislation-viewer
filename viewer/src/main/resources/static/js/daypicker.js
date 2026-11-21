@@ -398,7 +398,7 @@ export class DayPicker extends HTMLElement {
     for (const [name, value] of Object.entries(days)) {
       form.append(element("input", { type: "hidden", name, value }));
     }
-    for (const kept of form.querySelectorAll('input[type="hidden"][name="unit"]')) {
+    for (const kept of form.querySelectorAll('input[type="hidden"][name="occurrence"]')) {
       if (kept instanceof HTMLInputElement) {
         kept.disabled = !this.#two;
       }

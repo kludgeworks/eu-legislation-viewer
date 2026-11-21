@@ -9,14 +9,14 @@ import java.util.OptionalInt;
 import java.util.regex.Pattern;
 
 /**
- * Names units without a number by their position, as the Joint Practical Guide does (15.4): "the
- * first subparagraph", "the second paragraph". Folds spell the position out ("First and second
+ * Names occurrences without a number by their position, as the Joint Practical Guide does (15.4):
+ * "the first subparagraph", "the second paragraph". Folds spell the position out ("First and second
  * subparagraphs"); outline rows are short ("Art. 9, 2nd subpara.").
  *
- * <p>The converter gives a unit without a number an eId that ends with its position among the units
- * of its kind in its parent, from 1. For example, {@code art_3/par_1/sub_2} is the second
- * subparagraph of Article 3(1), and {@code art_2/unp_1} the first paragraph of Article 2, which has
- * no number.
+ * <p>The converter gives an occurrence without a number an eId that ends with its position among
+ * the occurrences of its kind in its parent, from 1. For example, {@code art_3/par_1/sub_2} is the
+ * second subparagraph of Article 3(1), and {@code art_2/unp_1} the first paragraph of Article 2,
+ * which has no number.
  */
 final class Positions {
   private Positions() {}
@@ -53,7 +53,7 @@ final class Positions {
           "nineteenth",
           "twentieth");
 
-  /** Returns the position of the unit {@code eId}, which has no number, from 1. */
+  /** Returns the position of the occurrence {@code eId}, which has no number, from 1. */
   static OptionalInt of(String eId) {
     var position = POSITION.matcher(eId);
     return position.find()
@@ -82,29 +82,29 @@ final class Positions {
   }
 
   /**
-   * Returns the label of a fold of {@code units} that have no number, by their positions. For
+   * Returns the label of a fold of {@code occurrences} that have no number, by their positions. For
    * example, "First subparagraph", "First and second subparagraphs" or "Second to fourth indents".
    * Returns empty if they are not all of one kind, or if any has no position.
    */
-  static Optional<String> spelled(List<Sibling> units, String noun) {
-    var kind = units.getFirst().kind();
-    if (units.stream().anyMatch(unit -> !unit.kind().equals(kind))) {
+  static Optional<String> spelled(List<Sibling> occurrences, String noun) {
+    var kind = occurrences.getFirst().kind();
+    if (occurrences.stream().anyMatch(occurrence -> !occurrence.kind().equals(kind))) {
       return Optional.empty();
     }
-    var first = of(units.getFirst().eId());
-    var last = of(units.getLast().eId());
+    var first = of(occurrences.getFirst().eId());
+    var last = of(occurrences.getLast().eId());
     if (first.isEmpty()
         || last.isEmpty()
-        || units.stream().anyMatch(unit -> of(unit.eId()).isEmpty())) {
+        || occurrences.stream().anyMatch(occurrence -> of(occurrence.eId()).isEmpty())) {
       return Optional.empty();
     }
     var start = capital(ordinal(first.getAsInt()));
-    if (units.size() == 1) {
+    if (occurrences.size() == 1) {
       return Optional.of(start + " " + noun);
     }
     return Optional.of(
         start
-            + (units.size() == 2 ? " and " : " to ")
+            + (occurrences.size() == 2 ? " and " : " to ")
             + ordinal(last.getAsInt())
             + " "
             + noun
@@ -112,9 +112,9 @@ final class Positions {
   }
 
   /**
-   * Returns the short label of the outline row of the unit {@code eId} of {@code kind}, which has
-   * no number. For example, "Art. 9, 2nd subpara." or "Art. 3(1), 2nd subpara.". Returns empty if
-   * it has no position.
+   * Returns the short label of the outline row of the occurrence {@code eId} of {@code kind}, which
+   * has no number. For example, "Art. 9, 2nd subpara." or "Art. 3(1), 2nd subpara.". Returns empty
+   * if it has no position.
    */
   static Optional<String> row(String eId, String kind) {
     var position = of(eId);

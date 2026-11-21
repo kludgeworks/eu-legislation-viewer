@@ -87,7 +87,7 @@
     <xsl:sequence select="if (exists($type)) then lower-case($type) else 'anx'"/>
   </xsl:function>
 
-  <!-- the unit whose eId the annexes in an element hang off: the nearest that has one, else the file -->
+  <!-- the occurrence whose eId the annexes in an element hang off: the nearest that has one, else the file -->
   <xsl:function name="f:annex-scope" as="element()">
     <xsl:param name="e" as="element()"/>
     <xsl:sequence select="($e/ancestor-or-self::*[self::ITEM or self::ARTICLE or self::PARAG or self::GR.SEQ
@@ -95,7 +95,7 @@
         or self::OLD.CORR or self::NEW.CORR or self::DIVISION or self::LETTER][1], root($e)/*)[1]"/>
   </xsl:function>
 
-  <!-- the annexes that hang off the same unit as those an element holds, in order, those in files
+  <!-- the annexes that hang off the same occurrence as those an element holds, in order, those in files
        it includes too: two GENERAL files included in two paragraphs of one annex are siblings -->
   <xsl:function name="f:annex-siblings" as="element()*">
     <xsl:param name="holder" as="element()"/>
@@ -155,8 +155,8 @@
     <xsl:variable name="eid" as="xs:string" select="
         if (not($nested) and ($annexCount = 1 or $unlabelledCount = 1 and f:annex-label(.) = '')) then f:eid($annexBase, $abbr, ())
         else f:eid(if ($nested or $inContent or $quoted or $included) then $base else $annexBase, $abbr, if ($lone-unlabelled) then () else $label)"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="annex">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="annex">
         <!-- EUR-Lex anchors the act's own annexes, not those it quotes or an annex includes -->
         <xsl:if test="not($quoted or $included) and $anchored">
           <xsl:attribute name="eurlexAnchor" select="($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]"/>
@@ -249,9 +249,9 @@
             <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           </xsl:apply-templates>
         </xsl:for-each>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <!-- an annex or level title: the first line is the num (ANNEX II), or a numbered NP gives num
@@ -304,7 +304,7 @@
   </xsl:function>
 
   <!-- what an unnumbered level is numbered within: its parent level (also when a table or a stray
-       CONTENTS sits in between), else the unit that holds it (a list point, an article, a paragraph,
+       CONTENTS sits in between), else the occurrence that holds it (a list point, an article, a paragraph,
        a definition, a subdivision, a recital, a correction's wording, an
        annotation, a figure's description), the quoted structure, the contents of an annex or other document
        (GENERAL), or the enacting terms -->
@@ -461,8 +461,8 @@
     <!-- what the level holds after its first sub-level (a GR.ANNOTATION after its points): its levels
          being flat, it follows them, in the order of the text, not the level's own blocks -->
     <xsl:variable name="trailing" as="node()*" select="(node() except (TITLE, NO.GR.SEQ, GR.SEQ, $direct-np))[. &gt;&gt; current()/GR.SEQ[1]]"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="level" depth="{f:level-depth(.)}">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="level" depth="{f:level-depth(.)}">
         <xsl:if test="@BOX = 'YES'">
           <xsl:attribute name="box" select="true()"/>
         </xsl:if>
@@ -500,9 +500,9 @@
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="levels" as="map(*)" select="map:merge(($levels, map{'parent': $eid, 'labelled': if ($label != '' or $label-line) then $eid else $labelledParent, 'offset': 0}), map{'duplicates': 'use-last'})" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
     <xsl:for-each-group select="GR.SEQ | $trailing" group-adjacent="exists(self::GR.SEQ)">
       <xsl:choose>
         <xsl:when test="current-grouping-key()">

@@ -7,10 +7,10 @@
 
   The accumulator f:open holds the markers open at any node. From it:
   - a marker that is open before an element starts and still open after it ends COVERS the
-    element: it becomes <provenance> on the unit or block made from it (or <deleted> around it);
+    element: it becomes <provenance> on the occurrence or block made from it (or <deleted> around it);
   - a marker that opens or closes inside a block becomes an inline <changed> / <deleted> span,
     split at element boundaries into pieces that share the marker id.
-  $ctx (tunnel) holds the ids of the markers already attributed to an enclosing unit or block.
+  $ctx (tunnel) holds the ids of the markers already attributed to an enclosing occurrence or block.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -172,9 +172,9 @@
     </xsl:choose>
   </xsl:function>
 
-  <!-- One deletion, one <deleted>. The units of a passage an amendment deleted are wrapped one by
+  <!-- One deletion, one <deleted>. The occurrences of a passage an amendment deleted are wrapped one by
        one, as they are made; here a run of them, side by side, deleted by the same markers, becomes
-       one, as EUR-Lex shows one mark for it (Attachment 6-D of 02015R1998-20260322: 13 units, one
+       one, as EUR-Lex shows one mark for it (Attachment 6-D of 02015R1998-20260322: 13 occurrences, one
        deletion by 32022R1174). Deleted words in running text are left as they are. -->
   <xsl:mode name="f:deletions" on-no-match="shallow-copy" on-multiple-match="fail"/>
 

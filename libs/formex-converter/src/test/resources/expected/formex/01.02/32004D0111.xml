@@ -46,12 +46,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Decision 90/424/EEC of "/>
                <date date="1990-06-26">
@@ -61,7 +61,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 20 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -69,7 +69,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -82,48 +82,48 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=" regular monitoring of poultry flocks and wild birds in order to assess the possible presence of disease in these populations is not foreseen."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Experience has shown that certain strains of the avian influenza virus, which are currently not covered by the control measures of the Directive, have the ability to mutate to highly pathogenic strains after having circulated in the poultry population for some time."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="This situation is liable to cause high mortality in poultry and severe economic losses to the poultry industry, which could be decreased by implementing a screening system in the Member States to allow an earlier detection and control of such precursor strains."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="The Scientific Committee on Animal Health and Animal Welfare has issued an opinion on the definition of avian influenza and the use of vaccination against avian influenza. In this report it was recommended to change the definition for avian influenza in order to include more avian influenza strains for which eradication measures are appropriate. Furthermore, surveys should be carried out to determine the prevalence of such strains in different poultry populations. This should allow an estimate of the costs for the modified disease control measures."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="In November 2001 the Commission organised a symposium on the preparedness for influenza pandemics in humans. It was stressed that surveys in various animal populations should be carried out to better assess the zoonotic impact of such infections."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="Both the zoonotic aspect and the animal health implications underline the need of surveys for influenza in animal populations."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
@@ -132,8 +132,8 @@
                <noteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_8" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_8" kind="recital">
             <num>
                <t v="(8)"/>
             </num>
@@ -142,47 +142,47 @@
                <noteRef href="#note_4" marker="4"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_9" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_9" kind="recital">
             <num>
                <t v="(9)"/>
             </num>
             <p>
                <t v="During these surveys the presence of different subtypes of H5 and H7 avian influenza viruses has been detected in poultry in several Member States. Although the current prevalence of avian influenza viruses can be considered rather low, it can be concluded that it is important to follow up these positive findings and to continue the surveillance in the year 2004 to better understand the epidemiology of the avian influenza viruses."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_10" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_10" kind="recital">
             <num>
                <t v="(10)"/>
             </num>
             <p>
                <t v="Member States should submit their programmes for approval by the Commission so that financial assistance by the Community may be granted."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_11" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_11" kind="recital">
             <num>
                <t v="(11)"/>
             </num>
             <p>
                <t v="Article 32 of the Act of Accession of 2003 lays down that the new Member States are to receive the same treatment as the present Member States as regards expenditure under veterinary funds."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_12" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_12" kind="recital">
             <num>
                <t v="(12)"/>
             </num>
             <p>
                <t v="However, no financial commitment may be made for any programme before the accession of the concerned acceding Member State has taken place. Furthermore, the monitoring of certain diseases in acceding Member States can also be co-financed by other Community instruments."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_13" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_13" kind="recital">
             <num>
                <t v="(13)"/>
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee of the Food Chain and Animal Health,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -191,7 +191,7 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -202,8 +202,8 @@
             </date>
             <t v=" plans for the implementation of surveys for avian influenza in poultry and wild birds."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -212,15 +212,15 @@
             <number v="600000"/>
             <t v=" for all Member States in total."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Member States."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

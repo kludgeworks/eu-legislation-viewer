@@ -19,11 +19,12 @@ import java.util.Objects;
  *
  * <ul>
  *   <li>A change that the text has and that does not apply on the day has an amber rule beside its
- *       unit, and a short line with the act: "2022/1190 · does not apply yet". The act is a link to
- *       its page.
+ *       occurrence, and a short line with the act: "2022/1190 · does not apply yet". The act is a
+ *       link to its page.
  *   <li>A change that the text does not show has one grey marker at its place: "Not in this text:
- *       Article 18a · 2021/1133". If the text has the unit, the marker is before it. If not, the
- *       marker is at the end of the unit that holds the place, or of the unit before it.
+ *       Article 18a · 2021/1133". If the text has the occurrence, the marker is before it. If not,
+ *       the marker is at the end of the occurrence that holds the place, or of the occurrence
+ *       before it.
  *   <li>The act itself, where it does not apply at all on the day, has no mark: the status line
  *       says so one time.
  * </ul>
@@ -74,15 +75,15 @@ public record MarginView(List<Mark> marks) {
       var cited = act.cited(divergence.act());
       var href = Links.amending(eli, divergence.act(), kept, language);
       var early = divergence.kind() == Divergence.Kind.EARLY;
-      for (var unit : divergence.in(text.eIds())) {
+      for (var occurrence : divergence.in(text.eIds())) {
         found.add(
             new Mark(
-                unit.eId(),
+                occurrence.eId(),
                 !early,
-                unit.holds(),
+                occurrence.holds(),
                 early
                     ? past ? "did not apply yet" : "does not apply yet"
-                    : unit.places().stream()
+                    : occurrence.places().stream()
                         .map(place -> place.location().name())
                         .distinct()
                         .reduce((one, other) -> one + ", " + other)
@@ -91,23 +92,24 @@ public record MarginView(List<Mark> marks) {
                 href));
       }
     }
-    found.sort(Comparator.comparingInt(mark -> text.eIds().indexOf(mark.unit())));
+    found.sort(Comparator.comparingInt(mark -> text.eIds().indexOf(mark.occurrence())));
     return new MarginView(found);
   }
 
   /**
-   * One mark on a unit of the text.
+   * One mark on an occurrence of the text.
    *
-   * @param unit the eId of the unit
+   * @param occurrence the eId of the occurrence
    * @param marker whether it is a marker for a change that the text does not show. If not, it is a
    *     rule for a change that does not apply on the day.
-   * @param holds whether the text does not have the place, and the unit holds it or is before it. A
-   *     marker is then at the end of the unit. A rule is then beside the heading of the unit.
+   * @param holds whether the text does not have the place, and the occurrence holds it or is before
+   *     it. A marker is then at the end of the occurrence. A rule is then beside the heading of the
+   *     occurrence.
    * @param words for a rule, the state of the change: "does not apply yet". For a marker, the
    *     provisions that the text does not show: "Article 18a, Article 50a".
    * @param act the act, as cited
    * @param href the address of the page of the act
    */
   public record Mark(
-      String unit, boolean marker, boolean holds, String words, String act, String href) {}
+      String occurrence, boolean marker, boolean holds, String words, String act, String href) {}
 }

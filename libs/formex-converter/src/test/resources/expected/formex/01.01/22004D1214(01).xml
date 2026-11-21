@@ -38,13 +38,13 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to Article 15(2) of its Rules of Procedure"/>
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>
@@ -53,55 +53,55 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/unp_1" kind="paragraph">
+         <occurrence eId="art_1/unp_1" kind="paragraph">
             <p>
                <t v="The Rules of Procedure of the Mixed Committee are amended as follows:"/>
             </p>
-         </unit>
-         <unit eId="art_1/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/unp_2" kind="paragraph">
             <p>
                <t v="In Article 1 the following sentence is added after the last sentence:"/>
             </p>
             <quotedStructure eId="art_1/unp_2/qstr_1">
-               <unit eId="art_1/unp_2/qstr_1/sub_1" kind="subparagraph">
+               <occurrence eId="art_1/unp_2/qstr_1/sub_1" kind="subparagraph">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="The delegations representing the Governments of Iceland and Norway may cede the chair of the Mixed Committee meeting at the level of senior officials and Ministers to another delegation prepared to perform that function"/>
                      </quote>
                      <t v="."/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
-         </unit>
-         <unit eId="art_1/unp_3" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/unp_3" kind="paragraph">
             <p>
                <t v="Subparagraph 2 of Article 5 is modified as follows:"/>
             </p>
             <quotedStructure eId="art_1/unp_3/qstr_2">
-               <unit eId="art_1/unp_3/qstr_2/sub_1" kind="subparagraph">
+               <occurrence eId="art_1/unp_3/qstr_2/sub_1" kind="subparagraph">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="The presence of at least half of the members of the Council, of the delegation of Iceland and of the delegation of Norway at ministerial level and of the member of Commission is required to enable the Mixed Committee to take decisions"/>
                      </quote>
                      <t v="."/>
                   </p>
-               </unit>
+               </occurrence>
             </quotedStructure>
-         </unit>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+         </occurrence>
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="This Decision shall take effect on the date of its adoption."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
@@ -112,7 +112,7 @@
             </emphasis>
             <t v=". Iceland and Norway shall be responsible for its official publication in their respective countries."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>

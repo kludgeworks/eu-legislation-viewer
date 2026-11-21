@@ -139,7 +139,7 @@ The primary task changes.
 3. **2016/679, from the search.** The result opens Read. The tab says "Amending acts (0) · Corrigenda (n)", with the number of corrigenda of 2016/679 in English. It is a link.
 4. **2016/679, 1 January 2017, Read.** One status line says that the act was in force and did not apply yet, and that it applies from 25 May 2018 · Article 99. The text has no rule along its length and no second note.
 5. **2013/36, the page of 2019/878.** The summary lists each day of application with a count. Each day is a link that limits the page.
-6. **767/2008, today, Read.** The history of Article 6(2) lists four acts and has the link to Compare: 2019/817 and 2021/1134 replaced the unit that holds the paragraph, and 2021/1152 and 2024/1356 replaced the paragraph. Compare shows the wording on the two days and the four steps.
+6. **767/2008, today, Read.** The history of Article 6(2) lists four acts and has the link to Compare: 2019/817 and 2021/1134 replaced the provision that holds the paragraph, and 2021/1152 and 2024/1356 replaced the paragraph. Compare shows the wording on the two days and the four steps.
 7. **2015/1998, 3 June 2017.** Read has a status line for 2017/815 that says "not in this text". Compare from 29 February 2016 to 3 June 2017 shows these two days. No page says "No version shows it".
 8. **2015/1998, the deletion by 2019/413 or 2021/255.** It shows on the page of each of the two acts under "By this act or by …". No page says "not known".
 9. **767/2008, Article 17a.** Until ISS-200 has a solution, the provision gives the message of step 32.

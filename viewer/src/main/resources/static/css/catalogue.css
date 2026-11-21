@@ -341,7 +341,7 @@ section.selection.compare a {
 }
 
 /* A change that the text has and that does not apply on the day (js/margin.js): a dashed amber
- * rule beside its unit, and a short note at its side with the act. */
+ * rule beside its occurrence, and a short note at its side with the act. */
 .content .not-applying {
   position: relative;
   margin-left: -21px;
@@ -443,8 +443,8 @@ section.selection.compare a {
 }
 
 /* The sign that opens the history of a provision that has no ▼ mark. It is hollow, and it is in
- * the place of the mark: in the margin beside the number of the unit. */
-.content .unit > .provision-link {
+ * the place of the mark: in the margin beside the number of the occurrence. */
+.content .occurrence > .provision-link {
   position: absolute;
   left: -1.45rem;
   top: 0.15em;

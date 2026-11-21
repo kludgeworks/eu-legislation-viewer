@@ -31,22 +31,22 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 238, Figure 1 is replaced by the following Figure 1:"/>
          </p>
          <new>
             <figure src="C_2006260EN.01001802.tif" content="techDesign"/>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
          <p>
             <t v="On page 253, the illustration at the bottom of the page is replaced by the following illustration:"/>
          </p>
          <new>
             <figure src="C_2006260EN.01001803.tif" content="techDesign"/>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

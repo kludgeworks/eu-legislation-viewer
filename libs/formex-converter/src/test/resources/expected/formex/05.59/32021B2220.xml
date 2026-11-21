@@ -35,17 +35,17 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="having regard to the Treaty on the Functioning of the European Union, and in particular Article 314(4)(a) and Article 314(9) thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="having regard to the Treaty establishing the European Atomic Energy Community, and in particular Article 106a thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_3" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="having regard to Council Decision (EU, Euratom) 2020/2053 of "/>
                <date date="2020-12-14">
@@ -55,8 +55,8 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_4" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="having regard to Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council of "/>
                <date date="2018-07-18">
@@ -66,8 +66,8 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_5" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_5" kind="citation">
             <p>
                <t v="having regard to Council Regulation (EU, Euratom) 2020/2093 of "/>
                <date date="2020-12-17">
@@ -77,8 +77,8 @@
                <noteRef href="#note_3" marker="3"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_6" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_6" kind="citation">
             <p>
                <t v="having regard to the Interinstitutional Agreement of "/>
                <date date="2020-12-16">
@@ -88,8 +88,8 @@
                <noteRef href="#note_4" marker="4"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_7" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_7" kind="citation">
             <p>
                <t v="having regard to the general budget of the European Union for the financial year 2021, as definitively adopted on "/>
                <date date="2020-12-18">
@@ -98,8 +98,8 @@
                <noteRef href="#note_5" marker="5"/>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_8" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_8" kind="citation">
             <p>
                <t v="having regard to Draft amending budget No 5 of the European Union for the financial year 2021, which the Commission adopted on "/>
                <date date="2021-07-09">
@@ -107,8 +107,8 @@
                </date>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_9" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_9" kind="citation">
             <p>
                <t v="having regard to the position on Draft amending budget No 5/2021, which the Council adopted on "/>
                <date date="2021-10-05">
@@ -120,8 +120,8 @@
                </date>
                <t v=","/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_10" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_10" kind="citation">
             <p>
                <t v="having regard to Parliament’s approval of "/>
                <date date="2021-11-24">
@@ -129,12 +129,12 @@
                </date>
                <t v=" of the Council position,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_11" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_11" kind="citation">
             <p>
                <t v="having regard to Rules 94 and 96 of Parliament’s Rules of Procedure,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <formula name="enactingFormula">
          <p>
@@ -143,14 +143,14 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_Sole-Article" kind="article" rank="1">
+      <occurrence eId="art_Sole-Article" kind="article" rank="1">
          <num>
             <t v="Sole Article"/>
          </num>
          <p>
             <t v="The procedure under Article 314 of the Treaty on the Functioning of the European Union is complete and Amending budget No 5 of the European Union for the financial year 2021 has been definitively adopted."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <signature>
@@ -235,8 +235,8 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="att_1" kind="attachment">
-         <unit eId="att_1/level_SECTION-III" kind="level" depth="1" rank="1">
+      <occurrence eId="att_1" kind="attachment">
+         <occurrence eId="att_1/level_SECTION-III" kind="level" depth="1" rank="1">
             <num>
                <emphasis kind="i">
                   <t v="SECTION III"/>
@@ -247,20 +247,20 @@
                   <t v="COMMISSION"/>
                </emphasis>
             </subheading>
-         </unit>
-         <unit eId="att_1/level_SECTION-III/level_1"
-               kind="level"
-               depth="2"
-               rank="2">
+         </occurrence>
+         <occurrence eId="att_1/level_SECTION-III/level_1"
+                     kind="level"
+                     depth="2"
+                     rank="2">
             <heading>
                <emphasis kind="b">
                   <t v="EXPENDITURE"/>
                </emphasis>
             </heading>
-         </unit>
-         <unit eId="att_1/level_SECTION-III/level_1/level_1"
-               kind="level"
-               depth="3">
+         </occurrence>
+         <occurrence eId="att_1/level_SECTION-III/level_1/level_1"
+                     kind="level"
+                     depth="3">
             <table cols="8">
                <tr header="true">
                   <td rowspan="2" header="true">
@@ -1110,8 +1110,8 @@
                   </tr>
                </rowGroup>
             </table>
-         </unit>
-         <unit eId="att_1/level_TITLE-14" kind="level" depth="3" rank="3">
+         </occurrence>
+         <occurrence eId="att_1/level_TITLE-14" kind="level" depth="3" rank="3">
             <num>
                <emphasis kind="i">
                   <t v="TITLE 14"/>
@@ -1122,8 +1122,8 @@
                   <t v="EXTERNAL ACTION"/>
                </emphasis>
             </subheading>
-         </unit>
-         <unit eId="att_1/level_TITLE-14/level_1" kind="level" depth="4">
+         </occurrence>
+         <occurrence eId="att_1/level_TITLE-14/level_1" kind="level" depth="4">
             <table cols="8">
                <caption>
                   <p>
@@ -1489,12 +1489,12 @@
                   </tr>
                </rowGroup>
             </table>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03"
-               kind="level"
-               depth="4"
-               numbered="true"
-               rank="4">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03"
+                     kind="level"
+                     depth="4"
+                     numbered="true"
+                     rank="4">
             <num>
                <emphasis kind="b">
                   <t v="CHAPTER 14 03 —"/>
@@ -1505,8 +1505,8 @@
                   <t v="HUMANITARIAN AID"/>
                </emphasis>
             </heading>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_1" kind="level" depth="5">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03/level_1" kind="level" depth="5">
             <table cols="9">
                <tr header="true">
                   <td rowspan="2" header="true">
@@ -1735,11 +1735,11 @@
                   </tr>
                </rowGroup>
             </table>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_2"
-               kind="level"
-               depth="5"
-               rank="5">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03/level_2"
+                     kind="level"
+                     depth="5"
+                     rank="5">
             <heading>
                <emphasis kind="i">
                   <t v="Remarks"/>
@@ -1757,11 +1757,11 @@
             <p>
                <t v="The related estimated amounts as well as the corresponding article or item of the statement of revenue are indicated, wherever possible, in the relevant budget lines."/>
             </p>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_3"
-               kind="level"
-               depth="5"
-               rank="5">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03/level_3"
+                     kind="level"
+                     depth="5"
+                     rank="5">
             <heading>
                <emphasis kind="i">
                   <t v="Legal basis"/>
@@ -1782,11 +1782,11 @@
                </ref>
                <t v=")."/>
             </p>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_4"
-               kind="level"
-               depth="5"
-               rank="5">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03/level_4"
+                     kind="level"
+                     depth="5"
+                     rank="5">
             <heading>
                <emphasis kind="b">
                   <emphasis kind="i">
@@ -1795,11 +1795,11 @@
                   </emphasis>
                </emphasis>
             </heading>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_4/level_1"
-               kind="level"
-               depth="6"
-               rank="6">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03/level_4/level_1"
+                     kind="level"
+                     depth="6"
+                     rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Figures (Differentiated appropriations)"/>
@@ -1884,11 +1884,11 @@
                   </td>
                </tr>
             </table>
-         </unit>
-         <unit eId="att_1/pnt_CHAPTER-14-03/level_4/level_2"
-               kind="level"
-               depth="6"
-               rank="6">
+         </occurrence>
+         <occurrence eId="att_1/pnt_CHAPTER-14-03/level_4/level_2"
+                     kind="level"
+                     depth="6"
+                     rank="6">
             <heading>
                <emphasis kind="i">
                   <t v="Remarks"/>
@@ -1948,8 +1948,8 @@
                   </td>
                </tr>
             </table>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </annexes>
 </legalText>
 

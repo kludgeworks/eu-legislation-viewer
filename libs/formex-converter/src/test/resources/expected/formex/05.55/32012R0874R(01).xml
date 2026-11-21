@@ -31,15 +31,15 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
-         <unit eId="cor_1/pnt_1" kind="point" numbered="true">
+      <occurrence eId="cor_1" kind="correction">
+         <occurrence eId="cor_1/pnt_1" kind="point" numbered="true">
             <num>
                <t v="1."/>
             </num>
             <p>
                <t v="On page 2, Article 1(2)(g):"/>
             </p>
-         </unit>
+         </occurrence>
          <old>
             <p>
                <t v="for:"/>
@@ -62,16 +62,16 @@
                <t v="."/>
             </p>
          </new>
-      </unit>
-      <unit eId="cor_2" kind="correction">
-         <unit eId="cor_2/pnt_2" kind="point" numbered="true">
+      </occurrence>
+      <occurrence eId="cor_2" kind="correction">
+         <occurrence eId="cor_2/pnt_2" kind="point" numbered="true">
             <num>
                <t v="2."/>
             </num>
             <p>
                <t v="On page 4, Article 3(2)(b)(ii):"/>
             </p>
-         </unit>
+         </occurrence>
          <old>
             <p>
                <t v="for:"/>
@@ -94,16 +94,16 @@
                <t v="."/>
             </p>
          </new>
-      </unit>
-      <unit eId="cor_3" kind="correction">
-         <unit eId="cor_3/pnt_3" kind="point" numbered="true">
+      </occurrence>
+      <occurrence eId="cor_3" kind="correction">
+         <occurrence eId="cor_3/pnt_3" kind="point" numbered="true">
             <num>
                <t v="3."/>
             </num>
             <p>
                <t v="On page 20, Annex VII, point 2:"/>
             </p>
-         </unit>
+         </occurrence>
          <old>
             <p>
                <t v="for:"/>
@@ -198,7 +198,7 @@
                <t v="."/>
             </p>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

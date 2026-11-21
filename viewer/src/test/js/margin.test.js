@@ -16,11 +16,11 @@ const OUTLINE = `
   </ul></nav>`;
 
 const TEXT = `
-  <div class="content"><div class="unit" id="anx">
-    <div class="unit" id="anx/pnt_4.1.3"><div class="title">4.1.3 Screening of liquids</div>
-      <div class="unit" id="anx/pnt_4.1.3.3">4.1.3.3 The screening of LAGs</div>
+  <div class="content"><div class="occurrence" id="anx">
+    <div class="occurrence" id="anx/pnt_4.1.3"><div class="title">4.1.3 Screening of liquids</div>
+      <div class="occurrence" id="anx/pnt_4.1.3.3">4.1.3.3 The screening of LAGs</div>
     </div>
-    <div class="unit" id="anx/pnt_4.2">4.2 Protection of passengers</div>
+    <div class="occurrence" id="anx/pnt_4.2">4.2 Protection of passengers</div>
   </div></div>`;
 
 const ACT = "/eli/reg_impl/2015/1998/eng/history/32017R0815";
@@ -28,22 +28,22 @@ const ACT = "/eli/reg_impl/2015/1998/eng/history/32017R0815";
 /**
  * Returns a rule for a change that does not apply on the day, as the page lists it.
  *
- * @param {string} unit
+ * @param {string} occurrence
  * @param {boolean} [heading]
  * @returns {string}
  */
-const rule = (unit, heading = false) =>
-  `<p class="rule-note" data-unit="${unit}" data-heading="${heading}"><a href="${ACT}">2017/815</a> · does not apply yet</p>`;
+const rule = (occurrence, heading = false) =>
+  `<p class="rule-note" data-occurrence="${occurrence}" data-heading="${heading}"><a href="${ACT}">2017/815</a> · does not apply yet</p>`;
 
 /**
  * Returns a marker for a change that the text does not show, as the page lists it.
  *
- * @param {string} unit
+ * @param {string} occurrence
  * @param {boolean} end
  * @returns {string}
  */
-const marker = (unit, end) =>
-  `<p class="marker" data-unit="${unit}" data-end="${end}"><span class="marker-kind">Not in this text</span>: point 4.1.3.4 · <a href="${ACT}">2017/815</a></p>`;
+const marker = (occurrence, end) =>
+  `<p class="marker" data-occurrence="${occurrence}" data-end="${end}"><span class="marker-kind">Not in this text</span>: point 4.1.3.4 · <a href="${ACT}">2017/815</a></p>`;
 
 /**
  * Returns the list of marks, the text and the outline of a page.
@@ -61,12 +61,12 @@ const page = (rules) => {
 };
 
 /**
- * Returns the unit with the eId `id`.
+ * Returns the occurrence with the eId `id`.
  *
  * @param {string} id
  * @returns {HTMLElement}
  */
-const unit = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
+const occurrence = (id) => /** @type {HTMLElement} */ (document.getElementById(id));
 
 describe("mark", () => {
   test("gives a change that does not apply a rule and a note with the act as a link", () => {
@@ -74,14 +74,14 @@ describe("mark", () => {
 
     mark(rules, content);
 
-    expect(unit("anx/pnt_4.1.3.3").classList.contains("not-applying")).toBe(true);
-    const note = /** @type {HTMLElement} */ (unit("anx/pnt_4.1.3.3").querySelector(".rule-note"));
+    expect(occurrence("anx/pnt_4.1.3.3").classList.contains("not-applying")).toBe(true);
+    const note = /** @type {HTMLElement} */ (occurrence("anx/pnt_4.1.3.3").querySelector(".rule-note"));
     expect(note.textContent).toBe("2017/815 · does not apply yet");
     expect(note.querySelector("a")?.getAttribute("href")).toBe(ACT);
-    expect(note.dataset.unit).toBeUndefined();
+    expect(note.dataset.occurrence).toBeUndefined();
   });
 
-  test("gives one note to a run of units with the same words", () => {
+  test("gives one note to a run of occurrences with the same words", () => {
     const { rules, content } = page(rule("anx/pnt_4.1.3") + rule("anx/pnt_4.2"));
 
     mark(rules, content);
@@ -90,16 +90,16 @@ describe("mark", () => {
     expect(content.querySelectorAll(".rule-note")).toHaveLength(1);
   });
 
-  test("marks only the heading of a unit that holds the place", () => {
+  test("marks only the heading of an occurrence that holds the place", () => {
     const { rules, content } = page(rule("anx/pnt_4.1.3", true));
 
     mark(rules, content);
 
-    expect(unit("anx/pnt_4.1.3").classList.contains("not-applying")).toBe(false);
+    expect(occurrence("anx/pnt_4.1.3").classList.contains("not-applying")).toBe(false);
     expect(content.querySelector(".title")?.classList.contains("not-applying")).toBe(true);
   });
 
-  test("does not mark a unit in a unit that has the rule", () => {
+  test("does not mark an occurrence in an occurrence that has the rule", () => {
     const { rules, content } = page(rule("anx/pnt_4.1.3") + rule("anx/pnt_4.1.3.3"));
 
     mark(rules, content);
@@ -107,23 +107,23 @@ describe("mark", () => {
     expect(content.querySelectorAll(".not-applying")).toHaveLength(1);
   });
 
-  test("puts a marker before a unit that the text has", () => {
+  test("puts a marker before an occurrence that the text has", () => {
     const { rules, content } = page(marker("anx/pnt_4.2", false));
 
     mark(rules, content);
 
-    const made = /** @type {HTMLElement} */ (unit("anx/pnt_4.2").previousElementSibling);
+    const made = /** @type {HTMLElement} */ (occurrence("anx/pnt_4.2").previousElementSibling);
     expect(made.classList.contains("marker")).toBe(true);
     expect(made.textContent).toBe("Not in this text: point 4.1.3.4 · 2017/815");
-    expect(unit("anx/pnt_4.2").classList.contains("not-applying")).toBe(false);
+    expect(occurrence("anx/pnt_4.2").classList.contains("not-applying")).toBe(false);
   });
 
-  test("puts a marker at the end of the unit that holds a place that the text does not have", () => {
+  test("puts a marker at the end of the occurrence that holds a place that the text does not have", () => {
     const { rules, content } = page(marker("anx/pnt_4.1.3", true));
 
     mark(rules, content);
 
-    expect(unit("anx/pnt_4.1.3").lastElementChild?.classList.contains("marker")).toBe(true);
+    expect(occurrence("anx/pnt_4.1.3").lastElementChild?.classList.contains("marker")).toBe(true);
   });
 
   test("gives the outline a dot on the entry of a mark and on the entries that hold it", () => {

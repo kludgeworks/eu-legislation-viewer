@@ -43,12 +43,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty on the Functioning of the European Union,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Regulation (EU) 2018/848 of the European Parliament and of the Council of "/>
                <date date="2018-05-30">
@@ -58,7 +58,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 33(6) thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -66,38 +66,38 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Annex V to Regulation (EU) 2018/848 sets out the models of the organic production logo of the European Union that may be used, including a black and white model. However, a totally inverted white and black (negative) model with or without a delimiting outer line around the logo is not explicitly authorised. Annex V to Regulation (EU) 2018/848 should provide explicitly that such a model is also authorised given that it replies to a technical need on the ground."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Annex V to Regulation (EU) 2018/848 provides the colour for the green organic production logo of the European Union with the reference colour in the Pantone colour chart and in the CMYK colour model, where four ink plates – cyan, magenta, yellow and key (black) – are used. The equivalent reference in the RGB colour model, where three additive primary colours, red, green and blue are used, should also be provided for digital purposes."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Annex V to Regulation (EU) 2018/848 provides that a delimiting outer line around the logo can be used when the logo is on a background which makes it difficult to see. To ensure that the proportions of the height/width ratio are respected, a delimiting outer line should always be used when the logo is on a background which makes it difficult to see."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
             <p>
                <t v="Regulation (EU) 2018/848 should therefore be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -106,15 +106,15 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Annex V to Regulation (EU) 2018/848 is amended in accordance with the Annex to this Regulation."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
@@ -125,7 +125,7 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -178,7 +178,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -186,7 +186,7 @@
             <t v="Annex V to Regulation (EU) 2018/848 is amended as follows:"/>
          </p>
          <list kind="arabic">
-            <unit eId="anx/pnt_1" kind="point" numbered="true">
+            <occurrence eId="anx/pnt_1" kind="point" numbered="true">
                <num>
                   <t v="(1)"/>
                </num>
@@ -195,7 +195,7 @@
                </p>
                <quotedStructure eId="anx/pnt_1/qstr_1">
                   <list kind="other">
-                     <unit eId="anx/pnt_1/qstr_1/pnt_1.2" kind="point" numbered="true">
+                     <occurrence eId="anx/pnt_1/qstr_1/pnt_1.2" kind="point" numbered="true">
                         <num>
                            <t v="‘"/>
                            <t v="1.2."/>
@@ -203,15 +203,15 @@
                         <p>
                            <t v="The reference colour is green 50/0/100/0 in the CMYK process, No 376 in the Pantone colour chart and 169/201/56 in the RGB colour model."/>
                         </p>
-                     </unit>
-                     <unit eId="anx/pnt_1/qstr_1/pnt_1.3" kind="point" numbered="true">
+                     </occurrence>
+                     <occurrence eId="anx/pnt_1/qstr_1/pnt_1.3" kind="point" numbered="true">
                         <num>
                            <t v="1.3."/>
                         </num>
                         <p>
                            <t v="The organic production logo of the European Union may also be used in black and white as shown below, or in a totally inverted white and black (negative format), but only where it is not practicable to use the colour model:"/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </list>
                   <figure src="L_202402867EN.000202.fmx.tif" content="other"/>
                   <p>
@@ -219,8 +219,8 @@
                      <t v=";"/>
                   </p>
                </quotedStructure>
-            </unit>
-            <unit eId="anx/pnt_2" kind="point" numbered="true">
+            </occurrence>
+            <occurrence eId="anx/pnt_2" kind="point" numbered="true">
                <num>
                   <t v="(2)"/>
                </num>
@@ -229,7 +229,7 @@
                </p>
                <quotedStructure eId="anx/pnt_2/qstr_1">
                   <list kind="other">
-                     <unit eId="anx/pnt_2/qstr_1/pnt_1.5" kind="point" numbered="true">
+                     <occurrence eId="anx/pnt_2/qstr_1/pnt_1.5" kind="point" numbered="true">
                         <num>
                            <t v="‘"/>
                            <t v="1.5."/>
@@ -239,12 +239,12 @@
                            <t v="’"/>
                            <t v="."/>
                         </p>
-                     </unit>
+                     </occurrence>
                   </list>
                </quotedStructure>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

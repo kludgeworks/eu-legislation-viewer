@@ -29,7 +29,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 19, Annex, in point 2, under (c):"/>
          </p>
@@ -55,7 +55,7 @@
                <t v="."/>
             </p>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

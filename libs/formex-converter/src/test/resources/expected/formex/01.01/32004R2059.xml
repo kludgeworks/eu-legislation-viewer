@@ -43,16 +43,16 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community, and in particular Article 133 thereof,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the Commission,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -60,7 +60,7 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
@@ -73,16 +73,16 @@
                </date>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Article 17(1) of the Partnership and Cooperation Agreement provides for trade in European Coal and Steel Community (hereinafter referred to as the ECSC) products to be governed by Title III of that Agreement, save for Article 11 thereof, and by the provisions of an agreement on quantitative arrangements concerning exchanges of ECSC steel products."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
@@ -97,8 +97,8 @@
                <noteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -109,16 +109,16 @@
                </date>
                <t v=" and the European Community took over all rights and obligations contracted by the ECSC."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="The Parties agreed pursuant to Article 11(2) of the Agreement that the latter was to be continued and that all rights and obligations of the Parties under it were to be maintained after such expiry."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
@@ -127,8 +127,8 @@
                <noteRef href="#note_4" marker="4"/>
                <t v="."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
@@ -141,7 +141,7 @@
                <noteRef href="#note_5" marker="5"/>
                <t v=" should be amended accordingly,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -150,16 +150,16 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
-         <unit eId="art_1/unp_1" kind="paragraph">
+         <occurrence eId="art_1/unp_1" kind="paragraph">
             <p>
                <t v="In Annex IV to Decision No 1469/2002/ECSC, the quantitative limits set out for the year 2004 are replaced by the quantitative limits appearing in the Annex to this Regulation."/>
             </p>
-         </unit>
-         <unit eId="art_1/unp_2" kind="paragraph">
+         </occurrence>
+         <occurrence eId="art_1/unp_2" kind="paragraph">
             <p>
                <t v="This Regulation shall enter into force on the third day following that of its publication in the "/>
                <emphasis kind="i">
@@ -167,8 +167,8 @@
                </emphasis>
                <t v="."/>
             </p>
-         </unit>
-      </unit>
+         </occurrence>
+      </occurrence>
    </body>
    <conclusions>
       <p>
@@ -258,7 +258,7 @@
       </note>
    </notes>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX"/>
          </num>
@@ -342,7 +342,7 @@
                </tr>
             </rowGroup>
          </table>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

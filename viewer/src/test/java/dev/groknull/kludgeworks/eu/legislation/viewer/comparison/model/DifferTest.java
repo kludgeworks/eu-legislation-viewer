@@ -100,7 +100,7 @@ class DifferTest {
   }
 
   @Test
-  void leadsADifferenceWithTheOpeningOfTheUnitItIsIn() {
+  void leadsADifferenceWithTheOpeningOfTheOccurrenceItIsIn() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.parent()).isEqualTo("anx/pnt_8.1.2.3");
     assertThat(Objects.requireNonNull(c.lead()).children())
@@ -112,63 +112,63 @@ class DifferTest {
   }
 
   @Test
-  void foldsTheUnitsBetweenTwoDifferencesThatAreTheSame() {
+  void foldsTheOccurrencesBetweenTwoDifferencesThatAreTheSame() {
     var differences = Differ.differences(MARCH, OCTOBER).differences();
-    assertThat(differences.get(0).context().getLast().units())
+    assertThat(differences.get(0).context().getLast().occurrences())
         .extracting(Sibling::num)
         .containsExactly("(a)", "(b)");
     assertThat(differences.get(1).context())
         .singleElement()
         .satisfies(fold -> assertThat(fold.opening()).isNull())
-        .extracting(Context::units)
+        .extracting(Context::occurrences)
         .asInstanceOf(InstanceOfAssertFactories.list(Sibling.class))
         .extracting(Sibling::eId, Sibling::kind, Sibling::num)
         .containsExactly(tuple("anx/pnt_8.1.2.3/pnt_d", "point", "(d)"));
   }
 
   @Test
-  void placesEachUnitOfTheLaterTextOnceInOrder() {
+  void placesEachOccurrenceOfTheLaterTextOnceInOrder() {
     assertThat(placed(Differ.differences(MARCH, OCTOBER), OCTOBER))
-        .containsExactlyElementsOf(Units.of(OCTOBER).byEId().keySet());
+        .containsExactlyElementsOf(Occurrences.of(OCTOBER).byEId().keySet());
     assertThat(placed(Differ.differences(JANUARY, MARCH), MARCH))
-        .containsExactlyElementsOf(Units.of(MARCH).byEId().keySet());
+        .containsExactlyElementsOf(Occurrences.of(MARCH).byEId().keySet());
   }
 
   @Test
-  void foldsTheUnitsAfterADifferenceToTheNextAndAfterTheLast() {
+  void foldsTheOccurrencesAfterADifferenceToTheNextAndAfterTheLast() {
     var compared = Differ.differences(MARCH, OCTOBER);
     // The folds hold the last point of 8.1.2.3, (g), then 8.1.2.4 up to 9.1.2.3. After the last
     // difference, 9.1.2.4 up to the end is folded.
     var between = compared.differences().get(3).context();
-    assertThat(between.getFirst().units())
+    assertThat(between.getFirst().occurrences())
         .extracting(Sibling::eId)
         .first()
         .isEqualTo("anx/pnt_8.1.2.4");
     assertThat(between)
         .filteredOn(each -> each.opening() != null)
-        .extracting(each -> each.units().getFirst().eId())
+        .extracting(each -> each.occurrences().getFirst().eId())
         .containsExactly("anx/pnt_9.1.2.3");
-    assertThat(compared.closing().getFirst().units())
+    assertThat(compared.closing().getFirst().occurrences())
         .extracting(Sibling::eId)
         .first()
         .isEqualTo("anx/pnt_9.1.2.4");
   }
 
   @Test
-  void opensEachUnitThatHoldsDifferencesOnceWhereTheyEnterIt() {
+  void opensEachOccurrenceThatHoldsDifferencesOnceWhereTheyEnterIt() {
     var compared = Differ.differences(JANUARY, MARCH);
     var opened =
         Stream.concat(
                 compared.differences().stream().flatMap(d -> d.context().stream()),
                 compared.closing().stream())
             .filter(each -> each.opening() != null)
-            .map(each -> each.units().getFirst().eId())
+            .map(each -> each.occurrences().getFirst().eId())
             .toList();
     assertThat(opened).doesNotHaveDuplicates().contains("anx");
   }
 
   @Test
-  void showsAUnitInsertedOrDeletedOnceWholeWithItsOwnUnits() {
+  void showsAnOccurrenceInsertedOrDeletedOnceWholeWithItsOwnOccurrences() {
     var differences = Differ.differences(JANUARY, MARCH).differences();
     // A changed point and the points in it that the same act changed, inserted or deleted count
     // as one difference.
@@ -200,15 +200,15 @@ class DifferTest {
   }
 
   @Test
-  void readsAUnitTheLaterTextKeepsStruckAsDeletedByTheActThatStruckIt() {
+  void readsAnOccurrenceTheLaterTextKeepsStruckAsDeletedByTheActThatStruckIt() {
     var struck = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_6.8.1.6");
     assertThat(struck.kind()).isEqualTo(Kind.DELETED);
     assertThat(struck.markers()).containsExactly(new Marker("32026R0449", "deleted", null));
-    assertThat(Units.of(MARCH).get("anx/pnt_6.8.1.6")).isNull();
+    assertThat(Occurrences.of(MARCH).get("anx/pnt_6.8.1.6")).isNull();
   }
 
   @Test
-  void showsAChangedUnitWithItsOwnContentOnlyWhereOtherActsChangedTheUnitsInIt() {
+  void showsAChangedOccurrenceWithItsOwnContentOnlyWhereOtherActsChangedTheOccurrencesInIt() {
     var earlier = text(point("1", "Old words", "A", point("1/a", "(a) old", "A")));
     var later = text(point("1", "New words", "B", point("1/a", "(a) new", "C")));
 
@@ -217,11 +217,11 @@ class DifferTest {
     assertThat(differences).extracting(Difference::eId).containsExactly("1", "1/a");
     assertThat(descendants(differences.getFirst().shown()))
         .extracting(Element::name)
-        .doesNotContain("unit");
+        .doesNotContain("occurrence");
   }
 
   @Test
-  void showsAChangedUnitWholeWithTheUnitsInItThatTheSameActsChangedOrDeleted() {
+  void showsAChangedOccurrenceWholeWithTheOccurrencesInItThatTheSameActsChangedOrDeleted() {
     var earlier =
         text(
             point(
@@ -237,7 +237,7 @@ class DifferTest {
     assertThat(differences).singleElement().extracting(Difference::eId).isEqualTo("1");
     var shown = differences.getFirst().shown();
     assertThat(descendants(shown))
-        .filteredOn(each -> each.name().equals("unit"))
+        .filteredOn(each -> each.name().equals("occurrence"))
         .extracting(each -> each.attribute("eId"))
         .containsExactly("1/a", "1/b");
     assertThat(said(shown)).contains("[+New]", "[+new]", "[-old]").containsPattern("\\[-[^]]*gone");
@@ -382,7 +382,7 @@ class DifferTest {
   }
 
   @Test
-  void countsTotalsOfWholeUnitContainingRenumberedUnit() {
+  void countsTotalsOfWholeOccurrenceContainingRenumberedOccurrence() {
     var earlier =
         text(
             point(
@@ -550,7 +550,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsUnitsInRealHighRiskPlantsFixture() {
+  void pairsOccurrencesInRealHighRiskPlantsFixture() {
     var earlier = text("02018R2019-20250220");
     var later = text("02018R2019-20250623");
 
@@ -562,7 +562,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsUnitsInRealSanctionsDecisionFixture() {
+  void pairsOccurrencesInRealSanctionsDecisionFixture() {
     var earlier = text("02022D2319-20241216");
     var later = text("02022D2319-20250326");
 
@@ -574,7 +574,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsStructureLevelUnitRenumberedViaProvenance() {
+  void pairsStructureLevelOccurrenceRenumberedViaProvenance() {
     var earlier =
         text(
             annexWithProvenance(
@@ -599,7 +599,7 @@ class DifferTest {
   }
 
   @Test
-  void resolvesAmendingActFromRenumberedAncestorForDeletedUnit() {
+  void resolvesAmendingActFromRenumberedAncestorForDeletedOccurrence() {
     // Another act renumbered the article than replaced it, so the point differs on its own.
     var differences =
         Differ.differences(articlesWithPoint(), articlesRenumbered("ActY")).differences();
@@ -713,21 +713,21 @@ class DifferTest {
   }
 
   @Test
-  void pairsAMovedUnitWithoutANumByWhatItSays() {
+  void pairsAMovedOccurrenceWithoutANumByWhatItSays() {
     var earlier =
         text(
-            unit("att", block("num", "ATTACHMENT 5-A")),
-            unit(
+            occurrence("att", block("num", "ATTACHMENT 5-A")),
+            occurrence(
                 "att/level_1",
                 block("heading", "THIRD COUNTRIES"),
                 block("p", "The following third countries are recognised: Canada.")));
     var later =
         text(
-            unit(
+            occurrence(
                 "att",
                 block("num", "ATTACHMENT 5-A"),
-                unit("att/level_1", block("heading", "HOLD BAGGAGE")),
-                unit(
+                occurrence("att/level_1", block("heading", "HOLD BAGGAGE")),
+                occurrence(
                     "att/level_1/level_1",
                     block("heading", "THIRD COUNTRIES"),
                     block(
@@ -735,7 +735,7 @@ class DifferTest {
 
     var differences = Differ.differences(earlier, later).differences();
 
-    // The unit with only a heading says nothing to pair it by.
+    // The occurrence with only a heading says nothing to pair it by.
     assertThat(differences)
         .extracting(Difference::eId, Difference::kind)
         .containsExactly(
@@ -743,9 +743,9 @@ class DifferTest {
   }
 
   @Test
-  void pairsAPointThatMovedOutOfUnitsFurtherUp() {
+  void pairsAPointThatMovedOutOfOccurrencesFurtherUp() {
     // As 692/2008 from 16 May 2016 to 27 July 2017: point 3.2.12.2.1.11 of Annex XVIII is no
-    // longer four units down, but directly in the annex.
+    // longer four occurrences down, but directly in the annex.
     var earlier = annexWithPointIn("3");
     var later =
         text(
@@ -801,7 +801,7 @@ class DifferTest {
   }
 
   @Test
-  void doesNotPairAMovedPointInAnInsertedUnit() {
+  void doesNotPairAMovedPointInAnInsertedOccurrence() {
     var earlier = text(paragraph("anx/pnt_3.2.1", "3.2.1", "All EDS shall meet standard 2."));
     var later = annexWithPointIn("3");
 
@@ -813,7 +813,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsAPointThatMovedIntoUnitsFurtherDown() {
+  void pairsAPointThatMovedIntoOccurrencesFurtherDown() {
     var earlier =
         text(
             paragraph(
@@ -890,7 +890,7 @@ class DifferTest {
             tuple("anx/pnt_3.2.1", Kind.INSERTED));
   }
 
-  /** An annex with point 3.2.1 in point 3.2, in a unit A. */
+  /** An annex with point 3.2.1 in point 3.2, in an occurrence A. */
   private static Element annexWithPointIn(String standard) {
     return text(
         paragraph(
@@ -959,7 +959,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsRenumberedPointWhenMarkerAttributeDiffersFromEarlierUnit() {
+  void pairsRenumberedPointWhenMarkerAttributeDiffersFromEarlierOccurrence() {
     var earlier =
         text(
             pointWithNum(
@@ -984,7 +984,7 @@ class DifferTest {
   }
 
   @Test
-  void pairsUnitWithLeftoverRenumberedMarkerUnderSameIdentifier() {
+  void pairsOccurrenceWithLeftoverRenumberedMarkerUnderSameIdentifier() {
     var earlier =
         text(
             pointWithNum("1/pnt_12", "12.", "Point twelve wording.", "ActW", "replaced"),
@@ -1000,7 +1000,7 @@ class DifferTest {
   }
 
   @Test
-  void showsUnitWithLeftoverRenumberedMarkerAsChangedUnderSameIdentifierWhenWordingChanges() {
+  void showsOccurrenceWithLeftoverRenumberedMarkerAsChangedUnderSameIdentifierWhenWordingChanges() {
     var earlier =
         text(pointWithNum("1/pnt_13", "13.", "Point thirteen old text.", "ActX", "renumbered"));
     var later =
@@ -1017,30 +1017,31 @@ class DifferTest {
   }
 
   /**
-   * A point {@code eId} with the words {@code words} and the units {@code units}. The act {@code
-   * act} replaced it.
+   * A point {@code eId} with the words {@code words} and the occurrences {@code occurrences}. The
+   * act {@code act} replaced it.
    */
-  private static Element point(String eId, String words, String act, Element... units) {
+  private static Element point(String eId, String words, String act, Element... occurrences) {
     var children = new ArrayList<Element>();
     children.add(
         new Element("provenance", Map.of("amendingAct", act, "action", "replaced"), List.of(), ""));
     children.add(block("p", words));
-    children.addAll(List.of(units));
-    return new Element("unit", Map.of("eId", eId, "kind", "point"), children, "");
+    children.addAll(List.of(occurrences));
+    return new Element("occurrence", Map.of("eId", eId, "kind", "point"), children, "");
   }
 
   /**
    * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
-   * act}, action {@code action}, and child units {@code units}.
+   * act}, action {@code action}, and child occurrences {@code occurrences}.
    */
   private static Element pointWithNum(
-      String eId, String num, String words, String act, String action, Element... units) {
-    return pointWithNum(eId, num, words, act, "", action, units);
+      String eId, String num, String words, String act, String action, Element... occurrences) {
+    return pointWithNum(eId, num, words, act, "", action, occurrences);
   }
 
   /**
    * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
-   * act}, marker identifier {@code marker}, action {@code action}, and child units {@code units}.
+   * act}, marker identifier {@code marker}, action {@code action}, and child occurrences {@code
+   * occurrences}.
    */
   private static Element pointWithNum(
       String eId,
@@ -1049,7 +1050,7 @@ class DifferTest {
       String act,
       String marker,
       String action,
-      Element... units) {
+      Element... occurrences) {
     var children = new ArrayList<Element>();
     if (!act.isEmpty() && !action.isEmpty() && !"renumbered".equals(action)) {
       var attrs = new HashMap<String, String>();
@@ -1077,13 +1078,13 @@ class DifferTest {
     }
     children.add(numBlock);
     children.add(block("p", words));
-    children.addAll(List.of(units));
-    return new Element("unit", Map.of("eId", eId, "kind", "point"), children, "");
+    children.addAll(List.of(occurrences));
+    return new Element("occurrence", Map.of("eId", eId, "kind", "point"), children, "");
   }
 
   /** An annex {@code eId} with provenance {@code act} and {@code action}. */
   private static Element annexWithProvenance(
-      String eId, String num, String words, String act, String action, Element... units) {
+      String eId, String num, String words, String act, String action, Element... occurrences) {
     var children = new ArrayList<Element>();
     if (act != null && action != null) {
       children.add(
@@ -1093,8 +1094,8 @@ class DifferTest {
     if (!words.isEmpty()) {
       children.add(block("p", words));
     }
-    children.addAll(List.of(units));
-    return new Element("unit", Map.of("eId", eId, "kind", "annex"), children, "");
+    children.addAll(List.of(occurrences));
+    return new Element("occurrence", Map.of("eId", eId, "kind", "annex"), children, "");
   }
 
   /** An article with replaced provenance and renumbered num. */
@@ -1104,7 +1105,7 @@ class DifferTest {
       String words,
       String replacedAct,
       String renumberedAct,
-      Element... units) {
+      Element... occurrences) {
     var children = new ArrayList<Element>();
     if (!replacedAct.isEmpty()) {
       children.add(
@@ -1130,24 +1131,24 @@ class DifferTest {
     if (!words.isEmpty()) {
       children.add(block("p", words));
     }
-    children.addAll(List.of(units));
-    return new Element("unit", Map.of("eId", eId, "kind", "article"), children, "");
+    children.addAll(List.of(occurrences));
+    return new Element("occurrence", Map.of("eId", eId, "kind", "article"), children, "");
   }
 
   /** A paragraph {@code eId} with number {@code num} and words {@code words}. */
-  private static Element paragraph(String eId, String num, String words, Element... units) {
+  private static Element paragraph(String eId, String num, String words, Element... occurrences) {
     var children = new ArrayList<Element>();
     children.add(block("num", num));
     if (!words.isEmpty()) {
       children.add(block("p", words));
     }
-    children.addAll(List.of(units));
-    return new Element("unit", Map.of("eId", eId, "kind", "paragraph"), children, "");
+    children.addAll(List.of(occurrences));
+    return new Element("occurrence", Map.of("eId", eId, "kind", "paragraph"), children, "");
   }
 
   private static Element numbered(String num, String heading) {
     return new Element(
-        "unit",
+        "occurrence",
         Map.of("eId", "11.3", "kind", "level"),
         List.of(block("num", num), block("heading", heading)),
         "");
@@ -1158,8 +1159,8 @@ class DifferTest {
         name, Map.of(), List.of(new Element("t", Map.of("v", words), List.of(), "")), "");
   }
 
-  private static Element text(Element... units) {
-    return new Element("body", Map.of(), List.of(units), "");
+  private static Element text(Element... occurrences) {
+    return new Element("body", Map.of(), List.of(occurrences), "");
   }
 
   @Test
@@ -1167,7 +1168,7 @@ class DifferTest {
     var differences =
         Differ.differences(text("02018R2019-20250220"), text("02018R2019-20250623")).differences();
     // A list inserted in the cell of Alnus renumbers the lists in the cells after it, list_2 to
-    // list_3 and so on. Their units are not differences of their own.
+    // list_3 and so on. Their occurrences are not differences of their own.
     assertThat(differences).extracting(Difference::eId).containsExactly("anx/level_1/pnt_1");
     var alnus =
         descendants(differences.getFirst().shown()).stream()
@@ -1182,8 +1183,8 @@ class DifferTest {
 
   @Test
   void showsARowDeletedFromATableAsARowWhereItStood() {
-    var from = text(unit("art_1", table(row("A", "1"), row("B", "2"), row("C", "3"))));
-    var to = text(unit("art_1", table(row("A", "1"), row("C", "3"))));
+    var from = text(occurrence("art_1", table(row("A", "1"), row("B", "2"), row("C", "3"))));
+    var to = text(occurrence("art_1", table(row("A", "1"), row("C", "3"))));
     var difference = Differ.differences(from, to).differences().getFirst();
     var rows = only(difference.shown(), "table").children();
     assertThat(rows).extracting(DifferTest::said).containsExactly("A1", "[-B][-2]", "C3");
@@ -1194,7 +1195,7 @@ class DifferTest {
   void pairsAChangedRowWithTheRowItWasNotWithARowInsertedBeforeIt() {
     var from =
         text(
-            unit(
+            occurrence(
                 "art_1",
                 table(
                     row("Acacia", "all third countries"),
@@ -1202,7 +1203,7 @@ class DifferTest {
                     row("Betula", "all third countries"))));
     var to =
         text(
-            unit(
+            occurrence(
                 "art_1",
                 table(
                     row("Acacia", "all third countries"),
@@ -1224,14 +1225,14 @@ class DifferTest {
   void pairsAChangedBlockWithTheBlockItWasNotWithABlockInsertedBeforeIt() {
     var from =
         text(
-            unit(
+            occurrence(
                 "art_1",
                 block("num", "1."),
                 block("p", "Member States shall notify the Commission."),
                 block("p", "This Regulation shall apply from 1 January 2026.")));
     var to =
         text(
-            unit(
+            occurrence(
                 "art_1",
                 block("num", "1."),
                 block("p", "Operators shall keep records for five years."),
@@ -1249,8 +1250,8 @@ class DifferTest {
 
   @Test
   void comparesAChangedCellWithTheCellAboveIt() {
-    var from = text(unit("art_1", table(row("A", "1"), row("B", "2"))));
-    var to = text(unit("art_1", table(row("A", "1"), row("B", "20"))));
+    var from = text(occurrence("art_1", table(row("A", "1"), row("B", "2"))));
+    var to = text(occurrence("art_1", table(row("A", "1"), row("B", "20"))));
     var difference = Differ.differences(from, to).differences().getFirst();
     var rows = only(difference.shown(), "table").children();
     assertThat(rows.get(1).children())
@@ -1275,12 +1276,12 @@ class DifferTest {
     // the text.
     var from =
         text(
-            unit("art_1", block("p", "the institution's own funds")),
-            unit("art_2", block("p", "the term \"group\" means")));
+            occurrence("art_1", block("p", "the institution's own funds")),
+            occurrence("art_2", block("p", "the term \"group\" means")));
     var to =
         text(
-            unit("art_1", block("p", "the institution’s own funds")),
-            unit("art_2", block("p", "the term “group” means")));
+            occurrence("art_1", block("p", "the institution’s own funds")),
+            occurrence("art_2", block("p", "the term “group” means")));
     assertThat(Differ.differences(from, to).differences()).isEmpty();
   }
 
@@ -1288,30 +1289,30 @@ class DifferTest {
   void readsAFormBlankThatOnlyOneTextPrintsAsNoChange() {
     // As point 0.1 of Appendix 3 to Annex I to 692/2008: the consolidation of 1 January 2016 no
     // longer prints the blank to fill in.
-    var from = text(unit("pnt_0.1", block("p", "Make (trade name of manufacturer): …")));
-    var to = text(unit("pnt_0.1", block("p", "Make (trade name of manufacturer):")));
+    var from = text(occurrence("pnt_0.1", block("p", "Make (trade name of manufacturer): …")));
+    var to = text(occurrence("pnt_0.1", block("p", "Make (trade name of manufacturer):")));
     assertThat(Differ.differences(from, to).differences()).isEmpty();
   }
 
   @Test
   void readsAFormBlankInsideAFieldThatOnlyOneTextPrintsAsNoChange() {
     // As point 2.17.1 of Appendix 3 to Annex I to 692/2008, of 1 January 2016.
-    var from = text(unit("pnt_2.17.1", block("p", "Mass in running order: … kg")));
-    var to = text(unit("pnt_2.17.1", block("p", "Mass in running order: kg")));
+    var from = text(occurrence("pnt_2.17.1", block("p", "Mass in running order: … kg")));
+    var to = text(occurrence("pnt_2.17.1", block("p", "Mass in running order: kg")));
     assertThat(Differ.differences(from, to).differences()).isEmpty();
   }
 
   @Test
   void readsAnEllipsisJoinedToAWordAsAChange() {
-    var from = text(unit("art_1", block("p", "as set out in Annex…")));
-    var to = text(unit("art_1", block("p", "as set out in Annex")));
+    var from = text(occurrence("art_1", block("p", "as set out in Annex…")));
+    var to = text(occurrence("art_1", block("p", "as set out in Annex")));
     assertThat(Differ.differences(from, to).differences()).hasSize(1);
   }
 
   @Test
-  void marksNoWordWhoseApostropheAloneChangedInAChangedUnit() {
-    var from = text(unit("art_1", block("p", "the institution's capital")));
-    var to = text(unit("art_1", block("p", "the institution’s own capital")));
+  void marksNoWordWhoseApostropheAloneChangedInAChangedOccurrence() {
+    var from = text(occurrence("art_1", block("p", "the institution's capital")));
+    var to = text(occurrence("art_1", block("p", "the institution’s own capital")));
     var difference = Differ.differences(from, to).differences().getFirst();
     assertThat(said(only(difference.shown(), "p"))).isEqualTo("the institution’s[+ own] capital");
   }
@@ -1319,8 +1320,10 @@ class DifferTest {
   @Test
   void matchesAnOpeningQuotationMarkOnlyWithAnOpeningOne() {
     // As point 11.0.2 of 2015/1998: one term quoted becomes two.
-    var from = text(unit("art_1", block("p", "‘certification and recertification’ means a test")));
-    var to = text(unit("art_1", block("p", "‘certification’ and ‘recertification’ mean a test")));
+    var from =
+        text(occurrence("art_1", block("p", "‘certification and recertification’ means a test")));
+    var to =
+        text(occurrence("art_1", block("p", "‘certification’ and ‘recertification’ mean a test")));
     var difference = Differ.differences(from, to).differences().getFirst();
     assertThat(said(only(difference.shown(), "p")))
         .contains("recertification’ [-means][+mean] a test")
@@ -1329,8 +1332,8 @@ class DifferTest {
 
   @Test
   void showsAChangedFormulaWholeAsDeletedThenInserted() {
-    var from = text(unit("art_1", formula("1")));
-    var to = text(unit("art_1", formula("2")));
+    var from = text(occurrence("art_1", formula("1")));
+    var to = text(occurrence("art_1", formula("2")));
     var difference = Differ.differences(from, to).differences().getFirst();
     var p = only(difference.shown(), "p");
     assertThat(p.children()).extracting(Element::name).containsExactly("t", "diff:del", "diff:ins");
@@ -1339,14 +1342,15 @@ class DifferTest {
   }
 
   @Test
-  void showsANoteAnActChangedUnderTheUnitThatRefersToIt() {
+  void showsANoteAnActChangedUnderTheOccurrenceThatRefersToIt() {
     // As 2004/796 changed its note to Silesia: the text that refers to it is the same.
     var from =
         withNotes(
-            List.of(unit("art_1", cites("Silesia", "note_1"))), note("note_1", "only in Poland"));
+            List.of(occurrence("art_1", cites("Silesia", "note_1"))),
+            note("note_1", "only in Poland"));
     var to =
         withNotes(
-            List.of(unit("art_1", cites("Silesia", "note_1"))),
+            List.of(occurrence("art_1", cites("Silesia", "note_1"))),
             note("note_1", "Only in Poland, as authorised by Decision 2004/297/EC"));
     var differences = Differ.differences(from, to).differences();
     assertThat(differences).extracting(Difference::eId).containsExactly("art_1");
@@ -1361,12 +1365,15 @@ class DifferTest {
     // same.
     var from =
         withNotes(
-            List.of(unit("art_1", block("p", "Plain.")), unit("art_2", cites("Cited", "note_1"))),
+            List.of(
+                occurrence("art_1", block("p", "Plain.")),
+                occurrence("art_2", cites("Cited", "note_1"))),
             note("note_1", "OJ L 97, 1.4.2004, p. 66."));
     var to =
         withNotes(
             List.of(
-                unit("art_1", cites("Plain", "note_1")), unit("art_2", cites("Cited", "note_2"))),
+                occurrence("art_1", cites("Plain", "note_1")),
+                occurrence("art_2", cites("Cited", "note_2"))),
             note("note_1", "OJ L 1, 1.1.2026, p. 1."),
             note("note_2", "OJ L 97, 1.4.2004, p. 66."));
     var differences = Differ.differences(from, to).differences();
@@ -1381,10 +1388,10 @@ class DifferTest {
     // consolidations have it at the end of the text, with another eId. Its words are the same.
     var annex =
         new Element(
-            "unit",
+            "occurrence",
             Map.of("eId", "anx", "kind", "annex"),
             List.of(
-                unit("anx/pnt_1.0.5", cites("References", "note_anx01000301-2")),
+                occurrence("anx/pnt_1.0.5", cites("References", "note_anx01000301-2")),
                 new Element(
                     "notes",
                     Map.of(),
@@ -1396,20 +1403,22 @@ class DifferTest {
         withNotes(
             List.of(
                 new Element(
-                    "unit",
+                    "occurrence",
                     Map.of("eId", "anx", "kind", "annex"),
-                    List.of(unit("anx/pnt_1.0.5", cites("References", "note_2"))),
+                    List.of(occurrence("anx/pnt_1.0.5", cites("References", "note_2"))),
                     "")),
             note("note_2", "Decision C(2015) 8005 final."));
     assertThat(Differ.differences(from, to).differences()).isEmpty();
   }
 
   @Test
-  void showsTheNotesOfAnInsertedUnitInsertedWithIt() {
-    var from = withNotes(List.of(unit("art_1", block("p", "Plain."))));
+  void showsTheNotesOfAnInsertedOccurrenceInsertedWithIt() {
+    var from = withNotes(List.of(occurrence("art_1", block("p", "Plain."))));
     var to =
         withNotes(
-            List.of(unit("art_1", block("p", "Plain.")), unit("art_2", cites("New", "note_1"))),
+            List.of(
+                occurrence("art_1", block("p", "Plain.")),
+                occurrence("art_2", cites("New", "note_1"))),
             note("note_1", "OJ L 1, 1.1.2026, p. 1."));
     var inserted = Differ.differences(from, to).differences().getFirst();
     assertThat(inserted.kind()).isEqualTo(Kind.INSERTED);
@@ -1419,10 +1428,10 @@ class DifferTest {
   @Test
   void saysThatANoteAndTheReferenceToItAreOnlyInTheLaterText() {
     // As Article 6(2) of 767/2008: 2024/1356 changed the words and added a note to them.
-    var from = withNotes(List.of(unit("art_1", block("p", "The authorities."))));
+    var from = withNotes(List.of(occurrence("art_1", block("p", "The authorities."))));
     var to =
         withNotes(
-            List.of(unit("art_1", cites("The screening authorities", "note_1"))),
+            List.of(occurrence("art_1", cites("The screening authorities", "note_1"))),
             note("note_1", "OJ L, 2024/1356, 22.5.2024."));
     var shown = Differ.differences(from, to).differences().getFirst().shown();
     assertThat(only(only(shown, "notes"), "note").attribute("diff")).isEqualTo("ins");
@@ -1433,26 +1442,31 @@ class DifferTest {
   void saysThatANoteIsOnlyInTheEarlierTextAndLeavesTheNotesOfBothTextsAsTheyAre() {
     var from =
         withNotes(
-            List.of(unit("art_1", cites("Silesia", "note_1"))), note("note_1", "only in Poland"));
-    var to = withNotes(List.of(unit("art_1", block("p", "Silesia and Pomerania"))));
+            List.of(occurrence("art_1", cites("Silesia", "note_1"))),
+            note("note_1", "only in Poland"));
+    var to = withNotes(List.of(occurrence("art_1", block("p", "Silesia and Pomerania"))));
     var deleted = Differ.differences(from, to).differences().getFirst().shown();
     assertThat(only(only(deleted, "notes"), "note").attribute("diff")).isEqualTo("del");
 
     var changed =
         withNotes(
-            List.of(unit("art_1", cites("Silesia", "note_1"))), note("note_1", "Only in Poland."));
+            List.of(occurrence("art_1", cites("Silesia", "note_1"))),
+            note("note_1", "Only in Poland."));
     var kept = Differ.differences(from, changed).differences().getFirst().shown();
     assertThat(only(only(kept, "notes"), "note").attribute("diff")).isNull();
     assertThat(only(only(kept, "p"), "noteRef").attribute("diff")).isNull();
   }
 
-  /** A text with the units {@code units} in its body, and the notes {@code notes} at its end. */
-  private static Element withNotes(List<Element> units, Element... notes) {
+  /**
+   * A text with the occurrences {@code occurrences} in its body, and the notes {@code notes} at its
+   * end.
+   */
+  private static Element withNotes(List<Element> occurrences, Element... notes) {
     return new Element(
         "legalText",
         Map.of(),
         List.of(
-            new Element("body", Map.of(), units, ""),
+            new Element("body", Map.of(), occurrences, ""),
             new Element("notes", Map.of(), List.of(notes), "")),
         "");
   }
@@ -1477,8 +1491,8 @@ class DifferTest {
         "");
   }
 
-  private static Element unit(String eId, Element... blocks) {
-    return new Element("unit", Map.of("eId", eId, "kind", "article"), List.of(blocks), "");
+  private static Element occurrence(String eId, Element... blocks) {
+    return new Element("occurrence", Map.of("eId", eId, "kind", "article"), List.of(blocks), "");
   }
 
   private static Element table(Element... rows) {
@@ -1512,37 +1526,38 @@ class DifferTest {
   }
 
   @Test
-  void showsAChangedUnitWholeWithTheUnitsInItThatTheSameActsChanged() {
+  void showsAChangedOccurrenceWholeWithTheOccurrencesInItThatTheSameActsChanged() {
     var differences = Differ.differences(JANUARY, MARCH).differences();
     var changed = find(differences, "anx/pnt_1.2.2.3");
     assertThat(changed.kind()).isEqualTo(Kind.CHANGED);
     // 2026/449 inserted points (a) to (c) when it replaced 1.2.2.3. They show inside 1.2.2.3, not
     // as differences of their own.
     assertThat(descendants(changed.shown()))
-        .filteredOn(each -> each.name().equals("unit"))
+        .filteredOn(each -> each.name().equals("occurrence"))
         .extracting(each -> each.attribute("eId"))
         .contains("anx/pnt_1.2.2.3/pnt_a", "anx/pnt_1.2.2.3/pnt_b", "anx/pnt_1.2.2.3/pnt_c");
     assertThat(differences).extracting(Difference::eId).doesNotContain("anx/pnt_1.2.2.3/pnt_a");
   }
 
-  private static boolean holdsUnits(Element shown) {
-    return descendants(shown).stream().anyMatch(each -> each.name().equals("unit"));
+  private static boolean holdsOccurrences(Element shown) {
+    return descendants(shown).stream().anyMatch(each -> each.name().equals("occurrence"));
   }
 
   @Test
-  void namesTheActsThatMarkAUnitInEachText() {
+  void namesTheActsThatMarkAnOccurrenceInEachText() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
     assertThat(c.markers()).containsExactly(new Marker("32026R0449", "replaced", null));
-    // In March the point has no marker, and it is in no unit that an act put in whole. So it is
+    // In March the point has no marker, and it is in no occurrence that an act put in whole. So it
+    // is
     // as the act was published.
     assertThat(c.earlierMarkers()).isEmpty();
   }
 
   @Test
   void readsAPointWithoutMarkersAsTheActThatPutThePointItIsInWholePutIt() {
-    var units = Units.of(MARCH);
-    var a = Objects.requireNonNull(units.get("anx/pnt_1.2.2.3/pnt_a"));
-    assertThat(Markers.of(a, units))
+    var occurrences = Occurrences.of(MARCH);
+    var a = Objects.requireNonNull(occurrences.get("anx/pnt_1.2.2.3/pnt_a"));
+    assertThat(Markers.of(a, occurrences))
         .containsExactly(new Marker("32026R0449", "replaced", "anx/pnt_1.2.2.3"));
   }
 
@@ -1573,7 +1588,7 @@ class DifferTest {
   private static Element withPreamble(Element text) {
     var recital =
         new Element(
-            "unit",
+            "occurrence",
             Map.of("eId", "pbl_1/rct_1", "kind", "recital"),
             List.of(new Element("p", Map.of(), List.of(), "Whereas:")),
             "");
@@ -1585,51 +1600,52 @@ class DifferTest {
   }
 
   /**
-   * The eIds of the units of the {@code later} text, in the order that {@code compared} places
-   * them. The list has:
+   * The eIds of the occurrences of the {@code later} text, in the order that {@code compared}
+   * places them. The list has:
    *
    * <ul>
    *   <li>each difference, except a deleted one,
-   *   <li>each unit opened or folded,
-   *   <li>the units in a folded or inserted unit.
+   *   <li>each occurrence opened or folded,
+   *   <li>the occurrences in a folded or inserted occurrence.
    * </ul>
    *
-   * <p>A unit placed twice is in the list twice.
+   * <p>An occurrence placed twice is in the list twice.
    */
   private static List<String> placed(Compared compared, Element later) {
-    var units = Units.of(later);
+    var occurrences = Occurrences.of(later);
     var placed = new ArrayList<String>();
     for (var difference : compared.differences()) {
-      placed(difference.context(), units, placed);
+      placed(difference.context(), occurrences, placed);
       if (difference.kind() != Kind.DELETED) {
         placed.add(difference.eId());
       }
-      // An inserted unit, or a changed unit shown whole, is placed with its units.
-      if (difference.kind() != Kind.DELETED && holdsUnits(difference.shown())) {
-        placed.addAll(inside(difference.eId(), units));
+      // An inserted occurrence, or a changed occurrence shown whole, is placed with its
+      // occurrences.
+      if (difference.kind() != Kind.DELETED && holdsOccurrences(difference.shown())) {
+        placed.addAll(inside(difference.eId(), occurrences));
       }
     }
-    placed(compared.closing(), units, placed);
+    placed(compared.closing(), occurrences, placed);
     return placed;
   }
 
-  private static void placed(List<Context> context, Units units, List<String> placed) {
+  private static void placed(List<Context> context, Occurrences occurrences, List<String> placed) {
     for (var each : context) {
-      for (var unit : each.units()) {
-        placed.add(unit.eId());
+      for (var occurrence : each.occurrences()) {
+        placed.add(occurrence.eId());
         if (each.opening() == null) {
-          placed.addAll(inside(unit.eId(), units));
+          placed.addAll(inside(occurrence.eId(), occurrences));
         }
       }
     }
   }
 
-  /** The eIds of the units in the unit {@code eId}, in document order. */
-  private static List<String> inside(String eId, Units units) {
+  /** The eIds of the occurrences in the occurrence {@code eId}, in document order. */
+  private static List<String> inside(String eId, Occurrences occurrences) {
     var inside = new ArrayList<String>();
-    for (var unit : units.in(eId)) {
-      inside.add(unit);
-      inside.addAll(inside(unit, units));
+    for (var occurrence : occurrences.in(eId)) {
+      inside.add(occurrence);
+      inside.addAll(inside(occurrence, occurrences));
     }
     return inside;
   }
@@ -1638,13 +1654,14 @@ class DifferTest {
     return differences.stream().filter(d -> d.eId().equals(eId)).findFirst().orElseThrow();
   }
 
-  /** The one child of {@code unit} with the name {@code name}. */
-  private static Element only(Element unit, String name) {
-    return unit.children().stream()
+  /** The one child of {@code occurrence} with the name {@code name}. */
+  private static Element only(Element occurrence, String name) {
+    return occurrence.children().stream()
         .filter(child -> child.name().equals(name))
         .reduce(
             (one, other) -> {
-              throw new AssertionError("More than one " + name + " in " + unit.attribute("eId"));
+              throw new AssertionError(
+                  "More than one " + name + " in " + occurrence.attribute("eId"));
             })
         .orElseThrow();
   }

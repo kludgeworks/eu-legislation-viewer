@@ -103,7 +103,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
@@ -114,24 +114,24 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="Implementing Decision (EU) 2019/1202 is repealed."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <p>
             <t v="Communication 2018/C 371/01 is repealed. However, it shall continue to apply in respect of the references of harmonised standards listed in Annex II to this Decision until the dates of withdrawal of those references."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -142,10 +142,10 @@
             </emphasis>
             <t v="."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <t v="ANNEX I"/>
          </num>
@@ -1697,8 +1697,8 @@
                </td>
             </tr>
          </table>
-      </unit>
-      <unit eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
+      </occurrence>
+      <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
             <t v="ANNEX II"/>
          </num>
@@ -1919,7 +1919,7 @@
                </td>
             </tr>
          </table>
-      </unit>
+      </occurrence>
    </annexes>
 </legalText>
 

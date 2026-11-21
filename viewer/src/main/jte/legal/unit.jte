@@ -1,7 +1,0 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
-@import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
-@param Element node
-@param LegalRenderer html
-<%-- Shows a unit. A unit with a title (rank) shows the title as a heading. A numbered unit with a
-     heading shows the number and heading on one line. Example: "1.0 GENERAL PROVISIONS". A numbered
-     unit without a heading shows its number beside its text (numbered). --%>!{var rank = node.attribute("rank");}!{var runIn = "true".equals(node.attribute("numbered")) && html.has(node, "heading");}@if(rank != null || runIn)<div class="unit unit-${node.attribute("kind")}" id="${node.attribute("eId")}" data-depth="${node.attribute("depth")}" data-box="${node.attribute("box")}">${html.children(node, "provenance")}@if(runIn)@template.legalpart.title(rank = rank, runIn = true, content = @`${html.children(node, "num")} ${html.children(node, "heading")}`)${html.others(node, "provenance", "num", "heading")}@else@template.legalpart.title(rank = rank, runIn = false, content = @`${html.children(node, "num", "heading", "subheading")}`)${html.others(node, "provenance", "num", "heading", "subheading")}@endif</div>@else<div class="unit unit-${node.attribute("kind")}${"true".equals(node.attribute("numbered")) ? " numbered" : ""}" id="${node.attribute("eId")}" data-depth="${node.attribute("depth")}" data-box="${node.attribute("box")}">${html.children(node)}</div>@endif

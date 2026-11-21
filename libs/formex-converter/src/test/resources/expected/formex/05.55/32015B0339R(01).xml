@@ -27,7 +27,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="In Section III "/>
             <quote startQuote="‘" endQuote="’">
@@ -43,7 +43,7 @@
                <t v="must be read as differentiated appropriations."/>
             </p>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

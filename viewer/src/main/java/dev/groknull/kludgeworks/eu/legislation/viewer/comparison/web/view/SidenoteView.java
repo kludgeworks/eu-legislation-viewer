@@ -36,13 +36,13 @@ import org.jspecify.annotations.Nullable;
  * difference.
  *
  * <p>The sidenote names the acts between the two versions that made the difference. The amendment
- * markers on the unit in the later text name these acts, or the amendments of the unit in Cellar
- * name them. The markers name only the last act that changed a unit. For a deleted unit, the
- * markers name one of these acts:
+ * markers on the occurrence in the later text name these acts, or the amendments of the occurrence
+ * in Cellar name them. The markers name only the last act that changed an occurrence. For a deleted
+ * occurrence, the markers name one of these acts:
  *
  * <ul>
- *   <li>the act of the deletion that keeps the unit struck
- *   <li>the act that replaced, as a whole, the unit that the deleted unit was in
+ *   <li>the act of the deletion that keeps the occurrence struck
+ *   <li>the act that replaced, as a whole, the occurrence that the deleted occurrence was in
  * </ul>
  *
  * <p>The sidenote shows the acts as a chain, in the order that the versions integrate them. For
@@ -54,8 +54,8 @@ import org.jspecify.annotations.Nullable;
  * <ul>
  *   <li>Where the markers name an act of a version, the sidenote follows the markers. It leaves out
  *       the other acts of that version that Cellar names.
- *   <li>The acts that the markers name together changed the unit together, with one wording. The
- *       sidenote names them together.
+ *   <li>The acts that the markers name together changed the occurrence together, with one wording.
+ *       The sidenote names them together.
  *   <li>If only Cellar names an act, the sidenote names it as if a marker did.
  *   <li>If neither the markers nor Cellar name an act between the two versions, the sidenote does
  *       not guess. If the acts between the versions are all of one version, it says that one of
@@ -63,10 +63,10 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>An act can have several dates. The texts do not say from which of these dates a provision
- * applies. The amendment of the unit in Cellar chooses the date, if its day is one of the dates of
- * the act and is after the earlier version. The earlier version does not have the change. Otherwise
- * the sidenote says that the act applies in parts, and that the clause says which part applies from
- * when.
+ * applies. The amendment of the occurrence in Cellar chooses the date, if its day is one of the
+ * dates of the act and is after the earlier version. The earlier version does not have the change.
+ * Otherwise the sidenote says that the act applies in parts, and that the clause says which part
+ * applies from when.
  *
  * @param made who made the difference. For example:
  *     <ul>
@@ -150,8 +150,8 @@ public record SidenoteView(
    *
    * @param included the acts that each version includes ({@link Inclusions}): Cellar's lists, and
    *     the acts that the built texts mark first
-   * @param amendments the amendments of the unit in Cellar, by the acts between the two versions.
-   *     {@code Amended.of} finds them.
+   * @param amendments the amendments of the occurrence in Cellar, by the acts between the two
+   *     versions. {@code Amended.of} finds them.
    * @param only the act whose changes the comparison is limited to, if any
    * @param language the language of the links
    */
@@ -222,8 +222,10 @@ public record SidenoteView(
     for (var i = 0; i < steps.size(); i++) {
       var step = steps.get(i);
       var first = step.getFirst();
-      // An inserted unit was inserted in the first step. A deleted unit was deleted in the last
-      // step. If words were deleted from a unit that is still there, the unit was amended.
+      // An inserted occurrence was inserted in the first step. A deleted occurrence was deleted in
+      // the last
+      // step. If words were deleted from an occurrence that is still there, the occurrence was
+      // amended.
       var kind =
           i == 0 && difference.kind() == Kind.INSERTED
               ? Kind.INSERTED
@@ -384,12 +386,12 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the acts that changed the unit of {@code difference} in a part that applies between the
-   * two versions, by the version that takes the part in. Such an act is not between the two
-   * versions: an earlier version included it already. Its marker on the unit is new in this step:
-   * the earlier text does not have it. And one of its dates falls after {@code from}, up to {@code
-   * to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January 2026: the act is
-   * included from July 2024, and a part of it applies from 11 January 2026.
+   * Returns the acts that changed the occurrence of {@code difference} in a part that applies
+   * between the two versions, by the version that takes the part in. Such an act is not between the
+   * two versions: an earlier version included it already. Its marker on the occurrence is new in
+   * this step: the earlier text does not have it. And one of its dates falls after {@code from}, up
+   * to {@code to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January 2026: the
+   * act is included from July 2024, and a part of it applies from 11 January 2026.
    *
    * <p>A marker can also be new only because the earlier text has no markers. The date tells these
    * apart.
@@ -475,8 +477,10 @@ public record SidenoteView(
             .ifPresent(version -> at.put(each, version));
       }
     }
-    // An act that the markers name was the last act to change the unit. Thus it is in no version
-    // before the versions of the other acts. If it changed the unit together with other acts, it is
+    // An act that the markers name was the last act to change the occurrence. Thus it is in no
+    // version
+    // before the versions of the other acts. If it changed the occurrence together with other acts,
+    // it is
     // in the first version that has all of them.
     var floor = at.values().stream().map(Version::date).max(Comparator.naturalOrder()).orElse(null);
     for (var each : marked) {
@@ -521,23 +525,23 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the acts between the two versions that replaced the unit together, by its markers. Two
-   * acts that replaced the same unit as a whole did so at the same time. The unit can be the unit
-   * itself or the unit it is in. If one act replaced the unit after the other, only its own marker
-   * would be there. Each set has two or more acts.
+   * Returns the acts between the two versions that replaced the occurrence together, by its
+   * markers. Two acts that replaced the same occurrence as a whole did so at the same time. The
+   * occurrence can be the occurrence itself or the occurrence it is in. If one act replaced the
+   * occurrence after the other, only its own marker would be there. Each set has two or more acts.
    */
   private static List<Set<ActIdentifier>> together(
       Difference difference, Collection<ActIdentifier> between) {
-    var byUnit = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();
+    var byOccurrence = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();
     for (var marker : difference.markers()) {
       var each = new ActIdentifier(marker.act());
       if (marker.action().equals("replaced") && between.contains(each)) {
-        byUnit
+        byOccurrence
             .computeIfAbsent(Optional.ofNullable(marker.in()), in -> new LinkedHashSet<>())
             .add(each);
       }
     }
-    return byUnit.values().stream().filter(acts -> acts.size() > 1).toList();
+    return byOccurrence.values().stream().filter(acts -> acts.size() > 1).toList();
   }
 
   /**
@@ -565,11 +569,12 @@ public record SidenoteView(
   }
 
   /**
-   * Returns what {@code act} did to the unit, as a difference of {@code kind} shows it.
+   * Returns what {@code act} did to the occurrence, as a difference of {@code kind} shows it.
    *
    * <ul>
    *   <li>"Inserted", "Deleted", "Replaced" or "Renumbered"
-   *   <li>"Amended", for words that the act inserted or deleted in a unit that is still there
+   *   <li>"Amended", for words that the act inserted or deleted in an occurrence that is still
+   *       there
    *   <li>"Corrected", for a corrigendum
    * </ul>
    */
@@ -591,8 +596,8 @@ public record SidenoteView(
 
   /**
    * Returns when {@code amending} applies, in words, from {@link Act#applying}. {@code days} holds
-   * the days that the amendments of the unit in Cellar have. Returns empty if Cellar has no dates
-   * of the act, or if it has no day and no clause that sets one.
+   * the days that the amendments of the occurrence in Cellar have. Returns empty if Cellar has no
+   * dates of the act, or if it has no day and no clause that sets one.
    */
   private static Optional<Applies> applies(
       Act act, ActIdentifier amending, Set<LocalDate> days, Language language) {
@@ -731,8 +736,8 @@ public record SidenoteView(
    *
    * <p>The history names the act that the versions of {@code act} integrated last, among the acts
    * that the amendment markers in {@code to} name. The markers are those of the provision, or those
-   * of the unit that an act put in its form as a whole. {@link Marker} has them. Corrigenda are
-   * left out. The history says what the act did and when it applies.
+   * of the occurrence that an act put in its form as a whole. {@link Marker} has them. Corrigenda
+   * are left out. The history says what the act did and when it applies.
    *
    * <p>If no act changed the provision, the history says "As in the original act". It then applies
    * from the dates of the act, or else from the first version of the act.

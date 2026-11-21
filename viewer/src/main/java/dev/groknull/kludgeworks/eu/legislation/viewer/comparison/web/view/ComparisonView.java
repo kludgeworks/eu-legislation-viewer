@@ -11,7 +11,7 @@ import org.jspecify.annotations.Nullable;
  * ComparePage}.
  */
 public enum ComparisonView {
-  /** Only the provisions that differ, with the opening of the unit each is in. */
+  /** Only the provisions that differ, with the opening of the occurrence each is in. */
   CHANGES("changes", "Changes"),
   /** Every provision of the later text. The provisions that differ are marked in place. */
   WHOLE("whole", "Whole text"),

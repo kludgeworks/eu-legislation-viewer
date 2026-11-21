@@ -2,7 +2,7 @@
 <!-- SPDX-License-Identifier: MIT -->
 <!--
   Enacting terms: articles, their paragraphs and subparagraphs, divisions (parts, titles,
-  chapters, sections) and article subdivisions. Part of formex-to-legal-text.xsl; tunnel parameters as in units.xsl.
+  chapters, sections) and article subdivisions. Part of formex-to-legal-text.xsl; tunnel parameters as in occurrences.xsl.
 -->
 <xsl:stylesheet version="3.0"
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
@@ -35,10 +35,10 @@
         [not(f:covering(.)[f:is-deletion(.)])][f:same-quotation(., current())])"/>
     <xsl:variable name="enclosing" as="xs:string?" select="f:enclosing-division($division, $base)"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $enclosing) then $enclosing else $base, 'art', $value)"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="article">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="article">
         <xsl:sequence select="f:provenance($m)"/>
-        <xsl:call-template name="f:unit-content">
+        <xsl:call-template name="f:occurrence-content">
           <xsl:with-param name="num" as="element()?" select="TI.ART"/>
           <xsl:with-param name="heading" as="element()?" select="STI.ART"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -46,9 +46,9 @@
           <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
           <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <xsl:template match="PARAG" mode="block">
@@ -57,24 +57,24 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'par', (f:label(NO.PARAG)[. != ''], string(count(preceding-sibling::PARAG) + 1))[1])"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="paragraph">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="paragraph">
         <xsl:sequence select="f:provenance($m)"/>
-        <xsl:call-template name="f:unit-content">
+        <xsl:call-template name="f:occurrence-content">
           <xsl:with-param name="num" as="element()?" select="NO.PARAG"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <!-- levels it holds are numbered within it, under its eId (art_3/pnt_a, anx_I/pnt_a/pnt_1) -->
           <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid, 'ctx': ($ctx, f:ids($m))}" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <!-- num, heading, then the content: a single ALINEA is the content itself (as in AKN, no unp_1);
        several become unnumbered paragraphs (in an article) or subparagraphs (in a paragraph) -->
-  <xsl:template name="f:unit-content">
+  <xsl:template name="f:occurrence-content">
     <xsl:param name="num" as="element()?"/>
     <xsl:param name="heading" as="element()?"/>
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
@@ -126,8 +126,8 @@
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="in-article" as="xs:boolean" select="exists(parent::ARTICLE)"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, if ($in-article) then 'unp' else 'sub', string(count(preceding-sibling::ALINEA) + 1))"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="{if ($in-article) then 'paragraph' else 'subparagraph'}">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="{if ($in-article) then 'paragraph' else 'subparagraph'}">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" as="node()*" select="node()"/>
@@ -135,9 +135,9 @@
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
   <!-- the division a division or an article is in, while it is: one that encloses what holds them
@@ -158,7 +158,7 @@
     <xsl:sequence select="if (empty($qa) or empty($qb)) then empty($qa) and empty($qb) else $qa is $qb"/>
   </xsl:function>
 
-  <!-- Parts, titles, chapters and sections (Formex DIVISION): unit kind="division", its title line as
+  <!-- Parts, titles, chapters and sections (Formex DIVISION): occurrence kind="division", its title line as
        num (CHAPTER III). The eId names the kind by the EU subdivision table's code (prt_, tis_, cpt_,
        sct_, sbs_), else division_, then the label after the type word, nested under the enclosing
        division. Articles inside keep act-wide eIds (art_14), as in AKN4EU and ELI. -->
@@ -182,8 +182,8 @@
     <!-- divisions hang off what holds them: nothing in the act's own enacting terms (cpt_1), else
          the annex, quoted structure, attachment or level (anx_II/cpt_1) -->
     <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $base), $base)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="division">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="division">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -197,12 +197,12 @@
           <xsl:with-param name="base" as="xs:string?" select="$base" tunnel="yes"/>
           <xsl:with-param name="division" as="map(*)" select="map{'eid': $eid, 'base': $base}" tunnel="yes"/>
         </xsl:call-template>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
-  <!-- a titled part of an article in an agreement (SUBDIV, "(1) Objectives"): unit kind="subdivision",
+  <!-- a titled part of an article in an agreement (SUBDIV, "(1) Objectives"): occurrence kind="subdivision",
        eId subdivision_ and its number, as AKN's subdivision; its paragraphs and subparagraphs hang off it -->
   <xsl:template match="SUBDIV" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
@@ -211,8 +211,8 @@
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'subdivision', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
     <xsl:variable name="body" as="element()*" select="* except TITLE"/>
-    <xsl:variable name="unit" as="element()">
-      <unit eId="{$eid}" kind="subdivision">
+    <xsl:variable name="occurrence" as="element()">
+      <occurrence eId="{$eid}" kind="subdivision">
         <xsl:sequence select="f:provenance($m)"/>
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -239,9 +239,9 @@
             </xsl:apply-templates>
           </xsl:otherwise>
         </xsl:choose>
-      </unit>
+      </occurrence>
     </xsl:variable>
-    <xsl:sequence select="f:wrap-deleted($m, $unit)"/>
+    <xsl:sequence select="f:wrap-deleted($m, $occurrence)"/>
   </xsl:template>
 
 </xsl:stylesheet>

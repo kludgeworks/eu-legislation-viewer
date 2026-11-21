@@ -75,11 +75,11 @@
       "description": "A thing that stands on its own lines. Its type tells which. A validator checks only the schema of that type: a block can hold blocks, so checking each block against every schema would take time that grows with the depth of the text.",
       "required": ["type"],
       "properties": {
-        "type": { "enum": ["text", "unit", "table", "figure", "quotation", "deleted"] }
+        "type": { "enum": ["text", "occurrence", "table", "figure", "quotation", "deleted"] }
       },
       "allOf": [
         { "if": { "properties": { "type": { "const": "text" } } }, "then": { "$ref": "#/$defs/paragraph" } },
-        { "if": { "properties": { "type": { "const": "unit" } } }, "then": { "$ref": "#/$defs/unit" } },
+        { "if": { "properties": { "type": { "const": "occurrence" } } }, "then": { "$ref": "#/$defs/occurrence" } },
         { "if": { "properties": { "type": { "const": "table" } } }, "then": { "$ref": "#/$defs/table" } },
         { "if": { "properties": { "type": { "const": "figure" } } }, "then": { "$ref": "#/$defs/figure" } },
         { "if": { "properties": { "type": { "const": "quotation" } } }, "then": { "$ref": "#/$defs/quotation" } },
@@ -111,11 +111,11 @@
       },
       "required": ["type", "text", "html"]
     },
-    "unit": {
+    "occurrence": {
       "description": "An article, a paragraph, a point, an annex and so on.",
       "type": "object",
       "properties": {
-        "type": { "const": "unit" },
+        "type": { "const": "occurrence" },
         "eId": { "type": "string", "description": "Its identifier in the text. For example, art_3/par_2/pnt_a." },
         "kind": { "type": "string", "description": "What it is. For example, article or point. The list can grow." },
         "num": { "type": "string", "description": "Its label as printed. For example, Article 3 or (a)." },
@@ -170,7 +170,7 @@
       "required": ["type", "file"]
     },
     "quotation": {
-      "description": "Text that an amending act quotes: the units that it inserts or replaces in another act. It is not law of this act.",
+      "description": "Text that an amending act quotes: the occurrences that it inserts or replaces in another act. It is not law of this act.",
       "type": "object",
       "properties": {
         "type": { "const": "quotation" },

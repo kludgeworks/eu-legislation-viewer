@@ -85,12 +85,12 @@
          </p>
       </formula>
       <citations>
-         <unit eId="pbl_1/cit_1" kind="citation">
+         <occurrence eId="pbl_1/cit_1" kind="citation">
             <p>
                <t v="Having regard to the Treaty establishing the European Community,"/>
             </p>
-         </unit>
-         <unit eId="pbl_1/cit_2" kind="citation">
+         </occurrence>
+         <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Directive 97/78/EC of "/>
                <date date="1997-12-18">
@@ -100,7 +100,7 @@
                <noteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 22 thereof,"/>
             </p>
-         </unit>
+         </occurrence>
       </citations>
       <recitals>
          <intro>
@@ -108,31 +108,31 @@
                <t v="Whereas:"/>
             </p>
          </intro>
-         <unit eId="pbl_1/rct_1" kind="recital">
+         <occurrence eId="pbl_1/rct_1" kind="recital">
             <num>
                <t v="(1)"/>
             </num>
             <p>
                <t v="Avian influenza is an infectious viral disease in poultry and birds, causing mortality and disturbances which can quickly take epizootic proportions liable to present a serious threat to animal and public health and to reduce sharply the profitability of poultry farming. There is a risk that the disease agent might be introduced via international trade in live poultry and poultry products, including untreated feathers."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_2" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_2" kind="recital">
             <num>
                <t v="(2)"/>
             </num>
             <p>
                <t v="Several outbreaks of avian influenza have been notified by the Turkish authorities in backyard flocks in eastern Anatolia. As the disease is likely to have been spread to Turkey by migratory birds, the presence of the disease in Armenia, Azerbaijan, Georgia, Iran, Iraq and Syria cannot be excluded."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_3" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_3" kind="recital">
             <num>
                <t v="(3)"/>
             </num>
             <p>
                <t v="Currently no poultry products other than untreated feathers and parts thereof are authorised for imports from the countries neighbouring Turkey."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_4" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_4" kind="recital">
             <num>
                <t v="(4)"/>
             </num>
@@ -141,31 +141,31 @@
                <noteRef href="#note_2" marker="2"/>
                <t v=", imports from Turkey of untreated feathers are already suspended."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_5" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <t v="(5)"/>
             </num>
             <p>
                <t v="As no further information is available on surveillance for avian influenza in the countries neighbouring the eastern part of Turkey, and in view of the animal health risk of disease introduction into the Community, it is appropriate to suspend imports of untreated feathers and parts thereof from Armenia, Azerbaijan, Georgia, Iran, Iraq and Syria."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_6" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <t v="(6)"/>
             </num>
             <p>
                <t v="Consequently it is appropriate to require proof of treatment for imports of commercial consignments of processed feathers from the third countries concerned."/>
             </p>
-         </unit>
-         <unit eId="pbl_1/rct_7" kind="recital">
+         </occurrence>
+         <occurrence eId="pbl_1/rct_7" kind="recital">
             <num>
                <t v="(7)"/>
             </num>
             <p>
                <t v="The measures provided for in this Decision are in accordance with the opinion of the Standing Committee on the Food Chain and Animal Health,"/>
             </p>
-         </unit>
+         </occurrence>
       </recitals>
       <formula name="enactingFormula">
          <p>
@@ -174,31 +174,31 @@
       </formula>
    </preamble>
    <body>
-      <unit eId="art_1" kind="article" rank="1">
+      <occurrence eId="art_1" kind="article" rank="1">
          <num>
             <t v="Article 1"/>
          </num>
          <p>
             <t v="Member States shall suspend the importation from the territory of the countries listed in the Annex to this Decision of untreated feathers and parts of untreated feathers."/>
          </p>
-      </unit>
-      <unit eId="art_2" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_2" kind="article" rank="1">
          <num>
             <t v="Article 2"/>
          </num>
          <p>
             <t v="The Member States shall ensure that when imported from the territory of the countries listed in the Annex, consignments of treated feathers or parts of treated feathers (excluding treated decorative feathers, treated feathers carried by travelers for their private use or consignments of treated feathers sent to private individuals for non industrial purposes) are accompanied by a commercial document stating that the treated feathers or parts of treated feathers have been treated with a steam current or by some other method ensuring the inactivation of the pathogen."/>
          </p>
-      </unit>
-      <unit eId="art_3" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_3" kind="article" rank="1">
          <num>
             <t v="Article 3"/>
          </num>
          <p>
             <t v="The Member States shall immediately take the necessary measures to comply with this Decision and publish those measures. They shall immediately inform the Commission thereof."/>
          </p>
-      </unit>
-      <unit eId="art_4" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_4" kind="article" rank="1">
          <num>
             <t v="Article 4"/>
          </num>
@@ -214,18 +214,18 @@
             </changed>
             <t v="."/>
          </p>
-      </unit>
-      <unit eId="art_5" kind="article" rank="1">
+      </occurrence>
+      <occurrence eId="art_5" kind="article" rank="1">
          <num>
             <t v="Article 5"/>
          </num>
          <p>
             <t v="This Decision is addressed to the Member States."/>
          </p>
-      </unit>
+      </occurrence>
    </body>
    <annexes>
-      <unit eId="anx" kind="annex" eurlexAnchor="1" rank="1">
+      <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <provenance amendingAct="32006D0183"
                      action="replaced"
                      location="AR:1;PT:2 .AND. AX:0"
@@ -237,13 +237,13 @@
             <t v="Countries as referred to in Articles 1 and 2 of this Decision:"/>
          </p>
          <list kind="none">
-            <unit eId="anx/idt_1" kind="indent">
+            <occurrence eId="anx/idt_1" kind="indent">
                <p>
                   <t v="All third countries"/>
                </p>
-            </unit>
+            </occurrence>
          </list>
-      </unit>
+      </occurrence>
    </annexes>
    <notes>
       <note eId="note_1" marker="1" kind="footnote">

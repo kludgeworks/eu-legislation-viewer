@@ -35,7 +35,7 @@
       </longTitle>
    </preface>
    <body>
-      <unit eId="cor_1" kind="correction">
+      <occurrence eId="cor_1" kind="correction">
          <p>
             <t v="On page 17, in the Annex, in BAT 4, table, footnotes 9, 11 and 15:"/>
          </p>
@@ -65,7 +65,7 @@
                </p>
             </quotedStructure>
          </new>
-      </unit>
+      </occurrence>
    </body>
 </legalText>
 

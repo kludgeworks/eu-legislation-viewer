@@ -21,11 +21,11 @@
         </DIVISION>
       </DIVISION>
     </x:context>
-    <x:expect label="is a division unit with its title line as num, named by its kind even with no document language: cpt_I" test="
+    <x:expect label="is a division occurrence with its title line as num, named by its kind even with no document language: cpt_I" test="
         $x:result/@eId = 'cpt_I' and $x:result/@kind = 'division'
         and $x:result/*:num/*:t/@v = 'CHAPTER I' and $x:result/*:subheading/*:t/@v = 'General provisions'"/>
-    <x:expect label="nests divisions" test="$x:result/*:unit[@kind = 'division']/@eId = 'cpt_I/sct_1'"/>
-    <x:expect label="keeps act-wide article eIds" test="$x:result//*:unit[@kind = 'article']/@eId = ('art_1', 'art_2')"/>
+    <x:expect label="nests divisions" test="$x:result/*:occurrence[@kind = 'division']/@eId = 'cpt_I/sct_1'"/>
+    <x:expect label="keeps act-wide article eIds" test="$x:result//*:occurrence[@kind = 'article']/@eId = ('art_1', 'art_2')"/>
   </x:scenario>
 
   <x:scenario label="A division numbered as a numbered paragraph">
@@ -48,7 +48,7 @@
       </ACT>
     </x:context>
     <x:expect label="tis_I, tis_I/cpt_1 and sct_I: the kinds differ, so the eIds do"
-              test="$x:result//*:unit[@kind = 'division']/@eId => string-join(' ') = 'tis_I tis_I/cpt_1 sct_I'"/>
+              test="$x:result//*:occurrence[@kind = 'division']/@eId => string-join(' ') = 'tis_I tis_I/cpt_1 sct_I'"/>
   </x:scenario>
 
   <x:scenario label="A French title (TITRE II)">
@@ -60,7 +60,7 @@
         </ENACTING.TERMS>
       </ACT>
     </x:context>
-    <x:expect label="is tis_II, as in English" test="$x:result//*:unit[@kind = 'division']/@eId = 'tis_II'"/>
+    <x:expect label="is tis_II, as in English" test="$x:result//*:occurrence[@kind = 'division']/@eId = 'tis_II'"/>
   </x:scenario>
 
   <x:scenario label="Articles that restart their numbers in each division">
@@ -74,7 +74,7 @@
       </ACT>
     </x:context>
     <x:expect label="keep the first act-wide and the repeat under its division, a part (prt_, from the EU subdivision table)"
-              test="$x:result//*:unit[@kind = 'article']/@eId => string-join(' ') = 'art_1 prt_TWO/art_1'"/>
+              test="$x:result//*:occurrence[@kind = 'article']/@eId => string-join(' ') = 'art_1 prt_TWO/art_1'"/>
   </x:scenario>
 
   <x:scenario label="A chapter an article of CHAPTER I quotes">
@@ -94,8 +94,8 @@
       </ACT>
     </x:context>
     <x:expect label="hangs off the quotation, not off CHAPTER I: art_1/qstr_1/cpt_IIa"
-              test="$x:result//*:quotedStructure/*:unit[@kind = 'division']/@eId = 'art_1/qstr_1/cpt_IIa'"/>
-    <x:expect label="and so does its article" test="$x:result//*:quotedStructure//*:unit[@kind = 'article']/@eId = 'art_1/qstr_1/art_5a'"/>
+              test="$x:result//*:quotedStructure/*:occurrence[@kind = 'division']/@eId = 'art_1/qstr_1/cpt_IIa'"/>
+    <x:expect label="and so does its article" test="$x:result//*:quotedStructure//*:occurrence[@kind = 'article']/@eId = 'art_1/qstr_1/art_5a'"/>
   </x:scenario>
 
   <x:scenario label="A division whose title is a numbered paragraph, NO.P TITLE I (2002/2370)">
@@ -108,7 +108,7 @@
         </ENACTING.TERMS>
       </ACT>
     </x:context>
-    <x:expect label="is named by the subdivision table from its number: tis_I" test="$x:result//*:unit[@kind = 'division']/@eId = 'tis_I'"/>
+    <x:expect label="is named by the subdivision table from its number: tis_I" test="$x:result//*:occurrence[@kind = 'division']/@eId = 'tis_I'"/>
   </x:scenario>
 
   <!-- ============================================================ formulas -->
@@ -185,9 +185,9 @@
       </CORR>
     </x:context>
     <x:expect label="is a corrigendum" test="$x:result/@kind = 'corrigendum'"/>
-    <x:expect label="has one unit per correction" test="$x:result/*:body/*:unit/@eId = ('cor_1', 'cor_2') and $x:result/*:body/*:unit/@kind = 'correction'"/>
+    <x:expect label="has one occurrence per correction" test="$x:result/*:body/*:occurrence/@eId = ('cor_1', 'cor_2') and $x:result/*:body/*:occurrence/@kind = 'correction'"/>
     <x:expect label="keeps the old and the new wording apart" test="
-        $x:result//*:old//*:unit/@eId = 'cor_1/old/qstr_1/pnt_b' and $x:result//*:new//*:unit/@eId = 'cor_1/new/qstr_1/pnt_b'"/>
+        $x:result//*:old//*:occurrence/@eId = 'cor_1/old/qstr_1/pnt_b' and $x:result//*:new//*:occurrence/@eId = 'cor_1/new/qstr_1/pnt_b'"/>
   </x:scenario>
 
   <!-- ============================================================ agreements -->
@@ -202,8 +202,8 @@
         </COLL.LETTERS>
       </AGR>
     </x:context>
-    <x:expect label="has one letter unit each" test="$x:result//*:unit[@kind = 'letter']/@eId = ('let_1', 'let_2')"/>
-    <x:expect label="keeps the letter's title" test="($x:result//*:unit[@kind = 'letter'])[1]/*:heading/*:t/@v = 'A. Letter from the Union'"/>
+    <x:expect label="has one letter occurrence each" test="$x:result//*:occurrence[@kind = 'letter']/@eId = ('let_1', 'let_2')"/>
+    <x:expect label="keeps the letter's title" test="($x:result//*:occurrence[@kind = 'letter'])[1]/*:heading/*:t/@v = 'A. Letter from the Union'"/>
   </x:scenario>
 
   <x:scenario label="Titled parts of an article (SUBDIV)">
@@ -214,10 +214,10 @@
       </ARTICLE>
     </x:context>
     <x:expect label="are subdivisions numbered by their title" test="
-        $x:result/*:unit/@eId = ('art_1/subdivision_1', 'art_1/subdivision_2') and $x:result/*:unit/@kind = 'subdivision'
-        and $x:result/*:unit[1]/*:num/*:t/@v = '(1)' and $x:result/*:unit[1]/*:heading/*:t/@v = 'Objectives'"/>
+        $x:result/*:occurrence/@eId = ('art_1/subdivision_1', 'art_1/subdivision_2') and $x:result/*:occurrence/@kind = 'subdivision'
+        and $x:result/*:occurrence[1]/*:num/*:t/@v = '(1)' and $x:result/*:occurrence[1]/*:heading/*:t/@v = 'Objectives'"/>
     <x:expect label="hold one ALINEA as their content, several as subparagraphs" test="
-        $x:result/*:unit[1]/*:p/*:t/@v = 'one' and $x:result/*:unit[2]/*:unit/@eId = ('art_1/subdivision_2/sub_1', 'art_1/subdivision_2/sub_2')"/>
+        $x:result/*:occurrence[1]/*:p/*:t/@v = 'one' and $x:result/*:occurrence[2]/*:occurrence/@eId = ('art_1/subdivision_2/sub_1', 'art_1/subdivision_2/sub_2')"/>
   </x:scenario>
 
   <x:scenario label="A protocol an agreement's annex includes (GENERAL)">
@@ -225,7 +225,7 @@
       <GENERAL><BIB.INSTANCE><LG.DOC>EN</LG.DOC></BIB.INSTANCE><TITLE><TI><P>PROTOCOL 38d</P></TI></TITLE>
         <CONTENTS><ENACTING.TERMS><ARTICLE IDENTIFIER="001"><TI.ART>Article 1</TI.ART><ALINEA>text</ALINEA></ARTICLE></ENACTING.TERMS></CONTENTS></GENERAL>
     </x:context>
-    <x:expect label="is its title and its text" test="$x:result[1]/self::*:p/*:t/@v = 'PROTOCOL 38d' and $x:result/self::*:unit/@eId = 'art_1'"/>
+    <x:expect label="is its title and its text" test="$x:result[1]/self::*:p/*:t/@v = 'PROTOCOL 38d' and $x:result/self::*:occurrence/@eId = 'art_1'"/>
   </x:scenario>
 
   <x:scenario label="A lettered letter (A. Letter from the Union)">
@@ -284,15 +284,15 @@
   <x:scenario label="A decision concluding an agreement (2009/1023, a package)">
     <x:context href="../resources/fixtures/formex/05.01/32009D1023/L_2009353EN.01000101.doc.xml"/>
     <x:expect label="attaches the agreement, and the document attached to it, under it"
-              test="$x:result//*:unit[@kind = 'attachment']/@eId = ('att_1', 'att_1/att_1')"/>
-    <x:expect label="numbers the agreement's articles under it" test="$x:result//*:unit[@eId = 'att_1/art_1']/*:num/*:t/@v = 'Article 1'"/>
-    <x:expect label="gives the agreement's notes their own eIds, after its text" test="$x:result//*:unit[@eId = 'att_1']/*:notes/*:note/@eId = 'note_att01000301-1'"/>
+              test="$x:result//*:occurrence[@kind = 'attachment']/@eId = ('att_1', 'att_1/att_1')"/>
+    <x:expect label="numbers the agreement's articles under it" test="$x:result//*:occurrence[@eId = 'att_1/art_1']/*:num/*:t/@v = 'Article 1'"/>
+    <x:expect label="gives the agreement's notes their own eIds, after its text" test="$x:result//*:occurrence[@eId = 'att_1']/*:notes/*:note/@eId = 'note_att01000301-1'"/>
   </x:scenario>
 
   <x:scenario label="An annex the OJ prints across files (2015/1998, four)">
     <x:context href="../resources/fixtures/formex/05.55/32015R1998/L_2015299EN.01000101.doc.xml"/>
-    <x:expect label="is one annex, a file each" test="count($x:result/*:annexes/*:unit) = 1
-        and $x:result/*:annexes/*:unit/*:file/@name = ('L_2015299EN.01000301', 'L_2015299EN.01006801', 'L_2015299EN.01008501', 'L_2015299EN.01010101')"/>
+    <x:expect label="is one annex, a file each" test="count($x:result/*:annexes/*:occurrence) = 1
+        and $x:result/*:annexes/*:occurrence/*:file/@name = ('L_2015299EN.01000301', 'L_2015299EN.01006801', 'L_2015299EN.01008501', 'L_2015299EN.01010101')"/>
     <x:expect label="each but the first under the title it repeats" test="$x:result//*:file ! exists(*:num) = (false(), true(), true(), true())"/>
     <x:expect label="each with its notes after it" test="every $f in $x:result//*:file satisfies $f/*[last()]/self::*:notes/*:note[1]/@eId = 'note_anx' || substring-after($f/@name, '.') || '-1'"/>
     <x:expect label="the act's own notes before the annexes" test="$x:result/*:notes/following-sibling::*[1]/self::*:annexes and empty($x:result/*:notes/*:note[starts-with(@eId, 'note_anx')])"/>
@@ -380,11 +380,11 @@
         </CONTENTS>
       </GENERAL>
     </x:context>
-    <x:expect label="converts as a legal act with preamble, unit-first body, and conclusions"
+    <x:expect label="converts as a legal act with preamble, occurrence-first body, and conclusions"
               test="$x:result/self::*:legalText
                     and exists($x:result/*:preamble)
                     and exists($x:result/*:conclusions)
-                    and $x:result/*:body/*[1]/self::*:unit[@eId = 'division_1']/*:unit[@eId = 'art_1']"/>
+                    and $x:result/*:body/*[1]/self::*:occurrence[@eId = 'division_1']/*:occurrence[@eId = 'art_1']"/>
   </x:scenario>
 
   <!-- ============================================================ push style -->

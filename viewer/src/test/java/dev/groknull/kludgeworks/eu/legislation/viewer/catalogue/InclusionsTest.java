@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Which acts a version includes, as 767/2008 has them. Its version of 29 December 2017 marks 16
- * units with 2017/2226. Cellar lists only Corrigendum 5 for it, and lists 2017/2226 from the
+ * occurrences with 2017/2226. Cellar lists only Corrigendum 5 for it, and lists 2017/2226 from the
  * version of 11 June 2019.
  */
 class InclusionsTest {
