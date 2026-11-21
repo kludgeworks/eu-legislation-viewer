@@ -411,10 +411,10 @@
             </tr>
             <notes>
                <deleted>
-                  <provenance amendingAct="32015R0183"
-                              action="deleted"
-                              location="AR:1"
-                              marker="O001001M002000"/>
+                  <tag amendingAct="32015R0183"
+                       action="deleted"
+                       location="AR:1"
+                       tagId="O001001M002000"/>
                   <note eId="note_3" marker="1" kind="table">
                      <p>
                         <t v="The photograph is purely for information."/>

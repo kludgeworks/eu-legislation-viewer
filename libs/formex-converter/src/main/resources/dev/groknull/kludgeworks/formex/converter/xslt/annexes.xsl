@@ -141,7 +141,7 @@
     <xsl:param name="anchored" as="xs:boolean" select="true()"/>
     <xsl:variable name="siblings" as="element()*" select="$holder ! f:annex-siblings(.)"/>
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($siblings, current())"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
     <!-- one of an OJ act's annexes, which are files of their own (a package's), each printed with its notes -->
     <xsl:variable name="files" as="xs:boolean" select="not($inContent or $quoted or $included or $nested) and (every $x in $fragments satisfies $x is root($x)/*)"/>
@@ -161,7 +161,7 @@
         <xsl:if test="not($quoted or $included) and $anchored">
           <xsl:attribute name="eurlexAnchor" select="($anchor, count(preceding::CONS.ANNEX | ancestor::CONS.ANNEX) + 1)[1]"/>
         </xsl:if>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <!-- the first title; a second (a consolidation's annex can have two) is text of the annex. A
              GENERAL file's title is a heading, with no label line -->
         <xsl:call-template name="f:title">
@@ -172,7 +172,7 @@
         </xsl:call-template>
         <xsl:for-each select="$parts">
           <xsl:variable name="i" as="xs:integer" select="position()"/>
-          <xsl:variable name="own" as="processing-instruction()*" select="if (position() = 1) then () else f:new-markers(., ($ctx, f:ids($m)))"/>
+          <xsl:variable name="own" as="processing-instruction()*" select="if (position() = 1) then () else f:new-tags(., ($ctx, f:ids($m)))"/>
           <xsl:variable name="blocks" as="node()*">
             <xsl:call-template name="f:blocks">
               <!-- the content, nested annexes and related documents, and whatever else the fragment
@@ -467,7 +467,7 @@
           <xsl:attribute name="box" select="true()"/>
         </xsl:if>
         <xsl:sequence select="f:numbered($label)"/>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:choose>
           <xsl:when test="NO.GR.SEQ or $direct-np">
             <num>

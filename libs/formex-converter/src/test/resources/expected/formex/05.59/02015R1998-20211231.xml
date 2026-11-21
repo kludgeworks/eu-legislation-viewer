@@ -500,10 +500,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.0.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O002001M001000"/>
             <num>
                <t v="1.0.3"/>
             </num>
@@ -536,10 +536,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.0.6" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O012001M020000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O012001M020000"/>
             <num>
                <t v="1.0.6."/>
             </num>
@@ -671,10 +671,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_1.1.3.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O002001M002000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O002001M002000"/>
             <num>
                <t v="1.1.3.1"/>
             </num>
@@ -720,10 +720,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.1.3.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O004001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O004001M001000"/>
             <num>
                <t v="1.1.3.4"/>
             </num>
@@ -970,10 +970,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3"/>
             </num>
@@ -984,10 +984,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.1"/>
             </num>
@@ -996,10 +996,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.2"/>
             </num>
@@ -1008,10 +1008,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.3"/>
             </num>
@@ -1020,10 +1020,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.4"/>
             </num>
@@ -1035,10 +1035,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.5"/>
             </num>
@@ -1097,10 +1097,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.6" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.6"/>
             </num>
@@ -1109,10 +1109,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.3.7" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M001000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M001000"/>
             <num>
                <t v="1.2.3.7"/>
             </num>
@@ -1303,20 +1303,20 @@
                </occurrence>
             </list>
             <deleted>
-               <provenance amendingAct="32017R0815"
-                           action="deleted"
-                           location="AR:1 .AND. AX:0;PT:3"
-                           marker="O002001M003000"/>
+               <tag amendingAct="32017R0815"
+                    action="deleted"
+                    location="AR:1 .AND. AX:0;PT:3"
+                    tagId="O002001M003000"/>
                <p>
                   <t v="Electronic vehicle passes need not display the areas for which the vehicle is authorised to have access nor the expiry date, provided that this information is electronically readable and checked before granting access to security restricted areas."/>
                </p>
             </deleted>
          </occurrence>
          <occurrence eId="anx/pnt_1.2.6.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:4"
-                        marker="O002001M004000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:4"
+                 tagId="O002001M004000"/>
             <num>
                <t v="1.2.6.3"/>
             </num>
@@ -1333,10 +1333,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_1.2.6.3/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:3"
-                              marker="O004001M002000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:3"
+                       tagId="O004001M002000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -1350,7 +1350,7 @@
                <changed amendingAct="32019R0103"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:4"
-                        marker="O004001M003000">
+                        tagId="O004001M003000">
                   <t v="Electronic vehicle passes shall also be electronically readable airside."/>
                </changed>
             </p>
@@ -1643,10 +1643,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_1.3.1.1/pnt_f" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:5"
-                              marker="O004001M004000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:5"
+                       tagId="O004001M004000"/>
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -1655,10 +1655,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_1.3.1.1/pnt_g" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="inserted"
-                              location="AR:1 .AND. AX:0;PT:6"
-                              marker="O004001M005000"/>
+                  <tag amendingAct="32019R0103"
+                       action="inserted"
+                       location="AR:1 .AND. AX:0;PT:6"
+                       tagId="O004001M005000"/>
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -1667,10 +1667,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_1.3.1.1/pnt_h" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="inserted"
-                              location="AR:1 .AND. AX:0;PT:6"
-                              marker="O004001M005000"/>
+                  <tag amendingAct="32019R0103"
+                       action="inserted"
+                       location="AR:1 .AND. AX:0;PT:6"
+                       tagId="O004001M005000"/>
                   <num>
                      <t v="(h)"/>
                   </num>
@@ -1680,10 +1680,10 @@
                </occurrence>
             </list>
             <p>
-               <provenance amendingAct="32019R0103"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:7"
-                           marker="O004001M006000"/>
+               <tag amendingAct="32019R0103"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:7"
+                    tagId="O004001M006000"/>
                <t v="SMD and SED equipment may only be used as a supplementary means of screening."/>
             </p>
          </occurrence>
@@ -1696,10 +1696,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.3.1.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:8"
-                        marker="O004001M007000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:8"
+                 tagId="O004001M007000"/>
             <num>
                <t v="1.3.1.3"/>
             </num>
@@ -1782,10 +1782,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.3.1.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O002001M005000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O002001M005000"/>
             <num>
                <t v="1.3.1.8"/>
             </num>
@@ -1794,10 +1794,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.3.1.9" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O002001M006000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O002001M006000"/>
             <num>
                <t v="1.3.1.9"/>
             </num>
@@ -2195,10 +2195,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_1.6.4" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:7"
-                        marker="O002001M007000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:7"
+                 tagId="O002001M007000"/>
             <num>
                <t v="1.6.4"/>
             </num>
@@ -2219,10 +2219,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M021000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M021000"/>
             <num>
                <t v="1.7"/>
             </num>
@@ -2231,10 +2231,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_1.7.1" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M021000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M021000"/>
             <num>
                <t v="1.7.1"/>
             </num>
@@ -2243,10 +2243,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.7.2" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M021000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M021000"/>
             <num>
                <t v="1.7.2"/>
             </num>
@@ -2258,10 +2258,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.7.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M021000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M021000"/>
             <num>
                <t v="1.7.3"/>
             </num>
@@ -2270,10 +2270,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.7.4" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M021000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M021000"/>
             <num>
                <t v="1.7.4"/>
             </num>
@@ -2282,10 +2282,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_1.7.5" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O012001M021000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O012001M021000"/>
             <num>
                <t v="1.7.5"/>
             </num>
@@ -2575,10 +2575,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_3.0.6" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:8"
-                        marker="O002001M008000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:8"
+                 tagId="O002001M008000"/>
             <num>
                <t v="3.0.6"/>
             </num>
@@ -2587,10 +2587,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_3.0.7" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:9"
-                        marker="O002001M009000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:9"
+                 tagId="O002001M009000"/>
             <num>
                <t v="3.0.7"/>
             </num>
@@ -2603,10 +2603,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_3.0.8" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:9"
-                        marker="O002001M009000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:9"
+                 tagId="O002001M009000"/>
             <num>
                <t v="3.0.8"/>
             </num>
@@ -2753,10 +2753,10 @@
                </occurrence>
             </list>
             <p>
-               <provenance amendingAct="32019R0103"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:9"
-                           marker="O004001M008000"/>
+               <tag amendingAct="32019R0103"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:9"
+                    tagId="O004001M008000"/>
                <t v="Recording of the information as above, may be held in electronic format."/>
             </p>
          </occurrence>
@@ -2946,10 +2946,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-3-B" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O010001M001000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O010001M001000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 3-B"/>
@@ -2960,10 +2960,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O010001M001000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O010001M001000"/>
             <heading>
                <t v="AIRCRAFT SECURITY"/>
             </heading>
@@ -3097,10 +3097,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_4.0.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:10"
-                        marker="O004001M009000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:10"
+                 tagId="O004001M009000"/>
             <num>
                <t v="4.0.3"/>
             </num>
@@ -3160,10 +3160,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_4.0.6" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:11"
-                        marker="O004001M010000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:11"
+                 tagId="O004001M010000"/>
             <num>
                <t v="4.0.6"/>
             </num>
@@ -3254,10 +3254,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_4.1.1.2/pnt_f" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:12"
-                              marker="O004001M011000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:12"
+                       tagId="O004001M011000"/>
                   <num>
                      <t v="(f)"/>
                   </num>
@@ -3266,10 +3266,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_4.1.1.2/pnt_g" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="inserted"
-                              location="AR:1 .AND. AX:0;PT:13"
-                              marker="O004001M012000"/>
+                  <tag amendingAct="32019R0103"
+                       action="inserted"
+                       location="AR:1 .AND. AX:0;PT:13"
+                       tagId="O004001M012000"/>
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -3278,10 +3278,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_4.1.1.2/pnt_h" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="inserted"
-                              location="AR:1 .AND. AX:0;PT:13"
-                              marker="O004001M012000"/>
+                  <tag amendingAct="32019R0103"
+                       action="inserted"
+                       location="AR:1 .AND. AX:0;PT:13"
+                       tagId="O004001M012000"/>
                   <num>
                      <t v="(h)"/>
                   </num>
@@ -3343,10 +3343,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_4.1.1.9" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:14"
-                        marker="O004001M013000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:14"
+                 tagId="O004001M013000"/>
             <num>
                <t v="4.1.1.9"/>
             </num>
@@ -3629,10 +3629,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_4.1.3.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:15"
-                        marker="O004001M014000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:15"
+                 tagId="O004001M014000"/>
             <num>
                <t v="4.1.3.1"/>
             </num>
@@ -3641,15 +3641,15 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32019R0103"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:16"
-                        marker="O004001M015000"/>
+            <tag amendingAct="32019R0103"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:16"
+                 tagId="O004001M015000"/>
             <occurrence eId="anx/pnt_4.1.3.2" kind="level" depth="4" numbered="true">
-               <provenance amendingAct="32017R0815"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:11"
-                           marker="O002001M011000"/>
+               <tag amendingAct="32017R0815"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:11"
+                    tagId="O002001M011000"/>
                <num>
                   <t v="4.1.3.2"/>
                </num>
@@ -3685,10 +3685,10 @@
             </occurrence>
          </deleted>
          <occurrence eId="anx/pnt_4.1.3.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:12"
-                        marker="O002001M012000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:12"
+                 tagId="O002001M012000"/>
             <num>
                <t v="4.1.3.3"/>
             </num>
@@ -3697,10 +3697,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_4.1.3.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:13"
-                        marker="O002001M013000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:13"
+                 tagId="O002001M013000"/>
             <num>
                <t v="4.1.3.4"/>
             </num>
@@ -3896,10 +3896,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-4-B" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O010001M002000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O010001M002000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 4-B"/>
@@ -3910,10 +3910,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O010001M002000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O010001M002000"/>
             <heading>
                <t v="PASSENGERS AND CABIN BAGGAGE"/>
             </heading>
@@ -4399,10 +4399,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_5.0.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:17"
-                        marker="O004001M016000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:17"
+                 tagId="O004001M016000"/>
             <num>
                <t v="5.0.3"/>
             </num>
@@ -4431,10 +4431,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_5.0.6" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:18"
-                        marker="O004001M017000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:18"
+                 tagId="O004001M017000"/>
             <num>
                <t v="5.0.6"/>
             </num>
@@ -4785,10 +4785,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_5.4.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:14"
-                        marker="O002001M014000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:14"
+                 tagId="O002001M014000"/>
             <num>
                <t v="5.4.3"/>
             </num>
@@ -4797,10 +4797,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-5-A" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:3"
-                        marker="O010001M003000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:3"
+                 tagId="O010001M003000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 5-A"/>
@@ -4811,10 +4811,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:3"
-                        marker="O010001M003000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:3"
+                 tagId="O010001M003000"/>
             <heading>
                <t v="HOLD BAGGAGE"/>
             </heading>
@@ -5047,10 +5047,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.0.4" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O010001M008000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O010001M008000"/>
             <num>
                <t v="6.0.4"/>
             </num>
@@ -5131,10 +5131,10 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32019R0103"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:20"
-                        marker="O012001M002000"/>
+            <tag amendingAct="32019R0103"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:20"
+                 tagId="O012001M002000"/>
             <occurrence eId="anx/pnt_6.1.3" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.1.3"/>
@@ -5286,10 +5286,10 @@
                </occurrence>
             </list>
             <deleted>
-               <provenance amendingAct="32017R0815"
-                           action="deleted"
-                           location="AR:1 .AND. AX:0;PT:15"
-                           marker="O002001M015000"/>
+               <tag amendingAct="32017R0815"
+                    action="deleted"
+                    location="AR:1 .AND. AX:0;PT:15"
+                    tagId="O002001M015000"/>
                <p>
                   <t v="Where the screener cannot determine whether or not the cargo or mail contains any prohibited articles, it shall be rejected or rescreened to the screener's satisfaction."/>
                </p>
@@ -5427,10 +5427,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_6.3.1.2/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:3"
-                              marker="O010001M009000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:3"
+                       tagId="O010001M009000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -5491,18 +5491,18 @@
                <t v="An inspection at the premises of the regulated agent by the appropriate authority in accordance with its national quality control programme may be considered as an on-site verification, provided that it covers all the requirements necessary for approval."/>
             </p>
             <p>
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:4"
-                           marker="O010001M010000"/>
+               <tag amendingAct="32021R0255"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:4"
+                    tagId="O010001M010000"/>
                <t v="Except for the screening requirements laid down in point 6.2, an examination of the site of the regulated agent by the relevant customs authority carried out in accordance with Article 29 of Implementing Regulation (EU) 2015/2447 shall be considered as an on-site verification."/>
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.3.1.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O010001M011000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O010001M011000"/>
             <num>
                <t v="6.3.1.5"/>
             </num>
@@ -5542,10 +5542,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.3.1.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O010001M012000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O010001M012000"/>
             <num>
                <t v="6.3.1.8"/>
             </num>
@@ -5579,10 +5579,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.3.2.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:16"
-                        marker="O002001M016000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:16"
+                 tagId="O002001M016000"/>
             <num>
                <t v="6.3.2.2"/>
             </num>
@@ -5620,10 +5620,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.3.2.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:17"
-                        marker="O002001M017000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:17"
+                 tagId="O002001M017000"/>
             <num>
                <t v="6.3.2.4"/>
             </num>
@@ -5706,10 +5706,10 @@
                   </list>
                </occurrence>
                <occurrence eId="anx/pnt_6.3.2.6/pnt_e" kind="point" numbered="true">
-                  <provenance amendingAct="32017R0815"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:18"
-                              marker="O002001M018000"/>
+                  <tag amendingAct="32017R0815"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:18"
+                       tagId="O002001M018000"/>
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -5819,10 +5819,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_6.3.2.6/pnt_g" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:7"
-                              marker="O010001M013000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:7"
+                       tagId="O010001M013000"/>
                   <num>
                      <t v="(g)"/>
                   </num>
@@ -5835,10 +5835,10 @@
                <t v="A regulated agent tendering consignments to another regulated agent or air carrier may also decide to only transmit the information required under points (a) to (e) and (g) and to retain the information required under point (f) for the duration of the flight(s) or for 24 hours, whichever is the longer."/>
             </p>
             <p>
-               <provenance amendingAct="32021R0255"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:8"
-                           marker="O010001M014000"/>
+               <tag amendingAct="32021R0255"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:8"
+                    tagId="O010001M014000"/>
                <t v="Transfer cargo or mail for which the air carrier, or the regulated agent operating on its behalf, is unable to confirm in the accompanying documentation the information required by this point, or by point 6.3.2.7 as applicable, shall be subject to screening before being loaded on board an aircraft for the subsequent flight."/>
             </p>
          </occurrence>
@@ -5936,10 +5936,10 @@
             </p>
             <list kind="alpha">
                <occurrence eId="anx/pnt_6.4.1.2/pnt_a" kind="point" numbered="true">
-                  <provenance amendingAct="32017R0815"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:19"
-                              marker="O002001M019000"/>
+                  <tag amendingAct="32017R0815"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:19"
+                       tagId="O002001M019000"/>
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -5962,10 +5962,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_6.4.1.2/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32017R0815"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:19"
-                              marker="O002001M019000"/>
+                  <tag amendingAct="32017R0815"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:19"
+                       tagId="O002001M019000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -5987,10 +5987,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_6.4.1.2/pnt_c" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:9"
-                              marker="O010001M015000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:9"
+                       tagId="O010001M015000"/>
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -6056,18 +6056,18 @@
                <t v="An inspection at the premises of the known consignor by the appropriate authority in accordance with its national quality control programme may be considered as an on-site verification, provided that it covers all areas specified in the checklist of Attachment 6-C."/>
             </p>
             <p>
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:10"
-                           marker="O010001M016000"/>
+               <tag amendingAct="32021R0255"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:10"
+                    tagId="O010001M016000"/>
                <t v="An examination of the site of the known consignor by the relevant customs authority in accordance with Article 29 of Implementing Regulation (EU) 2015/2447 shall be considered as an on-site verification."/>
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.4.1.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:11"
-                        marker="O010001M017000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:11"
+                 tagId="O010001M017000"/>
             <num>
                <t v="6.4.1.5"/>
             </num>
@@ -6096,20 +6096,20 @@
                <t v="Without prejudice to the right of each Member State to apply more stringent measures in accordance with Article 6 of Regulation (EC) No 300/2008, a known consignor approved in accordance with point 6.4 of this Annex shall be recognised in all Member States."/>
             </p>
             <deleted>
-               <provenance amendingAct="32017R0815"
-                           action="deleted"
-                           location="AR:1 .AND. AX:0;PT:20"
-                           marker="O002001M020000"/>
+               <tag amendingAct="32017R0815"
+                    action="deleted"
+                    location="AR:1 .AND. AX:0;PT:20"
+                    tagId="O002001M020000"/>
                <p>
                   <t v="Known consignors approved in accordance with point 6.4.1.2(d) of this Annex shall also be subject to the additional provision laid down in point 6.4 of Commission Implementing Decision C(2015) 8005."/>
                </p>
             </deleted>
          </occurrence>
          <occurrence eId="anx/pnt_6.4.1.7" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:12"
-                        marker="O010001M018000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:12"
+                 tagId="O010001M018000"/>
             <num>
                <t v="6.4.1.7"/>
             </num>
@@ -6192,14 +6192,14 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_6.5.1" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:21"
-                        marker="O002001M021000"/>
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:13"
-                        marker="O010001M019000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:21"
+                 tagId="O002001M021000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:13"
+                 tagId="O010001M019000"/>
             <num>
                <t v="6.5.1"/>
             </num>
@@ -6264,10 +6264,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.5.2" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:21"
-                        marker="O002001M021000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:21"
+                 tagId="O002001M021000"/>
             <num>
                <t v="6.5.2"/>
             </num>
@@ -6276,10 +6276,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.5.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:21"
-                        marker="O002001M021000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:21"
+                 tagId="O002001M021000"/>
             <num>
                <t v="6.5.3"/>
             </num>
@@ -6292,10 +6292,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.5.4" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:21"
-                        marker="O002001M021000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:21"
+                 tagId="O002001M021000"/>
             <num>
                <t v="6.5.4"/>
             </num>
@@ -6308,10 +6308,10 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32017R0815"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:22"
-                        marker="O002001M022000"/>
+            <tag amendingAct="32017R0815"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:22"
+                 tagId="O002001M022000"/>
             <occurrence eId="anx/pnt_6.5.5" kind="level" depth="3" numbered="true">
                <num>
                   <t v="6.5.5"/>
@@ -6411,10 +6411,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.6.1.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:14"
-                        marker="O011001M001000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:14"
+                 tagId="O011001M001000"/>
             <num>
                <t v="6.6.1.3"/>
             </num>
@@ -6441,10 +6441,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.6.1.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:14"
-                        marker="O011001M001000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:14"
+                 tagId="O011001M001000"/>
             <num>
                <t v="6.6.1.4"/>
             </num>
@@ -6471,10 +6471,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.6.1.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:14"
-                        marker="O011001M001000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:14"
+                 tagId="O011001M001000"/>
             <num>
                <t v="6.6.1.5"/>
             </num>
@@ -6523,7 +6523,7 @@
                <changed amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:23"
-                        marker="O002001M023000">
+                        tagId="O002001M023000">
                   <emphasis kind="b">
                      <t v="Protection for cargo and mail during handling, storage, and loading onto an aircraft"/>
                   </emphasis>
@@ -6539,10 +6539,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.6.2.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:24"
-                        marker="O002001M024000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:24"
+                 tagId="O002001M024000"/>
             <num>
                <t v="6.6.2.2"/>
             </num>
@@ -6704,10 +6704,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.1.6" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0413"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:4"
-                        marker="O010001M004000"/>
+            <tag amendingAct="32019R0413"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:4"
+                 tagId="O010001M004000"/>
             <num>
                <t v="6.8.1.6"/>
             </num>
@@ -6790,18 +6790,18 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.1.7" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32020R0910"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O008001M001000"/>
+            <tag amendingAct="32020R0910"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O008001M001000"/>
             <num>
                <t v="6.8.1.7"/>
             </num>
             <p>
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:15"
-                           marker="O010001M020000"/>
+               <tag amendingAct="32021R0255"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:15"
+                    tagId="O010001M020000"/>
                <t v="During the period from "/>
                <date date="2020-04-01">
                   <t v="1 April 2020"/>
@@ -6868,10 +6868,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.1.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32020R0910"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O008001M001000"/>
+            <tag amendingAct="32020R0910"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O008001M001000"/>
             <num>
                <t v="6.8.1.8"/>
             </num>
@@ -6880,10 +6880,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.1.9" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32020R0910"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:1"
-                        marker="O008001M001000"/>
+            <tag amendingAct="32020R0910"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:1"
+                 tagId="O008001M001000"/>
             <num>
                <t v="6.8.1.9"/>
             </num>
@@ -7023,10 +7023,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.2.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:25"
-                        marker="O002001M025000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:25"
+                 tagId="O002001M025000"/>
             <num>
                <t v="6.8.2.3"/>
             </num>
@@ -7035,10 +7035,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.2.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:25"
-                        marker="O002001M025000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:25"
+                 tagId="O002001M025000"/>
             <num>
                <t v="6.8.2.4"/>
             </num>
@@ -7047,10 +7047,10 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32017R0815"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O002001M026000"/>
+            <tag amendingAct="32017R0815"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O002001M026000"/>
             <occurrence eId="anx/pnt_6.8.2.5" kind="level" depth="4" numbered="true">
                <num>
                   <t v="6.8.2.5"/>
@@ -7075,10 +7075,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:27"
-                        marker="O002001M027000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:27"
+                 tagId="O002001M027000"/>
             <num>
                <t v="6.8.3.1"/>
             </num>
@@ -7162,10 +7162,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:28"
-                        marker="O002001M028000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:28"
+                 tagId="O002001M028000"/>
             <num>
                <t v="6.8.3.4"/>
             </num>
@@ -7174,10 +7174,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:28"
-                        marker="O002001M028000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:28"
+                 tagId="O002001M028000"/>
             <num>
                <t v="6.8.3.5"/>
             </num>
@@ -7207,10 +7207,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3/list_1/pnt_6.8.3.6" kind="point" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:16"
-                        marker="O010001M021000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:16"
+                 tagId="O010001M021000"/>
             <num>
                <t v="6.8.3.6"/>
             </num>
@@ -7274,10 +7274,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3/list_1/pnt_6.8.3.7" kind="point" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:16"
-                        marker="O010001M021000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:16"
+                 tagId="O010001M021000"/>
             <num>
                <t v="6.8.3.7"/>
             </num>
@@ -7286,10 +7286,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:23"
-                        marker="O004001M021000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:23"
+                 tagId="O004001M021000"/>
             <num>
                <t v="6.8.3.8"/>
             </num>
@@ -7298,10 +7298,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.3.9" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:17"
-                        marker="O010001M022000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:17"
+                 tagId="O010001M022000"/>
             <num>
                <t v="6.8.3.9"/>
             </num>
@@ -7314,10 +7314,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4"/>
             </num>
@@ -7328,10 +7328,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.1"/>
             </num>
@@ -7348,10 +7348,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.2"/>
             </num>
@@ -7381,10 +7381,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.3"/>
             </num>
@@ -7393,10 +7393,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.4"/>
             </num>
@@ -7427,10 +7427,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.5"/>
             </num>
@@ -7439,10 +7439,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.6" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.6"/>
             </num>
@@ -7451,10 +7451,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.7" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.7"/>
             </num>
@@ -7463,10 +7463,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.8"/>
             </num>
@@ -7483,10 +7483,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.9" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.4.9"/>
             </num>
@@ -7495,14 +7495,14 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.10" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
-            <provenance amendingAct="32019R0413"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O010001M005000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
+            <tag amendingAct="32019R0413"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O010001M005000"/>
             <num>
                <t v="6.8.4.10"/>
             </num>
@@ -7585,22 +7585,22 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.11" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
-            <provenance amendingAct="32020R0910"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O008001M002000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
+            <tag amendingAct="32020R0910"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O008001M002000"/>
             <num>
                <t v="6.8.4.11"/>
             </num>
             <p>
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:18"
-                           marker="O010001M023000"/>
+               <tag amendingAct="32021R0255"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:18"
+                    tagId="O010001M023000"/>
                <t v="During the period from "/>
                <date date="2020-04-01">
                   <t v="1 April 2020"/>
@@ -7667,14 +7667,14 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.4.12" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
-            <provenance amendingAct="32020R0910"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:2"
-                        marker="O008001M002000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
+            <tag amendingAct="32020R0910"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:2"
+                 tagId="O008001M002000"/>
             <num>
                <t v="6.8.4.12"/>
             </num>
@@ -7715,10 +7715,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_6.8.4.12/pnt_d" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:19"
-                              marker="O010001M024000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:19"
+                       tagId="O010001M024000"/>
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -7733,10 +7733,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.5"/>
             </num>
@@ -7747,10 +7747,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.5.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.5.1"/>
             </num>
@@ -7798,10 +7798,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.5.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.5.2"/>
             </num>
@@ -7810,10 +7810,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.5.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.5.3"/>
             </num>
@@ -7822,10 +7822,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_6.8.5.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:30"
-                        marker="O002001M030000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:30"
+                 tagId="O002001M030000"/>
             <num>
                <t v="6.8.5.4"/>
             </num>
@@ -7893,15 +7893,15 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32021R0255"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:20"
-                        marker="O010001M025000"/>
+            <tag amendingAct="32021R0255"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:20"
+                 tagId="O010001M025000"/>
             <occurrence eId="anx/pnt_6.8.5.5" kind="level" depth="4" numbered="true">
-               <provenance amendingAct="32017R0815"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:30"
-                           marker="O002001M030000"/>
+               <tag amendingAct="32017R0815"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:30"
+                    tagId="O002001M030000"/>
                <num>
                   <t v="6.8.5.5"/>
                </num>
@@ -7975,10 +7975,10 @@
                </p>
             </occurrence>
             <occurrence eId="anx/pnt_6.8.5.6" kind="level" depth="4" numbered="true">
-               <provenance amendingAct="32017R0815"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:30"
-                           marker="O002001M030000"/>
+               <tag amendingAct="32017R0815"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:30"
+                    tagId="O002001M030000"/>
                <num>
                   <t v="6.8.5.6"/>
                </num>
@@ -7987,10 +7987,10 @@
                </p>
             </occurrence>
             <occurrence eId="anx/pnt_6.8.5.7" kind="level" depth="4" numbered="true">
-               <provenance amendingAct="32017R0815"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:30"
-                           marker="O002001M030000"/>
+               <tag amendingAct="32017R0815"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:30"
+                    tagId="O002001M030000"/>
                <num>
                   <t v="6.8.5.7"/>
                </num>
@@ -8008,10 +8008,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:31"
-                        marker="O002001M031000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:31"
+                 tagId="O002001M031000"/>
             <num>
                <t v="6.8.6"/>
             </num>
@@ -8026,10 +8026,10 @@
                      depth="4"
                      numbered="true"
                      rank="5">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:31"
-                        marker="O002001M031000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:31"
+                 tagId="O002001M031000"/>
             <num>
                <t v="6.8.6.1"/>
             </num>
@@ -8039,10 +8039,10 @@
                </emphasis>
             </heading>
             <occurrence eId="anx/pnt_6.8.6.1/pnt_1" kind="point" numbered="true">
-               <provenance amendingAct="32021R0255"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:21"
-                           marker="O010001M026000"/>
+               <tag amendingAct="32021R0255"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:21"
+                    tagId="O010001M026000"/>
                <num>
                   <t v="1."/>
                </num>
@@ -8154,10 +8154,10 @@
                      depth="4"
                      numbered="true"
                      rank="5">
-            <provenance amendingAct="32017R0815"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:31"
-                        marker="O002001M031000"/>
+            <tag amendingAct="32017R0815"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:31"
+                 tagId="O002001M031000"/>
             <num>
                <t v="6.8.6.2"/>
             </num>
@@ -8210,10 +8210,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:22"
-                        marker="O010001M027000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:22"
+                 tagId="O010001M027000"/>
             <num>
                <t v="6.8.7"/>
             </num>
@@ -11225,10 +11225,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-C2" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-C2"/>
@@ -11239,10 +11239,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <heading>
                <t v="VALIDATION CHECKLIST FOR THIRD COUNTRY EU AVIATION SECURITY VALIDATED REGULATED AGENTS"/>
             </heading>
@@ -11324,10 +11324,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 1"/>
             </num>
@@ -11841,10 +11841,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 2"/>
             </num>
@@ -12075,10 +12075,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 3"/>
             </num>
@@ -12431,10 +12431,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 4"/>
             </num>
@@ -12786,10 +12786,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 5"/>
             </num>
@@ -13209,10 +13209,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 6"/>
             </num>
@@ -13386,10 +13386,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 7"/>
             </num>
@@ -13622,10 +13622,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 8"/>
             </num>
@@ -13809,10 +13809,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 9"/>
             </num>
@@ -14060,10 +14060,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_PART-10" kind="level" depth="3" rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M060000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M060000"/>
             <num>
                <t v="PART 10"/>
             </num>
@@ -14141,14 +14141,14 @@
             <t v="Signature:"/>
          </p>
          <occurrence eId="anx/level_1" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <heading>
                <emphasis kind="b">
                   <t v="List of persons and entities visited and interviewed"/>
@@ -14237,10 +14237,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-C3" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-C3"/>
@@ -14316,10 +14316,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 1"/>
             </num>
@@ -14736,10 +14736,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 2"/>
             </num>
@@ -14944,10 +14944,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 3"/>
             </num>
@@ -15210,10 +15210,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 4"/>
             </num>
@@ -15527,10 +15527,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 5"/>
             </num>
@@ -15931,10 +15931,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 6"/>
             </num>
@@ -16157,10 +16157,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 7"/>
             </num>
@@ -16603,10 +16603,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 8"/>
             </num>
@@ -16782,10 +16782,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 9"/>
             </num>
@@ -16962,10 +16962,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 10"/>
             </num>
@@ -17188,10 +17188,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_PART-11" kind="level" depth="3" rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 11"/>
             </num>
@@ -17285,14 +17285,14 @@
             <t v="Signature:"/>
          </p>
          <occurrence eId="anx/level_2" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <heading>
                <emphasis kind="b">
                   <t v="List of persons and entities visited and interviewed"/>
@@ -17363,10 +17363,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-C4" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-C4"/>
@@ -17463,10 +17463,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 1"/>
             </num>
@@ -17873,10 +17873,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 2"/>
             </num>
@@ -18085,10 +18085,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 3"/>
             </num>
@@ -18142,10 +18142,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 4"/>
             </num>
@@ -18475,10 +18475,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 5"/>
             </num>
@@ -18823,10 +18823,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 6"/>
             </num>
@@ -18965,10 +18965,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 7"/>
             </num>
@@ -19179,10 +19179,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 8"/>
             </num>
@@ -19305,10 +19305,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 9"/>
             </num>
@@ -19507,10 +19507,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 10"/>
             </num>
@@ -19597,10 +19597,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 11"/>
             </num>
@@ -19708,10 +19708,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_PART-12" kind="level" depth="3" rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 12"/>
             </num>
@@ -19943,10 +19943,10 @@
             </table>
          </occurrence>
          <occurrence eId="anx/level_PART-13" kind="level" depth="3" rank="4">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O002001M064000"/>
             <num>
                <t v="PART 13"/>
             </num>
@@ -20031,24 +20031,24 @@
                <changed amendingAct="32017R0815"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:32"
-                        marker="O002001M064000">
+                        tagId="O002001M064000">
                   <emphasis kind="b">
                      <t v="List of persons and entities visited and interviewed"/>
                   </emphasis>
                </changed>
             </heading>
             <p>
-               <provenance amendingAct="32017R0815"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:32"
-                           marker="O002001M064000"/>
+               <tag amendingAct="32017R0815"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:32"
+                    tagId="O002001M064000"/>
                <t v="Providing the name of the entity, the name and the position of the contact person and the date of the visit or interview."/>
             </p>
             <table cols="4">
-               <provenance amendingAct="32017R0815"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:32"
-                           marker="O002001M064000"/>
+               <tag amendingAct="32017R0815"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:32"
+                    tagId="O002001M064000"/>
                <tr header="true">
                   <td header="true">
                      <p>
@@ -20535,10 +20535,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-F" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O010001M006000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O010001M006000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-F"/>
@@ -20549,10 +20549,10 @@
                      kind="level"
                      depth="3"
                      rank="4">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O010001M006000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O010001M006000"/>
             <heading>
                <t v="CARGO AND MAIL"/>
             </heading>
@@ -20561,10 +20561,10 @@
                      kind="level"
                      depth="4"
                      rank="5">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O010001M006000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O010001M006000"/>
             <heading>
                <t v="6-Fi"/>
             </heading>
@@ -20603,10 +20603,10 @@
                      kind="level"
                      depth="4"
                      rank="5">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O010001M006000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O010001M006000"/>
             <heading>
                <t v="6-Fii"/>
             </heading>
@@ -20620,10 +20620,10 @@
                      kind="level"
                      depth="4"
                      rank="5">
-            <provenance amendingAct="32019R0413"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O010001M006000"/>
+            <tag amendingAct="32019R0413"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O010001M006000"/>
             <heading>
                <t v="6-Fiii"/>
             </heading>
@@ -20767,10 +20767,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-H1" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:33"
-                        marker="O002001M061000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:33"
+                 tagId="O002001M061000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-H1"/>
@@ -20894,10 +20894,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-H2" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:33"
-                        marker="O002001M061000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:33"
+                 tagId="O002001M061000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-H2"/>
@@ -21021,10 +21021,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-6-H3" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:33"
-                        marker="O002001M061000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:33"
+                 tagId="O002001M061000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 6-H3"/>
@@ -21609,10 +21609,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_8.1.3.2/pnt_c" kind="point" numbered="true">
-                  <provenance amendingAct="32017R0815"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:34;PT:a"
-                              marker="O002001M034000"/>
+                  <tag amendingAct="32017R0815"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:34;PT:a"
+                       tagId="O002001M034000"/>
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -21621,10 +21621,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_8.1.3.2/pnt_d" kind="point" numbered="true">
-                  <provenance amendingAct="32017R0815"
-                              action="inserted"
-                              location="AR:1 .AND. AX:0;PT:34;PT:b"
-                              marker="O002001M035000"/>
+                  <tag amendingAct="32017R0815"
+                       action="inserted"
+                       location="AR:1 .AND. AX:0;PT:34;PT:b"
+                       tagId="O002001M035000"/>
                   <num>
                      <t v="(d)"/>
                   </num>
@@ -23116,10 +23116,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.0.8" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:25"
-                        marker="O012001M003000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:25"
+                 tagId="O012001M003000"/>
             <num>
                <t v="11.0.8"/>
             </num>
@@ -23132,10 +23132,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.0.9" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:25"
-                        marker="O012001M003000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:25"
+                 tagId="O012001M003000"/>
             <num>
                <t v="11.0.9"/>
             </num>
@@ -23176,10 +23176,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1"/>
             </num>
@@ -23188,10 +23188,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.1" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.1"/>
             </num>
@@ -23200,14 +23200,14 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.2" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
-            <provenance amendingAct="32019R1583"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:3"
-                        marker="O012001M022000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
+            <tag amendingAct="32019R1583"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:3"
+                 tagId="O012001M022000"/>
             <num>
                <t v="11.1.2"/>
             </num>
@@ -23245,10 +23245,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.3"/>
             </num>
@@ -23291,10 +23291,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.4" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.4"/>
             </num>
@@ -23329,10 +23329,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.5" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.5"/>
             </num>
@@ -23341,10 +23341,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.6" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.6"/>
             </num>
@@ -23356,10 +23356,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.7" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.7"/>
             </num>
@@ -23386,10 +23386,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.8" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.8"/>
             </num>
@@ -23398,10 +23398,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.9" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.9"/>
             </num>
@@ -23413,10 +23413,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.10" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.10"/>
             </num>
@@ -23425,10 +23425,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.11" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.11"/>
             </num>
@@ -23437,10 +23437,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.1.12" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O012001M004000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O012001M004000"/>
             <num>
                <t v="11.1.12"/>
             </num>
@@ -23449,7 +23449,7 @@
                <changed amendingAct="32020R0910"
                         action="replaced"
                         location="AR:3"
-                        marker="O012001M018000">
+                        tagId="O012001M018000">
                   <date date="2021-12-31">
                      <t v="31 December 2021"/>
                   </date>
@@ -23458,7 +23458,7 @@
                <changed amendingAct="32020R0910"
                         action="replaced"
                         location="AR:3"
-                        marker="O012001M019000">
+                        tagId="O012001M019000">
                   <date date="2024-06-30">
                      <t v="30 June 2024"/>
                   </date>
@@ -23595,10 +23595,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.2/pnt_e" kind="point" numbered="true">
-                  <provenance amendingAct="32017R0815"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:35"
-                              marker="O002001M036000"/>
+                  <tag amendingAct="32017R0815"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:35"
+                       tagId="O002001M036000"/>
                   <num>
                      <t v="(e)"/>
                   </num>
@@ -23647,10 +23647,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.2/pnt_k" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:28"
-                              marker="O012001M005000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:28"
+                       tagId="O012001M005000"/>
                   <num>
                      <t v="(k)"/>
                   </num>
@@ -23659,10 +23659,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.2/pnt_l" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="inserted"
-                              location="AR:1 .AND. AX:0;PT:29"
-                              marker="O012001M006000"/>
+                  <tag amendingAct="32019R0103"
+                       action="inserted"
+                       location="AR:1 .AND. AX:0;PT:29"
+                       tagId="O012001M006000"/>
                   <num>
                      <t v="(l)"/>
                   </num>
@@ -23814,10 +23814,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.3.2/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:30"
-                              marker="O012001M007000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:30"
+                       tagId="O012001M007000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -23961,10 +23961,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.3.3/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:31"
-                              marker="O012001M008000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:31"
+                       tagId="O012001M008000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -24200,10 +24200,10 @@
             </p>
             <list kind="alpha">
                <occurrence eId="anx/pnt_11.2.3.6/pnt_a" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:32"
-                              marker="O012001M009000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:32"
+                       tagId="O012001M009000"/>
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -24315,10 +24315,10 @@
             </p>
             <list kind="alpha">
                <occurrence eId="anx/pnt_11.2.3.7/pnt_a" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:33"
-                              marker="O012001M010000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:33"
+                       tagId="O012001M010000"/>
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -24422,10 +24422,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.3.8/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:34"
-                              marker="O012001M011000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:34"
+                       tagId="O012001M011000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -24475,17 +24475,17 @@
                </occurrence>
             </list>
             <p>
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:36"
-                           marker="O002001M037000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:36"
+                    tagId="O002001M037000"/>
                <t v="In addition, where the person holds an airport identification card, training shall also result in all of the following competences:"/>
             </p>
             <list kind="alpha">
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:36"
-                           marker="O002001M037000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:36"
+                    tagId="O002001M037000"/>
                <occurrence eId="anx/pnt_11.2.3.8/list_2/pnt_h" kind="point" numbered="true">
                   <num>
                      <t v="(h)"/>
@@ -24545,10 +24545,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.3.9/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:35"
-                              marker="O012001M012000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:35"
+                       tagId="O012001M012000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -24622,17 +24622,17 @@
                </occurrence>
             </list>
             <p>
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:37"
-                           marker="O002001M038000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:37"
+                    tagId="O002001M038000"/>
                <t v="In addition, where the person holds an airport identification card, training shall also result in all of the following competences:"/>
             </p>
             <list kind="alpha">
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:37"
-                           marker="O002001M038000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:37"
+                    tagId="O002001M038000"/>
                <occurrence eId="anx/pnt_11.2.3.9/list_2/pnt_k" kind="point" numbered="true">
                   <num>
                      <t v="(k)"/>
@@ -24684,10 +24684,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.3.10/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:36"
-                              marker="O012001M013000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:36"
+                       tagId="O012001M013000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -24761,17 +24761,17 @@
                </occurrence>
             </list>
             <p>
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:38"
-                           marker="O002001M039000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:38"
+                    tagId="O002001M039000"/>
                <t v="In addition, where the person holds an airport identification card, training shall also result in all of the following competences:"/>
             </p>
             <list kind="alpha">
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:38"
-                           marker="O002001M039000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:38"
+                    tagId="O002001M039000"/>
                <occurrence eId="anx/pnt_11.2.3.10/list_2/pnt_k" kind="point" numbered="true">
                   <num>
                      <t v="(k)"/>
@@ -24987,10 +24987,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.6.2/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:37"
-                              marker="O012001M014000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:37"
+                       tagId="O012001M014000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -25082,10 +25082,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.2.7/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:38"
-                              marker="O012001M015000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:38"
+                       tagId="O012001M015000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -25130,10 +25130,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:4"
-                        marker="O012001M023000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:4"
+                 tagId="O012001M023000"/>
             <num>
                <t v="11.2.8."/>
             </num>
@@ -25142,10 +25142,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_11.2.8.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:4"
-                        marker="O012001M023000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:4"
+                 tagId="O012001M023000"/>
             <num>
                <t v="11.2.8.1."/>
             </num>
@@ -25154,10 +25154,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.2.8.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R1583"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:4"
-                        marker="O012001M023000"/>
+            <tag amendingAct="32019R1583"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:4"
+                 tagId="O012001M023000"/>
             <num>
                <t v="11.2.8.2."/>
             </num>
@@ -25194,10 +25194,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_11.3.1/pnt_b" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:39"
-                              marker="O004001M024000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:39"
+                       tagId="O004001M024000"/>
                   <num>
                      <t v="(b)"/>
                   </num>
@@ -25219,10 +25219,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.3.2" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:40"
-                        marker="O004001M025000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:40"
+                 tagId="O004001M025000"/>
             <num>
                <t v="11.3.2"/>
             </num>
@@ -25231,10 +25231,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.3.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:41"
-                        marker="O004001M026000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:41"
+                 tagId="O004001M026000"/>
             <num>
                <t v="11.3.3"/>
             </num>
@@ -25298,10 +25298,10 @@
                </occurrence>
             </list>
             <deleted>
-               <provenance amendingAct="32019R0103"
-                           action="deleted"
-                           location="AR:1 .AND. AX:0;PT:42"
-                           marker="O004001M027000"/>
+               <tag amendingAct="32019R0103"
+                    action="deleted"
+                    location="AR:1 .AND. AX:0;PT:42"
+                    tagId="O004001M027000"/>
                <p>
                   <t v="The results of testing shall be provided to the person and recorded and may be taken into consideration as part of the recertification or re-approval process."/>
                </p>
@@ -25332,10 +25332,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.4.2" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:43"
-                        marker="O004001M028000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:43"
+                 tagId="O004001M028000"/>
             <num>
                <t v="11.4.2"/>
             </num>
@@ -25430,10 +25430,10 @@
             </p>
             <list kind="alpha">
                <occurrence eId="anx/pnt_11.5.1/pnt_a" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:44"
-                              marker="O012001M016000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:44"
+                       tagId="O012001M016000"/>
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -25470,10 +25470,10 @@
                <t v="Certification shall at least apply to those instructors authorised to give training defined in points 11.2.3.1 to 11.2.3.5 and in points 11.2.4 (unless it concerns the training of supervisors exclusively supervising persons referred to in points 11.2.3.6 to 11.2.3.10) and 11.2.5."/>
             </p>
             <p>
-               <provenance amendingAct="32017R0815"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:39"
-                           marker="O002001M040000"/>
+               <tag amendingAct="32017R0815"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:39"
+                    tagId="O002001M040000"/>
                <t v="Instructors shall be subject to recertification at least every 5 years."/>
             </p>
          </occurrence>
@@ -25681,10 +25681,10 @@
             </p>
             <list kind="alpha">
                <occurrence eId="anx/pnt_11.6.3.5/pnt_a" kind="point" numbered="true">
-                  <provenance amendingAct="32019R0103"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:45"
-                              marker="O012001M017000"/>
+                  <tag amendingAct="32019R0103"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:45"
+                       tagId="O012001M017000"/>
                   <num>
                      <t v="(a)"/>
                   </num>
@@ -25787,7 +25787,7 @@
                <changed amendingAct="32021R0255"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:23"
-                        marker="O010001M028000">
+                        tagId="O010001M028000">
                   <t v="The appropriate authority shall provide the validators it approves with the relevant parts of the non-public legislation and national programmes referring to the operations and areas to validate."/>
                </changed>
             </p>
@@ -25801,10 +25801,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.3.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:24"
-                        marker="O010001M029000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:24"
+                 tagId="O010001M029000"/>
             <num>
                <t v="11.6.3.8"/>
             </num>
@@ -25813,10 +25813,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.3.9" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0413"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:7"
-                        marker="O010001M007000"/>
+            <tag amendingAct="32019R0413"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:7"
+                 tagId="O010001M007000"/>
             <num>
                <t v="11.6.3.9"/>
             </num>
@@ -25843,10 +25843,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.3.10" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0413"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:7"
-                        marker="O010001M007000"/>
+            <tag amendingAct="32019R0413"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:7"
+                 tagId="O010001M007000"/>
             <num>
                <t v="11.6.3.10"/>
             </num>
@@ -25881,10 +25881,10 @@
             </list>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.3.11" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:25"
-                        marker="O010001M030000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:25"
+                 tagId="O010001M030000"/>
             <num>
                <t v="11.6.3.11"/>
             </num>
@@ -25907,10 +25907,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.4.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:26"
-                        marker="O010001M031000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:26"
+                 tagId="O010001M031000"/>
             <num>
                <t v="11.6.4.1"/>
             </num>
@@ -25964,10 +25964,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.4.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:40"
-                        marker="O002001M041000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:40"
+                 tagId="O002001M041000"/>
             <num>
                <t v="11.6.4.3"/>
             </num>
@@ -26076,16 +26076,16 @@
                <changed amendingAct="32019R0103"
                         action="inserted"
                         location="AR:1 .AND. AX:0;PT:46"
-                        marker="O004001M029000">
+                        tagId="O004001M029000">
                   <t v="Manual initialling on each page may be replaced by an electronic signature of the entire document."/>
                </changed>
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_11.6.5.6" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:27"
-                        marker="O010001M032000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:27"
+                 tagId="O010001M032000"/>
             <num>
                <t v="11.6.5.6"/>
             </num>
@@ -26129,10 +26129,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-11-A" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:41"
-                        marker="O002001M042000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:41"
+                 tagId="O002001M042000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 11-A"/>
@@ -26254,10 +26254,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32020R0111"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O006001M004000"/>
+            <tag amendingAct="32020R0111"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O006001M004000"/>
             <num>
                <t v="12.0."/>
             </num>
@@ -26270,10 +26270,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32020R0111"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O006001M004000"/>
+            <tag amendingAct="32020R0111"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O006001M004000"/>
             <num>
                <t v="12.0.1."/>
             </num>
@@ -26335,10 +26335,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32020R0111"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O006001M004000"/>
+            <tag amendingAct="32020R0111"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O006001M004000"/>
             <num>
                <t v="12.0.2."/>
             </num>
@@ -26349,10 +26349,10 @@
             </heading>
             <list kind="arabic">
                <occurrence eId="anx/pnt_12.0.2/pnt_12.0.2.1" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:28"
-                              marker="O010001M033000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:28"
+                       tagId="O010001M033000"/>
                   <num>
                      <t v="12.0.2.1."/>
                   </num>
@@ -26467,10 +26467,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_12.0.2/pnt_12.0.2.3" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:29"
-                              marker="O010001M034000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:29"
+                       tagId="O010001M034000"/>
                   <num>
                      <t v="12.0.2.3."/>
                   </num>
@@ -26531,10 +26531,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32020R0111"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O006001M004000"/>
+            <tag amendingAct="32020R0111"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O006001M004000"/>
             <num>
                <t v="12.0.3."/>
             </num>
@@ -26825,10 +26825,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32020R0111"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O006001M004000"/>
+            <tag amendingAct="32020R0111"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O006001M004000"/>
             <num>
                <t v="12.0.4."/>
             </num>
@@ -26937,10 +26937,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32020R0111"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:5"
-                        marker="O006001M004000"/>
+            <tag amendingAct="32020R0111"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:5"
+                 tagId="O006001M004000"/>
             <num>
                <t v="12.0.5."/>
             </num>
@@ -26967,10 +26967,10 @@
                   </p>
                </occurrence>
                <occurrence eId="anx/pnt_12.0.5/pnt_12.0.5.3" kind="point" numbered="true">
-                  <provenance amendingAct="32021R0255"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0;PT:30"
-                              marker="O010001M035000"/>
+                  <tag amendingAct="32021R0255"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0;PT:30"
+                       tagId="O010001M035000"/>
                   <num>
                      <t v="12.0.5.3."/>
                   </num>
@@ -27067,10 +27067,10 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32019R0103"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:48"
-                        marker="O004001M031000"/>
+            <tag amendingAct="32019R0103"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:48"
+                 tagId="O004001M031000"/>
             <occurrence eId="anx/pnt_12.1.1.8" kind="level" depth="4" numbered="true">
                <num>
                   <t v="12.1.1.8"/>
@@ -27271,10 +27271,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.3.1" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32021R0255"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:31"
-                        marker="O010001M036000"/>
+            <tag amendingAct="32021R0255"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:31"
+                 tagId="O010001M036000"/>
             <num>
                <t v="12.3.1"/>
             </num>
@@ -27402,10 +27402,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32021R0255"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:32"
-                        marker="O010001M037000"/>
+            <tag amendingAct="32021R0255"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:32"
+                 tagId="O010001M037000"/>
             <num>
                <t v="12.4.2"/>
             </num>
@@ -27779,10 +27779,10 @@
                </occurrence>
             </list>
             <p>
-               <provenance amendingAct="32019R0103"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0;PT:49"
-                           marker="O004001M032000"/>
+               <tag amendingAct="32019R0103"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0;PT:49"
+                    tagId="O004001M032000"/>
                <t v="Where CTI TIP is deployed with EDS equipment used exclusively for hold baggage screening, the requirement in point (b) shall only apply as of "/>
                <date date="2020-09-01">
                   <t v="1 September 2020"/>
@@ -27999,10 +27999,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.6.3" kind="level" depth="3" numbered="true">
-            <provenance amendingAct="32020R0910"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:7"
-                        marker="O008001M007000"/>
+            <tag amendingAct="32020R0910"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:7"
+                 tagId="O008001M007000"/>
             <num>
                <t v="12.6.3"/>
             </num>
@@ -28053,10 +28053,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.7.1.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:42"
-                        marker="O002001M043000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:42"
+                 tagId="O002001M043000"/>
             <num>
                <t v="12.7.1.2"/>
             </num>
@@ -28065,10 +28065,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.7.1.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:42"
-                        marker="O002001M043000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:42"
+                 tagId="O002001M043000"/>
             <num>
                <t v="12.7.1.3"/>
             </num>
@@ -28111,10 +28111,10 @@
             </list>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32017R0815"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:43"
-                        marker="O002001M044000"/>
+            <tag amendingAct="32017R0815"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:43"
+                 tagId="O002001M044000"/>
             <occurrence eId="anx/pnt_12.7.1.4" kind="level" depth="4" numbered="true">
                <num>
                   <t v="12.7.1.4"/>
@@ -28181,10 +28181,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.7.2.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:44"
-                        marker="O002001M045000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:44"
+                 tagId="O002001M045000"/>
             <num>
                <t v="12.7.2.2"/>
             </num>
@@ -28193,10 +28193,10 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32017R0815"
-                        action="deleted"
-                        location="AR:1 .AND. AX:0;PT:45"
-                        marker="O002001M046000"/>
+            <tag amendingAct="32017R0815"
+                 action="deleted"
+                 location="AR:1 .AND. AX:0;PT:45"
+                 tagId="O002001M046000"/>
             <occurrence eId="anx/pnt_12.7.2.3" kind="level" depth="4" numbered="true">
                <num>
                   <t v="12.7.2.3"/>
@@ -28464,10 +28464,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.9.2.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32017R0815"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:46"
-                        marker="O002001M047000"/>
+            <tag amendingAct="32017R0815"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:46"
+                 tagId="O002001M047000"/>
             <num>
                <t v="12.9.2.5"/>
             </num>
@@ -28957,10 +28957,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.11.2.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:50"
-                        marker="O004001M033000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:50"
+                 tagId="O004001M033000"/>
             <num>
                <t v="12.11.2.3"/>
             </num>
@@ -28977,10 +28977,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12"/>
             </num>
@@ -28993,10 +28993,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1"/>
             </num>
@@ -29007,10 +29007,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.1"/>
             </num>
@@ -29019,10 +29019,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.2"/>
             </num>
@@ -29031,10 +29031,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.3"/>
             </num>
@@ -29043,10 +29043,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.4"/>
             </num>
@@ -29055,10 +29055,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.5" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.5"/>
             </num>
@@ -29067,10 +29067,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.6" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.6"/>
             </num>
@@ -29079,10 +29079,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.7" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.7"/>
             </num>
@@ -29091,10 +29091,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.1.8" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.1.8"/>
             </num>
@@ -29107,10 +29107,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.2"/>
             </num>
@@ -29121,10 +29121,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.2.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.2.1"/>
             </num>
@@ -29133,10 +29133,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.2.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.2.2"/>
             </num>
@@ -29145,10 +29145,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.2.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.2.3"/>
             </num>
@@ -29157,10 +29157,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.2.4" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.2.4"/>
             </num>
@@ -29173,10 +29173,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.3"/>
             </num>
@@ -29187,10 +29187,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_12.12.3.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0;PT:51"
-                        marker="O004001M034000"/>
+            <tag amendingAct="32019R0103"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0;PT:51"
+                 tagId="O004001M034000"/>
             <num>
                <t v="12.12.3.1"/>
             </num>
@@ -29307,10 +29307,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:52"
-                        marker="O004001M035000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:52"
+                 tagId="O004001M035000"/>
             <num>
                <t v="12.14"/>
             </num>
@@ -29323,10 +29323,10 @@
                      depth="3"
                      numbered="true"
                      rank="4">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:52"
-                        marker="O004001M035000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:52"
+                 tagId="O004001M035000"/>
             <num>
                <t v="12.14.1"/>
             </num>
@@ -29337,10 +29337,10 @@
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_12.14.1.1" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:52"
-                        marker="O004001M035000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:52"
+                 tagId="O004001M035000"/>
             <num>
                <t v="12.14.1.1"/>
             </num>
@@ -29349,10 +29349,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.14.1.2" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:52"
-                        marker="O004001M035000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:52"
+                 tagId="O004001M035000"/>
             <num>
                <t v="12.14.1.2"/>
             </num>
@@ -29361,10 +29361,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/pnt_12.14.1.3" kind="level" depth="4" numbered="true">
-            <provenance amendingAct="32019R0103"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:52"
-                        marker="O004001M035000"/>
+            <tag amendingAct="32019R0103"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:52"
+                 tagId="O004001M035000"/>
             <num>
                <t v="12.14.1.3"/>
             </num>
@@ -29511,10 +29511,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-12-N" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32020R0111"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:6"
-                        marker="O006001M005000"/>
+            <tag amendingAct="32020R0111"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:6"
+                 tagId="O006001M005000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-N"/>
@@ -29525,10 +29525,10 @@
             </p>
          </occurrence>
          <occurrence eId="anx/level_ATTACHMENT-12-O" kind="level" depth="2" rank="3">
-            <provenance amendingAct="32020R0111"
-                        action="inserted"
-                        location="AR:1 .AND. AX:0;PT:7"
-                        marker="O006001M006000"/>
+            <tag amendingAct="32020R0111"
+                 action="inserted"
+                 location="AR:1 .AND. AX:0;PT:7"
+                 tagId="O006001M006000"/>
             <num>
                <emphasis kind="b">
                   <t v="ATTACHMENT 12-O"/>

@@ -22,7 +22,7 @@
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="map(*)?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="label" as="xs:string" select="f:label-after-word(TI.ART)"/>
     <!-- an article printed without a number, where the act numbers its others, is art_unnumbered-1:
          a number by position would be one an article prints -->
@@ -37,7 +37,7 @@
     <xsl:variable name="eid" as="xs:string" select="f:eid(if ($taken and $enclosing) then $enclosing else $base, 'art', $value)"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="article">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:occurrence-content">
           <xsl:with-param name="num" as="element()?" select="TI.ART"/>
           <xsl:with-param name="heading" as="element()?" select="STI.ART"/>
@@ -55,11 +55,11 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'par', (f:label(NO.PARAG)[. != ''], string(count(preceding-sibling::PARAG) + 1))[1])"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="paragraph">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:occurrence-content">
           <xsl:with-param name="num" as="element()?" select="NO.PARAG"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -104,7 +104,7 @@
     <xsl:variable name="body" as="element()*" select="* except ($num, $heading)"/>
     <xsl:choose>
       <xsl:when test="count($body) = 1 and $body/self::ALINEA">
-        <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers($body, $ctx)"/>
+        <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags($body, $ctx)"/>
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" as="node()*" select="$body/node()"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -123,12 +123,12 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="in-article" as="xs:boolean" select="exists(parent::ARTICLE)"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, if ($in-article) then 'unp' else 'sub', string(count(preceding-sibling::ALINEA) + 1))"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="{if ($in-article) then 'paragraph' else 'subparagraph'}">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:blocks">
           <xsl:with-param name="nodes" as="node()*" select="node()"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -167,7 +167,7 @@
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="division" as="map(*)?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <!-- a part, title, chapter, section or subsection, as the EU subdivision table names them in the
          document's language: prt_, tis_, cpt_, sct_, sbs_ and the number after the name; else division_ -->
@@ -184,7 +184,7 @@
     <xsl:variable name="eid" as="xs:string" select="f:eid((f:enclosing-division($division, $base), $base)[1], ($type[1] ! lower-case(.), 'division')[1], $label)"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="division">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
@@ -208,12 +208,12 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'subdivision', (f:label(TITLE/TI/NP[1]/NO.P)[. != ''], string(count(preceding-sibling::SUBDIV) + 1))[1])"/>
     <xsl:variable name="body" as="element()*" select="* except TITLE"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="subdivision">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>
@@ -221,7 +221,7 @@
         </xsl:call-template>
         <xsl:choose>
           <xsl:when test="count($body) = 1 and $body/self::ALINEA">
-            <xsl:variable name="own" as="processing-instruction()*" select="f:new-markers($body, ($ctx, f:ids($m)))"/>
+            <xsl:variable name="own" as="processing-instruction()*" select="f:new-tags($body, ($ctx, f:ids($m)))"/>
             <xsl:call-template name="f:blocks">
               <xsl:with-param name="nodes" as="node()*" select="$body/node()"/>
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m), f:ids($own))" tunnel="yes"/>

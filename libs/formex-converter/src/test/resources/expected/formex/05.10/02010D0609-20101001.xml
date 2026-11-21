@@ -143,10 +143,10 @@
             <t v="Article 2"/>
          </num>
          <occurrence eId="art_2/unp_1" kind="paragraph">
-            <provenance amendingAct="32010D0609R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M001000"/>
+            <tag amendingAct="32010D0609R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M001000"/>
             <p>
                <t v="This Decision shall enter into force on "/>
                <date date="2010-10-01">

@@ -11,7 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
@@ -36,9 +36,9 @@ import org.jspecify.annotations.Nullable;
  * difference.
  *
  * <p>The sidenote names the acts between the two versions that made the difference. The amendment
- * markers on the occurrence in the later text name these acts, or the amendments of the occurrence
- * in Cellar name them. The markers name only the last act that changed an occurrence. For a deleted
- * occurrence, the markers name one of these acts:
+ * tags on the occurrence in the later text name these acts, or the amendments of the occurrence in
+ * Cellar name them. The tags name only the last act that changed an occurrence. For a deleted
+ * occurrence, the tags name one of these acts:
  *
  * <ul>
  *   <li>the act of the deletion that keeps the occurrence struck
@@ -52,14 +52,14 @@ import org.jspecify.annotations.Nullable;
  * <p>Acts of one version leave no text between their changes. Thus:
  *
  * <ul>
- *   <li>Where the markers name an act of a version, the sidenote follows the markers. It leaves out
- *       the other acts of that version that Cellar names.
- *   <li>The acts that the markers name together changed the occurrence together, with one wording.
- *       The sidenote names them together.
- *   <li>If only Cellar names an act, the sidenote names it as if a marker did.
- *   <li>If neither the markers nor Cellar name an act between the two versions, the sidenote does
- *       not guess. If the acts between the versions are all of one version, it says that one of
- *       them made the difference, but not which. If not, it says that no act is named.
+ *   <li>Where the tags name an act of a version, the sidenote follows the tags. It leaves out the
+ *       other acts of that version that Cellar names.
+ *   <li>The acts that the tags name together changed the occurrence together, with one wording. The
+ *       sidenote names them together.
+ *   <li>If only Cellar names an act, the sidenote names it as if a tag did.
+ *   <li>If neither the tags nor Cellar name an act between the two versions, the sidenote does not
+ *       guess. If the acts between the versions are all of one version, it says that one of them
+ *       made the difference, but not which. If not, it says that no act is named.
  * </ul>
  *
  * <p>An act can have several dates. The texts do not say from which of these dates a provision
@@ -123,7 +123,7 @@ public record SidenoteView(
 
   /**
    * Returns whether only corrigenda made the difference. If so, the difference is a correction, not
-   * an amendment, and the marks show it differently.
+   * an amendment, and its edits show it differently.
    */
   public boolean corrected() {
     return !acts.isEmpty() && acts.stream().allMatch(ActIdentifier::corrigendum);
@@ -149,7 +149,7 @@ public record SidenoteView(
    * {@code act} with the version {@code to}.
    *
    * @param included the acts that each version includes ({@link Inclusions}): Cellar's lists, and
-   *     the acts that the built texts mark first
+   *     the acts that the built texts tag first
    * @param amendments the amendments of the occurrence in Cellar, by the acts between the two
    *     versions. {@code Amended.of} finds them.
    * @param only the act whose changes the comparison is limited to, if any
@@ -166,20 +166,19 @@ public record SidenoteView(
       Language language) {
     var between = included.between(from, to);
     var parts = parts(act, included, from, to, difference, between);
-    var marked =
-        acts(difference.markers(), each -> between.contains(each) || parts.containsKey(each));
+    var tagged = acts(difference.tags(), each -> between.contains(each) || parts.containsKey(each));
     var markedVersions =
-        marked.keySet().stream()
+        tagged.keySet().stream()
             .map(
                 each ->
                     Optional.ofNullable(parts.get(each))
                         .or(() -> version(included, from, to, each)))
             .flatMap(Optional::stream)
             .collect(Collectors.toSet());
-    var made = new LinkedHashMap<>(marked);
+    var made = new LinkedHashMap<>(tagged);
     for (var amendment : amendments) {
       var each = amendment.act();
-      // Leave out the act if the markers name an act of the same version. The markers take
+      // Leave out the act if the tags name an act of the same version. The tags take
       // priority.
       if (between.contains(each)
           && !made.containsKey(each)
@@ -196,7 +195,7 @@ public record SidenoteView(
             from,
             to,
             made.keySet(),
-            marked.keySet(),
+            tagged.keySet(),
             parts,
             together(difference, between));
     var dates = new ArrayList<Applies>();
@@ -307,11 +306,11 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the sidenote of {@code difference}, which no marker and no amendment in Cellar
-   * attributes, in {@code version}, the version where the change first appears. It names the
-   * version and what the version consolidates, and no act as the one that made the change. For
-   * example, "Deleted in the version of 22 March 2026, which consolidates 2026/449 and Corrigendum
-   * 1 to 2026/449". If the version consolidates no act, it names the version only.
+   * Returns the sidenote of {@code difference}, which no tag and no amendment in Cellar attributes,
+   * in {@code version}, the version where the change first appears. It names the version and what
+   * the version consolidates, and no act as the one that made the change. For example, "Deleted in
+   * the version of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449". If
+   * the version consolidates no act, it names the version only.
    */
   public static SidenoteView appeared(
       Act act, Inclusions included, Version version, Difference difference) {
@@ -388,13 +387,12 @@ public record SidenoteView(
   /**
    * Returns the acts that changed the occurrence of {@code difference} in a part that applies
    * between the two versions, by the version that takes the part in. Such an act is not between the
-   * two versions: an earlier version included it already. Its marker on the occurrence is new in
-   * this step: the earlier text does not have it. And one of its dates falls after {@code from}, up
-   * to {@code to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January 2026: the
-   * act is included from July 2024, and a part of it applies from 11 January 2026.
+   * two versions: an earlier version included it already. Its tag on the occurrence is new in this
+   * step: the earlier text does not have it. And one of its dates falls after {@code from}, up to
+   * {@code to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January 2026: the act
+   * is included from July 2024, and a part of it applies from 11 January 2026.
    *
-   * <p>A marker can also be new only because the earlier text has no markers. The date tells these
-   * apart.
+   * <p>A tag can also be new only because the earlier text has no tags. The date tells these apart.
    */
   private static Map<ActIdentifier, Version> parts(
       Act act,
@@ -403,11 +401,11 @@ public record SidenoteView(
       Version to,
       Difference difference,
       Collection<ActIdentifier> between) {
-    var earlier = difference.earlierMarkers().stream().map(Marker::act).collect(Collectors.toSet());
+    var earlier = difference.earlierTags().stream().map(Tag::act).collect(Collectors.toSet());
     var parts = new LinkedHashMap<ActIdentifier, Version>();
-    for (var marker : difference.markers()) {
-      var each = new ActIdentifier(marker.act());
-      if (between.contains(each) || earlier.contains(marker.act()) || parts.containsKey(each)) {
+    for (var tag : difference.tags()) {
+      var each = new ActIdentifier(tag.act());
+      if (between.contains(each) || earlier.contains(tag.act()) || parts.containsKey(each)) {
         continue;
       }
       partDays(act, each, from, to).stream()
@@ -434,16 +432,15 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the acts that {@code markers} name and that {@code kept} accepts, in order. Each act
-   * comes with the action of its first marker.
+   * Returns the acts that {@code tags} name and that {@code kept} accepts, in order. Each act comes
+   * with the action of its first tag.
    */
-  private static Map<ActIdentifier, String> acts(
-      List<Marker> markers, Predicate<ActIdentifier> kept) {
+  private static Map<ActIdentifier, String> acts(List<Tag> tags, Predicate<ActIdentifier> kept) {
     var acts = new LinkedHashMap<ActIdentifier, String>();
-    for (var marker : markers) {
-      var act = new ActIdentifier(marker.act());
+    for (var tag : tags) {
+      var act = new ActIdentifier(tag.act());
       if (kept.test(act)) {
-        acts.putIfAbsent(act, marker.action());
+        acts.putIfAbsent(act, tag.action());
       }
     }
     return acts;
@@ -459,7 +456,7 @@ public record SidenoteView(
       Version from,
       Version to,
       Collection<ActIdentifier> acts,
-      Collection<ActIdentifier> marked,
+      Collection<ActIdentifier> tagged,
       Map<ActIdentifier, Version> parts,
       List<Set<ActIdentifier>> together) {
     var between =
@@ -470,20 +467,20 @@ public record SidenoteView(
     // in several versions.
     var at = new HashMap<ActIdentifier, Version>();
     for (var each : acts) {
-      if (!marked.contains(each)) {
+      if (!tagged.contains(each)) {
         between.stream()
             .filter(v -> included.includes(v, each))
             .findFirst()
             .ifPresent(version -> at.put(each, version));
       }
     }
-    // An act that the markers name was the last act to change the occurrence. Thus it is in no
+    // An act that the tags name was the last act to change the occurrence. Thus it is in no
     // version
     // before the versions of the other acts. If it changed the occurrence together with other acts,
     // it is
     // in the first version that has all of them.
     var floor = at.values().stream().map(Version::date).max(Comparator.naturalOrder()).orElse(null);
-    for (var each : marked) {
+    for (var each : tagged) {
       var part = parts.get(each);
       if (part != null) {
         at.put(each, part);
@@ -525,19 +522,19 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the acts between the two versions that replaced the occurrence together, by its
-   * markers. Two acts that replaced the same occurrence as a whole did so at the same time. The
-   * occurrence can be the occurrence itself or the occurrence it is in. If one act replaced the
-   * occurrence after the other, only its own marker would be there. Each set has two or more acts.
+   * Returns the acts between the two versions that replaced the occurrence together, by its tags.
+   * Two acts that replaced the same occurrence as a whole did so at the same time. The occurrence
+   * can be the occurrence itself or the occurrence it is in. If one act replaced the occurrence
+   * after the other, only its own tag would be there. Each set has two or more acts.
    */
   private static List<Set<ActIdentifier>> together(
       Difference difference, Collection<ActIdentifier> between) {
     var byOccurrence = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();
-    for (var marker : difference.markers()) {
-      var each = new ActIdentifier(marker.act());
-      if (marker.action().equals("replaced") && between.contains(each)) {
+    for (var tag : difference.tags()) {
+      var each = new ActIdentifier(tag.act());
+      if (tag.action().equals("replaced") && between.contains(each)) {
         byOccurrence
-            .computeIfAbsent(Optional.ofNullable(marker.in()), in -> new LinkedHashSet<>())
+            .computeIfAbsent(Optional.ofNullable(tag.in()), in -> new LinkedHashSet<>())
             .add(each);
       }
     }
@@ -545,7 +542,7 @@ public record SidenoteView(
   }
 
   /**
-   * Returns what the role of an amendment did, as the action of a marker says it: "replaced",
+   * Returns what the role of an amendment did, as the action of a tag says it: "replaced",
    * "inserted", "amended" or "deleted".
    */
   private static String action(Amendment.Role role) {
@@ -735,19 +732,19 @@ public record SidenoteView(
    * beside the provision.
    *
    * <p>The history names the act that the versions of {@code act} integrated last, among the acts
-   * that the amendment markers in {@code to} name. The markers are those of the provision, or those
-   * of the occurrence that an act put in its form as a whole. {@link Marker} has them. Corrigenda
-   * are left out. The history says what the act did and when it applies.
+   * that the tags in {@code to} name. The tags are those of the provision, or those of the
+   * occurrence that an act put in its form as a whole. {@link Tag} has them. Corrigenda are left
+   * out. The history says what the act did and when it applies.
    *
    * <p>If no act changed the provision, the history says "As in the original act". It then applies
    * from the dates of the act, or else from the first version of the act.
    */
   public static History history(
-      Act act, Inclusions included, Version to, List<Marker> markers, Language language) {
-    @Nullable Marker last = null;
+      Act act, Inclusions included, Version to, List<Tag> tags, Language language) {
+    @Nullable Tag last = null;
     @Nullable LocalDate integrated = null;
-    for (var marker : markers) {
-      var each = new ActIdentifier(marker.act());
+    for (var tag : tags) {
+      var each = new ActIdentifier(tag.act());
       if (each.corrigendum()) {
         continue;
       }
@@ -758,7 +755,7 @@ public record SidenoteView(
               .map(Version::date)
               .min(LocalDate::compareTo);
       if (on.isPresent() && (integrated == null || on.get().isAfter(integrated))) {
-        last = marker;
+        last = tag;
         integrated = on.get();
       }
     }

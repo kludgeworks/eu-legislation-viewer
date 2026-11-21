@@ -518,9 +518,9 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Returns its marked occurrence as shown, in the list that it is an item of in the text. Read
-     * lays it out in the same way, with its number hanging beside its text. Returns the occurrence
-     * alone if it is in no list.
+     * Returns its occurrence with its edits, as shown, in the list that it is an item of in the
+     * text. Read lays it out in the same way, with its number hanging beside its text. Returns the
+     * occurrence alone if it is in no list.
      */
     public Element occurrence() {
       var list = difference.list();
@@ -531,9 +531,9 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Returns its marked occurrence as shown, as {@link #occurrence} does, with the runs of rows in
-     * its tables that are the same in both texts folded ({@link RowFoldLinks}). The folds load
-     * their rows from {@link #part}.
+     * Returns its occurrence with its edits, as shown, as {@link #occurrence} does, with the runs
+     * of rows in its tables that are the same in both texts folded ({@link RowFoldLinks}). The
+     * folds load their rows from {@link #part}.
      */
     public Element folded(ComparePage page) {
       return RowFoldLinks.of(occurrence(), part(page));

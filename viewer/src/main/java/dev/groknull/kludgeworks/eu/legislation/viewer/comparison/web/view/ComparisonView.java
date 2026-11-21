@@ -13,7 +13,7 @@ import org.jspecify.annotations.Nullable;
 public enum ComparisonView {
   /** Only the provisions that differ, with the opening of the occurrence each is in. */
   CHANGES("changes", "Changes"),
-  /** Every provision of the later text. The provisions that differ are marked in place. */
+  /** Every provision of the later text. The provisions that differ show their edits in place. */
   WHOLE("whole", "Whole text"),
   /** The two texts side by side, aligned by provision. */
   SYNOPSIS("synopsis", "Synopsis");

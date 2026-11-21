@@ -1030,16 +1030,16 @@
                         <changed amendingAct="32005L0068"
                                  action="replaced"
                                  location="AR:60;PT:1"
-                                 marker="O003001M001000">
+                                 tagId="O003001M001000">
                            <t v=";"/>
                         </changed>
                      </p>
                   </occurrence>
                   <occurrence eId="art_1/par_1/pnt_s" kind="point" numbered="true">
-                     <provenance amendingAct="32005L0068"
-                                 action="inserted"
-                                 location="AR:60;PT:1"
-                                 marker="O003001M002000"/>
+                     <tag amendingAct="32005L0068"
+                          action="inserted"
+                          location="AR:60;PT:1"
+                          tagId="O003001M002000"/>
                      <num>
                         <t v="(s)"/>
                      </num>
@@ -1443,10 +1443,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_2" kind="indent">
-                           <provenance amendingAct="32006L0101"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PT:3;PT:a"
-                                       marker="O004001M001000"/>
+                           <tag amendingAct="32006L0101"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PT:3;PT:a"
+                                tagId="O004001M001000"/>
                            <p>
                               <t v="in the case of Bulgaria: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1460,10 +1460,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_3" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M002000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M002000"/>
                            <p>
                               <t v="in the case of the Czech Republic: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1511,10 +1511,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_6" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M003000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M003000"/>
                            <p>
                               <t v="in the case of the Republic of Estonia: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1582,10 +1582,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_10" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M004000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M004000"/>
                            <p>
                               <t v="in the case of the Republic of Cyprus: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1595,10 +1595,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_11" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M004000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M004000"/>
                            <p>
                               <t v="in the case of the Republic of the Latvia: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1612,10 +1612,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_12" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M004000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M004000"/>
                            <p>
                               <t v="in the case of the Republic of Lithuania: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1650,10 +1650,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_14" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M005000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M005000"/>
                            <p>
                               <t v="in the case of the Republic of Hungary: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1675,10 +1675,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_15" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M005000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M005000"/>
                            <p>
                               <t v="in the case of the Republic of Malta: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1773,10 +1773,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_21" kind="indent">
-                           <provenance amendingAct="32006L0101"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PT:3;PT:a"
-                                       marker="O004001M002000"/>
+                           <tag amendingAct="32006L0101"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PT:3;PT:a"
+                                tagId="O004001M002000"/>
                            <p>
                               <t v="in the case of Romania: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1790,10 +1790,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_22" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M006000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M006000"/>
                            <p>
                               <t v="in the case of the Republic of Poland: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1820,10 +1820,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_24" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M007000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M007000"/>
                            <p>
                               <t v="in the case of the Republic of Slovenia: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -1837,10 +1837,10 @@
                            </p>
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_25" kind="indent">
-                           <provenance amendingAct="32004L0066"
-                                       action="inserted"
-                                       location="AR:1 .AND. AX:0;PR:II;PT:a"
-                                       marker="O001001M007000"/>
+                           <tag amendingAct="32004L0066"
+                                action="inserted"
+                                location="AR:1 .AND. AX:0;PR:II;PT:a"
+                                tagId="O001001M007000"/>
                            <p>
                               <t v="in the case of the Slovak Republic: "/>
                               <quote startQuote="‘" endQuote="’">
@@ -2122,10 +2122,10 @@
             </occurrence>
          </occurrence>
          <occurrence eId="art_9a" kind="article" rank="2">
-            <provenance amendingAct="32005L0068"
-                        action="inserted"
-                        location="AR:60;PT:2"
-                        marker="O003001M003000"/>
+            <tag amendingAct="32005L0068"
+                 action="inserted"
+                 location="AR:60;PT:2"
+                 tagId="O003001M003000"/>
             <num>
                <t v="Article 9a"/>
             </num>
@@ -2249,10 +2249,10 @@
                      </p>
                   </occurrence>
                   <occurrence eId="art_10/par_2/sub_2" kind="subparagraph">
-                     <provenance amendingAct="32005L0068"
-                                 action="inserted"
-                                 location="AR:60;PT:3"
-                                 marker="O003001M004000"/>
+                     <tag amendingAct="32005L0068"
+                          action="inserted"
+                          location="AR:60;PT:3"
+                          tagId="O003001M004000"/>
                      <p>
                         <t v="The home Member State of the insurance undertaking shall not refuse a reinsurance contract concluded by the insurance undertaking with a reinsurance undertaking authorised in accordance with Directive 2005/68/EC or an insurance undertaking authorised in accordance with Directive 73/239/EEC or this Directive on grounds directly related to the financial soundness of the reinsurance undertaking or the insurance undertaking."/>
                      </p>
@@ -2453,10 +2453,10 @@
                   </occurrence>
                </occurrence>
                <occurrence eId="art_15/par_1a" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="inserted"
-                              location="AR:60;PT:4"
-                              marker="O003001M005000"/>
+                  <tag amendingAct="32005L0068"
+                       action="inserted"
+                       location="AR:60;PT:4"
+                       tagId="O003001M005000"/>
                   <num>
                      <t v="1a."/>
                   </num>
@@ -2549,10 +2549,10 @@
                   </occurrence>
                </occurrence>
                <occurrence eId="art_16/par_4" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="replaced"
-                              location="AR:60;PT:5;PT:a"
-                              marker="O003001M006000"/>
+                  <tag amendingAct="32005L0068"
+                       action="replaced"
+                       location="AR:60;PT:5;PT:a"
+                       tagId="O003001M006000"/>
                   <num>
                      <t v="4."/>
                   </num>
@@ -2583,10 +2583,10 @@
                   </list>
                </occurrence>
                <occurrence eId="art_16/par_5" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="replaced"
-                              location="AR:60;PT:5;PT:a"
-                              marker="O003001M006000"/>
+                  <tag amendingAct="32005L0068"
+                       action="replaced"
+                       location="AR:60;PT:5;PT:a"
+                       tagId="O003001M006000"/>
                   <num>
                      <t v="5."/>
                   </num>
@@ -2615,10 +2615,10 @@
                   </p>
                </occurrence>
                <occurrence eId="art_16/par_6" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="replaced"
-                              location="AR:60;PT:5;PT:a"
-                              marker="O003001M006000"/>
+                  <tag amendingAct="32005L0068"
+                       action="replaced"
+                       location="AR:60;PT:5;PT:a"
+                       tagId="O003001M006000"/>
                   <num>
                      <t v="6."/>
                   </num>
@@ -2729,10 +2729,10 @@
                   </occurrence>
                </occurrence>
                <occurrence eId="art_16/par_8" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="replaced"
-                              location="AR:60;PT:5;PT:b"
-                              marker="O003001M007000"/>
+                  <tag amendingAct="32005L0068"
+                       action="replaced"
+                       location="AR:60;PT:5;PT:b"
+                       tagId="O003001M007000"/>
                   <num>
                      <t v="8."/>
                   </num>
@@ -2901,10 +2901,10 @@
                         </p>
                      </occurrence>
                      <occurrence eId="art_18/par_3/idt_3" kind="indent">
-                        <provenance amendingAct="32004L0066"
-                                    action="replaced"
-                                    location="AR:1 .AND. AX:0;PR:II;PT:b"
-                                    marker="O001001M008000"/>
+                        <tag amendingAct="32004L0066"
+                             action="replaced"
+                             location="AR:1 .AND. AX:0;PR:II;PT:b"
+                             tagId="O001001M008000"/>
                         <p>
                            <date date="1995-01-01">
                               <t v="1 January 1995"/>
@@ -2913,10 +2913,10 @@
                         </p>
                      </occurrence>
                      <occurrence eId="art_18/par_3/idt_4" kind="indent">
-                        <provenance amendingAct="32006L0101"
-                                    action="replaced"
-                                    location="AR:1 .AND. AX:0;PT:3;PT:b"
-                                    marker="O004001M003000"/>
+                        <tag amendingAct="32006L0101"
+                             action="replaced"
+                             location="AR:1 .AND. AX:0;PT:3;PT:b"
+                             tagId="O004001M003000"/>
                         <p>
                            <date date="2004-05-01">
                               <t v="1 May 2004"/>
@@ -2925,10 +2925,10 @@
                         </p>
                      </occurrence>
                      <occurrence eId="art_18/par_3/idt_5" kind="indent">
-                        <provenance amendingAct="32006L0101"
-                                    action="inserted"
-                                    location="AR:1 .AND. AX:0;PT:3;PT:c"
-                                    marker="O004001M004000"/>
+                        <tag amendingAct="32006L0101"
+                             action="inserted"
+                             location="AR:1 .AND. AX:0;PT:3;PT:c"
+                             tagId="O004001M004000"/>
                         <p>
                            <date date="2007-01-01">
                               <t v="1 January 2007"/>
@@ -3320,10 +3320,10 @@
                   </p>
                </occurrence>
                <occurrence eId="art_20/par_4" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="replaced"
-                              location="AR:60;PT:6"
-                              marker="O003001M008000"/>
+                  <tag amendingAct="32005L0068"
+                       action="replaced"
+                       location="AR:60;PT:6"
+                       tagId="O003001M008000"/>
                   <num>
                      <t v="4."/>
                   </num>
@@ -3442,10 +3442,10 @@
                         </p>
                         <list kind="alpha">
                            <occurrence eId="art_23/par_1/pnt_B/pnt_f" kind="point" numbered="true">
-                              <provenance amendingAct="32005L0068"
-                                          action="replaced"
-                                          location="AR:60;PT:7;PT:a"
-                                          marker="O003001M009000"/>
+                              <tag amendingAct="32005L0068"
+                                   action="replaced"
+                                   location="AR:60;PT:7;PT:a"
+                                   tagId="O003001M009000"/>
                               <num>
                                  <t v="(f)"/>
                               </num>
@@ -3566,15 +3566,15 @@
                      <changed amendingAct="32005L0068"
                               action="replaced"
                               location="AR:60;PT:7;PT:b"
-                              marker="O003001M010000">
+                              tagId="O003001M010000">
                         <t v="3."/>
                      </changed>
                   </num>
                   <occurrence eId="art_23/par_3/sub_1" kind="subparagraph">
-                     <provenance amendingAct="32005L0068"
-                                 action="replaced"
-                                 location="AR:60;PT:7;PT:b"
-                                 marker="O003001M010000"/>
+                     <tag amendingAct="32005L0068"
+                          action="replaced"
+                          location="AR:60;PT:7;PT:b"
+                          tagId="O003001M010000"/>
                      <p>
                         <t v="The inclusion of any asset or category of assets listed in paragraph 1 shall not mean that all these assets should automatically be accepted as cover for technical provisions. The home Member State shall lay down more detailed rules setting the conditions for the use of acceptable assets."/>
                      </p>
@@ -4000,10 +4000,10 @@
                      </p>
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_3" kind="subparagraph">
-                     <provenance amendingAct="32005L0068"
-                                 action="inserted"
-                                 location="AR:60;PT:8"
-                                 marker="O003001M011000"/>
+                     <tag amendingAct="32005L0068"
+                          action="inserted"
+                          location="AR:60;PT:8"
+                          tagId="O003001M011000"/>
                      <p>
                         <t v="The available solvency margin shall also be reduced by the following items:"/>
                      </p>
@@ -4095,19 +4095,19 @@
                      </list>
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_4" kind="subparagraph">
-                     <provenance amendingAct="32005L0068"
-                                 action="inserted"
-                                 location="AR:60;PT:8"
-                                 marker="O003001M011000"/>
+                     <tag amendingAct="32005L0068"
+                          action="inserted"
+                          location="AR:60;PT:8"
+                          tagId="O003001M011000"/>
                      <p>
                         <t v="Where shares in another credit institution, investment firm, financial institution, insurance or reinsurance undertaking or insurance holding company are held temporarily for the purposes of a financial assistance operation designed to reorganise and save that entity, the competent authority may waive the provisions on deduction referred to in points (a) and (b) of the third subparagraph."/>
                      </p>
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_5" kind="subparagraph">
-                     <provenance amendingAct="32005L0068"
-                                 action="inserted"
-                                 location="AR:60;PT:8"
-                                 marker="O003001M011000"/>
+                     <tag amendingAct="32005L0068"
+                          action="inserted"
+                          location="AR:60;PT:8"
+                          tagId="O003001M011000"/>
                      <p>
                         <t v="As an alternative to the deduction of the items referred to in (a) and (b) of the third subparagraph which the insurance undertaking holds in credit institutions, investment firms and financial institutions, Member States may allow their insurance undertakings to apply "/>
                         <emphasis kind="i">
@@ -4123,10 +4123,10 @@
                      </p>
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_6" kind="subparagraph">
-                     <provenance amendingAct="32005L0068"
-                                 action="inserted"
-                                 location="AR:60;PT:8"
-                                 marker="O003001M011000"/>
+                     <tag amendingAct="32005L0068"
+                          action="inserted"
+                          location="AR:60;PT:8"
+                          tagId="O003001M011000"/>
                      <p>
                         <t v="Member States may provide that, for the calculation of the solvency margin as provided for by this Directive, insurance undertakings subject to supplementary supervision in accordance with Directive 98/78/EC or to supplementary supervision in accordance with Directive 2002/87/EC, need not deduct the items referred to in (a) and (b) of the third subparagraph of this Article which are held in credit institutions, investment firms, financial institutions, insurance or reinsurance undertakings or insurance holding companies which are included in the supplementary supervision. For the purposes of the deduction of participations referred to in this paragraph, participation shall mean a participation within the meaning of Article 1(f) of Directive 98/78/EC."/>
                      </p>
@@ -4345,10 +4345,10 @@
                   </p>
                   <list kind="alpha">
                      <occurrence eId="art_28/par_2/pnt_a" kind="point" numbered="true">
-                        <provenance amendingAct="32005L0068"
-                                    action="replaced"
-                                    location="AR:60;PT:9;PT:a"
-                                    marker="O003001M012000"/>
+                        <tag amendingAct="32005L0068"
+                             action="replaced"
+                             location="AR:60;PT:9;PT:a"
+                             tagId="O003001M012000"/>
                         <num>
                            <t v="(a)"/>
                         </num>
@@ -4364,23 +4364,23 @@
                            <changed amendingAct="32005L0068"
                                     action="replaced"
                                     location="AR:60;PT:9;PT:b"
-                                    marker="O003001M013000">
+                                    tagId="O003001M013000">
                               <t v="(b)"/>
                            </changed>
                         </num>
                         <p>
-                           <provenance amendingAct="32005L0068"
-                                       action="replaced"
-                                       location="AR:60;PT:9;PT:b"
-                                       marker="O003001M013000"/>
+                           <tag amendingAct="32005L0068"
+                                action="replaced"
+                                location="AR:60;PT:9;PT:b"
+                                tagId="O003001M013000"/>
                            <t v="second result:"/>
                         </p>
                         <list kind="none">
                            <occurrence eId="art_28/par_2/pnt_b/idt_1" kind="indent">
-                              <provenance amendingAct="32005L0068"
-                                          action="replaced"
-                                          location="AR:60;PT:9;PT:b"
-                                          marker="O003001M013000"/>
+                              <tag amendingAct="32005L0068"
+                                   action="replaced"
+                                   location="AR:60;PT:9;PT:b"
+                                   tagId="O003001M013000"/>
                               <p>
                                  <t v="for policies on which the capital at risk is not a negative figure, a "/>
                                  <t v="0,3"/>
@@ -4490,10 +4490,10 @@
                </occurrence>
             </occurrence>
             <occurrence eId="art_28a" kind="article" rank="3">
-               <provenance amendingAct="32005L0068"
-                           action="inserted"
-                           location="AR:60;PT:10"
-                           marker="O003001M014000"/>
+               <tag amendingAct="32005L0068"
+                    action="inserted"
+                    location="AR:60;PT:10"
+                    tagId="O003001M014000"/>
                <num>
                   <t v="Article 28a"/>
                </num>
@@ -4904,10 +4904,10 @@
                   </occurrence>
                </occurrence>
                <occurrence eId="art_37/par_4" kind="paragraph">
-                  <provenance amendingAct="32005L0068"
-                              action="replaced"
-                              location="AR:60;PT:11"
-                              marker="O003001M015000"/>
+                  <tag amendingAct="32005L0068"
+                       action="replaced"
+                       location="AR:60;PT:11"
+                       tagId="O003001M015000"/>
                   <num>
                      <t v="4."/>
                   </num>
@@ -5419,7 +5419,7 @@
                   <changed amendingAct="32005L0001"
                            action="replaced"
                            location="AR:8;PT:1"
-                           marker="O002001M001000">
+                           tagId="O002001M001000">
                      <t v="the Commission shall inform the European Insurance and Occupational Pensions Committee of"/>
                   </changed>
                   <t v=" cases in which, in each Member State, authorisation has been refused pursuant to Articles 40 or 42 or measures have been taken under paragraph 4 of this Article. Member States shall cooperate with the Commission by providing it with the information required for that report."/>
@@ -5968,10 +5968,10 @@
             <t v="RULES APPLICABLE TO SUBSIDIARIES OF PARENT UNDERTAKINGS GOVERNED BY THE LAWS OF A THIRD COUNTRY AND TO THE ACQUISITIONS OF HOLDINGS BY SUCH PARENT UNDERTAKINGS"/>
          </subheading>
          <occurrence eId="art_58" kind="article" rank="2">
-            <provenance amendingAct="32005L0001"
-                        action="replaced"
-                        location="AR:8;PT:2"
-                        marker="O002001M002000"/>
+            <tag amendingAct="32005L0001"
+                 action="replaced"
+                 location="AR:8;PT:2"
+                 tagId="O002001M002000"/>
             <num>
                <t v="Article 58"/>
             </num>
@@ -6332,10 +6332,10 @@
                <t v="Committee procedure"/>
             </heading>
             <occurrence eId="art_65/par_1" kind="paragraph">
-               <provenance amendingAct="32005L0001"
-                           action="replaced"
-                           location="AR:8;PT:3"
-                           marker="O002001M003000"/>
+               <tag amendingAct="32005L0001"
+                    action="replaced"
+                    location="AR:8;PT:3"
+                    tagId="O002001M003000"/>
                <num>
                   <t v="1."/>
                </num>

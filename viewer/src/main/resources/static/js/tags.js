@@ -1,18 +1,18 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 /**
- * @file The amendment marks of the text of a version on the Read page, legal/provenance.jte.
+ * @file The tags of the text of a version on the Read page, legal/tag.jte.
  *
- * The hover text of each `<amendment-mark>` says what happened, which act did it and when that act
+ * The hover text of each `<text-tag>` says what happened, which act did it and when that act
  * applies: "Replaced by 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449". A click
- * on a mark, or Enter, opens the history of the provision of the mark, under the provision: the
+ * on a tag, or Enter, opens the history of the provision of the tag, under the provision: the
  * acts that changed it. A second click closes it.
  *
  * The text is rendered without the act, so the page lists what it knows of each amending act in
- * `.marks`: a `span` with `data-act` and `data-applies`. `<provision-links>` has the address of
+ * `.tags`: a `span` with `data-act` and `data-applies`. `<provision-links>` has the address of
  * the histories (`data-href`), and lists the provisions that have a history (`data-occurrence`). A
- * listed provision that has no mark of its own gets a hollow sign, ▽, in the place of the mark. It
- * opens the history as a mark does.
+ * listed provision that has no tag of its own gets a hollow sign, ▽, in the place of the tag. It
+ * opens the history as a tag does.
  */
 
 /**
@@ -33,17 +33,17 @@ export const number = (celex) => {
 };
 
 /**
- * Returns what the page lists of the act of a mark, or null if it lists nothing.
+ * Returns what the page lists of the act of a tag, or null if it lists nothing.
  *
- * @param {HTMLElement} mark
+ * @param {HTMLElement} tag
  * @returns {HTMLElement | null}
  */
-const listed = (mark) => {
-  const act = mark.dataset.act;
+const listed = (tag) => {
+  const act = tag.dataset.act;
   if (!act) {
     return null;
   }
-  for (const each of document.querySelectorAll(".marks [data-act]")) {
+  for (const each of document.querySelectorAll(".tags [data-act]")) {
     if (each instanceof HTMLElement && each.dataset.act === act) {
       return each;
     }
@@ -52,27 +52,27 @@ const listed = (mark) => {
 };
 
 /**
- * Returns the hover text of a mark. For example, "Replaced by 2026/449 · applies from 1 October
- * 2026 · Article 2 of 2026/449". A mark with no `data-action` says "Amended". Without the date, it
+ * Returns the hover text of a tag. For example, "Replaced by 2026/449 · applies from 1 October
+ * 2026 · Article 2 of 2026/449". A tag with no `data-action` says "Amended". Without the date, it
  * says only what happened and which act did it.
  *
- * @param {HTMLElement} mark
+ * @param {HTMLElement} tag
  * @returns {string}
  */
-export const said = (mark) => {
-  const action = mark.dataset.action || "amended";
-  const applies = listed(mark)?.dataset.applies;
-  return `${action.charAt(0).toUpperCase()}${action.slice(1)} by ${number(mark.dataset.act)}${applies ? ` · ${applies}` : ""}`;
+export const said = (tag) => {
+  const action = tag.dataset.action || "amended";
+  const applies = listed(tag)?.dataset.applies;
+  return `${action.charAt(0).toUpperCase()}${action.slice(1)} by ${number(tag.dataset.act)}${applies ? ` · ${applies}` : ""}`;
 };
 
 /**
- * Returns the occurrence of the text that `mark` is on: the nearest element with an id that holds it.
+ * Returns the occurrence of the text that `tag` is on: the nearest element with an id that holds it.
  *
- * @param {Element} mark
+ * @param {Element} tag
  * @returns {HTMLElement | null}
  */
-export const occurrenceOf = (mark) => {
-  const occurrence = mark.parentElement?.closest("[id]");
+export const occurrenceOf = (tag) => {
+  const occurrence = tag.parentElement?.closest("[id]");
   return occurrence instanceof HTMLElement ? occurrence : null;
 };
 
@@ -125,7 +125,7 @@ const place = (occurrence, box) => {
 /**
  * Opens the history of the provision that is `occurrence` below it, or closes it if it is open. A
  * history that is below the window comes into view. `from`
- * is the mark or the link that the reader used. It says if the history is open (`aria-expanded`).
+ * is the tag or the link that the reader used. It says if the history is open (`aria-expanded`).
  *
  * @param {HTMLElement} occurrence
  * @param {HTMLElement} from
@@ -168,12 +168,12 @@ export const toggle = async (occurrence, from) => {
 };
 
 /**
- * Custom element for an amendment mark in the margin of a legal text.
+ * Custom element for a tag in the margin of a legal text.
  *
- * When connected, it sets its hover text if it has an amending act. Clicking the mark or pressing
+ * When connected, it sets its hover text if it has an amending act. Clicking the tag or pressing
  * Enter opens the history of its provision.
  */
-export class AmendmentMark extends HTMLElement {
+export class TextTag extends HTMLElement {
   connectedCallback() {
     if (this.dataset.act && this.closest(".content")) {
       this.title = said(this);
@@ -202,7 +202,7 @@ export class AmendmentMark extends HTMLElement {
   };
 
   /**
-   * Opens the history of the provision of this mark, or closes it.
+   * Opens the history of the provision of this tag, or closes it.
    */
   open() {
     const occurrence = occurrenceOf(this);
@@ -213,7 +213,7 @@ export class AmendmentMark extends HTMLElement {
 }
 
 /**
- * Gives each provision that `links` lists the sign ▽, if it is in `content` and has no mark of
+ * Gives each provision that `links` lists the sign ▽, if it is in `content` and has no tag of
  * its own. The sign is a button that opens the history of the provision. It does nothing if the text is not there yet, or has its links already.
  *
  * @param {HTMLElement} links
@@ -231,10 +231,10 @@ export const link = (links, content) => {
     if (!occurrence || !content.contains(occurrence)) {
       continue;
     }
-    const marked = [...occurrence.querySelectorAll("amendment-mark")].some(
-      (mark) => occurrenceOf(mark) === occurrence,
+    const tagged = [...occurrence.querySelectorAll("text-tag")].some(
+      (tag) => occurrenceOf(tag) === occurrence,
     );
-    if (marked) {
+    if (tagged) {
       continue;
     }
     const made = content.ownerDocument.createElement("button");
@@ -279,8 +279,8 @@ export class ProvisionLinks extends HTMLElement {
   }
 }
 
-if (!customElements.get("amendment-mark")) {
-  customElements.define("amendment-mark", AmendmentMark);
+if (!customElements.get("text-tag")) {
+  customElements.define("text-tag", TextTag);
 }
 
 if (!customElements.get("provision-links")) {

@@ -250,10 +250,10 @@ public record Act(
 
   /**
    * Returns the acts that the versions of this act in {@code language} include: Cellar's lists, and
-   * the acts that their texts mark first ({@link Inclusions}). {@code texts} are the marks of the
+   * the acts that their texts tag first ({@link Inclusions}). {@code texts} are the tags of the
    * texts in {@code language} that are built.
    */
-  public Inclusions inclusions(Language language, Map<Version, TextMarks> texts) {
+  public Inclusions inclusions(Language language, Map<Version, TextTags> texts) {
     return Inclusions.of(timeline(language).orElse(timeline), texts);
   }
 
@@ -272,7 +272,7 @@ public record Act(
    * #divergences(Language, Map)} finds it.
    */
   public List<Divergence> divergences(
-      LocalDate day, Language language, Map<Version, TextMarks> texts) {
+      LocalDate day, Language language, Map<Version, TextTags> texts) {
     return divergences(language, texts).stream().filter(each -> each.on(day)).toList();
   }
 
@@ -290,12 +290,12 @@ public record Act(
    *       2017/2226 that apply later.
    * </ul>
    *
-   * <p>{@code texts} gives the marks of the texts in {@code language} that are built. They tell
+   * <p>{@code texts} gives the tags of the texts in {@code language} that are built. They tell
    * which version first includes each provision. {@link Divergences} tells how. An amending act
    * that does not change the text in {@code language} makes no text late. For example, 2017/837
    * corrects only the Swedish and the Polish text of 2015/1998.
    */
-  public List<Divergence> divergences(Language language, Map<Version, TextMarks> texts) {
+  public List<Divergence> divergences(Language language, Map<Version, TextTags> texts) {
     return Divergences.of(this, language, texts);
   }
 
@@ -317,10 +317,10 @@ public record Act(
    *
    * <p>Returns empty before the first version of the act.
    *
-   * @param texts the marks of the texts in {@code language} that are built, as {@link
+   * @param texts the tags of the texts in {@code language} that are built, as {@link
    *     #divergences(Language, Map)} takes them
    */
-  public Optional<Version> textOn(LocalDate day, Language language, Map<Version, TextMarks> texts) {
+  public Optional<Version> textOn(LocalDate day, Language language, Map<Version, TextTags> texts) {
     var applies = timeline(language).flatMap(each -> each.applicableOn(day));
     if (applies.isEmpty()) {
       return applies;
@@ -342,11 +342,11 @@ public record Act(
    *
    * <p>Empty if the text of {@code version} is not built.
    *
-   * @param texts the marks of the texts in {@code language} that are built, as {@link
+   * @param texts the tags of the texts in {@code language} that are built, as {@link
    *     #divergences(Language, Map)} takes them
    */
   public Pending pending(
-      Version version, LocalDate day, Language language, Map<Version, TextMarks> texts) {
+      Version version, LocalDate day, Language language, Map<Version, TextTags> texts) {
     var byOccurrence = new LinkedHashMap<String, ActIdentifier>();
     var text = texts.get(version);
     if (text != null) {
@@ -524,11 +524,11 @@ public record Act(
    *
    * <p>Returns empty if one of the days is before the first version of the act.
    *
-   * @param texts the marks of the texts in {@code language} that are built, as {@link #textOn}
-   *     takes them
+   * @param texts the tags of the texts in {@code language} that are built, as {@link #textOn} takes
+   *     them
    */
   public Optional<List<ActIdentifier>> amendingActsBetween(
-      LocalDate from, LocalDate to, Language language, Map<Version, TextMarks> texts) {
+      LocalDate from, LocalDate to, Language language, Map<Version, TextTags> texts) {
     var earlier = textOn(from, language, texts);
     var later = textOn(to, language, texts);
     if (earlier.isEmpty() || later.isEmpty()) {
@@ -591,8 +591,8 @@ public record Act(
 
   /**
    * Returns the other acts that the first version with {@code amending} integrates, in {@code
-   * language}, without corrigenda. The text marks most changes with the act that made them. For a
-   * change with no mark, the data does not say which of these acts or {@code amending} made it.
+   * language}, without corrigenda. The text tags most changes with the act that made them. For a
+   * change with no tag, the data does not say which of these acts or {@code amending} made it.
    * Returns empty if no version integrates {@code amending}, or if it is the only act of its
    * version.
    */
@@ -657,7 +657,7 @@ public record Act(
 
   /**
    * Returns the history of the provision that is the occurrence {@code occurrence} of a text: the
-   * acts that changed it. {@code text} are the marks of the text.
+   * acts that changed it. {@code text} are the tags of the text.
    *
    * <ul>
    *   <li>A change at the occurrence is a change of the provision. So is a change at a part of it
@@ -666,13 +666,13 @@ public record Act(
    *       example, an act that replaces Article 6 changes Article 6(2).
    *   <li>A change at an occurrence in the provision is not in its history. That occurrence has its
    *       own history.
-   *   <li>An act that the text marks the occurrence with changed the provision, also if Cellar
+   *   <li>An act that the text tags the occurrence with changed the provision, also if Cellar
    *       annotates no change of it there.
    * </ul>
    *
    * <p>The newest act is first: the act with the latest first day, {@link #firstDay}.
    */
-  public ProvisionHistory historyOf(String occurrence, TextMarks text, Language language) {
+  public ProvisionHistory historyOf(String occurrence, TextTags text, Language language) {
     Comparator<ActIdentifier> newest =
         Comparator.comparing(
                 (ActIdentifier each) -> firstDay(each, language).orElse(null),
@@ -698,28 +698,28 @@ public record Act(
             .sorted(Comparator.comparing(Amendment::act, newest))
             .toList();
     var named = changes.stream().map(Amendment::act).collect(Collectors.toSet());
-    var marking =
+    var tagging =
         text.byAct().entrySet().stream()
             .filter(each -> each.getValue().contains(occurrence))
             .map(Map.Entry::getKey)
             .filter(each -> !each.equals(id) && !named.contains(each))
             .sorted(newest)
             .toList();
-    return new ProvisionHistory(occurrence, changes, marking);
+    return new ProvisionHistory(occurrence, changes, tagging);
   }
 
   /**
    * Returns the occurrences of the text of {@code reading} that are not in the act as published,
-   * where the data does not say which act inserted them. {@code texts} are the marks of the built
+   * where the data does not say which act inserted them. {@code texts} are the tags of the built
    * texts in {@code language}.
    *
-   * <p>The data says nothing of an occurrence if the text marks no act at it, at an occurrence that
+   * <p>The data says nothing of an occurrence if the text tags no act at it, at an occurrence that
    * holds it or at an occurrence in it, and Cellar annotates no change at these occurrences. Of
    * such occurrences, only the outer occurrence is returned: an occurrence in it is not. Returns
    * none if the text of the act as published or the text of {@code reading} is not built.
    */
   public List<String> unattributed(
-      Version reading, Language language, Map<Version, TextMarks> texts) {
+      Version reading, Language language, Map<Version, TextTags> texts) {
     var first = timeline(language).map(Timeline::versions).orElseGet(List::of).stream().findFirst();
     var published = first.map(texts::get).orElse(null);
     var text = texts.get(reading);
@@ -744,16 +744,16 @@ public record Act(
 
   /**
    * Returns the first version in {@code language} whose text has the occurrence {@code occurrence}.
-   * {@code texts} are the marks of the built texts. Returns empty if no built text has the
+   * {@code texts} are the tags of the built texts. Returns empty if no built text has the
    * occurrence.
    */
   public Optional<Version> firstWith(
-      String occurrence, Language language, Map<Version, TextMarks> texts) {
+      String occurrence, Language language, Map<Version, TextTags> texts) {
     return timeline(language).map(Timeline::versions).orElseGet(List::of).stream()
         .filter(
             version ->
                 Optional.ofNullable(texts.get(version)).stream()
-                    .anyMatch(marks -> marks.eIds().contains(occurrence)))
+                    .anyMatch(tags -> tags.eIds().contains(occurrence)))
         .findFirst();
   }
 

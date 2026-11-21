@@ -167,10 +167,10 @@
    </body>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="32004D0691"
-                     action="replaced"
-                     location="AR:1 .AND. AX:0"
-                     marker="O001001M001000"/>
+         <tag amendingAct="32004D0691"
+              action="replaced"
+              location="AR:1 .AND. AX:0"
+              tagId="O001001M001000"/>
          <num>
             <t v="ANNEX"/>
          </num>

@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import java.time.LocalDate;
@@ -49,7 +49,7 @@ public record MarginView(List<Mark> marks) {
   /**
    * Returns the marks of the text of {@code version} of {@code act}, for the day {@code asked}.
    *
-   * @param marks the marks of the built texts in {@code language}, by version. Without the text of
+   * @param tags the tags of the built texts in {@code language}, by version. Without the text of
    *     {@code version}, there are no marks.
    * @param today the date today, which gives the tense
    */
@@ -58,9 +58,9 @@ public record MarginView(List<Mark> marks) {
       Version version,
       LocalDate asked,
       Language language,
-      Map<Version, TextMarks> marks,
+      Map<Version, TextTags> tags,
       LocalDate today) {
-    var text = marks.get(version);
+    var text = tags.get(version);
     if (text == null) {
       return none();
     }
@@ -68,7 +68,7 @@ public record MarginView(List<Mark> marks) {
     var past = asked.isBefore(today);
     var kept = asked.equals(today) ? null : asked;
     var found = new ArrayList<Mark>();
-    for (var divergence : act.divergences(asked, language, marks)) {
+    for (var divergence : act.divergences(asked, language, tags)) {
       if (divergence.whole(act.id())) {
         continue;
       }

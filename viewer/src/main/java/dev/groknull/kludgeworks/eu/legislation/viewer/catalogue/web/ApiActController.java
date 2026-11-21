@@ -219,7 +219,7 @@ class ApiActController {
   /**
    * Returns the divergences of {@code act} on {@code date}, each with the languages of the versions
    * {@code applying} whose text differs. An amending act can change the text of some languages
-   * only. The marks of the texts that are built in a language tell where its text differs. A
+   * only. The tags of the texts that are built in a language tell where its text differs. A
    * language without built texts is compared act by act.
    */
   private List<DivergenceModel> divergences(Act act, List<Version> applying, LocalDate date) {
@@ -230,7 +230,7 @@ class ApiActController {
         .sorted()
         .forEach(
             language ->
-                act.divergences(date, language, texts.marks(texts.preparation(act, language)))
+                act.divergences(date, language, texts.tags(texts.preparation(act, language)))
                     .forEach(
                         each ->
                             languages

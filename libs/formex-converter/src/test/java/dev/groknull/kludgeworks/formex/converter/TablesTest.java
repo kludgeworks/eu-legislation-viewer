@@ -14,10 +14,9 @@ import net.sf.saxon.s9api.XdmNode;
 import org.junit.jupiter.api.Test;
 
 /**
- * Cells of text alone, which tables.xsl converts on a path of their own: under an amendment marker
- * opened in an earlier cell, such a cell still carries its provenance. No fixture has such a
- * marker, so the test adds one to 2012/478's list of persons: opened in a row's first cell, closed
- * in its third.
+ * Cells of text alone, which tables.xsl converts on a path of their own: under a tag opened in an
+ * earlier cell, such a cell still carries its tag. No fixture has such a tag, so the test adds one
+ * to 2012/478's list of persons: opened in a row's first cell, closed in its third.
  */
 class TablesTest {
   static final Processor SAXON = new Processor(false);
@@ -40,8 +39,8 @@ class TablesTest {
       throws IOException, SaxonApiException, Stylesheet.Failure {
     var legalText = convert(ROW_UNDER_A_MARKER);
 
-    assertThat(marker(legalText, "Drex Technologies Holding S.A.")).isEqualTo("O000009M009000");
-    assertThat(marker(legalText, "1.")).isEmpty();
+    assertThat(tag(legalText, "Drex Technologies Holding S.A.")).isEqualTo("O000009M009000");
+    assertThat(tag(legalText, "1.")).isEmpty();
   }
 
   @Test
@@ -55,7 +54,7 @@ class TablesTest {
                 "count(//l:td[l:p/l:t/@v = 'Drex Technologies Holding S.A.']/node()),"
                     + " count(//l:td[l:p/l:t/@v = 'Drex Technologies Holding S.A.']/l:p/node())"))
         .isEqualTo("1 1");
-    assertThat(marker(legalText, "Drex Technologies Holding S.A.")).isEmpty();
+    assertThat(tag(legalText, "Drex Technologies Holding S.A.")).isEmpty();
   }
 
   private static XdmNode convert(String row) throws IOException, Stylesheet.Failure {
@@ -67,10 +66,9 @@ class TablesTest {
         Optional.empty());
   }
 
-  /** The marker of the provenance of the cell whose text is {@code text}; empty if it has none. */
-  private static String marker(XdmNode legalText, String text) throws SaxonApiException {
-    return evaluate(
-        legalText, "string(//l:td[l:p/l:t/@v = '" + text + "']/l:p/l:provenance/@marker)");
+  /** The tag of the tag of the cell whose text is {@code text}; empty if it has none. */
+  private static String tag(XdmNode legalText, String text) throws SaxonApiException {
+    return evaluate(legalText, "string(//l:td[l:p/l:t/@v = '" + text + "']/l:p/l:tag/@tagId)");
   }
 
   private static String evaluate(XdmNode legalText, String expression) throws SaxonApiException {

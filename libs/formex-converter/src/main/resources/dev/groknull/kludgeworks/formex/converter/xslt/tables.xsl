@@ -18,7 +18,7 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="levels" as="map(*)?" select="()" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="scope" as="element()?" select="f:scope(.)"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid($base, 'tab', string(1 + (
         if ($scope) then count($scope//TBL[f:scope(.) is $scope][. &lt;&lt; current()])
@@ -28,7 +28,7 @@
         <xsl:if test="@COLS">
           <xsl:attribute name="cols" select="@COLS"/>
         </xsl:if>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:if test="TITLE">
           <caption>
             <xsl:call-template name="f:blocks">
@@ -90,10 +90,10 @@
   <xsl:template match="GR.TBL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="group" as="element()">
       <tableGroup>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:if test="TITLE">
           <caption>
             <xsl:call-template name="f:blocks">
@@ -117,12 +117,12 @@
   <xsl:template match="ROW" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <tr>
       <xsl:if test="@TYPE = 'HEADER'">
         <xsl:attribute name="header" select="true()"/>
       </xsl:if>
-      <xsl:sequence select="f:provenance($m)"/>
+      <xsl:sequence select="f:tags($m)"/>
       <xsl:apply-templates select="CELL" mode="block">
         <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
         <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -132,8 +132,8 @@
   </xsl:template>
 
   <!-- a cell of text alone (98% of 2016/2070's 2.3 million): one p of one t, as the template below
-       makes it, without its eId, markers and blocks; unless a marker no ancestor has attributed is
-       open over it (one opened in an earlier cell), whose provenance only the template below gives -->
+       makes it, without its eId, tags and blocks; unless a tag no ancestor has attributed is
+       open over it (one opened in an earlier cell), whose tag only the template below gives -->
   <xsl:template match="CELL[not(*)][not(processing-instruction())][not(comment())]" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:choose>
@@ -164,7 +164,7 @@
   <xsl:template match="CELL" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="table" as="map(*)?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags(., $ctx)"/>
     <xsl:variable name="eid" as="xs:string?" select="
         if (exists($table)) then
           f:eid(f:eid($table?eid, 'tr', string($table?rows(generate-id(..)))), 'td', string((@COL, count(preceding-sibling::CELL) + 1)[1]))
@@ -204,10 +204,10 @@
   <xsl:template match="CN" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="table" as="element()">
       <table>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:apply-templates select="* except GR.NOTES" mode="cn">
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -267,7 +267,7 @@
   <!-- a group of rows with a heading row (checklists in 2015/1998) -->
   <xsl:template match="BLK" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags(., $ctx)"/>
     <!-- as wide as its widest row, each cell its colspan -->
     <rowGroup columns="{max((1, .//ROW ! sum(CELL ! xs:integer((@COLSPAN, 1)[1]))))}">
       <!-- the title: a numbered paragraph gives num and heading, anything else the heading -->

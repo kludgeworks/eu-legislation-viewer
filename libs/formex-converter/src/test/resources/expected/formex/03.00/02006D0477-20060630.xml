@@ -54,7 +54,7 @@
                <changed amendingAct="32006D0477R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <emphasis kind="uc">
                      <t v="Council Decision"/>
                   </emphasis>
@@ -65,7 +65,7 @@
                <changed amendingAct="32006D0477R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v=" 2006/477/CFSP"/>
                </changed>
             </docNumber>
@@ -74,14 +74,14 @@
             <changed amendingAct="32006D0477R(01)"
                      action="replaced"
                      location="TO"
-                     marker="O000001M001002">
+                     tagId="O000001M001002">
                <t v="of "/>
             </changed>
             <docDate date="2006-06-30">
                <changed amendingAct="32006D0477R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="30 June 2006"/>
                </changed>
             </docDate>
@@ -91,7 +91,7 @@
                <changed amendingAct="32006D0477R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="concerning the conclusion of the Agreement between the European Union and the former Yugoslav Republic of Macedonia on the participation of the former Yugoslav Republic of Macedonia in the European Union military crisis management operation in Bosnia and Herzegovina (Operation ALTHEA)"/>
                </changed>
             </docPurpose>
@@ -101,28 +101,28 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <p>
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <t v="THE COUNCIL OF THE EUROPEAN UNION,"/>
          </p>
       </formula>
       <citations>
          <occurrence eId="pbl_1/cit_1" kind="citation">
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <p>
                <t v="Having regard to the Treaty on European Union, and in particular Article 24 thereof,"/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_2" kind="citation">
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <p>
                <t v="Having regard to the recommendation from the Presidency,"/>
             </p>
@@ -131,18 +131,18 @@
       <recitals>
          <intro>
             <p>
-               <provenance amendingAct="32006D0477R(01)"
-                           action="replaced"
-                           location="TO"
-                           marker="O000001M002000"/>
+               <tag amendingAct="32006D0477R(01)"
+                    action="replaced"
+                    location="TO"
+                    tagId="O000001M002000"/>
                <t v="Whereas:"/>
             </p>
          </intro>
          <occurrence eId="pbl_1/rct_1" kind="recital">
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <num>
                <t v="(1)"/>
             </num>
@@ -157,10 +157,10 @@
             </p>
          </occurrence>
          <occurrence eId="pbl_1/rct_2" kind="recital">
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <num>
                <t v="(2)"/>
             </num>
@@ -169,10 +169,10 @@
             </p>
          </occurrence>
          <occurrence eId="pbl_1/rct_3" kind="recital">
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <num>
                <t v="(3)"/>
             </num>
@@ -185,10 +185,10 @@
             </p>
          </occurrence>
          <occurrence eId="pbl_1/rct_4" kind="recital">
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <num>
                <t v="(4)"/>
             </num>
@@ -199,20 +199,20 @@
       </recitals>
       <formula name="enactingFormula">
          <p>
-            <provenance amendingAct="32006D0477R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32006D0477R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M002000"/>
             <t v="HAS DECIDED AS FOLLOWS:"/>
          </p>
       </formula>
    </preamble>
    <body>
       <occurrence eId="art_1" kind="article" rank="1">
-         <provenance amendingAct="32006D0477R(01)"
-                     action="replaced"
-                     location="TO"
-                     marker="O000001M002000"/>
+         <tag amendingAct="32006D0477R(01)"
+              action="replaced"
+              location="TO"
+              tagId="O000001M002000"/>
          <num>
             <t v="Article 1"/>
          </num>
@@ -228,10 +228,10 @@
          </occurrence>
       </occurrence>
       <occurrence eId="art_2" kind="article" rank="1">
-         <provenance amendingAct="32006D0477R(01)"
-                     action="replaced"
-                     location="TO"
-                     marker="O000001M002000"/>
+         <tag amendingAct="32006D0477R(01)"
+              action="replaced"
+              location="TO"
+              tagId="O000001M002000"/>
          <num>
             <t v="Article 2"/>
          </num>
@@ -240,10 +240,10 @@
          </p>
       </occurrence>
       <occurrence eId="art_3" kind="article" rank="1">
-         <provenance amendingAct="32006D0477R(01)"
-                     action="replaced"
-                     location="TO"
-                     marker="O000001M002000"/>
+         <tag amendingAct="32006D0477R(01)"
+              action="replaced"
+              location="TO"
+              tagId="O000001M002000"/>
          <num>
             <t v="Article 3"/>
          </num>
@@ -252,10 +252,10 @@
          </p>
       </occurrence>
       <occurrence eId="art_4" kind="article" rank="1">
-         <provenance amendingAct="32006D0477R(01)"
-                     action="replaced"
-                     location="TO"
-                     marker="O000001M002000"/>
+         <tag amendingAct="32006D0477R(01)"
+              action="replaced"
+              location="TO"
+              tagId="O000001M002000"/>
          <num>
             <t v="Article 4"/>
          </num>

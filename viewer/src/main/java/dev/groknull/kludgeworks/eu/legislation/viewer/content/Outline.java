@@ -17,23 +17,23 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * <p>It also holds the eIds of all its occurrences, with a title or not. These find an occurrence
  * for a {@code Location}.
  *
- * <p>It also holds the marks of the occurrences. A consolidated text marks the wording that an act
- * gave, with the act. For example, the version of 2015/1998 of 7 June 2017 marks point 4.1.3.3 of
+ * <p>It also holds the tags of the occurrences. A consolidated text tags the wording that an act
+ * gave, with the act. For example, the version of 2015/1998 of 7 June 2017 tags point 4.1.3.3 of
  * its annex with 2017/815.
  *
  * @param entries the outermost occurrences
  * @param eIds the eIds of all its occurrences and other containers that have one, in document order
- * @param marks the acts that each occurrence marks, by the eId of the occurrence. A mark is on the
+ * @param tags the acts that each occurrence tags, by the eId of the occurrence. A tag is on the
  *     occurrence, or on a block in it that has no eId of its own. An act is its CELEX, for example
- *     {@code 32017R0815}. An occurrence without marks is left out.
+ *     {@code 32017R0815}. An occurrence without tags is left out.
  */
 @ValueObject
-public record Outline(List<Entry> entries, List<String> eIds, Map<String, Set<String>> marks) {
+public record Outline(List<Entry> entries, List<String> eIds, Map<String, Set<String>> tags) {
 
   public Outline {
     entries = List.copyOf(entries);
     eIds = List.copyOf(eIds);
-    marks = Map.copyOf(marks);
+    tags = Map.copyOf(tags);
   }
 
   /** Returns the outline of a text that has no occurrences. */

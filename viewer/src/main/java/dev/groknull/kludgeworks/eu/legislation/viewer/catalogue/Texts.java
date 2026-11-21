@@ -29,8 +29,8 @@ public interface Texts {
   Preparation preparation(Act act, Language language);
 
   /**
-   * Returns the marks of the texts of {@code preparation} that are built, by version. It asks for
+   * Returns the tags of the texts of {@code preparation} that are built, by version. It asks for
    * nothing. A version whose text is not built is left out.
    */
-  Map<Version, TextMarks> marks(Preparation preparation);
+  Map<Version, TextTags> tags(Preparation preparation);
 }

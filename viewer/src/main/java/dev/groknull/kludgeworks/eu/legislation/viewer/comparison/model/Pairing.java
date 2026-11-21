@@ -425,13 +425,13 @@ final class Pairing {
   }
 
   /**
-   * Returns whether an act renumbered {@code occurrence} between the two texts. It then has a
-   * marker of a renumbering that {@code same}, the earlier occurrence of the same eId, does not
-   * have. {@code same} is null if the earlier text has no such occurrence.
+   * Returns whether an act renumbered {@code occurrence} between the two texts. It then has a tag
+   * of a renumbering that {@code same}, the earlier occurrence of the same eId, does not have.
+   * {@code same} is null if the earlier text has no such occurrence.
    */
   private static boolean newlyRenumbered(Occurrence occurrence, @Nullable Occurrence same) {
-    var markers = renumberings(occurrence);
-    return !markers.isEmpty() && !markers.equals(same == null ? Set.of() : renumberings(same));
+    var tags = renumberings(occurrence);
+    return !tags.isEmpty() && !tags.equals(same == null ? Set.of() : renumberings(same));
   }
 
   /**
@@ -442,18 +442,18 @@ final class Pairing {
   }
 
   /**
-   * The marker of a renumbering.
+   * The tag of a renumbering.
    *
-   * @param act the amending act. Null if the marker names none.
-   * @param marker the marker as the consolidation has it. Null if it has none.
+   * @param act the amending act. Null if the tag names none.
+   * @param tagId the id of the tag, as the consolidation has it. Null if it has none.
    */
-  private record Renumbering(@Nullable String act, @Nullable String marker) {}
+  private record Renumbering(@Nullable String act, @Nullable String tagId) {}
 
-  /** Returns the markers of a renumbering on {@code occurrence} and in its num. */
+  /** Returns the tags of a renumbering on {@code occurrence} and in its num. */
   private static Set<Renumbering> renumberings(Occurrence occurrence) {
     var found = new HashSet<Renumbering>();
     for (var child : occurrence.element().children()) {
-      if (child.name().equals("provenance")) {
+      if (child.name().equals("tag")) {
         add(child, found);
       }
     }
@@ -476,7 +476,7 @@ final class Pairing {
 
   private static void add(Element element, Set<Renumbering> found) {
     if ("renumbered".equals(element.attribute("action"))) {
-      found.add(new Renumbering(element.attribute("amendingAct"), element.attribute("marker")));
+      found.add(new Renumbering(element.attribute("amendingAct"), element.attribute("tagId")));
     }
   }
 

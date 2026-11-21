@@ -77,7 +77,7 @@
                <deleted amendingAct="32008R0508"
                         action="deleted"
                         location="AR:2"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <emphasis kind="uc">
                      <t v="Regulation"/>
                   </emphasis>
@@ -88,7 +88,7 @@
                <deleted amendingAct="32008R0508"
                         action="deleted"
                         location="AR:2"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v=" (EEC) No 821/68 "/>
                   <emphasis kind="uc">
                      <t v="of the Commission"/>
@@ -100,7 +100,7 @@
             <deleted amendingAct="32008R0508"
                      action="deleted"
                      location="AR:2"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="of 28 June 1968"/>
             </deleted>
          </p>
@@ -109,7 +109,7 @@
                <deleted amendingAct="32008R0508"
                         action="deleted"
                         location="AR:2"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals"/>
                </deleted>
             </docPurpose>
@@ -119,10 +119,10 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <deleted>
-            <provenance amendingAct="32008R0508"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32008R0508"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O002001M001000"/>
             <p>
                <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
             </p>
@@ -130,10 +130,10 @@
       </formula>
       <citations>
          <deleted>
-            <provenance amendingAct="32008R0508"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32008R0508"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O002001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
                <p>
                   <t v="Having regard to the Treaty establishing the European Economic Community;"/>
@@ -150,10 +150,10 @@
       </citations>
       <recitals>
          <deleted>
-            <provenance amendingAct="32008R0508"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32008R0508"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O002001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
                <p>
                   <t v="Whereas the export refund should take into account the quality of the product processed from cereals which qualifies for it lest public funds contribute to the export of goods of inferior quality; whereas it is therefore necessary to establish a precise definition, applicable in each Member State, of cereal grains qualifying for the refund on "/>
@@ -176,10 +176,10 @@
       </recitals>
       <formula name="enactingFormula">
          <deleted>
-            <provenance amendingAct="32008R0508"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32008R0508"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O002001M001000"/>
             <p>
                <t v="HAS ADOPTED THIS REGULATION:"/>
             </p>
@@ -188,10 +188,10 @@
    </preamble>
    <body>
       <deleted>
-         <provenance amendingAct="32008R0508"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32008R0508"
+              action="deleted"
+              location="AR:2"
+              tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
@@ -212,10 +212,10 @@
    </body>
    <conclusions>
       <deleted>
-         <provenance amendingAct="32008R0508"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32008R0508"
+              action="deleted"
+              location="AR:2"
+              tagId="O002001M001000"/>
          <p>
             <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
          </p>
@@ -223,10 +223,10 @@
    </conclusions>
    <annexes>
       <deleted>
-         <provenance amendingAct="32008R0508"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32008R0508"
+              action="deleted"
+              location="AR:2"
+              tagId="O002001M001000"/>
          <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
@@ -287,15 +287,15 @@
                   <changed amendingAct="31971R1634"
                            action="replaced"
                            location="AR:1 .AND. AX:0"
-                           marker="O001001M008000">
+                           tagId="O001001M008000">
                      <t v="B."/>
                   </changed>
                </num>
                <p>
-                  <provenance amendingAct="31971R1634"
-                              action="replaced"
-                              location="AR:1 .AND. AX:0"
-                              marker="O001001M008000"/>
+                  <tag amendingAct="31971R1634"
+                       action="replaced"
+                       location="AR:1 .AND. AX:0"
+                       tagId="O001001M008000"/>
                   <quote startQuote="‘" endQuote="’">
                      <t v="Pearled grains"/>
                   </quote>
@@ -307,10 +307,10 @@
                         depth="2"
                         numbered="true"
                         rank="2">
-               <provenance amendingAct="31971R1634"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0"
-                           marker="O001001M008000"/>
+               <tag amendingAct="31971R1634"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0"
+                    tagId="O001001M008000"/>
                <num>
                   <t v="I."/>
                </num>
@@ -319,10 +319,10 @@
                </heading>
             </occurrence>
             <occurrence eId="anx/pnt_1" kind="level" depth="3" numbered="true">
-               <provenance amendingAct="31971R1634"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0"
-                           marker="O001001M008000"/>
+               <tag amendingAct="31971R1634"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0"
+                    tagId="O001001M008000"/>
                <num>
                   <t v="1."/>
                </num>
@@ -334,10 +334,10 @@
                </p>
             </occurrence>
             <occurrence eId="anx/pnt_2" kind="level" depth="3" numbered="true">
-               <provenance amendingAct="31971R1634"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0"
-                           marker="O001001M008000"/>
+               <tag amendingAct="31971R1634"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0"
+                    tagId="O001001M008000"/>
                <num>
                   <t v="2."/>
                </num>
@@ -392,10 +392,10 @@
                         depth="2"
                         numbered="true"
                         rank="2">
-               <provenance amendingAct="31971R1634"
-                           action="replaced"
-                           location="AR:1 .AND. AX:0"
-                           marker="O001001M008000"/>
+               <tag amendingAct="31971R1634"
+                    action="replaced"
+                    location="AR:1 .AND. AX:0"
+                    tagId="O001001M008000"/>
                <num>
                   <t v="II."/>
                </num>
@@ -458,10 +458,10 @@
    </annexes>
    <notes>
       <deleted>
-         <provenance amendingAct="32008R0508"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32008R0508"
+              action="deleted"
+              location="AR:2"
+              tagId="O002001M001000"/>
          <note eId="note_1" marker="1" kind="footnote">
             <p>
                <t v="OJ No 117, "/>

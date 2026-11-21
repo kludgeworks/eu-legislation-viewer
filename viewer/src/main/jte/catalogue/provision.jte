@@ -1,7 +1,7 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ProvisionView
 @param ProvisionView provision
 <%-- Shows the history of one provision: the acts that changed it. ProvisionView supplies the data.
-     js/markers.js loads it into the text of the Read page, below the provision. One line is for one
+     js/tags.js loads it into the text of the Read page, below the provision. One line is for one
      change, newest act first: the act as a link to its page, what it did, the state of the change
      on the day with the date and the clause, and a link to the change on the page of the act. A
      change that does not apply on the day has an amber rule. Where the data names no act, the box

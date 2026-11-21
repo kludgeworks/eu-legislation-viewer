@@ -138,8 +138,8 @@ class ChangesController {
    *
    * <p>The comparison module supplies the comparison. If no one asked for it before, the module
    * computes it now. The outline of the later text shows beside the changes. Each difference has a
-   * sidenote. The sidenote comes from the amendment markers and from the amendments that Cellar
-   * records for the occurrence, {@link Act#amended}.
+   * sidenote. The sidenote comes from the tags and from the amendments that Cellar records for the
+   * occurrence, {@link Act#amended}.
    *
    * <p>If the comparison is limited to the changes of one act, it compares the version that
    * integrates that act with the version before it. That is the wording just before the change
@@ -250,11 +250,7 @@ class ChangesController {
                         histories.put(
                             eId,
                             SidenoteView.history(
-                                ends.act,
-                                ends.included,
-                                later,
-                                neighbour.markers(),
-                                ends.language));
+                                ends.act, ends.included, later, neighbour.tags(), ends.language));
                       });
             }
             yield templates
@@ -325,7 +321,7 @@ class ChangesController {
     var outline = outline(later.text(), outlines);
     var amended = ends.act.amended(from, to, before.eIds(), outline.eIds(), ends.language);
     var pending =
-        day == null ? null : ends.act.pending(to, day, ends.language, texts.marks(preparation));
+        day == null ? null : ends.act.pending(to, day, ends.language, texts.tags(preparation));
     var today = Timeline.today(clock);
     var sidenotes = new IdentityHashMap<Difference, SidenoteView>();
     var made = new ArrayList<Map.Entry<Difference, SidenoteView>>();
@@ -398,7 +394,7 @@ class ChangesController {
 
   /**
    * Returns one difference of the comparison, the one at the occurrence {@code eId}, as the views
-   * mark it. With {@code table} and {@code rows}, it returns only those rows of that table of the
+   * show it. With {@code table} and {@code rows}, it returns only those rows of that table of the
    * occurrence, as they read ({@link RowFolds}). The views load it when the reader opens an annex
    * inserted whole or a fold of rows, so that a long comparison does not send them until they are
    * asked for.
@@ -492,7 +488,7 @@ class ChangesController {
   }
 
   /**
-   * Returns the differences at the occurrences {@code eIds} of the comparison, as the views mark
+   * Returns the differences at the occurrences {@code eIds} of the comparison, as the views show
    * them ({@link Comparison#at}). The page of an amending act loads the wording of one of its
    * changes from here. If the occurrences are the same in both texts, it says so.
    *
@@ -546,7 +542,7 @@ class ChangesController {
     String lead = null;
     if (found.isEmpty() && only != null) {
       // A chapter that the annex keeps flat has no difference of its own. Show the differences in
-      // its points and its attachments that the text marks with the act.
+      // its points and its attachments that the text tags with the act.
       var attributed =
           attributed(ends, preparation, earlier, later, only, null, new HashMap<>())
               .orElseThrow(Requests::notFound);
@@ -558,7 +554,7 @@ class ChangesController {
       lead =
           found.isEmpty()
               ? null
-              : "The text marks these changes in this part of the annex with " + only.cited() + ".";
+              : "The text tags these changes in this part of the annex with " + only.cited() + ".";
     }
     var shown = found.stream().map(difference -> new ChangesView.Shown(0, difference, "")).toList();
     var rendered =
@@ -583,7 +579,7 @@ class ChangesController {
 
   /**
    * Returns the differences that the act {@code act} or another act of its version made, where the
-   * data does not say which. These are the differences with no mark of an act, in a version that
+   * data does not say which. These are the differences with no tag of an act, in a version that
    * integrates two acts or more. The page of an amending act shows them in a separate list, under
    * "By this act or by …". If there are none, the part is empty.
    *
@@ -741,7 +737,7 @@ class ChangesController {
                 Neighbours.sibling(neighbour.occurrence()),
                 neighbour.occurrence(),
                 SidenoteView.history(
-                    ends.act, ends.included, ends.to, neighbour.markers(), ends.language)));
+                    ends.act, ends.included, ends.to, neighbour.tags(), ends.language)));
       }
     }
     LOG.info(

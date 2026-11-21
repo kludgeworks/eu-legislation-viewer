@@ -155,9 +155,9 @@ class ApiComparisonController {
    * {@code from} and on {@code to}:
    *
    * <ul>
-   *   <li>{@code item}: each difference, embedded, in the order of the later text, with the
-   *       amendment markers of the consolidations and the amendments that Cellar records at its
-   *       occurrence. Each links to the difference whole.
+   *   <li>{@code item}: each difference, embedded, in the order of the later text, with the tags of
+   *       the consolidations and the amendments that Cellar records at its occurrence. Each links
+   *       to the difference whole.
    *   <li>{@code up}: the act.
    *   <li>{@code av:difference}: a difference by the eId of its occurrence, a URI template.
    * </ul>
@@ -215,9 +215,9 @@ class ApiComparisonController {
 
   /**
    * Returns the difference of the comparison at the occurrence {@code eId}, with its occurrence
-   * whole and marked. Its eId is the rest of the path, for example {@code anx/pnt_1.2}. Returns 404
-   * if the comparison has no difference there. It links to the comparison, {@code up}, and to its
-   * JSON Schema, {@code describedby}.
+   * whole and with its edits. Its eId is the rest of the path, for example {@code anx/pnt_1.2}.
+   * Returns 404 if the comparison has no difference there. It links to the comparison, {@code up},
+   * and to its JSON Schema, {@code describedby}.
    */
   @GetMapping(COMPARISON + "/differences/{*eId}")
   RepresentationModel<?> difference(
@@ -408,9 +408,9 @@ class ApiComparisonController {
    * @param deleted how many words it deleted
    * @param parent the eId of the occurrence that it is in, or null for an outermost occurrence
    * @param section the eId of the occurrence with a rank that it is in, as the outline nests them
-   * @param markers the amendment markers of the later text that tell which acts put the occurrence
-   *     in its form, and how
-   * @param earlierMarkers the same, in the earlier text
+   * @param tags the tags of the later text that tell which acts put the occurrence in its form, and
+   *     how
+   * @param earlierTags the same, in the earlier text
    * @param amendments the amendments that Cellar records at the occurrence between the two versions
    */
   record DifferenceSummary(
@@ -422,8 +422,8 @@ class ApiComparisonController {
       int deleted,
       @Nullable String parent,
       @Nullable String section,
-      List<MarkerModel> markers,
-      List<MarkerModel> earlierMarkers,
+      List<TagModel> tags,
+      List<TagModel> earlierTags,
       List<AmendmentModel> amendments) {
 
     static DifferenceSummary of(Act act, Difference difference, Amended amended) {
@@ -436,8 +436,8 @@ class ApiComparisonController {
           difference.deleted(),
           difference.parent(),
           difference.section(),
-          difference.markers().stream().map(MarkerModel::of).toList(),
-          difference.earlierMarkers().stream().map(MarkerModel::of).toList(),
+          difference.tags().stream().map(TagModel::of).toList(),
+          difference.earlierTags().stream().map(TagModel::of).toList(),
           amended.of(difference.eId(), difference.kind() != Difference.Kind.CHANGED).stream()
               .map(amendment -> AmendmentModel.of(act, amendment))
               .toList());
@@ -450,26 +450,27 @@ class ApiComparisonController {
    * @param difference what the comparison lists of it
    * @param wording the plain text of its occurrence before and after the change, and the runs of
    *     words that stayed, went in and went out
-   * @param shown its occurrence, marked, in the public model. In its HTML, inserted words are in
-   *     {@code ins} and deleted words in {@code del}. Its plain text is the text after the change.
+   * @param shown its occurrence, with its edits, in the public model. In its HTML, inserted words
+   *     are in {@code ins} and deleted words in {@code del}. Its plain text is the text after the
+   *     change.
    */
   record DifferenceModel(
       @JsonUnwrapped DifferenceSummary difference,
-      @JsonUnwrapped PublicText.Marked wording,
+      @JsonUnwrapped PublicText.Edited wording,
       PublicText.Occurrence shown) {}
 
   /**
-   * An amendment marker, as the API shows it. For example, ▼M20.
+   * A tag, as the API shows it. For example, ▼M20.
    *
    * @param act the CELEX number of the amending act
    * @param action what the act did: replaced, inserted, deleted or renumbered
    * @param in the eId of the enclosing occurrence that the act put in its form whole, or null for a
-   *     marker of the occurrence itself
+   *     tag of the occurrence itself
    */
-  record MarkerModel(String act, String action, @Nullable String in) {
+  record TagModel(String act, String action, @Nullable String in) {
 
-    static MarkerModel of(Difference.Marker marker) {
-      return new MarkerModel(marker.act(), marker.action(), marker.in());
+    static TagModel of(Difference.Tag tag) {
+      return new TagModel(tag.act(), tag.action(), tag.in());
     }
   }
 

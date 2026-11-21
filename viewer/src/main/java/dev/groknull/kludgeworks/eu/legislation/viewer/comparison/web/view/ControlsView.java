@@ -35,8 +35,8 @@ public final class ControlsView {
 
   /**
    * Returns the legend of the comparison {@code changes}, whose differences have {@code sidenotes}
-   * by number. The legend names only the marks that the page shows: inserted and deleted words, and
-   * the marks of a correction. If one act made every difference, the summary names it.
+   * by number. The legend names only what the edits of the page show: inserted and deleted words,
+   * and the words of a correction. If one act made every difference, the summary names it.
    */
   public static Legend legend(ChangesView changes, Map<Integer, SidenoteView> sidenotes) {
     var inserted = false;
@@ -68,9 +68,9 @@ public final class ControlsView {
   /**
    * What the summary and the legend of a comparison say.
    *
-   * @param inserted whether the page marks inserted words
-   * @param deleted whether the page marks deleted words
-   * @param corrected whether the page marks a corrigendum's words
+   * @param inserted whether the page shows inserted words
+   * @param deleted whether the page shows deleted words
+   * @param corrected whether the page shows a corrigendum's words
    * @param by the act that made every difference, if there is one. For example, "2026/449".
    */
   public record Legend(boolean inserted, boolean deleted, boolean corrected, @Nullable String by) {}

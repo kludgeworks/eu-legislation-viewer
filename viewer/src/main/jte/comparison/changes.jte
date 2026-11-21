@@ -17,7 +17,7 @@
 @param List<ControlsView.ViewLink> views
 <%-- Shows a comparison's Changes view on an act's page. The controls come first. They show how
      many differences there are and of what kind. Then each provision that differs shows as it reads,
-     with its changes marked and a number beside it. A sidenote beside each provision says what
+     with its edits and a number beside it. A sidenote beside each provision says what
      happened, which acts made the change and when each applies. It also says what the provision was
      before. The sidenotes map is keyed by difference number.
      Occurrences before a difference that are the same in both texts are in a fold. When the reader opens

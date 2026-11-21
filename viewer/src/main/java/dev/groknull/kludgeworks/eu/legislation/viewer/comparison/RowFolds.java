@@ -21,7 +21,7 @@ import org.jspecify.annotations.Nullable;
  * to 40 of the third table. The views give it the address that loads those rows.
  *
  * <ul>
- *   <li>A row with a mark is kept, as is a header row.
+ *   <li>A row with an edit is kept, as is a header row.
  *   <li>Rows that a cell spans are kept or folded together.
  *   <li>A run is folded only within one row group, and only if it has {@link #LEAST} rows or more.
  * </ul>
@@ -44,13 +44,13 @@ public final class RowFolds {
   /** The attribute of a fold with the number of its last row in its table. */
   public static final String LAST = "last";
 
-  /** The rows kept on each side of a row with a mark. */
+  /** The rows kept on each side of a row with an edit. */
   static final int CONTEXT = 1;
 
   /** The fewest rows that are folded. Fewer rows show as they are. */
   static final int LEAST = 3;
 
-  private static final Set<String> MARKS = Set.of("diff:ins", "diff:del");
+  private static final Set<String> EDITS = Set.of("diff:ins", "diff:del");
 
   private RowFolds() {}
 
@@ -108,8 +108,8 @@ public final class RowFolds {
     }
   }
 
-  private static boolean marked(Element element) {
-    return MARKS.contains(element.name()) || element.children().stream().anyMatch(RowFolds::marked);
+  private static boolean edited(Element element) {
+    return EDITS.contains(element.name()) || element.children().stream().anyMatch(RowFolds::edited);
   }
 
   /** Folds the tables of one occurrence, numbering them in the order of the text. */
@@ -185,7 +185,7 @@ public final class RowFolds {
       for (var b = 0; b < blocks.size(); b++) {
         for (var i = blocks.get(b).start(); i <= blocks.get(b).end(); i++) {
           var each = rows.get(i);
-          if ("true".equals(each.attribute("header")) || marked(each)) {
+          if ("true".equals(each.attribute("header")) || edited(each)) {
             for (var near = Math.max(0, b - CONTEXT);
                 near <= Math.min(blocks.size() - 1, b + CONTEXT);
                 near++) {

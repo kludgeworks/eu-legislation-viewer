@@ -14,27 +14,26 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * What the ▼ amendment marks of a text in Read say and where they lead, one entry for each act that
- * amended the act up to the version read. The marks are in the text, which the content module
- * renders without knowing the act; js/markers.js looks each mark's act up here.
+ * What the ▼ tags of a text in Read say and where they lead, one entry for each act that amended
+ * the act up to the version read. The tags are in the text, which the content module renders
+ * without knowing the act; js/tags.js looks each tag's act up here.
  *
- * <p>A mark's hover says what happened, which act did it and when that act applies: "Replaced by
+ * <p>A tag's hover says what happened, which act did it and when that act applies: "Replaced by
  * 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449". A click opens the history of the
  * provision, {@link ProvisionView}.
  *
- * @param marks one entry for each amending act, in the order the versions include them
+ * @param tags one entry for each amending act, in the order the versions include them
  */
-public record MarksView(List<Mark> marks) {
+public record TagsView(List<Tag> tags) {
 
-  public MarksView {
-    marks = List.copyOf(marks);
+  public TagsView {
+    tags = List.copyOf(tags);
   }
 
   /**
-   * Returns the marks of the text of {@code reading}, a version of {@code act}, in {@code
-   * language}.
+   * Returns the tags of the text of {@code reading}, a version of {@code act}, in {@code language}.
    */
-  public static MarksView of(Act act, Version reading, Language language) {
+  public static TagsView of(Act act, Version reading, Language language) {
     var versions =
         act.timeline()
             .in(language)
@@ -47,8 +46,8 @@ public record MarksView(List<Mark> marks) {
         seen.addAll(version.integrates());
       }
     }
-    return new MarksView(
-        seen.stream().map(each -> new Mark(each.celex(), applies(act, each))).toList());
+    return new TagsView(
+        seen.stream().map(each -> new Tag(each.celex(), applies(act, each))).toList());
   }
 
   /**
@@ -78,10 +77,10 @@ public record MarksView(List<Mark> marks) {
   }
 
   /**
-   * What the marks of one amending act say and where they lead.
+   * What the tags of one amending act say and where they lead.
    *
-   * @param act the CELEX of the amending act, as the marks name it
+   * @param act the CELEX of the amending act, as the tags name it
    * @param applies when the act applies, with the clause that says so. Null if not known.
    */
-  public record Mark(String act, @Nullable String applies) {}
+  public record Tag(String act, @Nullable String applies) {}
 }

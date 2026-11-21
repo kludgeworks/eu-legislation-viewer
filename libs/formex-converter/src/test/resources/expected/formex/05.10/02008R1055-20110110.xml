@@ -141,10 +141,10 @@
             <t v="Article 2"/>
          </num>
          <p>
-            <provenance amendingAct="32010R1227"
-                        action="replaced"
-                        location="AR:1;PT:1"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32010R1227"
+                 action="replaced"
+                 location="AR:1;PT:1"
+                 tagId="O001001M001000"/>
             <t v="Member States shall supply their quality report not later than 31 May every year."/>
          </p>
       </occurrence>
@@ -168,10 +168,10 @@
    </conclusions>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="32010R1227"
-                     action="replaced"
-                     location="AR:1;PT:2 .AND. AX:0"
-                     marker="O001001M002000"/>
+         <tag amendingAct="32010R1227"
+              action="replaced"
+              location="AR:1;PT:2 .AND. AX:0"
+              tagId="O001001M002000"/>
          <num>
             <t v="ANNEX"/>
          </num>

@@ -15,20 +15,20 @@ import java.util.regex.Pattern;
  * <p>The wording holds the text, numbers and quotation marks of the block. Line breaks become
  * spaces. Each run of spacing, a non-breaking space too, becomes a single space.
  *
- * <p>The wording leaves out what marks the text but does not say it. These marks can differ between
- * versions with the same wording:
+ * <p>The wording leaves out the elements that say nothing. They can differ between versions with
+ * the same wording:
  *
  * <ul>
- *   <li>the provenance of the amending acts
+ *   <li>the tags of the amending acts
  *   <li>footnote references, which are renumbered when notes come and go
  *   <li>what a consolidation keeps of a deletion
  * </ul>
  *
- * <p>The EUR-Lex markers of a change, {@code changed}, keep their text.
+ * <p>The text of a change, {@code changed}, which a tag names, stays.
  */
 public final class Wording {
   /** The elements that say nothing, for a comparison. */
-  static final Set<String> MARKS = Set.of("provenance", "noteRef", "deleted");
+  static final Set<String> SILENT = Set.of("tag", "noteRef", "deleted");
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
 
@@ -110,7 +110,7 @@ public final class Wording {
         out.append(element.attributes().getOrDefault("endQuote", ""));
       }
       default -> {
-        if (MARKS.contains(element.name())) {
+        if (SILENT.contains(element.name())) {
           return;
         }
         // The MathML tokens, for example mi and mo, hold text of their own.

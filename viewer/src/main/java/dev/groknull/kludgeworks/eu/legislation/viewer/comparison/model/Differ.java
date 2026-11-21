@@ -36,12 +36,12 @@ import org.jspecify.annotations.Nullable;
  * occurrence comes before the occurrences inserted in its place.
  *
  * <p>The notes that an occurrence refers to are compared as part of it. A changed occurrence shows
- * its notes under it, marked, if they differ. An inserted or deleted occurrence shows its notes,
- * marked whole. A note that only one text has, and each reference to it, says so ({@link
- * Marks#ONLY}).
+ * its notes under it, with their edits, if they differ. An inserted or deleted occurrence shows its
+ * notes, whole, as insertions or deletions. A note that only one text has, and each reference to
+ * it, says so ({@link Edits#ONLY}).
  *
  * <p>The own blocks of a changed occurrence are matched by what they say ({@link Parts}). {@link
- * Marks} marks a changed block word by word.
+ * Edits} shows the edits of a changed block word by word.
  *
  * <p>Each occurrence of the later text is placed once, as one of these:
  *
@@ -56,8 +56,8 @@ import org.jspecify.annotations.Nullable;
  *
  * <ul>
  *   <li>A changed occurrence and the occurrences in it that differ are one difference if the same
- *       acts made all of them. The difference shows whole, and each occurrence is marked where it
- *       differs. For example, 11.1.3 with its points (a) to (d), all from 2019/103.
+ *       acts made all of them. The difference shows whole, and each occurrence shows its edits
+ *       where it differs. For example, 11.1.3 with its points (a) to (d), all from 2019/103.
  *   <li>If the num of an occurrence only gained or lost its full stop, no act changed it. Thus the
  *       occurrence does not differ. For example, "11.3" to "11.3.".
  * </ul>
@@ -143,7 +143,7 @@ public final class Differ {
    * @param earlier whether the occurrence is of only the earlier text: it is deleted
    * @param difference how the occurrence differs. Null if its own wording is the same in both
    *     texts.
-   * @param marking how its own blocks and notes differ. Null if the occurrence is not changed.
+   * @param editing how its own blocks and notes differ. Null if the occurrence is not changed.
    * @param occurrences the occurrences in it, compared, in the one order of the two texts. Empty
    *     for an inserted or deleted occurrence, which is one difference with its occurrences.
    * @param differs whether the occurrence differs, or an occurrence in it does
@@ -152,7 +152,7 @@ public final class Differ {
       Occurrence occurrence,
       boolean earlier,
       @Nullable DifferenceBuilder difference,
-      @Nullable Marking marking,
+      @Nullable Editing editing,
       List<Node> occurrences,
       boolean differs) {
 
@@ -160,10 +160,10 @@ public final class Differ {
         Occurrence occurrence,
         boolean earlier,
         @Nullable DifferenceBuilder difference,
-        @Nullable Marking marking,
+        @Nullable Editing editing,
         List<Node> occurrences) {
       var differs = difference != null || occurrences.stream().anyMatch(Node::differs);
-      return new Node(occurrence, earlier, difference, marking, occurrences, differs);
+      return new Node(occurrence, earlier, difference, editing, occurrences, differs);
     }
 
     /**
@@ -203,8 +203,8 @@ public final class Differ {
 
     /**
      * Returns the occurrence as it shows in an occurrence that shows whole. An inserted or deleted
-     * occurrence is marked whole. Any other occurrence is marked where it and the occurrences in it
-     * differ.
+     * occurrence shows whole, as an insertion or a deletion. Any other occurrence shows its edits
+     * where it and the occurrences in it differ.
      */
     Element within() {
       return difference != null && difference.kind() != Kind.CHANGED
@@ -266,8 +266,8 @@ public final class Differ {
     private Node deleted(Occurrence occurrence, @Nullable Occurrence in) {
       var difference =
           whole(occurrence, before, Kind.DELETED, in == null ? null : in.eId())
-              .earlierMarkers(Markers.of(occurrence, before))
-              .markers(Markers.deleted(occurrence, after, in));
+              .earlierTags(Tags.of(occurrence, before))
+              .tags(Tags.deleted(occurrence, after, in));
       return Node.of(occurrence, true, difference, null, List.of());
     }
 
@@ -275,7 +275,7 @@ public final class Differ {
     private Node inserted(Occurrence occurrence) {
       var difference =
           whole(occurrence, after, Kind.INSERTED, occurrence.parent())
-              .markers(Markers.of(occurrence, after));
+              .tags(Tags.of(occurrence, after));
       return Node.of(occurrence, false, difference, null, List.of());
     }
 
@@ -285,9 +285,9 @@ public final class Differ {
      * differ.
      */
     private Node paired(Occurrence was, Occurrence is) {
-      var marking = Marking.of(was, is);
+      var editing = Editing.of(was, is);
       var occurrences = occurrences(was, is);
-      if (marking == null) {
+      if (editing == null) {
         return Node.of(is, false, null, null, occurrences);
       }
       var difference =
@@ -295,33 +295,33 @@ public final class Differ {
               .eId(is.eId())
               .kind(Kind.CHANGED)
               .occurrence(sibling(is))
-              .inserted(marking.blocks().inserted())
-              .deleted(marking.blocks().deleted())
+              .inserted(editing.blocks().inserted())
+              .deleted(editing.blocks().deleted())
               .parent(is.parent())
               .list(is.list())
               .section(is.section())
-              .markers(Markers.of(is, after))
-              .earlierMarkers(Markers.of(was, before));
-      var node = Node.of(is, false, difference, marking, occurrences);
+              .tags(Tags.of(is, after))
+              .earlierTags(Tags.of(was, before));
+      var node = Node.of(is, false, difference, editing, occurrences);
       difference.shown(Content.of(node, false));
       return node;
     }
 
     /**
      * Returns {@code occurrence} of {@code occurrences} as a whole difference, with every word in
-     * it marked inserted or deleted, by its {@code kind}. The occurrence is in the occurrence
-     * {@code parent} of the later text.
+     * it shown inserted or deleted, by its {@code kind}. The occurrence is in the occurrence {@code
+     * parent} of the later text.
      */
     private static DifferenceBuilder whole(
         Occurrence occurrence, Occurrences occurrences, Kind kind, @Nullable String parent) {
-      var mark = kind == Kind.INSERTED ? Marks.INSERTED : Marks.DELETED;
-      var marked = Marks.all(occurrence.element(), mark);
-      var shown = marked.element();
-      var inserted = marked.inserted();
-      var deleted = marked.deleted();
+      var edit = kind == Kind.INSERTED ? Edits.INSERTED : Edits.DELETED;
+      var edited = Edits.all(occurrence.element(), edit);
+      var shown = edited.element();
+      var inserted = edited.inserted();
+      var deleted = edited.deleted();
       var referred = occurrences.notesOf(occurrence.element());
       if (!referred.isEmpty()) {
-        var notes = Marks.all(notes(referred), mark);
+        var notes = Edits.all(notes(referred), edit);
         var children = new ArrayList<>(shown.children());
         children.add(notes.element());
         shown = copy(shown, children);
@@ -338,8 +338,8 @@ public final class Differ {
           .parent(parent)
           .list(occurrence.list())
           .section(occurrence.section())
-          .markers(List.of())
-          .earlierMarkers(List.of());
+          .tags(List.of())
+          .earlierTags(List.of());
     }
 
     /**
@@ -361,19 +361,19 @@ public final class Differ {
   /**
    * How the own blocks and notes of an occurrence differ from those of the occurrence that it was.
    *
-   * @param blocks its own blocks as they show: a changed block marked word by word, an inserted
-   *     block marked whole, and each deleted block marked whole, where it stood. It counts the
-   *     marked words of the blocks and of the notes.
-   * @param notes its notes, marked against the notes that it had, with the deleted notes where they
-   *     stood. Null if the notes say the same.
+   * @param blocks its own blocks as they show: a changed block with its edits word by word, an
+   *     inserted block whole as an insertion, and each deleted block whole as a deletion, where it
+   *     stood. It counts the edited words of the blocks and of the notes.
+   * @param notes its notes, with their edits against the notes that it had, with the deleted notes
+   *     where they stood. Null if the notes say the same.
    */
-  private record Marking(Parts.Shown blocks, @Nullable Element notes) {
+  private record Editing(Parts.Shown blocks, @Nullable Element notes) {
 
     /**
      * Returns how {@code to} differs from {@code from}. Returns null if the two occurrences say the
      * same.
      */
-    static @Nullable Marking of(Occurrence from, Occurrence to) {
+    static @Nullable Editing of(Occurrence from, Occurrence to) {
       // What the two occurrences say is worked out from their own blocks and notes alone. Most
       // occurrences of
       // two versions have the same ones, which say the same without working it out.
@@ -385,20 +385,20 @@ public final class Differ {
       for (var each : Parts.differing(from.blocks(), to.blocks(), from.keys(), to.keys())) {
         switch (each) {
           case Parts.Changed(int at, Element was, Element is) ->
-              blocks.replace(at, Marks.between(was, is));
+              blocks.replace(at, Edits.between(was, is));
           case Parts.Inserted(int at, Element is) ->
-              blocks.replace(at, Marks.all(is, Marks.INSERTED));
+              blocks.replace(at, Edits.all(is, Edits.INSERTED));
           case Parts.Deleted(int at, Element was) ->
-              blocks.delete(at, Marks.all(was, Marks.DELETED));
+              blocks.delete(at, Edits.all(was, Edits.DELETED));
         }
       }
       @Nullable Element notes = null;
       if (!keys(from.notes()).equals(keys(to.notes()))) {
-        var marked = Marks.between(Differ.notes(from.notes()), Differ.notes(to.notes()));
-        notes = marked.element();
-        blocks.count(marked);
+        var edited = Edits.between(Differ.notes(from.notes()), Differ.notes(to.notes()));
+        notes = edited.element();
+        blocks.count(edited);
       }
-      return new Marking(blocks, notes);
+      return new Editing(blocks, notes);
     }
 
     /**
@@ -428,7 +428,7 @@ public final class Differ {
    * text.
    *
    * <ul>
-   *   <li>Its own blocks show as its {@link Marking} has them. The blocks deleted after its last
+   *   <li>Its own blocks show as its {@link Editing} has them. The blocks deleted after its last
    *       block come right after that block.
    *   <li>A changed occurrence that does not show whole has only its own content: the occurrences
    *       in it differ on their own. A container with only occurrences in it is then left out.
@@ -449,9 +449,9 @@ public final class Differ {
     private int next;
 
     private Content(Node node, boolean withOccurrences) {
-      var marking = node.marking();
+      var editing = node.editing();
       this.withOccurrences = withOccurrences;
-      this.blocks = marking == null ? new Parts.Shown() : marking.blocks();
+      this.blocks = editing == null ? new Parts.Shown() : editing.blocks();
       this.count = node.occurrence().blocks().size();
       place(node.occurrences());
     }
@@ -498,11 +498,11 @@ public final class Differ {
         // blocks.
         children.addAll(listed(content.deletedAlone));
       }
-      var marking = node.marking();
-      if (marking != null && marking.notes() != null) {
-        children.add(marking.notes());
+      var editing = node.editing();
+      if (editing != null && editing.notes() != null) {
+        children.add(editing.notes());
       }
-      return Marks.referring(copy(element, children));
+      return Edits.referring(copy(element, children));
     }
 
     private List<Element> in(Element element) {
@@ -516,7 +516,7 @@ public final class Differ {
           if (withOccurrences) {
             out.addAll(occurrence(eId, child));
           }
-        } else if (child.name().equals("provenance") || child.name().equals("notes")) {
+        } else if (child.name().equals("tag") || child.name().equals("notes")) {
           // The notes at the end of an annex are not its blocks. See Occurrences.
           out.add(child);
         } else if (Occurrences.holdsOccurrences(child)) {
@@ -628,13 +628,13 @@ public final class Differ {
   }
 
   /**
-   * Returns the acts that made {@code difference}, from its markers. Returns an empty set if it has
-   * no markers.
+   * Returns the acts that made {@code difference}, from its tags. Returns an empty set if it has no
+   * tags.
    */
   private static Set<String> acts(DifferenceBuilder difference) {
     var acts = new HashSet<String>();
-    for (var marker : difference.markers()) {
-      acts.add(marker.act());
+    for (var tag : difference.tags()) {
+      acts.add(tag.act());
     }
     return acts;
   }

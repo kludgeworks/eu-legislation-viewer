@@ -4,7 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -71,7 +71,7 @@ public record CompareView(
    * show the law on the two days, {@link Act#textOn}.
    *
    * @param occurrence the eId of the provision that the page is limited to, or null
-   * @param marks the marks of the built texts in {@code language}, by version
+   * @param tags the tags of the built texts in {@code language}, by version
    */
   public static CompareView of(
       Act act,
@@ -82,14 +82,14 @@ public record CompareView(
       @Nullable String occurrence,
       Language language,
       LocalDate today,
-      Map<Version, TextMarks> marks) {
+      Map<Version, TextTags> tags) {
     var eli = eli(act);
     var amending = act.amendingActs(language);
     var between =
-        act.inclusions(language, marks).between(from, to).stream()
+        act.inclusions(language, tags).between(from, to).stream()
             .filter(amending::contains)
             .toList();
-    var text = occurrence == null ? null : marks.get(to);
+    var text = occurrence == null ? null : tags.get(to);
     var name =
         text == null || occurrence == null
             ? null

@@ -126,7 +126,7 @@
                <deleted amendingAct="32006R0802"
                         action="deleted"
                         location="AR:2"
-                        marker="O004001M001000">
+                        tagId="O004001M001000">
                   <emphasis kind="uc">
                      <t v="Commission Regulation"/>
                   </emphasis>
@@ -137,7 +137,7 @@
                <deleted amendingAct="32006R0802"
                         action="deleted"
                         location="AR:2"
-                        marker="O004001M001000">
+                        tagId="O004001M001000">
                   <t v=" (EEC) No 3510/82"/>
                </deleted>
             </docNumber>
@@ -146,7 +146,7 @@
             <deleted amendingAct="32006R0802"
                      action="deleted"
                      location="AR:2"
-                     marker="O004001M001000">
+                     tagId="O004001M001000">
                <t v="of 23 December 1982"/>
             </deleted>
          </p>
@@ -155,12 +155,12 @@
                <deleted amendingAct="32006R0802"
                         action="deleted"
                         location="AR:2"
-                        marker="O004001M001000">
+                        tagId="O004001M001000">
                   <t v="fixing the conversion factors applicable to "/>
                   <changed amendingAct="31987R3940"
                            action="replaced"
                            location="AR:1 .AND. AX:0;PT:VII;PT:1"
-                           marker="O001001M001002">
+                           tagId="O001001M001002">
                      <t v="fish of the genera "/>
                      <emphasis kind="i">
                         <t v="Thunnus"/>
@@ -178,10 +178,10 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
+            <tag amendingAct="32006R0802"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O004001M001000"/>
             <p>
                <t v="THE COMMISSION OF THE EUROPEAN COMMUNITIES,"/>
             </p>
@@ -189,10 +189,10 @@
       </formula>
       <citations>
          <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
+            <tag amendingAct="32006R0802"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O004001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
                <p>
                   <t v="Having regard to the Treaty establishing the European Economic Community,"/>
@@ -209,17 +209,17 @@
       </citations>
       <recitals>
          <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
+            <tag amendingAct="32006R0802"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O004001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
                <p>
                   <t v="Whereas a Community producer price is fixed every year for "/>
                   <changed amendingAct="31987R3940"
                            action="replaced"
                            location="AR:1 .AND. AX:0;PT:VII;PT:1"
-                           marker="O001001M002001">
+                           tagId="O001001M002001">
                      <t v="fish of the genera "/>
                      <emphasis kind="i">
                         <t v="Thunnus"/>
@@ -238,7 +238,7 @@
                   <changed amendingAct="31987R3940"
                            action="replaced"
                            location="AR:1 .AND. AX:0;PT:VII;PT:1"
-                           marker="O001001M002002">
+                           tagId="O001001M002002">
                      <t v="fish of the genera "/>
                      <emphasis kind="i">
                         <t v="Thunnus"/>
@@ -260,10 +260,10 @@
       </recitals>
       <formula name="enactingFormula">
          <deleted>
-            <provenance amendingAct="32006R0802"
-                        action="deleted"
-                        location="AR:2"
-                        marker="O004001M001000"/>
+            <tag amendingAct="32006R0802"
+                 action="deleted"
+                 location="AR:2"
+                 tagId="O004001M001000"/>
             <p>
                <t v="HAS ADOPTED THIS REGULATION:"/>
             </p>
@@ -272,10 +272,10 @@
    </preamble>
    <body>
       <deleted>
-         <provenance amendingAct="32006R0802"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32006R0802"
+              action="deleted"
+              location="AR:2"
+              tagId="O004001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
@@ -285,7 +285,7 @@
                <changed amendingAct="31987R3940"
                         action="replaced"
                         location="AR:1 .AND. AX:0;PT:VII;PT:1"
-                        marker="O001001M003000">
+                        tagId="O001001M003000">
                   <t v="fish of the genera "/>
                   <emphasis kind="i">
                      <t v="Thunnus"/>
@@ -310,10 +310,10 @@
    </body>
    <conclusions>
       <deleted>
-         <provenance amendingAct="32006R0802"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32006R0802"
+              action="deleted"
+              location="AR:2"
+              tagId="O004001M001000"/>
          <p>
             <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
          </p>
@@ -321,15 +321,15 @@
    </conclusions>
    <annexes>
       <deleted>
-         <provenance amendingAct="32006R0802"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32006R0802"
+              action="deleted"
+              location="AR:2"
+              tagId="O004001M001000"/>
          <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
-            <provenance amendingAct="31992R3899"
-                        action="replaced"
-                        location="AR:1 .AND. AX:0"
-                        marker="O003001M001000"/>
+            <tag amendingAct="31992R3899"
+                 action="replaced"
+                 location="AR:1 .AND. AX:0"
+                 tagId="O003001M001000"/>
             <num>
                <t v="ANNEX"/>
             </num>
@@ -554,10 +554,10 @@
    </annexes>
    <notes>
       <deleted>
-         <provenance amendingAct="32006R0802"
-                     action="deleted"
-                     location="AR:2"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32006R0802"
+              action="deleted"
+              location="AR:2"
+              tagId="O004001M001000"/>
          <note eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"

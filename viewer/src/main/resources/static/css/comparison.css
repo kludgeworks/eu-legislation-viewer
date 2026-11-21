@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: MIT */
 /*
  * Styles of the comparison module (comparison/*.jte).
- * Includes outline navigation, synopsis ledger, changes column, and diff marks.
+ * Includes outline navigation, synopsis ledger, changes column, and the edits.
  */
 .chips {
   display: flex;
@@ -122,7 +122,7 @@ a.chip:hover {
 }
 
 /* The Whole text view shows every provision of the later text. Each provision that differs is
- * marked in place, as in the Changes view. The text of the other provisions stays in its column. */
+ * shown with their edits in place, as in the Changes view. The text of the other provisions stays in its column. */
 .whole .book {
   padding: 16px 0 24px 32px;
 }
@@ -326,14 +326,14 @@ details.ledger-fold[open] {
   min-width: 0;
 }
 
-/* Compare hides the amendment marks (▼) and the struck text that a consolidation keeps. The
- * sidenotes and the change marks say what happened. Read shows them. The wording of a change on
+/* Compare hides the tags (▼) and the struck text that a consolidation keeps. The
+ * sidenotes and the edits say what happened. Read shows them. The wording of a change on
  * the page of an amending act hides them too: the page says the act. */
-.changes .provenance,
+.changes .tag,
 .changes .deleted,
-.sides .provenance,
+.sides .tag,
 .sides .deleted,
-.wording-text .provenance,
+.wording-text .tag,
 .wording-text .deleted {
   display: none;
 }
@@ -367,7 +367,7 @@ details.ledger-fold[open] {
 /* A comparison can have thousands of differences. The browser lays out and paints only those near
  * the screen, and keeps the height it last laid out for the others (content-visibility). It still
  * finds their words, for Find in page. It clips what a difference draws outside its box, so the box
- * reaches 28px into the margin, over its number and the amendment markers of its occurrence; the columns
+ * reaches 28px into the margin, over its number and the tags of its occurrence; the columns
  * don't move. A row of the Synopsis is the same. */
 .changes .difference,
 .ledger-row:not(.ledger-head) {
@@ -830,28 +830,28 @@ nav.outline .rail-map a.on {
   color: var(--accent);
 }
 
-/* The ▼ mark that shows what amended an occurrence. It is in the margin beside the number of the occurrence.
+/* The ▼ tag that shows what amended an occurrence. It is in the margin beside the number of the occurrence.
  * Its hover shows the act and what it did. A click opens the change in Compare. Read does not show
  * the change itself. */
 .legal-text .occurrence {
   position: relative;
 }
 
-.legal-text .occurrence > .provenance,
-.legal-text .occurrence > .deleted > .provenance {
+.legal-text .occurrence > .tag,
+.legal-text .occurrence > .deleted > .tag {
   position: absolute;
   left: -1.3rem;
   top: 0.15em;
 }
 
-.provenance::before {
+.tag::before {
   content: "▼";
   color: var(--muted);
   font-size: 0.7em;
   margin-right: 0.25rem;
 }
 
-.content .provenance {
+.content .tag {
   cursor: pointer;
 }
 
@@ -870,8 +870,8 @@ ins.changed {
   text-decoration: none;
 }
 
-/* The marks of a comparison. Inserted words are underlined on a blue tint. Deleted words are struck
- * through on a red tint. The two marks differ in lightness too, not only in hue. */
+/* The edits of a comparison. Inserted words are underlined on a blue tint. Deleted words are struck
+ * through on a red tint. The two kinds differ in lightness too, not only in hue. */
 ins.diff {
   color: var(--ins-ink);
   background: var(--ins-bg);
@@ -885,7 +885,7 @@ del.diff {
   text-decoration: line-through;
 }
 
-/* The marks of a correction, in every view. Words that a corrigendum added have a dotted
+/* The edits of a correction, in every view. Words that a corrigendum added have a dotted
  * underline. Words that it removed are struck through. Both are violet. */
 .corrected ins.diff,
 .corrected del.diff {
@@ -899,7 +899,7 @@ del.diff {
   text-decoration-thickness: 2px;
 }
 
-/* The legend at the end of the line of controls. It says what the marks on the page mean. */
+/* The legend at the end of the line of controls. It says what the edits on the page mean. */
 .controls .legend {
   margin-left: auto;
   color: var(--muted);

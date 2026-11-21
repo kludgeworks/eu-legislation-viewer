@@ -19,7 +19,7 @@
       where each part comes from (the amending act that inserted, replaced or deleted it).
 
       This schema checks the structure. The rules it can't express (eIds unique among the occurrences in
-      force, note references that resolve, consistent amendment markers) are in legal-text.sch, an
+      force, note references that resolve, consistent tags) are in legal-text.sch, an
       ISO Schematron file with the XSLT 3.0 binding: a legal text is valid against both.
 
       Design rules, so that code generation gives clean classes:
@@ -261,7 +261,7 @@
     <xs:attribute name="label">
       <xs:annotation>
         <xs:documentation>
-          The label the version's text marks what the act put there with, as EUR-Lex prints it (▼M2): M and the
+          The label of the version's tags on what the act put there, as EUR-Lex prints it (▼M2): M and the
           amendment's place among the source's amendments, C and the corrigendum's among its corrigenda. None for an
           act of another kind (an accession, a repeal).
         </xs:documentation>
@@ -503,7 +503,7 @@
       </xs:documentation>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="provenance" type="Provenance" maxOccurs="unbounded">
+      <xs:element name="tag" type="Tag" maxOccurs="unbounded">
         <xs:annotation><xs:documentation>The deleting act.</xs:documentation></xs:annotation>
       </xs:element>
       <xs:element name="note" type="Note" maxOccurs="unbounded">
@@ -570,7 +570,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this occurrence in its current form, outermost first.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="num" type="InlineContent" minOccurs="0">
@@ -785,8 +785,8 @@
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="AmendmentMarker">
-    <xs:annotation><xs:documentation>The id of a consolidation's amendment marker (Formex CLG.MDFO ID), as the source writes it, e.g. O000001M001002.</xs:documentation></xs:annotation>
+  <xs:simpleType name="TagId">
+    <xs:annotation><xs:documentation>The id of a consolidation's tag (Formex CLG.MDFO ID), as the source writes it, e.g. O000001M001002.</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="\S+"/>
     </xs:restriction>
@@ -884,7 +884,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this paragraph in its current form, when they differ from its occurrence's.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:group ref="inline"/>
@@ -898,7 +898,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this list in its current form, when they differ from its occurrence's.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:choice maxOccurs="unbounded">
@@ -942,7 +942,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this table in its current form, when they differ from its occurrence's.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="caption" type="Caption" minOccurs="0">
@@ -972,7 +972,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this group in its current form.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="caption" type="Caption" minOccurs="0">
@@ -1026,7 +1026,7 @@
     <xs:complexContent>
       <xs:extension base="TableRow">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this row in its current form.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="td" type="Cell" maxOccurs="unbounded">
@@ -1079,7 +1079,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this annotation in its current form.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="heading" type="Lines" minOccurs="0">
@@ -1096,7 +1096,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this figure in its current form.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:element name="caption" type="Caption" minOccurs="0">
@@ -1144,7 +1144,7 @@
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The amending acts that put this formula in its current form.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:any namespace="http://www.w3.org/1998/Math/MathML" processContents="skip">
@@ -1188,13 +1188,13 @@
     <xs:annotation>
       <xs:documentation>
         Content an amendment deleted but the consolidation keeps. Never live text: it is in force no longer,
-        and its provenance names the act that deleted it.
+        and its tag names the act that deleted it.
       </xs:documentation>
     </xs:annotation>
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
-          <xs:element name="provenance" type="Provenance" maxOccurs="unbounded">
+          <xs:element name="tag" type="Tag" maxOccurs="unbounded">
             <xs:annotation><xs:documentation>The deleting act.</xs:documentation></xs:annotation>
           </xs:element>
           <xs:group ref="blocks"/>
@@ -1203,12 +1203,12 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <!-- ============================================================ provenance -->
+  <!-- ============================================================ tag -->
 
-  <xs:complexType name="Provenance">
+  <xs:complexType name="Tag">
     <xs:annotation>
       <xs:documentation>
-        Which amending act put an occurrence or block in its current form, from the consolidation's amendment markers
+        Which amending act put an occurrence or block in its current form, from the consolidation's tags
         (Formex CLG.MDFO and CLG.MDFC processing instructions).
       </xs:documentation>
     </xs:annotation>
@@ -1226,8 +1226,8 @@
     <xs:attribute name="location" type="xs:string">
       <xs:annotation><xs:documentation>Where in the amending act, as Formex writes it: "AR:1 .AND. AX:0;PT:27".</xs:documentation></xs:annotation>
     </xs:attribute>
-    <xs:attribute name="marker" type="AmendmentMarker" use="required">
-      <xs:annotation><xs:documentation>The Formex marker id; pieces of one marker split at element boundaries share it.</xs:documentation></xs:annotation>
+    <xs:attribute name="tagId" type="TagId" use="required">
+      <xs:annotation><xs:documentation>The Formex tag id; pieces of one tag split at element boundaries share it.</xs:documentation></xs:annotation>
     </xs:attribute>
   </xs:attributeGroup>
 
@@ -1492,7 +1492,7 @@
     <xs:annotation>
       <xs:documentation>
         A text-level amendment: the words an amending act inserted or replaced inside a paragraph (an amendment
-        marker that opens or closes inside text). Inside a num, it shows a renumbering.
+        tag that opens or closes inside text). Inside a num, it shows a renumbering.
       </xs:documentation>
     </xs:annotation>
     <xs:complexContent>

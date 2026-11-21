@@ -11,7 +11,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationChang
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationCompleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.PreparationFailed;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -146,39 +146,39 @@ class TextService implements Texts {
   /**
    * {@inheritDoc}
    *
-   * <p>The marks are in the outline of each text, which the content module keeps.
+   * <p>The tags are in the outline of each text, which the content module keeps.
    */
   @Override
-  public Map<Version, TextMarks> marks(Preparation preparation) {
+  public Map<Version, TextTags> tags(Preparation preparation) {
     var start = System.nanoTime();
-    var marks = new LinkedHashMap<Version, TextMarks>();
+    var tags = new LinkedHashMap<Version, TextTags>();
     preparation
         .texts()
         .forEach(
             (version, text) -> {
               switch (text) {
                 case Text.Ready ready ->
-                    content.outline(ready.text()).ifPresent(o -> marks.put(version, marks(o)));
+                    content.outline(ready.text()).ifPresent(o -> tags.put(version, tags(o)));
                 case Text.Waiting _, Text.Converting _, Text.Failed _ -> {
-                  // not built: it gives no marks
+                  // not built: it gives no tags
                 }
               }
             });
     LOG.debug(
-        "Marks of {} of {} texts of {} in {}, in {} ms",
-        marks.size(),
+        "Tags of {} of {} texts of {} in {}, in {} ms",
+        tags.size(),
         preparation.texts().size(),
         preparation.act(),
         preparation.language().code(),
         (System.nanoTime() - start) / 1_000_000);
-    return marks;
+    return tags;
   }
 
-  /** Returns the marks in {@code outline}, by act. A mark that is not a CELEX is left out. */
-  private static TextMarks marks(Outline outline) {
+  /** Returns the tags in {@code outline}, by act. A tag that is not a CELEX is left out. */
+  private static TextTags tags(Outline outline) {
     var byAct = new HashMap<ActIdentifier, Set<String>>();
     outline
-        .marks()
+        .tags()
         .forEach(
             (occurrence, acts) ->
                 acts.stream()
@@ -188,7 +188,7 @@ class TextService implements Texts {
                             byAct
                                 .computeIfAbsent(new ActIdentifier(act), each -> new HashSet<>())
                                 .add(occurrence)));
-    return new TextMarks(outline.eIds(), byAct);
+    return new TextTags(outline.eIds(), byAct);
   }
 
   @Override

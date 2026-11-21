@@ -17,7 +17,7 @@
   <!-- occurrences, quoted structures and notes that are in force: not inside a deleted placeholder -->
   <xsl:key name="live-eid" match="(lt:occurrence | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]" use="@eId"/>
   <xsl:key name="note" match="lt:note" use="@eId"/>
-  <xsl:key name="marker" match="lt:*[@marker][@amendingAct]" use="@marker"/>
+  <xsl:key name="tag" match="lt:*[@tagId][@amendingAct]" use="@tagId"/>
 
   <sch:pattern id="eids">
     <sch:title>eIds identify occurrences</sch:title>
@@ -63,10 +63,10 @@
 
   <sch:pattern id="deletions">
     <sch:title>Deleted content says so, and only it</sch:title>
-    <sch:rule context="lt:provenance">
+    <sch:rule context="lt:tag">
       <sch:assert id="deletion-in-deleted" test="(@action = 'deleted') = exists(parent::lt:deleted)">
-        A deletion is the provenance of a deleted placeholder, and a deleted placeholder's provenance is its deletion
-        (marker <sch:value-of select="@marker"/>).
+        A deletion is the tag of a deleted placeholder, and a deleted placeholder's tag is its deletion
+        (tag <sch:value-of select="@tagId"/>).
       </sch:assert>
     </sch:rule>
   </sch:pattern>
@@ -84,13 +84,13 @@
   </sch:pattern>
 
   <sch:pattern id="amendments">
-    <sch:title>An amendment marker means one amendment</sch:title>
-    <!-- a marker split at element boundaries becomes several pieces that share its id -->
-    <sch:rule context="lt:*[@marker][@amendingAct]">
-      <sch:assert id="marker-consistent"
-                  test="every $piece in key('marker', @marker)
+    <sch:title>A tag means one amendment</sch:title>
+    <!-- a tag split at element boundaries becomes several pieces that share its id -->
+    <sch:rule context="lt:*[@tagId][@amendingAct]">
+      <sch:assert id="tag-consistent"
+                  test="every $piece in key('tag', @tagId)
                         satisfies $piece/@amendingAct = @amendingAct and $piece/@action = @action">
-        The pieces of marker <sch:value-of select="@marker"/> disagree on the amending act or action.
+        The pieces of tag <sch:value-of select="@tagId"/> disagree on the amending act or action.
       </sch:assert>
     </sch:rule>
   </sch:pattern>

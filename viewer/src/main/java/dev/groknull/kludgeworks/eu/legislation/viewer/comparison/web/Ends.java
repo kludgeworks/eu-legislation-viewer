@@ -22,7 +22,7 @@ import org.jspecify.annotations.Nullable;
  *   <li>the versions that start on {@code from} and on {@code to}. From is not after To.
  *   <li>the act asked for, to limit the comparison to its changes. It is between the two versions.
  *   <li>the preparation of the act in the language, and the acts that each version includes ({@link
- *       Inclusions}): Cellar's lists, and the acts that the built texts mark first
+ *       Inclusions}): Cellar's lists, and the acts that the built texts tag first
  * </ul>
  *
  * <p>Anything else is 404. The compare page and the API find the canonical address for any dates.
@@ -49,7 +49,7 @@ final class Ends {
     this.act = act;
     timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
     preparation = texts.preparation(act, language);
-    included = act.inclusions(language, texts.marks(preparation));
+    included = act.inclusions(language, texts.tags(preparation));
     this.from = timeline.startingOn(from).orElseThrow(Requests::notFound);
     this.to = timeline.startingOn(to).orElseThrow(Requests::notFound);
     if (this.from.date().isAfter(this.to.date())) {

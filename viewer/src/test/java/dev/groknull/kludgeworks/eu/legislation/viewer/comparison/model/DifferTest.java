@@ -8,8 +8,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ.Compared;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
@@ -29,8 +29,8 @@ import org.junit.jupiter.api.Test;
  * October 2026. The texts are as the content module reads them back. 2026/449 applies from 22
  * March. Its points on screening of in-flight supplies and airport supplies apply from 1 October.
  *
- * <p>The tests write out a marked element as it reads. Inserted words show as [+so] and deleted
- * words as [-so].
+ * <p>The tests write out an element with its edits as it reads. Inserted words show as [+so] and
+ * deleted words as [-so].
  */
 class DifferTest {
   static final Element JANUARY = text("02015R1998-20260101");
@@ -83,11 +83,11 @@ class DifferTest {
   @Test
   void keepsTheTextsStructureAroundItsMarks() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst().shown();
-    assertThat(c.children()).extracting(Element::name).containsExactly("provenance", "num", "p");
+    assertThat(c.children()).extracting(Element::name).containsExactly("tag", "num", "p");
     assertThat(descendants(c))
         .filteredOn(element -> element.name().startsWith("diff:"))
         .allSatisfy(
-            mark -> assertThat(mark.children()).extracting(Element::name).containsOnly("t"));
+            edit -> assertThat(edit.children()).extracting(Element::name).containsOnly("t"));
   }
 
   @Test
@@ -190,11 +190,11 @@ class DifferTest {
         .extracting(Difference::eId)
         .doesNotContain("anx/pnt_9.1.3.5/pnt_b/idt_1");
     var inserted = find(differences, "anx/pnt_8.1.2.4");
-    assertThat(unmarked(inserted.shown())).isBlank();
+    assertThat(unedited(inserted.shown())).isBlank();
     assertThat(said(inserted.shown())).startsWith("[+").doesNotContain("[-");
     assertThat(inserted.deleted()).isZero();
     var deleted = find(differences, "anx/pnt_9.1.3.6");
-    assertThat(unmarked(deleted.shown())).isBlank();
+    assertThat(unedited(deleted.shown())).isBlank();
     assertThat(said(deleted.shown())).startsWith("[-").doesNotContain("[+");
     assertThat(deleted.inserted()).isZero();
   }
@@ -203,7 +203,7 @@ class DifferTest {
   void readsAnOccurrenceTheLaterTextKeepsStruckAsDeletedByTheActThatStruckIt() {
     var struck = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_6.8.1.6");
     assertThat(struck.kind()).isEqualTo(Kind.DELETED);
-    assertThat(struck.markers()).containsExactly(new Marker("32026R0449", "deleted", null));
+    assertThat(struck.tags()).containsExactly(new Tag("32026R0449", "deleted", null));
     assertThat(Occurrences.of(MARCH).get("anx/pnt_6.8.1.6")).isNull();
   }
 
@@ -574,17 +574,14 @@ class DifferTest {
   }
 
   @Test
-  void pairsStructureLevelOccurrenceRenumberedViaProvenance() {
+  void pairsStructureLevelOccurrenceRenumberedViaTags() {
     var earlier =
         text(
-            annexWithProvenance(
-                "anx_I", "ANNEX I", "Provisions on security screening.", "A", "replaced"),
-            annexWithProvenance(
-                "anx_II", "ANNEX II", "Provisions on chemical safety.", "A", "replaced"));
+            annexWithTags("anx_I", "ANNEX I", "Provisions on security screening.", "A", "replaced"),
+            annexWithTags("anx_II", "ANNEX II", "Provisions on chemical safety.", "A", "replaced"));
     var later =
         text(
-            annexWithProvenance(
-                "anx_I", "ANNEX I", "Provisions on chemical safety.", "B", "renumbered"));
+            annexWithTags("anx_I", "ANNEX I", "Provisions on chemical safety.", "B", "renumbered"));
 
     var differences = Differ.differences(earlier, later).differences();
 
@@ -607,7 +604,7 @@ class DifferTest {
     var deletedPoint = find(differences, "art_5/par_1/pnt_a");
     assertThat(deletedPoint.kind()).isEqualTo(Kind.DELETED);
     assertThat(deletedPoint.parent()).isEqualTo("art_6/par_1");
-    assertThat(deletedPoint.markers()).containsExactly(new Marker("ActX", "replaced", "art_6"));
+    assertThat(deletedPoint.tags()).containsExactly(new Tag("ActX", "replaced", "art_6"));
   }
 
   @Test
@@ -1023,7 +1020,7 @@ class DifferTest {
   private static Element point(String eId, String words, String act, Element... occurrences) {
     var children = new ArrayList<Element>();
     children.add(
-        new Element("provenance", Map.of("amendingAct", act, "action", "replaced"), List.of(), ""));
+        new Element("tag", Map.of("amendingAct", act, "action", "replaced"), List.of(), ""));
     children.add(block("p", words));
     children.addAll(List.of(occurrences));
     return new Element("occurrence", Map.of("eId", eId, "kind", "point"), children, "");
@@ -1040,15 +1037,14 @@ class DifferTest {
 
   /**
    * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
-   * act}, marker identifier {@code marker}, action {@code action}, and child occurrences {@code
-   * occurrences}.
+   * act}, tag id {@code tagId}, action {@code action}, and child occurrences {@code occurrences}.
    */
   private static Element pointWithNum(
       String eId,
       String num,
       String words,
       String act,
-      String marker,
+      String tagId,
       String action,
       Element... occurrences) {
     var children = new ArrayList<Element>();
@@ -1056,18 +1052,18 @@ class DifferTest {
       var attrs = new HashMap<String, String>();
       attrs.put("amendingAct", act);
       attrs.put("action", action);
-      if (!marker.isEmpty()) {
-        attrs.put("marker", marker);
+      if (!tagId.isEmpty()) {
+        attrs.put("tagId", tagId);
       }
-      children.add(new Element("provenance", attrs, List.of(), ""));
+      children.add(new Element("tag", attrs, List.of(), ""));
     }
     Element numBlock;
     if ("renumbered".equals(action)) {
       var attrs = new HashMap<String, String>();
       attrs.put("action", "renumbered");
       attrs.put("amendingAct", act);
-      if (!marker.isEmpty()) {
-        attrs.put("marker", marker);
+      if (!tagId.isEmpty()) {
+        attrs.put("tagId", tagId);
       }
       var changed =
           new Element(
@@ -1082,13 +1078,12 @@ class DifferTest {
     return new Element("occurrence", Map.of("eId", eId, "kind", "point"), children, "");
   }
 
-  /** An annex {@code eId} with provenance {@code act} and {@code action}. */
-  private static Element annexWithProvenance(
+  /** An annex {@code eId} with tag {@code act} and {@code action}. */
+  private static Element annexWithTags(
       String eId, String num, String words, String act, String action, Element... occurrences) {
     var children = new ArrayList<Element>();
     if (act != null && action != null) {
-      children.add(
-          new Element("provenance", Map.of("amendingAct", act, "action", action), List.of(), ""));
+      children.add(new Element("tag", Map.of("amendingAct", act, "action", action), List.of(), ""));
     }
     children.add(block("num", num));
     if (!words.isEmpty()) {
@@ -1098,7 +1093,7 @@ class DifferTest {
     return new Element("occurrence", Map.of("eId", eId, "kind", "annex"), children, "");
   }
 
-  /** An article with replaced provenance and renumbered num. */
+  /** An article with replaced tag and renumbered num. */
   private static Element articleWithReplacedAndRenumbered(
       String eId,
       String num,
@@ -1110,10 +1105,7 @@ class DifferTest {
     if (!replacedAct.isEmpty()) {
       children.add(
           new Element(
-              "provenance",
-              Map.of("amendingAct", replacedAct, "action", "replaced"),
-              List.of(),
-              ""));
+              "tag", Map.of("amendingAct", replacedAct, "action", "replaced"), List.of(), ""));
     }
     Element numBlock;
     if (!renumberedAct.isEmpty()) {
@@ -1546,19 +1538,19 @@ class DifferTest {
   @Test
   void namesTheActsThatMarkAnOccurrenceInEachText() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
-    assertThat(c.markers()).containsExactly(new Marker("32026R0449", "replaced", null));
-    // In March the point has no marker, and it is in no occurrence that an act put in whole. So it
+    assertThat(c.tags()).containsExactly(new Tag("32026R0449", "replaced", null));
+    // In March the point has no tag, and it is in no occurrence that an act put in whole. So it
     // is
     // as the act was published.
-    assertThat(c.earlierMarkers()).isEmpty();
+    assertThat(c.earlierTags()).isEmpty();
   }
 
   @Test
   void readsAPointWithoutMarkersAsTheActThatPutThePointItIsInWholePutIt() {
     var occurrences = Occurrences.of(MARCH);
     var a = Objects.requireNonNull(occurrences.get("anx/pnt_1.2.2.3/pnt_a"));
-    assertThat(Markers.of(a, occurrences))
-        .containsExactly(new Marker("32026R0449", "replaced", "anx/pnt_1.2.2.3"));
+    assertThat(Tags.of(a, occurrences))
+        .containsExactly(new Tag("32026R0449", "replaced", "anx/pnt_1.2.2.3"));
   }
 
   @Test
@@ -1666,7 +1658,7 @@ class DifferTest {
         .orElseThrow();
   }
 
-  /** What {@code element} says, with its marks written out as [+inserted] and [-deleted]. */
+  /** What {@code element} says, with its edits written out as [+inserted] and [-deleted]. */
   private static String said(Element element) {
     var out = new StringBuilder();
     say(element, out);
@@ -1690,8 +1682,8 @@ class DifferTest {
     }
   }
 
-  /** The words of {@code element} that are in no mark. */
-  private static String unmarked(Element element) {
+  /** The words of {@code element} that are in no edit. */
+  private static String unedited(Element element) {
     if (element.name().startsWith("diff:")) {
       return "";
     }
@@ -1699,7 +1691,7 @@ class DifferTest {
       return Objects.requireNonNullElse(element.attribute("v"), "");
     }
     var out = new StringBuilder();
-    element.children().forEach(child -> out.append(unmarked(child)));
+    element.children().forEach(child -> out.append(unedited(child)));
     return out.toString();
   }
 

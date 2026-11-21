@@ -44,7 +44,7 @@
                <changed amendingAct="22019D1734R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <emphasis kind="uc">
                      <t v="Decision"/>
                   </emphasis>
@@ -55,7 +55,7 @@
                <changed amendingAct="22019D1734R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v=" No 1/2019 "/>
                   <emphasis kind="uc">
                      <t v="of the EU-Korea Committee on Trade and Sustainable Development"/>
@@ -67,14 +67,14 @@
             <changed amendingAct="22019D1734R(01)"
                      action="replaced"
                      location="TO"
-                     marker="O000001M001002">
+                     tagId="O000001M001002">
                <t v="of "/>
             </changed>
             <docDate date="2019-09-30">
                <changed amendingAct="22019D1734R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="30 September 2019"/>
                </changed>
             </docDate>
@@ -84,7 +84,7 @@
                <changed amendingAct="22019D1734R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="on a revised list of experts willing and able to serve as panellists in accordance with Article 13.15 of the Agreement [2019/1734]"/>
                </changed>
             </docPurpose>

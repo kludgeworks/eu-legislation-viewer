@@ -1,9 +1,9 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarginView
-@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarksView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TagsView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline
 @param String content
 @param Outline outline
-@param MarksView marks
+@param TagsView tags
 @param MarginView margin
 @param String provision
 @param java.util.List<String> provisions
@@ -12,12 +12,12 @@
 <%-- Shows the built text with its outline beside it. htmx loads the text from the content module.
      The outline follows the reader (js/outline.js): it marks the section in view and names it in
      its head. Without the script, the head names nothing.
-     The amendment marks are in the text, which the content module renders without the act. The
-     hidden list holds, for each amending act, when it applies; js/markers.js reads it for each
-     mark's hover. A click on a mark opens the history of its provision under the provision: the
+     The tags are in the text, which the content module renders without the act. The
+     hidden list holds, for each amending act, when it applies; js/tags.js reads it for each
+     tag's hover. A click on a tag opens the history of its provision under the provision: the
      acts that changed it. <provision-links> has the address of that history, and lists the
-     provisions that have a history and can have no mark; js/markers.js gives each of these a
-     hollow sign, ▽, in the place of the mark.
+     provisions that have a history and can have no tag; js/tags.js gives each of these a
+     hollow sign, ▽, in the place of the tag.
      Where the text is not the law on the day, <margin-rules> lists the marks; js/margin.js puts
      them on the text when it arrives. A change that does not apply on the day gets an amber rule
      and a short line with the act. A change that the text does not show gets one grey marker,
@@ -33,9 +33,9 @@
     @template.catalogue.outline(entries = outline.entries(), open = true)
   </nav>
   </act-outline>
-  <div class="marks" hidden>
-    @for(var mark : marks.marks())
-      <span data-act="${mark.act()}" data-applies="${mark.applies()}"></span>
+  <div class="tags" hidden>
+    @for(var tag : tags.tags())
+      <span data-act="${tag.act()}" data-applies="${tag.applies()}"></span>
     @endfor
   </div>
   <provision-links hidden data-href="${provision}">

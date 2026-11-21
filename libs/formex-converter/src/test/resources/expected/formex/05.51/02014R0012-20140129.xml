@@ -172,7 +172,7 @@
                <changed amendingAct="32014R0012R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001000">
+                        tagId="O000001M001000">
                   <emphasis kind="b">
                      <t v="Class 2.3."/>
                   </emphasis>
@@ -182,7 +182,7 @@
                <changed amendingAct="32014R0012R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001000">
+                        tagId="O000001M001000">
                   <emphasis kind="b">
                      <t v="Confectionery, bread, pastry, cakes, biscuits and other baker's wares"/>
                   </emphasis>

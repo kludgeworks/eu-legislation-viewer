@@ -98,7 +98,7 @@
                <deleted amendingAct="32006R0640"
                         action="deleted"
                         location="AR:1"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <emphasis kind="uc">
                      <t v="Council Regulation"/>
                   </emphasis>
@@ -109,7 +109,7 @@
                <deleted amendingAct="32006R0640"
                         action="deleted"
                         location="AR:1"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v=" (EEC) No 3181/78"/>
                </deleted>
             </docNumber>
@@ -118,7 +118,7 @@
             <deleted amendingAct="32006R0640"
                      action="deleted"
                      location="AR:1"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="of 18 December 1978"/>
             </deleted>
          </p>
@@ -127,7 +127,7 @@
                <deleted amendingAct="32006R0640"
                         action="deleted"
                         location="AR:1"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="relating to the European monetary system"/>
                </deleted>
             </docPurpose>
@@ -137,30 +137,30 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <deleted>
-            <provenance amendingAct="32006R0640"
-                        action="deleted"
-                        location="AR:1"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32006R0640"
+                 action="deleted"
+                 location="AR:1"
+                 tagId="O002001M001000"/>
             <p>
                <t v="XXX"/>
             </p>
          </deleted>
       </formula>
       <deleted>
-         <provenance amendingAct="32006R0640"
-                     action="deleted"
-                     location="AR:1"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32006R0640"
+              action="deleted"
+              location="AR:1"
+              tagId="O002001M001000"/>
          <p>
             <t v="This act has been trimmed due to parser errors since it has been repealed."/>
          </p>
       </deleted>
       <formula name="enactingFormula">
          <deleted>
-            <provenance amendingAct="32006R0640"
-                        action="deleted"
-                        location="AR:1"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32006R0640"
+                 action="deleted"
+                 location="AR:1"
+                 tagId="O002001M001000"/>
             <p>
                <t v="XXX"/>
             </p>
@@ -169,10 +169,10 @@
    </preamble>
    <body>
       <deleted>
-         <provenance amendingAct="32006R0640"
-                     action="deleted"
-                     location="AR:1"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32006R0640"
+              action="deleted"
+              location="AR:1"
+              tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>

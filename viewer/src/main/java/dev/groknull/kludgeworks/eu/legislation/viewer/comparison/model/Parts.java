@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import com.github.difflib.DiffUtils;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Marks.Marked;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Edits.Edited;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -95,8 +95,8 @@ final class Parts {
   }
 
   /**
-   * The parts of the later text as a comparison shows them: each part that differs, marked, and the
-   * deleted parts where they stood.
+   * The parts of the later text as a comparison shows them: each part that differs, with its edits,
+   * and the deleted parts where they stood.
    */
   static final class Shown {
     private final Map<Integer, Element> replaced = new HashMap<>();
@@ -104,25 +104,27 @@ final class Parts {
     private int inserted;
     private int deleted;
 
-    /** Shows {@code marked} in the place of the later part at the position {@code at}. */
-    void replace(int at, Marked marked) {
-      replaced.put(at, marked.element());
-      count(marked);
+    /** Shows {@code edited} in the place of the later part at the position {@code at}. */
+    void replace(int at, Edited edited) {
+      replaced.put(at, edited.element());
+      count(edited);
     }
 
-    /** Shows {@code marked}, a deleted part, before the later part at the position {@code at}. */
-    void delete(int at, Marked marked) {
-      deletedAt.computeIfAbsent(at, each -> new ArrayList<>()).add(marked.element());
-      count(marked);
+    /** Shows {@code edited}, a deleted part, before the later part at the position {@code at}. */
+    void delete(int at, Edited edited) {
+      deletedAt.computeIfAbsent(at, each -> new ArrayList<>()).add(edited.element());
+      count(edited);
     }
 
-    /** Counts the marked words of {@code marked}, which shows somewhere else. */
-    void count(Marked marked) {
-      inserted += marked.inserted();
-      deleted += marked.deleted();
+    /** Counts the edited words of {@code edited}, which shows somewhere else. */
+    void count(Edited edited) {
+      inserted += edited.inserted();
+      deleted += edited.deleted();
     }
 
-    /** Returns the later part at the position {@code at} as it shows: marked, or as it is. */
+    /**
+     * Returns the later part at the position {@code at} as it shows: with its edits, or as it is.
+     */
     Element at(int at, Element part) {
       return replaced.getOrDefault(at, part);
     }

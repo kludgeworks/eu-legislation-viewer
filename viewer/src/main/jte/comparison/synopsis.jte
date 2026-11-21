@@ -23,7 +23,7 @@
 <%-- Shows a comparison's Synopsis view. The controls come first. Then a ledger aligns the two
      texts by provision. The column heads name the two days: "From · the law
      on 22 March 2026".
-     Each provision that differs is a row, with its occurrence marked in both texts. Words that it lost are
+     Each provision that differs is a row, with its occurrence and its edits in both texts. Words that it lost are
      struck through in From. Words that it gained are underlined in To. "Not in the text on this day" shows
      where a text does not have the provision. The last column says what changed it, as a sidenote
      says it (sidenotes, by number). The ↑ and ↓ links go to the difference before and after.

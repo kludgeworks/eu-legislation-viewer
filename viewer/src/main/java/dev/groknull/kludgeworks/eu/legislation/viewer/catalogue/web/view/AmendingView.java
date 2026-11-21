@@ -8,7 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.State;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
@@ -93,7 +93,7 @@ public record AmendingView(
    *
    * @param group the day of application that limits the page, or {@link #NOT_KNOWN}. Null for all
    *     changes.
-   * @param text the marks of the latest built text of the act, which give the order of the text.
+   * @param text the tags of the latest built text of the act, which give the order of the text.
    *     Null if no text is built.
    * @param step the two texts that show the wording of the changes. Null if they are not built, or
    *     if no version integrates the amending act.
@@ -105,7 +105,7 @@ public record AmendingView(
       LocalDate today,
       Language language,
       @Nullable String group,
-      @Nullable TextMarks text,
+      @Nullable TextTags text,
       @Nullable Step step) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);

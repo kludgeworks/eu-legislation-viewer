@@ -442,8 +442,8 @@ section.selection.compare a {
   color: var(--accent);
 }
 
-/* The sign that opens the history of a provision that has no ▼ mark. It is hollow, and it is in
- * the place of the mark: in the margin beside the number of the occurrence. */
+/* The sign that opens the history of a provision that has no ▼ tag. It is hollow, and it is in
+ * the place of the tag: in the margin beside the number of the occurrence. */
 .content .occurrence > .provision-link {
   position: absolute;
   left: -1.45rem;
@@ -458,16 +458,16 @@ section.selection.compare a {
   cursor: pointer;
 }
 
-/* On Read, the ▼ mark and the ▽ sign are links to the history of a provision, so they have the
+/* On Read, the ▼ tag and the ▽ sign are links to the history of a provision, so they have the
  * colour of a link. */
-.content .provenance::before {
+.content .tag::before {
   color: var(--accent);
 }
 
 .content .provision-link:hover,
 .content .provision-link:focus-visible,
-.content .provenance:hover::before,
-.content .provenance:focus-visible::before {
+.content .tag:hover::before,
+.content .tag:focus-visible::before {
   color: var(--accent-hover);
 }
 

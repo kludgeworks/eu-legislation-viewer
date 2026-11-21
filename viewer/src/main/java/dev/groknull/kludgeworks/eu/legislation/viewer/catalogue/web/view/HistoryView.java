@@ -7,7 +7,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -83,7 +83,7 @@ public record HistoryView(
    * acts between them, as {@link Act#amendingActsBetween} gives them.
    *
    * @param first the first of two days, before {@code day}. Null for one day.
-   * @param marks the marks of the texts of the act in {@code language} that are built. They tell
+   * @param tags the tags of the texts of the act in {@code language} that are built. They tell
    *     which text shows the law on a day. They are used with two days only.
    */
   public static HistoryView of(
@@ -92,13 +92,13 @@ public record HistoryView(
       LocalDate today,
       Language language,
       @Nullable LocalDate first,
-      Map<Version, TextMarks> marks) {
+      Map<Version, TextTags> tags) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = day.isBefore(today);
     var kept = day.equals(today) ? null : day;
     var amending = act.amendingActs(language);
     var cited = act.cited(act.id());
-    var found = first == null ? null : act.amendingActsBetween(first, day, language, marks);
+    var found = first == null ? null : act.amendingActsBetween(first, day, language, tags);
     var shown = found == null ? amending : found.orElseGet(List::of);
     return new HistoryView(
         cited

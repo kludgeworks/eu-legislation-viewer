@@ -17,13 +17,13 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * Renders the Whole text view of a comparison. It shows every provision of the later text as it
- * reads. Each shown difference is marked in place, as {@code marked} renders it. For example, with
- * its number and its sidenote.
+ * reads. Each shown difference shows its edits in place, as {@code edited} renders it. For example,
+ * with its number and its sidenote.
  *
  * <ul>
- *   <li>A changed provision has its own content marked, then the occurrences in it. These
+ *   <li>A changed provision has its own content with its edits, then the occurrences in it. These
  *       occurrences can also differ.
- *   <li>An inserted provision is marked as a whole.
+ *   <li>An inserted provision is one insertion, as a whole.
  *   <li>The later text does not have a deleted provision. The deleted provision stands where it
  *       stood in the earlier text. It goes after the occurrence before it there. If there is none,
  *       it goes before the occurrence after it. If there is none, it goes at the end.
@@ -36,10 +36,10 @@ final class WholeText {
   private WholeText() {}
 
   /**
-   * Returns the later text {@code later}, with the differences {@code shown} marked by {@code
-   * marked}. Each difference's occurrence is as {@code occurrence} gives it, for example with its
-   * rows folded. It places the deleted differences by the occurrences of the earlier text. {@code
-   * earlier} has the eIds of these occurrences in document order.
+   * Returns the later text {@code later}, with the differences {@code shown} and their edits, by
+   * {@code edited}. Each difference's occurrence is as {@code occurrence} gives it, for example
+   * with its rows folded. It places the deleted differences by the occurrences of the earlier text.
+   * {@code earlier} has the eIds of these occurrences in document order.
    */
   static Content of(
       Element later,
@@ -47,7 +47,7 @@ final class WholeText {
       List<ChangesView.Shown> shown,
       LegalRenderer html,
       Function<ChangesView.Shown, Element> occurrence,
-      BiFunction<ChangesView.Shown, Content, Content> marked) {
+      BiFunction<ChangesView.Shown, Content, Content> edited) {
     var occurrences = new HashSet<String>();
     collect(later, occurrences);
     var at = new HashMap<String, ChangesView.Shown>();
@@ -79,22 +79,22 @@ final class WholeText {
           (element, hooked) ->
               out -> {
                 for (var deleted : before.getOrDefault(eId, List.of())) {
-                  deletion(deleted, hooked, occurrence, marked).writeTo(out);
+                  deletion(deleted, hooked, occurrence, edited).writeTo(out);
                 }
                 var difference = at.get(eId);
                 if (difference == null) {
                   hooked.asIs(element).writeTo(out);
                 } else if (difference.difference().kind() == Kind.CHANGED) {
-                  // Mark its own content, then write the occurrences in it as the text has them.
-                  marked.apply(difference, hooked.asIs(occurrence.apply(difference))).writeTo(out);
+                  // Edits its own content, then write the occurrences in it as the text has them.
+                  edited.apply(difference, hooked.asIs(occurrence.apply(difference))).writeTo(out);
                   for (var inside : inside(element)) {
                     hooked.element(inside).writeTo(out);
                   }
                 } else {
-                  marked.apply(difference, hooked.asIs(occurrence.apply(difference))).writeTo(out);
+                  edited.apply(difference, hooked.asIs(occurrence.apply(difference))).writeTo(out);
                 }
                 for (var deleted : after.getOrDefault(eId, List.of())) {
-                  deletion(deleted, hooked, occurrence, marked).writeTo(out);
+                  deletion(deleted, hooked, occurrence, edited).writeTo(out);
                 }
               });
     }
@@ -102,7 +102,7 @@ final class WholeText {
     return out -> {
       hooked.element(later).writeTo(out);
       for (var deleted : last) {
-        deletion(deleted, hooked, occurrence, marked).writeTo(out);
+        deletion(deleted, hooked, occurrence, edited).writeTo(out);
       }
     };
   }
@@ -111,8 +111,8 @@ final class WholeText {
       ChangesView.Shown deleted,
       LegalRenderer html,
       Function<ChangesView.Shown, Element> occurrence,
-      BiFunction<ChangesView.Shown, Content, Content> marked) {
-    return marked.apply(deleted, html.asIs(occurrence.apply(deleted)));
+      BiFunction<ChangesView.Shown, Content, Content> edited) {
+    return edited.apply(deleted, html.asIs(occurrence.apply(deleted)));
   }
 
   /**

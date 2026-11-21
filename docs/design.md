@@ -89,13 +89,14 @@ The pages have no timeline. The day control sets the day of a page:
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
 | side note | The note beside a difference. It names the act and the date. |
 | status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
+| tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
 | marker | The sign in the text of Read where the text does not show a change: "Not in this text". |
 | fold | A group of provisions that the page hides until the reader opens it. |
 | outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
 | state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". |
 | history | The list of the amending acts of an act, newest first. |
-| history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ mark of the provision opens it. A provision that has a history and no ▼ mark has a hollow sign, ▽, in the same place. |
+| history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
 
 Do not use the labels of EUR-Lex for amending acts (M1, M2). Name the act by its number.
 
@@ -227,7 +228,7 @@ of the viewer before each path.
 | Read, the act itself does not apply yet | `/eli/reg/2016/679/2017-01-01/eng` |
 | Read, provisions that do not apply yet | `/eli/reg/2008/767/2018-01-01/eng` |
 | Read, date not confirmed | `/eli/reg/2018/1862/2026-11-17/eng` |
-| Read, the history of a provision: the ▼ mark of Article 6(2) | `/eli/reg/2008/767/2026-11-17/eng#art_6` |
+| Read, the history of a provision: the ▼ tag of Article 6(2) | `/eli/reg/2008/767/2026-11-17/eng#art_6` |
 | Read, no text in the language | `/eli/reg_impl/2015/1998/2021-12-31/gle` |
 | Compare, Changes | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |
 | Compare, Whole text | the same, with `&view=whole` |

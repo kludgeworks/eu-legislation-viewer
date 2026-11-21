@@ -407,10 +407,10 @@
                   </p>
                </occurrence>
                <occurrence eId="art_1/pnt_c" kind="point" numbered="true">
-                  <provenance amendingAct="32004R1319"
-                              action="replaced"
-                              location="AR:1;PT:1"
-                              marker="O004001M001000"/>
+                  <tag amendingAct="32004R1319"
+                       action="replaced"
+                       location="AR:1;PT:1"
+                       tagId="O004001M001000"/>
                   <num>
                      <t v="(c)"/>
                   </num>
@@ -1591,10 +1591,10 @@
             </occurrence>
          </occurrence>
          <occurrence eId="cpt_II/sct_5" kind="division" rank="2">
-            <provenance amendingAct="32004R1319"
-                        action="replaced"
-                        location="AR:1;PT:2;PT:a"
-                        marker="O004001M002000"/>
+            <tag amendingAct="32004R1319"
+                 action="replaced"
+                 location="AR:1;PT:2;PT:a"
+                 tagId="O004001M002000"/>
             <num>
                <t v="Section 5"/>
             </num>
@@ -1614,7 +1614,7 @@
                      <changed amendingAct="32004R1339"
                               action="replaced"
                               location="AR:1"
-                              marker="O004001M003000">
+                              tagId="O004001M003000">
                         <date date="2002-10-01">
                            <t v="1 October 2002"/>
                         </date>
@@ -1829,10 +1829,10 @@
             </occurrence>
          </occurrence>
          <occurrence eId="cpt_II/sct_6" kind="division" rank="2">
-            <provenance amendingAct="32004R1319"
-                        action="inserted"
-                        location="AR:1;PT:2;PT:b"
-                        marker="O004001M004000"/>
+            <tag amendingAct="32004R1319"
+                 action="inserted"
+                 location="AR:1;PT:2;PT:b"
+                 tagId="O004001M004000"/>
             <num>
                <t v="Section 6"/>
             </num>
@@ -2709,10 +2709,10 @@
             <t v="NOTIFICATION"/>
          </subheading>
          <occurrence eId="art_36" kind="article" rank="2">
-            <provenance amendingAct="32004R1319"
-                        action="replaced"
-                        location="AR:1;PT:3"
-                        marker="O004001M005000"/>
+            <tag amendingAct="32004R1319"
+                 action="replaced"
+                 location="AR:1;PT:3"
+                 tagId="O004001M005000"/>
             <num>
                <t v="Article 36"/>
             </num>

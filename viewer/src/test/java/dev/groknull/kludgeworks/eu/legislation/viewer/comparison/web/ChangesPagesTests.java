@@ -172,7 +172,7 @@ class ChangesPagesTests {
     var provision = Objects.requireNonNull(first.selectFirst(".provision"));
     assertThat(provision.ownText()).isEqualTo("8.1.2.3(c)");
     assertThat(provision.select(".n").text()).isEqualTo("difference 1 of 6");
-    // Both sides have the same marked occurrence. In From, the style of the page hides its
+    // Both sides have the same occurrence with its edits. In From, the style of the page hides its
     // insertions.
     assertThat(first.select(".from ins.diff").text())
         .isEqualTo(first.select(".to ins.diff").text())

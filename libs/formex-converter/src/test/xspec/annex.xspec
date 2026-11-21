@@ -352,9 +352,9 @@
       </CONS.ACT>
     </x:context>
     <x:expect label="the placeholder keeps its eId inside deleted"
-              test="$x:result//*:deleted/*:occurrence/@eId = 'anx/pnt_6.1.3' and $x:result//*:deleted/*:provenance/@amendingAct = '32019R0103'"/>
+              test="$x:result//*:deleted/*:occurrence/@eId = 'anx/pnt_6.1.3' and $x:result//*:deleted/*:tag/@amendingAct = '32019R0103'"/>
     <x:expect label="the new point gets the same eId: the placeholder doesn't hold on to it"
-              test="$x:result//*:occurrence[not(ancestor::*:deleted)][@eId = 'anx/pnt_6.1.3']/*:provenance/@amendingAct = '32022R1174'"/>
+              test="$x:result//*:occurrence[not(ancestor::*:deleted)][@eId = 'anx/pnt_6.1.3']/*:tag/@amendingAct = '32022R1174'"/>
   </x:scenario>
 
   <x:scenario label="A level whose subtitle is a numbered line (02017R1509: II.A9. Goods)">

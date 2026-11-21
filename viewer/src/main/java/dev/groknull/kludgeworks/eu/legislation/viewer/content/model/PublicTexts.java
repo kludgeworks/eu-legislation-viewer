@@ -9,10 +9,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Cell;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Edited;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Extract;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Inline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Marked;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Note;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
@@ -60,7 +60,7 @@ import org.jspecify.annotations.Nullable;
  *       {@code img} with {@code data-file} for an image;
  *   <li>{@code span} with {@code data-act} and {@code data-action} for words that an amending act
  *       changed, and {@code s} with the same attributes for words that it deleted;
- *   <li>{@code ins} and {@code del} for what a comparison marks;
+ *   <li>{@code ins} and {@code del} for the edits of a comparison;
  *   <li>{@code math}, in MathML, for a formula.
  * </ul>
  */
@@ -72,8 +72,7 @@ public final class PublicTexts {
       Map.of("b", "b", "i", "i", "u", "u", "sup", "sup", "sub", "sub", "strike", "s");
 
   /** What an occurrence holds before its content. */
-  private static final Set<String> OCCURRENCE_PARTS =
-      Set.of("provenance", "num", "heading", "subheading");
+  private static final Set<String> OCCURRENCE_PARTS = Set.of("tag", "num", "heading", "subheading");
 
   /** The notes of the files of an annex, which join the notes of the text. */
   private final List<Note> notes = new ArrayList<>();
@@ -131,7 +130,7 @@ public final class PublicTexts {
 
   /**
    * Returns an occurrence on its own, for example an occurrence of a comparison, in which {@code
-   * diff:ins} and {@code diff:del} mark what changed.
+   * diff:ins} and {@code diff:del} show what changed.
    */
   public static Occurrence occurrence(Element occurrence) {
     return new PublicTexts().toOccurrence(occurrence);
@@ -139,18 +138,18 @@ public final class PublicTexts {
 
   /**
    * Returns the wording of an occurrence of a comparison, in which {@code diff:ins} and {@code
-   * diff:del} mark what changed: the plain text before and after the change, and the runs of words
+   * diff:del} show what changed: the plain text before and after the change, and the runs of words
    * that stayed, went in and went out. The lines of the occurrence's paragraphs, and the numbers
    * and headings of the occurrences in it, end with a line feed. The occurrence's own number and
    * heading are not in it.
    */
-  public static Marked marked(Element occurrence) {
+  public static Edited edited(Element occurrence) {
     var words = new Words();
     lines(content(occurrence), words);
-    return new Marked(words.before().strip(), words.after().strip(), words.changes());
+    return new Edited(words.before().strip(), words.after().strip(), words.changes());
   }
 
-  /** Returns what an occurrence holds after its number, headings and provenance. */
+  /** Returns what an occurrence holds after its number, headings and tag. */
   private static List<Element> content(Element occurrence) {
     return occurrence.children().stream()
         .filter(child -> !OCCURRENCE_PARTS.contains(child.name()))
@@ -219,7 +218,7 @@ public final class PublicTexts {
         case "quotedStructure" ->
             blocks.add(new Quotation(attribute(element, "eId"), blocks(element.children())));
         case "deleted" ->
-            blocks.add(new Deleted(amendments(element), blocks(withoutProvenance(element))));
+            blocks.add(new Deleted(amendments(element), blocks(withoutTags(element))));
         case "math" -> blocks.add(math(element));
         case "annotation" -> {
           child(element, "heading")
@@ -233,7 +232,7 @@ public final class PublicTexts {
           blocks.addAll(blocks(withoutParts(element)));
         }
         case "notes" -> notes.addAll(notes(element));
-        case "provenance", "num", "heading", "subheading", "caption" -> {
+        case "tag", "num", "heading", "subheading", "caption" -> {
           // The block around them gives them
         }
         default ->
@@ -291,7 +290,7 @@ public final class PublicTexts {
           rows(element.children(), rows);
         }
         default -> {
-          // The caption, the notes and the provenance are the table's
+          // The caption, the notes and the tag are the table's
         }
       }
     }
@@ -391,7 +390,7 @@ public final class PublicTexts {
 
   /**
    * Adds the words of running text to {@code words} as {@code op} did them, or as a comparison
-   * marks them. Leaves out what is not printed as text, and what is not in force.
+   * shows them. Leaves out what is not printed as text, and what is not in force.
    */
   private static void words(List<Element> inline, Op op, Words words) {
     for (var element : inline) {
@@ -414,7 +413,7 @@ public final class PublicTexts {
                     });
         case "diff:ins" -> words(element.children(), Op.INSERT, words);
         case "diff:del" -> words(element.children(), Op.DELETE, words);
-        case "noteRef", "deleted", "img", "provenance" -> {
+        case "noteRef", "deleted", "img", "tag" -> {
           // Not printed as text, or not in force
         }
         default -> words(element.children(), op, words);
@@ -454,7 +453,7 @@ public final class PublicTexts {
           words(List.of(element), Op.EQUAL, words);
           words.add(Op.EQUAL, "\n");
         }
-        case "deleted", "provenance", "notes", "caption" -> {
+        case "deleted", "tag", "notes", "caption" -> {
           // Not in force, or not the occurrence's wording
         }
         default -> lines(element.children(), words);
@@ -462,7 +461,10 @@ public final class PublicTexts {
     }
   }
 
-  /** Runs of words, each as a comparison marks it. A run follows a run that is marked otherwise. */
+  /**
+   * Runs of words, each as a comparison shows it. A run follows a run that is in another edit
+   * otherwise.
+   */
   private static final class Words {
     private final List<Run> runs = new ArrayList<>();
 
@@ -508,7 +510,7 @@ public final class PublicTexts {
       return changes;
     }
 
-    /** A run of words, which grows while the next words are marked as it is. */
+    /** A run of words, which grows while the next words are in the same edit as it is. */
     private record Run(Op op, StringBuilder text) {}
   }
 
@@ -519,12 +521,12 @@ public final class PublicTexts {
         case "eol" -> html.append("<br>");
         case "emphasis" -> {
           var kind = attribute(element, "kind");
-          var tag = TYPEFACES.get(kind);
+          var typeface = TYPEFACES.get(kind);
           wrap(
               element,
               html,
-              tag == null ? "span" : tag,
-              tag == null ? " class=\"" + escape(kind) + "\"" : "");
+              typeface == null ? "span" : typeface,
+              typeface == null ? " class=\"" + escape(kind) + "\"" : "");
         }
         case "date", "docDate" -> {
           var date = element.attribute("date");
@@ -563,7 +565,7 @@ public final class PublicTexts {
         case "deleted" -> wrap(element, html, "s", amendment(element));
         case "diff:ins" -> wrap(element, html, "ins", "");
         case "diff:del" -> wrap(element, html, "del", "");
-        case "provenance" -> {
+        case "tag" -> {
           // The paragraph gives it
         }
         default -> html(element.children(), html);
@@ -571,10 +573,10 @@ public final class PublicTexts {
     }
   }
 
-  private static void wrap(Element element, StringBuilder html, String tag, String attributes) {
-    html.append('<').append(tag).append(attributes).append('>');
+  private static void wrap(Element element, StringBuilder html, String name, String attributes) {
+    html.append('<').append(name).append(attributes).append('>');
     html(element.children(), html);
-    html.append("</").append(tag).append('>');
+    html.append("</").append(name).append('>');
   }
 
   private static String amendment(Element element) {
@@ -619,24 +621,21 @@ public final class PublicTexts {
 
   private static List<Amendment> amendments(Element element) {
     return element.children().stream()
-        .filter(child -> child.name().equals("provenance"))
-        .map(
-            provenance ->
-                new Amendment(
-                    attribute(provenance, "amendingAct"), attribute(provenance, "action")))
+        .filter(child -> child.name().equals("tag"))
+        .map(tag -> new Amendment(attribute(tag, "amendingAct"), attribute(tag, "action")))
         .toList();
   }
 
-  private static List<Element> withoutProvenance(Element element) {
-    return element.children().stream().filter(child -> !child.name().equals("provenance")).toList();
+  private static List<Element> withoutTags(Element element) {
+    return element.children().stream().filter(child -> !child.name().equals("tag")).toList();
   }
 
-  /** Returns the blocks of an element, without its provenance, heading and caption. */
+  /** Returns the blocks of an element, without its tag, heading and caption. */
   private static List<Element> withoutParts(Element element) {
     return element.children().stream()
         .filter(
             child ->
-                !child.name().equals("provenance")
+                !child.name().equals("tag")
                     && !child.name().equals("heading")
                     && !child.name().equals("caption"))
         .toList();

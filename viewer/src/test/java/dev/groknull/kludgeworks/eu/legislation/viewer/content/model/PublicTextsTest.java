@@ -175,8 +175,8 @@ class PublicTextsTest {
 
   @Test
   void givesTheWordingOfAComparisonBeforeAndAfterAndItsRuns() {
-    var marked =
-        PublicTexts.marked(
+    var edited =
+        PublicTexts.edited(
             element(
                 "occurrence",
                 Map.of("eId", "art_1", "kind", "article"),
@@ -194,9 +194,9 @@ class PublicTextsTest {
                     element("num", Map.of(), t("(a)")),
                     element("p", Map.of(), element("diff:ins", Map.of(), t("new point"))))));
 
-    assertThat(marked.before()).isEqualTo("Fees of EUR 10\n(a)");
-    assertThat(marked.after()).isEqualTo("Fees of EUR 12\n(a) new point");
-    assertThat(marked.changes())
+    assertThat(edited.before()).isEqualTo("Fees of EUR 10\n(a)");
+    assertThat(edited.after()).isEqualTo("Fees of EUR 12\n(a) new point");
+    assertThat(edited.changes())
         .containsExactly(
             new Change(Op.EQUAL, "Fees of "),
             new Change(Op.DELETE, "EUR 10"),

@@ -76,7 +76,7 @@
             <changed amendingAct="32016D1206"
                      action="replaced"
                      location="AR:1;PT:1"
-                     marker="O001001M001000">
+                     tagId="O001001M001000">
                <date date="2019-12-31">
                   <t v="31 December 2019"/>
                </date>
@@ -101,7 +101,7 @@
             <changed amendingAct="32016D1206"
                      action="replaced"
                      location="AR:1;PT:2"
-                     marker="O001001M002000">
+                     tagId="O001001M002000">
                <date date="2019-04-01">
                   <t v="1 April 2019"/>
                </date>

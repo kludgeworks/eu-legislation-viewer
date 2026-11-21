@@ -53,7 +53,7 @@
                <deleted amendingAct="32019R0516"
                         action="deleted"
                         location="AR:10;AL:1"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <emphasis kind="uc">
                      <t v="COUNCIL DIRECTIVE"/>
                   </emphasis>
@@ -65,14 +65,14 @@
             <deleted amendingAct="32019R0516"
                      action="deleted"
                      location="AR:10;AL:1"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="of "/>
             </deleted>
             <docDate date="1989-02-13">
                <deleted amendingAct="32019R0516"
                         action="deleted"
                         location="AR:10;AL:1"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="13 February 1989"/>
                </deleted>
             </docDate>
@@ -82,7 +82,7 @@
                <deleted amendingAct="32019R0516"
                         action="deleted"
                         location="AR:10;AL:1"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="on the harmonization of the compilation of gross national product at market prices"/>
                </deleted>
             </docPurpose>
@@ -91,7 +91,7 @@
             <deleted amendingAct="32019R0516"
                      action="deleted"
                      location="AR:10;AL:1"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="(89/130/EEC, Euratom)"/>
             </deleted>
          </p>
@@ -99,10 +99,10 @@
    </preface>
    <body>
       <deleted>
-         <provenance amendingAct="32019R0516"
-                     action="deleted"
-                     location="AR:10;AL:1"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32019R0516"
+              action="deleted"
+              location="AR:10;AL:1"
+              tagId="O002001M001000"/>
          <occurrence eId="tis_PREMIER" kind="division" rank="1">
             <num>
                <t v="TITRE PREMIER"/>

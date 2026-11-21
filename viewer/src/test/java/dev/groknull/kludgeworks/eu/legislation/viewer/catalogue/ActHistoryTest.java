@@ -269,9 +269,9 @@ class ActHistoryTest {
         .isEqualTo(new Standing(false, 1, 0, 0));
   }
 
-  /** The marks of a text of the act, with the occurrences that the changes of the act are at. */
-  private static final TextMarks TEXT =
-      new TextMarks(
+  /** The tags of a text of the act, with the occurrences that the changes of the act are at. */
+  private static final TextTags TEXT =
+      new TextTags(
           List.of(
               "art_3",
               "art_3/pnt_8",
@@ -303,7 +303,7 @@ class ActHistoryTest {
     assertThat(history.changes())
         .extracting(change -> change.location().code())
         .containsExactly("AR 20 PA 1");
-    assertThat(history.marking()).containsExactly(SIMPLE);
+    assertThat(history.tagging()).containsExactly(SIMPLE);
     assertThat(history.acts()).containsExactly(PHASED, SIMPLE);
   }
 
@@ -321,12 +321,12 @@ class ActHistoryTest {
     var texts =
         Map.of(
             versions.getFirst(),
-            new TextMarks(List.of("art_3", "art_20", "art_20/par_1"), Map.of()),
+            new TextTags(List.of("art_3", "art_20", "art_20/par_1"), Map.of()),
             versions.getLast(),
             TEXT);
 
     // Article 3, point 8 has a change. Point (a) is in a paragraph that has one. Article 22 has a
-    // mark in it. Article 21(1) is in Article 21.
+    // tag in it. Article 21(1) is in Article 21.
     assertThat(ACT.unattributed(versions.getLast(), Language.ENG, texts)).containsExactly("art_21");
     assertThat(ACT.firstWith("art_21", Language.ENG, texts)).hasValue(versions.getLast());
     assertThat(ACT.unattributed(versions.getFirst(), Language.ENG, texts)).isEmpty();

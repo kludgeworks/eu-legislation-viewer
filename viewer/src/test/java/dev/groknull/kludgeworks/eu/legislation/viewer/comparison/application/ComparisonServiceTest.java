@@ -84,7 +84,7 @@ class ComparisonServiceTest {
     }
 
     @Override
-    public PublicText.Marked publicWording(Element occurrence) {
+    public PublicText.Edited publicWording(Element occurrence) {
       throw new UnsupportedOperationException();
     }
 

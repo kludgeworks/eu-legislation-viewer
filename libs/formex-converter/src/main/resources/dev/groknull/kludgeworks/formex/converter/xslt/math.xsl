@@ -43,10 +43,10 @@
   <xsl:template match="FORMULA.S" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="formula" as="element()">
       <math>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:sequence select="f:math-root(., 'block')"/>
       </math>
     </xsl:variable>

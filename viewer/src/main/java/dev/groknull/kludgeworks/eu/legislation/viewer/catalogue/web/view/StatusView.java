@@ -5,7 +5,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Divergence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Standing;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -58,13 +58,13 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
    * text, in {@code language}.
    *
    * @param today the date today, which gives the tense
-   * @param marks the marks of the built texts in {@code language}, by version
+   * @param tags the tags of the built texts in {@code language}, by version
    */
   public static StatusView of(
-      Act act, LocalDate asked, Language language, LocalDate today, Map<Version, TextMarks> marks) {
+      Act act, LocalDate asked, Language language, LocalDate today, Map<Version, TextTags> tags) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var all =
-        act.divergences(asked, language, marks).stream()
+        act.divergences(asked, language, tags).stream()
             .map(each -> line(act, each, eli, asked, language, today))
             .toList();
     var shown = Math.min(all.size(), SHOWN);

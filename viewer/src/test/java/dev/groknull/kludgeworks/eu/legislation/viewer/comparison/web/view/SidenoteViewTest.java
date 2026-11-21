@@ -12,8 +12,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView.Link;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -25,8 +25,8 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests how the sidenote of {@link SidenoteView} says who made a difference in 2015/1998. The
- * sidenote uses two sources. The first is the markers that the converter keeps on the occurrences
- * of the consolidations of 2015/1998. The second is Cellar's amendments of those occurrences. The
+ * sidenote uses two sources. The first is the tags that the converter keeps on the occurrences of
+ * the consolidations of 2015/1998. The second is Cellar's amendments of those occurrences. The
  * versions, dates and amendments are Cellar's, recorded.
  */
 class SidenoteViewTest {
@@ -36,9 +36,7 @@ class SidenoteViewTest {
   void namesTheActBetweenTheVersionsAndThePartsItAppliesInWhereCellarDoesntSayWhich() {
     var c =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c",
-            List.of(new Marker("32026R0449", "replaced", null)),
-            List.of());
+            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag("32026R0449", "replaced", null)), List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -65,13 +63,11 @@ class SidenoteViewTest {
 
   @Test
   void namesAnActThatTheTextMarksFirstThoughCellarDoesNotListIt() {
-    // As 767/2008 of 29 December 2017, which marks 2017/2226 before Cellar lists it.
-    var marked = new ActIdentifier("32017R2226");
+    // As 767/2008 of 29 December 2017, which tags 2017/2226 before Cellar lists it.
+    var tagged = new ActIdentifier("32017R2226");
     var c =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c",
-            List.of(new Marker(marked.celex(), "replaced", null)),
-            List.of());
+            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag(tagged.celex(), "replaced", null)), List.of());
     var from = version("02015R1998-20260322");
     var to = version("02015R1998-20261001");
 
@@ -81,16 +77,16 @@ class SidenoteViewTest {
     var included =
         SidenoteView.of(
             AVSEC,
-            new Inclusions(AVSEC.timeline(), Map.of(to, List.of(marked))),
+            new Inclusions(AVSEC.timeline(), Map.of(to, List.of(tagged))),
             from,
             to,
             c,
             List.of(),
             Language.ENG);
 
-    assertThat(listed.acts()).doesNotContain(marked);
-    assertThat(included.made()).isEqualTo("Replaced by %s", AVSEC.cited(marked));
-    assertThat(included.acts()).containsExactly(marked);
+    assertThat(listed.acts()).doesNotContain(tagged);
+    assertThat(included.made()).isEqualTo("Replaced by %s", AVSEC.cited(tagged));
+    assertThat(included.acts()).containsExactly(tagged);
   }
 
   @Test
@@ -113,22 +109,20 @@ class SidenoteViewTest {
     var versions = new ArrayList<>(AVSEC.timeline().versions());
     versions.set(versions.indexOf(listed), to);
     var included = Inclusions.listed(new Timeline(versions));
-    var marker = new Marker(amending.celex(), "replaced", null);
+    var tag = new Tag(amending.celex(), "replaced", null);
 
-    var newMark = changed("anx/pnt_8.1.2.3/pnt_c", List.of(marker), List.of());
-    var oldMark = changed("anx/pnt_8.1.2.3/pnt_c", List.of(marker), List.of(marker));
+    var newTag = changed("anx/pnt_8.1.2.3/pnt_c", List.of(tag), List.of());
+    var oldTag = changed("anx/pnt_8.1.2.3/pnt_c", List.of(tag), List.of(tag));
     var noPart =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c",
-            List.of(new Marker("32019R0103", "replaced", null)),
-            List.of());
+            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag("32019R0103", "replaced", null)), List.of());
 
-    assertThat(of(included, from, to, newMark).made()).isEqualTo("Replaced by 2026/449");
-    assertThat(of(included, from, to, newMark).dates().getFirst().when())
+    assertThat(of(included, from, to, newTag).made()).isEqualTo("Replaced by 2026/449");
+    assertThat(of(included, from, to, newTag).dates().getFirst().when())
         .contains("from 1 October 2026");
-    // The earlier text has the marker: the act changed the occurrence before.
-    assertThat(of(included, from, to, oldMark).acts()).isEmpty();
-    // No part of 2019/103 applies in the step: its marker is old, not new.
+    // The earlier text has the tag: the act changed the occurrence before.
+    assertThat(of(included, from, to, oldTag).acts()).isEmpty();
+    // No part of 2019/103 applies in the step: its tag is old, not new.
     assertThat(of(included, from, to, noPart).acts()).isEmpty();
   }
 
@@ -141,7 +135,7 @@ class SidenoteViewTest {
   void datesACorrectionFromTheStartOfTheActItCorrectsAndTheVersionThatFirstHasIt() {
     var c =
         changed(
-            "anx/pnt_11.3.2", List.of(new Marker("32019R0103R(01)", "corrected", null)), List.of());
+            "anx/pnt_11.3.2", List.of(new Tag("32019R0103R(01)", "corrected", null)), List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -165,9 +159,7 @@ class SidenoteViewTest {
   void datesAChangeFromTheOneOfItsActsDatesCellarHasForTheOccurrence() {
     var c =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c",
-            List.of(new Marker("32026R0449", "replaced", null)),
-            List.of());
+            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag("32026R0449", "replaced", null)), List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -189,7 +181,7 @@ class SidenoteViewTest {
   @Test
   void takesNoDayFromCellarThatTheEarlierVersionWithoutTheChangeIsAlreadyFrom() {
     var point =
-        changed("anx/pnt_11.3.2", List.of(new Marker("32019R0103", "replaced", null)), List.of());
+        changed("anx/pnt_11.3.2", List.of(new Tag("32019R0103", "replaced", null)), List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -209,7 +201,7 @@ class SidenoteViewTest {
 
   @Test
   void chainsTheActsThatChangedAnOccurrenceInTheOrderTheVersionsIntegrateThem() {
-    var inserted = inserted("anx/pnt_12.14.1", new Marker("32023R0566", "replaced", null));
+    var inserted = inserted("anx/pnt_12.14.1", new Tag("32023R0566", "replaced", null));
 
     var sidenote =
         SidenoteView.of(
@@ -223,7 +215,7 @@ class SidenoteViewTest {
             amendmentsAt("AN PO 12.14", "AN CHA 12.14"),
             Language.ENG);
 
-    // The marker names only the last act that changed the occurrence.
+    // The tag names only the last act that changed the occurrence.
     assertThat(sidenote.made()).isEqualTo("Inserted by 2019/103, then replaced by 2023/566");
     assertThat(sidenote.dates()).hasSize(2);
   }
@@ -233,7 +225,7 @@ class SidenoteViewTest {
     var indent =
         inserted(
             "anx/level_ATTACHMENT-3-B/level_1/idt_9",
-            new Marker("32019R0413", "inserted", "anx/level_ATTACHMENT-3-B"));
+            new Tag("32019R0413", "inserted", "anx/level_ATTACHMENT-3-B"));
 
     var sidenote =
         SidenoteView.of(
@@ -296,8 +288,7 @@ class SidenoteViewTest {
             Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20170607"),
-            changed(
-                "anx/pnt_1.0.3", List.of(new Marker("32017R0815", "replaced", null)), List.of()),
+            changed("anx/pnt_1.0.3", List.of(new Tag("32017R0815", "replaced", null)), List.of()),
             List.of(),
             Language.ENG);
 
@@ -331,7 +322,7 @@ class SidenoteViewTest {
             null,
             null,
             List.of(),
-            List.of(new Marker("32019R1583", "inserted", null)),
+            List.of(new Tag("32019R1583", "inserted", null)),
             List.of(),
             null);
 
@@ -367,8 +358,8 @@ class SidenoteViewTest {
             changed(
                 "anx/pnt_11.1.2",
                 List.of(
-                    new Marker("32019R0103", "replaced", "anx/pnt_11.1"),
-                    new Marker("32019R1583", "replaced", null)),
+                    new Tag("32019R0103", "replaced", "anx/pnt_11.1"),
+                    new Tag("32019R1583", "replaced", null)),
                 List.of()),
             List.of(),
             Language.ENG);
@@ -385,8 +376,7 @@ class SidenoteViewTest {
             Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20200702"),
             version("02015R1998-20210315"),
-            changed(
-                "anx/pnt_1.1.3.4", List.of(new Marker("32019R0413", "replaced", null)), List.of()),
+            changed("anx/pnt_1.1.3.4", List.of(new Tag("32019R0413", "replaced", null)), List.of()),
             List.of(),
             Language.ENG);
 
@@ -404,8 +394,8 @@ class SidenoteViewTest {
     var f =
         changed(
             "anx/pnt_8.1.2.3/pnt_f",
-            List.of(new Marker("32023R0566", "replaced", null)),
-            List.of(new Marker("32023R0566", "replaced", null)));
+            List.of(new Tag("32023R0566", "replaced", null)),
+            List.of(new Tag("32023R0566", "replaced", null)));
 
     var sidenote =
         SidenoteView.of(
@@ -425,7 +415,7 @@ class SidenoteViewTest {
   @Test
   void namesTheVersionWhereAChangeNothingAttributesFirstAppearsAndWhatItConsolidates() {
     // As points 12.9.3.14 and 12.9.3.15 of 2015/1998, deleted in the version of 22 March 2026.
-    var deleted = deleted("anx/pnt_12.9.3.14", new Marker("32019R0103", "replaced", null));
+    var deleted = deleted("anx/pnt_12.9.3.14", new Tag("32019R0103", "replaced", null));
     var march = version("02015R1998-20260322");
     var included = Inclusions.listed(AVSEC.timeline());
 
@@ -468,8 +458,7 @@ class SidenoteViewTest {
         changed(
             "anx/pnt_11.1.2",
             List.of(
-                new Marker("32019R1583", "replaced", null),
-                new Marker("32019R0103", "replaced", null)),
+                new Tag("32019R1583", "replaced", null), new Tag("32019R0103", "replaced", null)),
             List.of());
 
     var sidenote =
@@ -490,7 +479,7 @@ class SidenoteViewTest {
     // The text keeps 4.1.3.2 struck through under the deletion by 2019/103. Cellar has 2017/815
     // replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies in
     // parts, and its first part is before 2019/413.
-    var struck = deleted("anx/pnt_4.1.3.2", new Marker("32019R0103", "deleted", null));
+    var struck = deleted("anx/pnt_4.1.3.2", new Tag("32019R0103", "deleted", null));
     var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
     var replaced = cellar.getFirst();
     cellar.add(
@@ -519,8 +508,7 @@ class SidenoteViewTest {
   @Test
   void namesTheActThatReplacedTheOccurrenceADeletedOneWasInWhole() {
     var a =
-        deleted(
-            "anx/level_PART-10/pnt_a", new Marker("32017R0815", "replaced", "anx/level_PART-10"));
+        deleted("anx/level_PART-10/pnt_a", new Tag("32017R0815", "replaced", "anx/level_PART-10"));
 
     var sidenote =
         SidenoteView.of(
@@ -541,8 +529,7 @@ class SidenoteViewTest {
         changed(
             "anx/pnt_11.1.2",
             List.of(
-                new Marker("32019R1583", "replaced", null),
-                new Marker("32019R0103", "replaced", null)),
+                new Tag("32019R1583", "replaced", null), new Tag("32019R0103", "replaced", null)),
             List.of());
 
     var sidenote =
@@ -552,7 +539,7 @@ class SidenoteViewTest {
             version("02015R1998-20210701"),
             version("02015R1998-20211231"),
             point,
-            // Cellar also names 2020/910, which is in the same version. The markers do not name
+            // Cellar also names 2020/910, which is in the same version. The tags do not name
             // it.
             amendmentsAt("AN PO 11.1.2"),
             Language.ENG);
@@ -568,8 +555,7 @@ class SidenoteViewTest {
         changed(
             "anx/pnt_11.1.2",
             List.of(
-                new Marker("32019R1583", "replaced", null),
-                new Marker("32019R0103", "replaced", null)),
+                new Tag("32019R1583", "replaced", null), new Tag("32019R0103", "replaced", null)),
             List.of());
 
     var sidenote =
@@ -654,8 +640,7 @@ class SidenoteViewTest {
 
   @Test
   void namesTheActThatReplacedWholeTheOccurrenceAnInsertedPointIsIn() {
-    var d =
-        inserted("anx/pnt_11.1.3/pnt_d", new Marker("32019R0103", "replaced", "anx/pnt_11.1.3"));
+    var d = inserted("anx/pnt_11.1.3/pnt_d", new Tag("32019R0103", "replaced", "anx/pnt_11.1.3"));
 
     var sidenote =
         SidenoteView.of(
@@ -709,7 +694,7 @@ class SidenoteViewTest {
         .toList();
   }
 
-  private static Difference inserted(String eId, Marker marker) {
+  private static Difference inserted(String eId, Tag tag) {
     return new Difference(
         eId,
         Kind.INSERTED,
@@ -722,12 +707,12 @@ class SidenoteViewTest {
         null,
         null,
         List.of(),
-        List.of(marker),
+        List.of(tag),
         List.of(),
         null);
   }
 
-  private static Difference deleted(String eId, Marker marker) {
+  private static Difference deleted(String eId, Tag tag) {
     return new Difference(
         eId,
         Kind.DELETED,
@@ -740,12 +725,12 @@ class SidenoteViewTest {
         null,
         null,
         List.of(),
-        List.of(marker),
+        List.of(tag),
         List.of(),
         null);
   }
 
-  private static Difference changed(String eId, List<Marker> markers, List<Marker> earlier) {
+  private static Difference changed(String eId, List<Tag> tags, List<Tag> earlier) {
     return new Difference(
         eId,
         Kind.CHANGED,
@@ -758,7 +743,7 @@ class SidenoteViewTest {
         null,
         null,
         List.of(),
-        markers,
+        tags,
         earlier,
         null);
   }

@@ -260,10 +260,10 @@
             </list>
          </occurrence>
          <occurrence eId="art_4/par_2" kind="paragraph">
-            <provenance amendingAct="21999A0728(01)"
-                        action="replaced"
-                        location="AR:1"
-                        marker="O001001M001000"/>
+            <tag amendingAct="21999A0728(01)"
+                 action="replaced"
+                 location="AR:1"
+                 tagId="O001001M001000"/>
             <num>
                <t v="2."/>
             </num>

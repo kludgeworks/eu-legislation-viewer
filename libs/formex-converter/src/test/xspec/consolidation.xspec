@@ -53,7 +53,7 @@
         <publication series="L" number="32" date="2016-02-09" page="9"/>
       </eventRef>
     </x:expect>
-    <x:expect label="lists each act the source lists, an act an amending act amended after it, labelled as the version's text marks them"
+    <x:expect label="lists each act the source lists, an act an amending act amended after it, labelled as the version's text tags them"
               test="deep-equal($x:result/*:lifecycle/*:eventRef ! string(@label), ('M1', 'M2', '', 'M3', 'M4', 'C1'))"/>
     <x:expect label="gives an amending act its publication and its long title"
               test="$x:result/*:lifecycle/*:eventRef[1]/*:publication/(@series, @number, @page, @date) ! string() = ('L', '334', '5', '2015-12-22')

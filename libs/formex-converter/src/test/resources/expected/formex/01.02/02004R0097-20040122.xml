@@ -189,7 +189,7 @@
                <deleted amendingAct="32004R1476"
                         action="deleted"
                         location="AR:1"
-                        marker="O001001M001000">
+                        tagId="O001001M001000">
                   <t v="At the request of the interested party, "/>
                </deleted>
                <t v="Article 1 shall apply from "/>
@@ -204,7 +204,7 @@
                <deleted amendingAct="32004R1476"
                         action="deleted"
                         location="AR:1"
-                        marker="O001001M002000">
+                        tagId="O001001M002000">
                   <t v="At the request of the interested party, "/>
                </deleted>
                <t v="Article 2 shall apply from "/>

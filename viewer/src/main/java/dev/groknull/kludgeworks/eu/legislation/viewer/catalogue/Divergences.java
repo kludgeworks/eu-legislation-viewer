@@ -27,7 +27,7 @@ import org.jspecify.annotations.Nullable;
  * <ul>
  *   <li>The place date: the day from which the provision applies, as Cellar annotates the
  *       amendment.
- *   <li>The version date: the first day of the first version whose text newly marks the provision
+ *   <li>The version date: the first day of the first version whose text newly tags the provision
  *       with the amending act.
  * </ul>
  *
@@ -39,7 +39,7 @@ import org.jspecify.annotations.Nullable;
  *       force, and the whole act applies from another day.
  *   <li>An accepted place date that is the version date is the date of the provision.
  *   <li>If they differ, the version date is the date of the provision if the place date was
- *       rejected, or if a version that starts on the place date includes the act but does not mark
+ *       rejected, or if a version that starts on the place date includes the act but does not tag
  *       the provision.
  *   <li>Otherwise, a place date before the version date makes the text late between them, and a
  *       place date after the version date makes the text early between them.
@@ -52,8 +52,8 @@ import org.jspecify.annotations.Nullable;
  *       date.
  * </ol>
  *
- * <p>A provision gives no answer if no version marks it while some version includes the act, or if
- * a version before the answer has no built text. An amending act whose provisions give no answer at
+ * <p>A provision gives no answer if no version tags it while some version includes the act, or if a
+ * version before the answer has no built text. An amending act whose provisions give no answer at
  * all is compared as a whole: the day from which the whole act applies, {@link Act#appliesFrom},
  * against the first version that includes it. If no version includes it, and Cellar does not give
  * that day, the date of the text is not confirmed from the act's entry into force.
@@ -81,12 +81,12 @@ final class Divergences {
   private final Act act;
   private final Language language;
   private final List<Version> versions;
-  private final Map<Version, TextMarks> texts;
+  private final Map<Version, TextTags> texts;
 
   /** The occurrences of each built text, made ready to find the places of the amendments. */
   private final Map<Version, Location.Occurrences> occurrences = new HashMap<>();
 
-  private Divergences(Act act, Language language, Map<Version, TextMarks> texts) {
+  private Divergences(Act act, Language language, Map<Version, TextTags> texts) {
     this.act = act;
     this.language = language;
     this.versions = act.timeline(language).map(Timeline::versions).orElseGet(List::of);
@@ -98,9 +98,9 @@ final class Divergences {
    * the law. The early text of the act itself is first. The others are in the order of the day on
    * which they start.
    *
-   * @param texts the marks of the texts in {@code language} that are built, by version
+   * @param texts the tags of the texts in {@code language} that are built, by version
    */
-  static List<Divergence> of(Act act, Language language, Map<Version, TextMarks> texts) {
+  static List<Divergence> of(Act act, Language language, Map<Version, TextTags> texts) {
     return KNOWN.get(
         new Key(act, language, Map.copyOf(texts)),
         key -> new Divergences(key.act(), key.language(), key.texts()).find());
@@ -183,7 +183,7 @@ final class Divergences {
   }
 
   /** Returns the occurrences of {@code text}, the text of {@code version}, made ready one time. */
-  private Location.Occurrences occurrencesOf(Version version, TextMarks text) {
+  private Location.Occurrences occurrencesOf(Version version, TextTags text) {
     return occurrences.computeIfAbsent(version, each -> Location.occurrences(text.eIds()));
   }
 
@@ -202,11 +202,11 @@ final class Divergences {
    * do not tell.
    */
   private Optional<Answer> answer(ActIdentifier amending, Amendment place) {
-    var marked = firstMarking(amending, place);
-    if (marked.isEmpty()) {
+    var tagged = firstTagging(amending, place);
+    if (tagged.isEmpty()) {
       return Optional.empty();
     }
-    var version = marked.get().version();
+    var version = tagged.get().version();
     var from = place.from();
     if (from == null || !act.appliesFromDay(amending, from)) {
       // The version date stands. Without a version, the date is not confirmed.
@@ -215,14 +215,14 @@ final class Divergences {
     if (version == null) {
       return Optional.of(Answer.differs(Kind.LATE, date(amending, from), null));
     }
-    var marking = marked.get().marking();
+    var tagging = tagged.get().tagging();
     if (from.equals(version.date())
         || versions.stream()
             .anyMatch(
                 each ->
                     each.date().equals(from)
                         && includes(each, amending)
-                        && !marking.contains(each))) {
+                        && !tagging.contains(each))) {
       return Optional.of(Answer.AGREES);
     }
     if (from.isAfter(version.date())) {
@@ -243,26 +243,25 @@ final class Divergences {
   }
 
   /**
-   * Returns the first version whose text newly marks {@code place} with {@code amending}. An
-   * occurrence marks the place if it is an occurrence of the place, or an occurrence in it. If no
-   * version marks it, it is the first version that marks an occurrence around the place. It is the
-   * version that starts on the place date instead, if that version also newly marks the place.
+   * Returns the first version whose text newly tags {@code place} with {@code amending}. An
+   * occurrence tags the place if it is an occurrence of the place, or an occurrence in it. If no
+   * version tags it, it is the first version that tags an occurrence around the place. It is the
+   * version that starts on the place date instead, if that version also newly tags the place.
    *
    * <p>A deletion or a repeal leaves no occurrence where the provision stood. The consolidation
-   * keeps its mark there, in the occurrence around it, with a line of dashes: point (d) of Article
+   * keeps its tag there, in the occurrence around it, with a line of dashes: point (d) of Article
    * 1(2) of 2014/65, deleted by 2019/2177. So in a text that no longer has the occurrence of such a
-   * place, the occurrence around where it stood marks the place, by a mark on that occurrence
-   * itself.
+   * place, the occurrence around where it stood tags the place, by a tag on that occurrence itself.
    *
-   * <p>Returns a {@link Marked} without a version if no version includes {@code amending}. Returns
-   * empty if a version before the answer has no built text, or if no version marks the place while
+   * <p>Returns a {@link Tagged} without a version if no version includes {@code amending}. Returns
+   * empty if a version before the answer has no built text, or if no version tags the place while
    * some version includes the act.
    */
-  private Optional<Marked> firstMarking(ActIdentifier amending, Amendment place) {
+  private Optional<Tagged> firstTagging(ActIdentifier amending, Amendment place) {
     Version first = null;
     Version around = null;
     var newly = new ArrayList<Version>();
-    var marking = new HashSet<Version>();
+    var tagging = new HashSet<Version>();
     Set<String> before = Set.of();
     for (var version : versions) {
       var text = texts.get(version);
@@ -293,15 +292,15 @@ final class Divergences {
       var found = Set.copyOf(occurrences);
       var holders = holders(occurrences);
       var now = new HashSet<String>();
-      for (var mark : text.marked(amending)) {
-        if (gone ? found.contains(mark) : inOneOf(mark, found)) {
-          now.add(mark);
-        } else if (around == null && holders.contains(mark)) {
+      for (var tag : text.tagged(amending)) {
+        if (gone ? found.contains(tag) : inOneOf(tag, found)) {
+          now.add(tag);
+        } else if (around == null && holders.contains(tag)) {
           around = version;
         }
       }
       if (!now.isEmpty()) {
-        marking.add(version);
+        tagging.add(version);
       }
       if (!before.containsAll(now)) {
         newly.add(version);
@@ -314,13 +313,13 @@ final class Divergences {
     var from = place.from();
     var onTheDay = newly.stream().filter(each -> each.date().equals(from)).findFirst();
     if (onTheDay.isPresent()) {
-      return Optional.of(new Marked(onTheDay.get(), marking));
+      return Optional.of(new Tagged(onTheDay.get(), tagging));
     }
     if (first != null || around != null) {
-      return Optional.of(new Marked(first != null ? first : around, marking));
+      return Optional.of(new Tagged(first != null ? first : around, tagging));
     }
     var included = versions.stream().anyMatch(each -> includes(each, amending));
-    return included ? Optional.empty() : Optional.of(new Marked(null, marking));
+    return included ? Optional.empty() : Optional.of(new Tagged(null, tagging));
   }
 
   /** Returns whether {@code eId} is one of {@code occurrences}, or an occurrence in one of them. */
@@ -406,11 +405,11 @@ final class Divergences {
 
   /**
    * Returns whether {@code version} includes {@code amending}: the Publications Office lists it, or
-   * its text marks an occurrence with it.
+   * its text tags an occurrence with it.
    */
   private boolean includes(Version version, ActIdentifier amending) {
     var text = texts.get(version);
-    return version.integrates().contains(amending) || (text != null && text.marks(amending));
+    return version.integrates().contains(amending) || (text != null && text.tags(amending));
   }
 
   /** Returns the day on which a divergence starts. */
@@ -431,21 +430,21 @@ final class Divergences {
    * @param occurrences the number of occurrences in the texts, which tells how much memory the key
    *     keeps
    */
-  private record Key(Act act, Language language, Map<Version, TextMarks> texts, int occurrences) {
+  private record Key(Act act, Language language, Map<Version, TextTags> texts, int occurrences) {
 
-    Key(Act act, Language language, Map<Version, TextMarks> texts) {
+    Key(Act act, Language language, Map<Version, TextTags> texts) {
       this(
           act, language, texts, texts.values().stream().mapToInt(text -> text.eIds().size()).sum());
     }
   }
 
   /**
-   * The first version that marks a provision.
+   * The first version that tags a provision.
    *
    * @param version the version, or null if no version includes the amending act
-   * @param marking every version whose text marks the provision
+   * @param tagging every version whose text tags the provision
    */
-  private record Marked(@Nullable Version version, Set<Version> marking) {}
+  private record Tagged(@Nullable Version version, Set<Version> tagging) {}
 
   /**
    * How the text and a provision compare.

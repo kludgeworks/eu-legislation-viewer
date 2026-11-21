@@ -565,10 +565,10 @@
                      depth="1"
                      numbered="true"
                      rank="2">
-            <provenance amendingAct="32026G02439"
-                        action="inserted"
-                        location="CO:10 .AND. AX:0"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32026G02439"
+                 action="inserted"
+                 location="CO:10 .AND. AX:0"
+                 tagId="O002001M001000"/>
             <num>
                <t v="12."/>
             </num>
@@ -590,10 +590,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32026G02439"
-                        action="inserted"
-                        location="CO:10 .AND. AX:0"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32026G02439"
+                 action="inserted"
+                 location="CO:10 .AND. AX:0"
+                 tagId="O002001M001000"/>
             <num>
                <t v="12.1."/>
             </num>
@@ -684,10 +684,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32026G02439"
-                        action="inserted"
-                        location="CO:10 .AND. AX:0"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32026G02439"
+                 action="inserted"
+                 location="CO:10 .AND. AX:0"
+                 tagId="O002001M001000"/>
             <num>
                <t v="12.2."/>
             </num>
@@ -773,10 +773,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32026G02439"
-                        action="inserted"
-                        location="CO:10 .AND. AX:0"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32026G02439"
+                 action="inserted"
+                 location="CO:10 .AND. AX:0"
+                 tagId="O002001M001000"/>
             <num>
                <t v="12.3."/>
             </num>
@@ -794,10 +794,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32026G02439"
-                        action="inserted"
-                        location="CO:10 .AND. AX:0"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32026G02439"
+                 action="inserted"
+                 location="CO:10 .AND. AX:0"
+                 tagId="O002001M001000"/>
             <num>
                <t v="12.4."/>
             </num>
@@ -914,10 +914,10 @@
                      depth="2"
                      numbered="true"
                      rank="3">
-            <provenance amendingAct="32026G02439"
-                        action="inserted"
-                        location="CO:10 .AND. AX:0"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32026G02439"
+                 action="inserted"
+                 location="CO:10 .AND. AX:0"
+                 tagId="O002001M001000"/>
             <num>
                <t v="12.5."/>
             </num>
@@ -944,7 +944,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M002000">
+                        tagId="O002001M002000">
                   <t v="13."/>
                </changed>
             </num>
@@ -1000,7 +1000,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M003000">
+                        tagId="O002001M003000">
                   <t v="14."/>
                </changed>
             </num>
@@ -1024,7 +1024,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M004000">
+                        tagId="O002001M004000">
                   <t v="15."/>
                </changed>
             </num>
@@ -1063,7 +1063,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M005000">
+                        tagId="O002001M005000">
                   <t v="16."/>
                </changed>
             </num>
@@ -1085,7 +1085,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M006000">
+                        tagId="O002001M006000">
                   <t v="17."/>
                </changed>
             </num>
@@ -1114,7 +1114,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M007000">
+                        tagId="O002001M007000">
                   <t v="18."/>
                </changed>
             </num>
@@ -1136,7 +1136,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M017000">
+                              tagId="O002001M017000">
                         <t v="18.1."/>
                      </changed>
                   </num>
@@ -1160,7 +1160,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M018000">
+                              tagId="O002001M018000">
                         <t v="18.2."/>
                      </changed>
                   </num>
@@ -1175,7 +1175,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M019000">
+                              tagId="O002001M019000">
                         <t v="18.3."/>
                      </changed>
                   </num>
@@ -1203,7 +1203,7 @@
                <changed amendingAct="32026G02439"
                         action="renumbered"
                         location="CO:10 .AND. AX:0"
-                        marker="O002001M008000">
+                        tagId="O002001M008000">
                   <t v="19."/>
                </changed>
             </num>
@@ -1225,7 +1225,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M020000">
+                              tagId="O002001M020000">
                         <t v="19.1."/>
                      </changed>
                   </num>
@@ -1240,7 +1240,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M021000">
+                              tagId="O002001M021000">
                         <t v="19.2."/>
                      </changed>
                   </num>
@@ -1255,7 +1255,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M022000">
+                              tagId="O002001M022000">
                         <t v="19.3."/>
                      </changed>
                   </num>
@@ -1279,7 +1279,7 @@
                      <changed amendingAct="32026G02439"
                               action="renumbered"
                               location="CO:10 .AND. AX:0"
-                              marker="O002001M023000">
+                              tagId="O002001M023000">
                         <t v="19.4."/>
                      </changed>
                   </num>
@@ -1298,10 +1298,10 @@
             <t v="[Signatures of all parties]"/>
          </p>
          <occurrence eId="anx/app_I" kind="annex" eurlexAnchor="2" rank="2">
-            <provenance amendingAct="32022G0128(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32022G0128(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O001001M001000"/>
             <num>
                <t v="Appendix I"/>
             </num>

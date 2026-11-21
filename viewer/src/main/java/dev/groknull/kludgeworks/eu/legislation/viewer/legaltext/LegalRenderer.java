@@ -30,8 +30,8 @@ import org.springframework.stereotype.Component;
  * add an element to legal-text, add its template. The coverage test asks for it.
  *
  * <p>A page can render some occurrences in a different way, with {@link #instead}. For example, the
- * Whole text of a comparison marks each occurrence that differs and gives it a sidenote. The other
- * occurrences show as they read.
+ * Whole text of a comparison shows the edits of each occurrence that differs and gives it a
+ * sidenote. The other occurrences show as they read.
  */
 @Component
 public class LegalRenderer {
@@ -116,7 +116,7 @@ public class LegalRenderer {
   /**
    * Renders the children of {@code element} not named {@code names}, in order. These are the rest,
    * after a template put the named ones apart. For example, the content of a deletion, after its
-   * provenance went in its mark.
+   * tags went into its ▼ sign.
    */
   public Content others(Element element, String... names) {
     var named = Set.of(names);

@@ -4,7 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -88,13 +88,13 @@ class HistoryController {
       first = from.isBefore(to) ? from : to;
       day = from.isBefore(to) ? to : from;
     }
-    Map<Version, TextMarks> marks =
-        first == null ? Map.of() : texts.marks(texts.preparation(act, language));
+    Map<Version, TextTags> tags =
+        first == null ? Map.of() : texts.tags(texts.preparation(act, language));
     return templates
         .catalogueHistory(
             Frame.of(request),
             MastheadView.history(act, day, language),
-            HistoryView.of(act, day, today, language, first, marks))
+            HistoryView.of(act, day, today, language, first, tags))
         .render();
   }
 
@@ -125,7 +125,7 @@ class HistoryController {
     }
     var today = Timeline.today(clock);
     var day = on != null ? on : today;
-    var marks = texts.marks(texts.preparation(act, language));
+    var tags = texts.tags(texts.preparation(act, language));
     return templates
         .catalogueAmending(
             Frame.of(request),
@@ -137,8 +137,8 @@ class HistoryController {
                 today,
                 language,
                 applies,
-                latest(act, language, marks),
-                step(act, amending, language, marks)))
+                latest(act, language, tags),
+                step(act, amending, language, tags)))
         .render();
   }
 
@@ -147,13 +147,13 @@ class HistoryController {
   }
 
   /**
-   * Returns the marks of the latest text of {@code act} in {@code language} that is built, or null
-   * if none is built. {@code marks} are the marks of the texts that are built.
+   * Returns the tags of the latest text of {@code act} in {@code language} that is built, or null
+   * if none is built. {@code tags} are the tags of the texts that are built.
    */
-  private static @Nullable TextMarks latest(
-      Act act, Language language, Map<Version, TextMarks> marks) {
+  private static @Nullable TextTags latest(
+      Act act, Language language, Map<Version, TextTags> tags) {
     return act.timeline(language).map(Timeline::versions).orElseGet(List::of).reversed().stream()
-        .map(marks::get)
+        .map(tags::get)
         .filter(Objects::nonNull)
         .findFirst()
         .orElse(null);
@@ -165,7 +165,7 @@ class HistoryController {
    * version in {@code language} integrates it, or if one of the two texts is not built.
    */
   private static AmendingView.@Nullable Step step(
-      Act act, ActIdentifier amending, Language language, Map<Version, TextMarks> marks) {
+      Act act, ActIdentifier amending, Language language, Map<Version, TextTags> tags) {
     var later = act.integrating(amending, language).orElse(null);
     var earlier =
         later == null
@@ -174,8 +174,8 @@ class HistoryController {
     if (later == null || earlier == null) {
       return null;
     }
-    var before = marks.get(earlier);
-    var after = marks.get(later);
+    var before = tags.get(earlier);
+    var after = tags.get(later);
     return before == null || after == null
         ? null
         : new AmendingView.Step(earlier.date(), later.date(), before.eIds(), after.eIds());

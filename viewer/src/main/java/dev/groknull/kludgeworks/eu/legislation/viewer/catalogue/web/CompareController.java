@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -159,9 +159,9 @@ class CompareController {
                           clock.instant()))
                   .render());
     }
-    var marks = texts.marks(preparation);
-    var earlier = page.text(page.fromDay, marks);
-    var later = page.text(page.toDay, marks);
+    var tags = texts.tags(preparation);
+    var earlier = page.text(page.fromDay, tags);
+    var later = page.text(page.toDay, tags);
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
@@ -179,7 +179,7 @@ class CompareController {
                         occurrence,
                         page.language,
                         today,
-                        marks),
+                        tags),
                     earlier.equals(later)
                         ? templates.catalogueCompareSame(
                             "The wording is the same on the two days.",
@@ -291,8 +291,8 @@ class CompareController {
     }
 
     /** Returns the version whose text shows the law on {@code day}, {@link Act#textOn}. */
-    Version text(LocalDate day, Map<Version, TextMarks> marks) {
-      return act.textOn(day, language, marks).orElseThrow(Requests::notFound);
+    Version text(LocalDate day, Map<Version, TextTags> tags) {
+      return act.textOn(day, language, tags).orElseThrow(Requests::notFound);
     }
 
     /**

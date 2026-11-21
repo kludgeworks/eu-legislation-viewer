@@ -14,7 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.OneActCellar;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ResourceType;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -82,7 +82,7 @@ class HistoryControllerTests {
     when(acts.find(PHASED_ELI)).thenReturn(Optional.of(phased()));
     when(texts.preparation(any(), any()))
         .thenAnswer(asked -> ControllerTesting.preparing(asked.getArgument(1)));
-    when(texts.marks(any())).thenReturn(Map.of());
+    when(texts.tags(any())).thenReturn(Map.of());
   }
 
   @Test
@@ -204,14 +204,13 @@ class HistoryControllerTests {
 
   @Test
   void loadsTheWordingOfEachChangeFromTheComparisonOfTheTextBeforeTheActAndTheFirstTextWithIt() {
-    when(texts.marks(any()))
+    when(texts.tags(any()))
         .thenReturn(
             Map.of(
                 ORIGINAL,
-                new TextMarks(List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1"), Map.of()),
+                new TextTags(List.of("art_3", "art_3/pnt_8", "art_20", "art_20/par_1"), Map.of()),
                 WITH_PHASED,
-                new TextMarks(
-                    List.of("art_3", "art_3/pnt_8", "art_79", "art_79/par_7"), Map.of())));
+                new TextTags(List.of("art_3", "art_3/pnt_8", "art_79", "art_79/par_7"), Map.of())));
 
     var page = page(AMENDING + "?on=2022-08-01");
 

@@ -306,7 +306,7 @@
                   <changed amendingAct="32002R2370R(01)"
                            action="replaced"
                            location="LI:0;EL:1"
-                           marker="O000001M001000">
+                           tagId="O000001M001000">
                      <t v="1."/>
                   </changed>
                </num>
@@ -314,7 +314,7 @@
                   <changed amendingAct="32002R2370R(01)"
                            action="replaced"
                            location="LI:0;EL:1"
-                           marker="O000001M001000">
+                           tagId="O000001M001000">
                      <t v="Member States shall submit their applications for the reimbursement of the expenditure by "/>
                      <date date="2004-06-30">
                         <t v="30 June 2004"/>
@@ -363,7 +363,7 @@
                <changed amendingAct="32002R2370R(01)"
                         action="replaced"
                         location="LI:0;EL:2"
-                        marker="O000001M002000">
+                        tagId="O000001M002000">
                   <t v="For the period 2004 to 2006 the necessary financial resources for financing the emergency Community measure for scrapping fishing vessels"/>
                </changed>
                <t v=" shall be made available by reprogramming of the Structural Funds provided for in Articles 41 and 44 of Regulation (EC) No 1260/1999 and be programmed within the existing Financial Instrument for Fisheries Guidance programmes."/>

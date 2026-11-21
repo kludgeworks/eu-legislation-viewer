@@ -160,7 +160,7 @@ final class FormexConverter {
       }
       // The document is also the global context item, as on the Saxon command line. The global
       // variables of the stylesheet read it, for example the files of the package and its
-      // amendment markers.
+      // tags.
       transformer.setGlobalContextItem(document);
       transformer.applyTemplates(document, result);
     } catch (SaxonApiException e) {

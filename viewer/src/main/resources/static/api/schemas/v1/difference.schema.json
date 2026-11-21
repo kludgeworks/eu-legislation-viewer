@@ -14,8 +14,8 @@
     "deleted": { "type": "integer", "minimum": 0, "description": "How many words it deleted." },
     "parent": { "type": ["string", "null"], "description": "The eId of the occurrence that it is in. Null for an outermost occurrence." },
     "section": { "type": ["string", "null"], "description": "The eId of the occurrence with a title that it is in, as the outline nests them." },
-    "markers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the later text: which acts gave the occurrence its form, and how." },
-    "earlierMarkers": { "$ref": "#/$defs/markers", "description": "The amendment markers of the earlier text." },
+    "tags": { "$ref": "#/$defs/tags", "description": "The tags of the later text: which acts gave the occurrence its form, and how." },
+    "earlierTags": { "$ref": "#/$defs/tags", "description": "The tags of the earlier text." },
     "amendments": {
       "description": "The amendments that Cellar records at the occurrence between the two versions.",
       "type": "array",
@@ -30,22 +30,22 @@
     },
     "shown": {
       "$ref": "text.schema.json#/$defs/occurrence",
-      "description": "The occurrence, marked. In its HTML, inserted words are in ins and deleted words are in del. Its plain text is the text after the change."
+      "description": "The occurrence, with its edits. In its HTML, inserted words are in ins and deleted words are in del. Its plain text is the text after the change."
     }
   },
-  "required": ["_links", "eId", "kind", "occurrenceKind", "num", "inserted", "deleted", "markers", "earlierMarkers", "amendments", "before", "after", "changes", "shown"],
+  "required": ["_links", "eId", "kind", "occurrenceKind", "num", "inserted", "deleted", "tags", "earlierTags", "amendments", "before", "after", "changes", "shown"],
   "$defs": {
-    "markers": {
+    "tags": {
       "type": "array",
-      "items": { "$ref": "#/$defs/marker" }
+      "items": { "$ref": "#/$defs/tag" }
     },
-    "marker": {
-      "description": "An amendment marker. For example, ▼M20.",
+    "tag": {
+      "description": "A tag. For example, ▼M20.",
       "type": "object",
       "properties": {
         "act": { "type": "string", "description": "The CELEX number of the amending act." },
         "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] },
-        "in": { "type": ["string", "null"], "description": "The eId of the occurrence that the act gave its form as a whole. Null for a marker of the occurrence itself." }
+        "in": { "type": ["string", "null"], "description": "The eId of the occurrence that the act gave its form as a whole. Null for a tag of the occurrence itself." }
       },
       "required": ["act", "action", "in"]
     },

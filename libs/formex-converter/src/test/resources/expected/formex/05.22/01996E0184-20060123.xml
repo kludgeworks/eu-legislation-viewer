@@ -143,7 +143,7 @@
                <deleted amendingAct="32006E0029"
                         action="deleted"
                         location="AR:1"
-                        marker="O005001M001000">
+                        tagId="O005001M001000">
                   <emphasis kind="uc">
                      <t v="Common position"/>
                   </emphasis>
@@ -155,7 +155,7 @@
             <deleted amendingAct="32006E0029"
                      action="deleted"
                      location="AR:1"
-                     marker="O005001M001000">
+                     tagId="O005001M001000">
                <t v="of 26 February 1996"/>
             </deleted>
          </p>
@@ -164,7 +164,7 @@
                <deleted amendingAct="32006E0029"
                         action="deleted"
                         location="AR:1"
-                        marker="O005001M001000">
+                        tagId="O005001M001000">
                   <t v="defined by the Council on the basis of Article J.2 of the Treaty on European Union concerning arms exports to the former Yugoslavia"/>
                </deleted>
             </docPurpose>
@@ -173,7 +173,7 @@
             <deleted amendingAct="32006E0029"
                      action="deleted"
                      location="AR:1"
-                     marker="O005001M001000">
+                     tagId="O005001M001000">
                <t v="(96/184/CFSP)"/>
             </deleted>
          </p>
@@ -182,30 +182,30 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <deleted>
-            <provenance amendingAct="32006E0029"
-                        action="deleted"
-                        location="AR:1"
-                        marker="O005001M001000"/>
+            <tag amendingAct="32006E0029"
+                 action="deleted"
+                 location="AR:1"
+                 tagId="O005001M001000"/>
             <p>
                <t v="XXX"/>
             </p>
          </deleted>
       </formula>
       <deleted>
-         <provenance amendingAct="32006E0029"
-                     action="deleted"
-                     location="AR:1"
-                     marker="O005001M001000"/>
+         <tag amendingAct="32006E0029"
+              action="deleted"
+              location="AR:1"
+              tagId="O005001M001000"/>
          <p>
             <t v="This act has been trimmed due to parser errors since it has been repealed."/>
          </p>
       </deleted>
       <formula name="enactingFormula">
          <deleted>
-            <provenance amendingAct="32006E0029"
-                        action="deleted"
-                        location="AR:1"
-                        marker="O005001M001000"/>
+            <tag amendingAct="32006E0029"
+                 action="deleted"
+                 location="AR:1"
+                 tagId="O005001M001000"/>
             <p>
                <t v="XXX"/>
             </p>
@@ -214,10 +214,10 @@
    </preamble>
    <body>
       <deleted>
-         <provenance amendingAct="32006E0029"
-                     action="deleted"
-                     location="AR:1"
-                     marker="O005001M001000"/>
+         <tag amendingAct="32006E0029"
+              action="deleted"
+              location="AR:1"
+              tagId="O005001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>

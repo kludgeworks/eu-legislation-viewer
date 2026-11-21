@@ -84,10 +84,10 @@
             <t v="Cerved Rating Agency S.p.A."/>
          </p>
          <p>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="inserted"
-                        location="AR:1;PT:1"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="inserted"
+                 location="AR:1;PT:1"
+                 tagId="O001001M001000"/>
             <t v="Creditreform Rating AG"/>
          </p>
          <p>
@@ -97,10 +97,10 @@
             <t v="DBRS Ratings Limited"/>
          </p>
          <p>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="inserted"
-                        location="AR:1;PT:1"
-                        marker="O001001M002000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="inserted"
+                 location="AR:1;PT:1"
+                 tagId="O001001M002000"/>
             <t v="Egan-Jones Ratings Co."/>
          </p>
          <p>
@@ -113,10 +113,10 @@
             <t v="EuroRating Sp. z o.o."/>
          </p>
          <deleted>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="deleted"
-                        location="AR:1;PT:2"
-                        marker="O001001M007000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="deleted"
+                 location="AR:1;PT:2"
+                 tagId="O001001M007000"/>
             <p>
                <t v="FERI EuroRating Services AG"/>
             </p>
@@ -128,20 +128,20 @@
             <t v="GBB-Rating Gesellschaft fuer Bonitaets-beurteilung GmbH"/>
          </p>
          <p>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="inserted"
-                        location="AR:1;PT:1"
-                        marker="O001001M003000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="inserted"
+                 location="AR:1;PT:1"
+                 tagId="O001001M003000"/>
             <t v="HR Ratings de México, S.A. de C.V."/>
          </p>
          <p>
             <t v="ICAP Group SA"/>
          </p>
          <p>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="inserted"
-                        location="AR:1;PT:1"
-                        marker="O001001M004000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="inserted"
+                 location="AR:1;PT:1"
+                 tagId="O001001M004000"/>
             <t v="INC Rating Sp. z o.o."/>
          </p>
          <p>
@@ -151,20 +151,20 @@
             <t v="Kroll Bond Rating Agency"/>
          </p>
          <p>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="inserted"
-                        location="AR:1;PT:1"
-                        marker="O001001M005000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="inserted"
+                 location="AR:1;PT:1"
+                 tagId="O001001M005000"/>
             <t v="ModeFinance S.r.l."/>
          </p>
          <p>
             <t v="Moody’s Investors Service"/>
          </p>
          <p>
-            <provenance amendingAct="32017Y0728(01)"
-                        action="inserted"
-                        location="AR:1;PT:1"
-                        marker="O001001M006000"/>
+            <tag amendingAct="32017Y0728(01)"
+                 action="inserted"
+                 location="AR:1;PT:1"
+                 tagId="O001001M006000"/>
             <t v="Rating-Agentur Expert RA GmbH"/>
          </p>
          <p>

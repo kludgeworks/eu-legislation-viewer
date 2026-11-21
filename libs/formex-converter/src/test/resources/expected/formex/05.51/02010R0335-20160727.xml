@@ -246,31 +246,31 @@
                   <td/>
                   <td>
                      <p>
-                        <provenance amendingAct="32016R1095"
-                                    action="replaced"
-                                    location="AR:4"
-                                    marker="O001001M001000"/>
+                        <tag amendingAct="32016R1095"
+                             action="replaced"
+                             location="AR:4"
+                             tagId="O001001M001000"/>
                         <t v="Dogs and cats: 200 (total)"/>
                      </p>
                      <p>
-                        <provenance amendingAct="32016R1095"
-                                    action="replaced"
-                                    location="AR:4"
-                                    marker="O001001M001000"/>
+                        <tag amendingAct="32016R1095"
+                             action="replaced"
+                             location="AR:4"
+                             tagId="O001001M001000"/>
                         <t v="Salmonids and milk replacers for calves: 180 (total)"/>
                      </p>
                      <p>
-                        <provenance amendingAct="32016R1095"
-                                    action="replaced"
-                                    location="AR:4"
-                                    marker="O001001M001000"/>
+                        <tag amendingAct="32016R1095"
+                             action="replaced"
+                             location="AR:4"
+                             tagId="O001001M001000"/>
                         <t v="Piglets, sows, rabbits and all fish species other than salmonids: 150 (total)"/>
                      </p>
                      <p>
-                        <provenance amendingAct="32016R1095"
-                                    action="replaced"
-                                    location="AR:4"
-                                    marker="O001001M001000"/>
+                        <tag amendingAct="32016R1095"
+                             action="replaced"
+                             location="AR:4"
+                             tagId="O001001M001000"/>
                         <t v="Other species and categories: 120 (total)"/>
                      </p>
                   </td>

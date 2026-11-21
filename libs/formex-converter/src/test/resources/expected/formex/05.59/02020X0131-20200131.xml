@@ -58,10 +58,10 @@
    <notes>
       <note eId="note_1" marker="1" kind="footnote">
          <p>
-            <provenance amendingAct="52020XG0131(01)R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M001000"/>
+            <tag amendingAct="52020XG0131(01)R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M001000"/>
             <t v="See page 7 of this Official Journal."/>
          </p>
       </note>

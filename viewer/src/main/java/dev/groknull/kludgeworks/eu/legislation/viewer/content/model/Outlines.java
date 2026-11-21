@@ -22,11 +22,11 @@ import java.util.TreeSet;
  * headings are read as plain text, without the notes that they cite and without the text that an
  * amendment deleted.
  *
- * <p>It also holds the marks of each occurrence: the acts that its {@code provenance} elements
- * name, and the acts that its {@code changed} elements name. A {@code changed} element marks words
- * that an act changed inside a sentence. For example, in Article 15(1) of 767/2008 of 18 October
- * 2013, "or extend the visa" is marked with 2009/810. A mark in a block that has no eId, such as a
- * paragraph or a deleted text, marks the nearest occurrence around it.
+ * <p>It also holds the tags of each occurrence: the acts that its {@code tag} elements name, and
+ * the acts that its {@code changed} elements name. A {@code changed} element tags words that an act
+ * changed inside a sentence. For example, in Article 15(1) of 767/2008 of 18 October 2013, "or
+ * extend the visa" is tagged with 2009/810. A tag in a block that has no eId, such as a paragraph
+ * or a deleted text, tags the nearest occurrence around it.
  *
  * <p>{@link OutlinesVersion} is the version of these rules. A kept outline that other rules made is
  * made again.
@@ -45,7 +45,7 @@ public final class Outlines {
 
   private final List<Occurrence> outermost = new ArrayList<>();
   private final List<String> eIds = new ArrayList<>();
-  private final Map<String, Set<String>> marks = new LinkedHashMap<>();
+  private final Map<String, Set<String>> tags = new LinkedHashMap<>();
   private final Deque<Occurrence> open = new ArrayDeque<>();
 
   private Outlines() {}
@@ -56,26 +56,26 @@ public final class Outlines {
   public static Outline of(Element text) {
     var outlines = new Outlines();
     outlines.walk(text);
-    outlines.mark(text, "");
+    outlines.tag(text, "");
     return new Outline(
-        outlines.outermost.stream().map(Occurrence::entry).toList(), outlines.eIds, outlines.marks);
+        outlines.outermost.stream().map(Occurrence::entry).toList(), outlines.eIds, outlines.tags);
   }
 
   /**
-   * Adds the acts that the {@code provenance} and {@code changed} elements in {@code element} name
-   * to the marks of their occurrence. {@code occurrence} is the eId of the nearest occurrence
-   * around {@code element}, or empty for none.
+   * Adds the acts that the {@code tag} and {@code changed} elements in {@code element} name to the
+   * tags of their occurrence. {@code occurrence} is the eId of the nearest occurrence around {@code
+   * element}, or empty for none.
    */
-  private void mark(Element element, String occurrence) {
+  private void tag(Element element, String occurrence) {
     var eId = Objects.requireNonNullElse(element.attribute("eId"), occurrence);
-    if (element.name().equals("provenance") || element.name().equals("changed")) {
+    if (element.name().equals("tag") || element.name().equals("changed")) {
       var act = element.attribute("amendingAct");
       if (act != null && !eId.isEmpty()) {
-        marks.computeIfAbsent(eId, each -> new TreeSet<>()).add(act);
+        tags.computeIfAbsent(eId, each -> new TreeSet<>()).add(act);
       }
     }
-    if (!element.name().equals("provenance")) {
-      element.children().forEach(child -> mark(child, eId));
+    if (!element.name().equals("tag")) {
+      element.children().forEach(child -> tag(child, eId));
     }
   }
 

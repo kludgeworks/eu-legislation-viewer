@@ -6,14 +6,14 @@
   each run of inline content in a <p>.
 
   Tunnel parameters:
-    $ctx         ids of the amendment markers already attributed to an enclosing occurrence or block
-    $pending     markers covering an element that produces no block of its own (a P that becomes
+    $ctx         ids of the tags already attributed to an enclosing occurrence or block
+    $pending     tags covering an element that produces no block of its own (a P that becomes
                  a p and a list, a single ALINEA): attached to every block it produces
     $base        the eId of the enclosing occurrence
     $levels      the levels' context (annexes.xsl), which each occurrence that numbers levels within it
                  starts afresh (an annex, an article, a point, a cell, a quoted structure):
                    base     the eId its levels hang off
-                   ctx      $ctx there: levels are flat, so a level's provenance is everything
+                   ctx      $ctx there: levels are flat, so a level's tags are everything
                             covering it from there, including what covers its parent level
                    parent   the eId of the enclosing level, for unnumbered levels
                    labelled the nearest labelled level
@@ -49,7 +49,7 @@
   <xsl:mode name="block" on-no-match="fail" on-multiple-match="fail"/>
 
   <!-- the children a template doesn't take, when its output has no place for anything else
-       (citations, signatures, list items, table titles): fail rather than drop them. Markers,
+       (citations, signatures, list items, table titles): fail rather than drop them. Tags,
        page breaks and whitespace are no content. -->
   <xsl:mode name="unexpected" on-no-match="fail" on-multiple-match="fail"/>
 
@@ -127,9 +127,9 @@
 
   <!-- what a heading line says: an NP's text and what follows it (its number is the num), else all -->
   <!-- what NPs hold besides their number and text, which follows its text wherever its text goes;
-       not the whitespace between its children, which may sit inside an amendment marker that opens
+       not the whitespace between its children, which may sit inside a tag that opens
        before the number (<NP><?CLG.MDFO?> <NO.P>(e)</NO.P><TXT>… a title<?CLG.MDFC?> listed …</TXT>):
-       moved after the text, it would make the marker seem to cover all of the text -->
+       moved after the text, it would make the tag seem to cover all of the text -->
   <xsl:function name="f:np-rest" as="node()*">
     <xsl:param name="np" as="element(NP)*"/>
     <xsl:sequence select="$np/(node() except (NO.P | TXT))[not(self::text()[not(normalize-space())])]"/>
@@ -177,12 +177,12 @@
           <xsl:apply-templates select="current-group()" mode="block"/>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="run" as="node()*" select="current-group()[not(self::processing-instruction() or self::comment()) or f:empty-marker(.)]"/>
+          <xsl:variable name="run" as="node()*" select="current-group()[not(self::processing-instruction() or self::comment()) or f:empty-tag(.)]"/>
           <xsl:if test="$run[self::*[not(self::IE)] or self::text()[normalize-space()]]">
             <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:covering-run($run)[not(f:pi-attr(., 'ID') = $ctx)])"/>
             <xsl:variable name="p" as="element()">
               <p>
-                <xsl:sequence select="f:provenance($m)"/>
+                <xsl:sequence select="f:tags($m)"/>
                 <xsl:call-template name="f:inlines">
                   <xsl:with-param name="nodes" as="node()*" select="$run"/>
                   <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -252,7 +252,7 @@
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <!-- an annex's fragments, which may be files of their own: its quotations are numbered through them -->
     <xsl:param name="annexFragments" as="element()*" select="()" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="scope" as="element()" select="f:quotation-scope(.)"/>
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($annexFragments, $scope)"/>
     <xsl:variable name="earlier" as="xs:integer" select="
@@ -280,7 +280,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="outermost" as="xs:boolean" select="empty(ancestor::*[self::ANNOTATION or self::GR.ANNOTATION])"/>
     <xsl:variable name="inner" as="xs:string?" select="
         if ($outermost) then f:eid($base, 'ann', string(count(preceding::*[self::ANNOTATION or self::GR.ANNOTATION]
@@ -288,7 +288,7 @@
         else $base"/>
     <xsl:variable name="annotation" as="element()">
       <annotation>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:if test="TITLE">
           <heading>
             <xsl:call-template name="f:lines">
@@ -315,12 +315,12 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="figure" as="xs:string" select="f:eid($base, 'fgr', string(count(preceding::INCL.ELEMENT[@TYPE = 'TIFF']) + 1))"/>
     <xsl:variable name="fig" as="element()">
       <figure src="{@FILEREF}">
         <xsl:sequence select="f:image-content(.)"/>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:if test="CAPTION">
           <caption>
             <xsl:call-template name="f:blocks">

@@ -55,7 +55,7 @@
                <deleted amendingAct="32005R1952"
                         action="deleted"
                         location="AR:18;PA:2"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <emphasis kind="uc">
                      <t v="Regulation"/>
                   </emphasis>
@@ -66,7 +66,7 @@
                <deleted amendingAct="32005R1952"
                         action="deleted"
                         location="AR:18;PA:2"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v=" (EEC) No 879/73 "/>
                   <emphasis kind="uc">
                      <t v="of the Council"/>
@@ -78,7 +78,7 @@
             <deleted amendingAct="32005R1952"
                      action="deleted"
                      location="AR:18;PA:2"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="of 26 March 1973"/>
             </deleted>
          </p>
@@ -87,7 +87,7 @@
                <deleted amendingAct="32005R1952"
                         action="deleted"
                         location="AR:18;PA:2"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="on the granting and reimbursement of aid accorded by the Member States to recognized producer groups in the hop sector"/>
                </deleted>
             </docPurpose>
@@ -97,10 +97,10 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32005R1952"
+                 action="deleted"
+                 location="AR:18;PA:2"
+                 tagId="O002001M001000"/>
             <p>
                <t v="THE COUNCIL OF THE EUROPEAN COMMUNITIES,"/>
             </p>
@@ -108,10 +108,10 @@
       </formula>
       <citations>
          <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32005R1952"
+                 action="deleted"
+                 location="AR:18;PA:2"
+                 tagId="O002001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
                <p>
                   <t v="Having regard to the Treaty establishing the European Economic Community;"/>
@@ -133,10 +133,10 @@
       </citations>
       <recitals>
          <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32005R1952"
+                 action="deleted"
+                 location="AR:18;PA:2"
+                 tagId="O002001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
                <p>
                   <t v="Whereas provision should be made to adopt conditions and general rules to implement the granting of aid given by the Member States to producer groups, and also the procedure for the reimbursement of this aid by the European Agricultural Guidance and Guarantee Fund, guidance section;"/>
@@ -160,10 +160,10 @@
       </recitals>
       <formula name="enactingFormula">
          <deleted>
-            <provenance amendingAct="32005R1952"
-                        action="deleted"
-                        location="AR:18;PA:2"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32005R1952"
+                 action="deleted"
+                 location="AR:18;PA:2"
+                 tagId="O002001M001000"/>
             <p>
                <t v="HAS ADOPTED THIS REGULATION:"/>
             </p>
@@ -172,10 +172,10 @@
    </preamble>
    <body>
       <deleted>
-         <provenance amendingAct="32005R1952"
-                     action="deleted"
-                     location="AR:18;PA:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32005R1952"
+              action="deleted"
+              location="AR:18;PA:2"
+              tagId="O002001M001000"/>
          <occurrence eId="tis_I" kind="division" rank="1">
             <num>
                <t v="TITLE I"/>
@@ -305,10 +305,10 @@
                </occurrence>
             </occurrence>
             <occurrence eId="art_6" kind="article" rank="2">
-               <provenance amendingAct="31977R2254"
-                           action="inserted"
-                           location="TO"
-                           marker="O001001M001000"/>
+               <tag amendingAct="31977R2254"
+                    action="inserted"
+                    location="TO"
+                    tagId="O001001M001000"/>
                <num>
                   <t v="Article 6"/>
                </num>
@@ -319,23 +319,23 @@
          </occurrence>
       </deleted>
       <deleted>
-         <provenance amendingAct="32005R1952"
-                     action="deleted"
-                     location="AR:18;PA:2"
-                     marker="O002001M001000"/>
-         <provenance amendingAct="31977R2254"
-                     action="deleted"
-                     location="TO"
-                     marker="O001001M002000"/>
+         <tag amendingAct="32005R1952"
+              action="deleted"
+              location="AR:18;PA:2"
+              tagId="O002001M001000"/>
+         <tag amendingAct="31977R2254"
+              action="deleted"
+              location="TO"
+              tagId="O001001M002000"/>
          <occurrence eId="tis_II" kind="division" rank="1">
             <num>
                <t v="TITLE II"/>
             </num>
             <deleted>
-               <provenance amendingAct="31977R2254"
-                           action="deleted"
-                           location="TO"
-                           marker="O001001M003000"/>
+               <tag amendingAct="31977R2254"
+                    action="deleted"
+                    location="TO"
+                    tagId="O001001M003000"/>
                <occurrence eId="art_7" kind="article" rank="2">
                   <num>
                      <t v="Article 7"/>
@@ -343,10 +343,10 @@
                </occurrence>
             </deleted>
             <deleted>
-               <provenance amendingAct="31977R2254"
-                           action="deleted"
-                           location="TO"
-                           marker="O001001M004000"/>
+               <tag amendingAct="31977R2254"
+                    action="deleted"
+                    location="TO"
+                    tagId="O001001M004000"/>
                <occurrence eId="art_8" kind="article" rank="2">
                   <num>
                      <t v="Article 8"/>
@@ -354,10 +354,10 @@
                </occurrence>
             </deleted>
             <deleted>
-               <provenance amendingAct="31977R2254"
-                           action="deleted"
-                           location="TO"
-                           marker="O001001M005000"/>
+               <tag amendingAct="31977R2254"
+                    action="deleted"
+                    location="TO"
+                    tagId="O001001M005000"/>
                <occurrence eId="art_9" kind="article" rank="2">
                   <num>
                      <t v="Article 9"/>
@@ -365,10 +365,10 @@
                </occurrence>
             </deleted>
             <deleted>
-               <provenance amendingAct="31977R2254"
-                           action="deleted"
-                           location="TO"
-                           marker="O001001M006000"/>
+               <tag amendingAct="31977R2254"
+                    action="deleted"
+                    location="TO"
+                    tagId="O001001M006000"/>
                <occurrence eId="art_10" kind="article" rank="2">
                   <num>
                      <t v="Article 10"/>
@@ -376,10 +376,10 @@
                </occurrence>
             </deleted>
             <deleted>
-               <provenance amendingAct="31977R2254"
-                           action="deleted"
-                           location="TO"
-                           marker="O001001M007000"/>
+               <tag amendingAct="31977R2254"
+                    action="deleted"
+                    location="TO"
+                    tagId="O001001M007000"/>
                <occurrence eId="art_11" kind="article" rank="2">
                   <num>
                      <t v="Article 11"/>
@@ -387,10 +387,10 @@
                </occurrence>
             </deleted>
             <deleted>
-               <provenance amendingAct="31977R2254"
-                           action="deleted"
-                           location="TO"
-                           marker="O001001M008000"/>
+               <tag amendingAct="31977R2254"
+                    action="deleted"
+                    location="TO"
+                    tagId="O001001M008000"/>
                <occurrence eId="art_12" kind="article" rank="2">
                   <num>
                      <t v="Article 12"/>
@@ -400,10 +400,10 @@
          </occurrence>
       </deleted>
       <deleted>
-         <provenance amendingAct="32005R1952"
-                     action="deleted"
-                     location="AR:18;PA:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32005R1952"
+              action="deleted"
+              location="AR:18;PA:2"
+              tagId="O002001M001000"/>
          <occurrence eId="tis_III" kind="division" rank="1">
             <num>
                <t v="TITLE III"/>
@@ -446,10 +446,10 @@
    </body>
    <conclusions>
       <deleted>
-         <provenance amendingAct="32005R1952"
-                     action="deleted"
-                     location="AR:18;PA:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32005R1952"
+              action="deleted"
+              location="AR:18;PA:2"
+              tagId="O002001M001000"/>
          <p>
             <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
          </p>
@@ -457,10 +457,10 @@
    </conclusions>
    <notes>
       <deleted>
-         <provenance amendingAct="32005R1952"
-                     action="deleted"
-                     location="AR:18;PA:2"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32005R1952"
+              action="deleted"
+              location="AR:18;PA:2"
+              tagId="O002001M001000"/>
          <note eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"

@@ -258,8 +258,8 @@ public record PublicText(
   public record Amendment(String act, String action) {}
 
   /**
-   * The wording of an occurrence that a comparison marked: the plain text before and after the
-   * change, and the runs of words that stayed, went in and went out.
+   * The wording of an occurrence with the edits of a comparison: the plain text before and after
+   * the change, and the runs of words that stayed, went in and went out.
    *
    * @param before the text before the change
    * @param after the text after the change
@@ -268,8 +268,8 @@ public record PublicText(
    *     an occurrence in the occurrence, ends with a line feed, except the last.
    */
   @ValueObject
-  public record Marked(String before, String after, List<Change> changes) {
-    public Marked {
+  public record Edited(String before, String after, List<Change> changes) {
+    public Edited {
       changes = List.copyOf(changes);
     }
   }

@@ -228,7 +228,7 @@
                   <changed amendingAct="32010D0594"
                            action="replaced"
                            location="AR:1;PT:1"
-                           marker="O001001M001000">
+                           tagId="O001001M001000">
                      <t v="6."/>
                   </changed>
                </num>
@@ -236,7 +236,7 @@
                   <changed amendingAct="32010D0594"
                            action="replaced"
                            location="AR:1;PT:1"
-                           marker="O001001M001000">
+                           tagId="O001001M001000">
                      <t v="Competitiveness (internal market, industry, research and space)"/>
                   </changed>
                   <noteRef href="#note_5" marker="5"/>
@@ -272,7 +272,7 @@
                   <changed amendingAct="32010D0594"
                            action="replaced"
                            location="AR:1;PT:2"
-                           marker="O001001M002000">
+                           tagId="O001001M002000">
                      <t v="10."/>
                   </changed>
                </num>
@@ -280,7 +280,7 @@
                   <changed amendingAct="32010D0594"
                            action="replaced"
                            location="AR:1;PT:2"
-                           marker="O001001M002000">
+                           tagId="O001001M002000">
                      <t v="Education, youth, culture and sport"/>
                   </changed>
                   <noteRef href="#note_6" marker="6"/>

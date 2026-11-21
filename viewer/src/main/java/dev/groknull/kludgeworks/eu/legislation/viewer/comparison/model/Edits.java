@@ -17,11 +17,11 @@ import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Marks words in legal-text, as a comparison shows them. Inserted words go in {@code diff:ins}, and
- * deleted words go in {@code diff:del}. The marks are only around text, a formula or an image, that
- * is the words of a {@code t}, a {@code number}, a {@code math} or an {@code img}. A quotation mark
- * of a {@code quote} that is marked becomes such text. Thus an element keeps the parent that it has
- * in the text.
+ * Shows the edits of a comparison in legal-text: its insertions and deletions. Inserted words go in
+ * {@code diff:ins}, and deleted words go in {@code diff:del}. The edits are only around text, a
+ * formula or an image, that is the words of a {@code t}, a {@code number}, a {@code math} or an
+ * {@code img}. A quotation mark of a {@code quote} that is edited becomes such text. Thus an
+ * element keeps the parent that it has in the text.
  *
  * <p>A block is read as tokens, in the order in which {@link Wording} reads it:
  *
@@ -30,13 +30,13 @@ import org.jspecify.annotations.Nullable;
  *   <li>a whole {@code number}
  *   <li>an {@code eol}
  *   <li>an image
- *   <li>the marks of a quote
+ *   <li>the quotation marks of a quote
  *   <li>a whole formula
  * </ul>
  *
- * <p>The tokens of a {@code t}, a {@code number}, a formula and an image are marked, and so are the
- * marks of a quote. The others are only counted. A deleted run shows its tokens as they were, a
- * formula as a formula.
+ * <p>The tokens of a {@code t}, a {@code number}, a formula and an image are edited, and so are the
+ * quotation marks of a quote. The others are only counted. A deleted run shows its tokens as they
+ * were, a formula as a formula.
  *
  * <p>A table is not one run of tokens. It is compared by its rows and cells. See {@link #parts}.
  *
@@ -50,30 +50,30 @@ import org.jspecify.annotations.Nullable;
  *   <li>A change of spaces alone is not a change.
  * </ul>
  */
-final class Marks {
+final class Edits {
   static final String INSERTED = "diff:ins";
   static final String DELETED = "diff:del";
 
   /**
    * The attribute of a note, or of a reference to a note, that only one of the two texts has. Its
    * value is "ins" or "del". The marker of a note and a reference to a note are not words, so no
-   * mark is around them. With the attribute, a page can show them only with the text that has them.
+   * edit is around them. With the attribute, a page can show them only with the text that has them.
    */
   static final String ONLY = "diff";
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
   private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]");
 
-  private Marks() {}
+  private Edits() {}
 
   /**
-   * Returns {@code to}, marked against {@code from}. The words of {@code to} that {@code from} does
-   * not have are marked inserted. The words of {@code from} that {@code to} does not have are added
+   * Returns {@code to}, edited against {@code from}. The words of {@code to} that {@code from} does
+   * not have are shown inserted. The words of {@code from} that {@code to} does not have are added
    * as deleted. Each deleted run goes before the token of {@code to} that it stood before.
    *
    * <p>A table is compared by its parts. See {@link #PARTS}.
    */
-  static Marked between(Element from, Element to) {
+  static Edited between(Element from, Element to) {
     return from.name().equals(to.name()) && PARTS.contains(to.name())
         ? parts(from, to)
         : words(from, to);
@@ -89,19 +89,19 @@ final class Marks {
       Set.of("table", "caption", "rowGroup", "tr", "td", "list", "occurrence", "notes", "note");
 
   /**
-   * Returns {@code to}, marked against {@code from} part by part.
+   * Returns {@code to}, edited against {@code from} part by part.
    *
    * <ul>
    *   <li>The parts match by name and by what they say, and those that differ pair if they are
    *       alike. See {@link Parts}.
    *   <li>The cells of two rows with as many cells pair by their column. Thus a changed cell is
    *       compared with the cell in the same column of the other text.
-   *   <li>A part that is in both texts and differs is marked by {@link #between}.
-   *   <li>A part that is only in {@code to} is marked inserted whole.
-   *   <li>A part that is only in {@code from} is marked deleted whole, where it stood.
+   *   <li>A part that is in both texts and differs gets its edits from {@link #between}.
+   *   <li>A part that is only in {@code to} is shown inserted whole.
+   *   <li>A part that is only in {@code from} is shown deleted whole, where it stood.
    * </ul>
    */
-  private static Marked parts(Element from, Element to) {
+  private static Edited parts(Element from, Element to) {
     var before = from.children();
     var after = to.children();
     var columns = to.name().equals("tr") && before.size() == after.size();
@@ -122,13 +122,13 @@ final class Marks {
         }
         case Parts.Inserted(int at, Element is) -> shown.replace(at, all(is, INSERTED));
         case Parts.Deleted(int at, Element was) -> {
-          if (!Wording.MARKS.contains(was.name())) {
+          if (!Wording.SILENT.contains(was.name())) {
             shown.delete(at, all(was, DELETED));
           }
         }
       }
     }
-    return new Marked(copy(to, shown.of(after)), shown.inserted(), shown.deleted());
+    return new Edited(copy(to, shown.of(after)), shown.inserted(), shown.deleted());
   }
 
   /** Returns what each of {@code parts} is matched on: its name and its {@link Wording#key}. */
@@ -136,15 +136,15 @@ final class Marks {
     return parts.stream().map(part -> part.name() + ":" + Wording.key(part)).toList();
   }
 
-  /** Returns {@code to}, marked against {@code from} word by word. */
-  private static Marked words(Element from, Element to) {
+  /** Returns {@code to}, edited against {@code from} word by word. */
+  private static Edited words(Element from, Element to) {
     var before = new ArrayList<String>();
     var pieces = new ArrayList<Element>();
     walk(from, new Collect(before, pieces));
     var after = tokens(to);
     var beforeSaid = said(before);
     var afterSaid = said(after);
-    var marked = new boolean[after.size()];
+    var edited = new boolean[after.size()];
     var deletedAt = new HashMap<Integer, List<Element>>();
     var inserted = 0;
     var deleted = 0;
@@ -163,7 +163,7 @@ final class Marks {
         continue;
       }
       for (var i = 0; i < target.size(); i++) {
-        marked[target.getPosition() + i] = true;
+        edited[target.getPosition() + i] = true;
       }
       inserted += words(target.getLines());
       if (source.size() > 0) {
@@ -173,20 +173,20 @@ final class Marks {
         deleted += words(source.getLines());
       }
     }
-    return new Marked(mark(to, INSERTED, marked, deletedAt), inserted, deleted);
+    return new Edited(edit(to, INSERTED, edited, deletedAt), inserted, deleted);
   }
 
   /**
-   * Returns {@code element} with every word in it marked {@code mark}, which is {@link #INSERTED}
+   * Returns {@code element} with every word in it edited {@code edit}, which is {@link #INSERTED}
    * or {@link #DELETED}.
    */
-  static Marked all(Element element, String mark) {
+  static Edited all(Element element, String edit) {
     var tokens = tokens(element);
-    var marked = new boolean[tokens.size()];
-    Arrays.fill(marked, true);
+    var edited = new boolean[tokens.size()];
+    Arrays.fill(edited, true);
     var words = words(said(tokens));
-    var shown = only(mark(element, mark, marked, Map.of()), mark.equals(INSERTED) ? "ins" : "del");
-    return mark.equals(INSERTED) ? new Marked(shown, words, 0) : new Marked(shown, 0, words);
+    var shown = only(edit(element, edit, edited, Map.of()), edit.equals(INSERTED) ? "ins" : "del");
+    return edit.equals(INSERTED) ? new Edited(shown, words, 0) : new Edited(shown, 0, words);
   }
 
   /**
@@ -234,13 +234,13 @@ final class Marks {
   }
 
   /**
-   * An element as a comparison shows it, marked.
+   * An element as a comparison shows it, edited.
    *
-   * @param element the element, its words marked
+   * @param element the element, its words edited
    * @param inserted how many words in it are inserted
    * @param deleted how many words in it are deleted
    */
-  record Marked(Element element, int inserted, int deleted) {}
+  record Edited(Element element, int inserted, int deleted) {}
 
   /** Returns the tokens of {@code element}, in order. */
   static List<String> tokens(Element element) {
@@ -250,29 +250,29 @@ final class Marks {
   }
 
   /**
-   * Returns {@code element} with the tokens in {@code marked} wrapped in {@code mark}, and the
+   * Returns {@code element} with the tokens in {@code edited} wrapped in {@code edit}, and the
    * deleted words added.
    */
-  private static Element mark(
-      Element element, String mark, boolean[] marked, Map<Integer, List<Element>> deletedAt) {
-    var marking = new Mark(mark, marked, deletedAt);
-    var walked = walk(element, marking);
+  private static Element edit(
+      Element element, String edit, boolean[] edited, Map<Integer, List<Element>> deletedAt) {
+    var editing = new Editing(edit, edited, deletedAt);
+    var walked = walk(element, editing);
     // The element is the last in its place. A walk can put something before it, for example the
-    // words deleted before the opening mark of a quote. Keep these in the element.
+    // words deleted before the opening quotation mark of a quote. Keep these in the element.
     var shown = walked.getLast();
     var children = new ArrayList<>(walked.subList(0, walked.size() - 1));
     children.addAll(shown.children());
-    children.addAll(marking.deleted());
+    children.addAll(editing.deleted());
     return copy(shown, children);
   }
 
   /** Returns the tokens as they are compared. A run of spaces becomes one space. */
   /**
-   * Returns what {@code tokens} say, as the marks compare them: a run of spaces as one space, and a
-   * word with each apostrophe in its plain form ({@link Wording#plain}). Thus "institution's" and
-   * "institution’s" are the same word. A quotation mark alone keeps its form: the plain form of an
-   * opening mark and of a closing mark is the same, and the marks would then match one with the
-   * other.
+   * Returns what {@code tokens} say, as the comparison compares them: a run of spaces as one space,
+   * and a word with each apostrophe in its plain form ({@link Wording#plain}). Thus "institution's"
+   * and "institution’s" are the same word. A quotation mark alone keeps its form: the plain form of
+   * an opening quotation mark and of a closing one is the same, and they would then match one with
+   * the other.
    */
   private static List<String> said(List<String> tokens) {
     return tokens.stream()
@@ -301,7 +301,7 @@ final class Marks {
   /**
    * Returns {@code element} as {@code sink} rebuilds it. The walk visits its tokens in the order of
    * {@link Wording}. The result is what goes in the place of the element: one element, several
-   * elements or none. For example, a {@code t} that is split at its marks gives several elements.
+   * elements or none. For example, a {@code t} that is split at its edits gives several elements.
    */
   private static List<Element> walk(Element element, Sink sink) {
     var v = element.attributes().getOrDefault("v", "");
@@ -324,12 +324,12 @@ final class Marks {
         return sink.atom(element, Wording.of(element), true);
       }
       default -> {
-        if (Wording.MARKS.contains(element.name())) {
+        if (Wording.SILENT.contains(element.name())) {
           return List.of(element);
         }
         if (!element.text().isEmpty()) {
           // The MathML tokens, for example mi and mo, hold text of their own. They are counted,
-          // not marked.
+          // without edits.
           return sink.atom(element, element.text(), false);
         }
         if (element.name().equals("quote")) {
@@ -346,16 +346,16 @@ final class Marks {
 
   /**
    * Returns the quote {@code element} as {@code sink} rebuilds it. Its quotation marks are tokens,
-   * and legal-text has them as attributes. A quotation mark that is marked becomes text in the
-   * quote, in its mark, and the attribute is emptied. Thus it shows where it stands, marked as any
-   * other text is.
+   * and legal-text has them as attributes. A quotation mark that is edited becomes text in the
+   * quote, in its edit element, and the attribute is emptied. Thus it shows where it stands, edited
+   * as any other text is.
    */
   private static List<Element> quote(Element element, Sink sink) {
     var attributes = new HashMap<>(element.attributes());
     var opening = sink.other(attributes.getOrDefault("startQuote", ""));
     var children = new ArrayList<Element>();
-    if (opening.marked() != null) {
-      children.add(opening.marked());
+    if (opening.edited() != null) {
+      children.add(opening.edited());
       attributes.put("startQuote", "");
     }
     for (var child : element.children()) {
@@ -363,11 +363,11 @@ final class Marks {
     }
     var closing = sink.other(attributes.getOrDefault("endQuote", ""));
     children.addAll(closing.before());
-    if (closing.marked() != null) {
-      children.add(closing.marked());
+    if (closing.edited() != null) {
+      children.add(closing.edited());
       attributes.put("endQuote", "");
     }
-    // What was deleted before the opening mark goes before the quote.
+    // What was deleted before the opening quotation mark goes before the quote.
     var out = new ArrayList<>(opening.before());
     out.add(new Element(element.name(), attributes, children, element.text()));
     return out;
@@ -383,7 +383,7 @@ final class Marks {
     List<Element> words(Element t, List<String> words);
 
     /** Visits an element that is one token. Returns what goes in its place. */
-    List<Element> atom(Element element, String token, boolean markable);
+    List<Element> atom(Element element, String token, boolean editable);
 
     /** Visits a token with no element of its own: a quotation mark of a quote. */
     Other other(String token);
@@ -393,10 +393,10 @@ final class Marks {
    * What a walk makes of a token with no element of its own.
    *
    * @param before what goes before the token, for example the words deleted there
-   * @param marked the token as marked text. Null if the token is not marked: it then stays as it
+   * @param edited the token as edited text. Null if the token is without edits: it then stays as it
    *     is.
    */
-  private record Other(List<Element> before, @Nullable Element marked) {
+  private record Other(List<Element> before, @Nullable Element edited) {
     static final Other NONE = new Other(List.of(), null);
   }
 
@@ -412,13 +412,13 @@ final class Marks {
     public List<Element> words(Element t, List<String> words) {
       for (var word : words) {
         tokens.add(word);
-        pieces.add(Mark.text(t, word));
+        pieces.add(Editing.text(t, word));
       }
       return List.of(t);
     }
 
     @Override
-    public List<Element> atom(Element element, String token, boolean markable) {
+    public List<Element> atom(Element element, String token, boolean editable) {
       tokens.add(token);
       pieces.add(element);
       return List.of(element);
@@ -428,25 +428,25 @@ final class Marks {
     public Other other(String token) {
       if (!token.isEmpty()) {
         tokens.add(token);
-        pieces.add(Mark.text(null, token));
+        pieces.add(Editing.text(null, token));
       }
       return Other.NONE;
     }
   }
 
   /**
-   * A walk that marks. It wraps the tokens in {@code marked} in {@code mark}. It puts the words
+   * A walk that edits. It wraps the tokens in {@code edited} in {@code edit}. It puts the words
    * deleted before a token, from {@code deletedAt}, in {@code diff:del} where they stood.
    */
-  private static final class Mark implements Sink {
-    private final String mark;
-    private final boolean[] marked;
+  private static final class Editing implements Sink {
+    private final String edit;
+    private final boolean[] edited;
     private final Map<Integer, List<Element>> deletedAt;
     private int next;
 
-    Mark(String mark, boolean[] marked, Map<Integer, List<Element>> deletedAt) {
-      this.mark = mark;
-      this.marked = marked;
+    Editing(String edit, boolean[] edited, Map<Integer, List<Element>> deletedAt) {
+      this.edit = edit;
+      this.edited = edited;
       this.deletedAt = deletedAt;
     }
 
@@ -457,12 +457,12 @@ final class Marks {
       }
       var out = new ArrayList<Element>();
       var run = new StringBuilder();
-      var runMarked = false;
+      var runEdited = false;
       for (var word : words) {
         var deleted = deletedAt.get(next);
-        if (deleted != null || marked[next] != runMarked) {
-          flush(t, run, runMarked, out);
-          runMarked = marked[next];
+        if (deleted != null || edited[next] != runEdited) {
+          flush(t, run, runEdited, out);
+          runEdited = edited[next];
         }
         if (deleted != null) {
           out.add(wrap(DELETED, deleted));
@@ -470,14 +470,14 @@ final class Marks {
         run.append(word);
         next++;
       }
-      flush(t, run, runMarked, out);
+      flush(t, run, runEdited, out);
       return out;
     }
 
     @Override
-    public List<Element> atom(Element element, String token, boolean markable) {
+    public List<Element> atom(Element element, String token, boolean editable) {
       var out = deletedBefore();
-      out.add(markable && marked[next] ? wrap(mark, element) : element);
+      out.add(editable && edited[next] ? wrap(edit, element) : element);
       next++;
       return out;
     }
@@ -488,12 +488,12 @@ final class Marks {
         return Other.NONE;
       }
       var before = deletedBefore();
-      var shown = marked[next] ? wrap(mark, text(null, token)) : null;
+      var shown = edited[next] ? wrap(edit, text(null, token)) : null;
       next++;
       return new Other(before, shown);
     }
 
-    /** Returns the words deleted after the last token. They go at the end of the marked element. */
+    /** Returns the words deleted after the last token. They go at the end of the edited element. */
     List<Element> deleted() {
       var deleted = deletedAt.get(next);
       return deleted == null ? List.of() : List.of(wrap(DELETED, deleted));
@@ -508,12 +508,12 @@ final class Marks {
       return out;
     }
 
-    private void flush(Element t, StringBuilder run, boolean runMarked, List<Element> out) {
+    private void flush(Element t, StringBuilder run, boolean runEdited, List<Element> out) {
       if (run.isEmpty()) {
         return;
       }
       var piece = text(t, run.toString());
-      out.add(runMarked ? wrap(mark, piece) : piece);
+      out.add(runEdited ? wrap(edit, piece) : piece);
       run.setLength(0);
     }
 
@@ -527,15 +527,15 @@ final class Marks {
       return new Element("t", attributes, List.of(), "");
     }
 
-    private static Element wrap(String mark, Element element) {
-      return new Element(mark, Map.of(), List.of(element), "");
+    private static Element wrap(String edit, Element element) {
+      return new Element(edit, Map.of(), List.of(element), "");
     }
 
     /**
-     * Returns {@code pieces} in {@code mark}. The words of a run of {@code t} with the same other
+     * Returns {@code pieces} in {@code edit}. The words of a run of {@code t} with the same other
      * attributes join into one {@code t}.
      */
-    private static Element wrap(String mark, List<Element> pieces) {
+    private static Element wrap(String edit, List<Element> pieces) {
       var joined = new ArrayList<Element>();
       for (var piece : pieces) {
         var last = joined.isEmpty() ? null : joined.getLast();
@@ -548,7 +548,7 @@ final class Marks {
           joined.add(piece);
         }
       }
-      return new Element(mark, Map.of(), joined, "");
+      return new Element(edit, Map.of(), joined, "");
     }
 
     /** Returns the attributes of {@code t} other than its words. */

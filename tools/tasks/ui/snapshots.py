@@ -98,7 +98,7 @@ PAGES = (
         "Read",
         "The history of a provision: Article 6(2)",
         VIS + "/2026-11-17/eng#art_6",
-        click='[id="art_6/par_2"] amendment-mark',
+        click='[id="art_6/par_2"] text-tag',
     ),
     Shown("read-missing", "Read", "No text in the language", AVSEC + "/2021-12-31/gle"),
     Shown("compare-changes", "Compare", "Changes", STEP),

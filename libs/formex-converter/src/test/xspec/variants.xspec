@@ -243,7 +243,7 @@
         $x:result[1]/self::*:table and $x:result[2]/self::*:annotation//*:t/@v = 'EASA Form 138 – Issue 3' and count($x:result) = 2"/>
   </x:scenario>
 
-  <x:scenario label="An amendment marker running into a table note (02015R2265)">
+  <x:scenario label="A tag running into a table note (02015R2265)">
     <x:context mode="block" select="/CONS.ACT/TBL" xmlns="">
       <CONS.ACT>
         <TBL COLS="1">
@@ -263,7 +263,7 @@
         <notes>
           <note eId="note_1" marker="1" kind="table">
             <p>
-              <changed amendingAct="32015R2265R(01)" action="replaced" location="LI:0;EL:3" marker="O1">
+              <changed amendingAct="32015R2265R(01)" action="replaced" location="LI:0;EL:3" tagId="O1">
                 <t v="Products under CN codes qualify"/>
               </changed>
               <t v=" for the quota"/>
@@ -345,13 +345,13 @@
     <x:expect label="splits like a space" select="'12'"/>
   </x:scenario>
 
-  <x:scenario label="A REPEALED marker">
+  <x:scenario label="A REPEALED tag">
     <x:context mode="block" xmlns=""><P><?CLG.MDFO ID="O1" ACTION="REPEALED" ACTIVE.DOC="398D0441"?>gone<?CLG.MDFC IDREF="O1"?></P></x:context>
     <x:expect label="is a deletion, with the amending act's CELEX expanded"
-              test="$x:result/self::*:deleted/*:provenance/@action = 'deleted' and $x:result/self::*:deleted/*:provenance/@amendingAct = '31998D0441'"/>
+              test="$x:result/self::*:deleted/*:tag/@action = 'deleted' and $x:result/self::*:deleted/*:tag/@amendingAct = '31998D0441'"/>
   </x:scenario>
 
-  <x:scenario label="An ADDED marker">
+  <x:scenario label="An ADDED tag">
     <x:context mode="block" xmlns=""><P>keep <?CLG.MDFO ID="O1" ACTION="ADDED" ACTIVE.DOC="32002R1534"?>new<?CLG.MDFC IDREF="O1"?></P></x:context>
     <x:expect label="is an insertion" test="$x:result//*:changed/@action = 'inserted'"/>
   </x:scenario>

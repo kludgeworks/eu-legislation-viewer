@@ -192,15 +192,15 @@ export const words = (day) =>
  * Returns a new element.
  *
  * @template {keyof HTMLElementTagNameMap} K
- * @param {K} tag
+ * @param {K} name
  * @param {Record<string, string>} attributes
  * @param {string} text
  * @returns {HTMLElementTagNameMap[K]}
  */
-const element = (tag, attributes = {}, text = "") => {
-  const made = document.createElement(tag);
-  for (const [name, value] of Object.entries(attributes)) {
-    made.setAttribute(name, value);
+const element = (name, attributes = {}, text = "") => {
+  const made = document.createElement(name);
+  for (const [attribute, value] of Object.entries(attributes)) {
+    made.setAttribute(attribute, value);
   }
   made.textContent = text;
   return made;

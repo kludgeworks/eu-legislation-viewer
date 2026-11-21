@@ -48,18 +48,18 @@ public interface Content {
 
   /**
    * Returns an occurrence in the public model. For example, an occurrence of a comparison, in which
-   * {@code diff:ins} and {@code diff:del} mark what changed.
+   * {@code diff:ins} and {@code diff:del} show what changed.
    */
   PublicText.Occurrence publicOccurrence(Element occurrence);
 
   /**
    * Returns the wording of an occurrence of a comparison, in which {@code diff:ins} and {@code
-   * diff:del} mark what changed: the text before and after the change, and the runs of words.
+   * diff:del} show what changed: the text before and after the change, and the runs of words.
    */
-  PublicText.Marked publicWording(Element occurrence);
+  PublicText.Edited publicWording(Element occurrence);
 
   /**
-   * Returns the outline of the text, with the marks of its occurrences, kept when the text was
+   * Returns the outline of the text, with the tags of its occurrences, kept when the text was
    * stored. Returns none if no such text is stored.
    */
   Optional<Outline> outline(TextId text);

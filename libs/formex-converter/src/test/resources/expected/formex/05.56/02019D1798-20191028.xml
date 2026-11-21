@@ -44,7 +44,7 @@
                <changed amendingAct="32019D1798R(01)"
                         action="replaced"
                         location="LI:0;EL:1"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <emphasis kind="uc">
                      <t v="Decision"/>
                   </emphasis>
@@ -55,7 +55,7 @@
                <changed amendingAct="32019D1798R(01)"
                         action="replaced"
                         location="LI:0;EL:1"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v=" (EU) 2019/1798 "/>
                   <emphasis kind="uc">
                      <t v="of the European Parliament and of the Council"/>
@@ -67,14 +67,14 @@
             <changed amendingAct="32019D1798R(01)"
                      action="replaced"
                      location="LI:0;EL:1"
-                     marker="O000001M001002">
+                     tagId="O000001M001002">
                <t v="of "/>
             </changed>
             <docDate date="2019-10-23">
                <changed amendingAct="32019D1798R(01)"
                         action="replaced"
                         location="LI:0;EL:1"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="23 October 2019"/>
                </changed>
             </docDate>
@@ -84,7 +84,7 @@
                <changed amendingAct="32019D1798R(01)"
                         action="replaced"
                         location="LI:0;EL:1"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="appointing the European Chief Prosecutor of the European Public Prosecutor’s Office"/>
                </changed>
             </docPurpose>

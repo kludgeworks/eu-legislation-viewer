@@ -845,10 +845,10 @@
             <t v="[Signatures of all parties]"/>
          </p>
          <occurrence eId="anx/app_I" kind="annex" eurlexAnchor="2" rank="2">
-            <provenance amendingAct="32022G0128(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32022G0128(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O001001M001000"/>
             <num>
                <t v="Appendix I"/>
             </num>

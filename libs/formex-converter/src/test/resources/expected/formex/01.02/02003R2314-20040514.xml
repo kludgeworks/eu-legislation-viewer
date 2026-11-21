@@ -249,10 +249,10 @@
                </p>
             </occurrence>
             <occurrence eId="art_4/par_1/sub_2" kind="subparagraph">
-               <provenance amendingAct="32004R0965"
-                           action="replaced"
-                           location="AR:1"
-                           marker="O001001M001000"/>
+               <tag amendingAct="32004R0965"
+                    action="replaced"
+                    location="AR:1"
+                    tagId="O001001M001000"/>
                <p>
                   <t v="The closing dates for the submission of tenders for subsequent partial invitations to tender shall be each Thursday at 09.00 (Brussels time), with the exception of "/>
                   <date date="2004-05-20">

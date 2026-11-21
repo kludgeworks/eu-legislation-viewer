@@ -41,7 +41,7 @@
             <changed amendingAct="32014D0015R(01)"
                      action="replaced"
                      location="LI:0;EL:2"
-                     marker="O000001M002000">
+                     tagId="O000001M002000">
                <emphasis kind="uc">
                   <t v="Council Decision"/>
                </emphasis>
@@ -52,14 +52,14 @@
             <changed amendingAct="32014D0015R(01)"
                      action="replaced"
                      location="LI:0;EL:2"
-                     marker="O000001M002000">
+                     tagId="O000001M002000">
                <t v="of "/>
             </changed>
             <docDate date="2013-11-18">
                <changed amendingAct="32014D0015R(01)"
                         action="replaced"
                         location="LI:0;EL:2"
-                        marker="O000001M002000">
+                        tagId="O000001M002000">
                   <t v="18 November 2013"/>
                </changed>
             </docDate>
@@ -69,7 +69,7 @@
                <changed amendingAct="32014D0015R(01)"
                         action="replaced"
                         location="LI:0;EL:2"
-                        marker="O000001M002000">
+                        tagId="O000001M002000">
                   <t v="on the signing and conclusion of the Agreement between the European Union and Georgia establishing a framework for the participation of Georgia in European Union crisis management operations"/>
                </changed>
             </docPurpose>

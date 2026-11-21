@@ -68,7 +68,7 @@
                <deleted amendingAct="32004R0026"
                         action="deleted"
                         location="AR:12"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <emphasis kind="uc">
                      <t v="Commission Regulation"/>
                   </emphasis>
@@ -79,7 +79,7 @@
                <deleted amendingAct="32004R0026"
                         action="deleted"
                         location="AR:12"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v=" (EC) No 2090/98"/>
                </deleted>
             </docNumber>
@@ -88,7 +88,7 @@
             <deleted amendingAct="32004R0026"
                      action="deleted"
                      location="AR:12"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="of 30 September 1998"/>
             </deleted>
          </p>
@@ -97,7 +97,7 @@
                <deleted amendingAct="32004R0026"
                         action="deleted"
                         location="AR:12"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="concerning the fishing vessel register of the Community"/>
                </deleted>
             </docPurpose>
@@ -107,30 +107,30 @@
    <preamble eId="pbl_1">
       <formula name="actingEntity">
          <deleted>
-            <provenance amendingAct="32004R0026"
-                        action="deleted"
-                        location="AR:12"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32004R0026"
+                 action="deleted"
+                 location="AR:12"
+                 tagId="O002001M001000"/>
             <p>
                <t v="XXX"/>
             </p>
          </deleted>
       </formula>
       <deleted>
-         <provenance amendingAct="32004R0026"
-                     action="deleted"
-                     location="AR:12"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32004R0026"
+              action="deleted"
+              location="AR:12"
+              tagId="O002001M001000"/>
          <p>
             <t v="This act has been trimmed due to parser errors since it has been repealed."/>
          </p>
       </deleted>
       <formula name="enactingFormula">
          <deleted>
-            <provenance amendingAct="32004R0026"
-                        action="deleted"
-                        location="AR:12"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32004R0026"
+                 action="deleted"
+                 location="AR:12"
+                 tagId="O002001M001000"/>
             <p>
                <t v="XXX"/>
             </p>
@@ -139,10 +139,10 @@
    </preamble>
    <body>
       <deleted>
-         <provenance amendingAct="32004R0026"
-                     action="deleted"
-                     location="AR:12"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32004R0026"
+              action="deleted"
+              location="AR:12"
+              tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>

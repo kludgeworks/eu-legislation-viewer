@@ -44,7 +44,7 @@
                <changed amendingAct="32021R0251R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <emphasis kind="uc">
                      <t v="Council Regulation"/>
                   </emphasis>
@@ -55,7 +55,7 @@
                <changed amendingAct="32021R0251R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v=" (EU) 2021/251"/>
                </changed>
             </docNumber>
@@ -64,14 +64,14 @@
             <changed amendingAct="32021R0251R(01)"
                      action="replaced"
                      location="TO"
-                     marker="O000001M001002">
+                     tagId="O000001M001002">
                <t v="of "/>
             </changed>
             <docDate date="2021-02-18">
                <changed amendingAct="32021R0251R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="18 February 2021"/>
                </changed>
             </docDate>
@@ -81,7 +81,7 @@
                <changed amendingAct="32021R0251R(01)"
                         action="replaced"
                         location="TO"
-                        marker="O000001M001002">
+                        tagId="O000001M001002">
                   <t v="amending Regulation (EC) No 314/2004 concerning restrictive measures in view of the situation in Zimbabwe"/>
                </changed>
             </docPurpose>

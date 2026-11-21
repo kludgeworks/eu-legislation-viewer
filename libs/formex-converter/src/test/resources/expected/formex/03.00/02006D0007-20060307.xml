@@ -207,7 +207,7 @@
             <changed amendingAct="32006D0183"
                      action="replaced"
                      location="AR:1;PT:1"
-                     marker="O001001M001000">
+                     tagId="O001001M001000">
                <date date="2006-07-31">
                   <t v="31 July 2006"/>
                </date>
@@ -226,10 +226,10 @@
    </body>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="32006D0183"
-                     action="replaced"
-                     location="AR:1;PT:2 .AND. AX:0"
-                     marker="O001001M002000"/>
+         <tag amendingAct="32006D0183"
+              action="replaced"
+              location="AR:1;PT:2 .AND. AX:0"
+              tagId="O001001M002000"/>
          <num>
             <t v="ANNEX"/>
          </num>

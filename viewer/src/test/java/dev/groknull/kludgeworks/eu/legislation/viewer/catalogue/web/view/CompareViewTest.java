@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -72,7 +72,7 @@ class CompareViewTest {
             POINT,
             Language.ENG,
             TODAY,
-            Map.of(LATEST, new TextMarks(OCCURRENCES, Map.of())));
+            Map.of(LATEST, new TextTags(OCCURRENCES, Map.of())));
 
     assertThat(view.heading()).endsWith(" of 2015/1998 on two days").doesNotContain("A provision");
     assertThat(view.picker().occurrence()).isEqualTo(POINT);

@@ -2460,14 +2460,14 @@
    </conclusions>
    <annexes>
       <occurrence eId="anx_1" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="22024D2762"
-                     action="replaced"
-                     location="AR:1 .AND. AX:0"
-                     marker="O018001M001000"/>
-         <provenance amendingAct="22025D0121"
-                     action="replaced"
-                     location="AR:1 .AND. AX:0"
-                     marker="O019001M001000"/>
+         <tag amendingAct="22024D2762"
+              action="replaced"
+              location="AR:1 .AND. AX:0"
+              tagId="O018001M001000"/>
+         <tag amendingAct="22025D0121"
+              action="replaced"
+              location="AR:1 .AND. AX:0"
+              tagId="O019001M001000"/>
          <num>
             <t v="ANNEX"/>
          </num>
@@ -7661,10 +7661,10 @@
          </occurrence>
       </occurrence>
       <occurrence eId="anx_A" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="22024D2762"
-                     action="replaced"
-                     location="AR:1 .AND. AX:0"
-                     marker="O018001M001000"/>
+         <tag amendingAct="22024D2762"
+              action="replaced"
+              location="AR:1 .AND. AX:0"
+              tagId="O018001M001000"/>
          <num>
             <t v="ANNEX A"/>
          </num>
@@ -8150,10 +8150,10 @@
          </occurrence>
       </occurrence>
       <occurrence eId="app_3" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="22024D2762"
-                     action="replaced"
-                     location="AR:1 .AND. AX:0"
-                     marker="O018001M001000"/>
+         <tag amendingAct="22024D2762"
+              action="replaced"
+              location="AR:1 .AND. AX:0"
+              tagId="O018001M001000"/>
          <num>
             <t v="Appendix"/>
          </num>
@@ -8215,10 +8215,10 @@
          </occurrence>
       </occurrence>
       <occurrence eId="anx_B" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="22024D2762"
-                     action="replaced"
-                     location="AR:1 .AND. AX:0"
-                     marker="O018001M001000"/>
+         <tag amendingAct="22024D2762"
+              action="replaced"
+              location="AR:1 .AND. AX:0"
+              tagId="O018001M001000"/>
          <num>
             <t v="ANNEX B"/>
          </num>

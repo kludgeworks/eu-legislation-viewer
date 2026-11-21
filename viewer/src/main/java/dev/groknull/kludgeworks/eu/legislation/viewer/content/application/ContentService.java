@@ -161,8 +161,8 @@ class ContentService implements Content {
   }
 
   @Override
-  public PublicText.Marked publicWording(Element occurrence) {
-    return PublicTexts.marked(occurrence);
+  public PublicText.Edited publicWording(Element occurrence) {
+    return PublicTexts.edited(occurrence);
   }
 
   /**
@@ -201,11 +201,11 @@ class ContentService implements Content {
               var outline = Outlines.of(Decoder.element(json));
               store.outline(text, outline, OutlinesVersion.value());
               LOG.info(
-                  "Outlined text {} again, by the outline rules {}: {} occurrences marked, in {}"
+                  "Outlined text {} again, by the outline rules {}: {} occurrences tagged, in {}"
                       + " ms",
                   text,
                   OutlinesVersion.value(),
-                  outline.marks().size(),
+                  outline.tags().size(),
                   millis(start));
               return outline;
             });

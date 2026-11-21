@@ -3,7 +3,7 @@
 <!--
   Inline content: text, emphasis, dates, quotes, footnote references, references, line breaks,
   and the amendment spans inside running text. f:inlines is the only way in: it groups the nodes
-  by the amendment markers open over them, pairs quotation marks, and merges text split by
+  by the tags open over them, pairs quotation marks, and merges text split by
   page-break processing instructions.
 -->
 <xsl:stylesheet version="3.0"
@@ -20,8 +20,8 @@
   <xsl:template name="f:inlines">
     <xsl:param name="nodes" as="node()*"/>
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:for-each-group select="$nodes[not(self::processing-instruction() or self::comment()) or f:empty-marker(.)]"
-                        group-adjacent="f:outer-marker(., $ctx)">
+    <xsl:for-each-group select="$nodes[not(self::processing-instruction() or self::comment()) or f:empty-tag(.)]"
+                        group-adjacent="f:outer-tag(., $ctx)">
       <xsl:choose>
         <xsl:when test="current-grouping-key() = ''">
           <xsl:call-template name="f:quotes">
@@ -29,9 +29,9 @@
           </xsl:call-template>
         </xsl:when>
         <xsl:otherwise>
-          <xsl:variable name="marker" as="processing-instruction()" select="f:marker(current-group()[1], current-grouping-key())"/>
-          <xsl:element name="{if (f:is-deletion($marker)) then 'deleted' else 'changed'}">
-            <xsl:sequence select="f:amendment-attributes($marker)"/>
+          <xsl:variable name="tag" as="processing-instruction()" select="f:tag(current-group()[1], current-grouping-key())"/>
+          <xsl:element name="{if (f:is-deletion($tag)) then 'deleted' else 'changed'}">
+            <xsl:sequence select="f:amendment-attributes($tag)"/>
             <xsl:call-template name="f:inlines">
               <xsl:with-param name="nodes" as="node()*" select="current-group()"/>
               <xsl:with-param name="ctx" as="xs:string*" select="($ctx, current-grouping-key())" tunnel="yes"/>
@@ -42,17 +42,17 @@
     </xsl:for-each-group>
   </xsl:template>
 
-  <!-- a marker that closes as soon as it opens: words an amendment deleted and the consolidation
+  <!-- a tag that closes as soon as it opens: words an amendment deleted and the consolidation
        doesn't keep (the marketing <?CLG.MDFO ACTION="DELETED"?><?CLG.MDFC?>compound). It stays, an
-       empty span, where EUR-Lex prints its mark -->
-  <xsl:function name="f:empty-marker" as="xs:boolean">
+       empty span, where EUR-Lex prints its tag -->
+  <xsl:function name="f:empty-tag" as="xs:boolean">
     <xsl:param name="n" as="node()"/>
     <xsl:sequence select="exists($n/self::processing-instruction('CLG.MDFO')
         [following-sibling::node()[1]/self::processing-instruction('CLG.MDFC')[f:pi-attr(., 'IDREF') = f:pi-attr($n, 'ID')]])"/>
   </xsl:function>
 
-  <!-- the open marker with this id at node $n -->
-  <xsl:function name="f:marker" as="processing-instruction()">
+  <!-- the open tag with this id at node $n -->
+  <xsl:function name="f:tag" as="processing-instruction()">
     <xsl:param name="n" as="node()"/>
     <xsl:param name="id" as="xs:string"/>
     <xsl:sequence select="($n ! accumulator-before('f:open'))($id)"/>
@@ -193,7 +193,7 @@
     </date>
   </xsl:template>
 
-  <!-- an empty marker: its span (f:inlines) is all there is of it -->
+  <!-- an empty tag: its span (f:inlines) is all there is of it -->
   <xsl:template match="processing-instruction('CLG.MDFO')" mode="inline"/>
 
   <!-- a note: every NOTE but a reference to one (NOTE.REF); older budgets give their notes no NOTE.ID -->

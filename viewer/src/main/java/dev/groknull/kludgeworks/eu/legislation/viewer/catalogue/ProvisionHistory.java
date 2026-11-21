@@ -11,23 +11,23 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * @param occurrence the eId of the occurrence of the text that is the provision
  * @param changes the changes that Cellar annotates at the provision, in a part of it that the text
  *     does not number, or at an occurrence that holds it. The newest act is first.
- * @param marking the acts that the text marks the provision with, and that have no change in {@code
+ * @param tagging the acts that the text tags the provision with, and that have no change in {@code
  *     changes}. The data does not say what each of them did. The newest act is first.
  */
 @ValueObject
 public record ProvisionHistory(
-    String occurrence, List<Amendment> changes, List<ActIdentifier> marking) {
+    String occurrence, List<Amendment> changes, List<ActIdentifier> tagging) {
 
   public ProvisionHistory {
     changes = List.copyOf(changes);
-    marking = List.copyOf(marking);
+    tagging = List.copyOf(tagging);
   }
 
   /** Returns the acts that changed the provision, each one time. The newest act is first. */
   public List<ActIdentifier> acts() {
     var acts = new LinkedHashSet<ActIdentifier>();
     changes.forEach(change -> acts.add(change.act()));
-    acts.addAll(marking);
+    acts.addAll(tagging);
     return List.copyOf(acts);
   }
 }

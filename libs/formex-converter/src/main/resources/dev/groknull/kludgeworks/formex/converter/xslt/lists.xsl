@@ -17,7 +17,7 @@
   <xsl:template match="P" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" as="node()*" select="node()"/>
       <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -34,7 +34,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="label" as="xs:string" select="f:label(NO.P)"/>
     <!-- an NP that numbers what holds it (f:np-point) is no run -->
     <xsl:variable name="run-base" as="xs:string?" select="if (f:np-point(.)) then f:list-base(f:np-run-start(.), $base) else $base"/>
@@ -44,7 +44,7 @@
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="{if ($label != '') then 'point' else 'indent'}">
         <xsl:sequence select="f:numbered($label)"/>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <num>
           <xsl:call-template name="f:inlines">
             <xsl:with-param name="nodes" as="node()*" select="NO.P/node()"/>
@@ -70,11 +70,11 @@
   <xsl:template match="NP[parent::TI or parent::STI or parent::TI.BLK]" mode="block" priority="1">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="first-block" as="node()?" select="TXT/node()[f:is-block(.)][1]"/>
     <xsl:variable name="p" as="element()">
       <p>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:inlines">
           <xsl:with-param name="nodes" as="node()*" select="NO.P/node()"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
@@ -187,10 +187,10 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="list" as="element()">
       <list kind="{f:list-kind(.)}">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:apply-templates select="ITEM" mode="block">
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -209,7 +209,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="kind" as="xs:string" select="f:list-kind(.)"/>
     <xsl:variable name="content" as="element()*">
       <xsl:for-each-group select="node()" group-adjacent="exists(self::QUOT.S)">
@@ -222,7 +222,7 @@
           </xsl:when>
           <xsl:when test="current-group()[self::ITEM]">
             <list kind="{$kind}">
-              <xsl:sequence select="f:provenance($m)"/>
+              <xsl:sequence select="f:tags($m)"/>
               <xsl:apply-templates select="current-group()[self::ITEM]" mode="block">
                 <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
                 <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -267,9 +267,9 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="own" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
-    <!-- an ITEM that is just its NP: markers around the NP belong to the item -->
-    <xsl:variable name="np" as="processing-instruction()*" select="if (count(*) = 1 and NP) then f:new-markers(NP, ($ctx, f:ids($own))) else ()"/>
+    <xsl:variable name="own" as="processing-instruction()*" select="f:new-tags(., $ctx)"/>
+    <!-- an ITEM that is just its NP: tags around the NP belong to the item -->
+    <xsl:variable name="np" as="processing-instruction()*" select="if (count(*) = 1 and NP) then f:new-tags(NP, ($ctx, f:ids($own))) else ()"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, $own, $np)"/>
     <xsl:variable name="label" as="xs:string" select="f:label(NP/NO.P)"/>
     <!-- a label an earlier point of the same list already has (2025/24 nests (2), (3) of one point in
@@ -281,7 +281,7 @@
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="{if (NP/NO.P) then 'point' else 'indent'}">
         <xsl:sequence select="f:numbered($label)"/>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:if test="NP/NO.P">
           <num>
             <xsl:call-template name="f:inlines">
@@ -309,13 +309,13 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
     <xsl:param name="pending" as="processing-instruction()*" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-markers(., $ctx))"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="list" as="element()">
       <list kind="definition">
         <xsl:if test="@SEPARATOR">
           <xsl:attribute name="separator" select="@SEPARATOR"/>
         </xsl:if>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:apply-templates select="DLIST.ITEM" mode="block">
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
@@ -330,7 +330,7 @@
   <xsl:template match="DLIST.ITEM" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="base" as="xs:string?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags(., $ctx)"/>
     <xsl:variable name="label" as="xs:string" select="f:label(PREFIX)"/>
     <!-- an unlabelled definition is numbered by position as def_N, which a labelled point (pnt_1) can't
          collide with, as an unlabelled list item is idt_N -->
@@ -340,7 +340,7 @@
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="definition">
         <xsl:sequence select="f:numbered($label)"/>
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:occurrence-content">
           <xsl:with-param name="num" as="element()?" select="PREFIX"/>
           <xsl:with-param name="heading" as="element()?" select="TERM"/>

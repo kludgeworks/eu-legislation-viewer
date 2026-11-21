@@ -20,7 +20,7 @@ import org.jspecify.annotations.Nullable;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests the rule that compares the date of each changed provision with the first version that marks
+ * Tests the rule that compares the date of each changed provision with the first version that tags
  * it. The act is made up: a base act with an annex, and one amending act that replaces point 1.1.
  */
 class DivergencesTest {
@@ -139,7 +139,7 @@ class DivergencesTest {
 
   @Test
   void aDeletionIsMarkedOnTheOccurrenceAroundWhereTheDeletedProvisionStood() {
-    // As point (d) of Article 1(2) of 2014/65, deleted by 2019/2177: the consolidation keeps a mark
+    // As point (d) of Article 1(2) of 2014/65, deleted by 2019/2177: the consolidation keeps a tag
     // and a line of dashes where the point stood, in the occurrence around it.
     role = Role.DELETION;
     application("2017-06-01");
@@ -404,7 +404,7 @@ class DivergencesTest {
   }
 
   /**
-   * Adds a consolidated version that starts on {@code day}, whose text marks {@code occurrences}
+   * Adds a consolidated version that starts on {@code day}, whose text tags {@code occurrences}
    * with the amending act. {@code lists} tells whether the Publications Office lists the act for
    * it.
    */
@@ -419,7 +419,7 @@ class DivergencesTest {
 
   /**
    * Adds a consolidated version that starts on {@code day}, whose text does not have the point and
-   * marks {@code occurrences} with the amending act. {@code lists} tells whether the Publications
+   * tags {@code occurrences} with the amending act. {@code lists} tells whether the Publications
    * Office lists the act for it.
    */
   private void versionWithoutThePoint(String day, boolean lists, String... occurrences) {
@@ -436,18 +436,17 @@ class DivergencesTest {
     return act.divergences(Language.ENG, texts(act));
   }
 
-  private Map<Version, TextMarks> texts(Act act) {
-    var texts = new LinkedHashMap<Version, TextMarks>();
+  private Map<Version, TextTags> texts(Act act) {
+    var texts = new LinkedHashMap<Version, TextTags>();
     var versions = act.timeline().versions();
     for (var i = 1; i < versions.size(); i++) {
       var each = planned.get(i - 1);
-      var marked = each.marks();
+      var tagged = each.tags();
       texts.put(
           versions.get(i),
-          new TextMarks(
-              each.occurrences(), marked.isEmpty() ? Map.of() : Map.of(AMENDING, marked)));
+          new TextTags(each.occurrences(), tagged.isEmpty() ? Map.of() : Map.of(AMENDING, tagged)));
     }
-    texts.put(versions.getFirst(), new TextMarks(OCCURRENCES, Map.of()));
+    texts.put(versions.getFirst(), new TextTags(OCCURRENCES, Map.of()));
     return texts;
   }
 
@@ -499,9 +498,9 @@ class DivergencesTest {
    *
    * @param start the day it starts
    * @param lists whether the Publications Office lists the amending act for it
-   * @param marks the occurrences that its text marks with the amending act
+   * @param tags the occurrences that its text tags with the amending act
    * @param occurrences the eIds of the occurrences of its text
    */
   private record Planned(
-      LocalDate start, boolean lists, Set<String> marks, List<String> occurrences) {}
+      LocalDate start, boolean lists, Set<String> tags, List<String> occurrences) {}
 }

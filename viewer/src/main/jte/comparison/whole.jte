@@ -10,7 +10,7 @@
 @param List<ControlsView.ViewLink> views
 @param ControlsView.Legend legend
 <%-- Shows a comparison's Whole text view. The controls come first. Then the text shows every
-     provision of the later text (text). Each provision that differs is marked in place, with a
+     provision of the later text (text). Each provision that differs shows its edits in place, with a
      number and its sidenote. A deleted provision shows where it was. The later text's outline is
      beside the view, with a count of differences for each occurrence. --%>
 <div class="outlined">

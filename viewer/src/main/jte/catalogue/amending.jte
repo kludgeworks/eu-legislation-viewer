@@ -13,7 +13,7 @@
      are in two or more groups. The changes are in the order of the text. Changes that follow each other and have
      the same state are one run: the run says the state, the date and the clause one time, and then
      lists its provisions. Under a provision is the wording of its change: the provision as it reads
-     in the first text with the act, with the inserted and the deleted words marked. htmx loads it
+     in the first text with the act, with the inserted and the deleted words shown. htmx loads it
      from the comparison module when the fold of the provision opens. The folds are open when the
      page has few changes, and then htmx loads each wording when the page loads: a fold that is
      open at the start gives no toggle event that htmx gets. A provision whose wording the texts do not give shows by its name only.

@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { history, link, number, said, toggle, occurrenceOf } from "../../main/resources/static/js/markers.js";
+import { history, link, number, said, toggle, occurrenceOf } from "../../main/resources/static/js/tags.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
@@ -9,11 +9,11 @@ afterEach(() => {
 });
 
 /**
- * Returns the mark of the page.
+ * Returns the tag of the page.
  *
  * @returns {HTMLElement}
  */
-const mark = () => /** @type {HTMLElement} */ (document.querySelector(".provenance"));
+const tag = () => /** @type {HTMLElement} */ (document.querySelector(".tag"));
 
 describe("number", () => {
   test("names an act by its year and number", () => {
@@ -33,30 +33,30 @@ describe("number", () => {
 
 describe("said", () => {
   test("says what happened and which act did it", () => {
-    document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815" data-action="replaced">▼</amendment-mark>`;
+    document.body.innerHTML = `<text-tag class="tag" data-act="32017R0815" data-action="replaced">▼</text-tag>`;
 
-    expect(said(mark())).toBe("Replaced by 2017/815");
+    expect(said(tag())).toBe("Replaced by 2017/815");
   });
 
   test("says when the act applies, where the page lists it", () => {
-    document.body.innerHTML = `<div class="marks" hidden><span data-act="32026R0449"
+    document.body.innerHTML = `<div class="tags" hidden><span data-act="32026R0449"
       data-applies="applies from 1 October 2026 · Article 2 of 2026/449"></span></div>
-      <amendment-mark class="provenance" data-act="32026R0449" data-action="replaced">▼</amendment-mark>`;
+      <text-tag class="tag" data-act="32026R0449" data-action="replaced">▼</text-tag>`;
 
-    expect(said(mark())).toBe(
+    expect(said(tag())).toBe(
       "Replaced by 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449",
     );
   });
 
-  test("says amended if the mark does not say what happened", () => {
-    document.body.innerHTML = `<amendment-mark class="provenance" data-act="32017R0815">▼</amendment-mark>`;
+  test("says amended if the tag does not say what happened", () => {
+    document.body.innerHTML = `<text-tag class="tag" data-act="32017R0815">▼</text-tag>`;
 
-    expect(said(mark())).toBe("Amended by 2017/815");
+    expect(said(tag())).toBe("Amended by 2017/815");
   });
 });
 
 /**
- * Puts a text with one marked paragraph and one paragraph without a mark on the page, with the
+ * Puts a text with one tagged paragraph and one paragraph without a tag on the page, with the
  * address of the histories.
  *
  * @param {string} [listed] the eIds that the page lists as having a history
@@ -72,7 +72,7 @@ const text = (listed = "") => {
       <div class="content">
         <div id="art_6"><h3 class="title">Article 6</h3>
           <div id="art_6/par_1"><span class="num">1.</span><p>One.</p></div>
-          <div id="art_6/par_2"><amendment-mark class="provenance" data-act="32024R1356" data-action="replaced"></amendment-mark><span class="num">2.</span><p>Two.</p></div>
+          <div id="art_6/par_2"><text-tag class="tag" data-act="32024R1356" data-action="replaced"></text-tag><span class="num">2.</span><p>Two.</p></div>
         </div>
       </div>
     </div>`;
@@ -114,7 +114,7 @@ describe("toggle", () => {
   test("loads the history under the provision, and closes it again", async () => {
     text();
     const fetched = answer(`<aside class="provision-history"><p>History of Article 6(2)</p></aside>`);
-    const from = mark();
+    const from = tag();
 
     await toggle(occurrence("art_6/par_2"), from);
 
@@ -135,7 +135,7 @@ describe("toggle", () => {
     text();
     answer(`<aside class="provision-history">History</aside>`);
 
-    await toggle(occurrence("art_6"), mark());
+    await toggle(occurrence("art_6"), tag());
 
     expect(occurrence("art_6").querySelector(".title")?.nextElementSibling?.className).toBe(
       "provision-history",
@@ -146,12 +146,12 @@ describe("toggle", () => {
     text();
     answer(`<aside class="provision-history">History</aside>`);
 
-    await toggle(occurrence("art_6/par_2"), mark());
-    await toggle(occurrence("art_6"), mark());
+    await toggle(occurrence("art_6/par_2"), tag());
+    await toggle(occurrence("art_6"), tag());
 
     expect(document.querySelectorAll(".provision-history")).toHaveLength(2);
 
-    await toggle(occurrence("art_6"), mark());
+    await toggle(occurrence("art_6"), tag());
 
     expect(document.querySelectorAll(".provision-history")).toHaveLength(1);
     expect(occurrence("art_6/par_2").nextElementSibling?.className).toBe("provision-history");
@@ -161,7 +161,7 @@ describe("toggle", () => {
     text();
     answer("", false);
 
-    await toggle(occurrence("art_6/par_2"), mark());
+    await toggle(occurrence("art_6/par_2"), tag());
 
     expect(document.querySelector(".provision-history")?.textContent).toBe(
       "The history of this provision did not load. Try again.",
@@ -173,7 +173,7 @@ const links = () => /** @type {HTMLElement} */ (document.querySelector("provisio
 const content = () => /** @type {HTMLElement} */ (document.querySelector(".content"));
 
 describe("link", () => {
-  test("gives a listed provision without a mark a link that opens its history", async () => {
+  test("gives a listed provision without a tag a link that opens its history", async () => {
     text("art_6/par_1");
     const fetched = answer(`<aside class="provision-history">History</aside>`);
 
@@ -190,7 +190,7 @@ describe("link", () => {
     );
   });
 
-  test("gives no link to a provision that has a mark of its own", () => {
+  test("gives no link to a provision that has a tag of its own", () => {
     text("art_6/par_2");
 
     link(links(), content());
@@ -198,7 +198,7 @@ describe("link", () => {
     expect(document.querySelector(".provision-link")).toBeNull();
   });
 
-  test("gives a link to a provision whose marks are all on its occurrences", () => {
+  test("gives a link to a provision whose tags are all on its occurrences", () => {
     text("art_6");
 
     link(links(), content());
@@ -216,30 +216,30 @@ describe("link", () => {
   });
 });
 
-describe("AmendmentMark", () => {
+describe("TextTag", () => {
   test("sets its hover text when connected inside the text of Read", () => {
     text();
 
-    expect(mark().title).toBe("Replaced by 2024/1356");
+    expect(tag().title).toBe("Replaced by 2024/1356");
   });
 
   test("leaves hover text empty outside the text of Read", () => {
     document.body.innerHTML = `
       <div>
-        <amendment-mark class="provenance" data-act="32017R0815" data-action="inserted">▼</amendment-mark>
+        <text-tag class="tag" data-act="32017R0815" data-action="inserted">▼</text-tag>
       </div>`;
 
-    expect(mark().title).toBe("");
+    expect(tag().title).toBe("");
   });
 
   test("opens the history of its provision on click", async () => {
     text();
     const fetched = answer(`<aside class="provision-history">History</aside>`);
 
-    mark().click();
-    await vi.waitFor(() => expect(mark().getAttribute("aria-expanded")).toBe("true"));
+    tag().click();
+    await vi.waitFor(() => expect(tag().getAttribute("aria-expanded")).toBe("true"));
 
-    expect(occurrenceOf(mark())?.id).toBe("art_6/par_2");
+    expect(occurrenceOf(tag())?.id).toBe("art_6/par_2");
     expect(fetched).toHaveBeenCalledTimes(1);
   });
 
@@ -247,7 +247,7 @@ describe("AmendmentMark", () => {
     text();
     const fetched = answer(`<aside class="provision-history">History</aside>`);
 
-    mark().dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
+    tag().dispatchEvent(new KeyboardEvent("keydown", { key: "Enter" }));
     await vi.waitFor(() => expect(fetched).toHaveBeenCalledTimes(1));
   });
 });

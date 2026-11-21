@@ -18,8 +18,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
@@ -94,7 +94,7 @@ class ApiComparisonControllerTests {
     when(content.publicOccurrence(any(Element.class))).thenReturn(SHOWN);
     when(content.publicWording(any(Element.class)))
         .thenReturn(
-            new PublicText.Marked(
+            new PublicText.Edited(
                 "",
                 "Screening.",
                 List.of(new PublicText.Change(PublicText.Change.Op.INSERT, "Screening."))));
@@ -138,7 +138,7 @@ class ApiComparisonControllerTests {
     assertThat(difference.at("/eId").asString()).isEqualTo("anx/pnt_1.2");
     assertThat(difference.at("/kind").asString()).isEqualTo("changed");
     assertThat(difference.at("/inserted").asInt()).isEqualTo(3);
-    assertThat(difference.at("/markers/0/act").asString()).isEqualTo("32019R0103");
+    assertThat(difference.at("/tags/0/act").asString()).isEqualTo("32019R0103");
     assertThat(difference.at("/_links/self/href").asString())
         .isEqualTo(ACT + "/comparisons/2021-03-15..2021-12-31/texts/eng/differences/anx/pnt_1.2");
     assertThat(comparison.at("/_links/up/href").asString()).isEqualTo(ACT);
@@ -225,7 +225,7 @@ class ApiComparisonControllerTests {
         "anx/pnt_1.2",
         null,
         List.of(),
-        List.of(new Marker("32019R0103", "replaced", null)),
+        List.of(new Tag("32019R0103", "replaced", null)),
         List.of(),
         null);
   }

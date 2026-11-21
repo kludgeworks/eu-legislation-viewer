@@ -122,10 +122,10 @@
             </p>
          </occurrence>
          <occurrence eId="pbl_1/rct_3" kind="recital">
-            <provenance amendingAct="32009R1026"
-                        action="replaced"
-                        location="AR:1;PT:1"
-                        marker="O000001M001000"/>
+            <tag amendingAct="32009R1026"
+                 action="replaced"
+                 location="AR:1;PT:1"
+                 tagId="O000001M001000"/>
             <num>
                <t v="(3)"/>
             </num>
@@ -155,10 +155,10 @@
             </p>
          </occurrence>
          <occurrence eId="art_1/unp_2" kind="paragraph">
-            <provenance amendingAct="32009R1026"
-                        action="inserted"
-                        location="AR:1;PT:2"
-                        marker="O000001M002000"/>
+            <tag amendingAct="32009R1026"
+                 action="inserted"
+                 location="AR:1;PT:2"
+                 tagId="O000001M002000"/>
             <p>
                <t v="The protection provided for in Article 13(2) of Regulation (EC) No 509/2006 shall apply."/>
             </p>
@@ -214,10 +214,10 @@
                <t v="Pierekaczewnik (TSG)"/>
             </p>
             <p>
-               <provenance amendingAct="32009R1026"
-                           action="inserted"
-                           location="AR:1;PT:3"
-                           marker="O000001M003000"/>
+               <tag amendingAct="32009R1026"
+                    action="inserted"
+                    location="AR:1;PT:3"
+                    tagId="O000001M003000"/>
                <t v="The use of the name is reserved."/>
             </p>
          </occurrence>

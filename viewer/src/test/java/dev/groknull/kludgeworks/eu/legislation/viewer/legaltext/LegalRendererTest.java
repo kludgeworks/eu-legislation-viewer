@@ -84,7 +84,7 @@ class LegalRendererTest {
 
   /**
    * The outermost runs of running text in {@code element}. There are no runs in what an amendment
-   * deleted, because the Read mode shows only its mark.
+   * deleted, because the Read mode shows only its tag.
    */
   private static List<Element> runs(Element element, List<Element> out) {
     if (element.name().equals("deleted")) {
@@ -108,7 +108,7 @@ class LegalRendererTest {
           element.attribute("startQuote") + children(element) + element.attribute("endQuote");
       case "noteRef" -> " (" + element.attribute("marker") + ")";
       case "eol" -> " ";
-      // The page shows only the mark of a deletion, with no text.
+      // The page shows only the tag of a deletion, with no text.
       case "deleted" -> "";
       default -> element.text() + children(element);
     };

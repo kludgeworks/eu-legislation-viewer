@@ -3,7 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -63,7 +63,7 @@ public record ReadingView(
    * @param today the date today
    * @param named the acts that the text of the version names and the text of the version before
    *     does not. They are used for a version for which the Publications Office lists no acts.
-   * @param marks the marks of the texts of the act in {@code language} that are built. They tell
+   * @param tags the tags of the texts of the act in {@code language} that are built. They tell
    *     where the text is not the law.
    */
   public static ReadingView of(
@@ -73,7 +73,7 @@ public record ReadingView(
       Language language,
       LocalDate today,
       List<ActIdentifier> named,
-      Map<Version, TextMarks> marks) {
+      Map<Version, TextTags> tags) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var makers = Wording.makers(act, version, named, language);
     return new ReadingView(
@@ -82,7 +82,7 @@ public record ReadingView(
         Wording.which(act, version, asked, today, language),
         Wording.made(act, version, named, language),
         makers.isEmpty() ? null : act.citations(makers, language),
-        StatusView.of(act, asked, language, today, marks),
+        StatusView.of(act, asked, language, today, tags),
         version.celex(),
         version.eurLex(language).toString(),
         DayView.of(

@@ -163,7 +163,7 @@
                <changed amendingAct="32006D0944R(01)"
                         action="replaced"
                         location="LI:0;EL:1"
-                        marker="O000001M001000">
+                        tagId="O000001M001000">
                   <t v="respective emission levels"/>
                </changed>
                <t v=" allocated to the Community and its Member States subject to Article 4 of the Kyoto Protocol. Annex B to the Kyoto Protocol sets quantified emission limitation or reduction commitments for the purpose of determining the emission levels allocated to the Member States that acceded to the Community after "/>
@@ -182,7 +182,7 @@
                <changed amendingAct="32006D0944R(01)"
                         action="replaced"
                         location="LI:0;EL:1"
-                        marker="O000001M002000">
+                        tagId="O000001M002000">
                   <t v="respective emission levels"/>
                </changed>
                <t v=" allocated to the Community and its Member States, expressed in tonnes of carbon dioxide equivalent, are determined in the Annex to this Decision. These emission levels are calculated on the basis of the revised base-year emissions data submitted by Member States pursuant to Article 23 of Commission Decision 2005/166/EC of "/>
@@ -211,7 +211,7 @@
                <changed amendingAct="32006D0944R(01)"
                         action="replaced"
                         location="LI:0;EL:2"
-                        marker="O000001M005000">
+                        tagId="O000001M005000">
                   <number v="11403608"/>
                   <t v=" tonnes"/>
                </changed>
@@ -219,10 +219,10 @@
             </p>
          </occurrence>
          <deleted>
-            <provenance amendingAct="32006D0944R(01)"
-                        action="deleted"
-                        location="LI:0;EL:3"
-                        marker="O000001M006000"/>
+            <tag amendingAct="32006D0944R(01)"
+                 action="deleted"
+                 location="LI:0;EL:3"
+                 tagId="O000001M006000"/>
             <occurrence eId="pbl_1/rct_5" kind="recital">
                <num>
                   <t v="(5)"/>
@@ -237,7 +237,7 @@
                <changed amendingAct="32006D0944R(01)"
                         action="replaced"
                         location="LI:0;EL:3"
-                        marker="O000001M007000">
+                        tagId="O000001M007000">
                   <t v="(5)"/>
                </changed>
             </num>
@@ -250,7 +250,7 @@
                <changed amendingAct="32006D0944R(01)"
                         action="replaced"
                         location="LI:0;EL:3"
-                        marker="O000001M008000">
+                        tagId="O000001M008000">
                   <t v="(6)"/>
                </changed>
             </num>
@@ -275,17 +275,17 @@
             <changed amendingAct="32006D0944R(01)"
                      action="replaced"
                      location="LI:0;EL:1"
-                     marker="O000001M003000">
+                     tagId="O000001M003000">
                <t v="respective emission levels"/>
             </changed>
             <t v=" in terms of tonnes of carbon dioxide equivalent allocated to the Community and to Member States for the first quantified emission limitation and reduction commitment period under the Kyoto Protocol are set out in the Annex."/>
          </p>
       </occurrence>
       <occurrence eId="art_2" kind="article" rank="1">
-         <provenance amendingAct="32010D0778"
-                     action="replaced"
-                     location="AR:1;PT:1"
-                     marker="O001001M001000"/>
+         <tag amendingAct="32010D0778"
+              action="replaced"
+              location="AR:1;PT:1"
+              tagId="O001001M001000"/>
          <num>
             <t v="Article 2"/>
          </num>
@@ -306,10 +306,10 @@
    </body>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
-         <provenance amendingAct="32010D0778"
-                     action="replaced"
-                     location="AR:1;PT:2 .AND. AX:0"
-                     marker="O001001M002000"/>
+         <tag amendingAct="32010D0778"
+              action="replaced"
+              location="AR:1;PT:2 .AND. AX:0"
+              tagId="O001001M002000"/>
          <num>
             <t v="ANNEX"/>
          </num>
@@ -554,10 +554,10 @@
                   </td>
                </tr>
                <tr>
-                  <provenance amendingAct="32013D0644"
-                              action="inserted"
-                              location="AR:1"
-                              marker="O002001M001000"/>
+                  <tag amendingAct="32013D0644"
+                       action="inserted"
+                       location="AR:1"
+                       tagId="O002001M001000"/>
                   <td>
                      <p>
                         <t v="Croatia"/>

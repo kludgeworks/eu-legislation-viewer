@@ -233,10 +233,10 @@
                </occurrence>
             </occurrence>
             <occurrence eId="art_1/pnt_2" kind="point" numbered="true">
-               <provenance amendingAct="32004R0746R(01)"
-                           action="replaced"
-                           location="TO"
-                           marker="O000001M001000"/>
+               <tag amendingAct="32004R0746R(01)"
+                    action="replaced"
+                    location="TO"
+                    tagId="O000001M001000"/>
                <num>
                   <t v="2."/>
                </num>

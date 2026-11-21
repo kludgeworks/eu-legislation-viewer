@@ -10,7 +10,7 @@
 
   Each value is one run of text, whitespace normalised: the text between two element boundaries.
   Page-break processing instructions don't break a run (the converter joins it); amendment
-  markers do (the converter marks the change there). A formula is one value: its letters and
+  tags do (the converter puts a changed or deleted span there). A formula is one value: its letters and
   digits, since operators and fences become MathML of their own.
 
   A value with kind="once" only needs to occur once in the output, however often the source
@@ -65,7 +65,7 @@
 
   <!-- the title of an annex: Formex may split one annex into fragments that repeat its title, and
        the converter joins them, so the title counts once (kind="once"); its runs are split as any
-       other text's are, at amendment markers -->
+       other text's are, at tags -->
   <xsl:template match="(ANNEX | CONS.ANNEX)/TITLE/TI/P[text()[normalize-space()]][not(*)]" priority="1">
     <xsl:for-each-group select="node()" group-adjacent="f:in-run(.)">
       <xsl:variable name="run" as="xs:string" select="normalize-space(string-join(current-group()[self::text()]))"/>

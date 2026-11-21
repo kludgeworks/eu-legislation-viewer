@@ -170,10 +170,10 @@
             </p>
          </occurrence>
          <occurrence eId="art_3/unp_2" kind="paragraph">
-            <provenance amendingAct="32014R0699R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M001000"/>
+            <tag amendingAct="32014R0699R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M001000"/>
             <p>
                <t v="The information transit between the websites of the persons authorised or entitled to supply medicinal products at a distance to the public by means of information society services and the websites hosting the national lists shall be secured through appropriate means."/>
             </p>

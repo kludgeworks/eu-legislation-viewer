@@ -461,10 +461,10 @@
                <t v="Conditions for buying in butter"/>
             </subheading>
             <occurrence eId="art_2" kind="article" rank="3">
-               <provenance amendingAct="32004R0318"
-                           action="replaced"
-                           location="AR:1;PT:1"
-                           marker="O006001M001000"/>
+               <tag amendingAct="32004R0318"
+                    action="replaced"
+                    location="AR:1;PT:1"
+                    tagId="O006001M001000"/>
                <num>
                   <t v="Article 2"/>
                </num>
@@ -505,7 +505,7 @@
                      <changed amendingAct="32001R0213"
                               action="replaced"
                               location="AR:20;PT:1"
-                              marker="O003001M001000">
+                              tagId="O003001M001000">
                         <t v="The competent authorities shall check the quality of butter using the methods described in Annex I and on the basis of samples taken in accordance with the rules set out in Annex IV."/>
                      </changed>
                      <t v=" However, Member States may, if the Commission agrees, set up a system of self checking under their own supervision in respect of certain quality requirements and in the case of certain approved undertakings."/>
@@ -527,10 +527,10 @@
                   </occurrence>
                </occurrence>
                <occurrence eId="art_4/par_3" kind="paragraph">
-                  <provenance amendingAct="32004R0318"
-                              action="replaced"
-                              location="AR:1;PT:2"
-                              marker="O006001M002000"/>
+                  <tag amendingAct="32004R0318"
+                       action="replaced"
+                       location="AR:1;PT:2"
+                       tagId="O006001M002000"/>
                   <num>
                      <t v="3."/>
                   </num>
@@ -789,10 +789,10 @@
                   </num>
                   <occurrence eId="art_6/par_1/sub_1" kind="subparagraph">
                      <p>
-                        <provenance amendingAct="32004R0318"
-                                    action="replaced"
-                                    location="AR:1;PT:3"
-                                    marker="O006001M003000"/>
+                        <tag amendingAct="32004R0318"
+                             action="replaced"
+                             location="AR:1;PT:3"
+                             tagId="O006001M003000"/>
                         <t v="Where the butter is offered to intervention in a Member State other than that in which it was produced, buying-in shall be subject to the presentation of a certificate supplied, not later than 45 days after the day on which the offer was received, by the competent agency of the Member State of production."/>
                      </p>
                   </occurrence>
@@ -899,10 +899,10 @@
                      </p>
                   </occurrence>
                   <occurrence eId="art_8/par_2/sub_3" kind="subparagraph">
-                     <provenance amendingAct="32004R0318"
-                                 action="inserted"
-                                 location="AR:1;PT:4"
-                                 marker="O006001M004000"/>
+                     <tag amendingAct="32004R0318"
+                          action="inserted"
+                          location="AR:1;PT:4"
+                          tagId="O006001M004000"/>
                      <p>
                         <t v="If the prices recorded are unchanged for a period of five or more consecutive weeks, Member States shall provide the Commission with their evaluation of the reasons why prices have remained unchanged during the period in question."/>
                      </p>
@@ -927,10 +927,10 @@
             </occurrence>
          </occurrence>
          <occurrence eId="cpt_II/sct_3" kind="division" rank="2">
-            <provenance amendingAct="32004R0318"
-                        action="replaced"
-                        location="AR:1;PT:5"
-                        marker="O006001M005000"/>
+            <tag amendingAct="32004R0318"
+                 action="replaced"
+                 location="AR:1;PT:5"
+                 tagId="O006001M005000"/>
             <num>
                <t v="SECTION 3"/>
             </num>
@@ -1278,10 +1278,10 @@
             </occurrence>
          </occurrence>
          <occurrence eId="cpt_II/sct_3a" kind="division" rank="2">
-            <provenance amendingAct="32004R0318"
-                        action="inserted"
-                        location="AR:1;PT:6"
-                        marker="O006001M006000"/>
+            <tag amendingAct="32004R0318"
+                 action="inserted"
+                 location="AR:1;PT:6"
+                 tagId="O006001M006000"/>
             <num>
                <t v="SECTION 3a"/>
             </num>
@@ -1699,10 +1699,10 @@
             </occurrence>
          </occurrence>
          <occurrence eId="cpt_II/sct_5" kind="division" rank="2">
-            <provenance amendingAct="32004R0318"
-                        action="replaced"
-                        location="AR:1;PT:7"
-                        marker="O006001M007000"/>
+            <tag amendingAct="32004R0318"
+                 action="replaced"
+                 location="AR:1;PT:7"
+                 tagId="O006001M007000"/>
             <num>
                <t v="SECTION 5"/>
             </num>
@@ -2674,10 +2674,10 @@
                   </list>
                </occurrence>
                <occurrence eId="art_33/par_3" kind="paragraph">
-                  <provenance amendingAct="32000R1560"
-                              action="replaced"
-                              location="AR:1;PT:2"
-                              marker="O001001M002000"/>
+                  <tag amendingAct="32000R1560"
+                       action="replaced"
+                       location="AR:1;PT:2"
+                       tagId="O001001M002000"/>
                   <num>
                      <t v="3."/>
                   </num>
@@ -2939,10 +2939,10 @@
                   </p>
                </occurrence>
                <deleted>
-                  <provenance amendingAct="32003R0359"
-                              action="deleted"
-                              location="AR:1"
-                              marker="O005001M001000"/>
+                  <tag amendingAct="32003R0359"
+                       action="deleted"
+                       location="AR:1"
+                       tagId="O005001M001000"/>
                   <occurrence eId="art_38/par_2" kind="paragraph">
                      <num>
                         <t v="2."/>
@@ -3323,10 +3323,10 @@
                </note>
                <note eId="note_22" marker="2" kind="table">
                   <p>
-                     <provenance amendingAct="32001R0213"
-                                 action="replaced"
-                                 location="AR:20;PT:2"
-                                 marker="O003001M002000"/>
+                     <tag amendingAct="32001R0213"
+                          action="replaced"
+                          location="AR:20;PT:2"
+                          tagId="O003001M002000"/>
                      <t v="See Annex I to Regulation (EC) No 213/2001."/>
                   </p>
                </note>
@@ -3339,10 +3339,10 @@
          </occurrence>
       </occurrence>
       <deleted>
-         <provenance amendingAct="32001R0213"
-                     action="deleted"
-                     location="AR:20;PT:3"
-                     marker="O003001M003000"/>
+         <tag amendingAct="32001R0213"
+              action="deleted"
+              location="AR:20;PT:3"
+              tagId="O003001M003000"/>
          <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
             <num>
                <t v="ANNEX II"/>
@@ -8584,7 +8584,7 @@
                <changed amendingAct="32001R0213"
                         action="replaced"
                         location="AR:20;PT:4"
-                        marker="O003001M004000">
+                        tagId="O003001M004000">
                   <t v="with Annex VII to Regulation (EC) No 213/2001"/>
                </changed>
                <t v=". No resampling or re-evaluation is allowed."/>
@@ -8657,10 +8657,10 @@
          </subheading>
          <list kind="dash">
             <occurrence eId="anx_V/idt_1" kind="indent">
-               <provenance amendingAct="31999R2771R(02)"
-                           action="replaced"
-                           location="LI:0;EL:1"
-                           marker="O000002M001000"/>
+               <tag amendingAct="31999R2771R(02)"
+                    action="replaced"
+                    location="LI:0;EL:1"
+                    tagId="O000002M001000"/>
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <span xml:lang="fr">
@@ -8791,10 +8791,10 @@
                </p>
             </occurrence>
             <occurrence eId="anx_V/idt_15" kind="indent">
-               <provenance amendingAct="31999R2771R(02)"
-                           action="replaced"
-                           location="LI:0;EL:2"
-                           marker="O000002M002000"/>
+               <tag amendingAct="31999R2771R(02)"
+                    action="replaced"
+                    location="LI:0;EL:2"
+                    tagId="O000002M002000"/>
                <p>
                   <quote startQuote="‘" endQuote="’">
                      <t v="svenskt smör"/>
@@ -9039,10 +9039,10 @@
          </p>
       </note>
       <deleted>
-         <provenance amendingAct="32001R0213"
-                     action="deleted"
-                     location="AR:20;PT:3"
-                     marker="O003001M003000"/>
+         <tag amendingAct="32001R0213"
+              action="deleted"
+              location="AR:20;PT:3"
+              tagId="O003001M003000"/>
          <note eId="note_23" marker="21" kind="footnote">
             <p>
                <t v="Suited methods have already been described, see D. Precht and J. Molkentin: Quantitative triglyceride analysis using short capillary columns, Chrompack News 4, 16-17 (1993)."/>

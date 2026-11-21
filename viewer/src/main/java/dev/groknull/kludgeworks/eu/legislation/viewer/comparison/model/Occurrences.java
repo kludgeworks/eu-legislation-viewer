@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Marker;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import org.jspecify.annotations.Nullable;
  * occurrence that it is in, with the occurrences in its cells.
  *
  * <p>What a consolidation keeps of a deletion is not part of the text. This is the legal-text
- * {@code deleted}: the struck words or occurrences that an act deleted, under its marker. An
+ * {@code deleted}: the struck words or occurrences that an act deleted, under its tag. An
  * occurrence in it is not one of the occurrences, and its words are not in the blocks of an
  * occurrence. The act that struck each occurrence is kept.
  *
@@ -40,14 +40,14 @@ import org.jspecify.annotations.Nullable;
  *
  * @param byEId the occurrences, by eId, in document order
  * @param outermost the eIds of the occurrences that are in no other occurrence, in order
- * @param struck the markers of the deletions that keep an occurrence struck, by the eId of the
+ * @param struck the tags of the deletions that keep an occurrence struck, by the eId of the
  *     occurrence. For example, "deleted by 2019/103".
  * @param notes the notes of the text, at its end, by eId
  */
 public record Occurrences(
     SequencedMap<String, Occurrence> byEId,
     List<String> outermost,
-    Map<String, List<Marker>> struck,
+    Map<String, List<Tag>> struck,
     Map<String, Element> notes) {
 
   /**
@@ -79,7 +79,7 @@ public record Occurrences(
   public static Occurrences of(Element text) {
     var occurrences = new LinkedHashMap<String, Occurrence>();
     var outermost = new ArrayList<String>();
-    var struck = new HashMap<String, List<Marker>>();
+    var struck = new HashMap<String, List<Tag>>();
     var notes = notes(text);
     collect(text, null, null, outermost, occurrences, new ArrayDeque<>(), struck, notes);
     return new Occurrences(occurrences, outermost, struck, notes);
@@ -175,10 +175,10 @@ public record Occurrences(
       List<String> siblings,
       Map<String, Occurrence> occurrences,
       Deque<Ranked> ranked,
-      Map<String, List<Marker>> struck,
+      Map<String, List<Tag>> struck,
       Map<String, Element> notes) {
     if (element.name().equals("deleted")) {
-      struck(element, markers(element), struck);
+      struck(element, tags(element), struck);
       return;
     }
     if (block(element)) {
@@ -253,30 +253,29 @@ public record Occurrences(
   }
 
   /**
-   * Returns the deletion markers among the children of {@code deletion}. For example, "deleted by
+   * Returns the deletion tags among the children of {@code deletion}. For example, "deleted by
    * 2019/103".
    */
-  private static List<Marker> markers(Element deletion) {
-    var markers = new ArrayList<Marker>();
+  private static List<Tag> tags(Element deletion) {
+    var tags = new ArrayList<Tag>();
     for (var child : deletion.children()) {
       var act = child.attribute("amendingAct");
       var action = child.attribute("action");
-      if (child.name().equals("provenance") && act != null && action != null) {
-        markers.add(new Marker(act, action, null));
+      if (child.name().equals("tag") && act != null && action != null) {
+        tags.add(new Tag(act, action, null));
       }
     }
-    return List.copyOf(markers);
+    return List.copyOf(tags);
   }
 
-  /** Records the outermost occurrences in {@code element} as struck by {@code markers}. */
-  private static void struck(
-      Element element, List<Marker> markers, Map<String, List<Marker>> struck) {
+  /** Records the outermost occurrences in {@code element} as struck by {@code tags}. */
+  private static void struck(Element element, List<Tag> tags, Map<String, List<Tag>> struck) {
     for (var child : element.children()) {
       var eId = eId(child);
       if (eId != null) {
-        struck.putIfAbsent(eId, markers);
+        struck.putIfAbsent(eId, tags);
       } else {
-        struck(child, markers, struck);
+        struck(child, tags, struck);
       }
     }
   }
@@ -292,7 +291,7 @@ public record Occurrences(
   private static void own(Element element, List<Element> blocks) {
     for (var child : element.children()) {
       if (eId(child) != null
-          || child.name().equals("provenance")
+          || child.name().equals("tag")
           || child.name().equals("deleted")
           || child.name().equals("notes")) {
         continue;
@@ -320,7 +319,7 @@ public record Occurrences(
    * Returns whether {@code element} is one block, with the occurrences in it. A table is one block.
    * The converter numbers the lists in its cells through the document, so one list inserted in a
    * cell renumbers the occurrences of every list after it. For example,
-   * tab_1/tr_14/td_2/list_2/idt_1 becomes list_3/idt_1. {@link Marks} compares a table by its rows
+   * tab_1/tr_14/td_2/list_2/idt_1 becomes list_3/idt_1. {@link Edits} compares a table by its rows
    * and cells instead.
    */
   static boolean block(Element element) {

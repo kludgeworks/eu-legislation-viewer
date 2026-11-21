@@ -210,14 +210,12 @@ p.norm {
 
 /* The numbered paragraph of an article, as EUR-Lex prints it. The number starts the first paragraph
  * of text. This is its own paragraph or the first paragraph of its first subparagraph. The number
- * comes after any amendment marker. For example, "1.  For the purposes …". Two spaces follow the
+ * comes after any tag. For example, "1.  For the purposes …". Two spaces follow the
  * number in a consolidated version, and three in an act as published. What follows starts from the
  * margin. A number that a list or a table follows keeps a line of its own. */
 .occurrence-paragraph:has(
   > .num + p,
-  > .num
-    + .occurrence-subparagraph
-    > :is(p:first-child, .provenance:first-child + p)
+  > .num + .occurrence-subparagraph > :is(p:first-child, .tag:first-child + p)
 ) {
   margin-top: 0.5rem;
   text-align: justify;
@@ -226,25 +224,23 @@ p.norm {
 .occurrence-paragraph
   > .num:has(
     + p,
-    + .occurrence-subparagraph > :is(p:first-child, .provenance:first-child + p)
+    + .occurrence-subparagraph > :is(p:first-child, .tag:first-child + p)
   ),
 .occurrence-paragraph > .num + p,
 .occurrence-paragraph
   > .num
-  + .occurrence-subparagraph:has(
-    > :is(p:first-child, .provenance:first-child + p)
-  ),
+  + .occurrence-subparagraph:has(> :is(p:first-child, .tag:first-child + p)),
 .occurrence-paragraph
   > .num
   + .occurrence-subparagraph
-  > :is(p:first-child, .provenance:first-child + p) {
+  > :is(p:first-child, .tag:first-child + p) {
   display: inline;
 }
 
 .occurrence-paragraph
   > .num:has(
     + p,
-    + .occurrence-subparagraph > :is(p:first-child, .provenance:first-child + p)
+    + .occurrence-subparagraph > :is(p:first-child, .tag:first-child + p)
   ) {
   margin-inline-end: 0.5em;
 }
@@ -253,7 +249,7 @@ p.norm {
   .occurrence-paragraph
   > .num:has(
     + p,
-    + .occurrence-subparagraph > :is(p:first-child, .provenance:first-child + p)
+    + .occurrence-subparagraph > :is(p:first-child, .tag:first-child + p)
   ) {
   margin-inline-end: 0.75em;
 }
@@ -308,16 +304,16 @@ p.norm {
   content: "•";
 }
 
-/* An item that an amendment put in. Its amendment mark ▼ is on the line above. The mark of the list
+/* An item that an amendment put in. Its tag ▼ is on the line above. The mark of the list
  * is beside its text. */
 :is(.list-dash, .list-ndash, .list-bullet)
   > .occurrence-indent
-  > .provenance:first-child {
+  > .tag:first-child {
   grid-row: 1;
 }
 
 :is(.list-dash, .list-ndash, .list-bullet)
-  > .occurrence-indent:has(> .provenance:first-child)::before {
+  > .occurrence-indent:has(> .tag:first-child)::before {
   grid-row: 2;
   grid-column: 1;
 }

@@ -142,10 +142,10 @@
             <t v="Article 2"/>
          </num>
          <p>
-            <provenance amendingAct="32005R0830R(01)"
-                        action="replaced"
-                        location="TO"
-                        marker="O000001M001000"/>
+            <tag amendingAct="32005R0830R(01)"
+                 action="replaced"
+                 location="TO"
+                 tagId="O000001M001000"/>
             <t v="This Regulation shall enter into force on "/>
             <date date="2005-06-08">
                <t v="8 June 2005"/>

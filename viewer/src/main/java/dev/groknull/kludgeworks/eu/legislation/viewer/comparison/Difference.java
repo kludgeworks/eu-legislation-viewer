@@ -18,9 +18,10 @@ import org.jspecify.annotations.Nullable;
  * inserted or deleted occurrence is one difference together with its occurrences, not one
  * difference for each occurrence.
  *
- * <p>The difference is shown as marked legal-text. Its inserted words are in {@code diff:ins}, and
- * its deleted words are in {@code diff:del}. These marks are only around text ({@code t} and {@code
- * number}). Thus each element keeps the parent that it has in the text, and renders as it reads.
+ * <p>The difference is shown as legal-text with its edits. Its inserted words are in {@code
+ * diff:ins}, and its deleted words are in {@code diff:del}. These edits are only around text
+ * ({@code t} and {@code number}). Thus each element keeps the parent that it has in the text, and
+ * renders as it reads.
  *
  * <ul>
  *   <li>A changed occurrence shows only its own content, from the later text. The words of the
@@ -34,10 +35,10 @@ import org.jspecify.annotations.Nullable;
  * @param occurrence the occurrence as a fold names it, as the later text has it. For a deleted
  *     occurrence, as the earlier text has it. The Changes view uses this when it folds the
  *     occurrence with others that an act filter leaves out.
- * @param shown the occurrence as the view shows it, marked. As the store keeps it ({@link #kept}),
- *     cut down: for an annex inserted whole ({@code whole} is not null), only its opening, its num
- *     and its headings; for any other occurrence, with the rows of its tables that are the same in
- *     both texts folded. {@link Comparisons#difference} gives it whole.
+ * @param shown the occurrence as the view shows it, with its edits. As the store keeps it ({@link
+ *     #kept}), cut down: for an annex inserted whole ({@code whole} is not null), only its opening,
+ *     its num and its headings; for any other occurrence, with the rows of its tables that are the
+ *     same in both texts folded. {@link Comparisons#difference} gives it whole.
  * @param inserted how many words it has inserted
  * @param deleted how many words it has deleted
  * @param parent the eId of the occurrence that it is in. Null for an outermost occurrence.
@@ -48,24 +49,24 @@ import org.jspecify.annotations.Nullable;
  *     nests them. For example, {@code anx/pnt_8.1.2} for {@code anx/pnt_8.1.2.3/pnt_c}. It is the
  *     occurrence itself if the occurrence has a rank. Null if it is in no such occurrence.
  * @param lead the opening of the occurrence that it is in: its num, heading and first block,
- *     unmarked. Null for an outermost occurrence.
+ *     without edits. Null for an outermost occurrence.
  * @param context what the later text has before this difference and after the previous one, in
  *     order. For the first difference, it starts at the start of the text. It holds the opening of
  *     each occurrence with differences that it enters, and the folded occurrences that are the same
  *     in both texts. The contexts and the closing of the comparison hold each occurrence of the
  *     later text once, except the occurrences that differ.
- * @param markers the amendment markers that tell which acts put the occurrence in its form in the
- *     later text, and how.
+ * @param tags the tags that tell which acts put the occurrence in its form in the later text, and
+ *     how.
  *     <ul>
- *       <li>Usually these are the markers on the own content of the occurrence in the later text.
- *       <li>If it has none, these are the markers on the nearest occurrence that it is in that an
- *           act put in its form whole.
- *       <li>For a deleted occurrence, these are the markers of the act that deleted it. This is the
- *           marker of the deletion under which the later text keeps it struck. If there is none, it
- *           is the marker of the occurrence that it was in that an act replaced whole, without it.
+ *       <li>Usually these are the tags on the own content of the occurrence in the later text.
+ *       <li>If it has none, these are the tags on the nearest occurrence that it is in that an act
+ *           put in its form whole.
+ *       <li>For a deleted occurrence, these are the tags of the act that deleted it. This is the
+ *           tag of the deletion under which the later text keeps it struck. If there is none, it is
+ *           the tag of the occurrence that it was in that an act replaced whole, without it.
  *     </ul>
  *     Empty if none of these applies.
- * @param earlierMarkers the same as {@code markers}, in the earlier text. Empty for an inserted
+ * @param earlierTags the same as {@code tags}, in the earlier text. Empty for an inserted
  *     occurrence.
  * @param whole the size of an annex inserted whole, if the store keeps the annex apart from the
  *     comparison. Then {@code shown} is only its opening, and {@link Comparisons#difference} gives
@@ -85,17 +86,17 @@ public record Difference(
     @Nullable String section,
     @Nullable Element lead,
     List<Context> context,
-    List<Marker> markers,
-    List<Marker> earlierMarkers,
+    List<Tag> tags,
+    List<Tag> earlierTags,
     @Nullable Whole whole) {
 
   /** The children of an annex that are its opening, as {@link #kept} keeps them. */
-  private static final Set<String> OPENING = Set.of("provenance", "num", "heading", "subheading");
+  private static final Set<String> OPENING = Set.of("tag", "num", "heading", "subheading");
 
   public Difference {
     context = List.copyOf(context);
-    markers = List.copyOf(markers);
-    earlierMarkers = List.copyOf(earlierMarkers);
+    tags = List.copyOf(tags);
+    earlierTags = List.copyOf(earlierTags);
   }
 
   /**
@@ -217,16 +218,16 @@ public record Difference(
   public record Sibling(String eId, String kind, String num) {}
 
   /**
-   * An amendment marker on the content of an occurrence, as the consolidation has it. For example,
-   * ▼M20. The converter keeps the marker as {@code provenance}, {@code changed} or {@code deleted}.
-   * The marker names the act that put the content in its form there, and what the act did.
+   * A tag on the content of an occurrence, as the consolidation has it. For example, ▼M20. The
+   * converter keeps the tag as {@code tag}, {@code changed} or {@code deleted}. The tag names the
+   * act that put the content in its form there, and what the act did.
    *
    * @param act the CELEX of the amending act. For example, 32026R0449.
    * @param action what the act did, as legal-text has it: replaced, inserted, deleted or renumbered
    * @param in the eId of the enclosing occurrence that the act put in its form whole, if the
-   *     occurrence has no marker of its own. For example, 2019/103 replaced section 11.1 with its
-   *     points. Null for a marker of the occurrence itself.
+   *     occurrence has no tag of its own. For example, 2019/103 replaced section 11.1 with its
+   *     points. Null for a tag of the occurrence itself.
    */
   @ValueObject
-  public record Marker(String act, String action, @Nullable String in) {}
+  public record Tag(String act, String action, @Nullable String in) {}
 }

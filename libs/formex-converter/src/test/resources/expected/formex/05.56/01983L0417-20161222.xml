@@ -123,7 +123,7 @@
                <deleted amendingAct="32015L2203"
                         action="deleted"
                         location="AR:8;AL:1"
-                        marker="O004001M001000">
+                        tagId="O004001M001000">
                   <emphasis kind="uc">
                      <t v="Council Directive"/>
                   </emphasis>
@@ -135,7 +135,7 @@
             <deleted amendingAct="32015L2203"
                      action="deleted"
                      location="AR:8;AL:1"
-                     marker="O004001M001000">
+                     tagId="O004001M001000">
                <t v="of 25 July 1983"/>
             </deleted>
          </p>
@@ -144,7 +144,7 @@
                <deleted amendingAct="32015L2203"
                         action="deleted"
                         location="AR:8;AL:1"
-                        marker="O004001M001000">
+                        tagId="O004001M001000">
                   <t v="on the approximation of the laws of the Member States relating to certain lactoproteins (caseins and caseinates) intended for human consumption"/>
                </deleted>
             </docPurpose>
@@ -153,7 +153,7 @@
             <deleted amendingAct="32015L2203"
                      action="deleted"
                      location="AR:8;AL:1"
-                     marker="O004001M001000">
+                     tagId="O004001M001000">
                <t v="(83/417/EEC)"/>
             </deleted>
          </p>
@@ -161,10 +161,10 @@
    </preface>
    <body>
       <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32015L2203"
+              action="deleted"
+              location="AR:8;AL:1"
+              tagId="O004001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
@@ -551,10 +551,10 @@
             </list>
          </occurrence>
          <occurrence eId="art_10" kind="article" rank="1">
-            <provenance amendingAct="32003R0807"
-                        action="replaced"
-                        location="AR:3 .AND. AX:III;PT:36"
-                        marker="O002001M001000"/>
+            <tag amendingAct="32003R0807"
+                 action="replaced"
+                 location="AR:3 .AND. AX:III;PT:36"
+                 tagId="O002001M001000"/>
             <num>
                <t v="Article 10"/>
             </num>
@@ -636,10 +636,10 @@
    </body>
    <annexes>
       <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32015L2203"
+              action="deleted"
+              location="AR:8;AL:1"
+              tagId="O004001M001000"/>
          <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX I"/>
@@ -1239,10 +1239,10 @@
                </heading>
                <list kind="dash">
                   <occurrence eId="anx_I/pnt_III/pnt_d/idt_1" kind="indent">
-                     <provenance amendingAct="32008R1332"
-                                 action="replaced"
-                                 location="AR:19"
-                                 marker="O003001M001000"/>
+                     <tag amendingAct="32008R1332"
+                          action="replaced"
+                          location="AR:19"
+                          tagId="O003001M001000"/>
                      <p>
                         <t v="rennet meeting the requirements of Regulation (EC) No 1332/2008 of the European Parliament and of the Council of "/>
                         <date date="2008-12-16">
@@ -1254,10 +1254,10 @@
                      </p>
                   </occurrence>
                   <occurrence eId="anx_I/pnt_III/pnt_d/idt_2" kind="indent">
-                     <provenance amendingAct="32008R1332"
-                                 action="replaced"
-                                 location="AR:19"
-                                 marker="O003001M001000"/>
+                     <tag amendingAct="32008R1332"
+                          action="replaced"
+                          location="AR:19"
+                          tagId="O003001M001000"/>
                      <p>
                         <t v="other milk-coagulating enzymes meeting the requirements of Regulation (EC) No 1332/2008."/>
                      </p>
@@ -1672,10 +1672,10 @@
    </annexes>
    <notes>
       <deleted>
-         <provenance amendingAct="32015L2203"
-                     action="deleted"
-                     location="AR:8;AL:1"
-                     marker="O004001M001000"/>
+         <tag amendingAct="32015L2203"
+              action="deleted"
+              location="AR:8;AL:1"
+              tagId="O004001M001000"/>
          <note eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"

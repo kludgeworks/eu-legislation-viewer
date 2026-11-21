@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -31,13 +31,13 @@ class ProvisionViewTest {
   static final List<String> OCCURRENCES =
       List.of("anx", "anx/pnt_4", "anx/pnt_4.1", "anx/pnt_4.1.3", POINT, ARTICLE);
 
-  private static ProvisionView history(String occurrence, Map<Version, TextMarks> texts) {
+  private static ProvisionView history(String occurrence, Map<Version, TextTags> texts) {
     return ProvisionView.of(AVSEC, READING, occurrence, TODAY, TODAY, Language.ENG, texts);
   }
 
   @Test
   void listsTheActsThatChangedTheProvisionNewestFirstWithALinkToEachChange() {
-    var view = history(POINT, Map.of(READING, new TextMarks(OCCURRENCES, Map.of())));
+    var view = history(POINT, Map.of(READING, new TextTags(OCCURRENCES, Map.of())));
 
     assertThat(view.heading()).startsWith("History of ").doesNotContain("this provision");
     assertThat(view.count()).endsWith(" amending acts changed it");
@@ -54,7 +54,7 @@ class ProvisionViewTest {
 
   @Test
   void offersTheComparisonOfTheWordingIfTwoActsChangedTheProvision() {
-    var view = history(POINT, Map.of(READING, new TextMarks(OCCURRENCES, Map.of())));
+    var view = history(POINT, Map.of(READING, new TextTags(OCCURRENCES, Map.of())));
 
     assertThat(view.compare())
         .startsWith("/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2026-10-01")
@@ -72,7 +72,7 @@ class ProvisionViewTest {
             day,
             TODAY,
             Language.ENG,
-            Map.of(READING, new TextMarks(OCCURRENCES, Map.of())));
+            Map.of(READING, new TextTags(OCCURRENCES, Map.of())));
 
     var oldest =
         view.lines().stream()
@@ -86,10 +86,10 @@ class ProvisionViewTest {
 
   @Test
   void anActThatOnlyTheTextMarksTheProvisionWithChangedIt() {
-    var marked = new ActIdentifier("32020R0910");
+    var tagged = new ActIdentifier("32020R0910");
     var view =
         history(
-            ARTICLE, Map.of(READING, new TextMarks(OCCURRENCES, Map.of(marked, Set.of(ARTICLE)))));
+            ARTICLE, Map.of(READING, new TextTags(OCCURRENCES, Map.of(tagged, Set.of(ARTICLE)))));
 
     assertThat(view.heading()).isEqualTo("History of this provision");
     assertThat(view.count()).isEqualTo("1 amending act changed it");
@@ -107,9 +107,9 @@ class ProvisionViewTest {
             ARTICLE,
             Map.of(
                 first,
-                new TextMarks(OCCURRENCES.subList(0, 5), Map.of()),
+                new TextTags(OCCURRENCES.subList(0, 5), Map.of()),
                 READING,
-                new TextMarks(OCCURRENCES, Map.of())));
+                new TextTags(OCCURRENCES, Map.of())));
 
     assertThat(view.lines()).isEmpty();
     assertThat(view.count()).isNull();
@@ -133,9 +133,9 @@ class ProvisionViewTest {
             Language.ENG,
             Map.of(
                 first,
-                new TextMarks(OCCURRENCES.subList(0, 5), Map.of()),
+                new TextTags(OCCURRENCES.subList(0, 5), Map.of()),
                 READING,
-                new TextMarks(OCCURRENCES, Map.of())));
+                new TextTags(OCCURRENCES, Map.of())));
 
     assertThat(occurrences).contains(POINT, ARTICLE);
   }

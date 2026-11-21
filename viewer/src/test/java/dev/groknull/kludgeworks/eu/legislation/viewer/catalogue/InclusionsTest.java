@@ -12,7 +12,7 @@ import java.util.Set;
 import org.junit.jupiter.api.Test;
 
 /**
- * Which acts a version includes, as 767/2008 has them. Its version of 29 December 2017 marks 16
+ * Which acts a version includes, as 767/2008 has them. Its version of 29 December 2017 tags 16
  * occurrences with 2017/2226. Cellar lists only Corrigendum 5 for it, and lists 2017/2226 from the
  * version of 11 June 2019.
  */
@@ -34,10 +34,10 @@ class InclusionsTest {
         Inclusions.of(
             TIMELINE,
             Map.of(
-                OCTOBER_2013, marks(),
-                DECEMBER_2017, marks(EES),
-                JUNE_2019, marks(EES),
-                AUGUST_2021, marks(EES, LATER)));
+                OCTOBER_2013, tags(),
+                DECEMBER_2017, tags(EES),
+                JUNE_2019, tags(EES),
+                AUGUST_2021, tags(EES, LATER)));
 
     assertThat(included.of(DECEMBER_2017)).containsExactly(CORRIGENDUM, EES);
     assertThat(included.between(OCTOBER_2013, DECEMBER_2017)).containsExactly(CORRIGENDUM, EES);
@@ -48,7 +48,7 @@ class InclusionsTest {
 
   @Test
   void aTextThatIsNotBuiltLeavesOnlyCellarsList() {
-    var included = Inclusions.of(TIMELINE, Map.of(OCTOBER_2013, marks()));
+    var included = Inclusions.of(TIMELINE, Map.of(OCTOBER_2013, tags()));
 
     assertThat(included.of(DECEMBER_2017)).containsExactly(CORRIGENDUM);
     assertThat(included.between(OCTOBER_2013, DECEMBER_2017)).containsExactly(CORRIGENDUM);
@@ -63,17 +63,17 @@ class InclusionsTest {
         new Timeline(List.of(version("2013-10-18", EES), version("2017-12-29", CORRIGENDUM)));
     var later = timeline.versions().getLast();
 
-    var included = Inclusions.of(timeline, Map.of(later, marks(EES)));
+    var included = Inclusions.of(timeline, Map.of(later, tags(EES)));
 
     assertThat(included.of(later)).containsExactly(CORRIGENDUM);
   }
 
-  private static TextMarks marks(ActIdentifier... acts) {
+  private static TextTags tags(ActIdentifier... acts) {
     var byAct = new java.util.HashMap<ActIdentifier, Set<String>>();
     for (var each : acts) {
       byAct.put(each, Set.of("art_10"));
     }
-    return new TextMarks(List.of("art_10"), byAct);
+    return new TextTags(List.of("art_10"), byAct);
   }
 
   private static Version version(String date, ActIdentifier... integrates) {

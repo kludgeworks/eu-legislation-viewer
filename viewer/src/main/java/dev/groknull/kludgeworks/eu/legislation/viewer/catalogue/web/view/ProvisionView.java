@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ProvisionHistory;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
@@ -52,7 +52,7 @@ public record ProvisionView(
    * Returns the history of the occurrence {@code occurrence} of the text of {@code reading}, for
    * the day {@code day}.
    *
-   * @param texts the marks of the built texts in {@code language}, by version. They must have the
+   * @param texts the tags of the built texts in {@code language}, by version. They must have the
    *     text of {@code reading}.
    * @param today the date today, which gives the tense
    */
@@ -63,7 +63,7 @@ public record ProvisionView(
       LocalDate day,
       LocalDate today,
       Language language,
-      Map<Version, TextMarks> texts) {
+      Map<Version, TextTags> texts) {
     var text = Objects.requireNonNull(texts.get(reading), "the text of the version is not built");
     var history = act.historyOf(occurrence, text, language);
     var name = name(history, occurrence, text);
@@ -85,12 +85,11 @@ public record ProvisionView(
    * Returns the name of the occurrence {@code occurrence} of {@code text}, as a change of the
    * provision names it. For example, "Article 6(2)". Null if no change names it.
    */
-  static @Nullable String name(Act act, String occurrence, TextMarks text, Language language) {
+  static @Nullable String name(Act act, String occurrence, TextTags text, Language language) {
     return name(act.historyOf(occurrence, text, language), occurrence, text);
   }
 
-  private static @Nullable String name(
-      ProvisionHistory history, String occurrence, TextMarks text) {
+  private static @Nullable String name(ProvisionHistory history, String occurrence, TextTags text) {
     return history.changes().stream()
         .filter(
             change ->
@@ -113,7 +112,7 @@ public record ProvisionView(
   static List<Line> steps(
       Act act,
       String occurrence,
-      TextMarks text,
+      TextTags text,
       LocalDate day,
       LocalDate today,
       Language language,
@@ -160,7 +159,7 @@ public record ProvisionView(
                       + URLEncoder.encode(AmendingView.anchor(change), StandardCharsets.UTF_8)
                   : null));
     }
-    for (var each : history.marking()) {
+    for (var each : history.tagging()) {
       if (!kept.test(each)) {
         continue;
       }
@@ -202,7 +201,7 @@ public record ProvisionView(
    * has it.
    */
   private static Unknown unknown(
-      Act act, String occurrence, Language language, Map<Version, TextMarks> texts) {
+      Act act, String occurrence, Language language, Map<Version, TextTags> texts) {
     return act.firstWith(occurrence, language, texts)
         .filter(first -> first.kind() != Version.Kind.ORIGINAL)
         .map(
@@ -250,11 +249,11 @@ public record ProvisionView(
   /**
    * Returns the occurrences of the text of {@code reading} that have a history to show, by their
    * eIds: the occurrences with a change of their own, and the occurrences that the data names no
-   * act for. The text shows a link at each of them that has no ▼ mark. An occurrence with a ▼ mark
-   * opens its history from the mark.
+   * act for. The text shows a link at each of them that has no ▼ tag. An occurrence with a ▼ tag
+   * opens its history from the tag.
    */
   public static List<String> occurrences(
-      Act act, Version reading, Language language, Map<Version, TextMarks> texts) {
+      Act act, Version reading, Language language, Map<Version, TextTags> texts) {
     var text = texts.get(reading);
     if (text == null) {
       return List.of();

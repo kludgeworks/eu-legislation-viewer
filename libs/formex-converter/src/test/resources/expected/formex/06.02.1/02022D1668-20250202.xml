@@ -1088,10 +1088,10 @@
                </td>
             </tr>
             <tr>
-               <provenance amendingAct="32023D1587"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:2"
-                           marker="O002001M001000"/>
+               <tag amendingAct="32023D1587"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:2"
+                    tagId="O002001M001000"/>
                <td>
                   <p>
                      <t v="60a."/>
@@ -1493,10 +1493,10 @@
                </td>
             </tr>
             <tr>
-               <provenance amendingAct="32023D0601"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:2"
-                           marker="O001001M001000"/>
+               <tag amendingAct="32023D0601"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:2"
+                    tagId="O001001M001000"/>
                <td>
                   <p>
                      <t v="82a."/>
@@ -1678,10 +1678,10 @@
                </td>
             </tr>
             <tr>
-               <provenance amendingAct="32023D0601"
-                           action="inserted"
-                           location="AR:1 .AND. AX:0;PT:3"
-                           marker="O001001M002000"/>
+               <tag amendingAct="32023D0601"
+                    action="inserted"
+                    location="AR:1 .AND. AX:0;PT:3"
+                    tagId="O001001M002000"/>
                <td>
                   <p>
                      <t v="92."/>

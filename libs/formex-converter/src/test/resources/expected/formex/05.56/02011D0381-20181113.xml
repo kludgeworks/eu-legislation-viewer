@@ -90,7 +90,7 @@
                <deleted amendingAct="32018D1702"
                         action="deleted"
                         location="AR:6"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <emphasis kind="uc">
                      <t v="Commission Decision"/>
                   </emphasis>
@@ -102,14 +102,14 @@
             <deleted amendingAct="32018D1702"
                      action="deleted"
                      location="AR:6"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="of "/>
             </deleted>
             <docDate date="2011-06-24">
                <deleted amendingAct="32018D1702"
                         action="deleted"
                         location="AR:6"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="24 June 2011"/>
                </deleted>
             </docDate>
@@ -119,7 +119,7 @@
                <deleted amendingAct="32018D1702"
                         action="deleted"
                         location="AR:6"
-                        marker="O002001M001000">
+                        tagId="O002001M001000">
                   <t v="on establishing the ecological criteria for the award of the EU Ecolabel to lubricants"/>
                </deleted>
             </docPurpose>
@@ -128,7 +128,7 @@
             <deleted amendingAct="32018D1702"
                      action="deleted"
                      location="AR:6"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="(notified under document C(2011) 4447)"/>
             </deleted>
          </p>
@@ -136,7 +136,7 @@
             <deleted amendingAct="32018D1702"
                      action="deleted"
                      location="AR:6"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="(Text with EEA relevance)"/>
             </deleted>
          </p>
@@ -144,7 +144,7 @@
             <deleted amendingAct="32018D1702"
                      action="deleted"
                      location="AR:6"
-                     marker="O002001M001000">
+                     tagId="O002001M001000">
                <t v="(2011/381/EU)"/>
             </deleted>
          </p>
@@ -152,10 +152,10 @@
    </preface>
    <body>
       <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32018D1702"
+              action="deleted"
+              location="AR:6"
+              tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
             <num>
                <t v="Article 1"/>
@@ -314,10 +314,10 @@
             </p>
          </occurrence>
          <occurrence eId="art_4" kind="article" rank="1">
-            <provenance amendingAct="32015D0877"
-                        action="replaced"
-                        location="AR:3"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32015D0877"
+                 action="replaced"
+                 location="AR:3"
+                 tagId="O001001M001000"/>
             <num>
                <t v="Article 4"/>
             </num>
@@ -410,10 +410,10 @@
    </body>
    <annexes>
       <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32018D1702"
+              action="deleted"
+              location="AR:6"
+              tagId="O002001M001000"/>
          <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <num>
                <t v="ANNEX"/>
@@ -2841,10 +2841,10 @@
    </annexes>
    <notes>
       <deleted>
-         <provenance amendingAct="32018D1702"
-                     action="deleted"
-                     location="AR:6"
-                     marker="O002001M001000"/>
+         <tag amendingAct="32018D1702"
+              action="deleted"
+              location="AR:6"
+              tagId="O002001M001000"/>
          <note eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"

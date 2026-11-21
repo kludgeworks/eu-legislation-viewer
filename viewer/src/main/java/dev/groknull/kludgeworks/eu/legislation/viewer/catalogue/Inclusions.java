@@ -15,32 +15,32 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * The amending acts and corrigenda that each version of an act includes.
  *
  * <p>A version includes the acts that Cellar lists for it ({@link Version#integrates}), and the
- * acts that its own text marks first. Cellar's list can lack an act that the text already marks.
- * For example, the version of 767/2008 of 29 December 2017 marks 16 occurrences with 2017/2226, but
+ * acts that its own text tags first. Cellar's list can lack an act that the text already tags. For
+ * example, the version of 767/2008 of 29 December 2017 tags 16 occurrences with 2017/2226, but
  * Cellar lists 2017/2226 only from the version of 11 June 2019.
  *
- * <p>An act that the text of a version marks is first marked there if no earlier version includes
- * it: Cellar lists it for no earlier version, and no earlier text that is built marks it. Where the
+ * <p>An act that the text of a version tags is first tagged there if no earlier version includes
+ * it: Cellar lists it for no earlier version, and no earlier text that is built tags it. Where the
  * text of a version is not built, only Cellar's list counts for it.
  *
  * @param timeline the versions, in one language
- * @param marked the acts that the text of each version marks first, by version. Cellar lists none
- *     of them for that version.
+ * @param tagged the acts that the text of each version tags first, by version. Cellar lists none of
+ *     them for that version.
  */
 @ValueObject
-public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> marked) {
+public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> tagged) {
 
   public Inclusions {
-    marked = Map.copyOf(marked);
+    tagged = Map.copyOf(tagged);
   }
 
   /**
-   * Returns what the versions of {@code timeline} include, with {@code texts}, the marks of the
+   * Returns what the versions of {@code timeline} include, with {@code texts}, the tags of the
    * texts that are built, by version.
    */
-  public static Inclusions of(Timeline timeline, Map<Version, TextMarks> texts) {
+  public static Inclusions of(Timeline timeline, Map<Version, TextTags> texts) {
     var included = new HashSet<ActIdentifier>();
-    var marked = new HashMap<Version, List<ActIdentifier>>();
+    var tagged = new HashMap<Version, List<ActIdentifier>>();
     for (var version : timeline.versions()) {
       included.addAll(version.integrates());
       var text = texts.get(version);
@@ -53,11 +53,11 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ma
               .sorted(Comparator.comparing(ActIdentifier::celex))
               .toList();
       if (!first.isEmpty()) {
-        marked.put(version, first);
+        tagged.put(version, first);
         included.addAll(first);
       }
     }
-    return new Inclusions(timeline, marked);
+    return new Inclusions(timeline, tagged);
   }
 
   /** Returns what the versions of {@code timeline} include by Cellar's lists only. */
@@ -67,10 +67,10 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ma
 
   /**
    * Returns the acts that {@code version} includes: Cellar's list, in its order, then the acts that
-   * its text marks first.
+   * its text tags first.
    */
   public List<ActIdentifier> of(Version version) {
-    var first = marked.get(version);
+    var first = tagged.get(version);
     if (first == null) {
       return version.integrates();
     }
@@ -82,7 +82,7 @@ public record Inclusions(Timeline timeline, Map<Version, List<ActIdentifier>> ma
   /** Returns whether {@code version} includes {@code act}. */
   public boolean includes(Version version, ActIdentifier act) {
     return version.integrates().contains(act)
-        || marked.getOrDefault(version, List.of()).contains(act);
+        || tagged.getOrDefault(version, List.of()).contains(act);
   }
 
   /**

@@ -40,7 +40,7 @@
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     exclude-result-prefixes="#all" expand-text="yes">
 
-  <xsl:include href="provenance.xsl"/>
+  <xsl:include href="tags.xsl"/>
   <xsl:include href="eid.xsl"/>
   <xsl:include href="inline.xsl"/>
   <xsl:include href="occurrences.xsl"/>
@@ -184,7 +184,7 @@
          CONSLEG.REF only names the consolidation (2002A2430) -->
     <xsl:variable name="act-celex" as="xs:string" select="
         if ($consolidated) then f:celex($doc/FAM.COMP/BIB.DATA/NO.CELEX) else $document-celex"/>
-    <!-- a document, so that the marking pass can use a key -->
+    <!-- a document, so that the deletions pass can use a key -->
     <xsl:variable name="text" as="document-node(element(lt:legalText))">
       <xsl:document>
         <legalText act="{$act-celex}" kind="{if ($consolidated) then 'consolidated' else if ($act/self::CORR) then 'corrigendum' else 'original'}">
@@ -247,7 +247,7 @@
                 <!-- an amending act's date; a corrigendum has none of its own, so the day it was published -->
                 <eventRef type="{if (self::CORRIG) then 'corrigendum' else 'amendment'}" act="{f:celex(normalize-space($bib/NO.CELEX))}">
                   <xsl:sequence select="f:date-attribute('date', (if (self::CORRIG) then ($bib/DATE, $bib/BIB.INSTANCE.CONS/DATE)[1] else $bib/DATE)/@ISO)"/>
-                  <!-- the label the version's text marks what the entry put there with (▼M2): an
+                  <!-- the label of the version's tags on what the entry put there (▼M2): an
                        amendment's M and its place among the amendments, a corrigendum's C and its place
                        among the corrigenda; none for an act of another kind (an accession, a repeal) -->
                   <xsl:variable name="amendment" as="xs:integer?" select="(count($amendments[. &lt;&lt; current()]) + 1)[current() intersect $amendments]"/>
@@ -689,11 +689,11 @@
       <!-- citations are numbered through the preamble, which can have several groups of them -->
       <xsl:variable name="before" as="xs:integer" select="count(preceding-sibling::GR.VISA/VISA)"/>
       <xsl:for-each select="VISA">
-        <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., ())"/>
+        <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags(., ())"/>
         <xsl:variable name="eid" as="xs:string" select="f:eid('pbl_1', 'cit', string($before + position()))"/>
         <xsl:variable name="occurrence" as="element()">
           <occurrence eId="{$eid}" kind="citation">
-            <xsl:sequence select="f:provenance($m)"/>
+            <xsl:sequence select="f:tags($m)"/>
             <xsl:call-template name="f:blocks">
               <xsl:with-param name="nodes" as="node()*" select="node()"/>
               <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
@@ -796,10 +796,10 @@
     <xsl:variable name="continued" as="element(CONSID)*" select="
         if (f:numbered-recital(.)) then following-sibling::CONSID[f:continues-recital(.)][empty($next) or . &lt;&lt; $next] else ()"/>
     <xsl:variable name="eid" as="xs:string" select="f:eid('pbl_1', 'rct', (f:label($number)[. != ''], string(f:recital-position(.)))[1])"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags(., $ctx)"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="recital">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:if test="$number">
           <num>
             <xsl:call-template name="f:inlines">
@@ -826,7 +826,7 @@
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
     <xsl:param name="groupIntro" as="element(GR.CONSID.INIT)*" select="()"/>
     <xsl:param name="division" as="map(*)?" tunnel="yes"/>
-    <xsl:variable name="m" as="processing-instruction()*" select="f:new-markers(., $ctx)"/>
+    <xsl:variable name="m" as="processing-instruction()*" select="f:new-tags(., $ctx)"/>
     <xsl:variable name="line" as="element()?" select="TITLE/TI/*[1]"/>
     <xsl:variable name="label" as="xs:string" select="((if ($line/self::NP) then f:label($line/NO.P)
                                          else f:typed-label(string($line), $f:division-codes, .))[. != ''],
@@ -834,7 +834,7 @@
     <xsl:variable name="eid" as="xs:string" select="f:eid(($division?eid, 'pbl_1')[1], 'division', $label)"/>
     <xsl:variable name="occurrence" as="element()">
       <occurrence eId="{$eid}" kind="division">
-        <xsl:sequence select="f:provenance($m)"/>
+        <xsl:sequence select="f:tags($m)"/>
         <xsl:call-template name="f:title">
           <xsl:with-param name="base" as="xs:string?" select="$eid" tunnel="yes"/>
           <xsl:with-param name="title" as="element(TITLE)?" select="TITLE"/>

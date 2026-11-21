@@ -6,7 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextTags;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -14,11 +14,11 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Arrivin
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.FailureView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.Links;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarginView;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MarksView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.MastheadView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.PreparingView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ProvisionView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.ReadingView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web.view.TagsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Outline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
@@ -170,15 +170,15 @@ class VersionController {
                   clock.instant()))
           .render();
     }
-    var marks = texts.marks(preparation);
+    var tags = texts.tags(preparation);
     return page.render(
         frame,
         masthead,
-        page.text(preparation, marks, request.getRequestURI(), frame.results()),
+        page.text(preparation, tags, request.getRequestURI(), frame.results()),
         prepared,
         ArrivingView.of(preparation).orElse(null),
         page.named(preparation),
-        marks);
+        tags);
   }
 
   /**
@@ -197,15 +197,15 @@ class VersionController {
       @PathVariable("language") String code,
       @RequestParam String occurrence) {
     var page = new Page(type, year, number, date, code);
-    var marks = texts.marks(texts.preparation(page.act, page.language));
-    var text = marks.get(page.version);
+    var tags = texts.tags(texts.preparation(page.act, page.language));
+    var text = tags.get(page.version);
     if (page.before || text == null || !text.eIds().contains(occurrence)) {
       throw notFound();
     }
     return templates
         .catalogueProvision(
             ProvisionView.of(
-                page.act, page.version, occurrence, date, today(), page.language, marks))
+                page.act, page.version, occurrence, date, today(), page.language, tags))
         .render();
   }
 
@@ -277,12 +277,12 @@ class VersionController {
         boolean arrived,
         @Nullable ArrivingView arriving,
         List<ActIdentifier> named,
-        Map<Version, TextMarks> marks) {
+        Map<Version, TextTags> tags) {
       return templates
           .catalogueVersion(
               frame,
               masthead,
-              ReadingView.of(act, version, date, language, today(), named, marks),
+              ReadingView.of(act, version, date, language, today(), named, tags),
               text,
               arrived,
               arriving)
@@ -298,7 +298,7 @@ class VersionController {
      *   <li>If no text of the act could be built, it returns the failure panel of the act. The
      *       panel links back to the last search of the reader, {@code results}, if there is one.
      *   <li>If the text is built, it returns the text, with the marks in its margin where it is not
-     *       the law on the day, {@link MarginView}. {@code marks} are the marks of the built texts.
+     *       the law on the day, {@link MarginView}. {@code tags} are the tags of the built texts.
      *   <li>If only this text failed, it returns the failure panel of the version. Try again posts
      *       to {@code self}.
      *   <li>If the version appeared after the act was prepared, it says that the text is being
@@ -307,7 +307,7 @@ class VersionController {
      */
     JteModel text(
         Preparation preparation,
-        Map<Version, TextMarks> marks,
+        Map<Version, TextTags> tags,
         String self,
         Frame.@Nullable Results results) {
       var text = preparation.texts().get(version);
@@ -323,10 +323,10 @@ class VersionController {
             templates.catalogueTextReady(
                 "/content/" + ready.text(),
                 content.outline(ready.text()).orElseGet(Outline::empty),
-                MarksView.of(act, version, language),
-                MarginView.of(act, version, date, language, marks, today()),
+                TagsView.of(act, version, language),
+                MarginView.of(act, version, date, language, tags, today()),
                 Links.read(eli, date, language) + "/provision",
-                ProvisionView.occurrences(act, version, language, marks),
+                ProvisionView.occurrences(act, version, language, tags),
                 self,
                 version.eurLex(language).toString());
         // The version appeared since, and it is being prepared.

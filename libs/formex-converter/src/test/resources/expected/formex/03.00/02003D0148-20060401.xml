@@ -369,18 +369,18 @@
                         <t v="(ii)"/>
                      </num>
                      <p>
-                        <provenance amendingAct="32003D0148R(01)"
-                                    action="replaced"
-                                    location="TO"
-                                    marker="O000001M001000"/>
+                        <tag amendingAct="32003D0148R(01)"
+                             action="replaced"
+                             location="TO"
+                             tagId="O000001M001000"/>
                         <t v=" in point 4 the existing paragraphs (d) and (e) becomes (e) and (f), and a new paragraph (d) is added as follows:"/>
                      </p>
                      <quotedStructure eId="anx/pnt_b/pnt_ii/qstr_1">
                         <occurrence eId="anx/pnt_b/pnt_ii/qstr_1/pnt_d" kind="point" numbered="true">
-                           <provenance amendingAct="32003D0148R(01)"
-                                       action="replaced"
-                                       location="TO"
-                                       marker="O000001M001000"/>
+                           <tag amendingAct="32003D0148R(01)"
+                                action="replaced"
+                                location="TO"
+                                tagId="O000001M001000"/>
                            <num>
                               <t v="‘"/>
                               <t v="(d)"/>
@@ -392,10 +392,10 @@
                         </occurrence>
                      </quotedStructure>
                      <p>
-                        <provenance amendingAct="32003D0148R(01)"
-                                    action="replaced"
-                                    location="TO"
-                                    marker="O000001M001000"/>
+                        <tag amendingAct="32003D0148R(01)"
+                             action="replaced"
+                             location="TO"
+                             tagId="O000001M001000"/>
                         <t v=";"/>
                      </p>
                   </occurrence>
@@ -425,10 +425,10 @@
       </occurrence>
       <occurrence eId="att_1" kind="attachment">
          <figure src="L_2006077EN.01003302.tif">
-            <provenance amendingAct="32006D0203"
-                        action="replaced"
-                        location="PT:5"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32006D0203"
+                 action="replaced"
+                 location="PT:5"
+                 tagId="O001001M001000"/>
             <description>
                <p>
                   <emphasis kind="b">
@@ -695,10 +695,10 @@
             </description>
          </figure>
          <figure src="L_2006077EN.01003401.tif">
-            <provenance amendingAct="32006D0203"
-                        action="replaced"
-                        location="PT:5"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32006D0203"
+                 action="replaced"
+                 location="PT:5"
+                 tagId="O001001M001000"/>
             <description>
                <p>
                   <emphasis kind="box">
@@ -900,10 +900,10 @@
             </description>
          </figure>
          <figure src="L_2006077EN.01003501.tif">
-            <provenance amendingAct="32006D0203"
-                        action="replaced"
-                        location="PT:5"
-                        marker="O001001M001000"/>
+            <tag amendingAct="32006D0203"
+                 action="replaced"
+                 location="PT:5"
+                 tagId="O001001M001000"/>
             <description>
                <p>
                   <emphasis kind="box">

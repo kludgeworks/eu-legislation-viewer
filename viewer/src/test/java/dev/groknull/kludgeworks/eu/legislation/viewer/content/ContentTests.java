@@ -147,12 +147,12 @@ class ContentTests {
   void keepsTheActsThatMarkEachOccurrenceInTheOutline() {
     var id = content.store(CELEX, Language.ENG, "test", LegalTexts.sample(SAMPLE));
 
-    assertThat(content.outline(id).orElseThrow().marks())
-        // 6 of them only by marks of words inside a sentence
+    assertThat(content.outline(id).orElseThrow().tags())
+        // 6 of them only by tags of words inside a sentence
         .hasSize(453)
         .containsEntry("anx/pnt_4.1.3.3", Set.of("32017R0815"))
         .containsEntry("anx/pnt_6.8.3.1", Set.of("32017R0815", "32022R1174"))
-        // A mark of words inside a sentence: "changed", not "provenance"
+        // A tag of words inside a sentence: "changed", not "tag"
         .hasEntrySatisfying("anx/pnt_3.1.1.3", acts -> assertThat(acts).contains("32022R1174"))
         .doesNotContainKey("art_1");
   }
@@ -162,7 +162,7 @@ class ContentTests {
     var text = LegalTexts.sample(SAMPLE);
     // A language that no other test stores, so that no outline of it is cached
     var id = content.store(CELEX, Language.ITA, "test", text);
-    jdbc.sql("update text set outline = outline - 'marks' || '{\"rules\": \"older\"}' where id = ?")
+    jdbc.sql("update text set outline = outline - 'tags' || '{\"rules\": \"older\"}' where id = ?")
         .param(id.value())
         .update();
 

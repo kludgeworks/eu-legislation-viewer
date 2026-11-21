@@ -203,10 +203,10 @@
                   </td>
                   <td>
                      <p>
-                        <provenance amendingAct="32012D0478R(01)"
-                                    action="replaced"
-                                    location="TO"
-                                    marker="O000001M001000"/>
+                        <tag amendingAct="32012D0478R(01)"
+                             action="replaced"
+                             location="TO"
+                             tagId="O000001M001000"/>
                         <date date="2012-08-17">
                            <t v="17.8.2012"/>
                         </date>

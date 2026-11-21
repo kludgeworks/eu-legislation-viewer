@@ -12,12 +12,12 @@ import org.junit.jupiter.api.Test;
 
 /**
  * Tests how {@link RowFolds} folds the rows of a changed table that are the same in both texts. In
- * the tables here, a row is named by its text, and a marked row holds a word marked inserted.
+ * the tables here, a row is named by its text, and a row with an edit holds a word shown inserted.
  */
 class RowFoldsTest {
   @Test
   void foldsTheRowsAwayFromAChangeAndKeepsOneRowOfContextOnEachSide() {
-    var table = table(rows("r", 0, 9), marked("r10"), rows("r", 11, 20));
+    var table = table(rows("r", 0, 9), edited("r10"), rows("r", 11, 20));
 
     assertThat(shown(RowFolds.of(table)))
         .containsExactly("9 rows from 0 to 8", "r9", "r10", "r11", "9 rows from 12 to 20");
@@ -25,7 +25,7 @@ class RowFoldsTest {
 
   @Test
   void showsARunTooShortToFoldAsItIs() {
-    var table = table(marked("r0"), rows("r", 1, 4), marked("r5"));
+    var table = table(edited("r0"), rows("r", 1, 4), edited("r5"));
 
     assertThat(shown(RowFolds.of(table))).containsExactly("r0", "r1", "r2", "r3", "r4", "r5");
   }
@@ -33,7 +33,7 @@ class RowFoldsTest {
   @Test
   void keepsTheHeaderRows() {
     var header = new Element("tr", Map.of("header", "true"), List.of(cell("head", Map.of())), "");
-    var table = table(List.of(header), rows("r", 0, 9), marked("r10"));
+    var table = table(List.of(header), rows("r", 0, 9), edited("r10"));
 
     assertThat(shown(RowFolds.of(table)))
         .containsExactly("head", "r0", "8 rows from 2 to 9", "r9", "r10");
@@ -43,7 +43,7 @@ class RowFoldsTest {
   void foldsTheRowsThatACellSpansTogether() {
     // r7's cell spans r7 and r8, so r8 is context with it
     var spanning = new Element("tr", Map.of(), List.of(cell("r7", Map.of("rowspan", "2"))), "");
-    var table = table(rows("r", 0, 6), List.of(spanning), rows("r", 8, 8), marked("r9"));
+    var table = table(rows("r", 0, 6), List.of(spanning), rows("r", 8, 8), edited("r9"));
 
     assertThat(shown(RowFolds.of(table))).containsExactly("7 rows from 0 to 6", "r7", "r8", "r9");
   }
@@ -51,7 +51,7 @@ class RowFoldsTest {
   @Test
   void foldsEachRowGroupOnItsOwn() {
     var first = new Element("rowGroup", Map.of(), flat(rows("a", 0, 4)), "");
-    var second = new Element("rowGroup", Map.of(), flat(rows("b", 0, 3), marked("b4")), "");
+    var second = new Element("rowGroup", Map.of(), flat(rows("b", 0, 3), edited("b4")), "");
     var table = new Element("table", Map.of(), List.of(first, second), "");
 
     assertThat(shown(RowFolds.of(table)))
@@ -64,7 +64,7 @@ class RowFoldsTest {
         new Element(
             "occurrence",
             Map.of(),
-            List.of(table(marked("x0")), table(rows("r", 0, 9), marked("r10"))),
+            List.of(table(edited("x0")), table(rows("r", 0, 9), edited("r10"))),
             "");
 
     var fold = folds(RowFolds.of(occurrence)).getFirst();
@@ -88,7 +88,7 @@ class RowFoldsTest {
         new Element(
             "occurrence",
             Map.of(),
-            List.of(table(List.of(holder), marked("x0")), table(rows("r", 0, 9), marked("r10"))),
+            List.of(table(List.of(holder), edited("x0")), table(rows("r", 0, 9), edited("r10"))),
             "");
 
     var fold = folds(RowFolds.of(occurrence)).getFirst();
@@ -105,7 +105,7 @@ class RowFoldsTest {
         new Element(
             "occurrence",
             Map.of(),
-            List.of(table(rows("a", 0, 9), marked("a10")), table(marked("b0"), rows("b", 1, 9))),
+            List.of(table(rows("a", 0, 9), edited("a10")), table(edited("b0"), rows("b", 1, 9))),
             "");
 
     var folded = RowFolds.of(occurrence);
@@ -148,8 +148,8 @@ class RowFoldsTest {
     return rows;
   }
 
-  /** Returns a row named {@code name} with a word marked inserted. */
-  private static List<Element> marked(String name) {
+  /** Returns a row named {@code name} with a word shown inserted. */
+  private static List<Element> edited(String name) {
     var inserted =
         new Element(
             "diff:ins", Map.of(), List.of(new Element("t", Map.of("v", "new"), List.of(), "")), "");
