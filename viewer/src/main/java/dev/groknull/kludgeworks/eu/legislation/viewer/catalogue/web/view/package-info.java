@@ -9,6 +9,7 @@
  *       compare page, in {@link CompareView}
  *   <li>the preparing page, {@link PreparingView}, the failure panel, {@link FailureView}, and the
  *       versions that are arriving, {@link ArrivingView}
+ *   <li>an act's page while the viewer looks the act up, {@link ActLookupView}
  *   <li>the wording that the pages use, in {@link Wording}, and the links to every page, in {@link
  *       Links}, so the links are plain hrefs that work without JavaScript
  * </ul>

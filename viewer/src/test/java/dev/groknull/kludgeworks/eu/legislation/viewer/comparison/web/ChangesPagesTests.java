@@ -260,11 +260,16 @@ class ChangesPagesTests {
   }
 
   /**
-   * The changes, once the act is prepared. Opening the compare page prepares the act. Until both
-   * texts are built, the changes are not found.
+   * The changes, once the act is prepared. Opening the compare page prepares the act, once the
+   * catalogue has it: until then, the page waits for the lookup of the act, and asks again when it
+   * ends, as this does. Until both texts are built, the changes are not found.
    */
   private Document prepared() {
-    http.get().uri(PAGE).retrieve().toBodilessEntity();
+    await()
+        .atMost(Duration.ofMinutes(1))
+        .pollDelay(Duration.ZERO)
+        .pollInterval(Duration.ofMillis(250))
+        .until(() -> get(PAGE).getElementById("act-lookup") == null);
     var body =
         await()
             .atMost(Duration.ofMinutes(1))

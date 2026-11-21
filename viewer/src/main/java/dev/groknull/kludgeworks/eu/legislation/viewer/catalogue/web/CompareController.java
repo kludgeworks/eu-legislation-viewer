@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
@@ -36,6 +35,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -70,12 +70,12 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 class CompareController {
-  private final Acts acts;
+  private final Catalogued acts;
   private final Texts texts;
   private final Templates templates;
   private final Clock clock;
 
-  CompareController(Acts acts, Texts texts, Templates templates, Clock clock) {
+  CompareController(Catalogued acts, Texts texts, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
     this.templates = templates;
@@ -108,9 +108,7 @@ class CompareController {
       HttpServletRequest request) {
     var page = new Page(new Eli(type, year, number), code, from, to, view, unit);
     if (!page.at(from, to)) {
-      return ResponseEntity.status(HttpStatus.SEE_OTHER)
-          .location(URI.create(page.address()))
-          .build();
+      return ActLookupPages.seeOther(page.address(), request);
     }
     var title =
         page.act.id().cited()
@@ -254,7 +252,7 @@ class CompareController {
       this.view = view;
       this.unit = unit;
       language = Requests.language(code);
-      act = acts.find(eli).orElseThrow(Requests::notFound);
+      act = acts.act(eli);
       timeline = act.timeline().in(language).orElseThrow(Requests::notFound);
       // Without dates, use the version that applies today. If none applies today, use the latest.
       var later =
@@ -361,5 +359,17 @@ class CompareController {
         case Text.Converting converting -> templates.catalogueTextArriving();
       };
     }
+  }
+
+  /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
+  @ExceptionHandler(NotCatalogued.class)
+  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, HttpServletRequest request) {
+    return ActLookupPages.lookingUp(templates, notCatalogued, request);
+  }
+
+  /** Answers a page whose address no act has with the page that says so, with 404. */
+  @ExceptionHandler(NoSuchAct.class)
+  ResponseEntity<String> missing(NoSuchAct missing, HttpServletRequest request) {
+    return ActLookupPages.missing(templates, missing, request);
   }
 }

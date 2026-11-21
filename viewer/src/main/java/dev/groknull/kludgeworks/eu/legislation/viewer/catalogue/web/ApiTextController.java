@@ -7,7 +7,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -74,11 +73,11 @@ class ApiTextController {
   /** How long a client waits before it asks again for a text that is not ready. */
   private static final Duration RETRY_AFTER = Duration.ofSeconds(5);
 
-  private final Acts acts;
+  private final Catalogued acts;
   private final Texts texts;
   private final Content content;
 
-  ApiTextController(Acts acts, Texts texts, Content content) {
+  ApiTextController(Catalogued acts, Texts texts, Content content) {
     this.acts = acts;
     this.texts = texts;
     this.content = content;
@@ -225,7 +224,7 @@ class ApiTextController {
 
   /** Returns what the path asks for, or throws not found. */
   private Asked asked(ActIdentifier celex, String key, String code) {
-    var act = acts.find(celex).orElseThrow(Requests::notFound);
+    var act = acts.api(celex);
     var version = ApiActController.at(act.timeline().versions(), key);
     var language = Requests.language(code);
     if (!version.languages().contains(language)) {

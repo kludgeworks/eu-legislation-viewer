@@ -105,7 +105,13 @@ class HomeControllerTests {
         .containsExactly(
             "Looking up 2015/1998 at the Publications Office…",
             "The Publications Office is slow to answer.");
+    // The stream says when the lookup ends. If it found the act (done), the page asks the lookup
+    // address, which goes to the act.
     assertThat(looking.attr("hx-get")).isEqualTo("/lookup?q=32015R1998");
+    assertThat(looking.attr("hx-trigger")).isEqualTo("done");
+    assertThat(
+            Objects.requireNonNull(looking.selectFirst("[hx-sse:connect]")).attr("hx-sse:connect"))
+        .isEqualTo("/lookup/events?q=32015R1998");
     assertThat(page.select("noscript meta").attr("content"))
         .isEqualTo("0;url=/lookup?q=32015R1998");
     // If the request times out, the page shows what can help.
@@ -128,6 +134,25 @@ class HomeControllerTests {
     assertThat(failure.select("a").eachText())
         .containsExactly("Try again", "Read it on EUR-Lex ↗ (opens EUR-Lex)");
     assertThat(failure.select("a").eachAttr("href")).first().isEqualTo("/?q=32015R1998");
+  }
+
+  @Test
+  void streamsDoneWhenTheLookupFoundTheAct() {
+    when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.of(OneActCellar.ACT));
+
+    assertThat(body(mvc.get().uri("/lookup/events?q=32015R1998").exchange()))
+        .contains("event:done");
+  }
+
+  @Test
+  void streamsThatNoActHasTheNumber() {
+    when(acts.find(OneActCellar.CELEX)).thenReturn(Optional.empty());
+
+    var message = body(mvc.get().uri("/lookup/events?q=32015R1998").exchange());
+
+    assertThat(message).doesNotContain("event:done").contains("hx-target=\"#looking\"");
+    assertThat(Jsoup.parse(message).select("p.none").text())
+        .isEqualTo("No act has the CELEX number or ELI 32015R1998.");
   }
 
   @Test

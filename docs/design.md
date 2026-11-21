@@ -190,6 +190,13 @@ narrower or wider. Do not design a different layout for a phone.
 page shows the Failed state. Example: the home page, when it looks up an act that the catalogue
 does not have yet (`catalogue/home.jte`).
 
+**Convention.** An act's page whose act the catalogue does not have yet keeps its address. It
+says "Looking up reg/2005/396 at the Publications Office…" at once, and the viewer looks the act
+up in the background. When the act arrives, the page becomes the page of its address
+(`catalogue/actlookup.jte`). If no act has the address, the page says "No act has this address",
+with 404 and a link to Find an act (`catalogue/nosuchact.jte`). If the Publications Office does
+not answer, the page shows the Failed state, with Try again.
+
 ## Content that breaks layouts
 
 **Convention.** Check a design against these.

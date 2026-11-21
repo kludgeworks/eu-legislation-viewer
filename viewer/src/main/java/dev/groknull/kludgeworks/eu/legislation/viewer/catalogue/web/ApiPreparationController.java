@@ -54,10 +54,12 @@ class ApiPreparationController {
 
   private final PreparationStreams streams = new PreparationStreams(this::send);
   private final Acts acts;
+  private final Catalogued catalogued;
   private final Texts texts;
 
-  ApiPreparationController(Acts acts, Texts texts) {
+  ApiPreparationController(Acts acts, Catalogued catalogued, Texts texts) {
     this.acts = acts;
+    this.catalogued = catalogued;
     this.texts = texts;
   }
 
@@ -180,7 +182,7 @@ class ApiPreparationController {
   }
 
   private Act found(ActIdentifier celex) {
-    return acts.find(celex).orElseThrow(Requests::notFound);
+    return catalogued.api(celex);
   }
 
   /** Returns the language of the path, or throws not found if no version of the act is in it. */

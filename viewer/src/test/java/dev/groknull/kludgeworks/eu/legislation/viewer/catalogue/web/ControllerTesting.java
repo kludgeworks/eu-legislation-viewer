@@ -13,6 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 
 /**
  * Gives a controller test of an act's pages, with {@code @WebMvcTest}, what it needs beside the
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.Bean;
  * the catalogue's pages use it.
  */
 @TestConfiguration(proxyBeanMethods = false)
+@Import(CataloguedTesting.class)
 public class ControllerTesting {
   @Bean
   Templates templates() {

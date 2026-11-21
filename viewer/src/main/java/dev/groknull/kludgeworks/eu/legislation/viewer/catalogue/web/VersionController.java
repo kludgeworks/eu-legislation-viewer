@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
@@ -45,6 +44,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -81,13 +81,14 @@ class VersionController {
   private static final String PATH =
       "/eli/{type}/{year}/{number}/{date:\\d{4}-\\d{2}-\\d{2}}/{language}";
 
-  private final Acts acts;
+  private final Catalogued acts;
   private final Texts texts;
   private final Content content;
   private final Templates templates;
   private final Clock clock;
 
-  VersionController(Acts acts, Texts texts, Content content, Templates templates, Clock clock) {
+  VersionController(
+      Catalogued acts, Texts texts, Content content, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
     this.content = content;
@@ -107,18 +108,17 @@ class VersionController {
       @PathVariable String number,
       @PathVariable("language") String code,
       @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
-          @Nullable LocalDate on) {
+          @Nullable LocalDate on,
+      HttpServletRequest request) {
     var language = language(code);
     var eli = new Eli(type, year, number);
-    var found = acts.find(eli).orElseThrow(VersionController::notFound);
+    var found = acts.act(eli);
     var history = on == null && !found.amendingActs(language).isEmpty();
-    return ResponseEntity.status(HttpStatus.SEE_OTHER)
-        .location(
-            URI.create(
-                history
-                    ? Links.history(eli, null, language)
-                    : Links.read(eli, on != null ? on : today(), language)))
-        .build();
+    return ActLookupPages.seeOther(
+        history
+            ? Links.history(eli, null, language)
+            : Links.read(eli, on != null ? on : today(), language),
+        request);
   }
 
   /**
@@ -243,7 +243,7 @@ class VersionController {
     Page(String type, int year, String number, LocalDate date, String code) {
       language = language(code);
       eli = new Eli(type, year, number);
-      act = acts.find(eli).orElseThrow(VersionController::notFound);
+      act = acts.act(eli);
       var timeline = act.timeline();
       before = timeline.startsAfter(date);
       version =
@@ -400,5 +400,17 @@ class VersionController {
 
   private static ResponseStatusException notFound() {
     return Requests.notFound();
+  }
+
+  /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
+  @ExceptionHandler(NotCatalogued.class)
+  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, HttpServletRequest request) {
+    return ActLookupPages.lookingUp(templates, notCatalogued, request);
+  }
+
+  /** Answers a page whose address no act has with the page that says so, with 404. */
+  @ExceptionHandler(NoSuchAct.class)
+  ResponseEntity<String> missing(NoSuchAct missing, HttpServletRequest request) {
+    return ActLookupPages.missing(templates, missing, request);
   }
 }

@@ -61,11 +61,12 @@ public record HomeView(
 
   /**
    * Returns the home page that looks up the act that {@code words}, a CELEX or ELI, name. It says
-   * {@code line} and asks {@code href}, which goes to the act once the Publications Office has
-   * answered. If the answer does not come, the page shows {@code unanswered}.
+   * {@code line}, and {@code events} says when the lookup ends. Then it asks {@code href}, which
+   * goes to the act. If the answer does not come, the page shows {@code unanswered}.
    */
-  public static HomeView lookingUp(String words, String line, String href, Unanswered unanswered) {
-    return new HomeView(words, null, null, new LookingUp(line, href, unanswered), null);
+  public static HomeView lookingUp(
+      String words, String line, String href, String events, Unanswered unanswered) {
+    return new HomeView(words, null, null, new LookingUp(line, href, events, unanswered), null);
   }
 
   /**
@@ -233,10 +234,12 @@ public record HomeView(
    *
    * @param line what the page says while it waits. For example, "Looking up 2015/1998 at the
    *     Publications Office…".
-   * @param href the address that looks the act up and goes to it
+   * @param href the address that looks the act up and goes to it. The page asks it when the lookup
+   *     found the act. A page without JavaScript goes to it at once, and it waits for the lookup.
+   * @param events the stream that says when the lookup ends
    * @param unanswered what can help if the answer does not come
    */
-  public record LookingUp(String line, String href, Unanswered unanswered) {}
+  public record LookingUp(String line, String href, String events, Unanswered unanswered) {}
 
   /**
    * What can help when the Publications Office did not answer the lookup of an act.

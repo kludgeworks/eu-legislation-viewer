@@ -89,11 +89,13 @@ class ApiActController {
   private static final CacheControl LOOKED_UP = CacheControl.maxAge(Duration.ofHours(1));
 
   private final Acts acts;
+  private final Catalogued catalogued;
   private final Texts texts;
   private final Clock clock;
 
-  ApiActController(Acts acts, Texts texts, Clock clock) {
+  ApiActController(Acts acts, Catalogued catalogued, Texts texts, Clock clock) {
     this.acts = acts;
+    this.catalogued = catalogued;
     this.texts = texts;
     this.clock = clock;
   }
@@ -112,7 +114,7 @@ class ApiActController {
   @GetMapping(path = ACTS, params = "celex")
   ResponseEntity<Void> byCelex(@RequestParam String celex) {
     if (ActIdentifier.isCelex(celex)) {
-      return lookedUp(acts.find(new ActIdentifier(celex)).orElseThrow(Requests::notFound));
+      return lookedUp(catalogued.api(new ActIdentifier(celex)));
     }
     if (!CONSOLIDATED.matcher(celex).matches()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not a CELEX number: " + celex);
@@ -139,7 +141,7 @@ class ApiActController {
     } catch (IllegalArgumentException e) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Not an ELI: " + eli, e);
     }
-    return lookedUp(acts.find(named).orElseThrow(Requests::notFound));
+    return lookedUp(catalogued.api(named));
   }
 
   private static ResponseEntity<Void> lookedUp(Act act) {
@@ -342,7 +344,7 @@ class ApiActController {
   }
 
   private Act found(ActIdentifier celex) {
-    return acts.find(celex).orElseThrow(Requests::notFound);
+    return catalogued.api(celex);
   }
 
   /** Returns the link to the version that applies today, if one does. */

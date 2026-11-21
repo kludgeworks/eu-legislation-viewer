@@ -894,9 +894,10 @@ form.find-act .ex a {
   color: var(--ink2);
 }
 
-/* While the page looks an act up at the Publications Office. A dot pulses before the line. After
- * 15 s, a second line says that the Publications Office is slow. */
-.home .looking > .none::before {
+/* While a page looks an act up at the Publications Office: the home page, and an act's page that
+ * waits for the act (catalogue/actlookup.jte). A dot pulses before the line. After 15 s, a second
+ * line says that the Publications Office is slow. */
+.looking > .none::before {
   content: "";
   display: inline-block;
   width: 8px;
@@ -908,7 +909,7 @@ form.find-act .ex a {
   animation: pulse 1.2s ease-in-out infinite;
 }
 
-.home .looking > .slow {
+.looking > .slow {
   margin: 6px 0 0 18px;
   color: var(--ink3);
   visibility: hidden;
@@ -922,9 +923,22 @@ form.find-act .ex a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home .looking > .none::before {
+  .looking > .none::before {
     animation: none;
   }
+}
+
+/* An act's page while the viewer looks the act up (catalogue/actlookup.jte), and the page that says
+ * no act has its address (catalogue/nosuchact.jte). */
+.act-lookup {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding: 24px 0 32px;
+}
+
+.act-lookup .looking > .none {
+  margin: 0;
+  color: var(--ink2);
 }
 
 .results-head {

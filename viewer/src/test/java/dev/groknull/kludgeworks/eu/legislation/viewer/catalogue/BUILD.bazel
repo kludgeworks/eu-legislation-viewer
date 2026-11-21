@@ -24,7 +24,8 @@ java_test_suite(
 
 # application/
 # What a change in Cellar does, without Spring: the changes mapped to held acts, their debounce,
-# and the comparison of a held act as stored with the act as Cellar has it now
+# and the comparison of a held act as stored with the act as Cellar has it now. And the lookups of
+# acts in the background
 java_test_suite(
     name = "application",
     size = "small",
@@ -42,6 +43,8 @@ java_test_suite(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "@maven//:org_assertj_assertj_core",
+        "@maven//:org_awaitility_awaitility",
+        "@maven//:org_jspecify_jspecify",
         "@maven//:org_junit_jupiter_junit_jupiter_api",
     ],
 )
@@ -405,12 +408,15 @@ java_test_suite(
     ],
 )
 
-# The templates of the pages, for a controller test of an act's pages (@WebMvcTest), and the act of
-# OneActCellar while it is prepared
+# The templates of the pages, for a controller test of an act's pages (@WebMvcTest), the act of
+# OneActCellar while it is prepared, and the lookups that answer at once from the mocked acts
 java_library(
     name = "controller-testing",
     testonly = True,
-    srcs = ["web/ControllerTesting.java"],
+    srcs = [
+        "web/CataloguedTesting.java",
+        "web/ControllerTesting.java",
+    ],
     deps = [
         ":one-act-cellar",
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
@@ -418,6 +424,7 @@ java_library(
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/language",
         "//viewer/src/main/jte",
         "@maven//:org_springframework_boot_spring_boot_test",
+        "@maven//:org_springframework_spring_beans",
         "@maven//:org_springframework_spring_context",
     ],
 )

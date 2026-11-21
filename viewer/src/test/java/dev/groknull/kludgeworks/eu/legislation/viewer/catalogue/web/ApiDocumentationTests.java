@@ -43,6 +43,14 @@ class ApiDocumentationTests {
 
   @Test
   void looksAnActUp() {
+    // The first lookup answers 202 while the viewer reads the act from Cellar.
+    await()
+        .atMost(Duration.ofSeconds(60))
+        .until(
+            () ->
+                get("/api/acts?celex=32015R1998").getResponse().getStatus()
+                    == HttpStatus.SEE_OTHER.value());
+
     assertThat(documented("act/lookup", "/api/acts?celex=32015R1998"))
         .hasStatus(HttpStatus.SEE_OTHER);
   }

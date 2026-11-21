@@ -108,6 +108,14 @@ public final class Links {
   }
 
   /**
+   * Returns the address of the event stream that says when the lookup of the act ends. {@code
+   * ActLookupController} answers it. For example, {@code /eli/reg/2005/396/lookup/events}.
+   */
+  public static String actLookup(Eli eli) {
+    return "/eli/" + eli.path() + "/lookup/events";
+  }
+
+  /**
    * Returns the address of the event stream of the notices that the act changed, for its pages in
    * the language. {@code NoticeController} answers it.
    */

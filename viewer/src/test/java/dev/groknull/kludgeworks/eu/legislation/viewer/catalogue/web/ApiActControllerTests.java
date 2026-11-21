@@ -47,7 +47,11 @@ import tools.jackson.databind.json.JsonMapper;
  * OneActCellar}, and today is 1 June 2021, when its consolidation of 15 March 2021 applies.
  */
 @WebMvcTest(ApiActController.class)
-@Import({ApiConfiguration.class, ApiActControllerTests.OnTheFirstOfJune2021.class})
+@Import({
+  ApiConfiguration.class,
+  CataloguedTesting.class,
+  ApiActControllerTests.OnTheFirstOfJune2021.class
+})
 class ApiActControllerTests {
   private static final String ACT = "http://localhost/api/acts/32015R1998";
 

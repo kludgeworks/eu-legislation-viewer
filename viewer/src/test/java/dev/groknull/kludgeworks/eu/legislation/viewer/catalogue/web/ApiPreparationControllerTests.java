@@ -41,7 +41,7 @@ import tools.jackson.databind.json.JsonMapper;
  * the act of {@link OneActCellar}, prepared in English.
  */
 @WebMvcTest(ApiPreparationController.class)
-@Import(ApiConfiguration.class)
+@Import({ApiConfiguration.class, CataloguedTesting.class})
 class ApiPreparationControllerTests {
   private static final String ACT = "http://localhost/api/acts/32015R1998";
   private static final String PREPARATION = "/api/acts/32015R1998/preparations/eng";

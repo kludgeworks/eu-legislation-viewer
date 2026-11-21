@@ -60,6 +60,10 @@
           <p>The viewer makes a text the first time that someone asks for it. Until the text is ready, the answer is
             <span class="mono">202 Accepted</span>. The answer has <span class="mono">Retry-After</span>, in
             seconds, and a link to the <a href="#preparation">preparation</a>.</p>
+          <p>The viewer also reads an act from the Publications Office the first time that someone asks for it.
+            Until it has the act, the answer is <span class="mono">202 Accepted</span>. The answer has
+            <span class="mono">Retry-After</span>, in seconds, and <span class="mono">Location</span>: the address
+            to ask again. If no act has the identifier, the answer is <span class="mono">404 Not Found</span>.</p>
           <p>To wait without asking again, follow the link <a class="mono" href="#events">av:events</a> of the
             preparation. It is a stream of events. The last event is <span class="mono">settled</span>:</p>
 $unsafe{examples.get("act/events")}

@@ -3,7 +3,6 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.TextMarks;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
@@ -25,7 +24,9 @@ import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,12 +48,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 class HistoryController {
   private static final String HISTORY = "/eli/{type}/{year}/{number}/{language}/history";
 
-  private final Acts acts;
+  private final Catalogued acts;
   private final Texts texts;
   private final Templates templates;
   private final Clock clock;
 
-  HistoryController(Acts acts, Texts texts, Templates templates, Clock clock) {
+  HistoryController(Catalogued acts, Texts texts, Templates templates, Clock clock) {
     this.acts = acts;
     this.texts = texts;
     this.templates = templates;
@@ -142,7 +143,7 @@ class HistoryController {
   }
 
   private Act act(String type, int year, String number) {
-    return acts.find(new Eli(type, year, number)).orElseThrow(Requests::notFound);
+    return acts.act(new Eli(type, year, number));
   }
 
   /**
@@ -178,5 +179,17 @@ class HistoryController {
     return before == null || after == null
         ? null
         : new AmendingView.Step(earlier.date(), later.date(), before.eIds(), after.eIds());
+  }
+
+  /** Answers a page whose act the catalogue does not have yet with the page that waits for it. */
+  @ExceptionHandler(NotCatalogued.class)
+  ResponseEntity<String> notCatalogued(NotCatalogued notCatalogued, HttpServletRequest request) {
+    return ActLookupPages.lookingUp(templates, notCatalogued, request);
+  }
+
+  /** Answers a page whose address no act has with the page that says so, with 404. */
+  @ExceptionHandler(NoSuchAct.class)
+  ResponseEntity<String> missing(NoSuchAct missing, HttpServletRequest request) {
+    return ActLookupPages.missing(templates, missing, request);
   }
 }
