@@ -153,6 +153,18 @@ the change. The page says "text", not "version". If the text consolidates no act
 | --- | --- |
 | The text where the change first appears | "Deleted in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449" |
 | Nothing shows where it appears | "The data does not say which act amended this." The verb is the modification of the difference: inserted, deleted or amended (R-WHO-14). |
+| One of two acts or more made it (R-WHO-07) | "The data does not say which act deleted this. It was 2019/413 or 2021/255." |
+
+On the page of an amending act, the differences that it or another act made, where the data does
+not say which (R-WHO-24), are in a list apart, under "By this act or by 2019/413". Where Cellar names
+a chapter of an annex that the text keeps flat (R-WHO-25), the change shows as the differences in
+the points and the attachments of the chapter, under the words "The text tags these changes in
+this part of the annex with 2019/413."
+
+Where a change does not apply on the later day of a comparison yet, a prospective amendment, the
+difference has the amber bar, and its sidenote also says "2026/449 does not apply yet on 1 October
+2026". For a day in the past, it says "did not apply yet". Which changes these are is the
+catalogue's rule (Act.prospective).
 
 Synopsis shows the two texts side by side, provision by provision (R-SHOW-10). Near each
 difference it shows its neighbours. Where more than three neighbours are in a row, it shows the

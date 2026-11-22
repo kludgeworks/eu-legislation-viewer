@@ -296,8 +296,9 @@ class ApiComparisonController {
       @Nullable String amendingAct) {
     var ends = new Ends(found(celex), Requests.language(language), from, to, amendingAct, texts);
     var only = ends.only;
-    var later = only == null ? ends.to : ends.including(only).orElseThrow(Requests::notFound);
-    var earlier = only == null ? ends.from : ends.earlier(later);
+    var inclusion = only == null ? null : ends.inclusion(only).orElseThrow(Requests::notFound);
+    var later = inclusion == null ? ends.to : inclusion.first();
+    var earlier = inclusion == null ? ends.from : inclusion.before();
     return new Asked(ends, earlier, later);
   }
 

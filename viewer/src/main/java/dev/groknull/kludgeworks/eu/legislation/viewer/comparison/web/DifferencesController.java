@@ -7,17 +7,18 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Acts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Eli;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Alternatives;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
@@ -47,7 +48,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.IdentityHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -393,6 +393,13 @@ class DifferencesController {
     SidenoteView sidenote(Difference difference) {
       return Objects.requireNonNull(sidenotes.get(difference));
     }
+
+    /** Returns each difference of the comparison with who made it, in the comparison's order. */
+    List<Summary.Attributed> each() {
+      return comparison.differences().stream()
+          .map(difference -> new Summary.Attributed(difference, sidenote(difference).attribution()))
+          .toList();
+    }
   }
 
   /**
@@ -544,16 +551,11 @@ class DifferencesController {
         comparisons.between(pair.before(), pair.after()).orElseThrow(Requests::notFound).at(eIds);
     String lead = null;
     if (found.isEmpty() && only != null) {
-      // A chapter that the annex keeps flat has no difference of its own. Show the differences in
-      // its points and its attachments that the text tags with the act.
+      // A chapter that the annex keeps flat has no difference of its own (R-WHO-25).
       var attributed =
           attributed(ends, preparation, earlier, later, only, null, new HashMap<>())
               .orElseThrow(Requests::notFound);
-      found =
-          attributed.comparison().differences().stream()
-              .filter(each -> eIds.stream().anyMatch(eId -> Location.holds(eId, each.eId())))
-              .filter(each -> attributed.sidenote(each).attribution().acts().contains(only))
-              .toList();
+      found = Attribution.madeIn(attributed.each(), eIds, only);
       lead =
           found.isEmpty()
               ? null
@@ -605,26 +607,23 @@ class DifferencesController {
     var only = Objects.requireNonNull(ends.only);
     var page = ComparePage.ofFragment(request.getRequestURI(), from, to, only.celex(), null);
     var started = System.nanoTime();
-    var including = ends.including(only).orElseThrow(Requests::notFound);
+    var inclusion = ends.inclusion(only).orElseThrow(Requests::notFound);
     var attributed =
         attributed(
                 ends,
                 ends.preparation,
-                ends.earlier(including),
-                including,
+                inclusion.before(),
+                inclusion.first(),
                 only,
                 null,
                 new HashMap<>())
             .orElseThrow(Requests::notFound);
-    var others = new LinkedHashSet<ActIdentifier>();
-    var shown = new ArrayList<DifferencesView.Shown>();
-    for (var difference : attributed.comparison().differences()) {
-      var candidates = attributed.sidenote(difference).attribution().candidates();
-      if (candidates.contains(only)) {
-        candidates.stream().filter(each -> !each.equals(only)).forEach(others::add);
-        shown.add(new DifferencesView.Shown(0, difference, ""));
-      }
-    }
+    var alternatives = Alternatives.of(only, attributed.each());
+    var others = alternatives.others();
+    var shown =
+        alternatives.differences().stream()
+            .map(difference -> new DifferencesView.Shown(0, difference, ""))
+            .toList();
     var rendered =
         templates
             .comparisonEither(
@@ -637,8 +636,8 @@ class DifferencesController {
     LOG.info(
         "Differences of {} from {} to {} in {} by {} or another act: {}, in {} ms",
         ends.act.id(),
-        ends.earlier(including).date(),
-        including.date(),
+        inclusion.before().date(),
+        inclusion.first().date(),
         ends.language.code(),
         only,
         shown.size(),
@@ -654,9 +653,9 @@ class DifferencesController {
    */
   private static ReadyTexts ready(Ends ends, Preparation preparation) {
     var only = ends.only;
-    var including = only == null ? null : ends.including(only).orElseThrow(Requests::notFound);
-    var earlier = including == null ? ends.from : ends.earlier(including);
-    var later = including == null ? ends.to : including;
+    var inclusion = only == null ? null : ends.inclusion(only).orElseThrow(Requests::notFound);
+    var earlier = inclusion == null ? ends.from : inclusion.before();
+    var later = inclusion == null ? ends.to : inclusion.first();
     if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
         || !(preparation.texts().get(later) instanceof Text.Ready after)) {
       throw Requests.notFound();

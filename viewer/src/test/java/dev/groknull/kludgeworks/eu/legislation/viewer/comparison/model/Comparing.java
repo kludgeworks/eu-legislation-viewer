@@ -21,9 +21,9 @@ import org.jspecify.annotations.Nullable;
  * its versions. The steps of several rules share it. Each scenario starts with none.
  *
  * <p>The texts of the versions are the converter's sample texts, where it has them: 2015/1998 has
- * its original text and the texts of 29 February 2016, 16 February 2020, 31 December 2021, and of 1
- * January, 22 March and 1 October 2026. Directive 2013/36 has the texts of 17 January 2025 and of
- * 11 January 2026.
+ * its original text and the texts of 29 February 2016, 16 February 2020, 2 July 2020, 15 March
+ * 2021, 31 December 2021, and of 1 January, 22 March and 1 October 2026. Directive 2013/36 has the
+ * texts of 17 January 2025 and of 11 January 2026.
  */
 public class Comparing {
   /** The comparison of the scenario that runs, or null before its first step gives one. */

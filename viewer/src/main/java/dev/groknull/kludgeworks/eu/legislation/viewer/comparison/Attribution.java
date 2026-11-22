@@ -6,6 +6,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import java.util.ArrayList;
@@ -126,8 +127,9 @@ public record Attribution(
 
   /**
    * Returns who made {@code difference}, in the comparison of the version {@code from} of {@code
-   * act} with the version {@code to}. Returns {@link #NONE} where neither the tags nor Cellar name
-   * an act between the two texts.
+   * act} with the version {@code to}. Where neither the tags nor Cellar name an act between the two
+   * texts, it does not guess: it returns the acts of which one made it, if there are such acts
+   * ({@link #unnamed}, R-WHO-07), or else {@link #NONE}.
    *
    * <ul>
    *   <li>The acts are those between the two texts (R-WHO-01). An act that the tags name counts. So
@@ -177,7 +179,7 @@ public record Attribution(
       }
     }
     if (made.isEmpty()) {
-      return NONE;
+      return unnamed(included, from, to);
     }
     var placed =
         place(
@@ -215,6 +217,24 @@ public record Attribution(
    */
   public boolean corrected() {
     return !acts.isEmpty() && acts.stream().allMatch(ActIdentifier::corrigendum);
+  }
+
+  /**
+   * Returns the differences of {@code attributed} in the places {@code places} that {@code act}
+   * made, for a place that has no difference of its own (R-WHO-25). Cellar can name as the place of
+   * a change a chapter of an annex that the text keeps flat: its points and its attachments stand
+   * beside it, not in it ({@link Location#holds}). The changes of the act are then the differences
+   * in the points and the attachments that the chapter holds, where the act made them.
+   */
+  public static List<Difference> madeIn(
+      List<Summary.Attributed> attributed, List<String> places, ActIdentifier act) {
+    return attributed.stream()
+        .filter(
+            each ->
+                places.stream().anyMatch(place -> Location.holds(place, each.difference().eId())))
+        .filter(each -> each.attribution().acts().contains(act))
+        .map(Summary.Attributed::difference)
+        .toList();
   }
 
   /** Returns whether no act is named: neither an act that made it, nor acts of which one did. */

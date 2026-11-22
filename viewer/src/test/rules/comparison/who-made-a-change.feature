@@ -96,7 +96,15 @@ Feature: Who made a change, and from when
     guess. It names the text where the change first appears, and the acts that this text
     consolidates, but no act as the one that made the change. That text is the later text of the
     first pair of neighbouring texts, after the earlier day and up to the later day, whose
-    comparison has the difference. A pair whose texts are not both built is passed over.
+    comparison has the difference. A pair whose texts are not both built is passed over. But if
+    two acts or more that are not corrigenda are between the two texts, and one text first
+    includes them all, one of them made the change: the sidenote names them, and says that the
+    data does not say which.
+
+    Example: Two acts that one text first includes, and nothing says which made the change
+      Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
+      When the reader asks who made the differences that no act is named for
+      Then 3 differences are made by one of "2019/413 and 2021/255", and the data does not say which
 
     Example: The later text follows the earlier text
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026

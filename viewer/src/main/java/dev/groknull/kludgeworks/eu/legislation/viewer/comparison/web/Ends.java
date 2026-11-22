@@ -8,6 +8,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Preparation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Inclusion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Requests;
 import java.time.LocalDate;
@@ -65,21 +66,10 @@ final class Ends {
   }
 
   /**
-   * Returns the first version in the language that includes {@code amending}. The version is after
-   * From and not after To.
+   * Returns the two texts of the changes of {@code amending} (R-SCOPE-10): the first text after
+   * From, up to To, that includes it, and the text just before that.
    */
-  Optional<Version> including(ActIdentifier amending) {
-    return timeline.versions().stream()
-        .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-        .filter(v -> included.includes(v, amending))
-        .findFirst();
-  }
-
-  /**
-   * Returns the version in the language before {@code version}. That is the text just before its
-   * changes. If there is no version before it, returns {@code version}.
-   */
-  Version earlier(Version version) {
-    return timeline.predecessor(version).orElse(version);
+  Optional<Inclusion> inclusion(ActIdentifier amending) {
+    return Inclusion.of(timeline, included, from, to, amending);
   }
 }

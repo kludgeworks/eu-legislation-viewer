@@ -120,7 +120,7 @@ public record SidenoteView(
       Language language) {
     var attribution = Attribution.of(act, included, from, to, difference, amendments);
     if (attribution.steps().isEmpty()) {
-      return unknown(act, included, from, to, difference, language);
+      return unknown(act, attribution, difference, language);
     }
     var dates = new ArrayList<Applies>();
     for (var step : attribution.steps()) {
@@ -154,18 +154,12 @@ public record SidenoteView(
   }
 
   /**
-   * Returns the sidenote of a difference for which no act is named. If the acts between the two
-   * versions are all of one version, the sidenote says that one of them made it, but not which. If
-   * not, the sidenote does not say who made it.
+   * Returns the sidenote of a difference for which no act is named. Where {@code attribution} has
+   * the acts of which one made it ({@link Attribution#unnamed}), it names them, but not which one
+   * made it. If not, it does not say who made it.
    */
   private static SidenoteView unknown(
-      Act act,
-      Inclusions included,
-      Version from,
-      Version to,
-      Difference difference,
-      Language language) {
-    var attribution = Attribution.unnamed(included, from, to);
+      Act act, Attribution attribution, Difference difference, Language language) {
     var candidates = attribution.candidates();
     if (candidates.isEmpty()) {
       return new SidenoteView(unsaid(difference), Attribution.NONE, List.of(), null, null);
