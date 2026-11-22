@@ -18,7 +18,7 @@ Feature: Who made a change, and from when
         | 4 April 2022  | amended      | 2022/421  |
         | 26 May 2024   | amended      | 2024/1255 |
         | 21 May 2025   | amended      | 2025/920  |
-      And 2019/413 is not named
+      But 2019/413 is not named
 
   Rule: R-WHO-02 The tags of an occurrence
     An occurrence's tags are its own, each once and in order. An occurrence without tags takes
@@ -81,7 +81,7 @@ Feature: Who made a change, and from when
       Then the steps are
         | text of       | modification | acts     |
         | 15 March 2021 | inserted     | 2021/255 |
-      And 2019/413 is not named
+      But 2019/413 is not named
 
   Rule: R-WHO-05 Acts that changed an occurrence together
     Acts whose tags say that they replaced the same occurrence changed it together. They are in one
@@ -196,7 +196,7 @@ Feature: Who made a change, and from when
       Then the steps are
         | text of          | modification | acts     |
         | 16 February 2020 | replaced     | 2020/111 |
-      And 2019/103 is not named
+      But 2019/103 is not named
 
   Rule: R-WHO-10 A corrigendum corrects
     A difference that only corrigenda made is a correction, not an amendment. A difference that an
@@ -328,3 +328,17 @@ Feature: Who made a change, and from when
         | A      | repeal           | deleted      |
         | AP     | partial repeal   | deleted      |
         | M      | amendment        | amended      |
+
+  Rule: R-WHO-26 An act changes only what the text has
+    An act can change an occurrence only while the text has it. So an amendment counts for an
+    occurrence only if the occurrence is in the text when the amendment applies: an act that
+    changed the occurrence around a deleted occurrence after the deletion did not change it.
+
+    @known-bug @ISS-270
+    Example: A point that an act deleted takes no later amendment of the point around it
+      Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 1 January 2026
+      And the difference at the deleted point 6.5.5
+      When the reader asks who made it
+      Then the steps are
+        | text of     | modification | acts     |
+        | 7 June 2017 | deleted      | 2017/815 |

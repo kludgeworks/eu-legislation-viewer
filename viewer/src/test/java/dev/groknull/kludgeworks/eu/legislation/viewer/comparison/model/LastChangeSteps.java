@@ -6,7 +6,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.LastChange;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
@@ -14,7 +13,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import org.jspecify.annotations.Nullable;
@@ -26,36 +24,35 @@ import org.jspecify.annotations.Nullable;
  * The steps reach the domain only: {@link LastChange} and the catalogue's acts.
  */
 public class LastChangeSteps {
+  private final Comparing comparing;
   private @Nullable LastChange last;
+
+  public LastChangeSteps(Comparing comparing) {
+    this.comparing = comparing;
+  }
 
   @When("the reader asks what last changed the neighbour {place}")
   public void lastChanged(Place place) {
-    var text = Comparing.text(Comparing.to());
-    var found =
-        Location.of(place)
-            .in(List.copyOf(Occurrences.of(text).byEId().keySet()))
-            .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
-    assertThat(found.eIds()).as(place.words()).hasSize(1);
-    assertThat(found.within()).as(place.words()).isFalse();
-    var eId = found.eIds().getFirst();
+    var text = Comparing.text(comparing.to());
+    var eId = Comparing.eId(place, Occurrences.of(text));
     var neighbour =
         Objects.requireNonNull(Neighbours.of(text, Set.of(eId)).get(eId), place.words());
     last =
         LastChange.of(
-            Comparing.act(),
-            Inclusions.listed(Comparing.act().timeline()),
-            Comparing.to(),
+            comparing.act(),
+            Inclusions.listed(comparing.act().timeline()),
+            comparing.to(),
             neighbour.tags());
   }
 
-  @Then("{act} last changed it: {word}, dated from {day}")
-  public void lastChangedBy(ActIdentifier act, String modification, LocalDate day) {
+  @Then("{act} last changed it: {modification}, dated from {day}")
+  public void lastChangedBy(ActIdentifier act, Modification modification, LocalDate day) {
     assertThat(last)
         .isInstanceOfSatisfying(
             LastChange.ByAct.class,
             by -> {
               assertThat(by.act()).isEqualTo(act);
-              assertThat(by.modification()).isEqualTo(Modification.of(modification));
+              assertThat(by.modification()).isEqualTo(modification);
               assertThat(day(by.applicability())).isEqualTo(day);
             });
   }

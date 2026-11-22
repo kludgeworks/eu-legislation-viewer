@@ -77,6 +77,11 @@ Feature: What counts as a difference, and how its edits show
       Given the texts of 692/2008 of 4 February 2015 and of 1 January 2016
       Then Annex I, point 2.8 does not differ
 
+    @known-bug @ISS-273
+    Example: A form blank at the end of a table cell
+      Given the texts of 692/2008 of 4 February 2015 and of 1 January 2016
+      Then Annex I, point 1.13.3 does not differ
+
   Rule: R-DIFF-05 A kept deletion is not words of the law
     The words that a consolidated text keeps of a deletion, marked as deleted, are not words of the
     law. So a word that an act deleted is deleted, though the text still keeps it.
@@ -100,6 +105,11 @@ Feature: What counts as a difference, and how its edits show
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 15 March 2021
       Then point 6.8.1.1(b) does not differ, though its footnote has another number
       And its footnote is footnote 5 in the earlier text and footnote 7 in the later text
+
+    @known-bug @ISS-271
+    Example: The indents of a footnote whose number changed
+      Given the texts of 692/2008 of 19 March 2013 and of 1 July 2013
+      Then no indent of a footnote is a difference of its own
 
   Rule: R-DIFF-07 A preamble that only one text has is not compared
     The Publications Office publishes some consolidated texts without the preamble, though no act
@@ -170,7 +180,12 @@ Feature: What counts as a difference, and how its edits show
     Example: A deleted paragraph before the points inserted in its place
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
       When the reader reads the difference at the changed point 11.4.2
-      Then it deletes "The results of testing shall be provided to the person and recorded, and may be taken into consideration as part of the recertification or reapproval process.", and inserts "(a)" just after it
+      Then it deletes
+        """
+        The results of testing shall be provided to the person and recorded, and may be taken into
+        consideration as part of the recertification or reapproval process.
+        """
+      And it inserts "(a)" just after it
 
     Example: A deleted point before the occurrence inserted in its place
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026

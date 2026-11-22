@@ -4,6 +4,16 @@ load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library")
 # The business rules, as Gherkin features: one feature per area of rules, in the folder of the
 # module whose domain applies them. Each module's rules suite (a Cucumber suite) runs its own, and
 # the wiki is written from the run (//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules)
+# How a feature is written:
+# - A Rule holds its identifier and its text (Rule: R-WHO-02 The tags of an occurrence), and has an
+#   example for each of its clauses, on real texts. Steps name places and acts as the pages do.
+# - A Background in a Rule gives the step that all the Rule's examples start from. "But" starts a
+#   negative step after a positive one. A quote longer than a line is a doc string (""").
+# - The tag @known-bug marks an example that states what the domain should do, which a filed bug
+#   makes fail today. Give it with the issue's number, @ISS-<n>: the wiki links to the issue
+#   (https://www.notion.so/ISS-<n>). Each module's rules run leaves these examples out, and its
+#   known-bugs run checks that each still fails: one that passes fails that run, because its bug
+#   is fixed, so the tag goes and the issue closes.
 java_library(
     name = "rules",
     testonly = True,

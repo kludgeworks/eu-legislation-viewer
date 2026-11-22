@@ -10,7 +10,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import java.util.Locale;
 import java.util.Objects;
 import org.jspecify.annotations.Nullable;
 
@@ -41,15 +40,15 @@ public class ModificationSteps {
         };
   }
 
-  @Given("a step by {string} whose tag says {word}")
-  public void step(String by, String modification) {
+  @Given("a step by {string} whose tag says {modification}")
+  public void step(String by, Modification modification) {
     this.by =
         switch (by) {
           case "an act" -> ACT;
           case "a corrigendum" -> CORRIGENDUM;
           default -> throw new IllegalArgumentException("Not an act or a corrigendum: " + by);
         };
-    tagged = Modification.of(modification);
+    tagged = modification;
   }
 
   @When("the step is the {word} step of the difference")
@@ -72,10 +71,9 @@ public class ModificationSteps {
                 .orElseThrow(() -> new IllegalArgumentException("Not a code of Cellar: " + code)));
   }
 
-  @Then("the modification is {word}")
-  public void modificationIs(String modification) {
-    assertThat(Objects.requireNonNull(found, "no modification found").word())
-        .isEqualTo(modification.toLowerCase(Locale.ROOT));
+  @Then("the modification is {modification}")
+  public void modificationIs(Modification modification) {
+    assertThat(found).isEqualTo(modification);
   }
 
   private Kind kind() {

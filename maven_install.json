@@ -20,6 +20,7 @@
     "io.cucumber:cucumber-bom": -1207484760,
     "io.cucumber:cucumber-java": -1759658435,
     "io.cucumber:cucumber-junit-platform-engine": 1021216378,
+    "io.cucumber:cucumber-picocontainer": -1038269925,
     "io.cucumber:gherkin": 745356612,
     "io.cucumber:messages": -1569296892,
     "io.cucumber:messages-ndjson": 1811082407,
@@ -158,6 +159,7 @@
     "io.cucumber:cucumber-java": -1042734355,
     "io.cucumber:cucumber-json-formatter": 1837595420,
     "io.cucumber:cucumber-junit-platform-engine": -1283067372,
+    "io.cucumber:cucumber-picocontainer": -14330584,
     "io.cucumber:cucumber-plugin": 1869356427,
     "io.cucumber:datatable": 1337473372,
     "io.cucumber:docstring": -2118596515,
@@ -284,6 +286,7 @@
     "org.ow2.asm:asm-commons": -836543625,
     "org.ow2.asm:asm-tree": -1580575629,
     "org.ow2.asm:asm-util": -1514090026,
+    "org.picocontainer:picocontainer": -592587358,
     "org.postgresql:postgresql": -1885180735,
     "org.reactivestreams:reactive-streams": 1281941191,
     "org.rnorth.duct-tape:duct-tape": -1059401544,
@@ -409,6 +412,7 @@
     "com.google.j2objc:j2objc-annotations:2.8": "com.google.j2objc:j2objc-annotations:3.1",
     "io.cucumber:cucumber-java": "io.cucumber:cucumber-java:8.1.0",
     "io.cucumber:cucumber-junit-platform-engine": "io.cucumber:cucumber-junit-platform-engine:8.1.0",
+    "io.cucumber:cucumber-picocontainer": "io.cucumber:cucumber-picocontainer:8.1.0",
     "io.cucumber:gherkin": "io.cucumber:gherkin:43.0.0",
     "io.cucumber:messages": "io.cucumber:messages:35.0.0",
     "io.cucumber:messages-ndjson": "io.cucumber:messages-ndjson:0.6.0",
@@ -795,6 +799,12 @@
     "io.cucumber:cucumber-junit-platform-engine": {
       "shasums": {
         "jar": "3f6d177ed621e8e193caa148c22f0debd05855e43879ab079812f1835dd1c4cf"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:cucumber-picocontainer": {
+      "shasums": {
+        "jar": "1704073d4cb484fee60fcd61898ae1277578622b0e1ae213c09342f40fd76262"
       },
       "version": "8.1.0"
     },
@@ -1553,6 +1563,12 @@
         "jar": "d5a23a677f31b8a7d2419895906e1fcbd9ac995beffb20944c8610c1bc377609"
       },
       "version": "9.11"
+    },
+    "org.picocontainer:picocontainer": {
+      "shasums": {
+        "jar": "bc66571fe98568b3f73b53cf3cf1a43c35f7256986f4ddc58c8334c052815137"
+      },
+      "version": "2.16"
     },
     "org.postgresql:postgresql": {
       "shasums": {
@@ -2409,6 +2425,11 @@
     "io.cucumber:cucumber-junit-platform-engine": [
       "io.cucumber:cucumber-core",
       "org.junit.platform:junit-platform-engine"
+    ],
+    "io.cucumber:cucumber-picocontainer": [
+      "io.cucumber:cucumber-core",
+      "org.apiguardian:apiguardian-api",
+      "org.picocontainer:picocontainer"
     ],
     "io.cucumber:cucumber-plugin": [
       "org.apiguardian:apiguardian-api",
@@ -4038,6 +4059,9 @@
     "io.cucumber:cucumber-junit-platform-engine": [
       "io.cucumber.junit.platform.engine"
     ],
+    "io.cucumber:cucumber-picocontainer": [
+      "io.cucumber.picocontainer"
+    ],
     "io.cucumber:cucumber-plugin": [
       "io.cucumber.plugin",
       "io.cucumber.plugin.event"
@@ -5627,6 +5651,24 @@
     ],
     "org.ow2.asm:asm-util": [
       "org.objectweb.asm.util"
+    ],
+    "org.picocontainer:picocontainer": [
+      "org.picocontainer",
+      "org.picocontainer.adapters",
+      "org.picocontainer.annotations",
+      "org.picocontainer.behaviors",
+      "org.picocontainer.classname",
+      "org.picocontainer.composers",
+      "org.picocontainer.containers",
+      "org.picocontainer.converters",
+      "org.picocontainer.injectors",
+      "org.picocontainer.lifecycle",
+      "org.picocontainer.monitors",
+      "org.picocontainer.parameters",
+      "org.picocontainer.paranamer",
+      "org.picocontainer.references",
+      "org.picocontainer.security",
+      "org.picocontainer.visitors"
     ],
     "org.postgresql:postgresql": [
       "org.postgresql",
@@ -7356,6 +7398,7 @@
       "io.cucumber:cucumber-java",
       "io.cucumber:cucumber-json-formatter",
       "io.cucumber:cucumber-junit-platform-engine",
+      "io.cucumber:cucumber-picocontainer",
       "io.cucumber:cucumber-plugin",
       "io.cucumber:datatable",
       "io.cucumber:docstring",
@@ -7482,6 +7525,7 @@
       "org.ow2.asm:asm-commons",
       "org.ow2.asm:asm-tree",
       "org.ow2.asm:asm-util",
+      "org.picocontainer:picocontainer",
       "org.postgresql:postgresql",
       "org.reactivestreams:reactive-streams",
       "org.rnorth.duct-tape:duct-tape",
@@ -7638,6 +7682,14 @@
     "io.cucumber:cucumber-junit-platform-engine": {
       "org.junit.platform.engine.TestEngine": [
         "io.cucumber.junit.platform.engine.CucumberTestEngine"
+      ]
+    },
+    "io.cucumber:cucumber-picocontainer": {
+      "io.cucumber.core.backend.BackendProviderService": [
+        "io.cucumber.picocontainer.PicoBackendProviderService"
+      ],
+      "io.cucumber.core.backend.ObjectFactory": [
+        "io.cucumber.picocontainer.PicoFactory"
       ]
     },
     "io.cucumber:messages-ndjson": {

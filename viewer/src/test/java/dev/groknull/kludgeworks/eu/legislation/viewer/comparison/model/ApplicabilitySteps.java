@@ -15,12 +15,8 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -31,11 +27,13 @@ import java.util.Set;
  * Applicability} and the catalogue's acts.
  */
 public class ApplicabilitySteps {
-  private static final DateTimeFormatter DAY =
-      DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK);
-
+  private final Comparing comparing;
   private final List<Amendment> amendments = new ArrayList<>();
   private Optional<Applicability> applicability = Optional.empty();
+
+  public ApplicabilitySteps(Comparing comparing) {
+    this.comparing = comparing;
+  }
 
   @Given("Cellar dates the change of {act} at the occurrence from {day}")
   public void cellarDay(ActIdentifier amending, LocalDate day) {
@@ -50,8 +48,8 @@ public class ApplicabilitySteps {
         Applicability.of(
             act(),
             Inclusions.listed(act().timeline()),
-            Comparing.from(),
-            Comparing.to(),
+            comparing.from(),
+            comparing.to(),
             amending,
             amendments,
             false);
@@ -80,23 +78,11 @@ public class ApplicabilitySteps {
   }
 
   @Then("it applies in parts")
-  public void appliesInParts(List<Map<String, String>> rows) {
+  public void appliesInParts(List<Applying.Start> starts) {
     assertThat(applying())
         .isInstanceOfSatisfying(
             Applying.InParts.class,
-            parts ->
-                assertThat(parts.starts())
-                    .containsExactlyElementsOf(
-                        rows.stream()
-                            .map(
-                                row -> {
-                                  var what = Objects.requireNonNull(row.get("what"));
-                                  return new Applying.Start(
-                                      LocalDate.parse(Objects.requireNonNull(row.get("from")), DAY),
-                                      what.equals("its entry into force"),
-                                      what.equals("a part"));
-                                })
-                            .toList()));
+            parts -> assertThat(parts.starts()).containsExactlyElementsOf(starts));
   }
 
   @Then("it applies from a day that {word} {int} of {act} sets")
@@ -158,7 +144,7 @@ public class ApplicabilitySteps {
     return (Applicability.Corrects) applicability.orElseThrow();
   }
 
-  private static Act act() {
-    return Comparing.act();
+  private Act act() {
+    return comparing.act();
   }
 }

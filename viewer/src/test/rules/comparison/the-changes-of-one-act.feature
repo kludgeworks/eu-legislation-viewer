@@ -24,13 +24,14 @@ Feature: The changes of one act
     the page of each of these acts lists the difference apart from its own changes, and names the
     other acts.
 
-    Example: The page of one of two acts
+    Background:
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
+
+    Example: The page of one of two acts
       When the reader opens the page of 2021/255
       Then 3 differences are listed apart, by this act or by "2019/413"
 
     Example: The page of the other act
-      Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
       When the reader opens the page of 2019/413
       Then 3 differences are listed apart, by this act or by "2021/255"
 
@@ -44,3 +45,9 @@ Feature: The changes of one act
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
       When the reader asks for the changes of 2019/413 at Chapter 5
       Then its changes are 2 differences in Attachment 5-A
+
+    @known-bug @ISS-272
+    Example: An act changed an attachment of a chapter that Cellar names with its text
+      Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
+      When the reader asks for the changes of 2019/413 at Chapter 3
+      Then its changes are 1 difference in Attachment 3-B

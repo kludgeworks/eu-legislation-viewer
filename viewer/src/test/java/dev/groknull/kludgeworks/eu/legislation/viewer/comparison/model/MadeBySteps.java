@@ -7,24 +7,20 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Appearance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
@@ -39,8 +35,7 @@ import org.jspecify.annotations.Nullable;
  * reach the domain only: {@link Attribution}, {@link Differ} and the catalogue's acts.
  */
 public class MadeBySteps {
-  private static final DateTimeFormatter DAY =
-      DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK);
+  private final Comparing comparing;
 
   private @Nullable Difference difference;
   private @Nullable Set<LocalDate> built;
@@ -48,16 +43,18 @@ public class MadeBySteps {
   private List<Amendment> amendments = List.of();
   private Attribution attribution = Attribution.NONE;
 
+  public MadeBySteps(Comparing comparing) {
+    this.comparing = comparing;
+  }
+
   @Given("the difference at the {word} {place}")
   public void difference(String kind, Place place) {
-    var earlier = Occurrences.of(Comparing.text(Comparing.from()));
-    var later = Occurrences.of(Comparing.text(Comparing.to()));
+    var earlier = Occurrences.of(comparing.earlier());
+    var later = Occurrences.of(comparing.later());
     var expected = Kind.valueOf(kind.toUpperCase(Locale.ROOT));
-    var eId = eId(place, expected == Kind.DELETED ? earlier : later);
+    var eId = Comparing.eId(place, expected == Kind.DELETED ? earlier : later);
     var found =
-        Differ.differences(Comparing.text(Comparing.from()), Comparing.text(Comparing.to()))
-            .differences()
-            .stream()
+        Differ.differences(comparing.earlier(), comparing.later()).differences().stream()
             .filter(each -> each.eId().equals(eId))
             .findFirst()
             .orElseThrow(() -> new AssertionError("No difference at " + place.words()));
@@ -65,10 +62,11 @@ public class MadeBySteps {
     difference = found;
     amendments =
         Attribution.amendmentsOf(
-            Comparing.act()
+            comparing
+                .act()
                 .amended(
-                    Comparing.from(),
-                    Comparing.to(),
+                    comparing.from(),
+                    comparing.to(),
                     List.copyOf(earlier.byEId().keySet()),
                     List.copyOf(later.byEId().keySet()),
                     Language.ENG),
@@ -79,28 +77,28 @@ public class MadeBySteps {
   public void whoMadeIt() {
     attribution =
         Attribution.of(
-            Comparing.act(),
-            Inclusions.listed(Comparing.act().timeline()),
-            Comparing.from(),
-            Comparing.to(),
+            comparing.act(),
+            Inclusions.listed(comparing.act().timeline()),
+            comparing.from(),
+            comparing.to(),
             Objects.requireNonNull(difference, "no difference given"),
             amendments);
   }
 
   @Then("the tags of the difference are")
-  public void theTagsOfTheDifferenceAre(List<Map<String, String>> rows) {
-    var later = Occurrences.of(Comparing.text(Comparing.to()));
+  public void theTagsOfTheDifferenceAre(List<Types.TagRow> rows) {
+    var later = Occurrences.of(comparing.later());
     assertThat(Objects.requireNonNull(difference, "no difference given").tags())
         .containsExactlyElementsOf(
             rows.stream()
                 .map(
-                    row -> {
-                      var from = row.get("taken from");
-                      return new Difference.Tag(
-                          Cited.act(Objects.requireNonNull(row.get("act"))).celex(),
-                          Modification.of(Objects.requireNonNull(row.get("modification"))),
-                          from == null ? null : eId(new Place(from), later));
-                    })
+                    row ->
+                        new Difference.Tag(
+                            row.act().celex(),
+                            row.modification(),
+                            row.takenFrom() == null
+                                ? null
+                                : Comparing.eId(Objects.requireNonNull(row.takenFrom()), later)))
                 .toList());
   }
 
@@ -110,30 +108,14 @@ public class MadeBySteps {
   }
 
   @Then("the steps are")
-  public void theStepsAre(List<Map<String, String>> rows) {
+  public void theStepsAre(List<Types.StepRow> rows) {
     assertThat(
             attribution.steps().stream()
                 .map(
                     step ->
-                        List.of(
-                            step.version().date().format(DAY),
-                            step.modification().word(),
-                            String.join(
-                                " and ", step.acts().stream().map(ActIdentifier::cited).toList())))
+                        new Types.StepRow(step.version().date(), step.modification(), step.acts()))
                 .toList())
-        .containsExactlyElementsOf(
-            rows.stream()
-                .map(
-                    row ->
-                        List.of(
-                            Objects.requireNonNull(row.get("text of")),
-                            Objects.requireNonNull(row.get("modification")),
-                            String.join(
-                                " and ",
-                                Cited.acts(Objects.requireNonNull(row.get("acts"))).stream()
-                                    .map(ActIdentifier::cited)
-                                    .toList())))
-                .toList());
+        .containsExactlyElementsOf(rows);
   }
 
   @Given("only the texts of {days} are built")
@@ -146,9 +128,9 @@ public class MadeBySteps {
     var eId = Objects.requireNonNull(difference, "no difference given").eId();
     appeared =
         Appearance.of(
-                Comparing.act().timeline(),
-                Comparing.from(),
-                Comparing.to(),
+                comparing.act().timeline(),
+                comparing.from(),
+                comparing.to(),
                 Set.of(eId),
                 this::differing)
             .get(eId);
@@ -159,7 +141,7 @@ public class MadeBySteps {
     assertThat(attribution.steps()).isEmpty();
     assertThat(
             Attribution.unnamed(
-                Inclusions.listed(Comparing.act().timeline()), Comparing.from(), Comparing.to()))
+                Inclusions.listed(comparing.act().timeline()), comparing.from(), comparing.to()))
         .isEqualTo(Attribution.NONE);
   }
 
@@ -168,7 +150,7 @@ public class MadeBySteps {
     var version = Objects.requireNonNull(appeared, "the change appears in no text");
     assertThat(version.date()).isEqualTo(day);
     assertThat(
-            Inclusions.listed(Comparing.act().timeline()).of(version).stream()
+            Inclusions.listed(comparing.act().timeline()).of(version).stream()
                 .map(ActIdentifier::cited)
                 .toList())
         .isEqualTo(Cited.acts(acts).stream().map(ActIdentifier::cited).toList());
@@ -180,7 +162,8 @@ public class MadeBySteps {
    * has its sample text, and if the scenario does not limit the built texts to others.
    */
   private Optional<Set<String>> differing(Version version) {
-    return Comparing.act()
+    return comparing
+        .act()
         .timeline()
         .predecessor(version)
         .filter(this::isBuilt)
@@ -213,10 +196,10 @@ public class MadeBySteps {
     assertThat(step.inPart()).contains(act);
     var applicability =
         Applicability.of(
-                Comparing.act(),
-                Inclusions.listed(Comparing.act().timeline()),
-                Comparing.from(),
-                Comparing.to(),
+                comparing.act(),
+                Inclusions.listed(comparing.act().timeline()),
+                comparing.from(),
+                comparing.to(),
                 act,
                 amendments,
                 true)
@@ -228,16 +211,5 @@ public class MadeBySteps {
                 assertThat(applies.applying())
                     .isInstanceOfSatisfying(
                         Applying.From.class, from -> assertThat(from.day()).isEqualTo(day)));
-  }
-
-  /** Returns the eId of the one occurrence of {@code text} that is {@code place}. */
-  private static String eId(Place place, Occurrences text) {
-    var found =
-        Location.of(place)
-            .in(List.copyOf(text.byEId().keySet()))
-            .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
-    assertThat(found.eIds()).as(place.words()).hasSize(1);
-    assertThat(found.within()).as(place.words()).isFalse();
-    return found.eIds().getFirst();
   }
 }

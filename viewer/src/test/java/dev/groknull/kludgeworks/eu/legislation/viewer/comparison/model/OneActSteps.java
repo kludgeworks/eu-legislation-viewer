@@ -30,10 +30,16 @@ import org.jspecify.annotations.Nullable;
  * with who made it ({@link Attribution#of}). The steps reach the domain only.
  */
 public class OneActSteps {
+  private final Comparing comparing;
+
   private @Nullable Inclusion inclusion;
   private List<Summary.Attributed> unnamed = List.of();
   private @Nullable Alternatives alternatives;
   private List<Difference> changes = List.of();
+
+  public OneActSteps(Comparing comparing) {
+    this.comparing = comparing;
+  }
 
   @When("the comparison is limited to {act}")
   public void limitedTo(ActIdentifier act) {
@@ -49,7 +55,7 @@ public class OneActSteps {
   @When("the reader asks who made the differences that no act is named for")
   public void unnamed() {
     unnamed =
-        attributed(Comparing.from(), Comparing.to()).stream()
+        attributed(comparing.from(), comparing.to()).stream()
             .filter(each -> each.attribution().acts().isEmpty())
             .toList();
   }
@@ -104,36 +110,37 @@ public class OneActSteps {
   }
 
   /** Returns the texts of the changes of {@code act} in the comparison. */
-  private static Inclusion inclusion(ActIdentifier act) {
+  private Inclusion inclusion(ActIdentifier act) {
     return Inclusion.of(
-            Comparing.act().timeline(),
-            Inclusions.listed(Comparing.act().timeline()),
-            Comparing.from(),
-            Comparing.to(),
+            comparing.act().timeline(),
+            Inclusions.listed(comparing.act().timeline()),
+            comparing.from(),
+            comparing.to(),
             act)
         .orElseThrow(() -> new AssertionError("No text includes " + act.cited()));
   }
 
   /** Returns each difference between the texts of {@code from} and {@code to}, with who made it. */
-  private static List<Summary.Attributed> attributed(Version from, Version to) {
+  private List<Summary.Attributed> attributed(Version from, Version to) {
     var earlier = Comparing.text(from);
     var later = Comparing.text(to);
     var amended =
-        Comparing.act()
+        comparing
+            .act()
             .amended(
                 from,
                 to,
                 List.copyOf(Occurrences.of(earlier).byEId().keySet()),
                 List.copyOf(Occurrences.of(later).byEId().keySet()),
                 Language.ENG);
-    var included = Inclusions.listed(Comparing.act().timeline());
+    var included = Inclusions.listed(comparing.act().timeline());
     return Differ.differences(earlier, later).differences().stream()
         .map(
             difference ->
                 new Summary.Attributed(
                     difference,
                     Attribution.of(
-                        Comparing.act(),
+                        comparing.act(),
                         included,
                         from,
                         to,

@@ -4,20 +4,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -36,32 +31,41 @@ public class PairingSteps {
   /** The CELEX of the Council Resolution on a Model Agreement for a Joint Investigation Team. */
   private static final String RESOLUTION = "32017G0119";
 
-  private @Nullable Element earlier;
-  private @Nullable Element later;
+  private final Comparing comparing;
   private @Nullable Difference difference;
+
+  public PairingSteps(Comparing comparing) {
+    this.comparing = comparing;
+  }
 
   @Given(
       "the texts of the Council Resolution on a Model Agreement for a Joint Investigation Team"
           + " of {day} and of {day}")
   public void resolution(LocalDate from, LocalDate to) {
-    earlier = sample(RESOLUTION, from);
-    later = sample(RESOLUTION, to);
+    comparing.texts(
+        Comparing.consolidated(new ActIdentifier(RESOLUTION), from),
+        Comparing.consolidated(new ActIdentifier(RESOLUTION), to));
   }
 
   @Then("{place} of the later text pairs with {place} of the earlier text")
   public void pairs(Place is, Place was) {
-    var before = Occurrences.of(earlier());
-    var after = Occurrences.of(later());
-    var paired = Pairing.of(before, after).was(Objects.requireNonNull(after.get(eId(is, after))));
+    var before = Occurrences.of(comparing.earlier());
+    var after = Occurrences.of(comparing.later());
+    var paired =
+        Pairing.of(before, after).was(Objects.requireNonNull(after.get(Comparing.eId(is, after))));
     assertThat(paired).as(is.words()).isNotNull();
-    assertThat(Objects.requireNonNull(paired).eId()).as(is.words()).isEqualTo(eId(was, before));
+    assertThat(Objects.requireNonNull(paired).eId())
+        .as(is.words())
+        .isEqualTo(Comparing.eId(was, before));
   }
 
   @Then("{place} of the later text has no pair in the earlier text")
   public void pairsWithNone(Place is) {
-    var before = Occurrences.of(earlier());
-    var after = Occurrences.of(later());
-    assertThat(Pairing.of(before, after).was(Objects.requireNonNull(after.get(eId(is, after)))))
+    var before = Occurrences.of(comparing.earlier());
+    var after = Occurrences.of(comparing.later());
+    assertThat(
+            Pairing.of(before, after)
+                .was(Objects.requireNonNull(after.get(Comparing.eId(is, after)))))
         .as(is.words())
         .isNull();
   }
@@ -69,10 +73,10 @@ public class PairingSteps {
   @When("the reader looks at the difference at the {word} {place}")
   public void difference(String kind, Place place) {
     var expected = Kind.valueOf(kind.toUpperCase(Locale.ROOT));
-    var text = Occurrences.of(expected == Kind.DELETED ? earlier() : later());
-    var eId = eId(place, text);
+    var text = Occurrences.of(expected == Kind.DELETED ? comparing.earlier() : comparing.later());
+    var eId = Comparing.eId(place, text);
     difference =
-        Differ.differences(earlier(), later()).differences().stream()
+        Differ.differences(comparing.earlier(), comparing.later()).differences().stream()
             .filter(each -> each.eId().equals(eId))
             .findFirst()
             .orElseThrow(() -> new AssertionError("No difference at " + place.words()));
@@ -82,7 +86,7 @@ public class PairingSteps {
   @Then("the point has the same place in both texts")
   public void sameEId() {
     var shown = Objects.requireNonNull(difference, "no difference given");
-    assertThat(Occurrences.of(earlier()).get(shown.eId())).as(shown.eId()).isNotNull();
+    assertThat(Occurrences.of(comparing.earlier()).get(shown.eId())).as(shown.eId()).isNotNull();
   }
 
   @Then("its {word} show, in order: {string}")
@@ -103,11 +107,11 @@ public class PairingSteps {
         .containsExactly(expected.split(", "));
   }
 
-  @Then("its tags name {act}, which {word} it")
-  public void tagged(ActIdentifier act, String modification) {
+  @Then("its tags name {act}, which {modification} it")
+  public void tagged(ActIdentifier act, Modification modification) {
     assertThat(Objects.requireNonNull(difference, "no difference given").tags())
         .extracting(Difference.Tag::act, Difference.Tag::modification)
-        .contains(org.assertj.core.groups.Tuple.tuple(act.celex(), Modification.of(modification)));
+        .contains(org.assertj.core.groups.Tuple.tuple(act.celex(), modification));
   }
 
   /** Returns what a block or a row shows: inserted, deleted, changed or the same. */
@@ -148,36 +152,5 @@ public class PairingSteps {
       return;
     }
     element.children().forEach(child -> collect(child, name, found));
-  }
-
-  private Element earlier() {
-    return earlier != null ? earlier : Comparing.text(Comparing.from());
-  }
-
-  private Element later() {
-    return later != null ? later : Comparing.text(Comparing.to());
-  }
-
-  /** Returns the sample text of the act {@code celex} of {@code day}. */
-  private static Element sample(String celex, LocalDate day) {
-    var name =
-        "0" + celex.substring(1) + "-" + day.format(DateTimeFormatter.BASIC_ISO_DATE) + ".xml";
-    var path =
-        LegalTexts.samples()
-            .filter(each -> each.endsWith("/" + name))
-            .findFirst()
-            .orElseThrow(() -> new AssertionError("The converter has no sample text " + name));
-    return Decoder.element(Encoder.encode(LegalTexts.sample(path)));
-  }
-
-  /** Returns the eId of the one occurrence of {@code text} that is {@code place}. */
-  private static String eId(Place place, Occurrences text) {
-    var found =
-        Location.of(place)
-            .in(List.copyOf(text.byEId().keySet()))
-            .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
-    assertThat(found.eIds()).as(place.words()).hasSize(1);
-    assertThat(found.within()).as(place.words()).isFalse();
-    return found.eIds().getFirst();
   }
 }

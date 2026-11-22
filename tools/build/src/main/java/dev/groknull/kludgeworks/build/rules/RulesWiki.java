@@ -12,7 +12,9 @@ import io.cucumber.messages.types.GherkinDocument;
 import io.cucumber.messages.types.Pickle;
 import io.cucumber.messages.types.Rule;
 import io.cucumber.messages.types.Scenario;
+import io.cucumber.messages.types.Step;
 import io.cucumber.messages.types.TableRow;
+import io.cucumber.messages.types.Tag;
 import io.cucumber.messages.types.TestCase;
 import io.cucumber.messages.types.TestCaseStarted;
 import io.cucumber.messages.types.TestStepResultStatus;
@@ -26,6 +28,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.TreeMap;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -43,12 +46,26 @@ import org.jspecify.annotations.Nullable;
  * <p>It writes no page if a rule has no example, if an example is not in a rule, if a rule has no
  * identifier (such as R-WHO-02), or if two rules have the same identifier.
  *
+ * <p>A page shows a rule's background, its examples' doc strings, and the tags of the rule and of
+ * each example. The tag {@code @known-bug} marks an example that shows a filed bug. With the tag of
+ * the issue's number, such as {@code @ISS-270}, the page links to the issue: Notion opens a page by
+ * its prefixed unique id at {@code https://www.notion.so/ISS-270}.
+ *
  * <pre>{@code
  * RulesWiki --out DIR [--released DIR --version v2026.11.17] [--commit SHA] RUN.ndjson...
  * }</pre>
  */
 public final class RulesWiki {
   private static final Pattern IDENTIFIER = Pattern.compile("^(R-[A-Z]+-\\d+)\\s+(.+)$");
+
+  /** The tag of an example that shows a filed bug. */
+  static final String KNOWN_BUG = "@known-bug";
+
+  /** The tag of an issue's number in the Issues database: {@code @ISS-270}. */
+  private static final Pattern ISSUE = Pattern.compile("^@(ISS-\\d+)$");
+
+  /** Where Notion opens a page by its prefixed unique id. */
+  private static final String NOTION = "https://www.notion.so/";
 
   private RulesWiki() {}
 
@@ -250,6 +267,7 @@ public final class RulesWiki {
   /** The text of a rule, line by line, to compare two versions of it. */
   static List<String> lines(Rule rule) {
     var lines = new ArrayList<String>();
+    tagLine(rule.getTags()).ifPresent(lines::add);
     lines.add("Rule: " + rule.getName());
     // The description as one paragraph: a change of where its lines break is not a change
     var description = paragraph(rule.getDescription());
@@ -258,18 +276,44 @@ public final class RulesWiki {
     }
     for (var child : rule.getChildren()) {
       child
+          .getBackground()
+          .ifPresent(
+              background -> {
+                lines.add("");
+                lines.add(background.getKeyword() + ":");
+                steps(background.getSteps(), lines);
+              });
+      child
           .getScenario()
           .ifPresent(
               scenario -> {
                 lines.add("");
+                tagLine(scenario.getTags()).ifPresent(lines::add);
                 lines.add(scenario.getKeyword() + ": " + scenario.getName());
-                for (var step : scenario.getSteps()) {
-                  lines.add("  " + step.getKeyword().strip() + " " + step.getText());
-                  step.getDataTable().ifPresent(table -> rows(table).forEach(lines::add));
-                }
+                steps(scenario.getSteps(), lines);
               });
     }
     return lines;
+  }
+
+  private static void steps(List<Step> steps, List<String> lines) {
+    for (var step : steps) {
+      lines.add("  " + step.getKeyword().strip() + " " + step.getText());
+      step.getDataTable().ifPresent(table -> rows(table).forEach(lines::add));
+      step.getDocString()
+          .ifPresent(
+              doc -> {
+                lines.add("    \"\"\"");
+                doc.getContent().lines().map(line -> "    " + line).forEach(lines::add);
+                lines.add("    \"\"\"");
+              });
+    }
+  }
+
+  private static Optional<String> tagLine(List<Tag> tags) {
+    return tags.isEmpty()
+        ? Optional.empty()
+        : Optional.of(tags.stream().map(Tag::getName).collect(Collectors.joining(" ")));
   }
 
   private static Stream<String> rows(DataTable table) {
@@ -286,7 +330,7 @@ public final class RulesWiki {
   /** A page and the number of its rules that changed since the release. */
   record Page(String markdown, int changes) {}
 
-  private static Page page(
+  static Page page(
       GherkinDocument document,
       Run run,
       @Nullable Map<String, Text> before,
@@ -314,8 +358,18 @@ public final class RulesWiki {
         state = "";
       }
       body.append("## ").append(text.id()).append(" · ").append(text.title()).append(state);
-      body.append("\n\n").append(paragraph(text.rule().getDescription())).append("\n\n");
+      body.append("\n\n");
+      tags(body, text.rule().getTags());
+      body.append(paragraph(text.rule().getDescription())).append("\n\n");
       for (var child : text.rule().getChildren()) {
+        child
+            .getBackground()
+            .ifPresent(
+                background -> {
+                  body.append("**").append(background.getKeyword()).append("**\n\n");
+                  steps(body, background.getSteps());
+                  body.append('\n');
+                });
         child.getScenario().ifPresent(scenario -> example(body, scenario, run));
       }
       if (old != null && !old.lines().equals(text.lines())) {
@@ -382,12 +436,57 @@ public final class RulesWiki {
                     ? "✓"
                     : "✗ " + result.name().toLowerCase(java.util.Locale.ROOT))
         .append("\n\n");
-    for (var step : scenario.getSteps()) {
+    tags(md, scenario.getTags());
+    steps(md, scenario.getSteps());
+    md.append('\n');
+  }
+
+  private static void steps(StringBuilder md, List<Step> steps) {
+    for (var step : steps) {
       md.append("- **").append(step.getKeyword().strip()).append("** ").append(step.getText());
       md.append('\n');
       step.getDataTable().ifPresent(table -> table(md, table.getRows()));
+      step.getDocString()
+          .ifPresent(
+              doc -> {
+                md.append('\n');
+                doc.getContent()
+                    .lines()
+                    .forEach(line -> md.append("  > ").append(line).append('\n'));
+                md.append('\n');
+              });
     }
-    md.append('\n');
+  }
+
+  /**
+   * Writes the tags, if there are any: a known bug as a warning, with a link to its issue, and any
+   * other tag as it is.
+   */
+  private static void tags(StringBuilder md, List<Tag> tags) {
+    if (tags.isEmpty()) {
+      return;
+    }
+    var names = tags.stream().map(Tag::getName).toList();
+    var issue =
+        names.stream()
+            .map(ISSUE::matcher)
+            .filter(java.util.regex.Matcher::matches)
+            .map(matched -> matched.group(1))
+            .map(number -> "[" + number + "](" + NOTION + number + ")")
+            .findFirst();
+    if (names.contains(KNOWN_BUG)) {
+      md.append("> ⚠ **Known bug.** This example shows a bug that is filed")
+          .append(issue.map(link -> ": " + link).orElse(""))
+          .append(".\n\n");
+    }
+    var others =
+        names.stream()
+            .filter(name -> !name.equals(KNOWN_BUG) && !ISSUE.matcher(name).matches())
+            .map(name -> "`" + name + "`")
+            .toList();
+    if (!others.isEmpty()) {
+      md.append("Tags: ").append(String.join(" ", others)).append("\n\n");
+    }
   }
 
   private static void table(StringBuilder md, List<TableRow> rows) {

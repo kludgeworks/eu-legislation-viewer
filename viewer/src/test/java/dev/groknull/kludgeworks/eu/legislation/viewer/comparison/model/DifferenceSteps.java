@@ -4,20 +4,15 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.LegalTexts;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -31,33 +26,40 @@ import org.jspecify.annotations.Nullable;
  * steps reach the comparison's domain only: {@link Differ} and {@link Occurrences}.
  */
 public class DifferenceSteps {
-  private @Nullable Element earlier;
-  private @Nullable Element later;
+  private final Comparing comparing;
   private Differ.@Nullable Compared compared;
   private @Nullable Difference difference;
 
+  /** The words that the last step "it deletes" gave. */
+  private @Nullable String deleted;
+
+  public DifferenceSteps(Comparing comparing) {
+    this.comparing = comparing;
+  }
+
   @Given("the texts of {act} of {day} and of {day}")
   public void texts(ActIdentifier act, LocalDate from, LocalDate to) {
-    earlier = sample(consolidated(act, from));
-    later = sample(consolidated(act, to));
+    comparing.texts(Comparing.consolidated(act, from), Comparing.consolidated(act, to));
   }
 
   @Given("the texts of {act} as adopted and of {day}")
   public void adopted(ActIdentifier act, LocalDate to) {
-    earlier = sample(act.celex());
-    later = sample(consolidated(act, to));
+    comparing.texts(Comparing.sample(act.celex()), Comparing.consolidated(act, to));
   }
 
   @Then("{place} does not differ")
   public void doesNotDiffer(Place place) {
-    var eId = eId(place, Occurrences.of(later()));
+    var eId = Comparing.eId(place, Occurrences.of(comparing.later()));
     assertThat(compared().differences()).extracting(Difference::eId).doesNotContain(eId);
   }
 
   @When("the reader reads the difference at the {word} {place}")
   public void reads(String kind, Place place) {
     var expected = Kind.valueOf(kind.toUpperCase(Locale.ROOT));
-    var eId = eId(place, Occurrences.of(expected == Kind.DELETED ? earlier() : later()));
+    var eId =
+        Comparing.eId(
+            place,
+            Occurrences.of(expected == Kind.DELETED ? comparing.earlier() : comparing.later()));
     difference =
         compared().differences().stream()
             .filter(each -> each.eId().equals(eId))
@@ -87,15 +89,28 @@ public class DifferenceSteps {
     assertThat(edited(DELETED)).as("the deleted words").contains(said(words));
   }
 
+  @Then("it deletes")
+  public void deletesPassage(String words) {
+    deleted = words;
+    deletes(words);
+  }
+
   @Then("it deletes {string}, and inserts {string} just after it")
   public void deletesThenInserts(String deleted, String inserted) {
+    this.deleted = deleted;
+    insertsJustAfter(inserted);
+  }
+
+  @Then("it inserts {string} just after it")
+  public void insertsJustAfter(String inserted) {
+    var before = Objects.requireNonNull(deleted, "no deleted words given");
     var runs = runs(difference().shown());
     var found = false;
     for (var i = 0; i + 1 < runs.size(); i++) {
       var run = runs.get(i);
       var next = runs.get(i + 1);
       if (run.mark().equals(DELETED)
-          && said(run.text()).equals(said(deleted))
+          && said(run.text()).equals(said(before))
           && next.mark().equals(INSERTED)
           && said(next.text()).startsWith(said(inserted))) {
         found = true;
@@ -103,7 +118,7 @@ public class DifferenceSteps {
       }
     }
     assertThat(found)
-        .as("\"%s\" deleted, then \"%s\" inserted, in %s", deleted, inserted, runs)
+        .as("\"%s\" deleted, then \"%s\" inserted, in %s", before, inserted, runs)
         .isTrue();
   }
 
@@ -139,10 +154,10 @@ public class DifferenceSteps {
   @Then("its footnote is footnote {int} in the earlier text and footnote {int} in the later text")
   public void footnoteNumbers(int before, int after) {
     var place = Objects.requireNonNull(shownAt, "no place given");
-    assertThat(markers(Occurrences.of(earlier()), place))
+    assertThat(markers(Occurrences.of(comparing.earlier()), place))
         .as("in the earlier text")
         .containsExactly(String.valueOf(before));
-    assertThat(markers(Occurrences.of(later()), place))
+    assertThat(markers(Occurrences.of(comparing.later()), place))
         .as("in the later text")
         .containsExactly(String.valueOf(after));
   }
@@ -181,7 +196,7 @@ public class DifferenceSteps {
 
   @Then("each occurrence of the later text is placed once, in the order of the text")
   public void placedOnce() {
-    var occurrences = Occurrences.of(later());
+    var occurrences = Occurrences.of(comparing.later());
     var placed = new ArrayList<String>();
     for (var each : compared().differences()) {
       placed(each.context(), occurrences, placed);
@@ -224,6 +239,15 @@ public class DifferenceSteps {
     return inside;
   }
 
+  @Then("no indent of a footnote is a difference of its own")
+  public void noFootnoteIndentDiffers() {
+    // A footnote compares with the occurrence that refers to it (R-DIFF-06), so nothing in a
+    // footnote is a difference of its own. A footnote's eId is its place, note_N.
+    assertThat(compared().differences())
+        .extracting(Difference::eId)
+        .noneMatch(eId -> eId.startsWith("note_"));
+  }
+
   @Then("the later text has no preamble")
   public void noPreamble() {
     assertThat(compared().withoutPreamble()).isEqualTo(Side.LATER);
@@ -248,7 +272,9 @@ public class DifferenceSteps {
     assertThat(at + 1).as("a difference after it").isLessThan(differences.size());
     var after = differences.get(at + 1);
     assertThat(after.kind()).as(after.eId()).isEqualTo(Kind.INSERTED);
-    assertThat(after.parent()).as(after.eId()).isEqualTo(eId(place, Occurrences.of(later())));
+    assertThat(after.parent())
+        .as(after.eId())
+        .isEqualTo(Comparing.eId(place, Occurrences.of(comparing.later())));
   }
 
   /**
@@ -340,7 +366,7 @@ public class DifferenceSteps {
    * to.
    */
   private static List<String> markers(Occurrences text, Place place) {
-    var occurrence = Objects.requireNonNull(text.get(eId(place, text)), place.words());
+    var occurrence = Objects.requireNonNull(text.get(Comparing.eId(place, text)), place.words());
     return occurrence.footnotes().stream()
         .map(footnote -> Objects.requireNonNullElse(footnote.attribute("marker"), ""))
         .toList();
@@ -348,45 +374,12 @@ public class DifferenceSteps {
 
   private Differ.Compared compared() {
     if (compared == null) {
-      compared = Differ.differences(earlier(), later());
+      compared = Differ.differences(comparing.earlier(), comparing.later());
     }
     return Objects.requireNonNull(compared);
   }
 
   private Difference difference() {
     return Objects.requireNonNull(difference, "no difference read");
-  }
-
-  private Element earlier() {
-    return earlier != null ? earlier : Comparing.text(Comparing.from());
-  }
-
-  private Element later() {
-    return later != null ? later : Comparing.text(Comparing.to());
-  }
-
-  private static String consolidated(ActIdentifier act, LocalDate day) {
-    return "0" + act.celex().substring(1) + "-" + day.format(DateTimeFormatter.BASIC_ISO_DATE);
-  }
-
-  /** Returns the sample text {@code name}, as the converter builds it. */
-  private static Element sample(String name) {
-    var path =
-        LegalTexts.samples()
-            .filter(each -> each.endsWith("/" + name + ".xml"))
-            .findFirst()
-            .orElseThrow(() -> new AssertionError("The converter has no sample text " + name));
-    return Decoder.element(Encoder.encode(LegalTexts.sample(path)));
-  }
-
-  /** Returns the eId of the one occurrence of {@code text} that is {@code place}. */
-  private static String eId(Place place, Occurrences text) {
-    var found =
-        Location.of(place)
-            .in(List.copyOf(text.byEId().keySet()))
-            .orElseThrow(() -> new AssertionError("The text has no " + place.words()));
-    assertThat(found.eIds()).as(place.words()).hasSize(1);
-    assertThat(found.within()).as(place.words()).isFalse();
-    return found.eIds().getFirst();
   }
 }
