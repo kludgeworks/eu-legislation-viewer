@@ -304,7 +304,7 @@
             <occurrence eId="art_6/par_1" kind="paragraph">
                <num>
                   <changed amendingAct="32002R2370R(01)"
-                           action="replaced"
+                           modification="replaced"
                            location="LI:0;EL:1"
                            tagId="O000001M001000">
                      <t v="1."/>
@@ -312,7 +312,7 @@
                </num>
                <p>
                   <changed amendingAct="32002R2370R(01)"
-                           action="replaced"
+                           modification="replaced"
                            location="LI:0;EL:1"
                            tagId="O000001M001000">
                      <t v="Member States shall submit their applications for the reimbursement of the expenditure by "/>
@@ -361,7 +361,7 @@
             </num>
             <p>
                <changed amendingAct="32002R2370R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;EL:2"
                         tagId="O000001M002000">
                   <t v="For the period 2004 to 2006 the necessary financial resources for financing the emergency Community measure for scrapping fishing vessels"/>

@@ -1,5 +1,5 @@
 -- SPDX-License-Identifier: MIT
--- Emptied for: the converter's format, note is now footnote (2026-11-22).
+-- Emptied for: the converter's format, a tag's action is now its modification (2026-11-22).
 -- Flyway runs this again each time its text changes. To empty the catalogue again, change the line
 -- above to say why. Every act is then looked up again, and every text converted again. The
 -- sequences go on, so no identity is used again (the HTML cache keys on the identities of texts).

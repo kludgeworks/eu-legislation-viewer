@@ -263,7 +263,7 @@
         <footnotes>
           <footnote eId="note_1" marker="1" kind="table">
             <p>
-              <changed amendingAct="32015R2265R(01)" action="replaced" location="LI:0;EL:3" tagId="O1">
+              <changed amendingAct="32015R2265R(01)" modification="replaced" location="LI:0;EL:3" tagId="O1">
                 <t v="Products under CN codes qualify"/>
               </changed>
               <t v=" for the quota"/>
@@ -348,12 +348,12 @@
   <x:scenario label="A REPEALED tag">
     <x:context mode="block" xmlns=""><P><?CLG.MDFO ID="O1" ACTION="REPEALED" ACTIVE.DOC="398D0441"?>gone<?CLG.MDFC IDREF="O1"?></P></x:context>
     <x:expect label="is a deletion, with the amending act's CELEX expanded"
-              test="$x:result/self::*:deleted/*:tag/@action = 'deleted' and $x:result/self::*:deleted/*:tag/@amendingAct = '31998D0441'"/>
+              test="$x:result/self::*:deleted/*:tag/@modification = 'deleted' and $x:result/self::*:deleted/*:tag/@amendingAct = '31998D0441'"/>
   </x:scenario>
 
   <x:scenario label="An ADDED tag">
     <x:context mode="block" xmlns=""><P>keep <?CLG.MDFO ID="O1" ACTION="ADDED" ACTIVE.DOC="32002R1534"?>new<?CLG.MDFC IDREF="O1"?></P></x:context>
-    <x:expect label="is an insertion" test="$x:result//*:changed/@action = 'inserted'"/>
+    <x:expect label="is an insertion" test="$x:result//*:changed/@modification = 'inserted'"/>
   </x:scenario>
 
   <!-- ============================================================ out of scope -->

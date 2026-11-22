@@ -158,7 +158,7 @@
                <t v="‘"/>
                <t v="Other products referred to in Article 1, when combined in a sales package "/>
                <changed amendingAct="32005R0006"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:2"
                         tagId="O001001M001000">
                   <t v="of a net weight of three kilograms or less"/>

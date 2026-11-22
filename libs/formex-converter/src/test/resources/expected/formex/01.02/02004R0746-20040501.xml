@@ -234,7 +234,7 @@
             </occurrence>
             <occurrence eId="art_1/pnt_2" kind="point" numbered="true">
                <tag amendingAct="32004R0746R(01)"
-                    action="replaced"
+                    modification="replaced"
                     location="TO"
                     tagId="O000001M001000"/>
                <num>

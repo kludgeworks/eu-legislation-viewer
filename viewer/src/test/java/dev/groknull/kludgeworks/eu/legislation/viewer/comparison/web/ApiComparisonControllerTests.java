@@ -20,6 +20,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
@@ -225,7 +226,7 @@ class ApiComparisonControllerTests {
         "anx/pnt_1.2",
         null,
         List.of(),
-        List.of(new Tag("32019R0103", "replaced", null)),
+        List.of(new Tag("32019R0103", Modification.REPLACED, null)),
         List.of(),
         null);
   }

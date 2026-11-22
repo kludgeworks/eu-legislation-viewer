@@ -187,7 +187,7 @@
          <occurrence eId="art_3/unp_2" kind="paragraph">
             <p>
                <deleted amendingAct="32004R1476"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:1"
                         tagId="O001001M001000">
                   <t v="At the request of the interested party, "/>
@@ -202,7 +202,7 @@
          <occurrence eId="art_3/unp_3" kind="paragraph">
             <p>
                <deleted amendingAct="32004R1476"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:1"
                         tagId="O001001M002000">
                   <t v="At the request of the interested party, "/>

@@ -462,7 +462,7 @@
             </subheading>
             <occurrence eId="art_2" kind="article" rank="3">
                <tag amendingAct="32004R0318"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:1"
                     tagId="O006001M001000"/>
                <num>
@@ -503,7 +503,7 @@
                   </num>
                   <p>
                      <changed amendingAct="32001R0213"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:20;PT:1"
                               tagId="O003001M001000">
                         <t v="The competent authorities shall check the quality of butter using the methods described in Annex I and on the basis of samples taken in accordance with the rules set out in Annex IV."/>
@@ -528,7 +528,7 @@
                </occurrence>
                <occurrence eId="art_4/par_3" kind="paragraph">
                   <tag amendingAct="32004R0318"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:2"
                        tagId="O006001M002000"/>
                   <num>
@@ -790,7 +790,7 @@
                   <occurrence eId="art_6/par_1/sub_1" kind="subparagraph">
                      <p>
                         <tag amendingAct="32004R0318"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:1;PT:3"
                              tagId="O006001M003000"/>
                         <t v="Where the butter is offered to intervention in a Member State other than that in which it was produced, buying-in shall be subject to the presentation of a certificate supplied, not later than 45 days after the day on which the offer was received, by the competent agency of the Member State of production."/>
@@ -900,7 +900,7 @@
                   </occurrence>
                   <occurrence eId="art_8/par_2/sub_3" kind="subparagraph">
                      <tag amendingAct="32004R0318"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:1;PT:4"
                           tagId="O006001M004000"/>
                      <p>
@@ -928,7 +928,7 @@
          </occurrence>
          <occurrence eId="cpt_II/sct_3" kind="division" rank="2">
             <tag amendingAct="32004R0318"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:5"
                  tagId="O006001M005000"/>
             <num>
@@ -1279,7 +1279,7 @@
          </occurrence>
          <occurrence eId="cpt_II/sct_3a" kind="division" rank="2">
             <tag amendingAct="32004R0318"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:6"
                  tagId="O006001M006000"/>
             <num>
@@ -1700,7 +1700,7 @@
          </occurrence>
          <occurrence eId="cpt_II/sct_5" kind="division" rank="2">
             <tag amendingAct="32004R0318"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:7"
                  tagId="O006001M007000"/>
             <num>
@@ -2675,7 +2675,7 @@
                </occurrence>
                <occurrence eId="art_33/par_3" kind="paragraph">
                   <tag amendingAct="32000R1560"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:2"
                        tagId="O001001M002000"/>
                   <num>
@@ -2940,7 +2940,7 @@
                </occurrence>
                <deleted>
                   <tag amendingAct="32003R0359"
-                       action="deleted"
+                       modification="deleted"
                        location="AR:1"
                        tagId="O005001M001000"/>
                   <occurrence eId="art_38/par_2" kind="paragraph">
@@ -3324,7 +3324,7 @@
                <footnote eId="note_22" marker="2" kind="table">
                   <p>
                      <tag amendingAct="32001R0213"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:20;PT:2"
                           tagId="O003001M002000"/>
                      <t v="See Annex I to Regulation (EC) No 213/2001."/>
@@ -3340,7 +3340,7 @@
       </occurrence>
       <deleted>
          <tag amendingAct="32001R0213"
-              action="deleted"
+              modification="deleted"
               location="AR:20;PT:3"
               tagId="O003001M003000"/>
          <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
@@ -8582,7 +8582,7 @@
             <p>
                <t v="Each sample must be assessed individually in accordance "/>
                <changed amendingAct="32001R0213"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:20;PT:4"
                         tagId="O003001M004000">
                   <t v="with Annex VII to Regulation (EC) No 213/2001"/>
@@ -8658,7 +8658,7 @@
          <list kind="dash">
             <occurrence eId="anx_V/idt_1" kind="indent">
                <tag amendingAct="31999R2771R(02)"
-                    action="replaced"
+                    modification="replaced"
                     location="LI:0;EL:1"
                     tagId="O000002M001000"/>
                <p>
@@ -8792,7 +8792,7 @@
             </occurrence>
             <occurrence eId="anx_V/idt_15" kind="indent">
                <tag amendingAct="31999R2771R(02)"
-                    action="replaced"
+                    modification="replaced"
                     location="LI:0;EL:2"
                     tagId="O000002M002000"/>
                <p>
@@ -9040,7 +9040,7 @@
       </footnote>
       <deleted>
          <tag amendingAct="32001R0213"
-              action="deleted"
+              modification="deleted"
               location="AR:20;PT:3"
               tagId="O003001M003000"/>
          <footnote eId="note_23" marker="21" kind="footnote">

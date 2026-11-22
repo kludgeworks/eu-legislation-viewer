@@ -251,11 +251,11 @@ public record PublicText(
    * An amendment of a consolidated version: which act changed the text, and how.
    *
    * @param act the CELEX number of the amending act
-   * @param action what it did: {@code replaced}, {@code inserted}, {@code deleted} or {@code
+   * @param modification what it did: {@code replaced}, {@code inserted}, {@code deleted} or {@code
    *     renumbered}
    */
   @ValueObject
-  public record Amendment(String act, String action) {}
+  public record Amendment(String act, String modification) {}
 
   /**
    * The wording of an occurrence with the edits of a comparison: the plain text before and after

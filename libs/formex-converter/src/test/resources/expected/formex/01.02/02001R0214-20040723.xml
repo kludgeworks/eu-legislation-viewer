@@ -408,7 +408,7 @@
                </occurrence>
                <occurrence eId="art_1/pnt_c" kind="point" numbered="true">
                   <tag amendingAct="32004R1319"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:1"
                        tagId="O004001M001000"/>
                   <num>
@@ -1592,7 +1592,7 @@
          </occurrence>
          <occurrence eId="cpt_II/sct_5" kind="division" rank="2">
             <tag amendingAct="32004R1319"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:2;PT:a"
                  tagId="O004001M002000"/>
             <num>
@@ -1612,7 +1612,7 @@
                   <p>
                      <t v="Skimmed-milk powder which entered storage before "/>
                      <changed amendingAct="32004R1339"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:1"
                               tagId="O004001M003000">
                         <date date="2002-10-01">
@@ -1830,7 +1830,7 @@
          </occurrence>
          <occurrence eId="cpt_II/sct_6" kind="division" rank="2">
             <tag amendingAct="32004R1319"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:2;PT:b"
                  tagId="O004001M004000"/>
             <num>
@@ -2710,7 +2710,7 @@
          </subheading>
          <occurrence eId="art_36" kind="article" rank="2">
             <tag amendingAct="32004R1319"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:3"
                  tagId="O004001M005000"/>
             <num>

@@ -10,6 +10,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Cont
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ.Compared;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
@@ -203,7 +204,7 @@ class DifferTest {
   void readsAnOccurrenceTheLaterTextKeepsStruckAsDeletedByTheActThatStruckIt() {
     var struck = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_6.8.1.6");
     assertThat(struck.kind()).isEqualTo(Kind.DELETED);
-    assertThat(struck.tags()).containsExactly(new Tag("32026R0449", "deleted", null));
+    assertThat(struck.tags()).containsExactly(new Tag("32026R0449", Modification.DELETED, null));
     assertThat(Occurrences.of(MARCH).get("anx/pnt_6.8.1.6")).isNull();
   }
 
@@ -604,7 +605,8 @@ class DifferTest {
     var deletedPoint = find(differences, "art_5/par_1/pnt_a");
     assertThat(deletedPoint.kind()).isEqualTo(Kind.DELETED);
     assertThat(deletedPoint.parent()).isEqualTo("art_6/par_1");
-    assertThat(deletedPoint.tags()).containsExactly(new Tag("ActX", "replaced", "art_6"));
+    assertThat(deletedPoint.tags())
+        .containsExactly(new Tag("ActX", Modification.REPLACED, "art_6"));
   }
 
   @Test
@@ -1020,7 +1022,7 @@ class DifferTest {
   private static Element point(String eId, String words, String act, Element... occurrences) {
     var children = new ArrayList<Element>();
     children.add(
-        new Element("tag", Map.of("amendingAct", act, "action", "replaced"), List.of(), ""));
+        new Element("tag", Map.of("amendingAct", act, "modification", "replaced"), List.of(), ""));
     children.add(block("p", words));
     children.addAll(List.of(occurrences));
     return new Element("occurrence", Map.of("eId", eId, "kind", "point"), children, "");
@@ -1028,16 +1030,22 @@ class DifferTest {
 
   /**
    * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
-   * act}, action {@code action}, and child occurrences {@code occurrences}.
+   * act}, modification {@code modification}, and child occurrences {@code occurrences}.
    */
   private static Element pointWithNum(
-      String eId, String num, String words, String act, String action, Element... occurrences) {
-    return pointWithNum(eId, num, words, act, "", action, occurrences);
+      String eId,
+      String num,
+      String words,
+      String act,
+      String modification,
+      Element... occurrences) {
+    return pointWithNum(eId, num, words, act, "", modification, occurrences);
   }
 
   /**
    * A point {@code eId} with the number {@code num}, the words {@code words}, amending act {@code
-   * act}, tag id {@code tagId}, action {@code action}, and child occurrences {@code occurrences}.
+   * act}, tag id {@code tagId}, modification {@code modification}, and child occurrences {@code
+   * occurrences}.
    */
   private static Element pointWithNum(
       String eId,
@@ -1045,22 +1053,22 @@ class DifferTest {
       String words,
       String act,
       String tagId,
-      String action,
+      String modification,
       Element... occurrences) {
     var children = new ArrayList<Element>();
-    if (!act.isEmpty() && !action.isEmpty() && !"renumbered".equals(action)) {
+    if (!act.isEmpty() && !modification.isEmpty() && !"renumbered".equals(modification)) {
       var attrs = new HashMap<String, String>();
       attrs.put("amendingAct", act);
-      attrs.put("action", action);
+      attrs.put("modification", modification);
       if (!tagId.isEmpty()) {
         attrs.put("tagId", tagId);
       }
       children.add(new Element("tag", attrs, List.of(), ""));
     }
     Element numBlock;
-    if ("renumbered".equals(action)) {
+    if ("renumbered".equals(modification)) {
       var attrs = new HashMap<String, String>();
-      attrs.put("action", "renumbered");
+      attrs.put("modification", "renumbered");
       attrs.put("amendingAct", act);
       if (!tagId.isEmpty()) {
         attrs.put("tagId", tagId);
@@ -1078,12 +1086,19 @@ class DifferTest {
     return new Element("occurrence", Map.of("eId", eId, "kind", "point"), children, "");
   }
 
-  /** An annex {@code eId} with tag {@code act} and {@code action}. */
+  /** An annex {@code eId} with tag {@code act} and {@code modification}. */
   private static Element annexWithTags(
-      String eId, String num, String words, String act, String action, Element... occurrences) {
+      String eId,
+      String num,
+      String words,
+      String act,
+      String modification,
+      Element... occurrences) {
     var children = new ArrayList<Element>();
-    if (act != null && action != null) {
-      children.add(new Element("tag", Map.of("amendingAct", act, "action", action), List.of(), ""));
+    if (act != null && modification != null) {
+      children.add(
+          new Element(
+              "tag", Map.of("amendingAct", act, "modification", modification), List.of(), ""));
     }
     children.add(block("num", num));
     if (!words.isEmpty()) {
@@ -1105,14 +1120,17 @@ class DifferTest {
     if (!replacedAct.isEmpty()) {
       children.add(
           new Element(
-              "tag", Map.of("amendingAct", replacedAct, "action", "replaced"), List.of(), ""));
+              "tag",
+              Map.of("amendingAct", replacedAct, "modification", "replaced"),
+              List.of(),
+              ""));
     }
     Element numBlock;
     if (!renumberedAct.isEmpty()) {
       var changed =
           new Element(
               "changed",
-              Map.of("action", "renumbered", "amendingAct", renumberedAct),
+              Map.of("modification", "renumbered", "amendingAct", renumberedAct),
               List.of(new Element("t", Map.of("v", num), List.of(), "")),
               "");
       numBlock = new Element("num", Map.of(), List.of(changed), "");
@@ -1542,7 +1560,7 @@ class DifferTest {
   @Test
   void namesTheActsThatTagAnOccurrenceInEachText() {
     var c = Differ.differences(MARCH, OCTOBER).differences().getFirst();
-    assertThat(c.tags()).containsExactly(new Tag("32026R0449", "replaced", null));
+    assertThat(c.tags()).containsExactly(new Tag("32026R0449", Modification.REPLACED, null));
     // In March the point has no tag, and it is in no occurrence that an act put in whole. So it
     // is
     // as the act was published.
@@ -1554,7 +1572,7 @@ class DifferTest {
     var occurrences = Occurrences.of(MARCH);
     var a = Objects.requireNonNull(occurrences.get("anx/pnt_1.2.2.3/pnt_a"));
     assertThat(Tags.of(a, occurrences))
-        .containsExactly(new Tag("32026R0449", "replaced", "anx/pnt_1.2.2.3"));
+        .containsExactly(new Tag("32026R0449", Modification.REPLACED, "anx/pnt_1.2.2.3"));
   }
 
   @Test

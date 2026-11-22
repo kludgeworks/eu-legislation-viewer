@@ -47,7 +47,7 @@ class LegalTextRulesTest {
     var text =
         legalText(
             """
-            <body><deleted><tag amendingAct="32026R0449" action="deleted" tagId="O1"/>
+            <body><deleted><tag amendingAct="32026R0449" modification="deleted" tagId="O1"/>
                     <occurrence eId="art_1" kind="article"/></deleted>
                   <occurrence eId="art_1" kind="article"/></body>\
             """);
@@ -91,8 +91,8 @@ class LegalTextRulesTest {
     var text =
         legalText(
             """
-            <body><p><changed amendingAct="32026R0449" action="replaced" tagId="O1"><t v="a"/></changed></p>
-                  <p><changed amendingAct="32019R0103" action="replaced" tagId="O1"><t v="b"/></changed></p></body>\
+            <body><p><changed amendingAct="32026R0449" modification="replaced" tagId="O1"><t v="a"/></changed></p>
+                  <p><changed amendingAct="32019R0103" modification="replaced" tagId="O1"><t v="b"/></changed></p></body>\
             """);
     assertThat(RULES.violations(text))
         .extracting(Schematron.Finding::id)
@@ -141,7 +141,7 @@ class LegalTextRulesTest {
             + " v=\"x\"/></ref></p></body>",
         "correction-sides | <body><occurrence eId=\"art_1\""
             + " kind=\"article\"><old/></occurrence></body>",
-        "deletion-in-deleted | <body><p><tag amendingAct=\"32026R0449\" action=\"deleted\""
+        "deletion-in-deleted | <body><p><tag amendingAct=\"32026R0449\" modification=\"deleted\""
             + " tag=\"O1\"/><t v=\"x\"/></p></body>",
         "footnote-marker | <body><p><footnoteRef href=\"#note_1\""
             + " marker=\"2\"/></p></body><footnotes><footnote eId=\"note_1\" marker=\"1\""

@@ -53,7 +53,7 @@
          <p>
             <docType>
                <deleted amendingAct="32005R1952"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:18;PA:2"
                         tagId="O002001M001000">
                   <emphasis kind="uc">
@@ -64,7 +64,7 @@
             <t v=" "/>
             <docNumber>
                <deleted amendingAct="32005R1952"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:18;PA:2"
                         tagId="O002001M001000">
                   <t v=" (EEC) No 879/73 "/>
@@ -76,7 +76,7 @@
          </p>
          <p>
             <deleted amendingAct="32005R1952"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:18;PA:2"
                      tagId="O002001M001000">
                <t v="of 26 March 1973"/>
@@ -85,7 +85,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32005R1952"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:18;PA:2"
                         tagId="O002001M001000">
                   <t v="on the granting and reimbursement of aid accorded by the Member States to recognized producer groups in the hop sector"/>
@@ -98,7 +98,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32005R1952"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:18;PA:2"
                  tagId="O002001M001000"/>
             <p>
@@ -109,7 +109,7 @@
       <citations>
          <deleted>
             <tag amendingAct="32005R1952"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:18;PA:2"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
@@ -134,7 +134,7 @@
       <recitals>
          <deleted>
             <tag amendingAct="32005R1952"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:18;PA:2"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
@@ -161,7 +161,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32005R1952"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:18;PA:2"
                  tagId="O002001M001000"/>
             <p>
@@ -173,7 +173,7 @@
    <body>
       <deleted>
          <tag amendingAct="32005R1952"
-              action="deleted"
+              modification="deleted"
               location="AR:18;PA:2"
               tagId="O002001M001000"/>
          <occurrence eId="tis_I" kind="division" rank="1">
@@ -306,7 +306,7 @@
             </occurrence>
             <occurrence eId="art_6" kind="article" rank="2">
                <tag amendingAct="31977R2254"
-                    action="inserted"
+                    modification="inserted"
                     location="TO"
                     tagId="O001001M001000"/>
                <num>
@@ -320,11 +320,11 @@
       </deleted>
       <deleted>
          <tag amendingAct="32005R1952"
-              action="deleted"
+              modification="deleted"
               location="AR:18;PA:2"
               tagId="O002001M001000"/>
          <tag amendingAct="31977R2254"
-              action="deleted"
+              modification="deleted"
               location="TO"
               tagId="O001001M002000"/>
          <occurrence eId="tis_II" kind="division" rank="1">
@@ -333,7 +333,7 @@
             </num>
             <deleted>
                <tag amendingAct="31977R2254"
-                    action="deleted"
+                    modification="deleted"
                     location="TO"
                     tagId="O001001M003000"/>
                <occurrence eId="art_7" kind="article" rank="2">
@@ -344,7 +344,7 @@
             </deleted>
             <deleted>
                <tag amendingAct="31977R2254"
-                    action="deleted"
+                    modification="deleted"
                     location="TO"
                     tagId="O001001M004000"/>
                <occurrence eId="art_8" kind="article" rank="2">
@@ -355,7 +355,7 @@
             </deleted>
             <deleted>
                <tag amendingAct="31977R2254"
-                    action="deleted"
+                    modification="deleted"
                     location="TO"
                     tagId="O001001M005000"/>
                <occurrence eId="art_9" kind="article" rank="2">
@@ -366,7 +366,7 @@
             </deleted>
             <deleted>
                <tag amendingAct="31977R2254"
-                    action="deleted"
+                    modification="deleted"
                     location="TO"
                     tagId="O001001M006000"/>
                <occurrence eId="art_10" kind="article" rank="2">
@@ -377,7 +377,7 @@
             </deleted>
             <deleted>
                <tag amendingAct="31977R2254"
-                    action="deleted"
+                    modification="deleted"
                     location="TO"
                     tagId="O001001M007000"/>
                <occurrence eId="art_11" kind="article" rank="2">
@@ -388,7 +388,7 @@
             </deleted>
             <deleted>
                <tag amendingAct="31977R2254"
-                    action="deleted"
+                    modification="deleted"
                     location="TO"
                     tagId="O001001M008000"/>
                <occurrence eId="art_12" kind="article" rank="2">
@@ -401,7 +401,7 @@
       </deleted>
       <deleted>
          <tag amendingAct="32005R1952"
-              action="deleted"
+              modification="deleted"
               location="AR:18;PA:2"
               tagId="O002001M001000"/>
          <occurrence eId="tis_III" kind="division" rank="1">
@@ -447,7 +447,7 @@
    <conclusions>
       <deleted>
          <tag amendingAct="32005R1952"
-              action="deleted"
+              modification="deleted"
               location="AR:18;PA:2"
               tagId="O002001M001000"/>
          <p>
@@ -458,7 +458,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32005R1952"
-              action="deleted"
+              modification="deleted"
               location="AR:18;PA:2"
               tagId="O002001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">

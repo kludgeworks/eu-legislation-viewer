@@ -199,7 +199,7 @@
                   <td>
                      <p>
                         <tag amendingAct="32023R0265R(01)"
-                             action="replaced"
+                             modification="replaced"
                              location="CR:1;NT:0"
                              tagId="O000001M001000"/>
                         <t v="Acecon Vitrified Pvt Ltd; Avlon Ceramic Pvt Ltd; Duracon Vitrified Pvt Ltd; Eracon Vitrified Pvt Ltd; Evershine Cera Pvt Ltd; Icon Granito Pvt Ltd; Venice Ceramics"/>
@@ -354,7 +354,7 @@
          </occurrence>
          <occurrence eId="art_1/par_3" kind="paragraph">
             <tag amendingAct="32023R0265R(01)"
-                 action="replaced"
+                 modification="replaced"
                  location="CR:2;NT:0"
                  tagId="O000001M002000"/>
             <num>
@@ -1253,7 +1253,7 @@
                </tr>
                <tr>
                   <tag amendingAct="32023R0265R(02)"
-                       action="replaced"
+                       modification="replaced"
                        location="TO"
                        tagId="O000002M001000"/>
                   <td>
@@ -1902,7 +1902,7 @@
                </tr>
                <tr>
                   <tag amendingAct="32023R0265R(01)"
-                       action="replaced"
+                       modification="replaced"
                        location="CR:3;NT:0"
                        tagId="O000001M003000"/>
                   <td>
@@ -1944,7 +1944,7 @@
                </tr>
                <tr>
                   <tag amendingAct="32023R0265R(01)"
-                       action="replaced"
+                       modification="replaced"
                        location="CR:4;NT:0"
                        tagId="O000001M004000"/>
                   <td>
@@ -2052,7 +2052,7 @@
                </tr>
                <tr>
                   <tag amendingAct="32023R1597"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PA:1"
                        tagId="O001001M001000"/>
                   <td>

@@ -205,7 +205,7 @@
          <p>
             <t v="This Decision shall apply until "/>
             <changed amendingAct="32006D0183"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:1;PT:1"
                      tagId="O001001M001000">
                <date date="2006-07-31">
@@ -227,7 +227,7 @@
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <tag amendingAct="32006D0183"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:2 .AND. AX:0"
               tagId="O001001M002000"/>
          <num>

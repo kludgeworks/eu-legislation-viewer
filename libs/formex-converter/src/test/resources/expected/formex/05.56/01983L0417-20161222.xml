@@ -121,7 +121,7 @@
          <p>
             <docType>
                <deleted amendingAct="32015L2203"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:8;AL:1"
                         tagId="O004001M001000">
                   <emphasis kind="uc">
@@ -133,7 +133,7 @@
          </p>
          <p>
             <deleted amendingAct="32015L2203"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:8;AL:1"
                      tagId="O004001M001000">
                <t v="of 25 July 1983"/>
@@ -142,7 +142,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32015L2203"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:8;AL:1"
                         tagId="O004001M001000">
                   <t v="on the approximation of the laws of the Member States relating to certain lactoproteins (caseins and caseinates) intended for human consumption"/>
@@ -151,7 +151,7 @@
          </p>
          <p>
             <deleted amendingAct="32015L2203"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:8;AL:1"
                      tagId="O004001M001000">
                <t v="(83/417/EEC)"/>
@@ -162,7 +162,7 @@
    <body>
       <deleted>
          <tag amendingAct="32015L2203"
-              action="deleted"
+              modification="deleted"
               location="AR:8;AL:1"
               tagId="O004001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
@@ -552,7 +552,7 @@
          </occurrence>
          <occurrence eId="art_10" kind="article" rank="1">
             <tag amendingAct="32003R0807"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:3 .AND. AX:III;PT:36"
                  tagId="O002001M001000"/>
             <num>
@@ -637,7 +637,7 @@
    <annexes>
       <deleted>
          <tag amendingAct="32015L2203"
-              action="deleted"
+              modification="deleted"
               location="AR:8;AL:1"
               tagId="O004001M001000"/>
          <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
@@ -1240,7 +1240,7 @@
                <list kind="dash">
                   <occurrence eId="anx_I/pnt_III/pnt_d/idt_1" kind="indent">
                      <tag amendingAct="32008R1332"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:19"
                           tagId="O003001M001000"/>
                      <p>
@@ -1255,7 +1255,7 @@
                   </occurrence>
                   <occurrence eId="anx_I/pnt_III/pnt_d/idt_2" kind="indent">
                      <tag amendingAct="32008R1332"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:19"
                           tagId="O003001M001000"/>
                      <p>
@@ -1673,7 +1673,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32015L2203"
-              action="deleted"
+              modification="deleted"
               location="AR:8;AL:1"
               tagId="O004001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">

@@ -42,7 +42,7 @@
          <p>
             <docType>
                <changed amendingAct="22019D1734R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <emphasis kind="uc">
@@ -53,7 +53,7 @@
             <t v=" "/>
             <docNumber>
                <changed amendingAct="22019D1734R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <t v=" No 1/2019 "/>
@@ -65,14 +65,14 @@
          </p>
          <p>
             <changed amendingAct="22019D1734R(01)"
-                     action="replaced"
+                     modification="replaced"
                      location="TO"
                      tagId="O000001M001002">
                <t v="of "/>
             </changed>
             <docDate date="2019-09-30">
                <changed amendingAct="22019D1734R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <t v="30 September 2019"/>
@@ -82,7 +82,7 @@
          <p>
             <docPurpose>
                <changed amendingAct="22019D1734R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <t v="on a revised list of experts willing and able to serve as panellists in accordance with Article 13.15 of the Agreement [2019/1734]"/>

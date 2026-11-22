@@ -124,7 +124,7 @@
          <p>
             <docType>
                <deleted amendingAct="32006R0802"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O004001M001000">
                   <emphasis kind="uc">
@@ -135,7 +135,7 @@
             <t v=" "/>
             <docNumber>
                <deleted amendingAct="32006R0802"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O004001M001000">
                   <t v=" (EEC) No 3510/82"/>
@@ -144,7 +144,7 @@
          </p>
          <p>
             <deleted amendingAct="32006R0802"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2"
                      tagId="O004001M001000">
                <t v="of 23 December 1982"/>
@@ -153,12 +153,12 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32006R0802"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O004001M001000">
                   <t v="fixing the conversion factors applicable to "/>
                   <changed amendingAct="31987R3940"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:1 .AND. AX:0;PT:VII;PT:1"
                            tagId="O001001M001002">
                      <t v="fish of the genera "/>
@@ -179,7 +179,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32006R0802"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O004001M001000"/>
             <p>
@@ -190,7 +190,7 @@
       <citations>
          <deleted>
             <tag amendingAct="32006R0802"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O004001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
@@ -210,14 +210,14 @@
       <recitals>
          <deleted>
             <tag amendingAct="32006R0802"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O004001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
                <p>
                   <t v="Whereas a Community producer price is fixed every year for "/>
                   <changed amendingAct="31987R3940"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:1 .AND. AX:0;PT:VII;PT:1"
                            tagId="O001001M002001">
                      <t v="fish of the genera "/>
@@ -236,7 +236,7 @@
                <p>
                   <t v="Whereas the conversion factors applicable to the different species, sizes and presentations of "/>
                   <changed amendingAct="31987R3940"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:1 .AND. AX:0;PT:VII;PT:1"
                            tagId="O001001M002002">
                      <t v="fish of the genera "/>
@@ -261,7 +261,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32006R0802"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O004001M001000"/>
             <p>
@@ -273,7 +273,7 @@
    <body>
       <deleted>
          <tag amendingAct="32006R0802"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O004001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
@@ -283,7 +283,7 @@
             <p>
                <t v="The conversion factors applicable to the different species, sizes and presentations of "/>
                <changed amendingAct="31987R3940"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:1 .AND. AX:0;PT:VII;PT:1"
                         tagId="O001001M003000">
                   <t v="fish of the genera "/>
@@ -311,7 +311,7 @@
    <conclusions>
       <deleted>
          <tag amendingAct="32006R0802"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O004001M001000"/>
          <p>
@@ -322,12 +322,12 @@
    <annexes>
       <deleted>
          <tag amendingAct="32006R0802"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O004001M001000"/>
          <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <tag amendingAct="31992R3899"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1 .AND. AX:0"
                  tagId="O003001M001000"/>
             <num>
@@ -555,7 +555,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32006R0802"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O004001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">

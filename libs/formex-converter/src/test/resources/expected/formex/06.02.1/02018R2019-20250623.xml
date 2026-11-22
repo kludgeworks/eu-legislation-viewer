@@ -1134,7 +1134,7 @@
       </occurrence>
       <deleted>
          <tag amendingAct="32019R2072"
-              action="deleted"
+              modification="deleted"
               location="AR:16;PT:1"
               tagId="O001001M001000"/>
          <occurrence eId="art_2" kind="article" rank="1">
@@ -1192,7 +1192,7 @@
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <changed amendingAct="32020R1214"
-                     action="renumbered"
+                     modification="renumbered"
                      location="AR:1 .AND. AX:0;PT:1"
                      tagId="O002001M001000">
                <t v="ANNEX"/>
@@ -1207,7 +1207,7 @@
             <occurrence eId="anx/level_1/pnt_1" kind="point" numbered="true">
                <num>
                   <changed amendingAct="32018R2019R(01)"
-                           action="replaced"
+                           modification="replaced"
                            location="TO"
                            tagId="O025001M001000">
                      <t v="1."/>
@@ -1215,7 +1215,7 @@
                </num>
                <p>
                   <tag amendingAct="32018R2019R(01)"
-                       action="replaced"
+                       modification="replaced"
                        location="TO"
                        tagId="O025001M001000"/>
                   <t v="Plants for planting, other than seeds, "/>
@@ -1263,7 +1263,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32023R1535"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O016001M002000"/>
                            <emphasis kind="i">
@@ -1273,7 +1273,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32023R1535"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O016001M002000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_3/td_2/idt_1" kind="indent">
@@ -1341,7 +1341,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32020R1214"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0;PT:2;PT:a"
                                 tagId="O002001M002000"/>
                            <emphasis kind="i">
@@ -1364,7 +1364,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32025R1088"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O026001M001000"/>
                            <emphasis kind="i">
@@ -1374,7 +1374,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32025R1088"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O026001M001000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_5/td_2/list_2/idt_1" kind="indent">
@@ -1453,7 +1453,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32024R1162"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:2"
                                 tagId="O021001M002000"/>
                            <emphasis kind="i">
@@ -1476,7 +1476,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32025R0312"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O025001M002000"/>
                            <emphasis kind="i">
@@ -1563,7 +1563,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32024R0879"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O020001M001000"/>
                            <emphasis kind="i">
@@ -1573,7 +1573,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32024R0879"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O020001M001000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_14/td_2/list_3/idt_1" kind="indent">
@@ -1610,7 +1610,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32023R1174"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O015001M001000"/>
                            <emphasis kind="i">
@@ -1648,7 +1648,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32023R2458"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O017001M001000"/>
                            <emphasis kind="i">
@@ -1671,7 +1671,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32021R1936"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:1"
                                 tagId="O005001M001000"/>
                            <emphasis kind="i">
@@ -1728,7 +1728,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32022R1942"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O012001M001000"/>
                            <emphasis kind="i">
@@ -1751,7 +1751,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32022R1916"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O011001M001000"/>
                            <emphasis kind="i">
@@ -1761,7 +1761,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32022R1916"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O011001M001000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_22/td_2/list_4/idt_1" kind="indent">
@@ -1794,7 +1794,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32024R1436"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O022001M002000"/>
                            <emphasis kind="i">
@@ -1804,7 +1804,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32024R1436"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O022001M002000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_23/td_2/list_5/idt_1" kind="indent">
@@ -1845,7 +1845,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32022R1404"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0;PT:1"
                                 tagId="O010001M003000"/>
                            <emphasis kind="i">
@@ -1900,7 +1900,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32024R1162"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:1"
                                 tagId="O021001M001000"/>
                            <emphasis kind="i">
@@ -1910,7 +1910,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32024R1162"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:1"
                                 tagId="O021001M001000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_25/td_2/list_6/idt_1" kind="indent">
@@ -2003,7 +2003,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32022R0490"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:2"
                                 tagId="O007001M002000"/>
                            <emphasis kind="i">
@@ -2026,7 +2026,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32021R1936"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:2"
                                 tagId="O005001M002000"/>
                            <emphasis kind="i">
@@ -2068,7 +2068,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32025R1091"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O026001M002000"/>
                            <emphasis kind="i">
@@ -2078,7 +2078,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32025R1091"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O026001M002000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_29/td_2/list_7/idt_1" kind="indent">
@@ -2180,7 +2180,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32023R2743"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O018001M001000"/>
                            <emphasis kind="i">
@@ -2190,7 +2190,7 @@
                         </p>
                         <list kind="dash">
                            <tag amendingAct="32023R2743"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O018001M001000"/>
                            <occurrence eId="anx/level_1/pnt_1/tab_1/tr_30/td_2/list_8/idt_1" kind="indent">
@@ -2223,7 +2223,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32022R0490"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I;PT:3"
                                 tagId="O007001M003000"/>
                            <emphasis kind="i">
@@ -2295,7 +2295,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32024R1958"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:0"
                                 tagId="O023001M001000"/>
                            <emphasis kind="i">
@@ -2343,7 +2343,7 @@
                </p>
                <table cols="2">
                   <tag amendingAct="32021R0419"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1 .AND. AX:I;PT:b"
                        tagId="O004001M002000"/>
                   <tr header="true">
@@ -2427,7 +2427,7 @@
                      <td>
                         <p>
                            <tag amendingAct="32022R0853"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1 .AND. AX:I"
                                 tagId="O008001M001000"/>
                            <emphasis kind="i">
@@ -2445,7 +2445,7 @@
             </occurrence>
             <deleted>
                <tag amendingAct="32020R1214"
-                    action="deleted"
+                    modification="deleted"
                     location="AR:1 .AND. AX:0;PT:3"
                     tagId="O002001M004000"/>
                <occurrence eId="anx/level_1/pnt_4" kind="point" numbered="true">
@@ -2510,7 +2510,7 @@
       </occurrence>
       <deleted>
          <tag amendingAct="32019R2072"
-              action="deleted"
+              modification="deleted"
               location="AR:16;PT:2"
               tagId="O001001M002000"/>
          <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">

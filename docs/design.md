@@ -99,6 +99,7 @@ its module.
 | --- | --- |
 | occurrence | A subdivision as the text of one version has it, known by its eId. A provision has an occurrence in each text that has it. |
 | tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
+| modification | What an act did to an occurrence in one step: inserted, deleted, replaced, renumbered, amended or corrected. A tag names the act and its modification. Akoma Ntoso calls it a textual modification. |
 | footnote | A note of the text that a reference in the text points to. The notes are at the end of the text, or in a table. The word "note" alone is not a term: say footnote, sidenote or divergence note. |
 
 ### Comparison (module `comparison`)

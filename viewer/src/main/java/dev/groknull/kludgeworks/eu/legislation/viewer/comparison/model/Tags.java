@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Occurrences.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import org.jspecify.annotations.Nullable;
  * Finds the tags on the own content of an occurrence.
  *
  * <p>The converter keeps the tags of a consolidation as legal-text {@code tag}, {@code changed} and
- * {@code deleted}. Each names its amending act and what the act did. The own tags of an occurrence
+ * {@code deleted}. Each names its amending act and its modification. The own tags of an occurrence
  * are those of the occurrence and its blocks, not those of the occurrences in it. Each tag is
  * returned once, in the order in which they stand.
  *
@@ -40,9 +41,9 @@ final class Tags {
       }
       for (var child : enclosing.element().children()) {
         var act = child.attribute("amendingAct");
-        var action = child.attribute("action");
-        if (child.name().equals("tag") && act != null && action != null) {
-          found.add(new Tag(act, action, enclosing.eId()));
+        var modification = child.attribute("modification");
+        if (child.name().equals("tag") && act != null && modification != null) {
+          found.add(new Tag(act, Modification.of(modification), enclosing.eId()));
         }
       }
       at = enclosing.parent();
@@ -71,9 +72,9 @@ final class Tags {
       var found = new ArrayList<Tag>();
       for (var child : enclosing.element().children()) {
         var act = child.attribute("amendingAct");
-        var action = child.attribute("action");
-        if (child.name().equals("tag") && act != null && "replaced".equals(action)) {
-          found.add(new Tag(act, "replaced", enclosing.eId()));
+        var modification = child.attribute("modification");
+        if (child.name().equals("tag") && act != null && "replaced".equals(modification)) {
+          found.add(new Tag(act, Modification.REPLACED, enclosing.eId()));
         }
       }
       if (!found.isEmpty()) {
@@ -90,9 +91,9 @@ final class Tags {
         continue;
       }
       var act = child.attribute("amendingAct");
-      var action = child.attribute("action");
-      if (act != null && action != null) {
-        found.add(new Tag(act, action, null));
+      var modification = child.attribute("modification");
+      if (act != null && modification != null) {
+        found.add(new Tag(act, Modification.of(modification), null));
       }
       collect(child, found);
     }

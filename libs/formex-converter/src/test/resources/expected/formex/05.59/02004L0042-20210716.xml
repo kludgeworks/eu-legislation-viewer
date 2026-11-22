@@ -200,7 +200,7 @@
       <longTitle>
          <p>
             <changed amendingAct="32004L0042R(02)"
-                     action="replaced"
+                     modification="replaced"
                      location="TO"
                      tagId="O003004M001002">
                <emphasis kind="uc">
@@ -310,7 +310,7 @@
                </num>
                <heading>
                   <changed amendingAct="32008L0112"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:6;PT:a"
                            tagId="O002001M001000">
                      <quote startQuote="‘" endQuote="’">
@@ -386,14 +386,14 @@
                <p>
                   <t v="means any "/>
                   <changed amendingAct="32008L0112"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:6;PT:b"
                            tagId="O002001M002001">
                      <t v="mixture"/>
                   </changed>
                   <t v=", including all the organic solvents or "/>
                   <changed amendingAct="32008L0112"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:6;PT:b"
                            tagId="O002001M002002">
                      <t v="mixture"/>
@@ -549,7 +549,7 @@
       </occurrence>
       <deleted>
          <tag amendingAct="32019R1020"
-              action="deleted"
+              modification="deleted"
               location="CH:X;AR:38"
               tagId="O005001M001000"/>
          <occurrence eId="art_6" kind="article" rank="1">
@@ -661,7 +661,7 @@
       </occurrence>
       <occurrence eId="art_11" kind="article" rank="1">
          <tag amendingAct="32019R1243"
-              action="replaced"
+              modification="replaced"
               location="AR:1 .AND. AX:0;PT:V;PT:3;PT:1"
               tagId="O004001M001000"/>
          <num>
@@ -676,7 +676,7 @@
       </occurrence>
       <occurrence eId="art_11a" kind="article" rank="1">
          <tag amendingAct="32019R1243"
-              action="inserted"
+              modification="inserted"
               location="AR:1 .AND. AX:0;PT:V;PT:3;PT:2"
               tagId="O004001M002000"/>
          <num>
@@ -784,12 +784,12 @@
          </occurrence>
          <deleted>
             <tag amendingAct="32019R1243"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:1 .AND. AX:0;PT:V;PT:3;PT:3"
                  tagId="O004001M003000"/>
             <occurrence eId="art_12/par_3" kind="paragraph">
                <tag amendingAct="32008R1137"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0;PT:4;PT:11;PT:2"
                     tagId="O001001M002000"/>
                <num>
@@ -2021,7 +2021,7 @@
       </occurrence>
       <occurrence eId="anx_III" kind="annex" eurlexAnchor="3" rank="1">
          <tag amendingAct="32010L0079"
-              action="replaced"
+              modification="replaced"
               location="AR:1 .AND. AX:0"
               tagId="O003001M001000"/>
          <num>

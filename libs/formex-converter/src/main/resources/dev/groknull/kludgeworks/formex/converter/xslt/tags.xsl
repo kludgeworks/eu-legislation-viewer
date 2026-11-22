@@ -99,12 +99,12 @@
 
   <xsl:function name="f:is-deletion" as="xs:boolean">
     <xsl:param name="tag" as="processing-instruction()"/>
-    <xsl:sequence select="f:action($tag) = 'deleted'"/>
+    <xsl:sequence select="f:modification($tag) = 'deleted'"/>
   </xsl:function>
 
   <!-- REPLACED, INSERTED, DELETED, RENUMBERED; older consolidations also write REPEALED (a deletion) and
        ADDED -->
-  <xsl:function name="f:action" as="xs:string">
+  <xsl:function name="f:modification" as="xs:string">
     <xsl:param name="tag" as="processing-instruction()"/>
     <xsl:variable name="action" as="xs:string?" select="f:pi-attr($tag, 'ACTION')"/>
     <xsl:variable name="known" as="xs:string?" select="if (exists($action)) then map{'REPLACED': 'replaced', 'INSERTED': 'inserted', 'ADDED': 'inserted',
@@ -126,7 +126,7 @@
   <xsl:function name="f:amendment-attributes" as="attribute()*">
     <xsl:param name="tag" as="processing-instruction()"/>
     <xsl:attribute name="amendingAct" select="f:celex(f:pi-attr($tag, 'ACTIVE.DOC'))"/>
-    <xsl:attribute name="action" select="f:action($tag)"/>
+    <xsl:attribute name="modification" select="f:modification($tag)"/>
     <xsl:if test="f:pi-attr($tag, 'ACTIVE.LOC')">
       <xsl:attribute name="location" select="f:pi-attr($tag, 'ACTIVE.LOC')"/>
     </xsl:if>

@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
@@ -102,7 +103,7 @@ public class TagsSteps {
                       var from = row.get("taken from");
                       return new Tag(
                           act(Objects.requireNonNull(row.get("act"))).celex(),
-                          Objects.requireNonNull(row.get("did")),
+                          Modification.of(Objects.requireNonNull(row.get("modification"))),
                           from == null ? null : eId(new Place(from)));
                     })
                 .toList());

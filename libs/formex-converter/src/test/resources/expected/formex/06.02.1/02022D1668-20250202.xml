@@ -1089,7 +1089,7 @@
             </tr>
             <tr>
                <tag amendingAct="32023D1587"
-                    action="inserted"
+                    modification="inserted"
                     location="AR:1 .AND. AX:0;PT:2"
                     tagId="O002001M001000"/>
                <td>
@@ -1494,7 +1494,7 @@
             </tr>
             <tr>
                <tag amendingAct="32023D0601"
-                    action="inserted"
+                    modification="inserted"
                     location="AR:1 .AND. AX:0;PT:2"
                     tagId="O001001M001000"/>
                <td>
@@ -1679,7 +1679,7 @@
             </tr>
             <tr>
                <tag amendingAct="32023D0601"
-                    action="inserted"
+                    modification="inserted"
                     location="AR:1 .AND. AX:0;PT:3"
                     tagId="O001001M002000"/>
                <td>

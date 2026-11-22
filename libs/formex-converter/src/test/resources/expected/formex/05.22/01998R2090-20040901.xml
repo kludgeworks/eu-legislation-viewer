@@ -66,7 +66,7 @@
          <p>
             <docType>
                <deleted amendingAct="32004R0026"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:12"
                         tagId="O002001M001000">
                   <emphasis kind="uc">
@@ -77,7 +77,7 @@
             <t v=" "/>
             <docNumber>
                <deleted amendingAct="32004R0026"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:12"
                         tagId="O002001M001000">
                   <t v=" (EC) No 2090/98"/>
@@ -86,7 +86,7 @@
          </p>
          <p>
             <deleted amendingAct="32004R0026"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:12"
                      tagId="O002001M001000">
                <t v="of 30 September 1998"/>
@@ -95,7 +95,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32004R0026"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:12"
                         tagId="O002001M001000">
                   <t v="concerning the fishing vessel register of the Community"/>
@@ -108,7 +108,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32004R0026"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:12"
                  tagId="O002001M001000"/>
             <p>
@@ -118,7 +118,7 @@
       </formula>
       <deleted>
          <tag amendingAct="32004R0026"
-              action="deleted"
+              modification="deleted"
               location="AR:12"
               tagId="O002001M001000"/>
          <p>
@@ -128,7 +128,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32004R0026"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:12"
                  tagId="O002001M001000"/>
             <p>
@@ -140,7 +140,7 @@
    <body>
       <deleted>
          <tag amendingAct="32004R0026"
-              action="deleted"
+              modification="deleted"
               location="AR:12"
               tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">

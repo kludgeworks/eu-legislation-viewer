@@ -170,7 +170,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32014R0012R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001000">
                   <emphasis kind="b">
@@ -180,7 +180,7 @@
             </num>
             <heading>
                <changed amendingAct="32014R0012R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001000">
                   <emphasis kind="b">

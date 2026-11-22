@@ -370,7 +370,7 @@
                      </num>
                      <p>
                         <tag amendingAct="32003D0148R(01)"
-                             action="replaced"
+                             modification="replaced"
                              location="TO"
                              tagId="O000001M001000"/>
                         <t v=" in point 4 the existing paragraphs (d) and (e) becomes (e) and (f), and a new paragraph (d) is added as follows:"/>
@@ -378,7 +378,7 @@
                      <quotedStructure eId="anx/pnt_b/pnt_ii/qstr_1">
                         <occurrence eId="anx/pnt_b/pnt_ii/qstr_1/pnt_d" kind="point" numbered="true">
                            <tag amendingAct="32003D0148R(01)"
-                                action="replaced"
+                                modification="replaced"
                                 location="TO"
                                 tagId="O000001M001000"/>
                            <num>
@@ -393,7 +393,7 @@
                      </quotedStructure>
                      <p>
                         <tag amendingAct="32003D0148R(01)"
-                             action="replaced"
+                             modification="replaced"
                              location="TO"
                              tagId="O000001M001000"/>
                         <t v=";"/>
@@ -426,7 +426,7 @@
       <occurrence eId="att_1" kind="attachment">
          <figure src="L_2006077EN.01003302.tif">
             <tag amendingAct="32006D0203"
-                 action="replaced"
+                 modification="replaced"
                  location="PT:5"
                  tagId="O001001M001000"/>
             <description>
@@ -696,7 +696,7 @@
          </figure>
          <figure src="L_2006077EN.01003401.tif">
             <tag amendingAct="32006D0203"
-                 action="replaced"
+                 modification="replaced"
                  location="PT:5"
                  tagId="O001001M001000"/>
             <description>
@@ -901,7 +901,7 @@
          </figure>
          <figure src="L_2006077EN.01003501.tif">
             <tag amendingAct="32006D0203"
-                 action="replaced"
+                 modification="replaced"
                  location="PT:5"
                  tagId="O001001M001000"/>
             <description>

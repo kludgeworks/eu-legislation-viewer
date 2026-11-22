@@ -74,7 +74,7 @@
          <p>
             <t v="By way of derogation from Article 193 of Directive 2006/112/EC, Romania is hereby authorised until "/>
             <changed amendingAct="32016D1206"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:1;PT:1"
                      tagId="O001001M001000">
                <date date="2019-12-31">
@@ -99,7 +99,7 @@
          <p>
             <t v="Any request for the extension of the measure provided for in this Decision shall be submitted to the Commission no later than "/>
             <changed amendingAct="32016D1206"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:1;PT:2"
                      tagId="O001001M002000">
                <date date="2019-04-01">

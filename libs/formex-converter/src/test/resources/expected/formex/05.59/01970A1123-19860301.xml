@@ -262,7 +262,7 @@
       </occurrence>
       <occurrence eId="art_5" kind="article" rank="1">
          <tag amendingAct="21973A0630(02)"
-              action="inserted"
+              modification="inserted"
               location="AR:3;AL:1"
               tagId="O001001M001000"/>
          <num>
@@ -275,7 +275,7 @@
       <occurrence eId="art_6" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:3;AL:2"
                      tagId="O001001M002000">
                <t v="Article 6"/>
@@ -288,7 +288,7 @@
       <occurrence eId="art_7" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:3;AL:2"
                      tagId="O001001M003000">
                <t v="Article 7"/>
@@ -301,7 +301,7 @@
       <occurrence eId="art_8" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:3;AL:2"
                      tagId="O001001M004000">
                <t v="Article 8"/>
@@ -334,7 +334,7 @@
       <occurrence eId="art_9" kind="article" rank="1">
          <num>
             <changed amendingAct="21973A0630(02)"
-                     action="replaced"
+                     modification="replaced"
                      location="AR:3;AL:2"
                      tagId="O001001M005000">
                <t v="Article 9"/>

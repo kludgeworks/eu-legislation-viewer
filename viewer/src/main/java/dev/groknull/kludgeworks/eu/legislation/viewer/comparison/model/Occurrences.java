@@ -2,6 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -262,9 +263,9 @@ public record Occurrences(
     var tags = new ArrayList<Tag>();
     for (var child : deletion.children()) {
       var act = child.attribute("amendingAct");
-      var action = child.attribute("action");
-      if (child.name().equals("tag") && act != null && action != null) {
-        tags.add(new Tag(act, action, null));
+      var modification = child.attribute("modification");
+      if (child.name().equals("tag") && act != null && modification != null) {
+        tags.add(new Tag(act, Modification.of(modification), null));
       }
     }
     return List.copyOf(tags);

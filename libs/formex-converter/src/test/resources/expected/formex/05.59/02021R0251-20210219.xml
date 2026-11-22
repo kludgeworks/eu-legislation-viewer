@@ -42,7 +42,7 @@
          <p>
             <docType>
                <changed amendingAct="32021R0251R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <emphasis kind="uc">
@@ -53,7 +53,7 @@
             <t v=" "/>
             <docNumber>
                <changed amendingAct="32021R0251R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <t v=" (EU) 2021/251"/>
@@ -62,14 +62,14 @@
          </p>
          <p>
             <changed amendingAct="32021R0251R(01)"
-                     action="replaced"
+                     modification="replaced"
                      location="TO"
                      tagId="O000001M001002">
                <t v="of "/>
             </changed>
             <docDate date="2021-02-18">
                <changed amendingAct="32021R0251R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <t v="18 February 2021"/>
@@ -79,7 +79,7 @@
          <p>
             <docPurpose>
                <changed amendingAct="32021R0251R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="TO"
                         tagId="O000001M001002">
                   <t v="amending Regulation (EC) No 314/2004 concerning restrictive measures in view of the situation in Zimbabwe"/>

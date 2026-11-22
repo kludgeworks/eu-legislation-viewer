@@ -33,7 +33,7 @@ describe("number", () => {
 
 describe("said", () => {
   test("says what happened and which act did it", () => {
-    document.body.innerHTML = `<text-tag class="tag" data-act="32017R0815" data-action="replaced">▼</text-tag>`;
+    document.body.innerHTML = `<text-tag class="tag" data-act="32017R0815" data-modification="replaced">▼</text-tag>`;
 
     expect(said(tag())).toBe("Replaced by 2017/815");
   });
@@ -41,7 +41,7 @@ describe("said", () => {
   test("says when the act applies, where the page lists it", () => {
     document.body.innerHTML = `<div class="tags" hidden><span data-act="32026R0449"
       data-applies="applies from 1 October 2026 · Article 2 of 2026/449"></span></div>
-      <text-tag class="tag" data-act="32026R0449" data-action="replaced">▼</text-tag>`;
+      <text-tag class="tag" data-act="32026R0449" data-modification="replaced">▼</text-tag>`;
 
     expect(said(tag())).toBe(
       "Replaced by 2026/449 · applies from 1 October 2026 · Article 2 of 2026/449",
@@ -72,7 +72,7 @@ const text = (listed = "") => {
       <div class="content">
         <div id="art_6"><h3 class="title">Article 6</h3>
           <div id="art_6/par_1"><span class="num">1.</span><p>One.</p></div>
-          <div id="art_6/par_2"><text-tag class="tag" data-act="32024R1356" data-action="replaced"></text-tag><span class="num">2.</span><p>Two.</p></div>
+          <div id="art_6/par_2"><text-tag class="tag" data-act="32024R1356" data-modification="replaced"></text-tag><span class="num">2.</span><p>Two.</p></div>
         </div>
       </div>
     </div>`;
@@ -226,7 +226,7 @@ describe("TextTag", () => {
   test("leaves hover text empty outside the text of Read", () => {
     document.body.innerHTML = `
       <div>
-        <text-tag class="tag" data-act="32017R0815" data-action="inserted">▼</text-tag>
+        <text-tag class="tag" data-act="32017R0815" data-modification="inserted">▼</text-tag>
       </div>`;
 
     expect(tag().title).toBe("");

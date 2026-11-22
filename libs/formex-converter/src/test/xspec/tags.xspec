@@ -11,7 +11,7 @@
     </x:context>
     <x:expect label="becomes tag on that paragraph only">
       <occurrence eId="pnt_1.0.3" kind="level" depth="3" numbered="true"><num><t v="1.0.3"/></num>
-        <p><tag amendingAct="32017R0815" action="replaced" location="AR:1 .AND. AX:0;PT:1" tagId="O1"/><t v="new text"/></p>
+        <p><tag amendingAct="32017R0815" modification="replaced" location="AR:1 .AND. AX:0;PT:1" tagId="O1"/><t v="new text"/></p>
         <p><t v="old text"/></p>
       </occurrence>
     </x:expect>
@@ -22,7 +22,7 @@
       <LIST TYPE="alpha"><?CLG.MDFO ID="O1" IDREF="C1" ACTION="INSERTED" ACTIVE.DOC="32026R0449" ACTIVE.LOC="AR:1"?><ITEM><NP><NO.P>(a)</NO.P><TXT>staff and crew;</TXT></NP></ITEM><?CLG.MDFC ID="C1" IDREF="O1"?></LIST>
     </x:context>
     <x:expect label="is the occurrence's tag, and its text has none"
-              test="$x:result/*:occurrence/*:tag/@action = 'inserted' and empty($x:result/*:occurrence/*:p/*:tag)"/>
+              test="$x:result/*:occurrence/*:tag/@modification = 'inserted' and empty($x:result/*:occurrence/*:p/*:tag)"/>
   </x:scenario>
 
   <x:scenario label="A tag that opens before a point's number and closes inside its text (02005L0036, Article 10(e))">
@@ -63,7 +63,7 @@
   <x:scenario label="A tag around all the text of a paragraph">
     <x:context mode="block" xmlns=""><P><?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32022R1174" ACTIVE.LOC="PT:30"?>Airport supplies shall be screened<?CLG.MDFC ID="C1" IDREF="O1"?></P></x:context>
     <x:expect label="is the paragraph's tag, not a span">
-      <p><tag amendingAct="32022R1174" action="replaced" location="PT:30" tagId="O1"/><t v="Airport supplies shall be screened"/></p>
+      <p><tag amendingAct="32022R1174" modification="replaced" location="PT:30" tagId="O1"/><t v="Airport supplies shall be screened"/></p>
     </x:expect>
   </x:scenario>
 
@@ -84,7 +84,7 @@
     <x:expect label="is kept inside deleted, with the deleting act">
       <occurrence eId="pnt_11.1.1" kind="level" depth="4" numbered="true"><num><t v="11.1.1"/></num>
         <p><t v="The following personnel"/></p>
-        <deleted><tag amendingAct="32026R0449" action="deleted" location="PT:23" tagId="O1"/>
+        <deleted><tag amendingAct="32026R0449" modification="deleted" location="PT:23" tagId="O1"/>
           <p><t v="Point (b) shall apply from "/><date date="2023-01-01"><t v="1 January 2023"/></date><t v="."/></p></deleted>
       </occurrence>
     </x:expect>
@@ -93,23 +93,23 @@
   <x:scenario label="Deleted words">
     <x:context mode="block" xmlns=""><P>points (a), <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="TEXT" ACTIVE.DOC="32019R0103" ACTIVE.LOC="PT:5"?>and <?CLG.MDFC ID="C1" IDREF="O1"?>(b)</P></x:context>
     <x:expect label="become an inline deleted span">
-      <p><t v="points (a), "/><deleted amendingAct="32019R0103" action="deleted" location="PT:5" tagId="O1"><t v="and "/></deleted><t v="(b)"/></p>
+      <p><t v="points (a), "/><deleted amendingAct="32019R0103" modification="deleted" location="PT:5" tagId="O1"><t v="and "/></deleted><t v="(b)"/></p>
     </x:expect>
   </x:scenario>
 
   <x:scenario label="A deletion over several occurrences, wrapped one by one">
     <x:context mode="f:deletions" xmlns:f="https://kludgeworks.groknull.dev/ns/formex-converter">
       <occurrence eId="anx" kind="annex">
-        <deleted><tag amendingAct="32022R1174" action="deleted" tagId="O1"/><occurrence eId="anx/level_1" kind="level"/></deleted>
-        <deleted><tag amendingAct="32022R1174" action="deleted" tagId="O1"/><occurrence eId="anx/level_2" kind="level"/></deleted>
-        <deleted><tag amendingAct="32026R0449" action="deleted" tagId="O2"/><occurrence eId="anx/level_3" kind="level"/></deleted>
+        <deleted><tag amendingAct="32022R1174" modification="deleted" tagId="O1"/><occurrence eId="anx/level_1" kind="level"/></deleted>
+        <deleted><tag amendingAct="32022R1174" modification="deleted" tagId="O1"/><occurrence eId="anx/level_2" kind="level"/></deleted>
+        <deleted><tag amendingAct="32026R0449" modification="deleted" tagId="O2"/><occurrence eId="anx/level_3" kind="level"/></deleted>
         <occurrence eId="anx/level_4" kind="level"/>
       </occurrence>
     </x:context>
     <x:expect label="becomes one deleted for each deletion, as EUR-Lex shows one tag">
       <occurrence eId="anx" kind="annex">
-        <deleted><tag amendingAct="32022R1174" action="deleted" tagId="O1"/><occurrence eId="anx/level_1" kind="level"/><occurrence eId="anx/level_2" kind="level"/></deleted>
-        <deleted><tag amendingAct="32026R0449" action="deleted" tagId="O2"/><occurrence eId="anx/level_3" kind="level"/></deleted>
+        <deleted><tag amendingAct="32022R1174" modification="deleted" tagId="O1"/><occurrence eId="anx/level_1" kind="level"/><occurrence eId="anx/level_2" kind="level"/></deleted>
+        <deleted><tag amendingAct="32026R0449" modification="deleted" tagId="O2"/><occurrence eId="anx/level_3" kind="level"/></deleted>
         <occurrence eId="anx/level_4" kind="level"/>
       </occurrence>
     </x:expect>
@@ -128,7 +128,7 @@
       <P><?CLG.MDFO ID="O1" IDREF="C1"ACTION="DELETED" LEVEL="TEXT" COMMAND="EXPLICIT" ACTIVE.DOC="385L0298"ACTIVE.LOC="AR:1;PT:1;PT:a" MOD.LEVEL="1"?>deleted text<?CLG.MDFC ID="C1" IDREF="O1"?></P>
     </x:context>
     <x:expect label="parses the pseudo-attributes properly">
-      <deleted><tag amendingAct="31985L0298" action="deleted" location="AR:1;PT:1;PT:a" tagId="O1"/><p><t v="deleted text"/></p></deleted>
+      <deleted><tag amendingAct="31985L0298" modification="deleted" location="AR:1;PT:1;PT:a" tagId="O1"/><p><t v="deleted text"/></p></deleted>
     </x:expect>
   </x:scenario>
 
@@ -138,7 +138,7 @@
     </x:context>
     <x:expect label="becomes tag on the figure">
       <figure src="image1.tif">
-        <tag amendingAct="32015L0996R(01)" action="replaced" location="AX:0;PG:25" tagId="O1"/>
+        <tag amendingAct="32015L0996R(01)" modification="replaced" location="AX:0;PG:25" tagId="O1"/>
       </figure>
     </x:expect>
   </x:scenario>
@@ -149,7 +149,7 @@
     </x:context>
     <x:expect label="is wrapped in deleted with tag">
       <deleted>
-        <tag amendingAct="32009D0317" action="deleted" location="LI:0;PT:1" tagId="O1"/>
+        <tag amendingAct="32009D0317" modification="deleted" location="LI:0;PT:1" tagId="O1"/>
         <figure src="image2.tif"/>
       </deleted>
     </x:expect>
@@ -161,7 +161,7 @@
     </x:context>
     <x:expect label="becomes tag on the math block"
               test="$x:result/self::*:math/*:tag/@amendingAct = '32010L0075R(01)'
-                    and $x:result/self::*:math/*:tag/@action = 'replaced'"/>
+                    and $x:result/self::*:math/*:tag/@modification = 'replaced'"/>
   </x:scenario>
 
   <x:scenario label="A deleted displayed formula alone">

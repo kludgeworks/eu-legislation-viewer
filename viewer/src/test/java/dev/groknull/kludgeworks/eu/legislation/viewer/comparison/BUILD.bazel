@@ -115,6 +115,7 @@ java_junit5_test(
     size = "small",
     srcs = [
         "model/ComparisonRules.java",
+        "model/ModificationSteps.java",
         "model/TagsSteps.java",
     ],
     test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.ComparisonRules",

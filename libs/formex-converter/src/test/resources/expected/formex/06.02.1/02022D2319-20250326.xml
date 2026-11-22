@@ -285,7 +285,7 @@
    <body>
       <occurrence eId="art_1" kind="article" rank="1">
          <tag amendingAct="32024D1804"
-              action="replaced"
+              modification="replaced"
               location="AR:1"
               tagId="O005001M001000"/>
          <num>
@@ -293,7 +293,7 @@
          </num>
          <occurrence eId="art_1/par_1" kind="paragraph">
             <tag amendingAct="32025D0601"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:1;PT:a"
                  tagId="O009001M001000"/>
             <num>
@@ -305,7 +305,7 @@
          </occurrence>
          <occurrence eId="art_1/par_2" kind="paragraph">
             <tag amendingAct="32025D0601"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:1;PT:b"
                  tagId="O009001M002000"/>
             <num>
@@ -367,7 +367,7 @@
          </occurrence>
          <occurrence eId="art_1/par_6" kind="paragraph">
             <tag amendingAct="32025D0601"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:1;PT:c"
                  tagId="O009001M003000"/>
             <num>
@@ -406,12 +406,12 @@
       </occurrence>
       <deleted>
          <tag amendingAct="32025D0601"
-              action="deleted"
+              modification="deleted"
               location="AR:1;PT:2"
               tagId="O009001M004000"/>
          <occurrence eId="art_1a" kind="article" rank="1">
             <tag amendingAct="32023D1574"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:2"
                  tagId="O002001M002000"/>
             <num>
@@ -545,7 +545,7 @@
                      <p>
                         <t v="attacking personnel or premises of United Nations missions and operations in Haiti, or providing support for such attacks"/>
                         <changed amendingAct="32025D0601"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="AR:1;PT:3"
                                  tagId="O009001M015000">
                            <t v=";"/>
@@ -554,7 +554,7 @@
                   </occurrence>
                   <occurrence eId="art_2/par_1/sub_1/pnt_i" kind="point" numbered="true">
                      <tag amendingAct="32025D0601"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:1;PT:3"
                           tagId="O009001M005000"/>
                      <num>
@@ -570,7 +570,7 @@
                <p>
                   <t v="The persons referred to in this paragraph are listed in "/>
                   <changed amendingAct="32023D1574"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:1;PT:3;PT:a"
                            tagId="O002001M003000">
                      <t v="Annex I"/>
@@ -628,7 +628,7 @@
             <p>
                <t v="In cases where, pursuant to paragraph 3 or 4, a Member State authorises the entry into, or transit through, its territory of persons listed in "/>
                <changed amendingAct="32023D1574"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:1;PT:3;PT:b"
                         tagId="O002001M004000">
                   <t v="Annex I"/>
@@ -639,7 +639,7 @@
       </occurrence>
       <occurrence eId="art_2a" kind="article" rank="1">
          <tag amendingAct="32023D1574"
-              action="inserted"
+              modification="inserted"
               location="AR:1;PT:4"
               tagId="O002001M005000"/>
          <num>
@@ -730,7 +730,7 @@
                         </occurrence>
                         <occurrence eId="art_2a/par_1/sub_1/pnt_a/pnt_ix" kind="point" numbered="true">
                            <tag amendingAct="32025D0601"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1;PT:4"
                                 tagId="O009001M006000"/>
                            <num>
@@ -944,7 +944,7 @@
                      <p>
                         <t v="or by persons or entities acting on their behalf or at their direction, or entities owned or controlled by them, shall be frozen"/>
                         <changed amendingAct="32025D0601"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="AR:1;PT:5"
                                  tagId="O009001M016000">
                            <t v=";"/>
@@ -953,7 +953,7 @@
                   </occurrence>
                   <occurrence eId="art_3/par_1/sub_1/pnt_i" kind="point" numbered="true">
                      <tag amendingAct="32025D0601"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:1;PT:5"
                           tagId="O009001M007000"/>
                      <num>
@@ -969,7 +969,7 @@
                <p>
                   <t v="The designated persons or entities referred to in this paragraph are listed in "/>
                   <changed amendingAct="32023D1574"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:1;PT:5;PT:a"
                            tagId="O002001M006000">
                      <t v="Annex I"/>
@@ -985,7 +985,7 @@
             <p>
                <t v="No funds or economic resources shall be made available directly or indirectly, to or for the benefit of the persons or entities listed in "/>
                <changed amendingAct="32023D1574"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:1;PT:5;PT:b"
                         tagId="O002001M007000">
                   <t v="Annex I"/>
@@ -1053,7 +1053,7 @@
                   <p>
                      <t v="the subject of a judicial, administrative or arbitral lien or judgment, in which case the funds, other financial assets and economic resources may be used to satisfy that lien or judgment provided that the lien was established or the judgment was rendered prior to the date on which the person or entity was included in "/>
                      <changed amendingAct="32023D1574"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:1;PT:5;PT:c"
                               tagId="O002001M008000">
                         <t v="Annex I"/>
@@ -1102,7 +1102,7 @@
          </occurrence>
          <occurrence eId="art_3/par_7" kind="paragraph">
             <tag amendingAct="32023D0338"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:4"
                  tagId="O001001M001000"/>
             <num>
@@ -1165,7 +1165,7 @@
       </occurrence>
       <occurrence eId="art_3a" kind="article" rank="1">
          <tag amendingAct="32023D1574"
-              action="inserted"
+              modification="inserted"
               location="AR:1;PT:6"
               tagId="O002001M009000"/>
          <num>
@@ -1256,7 +1256,7 @@
                         </occurrence>
                         <occurrence eId="art_3a/par_1/sub_1/pnt_a/pnt_ix" kind="point" numbered="true">
                            <tag amendingAct="32025D0601"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1;PT:6"
                                 tagId="O009001M008000"/>
                            <num>
@@ -1524,7 +1524,7 @@
       </occurrence>
       <occurrence eId="art_4" kind="article" rank="1">
          <tag amendingAct="32023D1574"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:7"
               tagId="O002001M010000"/>
          <num>
@@ -1561,7 +1561,7 @@
          </num>
          <occurrence eId="art_5/par_1" kind="paragraph">
             <tag amendingAct="32023D1574"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:8;PT:a"
                  tagId="O002001M011000"/>
             <num>
@@ -1573,7 +1573,7 @@
          </occurrence>
          <occurrence eId="art_5/par_1a" kind="paragraph">
             <tag amendingAct="32023D1574"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:8;PT:b"
                  tagId="O002001M012000"/>
             <num>
@@ -1594,7 +1594,7 @@
       </occurrence>
       <occurrence eId="art_6" kind="article" rank="1">
          <tag amendingAct="32023D1574"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:9"
               tagId="O002001M013000"/>
          <num>
@@ -1639,7 +1639,7 @@
          </num>
          <occurrence eId="art_7/par_1" kind="paragraph">
             <tag amendingAct="32023D1574"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:10"
                  tagId="O002001M014000"/>
             <num>
@@ -1669,7 +1669,7 @@
          </occurrence>
          <occurrence eId="art_7/par_2" kind="paragraph">
             <tag amendingAct="32023D1574"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:10"
                  tagId="O002001M014000"/>
             <num>
@@ -1696,7 +1696,7 @@
       </occurrence>
       <occurrence eId="art_7a" kind="article" rank="1">
          <tag amendingAct="32023D1574"
-              action="inserted"
+              modification="inserted"
               location="AR:1;PT:11"
               tagId="O002001M015000"/>
          <num>
@@ -1726,7 +1726,7 @@
       </occurrence>
       <occurrence eId="art_8" kind="article" rank="1">
          <tag amendingAct="32023D1574"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:12"
               tagId="O002001M016000"/>
          <num>
@@ -1747,7 +1747,7 @@
             <p>
                <t v="The measures referred to in Article 2a(1) and Article 3a(1) and (2) shall apply until "/>
                <changed amendingAct="32024D1968"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:1"
                         tagId="O006001M001000">
                   <date date="2025-07-29">
@@ -1783,7 +1783,7 @@
       <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
             <changed amendingAct="32023D1574"
-                     action="renumbered"
+                     modification="renumbered"
                      location="AR:1;PT:13"
                      tagId="O002001M017000">
                <t v="ANNEX I"/>
@@ -1798,7 +1798,7 @@
             </heading>
             <occurrence eId="anx_I/level_1/list_1/pnt_1" kind="point" numbered="true">
                <tag amendingAct="32023D2575"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0"
                     tagId="O003001M001000"/>
                <num>
@@ -1869,7 +1869,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/level_1" kind="level" depth="2" rank="3">
             <tag amendingAct="32023D2575"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1 .AND. AX:0"
                  tagId="O003001M001000"/>
             <heading>
@@ -1891,7 +1891,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/list_2/pnt_2" kind="point" numbered="true">
             <tag amendingAct="32024D0290"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1 .AND. AX:0"
                  tagId="O004001M001000"/>
             <num>
@@ -1983,7 +1983,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/list_2/pnt_3" kind="point" numbered="true">
             <tag amendingAct="32024D0290"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1 .AND. AX:0"
                  tagId="O004001M001000"/>
             <num>
@@ -2102,7 +2102,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/list_2/pnt_4" kind="point" numbered="true">
             <tag amendingAct="32024D0290"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1 .AND. AX:0"
                  tagId="O004001M001000"/>
             <num>
@@ -2191,7 +2191,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/list_2/pnt_5" kind="point" numbered="true">
             <tag amendingAct="32024D0290"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1 .AND. AX:0"
                  tagId="O004001M001000"/>
             <num>
@@ -2297,7 +2297,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/list_2/pnt_6" kind="point" numbered="true">
             <tag amendingAct="32024D2756"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1 .AND. AX:0"
                  tagId="O007001M001000"/>
             <num>
@@ -2376,7 +2376,7 @@
          </occurrence>
          <occurrence eId="anx_I/level_1/list_2/pnt_7" kind="point" numbered="true">
             <tag amendingAct="32024D2756"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1 .AND. AX:0"
                  tagId="O007001M001000"/>
             <num>
@@ -2463,7 +2463,7 @@
       </occurrence>
       <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <tag amendingAct="32023D1574"
-              action="inserted"
+              modification="inserted"
               location="AR:1;PT:14 .AND. AX:0"
               tagId="O002001M018000"/>
          <num>
@@ -2479,7 +2479,7 @@
                </p>
                <table cols="5">
                   <tag amendingAct="32024D3139"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:1 .AND. AX:0"
                        tagId="O008001M001000"/>
                   <tr header="true">

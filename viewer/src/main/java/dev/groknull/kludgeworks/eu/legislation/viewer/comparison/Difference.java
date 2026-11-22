@@ -220,14 +220,15 @@ public record Difference(
   /**
    * A tag on the content of an occurrence, as the consolidation has it. For example, ▼M20. The
    * converter keeps the tag as {@code tag}, {@code changed} or {@code deleted}. The tag names the
-   * act that put the content in its form there, and what the act did.
+   * act that put the content in its form there, and its modification.
    *
    * @param act the CELEX of the amending act. For example, 32026R0449.
-   * @param action what the act did, as legal-text has it: replaced, inserted, deleted or renumbered
+   * @param modification what the act did, as legal-text has it: replaced, inserted, deleted or
+   *     renumbered
    * @param in the eId of the enclosing occurrence that the act put in its form whole, if the
    *     occurrence has no tag of its own. For example, 2019/103 replaced section 11.1 with its
    *     points. Null for a tag of the occurrence itself.
    */
   @ValueObject
-  public record Tag(String act, String action, @Nullable String in) {}
+  public record Tag(String act, Modification modification, @Nullable String in) {}
 }

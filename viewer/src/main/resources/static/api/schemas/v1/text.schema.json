@@ -64,7 +64,7 @@
       "type": "string"
     },
     "html": {
-      "description": "The text as HTML. It uses only these elements: b, i, u, s, sup, sub, span (with class uc, sc, expanded or box; with lang; or with data-act and data-action), time (with datetime), cite, a (with href), br, img (with data-file), ins, del, and math in MathML.",
+      "description": "The text as HTML. It uses only these elements: b, i, u, s, sup, sub, span (with class uc, sc, expanded or box; with lang; or with data-act and data-modification), time (with datetime), cite, a (with href), br, img (with data-file), ins, del, and math in MathML.",
       "type": "string"
     },
     "blocks": {
@@ -96,9 +96,9 @@
       "type": "object",
       "properties": {
         "act": { "type": "string", "description": "The CELEX number of the amending act." },
-        "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] }
+        "modification": { "enum": ["replaced", "inserted", "deleted", "renumbered"] }
       },
-      "required": ["act", "action"]
+      "required": ["act", "modification"]
     },
     "paragraph": {
       "description": "A paragraph of running text.",

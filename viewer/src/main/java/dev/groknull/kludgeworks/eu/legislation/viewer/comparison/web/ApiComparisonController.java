@@ -463,14 +463,14 @@ class ApiComparisonController {
    * A tag, as the API shows it. For example, ▼M20.
    *
    * @param act the CELEX number of the amending act
-   * @param action what the act did: replaced, inserted, deleted or renumbered
+   * @param modification what the act did: replaced, inserted, deleted or renumbered
    * @param in the eId of the enclosing occurrence that the act put in its form whole, or null for a
    *     tag of the occurrence itself
    */
-  record TagModel(String act, String action, @Nullable String in) {
+  record TagModel(String act, String modification, @Nullable String in) {
 
     static TagModel of(Difference.Tag tag) {
-      return new TagModel(tag.act(), tag.action(), tag.in());
+      return new TagModel(tag.act(), tag.modification().word(), tag.in());
     }
   }
 

@@ -131,7 +131,7 @@
             <p>
                <t v="Annex II to Decision 2002/358/EC sets quantified emission limitation or reduction commitments for the purpose of determining the "/>
                <changed amendingAct="32006D0944R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;EL:1"
                         tagId="O000001M001000">
                   <t v="respective emission levels"/>
@@ -150,7 +150,7 @@
             <p>
                <t v="The "/>
                <changed amendingAct="32006D0944R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;EL:1"
                         tagId="O000001M002000">
                   <t v="respective emission levels"/>
@@ -179,7 +179,7 @@
             <p>
                <t v="The revision of emissions data for the base-year under the Kyoto Protocol, submitted by Member States pursuant to Article 23 of Decision 2005/166/EC, required a recalculation resulting in an arithmetic difference of "/>
                <changed amendingAct="32006D0944R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;EL:2"
                         tagId="O000001M005000">
                   <number v="11403608"/>
@@ -190,7 +190,7 @@
          </occurrence>
          <deleted>
             <tag amendingAct="32006D0944R(01)"
-                 action="deleted"
+                 modification="deleted"
                  location="LI:0;EL:3"
                  tagId="O000001M006000"/>
             <occurrence eId="pbl_1/rct_5" kind="recital">
@@ -205,7 +205,7 @@
          <occurrence eId="pbl_1/rct_5" kind="recital">
             <num>
                <changed amendingAct="32006D0944R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;EL:3"
                         tagId="O000001M007000">
                   <t v="(5)"/>
@@ -218,7 +218,7 @@
          <occurrence eId="pbl_1/rct_6" kind="recital">
             <num>
                <changed amendingAct="32006D0944R(01)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;EL:3"
                         tagId="O000001M008000">
                   <t v="(6)"/>
@@ -243,7 +243,7 @@
          <p>
             <t v="The "/>
             <changed amendingAct="32006D0944R(01)"
-                     action="replaced"
+                     modification="replaced"
                      location="LI:0;EL:1"
                      tagId="O000001M003000">
                <t v="respective emission levels"/>
@@ -253,7 +253,7 @@
       </occurrence>
       <occurrence eId="art_2" kind="article" rank="1">
          <tag amendingAct="32010D0778"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:1"
               tagId="O001001M001000"/>
          <num>
@@ -277,7 +277,7 @@
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <tag amendingAct="32010D0778"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:2 .AND. AX:0"
               tagId="O001001M002000"/>
          <num>

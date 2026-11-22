@@ -44,10 +44,10 @@
       "type": "object",
       "properties": {
         "act": { "type": "string", "description": "The CELEX number of the amending act." },
-        "action": { "enum": ["replaced", "inserted", "deleted", "renumbered"] },
+        "modification": { "enum": ["replaced", "inserted", "deleted", "renumbered"] },
         "in": { "type": ["string", "null"], "description": "The eId of the occurrence that the act gave its form as a whole. Null for a tag of the occurrence itself." }
       },
-      "required": ["act", "action", "in"]
+      "required": ["act", "modification", "in"]
     },
     "amendment": {
       "description": "An amendment that Cellar records at an occurrence.",

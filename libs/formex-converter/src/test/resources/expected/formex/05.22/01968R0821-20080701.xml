@@ -75,7 +75,7 @@
          <p>
             <docType>
                <deleted amendingAct="32008R0508"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O002001M001000">
                   <emphasis kind="uc">
@@ -86,7 +86,7 @@
             <t v=" "/>
             <docNumber>
                <deleted amendingAct="32008R0508"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O002001M001000">
                   <t v=" (EEC) No 821/68 "/>
@@ -98,7 +98,7 @@
          </p>
          <p>
             <deleted amendingAct="32008R0508"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2"
                      tagId="O002001M001000">
                <t v="of 28 June 1968"/>
@@ -107,7 +107,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32008R0508"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O002001M001000">
                   <t v="on the definition, applicable to the granting of export refunds, of hulled grains and pearled grains of cereals"/>
@@ -120,7 +120,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32008R0508"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <p>
@@ -131,7 +131,7 @@
       <citations>
          <deleted>
             <tag amendingAct="32008R0508"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
@@ -151,7 +151,7 @@
       <recitals>
          <deleted>
             <tag amendingAct="32008R0508"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
@@ -177,7 +177,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32008R0508"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <p>
@@ -189,7 +189,7 @@
    <body>
       <deleted>
          <tag amendingAct="32008R0508"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
@@ -213,7 +213,7 @@
    <conclusions>
       <deleted>
          <tag amendingAct="32008R0508"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <p>
@@ -224,7 +224,7 @@
    <annexes>
       <deleted>
          <tag amendingAct="32008R0508"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
@@ -285,7 +285,7 @@
             <occurrence eId="anx/pnt_B" kind="level" depth="1" numbered="true">
                <num>
                   <changed amendingAct="31971R1634"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:1 .AND. AX:0"
                            tagId="O001001M008000">
                      <t v="B."/>
@@ -293,7 +293,7 @@
                </num>
                <p>
                   <tag amendingAct="31971R1634"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1 .AND. AX:0"
                        tagId="O001001M008000"/>
                   <quote startQuote="‘" endQuote="’">
@@ -308,7 +308,7 @@
                         numbered="true"
                         rank="2">
                <tag amendingAct="31971R1634"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0"
                     tagId="O001001M008000"/>
                <num>
@@ -320,7 +320,7 @@
             </occurrence>
             <occurrence eId="anx/pnt_1" kind="level" depth="3" numbered="true">
                <tag amendingAct="31971R1634"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0"
                     tagId="O001001M008000"/>
                <num>
@@ -335,7 +335,7 @@
             </occurrence>
             <occurrence eId="anx/pnt_2" kind="level" depth="3" numbered="true">
                <tag amendingAct="31971R1634"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0"
                     tagId="O001001M008000"/>
                <num>
@@ -393,7 +393,7 @@
                         numbered="true"
                         rank="2">
                <tag amendingAct="31971R1634"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0"
                     tagId="O001001M008000"/>
                <num>
@@ -459,7 +459,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32008R0508"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">

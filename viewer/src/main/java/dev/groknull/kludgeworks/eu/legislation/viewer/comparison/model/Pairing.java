@@ -476,7 +476,7 @@ final class Pairing {
   }
 
   private static void add(Element element, Set<Renumbering> found) {
-    if ("renumbered".equals(element.attribute("action"))) {
+    if ("renumbered".equals(element.attribute("modification"))) {
       found.add(new Renumbering(element.attribute("amendingAct"), element.attribute("tagId")));
     }
   }

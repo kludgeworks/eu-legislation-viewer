@@ -2804,7 +2804,7 @@
                         </date>
                         <t v=". "/>
                         <changed amendingAct="12012J/ACT"
-                                 action="inserted"
+                                 modification="inserted"
                                  location="AR:12"
                                  tagId="O001001M001000">
                            <t v="In respect of restrictions existing under national law in Croatia, the relevant date shall be "/>
@@ -5465,7 +5465,7 @@
                         <t v="The primary objective of the European System of Central Banks (hereinafter referred to as "/>
                         <t v="‘"/>
                         <changed amendingAct="12007LR(03)"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="LI:0;PT:1;PT:f"
                                  tagId="O001001M002000">
                            <t v="the ESCB"/>
@@ -5603,7 +5603,7 @@
                         <t v="The Statute of the European System of Central Banks and of the European Central Bank (hereinafter referred to as "/>
                         <t v="‘"/>
                         <changed amendingAct="12007LR(03)"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="LI:0;PT:1;PT:g"
                                  tagId="O001001M003000">
                            <t v="the Statute of the ESCB and of the ECB"/>
@@ -5759,7 +5759,7 @@
                               <p>
                                  <t v="to examine, at least once a year, the situation regarding the movement of capital and the freedom of payments, as they result from the application "/>
                                  <changed amendingAct="12007LR(03)"
-                                          action="replaced"
+                                          modification="replaced"
                                           location="LI:0;PT:1;PT:h"
                                           tagId="O001001M004000">
                                     <t v="of the Treaties"/>
@@ -5858,7 +5858,7 @@
                   </occurrence>
                   <occurrence eId="art_136/par_3" kind="paragraph">
                      <tag amendingAct="32011D0199"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:1"
                           tagId="O001001M005000"/>
                      <num>
@@ -8411,7 +8411,7 @@
                      </occurrence>
                      <occurrence eId="art_194/par_1/pnt_b" kind="point" numbered="true">
                         <tag amendingAct="12007LR(03)"
-                             action="replaced"
+                             modification="replaced"
                              location="LI:0;PT:1;PT:i"
                              tagId="O001001M006000"/>
                         <num>
@@ -8819,7 +8819,7 @@
          </num>
          <subheading>
             <changed amendingAct="12007LR(11)"
-                     action="replaced"
+                     modification="replaced"
                      location="LI:0;PT:1;PT:f"
                      tagId="O001001M007000">
                <emphasis kind="b">
@@ -9565,7 +9565,7 @@
                </occurrence>
                <occurrence eId="art_220/par_2" kind="paragraph">
                   <tag amendingAct="12007LR(11)"
-                       action="replaced"
+                       modification="replaced"
                        location="LI:0;PT:1;PT:g"
                        tagId="O001001M008000"/>
                   <num>
@@ -9748,14 +9748,14 @@
                         <p>
                            <t v="The European Parliament "/>
                            <changed amendingAct="12007L/TXTR(03)"
-                                    action="inserted"
+                                    modification="inserted"
                                     location="LI:0;PT:1;PT:c"
                                     tagId="O001001M009000">
                               <t v=", acting by means of regulations on its own initiative in accordance with a special legislative procedure"/>
                            </changed>
                            <t v=" after seeking an opinion from the Commission and with the "/>
                            <changed amendingAct="12007L/TXTR(03)"
-                                    action="replaced"
+                                    modification="replaced"
                                     location="LI:0;PT:1;PT:c"
                                     tagId="O001001M010000">
                               <t v="consent"/>
@@ -9877,14 +9877,14 @@
                         <p>
                            <t v="The European Parliament "/>
                            <changed amendingAct="12007L/TXTR(03)"
-                                    action="inserted"
+                                    modification="inserted"
                                     location="LI:0;PT:1;PT:d"
                                     tagId="O001001M011000">
                               <t v="acting by means of regulations on its own initiative in accordance with a special legislative procedure"/>
                            </changed>
                            <t v=" shall, after seeking an opinion from the Commission and with the "/>
                            <changed amendingAct="12007L/TXTR(03)"
-                                    action="replaced"
+                                    modification="replaced"
                                     location="LI:0;PT:1;PT:d"
                                     tagId="O001001M012000">
                               <t v="consent"/>
@@ -10508,7 +10508,7 @@
                         <p>
                            <t v="The number of Judges "/>
                            <changed amendingAct="12007LR(03)"
-                                    action="inserted"
+                                    modification="inserted"
                                     location="LI:0;PT:1;PT:j"
                                     tagId="O001001M013000">
                               <t v="of the General Court"/>
@@ -10721,7 +10721,7 @@
                      <occurrence eId="art_260/par_2" kind="paragraph">
                         <num>
                            <changed amendingAct="12007LR(03)"
-                                    action="replaced"
+                                    modification="replaced"
                                     location="LI:0;PT:1;PT:k"
                                     tagId="O001001M014000">
                               <t v="2."/>
@@ -10730,7 +10730,7 @@
                         <occurrence eId="art_260/par_2/sub_1" kind="subparagraph">
                            <p>
                               <changed amendingAct="12007LR(03)"
-                                       action="replaced"
+                                       modification="replaced"
                                        location="LI:0;PT:1;PT:k"
                                        tagId="O001001M014000">
                                  <t v="If the Commission considers that the Member State concerned has not taken the necessary measures to comply with the judgment of the Court,"/>
@@ -11089,7 +11089,7 @@
                      </heading>
                      <p>
                         <changed amendingAct="12007LR(03)"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="LI:0;PT:1;PT:l"
                                  tagId="O001001M015000">
                            <t v="Notwithstanding the expiry of the period laid down in Article 263, sixth paragraph, any party may,"/>
@@ -11397,7 +11397,7 @@
                         <p>
                            <t v="The Council shall determine the conditions of employment of the President and the Members of the Court of Auditors and in particular their salaries, allowances and pensions. It shall also "/>
                            <deleted amendingAct="12007LR(03)"
-                                    action="deleted"
+                                    modification="deleted"
                                     location="LI:0;PT:1;PT:m"
                                     tagId="O001001M016000">
                               <t v="by the same majority"/>
@@ -12594,7 +12594,7 @@
                      </occurrence>
                      <occurrence eId="art_312/par_2/sub_2" kind="subparagraph">
                         <tag amendingAct="12007LR(03)"
-                             action="replaced"
+                             modification="replaced"
                              location="LI:0;PT:1;PT:n"
                              tagId="O001001M017000"/>
                         <p>
@@ -13048,7 +13048,7 @@
                   <p>
                      <t v="Regular meetings between the Presidents of the European Parliament, the Council and the Commission shall be convened, "/>
                      <changed amendingAct="12007LR(03)"
-                              action="replaced"
+                              modification="replaced"
                               location="LI:0;PT:1;PT:o"
                               tagId="O001001M018000">
                         <t v="on the initiative of the Commission, under the budgetary procedures referred to in this Title."/>
@@ -13522,7 +13522,7 @@
             <p>
                <t v="The European Parliament and the Council shall, "/>
                <changed amendingAct="12007LR(11)"
-                        action="replaced"
+                        modification="replaced"
                         location="LI:0;PT:1;PT:h"
                         tagId="O001001M019000">
                   <t v="acting by means of regulations in accordance with the ordinary legislative procedure and after"/>
@@ -13749,14 +13749,14 @@
                <p>
                   <t v="Taking account of the structural social and economic situation of Guadeloupe, French Guiana, Martinique, "/>
                   <changed amendingAct="32012D0419"
-                           action="inserted"
+                           modification="inserted"
                            location="AR:2;PT:1"
                            tagId="O001001M020000">
                      <t v="Mayotte,"/>
                   </changed>
                   <t v=" Réunion, "/>
                   <deleted amendingAct="32010D0718"
-                           action="deleted"
+                           modification="deleted"
                            location="AR:2;PT:1"
                            tagId="O001001M021000">
                      <t v="Saint-Barthélemy,"/>
@@ -13929,14 +13929,14 @@
                   <p>
                      <t v="The provisions of the Treaties shall apply to Guadeloupe, French Guiana, Martinique, "/>
                      <changed amendingAct="32012D0419"
-                              action="inserted"
+                              modification="inserted"
                               location="AR:2;PT:2"
                               tagId="O001001M022000">
                         <t v="Mayotte,"/>
                      </changed>
                      <t v=" Réunion, "/>
                      <deleted amendingAct="32010D0718"
-                              action="deleted"
+                              modification="deleted"
                               location="AR:2;PT:2"
                               tagId="O001001M023000">
                         <t v="Saint-Barthélemy,"/>
@@ -14127,7 +14127,7 @@
                      <p>
                         <t v="For the purposes of this Protocol, &#34;draft legislative acts&#34; shall mean proposals from the Commission, initiatives from a group of Member States, initiatives from the European Parliament, requests from the Court of Justice, recommendations from the European Central Bank "/>
                         <changed amendingAct="12007LR(11)"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="LI:0;PT:2;PT:a"
                                  tagId="O001001M024000">
                            <t v="and requests from the European Investment Bank, for the adoption of a legislative act."/>
@@ -14585,7 +14585,7 @@
                </subheading>
                <occurrence eId="pro_3/tis_II/art_9" kind="article" rank="4">
                   <tag amendingAct="32015R2422"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:1"
                        tagId="O001001M025000"/>
                   <num>
@@ -14604,7 +14604,7 @@
                </occurrence>
                <occurrence eId="pro_3/art_9a" kind="article" rank="4">
                   <tag amendingAct="32012R0741"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:1;PT:1"
                        tagId="O001001M026000"/>
                   <num>
@@ -14687,7 +14687,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_II/art_16/unp_2" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:2"
                           tagId="O001001M027000"/>
                      <p>
@@ -14726,7 +14726,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_II/art_17/unp_3" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:3"
                           tagId="O001001M028000"/>
                      <p>
@@ -14735,7 +14735,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_II/art_17/unp_4" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:3"
                           tagId="O001001M028000"/>
                      <p>
@@ -14844,7 +14844,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_III/art_20/unp_4" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:4"
                           tagId="O001001M029000"/>
                      <p>
@@ -14903,7 +14903,7 @@
                   </num>
                   <occurrence eId="pro_3/tis_III/art_23/unp_1" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:1;PT:a"
                           tagId="O006001M001000"/>
                      <p>
@@ -14912,7 +14912,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_III/art_23/unp_2" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:1;PT:a"
                           tagId="O006001M001000"/>
                      <p>
@@ -14931,7 +14931,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_III/art_23/unp_5" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:1;PT:1;PT:b"
                           tagId="O006001M002000"/>
                      <p>
@@ -15115,7 +15115,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_III/art_39/unp_2" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:5"
                           tagId="O001001M030000"/>
                      <p>
@@ -15124,7 +15124,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_III/art_39/unp_3" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:5"
                           tagId="O001001M030000"/>
                      <p>
@@ -15256,7 +15256,7 @@
                   </num>
                   <occurrence eId="pro_3/tis_IV/art_47/unp_1" kind="paragraph">
                      <tag amendingAct="32012R0741"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:6"
                           tagId="O001001M031000"/>
                      <p>
@@ -15275,7 +15275,7 @@
                </occurrence>
                <occurrence eId="pro_3/tis_IV/art_48" kind="article" rank="4">
                   <tag amendingAct="32015R2422"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:2"
                        tagId="O001001M032000"/>
                   <num>
@@ -15350,7 +15350,7 @@
                </occurrence>
                <occurrence eId="pro_3/art_49a" kind="article" rank="4">
                   <tag amendingAct="32024R2019"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:1;PT:2"
                        tagId="O006001M003000"/>
                   <num>
@@ -15388,7 +15388,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_IV/art_50/unp_2" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:3;PT:a"
                           tagId="O006001M004000"/>
                      <p>
@@ -15397,7 +15397,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_IV/art_50/unp_3" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:3;PT:a"
                           tagId="O006001M004000"/>
                      <p>
@@ -15406,7 +15406,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_IV/art_50/unp_4" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:1;PT:3;PT:b"
                           tagId="O006001M005000"/>
                      <p>
@@ -15416,7 +15416,7 @@
                </occurrence>
                <occurrence eId="pro_3/art_50a" kind="article" rank="4">
                   <tag amendingAct="32016R1192"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:2;PT:1"
                        tagId="O002001M001000"/>
                   <num>
@@ -15441,7 +15441,7 @@
                </occurrence>
                <occurrence eId="pro_3/art_50b" kind="article" rank="4">
                   <tag amendingAct="32024R2019"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:1;PT:4"
                        tagId="O006001M006000"/>
                   <num>
@@ -15520,7 +15520,7 @@
                </occurrence>
                <occurrence eId="pro_3/tis_IV/art_51" kind="article" rank="4">
                   <tag amendingAct="32019R0629"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:1"
                        tagId="O003001M001000"/>
                   <num>
@@ -15630,7 +15630,7 @@
                   </occurrence>
                   <occurrence eId="pro_3/tis_IV/art_54/unp_2" kind="paragraph">
                      <tag amendingAct="32024R2019"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:5"
                           tagId="O006001M007000"/>
                      <p>
@@ -15713,7 +15713,7 @@
                </occurrence>
                <occurrence eId="pro_3/art_58a" kind="article" rank="4">
                   <tag amendingAct="32024R2019"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:6"
                        tagId="O006001M008000"/>
                   <num>
@@ -15949,7 +15949,7 @@
                </subheading>
                <occurrence eId="pro_3/art_62c" kind="article" rank="4">
                   <tag amendingAct="32016R1192"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:2;PT:2"
                        tagId="O002001M002000"/>
                   <num>
@@ -15971,7 +15971,7 @@
                </subheading>
                <occurrence eId="pro_3/art_62d" kind="article" rank="4">
                   <tag amendingAct="32024R2019"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:1;PT:7"
                        tagId="O006001M009000"/>
                   <num>
@@ -16007,7 +16007,7 @@
             </occurrence>
             <deleted>
                <tag amendingAct="32016R1192"
-                    action="deleted"
+                    modification="deleted"
                     location="AR:2;PT:3"
                     tagId="O002001M003000"/>
                <occurrence eId="pro_3/anx" kind="annex" eurlexAnchor="4" rank="3">
@@ -16035,7 +16035,7 @@
                         <occurrence eId="pro_3/anx/level_1/art_2/par_1" kind="paragraph">
                            <num>
                               <changed amendingAct="32012R0741"
-                                       action="replaced"
+                                       modification="replaced"
                                        location="AR:2"
                                        tagId="O001001M034000">
                                  <t v="1."/>
@@ -16059,7 +16059,7 @@
                         </occurrence>
                         <occurrence eId="pro_3/anx/level_1/art_2/par_2" kind="paragraph">
                            <tag amendingAct="32012R0741"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:2"
                                 tagId="O001001M035000"/>
                            <num>
@@ -18177,7 +18177,7 @@
                   <heading>
                      <t v="Exchange of banknotes "/>
                      <changed amendingAct="12007LR(03)"
-                              action="replaced"
+                              modification="replaced"
                               location="LI:0;PT:2;PT:b"
                               tagId="O001001M036000">
                         <t v="in the currencies of the Member States"/>
@@ -18185,7 +18185,7 @@
                   </heading>
                   <p>
                      <tag amendingAct="12016M/TXTR(05)"
-                          action="replaced"
+                          modification="replaced"
                           location="TO"
                           tagId="O002004M001000"/>
                      <t v="Following the irrevocable fixing of exchange rates in accordance with Article 140(3) of the Treaty on the Functioning of the European Union, the Governing Council shall take the necessary measures to ensure that banknotes denominated in currencies with irrevocably fixed exchange rates are exchanged by the national central banks at their respective par values."/>
@@ -18228,7 +18228,7 @@
                <p>
                   <t v="The European Investment Bank established by Article 308 of the Treaty on the Functioning of the European Union (hereinafter called the &#34;Bank&#34;) is hereby constituted; it shall perform its functions and carry on its activities in accordance with the provisions "/>
                   <changed amendingAct="12007LR(11)"
-                           action="replaced"
+                           modification="replaced"
                            location="LI:0;PT:3;PT:b"
                            tagId="O001001M038000">
                      <t v="of the Treaties"/>
@@ -18259,7 +18259,7 @@
                <occurrence eId="pro_5/art_4/par_1" kind="paragraph">
                   <num>
                      <changed amendingAct="32019D1255"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:1;PT:1;PT:a"
                               tagId="O005001M001000">
                         <t v="1."/>
@@ -18268,7 +18268,7 @@
                   <occurrence eId="pro_5/art_4/par_1/sub_1" kind="subparagraph">
                      <p>
                         <tag amendingAct="32019D1255"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:1;PT:1;PT:a"
                              tagId="O005001M001000"/>
                         <t v="The capital of the Bank shall be EUR "/>
@@ -18277,7 +18277,7 @@
                      </p>
                      <table cols="2">
                         <tag amendingAct="32019D0655"
-                             action="replaced"
+                             modification="replaced"
                              location="PT:3"
                              tagId="O004001M006000"/>
                         <tr>
@@ -18390,7 +18390,7 @@
                         </tr>
                         <tr>
                            <tag amendingAct="32019D1255"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1;PT:1;PT:b"
                                 tagId="O005001M002000"/>
                            <td>
@@ -18478,7 +18478,7 @@
                         </tr>
                         <tr>
                            <tag amendingAct="32019D1255"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:1;PT:1;PT:b"
                                 tagId="O005001M003000"/>
                            <td>
@@ -18651,7 +18651,7 @@
                </num>
                <occurrence eId="pro_5/art_5/par_1" kind="paragraph">
                   <tag amendingAct="12016M/TXTR(04)"
-                       action="replaced"
+                       modification="replaced"
                        location="LI:0;PT:2"
                        tagId="O002003M002000"/>
                   <num>
@@ -18787,7 +18787,7 @@
                      </occurrence>
                      <occurrence eId="pro_5/art_7/par_3/pnt_h" kind="point" numbered="true">
                         <tag amendingAct="32019D0654"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:1;PT:2"
                              tagId="O004001M001000"/>
                         <num>
@@ -18805,7 +18805,7 @@
                   </num>
                   <p>
                      <changed amendingAct="12007L/TXTR(12)"
-                              action="replaced"
+                              modification="replaced"
                               location="TO"
                               tagId="O001001M041000">
                         <t v="Within the framework of the Treaties and this Statute,"/>
@@ -18852,7 +18852,7 @@
                      <p>
                         <t v="The Board of Directors shall take decisions in respect of granting finance, in particular in the form of loans and guarantees, and raising loans; it shall fix the interest rates on loans granted and the commission and other charges. It may, on the basis of a decision taken by a qualified majority, delegate some of its functions to the Management Committee. It shall determine the terms and conditions for such delegation and shall supervise its execution. "/>
                         <changed amendingAct="32019D0654"
-                                 action="inserted"
+                                 modification="inserted"
                                  location="AR:1;PT:3"
                                  tagId="O004001M002000">
                            <t v="It shall, acting by a qualified majority, decide on the Bank's operational plan."/>
@@ -18873,11 +18873,11 @@
                <occurrence eId="pro_5/art_9/par_2" kind="paragraph">
                   <num>
                      <changed amendingAct="12012J/ACT"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:10;PT:2"
                               tagId="O001001M042000">
                         <changed amendingAct="32019D0654"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="AR:1;PT:4;PT:a"
                                  tagId="O004001M003000">
                            <t v="2."/>
@@ -18886,11 +18886,11 @@
                   </num>
                   <occurrence eId="pro_5/art_9/par_2/sub_1" kind="subparagraph">
                      <tag amendingAct="12012J/ACT"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:10;PT:2"
                           tagId="O001001M042000"/>
                      <tag amendingAct="32019D0654"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:4;PT:a"
                           tagId="O004001M003000"/>
                      <p>
@@ -18899,7 +18899,7 @@
                   </occurrence>
                   <occurrence eId="pro_5/art_9/par_2/sub_2" kind="subparagraph">
                      <tag amendingAct="12012J/ACT"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:10;PT:2"
                           tagId="O001001M042000"/>
                      <p>
@@ -18908,11 +18908,11 @@
                   </occurrence>
                   <occurrence eId="pro_5/art_9/par_2/sub_3" kind="subparagraph">
                      <tag amendingAct="12012J/ACT"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:10;PT:2"
                           tagId="O001001M042000"/>
                      <tag amendingAct="32019D1255"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:2"
                           tagId="O005001M004000"/>
                      <p>
@@ -19063,7 +19063,7 @@
                <occurrence eId="pro_5/art_11/par_1" kind="paragraph">
                   <num>
                      <changed amendingAct="32019D0654"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:1;PT:5"
                               tagId="O004001M005000">
                         <t v="1."/>
@@ -19071,7 +19071,7 @@
                   </num>
                   <occurrence eId="pro_5/art_11/par_1/sub_1" kind="subparagraph">
                      <tag amendingAct="32019D0654"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:1;PT:5"
                           tagId="O004001M005000"/>
                      <p>
@@ -19294,7 +19294,7 @@
                   <occurrence eId="pro_5/art_16/par_5/sub_1" kind="subparagraph">
                      <p>
                         <tag amendingAct="32025D0504"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:1"
                              tagId="O007001M001000"/>
                         <t v="The aggregate amount outstanding at any time of loans and guarantees granted by the Bank shall not exceed a maximum ratio in respect of its subscribed capital, reserves, non-allocated provisions and profit and loss account surplus to be established by the Board of Governors acting unanimously. The latter aggregate amount shall be reduced by an amount equal to the amount subscribed (whether or not paid in) for any equity participation of the Bank."/>
@@ -19685,7 +19685,7 @@
                   <p>
                      <t v="The Bank may freely dispose of that part of its capital which is paid up "/>
                      <deleted amendingAct="12007LR(11)"
-                              action="deleted"
+                              modification="deleted"
                               location="LI:0;PT:3;PT:c"
                               tagId="O001001M043000">
                         <t v="in gold or convertible currency"/>
@@ -20335,7 +20335,7 @@
                   </heading>
                   <p>
                      <changed amendingAct="12007LR(03)"
-                              action="replaced"
+                              modification="replaced"
                               location="LI:0;PT:2;PT:c"
                               tagId="O001001M044000">
                         <t v="The European Parliament and the Council, acting by means of regulations in accordance with the ordinary legislative procedure and after consultation of the institutions concerned, shall"/>
@@ -20428,7 +20428,7 @@
                      <p>
                         <t v="Articles 11 to 14 and Article 17 shall apply "/>
                         <changed amendingAct="12007L/TXTR(03)"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="LI:0;PT:2"
                                  tagId="O001001M045000">
                            <t v="to the President of the European Council"/>
@@ -20438,7 +20438,7 @@
                   </occurrence>
                   <occurrence eId="pro_7/cpt_VII/art_19/unp_2" kind="paragraph">
                      <tag amendingAct="12007L/TXTR(03)"
-                          action="inserted"
+                          modification="inserted"
                           location="LI:0;PT:2"
                           tagId="O001001M046000"/>
                      <p>
@@ -20854,7 +20854,7 @@
             <p>
                <t v="DESIRING to lay down the details of the convergence criteria which shall guide the Union "/>
                <changed amendingAct="12007LR(03)"
-                        action="inserted"
+                        modification="inserted"
                         location="LI:0;PT:2;PT:c"
                         tagId="O001001M047000">
                   <t v="in taking decisions to end the derogations of those Member States with a derogation, referred to in Article 140 of the Treaty on the Functioning of the European Union,"/>
@@ -20910,7 +20910,7 @@
                <p>
                   <t v="The Council shall, acting unanimously on a proposal from the Commission and after consulting the European Parliament, "/>
                   <changed amendingAct="12007LR(11)"
-                           action="replaced"
+                           modification="replaced"
                            location="LI:0;PT:3;PT:d"
                            tagId="O001001M048000">
                      <t v="the ECB"/>
@@ -21350,7 +21350,7 @@
                   <p>
                      <t v="Ireland and the United Kingdom of Great Britain and Northern Ireland may at any time request to take part in some or all of the provisions "/>
                      <changed amendingAct="12007LR(11)"
-                              action="replaced"
+                              modification="replaced"
                               location="LI:0;PT:3;PT:e"
                               tagId="O001001M049000">
                         <t v="of the Schengen "/>
@@ -21653,7 +21653,7 @@
                </num>
                <occurrence eId="pro_21/art_4a/par_1" kind="paragraph">
                   <tag amendingAct="12007LR(03)"
-                       action="replaced"
+                       modification="replaced"
                        location="LI:0;PT:2;PT:e"
                        tagId="O001001M050000"/>
                   <num>
@@ -22023,7 +22023,7 @@
                   </num>
                   <occurrence eId="pro_22/anx/art_5/par_1" kind="paragraph">
                      <tag amendingAct="12007LR(03)"
-                          action="replaced"
+                          modification="replaced"
                           location="LI:0;PT:2;PT:f"
                           tagId="O001001M051000"/>
                      <num>
@@ -22266,7 +22266,7 @@
                </num>
                <p>
                   <changed amendingAct="12007LR(11)"
-                           action="replaced"
+                           modification="replaced"
                            location="LI:0;PT:2;PT:b"
                            tagId="O001001M052000">
                      <t v="With reference to Article 2(2) of the Treaty on the Functioning of the European Union"/>
@@ -22831,7 +22831,7 @@
                </subheading>
                <occurrence eId="pro_36/tis_I/art_2" kind="article" rank="4">
                   <tag amendingAct="12010A/PRO/06R(01)"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1"
                        tagId="O001001M053000"/>
                   <num>
@@ -23090,7 +23090,7 @@
                   </occurrence>
                   <occurrence eId="pro_36/tis_II/art_3/par_3" kind="paragraph">
                      <tag amendingAct="12012J/ACT"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:20"
                           tagId="O001001M054000"/>
                      <num>
@@ -23538,7 +23538,7 @@
                </subheading>
                <occurrence eId="pro_36/tis_VI/art_7" kind="article" rank="4">
                   <tag amendingAct="12012J/ACT"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:23;PA:1"
                        tagId="O001001M055000"/>
                   <num>
@@ -23888,7 +23888,7 @@
                </occurrence>
                <occurrence eId="pro_36/tis_VI/art_8" kind="article" rank="4">
                   <tag amendingAct="12012J/ACT"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:24;PA:1"
                        tagId="O001001M056000"/>
                   <num>
@@ -24399,7 +24399,7 @@
          </occurrence>
          <occurrence eId="pro_38" kind="annex" eurlexAnchor="41" rank="2">
             <tag amendingAct="12016E/TXTR(02)"
-                 action="inserted"
+                 modification="inserted"
                  location="LI:0;PT:4"
                  tagId="O002002M001000"/>
             <num>
@@ -25091,7 +25091,7 @@
                         <p>
                            <t v="Ethyl alcohol or neutral spirits, whether or not denatured, of any strength, obtained from agricultural products listed in Annex I"/>
                            <deleted amendingAct="12007LR(03)"
-                                    action="deleted"
+                                    modification="deleted"
                                     location="LI:0;PT:2;PT:h"
                                     tagId="O001001M057000">
                               <t v="to the treaty"/>
@@ -25249,7 +25249,7 @@
                   </occurrence>
                   <deleted>
                      <tag amendingAct="32012D0419"
-                          action="deleted"
+                          modification="deleted"
                           location="AR:2;PT:3"
                           tagId="O001001M058000"/>
                      <occurrence eId="anx_II/level_1/idt_6" kind="indent">
@@ -25265,7 +25265,7 @@
                   </occurrence>
                   <occurrence eId="anx_II/level_1/idt_8" kind="indent">
                      <tag amendingAct="32010D0718"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:2;PT:3"
                           tagId="O001001M059000"/>
                      <p>
@@ -27639,7 +27639,7 @@
                <td>
                   <p>
                      <tag amendingAct="12007LR(03)"
-                          action="replaced"
+                          modification="replaced"
                           location="LI:0;PT:3"
                           tagId="O001001M062000"/>
                      <t v="Article 47 (moved)"/>
@@ -28474,7 +28474,7 @@
                <td>
                   <p>
                      <tag amendingAct="12007LR(11)"
-                          action="replaced"
+                          modification="replaced"
                           location="LI:0;PT:4;PT:d"
                           tagId="O001001M067000"/>
                      <t v="Article 12 (moved)"/>
@@ -30356,7 +30356,7 @@
                <td>
                   <p>
                      <tag amendingAct="12007LR(03)"
-                          action="replaced"
+                          modification="replaced"
                           location="LI:0;PT:3;PT:a"
                           tagId="O001001M068000"/>
                      <t v="Article 284"/>
@@ -32032,7 +32032,7 @@
                <td>
                   <p>
                      <tag amendingAct="12007LR(03)"
-                          action="replaced"
+                          modification="replaced"
                           location="LI:0;PT:3;PT:b"
                           tagId="O001001M069000"/>
                      <t v="PART SIX – INSTITUTIONAL AND FINANCIAL PROVISIONS"/>
@@ -34471,7 +34471,7 @@
             <occurrence eId="note_20/idt_2" kind="indent">
                <p>
                   <tag amendingAct="12007LR(11)"
-                       action="replaced"
+                       modification="replaced"
                        location="LI:0;PT:4;PT:a"
                        tagId="O001001M060000"/>
                   <t v="the first subparagraph of paragraph 2 replaces, in substance, the first subparagraph of Article 221 TEC."/>
@@ -34497,7 +34497,7 @@
       <footnote eId="note_24" marker="20" kind="manual">
          <p>
             <tag amendingAct="12007LR(11)"
-                 action="replaced"
+                 modification="replaced"
                  location="LI:0;PT:4;PT:b"
                  tagId="O001001M061000"/>
             <t v="The current provisions of Title VI of the TEU, on police and judicial cooperation in criminal matters, are replaced by the provisions of Chapters 1, 4 and 5 of Title IV (renumbered V) of Part Three of the TFEU."/>
@@ -34556,7 +34556,7 @@
       <footnote eId="note_35" marker="31" kind="manual">
          <p>
             <tag amendingAct="12007LR(11)"
-                 action="replaced"
+                 modification="replaced"
                  location="LI:0;PT:4;PT:c"
                  tagId="O001001M063000"/>
             <t v="Replaced by Article 5 TEU."/>
@@ -34595,7 +34595,7 @@
       <footnote eId="note_42" marker="38" kind="manual">
          <p>
             <tag amendingAct="12007LR(11)"
-                 action="replaced"
+                 modification="replaced"
                  location="LI:0;PT:4;PT:e"
                  tagId="O001001M064000"/>
             <t v="Replaces the current Article 36 TEU."/>
@@ -34609,7 +34609,7 @@
       <footnote eId="note_44" marker="40" kind="manual">
          <p>
             <tag amendingAct="12007LR(03)"
-                 action="replaced"
+                 modification="replaced"
                  location="LI:0;PT:3;PT:c"
                  tagId="O001001M065000"/>
             <t v="Points 1 and 2 of Article 63 EC are replaced by paragraphs 1 and 2 of Article 78 TFEU, and paragraph 2 of Article 64 is replaced by paragraph 3 of Article 78 TFEU."/>
@@ -34666,7 +34666,7 @@
       <footnote eId="note_50" marker="46" kind="manual">
          <p>
             <tag amendingAct="12007LR(03)"
-                 action="replaced"
+                 modification="replaced"
                  location="LI:0;PT:3;PT:d"
                  tagId="O001001M066000"/>
             <t v="Replaced, in substance, by the second sentence of the second subparagraph of paragraph 1 of Article 208 TFEU."/>

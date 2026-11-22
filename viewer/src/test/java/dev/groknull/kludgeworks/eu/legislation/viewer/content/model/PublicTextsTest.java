@@ -68,7 +68,7 @@ class PublicTextsTest {
               <t v="On "/><date date="2026-03-22"><t v="22 March 2026"/></date><t v=", "/>
               <emphasis kind="i"><t v="all"/></emphasis><t v=" "/>
               <emphasis kind="uc"><t v="persons"/></emphasis><footnoteRef href="#note_1" marker="1"/>
-              <t v=" &lt;"/><deleted amendingAct="32019R0103" action="deleted"><t v="old"/></deleted>
+              <t v=" &lt;"/><deleted amendingAct="32019R0103" modification="deleted"><t v="old"/></deleted>
               <quote startQuote="‘" endQuote="’"><t v="x"/></quote><eol/><t v="end"/>
             </p></body>
             <footnotes><footnote eId="note_1" marker="1"><p><t v="A footnote."/></p></footnote></footnotes>
@@ -81,7 +81,7 @@ class PublicTextsTest {
                 "On 22 March 2026, all persons <‘x’\nend",
                 "On <time datetime=\"2026-03-22\">22 March 2026</time>, <i>all</i> <span"
                     + " class=\"uc\">persons</span><sup><a href=\"#note_1\">1</a></sup> &lt;<s"
-                    + " data-act=\"32019R0103\" data-action=\"deleted\">old</s>‘x’<br>end",
+                    + " data-act=\"32019R0103\" data-modification=\"deleted\">old</s>‘x’<br>end",
                 List.of()));
     assertThat(text.footnotes())
         .singleElement()

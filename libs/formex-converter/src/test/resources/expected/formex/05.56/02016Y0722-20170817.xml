@@ -85,7 +85,7 @@
          </p>
          <p>
             <tag amendingAct="32017Y0728(01)"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1"
                  tagId="O001001M001000"/>
             <t v="Creditreform Rating AG"/>
@@ -98,7 +98,7 @@
          </p>
          <p>
             <tag amendingAct="32017Y0728(01)"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1"
                  tagId="O001001M002000"/>
             <t v="Egan-Jones Ratings Co."/>
@@ -114,7 +114,7 @@
          </p>
          <deleted>
             <tag amendingAct="32017Y0728(01)"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:1;PT:2"
                  tagId="O001001M007000"/>
             <p>
@@ -129,7 +129,7 @@
          </p>
          <p>
             <tag amendingAct="32017Y0728(01)"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1"
                  tagId="O001001M003000"/>
             <t v="HR Ratings de México, S.A. de C.V."/>
@@ -139,7 +139,7 @@
          </p>
          <p>
             <tag amendingAct="32017Y0728(01)"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1"
                  tagId="O001001M004000"/>
             <t v="INC Rating Sp. z o.o."/>
@@ -152,7 +152,7 @@
          </p>
          <p>
             <tag amendingAct="32017Y0728(01)"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1"
                  tagId="O001001M005000"/>
             <t v="ModeFinance S.r.l."/>
@@ -162,7 +162,7 @@
          </p>
          <p>
             <tag amendingAct="32017Y0728(01)"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1"
                  tagId="O001001M006000"/>
             <t v="Rating-Agentur Expert RA GmbH"/>

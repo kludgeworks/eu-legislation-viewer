@@ -1220,8 +1220,8 @@
     <xs:attribute name="amendingAct" type="Celex" use="required">
       <xs:annotation><xs:documentation>The CELEX number of the amending act.</xs:documentation></xs:annotation>
     </xs:attribute>
-    <xs:attribute name="action" type="Action" use="required">
-      <xs:annotation><xs:documentation>What the amending act did.</xs:documentation></xs:annotation>
+    <xs:attribute name="modification" type="Modification" use="required">
+      <xs:annotation><xs:documentation>What the amending act did: its modification.</xs:documentation></xs:annotation>
     </xs:attribute>
     <xs:attribute name="location" type="xs:string">
       <xs:annotation><xs:documentation>Where in the amending act, as Formex writes it: "AR:1 .AND. AX:0;PT:27".</xs:documentation></xs:annotation>
@@ -1231,10 +1231,10 @@
     </xs:attribute>
   </xs:attributeGroup>
 
-  <xs:simpleType name="Action">
+  <xs:simpleType name="Modification">
     <xs:annotation>
       <xs:documentation>
-        What an amending act did (Formex ACTION). They match the EU authority table "modification type":
+        What an amending act did, its modification (Formex ACTION). They match the EU authority table "modification type":
         replaced is REPLACEMENT, inserted is INSERTION, deleted is DELETION, renumbered is RENUMBERING.
       </xs:documentation>
     </xs:annotation>

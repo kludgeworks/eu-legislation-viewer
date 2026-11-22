@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView.Link;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
@@ -36,7 +37,9 @@ class SidenoteViewTest {
   void namesTheActBetweenTheVersionsAndThePartsItAppliesInWhereCellarDoesntSayWhich() {
     var c =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag("32026R0449", "replaced", null)), List.of());
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Tag("32026R0449", Modification.REPLACED, null)),
+            List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -67,7 +70,9 @@ class SidenoteViewTest {
     var tagged = new ActIdentifier("32017R2226");
     var c =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag(tagged.celex(), "replaced", null)), List.of());
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Tag(tagged.celex(), Modification.REPLACED, null)),
+            List.of());
     var from = version("02015R1998-20260322");
     var to = version("02015R1998-20261001");
 
@@ -109,13 +114,15 @@ class SidenoteViewTest {
     var versions = new ArrayList<>(AVSEC.timeline().versions());
     versions.set(versions.indexOf(listed), to);
     var included = Inclusions.listed(new Timeline(versions));
-    var tag = new Tag(amending.celex(), "replaced", null);
+    var tag = new Tag(amending.celex(), Modification.REPLACED, null);
 
     var newTag = changed("anx/pnt_8.1.2.3/pnt_c", List.of(tag), List.of());
     var oldTag = changed("anx/pnt_8.1.2.3/pnt_c", List.of(tag), List.of(tag));
     var noPart =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag("32019R0103", "replaced", null)), List.of());
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Tag("32019R0103", Modification.REPLACED, null)),
+            List.of());
 
     assertThat(of(included, from, to, newTag).made()).isEqualTo("Replaced by 2026/449");
     assertThat(of(included, from, to, newTag).dates().getFirst().when())
@@ -135,7 +142,9 @@ class SidenoteViewTest {
   void datesACorrectionFromTheStartOfTheActItCorrectsAndTheVersionThatFirstHasIt() {
     var c =
         changed(
-            "anx/pnt_11.3.2", List.of(new Tag("32019R0103R(01)", "corrected", null)), List.of());
+            "anx/pnt_11.3.2",
+            List.of(new Tag("32019R0103R(01)", Modification.CORRECTED, null)),
+            List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -159,7 +168,9 @@ class SidenoteViewTest {
   void datesAChangeFromTheOneOfItsActsDatesCellarHasForTheOccurrence() {
     var c =
         changed(
-            "anx/pnt_8.1.2.3/pnt_c", List.of(new Tag("32026R0449", "replaced", null)), List.of());
+            "anx/pnt_8.1.2.3/pnt_c",
+            List.of(new Tag("32026R0449", Modification.REPLACED, null)),
+            List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -181,7 +192,10 @@ class SidenoteViewTest {
   @Test
   void takesNoDayFromCellarThatTheEarlierVersionWithoutTheChangeIsAlreadyFrom() {
     var point =
-        changed("anx/pnt_11.3.2", List.of(new Tag("32019R0103", "replaced", null)), List.of());
+        changed(
+            "anx/pnt_11.3.2",
+            List.of(new Tag("32019R0103", Modification.REPLACED, null)),
+            List.of());
 
     var sidenote =
         SidenoteView.of(
@@ -201,7 +215,7 @@ class SidenoteViewTest {
 
   @Test
   void chainsTheActsThatChangedAnOccurrenceInTheOrderTheVersionsIntegrateThem() {
-    var inserted = inserted("anx/pnt_12.14.1", new Tag("32023R0566", "replaced", null));
+    var inserted = inserted("anx/pnt_12.14.1", new Tag("32023R0566", Modification.REPLACED, null));
 
     var sidenote =
         SidenoteView.of(
@@ -225,7 +239,7 @@ class SidenoteViewTest {
     var indent =
         inserted(
             "anx/level_ATTACHMENT-3-B/level_1/idt_9",
-            new Tag("32019R0413", "inserted", "anx/level_ATTACHMENT-3-B"));
+            new Tag("32019R0413", Modification.INSERTED, "anx/level_ATTACHMENT-3-B"));
 
     var sidenote =
         SidenoteView.of(
@@ -288,7 +302,10 @@ class SidenoteViewTest {
             Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20170607"),
-            changed("anx/pnt_1.0.3", List.of(new Tag("32017R0815", "replaced", null)), List.of()),
+            changed(
+                "anx/pnt_1.0.3",
+                List.of(new Tag("32017R0815", Modification.REPLACED, null)),
+                List.of()),
             List.of(),
             Language.ENG);
 
@@ -322,7 +339,7 @@ class SidenoteViewTest {
             null,
             null,
             List.of(),
-            List.of(new Tag("32019R1583", "inserted", null)),
+            List.of(new Tag("32019R1583", Modification.INSERTED, null)),
             List.of(),
             null);
 
@@ -358,8 +375,8 @@ class SidenoteViewTest {
             changed(
                 "anx/pnt_11.1.2",
                 List.of(
-                    new Tag("32019R0103", "replaced", "anx/pnt_11.1"),
-                    new Tag("32019R1583", "replaced", null)),
+                    new Tag("32019R0103", Modification.REPLACED, "anx/pnt_11.1"),
+                    new Tag("32019R1583", Modification.REPLACED, null)),
                 List.of()),
             List.of(),
             Language.ENG);
@@ -376,7 +393,10 @@ class SidenoteViewTest {
             Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20200702"),
             version("02015R1998-20210315"),
-            changed("anx/pnt_1.1.3.4", List.of(new Tag("32019R0413", "replaced", null)), List.of()),
+            changed(
+                "anx/pnt_1.1.3.4",
+                List.of(new Tag("32019R0413", Modification.REPLACED, null)),
+                List.of()),
             List.of(),
             Language.ENG);
 
@@ -394,8 +414,8 @@ class SidenoteViewTest {
     var f =
         changed(
             "anx/pnt_8.1.2.3/pnt_f",
-            List.of(new Tag("32023R0566", "replaced", null)),
-            List.of(new Tag("32023R0566", "replaced", null)));
+            List.of(new Tag("32023R0566", Modification.REPLACED, null)),
+            List.of(new Tag("32023R0566", Modification.REPLACED, null)));
 
     var sidenote =
         SidenoteView.of(
@@ -415,7 +435,7 @@ class SidenoteViewTest {
   @Test
   void namesTheVersionWhereAChangeNothingAttributesFirstAppearsAndWhatItConsolidates() {
     // As points 12.9.3.14 and 12.9.3.15 of 2015/1998, deleted in the version of 22 March 2026.
-    var deleted = deleted("anx/pnt_12.9.3.14", new Tag("32019R0103", "replaced", null));
+    var deleted = deleted("anx/pnt_12.9.3.14", new Tag("32019R0103", Modification.REPLACED, null));
     var march = version("02015R1998-20260322");
     var included = Inclusions.listed(AVSEC.timeline());
 
@@ -447,7 +467,7 @@ class SidenoteViewTest {
     var sidenote =
         SidenoteView.appeared(AVSEC, Inclusions.listed(AVSEC.timeline()), empty, changed);
 
-    assertThat(sidenote.made()).isEqualTo("Changed in the version of 22 March 2026");
+    assertThat(sidenote.made()).isEqualTo("Amended in the version of 22 March 2026");
   }
 
   @Test
@@ -458,7 +478,8 @@ class SidenoteViewTest {
         changed(
             "anx/pnt_11.1.2",
             List.of(
-                new Tag("32019R1583", "replaced", null), new Tag("32019R0103", "replaced", null)),
+                new Tag("32019R1583", Modification.REPLACED, null),
+                new Tag("32019R0103", Modification.REPLACED, null)),
             List.of());
 
     var sidenote =
@@ -479,7 +500,7 @@ class SidenoteViewTest {
     // The text keeps 4.1.3.2 struck through under the deletion by 2019/103. Cellar has 2017/815
     // replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies in
     // parts, and its first part is before 2019/413.
-    var struck = deleted("anx/pnt_4.1.3.2", new Tag("32019R0103", "deleted", null));
+    var struck = deleted("anx/pnt_4.1.3.2", new Tag("32019R0103", Modification.DELETED, null));
     var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
     var replaced = cellar.getFirst();
     cellar.add(
@@ -508,7 +529,9 @@ class SidenoteViewTest {
   @Test
   void namesTheActThatReplacedTheOccurrenceADeletedOneWasInWhole() {
     var a =
-        deleted("anx/level_PART-10/pnt_a", new Tag("32017R0815", "replaced", "anx/level_PART-10"));
+        deleted(
+            "anx/level_PART-10/pnt_a",
+            new Tag("32017R0815", Modification.REPLACED, "anx/level_PART-10"));
 
     var sidenote =
         SidenoteView.of(
@@ -529,7 +552,8 @@ class SidenoteViewTest {
         changed(
             "anx/pnt_11.1.2",
             List.of(
-                new Tag("32019R1583", "replaced", null), new Tag("32019R0103", "replaced", null)),
+                new Tag("32019R1583", Modification.REPLACED, null),
+                new Tag("32019R0103", Modification.REPLACED, null)),
             List.of());
 
     var sidenote =
@@ -555,7 +579,8 @@ class SidenoteViewTest {
         changed(
             "anx/pnt_11.1.2",
             List.of(
-                new Tag("32019R1583", "replaced", null), new Tag("32019R0103", "replaced", null)),
+                new Tag("32019R1583", Modification.REPLACED, null),
+                new Tag("32019R0103", Modification.REPLACED, null)),
             List.of());
 
     var sidenote =
@@ -640,7 +665,9 @@ class SidenoteViewTest {
 
   @Test
   void namesTheActThatReplacedWholeTheOccurrenceAnInsertedPointIsIn() {
-    var d = inserted("anx/pnt_11.1.3/pnt_d", new Tag("32019R0103", "replaced", "anx/pnt_11.1.3"));
+    var d =
+        inserted(
+            "anx/pnt_11.1.3/pnt_d", new Tag("32019R0103", Modification.REPLACED, "anx/pnt_11.1.3"));
 
     var sidenote =
         SidenoteView.of(

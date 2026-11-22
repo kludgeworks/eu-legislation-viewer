@@ -1028,7 +1028,7 @@
                      <p>
                         <t v="A situation in which two or more natural or legal persons are permanently linked to one and the same person by a control relationship shall also be regarded as constituting a close link between such persons"/>
                         <changed amendingAct="32005L0068"
-                                 action="replaced"
+                                 modification="replaced"
                                  location="AR:60;PT:1"
                                  tagId="O003001M001000">
                            <t v=";"/>
@@ -1037,7 +1037,7 @@
                   </occurrence>
                   <occurrence eId="art_1/par_1/pnt_s" kind="point" numbered="true">
                      <tag amendingAct="32005L0068"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:60;PT:1"
                           tagId="O003001M002000"/>
                      <num>
@@ -1444,7 +1444,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_2" kind="indent">
                            <tag amendingAct="32006L0101"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PT:3;PT:a"
                                 tagId="O004001M001000"/>
                            <p>
@@ -1461,7 +1461,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_3" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M002000"/>
                            <p>
@@ -1512,7 +1512,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_6" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M003000"/>
                            <p>
@@ -1583,7 +1583,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_10" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M004000"/>
                            <p>
@@ -1596,7 +1596,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_11" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M004000"/>
                            <p>
@@ -1613,7 +1613,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_12" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M004000"/>
                            <p>
@@ -1651,7 +1651,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_14" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M005000"/>
                            <p>
@@ -1676,7 +1676,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_15" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M005000"/>
                            <p>
@@ -1774,7 +1774,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_21" kind="indent">
                            <tag amendingAct="32006L0101"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PT:3;PT:a"
                                 tagId="O004001M002000"/>
                            <p>
@@ -1791,7 +1791,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_22" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M006000"/>
                            <p>
@@ -1821,7 +1821,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_24" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M007000"/>
                            <p>
@@ -1838,7 +1838,7 @@
                         </occurrence>
                         <occurrence eId="art_6/par_1/pnt_a/idt_25" kind="indent">
                            <tag amendingAct="32004L0066"
-                                action="inserted"
+                                modification="inserted"
                                 location="AR:1 .AND. AX:0;PR:II;PT:a"
                                 tagId="O001001M007000"/>
                            <p>
@@ -2123,7 +2123,7 @@
          </occurrence>
          <occurrence eId="art_9a" kind="article" rank="2">
             <tag amendingAct="32005L0068"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:60;PT:2"
                  tagId="O003001M003000"/>
             <num>
@@ -2250,7 +2250,7 @@
                   </occurrence>
                   <occurrence eId="art_10/par_2/sub_2" kind="subparagraph">
                      <tag amendingAct="32005L0068"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:60;PT:3"
                           tagId="O003001M004000"/>
                      <p>
@@ -2454,7 +2454,7 @@
                </occurrence>
                <occurrence eId="art_15/par_1a" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="inserted"
+                       modification="inserted"
                        location="AR:60;PT:4"
                        tagId="O003001M005000"/>
                   <num>
@@ -2550,7 +2550,7 @@
                </occurrence>
                <occurrence eId="art_16/par_4" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:60;PT:5;PT:a"
                        tagId="O003001M006000"/>
                   <num>
@@ -2584,7 +2584,7 @@
                </occurrence>
                <occurrence eId="art_16/par_5" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:60;PT:5;PT:a"
                        tagId="O003001M006000"/>
                   <num>
@@ -2616,7 +2616,7 @@
                </occurrence>
                <occurrence eId="art_16/par_6" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:60;PT:5;PT:a"
                        tagId="O003001M006000"/>
                   <num>
@@ -2730,7 +2730,7 @@
                </occurrence>
                <occurrence eId="art_16/par_8" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:60;PT:5;PT:b"
                        tagId="O003001M007000"/>
                   <num>
@@ -2902,7 +2902,7 @@
                      </occurrence>
                      <occurrence eId="art_18/par_3/idt_3" kind="indent">
                         <tag amendingAct="32004L0066"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:1 .AND. AX:0;PR:II;PT:b"
                              tagId="O001001M008000"/>
                         <p>
@@ -2914,7 +2914,7 @@
                      </occurrence>
                      <occurrence eId="art_18/par_3/idt_4" kind="indent">
                         <tag amendingAct="32006L0101"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:1 .AND. AX:0;PT:3;PT:b"
                              tagId="O004001M003000"/>
                         <p>
@@ -2926,7 +2926,7 @@
                      </occurrence>
                      <occurrence eId="art_18/par_3/idt_5" kind="indent">
                         <tag amendingAct="32006L0101"
-                             action="inserted"
+                             modification="inserted"
                              location="AR:1 .AND. AX:0;PT:3;PT:c"
                              tagId="O004001M004000"/>
                         <p>
@@ -3321,7 +3321,7 @@
                </occurrence>
                <occurrence eId="art_20/par_4" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:60;PT:6"
                        tagId="O003001M008000"/>
                   <num>
@@ -3443,7 +3443,7 @@
                         <list kind="alpha">
                            <occurrence eId="art_23/par_1/pnt_B/pnt_f" kind="point" numbered="true">
                               <tag amendingAct="32005L0068"
-                                   action="replaced"
+                                   modification="replaced"
                                    location="AR:60;PT:7;PT:a"
                                    tagId="O003001M009000"/>
                               <num>
@@ -3564,7 +3564,7 @@
                <occurrence eId="art_23/par_3" kind="paragraph">
                   <num>
                      <changed amendingAct="32005L0068"
-                              action="replaced"
+                              modification="replaced"
                               location="AR:60;PT:7;PT:b"
                               tagId="O003001M010000">
                         <t v="3."/>
@@ -3572,7 +3572,7 @@
                   </num>
                   <occurrence eId="art_23/par_3/sub_1" kind="subparagraph">
                      <tag amendingAct="32005L0068"
-                          action="replaced"
+                          modification="replaced"
                           location="AR:60;PT:7;PT:b"
                           tagId="O003001M010000"/>
                      <p>
@@ -4001,7 +4001,7 @@
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_3" kind="subparagraph">
                      <tag amendingAct="32005L0068"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:60;PT:8"
                           tagId="O003001M011000"/>
                      <p>
@@ -4096,7 +4096,7 @@
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_4" kind="subparagraph">
                      <tag amendingAct="32005L0068"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:60;PT:8"
                           tagId="O003001M011000"/>
                      <p>
@@ -4105,7 +4105,7 @@
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_5" kind="subparagraph">
                      <tag amendingAct="32005L0068"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:60;PT:8"
                           tagId="O003001M011000"/>
                      <p>
@@ -4124,7 +4124,7 @@
                   </occurrence>
                   <occurrence eId="art_27/par_2/sub_6" kind="subparagraph">
                      <tag amendingAct="32005L0068"
-                          action="inserted"
+                          modification="inserted"
                           location="AR:60;PT:8"
                           tagId="O003001M011000"/>
                      <p>
@@ -4346,7 +4346,7 @@
                   <list kind="alpha">
                      <occurrence eId="art_28/par_2/pnt_a" kind="point" numbered="true">
                         <tag amendingAct="32005L0068"
-                             action="replaced"
+                             modification="replaced"
                              location="AR:60;PT:9;PT:a"
                              tagId="O003001M012000"/>
                         <num>
@@ -4362,7 +4362,7 @@
                      <occurrence eId="art_28/par_2/pnt_b" kind="point" numbered="true">
                         <num>
                            <changed amendingAct="32005L0068"
-                                    action="replaced"
+                                    modification="replaced"
                                     location="AR:60;PT:9;PT:b"
                                     tagId="O003001M013000">
                               <t v="(b)"/>
@@ -4370,7 +4370,7 @@
                         </num>
                         <p>
                            <tag amendingAct="32005L0068"
-                                action="replaced"
+                                modification="replaced"
                                 location="AR:60;PT:9;PT:b"
                                 tagId="O003001M013000"/>
                            <t v="second result:"/>
@@ -4378,7 +4378,7 @@
                         <list kind="none">
                            <occurrence eId="art_28/par_2/pnt_b/idt_1" kind="indent">
                               <tag amendingAct="32005L0068"
-                                   action="replaced"
+                                   modification="replaced"
                                    location="AR:60;PT:9;PT:b"
                                    tagId="O003001M013000"/>
                               <p>
@@ -4491,7 +4491,7 @@
             </occurrence>
             <occurrence eId="art_28a" kind="article" rank="3">
                <tag amendingAct="32005L0068"
-                    action="inserted"
+                    modification="inserted"
                     location="AR:60;PT:10"
                     tagId="O003001M014000"/>
                <num>
@@ -4905,7 +4905,7 @@
                </occurrence>
                <occurrence eId="art_37/par_4" kind="paragraph">
                   <tag amendingAct="32005L0068"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:60;PT:11"
                        tagId="O003001M015000"/>
                   <num>
@@ -5417,7 +5417,7 @@
                <p>
                   <t v="Every two years, "/>
                   <changed amendingAct="32005L0001"
-                           action="replaced"
+                           modification="replaced"
                            location="AR:8;PT:1"
                            tagId="O002001M001000">
                      <t v="the Commission shall inform the European Insurance and Occupational Pensions Committee of"/>
@@ -5969,7 +5969,7 @@
          </subheading>
          <occurrence eId="art_58" kind="article" rank="2">
             <tag amendingAct="32005L0001"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:8;PT:2"
                  tagId="O002001M002000"/>
             <num>
@@ -6333,7 +6333,7 @@
             </heading>
             <occurrence eId="art_65/par_1" kind="paragraph">
                <tag amendingAct="32005L0001"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:8;PT:3"
                     tagId="O002001M003000"/>
                <num>

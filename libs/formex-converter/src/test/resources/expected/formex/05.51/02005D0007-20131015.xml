@@ -238,7 +238,7 @@
    <body>
       <occurrence eId="art_1" kind="article" rank="1">
          <tag amendingAct="32011D0418"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:1"
               tagId="O002001M001000"/>
          <num>
@@ -291,7 +291,7 @@
       </occurrence>
       <occurrence eId="art_2" kind="article" rank="1">
          <tag amendingAct="32013D0502"
-              action="replaced"
+              modification="replaced"
               location="AR:1"
               tagId="O003001M001000"/>
          <num>
@@ -360,7 +360,7 @@
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <tag amendingAct="32011D0418"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:2 .AND. AX:0"
               tagId="O002001M002000"/>
          <num>

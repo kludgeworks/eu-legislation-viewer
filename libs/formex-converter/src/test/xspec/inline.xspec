@@ -54,7 +54,7 @@
       <CONS.ACT><P>from <DATE ISO="20180901">1 September <?CLG.MDFO ID="O1" IDREF="C1" ACTION="REPLACED" LEVEL="TEXT" ACTIVE.DOC="32018R0044" ACTIVE.LOC="AR:1;PT:2"?>2018<?CLG.MDFC ID="C1" IDREF="O1"?></DATE></P></CONS.ACT>
     </x:context>
     <x:expect label="keeps the change inside the date">
-      <p><t v="from "/><date date="2018-09-01"><t v="1 September "/><changed amendingAct="32018R0044" action="replaced" location="AR:1;PT:2" tagId="O1"><t v="2018"/></changed></date></p>
+      <p><t v="from "/><date date="2018-09-01"><t v="1 September "/><changed amendingAct="32018R0044" modification="replaced" location="AR:1;PT:2" tagId="O1"><t v="2018"/></changed></date></p>
     </x:expect>
   </x:scenario>
 
@@ -140,7 +140,7 @@
       <CONS.ACT><P>the marketing <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="TEXT" ACTIVE.DOC="396L0025" ACTIVE.LOC="TO"?><?CLG.MDFC ID="C1" IDREF="O1"?>compound;</P></CONS.ACT>
     </x:context>
     <x:expect label="leave an empty deletion where they were">
-      <p><t v="the marketing "/><deleted amendingAct="31996L0025" action="deleted" location="TO" tagId="O1"/><t v="compound;"/></p>
+      <p><t v="the marketing "/><deleted amendingAct="31996L0025" modification="deleted" location="TO" tagId="O1"/><t v="compound;"/></p>
     </x:expect>
   </x:scenario>
 

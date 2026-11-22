@@ -51,7 +51,7 @@
          <p>
             <docType>
                <deleted amendingAct="32019R0516"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:10;AL:1"
                         tagId="O002001M001000">
                   <emphasis kind="uc">
@@ -63,14 +63,14 @@
          </p>
          <p>
             <deleted amendingAct="32019R0516"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:10;AL:1"
                      tagId="O002001M001000">
                <t v="of "/>
             </deleted>
             <docDate date="1989-02-13">
                <deleted amendingAct="32019R0516"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:10;AL:1"
                         tagId="O002001M001000">
                   <t v="13 February 1989"/>
@@ -80,7 +80,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32019R0516"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:10;AL:1"
                         tagId="O002001M001000">
                   <t v="on the harmonization of the compilation of gross national product at market prices"/>
@@ -89,7 +89,7 @@
          </p>
          <p>
             <deleted amendingAct="32019R0516"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:10;AL:1"
                      tagId="O002001M001000">
                <t v="(89/130/EEC, Euratom)"/>
@@ -100,7 +100,7 @@
    <body>
       <deleted>
          <tag amendingAct="32019R0516"
-              action="deleted"
+              modification="deleted"
               location="AR:10;AL:1"
               tagId="O002001M001000"/>
          <occurrence eId="tis_PREMIER" kind="division" rank="1">

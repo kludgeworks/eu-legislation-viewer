@@ -141,7 +141,7 @@
          <p>
             <docType>
                <deleted amendingAct="32006E0029"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:1"
                         tagId="O005001M001000">
                   <emphasis kind="uc">
@@ -153,7 +153,7 @@
          </p>
          <p>
             <deleted amendingAct="32006E0029"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:1"
                      tagId="O005001M001000">
                <t v="of 26 February 1996"/>
@@ -162,7 +162,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32006E0029"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:1"
                         tagId="O005001M001000">
                   <t v="defined by the Council on the basis of Article J.2 of the Treaty on European Union concerning arms exports to the former Yugoslavia"/>
@@ -171,7 +171,7 @@
          </p>
          <p>
             <deleted amendingAct="32006E0029"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:1"
                      tagId="O005001M001000">
                <t v="(96/184/CFSP)"/>
@@ -183,7 +183,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32006E0029"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:1"
                  tagId="O005001M001000"/>
             <p>
@@ -193,7 +193,7 @@
       </formula>
       <deleted>
          <tag amendingAct="32006E0029"
-              action="deleted"
+              modification="deleted"
               location="AR:1"
               tagId="O005001M001000"/>
          <p>
@@ -203,7 +203,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32006E0029"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:1"
                  tagId="O005001M001000"/>
             <p>
@@ -215,7 +215,7 @@
    <body>
       <deleted>
          <tag amendingAct="32006E0029"
-              action="deleted"
+              modification="deleted"
               location="AR:1"
               tagId="O005001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">

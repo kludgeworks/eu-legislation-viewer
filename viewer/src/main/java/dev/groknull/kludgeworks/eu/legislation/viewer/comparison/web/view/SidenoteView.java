@@ -10,8 +10,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
@@ -22,7 +22,6 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -183,7 +182,7 @@ public record SidenoteView(
       if (between.contains(each)
           && !made.containsKey(each)
           && version(included, from, to, each).filter(markedVersions::contains).isEmpty()) {
-        made.put(each, action(amendment.role()));
+        made.put(each, Modification.of(amendment.role()));
       }
     }
     if (made.isEmpty()) {
@@ -221,18 +220,14 @@ public record SidenoteView(
     for (var i = 0; i < steps.size(); i++) {
       var step = steps.get(i);
       var first = step.getFirst();
-      // An inserted occurrence was inserted in the first step. A deleted occurrence was deleted in
-      // the last
-      // step. If words were deleted from an occurrence that is still there, the occurrence was
-      // amended.
-      var kind =
-          i == 0 && difference.kind() == Kind.INSERTED
-              ? Kind.INSERTED
-              : i == steps.size() - 1 && difference.kind() == Kind.DELETED
-                  ? Kind.DELETED
-                  : Kind.CHANGED;
-      var verb = verb(kind, first, Objects.requireNonNull(made.get(first)));
-      verb = i == 0 ? verb : verb.toLowerCase(Locale.ROOT);
+      var modification =
+          Modification.ofStep(
+              difference.kind(),
+              i == 0,
+              i == steps.size() - 1,
+              first,
+              Objects.requireNonNull(made.get(first)));
+      var verb = i == 0 ? verb(modification) : modification.word();
       if (step.size() == 1) {
         chain.add(verb + " by " + names(act, step));
       } else if (only != null && step.contains(only)) {
@@ -314,12 +309,7 @@ public record SidenoteView(
    */
   public static SidenoteView appeared(
       Act act, Inclusions included, Version version, Difference difference) {
-    var did =
-        switch (difference.kind()) {
-          case INSERTED -> "Inserted";
-          case DELETED -> "Deleted";
-          case CHANGED -> "Changed";
-        };
+    var did = verb(Modification.of(difference.kind()));
     var consolidates = included.of(version);
     return new SidenoteView(
         did
@@ -433,14 +423,15 @@ public record SidenoteView(
 
   /**
    * Returns the acts that {@code tags} name and that {@code kept} accepts, in order. Each act comes
-   * with the action of its first tag.
+   * with the modification of its first tag.
    */
-  private static Map<ActIdentifier, String> acts(List<Tag> tags, Predicate<ActIdentifier> kept) {
-    var acts = new LinkedHashMap<ActIdentifier, String>();
+  private static Map<ActIdentifier, Modification> acts(
+      List<Tag> tags, Predicate<ActIdentifier> kept) {
+    var acts = new LinkedHashMap<ActIdentifier, Modification>();
     for (var tag : tags) {
       var act = new ActIdentifier(tag.act());
       if (kept.test(act)) {
-        acts.putIfAbsent(act, tag.action());
+        acts.putIfAbsent(act, tag.modification());
       }
     }
     return acts;
@@ -532,26 +523,13 @@ public record SidenoteView(
     var byOccurrence = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();
     for (var tag : difference.tags()) {
       var each = new ActIdentifier(tag.act());
-      if (tag.action().equals("replaced") && between.contains(each)) {
+      if (tag.modification() == Modification.REPLACED && between.contains(each)) {
         byOccurrence
             .computeIfAbsent(Optional.ofNullable(tag.in()), in -> new LinkedHashSet<>())
             .add(each);
       }
     }
     return byOccurrence.values().stream().filter(acts -> acts.size() > 1).toList();
-  }
-
-  /**
-   * Returns what the role of an amendment did, as the action of a tag says it: "replaced",
-   * "inserted", "amended" or "deleted".
-   */
-  private static String action(Amendment.Role role) {
-    return switch (role) {
-      case REPLACEMENT -> "replaced";
-      case DELETION, REPEAL -> "deleted";
-      case AMENDMENT -> "amended";
-      default -> "inserted";
-    };
   }
 
   /**
@@ -566,29 +544,12 @@ public record SidenoteView(
   }
 
   /**
-   * Returns what {@code act} did to the occurrence, as a difference of {@code kind} shows it.
-   *
-   * <ul>
-   *   <li>"Inserted", "Deleted", "Replaced" or "Renumbered"
-   *   <li>"Amended", for words that the act inserted or deleted in an occurrence that is still
-   *       there
-   *   <li>"Corrected", for a corrigendum
-   * </ul>
+   * Returns {@code modification} as the first word of a sidenote. For example, "Replaced" or
+   * "Corrected".
    */
-  private static String verb(Kind kind, ActIdentifier act, String action) {
-    if (act.corrigendum()) {
-      return "Corrected";
-    }
-    return switch (kind) {
-      case INSERTED -> "Inserted";
-      case DELETED -> "Deleted";
-      case CHANGED ->
-          switch (action) {
-            case "replaced" -> "Replaced";
-            case "renumbered" -> "Renumbered";
-            default -> "Amended";
-          };
-    };
+  static String verb(Modification modification) {
+    var word = modification.word();
+    return Character.toUpperCase(word.charAt(0)) + word.substring(1);
   }
 
   /**
@@ -772,7 +733,7 @@ public record SidenoteView(
     }
     var each = new ActIdentifier(last.act());
     return new History(
-        "Last changed by " + act.cited(each) + " (" + last.action() + ")",
+        "Last changed by " + act.cited(each) + " (" + last.modification().word() + ")",
         applies(act, each, Set.of(), language)
             .map(applies -> unnamed(applies, act, each))
             .orElse(null));

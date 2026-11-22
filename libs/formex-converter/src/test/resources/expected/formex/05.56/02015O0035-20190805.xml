@@ -135,7 +135,7 @@
    <body>
       <occurrence eId="art_1" kind="article" rank="1">
          <tag amendingAct="32016O0032"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:1"
               tagId="O001001M001000"/>
          <num>
@@ -216,7 +216,7 @@
             </occurrence>
             <occurrence eId="art_2/pnt_b" kind="point" numbered="true">
                <tag amendingAct="32019O0012"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:1"
                     tagId="O004001M001000"/>
                <num>
@@ -228,7 +228,7 @@
             </occurrence>
             <occurrence eId="art_2/pnt_c" kind="point" numbered="true">
                <tag amendingAct="32019O0012"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:2"
                     tagId="O004001M002000"/>
                <num>
@@ -240,7 +240,7 @@
             </occurrence>
             <occurrence eId="art_2/pnt_d" kind="point" numbered="true">
                <tag amendingAct="32019O0012"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:3"
                     tagId="O004001M003000"/>
                <num>
@@ -262,7 +262,7 @@
       </occurrence>
       <occurrence eId="art_3" kind="article" rank="1">
          <tag amendingAct="32016O0032"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:3"
               tagId="O001001M003000"/>
          <num>
@@ -307,7 +307,7 @@
          </occurrence>
          <occurrence eId="art_3/par_2" kind="paragraph">
             <tag amendingAct="32018O0004"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:1;PT:a"
                  tagId="O002001M001000"/>
             <num>
@@ -353,7 +353,7 @@
          </occurrence>
          <occurrence eId="art_3/par_2a" kind="paragraph">
             <tag amendingAct="32018O0004"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:1;PT:b"
                  tagId="O002001M002000"/>
             <num>
@@ -425,7 +425,7 @@
             </occurrence>
             <occurrence eId="art_4/pnt_c" kind="point" numbered="true">
                <tag amendingAct="32018O0004"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:2"
                     tagId="O002001M003000"/>
                <num>
@@ -458,7 +458,7 @@
          </heading>
          <occurrence eId="art_5/par_1" kind="paragraph">
             <tag amendingAct="32019O0012"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:4;PT:a"
                  tagId="O004001M004000"/>
             <num>
@@ -470,7 +470,7 @@
          </occurrence>
          <occurrence eId="art_5/par_2" kind="paragraph">
             <tag amendingAct="32019O0012"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:4;PT:b"
                  tagId="O004001M005000"/>
             <num>
@@ -527,7 +527,7 @@
          </occurrence>
          <deleted>
             <tag amendingAct="32019O0012"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:1;PT:4;PT:c"
                  tagId="O004001M006000"/>
             <occurrence eId="art_5/par_3" kind="paragraph">
@@ -541,7 +541,7 @@
          </deleted>
          <deleted>
             <tag amendingAct="32019O0012"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:1;PT:4;PT:d"
                  tagId="O004001M007000"/>
             <occurrence eId="art_5/par_4" kind="paragraph">
@@ -555,7 +555,7 @@
          </deleted>
          <occurrence eId="art_5/par_5" kind="paragraph">
             <tag amendingAct="32018O0004"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:3;PT:d"
                  tagId="O002001M006000"/>
             <num>
@@ -575,7 +575,7 @@
          </occurrence>
          <occurrence eId="art_5/par_7" kind="paragraph">
             <tag amendingAct="32016O0032"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:5"
                  tagId="O001001M005000"/>
             <num>
@@ -588,7 +588,7 @@
                </quote>
                <t v=") shall be subject to a valuation haircut applied at an individual level following the rules set out in "/>
                <changed amendingAct="32019O0012"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:1;PT:4;PT:e"
                         tagId="O004001M008000">
                   <t v="paragraphs 1 to 2"/>
@@ -644,7 +644,7 @@
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <tag amendingAct="32016O0032"
-              action="replaced"
+              modification="replaced"
               location="AR:1;PT:6 .AND. AX:0"
               tagId="O001001M006000"/>
          <num>
@@ -652,7 +652,7 @@
          </num>
          <table cols="5">
             <tag amendingAct="32019O0012"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:5 .AND. AX:0;PT:1"
                  tagId="O004001M009000"/>
             <caption>
@@ -748,7 +748,7 @@
          </table>
          <tableGroup>
             <tag amendingAct="32019O0012"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:5 .AND. AX:0;PT:2"
                  tagId="O004001M010000"/>
             <caption>
@@ -1921,7 +1921,7 @@
          </table>
          <table cols="4">
             <tag amendingAct="32019O0012"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:5 .AND. AX:0;PT:3"
                  tagId="O004001M011000"/>
             <caption>

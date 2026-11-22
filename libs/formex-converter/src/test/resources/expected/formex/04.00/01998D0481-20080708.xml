@@ -106,7 +106,7 @@
    <body>
       <occurrence eId="art_1" kind="article" rank="1">
          <tag amendingAct="32008D0571"
-              action="replaced"
+              modification="replaced"
               location="AR:1"
               tagId="O001001M001000"/>
          <num>

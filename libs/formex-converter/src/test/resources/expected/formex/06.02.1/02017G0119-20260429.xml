@@ -566,7 +566,7 @@
                      numbered="true"
                      rank="2">
             <tag amendingAct="32026G02439"
-                 action="inserted"
+                 modification="inserted"
                  location="CO:10 .AND. AX:0"
                  tagId="O002001M001000"/>
             <num>
@@ -591,7 +591,7 @@
                      numbered="true"
                      rank="3">
             <tag amendingAct="32026G02439"
-                 action="inserted"
+                 modification="inserted"
                  location="CO:10 .AND. AX:0"
                  tagId="O002001M001000"/>
             <num>
@@ -685,7 +685,7 @@
                      numbered="true"
                      rank="3">
             <tag amendingAct="32026G02439"
-                 action="inserted"
+                 modification="inserted"
                  location="CO:10 .AND. AX:0"
                  tagId="O002001M001000"/>
             <num>
@@ -774,7 +774,7 @@
                      numbered="true"
                      rank="3">
             <tag amendingAct="32026G02439"
-                 action="inserted"
+                 modification="inserted"
                  location="CO:10 .AND. AX:0"
                  tagId="O002001M001000"/>
             <num>
@@ -795,7 +795,7 @@
                      numbered="true"
                      rank="3">
             <tag amendingAct="32026G02439"
-                 action="inserted"
+                 modification="inserted"
                  location="CO:10 .AND. AX:0"
                  tagId="O002001M001000"/>
             <num>
@@ -915,7 +915,7 @@
                      numbered="true"
                      rank="3">
             <tag amendingAct="32026G02439"
-                 action="inserted"
+                 modification="inserted"
                  location="CO:10 .AND. AX:0"
                  tagId="O002001M001000"/>
             <num>
@@ -942,7 +942,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M002000">
                   <t v="13."/>
@@ -998,7 +998,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M003000">
                   <t v="14."/>
@@ -1022,7 +1022,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M004000">
                   <t v="15."/>
@@ -1061,7 +1061,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M005000">
                   <t v="16."/>
@@ -1083,7 +1083,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M006000">
                   <t v="17."/>
@@ -1112,7 +1112,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M007000">
                   <t v="18."/>
@@ -1134,7 +1134,7 @@
                <occurrence eId="anx/pnt_18/pnt_18.1" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M017000">
                         <t v="18.1."/>
@@ -1158,7 +1158,7 @@
                <occurrence eId="anx/pnt_18/list_2/pnt_18.2" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M018000">
                         <t v="18.2."/>
@@ -1173,7 +1173,7 @@
                <occurrence eId="anx/pnt_18/list_2/pnt_18.3" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M019000">
                         <t v="18.3."/>
@@ -1201,7 +1201,7 @@
                      rank="2">
             <num>
                <changed amendingAct="32026G02439"
-                        action="renumbered"
+                        modification="renumbered"
                         location="CO:10 .AND. AX:0"
                         tagId="O002001M008000">
                   <t v="19."/>
@@ -1223,7 +1223,7 @@
                <occurrence eId="anx/pnt_19/pnt_19.1" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M020000">
                         <t v="19.1."/>
@@ -1238,7 +1238,7 @@
                <occurrence eId="anx/pnt_19/pnt_19.2" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M021000">
                         <t v="19.2."/>
@@ -1253,7 +1253,7 @@
                <occurrence eId="anx/pnt_19/pnt_19.3" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M022000">
                         <t v="19.3."/>
@@ -1277,7 +1277,7 @@
                <occurrence eId="anx/pnt_19/list_2/pnt_19.4" kind="point" numbered="true">
                   <num>
                      <changed amendingAct="32026G02439"
-                              action="renumbered"
+                              modification="renumbered"
                               location="CO:10 .AND. AX:0"
                               tagId="O002001M023000">
                         <t v="19.4."/>
@@ -1299,7 +1299,7 @@
          </p>
          <occurrence eId="anx/app_I" kind="annex" eurlexAnchor="2" rank="2">
             <tag amendingAct="32022G0128(01)"
-                 action="replaced"
+                 modification="replaced"
                  location="TO"
                  tagId="O001001M001000"/>
             <num>

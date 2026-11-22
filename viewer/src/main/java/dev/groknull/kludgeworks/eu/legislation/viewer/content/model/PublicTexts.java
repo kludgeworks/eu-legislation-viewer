@@ -58,8 +58,8 @@ import org.jspecify.annotations.Nullable;
  *       marker of a footnote;
  *   <li>{@code br} for a line break, {@code span} with {@code lang} for another language, and
  *       {@code img} with {@code data-file} for an image;
- *   <li>{@code span} with {@code data-act} and {@code data-action} for words that an amending act
- *       changed, and {@code s} with the same attributes for words that it deleted;
+ *   <li>{@code span} with {@code data-act} and {@code data-modification} for words that an amending
+ *       act changed, and {@code s} with the same attributes for words that it deleted;
  *   <li>{@code ins} and {@code del} for the edits of a comparison;
  *   <li>{@code math}, in MathML, for a formula.
  * </ul>
@@ -583,8 +583,8 @@ public final class PublicTexts {
   private static String amendment(Element element) {
     return " data-act=\""
         + escape(attribute(element, "amendingAct"))
-        + "\" data-action=\""
-        + escape(attribute(element, "action"))
+        + "\" data-modification=\""
+        + escape(attribute(element, "modification"))
         + "\"";
   }
 
@@ -623,7 +623,7 @@ public final class PublicTexts {
   private static List<Amendment> amendments(Element element) {
     return element.children().stream()
         .filter(child -> child.name().equals("tag"))
-        .map(tag -> new Amendment(attribute(tag, "amendingAct"), attribute(tag, "action")))
+        .map(tag -> new Amendment(attribute(tag, "amendingAct"), attribute(tag, "modification")))
         .toList();
   }
 

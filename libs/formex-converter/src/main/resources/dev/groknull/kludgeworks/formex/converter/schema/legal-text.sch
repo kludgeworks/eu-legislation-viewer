@@ -64,7 +64,7 @@
   <sch:pattern id="deletions">
     <sch:title>Deleted content says so, and only it</sch:title>
     <sch:rule context="lt:tag">
-      <sch:assert id="deletion-in-deleted" test="(@action = 'deleted') = exists(parent::lt:deleted)">
+      <sch:assert id="deletion-in-deleted" test="(@modification = 'deleted') = exists(parent::lt:deleted)">
         A deletion is the tag of a deleted placeholder, and a deleted placeholder's tag is its deletion
         (tag <sch:value-of select="@tagId"/>).
       </sch:assert>
@@ -89,8 +89,8 @@
     <sch:rule context="lt:*[@tagId][@amendingAct]">
       <sch:assert id="tag-consistent"
                   test="every $piece in key('tag', @tagId)
-                        satisfies $piece/@amendingAct = @amendingAct and $piece/@action = @action">
-        The pieces of tag <sch:value-of select="@tagId"/> disagree on the amending act or action.
+                        satisfies $piece/@amendingAct = @amendingAct and $piece/@modification = @modification">
+        The pieces of tag <sch:value-of select="@tagId"/> disagree on the amending act or modification.
       </sch:assert>
     </sch:rule>
   </sch:pattern>

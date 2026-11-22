@@ -81,7 +81,7 @@
          <p>
             <docType>
                <deleted amendingAct="32004D0595"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O002001M001000">
                   <emphasis kind="uc">
@@ -93,7 +93,7 @@
          </p>
          <p>
             <deleted amendingAct="32004D0595"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2"
                      tagId="O002001M001000">
                <t v="of 18 April 1994"/>
@@ -102,7 +102,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32004D0595"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2"
                         tagId="O002001M001000">
                   <t v="concerning veterinary certification for placing on the market in the United Kingdom and Ireland of dogs and cats not originating in those countries"/>
@@ -111,7 +111,7 @@
          </p>
          <p>
             <deleted amendingAct="32004D0595"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2"
                      tagId="O002001M001000">
                <t v="(94/273/EC)"/>
@@ -123,7 +123,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32004D0595"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <p>
@@ -134,7 +134,7 @@
       <citations>
          <deleted>
             <tag amendingAct="32004D0595"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
@@ -154,7 +154,7 @@
       <recitals>
          <deleted>
             <tag amendingAct="32004D0595"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
@@ -182,7 +182,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32004D0595"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2"
                  tagId="O002001M001000"/>
             <p>
@@ -194,7 +194,7 @@
    <body>
       <deleted>
          <tag amendingAct="32004D0595"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
@@ -218,12 +218,12 @@
    <annexes>
       <deleted>
          <tag amendingAct="32004D0595"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
             <tag amendingAct="32001D0298"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PA:3 .AND. AX:III"
                  tagId="O001001M001000"/>
             <num>
@@ -237,7 +237,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32004D0595"
-              action="deleted"
+              modification="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">

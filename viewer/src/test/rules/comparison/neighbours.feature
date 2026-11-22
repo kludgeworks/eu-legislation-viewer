@@ -11,5 +11,5 @@ Feature: The neighbours of a difference
       Given the consolidated version of 2015/1998 of 22 March 2026
       When the reader asks for the tags of the neighbour point 1.2.2.3(a)
       Then the tags are
-        | act      | did      | taken from    |
-        | 2026/449 | replaced | point 1.2.2.3 |
+        | act      | modification | taken from    |
+        | 2026/449 | replaced     | point 1.2.2.3 |

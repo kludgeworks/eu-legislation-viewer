@@ -123,7 +123,7 @@
          </occurrence>
          <occurrence eId="pbl_1/rct_3" kind="recital">
             <tag amendingAct="32009R1026"
-                 action="replaced"
+                 modification="replaced"
                  location="AR:1;PT:1"
                  tagId="O000001M001000"/>
             <num>
@@ -156,7 +156,7 @@
          </occurrence>
          <occurrence eId="art_1/unp_2" kind="paragraph">
             <tag amendingAct="32009R1026"
-                 action="inserted"
+                 modification="inserted"
                  location="AR:1;PT:2"
                  tagId="O000001M002000"/>
             <p>
@@ -215,7 +215,7 @@
             </p>
             <p>
                <tag amendingAct="32009R1026"
-                    action="inserted"
+                    modification="inserted"
                     location="AR:1;PT:3"
                     tagId="O000001M003000"/>
                <t v="The use of the name is reserved."/>

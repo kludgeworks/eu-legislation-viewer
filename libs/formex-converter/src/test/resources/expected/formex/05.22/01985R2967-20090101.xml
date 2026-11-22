@@ -80,7 +80,7 @@
          <p>
             <docType>
                <deleted amendingAct="32008R1249"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:40"
                         tagId="O003001M001000">
                   <emphasis kind="uc">
@@ -91,7 +91,7 @@
             <t v=" "/>
             <docNumber>
                <deleted amendingAct="32008R1249"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:40"
                         tagId="O003001M001000">
                   <t v=" (EEC) No 2967/85"/>
@@ -100,7 +100,7 @@
          </p>
          <p>
             <deleted amendingAct="32008R1249"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:40"
                      tagId="O003001M001000">
                <t v="of 24 October 1985"/>
@@ -109,7 +109,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32008R1249"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:40"
                         tagId="O003001M001000">
                   <t v="laying down detailed rules for the application of the Community scale for grading pig carcases"/>
@@ -122,7 +122,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32008R1249"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:40"
                  tagId="O003001M001000"/>
             <p>
@@ -133,7 +133,7 @@
       <citations>
          <deleted>
             <tag amendingAct="32008R1249"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:40"
                  tagId="O003001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
@@ -162,7 +162,7 @@
       <recitals>
          <deleted>
             <tag amendingAct="32008R1249"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:40"
                  tagId="O003001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
@@ -199,7 +199,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32008R1249"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:40"
                  tagId="O003001M001000"/>
             <p>
@@ -211,7 +211,7 @@
    <body>
       <deleted>
          <tag amendingAct="32008R1249"
-              action="deleted"
+              modification="deleted"
               location="AR:40"
               tagId="O003001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
@@ -253,7 +253,7 @@
          </occurrence>
          <occurrence eId="art_3" kind="article" rank="1">
             <tag amendingAct="31994R3127"
-                 action="inserted"
+                 modification="inserted"
                  location="TO"
                  tagId="O001001M001000"/>
             <num>
@@ -261,7 +261,7 @@
             </num>
             <occurrence eId="art_3/par_1" kind="paragraph">
                <tag amendingAct="32006R1197"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:1"
                     tagId="O002001M001000"/>
                <num>
@@ -280,7 +280,7 @@
             </occurrence>
             <occurrence eId="art_3/par_2" kind="paragraph">
                <tag amendingAct="32006R1197"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1;PT:1"
                     tagId="O002001M001000"/>
                <num>
@@ -372,7 +372,7 @@
    <conclusions>
       <deleted>
          <tag amendingAct="32008R1249"
-              action="deleted"
+              modification="deleted"
               location="AR:40"
               tagId="O003001M001000"/>
          <p>
@@ -383,12 +383,12 @@
    <annexes>
       <deleted>
          <tag amendingAct="32008R1249"
-              action="deleted"
+              modification="deleted"
               location="AR:40"
               tagId="O003001M001000"/>
          <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
             <tag amendingAct="31994R3127"
-                 action="inserted"
+                 modification="inserted"
                  location="TO"
                  tagId="O001001M002000"/>
             <num>
@@ -405,7 +405,7 @@
                </occurrence>
                <occurrence eId="anx_I/pnt_2" kind="point" numbered="true">
                   <tag amendingAct="32006R1197"
-                       action="replaced"
+                       modification="replaced"
                        location="AR:1;PT:2"
                        tagId="O002001M002000"/>
                   <num>
@@ -467,7 +467,7 @@
          </occurrence>
          <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
             <tag amendingAct="31994R3127"
-                 action="inserted"
+                 modification="inserted"
                  location="TO"
                  tagId="O001001M002000"/>
             <num>
@@ -556,7 +556,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32008R1249"
-              action="deleted"
+              modification="deleted"
               location="AR:40"
               tagId="O003001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">

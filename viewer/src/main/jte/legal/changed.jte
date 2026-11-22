@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<ins class="changed" data-act="${node.attribute("amendingAct")}" data-action="${node.attribute("action")}">${html.children(node)}</ins>
+<ins class="changed" data-act="${node.attribute("amendingAct")}" data-modification="${node.attribute("modification")}">${html.children(node)}</ins>

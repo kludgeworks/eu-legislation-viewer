@@ -53,16 +53,16 @@ const listed = (tag) => {
 
 /**
  * Returns the hover text of a tag. For example, "Replaced by 2026/449 · applies from 1 October
- * 2026 · Article 2 of 2026/449". A tag with no `data-action` says "Amended". Without the date, it
+ * 2026 · Article 2 of 2026/449". A tag with no `data-modification` says "Amended". Without the date, it
  * says only what happened and which act did it.
  *
  * @param {HTMLElement} tag
  * @returns {string}
  */
 export const said = (tag) => {
-  const action = tag.dataset.action || "amended";
+  const modification = tag.dataset.modification || "amended";
   const applies = listed(tag)?.dataset.applies;
-  return `${action.charAt(0).toUpperCase()}${action.slice(1)} by ${number(tag.dataset.act)}${applies ? ` · ${applies}` : ""}`;
+  return `${modification.charAt(0).toUpperCase()}${modification.slice(1)} by ${number(tag.dataset.act)}${applies ? ` · ${applies}` : ""}`;
 };
 
 /**

@@ -221,13 +221,13 @@
       <occurrence eId="att_1" kind="attachment">
          <figure src="L_2004259EN.01000302.tif" content="form">
             <tag amendingAct="32004D0562"
-                 action="replaced"
+                 modification="replaced"
                  location="PT:2 .AND. AX:0;PG:3 .AND. PT:2 .AND. AX:0;PG:4"
                  tagId="O001001M001000"/>
          </figure>
          <figure src="L_2004259EN.01000401.tif" content="form">
             <tag amendingAct="32004D0562"
-                 action="replaced"
+                 modification="replaced"
                  location="PT:2 .AND. AX:0;PG:3 .AND. PT:2 .AND. AX:0;PG:4"
                  tagId="O001001M001000"/>
          </figure>

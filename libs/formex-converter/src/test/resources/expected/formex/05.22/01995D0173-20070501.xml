@@ -75,7 +75,7 @@
          <p>
             <docType>
                <deleted amendingAct="32006R1664"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2 .AND. AX:IV;PG:40"
                         tagId="O002001M001000">
                   <emphasis kind="uc">
@@ -87,7 +87,7 @@
          </p>
          <p>
             <deleted amendingAct="32006R1664"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2 .AND. AX:IV;PG:40"
                      tagId="O002001M001000">
                <t v="of 7 March 1995"/>
@@ -96,7 +96,7 @@
          <p>
             <docPurpose>
                <deleted amendingAct="32006R1664"
-                        action="deleted"
+                        modification="deleted"
                         location="AR:2 .AND. AX:IV;PG:40"
                         tagId="O002001M001000">
                   <t v="laying down special conditions governing imports of fishery and aquaculture products originating in Peru"/>
@@ -105,7 +105,7 @@
          </p>
          <p>
             <deleted amendingAct="32006R1664"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2 .AND. AX:IV;PG:40"
                      tagId="O002001M001000">
                <t v="(Text with EEA relevance)"/>
@@ -113,7 +113,7 @@
          </p>
          <p>
             <deleted amendingAct="32006R1664"
-                     action="deleted"
+                     modification="deleted"
                      location="AR:2 .AND. AX:IV;PG:40"
                      tagId="O002001M001000">
                <t v="(95/173/EC)"/>
@@ -125,7 +125,7 @@
       <formula name="actingEntity">
          <deleted>
             <tag amendingAct="32006R1664"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2 .AND. AX:IV;PG:40"
                  tagId="O002001M001000"/>
             <p>
@@ -136,7 +136,7 @@
       <citations>
          <deleted>
             <tag amendingAct="32006R1664"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2 .AND. AX:IV;PG:40"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/cit_1" kind="citation">
@@ -156,7 +156,7 @@
       <recitals>
          <deleted>
             <tag amendingAct="32006R1664"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2 .AND. AX:IV;PG:40"
                  tagId="O002001M001000"/>
             <occurrence eId="pbl_1/rct_1" kind="recital">
@@ -212,7 +212,7 @@
       <formula name="enactingFormula">
          <deleted>
             <tag amendingAct="32006R1664"
-                 action="deleted"
+                 modification="deleted"
                  location="AR:2 .AND. AX:IV;PG:40"
                  tagId="O002001M001000"/>
             <p>
@@ -224,7 +224,7 @@
    <body>
       <deleted>
          <tag amendingAct="32006R1664"
-              action="deleted"
+              modification="deleted"
               location="AR:2 .AND. AX:IV;PG:40"
               tagId="O002001M001000"/>
          <occurrence eId="art_1" kind="article" rank="1">
@@ -319,7 +319,7 @@
    <annexes>
       <deleted>
          <tag amendingAct="32006R1664"
-              action="deleted"
+              modification="deleted"
               location="AR:2 .AND. AX:IV;PG:40"
               tagId="O002001M001000"/>
          <occurrence eId="anx_A" kind="annex" eurlexAnchor="1" rank="1">
@@ -332,7 +332,7 @@
          <occurrence eId="anx_B" kind="annex" eurlexAnchor="2" rank="1">
             <num>
                <changed amendingAct="31995D0311"
-                        action="replaced"
+                        modification="replaced"
                         location="AR:1 .AND. AX:0"
                         tagId="O001001M009000">
                   <t v="ANNEX B"/>
@@ -340,7 +340,7 @@
             </num>
             <tableGroup>
                <tag amendingAct="31995D0311"
-                    action="replaced"
+                    modification="replaced"
                     location="AR:1 .AND. AX:0"
                     tagId="O001001M009000"/>
                <caption>
@@ -1697,7 +1697,7 @@
    <footnotes>
       <deleted>
          <tag amendingAct="32006R1664"
-              action="deleted"
+              modification="deleted"
               location="AR:2 .AND. AX:IV;PG:40"
               tagId="O002001M001000"/>
          <footnote eId="note_1" marker="1" kind="footnote">
