@@ -144,6 +144,16 @@ forms:
 | Acts of one step, with the comparison limited to one of them | "Replaced by 2019/1583, together with 2019/103" |
 | Three or more acts | "2017/815, 2019/103 and 2019/1583" |
 
+Where nothing names an act (R-WHO-07), the first line names the text where the change first
+appears, and the acts that this text consolidates. It does not name an act as the one that made
+the change. The page says "text", not "version". If the text consolidates no act, the words
+", which consolidates …" are left out. The forms:
+
+| Case | Words |
+| --- | --- |
+| The text where the change first appears | "Deleted in the text of 22 March 2026, which consolidates 2026/449 and Corrigendum 1 to 2026/449" |
+| Nothing shows where it appears | "The data does not say which act changed this." The verb is that of the difference: inserted, deleted or changed. |
+
 ### Page words (all modules)
 
 | Term | Meaning |

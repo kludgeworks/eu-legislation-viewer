@@ -61,6 +61,12 @@ public class Comparing {
     return Objects.requireNonNull(COMPARED.get(), "no comparison given");
   }
 
+  /** Returns whether the converter has a sample text of {@code version}. */
+  static boolean hasText(Version version) {
+    var name = version.celex() + ".xml";
+    return LegalTexts.samples().anyMatch(sample -> sample.endsWith("/" + name));
+  }
+
   /** The text of {@code version}, as the converter builds it from its sample. */
   static Element text(Version version) {
     var name = version.celex() + ".xml";

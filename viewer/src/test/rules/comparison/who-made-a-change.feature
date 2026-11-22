@@ -91,6 +91,80 @@ Feature: Who made a change, and from when
         | 1 July 2022 | replaced     | 2022/1174 |
         | 26 May 2024 | deleted      | 2024/1255 |
 
+  Rule: R-WHO-07 Nothing names the act
+    Where no tag and no amendment in Cellar names an act for a difference, the sidenote does not
+    guess. It names the text where the change first appears, and the acts that this text
+    consolidates, but no act as the one that made the change. That text is the later text of the
+    first pair of neighbouring texts, after the earlier day and up to the later day, whose
+    comparison has the difference. A pair whose texts are not both built is passed over.
+
+    Example: The later text follows the earlier text
+      Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
+      And the difference at the deleted point 12.9.3.14
+      When the reader asks who made it
+      Then no act is named
+      When the reader asks where the change first appears
+      Then it first appears in the text of 22 March 2026, which consolidates "2026/449 and Corrigendum 1 to 2026/449"
+
+    Example: The first pair of neighbouring texts whose comparison has the difference
+      Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 1 October 2026
+      And the difference at the deleted point 12.9.3.14
+      When the reader asks who made it
+      Then no act is named
+      When the reader asks where the change first appears
+      Then it first appears in the text of 22 March 2026, which consolidates "2026/449 and Corrigendum 1 to 2026/449"
+
+    Example: A pair whose texts are not both built is passed over
+      Given the comparison of the texts of 2015/1998 of 31 December 2021 and of 22 March 2026
+      And only the texts of 31 December 2021, 1 January 2026 and 22 March 2026 are built
+      And the difference at the deleted point 12.9.3.14
+      When the reader asks who made it
+      Then no act is named
+      When the reader asks where the change first appears
+      Then it first appears in the text of 22 March 2026, which consolidates "2026/449 and Corrigendum 1 to 2026/449"
+
+  Rule: R-WHO-09 Amendments of the occurrences around and inside
+    The amendments of an occurrence in Cellar include those of an occurrence around it. For an
+    occurrence that was inserted or deleted whole, they also include those of the occurrences in
+    it. A changed occurrence does not take those of the occurrences in it, because they differ on
+    their own. A point numbered under a point, which the text keeps beside it, counts as in that
+    point.
+
+    Example: A point takes the amendment of the point around it
+      Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 16 February 2020
+      And the difference at the inserted point 11.2.3.8(h)
+      When the reader asks who made it
+      Then the steps are
+        | text of     | modification | acts     |
+        | 7 June 2017 | inserted     | 2017/815 |
+
+    Example: A point that the text keeps beside its point takes that point's amendment
+      Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 31 December 2021
+      And the difference at the changed point 3.0.6
+      When the reader asks who made it
+      Then the steps are
+        | text of       | modification | acts     |
+        | 7 June 2017   | replaced     | 2017/815 |
+        | 15 March 2021 | replaced     | 2019/413 |
+
+    Example: An inserted point takes the amendments of the points in it
+      Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 1 January 2026
+      And the difference at the inserted point 6.8.7
+      When the reader asks who made it
+      Then the steps are
+        | text of       | modification | acts     |
+        | 15 March 2021 | inserted     | 2021/255 |
+        | 1 April 2023  | amended      | 2023/566 |
+
+    Example: A changed point does not take the amendments of the points in it
+      Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 16 February 2020
+      And the difference at the changed point 12.0
+      When the reader asks who made it
+      Then the steps are
+        | text of          | modification | acts     |
+        | 16 February 2020 | replaced     | 2020/111 |
+      And 2019/103 is not named
+
   Rule: R-WHO-10 A corrigendum corrects
     A difference that only corrigenda made is a correction, not an amendment. A difference that an
     amending act made, alone or together with a corrigendum, is not a correction. Nor is a

@@ -20,7 +20,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
@@ -165,28 +164,14 @@ public record SidenoteView(
       Version to,
       Difference difference,
       Language language) {
-    var candidates =
-        included.between(from, to).stream().filter(each -> !each.corrigendum()).toList();
-    var versions =
-        candidates.stream()
-            .map(each -> Applicability.firstIncluding(included, from, to, each))
-            .flatMap(Optional::stream)
-            .distinct()
-            .count();
-    if (candidates.size() < 2 || versions != 1) {
+    var attribution = Attribution.unnamed(included, from, to);
+    var candidates = attribution.candidates();
+    if (candidates.isEmpty()) {
       return new SidenoteView(unsaid(difference), Attribution.NONE, List.of(), null, null);
     }
-    var ordered =
-        included
-            .of(
-                Applicability.firstIncluding(included, from, to, candidates.getFirst())
-                    .orElseThrow())
-            .stream()
-            .filter(candidates::contains)
-            .toList();
-    var names = ordered.stream().map(act::cited).toList();
+    var names = candidates.stream().map(act::cited).toList();
     var dates = new ArrayList<Applies>();
-    for (var each : ordered) {
+    for (var each : candidates) {
       Applicability.of(act, each, Set.of())
           .map(applicability -> applies(act, applicability, language))
           .ifPresent(dates::add);
@@ -198,9 +183,9 @@ public record SidenoteView(
             + " or "
             + names.getLast()
             + ".",
-        Attribution.oneOf(ordered),
+        attribution,
         dates,
-        act.citations(ordered, language),
+        act.citations(candidates, language),
         null);
   }
 

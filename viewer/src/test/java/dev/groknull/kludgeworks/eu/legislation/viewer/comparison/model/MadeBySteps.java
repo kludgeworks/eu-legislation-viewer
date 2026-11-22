@@ -8,6 +8,8 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Appearance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -23,20 +25,25 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules about which acts made a difference, and in which steps (R-WHO-01,
- * R-WHO-04, R-WHO-05, R-WHO-06, R-WHO-11, R-WHO-12, R-WHO-22). The difference is the one that the
- * Differ finds between the converter's sample texts of the comparison ({@link Comparing}), with
- * Cellar's recorded amendments of its occurrence. The steps reach the domain only: {@link
- * Attribution}, {@link Differ} and the catalogue's acts.
+ * R-WHO-04, R-WHO-05, R-WHO-06, R-WHO-07, R-WHO-09, R-WHO-11, R-WHO-12, R-WHO-22). The difference
+ * is the one that the Differ finds between the converter's sample texts of the comparison ({@link
+ * Comparing}), with Cellar's recorded amendments of its occurrence. The steps reach the domain
+ * only: {@link Attribution}, {@link Differ} and the catalogue's acts.
  */
 public class MadeBySteps {
   private static final DateTimeFormatter DAY =
       DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK);
 
   private @Nullable Difference difference;
+  private @Nullable Set<LocalDate> built;
+  private @Nullable Version appeared;
   private List<Amendment> amendments = List.of();
   private Attribution attribution = Attribution.NONE;
 
@@ -56,14 +63,15 @@ public class MadeBySteps {
     assertThat(found.kind()).as(place.words()).isEqualTo(expected);
     difference = found;
     amendments =
-        Comparing.act()
-            .amended(
-                Comparing.from(),
-                Comparing.to(),
-                List.copyOf(earlier.byEId().keySet()),
-                List.copyOf(later.byEId().keySet()),
-                Language.ENG)
-            .of(eId, expected != Kind.CHANGED);
+        Attribution.amendmentsOf(
+            Comparing.act()
+                .amended(
+                    Comparing.from(),
+                    Comparing.to(),
+                    List.copyOf(earlier.byEId().keySet()),
+                    List.copyOf(later.byEId().keySet()),
+                    Language.ENG),
+            found);
   }
 
   @When("the reader asks who made it")
@@ -103,6 +111,68 @@ public class MadeBySteps {
                                     .map(ActIdentifier::cited)
                                     .toList())))
                 .toList());
+  }
+
+  @Given("only the texts of {days} are built")
+  public void onlyBuilt(List<LocalDate> days) {
+    built = Set.copyOf(days);
+  }
+
+  @When("the reader asks where the change first appears")
+  public void whereItAppears() {
+    var eId = Objects.requireNonNull(difference, "no difference given").eId();
+    appeared =
+        Appearance.of(
+                Comparing.act().timeline(),
+                Comparing.from(),
+                Comparing.to(),
+                Set.of(eId),
+                this::differing)
+            .get(eId);
+  }
+
+  @Then("no act is named")
+  public void noActIsNamed() {
+    assertThat(attribution.steps()).isEmpty();
+    assertThat(
+            Attribution.unnamed(
+                Inclusions.listed(Comparing.act().timeline()), Comparing.from(), Comparing.to()))
+        .isEqualTo(Attribution.NONE);
+  }
+
+  @Then("it first appears in the text of {day}, which consolidates {string}")
+  public void firstAppearsIn(LocalDate day, String acts) {
+    var version = Objects.requireNonNull(appeared, "the change appears in no text");
+    assertThat(version.date()).isEqualTo(day);
+    assertThat(
+            Inclusions.listed(Comparing.act().timeline()).of(version).stream()
+                .map(ActIdentifier::cited)
+                .toList())
+        .isEqualTo(Cited.acts(acts).stream().map(ActIdentifier::cited).toList());
+  }
+
+  /**
+   * Returns the eIds of the differences between the text of the version before {@code version} and
+   * its own text, or empty if the two texts are not both built. A text is built if the converter
+   * has its sample text, and if the scenario does not limit the built texts to others.
+   */
+  private Optional<Set<String>> differing(Version version) {
+    return Comparing.act()
+        .timeline()
+        .predecessor(version)
+        .filter(this::isBuilt)
+        .filter(before -> isBuilt(version))
+        .map(
+            before ->
+                Differ.differences(Comparing.text(before), Comparing.text(version))
+                    .differences()
+                    .stream()
+                    .map(Difference::eId)
+                    .collect(Collectors.toSet()));
+  }
+
+  private boolean isBuilt(Version version) {
+    return (built == null || built.contains(version.date())) && Comparing.hasText(version);
   }
 
   @Then("{act} is not named")

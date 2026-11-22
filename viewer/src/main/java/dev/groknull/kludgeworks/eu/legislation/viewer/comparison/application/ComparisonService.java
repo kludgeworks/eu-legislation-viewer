@@ -2,6 +2,10 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.application;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.NeighboursBuilt;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Appearance;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
@@ -12,12 +16,15 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationRegistry;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.Executor;
+import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -78,6 +85,30 @@ class ComparisonService implements Comparisons {
     } catch (CompletionException e) {
       throw e.getCause() instanceof RuntimeException cause ? cause : e;
     }
+  }
+
+  @Override
+  public Map<String, Version> appeared(
+      Timeline timeline, Map<Version, Text> texts, Version from, Version to, Set<String> eIds) {
+    return Appearance.of(
+        timeline,
+        from,
+        to,
+        eIds,
+        version ->
+            timeline
+                .predecessor(version)
+                .flatMap(
+                    before ->
+                        texts.get(before) instanceof Text.Ready earlier
+                                && texts.get(version) instanceof Text.Ready later
+                            ? between(earlier.text(), later.text())
+                            : Optional.empty())
+                .map(
+                    comparison ->
+                        comparison.differences().stream()
+                            .map(Difference::eId)
+                            .collect(Collectors.toSet())));
   }
 
   @Override

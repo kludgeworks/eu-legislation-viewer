@@ -3,6 +3,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Act;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amended;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
@@ -90,6 +91,37 @@ public record Attribution(
    */
   public static Attribution oneOf(List<ActIdentifier> candidates) {
     return new Attribution(List.of(), candidates, List.of());
+  }
+
+  /**
+   * Returns Cellar's amendments of the occurrence of {@code difference} (R-WHO-09): those at the
+   * occurrence, and those at an occurrence around it. For an occurrence that was inserted or
+   * deleted whole, also those at the occurrences in it. A point numbered under a point, which the
+   * text keeps beside it, counts as in it ({@link Amended#of}).
+   */
+  public static List<Amendment> amendmentsOf(Amended amended, Difference difference) {
+    return amended.of(difference.eId(), difference.kind() != Difference.Kind.CHANGED);
+  }
+
+  /**
+   * Returns the attribution of a difference for which nothing names an act (R-WHO-07). If two or
+   * more acts that are not corrigenda are between the two versions, and one version first includes
+   * them all, one of them made it: they are the candidates, in the order of that version. If not,
+   * no act is named.
+   */
+  public static Attribution unnamed(Inclusions included, Version from, Version to) {
+    var candidates =
+        included.between(from, to).stream().filter(each -> !each.corrigendum()).toList();
+    var versions =
+        candidates.stream()
+            .map(each -> Applicability.firstIncluding(included, from, to, each))
+            .flatMap(Optional::stream)
+            .distinct()
+            .toList();
+    if (candidates.size() < 2 || versions.size() != 1) {
+      return NONE;
+    }
+    return oneOf(included.of(versions.getFirst()).stream().filter(candidates::contains).toList());
   }
 
   /**

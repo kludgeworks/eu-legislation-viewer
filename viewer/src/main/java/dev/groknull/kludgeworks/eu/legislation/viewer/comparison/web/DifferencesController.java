@@ -13,10 +13,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Texts;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparisons;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
@@ -336,7 +336,7 @@ class DifferencesController {
                   from,
                   to,
                   difference,
-                  amended.of(difference.eId(), difference.kind() != Kind.CHANGED),
+                  Attribution.amendmentsOf(amended, difference),
                   only,
                   ends.language)));
     }
@@ -345,7 +345,8 @@ class DifferencesController {
             .filter(each -> each.getValue().attribution().unattributed())
             .map(each -> each.getKey().eId())
             .collect(Collectors.toSet());
-    var appeared = appeared(ends, from, to, unattributed);
+    var appeared =
+        comparisons.appeared(ends.timeline, ends.preparation.texts(), from, to, unattributed);
     for (var entry : made) {
       var difference = entry.getKey();
       var version =
@@ -760,46 +761,6 @@ class DifferencesController {
         eIds.size(),
         Duration.ofNanos(System.nanoTime() - started).toMillis());
     return templates.comparisonNeighbours(rows, this.html).render();
-  }
-
-  /**
-   * Returns the version where each change of {@code eIds} first appears, by the eId of its
-   * occurrence. The comparison of {@code from} with {@code to} has these changes, and no source
-   * attributes them to an act. Each pair of neighbouring versions after {@code from}, up to {@code
-   * to}, is compared, in order: the first pair whose comparison has a difference at the occurrence
-   * gives its later version. Preparing the act compares these pairs already, so their comparisons
-   * are kept. A pair whose texts are not both built is skipped. If {@code to} follows {@code from},
-   * every change appears in {@code to}.
-   */
-  private Map<String, Version> appeared(Ends ends, Version from, Version to, Set<String> eIds) {
-    var found = new HashMap<String, Version>();
-    if (eIds.isEmpty()) {
-      return found;
-    }
-    if (ends.timeline.predecessor(to).filter(from::equals).isPresent()) {
-      eIds.forEach(eId -> found.put(eId, to));
-      return found;
-    }
-    for (var version : ends.timeline.versions()) {
-      if (!version.date().isAfter(from.date()) || version.date().isAfter(to.date())) {
-        continue;
-      }
-      var before = ends.timeline.predecessor(version);
-      if (before.isEmpty()
-          || !(ends.preparation.texts().get(before.get()) instanceof Text.Ready earlier)
-          || !(ends.preparation.texts().get(version) instanceof Text.Ready later)) {
-        continue;
-      }
-      comparisons.between(earlier.text(), later.text()).stream()
-          .flatMap(step -> step.differences().stream())
-          .map(Difference::eId)
-          .filter(eIds::contains)
-          .forEach(eId -> found.putIfAbsent(eId, version));
-      if (found.size() == eIds.size()) {
-        break;
-      }
-    }
-    return found;
   }
 
   /** Returns the ends of the comparison at a canonical address of the compare page. */

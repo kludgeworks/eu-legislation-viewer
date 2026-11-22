@@ -18,6 +18,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -52,6 +53,12 @@ public class TagsSteps {
   @ParameterType("\\d{1,2} [A-Z][a-z]+ \\d{4}")
   public LocalDate day(String day) {
     return LocalDate.parse(day, DAY);
+  }
+
+  /** Days, as the pages write them. For example, "1 January 2026 and 22 March 2026". */
+  @ParameterType("\\d{1,2} [A-Z][a-z]+ \\d{4}(?:(?:, | and )\\d{1,2} [A-Z][a-z]+ \\d{4})*")
+  public List<LocalDate> days(String days) {
+    return Arrays.stream(days.split(", | and ")).map(this::day).toList();
   }
 
   /**

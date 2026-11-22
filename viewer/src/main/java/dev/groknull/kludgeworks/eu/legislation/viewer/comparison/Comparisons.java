@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Text;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Timeline;
+import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 /**
  * Comparisons of stored texts. Each comparison is worked out once, the first time that it is asked
@@ -23,4 +28,14 @@ public interface Comparisons {
    * because the store keeps it apart. Returns none if there is no such difference.
    */
   Optional<Difference> difference(TextId from, TextId to, String eId);
+
+  /**
+   * Returns the version whose text first has each change of {@code eIds}, by the eId of its
+   * occurrence, from the kept comparisons of the neighbouring versions ({@link Appearance},
+   * R-WHO-07). The comparison of {@code from} with {@code to} has these changes. {@code texts} are
+   * the texts of the versions, as their preparation has them: a pair whose texts are not both ready
+   * is passed over.
+   */
+  Map<String, Version> appeared(
+      Timeline timeline, Map<Version, Text> texts, Version from, Version to, Set<String> eIds);
 }
