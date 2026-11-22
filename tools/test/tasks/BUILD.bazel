@@ -62,3 +62,14 @@ bats_test(
         "//tools/tasks:release/notes.bash",
     ],
 )
+
+bats_test(
+    name = "dependency_prs",
+    size = "small",
+    srcs = ["dependency_prs.bats"],
+    data = [
+        "test_helper.bash",
+        "//tools/build:plan-dependency-prs.bash",
+        "//tools/build:upgrade_dependencies.py",
+    ],
+)

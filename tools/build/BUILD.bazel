@@ -11,8 +11,10 @@ package(default_visibility = ["//visibility:public"])
 
 exports_files([
     "defs.bzl",
+    "plan-dependency-prs.bash",
     "pmd.xml",
     "spotbugs-exclude.xml",
+    "upgrade_dependencies.py",
     "xslt-quality.conf.xml",
 ])
 
