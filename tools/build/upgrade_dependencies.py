@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: MIT
-"""Plan and apply dependency PRs against a single revision of main."""
+# MISE description="Plan updates to mise tools, Bazel dependencies and GitHub Actions, or apply a selected plan"
+"""The plan command reads open PR branch names and emits a GitHub Actions job matrix.
+The apply command updates the selected pins and refreshes their lockfiles in this checkout.
+"""
 
 import argparse
 import hashlib

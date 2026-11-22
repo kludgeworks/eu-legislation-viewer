@@ -64,9 +64,9 @@ bats_test(
 )
 
 bats_test(
-    name = "dependency_prs",
+    name = "plan_and_apply_dependency_updates",
     size = "small",
-    srcs = ["dependency_prs.bats"],
+    srcs = ["plan_and_apply_dependency_updates.bats"],
     data = [
         "test_helper.bash",
         "//tools/build:plan-dependency-prs.bash",

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # SPDX-License-Identifier: MIT
+#MISE description="List open update PRs and write the planned GitHub Actions job matrix to GITHUB_OUTPUT"
 set -euo pipefail
 
 branches=$(gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/pulls?base=main&state=open&per_page=100" |
