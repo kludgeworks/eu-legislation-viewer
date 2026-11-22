@@ -23,7 +23,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
-import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
@@ -35,9 +34,6 @@ import org.jspecify.annotations.Nullable;
 public class TagsSteps {
   private static final DateTimeFormatter DAY =
       DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK);
-
-  /** The number of a regulation. For example, 2015/1998. */
-  private static final Pattern REGULATION = Pattern.compile("(\\d{4})/(\\d+)");
 
   private @Nullable Element version;
   private @Nullable Occurrences occurrences;
@@ -58,15 +54,10 @@ public class TagsSteps {
     return LocalDate.parse(day, DAY);
   }
 
-  /** A regulation, by its number. For example, 2015/1998. */
-  @ParameterType("\\d{4}/\\d+")
-  public ActIdentifier act(String number) {
-    var matched = REGULATION.matcher(number);
-    if (!matched.matches()) {
-      throw new IllegalArgumentException("Not the number of a regulation: " + number);
-    }
-    return new ActIdentifier(
-        "3" + matched.group(1) + "R" + "%04d".formatted(Integer.parseInt(matched.group(2))));
+  /** An act, as the rules cite it: "2015/1998", or "Corrigendum 1 to 2017/815". */
+  @ParameterType("\\d{4}/\\d+|Corrigendum \\d+ to \\d{4}/\\d+")
+  public ActIdentifier act(String cited) {
+    return Cited.act(cited);
   }
 
   @Given("the consolidated version of {act} of {day}")

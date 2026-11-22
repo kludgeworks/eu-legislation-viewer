@@ -29,6 +29,23 @@ Feature: Who made a change, and from when
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
 
+  Rule: R-WHO-10 A corrigendum corrects
+    A difference that only corrigenda made is a correction, not an amendment. A difference that an
+    amending act made, alone or together with a corrigendum, is not a correction. Nor is a
+    difference that no known act made.
+
+    Scenario Outline: <case>
+      Given a difference made by "<made by>"
+      Then the difference <is> a correction
+
+      Examples:
+        | case                                         | made by                                                 | is     |
+        | One corrigendum made it                      | Corrigendum 1 to 2017/815                               | is     |
+        | Two corrigenda made it                       | Corrigendum 1 to 2017/815 and Corrigendum 4 to 2017/815 | is     |
+        | An amending act made it with a corrigendum   | 2019/103 and Corrigendum 1 to 2017/815                  | is not |
+        | An amending act made it                      | 2019/103                                                | is not |
+        | No known act made it                         | no known act                                            | is not |
+
   Rule: R-WHO-13 The modification of each step
     A sidenote names each act with what it did to the occurrence in its step: its modification.
     The first step of an inserted occurrence inserted it, and the last step of a deleted

@@ -342,13 +342,14 @@ class DifferencesController {
     }
     var unattributed =
         made.stream()
-            .filter(each -> each.getValue().unattributed())
+            .filter(each -> each.getValue().attribution().unattributed())
             .map(each -> each.getKey().eId())
             .collect(Collectors.toSet());
     var appeared = appeared(ends, from, to, unattributed);
     for (var entry : made) {
       var difference = entry.getKey();
-      var version = entry.getValue().unattributed() ? appeared.get(difference.eId()) : null;
+      var version =
+          entry.getValue().attribution().unattributed() ? appeared.get(difference.eId()) : null;
       var sidenote =
           version == null
               ? entry.getValue()
@@ -550,7 +551,7 @@ class DifferencesController {
       found =
           attributed.comparison().differences().stream()
               .filter(each -> eIds.stream().anyMatch(eId -> Location.holds(eId, each.eId())))
-              .filter(each -> attributed.sidenote(each).acts().contains(only))
+              .filter(each -> attributed.sidenote(each).attribution().acts().contains(only))
               .toList();
       lead =
           found.isEmpty()
@@ -617,7 +618,7 @@ class DifferencesController {
     var others = new LinkedHashSet<ActIdentifier>();
     var shown = new ArrayList<DifferencesView.Shown>();
     for (var difference : attributed.comparison().differences()) {
-      var candidates = attributed.sidenote(difference).candidates();
+      var candidates = attributed.sidenote(difference).attribution().candidates();
       if (candidates.contains(only)) {
         candidates.stream().filter(each -> !each.equals(only)).forEach(others::add);
         shown.add(new DifferencesView.Shown(0, difference, ""));

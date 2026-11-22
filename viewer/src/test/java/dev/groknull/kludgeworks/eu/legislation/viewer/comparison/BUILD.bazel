@@ -114,6 +114,8 @@ java_junit5_test(
     name = "rules",
     size = "small",
     srcs = [
+        "model/AttributionSteps.java",
+        "model/Cited.java",
         "model/ComparisonRules.java",
         "model/ModificationSteps.java",
         "model/TagsSteps.java",

@@ -89,9 +89,9 @@ class SidenoteViewTest {
             List.of(),
             Language.ENG);
 
-    assertThat(listed.acts()).doesNotContain(tagged);
+    assertThat(listed.attribution().acts()).doesNotContain(tagged);
     assertThat(included.made()).isEqualTo("Replaced by %s", AVSEC.cited(tagged));
-    assertThat(included.acts()).containsExactly(tagged);
+    assertThat(included.attribution().acts()).containsExactly(tagged);
   }
 
   @Test
@@ -128,9 +128,9 @@ class SidenoteViewTest {
     assertThat(of(included, from, to, newTag).dates().getFirst().when())
         .contains("from 1 October 2026");
     // The earlier text has the tag: the act changed the occurrence before.
-    assertThat(of(included, from, to, oldTag).acts()).isEmpty();
+    assertThat(of(included, from, to, oldTag).attribution().acts()).isEmpty();
     // No part of 2019/103 applies in the step: its tag is old, not new.
-    assertThat(of(included, from, to, noPart).acts()).isEmpty();
+    assertThat(of(included, from, to, noPart).attribution().acts()).isEmpty();
   }
 
   private static SidenoteView of(
@@ -445,8 +445,8 @@ class SidenoteViewTest {
         .startsWith("Deleted in the version of 22 March 2026, which consolidates ")
         .contains("2026/449");
     // It names no act as the one that made it.
-    assertThat(sidenote.acts()).isEmpty();
-    assertThat(sidenote.candidates()).isEmpty();
+    assertThat(sidenote.attribution().acts()).isEmpty();
+    assertThat(sidenote.attribution().candidates()).isEmpty();
     assertThat(sidenote.dates()).isEmpty();
   }
 
@@ -569,7 +569,7 @@ class SidenoteViewTest {
             Language.ENG);
 
     assertThat(sidenote.made()).isEqualTo("Replaced by 2019/103 and 2019/1583 together");
-    assertThat(sidenote.acts())
+    assertThat(sidenote.attribution().acts())
         .containsExactly(new ActIdentifier("32019R0103"), new ActIdentifier("32019R1583"));
   }
 
@@ -658,7 +658,7 @@ class SidenoteViewTest {
             amendmentsAt("AN PO 12.3.1"),
             Language.ENG);
 
-    assertThat(sidenote.acts())
+    assertThat(sidenote.attribution().acts())
         .extracting(ActIdentifier::cited)
         .containsExactlyInAnyOrder("2021/255", "2022/421");
   }
@@ -701,8 +701,8 @@ class SidenoteViewTest {
         .isEqualTo(
             "The data does not say which act changed this. It was 2019/103, 2019/1583 or"
                 + " 2020/910.");
-    assertThat(sidenote.acts()).isEmpty();
-    assertThat(sidenote.candidates()).hasSize(3);
+    assertThat(sidenote.attribution().acts()).isEmpty();
+    assertThat(sidenote.attribution().candidates()).hasSize(3);
   }
 
   /** Cellar's amendments of 2015/1998 by {@code act} at {@code location}. */

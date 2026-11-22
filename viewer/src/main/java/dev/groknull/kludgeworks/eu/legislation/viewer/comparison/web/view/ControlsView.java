@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Summary;
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import org.jspecify.annotations.Nullable;
@@ -35,35 +35,23 @@ public final class ControlsView {
 
   /**
    * Returns the legend of the comparison {@code differences}, whose differences have {@code
-   * sidenotes} by number. The legend names only what the edits of the page show: inserted and
-   * deleted words, and the words of a correction. If one act made every difference, the summary
-   * names it.
+   * sidenotes} by number. What it names is the comparison's {@link Summary}: the edits that the
+   * page shows, and the one act that made every difference, if there is one.
    */
   public static Legend legend(DifferencesView differences, Map<Integer, SidenoteView> sidenotes) {
-    var inserted = false;
-    var deleted = false;
-    var corrected = false;
-    var acts = new LinkedHashSet<ActIdentifier>();
-    var known = true;
+    var shown = new ArrayList<Summary.Attributed>();
     for (var passage : differences.passages()) {
-      if (passage instanceof DifferencesView.Shown shown) {
-        var sidenote = sidenotes.get(shown.number());
-        var difference = shown.difference();
-        if (sidenote != null && sidenote.corrected()) {
-          corrected = true;
-        } else {
-          inserted |= difference.kind() == Kind.INSERTED || difference.inserted() > 0;
-          deleted |= difference.kind() == Kind.DELETED || difference.deleted() > 0;
-        }
-        if (sidenote == null || sidenote.acts().isEmpty()) {
-          known = false;
-        } else {
-          acts.addAll(sidenote.acts());
-        }
+      if (passage instanceof DifferencesView.Shown each) {
+        var sidenote = sidenotes.get(each.number());
+        shown.add(
+            new Summary.Attributed(
+                each.difference(), sidenote == null ? Attribution.NONE : sidenote.attribution()));
       }
     }
+    var summary = Summary.of(shown);
+    var by = summary.by();
     return new Legend(
-        inserted, deleted, corrected, known && acts.size() == 1 ? acts.getFirst().cited() : null);
+        summary.inserted(), summary.deleted(), summary.corrected(), by == null ? null : by.cited());
   }
 
   /**

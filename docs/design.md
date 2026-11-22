@@ -113,7 +113,7 @@ its module.
 | run | A sequence of words of a difference that is the same in both texts, inserted or deleted. The inserted and deleted runs are the edits. |
 | pairing | Which occurrence of the later text is which occurrence of the earlier text. An occurrence that an act renumbered or moved pairs with the occurrence that it was. |
 | steps | The changes of one provision between the two days of a comparison, oldest first. |
-| sidenote | The note beside a difference. It names the act that made the difference, and the date. |
+| sidenote | The note beside a difference. It names the act that made the difference, and the date. Where no known act made it, the sidenote says only the modification: "Inserted", "Deleted" or "Amended" (R-WHO-14). |
 | neighbour | An occurrence near a difference that is the same in both texts. Synopsis shows it for context. |
 | Differences, Whole text, Synopsis | The three views of a comparison. Differences shows only the differences. Whole text shows the later text with its edits in place. Synopsis shows the two texts side by side, with neighbours. |
 
@@ -121,6 +121,7 @@ its module.
 
 | Term | Meaning |
 | --- | --- |
+| summary | The line above the differences of a comparison: "No provisions differ", "1 provision differs" or "6 provisions differ". If one act made every difference, it adds the act: "by 2026/449" (R-SHOW-06). |
 | fold | A group that the page hides until the reader opens it: provisions, the rows of a table, or a list of dates. |
 | outline | The list of the parts of the text, beside the text. |
 
@@ -191,7 +192,7 @@ and a dark value. The tokens are in
 | Green | `--accent…` | Navigation and selection: links, the selected version, the selected view. |
 | Blue | `--ins-…` | Inserted words, and the sidenote of an inserted provision. |
 | Red | `--del-…` | Deleted words, and the sidenote of a deleted provision. |
-| Purple | `--corr-…` | A correction by a corrigendum. |
+| Purple | `--corr-…` | A correction by a corrigendum: a difference that only corrigenda made (R-WHO-10). Its inserted words have a dotted underline and its deleted words are struck through, both purple, not blue and red. |
 | Amber | `--warn-…` | A change does not apply on the day. On Compare, the day is the later day. |
 | Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the divergence note of a pending amendment). In the outline, a hollow dot is the sign of that note. |
 

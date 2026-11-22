@@ -9,6 +9,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Publication;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
@@ -76,10 +77,8 @@ import org.jspecify.annotations.Nullable;
  *           two versions
  *     </ul>
  *
- * @param acts the acts that made the difference, in the order that the versions integrate them. The
- *     difference counts in the changes of each of these acts.
- * @param candidates the acts of which one made the difference, where it is not known which act.
- *     Empty where the act is known.
+ * @param attribution who made the difference: the acts that made it, or the acts of which one made
+ *     it
  * @param dates when each of these acts applies, with what sets the date
  * @param published how the acts that made the difference, or may have made it, were published, one
  *     line for each act. The hover of {@code made} lists them the same way. Null where no act is
@@ -91,15 +90,12 @@ import org.jspecify.annotations.Nullable;
  */
 public record SidenoteView(
     @Nullable String made,
-    List<ActIdentifier> acts,
-    List<ActIdentifier> candidates,
+    Attribution attribution,
     List<Applies> dates,
     @Nullable String published,
     @Nullable String prospective) {
 
   public SidenoteView {
-    acts = List.copyOf(acts);
-    candidates = List.copyOf(candidates);
     dates = List.copyOf(dates);
   }
 
@@ -111,21 +107,12 @@ public record SidenoteView(
   public SidenoteView notApplying(Act act, ActIdentifier amending, LocalDate day, LocalDate today) {
     return new SidenoteView(
         made,
-        acts,
-        candidates,
+        attribution,
         dates,
         published,
         act.cited(amending)
             + (day.isBefore(today) ? " did not apply yet on " : " does not apply yet on ")
             + Dates.inWords(day));
-  }
-
-  /**
-   * Returns whether only corrigenda made the difference. If so, the difference is a correction, not
-   * an amendment, and its edits show it differently.
-   */
-  public boolean corrected() {
-    return !acts.isEmpty() && acts.stream().allMatch(ActIdentifier::corrigendum);
   }
 
   /**
@@ -239,8 +226,7 @@ public record SidenoteView(
     }
     return new SidenoteView(
         String.join(", then ", chain),
-        steps.stream().flatMap(List::stream).toList(),
-        List.of(),
+        Attribution.madeBy(steps.stream().flatMap(List::stream).toList()),
         dates,
         act.citations(steps.stream().flatMap(List::stream).toList(), language),
         null);
@@ -267,7 +253,7 @@ public record SidenoteView(
             .distinct()
             .count();
     if (candidates.size() < 2 || versions != 1) {
-      return new SidenoteView(unsaid(difference), List.of(), List.of(), List.of(), null, null);
+      return new SidenoteView(unsaid(difference), Attribution.NONE, List.of(), null, null);
     }
     var ordered =
         included.of(version(included, from, to, candidates.getFirst()).orElseThrow()).stream()
@@ -285,19 +271,10 @@ public record SidenoteView(
             + " or "
             + names.getLast()
             + ".",
-        List.of(),
-        ordered,
+        Attribution.oneOf(ordered),
         dates,
         act.citations(ordered, language),
         null);
-  }
-
-  /**
-   * Returns whether the sidenote names no act: neither the act that made the difference, nor acts
-   * of which one made it.
-   */
-  public boolean unattributed() {
-    return acts.isEmpty() && candidates.isEmpty();
   }
 
   /**
@@ -316,8 +293,7 @@ public record SidenoteView(
             + " in the version of "
             + Dates.inWords(version.date())
             + (consolidates.isEmpty() ? "" : ", which consolidates " + names(act, consolidates)),
-        List.of(),
-        List.of(),
+        Attribution.NONE,
         List.of(),
         null,
         null);
