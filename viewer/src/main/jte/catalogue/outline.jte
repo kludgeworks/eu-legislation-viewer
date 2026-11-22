@@ -15,7 +15,7 @@
       <a href="${href}">${name}</a>
       @if(!entry.entries().isEmpty())
         <details open="${open}">
-          <summary><span class="visually-hidden">The parts of ${name}</span></summary>
+          <summary><span class="visually-hidden">The subdivisions of ${name}</span></summary>
           @template.catalogue.outline(entries = entry.entries(), open = false)
         </details>
       @endif

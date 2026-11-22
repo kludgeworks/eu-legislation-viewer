@@ -9,17 +9,17 @@ import java.util.Map;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The parts that many sidenotes of one view repeat, each sent once. An act amended by many acts in
+ * The pieces that many sidenotes of one view repeat, each sent once. An act amended by many acts in
  * one range has thousands of differences, and their sidenotes name the same acts: 2005/396 from
  * December 2024 to August 2026 has 2,685 sidenotes but 12 hover texts and 9 lists of dates, 17 MB
  * of its 35 MB.
  *
- * <p>The view sends the parts in a template before the differences (sidenoteparts.jte), and each
- * sidenote names its parts by id. js/sidenotes.js sets the hover text of who made the difference
- * from them, and fills a fold of dates when the reader opens it. A list of dates is a part only if
+ * <p>The view sends the pieces in a template before the differences (sidenotepieces.jte), and each
+ * sidenote names its pieces by id. js/sidenotes.js sets the hover text of who made the difference
+ * from them, and fills a fold of dates when the reader opens it. A list of dates is a piece only if
  * it is long enough to fold ({@link #FOLDED}). A shorter one shows as it is.
  */
-public final class SidenoteParts {
+public final class SidenotePieces {
 
   /** The fewest dates that fold. Fewer show as they are. */
   public static final int FOLDED = 6;
@@ -27,21 +27,23 @@ public final class SidenoteParts {
   private final Map<String, String> published = new LinkedHashMap<>();
   private final Map<List<SidenoteView.Applies>, String> dates = new LinkedHashMap<>();
 
-  private SidenoteParts() {}
+  private SidenotePieces() {}
 
-  /** Returns the parts of {@code sidenotes}, each once, numbered in the order of the sidenotes. */
-  public static SidenoteParts of(Collection<SidenoteView> sidenotes) {
-    var parts = new SidenoteParts();
+  /** Returns the pieces of {@code sidenotes}, each once, numbered in the order of the sidenotes. */
+  public static SidenotePieces of(Collection<SidenoteView> sidenotes) {
+    var pieces = new SidenotePieces();
     for (var sidenote : sidenotes) {
       var hover = sidenote.published();
       if (hover != null) {
-        parts.published.computeIfAbsent(hover, each -> "published-" + (parts.published.size() + 1));
+        pieces.published.computeIfAbsent(
+            hover, each -> "published-" + (pieces.published.size() + 1));
       }
       if (sidenote.dates().size() >= FOLDED) {
-        parts.dates.computeIfAbsent(sidenote.dates(), each -> "dates-" + (parts.dates.size() + 1));
+        pieces.dates.computeIfAbsent(
+            sidenote.dates(), each -> "dates-" + (pieces.dates.size() + 1));
       }
     }
-    return parts;
+    return pieces;
   }
 
   /** Returns the hover texts of who made the differences, each by its id. */

@@ -38,7 +38,7 @@ import org.jspecify.annotations.Nullable;
  * quotation marks of a quote. The others are only counted. A deleted run shows its tokens as they
  * were, a formula as a formula.
  *
- * <p>A table is not one run of tokens. It is compared by its rows and cells. See {@link #parts}.
+ * <p>A table is not one run of tokens. It is compared by its rows and cells. See {@link #pieces}.
  *
  * <p>The Myers diff in linear space of java-diff-utils aligns the tokens of two blocks.
  *
@@ -55,9 +55,10 @@ final class Edits {
   static final String DELETED = "diff:del";
 
   /**
-   * The attribute of a note, or of a reference to a note, that only one of the two texts has. Its
-   * value is "ins" or "del". The marker of a note and a reference to a note are not words, so no
-   * edit is around them. With the attribute, a page can show them only with the text that has them.
+   * The attribute of a footnote, or of a reference to a footnote, that only one of the two texts
+   * has. Its value is "ins" or "del". The marker of a footnote and a reference to a footnote are
+   * not words, so no edit is around them. With the attribute, a page can show them only with the
+   * text that has them.
    */
   static final String ONLY = "diff";
 
@@ -71,48 +72,57 @@ final class Edits {
    * not have are shown inserted. The words of {@code from} that {@code to} does not have are added
    * as deleted. Each deleted run goes before the token of {@code to} that it stood before.
    *
-   * <p>A table is compared by its parts. See {@link #PARTS}.
+   * <p>A table is compared by its pieces. See {@link #PIECES}.
    */
   static Edited between(Element from, Element to) {
-    return from.name().equals(to.name()) && PARTS.contains(to.name())
-        ? parts(from, to)
+    return from.name().equals(to.name()) && PIECES.contains(to.name())
+        ? pieces(from, to)
         : words(from, to);
   }
 
   /**
-   * The elements that a comparison reads as a sequence of parts, not as one run of words. They are
+   * The elements that a comparison reads as a sequence of pieces, not as one run of words. They are
    * a table and what is in it: its caption, its rows and groups of rows, its cells, and the lists,
-   * occurrences and notes in a cell. Thus the words deleted from a cell stay in that cell, and a
-   * row inserted or deleted whole shows as a row.
+   * occurrences and footnotes in a cell. Thus the words deleted from a cell stay in that cell, and
+   * a row inserted or deleted whole shows as a row.
    */
-  private static final Set<String> PARTS =
-      Set.of("table", "caption", "rowGroup", "tr", "td", "list", "occurrence", "notes", "note");
+  private static final Set<String> PIECES =
+      Set.of(
+          "table",
+          "caption",
+          "rowGroup",
+          "tr",
+          "td",
+          "list",
+          "occurrence",
+          "footnotes",
+          "footnote");
 
   /**
-   * Returns {@code to}, edited against {@code from} part by part.
+   * Returns {@code to}, edited against {@code from} piece by piece.
    *
    * <ul>
-   *   <li>The parts match by name and by what they say, and those that differ pair if they are
-   *       alike. See {@link Parts}.
+   *   <li>The pieces match by name and by what they say, and those that differ pair if they are
+   *       alike. See {@link Pieces}.
    *   <li>The cells of two rows with as many cells pair by their column. Thus a changed cell is
    *       compared with the cell in the same column of the other text.
-   *   <li>A part that is in both texts and differs gets its edits from {@link #between}.
-   *   <li>A part that is only in {@code to} is shown inserted whole.
-   *   <li>A part that is only in {@code from} is shown deleted whole, where it stood.
+   *   <li>A piece that is in both texts and differs gets its edits from {@link #between}.
+   *   <li>A piece that is only in {@code to} is shown inserted whole.
+   *   <li>A piece that is only in {@code from} is shown deleted whole, where it stood.
    * </ul>
    */
-  private static Edited parts(Element from, Element to) {
+  private static Edited pieces(Element from, Element to) {
     var before = from.children();
     var after = to.children();
     var columns = to.name().equals("tr") && before.size() == after.size();
     var differing =
         columns
-            ? Parts.inOrder(before, after, keys(before), keys(after))
-            : Parts.differing(before, after, keys(before), keys(after));
-    var shown = new Parts.Shown();
+            ? Pieces.inOrder(before, after, keys(before), keys(after))
+            : Pieces.differing(before, after, keys(before), keys(after));
+    var shown = new Pieces.Shown();
     for (var each : differing) {
       switch (each) {
-        case Parts.Changed(int at, Element was, Element is) -> {
+        case Pieces.Changed(int at, Element was, Element is) -> {
           if (was.name().equals(is.name())) {
             shown.replace(at, between(was, is));
           } else {
@@ -120,8 +130,8 @@ final class Edits {
             shown.replace(at, all(is, INSERTED));
           }
         }
-        case Parts.Inserted(int at, Element is) -> shown.replace(at, all(is, INSERTED));
-        case Parts.Deleted(int at, Element was) -> {
+        case Pieces.Inserted(int at, Element is) -> shown.replace(at, all(is, INSERTED));
+        case Pieces.Deleted(int at, Element was) -> {
           if (!Wording.SILENT.contains(was.name())) {
             shown.delete(at, all(was, DELETED));
           }
@@ -131,9 +141,9 @@ final class Edits {
     return new Edited(copy(to, shown.of(after)), shown.inserted(), shown.deleted());
   }
 
-  /** Returns what each of {@code parts} is matched on: its name and its {@link Wording#key}. */
-  private static List<String> keys(List<Element> parts) {
-    return parts.stream().map(part -> part.name() + ":" + Wording.key(part)).toList();
+  /** Returns what each of {@code pieces} is matched on: its name and its {@link Wording#key}. */
+  private static List<String> keys(List<Element> pieces) {
+    return pieces.stream().map(piece -> piece.name() + ":" + Wording.key(piece)).toList();
   }
 
   /** Returns {@code to}, edited against {@code from} word by word. */
@@ -190,10 +200,11 @@ final class Edits {
   }
 
   /**
-   * Returns {@code element} with each note and each reference to a note in it set {@link #ONLY}.
+   * Returns {@code element} with each footnote and each reference to a footnote in it set {@link
+   * #ONLY}.
    */
   private static Element only(Element element, String value) {
-    if (element.name().equals("note") || element.name().equals("noteRef")) {
+    if (element.name().equals("footnote") || element.name().equals("footnoteRef")) {
       var attributes = new HashMap<>(element.attributes());
       attributes.put(ONLY, value);
       return new Element(element.name(), attributes, element.children(), element.text());
@@ -202,29 +213,29 @@ final class Edits {
   }
 
   /**
-   * Returns {@code element} with each reference to an inserted note of it set {@link #ONLY}. A
-   * block that changed can refer to a note that only the later text has. The reference is then only
-   * in the later text also.
+   * Returns {@code element} with each reference to an inserted footnote of it set {@link #ONLY}. A
+   * block that changed can refer to a footnote that only the later text has. The reference is then
+   * only in the later text also.
    */
   static Element referring(Element element) {
     var inserted = new HashSet<String>();
-    insertedNotes(element, inserted);
+    insertedFootnotes(element, inserted);
     return inserted.isEmpty() ? element : referring(element, inserted);
   }
 
-  private static void insertedNotes(Element element, Set<String> found) {
-    if (element.name().equals("note")) {
+  private static void insertedFootnotes(Element element, Set<String> found) {
+    if (element.name().equals("footnote")) {
       var eId = element.attribute("eId");
       if (eId != null && "ins".equals(element.attribute(ONLY))) {
         found.add("#" + eId);
       }
       return;
     }
-    element.children().forEach(child -> insertedNotes(child, found));
+    element.children().forEach(child -> insertedFootnotes(child, found));
   }
 
   private static Element referring(Element element, Set<String> inserted) {
-    if (element.name().equals("noteRef")) {
+    if (element.name().equals("footnoteRef")) {
       return element.attribute(ONLY) == null && inserted.contains(element.attribute("href"))
           ? only(element, "ins")
           : element;

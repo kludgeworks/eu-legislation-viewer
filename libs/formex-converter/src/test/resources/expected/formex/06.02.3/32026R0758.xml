@@ -58,7 +58,7 @@
                   <t v="11 December 2018"/>
                </date>
                <t v=" on veterinary medicinal products and repealing Directive 2001/82/EC"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 60(1) thereof,"/>
             </p>
          </occurrence>
@@ -75,7 +75,7 @@
             </num>
             <p>
                <t v="Commission Implementing Regulation (EU) 2021/17"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" establishes a list of variations not requiring assessment in accordance with Regulation (EU) 2019/6."/>
             </p>
          </occurrence>
@@ -176,8 +176,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="4" date="2019-01-07" page="43">
                <t v="OJ L 4, 7.1.2019, p. 43"/>
@@ -188,8 +188,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Implementing Regulation (EU) 2021/17 of "/>
             <date date="2021-01-08">
@@ -205,8 +205,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -233,7 +233,7 @@
                         <occurrence eId="anx/qstr_1/tab_1/tr_1/td_2/idt_1" kind="indent">
                            <p>
                               <t v="administrative information concerning the holder’s representative or the distributor(s)"/>
-                              <noteRef href="#note_anx000201-1" marker="*"/>
+                              <footnoteRef href="#note_anx000201-1" marker="*"/>
                            </p>
                         </occurrence>
                      </list>
@@ -243,14 +243,14 @@
                </tr>
             </table>
          </quotedStructure>
-         <notes>
-            <note eId="note_anx000201-1" marker="*" kind="table">
+         <footnotes>
+            <footnote eId="note_anx000201-1" marker="*" kind="table">
                <p>
                   <t v="The reference to a change in the administrative information of the distributor(s) applies only in those cases where the competent authority has allowed, in accordance with Regulation (EU) 2019/6, the inclusion of the information on the distributor(s)."/>
                   <t v="’"/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
    </annexes>
 </legalText>

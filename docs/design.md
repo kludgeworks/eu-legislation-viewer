@@ -41,7 +41,7 @@ provision applies, and until when.
 | See if the text of that day is the law on that day | Read: the status lines and the divergence notes |
 | See which acts changed one provision | Read: the history of a provision |
 | Compare the wording on two days | Compare, from the history of a provision, or from the day control with two days |
-| Find which act made a change, and from when it applies | Compare: the side note |
+| Find which act made a change, and from when it applies | Compare: the sidenote |
 | Go to a different day, or to two days | The day control, on each page of an act |
 
 The amendment is the primary subject. A page shows what an amending act changed, and if each
@@ -69,12 +69,18 @@ The pages have no timeline. The day control sets the day of a page:
   has an outline.
 - "Previous change" and "Next change" move to the nearest day with a dot. With two days, they
   also set the day box that has the frame to that day. The frame stays on that box, so the
-  reader can step from change to change.
+  reader can go from change to change.
 - Without scripts, the control is a form with date boxes.
 
 ## Terms
 
 **Convention.** Use one term for one thing, on the pages and in documents.
+
+Each module has its own terms. The shared terms mean the same in every module. Each group below
+says which module owns its terms. A term that is not settled yet is in the list of open terms of
+its module.
+
+### Shared terms
 
 | Term | Meaning |
 | --- | --- |
@@ -82,22 +88,59 @@ The pages have no timeline. The day control sets the day of a page:
 | amending act | An act that changes a different act. |
 | corrigendum | A correction of an act. It is not an amending act. |
 | version | The text of an act from one day. It is the act as published, or a consolidated version. The pages do not use this word. They say "text": "the text of 31 December 2021". |
-| the law on a day | What applies on that day. It is not always the text of a version. |
-| pending amendment | An amending act that applies on the day, but the text of the day does not include it. EUR-Lex calls these "pending amendments". If the data does not give the day from which it applies, it is an undated pending amendment. |
-| prospective amendment | An amendment that the text of the day includes, but that does not apply on the day yet. |
 | provision | A part of the act that has legal effect and its own place: an article, a paragraph, a point, an annex or a part of an annex. A citation or a recital is not a provision. |
-| difference | A provision that an act inserted, deleted or changed between two versions. |
-| the two days of a comparison | The days that the reader gave to Compare. From is the earlier day, To the later day. |
-| steps | The changes of one provision between the two days of a comparison, oldest first. |
-| side note | The note beside a difference. It names the act and the date. |
-| status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
-| tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
-| divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. |
-| fold | A group of provisions that the page hides until the reader opens it. |
-| outline | The list of the parts of the text, beside the text. |
 | the day | The day that a page shows. The default is today. The address keeps a different day. |
+| the law on a day | What applies on that day. It is not always the text of a version. |
+
+### Legal text (module `legaltext`, and the converter)
+
+| Term | Meaning |
+| --- | --- |
+| occurrence | A subdivision as the text of one version has it, known by its eId. A provision has an occurrence in each text that has it. |
+| tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
+| footnote | A note of the text that a reference in the text points to. The notes are at the end of the text, or in a table. The word "note" alone is not a term: say footnote, sidenote or divergence note. |
+
+### Comparison (module `comparison`)
+
+| Term | Meaning |
+| --- | --- |
+| comparison | How the text of one day differs from the text of another day. The reader asks for it on Compare. |
+| the two days of a comparison | The days that the reader gave to Compare. From is the earlier day, To the later day. |
+| difference | A subdivision that differs between the two texts of a comparison: inserted, deleted, or with changed wording of its own. It is a provision, a citation or a recital. |
+| edits | The inserted and deleted words of a difference. Blue shows an insertion and red a deletion. |
+| run | A sequence of words of a difference that is the same in both texts, inserted or deleted. The inserted and deleted runs are the edits. |
+| pairing | Which occurrence of the later text is which occurrence of the earlier text. An occurrence that an act renumbered or moved pairs with the occurrence that it was. |
+| steps | The changes of one provision between the two days of a comparison, oldest first. |
+| sidenote | The note beside a difference. It names the act that made the difference, and the date. |
+| neighbour | An occurrence near a difference that is the same in both texts. Synopsis shows it for context. |
+| Differences, Whole text, Synopsis | The three views of a comparison. Differences shows only the differences. Whole text shows the later text with its edits in place. Synopsis shows the two texts side by side, with neighbours. |
+
+### Page words (all modules)
+
+| Term | Meaning |
+| --- | --- |
+| fold | A group that the page hides until the reader opens it: provisions, the rows of a table, or a list of dates. |
+| outline | The list of the parts of the text, beside the text. |
+
+### Catalogue (module `catalogue`)
+
+The terms of this module are not reviewed yet.
+
+Open terms of this module:
+
+- "step": the preparation of an act has steps, and the day picker steps from change to change.
+  In the comparison module, "steps" are the changes of one provision only.
+- "run": `AmendingView.Run` is a group of the changes of an amending act that have one state.
+  In the comparison module, a run is a sequence of words. Call this one a group.
+
+| Term | Meaning |
+| --- | --- |
 | state | How an act or a change stands on the day: "Applies", "Applies in part", "In force, does not apply yet", "Not in force yet". It is not a loading state of a page. |
 | deferred application | The state of an act that is in force but does not apply on the day yet, in full or in part. The status line names the day from which it applies in full. |
+| pending amendment | An amending act that applies on the day, but the text of the day does not include it. EUR-Lex calls these "pending amendments". If the data does not give the day from which it applies, it is an undated pending amendment. |
+| prospective amendment | An amendment that the text of the day includes, but that does not apply on the day yet. |
+| status line | One line on the Read page about one act, where the text is not the law on the day. The order is: the act, its state, the date, the count of provisions. |
+| divergence note | The note beside the text of Read where the text is not the law on the day. A pending amendment gets a grey note: "Not in this text". A prospective amendment gets an amber bar and a note. |
 | history | The list of the amending acts of an act, newest first. |
 | history of a provision | The list of the acts that changed one provision, newest first. Read shows it under the provision. The ▼ tag of the provision opens it. A provision that has a history and no ▼ tag has a hollow sign, ▽, in the same place. |
 
@@ -117,9 +160,9 @@ are not in this rule: `versions` is the name of a resource of the API.
 2. **Three layers stay apart.** The reader must see at once which layer an element is in:
    - the legal text
    - the differences: inserted, deleted and corrected words
-   - the words of the viewer: side notes, warnings, labels, folds
+   - the words of the viewer: sidenotes, warnings, labels, folds
 3. **Show only what has legal effect.** Before you add a line or a label, ask if it changes what
-   the reader does. Keep notes about how the viewer made the data to a minimum.
+   the reader does. Keep remarks about how the viewer made the data to a minimum.
 4. **Do not guess.** If the data does not name an act or a date, say so. For example: "The data
    does not say which act inserted this provision. It first appears in the text of 29 December
    2017." Do not hide the difference.
@@ -144,11 +187,11 @@ and a dark value. The tokens are in
 | Colour | Tokens | Meaning |
 | --- | --- | --- |
 | Green | `--accent…` | Navigation and selection: links, the selected version, the selected view. |
-| Blue | `--ins-…` | Inserted words, and the side note of an inserted provision. |
-| Red | `--del-…` | Deleted words, and the side note of a deleted provision. |
+| Blue | `--ins-…` | Inserted words, and the sidenote of an inserted provision. |
+| Red | `--del-…` | Deleted words, and the sidenote of a deleted provision. |
 | Purple | `--corr-…` | A correction by a corrigendum. |
 | Amber | `--warn-…` | A change does not apply on the day. On Compare, the day is the later day. |
-| Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the note of a pending amendment). In the outline, a hollow dot is the sign of that note. |
+| Grey | `--ink…`, `--muted…`, `--line…` | Text, less important text, and lines. A broken grey outline: the data does not give the state, or the text does not show a change (the divergence note of a pending amendment). In the outline, a hollow dot is the sign of that note. |
 
 Colour is not the only signal. Inserted and deleted words are `ins` and `del` elements. An amber
 bar has words.
@@ -182,7 +225,7 @@ narrower or wider. Do not design a different layout for a phone.
 
 | Loading state | What the reader sees |
 | --- | --- |
-| Preparing | The steps, the progress, and what the viewer knows about the act already. |
+| Preparing | The stages, the progress, and what the viewer knows about the act already. |
 | Arriving | The frame of the page, with the text to come. |
 | Ready | The text or the comparison. |
 | Missing | The version does not exist in the language. The page offers a different language. |
@@ -208,7 +251,7 @@ not answer, the page shows the Failed loading state, with Try again.
 - A long title: 2013/36 has a title of more than 40 words.
 - Deep provisions: point 8.1.2.3(c) of the Annex to 2015/1998.
 - Large tables with changed rows: the Annex to 2015/1998.
-- Notes that provisions refer to.
+- Footnotes that provisions refer to.
 - An annex that an act inserts whole.
 - An act with many versions: 2015/1998 has 23.
 - An act with one version: 2016/679.
@@ -233,7 +276,7 @@ of the viewer before each path.
 | Read, an undated pending amendment | `/eli/reg/2018/1862/2026-11-17/eng` |
 | Read, the history of a provision: the ▼ tag of Article 6(2) | `/eli/reg/2008/767/2026-11-17/eng#art_6` |
 | Read, no text in the language | `/eli/reg_impl/2015/1998/2021-12-31/gle` |
-| Compare, Changes | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |
+| Compare, Differences | `/eli/reg_impl/2015/1998/eng/compare?from=2021-07-01&to=2021-12-31` |
 | Compare, Whole text | the same, with `&view=whole` |
 | Compare, Synopsis | the same, with `&view=synopsis` |
 | Compare, a day on which an act applies that the text of the day does not have | `/eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03` |

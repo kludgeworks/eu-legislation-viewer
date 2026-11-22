@@ -103,7 +103,7 @@
       <P>first<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>one</P></NOTE> then<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>two</P></NOTE></P>
     </x:context>
     <x:expect label="leaves a numbered reference in the text">
-      <p><t v="first"/><noteRef href="#note_1" marker="1"/><t v=" then"/><noteRef href="#note_2" marker="2"/></p>
+      <p><t v="first"/><footnoteRef href="#note_1" marker="1"/><t v=" then"/><footnoteRef href="#note_2" marker="2"/></p>
     </x:expect>
   </x:scenario>
 
@@ -111,12 +111,12 @@
     <x:context mode="block" xmlns="">
       <P>a<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> b<NOTE NOTE.REF="E0003"/></P>
     </x:context>
-    <x:expect label="points at the same note" test="$x:result/*:noteRef[2]/@href = $x:result/*:noteRef[1]/@href"/>
+    <x:expect label="points at the same footnote" test="$x:result/*:footnoteRef[2]/@href = $x:result/*:footnoteRef[1]/@href"/>
   </x:scenario>
 
   <x:scenario label="A footnote with its printed number (NUMBER.ORG)">
     <x:context mode="block" xmlns=""><P>a<NOTE NOTE.ID="E0001" NUMBER.ORG="*" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE></P></x:context>
-    <x:expect label="keeps it" test="$x:result/*:noteRef/@marker = '*'"/>
+    <x:expect label="keeps it" test="$x:result/*:footnoteRef/@marker = '*'"/>
   </x:scenario>
 
   <x:scenario label="A consolidation's footnotes, NUMBER.ORG or not">
@@ -124,15 +124,15 @@
       <CONS.ACT><P>a<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> b<NOTE NOTE.ID="E0002" NUMBER.ORG="*" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> c<NOTE NOTE.ID="E0003" NUMBER.ORG="*" NUMBERING="OTHER" TYPE="FOOTNOTE"><P>n</P></NOTE> d<NOTE NOTE.ID="E0004" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> e<NOTE NOTE.ID="E0005" NUMBERING="STAR" TYPE="FOOTNOTE"><P>n</P></NOTE></P></CONS.ACT>
     </x:context>
     <x:expect label="are numbered through it, as EUR-Lex prints them; a star stays a star"
-              test="deep-equal($x:result/*:noteRef/@marker ! string(), ('1', '2', '3', '4', '*'))"/>
+              test="deep-equal($x:result/*:footnoteRef/@marker ! string(), ('1', '2', '3', '4', '*'))"/>
   </x:scenario>
 
-  <x:scenario label="A note in text an amendment deleted">
+  <x:scenario label="A footnote in text an amendment deleted">
     <x:context mode="block" select="/CONS.ACT/P" xmlns="">
       <CONS.ACT><P>a<NOTE NOTE.ID="E0001" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE> <?CLG.MDFO ID="O1" IDREF="C1" ACTION="DELETED" LEVEL="TEXT" ACTIVE.DOC="32022R1174" ACTIVE.LOC="PT:23"?>b<NOTE NOTE.ID="E0002" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE><?CLG.MDFC ID="C1" IDREF="O1"?> c<NOTE NOTE.ID="E0003" NUMBERING="ARAB" TYPE="FOOTNOTE"><P>n</P></NOTE></P></CONS.ACT>
     </x:context>
-    <x:expect label="isn't counted: the next live note takes the number, as EUR-Lex has it"
-              test="deep-equal($x:result//*:noteRef/@marker ! string(), ('1', '2', '2'))"/>
+    <x:expect label="isn't counted: the next live footnote takes the number, as EUR-Lex has it"
+              test="deep-equal($x:result//*:footnoteRef/@marker ! string(), ('1', '2', '2'))"/>
   </x:scenario>
 
   <x:scenario label="Words an amendment deleted and the consolidation doesn't keep (01982L0471: the marketing compound)">

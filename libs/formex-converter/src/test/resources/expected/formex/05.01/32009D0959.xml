@@ -61,7 +61,7 @@
                   <t v="15 March 2006"/>
                </date>
                <t v=" on minimum conditions for the implementation of Council Regulations (EEC) No 3820/85 and (EEC) No 3821/85 concerning social legislation relating to road transport activities and repealing Council Directive 88/599/EEC"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 11(3) and 13 thereof,"/>
             </p>
          </occurrence>
@@ -86,7 +86,7 @@
             </num>
             <p>
                <t v="The form of attestation provided in the Annex to Commission Decision 2007/230/EC"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" proved to be insufficient to cover all cases where it is technically impossible to record a driver’s activities on the recording equipment."/>
             </p>
          </occurrence>
@@ -100,7 +100,7 @@
                   <t v="15 March 2006"/>
                </date>
                <t v=" on the harmonisation of certain social legislation relating to road transport and amending Council Regulations (EEC) No 3821/85 and (EC) No 2135/98 and repealing Council Regulation (EEC) No 3820/85"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", the form should be modified by the insertion of additional elements to those indicated in Article 11(3) of Directive 2006/22/EC."/>
             </p>
          </occurrence>
@@ -122,7 +122,7 @@
                   <t v="20 December 1985"/>
                </date>
                <t v=" on recording equipment in road transport"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -180,8 +180,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -192,8 +192,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -204,8 +204,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -216,8 +216,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -228,8 +228,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

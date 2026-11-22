@@ -612,11 +612,11 @@
                </heading>
                <p>
                   <t v="According to the Article 6(6) of Regulation (EC) No 66/2010 on the EU Ecolabel, the product or any part of it shall not contain substances (in any forms, including nanoforms) meeting the criteria for classification with the hazard statements or risk phrases specified below in accordance with Regulation (EC) No 1272/2008 of the European Parliament and of the Council"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=" or Council Directive 67/548/EEC"/>
-                  <noteRef href="#note_2" marker="1"/>
+                  <footnoteRef href="#note_2" marker="1"/>
                   <t v=" nor shall it contain substances referred to in Article 57 of Regulation (EC) No 1907/2006 of the European Parliament and of the Council"/>
-                  <noteRef href="#note_3" marker="1"/>
+                  <footnoteRef href="#note_3" marker="1"/>
                   <t v=". The risk phrases below generally refer to substances. Nanoforms intentionally added to the product shall prove compliance with this criterion for any concentration."/>
                </p>
                <p>
@@ -627,13 +627,13 @@
                      <td header="true">
                         <p>
                            <t v="Hazard Statement"/>
-                           <noteRef href="#note_4" marker="1"/>
+                           <footnoteRef href="#note_4" marker="1"/>
                         </p>
                      </td>
                      <td header="true">
                         <p>
                            <t v="Risk Phrase"/>
-                           <noteRef href="#note_5" marker="2"/>
+                           <footnoteRef href="#note_5" marker="2"/>
                         </p>
                      </td>
                   </tr>
@@ -1057,18 +1057,18 @@
                         </p>
                      </td>
                   </tr>
-                  <notes>
-                     <note eId="note_4" marker="1" kind="table">
+                  <footnotes>
+                     <footnote eId="note_4" marker="1" kind="table">
                         <p>
                            <t v="As provided for in Regulation (EC) No 1272/2008."/>
                         </p>
-                     </note>
-                     <note eId="note_5" marker="2" kind="table">
+                     </footnote>
+                     <footnote eId="note_5" marker="2" kind="table">
                         <p>
                            <t v="As provided for in Directive 67/548/EEC."/>
                         </p>
-                     </note>
-                  </notes>
+                     </footnote>
+                  </footnotes>
                </table>
                <p>
                   <t v="This criterion shall also apply to the following hazard statements and risk phrases:"/>
@@ -1078,13 +1078,13 @@
                      <td header="true">
                         <p>
                            <t v="Hazard Statement"/>
-                           <noteRef href="#note_6" marker="1"/>
+                           <footnoteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td header="true">
                         <p>
                            <t v="Risk Phrase"/>
-                           <noteRef href="#note_7" marker="2"/>
+                           <footnoteRef href="#note_7" marker="2"/>
                         </p>
                      </td>
                   </tr>
@@ -1172,18 +1172,18 @@
                         </p>
                      </td>
                   </tr>
-                  <notes>
-                     <note eId="note_6" marker="1" kind="table">
+                  <footnotes>
+                     <footnote eId="note_6" marker="1" kind="table">
                         <p>
                            <t v="As provided for in Regulation (EC) No 1272/2008."/>
                         </p>
-                     </note>
-                     <note eId="note_7" marker="2" kind="table">
+                     </footnote>
+                     <footnote eId="note_7" marker="2" kind="table">
                         <p>
                            <t v="As provided for in Directive 67/548/EEC."/>
                         </p>
-                     </note>
-                  </notes>
+                     </footnote>
+                  </footnotes>
                </table>
                <p>
                   <t v="Substances or mixtures which change their properties upon processing (e.g. become no longer bioavailable, undergo chemical modification) so that the identified hazard no longer applies are exempted from the above requirement."/>
@@ -1202,7 +1202,7 @@
                </p>
                <p>
                   <t v="Sufficient data shall be available to allow for the evaluation of the environmental hazards (indicated by the hazard statements H400 – H413 or R-phrases: R 50, R 50/53, R 51/53, R 52, R 52/53, R 53), of the product in accordance with Regulation (EC) No 1272/2008 or Directive 67/548/EEC and Directive 1999/45/EC of the European Parliament and of the Council"/>
-                  <noteRef href="#note_8" marker="1"/>
+                  <footnoteRef href="#note_8" marker="1"/>
                   <t v="."/>
                </p>
                <p>
@@ -1237,7 +1237,7 @@
                </p>
                <p>
                   <t v="Concentration limits shall be specified in the Safety Data Sheets according to Annex II, paragraph 3.2.1(c) of Commission Regulation (EU) No 453/2010"/>
-                  <noteRef href="#note_9" marker="1"/>
+                  <footnoteRef href="#note_9" marker="1"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -1263,9 +1263,9 @@
                   <occurrence eId="anx/pnt_Criterion-2/idt_1" kind="indent">
                      <p>
                         <t v="substances appearing in the Union List of priority substances in the field of water policy in Annex X to Directive 2000/60/EC of the European Parliament and of the Council"/>
-                        <noteRef href="#note_10" marker="1"/>
+                        <footnoteRef href="#note_10" marker="1"/>
                         <t v=" as amended by laid in Decision No 2455/2001/EC of the European Parliament and of the Council"/>
-                        <noteRef href="#note_11" marker="1"/>
+                        <footnoteRef href="#note_11" marker="1"/>
                         <t v=" and the OSPAR List of Chemicals for Priority Action (http://www.ospar.org/content/content.asp?menu=00950304450000_000000_000000),"/>
                      </p>
                   </occurrence>
@@ -1326,7 +1326,7 @@
                </p>
                <p>
                   <t v="Acute aquatic toxicity data for each main component shall be stated on each of the following two trophic levels: algae and daphnia"/>
-                  <noteRef href="#note_12" marker="1"/>
+                  <footnoteRef href="#note_12" marker="1"/>
                   <t v=". The critical concentration for the acute aquatic toxicity for each main component shall be at least 100 mg/L."/>
                </p>
                <p>
@@ -1342,7 +1342,7 @@
                      <t v="Assessment and verification:"/>
                   </emphasis>
                   <t v=" either marine or freshwater toxicity data are accepted. The tests are carried out according to and using relevant test species mentioned in the following guidelines: ISO/DIS 10253 or OECD 201 or Part C.3 of the Annex to Council Regulation (EC) No 440/2008"/>
-                  <noteRef href="#note_13" marker="1"/>
+                  <footnoteRef href="#note_13" marker="1"/>
                   <t v=" for algae, ISO TC 147/SC5/WG2 or OECD 202 or Part C.2 of the Annex to Regulation (EC) No 440/2008 for daphnia and OECD 203 or Part C.1 of the Annex to Regulation (EC) No 440/2008 for fish. Equivalent test methods as agreed with a competent body are also permitted. Only (72hr)E"/>
                   <emphasis kind="sub">
                      <t v="r"/>
@@ -2224,31 +2224,31 @@
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="1"/>
+                           <footnoteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="1"/>
+                           <footnoteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="1"/>
+                           <footnoteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 0,1/M"/>
-                           <noteRef href="#note_14" marker="1"/>
+                           <footnoteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                      <td>
                         <p>
                            <t v="≤ 1/M"/>
-                           <noteRef href="#note_14" marker="1"/>
+                           <footnoteRef href="#note_14" marker="1"/>
                         </p>
                      </td>
                   </tr>
@@ -2630,8 +2630,8 @@
                         </p>
                      </td>
                   </tr>
-                  <notes>
-                     <note eId="note_14" marker="1" kind="table">
+                  <footnotes>
+                     <footnote eId="note_14" marker="1" kind="table">
                         <p>
                            <t v="M is the multiplication factor of 10 for substances that are very toxic to the aquatic environment as from Table 1b in Commission Directive 2006/8/EC ("/>
                            <ref kind="oj"
@@ -2643,8 +2643,8 @@
                            </ref>
                            <t v=")."/>
                         </p>
-                     </note>
-                  </notes>
+                     </footnote>
+                  </footnotes>
                </table>
                <table cols="2">
                   <tr header="true">
@@ -2839,13 +2839,13 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
+   <footnotes>
       <deleted>
          <tag amendingAct="32018D1702"
               action="deleted"
               location="AR:6"
               tagId="O002001M001000"/>
-         <note eId="note_1" marker="1" kind="footnote">
+         <footnote eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2856,8 +2856,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_2" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_2" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="P"
@@ -2868,8 +2868,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_3" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_3" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2880,8 +2880,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_8" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_8" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2892,8 +2892,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_9" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_9" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2904,8 +2904,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_10" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_10" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2916,8 +2916,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_11" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_11" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2928,13 +2928,13 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_12" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_12" marker="1" kind="footnote">
             <p>
                <t v="Crustacean can substitute for daphnia throughout this Decision where marine data is submitted."/>
             </p>
-         </note>
-         <note eId="note_13" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_13" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -2945,8 +2945,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
+         </footnote>
       </deleted>
-   </notes>
+   </footnotes>
 </legalText>
 

@@ -1,6 +1,6 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
-@param ChangesView.Shown shown
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
+@param DifferencesView.Shown shown
 @param ComparePage page
 <%-- Shows an annex inserted whole as a box that says how many provisions it has, with three ways
      to see it: its outline, which loads the annex's occurrences without their text; the annex itself,
@@ -11,7 +11,7 @@
 <div class="annex-inserted">
   <p class="annex-head"><span class="annex-size">Inserted whole · ${shown.size()}</span>
     · <button type="button" class="link" hx-get="${page.outline(eId)}" hx-target="next .fold-text" hx-swap="innerHTML">Show its outline</button>
-    · <button type="button" class="link" hx-get="${shown.part(page)}" hx-target="next .fold-text" hx-swap="innerHTML">Show it here</button>
+    · <button type="button" class="link" hx-get="${shown.fragment(page)}" hx-target="next .fold-text" hx-swap="innerHTML">Show it here</button>
     · <a href="${page.read(eId)}">Read it on its own</a></p>
   <div class="fold-text"></div>
 </div>

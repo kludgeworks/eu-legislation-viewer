@@ -1,12 +1,12 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenotePieces
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView
-@param ChangesView.Shown shown
+@param DifferencesView.Shown shown
 @param SidenoteView sidenote = null
 @param gg.jte.Content occurrence
 @param ComparePage page
-@param SidenoteParts parts = null
+@param SidenotePieces pieces = null
 <%-- Shows a provision that differs, as the Changes and Whole text views show it. It has a number,
      its occurrence as it reads with its edits (occurrence), and a sidenote beside it (sidenote.jte).
      It has an amber bar
@@ -15,7 +15,7 @@
      size and loads its outline or the annex itself when the reader asks (annexfold.jte). --%>
 <section class="difference difference-${shown.kind()}${sidenote != null && sidenote.corrected() ? " corrected" : ""}${sidenote != null && sidenote.prospective() != null ? " prospective" : ""}" id="difference-${shown.number()}">
   <sup class="difference-number">${shown.number()}</sup>
-  <aside class="sidenote">@template.comparison.sidenote(shown = shown, sidenote = sidenote, parts = parts)</aside>
+  <aside class="sidenote">@template.comparison.sidenote(shown = shown, sidenote = sidenote, pieces = pieces)</aside>
   @if(shown.annexInserted())
     @template.comparison.annexfold(shown = shown, page = page)
   @else

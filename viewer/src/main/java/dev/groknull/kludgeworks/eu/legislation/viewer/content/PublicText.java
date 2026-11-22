@@ -19,7 +19,7 @@ import org.jspecify.annotations.Nullable;
  *
  * <ul>
  *   <li>The text is in parts, as the Official Journal prints it: the title, the preamble, the
- *       enacting terms (the body), the conclusions, the annexes and the notes.
+ *       enacting terms (the body), the conclusions, the annexes and the footnotes.
  *   <li>A part holds blocks: running text, occurrences, tables, figures, quotations and deleted
  *       text.
  *   <li>Running text has two forms: plain {@code text}, and {@code html} in a closed list of
@@ -31,7 +31,7 @@ import org.jspecify.annotations.Nullable;
  * @param body the enacting terms
  * @param conclusions the closing formula and the signatures
  * @param annexes the annexes and the documents attached to the act
- * @param notes the footnotes, from wherever they are in the text
+ * @param footnotes the footnotes, from wherever they are in the text
  */
 @ValueObject
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
@@ -41,21 +41,21 @@ public record PublicText(
     List<Block> body,
     List<Block> conclusions,
     List<Block> annexes,
-    List<Note> notes) {
+    List<Footnote> footnotes) {
 
   public PublicText {
     preamble = List.copyOf(preamble);
     body = List.copyOf(body);
     conclusions = List.copyOf(conclusions);
     annexes = List.copyOf(annexes);
-    notes = List.copyOf(notes);
+    footnotes = List.copyOf(footnotes);
   }
 
   /**
    * Running text, in two forms.
    *
-   * @param text the plain text, as printed. It leaves out the markers of notes and the text that an
-   *     amendment deleted.
+   * @param text the plain text, as printed. It leaves out the markers of footnotes and the text
+   *     that an amendment deleted.
    * @param html the same text as HTML, in the closed list of elements of the public model
    */
   @ValueObject
@@ -127,19 +127,19 @@ public record PublicText(
    *
    * @param caption its title
    * @param rows its rows, in order. A group of rows starts with its heading row.
-   * @param notes the notes of the table, numbered in it
+   * @param footnotes the footnotes of the table, numbered in it
    * @param amendedBy the amendments that gave the table its wording, if they are not its
    *     occurrence's
    */
   @ValueObject
   @JsonInclude(JsonInclude.Include.NON_EMPTY)
   public record Table(
-      List<Block> caption, List<Row> rows, List<Note> notes, List<Amendment> amendedBy)
+      List<Block> caption, List<Row> rows, List<Footnote> footnotes, List<Amendment> amendedBy)
       implements Block {
     public Table {
       caption = List.copyOf(caption);
       rows = List.copyOf(rows);
-      notes = List.copyOf(notes);
+      footnotes = List.copyOf(footnotes);
       amendedBy = List.copyOf(amendedBy);
     }
   }
@@ -235,14 +235,14 @@ public record PublicText(
   /**
    * A footnote.
    *
-   * @param eId its identifier in the text. For example, {@code note_3}. The {@code href} of a note
-   *     marker in the HTML is {@code #} and this eId.
+   * @param eId its identifier in the text. For example, {@code note_3}. The {@code href} of a
+   *     footnote marker in the HTML is {@code #} and this eId.
    * @param marker its marker as printed. For example, {@code 3} or {@code *}.
    * @param content what it says
    */
   @ValueObject
-  public record Note(String eId, String marker, List<Block> content) {
-    public Note {
+  public record Footnote(String eId, String marker, List<Block> content) {
+    public Footnote {
       content = List.copyOf(content);
     }
   }
@@ -263,14 +263,14 @@ public record PublicText(
    *
    * @param before the text before the change
    * @param after the text after the change
-   * @param changes the runs, in order. The text before is the runs that are not inserted, and the
-   *     text after is the runs that are not deleted. Each paragraph, and each number and heading of
-   *     an occurrence in the occurrence, ends with a line feed, except the last.
+   * @param runs the runs, in order. The text before is the runs that are not inserted, and the text
+   *     after is the runs that are not deleted. Each paragraph, and each number and heading of an
+   *     occurrence in the occurrence, ends with a line feed, except the last.
    */
   @ValueObject
-  public record Edited(String before, String after, List<Change> changes) {
+  public record Edited(String before, String after, List<Run> runs) {
     public Edited {
-      changes = List.copyOf(changes);
+      runs = List.copyOf(runs);
     }
   }
 
@@ -281,7 +281,7 @@ public record PublicText(
    * @param text the words
    */
   @ValueObject
-  public record Change(Op op, String text) {
+  public record Run(Op op, String text) {
 
     /** What a comparison found of a run of words. */
     public enum Op {
@@ -298,15 +298,15 @@ public record PublicText(
   }
 
   /**
-   * An occurrence and the notes that it refers to: what the API gives for one occurrence.
+   * An occurrence and the footnotes that it refers to: what the API gives for one occurrence.
    *
    * @param occurrence the occurrence
-   * @param notes the notes that the occurrence refers to, in the order of the text
+   * @param footnotes the footnotes that the occurrence refers to, in the order of the text
    */
   @ValueObject
-  public record Extract(Occurrence occurrence, List<Note> notes) {
+  public record Extract(Occurrence occurrence, List<Footnote> footnotes) {
     public Extract {
-      notes = List.copyOf(notes);
+      footnotes = List.copyOf(footnotes);
     }
   }
 }

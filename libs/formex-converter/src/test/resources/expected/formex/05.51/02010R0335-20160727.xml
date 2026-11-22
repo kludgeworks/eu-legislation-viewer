@@ -224,7 +224,7 @@
                         <occurrence eId="anx/tab_1/tr_3/td_4/idt_2" kind="indent">
                            <p>
                               <t v="Analytical method"/>
-                              <noteRef href="#note_1" marker="1"/>
+                              <footnoteRef href="#note_1" marker="1"/>
                               <t v=":"/>
                            </p>
                            <p>
@@ -301,13 +301,13 @@
                   </td>
                </tr>
             </rowGroup>
-            <notes>
-               <note eId="note_1" marker="1" kind="table">
+            <footnotes>
+               <footnote eId="note_1" marker="1" kind="table">
                   <p>
                      <t v="Details of the analytical methods are available at the following address of the Community Reference Laboratory: http://irmm.jrc.ec.europa.eu/crl-feed-additives"/>
                   </p>
-               </note>
-            </notes>
+               </footnote>
+            </footnotes>
          </table>
       </occurrence>
    </annexes>

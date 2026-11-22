@@ -2,11 +2,11 @@
 // @ts-check
 /**
  * @file The outline beside the text of an act, in Read and in Compare (catalogue/text/ready.jte,
- * comparison/changes.jte and the other views).
+ * comparison/differences.jte and the other views).
  *
  * The `<act-outline>` element follows the reader. One IntersectionObserver watches the places the
  * outline leads to: the occurrences its links go to in Read, and every difference in Compare. When the
- * reader passes one, the outline marks the entry for the part in view, opens the branches above
+ * reader passes one, the outline marks the entry for the subdivision in view, opens the branches above
  * it, and scrolls itself to keep it in sight. Its head says where the reader is: in Compare
  * "Difference 663 of 1,828 · Annex IV", with ↑ and ↓ links to the difference before and after; in
  * Read the section in view.
@@ -14,7 +14,7 @@
  * Without the script the outline is plain links, and its head shows the number of differences
  * (Compare) or nothing (Read).
  *
- * In Compare its button collapses the outline to a rail of the parts and their counts. The
+ * In Compare its button collapses the outline to a rail of the subdivisions and their counts. The
  * browser of the reader remembers the choice in `localStorage`.
  *
  * The `<page-contents>` element follows the reader in the same way beside a page of reference,
@@ -69,7 +69,7 @@ export const rail = (nav, on) => {
 };
 
 /**
- * Returns the name of the part that contains a difference. The part is the last top entry of the
+ * Returns the name of the subdivision that contains a difference. The subdivision is the last top entry of the
  * outline whose first difference is at or before the difference. It returns an empty string if
  * there is no such entry.
  *
@@ -77,7 +77,7 @@ export const rail = (nav, on) => {
  * @param {number} number the number of the difference
  * @returns {string}
  */
-export const part = (nav, number) => {
+export const subdivision = (nav, number) => {
   let found = "";
   for (const entry of nav.querySelectorAll(":scope > ul > li")) {
     const link = entry.querySelector("a.has");
@@ -169,7 +169,7 @@ const atEnd = () => {
 };
 
 /**
- * Returns the entry of the outline for the part the reader is in: the link to the latest place at
+ * Returns the entry of the outline for the subdivision the reader is in: the link to the latest place at
  * or before the place passed, the deepest one if several go there. It returns null if the reader
  * has passed none.
  *
@@ -198,7 +198,7 @@ export const entry = (nav, root, ordered, index) => {
 };
 
 /**
- * Marks `link` as the part in view: it opens the branches above it, and scrolls the outline to
+ * Marks `link` as the subdivision in view: it opens the branches above it, and scrolls the outline to
  * keep it in sight below the outline's head, which stays at its top. It clears the mark of the
  * entry before.
  *
@@ -215,7 +215,7 @@ export const mark = (nav, link) => {
     return;
   }
   link.setAttribute("aria-current", "location");
-  // The fold of the link's own parts is after the link, and the folds of its parents are above it.
+  // The fold of the link's own subdivisions is after the link, and the folds of its parents are above it.
   if (link.nextElementSibling instanceof HTMLDetailsElement) {
     link.nextElementSibling.open = true;
   }
@@ -233,7 +233,7 @@ export const mark = (nav, link) => {
 };
 
 /**
- * Marks the rail entry of the part that the difference `number` is in: the last entry whose first
+ * Marks the rail entry of the subdivision that the difference `number` is in: the last entry whose first
  * difference is at or before it. Before the first difference, it marks none.
  *
  * @param {Element} nav the outline
@@ -280,9 +280,9 @@ const counting = (nav, number) => {
     down.removeAttribute("aria-disabled");
     return;
   }
-  const inPart = part(nav, number);
+  const inSubdivision = subdivision(nav, number);
   where.textContent =
-    `Difference ${format(number)} of ${format(total)}` + (inPart ? ` · ${inPart}` : "");
+    `Difference ${format(number)} of ${format(total)}` + (inSubdivision ? ` · ${inSubdivision}` : "");
   up.href = `#difference-${Math.max(number - 1, 1)}`;
   up.toggleAttribute("aria-disabled", number <= 1);
   down.href = `#difference-${Math.min(number + 1, total)}`;
@@ -305,7 +305,7 @@ const named = (link) => {
 };
 
 /**
- * Updates the outline in `root` to where the reader is: it marks the part in view, and says in its
+ * Updates the outline in `root` to where the reader is: it marks the subdivision in view, and says in its
  * head where the reader is. It does nothing if `root` has no outline.
  *
  * @param {Document} root
@@ -438,7 +438,7 @@ if (!customElements.get("act-outline")) {
 }
 
 /**
- * Marks the entry of a page's contents for the part the reader is in: the last place in the page
+ * Marks the entry of a page's contents for the section the reader is in: the last place in the page
  * that its links go to and that the reader passed. Before the first, the reader is in the first.
  *
  * @param {HTMLElement} nav the contents
@@ -452,7 +452,7 @@ export const locate = (nav, root, ordered) => {
 
 /**
  * Custom element for the contents beside a page of reference, for example About and the API's
- * documentation (catalogue/handbook.jte). It marks the entry of the part the reader is in, as the
+ * documentation (catalogue/handbook.jte). It marks the entry of the section the reader is in, as the
  * outline of an act does. Only the links in the page itself, `#name`, follow the reader.
  */
 export class PageContents extends HTMLElement {

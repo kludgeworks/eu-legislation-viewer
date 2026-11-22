@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  *
  * <ul>
  *   <li>the tags of the amending acts
- *   <li>footnote references, which are renumbered when notes come and go
+ *   <li>footnote references, which are renumbered when footnotes come and go
  *   <li>what a consolidation keeps of a deletion
  * </ul>
  *
@@ -28,7 +28,7 @@ import java.util.regex.Pattern;
  */
 public final class Wording {
   /** The elements that say nothing, for a comparison. */
-  static final Set<String> SILENT = Set.of("tag", "noteRef", "deleted");
+  static final Set<String> SILENT = Set.of("tag", "footnoteRef", "deleted");
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
 

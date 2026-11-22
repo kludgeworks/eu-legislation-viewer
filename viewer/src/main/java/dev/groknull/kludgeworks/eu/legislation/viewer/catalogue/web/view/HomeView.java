@@ -202,7 +202,7 @@ public record HomeView(
    *
    * @param celex the CELEX of the act
    * @param kind what kind of act it is. For example, "Implementing Regulation" or "Amending act".
-   * @param head the title of the act up to its date. This part is the link.
+   * @param head the title of the act up to its date. This text is the link.
    * @param rest the rest of the title. Null for a title without a date.
    * @param goes where the row links to. The first one is the link of the title. Empty for an act
    *     without an ELI.

@@ -55,7 +55,7 @@
                   <t v="29 October 1975"/>
                </date>
                <t v=" on the common organisation of the market in poultrymeat"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6(1) thereof,"/>
             </p>
          </occurrence>
@@ -66,7 +66,7 @@
                   <t v="29 March 1994"/>
                </date>
                <t v=" opening and providing for the administration of certain Community tariff quotas for high-quality beef, and for pigmeat, poultrymeat, wheat and meslin, and brans, sharps and other residues"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 7 thereof,"/>
             </p>
          </occurrence>
@@ -83,7 +83,7 @@
             </num>
             <p>
                <t v="The tariff quota for group 1 provided for in Annex I to Commission Regulation (EC) No 1431/94"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", with the serial number 09.4410 covering codes CN "/>
                <t v="02071410"/>
                <t v=", "/>
@@ -99,7 +99,7 @@
             </num>
             <p>
                <t v="The Agreement in the form of an Exchange of Letters between the European Community and Brazil reached during negotiations under Article XXIV:6 and Article XXVIII of the General Agreement on Tariffs and Trade (GATT) 1994, approved by Council Decision 2006/963/EC"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=", provides for an annual import tariff quota for poultrymeat of "/>
                <number v="2332"/>
                <t v=" tonnes for certain frozen chicken cuts (CN codes "/>
@@ -196,8 +196,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -216,8 +216,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="91" date="1994-04-08" page="1">
                <t v="OJ L 91, 8.4.1994, p. 1"/>
@@ -232,8 +232,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -252,8 +252,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -264,8 +264,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

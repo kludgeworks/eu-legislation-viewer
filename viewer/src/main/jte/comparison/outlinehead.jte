@@ -1,6 +1,6 @@
 @param int total
 <%-- Shows the head of a comparison's outline. It says what the outline lists. A button collapses
-     the outline to a rail of the parts with their counts. Under the head, js/outline.js shows the
+     the outline to a rail of the subdivisions with their counts. Under the head, js/outline.js shows the
      difference that the reader is at, and updates it as they read. Example: "Difference 663 of
      1,828 · Annex IV". The ↑ and ↓ links go to the difference before and after. Both lines stay at
      the top of the outline as it scrolls. --%>

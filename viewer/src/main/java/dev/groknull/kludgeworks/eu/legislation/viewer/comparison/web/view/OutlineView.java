@@ -42,7 +42,7 @@ public record OutlineView(List<Branch> entries) {
 
   /**
    * Returns {@code outline} with {@code differences} counted. The differences are numbered from 1,
-   * as in the Changes view.
+   * as in the Differences view.
    */
   public static OutlineView of(Outline outline, List<Difference> differences) {
     var bySection = new HashMap<String, List<Numbered>>();
@@ -152,36 +152,36 @@ public record OutlineView(List<Branch> entries) {
   }
 
   /**
-   * Returns the entries of the rail that the outline collapses to: one for each part with
+   * Returns the entries of the rail that the outline collapses to: one for each subdivision with
    * differences, so that the rail still works as a map. In a comparison with differences in one
-   * part only, there is one entry for each section of that part with differences.
+   * subdivision only, there is one entry for each section of that subdivision with differences.
    */
   public List<RailEntry> rail() {
-    var parts = entries.stream().filter(entry -> entry.count() > 0).toList();
-    if (parts.size() == 1) {
+    var subdivisions = entries.stream().filter(entry -> entry.count() > 0).toList();
+    if (subdivisions.size() == 1) {
       var sections =
-          parts.getFirst().entries().stream().filter(entry -> entry.count() > 0).toList();
+          subdivisions.getFirst().entries().stream().filter(entry -> entry.count() > 0).toList();
       if (sections.size() > 1) {
-        parts = sections;
+        subdivisions = sections;
       }
     }
-    return parts.stream()
+    return subdivisions.stream()
         .map(
-            part ->
+            subdivision ->
                 new RailEntry(
-                    shortened(part.label()),
-                    part.label()
+                    shortened(subdivision.label()),
+                    subdivision.label()
                         + " · "
-                        + part.count()
-                        + (part.count() == 1 ? " difference" : " differences"),
-                    part.count(),
-                    part.first()))
+                        + subdivision.count()
+                        + (subdivision.count() == 1 ? " difference" : " differences"),
+                    subdivision.count(),
+                    subdivision.first()))
         .toList();
   }
 
   /**
-   * Returns a part's label as short as a rail entry needs it. For example, "IV" for "ANNEX IV",
-   * "Art 3" for "Article 3", or "1." for "1. AIRPORT SECURITY".
+   * Returns a subdivision's label as short as a rail entry needs it. For example, "IV" for "ANNEX
+   * IV", "Art 3" for "Article 3", or "1." for "1. AIRPORT SECURITY".
    */
   static String shortened(String label) {
     var words = label.strip().split("\\s+");
@@ -200,9 +200,10 @@ public record OutlineView(List<Branch> entries) {
   /**
    * An entry of the outline's rail.
    *
-   * @param label its part, short. For example, "IV".
-   * @param title its part in full, with its count. For example, "ANNEX IV · 549 differences".
-   * @param count how many differences the part has
+   * @param label its subdivision, short. For example, "IV".
+   * @param title its subdivision in full, with its count. For example, "ANNEX IV · 549
+   *     differences".
+   * @param count how many differences the subdivision has
    * @param first the number of its first difference, which it jumps to
    */
   public record RailEntry(String label, String title, int count, int first) {

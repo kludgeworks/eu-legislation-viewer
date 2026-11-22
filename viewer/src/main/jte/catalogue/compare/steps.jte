@@ -9,7 +9,7 @@
   <h2 id="steps-head">The steps between these days</h2>
   <ol>
     @for(var line : compare.steps())
-      <li class="${line.tone()}"><b>@if(line.href() != null)<a href="${line.href()}">${line.act()}</a>@else${line.act()}@endif</b> ${line.words()}@if(line.note() != null) ${line.note()}@endif@if(line.change() != null) <a href="${line.change()}">See this change</a>@endif</li>
+      <li class="${line.tone()}"><b>@if(line.href() != null)<a href="${line.href()}">${line.act()}</a>@else${line.act()}@endif</b> ${line.words()}@if(line.statement() != null) ${line.statement()}@endif@if(line.change() != null) <a href="${line.change()}">See this change</a>@endif</li>
     @endfor
   </ol>
 </section>

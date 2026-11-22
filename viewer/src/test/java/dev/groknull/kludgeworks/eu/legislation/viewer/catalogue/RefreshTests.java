@@ -30,7 +30,7 @@ import org.springframework.transaction.support.TransactionTemplate;
  *       It is prepared in each of its languages, English and French, on its own. The fixtures have
  *       no Formex of it, so each build fails. The kept counts of the act's steps are dropped, to be
  *       counted again.
- *   <li>Cellar no longer lists the consolidation of 22 March 2026. The first read notes it as
+ *   <li>Cellar no longer lists the consolidation of 22 March 2026. The first read records it as
  *       missing. A second read 30 minutes later withdraws it, and its text is deleted.
  * </ol>
  *
@@ -83,7 +83,7 @@ class RefreshTests {
       assertThat(prepared.texts().get(march)).isInstanceOf(Text.Failed.class);
     }
 
-    // Cellar no longer lists the consolidation of 22 March 2026: one read notes it missing.
+    // Cellar no longer lists the consolidation of 22 March 2026: one read records it missing.
     cellar.act =
         OneActCellar.with(
             OneActCellar.REFRESHED.timeline().versions().stream()

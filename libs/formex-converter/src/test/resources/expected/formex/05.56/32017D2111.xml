@@ -62,7 +62,7 @@
          <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having called on interested parties to submit their comments pursuant to the provision(s) cited above"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" and having regard to their comments,"/>
             </p>
          </occurrence>
@@ -152,7 +152,7 @@
                      <t v="the recovery decision"/>
                   </quote>
                   <t v=") concerning aid granted by SEA to its subsidiary SEAH during the years 2002-2010. The Commission concluded that the entirety of the injections carried out by SEA into its subsidiary’s capital constituted unlawful State aid. The Commission also concluded that, although SEAH could be classified as an undertaking in difficulty, those capital injections could not be declared compatible with the internal market under the EU guidelines on State aid for rescuing and restructuring firms in difficulty"/>
-                  <noteRef href="#note_2" marker="2"/>
+                  <footnoteRef href="#note_2" marker="2"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -216,7 +216,7 @@
                      <t v="CdS"/>
                   </quote>
                   <t v=") annulled the order of TAR Lombardia. The application for suspension brought before the General Court was withdrawn in June 2013"/>
-                  <noteRef href="#note_3" marker="3"/>
+                  <footnoteRef href="#note_3" marker="3"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -336,7 +336,7 @@
                      <t v="interim"/>
                   </emphasis>
                   <t v=" measure whereby it ordered the Commission not to publish the 2014 opening decision"/>
-                  <noteRef href="#note_4" marker="4"/>
+                  <footnoteRef href="#note_4" marker="4"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -353,7 +353,7 @@
                   <emphasis kind="i">
                      <t v="Official Journal of the European Union"/>
                   </emphasis>
-                  <noteRef href="#note_5" marker="5"/>
+                  <footnoteRef href="#note_5" marker="5"/>
                   <t v=" and the Commission thereby invited interested parties to submit their comments on the measures under investigation."/>
                </p>
             </occurrence>
@@ -581,7 +581,7 @@
                      <quote startQuote="‘" endQuote="’">
                         <t v="commercial negotiations between Airport Handling and the carriers operating at Linate and Malpensa Airports, in a context of free competition"/>
                      </quote>
-                     <noteRef href="#note_6" marker="6"/>
+                     <footnoteRef href="#note_6" marker="6"/>
                      <t v=". In summary, the Implementing Agreement had to be based on the following principles:"/>
                   </p>
                   <list kind="dash">
@@ -626,7 +626,7 @@
                         <t v="Collocamento in mobilità"/>
                      </emphasis>
                      <t v="), a social security scheme put in place by the Italian State mainly aiming to support employees of companies in difficulties during unemployment periods"/>
-                     <noteRef href="#note_7" marker="7"/>
+                     <footnoteRef href="#note_7" marker="7"/>
                      <t v=". At that time, SEAH had "/>
                      <number v="2214"/>
                      <t v=" employees, being the equivalent of "/>
@@ -644,17 +644,17 @@
                         <t v="31 May 2015"/>
                      </date>
                      <t v=", Airport Handling had […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" employees ([…]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" full-time equivalents, hereinafter "/>
                      <quote startQuote="‘" endQuote="’">
                         <t v="FTE"/>
                      </quote>
                      <t v="), of which […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" employees ([…]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" FTE) were previous SEAH-employees."/>
                   </p>
                </occurrence>
@@ -712,11 +712,11 @@
                   </num>
                   <p>
                      <t v="That agreement indicates Airport Handling’s presumed labour demand expressed in FTE. In that context, the agreement emphasises that those indications may be subject to change in terms of the total number and/or variables stated in the agreement. The staff estimates were as follows: […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" FTE permanent staff for operations; […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" FTE administrative staff; […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" FTE fixed-term personnel for seasonal activities. The agreement stipulates that, in order to satisfy that demand, Airport Handling’s priority strategy will be to approach individuals currently employed by SEAH. The agreement also provides for the recruitment procedure, the legal and financial content of employment contracts, welfare policy and work organisation. The agreement’s provisions imply that former SEAH staff will be hired under new contracts with materially different economic conditions."/>
                   </p>
                </occurrence>
@@ -741,7 +741,7 @@
                      <occurrence eId="pbl_1/rct_32/idt_3" kind="indent">
                         <p>
                            <t v="different organisation of employees (e.g. […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=")."/>
                         </p>
                      </occurrence>
@@ -763,9 +763,9 @@
                      <occurrence eId="pbl_1/rct_33/idt_2" kind="indent">
                         <p>
                            <t v="the weight of the costs of Airport Handling’s supplementary corporate contract decreased by […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % when compared to SEAH’s, with average salary cuts on an annual basis being […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" times the monthly salary."/>
                         </p>
                      </occurrence>
@@ -784,7 +784,7 @@
                      <date date="2014-07-01">
                         <t v="1 July 2014"/>
                      </date>
-                     <noteRef href="#note_9" marker="8"/>
+                     <footnoteRef href="#note_9" marker="8"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -904,21 +904,21 @@
                         <t v="1 September 2014"/>
                      </date>
                      <t v=", Airport Handling had […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" employees ([…]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" FTE), thus employing […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % of the workers employed by SEAH as of "/>
                      <date date="2014-04-22">
                         <t v="22 April 2014"/>
                      </date>
                      <t v=", date on which SEAH initiated official proceedings for the collective dismissal of its employees. In addition, Airport Handling used […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" interim-workers ([…]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" FTE) […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -1000,7 +1000,7 @@
                      <t v=", SEA’s Board of Directors decided to increase the capital of Airport Handling by up to EUR "/>
                      <t v="2,5"/>
                      <t v=" million, in order for Airport Handling to meet the requirements for certification as ground handler by the National Civil Aviation Authority (ENAC). Pursuant to the national rules in force, ENAC grants licences to ground handling services providers that meet the following requirements"/>
-                     <noteRef href="#note_10" marker="9"/>
+                     <footnoteRef href="#note_10" marker="9"/>
                      <t v=":"/>
                   </p>
                   <list kind="dash">
@@ -1217,7 +1217,7 @@
                         <t v="1 March 2015"/>
                      </date>
                      <t v=" SEA is still a shareholder of Airport Handling for more than […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" %, the trustee shall start searching for investors which must comply with conditions previously communicated to it by SEA through a deed which must be notified to the lawyer acting as Trust Guardian, and subject to revision by SEA in due time. In any other case, the trustee may not alienate the shareholding in Airport Handling without SEA’s consent."/>
                   </p>
                </occurrence>
@@ -1227,7 +1227,7 @@
                   </num>
                   <p>
                      <t v="The Trust Deed further stipulates that after the sale of […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % of SEA’s shareholding in Airport Handling, SEA shall search for private investors willing to take on further participations in Airport Handling’s capital, taking into account social considerations and the obligation on SEA to continue ensuring the provision of ground handling services at Milan airports."/>
                   </p>
                </occurrence>
@@ -1247,7 +1247,7 @@
                         <t v="strumenti finanziari partecipativi"/>
                      </emphasis>
                      <t v=") pursuant to Article 2346 paragraph 6 of the Italian Civil Code"/>
-                     <noteRef href="#note_11" marker="10"/>
+                     <footnoteRef href="#note_11" marker="10"/>
                      <t v=", with a nominal value of EUR "/>
                      <number v="1000"/>
                      <t v=" each, to be proposed to SEA. The Addendum was signed on the following day."/>
@@ -1263,7 +1263,7 @@
                         <t v="27 August 2014"/>
                      </date>
                      <t v=", Airport Handling’s Shareholders Assembly"/>
-                     <noteRef href="#note_12" marker="11"/>
+                     <footnoteRef href="#note_12" marker="11"/>
                      <t v=" decided to increase Airport Handling’s capital from EUR "/>
                      <t v="1,3"/>
                      <t v=" million to EUR 5 million, subscribed and paid-in by SEA."/>
@@ -1291,11 +1291,11 @@
                         <t v="27 August 2014"/>
                      </date>
                      <t v=" the Trustee appointed a new Board of Directors of Airport Handling. SEA […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" senior managers […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", out of five, […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=". According to Italy, both perform their activities in the exclusive interest of Airport Handling on the basis of a secondment contract from parent company SEA."/>
                   </p>
                </occurrence>
@@ -1309,7 +1309,7 @@
                         <t v="27 August 2014"/>
                      </date>
                      <t v=", after the conferral of SEA’s participation in the Trust, Airport Handling’s Shareholders Assembly"/>
-                     <noteRef href="#note_13" marker="12"/>
+                     <footnoteRef href="#note_13" marker="12"/>
                      <t v=" decided the conversion of Airport Handling from a limited liability company ("/>
                      <emphasis kind="i">
                         <t v="SRL"/>
@@ -1353,7 +1353,7 @@
                      <quote startQuote="‘" endQuote="’">
                         <t v="Italy — Milan: Sale of equipment comprising, for information only: Cargo loaders, transporters, lifting platforms, pallet jack, mobile/mobile/conveyor belts, towed/BAE towed stairs, electric/diesel/hybrid tractors, barrels, generators, air conditioner units, compressors, baggage/goods trolleys 2014/5 218-385934 — Call for expression of interest"/>
                      </quote>
-                     <noteRef href="#note_14" marker="13"/>
+                     <footnoteRef href="#note_14" marker="13"/>
                      <t v=". For the purposes of the call for expression of interest, the assets were grouped in nine lots."/>
                   </p>
                </occurrence>
@@ -1399,9 +1399,9 @@
                   </num>
                   <p>
                      <t v="IMQ proposed as a fee for the lease of SEAH’s ground handling equipment EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" per semester (EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" per year)."/>
                   </p>
                </occurrence>
@@ -1415,7 +1415,7 @@
                         <t v="1 September 2014"/>
                      </date>
                      <t v=", SEAH and Airport Handling entered into a lease contract by which Airport Handling would lease SEAH’s ground handling equipment at a lease fee of EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", i.e. the amount proposed by IMQ. The lease contract was to expire on "/>
                      <date date="2015-08-31">
                         <t v="31 August 2015"/>
@@ -1441,7 +1441,7 @@
                         <t v="E&amp;Y"/>
                      </quote>
                      <t v="), to revalue the level of the lease fee. In this context, SEAH and Airport Handling had contractually agreed that, should the second valuation conclude that the market value deviated by at least […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % from the level set by IMQ, the contractual fee would be adjusted accordingly with retroactive effect."/>
                   </p>
                </occurrence>
@@ -1455,13 +1455,13 @@
                         <t v="15 October 2014"/>
                      </date>
                      <t v=", E&amp;Y delivered its report and set the market rate for the lease of SEAH’s assets at EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" per year. On "/>
                      <date date="2014-10-25">
                         <t v="25 October 2014"/>
                      </date>
                      <t v=", Airport Handling and SEAH agreed to broaden the analysis carried out by E&amp;Y and entrusted the latter with the task of analysing the actual operating conditions and physical state of the assets (E&amp;Y had initially based its assessment on a physical check of the assets on a sample basis). This analysis revealed that a number of machinery and equipment were not suitable for use taking into account the short duration of the lease and the high costs of necessary repairs in view of the obsolete nature of many pieces of equipment. According to the Trust, at the date when it submitted its comments on the 2014 opening decision, SEAH and Airport Handling were contemplating a solution to avoid litigation. Consequently, the lease fee was retroactively adjusted to EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" per annum."/>
                   </p>
                </occurrence>
@@ -1479,9 +1479,9 @@
                         <t v="11 February 2015"/>
                      </date>
                      <t v=", as a result of that tender procedure, Airport Handling replaced roughly […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % of its equipment by assets bought on the market, costing approximately EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=". According to the Italian authorities, Airport Handling financed that purchase exclusively through its own resources."/>
                   </p>
                </occurrence>
@@ -1515,9 +1515,9 @@
                         <t v="18 September, 2015"/>
                      </date>
                      <t v=", […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" were sold to Airport Handling at the price indicated in the initial tender procedure, being EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -1565,19 +1565,19 @@
                   </num>
                   <p>
                      <t v="Five interested investors submitted non-binding offers for the purchase of a […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v="-[…]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % stake in Airport Handling: […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", and […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -1587,7 +1587,7 @@
                   </num>
                   <p>
                      <t v="According to the draft sale contract provided by Italy, in order to allow the investor to have operational control of Airport Handling, the Trustee undertakes, for the entire period until the expiry of the standstill period"/>
-                     <noteRef href="#note_15" marker="14"/>
+                     <footnoteRef href="#note_15" marker="14"/>
                      <t v=", to grant the investor the right to appoint the majority, i.e. three out of five members, of the Board of Directors, among which the CEO of the company, whilst the Chairman of the Board of the Directors shall be appointed by the shareholder’s meeting."/>
                   </p>
                </occurrence>
@@ -1601,7 +1601,7 @@
                         <t v="21 September 2015"/>
                      </date>
                      <t v=", the Trustee signed a binding Framework Investment agreement with D’Nata, for the sale of […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % of Airport Handling shares. Pursuant to that agreement, the following arrangements apply:"/>
                   </p>
                </occurrence>
@@ -1611,7 +1611,7 @@
                   </num>
                   <p>
                      <t v="Initial investment: After merger control authorities have cleared the acquisition, D’Nata acquires […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % of Airport Handling’s shares with the right to appoint the majority of the board of directors and the CEO. The objective of that arrangement was that D’Nata, despite being a minority shareholder, would effectively be in the position of a controlling shareholder."/>
                   </p>
                </occurrence>
@@ -1621,13 +1621,13 @@
                   </num>
                   <p>
                      <t v="Additional investment: Under a call-option arrangement, D’Nata is entitled to acquire a further […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % stake in Airport Handling. A specific "/>
                      <quote startQuote="‘" endQuote="’">
                         <t v="State Aid Put-Option"/>
                      </quote>
                      <t v=" stipulates that D’Nata will have the right to sell back its […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" % stake for the adjusted initial acquisition price, if either the Commission adopts a negative decision, or if 18 months after completion of the initial investment, the State aid procedure is still pending."/>
                   </p>
                </occurrence>
@@ -1697,17 +1697,17 @@
                      </num>
                      <p>
                         <t v="The business plan focuses on ramp"/>
-                        <noteRef href="#note_16" marker="15"/>
+                        <footnoteRef href="#note_16" marker="15"/>
                         <t v=" and passenger"/>
-                        <noteRef href="#note_17" marker="16"/>
+                        <footnoteRef href="#note_17" marker="16"/>
                         <t v=" services, which represent the main part of Airport Handling’s business. The company’s overall market share at both Malpensa and Linate airports was expected to be [50-70]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % and [50-70]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % respectively in the second semester of 2014 and to increase to [60-80]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % and [60-80]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % respectively by 2017."/>
                      </p>
                   </occurrence>
@@ -1717,13 +1717,13 @@
                      </num>
                      <p>
                         <t v="The projections developed in the plan depict increasing operating revenues on account of a forecasted increasing market share. Total revenue was assumed to increase from EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" for the second half of 2014 to EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" in 2017, based on an assumption of an […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="-[…]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % p.a. increase in passenger traffic for the period 2014-2017."/>
                      </p>
                   </occurrence>
@@ -1733,11 +1733,11 @@
                      </num>
                      <p>
                         <t v="Average staff numbers were projected to increase from […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" FTE in 2014 to […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" FTE in 2017 due to an increase in the number of contracts with fixed duration. Labour costs were estimated to be around […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % of total operating costs. SEA would increase productivity by 12 % in the reference period, using three main drivers:"/>
                      </p>
                      <list kind="dash">
@@ -1768,7 +1768,7 @@
                      </num>
                      <p>
                         <t v="Initial start-up costs for the renegotiation of client and supplier contracts, workforce agreements, recruitment, writing of organisational/administrative/operational procedures, legal costs, bank charges, consultancy and purchase of small items and sundry supplies were expected to amount to EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -1778,9 +1778,9 @@
                      </num>
                      <p>
                         <t v="Operational start-up costs, i.e. capital expenditure required for Airport Handling to become operational were estimated at EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" for new equipment. However, for the purpose of the business plan of November 2013, it was assumed that Airport Handling would acquire used ground handling equipment valued at EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -1790,9 +1790,9 @@
                      </num>
                      <p>
                         <t v="In order to cover the outlay for all estimated start-up costs, the business plan requires a capital increase of EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" in […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -1837,15 +1837,15 @@
                      </num>
                      <p>
                         <t v="Market share: As regards […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=", the business plan of August 2014 assumes slightly lower growth than the previous plan, with a market share of [70-80]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % in […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=", based on updated forecasted levels of traffic of […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=", and the […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -1863,11 +1863,11 @@
                      </num>
                      <p>
                         <t v="Personnel costs: Estimated personnel costs in the business plan of August 2014 are slightly higher than those assumed for the November-2013 Business Plan and are ranging between […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" and […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % of operating costs. That increase is due to the […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -1877,17 +1877,17 @@
                      </num>
                      <p>
                         <t v="Other costs taken into account were external costs, depreciation and provisions, which together accounted for about […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % of total operating costs, and regulated costs (about […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" %) of services which SEA provides to Airport Handling for the use of common shared infrastructures of the airport (notably […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="). The August-2014 business plan estimated that EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" would have to be invested for the purchase of equipment, of which […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % for the purchase of new equipment and […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % for the purchase of second-hand vehicles on the market. These figures were based on bids by potential suppliers received by airport handling in March 2014."/>
                      </p>
                   </occurrence>
@@ -1960,7 +1960,7 @@
                         </num>
                         <p>
                            <t v="In summary, BCG evaluated the following assumptions underlying the business plan: Revenue perspectives (based on assumed traffic growth potential, assumed growth of volumes handled by Airport Handling); personnel costs (based on costs per FTE; assumed productivity gains); planned investments (total amount EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=")."/>
                         </p>
                      </occurrence>
@@ -1990,7 +1990,7 @@
                               <t v="LCCs"/>
                            </quote>
                            <t v=") and so-called legacy carriers, would not be in line with historical development of the mix at the Malpensa terminal, where over the past 4 years the share of LCC would have increased by […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" percentage points. Moreover, a new national regulation ("/>
                            <emphasis kind="i">
                               <t v="Decreto Linate"/>
@@ -2004,11 +2004,11 @@
                         </num>
                         <p>
                            <t v="The assumption on possible development of the volumes handled by Airport Handling seems broadly achievable because firstly, the agreements signed with new carriers at the date when BCG wrote the report would ensure a market share of [60-70]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" %; secondly, the [70-80]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % target market share for 2017 would be sustainable in view of current competitive dynamics in the sector as well as of SEAH’s historical [70-80]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % market share."/>
                         </p>
                      </occurrence>
@@ -2026,7 +2026,7 @@
                         </num>
                         <p>
                            <t v="Assumptions on average personnel unit cost increases of […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % per year from 2014 to 2017 would be broadly aligned with the agreement signed between the Italian Association of Airport Operators, Assaeroporti, and trade unions in October 2014."/>
                         </p>
                      </occurrence>
@@ -2036,11 +2036,11 @@
                         </num>
                         <p>
                            <t v="The […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % improvement in resource productivity would appear to be broadly sustainable firstly, because […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % productivity gain had already been achieved when the report was written and secondly, because the remaining […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % seem reasonable in light of current organisational levers and technical stage of implementation."/>
                         </p>
                      </occurrence>
@@ -2050,7 +2050,7 @@
                         </num>
                         <p>
                            <t v="BCG also found that the EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" budget for investments appears broadly consistent with the purchase of a new fleet mainly consisting of new vehicles (95 %), as shown by the detailed purchase values indicated in the tenders received by Airport Handling at the date of March 2014."/>
                         </p>
                      </occurrence>
@@ -2060,9 +2060,9 @@
                         </num>
                         <p>
                            <t v="BCG found that in summary, the profit margin foreseen in the business plan to 2017 ([…]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" %, EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=") would appear broadly in line with, or slightly below the average profitability of a significant sample of other European companies operating in the private and public sector (based on a comparison with "/>
                            <emphasis kind="i">
                               <t v="Portway"/>
@@ -2124,7 +2124,7 @@
                         </num>
                         <p>
                            <t v="According to the Brattle Report, the analysis is based on the information that was known to SEA at the time the decision to invest in Airport Handling was taken, as well as on public data concerning the competitive position of SEA. According to the Brattle report, the assumptions in the business plan of November 2013 are the most relevant for the market economy investor test, since they represent the basis on which SEA carried out the investment"/>
-                           <noteRef href="#note_18" marker="17"/>
+                           <footnoteRef href="#note_18" marker="17"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -2142,11 +2142,11 @@
                         </num>
                         <p>
                            <t v="According to the Brattle Report, unit prices (prices charged by Airport Handling for each aircraft movement) shown in the Business Plan of August 2014 are based on contracts already signed with the airlines, on average being EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", which is higher than the price assumed in the Business Plan of November 2013, ranging from EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" in 2014 to EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" in 2017. This led the experts to the following conclusions: First, market prices in the Business Plan of August 2014 are closer to the actual process achieved, because they were based on signed contracts. Second, that the Business Plan of November 2013, on which SEA based its investment decision, actually underestimated the market price that Airport Handling could charge. Third, this confirms that market prices in the Business Plan of November 2013 were not only reasonable but in fact were too low."/>
                         </p>
                      </occurrence>
@@ -2184,9 +2184,9 @@
                         </num>
                         <p>
                            <t v="Moreover, according to the Brattle report, although the business plan of November 2013 slightly underestimated labour costs, the business plan of August 2014 showed FTE costs of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v="/hour, […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -2214,11 +2214,11 @@
                         </num>
                         <p>
                            <t v="Further according to the Brattle report, a market economy investor would have considered the probability that the Commission finds economic continuity between SEAH and Airport Handling, and therefore requires the latter to repay the aid found incompatible in the recovery decision, to be relatively low. This is because SEA undertook measures to ring-fence Airport Handling and to prevent economic continuity, such as the setting up of the Trust. According to Brattle’s financial estimations on the November 2013 business plan, as long as the chance of a finding of economic continuity was less than […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % (assuming the cost of capital estimate proposed by SEA) or less than […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % (assuming the cost of capital estimate proposed by Brattle), then SEA’s investment with AH was consistent with the market economy investor principle. Brattle found it reasonable to assume that given the context and in particular the notification to the Commission, a market economy investor would judge such probability to be less than […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" %, and would therefore invest in Airport Handling on purely economic terms."/>
                         </p>
                      </occurrence>
@@ -2240,7 +2240,7 @@
                   </num>
                   <p>
                      <t v="Italy proposed to further reduce the scope of the activities currently carried out by Airport Handling in comparison with those carried out in the past by SEAH. In particular relating to […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -2250,7 +2250,7 @@
                   </num>
                   <p>
                      <t v="SEA currently provides […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", pursuant to a new and different agreement expiring on "/>
                      <date date="2018-12-31">
                         <t v="31 December 2018"/>
@@ -2268,15 +2268,15 @@
                         <t v="31 December 2016"/>
                      </date>
                      <t v=" at the very latest, the agreement relating to […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=", thereby taking it away from Airport Handling, and also to hire around […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" Airport Handling employees currently […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=". As a result of this change, the turnover of Airport Handling, being in the order of EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" in its first year of activity, would be reduced by around EUR […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -2557,7 +2557,7 @@
                   </num>
                   <p>
                      <t v="Italy stated that the fact that the business plan of Airport Handling provides for a market share […]"/>
-                     <noteRef href="#note_8" marker="*"/>
+                     <footnoteRef href="#note_8" marker="*"/>
                      <t v=" cannot, as such, be considered proof of economic continuity. Such market share should be assessed in the light of the objective pursued by Airport Handling of reaching viability in the medium term."/>
                   </p>
                </occurrence>
@@ -2595,7 +2595,7 @@
                      <occurrence eId="pbl_1/rct_137/idt_2" kind="indent">
                         <p>
                            <t v="allow the entry into the capital of Airport Handling of new private investors not connected to the SEA group, as a first step not less than […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" %."/>
                         </p>
                      </occurrence>
@@ -2804,21 +2804,21 @@
                      </num>
                      <p>
                         <t v="While SEAH mostly used […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" ([…]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="), Airport Handling has adopted an approach based on […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" (e.g. […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="). Although this would require more complex training, management and coordination activities, it would in turn lead to higher flexibility and, consequently, a drop in operating costs. According to the Trust, this allowed for […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" (On "/>
                         <date date="2014-12-31">
                            <t v="31 December 2014"/>
                         </date>
                         <t v=", Airport Handling had […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=")."/>
                      </p>
                   </occurrence>
@@ -2930,13 +2930,13 @@
                            <t v="28 February 2015"/>
                         </date>
                         <t v=", Airport Handling had concluded ground handling contracts with […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" air carriers, […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" operating at Linate and […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" operating at Malpensa. The Trust further submitted that Airport Handling did not conclude contracts with all carriers previously in a contractual relation with SEAH. More specifically, […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -2967,21 +2967,21 @@
                               <occurrence eId="pbl_1/rct_160/idt_2/idt_1" kind="indent">
                                  <p>
                                     <t v="Airport Handling has almost systematically received from carriers (directly or through tender notices) requests for […]"/>
-                                    <noteRef href="#note_8" marker="*"/>
+                                    <footnoteRef href="#note_8" marker="*"/>
                                     <t v=","/>
                                  </p>
                               </occurrence>
                               <occurrence eId="pbl_1/rct_160/idt_2/idt_2" kind="indent">
                                  <p>
                                     <t v="some carriers have […]"/>
-                                    <noteRef href="#note_8" marker="*"/>
+                                    <footnoteRef href="#note_8" marker="*"/>
                                     <t v=","/>
                                  </p>
                               </occurrence>
                               <occurrence eId="pbl_1/rct_160/idt_2/idt_3" kind="indent">
                                  <p>
                                     <t v="some carriers requested […]"/>
-                                    <noteRef href="#note_8" marker="*"/>
+                                    <footnoteRef href="#note_8" marker="*"/>
                                     <t v="."/>
                                  </p>
                               </occurrence>
@@ -2995,13 +2995,13 @@
                      </num>
                      <p>
                         <t v="In particular, according to the Trust, […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" carriers have obtained from Airport Handling, within the framework of the negotiation of the new ground handling contract, […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=". At the same time, […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" carriers have contracted […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" with SEAH."/>
                      </p>
                   </occurrence>
@@ -3011,34 +3011,34 @@
                      </num>
                      <p>
                         <t v="The Trust also submitted that some of the most important contracts with carriers ([…]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=") would expire as follows:"/>
                      </p>
                      <list kind="dash">
                         <occurrence eId="pbl_1/rct_162/idt_1" kind="indent">
                            <p>
                               <t v="the contract with […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=" on […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_162/idt_2" kind="indent">
                            <p>
                               <t v="the contract with […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=" on […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_162/idt_3" kind="indent">
                            <p>
                               <t v="the contract with […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=" on […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v="."/>
                            </p>
                         </occurrence>
@@ -3134,11 +3134,11 @@
                      </num>
                      <p>
                         <t v="According to Airport Handling, the main reason for that is that SEAH’s assets are obsolete and, therefore, do not appear attractive to the market. Indeed, the Trust submits that out of the […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" most valuable components (i.e. the […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="), only around […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" assets were purchased by SEAH after "/>
                         <date date="2006-12-31">
                            <t v="31 December 2006"/>
@@ -3227,7 +3227,7 @@
                      </num>
                      <p>
                         <t v="The Trust also submitted that Airport Handling had already put in place procedures for the purchase from third parties of a significant portion of assets ([…]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" %) required to run the business, to replace the assets leased from SEAH at the expiry of the lease contract. In this sense:"/>
                      </p>
                      <list kind="dash">
@@ -3238,16 +3238,16 @@
                                  <t v="26 November 2014"/>
                               </date>
                               <t v=", the Board of Directors of Airport Handling resolved to initiate a tender procedure for the renewal of the assets leased from SEAH, for a total estimated value of approximately EUR […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v="."/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_174/idt_2" kind="indent">
                            <p>
                               <t v="Those tenders (all but one which at the time the Trust’s comments on the 2014 opening decision were submitted was still in its start-up phase) were concluded at the beginning of January 2015 and Airport Handling had already approved a first order for the purchase of around […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=" % of the assets (including […]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=") on "/>
                               <date date="2015-02-11">
                                  <t v="11 February 2015"/>
@@ -3503,9 +3503,9 @@
                            <t v="14 October 2014"/>
                         </date>
                         <t v=". BCG came to the conclusion that the aim of the business plan, i.e. EBIT in 2017 of EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=", with a margin of […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" %, was reasonable and that the level of deviation was broadly in line or slightly below the average profitability of a significant sample of other public and private European companies operating in the ground handling sector. BCG also confirmed the validity of the business plan of November 2013."/>
                      </p>
                   </occurrence>
@@ -3526,13 +3526,13 @@
                         </num>
                         <p>
                            <t v="According to the Trust, Airport Handling is determined to deliver maximum efficiency and flexibility by means of […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". According to the business plan of "/>
                            <date date="2014-08-06">
                               <t v="6 August 2014"/>
                            </date>
                            <t v=", Airport Handling is expected to employ […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". This will be achieved by streamlining coordination structures and the introduction of new performant equipment and computer systems for personnel management, which will allow Airport Handling not to replace outgoing staff."/>
                         </p>
                      </occurrence>
@@ -3562,11 +3562,11 @@
                                     <t v="Optimisation of the share of fixed-term contracts and part-time contracts:"/>
                                  </emphasis>
                                  <t v=" efficiency is estimated to increase by around […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" % already in 2015; and together with the […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" would increase by an additional […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" % by 2017."/>
                               </p>
                            </occurrence>
@@ -3576,17 +3576,17 @@
                                     <t v="Better definition of the work programme:"/>
                                  </emphasis>
                                  <t v=" the work contract applied by Airport Handling foresees […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" than the contract SEAH applied to its employees. This allows savings of […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" % in respect of the number of working employees. In addition, the daily working time of full time staff has been […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=", with an impact on staffing needs of […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %. With the renewal of the collective agreement, expected during 2015, a further […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=". Furthermore, Airport Handling intends to optimise the use of resources by introducing instruments such as working in shifts and contracts with modulation of the daily and weekly schedule according to the actual requirements in line with the new possibilities offered by collective agreements at national level. These mechanisms will enable Airport Handling to increase efficiency for at least a further […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %."/>
                               </p>
                            </occurrence>
@@ -3596,11 +3596,11 @@
                                     <t v="Adapting the organisational structure in order to use resources effectively by"/>
                                  </emphasis>
                                  <t v=" […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=": already from 2015, there will be an increase in efficiency resulting from the seasonal upgrading of the matrices in function of traffic growth and by the redistribution of leave on nine periods which entails a […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=". The estimated savings will be […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %."/>
                               </p>
                            </occurrence>
@@ -3610,15 +3610,15 @@
                                     <t v="Optimisation of the capacity of existing staff"/>
                                  </emphasis>
                                  <t v=": the progressive use of […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" will lead to a positive increase in productive efficiency of "/>
                                  <t v="0,5"/>
                                  <t v=" %. The reduction of posts for […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=", in part already carried out ([…]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" and partly under implementation during 2015 ([…]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v="), will further contribute to increasing efficiency."/>
                               </p>
                            </occurrence>
@@ -3628,7 +3628,7 @@
                                     <t v="Economies of scale arising from the higher traffic"/>
                                  </emphasis>
                                  <t v=": traffic increase of existing customers and contracting with new carriers, even those operating in non-peak times, will allow the improvement of staff saturation factors with an effect in terms of productive efficiency of + […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" % in 2017."/>
                               </p>
                            </occurrence>
@@ -3638,9 +3638,9 @@
                                     <t v="Structural adjustments in the industrial processes"/>
                                  </emphasis>
                                  <t v=": the Trust mentioned the following routes envisaged to foster efficiency: better work planning and organisation, investments in technical solutions to enable partial or total automation of certain activities, linking workforce expenditure to business outputs and outcomes. As concerns work planning, the Trust indicated that Airport Handling had foreseen investments in new IT systems for the management of personnel and allocation to shifts leading to a more rational use of resources with an efficiency of […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %. In addition, Airport Handling has begun a process of acquisition of new equipment endowed with modern geo-location systems. Efficiencies in respect of staff use are estimated to […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %."/>
                               </p>
                            </occurrence>
@@ -3656,25 +3656,25 @@
                               <t v="ex-post"/>
                            </emphasis>
                            <t v=" that the assumptions in the business plan were sound. The Trust pointed to the results of the first 4 months of activity, showing […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" EBIT of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" and […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" as compared to the forecasts of the business plan of "/>
                            <date date="2014-08-06">
                               <t v="6 August 2014"/>
                            </date>
                            <t v=". This positive trend was the result of […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" revenues (EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=") and […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" costs (EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=")."/>
                         </p>
                      </occurrence>
@@ -3707,17 +3707,17 @@
                      </num>
                      <p>
                         <t v="According to SEAH the ground handling equipment had a book value of EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" prior to SEAH’s entry into liquidation. The average age of these assets was […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=". Of the approx. […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" items of higher value […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" equipment except […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v="), only […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" had been acquired after "/>
                         <date date="2006-12-31">
                            <t v="31 December 2006"/>
@@ -3735,7 +3735,7 @@
                            <t v="1 September 2014"/>
                         </date>
                         <t v=". In addition, certain […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" were present. Those positions had been liquidated in the meantime. Therefore, according to SEAH, the liquidator can only count on the sale of the ground handling equipment to fund liquidation costs and any other residual debit."/>
                      </p>
                   </occurrence>
@@ -3809,7 +3809,7 @@
                            <t v="25 June 2014"/>
                         </date>
                         <t v=" and proposed a lease fee of EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" per year, as a value considered in line with market conditions. On "/>
                         <date date="2014-09-01">
                            <t v="1 September 2014"/>
@@ -3825,7 +3825,7 @@
                      </num>
                      <p>
                         <t v="SEAH added that Airport Handling currently uses SEAH’s assets under a lease contract and is responsible for their maintenance (maintenance costs are estimated at EUR […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" per year)."/>
                      </p>
                   </occurrence>
@@ -3937,7 +3937,7 @@
                      </num>
                      <p>
                         <t v="According to SEA the decision to set up a new ground handling company operating on market conditions in competition with other service providers is based on economic logic and justified by a management model that differs significantly from that of the previous operator SEAH ([…]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=") in order to pursue an objective of sustainable profitability in the medium to long term."/>
                      </p>
                   </occurrence>
@@ -3963,9 +3963,9 @@
                      </num>
                      <p>
                         <t v="In addition, according to SEA, within the meaning of Council Directives 78/660/EEC"/>
-                        <noteRef href="#note_19" marker="18"/>
+                        <footnoteRef href="#note_19" marker="18"/>
                         <t v=" and 83/349/EEC"/>
-                        <noteRef href="#note_20" marker="19"/>
+                        <footnoteRef href="#note_20" marker="19"/>
                         <t v=" on consolidated financial statements, transposed into Italian legislation by Legislative Decree No 127 of "/>
                         <date date="1991-04-09">
                            <t v="9 April 1991"/>
@@ -4152,7 +4152,7 @@
                   </num>
                   <p>
                      <t v="Based on settled case law, unlawful and incompatible aid must be recovered from the undertakings that actually benefited from it"/>
-                     <noteRef href="#note_21" marker="20"/>
+                     <footnoteRef href="#note_21" marker="20"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -4162,12 +4162,12 @@
                   </num>
                   <p>
                      <t v="In case of insolvent beneficiaries of State aid, the recovery obligation can be fulfilled by registration of the liability relating to the repayment of the aid in the schedule of liabilities, provided that the aid beneficiary exits the market"/>
-                     <noteRef href="#note_22" marker="21"/>
+                     <footnoteRef href="#note_22" marker="21"/>
                      <t v=". The Court held that "/>
                      <quote startQuote="‘" endQuote="’">
                         <t v="where the undertaking which received the unlawful aid is insolvent and a company has been created to continue some of the activities of the insolvent undertaking, the pursuit of those activities may, where the aid concerned is not recovered in its entirety, prolong the distortion of competition brought about by the competitive advantage which that company enjoyed in the market as compared with its competitors. Accordingly, such a newly created company may, if it retains that advantage, be required to repay the aid in question. That is the case where it is established that that company continues genuinely to derive a competitive advantage because of the receipt of that aid, especially where it acquires the assets of the company in liquidation without paying the market price in return or where it is established that the effect of that company’s creation is circumvention of the obligation to repay the aid"/>
                      </quote>
-                     <noteRef href="#note_23" marker="22"/>
+                     <footnoteRef href="#note_23" marker="22"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -4181,7 +4181,7 @@
                         <t v="may be taken into consideration"/>
                      </emphasis>
                      <t v=" for the assessment of economic continuity between the two companies"/>
-                     <noteRef href="#note_24" marker="23"/>
+                     <footnoteRef href="#note_24" marker="23"/>
                      <t v=": the scope of the transfer (assets and liabilities, continuity of the workforce, bundled assets, etc.); the transfer price; the identity of the shareholders or owners of the acquiring firm and of the original firm; the moment at which the transfer is carried out (after the start of the investigation, the initiation of the procedure or the final decision); and, lastly, the economic logic of the transaction."/>
                   </p>
                </occurrence>
@@ -4191,12 +4191,12 @@
                   </num>
                   <p>
                      <t v="According to case law, the aforementioned factors may be taken into account to varying degrees, according to the specific features of the case at hand"/>
-                     <noteRef href="#note_25" marker="24"/>
+                     <footnoteRef href="#note_25" marker="24"/>
                      <t v=". It follows that the Commission is not required to take into account the whole of those factors, as is demonstrated by use of the expression "/>
                      <quote startQuote="‘" endQuote="’">
                         <t v="may be taken into consideration"/>
                      </quote>
-                     <noteRef href="#note_26" marker="25"/>
+                     <footnoteRef href="#note_26" marker="25"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -4236,7 +4236,7 @@
                         </num>
                         <p>
                            <t v="After SEAH was put into liquidation, many of its former employees were reemployed by Airport Handling, constituting initially the majority of the latter’s workforce. Therefore, it is relevant to analyse whether this situation is not indicative of a circumvention of the recovery decision. To that effect, it should be assessed whether the process that led to that outcome did not amount to transferring SEAH’s workforce into Airport Handling while preserving its core features. It is all the more relevant since for a ground handling company, workforce is the primary resource necessary to operate"/>
-                           <noteRef href="#note_27" marker="26"/>
+                           <footnoteRef href="#note_27" marker="26"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -4294,19 +4294,19 @@
                               <t v="22 April 2014"/>
                            </date>
                            <t v=", when SEAH initiated the laid-off workers’ mobility scheme, its workforce was […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" strong, equivalent to […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" FTEs. Available data shows that on "/>
                            <date date="2015-05-31">
                               <t v="31 May 2015"/>
                            </date>
                            <t v=", 9 months into its operations, Airport Handling had […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" employees, of which […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" had been previously employed by SEAH. Hence, Airport Handling had until then taken over approx. […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % of SEAH’s employees. The transfer was therefore not complete, and not even practically complete. Nevertheless, it is also to be noted that Airport Handling’s workforce, at least in the early phase after starting operations, consisted almost exclusively of former SEAH staff."/>
                         </p>
                      </occurrence>
@@ -4321,14 +4321,14 @@
                            <occurrence eId="pbl_1/rct_232/idt_1" kind="indent">
                               <p>
                                  <t v="a […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" applies to Airport Handling’s employees,"/>
                               </p>
                            </occurrence>
                            <occurrence eId="pbl_1/rct_232/idt_2" kind="indent">
                               <p>
                                  <t v="Airport Handling does not apply the […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" supplementing the national collective labour agreement,"/>
                               </p>
                            </occurrence>
@@ -4340,21 +4340,21 @@
                                  <occurrence eId="pbl_1/rct_232/idt_3/idt_1" kind="indent">
                                     <p>
                                        <t v="[…]"/>
-                                       <noteRef href="#note_8" marker="*"/>
+                                       <footnoteRef href="#note_8" marker="*"/>
                                        <t v=","/>
                                     </p>
                                  </occurrence>
                                  <occurrence eId="pbl_1/rct_232/idt_3/idt_2" kind="indent">
                                     <p>
                                        <t v="[…]"/>
-                                       <noteRef href="#note_8" marker="*"/>
+                                       <footnoteRef href="#note_8" marker="*"/>
                                        <t v=", which SEAH used to apply to its employees,"/>
                                     </p>
                                  </occurrence>
                                  <occurrence eId="pbl_1/rct_232/idt_3/idt_3" kind="indent">
                                     <p>
                                        <t v="work organisation, e.g. […]"/>
-                                       <noteRef href="#note_8" marker="*"/>
+                                       <footnoteRef href="#note_8" marker="*"/>
                                        <t v=","/>
                                     </p>
                                  </occurrence>
@@ -4363,7 +4363,7 @@
                            <occurrence eId="pbl_1/rct_232/idt_4" kind="indent">
                               <p>
                                  <t v="a measurable result of above listed changes is the reduction of labour costs of around […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %, as compared to SEAH’s labour costs, both resulting from the changes in the applicable national collective labour regime and the supplementary corporate contract; the weight of the terms of the latter on labour costs was reduced by 50 %."/>
                               </p>
                            </occurrence>
@@ -4399,9 +4399,9 @@
                               <t v="4 November 2013"/>
                            </date>
                            <t v=" between SEA and trade unions, a future implementing agreement must be inspired by the objective to safeguard the jobs of all SEAH personnel"/>
-                           <noteRef href="#note_28" marker="27"/>
+                           <footnoteRef href="#note_28" marker="27"/>
                            <t v=". That agreement enumerates a number of measures to attain that objective, in essence all mechanisms made available by the relevant legislation governing employment and collective bargaining such as social safety nets and voluntary redundancies, also to be implemented within the SEA Group, and solutions involving relocation within the Group. Hence, that agreement indeed implied that jobs were to be reattributed within the SEA group as a whole"/>
-                           <noteRef href="#note_29" marker="28"/>
+                           <footnoteRef href="#note_29" marker="28"/>
                            <t v=", but not only to Airport Handling, and only as one measure among several. Moreover, those agreements were not concluded with Airport Handling, which concluded separate agreements with the personnel. Therefore, the number of jobs reallocated to Airport Handling was not pre-determined by the parties but was established following the company’s staffing needs after conclusion of the contracts with the airlines."/>
                         </p>
                      </occurrence>
@@ -4487,16 +4487,16 @@
                               <t v="ex novo"/>
                            </emphasis>
                            <t v=" negotiation but also provide for materially different contractual conditions, Italy submitted information showing that certain airlines previously served by SEAH (such as […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=") were able to obtain significantly more favourable conditions from Airport Handling than from SEAH. In particular, in the course of the negotiations with Airport Handling, […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" requested that […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". As a result[…]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" obtained a […]"/>
-                           <noteRef href="#note_8" marker="*"/>
-                           <noteRef href="#note_30" marker="29"/>
+                           <footnoteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_30" marker="29"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -4562,23 +4562,23 @@
                               <t v="14 February 2014"/>
                            </date>
                            <t v=", which shows that out of 68 former SEAH customers, […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" had defected to other ground handling service providers, that of the […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" Airport Handling clients at that time, 1 had defected from a competitor, 3 were newcomers to the airport and […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" were former SEAH-clients. […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" of those […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" former SEAH-clients negotiated new contract terms more favourable for the clients, either stipulating lower prices (13 clients), a modified serve portfolio ([…]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" clients), or even a combination of both ([…]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" clients). Hence, only 20 clients concluded service contracts that in essence stipulate the same conditions as the previous contracts with SEAH. Price reductions are ranging from […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" to […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % compared to prices previously agreed with SEAH."/>
                         </p>
                      </occurrence>
@@ -4616,9 +4616,9 @@
                         </num>
                         <p>
                            <t v="The Commission notes that, when Airport Handling started operations, it sourced 100 % of its entire ground handling equipment from SEAH through leasing. 5 months later, it started gradually replacing that equipment with assets bought on the market and finally, in September 2015, purchased […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" of […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" lots of assets from SEAH."/>
                         </p>
                      </occurrence>
@@ -4632,13 +4632,13 @@
                               <t v="31 August 2015"/>
                            </date>
                            <t v=". Before the lease contract ended, Airport Handling expressed its interest in the acquisition of […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" out of […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" tender lots, namely lots No […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". According to Airport Handling, although realistically around one third of the ground handling equipment owned by SEAH and leased to Airport Handling was aged, Airport Handling was willing to acquire around […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % of that equipment (which would be sufficient for Airport Handling to run its business) considering that Airport Handling had in the meantime obtained on the market a significant stock of spare parts which could be used for the replacement of some parts of the most aged SEAH equipment."/>
                         </p>
                      </occurrence>
@@ -4657,16 +4657,16 @@
                            <occurrence eId="pbl_1/rct_254/idt_1" kind="indent">
                               <p>
                                  <t v="that a […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" %-discount on the […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" in view of, firstly, the fleet’s age and condition and secondly the outcome of the sales procedure initiated by SEA,"/>
                               </p>
                            </occurrence>
                            <occurrence eId="pbl_1/rct_254/idt_2" kind="indent">
                               <p>
                                  <t v="payment […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" from "/>
                                  <date date="2015-07-31">
                                     <t v="31 July"/>
@@ -4689,9 +4689,9 @@
                                     <t v="comodato"/>
                                  </emphasis>
                                  <t v=") of approx. […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" selected items […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=", until "/>
                                  <date date="2015-12-31">
                                     <t v="31 December 2015"/>
@@ -4744,23 +4744,23 @@
                         </num>
                         <p>
                            <t v="According to the Italian authorities, negotiations still drew on until September 2015, when SEAH agreed to the payment of the purchase price […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" for the sale of the […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" lots, […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". The purchase price was EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", that is the price initially indicated in the failed tender procedure. The original lease was exceptionally extended until […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", for […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" items of the fleet and against payment of an overall lease of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", which fee was based on the value attributed to those items by the abovementioned independent appraisals. Airport Handling returned these […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" items to SEAH on […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -4819,7 +4819,7 @@
                         </num>
                         <p>
                            <t v="Airport Handling had in the meantime launched a tender procedure, from November 2014 until January 2015, for the purchase of new equipment on the market. According to the Italian authorities, the value of the equipment purchased under this first tender procedure is approx. EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -4844,9 +4844,9 @@
                            <occurrence eId="pbl_1/rct_259/idt_3" kind="indent">
                               <p>
                                  <t v="According to the Italian authorities, roughly […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" of the […]"/>
-                                 <noteRef href="#note_8" marker="*"/>
+                                 <footnoteRef href="#note_8" marker="*"/>
                                  <t v=" items purchased from SEAH were in good or fair working order. About 1/3 at best could have been used to obtain spare parts. 700 of the items purchased were later found to have minimal or no value/use; 270 items were then parked and decommissioned as scrap."/>
                               </p>
                            </occurrence>
@@ -4884,14 +4884,14 @@
                         </num>
                         <p>
                            <t v="As regards the importance of assets in relation to labour, in SEAH’s last balance sheet before liquidation, the value of operating tools amounted to around EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". Airport Handling, in turn, in 2015 owned capital assets worth EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
-                           <noteRef href="#note_31" marker="30"/>
+                           <footnoteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_31" marker="30"/>
                            <t v=". In contrast, Airport Handling’s labour cost amounted to EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" in the year September 2014-August 2015, according to Airport Handling’s operating statement for that period"/>
-                           <noteRef href="#note_32" marker="31"/>
+                           <footnoteRef href="#note_32" marker="31"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -4901,7 +4901,7 @@
                         </num>
                         <p>
                            <t v="Asset value is also of lower importance when compared to turnover: Airport Handling’s operating statement for September 2014-August 2015 shows turnover to the amount of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". Therefore, the assets in question appear to be a production factor of minor importance compared to labour. Their value is also very modest compared to turnover generated with both labour and assets. Information obtained in the formal investigation procedure rather indicates that both SEAH and Airport Handling are pursuing a pronouncedly labour intensive rather than asset intensive business model."/>
                         </p>
                      </occurrence>
@@ -5017,7 +5017,7 @@
                            <occurrence eId="pbl_1/rct_271/idt_2" kind="indent">
                               <p>
                                  <t v="the bankruptcy administrator performed actions which defrauded the creditors and may have reduced the assets of the insolvent company, or it breached the principle of the equal ranking of creditors to the loss of the public creditors"/>
-                                 <noteRef href="#note_33" marker="32"/>
+                                 <footnoteRef href="#note_33" marker="32"/>
                                  <t v="."/>
                               </p>
                            </occurrence>
@@ -5100,7 +5100,7 @@
                         </num>
                         <p>
                            <t v="According to case law, the mere fact that a company has leased for a certain period some or all of the assets of an insolvent company does not necessarily mean that the new company enjoyed the competitive advantage linked to an aid previously granted to the lessor"/>
-                           <noteRef href="#note_34" marker="33"/>
+                           <footnoteRef href="#note_34" marker="33"/>
                            <t v=". Leasing of the assets by the recipient of the aid to a company performing a similar activity is not indicative of economic continuity if the lease price reflects the market price. However, if the lease price, paid by the new company to the beneficiary of the aid, was below market price, this could be an indication of economic continuity in that the advantage conferred on the beneficiary by the illegal and incompatible aid could be said to have been fully or partly transferred to the new company through a price below market value."/>
                         </p>
                      </occurrence>
@@ -5110,17 +5110,17 @@
                         </num>
                         <p>
                            <t v="Available information suggests that SEAH and the Trustee negotiated the lease contract at arm’s length. Moreover, the lease fee was determined by two subsequent external valuations. In order to confirm the soundness of the first valuation, which had set the annual lease fee at EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", SEAH and Airport Handling jointly entrusted E&amp;Y with the task of reassessing the lease fee. That second valuation initially recommended a […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" lease fee, being EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". Then, after SEAH and Airport Handling had agreed to broaden that second valuation in order to include new information gathered in equipment delivery reports, the experts found that a number of machinery and equipment items were not suitable for use and revised their initial estimate […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", to EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". Based on that second evaluation report, SEAH and Airport Handling agreed to reduce the lease amount to EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" "/>
                            <emphasis kind="i">
                               <t v="per annum"/>
@@ -5154,7 +5154,7 @@
                         </num>
                         <p>
                            <t v="Airport Handling purchased the assets after the failure of the bidding procedure and after the expiry of the leasing agreement. The Commission assessed whether Airport Handling through that transaction received any advantage originating from previous unlawful aid granted to SEAH. That assessment starts on the premise that an advantage is excluded if the purchase price of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" corresponds to at least the market price."/>
                         </p>
                      </occurrence>
@@ -5305,7 +5305,7 @@
                      </num>
                      <p>
                         <t v="In the 2014 opening decision, the Commission noted that Italy undertook to entrust the management of Airport Handling to an independent trustee for a period of 3 years"/>
-                        <noteRef href="#note_35" marker="34"/>
+                        <footnoteRef href="#note_35" marker="34"/>
                         <t v=". Moreover, Italy proposed to open 20 % of Airport Handling’s share capital to investors. The Commission then found, firstly, that the ground handling business would have the same owner, SEA, and secondly, that Italy’s proposal to tender out 20 % of the capital of the new ground handling provider was not sufficient to guarantee discontinuity from SEAH since first, the proposal is only limited to a minority shareholding and second, no guarantees have been provided in this respect. Moreover, this opening of the capital would only occur after the entry of Airport Handling on the market."/>
                      </p>
                   </occurrence>
@@ -5347,9 +5347,9 @@
                            <t v="1 September 2014"/>
                         </date>
                         <t v=". The Commission however notes that according to available information, the company had already carried out economic activities by offering its services on the market before that date, and apparently as early as April 2014, as a number of service contracts had […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" been concluded"/>
-                        <noteRef href="#note_36" marker="35"/>
+                        <footnoteRef href="#note_36" marker="35"/>
                         <t v=". Then however, Airport Handling was fully owned and controlled by SEA."/>
                      </p>
                   </occurrence>
@@ -5413,7 +5413,7 @@
                      </num>
                      <p>
                         <t v="According to Italy, SEA’s decision of seconding those managers to Airport Handling was taken with a view to Italy’s proposals concerning the opening-up of Airport Handling’s capital to third parties. For that purpose, it would have been necessary to ensure, on one hand, that Airport Handling’s management was fully qualified and, on the other hand, that the conditions of employment of the managers were flexible. In fact, Italy clarified that Airport Handling signed secondment contracts with SEA for […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" employees."/>
                      </p>
                   </occurrence>
@@ -5435,9 +5435,9 @@
                            <t v="21 September 2015"/>
                         </date>
                         <t v=", between the Trustee and private market operator D’Nata, concerning the sale of a […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % stake in Airport Handling, in combination with the right to appoint the majority of the board of directors and also the CEO of Airport Handling, and further concerning an option to acquire a further […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" % stake in Airport Handling."/>
                      </p>
                   </occurrence>
@@ -5515,7 +5515,7 @@
                            <t v="may"/>
                         </quote>
                         <t v=" be taken into consideration in order to set aside the economic continuity between those two entities"/>
-                        <noteRef href="#note_37" marker="36"/>
+                        <footnoteRef href="#note_37" marker="36"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -5545,7 +5545,7 @@
                      </num>
                      <p>
                         <t v="In that respect, the Commission refers to case law according to which the mere circumstance that the acquirer is in fact continuing the business of an undertaking that is obliged to reimburse aid does not necessarily mean that the former undertaking enjoyed the competitive advantage linked with the aid granted to the latter. In the specific case referred to, the former undertaking leased a plant at a market price from the undertaking that had received aid almost 3 years before the creation of the former undertaking"/>
-                        <noteRef href="#note_38" marker="37"/>
+                        <footnoteRef href="#note_38" marker="37"/>
                         <t v=". The Commission recalls that in the case at issue, Airport Handling has leased, then purchased, SEAH’s assets at a price that can be deemed at least the market price, and that the unlawful aid that is to be recovered from SEAH was granted during the years 2002-2010, i.e. 3 years before Airport Handling was incorporated and 4 years before Airport Handling started its economic activity."/>
                      </p>
                   </occurrence>
@@ -5568,42 +5568,42 @@
                         <occurrence eId="pbl_1/rct_311/idt_1" kind="indent">
                            <p>
                               <t v="[…]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_311/idt_2" kind="indent">
                            <p>
                               <t v="[…]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_311/idt_3" kind="indent">
                            <p>
                               <t v="[…]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_311/idt_4" kind="indent">
                            <p>
                               <t v="[…]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_311/idt_5" kind="indent">
                            <p>
                               <t v="[…]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v=","/>
                            </p>
                         </occurrence>
                         <occurrence eId="pbl_1/rct_311/idt_6" kind="indent">
                            <p>
                               <t v="[…]"/>
-                              <noteRef href="#note_8" marker="*"/>
+                              <footnoteRef href="#note_8" marker="*"/>
                               <t v="."/>
                            </p>
                         </occurrence>
@@ -5775,7 +5775,7 @@
                      </num>
                      <p>
                         <t v="For the purposes of the market economy investor principle assessment, it is necessary to determine whether, in similar circumstances as those surrounding the adoption of the measure under assessment, a hypothetical market economy investor, guided by profitability prospects, and not public policy objectives, would have behaved in a similar way. In order to examine whether or not the State has adopted the conduct of a prudent investor operating in a market economy, it is necessary to place oneself in the context of the period during which the financial support measures were taken in order to assess the economic rationality of the State’s conduct, and thus to refrain from any assessment based on a later situation"/>
-                        <noteRef href="#note_39" marker="38"/>
+                        <footnoteRef href="#note_39" marker="38"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -5785,7 +5785,7 @@
                      </num>
                      <p>
                         <t v="Consequently, the market economy rationale of a public investment must be assessed having regard to the information available and developments foreseeable at the time when the investment was made"/>
-                        <noteRef href="#note_40" marker="39"/>
+                        <footnoteRef href="#note_40" marker="39"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -5915,7 +5915,7 @@
                      </num>
                      <p>
                         <t v="The Commission notes that the risk arising from a possible future liability to repay the aid is not mentioned in Airport Handling’s business plan of November 2013. In that respect, the Commission observes that SEA made that business plan for its own purposes. Being the mother company of an established market player in ground handling and demonstrably being aware of the risks arising from various factors of continuity, SEA was in a position to take informed investment decisions without explicitly mentioning that risk in that business plan. Additionally, the final decision to raise the capital up to EUR 25 million was taken only after the risk mitigating measures were ensured. Moreover, the above described external evaluation of the November 2013 business plan (recital 114 above) confirms that a rational investor would have judged the probability of economic continuity, and thus the liability to repay the aid, to be less than […]"/>
-                        <noteRef href="#note_8" marker="*"/>
+                        <footnoteRef href="#note_8" marker="*"/>
                         <t v=" %, and therefore would have found it economically rational to invest in AH."/>
                      </p>
                   </occurrence>
@@ -5976,7 +5976,7 @@
                         </num>
                         <p>
                            <t v="According to the business plan of November 2013, personnel costs on average constitute […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % of operating costs in the period 2014-2017."/>
                         </p>
                      </occurrence>
@@ -5994,7 +5994,7 @@
                         </num>
                         <p>
                            <t v="First, the Commission notes that in light of the Brattle report, the percentage of personnel costs over total operating costs forecasted by Airport Handling is broadly in line with the cost structure of the European ground handling industry, which shows an incidence of personnel costs over total operating costs amounting to 65 %-80 %. In that respect, the report refers to the figures mentioned in the Commission’s impact assessment accompanying its proposal for a new ground handling Regulation"/>
-                           <noteRef href="#note_41" marker="40"/>
+                           <footnoteRef href="#note_41" marker="40"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -6004,16 +6004,16 @@
                         </num>
                         <p>
                            <t v="Second, on the basis of information provided by Italy, the Commission notes that Airport Handling’s average hourly personnel costs per FTE seems to be […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". The average hourly personnel cost in the business plan of November 2013 is EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=", and EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" in the business plan of August 2014, which is respectively […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" than the average hourly costs paid by SEAH in 2013 of about EUR[…]"/>
-                           <noteRef href="#note_8" marker="*"/>
-                           <noteRef href="#note_42" marker="41"/>
+                           <footnoteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_42" marker="41"/>
                            <t v=". The Brattle report confirms that Airport Handling achieved these labour costs in reality and therefore concludes that the business plan was not overly optimistic."/>
                         </p>
                      </occurrence>
@@ -6043,13 +6043,13 @@
                         </num>
                         <p>
                            <t v="The Commission expressed concerns about the relatively high market share assumptions of Airport Handling’s business plan of November 2013. The market share for ramp-services is foreseen at [60-70]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % in 2014 and rises to [70-80]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % in 2017. The market share for passenger services is foreseen at [60-70]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % in 2014 and rises to [60-70]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % in 2017."/>
                         </p>
                      </occurrence>
@@ -6059,9 +6059,9 @@
                         </num>
                         <p>
                            <t v="In 2013, SEAH’s overall market share was [70-80]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" %"/>
-                           <noteRef href="#note_43" marker="42"/>
+                           <footnoteRef href="#note_43" marker="42"/>
                            <t v=". The Commission observes that the anticipated market share of Airport Handling is below the market share of SEAH. Consequently, it was not expected that Airport Handling received all SEAH contracts. Certain losses in the market share of the new company are in fact taken into consideration."/>
                         </p>
                      </occurrence>
@@ -6097,11 +6097,11 @@
                         </num>
                         <p>
                            <t v="Moreover, the Commission notes that the market share Airport Handling achieved in 2014 is in fact higher than the one predicted in the November 2013 business plan. Such a high market share can mainly be explained by the fact that Airport Handling managed to sign contracts with […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". Together they account for a significant share of the traffic at the two airports, namely […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % of Linate’s and […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % of Malpensa’s air traffic."/>
                         </p>
                      </occurrence>
@@ -6131,11 +6131,11 @@
                         </num>
                         <p>
                            <t v="The business plan of November 2013 anticipates […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" EBIT and a […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" pre-tax profit as from the second year of operation. EBIT and after-tax profit […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=". The business plan of November 2013 does not show the usual metrics of profitability such as for example internal rate of return (IRR) or net present value (NPV). However, the Brattle report presents these calculations based on the numbers in the business plan."/>
                         </p>
                      </occurrence>
@@ -6153,15 +6153,15 @@
                         </num>
                         <p>
                            <t v="The Brattle report calculates the equity IRR of the investment in Airport Handling and checks if it is equal to or higher than its WACC. The report uses two alternative values of the WACC. The first one is […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % which is according to the report the unlevered post-tax WACC used in the business plan"/>
-                           <noteRef href="#note_44" marker="43"/>
+                           <footnoteRef href="#note_44" marker="43"/>
                            <t v=". The second one is […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % and is calculated in the report as the lower bound of the opportunity cost of capital. Depending on the terminal value of the investment, the Brattle report estimates that the expected equity return of the investment in Airport Handling ranges from […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" % to […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v=" %. The calculations show that in all scenarios the expected IRR exceeds the opportunity cost of capital and therefore the investment is profitable."/>
                         </p>
                      </occurrence>
@@ -6179,7 +6179,7 @@
                         </num>
                         <p>
                            <t v="The Commission notes that some of the key assumptions of the business plan of November 2013 broadly materialised, in particular in terms of profitability and market shares. Airport Handling was already profitable in its first year of operations: According to the profit-and-loss account for September 2014 until August 2015, the company generated EBIT of EUR […]"/>
-                           <noteRef href="#note_8" marker="*"/>
+                           <footnoteRef href="#note_8" marker="*"/>
                            <t v="."/>
                         </p>
                      </occurrence>
@@ -6318,8 +6318,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -6330,8 +6330,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -6342,8 +6342,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="See Order of "/>
             <date date="2013-06-20">
@@ -6355,8 +6355,8 @@
             </date>
             <t v=", case T-167/13 R, ECLI:EU:T:2013:331."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="See Order of "/>
             <date date="2014-11-28">
@@ -6368,8 +6368,8 @@
             </date>
             <t v=", ECLI:EU:T:2014:1009."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -6380,8 +6380,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="Point 5 of the agreement of "/>
             <date date="2013-11-04">
@@ -6389,8 +6389,8 @@
             </date>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <t v="Law No 223 of "/>
             <date date="1991-07-23">
@@ -6402,18 +6402,18 @@
             </date>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_8" marker="*" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="*" kind="footnote">
          <p>
             <t v="Business secret."/>
          </p>
-      </note>
-      <note eId="note_9" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_9" marker="8" kind="footnote">
          <p>
             <t v="Voluntary liquidation is essentially similar to winding up by the Court, save for the fact that it falls to the shareholders in general meeting, and not to the Court, to take the decision to wind up the company, appoint the liquidators and determine their powers. Only where a majority of the shareholders cannot be assembled must the company apply to the court for a declaration putting it into liquidation. The Court then designates the liquidators in accordance with the company’s articles of association or pursuant to the decision of the shareholders in general meeting, unless it is clear that disagreement between the shareholders will prevent them from taking a decision in a general meeting, in which case the court itself appoints a liquidator."/>
          </p>
-      </note>
-      <note eId="note_10" marker="9" kind="footnote">
+      </footnote>
+      <footnote eId="note_10" marker="9" kind="footnote">
          <p>
             <t v="Airport Handling filed the request for the licence for the provision of ground handling services at Linate and Malpensa on "/>
             <date date="2014-01-21">
@@ -6425,23 +6425,23 @@
             </date>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_11" marker="10" kind="footnote">
+      </footnote>
+      <footnote eId="note_11" marker="10" kind="footnote">
          <p>
             <t v="The SFPs are equity-based instruments, therefore they are not subject to a repayment obligation of the amount contributed by SEA. They do not carry administrative rights but are similar to shares in terms of equity rights. In particular, these instruments provide profit-sharing and reserve rights and rights to other equity items, including in case of winding up of the company."/>
          </p>
-      </note>
-      <note eId="note_12" marker="11" kind="footnote">
+      </footnote>
+      <footnote eId="note_12" marker="11" kind="footnote">
          <p>
             <t v="On that date SEA was still the sole shareholder of Airport Handling."/>
          </p>
-      </note>
-      <note eId="note_13" marker="12" kind="footnote">
+      </footnote>
+      <footnote eId="note_13" marker="12" kind="footnote">
          <p>
             <t v="On that date the Trust was the sole shareholder of Airport Handling."/>
          </p>
-      </note>
-      <note eId="note_14" marker="13" kind="footnote">
+      </footnote>
+      <footnote eId="note_14" marker="13" kind="footnote">
          <p>
             <t v="Contract notice No 2014/S218-385934 of "/>
             <date date="2014-11-12">
@@ -6453,31 +6453,31 @@
             </quote>
             <t v=" (TED) supplement to the OJ: http://ted.europa.eu/udl?uri=TED:NOTICE:385934-2014:TEXT:EN:HTML&amp;src=0"/>
          </p>
-      </note>
-      <note eId="note_15" marker="14" kind="footnote">
+      </footnote>
+      <footnote eId="note_15" marker="14" kind="footnote">
          <p>
             <quote startQuote="‘" endQuote="’">
                <t v="Long-stop date"/>
             </quote>
             <t v=" 18 calendar months from the execution and exchange of all documents and the performance and consummation of all obligations, arising from the sale contract."/>
          </p>
-      </note>
-      <note eId="note_16" marker="15" kind="footnote">
+      </footnote>
+      <footnote eId="note_16" marker="15" kind="footnote">
          <p>
             <t v="Air-side services, including the boarding/disembarking of passengers, luggage and cargo, aircraft balancing, and luggage distribution."/>
          </p>
-      </note>
-      <note eId="note_17" marker="16" kind="footnote">
+      </footnote>
+      <footnote eId="note_17" marker="16" kind="footnote">
          <p>
             <t v="Services provided land-side."/>
          </p>
-      </note>
-      <note eId="note_18" marker="17" kind="footnote">
+      </footnote>
+      <footnote eId="note_18" marker="17" kind="footnote">
          <p>
             <t v="Brattle Report, p. 1, paragraph 1 and p. 7, paragraph 34."/>
          </p>
-      </note>
-      <note eId="note_19" marker="18" kind="footnote">
+      </footnote>
+      <footnote eId="note_19" marker="18" kind="footnote">
          <p>
             <t v="Fourth Council Directive 78/660/EEC of "/>
             <date date="1978-07-25">
@@ -6493,8 +6493,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_20" marker="19" kind="footnote">
+      </footnote>
+      <footnote eId="note_20" marker="19" kind="footnote">
          <p>
             <t v="Seventh Council Directive 83/349/EEC of "/>
             <date date="1983-06-13">
@@ -6510,8 +6510,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_21" marker="20" kind="footnote">
+      </footnote>
+      <footnote eId="note_21" marker="20" kind="footnote">
          <p>
             <t v="Case C-303/88 Italy v Commission ECLI:EU:C:1991:367, paragraph 57; Case C-277/00, Germany v Commission ("/>
             <quote startQuote="‘" endQuote="’">
@@ -6519,8 +6519,8 @@
             </quote>
             <t v="), ECLI:EU:C:2004:238, paragraph 75. By repaying the aid, the recipient must forfeit the advantage it previously enjoyed on the market, and the pre-aid situation is restored."/>
          </p>
-      </note>
-      <note eId="note_22" marker="21" kind="footnote">
+      </footnote>
+      <footnote eId="note_22" marker="21" kind="footnote">
          <p>
             <t v="Case C-454/09, Commission v Italy ("/>
             <quote startQuote="‘" endQuote="’">
@@ -6528,13 +6528,13 @@
             </quote>
             <t v="), ECLI:EU:C:2011:650, paragraph 36."/>
          </p>
-      </note>
-      <note eId="note_23" marker="22" kind="footnote">
+      </footnote>
+      <footnote eId="note_23" marker="22" kind="footnote">
          <p>
             <t v="C-610/10 Commission v Spain, ECLI:EU:C:2012:781, paragraph 106."/>
          </p>
-      </note>
-      <note eId="note_24" marker="23" kind="footnote">
+      </footnote>
+      <footnote eId="note_24" marker="23" kind="footnote">
          <p>
             <t v="Joined Cases C-328/99 and C-399/00 Italy and SIM 2 Multimedia v Commission ("/>
             <quote startQuote="‘" endQuote="’">
@@ -6542,23 +6542,23 @@
             </quote>
             <t v=") ECLI:EU:C:2003:252, paragraphs 69, 77-78. This set of indicators was then confirmed in Case T-123/09 Ryanair v Commission, ECLI:EU:T:2012:164, paragraph 155."/>
          </p>
-      </note>
-      <note eId="note_25" marker="24" kind="footnote">
+      </footnote>
+      <footnote eId="note_25" marker="24" kind="footnote">
          <p>
             <t v="Joined Cases T-415/05, T-416/05 and T-423/05 Hellenic Republic et al. v Commission, ECLI:EU:T:2010:386, paragraph 135."/>
          </p>
-      </note>
-      <note eId="note_26" marker="25" kind="footnote">
+      </footnote>
+      <footnote eId="note_26" marker="25" kind="footnote">
          <p>
             <t v="Case T-123/09 Ryanair v Commission, ECLI:EU:T:2012:164, paragraph 156."/>
          </p>
-      </note>
-      <note eId="note_27" marker="26" kind="footnote">
+      </footnote>
+      <footnote eId="note_27" marker="26" kind="footnote">
          <p>
             <t v="See footnote 40."/>
          </p>
-      </note>
-      <note eId="note_28" marker="27" kind="footnote">
+      </footnote>
+      <footnote eId="note_28" marker="27" kind="footnote">
          <p>
             <quote startQuote="‘" endQuote="’">
                <t v="continuation of the objective to safeguard the jobs of all SEAH personnel."/>
@@ -6569,8 +6569,8 @@
             </date>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_29" marker="28" kind="footnote">
+      </footnote>
+      <footnote eId="note_29" marker="28" kind="footnote">
          <p>
             <quote startQuote="‘" endQuote="’">
                <t v="Recourse to all mechanisms made available by the relevant legislation governing employment and collective bargaining (primarily, social safety nets and voluntary redundancies, also to be implemented within the SEA Group, seamlessly with regard to the upcoming deadline of "/>
@@ -6584,23 +6584,23 @@
                <t v="Ibid."/>
             </emphasis>
          </p>
-      </note>
-      <note eId="note_30" marker="29" kind="footnote">
+      </footnote>
+      <footnote eId="note_30" marker="29" kind="footnote">
          <p>
             <t v="[…] (*)."/>
          </p>
-      </note>
-      <note eId="note_31" marker="30" kind="footnote">
+      </footnote>
+      <footnote eId="note_31" marker="30" kind="footnote">
          <p>
             <t v="The Commission notes that according to statements and complete inventories provided by Airport Handling, the greater part of SEAH’s assets was aged, repair intensive and fully written off."/>
          </p>
-      </note>
-      <note eId="note_32" marker="31" kind="footnote">
+      </footnote>
+      <footnote eId="note_32" marker="31" kind="footnote">
          <p>
             <t v="According to the abovementioned Brattle report on Airport Handling’s business plan, the company’s labour costs were […] (*)."/>
          </p>
-      </note>
-      <note eId="note_33" marker="32" kind="footnote">
+      </footnote>
+      <footnote eId="note_33" marker="32" kind="footnote">
          <p>
             <t v="Case C-277/00 Germany v Commission ("/>
             <quote startQuote="‘" endQuote="’">
@@ -6608,8 +6608,8 @@
             </quote>
             <t v="), ECLI:EU:C:2004:238, paragraph 93."/>
          </p>
-      </note>
-      <note eId="note_34" marker="33" kind="footnote">
+      </footnote>
+      <footnote eId="note_34" marker="33" kind="footnote">
          <p>
             <t v="Case C-277/00 Germany v Commission ("/>
             <quote startQuote="‘" endQuote="’">
@@ -6617,23 +6617,23 @@
             </quote>
             <t v="), ECLI:EU:C:2004:238, paragraph 88."/>
          </p>
-      </note>
-      <note eId="note_35" marker="34" kind="footnote">
+      </footnote>
+      <footnote eId="note_35" marker="34" kind="footnote">
          <p>
             <t v="Recital 16 of the opening decision."/>
          </p>
-      </note>
-      <note eId="note_36" marker="35" kind="footnote">
+      </footnote>
+      <footnote eId="note_36" marker="35" kind="footnote">
          <p>
             <t v="Dates of signature of contract according to a list provided by Italy: e.g. […] (*)."/>
          </p>
-      </note>
-      <note eId="note_37" marker="36" kind="footnote">
+      </footnote>
+      <footnote eId="note_37" marker="36" kind="footnote">
          <p>
             <t v="Case T-123/09 Ryanair v Commission, ECLI:EU:T:2012:164, paragraph 156."/>
          </p>
-      </note>
-      <note eId="note_38" marker="37" kind="footnote">
+      </footnote>
+      <footnote eId="note_38" marker="37" kind="footnote">
          <p>
             <t v="Case C-277/00 Germany v Commission ("/>
             <quote startQuote="‘" endQuote="’">
@@ -6641,20 +6641,20 @@
             </quote>
             <t v="), ECLI:EU:C:2004:238, paragraphs 86-89."/>
          </p>
-      </note>
-      <note eId="note_39" marker="38" kind="footnote">
+      </footnote>
+      <footnote eId="note_39" marker="38" kind="footnote">
          <p>
             <t v="Case C-482/99 France v Commission, cited, paragraph 71."/>
          </p>
-      </note>
-      <note eId="note_40" marker="39" kind="footnote">
+      </footnote>
+      <footnote eId="note_40" marker="39" kind="footnote">
          <p>
             <t v="Case "/>
             <t v="T-16/96 Cityflyer Express v Commission [1998] ECR II-757, paragraph 76"/>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_41" marker="40" kind="footnote">
+      </footnote>
+      <footnote eId="note_41" marker="40" kind="footnote">
          <p>
             <t v="Annex to the Impact Assessment, Accompanying the document "/>
             <quote startQuote="‘" endQuote="’">
@@ -6669,22 +6669,22 @@
                <t v="The liberalisation of groundhandling services and the end of monopolies or (airport/hub carrier) duopolies at airports have meant that groundhandling providers have had to adapt in order to become more competitive and have had to deal with tougher competition. The most visible consequence for groundhandling workers was the increase in work productivity and flexibility. Groundhandling providers often explain that this increase in work productivity is imperative as staff costs amount to 65-80 % of their total costs, while workers’ associations usually claim that groundhandling companies focus too much on the work factor to reduce costs."/>
             </quote>
          </p>
-      </note>
-      <note eId="note_42" marker="41" kind="footnote">
+      </footnote>
+      <footnote eId="note_42" marker="41" kind="footnote">
          <p>
             <t v="According to the Brattle report paragraph 48, p. 11."/>
          </p>
-      </note>
-      <note eId="note_43" marker="42" kind="footnote">
+      </footnote>
+      <footnote eId="note_43" marker="42" kind="footnote">
          <p>
             <t v="Brattle report paragraph 40, p. 9"/>
          </p>
-      </note>
-      <note eId="note_44" marker="43" kind="footnote">
+      </footnote>
+      <footnote eId="note_44" marker="43" kind="footnote">
          <p>
             <t v="This WACC is according to the Brattle report higher, because it takes into account project specific risks through an increase in the equity beta."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

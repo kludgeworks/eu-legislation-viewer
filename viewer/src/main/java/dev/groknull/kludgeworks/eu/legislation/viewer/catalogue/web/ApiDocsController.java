@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 /**
  * The documentation of the API for people, on one page, {@code /api/docs}: how the API answers,
- * each resource with its members and links, and each problem type. Each module gives its part
+ * each resource with its members and links, and each problem type. Each module gives its section
  * ({@link ApiDocs}).
  *
  * <ul>
@@ -40,13 +40,16 @@ class ApiDocsController {
   /** Returns the page. */
   @GetMapping(path = DOCS, produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> docs(HttpServletRequest request) {
-    var parts = docs.read();
+    var sections = docs.read();
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
             templates
                 .catalogueApi(
-                    Frame.of(request), parts.resources(), parts.examples(), parts.problems())
+                    Frame.of(request),
+                    sections.resources(),
+                    sections.examples(),
+                    sections.problems())
                 .render());
   }
 }

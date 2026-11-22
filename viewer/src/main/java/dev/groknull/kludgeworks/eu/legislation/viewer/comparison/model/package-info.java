@@ -8,8 +8,8 @@
  *       each occurrence.
  *   <li>{@link Pairing} tells which occurrence of the later text is which occurrence of the earlier
  *       text.
- *   <li>{@link Parts} tells which parts of an occurrence or a table differ, and {@link Likeness}
- *       which of them are one part, changed.
+ *   <li>{@link Pieces} tells which pieces of an occurrence or a table differ, and {@link Likeness}
+ *       which of them are one piece, changed.
  *   <li>{@link Edits} shows the edits of the words that differ.
  *   <li>{@link Tags} tells which acts put an occurrence in its form.
  *   <li>{@link Differ} finds the differences, by occurrence, then by block, then by word, and sets

@@ -97,7 +97,7 @@ class ApiComparisonControllerTests {
             new PublicText.Edited(
                 "",
                 "Screening.",
-                List.of(new PublicText.Change(PublicText.Change.Op.INSERT, "Screening."))));
+                List.of(new PublicText.Run(PublicText.Run.Op.INSERT, "Screening."))));
     var difference = difference();
     when(comparisons.between(EARLIER, LATER))
         .thenReturn(
@@ -175,7 +175,7 @@ class ApiComparisonControllerTests {
 
     assertThat(difference.at("/eId").asString()).isEqualTo("anx/pnt_1.2");
     assertThat(difference.at("/after").asString()).isEqualTo("Screening.");
-    assertThat(difference.at("/changes/0/op").asString()).isEqualTo("insert");
+    assertThat(difference.at("/runs/0/op").asString()).isEqualTo("insert");
     assertThat(difference.at("/shown/content/0/html").asString())
         .isEqualTo("<ins>Screening.</ins>");
     assertThat(difference.at("/_links/up/href").asString())

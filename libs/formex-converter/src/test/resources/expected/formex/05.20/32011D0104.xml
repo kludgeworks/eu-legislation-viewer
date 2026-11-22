@@ -61,7 +61,7 @@
                   <t v="21 June 2005"/>
                </date>
                <t v=" on the financing of the common agricultural policy"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 30 and Article 32(8) thereof,"/>
             </p>
          </occurrence>
@@ -83,9 +83,9 @@
             </num>
             <p>
                <t v="Commission Decisions 2009/367/EC"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" and 2010/56/EU"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" cleared, for the 2008 financial year, the accounts of all the paying agencies except for the Italian paying agency "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="ARBEA"/>
@@ -119,7 +119,7 @@
                   <t v="21 June 2006"/>
                </date>
                <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1290/2005 as regards the accreditation of paying agencies and other bodies and the clearance of the accounts of the EAGF and of the EAFRD"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=" lays down that the amounts that are recoverable from, or payable to, each Member State, in accordance with the accounts clearance decision referred to in the first subparagraph of Article 10(1) of the said Regulation, shall be determined by deducting the monthly payments in respect of the financial year in question, i.e. 2008, from expenditure recognised for that year in accordance with paragraph 1. The Commission shall deduct that amount from, or add it to, the monthly payment relating to the expenditure effected in the second month following that in which the accounts clearance decision is taken."/>
             </p>
          </occurrence>
@@ -220,8 +220,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -232,8 +232,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -244,16 +244,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="32" date="2010-02-04" page="6">
                <t v="OJ L 32, 4.2.2010, p. 6"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -264,8 +264,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -320,7 +320,7 @@
                   <td rowspan="3" header="true">
                      <p>
                         <t v="Reductions and suspensions for the whole financial year"/>
-                        <noteRef href="#note_anx01003101-1" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-1" marker="1"/>
                      </p>
                   </td>
                   <td rowspan="3" header="true">
@@ -341,7 +341,7 @@
                   <td rowspan="3" header="true">
                      <p>
                         <t v="Amount to be recovered from (–) or paid to (+) the Member State"/>
-                        <noteRef href="#note_anx01003101-2" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-2" marker="1"/>
                      </p>
                   </td>
                   <td rowspan="3" header="true">
@@ -357,7 +357,7 @@
                   <td rowspan="3" header="true">
                      <p>
                         <t v="Amount to be recovered from (–) or paid to (+) the Member State"/>
-                        <noteRef href="#note_anx01003101-2" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-2" marker="1"/>
                      </p>
                   </td>
                </tr>
@@ -523,13 +523,13 @@
                   <td rowspan="2" header="true">
                      <p>
                         <t v="Expenditure"/>
-                        <noteRef href="#note_anx01003101-3" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-3" marker="1"/>
                      </p>
                   </td>
                   <td rowspan="2" header="true">
                      <p>
                         <t v="Assigned revenue"/>
-                        <noteRef href="#note_anx01003101-3" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-3" marker="1"/>
                      </p>
                   </td>
                   <td colspan="2" header="true">
@@ -552,13 +552,13 @@
                   <td header="true">
                      <p>
                         <t v="Expenditure"/>
-                        <noteRef href="#note_anx01003101-4" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-4" marker="1"/>
                      </p>
                   </td>
                   <td header="true">
                      <p>
                         <t v="Assigned revenue"/>
-                        <noteRef href="#note_anx01003101-4" marker="1"/>
+                        <footnoteRef href="#note_anx01003101-4" marker="1"/>
                      </p>
                   </td>
                </tr>
@@ -665,31 +665,31 @@
                </tr>
             </table>
          </tableGroup>
-         <notes>
-            <note eId="note_anx01003101-1" marker="1" kind="table">
+         <footnotes>
+            <footnote eId="note_anx01003101-1" marker="1" kind="table">
                <p>
                   <t v="The reductions and suspensions are those taken into account in the payment system, to which are added in particular the corrections for the non respect of payment deadlines established in August, September and October 2008."/>
                </p>
-            </note>
-            <note eId="note_anx01003101-2" marker="1" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003101-2" marker="1" kind="table">
                <p>
                   <t v="For the calculation of the amount to be recovered from or paid to the Member State the amount taken into account is, the total of the annual declaration for the expenditure cleared (column a) or, the total of the monthly declarations for the expenditure disjoined (column b)."/>
                </p>
                <p>
                   <t v="Applicable exchange rate: Article 7(2) of the Commission Regulation (EC) No 883/2006."/>
                </p>
-            </note>
-            <note eId="note_anx01003101-3" marker="1" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003101-3" marker="1" kind="table">
                <p>
                   <t v="If the Assigned revenue part would be in advantage of Member State, it has to be declared under 05 07 01 06."/>
                </p>
-            </note>
-            <note eId="note_anx01003101-4" marker="1" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003101-4" marker="1" kind="table">
                <p>
                   <t v="If the Assigned revenue part of the Sugar Fund, would be in the advantage of the Member State, it has to be declared under 05 02 16 02."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
    </annexes>
 </legalText>

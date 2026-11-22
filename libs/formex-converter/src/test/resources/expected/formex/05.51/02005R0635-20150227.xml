@@ -85,7 +85,7 @@
                   <t v="23 July 1987"/>
                </date>
                <t v=" on the tariff and statistical nomenclature and on the Common Customs Tariff"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(1)(a) thereof,"/>
             </p>
          </occurrence>
@@ -130,7 +130,7 @@
                   <t v="12 October 1992"/>
                </date>
                <t v=" establishing the Community Customs Code"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -244,7 +244,7 @@
                      </p>
                      <p>
                         <t v="(See photograph)"/>
-                        <noteRef href="#note_3" marker="1"/>
+                        <footnoteRef href="#note_3" marker="1"/>
                      </p>
                   </occurrence>
                </td>
@@ -409,25 +409,25 @@
                   </p>
                </td>
             </tr>
-            <notes>
+            <footnotes>
                <deleted>
                   <tag amendingAct="32015R0183"
                        action="deleted"
                        location="AR:1"
                        tagId="O001001M002000"/>
-                  <note eId="note_3" marker="1" kind="table">
+                  <footnote eId="note_3" marker="1" kind="table">
                      <p>
                         <t v="The photograph is purely for information."/>
                      </p>
-                  </note>
+                  </footnote>
                </deleted>
-            </notes>
+            </footnotes>
          </table>
          <figure src="L_2005106EN.01001201.tif" content="other"/>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -442,8 +442,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -454,7 +454,7 @@
             </ref>
             <t v=". Regulation as last amended by the 2003 Act of Accession."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

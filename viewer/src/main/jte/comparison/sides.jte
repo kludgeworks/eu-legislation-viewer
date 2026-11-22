@@ -1,8 +1,8 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @import java.util.List
-@param List<ChangesView.Shown> shown
+@param List<DifferencesView.Shown> shown
 @param LegalRenderer html
 @param ComparePage page
 @param String from

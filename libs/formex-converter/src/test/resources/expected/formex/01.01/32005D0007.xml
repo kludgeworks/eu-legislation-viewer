@@ -61,7 +61,7 @@
                   <t v="13 November 1984"/>
                </date>
                <t v=" determining the Community scale for grading pig carcases"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 5(2) thereof,"/>
             </p>
          </occurrence>
@@ -82,7 +82,7 @@
                   <t v="24 October 1985"/>
                </date>
                <t v=" laying down detailed rules for the application of the Community scale for grading pig carcases"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -207,8 +207,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -227,8 +227,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -247,8 +247,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

@@ -8,10 +8,10 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Differ;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Fold;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Lead;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Passage;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView.Shown;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView.Fold;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView.Lead;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView.Passage;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView.Shown;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.TextId;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
@@ -22,19 +22,19 @@ import java.util.List;
 import org.junit.jupiter.api.Test;
 
 /**
- * Tests how the Changes view of {@link ChangesView} shows the comparison of the consolidations of
- * 2015/1998 of 22 March and 1 October 2026. The differences are the points (c), (e) and (g) of
- * 8.1.2.3 and of 9.1.2.3, changed by 2026/449. The labels of the folds use the nums as the
- * converter writes them.
+ * Tests how the Differences view of {@link DifferencesView} shows the comparison of the
+ * consolidations of 2015/1998 of 22 March and 1 October 2026. The differences are the points (c),
+ * (e) and (g) of 8.1.2.3 and of 9.1.2.3, changed by 2026/449. The labels of the folds use the nums
+ * as the converter writes them.
  */
-class ChangesViewTest {
-  static final ChangesView MARCH_TO_OCTOBER =
-      ChangesView.of(comparison("02015R1998-20260322", "02015R1998-20261001"));
+class DifferencesViewTest {
+  static final DifferencesView MARCH_TO_OCTOBER =
+      DifferencesView.of(comparison("02015R1998-20260322", "02015R1998-20261001"));
 
   @Test
   void leadsEachOccurrencesDifferencesOnceWithEveryOtherOccurrenceFolded() {
     assertThat(MARCH_TO_OCTOBER.passages())
-        .extracting(ChangesViewTest::passage)
+        .extracting(DifferencesViewTest::passage)
         .containsExactly(
             "Articles 1 to 3",
             "lead",
@@ -70,11 +70,11 @@ class ChangesViewTest {
   }
 
   @Test
-  void notesWhatHappenedToEachDifference() {
+  void labelsWhatHappenedToEachDifference() {
     assertThat(MARCH_TO_OCTOBER.passages())
         .filteredOn(Shown.class::isInstance)
         .map(Shown.class::cast)
-        .extracting(Shown::note)
+        .extracting(Shown::label)
         .containsExactly("Amended", "Amended", "Amended", "Amended", "Amended", "Amended");
   }
 
@@ -94,13 +94,13 @@ class ChangesViewTest {
   @Test
   void foldsTheDifferencesAnActFilterLeavesOutWithTheOccurrencesAroundThem() {
     var only9 =
-        ChangesView.of(
+        DifferencesView.of(
             comparison("02015R1998-20260322", "02015R1998-20261001"),
             difference -> difference.eId().startsWith("anx/pnt_9."),
             "not changed by 2026/449");
 
     assertThat(only9.passages())
-        .extracting(ChangesViewTest::passage)
+        .extracting(DifferencesViewTest::passage)
         .containsExactly(
             "Articles 1 to 3",
             "lead",
@@ -116,7 +116,7 @@ class ChangesViewTest {
     assertThat(only9.passages())
         .filteredOn(Fold.class::isInstance)
         .map(Fold.class::cast)
-        .extracting(Fold::note, Fold::same)
+        .extracting(Fold::reason, Fold::same)
         .containsExactly(
             tuple("no differences", true),
             tuple("not changed by 2026/449", false),
@@ -136,19 +136,19 @@ class ChangesViewTest {
 
   @Test
   void namesAFoldByItsOccurrencesNums() {
-    assertThat(ChangesView.fold(siblings("article", "Article 2", "Article 3", "Article 4")))
+    assertThat(DifferencesView.fold(siblings("article", "Article 2", "Article 3", "Article 4")))
         .isEqualTo("Articles 2 to 4");
-    assertThat(ChangesView.fold(siblings("annex", "ANNEX I", "ANNEX II")))
+    assertThat(DifferencesView.fold(siblings("annex", "ANNEX I", "ANNEX II")))
         .isEqualTo("ANNEXES I and II");
-    assertThat(ChangesView.fold(siblings("division", "CHAPTER II"))).isEqualTo("CHAPTER II");
-    assertThat(ChangesView.fold(siblings("paragraph", "2.", "3.")))
+    assertThat(DifferencesView.fold(siblings("division", "CHAPTER II"))).isEqualTo("CHAPTER II");
+    assertThat(DifferencesView.fold(siblings("paragraph", "2.", "3.")))
         .isEqualTo("Paragraphs 2. and 3.");
-    assertThat(ChangesView.fold(siblings("recital", "(1)", "(2)", "(3)")))
+    assertThat(DifferencesView.fold(siblings("recital", "(1)", "(2)", "(3)")))
         .isEqualTo("Recitals (1) to (3)");
-    assertThat(ChangesView.fold(siblings("indent", "—", "—"))).isEqualTo("2 indents");
-    assertThat(ChangesView.fold(siblings("subparagraph", ""))).isEqualTo("1 subparagraph");
+    assertThat(DifferencesView.fold(siblings("indent", "—", "—"))).isEqualTo("2 indents");
+    assertThat(DifferencesView.fold(siblings("subparagraph", ""))).isEqualTo("1 subparagraph");
     assertThat(
-            ChangesView.fold(
+            DifferencesView.fold(
                 List.of(
                     new Sibling("anx/pnt_1", "point", "1."),
                     new Sibling("anx/lvl_1", "level", ""),
@@ -159,14 +159,14 @@ class ChangesViewTest {
   @Test
   void namesAFoldAcrossOccurrencesByItsFirstAndLastNumsCitingAPointsWithItsPoint() {
     assertThat(
-            ChangesView.span(
+            DifferencesView.span(
                 List.of(
                     new Sibling("anx/pnt_11.1.3", "point", "11.1.3"),
                     new Sibling("anx/pnt_11.2.7", "point", "11.2.7"),
                     new Sibling("anx/pnt_11.2.7/pnt_a", "point", "(a)"),
                     new Sibling("anx/pnt_11.2.7/pnt_b", "point", "(b)"))))
         .isEqualTo("Points 11.1.3 to 11.2.7(b) (4 provisions)");
-    assertThat(ChangesView.span(siblings("indent", "—", "—"))).isEqualTo("2 provisions");
+    assertThat(DifferencesView.span(siblings("indent", "—", "—"))).isEqualTo("2 provisions");
   }
 
   @Test
@@ -175,11 +175,11 @@ class ChangesViewTest {
     var point = new Sibling("anx/pnt_6.1.2", "level", "6.1.2");
     var nameless = new Sibling("anx/level_ATTACHMENT-1-A/level_1", "level", "");
 
-    assertThat(ChangesView.fold(List.of(attachment, point)))
+    assertThat(DifferencesView.fold(List.of(attachment, point)))
         .isEqualTo("Attachment 1-A to point 6.1.2");
-    assertThat(ChangesView.fold(List.of(point, attachment)))
+    assertThat(DifferencesView.fold(List.of(point, attachment)))
         .isEqualTo("Point 6.1.2 to attachment 1-A");
-    assertThat(ChangesView.span(List.of(attachment, nameless, point)))
+    assertThat(DifferencesView.span(List.of(attachment, nameless, point)))
         .isEqualTo("Attachment 1-A to point 6.1.2 (3 provisions)");
   }
 
@@ -190,7 +190,8 @@ class ChangesViewTest {
         new Comparison(
             compared.from(), compared.to(), compared.differences(), compared.closing(), Side.LATER);
 
-    assertThat(ChangesView.of(without).passages()).isEqualTo(ChangesView.of(compared).passages());
+    assertThat(DifferencesView.of(without).passages())
+        .isEqualTo(DifferencesView.of(compared).passages());
   }
 
   private static String passage(Passage passage) {
@@ -221,17 +222,17 @@ class ChangesViewTest {
 
   @Test
   void headsTheChangesThatOneOfTwoOrMoreActsMade() {
-    assertThat(ChangesView.either(List.of("2019/413"))).isEqualTo("By this act or by 2019/413");
-    assertThat(ChangesView.either(List.of("2019/413", "2021/255")))
+    assertThat(DifferencesView.either(List.of("2019/413"))).isEqualTo("By this act or by 2019/413");
+    assertThat(DifferencesView.either(List.of("2019/413", "2021/255")))
         .isEqualTo("By this act, by 2019/413 or by 2021/255");
   }
 
   @Test
   void namesAnOccurrenceWithNoNumByTheNearestNumberedOccurrenceThatItIsIn() {
-    assertThat(ChangesView.within("anx/level_ATTACHMENT-3-B/level_1/level_1"))
+    assertThat(DifferencesView.within("anx/level_ATTACHMENT-3-B/level_1/level_1"))
         .isEqualTo("In Attachment 3-B");
-    assertThat(ChangesView.within("art_5/unp_1")).isEqualTo("In Article 5");
-    assertThat(ChangesView.within("anx/level_2")).isEqualTo("In the annex");
-    assertThat(ChangesView.within("pbl")).isEqualTo("A provision with no number");
+    assertThat(DifferencesView.within("art_5/unp_1")).isEqualTo("In Article 5");
+    assertThat(DifferencesView.within("anx/level_2")).isEqualTo("In the annex");
+    assertThat(DifferencesView.within("pbl")).isEqualTo("A provision with no number");
   }
 }

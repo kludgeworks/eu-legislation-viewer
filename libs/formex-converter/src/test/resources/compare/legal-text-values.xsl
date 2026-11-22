@@ -3,7 +3,7 @@
 <!--
   The text of a legal text as a list of values, the counterpart of formex-values.xsl: each t (a
   date's wording among them), and each formula as its letters and digits. Values the converter makes up
-  (a quotation mark whose partner sits in another element, a note marker) come out as extra values,
+  (a quotation mark whose partner sits in another element, a footnote marker) come out as extra values,
   which the check allows; only values missing from this list are losses.
 -->
 <xsl:stylesheet version="3.0"

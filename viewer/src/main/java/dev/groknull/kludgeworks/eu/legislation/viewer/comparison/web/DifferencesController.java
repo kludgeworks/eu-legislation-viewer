@@ -19,13 +19,13 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.NeighbourView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.RowFoldLinks;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenotePieces;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Content;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
@@ -66,14 +66,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Serves the parts of the compare page that come from the comparison of two versions of an act.
+ * Serves the fragments of the compare page that come from the comparison of two versions of an act.
  *
  * <p>The compare page is the catalogue's, at {@link ComparePage#PATH}. It has slots that htmx fills
  * from the addresses here, each the page's address with a segment added and the page's query, as
  * the catalogue's {@link ComparePage} writes them:
  *
  * <ul>
- *   <li>{@code /changes}: the changes, in the view that {@code view} asks for
+ *   <li>{@code /differences}: the differences, in the view that {@code view} asks for
  *   <li>{@code /acts}: the acts between the two versions, as chips with how many differences each
  *       made
  *   <li>{@code /same}: the occurrences of a fold of the Synopsis, which the Synopsis loads itself
@@ -82,16 +82,16 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *       rows.
  * </ul>
  *
- * <p>The parts answer only the canonical address of a comparison, as the page links to it: the
+ * <p>The fragments answer only the canonical address of a comparison, as the page links to it: the
  * first days of two versions in the language, the earlier first, and an act between them, if any.
- * Anything else is 404: the page redirects to the canonical address before it loads its parts.
+ * Anything else is 404: the page redirects to the canonical address before it loads its fragments.
  *
  * <p>The comparison module compares the texts by their identities. Each difference has a sidenote.
  * The sidenote gets the acts that made the difference from the facts of the act.
  */
 @Controller
-class ChangesController {
-  private static final Logger LOG = LoggerFactory.getLogger(ChangesController.class);
+class DifferencesController {
+  private static final Logger LOG = LoggerFactory.getLogger(DifferencesController.class);
 
   /** The rows of a fold, as its address gives them. For example, {@code 10-40}. */
   private static final Pattern ROWS = Pattern.compile("(\\d{1,9})-(\\d{1,9})");
@@ -113,7 +113,7 @@ class ChangesController {
   private final Release release;
   private final Clock clock;
 
-  ChangesController(
+  DifferencesController(
       Acts acts,
       Texts texts,
       Comparisons comparisons,
@@ -133,13 +133,13 @@ class ChangesController {
   }
 
   /**
-   * Returns the changes of the comparison, in the view that {@code view} asks for. The compare page
-   * loads them when both texts are built.
+   * Returns the differences of the comparison, in the view that {@code view} asks for. The compare
+   * page loads them when both texts are built.
    *
    * <p>The comparison module supplies the comparison. If no one asked for it before, the module
-   * computes it now. The outline of the later text shows beside the changes. Each difference has a
-   * sidenote. The sidenote comes from the tags and from the amendments that Cellar records for the
-   * occurrence, {@link Act#amended}.
+   * computes it now. The outline of the later text shows beside the differences. Each difference
+   * has a sidenote. The sidenote comes from the tags and from the amendments that Cellar records
+   * for the occurrence, {@link Act#amended}.
    *
    * <p>If the comparison is limited to the changes of one act, it compares the version that
    * integrates that act with the version before it. That is the wording just before the change
@@ -154,16 +154,16 @@ class ChangesController {
    * <p>Returns 404 if the address is not the canonical address of a comparison, if the view does
    * not exist, or if the texts are not built yet.
    */
-  @GetMapping(path = ComparePage.CHANGES_PATH, produces = MediaType.TEXT_HTML_VALUE)
+  @GetMapping(path = ComparePage.DIFFERENCES_PATH, produces = MediaType.TEXT_HTML_VALUE)
   @ResponseBody
-  String changes(
+  String differences(
       @PathVariable String type,
       @PathVariable int year,
       @PathVariable String number,
       @PathVariable("language") String code,
       @RequestParam(ComparePage.FROM) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate from,
       @RequestParam(ComparePage.TO) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate to,
-      @RequestParam(name = ComparePage.VIEW, defaultValue = "changes") String shown,
+      @RequestParam(name = ComparePage.VIEW, defaultValue = "differences") String viewCode,
       @RequestParam(name = ComparePage.FROM_DAY, required = false)
           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate fromDay,
@@ -171,10 +171,10 @@ class ChangesController {
           @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
           @Nullable LocalDate toDay,
       HttpServletRequest request) {
-    var view = view(shown);
+    var view = view(viewCode);
     var ends = ends(new Eli(type, year, number), code, from, to, null);
     var page =
-        ComparePage.ofPart(request.getRequestURI(), from, to, null, view.parameter())
+        ComparePage.ofFragment(request.getRequestURI(), from, to, null, view.parameter())
             .on(fromDay, toDay);
     var started = System.nanoTime();
     var preparation = ends.preparation;
@@ -183,29 +183,29 @@ class ChangesController {
     var attributed =
         attributed(ends, preparation, earlier, later, null, page.later(), new HashMap<>())
             .orElseThrow(Requests::notFound);
-    var changes = ChangesView.of(attributed.comparison());
+    var differences = DifferencesView.of(attributed.comparison());
     var sidenotes = new HashMap<Integer, SidenoteView>();
-    var differences = new ArrayList<ChangesView.Shown>();
-    for (var passage : changes.passages()) {
-      if (passage instanceof ChangesView.Shown each) {
+    var shown = new ArrayList<DifferencesView.Shown>();
+    for (var passage : differences.passages()) {
+      if (passage instanceof DifferencesView.Shown each) {
         sidenotes.put(each.number(), attributed.sidenote(each.difference()));
-        differences.add(each);
+        shown.add(each);
       }
     }
-    var parts = SidenoteParts.of(sidenotes.values());
+    var pieces = SidenotePieces.of(sidenotes.values());
     var outline =
         OutlineView.of(
-            attributed.outline(), differences.stream().map(ChangesView.Shown::difference).toList());
+            attributed.outline(), shown.stream().map(DifferencesView.Shown::difference).toList());
     var views = ControlsView.views(page, view);
     var html =
         switch (view) {
-          case CHANGES ->
+          case DIFFERENCES ->
               templates
-                  .comparisonChanges(
-                      changes,
+                  .comparisonDifferences(
+                      differences,
                       outline,
                       sidenotes,
-                      parts,
+                      pieces,
                       this.html,
                       "/content/" + attributed.later() + "/occurrences",
                       page,
@@ -214,28 +214,28 @@ class ChangesController {
           case WHOLE ->
               templates
                   .comparisonWhole(
-                      changes,
+                      differences,
                       outline,
                       WholeText.of(
                           content.read(attributed.later()).orElseThrow(Requests::notFound),
                           attributed.earlier().eIds(),
-                          differences,
+                          shown,
                           this.html,
-                          each -> RowFoldLinks.of(each.difference().shown(), each.part(page)),
+                          each -> RowFoldLinks.of(each.difference().shown(), each.fragment(page)),
                           (each, occurrence) -> {
                             var sidenote = sidenotes.get(each.number());
                             return templates.comparisonDifference(
-                                each, sidenote, occurrence, page, parts);
+                                each, sidenote, occurrence, page, pieces);
                           }),
-                      parts,
+                      pieces,
                       views,
-                      ControlsView.legend(changes, sidenotes))
+                      ControlsView.legend(differences, sidenotes))
                   .render();
           case SYNOPSIS -> {
             // Show the neighbours of the differences. Each neighbour shows what last changed it.
             var same = new HashSet<String>();
-            for (var passage : changes.passages()) {
-              if (passage instanceof ChangesView.Fold fold && fold.same()) {
+            for (var passage : differences.passages()) {
+              if (passage instanceof DifferencesView.Fold fold && fold.same()) {
                 fold.beside().forEach(occurrence -> same.add(occurrence.eId()));
               }
             }
@@ -255,10 +255,10 @@ class ChangesController {
             }
             yield templates
                 .comparisonSynopsis(
-                    changes,
+                    differences,
                     outline,
                     sidenotes,
-                    parts,
+                    pieces,
                     occurrences,
                     histories,
                     this.html,
@@ -278,7 +278,7 @@ class ChangesController {
         earlier.date(),
         later.date(),
         ends.language.code(),
-        differences.size(),
+        shown.size(),
         attributed.comparison().differences().size(),
         attributed.amended().placed(),
         attributed.amended().unplaced(),
@@ -400,7 +400,7 @@ class ChangesController {
    * asked for.
    *
    * <p>If the comparison is limited to the changes of one act, the difference is that of the act's
-   * own comparison, as for the changes.
+   * own comparison, as for the differences.
    *
    * <p>Returns 404 if the address is not the canonical address of a comparison, if the texts are
    * not built yet, if no difference is at {@code eId}, or if the rows are not in the table.
@@ -428,7 +428,7 @@ class ChangesController {
       HttpServletResponse response) {
     var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
-        ComparePage.ofPart(
+        ComparePage.ofFragment(
             request.getRequestURI(), from, to, ends.only == null ? null : ends.only.celex(), null);
     var started = System.nanoTime();
     var preparation = ends.preparation;
@@ -450,7 +450,7 @@ class ChangesController {
     var difference =
         comparisons.difference(pair.before(), pair.after(), eId).orElseThrow(Requests::notFound);
     if (table == null && rows == null) {
-      var html = render(new ChangesView.Shown(0, difference, "").folded(page));
+      var html = render(new DifferencesView.Shown(0, difference, "").folded(page));
       LOG.info(
           "Difference of {} from {} to {} in {}{} at {}, in {} ms",
           ends.act.id(),
@@ -521,7 +521,7 @@ class ChangesController {
       HttpServletResponse response) {
     var ends = ends(new Eli(type, year, number), code, from, to, act);
     var page =
-        ComparePage.ofPart(
+        ComparePage.ofFragment(
                 request.getRequestURI(),
                 from,
                 to,
@@ -556,7 +556,8 @@ class ChangesController {
               ? null
               : "The text tags these changes in this part of the annex with " + only.cited() + ".";
     }
-    var shown = found.stream().map(difference -> new ChangesView.Shown(0, difference, "")).toList();
+    var shown =
+        found.stream().map(difference -> new DifferencesView.Shown(0, difference, "")).toList();
     var rendered =
         sides
             ? templates
@@ -581,7 +582,7 @@ class ChangesController {
    * Returns the differences that the act {@code act} or another act of its version made, where the
    * data does not say which. These are the differences with no tag of an act, in a version that
    * integrates two acts or more. The page of an amending act shows them in a separate list, under
-   * "By this act or by …". If there are none, the part is empty.
+   * "By this act or by …". If there are none, the fragment is empty.
    *
    * <p>Returns 404 if the address is not the canonical address of a comparison that is limited to
    * one act, or if the texts are not built yet.
@@ -599,25 +600,32 @@ class ChangesController {
       HttpServletRequest request) {
     var ends = ends(new Eli(type, year, number), code, from, to, act);
     var only = Objects.requireNonNull(ends.only);
-    var page = ComparePage.ofPart(request.getRequestURI(), from, to, only.celex(), null);
+    var page = ComparePage.ofFragment(request.getRequestURI(), from, to, only.celex(), null);
     var started = System.nanoTime();
-    var step = ends.step(only).orElseThrow(Requests::notFound);
+    var including = ends.including(only).orElseThrow(Requests::notFound);
     var attributed =
-        attributed(ends, ends.preparation, ends.earlier(step), step, only, null, new HashMap<>())
+        attributed(
+                ends,
+                ends.preparation,
+                ends.earlier(including),
+                including,
+                only,
+                null,
+                new HashMap<>())
             .orElseThrow(Requests::notFound);
     var others = new LinkedHashSet<ActIdentifier>();
-    var shown = new ArrayList<ChangesView.Shown>();
+    var shown = new ArrayList<DifferencesView.Shown>();
     for (var difference : attributed.comparison().differences()) {
       var candidates = attributed.sidenote(difference).candidates();
       if (candidates.contains(only)) {
         candidates.stream().filter(each -> !each.equals(only)).forEach(others::add);
-        shown.add(new ChangesView.Shown(0, difference, ""));
+        shown.add(new DifferencesView.Shown(0, difference, ""));
       }
     }
     var rendered =
         templates
             .comparisonEither(
-                ChangesView.either(others.stream().map(ends.act::cited).toList()),
+                DifferencesView.either(others.stream().map(ends.act::cited).toList()),
                 shown,
                 shown.size() <= OPEN,
                 html,
@@ -626,8 +634,8 @@ class ChangesController {
     LOG.info(
         "Differences of {} from {} to {} in {} by {} or another act: {}, in {} ms",
         ends.act.id(),
-        ends.earlier(step).date(),
-        step.date(),
+        ends.earlier(including).date(),
+        including.date(),
         ends.language.code(),
         only,
         shown.size(),
@@ -637,15 +645,15 @@ class ChangesController {
 
   /** Returns the entry of the occurrence {@code eId} in {@code entries}, at any depth. */
   /**
-   * Returns the two texts of a part of the page of an amending act, or of a comparison: the text
-   * before {@code ends.only} and the first text with it, or the texts of the two ends. Throws 404
-   * if either text is not built.
+   * Returns the two texts of a fragment of the page of an amending act, or of a comparison: the
+   * text before {@code ends.only} and the first text with it, or the texts of the two ends. Throws
+   * 404 if either text is not built.
    */
   private static ReadyTexts ready(Ends ends, Preparation preparation) {
     var only = ends.only;
-    var step = only == null ? null : ends.step(only).orElseThrow(Requests::notFound);
-    var earlier = step == null ? ends.from : ends.earlier(step);
-    var later = step == null ? ends.to : step;
+    var including = only == null ? null : ends.including(only).orElseThrow(Requests::notFound);
+    var earlier = including == null ? ends.from : ends.earlier(including);
+    var later = including == null ? ends.to : including;
     if (!(preparation.texts().get(earlier) instanceof Text.Ready before)
         || !(preparation.texts().get(later) instanceof Text.Ready after)) {
       throw Requests.notFound();
@@ -654,7 +662,7 @@ class ChangesController {
   }
 
   /**
-   * Returns whether the browser has the part for {@code texts} already. Then the answer is "not
+   * Returns whether the browser has the fragment for {@code texts} already. Then the answer is "not
    * modified", with no body.
    */
   private boolean notModified(
@@ -667,7 +675,7 @@ class ChangesController {
   }
 
   /**
-   * The two built texts of a part.
+   * The two built texts of a fragment.
    *
    * @param earlier the version of the earlier text
    * @param later the version of the later text

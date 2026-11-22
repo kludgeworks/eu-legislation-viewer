@@ -12,7 +12,7 @@
   @if(!provision.lines().isEmpty())
     <ul>
       @for(var line : provision.lines())
-        <li class="${line.tone()}"><b>@if(line.href() != null)<a href="${line.href()}">${line.act()}</a>@else${line.act()}@endif</b> ${line.words()}@if(line.note() != null) ${line.note()}@endif@if(line.change() != null) <a href="${line.change()}">See this change</a>@endif</li>
+        <li class="${line.tone()}"><b>@if(line.href() != null)<a href="${line.href()}">${line.act()}</a>@else${line.act()}@endif</b> ${line.words()}@if(line.statement() != null) ${line.statement()}@endif@if(line.change() != null) <a href="${line.change()}">See this change</a>@endif</li>
       @endfor
     </ul>
   @endif

@@ -253,21 +253,21 @@ public record AmendingView(
   }
 
   /**
-   * Returns {@code changes} as runs: changes that follow each other and have the same note are one
-   * run. The order of the changes stays.
+   * Returns {@code changes} as runs: changes that follow each other and have the same statement are
+   * one run. The order of the changes stays.
    */
   private static List<Run> runs(List<Change> changes) {
     var runs = new ArrayList<Run>();
     for (var change : changes) {
       var last = runs.isEmpty() ? null : runs.getLast();
       if (last != null
-          && Objects.equals(last.note(), change.note())
+          && Objects.equals(last.statement(), change.statement())
           && Objects.equals(last.tone(), change.tone())) {
         var joined = new ArrayList<>(last.changes());
         joined.add(change);
-        runs.set(runs.size() - 1, new Run(last.note(), last.tone(), joined));
+        runs.set(runs.size() - 1, new Run(last.statement(), last.tone(), joined));
       } else {
-        runs.add(new Run(change.note(), change.tone(), List.of(change)));
+        runs.add(new Run(change.statement(), change.tone(), List.of(change)));
       }
     }
     return runs;
@@ -286,11 +286,11 @@ public record AmendingView(
     var days = Act.days(change);
     var state = act.stateOn(amending, days, day);
     var name = change.location().name();
-    var note = States.note(act, amending, days, day, past);
+    var statement = States.statement(act, amending, days, day, past);
     return new Change(
         name.isEmpty() ? change.location().code() : name,
         made(change.role()),
-        note,
+        statement,
         States.tone(state),
         anchor(change),
         compare == null || occurrences.isEmpty() ? null : compare.place(occurrences));
@@ -341,8 +341,8 @@ public record AmendingView(
    *
    * @param place the provision, for example "Article 3, point 8"
    * @param made what the act did to it, for example "Replaced"
-   * @param note its state on the day, with the date and the clause. Null where the data gives no
-   *     day for a change that applies.
+   * @param statement its state on the day, with the date and the clause. Null where the data gives
+   *     no day for a change that applies.
    * @param tone "warn" where the change does not apply on the day, "open" where Cellar does not
    *     tell, "off" where the act is not in force yet. Null where the change applies.
    * @param anchor the anchor of the change on the page, {@link #anchor}
@@ -353,7 +353,7 @@ public record AmendingView(
   public record Change(
       String place,
       String made,
-      @Nullable String note,
+      @Nullable String statement,
       @Nullable String tone,
       String anchor,
       @Nullable String wording) {}
@@ -376,11 +376,12 @@ public record AmendingView(
   /**
    * Changes that follow each other in the text and have the same state.
    *
-   * @param note their state on the day, with the date and the clause, said one time for the run
+   * @param statement their state on the day, with the date and the clause, said one time for the
+   *     run
    * @param tone as {@link Change#tone}
    * @param changes the changes, in the order of the text
    */
-  public record Run(@Nullable String note, @Nullable String tone, List<Change> changes) {
+  public record Run(@Nullable String statement, @Nullable String tone, List<Change> changes) {
     public Run {
       changes = List.copyOf(changes);
     }

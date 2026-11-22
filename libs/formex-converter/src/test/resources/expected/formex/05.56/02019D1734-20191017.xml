@@ -132,7 +132,7 @@
                   <t v="27 June 2012"/>
                </date>
                <t v=", the EU-Korea Committee on Trade and Sustainable Development adopted Decision No 2/2012"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" establishing a list of 18 experts that may serve as panellists."/>
             </p>
          </occurrence>
@@ -302,8 +302,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Decision No 2/2012 of the EU-Korea Committee on Trade and Sustainable Development of "/>
             <date date="2012-06-27">
@@ -319,7 +319,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

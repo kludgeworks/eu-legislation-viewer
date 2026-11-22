@@ -1223,7 +1223,7 @@
                      <t v="in vitro"/>
                   </emphasis>
                   <t v=" material and naturally or artificially dwarfed woody plants for planting, originating from all third countries"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=" and belonging to the following genera or species:"/>
                </p>
                <table cols="2">
@@ -2620,8 +2620,8 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="In accordance with the Agreement on the withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community, and in particular Article 5(4) of the Windsor Framework (See Joint Declaration No 1/2023 of the Union and the United Kingdom in the Joint Committee established by the Agreement on the withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community ("/>
             <ref kind="oj"
@@ -2633,7 +2633,7 @@
             </ref>
             <t v=")) in conjunction with Annex 2 to that Framework, for the purposes of this Regulation, references to the United Kingdom do not include Northern Ireland."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

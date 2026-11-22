@@ -9,12 +9,12 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.ApiSchemas;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
 import java.util.ArrayList;
@@ -55,7 +55,7 @@ class PublicTextsTest {
     var eIds = new ArrayList<String>();
     Stream.of(text.preamble(), text.body(), text.conclusions(), text.annexes())
         .forEach(part -> occurrences(part, eIds));
-    text.notes().forEach(note -> occurrences(note.content(), eIds));
+    text.footnotes().forEach(footnote -> occurrences(footnote.content(), eIds));
     assertThat(eIds).containsExactlyInAnyOrderElementsOf(occurrences(stored, new ArrayList<>()));
   }
 
@@ -67,11 +67,11 @@ class PublicTextsTest {
             <body><p>
               <t v="On "/><date date="2026-03-22"><t v="22 March 2026"/></date><t v=", "/>
               <emphasis kind="i"><t v="all"/></emphasis><t v=" "/>
-              <emphasis kind="uc"><t v="persons"/></emphasis><noteRef href="#note_1" marker="1"/>
+              <emphasis kind="uc"><t v="persons"/></emphasis><footnoteRef href="#note_1" marker="1"/>
               <t v=" &lt;"/><deleted amendingAct="32019R0103" action="deleted"><t v="old"/></deleted>
               <quote startQuote="‘" endQuote="’"><t v="x"/></quote><eol/><t v="end"/>
             </p></body>
-            <notes><note eId="note_1" marker="1"><p><t v="A note."/></p></note></notes>
+            <footnotes><footnote eId="note_1" marker="1"><p><t v="A footnote."/></p></footnote></footnotes>
             """);
 
     assertThat(text.body())
@@ -83,7 +83,10 @@ class PublicTextsTest {
                     + " class=\"uc\">persons</span><sup><a href=\"#note_1\">1</a></sup> &lt;<s"
                     + " data-act=\"32019R0103\" data-action=\"deleted\">old</s>‘x’<br>end",
                 List.of()));
-    assertThat(text.notes()).singleElement().extracting(PublicText.Note::eId).isEqualTo("note_1");
+    assertThat(text.footnotes())
+        .singleElement()
+        .extracting(PublicText.Footnote::eId)
+        .isEqualTo("note_1");
   }
 
   @Test
@@ -131,26 +134,26 @@ class PublicTextsTest {
   }
 
   @Test
-  void givesAnOccurrenceWithTheNotesThatItRefersTo() {
+  void givesAnOccurrenceWithTheFootnotesThatItRefersTo() {
     var stored =
         LegalTexts.element(
             LegalTexts.parse(
                 """
                 <legalText %s><body>
                   <occurrence eId="art_1" kind="article"><num><t v="Article 1"/></num>
-                    <p><t v="See"/><noteRef href="#note_2" marker="2"/></p></occurrence>
+                    <p><t v="See"/><footnoteRef href="#note_2" marker="2"/></p></occurrence>
                   <occurrence eId="art_2" kind="article"><p><t v="Other"/></p></occurrence>
-                </body><notes>
-                  <note eId="note_1" marker="1"><p><t v="One."/></p></note>
-                  <note eId="note_2" marker="2"><p><t v="Two."/></p></note>
-                </notes></legalText>
+                </body><footnotes>
+                  <footnote eId="note_1" marker="1"><p><t v="One."/></p></footnote>
+                  <footnote eId="note_2" marker="2"><p><t v="Two."/></p></footnote>
+                </footnotes></legalText>
                 """
                     .formatted(NS)));
 
     var extract = PublicTexts.extract(stored, "art_1").orElseThrow();
 
     assertThat(extract.occurrence().num()).isEqualTo("Article 1");
-    assertThat(extract.notes()).extracting(PublicText.Note::eId).containsExactly("note_2");
+    assertThat(extract.footnotes()).extracting(PublicText.Footnote::eId).containsExactly("note_2");
     assertThat(PublicTexts.extract(stored, "art_9")).isEmpty();
   }
 
@@ -187,7 +190,7 @@ class PublicTextsTest {
                     t("Fees of "),
                     element("diff:del", Map.of(), t("EUR 10")),
                     element("diff:ins", Map.of(), t("EUR 12")),
-                    element("noteRef", Map.of("href", "#note_1", "marker", "1"))),
+                    element("footnoteRef", Map.of("href", "#note_1", "marker", "1"))),
                 element(
                     "occurrence",
                     Map.of("eId", "art_1/pnt_a", "kind", "point"),
@@ -196,13 +199,13 @@ class PublicTextsTest {
 
     assertThat(edited.before()).isEqualTo("Fees of EUR 10\n(a)");
     assertThat(edited.after()).isEqualTo("Fees of EUR 12\n(a) new point");
-    assertThat(edited.changes())
+    assertThat(edited.runs())
         .containsExactly(
-            new Change(Op.EQUAL, "Fees of "),
-            new Change(Op.DELETE, "EUR 10"),
-            new Change(Op.INSERT, "EUR 12"),
-            new Change(Op.EQUAL, "\n(a) "),
-            new Change(Op.INSERT, "new point"));
+            new Run(Op.EQUAL, "Fees of "),
+            new Run(Op.DELETE, "EUR 10"),
+            new Run(Op.INSERT, "EUR 12"),
+            new Run(Op.EQUAL, "\n(a) "),
+            new Run(Op.INSERT, "new point"));
   }
 
   private static Element element(String name, Map<String, String> attributes, Element... children) {
@@ -231,7 +234,7 @@ class PublicTextsTest {
           table
               .rows()
               .forEach(row -> row.cells().forEach(cell -> occurrences(cell.content(), eIds)));
-          table.notes().forEach(note -> occurrences(note.content(), eIds));
+          table.footnotes().forEach(footnote -> occurrences(footnote.content(), eIds));
         }
         case Figure figure -> {
           occurrences(figure.caption(), eIds);

@@ -18,7 +18,7 @@
         <%-- Its summary is only the fold's button: a link in a summary is not reliable for the
              keyboard and for screen readers. --%>
         <details open="${entry.count() > 0}">
-          <summary><span class="visually-hidden">The parts of ${entry.label()}</span></summary>
+          <summary><span class="visually-hidden">The subdivisions of ${entry.label()}</span></summary>
           @template.comparison.outlinerows(entry = entry)
           @template.comparison.outline(entries = entry.entries())
         </details>

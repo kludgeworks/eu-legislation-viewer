@@ -35,7 +35,7 @@ import org.springframework.validation.annotation.Validated;
 @Configuration(proxyBeanMethods = false)
 @EnableConfigurationProperties(HtmlCacheConfiguration.HtmlCacheProperties.class)
 class HtmlCacheConfiguration {
-  /** The name of the cache. It is the first part of each key. */
+  /** The name of the cache. It is the first component of each key. */
   static final String CACHE = "html";
 
   @Bean

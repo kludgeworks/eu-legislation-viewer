@@ -57,7 +57,7 @@
                   </date>
                   <t v=" on the marketing of fodder plant seed"/>
                </emphasis>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Directive 66/401/EEC"/>
@@ -109,7 +109,7 @@
                   </date>
                   <t v=" amending Council Directive 66/401/EEC as regards the inclusion of new species and the botanical name of the species Lolium x boucheanum Kunth"/>
                </emphasis>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", referred to at point 2 of Part 1 of Chapter III of Annex I to the EEA Agreement, as these species are not normally reproduced or marketed in Norway."/>
             </p>
          </occurrence>
@@ -364,8 +364,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="P"
@@ -376,8 +376,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -388,7 +388,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

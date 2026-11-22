@@ -598,7 +598,7 @@
          </p>
          <p>
             <t v="HIS MAJESTY THE KING OF THE BELGIANS, THE PRESIDENT OF THE FEDERAL REPUBLIC OF GERMANY, THE PRESIDENT OF THE FRENCH REPUBLIC, THE PRESIDENT OF THE ITALIAN REPUBLIC, HER ROYAL HIGHNESS THE GRAND DUCHESS OF LUXEMBOURG, HER MAJESTY THE QUEEN OF THE NETHERLANDS,"/>
-            <noteRef href="#note_1" marker="1"/>
+            <footnoteRef href="#note_1" marker="1"/>
          </p>
       </formula>
       <p>
@@ -1060,7 +1060,7 @@
                </num>
                <heading>
                   <t v="(ex Article 3(2) TEC)"/>
-                  <noteRef href="#note_2" marker="2"/>
+                  <footnoteRef href="#note_2" marker="2"/>
                </heading>
                <p>
                   <t v="In all its activities, the Union shall aim to eliminate inequalities, and to promote equality, between men and women."/>
@@ -14944,7 +14944,7 @@
                            rank="4">
                   <num>
                      <t v="Article 23a"/>
-                     <noteRef href="#note_3" marker="*"/>
+                     <footnoteRef href="#note_3" marker="*"/>
                   </num>
                   <occurrence eId="pro_3/art_Article-23aArticle-inserted-by-Decision-200879EC-Euratom-OJ-L-24-29.1.2008-p.-42/unp_1"
                               kind="paragraph">
@@ -21305,7 +21305,7 @@
                   <emphasis kind="i">
                      <t v="acquis"/>
                   </emphasis>
-                  <noteRef href="#note_4" marker="3"/>
+                  <footnoteRef href="#note_4" marker="3"/>
                   <t v=". This cooperation shall be conducted within the institutional and legal framework of the European Union and with respect for the relevant provisions of the Treaties."/>
                </p>
             </occurrence>
@@ -21326,7 +21326,7 @@
                   <date date="2005-04-25">
                      <t v="25 April 2005"/>
                   </date>
-                  <noteRef href="#note_5" marker="4"/>
+                  <footnoteRef href="#note_5" marker="4"/>
                   <t v=". The Council will substitute itself for the Executive Committee established by the Schengen agreements."/>
                </p>
             </occurrence>
@@ -24985,7 +24985,7 @@
                      <td>
                         <p>
                            <t v="17.05"/>
-                           <noteRef href="#note_6" marker="1"/>
+                           <footnoteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td>
@@ -25080,11 +25080,11 @@
                      <td>
                         <p>
                            <t v="ex 22.08"/>
-                           <noteRef href="#note_6" marker="1"/>
+                           <footnoteRef href="#note_6" marker="1"/>
                         </p>
                         <p>
                            <t v="ex 22.09"/>
-                           <noteRef href="#note_6" marker="1"/>
+                           <footnoteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td>
@@ -25104,7 +25104,7 @@
                      <td>
                         <p>
                            <t v="22.10"/>
-                           <noteRef href="#note_6" marker="1"/>
+                           <footnoteRef href="#note_6" marker="1"/>
                         </p>
                      </td>
                      <td>
@@ -25194,8 +25194,8 @@
                      </td>
                   </tr>
                </rowGroup>
-               <notes>
-                  <note eId="note_6" marker="1" kind="table">
+               <footnotes>
+                  <footnote eId="note_6" marker="1" kind="table">
                      <p>
                         <t v="Entry added by Article 1 of Regulation No 7a of the Council of the European Economic Community of "/>
                         <date date="1959-12-18">
@@ -25207,8 +25207,8 @@
                         </ref>
                         <t v=")."/>
                      </p>
-                  </note>
-               </notes>
+                  </footnote>
+               </footnotes>
             </table>
          </occurrence>
          <occurrence eId="anx_II" kind="annex" eurlexAnchor="43" rank="2">
@@ -26019,7 +26019,7 @@
                         </date>
                         <t v=", Case 6/641"/>
                      </emphasis>
-                     <noteRef href="#note_7" marker="5"/>
+                     <footnoteRef href="#note_7" marker="5"/>
                      <t v=") "/>
                      <emphasis kind="i">
                         <t v="there was no mention of primacy in the treaty. It is still the case today. The fact that the principle of primacy will not be included in the future treaty shall not in any way change the existence of the principle and the existing case-law of the Court of Justice."/>
@@ -27036,7 +27036,7 @@
             <emphasis kind="uc">
                <t v="Tables of equivalences"/>
             </emphasis>
-            <noteRef href="#note_8" marker="*"/>
+            <footnoteRef href="#note_8" marker="*"/>
          </heading>
          <table cols="2">
             <caption>
@@ -27110,7 +27110,7 @@
                <td>
                   <p>
                      <t v="Article 3 (repealed)"/>
-                     <noteRef href="#note_9" marker="5"/>
+                     <footnoteRef href="#note_9" marker="5"/>
                   </p>
                </td>
                <td/>
@@ -27128,7 +27128,7 @@
                <td>
                   <p>
                      <t v="Article 5"/>
-                     <noteRef href="#note_10" marker="6"/>
+                     <footnoteRef href="#note_10" marker="6"/>
                   </p>
                </td>
             </tr>
@@ -27136,7 +27136,7 @@
                <td>
                   <p>
                      <t v="Article 4 (repealed)"/>
-                     <noteRef href="#note_11" marker="7"/>
+                     <footnoteRef href="#note_11" marker="7"/>
                   </p>
                </td>
                <td/>
@@ -27145,7 +27145,7 @@
                <td>
                   <p>
                      <t v="Article 5 (repealed)"/>
-                     <noteRef href="#note_12" marker="8"/>
+                     <footnoteRef href="#note_12" marker="8"/>
                   </p>
                </td>
                <td/>
@@ -27198,7 +27198,7 @@
                <td>
                   <p>
                      <t v="Article 8 (repealed)"/>
-                     <noteRef href="#note_13" marker="9"/>
+                     <footnoteRef href="#note_13" marker="9"/>
                   </p>
                </td>
                <td>
@@ -27212,7 +27212,7 @@
                <td>
                   <p>
                      <t v="Article 10"/>
-                     <noteRef href="#note_14" marker="10"/>
+                     <footnoteRef href="#note_14" marker="10"/>
                   </p>
                </td>
             </tr>
@@ -27253,7 +27253,7 @@
                <td>
                   <p>
                      <t v="Article 9 (repealed)"/>
-                     <noteRef href="#note_15" marker="11"/>
+                     <footnoteRef href="#note_15" marker="11"/>
                   </p>
                </td>
                <td>
@@ -27267,7 +27267,7 @@
                <td>
                   <p>
                      <t v="Article 14"/>
-                     <noteRef href="#note_16" marker="12"/>
+                     <footnoteRef href="#note_16" marker="12"/>
                   </p>
                </td>
             </tr>
@@ -27276,7 +27276,7 @@
                <td>
                   <p>
                      <t v="Article 15"/>
-                     <noteRef href="#note_17" marker="13"/>
+                     <footnoteRef href="#note_17" marker="13"/>
                   </p>
                </td>
             </tr>
@@ -27285,7 +27285,7 @@
                <td>
                   <p>
                      <t v="Article 16"/>
-                     <noteRef href="#note_18" marker="14"/>
+                     <footnoteRef href="#note_18" marker="14"/>
                   </p>
                </td>
             </tr>
@@ -27294,7 +27294,7 @@
                <td>
                   <p>
                      <t v="Article 17"/>
-                     <noteRef href="#note_19" marker="15"/>
+                     <footnoteRef href="#note_19" marker="15"/>
                   </p>
                </td>
             </tr>
@@ -27311,7 +27311,7 @@
                <td>
                   <p>
                      <t v="Article 19"/>
-                     <noteRef href="#note_20" marker="16"/>
+                     <footnoteRef href="#note_20" marker="16"/>
                   </p>
                </td>
             </tr>
@@ -27331,7 +27331,7 @@
                <td>
                   <p>
                      <t v="Article 10 (repealed)"/>
-                     <noteRef href="#note_21" marker="17"/>
+                     <footnoteRef href="#note_21" marker="17"/>
                   </p>
                   <p>
                      <t v="Articles 27a to 27e (replaced)"/>
@@ -27346,7 +27346,7 @@
                <td>
                   <p>
                      <t v="Article 20"/>
-                     <noteRef href="#note_22" marker="18"/>
+                     <footnoteRef href="#note_22" marker="18"/>
                   </p>
                </td>
             </tr>
@@ -27671,7 +27671,7 @@
                <td>
                   <p>
                      <t v="Article 27a (replaced)"/>
-                     <noteRef href="#note_23" marker="19"/>
+                     <footnoteRef href="#note_23" marker="19"/>
                   </p>
                </td>
                <td>
@@ -27684,7 +27684,7 @@
                <td>
                   <p>
                      <t v="Article 27b (replaced)"/>
-                     <noteRef href="#note_23" marker="19"/>
+                     <footnoteRef href="#note_23" marker="19"/>
                   </p>
                </td>
                <td>
@@ -27697,7 +27697,7 @@
                <td>
                   <p>
                      <t v="Article 27c (replaced)"/>
-                     <noteRef href="#note_23" marker="19"/>
+                     <footnoteRef href="#note_23" marker="19"/>
                   </p>
                </td>
                <td>
@@ -27710,7 +27710,7 @@
                <td>
                   <p>
                      <t v="Article 27d (replaced)"/>
-                     <noteRef href="#note_23" marker="19"/>
+                     <footnoteRef href="#note_23" marker="19"/>
                   </p>
                </td>
                <td>
@@ -27723,7 +27723,7 @@
                <td>
                   <p>
                      <t v="Article 27e (replaced)"/>
-                     <noteRef href="#note_23" marker="19"/>
+                     <footnoteRef href="#note_23" marker="19"/>
                   </p>
                </td>
                <td>
@@ -27800,7 +27800,7 @@
                <td>
                   <p>
                      <t v="TITLE VI – PROVISIONS ON POLICE AND JUDICIAL COOPERATION IN CRIMINAL MATTERS (repealed)"/>
-                     <noteRef href="#note_24" marker="20"/>
+                     <footnoteRef href="#note_24" marker="20"/>
                   </p>
                </td>
                <td/>
@@ -27809,7 +27809,7 @@
                <td>
                   <p>
                      <t v="Article 29 (replaced)"/>
-                     <noteRef href="#note_25" marker="21"/>
+                     <footnoteRef href="#note_25" marker="21"/>
                   </p>
                </td>
                <td/>
@@ -27818,7 +27818,7 @@
                <td>
                   <p>
                      <t v="Article 30 (replaced)"/>
-                     <noteRef href="#note_26" marker="22"/>
+                     <footnoteRef href="#note_26" marker="22"/>
                   </p>
                </td>
                <td/>
@@ -27827,7 +27827,7 @@
                <td>
                   <p>
                      <t v="Article 31 (replaced)"/>
-                     <noteRef href="#note_27" marker="23"/>
+                     <footnoteRef href="#note_27" marker="23"/>
                   </p>
                </td>
                <td/>
@@ -27841,7 +27841,7 @@
                <td>
                   <p>
                      <t v="Article 32 (replaced)"/>
-                     <noteRef href="#note_28" marker="24"/>
+                     <footnoteRef href="#note_28" marker="24"/>
                   </p>
                </td>
                <td/>
@@ -27850,7 +27850,7 @@
                <td>
                   <p>
                      <t v="Article 33 (replaced)"/>
-                     <noteRef href="#note_29" marker="25"/>
+                     <footnoteRef href="#note_29" marker="25"/>
                   </p>
                </td>
                <td/>
@@ -27875,7 +27875,7 @@
                <td>
                   <p>
                      <t v="Article 36 (replaced)"/>
-                     <noteRef href="#note_30" marker="26"/>
+                     <footnoteRef href="#note_30" marker="26"/>
                   </p>
                </td>
                <td/>
@@ -27908,7 +27908,7 @@
                <td>
                   <p>
                      <t v="Article 40 (replaced)"/>
-                     <noteRef href="#note_31" marker="27"/>
+                     <footnoteRef href="#note_31" marker="27"/>
                   </p>
                </td>
                <td>
@@ -27921,7 +27921,7 @@
                <td>
                   <p>
                      <t v="Article 40 A (replaced)"/>
-                     <noteRef href="#note_31" marker="27"/>
+                     <footnoteRef href="#note_31" marker="27"/>
                   </p>
                </td>
                <td>
@@ -27934,7 +27934,7 @@
                <td>
                   <p>
                      <t v="Article 40 B (replaced)"/>
-                     <noteRef href="#note_31" marker="27"/>
+                     <footnoteRef href="#note_31" marker="27"/>
                   </p>
                </td>
                <td>
@@ -27963,7 +27963,7 @@
                <td>
                   <p>
                      <t v="TITLE VII – PROVISIONS ON ENHANCED COOPERATION (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -27976,7 +27976,7 @@
                <td>
                   <p>
                      <t v="Article 43 (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -27989,7 +27989,7 @@
                <td>
                   <p>
                      <t v="Article 43 A (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -28002,7 +28002,7 @@
                <td>
                   <p>
                      <t v="Article 43 B (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -28015,7 +28015,7 @@
                <td>
                   <p>
                      <t v="Article 44 (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -28028,7 +28028,7 @@
                <td>
                   <p>
                      <t v="Article 44 A (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -28041,7 +28041,7 @@
                <td>
                   <p>
                      <t v="Article 45 (replaced)"/>
-                     <noteRef href="#note_32" marker="28"/>
+                     <footnoteRef href="#note_32" marker="28"/>
                   </p>
                </td>
                <td>
@@ -28244,7 +28244,7 @@
                <td>
                   <p>
                      <t v="Article 2 (repealed)"/>
-                     <noteRef href="#note_33" marker="29"/>
+                     <footnoteRef href="#note_33" marker="29"/>
                   </p>
                </td>
                <td/>
@@ -28322,7 +28322,7 @@
                <td>
                   <p>
                      <t v="Article 3, paragraph 1 (repealed)"/>
-                     <noteRef href="#note_34" marker="30"/>
+                     <footnoteRef href="#note_34" marker="30"/>
                   </p>
                </td>
                <td/>
@@ -28355,7 +28355,7 @@
                <td>
                   <p>
                      <t v="Article 5 (replaced)"/>
-                     <noteRef href="#note_35" marker="31"/>
+                     <footnoteRef href="#note_35" marker="31"/>
                   </p>
                </td>
                <td/>
@@ -28405,7 +28405,7 @@
                <td>
                   <p>
                      <t v="Article 13"/>
-                     <noteRef href="#note_36" marker="32"/>
+                     <footnoteRef href="#note_36" marker="32"/>
                   </p>
                </td>
             </tr>
@@ -28413,7 +28413,7 @@
                <td>
                   <p>
                      <t v="Article 7 (repealed)"/>
-                     <noteRef href="#note_37" marker="33"/>
+                     <footnoteRef href="#note_37" marker="33"/>
                   </p>
                </td>
                <td/>
@@ -28422,7 +28422,7 @@
                <td>
                   <p>
                      <t v="Article 8 (repealed)"/>
-                     <noteRef href="#note_38" marker="34"/>
+                     <footnoteRef href="#note_38" marker="34"/>
                   </p>
                </td>
                <td/>
@@ -28439,7 +28439,7 @@
                <td>
                   <p>
                      <t v="Article 10 (repealed)"/>
-                     <noteRef href="#note_39" marker="35"/>
+                     <footnoteRef href="#note_39" marker="35"/>
                   </p>
                </td>
                <td/>
@@ -28448,7 +28448,7 @@
                <td>
                   <p>
                      <t v="Article 11 (replaced)"/>
-                     <noteRef href="#note_40" marker="36"/>
+                     <footnoteRef href="#note_40" marker="36"/>
                   </p>
                </td>
                <td>
@@ -28461,7 +28461,7 @@
                <td>
                   <p>
                      <t v="Article 11a (replaced)"/>
-                     <noteRef href="#note_40" marker="36"/>
+                     <footnoteRef href="#note_40" marker="36"/>
                   </p>
                </td>
                <td>
@@ -29352,7 +29352,7 @@
                <td>
                   <p>
                      <t v="Article 67"/>
-                     <noteRef href="#note_41" marker="37"/>
+                     <footnoteRef href="#note_41" marker="37"/>
                   </p>
                </td>
             </tr>
@@ -29385,7 +29385,7 @@
                <td>
                   <p>
                      <t v="Article 71"/>
-                     <noteRef href="#note_42" marker="38"/>
+                     <footnoteRef href="#note_42" marker="38"/>
                   </p>
                </td>
             </tr>
@@ -29398,7 +29398,7 @@
                <td>
                   <p>
                      <t v="Article 72"/>
-                     <noteRef href="#note_43" marker="39"/>
+                     <footnoteRef href="#note_43" marker="39"/>
                   </p>
                </td>
             </tr>
@@ -29471,7 +29471,7 @@
                <td>
                   <p>
                      <t v="Article 63, points 1 et 2, and Article 64, paragraph 2"/>
-                     <noteRef href="#note_44" marker="40"/>
+                     <footnoteRef href="#note_44" marker="40"/>
                   </p>
                </td>
                <td>
@@ -29581,7 +29581,7 @@
                <td>
                   <p>
                      <t v="Article 82"/>
-                     <noteRef href="#note_45" marker="41"/>
+                     <footnoteRef href="#note_45" marker="41"/>
                   </p>
                </td>
             </tr>
@@ -29590,7 +29590,7 @@
                <td>
                   <p>
                      <t v="Article 83"/>
-                     <noteRef href="#note_45" marker="41"/>
+                     <footnoteRef href="#note_45" marker="41"/>
                   </p>
                </td>
             </tr>
@@ -29607,7 +29607,7 @@
                <td>
                   <p>
                      <t v="Article 85"/>
-                     <noteRef href="#note_45" marker="41"/>
+                     <footnoteRef href="#note_45" marker="41"/>
                   </p>
                </td>
             </tr>
@@ -29632,7 +29632,7 @@
                <td>
                   <p>
                      <t v="Article 87"/>
-                     <noteRef href="#note_46" marker="42"/>
+                     <footnoteRef href="#note_46" marker="42"/>
                   </p>
                </td>
             </tr>
@@ -29641,7 +29641,7 @@
                <td>
                   <p>
                      <t v="Article 88"/>
-                     <noteRef href="#note_46" marker="42"/>
+                     <footnoteRef href="#note_46" marker="42"/>
                   </p>
                </td>
             </tr>
@@ -29650,7 +29650,7 @@
                <td>
                   <p>
                      <t v="Article 89"/>
-                     <noteRef href="#note_47" marker="43"/>
+                     <footnoteRef href="#note_47" marker="43"/>
                   </p>
                </td>
             </tr>
@@ -30486,7 +30486,7 @@
                <td>
                   <p>
                      <t v="Article 140"/>
-                     <noteRef href="#note_48" marker="44"/>
+                     <footnoteRef href="#note_48" marker="44"/>
                   </p>
                </td>
             </tr>
@@ -30510,7 +30510,7 @@
                <td>
                   <p>
                      <t v="Article 141"/>
-                     <noteRef href="#note_49" marker="45"/>
+                     <footnoteRef href="#note_49" marker="45"/>
                   </p>
                </td>
             </tr>
@@ -31559,7 +31559,7 @@
                <td>
                   <p>
                      <t v="Article 178 (repealed)"/>
-                     <noteRef href="#note_50" marker="46"/>
+                     <footnoteRef href="#note_50" marker="46"/>
                   </p>
                </td>
                <td/>
@@ -31814,7 +31814,7 @@
                <td>
                   <p>
                      <t v="Article 208"/>
-                     <noteRef href="#note_51" marker="47"/>
+                     <footnoteRef href="#note_51" marker="47"/>
                   </p>
                </td>
             </tr>
@@ -32079,7 +32079,7 @@
                <td>
                   <p>
                      <t v="Article 189 (repealed)"/>
-                     <noteRef href="#note_52" marker="48"/>
+                     <footnoteRef href="#note_52" marker="48"/>
                   </p>
                </td>
                <td/>
@@ -32088,7 +32088,7 @@
                <td>
                   <p>
                      <t v="Article 190, paragraphs 1 to 3 (repealed)"/>
-                     <noteRef href="#note_53" marker="49"/>
+                     <footnoteRef href="#note_53" marker="49"/>
                   </p>
                </td>
                <td/>
@@ -32109,7 +32109,7 @@
                <td>
                   <p>
                      <t v="Article 191, first paragraph (repealed)"/>
-                     <noteRef href="#note_54" marker="50"/>
+                     <footnoteRef href="#note_54" marker="50"/>
                   </p>
                </td>
                <td/>
@@ -32130,7 +32130,7 @@
                <td>
                   <p>
                      <t v="Article 192, first paragraph (repealed)"/>
-                     <noteRef href="#note_55" marker="51"/>
+                     <footnoteRef href="#note_55" marker="51"/>
                   </p>
                </td>
                <td/>
@@ -32204,7 +32204,7 @@
                <td>
                   <p>
                      <t v="Article 197, first paragraph (repealed)"/>
-                     <noteRef href="#note_56" marker="52"/>
+                     <footnoteRef href="#note_56" marker="52"/>
                   </p>
                </td>
                <td/>
@@ -32309,7 +32309,7 @@
                <td>
                   <p>
                      <t v="Article 202 (repealed)"/>
-                     <noteRef href="#note_57" marker="53"/>
+                     <footnoteRef href="#note_57" marker="53"/>
                   </p>
                </td>
                <td/>
@@ -32318,7 +32318,7 @@
                <td>
                   <p>
                      <t v="Article 203 (repealed)"/>
-                     <noteRef href="#note_58" marker="54"/>
+                     <footnoteRef href="#note_58" marker="54"/>
                   </p>
                </td>
                <td/>
@@ -32339,7 +32339,7 @@
                <td>
                   <p>
                      <t v="Article 205, paragraphs 2 and 4 (repealed)"/>
-                     <noteRef href="#note_59" marker="55"/>
+                     <footnoteRef href="#note_59" marker="55"/>
                   </p>
                </td>
                <td/>
@@ -32437,7 +32437,7 @@
                <td>
                   <p>
                      <t v="Article 211 (repealed)"/>
-                     <noteRef href="#note_60" marker="56"/>
+                     <footnoteRef href="#note_60" marker="56"/>
                   </p>
                </td>
                <td/>
@@ -32478,7 +32478,7 @@
                <td>
                   <p>
                      <t v="Article 214 (repealed)"/>
-                     <noteRef href="#note_61" marker="57"/>
+                     <footnoteRef href="#note_61" marker="57"/>
                   </p>
                </td>
                <td/>
@@ -32511,7 +32511,7 @@
                <td>
                   <p>
                      <t v="Article 217, paragraphs 1, 3 and 4 (repealed)"/>
-                     <noteRef href="#note_62" marker="58"/>
+                     <footnoteRef href="#note_62" marker="58"/>
                   </p>
                </td>
                <td/>
@@ -32532,7 +32532,7 @@
                <td>
                   <p>
                      <t v="Article 218, paragraph 1 (repealed)"/>
-                     <noteRef href="#note_63" marker="59"/>
+                     <footnoteRef href="#note_63" marker="59"/>
                   </p>
                </td>
                <td/>
@@ -32577,7 +32577,7 @@
                <td>
                   <p>
                      <t v="Article 220 (repealed)"/>
-                     <noteRef href="#note_64" marker="60"/>
+                     <footnoteRef href="#note_64" marker="60"/>
                   </p>
                </td>
                <td/>
@@ -32586,7 +32586,7 @@
                <td>
                   <p>
                      <t v="Article 221, first paragraph (repealed)"/>
-                     <noteRef href="#note_65" marker="61"/>
+                     <footnoteRef href="#note_65" marker="61"/>
                   </p>
                </td>
                <td/>
@@ -32631,7 +32631,7 @@
                <td>
                   <p>
                      <t v="Article 224"/>
-                     <noteRef href="#note_66" marker="62"/>
+                     <footnoteRef href="#note_66" marker="62"/>
                   </p>
                </td>
                <td>
@@ -33086,7 +33086,7 @@
                <td>
                   <p>
                      <t v="Article 290"/>
-                     <noteRef href="#note_67" marker="63"/>
+                     <footnoteRef href="#note_67" marker="63"/>
                   </p>
                </td>
             </tr>
@@ -33095,7 +33095,7 @@
                <td>
                   <p>
                      <t v="Article 291"/>
-                     <noteRef href="#note_67" marker="63"/>
+                     <footnoteRef href="#note_67" marker="63"/>
                   </p>
                </td>
             </tr>
@@ -33248,7 +33248,7 @@
                <td>
                   <p>
                      <t v="Article 257 (repealed)"/>
-                     <noteRef href="#note_68" marker="64"/>
+                     <footnoteRef href="#note_68" marker="64"/>
                   </p>
                </td>
                <td/>
@@ -33269,7 +33269,7 @@
                <td>
                   <p>
                      <t v="Article 258, third paragraph (repealed)"/>
-                     <noteRef href="#note_69" marker="65"/>
+                     <footnoteRef href="#note_69" marker="65"/>
                   </p>
                </td>
                <td/>
@@ -33334,7 +33334,7 @@
                <td>
                   <p>
                      <t v="Article 263, first and fifth paragraphs (repealed)"/>
-                     <noteRef href="#note_70" marker="66"/>
+                     <footnoteRef href="#note_70" marker="66"/>
                   </p>
                </td>
                <td/>
@@ -33459,7 +33459,7 @@
                <td>
                   <p>
                      <t v="Article 270 (repealed)"/>
-                     <noteRef href="#note_71" marker="67"/>
+                     <footnoteRef href="#note_71" marker="67"/>
                   </p>
                </td>
                <td/>
@@ -33706,7 +33706,7 @@
                <td>
                   <p>
                      <t v="Article 326"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33719,7 +33719,7 @@
                <td>
                   <p>
                      <t v="Article 327"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33732,7 +33732,7 @@
                <td>
                   <p>
                      <t v="Article 328"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33745,7 +33745,7 @@
                <td>
                   <p>
                      <t v="Article 329"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33758,7 +33758,7 @@
                <td>
                   <p>
                      <t v="Article 330"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33771,7 +33771,7 @@
                <td>
                   <p>
                      <t v="Article 331"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33784,7 +33784,7 @@
                <td>
                   <p>
                      <t v="Article 332"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33802,7 +33802,7 @@
                <td>
                   <p>
                      <t v="Article 333"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33815,7 +33815,7 @@
                <td>
                   <p>
                      <t v="Article 334"/>
-                     <noteRef href="#note_72" marker="68"/>
+                     <footnoteRef href="#note_72" marker="68"/>
                   </p>
                </td>
             </tr>
@@ -33835,7 +33835,7 @@
                <td>
                   <p>
                      <t v="Article 281 (repealed)"/>
-                     <noteRef href="#note_73" marker="69"/>
+                     <footnoteRef href="#note_73" marker="69"/>
                   </p>
                </td>
                <td/>
@@ -34044,7 +34044,7 @@
                <td>
                   <p>
                      <t v="Article 299, paragraph 1 (repealed)"/>
-                     <noteRef href="#note_74" marker="70"/>
+                     <footnoteRef href="#note_74" marker="70"/>
                   </p>
                </td>
                <td/>
@@ -34218,7 +34218,7 @@
                <td>
                   <p>
                      <t v="Article 311 (repealed)"/>
-                     <noteRef href="#note_75" marker="71"/>
+                     <footnoteRef href="#note_75" marker="71"/>
                   </p>
                </td>
                <td/>
@@ -34279,7 +34279,7 @@
                <td>
                   <p>
                      <t v="Article 314 (repealed)"/>
-                     <noteRef href="#note_76" marker="1"/>
+                     <footnoteRef href="#note_76" marker="1"/>
                   </p>
                </td>
                <td/>
@@ -34289,28 +34289,28 @@
                   <occurrence eId="att_4/tab_2/tr_558/td_1/level_19" kind="level" depth="1"/>
                </td>
             </tr>
-            <notes>
-               <note eId="note_76" marker="1" kind="table">
+            <footnotes>
+               <footnote eId="note_76" marker="1" kind="table">
                   <p>
                      <t v="Replaced, in substance by Article 55 TEU."/>
                   </p>
-               </note>
-            </notes>
+               </footnote>
+            </footnotes>
          </table>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="The Republic of Bulgaria, the Czech Republic, the Kingdom of Denmark, the Republic of Estonia, Ireland, the Hellenic Republic, the Kingdom of Spain, the Republic of Cyprus, the Republic of Latvia, the Republic of Lithuania, the Republic of Hungary, the Republic of Malta, the Republic of Austria, the Republic of Poland, the Portuguese Republic, Romania, the Republic of Slovenia, the Slovak Republic, the Republic of Finland, the Kingdom of Sweden and the United Kingdom of Great Britain and Northern Ireland have since become members of the European Union."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="These references are merely indicative. For more ample information, please refer to the tables of equivalences between the old and the new numbering of the Treaties."/>
          </p>
-      </note>
-      <note eId="note_3" marker="*" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="*" kind="footnote">
          <p>
             <t v="Article inserted by Decision 2008/79/EC, Euratom ("/>
             <ref kind="oj"
@@ -34322,8 +34322,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="3" kind="footnote">
          <p>
             <t v="In accordance with the Act of Accession of "/>
             <date date="2011-12-09">
@@ -34331,8 +34331,8 @@
             </date>
             <t v=", the Republic of Croatia has since become a member of the European Union."/>
          </p>
-      </note>
-      <note eId="note_5" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="4" kind="footnote">
          <p>
             <t v="This provision shall also apply without prejudice to Article 4 of the Act of Accessio of "/>
             <date date="2011-12-09">
@@ -34340,8 +34340,8 @@
             </date>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_7" marker="5" kind="quotation">
+      </footnote>
+      <footnote eId="note_7" marker="5" kind="quotation">
          <p>
             <t v="&#34;"/>
             <emphasis kind="i">
@@ -34349,43 +34349,43 @@
             </emphasis>
             <t v=".&#34; &#34;"/>
          </p>
-      </note>
-      <note eId="note_8" marker="*" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="*" kind="footnote">
          <p>
             <t v="Tables of equivalences as referred to in Article 5 of the Treaty of Lisbon. The original centre column, which set out the intermediate numbering as used in that Treaty, has been omitted."/>
          </p>
-      </note>
-      <note eId="note_9" marker="5" kind="manual">
+      </footnote>
+      <footnote eId="note_9" marker="5" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 7 of the Treaty on the Functioning of the European Union (&#34;TFEU&#34;) and by Articles 13(1) and 21, paragraph 3, second subparagraph of the Treaty on European Union (&#34;TEU&#34;)."/>
          </p>
-      </note>
-      <note eId="note_10" marker="6" kind="manual">
+      </footnote>
+      <footnote eId="note_10" marker="6" kind="manual">
          <p>
             <t v="Replaces Article 5 of the Treaty establishing the European Community (&#34;TEC&#34;)."/>
          </p>
-      </note>
-      <note eId="note_11" marker="7" kind="manual">
+      </footnote>
+      <footnote eId="note_11" marker="7" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 15."/>
          </p>
-      </note>
-      <note eId="note_12" marker="8" kind="manual">
+      </footnote>
+      <footnote eId="note_12" marker="8" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 13, paragraph 2."/>
          </p>
-      </note>
-      <note eId="note_13" marker="9" kind="manual">
+      </footnote>
+      <footnote eId="note_13" marker="9" kind="manual">
          <p>
             <t v="Article 8 TEU, which was in force until the entry into force of the Treaty of Lisbon (hereinafter &#34;current&#34;), amended the TEC. Those amendments are incorporated into the latter Treaty and Article 8 is repealed. Its number is used to insert a new provision."/>
          </p>
-      </note>
-      <note eId="note_14" marker="10" kind="manual">
+      </footnote>
+      <footnote eId="note_14" marker="10" kind="manual">
          <p>
             <t v="Paragraph 4 replaces, in substance, the first subparagraph of Article 191 TEC."/>
          </p>
-      </note>
-      <note eId="note_15" marker="11" kind="manual">
+      </footnote>
+      <footnote eId="note_15" marker="11" kind="manual">
          <p>
             <t v="The current Article 9 TEU amended the Treaty establishing the European Coal and Steel Community. This latter expired on "/>
             <date date="2002-07-23">
@@ -34393,8 +34393,8 @@
             </date>
             <t v=". Article 9 is repealed and the number thereof is used to insert another provision."/>
          </p>
-      </note>
-      <note eId="note_16" marker="12" kind="manual">
+      </footnote>
+      <footnote eId="note_16" marker="12" kind="manual">
          <list kind="dash">
             <occurrence eId="note_16/idt_1" kind="indent">
                <p>
@@ -34417,13 +34417,13 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_17" marker="13" kind="manual">
+      </footnote>
+      <footnote eId="note_17" marker="13" kind="manual">
          <p>
             <t v="Replaces, in substance, Article 4."/>
          </p>
-      </note>
-      <note eId="note_18" marker="14" kind="manual">
+      </footnote>
+      <footnote eId="note_18" marker="14" kind="manual">
          <list kind="dash">
             <occurrence eId="note_18/idt_1" kind="indent">
                <p>
@@ -34441,8 +34441,8 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_19" marker="15" kind="manual">
+      </footnote>
+      <footnote eId="note_19" marker="15" kind="manual">
          <list kind="dash">
             <occurrence eId="note_19/idt_1" kind="indent">
                <p>
@@ -34460,8 +34460,8 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_20" marker="16" kind="manual">
+      </footnote>
+      <footnote eId="note_20" marker="16" kind="manual">
          <list kind="dash">
             <occurrence eId="note_20/idt_1" kind="indent">
                <p>
@@ -34478,23 +34478,23 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_21" marker="17" kind="manual">
+      </footnote>
+      <footnote eId="note_21" marker="17" kind="manual">
          <p>
             <t v="The current Article 10 TEU amended the Treaty establishing the European Atomic Energy Community. Those amendments are incorporated into the Treaty of Lisbon. Article 10 is repealed and the number thereof is used to insert another provision."/>
          </p>
-      </note>
-      <note eId="note_22" marker="18" kind="manual">
+      </footnote>
+      <footnote eId="note_22" marker="18" kind="manual">
          <p>
             <t v="Also replaces Articles 11 and 11a TEC."/>
          </p>
-      </note>
-      <note eId="note_23" marker="19" kind="manual">
+      </footnote>
+      <footnote eId="note_23" marker="19" kind="manual">
          <p>
             <t v="The current Articles 27a to 27e, on enhanced cooperation, are also replaced by Articles 326 to 334 TFEU."/>
          </p>
-      </note>
-      <note eId="note_24" marker="20" kind="manual">
+      </footnote>
+      <footnote eId="note_24" marker="20" kind="manual">
          <p>
             <tag amendingAct="12007LR(11)"
                  action="replaced"
@@ -34502,58 +34502,58 @@
                  tagId="O001001M061000"/>
             <t v="The current provisions of Title VI of the TEU, on police and judicial cooperation in criminal matters, are replaced by the provisions of Chapters 1, 4 and 5 of Title IV (renumbered V) of Part Three of the TFEU."/>
          </p>
-      </note>
-      <note eId="note_25" marker="21" kind="manual">
+      </footnote>
+      <footnote eId="note_25" marker="21" kind="manual">
          <p>
             <t v="Replaced by Article 67 TFEU."/>
          </p>
-      </note>
-      <note eId="note_26" marker="22" kind="manual">
+      </footnote>
+      <footnote eId="note_26" marker="22" kind="manual">
          <p>
             <t v="Replaced by Articles 87 and 88 TFEU."/>
          </p>
-      </note>
-      <note eId="note_27" marker="23" kind="manual">
+      </footnote>
+      <footnote eId="note_27" marker="23" kind="manual">
          <p>
             <t v="Replaced by Articles 82, 83 and 85 TFEU."/>
          </p>
-      </note>
-      <note eId="note_28" marker="24" kind="manual">
+      </footnote>
+      <footnote eId="note_28" marker="24" kind="manual">
          <p>
             <t v="Replaced by Article 89 TFEU."/>
          </p>
-      </note>
-      <note eId="note_29" marker="25" kind="manual">
+      </footnote>
+      <footnote eId="note_29" marker="25" kind="manual">
          <p>
             <t v="Replaced by Article 72 TFEU."/>
          </p>
-      </note>
-      <note eId="note_30" marker="26" kind="manual">
+      </footnote>
+      <footnote eId="note_30" marker="26" kind="manual">
          <p>
             <t v="Replaced by Article 71 TFEU."/>
          </p>
-      </note>
-      <note eId="note_31" marker="27" kind="manual">
+      </footnote>
+      <footnote eId="note_31" marker="27" kind="manual">
          <p>
             <t v="The current Articles 40 to 40 B TEU, on enhanced cooperation, are also replaced by Articles 326 to 334 TFEU."/>
          </p>
-      </note>
-      <note eId="note_32" marker="28" kind="manual">
+      </footnote>
+      <footnote eId="note_32" marker="28" kind="manual">
          <p>
             <t v="The current Articles 43 to 45 and Title VII of the TEU, on enhanced cooperation, are also replaced by Articles 326 to 334 TFEU."/>
          </p>
-      </note>
-      <note eId="note_33" marker="29" kind="manual">
+      </footnote>
+      <footnote eId="note_33" marker="29" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 3 TEU."/>
          </p>
-      </note>
-      <note eId="note_34" marker="30" kind="manual">
+      </footnote>
+      <footnote eId="note_34" marker="30" kind="manual">
          <p>
             <t v="Replaced, in substance, by Articles 3 to 6 TFEU."/>
          </p>
-      </note>
-      <note eId="note_35" marker="31" kind="manual">
+      </footnote>
+      <footnote eId="note_35" marker="31" kind="manual">
          <p>
             <tag amendingAct="12007LR(11)"
                  action="replaced"
@@ -34561,38 +34561,38 @@
                  tagId="O001001M063000"/>
             <t v="Replaced by Article 5 TEU."/>
          </p>
-      </note>
-      <note eId="note_36" marker="32" kind="manual">
+      </footnote>
+      <footnote eId="note_36" marker="32" kind="manual">
          <p>
             <t v="Insertion of the operative part of the protocol on protection and welfare of animals."/>
          </p>
-      </note>
-      <note eId="note_37" marker="33" kind="manual">
+      </footnote>
+      <footnote eId="note_37" marker="33" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 13 TEU."/>
          </p>
-      </note>
-      <note eId="note_38" marker="34" kind="manual">
+      </footnote>
+      <footnote eId="note_38" marker="34" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 13 TEU and Article 282, paragraph 1, TFEU."/>
          </p>
-      </note>
-      <note eId="note_39" marker="35" kind="manual">
+      </footnote>
+      <footnote eId="note_39" marker="35" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 4, paragraph 3, TEU."/>
          </p>
-      </note>
-      <note eId="note_40" marker="36" kind="manual">
+      </footnote>
+      <footnote eId="note_40" marker="36" kind="manual">
          <p>
             <t v="Also replaced by Article 20 TEU."/>
          </p>
-      </note>
-      <note eId="note_41" marker="37" kind="manual">
+      </footnote>
+      <footnote eId="note_41" marker="37" kind="manual">
          <p>
             <t v="Also replaces the current Article 29 TEU."/>
          </p>
-      </note>
-      <note eId="note_42" marker="38" kind="manual">
+      </footnote>
+      <footnote eId="note_42" marker="38" kind="manual">
          <p>
             <tag amendingAct="12007LR(11)"
                  action="replaced"
@@ -34600,13 +34600,13 @@
                  tagId="O001001M064000"/>
             <t v="Replaces the current Article 36 TEU."/>
          </p>
-      </note>
-      <note eId="note_43" marker="39" kind="manual">
+      </footnote>
+      <footnote eId="note_43" marker="39" kind="manual">
          <p>
             <t v="Also replaces the current Article 33 TEU."/>
          </p>
-      </note>
-      <note eId="note_44" marker="40" kind="manual">
+      </footnote>
+      <footnote eId="note_44" marker="40" kind="manual">
          <p>
             <tag amendingAct="12007LR(03)"
                  action="replaced"
@@ -34614,23 +34614,23 @@
                  tagId="O001001M065000"/>
             <t v="Points 1 and 2 of Article 63 EC are replaced by paragraphs 1 and 2 of Article 78 TFEU, and paragraph 2 of Article 64 is replaced by paragraph 3 of Article 78 TFEU."/>
          </p>
-      </note>
-      <note eId="note_45" marker="41" kind="manual">
+      </footnote>
+      <footnote eId="note_45" marker="41" kind="manual">
          <p>
             <t v="Replaces the current Article 31 TEU."/>
          </p>
-      </note>
-      <note eId="note_46" marker="42" kind="manual">
+      </footnote>
+      <footnote eId="note_46" marker="42" kind="manual">
          <p>
             <t v="Replaces the current Article 30 TEU."/>
          </p>
-      </note>
-      <note eId="note_47" marker="43" kind="manual">
+      </footnote>
+      <footnote eId="note_47" marker="43" kind="manual">
          <p>
             <t v="Replaces the current Article 32 TEU."/>
          </p>
-      </note>
-      <note eId="note_48" marker="44" kind="manual">
+      </footnote>
+      <footnote eId="note_48" marker="44" kind="manual">
          <list kind="dash">
             <occurrence eId="note_48/idt_1" kind="indent">
                <p>
@@ -34648,8 +34648,8 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_49" marker="45" kind="manual">
+      </footnote>
+      <footnote eId="note_49" marker="45" kind="manual">
          <list kind="dash">
             <occurrence eId="note_49/idt_1" kind="indent">
                <p>
@@ -34662,8 +34662,8 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_50" marker="46" kind="manual">
+      </footnote>
+      <footnote eId="note_50" marker="46" kind="manual">
          <p>
             <tag amendingAct="12007LR(03)"
                  action="replaced"
@@ -34671,132 +34671,132 @@
                  tagId="O001001M066000"/>
             <t v="Replaced, in substance, by the second sentence of the second subparagraph of paragraph 1 of Article 208 TFEU."/>
          </p>
-      </note>
-      <note eId="note_51" marker="47" kind="manual">
+      </footnote>
+      <footnote eId="note_51" marker="47" kind="manual">
          <p>
             <t v="The second sentence of the second subparagraph of paragraph 1 replaces, in substance, Article 178 TEC."/>
          </p>
-      </note>
-      <note eId="note_52" marker="48" kind="manual">
+      </footnote>
+      <footnote eId="note_52" marker="48" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 14, paragraphs 1 and 2, TEU."/>
          </p>
-      </note>
-      <note eId="note_53" marker="49" kind="manual">
+      </footnote>
+      <footnote eId="note_53" marker="49" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 14, paragraphs 1 to 3, TEU."/>
          </p>
-      </note>
-      <note eId="note_54" marker="50" kind="manual">
+      </footnote>
+      <footnote eId="note_54" marker="50" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 11, paragraph 4, TEU."/>
          </p>
-      </note>
-      <note eId="note_55" marker="51" kind="manual">
+      </footnote>
+      <footnote eId="note_55" marker="51" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 14, paragraph 1, TEU."/>
          </p>
-      </note>
-      <note eId="note_56" marker="52" kind="manual">
+      </footnote>
+      <footnote eId="note_56" marker="52" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 14, paragraph 4, TEU."/>
          </p>
-      </note>
-      <note eId="note_57" marker="53" kind="manual">
+      </footnote>
+      <footnote eId="note_57" marker="53" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 16, paragraph 1, TEU and by Articles 290 and 291 TFEU."/>
          </p>
-      </note>
-      <note eId="note_58" marker="54" kind="manual">
+      </footnote>
+      <footnote eId="note_58" marker="54" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 16, paragraphs 2 and 9 TEU."/>
          </p>
-      </note>
-      <note eId="note_59" marker="55" kind="manual">
+      </footnote>
+      <footnote eId="note_59" marker="55" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 16, paragraphs 4 and 5 TEU."/>
          </p>
-      </note>
-      <note eId="note_60" marker="56" kind="manual">
+      </footnote>
+      <footnote eId="note_60" marker="56" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 17, paragraph 1 TEU."/>
          </p>
-      </note>
-      <note eId="note_61" marker="57" kind="manual">
+      </footnote>
+      <footnote eId="note_61" marker="57" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 17, paragraphs 3 and 7 TEU."/>
          </p>
-      </note>
-      <note eId="note_62" marker="58" kind="manual">
+      </footnote>
+      <footnote eId="note_62" marker="58" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 17, paragraph 6, TEU."/>
          </p>
-      </note>
-      <note eId="note_63" marker="59" kind="manual">
+      </footnote>
+      <footnote eId="note_63" marker="59" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 295 TFEU."/>
          </p>
-      </note>
-      <note eId="note_64" marker="60" kind="manual">
+      </footnote>
+      <footnote eId="note_64" marker="60" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 19 TEU."/>
          </p>
-      </note>
-      <note eId="note_65" marker="61" kind="manual">
+      </footnote>
+      <footnote eId="note_65" marker="61" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 19, paragraph 2, first subparagraph, of the TEU."/>
          </p>
-      </note>
-      <note eId="note_66" marker="62" kind="manual">
+      </footnote>
+      <footnote eId="note_66" marker="62" kind="manual">
          <p>
             <t v="The first sentence of the first subparagraph is replaced, in substance, by Article 19, paragraph 2, second subparagraph of the TEU."/>
          </p>
-      </note>
-      <note eId="note_67" marker="63" kind="manual">
+      </footnote>
+      <footnote eId="note_67" marker="63" kind="manual">
          <p>
             <t v="Replaces, in substance, the third indent of Article 202 TEC."/>
          </p>
-      </note>
-      <note eId="note_68" marker="64" kind="manual">
+      </footnote>
+      <footnote eId="note_68" marker="64" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 300, paragraph 2 of the TFEU."/>
          </p>
-      </note>
-      <note eId="note_69" marker="65" kind="manual">
+      </footnote>
+      <footnote eId="note_69" marker="65" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 300, paragraph 4 of the TFEU."/>
          </p>
-      </note>
-      <note eId="note_70" marker="66" kind="manual">
+      </footnote>
+      <footnote eId="note_70" marker="66" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 300, paragraphs 3 and 4, TFEU."/>
          </p>
-      </note>
-      <note eId="note_71" marker="67" kind="manual">
+      </footnote>
+      <footnote eId="note_71" marker="67" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 310, paragraph 4, TFEU."/>
          </p>
-      </note>
-      <note eId="note_72" marker="68" kind="manual">
+      </footnote>
+      <footnote eId="note_72" marker="68" kind="manual">
          <p>
             <t v="Also replaces the current Articles 27a to 27e, 40 to 40b, and 43 to 45 TEU."/>
          </p>
-      </note>
-      <note eId="note_73" marker="69" kind="manual">
+      </footnote>
+      <footnote eId="note_73" marker="69" kind="manual">
          <p>
             <t v="Replaced, in substance, by Article 47 TEU."/>
          </p>
-      </note>
-      <note eId="note_74" marker="70" kind="manual">
+      </footnote>
+      <footnote eId="note_74" marker="70" kind="manual">
          <p>
             <t v="Replaced, in substance by Article 52 TEU."/>
          </p>
-      </note>
-      <note eId="note_75" marker="71" kind="manual">
+      </footnote>
+      <footnote eId="note_75" marker="71" kind="manual">
          <p>
             <t v="Replaced, in substance by Article 51 TEU."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

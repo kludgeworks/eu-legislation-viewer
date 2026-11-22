@@ -85,7 +85,7 @@
                   <t v="12 January 2005"/>
                </date>
                <t v=" on Community statistics concerning balance of payments, international trade in services and foreign direct investment"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 4(3) thereof,"/>
             </p>
          </occurrence>
@@ -237,8 +237,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -249,7 +249,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

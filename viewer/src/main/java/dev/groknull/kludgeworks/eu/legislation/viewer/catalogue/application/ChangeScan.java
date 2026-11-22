@@ -26,7 +26,7 @@ import org.springframework.transaction.support.TransactionOperations;
  *       changed since the watermark, less {@code overlap}. A change becomes visible up to 18
  *       minutes after its date, so it reads the latest part again.
  *   <li>It maps the changes to the held acts ({@link CellarChange#byHeldAct}).
- *   <li>In one transaction, it notes each held act that changed ({@link WaitingRefresh#seen}),
+ *   <li>In one transaction, it records each held act that changed ({@link WaitingRefresh#seen}),
  *       moves the watermark to the latest change it read, and publishes {@link ActChanged} for each
  *       act that is now quiet. The event publication registry keeps the events until {@link
  *       ActRefresher} has read each act.

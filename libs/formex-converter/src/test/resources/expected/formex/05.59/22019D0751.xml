@@ -75,7 +75,7 @@
                   <t v="12 July 2016"/>
                </date>
                <t v=" pursuant to Directive 95/46/EC of the European Parliament and of the Council on the adequacy of the protection provided by the EU-U.S. Privacy Shield"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" is to be incorporated into the EEA Agreement."/>
             </p>
          </occurrence>
@@ -154,7 +154,7 @@
                <t v="8 July 2017"/>
             </date>
             <t v=", provided that all the notifications under Article 103(1) of the EEA Agreement have been made"/>
-            <noteRef href="#note_2" marker="*"/>
+            <footnoteRef href="#note_2" marker="*"/>
             <t v="."/>
          </p>
       </occurrence>
@@ -200,8 +200,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -212,13 +212,13 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="*" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="*" kind="footnote">
          <p>
             <t v="No constitutional requirements indicated."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <heading>

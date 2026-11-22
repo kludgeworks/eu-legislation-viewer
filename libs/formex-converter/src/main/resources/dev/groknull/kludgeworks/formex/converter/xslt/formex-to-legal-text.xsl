@@ -71,7 +71,7 @@
 
   <xsl:mode on-no-match="fail" on-multiple-match="fail" use-accumulators="#all"/>
   <xsl:mode name="document" on-no-match="fail" on-multiple-match="fail"/>
-  <xsl:mode name="note" on-no-match="fail" on-multiple-match="fail"/>
+  <xsl:mode name="footnote" on-no-match="fail" on-multiple-match="fail"/>
   <xsl:mode name="recital" on-no-match="fail" on-multiple-match="fail"/>
 
   <xsl:template match="/">
@@ -322,22 +322,22 @@
               </xsl:apply-templates>
             </xsl:for-each>
           </xsl:variable>
-          <!-- the notes of the act's file and those it includes, printed after it as each file's are
+          <!-- the footnotes of the act's file and those it includes, printed after it as each file's are
                (an annex's or an attached document's, in its occurrence): before the annexes if they are
-               files of their own, else after them. A consolidated version's table notes are its table's -->
-          <xsl:variable name="notes" as="element()?">
-            <xsl:call-template name="f:notes">
-              <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($act)//NOTE[not(@NOTE.REF)][not(f:table-note(.))]"/>
+               files of their own, else after them. A consolidated version's table footnotes are its table's -->
+          <xsl:variable name="footnotes" as="element()?">
+            <xsl:call-template name="f:footnotes">
+              <xsl:with-param name="footnotes" as="element(NOTE)*" select="f:with-included($act)//NOTE[not(@NOTE.REF)][not(f:table-footnote(.))]"/>
             </xsl:call-template>
           </xsl:variable>
           <xsl:variable name="files" as="xs:boolean" select="exists($annexes | $package/FMX/DOC.SUB.PUB[f:is-attachment(.)])"/>
-          <xsl:sequence select="$notes[$files]"/>
+          <xsl:sequence select="$footnotes[$files]"/>
           <xsl:if test="$annex-occurrences or $letters or $attachments">
             <annexes>
               <xsl:sequence select="$annex-occurrences, $letters, $attachments"/>
             </annexes>
           </xsl:if>
-          <xsl:sequence select="$notes[not($files)]"/>
+          <xsl:sequence select="$footnotes[not($files)]"/>
         </legalText>
       </xsl:document>
     </xsl:variable>
@@ -354,27 +354,27 @@
     <xsl:apply-templates select="$checked/lt:legalText" mode="f:outline"/>
   </xsl:template>
 
-  <!-- the notes of one file or table, as a block (none if it has none): a note in text an amendment
-       deleted is kept, as the text is, inside <deleted>, unless what holds the notes is in it already -->
-  <xsl:template name="f:notes">
-    <xsl:param name="notes" as="element(NOTE)*"/>
+  <!-- the footnotes of one file or table, as a block (none if it has none): a footnote in text an amendment
+       deleted is kept, as the text is, inside <deleted>, unless what holds the footnotes is in it already -->
+  <xsl:template name="f:footnotes">
+    <xsl:param name="footnotes" as="element(NOTE)*"/>
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <xsl:if test="$notes">
-      <notes>
-        <xsl:for-each-group select="$notes" group-adjacent="f:ids(f:deletions(.))[not(. = $ctx)]" composite="yes">
+    <xsl:if test="$footnotes">
+      <footnotes>
+        <xsl:for-each-group select="$footnotes" group-adjacent="f:ids(f:deletions(.))[not(. = $ctx)]" composite="yes">
           <xsl:choose>
             <xsl:when test="empty(current-grouping-key())">
-              <xsl:apply-templates select="current-group()" mode="note"/>
+              <xsl:apply-templates select="current-group()" mode="footnote"/>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:variable name="notes" as="element()*">
-                <xsl:apply-templates select="current-group()" mode="note"/>
+              <xsl:variable name="footnotes" as="element()*">
+                <xsl:apply-templates select="current-group()" mode="footnote"/>
               </xsl:variable>
-              <xsl:sequence select="f:wrap-deleted(f:deletions(.)[not(f:ids(.) = $ctx)], $notes)"/>
+              <xsl:sequence select="f:wrap-deleted(f:deletions(.)[not(f:ids(.) = $ctx)], $footnotes)"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each-group>
-      </notes>
+      </footnotes>
     </xsl:if>
   </xsl:template>
 
@@ -964,19 +964,19 @@
     </xsl:choose>
   </xsl:function>
 
-  <!-- ============================================================ notes -->
+  <!-- ============================================================ footnotes -->
 
-  <xsl:template match="NOTE" mode="note">
-    <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
+  <xsl:template match="NOTE" mode="footnote">
+    <xsl:param name="footnotePrefix" as="xs:string?" tunnel="yes"/>
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
-    <note eId="{f:note-eid(., $notePrefix)}" marker="{f:note-marker(.)}" kind="{lower-case((@TYPE, 'FOOTNOTE')[1])}">
+    <footnote eId="{f:footnote-eid(., $footnotePrefix)}" marker="{f:footnote-marker(.)}" kind="{lower-case((@TYPE, 'FOOTNOTE')[1])}">
       <xsl:call-template name="f:blocks">
         <xsl:with-param name="nodes" as="node()*" select="node()"/>
         <xsl:with-param name="ctx" as="xs:string*" select="($ctx, let $b := accumulator-before('f:open'), $a := accumulator-after('f:open') return map:keys($b)[map:contains($a, .)])" tunnel="yes"/>
         <xsl:with-param name="pending" as="processing-instruction()*" select="()" tunnel="yes"/>
-        <xsl:with-param name="base" as="xs:string?" select="f:note-eid(., $notePrefix)" tunnel="yes"/>
+        <xsl:with-param name="base" as="xs:string?" select="f:footnote-eid(., $footnotePrefix)" tunnel="yes"/>
       </xsl:call-template>
-    </note>
+    </footnote>
   </xsl:template>
 
 </xsl:stylesheet>

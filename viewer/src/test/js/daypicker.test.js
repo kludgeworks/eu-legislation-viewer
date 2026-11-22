@@ -6,7 +6,7 @@ import {
   around,
   changes,
   month,
-  note,
+  summary,
   parse,
   plus,
   words,
@@ -115,11 +115,11 @@ describe("the days", () => {
   });
 });
 
-describe("the note of a day", () => {
+describe("the summary of a day", () => {
   test("names three acts at most, and says how many more there are", () => {
-    expect(note(["a", "b"])).toEqual(["a", "b"]);
-    expect(note(["a", "b", "c", "d"])).toEqual(["a", "b", "c", "and 1 more act"]);
-    expect(note(["a", "b", "c", "d", "e", "f", "g"])).toEqual(["a", "b", "c", "and 4 more acts"]);
+    expect(summary(["a", "b"])).toEqual(["a", "b"]);
+    expect(summary(["a", "b", "c", "d"])).toEqual(["a", "b", "c", "and 1 more act"]);
+    expect(summary(["a", "b", "c", "d", "e", "f", "g"])).toEqual(["a", "b", "c", "and 4 more acts"]);
   });
 });
 

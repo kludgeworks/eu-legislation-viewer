@@ -91,7 +91,7 @@
                   <t v="11 March 2008"/>
                </date>
                <t v=" on common rules in the field of civil aviation security and repealing Regulation (EC) No 2320/2002"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 4(3) thereof,"/>
             </p>
          </occurrence>
@@ -116,7 +116,7 @@
             </num>
             <p>
                <t v="If they contain sensitive security information, those measures should be treated in accordance with Commission Decision (EU, Euratom) 2015/444"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", as provided for by point (a) of Article 18 of Regulation (EC) No 300/2008. Those measures should therefore be adopted separately, by means of a Commission Implementing Decision addressed to the Member States, and should not be published."/>
             </p>
          </occurrence>
@@ -126,7 +126,7 @@
             </num>
             <p>
                <t v="Commission Regulation (EU) No 185/2010"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", which lays down the measures referred to in Article 4(3) of Regulation (EC) No 300/2008, was amended 20 times since its entry into force. In order to ensure clarity and legal certainty, it should therefore be repealed and replaced by a new act, consolidating the initial act and all amendments thereto. That new act should also be clarified and updated where appropriate, in light of the practical experiences gained and the relevant technological developments."/>
             </p>
          </occurrence>
@@ -259,7 +259,7 @@
             </num>
             <p>
                <t v="Without prejudice to the criteria for derogations as set out in Part K of the Annex to Commission Regulation (EC) No 272/2009"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=", the appropriate authority may allow special security procedures or exemptions for the protection and security of airside areas at airports on days on which there are not more than eight planned departing flights, provided that only one aircraft is to be loaded, unloaded, boarded or disembarked at any one time either within the critical part of the security restricted area or at an airport that falls outside of the scope of point 1.1.3."/>
             </p>
          </occurrence>
@@ -281,7 +281,7 @@
             </num>
             <p>
                <t v="References to third countries in this Chapter and where applicable in Commission Implementing Decision C(2015) 8005 final"/>
-               <noteRef href="#note_5" marker="5"/>
+               <footnoteRef href="#note_5" marker="5"/>
                <t v=" include other countries and territories to which, in accordance with Article 355 of the Treaty on the Functioning of the European Union, the Title VI of Part Three of that Treaty does not apply."/>
             </p>
          </occurrence>
@@ -4758,7 +4758,7 @@
                   </p>
                   <p>
                      <t v="Except for the requirements laid down in point 6.2, an examination of the site of the applicant by the relevant customs authority in accordance with Article 14n of Commission Regulation (EEC) No 2454/93"/>
-                     <noteRef href="#note_6" marker="6"/>
+                     <footnoteRef href="#note_6" marker="6"/>
                      <t v=" shall be considered as an on-site verification if it took place not earlier than 3 years before the date on which the applicant seeks approval as a regulated agent. The AEO certificate and the relevant assessment of the customs authorities shall be made available by the applicant for further inspection."/>
                   </p>
                </occurrence>
@@ -5739,7 +5739,7 @@
                   </num>
                   <p>
                      <t v="by the appropriate authority of the Member State listed in the Annex to Commission Regulation (EC) No 748/2009"/>
-                     <noteRef href="#note_7" marker="7"/>
+                     <footnoteRef href="#note_7" marker="7"/>
                      <t v=", for air carriers that do not hold an Air Operator's Certificate issued by a Member State;"/>
                   </p>
                </occurrence>
@@ -6414,7 +6414,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_8" marker="8"/>
+               <footnoteRef href="#note_8" marker="8"/>
                <t v=" on common rules in the field of civil aviation security and its implementing acts,"/>
             </p>
             <p>
@@ -6552,7 +6552,7 @@
             </heading>
             <p>
                <t v="This guidance will help you to assess your existing security arrangements against the required criteria for known consignors as described in Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_9" marker="9"/>
+               <footnoteRef href="#note_9" marker="9"/>
                <t v=" and its implementing acts. This should enable you to ensure that you meet the requirements before arranging an official on-site validation visit."/>
             </p>
             <p>
@@ -6575,7 +6575,7 @@
             </p>
             <p>
                <t v="If you are a holder of an AEO certificate referred to in point (b) or (c) of Article 14a(1) of Commission Regulation (EEC) No 2454/93"/>
-               <noteRef href="#note_10" marker="10"/>
+               <footnoteRef href="#note_10" marker="10"/>
                <t v=" (so called AEOF and AEOS certificates) and if the site for which you are requesting the known consignor status has been successfully examined by customs authorities at a date not earlier than 3 years before the date of requesting the known consignor status, you are required to fill out and have signed by a legal representative of your company Part 1 concerning the organisation and responsibilities as well as the declaration of commitments of the "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Validation checklist for known consignors"/>
@@ -9183,12 +9183,12 @@
             </p>
             <p>
                <t v="The prerequisites for carrying air cargo or air mail into the Union"/>
-               <noteRef href="#note_11" marker="11"/>
+               <footnoteRef href="#note_11" marker="11"/>
                <t v=" or Iceland, Norway and Switzerland are provided for in Implementing Regulation (EU) 2015/1998."/>
             </p>
             <p>
                <t v="The checklist is the instrument to be used by the EU aviation security validator for assessing the level of security applied to EU/EEA bound air cargo or air mail"/>
-               <noteRef href="#note_12" marker="12"/>
+               <footnoteRef href="#note_12" marker="12"/>
                <t v=" by or under the responsibility of the entity seeking designation as an RA3. The checklist is to be used only in the cases specified in point 6.8.4.1(b) of the Annex to Implementing Regulation (EU) 2015/1998. In the cases specified in point 6.8.4.1(a) of that Annex, the EU aviation security validator shall use the ACC3 checklist."/>
             </p>
             <p>
@@ -12391,12 +12391,12 @@
                   <t v="Air cargo or mail carrier operating into the Union from a third country airport"/>
                </emphasis>
                <t v=") designation is the prerequisite for carrying air cargo or air mail into the European Union"/>
-               <noteRef href="#note_13" marker="13"/>
+               <footnoteRef href="#note_13" marker="13"/>
                <t v=" (EU) or Iceland, Norway and Switzerland and is required by Implementing Regulation (EU) 2015/1998."/>
             </p>
             <p>
                <t v="ACC3 designation is in principle required for all flights carrying cargo or mail for transfer, transit or unloading at EU/EEA airports"/>
-               <noteRef href="#note_14" marker="14"/>
+               <footnoteRef href="#note_14" marker="14"/>
                <t v=". The appropriate authorities of the Member States of the European Union, Iceland, Norway and Switzerland are each responsible for the designation of specific air carriers as ACC3. The designation is based on the security programme of an air carrier and on an on-site verification of the implementation in compliance with the objectives referred to in this validation checklist."/>
             </p>
             <p>
@@ -15612,7 +15612,7 @@
             </p>
             <p>
                <t v="A (KC3) shall ensure that security controls have been applied to consignments bound for the Union"/>
-               <noteRef href="#note_15" marker="15"/>
+               <footnoteRef href="#note_15" marker="15"/>
                <t v=" and the consignments have been protected from unauthorised interference from the time that those security controls were applied and until transferring to an ACC3 or a third country EU aviation security validated regulated agent (RA3)."/>
             </p>
             <p>
@@ -15620,7 +15620,7 @@
             </p>
             <p>
                <t v="The checklist is the instrument to be used by the EU aviation security validator for assessing the level of security applied to EU/EEA bound air cargo or air mail"/>
-               <noteRef href="#note_16" marker="16"/>
+               <footnoteRef href="#note_16" marker="16"/>
                <t v=" by or under the responsibility of the entity seeking designation as a KC3. The checklist is to be used only in the cases specified in point 6.8.4.1(b) of the Annex to Implementing Regulation (EU) 2015/1998. In cases specified in point 6.8.4.1(a) of said Annex, the EU aviation security validator shall use the ACC3 checklist."/>
             </p>
             <p>
@@ -18563,7 +18563,7 @@
             </heading>
             <p>
                <t v="These instructions have been prepared for your use and for information to your staff engaged in the preparation and control of consignments of air cargo/air mail. These instructions are provided to you in accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_17" marker="17"/>
+               <footnoteRef href="#note_17" marker="17"/>
                <t v=" and its implementing acts."/>
             </p>
          </occurrence>
@@ -18767,7 +18767,7 @@
                   <t v="Declaration of commitments — account consignor"/>
                </quote>
                <t v=" does not have to be signed and submitted to the regulated agent, if your company is a holder of an AEO certificate referred to in point (b) or (c) of Article 14a(1) of Commission Regulation (EEC) No 2454/93"/>
-               <noteRef href="#note_18" marker="18"/>
+               <footnoteRef href="#note_18" marker="18"/>
             </p>
             <p>
                <t v="However, you must inform the regulated agent immediately if your company is no longer a holder of an AEO certificate. In this case, the regulated agent will inform you of how to ensure the account consignor status."/>
@@ -18782,7 +18782,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_19" marker="19"/>
+               <footnoteRef href="#note_19" marker="19"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -18851,7 +18851,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_19" marker="19"/>
+               <footnoteRef href="#note_19" marker="19"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -20388,7 +20388,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_20" marker="20"/>
+               <footnoteRef href="#note_20" marker="20"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -20532,7 +20532,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_21" marker="21"/>
+               <footnoteRef href="#note_21" marker="21"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -21246,7 +21246,7 @@
             </heading>
             <p>
                <t v="In accordance with Regulation (EC) No 300/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_22" marker="22"/>
+               <footnoteRef href="#note_22" marker="22"/>
                <t v=" and its implementing acts,"/>
             </p>
             <p>
@@ -23531,7 +23531,7 @@
             </num>
             <p>
                <t v="The national accreditation body established pursuant to Regulation (EC) No 765/2008 of the European Parliament and of the Council"/>
-               <noteRef href="#note_23" marker="23"/>
+               <footnoteRef href="#note_23" marker="23"/>
                <t v=" may be empowered to accredit the conformity assessment capacity of legal entities to perform EU aviation security validation, adopt administrative measures in that respect and carry out the surveillance of EU aviation security validation activities."/>
             </p>
          </occurrence>
@@ -25606,9 +25606,9 @@
             </list>
             <p>
                <t v="Security scanners for the screening of passengers shall be deployed and used in compliance with Council Recommendation 1999/519/EC"/>
-               <noteRef href="#note_24" marker="24"/>
+               <footnoteRef href="#note_24" marker="24"/>
                <t v=" and Directive 2013/35/EU of the European Parliament and of the Council"/>
-               <noteRef href="#note_25" marker="25"/>
+               <footnoteRef href="#note_25" marker="25"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -26035,8 +26035,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -26047,8 +26047,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Decision (EU, Euratom) 2015/444 of "/>
             <date date="2015-03-13">
@@ -26064,8 +26064,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Commission Regulation (EU) No 185/2010 of "/>
             <date date="2010-03-04">
@@ -26077,8 +26077,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Commission Regulation (EC) No 272/2009 of "/>
             <date date="2009-04-02">
@@ -26090,8 +26090,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <t v="Commission Implementing Decision C(2015) 8005 final laying down detailed measures for the implementation of the common basic standards on aviation security containing information, as referred to in point (a) of Article 18 of Regulation (EC) No 300/2008, and repealing Decision (2010) 774 of "/>
             <date date="2010-04-13">
@@ -26099,8 +26099,8 @@
             </date>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="Commission Regulation (EEC) No 2454/93 of "/>
             <date date="1993-07-02">
@@ -26116,8 +26116,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <t v="Commission Regulation (EC) No 748/2009 of "/>
             <date date="2009-08-05">
@@ -26137,8 +26137,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="8" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26154,8 +26154,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
+      </footnote>
+      <footnote eId="note_9" marker="9" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26171,8 +26171,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
+      </footnote>
+      <footnote eId="note_10" marker="10" kind="footnote">
          <p>
             <t v="Commission Regulation (EEC) No 2454/93 of "/>
             <date date="1993-07-02">
@@ -26188,38 +26188,38 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
+      </footnote>
+      <footnote eId="note_11" marker="11" kind="footnote">
          <p>
             <t v="European Union Member States: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and the United Kingdom"/>
          </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
+      </footnote>
+      <footnote eId="note_12" marker="12" kind="footnote">
          <p>
             <t v="EU/EEA bound air cargo/air mail/aircraft in this validation checklist is equivalent to EU and Iceland, Norway and Switzerland bound air cargo/air mail/aircraft."/>
          </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
+      </footnote>
+      <footnote eId="note_13" marker="13" kind="footnote">
          <p>
             <t v="European Union Member States: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and the United Kingdom."/>
          </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
+      </footnote>
+      <footnote eId="note_14" marker="14" kind="footnote">
          <p>
             <t v="EU/EEA bound air cargo/air mail/aircraft in this validation checklist is equivalent to EU and Iceland, Norway and Switzerland bound air cargo/air mail/aircraft."/>
          </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
+      </footnote>
+      <footnote eId="note_15" marker="15" kind="footnote">
          <p>
             <t v="European Union Member States: Austria, Belgium, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Ireland, Italy, Latvia, Lithuania, Luxembourg, Malta, the Netherlands, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden and the United Kingdom"/>
          </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
+      </footnote>
+      <footnote eId="note_16" marker="16" kind="footnote">
          <p>
             <t v="EU/EEA bound air cargo/air mail/aircraft in this validation checklist is equivalent to EU and Iceland, Norway and Switzerland bound air cargo/air mail/aircraft."/>
          </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
+      </footnote>
+      <footnote eId="note_17" marker="17" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26235,8 +26235,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_18" marker="18" kind="footnote">
+      </footnote>
+      <footnote eId="note_18" marker="18" kind="footnote">
          <p>
             <t v="Commission Regulation (EEC) No 2454/93 of "/>
             <date date="1993-07-02">
@@ -26252,8 +26252,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_19" marker="19" kind="footnote">
+      </footnote>
+      <footnote eId="note_19" marker="19" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26269,8 +26269,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_20" marker="20" kind="footnote">
+      </footnote>
+      <footnote eId="note_20" marker="20" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26286,8 +26286,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_21" marker="21" kind="footnote">
+      </footnote>
+      <footnote eId="note_21" marker="21" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26303,8 +26303,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_22" marker="22" kind="footnote">
+      </footnote>
+      <footnote eId="note_22" marker="22" kind="footnote">
          <p>
             <t v="Regulation (EC) No 300/2008 of the European Parliament and of the Council of "/>
             <date date="2008-03-11">
@@ -26320,8 +26320,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_23" marker="23" kind="footnote">
+      </footnote>
+      <footnote eId="note_23" marker="23" kind="footnote">
          <p>
             <t v="Regulation (EC) No 765/2008 of the European Parliament and of the Council of "/>
             <date date="2008-07-09">
@@ -26337,8 +26337,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_24" marker="24" kind="footnote">
+      </footnote>
+      <footnote eId="note_24" marker="24" kind="footnote">
          <p>
             <t v="Council Recommendation 1999/519/EC of "/>
             <date date="1999-07-12">
@@ -26354,8 +26354,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_25" marker="25" kind="footnote">
+      </footnote>
+      <footnote eId="note_25" marker="25" kind="footnote">
          <p>
             <t v="Directive 2013/35/EU of the European Parliament and of the Council of "/>
             <date date="2013-06-26">
@@ -26371,7 +26371,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

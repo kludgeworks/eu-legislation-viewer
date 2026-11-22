@@ -32,27 +32,27 @@ import org.jspecify.annotations.Nullable;
  * occurrence in it is not one of the occurrences, and its words are not in the blocks of an
  * occurrence. The act that struck each occurrence is kept.
  *
- * <p>An occurrence holds the notes that its own blocks refer to. These are the notes of the text,
- * at its end. A note is matched through the reference to it, not by its eId. The eId of a note is
- * its place, note_N, and it changes when a note before it comes or goes. The notes of a table are
- * in the table, and those of a file of an act as published are in its occurrence. They are compared
- * where they are, as blocks.
+ * <p>An occurrence holds the footnotes that its own blocks refer to. These are the footnotes of the
+ * text, at its end. A footnote is matched through the reference to it, not by its eId. The eId of a
+ * footnote is its place, note_N, and it changes when a footnote before it comes or goes. The
+ * footnotes of a table are in the table, and those of a file of an act as published are in its
+ * occurrence. They are compared where they are, as blocks.
  *
  * @param byEId the occurrences, by eId, in document order
  * @param outermost the eIds of the occurrences that are in no other occurrence, in order
  * @param struck the tags of the deletions that keep an occurrence struck, by the eId of the
  *     occurrence. For example, "deleted by 2019/103".
- * @param notes the notes of the text, at its end, by eId
+ * @param footnotes the footnotes of the text, at its end, by eId
  */
 public record Occurrences(
     SequencedMap<String, Occurrence> byEId,
     List<String> outermost,
     Map<String, List<Tag>> struck,
-    Map<String, Element> notes) {
+    Map<String, Element> footnotes) {
 
   /**
    * The elements of legal-text that hold only running text or MathML: a paragraph, a num, a formula
-   * and the inline elements. Legal-text has no notes in them.
+   * and the inline elements. Legal-text has no footnotes in them.
    */
   private static final Set<String> RUNNING =
       Set.of(
@@ -64,7 +64,7 @@ public record Occurrences(
           "date",
           "number",
           "quote",
-          "noteRef",
+          "footnoteRef",
           "ref",
           "eol",
           "span",
@@ -80,66 +80,67 @@ public record Occurrences(
     var occurrences = new LinkedHashMap<String, Occurrence>();
     var outermost = new ArrayList<String>();
     var struck = new HashMap<String, List<Tag>>();
-    var notes = notes(text);
-    collect(text, null, null, outermost, occurrences, new ArrayDeque<>(), struck, notes);
-    return new Occurrences(occurrences, outermost, struck, notes);
+    var footnotes = footnotes(text);
+    collect(text, null, null, outermost, occurrences, new ArrayDeque<>(), struck, footnotes);
+    return new Occurrences(occurrences, outermost, struck, footnotes);
   }
 
   /**
-   * Returns the notes of the text that {@code element} refers to, at any depth, in the order of
+   * Returns the footnotes of the text that {@code element} refers to, at any depth, in the order of
    * their first reference.
    */
-  public List<Element> notesOf(Element element) {
+  public List<Element> footnotesOf(Element element) {
     var found = new LinkedHashMap<String, Element>();
-    referred(element, notes, found);
+    referred(element, footnotes, found);
     return List.copyOf(found.values());
   }
 
   /**
-   * Returns the notes of {@code text}, by eId. A consolidation has them at its end. An act as the
-   * Official Journal published it may have them at the end of an annex instead.
+   * Returns the footnotes of {@code text}, by eId. A consolidation has them at its end. An act as
+   * the Official Journal published it may have them at the end of an annex instead.
    */
-  private static Map<String, Element> notes(Element text) {
-    var notes = new HashMap<String, Element>();
-    collectNotes(text, notes);
-    return notes;
+  private static Map<String, Element> footnotes(Element text) {
+    var footnotes = new HashMap<String, Element>();
+    collectFootnotes(text, footnotes);
+    return footnotes;
   }
 
   /**
-   * Adds the notes of each {@code notes} in {@code element} to {@code notes}. A text has them at
-   * its end, at the end of an occurrence or a file of an annex, and under a table, wherever the
-   * table is. The search does not go into what holds only running text or MathML, which cannot have
-   * them.
+   * Adds the footnotes of each {@code footnotes} in {@code element} to {@code footnotes}. A text
+   * has them at its end, at the end of an occurrence or a file of an annex, and under a table,
+   * wherever the table is. The search does not go into what holds only running text or MathML,
+   * which cannot have them.
    */
-  private static void collectNotes(Element element, Map<String, Element> notes) {
+  private static void collectFootnotes(Element element, Map<String, Element> footnotes) {
     for (var child : element.children()) {
       if (RUNNING.contains(child.name())) {
         continue;
       }
-      if (!child.name().equals("notes")) {
-        collectNotes(child, notes);
+      if (!child.name().equals("footnotes")) {
+        collectFootnotes(child, footnotes);
         continue;
       }
-      for (var note : child.children()) {
-        var eId = note.attribute("eId");
-        if (note.name().equals("note") && eId != null) {
-          notes.put(eId, note);
+      for (var footnote : child.children()) {
+        var eId = footnote.attribute("eId");
+        if (footnote.name().equals("footnote") && eId != null) {
+          footnotes.put(eId, footnote);
         }
       }
     }
   }
 
   /**
-   * Adds the notes of {@code notes} that {@code element} refers to, to {@code found}, by eId. What
-   * a consolidation keeps of a deletion is not part of the text, nor are its notes.
+   * Adds the footnotes of {@code footnotes} that {@code element} refers to, to {@code found}, by
+   * eId. What a consolidation keeps of a deletion is not part of the text, nor are its footnotes.
    */
   private static void referred(
-      Element element, Map<String, Element> notes, Map<String, Element> found) {
-    if (element.name().equals("noteRef")) {
+      Element element, Map<String, Element> footnotes, Map<String, Element> found) {
+    if (element.name().equals("footnoteRef")) {
       var href = element.attribute("href");
-      var note = href == null || !href.startsWith("#") ? null : notes.get(href.substring(1));
-      if (note != null) {
-        found.putIfAbsent(href, note);
+      var footnote =
+          href == null || !href.startsWith("#") ? null : footnotes.get(href.substring(1));
+      if (footnote != null) {
+        found.putIfAbsent(href, footnote);
       }
       return;
     }
@@ -147,7 +148,7 @@ public record Occurrences(
       return;
     }
     for (var child : element.children()) {
-      referred(child, notes, found);
+      referred(child, footnotes, found);
     }
   }
 
@@ -176,7 +177,7 @@ public record Occurrences(
       Map<String, Occurrence> occurrences,
       Deque<Ranked> ranked,
       Map<String, List<Tag>> struck,
-      Map<String, Element> notes) {
+      Map<String, Element> footnotes) {
     if (element.name().equals("deleted")) {
       struck(element, tags(element), struck);
       return;
@@ -191,24 +192,25 @@ public record Occurrences(
       var section = section(eId, element, parent, occurrences, ranked);
       var list = list(container);
       var referred = new LinkedHashMap<String, Element>();
-      blocks.forEach(block -> referred(block, notes, referred));
-      var ownNotes = List.copyOf(referred.values());
+      blocks.forEach(block -> referred(block, footnotes, referred));
+      var ownFootnotes = List.copyOf(referred.values());
       // Put the occurrence now, so that it comes before the occurrences in it in document order.
       // Put it again
       // in the same place when the occurrences in it are known.
       occurrences.put(
-          eId, new Occurrence(eId, parent, section, element, blocks, ownNotes, List.of(), list));
+          eId,
+          new Occurrence(eId, parent, section, element, blocks, ownFootnotes, List.of(), list));
       siblings.add(eId);
       var inside = new ArrayList<String>();
       for (var child : element.children()) {
-        collect(child, eId, element, inside, occurrences, ranked, struck, notes);
+        collect(child, eId, element, inside, occurrences, ranked, struck, footnotes);
       }
       occurrences.put(
-          eId, new Occurrence(eId, parent, section, element, blocks, ownNotes, inside, list));
+          eId, new Occurrence(eId, parent, section, element, blocks, ownFootnotes, inside, list));
       return;
     }
     for (var child : element.children()) {
-      collect(child, parent, element, siblings, occurrences, ranked, struck, notes);
+      collect(child, parent, element, siblings, occurrences, ranked, struck, footnotes);
     }
   }
 
@@ -285,15 +287,15 @@ public record Occurrences(
 
   /**
    * Adds the blocks of {@code element} that are not in an occurrence of their own to {@code
-   * blocks}. The notes at the end of an annex are not its blocks: each belongs to the occurrence
-   * that refers to it.
+   * blocks}. The footnotes at the end of an annex are not its blocks: each belongs to the
+   * occurrence that refers to it.
    */
   private static void own(Element element, List<Element> blocks) {
     for (var child : element.children()) {
       if (eId(child) != null
           || child.name().equals("tag")
           || child.name().equals("deleted")
-          || child.name().equals("notes")) {
+          || child.name().equals("footnotes")) {
         continue;
       }
       if (holdsOccurrences(child)) {
@@ -326,7 +328,9 @@ public record Occurrences(
     return element.name().equals("table");
   }
 
-  /** Returns the eId of an occurrence. Returns null for any other element, for example a note. */
+  /**
+   * Returns the eId of an occurrence. Returns null for any other element, for example a footnote.
+   */
   static @Nullable String eId(Element element) {
     return element.name().equals("occurrence") ? element.attribute("eId") : null;
   }
@@ -341,8 +345,8 @@ public record Occurrences(
    *     occurrence.
    * @param element the occurrence as the text has it, with the occurrences in it
    * @param blocks its own blocks, in order
-   * @param notes the notes of the text that its own blocks refer to, in the order of their first
-   *     reference
+   * @param footnotes the footnotes of the text that its own blocks refer to, in the order of their
+   *     first reference
    * @param occurrences the eIds of the occurrences directly in it, in order
    * @param list the list that it is an item of, without its items. The list keeps its kind, for
    *     example alpha or dash. Null if it is in no list.
@@ -353,12 +357,12 @@ public record Occurrences(
       @Nullable String section,
       Element element,
       List<Element> blocks,
-      List<Element> notes,
+      List<Element> footnotes,
       List<String> occurrences,
       @Nullable Element list) {
     public Occurrence {
       blocks = List.copyOf(blocks);
-      notes = List.copyOf(notes);
+      footnotes = List.copyOf(footnotes);
       occurrences = List.copyOf(occurrences);
     }
 

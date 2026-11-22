@@ -104,8 +104,8 @@ public record ActDate(@Nullable LocalDate date, Kind kind, boolean partial, Clau
      * "ANNEX".
      */
     public static Provision parse(String value) {
-      var parts = value.split(" ", 2);
-      return new Provision(Type.valueOf(parts[0]), parts.length > 1 ? parts[1] : null);
+      var words = value.split(" ", 2);
+      return new Provision(Type.valueOf(words[0]), words.length > 1 ? words[1] : null);
     }
 
     @Override

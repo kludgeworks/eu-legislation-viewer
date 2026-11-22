@@ -85,9 +85,9 @@
                   <t v="28 October 1996"/>
                </date>
                <t v=" on the common organisation of the market in fruit and vegetables"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", as last amended by Regulation (EC) No 545/2002"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 2(3) thereof,"/>
             </p>
          </occurrence>
@@ -186,8 +186,8 @@
          <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
       </p>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -198,15 +198,15 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="84" date="2002-03-28" page="1">
                <t v="OJ L 84, 28.3.2002, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

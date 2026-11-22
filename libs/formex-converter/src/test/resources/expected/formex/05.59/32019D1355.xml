@@ -78,7 +78,7 @@
                   <t v="26 November 2008"/>
                </date>
                <t v=" pursuant to Council Decision 2009/156/EC"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" and has been applied on a provisional basis since "/>
                <date date="2016-09-03">
                   <t v="3 September 2016"/>
@@ -188,8 +188,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Council Decision 2009/156/EC of "/>
             <date date="2008-11-21">
@@ -201,8 +201,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx_1" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -1049,7 +1049,7 @@
                   </num>
                   <p>
                      <t v="Without prejudice to Article 2 of this Protocol, non-originating materials which can be imported into the European Union free of customs duties in application of the conventional tariffs of the most-favoured nation (MFN) system, in accordance with its Common Customs Tariff as defined in Annex I of Council Regulation (EEC) No 2658/87"/>
-                     <noteRef href="#note_anx01000401-1" marker="1"/>
+                     <footnoteRef href="#note_anx01000401-1" marker="1"/>
                      <t v=", shall be considered as materials originating in Côte d'Ivoire when incorporated into a product obtained there, provided that they have undergone working or processing there which goes beyond the operations referred to in Article 5(1) of this Protocol."/>
                   </p>
                </occurrence>
@@ -1109,7 +1109,7 @@
                   </num>
                   <p>
                      <t v="Without prejudice to Article 2 of this Protocol, materials originating in one of the parties, in other West African countries"/>
-                     <noteRef href="#note_anx01000401-2" marker="2"/>
+                     <footnoteRef href="#note_anx01000401-2" marker="2"/>
                      <t v=" that benef from duty-free and quota-free access to the market of the European Union, in other ACP States which have applied an EPA at least on a provisional basis, or in OCTs shall be considered as materials originating in the other party when incorporated into a product obtained there, provided that working or processing they have undergone in that party goes beyond the operations referred to in Article 5(1) of this Protocol."/>
                   </p>
                   <p>
@@ -1199,7 +1199,7 @@
                            <t v=" and "/>
                            <t v="1605"/>
                            <t v=" originating in the EPA Pacific States pursuant to Article 6(6) of Protocol II to the Interim Partnership Agreement between the European Community, of the one part, and the Pacific States, of the other part"/>
-                           <noteRef href="#note_anx01000401-3" marker="3"/>
+                           <footnoteRef href="#note_anx01000401-3" marker="3"/>
                            <t v=";"/>
                         </p>
                      </occurrence>
@@ -2633,7 +2633,7 @@
                   </num>
                   <p>
                      <t v="When Article 8(1) of this Protocol is applied, the supporting documents required to prove origin shall be determined in accordance with the rules applicable to GSP beneficiary countries"/>
-                     <noteRef href="#note_anx01000401-4" marker="4"/>
+                     <footnoteRef href="#note_anx01000401-4" marker="4"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -3818,8 +3818,8 @@
                </p>
             </occurrence>
          </occurrence>
-         <notes>
-            <note eId="note_anx01000401-1" marker="1" kind="footnote">
+         <footnotes>
+            <footnote eId="note_anx01000401-1" marker="1" kind="footnote">
                <p>
                   <t v="Council Regulation (EEC) No 2658/87 of "/>
                   <date date="1987-07-23">
@@ -3835,13 +3835,13 @@
                   </ref>
                   <t v="), including all subsequent amendments."/>
                </p>
-            </note>
-            <note eId="note_anx01000401-2" marker="2" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01000401-2" marker="2" kind="footnote">
                <p>
                   <t v="The other West African countries are: Benin, Burkina Faso, Cape Verde, Gambia, Ghana, Guinea, Guinea-Bissau, Liberia, Mali, Mauritania, Niger, Nigeria, Senegal, Sierra Leone and Togo."/>
                </p>
-            </note>
-            <note eId="note_anx01000401-3" marker="3" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01000401-3" marker="3" kind="footnote">
                <p>
                   <t v="See Council Decision 2009/729/EC of "/>
                   <date date="2009-07-13">
@@ -3857,8 +3857,8 @@
                   </ref>
                   <t v=")."/>
                </p>
-            </note>
-            <note eId="note_anx01000401-4" marker="4" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01000401-4" marker="4" kind="footnote">
                <p>
                   <t v="See Commission Regulation (EEC) No 2454/93 of "/>
                   <date date="1993-07-02">
@@ -3874,8 +3874,8 @@
                   </ref>
                   <t v=")."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
       <occurrence eId="anx_I-TO-PROTOCOL-1"
                   kind="annex"
@@ -4510,7 +4510,7 @@
                         </p>
                         <p>
                            <t v="For example"/>
-                           <noteRef href="#note_anx01003201-1" marker="1"/>
+                           <footnoteRef href="#note_anx01003201-1" marker="1"/>
                            <t v=", if a rule in the list says that for a particular textile item, such as a blouse, yarn must be used, this does not prevent the use of metal items, such as buttons, because they cannot be made from textile materials."/>
                         </p>
                      </occurrence>
@@ -4577,7 +4577,7 @@
                               </num>
                               <p>
                                  <t v="redistillation by a very thorough fractionation process"/>
-                                 <noteRef href="#note_anx01003201-2" marker="2"/>
+                                 <footnoteRef href="#note_anx01003201-2" marker="2"/>
                                  <t v=";"/>
                               </p>
                            </occurrence>
@@ -4689,7 +4689,7 @@
                               </num>
                               <p>
                                  <t v="redistillation by a very thorough fractionation process"/>
-                                 <noteRef href="#note_anx01003201-3" marker="3"/>
+                                 <footnoteRef href="#note_anx01003201-3" marker="3"/>
                                  <t v=";"/>
                               </p>
                            </occurrence>
@@ -4853,23 +4853,23 @@
                </annotation>
             </annotation>
          </occurrence>
-         <notes>
-            <note eId="note_anx01003201-1" marker="1" kind="footnote">
+         <footnotes>
+            <footnote eId="note_anx01003201-1" marker="1" kind="footnote">
                <p>
                   <t v="This example is given for explanatory purposes only. It is not legally binding."/>
                </p>
-            </note>
-            <note eId="note_anx01003201-2" marker="2" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01003201-2" marker="2" kind="footnote">
                <p>
                   <t v="See Additional Explanatory Note 5(b) to Chapter 27 of the Combined Nomenclature."/>
                </p>
-            </note>
-            <note eId="note_anx01003201-3" marker="3" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01003201-3" marker="3" kind="footnote">
                <p>
                   <t v="See Additional Explanatory Note 5(b) to Chapter 27 of the Combined Nomenclature."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
       <occurrence eId="anx_II-TO-PROTOCOL-1"
                   kind="annex"
@@ -7121,7 +7121,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-1" marker="1"/>
+                        <footnoteRef href="#note_anx01003801-1" marker="1"/>
                      </p>
                   </td>
                   <td>
@@ -7162,7 +7162,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-2" marker="2"/>
+                        <footnoteRef href="#note_anx01003801-2" marker="2"/>
                      </p>
                   </td>
                   <td>
@@ -7185,7 +7185,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-3" marker="3"/>
+                        <footnoteRef href="#note_anx01003801-3" marker="3"/>
                      </p>
                   </td>
                   <td>
@@ -7208,7 +7208,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-4" marker="4"/>
+                        <footnoteRef href="#note_anx01003801-4" marker="4"/>
                      </p>
                   </td>
                   <td>
@@ -7231,7 +7231,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-5" marker="5"/>
+                        <footnoteRef href="#note_anx01003801-5" marker="5"/>
                      </p>
                   </td>
                   <td>
@@ -7254,7 +7254,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-6" marker="6"/>
+                        <footnoteRef href="#note_anx01003801-6" marker="6"/>
                      </p>
                   </td>
                   <td>
@@ -7277,7 +7277,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-7" marker="7"/>
+                        <footnoteRef href="#note_anx01003801-7" marker="7"/>
                      </p>
                   </td>
                   <td>
@@ -7513,7 +7513,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-8" marker="8"/>
+                        <footnoteRef href="#note_anx01003801-8" marker="8"/>
                      </p>
                   </td>
                   <td>
@@ -7536,7 +7536,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-9" marker="9"/>
+                        <footnoteRef href="#note_anx01003801-9" marker="9"/>
                      </p>
                   </td>
                   <td>
@@ -8140,7 +8140,7 @@
                   <td>
                      <p>
                         <t v="Colour lakes; preparations as specified in Note 3 to this Chapter based on colour lakes"/>
-                        <noteRef href="#note_anx01003801-10" marker="10"/>
+                        <footnoteRef href="#note_anx01003801-10" marker="10"/>
                      </p>
                   </td>
                   <td>
@@ -8201,7 +8201,7 @@
                         <quote startQuote="‘" endQuote="’">
                            <t v="group"/>
                         </quote>
-                        <noteRef href="#note_anx01003801-11" marker="11"/>
+                        <footnoteRef href="#note_anx01003801-11" marker="11"/>
                         <t v=" in this heading. However, materials of the same group may be used, provided their value does not exceed 20 % of the ex-works price of the product"/>
                      </p>
                   </td>
@@ -8251,7 +8251,7 @@
                   <td>
                      <p>
                         <t v="Operations of refining and/or one or more specific process(es)"/>
-                        <noteRef href="#note_anx01003801-12" marker="12"/>
+                        <footnoteRef href="#note_anx01003801-12" marker="12"/>
                      </p>
                   </td>
                   <td>
@@ -9184,7 +9184,7 @@
                                     kind="indent">
                            <p>
                               <t v="the value of any materials of Chapter 39 used does not exceed 20 % of the value of the ex-works price of the product"/>
-                              <noteRef href="#note_anx01003801-13" marker="13"/>
+                              <footnoteRef href="#note_anx01003801-13" marker="13"/>
                            </p>
                         </occurrence>
                      </list>
@@ -9205,7 +9205,7 @@
                   <td>
                      <p>
                         <t v="Manufacture in which the value of all the materials of Chapter 39 used does not exceed 20 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01003801-13" marker="13"/>
+                        <footnoteRef href="#note_anx01003801-13" marker="13"/>
                      </p>
                   </td>
                   <td>
@@ -9228,7 +9228,7 @@
                   <td>
                      <p>
                         <t v="Manufacture in which all the materials used are classified within a heading other than that of the product. However, materials classified within the same heading may be used, provided their value does not exceed 50 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01003801-14" marker="14"/>
+                        <footnoteRef href="#note_anx01003801-14" marker="14"/>
                      </p>
                   </td>
                   <td/>
@@ -9332,7 +9332,7 @@
                                     kind="indent">
                            <p>
                               <t v="the value of any materials of Chapter 39 used does not exceed 20 % of the value of the ex-works price of the product"/>
-                              <noteRef href="#note_anx01003801-15" marker="15"/>
+                              <footnoteRef href="#note_anx01003801-15" marker="15"/>
                            </p>
                         </occurrence>
                      </list>
@@ -9353,7 +9353,7 @@
                   <td>
                      <p>
                         <t v="Manufacture in which the value of all the materials of Chapter 39 used does not exceed 20 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01003801-15" marker="15"/>
+                        <footnoteRef href="#note_anx01003801-15" marker="15"/>
                      </p>
                   </td>
                   <td>
@@ -9450,7 +9450,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from highly transparent polyester foils with a thickness of less than 23 micron"/>
-                        <noteRef href="#note_anx01003801-16" marker="16"/>
+                        <footnoteRef href="#note_anx01003801-16" marker="16"/>
                      </p>
                   </td>
                   <td>
@@ -10426,7 +10426,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-17" marker="17"/>
+                        <footnoteRef href="#note_anx01003801-17" marker="17"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10472,7 +10472,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-18" marker="18"/>
+                        <footnoteRef href="#note_anx01003801-18" marker="18"/>
                      </p>
                   </td>
                   <td>
@@ -10515,7 +10515,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-19" marker="19"/>
+                        <footnoteRef href="#note_anx01003801-19" marker="19"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10563,7 +10563,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-20" marker="20"/>
+                        <footnoteRef href="#note_anx01003801-20" marker="20"/>
                      </p>
                   </td>
                   <td>
@@ -10606,7 +10606,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-21" marker="21"/>
+                        <footnoteRef href="#note_anx01003801-21" marker="21"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10654,7 +10654,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-22" marker="22"/>
+                        <footnoteRef href="#note_anx01003801-22" marker="22"/>
                      </p>
                   </td>
                   <td>
@@ -10697,7 +10697,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-23" marker="23"/>
+                        <footnoteRef href="#note_anx01003801-23" marker="23"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10745,7 +10745,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-24" marker="24"/>
+                        <footnoteRef href="#note_anx01003801-24" marker="24"/>
                      </p>
                   </td>
                   <td>
@@ -10770,7 +10770,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-25" marker="25"/>
+                        <footnoteRef href="#note_anx01003801-25" marker="25"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10818,7 +10818,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-26" marker="26"/>
+                        <footnoteRef href="#note_anx01003801-26" marker="26"/>
                      </p>
                   </td>
                   <td>
@@ -10863,7 +10863,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-27" marker="27"/>
+                        <footnoteRef href="#note_anx01003801-27" marker="27"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10911,7 +10911,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-28" marker="28"/>
+                        <footnoteRef href="#note_anx01003801-28" marker="28"/>
                      </p>
                   </td>
                   <td>
@@ -10934,7 +10934,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-29" marker="29"/>
+                        <footnoteRef href="#note_anx01003801-29" marker="29"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -10990,7 +10990,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-30" marker="30"/>
+                        <footnoteRef href="#note_anx01003801-30" marker="30"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11020,7 +11020,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-30" marker="30"/>
+                        <footnoteRef href="#note_anx01003801-30" marker="30"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11088,7 +11088,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-31" marker="31"/>
+                        <footnoteRef href="#note_anx01003801-31" marker="31"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11132,7 +11132,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-32" marker="32"/>
+                        <footnoteRef href="#note_anx01003801-32" marker="32"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11184,7 +11184,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-33" marker="33"/>
+                        <footnoteRef href="#note_anx01003801-33" marker="33"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11240,7 +11240,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-34" marker="34"/>
+                        <footnoteRef href="#note_anx01003801-34" marker="34"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11273,7 +11273,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-34" marker="34"/>
+                        <footnoteRef href="#note_anx01003801-34" marker="34"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11303,7 +11303,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-35" marker="35"/>
+                        <footnoteRef href="#note_anx01003801-35" marker="35"/>
                      </p>
                      <p>
                         <t v="However, jute fabric may be used as a backing."/>
@@ -11325,7 +11325,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-35" marker="35"/>
+                        <footnoteRef href="#note_anx01003801-35" marker="35"/>
                      </p>
                   </td>
                   <td>
@@ -11443,7 +11443,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-36" marker="36"/>
+                        <footnoteRef href="#note_anx01003801-36" marker="36"/>
                      </p>
                   </td>
                   <td/>
@@ -11595,11 +11595,11 @@
                      </p>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-37" marker="37"/>
+                        <footnoteRef href="#note_anx01003801-37" marker="37"/>
                      </p>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-37" marker="37"/>
+                        <footnoteRef href="#note_anx01003801-37" marker="37"/>
                      </p>
                   </td>
                   <td/>
@@ -11618,7 +11618,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-37" marker="37"/>
+                        <footnoteRef href="#note_anx01003801-37" marker="37"/>
                      </p>
                   </td>
                   <td/>
@@ -11661,7 +11661,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-37" marker="37"/>
+                        <footnoteRef href="#note_anx01003801-37" marker="37"/>
                      </p>
                   </td>
                   <td/>
@@ -11710,13 +11710,13 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-38" marker="38"/>
+                        <footnoteRef href="#note_anx01003801-38" marker="38"/>
                      </p>
                   </td>
                   <td>
                      <p>
                         <t v="Manufacture from unembroidered fabric, provided the value of the unembroidered fabric used does not exceed 40 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01003801-38" marker="38"/>
+                        <footnoteRef href="#note_anx01003801-38" marker="38"/>
                      </p>
                   </td>
                </tr>
@@ -11730,7 +11730,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-39" marker="39"/>
+                        <footnoteRef href="#note_anx01003801-39" marker="39"/>
                      </p>
                   </td>
                   <td>
@@ -11769,13 +11769,13 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-40" marker="40"/>
+                        <footnoteRef href="#note_anx01003801-40" marker="40"/>
                      </p>
                   </td>
                   <td>
                      <p>
                         <t v="Manufacture from unembroidered fabric, provided the value of the unembroidered fabric used does not exceed 40 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01003801-40" marker="40"/>
+                        <footnoteRef href="#note_anx01003801-40" marker="40"/>
                      </p>
                   </td>
                </tr>
@@ -11789,13 +11789,13 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-40" marker="40"/>
+                        <footnoteRef href="#note_anx01003801-40" marker="40"/>
                      </p>
                   </td>
                   <td>
                      <p>
                         <t v="Manufacture from uncoated fabric provided the value of the uncoated fabric used does not exceed 40 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01003801-40" marker="40"/>
+                        <footnoteRef href="#note_anx01003801-40" marker="40"/>
                      </p>
                   </td>
                </tr>
@@ -11871,7 +11871,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from"/>
-                        <noteRef href="#note_anx01003801-41" marker="41"/>
+                        <footnoteRef href="#note_anx01003801-41" marker="41"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -11911,9 +11911,9 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-42" marker="42"/>
+                        <footnoteRef href="#note_anx01003801-42" marker="42"/>
                         <t v=","/>
-                        <noteRef href="#note_anx01003801-43" marker="43"/>
+                        <footnoteRef href="#note_anx01003801-43" marker="43"/>
                      </p>
                   </td>
                   <td>
@@ -11932,9 +11932,9 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-44" marker="44"/>
+                        <footnoteRef href="#note_anx01003801-44" marker="44"/>
                         <t v=","/>
-                        <noteRef href="#note_anx01003801-45" marker="45"/>
+                        <footnoteRef href="#note_anx01003801-45" marker="45"/>
                      </p>
                   </td>
                   <td/>
@@ -11953,7 +11953,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn"/>
-                        <noteRef href="#note_anx01003801-44" marker="44"/>
+                        <footnoteRef href="#note_anx01003801-44" marker="44"/>
                      </p>
                   </td>
                   <td/>
@@ -12081,7 +12081,7 @@
                   <td>
                      <p>
                         <t v="Manufacture from yarn or textile fibres"/>
-                        <noteRef href="#note_anx01003801-46" marker="46"/>
+                        <footnoteRef href="#note_anx01003801-46" marker="46"/>
                      </p>
                   </td>
                   <td/>
@@ -12296,7 +12296,7 @@
                   <td>
                      <p>
                         <t v="glass plate substrate coated with dielectric thin film, semi-conductor grade, in accordance with SEMII standards"/>
-                        <noteRef href="#note_anx01003801-47" marker="47"/>
+                        <footnoteRef href="#note_anx01003801-47" marker="47"/>
                      </p>
                   </td>
                   <td>
@@ -17972,8 +17972,8 @@
                </tr>
             </table>
          </occurrence>
-         <notes>
-            <note eId="note_anx01003801-1" marker="1" kind="table">
+         <footnotes>
+            <footnote eId="note_anx01003801-1" marker="1" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -17981,8 +17981,8 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-2" marker="2" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-2" marker="2" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -17990,8 +17990,8 @@
                   </quote>
                   <t v=", see Introductory Note 7.2."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-3" marker="3" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-3" marker="3" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -17999,8 +17999,8 @@
                   </quote>
                   <t v=", see Introductory Note 7.2."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-4" marker="4" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-4" marker="4" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18008,8 +18008,8 @@
                   </quote>
                   <t v=", see Introductory Note 7.2."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-5" marker="5" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-5" marker="5" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18017,8 +18017,8 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-6" marker="6" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-6" marker="6" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18026,8 +18026,8 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-7" marker="7" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-7" marker="7" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18035,8 +18035,8 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-8" marker="8" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-8" marker="8" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18044,8 +18044,8 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-9" marker="9" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-9" marker="9" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18053,13 +18053,13 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-10" marker="10" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-10" marker="10" kind="table">
                <p>
                   <t v="Note 3 to Chapter 32 says that these preparations are those of a kind used for colouring any material or used as ingredients in the manufacture of colouring preparations, provided they are not classified in another heading in Chapter 32."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-11" marker="11" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-11" marker="11" kind="table">
                <p>
                   <t v="A "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18067,8 +18067,8 @@
                   </quote>
                   <t v=" is regarded as any part of the heading separated from the rest by a semi-colon."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-12" marker="12" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-12" marker="12" kind="table">
                <p>
                   <t v="For the special conditions relating to "/>
                   <quote startQuote="‘" endQuote="’">
@@ -18076,8 +18076,8 @@
                   </quote>
                   <t v=", see Introductory Notes 7.1 and 7.3."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-13" marker="13" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-13" marker="13" kind="table">
                <p>
                   <t v="In the case of the products composed of materials classified within both headings "/>
                   <t v="3901"/>
@@ -18089,8 +18089,8 @@
                   <t v="3911"/>
                   <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-14" marker="14" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-14" marker="14" kind="table">
                <p>
                   <t v="In the case of the products composed of materials classified within both headings "/>
                   <t v="3901"/>
@@ -18102,8 +18102,8 @@
                   <t v="3911"/>
                   <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-15" marker="15" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-15" marker="15" kind="table">
                <p>
                   <t v="In the case of the products composed of materials classified within both headings "/>
                   <t v="3901"/>
@@ -18115,168 +18115,168 @@
                   <t v="3911"/>
                   <t v=", on the other hand, this restriction only applies to that group of materials which predominates by weight in the product."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-16" marker="16" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-16" marker="16" kind="table">
                <p>
                   <t v="The following foils shall be considered as highly transparent: foils, the optical dimming of which, measured according to ASTM-D 1003-16 by Gardner Hazemeter (i.e. Hazefactor), is less than 2 %."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-17" marker="17" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-17" marker="17" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-18" marker="18" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-18" marker="18" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-19" marker="19" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-19" marker="19" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-20" marker="20" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-20" marker="20" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-21" marker="21" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-21" marker="21" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-22" marker="22" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-22" marker="22" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-23" marker="23" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-23" marker="23" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-24" marker="24" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-24" marker="24" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-25" marker="25" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-25" marker="25" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-26" marker="26" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-26" marker="26" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-27" marker="27" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-27" marker="27" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-28" marker="28" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-28" marker="28" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-29" marker="29" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-29" marker="29" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-30" marker="30" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-30" marker="30" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-31" marker="31" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-31" marker="31" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-32" marker="32" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-32" marker="32" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-33" marker="33" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-33" marker="33" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-34" marker="34" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-34" marker="34" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-35" marker="35" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-35" marker="35" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-36" marker="36" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-36" marker="36" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-37" marker="37" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-37" marker="37" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-38" marker="38" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-38" marker="38" kind="table">
                <p>
                   <t v="See Introductory Note 6."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-39" marker="39" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-39" marker="39" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-40" marker="40" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-40" marker="40" kind="table">
                <p>
                   <t v="See Introductory Note 6."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-41" marker="41" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-41" marker="41" kind="table">
                <p>
                   <t v="See Introductory Note 6."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-42" marker="42" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-42" marker="42" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-43" marker="43" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-43" marker="43" kind="table">
                <p>
                   <t v="For knitted or crocheted articles, not elastic or rubberised, obtained by sewing or assembling pieces of knitted or crocheted fabrics (cut out or knitted directly to shape), see Introductory Note 6."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-44" marker="44" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-44" marker="44" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-45" marker="45" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-45" marker="45" kind="table">
                <p>
                   <t v="For knitted or crocheted articles, not elastic or rubberised, obtained by sewing or assembling pieces of knitted or crocheted fabrics (cut out or knitted directly to shape), see Introductory Note 6."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-46" marker="46" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-46" marker="46" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-            <note eId="note_anx01003801-47" marker="47" kind="table">
+            </footnote>
+            <footnote eId="note_anx01003801-47" marker="47" kind="table">
                <p>
                   <t v="SEMII – Semiconductor Equipment and Materials Institute Incorporated."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
       <occurrence eId="anx_ii-a-to-protocol-1"
                   kind="annex"
@@ -19381,7 +19381,7 @@
                      </p>
                      <p>
                         <t v="Manufacture from unembroidered fabric, provided that the value of the unembroidered fabric used does not exceed 40 % of the ex-works price of the product"/>
-                        <noteRef href="#note_anx01017401-1" marker="1"/>
+                        <footnoteRef href="#note_anx01017401-1" marker="1"/>
                      </p>
                      <p>
                         <t v="or"/>
@@ -19726,13 +19726,13 @@
                </tr>
             </table>
          </occurrence>
-         <notes>
-            <note eId="note_anx01017401-1" marker="1" kind="table">
+         <footnotes>
+            <footnote eId="note_anx01017401-1" marker="1" kind="table">
                <p>
                   <t v="For special conditions relating to products made of a mixture of textile materials, see Introductory Note 5."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
       <occurrence eId="anx_III-TO-PROTOCOL-1"
                   kind="annex"

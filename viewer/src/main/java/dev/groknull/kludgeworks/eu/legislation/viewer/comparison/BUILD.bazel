@@ -117,7 +117,7 @@ java_library(
 )
 
 # web/view/
-# What the comparison's parts of the compare page show (the chips, the Changes view, the
+# What the comparison's fragments of the compare page show (the chips, the Differences view, the
 # sidenotes, the outline), worked out for its templates (src/main/jte/comparison): its own target, so the
 # templates can take it while comparison/web renders them
 java_library(

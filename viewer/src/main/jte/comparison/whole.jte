@@ -1,12 +1,12 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenotePieces
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView
 @import java.util.List
-@param ChangesView changes
+@param DifferencesView differences
 @param OutlineView outline
 @param gg.jte.Content text
-@param SidenoteParts parts
+@param SidenotePieces pieces
 @param List<ControlsView.ViewLink> views
 @param ControlsView.Legend legend
 <%-- Shows a comparison's Whole text view. The controls come first. Then the text shows every
@@ -16,14 +16,14 @@
 <div class="outlined">
 <act-outline>
 <nav class="outline counted" aria-label="Outline">
-  @template.comparison.outlinehead(total = changes.numbers().size())
-  @template.comparison.outlinerail(outline = outline, total = changes.numbers().size())
+  @template.comparison.outlinehead(total = differences.numbers().size())
+  @template.comparison.outlinerail(outline = outline, total = differences.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
 </act-outline>
-<div class="changes whole">
-  @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, legend = legend)
+<div class="differences whole">
+  @template.comparison.sidenotepieces(pieces = pieces)
+  @template.comparison.controls(differences = differences, views = views, legend = legend)
   <div class="book">${text}</div>
 </div>
 </div>

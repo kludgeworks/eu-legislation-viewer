@@ -270,9 +270,9 @@
             </num>
             <p>
                <t v="The direct or indirect supply, sale, transfer or export of small arms and light weapons, their components and accessories, and ammunition as set out in the Annex to Council Decision (CFSP) 2021/38"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", as well as firearms, their parts and essential components, and ammunition as defined in Council Regulation (EU) No 258/2012"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", to Haiti by nationals of Member States or from the territories of Member States, or using their flag vessels or aircraft, shall be prohibited whether originating or not in their territories."/>
             </p>
          </occurrence>
@@ -1580,7 +1580,7 @@
                   <t v="controller"/>
                </quote>
                <t v=" within the meaning of Article 3, point (8), of Regulation (EU) 2018/1725 of the European Parliament and of the Council"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", in order to ensure that the natural persons concerned can exercise their rights under that Regulation."/>
             </p>
          </occurrence>
@@ -2561,8 +2561,8 @@
          </list>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Council Decision (CFSP) 2021/38 of "/>
             <date date="2021-01-15">
@@ -2574,8 +2574,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Regulation (EU) No 258/2012 of the European Parliament and of the Council of "/>
             <date date="2012-03-14">
@@ -2587,8 +2587,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Regulation (EU) 2018/1725 of the European Parliament and of the Council of "/>
             <date date="2018-10-23">
@@ -2604,7 +2604,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

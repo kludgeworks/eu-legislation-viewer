@@ -6,13 +6,13 @@ import java.util.Optional;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A view of a comparison. It sets what part of the two texts the comparison shows, and how. The
+ * A view of a comparison. It sets how much of the two texts the comparison shows, and how. The
  * address of a comparison names it, in the {@code view} field of the catalogue's {@code
  * ComparePage}.
  */
 public enum ComparisonView {
   /** Only the provisions that differ, with the opening of the occurrence each is in. */
-  CHANGES("changes", "Changes"),
+  DIFFERENCES("differences", "Differences"),
   /** Every provision of the later text. The provisions that differ show their edits in place. */
   WHOLE("whole", "Whole text"),
   /** The two texts side by side, aligned by provision. */
@@ -27,8 +27,8 @@ public enum ComparisonView {
   }
 
   /**
-   * Returns the code of the view in the address of the comparison: {@code changes}, {@code whole}
-   * or {@code synopsis}.
+   * Returns the code of the view in the address of the comparison: {@code differences}, {@code
+   * whole} or {@code synopsis}.
    */
   public String code() {
     return code;
@@ -36,10 +36,10 @@ public enum ComparisonView {
 
   /**
    * Returns the code of the view in the {@code view} field of an address, or null for the first
-   * view, {@link #CHANGES}: its address has no {@code view} field.
+   * view, {@link #DIFFERENCES}: its address has no {@code view} field.
    */
   public @Nullable String parameter() {
-    return this == CHANGES ? null : code;
+    return this == DIFFERENCES ? null : code;
   }
 
   /** Returns the name of the view in the controls. For example, "Whole text". */

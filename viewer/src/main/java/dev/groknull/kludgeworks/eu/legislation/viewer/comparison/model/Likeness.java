@@ -10,21 +10,21 @@ import java.util.Locale;
 import java.util.Map;
 
 /**
- * How alike two parts of a text are, by the words that they share. A comparison pairs the parts
+ * How alike two pieces of a text are, by the words that they share. A comparison pairs the pieces
  * that differ by it.
  *
- * <p>The likeness of two parts is the Dice coefficient of their words: twice the words that they
+ * <p>The likeness of two pieces is the Dice coefficient of their words: twice the words that they
  * share, over the words of both. Each word counts as often as it occurs.
  */
 final class Likeness {
   /**
-   * The likeness from which two parts are one part, changed. Below it, they are a part deleted and
-   * another inserted.
+   * The likeness from which two pieces are one piece, changed. Below it, they are a piece deleted
+   * and another inserted.
    */
   static final double MINIMUM = 0.5;
 
   /**
-   * The most pairs of parts whose likeness {@link #pairs} works out. Above it, the parts pair in
+   * The most pairs of pieces whose likeness {@link #pairs} works out. Above it, the pieces pair in
    * order. For example, a table of 500 rows replaced whole by a table of 500 others.
    */
   private static final long MOST = 250_000;
@@ -32,18 +32,18 @@ final class Likeness {
   private Likeness() {}
 
   /**
-   * Pairs the parts {@code from} of one text with the parts {@code to} of the other. They are the
-   * parts between two parts that are the same in both texts, so each of them differs.
+   * Pairs the pieces {@code from} of one text with the pieces {@code to} of the other. They are the
+   * pieces between two pieces that are the same in both texts, so each of them differs.
    *
    * <ul>
-   *   <li>First, parts that are alike pair, in order. Of the ways to pair them, the one with the
+   *   <li>First, pieces that are alike pair, in order. Of the ways to pair them, the one with the
    *       greatest likeness in all wins. For example, a row changed by one word pairs with the row
    *       that it was, not with a row inserted before it.
-   *   <li>Then, between two such pairs, the parts left with the same name pair in order. For
+   *   <li>Then, between two such pairs, the pieces left with the same name pair in order. For
    *       example, the num "12." with the num "13.".
    * </ul>
    *
-   * @return for each part of {@code to}, the position in {@code from} of the part that it pairs
+   * @return for each piece of {@code to}, the position in {@code from} of the piece that it pairs
    *     with, or -1 if it pairs with none
    */
   static int[] pairs(List<Element> from, List<Element> to) {
@@ -57,8 +57,8 @@ final class Likeness {
   }
 
   /**
-   * Returns where the part {@code source} of one text, paired with none, goes among the parts of
-   * the other: before the first part that pairs with a part after it.
+   * Returns where the piece {@code source} of one text, paired with none, goes among the pieces of
+   * the other: before the first piece that pairs with a piece after it.
    */
   static int before(int[] sourceOf, int source) {
     for (var i = 0; i < sourceOf.length; i++) {
@@ -158,10 +158,10 @@ final class Likeness {
     return sourceOf;
   }
 
-  /** Pairs the parts that are alike, in order, with the greatest likeness in all. */
+  /** Pairs the pieces that are alike, in order, with the greatest likeness in all. */
   private static void alike(List<Element> from, List<Element> to, int[] sourceOf) {
-    var earlier = from.stream().map(part -> words(Wording.of(part))).toList();
-    var later = to.stream().map(part -> words(Wording.of(part))).toList();
+    var earlier = from.stream().map(piece -> words(Wording.of(piece))).toList();
+    var later = to.stream().map(piece -> words(Wording.of(piece))).toList();
     var found =
         best(
             from.size(),
@@ -173,7 +173,7 @@ final class Likeness {
     System.arraycopy(found, 0, sourceOf, 0, found.length);
   }
 
-  /** Pairs the parts left between two pairs, in order, while they have the same name. */
+  /** Pairs the pieces left between two pairs, in order, while they have the same name. */
   private static void rest(List<Element> from, List<Element> to, int[] sourceOf) {
     var source = 0;
     var target = 0;
@@ -182,7 +182,7 @@ final class Likeness {
       while (next < to.size() && sourceOf[next] < 0) {
         next++;
       }
-      // The parts left are from source up to the part that next pairs, and target up to next.
+      // The pieces left are from source up to the piece that next pairs, and target up to next.
       var until = next < to.size() ? sourceOf[next] : from.size();
       for (var k = 0; source + k < until && target + k < next; k++) {
         if (from.get(source + k).name().equals(to.get(target + k).name())) {

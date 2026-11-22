@@ -144,16 +144,16 @@
             <occurrence eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation (EEC) No 2759/75 of 29 October 1975 on the common organization of the market in pigmeat"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=", as last amended by Regulation (EEC) No 2966/80"/>
-                  <noteRef href="#note_2" marker="1"/>
+                  <footnoteRef href="#note_2" marker="1"/>
                   <t v=", and in particular Articles 2 and 4 (6) thereof,"/>
                </p>
             </occurrence>
             <occurrence eId="pbl_1/cit_3" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation (EEC) No 3220/84 of 13 November 1984 determining the Community scale for grading pig carcases"/>
-                  <noteRef href="#note_3" marker="1"/>
+                  <footnoteRef href="#note_3" marker="1"/>
                   <t v=", and in particular Article 5 (1) thereof,"/>
                </p>
             </occurrence>
@@ -553,13 +553,13 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
+   <footnotes>
       <deleted>
          <tag amendingAct="32008R1249"
               action="deleted"
               location="AR:40"
               tagId="O003001M001000"/>
-         <note eId="note_1" marker="1" kind="footnote">
+         <footnote eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -570,8 +570,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_2" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_2" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -582,8 +582,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_3" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_3" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -594,8 +594,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
+         </footnote>
       </deleted>
-   </notes>
+   </footnotes>
 </legalText>
 

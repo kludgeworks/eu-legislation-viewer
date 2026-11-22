@@ -20,7 +20,7 @@ import org.springframework.util.PropertyPlaceholderHelper;
 import org.springframework.util.StringUtils;
 
 /**
- * The parts of the API's documentation, as each module gives them. The documentation page shows
+ * The sections of the API's documentation, as each module gives them. The documentation page shows
  * them ({@link ApiDocsController}), and the contents beside it and beside the About page list them.
  *
  * <ul>
@@ -36,8 +36,8 @@ import org.springframework.util.StringUtils;
  *       a resource does: {@code ${act/text-failed}}.
  * </ul>
  *
- * Thus a module documents its part without the catalogue knowing it. The parts are small, so they
- * are read each time a page asks for them.
+ * Thus a module documents its section without the catalogue knowing it. The sections are small, so
+ * they are read each time a page asks for them.
  */
 @Component
 class ApiDocs {
@@ -63,23 +63,23 @@ class ApiDocs {
     this.problems = problems.clone();
   }
 
-  /** Reads the parts of the documentation. */
-  Parts read() {
+  /** Reads the sections of the documentation. */
+  Sections read() {
     var shown = examples();
-    return new Parts(
+    return new Sections(
         terms(resources, shown).stream().map(ApiDocs::resource).toList(),
         shown,
         terms(problems, shown));
   }
 
   /**
-   * The parts of the documentation.
+   * The sections of the documentation.
    *
    * @param resources the resources, in order
    * @param examples each example by its name, for example {@code act/lookup}
    * @param problems the problem types, by name
    */
-  record Parts(
+  record Sections(
       List<ApiResourceView> resources, Map<String, String> examples, List<ApiTermView> problems) {}
 
   /**

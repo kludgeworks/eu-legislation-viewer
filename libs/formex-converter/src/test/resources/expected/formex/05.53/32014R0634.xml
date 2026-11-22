@@ -58,7 +58,7 @@
                   <t v="19 July 2002"/>
                </date>
                <t v=" on the application of international accounting standards"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 3(1) thereof,"/>
             </p>
          </occurrence>
@@ -75,7 +75,7 @@
             </num>
             <p>
                <t v="By Commission Regulation (EC) No 1126/2008"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" certain international standards and interpretations that were in existence at "/>
                <date date="2008-10-15">
                   <t v="15 October 2008"/>
@@ -224,8 +224,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -236,8 +236,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Regulation (EC) No 1126/2008 of "/>
             <date date="2008-11-03">
@@ -253,8 +253,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -280,7 +280,7 @@
                      <t v="Levies"/>
                   </emphasis>
                </emphasis>
-               <noteRef href="#note_anx01001101-1" marker="*"/>
+               <footnoteRef href="#note_anx01001101-1" marker="*"/>
             </heading>
          </occurrence>
          <occurrence eId="anx/pnt_IFRIC-21/level_1" kind="level" depth="2" rank="3">
@@ -646,8 +646,8 @@
                </p>
             </occurrence>
          </occurrence>
-         <notes>
-            <note eId="note_anx01001101-1" marker="*" kind="footnote">
+         <footnotes>
+            <footnote eId="note_anx01001101-1" marker="*" kind="footnote">
                <p>
                   <emphasis kind="b">
                      <quote startQuote="‘" endQuote="’">
@@ -655,8 +655,8 @@
                      </quote>
                   </emphasis>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
          <occurrence eId="anx/app" kind="annex" rank="2">
             <num>
                <t v="Appendix A"/>

@@ -29,7 +29,7 @@
 /** One day, in milliseconds. */
 const DAY = 86_400_000;
 
-/** How many acts the note of a day names. */
+/** How many acts the summary of a day names. */
 const NAMED = 3;
 
 const MONTHS = [
@@ -97,10 +97,10 @@ export const month = (shown) => {
 export const changes = (text) => {
   /** @type {Map<string, string[]>} */
   const found = new Map();
-  for (const part of text.split(";")) {
-    const at = part.indexOf("=");
+  for (const entry of text.split(";")) {
+    const at = entry.indexOf("=");
     if (at > 0) {
-      found.set(part.slice(0, at), part.slice(at + 1).split("|").filter(Boolean));
+      found.set(entry.slice(0, at), entry.slice(at + 1).split("|").filter(Boolean));
     }
   }
   return found;
@@ -119,12 +119,12 @@ export const around = (days, day) => ({
 });
 
 /**
- * Returns what the note of a day says: its first lines, and how many more acts it has.
+ * Returns what the summary of a day says: its first lines, and how many more acts it has.
  *
  * @param {readonly string[]} lines what each act does on the day
  * @returns {string[]}
  */
-export const note = (lines) => {
+export const summary = (lines) => {
   const more = lines.length - NAMED;
   return more > 0
     ? [...lines.slice(0, NAMED), more === 1 ? "and 1 more act" : `and ${more} more acts`]
@@ -140,13 +140,13 @@ export const note = (lines) => {
  * @returns {string | null}
  */
 export const parse = (text) => {
-  const parts = text
+  const fields = text
     .trim()
     .toLowerCase()
     .split(/[\s./-]+/)
     .filter(Boolean);
-  const [a, b, c] = parts;
-  if (parts.length !== 3 || a === undefined || b === undefined || c === undefined) {
+  const [a, b, c] = fields;
+  if (fields.length !== 3 || a === undefined || b === undefined || c === undefined) {
     return null;
   }
   const iso = a.length === 4;
@@ -235,7 +235,7 @@ export class DayPicker extends HTMLElement {
   #focus = "";
   /** What the reader must correct, or empty. */
   #error = "";
-  /** Whether the reader moves in the calendar with the keys. A day then shows its note on focus. */
+  /** Whether the reader moves in the calendar with the keys. A day then shows its summary on focus. */
   #keys = false;
 
   /** Waits for the form while the parser has not added it yet. */
@@ -458,14 +458,14 @@ export class DayPicker extends HTMLElement {
       return;
     }
     const marked = this.changes;
-    const parts = [];
+    const children = [];
     if (this.ranged) {
       const mode = element("div", { class: "day-mode", role: "group", "aria-label": "How many days" });
       mode.append(
         element("button", { type: "button", "data-mode": "one", "aria-pressed": String(!this.#two) }, "One day"),
         element("button", { type: "button", "data-mode": "two", "aria-pressed": String(this.#two) }, "Compare two days"),
       );
-      parts.push(mode);
+      children.push(mode);
     }
     if (this.#two) {
       const ends = element("div", { class: "day-ends" });
@@ -480,7 +480,7 @@ export class DayPicker extends HTMLElement {
         );
         ends.append(label);
       }
-      parts.push(ends);
+      children.push(ends);
     }
     const head = element("div", { class: "day-head" });
     const months = element("select", { "aria-label": "Month", "data-pick": "month" });
@@ -526,7 +526,7 @@ export class DayPicker extends HTMLElement {
           type: "button",
           class: [chosen && "chosen", other && "other", lines.length > 0 && "dot"].filter(Boolean).join(" "),
           "data-day": day,
-          "aria-label": [words(day), ...note(lines)].join(". "),
+          "aria-label": [words(day), ...summary(lines)].join(". "),
           tabindex: day === this.#focus ? "0" : "-1",
         },
         String(Number(day.slice(8))),
@@ -550,11 +550,11 @@ export class DayPicker extends HTMLElement {
         ? element("button", { type: "button", class: "day-show", "data-show": "" }, "Show")
         : element("button", { type: "button", class: "link", "data-day": today() }, "Today"),
     );
-    parts.push(head, wrap, foot);
+    children.push(head, wrap, foot);
     if (this.#error) {
-      parts.push(element("p", { class: "day-error", role: "alert" }, this.#error));
+      children.push(element("p", { class: "day-error", role: "alert" }, this.#error));
     }
-    panel.replaceChildren(...parts);
+    panel.replaceChildren(...children);
     const target =
       focus === "day"
         ? grid.querySelector('[tabindex="0"]')
@@ -696,7 +696,7 @@ export class DayPicker extends HTMLElement {
     }
     tip.replaceChildren(
       element("b", {}, words(button.dataset.day ?? "")),
-      ...note(lines).map((line) => element("span", {}, line)),
+      ...summary(lines).map((line) => element("span", {}, line)),
     );
     tip.style.top = `${button.offsetTop + button.offsetHeight + 4}px`;
     tip.style.left = `${Math.max(0, Math.min(button.offsetLeft, (tip.parentElement?.clientWidth ?? 0) - 240))}px`;

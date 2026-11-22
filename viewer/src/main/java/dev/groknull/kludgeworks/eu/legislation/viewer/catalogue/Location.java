@@ -23,7 +23,7 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>{@link #in} finds the location among the occurrences of a text, by their eIds. Each code is
- * one step down, to the one occurrence below that has its number. A child is tried before any
+ * one level down, to the one occurrence below that has its number. A child is tried before any
  * further descendant. This is necessary because the frames of our eIds differ from those of Cellar.
  * Our eIds keep some frames flat, and add others, such as the levels of an annex. For example, a
  * chapter of an annex can be a point beside its own points, such as {@code anx/pnt_3} and {@code
@@ -38,7 +38,7 @@ import org.jspecify.annotations.Nullable;
 public record Location(String code) {
 
   /** The eId names for each code, in the order tried. */
-  private static final Map<String, List<String>> STEPS =
+  private static final Map<String, List<String>> NAMES =
       Map.ofEntries(
           Map.entry("AR", List.of("art")),
           Map.entry("PA", List.of("par")),
@@ -59,8 +59,8 @@ public record Location(String code) {
           Map.entry("APP", List.of("level_ATTACHMENT", "app")));
 
   /**
-   * Codes that may only frame what our eIds keep flat. A step with such a code is passed when no
-   * occurrence has it.
+   * Codes that may only frame what our eIds keep flat. Such a code is passed when no occurrence has
+   * it.
    */
   private static final Set<String> FRAMES = Set.of("TIT", "CHA", "SCT", "SECTION", "SBS", "PRT");
 
@@ -107,12 +107,12 @@ public record Location(String code) {
    */
   public static boolean holds(String holder, String eId) {
     var slash = holder.lastIndexOf('/');
-    var step = holder.substring(slash + 1);
+    var segment = holder.substring(slash + 1);
     var prefix = holder.substring(0, slash + 1);
-    if (!step.startsWith("pnt_") || !eId.startsWith(prefix)) {
+    if (!segment.startsWith("pnt_") || !eId.startsWith(prefix)) {
       return false;
     }
-    var number = step.substring("pnt_".length());
+    var number = segment.substring("pnt_".length());
     var rest = eId.substring(prefix.length());
     var end = rest.indexOf('/');
     var beside = end < 0 ? rest : rest.substring(0, end);
@@ -181,13 +181,13 @@ public record Location(String code) {
     for (var i = 0; i < tokens.size(); i++) {
       var token = tokens.get(i);
       var next = i + 1 < tokens.size() ? tokens.get(i + 1) : null;
-      var numbered = next != null && !STEPS.containsKey(next) && !FINER.contains(next);
+      var numbered = next != null && !NAMES.containsKey(next) && !FINER.contains(next);
       if (FINER.contains(token)) {
         within = true;
         i += numbered ? 1 : 0;
         continue;
       }
-      var names = STEPS.get(token);
+      var names = NAMES.get(token);
       if (names == null) {
         return around ? held(at) : Optional.empty();
       }
@@ -318,7 +318,7 @@ public record Location(String code) {
 
   /**
    * Returns the number of the point that holds the point numbered {@code number}, or null if the
-   * number has no parts. For example, 4.1.3 for 4.1.3.4.
+   * number has no dot. For example, 4.1.3 for 4.1.3.4.
    */
   private static @Nullable String upper(String number) {
     var dot = number.lastIndexOf('.');
@@ -350,21 +350,23 @@ public record Location(String code) {
   private static List<String> below(
       Occurrences occurrences, String at, List<String> names, String number) {
     var prefix = at.isEmpty() ? "" : at + "/";
-    var steps =
+    var segments =
         names.stream()
             .map(name -> name + (name.startsWith("level_") ? "-" : "_") + number)
             .toList();
     for (var children : List.of(true, false)) {
       for (var exact : List.of(true, false)) {
-        for (var step : steps) {
+        for (var segment : segments) {
           var found =
-              occurrences.named(step).stream()
+              occurrences.named(segment).stream()
                   .filter(occurrence -> occurrence.startsWith(prefix))
                   .filter(occurrence -> !children || occurrence.indexOf('/', prefix.length()) < 0)
                   .filter(
                       occurrence ->
                           !exact
-                              || occurrence.substring(occurrence.lastIndexOf('/') + 1).equals(step))
+                              || occurrence
+                                  .substring(occurrence.lastIndexOf('/') + 1)
+                                  .equals(segment))
                   .toList();
           if (!found.isEmpty()) {
             return found;
@@ -384,10 +386,10 @@ public record Location(String code) {
     private final Set<String> all;
 
     /**
-     * The occurrences by the last step of their eIds in lower case, each list in the order of the
-     * eIds.
+     * The occurrences by the last segment of their eIds in lower case, each list in the order of
+     * the eIds.
      */
-    private final Map<String, List<String>> byStep = new HashMap<>();
+    private final Map<String, List<String>> bySegment = new HashMap<>();
 
     private final @Nullable String annex;
 
@@ -399,10 +401,10 @@ public record Location(String code) {
         named
             .computeIfAbsent(
                 occurrence.substring(occurrence.lastIndexOf('/') + 1).toLowerCase(Locale.ROOT),
-                step -> new ArrayList<>())
+                segment -> new ArrayList<>())
             .add(occurrence);
       }
-      named.forEach((step, occurrences) -> byStep.put(step, List.copyOf(occurrences)));
+      named.forEach((segment, occurrences) -> bySegment.put(segment, List.copyOf(occurrences)));
       var annexes = eIds.stream().filter(e -> e.startsWith("anx") && !e.contains("/")).toList();
       this.annex = annexes.size() == 1 ? annexes.getFirst() : null;
     }
@@ -418,11 +420,11 @@ public record Location(String code) {
     }
 
     /**
-     * Returns the occurrences whose eIds end with the step {@code step}, in any case, sorted by
-     * their eIds.
+     * Returns the occurrences whose eIds end with the segment {@code segment}, in any case, sorted
+     * by their eIds.
      */
-    List<String> named(String step) {
-      return byStep.getOrDefault(step.toLowerCase(Locale.ROOT), List.of());
+    List<String> named(String segment) {
+      return bySegment.getOrDefault(segment.toLowerCase(Locale.ROOT), List.of());
     }
   }
 
@@ -467,13 +469,13 @@ public record Location(String code) {
    */
   public String name() {
     var tokens = tokens();
-    var parts = new ArrayList<String>();
+    var levels = new ArrayList<String>();
     String noun = null;
     var cited = "";
     for (var i = 0; i < tokens.size(); i++) {
       var token = tokens.get(i);
       var next = i + 1 < tokens.size() ? tokens.get(i + 1) : null;
-      var numbered = next != null && !STEPS.containsKey(next) && !FINER.contains(next);
+      var numbered = next != null && !NAMES.containsKey(next) && !FINER.contains(next);
       if (!NOUNS.containsKey(token)) {
         i += numbered ? 1 : 0;
         continue;
@@ -500,9 +502,9 @@ public record Location(String code) {
         cited += "(" + number + ")";
       } else {
         if (token.equals("AR")) {
-          parts.clear();
+          levels.clear();
         } else if (noun != null && holds(noun, cited, number)) {
-          parts.add(cited.isEmpty() ? noun : noun + " " + cited);
+          levels.add(cited.isEmpty() ? noun : noun + " " + cited);
         }
         noun = NOUNS.get(token);
         cited = number;
@@ -511,8 +513,8 @@ public record Location(String code) {
     if (noun == null) {
       return code;
     }
-    parts.add(cited.isEmpty() ? noun : noun + " " + cited);
-    return String.join(", ", parts);
+    levels.add(cited.isEmpty() ? noun : noun + " " + cited);
+    return String.join(", ", levels);
   }
 
   /**

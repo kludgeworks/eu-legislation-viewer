@@ -55,18 +55,18 @@ class DifferSamplesTest {
   /** The SHA-256 of each comparison of {@link #PAIRS} written out, in order. */
   private static final List<String> FOUND =
       List.of(
-          "3e18d3728e074b522e9c52ae1cad8e99a6dcba668bc6707a2c29fe4f6b917cfa",
-          "59efc99f38493dc3db95dfd973f4a140c11686189a32cdff6f429f6f72e04578",
-          "f0bb09bca4b6bceb1a7fa2eb0d92702470a9ee889edd746d8fa338f62146e6bc",
-          "d3704ec0c3688884b62c753bcad542ef0462d9d0cf51303f7f716669b56fe1af",
+          "79d6a7da47eb20a4d7322117e42822857f7ab3e00397bcfad4bfd33b53ad34bd",
+          "46bcc9f6045daaabc662a7fc3ee997dd08c1944b55c697bf690fcb21d87183f4",
+          "aabe5fe294bd7b014fa09d4fdeedb43e13f59dbf36361aeadb6aa16c9dc9abec",
+          "5884feae0ef87c61a49c387934f6bcdb515071f20fccd028d1f47333c1a052f2",
           "3b80dfd486de5222b106d339d0fc5f21d022aeb9505769562e0c5d011e094d40",
-          "4424137d16f18bb3a96fbefacb70f83a1ac8e5af3b611610326da2ed46f9c13f",
-          "68708f92e064c5a14effca8527d8d0ff350d5cac27ba4b1897ece168bffc8a59",
-          "853ce60b1482b7a736f2da48e16ae18277b3c60871e3e736e2d7f58c673172c0",
-          "889a1a2a0dabe4a19cceba15256b10c51c9ad5b43f285fe7f32bc71d115c85f8",
+          "6da55b7ded28d2265397f6ed22482675fc1d083d44934053da0d94ef46648898",
+          "7334394aac7ca411c1c4a8525ac5c9cc5a199ec1ba7399c7349743236c88bfc4",
+          "f3463c0aab19d00b853f9e85dbbfeb6d30dcd648bf3b1cadbe185b68b78fab05",
+          "afba482a26ea11d2820117a81eb9eec4ab066a60ae21da7d1439a7f3085036b7",
           "a88508062e58a70e49f3c24de45d858f3b21816e9f0b109e73a193a7aea1c672",
-          "df6489e9789d2a36a5d667c58451c0c932433e3750101f3cb4ea2eca1f36674f",
-          "6642ed63e575112e06dd6e6fb3762522da2d1bcee0c94d28ff7d3333e1420a45");
+          "8ab2158aa81c457f126637b6adf1f45451f8cc9f0ee90c902961878be57ee005",
+          "46a43befc4317642c9c0fab10190b993a5392f11c8e9ed67e85910e96780087d");
 
   @Test
   void findsWhatItFoundBefore() {
@@ -85,7 +85,7 @@ class DifferSamplesTest {
    *
    * <p>An occurrence is read by its own blocks. A difference that shows an occurrence whole is read
    * occurrence by occurrence, because a deleted occurrence shows beside an occurrence of the later
-   * text, not always where it stood. The notes under an occurrence are not read.
+   * text, not always where it stood. The footnotes under an occurrence are not read.
    */
   @Test
   void showsWhatBothTextsSay() {
@@ -114,11 +114,12 @@ class DifferSamplesTest {
         }
         if (!read(difference.shown(), Edits.DELETED).equals(later)) {
           wrong.add(
-              note(pair, difference, "later", read(difference.shown(), Edits.DELETED), later));
+              footnote(pair, difference, "later", read(difference.shown(), Edits.DELETED), later));
         }
         if (!read(difference.shown(), Edits.INSERTED).equals(earlier)) {
           wrong.add(
-              note(pair, difference, "earlier", read(difference.shown(), Edits.INSERTED), earlier));
+              footnote(
+                  pair, difference, "earlier", read(difference.shown(), Edits.INSERTED), earlier));
         }
       }
     }
@@ -126,7 +127,7 @@ class DifferSamplesTest {
   }
 
   /** Returns where {@code difference}, read as one text, first says other than that text. */
-  private static String note(
+  private static String footnote(
       List<String> pair,
       Difference difference,
       String text,
@@ -241,7 +242,7 @@ class DifferSamplesTest {
   private static void read(
       Element element, String without, String occurrence, Map<String, StringBuilder> said) {
     var name = element.name();
-    if (name.equals(without) || name.equals("notes") || Wording.SILENT.contains(name)) {
+    if (name.equals(without) || name.equals("footnotes") || Wording.SILENT.contains(name)) {
       return;
     }
     var eId = Occurrences.eId(element);

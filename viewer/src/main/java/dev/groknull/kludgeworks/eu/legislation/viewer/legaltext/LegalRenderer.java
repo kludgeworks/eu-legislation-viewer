@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
  * by convention, in the way that XSLT templates match:
  *
  * <ul>
- *   <li>{@code legal/{parent}/{name}.jte}, if there is one. For example, the deleted notes in notes
- *       have a template different from that of deleted blocks.
+ *   <li>{@code legal/{parent}/{name}.jte}, if there is one. For example, the deleted footnotes in
+ *       {@code footnotes} have a template different from that of deleted blocks.
  *   <li>Otherwise {@code legal/{name}.jte}.
  *   <li>A MathML element uses the folder of its prefix. For example, {@code m:mi} uses {@code
  *       legal/m/mi.jte}.

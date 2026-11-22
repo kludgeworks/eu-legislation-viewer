@@ -2,7 +2,7 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer;
 import gg.jte.Content;
@@ -44,16 +44,16 @@ final class WholeText {
   static Content of(
       Element later,
       List<String> earlier,
-      List<ChangesView.Shown> shown,
+      List<DifferencesView.Shown> shown,
       LegalRenderer html,
-      Function<ChangesView.Shown, Element> occurrence,
-      BiFunction<ChangesView.Shown, Content, Content> edited) {
+      Function<DifferencesView.Shown, Element> occurrence,
+      BiFunction<DifferencesView.Shown, Content, Content> edited) {
     var occurrences = new HashSet<String>();
     collect(later, occurrences);
-    var at = new HashMap<String, ChangesView.Shown>();
-    var before = new HashMap<String, List<ChangesView.Shown>>();
-    var after = new HashMap<String, List<ChangesView.Shown>>();
-    var last = new ArrayList<ChangesView.Shown>();
+    var at = new HashMap<String, DifferencesView.Shown>();
+    var before = new HashMap<String, List<DifferencesView.Shown>>();
+    var after = new HashMap<String, List<DifferencesView.Shown>>();
+    var last = new ArrayList<DifferencesView.Shown>();
     for (var each : shown) {
       var difference = each.difference();
       if (difference.kind() != Kind.DELETED) {
@@ -108,10 +108,10 @@ final class WholeText {
   }
 
   private static Content deletion(
-      ChangesView.Shown deleted,
+      DifferencesView.Shown deleted,
       LegalRenderer html,
-      Function<ChangesView.Shown, Element> occurrence,
-      BiFunction<ChangesView.Shown, Content, Content> edited) {
+      Function<DifferencesView.Shown, Element> occurrence,
+      BiFunction<DifferencesView.Shown, Content, Content> edited) {
     return edited.apply(deleted, html.asIs(occurrence.apply(deleted)));
   }
 

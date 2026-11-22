@@ -6,17 +6,17 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Block;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Cell;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Change.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Deleted;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Edited;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Extract;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Figure;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Footnote;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Inline;
-import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Note;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Occurrence;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Quotation;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Row;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Run.Op;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Table;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.PublicText.Text;
 import java.util.ArrayList;
@@ -42,11 +42,11 @@ import org.jspecify.annotations.Nullable;
  *       for example {@code point}, {@code citation} or {@code recital}.
  *   <li>A group of rows in a table gives its heading as a heading row.
  *   <li>A displayed formula is running text, with MathML in its HTML.
- *   <li>The notes of the files of an annex join the notes of the text.
+ *   <li>The footnotes of the files of an annex join the footnotes of the text.
  * </ul>
  *
  * <p>Running text has two forms. The plain text is the text as printed, without the markers of
- * notes and without the words that an amendment deleted. The HTML uses only these elements:
+ * footnotes and without the words that an amendment deleted. The HTML uses only these elements:
  *
  * <ul>
  *   <li>{@code b}, {@code i}, {@code u}, {@code s}, {@code sup} and {@code sub} for typefaces, and
@@ -54,8 +54,8 @@ import org.jspecify.annotations.Nullable;
  *       others;
  *   <li>{@code time}, with {@code datetime}, for a date;
  *   <li>{@code cite} for a reference to the Official Journal, and {@code a} for a link;
- *   <li>{@code sup} with {@code a}, whose {@code href} is {@code #} and a note's eId, for the
- *       marker of a note;
+ *   <li>{@code sup} with {@code a}, whose {@code href} is {@code #} and a footnote's eId, for the
+ *       marker of a footnote;
  *   <li>{@code br} for a line break, {@code span} with {@code lang} for another language, and
  *       {@code img} with {@code data-file} for an image;
  *   <li>{@code span} with {@code data-act} and {@code data-action} for words that an amending act
@@ -74,8 +74,8 @@ public final class PublicTexts {
   /** What an occurrence holds before its content. */
   private static final Set<String> OCCURRENCE_PARTS = Set.of("tag", "num", "heading", "subheading");
 
-  /** The notes of the files of an annex, which join the notes of the text. */
-  private final List<Note> notes = new ArrayList<>();
+  /** The footnotes of the files of an annex, which join the footnotes of the text. */
+  private final List<Footnote> footnotes = new ArrayList<>();
 
   private PublicTexts() {}
 
@@ -89,7 +89,7 @@ public final class PublicTexts {
     List<Block> body = List.of();
     List<Block> conclusions = List.of();
     List<Block> annexes = List.of();
-    var notes = new ArrayList<Note>();
+    var footnotes = new ArrayList<Footnote>();
     for (var part : legalText.children()) {
       switch (part.name()) {
         case "preface" -> title = child(part, "longTitle").map(PublicTexts::lines).orElse(null);
@@ -97,19 +97,19 @@ public final class PublicTexts {
         case "body" -> body = texts.blocks(part.children());
         case "conclusions" -> conclusions = texts.conclusions(part);
         case "annexes" -> annexes = texts.blocks(part.children());
-        case "notes" -> notes.addAll(texts.notes(part));
+        case "footnotes" -> footnotes.addAll(texts.footnotes(part));
         default -> {
           // The source and the lifecycle are the version's, which the API gives elsewhere
         }
       }
     }
-    notes.addAll(texts.notes);
-    return new PublicText(title, preamble, body, conclusions, annexes, notes);
+    footnotes.addAll(texts.footnotes);
+    return new PublicText(title, preamble, body, conclusions, annexes, footnotes);
   }
 
   /**
-   * Returns an occurrence of a text, with the notes that it refers to. Returns none if the text has
-   * no occurrence {@code eId} outside the text that a consolidation keeps struck.
+   * Returns an occurrence of a text, with the footnotes that it refers to. Returns none if the text
+   * has no occurrence {@code eId} outside the text that a consolidation keeps struck.
    *
    * @param legalText the element of a text, {@code legalText}
    */
@@ -120,11 +120,11 @@ public final class PublicTexts {
             occurrence -> {
               var referred = new LinkedHashSet<String>();
               references(occurrence, referred);
-              var all = new LinkedHashMap<String, Note>();
-              new PublicTexts().allNotes(legalText, all);
+              var all = new LinkedHashMap<String, Footnote>();
+              new PublicTexts().allFootnotes(legalText, all);
               return new Extract(
                   occurrence(occurrence),
-                  referred.stream().map(all::get).filter(note -> note != null).toList());
+                  referred.stream().map(all::get).filter(footnote -> footnote != null).toList());
             });
   }
 
@@ -146,7 +146,7 @@ public final class PublicTexts {
   public static Edited edited(Element occurrence) {
     var words = new Words();
     lines(content(occurrence), words);
-    return new Edited(words.before().strip(), words.after().strip(), words.changes());
+    return new Edited(words.before().strip(), words.after().strip(), words.runs());
   }
 
   /** Returns what an occurrence holds after its number, headings and tag. */
@@ -186,23 +186,24 @@ public final class PublicTexts {
     return blocks;
   }
 
-  private List<Note> notes(Element notes) {
-    var found = new ArrayList<Note>();
-    for (var child : notes.children()) {
-      if (child.name().equals("note")) {
-        found.add(note(child));
+  private List<Footnote> footnotes(Element footnotes) {
+    var found = new ArrayList<Footnote>();
+    for (var child : footnotes.children()) {
+      if (child.name().equals("footnote")) {
+        found.add(footnote(child));
       } else {
-        // The notes of the text that an amendment deleted
+        // The footnotes of the text that an amendment deleted
         child.children().stream()
-            .filter(note -> note.name().equals("note"))
-            .forEach(note -> found.add(note(note)));
+            .filter(footnote -> footnote.name().equals("footnote"))
+            .forEach(footnote -> found.add(footnote(footnote)));
       }
     }
     return found;
   }
 
-  private Note note(Element note) {
-    return new Note(attribute(note, "eId"), attribute(note, "marker"), blocks(note.children()));
+  private Footnote footnote(Element footnote) {
+    return new Footnote(
+        attribute(footnote, "eId"), attribute(footnote, "marker"), blocks(footnote.children()));
   }
 
   // ------------------------------------------------------------------------------------ blocks
@@ -231,7 +232,7 @@ public final class PublicTexts {
           child(element, "caption").ifPresent(caption -> blocks.addAll(blocks(caption.children())));
           blocks.addAll(blocks(withoutParts(element)));
         }
-        case "notes" -> notes.addAll(notes(element));
+        case "footnotes" -> footnotes.addAll(footnotes(element));
         case "tag", "num", "heading", "subheading", "caption" -> {
           // The block around them gives them
         }
@@ -261,7 +262,7 @@ public final class PublicTexts {
     return new Table(
         blocksOf(table, "caption"),
         rows,
-        child(table, "notes").map(this::notes).orElseGet(List::of),
+        child(table, "footnotes").map(this::footnotes).orElseGet(List::of),
         amendments(table));
   }
 
@@ -290,7 +291,7 @@ public final class PublicTexts {
           rows(element.children(), rows);
         }
         default -> {
-          // The caption, the notes and the tag are the table's
+          // The caption, the footnotes and the tag are the table's
         }
       }
     }
@@ -413,7 +414,7 @@ public final class PublicTexts {
                     });
         case "diff:ins" -> words(element.children(), Op.INSERT, words);
         case "diff:del" -> words(element.children(), Op.DELETE, words);
-        case "noteRef", "deleted", "img", "tag" -> {
+        case "footnoteRef", "deleted", "img", "tag" -> {
           // Not printed as text, or not in force
         }
         default -> words(element.children(), op, words);
@@ -453,7 +454,7 @@ public final class PublicTexts {
           words(List.of(element), Op.EQUAL, words);
           words.add(Op.EQUAL, "\n");
         }
-        case "deleted", "tag", "notes", "caption" -> {
+        case "deleted", "tag", "footnotes", "caption" -> {
           // Not in force, or not the occurrence's wording
         }
         default -> lines(element.children(), words);
@@ -466,17 +467,17 @@ public final class PublicTexts {
    * otherwise.
    */
   private static final class Words {
-    private final List<Run> runs = new ArrayList<>();
+    private final List<OpenRun> open = new ArrayList<>();
 
     void add(Op op, String text) {
       if (text.isEmpty()) {
         return;
       }
-      var last = runs.isEmpty() ? null : runs.getLast();
+      var last = open.isEmpty() ? null : open.getLast();
       if (last != null && last.op() == op) {
         last.text().append(text);
       } else {
-        runs.add(new Run(op, new StringBuilder(text)));
+        open.add(new OpenRun(op, new StringBuilder(text)));
       }
     }
 
@@ -492,26 +493,26 @@ public final class PublicTexts {
 
     private String join(Op without) {
       var text = new StringBuilder();
-      runs.stream().filter(run -> run.op() != without).forEach(run -> text.append(run.text()));
+      open.stream().filter(run -> run.op() != without).forEach(run -> text.append(run.text()));
       return text.toString();
     }
 
     /** Returns the runs, without the line feed that ends the last line. */
-    List<Change> changes() {
-      var changes = new ArrayList<Change>();
-      runs.forEach(run -> changes.add(new Change(run.op(), run.text().toString())));
-      if (!changes.isEmpty() && changes.getLast().text().endsWith("\n")) {
-        var last = changes.removeLast();
+    List<Run> runs() {
+      var found = new ArrayList<Run>();
+      open.forEach(run -> found.add(new Run(run.op(), run.text().toString())));
+      if (!found.isEmpty() && found.getLast().text().endsWith("\n")) {
+        var last = found.removeLast();
         var text = last.text().substring(0, last.text().length() - 1);
         if (!text.isEmpty()) {
-          changes.add(new Change(last.op(), text));
+          found.add(new Run(last.op(), text));
         }
       }
-      return changes;
+      return found;
     }
 
     /** A run of words, which grows while the next words are in the same edit as it is. */
-    private record Run(Op op, StringBuilder text) {}
+    private record OpenRun(Op op, StringBuilder text) {}
   }
 
   private static void html(List<Element> inline, StringBuilder html) {
@@ -537,7 +538,7 @@ public final class PublicTexts {
           html(element.children(), html);
           html.append(escape(attribute(element, "endQuote")));
         }
-        case "noteRef" ->
+        case "footnoteRef" ->
             html.append("<sup><a href=\"")
                 .append(escape(attribute(element, "href")))
                 .append("\">")
@@ -658,21 +659,21 @@ public final class PublicTexts {
     return value;
   }
 
-  /** Adds the eIds of the notes that {@code element} refers to, in order. */
+  /** Adds the eIds of the footnotes that {@code element} refers to, in order. */
   private static void references(Element element, Set<String> eIds) {
-    if (element.name().equals("noteRef")) {
+    if (element.name().equals("footnoteRef")) {
       eIds.add(attribute(element, "href").substring(1));
     }
     element.children().forEach(child -> references(child, eIds));
   }
 
-  /** Adds every note of the text, wherever it is, by its eId. */
-  private void allNotes(Element element, Map<String, Note> notes) {
-    if (element.name().equals("note")) {
-      notes.put(attribute(element, "eId"), note(element));
+  /** Adds every footnote of the text, wherever it is, by its eId. */
+  private void allFootnotes(Element element, Map<String, Footnote> footnotes) {
+    if (element.name().equals("footnote")) {
+      footnotes.put(attribute(element, "eId"), footnote(element));
       return;
     }
-    element.children().forEach(child -> allNotes(child, notes));
+    element.children().forEach(child -> allFootnotes(child, footnotes));
   }
 
   private static String escape(String text) {

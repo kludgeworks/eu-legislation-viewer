@@ -45,17 +45,18 @@ import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * Tests the comparison's parts of the compare page alone, with {@code @WebMvcTest} and the modules
- * mocked. The tests check what the parts refuse, and that they link back to the page that they are
- * part of. The act is the act of {@link OneActCellar}, with none of its texts built yet. {@code
- * ChangesPagesTests} tests the parts as the whole app works them out.
+ * Tests the comparison's fragments of the compare page alone, with {@code @WebMvcTest} and the
+ * modules mocked. The tests check what the fragments refuse, and that they link back to the page
+ * that they are fragment of. The act is the act of {@link OneActCellar}, with none of its texts
+ * built yet. {@code DifferencesPagesTests} tests the fragments as the whole app works them out.
  */
-@WebMvcTest(ChangesController.class)
-@Import(ChangesControllerTests.Pages.class)
-class ChangesControllerTests {
+@WebMvcTest(DifferencesController.class)
+@Import(DifferencesControllerTests.Pages.class)
+class DifferencesControllerTests {
   private static final String ACT = "/eli/reg_impl/2015/1998/";
   private static final String PAGE = ACT + "eng/compare?from=2026-03-22&to=2026-10-01";
-  private static final String CHANGES = ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01";
+  private static final String DIFFERENCES =
+      ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01";
   private static final String DIFFERENCE =
       ACT + "eng/compare/difference?from=2026-03-22&to=2026-10-01&eId=art_1";
 
@@ -77,7 +78,7 @@ class ChangesControllerTests {
 
   @Test
   void showsNoViewThereIsnt() {
-    assertThat(mvc.get().uri(CHANGES + "&view=sideways").accept(MediaType.TEXT_HTML))
+    assertThat(mvc.get().uri(DIFFERENCES + "&view=sideways").accept(MediaType.TEXT_HTML))
         .hasStatus(HttpStatus.NOT_FOUND);
   }
 
@@ -86,17 +87,17 @@ class ChangesControllerTests {
     // Not the first day of a version
     assertThat(
             mvc.get()
-                .uri(ACT + "eng/compare/changes?from=2026-04-01&to=2026-10-01")
+                .uri(ACT + "eng/compare/differences?from=2026-04-01&to=2026-10-01")
                 .accept(MediaType.TEXT_HTML))
         .hasStatus(HttpStatus.NOT_FOUND);
     // From after To
     assertThat(
             mvc.get()
-                .uri(ACT + "eng/compare/changes?from=2026-10-01&to=2026-03-22")
+                .uri(ACT + "eng/compare/differences?from=2026-10-01&to=2026-03-22")
                 .accept(MediaType.TEXT_HTML))
         .hasStatus(HttpStatus.NOT_FOUND);
     // An act that is not between the two versions
-    assertThat(mvc.get().uri(CHANGES + "&act=32019R0103").accept(MediaType.TEXT_HTML))
+    assertThat(mvc.get().uri(DIFFERENCES + "&act=32019R0103").accept(MediaType.TEXT_HTML))
         .hasStatus(HttpStatus.NOT_FOUND);
   }
 
@@ -192,7 +193,7 @@ class ChangesControllerTests {
         0);
   }
 
-  /** The templates of the parts, as the app has them. The test slice leaves them out. */
+  /** The templates of the fragments, as the app has them. The test slice leaves them out. */
   @TestConfiguration(proxyBeanMethods = false)
   static class Pages {
     @Bean

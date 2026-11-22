@@ -202,7 +202,7 @@
             <occurrence eId="art_3/par_1/sub_2" kind="subparagraph">
                <p>
                   <t v="These financial statements shall be annexed to the financial statements drawn up by the Commission annually under Article 318 TFEU and Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=" ("/>
                   <quote startQuote="‘" endQuote="’">
                      <t v="the Financial Regulation"/>
@@ -627,8 +627,8 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Regulation (EU, Euratom) 2018/1046 of the European Parliament and of the Council of "/>
             <date date="2018-07-18">
@@ -644,7 +644,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -62,7 +62,7 @@
                   <t v="Animal Health Law"/>
                </quote>
                <t v=")"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 230(1), Article 232(1), point (b) and Article 232(3), point (b) thereof."/>
             </p>
          </occurrence>
@@ -87,7 +87,7 @@
             </num>
             <p>
                <t v="Commission Delegated Regulation (EU) 2020/692"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" lays down the animal health requirements that consignments of certain species and categories of animals, germinal products and products of animal origin, from third countries, territories, or zones thereof, or compartments thereof in the case of aquaculture animals, must comply with in order to enter the Union."/>
             </p>
          </occurrence>
@@ -97,7 +97,7 @@
             </num>
             <p>
                <t v="Commission Implementing Regulation (EU) 2021/404"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" lays down the lists of third countries, territories, or zones thereof, from which the entry into the Union of the species and categories of animals, germinal products and products of animal origin, falling within the scope of Delegated Regulation (EU) 2020/692, is permitted. Those lists and certain general rules concerning those lists are set out in Annexes I to XXII to that Implementing Regulation."/>
             </p>
          </occurrence>
@@ -290,8 +290,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="84" date="2016-03-31" page="1">
                <t v="OJ L 84, 31.3.2016, p. 1"/>
@@ -302,8 +302,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Delegated Regulation (EU) 2020/692 of "/>
             <date date="2020-01-30">
@@ -323,8 +323,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Commission Implementing Regulation (EU) 2021/404 of "/>
             <date date="2021-03-24">
@@ -344,8 +344,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

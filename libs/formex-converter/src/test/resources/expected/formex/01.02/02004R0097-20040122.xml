@@ -81,7 +81,7 @@
          <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Protocol 4 on cotton"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", annexed to the Act of Accession of Greece,"/>
             </p>
          </occurrence>
@@ -92,7 +92,7 @@
                   <t v="22 May 2001"/>
                </date>
                <t v=" on production aid for cotton"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 4 thereof,"/>
             </p>
          </occurrence>
@@ -109,9 +109,9 @@
             </num>
             <p>
                <t v="The average dollar rates on which Commission Regulations (EC) No 2281/2003"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" and (EC) No 2299/2003"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=" are based are wrong. The said Regulations should therefore be corrected."/>
             </p>
          </occurrence>
@@ -221,8 +221,8 @@
          <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
       </p>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Protocol as last amended by Council Regulation (EC) No 1050/2001 ("/>
             <ref kind="oj"
@@ -234,8 +234,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -246,8 +246,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -258,8 +258,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -270,7 +270,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

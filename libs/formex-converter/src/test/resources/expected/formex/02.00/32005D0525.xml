@@ -56,7 +56,7 @@
          <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the assent of the European Parliament"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -140,7 +140,7 @@
                      <t v="5 December 2000"/>
                   </date>
                   <t v=" on assistance for Albania, Bosnia and Herzegovina, Croatia, the Federal Republic of Yugoslavia and the Former Yugoslav Republic of Macedonia"/>
-                  <noteRef href="#note_2" marker="2"/>
+                  <footnoteRef href="#note_2" marker="2"/>
                   <t v=" or under any similar Regulation providing for Community external assistance for Bosnia and Herzegovina that may be adopted in future."/>
                </p>
             </occurrence>
@@ -181,7 +181,7 @@
          <occurrence eId="art_1/unp_2" kind="paragraph">
             <p>
                <t v="The text of the Agreement is attached to this Decision"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -253,8 +253,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Assent delivered on "/>
             <date date="2005-05-10">
@@ -262,8 +262,8 @@
             </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -282,12 +282,12 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="See page 5 of this Official Journal."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

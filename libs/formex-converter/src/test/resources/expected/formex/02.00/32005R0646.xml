@@ -55,7 +55,7 @@
                   <t v="9 April 2003"/>
                </date>
                <t v=" laying down detailed rules for applying Council Regulation (EC) No 2286/2002 and to Council Decision 2001/822/EC as regards the arrangements applicable to imports of rice originating in the African, Caribbean and Pacific States (ACP States) and the overseas countries and territories (OCT)"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 17(2) thereof,"/>
             </p>
          </occurrence>
@@ -69,7 +69,7 @@
          <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Having checked the quantities booked by product category for the January 2005 tranche, a Member State was found to have made a booking error. As a result of this error, the quantities available for the May 2005 tranche in the Annex to Commission Regulation (EC) No 94/2005"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" were less than they should have been. The Regulation in question should therefore be amended to take account of the applications actually lodged for the January tranche and to make them available for the May tranche,"/>
             </p>
          </occurrence>
@@ -134,16 +134,16 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="93" date="2003-04-10" page="3">
                <t v="OJ L 93, 10.4.2003, p. 3"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -154,8 +154,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

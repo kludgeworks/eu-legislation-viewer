@@ -159,21 +159,21 @@
          <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the Commission"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the opinion of the Economic and Social Committee"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Acting in accordance with the procedure laid down in Article 251 of the Treaty"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -194,19 +194,19 @@
                   <t v="5 March 1979"/>
                </date>
                <t v=" on the coordination of laws, regulations and administrative provisions relating to the taking-up and pursuit of the business of direct life assurance"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=", the second Council Directive 90/619/EEC of "/>
                <date date="1990-11-08">
                   <t v="8 November 1990"/>
                </date>
                <t v=" on the coordination of laws, regulations and administrative provisions relating to direct life assurance, laying down provisions to facilitate the effective exercise of freedom to provide services and amending Directive 79/267/EEC"/>
-               <noteRef href="#note_5" marker="5"/>
+               <footnoteRef href="#note_5" marker="5"/>
                <t v=" and Council Directive 92/96/EEC of "/>
                <date date="1992-11-10">
                   <t v="10 November 1992"/>
                </date>
                <t v=" on the coordination of laws, regulations and administrative provisions relating to direct life assurance and amending Directives 79/267/EEC and 90/619/EEC (third life assurance Directive)"/>
-               <noteRef href="#note_6" marker="6"/>
+               <footnoteRef href="#note_6" marker="6"/>
                <t v=" have been substantially amended several times. Since further amendments are to be made, the Directives should be recast in the interests of clarity.&#xA;"/>
             </p>
          </occurrence>
@@ -252,7 +252,7 @@
                   <t v="19 December 1991"/>
                </date>
                <t v=" on the annual accounts and consolidated accounts of insurance undertakings"/>
-               <noteRef href="#note_7" marker="7"/>
+               <footnoteRef href="#note_7" marker="7"/>
                <t v=".&#xA;"/>
             </p>
          </occurrence>
@@ -490,7 +490,7 @@
                   <t v="24 July 1973"/>
                </date>
                <t v=" on the coordination of laws, regulations and administrative provisions relating to the taking up and pursuit of the business of direct insurance other than life assurance"/>
-               <noteRef href="#note_8" marker="8"/>
+               <footnoteRef href="#note_8" marker="8"/>
                <t v=". That possibility may, however, be subject to certain conditions as regards compliance with accounting rules and rules on winding-up.&#xA;"/>
             </p>
          </occurrence>
@@ -544,7 +544,7 @@
                   <t v="10 May 1993"/>
                </date>
                <t v=" on investment services in the securities field"/>
-               <noteRef href="#note_9" marker="9"/>
+               <footnoteRef href="#note_9" marker="9"/>
                <t v=" provides for a definition of regulated market, although it excludes from its scope life assurance activities. It is appropriate to apply the concept of regulated market also to life assurance activities.&#xA;"/>
             </p>
          </occurrence>
@@ -698,7 +698,7 @@
             </num>
             <p>
                <t v="A provision should be made for a flexible procedure to make it possible to assess reciprocity with third countries on a Community basis. The aim of this procedure is not to close the Community's financial markets but rather, as the Community intends to keep its financial markets open to the rest of the world, to improve the liberalisation of the global financial markets in other third countries. To that end, this Directive provides for procedures for negotiating with third countries. As a last resort, the possibility of taking measures involving the suspension of new applications for authorisation or the restriction of new authorisations should be provided for using the regulatory procedure under Article 5 of Council Decision 1999/468/EC"/>
-               <noteRef href="#note_10" marker="10"/>
+               <footnoteRef href="#note_10" marker="10"/>
                <t v=".&#xA;"/>
             </p>
          </occurrence>
@@ -728,7 +728,7 @@
             </num>
             <p>
                <t v="Technical adjustments to the detailed rules laid down in this Directive may be necessary from time to time to take account of the future development of the assurance industry. The Commission will make such adjustments as and when necessary, after consulting the Insurance Committee set up by Council Directive 91/675/EEC"/>
-               <noteRef href="#note_11" marker="11"/>
+               <footnoteRef href="#note_11" marker="11"/>
                <t v=", in the exercise of the implementing powers conferred on it by the Treaty. These measures being measures of general scope within the meaning of Article 2 of Decision 1999/468/EC, they should be adopted by the use of the regulatory procedure provided for in Article 5 of that Decision.&#xA;"/>
             </p>
          </occurrence>
@@ -887,7 +887,7 @@
                            <t v="control"/>
                         </quote>
                         <t v=" shall mean the relationship between a parent undertaking and a subsidiary, as defined in Article 1 of Council Directive 83/349/EEC"/>
-                        <noteRef href="#note_12" marker="12"/>
+                        <footnoteRef href="#note_12" marker="12"/>
                         <t v=", or a similar relationship between any natural or legal person and an undertaking;"/>
                      </p>
                   </occurrence>
@@ -907,7 +907,7 @@
                            <t v="28 May 2001"/>
                         </date>
                         <t v=" on the admission of securities to official stock exchange listing and on information to be published on those securities"/>
-                        <noteRef href="#note_13" marker="13"/>
+                        <footnoteRef href="#note_13" marker="13"/>
                         <t v=" shall be taken into consideration;"/>
                      </p>
                   </occurrence>
@@ -1052,7 +1052,7 @@
                            <t v="16 November 2005"/>
                         </date>
                         <t v=" on reinsurance"/>
-                        <noteRef href="#note_14" marker="14"/>
+                        <footnoteRef href="#note_14" marker="14"/>
                         <t v="."/>
                      </p>
                   </occurrence>
@@ -2797,11 +2797,11 @@
                         </num>
                         <p>
                            <t v="any person authorised within the meaning of Council Directive 84/253/EEC"/>
-                           <noteRef href="#note_15" marker="15"/>
+                           <footnoteRef href="#note_15" marker="15"/>
                            <t v=", performing in an assurance undertaking the task described in Article 51 of Council Directive 78/660/EEC"/>
-                           <noteRef href="#note_16" marker="16"/>
+                           <footnoteRef href="#note_16" marker="16"/>
                            <t v=", Article 37 of Directive 83/349/EEC or Article 31 of Council Directive 85/611/EEC"/>
-                           <noteRef href="#note_17" marker="17"/>
+                           <footnoteRef href="#note_17" marker="17"/>
                            <t v=" or any other statutory task, shall have a duty to report promptly to the competent authorities any fact or decision concerning that undertaking of which he/she has become aware while carrying out that task which is liable to:"/>
                         </p>
                         <list kind="dash">
@@ -3557,7 +3557,7 @@
                         <t v="Lloyd's"/>
                      </quote>
                      <t v=", asset categories shall also include guarantees and letters of credit issued by credit institutions within the meaning of Directive 2000/12/EC of the European Parliament and of the Council"/>
-                     <noteRef href="#note_18" marker="18"/>
+                     <footnoteRef href="#note_18" marker="18"/>
                      <t v=" or by assurance undertakings, together with verifiable sums arising out of life assurance policies, to the extent that they represent funds belonging to members."/>
                   </p>
                </occurrence>
@@ -4023,7 +4023,7 @@
                                        <t v="27 October 1998"/>
                                     </date>
                                     <t v=" on the supplementary supervision of insurance undertakings in an insurance group"/>
-                                    <noteRef href="#note_19" marker="19"/>
+                                    <footnoteRef href="#note_19" marker="19"/>
                                     <t v=","/>
                                  </p>
                               </occurrence>
@@ -4044,7 +4044,7 @@
                                        <t v="20 March 2000"/>
                                     </date>
                                     <t v=" relating to the taking up and pursuit of the business of credit institutions"/>
-                                    <noteRef href="#note_20" marker="20"/>
+                                    <footnoteRef href="#note_20" marker="20"/>
                                     <t v=","/>
                                  </p>
                               </occurrence>
@@ -4055,13 +4055,13 @@
                                        <t v="10 May 1993"/>
                                     </date>
                                     <t v=" on investment services in the securities field"/>
-                                    <noteRef href="#note_21" marker="21"/>
+                                    <footnoteRef href="#note_21" marker="21"/>
                                     <t v=" and of Articles 2(4) and 2(7) of Council Directive 93/6/EEC of "/>
                                     <date date="1993-03-15">
                                        <t v="15 March 1993"/>
                                     </date>
                                     <t v=" on the capital adequacy of investments firms and credit institutions"/>
-                                    <noteRef href="#note_22" marker="22"/>
+                                    <footnoteRef href="#note_22" marker="22"/>
                                     <t v=";"/>
                                  </p>
                               </occurrence>
@@ -4118,7 +4118,7 @@
                            <t v="16 December 2002"/>
                         </date>
                         <t v=" on the supplementary supervision of credit institutions, insurance undertakings and investment firms in a financial conglomerate"/>
-                        <noteRef href="#note_23" marker="23"/>
+                        <footnoteRef href="#note_23" marker="23"/>
                         <t v=". Method 1 (Accounting consolidation) shall only be applied if the competent authority is confident about the level of integrated management and internal control regarding the entities which would be included in the scope of consolidation. The method chosen shall be applied in a consistent manner over time."/>
                      </p>
                   </occurrence>
@@ -6341,7 +6341,7 @@
                </num>
                <p>
                   <t v="The Commission shall be assisted by the European Insurance and Occupational Pensions Committee established by Commission Decision 2004/9/EC"/>
-                  <noteRef href="#note_24" marker="24"/>
+                  <footnoteRef href="#note_24" marker="24"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -10055,8 +10055,8 @@
          </table>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -10067,8 +10067,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -10079,8 +10079,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Opinion of the European Parliament of "/>
             <date date="2001-03-15">
@@ -10112,8 +10112,8 @@
             </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="63" date="1979-03-13" page="1">
                <t v="OJ L 63, 13.3.1979, p. 1"/>
@@ -10128,8 +10128,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10148,8 +10148,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10168,8 +10168,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10180,8 +10180,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="8" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10200,8 +10200,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
+      </footnote>
+      <footnote eId="note_9" marker="9" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10212,8 +10212,8 @@
             </ref>
             <t v=". Directive as last amended by Directive 2000/64/EC of the European Parliament and of the Council."/>
          </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
+      </footnote>
+      <footnote eId="note_10" marker="10" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10224,8 +10224,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
+      </footnote>
+      <footnote eId="note_11" marker="11" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10236,8 +10236,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
+      </footnote>
+      <footnote eId="note_12" marker="12" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10256,8 +10256,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
+      </footnote>
+      <footnote eId="note_13" marker="13" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10268,8 +10268,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
+      </footnote>
+      <footnote eId="note_14" marker="14" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10280,8 +10280,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
+      </footnote>
+      <footnote eId="note_15" marker="15" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10292,8 +10292,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
+      </footnote>
+      <footnote eId="note_16" marker="16" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10312,8 +10312,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
+      </footnote>
+      <footnote eId="note_17" marker="17" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10332,8 +10332,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_18" marker="18" kind="footnote">
+      </footnote>
+      <footnote eId="note_18" marker="18" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10352,8 +10352,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_19" marker="19" kind="footnote">
+      </footnote>
+      <footnote eId="note_19" marker="19" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10368,8 +10368,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_20" marker="20" kind="footnote">
+      </footnote>
+      <footnote eId="note_20" marker="20" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10380,8 +10380,8 @@
             </ref>
             <t v=". Directive as last amended by Directive 2005/1/EC."/>
          </p>
-      </note>
-      <note eId="note_21" marker="21" kind="footnote">
+      </footnote>
+      <footnote eId="note_21" marker="21" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10396,8 +10396,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_22" marker="22" kind="footnote">
+      </footnote>
+      <footnote eId="note_22" marker="22" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -10408,23 +10408,23 @@
             </ref>
             <t v=". Directive as last amended by Directive 2005/1/EC."/>
          </p>
-      </note>
-      <note eId="note_23" marker="23" kind="footnote">
+      </footnote>
+      <footnote eId="note_23" marker="23" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="35" date="2003-02-11" page="1">
                <t v="OJ L 35, 11.2.2003, p. 1"/>
             </ref>
             <t v=". Directive as last amended by Directive 2005/1/EC."/>
          </p>
-      </note>
-      <note eId="note_24" marker="24" kind="footnote">
+      </footnote>
+      <footnote eId="note_24" marker="24" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="3" date="2004-01-07" page="34">
                <t v="OJ L 3, 7.1.2004, p. 34"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

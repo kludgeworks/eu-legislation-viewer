@@ -219,9 +219,9 @@
     <m:mo>{f:quote-char(.)}</m:mo>
   </xsl:template>
 
-  <!-- a footnote reference inside a formula: kept as text, the note itself is collected as usual -->
+  <!-- a footnote reference inside a formula: kept as text, the footnote itself is collected as usual -->
   <xsl:template match="NOTE" mode="math">
-    <m:msup><m:mrow/><m:mtext>({f:note-marker(if (@NOTE.REF) then f:note-target(.) else .)})</m:mtext></m:msup>
+    <m:msup><m:mrow/><m:mtext>({f:footnote-marker(if (@NOTE.REF) then f:footnote-target(.) else .)})</m:mtext></m:msup>
   </xsl:template>
 
   <!-- ============================================================ structures -->

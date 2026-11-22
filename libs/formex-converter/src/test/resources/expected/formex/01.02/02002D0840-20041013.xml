@@ -97,7 +97,7 @@
                   <t v="22 February 1999"/>
                </date>
                <t v=" on the approximation of the laws of the Member States concerning foods and food ingredients treated with ionising radiation"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
             </p>
          </occurrence>
@@ -313,8 +313,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -325,7 +325,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -51,7 +51,7 @@
                   <t v="10 February 1975"/>
                </date>
                <t v=" establishing the European Centre for the Development of Vocational Training, and in particular Article 4 thereof"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -76,7 +76,7 @@
                <date date="2012-07-16">
                   <t v="16 July 2012"/>
                </date>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", the Council appointed the members of the Governing Board of the European Centre for the Development of Vocational Training for the period from "/>
                <date date="2012-09-18">
                   <t v="18 September 2012"/>
@@ -167,16 +167,16 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="39" date="1975-02-13" page="1">
                <t v="OJ L 39, 13.2.1975, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -187,7 +187,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

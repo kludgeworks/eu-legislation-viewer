@@ -45,12 +45,12 @@ class EncoderTest {
   }
 
   @Test
-  void keepsTheEIdsAndNoteReferencesAsTheConverterWroteThem() {
+  void keepsTheEIdsAndFootnoteReferencesAsTheConverterWroteThem() {
     var xml =
         """
         <legalText %s><body>
-          <p eId="p_1"><t v="See"/><noteRef href="#n_1" marker="1"/></p>
-          <note eId="n_1" marker="1"><p><t v="A note."/></p></note>
+          <p eId="p_1"><t v="See"/><footnoteRef href="#n_1" marker="1"/></p>
+          <footnote eId="n_1" marker="1"><p><t v="A footnote."/></p></footnote>
         </body></legalText>
         """
             .formatted(NS);
@@ -61,9 +61,9 @@ class EncoderTest {
         .isEqualTo(
             "[\"legalText\",{},[\"body\",{},"
                 + "[\"p\",{\"eId\":\"p_1\"},[\"t\",{\"v\":\"See\"}],"
-                + "[\"noteRef\",{\"href\":\"#n_1\",\"marker\":\"1\"}]],"
-                + "[\"note\",{\"eId\":\"n_1\",\"marker\":\"1\"},[\"p\",{},[\"t\",{\"v\":\"A"
-                + " note.\"}]]]]]");
+                + "[\"footnoteRef\",{\"href\":\"#n_1\",\"marker\":\"1\"}]],"
+                + "[\"footnote\",{\"eId\":\"n_1\",\"marker\":\"1\"},[\"p\",{},[\"t\",{\"v\":\"A"
+                + " footnote.\"}]]]]]");
   }
 
   @Test

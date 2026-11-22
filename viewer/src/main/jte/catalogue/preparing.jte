@@ -9,7 +9,7 @@
      version or for a comparison. It has the act's head, with a mode switch that is not a link yet.
      Then come the progress panel and what is already known about the act.
      The stream (hx-sse:connect) pushes the progress and the steps when they change.
-     htmx swaps each part by its id (hx-partial). When the stream sends done, htmx requests this
+     htmx swaps each fragment by its id (hx-partial). When the stream sends done, htmx requests this
      address again with prepared set, so that the page's content fades in. It swaps that page in for
      this one, at the same address.
      Beside the progress is a link back to the reader's last search results, if there are any.

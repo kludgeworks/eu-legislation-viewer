@@ -185,7 +185,7 @@ class ApiTextController {
                 .map(
                     extract ->
                         HalModelBuilder.halModelOf(
-                                new OccurrenceModel(extract.occurrence(), extract.notes()))
+                                new OccurrenceModel(extract.occurrence(), extract.footnotes()))
                             .link(Link.of(occurrenceHref(text, eId)))
                             .link(text)
                             .link(schema("occurrence"))
@@ -294,11 +294,11 @@ class ApiTextController {
    * An occurrence of a text, as the API shows it.
    *
    * @param occurrence the occurrence, in the public model
-   * @param notes the notes that the occurrence refers to, in the order of the text
+   * @param footnotes the footnotes that the occurrence refers to, in the order of the text
    */
   record OccurrenceModel(
       PublicText.Occurrence occurrence,
-      @JsonInclude(JsonInclude.Include.NON_EMPTY) List<PublicText.Note> notes) {}
+      @JsonInclude(JsonInclude.Include.NON_EMPTY) List<PublicText.Footnote> footnotes) {}
 
   /**
    * The outline of a text, as the API shows it.

@@ -229,7 +229,7 @@
                <td header="true">
                   <p>
                      <t v="Annual (1.5-30.4) tariff quota volume in net weight unless otherwise specified"/>
-                     <noteRef href="#note_anx000401-1" marker="1"/>
+                     <footnoteRef href="#note_anx000401-1" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -251,7 +251,7 @@
                            <t v="Clupea pallasii"/>
                         </emphasis>
                      </quote>
-                     <noteRef href="#note_anx000401-2" marker="2"/>
+                     <footnoteRef href="#note_anx000401-2" marker="2"/>
                   </p>
                </td>
                <td>
@@ -1082,18 +1082,18 @@
                <td/>
             </tr>
          </table>
-         <notes>
-            <note eId="note_anx000401-1" marker="1" kind="footnote">
+         <footnotes>
+            <footnote eId="note_anx000401-1" marker="1" kind="footnote">
                <p>
                   <t v="Quantities shall be added in accordance with Article 2 paragraph 3 of this Protocol."/>
                </p>
-            </note>
-            <note eId="note_anx000401-2" marker="2" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx000401-2" marker="2" kind="footnote">
                <p>
                   <t v="The benefit of the tariff quota shall not be granted to goods declared for release for free circulation during the period 15 February to 15 June."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
    </annexes>
 </legalText>

@@ -95,14 +95,14 @@
                   <t v="14 June 1971"/>
                </date>
                <t v=" on the application of social security schemes to employed persons, to self-employed persons and to members of their family moving within the Community"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", under which it is the duty of the Administrative Commission to deal with all administrative matters arising from Regulation (EEC) No 1408/71 and subsequent regulations,"/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Article 2(1) of Council Regulation (EEC) No 574/72"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" under which it is the duty of the Administrative Commission to draw up models of certificates, certified statements, declarations, applications and other documents necessary for the application of the Regulations,"/>
             </p>
          </occurrence>
@@ -113,7 +113,7 @@
                   <t v="18 April 2000"/>
                </date>
                <t v=" on the model forms necessary for the application of Council Regulations (EEC) No 1408/71 and (EEC) No 574/72 (E 111, E 111B, E 113 to E 118 and E 125 to E 127)"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -235,8 +235,8 @@
          <figure src="L_2003093EN.01004801.tif" content="form"/>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -247,23 +247,23 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="74" date="1972-03-27" page="1">
                <t v="OJ L 74, 27.3.1972, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="54" date="2002-02-25" page="1">
                <t v="OJ L 54, 25.2.2002, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -29,7 +29,7 @@ import org.jspecify.annotations.Nullable;
  *   <li>"2018/1862 applied in part. It applies in full from 7 March 2023 · Article 79(5) of
  *       2018/1862."
  *   <li>"2022/1190 was in force and did not apply yet. It applies from 15 October 2026 · Article 2
- *       of 2022/1190. 17 provisions, with a note in the text."
+ *       of 2022/1190. 17 provisions, with a divergence note in the text."
  *   <li>"2021/1133 was in force. Article 6 of 2021/1133 sets the day from which it applies. The
  *       data does not give a date for that day. 3 provisions, not in this text."
  * </ul>
@@ -132,7 +132,7 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
                   + day
                   + clause(act, divergence.applies(), divergence.act())
                   + "."
-                  + count(count, ", with a note in the text."));
+                  + count(count, ", with a divergence note in the text."));
       case PENDING ->
           new Line(
               cited,
@@ -195,7 +195,8 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
 
   /**
    * Returns how many provisions, with {@code where} after it and a space before it. For example, "
-   * 17 provisions, with a note in the text.". Returns an empty text if Cellar names no provision.
+   * 17 provisions, with a divergence note in the text.". Returns an empty text if Cellar names no
+   * provision.
    */
   private static String count(long count, String where) {
     return count == 0 ? "" : " " + (count == 1 ? "1 provision" : count + " provisions") + where;

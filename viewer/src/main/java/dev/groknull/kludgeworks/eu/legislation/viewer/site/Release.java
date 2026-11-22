@@ -54,13 +54,13 @@ public class Release {
   }
 
   /**
-   * Returns the entity tag of a response that this release renders from {@code parts} alone, for
+   * Returns the entity tag of a response that this release renders from {@code inputs} alone, for
    * example the identity of a text. It is weak: Tomcat does not compress a response with a strong
    * entity tag, and {@code If-None-Match} compares tags weakly, so a weak tag is all a browser
    * needs. For example, {@code W/"2026.11.5-42"}.
    */
-  public String etag(Object... parts) {
-    return Arrays.stream(parts)
+  public String etag(Object... inputs) {
+    return Arrays.stream(inputs)
         .map(String::valueOf)
         .collect(Collectors.joining("-", "W/\"" + value + "-", "\""));
   }

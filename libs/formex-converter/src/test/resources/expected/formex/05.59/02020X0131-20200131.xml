@@ -43,7 +43,7 @@
    <body>
       <p>
          <t v="The Agreement on the Withdrawal of the United Kingdom of Great Britain and Northern Ireland from the European Union and the European Atomic Energy Community"/>
-         <noteRef href="#note_1" marker="1"/>
+         <footnoteRef href="#note_1" marker="1"/>
          <t v=", signed at Brussels and London on "/>
          <date date="2020-01-24">
             <t v="24 January 2020"/>
@@ -55,8 +55,8 @@
          <t v=" in accordance with the first paragraph of Article 185 thereof."/>
       </p>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <tag amendingAct="52020XG0131(01)R(01)"
                  action="replaced"
@@ -64,7 +64,7 @@
                  tagId="O000001M001000"/>
             <t v="See page 7 of this Official Journal."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

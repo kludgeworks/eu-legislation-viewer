@@ -156,7 +156,7 @@
               test="$x:result//*:occurrence[@kind = 'indent']/@eId => string-join(' ') = 'anx/pnt_1.1/idt_1 anx/pnt_1.2/idt_1'"/>
   </x:scenario>
 
-  <x:scenario label="Definitions in an annex and in its table's notes">
+  <x:scenario label="Definitions in an annex and in its table's footnotes">
     <x:context xmlns="">
       <CONS.ACT xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://formex.publications.europa.eu/schema/formex-06.02.1-20231031.xd">
         <INFO.CONSLEG CONSLEG.REF="2015R0001" START.DATE="20260101" END.DATE="99999999"/>
@@ -168,7 +168,7 @@
         </CONS.DOC>
       </CONS.ACT>
     </x:context>
-    <x:expect label="number the notes' definitions under the table, in their annotation: anx/def_1, anx/tab_1/ann_1/def_1"
+    <x:expect label="number the footnotes' definitions under the table, in their annotation: anx/def_1, anx/tab_1/ann_1/def_1"
               test="$x:result//*:occurrence[@kind = 'definition']/@eId => string-join(' ') = 'anx/def_1 anx/tab_1/ann_1/def_1'"/>
   </x:scenario>
 

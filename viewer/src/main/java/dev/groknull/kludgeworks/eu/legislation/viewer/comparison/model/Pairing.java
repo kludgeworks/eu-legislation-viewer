@@ -50,12 +50,12 @@ import org.jspecify.annotations.Nullable;
  * For example, the consolidation of 692/2008 of 27 July 2017 has point 3.2.12.2.1.11 of Annex XVIII
  * directly in the annex, and the one of 16 May 2016 has it four occurrences down. Each occurrence
  * that still pairs with none pairs with the occurrence of the other text that pairs with none and
- * has the same last step of its eId, if:
+ * has the same last segment of its eId, if:
  *
  * <ul>
  *   <li>each occurrence that the two are in pairs, so that neither shows in an occurrence that is
  *       inserted or deleted whole,
- *   <li>no other occurrence that pairs with none has that step in the two occurrences that hold
+ *   <li>no other occurrence that pairs with none has that segment in the two occurrences that hold
  *       them, the nearest that pair with each other. The whole text holds them if no such
  *       occurrences do. For example, Annex I of 692/2008 also had a point 3.2.12.2.1.11 until 2017.
  *       It is not in Annex XVIII, so it does not stop the pair.
@@ -92,15 +92,15 @@ final class Pairing {
   private void movedFurther() {
     var earlier = alone(before, true);
     var later = alone(after, false);
-    for (var step : later.entrySet()) {
-      var from = earlier.getOrDefault(step.getKey(), List.of());
-      for (var is : step.getValue()) {
+    for (var segment : later.entrySet()) {
+      var from = earlier.getOrDefault(segment.getKey(), List.of());
+      for (var is : segment.getValue()) {
         for (var was : from) {
           if (is(was) == null
               && was(is) == null
               && inPaired(was, before, true)
               && inPaired(is, after, false)
-              && alone(was, is, from, step.getValue())
+              && alone(was, is, from, segment.getValue())
               && alike(was, is)) {
             pair(was, is);
             break;
@@ -113,7 +113,8 @@ final class Pairing {
   /**
    * Returns whether {@code was} and {@code is} are the only occurrences of {@code earlier} and
    * {@code later} in the two occurrences that hold them, the nearest that pair with each other.
-   * {@code earlier} and {@code later} are the occurrences that pair with none and have their step.
+   * {@code earlier} and {@code later} are the occurrences that pair with none and have their
+   * segment.
    */
   private boolean alone(
       Occurrence was, Occurrence is, List<Occurrence> earlier, List<Occurrence> later) {
@@ -151,22 +152,22 @@ final class Pairing {
   }
 
   /**
-   * Returns the occurrences of {@code occurrences} that pair with none, by the last step of their
-   * eIds, in document order. {@code earlier} tells whether they are the occurrences of the earlier
-   * text.
+   * Returns the occurrences of {@code occurrences} that pair with none, by the last segment of
+   * their eIds, in document order. {@code earlier} tells whether they are the occurrences of the
+   * earlier text.
    */
   private Map<String, List<Occurrence>> alone(Occurrences occurrences, boolean earlier) {
     var found = new LinkedHashMap<String, List<Occurrence>>();
     for (var occurrence : occurrences.byEId().values()) {
       if ((earlier ? is(occurrence) : was(occurrence)) == null) {
-        found.computeIfAbsent(step(occurrence.eId()), each -> new ArrayList<>()).add(occurrence);
+        found.computeIfAbsent(segment(occurrence.eId()), each -> new ArrayList<>()).add(occurrence);
       }
     }
     return found;
   }
 
-  /** Returns the last step of {@code eId}. For example, pnt_3.2 for anx/pnt_3/pnt_3.2. */
-  private static String step(String eId) {
+  /** Returns the last segment of {@code eId}. For example, pnt_3.2 for anx/pnt_3/pnt_3.2. */
+  private static String segment(String eId) {
     return eId.substring(eId.lastIndexOf('/') + 1);
   }
 

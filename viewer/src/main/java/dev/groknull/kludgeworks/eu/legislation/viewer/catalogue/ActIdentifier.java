@@ -64,14 +64,14 @@ public record ActIdentifier(String celex) {
    * the C series.
    */
   public Optional<String> number() {
-    var parts = NUMBERED.matcher(celex);
-    if (!parts.matches()) {
+    var matched = NUMBERED.matcher(celex);
+    if (!matched.matches()) {
       return Optional.empty();
     }
-    var year = parts.group(1);
-    var number = parts.group(3);
+    var year = matched.group(1);
+    var number = matched.group(3);
     return Optional.of(
-        parts.group(2).equals("R") && Integer.parseInt(year) < YEAR_FIRST
+        matched.group(2).equals("R") && Integer.parseInt(year) < YEAR_FIRST
             ? number + "/" + year
             : year + "/" + number);
   }
@@ -81,8 +81,8 @@ public record ActIdentifier(String celex) {
    * acts started to share one numbering, and for anything that is not a numbered act.
    */
   public boolean numberedAlone() {
-    var parts = NUMBERED.matcher(celex);
-    return !parts.matches() || Integer.parseInt(parts.group(1)) >= YEAR_FIRST;
+    var matched = NUMBERED.matcher(celex);
+    return !matched.matches() || Integer.parseInt(matched.group(1)) >= YEAR_FIRST;
   }
 
   /**
@@ -122,8 +122,8 @@ public record ActIdentifier(String celex) {
    * number is {@code L}. For example, 32013L0036.
    */
   public boolean directive() {
-    var parts = NUMBERED.matcher(celex);
-    return parts.matches() && parts.group(2).equals("L");
+    var matched = NUMBERED.matcher(celex);
+    return matched.matches() && matched.group(2).equals("L");
   }
 
   /**

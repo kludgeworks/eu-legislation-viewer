@@ -314,7 +314,7 @@ button.link {
   text-decoration: underline;
 }
 
-/* The part the reader is in (js/outline.js, page-contents), and the parts that hold it */
+/* The section the reader is in (js/outline.js, page-contents), and the sections that hold it */
 .handbook-contents a[aria-current="location"] {
   border-left-color: var(--accent);
   color: var(--accent);
@@ -353,7 +353,7 @@ button.link {
   color: var(--ink);
 }
 
-/* The parts of a resource: its members and its links */
+/* The sections of a resource: its members and its links */
 .api-docs h4 {
   margin: 16px 0 4px;
   font:

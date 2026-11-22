@@ -1,5 +1,5 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenotePieces
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView
@@ -7,15 +7,15 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
 @import java.util.List
 @import java.util.Map
-@param ChangesView changes
+@param DifferencesView differences
 @param OutlineView outline
 @param Map<Integer, SidenoteView> sidenotes
-@param SidenoteParts parts
+@param SidenotePieces pieces
 @param LegalRenderer html
 @param String occurrences
 @param ComparePage page
 @param List<ControlsView.ViewLink> views
-<%-- Shows a comparison's Changes view on an act's page. The controls come first. They show how
+<%-- Shows a comparison's Differences view on an act's page. The controls come first. They show how
      many differences there are and of what kind. Then each provision that differs shows as it reads,
      with its edits and a number beside it. A sidenote beside each provision says what
      happened, which acts made the change and when each applies. It also says what the provision was
@@ -31,26 +31,26 @@
 <div class="outlined">
 <act-outline>
 <nav class="outline counted" aria-label="Outline">
-  @template.comparison.outlinehead(total = changes.numbers().size())
-  @template.comparison.outlinerail(outline = outline, total = changes.numbers().size())
+  @template.comparison.outlinehead(total = differences.numbers().size())
+  @template.comparison.outlinerail(outline = outline, total = differences.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
 </act-outline>
-<div class="changes">
-  @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, legend = ControlsView.legend(changes, sidenotes))
+<div class="differences">
+  @template.comparison.sidenotepieces(pieces = pieces)
+  @template.comparison.controls(differences = differences, views = views, legend = ControlsView.legend(differences, sidenotes))
   <div class="book legal-text legal-text-consolidated">
-    @for(var passage : changes.passages())
-      @if(passage instanceof ChangesView.Fold fold)
+    @for(var passage : differences.passages())
+      @if(passage instanceof DifferencesView.Fold fold)
         <details class="fold" hx-get="${occurrences}?${fold.query()}" hx-trigger="toggle once" hx-target="find .fold-text" hx-swap="innerHTML">
-          <summary>${fold.label()} — ${fold.note()}<span class="show"> · <u>show</u></span></summary>
+          <summary>${fold.label()} — ${fold.reason()}<span class="show"> · <u>show</u></span></summary>
           <div class="fold-text"><p class="status">Loading…</p></div>
         </details>
-      @elseif(passage instanceof ChangesView.Lead lead)
+      @elseif(passage instanceof DifferencesView.Lead lead)
         <div class="lead">${html.element(lead.occurrence())}</div>
-      @elseif(passage instanceof ChangesView.Shown shown)
+      @elseif(passage instanceof DifferencesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
-        @template.comparison.difference(shown = shown, sidenote = sidenote, occurrence = html.element(shown.folded(page)), page = page, parts = parts)
+        @template.comparison.difference(shown = shown, sidenote = sidenote, occurrence = html.element(shown.folded(page)), page = page, pieces = pieces)
       @endif
     @endfor
   </div>

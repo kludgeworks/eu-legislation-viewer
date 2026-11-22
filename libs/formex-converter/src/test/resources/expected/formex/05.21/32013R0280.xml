@@ -58,7 +58,7 @@
                   <t v="17 June 2008"/>
                </date>
                <t v=" on the interoperability of the rail system within the Community"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6(1) thereof,"/>
             </p>
          </occurrence>
@@ -79,7 +79,7 @@
                   <t v="23 December 2005"/>
                </date>
                <t v=" concerning the technical specification for interoperability relating to the telematic applications for freight subsystem of the trans-European conventional rail system"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" provides that the European Railway Agency has to update the documents referred to in Annex A to Regulation (EC) No 62/2006 on the basis of change requests that are validated before "/>
                <date date="2012-05-13">
                   <t v="13 May 2012"/>
@@ -180,8 +180,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -192,16 +192,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="13" date="2006-01-18" page="1">
                <t v="OJ L 13, 18.1.2006, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

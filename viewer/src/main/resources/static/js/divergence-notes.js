@@ -5,25 +5,25 @@
  * asked, catalogue/text/ready.jte.
  *
  * The content module renders the text without the act, and htmx loads it into `.content`. So the
- * page lists the notes in `<divergence-notes>`, next to the text. Each note names an occurrence by
+ * page lists the divergence notes in `<divergence-notes>`, next to the text. Each divergence note names an occurrence by
  * its eId (`data-occurrence`).
  *
  * - A `.prospective-note` is for a prospective amendment, a change that does not apply on the day.
- *   Its occurrence gets an amber bar (`.not-applying`) and the note beside it: the act, as a link to
+ *   Its occurrence gets an amber bar (`.not-applying`) and the divergence note beside it: the act, as a link to
  *   its page, and the state. With `data-heading`, only the heading of the occurrence gets the bar.
  *   An occurrence in an occurrence that has the bar already gets no bar of its own. An occurrence
- *   right after an occurrence with the bar and the same words has no note of its own: one note
+ *   right after an occurrence with the bar and the same words has no divergence note of its own: one divergence note
  *   serves the run.
  * - A `.pending-note` is for a pending amendment, a change that the text does not show. It goes
  *   before its occurrence, or at the end of the occurrence with `data-end`.
  *
- * The outline beside the text gets a dot on each entry that has a note, and on the entries that
+ * The outline beside the text gets a dot on each entry that has a divergence note, and on the entries that
  * hold it: `.has-prospective` or `.has-pending`, with words for a screen reader.
  */
 
 /**
  * Returns whether `occurrence` comes right after an occurrence that has the bar with `label`, or
- * whose heading has it. Then the note of that occurrence serves this one.
+ * whose heading has it. Then the divergence note of that occurrence serves this one.
  *
  * @param {HTMLElement} occurrence
  * @param {string} label
@@ -48,7 +48,7 @@ const DOTS = {
 };
 
 /**
- * Gives the outline a dot for a note on `occurrence`: on the entry of the occurrence, or of the nearest occurrence
+ * Gives the outline a dot for a divergence note on `occurrence`: on the entry of the occurrence, or of the nearest occurrence
  * that holds it and has an entry, and on each entry that holds that entry.
  *
  * @param {Element | null} outline
@@ -80,7 +80,7 @@ const dotOutline = (outline, occurrence, dot) => {
 };
 
 /**
- * Returns a copy of the note `each` for the text, without the data that places it.
+ * Returns a copy of the divergence note `each` for the text, without the data that places it.
  *
  * @param {HTMLElement} each
  * @returns {HTMLElement}
@@ -94,18 +94,18 @@ const copy = (each) => {
 };
 
 /**
- * Puts the notes that `notes` lists on the text in `content`, and the dots on `outline`. It does
- * nothing if the text is not there yet, or has its notes already.
+ * Puts the divergence notes that `divergenceNotes` lists on the text in `content`, and the dots on `outline`. It does
+ * nothing if the text is not there yet, or has its divergence notes already.
  *
- * @param {HTMLElement} notes
+ * @param {HTMLElement} divergenceNotes
  * @param {HTMLElement} content
  * @param {Element | null} [outline]
  */
-export const place = (notes, content, outline = null) => {
+export const place = (divergenceNotes, content, outline = null) => {
   if (!content.querySelector("[id]") || content.querySelector(".not-applying, .pending-note")) {
     return;
   }
-  for (const each of notes.querySelectorAll("[data-occurrence]")) {
+  for (const each of divergenceNotes.querySelectorAll("[data-occurrence]")) {
     if (!(each instanceof HTMLElement) || !each.dataset.occurrence) {
       continue;
     }
@@ -140,7 +140,7 @@ export const place = (notes, content, outline = null) => {
 /**
  * Custom element that lists the divergence notes. It puts them on the text in the `.content` beside
  * it after each htmx swap, or at once if the text is there. A swap of anything else leaves the text
- * as it is, and a text that has its notes keeps them.
+ * as it is, and a text that has its divergence notes keeps them.
  */
 export class DivergenceNotes extends HTMLElement {
   connectedCallback() {
@@ -156,7 +156,7 @@ export class DivergenceNotes extends HTMLElement {
     this.apply();
   };
 
-  /** Puts the notes on the text, if it is there. */
+  /** Puts the divergence notes on the text, if it is there. */
   apply() {
     const content = this.#content();
     if (content) {

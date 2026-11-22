@@ -9,7 +9,7 @@ afterEach(() => {
 });
 
 const PAGE = `
-  <div id="page" data-view="changes">
+  <div id="page" data-view="differences">
     <template id="skeleton-synopsis"><div class="skeleton-over synopsis"></div></template>
     <template id="skeleton-changes"><div class="skeleton-over changes"></div></template>
     <p class="page-status visually-hidden" role="status"></p>
@@ -24,7 +24,7 @@ describe("loading", () => {
   test("opens the view of the link, or of the page if the link has none", () => {
     document.body.innerHTML = PAGE;
     expect(coming(element("synopsis"))).toBe("synopsis");
-    expect(coming(element("dot"))).toBe("changes");
+    expect(coming(element("dot"))).toBe("differences");
   });
 
   test("shows the shape of the view that is coming, and puts the page back after", () => {

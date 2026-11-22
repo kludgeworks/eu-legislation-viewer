@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: MIT */
 /*
  * Styles of the comparison module (comparison/*.jte).
- * Includes outline navigation, synopsis ledger, changes column, and the edits.
+ * Includes outline navigation, synopsis ledger, differences column, and the edits.
  */
 .chips {
   display: flex;
@@ -122,7 +122,7 @@ a.chip:hover {
 }
 
 /* The Whole text view shows every provision of the later text. Each provision that differs is
- * shown with their edits in place, as in the Changes view. The text of the other provisions stays in its column. */
+ * shown with their edits in place, as in the Differences view. The text of the other provisions stays in its column. */
 .whole .book {
   padding: 16px 0 24px 32px;
 }
@@ -219,8 +219,8 @@ a.chip:hover {
 
 .ledger .from ins.diff,
 .ledger .to del.diff,
-.ledger .from .note-ins,
-.ledger .to .note-del {
+.ledger .from .footnote-ins,
+.ledger .to .footnote-del {
   display: none;
 }
 
@@ -321,7 +321,7 @@ details.ledger-fold[open] {
   background: var(--bg);
 }
 
-.changes {
+.differences {
   flex: 1;
   min-width: 0;
 }
@@ -329,8 +329,8 @@ details.ledger-fold[open] {
 /* Compare hides the tags (▼) and the struck text that a consolidation keeps. The
  * sidenotes and the edits say what happened. Read shows them. The wording of a change on
  * the page of an amending act hides them too: the page says the act. */
-.changes .tag,
-.changes .deleted,
+.differences .tag,
+.differences .deleted,
 .sides .tag,
 .sides .deleted,
 .wording-text .tag,
@@ -348,10 +348,10 @@ details.ledger-fold[open] {
   background: none;
 }
 
-/* The Changes view shows the provisions that differ in the book column. Each one has its number in
- * the margin and its note beside it. The opening of the occurrence that contains them is a quiet grey.
+/* The Differences view shows the provisions that differ in the book column. Each one has its number in
+ * the margin and its sidenote beside it. The opening of the occurrence that contains them is a quiet grey.
  * The occurrences that are the same in both texts are folded. */
-.changes .book {
+.differences .book {
   padding: 16px 0 24px 32px;
 }
 
@@ -369,13 +369,13 @@ details.ledger-fold[open] {
  * finds their words, for Find in page. It clips what a difference draws outside its box, so the box
  * reaches 28px into the margin, over its number and the tags of its occurrence; the columns
  * don't move. A row of the Synopsis is the same. */
-.changes .difference,
+.differences .difference,
 .ledger-row:not(.ledger-head) {
   content-visibility: auto;
   contain-intrinsic-size: auto 200px;
 }
 
-.changes .difference {
+.differences .difference {
   margin-left: -28px;
   padding-left: 28px;
 }
@@ -423,14 +423,14 @@ details.ledger-fold[open] {
   font-weight: 400;
 }
 
-/* The lines of a sidenote. First is the act that made the change. Then come the note and when each
+/* The lines of a sidenote. First is the act that made the change. Then come the label of what happened and when each
  * act applies. Each one is on a line of its own. */
 .sidenote .made {
   font-weight: 600;
   color: var(--ink3);
 }
 
-.sidenote .made + .note,
+.sidenote .made + .label,
 .sidenote .applies {
   display: block;
   margin-top: 3px;
@@ -507,7 +507,7 @@ details.ledger-fold[open] {
   cursor: pointer;
 }
 
-/* The part of the page with the text (catalogue/text/ready.jte). The outline is in a sidebar that
+/* The section of the page with the text (catalogue/text/ready.jte). The outline is in a sidebar that
  * stays in sight below the notice. The text is beside it, at the width that EUR-Lex uses. A jump
  * from the outline stops clear of the notice. */
 .outlined {
@@ -560,7 +560,7 @@ nav.outline ul ul {
   padding-left: 12px;
 }
 
-/* An occurrence with parts: its link, then the fold of its parts. The fold's summary is only its button,
+/* An occurrence with subdivisions: its link, then the fold of its subdivisions. The fold's summary is only its button,
  * in the gutter before the link (a link in a summary is not reliable for the keyboard and for screen
  * readers). */
 nav.outline li.branch {
@@ -604,7 +604,7 @@ nav.outline a:hover {
   background: var(--hover);
 }
 
-/* The entry for the part the reader is in (js/outline.js). */
+/* The entry for the subdivision the reader is in (js/outline.js). */
 nav.outline a[aria-current="location"] {
   box-shadow: inset 2px 0 var(--accent-fill);
   background: var(--accent-tint);
@@ -718,7 +718,7 @@ nav.outline .outline-follow a[aria-disabled] {
 }
 
 /* The outline when it is collapsed. It is a rail of 46px: the expand button, "Outline" set
- * vertically, the number of differences, and one link for each part with its count. The part in
+ * vertically, the number of differences, and one link for each subdivision with its count. The subdivision in
  * view is marked. */
 nav.outline .rail-map {
   display: none;
@@ -855,12 +855,12 @@ nav.outline .rail-map a.on {
   cursor: pointer;
 }
 
-/* The notes of deleted text. They show only when the reader follows a reference in that text. */
-.deleted-notes > .note:not(:target) {
+/* The footnotes of deleted text. They show only when the reader follows a reference in that text. */
+.deleted-footnotes > .footnote:not(:target) {
   display: none;
 }
 
-.deleted-notes > .note {
+.deleted-footnotes > .footnote {
   color: var(--del-ink);
   text-decoration: line-through;
 }

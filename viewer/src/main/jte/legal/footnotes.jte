@@ -2,4 +2,4 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @param Element node
 @param LegalRenderer html
-<aside class="notes">${html.children(node)}</aside>
+<aside class="footnotes">${html.children(node)}</aside>

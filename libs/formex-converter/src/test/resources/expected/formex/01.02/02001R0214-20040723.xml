@@ -220,9 +220,9 @@
                   <t v="17 May 1999"/>
                </date>
                <t v=" on the common organisation of the market in milk and milk products"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", as amended by Regulation (EC) No 1040/2000"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 10 thereof,"/>
             </p>
          </occurrence>
@@ -239,45 +239,45 @@
             </num>
             <p>
                <t v="Regulation (EC) No 1255/1999 replaced Council Regulation (EEC) No 804/68"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" and also, "/>
                <emphasis kind="i">
                   <t v="inter alia"/>
                </emphasis>
                <t v=", Council Regulation (EEC) No 777/87"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=" dealing with the buying-in arrangements for butter and skimmed-milk powder. In view of those new arrangements and in the light of the experience gained, the detailed rules governing intervention on the market in skimmed-milk powder should be amended. In the interests of clarity, therefore, the recasting of the specific regulations which previously governed the various aspects of intervention, namely Commission Regulations (EEC) No 2213/76 of "/>
                <date date="1976-09-10">
                   <t v="10 September 1976"/>
                </date>
                <t v=" on the sale of skimmed-milk powder from public storage"/>
-               <noteRef href="#note_5" marker="5"/>
+               <footnoteRef href="#note_5" marker="5"/>
                <t v=", as last amended by Regulation (EC) No 2080/96"/>
-               <noteRef href="#note_6" marker="6"/>
+               <footnoteRef href="#note_6" marker="6"/>
                <t v=", (EEC) No 1362/87 of "/>
                <date date="1987-05-18">
                   <t v="18 May 1987"/>
                </date>
                <t v=" laying down detailed rules for the application of Regulation (EEC) No 777/87 with respect to the buying-in and the granting of aid for the private storage of skimmed-milk powder"/>
-               <noteRef href="#note_7" marker="7"/>
+               <footnoteRef href="#note_7" marker="7"/>
                <t v=", as last amended by Regulation (EC) No 569/96"/>
-               <noteRef href="#note_8" marker="8"/>
+               <footnoteRef href="#note_8" marker="8"/>
                <t v=", (EEC) No 1158/91 of "/>
                <date date="1991-05-03">
                   <t v="3 May 1991"/>
                </date>
                <t v=" on the buying-in by tender of skimmed-milk powder to intervention agencies"/>
-               <noteRef href="#note_9" marker="9"/>
+               <footnoteRef href="#note_9" marker="9"/>
                <t v=", as last amended by Regulation (EC) No 124/1999"/>
-               <noteRef href="#note_10" marker="10"/>
+               <footnoteRef href="#note_10" marker="10"/>
                <t v=", and (EC) No 322/96 of "/>
                <date date="1996-02-22">
                   <t v="22 February 1996"/>
                </date>
                <t v=" laying down detailed rules of application for the public storage of skimmed-milk powder"/>
-               <noteRef href="#note_11" marker="11"/>
+               <footnoteRef href="#note_11" marker="11"/>
                <t v=", as last amended by Regulation (EC) No 419/98"/>
-               <noteRef href="#note_12" marker="12"/>
+               <footnoteRef href="#note_12" marker="12"/>
                <t v=", should be undertaken and their provisions should be brought together in a single regulation."/>
             </p>
          </occurrence>
@@ -586,7 +586,7 @@
                         </num>
                         <p>
                            <t v="are approved in accordance with Article 10 of Council Directive 92/46/EEC"/>
-                           <noteRef href="#note_13" marker="13"/>
+                           <footnoteRef href="#note_13" marker="13"/>
                            <t v=", and have the appropriate technical equipment;"/>
                         </p>
                      </occurrence>
@@ -883,7 +883,7 @@
                </num>
                <p>
                   <t v="Maintenance of the offer and delivery of the skimmed-milk powder to the depot designated by the intervention agency within the time limit laid down in Article 7(2) shall constitute primary requirements within the meaning of Article 20 of Commission Regulation (EEC) No 2220/85"/>
-                  <noteRef href="#note_14" marker="14"/>
+                  <footnoteRef href="#note_14" marker="14"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -1055,7 +1055,7 @@
                <occurrence eId="art_9/unp_2" kind="paragraph">
                   <p>
                      <t v="The storage costs due shall be determined on the basis of flat-rate amounts for entry, removal and storage costs, set pursuant to Article 6 of Council Regulation (EEC) No 1883/78"/>
-                     <noteRef href="#note_15" marker="15"/>
+                     <footnoteRef href="#note_15" marker="15"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -1141,7 +1141,7 @@
                   </num>
                   <p>
                      <t v="The competent authority responsible for inspection shall check on the presence of the products in the depot as provided for in Article 4 of Commission Regulation (EC) No 2148/96"/>
-                     <noteRef href="#note_16" marker="16"/>
+                     <footnoteRef href="#note_16" marker="16"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -2233,7 +2233,7 @@
                      </num>
                      <p>
                         <t v="has not been placed under the arrangements referred to in Article 5(1) of Council Regulation (EEC) No 565/80"/>
-                        <noteRef href="#note_17" marker="17"/>
+                        <footnoteRef href="#note_17" marker="17"/>
                         <t v="; subsequent placing under those arrangements shall be regarded as ending the contractual storage period."/>
                      </p>
                   </occurrence>
@@ -2836,7 +2836,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2853,7 +2853,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2870,7 +2870,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2887,7 +2887,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2904,7 +2904,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2921,7 +2921,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2938,7 +2938,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2955,7 +2955,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2972,7 +2972,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -2991,7 +2991,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -3008,7 +3008,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -3016,18 +3016,18 @@
                <td>
                   <p>
                      <t v="Detection of buttermilk "/>
-                     <noteRef href="#note_19" marker="2"/>
+                     <footnoteRef href="#note_19" marker="2"/>
                   </p>
                </td>
                <td>
                   <p>
                      <t v="Negative"/>
-                     <noteRef href="#note_20" marker="3"/>
+                     <footnoteRef href="#note_20" marker="3"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -3035,7 +3035,7 @@
                <td>
                   <p>
                      <t v="Detection of rennet whey "/>
-                     <noteRef href="#note_21" marker="4"/>
+                     <footnoteRef href="#note_21" marker="4"/>
                   </p>
                </td>
                <td>
@@ -3045,7 +3045,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -3053,7 +3053,7 @@
                <td>
                   <p>
                      <t v="Detection of acid whey "/>
-                     <noteRef href="#note_21" marker="4"/>
+                     <footnoteRef href="#note_21" marker="4"/>
                   </p>
                </td>
                <td>
@@ -3080,7 +3080,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -3097,7 +3097,7 @@
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
@@ -3110,17 +3110,17 @@
                <td>
                   <p>
                      <t v="Negative"/>
-                     <noteRef href="#note_22" marker="5"/>
+                     <footnoteRef href="#note_22" marker="5"/>
                   </p>
                </td>
                <td>
                   <p>
-                     <noteRef href="#note_18" marker="1"/>
+                     <footnoteRef href="#note_18" marker="1"/>
                   </p>
                </td>
             </tr>
-            <notes>
-               <note eId="note_18" marker="1" kind="table">
+            <footnotes>
+               <footnote eId="note_18" marker="1" kind="table">
                   <p>
                      <t v="See Commission Regulation (EC) No 213/2001 of "/>
                      <date date="2001-01-09">
@@ -3128,34 +3128,34 @@
                      </date>
                      <t v=" laying down detailed rules for the application of Council Regulation (EC) No 1255/1999 as regards methods for the analysis and quality evaluation of milk and milk products and amending Regulations (EC) No 2771/1999 and (EC) No 2799/1999 (see page 1 of this Official Journal)."/>
                   </p>
-               </note>
-               <note eId="note_19" marker="2" kind="table">
+               </footnote>
+               <footnote eId="note_19" marker="2" kind="table">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="Buttermilk"/>
                      </quote>
                      <t v=" means the by-product of butter manufacture obtained after churning of the cream and separation of the solid fat."/>
                   </p>
-               </note>
-               <note eId="note_20" marker="3" kind="table">
+               </footnote>
+               <footnote eId="note_20" marker="3" kind="table">
                   <p>
                      <t v="The absence of buttermilk can be established either by an on-the-spot inspection of the production plan carried out without prior notice at least once a week, or by a laboratory analysis of the end product indicating a maximum of 69,31 mg of FEDP per 100 g."/>
                   </p>
-               </note>
-               <note eId="note_21" marker="4" kind="table">
+               </footnote>
+               <footnote eId="note_21" marker="4" kind="table">
                   <p>
                      <quote startQuote="‘" endQuote="’">
                         <t v="Whey"/>
                      </quote>
                      <t v=" means the by-product of cheese or casein manufacture obtained by the action of acids, rennet and/or chemico-physical processes."/>
                   </p>
-               </note>
-               <note eId="note_22" marker="5" kind="table">
+               </footnote>
+               <footnote eId="note_22" marker="5" kind="table">
                   <p>
                      <t v="Raw milk used for the manufacture of skimmed-milk powder must satisfy the requirements laid down in Part D of Chapter III of Annex A to Directive 92/46/EEC."/>
                   </p>
-               </note>
-            </notes>
+               </footnote>
+            </footnotes>
          </table>
       </occurrence>
       <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
@@ -3317,8 +3317,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3329,8 +3329,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3341,8 +3341,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3353,8 +3353,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3365,8 +3365,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3377,8 +3377,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3389,8 +3389,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3401,8 +3401,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="8" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3413,8 +3413,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
+      </footnote>
+      <footnote eId="note_9" marker="9" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3425,8 +3425,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
+      </footnote>
+      <footnote eId="note_10" marker="10" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3437,16 +3437,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
+      </footnote>
+      <footnote eId="note_11" marker="11" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="45" date="1996-02-23" page="5">
                <t v="OJ L 45, 23.2.1996, p. 5"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
+      </footnote>
+      <footnote eId="note_12" marker="12" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3457,8 +3457,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
+      </footnote>
+      <footnote eId="note_13" marker="13" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3469,8 +3469,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
+      </footnote>
+      <footnote eId="note_14" marker="14" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3481,8 +3481,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
+      </footnote>
+      <footnote eId="note_15" marker="15" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3493,8 +3493,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
+      </footnote>
+      <footnote eId="note_16" marker="16" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -3505,15 +3505,15 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
+      </footnote>
+      <footnote eId="note_17" marker="17" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="62" date="1980-03-07" page="5">
                <t v="OJ L 62, 7.3.1980, p. 5"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

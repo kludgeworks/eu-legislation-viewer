@@ -6,7 +6,7 @@
 <%-- Shows the home page. Its large line says what the viewer does (the site bar has the name), then
      comes the Find an act box. Then come a search's results. Each result shows the act's CELEX and kind, its title,
      its link and the pages it goes to. Filters by kind of act and links to the pages before and
-     after go with the results. At the end, three notes say what this is, what it adds and what it
+     after go with the results. At the end, three paragraphs say what this is, what it adds and what it
      is not, and a footer links to the About page, its Privacy and its API. The page leaves out the small search box of the site bar (search false).
      For a CELEX number or ELI of an act that the catalogue does not have yet, the page says at once
      that it looks the act up, and the viewer looks it up in the background. The stream

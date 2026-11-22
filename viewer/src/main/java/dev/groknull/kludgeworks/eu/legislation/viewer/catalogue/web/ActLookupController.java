@@ -24,8 +24,8 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * <ul>
  *   <li>If the act is found, the stream sends the event {@code done}, and the page asks for its
  *       address again.
- *   <li>If no act has the ELI, or the Publications Office did not answer, the stream sends the part
- *       of the page that says so.
+ *   <li>If no act has the ELI, or the Publications Office did not answer, the stream sends the
+ *       fragment of the page that says so.
  * </ul>
  *
  * <p>The stream joins the lookup that runs, or starts one. It ends when the lookup ends, or after a

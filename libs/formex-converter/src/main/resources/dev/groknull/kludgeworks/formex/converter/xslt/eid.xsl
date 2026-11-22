@@ -17,7 +17,7 @@
   counts the occurrences of its kind in the same context. What is a context differs by kind, on purpose,
   each in one function:
     lists, list items outside a list   f:scope (lists.xsl): items, articles, paragraphs, alineas,
-                                       levels, annexes, quotations, tables, notes, divisions,
+                                       levels, annexes, quotations, tables, footnotes, divisions,
                                        corrections, letters, subdivisions and more
     quotations                         f:quotation-scope (occurrences.xsl): the occurrence the eId hangs off
     annexes in content                 f:annex-scope (annexes.xsl)

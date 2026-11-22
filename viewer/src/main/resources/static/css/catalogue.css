@@ -350,7 +350,7 @@ section.selection.compare a {
   border-left: 3px dashed var(--warn-stripe);
 }
 
-/* The notes need room beside the text. */
+/* The divergence notes need room beside the text. */
 .outlined:has(> divergence-notes > .prospective-note) {
   padding-right: 15rem;
 }
@@ -807,7 +807,7 @@ form.on .day-text[readonly] {
 }
 
 /* The home page (catalogue/home.jte). It shows the name of the viewer, the Find an act box and the
- * results of a search. Three notes come after them. */
+ * results of a search. Three paragraphs about the viewer come after them. */
 .home {
   max-width: 1120px;
   margin-inline: auto;
@@ -1733,7 +1733,7 @@ ul.corrigenda {
   list-style: none;
 }
 
-/* A run of changes with one state. The note says the state one time. The provisions are in
+/* A run of changes with one state. The statement says the state one time. The provisions are in
  * columns, in the order of the text down each column. */
 section.run {
   margin: 14px 0 0;
@@ -1749,13 +1749,13 @@ section.run.open {
   border-left: 3px dashed var(--line-strong);
 }
 
-section.run .note {
+section.run .statement {
   margin: 0 0 4px;
   color: var(--muted);
   font-size: 13.5px;
 }
 
-section.run.warn .note {
+section.run.warn .statement {
   color: var(--warn-ink);
 }
 

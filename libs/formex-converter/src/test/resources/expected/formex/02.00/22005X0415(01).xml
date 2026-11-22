@@ -18,7 +18,7 @@
                <t v="22 July 1972"/>
             </date>
             <t v=" as regards the provisions applicable to processed agricultural products"/>
-            <noteRef href="#note_1" marker="1"/>
+            <footnoteRef href="#note_1" marker="1"/>
          </p>
       </longTitle>
    </preface>
@@ -43,8 +43,8 @@
          <t v="."/>
       </p>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -55,7 +55,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

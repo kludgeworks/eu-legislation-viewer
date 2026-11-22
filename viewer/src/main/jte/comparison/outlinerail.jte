@@ -3,8 +3,8 @@
 @param int total
 <%-- Shows the rail that a comparison's outline collapses to. It shows only while the outline is
      collapsed. "Outline" is set vertically, then the number of differences, then one link for each
-     part with differences, with its count (one for each section in a one-part comparison). Thus the
-     rail still works as a map. js/outline.js marks the part in view. --%>
+     subdivision with differences, with its count (one for each section in a one-subdivision comparison). Thus the
+     rail still works as a map. js/outline.js marks the subdivision in view. --%>
 <div class="rail-map">
   <span class="rail-label">Outline</span>
   <span class="rail-total" title="${total == 1 ? "1 difference" : total + " differences"}">${total}</span>

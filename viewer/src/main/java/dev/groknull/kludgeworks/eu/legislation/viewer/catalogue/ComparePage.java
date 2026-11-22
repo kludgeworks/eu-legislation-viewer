@@ -9,20 +9,21 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The address of a compare page: the comparison of the law on two days, for an act in one language.
- * It gives the addresses of the page and of its parts.
+ * It gives the addresses of the page and of its fragments.
  *
- * <p>The page has the two days that the reader gave. Its parts have the first days of the two
+ * <p>The page has the two days that the reader gave. Its fragments have the first days of the two
  * versions whose texts show the law on those days ({@code Act.textOn}), and the two days also.
  *
  * <p>For example, the page {@code
- * /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03} has its changes at {@code
- * /eli/reg_impl/2015/1998/eng/compare/changes?from=2016-02-29&to=2017-06-07&fromDay=2016-02-29&toDay=2017-06-03}.
- * A part finds its page by dropping its own segment, {@link #ofPart}, and by its days, {@link #on}.
+ * /eli/reg_impl/2015/1998/eng/compare?from=2016-02-29&to=2017-06-03} has its differences at {@code
+ * /eli/reg_impl/2015/1998/eng/compare/differences?from=2016-02-29&to=2017-06-07&fromDay=2016-02-29&toDay=2017-06-03}.
+ * A fragment finds its page by dropping its own segment, {@link #ofFragment}, and by its days,
+ * {@link #on}.
  *
- * <p>The page is the catalogue's, and its parts are the comparison module's. The rule that ties a
- * part to its page is the contract between the two: a part's address is the page's address with a
- * segment added, and the page's query. The comparison module maps its controller to the constants
- * here, so the rule is written once.
+ * <p>The page is the catalogue's, and its fragments are the comparison module's. The rule that ties
+ * a fragment to its page is the contract between the two: a fragment's address is the page's
+ * address with a segment added, and the page's query. The comparison module maps its controller to
+ * the constants here, so the rule is written once.
  *
  * <p>The constants are the paths and the names of the query's fields. They are constant
  * expressions, so that a controller can map them.
@@ -54,43 +55,45 @@ public record ComparePage(
   /** The path of the compare page, with the ELI of the act and the code of the language. */
   public static final String PATH = "/eli/{type}/{year}/{number}/{language}/compare";
 
-  /** The segment of the part with the changes, in the view that {@link #VIEW} asks for. */
-  public static final String CHANGES = "changes";
+  /** The segment of the fragment with the differences, in the view that {@link #VIEW} asks for. */
+  public static final String DIFFERENCES = "differences";
 
-  /** The segment of the part with the occurrences of a fold that are the same in both versions. */
+  /**
+   * The segment of the fragment with the occurrences of a fold that are the same in both versions.
+   */
   public static final String SAME = "same";
 
   /**
-   * The segment of the part with one difference, or with some rows of one of its tables. A view
+   * The segment of the fragment with one difference, or with some rows of one of its tables. A view
    * loads it when the reader opens a fold in the difference.
    */
   public static final String DIFFERENCE = "difference";
 
   /**
-   * The segment of the part with the differences at one place: the occurrences that an amendment
-   * names. The page of an amending act loads the wording of each of its changes from it.
+   * The segment of the fragment with the differences at one place: the occurrences that an
+   * amendment names. The page of an amending act loads the wording of each of its changes from it.
    */
   public static final String PLACE = "place";
 
-  /** The path of the part with the differences at one place. */
+  /** The path of the fragment with the differences at one place. */
   public static final String PLACE_PATH = PATH + "/" + PLACE;
 
   /**
-   * The segment of the part with the differences that one of two or more acts made, where the data
-   * does not say which. The page of an amending act shows them in a separate list.
+   * The segment of the fragment with the differences that one of two or more acts made, where the
+   * data does not say which. The page of an amending act shows them in a separate list.
    */
   public static final String EITHER = "either";
 
-  /** The path of the part with the differences that one of two or more acts made. */
+  /** The path of the fragment with the differences that one of two or more acts made. */
   public static final String EITHER_PATH = PATH + "/" + EITHER;
 
-  /** The path of the part with the changes. */
-  public static final String CHANGES_PATH = PATH + "/" + CHANGES;
+  /** The path of the fragment with the differences. */
+  public static final String DIFFERENCES_PATH = PATH + "/" + DIFFERENCES;
 
-  /** The path of the part with the occurrences of a fold. */
+  /** The path of the fragment with the occurrences of a fold. */
   public static final String SAME_PATH = PATH + "/" + SAME;
 
-  /** The path of the part with one difference. */
+  /** The path of the fragment with one difference. */
   public static final String DIFFERENCE_PATH = PATH + "/" + DIFFERENCE;
 
   /** The field of the first day of the version at the From end. For example, 2026-03-22. */
@@ -102,10 +105,10 @@ public record ComparePage(
   /** The field of the CELEX of the act that the comparison is limited to. */
   public static final String ACT = "act";
 
-  /** The field of the earlier day of the page, which only its parts have. */
+  /** The field of the earlier day of the page, which only its fragments have. */
   public static final String FROM_DAY = "fromDay";
 
-  /** The field of the later day of the page, which only its parts have. */
+  /** The field of the later day of the page, which only its fragments have. */
   public static final String TO_DAY = "toDay";
 
   /**
@@ -142,19 +145,19 @@ public record ComparePage(
   public static final String ROWS = "rows";
 
   /**
-   * Returns the page of the part at {@code part}, the path of the part's address. For example,
-   * {@code /eli/reg_impl/2015/1998/eng/compare/changes} is a part of the page at {@code
-   * /eli/reg_impl/2015/1998/eng/compare}.
+   * Returns the page of the fragment at {@code fragment}, the path of the fragment's address. For
+   * example, {@code /eli/reg_impl/2015/1998/eng/compare/differences} is a fragment of the page at
+   * {@code /eli/reg_impl/2015/1998/eng/compare}.
    */
-  public static ComparePage ofPart(
-      String part, LocalDate from, LocalDate to, @Nullable String act, @Nullable String view) {
-    return new ComparePage(part.substring(0, part.lastIndexOf('/')), from, to, act, view);
+  public static ComparePage ofFragment(
+      String fragment, LocalDate from, LocalDate to, @Nullable String act, @Nullable String view) {
+    return new ComparePage(fragment.substring(0, fragment.lastIndexOf('/')), from, to, act, view);
   }
 
   /**
    * Returns the address of the same page, with the days {@code fromDay} and {@code toDay}. A null
    * day is the first day of the version at that end. A day that is the first day of its version is
-   * not kept apart, so that the addresses of the parts stay short.
+   * not kept apart, so that the addresses of the fragments stay short.
    */
   public ComparePage on(@Nullable LocalDate fromDay, @Nullable LocalDate toDay) {
     return new ComparePage(
@@ -202,9 +205,9 @@ public record ComparePage(
     return new ComparePage(path, from, to, act, view, fromDay, toDay).href();
   }
 
-  /** Returns the address of the changes, with the page's query. */
-  public String changes() {
-    return part(CHANGES);
+  /** Returns the address of the differences, with the page's query. */
+  public String differences() {
+    return fragment(DIFFERENCES);
   }
 
   /**
@@ -280,7 +283,7 @@ public record ComparePage(
     return FIRST + "=" + encode(first) + "&" + LAST + "=" + encode(last);
   }
 
-  private String part(String segment) {
+  private String fragment(String segment) {
     return path + "/" + segment + query(from, to) + act(act) + view(view) + days();
   }
 

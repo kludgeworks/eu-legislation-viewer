@@ -26,7 +26,7 @@ import org.jspecify.annotations.Nullable;
  * </ul>
  *
  * <p>Anything else is 404. The compare page and the API find the canonical address for any dates.
- * Its parts, and the API's comparison, need not.
+ * Its fragments, and the API's comparison, need not.
  */
 final class Ends {
   final Language language;
@@ -68,7 +68,7 @@ final class Ends {
    * Returns the first version in the language that includes {@code amending}. The version is after
    * From and not after To.
    */
-  Optional<Version> step(ActIdentifier amending) {
+  Optional<Version> including(ActIdentifier amending) {
     return timeline.versions().stream()
         .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
         .filter(v -> included.includes(v, amending))

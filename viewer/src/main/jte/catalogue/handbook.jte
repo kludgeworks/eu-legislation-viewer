@@ -11,7 +11,7 @@
 <%-- Lays out a page of reference, About and the API's documentation, as a handbook: a column of
      contents that stays in view, beside a column of reading width. The two pages have the same
      contents in the same place, so the page does not move when the reader goes from one to the
-     other. A link to the page itself is #name, and the contents mark the part the reader is in
+     other. A link to the page itself is #name, and the contents mark the section the reader is in
      (page-contents, js/outline.js). A link to the other page is its address. api is true on the
      API's documentation. --%>
 !{var about = api ? "/about" : "";}

@@ -260,37 +260,37 @@
                   <t v="16 March 2006"/>
                </date>
                <t v=" between the European Central Bank and the national central banks of the Member States outside the euro area laying down the operating procedures for an exchange rate mechanism in stage three of Economic and Monetary Union"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", as amended by the Agreement of "/>
                <date date="2006-12-21">
                   <t v="21 December 2006"/>
                </date>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", by the Agreement of "/>
                <date date="2007-12-14">
                   <t v="14 December 2007"/>
                </date>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", by the Agreement of "/>
                <date date="2008-12-08">
                   <t v="8 December 2008"/>
                </date>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=", by the Agreement of "/>
                <date date="2010-12-13">
                   <t v="13 December 2010"/>
                </date>
-               <noteRef href="#note_5" marker="5"/>
+               <footnoteRef href="#note_5" marker="5"/>
                <t v=", by the Agreement of "/>
                <date date="2013-06-21">
                   <t v="21 June 2013"/>
                </date>
-               <noteRef href="#note_6" marker="6"/>
+               <footnoteRef href="#note_6" marker="6"/>
                <t v=" and by the Agreement of "/>
                <date date="2013-12-06">
                   <t v="6 December 2013"/>
                </date>
-               <noteRef href="#note_7" marker="7"/>
+               <footnoteRef href="#note_7" marker="7"/>
                <t v=" (hereinafter collectively referred to as the "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="ERM II Central Bank Agreement"/>
@@ -311,7 +311,7 @@
                <date date="2015-01-01">
                   <t v="1 January 2015"/>
                </date>
-               <noteRef href="#note_8" marker="8"/>
+               <footnoteRef href="#note_8" marker="8"/>
                <t v=" the derogation in favour of Lithuania referred to in Article 4 of the 2003 Act of Accession is abrogated with effect from "/>
                <date date="2015-01-01">
                   <t v="1 January 2015"/>
@@ -552,8 +552,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -564,16 +564,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj" series="C" number="14" date="2007-01-20" page="6">
                <t v="OJ C 14, 20.1.2007, p. 6"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -584,8 +584,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -596,16 +596,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj" series="C" number="5" date="2011-01-08" page="3">
                <t v="OJ C 5, 8.1.2011, p. 3"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -616,16 +616,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <ref kind="oj" series="C" number="17" date="2014-01-21" page="1">
                <t v="OJ C 17, 21.1.2014, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="8" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -636,8 +636,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -676,7 +676,7 @@
                   <td header="true">
                      <p>
                         <t v="Ceilings"/>
-                        <noteRef href="#note_anx01000401-1" marker="1"/>
+                        <footnoteRef href="#note_anx01000401-1" marker="1"/>
                      </p>
                   </td>
                </tr>
@@ -1044,13 +1044,13 @@
                </tr>
             </table>
          </tableGroup>
-         <notes>
-            <note eId="note_anx01000401-1" marker="1" kind="table">
+         <footnotes>
+            <footnote eId="note_anx01000401-1" marker="1" kind="table">
                <p>
                   <t v="The amounts indicated are notional for central banks which do not participate in ERM II."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
    </annexes>
 </legalText>

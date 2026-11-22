@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
-/** Tests the About page, which the home page's footer links to by its parts. */
+/** Tests the About page, which the home page's footer links to by its sections. */
 @WebMvcTest(AboutController.class)
 @Import({ControllerTesting.class, ApiDocs.class})
 class AboutControllerTests {
@@ -31,8 +31,8 @@ class AboutControllerTests {
   }
 
   /**
-   * The contents are those of the API's documentation: the parts of the page by their ids, and the
-   * parts of the API on its page.
+   * The contents are those of the API's documentation: the sections of the page by their ids, and
+   * the sections of the API on its page.
    */
   @Test
   void hasTheContentsOfTheApisDocumentation() throws UnsupportedEncodingException {

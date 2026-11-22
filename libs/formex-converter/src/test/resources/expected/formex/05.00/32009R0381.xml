@@ -55,7 +55,7 @@
                   <t v="22 October 2007"/>
                </date>
                <t v=" establishing a common organisation of agricultural markets and on specific provisions for certain agricultural products (Single CMO Regulation)"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 144(1), in conjunction with Article 4 thereof,"/>
             </p>
          </occurrence>
@@ -72,7 +72,7 @@
             </num>
             <p>
                <t v="In accordance with Commission Regulation (EC) No 2092/2004"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" certificates of authenticity attesting that the products originate in Switzerland are to be issued before certain products are imported. The name of the issuing authority for those certificates is given in Annex III to that Regulation. Article 4(2) of that Regulation provides that Annex III may be revised in case a new issuing authority is appointed."/>
             </p>
          </occurrence>
@@ -161,8 +161,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -173,8 +173,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -185,8 +185,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

@@ -458,7 +458,7 @@
                         </num>
                         <p>
                            <t v="The dimensions of the approval mark drawn below"/>
-                           <noteRef href="#note_anx01003201-1" marker="1"/>
+                           <footnoteRef href="#note_anx01003201-1" marker="1"/>
                            <t v=" are expressed in millimetres, these dimensions being minima. The ratios between the dimensions must be maintained."/>
                         </p>
                         <figure src="L_2016146EN.01003301.tif" content="techDesign"/>
@@ -491,7 +491,7 @@
                      </p>
                      <p>
                         <t v="Notification concerning"/>
-                        <noteRef href="#note_anx01003201-2" marker="2"/>
+                        <footnoteRef href="#note_anx01003201-2" marker="2"/>
                         <t v=":"/>
                      </p>
                      <list kind="dash">
@@ -695,7 +695,7 @@
                      </p>
                      <p>
                         <t v="Notification concerning"/>
-                        <noteRef href="#note_anx01003201-3" marker="3"/>
+                        <footnoteRef href="#note_anx01003201-3" marker="3"/>
                         <t v=":"/>
                      </p>
                      <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/idt_1" kind="indent">
@@ -729,7 +729,7 @@
                            </num>
                            <p>
                               <t v="recording equipment component"/>
-                              <noteRef href="#note_anx01003201-4" marker="4"/>
+                              <footnoteRef href="#note_anx01003201-4" marker="4"/>
                            </p>
                         </occurrence>
                         <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_III/level_1/list_2/idt_3" kind="point">
@@ -944,7 +944,7 @@
                      </p>
                      <p>
                         <t v="Notification concerning"/>
-                        <noteRef href="#note_anx01003201-5" marker="5"/>
+                        <footnoteRef href="#note_anx01003201-5" marker="5"/>
                         <t v=":"/>
                      </p>
                      <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/idt_1" kind="indent">
@@ -978,7 +978,7 @@
                            </num>
                            <p>
                               <t v="recording equipment component"/>
-                              <noteRef href="#note_anx01003201-6" marker="6"/>
+                              <footnoteRef href="#note_anx01003201-6" marker="6"/>
                            </p>
                         </occurrence>
                         <occurrence eId="cor_1/new/qstr_1/anx_II/pnt_IV/level_1/list_2/idt_3" kind="point">
@@ -1229,38 +1229,38 @@
          </new>
       </occurrence>
    </body>
-   <notes>
-      <note eId="note_anx01003201-1" marker="1" kind="chapter">
+   <footnotes>
+      <footnote eId="note_anx01003201-1" marker="1" kind="chapter">
          <p>
             <t v="These figures are shown for guidance only."/>
          </p>
-      </note>
-      <note eId="note_anx01003201-2" marker="2" kind="chapter">
+      </footnote>
+      <footnote eId="note_anx01003201-2" marker="2" kind="chapter">
          <p>
             <t v="Delete items not applicable."/>
          </p>
-      </note>
-      <note eId="note_anx01003201-3" marker="3" kind="chapter">
+      </footnote>
+      <footnote eId="note_anx01003201-3" marker="3" kind="chapter">
          <p>
             <t v="Tick the relevant boxes."/>
          </p>
-      </note>
-      <note eId="note_anx01003201-4" marker="4" kind="chapter">
+      </footnote>
+      <footnote eId="note_anx01003201-4" marker="4" kind="chapter">
          <p>
             <t v="Specify the component dealt with in the notification."/>
          </p>
-      </note>
-      <note eId="note_anx01003201-5" marker="5" kind="chapter">
+      </footnote>
+      <footnote eId="note_anx01003201-5" marker="5" kind="chapter">
          <p>
             <t v="Tick the relevant boxes."/>
          </p>
-      </note>
-      <note eId="note_anx01003201-6" marker="6" kind="chapter">
+      </footnote>
+      <footnote eId="note_anx01003201-6" marker="6" kind="chapter">
          <p>
             <t v="Specify the component dealt with in the notification."/>
             <t v="’"/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

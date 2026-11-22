@@ -106,7 +106,7 @@ class LegalRendererTest {
       case "number" -> HTML.thousands(Objects.requireNonNull(element.attribute("v")));
       case "quote" ->
           element.attribute("startQuote") + children(element) + element.attribute("endQuote");
-      case "noteRef" -> " (" + element.attribute("marker") + ")";
+      case "footnoteRef" -> " (" + element.attribute("marker") + ")";
       case "eol" -> " ";
       // The page shows only the tag of a deletion, with no text.
       case "deleted" -> "";

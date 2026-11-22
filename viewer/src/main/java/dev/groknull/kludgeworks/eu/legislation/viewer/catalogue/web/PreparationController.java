@@ -24,9 +24,9 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
  * Pushes the preparation of an act in a language to the pages that wait for it, as server-sent
  * events. For example, {@code /eli/reg_impl/2015/1998/eng/prepare/events}.
  *
- * <p>Each message has the current state of the preparation. It contains the parts of the page that
- * change: the progress and the count that a screen reader hears. The page swaps in each part by its
- * id.
+ * <p>Each message has the current state of the preparation. It contains the fragments of the page
+ * that change: the progress and the count that a screen reader hears. The page swaps in each
+ * fragment by its id.
  *
  * <ul>
  *   <li>The stream sends a message when the page connects or connects again.
@@ -76,7 +76,7 @@ class PreparationController {
   }
 
   /**
-   * Sends the parts of the page that change, or {@code done} if the act is settled.
+   * Sends the fragments of the page that change, or {@code done} if the act is settled.
    *
    * @return whether the act is settled
    */

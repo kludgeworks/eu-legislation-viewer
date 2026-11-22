@@ -15,8 +15,8 @@
   <dt>text</dt>
   <dd>The text, in its parts, as the Official Journal prints it: <span class="mono">title</span>,
     <span class="mono">preamble</span>, <span class="mono">body</span>, <span class="mono">conclusions</span>,
-    <span class="mono">annexes</span> and <span class="mono">notes</span>. A part that the text does not have is not in
-    the answer. <span class="mono">title</span> is running text. <span class="mono">notes</span> is a list of
+    <span class="mono">annexes</span> and <span class="mono">footnotes</span>. A part that the text does not have is not in
+    the answer. <span class="mono">title</span> is running text. <span class="mono">footnotes</span> is a list of
     footnotes, each with its <span class="mono">eId</span>, its <span class="mono">marker</span> and its blocks. Each
     other part is a list of blocks.</dd>
 </dl>
@@ -60,7 +60,7 @@
 <p>A block that a consolidation changed has <span class="mono">amendedBy</span>: the amending act, by its CELEX number,
   and what it did.</p>
 <h4>Running text</h4>
-<p>Running text has two forms. <span class="mono">text</span> is plain text. It does not have the markers of notes or
+<p>Running text has two forms. <span class="mono">text</span> is plain text. It does not have the markers of footnotes or
   the words that an amendment deleted. <span class="mono">html</span> is HTML with only these elements:</p>
 <ul>
   <li><span class="mono">b</span>, <span class="mono">i</span>, <span class="mono">u</span>, <span class="mono">s</span>,
@@ -68,7 +68,7 @@
     <span class="mono">class</span>, for typefaces.</li>
   <li><span class="mono">time</span>, with <span class="mono">datetime</span>, for a date.</li>
   <li><span class="mono">cite</span> for a reference to the Official Journal, and <span class="mono">a</span> for a
-    link. The marker of a note links to <span class="mono">#</span> and the note's <span class="mono">eId</span>.</li>
+    link. The marker of a footnote links to <span class="mono">#</span> and the footnote's <span class="mono">eId</span>.</li>
   <li><span class="mono">span</span> with <span class="mono">data-act</span> and <span class="mono">data-action</span>
     for words that an amending act changed, and <span class="mono">s</span> with them for words that it deleted.</li>
   <li><span class="mono">ins</span> and <span class="mono">del</span> for the words of the edits of a comparison.</li>

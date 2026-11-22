@@ -1689,7 +1689,7 @@
                   <t v="controller"/>
                </quote>
                <t v=" within the meaning of Article 3, point (8), of Regulation (EU) 2018/1725 of the European Parliament and of the Council"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", in order to ensure that the natural persons concerned can exercise their rights under that Regulation."/>
             </p>
          </occurrence>
@@ -2665,8 +2665,8 @@
          </list>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Regulation (EU) 2018/1725 of the European Parliament and of the Council of "/>
             <date date="2018-10-23">
@@ -2682,7 +2682,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

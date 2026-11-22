@@ -82,7 +82,7 @@
                   <t v="11 October 2004"/>
                </date>
                <t v=" imposing certain restrictive measures in support of effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 10(a) thereof,"/>
             </p>
          </occurrence>
@@ -111,9 +111,9 @@
                   <t v="11 October 2004"/>
                </date>
                <t v=" on further measures in support of the effective implementation of the mandate of the International Criminal Tribunal for the former Yugoslavia (ICTY)"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=". Council Decision 2005/…/CFSP"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" of "/>
                <date date="2005-06-06">
                   <t v="6 June 2005"/>
@@ -207,8 +207,8 @@
          </list>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -235,8 +235,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -255,12 +255,12 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Not yet published In the Official Journal."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

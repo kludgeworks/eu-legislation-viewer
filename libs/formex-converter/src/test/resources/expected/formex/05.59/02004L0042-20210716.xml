@@ -727,7 +727,7 @@
                   <t v="13 April 2016"/>
                </date>
                <t v=" on Better Law-Making"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -1287,7 +1287,7 @@
                   <td header="true">
                      <p>
                         <t v="Phase I (g/l"/>
-                        <noteRef href="#note_2" marker="1"/>
+                        <footnoteRef href="#note_2" marker="1"/>
                         <t v=")"/>
                      </p>
                      <p>
@@ -1301,7 +1301,7 @@
                   <td header="true">
                      <p>
                         <t v="Phase II (g/l"/>
-                        <noteRef href="#note_2" marker="1"/>
+                        <footnoteRef href="#note_2" marker="1"/>
                         <t v=")"/>
                      </p>
                      <p>
@@ -1837,13 +1837,13 @@
                      </p>
                   </td>
                </tr>
-               <notes>
-                  <note eId="note_2" marker="1" kind="table">
+               <footnotes>
+                  <footnote eId="note_2" marker="1" kind="table">
                      <p>
                         <t v="g/l ready to use"/>
                      </p>
-                  </note>
-               </notes>
+                  </footnote>
+               </footnotes>
             </table>
             <table cols="4">
                <caption>
@@ -1868,7 +1868,7 @@
                   <td header="true">
                      <p>
                         <t v="VOC g/l"/>
-                        <noteRef href="#note_3" marker="1"/>
+                        <footnoteRef href="#note_3" marker="1"/>
                      </p>
                      <p>
                         <t v="(1.1.2007)"/>
@@ -2009,13 +2009,13 @@
                      </p>
                   </td>
                </tr>
-               <notes>
-                  <note eId="note_3" marker="1" kind="table">
+               <footnotes>
+                  <footnote eId="note_3" marker="1" kind="table">
                      <p>
                         <t v="g/l of ready for use product. Except for subcategory (a) any water content of the product ready for use should be discounted."/>
                      </p>
-                  </note>
-               </notes>
+                  </footnote>
+               </footnotes>
             </table>
          </tableGroup>
       </occurrence>
@@ -2226,8 +2226,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -2238,7 +2238,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -69,7 +69,7 @@ The primary task changes.
 
     > **On 1 August 2022.**
     > **2018/1862** applied in part. It applies in full from 7 March 2023 · Article 79(5).
-    > **2022/1190** was in force and did not apply yet. It applies from 15 October 2026. 17 provisions, with a note in the text.
+    > **2022/1190** was in force and did not apply yet. It applies from 15 October 2026. 17 provisions, with a divergence note in the text.
     > **2021/1133** was in force. Article 6 of 2021/1133 sets the day from which it applies. The data does not give a date for that day. 3 provisions, not in this text.
 
 23. A line shows only for these acts:
@@ -80,7 +80,7 @@ The primary task changes.
 25. In the text, a change that does not apply on the day has an amber rule and a short line with the act. The act is a link to its page.
 26. Where the text does not show a change, one marker is at that place. It gives the provision and the act, with a link.
 27. In the outline, a part that has a rule has an amber dot. A part that has a marker has the sign of the marker.
-28. If the whole act does not apply on the day, the status line says so one time. There is no rule along the text and no second note.
+28. If the whole act does not apply on the day, the status line says so one time. There is no bar along the text and no second divergence note.
 29. A provision that an act changed has a link to its history. The history lists the acts that changed it, with the dates, and a link to each change.
 30. If more than one act changed the provision, the history has a link "See how its wording changed".
 31. If the data gives two acts and does not say which one: "The data does not say which act deleted this. It was 2019/413 or 2021/255." Each number is a link.
@@ -91,7 +91,7 @@ The primary task changes.
 33. No tab opens Compare. The reader gets there from the history of a provision, or from the day control with two days, on History and on Read.
 34. The reader gives two days. The page shows those two days.
 35. One line gives the amending acts between the two days. Each act is a link.
-36. Each difference has a side note with the act and the date. A change that does not apply on the second day has the amber rule.
+36. Each difference has a sidenote with the act and the date. A change that does not apply on the second day has the amber bar.
 37. For one provision, the page shows the wording on each day and a list of the steps between them.
 38. The page has no versions, no act filter and no notice about days that no version shows.
 
@@ -116,7 +116,7 @@ The primary task changes.
 
 - Amber has one meaning: this change does not apply on the day.
 - The marker means: the text does not show a change here. It is grey, not amber, because it has a different meaning.
-- Compare keeps its three views: Changes, Whole text and Synopsis.
+- Compare keeps its three views: Differences, Whole text and Synopsis.
 - The timeline and the calendar of versions go away. The day control replaces them. Its calendar marks the days with a change, not the days of the versions.
 - The link with the arrow "↑" goes away.
 - No link or button is in a `summary` element.

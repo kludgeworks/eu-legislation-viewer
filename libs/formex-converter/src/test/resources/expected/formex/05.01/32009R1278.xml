@@ -55,7 +55,7 @@
                   <t v="17 December 1999"/>
                </date>
                <t v=" on the common organisation of the markets in fishery and aquaculture products"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -66,7 +66,7 @@
                   <t v="21 December 2000"/>
                </date>
                <t v=" laying down detailed rules for the application of Council Regulation (EC) No 104/2000 as regards the grant of private storage aid for certain fishery products"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 1 thereof,"/>
             </p>
          </occurrence>
@@ -197,8 +197,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -209,8 +209,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -221,7 +221,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

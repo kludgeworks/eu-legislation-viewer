@@ -41,7 +41,7 @@ public final class ApiSchemas {
 
   /**
    * Returns the closed schema at {@code iri}. For example, {@code V1 + "occurrence.schema.json"},
-   * or {@code V1 + "text.schema.json#/$defs/legalText"} for a part of one.
+   * or {@code V1 + "text.schema.json#/$defs/legalText"} for a definition in one.
    */
   public static Schema schema(String iri) {
     return REGISTRY.getSchema(SchemaLocation.of(iri));

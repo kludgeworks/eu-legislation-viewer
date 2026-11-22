@@ -55,7 +55,7 @@
                   <t v="8 June 2016"/>
                </date>
                <t v=" on protection against dumped imports from countries not members of the European Union"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(1) thereof,"/>
             </p>
          </occurrence>
@@ -66,7 +66,7 @@
                   <t v="9 October 2013"/>
                </date>
                <t v=" laying down the Union Customs Code"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and in particular Article 56(5) thereof,"/>
             </p>
          </occurrence>
@@ -99,7 +99,7 @@
                   <emphasis kind="i">
                      <t v="Official Journal of the European Union"/>
                   </emphasis>
-                  <noteRef href="#note_3" marker="3"/>
+                  <footnoteRef href="#note_3" marker="3"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -290,8 +290,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -302,8 +302,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -314,8 +314,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -326,7 +326,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

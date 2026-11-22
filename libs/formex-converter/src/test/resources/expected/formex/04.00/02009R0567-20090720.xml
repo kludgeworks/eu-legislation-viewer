@@ -85,7 +85,7 @@
                   <t v="20 March 2006"/>
                </date>
                <t v=" on agricultural products and foodstuffs as traditional specialities guaranteed"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular the first subparagraph of Article 9(4) thereof,"/>
             </p>
          </occurrence>
@@ -109,7 +109,7 @@
                <emphasis kind="i">
                   <t v="Official Journal of the European Union"/>
                </emphasis>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -223,16 +223,16 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="93" date="2006-03-31" page="1">
                <t v="OJ L 93, 31.3.2006, p. 1"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -243,7 +243,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

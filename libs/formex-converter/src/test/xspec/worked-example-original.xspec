@@ -20,10 +20,10 @@
         $x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:t/@v = '(EU) 2015/1998'
         and $x:result/*:preface/*:longTitle/*:p[2]/*:docDate/@date = '2015-11-05'"/>
     <x:expect label="2. recital (2) refers to footnote 2, as EUR-Lex prints it" test="
-        $x:result//*:occurrence[@eId = 'pbl_1/rct_2']//*:noteRef/@marker = '2'"/>
+        $x:result//*:occurrence[@eId = 'pbl_1/rct_2']//*:footnoteRef/@marker = '2'"/>
     <x:expect label="2. footnote 2 keeps its OJ reference" test="
-        let $href := substring($x:result//*:occurrence[@eId = 'pbl_1/rct_2']//*:noteRef/@href, 2)
-        return $x:result/*:notes/*:note[@eId = $href]//*:ref[@kind = 'oj']/@date = '2015-03-17'"/>
+        let $href := substring($x:result//*:occurrence[@eId = 'pbl_1/rct_2']//*:footnoteRef/@href, 2)
+        return $x:result/*:footnotes/*:footnote[@eId = $href]//*:ref[@kind = 'oj']/@date = '2015-03-17'"/>
     <x:expect label="7. the closing block" test="$x:result/*:conclusions">
       <conclusions>
         <p><t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/></p>

@@ -70,7 +70,7 @@
                   <t v="30 November 2006"/>
                </date>
                <t v=", the Council adopted Regulation (EC) No 1801/2006 on the conclusion of the Fisheries Partnership Agreement between the European Community and the Islamic Republic of Mauritania"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="the Partnership Agreement"/>
@@ -92,9 +92,9 @@
                   <t v="16 December 2012"/>
                </date>
                <t v=", the date of its signature, in accordance with Council Decision 2012/827/EU"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=". The new Protocol grants EU vessels fishing opportunities in waters in which Mauritania exercises its sovereignty or its jurisdiction as regards fishing. The allocation of fishing opportunities granted to the Union under the new Protocol was defined by Regulation (EU) No 1259/2012"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -264,8 +264,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -276,8 +276,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Council Decision 2012/827/EU of "/>
             <date date="2012-12-03">
@@ -293,8 +293,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -305,7 +305,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

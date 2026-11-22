@@ -55,7 +55,7 @@
                   <t v="10 December 2002"/>
                </date>
                <t v=" on the arrangements applicable to agricultural products and goods resulting from the processing of agricultural products originating in the African, Caribbean and Pacific States (ACP States) and repealing Regulation (EC) No 1706/98"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -66,7 +66,7 @@
                   <t v="27 November 2001"/>
                </date>
                <t v=" on the association of the overseas countries and territories with the European Community (Overseas Association Decision)"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -77,7 +77,7 @@
                   <t v="9 April 2003"/>
                </date>
                <t v=" laying down detailed rules for applying Council Regulation (EC) No 2286/2002 and Council Decision 2001/822/EC as regards the arrangements applicable to imports of rice originating in the African, Caribbean and Pacific States (ACP States) and the overseas countries and territories (OCT)"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", and in particular Article 17(2) thereof,"/>
             </p>
          </occurrence>
@@ -167,8 +167,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -179,8 +179,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -191,16 +191,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="93" date="2003-04-10" page="3">
                <t v="OJ L 93, 10.4.2003, p. 3"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

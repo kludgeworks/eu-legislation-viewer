@@ -54,7 +54,7 @@ class ComparePagesTests {
       assertThat(preparing.attr("hx-get")).isEqualTo(PAGE);
     }
 
-    var page = prepared(PAGE, ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
+    var page = prepared(PAGE, ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01");
     assertThat(page.select("nav.mode a").eachAttr("href"))
         .containsExactly(ACT + "eng/history?on=2026-10-01", ACT + "2026-10-01/eng");
     assertThat(page.select("#compare-head").text()).isEqualTo("2015/1998 on two days");
@@ -73,11 +73,12 @@ class ComparePagesTests {
   @Test
   void passesTheViewAndTheDaysOnToItsSlot() {
     prepared(
-        PAGE + "&view=whole", ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&view=whole");
+        PAGE + "&view=whole",
+        ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01&view=whole");
     // A day that is not the first day of its version goes to the slot beside that first day.
     prepared(
         ACT + "eng/compare?from=2026-03-22&to=2026-10-05",
-        ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01&toDay=2026-10-05");
+        ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01&toDay=2026-10-05");
   }
 
   @Test
@@ -88,12 +89,13 @@ class ComparePagesTests {
             ACT + "eng/compare/place?from=2026-03-22&to=2026-10-01&eId=anx&sides=true");
     assertThat(page.select("#compare-head").text()).endsWith("of 2015/1998 on two days");
     assertThat(page.select("day-picker input[name=occurrence]").attr("value")).isEqualTo("anx");
-    assertThat(page.select("section.compare a[data-view=changes]").attr("href")).isEqualTo(PAGE);
+    assertThat(page.select("section.compare a[data-view=differences]").attr("href"))
+        .isEqualTo(PAGE);
   }
 
   @Test
   void saysWhyAVersionCantBeComparedInPlaceOfTheChanges() {
-    prepared(PAGE, ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
+    prepared(PAGE, ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01");
 
     // From the original. The fixtures have no Formex of it.
     var page = get(ACT + "eng/compare?from=2015-11-30&to=2021-03-15");
@@ -103,7 +105,7 @@ class ComparePagesTests {
 
   @Test
   void saysThatTheWordingIsTheSameWhereTheTwoDaysHaveOneText() {
-    prepared(PAGE, ACT + "eng/compare/changes?from=2026-03-22&to=2026-10-01");
+    prepared(PAGE, ACT + "eng/compare/differences?from=2026-03-22&to=2026-10-01");
 
     var same = get(ACT + "eng/compare?from=2026-10-01&to=2026-10-09");
     assertThat(same.select(".same-version p").eachText())

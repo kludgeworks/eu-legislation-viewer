@@ -8,8 +8,9 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * An element of a legal text, as it was stored. Its eIds and note references are as the converter
- * wrote them. Legal-text never mixes text with elements, so an element holds one or the other.
+ * An element of a legal text, as it was stored. Its eIds and footnote references are as the
+ * converter wrote them. Legal-text never mixes text with elements, so an element holds one or the
+ * other.
  *
  * @param name its name, as the legal-text JSON has it. The name is local, for example {@code p} or
  *     {@code occurrence}, or prefixed, for example {@code m:math}.

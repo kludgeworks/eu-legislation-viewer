@@ -167,7 +167,7 @@ class HistoryControllerTests {
             "Does not apply yet, from 15 October 20262");
     assertThat(page.select("a.group.open")).isEmpty();
     assertThat(page.select("a.group.warn")).hasSize(1);
-    assertThat(page.select("section.run .note").eachText())
+    assertThat(page.select("section.run .statement").eachText())
         .containsExactly(
             "Applies from 1 August 2022. 1 provision",
             "Does not apply yet. Applies from 15 October 2026. 2 provisions");
@@ -185,7 +185,7 @@ class HistoryControllerTests {
     assertThat(page.select(".status a[rel=external]").text()).startsWith("Read Article 3");
     assertThat(page.select(".status a[rel=external]").attr("href")).endsWith("#art_3");
     assertThat(page.select("a.group")).isEmpty();
-    assertThat(page.select("section.run .note")).isEmpty();
+    assertThat(page.select("section.run .statement")).isEmpty();
   }
 
   @Test

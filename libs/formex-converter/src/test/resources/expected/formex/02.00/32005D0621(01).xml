@@ -48,14 +48,14 @@
          <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the opinion of the Commission"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the assent of the European Parliament"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -107,8 +107,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Opinion delivered on "/>
             <date date="2005-02-22">
@@ -116,8 +116,8 @@
             </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Assent given on "/>
             <date date="2005-04-13">
@@ -125,7 +125,7 @@
             </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

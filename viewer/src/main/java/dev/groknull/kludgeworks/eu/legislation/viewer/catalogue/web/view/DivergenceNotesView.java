@@ -14,34 +14,35 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * The divergence notes on the Read page: the notes beside the text where it is not the law on the
- * day asked. The status lines of the Reading card say which acts. The notes show where.
+ * The divergence notes on the Read page: the divergence notes beside the text where it is not the
+ * law on the day asked. The status lines of the Reading card say which acts. The divergence notes
+ * show where.
  *
  * <ul>
  *   <li>A prospective amendment, a change that the text has and that does not apply on the day, has
- *       an amber bar beside its occurrence, and a short note with the act: "2022/1190 · does not
- *       apply yet". The act is a link to its page.
- *   <li>A pending amendment, a change that the text does not show, has one grey note at its place:
- *       "Not in this text: Article 18a · 2021/1133". If the text has the occurrence, the note is
- *       before it. If not, the note is at the end of the occurrence that holds the place, or of the
- *       occurrence before it.
- *   <li>The act itself, while its application is deferred, has no note: it is not a divergence. The
- *       status line says so one time.
+ *       an amber bar beside its occurrence, and a short divergence note with the act: "2022/1190 ·
+ *       does not apply yet". The act is a link to its page.
+ *   <li>A pending amendment, a change that the text does not show, has one grey divergence note at
+ *       its place: "Not in this text: Article 18a · 2021/1133". If the text has the occurrence, the
+ *       divergence note is before it. If not, the divergence note is at the end of the occurrence
+ *       that holds the place, or of the occurrence before it.
+ *   <li>The act itself, while its application is deferred, has no divergence note: it is not a
+ *       divergence. The status line says so one time.
  * </ul>
  *
- * <p>The content module renders the text without the act. So the page sends the notes, and
- * js/divergence-notes.js puts them on the text when it arrives. It also gives the outline a dot on
- * each part that has a note.
+ * <p>The content module renders the text without the act. So the page sends the divergence notes,
+ * and js/divergence-notes.js puts them on the text when it arrives. It also gives the outline a dot
+ * on each part that has a divergence note.
  *
- * @param notes the notes, in the order of the text
+ * @param divergenceNotes the divergence notes, in the order of the text
  */
-public record DivergenceNotesView(List<Note> notes) {
+public record DivergenceNotesView(List<DivergenceNote> divergenceNotes) {
 
   public DivergenceNotesView {
-    notes = List.copyOf(notes);
+    divergenceNotes = List.copyOf(divergenceNotes);
   }
 
-  /** Returns the view with no notes. */
+  /** Returns the view with no divergence notes. */
   public static DivergenceNotesView none() {
     return new DivergenceNotesView(List.of());
   }
@@ -51,7 +52,7 @@ public record DivergenceNotesView(List<Note> notes) {
    * asked}.
    *
    * @param tags the tags of the built texts in {@code language}, by version. Without the text of
-   *     {@code version}, there are no notes.
+   *     {@code version}, there are no divergence notes.
    * @param today the date today, which gives the tense
    */
   public static DivergenceNotesView of(
@@ -68,14 +69,14 @@ public record DivergenceNotesView(List<Note> notes) {
     var eli = Objects.requireNonNull(act.eli(), () -> act.id() + " has no ELI to link by");
     var past = asked.isBefore(today);
     var kept = asked.equals(today) ? null : asked;
-    var found = new ArrayList<Note>();
+    var found = new ArrayList<DivergenceNote>();
     for (var divergence : act.divergences(asked, language, tags)) {
       var cited = act.cited(divergence.act());
       var href = Links.amending(eli, divergence.act(), kept, language);
       var prospective = divergence.kind() == Divergence.Kind.PROSPECTIVE;
       for (var occurrence : divergence.in(text.eIds())) {
         found.add(
-            new Note(
+            new DivergenceNote(
                 occurrence.eId(),
                 !prospective,
                 occurrence.holds(),
@@ -90,7 +91,9 @@ public record DivergenceNotesView(List<Note> notes) {
                 href));
       }
     }
-    found.sort(Comparator.comparingInt(note -> text.eIds().indexOf(note.occurrence())));
+    found.sort(
+        Comparator.comparingInt(
+            divergenceNote -> text.eIds().indexOf(divergenceNote.occurrence())));
     return new DivergenceNotesView(found);
   }
 
@@ -98,17 +101,17 @@ public record DivergenceNotesView(List<Note> notes) {
    * One divergence note on an occurrence of the text.
    *
    * @param occurrence the eId of the occurrence
-   * @param pending whether it is the note of a pending amendment, a change that the text does not
-   *     show. If not, it is the note of a prospective amendment, a change that does not apply on
-   *     the day, with a bar.
+   * @param pending whether it is the divergence note of a pending amendment, a change that the text
+   *     does not show. If not, it is the divergence note of a prospective amendment, a change that
+   *     does not apply on the day, with a bar.
    * @param holds whether the text does not have the place, and the occurrence holds it or is before
-   *     it. The note of a pending amendment is then at the end of the occurrence. The bar of a
-   *     prospective amendment is then beside the heading of the occurrence only.
+   *     it. The divergence note of a pending amendment is then at the end of the occurrence. The
+   *     bar of a prospective amendment is then beside the heading of the occurrence only.
    * @param words for a prospective amendment, the state of the change: "does not apply yet". For a
    *     pending amendment, the provisions that the text does not show: "Article 18a, Article 50a".
    * @param act the act, as cited
    * @param href the address of the page of the act
    */
-  public record Note(
+  public record DivergenceNote(
       String occurrence, boolean pending, boolean holds, String words, String act, String href) {}
 }

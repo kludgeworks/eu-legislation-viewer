@@ -52,7 +52,7 @@
                   <t v="27 June 1994"/>
                </date>
                <t v=" laying down general provisions concerning special fishing permits"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 13 (2) and 16 thereof,"/>
             </p>
          </occurrence>
@@ -345,8 +345,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -357,7 +357,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

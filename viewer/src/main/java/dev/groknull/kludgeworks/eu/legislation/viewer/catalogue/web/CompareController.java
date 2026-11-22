@@ -62,11 +62,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  * <p>The page is the catalogue's: the head of the act, the two days, the amending acts between
  * them, and the states of its preparation. What the comparison found is the comparison module's.
  * The page has a slot for it, which htmx fills from an address of that module ({@link
- * ComparePage#changes}, or {@link ComparePage#sides} for one provision) once both texts are built.
- * The page passes {@code view} on as the reader gave it. It does not know the views.
+ * ComparePage#differences}, or {@link ComparePage#sides} for one provision) once both texts are
+ * built. The page passes {@code view} on as the reader gave it. It does not know the views.
  *
- * <p>The act is prepared whole in the language before the page shows changes. Until then, the page
- * is the preparing page, which becomes this page in place.
+ * <p>The act is prepared whole in the language before the page shows differences. Until then, the
+ * page is the preparing page, which becomes this page in place.
  */
 @Controller
 class CompareController {
@@ -185,7 +185,8 @@ class CompareController {
                             "The wording is the same on the two days.",
                             Links.read(page.eli, page.toDay, page.language),
                             "Read the law on " + Dates.inWords(page.toDay))
-                        : page.changes(preparation, earlier, later, self(request), frame.results()),
+                        : page.differences(
+                            preparation, earlier, later, self(request), frame.results()),
                     prepared,
                     ArrivingView.of(preparation).orElse(null),
                     view)
@@ -307,21 +308,22 @@ class CompareController {
     }
 
     /**
-     * Returns the changes slot, after the act is prepared in the language. {@code from} and {@code
-     * to} are the versions whose texts show the law on the two days.
+     * Returns the differences slot, after the act is prepared in the language. {@code from} and
+     * {@code to} are the versions whose texts show the law on the two days.
      *
      * <ul>
      *   <li>If no text of the act could be built, it returns the failure panel of the act. The
      *       panel links back to the last search of the reader, {@code results}, if there is one.
      *   <li>If either text could not be built, it returns the failure panel of that text. Try again
      *       posts to {@code self}.
-     *   <li>If both texts are built, it returns the slot that loads the changes from the comparison
-     *       module. For one provision, the slot loads the wording of the provision on the two days.
+     *   <li>If both texts are built, it returns the slot that loads the differences from the
+     *       comparison module. For one provision, the slot loads the wording of the provision on
+     *       the two days.
      *   <li>Otherwise, either version appeared after the act was prepared. It says that the text is
      *       being prepared.
      * </ul>
      */
-    JteModel changes(
+    JteModel differences(
         Preparation preparation,
         Version from,
         Version to,
@@ -343,9 +345,11 @@ class CompareController {
                   templates.catalogueTextFailed(
                       FailureView.comparing(act, from, to, to, failed, language, self));
               case Text.Ready alsoReady -> {
-                var parts = Links.page(eli, from, to, language, null, view).on(fromDay, toDay);
+                var fragments = Links.page(eli, from, to, language, null, view).on(fromDay, toDay);
                 yield templates.catalogueCompareReady(
-                    occurrence == null ? parts.changes() : parts.sides(List.of(occurrence)),
+                    occurrence == null
+                        ? fragments.differences()
+                        : fragments.sides(List.of(occurrence)),
                     "Comparing the law on "
                         + Dates.inWords(fromDay)
                         + " with the law on "

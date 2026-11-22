@@ -107,18 +107,18 @@ java_test_suite(
 )
 
 # web/
-# The comparison's parts of the compare page as a browser loads them, once the page has its texts
+# The comparison's fragments of the compare page as a browser loads them, once the page has its texts
 # built; Postgres in a container, so it needs Docker
 java_junit5_test(
-    name = "ChangesPagesTests",
+    name = "DifferencesPagesTests",
     size = "medium",
     timeout = "short",
-    srcs = ["web/ChangesPagesTests.java"],
+    srcs = ["web/DifferencesPagesTests.java"],
     tags = [
         "cpu:4",  # its cores reserved: tests run at once would otherwise starve one another
         "requires-docker",
     ],
-    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.ChangesPagesTests",
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.DifferencesPagesTests",
     runtime_deps = [
         "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer",
         "@maven//:ch_qos_logback_logback_classic",  # the log lines, in the test's log
@@ -143,7 +143,7 @@ java_junit5_test(
     ],
 )
 
-# The parts' controller alone (@WebMvcTest, MockMvc), what it asks of the modules mocked: what it
+# The fragments' controller alone (@WebMvcTest, MockMvc), what it asks of the modules mocked: what it
 # refuses, where its links lead. No store, no containers.
 java_test_suite(
     name = "controllers",
@@ -190,7 +190,7 @@ java_test_suite(
 )
 
 # web/view/
-# What the comparison page shows: the Changes view, on 2015/1998's consolidations of 2026 compared,
+# What the comparison page shows: the Differences view, on 2015/1998's consolidations of 2026 compared,
 # and the cards and sidenotes, on Cellar's recorded answers. One test target per *Test.java
 java_test_suite(
     name = "view",

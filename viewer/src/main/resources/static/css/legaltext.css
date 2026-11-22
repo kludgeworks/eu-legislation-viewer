@@ -1,6 +1,6 @@
 /* SPDX-License-Identifier: MIT */
 /*
- * Styles of the legaltext module (legal/*.jte, legalpart/*.jte).
+ * Styles of the legaltext module (legal/*.jte, legalshared/*.jte).
  * Legal document typography: headings, preambles, recitals, articles, lists, and tables.
  */
 
@@ -25,9 +25,9 @@
 }
 
 /* Titles are headings. h1 is the long title, and h2 to h6 follow the rank. They take the font of
- * the text around them, and the rules below say how each one looks. The parts of a title are spans,
- * each on a line of its own. These parts are the lines of the long title, and the num, heading and
- * subheading of a title. */
+ * the text around them, and the rules below say how each one looks. The lines of a title are spans,
+ * each on a line of its own: the lines of the long title, and the num, heading and subheading of
+ * a title. */
 .legal-text :where(h1, h2, h3, h4, h5, h6) {
   margin: 0;
   font: inherit;
@@ -435,35 +435,35 @@ p.norm {
   border: 1px solid currentcolor;
 }
 
-.note-ref {
+.footnote-ref {
   text-decoration: none;
 }
 
-.notes {
+.footnotes {
   margin-top: 2rem;
   border-top: 1px solid var(--line-faint);
   font-size: 0.8em;
 }
 
-/* The notes of a table. They are under the table, where EUR-Lex prints them in its last row. They
+/* The footnotes of a table. They are under the table, where EUR-Lex prints them in its last row. They
  * have the size of the table text and no rule. */
-.table-notes {
+.table-footnotes {
   margin-top: 0.25rem;
   border-top: none;
   font-size: inherit;
 }
 
-.note {
+.footnote {
   display: grid;
   grid-template-columns: minmax(2.5rem, auto) 1fr;
   margin-top: 0.4rem;
 }
 
-.note > :not(.note-marker) {
+.footnote > :not(.footnote-marker) {
   grid-column: 2;
 }
 
-.note > p:first-of-type {
+.footnote > p:first-of-type {
   margin-top: 0;
 }
 

@@ -5,7 +5,7 @@
 User-agent: *
 # the pages of an act and its comparisons
 Disallow: /eli/
-# the parts of a page that the page loads itself
+# the fragments of a page that the page loads itself
 Disallow: /content/
 # a search
 Disallow: /?q=

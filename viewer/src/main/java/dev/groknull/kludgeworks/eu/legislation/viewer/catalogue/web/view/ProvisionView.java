@@ -151,7 +151,7 @@ public record ProvisionView(
                   + " "
                   + (place.isEmpty() || place.equals(name) ? "it" : place)
                   + ".",
-              sentence(States.note(act, change.act(), Act.days(change), day, past)),
+              sentence(States.statement(act, change.act(), Act.days(change), day, past)),
               States.tone(act.stateOn(change.act(), Act.days(change), day)),
               amending.contains(change.act())
                   ? page
@@ -168,16 +168,18 @@ public record ProvisionView(
               act.cited(each),
               href(eli, each, on, language, amending),
               each.corrigendum() ? "corrected it." : "changed it.",
-              each.corrigendum() ? null : sentence(States.note(act, each, Set.of(), day, past)),
+              each.corrigendum()
+                  ? null
+                  : sentence(States.statement(act, each, Set.of(), day, past)),
               each.corrigendum() ? null : States.tone(act.stateOn(each, Set.of(), day)),
               null));
     }
     return lines;
   }
 
-  /** Returns {@code note} with a full stop at its end, if it has none. */
-  private static @Nullable String sentence(@Nullable String note) {
-    return note == null || note.endsWith(".") ? note : note + ".";
+  /** Returns {@code statement} with a full stop at its end, if it has none. */
+  private static @Nullable String sentence(@Nullable String statement) {
+    return statement == null || statement.endsWith(".") ? statement : statement + ".";
   }
 
   /**
@@ -269,8 +271,8 @@ public record ProvisionView(
    * @param act the act, as cited
    * @param href the address of the page of the act. Null if the act has no page.
    * @param words what the act did. For example, "replaced it." or "replaced Article 6."
-   * @param note the state of the change on the day, with the date and the clause. Null where the
-   *     change applies and the data gives no day for it.
+   * @param statement the state of the change on the day, with the date and the clause. Null where
+   *     the change applies and the data gives no day for it.
    * @param tone "warn" where the change does not apply on the day, "open" where the data does not
    *     tell, "off" where the act is not in force yet. Null where the change applies.
    * @param change the address of the change on the page of its act. Null if the data does not give
@@ -280,7 +282,7 @@ public record ProvisionView(
       String act,
       @Nullable String href,
       String words,
-      @Nullable String note,
+      @Nullable String statement,
       @Nullable String tone,
       @Nullable String change) {}
 

@@ -3401,7 +3401,7 @@
                         <t v="3 August 2012"/>
                      </date>
                      <t v=" laying down implementing rules for the airworthiness and environmental certification of aircraft and related products, parts and appliances, as well as for the certification of design and production organisations"/>
-                     <noteRef href="#note_1" marker="1"/>
+                     <footnoteRef href="#note_1" marker="1"/>
                      <t v=":"/>
                   </p>
                   <list kind="none">
@@ -3506,7 +3506,7 @@
             </p>
             <p>
                <t v="The references made to Regulation (EU) 2016/679"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" in Commission Implementing Regulation (EU) 2023/2117 shall be understood, regarding Switzerland, as referring to its relevant national legislation."/>
             </p>
             <p>
@@ -5639,37 +5639,37 @@
                <occurrence eId="anx_1/pnt_3/list_22/idt_1" kind="indent">
                   <p>
                      <t v="Regulation (EC) No 765/2008"/>
-                     <noteRef href="#note_3" marker="3"/>
+                     <footnoteRef href="#note_3" marker="3"/>
                      <t v=", as referred to in Articles 3 point (9), 15, 19(2), 39(1)(a) of Regulation (EU) 2019/945,"/>
                   </p>
                </occurrence>
                <occurrence eId="anx_1/pnt_3/list_22/idt_2" kind="indent">
                   <p>
                      <t v="Regulation (EU) No 1025/2012"/>
-                     <noteRef href="#note_4" marker="4"/>
+                     <footnoteRef href="#note_4" marker="4"/>
                      <t v=", as referred to in Articles 3 point (20) and 37(3) of Regulation (EU) 2019/945,"/>
                   </p>
                </occurrence>
                <occurrence eId="anx_1/pnt_3/list_22/idt_3" kind="indent">
                   <p>
                      <t v="Directive 2009/48/EC"/>
-                     <noteRef href="#note_5" marker="5"/>
+                     <footnoteRef href="#note_5" marker="5"/>
                      <t v=", as referred to in Articles 4(2) and 13(2)(c) as well as point (10) of Part 1 of the Annex to Regulation (EU) 2019/945,"/>
                   </p>
                </occurrence>
                <occurrence eId="anx_1/pnt_3/list_22/idt_4" kind="indent">
                   <p>
                      <t v="Directive 2006/42/EC"/>
-                     <noteRef href="#note_6" marker="6"/>
+                     <footnoteRef href="#note_6" marker="6"/>
                      <t v=", as referred to in Article 4(2) of Regulation (EU) 2019/945, including:"/>
                   </p>
                   <list kind="dash">
                      <occurrence eId="anx_1/pnt_3/list_22/idt_4/idt_1" kind="indent">
                         <p>
                            <t v="Directive 73/23/EEC"/>
-                           <noteRef href="#note_7" marker="7"/>
+                           <footnoteRef href="#note_7" marker="7"/>
                            <t v=", as referred to in Article 1(2)(k) of Directive 2006/42/EC and paragraph 1.5.1 of Annex I thereto, bearing in mind that Directive 73/23/EEC has been repealed and the references thereto are to be construed as references to the relevant provisions of Directive 2014/35/EU"/>
-                           <noteRef href="#note_8" marker="8"/>
+                           <footnoteRef href="#note_8" marker="8"/>
                            <t v=","/>
                         </p>
                      </occurrence>
@@ -5678,16 +5678,16 @@
                <occurrence eId="anx_1/pnt_3/list_22/idt_5" kind="indent">
                   <p>
                      <t v="Regulation (EU) 2019/1020"/>
-                     <noteRef href="#note_9" marker="9"/>
+                     <footnoteRef href="#note_9" marker="9"/>
                      <t v=", including the references thereto in Article 5(3) of Regulation (EU) 2019/945 and in Articles 35 and 36 thereof, bearing in mind that references to the deleted provisions of Regulation (EC) No 765/2008 are to be construed as references to the relevant provisions of Regulation (EU) 2019/1020"/>
-                     <noteRef href="#note_10" marker="10"/>
+                     <footnoteRef href="#note_10" marker="10"/>
                      <t v=", and including as well:"/>
                   </p>
                   <list kind="dash">
                      <occurrence eId="anx_1/pnt_3/list_22/idt_5/idt_1" kind="indent">
                         <p>
                            <t v="Regulation (EU) 2019/515"/>
-                           <noteRef href="#note_11" marker="11"/>
+                           <footnoteRef href="#note_11" marker="11"/>
                            <t v=", as referred to in Article 8(2) of Regulation (EU) 2019/1020, insofar as product contact points are concerned,"/>
                         </p>
                      </occurrence>
@@ -5699,7 +5699,7 @@
                      <occurrence eId="anx_1/pnt_3/list_22/idt_5/idt_3" kind="indent">
                         <p>
                            <t v="Directive 2001/95/EC"/>
-                           <noteRef href="#note_12" marker="12"/>
+                           <footnoteRef href="#note_12" marker="12"/>
                            <t v=", as referred to in Articles 20(4) and 34(4) of Regulation (EU) 2019/1020."/>
                         </p>
                      </occurrence>
@@ -5836,14 +5836,14 @@
                <occurrence eId="anx_1/pnt_3/list_24/idt_1" kind="indent">
                   <p>
                      <t v="Directive 2009/48/EC"/>
-                     <noteRef href="#note_13" marker="13"/>
+                     <footnoteRef href="#note_13" marker="13"/>
                      <t v=", as referred to in Articles 9(2)(a) and 14(5)(a)(ii) of Regulation (EU) 2019/947."/>
                   </p>
                </occurrence>
             </list>
             <p>
                <t v="The reference made to Regulation (EU) 2016/679"/>
-               <noteRef href="#note_14" marker="14"/>
+               <footnoteRef href="#note_14" marker="14"/>
                <t v=" in UAS.SPEC.050 point (1)(a)(iv) of Part B of the Annex to Regulation (EU) 2019/947 shall be understood, regarding Switzerland, as referring to its relevant national legislation."/>
             </p>
             <p>
@@ -8198,7 +8198,7 @@
             </p>
             <p>
                <t v="As regards the second paragraph of Article 12 of the Protocol, Switzerland shall exempt, according to the principles of its national law, officials and other servants of the Agency within the meaning of Article 2 of Regulation (Euratom, ECSC, EEC) No 549/69"/>
-               <noteRef href="#note_15" marker="15"/>
+               <footnoteRef href="#note_15" marker="15"/>
                <t v=" from federal, cantonal and communal taxes on salaries, wages and emoluments paid to them by the European Union and subject to an internal tax for its own benefit."/>
             </p>
             <p>
@@ -8209,7 +8209,7 @@
             </p>
             <p>
                <t v="The Court of Justice of the European Union shall have exclusive jurisdiction in any matters concerning relations between the Agency or the Commission and its staff with regard to the application of Council Regulation (EEC, Euratom, ECSC) No 259/68"/>
-               <noteRef href="#note_16" marker="16"/>
+               <footnoteRef href="#note_16" marker="16"/>
                <t v=" and the other provisions of the European Union law laying down working conditions."/>
             </p>
          </occurrence>
@@ -8253,7 +8253,7 @@
                      <t v="25 June 2002"/>
                   </date>
                   <t v=" on the Financial Regulation applicable to the general budget of the European Communities"/>
-                  <noteRef href="#note_17" marker="17"/>
+                  <footnoteRef href="#note_17" marker="17"/>
                   <t v=" and the Financial Regulation adopted by the Management Board of the Agency on "/>
                   <date date="2003-03-26">
                      <t v="26 March 2003"/>
@@ -8263,7 +8263,7 @@
                      <t v="23 December 2002"/>
                   </date>
                   <t v=" on the framework Financial Regulation for the bodies referred to in Article 185 of Council Regulation (EC, Euratom) No 1605/2002 on the Financial Regulation applicable to the general budget of the European Communities"/>
-                  <noteRef href="#note_18" marker="18"/>
+                  <footnoteRef href="#note_18" marker="18"/>
                   <t v=" and with the other instruments referred to in this Decision, contracts or agreements concluded and decisions taken with beneficiaries established in Switzerland may provide for scientific, financial, technological or other audits to be conducted at any time on the premises of the beneficiaries and of their subcontractors by Agency and Commission officials or by other persons mandated by the Agency and the Commission."/>
                </p>
             </occurrence>
@@ -8317,7 +8317,7 @@
                      <t v="11 November 1996"/>
                   </date>
                   <t v=" concerning on-the-spot checks and inspections carried out by the Commission in order to protect the European Communities’ financial interests against fraud and other irregularities."/>
-                  <noteRef href="#note_19" marker="19"/>
+                  <footnoteRef href="#note_19" marker="19"/>
                </p>
             </occurrence>
             <occurrence eId="anx_B/art_3/par_2" kind="paragraph">
@@ -8409,7 +8409,7 @@
                   <t v="18 December 1995"/>
                </date>
                <t v=" on the protection of the European Communities’ financial interests."/>
-               <noteRef href="#note_20" marker="20"/>
+               <footnoteRef href="#note_20" marker="20"/>
             </p>
          </occurrence>
          <occurrence eId="anx_B/art_7" kind="article" rank="2">
@@ -8725,8 +8725,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -8737,8 +8737,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
             <date date="2016-04-27">
@@ -8754,8 +8754,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Regulation (EC) No 765/2008 of the European Parliament and of the Council of "/>
             <date date="2008-07-09">
@@ -8779,8 +8779,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Regulation (EU) No 1025/2012 of the European Parliament and of the Council of "/>
             <date date="2012-10-25">
@@ -8804,8 +8804,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <t v="Directive 2009/48/EC of the European Parliament and of the Council of "/>
             <date date="2009-06-18">
@@ -8829,8 +8829,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="Directive 2006/42/EC of the European Parliament and of the Council of "/>
             <date date="2006-05-17">
@@ -8854,8 +8854,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <t v="Council Directive 73/23/EEC of "/>
             <date date="1973-02-19">
@@ -8907,8 +8907,8 @@
                </p>
             </occurrence>
          </list>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="8" kind="footnote">
          <p>
             <t v="Directive 2014/35/EU of the European Parliament and of the Council of "/>
             <date date="2014-02-26">
@@ -8924,8 +8924,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
+      </footnote>
+      <footnote eId="note_9" marker="9" kind="footnote">
          <p>
             <t v="Regulation (EU) 2019/1020 of the European Parliament and of the Council of "/>
             <date date="2019-06-20">
@@ -8941,8 +8941,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
+      </footnote>
+      <footnote eId="note_10" marker="10" kind="footnote">
          <p>
             <t v="See Article 39 of Regulation (EU) 2019/1020 of the European Parliament and of the Council of "/>
             <date date="2019-06-20">
@@ -8950,8 +8950,8 @@
             </date>
             <t v=" on market surveillance and compliance of products and amending Directive 2004/42/EC and Regulations (EC) No 765/2008 and (EU) No 305/2011."/>
          </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
+      </footnote>
+      <footnote eId="note_11" marker="11" kind="footnote">
          <p>
             <t v="Regulation (EU) 2019/515 of the European Parliament and of the Council of "/>
             <date date="2019-03-19">
@@ -8963,8 +8963,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
+      </footnote>
+      <footnote eId="note_12" marker="12" kind="footnote">
          <p>
             <t v="Directive 2001/95/EC of the European Parliament and of the Council of "/>
             <date date="2001-12-03">
@@ -8984,8 +8984,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
+      </footnote>
+      <footnote eId="note_13" marker="13" kind="footnote">
          <p>
             <t v="Directive 2009/48/EC of the European Parliament and of the Council of "/>
             <date date="2009-06-18">
@@ -9009,8 +9009,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
+      </footnote>
+      <footnote eId="note_14" marker="14" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
             <date date="2016-04-27">
@@ -9026,8 +9026,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
+      </footnote>
+      <footnote eId="note_15" marker="15" kind="footnote">
          <p>
             <t v="Regulation (Euratom, ECSC, EEC) No 549/69 of the Council of "/>
             <date date="1969-03-25">
@@ -9047,8 +9047,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
+      </footnote>
+      <footnote eId="note_16" marker="16" kind="footnote">
          <p>
             <t v="Regulation (EEC, Euratom, ECSC) No 259/68 of the Council of "/>
             <date date="1968-02-29">
@@ -9068,8 +9068,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
+      </footnote>
+      <footnote eId="note_17" marker="17" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -9080,8 +9080,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_18" marker="18" kind="footnote">
+      </footnote>
+      <footnote eId="note_18" marker="18" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -9092,8 +9092,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_19" marker="19" kind="footnote">
+      </footnote>
+      <footnote eId="note_19" marker="19" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -9104,8 +9104,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_20" marker="20" kind="footnote">
+      </footnote>
+      <footnote eId="note_20" marker="20" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -9116,7 +9116,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

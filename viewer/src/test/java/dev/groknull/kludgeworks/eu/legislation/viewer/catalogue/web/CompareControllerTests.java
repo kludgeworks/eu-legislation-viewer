@@ -34,7 +34,7 @@ import org.springframework.test.web.servlet.assertj.MockMvcTester;
  * mocked. The tests check where its addresses lead and what it refuses. The act is the act of
  * {@link OneActCellar}, with nothing of it prepared yet. The tests also check the way back to the
  * last search in the site bar. {@code ComparePagesTests} tests the page as the whole app works it
- * out. The comparison's parts of the page are the comparison module's, and its tests test them.
+ * out. The comparison's fragments of the page are the comparison module's, and its tests test them.
  */
 @WebMvcTest(CompareController.class)
 @Import({ControllerTesting.class, CompareControllerTests.OnTheSixthOfNovember2026.class})

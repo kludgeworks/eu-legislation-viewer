@@ -169,7 +169,7 @@
          </num>
          <p>
             <t v="The President of the Council shall, on behalf of the Union, give the notification provided for in Article 16(1) of the Agreement"/>
-            <noteRef href="#note_1" marker="1"/>
+            <footnoteRef href="#note_1" marker="1"/>
             <t v="."/>
          </p>
       </occurrence>
@@ -182,8 +182,8 @@
          </p>
       </occurrence>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="The date of entry into force of the Agreement will be published in the "/>
             <emphasis kind="i">
@@ -191,7 +191,7 @@
             </emphasis>
             <t v=" by the General Secretariat of the Council."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

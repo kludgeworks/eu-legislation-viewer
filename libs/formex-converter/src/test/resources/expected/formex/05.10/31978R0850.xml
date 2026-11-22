@@ -58,7 +58,7 @@
          <occurrence eId="pbl_1/rct_1" kind="recital">
             <p>
                <t v="Whereas the Agreement in the form of an exchange of letters amending Annex A to Protocol 1 to the Agreement between the European Economic Community and the Swiss Confederation"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" should be concluded,"/>
             </p>
          </occurrence>
@@ -138,8 +138,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -150,8 +150,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="att_1" kind="attachment" rank="1">
          <heading>

@@ -9,8 +9,8 @@ import org.jmolecules.ddd.annotation.ValueObject;
 import org.jspecify.annotations.Nullable;
 
 /**
- * A subdivision that differs between two texts, as the Changes view shows it. It is a provision, or
- * a citation or a recital.
+ * A subdivision that differs between two texts, as the Differences view shows it. It is a
+ * provision, or a citation or a recital.
  *
  * <p>Each text has the subdivision as an occurrence, known by its eId. The occurrence is inserted,
  * deleted, or its own wording changed. Its own wording is its num, heading and blocks. The wording
@@ -33,7 +33,7 @@ import org.jspecify.annotations.Nullable;
  * @param eId the eId of the occurrence
  * @param kind how it differs
  * @param occurrence the occurrence as a fold names it, as the later text has it. For a deleted
- *     occurrence, as the earlier text has it. The Changes view uses this when it folds the
+ *     occurrence, as the earlier text has it. The Differences view uses this when it folds the
  *     occurrence with others that an act filter leaves out.
  * @param shown the occurrence as the view shows it, with its edits. As the store keeps it ({@link
  *     #kept}), cut down: for an annex inserted whole ({@code whole} is not null), only its opening,
@@ -183,8 +183,8 @@ public record Difference(
   }
 
   /**
-   * What the later text has between two differences, as the Changes view sets it out. It is one of
-   * these:
+   * What the later text has between two differences, as the Differences view sets it out. It is one
+   * of these:
    *
    * <ul>
    *   <li>the opening of an occurrence that holds differences, where the differences enter it

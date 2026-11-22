@@ -36,13 +36,13 @@ class AboutController {
    */
   @GetMapping(path = "/about", produces = MediaType.TEXT_HTML_VALUE)
   ResponseEntity<String> about(HttpServletRequest request) {
-    var parts = docs.read();
+    var sections = docs.read();
     return ResponseEntity.ok()
         .contentType(Requests.HTML)
         .body(
             templates
                 .catalogueAbout(
-                    Frame.of(request), release.value(), parts.resources(), parts.problems())
+                    Frame.of(request), release.value(), sections.resources(), sections.problems())
                 .render());
   }
 }

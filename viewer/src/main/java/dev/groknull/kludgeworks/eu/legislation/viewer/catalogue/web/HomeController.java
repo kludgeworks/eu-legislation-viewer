@@ -202,8 +202,8 @@ class HomeController {
    * <ul>
    *   <li>If the lookup found the act, it sends the event {@code done}, and the page asks the
    *       lookup address, which goes to the act.
-   *   <li>Else it sends the part of the page that says that no act has it, or that the Publications
-   *       Office did not answer.
+   *   <li>Else it sends the fragment of the page that says that no act has it, or that the
+   *       Publications Office did not answer.
    * </ul>
    *
    * <p>Returns 404 for words that name no act.

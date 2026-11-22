@@ -85,7 +85,7 @@
                   <t v="30 June 1992"/>
                </date>
                <t v=" on the common organisation of the market in cereals"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 5 thereof,"/>
             </p>
          </occurrence>
@@ -106,7 +106,7 @@
                   <t v="28 July 1993"/>
                </date>
                <t v=" laying down the procedure and conditions for the sale of cereals held by intervention agencies"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" provides in particular that cereals held by intervention agencies are to be sold by tendering procedure at prices preventing market disturbance."/>
             </p>
          </occurrence>
@@ -132,7 +132,7 @@
             </num>
             <p>
                <t v="It is therefore appropriate to make stocks of rye held by the German intervention agency available on the internal market. The period of presentation of the offers for the last partial invitation to tender under Regulation (EC) No 1510/2003"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" having expired on "/>
                <date date="2003-12-18">
                   <t v="18 December 2003"/>
@@ -352,8 +352,8 @@
          <figure src="L_2003342EN.01003302.tif"/>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -372,8 +372,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -392,8 +392,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -412,7 +412,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

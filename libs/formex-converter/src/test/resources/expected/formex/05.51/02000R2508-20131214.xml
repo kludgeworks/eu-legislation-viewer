@@ -78,7 +78,7 @@
          <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to Council Regulation (EC) No 104/2000 of 17 December 1999 on the common organisation of the markets in fishery and aquaculture products"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(5) and Article 10(4) thereof,"/>
             </p>
          </occurrence>
@@ -260,7 +260,7 @@
                      </num>
                      <p>
                         <t v="at least 5 % of the total production of the producer organisation during the previous fishing year by volume or by value for species which are covered by catch quotas as set in accordance with Article 8(4) of Council Regulation (EEC) No 3760/92"/>
-                        <noteRef href="#note_2" marker="2"/>
+                        <footnoteRef href="#note_2" marker="2"/>
                         <t v="; or&#xA;"/>
                      </p>
                   </occurrence>
@@ -630,8 +630,8 @@
          <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
       </p>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -642,8 +642,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -654,7 +654,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

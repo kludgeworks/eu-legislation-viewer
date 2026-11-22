@@ -10,45 +10,45 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The parts of one element against the parts of the same element in the other text. The parts are
- * the own blocks of an occurrence, or the rows and cells of a table.
+ * The pieces of one element against the pieces of the same element in the other text. The pieces
+ * are the own blocks of an occurrence, or the rows and cells of a table.
  *
- * <p>The parts that say the same in both texts match, in order, with the Myers diff of
- * java-diff-utils. Between two matches, each part differs:
+ * <p>The pieces that say the same in both texts match, in order, with the Myers diff of
+ * java-diff-utils. Between two matches, each piece differs:
  *
  * <ul>
- *   <li>Parts that are alike pair: the part changed. See {@link Likeness#pairs}.
- *   <li>A part of only the later text is inserted.
- *   <li>A part of only the earlier text is deleted. It stood before the first later part that pairs
- *       with a part after it.
+ *   <li>Pieces that are alike pair: the piece changed. See {@link Likeness#pairs}.
+ *   <li>A piece of only the later text is inserted.
+ *   <li>A piece of only the earlier text is deleted. It stood before the first later piece that
+ *       pairs with a piece after it.
  * </ul>
  */
-final class Parts {
-  private Parts() {}
+final class Pieces {
+  private Pieces() {}
 
-  /** A part that differs. */
+  /** A piece that differs. */
   sealed interface Differing {
     /**
-     * Returns the position of the part among the later parts. For a deleted part, it is the
-     * position of the later part that it stood before, or the count of later parts if it stood
+     * Returns the position of the piece among the later pieces. For a deleted piece, it is the
+     * position of the later piece that it stood before, or the count of later pieces if it stood
      * after the last.
      */
     int at();
   }
 
-  /** A part in both texts: {@code was} in the earlier text, {@code is} in the later. */
+  /** A piece in both texts: {@code was} in the earlier text, {@code is} in the later. */
   record Changed(int at, Element was, Element is) implements Differing {}
 
-  /** The part {@code is} of only the later text. */
+  /** The piece {@code is} of only the later text. */
   record Inserted(int at, Element is) implements Differing {}
 
-  /** The part {@code was} of only the earlier text. */
+  /** The piece {@code was} of only the earlier text. */
   record Deleted(int at, Element was) implements Differing {}
 
   /**
-   * Returns the parts that differ between {@code from} and {@code to}. The parts match on {@code
-   * fromKeys} and {@code toKeys}, one key for each part. Within one stretch of parts that differ,
-   * the later parts come first, in order, then the deleted parts, in order.
+   * Returns the pieces that differ between {@code from} and {@code to}. The pieces match on {@code
+   * fromKeys} and {@code toKeys}, one key for each piece. Within one stretch of pieces that differ,
+   * the later pieces come first, in order, then the deleted pieces, in order.
    */
   static List<Differing> differing(
       List<Element> from, List<Element> to, List<String> fromKeys, List<String> toKeys) {
@@ -80,8 +80,8 @@ final class Parts {
   }
 
   /**
-   * Returns the parts that differ between two lists of as many parts, each part with the part in
-   * the same position. For example, the cells of a row with the cells of the row that it was.
+   * Returns the pieces that differ between two lists of as many pieces, each piece with the piece
+   * in the same position. For example, the cells of a row with the cells of the row that it was.
    */
   static List<Differing> inOrder(
       List<Element> from, List<Element> to, List<String> fromKeys, List<String> toKeys) {
@@ -95,8 +95,8 @@ final class Parts {
   }
 
   /**
-   * The parts of the later text as a comparison shows them: each part that differs, with its edits,
-   * and the deleted parts where they stood.
+   * The pieces of the later text as a comparison shows them: each piece that differs, with its
+   * edits, and the deleted pieces where they stood.
    */
   static final class Shown {
     private final Map<Integer, Element> replaced = new HashMap<>();
@@ -104,13 +104,13 @@ final class Parts {
     private int inserted;
     private int deleted;
 
-    /** Shows {@code edited} in the place of the later part at the position {@code at}. */
+    /** Shows {@code edited} in the place of the later piece at the position {@code at}. */
     void replace(int at, Edited edited) {
       replaced.put(at, edited.element());
       count(edited);
     }
 
-    /** Shows {@code edited}, a deleted part, before the later part at the position {@code at}. */
+    /** Shows {@code edited}, a deleted piece, before the later piece at the position {@code at}. */
     void delete(int at, Edited edited) {
       deletedAt.computeIfAbsent(at, each -> new ArrayList<>()).add(edited.element());
       count(edited);
@@ -123,25 +123,25 @@ final class Parts {
     }
 
     /**
-     * Returns the later part at the position {@code at} as it shows: with its edits, or as it is.
+     * Returns the later piece at the position {@code at} as it shows: with its edits, or as it is.
      */
-    Element at(int at, Element part) {
-      return replaced.getOrDefault(at, part);
+    Element at(int at, Element piece) {
+      return replaced.getOrDefault(at, piece);
     }
 
-    /** Returns the deleted parts that stood before the later part at the position {@code at}. */
+    /** Returns the deleted pieces that stood before the later piece at the position {@code at}. */
     List<Element> before(int at) {
       return deletedAt.getOrDefault(at, List.of());
     }
 
-    /** Returns the later {@code parts} as they show, with the deleted parts where they stood. */
-    List<Element> of(List<Element> parts) {
+    /** Returns the later {@code pieces} as they show, with the deleted pieces where they stood. */
+    List<Element> of(List<Element> pieces) {
       var shown = new ArrayList<Element>();
-      for (var i = 0; i < parts.size(); i++) {
+      for (var i = 0; i < pieces.size(); i++) {
         shown.addAll(before(i));
-        shown.add(at(i, parts.get(i)));
+        shown.add(at(i, pieces.get(i)));
       }
-      shown.addAll(before(parts.size()));
+      shown.addAll(before(pieces.size()));
       return shown;
     }
 

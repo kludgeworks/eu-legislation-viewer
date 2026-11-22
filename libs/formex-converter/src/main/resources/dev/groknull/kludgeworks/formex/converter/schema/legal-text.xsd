@@ -19,7 +19,7 @@
       where each part comes from (the amending act that inserted, replaced or deleted it).
 
       This schema checks the structure. The rules it can't express (eIds unique among the occurrences in
-      force, note references that resolve, consistent tags) are in legal-text.sch, an
+      force, footnote references that resolve, consistent tags) are in legal-text.sch, an
       ISO Schematron file with the XSLT 3.0 binding: a legal text is valid against both.
 
       Design rules, so that code generation gives clean classes:
@@ -72,16 +72,16 @@
           <xs:documentation>
             The annexes, and the footnotes of the act's own file, collected from wherever they occur in it, printed
             after it as the OJ prints them: before the annexes where they are files of their own (an act as
-            published: each file's notes are in its occurrence), else after them.
+            published: each file's footnotes are in its occurrence), else after them.
           </xs:documentation>
         </xs:annotation>
         <xs:sequence>
-          <xs:element name="notes" type="Notes"/>
+          <xs:element name="footnotes" type="Footnotes"/>
           <xs:element name="annexes" type="Annexes" minOccurs="0"/>
         </xs:sequence>
         <xs:sequence>
           <xs:element name="annexes" type="Annexes"/>
-          <xs:element name="notes" type="Notes" minOccurs="0"/>
+          <xs:element name="footnotes" type="Footnotes" minOccurs="0"/>
         </xs:sequence>
       </xs:choice>
     </xs:sequence>
@@ -483,22 +483,22 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Notes">
+  <xs:complexType name="Footnotes">
     <xs:annotation><xs:documentation>The footnotes of the document.</xs:documentation></xs:annotation>
     <xs:choice maxOccurs="unbounded">
-      <xs:element name="note" type="Note">
+      <xs:element name="footnote" type="Footnote">
         <xs:annotation><xs:documentation>One footnote.</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="deleted" type="DeletedNotes">
-        <xs:annotation><xs:documentation>The notes of text an amendment deleted.</xs:documentation></xs:annotation>
+      <xs:element name="deleted" type="DeletedFootnotes">
+        <xs:annotation><xs:documentation>The footnotes of text an amendment deleted.</xs:documentation></xs:annotation>
       </xs:element>
     </xs:choice>
   </xs:complexType>
 
-  <xs:complexType name="DeletedNotes">
+  <xs:complexType name="DeletedFootnotes">
     <xs:annotation>
       <xs:documentation>
-        The notes of text an amendment deleted but the consolidation keeps: in force no longer, and not
+        The footnotes of text an amendment deleted but the consolidation keeps: in force no longer, and not
         counted in the running numbers (EUR-Lex leaves them out).
       </xs:documentation>
     </xs:annotation>
@@ -506,53 +506,53 @@
       <xs:element name="tag" type="Tag" maxOccurs="unbounded">
         <xs:annotation><xs:documentation>The deleting act.</xs:documentation></xs:annotation>
       </xs:element>
-      <xs:element name="note" type="Note" maxOccurs="unbounded">
+      <xs:element name="footnote" type="Footnote" maxOccurs="unbounded">
         <xs:annotation><xs:documentation>One footnote.</xs:documentation></xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="Note">
-    <xs:annotation><xs:documentation>A footnote, referred to from the text by noteRef.</xs:documentation></xs:annotation>
+  <xs:complexType name="Footnote">
+    <xs:annotation><xs:documentation>A footnote, referred to from the text by footnoteRef.</xs:documentation></xs:annotation>
     <xs:group ref="blocks"/>
     <xs:attribute name="eId" type="EId" use="required">
       <xs:annotation>
         <xs:documentation>note_N by position in the document; in another file of an OJ act's package, that file's sequence number: note_anx01000301-1 in an annex, note_inc000402-1 in an included document, note_att01000301-1 in an attached document.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="marker" type="NoteMarker" use="required">
+    <xs:attribute name="marker" type="FootnoteMarker" use="required">
       <xs:annotation>
         <xs:documentation>The marker as printed: the source's own number if it gives one, * for star numbering, else the running number.</xs:documentation>
       </xs:annotation>
     </xs:attribute>
-    <xs:attribute name="kind" type="NoteKind" use="required">
-      <xs:annotation><xs:documentation>Where the note belongs.</xs:documentation></xs:annotation>
+    <xs:attribute name="kind" type="FootnoteKind" use="required">
+      <xs:annotation><xs:documentation>Where the footnote belongs.</xs:documentation></xs:annotation>
     </xs:attribute>
   </xs:complexType>
 
-  <xs:simpleType name="NoteKind">
+  <xs:simpleType name="FootnoteKind">
     <xs:annotation><xs:documentation>Kinds of footnote.</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:enumeration value="footnote">
         <xs:annotation><xs:documentation>A footnote to the text; numbered through the document.</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="table">
-        <xs:annotation><xs:documentation>A note to a table; numbered within the table.</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>A footnote to a table; numbered within the table.</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="quotation">
-        <xs:annotation><xs:documentation>A note inside quoted text, belonging to the quoted act.</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>A footnote inside quoted text, belonging to the quoted act.</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="endnote">
-        <xs:annotation><xs:documentation>A note printed at the end of the document.</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>A footnote printed at the end of the document.</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="manual">
-        <xs:annotation><xs:documentation>A note whose marker the source sets by hand.</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>A footnote whose marker the source sets by hand.</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="title">
-        <xs:annotation><xs:documentation>A note to a title (Formex TYPE TITLE).</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>A footnote to a title (Formex TYPE TITLE).</xs:documentation></xs:annotation>
       </xs:enumeration>
       <xs:enumeration value="chapter">
-        <xs:annotation><xs:documentation>A note that belongs to a chapter of the document (Formex TYPE CHAPTER, 05.00 and later).</xs:documentation></xs:annotation>
+        <xs:annotation><xs:documentation>A footnote that belongs to a chapter of the document (Formex TYPE CHAPTER, 05.00 and later).</xs:documentation></xs:annotation>
       </xs:enumeration>
     </xs:restriction>
   </xs:simpleType>
@@ -584,7 +584,7 @@
           </xs:element>
           <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:group ref="blocks"/>
-            <xs:element name="notes" type="Notes">
+            <xs:element name="footnotes" type="Footnotes">
               <xs:annotation>
                 <xs:documentation>
                   An annex or an attached document that is a file of its own (an act as published): the file's
@@ -647,7 +647,7 @@
     <xs:annotation>
       <xs:documentation>
         One file of an annex the OJ prints across several (2015/1998's, across four): the Publications Office's
-        cut, which EUR-Lex prints as it is, each file under the annex's title and followed by its notes. The
+        cut, which EUR-Lex prints as it is, each file under the annex's title and followed by its footnotes. The
         annex is one occurrence, its levels numbered through the files, so eIds don't depend on the cut.
       </xs:documentation>
     </xs:annotation>
@@ -658,7 +658,7 @@
       <xs:element name="heading" type="Lines" minOccurs="0"/>
       <xs:element name="subheading" type="Lines" minOccurs="0"/>
       <xs:group ref="blocks"/>
-      <xs:element name="notes" type="Notes" minOccurs="0">
+      <xs:element name="footnotes" type="Footnotes" minOccurs="0">
         <xs:annotation><xs:documentation>The file's footnotes.</xs:documentation></xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -772,14 +772,14 @@
   </xs:simpleType>
 
   <xs:simpleType name="EIdRef">
-    <xs:annotation><xs:documentation>A reference to an occurrence or note of the same document: # and its eId, e.g. #note_3.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>A reference to an occurrence or footnote of the same document: # and its eId, e.g. #note_3.</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="#[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?(/[a-z]+(_-?[\p{L}\p{N}]([\p{L}\p{N}._\-]*[\p{L}\p{N}])?)?)*"/>
     </xs:restriction>
   </xs:simpleType>
 
-  <xs:simpleType name="NoteMarker">
-    <xs:annotation><xs:documentation>A note's marker as printed: 1, *, ** or the source's own (Formex NUMBER.ORG).</xs:documentation></xs:annotation>
+  <xs:simpleType name="FootnoteMarker">
+    <xs:annotation><xs:documentation>A footnote's marker as printed: 1, *, ** or the source's own (Formex NUMBER.ORG).</xs:documentation></xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="\S+"/>
     </xs:restriction>
@@ -822,7 +822,7 @@
   </xs:complexType>
 
   <xs:group name="blocks">
-    <xs:annotation><xs:documentation>The content of an occurrence, cell, note or annotation: blocks in reading order.</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>The content of an occurrence, cell, footnote or annotation: blocks in reading order.</xs:documentation></xs:annotation>
     <xs:sequence>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="p" type="Paragraph"><xs:annotation><xs:documentation>A paragraph of running text.</xs:documentation></xs:annotation></xs:element>
@@ -831,7 +831,7 @@
         <xs:element name="tableGroup" type="TableGroup"><xs:annotation><xs:documentation>Tables that share one caption.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="occurrence" type="Occurrence"><xs:annotation><xs:documentation>A level of the hierarchy: an article, a point, an annex and so on.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="quotedStructure" type="QuotedStructure"><xs:annotation><xs:documentation>Text an amending act quotes.</xs:documentation></xs:annotation></xs:element>
-        <xs:element name="annotation" type="Annotation"><xs:annotation><xs:documentation>A notes box or a caption of a form.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="annotation" type="Annotation"><xs:annotation><xs:documentation>A box of remarks or a caption of a form.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="figure" type="Figure"><xs:annotation><xs:documentation>An image as a block.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="math" type="MathBlock"><xs:annotation><xs:documentation>A displayed formula.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="deleted" type="DeletedBlock"><xs:annotation><xs:documentation>Blocks an amendment deleted but the consolidation keeps.</xs:documentation></xs:annotation></xs:element>
@@ -956,8 +956,8 @@
               <xs:annotation><xs:documentation>A group of rows under a heading row.</xs:documentation></xs:annotation>
             </xs:element>
           </xs:choice>
-          <xs:element name="notes" type="Notes" minOccurs="0">
-            <xs:annotation><xs:documentation>A consolidated version's table notes, which EUR-Lex prints under the table, not with its file's.</xs:documentation></xs:annotation>
+          <xs:element name="footnotes" type="Footnotes" minOccurs="0">
+            <xs:annotation><xs:documentation>A consolidated version's table footnotes, which EUR-Lex prints under the table, not with its file's.</xs:documentation></xs:annotation>
           </xs:element>
         </xs:sequence>
         <xs:attribute name="cols" type="xs:positiveInteger">
@@ -1075,7 +1075,7 @@
   </xs:complexType>
 
   <xs:complexType name="Annotation">
-    <xs:annotation><xs:documentation>A box of notes or a caption set apart from the text (Formex ANNOTATION, GR.ANNOTATION).</xs:documentation></xs:annotation>
+    <xs:annotation><xs:documentation>A box of remarks or a caption set apart from the text (Formex ANNOTATION, GR.ANNOTATION).</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="Block">
         <xs:sequence>
@@ -1262,7 +1262,7 @@
         <xs:element name="date" type="DateRef"><xs:annotation><xs:documentation>A date.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="number" type="Number"><xs:annotation><xs:documentation>A number.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="quote" type="Quote"><xs:annotation><xs:documentation>Quoted text with its quotation marks.</xs:documentation></xs:annotation></xs:element>
-        <xs:element name="noteRef" type="NoteRef"><xs:annotation><xs:documentation>A reference to a note.</xs:documentation></xs:annotation></xs:element>
+        <xs:element name="footnoteRef" type="FootnoteRef"><xs:annotation><xs:documentation>A reference to a footnote.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="ref" type="Ref"><xs:annotation><xs:documentation>A reference to an Official Journal publication or a URI.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="eol" type="Eol"><xs:annotation><xs:documentation>A line break.</xs:documentation></xs:annotation></xs:element>
         <xs:element name="math" type="MathInline"><xs:annotation><xs:documentation>A formula in running text.</xs:documentation></xs:annotation></xs:element>
@@ -1384,14 +1384,14 @@
     </xs:complexContent>
   </xs:complexType>
 
-  <xs:complexType name="NoteRef">
-    <xs:annotation><xs:documentation>Where a footnote is referred to; the note itself is in notes.</xs:documentation></xs:annotation>
+  <xs:complexType name="FootnoteRef">
+    <xs:annotation><xs:documentation>Where a footnote is referred to; the footnote itself is in footnotes.</xs:documentation></xs:annotation>
     <xs:complexContent>
       <xs:extension base="InlineNode">
         <xs:attribute name="href" type="EIdRef" use="required">
-          <xs:annotation><xs:documentation>#note_N: the eId of the note.</xs:documentation></xs:annotation>
+          <xs:annotation><xs:documentation>#note_N: the eId of the footnote.</xs:documentation></xs:annotation>
         </xs:attribute>
-        <xs:attribute name="marker" type="NoteMarker" use="required">
+        <xs:attribute name="marker" type="FootnoteMarker" use="required">
           <xs:annotation><xs:documentation>The marker as printed.</xs:documentation></xs:annotation>
         </xs:attribute>
       </xs:extension>

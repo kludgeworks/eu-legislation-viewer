@@ -143,7 +143,7 @@
     </xsl:for-each>
   </xsl:function>
 
-  <!-- the deletions open over $n: it is in text an amendment deleted (a note in it is in force no
+  <!-- the deletions open over $n: it is in text an amendment deleted (a footnote in it is in force no
        longer, nor numbered) -->
   <xsl:function name="f:deletions" as="processing-instruction()*">
     <xsl:param name="n" as="node()"/>

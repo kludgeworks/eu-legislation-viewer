@@ -19,8 +19,8 @@ import java.util.TreeSet;
  * <p>The outline holds the occurrences that have a rank, in the order in which a reader meets them.
  * Each occurrence is under the last occurrence of a higher rank before it. The outline also holds
  * the eId of every container: an element that holds elements and is not a block. The labels and
- * headings are read as plain text, without the notes that they cite and without the text that an
- * amendment deleted.
+ * headings are read as plain text, without the footnotes that they cite and without the text that
+ * an amendment deleted.
  *
  * <p>It also holds the tags of each occurrence: the acts that its {@code tag} elements name, and
  * the acts that its {@code changed} elements name. A {@code changed} element tags words that an act
@@ -38,10 +38,12 @@ public final class Outlines {
    * the outline does not look into them.
    */
   private static final Set<String> BLOCKS =
-      Set.of("p", "heading", "tr", "note", "longTitle", "num", "docTitle");
+      Set.of("p", "heading", "tr", "footnote", "longTitle", "num", "docTitle");
 
-  /** What the text of a title leaves out: note references, deleted text, images and formulas. */
-  private static final Set<String> UNREAD = Set.of("noteRef", "deleted", "img", "m:math");
+  /**
+   * What the text of a title leaves out: footnote references, deleted text, images and formulas.
+   */
+  private static final Set<String> UNREAD = Set.of("footnoteRef", "deleted", "img", "m:math");
 
   private final List<Occurrence> outermost = new ArrayList<>();
   private final List<String> eIds = new ArrayList<>();

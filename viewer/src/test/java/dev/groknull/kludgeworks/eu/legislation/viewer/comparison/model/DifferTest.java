@@ -1334,49 +1334,50 @@ class DifferTest {
   }
 
   @Test
-  void showsANoteAnActChangedUnderTheOccurrenceThatRefersToIt() {
-    // As 2004/796 changed its note to Silesia: the text that refers to it is the same.
+  void showsAFootnoteAnActChangedUnderTheOccurrenceThatRefersToIt() {
+    // As 2004/796 changed its footnote to Silesia: the text that refers to it is the same.
     var from =
-        withNotes(
+        withFootnotes(
             List.of(occurrence("art_1", cites("Silesia", "note_1"))),
-            note("note_1", "only in Poland"));
+            footnote("note_1", "only in Poland"));
     var to =
-        withNotes(
+        withFootnotes(
             List.of(occurrence("art_1", cites("Silesia", "note_1"))),
-            note("note_1", "Only in Poland, as authorised by Decision 2004/297/EC"));
+            footnote("note_1", "Only in Poland, as authorised by Decision 2004/297/EC"));
     var differences = Differ.differences(from, to).differences();
     assertThat(differences).extracting(Difference::eId).containsExactly("art_1");
-    var notes = only(differences.getFirst().shown(), "notes");
-    assertThat(said(notes))
+    var footnotes = only(differences.getFirst().shown(), "footnotes");
+    assertThat(said(footnotes))
         .isEqualTo("[-only][+Only] in Poland[+, as authorised by Decision 2004/297/EC]");
   }
 
   @Test
-  void matchesANoteThroughTheReferenceToItNotByItsPlace() {
-    // A note inserted before it renumbers the note of art_2, note_1 to note_2. Its words are the
+  void matchesAFootnoteThroughTheReferenceToItNotByItsPlace() {
+    // A footnote inserted before it renumbers the footnote of art_2, note_1 to note_2. Its words
+    // are the
     // same.
     var from =
-        withNotes(
+        withFootnotes(
             List.of(
                 occurrence("art_1", block("p", "Plain.")),
                 occurrence("art_2", cites("Cited", "note_1"))),
-            note("note_1", "OJ L 97, 1.4.2004, p. 66."));
+            footnote("note_1", "OJ L 97, 1.4.2004, p. 66."));
     var to =
-        withNotes(
+        withFootnotes(
             List.of(
                 occurrence("art_1", cites("Plain", "note_1")),
                 occurrence("art_2", cites("Cited", "note_2"))),
-            note("note_1", "OJ L 1, 1.1.2026, p. 1."),
-            note("note_2", "OJ L 97, 1.4.2004, p. 66."));
+            footnote("note_1", "OJ L 1, 1.1.2026, p. 1."),
+            footnote("note_2", "OJ L 97, 1.4.2004, p. 66."));
     var differences = Differ.differences(from, to).differences();
     assertThat(differences).extracting(Difference::eId).containsExactly("art_1");
-    assertThat(said(only(differences.getFirst().shown(), "notes")))
+    assertThat(said(only(differences.getFirst().shown(), "footnotes")))
         .isEqualTo("[+OJ L 1, 1.1.2026, p. 1.]");
   }
 
   @Test
-  void findsTheNotesOfAnActAsPublishedAtTheEndOfItsAnnex() {
-    // As 2015/1998 as published: the note of point 1.0.5 is at the end of the annex. Its
+  void findsTheFootnotesOfAnActAsPublishedAtTheEndOfItsAnnex() {
+    // As 2015/1998 as published: the footnote of point 1.0.5 is at the end of the annex. Its
     // consolidations have it at the end of the text, with another eId. Its words are the same.
     var annex =
         new Element(
@@ -1385,93 +1386,93 @@ class DifferTest {
             List.of(
                 occurrence("anx/pnt_1.0.5", cites("References", "note_anx01000301-2")),
                 new Element(
-                    "notes",
+                    "footnotes",
                     Map.of(),
-                    List.of(note("note_anx01000301-2", "Decision C(2015) 8005 final.")),
+                    List.of(footnote("note_anx01000301-2", "Decision C(2015) 8005 final.")),
                     "")),
             "");
-    var from = withNotes(List.of(annex));
+    var from = withFootnotes(List.of(annex));
     var to =
-        withNotes(
+        withFootnotes(
             List.of(
                 new Element(
                     "occurrence",
                     Map.of("eId", "anx", "kind", "annex"),
                     List.of(occurrence("anx/pnt_1.0.5", cites("References", "note_2"))),
                     "")),
-            note("note_2", "Decision C(2015) 8005 final."));
+            footnote("note_2", "Decision C(2015) 8005 final."));
     assertThat(Differ.differences(from, to).differences()).isEmpty();
   }
 
   @Test
-  void showsTheNotesOfAnInsertedOccurrenceInsertedWithIt() {
-    var from = withNotes(List.of(occurrence("art_1", block("p", "Plain."))));
+  void showsTheFootnotesOfAnInsertedOccurrenceInsertedWithIt() {
+    var from = withFootnotes(List.of(occurrence("art_1", block("p", "Plain."))));
     var to =
-        withNotes(
+        withFootnotes(
             List.of(
                 occurrence("art_1", block("p", "Plain.")),
                 occurrence("art_2", cites("New", "note_1"))),
-            note("note_1", "OJ L 1, 1.1.2026, p. 1."));
+            footnote("note_1", "OJ L 1, 1.1.2026, p. 1."));
     var inserted = Differ.differences(from, to).differences().getFirst();
     assertThat(inserted.kind()).isEqualTo(Kind.INSERTED);
-    assertThat(said(only(inserted.shown(), "notes"))).isEqualTo("[+OJ L 1, 1.1.2026, p. 1.]");
+    assertThat(said(only(inserted.shown(), "footnotes"))).isEqualTo("[+OJ L 1, 1.1.2026, p. 1.]");
   }
 
   @Test
-  void saysThatANoteAndTheReferenceToItAreOnlyInTheLaterText() {
-    // As Article 6(2) of 767/2008: 2024/1356 changed the words and added a note to them.
-    var from = withNotes(List.of(occurrence("art_1", block("p", "The authorities."))));
+  void saysThatAFootnoteAndTheReferenceToItAreOnlyInTheLaterText() {
+    // As Article 6(2) of 767/2008: 2024/1356 changed the words and added a footnote to them.
+    var from = withFootnotes(List.of(occurrence("art_1", block("p", "The authorities."))));
     var to =
-        withNotes(
+        withFootnotes(
             List.of(occurrence("art_1", cites("The screening authorities", "note_1"))),
-            note("note_1", "OJ L, 2024/1356, 22.5.2024."));
+            footnote("note_1", "OJ L, 2024/1356, 22.5.2024."));
     var shown = Differ.differences(from, to).differences().getFirst().shown();
-    assertThat(only(only(shown, "notes"), "note").attribute("diff")).isEqualTo("ins");
-    assertThat(only(only(shown, "p"), "noteRef").attribute("diff")).isEqualTo("ins");
+    assertThat(only(only(shown, "footnotes"), "footnote").attribute("diff")).isEqualTo("ins");
+    assertThat(only(only(shown, "p"), "footnoteRef").attribute("diff")).isEqualTo("ins");
   }
 
   @Test
-  void saysThatANoteIsOnlyInTheEarlierTextAndLeavesTheNotesOfBothTextsAsTheyAre() {
+  void saysThatAFootnoteIsOnlyInTheEarlierTextAndLeavesTheFootnotesOfBothTextsAsTheyAre() {
     var from =
-        withNotes(
+        withFootnotes(
             List.of(occurrence("art_1", cites("Silesia", "note_1"))),
-            note("note_1", "only in Poland"));
-    var to = withNotes(List.of(occurrence("art_1", block("p", "Silesia and Pomerania"))));
+            footnote("note_1", "only in Poland"));
+    var to = withFootnotes(List.of(occurrence("art_1", block("p", "Silesia and Pomerania"))));
     var deleted = Differ.differences(from, to).differences().getFirst().shown();
-    assertThat(only(only(deleted, "notes"), "note").attribute("diff")).isEqualTo("del");
+    assertThat(only(only(deleted, "footnotes"), "footnote").attribute("diff")).isEqualTo("del");
 
     var changed =
-        withNotes(
+        withFootnotes(
             List.of(occurrence("art_1", cites("Silesia", "note_1"))),
-            note("note_1", "Only in Poland."));
+            footnote("note_1", "Only in Poland."));
     var kept = Differ.differences(from, changed).differences().getFirst().shown();
-    assertThat(only(only(kept, "notes"), "note").attribute("diff")).isNull();
-    assertThat(only(only(kept, "p"), "noteRef").attribute("diff")).isNull();
+    assertThat(only(only(kept, "footnotes"), "footnote").attribute("diff")).isNull();
+    assertThat(only(only(kept, "p"), "footnoteRef").attribute("diff")).isNull();
   }
 
   /**
-   * A text with the occurrences {@code occurrences} in its body, and the notes {@code notes} at its
-   * end.
+   * A text with the occurrences {@code occurrences} in its body, and the footnotes {@code
+   * footnotes} at its end.
    */
-  private static Element withNotes(List<Element> occurrences, Element... notes) {
+  private static Element withFootnotes(List<Element> occurrences, Element... footnotes) {
     return new Element(
         "legalText",
         Map.of(),
         List.of(
             new Element("body", Map.of(), occurrences, ""),
-            new Element("notes", Map.of(), List.of(notes), "")),
+            new Element("footnotes", Map.of(), List.of(footnotes), "")),
         "");
   }
 
-  private static Element note(String eId, String words) {
+  private static Element footnote(String eId, String words) {
     return new Element(
-        "note",
+        "footnote",
         Map.of("eId", eId, "marker", eId.substring(eId.indexOf('_') + 1), "kind", "footnote"),
         List.of(block("p", words)),
         "");
   }
 
-  /** A block that says {@code words} and refers to the note {@code eId}. */
+  /** A block that says {@code words} and refers to the footnote {@code eId}. */
   private static Element cites(String words, String eId) {
     return new Element(
         "p",
@@ -1479,7 +1480,10 @@ class DifferTest {
         List.of(
             new Element("t", Map.of("v", words), List.of(), ""),
             new Element(
-                "noteRef", Map.of("href", "#" + eId, "marker", eId.substring(5)), List.of(), "")),
+                "footnoteRef",
+                Map.of("href", "#" + eId, "marker", eId.substring(5)),
+                List.of(),
+                "")),
         "");
   }
 

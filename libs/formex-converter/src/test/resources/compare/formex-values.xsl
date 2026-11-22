@@ -56,9 +56,9 @@
                        | FAM.COMP | GR.MOD.ACT | DOCUMENT.REF | DOCUMENT.REF.CONS | NO.CELEX"/>
   <!-- navigation the reader builds from the occurrences -->
   <xsl:template match="TOC"/>
-  <!-- where the source prints notes; the notes themselves are kept -->
+  <!-- where the source prints footnotes; the footnotes themselves are kept -->
   <xsl:template match="LOC.NOTES"/>
-  <!-- a repeated note: every occurrence holds a copy of the first, which is the one kept -->
+  <!-- a repeated footnote: every occurrence holds a copy of the first, which is the one kept -->
   <xsl:template match="NOTE[@NOTE.REF]"/>
   <!-- a package's descriptor and the OJ's table of contents -->
   <xsl:template match="PUBLICATION"/>

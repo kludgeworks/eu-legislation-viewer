@@ -92,7 +92,7 @@ class FormexConverterFixturesTest {
         .areIdentical();
   }
 
-  /** Unique live eIds, resolved note references, consistent tags (legal-text.sch). */
+  /** Unique live eIds, resolved footnote references, consistent tags (legal-text.sch). */
   @Test
   void followsTheSchematronRules() {
     assertThat(RULES.violations(legalText)).as("%s: breaks legal-text.sch", fixture).isEmpty();

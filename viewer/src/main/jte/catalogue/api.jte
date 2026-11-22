@@ -13,7 +13,7 @@
      a problem to its problem type, /api/docs#text-failed.
 
      An example is a card (figure .api-example): the request, then the response's body, its headers
-     and the request as curl. js/examples.js turns them into tabs, folds the repetitive parts of a
+     and the request as curl. js/examples.js turns them into tabs, folds the repetitive members of a
      body, and colours them; without it, the card shows all three. --%>
 @template.catalogue.handbook(frame = frame, title = "API · Amendment viewer", api = true, resources = resources, problems = problems, content = @`
   <script src="${frame.assets().highlight()}" defer></script>

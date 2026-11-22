@@ -14,16 +14,16 @@
 
   <sch:ns prefix="lt" uri="https://kludgeworks.groknull.dev/ns/legal-text/1"/>
 
-  <!-- occurrences, quoted structures and notes that are in force: not inside a deleted placeholder -->
-  <xsl:key name="live-eid" match="(lt:occurrence | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]" use="@eId"/>
-  <xsl:key name="note" match="lt:note" use="@eId"/>
+  <!-- occurrences, quoted structures and footnotes that are in force: not inside a deleted placeholder -->
+  <xsl:key name="live-eid" match="(lt:occurrence | lt:quotedStructure | lt:footnote)[not(ancestor::lt:deleted)]" use="@eId"/>
+  <xsl:key name="footnote" match="lt:footnote" use="@eId"/>
   <xsl:key name="tag" match="lt:*[@tagId][@amendingAct]" use="@tagId"/>
 
   <sch:pattern id="eids">
     <sch:title>eIds identify occurrences</sch:title>
     <!-- a deleted placeholder keeps its old eId, which a later insertion may reuse; occurrences whose label
          the published text repeats under one parent share theirs, each marked ambiguous -->
-    <sch:rule context="(lt:occurrence | lt:quotedStructure | lt:note)[not(ancestor::lt:deleted)]">
+    <sch:rule context="(lt:occurrence | lt:quotedStructure | lt:footnote)[not(ancestor::lt:deleted)]">
       <sch:assert id="unique-live-eid" test="count(key('live-eid', @eId)) = 1 or (every $u in key('live-eid', @eId) satisfies $u/@ambiguous = 'true')">
         The eId <sch:value-of select="@eId"/> belongs to <sch:value-of select="count(key('live-eid', @eId))"/>
         occurrences in force; it must belong to one, unless all are marked ambiguous.
@@ -33,12 +33,12 @@
 
   <sch:pattern id="references">
     <sch:title>References resolve</sch:title>
-    <sch:rule context="lt:noteRef">
-      <sch:assert id="note-exists" test="exists(key('note', substring-after(@href, '#')))">
-        <sch:value-of select="@href"/> refers to no note.
+    <sch:rule context="lt:footnoteRef">
+      <sch:assert id="footnote-exists" test="exists(key('footnote', substring-after(@href, '#')))">
+        <sch:value-of select="@href"/> refers to no footnote.
       </sch:assert>
-      <sch:assert id="note-marker" test="empty(key('note', substring-after(@href, '#'))) or key('note', substring-after(@href, '#'))/@marker = @marker">
-        The reference to <sch:value-of select="@href"/> shows <sch:value-of select="@marker"/>, the note another marker.
+      <sch:assert id="footnote-marker" test="empty(key('footnote', substring-after(@href, '#'))) or key('footnote', substring-after(@href, '#'))/@marker = @marker">
+        The reference to <sch:value-of select="@href"/> shows <sch:value-of select="@marker"/>, the footnote another marker.
       </sch:assert>
     </sch:rule>
   </sch:pattern>

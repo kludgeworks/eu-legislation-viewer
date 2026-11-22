@@ -6,7 +6,7 @@
 <%-- Shows the outline of an annex inserted whole: its occurrences, without their text, each linking to
      its place in Read in the version at the To end. An occurrence with no headed occurrences in it says so. --%>
 @if(entries.isEmpty())
-  <p class="status">It has no parts with headings of their own.</p>
+  <p class="status">It has no subdivisions with headings of their own.</p>
 @else
 <ul class="annex-outline">
   @for(var entry : entries)

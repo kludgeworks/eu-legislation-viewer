@@ -5,9 +5,9 @@
  * that both show while the act is prepared. The pages use the typed facade of their templates in
  * {@code src/main/jte/catalogue}.
  *
- * <p>Other modules fill parts of the pages, by address: htmx transcludes the text of a version from
- * the content module, and the changes and the counted acts of a comparison from the comparison
- * module. The pages know those modules only by the addresses of their parts. No Java of another
+ * <p>Other modules fill fragments of the pages, by address: htmx transcludes the text of a version
+ * from the content module, and the changes and the counted acts of a comparison from the comparison
+ * module. The pages know those modules only by the addresses of their fragments. No Java of another
  * module's web side is used here.
  */
 @InfrastructureRing

@@ -47,7 +47,7 @@
         "body": { "$ref": "#/$defs/blocks", "description": "The enacting terms." },
         "conclusions": { "$ref": "#/$defs/blocks", "description": "The closing formula and the signatures." },
         "annexes": { "$ref": "#/$defs/blocks", "description": "The annexes and the documents attached to the act." },
-        "notes": { "$ref": "#/$defs/notes", "description": "The footnotes, from wherever they are in the text." }
+        "footnotes": { "$ref": "#/$defs/footnotes", "description": "The footnotes, from wherever they are in the text." }
       }
     },
     "inline": {
@@ -60,7 +60,7 @@
       "required": ["text", "html"]
     },
     "text": {
-      "description": "The plain text, as printed. It leaves out the markers of notes and the words that an amendment deleted. A line break is a line feed.",
+      "description": "The plain text, as printed. It leaves out the markers of footnotes and the words that an amendment deleted. A line break is a line feed.",
       "type": "string"
     },
     "html": {
@@ -133,7 +133,7 @@
         "type": { "const": "table" },
         "caption": { "$ref": "#/$defs/blocks" },
         "rows": { "type": "array", "items": { "$ref": "#/$defs/row" } },
-        "notes": { "$ref": "#/$defs/notes", "description": "The notes of the table, numbered in it." },
+        "footnotes": { "$ref": "#/$defs/footnotes", "description": "The footnotes of the table, numbered in it." },
         "amendedBy": { "$ref": "#/$defs/amendedBy" }
       },
       "required": ["type"]
@@ -189,11 +189,11 @@
       },
       "required": ["type", "amendedBy", "content"]
     },
-    "notes": {
+    "footnotes": {
       "type": "array",
-      "items": { "$ref": "#/$defs/note" }
+      "items": { "$ref": "#/$defs/footnote" }
     },
-    "note": {
+    "footnote": {
       "description": "A footnote. The href of its marker in the HTML is # and its eId.",
       "type": "object",
       "properties": {

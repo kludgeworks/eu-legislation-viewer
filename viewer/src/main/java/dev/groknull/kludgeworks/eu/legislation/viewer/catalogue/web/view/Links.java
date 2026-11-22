@@ -15,9 +15,9 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The addresses of the pages. The address of an act's page uses the ELI of the act, as {@code
- * VersionController} and {@code CompareController} answer them. The parts of the compare page that
- * the comparison module fills are at the addresses of {@link #page}. The address of the home page
- * can include the results of a search, as {@code HomeController} answers it.
+ * VersionController} and {@code CompareController} answer them. The fragments of the compare page
+ * that the comparison module fills are at the addresses of {@link #page}. The address of the home
+ * page can include the results of a search, as {@code HomeController} answers it.
  */
 public final class Links {
   private Links() {}
@@ -50,11 +50,11 @@ public final class Links {
 
   /**
    * Returns the compare page of the comparison of {@code from} with {@code to}, in {@code view},
-   * limited to the changes of {@code only}, if any. Its parts are the comparison module's: the
-   * compare page loads its changes ({@link ComparePage#changes}) into its text slot. The address of
-   * each part is the contract between the two modules, which {@link ComparePage} writes: the
-   * comparison module answers them ({@code ChangesController}), and no Java ties the two modules
-   * together.
+   * limited to the changes of {@code only}, if any. Its fragments are the comparison module's: the
+   * compare page loads its differences ({@link ComparePage#differences}) into its text slot. The
+   * address of each fragment is the contract between the two modules, which {@link ComparePage}
+   * writes: the comparison module answers them ({@code DifferencesController}), and no Java ties
+   * the two modules together.
    */
   public static ComparePage page(
       Eli eli,

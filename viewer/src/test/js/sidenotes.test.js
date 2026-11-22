@@ -1,28 +1,28 @@
 // SPDX-License-Identifier: MIT
 // @ts-check
 import { afterEach, describe, expect, test } from "vitest";
-import { part } from "../../main/resources/static/js/sidenotes.js";
+import { piece } from "../../main/resources/static/js/sidenotes.js";
 
 afterEach(() => {
   document.body.innerHTML = "";
 });
 
 const PARTS = `
-  <template id="sidenote-parts"><span id="published-1">2024/2609: Commission Regulation (EU) 2024/2609
+  <template id="sidenote-pieces"><span id="published-1">2024/2609: Commission Regulation (EU) 2024/2609
 2024/2619: Commission Regulation (EU) 2024/2619</span><div id="dates-1"><span class="applies">2024/2609 applies from 28 April 2025</span><span class="applies">2024/2619 applies from 29 April 2025</span></div></template>`;
 
-describe("part", () => {
-  test("finds a part in the template, and none without one", () => {
+describe("piece", () => {
+  test("finds a piece in the template, and none without one", () => {
     document.body.innerHTML = PARTS;
 
-    expect(part("dates-1")?.children).toHaveLength(2);
-    expect(part("dates-2")).toBeNull();
-    expect(part(undefined)).toBeNull();
+    expect(piece("dates-1")?.children).toHaveLength(2);
+    expect(piece("dates-2")).toBeNull();
+    expect(piece(undefined)).toBeNull();
   });
 });
 
 describe("MadeBy", () => {
-  test("takes its hover text from its part", () => {
+  test("takes its hover text from its piece", () => {
     document.body.innerHTML = `${PARTS}<made-by class="made" data-published="published-1">Replaced by 2024/2609 and 2024/2619 together</made-by>`;
 
     const made = /** @type {HTMLElement} */ (document.querySelector("made-by"));
@@ -32,7 +32,7 @@ describe("MadeBy", () => {
     );
   });
 
-  test("has no hover text when its part is not sent", () => {
+  test("has no hover text when its piece is not sent", () => {
     document.body.innerHTML = `<made-by class="made" data-published="published-1">Replaced by 2024/2609</made-by>`;
 
     expect(/** @type {HTMLElement} */ (document.querySelector("made-by")).title).toBe("");
@@ -58,7 +58,7 @@ describe("SharedDates", () => {
       "2024/2609 applies from 28 April 2025",
       "2024/2619 applies from 29 April 2025",
     ]);
-    // The part stays in the template for the other sidenotes
-    expect(part("dates-1")?.children).toHaveLength(2);
+    // The piece stays in the template for the other sidenotes
+    expect(piece("dates-1")?.children).toHaveLength(2);
   });
 });

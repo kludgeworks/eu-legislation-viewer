@@ -124,7 +124,7 @@ public record CompareView(
 
   /**
    * Returns the head of a comparison whose From, {@code fromDay}, is a day before the first text of
-   * {@code act}. It has the days and no acts: a panel in place of the changes says why.
+   * {@code act}. It has the days and no acts: a panel in place of the differences says why.
    */
   public static CompareView before(Act act, LocalDate fromDay, LocalDate toDay, Language language) {
     return new CompareView(

@@ -1,17 +1,17 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @import java.util.List
-@param List<ChangesView.Shown> shown
+@param List<DifferencesView.Shown> shown
 @param LegalRenderer html
 @param ComparePage page
 @param String lead = null
 <%-- Shows the differences at one place of a comparison: the wording of one change of an amending
      act. The page of an amending act loads it under the provision. Each difference shows as it
-     reads, with the inserted and the deleted words shown, as in the Changes view. It has no
+     reads, with the inserted and the deleted words shown, as in the Differences view. It has no
      sidenote, because the page says the act and the state. An annex inserted whole is a box that
      shows its size (annexfold.jte). If the place is the same in both texts, a line says so.
-     A chapter that an annex keeps flat has only its heading. For it, the part shows the differences
+     A chapter that an annex keeps flat has only its heading. For it, the fragment shows the differences
      in its points and its attachments that the text tags with the act, and a line says so
      (lead). --%>
 @if(shown.isEmpty())

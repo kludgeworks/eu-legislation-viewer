@@ -93,7 +93,7 @@ public record Divergence(
    *
    * @param eId the eId of the occurrence
    * @param holds whether the place is not in the text, and this occurrence holds it. The divergence
-   *     note is then beside the heading of the occurrence only, not beside all of it.
+   *     divergence note is then beside the heading of the occurrence only, not beside all of it.
    * @param places the places of the divergence that are this occurrence, or that this occurrence
    *     holds
    */

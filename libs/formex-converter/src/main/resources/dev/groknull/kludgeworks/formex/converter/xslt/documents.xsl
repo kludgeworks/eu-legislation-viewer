@@ -30,7 +30,7 @@
       <xsl:with-param name="eid" as="xs:string" select="$eid"/>
       <xsl:with-param name="annexes" as="element()*" select="$sub-annexes/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(ANNEX | GENERAL)"/>
       <xsl:with-param name="attachments" as="element()*" select="DOC.SUB.PUB[f:is-attachment(.)]"/>
-      <xsl:with-param name="notePrefix" as="xs:string?" select="f:attachment-note-prefix(.)" tunnel="yes"/>
+      <xsl:with-param name="footnotePrefix" as="xs:string?" select="f:attachment-footnote-prefix(.)" tunnel="yes"/>
     </xsl:call-template>
   </xsl:template>
 
@@ -107,8 +107,8 @@
         or exists($entry/REF.PHYS/doc(resolve-uri(@FILE, base-uri(.)))/(AGR | ACT))"/>
   </xsl:function>
 
-  <!-- note eIds of an attached document in a file of its own: note_att01000301-1 -->
-  <xsl:function name="f:attachment-note-prefix" as="xs:string">
+  <!-- footnote eIds of an attached document in a file of its own: note_att01000301-1 -->
+  <xsl:function name="f:attachment-footnote-prefix" as="xs:string">
     <xsl:param name="entry" as="element(DOC.SUB.PUB)"/>
     <xsl:sequence select="'att' || f:file-seq($entry/REF.PHYS/@FILE) || '-'"/>
   </xsl:function>
@@ -136,10 +136,10 @@
         <xsl:with-param name="division" as="map(*)?" select="()" tunnel="yes"/>
         <xsl:with-param name="levels" as="map(*)" select="map{'base': $eid}" tunnel="yes"/>
       </xsl:call-template>
-      <!-- a document in a file of its own: the file's notes after it, before its annexes' files -->
+      <!-- a document in a file of its own: the file's footnotes after it, before its annexes' files -->
       <xsl:if test="$doc is root($doc)/*">
-        <xsl:call-template name="f:notes">
-          <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included($doc)//NOTE[not(@NOTE.REF)][not(f:table-note(.))]"/>
+        <xsl:call-template name="f:footnotes">
+          <xsl:with-param name="footnotes" as="element(NOTE)*" select="f:with-included($doc)//NOTE[not(@NOTE.REF)][not(f:table-footnote(.))]"/>
         </xsl:call-template>
       </xsl:if>
       <xsl:variable name="groups" as="array(element())*" select="f:annex-groups($annexes)"/>
@@ -266,8 +266,8 @@
   <!-- a table of contents is navigation the reader builds from the occurrences; not text -->
   <xsl:template match="TOC" mode="block"/>
 
-  <!-- notes are collected after their file, or a consolidated version's table; what else a group of
-       notes holds (a title, annotations such as "EASA Form 138 – Issue 3") stays here -->
+  <!-- footnotes are collected after their file, or a consolidated version's table; what else a group of
+       footnotes holds (a title, annotations such as "EASA Form 138 – Issue 3") stays here -->
   <xsl:template match="GR.NOTES" mode="block">
     <xsl:call-template name="f:blocks">
       <xsl:with-param name="nodes" as="node()*" select="node() except NOTE"/>

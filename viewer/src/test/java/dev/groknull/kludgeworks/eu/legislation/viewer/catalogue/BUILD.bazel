@@ -327,7 +327,7 @@ java_junit5_test(
 )
 
 # The compare page as a browser loads it, its texts built while it shows their preparation, and
-# the addresses its slots load the comparison's parts from; Postgres in a container, so it needs
+# the addresses its slots load the comparison's fragments from; Postgres in a container, so it needs
 # Docker
 java_junit5_test(
     name = "ComparePagesTests",

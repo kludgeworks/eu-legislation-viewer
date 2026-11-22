@@ -73,13 +73,13 @@
                   <t v="23 June 2008"/>
                </date>
                <t v=" on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" and Council Decision 2008/616/JHA of "/>
                <date date="2008-06-23">
                   <t v="23 June 2008"/>
                </date>
                <t v=" on the implementation of Decision 2008/615/JHA on the stepping up of cross-border cooperation, particularly in combating terrorism and cross-border crime"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", and the Annex thereto."/>
             </p>
          </occurrence>
@@ -188,8 +188,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -200,8 +200,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -212,8 +212,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="att_1" kind="attachment" rank="1">
          <heading>
@@ -267,7 +267,7 @@
                <t v="18 December 2006"/>
             </date>
             <t v=" on simplifying the exchange of information and intelligence between law enforcement authorities of the Member States of the European Union"/>
-            <noteRef href="#note_att01000301-1" marker="1"/>
+            <footnoteRef href="#note_att01000301-1" marker="1"/>
             <t v=" already lays down rules whereby the law enforcement authorities of the Member States of the European Union and Iceland and Norway may exchange existing information and intelligence expeditiously and effectively for the purpose of carrying out criminal investigations or criminal intelligence operations,"/>
          </p>
          <p>
@@ -938,8 +938,8 @@
             <t v="For Kongeriket Norge"/>
          </p>
          <figure src="L_2009353EN.01000703.tif" content="signature"/>
-         <notes>
-            <note eId="note_att01000301-1" marker="1" kind="footnote">
+         <footnotes>
+            <footnote eId="note_att01000301-1" marker="1" kind="footnote">
                <p>
                   <ref kind="oj"
                        series="L"
@@ -950,8 +950,8 @@
                   </ref>
                   <t v="."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
          <occurrence eId="att_1/att_1" kind="attachment" rank="2">
             <heading>
                <t v="DECLARATION TO BE ADOPTED AT THE OCCASION OF THE SIGNATURE OF THE AGREEMENT"/>

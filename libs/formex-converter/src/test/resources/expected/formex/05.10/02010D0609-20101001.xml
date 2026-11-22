@@ -87,7 +87,7 @@
                   <t v="23 September 2010"/>
                </date>
                <t v=" on the European Union police mission undertaken in the framework of reform of the security sector (SSR) and its interface with the system of justice in the Democratic Republic of the Congo (EUPOL RD Congo)"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 10(1) thereof,"/>
             </p>
          </occurrence>
@@ -162,8 +162,8 @@
          </occurrence>
       </occurrence>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -174,7 +174,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

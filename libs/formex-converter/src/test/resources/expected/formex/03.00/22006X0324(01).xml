@@ -14,7 +14,7 @@
       <longTitle>
          <p>
             <t v="Agreement between the European Community and the Government of Canada on the processing of Advance Passenger Information and Passenger Name Record Data"/>
-            <noteRef href="#note_1" marker="1"/>
+            <footnoteRef href="#note_1" marker="1"/>
          </p>
       </longTitle>
    </preface>
@@ -31,8 +31,8 @@
          <t v=". According to Art. 9 of the Agreement, it entered into force on that same day."/>
       </p>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -43,7 +43,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

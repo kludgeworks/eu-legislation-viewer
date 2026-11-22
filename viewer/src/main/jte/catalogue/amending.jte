@@ -46,7 +46,7 @@
         @endif
         @for(var run : amending.runs())
           <section class="run ${run.tone()}">
-            @if(run.note() != null)<p class="note">${run.note()} <span class="size">${run.size()}</span></p>@endif
+            @if(run.statement() != null)<p class="statement">${run.statement()} <span class="size">${run.size()}</span></p>@endif
             <ul class="changes-list${run.worded() ? " worded" : ""}">
               @for(var change : run.changes())
                 @if(change.wording() != null)

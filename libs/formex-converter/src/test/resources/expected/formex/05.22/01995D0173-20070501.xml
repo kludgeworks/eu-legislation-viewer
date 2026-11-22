@@ -147,7 +147,7 @@
             <occurrence eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Directive 91/493/EEC of 22 July 1991 laying down the health conditions for the production and the placing on the market of fishery products"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=", as last amended by the Act of Accession of Austria, Finland and Sweden, and in particular Article 11 thereof,"/>
                </p>
             </occurrence>
@@ -1694,13 +1694,13 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
+   <footnotes>
       <deleted>
          <tag amendingAct="32006R1664"
               action="deleted"
               location="AR:2 .AND. AX:IV;PG:40"
               tagId="O002001M001000"/>
-         <note eId="note_1" marker="1" kind="footnote">
+         <footnote eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -1711,8 +1711,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
+         </footnote>
       </deleted>
-   </notes>
+   </footnotes>
 </legalText>
 

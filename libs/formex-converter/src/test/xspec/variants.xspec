@@ -235,15 +235,15 @@
     <x:expect label="keeps the letter's label as num" test="$x:result/*:num/*:t/@v = 'A.' and $x:result/*:heading/*:t/@v = 'Letter from the Union'"/>
   </x:scenario>
 
-  <x:scenario label="A table's notes group with an annotation (EASA Form 138)">
+  <x:scenario label="A table's footnotes group with an annotation (EASA Form 138)">
     <x:context mode="block" xmlns="">
       <TBL COLS="1"><GR.NOTES><NOTE NOTE.ID="E0001" TYPE="TABLE"><P>a note</P></NOTE><GR.ANNOTATION><ANNOTATION><P>EASA Form 138 – Issue 3</P></ANNOTATION></GR.ANNOTATION></GR.NOTES><CORPUS><ROW><CELL COL="1">x</CELL></ROW></CORPUS></TBL>
     </x:context>
-    <x:expect label="keeps the annotation after the table, not the note" test="
+    <x:expect label="keeps the annotation after the table, not the footnote" test="
         $x:result[1]/self::*:table and $x:result[2]/self::*:annotation//*:t/@v = 'EASA Form 138 – Issue 3' and count($x:result) = 2"/>
   </x:scenario>
 
-  <x:scenario label="A tag running into a table note (02015R2265)">
+  <x:scenario label="A tag running into a table footnote (02015R2265)">
     <x:context mode="block" select="/CONS.ACT/TBL" xmlns="">
       <CONS.ACT>
         <TBL COLS="1">
@@ -257,19 +257,19 @@
         </TBL>
       </CONS.ACT>
     </x:context>
-    <x:expect label="keeps the changed span in the note">
+    <x:expect label="keeps the changed span in the footnote">
       <table cols="1">
         <tr><td><p><t v="x"/></p></td></tr>
-        <notes>
-          <note eId="note_1" marker="1" kind="table">
+        <footnotes>
+          <footnote eId="note_1" marker="1" kind="table">
             <p>
               <changed amendingAct="32015R2265R(01)" action="replaced" location="LI:0;EL:3" tagId="O1">
                 <t v="Products under CN codes qualify"/>
               </changed>
               <t v=" for the quota"/>
             </p>
-          </note>
-        </notes>
+          </footnote>
+        </footnotes>
       </table>
     </x:expect>
   </x:scenario>
@@ -286,7 +286,7 @@
     <x:expect label="attaches the agreement, and the document attached to it, under it"
               test="$x:result//*:occurrence[@kind = 'attachment']/@eId = ('att_1', 'att_1/att_1')"/>
     <x:expect label="numbers the agreement's articles under it" test="$x:result//*:occurrence[@eId = 'att_1/art_1']/*:num/*:t/@v = 'Article 1'"/>
-    <x:expect label="gives the agreement's notes their own eIds, after its text" test="$x:result//*:occurrence[@eId = 'att_1']/*:notes/*:note/@eId = 'note_att01000301-1'"/>
+    <x:expect label="gives the agreement's footnotes their own eIds, after its text" test="$x:result//*:occurrence[@eId = 'att_1']/*:footnotes/*:footnote/@eId = 'note_att01000301-1'"/>
   </x:scenario>
 
   <x:scenario label="An annex the OJ prints across files (2015/1998, four)">
@@ -294,8 +294,8 @@
     <x:expect label="is one annex, a file each" test="count($x:result/*:annexes/*:occurrence) = 1
         and $x:result/*:annexes/*:occurrence/*:file/@name = ('L_2015299EN.01000301', 'L_2015299EN.01006801', 'L_2015299EN.01008501', 'L_2015299EN.01010101')"/>
     <x:expect label="each but the first under the title it repeats" test="$x:result//*:file ! exists(*:num) = (false(), true(), true(), true())"/>
-    <x:expect label="each with its notes after it" test="every $f in $x:result//*:file satisfies $f/*[last()]/self::*:notes/*:note[1]/@eId = 'note_anx' || substring-after($f/@name, '.') || '-1'"/>
-    <x:expect label="the act's own notes before the annexes" test="$x:result/*:notes/following-sibling::*[1]/self::*:annexes and empty($x:result/*:notes/*:note[starts-with(@eId, 'note_anx')])"/>
+    <x:expect label="each with its footnotes after it" test="every $f in $x:result//*:file satisfies $f/*[last()]/self::*:footnotes/*:footnote[1]/@eId = 'note_anx' || substring-after($f/@name, '.') || '-1'"/>
+    <x:expect label="the act's own footnotes before the annexes" test="$x:result/*:footnotes/following-sibling::*[1]/self::*:annexes and empty($x:result/*:footnotes/*:footnote[starts-with(@eId, 'note_anx')])"/>
   </x:scenario>
 
   <x:scenario label="A form as an image, with a transcription of its text">
@@ -318,7 +318,7 @@
     <x:expect label="becomes a span with its language"><p><span xml:lang="fr"><t v="Fait à Bruxelles"/></span></p></x:expect>
   </x:scenario>
 
-  <x:scenario label="Where the source prints its notes">
+  <x:scenario label="Where the source prints its footnotes">
     <x:context mode="block" xmlns=""><LOC.NOTES/></x:context>
     <x:expect label="is dropped" select="()"/>
   </x:scenario>

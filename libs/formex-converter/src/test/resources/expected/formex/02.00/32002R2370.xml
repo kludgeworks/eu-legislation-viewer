@@ -50,14 +50,14 @@
          <occurrence eId="pbl_1/cit_2" kind="citation">
             <p>
                <t v="Having regard to the proposal from the Commission"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the opinion of the European Parliament"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -78,7 +78,7 @@
                   <t v="17 December 1999"/>
                </date>
                <t v=" laying down the detailed rules and arrangements regarding Community structural assistance in the fisheries sector"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" has afforded decommissioning incentives as a way of bringing about a balanced ratio of fleet capacity to available resources in the long term."/>
             </p>
          </occurrence>
@@ -148,7 +148,7 @@
                   <t v="28 June 1999"/>
                </date>
                <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -296,7 +296,7 @@
                      <t v="21 June 1999"/>
                   </date>
                   <t v=" laying down general provisions on the structural funds"/>
-                  <noteRef href="#note_5" marker="5"/>
+                  <footnoteRef href="#note_5" marker="5"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -346,7 +346,7 @@
                   <t v="20 December 2002"/>
                </date>
                <t v=" on the conservation and sustainable exploitation of fisheries resources under the Common Fisheries Policy"/>
-               <noteRef href="#note_6" marker="6"/>
+               <footnoteRef href="#note_6" marker="6"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -399,8 +399,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -411,8 +411,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Opinion delivered on "/>
             <date date="2002-12-05">
@@ -420,8 +420,8 @@
             </date>
             <t v=" (not yet published in the Official Journal)."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -440,8 +440,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -452,8 +452,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -472,12 +472,12 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <t v="See page 59 of this Official Journal."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

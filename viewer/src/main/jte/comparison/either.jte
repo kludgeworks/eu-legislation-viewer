@@ -1,9 +1,9 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.legaltext.LegalRenderer
 @import java.util.List
 @param String heading
-@param List<ChangesView.Shown> shown
+@param List<DifferencesView.Shown> shown
 @param boolean open
 @param LegalRenderer html
 @param ComparePage page
@@ -13,13 +13,13 @@
      provision, what happened to it, and its wording with the inserted and the deleted words
      shown. The bar beside the list is grey and broken, as for all that the data does not tell.
      The wording is in a fold. The folds are open if the list has few changes, as on the page
-     that loads the part. If there is no such difference, the part is empty and stays hidden. --%>
+     that loads the fragment. If there is no such difference, the fragment is empty and stays hidden. --%>
 @if(shown.isEmpty())
   <div class="either" hidden></div>
 @else
   <section class="either run open" aria-labelledby="either-head">
     <h2 id="either-head">${heading}</h2>
-    <p class="note">The data does not say which of these acts made these changes. <span class="size">${shown.size() == 1 ? "1 provision" : shown.size() + " provisions"}</span></p>
+    <p class="statement">The data does not say which of these acts made these changes. <span class="size">${shown.size() == 1 ? "1 provision" : shown.size() + " provisions"}</span></p>
     <ul class="changes-list worded">
       @for(var each : shown)
         <li>

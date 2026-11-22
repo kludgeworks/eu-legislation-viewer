@@ -7,7 +7,7 @@ import {
   follow,
   format,
   locate,
-  part,
+  subdivision,
   passed,
   rail,
   railed,
@@ -28,7 +28,7 @@ afterEach(() => {
  */
 const one = (selector) => /** @type {HTMLElement} */ (document.querySelector(selector));
 
-/** An outline of two parts, Article 1 from difference 1 and Annex IV from difference 3. */
+/** An outline of two subdivisions, Article 1 from difference 1 and Annex IV from difference 3. */
 const OUTLINE = `
   <act-outline>
     <nav class="outline counted">
@@ -97,13 +97,13 @@ describe("rail", () => {
   });
 });
 
-describe("part", () => {
-  test("names the last part that starts at or before the difference", () => {
+describe("subdivision", () => {
+  test("names the last subdivision that starts at or before the difference", () => {
     document.body.innerHTML = OUTLINE;
 
-    expect(part(one(".outline"), 2)).toBe("Article 1");
-    expect(part(one(".outline"), 3)).toBe("Annex IV");
-    expect(part(one(".outline"), 0)).toBe("");
+    expect(subdivision(one(".outline"), 2)).toBe("Article 1");
+    expect(subdivision(one(".outline"), 3)).toBe("Annex IV");
+    expect(subdivision(one(".outline"), 0)).toBe("");
   });
 });
 
@@ -119,7 +119,7 @@ describe("follow", () => {
     expect(one(".down").getAttribute("href")).toBe("#difference-1");
   });
 
-  test("says which difference the reader is at, and in which part", () => {
+  test("says which difference the reader is at, and in which subdivision", () => {
     document.body.innerHTML = OUTLINE;
     differences(3);
 
@@ -149,7 +149,7 @@ describe("passed", () => {
 });
 
 describe("follow in Compare", () => {
-  test("marks the part the reader is in and opens it", () => {
+  test("marks the subdivision the reader is in and opens it", () => {
     document.body.innerHTML = OUTLINE;
     differences(4);
 
@@ -273,7 +273,7 @@ describe("ActOutline", () => {
 });
 
 describe("railed", () => {
-  test("marks the rail entry of the part that the difference is in", () => {
+  test("marks the rail entry of the subdivision that the difference is in", () => {
     document.body.innerHTML = `<nav class="outline"><div class="rail-map">
       <a href="#difference-1" data-first="1">Art 3</a>
       <a href="#difference-4" data-first="4">IV</a>
@@ -288,7 +288,7 @@ describe("railed", () => {
   });
 });
 
-/** The contents of a page: two of its parts, one nested, and a part of another page. */
+/** The contents of a page: two of its sections, one nested, and a section of another page. */
 const CONTENTS = `
   <nav>
     <ul>
@@ -301,7 +301,7 @@ const CONTENTS = `
   <section id="resources"><section id="act"></section></section>`;
 
 /**
- * Puts the top of a part of the page above or below the line the reader is at.
+ * Puts the top of a section of the page above or below the line the reader is at.
  *
  * @param {string} id
  * @param {boolean} above
@@ -312,7 +312,7 @@ const at = (id, above) => {
 
 
 describe("locate", () => {
-  test("marks the deepest part of the page the reader is in", () => {
+  test("marks the deepest section of the page the reader is in", () => {
     document.body.innerHTML = CONTENTS;
     at("resources", true);
     at("act", true);
@@ -322,7 +322,7 @@ describe("locate", () => {
     expect(one("a[aria-current]").getAttribute("href")).toBe("#act");
   });
 
-  test("marks the first part before the reader reaches it", () => {
+  test("marks the first section before the reader reaches it", () => {
     document.body.innerHTML = CONTENTS;
     at("resources", false);
     at("act", false);

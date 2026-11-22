@@ -55,7 +55,7 @@
                   <t v="17 December 2013"/>
                </date>
                <t v=" establishing a common organisation of the markets in agricultural products and repealing Council Regulations (EEC) No 922/72, (EEC) No 234/79, (EC) No 1037/2001 and (EC) No 1234/2007"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 187, points (a) to (e), thereof,"/>
             </p>
          </occurrence>
@@ -72,7 +72,7 @@
             </num>
             <p>
                <t v="Commission Implementing Regulation (EU) 2020/761"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" lays down the rules for the management of import and export tariff quotas for agricultural products managed by a system of import and export licences and provides for specific rules."/>
             </p>
          </occurrence>
@@ -82,7 +82,7 @@
             </num>
             <p>
                <t v="The Agreement between the European Union and the Federative Republic of Brazil pursuant to Article XXVIII of the General Agreement on Tariffs and Trade (GATT) 1994 relating to the modification of concessions on all the tariff rate quotas included in the EU Schedule CLXXV as a consequence of the United Kingdom`s withdrawal from the European Union, concluded by Council Decision (EU) 2023/1056"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", amends the quantities of products to be imported under some tariff quotas opened in favour of Brazil. The amendments concern tariff quotas in the sector of poultry with the following order numbers: 09.4211, 09.4214, 09.4217, 09.4251, 09.4252, 09.4253, 09.4410 and 09.4420 and tariff quota 09.4318 in the sector of sugar, and the creation of two additional tariff quotas in the sector of sugar."/>
             </p>
          </occurrence>
@@ -210,8 +210,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -222,8 +222,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Commission Implementing Regulation (EU) 2020/761 of "/>
             <date date="2019-12-17">
@@ -239,8 +239,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Council Decision (EU) 2023/1056 of "/>
             <date date="2023-05-25">
@@ -256,8 +256,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

@@ -145,7 +145,7 @@
             <occurrence eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Directive 92/65/EEC of 13 July 1992 concerning laying down animal health requirements governing trade in and imports into the Community of animals, semen, ova and embryos not subject to animal health requirements laid down in specific Community rules referred to in Annex A (I) to Directive 90/425/EEC"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=", and in particular Article 10 (3) (a) (vii) thereof,"/>
                </p>
             </occurrence>
@@ -234,13 +234,13 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
+   <footnotes>
       <deleted>
          <tag amendingAct="32004D0595"
               action="deleted"
               location="AR:2"
               tagId="O002001M001000"/>
-         <note eId="note_1" marker="1" kind="footnote">
+         <footnote eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -251,8 +251,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
+         </footnote>
       </deleted>
-   </notes>
+   </footnotes>
 </legalText>
 

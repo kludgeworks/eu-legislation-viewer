@@ -32,8 +32,7 @@ import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The sidenote of a difference. It shows beside the note of the difference and says who made the
- * difference.
+ * The sidenote of a difference. It shows beside the difference and says who made the difference.
  *
  * <p>The sidenote names the acts between the two versions that made the difference. The amendment
  * tags on the occurrence in the later text name these acts, or the amendments of the occurrence in

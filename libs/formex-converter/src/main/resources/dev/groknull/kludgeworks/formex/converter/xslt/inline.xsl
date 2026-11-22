@@ -196,15 +196,15 @@
   <!-- an empty tag: its span (f:inlines) is all there is of it -->
   <xsl:template match="processing-instruction('CLG.MDFO')" mode="inline"/>
 
-  <!-- a note: every NOTE but a reference to one (NOTE.REF); older budgets give their notes no NOTE.ID -->
+  <!-- a footnote: every NOTE but a reference to one (NOTE.REF); older budgets give their footnotes no NOTE.ID -->
   <xsl:template match="NOTE[not(@NOTE.REF)]" mode="inline">
-    <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
-    <xsl:sequence select="f:note-ref(., $notePrefix)"/>
+    <xsl:param name="footnotePrefix" as="xs:string?" tunnel="yes"/>
+    <xsl:sequence select="f:footnote-ref(., $footnotePrefix)"/>
   </xsl:template>
 
-  <!-- notes by id, for references to a note printed elsewhere (NOTE.REF): a Combined Nomenclature
-       table refers to the same note hundreds of times -->
-  <xsl:key name="f:note-by-id" match="NOTE[@NOTE.ID]" use="@NOTE.ID"/>
+  <!-- footnotes by id, for references to a footnote printed elsewhere (NOTE.REF): a Combined Nomenclature
+       table refers to the same footnote hundreds of times -->
+  <xsl:key name="f:footnote-by-id" match="NOTE[@NOTE.ID]" use="@NOTE.ID"/>
 
   <!-- every Formex document of the input: an OJ package's files and what they include, or the
        document alone -->
@@ -212,16 +212,16 @@
       f:with-included(if (/DOC) then /DOC/FMX//REF.PHYS[ends-with(@FILE, '.xml')]/doc(resolve-uri(@FILE, base-uri(.)))/* else /*)"/>
 
   <xsl:template match="NOTE[@NOTE.REF]" mode="inline">
-    <xsl:param name="notePrefix" as="xs:string?" tunnel="yes"/>
-    <xsl:sequence select="f:note-ref(f:note-target(.), $notePrefix)"/>
+    <xsl:param name="footnotePrefix" as="xs:string?" tunnel="yes"/>
+    <xsl:sequence select="f:footnote-ref(f:footnote-target(.), $footnotePrefix)"/>
   </xsl:template>
 
-  <!-- the note a NOTE.REF repeats: in the same file, else in another file of the package (a table in
-       an included file refers to a note of the act); one that refers to no note stops the converter -->
-  <xsl:function name="f:note-target" as="element(NOTE)">
+  <!-- the footnote a NOTE.REF repeats: in the same file, else in another file of the package (a table in
+       an included file refers to a footnote of the act); one that refers to no footnote stops the converter -->
+  <xsl:function name="f:footnote-target" as="element(NOTE)">
     <xsl:param name="ref" as="element(NOTE)"/>
-    <xsl:variable name="target" as="element(NOTE)?" select="(key('f:note-by-id', $ref/@NOTE.REF, root($ref)), $f:documents ! key('f:note-by-id', $ref/@NOTE.REF, root(.)))[1]"/>
-    <xsl:sequence select="if ($target) then $target else f:unknown($ref, 'NOTE.REF without its note')"/>
+    <xsl:variable name="target" as="element(NOTE)?" select="(key('f:footnote-by-id', $ref/@NOTE.REF, root($ref)), $f:documents ! key('f:footnote-by-id', $ref/@NOTE.REF, root(.)))[1]"/>
+    <xsl:sequence select="if ($target) then $target else f:unknown($ref, 'NOTE.REF without its footnote')"/>
   </xsl:function>
 
   <xsl:template match="REF.DOC.OJ" mode="inline">
@@ -279,7 +279,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- anonymised text: the placeholder as printed (██████), and what it holds (a note reference) -->
+  <!-- anonymised text: the placeholder as printed (██████), and what it holds (a footnote reference) -->
   <xsl:template match="ANONYMOUS" mode="inline">
     <xsl:if test="@PLACEHOLDER">
       <t v="{@PLACEHOLDER}"/>
@@ -357,16 +357,16 @@
     </xsl:if>
   </xsl:function>
 
-  <xsl:function name="f:note-ref" as="element()">
-    <xsl:param name="note" as="element(NOTE)"/>
+  <xsl:function name="f:footnote-ref" as="element()">
+    <xsl:param name="footnote" as="element(NOTE)"/>
     <xsl:param name="prefix" as="xs:string?"/>
-    <noteRef href="#{f:note-eid($note, $prefix)}" marker="{f:note-marker($note)}"/>
+    <footnoteRef href="#{f:footnote-eid($footnote, $prefix)}" marker="{f:footnote-marker($footnote)}"/>
   </xsl:function>
 
-  <!-- Note numbers in one pass: counting preceding::NOTE for every note is quadratic, minutes for a
-       55 MB consolidation. f:notes-started at a note counts the notes before it and around it (a
-       note can sit inside another); f:footnotes-ended the running-numbered ones before it. -->
-  <xsl:accumulator name="f:notes-started" as="xs:integer" initial-value="0">
+  <!-- Footnote numbers in one pass: counting preceding::NOTE for every footnote is quadratic, minutes for a
+       55 MB consolidation. f:footnotes-started at a footnote counts the footnotes before it and around it (a
+       footnote can sit inside another); f:footnotes-ended the running-numbered ones before it. -->
+  <xsl:accumulator name="f:footnotes-started" as="xs:integer" initial-value="0">
     <xsl:accumulator-rule match="NOTE[not(@NOTE.REF)]" phase="start" select="$value + 1"/>
   </xsl:accumulator>
 
@@ -381,10 +381,10 @@
        protocol, agreement or act (any file whose NO.SEQ, 0001.0001, sits below the main
        document's, 0001), note_att0301-1 in an attached document's own file ($prefix, which names
        that file: a file the attachment includes has its own) -->
-  <xsl:function name="f:note-eid" as="xs:string">
-    <xsl:param name="note" as="element(NOTE)"/>
+  <xsl:function name="f:footnote-eid" as="xs:string">
+    <xsl:param name="footnote" as="element(NOTE)"/>
     <xsl:param name="prefix" as="xs:string?"/>
-    <xsl:variable name="root" as="element()" select="root($note)/*"/>
+    <xsl:variable name="root" as="element()" select="root($footnote)/*"/>
     <xsl:variable name="seq" as="xs:string" select="f:file-seq(base-uri($root))"/>
     <xsl:variable name="file" as="xs:string" select="
         if ($root/self::ANNEX) then 'anx' || $seq || '-'
@@ -392,7 +392,7 @@
         else if ($root/self::GENERAL or contains($root/BIB.INSTANCE/NO.SEQ, '.')) then 'inc' || $seq || '-'
         else string($prefix)"/>
     <!-- the value before a node includes the node's own start rule -->
-    <xsl:sequence select="f:eid((), 'note', $file || ($note ! accumulator-before('f:notes-started')))"/>
+    <xsl:sequence select="f:eid((), 'note', $file || ($footnote ! accumulator-before('f:footnotes-started')))"/>
   </xsl:function>
 
   <!-- a package file's own sequence number: L_2009353EN.01000301.xml → 01000301 -->
@@ -403,21 +403,21 @@
 
   <!-- the marker as printed: NUMBER.ORG if given (but in a consolidation's footnotes:
        f:renumbered), * for star numbering, else the running number (footnotes through the
-       document, table notes within their table) -->
-  <xsl:function name="f:note-marker" as="xs:string">
-    <xsl:param name="note" as="element(NOTE)"/>
+       document, table footnotes within their table) -->
+  <xsl:function name="f:footnote-marker" as="xs:string">
+    <xsl:param name="footnote" as="element(NOTE)"/>
     <xsl:sequence select="
-        if (f:table-note($note))
-        then string(count($note/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE']
-                     [. &lt;&lt; $note][empty(. intersect $note/ancestor::NOTE)]
-                     [ancestor::TBL[1] is $note/ancestor::TBL[1]]) + 1)
-        else if ($note/@NUMBER.ORG and not(f:renumbered($note))) then string($note/@NUMBER.ORG)
-        else if ($note/@NUMBERING = 'STAR') then '*'
-        else if ($note/@TYPE = 'TABLE')
-        then string(count($note/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE'][not(@NUMBERING = 'STAR')]
-                     [. &lt;&lt; $note][empty(. intersect $note/ancestor::NOTE)]
-                     [ancestor::TBL[1] is $note/ancestor::TBL[1]]) + 1)
-        else string(($note ! accumulator-before('f:footnotes-ended')) + 1)"/>
+        if (f:table-footnote($footnote))
+        then string(count($footnote/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE']
+                     [. &lt;&lt; $footnote][empty(. intersect $footnote/ancestor::NOTE)]
+                     [ancestor::TBL[1] is $footnote/ancestor::TBL[1]]) + 1)
+        else if ($footnote/@NUMBER.ORG and not(f:renumbered($footnote))) then string($footnote/@NUMBER.ORG)
+        else if ($footnote/@NUMBERING = 'STAR') then '*'
+        else if ($footnote/@TYPE = 'TABLE')
+        then string(count($footnote/ancestor::TBL[1]//NOTE[not(@NOTE.REF)][@TYPE = 'TABLE'][not(@NUMBERING = 'STAR')]
+                     [. &lt;&lt; $footnote][empty(. intersect $footnote/ancestor::NOTE)]
+                     [ancestor::TBL[1] is $footnote/ancestor::TBL[1]]) + 1)
+        else string(($footnote ! accumulator-before('f:footnotes-ended')) + 1)"/>
   </xsl:function>
 
   <!-- a consolidation's footnote: numbered through it, as EUR-Lex prints them, NUMBER.ORG (the
@@ -426,8 +426,8 @@
        22022D1121); a star-numbered footnote keeps its *, which no consolidation in Cellar's xhtml
        has shown otherwise -->
   <xsl:function name="f:renumbered" as="xs:boolean">
-    <xsl:param name="note" as="element(NOTE)"/>
-    <xsl:sequence select="exists(root($note)/(CONS.ACT | CONS.OTH)) and ($note/@TYPE, 'FOOTNOTE')[1] = 'FOOTNOTE'"/>
+    <xsl:param name="footnote" as="element(NOTE)"/>
+    <xsl:sequence select="exists(root($footnote)/(CONS.ACT | CONS.OTH)) and ($footnote/@TYPE, 'FOOTNOTE')[1] = 'FOOTNOTE'"/>
   </xsl:function>
 
   <!-- an element the converter doesn't know: an error, so new Formex shows up in tests. It never

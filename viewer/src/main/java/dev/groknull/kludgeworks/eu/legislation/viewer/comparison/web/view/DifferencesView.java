@@ -19,11 +19,11 @@ import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The Changes view of a comparison.
+ * The Differences view of a comparison.
  *
  * <p>It shows only the provisions that differ, in the order of the later text. Each is numbered and
- * has a note of what happened to it. Between them, it shows each other occurrence of the later text
- * once:
+ * has a sidenote that says what happened to it. Between them, it shows each other occurrence of the
+ * later text once:
  *
  * <ul>
  *   <li>The opening of an occurrence that holds differences shows as context, where the differences
@@ -36,7 +36,7 @@ import org.jspecify.annotations.Nullable;
  * @param passages what the view shows, in order
  * @param numbers the numbers of the differences, for the pager
  */
-public record ChangesView(String count, List<Passage> passages, List<Integer> numbers) {
+public record DifferencesView(String count, List<Passage> passages, List<Integer> numbers) {
 
   /** A letter or digit in a num. A num that is only a mark, for example "—" or "•", has none. */
   private static final Pattern WORD = Pattern.compile("[\\p{L}\\p{N}]");
@@ -53,18 +53,18 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    */
   private static final Pattern NAMED = Pattern.compile("(\\p{L}{2,}) (.+)");
 
-  public ChangesView {
+  public DifferencesView {
     passages = List.copyOf(passages);
     numbers = List.copyOf(numbers);
   }
 
-  /** Returns the Changes view of {@code comparison}. */
-  public static ChangesView of(Comparison comparison) {
+  /** Returns the Differences view of {@code comparison}. */
+  public static DifferencesView of(Comparison comparison) {
     return of(comparison, difference -> true, "");
   }
 
   /**
-   * Returns the Changes view of {@code comparison} that shows only the differences that {@code
+   * Returns the Differences view of {@code comparison} that shows only the differences that {@code
    * shown} keeps. For example, the differences of one act, under its filter.
    *
    * <ul>
@@ -76,7 +76,8 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    *       later text.
    * </ul>
    */
-  public static ChangesView of(Comparison comparison, Predicate<Difference> shown, String others) {
+  public static DifferencesView of(
+      Comparison comparison, Predicate<Difference> shown, String others) {
     var differences = comparison.differences().stream().filter(shown).toList();
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
@@ -104,12 +105,12 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
       next.fold();
       var number = numbers.size() + 1;
       numbers.add(number);
-      passages.add(new Shown(number, difference, note(difference)));
+      passages.add(new Shown(number, difference, label(difference)));
       opened.add(difference.eId());
     }
     place(comparison.closing(), differences, next, opened);
     next.fold();
-    return new ChangesView(count(differences.size()), passages, numbers);
+    return new DifferencesView(count(differences.size()), passages, numbers);
   }
 
   /**
@@ -192,9 +193,9 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     }
 
     /**
-     * Adds the fold of the waiting occurrences after the passages, and empties them. The note of
-     * the fold is "no differences". If some of the occurrences differ, the note is {@code others},
-     * and the label spans the occurrences. For example, "Points 11.1.3 to 11.2.7(b) (21
+     * Adds the fold of the waiting occurrences after the passages, and empties them. The reason of
+     * the fold is "no differences". If some of the occurrences differ, the reason is {@code
+     * others}, and the label spans the occurrences. For example, "Points 11.1.3 to 11.2.7(b) (21
      * provisions)". Does nothing if no occurrences are waiting.
      */
     void fold() {
@@ -203,7 +204,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
       }
       passages.add(
           hidden == 0
-              ? new Fold(ChangesView.fold(occurrences), occurrences, "no differences", true)
+              ? new Fold(DifferencesView.fold(occurrences), occurrences, "no differences", true)
               : new Fold(span(occurrences), occurrences, others, false));
       occurrences.clear();
       eIds.clear();
@@ -224,7 +225,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * Returns what happened to {@code difference}: "Inserted", "Deleted" or "Amended". The sidenote
    * shows it only when no act is known to have made it; the line of the act says it otherwise.
    */
-  static String note(Difference difference) {
+  static String label(Difference difference) {
     return switch (difference.kind()) {
       case INSERTED -> "Inserted";
       case DELETED -> "Deleted";
@@ -354,7 +355,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
   /**
    * A kind of occurrence that an eId numbers.
    *
-   * @param start the start of its step in an eId, before the number. For example, {@code art_}.
+   * @param start the start of its segment in an eId, before the number. For example, {@code art_}.
    * @param name the name of the occurrence, for example "Article"
    */
   private record Numbered(String start, String name) {}
@@ -376,15 +377,15 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * an act, and "A provision with no number" if no occurrence that it is in has a number.
    */
   static String within(String eId) {
-    var steps = List.of(eId.split("/"));
-    for (var step : steps.reversed().subList(1, steps.size())) {
+    var segments = List.of(eId.split("/"));
+    for (var segment : segments.reversed().subList(1, segments.size())) {
       for (var each : NUMBERED) {
-        if (step.startsWith(each.start())) {
-          return "In " + each.name() + " " + step.substring(each.start().length());
+        if (segment.startsWith(each.start())) {
+          return "In " + each.name() + " " + segment.substring(each.start().length());
         }
       }
     }
-    return steps.getFirst().equals("anx") && steps.size() > 1
+    return segments.getFirst().equals("anx") && segments.size() > 1
         ? "In the annex"
         : "A provision with no number";
   }
@@ -454,12 +455,12 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    * @param label which occurrences they are. For example, "Points (a) and (b)".
    * @param occurrences its occurrences, as the later text has them, in order, each with the
    *     occurrences in it
-   * @param note why they are folded. For example, "no differences" or "not changed by 2019/1583".
+   * @param reason why they are folded. For example, "no differences" or "not changed by 2019/1583".
    * @param same whether they are the same in both texts. Then they are the neighbours of the
    *     difference after them, in the occurrence that they are in. False if some of them differ, by
    *     an act that the view leaves out.
    */
-  public record Fold(String label, List<Sibling> occurrences, String note, boolean same)
+  public record Fold(String label, List<Sibling> occurrences, String reason, boolean same)
       implements Passage {
     public Fold {
       occurrences = List.copyOf(occurrences);
@@ -485,7 +486,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
         return null;
       }
       var inner = occurrences.subList(1, occurrences.size() - 1);
-      return new Fold(same ? ChangesView.fold(inner) : span(inner), inner, note, same);
+      return new Fold(same ? DifferencesView.fold(inner) : span(inner), inner, reason, same);
     }
 
     /**
@@ -509,9 +510,9 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
    *
    * @param number its number, from 1, as its mark and the pager show it
    * @param difference the difference, with its occurrence as shown
-   * @param note what happened to it
+   * @param label what happened to it: "Inserted", "Deleted" or "Amended"
    */
-  public record Shown(int number, Difference difference, String note) implements Passage {
+  public record Shown(int number, Difference difference, String label) implements Passage {
     /** Returns its kind, as its CSS class has it: inserted, deleted or changed. */
     public String kind() {
       return difference.kind().name().toLowerCase(Locale.ROOT);
@@ -533,17 +534,17 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
     /**
      * Returns its occurrence with its edits, as shown, as {@link #occurrence} does, with the runs
      * of rows in its tables that are the same in both texts folded ({@link RowFoldLinks}). The
-     * folds load their rows from {@link #part}.
+     * folds load their rows from {@link #fragment}.
      */
     public Element folded(ComparePage page) {
-      return RowFoldLinks.of(occurrence(), part(page));
+      return RowFoldLinks.of(occurrence(), fragment(page));
     }
 
     /**
-     * Returns the address of the part with this difference alone, on the compare page {@code page}.
-     * An annex inserted whole loads from it when the reader opens it.
+     * Returns the address of the fragment with this difference alone, on the compare page {@code
+     * page}. An annex inserted whole loads from it when the reader opens it.
      */
-    public String part(ComparePage page) {
+    public String fragment(ComparePage page) {
       return page.difference(difference.eId());
     }
 
@@ -555,7 +556,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
      */
     public String place() {
       var named = named();
-      return named != null ? named : ChangesView.within(difference.eId());
+      return named != null ? named : DifferencesView.within(difference.eId());
     }
 
     /** Returns what happened to its occurrence, in one word: "Inserted", "Deleted" or "Changed". */
@@ -572,7 +573,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
      * that it is in, for example "1.2.3.5(e)".
      */
     public String cited() {
-      return ChangesView.cited(difference.occurrence());
+      return DifferencesView.cited(difference.occurrence());
     }
 
     /**
@@ -585,7 +586,7 @@ public record ChangesView(String count, List<Passage> passages, List<Integer> nu
         return null;
       }
       // A num may end with the full stop it has in the text, for example "1.0.6.".
-      var named = ChangesView.named(difference.occurrence());
+      var named = DifferencesView.named(difference.occurrence());
       return named.endsWith(".") ? named.substring(0, named.length() - 1) : named;
     }
 

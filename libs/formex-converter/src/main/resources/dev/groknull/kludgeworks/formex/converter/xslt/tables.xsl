@@ -48,10 +48,10 @@
               'eid': $eid,
               'rows': map:merge(CORPUS//ROW[ancestor::TBL[1] is current()] ! map { generate-id(.): position() })}"/>
         </xsl:apply-templates>
-        <!-- its notes, which EUR-Lex prints under it (a last row), not with its file's: each as it
+        <!-- its footnotes, which EUR-Lex prints under it (a last row), not with its file's: each as it
              would be there, out of the table's context -->
-        <xsl:call-template name="f:notes">
-          <xsl:with-param name="notes" as="element(NOTE)*" select=".//NOTE[not(@NOTE.REF)][f:table-note(.)][ancestor::TBL[1] is current()]"/>
+        <xsl:call-template name="f:footnotes">
+          <xsl:with-param name="footnotes" as="element(NOTE)*" select=".//NOTE[not(@NOTE.REF)][f:table-footnote(.)][ancestor::TBL[1] is current()]"/>
           <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
           <xsl:with-param name="table" as="map(*)?" select="()" tunnel="yes"/>
           <xsl:with-param name="division" as="map(*)?" select="()" tunnel="yes"/>
@@ -64,7 +64,7 @@
       </table>
     </xsl:variable>
     <xsl:sequence select="f:wrap-deleted($m, $table)"/>
-    <!-- what follows the rows: text blocks (GR.SEQ), the table's notes group (its notes are the
+    <!-- what follows the rows: text blocks (GR.SEQ), the table's footnotes group (its footnotes are the
          table's or its file's, its annotations stay here, their lists under the table:
          anx/tab_1/def_1); anything else fails -->
     <xsl:apply-templates select="node() except (TITLE, CORPUS)" mode="block">
@@ -79,11 +79,11 @@
     </xsl:apply-templates>
   </xsl:template>
 
-  <!-- a consolidated version's table note (a NOTE TYPE="TABLE" in a TBL): its table prints it, not its
-       file's notes, as EUR-Lex does (in its last row); an act as published prints it with the file's -->
-  <xsl:function name="f:table-note" as="xs:boolean">
-    <xsl:param name="note" as="element(NOTE)"/>
-    <xsl:sequence select="$note/@TYPE = 'TABLE' and exists($note/ancestor::TBL) and exists(root($note)/(CONS.ACT | CONS.OTH))"/>
+  <!-- a consolidated version's table footnote (a NOTE TYPE="TABLE" in a TBL): its table prints it, not its
+       file's footnotes, as EUR-Lex does (in its last row); an act as published prints it with the file's -->
+  <xsl:function name="f:table-footnote" as="xs:boolean">
+    <xsl:param name="footnote" as="element(NOTE)"/>
+    <xsl:sequence select="$footnote/@TYPE = 'TABLE' and exists($footnote/ancestor::TBL) and exists(root($footnote)/(CONS.ACT | CONS.OTH))"/>
   </xsl:function>
 
   <!-- tables that belong together under one title -->

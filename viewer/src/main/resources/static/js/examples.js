@@ -9,7 +9,7 @@
  *
  * - the three are tabs, and the first one shows;
  * - the caption has a button that copies the curl command;
- * - the body's repetitive parts are folded, each behind a button that says what it holds: the
+ * - the body's repetitive members are folded, each behind a button that says what it holds: the
  *   links every answer has (`self`, `up`, `curies`), the items of a list after the first, and
  *   what is nested deeper than {@link DEPTH};
  * - highlight.js, which the page loads before this module with its grammar of HTTP, colours the
@@ -114,7 +114,7 @@ function copy(example) {
 }
 
 /**
- * Shows a JSON body indented, coloured, with its repetitive parts folded. A body that is not JSON
+ * Shows a JSON body indented, coloured, with its repetitive members folded. A body that is not JSON
  * stays as it is.
  *
  * @param {HTMLElement} code
@@ -275,10 +275,10 @@ function token(kind, text) {
   return span;
 }
 
-/** @param {...(Node | string)} parts */
-function fragment(...parts) {
+/** @param {...(Node | string)} nodes */
+function fragment(...nodes) {
   const result = new DocumentFragment();
-  result.append(...parts);
+  result.append(...nodes);
   return result;
 }
 

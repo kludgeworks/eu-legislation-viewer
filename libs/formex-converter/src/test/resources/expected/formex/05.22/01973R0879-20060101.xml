@@ -120,7 +120,7 @@
             <occurrence eId="pbl_1/cit_2" kind="citation">
                <p>
                   <t v="Having regard to Council Regulation (EEC) No 1696/71"/>
-                  <noteRef href="#note_1" marker="1"/>
+                  <footnoteRef href="#note_1" marker="1"/>
                   <t v=" of 26 July 1971 on the common organization of the market in hops, and in particular Article 10 (1) thereof;"/>
                </p>
             </occurrence>
@@ -425,7 +425,7 @@
                </num>
                <p>
                   <t v="The Commission shall take a decision in regard to requests for reimbursement in one or more payments in accordance with the procedure laid down in Article 7 (1) of Council Regulation (EEC) No 729/70"/>
-                  <noteRef href="#note_2" marker="1"/>
+                  <footnoteRef href="#note_2" marker="1"/>
                   <t v=" of 21 April 1970 on the financing of the common agricultural policy."/>
                </p>
             </occurrence>
@@ -455,13 +455,13 @@
          </p>
       </deleted>
    </conclusions>
-   <notes>
+   <footnotes>
       <deleted>
          <tag amendingAct="32005R1952"
               action="deleted"
               location="AR:18;PA:2"
               tagId="O002001M001000"/>
-         <note eId="note_1" marker="1" kind="footnote">
+         <footnote eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -472,8 +472,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_2" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_2" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -484,8 +484,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
+         </footnote>
       </deleted>
-   </notes>
+   </footnotes>
 </legalText>
 

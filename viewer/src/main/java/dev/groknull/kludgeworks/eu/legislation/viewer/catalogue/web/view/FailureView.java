@@ -280,10 +280,10 @@ public record FailureView(
           new FailureView(
               false,
               "This text uses something the viewer can't show yet",
-              "Part of text "
+              "Text "
                   + celex
-                  + " uses a structure the viewer doesn't handle yet. The other texts aren't"
-                  + " affected.",
+                  + " has a structure in it that the viewer doesn't handle yet. The other texts"
+                  + " aren't affected.",
               facts,
               null,
               actions,
@@ -313,8 +313,8 @@ public record FailureView(
 
   /**
    * The reference that a reader quotes in a report, for example {@code 32015R1998 · eng ·
-   * 4bf92f3577b34da6a3ce929d0e0e4736}. The last part is the trace id of the attempt that failed. It
-   * is not there if no trace was recorded.
+   * 4bf92f3577b34da6a3ce929d0e0e4736}. The last field is the trace id of the attempt that failed.
+   * It is not there if no trace was recorded.
    */
   private static String trace(Version version, Text.Failed failed, Language language) {
     var reference = version.celex() + " · " + language.code().toLowerCase(Locale.ROOT);

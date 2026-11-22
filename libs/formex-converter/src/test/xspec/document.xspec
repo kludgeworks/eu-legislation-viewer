@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- SPDX-License-Identifier: MIT -->
-<!-- The document: identity, source, lifecycle, long title, preamble, conclusions, notes -->
+<!-- The document: identity, source, lifecycle, long title, preamble, conclusions, footnotes -->
 <x:description xmlns:x="http://www.jenitennison.com/xslt/xspec"
     xmlns="https://kludgeworks.groknull.dev/ns/legal-text/1"
     stylesheet="../../main/resources/dev/groknull/kludgeworks/formex/converter/xslt/formex-to-legal-text.xsl">
@@ -187,11 +187,11 @@
       </ACT>
     </x:context>
     <x:expect label="are collected at the end, with the reference left in the text" test="
-        $x:result//*:body//*:noteRef/@href = '#note_1'
-        and $x:result/*:notes/*:note/@eId = 'note_1'
-        and $x:result/*:notes/*:note/@marker = '1'
-        and $x:result/*:notes/*:note/@kind = 'footnote'
-        and $x:result/*:notes/*:note/*:p/*:ref/@number = '72'"/>
+        $x:result//*:body//*:footnoteRef/@href = '#note_1'
+        and $x:result/*:footnotes/*:footnote/@eId = 'note_1'
+        and $x:result/*:footnotes/*:footnote/@marker = '1'
+        and $x:result/*:footnotes/*:footnote/@kind = 'footnote'
+        and $x:result/*:footnotes/*:footnote/*:p/*:ref/@number = '72'"/>
   </x:scenario>
 
   <x:scenario label="A long title whose number line has emphasis and a subtitle">
@@ -201,7 +201,7 @@
         <ENACTING.TERMS/></ACT>
     </x:context>
     <x:expect label="keeps the emphasis in the number line" test="$x:result/*:preface/*:longTitle/*:p[1]/*:docNumber/*:emphasis[@kind = 'i']/*:t/@v = 'of the European Parliament'"/>
-    <x:expect label="keeps a note on the date line" test="exists($x:result/*:preface/*:longTitle/*:p[2]/*:noteRef)"/>
+    <x:expect label="keeps a footnote on the date line" test="exists($x:result/*:preface/*:longTitle/*:p[2]/*:footnoteRef)"/>
     <x:expect label="keeps the subtitle" test="$x:result/*:preface/*:longTitle/*:p[3]/*:t/@v = 'on products excluded from the scope'"/>
   </x:scenario>
 

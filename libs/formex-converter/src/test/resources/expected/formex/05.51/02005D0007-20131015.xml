@@ -163,7 +163,7 @@
                   <t v="13 November 1984"/>
                </date>
                <t v=" determining the Community scale for grading pig carcases"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 5(2) thereof,"/>
             </p>
          </occurrence>
@@ -184,7 +184,7 @@
                   <t v="24 October 1985"/>
                </date>
                <t v=" laying down detailed rules for the application of the Community scale for grading pig carcases"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -247,7 +247,7 @@
          <occurrence eId="art_1/unp_1" kind="paragraph">
             <p>
                <t v="The use of the following methods is authorised for grading pig carcasses pursuant to point 1 of Section B.IV of Annex V to Council Regulation (EC) No 1234/2007"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" in Cyprus:"/>
             </p>
             <list kind="dash">
@@ -600,8 +600,8 @@
          </occurrence>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -620,8 +620,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -640,8 +640,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -652,7 +652,7 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

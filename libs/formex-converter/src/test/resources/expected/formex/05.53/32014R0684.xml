@@ -58,7 +58,7 @@
                   <t v="22 September 2003"/>
                </date>
                <t v=" on additives for use in animal nutrition"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
             </p>
          </occurrence>
@@ -110,7 +110,7 @@
                <date date="2012-12-12">
                   <t v="12 December 2012"/>
                </date>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" that, under the proposed conditions of use, the preparation of canthaxanthin does not have an adverse effect on animal health, human health or the environment, and that it has a potential to stabilise the reproductive performance of breeder hens. The Authority does not consider that there is a need for specific requirements of post-market monitoring. It also verified the report on the method of analysis of the feed additive in feed submitted by the Reference Laboratory set up by Regulation (EC) No 1831/2003."/>
             </p>
          </occurrence>
@@ -202,8 +202,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -214,16 +214,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <emphasis kind="i">
                <t v="EFSA Journal"/>
             </emphasis>
             <t v=" 2013; 11(1):3047."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -377,7 +377,7 @@
                         <emphasis kind="i">
                            <t v="Analytical method"/>
                         </emphasis>
-                        <noteRef href="#note_anx01002201-1" marker="1"/>
+                        <footnoteRef href="#note_anx01002201-1" marker="1"/>
                      </p>
                      <list kind="dash">
                         <occurrence eId="anx/tab_1/tr_3/td_4/list_2/idt_1" kind="indent">
@@ -461,13 +461,13 @@
                </tr>
             </rowGroup>
          </table>
-         <notes>
-            <note eId="note_anx01002201-1" marker="1" kind="table">
+         <footnotes>
+            <footnote eId="note_anx01002201-1" marker="1" kind="table">
                <p>
                   <t v="Details of the analytical methods are available at the following address of the European Union Reference Laboratory for Feed Additives: www.irmm.jrc.be/eurl-feed-additives"/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
    </annexes>
 </legalText>

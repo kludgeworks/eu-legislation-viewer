@@ -18,7 +18,8 @@ import java.util.Set;
 import org.jspecify.annotations.Nullable;
 
 /**
- * Finds how one text differs from another, as the Changes view shows it. It works in four steps:
+ * Finds how one text differs from another, as the Differences view shows it. It works in four
+ * stages:
  *
  * <ol>
  *   <li>{@link Occurrences} reads the occurrences of each text.
@@ -35,12 +36,12 @@ import org.jspecify.annotations.Nullable;
  * order, and each deleted occurrence after the occurrence that it stood after. Thus a deleted
  * occurrence comes before the occurrences inserted in its place.
  *
- * <p>The notes that an occurrence refers to are compared as part of it. A changed occurrence shows
- * its notes under it, with their edits, if they differ. An inserted or deleted occurrence shows its
- * notes, whole, as insertions or deletions. A note that only one text has, and each reference to
- * it, says so ({@link Edits#ONLY}).
+ * <p>The footnotes that an occurrence refers to are compared as part of it. A changed occurrence
+ * shows its footnotes under it, with their edits, if they differ. An inserted or deleted occurrence
+ * shows its footnotes, whole, as insertions or deletions. A footnote that only one text has, and
+ * each reference to it, says so ({@link Edits#ONLY}).
  *
- * <p>The own blocks of a changed occurrence are matched by what they say ({@link Parts}). {@link
+ * <p>The own blocks of a changed occurrence are matched by what they say ({@link Pieces}). {@link
  * Edits} shows the edits of a changed block word by word.
  *
  * <p>Each occurrence of the later text is placed once, as one of these:
@@ -143,7 +144,7 @@ public final class Differ {
    * @param earlier whether the occurrence is of only the earlier text: it is deleted
    * @param difference how the occurrence differs. Null if its own wording is the same in both
    *     texts.
-   * @param editing how its own blocks and notes differ. Null if the occurrence is not changed.
+   * @param editing how its own blocks and footnotes differ. Null if the occurrence is not changed.
    * @param occurrences the occurrences in it, compared, in the one order of the two texts. Empty
    *     for an inserted or deleted occurrence, which is one difference with its occurrences.
    * @param differs whether the occurrence differs, or an occurrence in it does
@@ -281,8 +282,8 @@ public final class Differ {
 
     /**
      * Returns the occurrence {@code is} of the later text, compared with the occurrence {@code was}
-     * of the earlier text that it pairs with. The occurrence is changed if its own blocks or notes
-     * differ.
+     * of the earlier text that it pairs with. The occurrence is changed if its own blocks or
+     * footnotes differ.
      */
     private Node paired(Occurrence was, Occurrence is) {
       var editing = Editing.of(was, is);
@@ -319,14 +320,14 @@ public final class Differ {
       var shown = edited.element();
       var inserted = edited.inserted();
       var deleted = edited.deleted();
-      var referred = occurrences.notesOf(occurrence.element());
+      var referred = occurrences.footnotesOf(occurrence.element());
       if (!referred.isEmpty()) {
-        var notes = Edits.all(notes(referred), edit);
+        var footnotes = Edits.all(footnotes(referred), edit);
         var children = new ArrayList<>(shown.children());
-        children.add(notes.element());
+        children.add(footnotes.element());
         shown = copy(shown, children);
-        inserted += notes.inserted();
-        deleted += notes.deleted();
+        inserted += footnotes.inserted();
+        deleted += footnotes.deleted();
       }
       return DifferenceBuilder.builder()
           .eId(occurrence.eId())
@@ -359,53 +360,55 @@ public final class Differ {
   }
 
   /**
-   * How the own blocks and notes of an occurrence differ from those of the occurrence that it was.
+   * How the own blocks and footnotes of an occurrence differ from those of the occurrence that it
+   * was.
    *
    * @param blocks its own blocks as they show: a changed block with its edits word by word, an
    *     inserted block whole as an insertion, and each deleted block whole as a deletion, where it
-   *     stood. It counts the edited words of the blocks and of the notes.
-   * @param notes its notes, with their edits against the notes that it had, with the deleted notes
-   *     where they stood. Null if the notes say the same.
+   *     stood. It counts the edited words of the blocks and of the footnotes.
+   * @param footnotes its footnotes, with their edits against the footnotes that it had, with the
+   *     deleted footnotes where they stood. Null if the footnotes say the same.
    */
-  private record Editing(Parts.Shown blocks, @Nullable Element notes) {
+  private record Editing(Pieces.Shown blocks, @Nullable Element footnotes) {
 
     /**
      * Returns how {@code to} differs from {@code from}. Returns null if the two occurrences say the
      * same.
      */
     static @Nullable Editing of(Occurrence from, Occurrence to) {
-      // What the two occurrences say is worked out from their own blocks and notes alone. Most
+      // What the two occurrences say is worked out from their own blocks and footnotes alone. Most
       // occurrences of
       // two versions have the same ones, which say the same without working it out.
-      if ((from.blocks().equals(to.blocks()) && from.notes().equals(to.notes()))
+      if ((from.blocks().equals(to.blocks()) && from.footnotes().equals(to.footnotes()))
           || numbered(from).equals(numbered(to))) {
         return null;
       }
-      var blocks = new Parts.Shown();
-      for (var each : Parts.differing(from.blocks(), to.blocks(), from.keys(), to.keys())) {
+      var blocks = new Pieces.Shown();
+      for (var each : Pieces.differing(from.blocks(), to.blocks(), from.keys(), to.keys())) {
         switch (each) {
-          case Parts.Changed(int at, Element was, Element is) ->
+          case Pieces.Changed(int at, Element was, Element is) ->
               blocks.replace(at, Edits.between(was, is));
-          case Parts.Inserted(int at, Element is) ->
+          case Pieces.Inserted(int at, Element is) ->
               blocks.replace(at, Edits.all(is, Edits.INSERTED));
-          case Parts.Deleted(int at, Element was) ->
+          case Pieces.Deleted(int at, Element was) ->
               blocks.delete(at, Edits.all(was, Edits.DELETED));
         }
       }
-      @Nullable Element notes = null;
-      if (!keys(from.notes()).equals(keys(to.notes()))) {
-        var edited = Edits.between(Differ.notes(from.notes()), Differ.notes(to.notes()));
-        notes = edited.element();
+      @Nullable Element footnotes = null;
+      if (!keys(from.footnotes()).equals(keys(to.footnotes()))) {
+        var edited =
+            Edits.between(Differ.footnotes(from.footnotes()), Differ.footnotes(to.footnotes()));
+        footnotes = edited.element();
         blocks.count(edited);
       }
-      return new Editing(blocks, notes);
+      return new Editing(blocks, footnotes);
     }
 
     /**
      * Returns what the own blocks of {@code occurrence} say, with its num without the full stop
-     * after it, and what the notes that they refer to say. An occurrence whose note an act changed
-     * differs. If a num only gained or lost its full stop, the Publications Office typeset it, and
-     * no act changed it. For example, "11.3" to "11.3.".
+     * after it, and what the footnotes that they refer to say. An occurrence whose footnote an act
+     * changed differs. If a num only gained or lost its full stop, the Publications Office typeset
+     * it, and no act changed it. For example, "11.3" to "11.3.".
      */
     private static List<String> numbered(Occurrence occurrence) {
       var wording = new ArrayList<String>();
@@ -413,13 +416,13 @@ public final class Differ {
         var said = Wording.key(block);
         wording.add(block.name().equals("num") ? said.replaceFirst("\\.$", "") : said);
       }
-      occurrence.notes().forEach(note -> wording.add("note:" + Wording.key(note)));
+      occurrence.footnotes().forEach(footnote -> wording.add("footnote:" + Wording.key(footnote)));
       return wording;
     }
 
-    /** Returns what each of {@code notes} says, as a comparison matches it. */
-    private static List<String> keys(List<Element> notes) {
-      return notes.stream().map(Wording::key).toList();
+    /** Returns what each of {@code footnotes} says, as a comparison matches it. */
+    private static List<String> keys(List<Element> footnotes) {
+      return footnotes.stream().map(Wording::key).toList();
     }
   }
 
@@ -440,7 +443,7 @@ public final class Differ {
    */
   private static final class Content {
     private final boolean withOccurrences;
-    private final Parts.Shown blocks;
+    private final Pieces.Shown blocks;
     private final int count;
     private final Map<String, Node> occurrences = new HashMap<>();
     private final Map<String, List<Node>> deletedBefore = new HashMap<>();
@@ -451,7 +454,7 @@ public final class Differ {
     private Content(Node node, boolean withOccurrences) {
       var editing = node.editing();
       this.withOccurrences = withOccurrences;
-      this.blocks = editing == null ? new Parts.Shown() : editing.blocks();
+      this.blocks = editing == null ? new Pieces.Shown() : editing.blocks();
       this.count = node.occurrence().blocks().size();
       place(node.occurrences());
     }
@@ -499,8 +502,8 @@ public final class Differ {
         children.addAll(listed(content.deletedAlone));
       }
       var editing = node.editing();
-      if (editing != null && editing.notes() != null) {
-        children.add(editing.notes());
+      if (editing != null && editing.footnotes() != null) {
+        children.add(editing.footnotes());
       }
       return Edits.referring(copy(element, children));
     }
@@ -516,8 +519,8 @@ public final class Differ {
           if (withOccurrences) {
             out.addAll(occurrence(eId, child));
           }
-        } else if (child.name().equals("tag") || child.name().equals("notes")) {
-          // The notes at the end of an annex are not its blocks. See Occurrences.
+        } else if (child.name().equals("tag") || child.name().equals("footnotes")) {
+          // The footnotes at the end of an annex are not its blocks. See Occurrences.
           out.add(child);
         } else if (Occurrences.holdsOccurrences(child)) {
           var inside = in(child);
@@ -669,8 +672,10 @@ public final class Differ {
     return new Element(element.name(), element.attributes(), children, element.text());
   }
 
-  /** Returns {@code notes} as the notes of an occurrence, under its blocks and occurrences. */
-  private static Element notes(List<Element> notes) {
-    return new Element("notes", Map.of(), notes, "");
+  /**
+   * Returns {@code footnotes} as the footnotes of an occurrence, under its blocks and occurrences.
+   */
+  private static Element footnotes(List<Element> footnotes) {
+    return new Element("footnotes", Map.of(), footnotes, "");
   }
 }

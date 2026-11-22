@@ -179,7 +179,7 @@
                         <t v="the EFTA States"/>
                      </quote>
                      <t v=") shall contribute to the reduction of economic and social disparities in the European Economic Area and to the strengthening of their relations with the Beneficiary States, through financial contributions within the thematic priorities listed in Article 3"/>
-                     <noteRef href="#note_inc000402-1" marker="1"/>
+                     <footnoteRef href="#note_inc000402-1" marker="1"/>
                      <t v="."/>
                   </p>
                </occurrence>
@@ -891,13 +891,13 @@
                </emphasis>
             </p>
          </occurrence>
-         <notes>
-            <note eId="note_inc000402-1" marker="1" kind="footnote">
+         <footnotes>
+            <footnote eId="note_inc000402-1" marker="1" kind="footnote">
                <p>
                   <t v="In this Protocol, references to articles are, unless otherwise specified, to be understood as references to articles in this Protocol."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
    </annexes>
 </legalText>

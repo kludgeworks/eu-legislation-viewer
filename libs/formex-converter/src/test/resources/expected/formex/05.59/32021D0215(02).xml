@@ -65,13 +65,13 @@
                <date date="2011-08-29">
                   <t v="29 August 2011"/>
                </date>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" the Commission set up the Payment Systems Market Expert Group. That Decision is to apply until "/>
                <date date="2020-12-31">
                   <t v="31 December 2020"/>
                </date>
                <t v=". The expert group aims to provide the Commission with a formal platform which allows for a structural exchange of views with market players on issues regarding the implementation and interpretation of the Directive (EU) 2015/2366 of the European Parliament and of the Council"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -85,7 +85,7 @@
                   <t v="24 September 2020"/>
                </date>
                <t v=", the Commission adopted a Communication to the European Parliament, the Council, the European Economic and Social Committee and the Committee of the Regions on a Retail Payments Strategy for the EU"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -171,8 +171,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Commission Decision of "/>
             <date date="2011-08-29">
@@ -188,8 +188,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Directive (EU) 2015/2366 of the European Parliament and of the Council of "/>
             <date date="2015-11-25">
@@ -205,12 +205,12 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="COM(2020) 592 final."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

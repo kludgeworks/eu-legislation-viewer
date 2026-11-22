@@ -4,7 +4,7 @@
 @param String content
 @param Outline outline
 @param TagsView tags
-@param DivergenceNotesView notes
+@param DivergenceNotesView divergenceNotes
 @param String provision
 @param java.util.List<String> provisions
 @param String self
@@ -20,9 +20,9 @@
      hollow sign, ▽, in the place of the tag.
      Where the text is not the law on the day, <divergence-notes> lists the divergence notes, and
      js/divergence-notes.js puts them on the text when it arrives. A prospective amendment, a change
-     that does not apply on the day, gets an amber bar and a short note with the act. A pending
-     amendment, a change that the text does not show, gets one grey note, "Not in this text", at its
-     place. Each act is a link to its page. The outline gets a dot on each part that has a note. --%>
+     that does not apply on the day, gets an amber bar and a short divergence note with the act. A pending
+     amendment, a change that the text does not show, gets one grey divergence note, "Not in this text", at its
+     place. Each act is a link to its page. The outline gets a dot on each entry that has a divergence note. --%>
 <div id="text" class="outlined">
   <act-outline>
   <nav class="outline" aria-label="Outline">
@@ -44,11 +44,11 @@
     @endfor
   </provision-links>
   <divergence-notes hidden>
-    @for(var note : notes.notes())
-      @if(note.pending())
-        <p class="pending-note" data-occurrence="${note.occurrence()}" data-end="${note.holds()}"><span class="pending-note-kind">Not in this text</span>@if(!note.words().isEmpty()): ${note.words()}@endif · <a href="${note.href()}">${note.act()}</a></p>
+    @for(var divergenceNote : divergenceNotes.divergenceNotes())
+      @if(divergenceNote.pending())
+        <p class="pending-note" data-occurrence="${divergenceNote.occurrence()}" data-end="${divergenceNote.holds()}"><span class="pending-note-kind">Not in this text</span>@if(!divergenceNote.words().isEmpty()): ${divergenceNote.words()}@endif · <a href="${divergenceNote.href()}">${divergenceNote.act()}</a></p>
       @else
-        <p class="prospective-note" data-occurrence="${note.occurrence()}" data-heading="${note.holds()}"><a href="${note.href()}">${note.act()}</a> · ${note.words()}</p>
+        <p class="prospective-note" data-occurrence="${divergenceNote.occurrence()}" data-heading="${divergenceNote.holds()}"><a href="${divergenceNote.href()}">${divergenceNote.act()}</a> · ${divergenceNote.words()}</p>
       @endif
     @endfor
   </divergence-notes>

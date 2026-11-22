@@ -56,21 +56,21 @@
          <occurrence eId="pbl_1/cit_3" kind="citation">
             <p>
                <t v="Having regard to the opinion of the European Economic and Social Committee"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=","/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_4" kind="citation">
             <p>
                <t v="Having regard to the opinion of the Committee of the Regions"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=","/>
             </p>
          </occurrence>
          <occurrence eId="pbl_1/cit_5" kind="citation">
             <p>
                <t v="Acting in accordance with the procedure laid down in Article 251 of the Treaty"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=","/>
             </p>
          </occurrence>
@@ -139,19 +139,19 @@
                   <t v="27 September 2001"/>
                </date>
                <t v=" on the promotion of electricity produced from renewable energy sources in the internal electricity market"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=" and Directive 2003/30/EC of the European Parliament and of the Council of "/>
                <date date="2003-05-08">
                   <t v="8 May 2003"/>
                </date>
                <t v=" on the promotion of the use of biofuels or other renewable fuels for transport"/>
-               <noteRef href="#note_5" marker="5"/>
+               <footnoteRef href="#note_5" marker="5"/>
                <t v=" established definitions for different types of energy from renewable sources. Directive 2003/54/EC of the European Parliament and of the Council of "/>
                <date date="2003-06-26">
                   <t v="26 June 2003"/>
                </date>
                <t v=" concerning common rules for the internal market in electricity"/>
-               <noteRef href="#note_6" marker="6"/>
+               <footnoteRef href="#note_6" marker="6"/>
                <t v=" established definitions for the electricity sector in general. In the interests of legal certainty and clarity it is appropriate to use the same or similar definitions in this Directive."/>
             </p>
          </occurrence>
@@ -193,7 +193,7 @@
                   <t v="13 October 1998"/>
                </date>
                <t v=" relating to the quality of petrol and diesel fuels"/>
-               <noteRef href="#note_7" marker="7"/>
+               <footnoteRef href="#note_7" marker="7"/>
                <t v=" being amended to allow for adequate levels of blending. The European Council of March 2008 repeated that it is essential to develop and fulfil effective sustainability criteria for biofuels and ensure the commercial availability of second-generation biofuels. The European Council of June 2008 referred again to the sustainability criteria and the development of second-generation biofuels, and underlined the need to assess the possible impacts of biofuel production on agricultural food products and to take action, if necessary, to address shortcomings. It also stated that further assessment should be made of the environmental and social consequences of the production and consumption of biofuels."/>
             </p>
          </occurrence>
@@ -207,7 +207,7 @@
                   <t v="25 September 2007"/>
                </date>
                <t v=" on the Road Map for Renewable Energy in Europe"/>
-               <noteRef href="#note_8" marker="8"/>
+               <footnoteRef href="#note_8" marker="8"/>
                <t v=", the European Parliament called on the Commission to present, by the end of 2007, a proposal for a legislative framework for energy from renewable sources, referring to the importance of setting targets for the shares of energy from renewable sources at Community and Member State level."/>
             </p>
          </occurrence>
@@ -269,19 +269,19 @@
                   <t v="16 December 2002"/>
                </date>
                <t v=" on the energy performance of buildings"/>
-               <noteRef href="#note_9" marker="9"/>
+               <footnoteRef href="#note_9" marker="9"/>
                <t v=", Directive 2005/32/EC of the European Parliament and of the Council of "/>
                <date date="2005-07-06">
                   <t v="6 July 2005"/>
                </date>
                <t v=" establishing a framework for the setting of ecodesign requirements for energy-using products"/>
-               <noteRef href="#note_10" marker="10"/>
+               <footnoteRef href="#note_10" marker="10"/>
                <t v=", and Directive 2006/32/EC of the European Parliament and of the Council of "/>
                <date date="2006-04-05">
                   <t v="5 April 2006"/>
                </date>
                <t v=" on energy end-use efficiency and energy services"/>
-               <noteRef href="#note_11" marker="11"/>
+               <footnoteRef href="#note_11" marker="11"/>
                <t v=", has a critical role to play in ensuring that the climate and energy objectives are being achieved at least cost, and can also provide new opportunities for the European Union’s economy. Energy efficiency and energy saving policies are some of the most effective methods by which Member States can increase the percentage share of energy from renewable sources, and Member States will thus more easily achieve the overall national and transport targets for energy from renewable sources laid down by this Directive."/>
             </p>
          </occurrence>
@@ -447,7 +447,7 @@
             </num>
             <p>
                <t v="It should be possible for imported electricity, produced from renewable energy sources outside the Community, to count towards Member States’ targets. However, to avoid a net increase in greenhouse gas emissions through the diversion of existing renewable sources and their complete or partial replacement by conventional energy sources, only electricity produced by renewable energy installations that become operational after the entry into force of this Directive or by the increased capacity of an installation that was refurbished after that date should be eligible to be counted. In order to guarantee an adequate effect of energy from renewable sources replacing conventional energy in the Community as well as in third countries it is appropriate to ensure that such imports can be tracked and accounted for in a reliable way. Agreements with third countries concerning the organisation of such trade in electricity from renewable energy sources will be considered. If, by virtue of a decision taken under the Energy Community Treaty"/>
-               <noteRef href="#note_12" marker="12"/>
+               <footnoteRef href="#note_12" marker="12"/>
                <t v=" to that effect, the contracting parties to that treaty become bound by the relevant provisions of this Directive, the measures of cooperation between Member States provided for in this Directive will be applicable to them."/>
             </p>
          </occurrence>
@@ -517,7 +517,7 @@
                   <t v="22 June 1998"/>
                </date>
                <t v=" laying down a procedure for the provision of information in the field of technical standards and regulations and rules on Information Society services"/>
-               <noteRef href="#note_13" marker="13"/>
+               <footnoteRef href="#note_13" marker="13"/>
                <t v=", relating for example to levels of quality, testing methods or conditions of use, should not create barriers for trade in renewable energy equipment and systems. Therefore, support schemes for energy from renewable sources should not prescribe national technical specifications which deviate from existing Community standards or require the supported equipment or systems to be certified or tested in a specified location or by a specified entity."/>
             </p>
          </occurrence>
@@ -563,7 +563,7 @@
                   <t v="7 September 2005"/>
                </date>
                <t v=" on the recognition of professional qualifications"/>
-               <noteRef href="#note_14" marker="14"/>
+               <footnoteRef href="#note_14" marker="14"/>
                <t v=". This Directive therefore applies without prejudice to Directive 2005/36/EC."/>
             </p>
          </occurrence>
@@ -609,7 +609,7 @@
                   <t v="11 February 2004"/>
                </date>
                <t v=" on the promotion of cogeneration based on a useful heat demand in the internal energy market"/>
-               <noteRef href="#note_15" marker="15"/>
+               <footnoteRef href="#note_15" marker="15"/>
                <t v=" provides for guarantees of origin for proving the origin of electricity produced from high-efficiency cogeneration plants. Such guarantees of origin cannot be used when disclosing the use of energy from renewable sources in accordance with Article 3(6) of Directive 2003/54/EC as this might result in double counting and double disclosure."/>
             </p>
          </occurrence>
@@ -899,7 +899,7 @@
                   <t v="28 January 2003"/>
                </date>
                <t v=" on public access to environmental information"/>
-               <noteRef href="#note_16" marker="16"/>
+               <footnoteRef href="#note_16" marker="16"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -913,7 +913,7 @@
                   <t v="28 June 1999"/>
                </date>
                <t v=" laying down the procedures for the exercise of implementing powers conferred on the Commission"/>
-               <noteRef href="#note_17" marker="17"/>
+               <footnoteRef href="#note_17" marker="17"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -963,7 +963,7 @@
             </num>
             <p>
                <t v="In accordance with point 34 of the Interinstitutional agreement on better law-making"/>
-               <noteRef href="#note_18" marker="18"/>
+               <footnoteRef href="#note_18" marker="18"/>
                <t v=", Member States are encouraged to draw up, for themselves and in the interest of the Community, their own tables illustrating, as far as possible, the correlation between this Directive and the transposition measures and to make them public,"/>
             </p>
          </occurrence>
@@ -1484,7 +1484,7 @@
                   <t v="22 October 2008"/>
                </date>
                <t v=" on energy statistics"/>
-               <noteRef href="#note_19" marker="19"/>
+               <footnoteRef href="#note_19" marker="19"/>
                <t v="."/>
             </p>
             <p>
@@ -2167,7 +2167,7 @@
                   <t v="9 November 2007"/>
                </date>
                <t v=" establishing the ecological criteria for the award of the Community eco-label to electrically driven, gas driven or gas absorption heat pumps"/>
-               <noteRef href="#note_20" marker="20"/>
+               <footnoteRef href="#note_20" marker="20"/>
                <t v="."/>
             </p>
             <p>
@@ -2574,7 +2574,7 @@
                   <t v="26 June 2003"/>
                </date>
                <t v=" concerning the common rules for the internal market in natural gas"/>
-               <noteRef href="#note_21" marker="21"/>
+               <footnoteRef href="#note_21" marker="21"/>
                <t v=", in particular regarding network connection rules that include gas quality, gas odoration and gas pressure requirements. Member States shall also require transmission and distribution system operators to publish the connection tariffs to connect renewable gas sources based on transparent and non-discriminatory criteria."/>
             </p>
          </occurrence>
@@ -2803,7 +2803,7 @@
                   <t v="19 January 2009"/>
                </date>
                <t v=" establishing common rules for direct support schemes for farmers under the common agricultural policy and establishing certain support schemes for farmers"/>
-               <noteRef href="#note_22" marker="22"/>
+               <footnoteRef href="#note_22" marker="22"/>
                <t v=" and in accordance with the minimum requirements for good agricultural and environmental condition defined pursuant to Article 6(1) of that Regulation."/>
             </p>
          </occurrence>
@@ -3113,7 +3113,7 @@
                   <t v="26 May 2003"/>
                </date>
                <t v=" on the establishment of a common classification of territorial units for statistics (NUTS)"/>
-               <noteRef href="#note_23" marker="23"/>
+               <footnoteRef href="#note_23" marker="23"/>
                <t v=" where the typical greenhouse gas emissions from cultivation of agricultural raw materials can be expected to be lower than or equal to the emissions reported under the heading "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Disaggregated default values for cultivation"/>
@@ -4097,8 +4097,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="Opinion of "/>
             <date date="2008-09-17">
@@ -4114,8 +4114,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -4126,8 +4126,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Opinion of the European Parliament of "/>
             <date date="2008-12-17">
@@ -4139,8 +4139,8 @@
             </date>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4151,8 +4151,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4163,8 +4163,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_6" marker="6" kind="footnote">
+      </footnote>
+      <footnote eId="note_6" marker="6" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4175,8 +4175,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_7" marker="7" kind="footnote">
+      </footnote>
+      <footnote eId="note_7" marker="7" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4187,8 +4187,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_8" marker="8" kind="footnote">
+      </footnote>
+      <footnote eId="note_8" marker="8" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -4199,16 +4199,16 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_9" marker="9" kind="footnote">
+      </footnote>
+      <footnote eId="note_9" marker="9" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="1" date="2003-01-04" page="65">
                <t v="OJ L 1, 4.1.2003, p. 65"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_10" marker="10" kind="footnote">
+      </footnote>
+      <footnote eId="note_10" marker="10" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4219,8 +4219,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_11" marker="11" kind="footnote">
+      </footnote>
+      <footnote eId="note_11" marker="11" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4231,8 +4231,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_12" marker="12" kind="footnote">
+      </footnote>
+      <footnote eId="note_12" marker="12" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4243,8 +4243,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_13" marker="13" kind="footnote">
+      </footnote>
+      <footnote eId="note_13" marker="13" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4255,8 +4255,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_14" marker="14" kind="footnote">
+      </footnote>
+      <footnote eId="note_14" marker="14" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4267,8 +4267,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_15" marker="15" kind="footnote">
+      </footnote>
+      <footnote eId="note_15" marker="15" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4279,8 +4279,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_16" marker="16" kind="footnote">
+      </footnote>
+      <footnote eId="note_16" marker="16" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4291,8 +4291,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_17" marker="17" kind="footnote">
+      </footnote>
+      <footnote eId="note_17" marker="17" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4303,8 +4303,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_18" marker="18" kind="footnote">
+      </footnote>
+      <footnote eId="note_18" marker="18" kind="footnote">
          <p>
             <ref kind="oj"
                  series="C"
@@ -4315,8 +4315,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_19" marker="19" kind="footnote">
+      </footnote>
+      <footnote eId="note_19" marker="19" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4327,8 +4327,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_20" marker="20" kind="footnote">
+      </footnote>
+      <footnote eId="note_20" marker="20" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4339,8 +4339,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_21" marker="21" kind="footnote">
+      </footnote>
+      <footnote eId="note_21" marker="21" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4351,8 +4351,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_22" marker="22" kind="footnote">
+      </footnote>
+      <footnote eId="note_22" marker="22" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4363,8 +4363,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_23" marker="23" kind="footnote">
+      </footnote>
+      <footnote eId="note_23" marker="23" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -4375,8 +4375,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx_I" kind="annex" eurlexAnchor="1" rank="1">
          <num>
@@ -4384,7 +4384,7 @@
          </num>
          <subheading>
             <t v="National overall targets for the share of energy from renewable sources in gross final consumption of energy in 2020"/>
-            <noteRef href="#note_anx01004601-1" marker="1"/>
+            <footnoteRef href="#note_anx01004601-1" marker="1"/>
          </subheading>
          <occurrence eId="anx_I/pnt_A"
                      kind="level"
@@ -4975,13 +4975,13 @@
                <t v=" = the share for that Member State in 2020 as indicated in the table in part A."/>
             </p>
          </occurrence>
-         <notes>
-            <note eId="note_anx01004601-1" marker="1" kind="footnote">
+         <footnotes>
+            <footnote eId="note_anx01004601-1" marker="1" kind="footnote">
                <p>
                   <t v="In order to be able to achieve the national objectives set out in this Annex, it is underlined that the State aid guidelines for environmental protection recognise the continued need for national mechanisms of support for the promotion of energy from renewable sources."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
       <occurrence eId="anx_II" kind="annex" eurlexAnchor="2" rank="1">
          <num>
@@ -6071,7 +6071,7 @@
                   <td>
                      <p>
                         <t v="waste vegetable or animal"/>
-                        <noteRef href="#note_anx01005201-1" marker="*"/>
+                        <footnoteRef href="#note_anx01005201-1" marker="*"/>
                         <t v=" oil biodiesel"/>
                      </p>
                   </td>
@@ -6857,7 +6857,7 @@
                      <t v="B"/>
                   </emphasis>
                </emphasis>
-               <noteRef href="#note_anx01005201-3" marker="2"/>
+               <footnoteRef href="#note_anx01005201-3" marker="2"/>
                <t v=","/>
             </p>
             <p>
@@ -7487,7 +7487,7 @@
                   <td>
                      <p>
                         <t v="waste vegetable or animal"/>
-                        <noteRef href="#note_anx01005201-4" marker="*"/>
+                        <footnoteRef href="#note_anx01005201-4" marker="*"/>
                         <t v=" oil biodiesel"/>
                      </p>
                   </td>
@@ -9644,19 +9644,19 @@
                </tr>
             </table>
          </occurrence>
-         <notes>
-            <note eId="note_anx01005201-1" marker="*" kind="table">
+         <footnotes>
+            <footnote eId="note_anx01005201-1" marker="*" kind="table">
                <p>
                   <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002 of the European Parliament and of the Council of "/>
                   <date date="2002-10-03">
                      <t v="3 October 2002"/>
                   </date>
                   <t v=" laying down health rules on animal by-products not intended for human consumption"/>
-                  <noteRef href="#note_anx01005201-2" marker="1"/>
+                  <footnoteRef href="#note_anx01005201-2" marker="1"/>
                   <t v="."/>
                </p>
-            </note>
-            <note eId="note_anx01005201-2" marker="1" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01005201-2" marker="1" kind="footnote">
                <p>
                   <ref kind="oj"
                        series="L"
@@ -9667,8 +9667,8 @@
                   </ref>
                   <t v="."/>
                </p>
-            </note>
-            <note eId="note_anx01005201-3" marker="2" kind="footnote">
+            </footnote>
+            <footnote eId="note_anx01005201-3" marker="2" kind="footnote">
                <p>
                   <t v="The quotient obtained by dividing the molecular weight of CO"/>
                   <emphasis kind="sub">
@@ -9676,13 +9676,13 @@
                   </emphasis>
                   <t v=" (44,010 g/mol) by the molecular weight of carbon (12,011 g/mol) is equal to 3,664."/>
                </p>
-            </note>
-            <note eId="note_anx01005201-4" marker="*" kind="table">
+            </footnote>
+            <footnote eId="note_anx01005201-4" marker="*" kind="table">
                <p>
                   <t v="Not including animal oil produced from animal by-products classified as category 3 material in accordance with Regulation (EC) No 1774/2002."/>
                </p>
-            </note>
-         </notes>
+            </footnote>
+         </footnotes>
       </occurrence>
       <occurrence eId="anx_VI" kind="annex" eurlexAnchor="6" rank="1">
          <num>

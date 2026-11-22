@@ -15,8 +15,8 @@ import org.springframework.context.annotation.Import;
 import org.springframework.test.web.servlet.assertj.MockMvcTester;
 
 /**
- * Tests the page that documents the API, which puts together the parts that the modules give: the
- * catalogue's and the comparison's resources and problem types.
+ * Tests the page that documents the API, which puts together the sections that the modules give:
+ * the catalogue's and the comparison's resources and problem types.
  */
 @WebMvcTest(ApiDocsController.class)
 @Import({ControllerTesting.class, ApiDocs.class})

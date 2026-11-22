@@ -87,17 +87,17 @@ final class States {
    * "Applies: 1 · Does not apply yet: 2". Returns an empty text where they are in one state.
    */
   static String counts(Standing standing, boolean past) {
-    var parts = new ArrayList<String>();
+    var lines = new ArrayList<String>();
     if (standing.applies() > 0) {
-      parts.add((past ? "Applied: " : "Applies: ") + standing.applies());
+      lines.add((past ? "Applied: " : "Applies: ") + standing.applies());
     }
     if (standing.notApplying() > 0) {
-      parts.add((past ? "Did not apply yet: " : "Does not apply yet: ") + standing.notApplying());
+      lines.add((past ? "Did not apply yet: " : "Does not apply yet: ") + standing.notApplying());
     }
     if (standing.notKnown() > 0) {
-      parts.add("State not known: " + standing.notKnown());
+      lines.add("State not known: " + standing.notKnown());
     }
-    return parts.size() < 2 ? "" : String.join(" · ", parts);
+    return lines.size() < 2 ? "" : String.join(" · ", lines);
   }
 
   /**
@@ -178,7 +178,7 @@ final class States {
    * 2022/1190." Returns null for a change that applies, where the data gives no day for it, and
    * where {@link #unknown} has no words.
    */
-  static @Nullable String note(
+  static @Nullable String statement(
       Act act, ActIdentifier amending, Set<LocalDate> placeDays, LocalDate day, boolean past) {
     var from = act.changeAppliesFrom(amending, placeDays);
     return switch (act.stateOn(amending, placeDays, day)) {

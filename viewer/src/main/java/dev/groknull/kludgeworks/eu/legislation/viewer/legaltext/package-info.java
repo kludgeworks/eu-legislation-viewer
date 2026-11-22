@@ -6,7 +6,7 @@
  *   <li>{@link LegalRenderer} renders a legal text, an element at a time, with the templates in
  *       {@code src/main/jte/legal}. The comparison's pages use it.
  *   <li>{@link JournalHeader} is the header of the Official Journal over a text, which {@code
- *       src/main/jte/legalpart} shows.
+ *       src/main/jte/legalshared} shows.
  *   <li>{@link LegalTextController} serves a stored text, or some of its occurrences, as an htmx
  *       fragment at {@code /content/{id}}, which pages transclude. Browsers ask again each time,
  *       and get 304 while the release and the text are the same.

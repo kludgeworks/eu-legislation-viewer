@@ -37,7 +37,7 @@
             </heading>
             <p>
                <t v="The Kingdom of Norway undertakes to contribute to the reduction of economic and social disparities in the European Economic Area and to the strengthening of its relations with the Beneficiary States, through a separate Norwegian Financial Mechanism within the thematic priorities listed in Article 3"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -709,13 +709,13 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="In this Agreement, references to articles are, unless otherwise specified, to be understood as references to articles in this Agreement."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>

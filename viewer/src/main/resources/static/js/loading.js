@@ -27,7 +27,7 @@
  */
 
 /**
- * Returns the view that a request from `source` opens: "read", "changes", "whole" or "synopsis".
+ * Returns the view that a request from `source` opens: "read", "differences", "whole" or "synopsis".
  *
  * @param {Element} source the link or form that started the request
  * @returns {string}

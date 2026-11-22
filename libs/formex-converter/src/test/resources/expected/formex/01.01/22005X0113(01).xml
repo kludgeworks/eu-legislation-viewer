@@ -20,7 +20,7 @@
    <body>
       <p>
          <t v="The Agreement between the European Community and Canada on trade in wines and spirit drinks"/>
-         <noteRef href="#note_1" marker="1"/>
+         <footnoteRef href="#note_1" marker="1"/>
          <t v=", entered into force on "/>
          <date date="2004-06-01">
             <t v="1 June 2004"/>
@@ -32,15 +32,15 @@
          <t v="."/>
       </p>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="35" date="2004-02-06" page="3">
                <t v="OJ L 35 of 6.2.2004, p. 3"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -2,12 +2,12 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://eu-law.groknull.dev/api/schemas/v1/occurrence.schema.json",
   "title": "An occurrence of a text",
-  "description": "An occurrence of the text of a version, with the notes that it refers to, in version 1 of the API. A later minor change can add members, so a client ignores the members it does not know.",
+  "description": "An occurrence of the text of a version, with the footnotes that it refers to, in version 1 of the API. A later minor change can add members, so a client ignores the members it does not know.",
   "type": "object",
   "properties": {
     "_links": { "$ref": "text.schema.json#/$defs/links" },
     "occurrence": { "$ref": "text.schema.json#/$defs/occurrence" },
-    "notes": { "$ref": "text.schema.json#/$defs/notes", "description": "The notes that the occurrence refers to, in the order of the text. Absent if there are none." }
+    "footnotes": { "$ref": "text.schema.json#/$defs/footnotes", "description": "The footnotes that the occurrence refers to, in the order of the text. Absent if there are none." }
   },
   "required": ["_links", "occurrence"]
 }

@@ -320,9 +320,9 @@
                      </num>
                      <p>
                         <t v="the net quantity expressed in the following units of mass: kilograms or grams. Until the end of the transitional period during which use of the imperial units of measurement contained in Chapter D of the Annex to Council Directive 71/354/EEC of 18 October 1971 on the approximation of the laws of the Member States relating to units of measurement"/>
-                        <noteRef href="#note_1" marker="1"/>
+                        <footnoteRef href="#note_1" marker="1"/>
                         <t v=" , as last amended by Directive 76/770/EEC"/>
-                        <noteRef href="#note_2" marker="1"/>
+                        <footnoteRef href="#note_2" marker="1"/>
                         <t v=" , is authorized in the Community, Ireland and the United Kingdom may permit the quantity to be expressed only in imperial units of measurement calculated on the basis of the following conversion rates:"/>
                      </p>
                      <table cols="2">
@@ -564,7 +564,7 @@
                </num>
                <p>
                   <t v="The Commission shall be assisted by the Standing Committee on the Food Chain and Animal Health set up by Article 58 of Regulation (EC) No 178/2002"/>
-                  <noteRef href="#note_3" marker="1"/>
+                  <footnoteRef href="#note_3" marker="1"/>
                   <t v="."/>
                </p>
             </occurrence>
@@ -575,7 +575,7 @@
                <occurrence eId="art_10/par_2/sub_1" kind="subparagraph">
                   <p>
                      <t v="Where reference is made to this Article, Articles 5 and 7 of Decision 1999/468/EC"/>
-                     <noteRef href="#note_4" marker="1"/>
+                     <footnoteRef href="#note_4" marker="1"/>
                      <t v=" shall apply."/>
                   </p>
                </occurrence>
@@ -613,7 +613,7 @@
                <occurrence eId="art_12/idt_1" kind="indent">
                   <p>
                      <t v="permit trade in products complying with this Directive not later than two years after its notification"/>
-                     <noteRef href="#note_5" marker="1"/>
+                     <footnoteRef href="#note_5" marker="1"/>
                      <t v=","/>
                   </p>
                </occurrence>
@@ -1249,7 +1249,7 @@
                            <t v="16 December 2008"/>
                         </date>
                         <t v=" on food enzymes"/>
-                        <noteRef href="#note_6" marker="1"/>
+                        <footnoteRef href="#note_6" marker="1"/>
                         <t v=";"/>
                      </p>
                   </occurrence>
@@ -1670,13 +1670,13 @@
          </occurrence>
       </deleted>
    </annexes>
-   <notes>
+   <footnotes>
       <deleted>
          <tag amendingAct="32015L2203"
               action="deleted"
               location="AR:8;AL:1"
               tagId="O004001M001000"/>
-         <note eId="note_1" marker="1" kind="footnote">
+         <footnote eId="note_1" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -1687,8 +1687,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_2" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_2" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -1699,16 +1699,16 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_3" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_3" marker="1" kind="footnote">
             <p>
                <ref kind="oj" series="L" number="31" date="2002-02-01" page="1">
                   <t v="OJ L 31, 1.2.2002, p. 1"/>
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_4" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_4" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -1719,13 +1719,13 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
-         <note eId="note_5" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_5" marker="1" kind="footnote">
             <p>
                <t v="This Directive was notified to the Member States on 2 August 1983."/>
             </p>
-         </note>
-         <note eId="note_6" marker="1" kind="footnote">
+         </footnote>
+         <footnote eId="note_6" marker="1" kind="footnote">
             <p>
                <ref kind="oj"
                     series="L"
@@ -1736,8 +1736,8 @@
                </ref>
                <t v="."/>
             </p>
-         </note>
+         </footnote>
       </deleted>
-   </notes>
+   </footnotes>
 </legalText>
 

@@ -55,7 +55,7 @@
                   <t v="21 June 2005"/>
                </date>
                <t v=" on the financing of the common agricultural policy"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 42 thereof,"/>
             </p>
          </occurrence>
@@ -72,7 +72,7 @@
             </num>
             <p>
                <t v="Pursuant to Article 9(1)(a)(iii) of Regulation (EC) No 1290/2005, Member States are obliged to recover sums lost as a result of irregularities and negligence. However, Article 32(6) and Article 33(7) of the same Regulation allow Member States not to pursue recovery if the costs already and likely to be incurred total more that the amount to be recovered. In order to ensure an effective and proper application of these provisions, it is appropriate to lay down a certain threshold below which Member States are not required to pursue recovery. This threshold should be set at EUR 100, not including interests, since the recovery cases involving amounts below this threshold represent significantly less than 0,1 % of the total amount of undue payments reported to the Commission by the Member States pursuant to Article 6(h) of Commission Regulation (EC) No 885/2006"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=". The setting of this threshold should not prevent Member States from applying the provisions referred to above to cases exceeding EUR 100, if properly justified."/>
             </p>
          </occurrence>
@@ -90,7 +90,7 @@
                   <t v="29 September 2003"/>
                </date>
                <t v=" establishing common rules for direct support schemes under the common agricultural policy and establishing certain support schemes for farmers"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" because Article 6(3) of that Regulation provides for a specific regime for the non-application of reductions and exclusions amounting to EUR 100 or less."/>
             </p>
          </occurrence>
@@ -151,7 +151,7 @@
                   </heading>
                   <p>
                      <t v="Without prejudice to the first subparagraph of Article 6(3) of Council Regulation (EC) No 1782/2003"/>
-                     <noteRef href="#note_4" marker="*"/>
+                     <footnoteRef href="#note_4" marker="*"/>
                      <t v=", the conditions of Articles 32(6)(a) and 33(7) of Regulation (EC) No 1290/2005 are considered to be fulfilled if the amount to be recovered from the beneficiary in relation to an individual payment for an aid scheme, not including interests, does not exceed EUR 100."/>
                   </p>
                </occurrence>
@@ -214,8 +214,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -226,8 +226,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -238,8 +238,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -250,8 +250,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_4" marker="*" kind="quotation">
+      </footnote>
+      <footnote eId="note_4" marker="*" kind="quotation">
          <p>
             <ref kind="oj"
                  series="L"
@@ -263,7 +263,7 @@
             <t v="."/>
             <t v="’"/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

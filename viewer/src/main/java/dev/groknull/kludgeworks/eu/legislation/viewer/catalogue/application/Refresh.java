@@ -33,7 +33,7 @@ import org.jspecify.annotations.Nullable;
  *       stored as Cellar has it.
  *   <li>{@link VersionWithdrawn}: a stored version that two reads at least {@code withdrawnAfter}
  *       apart do not have. Cellar deletes a work and ingests it again with the same identity, so
- *       one read is not enough. The first read that misses it notes the time in {@code missing},
+ *       one read is not enough. The first read that misses it records the time in {@code missing},
  *       and asks for a second read at {@link #recheckAt}. A version that comes back is no longer
  *       missing.
  *   <li>{@link AmendmentsChanged}: the act's amendments, or the dates of the acts that amend it,

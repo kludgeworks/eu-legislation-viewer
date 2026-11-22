@@ -20,13 +20,13 @@ class LegalTextRulesTest {
   static final LegalTextRules RULES = new LegalTextRules(SAXON);
 
   @Test
-  void acceptsUniqueEIdsAndResolvedNoteReferences() throws SaxonApiException {
+  void acceptsUniqueEIdsAndResolvedFootnoteReferences() throws SaxonApiException {
     var text =
         legalText(
             """
-            <body><occurrence eId="art_1" kind="article"><p><t v="a"/><noteRef href="#note_1" marker="1"/></p></occurrence>
+            <body><occurrence eId="art_1" kind="article"><p><t v="a"/><footnoteRef href="#note_1" marker="1"/></p></occurrence>
                   <occurrence eId="art_2" kind="article"/></body>
-            <notes><note eId="note_1" marker="1" kind="footnote"/></notes>\
+            <footnotes><footnote eId="note_1" marker="1" kind="footnote"/></footnotes>\
             """);
     assertThat(RULES.violations(text)).isEmpty();
   }
@@ -79,11 +79,11 @@ class LegalTextRulesTest {
   }
 
   @Test
-  void rejectsANoteReferenceToNoNote() throws SaxonApiException {
-    var text = legalText("<body><p><noteRef href=\"#note_9\" marker=\"9\"/></p></body>");
+  void rejectsAFootnoteReferenceToNoFootnote() throws SaxonApiException {
+    var text = legalText("<body><p><footnoteRef href=\"#note_9\" marker=\"9\"/></p></body>");
     assertThat(RULES.violations(text))
         .extracting(Schematron.Finding::id)
-        .containsExactly("note-exists");
+        .containsExactly("footnote-exists");
   }
 
   @Test
@@ -143,8 +143,9 @@ class LegalTextRulesTest {
             + " kind=\"article\"><old/></occurrence></body>",
         "deletion-in-deleted | <body><p><tag amendingAct=\"32026R0449\" action=\"deleted\""
             + " tag=\"O1\"/><t v=\"x\"/></p></body>",
-        "note-marker | <body><p><noteRef href=\"#note_1\" marker=\"2\"/></p></body><notes><note"
-            + " eId=\"note_1\" marker=\"1\" kind=\"footnote\"/></notes>"
+        "footnote-marker | <body><p><footnoteRef href=\"#note_1\""
+            + " marker=\"2\"/></p></body><footnotes><footnote eId=\"note_1\" marker=\"1\""
+            + " kind=\"footnote\"/></footnotes>"
       })
   void rejectsWhatItsKindDoesNotHold(String rule, String content) throws SaxonApiException {
     assertThat(RULES.violations(legalText(content)))

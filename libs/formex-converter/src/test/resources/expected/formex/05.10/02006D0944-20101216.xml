@@ -113,7 +113,7 @@
                   <t v="25 April 2002"/>
                </date>
                <t v=" concerning the approval, on behalf of the European Community, of the Kyoto Protocol to the United Nations Framework Convention on Climate Change and the joint fulfilment of commitments thereunder"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 3 thereof,"/>
             </p>
          </occurrence>
@@ -160,7 +160,7 @@
                   <t v="10 February 2005"/>
                </date>
                <t v=" laying down rules implementing Decision 280/2004/EC of the European Parliament and of the Council concerning a mechanism for monitoring Community greenhouse gas emissions and for implementing the Kyoto Protocol"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=", multiplied by the quantified emission limitation or reduction commitments set out in Annex II to Decision 2002/358/EC and Annex B to the Kyoto Protocol, multiplied by five, to represent the five years of the Protocol's first commitment period.&#xA;"/>
             </p>
          </occurrence>
@@ -296,7 +296,7 @@
                   <td>
                      <p>
                         <t v="European Union"/>
-                        <noteRef href="#note_3" marker="*"/>
+                        <footnoteRef href="#note_3" marker="*"/>
                      </p>
                   </td>
                   <td>
@@ -635,8 +635,8 @@
          </tableGroup>
       </occurrence>
    </annexes>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -647,8 +647,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -659,12 +659,12 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_3" marker="*" kind="table">
+      </footnote>
+      <footnote eId="note_3" marker="*" kind="table">
          <p>
             <t v="For the purpose of the joint fulfilment of the commitments pursuant to Article 3(1) of the Kyoto Protocol in accordance with the provisions of Article 4 thereof, pursuant to Decision 2002/358/EC and applying to the Member States listed in Annex II to that Decision."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -56,7 +56,7 @@
                   <t v="5 April 2011"/>
                </date>
                <t v=" on freedom of movement for workers within the Union"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 23 and 24 thereof,"/>
             </p>
          </occurrence>
@@ -81,12 +81,12 @@
                <date date="2012-10-04">
                   <t v="4 October 2012"/>
                </date>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" and "/>
                <date date="2012-11-20">
                   <t v="20 November 2012"/>
                </date>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", the Council appointed the members and alternate members of the Advisory Committee on Freedom of Movement for Workers (the "/>
                <quote startQuote="‘" endQuote="’">
                   <t v="Committee"/>
@@ -1734,8 +1734,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -1746,8 +1746,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="Council Decision of "/>
             <date date="2012-10-04">
@@ -1763,8 +1763,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Council Decision of "/>
             <date date="2012-11-20">
@@ -1780,7 +1780,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

@@ -157,9 +157,9 @@ final class CellarDates {
    * {@code /PART}. For any other type, it returns none.
    */
   static Optional<ActDate> date(String value, String type, String comment) {
-    var parts = type.split("/", 2);
+    var split = type.split("/", 2);
     var kind =
-        switch (parts[0]) {
+        switch (split[0]) {
           case "EV" -> Kind.ENTRY_INTO_FORCE;
           case "MA" -> Kind.APPLICATION;
           case "PE" -> Kind.TAKING_EFFECT;
@@ -170,7 +170,7 @@ final class CellarDates {
     }
     var text = CODE.matcher(comment).replaceAll("$1").strip();
     var partial =
-        parts.length > 1 || text.startsWith(parts[0] + "/PART") || text.startsWith("/PART");
+        split.length > 1 || text.startsWith(split[0] + "/PART") || text.startsWith("/PART");
     return Optional.of(new ActDate(day(value), kind, partial, clause(text)));
   }
 

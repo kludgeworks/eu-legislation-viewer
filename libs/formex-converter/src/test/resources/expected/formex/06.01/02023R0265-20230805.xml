@@ -2910,7 +2910,7 @@
                   <td>
                      <p>
                         <t v="Akgün Seramik Sanayi ve Ticaret A.Ș."/>
-                        <noteRef href="#note_1" marker="1"/>
+                        <footnoteRef href="#note_1" marker="1"/>
                      </p>
                      <p>
                         <t v="Akgün Toprak Sanayi İnșaat ve Ticaret A.Ș."/>
@@ -3163,13 +3163,13 @@
                      </p>
                   </td>
                </tr>
-               <notes>
-                  <note eId="note_1" marker="1" kind="table">
+               <footnotes>
+                  <footnote eId="note_1" marker="1" kind="table">
                      <p>
                         <t v="A.Ș. stands for Anonim Șirketi"/>
                      </p>
-                  </note>
-               </notes>
+                  </footnote>
+               </footnotes>
             </table>
          </occurrence>
       </occurrence>

@@ -23,7 +23,7 @@
      texts appeared after the act was prepared and are being prepared now, a notice says so
      (arriving). --%>
 @template.layout.page(frame = frame, title = title, content = @`
-  <div id="page" class="${arrived ? "arrived" : null}" data-view="${view != null ? view : "changes"}" hx-boost:inherited="target:#page select:#page swap:outerHTML">
+  <div id="page" class="${arrived ? "arrived" : null}" data-view="${view != null ? view : "differences"}" hx-boost:inherited="target:#page select:#page swap:outerHTML">
     @template.catalogue.skeletons()
     @template.catalogue.masthead(masthead = masthead)
     @if(arriving != null)

@@ -55,7 +55,7 @@
                   <t v="29 September 2003"/>
                </date>
                <t v=" on the common organisation of the market in cereals"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 6 thereof,"/>
             </p>
          </occurrence>
@@ -72,7 +72,7 @@
             </num>
             <p>
                <t v="Regulation (EC) No 1185/2004"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" has opened a standing invitation to tender for the export of rye held by the German intervention agency."/>
             </p>
          </occurrence>
@@ -201,8 +201,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -213,8 +213,8 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -233,7 +233,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

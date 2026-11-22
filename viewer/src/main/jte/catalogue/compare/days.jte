@@ -10,6 +10,6 @@
   @template.catalogue.day(day = compare.picker())
   <p><b>${compare.days()}</b>@if(compare.said() != null) ${compare.said()}@for(var each : compare.acts()) <a href="${each.href()}">${each.act()}</a>${each.after()}@endfor@endif</p>
   @if(compare.whole() != null)
-    <p><a href="${compare.whole()}" data-view="changes">Compare the whole act on these two days</a></p>
+    <p><a href="${compare.whole()}" data-view="differences">Compare the whole act on these two days</a></p>
   @endif
 </section>

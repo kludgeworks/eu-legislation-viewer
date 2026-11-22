@@ -23,17 +23,17 @@
     },
     "before": { "type": "string", "description": "The plain text of the occurrence before the change." },
     "after": { "type": "string", "description": "The plain text of the occurrence after the change." },
-    "changes": {
+    "runs": {
       "description": "The runs of words, in order. The text before is the runs that are not insert. The text after is the runs that are not delete. A line feed ends each paragraph, and each number and heading of an occurrence in the occurrence, except the last.",
       "type": "array",
-      "items": { "$ref": "#/$defs/change" }
+      "items": { "$ref": "#/$defs/run" }
     },
     "shown": {
       "$ref": "text.schema.json#/$defs/occurrence",
       "description": "The occurrence, with its edits. In its HTML, inserted words are in ins and deleted words are in del. Its plain text is the text after the change."
     }
   },
-  "required": ["_links", "eId", "kind", "occurrenceKind", "num", "inserted", "deleted", "tags", "earlierTags", "amendments", "before", "after", "changes", "shown"],
+  "required": ["_links", "eId", "kind", "occurrenceKind", "num", "inserted", "deleted", "tags", "earlierTags", "amendments", "before", "after", "runs", "shown"],
   "$defs": {
     "tags": {
       "type": "array",
@@ -61,7 +61,7 @@
       },
       "required": ["act", "cited", "location", "role", "from"]
     },
-    "change": {
+    "run": {
       "description": "A run of words, and what the comparison found of it.",
       "type": "object",
       "properties": {

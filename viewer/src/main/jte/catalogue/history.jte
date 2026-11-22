@@ -24,7 +24,7 @@
       @if(history.between() != null)
         <div class="status between">
           <p><b>${history.between().days()}</b> ${history.between().said()}</p>
-          @if(history.compare() != null)<a class="button" href="${history.compare()}" data-view="changes">Compare the wording on these two days</a>@endif
+          @if(history.compare() != null)<a class="button" href="${history.compare()}" data-view="differences">Compare the wording on these two days</a>@endif
         </div>
       @else
         <p class="status"><b>On ${history.day()}.</b> ${history.state()} <a href="${history.read()}" data-view="read">Read the law on this day</a></p>

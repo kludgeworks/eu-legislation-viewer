@@ -56,7 +56,7 @@
                   <t v="7 July 1997"/>
                </date>
                <t v=" on the strengthening of the surveillance of budgetary positions and the surveillance and coordination of economic policies"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Article 9(2) thereof,"/>
             </p>
          </occurrence>
@@ -378,8 +378,8 @@
          </tr>
       </table>
    </body>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -393,7 +393,7 @@
          <p>
             <t v="http://europa.eu.int/comm/economy_finance/about/activities/sgp/main_en.htm"/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

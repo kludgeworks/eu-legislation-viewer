@@ -40,7 +40,7 @@ public interface Content {
   Optional<PublicText> publicText(TextId text);
 
   /**
-   * Returns the occurrence {@code eId} of the text in the public model, with the notes that it
+   * Returns the occurrence {@code eId} of the text in the public model, with the footnotes that it
    * refers to. Returns none if no such text is stored, or if the text has no occurrence {@code eId}
    * outside the struck text of a consolidation.
    */

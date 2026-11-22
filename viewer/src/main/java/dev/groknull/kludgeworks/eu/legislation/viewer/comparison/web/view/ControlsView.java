@@ -34,18 +34,19 @@ public final class ControlsView {
   }
 
   /**
-   * Returns the legend of the comparison {@code changes}, whose differences have {@code sidenotes}
-   * by number. The legend names only what the edits of the page show: inserted and deleted words,
-   * and the words of a correction. If one act made every difference, the summary names it.
+   * Returns the legend of the comparison {@code differences}, whose differences have {@code
+   * sidenotes} by number. The legend names only what the edits of the page show: inserted and
+   * deleted words, and the words of a correction. If one act made every difference, the summary
+   * names it.
    */
-  public static Legend legend(ChangesView changes, Map<Integer, SidenoteView> sidenotes) {
+  public static Legend legend(DifferencesView differences, Map<Integer, SidenoteView> sidenotes) {
     var inserted = false;
     var deleted = false;
     var corrected = false;
     var acts = new LinkedHashSet<ActIdentifier>();
     var known = true;
-    for (var passage : changes.passages()) {
-      if (passage instanceof ChangesView.Shown shown) {
+    for (var passage : differences.passages()) {
+      if (passage instanceof DifferencesView.Shown shown) {
         var sidenote = sidenotes.get(shown.number());
         var difference = shown.difference();
         if (sidenote != null && sidenote.corrected()) {

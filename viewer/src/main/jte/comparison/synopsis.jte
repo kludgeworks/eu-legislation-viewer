@@ -1,5 +1,5 @@
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteParts
-@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ChangesView
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenotePieces
+@import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.OutlineView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView
 @import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.SidenoteView
@@ -8,10 +8,10 @@
 @import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element
 @import java.util.List
 @import java.util.Map
-@param ChangesView changes
+@param DifferencesView differences
 @param OutlineView outline
 @param Map<Integer, SidenoteView> sidenotes
-@param SidenoteParts parts
+@param SidenotePieces pieces
 @param Map<String, Element> neighbours
 @param Map<String, SidenoteView.History> histories
 @param LegalRenderer html
@@ -35,22 +35,22 @@
      and load from the difference's own address (page) when the reader opens them. An annex
      inserted whole is a fold that loads from there too (annexfold.jte).
      The later text's outline is beside the view, with a count of differences for each occurrence. --%>
-!{var total = changes.numbers().size();}
+!{var total = differences.numbers().size();}
 <div class="outlined">
 <act-outline>
 <nav class="outline counted" aria-label="Outline">
-  @template.comparison.outlinehead(total = changes.numbers().size())
-  @template.comparison.outlinerail(outline = outline, total = changes.numbers().size())
+  @template.comparison.outlinehead(total = differences.numbers().size())
+  @template.comparison.outlinerail(outline = outline, total = differences.numbers().size())
   @template.comparison.outline(entries = outline.entries())
 </nav>
 </act-outline>
-<div class="changes synopsis">
-  @template.comparison.sidenoteparts(parts = parts)
-  @template.comparison.controls(changes = changes, views = views, legend = ControlsView.legend(changes, sidenotes))
+<div class="differences synopsis">
+  @template.comparison.sidenotepieces(pieces = pieces)
+  @template.comparison.controls(differences = differences, views = views, legend = ControlsView.legend(differences, sidenotes))
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two texts, aligned by provision">
     <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="day">the law on ${from}</span></div><div role="columnheader">To<span class="day">the law on ${to}</span></div><div role="columnheader">What changed it</div></div>
-    @for(var passage : changes.passages())
-      @if(passage instanceof ChangesView.Fold fold && fold.same() && fold.beside().stream().allMatch(occurrence -> neighbours.containsKey(occurrence.eId())))
+    @for(var passage : differences.passages())
+      @if(passage instanceof DifferencesView.Fold fold && fold.same() && fold.beside().stream().allMatch(occurrence -> neighbours.containsKey(occurrence.eId())))
         !{var between = fold.between();}
         @for(var each : fold.beside())
           @template.comparison.neighbour(occurrence = each, element = neighbours.get(each.eId()), history = histories.get(each.eId()), html = html)
@@ -58,11 +58,11 @@
             @template.comparison.ledgerfold(fold = between, same = same)
           @endif
         @endfor
-      @elseif(passage instanceof ChangesView.Fold fold)
+      @elseif(passage instanceof DifferencesView.Fold fold)
         @template.comparison.ledgerfold(fold = fold, same = same)
-      @elseif(passage instanceof ChangesView.Lead lead)
+      @elseif(passage instanceof DifferencesView.Lead lead)
         <div class="ledger-row ledger-lead" role="row"><div role="cell"></div><div class="from" role="cell">${html.element(lead.occurrence())}</div><div class="to" role="cell">${html.element(lead.occurrence())}</div><div role="cell"></div></div>
-      @elseif(passage instanceof ChangesView.Shown shown)
+      @elseif(passage instanceof DifferencesView.Shown shown)
         !{var sidenote = sidenotes.get(shown.number());}
         !{var occurrence = html.element(shown.folded(page));}
         <div class="ledger-row difference-${shown.kind()}${sidenote != null && sidenote.corrected() ? " corrected" : ""}${sidenote != null && sidenote.prospective() != null ? " prospective" : ""}" role="row" id="difference-${shown.number()}">
@@ -70,7 +70,7 @@
           <div class="from" role="cell">@if(shown.kind().equals("inserted"))<p class="absent">Not in the text on this day</p>@else${occurrence}@endif</div>
           <div class="to" role="cell">@if(shown.kind().equals("deleted"))<p class="absent">Not in the text on this day</p>@elseif(shown.annexInserted())@template.comparison.annexfold(shown = shown, page = page)@else${occurrence}@endif</div>
           <div class="what" role="cell">
-            @template.comparison.sidenote(shown = shown, sidenote = sidenote, parts = parts, named = false)
+            @template.comparison.sidenote(shown = shown, sidenote = sidenote, pieces = pieces, named = false)
             <nav class="steps" aria-label="Differences">@if(shown.number() > 1)<a href="#difference-${shown.number() - 1}" aria-label="Previous difference">↑</a>@else<span aria-hidden="true">↑</span>@endif@if(shown.number() < total)<a href="#difference-${shown.number() + 1}" aria-label="Next difference">↓</a>@else<span aria-hidden="true">↓</span>@endif</nav>
           </div>
         </div>

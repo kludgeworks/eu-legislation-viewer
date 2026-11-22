@@ -110,7 +110,7 @@
                   <t v="24 June 1991"/>
                </date>
                <t v=" on organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=" establishes the models of the Community logo as well as the indications to be inserted in that logo. Annex V, Part B.2 and B.3, should be completed in order to include the language versions of the new Member States."/>
             </p>
          </occurrence>
@@ -124,7 +124,7 @@
                   <t v="14 January 1992"/>
                </date>
                <t v=" laying down detailed rules for implementing the arrangements for imports from third countries provided for in Regulation (EEC) No 2092/91 on organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" lays down the list of third countries referred to in Article 11(1)(a) of Regulation (EEC) No 2092/91. The references in that Annex to the Czech Republic and to Hungary should be deleted."/>
             </p>
          </occurrence>
@@ -138,7 +138,7 @@
                   <t v="7 September 2001"/>
                </date>
                <t v=" laying down detailed rules for implementing the provisions concerning the certificate of inspection for imports from third countries under Article 11 of Council Regulation (EEC) No 2092/91 on organic production of agricultural products and indications"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=", Member States shall, before "/>
                <date date="2002-04-01">
                   <t v="1 April 2002"/>
@@ -156,7 +156,7 @@
                   <t v="15 March 2002"/>
                </date>
                <t v=" amending Annexes I, II and VI to Council Regulation (EEC) No 2092/91 on organic production of agricultural products and indications referring thereto on agricultural products and foodstuffs, and laying down detailed rules as regards the transmission of information on the use of copper compounds"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=", Member States applying the derogation provided for the maximum levels of copper compounds shall, before "/>
                <date date="2002-06-30">
                   <t v="30 June 2002"/>
@@ -178,7 +178,7 @@
                   <t v="5 February 2003"/>
                </date>
                <t v=" on labelling requirements related to the organic production method for feedingstuffs, compound feedingstuffs and feed materials and amending Council Regulation (EEC) No 2092/91"/>
-               <noteRef href="#note_5" marker="5"/>
+               <footnoteRef href="#note_5" marker="5"/>
                <t v=" lays down the conditions under which trade marks bearing an indication referring to the organic production method may still be used during a transitional period in the labelling and advertising of feed products which do not comply with that Regulation. According to these conditions, the registration of the trade mark should have been applied for before "/>
                <date date="1999-08-24">
                   <t v="24 August 1999"/>
@@ -513,8 +513,8 @@
          <t v="This Regulation shall be binding in its entirety and directly applicable in all Member States."/>
       </p>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -533,8 +533,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -553,8 +553,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -573,8 +573,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -585,15 +585,15 @@
             </ref>
             <t v="."/>
          </p>
-      </note>
-      <note eId="note_5" marker="5" kind="footnote">
+      </footnote>
+      <footnote eId="note_5" marker="5" kind="footnote">
          <p>
             <ref kind="oj" series="L" number="31" date="2003-02-06" page="3">
                <t v="OJ L 31, 6.2.2003, p. 3"/>
             </ref>
             <t v="."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

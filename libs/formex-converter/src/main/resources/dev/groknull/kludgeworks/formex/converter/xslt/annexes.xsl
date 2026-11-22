@@ -143,7 +143,7 @@
     <xsl:variable name="at" as="xs:integer?" select="f:node-index($siblings, current())"/>
     <xsl:variable name="m" as="processing-instruction()*" select="($pending, f:new-tags(., $ctx))"/>
     <xsl:variable name="nested" as="xs:boolean" select="exists(parent::CONS.ANNEX | parent::CONS.DOC.GEN[@TYPE = 'ANNEX'])"/>
-    <!-- one of an OJ act's annexes, which are files of their own (a package's), each printed with its notes -->
+    <!-- one of an OJ act's annexes, which are files of their own (a package's), each printed with its footnotes -->
     <xsl:variable name="files" as="xs:boolean" select="not($inContent or $quoted or $included or $nested) and (every $x in $fragments satisfies $x is root($x)/*)"/>
     <!-- with the files the package continues it in -->
     <xsl:variable name="parts" as="element()*" select="if ($files) then ($fragments, f:continuations($descriptor, $fragments)) else $fragments"/>
@@ -186,15 +186,15 @@
               <!-- unnumbered top levels are numbered through all fragments -->
             </xsl:call-template>
           </xsl:variable>
-          <xsl:variable name="notes" as="element()?">
+          <xsl:variable name="footnotes" as="element()?">
             <xsl:if test="$files">
-              <xsl:call-template name="f:notes">
-                <xsl:with-param name="notes" as="element(NOTE)*" select="f:with-included(.)//NOTE[not(@NOTE.REF)][not(f:table-note(.))]"/>
+              <xsl:call-template name="f:footnotes">
+                <xsl:with-param name="footnotes" as="element(NOTE)*" select="f:with-included(.)//NOTE[not(@NOTE.REF)][not(f:table-footnote(.))]"/>
               </xsl:call-template>
             </xsl:if>
           </xsl:variable>
           <xsl:choose>
-            <!-- an annex the OJ prints across files: each under the title it repeats, its notes after it -->
+            <!-- an annex the OJ prints across files: each under the title it repeats, its footnotes after it -->
             <xsl:when test="$files and count($parts) gt 1">
               <file name="{replace(tokenize(base-uri(.), '/')[last()], '\.xml$', '')}">
                 <xsl:if test="$i gt 1">
@@ -205,11 +205,11 @@
                     <xsl:with-param name="ctx" as="xs:string*" select="($ctx, f:ids($m))" tunnel="yes"/>
                   </xsl:call-template>
                 </xsl:if>
-                <xsl:sequence select="$blocks, $notes"/>
+                <xsl:sequence select="$blocks, $footnotes"/>
               </file>
             </xsl:when>
             <xsl:otherwise>
-              <xsl:sequence select="$blocks, $notes"/>
+              <xsl:sequence select="$blocks, $footnotes"/>
             </xsl:otherwise>
           </xsl:choose>
         </xsl:for-each>

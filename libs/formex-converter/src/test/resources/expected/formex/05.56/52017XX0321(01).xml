@@ -103,7 +103,7 @@
                   <t v="the Proposal"/>
                </quote>
                <t v=")"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=". On the same day, the Commission requested the European Data Protection Supervisor ("/>
                <quote startQuote="‘" endQuote="’">
                   <t v="EDPS"/>
@@ -180,7 +180,7 @@
                   <t v="big data"/>
                </quote>
                <t v=" sources such as telephone location data, corporate and tax records, social security and medical records, records of unemployment offices and organisations managing social security. While big data may promise new possibilities and increased efficiencies for the production of official statistics, it also poses specific risks, and therefore, we suggest careful scrutiny of any relevant provisions"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v="."/>
             </p>
          </occurrence>
@@ -194,7 +194,7 @@
                   <t v="GDPR"/>
                </quote>
                <t v=")"/>
-               <noteRef href="#note_3" marker="3"/>
+               <footnoteRef href="#note_3" marker="3"/>
                <t v=" as a legal basis for the processing of personal data; unless the provision of information is specifically required under Union or Member States law in accordance with applicable data protection law."/>
             </p>
          </occurrence>
@@ -302,7 +302,7 @@
             </num>
             <p>
                <t v="Considering that the Proposal foresees use of data from new data sources, which might include, for example, location data obtained from mobile telephone records (see Section 3.4 discussing Article 8 below), we also recommend a specific reference to the ePrivacy Directive"/>
-               <noteRef href="#note_4" marker="4"/>
+               <footnoteRef href="#note_4" marker="4"/>
                <t v=" currently under revision (or to the new ePrivacy Regulation if appropriate considering the timelines)."/>
             </p>
          </occurrence>
@@ -719,13 +719,13 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <t v="COM(2016)551 final."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <t v="On the opportunities, risks and challenges posed by big data, see EDPS Opinion 7/2015 on "/>
             <quote startQuote="‘" endQuote="’">
@@ -736,8 +736,8 @@
          <p>
             <t v="https://secure.edps.europa.eu/EDPSWEB/webdav/site/mySite/shared/Documents/Consultation/Opinions/2015/15-11-19_Big_Data_EN.pdf. See more specifically Section 1."/>
          </p>
-      </note>
-      <note eId="note_3" marker="3" kind="footnote">
+      </footnote>
+      <footnote eId="note_3" marker="3" kind="footnote">
          <p>
             <t v="Regulation (EU) 2016/679 of the European Parliament and of the Council of "/>
             <date date="2016-04-27">
@@ -753,8 +753,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_4" marker="4" kind="footnote">
+      </footnote>
+      <footnote eId="note_4" marker="4" kind="footnote">
          <p>
             <t v="Directive 2002/58/EC of the European Parliament and of the Council of "/>
             <date date="2002-07-12">
@@ -770,7 +770,7 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
 </legalText>
 

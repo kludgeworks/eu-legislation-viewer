@@ -47,7 +47,7 @@ class ProvisionViewTest {
     assertThat(oldest.href()).isEqualTo("/eli/reg_impl/2015/1998/eng/history/32017R0815");
     assertThat(oldest.change())
         .isEqualTo("/eli/reg_impl/2015/1998/eng/history/32017R0815#at-AN_PO_4.1.3.1");
-    assertThat(oldest.note()).startsWith("Applies from 1 June 2017");
+    assertThat(oldest.statement()).startsWith("Applies from 1 June 2017");
     assertThat(oldest.tone()).isNull();
     assertThat(view.unknown()).isNull();
   }
@@ -79,7 +79,7 @@ class ProvisionViewTest {
             .filter(line -> line.act().equals("2017/815"))
             .findFirst()
             .orElseThrow();
-    assertThat(oldest.note()).isEqualTo("Was not in force yet.");
+    assertThat(oldest.statement()).isEqualTo("Was not in force yet.");
     assertThat(oldest.tone()).isEqualTo("off");
     assertThat(oldest.href()).endsWith("/history/32017R0815?on=2017-05-01");
   }

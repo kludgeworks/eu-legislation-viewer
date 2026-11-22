@@ -23,8 +23,8 @@
     $division    the enclosing division: its eId, and the base it applies to (a division and an
                  article use it only while their base is that one, articles.xsl); for recitals, the
                  enclosing group of recitals' eId
-    $annexBase, $notePrefix
-                 an attached document's eId for its annexes, and the prefix of its notes' eIds
+    $annexBase, $footnotePrefix
+                 an attached document's eId for its annexes, and the prefix of its footnotes' eIds
                  (documents.xsl)
     $annexFragments
                  the fragments (files) of the annex being converted: what is numbered through them
@@ -274,7 +274,7 @@
     <xsl:sequence select="f:wrap-deleted($m, $quotedStructure)"/>
   </xsl:template>
 
-  <!-- an annotation (the notes printed with a form) numbers what it holds apart from the text around
+  <!-- an annotation (the remarks printed with a form) numbers what it holds apart from the text around
        it: an outermost one is a context, ann_N through the file (anx_II/ann_1/level_PART-I) -->
   <xsl:template match="ANNOTATION | GR.ANNOTATION" mode="block">
     <xsl:param name="ctx" as="xs:string*" tunnel="yes"/>
@@ -392,7 +392,7 @@
     </xsl:call-template>
   </xsl:template>
 
-  <!-- where the source prints its notes; notes are collected at the end anyway -->
+  <!-- where the source prints its footnotes; footnotes are collected at the end anyway -->
   <xsl:template match="LOC.NOTES" mode="block"/>
 
   <!-- a marginal heading where only blocks fit (beside a definition list's entry): a paragraph -->

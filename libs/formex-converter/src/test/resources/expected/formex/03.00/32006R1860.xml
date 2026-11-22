@@ -55,7 +55,7 @@
                   <t v="15 June 1965"/>
                </date>
                <t v=" setting up a network for the collection of accountancy data on the incomes and business operation of agricultural holdings in the European Economic Community"/>
-               <noteRef href="#note_1" marker="1"/>
+               <footnoteRef href="#note_1" marker="1"/>
                <t v=", and in particular Articles 4(4) and 6(2) thereof,"/>
             </p>
          </occurrence>
@@ -72,7 +72,7 @@
             </num>
             <p>
                <t v="Annex I to Commission Regulation (EEC) No 1859/82"/>
-               <noteRef href="#note_2" marker="2"/>
+               <footnoteRef href="#note_2" marker="2"/>
                <t v=" fixes the number of returning holdings per division."/>
             </p>
          </occurrence>
@@ -168,8 +168,8 @@
          </signatory>
       </signature>
    </conclusions>
-   <notes>
-      <note eId="note_1" marker="1" kind="footnote">
+   <footnotes>
+      <footnote eId="note_1" marker="1" kind="footnote">
          <p>
             <ref kind="oj"
                  series="P"
@@ -188,8 +188,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-      <note eId="note_2" marker="2" kind="footnote">
+      </footnote>
+      <footnote eId="note_2" marker="2" kind="footnote">
          <p>
             <ref kind="oj"
                  series="L"
@@ -208,8 +208,8 @@
             </ref>
             <t v=")."/>
          </p>
-      </note>
-   </notes>
+      </footnote>
+   </footnotes>
    <annexes>
       <occurrence eId="anx" kind="annex" eurlexAnchor="1" rank="1">
          <num>
