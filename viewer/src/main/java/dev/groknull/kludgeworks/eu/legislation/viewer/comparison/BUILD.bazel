@@ -86,7 +86,7 @@ java_library(
 )
 
 # web/
-# The comparison module's web side: the comparison page, its changes and the acts between its
+# The comparison module's web side: the comparison page, its differences and the acts between its
 # versions by htmx
 java_library(
     name = "web",

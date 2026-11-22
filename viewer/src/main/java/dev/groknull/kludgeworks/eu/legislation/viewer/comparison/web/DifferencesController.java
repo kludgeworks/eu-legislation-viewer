@@ -19,6 +19,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.RowFolds;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.DifferVersion;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.Neighbours;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ComparisonView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.ControlsView;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view.DifferencesView;

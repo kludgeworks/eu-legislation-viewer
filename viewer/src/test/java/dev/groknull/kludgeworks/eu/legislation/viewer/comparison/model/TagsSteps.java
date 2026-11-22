@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ActIdentifier;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Tag;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Decoder;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.model.Encoder;
@@ -20,14 +21,15 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
 
 /**
- * The steps of the rules about the tags of an occurrence (R-WHO-02), on the consolidated versions
- * of 2015/1998 as the content module reads them back. A step names a place as the pages do, and an
- * act by its number. The steps reach the domain only: they cannot call a view or a controller, so a
- * rule that they test is applied in the domain.
+ * The steps of the rules about the tags of an occurrence (R-WHO-02) and of a neighbour (R-SHOW-10),
+ * on the consolidated versions of 2015/1998 as the content module reads them back. A step names a
+ * place as the pages do, and an act by its number. The steps reach the domain only: they cannot
+ * call a view or a controller, so a rule that they test is applied in the domain.
  */
 public class TagsSteps {
   private static final DateTimeFormatter DAY =
@@ -36,11 +38,15 @@ public class TagsSteps {
   /** The number of a regulation. For example, 2015/1998. */
   private static final Pattern REGULATION = Pattern.compile("(\\d{4})/(\\d+)");
 
+  private @Nullable Element version;
   private @Nullable Occurrences occurrences;
   private List<Tag> tags = List.of();
 
-  /** A place, as the pages name it. For example, "point 8.1.2.3(c)". */
-  @ParameterType(".+")
+  /**
+   * A place, as the pages name it. For example, "point 8.1.2.3(c)". It does not start with "the",
+   * so that "the neighbour point 1.2.2.3(a)" is not a place.
+   */
+  @ParameterType("(?!the ).+")
   public Place place(String words) {
     return new Place(words);
   }
@@ -65,9 +71,9 @@ public class TagsSteps {
   @Given("the consolidated version of {act} of {day}")
   public void consolidatedVersion(ActIdentifier act, LocalDate day) {
     var celex = "0" + act.celex().substring(1) + "-" + day.format(DateTimeFormatter.BASIC_ISO_DATE);
-    occurrences =
-        Occurrences.of(
-            Decoder.element(Encoder.encode(LegalTexts.sample("06.02.1/" + celex + ".xml"))));
+    var element = Decoder.element(Encoder.encode(LegalTexts.sample("06.02.1/" + celex + ".xml")));
+    version = element;
+    occurrences = Occurrences.of(element);
   }
 
   @When("the reader asks for the tags of {place}")
@@ -75,6 +81,15 @@ public class TagsSteps {
     var text = text();
     var occurrence = text.get(eId(place));
     tags = Tags.of(Objects.requireNonNull(occurrence, place.words()), text);
+  }
+
+  @When("the reader asks for the tags of the neighbour {place}")
+  public void tagsOfTheNeighbour(Place place) {
+    var eId = eId(place);
+    var neighbour =
+        Neighbours.of(Objects.requireNonNull(version, "no consolidated version given"), Set.of(eId))
+            .get(eId);
+    tags = Objects.requireNonNull(neighbour, place.words()).tags();
   }
 
   @Then("the tags are")
