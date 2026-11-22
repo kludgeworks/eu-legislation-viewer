@@ -57,3 +57,12 @@ titles-, amendments- and publications-31976L0207.json. 2 consolidations, of 5 Oc
 application Cellar does not give: an MA date of 1001-01-01, set from the start of the 2004/2005
 marketing year (DEB/CAMP), with no article. Recorded 2026-11-22 in the same way: act-, versions-,
 languages-, dates-, titles-, amendments- and publications-32004R0917.json. 8 consolidations.
+
+32013L0036: Directive 2013/36/EU, amended by Directive (EU) 2024/1619. Cellar lists 2024/1619 in
+the consolidation of 29 July 2024 and no act in the consolidation of 11 January 2026. 2024/1619
+has a date of transposition with the type APPLICATION on 11 January 2026. Recorded 2026-11-22
+with the queries above, celex 32013L0036: act-, versions-, languages-, dates-, titles-,
+amendments- and publications-32013L0036.json. Its texts of 17 January 2025 and of 11 January
+2026 are converter samples (libs/formex-converter fixtures 06.02.1/02013L0036-20250117 and
+06.02.4/02013L0036-20260111). The text of 2026 tags Article 3(1), point (9a), as inserted by
+2024/1619; the text of 2025 does not have that point.

@@ -19,54 +19,21 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.site.Dates;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import org.jspecify.annotations.Nullable;
 
 /**
  * The sidenote of a difference. It shows beside the difference and says who made the difference.
  *
- * <p>The sidenote names the acts between the two versions that made the difference. The amendment
- * tags on the occurrence in the later text name these acts, or the amendments of the occurrence in
- * Cellar name them. The tags name only the last act that changed an occurrence. For a deleted
- * occurrence, the tags name one of these acts:
- *
- * <ul>
- *   <li>the act of the deletion that keeps the occurrence struck
- *   <li>the act that replaced, as a whole, the occurrence that the deleted occurrence was in
- * </ul>
- *
- * <p>The sidenote shows the acts as a chain, in the order that the versions integrate them. For
- * example, "Inserted by 2019/103, then replaced by 2021/255". For each act, the sidenote says when
- * the act applies. This date comes from the dates of the act, never from the date of the version.
- *
- * <p>Acts of one version leave no text between their changes. Thus:
- *
- * <ul>
- *   <li>Where the tags name an act of a version, the sidenote follows the tags. It leaves out the
- *       other acts of that version that Cellar names.
- *   <li>The acts that the tags name together changed the occurrence together, with one wording. The
- *       sidenote names them together.
- *   <li>If only Cellar names an act, the sidenote names it as if a tag did.
- *   <li>If neither the tags nor Cellar name an act between the two versions, the sidenote does not
- *       guess. If the acts between the versions are all of one version, it says that one of them
- *       made the difference, but not which. If not, it says that no act is named.
- * </ul>
- *
- * <p>An act can have several dates. The texts do not say from which of these dates a provision
- * applies. The amendment of the occurrence in Cellar chooses the date, if its day is one of the
- * dates of the act and is after the earlier version. The earlier version does not have the change.
- * Otherwise the sidenote says that the act applies in parts, and that the clause says which part
- * applies from when.
+ * <p>The rules are the domain's: {@link Attribution#of} finds the acts that made the difference and
+ * puts them in steps, and {@link Applicability} says from when each act's change applies. This
+ * class puts them into words. For example, "Inserted by 2019/103, then replaced by 2021/255", with
+ * a date line for each act. Where no act is named, the sidenote does not guess: if the acts between
+ * the two versions are all of one version, it says that one of them made the difference, but not
+ * which. If not, it says that no act is named.
  *
  * @param made who made the difference. For example:
  *     <ul>
@@ -151,74 +118,38 @@ public record SidenoteView(
       List<Amendment> amendments,
       @Nullable ActIdentifier only,
       Language language) {
-    var between = included.between(from, to);
-    var parts = parts(act, included, from, to, difference, between);
-    var tagged = acts(difference.tags(), each -> between.contains(each) || parts.containsKey(each));
-    var markedVersions =
-        tagged.keySet().stream()
-            .map(
-                each ->
-                    Optional.ofNullable(parts.get(each))
-                        .or(() -> Applicability.firstIncluding(included, from, to, each)))
-            .flatMap(Optional::stream)
-            .collect(Collectors.toSet());
-    var made = new LinkedHashMap<>(tagged);
-    for (var amendment : amendments) {
-      var each = amendment.act();
-      // Leave out the act if the tags name an act of the same version. The tags take
-      // priority.
-      if (between.contains(each)
-          && !made.containsKey(each)
-          && Applicability.firstIncluding(included, from, to, each)
-              .filter(markedVersions::contains)
-              .isEmpty()) {
-        made.put(each, Modification.of(amendment.role()));
-      }
-    }
-    if (made.isEmpty()) {
+    var attribution = Attribution.of(act, included, from, to, difference, amendments);
+    if (attribution.steps().isEmpty()) {
       return unknown(act, included, from, to, difference, language);
     }
-    var steps =
-        steps(
-            included,
-            from,
-            to,
-            made.keySet(),
-            tagged.keySet(),
-            parts,
-            together(difference, between));
     var dates = new ArrayList<Applies>();
-    for (var each : steps.stream().flatMap(List::stream).toList()) {
-      Applicability.of(act, included, from, to, each, amendments, parts.containsKey(each))
-          .map(applicability -> applies(act, applicability, language))
-          .ifPresent(dates::add);
+    for (var step : attribution.steps()) {
+      for (var each : step.acts()) {
+        Applicability.of(act, included, from, to, each, amendments, step.inPart().contains(each))
+            .map(applicability -> applies(act, applicability, language))
+            .ifPresent(dates::add);
+      }
     }
     var chain = new ArrayList<String>();
+    var steps = attribution.steps();
     for (var i = 0; i < steps.size(); i++) {
       var step = steps.get(i);
-      var first = step.getFirst();
-      var modification =
-          Modification.ofStep(
-              difference.kind(),
-              i == 0,
-              i == steps.size() - 1,
-              first,
-              Objects.requireNonNull(made.get(first)));
-      var verb = i == 0 ? verb(modification) : modification.word();
-      if (step.size() == 1) {
-        chain.add(verb + " by " + names(act, step));
-      } else if (only != null && step.contains(only)) {
-        var others = step.stream().filter(each -> !each.equals(only)).toList();
+      var verb = i == 0 ? verb(step.modification()) : step.modification().word();
+      var acts = step.acts();
+      if (acts.size() == 1) {
+        chain.add(verb + " by " + names(act, acts));
+      } else if (only != null && acts.contains(only)) {
+        var others = acts.stream().filter(each -> !each.equals(only)).toList();
         chain.add(verb + " by " + act.cited(only) + ", together with " + names(act, others));
       } else {
-        chain.add(verb + " by " + names(act, step) + " together");
+        chain.add(verb + " by " + names(act, acts) + " together");
       }
     }
     return new SidenoteView(
         String.join(", then ", chain),
-        Attribution.madeBy(steps.stream().flatMap(List::stream).toList()),
+        attribution,
         dates,
-        act.citations(steps.stream().flatMap(List::stream).toList(), language),
+        act.citations(attribution.acts(), language),
         null);
   }
 
@@ -308,154 +239,6 @@ public record SidenoteView(
           case CHANGED -> "changed";
         };
     return "The data does not say which act " + did + " this.";
-  }
-
-  /**
-   * Returns the acts that changed the occurrence of {@code difference} in a part that applies
-   * between the two versions, by the version that takes the part in. Such an act is not between the
-   * two versions: an earlier version included it already. Its tag on the occurrence is new in this
-   * step: the earlier text does not have it. And one of its dates falls after {@code from}, up to
-   * {@code to}. For example, 2024/1619 on 2013/36 from 17 January 2025 to 11 January 2026: the act
-   * is included from July 2024, and a part of it applies from 11 January 2026.
-   *
-   * <p>A tag can also be new only because the earlier text has no tags. The date tells these apart.
-   */
-  private static Map<ActIdentifier, Version> parts(
-      Act act,
-      Inclusions included,
-      Version from,
-      Version to,
-      Difference difference,
-      Collection<ActIdentifier> between) {
-    var earlier = difference.earlierTags().stream().map(Tag::act).collect(Collectors.toSet());
-    var parts = new LinkedHashMap<ActIdentifier, Version>();
-    for (var tag : difference.tags()) {
-      var each = new ActIdentifier(tag.act());
-      if (between.contains(each) || earlier.contains(tag.act()) || parts.containsKey(each)) {
-        continue;
-      }
-      Applicability.daysBetween(act, each, from, to).stream()
-          .min(Comparator.naturalOrder())
-          .flatMap(
-              day ->
-                  included.timeline().versions().stream()
-                      .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-                      .filter(v -> !v.date().isBefore(day))
-                      .findFirst())
-          .ifPresent(version -> parts.put(each, version));
-    }
-    return parts;
-  }
-
-  /**
-   * Returns the acts that {@code tags} name and that {@code kept} accepts, in order. Each act comes
-   * with the modification of its first tag.
-   */
-  private static Map<ActIdentifier, Modification> acts(
-      List<Tag> tags, Predicate<ActIdentifier> kept) {
-    var acts = new LinkedHashMap<ActIdentifier, Modification>();
-    for (var tag : tags) {
-      var act = new ActIdentifier(tag.act());
-      if (kept.test(act)) {
-        acts.putIfAbsent(act, tag.modification());
-      }
-    }
-    return acts;
-  }
-
-  /**
-   * Returns the acts in {@code acts} in the order that the versions after {@code from}, up to
-   * {@code to}, first integrate them. There is one step for each version, which holds the acts of
-   * that version.
-   */
-  private static List<List<ActIdentifier>> steps(
-      Inclusions included,
-      Version from,
-      Version to,
-      Collection<ActIdentifier> acts,
-      Collection<ActIdentifier> tagged,
-      Map<ActIdentifier, Version> parts,
-      List<Set<ActIdentifier>> together) {
-    var between =
-        included.timeline().versions().stream()
-            .filter(v -> v.date().isAfter(from.date()) && !v.date().isAfter(to.date()))
-            .toList();
-    // The version of each act is the first version that has it. An act that applies in parts is
-    // in several versions.
-    var at = new HashMap<ActIdentifier, Version>();
-    for (var each : acts) {
-      if (!tagged.contains(each)) {
-        between.stream()
-            .filter(v -> included.includes(v, each))
-            .findFirst()
-            .ifPresent(version -> at.put(each, version));
-      }
-    }
-    // An act that the tags name was the last act to change the occurrence. Thus it is in no
-    // version
-    // before the versions of the other acts. If it changed the occurrence together with other acts,
-    // it is
-    // in the first version that has all of them.
-    var floor = at.values().stream().map(Version::date).max(Comparator.naturalOrder()).orElse(null);
-    for (var each : tagged) {
-      var part = parts.get(each);
-      if (part != null) {
-        at.put(each, part);
-        continue;
-      }
-      var with =
-          together.stream()
-              .filter(group -> group.contains(each))
-              .findFirst()
-              .orElseGet(() -> Set.of(each));
-      var after = between.stream().filter(v -> floor == null || !v.date().isBefore(floor)).toList();
-      after.stream()
-          .filter(v -> included.of(v).containsAll(with))
-          .findFirst()
-          .or(() -> after.stream().filter(v -> included.includes(v, each)).findFirst())
-          .or(() -> between.stream().filter(v -> included.includes(v, each)).findFirst())
-          .ifPresent(version -> at.put(each, version));
-    }
-    var steps = new ArrayList<List<ActIdentifier>>();
-    for (var version : between) {
-      // Keep the order that the version gives the acts.
-      var step = new ArrayList<ActIdentifier>();
-      included.of(version).stream()
-          .filter(each -> acts.contains(each) && version.equals(at.get(each)))
-          .forEach(step::add);
-      parts.entrySet().stream()
-          .filter(
-              part ->
-                  acts.contains(part.getKey())
-                      && version.equals(part.getValue())
-                      && !step.contains(part.getKey()))
-          .map(Map.Entry::getKey)
-          .forEach(step::add);
-      if (!step.isEmpty()) {
-        steps.add(step);
-      }
-    }
-    return steps;
-  }
-
-  /**
-   * Returns the acts between the two versions that replaced the occurrence together, by its tags.
-   * Two acts that replaced the same occurrence as a whole did so at the same time. The occurrence
-   * can be the occurrence itself or the occurrence it is in. If one act replaced the occurrence
-   * after the other, only its own tag would be there. Each set has two or more acts.
-   */
-  private static List<Set<ActIdentifier>> together(
-      Difference difference, Collection<ActIdentifier> between) {
-    var byOccurrence = new LinkedHashMap<Optional<String>, Set<ActIdentifier>>();
-    for (var tag : difference.tags()) {
-      var each = new ActIdentifier(tag.act());
-      if (tag.modification() == Modification.REPLACED && between.contains(each)) {
-        byOccurrence
-            .computeIfAbsent(Optional.ofNullable(tag.in()), in -> new LinkedHashSet<>())
-            .add(each);
-      }
-    }
-    return byOccurrence.values().stream().filter(acts -> acts.size() > 1).toList();
   }
 
   /**

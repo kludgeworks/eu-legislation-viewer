@@ -11,8 +11,9 @@ import java.util.Objects;
 /**
  * Gives acts as Cellar has them, from its recorded answers. The answers are in {@code
  * viewer/src/test/resources/acts}, and the {@code SOURCE} file there lists them. The acts are
- * 2015/1998 (32015R1998), 185/2010 (32010R0185), Directive 76/207 (31976L0207) and 917/2004
- * (32004R0917). This class reads them as {@link CellarActs} reads Cellar's live answers.
+ * 2015/1998 (32015R1998), 185/2010 (32010R0185), Directive 76/207 (31976L0207), 917/2004
+ * (32004R0917) and Directive 2013/36 (32013L0036). This class reads them as {@link CellarActs}
+ * reads Cellar's live answers.
  */
 public final class RecordedActs {
   private RecordedActs() {}

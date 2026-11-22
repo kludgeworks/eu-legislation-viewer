@@ -131,6 +131,19 @@ the date. The clause links to EUR-Lex. The forms:
 | A correction | "Corrigendum 1 to 2019/103 corrects 2019/103 from 31 December 2021 · first in the text of 31 December 2021" |
 | Nothing is known | no date line |
 
+The first line of a sidenote names the acts that made the difference, one step for each text,
+oldest first (R-WHO-01 to R-WHO-12, R-WHO-22). Each step says its modification and its acts. The
+first word has a capital letter. The steps after it start with "then" and a lower-case word. The
+forms:
+
+| Case | Words |
+| --- | --- |
+| One act | "Replaced by 2026/449" |
+| Several steps | "Inserted by 2019/103, then replaced by 2023/566" |
+| Acts of one step | "Replaced by 2019/103 and 2019/1583 together" |
+| Acts of one step, with the comparison limited to one of them | "Replaced by 2019/1583, together with 2019/103" |
+| Three or more acts | "2017/815, 2019/103 and 2019/1583" |
+
 ### Page words (all modules)
 
 | Term | Meaning |

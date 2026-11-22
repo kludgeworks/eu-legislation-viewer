@@ -10,8 +10,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Amendment;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Applying;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Inclusions;
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Version;
-import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.infra.RecordedActs;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -25,30 +23,19 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules about from when a change applies (R-WHO-15 to R-WHO-20), on 2015/1998 as
- * Cellar's recorded answers make it. A step can give an amending act dates of its own, for a case
- * that the recorded acts do not have. The steps reach the domain only: {@link Applicability} and
- * the catalogue's acts.
+ * Cellar's recorded answers make it ({@link Comparing}). A step can give an amending act dates of
+ * its own, for a case that the recorded acts do not have. The steps reach the domain only: {@link
+ * Applicability} and the catalogue's acts.
  */
 public class ApplicabilitySteps {
   private static final DateTimeFormatter DAY =
       DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.UK);
 
-  private @Nullable Act act;
-  private @Nullable Version from;
-  private @Nullable Version to;
   private final List<Amendment> amendments = new ArrayList<>();
   private Optional<Applicability> applicability = Optional.empty();
-
-  @Given("the comparison of the texts of {act} of {day} and of {day}")
-  public void comparison(ActIdentifier compared, LocalDate earlier, LocalDate later) {
-    act = RecordedActs.act(compared);
-    from = version(earlier);
-    to = version(later);
-  }
 
   @Given("Cellar dates the change of {act} at the occurrence from {day}")
   public void cellarDay(ActIdentifier amending, LocalDate day) {
@@ -63,8 +50,8 @@ public class ApplicabilitySteps {
         Applicability.of(
             act(),
             Inclusions.listed(act().timeline()),
-            Objects.requireNonNull(from, "no comparison given"),
-            Objects.requireNonNull(to, "no comparison given"),
+            Comparing.from(),
+            Comparing.to(),
             amending,
             amendments,
             false);
@@ -171,14 +158,7 @@ public class ApplicabilitySteps {
     return (Applicability.Corrects) applicability.orElseThrow();
   }
 
-  private Version version(LocalDate day) {
-    return act().timeline().versions().stream()
-        .filter(version -> version.date().equals(day))
-        .findFirst()
-        .orElseThrow(() -> new AssertionError(act().cited(act().id()) + " has no text of " + day));
-  }
-
-  private Act act() {
-    return Objects.requireNonNull(act, "no comparison given");
+  private static Act act() {
+    return Comparing.act();
   }
 }

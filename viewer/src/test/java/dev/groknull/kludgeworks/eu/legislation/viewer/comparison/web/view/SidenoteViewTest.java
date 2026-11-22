@@ -117,7 +117,6 @@ class SidenoteViewTest {
     var tag = new Tag(amending.celex(), Modification.REPLACED, null);
 
     var newTag = changed("anx/pnt_8.1.2.3/pnt_c", List.of(tag), List.of());
-    var oldTag = changed("anx/pnt_8.1.2.3/pnt_c", List.of(tag), List.of(tag));
     var noPart =
         changed(
             "anx/pnt_8.1.2.3/pnt_c",
@@ -127,8 +126,6 @@ class SidenoteViewTest {
     assertThat(of(included, from, to, newTag).made()).isEqualTo("Replaced by 2026/449");
     assertThat(of(included, from, to, newTag).dates().getFirst().when())
         .contains("from 1 October 2026");
-    // The earlier text has the tag: the act changed the occurrence before.
-    assertThat(of(included, from, to, oldTag).attribution().acts()).isEmpty();
     // No part of 2019/103 applies in the step: its tag is old, not new.
     assertThat(of(included, from, to, noPart).attribution().acts()).isEmpty();
   }
