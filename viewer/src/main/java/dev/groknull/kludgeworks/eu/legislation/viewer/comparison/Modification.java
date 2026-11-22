@@ -86,9 +86,11 @@ public enum Modification {
    * replaced, an addition inserted, a deletion or a repeal deleted, an amendment amended.
    *
    * <p>A role that changes when the words apply, not the words (an extension, a suspension, a
-   * deferral) or that Cellar does not type, gives no modification of the words. {@link #INSERTED}
-   * stands for it here, as before this rule had a name. A step of a changed difference then reads
-   * as amended.
+   * deferral), or that Cellar does not type, gives no modification of the words. Such an amendment
+   * never reaches a sidenote: only the amendments that change the words count (R-WHO-08, {@code
+   * Act.amended}).
+   *
+   * @throws IllegalArgumentException for a role that does not change the words
    */
   public static Modification of(Amendment.Role role) {
     return switch (role) {
@@ -96,7 +98,9 @@ public enum Modification {
       case DELETION, REPEAL -> DELETED;
       case AMENDMENT -> AMENDED;
       case ADDITION -> INSERTED;
-      case EXTENSION, SUSPENSION, DEFERRAL, OTHER -> INSERTED;
+      case EXTENSION, SUSPENSION, DEFERRAL, OTHER ->
+          throw new IllegalArgumentException(
+              "A " + role + " does not change the words, so it has no modification (R-WHO-08)");
     };
   }
 }
