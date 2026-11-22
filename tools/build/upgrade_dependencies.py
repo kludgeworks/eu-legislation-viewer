@@ -158,6 +158,26 @@ def major_branch(ecosystem, name):
     return f"{MAJOR_PREFIX}{ecosystem}-{slug}-{digest}"
 
 
+def pr_body(changes):
+    if not changes:
+        return "All proposed updates are already resolved on `main`."
+    rows = [
+        "| Source | Dependency | From | To | Update |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for ecosystem, name, old, new in changes:
+        source = {"action": "GitHub Actions", "bazel": "Bazel", "mise": "mise"}[ecosystem]
+        if ecosystem == "bazel" and ":" in name:
+            source = "Maven"
+        level = next(
+            label
+            for label, before, after in zip(("Major", "Minor", "Patch"), numbers(old), numbers(new))
+            if before != after
+        )
+        rows.append(f"| {source} | `{name}` | `{old}` | `{new}` | {level} |")
+    return "\n".join(rows)
+
+
 def matrix(minor, majors, open_branches):
     candidates = {}
     for (ecosystem, name), change in sorted(majors.items()):
@@ -178,6 +198,8 @@ def matrix(minor, majors, open_branches):
     selected.append(
         {"branch": MINOR_BRANCH, "title": "Upgrade minor and patch dependencies", "changes": minor}
     )
+    for job in selected:
+        job["body"] = pr_body(job["changes"])
     return {"include": selected}
 
 

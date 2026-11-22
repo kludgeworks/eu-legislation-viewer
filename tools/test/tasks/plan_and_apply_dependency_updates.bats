@@ -62,9 +62,14 @@ assert existing in [job["branch"] for job in major_jobs]
 for job in major_jobs:
     change, = job["changes"]
     assert change[2].split(".")[0] != change[3].split(".")[0]
+    assert len(job["body"].splitlines()) == 3
+    assert f"| `{change[1]}` | `{change[2]}` | `{change[3]}` | Major |" in job["body"]
 assert len({job["changes"][0][1] for job in major_jobs}) == 3
 minor_job, = [job for job in jobs if job["branch"] == planner["MINOR_BRANCH"]]
 assert len(minor_job["changes"]) == 6
+assert len(minor_job["body"].splitlines()) == 8
+assert "| Maven | `org:lib` | `2.0.0` | `2.1` | Minor |" in minor_job["body"]
+assert "| mise | `a` | `1.0` | `1.0.1` | Patch |" in minor_job["body"]
 assert {c[0] for c in minor_job["changes"]} == {"bazel", "mise"}
 assert {tuple(c[2:]) for c in minor_job["changes"]} == {("1.0", "1.0.1"), ("1.0.0", "1.0.1"), ("2.0.0", "2.1")}
 PY

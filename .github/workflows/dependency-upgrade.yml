@@ -111,5 +111,4 @@ jobs:
             maven_install.json
           commit-message: 'chore: ${{ matrix.title }}'
           title: 'chore: ${{ matrix.title }}'
-          body: |
-            Generated from main. Review the version and lockfile changes and merge when ready.
+          body: ${{ matrix.body }}
