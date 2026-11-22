@@ -24,6 +24,69 @@ BAZEL_PINS = re.compile(
 )
 
 
+# The repository uses one SHA-pinned uses: reference per line with an exact release tag.
+ACTION_PIN = re.compile(
+    r"^(?P<uses>[ \t]*(?:-[ \t]+)?uses:[ \t]*(?P<repo>[\w.-]+/[\w.-]+)(?:/[\w./-]+)?@)"
+    r"[0-9a-f]{40}[ \t]+#[ \t]*v?(?P<version>[0-9]+\.[0-9]+\.[0-9]+)[ \t]*$",
+    re.MULTILINE,
+)
+
+
+def action_files():
+    root = Path(".github")
+    return sorted(
+        p
+        for p in [*root.glob("workflows/*"), *root.glob("actions/**/action.y*ml")]
+        if p.suffix in (".yml", ".yaml") and p.is_file()
+    )
+
+
+@cache
+def action_tags(repo):
+    tags = subprocess.check_output(
+        [
+            "gh",
+            "api",
+            "--paginate",
+            f"repos/{repo}/releases?per_page=100",
+            "--jq",
+            ".[] | select(.draft == false and .prerelease == false) | .tag_name",
+        ],
+        text=True,
+    ).splitlines()
+    return {tag.removeprefix("v"): tag for tag in tags if re.fullmatch(r"v?\d+\.\d+\.\d+", tag)}
+
+
+def upgrade_actions(changes):
+    targets = {(repo, old): new for kind, repo, old, new in changes if kind == "action"}
+    if not targets:
+        return
+    seen = set()
+    paths = []
+
+    def replace(match):
+        key = (match["repo"], match["version"])
+        if key not in targets:
+            return match[0]
+        seen.add(key)
+        tag = action_tags(match["repo"])[targets[key]]
+        return match["uses"] + tag
+
+    for path in action_files():
+        before = path.read_text()
+        after = ACTION_PIN.sub(replace, before)
+        if after != before:
+            path.write_text(after)
+            paths.append(path)
+    if seen != targets.keys():
+        raise ValueError("Stale GitHub Actions pins")
+
+    # Resolve only the selected release tags, including repeated uses in composite actions.
+    diff = subprocess.check_output(["git", "diff", "--", *paths])
+    subprocess.run(["pinact", "run", "--diff-file", "-", *paths], input=diff, check=True)
+    subprocess.run(["pinact", "run", "--fix=false", "--no-api", *paths], check=True)
+
+
 def numbers(version):
     return tuple(map(int, version.split("."))) + (0,) * (2 - version.count("."))
 
@@ -41,6 +104,8 @@ def bazel_name(match):
 
 @cache
 def releases(ecosystem, name):
+    if ecosystem == "action":
+        return action_tags(name)
     if ecosystem == "mise":
         result = subprocess.check_output(["mise", "ls-remote", name], text=True)
         return result.splitlines()
@@ -60,6 +125,10 @@ def discover():
     module = Path("MODULE.bazel").read_text()
     pins = {("bazel", bazel_name(m), m["version"]) for m in BAZEL_PINS.finditer(module)}
     pins.update(("mise", n, v) for n, v in mise_tools().items() if n not in COORDINATED_TOOLS)
+    for path in action_files():
+        pins.update(
+            ("action", m["repo"], m["version"]) for m in ACTION_PIN.finditer(path.read_text())
+        )
     minor = []
     majors = {}
     for ecosystem, name, current in sorted(pins):
@@ -110,6 +179,7 @@ def matrix(minor, majors, open_branches):
 
 
 def apply(changes):
+    upgrade_actions(changes)
     mise = {name: (old, new) for kind, name, old, new in changes if kind == "mise"}
     if mise:
         before = mise_tools()

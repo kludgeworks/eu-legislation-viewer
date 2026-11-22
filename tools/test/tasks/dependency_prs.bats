@@ -69,3 +69,48 @@ assert {c[0] for c in minor_job["changes"]} == {"bazel", "mise"}
 assert {tuple(c[2:]) for c in minor_job["changes"]} == {("1.0", "1.0.1"), ("1.0.0", "1.0.1"), ("2.0.0", "2.1")}
 PY
 }
+
+@test "action releases join the shared PR plan and pinact updates matching workflow and composite uses" {
+	PLANNER="$project/tools/build/upgrade_dependencies.py" python3 - <<'PY'
+import os
+import runpy
+import subprocess
+from pathlib import Path
+from unittest.mock import patch
+
+planner = runpy.run_path(os.environ["PLANNER"])
+os.chdir(os.environ["BATS_TEST_TMPDIR"])
+Path("MODULE.bazel").touch()
+workflow = Path(".github/workflows/ci.yml")
+composite = Path(".github/actions/setup/action.yaml")
+old_sha, new_sha = "a"*40, "b"*40
+for path in (workflow, composite):
+    path.parent.mkdir(parents=True)
+    path.write_text(f"  - uses: owner/project/sub@{old_sha} # v1.0.0\n  - uses: ./local\n")
+subprocess.run(["git", "init", "-q"], check=True)
+subprocess.run(["git", "add", ".github"], check=True)
+def pinact(args, **kwargs):
+    assert args[-2:] == [composite, workflow]
+    if "--diff-file" in args:
+        assert kwargs["input"].count(b"+  - uses: owner/project/sub@v1.2.0") == 2
+        for path in args[-2:]:
+            path.write_text(path.read_text().replace("@v1.2.0", f"@{new_sha} # v1.2.0"))
+    else:
+        assert args[:4] == ["pinact", "run", "--fix=false", "--no-api"]
+
+# Keep the real git diff and stub only the two pinact calls.
+real_run = subprocess.run
+def run(args, **kwargs):
+    return pinact(args, **kwargs) if args[0] == "pinact" else real_run(args, **kwargs)
+with patch.dict(planner["discover"].__globals__, {
+    "mise_tools": lambda: {},
+    "action_tags": lambda repo: {"1.2.0":"v1.2.0", "2.0.0":"v2.0.0"},
+}), patch.object(subprocess, "run", side_effect=run):
+    minor, majors = planner["discover"]()
+    assert minor == [["action", "owner/project", "1.0.0", "1.2.0"]]
+    assert list(majors.values()) == [["action", "owner/project", "1.0.0", "2.0.0"]]
+    planner["apply"](minor)
+for path in (workflow, composite):
+    assert path.read_text() == f"  - uses: owner/project/sub@{new_sha} # v1.2.0\n  - uses: ./local\n"
+PY
+}
