@@ -104,8 +104,6 @@ final class Edits {
    * <ul>
    *   <li>The pieces match by name and by what they say, and those that differ pair if they are
    *       alike. See {@link Pieces}.
-   *   <li>The cells of two rows with as many cells pair by their column. Thus a changed cell is
-   *       compared with the cell in the same column of the other text.
    *   <li>A piece that is in both texts and differs gets its edits from {@link #between}.
    *   <li>A piece that is only in {@code to} is shown inserted whole.
    *   <li>A piece that is only in {@code from} is shown deleted whole, where it stood.
@@ -114,11 +112,7 @@ final class Edits {
   private static Edited pieces(Element from, Element to) {
     var before = from.children();
     var after = to.children();
-    var columns = to.name().equals("tr") && before.size() == after.size();
-    var differing =
-        columns
-            ? Pieces.inOrder(before, after, keys(before), keys(after))
-            : Pieces.differing(before, after, keys(before), keys(after));
+    var differing = Pieces.differing(before, after, keys(before), keys(after));
     var shown = new Pieces.Shown();
     for (var each : differing) {
       switch (each) {

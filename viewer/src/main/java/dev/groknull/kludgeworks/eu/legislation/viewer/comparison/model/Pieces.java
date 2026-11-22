@@ -80,21 +80,6 @@ final class Pieces {
   }
 
   /**
-   * Returns the pieces that differ between two lists of as many pieces, each piece with the piece
-   * in the same position. For example, the cells of a row with the cells of the row that it was.
-   */
-  static List<Differing> inOrder(
-      List<Element> from, List<Element> to, List<String> fromKeys, List<String> toKeys) {
-    var found = new ArrayList<Differing>();
-    for (var i = 0; i < to.size(); i++) {
-      if (!fromKeys.get(i).equals(toKeys.get(i))) {
-        found.add(new Changed(i, from.get(i), to.get(i)));
-      }
-    }
-    return found;
-  }
-
-  /**
    * The pieces of the later text as a comparison shows them: each piece that differs, with its
    * edits, and the deleted pieces where they stood.
    */
