@@ -28,10 +28,10 @@ import org.jmolecules.ddd.annotation.ValueObject;
  * Who made a difference: the acts that made it, in their steps, or the acts of which one made it
  * where it is not known which. The sidenote of the difference says it in words.
  *
- * <p>{@link #of} finds the acts (R-WHO-01, R-WHO-04, R-WHO-06, R-WHO-22) and puts them in steps
- * (R-WHO-05, R-WHO-11, R-WHO-12). The acts come from two sources: the tags on the occurrence in the
- * later text, and Cellar's amendments of the occurrence. Only acts between the two texts count, and
- * an act of which a part applies between them.
+ * <p>{@link #of} finds the acts (R-WHO-01, R-WHO-04, R-WHO-22) and puts them in steps (R-WHO-05,
+ * R-WHO-11, R-WHO-12). The acts come from two sources: the tags on the occurrence in the later
+ * text, and Cellar's amendments of the occurrence. Only acts between the two texts count, and an
+ * act of which a part applies between them.
  *
  * @param acts the acts that made the difference, in the order that the texts include them. The
  *     difference counts in the changes of each of these acts. Empty where no act is known.
@@ -133,7 +133,7 @@ public record Attribution(
    *
    * <ul>
    *   <li>The acts are those between the two texts (R-WHO-01). An act that the tags name counts. So
-   *       does an act that only Cellar names, where the text has no tag of it (R-WHO-06). Where the
+   *       does an act that only Cellar names, where the text has no tag of it (R-WHO-04). Where the
    *       tags name an act of a version, Cellar's other acts of that version are left out
    *       (R-WHO-04).
    *   <li>An act that an earlier text included already counts if its tag on the occurrence is new

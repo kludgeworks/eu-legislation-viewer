@@ -15,7 +15,7 @@ import org.jspecify.annotations.Nullable;
  *   <li>The legend names only the edits that the page shows: inserted words, deleted words, and the
  *       words of a correction (R-SHOW-07).
  *   <li>The words of a correction count only as a correction, not as inserted or deleted words
- *       (R-SHOW-17).
+ *       (R-SHOW-07).
  *   <li>If one known act made every difference, the summary names it (R-SHOW-06). If a difference
  *       has no known act, or two acts made the differences, it names none.
  * </ul>

@@ -71,8 +71,9 @@ Feature: Who made a change, and from when
       And the difference at the deleted Article 23(1)(a)
       Then the difference has no tags
 
-  Rule: R-WHO-04 The tags come before Cellar
-    If the tags name an act of a text, Cellar's other acts of that text are left out.
+  Rule: R-WHO-04 The tags, else Cellar, name the acts
+    For each text, the tags decide which acts are named. Cellar names the acts only of a text whose
+    acts no tag names.
 
     Example: Cellar also names an act of the text that the tag names
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 1 October 2026
@@ -82,22 +83,6 @@ Feature: Who made a change, and from when
         | text of       | modification | acts     |
         | 15 March 2021 | inserted     | 2021/255 |
       But 2019/413 is not named
-
-  Rule: R-WHO-05 Acts that changed an occurrence together
-    Acts whose tags say that they replaced the same occurrence changed it together. They are in one
-    step.
-
-    Example: Two acts replaced a point together
-      Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021
-      And the difference at the changed point 11.1.2
-      When the reader asks who made it
-      Then the steps are
-        | text of          | modification | acts                  |
-        | 2 July 2020      | replaced     | 2020/910              |
-        | 31 December 2021 | replaced     | 2019/103 and 2019/1583 |
-
-  Rule: R-WHO-06 Only Cellar names the act
-    Where the text has no tag of an act, each act that Cellar names for the occurrence is named.
 
     Example: Cellar names one act
       Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
@@ -115,6 +100,19 @@ Feature: Who made a change, and from when
         | text of     | modification | acts      |
         | 1 July 2022 | replaced     | 2022/1174 |
         | 26 May 2024 | deleted      | 2024/1255 |
+
+  Rule: R-WHO-05 Acts that changed an occurrence together
+    Acts whose tags say that they replaced the same occurrence changed it together. They are one
+    step, in the first text that includes all of them.
+
+    Example: Two acts replaced a point together
+      Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021
+      And the difference at the changed point 11.1.2
+      When the reader asks who made it
+      Then the steps are
+        | text of          | modification | acts                  |
+        | 2 July 2020      | replaced     | 2020/910              |
+        | 31 December 2021 | replaced     | 2019/103 and 2019/1583 |
 
   Rule: R-WHO-07 Nothing names the act
     Where no tag and no amendment in Cellar names an act for a difference, the sidenote does not
@@ -229,8 +227,7 @@ Feature: Who made a change, and from when
 
   Rule: R-WHO-12 The act that the tags name was last
     The act that the tags name was the last act to change the occurrence. So it comes after the
-    acts that only Cellar names, even if an earlier text includes it. Acts that changed the
-    occurrence together are in the first text that includes all of them.
+    acts that only Cellar names, even if an earlier text includes it.
 
     Example: The tagged act comes after an act that only Cellar names
       Given the comparison of the texts of 2015/1998 of 15 November 2015 and of 31 December 2021
@@ -240,15 +237,6 @@ Feature: Who made a change, and from when
         | text of          | modification | acts     |
         | 15 March 2021    | replaced     | 2019/413 |
         | 31 December 2021 | replaced     | 2019/103 |
-
-    Example: Acts that changed a point together are in the first text that includes them all
-      Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 31 December 2021
-      And the difference at the changed point 11.1.2
-      When the reader asks who made it
-      Then the steps are
-        | text of          | modification | acts                  |
-        | 2 July 2020      | replaced     | 2020/910              |
-        | 31 December 2021 | replaced     | 2019/103 and 2019/1583 |
 
   Rule: R-WHO-13 The modification of each step
     A sidenote names each act with what it did to the occurrence in its step: its modification.
@@ -293,11 +281,10 @@ Feature: Who made a change, and from when
         | deleted  | deleted      |
         | changed  | amended      |
 
-  Rule: R-WHO-22 A new tag of an act that applies in parts
+  Rule: R-WHO-22 A tag of an act that applies in parts
     An act that an earlier text includes already can change the text again, when a later part of
-    it applies. Its tag on the occurrence names it as an act of the change, if the earlier text
-    does not have the tag and one of the act's dates falls after the earlier day, up to the later
-    day. The change applies from that day.
+    it applies. It is named for a change if its tag is on the occurrence and one of its dates falls
+    after the earlier day, up to the later day. The change applies from that day.
 
     Example: A directive that applies in part from the day of the later text
       Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026

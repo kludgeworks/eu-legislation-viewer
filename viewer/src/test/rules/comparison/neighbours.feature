@@ -15,10 +15,10 @@ Feature: The neighbours of a difference
         | 2026/449 | replaced     | point 1.2.2.3 |
 
   Rule: R-WHO-21 What last made a neighbour as it is
-    Beside a neighbour, the Synopsis says what last made it as it is: the act that the texts
-    include last, up to the later text, among the acts that the neighbour's tags name. A
-    corrigendum is left out. If no such act is included, the neighbour is as in the original act.
-    It is dated from that act's dates, or from the original act's.
+    Beside a neighbour, the Synopsis says what last made it as it is: the act that its tags name
+    and that was last (R-WHO-12), up to the later text. A corrigendum corrects and does not change
+    the act (R-WHO-10), so it is left out. If no such act is included, the neighbour is as in the
+    original act. It is dated from that act's dates, or from the original act's.
 
     Example: The act that the texts include last, among the acts of the tags
       Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021

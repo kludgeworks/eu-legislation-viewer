@@ -95,7 +95,7 @@ public sealed interface Applicability {
   /**
    * Returns when {@code amending} applies, from its dates in {@code act} ({@link Act#applying}).
    * {@code days} are the days that may choose the date among the act's dates (R-WHO-16). If none
-   * chooses one, the act applies in parts (R-WHO-17). Returns empty where Cellar has no dates of
+   * chooses one, the act applies in parts (R-WHO-16). Returns empty where Cellar has no dates of
    * the act, or where the act applies from a day that no clause that Cellar names sets (R-WHO-18).
    */
   static Optional<Applicability> of(Act act, ActIdentifier amending, Set<LocalDate> days) {

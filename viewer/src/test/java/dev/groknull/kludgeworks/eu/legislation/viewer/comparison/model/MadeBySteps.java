@@ -29,10 +29,10 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules about which acts made a difference, and in which steps (R-WHO-01,
- * R-WHO-03, R-WHO-04, R-WHO-05, R-WHO-06, R-WHO-07, R-WHO-09, R-WHO-11, R-WHO-12, R-WHO-22). The
- * difference is the one that the Differ finds between the converter's sample texts of the
- * comparison ({@link Comparing}), with Cellar's recorded amendments of its occurrence. The steps
- * reach the domain only: {@link Attribution}, {@link Differ} and the catalogue's acts.
+ * R-WHO-03, R-WHO-04, R-WHO-05, R-WHO-07, R-WHO-09, R-WHO-11, R-WHO-12, R-WHO-22). The difference
+ * is the one that the Differ finds between the converter's sample texts of the comparison ({@link
+ * Comparing}), with Cellar's recorded amendments of its occurrence. The steps reach the domain
+ * only: {@link Attribution}, {@link Differ} and the catalogue's acts.
  */
 public class MadeBySteps {
   private final Comparing comparing;

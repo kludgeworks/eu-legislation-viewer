@@ -37,7 +37,8 @@ Feature: What the summary and the legend of a comparison say
   Rule: R-SHOW-07 The legend names only the edits that the page shows
     The legend names inserted words, deleted words and the words of a correction, each only if the
     page shows some. An inserted occurrence shows all its words inserted, and a deleted occurrence
-    shows all its words deleted.
+    shows all its words deleted. The inserted and deleted words of a correction count only as the
+    words of a correction.
 
     Example: Only inserted words
       Given the page shows these differences
@@ -71,10 +72,6 @@ Feature: What the summary and the legend of a comparison say
       Then the legend shows
         | inserted words | deleted words | a correction |
         | no             | no            | yes          |
-
-  Rule: R-SHOW-17 The words of a correction are only a correction
-    The inserted and deleted words of a correction count as the words of a correction, not as
-    inserted or deleted words.
 
     Example: A correction with inserted words, and an amendment with deleted words
       Given the page shows these differences

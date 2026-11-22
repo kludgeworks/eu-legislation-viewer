@@ -28,17 +28,12 @@ Feature: How the occurrences of two texts pair
       And point 15 of the later text pairs with point 14 of the earlier text
 
   Rule: R-DIFF-11 An occurrence that moved
-    An occurrence that moved into the occurrence before it pairs with what it was. So does an
-    occurrence that moved out of the occurrence before it. The two need the same number. If neither
-    has a number, they need words that are alike. An occurrence that moved further, into other
-    occurrences or out of them, pairs with the occurrence of the other text that pairs with none
-    and has the same last part of its place, for example the "(a)" of point 6.8.3.6(a), if all of
-    these are true:
-    - each occurrence that the two are in pairs. An occurrence in an inserted or deleted occurrence
-      shows whole with it, so it does not pair.
-    - no other occurrence that pairs with none has that last part in the nearest occurrences that
-      hold the two and pair with each other. The whole text holds them if none do.
-    - the two have the same number, and the same words or words that are alike.
+    An occurrence that moved into the occurrence before it, or out of it, pairs with what it was.
+    The two need the same number. If neither has a number, they need words that are alike. An
+    occurrence that moved further pairs with the one occurrence of the other text that pairs with
+    nothing else and has the same number and the same or alike words. If two occurrences could be
+    that one, it pairs with none. An occurrence in an inserted or deleted occurrence shows whole
+    with it, so it does not pair.
 
     Example: A point that moved into the point before it
       Given the comparison of the texts of 2015/1998 of 2 July 2020 and of 15 March 2021
@@ -60,7 +55,7 @@ Feature: How the occurrences of two texts pair
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 22 March 2026
       Then point 12.9.3.14 of the later text has no pair in the earlier text
 
-    Example: Another point that pairs with none has the same segment
+    Example: Two points could be the one that a point moved to
       Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
       Then point 6.8.5.1(a) of the later text has no pair in the earlier text
 

@@ -13,10 +13,11 @@ Feature: From when a change applies
       Then it applies from 1 June 2017
       And no act moved the date
 
-  Rule: R-WHO-16 Cellar's day for the occurrence
+  Rule: R-WHO-16 Cellar's day for the occurrence, else the parts
     Cellar can give a day for the change at the occurrence. That day chooses the date if it is one
-    of the act's dates and it is after From. A day that is not after From is stale: the earlier text
-    does not have the change, so the change does not apply from that day.
+    of the act's dates and it is after From. A day that is not after From is stale: the earlier
+    text does not have the change. If no day chooses the date, the act applies in parts, and the
+    sidenote lists each day from which a part applies.
 
     Example: Cellar's day is one of the act's dates, after From
       Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
@@ -41,18 +42,6 @@ Feature: From when a change applies
         | from             | what                 |
         | 1 February 2019  | its entry into force |
         | 31 December 2021 | a part               |
-
-  Rule: R-WHO-17 An act that applies in parts
-    If no day chooses the date, the act applies in parts, and the sidenote lists each day from
-    which a part applies.
-
-    Example: Cellar gives no day for the occurrence
-      Given the comparison of the texts of 2015/1998 of 22 March 2026 and of 1 October 2026
-      When the reader asks from when the change of 2026/449 applies
-      Then it applies in parts
-        | from            | what                 |
-        | 22 March 2026   | its entry into force |
-        | 1 October 2026  | a part               |
 
   Rule: R-WHO-18 No day known
     If Cellar has no day for the act's application, a clause of the act sets the day, and the
