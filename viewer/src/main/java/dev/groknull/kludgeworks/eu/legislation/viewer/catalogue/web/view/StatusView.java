@@ -119,7 +119,10 @@ public record StatusView(String day, List<Line> lines, List<Line> more) {
     var day = Dates.inWords(from);
     var href = Links.amending(eli, divergence.act(), asked.equals(today) ? null : asked, language);
     var count =
-        divergence.places().stream().map(place -> place.location().name()).distinct().count();
+        divergence.places().stream()
+            .map(place -> place.location().place().words())
+            .distinct()
+            .count();
     return switch (divergence.kind()) {
       case PROSPECTIVE ->
           new Line(

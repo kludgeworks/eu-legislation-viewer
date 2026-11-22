@@ -285,7 +285,7 @@ public record AmendingView(
         step == null ? List.<String>of() : Act.occurrences(change, step.later(), step.earlier());
     var days = Act.days(change);
     var state = act.stateOn(amending, days, day);
-    var name = change.location().name();
+    var name = change.location().place().words();
     var statement = States.statement(act, amending, days, day, past);
     return new Change(
         name.isEmpty() ? change.location().code() : name,

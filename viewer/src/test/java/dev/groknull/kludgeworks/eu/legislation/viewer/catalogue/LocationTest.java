@@ -4,6 +4,7 @@ package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.Location.Found;
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import java.util.List;
 import java.util.Optional;
 import org.junit.jupiter.api.Test;
@@ -138,25 +139,55 @@ class LocationTest {
 
   @Test
   void citesTheOccurrenceItNames() {
-    assertThat(new Location("AN PO 1.2.3").name()).isEqualTo("point 1.2.3");
-    assertThat(new Location("AN PO 8.1.2.3 PTA (c)").name()).isEqualTo("point 8.1.2.3(c)");
-    assertThat(new Location("AR 89 PA 1 ALN 1").name()).isEqualTo("Article 89(1)");
-    assertThat(new Location("AN PO 11.1.2 FR").name()).isEqualTo("point 11.1.2");
-    assertThat(new Location("AN CHA 5 APP 5-A").name()).isEqualTo("Appendix 5-A");
-    assertThat(new Location("AN CHA 6 PO 6.8.1.6").name()).isEqualTo("point 6.8.1.6");
-    assertThat(new Location("AR 1 PA 4 PO (c) PT (v)").name()).isEqualTo("Article 1(4)(c)(v)");
+    assertThat(new Location("AN PO 1.2.3").place().words()).isEqualTo("point 1.2.3");
+    assertThat(new Location("AN PO 8.1.2.3 PTA (c)").place().words()).isEqualTo("point 8.1.2.3(c)");
+    assertThat(new Location("AR 89 PA 1 ALN 1").place().words()).isEqualTo("Article 89(1)");
+    assertThat(new Location("AN PO 11.1.2 FR").place().words()).isEqualTo("point 11.1.2");
+    assertThat(new Location("AN CHA 5 APP 5-A").place().words()).isEqualTo("Appendix 5-A");
+    assertThat(new Location("AN CHA 6 PO 6.8.1.6").place().words()).isEqualTo("point 6.8.1.6");
+    assertThat(new Location("AR 1 PA 4 PO (c) PT (v)").place().words())
+        .isEqualTo("Article 1(4)(c)(v)");
   }
 
   @Test
   void citesTheOccurrencesThatHoldTheOccurrenceItNames() {
-    assertThat(new Location("AN APP 4-C PTA (c) TIRE 6").name())
+    assertThat(new Location("AN APP 4-C PTA (c) TIRE 6").place().words())
         .isEqualTo("Appendix 4-C, point (c), indent 6");
-    assertThat(new Location("AN PO 1.2.6.2 PA 2").name()).isEqualTo("point 1.2.6.2, paragraph 2");
-    assertThat(new Location("AN II PRT VI SCT 3.3").name())
+    assertThat(new Location("AN PO 1.2.6.2 PA 2").place().words())
+        .isEqualTo("point 1.2.6.2, paragraph 2");
+    assertThat(new Location("AN II PRT VI SCT 3.3").place().words())
         .isEqualTo("Annex II, Part VI, Section 3.3");
-    assertThat(new Location("AN V PRT B PTA (C)").name()).isEqualTo("Annex V, Part B, point (C)");
-    assertThat(new Location("CHA IXA").name()).isEqualTo("Chapter IXA");
-    assertThat(new Location("CHA III AR 5").name()).isEqualTo("Article 5");
+    assertThat(new Location("AN V PRT B PTA (C)").place().words())
+        .isEqualTo("Annex V, Part B, point (C)");
+    assertThat(new Location("CHA IXA").place().words()).isEqualTo("Chapter IXA");
+    assertThat(new Location("CHA III AR 5").place().words()).isEqualTo("Article 5");
+  }
+
+  @Test
+  void codesAPlaceSoThatItNamesThePlaceAgain() {
+    for (var code :
+        List.of(
+            "AN PO 1.2.3",
+            "AN PO 8.1.2.3 PTA (c)",
+            "AR 89 PA 1",
+            "AR 1 PA 4 PO (c) PT (v)",
+            "AN APP 4-C PTA (c) TIRE 6",
+            "AN PO 1.2.6.2 PA 2",
+            "AN II PRT VI SCT 3.3",
+            "AN V PRT B PTA (C)",
+            "CHA IXA")) {
+      var place = new Location(code).place();
+      assertThat(Location.of(place).place()).as(code).isEqualTo(place);
+    }
+  }
+
+  @Test
+  void findsAPlaceAmongTheOccurrencesOfAText() {
+    assertThat(Location.of(new Place("point 8.1.2.3(c)")).in(AVSEC))
+        .contains(exact("anx/pnt_8.1.2.3/pnt_c"));
+    assertThat(Location.of(new Place("Article 1(4)(c)(v)")).in(EMIR))
+        .contains(exact("art_1/par_4/pnt_c/pnt_v"));
+    assertThat(Location.of(new Place("Article 89(5a)")).in(EMIR)).contains(exact("art_89/par_5a"));
   }
 
   /** The eIds are from 2018/1862, 692/2008 and 923/2012. */

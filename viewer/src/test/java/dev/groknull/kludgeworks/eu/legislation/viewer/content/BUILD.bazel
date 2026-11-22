@@ -1,6 +1,24 @@
 # SPDX-License-Identifier: MIT
 load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library", "java_test_suite")
 
+# The content module's domain: how a place is named. One test target per *Test.java
+java_test_suite(
+    name = "content",
+    size = "small",
+    srcs = glob(["*Test.java"]),
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)
+
 # Legal texts stored in Postgres in a container, and read back from it; needs Docker
 java_junit5_test(
     name = "ContentTests",

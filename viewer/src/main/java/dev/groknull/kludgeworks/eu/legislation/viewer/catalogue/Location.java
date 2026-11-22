@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 package dev.groknull.kludgeworks.eu.legislation.viewer.catalogue;
 
+import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -448,30 +449,30 @@ public record Location(String code) {
           Map.entry("CHA", "Chapter"),
           Map.entry("APP", "Appendix"));
 
+  /** The code of each noun of a place, but a point, whose code depends on its number. */
+  private static final Map<String, String> CODES =
+      Map.ofEntries(
+          Map.entry("Article", "AR"),
+          Map.entry("paragraph", "PA"),
+          Map.entry("subparagraph", "ALN"),
+          Map.entry("Section", "SCT"),
+          Map.entry("Subsection", "SBS"),
+          Map.entry("Part", "PRT"),
+          Map.entry("indent", "TIRE"),
+          Map.entry("Annex", "AN"),
+          Map.entry("Title", "TIT"),
+          Map.entry("Chapter", "CHA"),
+          Map.entry("Appendix", "APP"));
+
   /**
-   * Returns the occurrence that it names, as a page cites it, with the occurrences that hold it.
-   * For example:
-   *
-   * <ul>
-   *   <li>point 1.2.3
-   *   <li>point 8.1.2.3(c), where a lettered point follows the point that it is in
-   *   <li>Article 89(1)
-   *   <li>Annex II, Part VI, Section 3.3
-   *   <li>Appendix 4-C, point (c), indent 6
-   *   <li>point 1.2.6.2, paragraph 2
-   *   <li>the annex, for the one annex of an act.
-   * </ul>
-   *
-   * <p>An occurrence that holds the next one is left out where the next one tells it: an article is
-   * numbered across the act, point 6.8.1.6 is in chapter 6, and Appendix 5-A is in chapter 5. The
-   * one annex of an act is left out too. What is finer than an occurrence, such as a sentence or a
-   * subparagraph, is left out.
+   * Returns the place that it names, as a page cites it, with the occurrences that hold it ({@link
+   * Place#of(List)}). For example, "point 8.1.2.3(c)", "Article 89(1)" or "Annex II, Part VI,
+   * Section 3.3". A code that is not an occurrence, and what is finer than an occurrence, such as a
+   * sentence, is left out. If no code names an occurrence, the place is the code.
    */
-  public String name() {
+  public Place place() {
     var tokens = tokens();
-    var levels = new ArrayList<String>();
-    String noun = null;
-    var cited = "";
+    var levels = new ArrayList<Place.Level>();
     for (var i = 0; i < tokens.size(); i++) {
       var token = tokens.get(i);
       var next = i + 1 < tokens.size() ? tokens.get(i + 1) : null;
@@ -481,51 +482,34 @@ public record Location(String code) {
         continue;
       }
       if (!numbered || next == null) {
-        if (token.equals("AN")) {
-          noun = "the annex";
-          cited = "";
-        }
+        levels.add(new Place.Level(NOUNS.get(token), ""));
         continue;
       }
       i++;
-      var number = next.replace("\"", "");
-      // A point (c) of point 8.1.2.3, or a paragraph (1) of Article 89, is cited after the
-      // occurrence
-      // that it is in. A subparagraph is not cited.
-      if (token.equals("ALN") && noun != null) {
-        continue;
-      } else if (number.startsWith("(")
-          && ("Article".equals(noun) || "point".equals(noun))
-          && !cited.isEmpty()) {
-        cited += number;
-      } else if (token.equals("PA") && "Article".equals(noun)) {
-        cited += "(" + number + ")";
-      } else {
-        if (token.equals("AR")) {
-          levels.clear();
-        } else if (noun != null && holds(noun, cited, number)) {
-          levels.add(cited.isEmpty() ? noun : noun + " " + cited);
-        }
-        noun = NOUNS.get(token);
-        cited = number;
-      }
+      levels.add(new Place.Level(NOUNS.get(token), next.replace("\"", "")));
     }
-    if (noun == null) {
-      return code;
-    }
-    levels.add(cited.isEmpty() ? noun : noun + " " + cited);
-    return String.join(", ", levels);
+    return Place.of(levels).orElseGet(() -> new Place(code));
   }
 
   /**
-   * Returns whether the name of an occurrence keeps the occurrence {@code noun} {@code cited} that
-   * holds it, where the occurrence is numbered {@code number}. It does not keep the one annex of an
-   * act, or an occurrence whose number starts the number of the occurrence: point 6.8.1.6 is in
-   * chapter 6.
+   * Returns the location of {@code place}, as Cellar would code it. For example, "point 8.1.2.3(c)"
+   * is {@code PO 8.1.2.3 PTA (c)}. {@link #in} then finds it among the occurrences of a text.
+   *
+   * @throws IllegalArgumentException if a level of the place has no code
    */
-  private static boolean holds(String noun, String cited, String number) {
-    return !cited.isEmpty() && !number.startsWith(cited + ".") && !number.startsWith(cited + "-")
-        || !noun.equals("the annex") && cited.isEmpty();
+  public static Location of(Place place) {
+    var codes = new ArrayList<String>();
+    for (var level : place.levels()) {
+      var code =
+          level.noun().equals("point")
+              ? (level.number().startsWith("(") ? "PTA" : "PO")
+              : CODES.get(level.noun());
+      if (code == null) {
+        throw new IllegalArgumentException("No code for " + level.noun() + " in " + place);
+      }
+      codes.add(level.number().isEmpty() ? code : code + " " + level.number());
+    }
+    return new Location(String.join(" ", codes));
   }
 
   /**

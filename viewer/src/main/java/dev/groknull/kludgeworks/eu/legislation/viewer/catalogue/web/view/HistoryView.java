@@ -305,7 +305,7 @@ public record HistoryView(
     static Corrigendum of(Act act, ActIdentifier each, Language language) {
       var places =
           act.changesBy(each, language).stream()
-              .map(change -> change.location().name())
+              .map(change -> change.location().place().words())
               .filter(name -> !name.isEmpty())
               .distinct()
               .collect(Collectors.joining(", "));

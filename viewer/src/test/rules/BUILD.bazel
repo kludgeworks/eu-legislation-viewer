@@ -1,0 +1,41 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_junit5_test", "java_library")
+
+# The business rules, as Gherkin features: one feature per area of rules, in the folder of the
+# module whose domain applies them. Each module's rules suite (a Cucumber suite) runs its own, and
+# the wiki is written from the run (//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules)
+java_library(
+    name = "rules",
+    testonly = True,
+    resource_strip_prefix = "viewer/src/test",
+    resources = glob(["**/*.feature"]),
+    visibility = ["//viewer:__subpackages__"],
+)
+
+# The features as files, for the wiki's writer to compare with those of the last release
+filegroup(
+    name = "features",
+    srcs = glob(["**/*.feature"]),
+    visibility = ["//visibility:public"],
+)
+
+# Each rule has an identifier and an example, on each build, not only when the wiki is written
+java_junit5_test(
+    name = "RulesCheckTest",
+    size = "small",
+    srcs = ["RulesCheckTest.java"],
+    data = [":features"],
+    test_class = "rules.RulesCheckTest",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+        "@rules_java//java/runfiles",
+    ],
+)

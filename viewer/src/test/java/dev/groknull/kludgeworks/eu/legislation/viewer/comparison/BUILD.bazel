@@ -106,6 +106,43 @@ java_test_suite(
     ],
 )
 
+# model/ (the rules)
+# The business rules that the comparison's domain applies (viewer/src/test/rules/comparison), run
+# by Cucumber. The steps depend on the domains of the comparison, the content and the catalogue
+# only: a rule that only a view or a controller applies cannot be tested here
+java_junit5_test(
+    name = "rules",
+    size = "small",
+    srcs = [
+        "model/ComparisonRules.java",
+        "model/TagsSteps.java",
+    ],
+    test_class = "dev.groknull.kludgeworks.eu.legislation.viewer.comparison.model.ComparisonRules",
+    runtime_deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
+        "//viewer/src/test/rules",
+        "@maven//:io_cucumber_cucumber_junit_platform_engine",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",  # the runner checks for Jupiter
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+        "@maven//:org_junit_platform_junit_platform_suite_engine",
+    ],
+    deps = [
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/catalogue",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/comparison:model",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content",
+        "//viewer/src/main/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:model",
+        "//viewer/src/test/java/dev/groknull/kludgeworks/eu/legislation/viewer/content:legal-texts",
+        "@maven//:io_cucumber_cucumber_java",
+        "@maven//:io_cucumber_cucumber_junit_platform_engine",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_platform_junit_platform_suite_api",
+    ],
+)
+
 # web/
 # The comparison's fragments of the compare page as a browser loads them, once the page has its texts
 # built; Postgres in a container, so it needs Docker

@@ -17,6 +17,12 @@
     "gg.jte:jte-jspecify-nullmarked": 309952362,
     "gg.jte:jte-models": -1524283569,
     "gg.jte:jte-spring-boot-starter-4": 423603224,
+    "io.cucumber:cucumber-bom": -1207484760,
+    "io.cucumber:cucumber-java": -1759658435,
+    "io.cucumber:cucumber-junit-platform-engine": 1021216378,
+    "io.cucumber:gherkin": 745356612,
+    "io.cucumber:messages": -1569296892,
+    "io.cucumber:messages-ndjson": 1811082407,
     "io.github.java-diff-utils:java-diff-utils": 1977050384,
     "io.github.wimdeblauwe:htmx-spring-boot": 602530914,
     "io.soabase.record-builder:record-builder-core": -1681324538,
@@ -49,6 +55,7 @@
     "org.junit.jupiter:junit-jupiter-params": 1082310006,
     "org.junit.platform:junit-platform-launcher": -354104948,
     "org.junit.platform:junit-platform-reporting": 1896713402,
+    "org.junit.platform:junit-platform-suite": 355404036,
     "org.mockito:mockito-core": -554630660,
     "org.postgresql:postgresql": -253651910,
     "org.slf4j:slf4j-jdk14": 1467713585,
@@ -143,6 +150,28 @@
     "gg.jte:jte-runtime": 1392871138,
     "gg.jte:jte-spring-boot-starter-4": -1868450011,
     "gg.jte:jte-spring-boot-starter-4-core": -2012820981,
+    "io.cucumber:ci-environment": 1156668929,
+    "io.cucumber:cucumber-core": 889772482,
+    "io.cucumber:cucumber-expressions": 1967106455,
+    "io.cucumber:cucumber-gherkin": 127322962,
+    "io.cucumber:cucumber-gherkin-messages": 1143615394,
+    "io.cucumber:cucumber-java": -1042734355,
+    "io.cucumber:cucumber-json-formatter": 1837595420,
+    "io.cucumber:cucumber-junit-platform-engine": -1283067372,
+    "io.cucumber:cucumber-plugin": 1869356427,
+    "io.cucumber:datatable": 1337473372,
+    "io.cucumber:docstring": -2118596515,
+    "io.cucumber:gherkin": 1139127747,
+    "io.cucumber:html-formatter": -1294939548,
+    "io.cucumber:junit-xml-formatter": 950499204,
+    "io.cucumber:messages": 1084697440,
+    "io.cucumber:messages-ndjson": 1069983378,
+    "io.cucumber:pretty-formatter": 370738824,
+    "io.cucumber:query": 1193247457,
+    "io.cucumber:tag-expressions": -818722343,
+    "io.cucumber:teamcity-formatter": 1830249958,
+    "io.cucumber:testng-xml-formatter": 637728436,
+    "io.cucumber:usage-formatter": 1950002596,
     "io.github.java-diff-utils:java-diff-utils": 668781851,
     "io.github.wimdeblauwe:htmx-spring-boot": -826947741,
     "io.lettuce:lettuce-core": 1593187343,
@@ -243,6 +272,9 @@
     "org.junit.platform:junit-platform-engine": 389656162,
     "org.junit.platform:junit-platform-launcher": 2084826755,
     "org.junit.platform:junit-platform-reporting": 2140994334,
+    "org.junit.platform:junit-platform-suite": 318612140,
+    "org.junit.platform:junit-platform-suite-api": 159707866,
+    "org.junit.platform:junit-platform-suite-engine": -1493391530,
     "org.mockito:mockito-core": -1124945457,
     "org.objenesis:objenesis": 1798216877,
     "org.opentest4j.reporting:open-test-reporting-tooling-spi": 1212162497,
@@ -375,6 +407,11 @@
     "com.google.errorprone:error_prone_annotations:2.5.1": "com.google.errorprone:error_prone_annotations:2.50.0",
     "com.google.guava:guava:32.0.1-jre": "com.google.guava:guava:33.6.0-jre",
     "com.google.j2objc:j2objc-annotations:2.8": "com.google.j2objc:j2objc-annotations:3.1",
+    "io.cucumber:cucumber-java": "io.cucumber:cucumber-java:8.1.0",
+    "io.cucumber:cucumber-junit-platform-engine": "io.cucumber:cucumber-junit-platform-engine:8.1.0",
+    "io.cucumber:gherkin": "io.cucumber:gherkin:43.0.0",
+    "io.cucumber:messages": "io.cucumber:messages:35.0.0",
+    "io.cucumber:messages-ndjson": "io.cucumber:messages-ndjson:0.6.0",
     "jakarta.servlet:jakarta.servlet-api": "jakarta.servlet:jakarta.servlet-api:6.1.0",
     "jakarta.validation:jakarta.validation-api": "jakarta.validation:jakarta.validation-api:3.1.1",
     "org.assertj:assertj-core": "org.assertj:assertj-core:3.27.7",
@@ -397,6 +434,7 @@
     "org.junit.jupiter:junit-jupiter-params": "org.junit.jupiter:junit-jupiter-params:6.0.3",
     "org.junit.platform:junit-platform-launcher": "org.junit.platform:junit-platform-launcher:6.0.3",
     "org.junit.platform:junit-platform-reporting": "org.junit.platform:junit-platform-reporting:6.0.3",
+    "org.junit.platform:junit-platform-suite": "org.junit.platform:junit-platform-suite:6.0.3",
     "org.mockito:mockito-core": "org.mockito:mockito-core:5.23.0",
     "org.postgresql:postgresql": "org.postgresql:postgresql:42.7.13",
     "org.slf4j:slf4j-simple": "org.slf4j:slf4j-simple:2.0.18",
@@ -711,6 +749,138 @@
         "jar": "58c0f8ba8dc389cc370febc856425ec2963ed387570fddf94a1c07aa4c61145f"
       },
       "version": "3.2.5"
+    },
+    "io.cucumber:ci-environment": {
+      "shasums": {
+        "jar": "c15662b21fa0b2770f9fd3be09c012daeb1ba25ae02585bb9b6f3e0f00b27888"
+      },
+      "version": "15.1.0"
+    },
+    "io.cucumber:cucumber-core": {
+      "shasums": {
+        "jar": "e0cb8fd3fc75a8588a1169eb026c2ae6c8dcfc448e23b38f5dad11e0b15ef38f"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:cucumber-expressions": {
+      "shasums": {
+        "jar": "578747fb19c07887f4e5fdffbb24067d759579785495d8799a7a2919c7debf50"
+      },
+      "version": "20.2.0"
+    },
+    "io.cucumber:cucumber-gherkin": {
+      "shasums": {
+        "jar": "345e7847d6b849a8b7adfd72d3c059d25c867508e082912db9e356580838b5ce"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:cucumber-gherkin-messages": {
+      "shasums": {
+        "jar": "d4f94031614f5d5894afcdd9ed8063ab60e4c590c7a5380e8e6e6072a0e4f93a"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:cucumber-java": {
+      "shasums": {
+        "jar": "785ab213992d3d4cbe97c4c670f256eeed09a0c68c60d9ec9675b61f47937cca"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:cucumber-json-formatter": {
+      "shasums": {
+        "jar": "e08ac419e92320321b20b6d7db425252b2d44237a37a3cb4516e5e14cd566491"
+      },
+      "version": "0.5.0"
+    },
+    "io.cucumber:cucumber-junit-platform-engine": {
+      "shasums": {
+        "jar": "3f6d177ed621e8e193caa148c22f0debd05855e43879ab079812f1835dd1c4cf"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:cucumber-plugin": {
+      "shasums": {
+        "jar": "589ee6c6edfe05bf26fa1b78a683d1874f99d5e9d10a21ba4d2e9353c8949faa"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:datatable": {
+      "shasums": {
+        "jar": "d329986af9cc589ce600f8f90aa3e73837b4887e0a2e3a30c49fb4d77c5c21bf"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:docstring": {
+      "shasums": {
+        "jar": "ee5df9395e17b506f5858ff0a451eace854d271859238ae2aa8a62559a5a223b"
+      },
+      "version": "8.1.0"
+    },
+    "io.cucumber:gherkin": {
+      "shasums": {
+        "jar": "c3dcba59e3d47b0800dbedbe9cfb9fcc324ab37741b29238b6ce0390b03de5ff"
+      },
+      "version": "43.0.0"
+    },
+    "io.cucumber:html-formatter": {
+      "shasums": {
+        "jar": "0d5abbd29e20a200006c50b14b55b7af05debb341b38c46ad71250afa2309d9b"
+      },
+      "version": "24.4.0"
+    },
+    "io.cucumber:junit-xml-formatter": {
+      "shasums": {
+        "jar": "1d1e0a680fa420d17eaea201f1522633e15a4b894c5fabf0a061703fad96637b"
+      },
+      "version": "0.17.0"
+    },
+    "io.cucumber:messages": {
+      "shasums": {
+        "jar": "e1bed2c09852717958d250e76dec73e5f764c46b9bbe7c3a606662cde1644e17"
+      },
+      "version": "35.0.0"
+    },
+    "io.cucumber:messages-ndjson": {
+      "shasums": {
+        "jar": "c5b1b9fd40bc219ff5055285786ab002755b4672a933d1180c1451de1575268e"
+      },
+      "version": "0.6.0"
+    },
+    "io.cucumber:pretty-formatter": {
+      "shasums": {
+        "jar": "924194f758c43e9c919195b511efbb714bfd4ece9cab79b7e3b322d8eb5a5da4"
+      },
+      "version": "4.3.0"
+    },
+    "io.cucumber:query": {
+      "shasums": {
+        "jar": "5567a1d594b3634948631fed4602352315a556f28d9c818f8d574496d16b6159"
+      },
+      "version": "16.4.0"
+    },
+    "io.cucumber:tag-expressions": {
+      "shasums": {
+        "jar": "d44cd0b2c9078502752e8842aacd3b5263dc42ab98b28091ba0be18b06950588"
+      },
+      "version": "11.2.0"
+    },
+    "io.cucumber:teamcity-formatter": {
+      "shasums": {
+        "jar": "ba71cce7b70fd04df2d45fd59212331b1aa2dff4410f37bd6364b5afb37ca711"
+      },
+      "version": "0.5.0"
+    },
+    "io.cucumber:testng-xml-formatter": {
+      "shasums": {
+        "jar": "1ca265dcc3c416d3f8cd0180a2ca74ac96de36949b54a7ae0587f0184f7f54cd"
+      },
+      "version": "0.11.0"
+    },
+    "io.cucumber:usage-formatter": {
+      "shasums": {
+        "jar": "021cf0df2d500f55876a1277cdcbb473bd1b21e821ea400d1e6fea95562ade27"
+      },
+      "version": "0.4.0"
     },
     "io.github.java-diff-utils:java-diff-utils": {
       "shasums": {
@@ -1309,6 +1479,24 @@
     "org.junit.platform:junit-platform-reporting": {
       "shasums": {
         "jar": "f19c5be871c37ebed493f3152b67a909f89a44dff67c2db8016dfe34167d5730"
+      },
+      "version": "6.0.3"
+    },
+    "org.junit.platform:junit-platform-suite": {
+      "shasums": {
+        "jar": "c5e290fcb7b876f6612cf451503156a3d2468b1894a2f7b6ea12c318d583f4ec"
+      },
+      "version": "6.0.3"
+    },
+    "org.junit.platform:junit-platform-suite-api": {
+      "shasums": {
+        "jar": "687fa996cd33b92311d156b13ac864772dd8ea0f18366903cf2a3bcbc2a2965e"
+      },
+      "version": "6.0.3"
+    },
+    "org.junit.platform:junit-platform-suite-engine": {
+      "shasums": {
+        "jar": "82a769b71805f2222958b44b1b5f1ca121214970e30deb58c8579ce9aebe485d"
       },
       "version": "6.0.3"
     },
@@ -2173,6 +2361,115 @@
       "gg.jte:jte",
       "org.springframework.boot:spring-boot-starter"
     ],
+    "io.cucumber:ci-environment": [
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:cucumber-core": [
+      "io.cucumber:ci-environment",
+      "io.cucumber:cucumber-expressions",
+      "io.cucumber:cucumber-gherkin",
+      "io.cucumber:cucumber-gherkin-messages",
+      "io.cucumber:cucumber-json-formatter",
+      "io.cucumber:cucumber-plugin",
+      "io.cucumber:datatable",
+      "io.cucumber:docstring",
+      "io.cucumber:html-formatter",
+      "io.cucumber:junit-xml-formatter",
+      "io.cucumber:messages",
+      "io.cucumber:messages-ndjson",
+      "io.cucumber:pretty-formatter",
+      "io.cucumber:tag-expressions",
+      "io.cucumber:teamcity-formatter",
+      "io.cucumber:testng-xml-formatter",
+      "io.cucumber:usage-formatter",
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:cucumber-expressions": [
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:cucumber-gherkin": [
+      "io.cucumber:cucumber-plugin",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:cucumber-gherkin-messages": [
+      "io.cucumber:cucumber-gherkin",
+      "io.cucumber:gherkin"
+    ],
+    "io.cucumber:cucumber-java": [
+      "io.cucumber:cucumber-core",
+      "org.apiguardian:apiguardian-api"
+    ],
+    "io.cucumber:cucumber-json-formatter": [
+      "io.cucumber:messages",
+      "io.cucumber:query",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:cucumber-junit-platform-engine": [
+      "io.cucumber:cucumber-core",
+      "org.junit.platform:junit-platform-engine"
+    ],
+    "io.cucumber:cucumber-plugin": [
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:datatable": [
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:docstring": [
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:gherkin": [
+      "io.cucumber:messages",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:html-formatter": [
+      "io.cucumber:messages",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:junit-xml-formatter": [
+      "io.cucumber:messages",
+      "io.cucumber:query",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:messages": [
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:messages-ndjson": [
+      "io.cucumber:messages",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:pretty-formatter": [
+      "io.cucumber:messages",
+      "io.cucumber:query",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:query": [
+      "io.cucumber:messages",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:tag-expressions": [
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:teamcity-formatter": [
+      "io.cucumber:messages",
+      "io.cucumber:query",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:testng-xml-formatter": [
+      "io.cucumber:messages",
+      "io.cucumber:query",
+      "org.jspecify:jspecify"
+    ],
+    "io.cucumber:usage-formatter": [
+      "io.cucumber:messages",
+      "io.cucumber:messages-ndjson",
+      "io.cucumber:query",
+      "org.jspecify:jspecify"
+    ],
     "io.github.wimdeblauwe:htmx-spring-boot": [
       "org.springframework.boot:spring-boot-starter"
     ],
@@ -2486,6 +2783,22 @@
       "org.jspecify:jspecify",
       "org.junit.platform:junit-platform-launcher",
       "org.opentest4j.reporting:open-test-reporting-tooling-spi"
+    ],
+    "org.junit.platform:junit-platform-suite": [
+      "org.junit.platform:junit-platform-suite-api",
+      "org.junit.platform:junit-platform-suite-engine"
+    ],
+    "org.junit.platform:junit-platform-suite-api": [
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify",
+      "org.junit.platform:junit-platform-commons"
+    ],
+    "org.junit.platform:junit-platform-suite-engine": [
+      "org.apiguardian:apiguardian-api",
+      "org.jspecify:jspecify",
+      "org.junit.platform:junit-platform-engine",
+      "org.junit.platform:junit-platform-launcher",
+      "org.junit.platform:junit-platform-suite-api"
     ],
     "org.mockito:mockito-core": [
       "net.bytebuddy:byte-buddy",
@@ -3604,6 +3917,172 @@
     ],
     "gg.jte:jte-spring-boot-starter-4-core": [
       "gg.jte.springframework.boot.autoconfigure"
+    ],
+    "io.cucumber:ci-environment": [
+      "io.cucumber.cienvironment"
+    ],
+    "io.cucumber:cucumber-core": [
+      "cucumber.api.cli",
+      "io.cucumber.core.backend",
+      "io.cucumber.core.backend.discovery",
+      "io.cucumber.core.cli",
+      "io.cucumber.core.eventbus",
+      "io.cucumber.core.exception",
+      "io.cucumber.core.feature",
+      "io.cucumber.core.filter",
+      "io.cucumber.core.logging",
+      "io.cucumber.core.options",
+      "io.cucumber.core.order",
+      "io.cucumber.core.plugin",
+      "io.cucumber.core.resource",
+      "io.cucumber.core.runner",
+      "io.cucumber.core.runtime",
+      "io.cucumber.core.snippets",
+      "io.cucumber.core.stepexpression"
+    ],
+    "io.cucumber:cucumber-expressions": [
+      "io.cucumber.cucumberexpressions"
+    ],
+    "io.cucumber:cucumber-gherkin": [
+      "io.cucumber.core.gherkin"
+    ],
+    "io.cucumber:cucumber-gherkin-messages": [
+      "io.cucumber.core.gherkin.messages"
+    ],
+    "io.cucumber:cucumber-java": [
+      "io.cucumber.java",
+      "io.cucumber.java.af",
+      "io.cucumber.java.am",
+      "io.cucumber.java.amh",
+      "io.cucumber.java.an",
+      "io.cucumber.java.ar",
+      "io.cucumber.java.ast",
+      "io.cucumber.java.az",
+      "io.cucumber.java.be",
+      "io.cucumber.java.bg",
+      "io.cucumber.java.bm",
+      "io.cucumber.java.bs",
+      "io.cucumber.java.ca",
+      "io.cucumber.java.cs",
+      "io.cucumber.java.cy_gb",
+      "io.cucumber.java.da",
+      "io.cucumber.java.de",
+      "io.cucumber.java.el",
+      "io.cucumber.java.em",
+      "io.cucumber.java.en",
+      "io.cucumber.java.en_au",
+      "io.cucumber.java.en_lol",
+      "io.cucumber.java.en_old",
+      "io.cucumber.java.en_pirate",
+      "io.cucumber.java.en_scouse",
+      "io.cucumber.java.en_tx",
+      "io.cucumber.java.eo",
+      "io.cucumber.java.es",
+      "io.cucumber.java.et",
+      "io.cucumber.java.fa",
+      "io.cucumber.java.fi",
+      "io.cucumber.java.fr",
+      "io.cucumber.java.ga",
+      "io.cucumber.java.gj",
+      "io.cucumber.java.gl",
+      "io.cucumber.java.he",
+      "io.cucumber.java.hi",
+      "io.cucumber.java.hr",
+      "io.cucumber.java.ht",
+      "io.cucumber.java.hu",
+      "io.cucumber.java.id",
+      "io.cucumber.java.is",
+      "io.cucumber.java.it",
+      "io.cucumber.java.ja",
+      "io.cucumber.java.jv",
+      "io.cucumber.java.ka",
+      "io.cucumber.java.kn",
+      "io.cucumber.java.ko",
+      "io.cucumber.java.lt",
+      "io.cucumber.java.lu",
+      "io.cucumber.java.lv",
+      "io.cucumber.java.mk_cyrl",
+      "io.cucumber.java.mk_latn",
+      "io.cucumber.java.ml",
+      "io.cucumber.java.mn",
+      "io.cucumber.java.mr",
+      "io.cucumber.java.ne",
+      "io.cucumber.java.nl",
+      "io.cucumber.java.no",
+      "io.cucumber.java.pa",
+      "io.cucumber.java.pl",
+      "io.cucumber.java.pt",
+      "io.cucumber.java.ro",
+      "io.cucumber.java.ru",
+      "io.cucumber.java.sk",
+      "io.cucumber.java.sl",
+      "io.cucumber.java.sr_cyrl",
+      "io.cucumber.java.sr_latn",
+      "io.cucumber.java.sv",
+      "io.cucumber.java.ta",
+      "io.cucumber.java.te",
+      "io.cucumber.java.th",
+      "io.cucumber.java.tlh",
+      "io.cucumber.java.tr",
+      "io.cucumber.java.tt",
+      "io.cucumber.java.uk",
+      "io.cucumber.java.ur",
+      "io.cucumber.java.uz",
+      "io.cucumber.java.vi",
+      "io.cucumber.java.zh_cn",
+      "io.cucumber.java.zh_tw"
+    ],
+    "io.cucumber:cucumber-json-formatter": [
+      "io.cucumber.jsonformatter"
+    ],
+    "io.cucumber:cucumber-junit-platform-engine": [
+      "io.cucumber.junit.platform.engine"
+    ],
+    "io.cucumber:cucumber-plugin": [
+      "io.cucumber.plugin",
+      "io.cucumber.plugin.event"
+    ],
+    "io.cucumber:datatable": [
+      "io.cucumber.datatable",
+      "io.cucumber.datatable.internal.difflib",
+      "io.cucumber.datatable.internal.difflib.myers"
+    ],
+    "io.cucumber:docstring": [
+      "io.cucumber.docstring"
+    ],
+    "io.cucumber:gherkin": [
+      "io.cucumber.gherkin"
+    ],
+    "io.cucumber:html-formatter": [
+      "io.cucumber.htmlformatter"
+    ],
+    "io.cucumber:junit-xml-formatter": [
+      "io.cucumber.junitxmlformatter"
+    ],
+    "io.cucumber:messages": [
+      "io.cucumber.messages",
+      "io.cucumber.messages.types"
+    ],
+    "io.cucumber:messages-ndjson": [
+      "io.cucumber.messages.ndjson"
+    ],
+    "io.cucumber:pretty-formatter": [
+      "io.cucumber.prettyformatter"
+    ],
+    "io.cucumber:query": [
+      "io.cucumber.query"
+    ],
+    "io.cucumber:tag-expressions": [
+      "io.cucumber.tagexpressions"
+    ],
+    "io.cucumber:teamcity-formatter": [
+      "io.cucumber.teamcityformatter"
+    ],
+    "io.cucumber:testng-xml-formatter": [
+      "io.cucumber.testngxmlformatter"
+    ],
+    "io.cucumber:usage-formatter": [
+      "io.cucumber.usageformatter"
     ],
     "io.github.java-diff-utils:java-diff-utils": [
       "com.github.difflib",
@@ -5041,6 +5520,12 @@
       "org.junit.platform.reporting.shadow.org.opentest4j.reporting.events.java",
       "org.junit.platform.reporting.shadow.org.opentest4j.reporting.events.root",
       "org.junit.platform.reporting.shadow.org.opentest4j.reporting.schema"
+    ],
+    "org.junit.platform:junit-platform-suite-api": [
+      "org.junit.platform.suite.api"
+    ],
+    "org.junit.platform:junit-platform-suite-engine": [
+      "org.junit.platform.suite.engine"
     ],
     "org.mockito:mockito-core": [
       "org.mockito",
@@ -6863,6 +7348,28 @@
       "gg.jte:jte-runtime",
       "gg.jte:jte-spring-boot-starter-4",
       "gg.jte:jte-spring-boot-starter-4-core",
+      "io.cucumber:ci-environment",
+      "io.cucumber:cucumber-core",
+      "io.cucumber:cucumber-expressions",
+      "io.cucumber:cucumber-gherkin",
+      "io.cucumber:cucumber-gherkin-messages",
+      "io.cucumber:cucumber-java",
+      "io.cucumber:cucumber-json-formatter",
+      "io.cucumber:cucumber-junit-platform-engine",
+      "io.cucumber:cucumber-plugin",
+      "io.cucumber:datatable",
+      "io.cucumber:docstring",
+      "io.cucumber:gherkin",
+      "io.cucumber:html-formatter",
+      "io.cucumber:junit-xml-formatter",
+      "io.cucumber:messages",
+      "io.cucumber:messages-ndjson",
+      "io.cucumber:pretty-formatter",
+      "io.cucumber:query",
+      "io.cucumber:tag-expressions",
+      "io.cucumber:teamcity-formatter",
+      "io.cucumber:testng-xml-formatter",
+      "io.cucumber:usage-formatter",
       "io.github.java-diff-utils:java-diff-utils",
       "io.github.wimdeblauwe:htmx-spring-boot",
       "io.lettuce:lettuce-core",
@@ -6963,6 +7470,9 @@
       "org.junit.platform:junit-platform-engine",
       "org.junit.platform:junit-platform-launcher",
       "org.junit.platform:junit-platform-reporting",
+      "org.junit.platform:junit-platform-suite",
+      "org.junit.platform:junit-platform-suite-api",
+      "org.junit.platform:junit-platform-suite-engine",
       "org.mockito:mockito-core",
       "org.objenesis:objenesis",
       "org.opentest4j.reporting:open-test-reporting-tooling-spi",
@@ -7104,6 +7614,36 @@
         "com.uber.nullaway.JSpecifyUnrecognizedAnnotationLocation",
         "com.uber.nullaway.NullAway",
         "com.uber.nullaway.RequireExplicitNullMarking"
+      ]
+    },
+    "io.cucumber:cucumber-core": {
+      "io.cucumber.core.backend.ObjectFactory": [
+        "io.cucumber.core.backend.DefaultObjectFactory"
+      ],
+      "io.cucumber.core.eventbus.UuidGenerator": [
+        "io.cucumber.core.eventbus.IncrementingUuidGenerator",
+        "io.cucumber.core.eventbus.RandomUuidGenerator"
+      ]
+    },
+    "io.cucumber:cucumber-gherkin-messages": {
+      "io.cucumber.core.gherkin.FeatureParser": [
+        "io.cucumber.core.gherkin.messages.GherkinMessagesFeatureParser"
+      ]
+    },
+    "io.cucumber:cucumber-java": {
+      "io.cucumber.core.backend.BackendProviderService": [
+        "io.cucumber.java.JavaBackendProviderService"
+      ]
+    },
+    "io.cucumber:cucumber-junit-platform-engine": {
+      "org.junit.platform.engine.TestEngine": [
+        "io.cucumber.junit.platform.engine.CucumberTestEngine"
+      ]
+    },
+    "io.cucumber:messages-ndjson": {
+      "io.cucumber.messages.ndjson.JsonProvider": [
+        "io.cucumber.messages.ndjson.Jackson2JsonProvider",
+        "io.cucumber.messages.ndjson.Jackson3JsonProvider"
       ]
     },
     "io.lettuce:lettuce-core": {
@@ -7314,6 +7854,11 @@
       ],
       "org.opentest4j.reporting.tooling.spi.htmlreport.Contributor": [
         "org.junit.platform.reporting.open.xml.JUnitContributor"
+      ]
+    },
+    "org.junit.platform:junit-platform-suite-engine": {
+      "org.junit.platform.engine.TestEngine": [
+        "org.junit.platform.suite.engine.SuiteTestEngine"
       ]
     },
     "org.postgresql:postgresql": {

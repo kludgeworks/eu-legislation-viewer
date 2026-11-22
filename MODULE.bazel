@@ -142,6 +142,15 @@ maven.install(
         "org.junit.jupiter:junit-jupiter-engine",
         "org.junit.platform:junit-platform-launcher",
         "org.junit.platform:junit-platform-reporting",
+        # the business rules as Gherkin features, run by Cucumber on the JUnit Platform (a suite per
+        # module), and read back for the wiki: the features (gherkin) and the run (messages);
+        # versions from the Cucumber BOM below
+        "io.cucumber:cucumber-java",
+        "io.cucumber:cucumber-junit-platform-engine",
+        "org.junit.platform:junit-platform-suite",
+        "io.cucumber:gherkin",
+        "io.cucumber:messages",
+        "io.cucumber:messages-ndjson",
         "org.assertj:assertj-core",
         "org.xmlunit:xmlunit-assertj3:2.14.0",
         "org.jsoup:jsoup:1.23.2",  # the rendered pages' text, as a browser reads it
@@ -180,6 +189,7 @@ maven.install(
         "org.springframework.boot:spring-boot-dependencies:4.1.1",
         "org.springframework.modulith:spring-modulith-bom:2.1.1",
         "org.jmolecules:jmolecules-bom:2025.0.2",
+        "io.cucumber:cucumber-bom:8.1.0",
     ],
     known_contributing_modules = ["protobuf"],
     # the resolved versions and their SHA-256s; after changing the artifacts: mise run pin

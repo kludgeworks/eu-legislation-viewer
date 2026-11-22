@@ -1,0 +1,23 @@
+# SPDX-License-Identifier: MIT
+load("@contrib_rules_jvm//java:defs.bzl", "java_test_suite")
+
+# The writer of the rules' wiki pages: what it refuses, and how it compares two versions of a rule
+java_test_suite(
+    name = "rules",
+    size = "small",
+    srcs = glob(["*.java"]),
+    runner = "junit5",
+    runtime_deps = [
+        "@maven//:org_junit_jupiter_junit_jupiter_engine",
+        "@maven//:org_junit_platform_junit_platform_launcher",
+        "@maven//:org_junit_platform_junit_platform_reporting",
+    ],
+    deps = [
+        "//tools/build/src/main/java/dev/groknull/kludgeworks/build/rules",
+        "@maven//:io_cucumber_gherkin",
+        "@maven//:io_cucumber_messages",
+        "@maven//:org_assertj_assertj_core",
+        "@maven//:org_jspecify_jspecify",
+        "@maven//:org_junit_jupiter_junit_jupiter_api",
+    ],
+)

@@ -283,7 +283,9 @@ class ApiActController {
                   included == null ? null : key(included),
                   divergence.places().stream()
                       .map(
-                          place -> new PlaceModel(place.location().code(), place.location().name()))
+                          place ->
+                              new PlaceModel(
+                                  place.location().code(), place.location().place().words()))
                       .distinct()
                       .toList(),
                   each.getValue());
