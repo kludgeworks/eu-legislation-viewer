@@ -65,7 +65,9 @@ public class TagsSteps {
    * An act, as the rules cite it: "2015/1998", "917/2004", "Directive 2002/73", or "Corrigendum 1
    * to 2017/815".
    */
-  @ParameterType("\\d{1,4}/\\d{1,4}|Directive \\d{4}/\\d+|Corrigendum \\d+ to \\d{1,4}/\\d{1,4}")
+  @ParameterType(
+      "\\d{1,4}/\\d{1,4}|Directive \\d{4}/\\d+|Decision \\d{4}/\\d+|Corrigendum \\d+ to"
+          + " \\d{1,4}/\\d{1,4}")
   public ActIdentifier act(String cited) {
     return Cited.act(cited);
   }

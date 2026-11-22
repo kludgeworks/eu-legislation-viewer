@@ -123,6 +123,7 @@ java_junit5_test(
         "model/Cited.java",
         "model/Comparing.java",
         "model/ComparisonRules.java",
+        "model/DifferenceSteps.java",
         "model/LastChangeSteps.java",
         "model/MadeBySteps.java",
         "model/ModificationSteps.java",

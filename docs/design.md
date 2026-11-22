@@ -167,6 +167,10 @@ difference has the amber bar, and its sidenote also says "2026/449 does not appl
 2026". For a day in the past, it says "did not apply yet". Which changes these are is the
 catalogue's rule (Act.prospective).
 
+A difference that is a point of a list shows in its list, without the other items. Thus its
+number hangs as it does on Read (R-DIFF-19). If only one text has a preamble, the views say
+nothing of it: the preamble is not compared (R-DIFF-07).
+
 Whole text shows the later text, so a deleted provision is not in it. The deleted provision stands
 where it stood in the earlier text (R-SHOW-09). It stands after the nearest provision before it
 that the later text still has. If that provision is in a sibling, it stands after that sibling. If

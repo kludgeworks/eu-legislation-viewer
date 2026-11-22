@@ -15,20 +15,15 @@ import java.util.regex.Pattern;
  * <p>The wording holds the text, numbers and quotation marks of the block. Line breaks become
  * spaces. Each run of spacing, a non-breaking space too, becomes a single space.
  *
- * <p>The wording leaves out the elements that say nothing. They can differ between versions with
- * the same wording:
- *
- * <ul>
- *   <li>the tags of the amending acts
- *   <li>footnote references, which are renumbered when footnotes come and go
- *   <li>what a consolidation keeps of a deletion
- * </ul>
+ * <p>The wording leaves out a kept deletion: the words that an act deleted, which a consolidation
+ * keeps marked as deleted. They are not words of the law. The tags of the amending acts and the
+ * references to footnotes hold no words: their act and their marker are attributes.
  *
  * <p>The text of a change, {@code changed}, which a tag names, stays.
  */
 public final class Wording {
-  /** The elements that say nothing, for a comparison. */
-  static final Set<String> SILENT = Set.of("tag", "footnoteRef", "deleted");
+  /** The elements whose words are not words of the law, for a comparison: a kept deletion. */
+  static final Set<String> SILENT = Set.of("deleted");
 
   private static final Pattern SPACE = Pattern.compile("[\\s\\u00A0]+");
 
