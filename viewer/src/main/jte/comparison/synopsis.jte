@@ -50,7 +50,7 @@
   <div class="ledger legal-text legal-text-consolidated" role="table" aria-label="The two texts, aligned by provision">
     <div class="ledger-head" role="row"><div role="columnheader">Provision</div><div role="columnheader">From<span class="day">the law on ${from}</span></div><div role="columnheader">To<span class="day">the law on ${to}</span></div><div role="columnheader">What changed it</div></div>
     @for(var passage : differences.passages())
-      @if(passage instanceof DifferencesView.Fold fold && fold.same() && fold.beside().stream().allMatch(occurrence -> neighbours.containsKey(occurrence.eId())))
+      @if(passage instanceof DifferencesView.Fold fold && fold.beside().stream().allMatch(occurrence -> neighbours.containsKey(occurrence.eId())))
         !{var between = fold.between();}
         @for(var each : fold.beside())
           @template.comparison.neighbour(occurrence = each, element = neighbours.get(each.eId()), history = histories.get(each.eId()), html = html)

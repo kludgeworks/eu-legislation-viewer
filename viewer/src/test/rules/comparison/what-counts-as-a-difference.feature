@@ -3,6 +3,37 @@ Feature: What counts as a difference, and how its edits show
   A comparison counts as a difference only a change of the words of the law. It shows the words
   that an act inserted and the words that it deleted: the edits.
 
+  Rule: R-DIFF-01 One difference for each occurrence
+    A difference is an occurrence that is inserted, deleted, or whose own words changed: its
+    number, its heading, its blocks that are not in an occurrence of their own, and the footnotes
+    that it refers to. An occurrence in it is a difference of its own. An inserted or deleted
+    occurrence is one difference, with the occurrences in it.
+
+    Example: A point does not differ where only a point in it changed
+      Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
+      When the reader reads the difference at the changed point 12.6.2
+      Then point 12.6 does not differ
+
+    Example: An inserted point is one difference, with the points in it
+      Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021
+      When the reader reads the difference at the inserted point 6.8.7
+      Then it shows the occurrences in it whole, and none of them is a difference of its own
+
+  Rule: R-DIFF-02 The changes of the same acts are one difference
+    A changed occurrence and the changed or deleted occurrences in it are one difference, shown
+    whole, if the same acts made all of them. If not, the occurrence shows only its own content,
+    and the occurrences in it that differ are differences of their own.
+
+    Example: The same act changed a point and its points
+      Given the comparison of the texts of 2015/1998 of 16 February 2020 and of 31 December 2021
+      When the reader reads the difference at the changed point 11.1.3
+      Then it shows the occurrences in it whole, and none of them is a difference of its own
+
+    Example: Other acts changed the occurrences in an appendix
+      Given the comparison of the texts of 2015/1998 of 29 February 2016 and of 16 February 2020
+      When the reader reads the difference at the changed Appendix 5-A
+      Then it shows only its own content, and the occurrences in it that differ are differences of their own
+
   Rule: R-DIFF-03 A full stop after a number is no change
     "11.3" and "11.3." are the same number. The Publications Office sets the full stop. An
     occurrence whose number only gained or lost its full stop does not differ.

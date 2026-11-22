@@ -75,8 +75,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  *
  * <ul>
  *   <li>{@code /differences}: the differences, in the view that {@code view} asks for
- *   <li>{@code /acts}: the acts between the two versions, as chips with how many differences each
- *       made
  *   <li>{@code /same}: the occurrences of a fold of the Synopsis, which the Synopsis loads itself
  *   <li>{@code /difference}: one difference by the eId of its occurrence, or some rows of one of
  *       its tables. The views load it when the reader opens an annex inserted whole or a fold of
@@ -236,7 +234,7 @@ class DifferencesController {
             // Show the neighbours of the differences. Each neighbour shows what last changed it.
             var same = new HashSet<String>();
             for (var passage : differences.passages()) {
-              if (passage instanceof DifferencesView.Fold fold && fold.same()) {
+              if (passage instanceof DifferencesView.Fold fold) {
                 fold.beside().forEach(occurrence -> same.add(occurrence.eId()));
               }
             }

@@ -167,6 +167,26 @@ difference has the amber bar, and its sidenote also says "2026/449 does not appl
 2026". For a day in the past, it says "did not apply yet". Which changes these are is the
 catalogue's rule (Act.prospective).
 
+The Differences view shows each difference, and the opening of each provision that holds
+differences. A fold holds the provisions between them that are the same in both texts (R-SHOW-01).
+The name of a fold says which provisions it holds (R-SHOW-03): "Articles 2 to 5", "Points (a) and
+(b)", "First and second subparagraphs", or, where it crosses provisions, "Points 11.1.3 to
+11.2.7(b) (21 provisions)". A point is named with the point that it is in. In a changed table, a
+run of rows that did not change is folded (R-SHOW-04). The changed rows and the header rows stay,
+with one row on each side of a change. Rows that a cell spans stay together. A fold of rows has
+at least three rows. An annex inserted whole shows as one box, "Inserted whole · 56 provisions"
+(R-SHOW-05). The box loads the outline of the annex, or the annex itself, only when the reader
+asks. Whole text shows every provision of the later text as it reads, with the edits of each
+difference in place (R-SHOW-08).
+
+Beside the differences, the outline of the later text shows each branch that leads to
+differences (R-SHOW-15). Each branch has its count of differences, its share of them as a bar,
+and a link to its first difference, down to the section of the difference. A difference that is
+in no section, such as a recital, is in no branch. Under a provision, the outline lists the
+differences in its points by their own number, "(c)", or else by their position, "Art. 9, 2nd
+subpara." (R-SHOW-16). A provision with more than 12 such differences lists none: its count is
+enough.
+
 A difference that is a point of a list shows in its list, without the other items. Thus its
 number hangs as it does on Read (R-DIFF-19). If only one text has a preamble, the views say
 nothing of it: the preamble is not compared (R-DIFF-07).

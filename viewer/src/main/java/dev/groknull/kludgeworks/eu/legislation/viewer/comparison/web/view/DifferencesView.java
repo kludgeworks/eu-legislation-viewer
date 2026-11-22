@@ -5,7 +5,6 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.catalogue.ComparePage;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Context;
-import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Sibling;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Element;
@@ -14,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Set;
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.jspecify.annotations.Nullable;
@@ -59,50 +57,25 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
     numbers = List.copyOf(numbers);
   }
 
-  /** Returns the Differences view of {@code comparison}. */
-  public static DifferencesView of(Comparison comparison) {
-    return of(comparison, difference -> true, "");
-  }
-
   /**
-   * Returns the Differences view of {@code comparison} that shows only the differences that {@code
-   * shown} keeps. For example, the differences of one act, under its filter.
+   * Returns the Differences view of {@code comparison}.
    *
    * <ul>
-   *   <li>The other differences are folded with the occurrences around them that are the same in
-   *       both texts. {@code others} tells what they are, for example "not changed by 2019/1583".
+   *   <li>The occurrences that are the same in both texts are folded with the occurrences around
+   *       them.
    *   <li>An occurrence is folded once, with its occurrences.
-   *   <li>An occurrence that holds a shown difference shows only its opening.
-   *   <li>A deleted occurrence is left out, because the occurrences of a fold are those of the
-   *       later text.
+   *   <li>An occurrence that holds a difference shows only its opening.
    * </ul>
    */
-  public static DifferencesView of(
-      Comparison comparison, Predicate<Difference> shown, String others) {
-    var differences = comparison.differences().stream().filter(shown).toList();
+  public static DifferencesView of(Comparison comparison) {
+    var differences = comparison.differences();
     var passages = new ArrayList<Passage>();
     var numbers = new ArrayList<Integer>();
-    var next = new NextFold(passages, others);
-    // The occurrences whose opening the view shows: a lead, or a shown difference.
+    var next = new NextFold(passages);
+    // The occurrences whose opening the view shows: a lead, or a difference.
     var opened = new HashSet<String>();
-    for (var difference : comparison.differences()) {
+    for (var difference : differences) {
       place(difference.context(), differences, next, opened);
-      if (!shown.test(difference)) {
-        if (difference.kind() != Kind.DELETED && !holds(differences, difference.eId())) {
-          next.add(List.of(difference.occurrence()), difference.parent());
-          next.hidden++;
-        }
-        continue;
-      }
-      // If it is in an occurrence whose difference the filter leaves out, show the opening of that
-      // occurrence as
-      // context.
-      var parent = difference.parent();
-      var lead = difference.lead();
-      if (parent != null && lead != null && opened.add(parent)) {
-        next.fold();
-        passages.add(new Lead(lead));
-      }
       next.fold();
       var number = numbers.size() + 1;
       numbers.add(number);
@@ -118,25 +91,20 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
    * Places {@code context} in the view.
    *
    * <ul>
-   *   <li>The opening of an occurrence that holds a difference in {@code shown} becomes a lead.
-   *   <li>The opening of an occurrence that holds no shown difference is folded whole.
+   *   <li>The opening of an occurrence that holds a difference becomes a lead.
    *   <li>The occurrences that are the same in both texts wait to be folded.
    * </ul>
    */
   private static void place(
-      List<Context> context, List<Difference> shown, NextFold next, Set<String> opened) {
+      List<Context> context, List<Difference> differences, NextFold next, Set<String> opened) {
     for (var each : context) {
       var opening = each.opening();
-      if (opening == null) {
-        next.add(each.occurrences(), each.parent());
-      } else if (holds(shown, each.occurrences().getFirst().eId())) {
+      if (opening != null && holds(differences, each.occurrences().getFirst().eId())) {
         next.fold();
         next.passages.add(new Lead(opening));
         opened.add(each.occurrences().getFirst().eId());
       } else {
-        // It holds differences, but the filter leaves out all of them.
         next.add(each.occurrences(), each.parent());
-        next.hidden++;
       }
     }
   }
@@ -147,20 +115,17 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
   }
 
   /**
-   * The occurrences that wait to be folded, in order, each once, and how many of them differ. The
-   * occurrences that are the same in both texts and in one occurrence get a fold of their own.
+   * The occurrences that wait to be folded, in order, each once. The occurrences that are the same
+   * in both texts and in one occurrence get a fold of their own.
    */
   private static final class NextFold {
     private final List<Passage> passages;
-    private final String others;
     private final List<Sibling> occurrences = new ArrayList<>();
     private final Set<String> eIds = new HashSet<>();
     private final Set<@Nullable String> parents = new HashSet<>();
-    private int hidden;
 
-    NextFold(List<Passage> passages, String others) {
+    NextFold(List<Passage> passages) {
       this.passages = passages;
-      this.others = others;
     }
 
     /**
@@ -169,7 +134,7 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
      * and in another occurrence, it folds them first.
      */
     void add(List<Sibling> siblings, @Nullable String parent) {
-      if (hidden == 0 && !parents.isEmpty() && !parents.contains(parent)) {
+      if (!parents.isEmpty() && !parents.contains(parent)) {
         fold();
       }
       for (var sibling : siblings) {
@@ -195,22 +160,16 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
 
     /**
      * Adds the fold of the waiting occurrences after the passages, and empties them. The reason of
-     * the fold is "no differences". If some of the occurrences differ, the reason is {@code
-     * others}, and the label spans the occurrences. For example, "Points 11.1.3 to 11.2.7(b) (21
-     * provisions)". Does nothing if no occurrences are waiting.
+     * the fold is "no differences". Does nothing if no occurrences are waiting.
      */
     void fold() {
       if (occurrences.isEmpty()) {
         return;
       }
-      passages.add(
-          hidden == 0
-              ? new Fold(DifferencesView.fold(occurrences), occurrences, "no differences", true)
-              : new Fold(span(occurrences), occurrences, others, false));
+      passages.add(new Fold(DifferencesView.fold(occurrences), occurrences, "no differences"));
       occurrences.clear();
       eIds.clear();
       parents.clear();
-      hidden = 0;
     }
   }
 
@@ -446,19 +405,15 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
   public sealed interface Passage {}
 
   /**
-   * Occurrences that stay folded until a reader asks for them. They are the same in both texts, or,
-   * under an act filter, other acts changed them.
+   * Occurrences that stay folded until a reader asks for them. They are the same in both texts: the
+   * neighbours of the difference after them, in the occurrence that they are in.
    *
    * @param label which occurrences they are. For example, "Points (a) and (b)".
    * @param occurrences its occurrences, as the later text has them, in order, each with the
    *     occurrences in it
-   * @param reason why they are folded. For example, "no differences" or "not changed by 2019/1583".
-   * @param same whether they are the same in both texts. Then they are the neighbours of the
-   *     difference after them, in the occurrence that they are in. False if some of them differ, by
-   *     an act that the view leaves out.
+   * @param reason why they are folded: "no differences"
    */
-  public record Fold(String label, List<Sibling> occurrences, String reason, boolean same)
-      implements Passage {
+  public record Fold(String label, List<Sibling> occurrences, String reason) implements Passage {
     public Fold {
       occurrences = List.copyOf(occurrences);
     }
@@ -483,7 +438,7 @@ public record DifferencesView(String count, List<Passage> passages, List<Integer
         return null;
       }
       var inner = occurrences.subList(1, occurrences.size() - 1);
-      return new Fold(same ? DifferencesView.fold(inner) : span(inner), inner, reason, same);
+      return new Fold(DifferencesView.fold(inner), inner, reason);
     }
 
     /**

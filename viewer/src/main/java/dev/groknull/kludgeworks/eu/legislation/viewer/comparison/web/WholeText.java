@@ -28,9 +28,6 @@ import org.jspecify.annotations.Nullable;
  *       stood in the earlier text. It goes after the occurrence before it there. If there is none,
  *       it goes before the occurrence after it. If there is none, it goes at the end.
  * </ul>
- *
- * <p>The differences that are not shown read as they are. For example, the differences of other
- * acts when an act filter is on.
  */
 final class WholeText {
   private WholeText() {}

@@ -155,6 +155,75 @@ public class DifferenceSteps {
     doesNotDiffer(place);
   }
 
+  @Then("it shows the occurrences in it whole, and none of them is a difference of its own")
+  public void showsWhole() {
+    var eId = difference().eId();
+    assertThat(Occurrences.holdsOccurrences(difference().shown()))
+        .as("it shows its occurrences")
+        .isTrue();
+    assertThat(compared().differences())
+        .extracting(Difference::eId)
+        .noneMatch(each -> each.startsWith(eId + "/"));
+  }
+
+  @Then(
+      "it shows only its own content, and the occurrences in it that differ are differences of"
+          + " their own")
+  public void showsOwnContent() {
+    var eId = difference().eId();
+    assertThat(Occurrences.holdsOccurrences(difference().shown()))
+        .as("it shows its occurrences")
+        .isFalse();
+    assertThat(compared().differences())
+        .extracting(Difference::eId)
+        .anyMatch(each -> each.startsWith(eId + "/"));
+  }
+
+  @Then("each occurrence of the later text is placed once, in the order of the text")
+  public void placedOnce() {
+    var occurrences = Occurrences.of(later());
+    var placed = new ArrayList<String>();
+    for (var each : compared().differences()) {
+      placed(each.context(), occurrences, placed);
+      if (each.kind() != Kind.DELETED) {
+        placed.add(each.eId());
+        if (Occurrences.holdsOccurrences(each.shown())) {
+          placed.addAll(inside(each.eId(), occurrences));
+        }
+      }
+    }
+    placed(compared().closing(), occurrences, placed);
+    assertThat(placed).containsExactlyElementsOf(occurrences.byEId().keySet());
+  }
+
+  /**
+   * Adds the occurrences of {@code context}: an opening alone, or the occurrences that are the same
+   * in both texts with the occurrences in them.
+   */
+  private static void placed(
+      List<Difference.Context> context, Occurrences occurrences, List<String> placed) {
+    for (var each : context) {
+      for (var occurrence : each.occurrences()) {
+        placed.add(occurrence.eId());
+        if (each.opening() == null) {
+          placed.addAll(inside(occurrence.eId(), occurrences));
+        }
+      }
+    }
+  }
+
+  /**
+   * Returns the eIds of the occurrences in the occurrence {@code eId}, in the order of the text.
+   */
+  private static List<String> inside(String eId, Occurrences occurrences) {
+    var inside = new ArrayList<String>();
+    for (var occurrence : occurrences.in(eId)) {
+      inside.add(occurrence);
+      inside.addAll(inside(occurrence, occurrences));
+    }
+    return inside;
+  }
+
   @Then("the later text has no preamble")
   public void noPreamble() {
     assertThat(compared().withoutPreamble()).isEqualTo(Side.LATER);

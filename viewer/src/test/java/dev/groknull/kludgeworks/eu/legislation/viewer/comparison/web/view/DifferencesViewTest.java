@@ -2,7 +2,6 @@
 package dev.groknull.kludgeworks.eu.legislation.viewer.comparison.web.view;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.tuple;
 
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Comparison.Side;
@@ -89,49 +88,6 @@ class DifferencesViewTest {
             .orElseThrow();
     assertThat(fold.query())
         .isEqualTo("first=anx%2Fpnt_8.1.2.3%2Fpnt_a&last=anx%2Fpnt_8.1.2.3%2Fpnt_b");
-  }
-
-  @Test
-  void foldsTheDifferencesAnActFilterLeavesOutWithTheOccurrencesAroundThem() {
-    var only9 =
-        DifferencesView.of(
-            comparison("02015R1998-20260322", "02015R1998-20261001"),
-            difference -> difference.eId().startsWith("anx/pnt_9."),
-            "not changed by 2026/449");
-
-    assertThat(only9.passages())
-        .extracting(DifferencesViewTest::passage)
-        .containsExactly(
-            "Articles 1 to 3",
-            "lead",
-            "Points 1. to 9.1.2.2 (471 provisions)",
-            "lead",
-            "Points (a) and (b)",
-            "1",
-            "Point (d)",
-            "2",
-            "Point (f)",
-            "3",
-            "Point 9.1.2.4 to attachment 12-P");
-    assertThat(only9.passages())
-        .filteredOn(Fold.class::isInstance)
-        .map(Fold.class::cast)
-        .extracting(Fold::reason, Fold::same)
-        .containsExactly(
-            tuple("no differences", true),
-            tuple("not changed by 2026/449", false),
-            tuple("no differences", true),
-            tuple("no differences", true),
-            tuple("no differences", true),
-            tuple("no differences", true));
-    // 8.1.2.3 shows once, with its points.
-    var others = (Fold) only9.passages().get(2);
-    assertThat(others.occurrences())
-        .extracting(Sibling::eId)
-        .contains("anx/pnt_8.1.2.2", "anx/pnt_8.1.2.3", "anx/pnt_8.1.2.4")
-        .noneMatch(eId -> eId.startsWith("anx/pnt_8.1.2.3/"));
-    assertThat(only9.count()).isEqualTo("3 provisions differ");
-    assertThat(only9.numbers()).containsExactly(1, 2, 3);
   }
 
   @Test
