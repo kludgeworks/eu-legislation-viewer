@@ -326,7 +326,7 @@ details.ledger-fold[open] {
   min-width: 0;
 }
 
-/* Compare hides the tags (▼) and the struck text that a consolidation keeps. The
+/* Compare hides the tags (▼) and the kept deletions of a consolidation. The
  * sidenotes and the edits say what happened. Read shows them. The wording of a change on
  * the page of an amending act hides them too: the page says the act. */
 .differences .tag,

@@ -174,7 +174,7 @@ class DifferTest {
     // A changed point and the points in it that the same act changed, inserted or deleted count
     // as one difference.
     assertThat(differences).filteredOn(d -> d.kind() == Kind.INSERTED).hasSize(18);
-    // Points that the later text keeps struck through count as deleted.
+    // Points that the later text keeps as kept deletions count as deleted.
     assertThat(differences).filteredOn(d -> d.kind() == Kind.DELETED).hasSize(15);
     assertThat(differences).filteredOn(d -> d.kind() == Kind.CHANGED).hasSize(34);
     assertThat(differences)
@@ -201,10 +201,10 @@ class DifferTest {
   }
 
   @Test
-  void readsAnOccurrenceTheLaterTextKeepsStruckAsDeletedByTheActThatStruckIt() {
-    var struck = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_6.8.1.6");
-    assertThat(struck.kind()).isEqualTo(Kind.DELETED);
-    assertThat(struck.tags()).containsExactly(new Tag("32026R0449", Modification.DELETED, null));
+  void readsAnOccurrenceTheLaterTextKeepsAsAKeptDeletionAsDeletedByTheActThatDeletedIt() {
+    var kept = find(Differ.differences(JANUARY, MARCH).differences(), "anx/pnt_6.8.1.6");
+    assertThat(kept.kind()).isEqualTo(Kind.DELETED);
+    assertThat(kept.tags()).containsExactly(new Tag("32026R0449", Modification.DELETED, null));
     assertThat(Occurrences.of(MARCH).get("anx/pnt_6.8.1.6")).isNull();
   }
 

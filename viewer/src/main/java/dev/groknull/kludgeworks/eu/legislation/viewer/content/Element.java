@@ -49,7 +49,8 @@ public record Element(
    *   <li>Each occurrence is whole, with the occurrences in it. The occurrences in it do not appear
    *       again on their own.
    *   <li>The run may start inside an occurrence and end outside it.
-   *   <li>The run leaves out the occurrences that a consolidation keeps struck, in {@code deleted}.
+   *   <li>The run leaves out the occurrences of a consolidation's kept deletions, in {@code
+   *       deleted}.
    * </ul>
    *
    * <p>Returns none if it does not have {@code first}.
@@ -78,7 +79,7 @@ public record Element(
       if (now == Run.AFTER) {
         return now;
       }
-      // A consolidation keeps struck text here. It is not part of the text.
+      // A consolidation keeps its kept deletions here. They are not part of the text.
       if (child.name().equals("deleted")) {
         continue;
       }

@@ -109,7 +109,7 @@ public final class PublicTexts {
 
   /**
    * Returns an occurrence of a text, with the footnotes that it refers to. Returns none if the text
-   * has no occurrence {@code eId} outside the text that a consolidation keeps struck.
+   * has no occurrence {@code eId} outside the kept deletions of a consolidation.
    *
    * @param legalText the element of a text, {@code legalText}
    */

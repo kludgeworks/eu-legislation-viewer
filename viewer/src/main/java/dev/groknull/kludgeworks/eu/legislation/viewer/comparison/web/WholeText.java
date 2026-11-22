@@ -124,13 +124,12 @@ final class WholeText {
    *       has. If that occurrence is inside a sibling, it stands after that sibling.
    *   <li>If that occurrence is its parent, or there is no such occurrence, it stands before the
    *       nearest occurrence after it that the later text has. The occurrences in it do not count.
-   *       If that occurrence is inside a sibling, it stands before that sibling.
    *   <li>If there is no occurrence after it either, returns none.
    * </ul>
    *
    * <p>Also returns none if the earlier text does not have {@code eId}.
    */
-  private static @Nullable Placed place(
+  static @Nullable Placed place(
       String eId, @Nullable String parent, List<String> earlier, Set<String> occurrences) {
     var index = earlier.indexOf(eId);
     if (index < 0) {
@@ -153,8 +152,7 @@ final class WholeText {
       if (each.startsWith(eId + "/") || !occurrences.contains(each)) {
         continue;
       }
-      var beside = beside(each, parent);
-      return new Placed(beside == null ? each : beside, false);
+      return new Placed(each, false);
     }
     return null;
   }
@@ -215,5 +213,5 @@ final class WholeText {
    * @param eId the occurrence of the later text that it stands beside
    * @param after whether it stands after that occurrence, or before it
    */
-  private record Placed(String eId, boolean after) {}
+  record Placed(String eId, boolean after) {}
 }

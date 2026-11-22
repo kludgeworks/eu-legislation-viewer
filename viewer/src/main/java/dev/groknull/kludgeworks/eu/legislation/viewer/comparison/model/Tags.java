@@ -57,16 +57,17 @@ final class Tags {
    * in the later text. {@code in} is null for an outermost occurrence.
    *
    * <ul>
-   *   <li>If a deletion keeps the occurrence struck, it returns the tags of that deletion.
+   *   <li>If the later text keeps the occurrence as a kept deletion, it returns the tags of that
+   *       deletion.
    *   <li>If not, it returns the tags of the nearest enclosing occurrence that an act replaced
    *       whole, without the occurrence. Those tags name that enclosing occurrence in {@code in}.
    *   <li>If neither applies, it returns an empty list.
    * </ul>
    */
   static List<Tag> deleted(Occurrence occurrence, Occurrences after, @Nullable Occurrence in) {
-    var struck = after.struck().get(occurrence.eId());
-    if (struck != null) {
-      return struck;
+    var kept = after.keptDeletions().get(occurrence.eId());
+    if (kept != null) {
+      return kept;
     }
     for (var enclosing = in; enclosing != null; ) {
       var found = new ArrayList<Tag>();

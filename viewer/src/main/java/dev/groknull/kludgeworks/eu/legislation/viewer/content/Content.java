@@ -42,7 +42,7 @@ public interface Content {
   /**
    * Returns the occurrence {@code eId} of the text in the public model, with the footnotes that it
    * refers to. Returns none if no such text is stored, or if the text has no occurrence {@code eId}
-   * outside the struck text of a consolidation.
+   * outside the kept deletions of a consolidation.
    */
   Optional<PublicText.Extract> publicOccurrence(TextId text, String eId);
 

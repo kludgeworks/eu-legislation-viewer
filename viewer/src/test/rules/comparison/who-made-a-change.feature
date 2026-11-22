@@ -46,6 +46,31 @@ Feature: Who made a change, and from when
         | act      | modification | taken from    |
         | 2026/449 | replaced     | point 1.2.2.3 |
 
+  Rule: R-WHO-03 Who deleted an occurrence
+    The later text no longer has a deleted occurrence, so its own tags cannot say who deleted it. A
+    consolidated text often keeps a deleted provision, marked as deleted under the tag of the act
+    that deleted it: that act deleted it. If the text does not keep it, the act that replaced the
+    occurrence around it whole deleted it with the rest. If neither, no tag names the act.
+
+    Example: The later text keeps the deleted point, marked as deleted by its act
+      Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
+      And the difference at the deleted Article 67(1)(e)
+      Then the tags of the difference are
+        | act                 | modification | taken from |
+        | Directive 2024/1619 | deleted      |            |
+
+    Example: An act replaced the point around it whole
+      Given the comparison of the texts of 2015/1998 of 1 January 2026 and of 22 March 2026
+      And the difference at the deleted point 12.4.2.1(d)
+      Then the tags of the difference are
+        | act      | modification | taken from   |
+        | 2026/449 | replaced     | point 12.4.2.1 |
+
+    Example: Nothing in the later text names the act
+      Given the comparison of the texts of Directive 2013/36 of 17 January 2025 and of 11 January 2026
+      And the difference at the deleted Article 23(1)(a)
+      Then the difference has no tags
+
   Rule: R-WHO-04 The tags come before Cellar
     If the tags name an act of a text, Cellar's other acts of that text are left out.
 

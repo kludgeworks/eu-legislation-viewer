@@ -494,10 +494,11 @@ class SidenoteViewTest {
 
   @Test
   void placesTheActTheTagNamesLastAfterThoseOnlyCellarNames() {
-    // The text keeps 4.1.3.2 struck through under the deletion by 2019/103. Cellar has 2017/815
+    // The text keeps 4.1.3.2 as a kept deletion, under the deletion by 2019/103. Cellar has
+    // 2017/815
     // replacing it, and also 2019/413, as the data of the dev store has. 2019/103 applies in
     // parts, and its first part is before 2019/413.
-    var struck = deleted("anx/pnt_4.1.3.2", new Tag("32019R0103", Modification.DELETED, null));
+    var kept = deleted("anx/pnt_4.1.3.2", new Tag("32019R0103", Modification.DELETED, null));
     var cellar = new ArrayList<>(amendments("32017R0815", "AN PO 4.1.3.2"));
     var replaced = cellar.getFirst();
     cellar.add(
@@ -515,7 +516,7 @@ class SidenoteViewTest {
             Inclusions.listed(AVSEC.timeline()),
             version("02015R1998-20160229"),
             version("02015R1998-20261001"),
-            struck,
+            kept,
             cellar,
             Language.ENG);
 

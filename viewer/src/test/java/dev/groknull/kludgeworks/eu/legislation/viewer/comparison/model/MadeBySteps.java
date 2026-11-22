@@ -14,6 +14,7 @@ import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Applicability;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Attribution;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference;
 import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Difference.Kind;
+import dev.groknull.kludgeworks.eu.legislation.viewer.comparison.Modification;
 import dev.groknull.kludgeworks.eu.legislation.viewer.content.Place;
 import dev.groknull.kludgeworks.eu.legislation.viewer.language.Language;
 import io.cucumber.java.en.Given;
@@ -32,10 +33,10 @@ import org.jspecify.annotations.Nullable;
 
 /**
  * The steps of the rules about which acts made a difference, and in which steps (R-WHO-01,
- * R-WHO-04, R-WHO-05, R-WHO-06, R-WHO-07, R-WHO-09, R-WHO-11, R-WHO-12, R-WHO-22). The difference
- * is the one that the Differ finds between the converter's sample texts of the comparison ({@link
- * Comparing}), with Cellar's recorded amendments of its occurrence. The steps reach the domain
- * only: {@link Attribution}, {@link Differ} and the catalogue's acts.
+ * R-WHO-03, R-WHO-04, R-WHO-05, R-WHO-06, R-WHO-07, R-WHO-09, R-WHO-11, R-WHO-12, R-WHO-22). The
+ * difference is the one that the Differ finds between the converter's sample texts of the
+ * comparison ({@link Comparing}), with Cellar's recorded amendments of its occurrence. The steps
+ * reach the domain only: {@link Attribution}, {@link Differ} and the catalogue's acts.
  */
 public class MadeBySteps {
   private static final DateTimeFormatter DAY =
@@ -84,6 +85,28 @@ public class MadeBySteps {
             Comparing.to(),
             Objects.requireNonNull(difference, "no difference given"),
             amendments);
+  }
+
+  @Then("the tags of the difference are")
+  public void theTagsOfTheDifferenceAre(List<Map<String, String>> rows) {
+    var later = Occurrences.of(Comparing.text(Comparing.to()));
+    assertThat(Objects.requireNonNull(difference, "no difference given").tags())
+        .containsExactlyElementsOf(
+            rows.stream()
+                .map(
+                    row -> {
+                      var from = row.get("taken from");
+                      return new Difference.Tag(
+                          Cited.act(Objects.requireNonNull(row.get("act"))).celex(),
+                          Modification.of(Objects.requireNonNull(row.get("modification"))),
+                          from == null ? null : eId(new Place(from), later));
+                    })
+                .toList());
+  }
+
+  @Then("the difference has no tags")
+  public void theDifferenceHasNoTags() {
+    assertThat(Objects.requireNonNull(difference, "no difference given").tags()).isEmpty();
   }
 
   @Then("the steps are")

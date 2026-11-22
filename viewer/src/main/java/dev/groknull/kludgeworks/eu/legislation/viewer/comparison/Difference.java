@@ -62,8 +62,9 @@ import org.jspecify.annotations.Nullable;
  *       <li>If it has none, these are the tags on the nearest occurrence that it is in that an act
  *           put in its form whole.
  *       <li>For a deleted occurrence, these are the tags of the act that deleted it. This is the
- *           tag of the deletion under which the later text keeps it struck. If there is none, it is
- *           the tag of the occurrence that it was in that an act replaced whole, without it.
+ *           tag of the deletion under which the later text keeps it, a kept deletion. If there is
+ *           none, it is the tag of the occurrence that it was in that an act replaced whole,
+ *           without it.
  *     </ul>
  *     Empty if none of these applies.
  * @param earlierTags the same as {@code tags}, in the earlier text. Empty for an inserted

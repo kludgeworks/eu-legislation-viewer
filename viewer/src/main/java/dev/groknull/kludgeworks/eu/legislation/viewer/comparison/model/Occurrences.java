@@ -29,9 +29,9 @@ import org.jspecify.annotations.Nullable;
  * occurrence that it is in, with the occurrences in its cells.
  *
  * <p>What a consolidation keeps of a deletion is not part of the text. This is the legal-text
- * {@code deleted}: the struck words or occurrences that an act deleted, under its tag. An
- * occurrence in it is not one of the occurrences, and its words are not in the blocks of an
- * occurrence. The act that struck each occurrence is kept.
+ * {@code deleted}: a kept deletion, the words or occurrences that an act deleted, marked as deleted
+ * under its tag. An occurrence in it is not one of the occurrences, and its words are not in the
+ * blocks of an occurrence. The act that deleted each occurrence is kept.
  *
  * <p>An occurrence holds the footnotes that its own blocks refer to. These are the footnotes of the
  * text, at its end. A footnote is matched through the reference to it, not by its eId. The eId of a
@@ -41,14 +41,14 @@ import org.jspecify.annotations.Nullable;
  *
  * @param byEId the occurrences, by eId, in document order
  * @param outermost the eIds of the occurrences that are in no other occurrence, in order
- * @param struck the tags of the deletions that keep an occurrence struck, by the eId of the
+ * @param keptDeletions the tags of the kept deletions that hold an occurrence, by the eId of the
  *     occurrence. For example, "deleted by 2019/103".
  * @param footnotes the footnotes of the text, at its end, by eId
  */
 public record Occurrences(
     SequencedMap<String, Occurrence> byEId,
     List<String> outermost,
-    Map<String, List<Tag>> struck,
+    Map<String, List<Tag>> keptDeletions,
     Map<String, Element> footnotes) {
 
   /**
@@ -80,10 +80,10 @@ public record Occurrences(
   public static Occurrences of(Element text) {
     var occurrences = new LinkedHashMap<String, Occurrence>();
     var outermost = new ArrayList<String>();
-    var struck = new HashMap<String, List<Tag>>();
+    var keptDeletions = new HashMap<String, List<Tag>>();
     var footnotes = footnotes(text);
-    collect(text, null, null, outermost, occurrences, new ArrayDeque<>(), struck, footnotes);
-    return new Occurrences(occurrences, outermost, struck, footnotes);
+    collect(text, null, null, outermost, occurrences, new ArrayDeque<>(), keptDeletions, footnotes);
+    return new Occurrences(occurrences, outermost, keptDeletions, footnotes);
   }
 
   /**
@@ -177,10 +177,10 @@ public record Occurrences(
       List<String> siblings,
       Map<String, Occurrence> occurrences,
       Deque<Ranked> ranked,
-      Map<String, List<Tag>> struck,
+      Map<String, List<Tag>> keptDeletions,
       Map<String, Element> footnotes) {
     if (element.name().equals("deleted")) {
-      struck(element, tags(element), struck);
+      keptDeletion(element, tags(element), keptDeletions);
       return;
     }
     if (block(element)) {
@@ -204,14 +204,14 @@ public record Occurrences(
       siblings.add(eId);
       var inside = new ArrayList<String>();
       for (var child : element.children()) {
-        collect(child, eId, element, inside, occurrences, ranked, struck, footnotes);
+        collect(child, eId, element, inside, occurrences, ranked, keptDeletions, footnotes);
       }
       occurrences.put(
           eId, new Occurrence(eId, parent, section, element, blocks, ownFootnotes, inside, list));
       return;
     }
     for (var child : element.children()) {
-      collect(child, parent, element, siblings, occurrences, ranked, struck, footnotes);
+      collect(child, parent, element, siblings, occurrences, ranked, keptDeletions, footnotes);
     }
   }
 
@@ -271,14 +271,15 @@ public record Occurrences(
     return List.copyOf(tags);
   }
 
-  /** Records the outermost occurrences in {@code element} as struck by {@code tags}. */
-  private static void struck(Element element, List<Tag> tags, Map<String, List<Tag>> struck) {
+  /** Records the outermost occurrences in {@code element} as kept deletions by {@code tags}. */
+  private static void keptDeletion(
+      Element element, List<Tag> tags, Map<String, List<Tag>> keptDeletions) {
     for (var child : element.children()) {
       var eId = eId(child);
       if (eId != null) {
-        struck.putIfAbsent(eId, tags);
+        keptDeletions.putIfAbsent(eId, tags);
       } else {
-        struck(child, tags, struck);
+        keptDeletion(child, tags, keptDeletions);
       }
     }
   }
@@ -308,8 +309,8 @@ public record Occurrences(
   }
 
   /**
-   * Returns whether {@code element} has an occurrence of the text in it, at any depth. A struck
-   * occurrence does not count.
+   * Returns whether {@code element} has an occurrence of the text in it, at any depth. An
+   * occurrence of a kept deletion does not count.
    */
   static boolean holdsOccurrences(Element element) {
     return !block(element)

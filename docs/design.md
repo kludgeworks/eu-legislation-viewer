@@ -101,6 +101,7 @@ its module.
 | tag | The sign ▼ in a consolidated text that names the act that gave a provision its wording, and what the act did. EUR-Lex calls these signs tags: B, M1, C1, A1. |
 | modification | What an act did to an occurrence in one step: inserted, deleted, replaced, renumbered, amended or corrected. A tag names the act and its modification. Akoma Ntoso calls it a textual modification. |
 | footnote | A note of the text that a reference in the text points to. The notes are at the end of the text, or in a table. The word "note" alone is not a term: say footnote, sidenote or divergence note. |
+| kept deletion | A provision that an act deleted, which the consolidated text keeps, marked as deleted under the ▼ tag of that act. It is not in force. The deleted words of an edit are a different thing: they are struck through. |
 
 ### Comparison (module `comparison`)
 
@@ -165,6 +166,15 @@ Where a change does not apply on the later day of a comparison yet, a prospectiv
 difference has the amber bar, and its sidenote also says "2026/449 does not apply yet on 1 October
 2026". For a day in the past, it says "did not apply yet". Which changes these are is the
 catalogue's rule (Act.prospective).
+
+Whole text shows the later text, so a deleted provision is not in it. The deleted provision stands
+where it stood in the earlier text (R-SHOW-09). It stands after the nearest provision before it
+that the later text still has. If that provision is in a sibling, it stands after that sibling. If
+it was the first provision in its parent, it stands before the next provision that the later text
+has. For example, in Directive 2013/36 from 17 January 2025 to 11 January 2026, the deleted point
+24 of Article 2(5) stands after point 23, and the deleted points (a) to (c) of Article 23(1) stand
+before Article 23(2). If the later text has no provision before it or after it, it stands at the
+end.
 
 Synopsis shows the two texts side by side, provision by provision (R-SHOW-10). Near each
 difference it shows its neighbours. Where more than three neighbours are in a row, it shows the
